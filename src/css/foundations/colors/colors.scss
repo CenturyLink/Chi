@@ -1,0 +1,11 @@
+@import 'variables';
+
+// Background colors
+// text colors
+@each $scheme, $scheme-tones in $colorscheme {
+  @each $tone, $value in $scheme-tones {
+    .bg-#{$scheme}-#{$tone} {
+      background-color: $value;
+    }
+  }
+}

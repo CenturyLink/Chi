@@ -1,0 +1,56 @@
+{
+    "id": "chi",
+    "viewports": [
+        { "label": "iphone_4", "width": 320, "height": 480 },
+        { "label": "iphone_4--landscape", "width": 480, "height": 320 },
+        { "label": "iphone_7", "width": 375, "height": 667 },
+        { "label": "iphone_7--landscape", "width": 667, "height": 375 },
+        { "label": "ipad_2", "width": 768, "height": 1024 },
+        { "label": "ipad_2--landscape", "width": 1024, "height": 768 },
+        { "label": "ipad_pro", "width": 1024, "height": 1366 },
+        { "label": "ipad_pro--landscape", "width": 1366, "height": 1024 },
+        { "label": "galaxy_tab", "width": 800, "height": 1280 },
+        { "label": "galaxy_tab--landscape", "width": 1280, "height": 800 },
+        { "label": "macbook_air_11_2011", "width": 1366, "height": 768 },
+        { "label": "macbook_pro_15_2014", "width": 1680, "height": 1050 },
+        { "label": "cinema_display", "width": 2560, "height": 1440 }
+    ],
+    "onBeforeScript": "chromy/onBefore.js",
+    "onReadyScript": "chromy/onReady.js",
+    "scenarios": [
+        {
+            "label": "Typography",
+            "cookiePath": "",
+            "url": "http://localhost:8000/foundations/typography.html",
+            "referenceUrl": "",
+            "readyEvent": "",
+            "readySelector": "",
+            "delay": 0,
+            "hideSelectors": [],
+            "removeSelectors": [],
+            "hoverSelector": "",
+            "clickSelector": "",
+            "postInteractionWait": "",
+            "selectors": [".test-01", ".test-02", ".test-03"],
+            "selectorExpansion": true,
+            "misMatchThreshold": 0,
+            "requireSameDimensions": true
+        }
+    ],
+    "paths": {
+        "bitmaps_reference": "config/backstop_data/bitmaps_reference",
+        "bitmaps_test": "test/bitmaps_test",
+        "engine_scripts": "config/backstop_data/engine_scripts",
+        "html_report": "reports/html_report",
+        "ci_report": "reports/ci_report"
+    },
+    "report": [
+        "CI"
+    ],
+    "engine": "chrome",
+    "engineFlags": [],
+    "asyncCaptureLimit": 2,
+    "asyncCompareLimit": 2,
+    "debug": false,
+    "debugWindow": false
+}

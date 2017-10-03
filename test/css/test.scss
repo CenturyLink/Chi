@@ -1,0 +1,12 @@
+// sass-lint:disable no-color-hex
+$color-from: #00ffff;
+$color-to: rgba(255, 255, 255, 0);
+// sass-lint:enable no-color-hex
+
+body {
+    background-image: linear-gradient(to bottom, $color-from 0, $color-to 1px);
+    background-repeat: repeat-y;
+    background-size: 100% 8px;
+    height: 100%;
+    width: 100%;
+}

@@ -1,0 +1,66 @@
+
+$cap-height: 0.75;
+
+// colors
+// sass-lint:disable no-color-hex
+// sass-lint:disable no-color-keywords
+$colorscheme: (
+  green: (
+    100: #edf7e1,
+    200: #cce8a9,
+    300: #a0dd4c,
+    400: #8cc63f,
+    500: #3aa72e,
+    600: #00853f,
+    700: #284e36,
+  ),
+  carbon: (
+    100: #969696,
+    200: #757575,
+    300: #616161,
+    400: #424242,
+    500: #333333,
+    600: #212121,
+    700: #0e0e0e,
+  ),
+  grey: (
+    100: #ffffff,
+    200: #fafafa,
+    300: #f8f8f8,
+    400: #eeeeee,
+    500: #e0e0e0,
+    600: #d5d5d5,
+    700: #cacaca,
+  ),
+  blue: (
+    100: #e5f4fb,
+    200: #b8e2f5,
+    300: #a0cfeb,
+    400: #6ec4ea,
+    500: #0098db,
+    600: #0085c0,
+    700: #006390,
+  ),
+  red: (
+    100: #fcebea,
+    200: #f9d6d4,
+    300: #ffb4b0,
+    400: #ff6360,
+    500: #e43b34,
+    600: #c32720,
+    700: #941510,
+  ),
+  yellow: (
+    100: #fdf9e8,
+    200: #f8e4bc,
+    300: #f6d490,
+    400: #ffba10,
+    500: #ffa633,
+    600: #ff8f00,
+    700: #e8730c,
+  )
+);
+// sass-lint:enable no-color-keywords
+// sass-lint:enable no-color-hex
+
+$default-text-color: map-get(map-get($colorscheme, carbon), 500);
