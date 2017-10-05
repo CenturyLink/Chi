@@ -1,0 +1,86 @@
+---
+title: Grid
+---
+
+.test-01
+  h4 Grid with flex cells
+  .c-grid.c-grid--show
+    .c-col
+    .c-col
+    .c-col
+
+.test-02
+  h4 Grid without gutter
+  .c-grid.c-grid--no-gutter.c-grid--show
+    .c-col
+    .c-col
+    .c-col
+
+h3 sizes
+
+.test-03
+  h4 Column sizes
+  .c-grid.c-grid--show
+    .c-col.c-col--1
+    .c-col.c-col--1
+    .c-col.c-col--1
+    .c-col.c-col--1
+    .c-col.c-col--1
+    .c-col.c-col--1
+    .c-col.c-col--1
+    .c-col.c-col--1
+    .c-col.c-col--1
+    .c-col.c-col--1
+    .c-col.c-col--1
+    .c-col.c-col--1
+    .c-col.c-col--2
+    .c-col.c-col--10
+    .c-col.c-col--3
+    .c-col.c-col--9
+    .c-col.c-col--4
+    .c-col.c-col--8
+    .c-col.c-col--5
+    .c-col.c-col--7
+    .c-col.c-col--6
+    .c-col.c-col--6
+
+.test-04
+  h4 Column sizes at specific screen sizes
+  .c-grid.c-grid--show
+    .c-col.c-col--2.c-col--3-sm.c-col--8-md.c-col--1-lg.c-col--11-xl
+    .c-col.c-col--2.c-col--5-sm.c-col--4-md.c-col--11-lg.c-col--1-xl
+
+h3 Offsets
+
+.test-05
+  h4 Generic offsets
+  .c-grid.c-grid--show
+    .c-col.c-col--1
+    .c-col.c-col--2.c-col--1-offset
+    .c-col.c-col--2.c-col--1-offset
+    .c-col.c-col--2.c-col--1-offset
+    .c-col.c-col--1.c-col--1-offset
+
+  .c-grid.c-grid--show
+    .c-col.c-col--1
+    .c-col.c-col--1.c-col--1-offset
+
+  h4 Column offsets for specific screen sizes
+  .c-grid.c-grid--show
+    .c-col.c-col--1
+    .c-col.c-col--6.c-col--5-offset.c-col--4-sm.c-col--3-sm-offset.c-col--2-xs.c-col--1-xs-offset
+
+h3 Aligns
+
+.test-06
+  h4 Align columns relative to the grid
+  .c-grid.c-grid--show(style={height: '160px'})
+    .c-col.c-col--align-top
+    .c-col.c-col--align-middle
+    .c-col.c-col--align-bottom
+
+  h4 Align content relative to the column
+  .c-grid.c-grid--show(style={height: '160px'})
+    .c-col.c-col--top
+    .c-col.c-col--middle
+    .c-col.c-col--bottom

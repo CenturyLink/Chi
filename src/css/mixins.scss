@@ -13,3 +13,33 @@ $imported-once-files: ();
 @function font-padding-top($font-size, $line-height) {
   @return ($line-height - ($cap-height * $font-size)) / 2;
 }
+
+@function set-color($scheme, $tone) {
+  @return map-get(map-get($colorscheme, $scheme), $tone);
+}
+
+@mixin respond-to($media, $only: false) {
+  @if $media == xs {
+    @media only screen and (max-width: $sm-breakpoint - 1) { @content; }
+  } @else if $media == sm {
+    @if $only {
+      @media only screen and (min-width: $sm-breakpoint) and (max-width: $md-breakpoint - 1) { @content; }
+    } @else {
+      @media only screen and (min-width: $sm-breakpoint) { @content; }
+    }
+  } @else if $media == md {
+    @if $only == true {
+      @media only screen and (min-width: $md-breakpoint) and (max-width: $lg-breakpoint - 1) { @content; }
+    } @else {
+      @media only screen and (min-width: $md-breakpoint) { @content; }
+    }
+  } @else if $media == lg {
+    @if $only {
+      @media only screen and (min-width: $lg-breakpoint) and (max-width: $xl-breakpoint - 1) { @content; }
+    } @else {
+      @media only screen and (min-width: $lg-breakpoint) { @content; }
+    }
+  } @else if $media == xl {
+    @media only screen and (min-width: $xl-breakpoint) { @content; }
+  }
+}

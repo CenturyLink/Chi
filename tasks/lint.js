@@ -3,7 +3,7 @@ import path from 'path';
 import gulp from 'gulp';
 
 const rootFolder = path.join(__dirname, '..');
-const sources = path.join(rootFolder, 'src', 'css', '**', '*.scss');
+const sources = path.join(rootFolder, '{src,test}', 'css', '**', '*.scss');
 const reportsFolder = path.join(rootFolder, 'reports');
 const reportFile = path.join(reportsFolder, 'sass-lint.xml');
 const plugins = require('gulp-load-plugins')();

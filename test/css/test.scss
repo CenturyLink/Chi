@@ -1,12 +1,41 @@
+@import 'mixins';
+@import 'variables';
+
 // sass-lint:disable no-color-hex
 $color-from: #00ffff;
 $color-to: rgba(255, 255, 255, 0);
 // sass-lint:enable no-color-hex
 
+html,
 body {
-    background-image: linear-gradient(to bottom, $color-from 0, $color-to 1px);
-    background-repeat: repeat-y;
-    background-size: 100% 8px;
-    height: 100%;
-    width: 100%;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  background-image: linear-gradient(to bottom, $color-from 0, $color-to 1px);
+  background-repeat: repeat-y;
+  background-size: 100% $base-unit;
+}
+
+.c-grid--show {
+  @include respond-to(md) {
+    margin-bottom: $base-unit * 3;
+  }
+  margin-bottom: $base-unit * 2;
+  text-align: center;
+
+  [class*='c-col'] {
+    &::before {
+      background-color: set-color($grey, 300);
+      content: attr(class);
+      display: block;
+      min-height: $base-unit * 4;
+      outline: 1px solid set-color($carbon, 100);
+      overflow: hidden;
+      padding: $base-unit;
+      text-overflow: ellipsis;
+      white-space: pre;
+    }
+  }
 }

@@ -13,13 +13,14 @@ import * as chi from '../scripts/chi';
 
 const plugins = require('gulp-load-plugins')();
 const publicFolder = 'public';
+const rootFolder = path.join(__dirname, '..')
 
 gulp.task('test-clean', done =>
-  del([path.join(__dirname, '..', publicFolder)], done));
+  del([path.join(rootFolder, publicFolder)], done));
 
 gulp.task('test-build-html', () => {
   const promise = new Promise((resolve, reject) => {
-    metalsmith(path.join(__dirname, '..'))
+    metalsmith(rootFolder)
       .source('test/css')
       .destination(publicFolder)
       .clean(false)
@@ -30,7 +31,7 @@ gulp.task('test-build-html', () => {
         engine: 'pug',
         default: 'test.pug',
         pattern: '**/*.html',
-        directory: path.join(__dirname, '..', 'config', 'layouts')
+        directory: path.join(rootFolder, 'config', 'layouts')
       }))
 
       .build(error => {
@@ -51,10 +52,13 @@ gulp.task('test-build-html', () => {
 });
 
 gulp.task('test-build-css', () =>
-  gulp.src(path.join(__dirname, '..', 'test', 'css', '**', '*.scss'))
+  gulp.src(path.join(rootFolder, 'test', 'css', '**', '*.scss'))
     .pipe(plugins.plumber())
     .pipe(plugins.sass({
-      includePaths: ['node_modules'],
+      includePaths: [
+        'node_modules',
+        path.join(rootFolder, 'src', 'css')
+      ],
       outputStyle: 'compressed'
     })
       .on('error', plugins.sass.logError))

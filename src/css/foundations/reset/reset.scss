@@ -1,5 +1,11 @@
 @import 'normalize.css/normalize';
 
+*, // sass-lint:disable-line no-universal-selectors
+::after,
+::before {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;

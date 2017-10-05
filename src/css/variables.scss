@@ -1,9 +1,18 @@
 
 $cap-height: 0.75;
 
+$base-unit: 8px;
+
 // colors
 // sass-lint:disable no-color-hex
 // sass-lint:disable no-color-keywords
+$green: green;
+$carbon: carbon;
+$grey: grey;
+$blue: blue;
+$red: red;
+$yellow: yellow;
+
 $colorscheme: (
   green: (
     100: #edf7e1,
@@ -63,4 +72,12 @@ $colorscheme: (
 // sass-lint:enable no-color-keywords
 // sass-lint:enable no-color-hex
 
-$default-text-color: map-get(map-get($colorscheme, carbon), 500);
+$default-text-color: map-get(map-get($colorscheme, $carbon), 500);
+
+// screen breakpoints
+$sm-breakpoint: 600px;
+$md-breakpoint: 900px;
+$lg-breakpoint: 1200px;
+$xl-breakpoint: 1440px;
+
+$screen-sizes: xs sm md lg xl
