@@ -5,13 +5,7 @@ $base-unit: 8px;
 
 // colors
 // sass-lint:disable no-color-hex
-// sass-lint:disable no-color-keywords
-$green: green;
-$carbon: carbon;
-$grey: grey;
-$blue: blue;
-$red: red;
-$yellow: yellow;
+$unknown-grey: #bdbdbd;
 
 $colorscheme: (
   green: (
@@ -31,6 +25,7 @@ $colorscheme: (
     500: #333333,
     600: #212121,
     700: #0e0e0e,
+    800: #000000,
   ),
   grey: (
     100: #ffffff,
@@ -72,7 +67,11 @@ $colorscheme: (
 // sass-lint:enable no-color-keywords
 // sass-lint:enable no-color-hex
 
-$default-text-color: map-get(map-get($colorscheme, $carbon), 500);
+$text-color: map-get(map-get($colorscheme, carbon), 500);
+$accent-color: map-get(map-get($colorscheme, green), 500);
+$alert-color: map-get(map-get($colorscheme, red), 500);
+$info-color: map-get(map-get($colorscheme, blue), 500);
+$warning-color: map-get(map-get($colorscheme, yellow), 500);
 
 // screen breakpoints
 $sm-breakpoint: 600px;
@@ -80,4 +79,6 @@ $md-breakpoint: 900px;
 $lg-breakpoint: 1200px;
 $xl-breakpoint: 1440px;
 
-$screen-sizes: xs sm md lg xl
+$screen-sizes: xs sm md lg xl;
+
+$border-radius: 3px;

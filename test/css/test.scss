@@ -27,11 +27,11 @@ body {
 
   [class*='c-col'] {
     &::before {
-      background-color: set-color($grey, 300);
+      background-color: set-color(grey, 300);
       content: attr(class);
       display: block;
       min-height: $base-unit * 4;
-      outline: 1px solid set-color($carbon, 100);
+      outline: 1px solid set-color(carbon, 100);
       overflow: hidden;
       padding: $base-unit;
       text-overflow: ellipsis;
