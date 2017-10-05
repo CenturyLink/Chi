@@ -1,7 +1,11 @@
 @import 'variables';
 
 // Background colors
-// text colors
+
+.bg-inverse {
+  background-color: $bg-inverse;
+}
+
 @each $scheme, $scheme-tones in $colorscheme {
   @each $tone, $value in $scheme-tones {
     .bg-#{$scheme}-#{$tone} {

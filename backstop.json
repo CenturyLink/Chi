@@ -31,11 +31,29 @@
             "hoverSelector": "",
             "clickSelector": "",
             "postInteractionWait": "",
-            "selectors": [".test-01", ".test-02", ".test-03"],
+            "selectors": [".test-01", ".test-02", ".test-03", ".test-04"],
             "selectorExpansion": true,
             "misMatchThreshold": 0,
             "requireSameDimensions": true
-        }
+        },
+        {
+          "label": "Grid",
+          "cookiePath": "",
+          "url": "http://localhost:8000/components/grid.html",
+          "referenceUrl": "",
+          "readyEvent": "",
+          "readySelector": "",
+          "delay": 0,
+          "hideSelectors": [],
+          "removeSelectors": [],
+          "hoverSelector": "",
+          "clickSelector": "",
+          "postInteractionWait": "",
+          "selectors": [".test-01", ".test-02", ".test-03", ".test-04", ".test-05", ".test-06"],
+          "selectorExpansion": true,
+          "misMatchThreshold": 0,
+          "requireSameDimensions": true
+      }
     ],
     "paths": {
         "bitmaps_reference": "config/backstop_data/bitmaps_reference",

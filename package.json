@@ -13,7 +13,7 @@
     "docker": "scripts/docker.sh",
     "test": "gulp test",
     "ci": "gulp ci",
-    "test-approve": "gulp backstop-approve",
+    "approve": "gulp backstop-approve",
     "prepublish": "babel scripts --out-dir bin",
     "start": "gulp watch"
   },

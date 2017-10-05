@@ -14,16 +14,21 @@ title: Typography
 
 .test-04
   h3 Colors
-  table(cellpadding="0", cellspacing="0")
-    each name in ['green', 'carbon', 'grey', 'blue', 'red', 'yellow']
-      each deep in [100, 200, 300, 400, 500, 600, 700]
-        tr
-          td
-            div(class=`text text--${name}-${deep}`)= `Text ${name} ${deep}`
-          td.bg-carbon-500
-            div(class=`text text--${name}-${deep}`)= `Text ${name} ${deep}`
-          td
-            .text= `.text--${name}-${deep}`
+  .c-grid
+    .c-col
+      .text Default text color
+    .c-col
+      .text.bg-inverse Default text color
+    .c-col
+      .text .text
+  each modifier in ['inverse', 'danger', 'info', 'warning']
+    .c-grid
+      .c-col
+        .text(class=`text--${modifier}`)= `${modifier} text color`
+      .c-col
+        .text.bg-inverse(class=`text--${modifier}`)= `${modifier} text color`
+      .c-col
+        .text= `.text--${modifier}`
 
 .test-02
   h1 A starting point

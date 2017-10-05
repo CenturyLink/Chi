@@ -67,9 +67,13 @@ $colorscheme: (
 // sass-lint:enable no-color-keywords
 // sass-lint:enable no-color-hex
 
+$bg-inverse: map-get(map-get($colorscheme, carbon), 500);
+
 $text-color: map-get(map-get($colorscheme, carbon), 500);
+$text-inverse: map-get(map-get($colorscheme, grey), 100);
+
 $accent-color: map-get(map-get($colorscheme, green), 500);
-$alert-color: map-get(map-get($colorscheme, red), 500);
+$danger-color: map-get(map-get($colorscheme, red), 500);
 $info-color: map-get(map-get($colorscheme, blue), 500);
 $warning-color: map-get(map-get($colorscheme, yellow), 500);
 

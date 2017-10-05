@@ -94,10 +94,18 @@ small,
 }
 
 // text colors
-@each $scheme, $scheme-tones in $colorscheme {
-  @each $tone, $value in $scheme-tones {
-    .text--#{$scheme}-#{$tone} {
-      color: $value;
-    }
-  }
+.text--inverse {
+  color: $text-inverse;
+}
+
+.text--danger {
+  color: $danger-color;
+}
+
+.text--info {
+  color: $info-color;
+}
+
+.text--warning {
+  color: $warning-color;
 }
