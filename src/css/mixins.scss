@@ -1,19 +1,5 @@
 @import 'variables';
 
-$imported-once-files: ();
-
-@function import-once($name) {
-  @if index($imported-once-files, $name) {
-    @return false;
-  }
-  $imported-once-files: append($imported-once-files, $name);
-  @return true;
-}
-
-@function font-padding-top($font-size, $line-height) {
-  @return ($line-height - ($cap-height * $font-size)) / 2;
-}
-
 @function set-color($scheme, $tone) {
   @return map-get(map-get($colorscheme, $scheme), $tone);
 }
