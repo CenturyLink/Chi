@@ -1,0 +1,114 @@
+# Welcome to Chi
+
+Chi is a collection of CSS components that are styled for the CenturyLink brand.
+
+# Using Chi
+
+First import Chi into your project
+
+``` sh
+npm i @ctl/chi --save-dev
+```
+
+Once Chi is installed as a dependency there are two different options to use it:
+ - Through it's CLI
+ - Through it's API
+
+Once the css is generated just include it into your html page or script bundle.
+
+## CLI
+
+The CLI is installed in `node_modules/.bin/` folder as `chi`.
+
+`chi` command allows you to create a css that contains just the foundations of Chi and the comnponents you use in your project. Also it helps you to copy all Chi assets used by those selected components into the assets folder used by your web app.
+
+``` sh
+vader:example luke$ ./node_modules/.bin/chi css -c buttons grid -o dist
+```
+
+In the example chi compiles the foundations, buttons and grid into a minified css and place it inside the dist folder.
+
+All `chi` options can be checked invoking the help.
+
+``` sh
+vader:example luke$ ./node_modules/.bin/chi --help
+Usage: node_modules/.bin/chi command -c <component-list> -o <output-dir>
+
+Commands:
+  all     generates the stylesheet and copies the assets of the selected
+          components
+  css     generates the stylesheet with the selected components
+  assets  copy the selected components assets
+
+Options:
+  --help            Show help                                          [boolean]
+  --version         Show version number                                [boolean]
+  -c, --components  list of components                  [array] [default: "all"]
+  -o, --output      output folder                            [string] [required]
+
+Examples:
+  node_modules/.bin/chi css -c grid buttons avatars -o dist/assets
+```
+
+## API
+
+To use the API just require `chi` in your javascript file.
+
+``` js
+var chi = require('@ctl/chi');
+```
+
+`chi` provides two methods:
+
+ - buildCss(options): Generates the css with the specified components and the foundations and moves it into the dest folder.
+ - copyAssets(options): Copies the assets used by the selected components into the dest folder.
+
+ #### options
+
+Options are common for both methods.
+
+| option | Description                                                            |
+|--------|------------------------------------------------------------------------|
+| names  | List of components to include. Omit the option to include all of them. |
+| dest   | dest folder in which the result is going to ve copied.                 |
+
+# Development
+
+The preferred way to setup your dev env is through docker. If you has docker installed then run the command
+
+``` sh
+vader:example luke$ npm run docker -- start
+```
+
+And connect to `http://localhost:8000` to start developing in chi and see your changes in the browser.
+
+However, if you don't have docker installed and don't plan to intall in then follow the normal process for all npm projects.
+
+``` sh
+vader:example luke$ npm install
+vader:example luke$ npm start
+```
+
+## test
+
+We are using backstopJS to unit test our css components. In order to execute the unit test run the command
+
+``` sh
+vader:example luke$ npm run docker -- test
+```
+or
+``` sh
+vader:example luke$ npm test
+```
+
+Test report is created under `reports/html_report` and you can browse the results with your browser.
+
+In case you incorporates new test or changes something that makes to fail the previous tests but the result is what you expect, then you have to approve the new results in order to be the new baseline for testing.
+
+``` sh
+vader:example luke$ npm run docker -- approve
+```
+or
+``` sh
+vader:example luke$ npm run approve
+```
