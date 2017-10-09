@@ -2,14 +2,14 @@
 title: Grid
 ---
 
-.test-01
+.test-flex-cells
   h4 Grid with flex cells
   .c-grid.c-grid--show
     .c-col
     .c-col
     .c-col
 
-.test-02
+.test-no-gutter
   h4 Grid without gutter
   .c-grid.c-grid--no-gutter.c-grid--show
     .c-col
@@ -18,7 +18,7 @@ title: Grid
 
 h3 sizes
 
-.test-03
+.test-column-sizes
   h4 Column sizes
   .c-grid.c-grid--show
     .c-col.c-col--1
@@ -44,7 +44,7 @@ h3 sizes
     .c-col.c-col--6
     .c-col.c-col--6
 
-.test-04
+.test-column-sizes-specific-screens
   h4 Column sizes at specific screen sizes
   .c-grid.c-grid--show
     .c-col.c-col--2.c-col--3-sm.c-col--8-md.c-col--1-lg.c-col--11-xl
@@ -53,27 +53,27 @@ h3 sizes
 
 h3 Offsets
 
-.test-05
+.test-offsets
   h4 Generic offsets
   .c-grid.c-grid--show
     .c-col.c-col--1
-    .c-col.c-col--2.c-col--1-offset
-    .c-col.c-col--2.c-col--1-offset
-    .c-col.c-col--2.c-col--1-offset
-    .c-col.c-col--1.c-col--1-offset
+    .c-col.c-col--2.c-col--offset-1
+    .c-col.c-col--2.c-col--offset-1
+    .c-col.c-col--2.c-col--offset-1
+    .c-col.c-col--1.c-col--offset-1
 
   .c-grid.c-grid--show
     .c-col.c-col--1
-    .c-col.c-col--1.c-col--1-offset
+    .c-col.c-col--1.c-col--offset-1
 
   h4 Column offsets for specific screen sizes
   .c-grid.c-grid--show
     .c-col.c-col--1
-    .c-col.c-col--6.c-col--5-offset.c-col--4-sm.c-col--3-sm-offset.c-col--2-xs.c-col--1-xs-offset
+    .c-col.c-col--6.c-col--offset-5.c-col--4-sm.c-col--offset-3-sm.c-col--2-xs.c-col--offset-1-xs
 
 h3 Aligns
 
-.test-06
+.test-aligns
   h4 Align columns relative to the grid
   .c-grid.c-grid--show(style={height: '160px'})
     .c-col.c-col--align-top

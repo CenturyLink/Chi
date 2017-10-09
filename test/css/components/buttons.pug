@@ -1,0 +1,94 @@
+---
+title: Buttons
+---
+
+h2 Sizes
+.test-sizes
+  .c-grid
+    div(class=`c-col c-col--3 c-col--offset-3
+               c-col--1-xs c-col--offset-1-xs c-col--order-1-xs
+               c-col--2-sm c-col--offset-2-sm`)
+      h6 small
+    div(class=`c-col c-col--3 c-col--offset-3
+               c-col--1-xs c-col--offset-1-xs c-col--order-4-xs
+               c-col--2-sm c-col--offset-2-sm`)
+      h6 large
+    div(class=`c-col c-col--3 c-col--offset-3 c-col--align-middle
+               c-col--2-xs c-col--offset-0-xs c-col--order-2-xs
+               c-col--2-sm c-col--offset-2-sm`)
+      button(class='c-btn c-btn--small') Button
+    div(class=`c-col c-col--3 c-col--align-middle
+               c-col--2-xs c-col--offset-2-xs c-col--order-3-xs
+               c-col--2-sm`)
+      button(class='c-btn') Button
+    div(class=`c-col c-col--3 c-col--align-middle
+               c-col--2-xs c-col--order-5-xs
+               c-col--2-sm`)
+      button(class='c-btn c-btn--large') Button
+
+
+h2 Styles
+each type, index in ['solid', 'outline', 'flat']
+  div(class=`test-${type}`)
+    h3= `${type} buttons`
+    .c-grid
+      div(class=`c-col c-col--3 c-col--offset-3
+                 c-col--1-xs c-col--offset-1-xs c-col--order-2-xs
+                 c-col--2-sm c-col--offset-2-sm`)
+        h6 hover
+      div(class=`c-col c-col--3
+                 c-col--1-xs c-col--offset-1-xs c-col--order-4-xs
+                 c-col--2-sm`)
+        h6 active
+      div(class=`c-col c-col--3
+                 c-col--1-xs c-col--offset-1-xs c-col--order-6-xs
+                 c-col--2-sm`)
+        h6 focus
+      div(class=`c-col c-col--3
+                 c-col--2-xs c-col--offset-2-xs c-col--order-1-xs
+                 c-col--2-sm`)
+        button(class=`c-btn c-btn--${type}`) Button
+      div(class=`c-col c-col--3
+                 c-col--2-xs c-col--order-3-xs
+                 c-col--2-sm`)
+        button(class=`c-btn c-btn--${type} c-btn--hover`) Button
+      div(class=`c-col c-col--3
+                 c-col--2-xs c-col--order-5-xs
+                 c-col--2-sm`)
+        button(class=`c-btn c-btn--${type} c-btn--active`) Button
+      div(class=`c-col c-col--3
+                 c-col--2-xs c-col--order-7-xs
+                 c-col--2-sm`)
+        button(class=`c-btn c-btn--${type} c-btn--focus`) Button
+
+    each modifier in ['primary', 'danger', 'info', 'dark']
+      h5= modifier
+      .c-grid
+        div(class=`c-col c-col--3 c-col--offset-3 c-col--hide-from-sm
+                  c-col--1-xs c-col--offset-1-xs c-col--order-2-xs
+                  c-col--2-sm c-col--offset-2-sm`)
+          h6 hover
+        div(class=`c-col c-col--3 c-col--hide-from-sm
+                  c-col--1-xs c-col--offset-1-xs c-col--order-4-xs
+                  c-col--2-sm`)
+          h6 active
+        div(class=`c-col c-col--3 c-col--hide-from-sm
+                  c-col--1-xs c-col--offset-1-xs c-col--order-6-xs
+                  c-col--2-sm`)
+          h6 focus
+        div(class=`c-col c-col--3
+                  c-col--2-xs c-col--offset-2-xs c-col--order-1-xs
+                  c-col--2-sm`)
+          button(class=`c-btn c-btn--${type} c-btn--${modifier}`) Button
+        div(class=`c-col c-col--3
+                  c-col--2-xs c-col--order-3-xs
+                  c-col--2-sm`)
+          button(class=`c-btn c-btn--${type} c-btn--${modifier} c-btn--hover`) Button
+        div(class=`c-col c-col--3
+                  c-col--2-xs c-col--order-5-xs
+                  c-col--2-sm`)
+          button(class=`c-btn c-btn--${type} c-btn--${modifier} c-btn--active`) Button
+        div(class=`c-col c-col--3
+                  c-col--2-xs c-col--order-7-xs
+                  c-col--2-sm`)
+          button(class=`c-btn c-btn--${type} c-btn--${modifier} c-btn--focus`) Button

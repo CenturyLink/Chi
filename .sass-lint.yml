@@ -92,7 +92,7 @@ rules:
   no-qualifying-elements: 2
   no-trailing-whitespace: 2
   no-trailing-zero: 2
-  no-transition-all: 2
+  no-transition-all: 0
   no-universal-selectors: 2
   no-url-domains: 2
   no-url-protocols: 2
@@ -113,6 +113,7 @@ rules:
     - global:
       - rem
       - px
+      - s
   pseudo-element: 2
   quotes:
     - 2

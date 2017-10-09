@@ -16,6 +16,7 @@ body {
   background-image: linear-gradient(to bottom, $color-from 0, $color-to 1px);
   background-repeat: repeat-y;
   background-size: 100% $base-unit;
+  padding-bottom: $base-unit * 4;
 }
 
 .c-grid--show {
