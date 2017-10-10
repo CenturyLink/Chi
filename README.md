@@ -1,6 +1,6 @@
 # Welcome to Chi
 
-Chi is a collection of CSS components that are styled for the CenturyLink brand.
+Chi is a CenturyLink CSS pattern library for building fast, reusable, and consistent responsive interfaces.
 
 # Using Chi
 
@@ -20,7 +20,7 @@ Once the css is generated just include it into your html page or script bundle.
 
 The CLI is installed in `node_modules/.bin/` folder as `chi`.
 
-`chi` command allows you to create a css that contains just the foundations of Chi and the comnponents you use in your project. Also it helps you to copy all Chi assets used by those selected components into the assets folder used by your web app.
+`chi` command allows you to create a css that contains just the foundations of Chi and the components you use in your project. Also it helps you to copy all Chi assets used by those selected components into the assets folder used by your web app.
 
 ``` sh
 vader:example luke$ ./node_modules/.bin/chi css -c buttons grid -o dist
@@ -74,7 +74,7 @@ Options are common for both methods.
 
 # Development
 
-The preferred way to setup your dev env is through docker. If you has docker installed then run the command
+The preferred way to setup your dev env is through docker. If you have docker installed then run the command
 
 ``` sh
 vader:example luke$ npm run docker -- start
@@ -82,7 +82,7 @@ vader:example luke$ npm run docker -- start
 
 And connect to `http://localhost:8000` to start developing in chi and see your changes in the browser.
 
-However, if you don't have docker installed and don't plan to intall in then follow the normal process for all npm projects.
+However, if you don't have docker installed and don't plan to install, follow the normal process for all npm projects.
 
 ``` sh
 vader:example luke$ npm install
@@ -103,7 +103,8 @@ vader:example luke$ npm test
 
 Test report is created under `reports/html_report` and you can browse the results with your browser.
 
-In case you incorporates new test or changes something that makes to fail the previous tests but the result is what you expect, then you have to approve the new results in order to be the new baseline for testing.
+In the event you receive a test failure after adding a new test or making a change and your changes are correct, you will need to override the baseline test with your new changes by running an approve.
+
 
 ``` sh
 vader:example luke$ npm run docker -- approve
