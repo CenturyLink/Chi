@@ -1,12 +1,15 @@
 .cache/
 .vscode/
-scripts/
-config/backstop_data/
-config/docker/
+config/
 dist/
+reports/
+scripts/
 tasks/
+test/
 
 .dockerignore
 .editorconfig
+.nvmrc
 backstop.json
+Dockerfile
 gulpfile.babel.js
