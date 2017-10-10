@@ -5,9 +5,9 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import gulp from 'gulp';
 import metalsmith from 'metalsmith';
-import metalsmithPug from 'metalsmith-pug';
+import metalsmithInlineSource from 'metalsmith-inline-source';
 import metalsmithLayouts from 'metalsmith-layouts';
-import metalsmithFilter from 'metalsmith-filter';
+import metalsmithPug from 'metalsmith-pug';
 import runSequence from 'run-sequence';
 import * as chi from '../scripts/chi';
 
@@ -24,9 +24,8 @@ gulp.task('test-build-html', () => {
       .source('test/css')
       .destination(publicFolder)
       .clean(false)
-      .use(metalsmithFilter
-        ('**/*.pug'))
       .use(metalsmithPug())
+      .use(metalsmithInlineSource())
       .use(metalsmithLayouts({
         engine: 'pug',
         default: 'test.pug',
