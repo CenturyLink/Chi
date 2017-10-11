@@ -1,0 +1,49 @@
+@import 'variables';
+
+@for $index from 1 through 6 {
+  /*
+   * Margins
+   */
+  .c-m#{$index} {
+    margin: $index + rem;
+  }
+
+  .c-mt#{$index} {
+    margin-top: $index + rem;
+  }
+
+  .c-mr#{$index} {
+    margin-right: $index + rem;
+  }
+
+  .c-mb#{$index} {
+    margin-bottom: $index + rem;
+  }
+
+  .c-ml#{$index} {
+    margin-left: $index + rem;
+  }
+
+  /*
+   * Paddings
+   */
+  .c-p#{$index} {
+    padding: $index + rem;
+  }
+
+  .c-pt#{$index} {
+    padding-top: $index + rem;
+  }
+
+  .c-mr#{$index} {
+    padding-right: $index + rem;
+  }
+
+  .c-mb#{$index} {
+    padding-bottom: $index + rem;
+  }
+
+  .c-ml#{$index} {
+    padding-left: $index + rem;
+  }
+}

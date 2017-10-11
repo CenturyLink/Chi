@@ -23,13 +23,13 @@ $col: c-col;
    */
   & {
     @include respond-to(md) {
-      margin: ($base-unit * -3) ($base-unit * -1.5) 0;
+      margin: 0 ($base-unit * -1.5);
     }
     display: flex;
     flex: 1 0 auto;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: ($base-unit * -2) ($base-unit * -1) 0;
+    margin: 0 ($base-unit * -1);
   }
 
   /*
@@ -51,12 +51,12 @@ $col: c-col;
    */
   & {
     @include respond-to(md) {
-      padding: ($base-unit * 3) ($base-unit * 1.5) 0;
+      padding: 0 ($base-unit * 1.5);
     }
     flex: 1 0 0;
     max-width: 100%;
     min-width: 0;
-    padding: ($base-unit * 2) $base-unit 0;
+    padding: 0 $base-unit;
     position: relative;
   }
 

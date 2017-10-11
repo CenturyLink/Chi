@@ -7,6 +7,7 @@ const componentsFolder = path.join(__dirname, '..', 'src', 'css', 'components');
 const foundationFolders = [
   'reset',
   'colors',
+  'layout',
   'typography'
 ].map(item =>
   path.join(__dirname, '..', 'src', 'css', 'foundations', item));
