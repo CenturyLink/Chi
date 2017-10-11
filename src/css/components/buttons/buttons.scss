@@ -12,6 +12,7 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
     box-shadow: inset 0 0 0 1px set-color(grey, 600), 0 1px 1px 0 rgba(set-color(carbon, 800), 0.04);
     color: $text-color;
     cursor: pointer;
+    display: inline-flex;
     font-size: 1.625rem;
     font-weight: 600;
     line-height: 2rem;
@@ -22,16 +23,42 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
     vertical-align: middle;
     white-space: nowrap;
 
+    .c-icon {
+      color: set-color(carbon, 100);
+      height: 2rem;
+      width: 2rem;
+    }
+
+    .#{$btn}-content {
+      align-items: center;
+      display: inline-flex;
+      justify-content: center;
+
+      & > :not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
+
     &--small {
       font-size: 1.375rem;
       line-height: 2rem;
       padding: 0.5rem 1rem;
+
+      .c-icon {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
     }
 
     &--large {
       font-size: 2rem;
       line-height: 3rem;
       padding: 1rem 3rem;
+
+      .c-icon {
+        height: 2.5rem;
+        width: 2.5rem;
+      }
     }
 
     &:hover,
@@ -54,15 +81,40 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
       }
     }
 
+    &.#{$btn}--icon {
+      padding: 1rem;
+
+      &.#{$btn}--small {
+        padding: 0.75rem;
+      }
+
+      &.#{$btn}--large {
+        padding: 1.25rem;
+      }
+    }
+
+    &.#{$btn}--float {
+      border-radius: 50%;
+      padding: 1rem;
+
+      .c-icon {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+
     &.#{$btn}--outline {
       background-color: set-color(grey, 100);
       box-shadow: inset 0 0 0 1px set-color(carbon, 100);
-      color: set-color(carbon, 200);
 
       &:hover,
       &.#{$btn}--hover {
         background-color: set-color(carbon, 100);
         color: set-color(grey, 100);
+
+        .c-icon {
+          color: set-color(grey, 100);
+        }
       }
 
       &:focus,
@@ -118,6 +170,10 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
       box-shadow: 0 1px 1px 0 rgba(set-color(carbon, 800), 0.04);
       color: set-color(grey, 100);
       font-weight: 700;
+
+      .c-icon {
+        color: inherit;
+      }
 
       &:hover,
       &.#{$btn}--hover {
