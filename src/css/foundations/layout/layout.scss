@@ -35,15 +35,15 @@
     padding-top: $index + rem;
   }
 
-  .c-mr#{$index} {
+  .c-pr#{$index} {
     padding-right: $index + rem;
   }
 
-  .c-mb#{$index} {
+  .c-pb#{$index} {
     padding-bottom: $index + rem;
   }
 
-  .c-ml#{$index} {
+  .c-pl#{$index} {
     padding-left: $index + rem;
   }
 }
