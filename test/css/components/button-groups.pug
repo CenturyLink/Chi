@@ -1,0 +1,192 @@
+---
+title: Button groups
+---
+doctype html
+
+img(inline src='test/css/components/icon-workspace.svg')
+
+h2 Sizes
+.test-sizes
+  .c-btn-group.c-mb1
+    button(class='c-btn c-btn--small')
+      .c-btn-content
+        .c-icon
+          svg
+              use(xlink:href='#workspace')
+        span Button
+    button(class='c-btn c-btn--small')
+      .c-btn-content
+        .c-icon
+          svg
+              use(xlink:href='#workspace')
+        span Button
+    button(class='c-btn c-btn--small')
+      .c-btn-content
+        .c-icon
+          svg
+              use(xlink:href='#workspace')
+        span Button
+
+  br
+
+  .c-btn-group.c-mb1
+    button(class='c-btn')
+      .c-btn-content
+        .c-icon
+          svg
+              use(xlink:href='#workspace')
+        span Button
+    button(class='c-btn')
+      .c-btn-content
+        .c-icon
+          svg
+              use(xlink:href='#workspace')
+        span Button
+    button(class='c-btn')
+      .c-btn-content
+        .c-icon
+          svg
+              use(xlink:href='#workspace')
+        span Button
+
+  br
+
+  .c-btn-group
+    button(class='c-btn c-btn--large')
+      .c-btn-content
+        .c-icon
+          svg
+              use(xlink:href='#workspace')
+        span Button
+    button(class='c-btn c-btn--large')
+      .c-btn-content
+        .c-icon
+          svg
+              use(xlink:href='#workspace')
+        span Button
+    button(class='c-btn c-btn--large')
+      .c-btn-content
+        .c-icon
+          svg
+              use(xlink:href='#workspace')
+        span Button
+
+h2 Buttons group
+.test-button-group
+  each size in ['small', 'medium', 'large']
+    .c-btn-group.c-mb1
+      button(class=`c-btn c-btn--${size}`) Button
+      button(class=`c-btn c-btn--${size} c-btn--danger`) Button
+      button(class=`c-btn c-btn--${size} c-btn--primary`) Button
+      button(class=`c-btn c-btn--${size} c-btn--info`) Button
+      button(class=`c-btn c-btn--${size} c-btn--dark`) Button
+
+    br
+
+    .c-btn-group.c-mb1
+      button(class=`c-btn c-btn--${size} c-btn--outline`) Button
+      button(class=`c-btn c-btn--${size} c-btn--outline c-btn--danger`) Button
+      button(class=`c-btn c-btn--${size} c-btn--outline c-btn--primary`) Button
+      button(class=`c-btn c-btn--${size} c-btn--outline c-btn--info`) Button
+      button(class=`c-btn c-btn--${size} c-btn--outline c-btn--dark`) Button
+
+    br
+
+    .c-btn-group.c-mb1
+      button(class=`c-btn c-btn--${size} c-btn--flat`) Button
+      button(class=`c-btn c-btn--${size} c-btn--flat c-btn--danger`) Button
+      button(class=`c-btn c-btn--${size} c-btn--flat c-btn--primary`) Button
+      button(class=`c-btn c-btn--${size} c-btn--flat c-btn--info`) Button
+      button(class=`c-btn c-btn--${size} c-btn--flat c-btn--dark`) Button
+
+    br
+
+h2 Buttons group / icon
+.test-icon-button-group
+  each size in ['small', 'medium', 'large']
+    .c-btn-group.c-mb1
+      button(class=`c-btn c-btn--${size} c-btn--icon`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--danger`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--primary`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--info`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--dark`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+
+    br
+
+    .c-btn-group.c-mb1
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--outline`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--outline c-btn--danger`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--outline c-btn--primary`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--outline c-btn--info`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--outline c-btn--dark`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+
+    br
+
+    .c-btn-group.c-mb1
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--flat`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--flat c-btn--danger`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--flat c-btn--primary`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--flat c-btn--info`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--flat c-btn--dark`)
+        .c-btn-content
+          .c-icon
+            svg
+                use(xlink:href='#workspace')
+
+    br

@@ -104,6 +104,24 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
         height: 2rem;
         width: 2rem;
       }
+
+      &.#{$btn}--small {
+        padding: 0.625rem;
+
+        .c-icon {
+          height: 1.5rem;
+          width: 1.5rem;
+        }
+      }
+
+      &.#{$btn}--large {
+        padding: 0.875rem;
+
+        .c-icon {
+          height: 3rem;
+          width: 3rem;
+        }
+      }
     }
 
     &.#{$btn}--outline {
@@ -144,20 +162,25 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
       border: 0;
       box-shadow: none;
       color: set-color(carbon, 500);
+      padding: 1rem 2rem;
 
-      &:not(:hover):not(.#{$btn}--hover):not(:focus):not(.#{$btn}--focus):not(:active):not(.#{$btn}--active) {
-        padding: 1rem 2rem;
+      &.#{$btn}--small {
+        padding: 0.5rem 1rem;
+      }
 
-        &.#{$btn}--icon {
-          padding: 1rem;
+      &.#{$btn}--large {
+        padding: 1rem 3rem;
+      }
 
-          &.#{$btn}--small {
-            padding: 0.75rem;
-          }
+      &.#{$btn}--icon {
+        padding: 1rem;
 
-          &.#{$btn}--large {
-            padding: 1.25rem;
-          }
+        &.#{$btn}--small {
+          padding: 0.75rem;
+        }
+
+        &.#{$btn}--large {
+          padding: 1.25rem;
         }
       }
 
@@ -166,6 +189,27 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
         background-color: set-color(grey, 100);
         border: 0.125rem solid set-color(grey, 800);
         box-shadow: 0 1px 4px 0 rgba(set-color(carbon, 800), 0.15);
+        padding: 0.875rem 1.875rem;
+
+        &.#{$btn}--small {
+          padding: 0.375rem 0.875rem;
+        }
+
+        &.#{$btn}--large {
+          padding: 0.875rem 2.875rem;
+        }
+
+        &.#{$btn}--icon {
+          padding: 0.875rem;
+
+          &.#{$btn}--small {
+            padding: 0.625rem;
+          }
+
+          &.#{$btn}--large {
+            padding: 1.125rem;
+          }
+        }
       }
 
       &:focus,
@@ -173,6 +217,27 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
         background-color: set-color(grey, 100);
         border: 0.125rem solid set-color(grey, 800);
         box-shadow: 0 0 0 3px rgba(set-color(grey, 600), 0.6);
+        padding: 0.875rem 1.875rem;
+
+        &.#{$btn}--small {
+          padding: 0.375rem 0.875rem;
+        }
+
+        &.#{$btn}--large {
+          padding: 0.875rem 2.875rem;
+        }
+
+        &.#{$btn}--icon {
+          padding: 0.875rem;
+
+          &.#{$btn}--small {
+            padding: 0.625rem;
+          }
+
+          &.#{$btn}--large {
+            padding: 1.125rem;
+          }
+        }
       }
 
       &:active,
@@ -183,6 +248,27 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
           background-color: set-color(grey, 400);
           border: 0.125rem solid rgba(set-color(carbon, 800), 0.2);
           box-shadow: inset 0 1px 2px 0 rgba(set-color(carbon, 800), 0.2);
+          padding: 0.875rem 1.875rem;
+
+          &.#{$btn}--small {
+            padding: 0.375rem 0.875rem;
+          }
+
+          &.#{$btn}--large {
+            padding: 0.875rem 2.875rem;
+          }
+
+          &.#{$btn}--icon {
+            padding: 0.875rem;
+
+            &.#{$btn}--small {
+              padding: 0.625rem;
+            }
+
+            &.#{$btn}--large {
+              padding: 1.125rem;
+            }
+          }
         }
       }
     }
