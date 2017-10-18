@@ -224,3 +224,20 @@ h2 Vertical buttons group / icon
             .c-icon
               svg
                   use(xlink:href='#workspace')
+
+h2 Hybrid
+.test-hybrid
+  each size in ['small', 'medium', 'large']
+    div(class=`c-mb1 text--${size}`)
+      .c-btn-group.c-mr1
+        button(class=`c-btn c-btn--${size}`)
+          .c-btn-content
+            .c-icon
+              svg
+                  use(xlink:href='#workspace')
+            span Reinstall
+        button(class=`c-btn c-btn--${size} c-btn--icon c-btn--primary`)
+          .c-btn-content
+            .c-icon
+              svg
+                  use(xlink:href='#workspace')
