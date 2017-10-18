@@ -6,9 +6,9 @@ doctype html
 img(inline src='test/css/components/icon-workspace.svg')
 
 h2 Styles
-each size in ['small', 'medium', 'large']
-  each type, index in ['solid', 'outline', 'flat']
-    div(class=`test-${type}`)
+each type, index in ['solid', 'outline', 'flat']
+  each size in ['small', 'medium', 'large']
+    div(class=`test-${type}-${size}`)
       h3= `${type} buttons`
       .c-grid
         .c-col(class=`c-col--3 c-col--offset-3 c-col--middle
@@ -93,8 +93,8 @@ each size in ['small', 'medium', 'large']
             button(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${modifier} c-btn--focus`) Button
 
 h3 float buttons
-.test-float
-  each size in ['small', 'medium', 'large']
+each size in ['small', 'medium', 'large']
+  div(class=`test-float-${size}`)
     .c-grid
       .c-col(class=`c-col--3 c-col--offset-3 c-col--middle
                     c-col--1-xs c-col--offset-1-xs c-col--order-2-xs
