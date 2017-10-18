@@ -2,20 +2,18 @@ FROM ubuntu:16.04
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 ENV BABEL_DISABLE_CACHE=1
 
-RUN apt-get update \
-    && apt-get install -y build-essential libssl-dev curl wget
+RUN apt-get update
+RUN apt-get install -y build-essential libssl-dev curl wget
 
 # install node 7
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN apt-get install -y nodejs
 
-# install chrome headless
-RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-    && apt-get update -qqy \
-    && apt-get -qqy install google-chrome-stable \
-    && rm /etc/apt/sources.list.d/google-chrome.list \
-    && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+# install chrome
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN apt-get install -y gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 libfontconfig1 libgdk-pixbuf2.0-0 \
+                       libgtk-3-0 libnspr4 libpango-1.0-0 libxss1 fonts-liberation libappindicator1 libnss3 xdg-utils
+RUN dpkg -i google-chrome-stable_current_amd64.deb
 
 RUN mkdir /app
 WORKDIR /app
