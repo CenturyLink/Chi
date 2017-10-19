@@ -5,45 +5,45 @@
    * Margins
    */
   .c-m#{$index} {
-    margin: $index + rem;
+    margin: $index + rem !important;
   }
 
   .c-mt#{$index} {
-    margin-top: $index + rem;
+    margin-top: $index + rem !important;
   }
 
   .c-mr#{$index} {
-    margin-right: $index + rem;
+    margin-right: $index + rem !important;
   }
 
   .c-mb#{$index} {
-    margin-bottom: $index + rem;
+    margin-bottom: $index + rem !important;
   }
 
   .c-ml#{$index} {
-    margin-left: $index + rem;
+    margin-left: $index + rem !important;
   }
 
   /*
    * Paddings
    */
   .c-p#{$index} {
-    padding: $index + rem;
+    padding: $index + rem !important;
   }
 
   .c-pt#{$index} {
-    padding-top: $index + rem;
+    padding-top: $index + rem !important;
   }
 
-  .c-mr#{$index} {
-    padding-right: $index + rem;
+  .c-pr#{$index} {
+    padding-right: $index + rem !important;
   }
 
-  .c-mb#{$index} {
-    padding-bottom: $index + rem;
+  .c-pb#{$index} {
+    padding-bottom: $index + rem !important;
   }
 
-  .c-ml#{$index} {
-    padding-left: $index + rem;
+  .c-pl#{$index} {
+    padding-left: $index + rem !important;
   }
 }

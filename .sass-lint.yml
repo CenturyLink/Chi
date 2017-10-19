@@ -32,7 +32,7 @@ rules:
   final-newline: 2
   force-attribute-nesting: 2
   force-element-nesting: 2
-  force-pseudo-nesting: 2
+  force-pseudo-nesting: 0
   function-name-format:
     - 2
     - allow-leading-underscore: false
@@ -55,7 +55,7 @@ rules:
     - include: true
   max-file-line-count:
     - 2
-    - length: 300
+    - length: 500
   max-line-length:
     - 2
     - length: 120
@@ -64,9 +64,7 @@ rules:
     - allow-leading-underscore: fales
     - convention: 'hyphenatedlowercase'
   mixins-before-declarations: 2
-  nesting-depth:
-    - 2
-    - max-depth: 2
+  nesting-depth: 0
   no-attribute-selectors: 0
   no-color-hex: 2
   no-color-keywords: 0
@@ -85,7 +83,7 @@ rules:
   no-empty-rulesets: 2
   no-extends: 0
   no-ids: 2
-  no-important: 2
+  no-important: 0
   no-invalid-hex: 2
   no-mergeable-selectors: 2
   no-misspelled-properties: 2

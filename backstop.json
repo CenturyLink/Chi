@@ -84,10 +84,42 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-sizes",
-        ".test-solid",
-        ".test-outline",
-        ".test-flat"
+        ".test-solid-small",
+        ".test-solid-medium",
+        ".test-solid-large",
+        ".test-outline-small",
+        ".test-outline-medium",
+        ".test-outline-large",
+        ".test-flat-small",
+        ".test-flat-medium",
+        ".test-flat-large",
+        ".test-float-small",
+        ".test-float-medium",
+        ".test-float-large"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "button-groups",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/button-groups.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-button-group",
+        ".test-icon-button-group",
+        ".test-vertical-button-group",
+        ".test-vertical-icon-button-group",
+        ".test-hybrid"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -173,8 +205,8 @@
   ],
   "engine": "chrome",
   "engineFlags": [],
-  "asyncCaptureLimit": 1,
-  "asyncCompareLimit": 4,
+  "asyncCaptureLimit": 8,
+  "asyncCompareLimit": 16,
   "debug": false,
   "debugWindow": false
 }
