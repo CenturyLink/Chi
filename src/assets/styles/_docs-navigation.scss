@@ -1,0 +1,16 @@
+@import '@ctl/chi/src/css/variables';
+@import '@ctl/chi/src/css/mixins';
+
+.docs-navigation {
+  display: flex;
+  flex-direction: column;
+
+  &__collection {
+    border-bottom: 0.125rem solid set-color(grey, 500);
+    padding: 1rem 2rem 0.875rem;
+  }
+
+  &__section {
+    padding: 0.5rem 4rem;
+  }
+}
