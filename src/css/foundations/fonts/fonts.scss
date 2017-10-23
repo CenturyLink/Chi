@@ -1,4 +1,4 @@
-$open-sans-url: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,700i';
+$open-sans-url: '//fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,700i';
 
 @import url($open-sans-url);
 
@@ -42,4 +42,8 @@ $open-sans-url: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,
   font-style: italic;
   font-weight: 700;
   src: url('/fonts/OpenSans/OpenSans-BoldItalic.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Open Sans', 'Open Sans Fallback', 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
 }

@@ -5,7 +5,7 @@ import chi from '../scripts/chi';
 
 const buildFolder = 'dist';
 
-gulp.task('css-build-src', () => chi.buildCss({ dest: buildForlder }));
+gulp.task('css-build-src', () => chi.buildCss({ dest: buildFolder }));
 
 gulp.task('css-build-assets', () => chi.copyAssets({ dest: buildfolder }));
 

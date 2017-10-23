@@ -26,13 +26,13 @@ each type, index in ['solid', 'outline', 'flat']
         .c-col(class=`c-col--3 c-col--middle
                       c-col--2-xs c-col--offset-2-xs c-col--order-1-xs
                       c-col--2-sm`)
-          button(class=`c-btn c-btn--${size} c-btn--${type} c-mr1`)
+          a(class=`c-btn c-btn--${size} c-btn--${type} c-mr1`)
             .c-btn-content
               .c-icon
                 svg
                     use(xlink:href='#workspace')
               span Button
-          button(class=`c-btn c-btn--${size} c-btn--${type} c-btn--icon`)
+          a(class=`c-btn c-btn--${size} c-btn--${type} c-btn--icon`)
             .c-btn-content
               .c-icon
                 svg
@@ -40,7 +40,7 @@ each type, index in ['solid', 'outline', 'flat']
         .c-col(class=`c-col--3 c-col--middle
                       c-col--2-xs c-col--order-3-xs
                       c-col--2-sm`)
-          button(class=`c-btn c-btn--${size} c-btn--${type} c-btn--hover`) Button
+          input(type='button', class=`c-btn c-btn--${size} c-btn--${type} c-btn--hover`, value='Button')
         .c-col(class=`c-col--3 c-col--middle
                       c-col--2-xs c-col--order-5-xs
                       c-col--2-sm`)
@@ -68,13 +68,13 @@ each type, index in ['solid', 'outline', 'flat']
           .c-col(class=`c-col--3 c-col--middle
                         c-col--2-xs c-col--offset-2-xs c-col--order-1-xs
                         c-col--2-sm`)
-            button(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${modifier} c-mr1`)
+            a(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${modifier} c-mr1`)
               .c-btn-content
                 .c-icon
                   svg
                       use(xlink:href='#workspace')
                 span Button
-            button(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${modifier} c-btn--icon`)
+            a(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${modifier} c-btn--icon`)
               .c-btn-content
                 .c-icon
                   svg
@@ -82,7 +82,7 @@ each type, index in ['solid', 'outline', 'flat']
           .c-col(class=`c-col--3 c-col--middle
                         c-col--2-xs c-col--order-3-xs
                         c-col--2-sm`)
-            button(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${modifier} c-btn--hover`) Button
+            input(type='button', class=`c-btn c-btn--${size} c-btn--${type} c-btn--${modifier} c-btn--hover`, value='Button')
           .c-col(class=`c-col--3 c-col--middle
                         c-col--2-xs c-col--order-5-xs
                         c-col--2-sm`)
