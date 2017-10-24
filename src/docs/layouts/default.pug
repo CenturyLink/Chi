@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+    head
+        if title
+            title Chi &middot; #{title}
+        else
+            title Chi &middot; Documentation
+
+        link(rel="stylesheet", media="all", href="/chi.css")
+        link(rel="stylesheet", media="all", href="/assets/styles/chi-docs.css")
+
+        if styles
+            each style in styles
+                link(rel="stylesheet", media="all", href=`/assets/styles/${style}.css`)
+
+    body.show-grid
+      .docs-container
+        include partials/header
+
+        section.docs-body
+            include partials/aside
+
+            .docs-body__content
+              .c-grid-container!= contents
+
+      script(type="text/javascript", src="/assets/scripts/chi-docs.js")
+
+      if scripts
+          each script in scripts
+              script(type="text/javascript", src=`/assets/scripts/${script}.js`)

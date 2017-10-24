@@ -1,0 +1,34 @@
+@import '@ctl/chi/src/css/variables';
+@import '@ctl/chi/src/css/mixins';
+
+.docs-header {
+  align-items: center;
+  background-color: set-color(grey, 100);
+  box-shadow: 0 1px 2px 0 rgba(set-color(carbon, 800), 0.04),
+  0 2px 2px 0 rgba(set-color(carbon, 800), 0.12);
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  height: 8rem;
+  padding: 0 3rem;
+  z-index: 1;
+
+  &__logo {
+    max-width: 18rem;
+  }
+
+  &__title {
+    color: set-color(carbon, 200);
+    display: inline-flex;
+    font-weight: 300;
+
+    &::before {
+      background: set-color(grey, 400);
+      content: '';
+      display: block;
+      height: 4rem;
+      margin: 0 2rem;
+      width: 1px;
+    }
+  }
+}
