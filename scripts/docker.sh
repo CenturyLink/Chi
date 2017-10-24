@@ -15,7 +15,7 @@ if [ $1 = "start" ]; then
               -p 35729:35729 \
               chi:latest npm run $1
 else
-  docker run --rm -ti --shm-size=1g -m 1G \
+  docker run --rm -ti --shm-size=1g \
               -u $(id -u):$(id -g) \
               -v $PWD/src:/app/src \
               -v $PWD/test:/app/test \

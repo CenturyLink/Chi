@@ -5,10 +5,11 @@ import gulp from 'gulp';
 const plugins = require('gulp-load-plugins')();
 const componentsFolder = path.join(__dirname, '..', 'src', 'css', 'components');
 const foundationFolders = [
+  'fonts',
   'reset',
+  'typography',
   'colors',
-  'layout',
-  'typography'
+  'layout'
 ].map(item =>
   path.join(__dirname, '..', 'src', 'css', 'foundations', item));
 

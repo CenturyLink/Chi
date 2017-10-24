@@ -13,7 +13,7 @@ import * as chi from '../scripts/chi';
 
 const plugins = require('gulp-load-plugins')();
 const publicFolder = 'public';
-const rootFolder = path.join(__dirname, '..')
+const rootFolder = path.join(__dirname, '..');
 
 gulp.task('test-clean', done =>
   del([path.join(rootFolder, publicFolder)], done));
