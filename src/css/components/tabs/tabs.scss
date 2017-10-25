@@ -1,0 +1,297 @@
+@import 'mixins';
+@import 'variables';
+
+$tab: c-tab;
+$tabs: c-tabs;
+$subtab: c-subtab;
+$subtabs: c-subtabs;
+
+.#{$tabs} {
+  list-style: none;
+  padding: 0;
+
+  & > li {
+    display: inline-block;
+
+    &.#{$tab}--active > a {
+      color: set-color(green, 500);
+    }
+
+    & > a {
+      cursor: pointer;
+      display: block;
+      font-size: 1.625rem;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+  }
+
+  &--large {
+    & > li {
+      & > a {
+        font-size: 1.75rem;
+      }
+    }
+  }
+
+  &:not(&--vertical) {
+    height: 7rem;
+
+    &.#{$tabs}--border {
+      border-bottom: 0.125rem solid set-color(grey, 600);
+    }
+
+    & > li {
+      &:not(:first-child) {
+        margin-left: 3rem;
+      }
+
+      &.#{$tab}--active > a {
+        border-bottom: 0.5rem solid set-color(green, 500);
+        padding-bottom: 2rem;
+      }
+
+      & > a {
+        line-height: 2rem;
+        padding: 2.5rem 0;
+      }
+    }
+
+    &.#{$tabs}--small {
+      height: 6rem;
+
+      & > li {
+        &.#{$tab}--active > a {
+          padding-bottom: 1.5rem;
+        }
+
+        & > a {
+          line-height: 2rem;
+          padding: 2rem 0;
+        }
+      }
+    }
+
+    &.#{$tabs}--large {
+      height: 8rem;
+
+      & > li {
+        &:not(:first-child) {
+          margin-left: 4rem;
+        }
+
+        &.#{$tab}--active > a {
+          padding-bottom: 2rem;
+        }
+
+        & > a {
+          line-height: 3rem;
+          padding: 2.5rem 0;
+        }
+      }
+    }
+  }
+
+  &--vertical {
+    display: flex;
+    flex-direction: column;
+    line-height: 2rem;
+
+    .#{$subtabs} {
+      list-style: none;
+      padding: 0;
+
+      & > li {
+        &.#{$subtab}--active > a {
+          font-weight: 600;
+        }
+
+        & > a {
+          cursor: pointer;
+          display: block;
+          font-size: 1.625rem;
+          line-height: 2rem;
+          padding: 1rem 0 1rem 5rem;
+          text-transform: capitalize;
+        }
+      }
+    }
+
+    &.#{$tabs}--icons {
+      & > li {
+        & > a {
+          padding-left: 7rem;
+          position: relative;
+
+          & > .c-icon {
+            color: set-color(carbon, 100);
+            left: 3rem;
+            position: absolute;
+          }
+        }
+
+        .#{$subtabs} {
+          & > li {
+            & > a {
+              padding-left: 7rem;
+            }
+          }
+        }
+      }
+    }
+
+    & > li {
+      position: relative;
+
+      &.#{$tab}--active {
+        & > a {
+          position: relative;
+
+          & > .c-icon {
+            color: set-color(green, 500);
+            left: 3rem;
+          }
+
+          &::before {
+            background-color: set-color(green, 500);
+            content: '';
+            height: 4rem;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 0.5rem;
+          }
+        }
+      }
+
+      &.#{$tab}--active-alt {
+        & > a {
+          background-color: set-color(grey, 400);
+          color: set-color(carbon, 500);
+
+          & > .c-icon {
+            color: set-color(carbon, 500);
+          }
+        }
+      }
+
+      & > a {
+        padding: 1rem 0 1rem 3rem;
+        width: 100%;
+      }
+    }
+
+    &.#{$tabs}--small {
+      & > li {
+        & > a {
+          padding-bottom: 0.5rem;
+          padding-top: 0.5rem;
+        }
+
+        &.#{$tab}--active {
+          & > a {
+            &::before {
+              height: 3rem;
+            }
+          }
+        }
+      }
+
+      .#{$subtabs} {
+        & > li {
+          & > a {
+            padding: 0.5rem 0 0.5rem 5rem;
+          }
+        }
+      }
+    }
+
+    &.#{$tabs}--large {
+      & > li {
+        & > a {
+          line-height: 3rem;
+          padding-bottom: 1.5rem;
+          padding-top: 1.5rem;
+
+          & > .c-icon {
+            margin-top: 0.5rem;
+          }
+        }
+
+        &.#{$tab}--active {
+          & > a {
+            &::before {
+              height: 6rem;
+            }
+          }
+        }
+
+        .#{$subtabs} {
+          & > li {
+            margin-bottom: 1rem;
+          }
+        }
+      }
+    }
+
+    &.#{$tabs}--border {
+      & > li {
+        border-bottom: 0.125rem solid set-color(grey, 600);
+
+        &.#{$tab}--active {
+          & > a {
+            &::before {
+              top: -0.125rem;
+            }
+          }
+        }
+
+        & > a {
+          padding-bottom: 1rem;
+          padding-top: 0.875rem;
+        }
+
+        &:first-child {
+          border-top: 0.125rem solid set-color(grey, 600);
+
+          & > a {
+            padding-bottom: 0.875rem;
+            padding-top: 0.875rem;
+          }
+        }
+      }
+
+      &.#{$tabs}--small {
+        & > li {
+          & > a {
+            padding-bottom: 0.5rem;
+            padding-top: 0.375rem;
+          }
+
+          &:first-child {
+            & > a {
+              padding-bottom: 0.375rem;
+              padding-top: 0.375rem;
+            }
+          }
+        }
+      }
+
+      &.#{$tabs}--large {
+        & > li {
+          & > a {
+            padding-bottom: 1.5rem;
+            padding-top: 1.375rem;
+          }
+
+          &:first-child {
+            & > a {
+              padding-bottom: 1.375rem;
+              padding-top: 1.375rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

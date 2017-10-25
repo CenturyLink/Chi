@@ -1,0 +1,117 @@
+---
+title: Tabs
+---
+img(inline src='test/css/components/icon-workspace.svg')
+
+.test-horizontal
+  each style in ['base', 'border']
+    each size in ['small', 'medium', 'large']
+      h4= `Tabs ${size} ${style}`
+      ul.c-tabs(class=`c-tabs--${style} c-tabs--${size}`)
+        li.c-tab--active
+          a Active tab
+        li
+          a Tab link
+        li
+          a Tab link
+
+h2 vertical
+
+each active in ['', 'active-alt']
+  each style in ['', 'border']
+    div(class=`test-vertical-${active}-${style}`)
+      each size in ['small', 'medium', 'large']
+        h4= `Tabs vertical ${size} ${style} ${active}`
+        ul.c-tabs.c-tabs--vertical(class=`c-tabs--${style} c-tabs--${size}`)
+          li(class=`c-tab--active c-tab--${active}`)
+            a Active tab
+            ul.c-subtabs
+              li.c-subtab--active
+                a Buttons
+              li
+                a Button Groups
+              li
+                a Cards
+          li
+            a Tab link
+          li
+            a Tab link
+          li
+            a Tab link
+
+each active in ['', 'active-alt']
+  each style in ['', 'border']
+    div(class=`test-vertical-icons-${active}-${style}`)
+      each size in ['small', 'medium', 'large']
+        h4= `Tabs vertical icons ${size} ${style} ${active}`
+        ul.c-tabs.c-tabs--vertical.c-tabs--icons(class=`c-tabs--${alt} c-tabs--${style} c-tabs--${size}`)
+          li(class=`c-tab--active c-tab--${active}`)
+            a
+              div(class=`c-icon c-icon--sm`)
+                svg
+                  use(xlink:href='#workspace')
+              span Active tab
+            ul.c-subtabs
+              li.c-subtab--active
+                a Buttons
+              li
+                a Button Groups
+              li
+                a Cards
+          li
+            a
+              div(class=`c-icon c-icon--sm`)
+                svg
+                  use(xlink:href='#workspace')
+              span Tab link
+          li
+            a
+              div(class=`c-icon c-icon--sm`)
+                svg
+                  use(xlink:href='#workspace')
+              span Tab link
+          li
+            a
+              div(class=`c-icon c-icon--sm`)
+                svg
+                  use(xlink:href='#workspace')
+              span Tab link
+
+each active in ['', 'active']
+  each style in ['', 'border']
+    div(class=`test-multi-level-${active}-${style}`)
+      each size in ['small', 'medium', 'large']
+        h4= `Tabs vertical multi-level ${size} ${style} ${active}`
+        ul.c-tabs.c-tabs--vertical.c-tabs--icons(class=`c-tabs--${alt} c-tabs--${style} c-tabs--${size}`)
+          li
+            a
+              div(class=`c-icon c-icon--sm`)
+                svg
+                  use(xlink:href='#workspace')
+              span Tab link
+          li(class=`c-tab--active-alt c-tab--${active}`)
+            a
+              div(class=`c-icon c-icon--sm`)
+                svg
+                  use(xlink:href='#workspace')
+              span Active tab
+            ul.c-subtabs
+              li.c-subtab--active
+                a Buttons
+              li
+                a Button Groups
+              li
+                a Cards
+
+          li
+            a
+              div(class=`c-icon c-icon--sm`)
+                svg
+                  use(xlink:href='#workspace')
+              span Tab link
+          li
+            a
+              div(class=`c-icon c-icon--sm`)
+                svg
+                  use(xlink:href='#workspace')
+              span Tab link
