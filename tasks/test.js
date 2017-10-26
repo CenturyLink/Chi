@@ -24,13 +24,16 @@ gulp.task('test-build-html', () => {
       .source('test/css')
       .destination(publicFolder)
       .clean(false)
-      .use(metalsmithPug())
+      .use(metalsmithPug({
+        doctype: 'html'
+      }))
       .use(metalsmithInlineSource())
       .use(metalsmithLayouts({
-        engine: 'pug',
         default: 'test.pug',
-        pattern: '**/*.html',
-        directory: path.join(rootFolder, 'config', 'layouts')
+        directory: path.join(rootFolder, 'config', 'layouts'),
+        doctype: 'html',
+        engine: 'pug',
+        pattern: '**/*.html'
       }))
 
       .build(error => {
