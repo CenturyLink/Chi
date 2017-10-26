@@ -6,42 +6,42 @@ $open-sans-url: '//fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,70
   font-family: 'Open Sans Fallback';
   font-style: normal;
   font-weight: 300;
-  src: url('/fonts/OpenSans/OpenSans-Light.ttf') format('truetype');
+  src: url('{{path}}fonts/OpenSans/OpenSans-Light.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Open Sans Fallback';
   font-style: normal;
   font-weight: 400;
-  src: url('/fonts/OpenSans/OpenSans-Regular.ttf') format('truetype');
+  src: url('{{path}}fonts/OpenSans/OpenSans-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Open Sans Fallback';
   font-style: italic;
   font-weight: 400;
-  src: url('/fonts/OpenSans/OpenSans-Italic.ttf') format('truetype');
+  src: url('{{path}}fonts/OpenSans/OpenSans-Italic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Open Sans Fallback';
   font-style: normal;
   font-weight: 600;
-  src: url('/fonts/OpenSans/OpenSans-SemiBold.ttf') format('truetype');
+  src: url('{{path}}fonts/OpenSans/OpenSans-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Open Sans Fallback';
   font-style: normal;
   font-weight: 700;
-  src: url('/fonts/OpenSans/OpenSans-Bold.ttf') format('truetype');
+  src: url('{{path}}fonts/OpenSans/OpenSans-Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Open Sans Fallback';
   font-style: italic;
   font-weight: 700;
-  src: url('/fonts/OpenSans/OpenSans-BoldItalic.ttf') format('truetype');
+  src: url('{{path}}fonts/OpenSans/OpenSans-BoldItalic.ttf') format('truetype');
 }
 
 body {

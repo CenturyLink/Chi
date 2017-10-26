@@ -28,7 +28,7 @@ function getComponentNamesToInclude(names) {
   return components;
 }
 
-export function buildCss({ names = ['all'], dest = 'dist' }) {
+export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
   const componentFolders = getComponentNamesToInclude(names)
     .map(name => `${path.join(componentsFolder, name)}`);
 
@@ -59,6 +59,7 @@ export function buildCss({ names = ['all'], dest = 'dist' }) {
       })
     ]))
     .pipe(plugins.concat('chi.css'))
+    .pipe(plugins.tokenReplace({global: { path: assetsPath }}))
     .pipe(gulp.dest(dest));
 }
 
@@ -73,7 +74,7 @@ export function copyAssets({ names = ['all'], dest = 'dist' }) {
     .pipe(gulp.dest(dest));
 }
 
-export function chi({ names = ['all'], dest = 'dist' }) {
-  buildCss({ names, dest });
+export function build({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
+  buildCss({ names, dest, assetsPath });
   copyAssets({ names, dest });
 }
