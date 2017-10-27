@@ -23,7 +23,7 @@ The CLI is installed in `node_modules/.bin/` folder as `chi`.
 `chi` command allows you to create a css that contains just the foundations of Chi and the components you use in your project. Also it helps you to copy all Chi assets used by those selected components into the assets folder used by your web app.
 
 ``` sh
-vader:example luke$ ./node_modules/.bin/chi css -c buttons grid -o dist
+vader:example luke$ ./node_modules/.bin/chi buttons grid -c css -o dist
 ```
 
 In the example chi compiles the foundations, buttons and grid into a minified css and place it inside the dist folder.
@@ -32,7 +32,7 @@ All `chi` options can be checked invoking the help.
 
 ``` sh
 vader:example luke$ ./node_modules/.bin/chi --help
-Usage: node_modules/.bin/chi command -c <component-list> -o <output-dir>
+Usage: bin/cli.js <component-list> -c command -o <output-dir> -p <assets_path>
 
 Commands:
   all     generates the stylesheet and copies the assets of the selected
@@ -41,13 +41,14 @@ Commands:
   assets  copy the selected components assets
 
 Options:
-  --help            Show help                                          [boolean]
-  --version         Show version number                                [boolean]
-  -c, --components  list of components                  [array] [default: "all"]
-  -o, --output      output folder                            [string] [required]
+  --help         Show help                                             [boolean]
+  --version      Show version number                                   [boolean]
+  -c, --command  command      [choices: "all", "css", "assets"] [default: "all"]
+  -o, --output   output folder                               [string] [required]
+  -p, --path     assets path                             [string] [default: "/"]
 
 Examples:
-  node_modules/.bin/chi css -c grid buttons avatars -o dist/assets
+  bin/cli.js grid buttons avatars -o dist/assets -p /assets/
 ```
 
 ## API
@@ -58,8 +59,9 @@ To use the API just require `chi` in your javascript file.
 var chi = require('@ctl/chi');
 ```
 
-`chi` provides two methods:
+`chi` provides three methods:
 
+ - build(options): Generates the css and copies the assets into the dest folder.
  - buildCss(options): Generates the css with the specified components and the foundations and moves it into the dest folder.
  - copyAssets(options): Copies the assets used by the selected components into the dest folder.
 
@@ -67,10 +69,11 @@ var chi = require('@ctl/chi');
 
 Options are common for both methods.
 
-| option | Description                                                            |
-|--------|------------------------------------------------------------------------|
-| names  | List of components to include. Omit the option to include all of them. |
-| dest   | dest folder in which the result is going to ve copied.                 |
+| option     | Description                                                            |
+|------------|------------------------------------------------------------------------|
+| names      | List of components to include. Omit the option to include all of them. |
+| dest       | dest folder in which the result is going to ve copied.                 |
+| assetsPath | root path where the assets are located.                                |
 
 # Development
 
