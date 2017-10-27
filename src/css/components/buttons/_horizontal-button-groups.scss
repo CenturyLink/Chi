@@ -70,9 +70,9 @@
           }
 
           &:hover,
-          .#{$btn}--hover,
+          &.#{$btn}--hover,
           &:focus,
-          .#{$btn}--focus {
+          &.#{$btn}--focus {
             border-right-width: 0.125rem;
             padding-right: 1.875rem;
 
@@ -95,10 +95,35 @@
                 padding-right: 1.125rem;
               }
             }
+
+            & + .#{$btn}:not(.#{$btn}--flat) {
+              border-left-width: 0;
+              padding-left: 2rem;
+
+              &.#{$btn}--icon {
+                padding-left: 1rem;
+              }
+
+              &.#{$btn}--small {
+                padding-left: 1rem;
+
+                &.#{$btn}--icon {
+                  padding-left: 0.75rem;
+                }
+              }
+
+              &.#{$btn}--large {
+                padding-left: 3rem;
+
+                &.#{$btn}--icon {
+                  padding-left: 1.25rem;
+                }
+              }
+            }
           }
 
           &:hover,
-          .#{$btn}--hover {
+          &.#{$btn}--hover {
             & + .#{$btn}:focus,
             & + .#{$btn}--focus {
               border-left-width: 0.125rem;
@@ -158,9 +183,9 @@
           }
 
           &:hover,
-          .#{$btn}--hover,
+          &.#{$btn}--hover,
           &:focus,
-          .#{$btn}--focus {
+          &.#{$btn}--focus {
             padding-left: 1.875rem;
             padding-right: 1.875rem;
 
