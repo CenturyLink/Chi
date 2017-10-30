@@ -67,6 +67,7 @@
       "height": 1440
     }
   ],
+  "fileNameTemplate": "{scenarioLabel}_{selectorLabel}_{viewportLabel}",
   "onBeforeScript": "chromy/onBefore.js",
   "onReadyScript": "chromy/onReady.js",
   "scenarios": [
