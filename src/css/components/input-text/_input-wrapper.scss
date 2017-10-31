@@ -1,0 +1,62 @@
+@import 'variables';
+@import 'mixins';
+
+$input: c-input;
+$input-wrapper: c-input-wrapper;
+
+.#{$input-wrapper} {
+  position: relative;
+
+  input {
+    &[type='text'] {
+      &.#{$input} {
+
+        & ~ .c-icon {
+          height: 2rem;
+          position: absolute;
+          top: 1rem;
+          width: 2rem;
+        }
+
+        &.#{$input}--small {
+          & ~ .c-icon {
+            top: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  &.#{$input-wrapper}--icon-left {
+    input {
+      &[type='text'] {
+        &.#{$input} {
+          padding-left: 3.875rem;
+
+          & ~ .c-icon {
+            &:first-of-type {
+              left: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.#{$input-wrapper}--icon-right {
+    input {
+      &[type='text'] {
+        &.#{$input} {
+          padding-right: 3.875rem;
+
+          & ~ .c-icon {
+            &:last-of-type {
+              right: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

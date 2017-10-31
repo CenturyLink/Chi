@@ -1,0 +1,83 @@
+---
+title: Text Inputs
+---
+img(inline src='test/css/components/icon-workspace.svg')
+
+h4 Sizes
+
+.test-sizes
+  .c-mb1
+    h5 Small
+    input(type="text", class="c-input c-input--small", placeholder="Placeholder", value="Sample text")
+
+  .c-mb1
+    h5 Base
+    input(type="text", class="c-input", placeholder="Placeholder", value="Sample text")
+
+  .c-mb1
+    h5 Large
+    input(type="text", class="c-input c-input--large", placeholder="Placeholder", value="Sample text")
+
+h4 States
+
+.test-states
+  .c-mb1
+    h5 Base
+    input(type="text", class="c-input", placeholder="Placeholder", value="Sample Text")
+
+  .c-mb1
+    h5 Hover
+    input(type="text", class="c-input c-input--hover", placeholder="Placeholder", value="Sample Text")
+
+  .c-mb1
+    h5 Focus
+    input(type="text", class="c-input c-input--focus", placeholder="Placeholder", value="Sample Text")
+
+  .c-mb1
+    h5 Disabled
+    input(type="text", class="c-input", placeholder="Placeholder", disabled, value="Sample Text")
+
+h4 validation
+
+.test-validation
+  .c-mb1
+    h5 Success
+    input(type="text", class="c-input c-input--success", placeholder="Placeholder", value="Sample Text")
+
+  .c-mb1
+    h5 Warning
+    input(type="text", class="c-input c-input--warning", placeholder="Placeholder", value="Sample Text")
+
+  .c-mb1
+    h5 Danger
+    input(type="text", class="c-input c-input--danger", placeholder="Placeholder", value="Sample Text")
+
+h4 icons
+.test-icons
+  each size in ['small', 'medium', 'large']
+    .c-mb1
+      h5= `${size} left aligned`
+      .c-input-wrapper.c-input-wrapper--icon-left
+        input(type="text", class=`c-input c-input--${size}`, placeholder="Placeholder", value="Sample Text")
+        .c-icon
+          svg
+            use(xlink:href='#workspace')
+
+    .c-mb1
+      h5= `${size} right aligned`
+      .c-input-wrapper.c-input-wrapper--icon-right
+        input(type="text", class=`c-input c-input--${size}`, placeholder="Placeholder", value="Sample Text")
+        .c-icon
+          svg
+            use(xlink:href='#workspace')
+
+    .c-mb1
+      h5= `${size} both sides aligned`
+      .c-input-wrapper.c-input-wrapper--icon-left.c-input-wrapper--icon-right
+        input(type="text", class=`c-input c-input--${size}`, placeholder="Placeholder", value="Sample Text")
+        .c-icon
+          svg
+            use(xlink:href='#workspace')
+        .c-icon
+          svg
+            use(xlink:href='#workspace')
