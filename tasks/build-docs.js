@@ -1,5 +1,8 @@
 import gulp from 'gulp';
+import marked from 'marked';
 import metalsmith from 'metalsmith';
+import prism from 'prismjs';
+import 'prismjs/components/prism-bash';
 import collectionSorter from './helpers/collection-sorter';
 import * as pugUtils from './helpers/pug-utils';
 import { Folders, Paths } from './constants';
@@ -15,6 +18,28 @@ const metalsmithPlugins = {
   rename: require('metalsmith-rename'),
 };
 
+const extensions = {
+  html: 'markup',
+  sass: 'css',
+  scss: 'css',
+  svg: 'markup',
+  sh: 'bash'
+};
+
+const renderer = new marked.Renderer();
+
+renderer.code = function(code, lang) {
+  code = this.options.highlight(code, lang);
+
+  if (!lang) {
+    return `<pre><code>${code}</code></pre>`;
+  }
+
+  const langClass = this.options.langPrefix + lang;
+
+  return `<pre class="${langClass}"><code class="${langClass}">${code}</code></pre>`;
+};
+
 gulp.task('build-docs', () => {
   const promise = new Promise((resolve, reject) => {
     metalsmith(Folders.ROOT)
@@ -23,10 +48,6 @@ gulp.task('build-docs', () => {
       .clean(false)
 
       .use(metalsmithPlugins.collections({
-        'Getting Started': {
-          pattern: 'getting-started/**/*.{md,pug}',
-          sortBy: collectionSorter(['Overview'])
-        },
         Style: {
           pattern: 'style/**/*.{md,pug}',
           sortBy: collectionSorter(['Overview'])
@@ -53,7 +74,20 @@ gulp.task('build-docs', () => {
         },
       }))
       .use(metalsmithPlugins.inPlace({
-        pattern: '**/*.{md,pug}'
+        pattern: '**/*.{md,pug}',
+        engineOptions: {
+          gfm: true,
+          smartypants: true,
+          renderer: renderer,
+          langPrefix: 'language-',
+          highlight: (code, lang) => {
+            if (!prism.languages.hasOwnProperty(lang)) {
+              lang = extensions[lang] || 'markup';
+            }
+
+            return prism.highlight(code, prism.languages[lang]);
+          }
+        }
       }))
       .use(metalsmithPlugins.headings('h2'))
       .use(metalsmithPlugins.inlineSource())

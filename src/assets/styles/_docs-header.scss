@@ -4,6 +4,7 @@
 .docs-header {
   align-items: center;
   background-color: set-color(grey, 100);
+  border-bottom: 0.125rem solid set-color(grey, 500);
   box-shadow: 0 1px 2px 0 rgba(set-color(carbon, 800), 0.04),
   0 2px 2px 0 rgba(set-color(carbon, 800), 0.12);
   display: flex;
