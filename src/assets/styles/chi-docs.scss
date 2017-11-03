@@ -1,3 +1,4 @@
+@import 'prismjs/themes/prism-tomorrow';
 @import '@ctl/chi/src/css/variables';
 @import '@ctl/chi/src/css/mixins';
 
@@ -8,4 +9,8 @@ html,
 body {
   height: 100%;
   min-width: 100%;
+
+  pre {
+    border-radius: 3px;
+  }
 }
