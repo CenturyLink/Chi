@@ -1,14 +1,15 @@
 aside.docs-body__aside
-  nav.docs-navigation
-    each collection, key in collections
-
-      if utils.isCurrentCollection(collection, path)
-        .docs-navigation__collection.docs-navigation__collection--selected
-          a(href='/' + collection[0].path) #{key}
-          if utils.hasSections(collection)
-            each section in collection
-              .docs-navigation__section(class=section.path === path ? "docs-navigation__section--selected" : "")
-                a(href="/" + section.path) #{section.title}
-      else
-        .docs-navigation__collection
-          a(href='/' + collection[0].path) #{key}
+  nav
+    ul.c-tabs.c-tabs--vertical.c-tabs--border.c-tabs--large
+      each collection, key in collections
+        if utils.isCurrentCollection(collection, path)
+          li.c-tab--active
+            a(href='/' + collection[0].path) #{key}
+            if utils.hasSections(collection)
+              ul.c-subtabs
+                each section in collection
+                  li(class=section.path === path ? "c-subtab--active" : "")
+                    a(href="/" + section.path) #{section.title}
+        else
+          li
+            a(href='/' + collection[0].path) #{key}
