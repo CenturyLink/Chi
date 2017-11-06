@@ -2,11 +2,11 @@
 title: Getting started
 ---
 
-# Welcome to Chi
+### Welcome to Chi
 
 Chi is a CenturyLink CSS pattern library for building fast, reusable, and consistent responsive interfaces.
 
-# Using Chi
+### Using Chi
 
 First import Chi into your project
 
@@ -20,7 +20,7 @@ Once Chi is installed as a dependency there are two different options to use it:
 
 Once the css is generated just include it into your html page or script bundle.
 
-## CLI
+#### CLI
 
 The CLI is installed in `node_modules/.bin/` folder as `chi`.
 
@@ -55,7 +55,7 @@ Examples:
   bin/cli.js grid buttons avatars -o dist/assets -p /assets/
 ```
 
-## API
+#### API
 
 To use the API just require `chi` in your javascript file.
 
@@ -69,7 +69,7 @@ var chi = require('@ctl/chi');
  - buildCss(options): Generates the css with the specified components and the foundations and moves it into the dest folder.
  - copyAssets(options): Copies the assets used by the selected components into the dest folder.
 
- #### options
+ ###### options
 
 Options are common for both methods.
 
@@ -79,7 +79,7 @@ Options are common for both methods.
 | dest       | dest folder in which the result is going to ve copied.                 |
 | assetsPath | root path where the assets are located.                                |
 
-# Development
+### Development
 
 The preferred way to setup your dev env is through docker. If you have docker installed then run the command
 
@@ -96,7 +96,7 @@ vader:example luke$ npm install
 vader:example luke$ npm start
 ```
 
-## test
+#### test
 
 We are using backstopJS to unit test our css components. In order to execute the unit test run the command
 
