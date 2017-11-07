@@ -1,0 +1,84 @@
+---
+title: Colors
+---
+
+| Chi defines a set of colors in Sass language variables.
+
+.c-mb4
+  :code(lang='sass')
+    $colorscheme: (
+      green: (
+        100: #edf7e1,
+        200: #cce8a9,
+        300: #a0dd4c,
+        400: #8cc63f,
+        500: #009f00,
+        600: #008100,
+        700: #006c00,
+        800: #205020,
+      ),
+      carbon: (
+        100: #969696,
+        200: #757575,
+        300: #616161,
+        400: #424242,
+        500: #333333,
+        600: #212121,
+        700: #0e0e0e,
+        800: #000000,
+      ),
+      grey: (
+        100: #ffffff,
+        200: #fafafa,
+        300: #f8f8f8,
+        400: #eeeeee,
+        500: #e0e0e0,
+        600: #d5d5d5,
+        700: #cacaca,
+        800: #bdbdbd,
+      ),
+      blue: (
+        100: #e5f4fb,
+        200: #b8e2f5,
+        300: #a1d0ec,
+        400: #7ec3f4,
+        500: #007ad1,
+        600: #0067b6,
+        700: #00569c,
+      ),
+      red: (
+        100: #fcebea,
+        200: #f9d6d4,
+        300: #ffb4b0,
+        400: #ff6360,
+        500: #de0c10,
+        600: #c32720,
+        700: #9b0000,
+      ),
+      yellow: (
+        100: #fdf9e8,
+        200: #f8e4bc,
+        300: #f6d490,
+        400: #ffba10,
+        500: #ffa633,
+        600: #ff8f00,
+        700: #e8730c,
+      )
+    );
+
+| Also an utility function is created to reference them
+
+.c-mb4
+  :code(lang='sass')
+    set-color($scheme, $tone)
+
+| In order to use it, developers only needs to add chi in their project through npm and import the variables and mixins sass files.
+
+.c-mb4
+  :code(lang='sass')
+    @import '@ctl/chi/src/css/variables';
+    @import '@ctl/chi/src/css/mixins';
+
+    .example {
+      color: set-color(carbon, 500);
+    }

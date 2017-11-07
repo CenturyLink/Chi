@@ -39,8 +39,8 @@ gulp.task('build-docs', () => {
       .clean(false)
 
       .use(metalsmithPlugins.collections({
-        Style: {
-          pattern: 'style/**/*.{md,pug}',
+        Foundations: {
+          pattern: 'foundations/**/*.{md,pug}',
           sortBy: collectionSorter(['Overview'])
         },
         Elements: {
