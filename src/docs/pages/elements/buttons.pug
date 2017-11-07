@@ -1,3 +1,257 @@
 ---
 title: Buttons
 ---
+img(inline src='src/assets/images/icon-workspace.svg')
+
+h3 Description
+
+| Use buttons as triggers for actions. try to avoid the usage of buttons for navigation and use links for that purpose
+| instead.
+
+h3 Button styles
+
+h4 Default buttons
+
+.c-mb4
+  each type in ['solid', 'outline', 'flat']
+      button(class=`c-btn c-btn--${type} c-mr1`)= type
+  button(class=`c-btn c-btn--float`)
+    .c-btn-content
+      .c-icon
+        svg
+          use(xlink:href='#workspace')
+
+  :code(lang='html')
+    <button class="c-btn c-btn--solid">solid</button>
+    <button class="c-btn c-btn--outline">outline</button>
+    <button class="c-btn c-btn--flat">flat</button>
+    <button class="c-btn c-btn--float">
+      <div class="c-btn-content">
+        <div class="c-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+      </div>
+    </button>
+
+h4 Primary buttons
+
+.c-mb4
+  each type in ['solid', 'outline', 'flat']
+      button(class=`c-btn c-btn--primary c-btn--${type} c-mr1`)= type
+  button(class=`c-btn c-btn--primary c-btn--float`)
+    .c-btn-content
+      .c-icon
+        svg
+          use(xlink:href='#workspace')
+
+  :code(lang='html')
+    <button class="c-btn c-btn--primary c-btn--solid">solid</button>
+    <button class="c-btn c-btn--primary c-btn--outline">outline</button>
+    <button class="c-btn c-btn--primary c-btn--flat">flat</button>
+    <button class="c-btn c-btn--primary c-btn--float">
+      <div class="c-btn-content">
+        <div class="c-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+      </div>
+    </button>
+
+h4 Danger buttons
+
+.c-mb4
+  each type in ['solid', 'outline', 'flat']
+      button(class=`c-btn c-btn--danger c-btn--${type} c-mr1`)= type
+  button(class=`c-btn c-btn--danger c-btn--primary c-btn--float`)
+    .c-btn-content
+      .c-icon
+        svg
+          use(xlink:href='#workspace')
+
+  :code(lang='html')
+    <button class="c-btn c-btn--danger c-btn--solid">solid</button>
+    <button class="c-btn c-btn--danger c-btn--outline">outline</button>
+    <button class="c-btn c-btn--danger c-btn--flat">flat</button>
+    <button class="c-btn c-btn--danger c-btn--float">
+      <div class="c-btn-content">
+        <div class="c-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+      </div>
+    </button>
+
+h4 Info buttons
+
+.c-mb4
+  each type in ['solid', 'outline', 'flat']
+      button(class=`c-btn c-btn--info c-btn--${type} c-mr1`)= type
+  button(class=`c-btn c-btn--info c-btn--primary c-btn--float`)
+    .c-btn-content
+      .c-icon
+        svg
+          use(xlink:href='#workspace')
+
+  :code(lang='html')
+    <button class="c-btn c-btn--info c-btn--solid">solid</button>
+    <button class="c-btn c-btn--info c-btn--outline">outline</button>
+    <button class="c-btn c-btn--info c-btn--flat">flat</button>
+    <button class="c-btn c-btn--info c-btn--float">
+      <div class="c-btn-content">
+        <div class="c-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+      </div>
+    </button>
+
+h4 Dark buttons
+
+.c-mb4
+  each type in ['solid', 'outline', 'flat']
+      button(class=`c-btn c-btn--dark c-btn--${type} c-mr1`)= type
+  button(class=`c-btn c-btn--dark c-btn--primary c-btn--float`)
+    .c-btn-content
+      .c-icon
+        svg
+          use(xlink:href='#workspace')
+
+:code(lang='html')
+  <button class="c-btn c-btn--dark c-btn--solid">solid</button>
+  <button class="c-btn c-btn--dark c-btn--outline">outline</button>
+  <button class="c-btn c-btn--dark c-btn--flat">flat</button>
+  <button class="c-btn c-btn--dark c-btn--float">
+    <div class="c-btn-content">
+      <div class="c-icon">
+        <svg>
+          <use xlink:href="#workspace"></use>
+        </svg>
+      </div>
+    </div>
+  </button>
+
+h3 Button sizes
+
+.c-mb4
+  each size in ['small', 'medium', 'large']
+    button(class=`c-btn c-btn--${size} c-mr1`)= size
+    button(class=`c-btn c-btn--${size} c-btn--float c-mr2`)
+      .c-btn-content
+        .c-icon
+          svg
+            use(xlink:href='#workspace')
+
+  :code(lang='html')
+    <button class="c-btn c-btn--small">small</button>
+    <button class="c-btn c-btn--small c-btn--float">
+      <div class="c-btn-content">
+        <div class="c-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+      </div>
+    </button>
+
+    <button class="c-btn c-btn--medium">medium</button>
+    <button class="c-btn c-btn--medium c-btn--float">
+      <div class="c-btn-content">
+        <div class="c-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+      </div>
+    </button>
+
+    <button class="c-btn c-btn--large">large</button>
+    <button class="c-btn c-btn--large c-btn--float">
+      <div class="c-btn-content">
+        <div class="c-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+      </div>
+    </button>
+
+H3 Buttons containing icons
+
+h4 Left aligned
+
+.c-mb4
+  button(class=`c-btn`)
+    .c-btn-content
+      .c-icon
+        svg
+            use(xlink:href='#workspace')
+      span Button
+      
+  :code(lang='html')
+    <button class="c-btn">
+      <div class="c-btn-content">
+        <div class="c-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+        <span>Button</span>
+      </div>
+    </button>
+
+h4 Right aligned
+
+.c-mb4
+  button(class=`c-btn`)
+    .c-btn-content
+      span Button
+      .c-icon
+        svg
+            use(xlink:href='#workspace')
+      
+  :code(lang='html')
+    <button class="c-btn">
+      <div class="c-btn-content">
+        <span>Button</span>
+        <div class="c-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+      </div>
+    </button>
+
+h4 Both sides
+
+.c-mb4
+  button(class=`c-btn`)
+    .c-btn-content
+      .c-icon
+        svg
+            use(xlink:href='#workspace')
+      span Button
+      .c-icon
+        svg
+            use(xlink:href='#workspace')
+      
+  :code(lang='html')
+    <button class="c-btn">
+      <div class="c-btn-content">
+        <div class="c-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+        <span>Button</span>
+        <div class="c-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+      </div>
+    </button>

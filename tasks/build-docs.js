@@ -1,8 +1,7 @@
 import gulp from 'gulp';
 import marked from 'marked';
 import metalsmith from 'metalsmith';
-import prism from 'prismjs';
-import 'prismjs/components/prism-bash';
+import { getLang, highlight } from './helpers/beautify-code';
 import collectionSorter from './helpers/collection-sorter';
 import * as pugUtils from './helpers/pug-utils';
 import { Folders, Paths } from './constants';
@@ -16,14 +15,6 @@ const metalsmithPlugins = {
   layouts: require('metalsmith-layouts'),
   permalinks: require('metalsmith-permalinks'),
   rename: require('metalsmith-rename'),
-};
-
-const extensions = {
-  html: 'markup',
-  sass: 'css',
-  scss: 'css',
-  svg: 'markup',
-  sh: 'bash'
 };
 
 const renderer = new marked.Renderer();
@@ -48,8 +39,8 @@ gulp.task('build-docs', () => {
       .clean(false)
 
       .use(metalsmithPlugins.collections({
-        Style: {
-          pattern: 'style/**/*.{md,pug}',
+        Foundations: {
+          pattern: 'foundations/**/*.{md,pug}',
           sortBy: collectionSorter(['Overview'])
         },
         Elements: {
@@ -76,16 +67,18 @@ gulp.task('build-docs', () => {
       .use(metalsmithPlugins.inPlace({
         pattern: '**/*.{md,pug}',
         engineOptions: {
+          doctype: 'html',
           gfm: true,
           smartypants: true,
           renderer: renderer,
           langPrefix: 'language-',
-          highlight: (code, lang) => {
-            if (!prism.languages.hasOwnProperty(lang)) {
-              lang = extensions[lang] || 'markup';
-            }
+          highlight,
+          filters: {
+            code: (text, options) => {
+              const lang = getLang(options.lang);
 
-            return prism.highlight(code, prism.languages[lang]);
+              return `<pre class="language-${lang}"><code class="language-${lang}">${highlight(text, lang)}</code></pre>`;
+            }
           }
         }
       }))

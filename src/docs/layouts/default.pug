@@ -21,7 +21,9 @@ html(lang="en")
             include partials/aside
 
             .docs-body__content
-              .c-grid-container!= contents
+              .c-grid-container
+                h2= title
+                != contents
 
       script(type="text/javascript", src="/assets/scripts/chi-docs.js")
 

@@ -1,13 +1,13 @@
 {
   "name": "chi-website",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "CenturyLink Humain Interface Website",
   "scripts": {
     "build": "gulp build",
     "start": "gulp watch"
   },
   "devDependencies": {
-    "@ctl/chi": "0.1.12",
+    "@ctl/chi": "0.2.0",
     "autoprefixer": "7.1.5",
     "babel-core": "6.26.0",
     "babel-loader": "7.1.2",
