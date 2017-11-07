@@ -5,14 +5,21 @@ aside.docs-body__aside
         a(href='/') Getting started
 
       each collection, key in collections
-        if utils.isCurrentCollection(collection, path)
-          li.c-tab--active
-            a(href='/' + collection[0].path) #{key}
-            if utils.hasSections(collection)
-              ul.c-subtabs
-                each section in collection
-                  li(class=section.path === path ? "c-subtab--active" : "")
-                    a(href="/" + section.path) #{section.title}
+        if utils.hasActiveSections(collection)
+          if utils.isCurrentCollection(collection, path)
+            li.c-tab--active
+              a(href=`/${utils.getFirstClickableSection(collection).path}`) #{key}
+              if utils.hasSections(collection)
+                ul.c-subtabs
+                  each section in collection
+                    li(class=section.path === path ? "c-subtab--active" : "")
+                      if section.disabled
+                        a(href=`/${section.path}`, disabled="disabled") #{section.title}
+                      else
+                        a(href=`/${section.path}`) #{section.title} #{section.disabled}
+          else
+            li
+              a(href=`/${utils.getFirstClickableSection(collection).path}`) #{key}
         else
           li
-            a(href='/' + collection[0].path) #{key}
+              a(href=`#`, disabled="disabled") #{key}

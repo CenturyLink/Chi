@@ -18,12 +18,16 @@
       flex-direction: column;
       overflow: auto;
       width: 30rem;
+
+      a[disabled] {
+        color: set-color(carbon, 100);
+        pointer-events: none;
+      }
     }
 
     &__content {
       background-color: set-color(grey, 200);
       flex-grow: 1;
-      padding-bottom: 4rem;
     }
   }
 }

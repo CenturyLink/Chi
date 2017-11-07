@@ -19,3 +19,11 @@ export function hasSections(collection) {
 
   return result;
 }
+
+export function getFirstClickableSection(collection) {
+  return _.first(_.reject(collection, x => x.disabled));
+}
+
+export function hasActiveSections(collection) {
+  return !_.isEmpty(_.reject(collection, x => x.disabled));
+}
