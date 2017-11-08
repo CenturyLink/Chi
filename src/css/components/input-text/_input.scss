@@ -2,7 +2,6 @@
 @import 'mixins';
 
 $input: c-input;
-$state-colors: (success: green, warning: yellow, danger: red);
 
 input {
   &[type='text'] {
@@ -28,7 +27,7 @@ input {
       }
 
       &:focus,
-      &.#{$input}--hover {
+      &.#{$input}--focus {
         border-color: set-color(blue, 500);
         box-shadow: 0 0 0 3px rgba(set-color(blue, 500), 0.3);
       }
