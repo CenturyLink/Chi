@@ -187,6 +187,7 @@
       "selectors": [
         ".test-sizes",
         ".test-states",
+        ".test-validation",
         ".test-icons"
       ],
       "selectorExpansion": true,
@@ -220,6 +221,28 @@
         ".test-multi-level-active-",
         ".test-multi-level--border",
         ".test-multi-level-active-border"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "textarea",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/textarea.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-sizes",
+        ".test-states",
+        ".test-validation"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
