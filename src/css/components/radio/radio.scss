@@ -1,0 +1,79 @@
+@import 'variables';
+@import 'mixins';
+
+$radio: c-radio;
+
+input {
+  &[type='radio'] {
+    &.#{$radio} {
+      left: -9999px;
+      position: absolute;
+
+      & + label {
+        background-color: set-color(grey, 100);
+        border: 0.25rem solid set-color(carbon, 100);
+        border-radius: 1rem;
+        cursor: pointer;
+        display: block;
+        height: 2rem;
+        line-height: 2rem;
+        position: relative;
+        width: 2rem;
+
+        &::before {
+          background-color: set-color(carbon, 100);
+          border-radius: 1rem;
+          content: '';
+          display: none;
+          height: 1rem;
+          left: 0.25rem;
+          position: absolute;
+          top: 0.25rem;
+          width: 1rem;
+        }
+
+        &:hover,
+        &.#{$radio}--hover {
+          &::before {
+            display: block;
+          }
+        }
+      }
+
+      &:checked + label {
+        &::before {
+          display: block;
+        }
+      }
+
+      &[disabled] + label {
+        opacity: 0.65;
+        pointer-events: none;
+      }
+
+      &:focus,
+      &.#{$radio}--focus {
+        & + label {
+          box-shadow: 0 0 1px 4px rgba(set-color(carbon, 100), 0.3);
+        }
+      }
+
+      &.#{$radio}--primary {
+        & + label {
+          border-color: set-color(green, 500);
+
+          &::before {
+            background-color: set-color(green, 500);
+          }
+        }
+
+        &:focus,
+        &.#{$radio}--focus {
+          & + label {
+            box-shadow: 0 0 1px 4px rgba(set-color(green, 500), 0.3);
+          }
+        }
+      }
+    }
+  }
+}
