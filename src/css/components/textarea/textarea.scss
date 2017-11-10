@@ -1,0 +1,66 @@
+@import 'variables';
+@import 'mixins';
+
+$textarea: c-textarea;
+
+textarea {
+  &.#{$textarea} {
+    border: 0.125rem solid set-color(grey, 600);
+    border-radius: 3px;
+    display: block;
+    font-size: 1.625rem;
+    height: 8rem;
+    line-height: 3rem;
+    outline: none;
+    padding: 0.875rem;
+    resize: none;
+    transition: all 0.15s ease-in-out;
+    width: 100%;
+
+    &::placeholder {
+      color: set-color(carbon, 100);
+    }
+
+    &:hover,
+    &.#{$textarea}--hover {
+      border-color: set-color(grey, 800);
+    }
+
+    &:focus,
+    &.#{$textarea}--focus {
+      border-color: set-color(blue, 500);
+      box-shadow: 0 0 0 3px rgba(set-color(blue, 500), 0.3);
+    }
+
+    &[disabled],
+    &.#{$textarea}--disabled {
+      background-color: set-color(grey, 300);
+      border-color: set-color(grey, 600);
+      color: set-color(carbon, 500);
+    }
+
+    &.#{$textarea}--small {
+      font-size: 1.5rem;
+      height: 5rem;
+      line-height: 2rem;
+      padding: 0.375rem 0.875rem;
+    }
+
+    &.#{$textarea}--large {
+      font-size: 2rem;
+      line-height: 3rem;
+      padding: 0.875rem;
+    }
+
+    @each $type in map-keys($state-colors) {
+      &.#{$textarea}--#{$type} {
+        border-color: set-color(map-get($state-colors, $type), 500);
+
+        &:focus,
+        &.#{$textarea}--focus {
+          box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 500), 0.2);
+        }
+      }
+    }
+  }
+}
