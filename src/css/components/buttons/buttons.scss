@@ -99,28 +99,16 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
     &.#{$btn}--float {
       border-radius: 50%;
       padding: 0.875rem;
+      transition: transform 0.2s cubic-bezier(0.95, -0.18, 0.65, 2.46);
 
       .c-icon {
         height: 2rem;
         width: 2rem;
       }
 
-      &.#{$btn}--small {
-        padding: 0.625rem;
-
-        .c-icon {
-          height: 1.5rem;
-          width: 1.5rem;
-        }
-      }
-
-      &.#{$btn}--large {
-        padding: 0.875rem;
-
-        .c-icon {
-          height: 3rem;
-          width: 3rem;
-        }
+      &:hover,
+      &.#{$btn}--hover {
+        transform: scale(1.2);
       }
     }
 
