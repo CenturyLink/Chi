@@ -1,0 +1,16 @@
+---
+title: Alert Banners
+---
+
+each size in ['small', 'medium', 'large']
+  div(class=`test-${size}`)
+    h3= `${size}`
+    each type in ['light', 'success', 'danger', 'warning', 'info', 'dark']
+      div(class=`c-alert c-alert--${size} c-alert--${type} c-alert--banner c-mb2`, data-title=`${type}`)
+        = `This is a ${type} message`
+        button
+    h4 Has icon
+    each type in ['light', 'success', 'danger', 'warning', 'info', 'dark']
+      div(class=`c-alert c-alert--has-icon c-alert--${size} c-alert--${type} c-alert--banner c-mb2`, data-title=`${type}`)
+        = `This is a ${type} message`
+        button

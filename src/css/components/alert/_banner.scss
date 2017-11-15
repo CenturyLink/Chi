@@ -1,0 +1,89 @@
+@import 'alert-common';
+
+$banner: #{$alert}--banner;
+
+.#{$alert} {
+  &.#{$banner} {
+    border-width: 0.125rem 0;
+    padding-left: 2rem;
+    padding-right: 4rem;
+
+    & > button {
+      background-color: transparent;
+      background-image: url('./icon-close.svg');
+      border: 0;
+      cursor: pointer;
+      height: 1.5rem;
+      outline: none;
+      padding: 0;
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.5rem;
+    }
+
+    &.#{$alert}--small {
+      display: flex;
+      justify-content: center;
+      padding-left: 4rem;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &.#{$alert}--large {
+      padding-bottom: 2.375rem;
+      padding-top: 1.5rem;
+
+      & > button {
+        top: 1.875rem;
+        transform: initial;
+      }
+
+      &::before {
+        font-size: 2rem;
+        line-height: 3rem;
+        margin-bottom: 0.875rem;
+      }
+    }
+
+    @each $state in map-keys($states) {
+      &.#{$alert}--#{$state} {
+        &.#{$alert}--has-icon {
+          flex-direction: row-reverse;
+          padding-left: 7rem;
+
+          &::after {
+            left: 2.25rem;
+          }
+
+          &.#{$alert}--small {
+            padding-left: 4rem;
+
+            &::after {
+              height: 2rem;
+              left: initial;
+              margin-right: 1rem;
+              position: relative;
+              top: initial;
+              transform: initial;
+              width: 2rem;
+            }
+          }
+
+          &.#{$alert}--large {
+            &::after {
+              height: 3rem;
+              left: 2rem;
+              top: 1.875rem;
+              transform: initial;
+              width: 3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

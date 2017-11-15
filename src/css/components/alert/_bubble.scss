@@ -1,0 +1,50 @@
+@import 'alert-common';
+
+$bubble: #{$alert}--bubble;
+
+.#{$alert} {
+  &.#{$bubble} {
+    &.#{$alert}--small {
+      &::before {
+        display: none;
+      }
+    }
+
+    &.#{$alert}--large {
+      padding-bottom: 2.375rem;
+      padding-top: 1.5rem;
+
+      &::before {
+        font-size: 2rem;
+        line-height: 3rem;
+        margin-bottom: 0.875rem;
+      }
+    }
+
+    @each $state in map-keys($states) {
+      &.#{$alert}--#{$state} {
+        &.#{$alert}--has-icon {
+          &.#{$alert}--small {
+            padding-left: 4.875rem;
+
+            &::after {
+              height: 2rem;
+              left: 1.875rem;
+              width: 2rem;
+            }
+          }
+
+          &.#{$alert}--large {
+            &::after {
+              height: 3rem;
+              left: 1.875rem;
+              top: 1.875rem;
+              transform: initial;
+              width: 3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
