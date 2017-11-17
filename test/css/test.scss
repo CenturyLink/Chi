@@ -19,6 +19,11 @@ body {
   padding-bottom: $base-unit * 4;
 }
 
+[class*='test'] {
+  margin: 0 -1rem;
+  padding: 1rem;
+}
+
 .c-grid--show {
   @include respond-to(md) {
     margin-bottom: $base-unit * 3;

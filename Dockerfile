@@ -20,7 +20,7 @@ WORKDIR /app
 
 COPY .npmrc package.json ./
 RUN npm install
-COPY .babelrc .eslintrc.json .jshintrc .sass-lint.yml backstop.json gulpfile.babel.js ./
+COPY .babelrc .eslintrc.json .jshintrc .sass-lint.yml backstop-responsive.json backstop-non-responsive.json gulpfile.babel.js ./
 
 RUN chmod a+rwx /app \
     && chmod a+rw /app/* \
