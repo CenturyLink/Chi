@@ -1,0 +1,266 @@
+{
+  "id": "chi-non-responsive",
+  "viewports": [
+    {
+      "label": "viewport",
+      "width": 1024,
+      "height": 768
+    }
+  ],
+  "fileNameTemplate": "{scenarioLabel}_{selectorLabel}_{viewportLabel}",
+  "onBeforeScript": "chromy/onBefore.js",
+  "onReadyScript": "chromy/onReady.js",
+  "scenarios": [
+    {
+      "label": "buttons",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/buttons.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-solid-small",
+        ".test-solid-medium",
+        ".test-solid-large",
+        ".test-outline-small",
+        ".test-outline-medium",
+        ".test-outline-large",
+        ".test-flat-small",
+        ".test-flat-medium",
+        ".test-flat-large",
+        ".test-float"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "button-groups",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/button-groups.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-button-group",
+        ".test-icon-button-group",
+        ".test-vertical-button-group",
+        ".test-vertical-icon-button-group",
+        ".test-hybrid"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "checkbox",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/checkbox.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-states",
+        ".test-primary"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "icons",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/icons.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-sizes"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "input-text",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/input-text.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-sizes",
+        ".test-states",
+        ".test-validation",
+        ".test-icons"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "radio",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/radio.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-states",
+        ".test-primary"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "tabs",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/tabs.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-horizontal",
+        ".test-vertical--",
+        ".test-vertical-active-alt-",
+        ".test-vertical--border",
+        ".test-vertical-active-alt-border",
+        ".test-vertical-icons--",
+        ".test-vertical-icons-active-alt-",
+        ".test-vertical-icons--border",
+        ".test-vertical-icons-active-alt-border",
+        ".test-multi-level--",
+        ".test-multi-level-active-",
+        ".test-multi-level--border",
+        ".test-multi-level-active-border"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "textarea",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/textarea.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-sizes",
+        ".test-states",
+        ".test-validation"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "toggle-switch",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/toggle-switch.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-states",
+        ".test-no-text-states"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "typography",
+      "cookiePath": "",
+      "url": "http://localhost:8000/foundations/typography.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-headers",
+        ".test-colors",
+        ".test-paragraph"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "config/backstop_data/bitmaps_reference/non_responsive",
+    "bitmaps_test": "test/bitmaps_test/non_responsive",
+    "engine_scripts": "config/backstop_data/engine_scripts",
+    "html_report": "reports/html_report/non_responsive",
+    "ci_report": "reports/ci_report/non_responsive"
+  },
+  "report": [
+    "CI"
+  ],
+  "engine": "chrome",
+  "engineFlags": [],
+  "asyncCaptureLimit": 8,
+  "asyncCompareLimit": 16,
+  "debug": false,
+  "debugWindow": false
+}
