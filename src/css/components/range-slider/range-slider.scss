@@ -1,0 +1,169 @@
+@import 'variables';
+@import 'mixins';
+
+$slider: c-slider;
+
+@mixin thumb-style {
+  background-color: set-color(grey, 100);
+  border: 2px solid set-color(green, 500);
+  border-radius: 12px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  height: 20px;
+  transition: all 0.2s ease-in-out;
+  width: 20px;
+}
+
+@mixin green-thumb-shadow {
+  box-shadow: 0 0 1px 4px rgba(set-color(green, 500), 0.3);
+}
+
+@mixin grey-thumb-shadow {
+  box-shadow: 0 0 1px 4px rgba(set-color(carbon, 100), 0.3);
+}
+
+@mixin track-style {
+  background-color: set-color(grey, 600);
+  border-radius: 10px;
+  box-sizing: border-box;
+  height: 8px;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+}
+
+// sass-lint:disable no-vendor-prefixes
+input {
+  &[type='range'] {
+    &.#{$slider} {
+      -webkit-appearance: none;
+      background-color: transparent;
+      height: 24px;
+      padding: 0;
+      transition: all 0.2s ease-in-out;
+      width: 100%;
+
+      &[disabled] {
+        opacity: 0.65;
+        pointer-events: none;
+      }
+
+      &.#{$slider}--zero {
+        &:focus,
+        &.#{$slider}--focus {
+          // Safari, Chrome and Opera
+          &::-webkit-slider-thumb {
+            @include grey-thumb-shadow;
+          }
+
+          // Firefox
+          &::-moz-range-thumb {
+            @include grey-thumb-shadow;
+          }
+
+          // Internet Explorer
+          &::-ms-thumb {
+            @include grey-thumb-shadow;
+          }
+        }
+
+        // Safari, Chrome and Opera
+        &::-webkit-slider-thumb {
+          background-color: set-color(carbon, 100);
+          border-color: set-color(carbon, 100);
+        }
+
+        // Firefox
+        &::-moz-range-thumb {
+          border-color: set-color(carbon, 100);
+        }
+
+        &::-moz-range-progress {
+          background-color: set-color(grey, 600);
+        }
+
+        // Internet Explorer
+        &::-ms-thumb {
+          border-color: set-color(carbon, 100);
+        }
+
+        &::-ms-fill-lower {
+          background-color: set-color(grey, 600);
+        }
+      }
+
+      &:focus,
+      &.#{$slider}--focus {
+        outline: none;
+
+        // Safari, Chrome and Opera
+        &::-webkit-slider-thumb {
+          @include green-thumb-shadow;
+        }
+
+        // Firefox
+        &::-moz-range-thumb {
+          @include green-thumb-shadow;
+        }
+
+        // Internet Explorer
+        &::-ms-thumb {
+          @include green-thumb-shadow;
+        }
+      }
+
+      // Safari, Chrome and Opera
+      &::-webkit-slider-thumb {
+        @include thumb-style;
+        -webkit-appearance: none;
+        background-color: set-color(green, 500);
+        margin-top: -6px;
+      }
+
+      &::-webkit-slider-runnable-track {
+        @include track-style;
+      }
+
+      // Firefox
+      &::-moz-range-thumb {
+        @include thumb-style;
+        margin-left: 4px;
+        margin-right: 4px;
+      }
+
+      &::-moz-range-track {
+        @include track-style;
+      }
+
+      &::-moz-range-progress {
+        @include track-style;
+        background-color: set-color(green, 500);
+      }
+
+      // Internet Explorer
+      &::-ms-thumb {
+        @include thumb-style;
+        border-width: 2px;
+        height: 20px;
+        margin: 0 4px;
+        width: 20px;
+      }
+
+      &::-ms-track {
+        @include track-style;
+        border-color: transparent;
+        color: transparent;
+      }
+
+      &::-ms-fill-lower {
+        @include track-style;
+        background-color: set-color(green, 500);
+      }
+
+      &::-ms-fill-upper {
+        @include track-style;
+      }
+    }
+  }
+}
+// sass-lint:enable no-vendor-prefixes
