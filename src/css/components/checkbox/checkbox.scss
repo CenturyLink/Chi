@@ -20,8 +20,9 @@ input {
         position: relative;
         width: 2rem;
 
-        svg {
-          color: set-color(carbon, 100);
+        &::before {
+          background-image: url('./icon-check.svg');
+          content: '';
           display: none;
           height: 1.25rem;
           left: 0.125rem;
@@ -32,14 +33,14 @@ input {
 
         &:hover,
         &.#{$input}--hover {
-          svg {
+          &::before {
             display: block;
           }
         }
       }
 
       &:checked + label {
-        svg {
+        &::before {
           display: block;
         }
       }
@@ -61,8 +62,8 @@ input {
           background-color: set-color(green, 500);
           border-color: set-color(green, 500);
 
-          svg {
-            color: set-color(grey, 100);
+          &::before {
+            background-image: url('./icon-check--primary.svg');
           }
         }
 
