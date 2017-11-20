@@ -1,7 +1,7 @@
 @import 'variables';
 @import 'mixins';
 
-$slider: c-slider;
+$input: c-input;
 
 @mixin thumb-style {
   background-color: set-color(grey, 100);
@@ -35,7 +35,7 @@ $slider: c-slider;
 // sass-lint:disable no-vendor-prefixes
 input {
   &[type='range'] {
-    &.#{$slider} {
+    &.#{$input} {
       -webkit-appearance: none;
       background-color: transparent;
       height: 24px;
@@ -48,9 +48,9 @@ input {
         pointer-events: none;
       }
 
-      &.#{$slider}--zero {
+      &.#{$input}--zero {
         &:focus,
-        &.#{$slider}--focus {
+        &.#{$input}--focus {
           // Safari, Chrome and Opera
           &::-webkit-slider-thumb {
             @include grey-thumb-shadow;
@@ -93,7 +93,7 @@ input {
       }
 
       &:focus,
-      &.#{$slider}--focus {
+      &.#{$input}--focus {
         outline: none;
 
         // Safari, Chrome and Opera

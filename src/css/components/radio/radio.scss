@@ -1,11 +1,11 @@
 @import 'variables';
 @import 'mixins';
 
-$radio: c-radio;
+$input: c-input;
 
 input {
   &[type='radio'] {
-    &.#{$radio} {
+    &.#{$input} {
       left: -9999px;
       position: absolute;
 
@@ -33,7 +33,7 @@ input {
         }
 
         &:hover,
-        &.#{$radio}--hover {
+        &.#{$input}--hover {
           &::before {
             display: block;
           }
@@ -52,13 +52,13 @@ input {
       }
 
       &:focus,
-      &.#{$radio}--focus {
+      &.#{$input}--focus {
         & + label {
           box-shadow: 0 0 1px 4px rgba(set-color(carbon, 100), 0.3);
         }
       }
 
-      &.#{$radio}--primary {
+      &.#{$input}--primary {
         & + label {
           border-color: set-color(green, 500);
 
@@ -68,7 +68,7 @@ input {
         }
 
         &:focus,
-        &.#{$radio}--focus {
+        &.#{$input}--focus {
           & + label {
             box-shadow: 0 0 1px 4px rgba(set-color(green, 500), 0.3);
           }

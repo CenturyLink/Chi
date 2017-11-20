@@ -1,11 +1,11 @@
 @import 'variables';
 @import 'mixins';
 
-$checkbox: c-checkbox;
+$input: c-input;
 
 input {
   &[type='checkbox'] {
-    &.#{$checkbox} {
+    &.#{$input} {
       left: -9999px;
       position: absolute;
 
@@ -31,7 +31,7 @@ input {
         }
 
         &:hover,
-        &.#{$checkbox}--hover {
+        &.#{$input}--hover {
           svg {
             display: block;
           }
@@ -50,13 +50,13 @@ input {
       }
 
       &:focus,
-      &.#{$checkbox}--focus {
+      &.#{$input}--focus {
         & + label {
           box-shadow: 0 0 1px 4px rgba(set-color(carbon, 100), 0.3);
         }
       }
 
-      &.#{$checkbox}--primary {
+      &.#{$input}--primary {
         & + label {
           background-color: set-color(green, 500);
           border-color: set-color(green, 500);
@@ -67,7 +67,7 @@ input {
         }
 
         &:focus,
-        &.#{$checkbox}--focus {
+        &.#{$input}--focus {
           & + label {
             box-shadow: 0 0 1px 4px rgba(set-color(green, 500), 0.3);
           }
