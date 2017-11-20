@@ -47,6 +47,7 @@ gulp.task('test-build-html', () => {
 
   promise.then(() => {
     gulp.src(`${publicFolder}/**/*.html`)
+      .pipe(plugins.wait(1500))
       .pipe(plugins.connect.reload());
   });
 
@@ -71,6 +72,7 @@ gulp.task('test-build-css', () =>
       cssnano()
     ]))
     .pipe(gulp.dest(publicFolder))
+    .pipe(plugins.wait(1500))
     .pipe(plugins.connect.reload())
 );
 

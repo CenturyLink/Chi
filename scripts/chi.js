@@ -50,6 +50,7 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
       require('autoprefixer')({
         browsers: ['last 2 versions', 'ie >= 10']
       }),
+      require('postcss-svg')(),
       require('cssnano')({
         preset: ['default', {
           discardComments: {

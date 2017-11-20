@@ -1,0 +1,79 @@
+@import 'variables';
+@import 'mixins';
+
+$alert: c-alert;
+
+$states: (
+  light: (
+    icon: './icon-light.svg',
+    background-color: set-color(grey, 100),
+    border-color: set-color(grey, 500)
+  ),
+  success: (
+    icon: './icon-success.svg',
+    background-color: set-color(green, 100),
+    border-color: set-color(green, 200)
+  ),
+  danger: (
+    icon: './icon-danger.svg',
+    background-color: set-color(red, 100),
+    border-color: set-color(red, 200)
+  ),
+  warning: (
+    icon: './icon-warning.svg',
+    background-color: set-color(yellow, 100),
+    border-color: set-color(yellow, 200)
+  ),
+  info: (
+    icon: './icon-info.svg',
+    background-color: set-color(blue, 100),
+    border-color: set-color(blue, 200)
+  ),
+  dark: (
+    icon: './icon-dark.svg',
+    background-color: set-color(grey, 400),
+    border-color: set-color(grey, 600)
+  )
+);
+
+.#{$alert} {
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 0.125rem;
+  box-sizing: border-box;
+  font-size: 1.625rem;
+  line-height: 2rem;
+  padding: 1.375rem 1.875rem;
+  position: relative;
+
+  &::before {
+    content: attr(data-title);
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  @each $state in map-keys($states) {
+    &.#{$alert}--#{$state} {
+      background-color: map-get(map-get($states, $state), background-color);
+      border-color: map-get(map-get($states, $state), border-color);
+
+      &.#{$alert}--has-icon {
+        padding-left: 6.875rem;
+
+        &::after {
+          background-image: url(map-get(map-get($states, $state), icon));
+          content: '';
+          display: block;
+          height: 2.5rem;
+          left: 2.125rem;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 2.5rem;
+        }
+      }
+    }
+  }
+}
