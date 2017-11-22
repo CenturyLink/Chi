@@ -48,6 +48,10 @@ input {
         pointer-events: none;
       }
 
+      &::-moz-focus-outer {
+        border: 0;
+      }
+
       &.#{$input}--zero {
         &:focus,
         &.#{$input}--focus {
