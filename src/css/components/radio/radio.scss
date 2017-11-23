@@ -18,31 +18,46 @@ input {
         height: 2rem;
         line-height: 2rem;
         position: relative;
+        transition: box-shadow 0.2s ease-in-out;
         width: 2rem;
 
         &::before {
           background-color: set-color(carbon, 100);
           border-radius: 1rem;
           content: '';
-          display: none;
+          display: block;
           height: 1rem;
           left: 0.25rem;
+          opacity: 0;
           position: absolute;
           top: 0.25rem;
+          transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
           width: 1rem;
         }
 
         &:hover,
         &.#{$input}--hover {
           &::before {
-            display: block;
+            opacity: 1;
           }
         }
       }
 
-      &:checked + label {
-        &::before {
-          display: block;
+      &:checked {
+        & + label {
+          border-color: set-color(green, 500);
+
+          &::before {
+            background-color: set-color(green, 500);
+            opacity: 1;
+          }
+        }
+
+        &:focus,
+        &.#{$input}--focus {
+          & + label {
+            box-shadow: 0 0 1px 4px rgba(set-color(green, 500), 0.3);
+          }
         }
       }
 
@@ -55,23 +70,6 @@ input {
       &.#{$input}--focus {
         & + label {
           box-shadow: 0 0 1px 4px rgba(set-color(carbon, 100), 0.3);
-        }
-      }
-
-      &.#{$input}--primary {
-        & + label {
-          border-color: set-color(green, 500);
-
-          &::before {
-            background-color: set-color(green, 500);
-          }
-        }
-
-        &:focus,
-        &.#{$input}--focus {
-          & + label {
-            box-shadow: 0 0 1px 4px rgba(set-color(green, 500), 0.3);
-          }
         }
       }
     }
