@@ -19,9 +19,21 @@ body {
   padding-bottom: $base-unit * 4;
 }
 
-[class*='test'] {
+.tests {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+[class*='test-'] {
+  display: flex;
+  flex-direction: column;
   margin: 0 -1rem;
   padding: 1rem;
+
+  &.w100 {
+    align-self: stretch;
+  }
 }
 
 .c-grid--show {

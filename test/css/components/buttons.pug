@@ -3,185 +3,93 @@ title: Buttons
 ---
 img(inline src='test/css/components/icon-workspace.svg')
 
-h2 Styles
-each type, index in ['solid', 'outline', 'flat']
-  each size in ['small', 'medium', 'large']
+each type in ['solid', 'outline', 'flat']
+  div(class=`test-${type}`)
+    span.h2= `Button / ${type}`
+    table(cellpadding="0", cellspacing="0")
+      each state in ['initial', 'hover', 'active', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'primary', 'danger', 'info', 'dark']
+            td
+              if state == 'disabled'
+                input(type="button", class=`c-btn c-btn--${type} c-btn--${style} c-ml4 c-m1`, value="Button", disabled)
+                a(class=`c-btn c-btn--${type} c-btn--${style} c-btn--icon c-m1`, href="#", disabled)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-m1`, disabled)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                    span Button
+              else
+                input(type="button", class=`c-btn c-btn--${type} c-btn--${style} c-btn--${state} c-ml4 c-m1`, value="Button")
+                a(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${state} c-btn--icon c-m1`, href="#")
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${state} c-m1`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                    span Button
+
+.test-float
+  h2 Button / Floating
+  table(cellpadding="0", cellspacing="0")
+    each state in ['initial', 'hover', 'active', 'focus', 'disabled']
+      tr
+        td
+          small= `${state}`
+        each style in ['default', 'primary', 'danger', 'info', 'dark']
+          td
+            button(type="button", class=`c-btn c-btn--float c-btn--${style} c-btn--${state} c-ml4 c-m1`)
+              .c-btn-content
+                .c-icon
+                  svg
+                    use(xlink:href='#workspace')
+
+
+each size in ['small', 'large']
+  each type in ['solid', 'outline', 'flat']
     div(class=`test-${type}-${size}`)
-      h3= `${type} buttons`
-      .c-grid
-        .c-col(class=`c-col--3 c-col--offset-3 c-col--middle
-                      c-col--1-xs c-col--offset-1-xs c-col--order-2-xs
-                      c-col--2-sm c-col--offset-2-sm`)
-          h6 hover
-        .c-col(class=`c-col--3 c-col--middle
-                      c-col--1-xs c-col--offset-1-xs c-col--order-4-xs
-                      c-col--2-sm`)
-          h6 active
-        .c-col(class=`c-col--3 c-col--middle
-                      c-col--1-xs c-col--offset-1-xs c-col--order-6-xs
-                      c-col--2-sm`)
-          h6 focus
-        .c-col(class=`c-col--3 c-col--middle
-                      c-col--2-xs c-col--offset-2-xs c-col--order-1-xs
-                      c-col--2-sm`)
-          a(class=`c-btn c-btn--${size} c-btn--${type} c-mr1`)
-            .c-btn-content
-              .c-icon
-                svg
-                    use(xlink:href='#workspace')
-              span Button
-          a(class=`c-btn c-btn--${size} c-btn--${type} c-btn--icon`)
-            .c-btn-content
-              .c-icon
-                svg
-                    use(xlink:href='#workspace')
-        .c-col(class=`c-col--3 c-col--middle
-                      c-col--2-xs c-col--order-3-xs
-                      c-col--2-sm`)
-          input(type='button', class=`c-btn c-btn--${size} c-btn--${type} c-btn--hover`, value='Button')
-        .c-col(class=`c-col--3 c-col--middle
-                      c-col--2-xs c-col--order-5-xs
-                      c-col--2-sm`)
-          button(class=`c-btn c-btn--${size} c-btn--${type} c-btn--active`) Button
-        .c-col(class=`c-col--3 c-col--middle
-                      c-col--2-xs c-col--order-7-xs
-                      c-col--2-sm`)
-          button(class=`c-btn c-btn--${size} c-btn--${type} c-btn--focus`) Button
-
-      each modifier in ['primary', 'danger', 'info', 'dark']
-        h5= modifier
-        .c-grid
-          .c-col(class=`c-col--3 c-col--offset-3 c-col--hide-from-sm c-col--middle
-                        c-col--1-xs c-col--offset-1-xs c-col--order-2-xs
-                        c-col--2-sm c-col--offset-2-sm`)
-            h6 hover
-          .c-col(class=`c-col--3 c-col--hide-from-sm c-col--middle
-                        c-col--1-xs c-col--offset-1-xs c-col--order-4-xs
-                        c-col--2-sm`)
-            h6 active
-          div(class=`c-col c-col--3 c-col--hide-from-sm
-                    c-col--1-xs c-col--offset-1-xs c-col--order-6-xs
-                    c-col--2-sm`)
-            h6 focus
-          .c-col(class=`c-col--3 c-col--middle
-                        c-col--2-xs c-col--offset-2-xs c-col--order-1-xs
-                        c-col--2-sm`)
-            a(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${modifier} c-mr1`)
-              .c-btn-content
-                .c-icon
-                  svg
-                      use(xlink:href='#workspace')
-                span Button
-            a(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${modifier} c-btn--icon`)
-              .c-btn-content
-                .c-icon
-                  svg
-                      use(xlink:href='#workspace')
-          .c-col(class=`c-col--3 c-col--middle
-                        c-col--2-xs c-col--order-3-xs
-                        c-col--2-sm`)
-            input(type='button', class=`c-btn c-btn--${size} c-btn--${type} c-btn--${modifier} c-btn--hover`, value='Button')
-          .c-col(class=`c-col--3 c-col--middle
-                        c-col--2-xs c-col--order-5-xs
-                        c-col--2-sm`)
-            button(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${modifier} c-btn--active`) Button
-          .c-col(class=`c-col--3 c-col--middle
-                        c-col--2-xs c-col--order-7-xs
-                        c-col--2-sm`)
-            button(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${modifier} c-btn--focus`) Button
-
-h3 float buttons
-div(class=`test-float`)
-  .c-grid
-    .c-col(class=`c-col--3 c-col--offset-3 c-col--middle
-                  c-col--1-xs c-col--offset-1-xs c-col--order-2-xs
-                  c-col--2-sm c-col--offset-2-sm`)
-      h6 hover
-    .c-col(class=`c-col--3 c-col--middle
-                  c-col--1-xs c-col--offset-1-xs c-col--order-4-xs
-                  c-col--2-sm`)
-      h6 active
-    .c-col(class=`c-col--3 c-col--middle
-                  c-col--1-xs c-col--offset-1-xs c-col--order-6-xs
-                  c-col--2-sm`)
-      h6 focus
-    .c-col(class=`c-col--3 c-col--middle
-                  c-col--2-xs c-col--offset-2-xs c-col--order-1-xs
-                  c-col--2-sm`)
-      button(class=`c-btn c-btn--float`)
-        .c-btn-content
-          .c-icon
-            svg
-                use(xlink:href='#workspace')
-    .c-col(class=`c-col--3 c-col--middle
-                  c-col--2-xs c-col--order-3-xs
-                  c-col--2-sm`)
-      button(class=`c-btn c-btn--float c-btn--hover`)
-        .c-btn-content
-          .c-icon
-            svg
-                use(xlink:href='#workspace')
-    .c-col(class=`c-col--3 c-col--middle
-                  c-col--2-xs c-col--order-5-xs
-                  c-col--2-sm`)
-      button(class=`c-btn c-btn--float c-btn--active`)
-        .c-btn-content
-          .c-icon
-            svg
-                use(xlink:href='#workspace')
-    .c-col(class=`c-col--3 c-col--middle
-                  c-col--2-xs c-col--order-7-xs
-                  c-col--2-sm`)
-      button(class=`c-btn c-btn--float c-btn--focus`)
-        .c-btn-content
-          .c-icon
-            svg
-                use(xlink:href='#workspace')
-
-  each modifier in ['primary', 'danger', 'info', 'dark']
-    h5= modifier
-    .c-grid
-      .c-col(class=`c-col--3 c-col--offset-3 c-col--hide-from-sm c-col--middle
-                    c-col--1-xs c-col--offset-1-xs c-col--order-2-xs
-                    c-col--2-sm c-col--offset-2-sm`)
-        h6 hover
-      .c-col(class=`c-col--3 c-col--hide-from-sm c-col--middle
-                    c-col--1-xs c-col--offset-1-xs c-col--order-4-xs
-                    c-col--2-sm`)
-        h6 active
-      .c-col(class=`c-col--3 c-col--hide-from-sm c-col--middle
-                    c-col--1-xs c-col--offset-1-xs c-col--order-6-xs
-                    c-col--2-sm`)
-        h6 focus
-      .c-col(class=`c-col--3 c-col--middle
-                    c-col--2-xs c-col--offset-2-xs c-col--order-1-xs
-                    c-col--2-sm`)
-        button(class=`c-btn c-btn--float c-btn--${modifier}`)
-          .c-btn-content
-            .c-icon
-              svg
-                  use(xlink:href='#workspace')
-      .c-col(class=`c-col--3 c-col--middle
-                    c-col--2-xs c-col--order-3-xs
-                    c-col--2-sm`)
-        button(class=`c-btn c-btn--float c-btn--${modifier} c-btn--hover`)
-          .c-btn-content
-            .c-icon
-              svg
-                  use(xlink:href='#workspace')
-      .c-col(class=`c-col--3 c-col--middle
-                    c-col--2-xs c-col--order-5-xs
-                    c-col--2-sm`)
-        button(class=`c-btn c-btn--float c-btn--${modifier} c-btn--active`)
-          .c-btn-content
-            .c-icon
-              svg
-                  use(xlink:href='#workspace')
-      .c-col(class=`c-col--3 c-col--middle
-                    c-col--2-xs c-col--order-7-xs
-                    c-col--2-sm`)
-        button(class=`c-btn c-btn--float c-btn--${modifier} c-btn--focus`)
-          .c-btn-content
-            .c-icon
-              svg
-                  use(xlink:href='#workspace')
+      h2= `Button / ${size} / ${type}`
+      table(cellpadding="0", cellspacing="0")
+        each state in ['initial', 'hover', 'active', 'focus', 'disabled']
+          tr
+            td
+              small= `${state}`
+            each style in ['default', 'primary', 'danger', 'info', 'dark']
+              td
+                if state == 'disabled'
+                  input(type="button", class=`c-btn c-btn--${size} c-btn--${type} c-btn--${style} c-ml4 c-m1`, value="Button", disabled)
+                  a(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${style} c-btn--icon c-m1`, href="#", disabled)
+                    .c-btn-content
+                      .c-icon
+                        svg
+                          use(xlink:href='#workspace')
+                  button(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${style} c-m1`, disabled)
+                    .c-btn-content
+                      .c-icon
+                        svg
+                          use(xlink:href='#workspace')
+                      span Button
+                else
+                  input(type="button", class=`c-btn c-btn--${size} c-btn--${type} c-btn--${style} c-btn--${state} c-ml4 c-m1`, value="Button")
+                  a(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${style} c-btn--${state} c-btn--icon c-m1`, href="#")
+                    .c-btn-content
+                      .c-icon
+                        svg
+                          use(xlink:href='#workspace')
+                  button(class=`c-btn c-btn--${size} c-btn--${type} c-btn--${style} c-btn--${state} c-m1`)
+                    .c-btn-content
+                      .c-icon
+                        svg
+                          use(xlink:href='#workspace')
+                      span Button
