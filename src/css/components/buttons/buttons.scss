@@ -23,6 +23,11 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
     vertical-align: middle;
     white-space: nowrap;
 
+    &[disabled] {
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
     .c-icon {
       height: 2rem;
       width: 2rem;
@@ -98,7 +103,7 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
 
     &.#{$btn}--float {
       border-radius: 50%;
-      padding: 0.875rem;
+      padding: 1.375rem;
       transition: transform 0.2s cubic-bezier(0.95, -0.18, 0.65, 2.46);
 
       .c-icon {
@@ -106,6 +111,10 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
         width: 2rem;
       }
 
+      &:active,
+      &.#{$btn}--active,
+      &:focus,
+      &.#{$btn}--focus,
       &:hover,
       &.#{$btn}--hover {
         transform: scale(1.2);
@@ -268,7 +277,6 @@ $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
       border: 0.125rem solid set-color(map-get($state-colors, $type), 500);
       box-shadow: 0 1px 1px 0 rgba(set-color(carbon, 800), 0.04);
       color: set-color(grey, 100);
-      font-weight: 700;
 
       .c-icon {
         color: inherit;
