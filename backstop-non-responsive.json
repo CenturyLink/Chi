@@ -3,7 +3,7 @@
   "viewports": [
     {
       "label": "viewport",
-      "width": 2000,
+      "width": 2800,
       "height": 768
     }
   ],
@@ -54,11 +54,27 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-button-group",
-        ".test-icon-button-group",
-        ".test-vertical-button-group",
-        ".test-vertical-icon-button-group",
-        ".test-hybrid"
+        ".test-solid",
+        ".test-outline",
+        ".test-flat",
+        ".test-hybrid",
+        ".test-vertical-solid",
+        ".test-vertical-outline",
+        ".test-vertical-flat",
+        ".test-solid-small",
+        ".test-outline-small",
+        ".test-flat-small",
+        ".test-hybrid-small",
+        ".test-vertical-solid-small",
+        ".test-vertical-outline-small",
+        ".test-vertical-flat-small",
+        ".test-solid-large",
+        ".test-outline-large",
+        ".test-flat-large",
+        ".test-hybrid-large",
+        ".test-vertical-solid-large",
+        ".test-vertical-outline-large",
+        ".test-vertical-flat-large"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -237,28 +253,6 @@
       "selectors": [
         ".test-states",
         ".test-no-text-states"
-      ],
-      "selectorExpansion": true,
-      "misMatchThreshold": 0,
-      "requireSameDimensions": true
-    },
-    {
-      "label": "typography",
-      "cookiePath": "",
-      "url": "http://localhost:8000/foundations/typography.html",
-      "referenceUrl": "",
-      "readyEvent": "",
-      "readySelector": "",
-      "delay": 0,
-      "hideSelectors": [],
-      "removeSelectors": [],
-      "hoverSelector": "",
-      "clickSelector": "",
-      "postInteractionWait": "",
-      "selectors": [
-        ".test-headers",
-        ".test-colors",
-        ".test-paragraph"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
