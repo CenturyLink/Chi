@@ -1,2 +1,26 @@
 @import 'horizontal-button-groups';
 @import 'vertical-button-groups';
+
+.#{$btn-group} {
+  &.#{$btn-group}--expanded {
+    display: flex;
+
+    .#{$btn} {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+
+      &.#{$btn}--not-expand {
+        flex: 0;
+      }
+
+      &.#{$btn}--align-left {
+        justify-content: flex-start;
+      }
+
+      &.#{$btn}--align-right {
+        justify-content: flex-end;
+      }
+    }
+  }
+}

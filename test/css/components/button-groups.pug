@@ -136,10 +136,70 @@ each type in ['solid', 'outline', 'flat']
                       use(xlink:href='#workspace')
                   span Button
 
+  div(class=`test-${type}-expanded`)
+    span.h2= `Button Group / Horizontal / ${type} / Expanded`
+    table(cellpadding="0", cellspacing="0", width="1140")
+      each style in ['default', 'primary', 'danger', 'info', 'dark']
+        tr
+          td
+            .c-btn-group.c-btn-group--expanded.c-m1
+              button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--not-expand`) Button
+              button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--align-left`) Button
+              button(class=`c-btn c-btn--${type} c-btn--${style}`) Button
+              button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--align-right`) Button
+          td
+            .c-btn-group.c-btn-group--expanded.c-m1.c-ml3
+              button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style} c-btn--not-expand`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+              button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style} c-btn--align-left`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+              button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style}`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+              button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style} c-btn--align-right`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+          td
+            .c-btn-group.c-btn-group--expanded.c-m1.c-ml3
+              button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--not-expand`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+                  span Button
+              button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--align-left`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+                  span Button
+              button(class=`c-btn c-btn--${type} c-btn--${style}`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+                  span Button
+              button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--align-right`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+                  span Button
+
 
 .test-hybrid
   span.h2 Button Groups / Hybrid
-  .c-btn-group.c-mr1
+  .c-btn-group
     button(class=`c-btn`)
       .c-btn-content
         .c-icon
@@ -147,6 +207,30 @@ each type in ['solid', 'outline', 'flat']
             use(xlink:href='#workspace')
         span Reinstall
     button(class=`c-btn c-btn--icon c-btn--primary`)
+      .c-btn-content
+        .c-icon
+          svg
+            use(xlink:href='#workspace')
+
+.test-hybrid-expanded
+  span.h2 Button Groups / Hybrid / Expanded
+  .c-btn-group.c-btn-group--expanded.c-m1(style="width:200px")
+    button(class=`c-btn c-btn--align-left`) Button
+    button(class=`c-btn c-btn--icon c-btn--not-expand`)
+      .c-btn-content
+        .c-icon
+          svg
+            use(xlink:href='#workspace')
+  .c-btn-group.c-btn-group--expanded.c-m1(style="width:200px")
+    button(class=`c-btn`) Button
+    button(class=`c-btn c-btn--icon c-btn--not-expand`)
+      .c-btn-content
+        .c-icon
+          svg
+            use(xlink:href='#workspace')
+  .c-btn-group.c-btn-group--expanded.c-m1(style="width:200px")
+    button(class=`c-btn c-btn--align-right`) Button
+    button(class=`c-btn c-btn--icon c-btn--not-expand`)
       .c-btn-content
         .c-icon
           svg
@@ -280,6 +364,54 @@ each type in ['solid', 'outline', 'flat']
                       use(xlink:href='#workspace')
                   span Button
               button(class=`c-btn c-btn--${type} c-btn--${style}`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+                  span Button
+
+  div(class=`test-vertical-${type}-expanded`)
+    span.h2= `Button Group / Vertical / ${type} / Expanded`
+    table(cellpadding="0", cellspacing="0", width="1140")
+      each style in ['default', 'primary', 'danger', 'info', 'dark']
+        tr
+          td
+            .c-btn-group.c-btn-group--vertical.c-btn-group--expanded.c-m1
+              button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--align-left`) Button
+              button(class=`c-btn c-btn--${type} c-btn--${style}`) Button
+              button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--align-right`) Button
+          td
+            .c-btn-group.c-btn-group--vertical.c-btn-group--expanded.c-m1.c-ml3
+              button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style} c-btn--align-left`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+              button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style}`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+              button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style} c-btn--align-right`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+          td
+            .c-btn-group.c-btn-group--vertical.c-btn-group--expanded.c-m1.c-ml3
+              button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--align-left`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+                  span Button
+              button(class=`c-btn c-btn--${type} c-btn--${style}`)
+                .c-btn-content
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+                  span Button
+              button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--align-right`)
                 .c-btn-content
                   .c-icon
                     svg
@@ -421,6 +553,65 @@ each size in ['small', 'large']
                         use(xlink:href='#workspace')
                     span Button
 
+    div(class=`test-${type}-${size}-expanded`)
+      span.h2= `Button Group / Horizontal / ${type} / ${size} / Expanded`
+      table(cellpadding="0", cellspacing="0", width="1140")
+        each style in ['default', 'primary', 'danger', 'info', 'dark']
+          tr
+            td
+              .c-btn-group.c-btn-group--expanded.c-m1
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size} c-btn--not-expand`) Button
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size} c-btn--align-left`) Button
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size}`) Button
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size} c-btn--align-right`) Button
+            td
+              .c-btn-group.c-btn-group--expanded.c-m1.c-ml3
+                button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style} c-btn--${size} c-btn--not-expand`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style} c-btn--${size} c-btn--align-left`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style} c-btn--${size}`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style} c-btn--${size} c-btn--align-right`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+            td
+              .c-btn-group.c-btn-group--expanded.c-m1.c-ml3
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size} c-btn--not-expand`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                    span Button
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size} c-btn--align-left`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                    span Button
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size}`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                    span Button
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size} c-btn--align-right`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                    span Button
 
   div(class=`test-hybrid-${size}`)
     span.h2= `Button Groups / Hybrid / ${size}`
@@ -432,6 +623,30 @@ each size in ['small', 'large']
               use(xlink:href='#workspace')
           span Reinstall
       button(class=`c-btn c-btn--${size} c-btn--icon c-btn--primary`)
+        .c-btn-content
+          .c-icon
+            svg
+              use(xlink:href='#workspace')
+
+  div(class=`test-hybrid-${size}-expanded`)
+    span.h2 Button Groups / Hybrid / Expanded
+    .c-btn-group.c-btn-group--expanded.c-m1(style="width:200px")
+      button(class=`c-btn c-btn--${size} c-btn--align-left`) Button
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--not-expand`)
+        .c-btn-content
+          .c-icon
+            svg
+              use(xlink:href='#workspace')
+    .c-btn-group.c-btn-group--expanded.c-m1(style="width:200px")
+      button(class=`c-btn c-btn--${size}`) Button
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--not-expand`)
+        .c-btn-content
+          .c-icon
+            svg
+              use(xlink:href='#workspace')
+    .c-btn-group.c-btn-group--expanded.c-m1(style="width:200px")
+      button(class=`c-btn c-btn--${size} c-btn--align-right`) Button
+      button(class=`c-btn c-btn--${size} c-btn--icon c-btn--not-expand`)
         .c-btn-content
           .c-icon
             svg
@@ -565,6 +780,54 @@ each size in ['small', 'large']
                         use(xlink:href='#workspace')
                     span Button
                 button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size}`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                    span Button
+
+    div(class=`test-vertical-${type}-${size}-expanded`)
+      span.h2= `Button Group / Vertical / ${type} / ${size} / Expanded`
+      table(cellpadding="0", cellspacing="0", width="1140")
+        each style in ['default', 'primary', 'danger', 'info', 'dark']
+          tr
+            td
+              .c-btn-group.c-btn-group--vertical.c-btn-group--expanded.c-m1
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size} c-btn--align-left`) Button
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size}`) Button
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size} c-btn--align-right`) Button
+            td
+              .c-btn-group.c-btn-group--vertical.c-btn-group--expanded.c-m1.c-ml3
+                button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style} c-btn--${size} c-btn--align-left`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style} c-btn--${size}`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                button(class=`c-btn c-btn--icon c-btn--${type} c-btn--${style} c-btn--${size} c-btn--align-right`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+            td
+              .c-btn-group.c-btn-group--vertical.c-btn-group--expanded.c-m1.c-ml3
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size} c-btn--align-left`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                    span Button
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size}`)
+                  .c-btn-content
+                    .c-icon
+                      svg
+                        use(xlink:href='#workspace')
+                    span Button
+                button(class=`c-btn c-btn--${type} c-btn--${style} c-btn--${size} c-btn--align-right`)
                   .c-btn-content
                     .c-icon
                       svg
