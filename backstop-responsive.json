@@ -159,6 +159,28 @@
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
+    },
+    {
+      "label": "typography",
+      "cookiePath": "",
+      "url": "http://localhost:8000/foundations/typography.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-headers",
+        ".test-colors",
+        ".test-paragraph"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
     }
   ],
   "paths": {

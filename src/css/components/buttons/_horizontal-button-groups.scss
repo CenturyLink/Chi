@@ -69,6 +69,8 @@
             }
           }
 
+          &:active,
+          &.#{$btn}--active,
           &:hover,
           &.#{$btn}--hover,
           &:focus,
@@ -182,6 +184,8 @@
             }
           }
 
+          &:active,
+          &.#{$btn}--active,
           &:hover,
           &.#{$btn}--hover,
           &:focus,
