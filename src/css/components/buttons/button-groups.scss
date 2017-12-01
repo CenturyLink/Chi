@@ -7,11 +7,11 @@
 
     .#{$btn} {
       display: flex;
-      flex: 1;
+      flex: 1 0 auto;
       justify-content: center;
 
       &.#{$btn}--not-expand {
-        flex: 0;
+        flex: 0 0 auto;
       }
 
       &.#{$btn}--align-left {
