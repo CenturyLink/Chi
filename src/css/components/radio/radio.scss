@@ -10,34 +10,44 @@ input {
       position: absolute;
 
       & + label {
-        background-color: set-color(grey, 100);
-        border: 0.25rem solid set-color(carbon, 100);
-        border-radius: 1rem;
-        cursor: pointer;
-        display: block;
-        height: 2rem;
-        line-height: 2rem;
-        position: relative;
-        transition: box-shadow 0.2s ease-in-out;
-        width: 2rem;
+        & {
+          align-items: center;
+          cursor: pointer;
+          display: flex;
+          position: relative;
+        }
 
         &::before {
+          background-color: set-color(grey, 100);
+          border: 0.25rem solid set-color(carbon, 100);
+          border-radius: 1rem;
+          content: '';
+          cursor: pointer;
+          display: block;
+          height: 2rem;
+          margin-right: 1rem;
+          position: relative;
+          transition: box-shadow 0.2s ease-in-out;
+          width: 2rem;
+        }
+
+        &::after {
           background-color: set-color(carbon, 100);
           border-radius: 1rem;
           content: '';
           display: block;
           height: 1rem;
-          left: 0.25rem;
+          left: 0.5rem;
           opacity: 0;
           position: absolute;
-          top: 0.25rem;
+          top: 1rem;
           transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
           width: 1rem;
         }
 
         &:hover,
         &.#{$input}--hover {
-          &::before {
+          &::after {
             opacity: 1;
           }
         }
@@ -45,9 +55,11 @@ input {
 
       &:checked {
         & + label {
-          border-color: set-color(green, 500);
-
           &::before {
+            border-color: set-color(green, 500);
+          }
+
+          &::after {
             background-color: set-color(green, 500);
             opacity: 1;
           }
@@ -55,7 +67,7 @@ input {
 
         &:focus,
         &.#{$input}--focus {
-          & + label {
+          & + label::before {
             box-shadow: 0 0 1px 4px rgba(set-color(green, 500), 0.3);
           }
         }
@@ -68,7 +80,7 @@ input {
 
       &:focus,
       &.#{$input}--focus {
-        & + label {
+        & + label::before {
           box-shadow: 0 0 1px 4px rgba(set-color(carbon, 100), 0.3);
         }
       }
