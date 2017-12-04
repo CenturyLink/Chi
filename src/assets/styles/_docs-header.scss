@@ -24,7 +24,7 @@
     font-weight: 300;
 
     &::before {
-      background: set-color(grey, 400);
+      background-color: set-color(grey, 400);
       content: '';
       display: block;
       height: 4rem;

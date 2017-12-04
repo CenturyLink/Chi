@@ -1,0 +1,43 @@
+.palette-container {
+  align-items: flex-start;
+  display: flex;
+}
+
+.color-palette {
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 4rem;
+  margin-right: 8rem;
+  overflow: hidden;
+  width: 256px;
+
+  & > div {
+    padding: 1.5rem 2rem;
+    position: relative;
+
+    .value {
+      bottom: 1.5rem;
+      left: 2rem;
+      position: absolute;
+    }
+
+    .hexa {
+      text-align: right;
+      text-transform: uppercase;
+    }
+  }
+
+  .header {
+    height: 128px;
+
+    .hexa {
+      bottom: 1.5rem;
+      position: absolute;
+      right: 2rem;
+    }
+  }
+}

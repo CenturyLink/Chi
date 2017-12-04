@@ -1,0 +1,126 @@
+---
+title: Text Inputs
+---
+img(inline src='node_modules/@ctl/chi/src/css/components/icons/icons/icon-edit.svg')
+img(inline src='node_modules/@ctl/chi/src/css/components/icons/icons/icon-check.svg')
+
+| In order to use a text input just use an <code>input type="text"</code> with the class <code>c-input</code>. By
+| default text inputs are fluid, adjusting them to it's parent width.
+
+.c-mb4.c-mt2
+  div(style="max-width:30rem")
+    input(type="text", class="c-input", placeholder="Placeholder", value="Sample Text")
+
+  :code(lang="html")
+    <input type="text" class="c-input" placeholder="Placeholder" value="Sample Text">
+
+.c-mb4
+  .c-input-wrapper.c-input-wrapper--icon-left(style="max-width:30rem")
+    input(type="text", class="c-input", placeholder="Placeholder", value="Sample Text")
+    .c-icon
+      svg
+        use(xlink:href='#edit')
+
+  :code(lang="html")
+    <div class="c-input-wrapper c-input-wrapper--icon-left">
+      <input type="text" class="c-input" placeholder="Placeholder" value="Sample text">
+      <div class="c-icon">
+        <svg>
+          <use xlink:href="#edit"></use>
+        </svg>
+      </div>
+    </div>
+
+.c-mb4
+  .c-input-wrapper.c-input-wrapper--icon-right(style="max-width:30rem")
+    input(type="text", class="c-input", placeholder="Placeholder", value="Sample Text")
+    .c-icon
+      svg
+        use(xlink:href='#edit')
+
+  :code(lang="html")
+    <div class="c-input-wrapper c-input-wrapper--icon-right">
+      <input type="text" class="c-input" placeholder="Placeholder" value="Sample text">
+      <div class="c-icon">
+        <svg>
+          <use xlink:href="#edit"></use>
+        </svg>
+      </div>
+    </div>
+
+.c-mb4
+  .c-input-wrapper.c-input-wrapper--icon-left.c-input-wrapper--icon-right(style="max-width:30rem")
+    input(type="text", class="c-input", placeholder="Placeholder", value="Sample Text")
+    .c-icon
+      svg
+        use(xlink:href='#edit')
+    .c-icon
+      svg
+        use(xlink:href='#check')
+
+  :code(lang="html")
+    <div class="c-input-wrapper c-input-wrapper--icon-left c-input-wrapper--icon-right">
+      <input type="text" class="c-input" placeholder="Placeholder" value="Sample text">
+      <div class="c-icon">
+        <svg>
+          <use xlink:href="#edit"></use>
+        </svg>
+      </div>
+      <div class="c-icon">
+        <svg>
+          <use xlink:href="#check"></use>
+        </svg>
+      </div>
+    </div>
+
+h3 States
+
+| Text inputs has three states vailable:
+
+ul
+  li success: <code>c-input--success</code>
+  li warning: <code>c-input--warning</code>
+  li danger: <code>c-input--danger</code>
+
+.c-mb4.c-mt2
+  div(style="max-width:30rem")
+    input(type="text", class="c-input c-input--success", placeholder="Placeholder", value="Sample Text")
+
+  :code(lang="html")
+    <input type="text" class="c-input c-input--success" placeholder="Placeholder" value="Sample Text">
+
+.c-mb4.c-mt2
+  div(style="max-width:30rem")
+    input(type="text", class="c-input c-input--warning", placeholder="Placeholder", value="Sample Text")
+
+  :code(lang="html")
+    <input type="text" class="c-input c-input--warning" placeholder="Placeholder" value="Sample Text">
+
+.c-mb4.c-mt2
+  div(style="max-width:30rem")
+    input(type="text", class="c-input c-input--danger", placeholder="Placeholder", value="Sample Text")
+
+  :code(lang="html")
+    <input type="text" class="c-input c-input--danger" placeholder="Placeholder" value="Sample Text">
+
+h3 Sizes
+
+| There are two modifiers available for the text input size:
+
+ul
+  li Small: <code>c-input--small</code>
+  li Large: <code>c-input--large</code>
+
+.c-mb4.c-mt2
+  div(style="max-width:30rem")
+    input(type="text", class="c-input c-input--small", placeholder="Placeholder", value="Sample Text")
+
+  :code(lang="html")
+    <input type="text" class="c-input c-input--small" placeholder="Placeholder" value="Sample Text">
+
+.c-mb4.c-mt2
+  div(style="max-width:30rem")
+    input(type="text", class="c-input c-input--large", placeholder="Placeholder", value="Sample Text")
+
+  :code(lang="html")
+    <input type="text" class="c-input c-input--large" placeholder="Placeholder" value="Sample Text">
