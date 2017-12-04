@@ -25,11 +25,13 @@ input {
           &::before {
             background-color: set-color(grey, 100);
             background-image: none;
+            border: 0;
             border-radius: 12px;
             content: '';
             display: block;
             height: 2.5rem;
             left: 0.25rem;
+            margin: 0;
             opacity: 1;
             position: absolute;
             top: 0.25rem;
@@ -38,6 +40,7 @@ input {
           }
 
           &::after {
+            background-image: none;
             color: set-color(grey, 100);
             content: 'OFF';
             display: block;
@@ -45,7 +48,9 @@ input {
             font-weight: bold;
             left: 3.125rem;
             line-height: 3rem;
+            opacity: 1;
             position: absolute;
+            top: initial;
             transition: left 0.2s ease-in 0.1s;
           }
         }
@@ -81,6 +86,10 @@ input {
         &.#{$input}--focus {
           & + label {
             box-shadow: 0 0 1px 4px rgba(set-color(carbon, 100), 0.3);
+
+            &::before {
+              box-shadow: none;
+            }
           }
         }
 
