@@ -10,33 +10,41 @@ input {
       position: absolute;
 
       & + label {
-        background-color: set-color(grey, 100);
-        border: 0.25rem solid set-color(carbon, 100);
-        border-radius: 3px;
-        cursor: pointer;
-        display: block;
-        height: 2rem;
-        line-height: 2rem;
+        align-items: center;
+        display: flex;
+        line-height: 3rem;
         position: relative;
-        transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        width: 2rem;
 
         &::before {
+          background-color: set-color(grey, 100);
+          border: 0.25rem solid set-color(carbon, 100);
+          border-radius: 3px;
+          content: '';
+          cursor: pointer;
+          display: block;
+          height: 2rem;
+          margin-right: 1rem;
+          position: relative;
+          transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+          width: 2rem;
+        }
+
+        &::after {
           background-image: url('./icon-check--hover.svg');
           content: '';
           display: block;
           height: 1.25rem;
-          left: 0.125rem;
+          left: 0.375rem;
           opacity: 0;
           position: absolute;
-          top: 0.125rem;
+          top: 0.825rem;
           transition: background-image 0.2s ease-in-out, opacity 0.2s ease-in-out;
           width: 1.25rem;
         }
 
         &:hover,
         &.#{$input}--hover {
-          &::before {
+          &::after {
             opacity: 1;
           }
         }
@@ -44,10 +52,12 @@ input {
 
       &:checked {
         & + label {
-          background-color: set-color(green, 500);
-          border-color: set-color(green, 500);
-
           &::before {
+            background-color: set-color(green, 500);
+            border-color: set-color(green, 500);
+          }
+
+          &::after {
             background-image: url('./icon-check.svg');
             opacity: 1;
           }
@@ -55,20 +65,20 @@ input {
 
         &:focus,
         &.#{$input}--focus {
-          & + label {
+          & + label::before {
             box-shadow: 0 0 1px 4px rgba(set-color(green, 500), 0.3);
           }
         }
       }
 
-      &[disabled] + label {
+      &[disabled] + label::before {
         opacity: 0.65;
         pointer-events: none;
       }
 
       &:focus,
       &.#{$input}--focus {
-        & + label {
+        & + label::before {
           box-shadow: 0 0 1px 4px rgba(set-color(carbon, 100), 0.3);
         }
       }
