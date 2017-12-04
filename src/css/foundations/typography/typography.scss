@@ -6,6 +6,7 @@
 }
 
 * { // sass-lint:disable-line no-universal-selectors
+  -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
   -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
 }
 
@@ -17,7 +18,7 @@ body {
 }
 
 h1,
-.h1 {
+.c-h1 {
   font-size: 6rem;
   font-weight: 700;
   line-height: 8rem;
@@ -25,7 +26,7 @@ h1,
 }
 
 h2,
-.h2 {
+.c-h2 {
   font-size: 4rem;
   font-weight: 700;
   line-height: 6rem;
@@ -33,7 +34,7 @@ h2,
 }
 
 h3,
-.h3 {
+.c-h3 {
   font-size: 3rem;
   font-weight: 600;
   line-height: 4rem;
@@ -41,7 +42,7 @@ h3,
 }
 
 h4,
-.h4 {
+.c-h4 {
   font-size: 2.25rem;
   font-weight: 600;
   line-height: 4rem;
@@ -49,7 +50,7 @@ h4,
 }
 
 h5,
-.h5 {
+.c-h5 {
   font-size: 2rem;
   font-weight: 600;
   line-height: 4rem;
@@ -57,37 +58,37 @@ h5,
 }
 
 h6,
-.h6 {
+.c-h6 {
   font-size: 1.75rem;
   font-weight: 600;
   line-height: 3rem;
   margin: 1rem 0;
 }
 
-.text {
+.c-text {
   font-size: 2rem;
   line-height: 3rem;
 }
 
 small,
-.text--small {
+.c-text--small {
   font-size: 1.375rem;
   line-height: 2rem;
 }
 
 // text colors
-.text--inverse {
+.c-text--inverse {
   color: $text-inverse;
 }
 
-.text--danger {
+.c-text--danger {
   color: $danger-color;
 }
 
-.text--info {
+.c-text--info {
   color: $info-color;
 }
 
-.text--warning {
+.c-text--warning {
   color: $warning-color;
 }
