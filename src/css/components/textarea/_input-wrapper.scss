@@ -1,0 +1,90 @@
+@import 'variables';
+@import 'mixins';
+
+$input: c-input;
+$input-wrapper: c-input-wrapper;
+
+.#{$input-wrapper} {
+  position: relative;
+
+  textarea {
+    &.#{$input} {
+      & ~ .c-icon {
+        height: 2rem;
+        position: absolute;
+        top: 1rem;
+        width: 2rem;
+      }
+
+      &.#{$input}--small {
+        & ~ .c-icon {
+          height: 1.5rem;
+          top: 0.75rem;
+          width: 1.5rem;
+        }
+      }
+
+      &.#{$input}--large {
+        & ~ .c-icon {
+          top: 1.5rem;
+        }
+      }
+    }
+  }
+
+  &.#{$input-wrapper}--icon-left {
+    textarea {
+      &.#{$input} {
+        padding-left: 3.875rem;
+
+        &.#{$input}--small {
+          padding-left: 3.375rem;
+        }
+
+        &.#{$input}--large {
+          padding-left: 4.875rem;
+
+          & ~ .c-icon {
+            &:first-of-type {
+              left: 1.5rem;
+            }
+          }
+        }
+
+        & ~ .c-icon {
+          &:first-of-type {
+            left: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  &.#{$input-wrapper}--icon-right {
+    textarea {
+      &.#{$input} {
+        padding-right: 3.875rem;
+
+        &.#{$input}--small {
+          padding-right: 3.375rem;
+        }
+
+        &.#{$input}--large {
+          padding-right: 4.875rem;
+
+          & ~ .c-icon {
+            &:last-of-type {
+              right: 1.5rem;
+            }
+          }
+        }
+
+        & ~ .c-icon {
+          &:last-of-type {
+            right: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
