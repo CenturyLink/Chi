@@ -13,7 +13,7 @@ input {
       height: 4rem;
       line-height: 3rem;
       outline: none;
-      padding: 0.875rem;
+      padding: 0.875rem 1.375rem;
       transition: all 0.15s ease-in-out;
       width: 100%;
 
@@ -49,16 +49,19 @@ input {
       &.#{$input}--large {
         font-size: 2rem;
         line-height: 3rem;
-        padding: 0.875rem;
+        padding: 0.875rem 1.375rem;
       }
 
       @each $type in map-keys($state-colors) {
-        &.#{$input}--#{$type} {
-          border-color: set-color(map-get($state-colors, $type), 500);
+        &:not([disabled]),
+        &:not(.#{$input}--disabled) {
+          &.#{$input}--#{$type} {
+            border-color: set-color(map-get($state-colors, $type), 500);
 
-          &:focus,
-          &.#{$input}--focus {
-            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 500), 0.2);
+            &:focus,
+            &.#{$input}--focus {
+              box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 500), 0.2);
+            }
           }
         }
       }

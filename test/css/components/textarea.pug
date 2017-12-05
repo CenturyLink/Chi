@@ -1,52 +1,110 @@
 ---
 title: Textarea
 ---
+img(inline src='test/css/components/icon-workspace.svg')
+img(inline src='src/css/components/icons/icons/icon-check.svg')
+img(inline src='src/css/components/icons/icons/icon-circle-info-outline.svg')
+img(inline src='src/css/components/icons/icons/icon-circle-warning.svg')
+img(inline src='src/css/components/icons/icons/icon-warning.svg')
 
-h4 Sizes
+each size in ['default', 'small', 'large']
+  div(class=`test-${size}`)
+    span.c-h2= `Textarea / ${size}`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .c-m1
+                if state == 'disabled'
+                  textarea(class=`c-input c-input--${style} c-input--${state} c-input--${size}`, disabled) Value
+                else
+                  textarea(class=`c-input c-input--${style} c-input--${state} c-input--${size}`) Value
 
-.test-sizes
-  .c-mb1
-    h5 Small
-    textarea(class="c-textarea c-textarea--small", placeholder="Placeholder", value="Sample text")
+  div(class=`test-${size}-icon-left`)
+    span.c-h2= `Textarea / ${size} / icon left`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .c-m1
+                .c-input-wrapper.c-input-wrapper--icon-left
+                  if state == 'disabled'
+                    textarea(class=`c-input c-input--${style} c-input--${state} c-input--${size}`, disabled) Value
+                  else
+                    textarea(class=`c-input c-input--${style} c-input--${state} c-input--${size}`) Value
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
 
-  .c-mb1
-    h5 Base
-    textarea(class="c-textarea", placeholder="Placeholder", value="Sample text")
+  div(class=`test-${size}-icon-right`)
+    span.c-h2= `Textarea / ${size} / icon right`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .c-m1
+                .c-input-wrapper.c-input-wrapper--icon-right
+                  if state == 'disabled'
+                    textarea(class=`c-input c-input--${style} c-input--${state} c-input--${size}`, disabled) Value
+                  else
+                    textarea(class=`c-input c-input--${style} c-input--${state} c-input--${size}`) Value
+                  if style == 'success'
+                    .c-icon.c-text--success
+                      svg
+                        use(xlink:href='#check')
+                  else if style == 'warning'
+                    .c-icon.c-text--warning
+                      svg
+                        use(xlink:href='#warning')
+                  else if style == 'danger'
+                    .c-icon.c-text--danger
+                      svg
+                        use(xlink:href='#circle-warning')
+                  else
+                    .c-icon
+                      svg
+                        use(xlink:href='#circle-info-outline')
 
-  .c-mb1
-    h5 Large
-    textarea(class="c-textarea c-textarea--large", placeholder="Placeholder", value="Sample text")
-
-h4 States
-
-.test-states
-  .c-mb1
-    h5 Base
-    textarea(class="c-textarea", placeholder="Placeholder", value="Sample Text")
-
-  .c-mb1
-    h5 Hover
-    textarea(class="c-textarea c-textarea--hover", placeholder="Placeholder", value="Sample Text")
-
-  .c-mb1
-    h5 Focus
-    textarea(class="c-textarea c-textarea--focus", placeholder="Placeholder", value="Sample Text")
-
-  .c-mb1
-    h5 Disabled
-    textarea(class="c-textarea", placeholder="Placeholder", disabled, value="Sample Text")
-
-h4 validation
-
-.test-validation
-  .c-mb1
-    h5 Success
-    textarea(class="c-textarea c-textarea--success", placeholder="Placeholder", value="Sample Text")
-
-  .c-mb1
-    h5 Warning
-    textarea(class="c-textarea c-textarea--warning", placeholder="Placeholder", value="Sample Text")
-
-  .c-mb1
-    h5 Danger
-    textarea(class="c-textarea c-textarea--danger", placeholder="Placeholder", value="Sample Text")
+  div(class=`test-${size}-icon-left-right`)
+    span.c-h2= `Textarea / ${size} / icon left / icon right`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .c-m1
+                .c-input-wrapper.c-input-wrapper--icon-left.c-input-wrapper--icon-right
+                  if state == 'disabled'
+                    textarea(class=`c-input c-input--${style} c-input--${state} c-input--${size}`, disabled) Value
+                  else
+                    textarea(class=`c-input c-input--${style} c-input--${state} c-input--${size}`) Value
+                  .c-icon
+                    svg
+                      use(xlink:href='#workspace')
+                  if style == 'success'
+                    .c-icon.c-text--success
+                      svg
+                        use(xlink:href='#check')
+                  else if style == 'warning'
+                    .c-icon.c-text--warning
+                      svg
+                        use(xlink:href='#warning')
+                  else if style == 'danger'
+                    .c-icon.c-text--danger
+                      svg
+                        use(xlink:href='#circle-warning')
+                  else
+                    .c-icon
+                      svg
+                        use(xlink:href='#circle-info-outline')

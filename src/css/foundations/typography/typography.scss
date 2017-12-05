@@ -78,17 +78,21 @@ small,
 
 // text colors
 .c-text--inverse {
-  color: $text-inverse;
+  color: $text-inverse !important;
+}
+
+.c-text--success {
+  color: $accent-color !important;
 }
 
 .c-text--danger {
-  color: $danger-color;
+  color: $danger-color !important;
 }
 
 .c-text--info {
-  color: $info-color;
+  color: $info-color !important;
 }
 
 .c-text--warning {
-  color: $warning-color;
+  color: $warning-color !important;
 }
