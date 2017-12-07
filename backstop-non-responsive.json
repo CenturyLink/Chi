@@ -164,6 +164,28 @@
       "requireSameDimensions": true
     },
     {
+      "label": "input-number",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/input-number.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-default",
+        ".test-small",
+        ".test-large"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "input-text",
       "cookiePath": "",
       "url": "http://localhost:8000/components/input-text.html",

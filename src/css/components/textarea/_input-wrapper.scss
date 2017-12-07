@@ -1,12 +1,6 @@
-@import 'variables';
-@import 'mixins';
-
-$input: c-input;
-$input-wrapper: c-input-wrapper;
+@import '../input-wrapper';
 
 .#{$input-wrapper} {
-  position: relative;
-
   textarea {
     &.#{$input} {
       & ~ .c-icon {
