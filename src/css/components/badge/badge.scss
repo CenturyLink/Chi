@@ -1,0 +1,129 @@
+@import 'variables';
+@import 'mixins';
+
+$badge: c-badge;
+
+div {
+  &.#{$badge} {
+    background-color: set-color(grey, 100);
+    border: 0.125rem solid set-color(grey, 600);
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 0 rgba(set-color(carbon, 800), 0.04);
+    font-size: 1.375rem;
+    font-weight: 600;
+    height: 2rem;
+    line-height: 2rem;
+    padding: 0 0.875rem;
+    text-align: center;
+    text-transform: uppercase;
+
+    span {
+      position: relative;
+      top: -0.125rem;
+      width: 100%;
+    }
+
+    &.#{$badge}--pill {
+      border-radius: 12px;
+    }
+
+    &.#{$badge}--outline {
+      background-color: set-color(grey, 100);
+      border-color: set-color(carbon, 100);
+      box-shadow: initial;
+      color: set-color(carbon, 200);
+    }
+
+    &.#{$badge}--flat {
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: initial;
+      color: set-color(carbon, 200);
+    }
+
+    &.#{$badge}--brand {
+      background-color: set-color(green, 500);
+      border: 0.125rem solid set-color(green, 500);
+      color: set-color(grey, 100);
+
+      &.#{$badge}--outline {
+        background-color: set-color(grey, 100);
+        color: set-color(green, 500);
+      }
+
+      &.#{$badge}--flat {
+        background-color: transparent;
+        border-color: transparent;
+        color: set-color(green, 500);
+      }
+    }
+
+    &.#{$badge}--danger {
+      background-color: set-color(red, 500);
+      border: 0.125rem solid set-color(red, 500);
+      color: set-color(grey, 100);
+
+      &.#{$badge}--outline {
+        background-color: set-color(grey, 100);
+        color: set-color(red, 500);
+      }
+
+      &.#{$badge}--flat {
+        background-color: transparent;
+        border-color: transparent;
+        color: set-color(red, 500);
+      }
+    }
+
+    &.#{$badge}--info {
+      background-color: set-color(blue, 500);
+      border: 0.125rem solid set-color(blue, 500);
+      color: set-color(grey, 100);
+
+      &.#{$badge}--outline {
+        background-color: set-color(grey, 100);
+        color: set-color(blue, 500);
+      }
+
+      &.#{$badge}--flat {
+        background-color: transparent;
+        border-color: transparent;
+        color: set-color(blue, 500);
+      }
+    }
+
+    &.#{$badge}--dark {
+      background-color: set-color(carbon, 500);
+      border: 0.125rem solid set-color(carbon, 500);
+      color: set-color(grey, 100);
+
+      &.#{$badge}--outline {
+        background-color: set-color(grey, 100);
+        color: set-color(carbon, 500);
+      }
+
+      &.#{$badge}--flat {
+        background-color: transparent;
+        border-color: transparent;
+        color: set-color(carbon, 500);
+      }
+    }
+
+    &.#{$badge}--light {
+      background-color: set-color(grey, 600);
+      border: 0.125rem solid set-color(grey, 600);
+      color: set-color(carbon, 500);
+
+      &.#{$badge}--outline {
+        background-color: set-color(grey, 100);
+        color: set-color(carbon, 100);
+      }
+
+      &.#{$badge}--flat {
+        background-color: transparent;
+        border-color: transparent;
+        color: set-color(carbon, 100);
+      }
+    }
+  }
+}
