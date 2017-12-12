@@ -146,6 +146,28 @@
       "requireSameDimensions": true
     },
     {
+      "label": "html-select",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/html-select.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-default",
+        ".test-small",
+        ".test-large"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "icons",
       "cookiePath": "",
       "url": "http://localhost:8000/components/icons.html",

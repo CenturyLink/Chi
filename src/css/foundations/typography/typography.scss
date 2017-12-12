@@ -76,6 +76,13 @@ small,
   line-height: 2rem;
 }
 
+// line heights
+@for $index from 2 through 4 {
+  .c-lh#{$index} {
+    line-height:  $index + rem;
+  }
+}
+
 // text colors
 .c-text--inverse {
   color: $text-inverse !important;
