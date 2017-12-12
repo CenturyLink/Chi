@@ -1,0 +1,115 @@
+---
+title: Vertical button groups
+---
+img(inline src='test/css/components/icon-workspace.svg')
+
+each size in ['default', 'small', 'large']
+  each type, index1 in ['solid', 'outline', 'flat']
+    div(class={
+      [`test-${type}`]: size == 'default',
+      [`test-${type}-${size}`]: size != 'default'
+    })
+      span.c-h2= `Vertical button groups / ${type} / ${size}`
+      table(cellpadding="0", cellspacing="0")
+        tr
+          each style in ['default', 'primary', 'danger', 'info', 'dark']
+            each val, index2 in [2,3,4]
+              td(style="vertical-align:top")
+                .c-btn-group.c-btn-group--vertical.c-m1(class={'c-ml1': index1 != 0 && index2 != 0})
+                  while val > 0
+                    - val--
+                    button.c-btn(class={
+                        [`c-btn--${type}`]: type != 'solid',
+                        [`c-btn--${style}`]: style != 'default',
+                        [`c-btn--${size}`]: size != 'default'
+                      }) Button
+
+      table(cellpadding="0", cellspacing="0")
+        tr
+          each style in ['default', 'primary', 'danger', 'info', 'dark']
+            each val, index2 in [2,3,4]
+              td(style="vertical-align:top")
+                .c-btn-group.c-btn-group--vertical.c-m1(class={'c-ml1': index1 != 0 && index2 != 0})
+                  while val > 0
+                    - val--
+                    button.c-btn.c-btn--icon(class={
+                        [`c-btn--${type}`]: type != 'solid',
+                        [`c-btn--${style}`]: style != 'default',
+                        [`c-btn--${size}`]: size != 'default'
+                      })
+                        .c-btn-content
+                          .c-icon
+                            svg
+                              use(xlink:href='#workspace')
+
+      table(cellpadding="0", cellspacing="0")
+        tr
+          each style in ['default', 'primary', 'danger', 'info', 'dark']
+            each val, index2 in [2,3,4]
+              td(style="vertical-align:top")
+                .c-btn-group.c-btn-group--vertical.c-m1(class={'c-ml1': index1 != 0 && index2 != 0})
+                  while val > 0
+                    - val--
+                    button.c-btn(class={
+                        [`c-btn--${type}`]: type != 'solid',
+                        [`c-btn--${style}`]: style != 'default',
+                        [`c-btn--${size}`]: size != 'default'
+                      })
+                        .c-btn-content
+                          .c-icon
+                            svg
+                              use(xlink:href='#workspace')
+                          span Button
+
+    div(class={
+        [`test-${type}-expanded`]: size == 'default',
+        [`test-${type}-${size}-expanded`]: size != 'default'
+      })
+        span.c-h2= `Vertical button groups / ${type} / ${size} / expanded`
+        table(cellpadding="0", cellspacing="0")
+          tr
+            each style in ['default', 'primary', 'danger', 'info', 'dark']
+              td(style="width:120px")
+                .c-btn-group.c-btn-group--vertical.c-btn-group--expanded.c-m1
+                  each modifier in ['align-left', '', 'align-right']
+                    button.c-btn(class={
+                      [`c-btn--${type}`]: type != 'solid',
+                      [`c-btn--${style}`]: style != 'default',
+                      [`c-btn--${modifier}`]: modifier != '',
+                      [`c-btn--${size}`]: size != 'default'
+                    }) Button
+
+        table(cellpadding="0", cellspacing="0")
+          tr
+            each style in ['default', 'primary', 'danger', 'info', 'dark']
+              td(style="width:70px")
+                .c-btn-group.c-btn-group--vertical.c-btn-group--expanded.c-m1
+                  each modifier in ['align-left', '', 'align-right']
+                    button.c-btn.c-btn--icon(class={
+                      [`c-btn--${type}`]: type != 'solid',
+                      [`c-btn--${style}`]: style != 'default',
+                      [`c-btn--${modifier}`]: modifier != '',
+                      [`c-btn--${size}`]: size != 'default'
+                    })
+                      .c-btn-content
+                        .c-icon
+                          svg
+                            use(xlink:href='#workspace')
+
+        table(cellpadding="0", cellspacing="0")
+          tr
+            each style in ['default', 'primary', 'danger', 'info', 'dark']
+              td(style="width:140px")
+                .c-btn-group.c-btn-group--vertical.c-btn-group--expanded.c-m1
+                  each modifier in ['align-left', '', 'align-right']
+                    button.c-btn(class={
+                      [`c-btn--${type}`]: type != 'solid',
+                      [`c-btn--${style}`]: style != 'default',
+                      [`c-btn--${modifier}`]: modifier != '',
+                      [`c-btn--${size}`]: size != 'default'
+                    })
+                      .c-btn-content
+                        .c-icon
+                          svg
+                            use(xlink:href='#workspace')
+                        span Button
