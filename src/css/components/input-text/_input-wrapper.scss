@@ -1,14 +1,10 @@
-@import 'variables';
-@import 'mixins';
-
-$input: c-input;
-$input-wrapper: c-input-wrapper;
+@import '../input-wrapper';
 
 .#{$input-wrapper} {
-  position: relative;
-
   input {
-    &[type='text'] {
+    &[type='email'],
+    &[type='text'],
+    &[type='password'] {
       &.#{$input} {
 
         & ~ .c-icon {
@@ -31,7 +27,9 @@ $input-wrapper: c-input-wrapper;
 
   &.#{$input-wrapper}--icon-left {
     input {
-      &[type='text'] {
+      &[type='email'],
+      &[type='text'],
+      &[type='password'] {
         &.#{$input} {
           padding-left: 3.875rem;
 
@@ -61,7 +59,9 @@ $input-wrapper: c-input-wrapper;
 
   &.#{$input-wrapper}--icon-right {
     input {
-      &[type='text'] {
+      &[type='email'],
+      &[type='text'],
+      &[type='password'] {
         &.#{$input} {
           padding-right: 3.875rem;
 
@@ -88,5 +88,4 @@ $input-wrapper: c-input-wrapper;
       }
     }
   }
-
 }

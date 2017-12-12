@@ -1,0 +1,25 @@
+---
+title: Input numbers
+---
+
+each size in ['default', 'small', 'large']
+  div(class=`test-${size}`)
+    span.c-h2= `Text Input / ${size}`
+    table(cellpadding="0", cellspacing="0", width="600px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'danger']
+            td
+              .c-m1
+                if state == 'disabled'
+                  .c-input-wrapper.c-input-wrapper--compact
+                    input(type="number", class=`c-input c-input--${style} c-input--${size}`, value="0", disabled)
+                    button(tabindex="-1")
+                    button(tabindex="-1")
+                else
+                  .c-input-wrapper.c-input-wrapper--compact
+                    input(type="number", class=`c-input c-input--${style} c-input--${state} c-input--${size}`, value="0")
+                    button(tabindex="-1")
+                    button(tabindex="-1")

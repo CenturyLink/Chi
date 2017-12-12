@@ -54,15 +54,16 @@ textarea {
     }
 
     @each $type in map-keys($state-colors) {
-      &:not([disabled]),
-      &:not(.#{$input}--disabled) {
+      &:not([disabled]) {
         &.#{$input}--#{$type} {
           border-color: set-color(map-get($state-colors, $type), 500);
+        }
+      }
 
-          &:focus,
-          &.#{$input}--focus {
-            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 500), 0.2);
-          }
+      &.#{$input}--#{$type} {
+        &:focus,
+        &.#{$input}--focus {
+          box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 500), 0.2);
         }
       }
     }

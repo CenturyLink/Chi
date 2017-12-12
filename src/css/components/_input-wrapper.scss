@@ -1,0 +1,13 @@
+@import 'variables';
+@import 'mixins';
+
+$input: c-input;
+$input-wrapper: c-input-wrapper;
+
+.#{$input-wrapper} {
+  position: relative;
+
+  &.#{$input-wrapper}--compact {
+    display: table;
+  }
+}
