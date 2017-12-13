@@ -7,6 +7,34 @@ img(inline src='src/css/components/icons/icons/icon-circle-info-outline.svg')
 img(inline src='src/css/components/icons/icons/icon-circle-warning.svg')
 img(inline src='src/css/components/icons/icons/icon-warning.svg')
 
+mixin input(style, state, size, disabled)
+  input.c-input(
+    type="text"
+    class={
+      [`c-input--${style}`]:style != 'default',
+      [`c-input--${state}`]:state != 'initial',
+      [`c-input--${size}`]:size != 'default'
+    }
+    value="Value"
+    disabled=state=='disabled'?'disabled':false
+  )
+
+mixin icon(name)
+  .c-icon(class={
+    [`c-text--${name}`]: ['success', 'warning', 'danger'].indexOf(name) != -1
+  })
+    svg
+      if name == 'success'
+        use(xlink:href='#check')
+      else if name == 'warning'
+        use(xlink:href='#warning')
+      else if name == 'danger'
+        use(xlink:href='#circle-warning')
+      else if name == 'default'
+        use(xlink:href='#circle-info-outline')
+      else
+        use(xlink:href=`#${name}`)
+
 each size in ['default', 'small', 'large']
   div(class=`test-${size}`)
     span.c-h2= `Text Input / ${size}`
@@ -18,10 +46,7 @@ each size in ['default', 'small', 'large']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .c-m1
-                if state == 'disabled'
-                  input(type="text", class=`c-input c-input--${style} c-input--${state} c-input--${size}`, value="Value", disabled)
-                else
-                  input(type="text", class=`c-input c-input--${style} c-input--${state} c-input--${size}`, value="Value")
+                +input(style, state, size, disabled)
 
   div(class=`test-${size}-icon-left`)
     span.c-h2= `Text Input / ${size} / icon left`
@@ -34,13 +59,8 @@ each size in ['default', 'small', 'large']
             td
               .c-m1
                 .c-input-wrapper.c-input-wrapper--icon-left
-                  if state == 'disabled'
-                    input(type="text", class=`c-input c-input--${style} c-input--${state} c-input--${size}`, value="Value", disabled)
-                  else
-                    input(type="text", class=`c-input c-input--${style} c-input--${state} c-input--${size}`, value="Value")
-                  .c-icon
-                    svg
-                      use(xlink:href='#workspace')
+                  +input(style, state, size, disabled)
+                  +icon('workspace')
 
   div(class=`test-${size}-icon-right`)
     span.c-h2= `Text Input / ${size} / icon right`
@@ -53,26 +73,8 @@ each size in ['default', 'small', 'large']
             td
               .c-m1
                 .c-input-wrapper.c-input-wrapper--icon-right
-                  if state == 'disabled'
-                    input(type="text", class=`c-input c-input--${style} c-input--${state} c-input--${size}`, value="Value", disabled)
-                  else
-                    input(type="text", class=`c-input c-input--${style} c-input--${state} c-input--${size}`, value="Value")
-                  if style == 'success'
-                    .c-icon.c-text--success
-                      svg
-                        use(xlink:href='#check')
-                  else if style == 'warning'
-                    .c-icon.c-text--warning
-                      svg
-                        use(xlink:href='#warning')
-                  else if style == 'danger'
-                    .c-icon.c-text--danger
-                      svg
-                        use(xlink:href='#circle-warning')
-                  else
-                    .c-icon
-                      svg
-                        use(xlink:href='#circle-info-outline')
+                  +input(style, state, size, disabled)
+                  +icon(style)
 
   div(class=`test-${size}-icon-left-right`)
     span.c-h2= `Text Input / ${size} / icon left / icon right`
@@ -85,26 +87,6 @@ each size in ['default', 'small', 'large']
             td
               .c-m1
                 .c-input-wrapper.c-input-wrapper--icon-left.c-input-wrapper--icon-right
-                  if state == 'disabled'
-                    input(type="text", class=`c-input c-input--${style} c-input--${state} c-input--${size}`, value="Value", disabled)
-                  else
-                    input(type="text", class=`c-input c-input--${style} c-input--${state} c-input--${size}`, value="Value")
-                  .c-icon
-                    svg
-                      use(xlink:href='#workspace')
-                  if style == 'success'
-                    .c-icon.c-text--success
-                      svg
-                        use(xlink:href='#check')
-                  else if style == 'warning'
-                    .c-icon.c-text--warning
-                      svg
-                        use(xlink:href='#warning')
-                  else if style == 'danger'
-                    .c-icon.c-text--danger
-                      svg
-                        use(xlink:href='#circle-warning')
-                  else
-                    .c-icon
-                      svg
-                        use(xlink:href='#circle-info-outline')
+                  +input(style, state, size, disabled)
+                  +icon('workspace')
+                  +icon(style)

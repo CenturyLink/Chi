@@ -13,13 +13,16 @@ each size in ['default', 'small', 'large']
           each style in ['default', 'danger']
             td
               .c-m1
-                if state == 'disabled'
-                  .c-input-wrapper.c-input-wrapper--compact
-                    input(type="number", class=`c-input c-input--${style} c-input--${size}`, value="0", disabled)
-                    button(tabindex="-1")
-                    button(tabindex="-1")
-                else
-                  .c-input-wrapper.c-input-wrapper--compact
-                    input(type="number", class=`c-input c-input--${style} c-input--${state} c-input--${size}`, value="0")
-                    button(tabindex="-1")
-                    button(tabindex="-1")
+                .c-input-wrapper.c-input-wrapper--compact
+                  input.c-input(
+                    type="number"
+                    class={
+                      [`c-input--${style}`]: style != 'default',
+                      [`c-input--${state}`]: state != 'disabled',
+                      [`c-input--${size}`]: size != 'default'
+                    }
+                    value="0"
+                    disabled=state=='disabled'?'disabled': false
+                  )
+                  button(tabindex="-1")
+                  button(tabindex="-1")

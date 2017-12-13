@@ -1,0 +1,46 @@
+---
+title: Hybrid buttons
+---
+img(inline src='test/css/components/icon-workspace.svg')
+
+each size in ['default', 'small', 'large']
+  div(class={
+    'test': size == 'default',
+    [`test-${size}`]: size != 'default'
+  })
+    span.c-h2= `Hybrid buttons / ${size}`
+    .c-btn-group
+      button.c-btn(class={
+        [`c-btn--${size}`]: size != 'default'
+      })
+        .c-btn-content
+          .c-icon
+            svg
+              use(xlink:href='#workspace')
+          span Reinstall
+      button.c-btn.c-btn--icon.c-btn--primary(class={
+        [`c-btn--${size}`]: size != 'default'
+      })
+        .c-btn-content
+          .c-icon
+            svg
+              use(xlink:href='#workspace')
+
+  div(class={
+    'test-expanded': size == 'default',
+    [`test-${size}-expanded`]: size != 'default'
+  })
+    span.c-h2= `Hybrid buttons / ${size} / expanded`
+    each modifier in ['align-left', '', 'align-right']
+      .c-btn-group.c-btn-group--expanded.c-m1(style="width:200px")
+        button.c-btn(class={
+          [`c-btn--${size}`]: size != 'default',
+          [`c-btn--${modifier}`]: modifier != ''
+        }) Button
+        button.c-btn.c-btn--icon.c-btn--not-expand(class={
+          [`c-btn--${size}`]: size != 'default'
+        })
+          .c-btn-content
+            .c-icon
+              svg
+                use(xlink:href='#workspace')
