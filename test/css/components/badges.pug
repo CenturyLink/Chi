@@ -3,23 +3,21 @@ title: Badges
 ---
 
 each type in ['solid', 'outline', 'flat']
-  div(class=`test-${type} c-lh2`)
+  div(class=`test-${type}`)
     span.c-h2= `Badge / ${type}`
-    table(cellpadding="0", cellspacing="0")
-      tr
-        each style in ['brand', 'base', 'danger', 'info', 'dark', 'light']
-          td
-            div(
-              class="c-badge c-mr1"
-              class={
-                [`c-badge--${type}`]: type != 'solid',
-                [`c-badge--${style}`]: style != 'base'
-              }
-            )
-              span= style
+    div
+      each style in ['brand', 'base', 'danger', 'info', 'dark', 'light']
+        div(
+          class="c-badge c-mr1"
+          class={
+            [`c-badge--${type}`]: type != 'solid',
+            [`c-badge--${style}`]: style != 'base'
+          }
+        )
+          span= style
 
 each type in ['solid', 'outline']
-  div(class=`test-pill-${type} c-lh2`)
+  div(class=`test-pill-${type}`)
     span.c-h2= `Badge / Pill / ${type}`
     table(cellpadding="0", cellspacing="0")
       tr

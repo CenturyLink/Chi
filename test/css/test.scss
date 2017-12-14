@@ -49,6 +49,7 @@ body {
       box-shadow: inset 0 0 0 1px rgba(set-color(carbon, 800), 0.4);
       content: attr(class);
       display: block;
+      line-height: 3rem;
       min-height: $base-unit * 4;
       overflow: hidden;
       padding: $base-unit;

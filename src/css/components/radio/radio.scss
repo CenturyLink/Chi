@@ -13,7 +13,9 @@ input {
         & {
           align-items: center;
           cursor: pointer;
-          display: flex;
+          display: inline-flex;
+          line-height: 2rem;
+          margin: 0 1rem;
           position: relative;
         }
 
@@ -25,8 +27,6 @@ input {
           cursor: pointer;
           display: block;
           height: 2rem;
-          margin-right: 1rem;
-          position: relative;
           transition: box-shadow 0.2s ease-in-out;
           width: 2rem;
         }
@@ -40,7 +40,7 @@ input {
           left: 0.5rem;
           opacity: 0;
           position: absolute;
-          top: 1rem;
+          top: 0.5rem;
           transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
           width: 1rem;
         }

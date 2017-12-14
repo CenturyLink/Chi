@@ -20,4 +20,6 @@ title: Checkbox
         class={
           [`c-input--${state}`]: state == 'hover'
         }
-      )= `Checkbox ${index}`
+      )
+      label(for=`checkbox-${index}`) checkbox
+      span.c-text  aligned with text
