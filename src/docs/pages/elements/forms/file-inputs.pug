@@ -1,0 +1,38 @@
+---
+title: File inputs
+---
+
+p.c-text
+  | In order to use a file input just use an <code>input type="file"</code> with the class <code>c-input</code> and add
+  | a label next to it.
+
+.c-mb4.c-mt2
+  input.c-input(type="file", id="file01")
+  label(for="file01") No file chosen
+
+  :code(lang="html")
+    <input type="file" class="c-input" id="file01">
+    <label for="file01">No file chosen</label>
+
+p.c-text We have two modifiers in relation to the size of the component.
+
+ul.c-text
+  li
+    code c-input--small
+  li
+    code c-input--large
+
+each size, index in ['small', 'large']
+  h4= `${size} size`
+  .c-mb2
+    input.c-input(
+      class=`c-input--${size}`
+      type="file"
+      id=`file-${index}`
+    )
+    label(for=`file-${index}`) No file chosen
+
+p.c-text Example
+:code(lang="html")
+  <input type="file" class="c-input c-input--small" id="file01">
+  <label for="file01">No file chosen</label>

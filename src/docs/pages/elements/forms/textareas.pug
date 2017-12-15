@@ -1,0 +1,212 @@
+---
+title: Textareas
+---
+img(inline src='node_modules/@ctl/chi/src/css/components/icons/icons/icon-edit.svg')
+img(inline src='node_modules/@ctl/chi/src/css/components/icons/icons/icon-check.svg')
+img(inline src='node_modules/@ctl/chi/src/css/components/icons/icons/icon-warning.svg')
+img(inline src='node_modules/@ctl/chi/src/css/components/icons/icons/icon-circle-warning.svg')
+
+p.c-text In order to use a textarea just use <code>textarea</code> with the class <code>c-input</code>.
+
+.c-mb4.c-mt2
+  div(style="max-width:60rem")
+    textarea.c-input Sample text
+
+  :code(lang="html")
+    <textarea class="c-input">
+      Sample text
+    </textarea>
+
+p.c-text
+  | If we want to add some icon to the textarea we must wrap it inside a <code>div</code> using the class
+  | <code>c-input-wrapper</code>, add the icon as a sibling of the <code>textarea</code> and specify where is going to
+  | be placed the icon.
+
+.c-mb4
+  .c-input-wrapper.c-input-wrapper--icon-left(style="max-width:60rem")
+    textarea.c-input Sample text
+    .c-icon
+      svg
+        use(xlink:href='#edit')
+
+  :code(lang="html")
+    <div class="c-input-wrapper c-input-wrapper--icon-left">
+      <textarea class="c-input">
+        Sample text
+      </textarea>
+      <div class="c-icon">
+        <svg>
+          <use xlink:href="#edit"></use>
+        </svg>
+      </div>
+    </div>
+
+.c-mb4
+  .c-input-wrapper.c-input-wrapper--icon-right(style="max-width:60rem")
+    textarea.c-input Sample text
+    .c-icon
+      svg
+        use(xlink:href='#edit')
+
+  :code(lang="html")
+    <div class="c-input-wrapper c-input-wrapper--icon-right">
+      <textarea class="c-input">
+        Sample text
+      </textarea>
+      <div class="c-icon">
+        <svg>
+          <use xlink:href="#edit"></use>
+        </svg>
+      </div>
+    </div>
+
+.c-mb4
+  .c-input-wrapper.c-input-wrapper--icon-left.c-input-wrapper--icon-right(style="max-width:60rem")
+    textarea.c-input Sample text
+    .c-icon
+      svg
+        use(xlink:href='#edit')
+    .c-icon
+      svg
+        use(xlink:href='#check')
+
+  :code(lang="html")
+    <div class="c-input-wrapper c-input-wrapper--icon-left c-input-wrapper--icon-right">
+      <textarea class="c-input">
+        Sample text
+      </textarea>
+      <div class="c-icon">
+        <svg>
+          <use xlink:href="#edit"></use>
+        </svg>
+      </div>
+      <div class="c-icon">
+        <svg>
+          <use xlink:href="#check"></use>
+        </svg>
+      </div>
+    </div>
+
+h3 States
+
+p.c-text Textareas has three states vailable:
+
+ul.c-text
+  li success: <code>c-input--success</code>
+  li warning: <code>c-input--warning</code>
+  li danger: <code>c-input--danger</code>
+
+.c-mb4.c-mt2
+  div(style="max-width:60rem")
+    textarea.c-input.c-input--success Sample text
+
+  :code(lang="html")
+    <textarea class="c-input c-input--success">
+      Sample text
+    </textarea>
+
+.c-mb4.c-mt2
+  div(style="max-width:60rem")
+    textarea.c-input.c-input--warning Sample text
+
+  :code(lang="html")
+    <textarea class="c-input c-input--warning">
+      Sample text
+    </textarea>
+
+.c-mb4.c-mt2
+  div(style="max-width:60rem")
+    textarea.c-input.c-input--danger Sample text
+
+  :code(lang="html")
+    <textarea class="c-input c-input--danger">
+      Sample text
+    </textarea>
+
+p.c-text Also we can add icons to emphasize the state.
+
+.c-mb4.c-mt2
+  div(style="max-width:60rem")
+    .c-input-wrapper.c-input-wrapper--icon-right
+      textarea.c-input.c-input--success Sample text
+      .c-icon.c-text--success
+        svg
+          use(xlink:href="#check")
+
+  :code(lang="html")
+    <div class="c-input-wrapper c-input-wrapper--icon-right">
+      <textarea class="c-input c-input--success">
+        Sample text
+      </textarea>
+      <div class="c-icon c-text--success">
+        <svg>
+          <use xlink:href="#check"></use>
+        </svg>
+      </div>
+    </div>
+
+.c-mb4.c-mt2
+  div(style="max-width:60rem")
+    .c-input-wrapper.c-input-wrapper--icon-right
+      textarea.c-input.c-input--warning Sample text
+      .c-icon.c-text--warning
+        svg
+          use(xlink:href="#warning")
+
+  :code(lang="html")
+    <div class="c-input-wrapper c-input-wrapper--icon-right">
+      <textarea class="c-input c-input--warning">
+        Sample text
+      </textarea>
+      <div class="c-icon c-text--warning">
+        <svg>
+          <use xlink:href="#warning"></use>
+        </svg>
+      </div>
+    </div>
+
+.c-mb4.c-mt2
+  div(style="max-width:60rem")
+    .c-input-wrapper.c-input-wrapper--icon-right
+      textarea.c-input.c-input--danger Sample text
+      .c-icon.c-text--danger
+        svg
+          use(xlink:href="#circle-warning")
+
+  :code(lang="html")
+    <div class="c-input-wrapper c-input-wrapper--icon-right">
+      <textarea class="c-input c-input--danger">
+        Sample text
+      </textarea>
+      <div class="c-icon c-text--danger">
+        <svg>
+          <use xlink:href="#circle-warning"></use>
+        </svg>
+      </div>
+    </div>
+
+h3 Sizes
+
+p.c-text There are two modifiers available for the textarea size:
+
+ul.c-text
+  li Small: <code>c-input--small</code>
+  li Large: <code>c-input--large</code>
+
+.c-mb4.c-mt2
+  div(style="max-width:60rem")
+    textarea.c-input.c-input--small Sample text
+
+  :code(lang="html")
+    <textarea class="c-input c-input--small">
+      Sample text
+    </textarea>
+
+.c-mb4.c-mt2
+  div(style="max-width:60rem")
+    textarea.c-input.c-input--large Sample text
+
+  :code(lang="html")
+    <textarea class="c-input c-input--large">
+      Sample text
+    </textarea>

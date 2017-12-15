@@ -1,0 +1,48 @@
+---
+title: Number inputs
+---
+
+p.c-text
+  | In order to use a number input just use an <code>input type="number"</code> with the class <code>c-input</code>, add
+  | two buttons next to it and wrap all items inside a <code>div</code> with the class <code>c-input-wrapper</code>.
+
+  | Input numbers also needs a modifier, <code>c-input-wrapper--compact</code>.
+
+.c-input-wrapper.c-input-wrapper--compact.c-mb4.c-mt2
+  input.c-input(type="number", value="0")
+  button
+  button
+
+:code(lang="html")
+  <div class="c-input-wrapper c-input-wrapper--compact">
+    <input type="number" class="c-input" value="0">
+    <button></button>
+    <button></button>
+  </div>
+
+p.c-text We have two modifiers in relation to the size of the component.
+
+ul.c-text
+  li
+    code c-input--small
+  li
+    code c-input--large
+
+each size, index in ['small', 'large']
+  h4= `${size} size`
+  .c-input-wrapper.c-input-wrapper--compact.c-mb2
+    input.c-input(
+      class=`c-input--${size}`
+      type="number"
+      value="0"
+    )
+    button
+    button
+
+p.c-text Example
+:code(lang="html")
+  <div class="c-input-wrapper c-input-wrapper--compact">
+    <input type="number" class="c-input c-input--small" value="0">
+    <button></button>
+    <button></button>
+  </div>

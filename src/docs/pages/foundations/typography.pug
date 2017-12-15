@@ -4,11 +4,11 @@ title: Typography
 
 h3 Description
 
-| Open Sans is our font family.
+p.c-text Open Sans is our font family.
 
 h3 Sizes
 
-| Default font size is 2rem (1rem is 8px) with a line height of 3rem.
+p.c-text Default font size is 2rem (1rem is 8px).
 
 h4 Examples
 
@@ -19,9 +19,8 @@ h4 Examples
   h4 h4 header
   h5 h5 header
   h6 h6 header
-  div body default
-  div
-    small body small
+  p.c-text body default
+  small body small
 
   :code(lang='html')
     <h1>h1 header</h1>
@@ -30,10 +29,12 @@ h4 Examples
     <h4>h4 header</h1>
     <h5>h5 header</h1>
     <h6>h6 header</h1>
-    <span>body default</span>
+    <p class="c-text">body default</p>
     <small>body small</small>
 
-| Sometimes you need to use classes instead or with elements. In this case classes take visual precedence over elements.
+p.c-text
+  | Sometimes you need to use classes instead or with elements. In this case classes take visual precedence over
+  | elements.
 
 .c-mb4
   .h4 I'm a div with an h4 header
