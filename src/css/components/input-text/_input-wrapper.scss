@@ -21,6 +21,12 @@
             width: 1.5rem;
           }
         }
+
+        &.#{$input}--large {
+          & ~ .c-icon {
+            top: 1.5rem;
+          }
+        }
       }
     }
   }
