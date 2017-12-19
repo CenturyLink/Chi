@@ -301,6 +301,26 @@
       "requireSameDimensions": true
     },
     {
+      "label": "modals",
+      "cookiePath": "",
+      "url": "http://localhost:8000/components/modals.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-backdrops"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "radio",
       "cookiePath": "",
       "url": "http://localhost:8000/components/radio.html",
@@ -437,8 +457,8 @@
   ],
   "engine": "chrome",
   "engineFlags": [],
-  "asyncCaptureLimit": 8,
-  "asyncCompareLimit": 16,
+  "asyncCaptureLimit": 4,
+  "asyncCompareLimit": 4,
   "debug": false,
   "debugWindow": false
 }
