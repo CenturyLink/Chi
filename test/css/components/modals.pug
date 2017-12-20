@@ -1,0 +1,150 @@
+---
+title: Modals
+background: 969696
+---
+
+h3 backdrops
+
+.test-backdrops
+  table(cellpadding="0", cellspacing="16px")
+    tr
+      td
+        h4 backdrop
+        .c-modal-backdrop(style={
+          position: 'relative',
+          height: '24rem',
+          width: '24rem',
+          top: 'initial',
+          left: 'initial'
+        })
+      td
+        h4 backdrop / inverse
+        .c-modal-backdrop.c-modal-backdrop--inverse(style={
+          position: 'relative',
+          height: '24rem',
+          width: '24rem',
+          top: 'initial',
+          left: 'initial'
+        })
+
+h3 Window base
+.test-window-base(style={
+  width: '100%'
+})
+  h4 window base
+  .c-modal(style={
+    'height': '20rem',
+    'margin-top': 0
+  })
+
+h3 Headers
+.test-headers(style={
+    width: '100%'
+  })
+  h4 header
+  .c-modal(style={
+    'box-shadow': 'none',
+    'border-bottom-left-radius': 0,
+    'border-bottom-right-radius': 0,
+    'margin-top': 0
+  })
+    .c-modal__header
+
+  h4 header / title
+  .c-modal(style={
+    'box-shadow': 'none',
+    'border-bottom-left-radius': 0,
+    'border-bottom-right-radius': 0,
+    'margin-top': 0
+  })
+    .c-modal__header
+      h1.c-modal__title Modal alert title
+
+  h4 header / title / close
+  .c-modal(style={
+    'box-shadow': 'none',
+    'border-bottom-left-radius': 0,
+    'border-bottom-right-radius': 0,
+    'margin-top': 0
+  })
+    .c-modal__header
+      h1.c-modal__title Modal alert title
+      button.c-modal__close
+
+  h4 header / title / no border / close
+  .c-modal(style={
+    'box-shadow': 'none',
+    'border-bottom-left-radius': 0,
+    'border-bottom-right-radius': 0,
+    'margin-top': 0
+  })
+    .c-modal__header.c-modal__header--no-border
+      h1.c-modal__title Modal alert title
+      button.c-modal__close
+
+  h4 header / title / centered / close
+  .c-modal(style={
+    'box-shadow': 'none',
+    'border-bottom-left-radius': 0,
+    'border-bottom-right-radius': 0,
+    'margin-top': 0
+  })
+    .c-modal__header
+      h1.c-modal__title.c-modal__title--centered Modal alert title
+      button.c-modal__close
+
+  h4 header / title / centered / back/ close
+  .c-modal(style={
+    'box-shadow': 'none',
+    'border-bottom-left-radius': 0,
+    'border-bottom-right-radius': 0,
+    'margin-top': 0
+  })
+    .c-modal__header
+      h1.c-modal__title.c-modal__title--centered Modal alert title
+      button.c-modal__back
+      button.c-modal__close
+
+h3 Footers
+
+.test-footers(style={
+    width: '100%'
+  })
+  h4 footer
+  .c-modal(style={
+    'box-shadow': 'none',
+    'border-top-left-radius': 0,
+    'border-top-right-radius': 0,
+    'margin-top': 0
+  })
+    .c-modal__footer
+
+  h4 footer / no border
+  .c-modal(style={
+    'box-shadow': 'none',
+    'border-top-left-radius': 0,
+    'border-top-right-radius': 0,
+    'margin-top': 0
+  })
+    .c-modal__footer.c-modal__footer--no-border
+
+  h4 footer / save
+  .c-modal(style={
+    'box-shadow': 'none',
+    'border-top-left-radius': 0,
+    'border-top-right-radius': 0,
+    'margin-top': 0
+  })
+    .c-modal__footer
+      button.c-btn.c-btn--primary.c-ml2 Save
+
+  h4 footer / cancel / save
+  .c-modal(style={
+    'box-shadow': 'none',
+    'border-top-left-radius': 0,
+    'border-top-right-radius': 0,
+    'margin-top': 0
+  })
+    .c-modal__footer
+      button.c-btn Cancel
+      button.c-btn.c-btn--primary.c-ml2 Save
