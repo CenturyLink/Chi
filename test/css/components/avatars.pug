@@ -1,0 +1,22 @@
+---
+title: Avatars
+---
+div(
+  style={
+    position: 'absolute',
+    left: '-9999px'
+  }
+)
+  img(inline src='test/css/components/avatar.svg')
+  img(inline src='test/css/components/manolakis.svg')
+
+h2 Sizes
+.test-sizes
+  .c-grid
+    each size in ['xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl']
+      .c-col.c-col--1.c-col--offset-1.c-col--middle
+        h4= size
+      .c-col.c-col--2.c-col--middle
+        div(class=`c-avatar c-avatar--${size}`)
+          svg
+            use(xlink:href='#avatar', fill="url(#manolakis)")

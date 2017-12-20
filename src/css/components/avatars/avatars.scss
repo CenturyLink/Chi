@@ -1,0 +1,26 @@
+@import 'mixins';
+@import 'variables';
+
+$avatar: c-avatar;
+$avatar-sizes: (xs: 1.5rem, sm: 2rem, sm2: 2.5rem, sm3: 3rem, md: 4rem, lg: 8rem, xl: 12rem, xxl: 16rem);
+
+.#{$avatar} {
+  color: set-color(carbon, 100);
+  display: inline-block;
+  position: relative;
+
+  & > svg {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  @each $type in map-keys($avatar-sizes) {
+    &--#{$type} {
+      height: map-get($avatar-sizes, $type);
+      width: map-get($avatar-sizes, $type);
+    }
+  }
+}
