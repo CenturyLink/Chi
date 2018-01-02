@@ -77,7 +77,7 @@ small,
 }
 
 // line heights
-@for $index from 2 through 4 {
+@for $index from 1 through 4 {
   .c-lh#{$index} {
     line-height:  $index + rem;
   }
