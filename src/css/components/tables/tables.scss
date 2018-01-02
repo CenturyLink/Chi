@@ -1,0 +1,233 @@
+@import 'mixins';
+@import 'variables';
+
+$table: c-table;
+
+section {
+  padding-top: 6rem;
+  position: relative;
+
+  &::before {
+    background-color: set-color(grey, 100);
+    border-bottom: 0.125rem solid set-color(grey, 400);
+    content: '';
+    display: block;
+    height: 6rem;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  & > div {
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  &.#{$table} {
+    table {
+      border-spacing: 0;
+      font-size: 1.625rem;
+      line-height: 2rem;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    tr {
+      background-color: set-color(grey, 100);
+    }
+
+    th {
+      font-weight: 600;
+      height: 0;
+      text-transform: capitalize;
+
+      div {
+        padding: 2rem;
+        position: absolute;
+        text-align: start;
+        top: 0;
+        vertical-align: center;
+      }
+
+      &.#{$table}__column--sorting {
+        div {
+          align-items: center;
+          cursor: pointer;
+          display: flex;
+          flex-direction: row;
+
+          &::after {
+            background-image: url('./icon-chevron-thin-up.svg');
+            content: '';
+            display: block;
+            height: 1.5rem;
+            margin-left: 1rem;
+            opacity: 0;
+            width: 1.5rem;
+          }
+        }
+      }
+
+      &.#{$table}__column--ascending {
+        div::after {
+          opacity: 1;
+        }
+      }
+
+      &.#{$table}__column--descending {
+        div::after {
+          opacity: 1;
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    td {
+      border-bottom: 0.125rem solid set-color(grey, 400);
+      padding: 2rem;
+      padding-bottom: 1.875rem;
+      text-align: start;
+      vertical-align: center;
+    }
+
+    tbody {
+      tr {
+        &:hover,
+        &.#{$table}__row--hover {
+          background-color: set-color(grey, 300);
+        }
+
+        &.#{$table}__row--success {
+          background-color: set-color(green, 100);
+        }
+
+        &.#{$table}__row--warning {
+          background-color: set-color(yellow, 100);
+        }
+
+        &.#{$table}__row--danger {
+          background-color: set-color(red, 100);
+        }
+
+        &.#{$table}__row--info {
+          background-color: set-color(blue, 100);
+        }
+
+        &[disabled] {
+          color: rgba(set-color(carbon, 500), 0.4);
+        }
+      }
+    }
+
+    &.#{$table}--striped {
+      tbody {
+        tr:nth-child(odd):not(:hover) {
+          background-color: set-color(grey, 200);
+        }
+      }
+    }
+
+    &.#{$table}--borderless {
+      &::before {
+        border: 0;
+      }
+
+      td {
+        border: 0;
+        padding: 2rem;
+      }
+    }
+
+    &.#{$table}--bordered {
+      &::before {
+        border-bottom-width: 0;
+        border-color: set-color(grey, 400);
+        border-left-width: 0;
+        border-style: solid;
+        border-width: 0.125rem;
+      }
+
+      th > div {
+        border-left: 0.125rem solid set-color(grey, 400);
+        padding-left: 1.875rem;
+      }
+
+      td {
+        border-color: set-color(grey, 400);
+        border-right-width: 0;
+        border-style: solid;
+        border-top-width: 0;
+        border-width: 0.125rem;
+        padding: 2rem 2rem 1.875rem 1.875rem;
+
+        &:last-of-type {
+          border-right-width: 0.125rem;
+          padding-right: 1.875rem;
+        }
+      }
+    }
+
+    &.#{$table}--small {
+      padding-top: 4rem;
+
+      &::before {
+        height: 4rem;
+      }
+
+      th > div,
+      td {
+        padding: 1rem 2rem;
+      }
+
+      td {
+        padding-bottom: 0.875rem;
+      }
+
+      &.#{$table}--borderless {
+        td {
+          padding: 1rem 2rem;
+        }
+      }
+
+      &.#{$table}--bordered {
+        td {
+          padding: 1rem 2rem 0.875rem 1.875rem;
+        }
+      }
+    }
+
+    &.#{$table}--large {
+      padding-top: 8rem;
+
+      &::before {
+        height: 8rem;
+      }
+
+      th {
+        font-size: 1.75rem;
+      }
+
+      th > div,
+      td {
+        padding: 3rem 2rem;
+      }
+
+      td {
+        padding-bottom: 2.875rem;
+      }
+
+      &.#{$table}--borderless {
+        td {
+          padding: 3rem 2rem;
+        }
+      }
+
+      &.#{$table}--bordered {
+        td {
+          padding: 3rem 2rem 2.875rem 1.875rem;
+        }
+      }
+    }
+  }
+}

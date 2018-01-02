@@ -15,7 +15,7 @@ title: Checkbox
         checked=state=='checked' ? 'checked' : false
         disabled=state=='disabled' ? 'disabled' : false
       )
-      label(
+      label.c-mr1(
         for=`checkbox-${index}`
         class={
           [`c-input--${state}`]: state == 'hover'
