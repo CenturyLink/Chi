@@ -93,11 +93,6 @@ section {
 
     tbody {
       tr {
-        &:hover,
-        &.#{$table}__row--hover {
-          background-color: set-color(grey, 300);
-        }
-
         &.#{$table}__row--success {
           background-color: set-color(green, 100);
         }
@@ -116,6 +111,17 @@ section {
 
         &[disabled] {
           color: rgba(set-color(carbon, 500), 0.4);
+        }
+      }
+    }
+
+    &.#{$table}--hover {
+      tbody {
+        tr {
+          &:hover,
+          &.#{$table}__row--hover {
+            background-color: set-color(grey, 300);
+          }
         }
       }
     }
