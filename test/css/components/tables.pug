@@ -77,17 +77,21 @@ each size in ['default', 'small', 'large']
           [`c-table--${borderstyle}`]: borderstyle!= 'default'
         })
 
-each rowstyle in ['disabled', 'hover', 'success', 'warning', 'danger', 'info']
+each rowstyle in ['disabled', 'success', 'warning', 'danger', 'info']
   div(class=`test-${rowstyle}`)
     span.c-h2= `table / ${rowstyle}`
     +table(rowstyle)
+
+div(class=`test-hover`)
+    span.c-h2= `table / hover`
+    +table('hover').c-table--hover
 
 each columnstyle in ['ascending', 'descending']
   div(class=`test-${columnstyle}`)
     span.c-h2= `table / column sort / ${columnstyle}`
     +table(undefined, columnstyle)
 
-each size in ['default', 'small', 'large']
+each size, index in ['default', 'small', 'large']
   div(class=`test-${size}-selectable`)
     span.c-h2
       | table
@@ -106,8 +110,8 @@ each size in ['default', 'small', 'large']
             tr
               th(width="48px")
                 div.c-lh1
-                  input.c-input(type="checkbox", id="chk-01")
-                  label(for="chk-01")
+                  input.c-input(type="checkbox", id=`chk-${index}`)
+                  label(for=`chk-${index}`)
               th.c-table__column--sorting.c-table__column--descending
                 div name
               th
@@ -115,6 +119,6 @@ each size in ['default', 'small', 'large']
               th
                 div last login
           tbody
-            +str('chk-01-01', 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
-            +str('chk-01-02', 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
-            +str('chk-01-03', 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+            +str(`chk-${index}-01`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
+            +str(`chk-${index}-02`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
+            +str(`chk-${index}-03`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
