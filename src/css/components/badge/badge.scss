@@ -3,8 +3,8 @@
 
 $badge: c-badge;
 
-div {
-  &.#{$badge} {
+.chi {
+  .a-badge {
     background-color: set-color(grey, 100);
     border: 0.125rem solid set-color(grey, 600);
     border-radius: 3px;
@@ -25,103 +25,103 @@ div {
       width: 100%;
     }
 
-    &.#{$badge}--pill {
+    &.-pill {
       border-radius: 12px;
     }
 
-    &.#{$badge}--outline {
+    &.-outline {
       background-color: set-color(grey, 100);
       border-color: set-color(carbon, 100);
       box-shadow: initial;
       color: set-color(carbon, 200);
     }
 
-    &.#{$badge}--flat {
+    &.-flat {
       background-color: transparent;
       border-color: transparent;
       box-shadow: initial;
       color: set-color(carbon, 200);
     }
 
-    &.#{$badge}--brand {
+    &.-brand {
       background-color: set-color(green, 500);
       border: 0.125rem solid set-color(green, 500);
       color: set-color(grey, 100);
 
-      &.#{$badge}--outline {
+      &.-outline {
         background-color: set-color(grey, 100);
         color: set-color(green, 500);
       }
 
-      &.#{$badge}--flat {
+      &.-flat {
         background-color: transparent;
         border-color: transparent;
         color: set-color(green, 500);
       }
     }
 
-    &.#{$badge}--danger {
+    &.-danger {
       background-color: set-color(red, 500);
       border: 0.125rem solid set-color(red, 500);
       color: set-color(grey, 100);
 
-      &.#{$badge}--outline {
+      &.-outline {
         background-color: set-color(grey, 100);
         color: set-color(red, 500);
       }
 
-      &.#{$badge}--flat {
+      &.-flat {
         background-color: transparent;
         border-color: transparent;
         color: set-color(red, 500);
       }
     }
 
-    &.#{$badge}--info {
+    &.-info {
       background-color: set-color(blue, 500);
       border: 0.125rem solid set-color(blue, 500);
       color: set-color(grey, 100);
 
-      &.#{$badge}--outline {
+      &.-outline {
         background-color: set-color(grey, 100);
         color: set-color(blue, 500);
       }
 
-      &.#{$badge}--flat {
+      &.-flat {
         background-color: transparent;
         border-color: transparent;
         color: set-color(blue, 500);
       }
     }
 
-    &.#{$badge}--dark {
+    &.-dark {
       background-color: set-color(carbon, 500);
       border: 0.125rem solid set-color(carbon, 500);
       color: set-color(grey, 100);
 
-      &.#{$badge}--outline {
+      &.-outline {
         background-color: set-color(grey, 100);
         color: set-color(carbon, 500);
       }
 
-      &.#{$badge}--flat {
+      &.-flat {
         background-color: transparent;
         border-color: transparent;
         color: set-color(carbon, 500);
       }
     }
 
-    &.#{$badge}--light {
+    &.-light {
       background-color: set-color(grey, 600);
       border: 0.125rem solid set-color(grey, 600);
       color: set-color(carbon, 500);
 
-      &.#{$badge}--outline {
+      &.-outline {
         background-color: set-color(grey, 100);
         color: set-color(carbon, 100);
       }
 
-      &.#{$badge}--flat {
+      &.-flat {
         background-color: transparent;
         border-color: transparent;
         color: set-color(carbon, 100);

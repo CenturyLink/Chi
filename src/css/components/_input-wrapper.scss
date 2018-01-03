@@ -1,13 +1,10 @@
 @import 'variables';
 @import 'mixins';
 
-$input: c-input;
-$input-wrapper: c-input-wrapper;
-
-.#{$input-wrapper} {
+.a-inputWrapper {
   position: relative;
 
-  &.#{$input-wrapper}--compact {
+  &.-compact {
     display: table;
   }
 }

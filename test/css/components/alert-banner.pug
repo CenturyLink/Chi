@@ -3,13 +3,13 @@ title: Alert Banners
 ---
 
 each size in ['small', 'medium', 'large']
-  div(class=`test-${size} w100`)
+  div(class=`test-${size} -w100`)
     h3= `${size}`
     each type in ['light', 'success', 'danger', 'warning', 'info', 'dark']
       div(
-        class=`c-alert c-alert--${type} c-alert--banner c-mb2`
+        class=`m-alert -${type} -banner -mb2`
         class={
-          [`c-alert--${size}`]: size != 'medium'
+          [`-${size}`]: size != 'medium'
         }
         data-title=`${type}`
       )
@@ -19,9 +19,9 @@ each size in ['small', 'medium', 'large']
     h4 Has icon
     each type in ['light', 'success', 'danger', 'warning', 'info', 'dark']
       div(
-        class=`c-alert c-alert--has-icon c-alert--${type} c-alert--banner c-mb2`
+        class=`m-alert -hasIcon -${type} -banner -mb2`
         class={
-          [`c-alert--${size}`]: size != 'medium'
+          [`-${size}`]: size != 'medium'
         }
         data-title=`${type}`
       )

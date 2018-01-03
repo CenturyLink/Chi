@@ -10,7 +10,7 @@ h3 backdrops
     tr
       td
         h4 backdrop
-        .c-modal-backdrop(style={
+        .a-modal__backdrop(style={
           position: 'relative',
           height: '24rem',
           width: '24rem',
@@ -19,7 +19,7 @@ h3 backdrops
         })
       td
         h4 backdrop / inverse
-        .c-modal-backdrop.c-modal-backdrop--inverse(style={
+        .a-modal__backdrop.-inverse(style={
           position: 'relative',
           height: '24rem',
           width: '24rem',
@@ -32,7 +32,7 @@ h3 Window base
   width: '100%'
 })
   h4 window base
-  .c-modal(style={
+  .a-modal(style={
     'height': '20rem',
     'margin-top': 0
   })
@@ -42,68 +42,68 @@ h3 Headers
     width: '100%'
   })
   h4 header
-  .c-modal(style={
+  .a-modal(style={
     'box-shadow': 'none',
     'border-bottom-left-radius': 0,
     'border-bottom-right-radius': 0,
     'margin-top': 0
   })
-    .c-modal__header
+    .a-modal__header
 
   h4 header / title
-  .c-modal(style={
+  .a-modal(style={
     'box-shadow': 'none',
     'border-bottom-left-radius': 0,
     'border-bottom-right-radius': 0,
     'margin-top': 0
   })
-    .c-modal__header
-      h1.c-modal__title Modal alert title
+    .a-modal__header
+      h1.a-modal__title Modal alert title
 
   h4 header / title / close
-  .c-modal(style={
+  .a-modal(style={
     'box-shadow': 'none',
     'border-bottom-left-radius': 0,
     'border-bottom-right-radius': 0,
     'margin-top': 0
   })
-    .c-modal__header
-      h1.c-modal__title Modal alert title
-      button.c-modal__close
+    .a-modal__header
+      h1.a-modal__title Modal alert title
+      button.a-modal__close
 
   h4 header / title / no border / close
-  .c-modal(style={
+  .a-modal(style={
     'box-shadow': 'none',
     'border-bottom-left-radius': 0,
     'border-bottom-right-radius': 0,
     'margin-top': 0
   })
-    .c-modal__header.c-modal__header--no-border
-      h1.c-modal__title Modal alert title
-      button.c-modal__close
+    .a-modal__header.-noBorder
+      h1.a-modal__title Modal alert title
+      button.a-modal__close
 
   h4 header / title / centered / close
-  .c-modal(style={
+  .a-modal(style={
     'box-shadow': 'none',
     'border-bottom-left-radius': 0,
     'border-bottom-right-radius': 0,
     'margin-top': 0
   })
-    .c-modal__header
-      h1.c-modal__title.c-modal__title--centered Modal alert title
-      button.c-modal__close
+    .a-modal__header
+      h1.a-modal__title.-centered Modal alert title
+      button.a-modal__close
 
   h4 header / title / centered / back/ close
-  .c-modal(style={
+  .a-modal(style={
     'box-shadow': 'none',
     'border-bottom-left-radius': 0,
     'border-bottom-right-radius': 0,
     'margin-top': 0
   })
-    .c-modal__header
-      h1.c-modal__title.c-modal__title--centered Modal alert title
-      button.c-modal__back
-      button.c-modal__close
+    .a-modal__header
+      h1.a-modal__title.-centered Modal alert title
+      button.a-modal__back
+      button.a-modal__close
 
 h3 Footers
 
@@ -111,40 +111,40 @@ h3 Footers
     width: '100%'
   })
   h4 footer
-  .c-modal(style={
+  .a-modal(style={
     'box-shadow': 'none',
     'border-top-left-radius': 0,
     'border-top-right-radius': 0,
     'margin-top': 0
   })
-    .c-modal__footer
+    .a-modal__footer
 
   h4 footer / no border
-  .c-modal(style={
+  .a-modal(style={
     'box-shadow': 'none',
     'border-top-left-radius': 0,
     'border-top-right-radius': 0,
     'margin-top': 0
   })
-    .c-modal__footer.c-modal__footer--no-border
+    .a-modal__footer.-noBorder
 
   h4 footer / save
-  .c-modal(style={
+  .a-modal(style={
     'box-shadow': 'none',
     'border-top-left-radius': 0,
     'border-top-right-radius': 0,
     'margin-top': 0
   })
-    .c-modal__footer
-      button.c-btn.c-btn--primary.c-ml2 Save
+    .a-modal__footer
+      button.a-btn.-primary.-ml2 Save
 
   h4 footer / cancel / save
-  .c-modal(style={
+  .a-modal(style={
     'box-shadow': 'none',
     'border-top-left-radius': 0,
     'border-top-right-radius': 0,
     'margin-top': 0
   })
-    .c-modal__footer
-      button.c-btn Cancel
-      button.c-btn.c-btn--primary.c-ml2 Save
+    .a-modal__footer
+      button.a-btn Cancel
+      button.a-btn.-primary.-ml2 Save

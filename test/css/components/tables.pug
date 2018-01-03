@@ -4,10 +4,10 @@ title: Tables
 
 mixin str(cid, name, id, date, checked)
   tr(class={
-    'c-table__row--warning': checked
+    '-rowWarning': checked
   })
-    td.c-lh1
-      input.c-input(
+    td.-lh1
+      input.a-input(
         type="checkbox"
         id=cid
         checked=checked
@@ -24,13 +24,13 @@ mixin tr(name, id, date)
     td= date
 
 mixin table(row, column)
-  section.c-table(style="width: 640px")&attributes(attributes)
+  section.a-table(style="width: 640px")&attributes(attributes)
     div
       table(cellpadding="0", cellspacing="0")
         thead
           tr
             th(class={
-              [`c-table__column--sorting c-table__column--${column}`]: column != undefined
+              [`-sorted -${column}`]: column != undefined
             })
               div name
             th
@@ -42,7 +42,7 @@ mixin table(row, column)
             +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
             +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')(
               class={
-                [`c-table__row--${row}`]: row != undefined && row != 'disabled'
+                [`-${row}`]: row != undefined && row != 'disabled'
               }
               disabled= row=='disabled' ? 'disabled' : false
             )
@@ -51,7 +51,7 @@ mixin table(row, column)
             +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
             +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')(
               class={
-                [`c-table__row--${row}`]: row != undefined && row != 'disabled'
+                [`-${row}`]: row != undefined && row != 'disabled'
               }
               disabled= row=='disabled' ? 'disabled' : false
             )
@@ -62,7 +62,7 @@ each size in ['default', 'small', 'large']
   each tablestyle in ['default', 'striped']
     each borderstyle in ['default', 'bordered', 'borderless']
       div(class=`test-${size}-${tablestyle}-${borderstyle}`)
-        span.c-h2
+        span.a-h2
           | table
           if size != 'default'
             = ` / ${size}`
@@ -72,35 +72,35 @@ each size in ['default', 'small', 'large']
             = ` / ${borderstyle}`
 
         +table()(class={
-          [`c-table--${size}`]: size!= 'default',
-          [`c-table--${tablestyle}`]: tablestyle!= 'default',
-          [`c-table--${borderstyle}`]: borderstyle!= 'default'
+          [`-${size}`]: size!= 'default',
+          [`-${tablestyle}`]: tablestyle!= 'default',
+          [`-${borderstyle}`]: borderstyle!= 'default'
         })
 
-each rowstyle in ['disabled', 'success', 'warning', 'danger', 'info']
+each rowstyle in ['disabled', 'rowSuccess', 'rowWarning', 'rowDanger', 'rowInfo']
   div(class=`test-${rowstyle}`)
-    span.c-h2= `table / ${rowstyle}`
+    span.a-h2= `table / ${rowstyle}`
     +table(rowstyle)
 
 div(class=`test-hover`)
-    span.c-h2= `table / hover`
-    +table('hover').c-table--hover
+    span.a-h2= `table / hover`
+    +table('hover').-hover
 
 each columnstyle in ['ascending', 'descending']
   div(class=`test-${columnstyle}`)
-    span.c-h2= `table / column sort / ${columnstyle}`
+    span.a-h2= `table / column sort / ${columnstyle}`
     +table(undefined, columnstyle)
 
 each size, index in ['default', 'small', 'large']
   div(class=`test-${size}-selectable`)
-    span.c-h2
+    span.a-h2
       | table
       if size != 'default'
         = ` / ${size}`
       = ' / selectable'
-    section.c-table(
+    section.a-table(
       class={
-        [`c-table--${size}`]: size!= 'default'
+        [`-${size}`]: size!= 'default'
       }
       style="width: 640px"
     )
@@ -109,10 +109,10 @@ each size, index in ['default', 'small', 'large']
           thead
             tr
               th(width="48px")
-                div.c-lh1
-                  input.c-input(type="checkbox", id=`chk-${index}`)
+                div.-lh1
+                  input.a-input(type="checkbox", id=`chk-${index}`)
                   label(for=`chk-${index}`)
-              th.c-table__column--sorting.c-table__column--descending
+              th.-sorted.-descending
                 div name
               th
                 div ID

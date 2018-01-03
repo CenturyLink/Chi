@@ -19,11 +19,13 @@ body {
   padding-bottom: $base-unit * 4;
 }
 
+// sass-lint:disable class-name-format
 .tests {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
 }
+// sass-lint:enable class-name-format
 
 [class*='test'] {
   display: flex;
@@ -31,30 +33,32 @@ body {
   margin: 0 -1rem;
   padding: 1rem;
 
-  &.w100 {
+  &.-w100 {
     align-self: stretch;
   }
 }
 
-.c-grid--show {
-  @include respond-to(md) {
-    margin-bottom: $base-unit * 3;
-  }
-  margin-bottom: $base-unit * 2;
-  text-align: center;
+.a-grid {
+  &.-show {
+    @include respond-to(md) {
+      margin-bottom: $base-unit * 3;
+    }
+    margin-bottom: $base-unit * 2;
+    text-align: center;
 
-  [class*='c-col'] {
-    &::before {
-      background-color: set-color(grey, 300);
-      box-shadow: inset 0 0 0 1px rgba(set-color(carbon, 800), 0.4);
-      content: attr(class);
-      display: block;
-      line-height: 3rem;
-      min-height: $base-unit * 4;
-      overflow: hidden;
-      padding: $base-unit;
-      text-overflow: ellipsis;
-      white-space: pre;
+    [class*='a-col'] {
+      &::before {
+        background-color: set-color(grey, 300);
+        box-shadow: inset 0 0 0 1px rgba(set-color(carbon, 800), 0.4);
+        content: attr(class);
+        display: block;
+        line-height: 3rem;
+        min-height: $base-unit * 4;
+        overflow: hidden;
+        padding: $base-unit;
+        text-overflow: ellipsis;
+        white-space: pre;
+      }
     }
   }
 }

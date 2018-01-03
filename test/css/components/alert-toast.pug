@@ -2,14 +2,14 @@
 title: Alert Toasts
 ---
 
-.test-toast.w100
+.test-toast.-w100
   each type in ['light', 'success', 'danger', 'warning', 'info', 'dark']
-    div(class=`c-alert c-alert--${type} c-alert--toast c-mb2`, data-title=`${type}`)
+    div(class=`m-alert -${type} -toast -mb2`, data-title=`${type}`)
       = `This is a ${type} message`
       button
 
   h4 Has icon
   each type in ['light', 'success', 'danger', 'warning', 'info', 'dark']
-    div(class=`c-alert c-alert--has-icon c-alert--${type} c-alert--toast c-mb2`, data-title=`${type}`)
+    div(class=`m-alert -hasIcon -${type} -toast -mb2`, data-title=`${type}`)
       = `This is a ${type} message`
       button

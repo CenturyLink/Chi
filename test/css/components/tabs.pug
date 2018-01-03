@@ -7,8 +7,8 @@ img(inline src='test/css/components/icon-workspace.svg')
   each style in ['base', 'border']
     each size in ['small', 'medium', 'large']
       h4= `Tabs ${size} ${style}`
-      ul.c-tabs(class=`c-tabs--${style} c-tabs--${size}`)
-        li.c-tab--active
+      ul.a-tabs(class=`-${style} -${size}`)
+        li.-active
           a(href='#') Active tab
         li
           a(href='#') Tab link
@@ -17,16 +17,16 @@ img(inline src='test/css/components/icon-workspace.svg')
 
 h2 vertical
 
-each active in ['', 'active-alt']
+each active in ['', 'activeAlt']
   each style in ['', 'border']
     div(class=`test-vertical-${active}-${style}`)
       each size in ['small', 'medium', 'large']
         h4= `Tabs vertical ${size} ${style} ${active}`
-        ul.c-tabs.c-tabs--vertical(class=`c-tabs--${style} c-tabs--${size}`)
-          li(class=`c-tab--active c-tab--${active}`)
+        ul.a-tabs.-vertical(class=`-${style} -${size}`)
+          li(class=`-active -${active}`)
             a(href='#') Active tab
-            ul.c-subtabs
-              li.c-subtab--active
+            ul.a-tabs__subtabs
+              li.-active
                 a(href='#') Buttons
               li
                 a(href='#') Button Groups
@@ -39,20 +39,20 @@ each active in ['', 'active-alt']
           li
             a(href='#') Tab link
 
-each active in ['', 'active-alt']
+each active in ['', 'activeAlt']
   each style in ['', 'border']
     div(class=`test-vertical-icons-${active}-${style}`)
       each size in ['small', 'medium', 'large']
         h4= `Tabs vertical icons ${size} ${style} ${active}`
-        ul.c-tabs.c-tabs--vertical.c-tabs--icons(class=`c-tabs--${alt} c-tabs--${style} c-tabs--${size}`)
-          li(class=`c-tab--active c-tab--${active}`)
+        ul.a-tabs.-vertical.-icons(class=`-${alt} -${style} -${size}`)
+          li(class=`-active -${active}`)
             a(href='#')
-              div(class=`c-icon c-icon--sm`)
+              div(class=`a-icon -sm`)
                 svg
                   use(xlink:href='#workspace')
               span Active tab
-            ul.c-subtabs
-              li.c-subtab--active
+            ul.a-tabs__subtabs
+              li.-active
                 a(href='#') Buttons
               li
                 a(href='#') Button Groups
@@ -60,19 +60,19 @@ each active in ['', 'active-alt']
                 a(href='#') Cards
           li
             a(href='#')
-              div(class=`c-icon c-icon--sm`)
+              div(class=`a-icon -sm`)
                 svg
                   use(xlink:href='#workspace')
               span Tab link
           li
             a(href='#')
-              div(class=`c-icon c-icon--sm`)
+              div(class=`a-icon -sm`)
                 svg
                   use(xlink:href='#workspace')
               span Tab link
           li
             a(href='#')
-              div(class=`c-icon c-icon--sm`)
+              div(class=`a-icon -sm`)
                 svg
                   use(xlink:href='#workspace')
               span Tab link
@@ -82,21 +82,21 @@ each active in ['', 'active']
     div(class=`test-multi-level-${active}-${style}`)
       each size in ['small', 'medium', 'large']
         h4= `Tabs vertical multi-level ${size} ${style} ${active}`
-        ul.c-tabs.c-tabs--vertical.c-tabs--icons(class=`c-tabs--${alt} c-tabs--${style} c-tabs--${size}`)
+        ul.a-tabs.-vertical.-icons(class=`-${alt} -${style} -${size}`)
           li
             a(href='#')
-              div(class=`c-icon c-icon--sm`)
+              div(class=`a-icon -sm`)
                 svg
                   use(xlink:href='#workspace')
               span Tab link
-          li(class=`c-tab--active-alt c-tab--${active}`)
+          li(class=`-activeAlt -${active}`)
             a(href='#')
-              div(class=`c-icon c-icon--sm`)
+              div(class=`a-icon -sm`)
                 svg
                   use(xlink:href='#workspace')
               span Active tab
-            ul.c-subtabs
-              li.c-subtab--active
+            ul.a-tabs__subtabs
+              li.-active
                 a(href='#') Buttons
               li
                 a(href='#') Button Groups
@@ -105,13 +105,13 @@ each active in ['', 'active']
 
           li
             a(href='#')
-              div(class=`c-icon c-icon--sm`)
+              div(class=`a-icon -sm`)
                 svg
                   use(xlink:href='#workspace')
               span Tab link
           li
             a(href='#')
-              div(class=`c-icon c-icon--sm`)
+              div(class=`a-icon -sm`)
                 svg
                   use(xlink:href='#workspace')
               span Tab link

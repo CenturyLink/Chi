@@ -1,220 +1,222 @@
 @import 'button-groups-variables';
 
-.#{$btn-group} {
-  display: inline-flex;
+.chi {
+  .m-btnGroup {
+    display: inline-flex;
 
-  &:not(&--vertical) {
-    .#{$btn} {
-      &,
-      &.#{$btn}--primary,
-      &.#{$btn}--danger,
-      &.#{$btn}--info,
-      &.#{$btn}--dark {
-
+    &:not(.-vertical) {
+      .a-btn {
         &,
-        &.#{$btn}--outline {
-          border-radius: 0;
-          border-right-width: 0;
-          padding-right: 2rem;
+        &.-primary,
+        &.-danger,
+        &.-info,
+        &.-dark {
 
-          &.#{$btn}--icon {
-            padding-right: 1rem;
-          }
+          &,
+          &.-outline {
+            border-radius: 0;
+            border-right-width: 0;
+            padding-right: 2rem;
 
-          &.#{$btn}--small {
-            padding-right: 1rem;
-
-            &.#{$btn}--icon {
-              padding-right: 0.75rem;
-            }
-          }
-
-          &.#{$btn}--large {
-            padding-right: 3rem;
-
-            &.#{$btn}--icon {
-              padding-right: 1.25rem;
-            }
-          }
-
-          &:first-child {
-            border-bottom-left-radius: $border-radius;
-            border-top-left-radius: $border-radius;
-          }
-
-          &:last-child {
-            border-bottom-right-radius: $border-radius;
-            border-right-width: 0.125rem;
-            border-top-right-radius: $border-radius;
-            padding-right: 1.875rem;
-
-            &.#{$btn}--icon {
-              padding-right: 0.875rem;
+            &.-icon {
+              padding-right: 1rem;
             }
 
-            &.#{$btn}--small {
-              padding-right: 0.875rem;
+            &.-small {
+              padding-right: 1rem;
 
-              &.#{$btn}--icon {
-                padding-right: 0.625rem;
+              &.-icon {
+                padding-right: 0.75rem;
               }
             }
 
-            &.#{$btn}--large {
-              padding-right: 2.875rem;
+            &.-large {
+              padding-right: 3rem;
 
-              &.#{$btn}--icon {
-                padding-right: 1.125rem;
-              }
-            }
-          }
-
-          &:active,
-          &.#{$btn}--active,
-          &:hover,
-          &.#{$btn}--hover,
-          &:focus,
-          &.#{$btn}--focus {
-            border-right-width: 0.125rem;
-            padding-right: 1.875rem;
-
-            &.#{$btn}--icon {
-              padding-right: 0.875rem;
-            }
-
-            &.#{$btn}--small {
-              padding-right: 0.875rem;
-
-              &.#{$btn}--icon {
-                padding-right: 0.625rem;
+              &.-icon {
+                padding-right: 1.25rem;
               }
             }
 
-            &.#{$btn}--large {
-              padding-right: 2.875rem;
-
-              &.#{$btn}--icon {
-                padding-right: 1.125rem;
-              }
+            &:first-child {
+              border-bottom-left-radius: $border-radius;
+              border-top-left-radius: $border-radius;
             }
 
-            & + .#{$btn}:not(.#{$btn}--flat) {
-              border-left-width: 0;
-              padding-left: 2rem;
+            &:last-child {
+              border-bottom-right-radius: $border-radius;
+              border-right-width: 0.125rem;
+              border-top-right-radius: $border-radius;
+              padding-right: 1.875rem;
 
-              &.#{$btn}--icon {
-                padding-left: 1rem;
+              &.-icon {
+                padding-right: 0.875rem;
               }
 
-              &.#{$btn}--small {
-                padding-left: 1rem;
+              &.-small {
+                padding-right: 0.875rem;
 
-                &.#{$btn}--icon {
-                  padding-left: 0.75rem;
+                &.-icon {
+                  padding-right: 0.625rem;
                 }
               }
 
-              &.#{$btn}--large {
-                padding-left: 3rem;
+              &.-large {
+                padding-right: 2.875rem;
 
-                &.#{$btn}--icon {
-                  padding-left: 1.25rem;
+                &.-icon {
+                  padding-right: 1.125rem;
+                }
+              }
+            }
+
+            &:active,
+            &.-active,
+            &:hover,
+            &.-hover,
+            &:focus,
+            &.-focus {
+              border-right-width: 0.125rem;
+              padding-right: 1.875rem;
+
+              &.-icon {
+                padding-right: 0.875rem;
+              }
+
+              &.-small {
+                padding-right: 0.875rem;
+
+                &.-icon {
+                  padding-right: 0.625rem;
+                }
+              }
+
+              &.-large {
+                padding-right: 2.875rem;
+
+                &.-icon {
+                  padding-right: 1.125rem;
+                }
+              }
+
+              & + .a-btn:not(.-flat) {
+                border-left-width: 0;
+                padding-left: 2rem;
+
+                &.-icon {
+                  padding-left: 1rem;
+                }
+
+                &.-small {
+                  padding-left: 1rem;
+
+                  &.-icon {
+                    padding-left: 0.75rem;
+                  }
+                }
+
+                &.-large {
+                  padding-left: 3rem;
+
+                  &.-icon {
+                    padding-left: 1.25rem;
+                  }
+                }
+              }
+            }
+
+            &:hover,
+            &.-hover {
+              & + .a-btn:focus,
+              & + .-focus {
+                border-left-width: 0.125rem;
+                padding-left: 1.875rem;
+
+                &.-icon {
+                  padding-left: 0.875rem;
+                }
+
+                &.-small {
+                  padding-left: 0.875rem;
+
+                  &.-icon {
+                    padding-left: 0.625rem;
+                  }
+                }
+
+                &.-large {
+                  padding-left: 2.875rem;
+
+                  &.-icon {
+                    padding-left: 1.125rem;
+                  }
                 }
               }
             }
           }
 
-          &:hover,
-          &.#{$btn}--hover {
-            & + .#{$btn}:focus,
-            & + .#{$btn}--focus {
-              border-left-width: 0.125rem;
+          &.-flat {
+            border-radius: $border-radius;
+            padding-left: 2rem;
+            padding-right: 2rem;
+
+            &.-icon {
+              padding-left: 1rem;
+              padding-right: 1rem;
+            }
+
+            &.-small {
+              padding-left: 1rem;
+              padding-right: 1rem;
+
+              &.-icon {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+              }
+            }
+
+            &.-large {
+              padding-left: 3rem;
+              padding-right: 3rem;
+
+              &.-icon {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+              }
+            }
+
+            &:active,
+            &.-active,
+            &:hover,
+            &.-hover,
+            &:focus,
+            &.-focus {
               padding-left: 1.875rem;
+              padding-right: 1.875rem;
 
-              &.#{$btn}--icon {
+              &.-icon {
                 padding-left: 0.875rem;
+                padding-right: 0.875rem;
               }
 
-              &.#{$btn}--small {
+              &.-small {
                 padding-left: 0.875rem;
+                padding-right: 0.875rem;
 
-                &.#{$btn}--icon {
+                &.-icon {
                   padding-left: 0.625rem;
+                  padding-right: 0.625rem;
                 }
               }
 
-              &.#{$btn}--large {
+              &.-large {
                 padding-left: 2.875rem;
+                padding-right: 2.875rem;
 
-                &.#{$btn}--icon {
+                &.-icon {
                   padding-left: 1.125rem;
+                  padding-right: 1.125rem;
                 }
-              }
-            }
-          }
-        }
-
-        &.#{$btn}--flat {
-          border-radius: $border-radius;
-          padding-left: 2rem;
-          padding-right: 2rem;
-
-          &.#{$btn}--icon {
-            padding-left: 1rem;
-            padding-right: 1rem;
-          }
-
-          &.#{$btn}--small {
-            padding-left: 1rem;
-            padding-right: 1rem;
-
-            &.#{$btn}--icon {
-              padding-left: 0.75rem;
-              padding-right: 0.75rem;
-            }
-          }
-
-          &.#{$btn}--large {
-            padding-left: 3rem;
-            padding-right: 3rem;
-
-            &.#{$btn}--icon {
-              padding-left: 1.25rem;
-              padding-right: 1.25rem;
-            }
-          }
-
-          &:active,
-          &.#{$btn}--active,
-          &:hover,
-          &.#{$btn}--hover,
-          &:focus,
-          &.#{$btn}--focus {
-            padding-left: 1.875rem;
-            padding-right: 1.875rem;
-
-            &.#{$btn}--icon {
-              padding-left: 0.875rem;
-              padding-right: 0.875rem;
-            }
-
-            &.#{$btn}--small {
-              padding-left: 0.875rem;
-              padding-right: 0.875rem;
-
-              &.#{$btn}--icon {
-                padding-left: 0.625rem;
-                padding-right: 0.625rem;
-              }
-            }
-
-            &.#{$btn}--large {
-              padding-left: 2.875rem;
-              padding-right: 2.875rem;
-
-              &.#{$btn}--icon {
-                padding-left: 1.125rem;
-                padding-right: 1.125rem;
               }
             }
           }
