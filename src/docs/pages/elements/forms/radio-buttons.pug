@@ -1,0 +1,40 @@
+---
+title: Radio Buttons
+---
+
+p.-text
+  | In order to use a radio button just use an <code>input type="radio"</code> with the class <code>a-input</code>.
+  | Also, in order to have the checkbox properly styled, you must add an empty label for the checkbox immediately after
+  | it's declaration. More labels can be added next to it.
+
+.-mb4.-mt2
+  div(style="display:flex; align-items: center")
+    input(type="radio", class="a-input", name="example", id="radio01", checked)
+    label(for="radio01")
+
+    label.-text.-ml1(for="radio01") Radio 1
+
+  div(style="display:flex; align-items: center")
+    input(type="radio", class="a-input", name="example", id="radio02")
+    label(for="radio02")
+
+    label.-text.-ml1(for="radio02") Radio 2
+
+  div(style="display:flex; align-items: center")
+    input(type="radio", class="a-input", name="example", id="radio03")
+    label(for="radio03")
+
+    label.-text.-ml1(for="radio03") Radio 3
+
+  :code(lang="html")
+    <input type="checkbox" class="a-input" name="example" id="radio01" checked>
+    <label for="radio01"></label>
+    <label class="c-text -ml1" for="radio01">Radio 1</label>
+
+    <input type="checkbox" class="a-input" name="example" id="radio02">
+    <label for="radio02"></label>
+    <label class="c-text -ml1" for="radio02">Radio 2</label>
+
+    <input type="checkbox" class="a-input" name="example" id="radio03">
+    <label for="radio03"></label>
+    <label class="c-text -ml1" for="radio03">Radio 3</label>

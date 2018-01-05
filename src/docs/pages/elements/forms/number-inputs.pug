@@ -1,0 +1,48 @@
+---
+title: Number inputs
+---
+
+p.-text
+  | In order to use a number input just use an <code>input type="number"</code> with the class <code>a-input</code>, add
+  | two buttons next to it and wrap all items inside a <code>div</code> with the class <code>a-inputWrapper</code>.
+
+  | Input numbers also needs a modifier, <code>-compact</code>.
+
+.a-inputWrapper.-compact.-mb4.-mt2
+  input.a-input(type="number", value="0")
+  button
+  button
+
+:code(lang="html")
+  <div class="a-inputWrapper -compact">
+    <input type="number" class="a-input" value="0">
+    <button></button>
+    <button></button>
+  </div>
+
+p.-text We have two modifiers in relation to the size of the component.
+
+ul.-text
+  li
+    code -small
+  li
+    code -large
+
+each size, index in ['small', 'large']
+  h4= `${size} size`
+  .a-inputWrapper.-compact.-mb2
+    input.a-input(
+      class=`-${size}`
+      type="number"
+      value="0"
+    )
+    button
+    button
+
+p.-text Example
+:code(lang="html")
+  <div class="a-inputWrapper -compact">
+    <input type="number" class="a-input -small" value="0">
+    <button></button>
+    <button></button>
+  </div>

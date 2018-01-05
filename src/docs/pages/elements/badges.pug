@@ -1,0 +1,94 @@
+---
+title: Badges
+---
+
+mixin badge(data)
+  .a-badge(class!=attributes.class)
+    span= data
+
+p.-text
+  | Badges are useful, for example, to define tags.
+
++badge('example')
+
+:code(lang="html")
+  <div class="c-badge">
+    <span>example</span>
+  </div>
+
+p.-text Badges are inline elements
+
++badge('one').-mr1
++badge('two')
+
+:code(lang="html")
+  <div class="a-badge">
+    <span>one</span>
+  </div>
+
+  <div class="a-badge">
+    <span>two</span>
+  </div>
+
+p.-text Exists different modifiers to express the badge nature.
+
+ul.-text
+  li <code>-brand</code> Brand color badge
+  li <code>-info</code> Information bagde
+  li <code>-danger</code> Danger badge
+  li <code>-dark</code> Dark badge
+  li <code>-light</code> Light badge
+
+each style in ['brand', 'info', 'danger', 'dark', 'light']
+  +badge(style)(class=`-${style} -mr1`)
+
+p.-text Example of usage
+:code(lang="html")
+  <div class="a-badge -brand">
+    <span>brand</span>
+  </div>
+
+p.-text Also there are available modifiers to change the type of badge.
+
+ul.-text
+  li <code>-outline</code> Outline style
+  li <code>-flat</code> Flat style
+
+each style in ['outline', 'flat']
+  h4= `${style} badges`
+  div.-mb2
+    each state in ['base', 'brand', 'info', 'danger', 'dark', 'light']
+      +badge(state).-mr1(
+        class=`-${style}`
+        class={
+          [`-${state}`]:state != 'base',
+        }
+      )
+
+p.-text Example of usage
+:code(lang="html")
+  <div class="a-badge -outline">
+    <span>outline</span>
+  </div>
+
+h2 Pills
+
+p.-text
+ | Pills could be used, for example, to show a number of notifications. To create a pill use the modifier
+ | <code>-pill</code>.
+
+each style in ['solid', 'outline']
+  h4= `${style} pills`
+  each state, index in ['base', 'brand', 'info', 'danger', 'dark', 'light']
+    +badge((index * 10) + 10).-pill.-mr1(
+      class={
+        [`-${style}`]:style != 'solid',
+        [`-${state}`]:state != 'base',
+      }
+    )
+
+p.-text Example of usage
+:code(lang="html")
+  <div class="a-badge -pill">
+    <span>50</span>
+  </div>

@@ -12,5 +12,14 @@ body {
 
   pre {
     border-radius: 3px;
+    max-height: 360px;
+    overflow-y: auto;
+  }
+
+  code {
+    background-color: set-color(grey, 400);
+    border-radius: 3px;
+    color: set-color(carbon, 300);
+    padding: 0.25rem 0.5rem;
   }
 }

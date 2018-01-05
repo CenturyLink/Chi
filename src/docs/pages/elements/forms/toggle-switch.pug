@@ -1,0 +1,34 @@
+---
+title: Toggle Switch
+---
+
+p.-text
+  | In order to use a toggle switch just use an <code>input type="checkbox"</code> with the classes <code>a-input</code>
+  | and <code>-toggle</code>. Also, in order to have the switch properly styled you must add an empty label for
+  | the checkbox immediately after it's declaration.
+
+.-mb4.-mt2
+  div(style="display:flex; align-items: center")
+    input(type="checkbox", class="a-input -toggle", id="checkbox01")
+    label(class="-mr1", for="checkbox01")
+    span Very important flag
+
+  :code(lang="html")
+    <input type="checkbox" class="a-input -toggle" id="checkbox">
+    <label for="checkbox"></label>
+    <span>Very important flag</span>
+
+p.-text
+  | The toggle switches by default contains the text <code>ON/OFF</code>, but we could disable it with the use of the
+  | modifier <code>-noText</code>.
+
+.-mb4.-mt2
+  div(style="display:flex; align-items: center")
+    input(type="checkbox", class="a-input -toggle -noText", id="checkbox02")
+    label(class="-mr1", for="checkbox02")
+    span Very important flag
+
+  :code(lang="html")
+    <input type="checkbox" class="a-input -toggle -noText" id="checkbox">
+    <label for="checkbox"></label>
+    <span>Very important flag</span>

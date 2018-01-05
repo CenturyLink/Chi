@@ -13,7 +13,7 @@ html(lang="en")
             each style in styles
                 link(rel="stylesheet", media="all", href=`/assets/styles/${style}.css`)
 
-    body.show-grid
+    body.chi.show-grid
       .docs-container
         include partials/header
 
@@ -21,7 +21,7 @@ html(lang="en")
             include partials/aside
 
             .docs-body__content
-              .c-grid-container
+              .a-grid__container
                 h2= title
                 != contents
 
