@@ -4,47 +4,47 @@ title: Getting started
 
 h3 Welcome to Chi
 
-p.c-text
+p.-text
   | Chi is a CenturyLink CSS pattern library for building fast, reusable, and consistent responsive interfaces.
 
 h3 Using Chi
 
-p.c-text
+p.-text
   | First import Chi into your project
 
-.c-mb4
+.-mb4
   :code(lang='bash')
     npm i @ctl/chi --save-dev
 
-p.c-text
+p.-text
   | Once Chi is installed as a dependency there are two different options to use it:
 
-ul.c-text
+ul.-text
   li Through it's CLI
   li Through it's API
 
-p.c-text
+p.-text
   | Once the css is generated just include it into your html page or script bundle.
 
 h4 CLI
 
-p.c-text
+p.-text
   | The CLI is installed in <code>node_modules/.bin/</code> folder as <code>chi</code>.
 
-p.c-text
+p.-text
   | <code>chi</code> command allows you to create a css that contains just the foundations of Chi and the components you
   | use in your project. Also it helps you to copy all Chi assets used by those selected components into the assets
   | folder used by your web app.
 
-.c-mb4
+.-mb4
   :code(lang='bash')
     vader:example luke$ ./node_modules/.bin/chi buttons grid -c css -o dist
 
-p.c-text
+p.-text
   | In the example chi compiles the foundations, buttons and grid into a minified css and place it inside the dist
   | folder. All <code>chi</code> options can be checked invoking the help.
 
-.c-mb4
+.-mb4
   :code(lang='bash')
     vader:example luke$ ./node_modules/.bin/chi --help
     Usage: bin/cli.js <component-list> -c command -o <output-dir> -p <assets_path>
@@ -67,72 +67,84 @@ p.c-text
 
 h4 API
 
-p.c-text
+p.-text
   | To use the API just require `chi` in your javascript file.
 
-.c-mb4
+.-mb4
   :code(lang='js')
     var chi = require('@ctl/chi');
 
-p.c-text
+p.-text
   | <code>chi</code> provides three methods:
 
-ul.c-text
+ul.-text
   li build(options): Generates the css and copies the assets into the dest folder.
   li buildCss(options): Generates the css with the specified components and the foundations and moves it into the dest folder.
   li copyAssets(options): Copies the assets used by the selected components into the dest folder.
 
-h6 options
+h5 options
 
-p.c-text Options are common for both methods.
+p.-text Options are common for both methods.
 
-.c-text
-  :marked
-    | option     | Description                                                            |
-    |------------|------------------------------------------------------------------------|
-    | names      | List of components to include. Omit the option to include all of them. |
-    | dest       | dest folder in which the result is going to ve copied.                 |
-    | assetsPath | root path where the assets are located.                                |
+section.a-table
+  div
+    table
+      thead
+        tr
+          th
+            div option
+          th
+            div description
+      tbody
+        tr
+          td names
+          td List of components to include. Omit the option to include all of them
+        tr
+          td dest
+          td dest folder in which the result is going to ve copied.
+        tr
+          td assetsPath
+          td root path where the assets are located.
 
 h3 Development
 
-p.c-text
+p.-text
   | The preferred way to setup your dev env is through docker. If you have docker installed then run the command
 
-.c-mb4
+.-mb4
   :code(lang='bash')
     vader:example luke$ npm run docker -- start
 
-p.c-text
+p.-text
   | And connect to <a href="http://localhost:8000">http://localhost:8000</a> to start developing in chi and see your
   | changes in the browser. However, if you don't have docker installed and don't plan to install, follow the normal
   | process for all npm projects.
 
-.c-mb4
+.-mb4
   :code(lang='bash')
     vader:example luke$ npm install
     vader:example luke$ npm start
 
 h4 test
 
-p.c-text
+p.-text
   | We are using backstopJS to unit test our css components. In order to execute the unit test run the command
 
-.c-mb4
+.-mb4
   :code(lang='bash')
     vader:example luke$ npm run docker -- test
-  p.c-text or
+  p.-text or
   :code(lang='bash')
     vader:example luke$ npm test
 
-p.c-text
+p.-text
   | Test report is created under "reports/html_report" and you can browse the results with your browser.
   | In the event you receive a test failure after adding a new test or making a change and your changes are correct,
   | you will need to override the baseline test with your new changes by running an approve.
 
-.c-mb4
+.-mb4
   :code(lang='bash')
     vader:example luke$ npm run docker -- approve
-  p.c-text or
+  p.-text or
   :code(lang='bash')
     vader:example luke$ npm run approve

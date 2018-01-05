@@ -2,47 +2,47 @@
 title: Number inputs
 ---
 
-p.c-text
-  | In order to use a number input just use an <code>input type="number"</code> with the class <code>c-input</code>, add
-  | two buttons next to it and wrap all items inside a <code>div</code> with the class <code>c-input-wrapper</code>.
+p.-text
+  | In order to use a number input just use an <code>input type="number"</code> with the class <code>a-input</code>, add
+  | two buttons next to it and wrap all items inside a <code>div</code> with the class <code>a-inputWrapper</code>.
 
-  | Input numbers also needs a modifier, <code>c-input-wrapper--compact</code>.
+  | Input numbers also needs a modifier, <code>-compact</code>.
 
-.c-input-wrapper.c-input-wrapper--compact.c-mb4.c-mt2
-  input.c-input(type="number", value="0")
+.a-inputWrapper.-compact.-mb4.-mt2
+  input.a-input(type="number", value="0")
   button
   button
 
 :code(lang="html")
-  <div class="c-input-wrapper c-input-wrapper--compact">
-    <input type="number" class="c-input" value="0">
+  <div class="a-inputWrapper -compact">
+    <input type="number" class="a-input" value="0">
     <button></button>
     <button></button>
   </div>
 
-p.c-text We have two modifiers in relation to the size of the component.
+p.-text We have two modifiers in relation to the size of the component.
 
-ul.c-text
+ul.-text
   li
-    code c-input--small
+    code -small
   li
-    code c-input--large
+    code -large
 
 each size, index in ['small', 'large']
   h4= `${size} size`
-  .c-input-wrapper.c-input-wrapper--compact.c-mb2
-    input.c-input(
-      class=`c-input--${size}`
+  .a-inputWrapper.-compact.-mb2
+    input.a-input(
+      class=`-${size}`
       type="number"
       value="0"
     )
     button
     button
 
-p.c-text Example
+p.-text Example
 :code(lang="html")
-  <div class="c-input-wrapper c-input-wrapper--compact">
-    <input type="number" class="c-input c-input--small" value="0">
+  <div class="a-inputWrapper -compact">
+    <input type="number" class="a-input -small" value="0">
     <button></button>
     <button></button>
   </div>

@@ -2,39 +2,39 @@
 title: Radio Buttons
 ---
 
-p.c-text
-  | In order to use a radio button just use an <code>input type="radio"</code> with the class <code>c-input</code>.
+p.-text
+  | In order to use a radio button just use an <code>input type="radio"</code> with the class <code>a-input</code>.
   | Also, in order to have the checkbox properly styled, you must add an empty label for the checkbox immediately after
   | it's declaration. More labels can be added next to it.
 
-.c-mb4.c-mt2
+.-mb4.-mt2
   div(style="display:flex; align-items: center")
-    input(type="radio", class="c-input", name="example", id="radio01", checked)
+    input(type="radio", class="a-input", name="example", id="radio01", checked)
     label(for="radio01")
 
-    label.c-text(for="radio01") Radio 1
+    label.-text.-ml1(for="radio01") Radio 1
 
   div(style="display:flex; align-items: center")
-    input(type="radio", class="c-input", name="example", id="radio02")
+    input(type="radio", class="a-input", name="example", id="radio02")
     label(for="radio02")
 
-    label.c-text(for="radio02") Radio 2
+    label.-text.-ml1(for="radio02") Radio 2
 
   div(style="display:flex; align-items: center")
-    input(type="radio", class="c-input", name="example", id="radio03")
+    input(type="radio", class="a-input", name="example", id="radio03")
     label(for="radio03")
 
-    label.c-text(for="radio03") Radio 3
+    label.-text.-ml1(for="radio03") Radio 3
 
   :code(lang="html")
-    <input type="checkbox" class="c-input" name="example" id="radio01" checked>
+    <input type="checkbox" class="a-input" name="example" id="radio01" checked>
     <label for="radio01"></label>
-    <label class="c-text" for="radio01">Radio 1</label>
+    <label class="c-text -ml1" for="radio01">Radio 1</label>
 
-    <input type="checkbox" class="c-input" name="example" id="radio02">
+    <input type="checkbox" class="a-input" name="example" id="radio02">
     <label for="radio02"></label>
-    <label class="c-text" for="radio02">Radio 2</label>
+    <label class="c-text -ml1" for="radio02">Radio 2</label>
 
-    <input type="checkbox" class="c-input" name="example" id="radio03">
+    <input type="checkbox" class="a-input" name="example" id="radio03">
     <label for="radio03"></label>
-    <label class="c-text" for="radio03">Radio 3</label>
+    <label class="c-text -ml1" for="radio03">Radio 3</label>

@@ -3,10 +3,10 @@ title: Badges
 ---
 
 mixin badge(data)
-  .c-badge(class!=attributes.class)
+  .a-badge(class!=attributes.class)
     span= data
 
-p.c-text
+p.-text
   | Badges are useful, for example, to define tags.
 
 +badge('example')
@@ -16,79 +16,79 @@ p.c-text
     <span>example</span>
   </div>
 
-p.c-text Badges are inline elements
+p.-text Badges are inline elements
 
-+badge('one').c-mr1
++badge('one').-mr1
 +badge('two')
 
 :code(lang="html")
-  <div class="c-badge">
+  <div class="a-badge">
     <span>one</span>
   </div>
 
-  <div class="c-badge">
+  <div class="a-badge">
     <span>two</span>
   </div>
 
-p.c-text Exists different modifiers to express the badge nature.
+p.-text Exists different modifiers to express the badge nature.
 
-ul.c-text
-  li <code>c-badge--brand</code> Brand color badge
-  li <code>c-badge--info</code> Information bagde
-  li <code>c-badge--danger</code> Danger badge
-  li <code>c-badge--dark</code> Dark badge
-  li <code>c-badge--light</code> Light badge
+ul.-text
+  li <code>-brand</code> Brand color badge
+  li <code>-info</code> Information bagde
+  li <code>-danger</code> Danger badge
+  li <code>-dark</code> Dark badge
+  li <code>-light</code> Light badge
 
 each style in ['brand', 'info', 'danger', 'dark', 'light']
-  +badge(style)(class=`c-badge--${style} c-mr1`)
+  +badge(style)(class=`-${style} -mr1`)
 
-p.c-text Example of usage
+p.-text Example of usage
 :code(lang="html")
-  <div class="c-badge c-badge--brand">
+  <div class="a-badge -brand">
     <span>brand</span>
   </div>
 
-p.c-text Also there are available modifiers to change the type of badge.
+p.-text Also there are available modifiers to change the type of badge.
 
-ul.c-text
-  li <code>c-badge--outline</code> Outline style
-  li <code>c-badge--flat</code> Flat style
+ul.-text
+  li <code>-outline</code> Outline style
+  li <code>-flat</code> Flat style
 
 each style in ['outline', 'flat']
   h4= `${style} badges`
-  div.c-mb2
+  div.-mb2
     each state in ['base', 'brand', 'info', 'danger', 'dark', 'light']
-      +badge(state).c-mr1(
-        class=`c-badge--${style}`
+      +badge(state).-mr1(
+        class=`-${style}`
         class={
-          [`c-badge--${state}`]:state != 'base',
+          [`-${state}`]:state != 'base',
         }
       )
 
-p.c-text Example of usage
+p.-text Example of usage
 :code(lang="html")
-  <div class="c-badge c-badge--outline">
+  <div class="a-badge -outline">
     <span>outline</span>
   </div>
 
 h2 Pills
 
-p.c-text
+p.-text
  | Pills could be used, for example, to show a number of notifications. To create a pill use the modifier
- | <code>c-badge--pill</code>.
+ | <code>-pill</code>.
 
 each style in ['solid', 'outline']
   h4= `${style} pills`
   each state, index in ['base', 'brand', 'info', 'danger', 'dark', 'light']
-    +badge((index * 10) + 10).c-badge--pill.c-mr1(
+    +badge((index * 10) + 10).-pill.-mr1(
       class={
-        [`c-badge--${style}`]:style != 'solid',
-        [`c-badge--${state}`]:state != 'base',
+        [`-${style}`]:style != 'solid',
+        [`-${state}`]:state != 'base',
       }
     )
 
-p.c-text Example of usage
+p.-text Example of usage
 :code(lang="html")
-  <div class="c-badge c-badge--pill">
+  <div class="a-badge -pill">
     <span>50</span>
   </div>

@@ -5,124 +5,124 @@ img(inline src='src/assets/images/icon-workspace.svg')
 
 h3 Decription
 
-p.c-text Button groups wrap a series of buttons.
+p.-text Button groups wrap a series of buttons.
 
 H3 Examples
 
-p.c-text In order to group buttons just wrap them inside a div with the class <code>c-btn-group</code>.
+p.-text In order to group buttons just wrap them inside a div with the class <code>m-btnGroup</code>.
 
-.c-mb4.c-mt2
-  .c-btn-group
-    button(class=`c-btn`) Button
-    button(class=`c-btn`) Button
-    button(class=`c-btn`) Button
-
-  :code(lang='html')
-    <div class="c-btn-group">
-      <button class="c-btn">Button</button>
-      <button class="c-btn">Button</button>
-      <button class="c-btn">Button</button>
-    </div>
-
-p.c-text Also, if you want to make a vertical group add the class modifier <code>c-btn-group--vertical</code>.
-
-.c-mb4.c-mt2
-  .c-btn-group.c-btn-group--vertical
-    button(class=`c-btn`) Button
-    button(class=`c-btn`) Button
-    button(class=`c-btn`) Button
+.-mb4.-mt2
+  .m-btnGroup
+    button(class=`a-btn`) Button
+    button(class=`a-btn`) Button
+    button(class=`a-btn`) Button
 
   :code(lang='html')
-    <div class="c-btn-group c-btn-group--vertical">
-      <button class="c-btn">Button</button>
-      <button class="c-btn">Button</button>
-      <button class="c-btn">Button</button>
+    <div class="m-btnGroup">
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
     </div>
 
-p.c-text Button groups can be expanded to fill the parent space with the use of <code>c-btn-group--expanded</code>.
+p.-text Also, if you want to make a vertical group add the class modifier <code>-vertical</code>.
 
-.c-mb4.c-mt2
-  .c-btn-group.c-btn-group--expanded(style="width:600px")
-    button(class=`c-btn`) Button
-    button(class=`c-btn`) Button
-    button(class=`c-btn`) Button
+.-mb4.-mt2
+  .m-btnGroup.-vertical
+    button(class=`a-btn`) Button
+    button(class=`a-btn`) Button
+    button(class=`a-btn`) Button
 
   :code(lang='html')
-    <div class="c-btn-group c-btn-group--expanded">
-      <button class="c-btn">Button</button>
-      <button class="c-btn">Button</button>
-      <button class="c-btn">Button</button>
+    <div class="m-btnGroup -vertical">
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
     </div>
 
-p.c-text Vertical groups can be expanded also!
+p.-text Button groups can be expanded to fill the parent space with the use of <code>-expanded</code>.
 
-.c-mb4.c-mt2
-  .c-btn-group.c-btn-group--vertical.c-btn-group--expanded(style="width:200px")
-    button(class=`c-btn`) Button
-    button(class=`c-btn`) Button
-    button(class=`c-btn`) Button
+.-mb4.-mt2
+  .m-btnGroup.-expanded(style="width:600px")
+    button(class=`a-btn`) Button
+    button(class=`a-btn`) Button
+    button(class=`a-btn`) Button
 
   :code(lang='html')
-    <div class="c-btn-group c-btn-group--vertical c-btn-group--expanded">
-      <button class="c-btn">Button</button>
-      <button class="c-btn">Button</button>
-      <button class="c-btn">Button</button>
+    <div class="m-btnGroup -expanded">
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
     </div>
 
-p.c-text
+p.-text Vertical groups can be expanded also!
+
+.-mb4.-mt2
+  .m-btnGroup.-vertical.-expanded(style="width:200px")
+    button(class=`a-btn`) Button
+    button(class=`a-btn`) Button
+    button(class=`a-btn`) Button
+
+  :code(lang='html')
+    <div class="m-btnGroup -vertical -expanded">
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+    </div>
+
+p.-text
   | By default the button text is centered in expanded buttons, but you can change this behaviour using the modifiers
-  | <code>c-btn--align-left</code> or <code>c-btn--align-right</code> in the buttons.
+  | <code>-alignLeft</code> or <code>-alignRight</code> in the buttons.
 
-.c-mb4.c-mt2
-  .c-btn-group.c-btn-group--expanded(style="width:600px")
-    button(class=`c-btn c-btn--align-left`) Button
-    button(class=`c-btn`) Button
-    button(class=`c-btn c-btn--align-right`) Button
+.-mb4.-mt2
+  .m-btnGroup.-expanded(style="width:600px")
+    button(class=`a-btn -alignLeft`) Button
+    button(class=`a-btn`) Button
+    button(class=`a-btn -alignRight`) Button
 
   :code(lang='html')
-    <div class="c-btn-group c-btn-group--expanded">
-      <button class="c-btn c-btn--align-left">Button</button>
-      <button class="c-btn">Button</button>
-      <button class="c-btn c-btn--align-right">Button</button>
+    <div class="m-btnGroup -expanded">
+      <button class="a-btn -alignLeft">Button</button>
+      <button class="a-btn">Button</button>
+      <button class="a-btn -alignRight">Button</button>
     </div>
 
-p.c-text
+p.-text
   | Also could happen that sometimes we don't want some specific button to be expanded inside an expanded group. You can
-  | achieve this by the use of the modifier <code>c-btn--not-expand</code> on that specific button.
+  | achieve this by the use of the modifier <code>-notExpand</code> on that specific button.
 
-.c-mb4.c-mt2
-  .c-btn-group.c-btn-group--expanded(style="width:600px")
-    button(class=`c-btn`) Button
-    button(class=`c-btn c-btn--not-expand`) Button
-    button(class=`c-btn`) Button
+.-mb4.-mt2
+  .m-btnGroup.-expanded(style="width:600px")
+    button(class=`a-btn`) Button
+    button(class=`a-btn -notExpand`) Button
+    button(class=`a-btn`) Button
 
   :code(lang='html')
-    <div class="c-btn-group c-btn-group--expanded">
-      <button class="c-btn">Button</button>
-      <button class="c-btn c-btn--not-expand">Button</button>
-      <button class="c-btn">Button</button>
+    <div class="m-btnGroup -expanded">
+      <button class="a-btn">Button</button>
+      <button class="a-btn -notExpand">Button</button>
+      <button class="a-btn">Button</button>
     </div>
 
 h3 Hybrid buttons
 
-p.c-text
+p.-text
   | The combination of a text button with an icon buttons inside a button group allows us to create an hybrid button.
 
-.c-mb4.c-mt2
-  .c-btn-group
-    button(class=`c-btn`) Button
-    button(class=`c-btn c-btn--icon`)
-      .c-btn-content
-        .c-icon
+.-mb4.-mt2
+  .m-btnGroup
+    button(class=`a-btn`) Button
+    button(class=`a-btn -icon`)
+      .a-btn__content
+        .a-icon
           svg
             use(xlink:href='#workspace')
 
   :code(lang='html')
-    <div class="c-btn-group">
-      <button class="c-btn">Button</button>
-      <button class="c-btn c-btn--icon">
-        <div class="c-btn-content">
-          <div class="c-btn-icon">
+    <div class="m-btnGroup">
+      <button class="a-btn">Button</button>
+      <button class="a-btn -icon">
+        <div class="a-btn__content">
+          <div class="a-icon">
             <svg>
               <use xlink:href="#workspace"></use>
             </svg>
@@ -131,23 +131,23 @@ p.c-text
       </button>
     </div>
 
-p.c-text And remember that hybrid buttons can be expanded also.
+p.-text And remember that hybrid buttons can be expanded also.
 
-.c-mb4.c-mt2
-  .c-btn-group.c-btn-group--expanded(style="width:200px")
-    button(class=`c-btn`) Button
-    button(class=`c-btn c-btn--icon c-btn--not-expand`)
-      .c-btn-content
-        .c-icon
+.-mb4.-mt2
+  .m-btnGroup.-expanded(style="width:200px")
+    button(class=`a-btn`) Button
+    button(class=`a-btn -icon -notExpand`)
+      .a-btn__content
+        .a-icon
           svg
             use(xlink:href='#workspace')
 
   :code(lang='html')
-    <div class="c-btn-group c-btn-group--expanded">
-      <button class="c-btn">Button</button>
-      <button class="c-btn c-btn--icon c-btn--not-expand">
-        <div class="c-btn-content">
-          <div class="c-btn-icon">
+    <div class="m-btnGroup -expanded">
+      <button class="a-btn">Button</button>
+      <button class="a-btn -icon -notExpand">
+        <div class="a-btn__content">
+          <div class="a-icon">
             <svg>
               <use xlink:href="#workspace"></use>
             </svg>

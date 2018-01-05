@@ -6,75 +6,75 @@ img(inline src='node_modules/@ctl/chi/src/css/components/icons/icons/icon-check.
 img(inline src='node_modules/@ctl/chi/src/css/components/icons/icons/icon-warning.svg')
 img(inline src='node_modules/@ctl/chi/src/css/components/icons/icons/icon-circle-warning.svg')
 
-p.c-text
+p.-text
   | In order to use a text input, a password or an email input just use an <code>input type="[text|password|email]"</code>
-  | with the class <code>c-input</code>. By default text inputs are fluid, adjusting them to it's parent width.
+  | with the class <code>a-input</code>. By default text inputs are fluid, adjusting them to it's parent width.
 
-.c-mb4.c-mt2
+.-mb4.-mt2
   div(style="max-width:30rem")
-    input(type="text", class="c-input", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
 
   :code(lang="html")
-    <input type="text" class="c-input" placeholder="Placeholder" value="Sample Text">
+    <input type="text" class="a-input" placeholder="Placeholder" value="Sample Text">
 
-p.c-text
+p.-text
   | If we want to add some icon to the text input we must wrap the input inside a <code>div</code> using the class
-  | <code>c-input-wrapper</code>, add the icon as a sibling of the <code>input</code> and specify where is going to be
+  | <code>a-inputWrapper</code>, add the icon as a sibling of the <code>input</code> and specify where is going to be
   | placed the icon.
 
-.c-mb4
-  .c-input-wrapper.c-input-wrapper--icon-left(style="max-width:30rem")
-    input(type="text", class="c-input", placeholder="Placeholder", value="Sample Text")
-    .c-icon
+.-mb4
+  .a-inputWrapper.-iconLeft(style="max-width:30rem")
+    input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+    .a-icon
       svg
         use(xlink:href='#edit')
 
   :code(lang="html")
-    <div class="c-input-wrapper c-input-wrapper--icon-left">
-      <input type="text" class="c-input" placeholder="Placeholder" value="Sample text">
-      <div class="c-icon">
+    <div class="a-inputWrapper -iconLeft">
+      <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
+      <div class="a-icon">
         <svg>
           <use xlink:href="#edit"></use>
         </svg>
       </div>
     </div>
 
-.c-mb4
-  .c-input-wrapper.c-input-wrapper--icon-right(style="max-width:30rem")
-    input(type="text", class="c-input", placeholder="Placeholder", value="Sample Text")
-    .c-icon
+.-mb4
+  .a-inputWrapper.-iconRight(style="max-width:30rem")
+    input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+    .a-icon
       svg
         use(xlink:href='#edit')
 
   :code(lang="html")
-    <div class="c-input-wrapper c-input-wrapper--icon-right">
-      <input type="text" class="c-input" placeholder="Placeholder" value="Sample text">
-      <div class="c-icon">
+    <div class="a-inputWrapper -iconRight">
+      <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
+      <div class="a-icon">
         <svg>
           <use xlink:href="#edit"></use>
         </svg>
       </div>
     </div>
 
-.c-mb4
-  .c-input-wrapper.c-input-wrapper--icon-left.c-input-wrapper--icon-right(style="max-width:30rem")
-    input(type="text", class="c-input", placeholder="Placeholder", value="Sample Text")
-    .c-icon
+.-mb4
+  .a-inputWrapper.-iconLeft.-iconRight(style="max-width:30rem")
+    input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+    .a-icon
       svg
         use(xlink:href='#edit')
-    .c-icon
+    .a-icon
       svg
         use(xlink:href='#check')
 
   :code(lang="html")
-    <div class="c-input-wrapper c-input-wrapper--icon-left c-input-wrapper--icon-right">
-      <input type="text" class="c-input" placeholder="Placeholder" value="Sample text">
-      <div class="c-icon">
+    <div class="a-inputWrapper -iconLeft -iconRight">
+      <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
+      <div class="a-icon">
         <svg>
           <use xlink:href="#edit"></use>
         </svg>
       </div>
-      <div class="c-icon">
+      <div class="a-icon">
         <svg>
           <use xlink:href="#check"></use>
         </svg>
@@ -83,85 +83,85 @@ p.c-text
 
 h3 States
 
-p.c-text
+p.-text
   | Text inputs has three states vailable:
 
-ul.c-text
-  li success: <code>c-input--success</code>
-  li warning: <code>c-input--warning</code>
-  li danger: <code>c-input--danger</code>
+ul.-text
+  li success: <code>-success</code>
+  li warning: <code>-warning</code>
+  li danger: <code>-danger</code>
 
-.c-mb4.c-mt2
+.-mb4.-mt2
   div(style="max-width:30rem")
-    input(type="text", class="c-input c-input--success", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
 
   :code(lang="html")
-    <input type="text" class="c-input c-input--success" placeholder="Placeholder" value="Sample Text">
+    <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
 
-.c-mb4.c-mt2
+.-mb4.-mt2
   div(style="max-width:30rem")
-    input(type="text", class="c-input c-input--warning", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
 
   :code(lang="html")
-    <input type="text" class="c-input c-input--warning" placeholder="Placeholder" value="Sample Text">
+    <input type="text" class="a-input -warning" placeholder="Placeholder" value="Sample Text">
 
-.c-mb4.c-mt2
+.-mb4.-mt2
   div(style="max-width:30rem")
-    input(type="text", class="c-input c-input--danger", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
 
   :code(lang="html")
-    <input type="text" class="c-input c-input--danger" placeholder="Placeholder" value="Sample Text">
+    <input type="text" class="a-input -danger" placeholder="Placeholder" value="Sample Text">
 
-p.c-text Also we can add icons to emphasize the state.
+p.-text Also we can add icons to emphasize the state.
 
-.c-mb4.c-mt2
+.-mb4.-mt2
   div(style="max-width:30rem")
-    .c-input-wrapper.c-input-wrapper--icon-right
-      input(type="text", class="c-input c-input--success", placeholder="Placeholder", value="Sample Text")
-      .c-icon.c-text--success
+    .a-inputWrapper.-iconRight
+      input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
+      .a-icon.-success
         svg
           use(xlink:href="#check")
 
   :code(lang="html")
-    <div class="c-input-wrapper c-input-wrapper--icon-right">
-      <input type="text" class="c-input c-input--success" placeholder="Placeholder" value="Sample Text">
-      <div class="c-icon c-text--success">
+    <div class="a-inputWrapper -iconRight">
+      <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
+      <div class="a-icon -success">
         <svg>
           <use xlink:href="#check"></use>
         </svg>
       </div>
     </div>
 
-.c-mb4.c-mt2
+.-mb4.-mt2
   div(style="max-width:30rem")
-    .c-input-wrapper.c-input-wrapper--icon-right
-      input(type="text", class="c-input c-input--warning", placeholder="Placeholder", value="Sample Text")
-      .c-icon.c-text--warning
+    .a-inputWrapper.-iconRight
+      input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
+      .a-icon.-warning
         svg
           use(xlink:href="#warning")
 
   :code(lang="html")
-    <div class="c-input-wrapper c-input-wrapper--icon-right">
-      <input type="text" class="c-input c-input--warning" placeholder="Placeholder" value="Sample Text">
-      <div class="c-icon c-text--warning">
+    <div class="a-inputWrapper -iconRight">
+      <input type="text" class="a-input -warning" placeholder="Placeholder" value="Sample Text">
+      <div class="a-icon -warning">
         <svg>
           <use xlink:href="#warning"></use>
         </svg>
       </div>
     </div>
 
-.c-mb4.c-mt2
+.-mb4.-mt2
   div(style="max-width:30rem")
-    .c-input-wrapper.c-input-wrapper--icon-right
-      input(type="text", class="c-input c-input--danger", placeholder="Placeholder", value="Sample Text")
-      .c-icon.c-text--danger
+    .a-inputWrapper.-iconRight
+      input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
+      .a-icon.-danger
         svg
           use(xlink:href="#circle-warning")
 
   :code(lang="html")
-    <div class="c-input-wrapper c-input-wrapper--icon-right">
-      <input type="text" class="c-input c-input--danger" placeholder="Placeholder" value="Sample Text">
-      <div class="c-icon c-text--danger">
+    <div class="a-inputWrapper -iconRight">
+      <input type="text" class="a-input -danger" placeholder="Placeholder" value="Sample Text">
+      <div class="a-icon -danger">
         <svg>
           <use xlink:href="#circle-warning"></use>
         </svg>
@@ -170,22 +170,22 @@ p.c-text Also we can add icons to emphasize the state.
 
 h3 Sizes
 
-p.c-text There are two modifiers available for the text input size:
+p.-text There are two modifiers available for the text input size:
 
-ul.c-text
-  li Small: <code>c-input--small</code>
-  li Large: <code>c-input--large</code>
+ul.-text
+  li Small: <code>-small</code>
+  li Large: <code>-large</code>
 
-.c-mb4.c-mt2
+.-mb4.-mt2
   div(style="max-width:30rem")
-    input(type="text", class="c-input c-input--small", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input -small", placeholder="Placeholder", value="Sample Text")
 
   :code(lang="html")
-    <input type="text" class="c-input c-input--small" placeholder="Placeholder" value="Sample Text">
+    <input type="text" class="a-input -small" placeholder="Placeholder" value="Sample Text">
 
-.c-mb4.c-mt2
+.-mb4.-mt2
   div(style="max-width:30rem")
-    input(type="text", class="c-input c-input--large", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input -large", placeholder="Placeholder", value="Sample Text")
 
   :code(lang="html")
-    <input type="text" class="c-input c-input--large" placeholder="Placeholder" value="Sample Text">
+    <input type="text" class="a-input -large" placeholder="Placeholder" value="Sample Text">

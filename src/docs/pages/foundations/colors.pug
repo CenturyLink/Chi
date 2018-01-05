@@ -3,7 +3,7 @@ title: Colors
 styles: [colors]
 ---
 
-p.c-text Chi defines three primary color palettes and another three extended.
+p.-text Chi defines three primary color palettes and another three extended.
 
 h3 Primary
 
@@ -187,9 +187,9 @@ h3 Extended
 
 h2 SASS
 
-p.c-text Chi defines a set of colors in Sass language variables.
+p.-text Chi defines a set of colors in Sass language variables.
 
-.c-mb4
+.-mb4
   :code(lang='sass')
     $colorscheme: (
       green: (
@@ -252,17 +252,17 @@ p.c-text Chi defines a set of colors in Sass language variables.
       )
     );
 
-p.c-text Also an utility function is created to reference them
+p.-text Also an utility function is created to reference them
 
-.c-mb4
+.-mb4
   :code(lang='sass')
     set-color($scheme, $tone)
 
-p.c-text
+p.-text
   | In order to use it, developers only needs to add chi in their project through npm and import the variables and
   | mixins sass files.
 
-.c-mb4
+.-mb4
   :code(lang='sass')
     @import '@ctl/chi/src/css/variables';
     @import '@ctl/chi/src/css/mixins';
