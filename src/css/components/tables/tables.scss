@@ -3,26 +3,26 @@
 
 .chi {
   section {
-    padding-top: 6rem;
-    position: relative;
-
-    &::before {
-      background-color: set-color(grey, 100);
-      border-bottom: 0.125rem solid set-color(grey, 400);
-      content: '';
-      display: block;
-      height: 6rem;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
-
-    & > div {
-      height: 100%;
-      overflow-y: auto;
-    }
-
     &.a-table {
+      padding-top: 6rem;
+      position: relative;
+
+      &::before {
+        background-color: set-color(grey, 100);
+        border-bottom: 0.125rem solid set-color(grey, 400);
+        content: '';
+        display: block;
+        height: 6rem;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      & > div {
+        height: 100%;
+        overflow-y: auto;
+      }
+
       table {
         border-spacing: 0;
         font-size: 1.625rem;
