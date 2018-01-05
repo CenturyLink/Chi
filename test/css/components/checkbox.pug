@@ -4,22 +4,22 @@ title: Checkbox
 
 .test-states
   each state, index in ['default', 'hover', 'focus', 'checked', 'disabled']
-    .c-mb1
+    .-mb1
       h5= `Checkbox / ${state}`
-      input.c-input(
+      input.a-input(
         type="checkbox"
         id=`checkbox-${index}`
         class={
-          [`c-input--${state}`]: state == 'focus'
+          [`-${state}`]: state == 'focus'
         }
         checked=state=='checked' ? 'checked' : false
         disabled=state=='disabled' ? 'disabled' : false
       )
-      label.c-mr1(
+      label.-mr1(
         for=`checkbox-${index}`
         class={
-          [`c-input--${state}`]: state == 'hover'
+          [`-${state}`]: state == 'hover'
         }
       )
       label(for=`checkbox-${index}`) checkbox
-      span.c-text  aligned with text
+      span.-text  aligned with text

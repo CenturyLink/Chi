@@ -1,8 +1,6 @@
 @import 'variables';
 @import 'mixins';
 
-$input: c-input;
-
 @mixin thumb-style {
   background-color: set-color(grey, 100);
   border: 2px solid set-color(green, 500);
@@ -33,139 +31,141 @@ $input: c-input;
 }
 
 // sass-lint:disable no-vendor-prefixes
-input {
-  &[type='range'] {
-    &.#{$input} {
-      -webkit-appearance: none;
-      background-color: transparent;
-      height: 24px;
-      padding: 0;
-      transition: all 0.2s ease-in-out;
-      width: 100%;
+.chi {
+  input {
+    &[type='range'] {
+      &.a-input {
+        -webkit-appearance: none;
+        background-color: transparent;
+        height: 24px;
+        padding: 0;
+        transition: all 0.2s ease-in-out;
+        width: 100%;
 
-      &[disabled] {
-        opacity: 0.65;
-        pointer-events: none;
-      }
+        &[disabled] {
+          opacity: 0.65;
+          pointer-events: none;
+        }
 
-      &::-moz-focus-outer {
-        border: 0;
-      }
+        &::-moz-focus-outer {
+          border: 0;
+        }
 
-      &.#{$input}--zero {
-        &:focus,
-        &.#{$input}--focus {
+        &.-zero {
+          &:focus,
+          &.-focus {
+            // Safari, Chrome and Opera
+            &::-webkit-slider-thumb {
+              @include grey-thumb-shadow;
+            }
+
+            // Firefox
+            &::-moz-range-thumb {
+              @include grey-thumb-shadow;
+            }
+
+            // Internet Explorer
+            &::-ms-thumb {
+              @include grey-thumb-shadow;
+            }
+          }
+
           // Safari, Chrome and Opera
           &::-webkit-slider-thumb {
-            @include grey-thumb-shadow;
+            background-color: set-color(carbon, 100);
+            border-color: set-color(carbon, 100);
           }
 
           // Firefox
           &::-moz-range-thumb {
-            @include grey-thumb-shadow;
+            border-color: set-color(carbon, 100);
+          }
+
+          &::-moz-range-progress {
+            background-color: set-color(grey, 600);
           }
 
           // Internet Explorer
           &::-ms-thumb {
-            @include grey-thumb-shadow;
+            border-color: set-color(carbon, 100);
+          }
+
+          &::-ms-fill-lower {
+            background-color: set-color(grey, 600);
+          }
+        }
+
+        &:focus,
+        &.-focus {
+          outline: none;
+
+          // Safari, Chrome and Opera
+          &::-webkit-slider-thumb {
+            @include green-thumb-shadow;
+          }
+
+          // Firefox
+          &::-moz-range-thumb {
+            @include green-thumb-shadow;
+          }
+
+          // Internet Explorer
+          &::-ms-thumb {
+            @include green-thumb-shadow;
           }
         }
 
         // Safari, Chrome and Opera
         &::-webkit-slider-thumb {
-          background-color: set-color(carbon, 100);
-          border-color: set-color(carbon, 100);
+          @include thumb-style;
+          -webkit-appearance: none;
+          background-color: set-color(green, 500);
+          margin-top: -6px;
+        }
+
+        &::-webkit-slider-runnable-track {
+          @include track-style;
         }
 
         // Firefox
         &::-moz-range-thumb {
-          border-color: set-color(carbon, 100);
+          @include thumb-style;
+          margin-left: 4px;
+          margin-right: 4px;
+        }
+
+        &::-moz-range-track {
+          @include track-style;
         }
 
         &::-moz-range-progress {
-          background-color: set-color(grey, 600);
+          @include track-style;
+          background-color: set-color(green, 500);
         }
 
         // Internet Explorer
         &::-ms-thumb {
-          border-color: set-color(carbon, 100);
+          @include thumb-style;
+          border-width: 2px;
+          height: 20px;
+          margin: 0 4px;
+          width: 20px;
+        }
+
+        &::-ms-track {
+          @include track-style;
+          border-color: transparent;
+          color: transparent;
         }
 
         &::-ms-fill-lower {
-          background-color: set-color(grey, 600);
-        }
-      }
-
-      &:focus,
-      &.#{$input}--focus {
-        outline: none;
-
-        // Safari, Chrome and Opera
-        &::-webkit-slider-thumb {
-          @include green-thumb-shadow;
+          @include track-style;
+          background-color: set-color(green, 500);
         }
 
-        // Firefox
-        &::-moz-range-thumb {
-          @include green-thumb-shadow;
+        &::-ms-fill-upper {
+          @include track-style;
         }
-
-        // Internet Explorer
-        &::-ms-thumb {
-          @include green-thumb-shadow;
-        }
-      }
-
-      // Safari, Chrome and Opera
-      &::-webkit-slider-thumb {
-        @include thumb-style;
-        -webkit-appearance: none;
-        background-color: set-color(green, 500);
-        margin-top: -6px;
-      }
-
-      &::-webkit-slider-runnable-track {
-        @include track-style;
-      }
-
-      // Firefox
-      &::-moz-range-thumb {
-        @include thumb-style;
-        margin-left: 4px;
-        margin-right: 4px;
-      }
-
-      &::-moz-range-track {
-        @include track-style;
-      }
-
-      &::-moz-range-progress {
-        @include track-style;
-        background-color: set-color(green, 500);
-      }
-
-      // Internet Explorer
-      &::-ms-thumb {
-        @include thumb-style;
-        border-width: 2px;
-        height: 20px;
-        margin: 0 4px;
-        width: 20px;
-      }
-
-      &::-ms-track {
-        @include track-style;
-        border-color: transparent;
-        color: transparent;
-      }
-
-      &::-ms-fill-lower {
-        @include track-style;
-        background-color: set-color(green, 500);
-      }
-
-      &::-ms-fill-upper {
-        @include track-style;
       }
     }
   }

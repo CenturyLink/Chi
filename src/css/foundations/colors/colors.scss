@@ -2,13 +2,13 @@
 
 // Background colors
 
-.c-bg--inverse {
+.-bgInverse {
   background-color: $bg-inverse;
 }
 
 @each $scheme, $scheme-tones in $colorscheme {
   @each $tone, $value in $scheme-tones {
-    .c-bg--#{$scheme}-#{$tone} {
+    .-bg#{capitalize($scheme)}#{capitalize($tone)} {
       background-color: $value;
     }
   }

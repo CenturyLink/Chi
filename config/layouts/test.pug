@@ -11,9 +11,9 @@ html(lang="en")
     link(rel="stylesheet", media="all", href="/chi.css")
     link(rel="stylesheet", media="all", href="/test.css")
 
-  body(
+  body.chi(
     style= background ? `background-color: #${background}` : false
   )
-    .c-grid-container
+    .a-grid__container
       h1= title
       .tests!= contents

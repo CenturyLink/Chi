@@ -4,6 +4,10 @@
   @return map-get(map-get($colorscheme, $scheme), $tone);
 }
 
+@function capitalize($string) {
+  @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
+}
+
 @mixin respond-to($media, $only: false) {
   @if $media == xs {
     @media only screen and (max-width: $sm-breakpoint - 1) { @content; }

@@ -1,42 +1,42 @@
 @import 'alert-common';
 
-$toast: #{$alert}--toast;
+.chi {
+  .m-alert {
+    &.-toast {
+      max-width: 40rem;
+      padding-bottom: 2.375rem;
+      padding-top: 1.5rem;
 
-.#{$alert} {
-  &.#{$toast} {
-    max-width: 40rem;
-    padding-bottom: 2.375rem;
-    padding-top: 1.5rem;
+      &::before {
+        font-size: 2rem;
+        line-height: 3rem;
+        margin-bottom: 0.875rem;
+      }
 
-    &::before {
-      font-size: 2rem;
-      line-height: 3rem;
-      margin-bottom: 0.875rem;
-    }
+      & > button {
+        background-color: transparent;
+        background-image: url('./icon-close.svg');
+        border: 0;
+        cursor: pointer;
+        height: 1.5rem;
+        outline: none;
+        padding: 0;
+        position: absolute;
+        right: 1.875rem;
+        top: 1.875rem;
+        width: 1.5rem;
+      }
 
-    & > button {
-      background-color: transparent;
-      background-image: url('./icon-close.svg');
-      border: 0;
-      cursor: pointer;
-      height: 1.5rem;
-      outline: none;
-      padding: 0;
-      position: absolute;
-      right: 1.875rem;
-      top: 1.875rem;
-      width: 1.5rem;
-    }
-
-    @each $state in map-keys($states) {
-      &.#{$alert}--#{$state} {
-        &.#{$alert}--has-icon {
-          &::after {
-            height: 3rem;
-            left: 1.875rem;
-            top: 1.875rem;
-            transform: initial;
-            width: 3rem;
+      @each $state in map-keys($states) {
+        &.-#{$state} {
+          &.-hasIcon {
+            &::after {
+              height: 3rem;
+              left: 1.875rem;
+              top: 1.875rem;
+              transform: initial;
+              width: 3rem;
+            }
           }
         }
       }

@@ -4,46 +4,46 @@
   /*
    * Margins
    */
-  .c-m#{$index} {
+  .-m#{$index} {
     margin: $index + rem !important;
   }
 
-  .c-mt#{$index} {
+  .-mt#{$index} {
     margin-top: $index + rem !important;
   }
 
-  .c-mr#{$index} {
+  .-mr#{$index} {
     margin-right: $index + rem !important;
   }
 
-  .c-mb#{$index} {
+  .-mb#{$index} {
     margin-bottom: $index + rem !important;
   }
 
-  .c-ml#{$index} {
+  .-ml#{$index} {
     margin-left: $index + rem !important;
   }
 
   /*
    * Paddings
    */
-  .c-p#{$index} {
+  .-p#{$index} {
     padding: $index + rem !important;
   }
 
-  .c-pt#{$index} {
+  .-pt#{$index} {
     padding-top: $index + rem !important;
   }
 
-  .c-pr#{$index} {
+  .-pr#{$index} {
     padding-right: $index + rem !important;
   }
 
-  .c-pb#{$index} {
+  .-pb#{$index} {
     padding-bottom: $index + rem !important;
   }
 
-  .c-pl#{$index} {
+  .-pl#{$index} {
     padding-left: $index + rem !important;
   }
 }

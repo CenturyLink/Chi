@@ -1,368 +1,369 @@
 @import 'mixins';
 @import 'variables';
 
-$btn: c-btn;
 $state-colors: (primary: green, danger: red, info: blue, dark: carbon);
 
-.#{$btn} {
-  & {
-    background-color: set-color(grey, 100);
-    border: 0.125rem solid set-color(grey, 600);
-    border-radius: $border-radius;
-    box-shadow: 0 1px 1px 0 rgba(set-color(carbon, 800), 0.04);
-    color: $text-color;
-    cursor: pointer;
-    display: inline-flex;
-    font-family: 'Open Sans', 'Open Sans Fallback', 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
-    font-size: 1.625rem;
-    font-weight: 600;
-    line-height: 2rem;
-    outline: 0;
-    padding: 0.875rem 1.875rem;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-
-    &[disabled] {
-      opacity: 0.65;
-      pointer-events: none;
-    }
-
-    .c-icon {
-      height: 2rem;
-      width: 2rem;
-    }
-
-    .#{$btn}-content {
-      align-items: center;
+.chi {
+  .a-btn {
+    & {
+      background-color: set-color(grey, 100);
+      border: 0.125rem solid set-color(grey, 600);
+      border-radius: $border-radius;
+      box-shadow: 0 1px 1px 0 rgba(set-color(carbon, 800), 0.04);
+      color: $text-color;
+      cursor: pointer;
       display: inline-flex;
-      justify-content: center;
-
-      & > :not(:last-child) {
-        margin-right: 1rem;
-      }
-    }
-
-    &--small {
-      font-size: 1.375rem;
+      font-family: 'Open Sans', 'Open Sans Fallback', 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
+      font-size: 1.625rem;
+      font-weight: 600;
       line-height: 2rem;
-      padding: 0.375rem 0.875rem;
+      outline: 0;
+      padding: 0.875rem 1.875rem;
+      text-align: center;
+      vertical-align: middle;
+      white-space: nowrap;
 
-      .c-icon {
-        height: 1.5rem;
-        width: 1.5rem;
-      }
-    }
-
-    &--large {
-      font-size: 2rem;
-      line-height: 3rem;
-      padding: 0.875rem 2.875rem;
-
-      .c-icon {
-        height: 2.5rem;
-        width: 2.5rem;
-      }
-    }
-
-    &:hover,
-    &--hover {
-      border: 0.125rem solid set-color(grey, 800);
-      box-shadow: 0 1px 4px 0 rgba(set-color(carbon, 800), 0.15);
-    }
-
-    &:focus,
-    &.#{$btn}--focus {
-      border: 0.125rem solid set-color(grey, 800);
-      box-shadow: 0 0 0 3px rgba(set-color(grey, 600), 0.6);
-      z-index: 1;
-    }
-
-    &:active,
-    &.#{$btn}--active {
-      &,
-      &:focus,
-      &.#{$btn}--focus {
-        background-color: set-color(grey, 400);
-        border: 0.125rem solid set-color(grey, 800);
-        box-shadow: inset 0 1px 2px 0 rgba(set-color(carbon, 800), 0.2);
-      }
-    }
-
-    &.#{$btn}--icon {
-      padding: 0.875rem;
-
-      &.#{$btn}--small {
-        padding: 0.625rem;
+      &[disabled] {
+        opacity: 0.65;
+        pointer-events: none;
       }
 
-      &.#{$btn}--large {
-        padding: 1.125rem;
-      }
-    }
-
-    &.#{$btn}--float {
-      border-radius: 50%;
-      padding: 1.375rem;
-      transition: transform 0.2s cubic-bezier(0.95, -0.18, 0.65, 2.46);
-
-      .c-icon {
+      .a-icon {
         height: 2rem;
         width: 2rem;
       }
 
-      &:active,
-      &.#{$btn}--active,
-      &:focus,
-      &.#{$btn}--focus,
-      &:hover,
-      &.#{$btn}--hover {
-        transform: scale(1.2);
-      }
-    }
+      &__content {
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
 
-    &.#{$btn}--outline {
-      background-color: set-color(grey, 100);
-      border: 0.125rem solid set-color(carbon, 100);
-
-      &:hover,
-      &.#{$btn}--hover {
-        background-color: set-color(carbon, 100);
-        color: set-color(grey, 100);
-
-        .c-icon {
-          color: set-color(grey, 100);
+        & > :not(:last-child) {
+          margin-right: 1rem;
         }
       }
 
-      &:focus,
-      &.#{$btn}--focus {
-        border: 0.125rem solid set-color(carbon, 100);
-        box-shadow: 0 0 0 3px rgba(set-color(carbon, 100), 0.3);
-      }
+      &.-small {
+        font-size: 1.375rem;
+        line-height: 2rem;
+        padding: 0.375rem 0.875rem;
 
-      &:active,
-      &.#{$btn}--active {
-        &,
-        &:focus,
-        &.#{$btn}--focus {
-          background-color: set-color(carbon, 200);
-          border: 0.125rem solid rgba(set-color(carbon, 800), 0.2);
-          box-shadow: inset 0 1px 1px 0 rgba(set-color(carbon, 800), 0.2);
-          color: set-color(grey, 100);
+        .a-icon {
+          height: 1.5rem;
+          width: 1.5rem;
         }
       }
-    }
 
-    &.#{$btn}--flat {
-      background-color: transparent;
-      border: 0;
-      box-shadow: none;
-      color: set-color(carbon, 500);
-      padding: 1rem 2rem;
+      &.-large {
+        font-size: 2rem;
+        line-height: 3rem;
+        padding: 0.875rem 2.875rem;
 
-      &.#{$btn}--small {
-        padding: 0.5rem 1rem;
-      }
-
-      &.#{$btn}--large {
-        padding: 1rem 3rem;
-      }
-
-      &.#{$btn}--icon {
-        padding: 1rem;
-
-        &.#{$btn}--small {
-          padding: 0.75rem;
-        }
-
-        &.#{$btn}--large {
-          padding: 1.25rem;
+        .a-icon {
+          height: 2.5rem;
+          width: 2.5rem;
         }
       }
 
       &:hover,
-      &.#{$btn}--hover {
-        background-color: set-color(grey, 100);
+      &.-hover {
         border: 0.125rem solid set-color(grey, 800);
         box-shadow: 0 1px 4px 0 rgba(set-color(carbon, 800), 0.15);
-        padding: 0.875rem 1.875rem;
-
-        &.#{$btn}--small {
-          padding: 0.375rem 0.875rem;
-        }
-
-        &.#{$btn}--large {
-          padding: 0.875rem 2.875rem;
-        }
-
-        &.#{$btn}--icon {
-          padding: 0.875rem;
-
-          &.#{$btn}--small {
-            padding: 0.625rem;
-          }
-
-          &.#{$btn}--large {
-            padding: 1.125rem;
-          }
-        }
       }
 
       &:focus,
-      &.#{$btn}--focus {
-        background-color: set-color(grey, 100);
+      &.-focus {
         border: 0.125rem solid set-color(grey, 800);
         box-shadow: 0 0 0 3px rgba(set-color(grey, 600), 0.6);
-        padding: 0.875rem 1.875rem;
+        z-index: 1;
+      }
 
-        &.#{$btn}--small {
-          padding: 0.375rem 0.875rem;
+      &:active,
+      &.-active {
+        &,
+        &:focus,
+        &.-focus {
+          background-color: set-color(grey, 400);
+          border: 0.125rem solid set-color(grey, 800);
+          box-shadow: inset 0 1px 2px 0 rgba(set-color(carbon, 800), 0.2);
+        }
+      }
+
+      &.-icon {
+        padding: 0.875rem;
+
+        &.-small {
+          padding: 0.625rem;
         }
 
-        &.#{$btn}--large {
-          padding: 0.875rem 2.875rem;
+        &.-large {
+          padding: 1.125rem;
+        }
+      }
+
+      &.-float {
+        border-radius: 50%;
+        padding: 1.375rem;
+        transition: transform 0.2s cubic-bezier(0.95, -0.18, 0.65, 2.46);
+
+        .a-icon {
+          height: 2rem;
+          width: 2rem;
         }
 
-        &.#{$btn}--icon {
-          padding: 0.875rem;
+        &:active,
+        &.-active,
+        &:focus,
+        &.-focus,
+        &:hover,
+        &.-hover {
+          transform: scale(1.2);
+        }
+      }
 
-          &.#{$btn}--small {
-            padding: 0.625rem;
+      &.-outline {
+        background-color: set-color(grey, 100);
+        border: 0.125rem solid set-color(carbon, 100);
+
+        &:hover,
+        &.-hover {
+          background-color: set-color(carbon, 100);
+          color: set-color(grey, 100);
+
+          .a-icon {
+            color: set-color(grey, 100);
           }
+        }
 
-          &.#{$btn}--large {
-            padding: 1.125rem;
+        &:focus,
+        &.-focus {
+          border: 0.125rem solid set-color(carbon, 100);
+          box-shadow: 0 0 0 3px rgba(set-color(carbon, 100), 0.3);
+        }
+
+        &:active,
+        &.-active {
+          &,
+          &:focus,
+          &.-focus {
+            background-color: set-color(carbon, 200);
+            border: 0.125rem solid rgba(set-color(carbon, 800), 0.2);
+            box-shadow: inset 0 1px 1px 0 rgba(set-color(carbon, 800), 0.2);
+            color: set-color(grey, 100);
           }
         }
       }
 
-      &:active,
-      &.#{$btn}--active {
-        &,
-        &:focus,
-        &.#{$btn}--focus {
-          background-color: set-color(grey, 400);
-          border: 0.125rem solid rgba(set-color(carbon, 800), 0.2);
-          box-shadow: inset 0 1px 2px 0 rgba(set-color(carbon, 800), 0.2);
+      &.-flat {
+        background-color: transparent;
+        border: 0;
+        box-shadow: none;
+        color: set-color(carbon, 500);
+        padding: 1rem 2rem;
+
+        &.-small {
+          padding: 0.5rem 1rem;
+        }
+
+        &.-large {
+          padding: 1rem 3rem;
+        }
+
+        &.-icon {
+          padding: 1rem;
+
+          &.-small {
+            padding: 0.75rem;
+          }
+
+          &.-large {
+            padding: 1.25rem;
+          }
+        }
+
+        &:hover,
+        &.-hover {
+          background-color: set-color(grey, 100);
+          border: 0.125rem solid set-color(grey, 800);
+          box-shadow: 0 1px 4px 0 rgba(set-color(carbon, 800), 0.15);
           padding: 0.875rem 1.875rem;
 
-          &.#{$btn}--small {
+          &.-small {
             padding: 0.375rem 0.875rem;
           }
 
-          &.#{$btn}--large {
+          &.-large {
             padding: 0.875rem 2.875rem;
           }
 
-          &.#{$btn}--icon {
+          &.-icon {
             padding: 0.875rem;
 
-            &.#{$btn}--small {
+            &.-small {
               padding: 0.625rem;
             }
 
-            &.#{$btn}--large {
+            &.-large {
               padding: 1.125rem;
             }
           }
         }
-      }
-    }
-  }
-
-  @each $type in map-keys($state-colors) {
-    &.#{$btn}--#{$type} {
-      background-color: set-color(map-get($state-colors, $type), 500);
-      border: 0.125rem solid set-color(map-get($state-colors, $type), 500);
-      box-shadow: 0 1px 1px 0 rgba(set-color(carbon, 800), 0.04);
-      color: set-color(grey, 100);
-
-      .c-icon {
-        color: inherit;
-      }
-
-      &:hover,
-      &.#{$btn}--hover {
-        background-color: set-color(map-get($state-colors, $type), 600);
-        border: 0.125rem solid set-color(map-get($state-colors, $type), 600);
-        box-shadow: 0 1px 4px 0 rgba(set-color(carbon, 800), 0.15);
-      }
-
-      &:focus,
-      &.#{$btn}--focus {
-        box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 600), 0.3);
-      }
-
-      &:active,
-      &.#{$btn}--active {
-        &,
-        &:focus,
-        &.#{$btn}--focus {
-          background-color: set-color(map-get($state-colors, $type), 700);
-          border: 0.125rem solid rgba(set-color(carbon, 800), 0.2);
-          box-shadow: inset 0 1px 1px 0 rgba(set-color(carbon, 800), 0.2);
-        }
-      }
-
-      &.#{$btn}--outline {
-        background-color: set-color(grey, 100);
-        border: 0.125rem solid set-color(map-get($state-colors, $type), 500);
-        color: set-color(map-get($state-colors, $type), 500);
-
-        &:hover,
-        &.#{$btn}--hover {
-          background-color: set-color(map-get($state-colors, $type), 500);
-          color: set-color(grey, 100);
-        }
 
         &:focus,
-        &.#{$btn}--focus {
-          border: 0.125rem solid set-color(map-get($state-colors, $type), 500);
-          box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 600), 0.4);
+        &.-focus {
+          background-color: set-color(grey, 100);
+          border: 0.125rem solid set-color(grey, 800);
+          box-shadow: 0 0 0 3px rgba(set-color(grey, 600), 0.6);
+          padding: 0.875rem 1.875rem;
+
+          &.-small {
+            padding: 0.375rem 0.875rem;
+          }
+
+          &.-large {
+            padding: 0.875rem 2.875rem;
+          }
+
+          &.-icon {
+            padding: 0.875rem;
+
+            &.-small {
+              padding: 0.625rem;
+            }
+
+            &.-large {
+              padding: 1.125rem;
+            }
+          }
         }
 
         &:active,
-        &.#{$btn}--active {
+        &.-active {
           &,
           &:focus,
-          &.#{$btn}--focus {
-            background-color: set-color(map-get($state-colors, $type), 700);
+          &.-focus {
+            background-color: set-color(grey, 400);
             border: 0.125rem solid rgba(set-color(carbon, 800), 0.2);
-            box-shadow: inset 0 1px 1px 0 rgba(set-color(carbon, 800), 0.2);
-            color: set-color(grey, 100);
+            box-shadow: inset 0 1px 2px 0 rgba(set-color(carbon, 800), 0.2);
+            padding: 0.875rem 1.875rem;
+
+            &.-small {
+              padding: 0.375rem 0.875rem;
+            }
+
+            &.-large {
+              padding: 0.875rem 2.875rem;
+            }
+
+            &.-icon {
+              padding: 0.875rem;
+
+              &.-small {
+                padding: 0.625rem;
+              }
+
+              &.-large {
+                padding: 1.125rem;
+              }
+            }
           }
         }
       }
+    }
 
-      &.#{$btn}--flat {
-        background-color: transparent;
-        border: 0;
-        box-shadow: none;
-        color: set-color(map-get($state-colors, $type), 500);
+    @each $type in map-keys($state-colors) {
+      &.-#{$type} {
+        background-color: set-color(map-get($state-colors, $type), 500);
+        border: 0.125rem solid set-color(map-get($state-colors, $type), 500);
+        box-shadow: 0 1px 1px 0 rgba(set-color(carbon, 800), 0.04);
+        color: set-color(grey, 100);
+
+        .a-icon {
+          color: inherit;
+        }
 
         &:hover,
-        &.#{$btn}--hover {
-          background-color: set-color(grey, 100);
-          border: 0.125rem solid set-color(map-get($state-colors, $type), 500);
+        &.-hover {
+          background-color: set-color(map-get($state-colors, $type), 600);
+          border: 0.125rem solid set-color(map-get($state-colors, $type), 600);
+          box-shadow: 0 1px 4px 0 rgba(set-color(carbon, 800), 0.15);
         }
 
         &:focus,
-        &.#{$btn}--focus {
-          background-color: set-color(grey, 100);
-          border: 0.125rem solid set-color(map-get($state-colors, $type), 500);
-          box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 600), 0.4);
+        &.-focus {
+          box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 600), 0.3);
         }
 
         &:active,
-        &.#{$btn}--active {
+        &.-active {
           &,
           &:focus,
-          &.#{$btn}--focus {
-            background-color: set-color(map-get($state-colors, $type), 500);
+          &.-focus {
+            background-color: set-color(map-get($state-colors, $type), 700);
             border: 0.125rem solid rgba(set-color(carbon, 800), 0.2);
             box-shadow: inset 0 1px 1px 0 rgba(set-color(carbon, 800), 0.2);
+          }
+        }
+
+        &.-outline {
+          background-color: set-color(grey, 100);
+          border: 0.125rem solid set-color(map-get($state-colors, $type), 500);
+          color: set-color(map-get($state-colors, $type), 500);
+
+          &:hover,
+          &.-hover {
+            background-color: set-color(map-get($state-colors, $type), 500);
             color: set-color(grey, 100);
+          }
+
+          &:focus,
+          &.-focus {
+            border: 0.125rem solid set-color(map-get($state-colors, $type), 500);
+            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 600), 0.4);
+          }
+
+          &:active,
+          &.-active {
+            &,
+            &:focus,
+            &.-focus {
+              background-color: set-color(map-get($state-colors, $type), 700);
+              border: 0.125rem solid rgba(set-color(carbon, 800), 0.2);
+              box-shadow: inset 0 1px 1px 0 rgba(set-color(carbon, 800), 0.2);
+              color: set-color(grey, 100);
+            }
+          }
+        }
+
+        &.-flat {
+          background-color: transparent;
+          border: 0;
+          box-shadow: none;
+          color: set-color(map-get($state-colors, $type), 500);
+
+          &:hover,
+          &.-hover {
+            background-color: set-color(grey, 100);
+            border: 0.125rem solid set-color(map-get($state-colors, $type), 500);
+          }
+
+          &:focus,
+          &.-focus {
+            background-color: set-color(grey, 100);
+            border: 0.125rem solid set-color(map-get($state-colors, $type), 500);
+            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 600), 0.4);
+          }
+
+          &:active,
+          &.-active {
+            &,
+            &:focus,
+            &.-focus {
+              background-color: set-color(map-get($state-colors, $type), 500);
+              border: 0.125rem solid rgba(set-color(carbon, 800), 0.2);
+              box-shadow: inset 0 1px 1px 0 rgba(set-color(carbon, 800), 0.2);
+              color: set-color(grey, 100);
+            }
           }
         }
       }

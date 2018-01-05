@@ -10,96 +10,96 @@
   -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
 }
 
-body {
+.chi {
   color: $text-color;
   font-family: 'Open Sans', 'Open Sans Fallback', 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
   font-size: 2rem;
   line-height: 1rem;
-}
 
-h1,
-.c-h1 {
-  font-size: 6rem;
-  font-weight: 700;
-  line-height: 8rem;
-  margin: 4rem 0;
-}
-
-h2,
-.c-h2 {
-  font-size: 4rem;
-  font-weight: 700;
-  line-height: 6rem;
-  margin: 2rem 0;
-}
-
-h3,
-.c-h3 {
-  font-size: 3rem;
-  font-weight: 600;
-  line-height: 4rem;
-  margin: 2rem 0;
-}
-
-h4,
-.c-h4 {
-  font-size: 2.25rem;
-  font-weight: 600;
-  line-height: 4rem;
-  margin: 1rem 0;
-}
-
-h5,
-.c-h5 {
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 4rem;
-  margin: 1rem 0;
-}
-
-h6,
-.c-h6 {
-  font-size: 1.75rem;
-  font-weight: 600;
-  line-height: 3rem;
-  margin: 1rem 0;
-}
-
-.c-text {
-  font-size: 2rem;
-  line-height: 3rem;
-}
-
-small,
-.c-text--small {
-  font-size: 1.375rem;
-  line-height: 2rem;
-}
-
-// line heights
-@for $index from 1 through 4 {
-  .c-lh#{$index} {
-    line-height:  $index + rem;
+  h1,
+  .a-h1 {
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 8rem;
+    margin: 4rem 0;
   }
-}
 
-// text colors
-.c-text--inverse {
-  color: $text-inverse !important;
-}
+  h2,
+  .a-h2 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 6rem;
+    margin: 2rem 0;
+  }
 
-.c-text--success {
-  color: $accent-color !important;
-}
+  h3,
+  .a-h3 {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 4rem;
+    margin: 2rem 0;
+  }
 
-.c-text--danger {
-  color: $danger-color !important;
-}
+  h4,
+  .a-h4 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 4rem;
+    margin: 1rem 0;
+  }
 
-.c-text--info {
-  color: $info-color !important;
-}
+  h5,
+  .a-h5 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 4rem;
+    margin: 1rem 0;
+  }
 
-.c-text--warning {
-  color: $warning-color !important;
+  h6,
+  .a-h6 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 3rem;
+    margin: 1rem 0;
+  }
+
+  .-text {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+
+  small,
+  .-small {
+    font-size: 1.375rem;
+    line-height: 2rem;
+  }
+
+  // text colors
+  .-inverse {
+    color: $text-inverse;
+  }
+
+  .-success {
+    color: $accent-color;
+  }
+
+  .-danger {
+    color: $danger-color;
+  }
+
+  .-info {
+    color: $info-color;
+  }
+
+  .-warning {
+    color: $warning-color;
+  }
+
+  // line heights
+  @for $index from 1 through 4 {
+    .-lh#{$index} {
+      line-height:  $index + rem;
+    }
+  }
 }

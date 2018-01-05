@@ -1,275 +1,200 @@
 @import 'variables';
 @import 'mixins';
 
-$grid: c-grid;
-$col: c-col;
-
-.#{$grid} {
-  /*
-   * .#{$grid}-container
-   * Container with margins on sides. This container is necessary to avoid
-   * an undesired horizontal scroll due the negative grid right margin.
-   */
-  &-container {
-    @include respond-to(md) {
-      margin: 0 ($base-unit * 3);
+.chi {
+  .a-grid {
+    &__container {
+      @include respond-to(md) {
+        margin: 0 ($base-unit * 3);
+      }
+      margin: 0 ($base-unit * 2);
     }
-    margin: 0 ($base-unit * 2);
-  }
 
-  /*
-   * .#{$grid}
-   * This class in addition to .#{$col} makes the magic.
-   */
-  & {
-    @include respond-to(md) {
-      margin: 0 ($base-unit * -1.5);
+    & {
+      @include respond-to(md) {
+        margin: 0 ($base-unit * -1.5);
+      }
+      display: flex;
+      flex: 1 0 auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 0 ($base-unit * -1);
     }
-    display: flex;
-    flex: 1 0 auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 0 ($base-unit * -1);
-  }
 
-  /*
-   * .#{$grid}--no-gutter
-   * Removes the gutter of the grid (I know, probably you could imagine that).
-   */
-  &--no-gutter {
-    margin: 0;
+    &.-noGutter {
+      margin: 0;
 
-    & > .c-col {
-      padding: 0;
+      & > .a-col {
+        padding: 0;
+      }
     }
   }
-}
 
-.#{$col} {
-  /*
-   * Flex columns
-   */
-  & {
-    @include respond-to(md) {
-      padding: 0 ($base-unit * 1.5);
+  .a-col {
+    & {
+      @include respond-to(md) {
+        padding: 0 ($base-unit * 1.5);
+      }
+      flex: 1 0 0;
+      max-width: 100%;
+      min-width: 0;
+      padding: 0 $base-unit;
+      position: relative;
     }
-    flex: 1 0 0;
-    max-width: 100%;
-    min-width: 0;
-    padding: 0 $base-unit;
-    position: relative;
-  }
 
-  /*
-   * .#{$col}--N where N=[1-11]
-   * Generic column sizes
-   */
-  @for $i from 1 through 11 {
-    &--#{$i} {
-      @include respond-to(sm) {
-        @if $i < 8 {
-          width: (100% / 8 * $i);
+    // column widths
+    @for $i from 1 through 11 {
+      &.-w#{$i} {
+        @include respond-to(sm) {
+          @if $i < 8 {
+            width: (100% / 8 * $i);
+          } @else {
+            width: 100%;
+          }
+        }
+
+        @include respond-to(md) {
+          width: (100% / 12 * $i);
+        }
+
+        @if $i < 4 {
+          width: (100% / 4 * $i);
         } @else {
           width: 100%;
         }
-      }
 
-      @include respond-to(md) {
-        width: (100% / 12 * $i);
-      }
-
-      @if $i < 4 {
-        width: (100% / 4 * $i);
-      } @else {
-        width: 100%;
-      }
-
-      flex: 0 1 auto;
-    }
-  }
-
-  /*
-   * .#{$col}--N-Size where N=[1-11] and Size=(xs|sm|md|lg|xl)
-   * Specific column sizes for screen sizes.
-   */
-  @include respond-to(xs, true) {
-    @for $i from 1 through 4 {
-      &--#{$i}-xs {
         flex: 0 1 auto;
-        width: (100% / 4 * $i);
       }
     }
-  }
-  @include respond-to(sm, true) {
-    @for $i from 1 through 8 {
-      &--#{$i}-sm {
-        flex: 0 1 auto;
-        width: (100% / 8 * $i);
-      }
-    }
-  }
-  @each $size in md lg xl {
-    @include respond-to($size, true) {
-      @for $i from 1 through 12 {
-        &--#{$i}-#{$size} {
+
+    @include respond-to(xs, true) {
+      @for $i from 1 through 4 {
+        &.-xs--w#{$i} {
           flex: 0 1 auto;
-          width: (100% / 12 * $i);
+          width: (100% / 4 * $i);
         }
       }
     }
-  }
-
-  /*
-   * .#{$col}--N-offset where N=[1-11]
-   * Move columns to the right. This class increases the left margin by N columns.
-   */
-  @for $i from 1 through 11 {
-    &--offset-#{$i} {
-      @include respond-to(sm) {
-        margin-left: (100% / 8 * $i);
-      }
-
-      @include respond-to(md) {
-        margin-left: (100% / 12 * $i);
-      }
-
-      margin-left: (100% / 4 * $i);
-    }
-  }
-
-  /*
-   * .#{$col}--N-Size-offset where N=[0-11] and Size=(xs|sm|md|lg|xl)
-   * Move columns to the right. This class increases the left margin by N columns.
-   */
-  @include respond-to(xs, true) {
-    @for $i from 0 through 4 {
-      &--offset-#{$i}-xs {
-        margin-left: (100% / 4 * $i);
-      }
-    }
-  }
-  @include respond-to(sm, true) {
-    @for $i from 0 through 8 {
-      &--offset-#{$i}-sm {
-        margin-left: (100% / 8 * $i);
-      }
-    }
-  }
-  @each $size in md lg xl {
-    @include respond-to($size, true) {
-      @for $i from 0 through 12 {
-        &--offset-#{$i}-#{$size} {
-          margin-left: (100% / 8 * $i);
+    @include respond-to(sm, true) {
+      @for $i from 1 through 8 {
+        &.-sm--w#{$i} {
+          flex: 0 1 auto;
+          width: (100% / 8 * $i);
         }
       }
     }
-  }
-
-  /*
-   * .#{$col}--align-stretch
-   * Stretches the col vertically to fill the parent
-   */
-  &--align-stretch {
-    align-self: stretch;
-  }
-
-  /*
-   * .#{$col}--align-top
-   * Aligns the col vertically to the top of the parent
-   */
-  &--align-top {
-    align-self: flex-start;
-  }
-
-  /*
-   * .#{$col}--align-middle
-   * Aligns the col to the middle of the parent
-   */
-  &--align-middle {
-    align-self: center;
-  }
-
-  /*
-   * .#{$col}--align-bottom
-   * Aligns the col vertically to the bottom of the parent
-   */
-  &--align-bottom {
-    align-self: flex-end;
-  }
-
-  /*
-   * .#{$col}--top
-   * Aligns the col vertically to the top of the parent
-   */
-  &--top {
-    align-items: flex-start;
-    display: flex;
-  }
-
-  /*
-   * .#{$col}--middle
-   * Aligns the col to the middle of the parent
-   */
-  &--middle {
-    align-items: center;
-    display: flex;
-  }
-
-  /*
-   * .#{$col}--bottom
-   * Aligns the col vertically to the bottom of the parent
-   */
-  &--bottom {
-    align-items: flex-end;
-    display: flex;
-  }
-
-  /*
-   * .#{$col}--order-N where N=[1-12]
-   * Generic column order
-   */
-  @for $i from 1 through 12 {
-    &--order-#{$i} {
-      order: #{$i};
-    }
-
-    /*
-     * .#{$col}--order-N-Size where N=[1-12] and Size=(xs|sm|md|lg|xl)
-     * Specific column sizes for screen sizes.
-     */
-    @each $size in xs sm md lg xl {
+    @each $size in md lg xl {
       @include respond-to($size, true) {
         @for $i from 1 through 12 {
-          &--order-#{$i}-#{$size} {
-            order: #{$i};
+          &.-#{$size}--w#{$i} {
+            flex: 0 1 auto;
+            width: (100% / 12 * $i);
           }
         }
       }
     }
-  }
 
-  /*
-   * .#{$col}--hide-Size where Size=(xs|sm|md|lg|xl)
-   * Hides the column at an specific screen size.
-   */
-  @each $size in xs sm md lg xl {
-    @include respond-to($size, true) {
-      &--hide-#{$size} {
-        display: none;
+    // offsets
+    @for $i from 1 through 11 {
+      &.-o#{$i} {
+        @include respond-to(sm) {
+          margin-left: (100% / 8 * $i);
+        }
+
+        @include respond-to(md) {
+          margin-left: (100% / 12 * $i);
+        }
+
+        margin-left: (100% / 4 * $i);
       }
     }
-  }
 
-  /*
-   * .#{$col}--hide-from-Size where Size=(sm|md|lg|xl)
-   * Hides the column from an specific screen size.
-   */
-  @each $size in sm md lg xl {
-    @include respond-to($size) {
-      &--hide-from-#{$size} {
-        display: none;
+    @include respond-to(xs, true) {
+      @for $i from 0 through 4 {
+        &.-xs--o#{$i} {
+          margin-left: (100% / 4 * $i);
+        }
+      }
+    }
+    @include respond-to(sm, true) {
+      @for $i from 0 through 8 {
+        &.-sm--o#{$i} {
+          margin-left: (100% / 8 * $i);
+        }
+      }
+    }
+    @each $size in md lg xl {
+      @include respond-to($size, true) {
+        @for $i from 0 through 12 {
+          &.-#{$size}--o#{$i} {
+            margin-left: (100% / 8 * $i);
+          }
+        }
+      }
+    }
+
+    &.-alignStretch {
+      align-self: stretch;
+    }
+
+    &.-alignTop {
+      align-self: flex-start;
+    }
+
+    &.-alignMiddle {
+      align-self: center;
+    }
+
+    &.-alignBottom {
+      align-self: flex-end;
+    }
+
+    &.-top {
+      align-items: flex-start;
+      display: flex;
+    }
+
+    &.-middle {
+      align-items: center;
+      display: flex;
+    }
+
+    &.-bottom {
+      align-items: flex-end;
+      display: flex;
+    }
+
+    // order number
+    @for $i from 1 through 12 {
+      &.-n#{$i} {
+        order: #{$i};
+      }
+
+      @each $size in xs sm md lg xl {
+        @include respond-to($size, true) {
+          @for $i from 1 through 12 {
+            &.-#{$size}--n#{$i} {
+              order: #{$i};
+            }
+          }
+        }
+      }
+    }
+
+    @each $size in xs sm md lg xl {
+      @include respond-to($size, true) {
+        &.-#{$size}--hide {
+          display: none;
+        }
+      }
+    }
+
+    @each $size in sm md lg xl {
+      @include respond-to($size) {
+        &.-#{$size}--hide-from {
+          display: none;
+        }
       }
     }
   }
 }
-

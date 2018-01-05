@@ -4,7 +4,7 @@ title: Input numbers
 
 each size in ['default', 'small', 'large']
   div(class=`test-${size}`)
-    span.c-h2= `Text Input / ${size}`
+    span.a-h2= `Text Input / ${size}`
     table(cellpadding="0", cellspacing="0", width="600px")
       each state in ['initial', 'hover', 'focus', 'disabled']
         tr
@@ -12,14 +12,14 @@ each size in ['default', 'small', 'large']
             small= `${state}`
           each style in ['default', 'danger']
             td
-              .c-m1
-                .c-input-wrapper.c-input-wrapper--compact
-                  input.c-input(
+              .-m1
+                .a-inputWrapper.-compact
+                  input.a-input(
                     type="number"
                     class={
-                      [`c-input--${style}`]: style != 'default',
-                      [`c-input--${state}`]: state != 'disabled',
-                      [`c-input--${size}`]: size != 'default'
+                      [`-${style}`]: style != 'default',
+                      [`-${state}`]: state != 'disabled',
+                      [`-${size}`]: size != 'default'
                     }
                     value="0"
                     disabled=state=='disabled'?'disabled': false

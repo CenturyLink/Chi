@@ -9,7 +9,7 @@ each size in ['default', 'small', 'large']
       [`test-${type}`]: size == 'default',
       [`test-${type}-${size}`]: size != 'default'
     })
-      span.c-h2= `Button / ${type} / ${size}`
+      span.a-h2= `Button / ${type} / ${size}`
       table(cellpadding="0", cellspacing="0")
         each state in ['initial', 'hover', 'active', 'focus', 'disabled']
           tr
@@ -17,42 +17,42 @@ each size in ['default', 'small', 'large']
               small= `${state}`
             each style in ['default', 'primary', 'danger', 'info', 'dark']
               td
-                input.c-btn.c-m1.c-ml2(
+                input.a-btn.-m1.-ml2(
                   type="button"
                   class={
-                    [`c-btn--${type}`]: type != 'solid',
-                    [`c-btn--${style}`]: style != 'default',
-                    [`c-btn--${state}`]: state != 'initial',
-                    [`c-btn--${size}`]: size != 'default'
+                    [`-${type}`]: type != 'solid',
+                    [`-${style}`]: style != 'default',
+                    [`-${state}`]: state != 'initial',
+                    [`-${size}`]: size != 'default'
                   }
                   value="Button"
                   disabled=state=='disabled' ? 'disabled' : false
                 )
-                a.c-btn.c-btn--icon.c-m1(
+                a.a-btn.-icon.-m1(
                   href="#"
                   class={
-                    [`c-btn--${type}`]: type != 'solid',
-                    [`c-btn--${style}`]: style != 'default',
-                    [`c-btn--${state}`]: state != 'initial',
-                    [`c-btn--${size}`]: size != 'default'
+                    [`-${type}`]: type != 'solid',
+                    [`-${style}`]: style != 'default',
+                    [`-${state}`]: state != 'initial',
+                    [`-${size}`]: size != 'default'
                   }
                   disabled=state=='disabled' ? 'disabled' : false
                 )
-                  .c-btn-content
-                    .c-icon
+                  .a-btn__content
+                    .a-icon
                       svg
                         use(xlink:href='#workspace')
-                button.c-btn.c-m1(
+                button.a-btn.-m1(
                   class={
-                    [`c-btn--${type}`]: type != 'solid',
-                    [`c-btn--${style}`]: style != 'default',
-                    [`c-btn--${state}`]: state != 'initial',
-                    [`c-btn--${size}`]: size != 'default'
+                    [`-${type}`]: type != 'solid',
+                    [`-${style}`]: style != 'default',
+                    [`-${state}`]: state != 'initial',
+                    [`-${size}`]: size != 'default'
                   }
                   disabled=state=='disabled' ? 'disabled' : false
                 )
-                  .c-btn-content
-                    .c-icon
+                  .a-btn__content
+                    .a-icon
                       svg
                         use(xlink:href='#workspace')
                     span Button
@@ -67,8 +67,8 @@ each size in ['default', 'small', 'large']
               small= `${state}`
             each style in ['default', 'primary', 'danger', 'info', 'dark']
               td
-                button(type="button", class=`c-btn c-btn--float c-btn--${style} c-btn--${state} c-ml4 c-m1`)
-                  .c-btn-content
-                    .c-icon
+                button(type="button", class=`a-btn -float -${style} -${state} -ml4 -m1`)
+                  .a-btn__content
+                    .a-icon
                       svg
                         use(xlink:href='#workspace')
