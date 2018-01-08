@@ -20,6 +20,9 @@ body {
     background-color: set-color(grey, 400);
     border-radius: 3px;
     color: set-color(carbon, 300);
-    padding: 0.25rem 0.5rem;
+
+    &:not([class*='language-']) {
+      padding: 0.25rem 0.5rem;
+    }
   }
 }

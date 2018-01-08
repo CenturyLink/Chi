@@ -2,6 +2,9 @@
 title: File inputs
 ---
 
+.m-alert.-bubble.-warning(data-title="Warning")
+  | This component needs Javascript
+
 p.-text
   | In order to use a file input just use an <code>input type="file"</code> with the class <code>a-input</code> and add
   | a label next to it.
@@ -36,3 +39,34 @@ p.-text Example
 :code(lang="html")
   <input type="file" class="a-input -small" id="file01">
   <label for="file01">No file chosen</label>
+
+h3 JavaScript
+
+p.-text This component needs JavaScript in order to update the label content once a file or files are selected.
+
+p.-text The next piece of JavaScript is an example of how it should work.
+
+.-mb4
+  :code(lang="js")
+    var inputFiles = document.querySelectorAll('input[type="file"].a-input');
+
+    Array.prototype.forEach.call(inputFiles, function(input) {
+      var label = input.nextElementSibling;
+
+      input.addEventListener('change', function(e) {
+        var fileName = '';
+
+        if (this.files && this.files.length > 1) {
+          fileName = this.files.length + ' files selected';
+        } else {
+          fileName = e.target.value.split('\\').pop();
+        }
+
+        if (fileName) {
+          label.innerHTML = fileName;
+        }
+      });
+    });
+
+script
+  include ../../../../../node_modules/@centurylink/chi/src/css/components/input-file/input-file.js

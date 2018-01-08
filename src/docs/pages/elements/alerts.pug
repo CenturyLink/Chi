@@ -1,4 +1,88 @@
 ---
 title: Alerts
-disabled: true
 ---
+
+p.-text To show an alert use the class <code>m-alert</code> and add a modifier to specify the type of alert:
+
+ul.-text
+  li <code>-banner</code>
+  li <code>-bubble</code>
+  li <code>-toast</code>
+
+each type in ['banner', 'bubble', 'toast']
+  .-mb1
+    h5= type
+    .m-alert.-light(class=`-${type}`, data-title="Banner title")
+      | This is a banner example
+
+p.-text and also the style of the alert must be specified:
+
+ul.-text
+  li <code>-light</code>
+  li <code>-success</code>
+  li <code>-danger</code>
+  li <code>-warning</code>
+  li <code>-info</code>
+  li <code>-dark</code>
+
+each type in ['light', 'success', 'danger', 'warning', 'info', 'dark']
+  .-mb1
+    h5= type
+    .m-alert.-bubble(class=`-${type}`, data-title="Banner title")
+      = `This is a ${type} alert`
+
+h4 Example
+.-mb4
+  :code(lang="html")
+    <div class="m-alert -banner -info" data-title="Banner title">
+      This is a banner example
+    </div>
+
+p.-text Also can show an icon to emphasize more the type of nature applying the modifier <code>-hasIcon</code>.
+
+each type in ['light', 'success', 'danger', 'warning', 'info', 'dark']
+  .-mb1
+    h5= type
+    .m-alert.-banner.-hasIcon(class=`-${type}`, data-title="Banner title")
+      | This is a banner example
+
+.-mt2.-mb4
+  :code(lang="html")
+    <div class="m-alert -banner -info -hasIcon" data-title="Banner title">
+      This is a banner example
+    </div>
+
+p.-text A button can be added to force the user to close the alert.
+
+.-mb1
+  h5= type
+  .m-alert.-banner.-warning.-hasIcon(data-title="Banner title")
+    | This is a banner example
+    button
+
+.-mt2.-mb4
+  :code(lang="html")
+    <div class="m-alert -banner -info -hasIcon" data-title="Banner title">
+      This is a banner example
+      <button></button>
+    </div>
+
+p.-text Also alerts supports size modifiers:
+
+ul.-text
+  li <code>-small</code>
+  li <code>-large</code>
+
+each size in ['small', 'large']
+  .-mb1
+    h5= size
+    .m-alert.-banner.-info(class=`-${size}`, data-title="Banner title")
+      | This is a banner example
+      button
+
+.-mt2.-mb4
+  :code(lang="html")
+    <div class="m-alert -banner -info -small" data-title="Banner title">
+      This is a banner example
+      <button></button>
+    </div>
