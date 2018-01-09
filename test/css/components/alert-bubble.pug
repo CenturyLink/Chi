@@ -12,7 +12,9 @@ each size in ['small', 'medium', 'large']
           [`-${size}`]: size != 'medium'
         }
         data-title=`${type}`
-      )= `This is a ${type} message`
+      )
+        = `This is a ${type} message`
+        button
 
     h4 Has icon
     each type in ['light', 'success', 'danger', 'warning', 'info', 'dark']
@@ -22,4 +24,6 @@ each size in ['small', 'medium', 'large']
           [`-${size}`]: size != 'medium'
         }
         data-title=`${type}`
-      )= `This is a ${type} message`
+      )
+        = `This is a ${type} message`
+        button
