@@ -25,4 +25,17 @@ body {
       padding: 0.25rem 0.5rem;
     }
   }
+
+  .m-example {
+    &__html,
+    &__code {
+      &.-hidden {
+        display: none;
+      }
+    }
+
+    pre {
+      margin: 0;
+    }
+  }
 }

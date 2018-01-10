@@ -32,6 +32,10 @@ renderer.code = function(code, lang) {
   return `<pre class="${langClass}"><code class="${langClass}">${code}</code></pre>`;
 };
 
+function highlightCode(text, lang) {
+  return `<pre class="language-${lang}"><code class="language-${lang}">${highlight(text, lang)}</code></pre>`;
+}
+
 gulp.task('build-docs', () => {
   const promise = new Promise((resolve, reject) => {
     metalsmith(Folders.ROOT)
@@ -59,10 +63,22 @@ gulp.task('build-docs', () => {
           langPrefix: 'language-',
           highlight,
           filters: {
+            example: (text, options) => {
+              const lang = getLang(options.lang);
+
+              return `<div class="m-example -mb4">
+                <ul class="a-tabs -base -small">
+                  <li class="-active"><a href="#">HTML</a></li>
+                  <li><a href="#">Code</a></li>
+                </ul>
+                <div class="m-example__html">${text}</div>
+                <div class="m-example__code -hidden">${highlightCode(text, lang)}</div>
+              </div>`;
+            },
             code: (text, options) => {
               const lang = getLang(options.lang);
 
-              return `<pre class="language-${lang}"><code class="language-${lang}">${highlight(text, lang)}</code></pre>`;
+              return highlightCode(text, lang);
             }
           }
         }

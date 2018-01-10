@@ -1,0 +1,80 @@
+---
+title: Tables
+---
+
+p.-text Tables must be wrapped inside a section with the <code>a-table</code> class and a div. The table must have the <code>cellpadding</code> and the <code>cellspacing</code> set to <code>0</code>. Also, the table headers must be inside a div element.
+:example(lang="html"):html-beautify:pug include ./default.pug
+
+p.-text If <code>section</code> height is lower than <code>table</code> height then the <code>table</code> headers are going to be fixed on top and the content can be scrolled.
+:example(lang="html"):html-beautify:pug include ./scroll.pug
+
+p.-text Tables can be bordered with the modifier <code>-bordered</code>.
+:example(lang="html"):html-beautify:pug include ./bordered.pug
+
+p.-text Or borderless using the modifier <code>-borderless</code>.
+:example(lang="html"):html-beautify:pug include ./borderless.pug
+
+p.-text The table can be striped with the modifier <code>-striped</code>.
+:example(lang="html"):html-beautify:pug include ./striped.pug
+
+p.-text And we can enable a hover state over the rows.
+:example(lang="html"):html-beautify:pug include ./hover.pug
+
+p.-text There are modifiers for the rows to express different states. For example we can disable a row with the attribute <code>disabled="disabled"</code>.
+:example(lang="html"):html-beautify:pug include ./disabled.pug
+
+p.-text or just use the following classes:
+
+ul.-text
+  li <code>rowSuccess</code>
+  li <code>rowWarning</code>
+  li <code>rowDanger</code>
+  li <code>rowInfo</code>
+
+:example(lang="html"):html-beautify:pug include ./row-success.pug
+:example(lang="html"):html-beautify:pug include ./row-warning.pug
+:example(lang="html"):html-beautify:pug include ./row-danger.pug
+:example(lang="html"):html-beautify:pug include ./row-info.pug
+
+p.-text Sometimes we need to express that a column is sorted. For that, we have to use the column header modifier <code>-sorted</code> in conjunction of one of the followin modifiers:
+
+ul.-text
+  li <code>-ascending</code>
+  li <code>-descending</code>
+
+:example(lang="html"):html-beautify:pug include ./sort-ascending.pug
+:example(lang="html"):html-beautify:pug include ./sort-descending.pug
+
+p.-text Last but not least we could use size modifiers.
+
+ul.-text
+  li <code>-small</code>
+  li <code>-large</code>
+
+:example(lang="html"):html-beautify:pug include ./small.pug
+:example(lang="html"):html-beautify:pug include ./large.pug
+
+p.-text All the different modifiers can be combined in order to create complex and beautiful tables.
+
+:example(lang="html"):html-beautify:pug
+  include ./common.pug
+  
+  section.a-table(style="width: 640px")
+    div
+      table(cellpadding="0", cellspacing="0")
+        thead
+          tr
+            th(width="48px")
+              div.-lh1
+                input.a-input(type="checkbox", id=`chk-1`)
+                label(for=`chk-1`)
+            th.-sorted.-descending
+              div name
+            th
+              div ID
+            th
+              div last login
+        tbody
+          +str(`chk-1-01`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
+          +str(`chk-1-02`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
+          +str(`chk-1-03`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
