@@ -7,7 +7,7 @@ Chi is a CenturyLink CSS pattern library for building fast, reusable, and consis
 First import Chi into your project
 
 ``` sh
-npm i @ctl/chi --save-dev
+npm install @centurylink/chi --save-dev
 ```
 
 Once Chi is installed as a dependency there are two different options to use it:
@@ -53,10 +53,10 @@ Examples:
 
 ## API
 
-To use the API just require `chi` in your javascript file.
+To use the API just require `@centurylink/chi` in your JavaScript file.
 
 ``` js
-var chi = require('@ctl/chi');
+var chi = require('@centurylink/chi');
 ```
 
 `chi` provides three methods:
