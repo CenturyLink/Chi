@@ -1,11 +1,14 @@
 {
-  "name": "@ctl/chi",
-  "version": "0.7.3",
+  "name": "@centurylink/chi",
+  "version": "0.8.0-alpha.1",
   "description": "CenturyLink Human Interface",
+  "license": "MIT",
   "bin": {
     "chi": "bin/cli.js"
   },
   "main": "bin/chi.js",
+  "repository": "https://github.com/CenturyLinkCloud/ux-chi",
+  "homepage": "https://assets.ctl.io/chi",
   "scripts": {
     "docker": "scripts/docker.sh",
     "test": "gulp test",
