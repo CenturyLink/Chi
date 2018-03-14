@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import path from 'path';
-import * as chi from '@ctl/chi';
+import * as chi from '@centurylink/chi';
 import { Folders } from './constants';
 
 const chiAssetsFolder = path.join(Folders.dist.STYLES, 'chi');
