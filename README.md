@@ -2,6 +2,31 @@
 
 Documentation website for the [Chi](https://github.com/CenturyLinkCloud/ux-chi) design pattern library.
 
+## Getting Started
+
+To install required dependencies, you must first run:
+
+```sh
+npm install
+```
+
+This will give you everything you need to view the website and to work with this project.
+
+## Usage
+
+#### Running Locally
+
+To launch the website and watch for changes during development, simply
+run:
+
+```sh
+npm start
+```
+
+#### Generating the Website for Hosting
+
+You can generate a static version of the website that is suitable for hosting by executing `npm run build`. The build output will be placed in the `public` folder.
+
 ## License
 
 Chi and its documentation are released under the terms of the [MIT license](LICENSE).

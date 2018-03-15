@@ -15,6 +15,7 @@ const metalsmithPlugins = {
   layouts: require('metalsmith-layouts'),
   permalinks: require('metalsmith-permalinks'),
   rename: require('metalsmith-rename'),
+  rootPath: require('metalsmith-rootpath')
 };
 
 const renderer = new marked.Renderer();
@@ -69,6 +70,7 @@ gulp.task('build-docs', () => {
       .use(metalsmithPlugins.headings('h2'))
       .use(metalsmithPlugins.inlineSource())
       .use(metalsmithPlugins.permalinks())
+      .use(metalsmithPlugins.rootPath())
       .use(metalsmithPlugins.layouts({
         engine: 'pug',
         doctype: 'html',
@@ -77,7 +79,6 @@ gulp.task('build-docs', () => {
         directory: Folders.src.LAYOUTS,
         utils: pugUtils
       }))
-
       .build(error => {
         if (error) {
           reject(error);

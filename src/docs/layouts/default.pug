@@ -6,12 +6,12 @@ html(lang="en")
         else
             title Chi &middot; Documentation
 
-        link(rel="stylesheet", media="all", href="/assets/styles/chi.css")
-        link(rel="stylesheet", media="all", href="/assets/styles/chi-docs.css")
+        link(rel="stylesheet", href=`${rootPath}assets/styles/chi.css`)
+        link(rel="stylesheet", href=`${rootPath}assets/styles/chi-docs.css`)
 
         if styles
             each style in styles
-                link(rel="stylesheet", media="all", href=`/assets/styles/${style}.css`)
+                link(rel="stylesheet", media="all", href=`${rootPath}assets/styles/${style}.css`)
 
     body.chi.show-grid
       .docs-container
@@ -25,8 +25,8 @@ html(lang="en")
                 h2= title
                 != contents
 
-      script(type="text/javascript", src="/assets/scripts/chi-docs.js")
+      script(src=`${rootPath}assets/scripts/chi-docs.js`)
 
       if scripts
           each script in scripts
-              script(type="text/javascript", src=`/assets/scripts/${script}.js`)
+              script(type="text/javascript", src=`${rootPath}/assets/scripts/${script}.js`)

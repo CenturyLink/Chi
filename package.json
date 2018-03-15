@@ -1,6 +1,6 @@
 {
   "name": "@centurylink/chi-docs",
-  "version": "0.8.0-alpha.1",
+  "version": "0.8.0-alpha.2",
   "description": "Website for the Chi pattern library.",
   "license": "MIT",
   "repository": "https://github.com/CenturyLinkCloud/ux-chi-docs",
@@ -10,7 +10,7 @@
     "start": "gulp watch"
   },
   "devDependencies": {
-    "@centurylink/chi": "0.8.0-alpha.1",
+    "@centurylink/chi": "0.8.0-alpha.2",
     "autoprefixer": "7.1.5",
     "babel-core": "6.26.0",
     "babel-loader": "7.1.2",
@@ -40,6 +40,7 @@
     "metalsmith-layouts": "1.8.1",
     "metalsmith-permalinks": "0.5.0",
     "metalsmith-rename": "1.0.0",
+    "metalsmith-rootpath": "1.0.4",
     "prismjs": "1.8.3",
     "require-dir": "0.3.2",
     "run-sequence": "2.2.0",
