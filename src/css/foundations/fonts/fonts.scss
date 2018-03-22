@@ -2,48 +2,6 @@ $open-sans-url: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,
 
 @import url($open-sans-url);
 
-@font-face {
-  font-family: 'Open Sans Fallback';
-  font-style: normal;
-  font-weight: 300;
-  src: url('{{path}}fonts/OpenSans/OpenSans-Light.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Open Sans Fallback';
-  font-style: normal;
-  font-weight: 400;
-  src: url('{{path}}fonts/OpenSans/OpenSans-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Open Sans Fallback';
-  font-style: italic;
-  font-weight: 400;
-  src: url('{{path}}fonts/OpenSans/OpenSans-Italic.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Open Sans Fallback';
-  font-style: normal;
-  font-weight: 600;
-  src: url('{{path}}fonts/OpenSans/OpenSans-SemiBold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Open Sans Fallback';
-  font-style: normal;
-  font-weight: 700;
-  src: url('{{path}}fonts/OpenSans/OpenSans-Bold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Open Sans Fallback';
-  font-style: italic;
-  font-weight: 700;
-  src: url('{{path}}fonts/OpenSans/OpenSans-BoldItalic.ttf') format('truetype');
-}
-
 .chi {
-  font-family: 'Open Sans', 'Open Sans Fallback', 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
 }
