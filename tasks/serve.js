@@ -10,7 +10,9 @@ gulp.task('serve', ['build'], () => {
       name: 'CenturyLink Human Interface Documentation',
       root: [Folders.DIST],
       port: 8080,
-      livereload: true
+      livereload: {
+        port: 35730
+      }
   });
 
   return server;

@@ -9,7 +9,7 @@ if [ $1 = "start" ]; then
               -v $PWD/tasks:/app/tasks \
               -v $PWD/scripts:/app/scripts \
               -p 8080:8080 \
-              -p 35729:35729 \
+              -p 35730:35730 \
               chi-docs:latest npm run $1
 else
   docker run --rm -ti \
