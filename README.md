@@ -16,11 +16,16 @@ This will give you everything you need to view the website and to work with this
 
 #### Running Locally
 
-To launch the website and watch for changes during development, simply
-run:
+To launch the website and watch for changes during development, simply run:
 
 ```sh
 npm start
+```
+
+Alternatively, you may run the project in a Docker container by running:
+
+```sh
+npm run docker -- start
 ```
 
 #### Generating the Website for Hosting
