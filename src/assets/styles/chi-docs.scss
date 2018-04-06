@@ -1,4 +1,4 @@
-@import 'prismjs/themes/prism-tomorrow';
+@import './prismjs/chi-a11y-light';
 @import '@centurylink/chi/src/css/variables';
 @import '@centurylink/chi/src/css/mixins';
 
@@ -17,13 +17,24 @@ body {
   }
 
   code {
-    background-color: set-color(grey, 400);
+    font-family: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
+    font-size: 13px;
+    background-color: #f5f5f5;
     border-radius: 3px;
-    color: set-color(carbon, 300);
+    color: #008040;
 
     &:not([class*='language-']) {
       padding: 0.25rem 0.5rem;
     }
+  }
+
+  a {
+    color: #1460aa;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 
   .m-example {
