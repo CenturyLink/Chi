@@ -2,45 +2,88 @@
 title: Typography
 ---
 
-h3 Description
+p.-text Documentation and examples for Chi typography.
 
-p.-text Open Sans is our font family.
+h3 Grid
 
-h3 Sizes
+p.-text All components in Chi, including Typography, adhere to a 4px baseline grid. The grid promotes consistency and familiarity through repetition. Chi achieves this repetition by ensuring line-height, padding, border, and margin values are divisible by 4. For user friendliness, Chi utilizes rem units instead of pixels. A rem is a unit of measurement that is equal to the root html font-size. Chi's root is 8px. So 1rem equals 8px.
 
-p.-text Default font size is 2rem (1rem is 8px).
+h3 Typeface
 
-h4 Examples
+p.-text The sans-serif font stack is used to display all typography within Chi except code. For code, Chi defers to a monospace font stack.
 
-.-mb4
-  h1 h1 header
-  h2 h2 header
-  h3 h3 header
-  h4 h4 header
-  h5 h5 header
-  h6 h6 header
-  p.-text body default
-  small body small
+h6 Sans-serif font stack
 
+.-mb2
   :code(lang='html')
-    <h1>h1 header</h1>
-    <h2>h2 header</h1>
-    <h3>h3 header</h1>
-    <h4>h4 header</h1>
-    <h5>h5 header</h1>
-    <h6>h6 header</h1>
-    <p class="c-text">body default</p>
-    <small>body small</small>
+    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
 
+h6 Monospace font stack
+
+.-mb3
+   :code(lang='html')
+     font-family: Menlo, Consolas, "Liberation Mono", Courier, monospace;
+
+h3 Headings
+
+p.-text Headings are used to illustrate the typographic hierarchy of a page. <code>h1</code> defines the most important heading and h6 the least. Headings in Chi can be defined as tags <code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code> or classes <code>.a-h1</code> - <code>.a-h6</code>.
+
+section.a-table.-bordered.-mt3.-mb3
+  div
+    table(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Heading
+          th
+            div Example
+      tbody
+        each type in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+          tr
+            td(width='20%')
+              code= '<' + type + '>'
+            td
+              #{type}= type + ' Chi heading'
+
+h3 Body text
 p.-text
-  | Sometimes you need to use classes instead or with elements. In this case classes take visual precedence over
-  | elements.
+  | Chi's default font size is 14px (1.75rem) and is intended to maximize screen real estate in dense, app oriented interfaces.
 
-.-mb4
-  .a-h4 I'm a div with an h4 header
-  h4.a-h2 I'm an h4 header with an h2 class
+section.a-table.-bordered.-mt3.-mb3
+  div
+    table(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Font size
+          th
+            div Example
+      tbody
+          tr
+            td(width='20%')
+              p.-text 14px (1.75rem)
+            td
+              p.-text
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
+                | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
 
-  :code(lang='html')
-    <div class="h4">I'm a div with an h4 class</div>
-    <h4 class="h2">I'm an h4 header with an h2 class</h4>
+h3 Inline text
+p.-text
+  | Styles for common inline text elements. Styles can be defined as tags <code>&lt;code&gt;</code> or classes <code>.a-code</code>.
 
+section.a-table.-bordered.-mt3.-mb3
+  div
+    table(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Tag
+          th
+            div Example
+      tbody
+        each val, type in {Abbreviated:'abbr', Bold:'b', Code:'code', Delete:'del', Emphasis:'em', Italic:'i', Mark:'mark', Small:'small', Strong:'strong'}
+          tr
+            td(width='20%')
+              code= '<' + val + '>'
+            td
+              #{val}= type
