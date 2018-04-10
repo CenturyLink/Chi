@@ -67,7 +67,7 @@ gulp.task('build-docs', () => {
               const lang = getLang(options.lang);
 
               return `<div class="m-example -mb4">
-                <ul class="a-tabs -base -small">
+                <ul class="a-tabs -base -small -border -mb2">
                   <li class="-active"><a href="#">HTML</a></li>
                   <li><a href="#">Code</a></li>
                 </ul>
