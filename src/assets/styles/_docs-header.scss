@@ -3,6 +3,9 @@
 
 .chi {
   .docs-header {
+    position: fixed;
+    left: 0;
+    top: 0;
     align-items: center;
     background-color: set-color(grey, 100);
     box-shadow: 0 1px 2px 0 rgba(set-color(carbon, 800), 0.04),
@@ -11,6 +14,7 @@
     flex-direction: row;
     flex-shrink: 0;
     height: 8rem;
+    width: 100%;
     padding: 0 3rem;
     z-index: 1;
 

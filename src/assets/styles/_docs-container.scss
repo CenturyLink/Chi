@@ -11,14 +11,19 @@
       display: flex;
       flex: 1 0 auto;
       flex-direction: row;
+      padding: 8rem 0 0 32rem;
 
       &__aside {
+        position: fixed;
+        left: 0;
+        top: 64px;
         background-color: set-color(grey, 100);
         border-right: 0.125rem solid set-color(grey, 500);
         display: flex;
         flex-direction: column;
         flex-shrink: 0;
         overflow: auto;
+        height: 100%;
         width: 32rem;
         padding-top: 1rem;
 
