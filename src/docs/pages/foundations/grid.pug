@@ -1,0 +1,181 @@
+---
+title: Grid
+styles: [grid]
+---
+
+p.-text Documentation and examples for Chi's fully responsive 12 column flexbox grid system.
+
+h3 Equal-width
+
+h4 Three Column
+.a-grid.-show
+  .a-col
+  .a-col
+  .a-col
+.-mb4.-mt2
+  :code(lang="html")
+    <div class="a-grid">
+      <div class="a-col"></div>
+      <div class="a-col"></div>
+      <div class="a-col"></div>
+    </div>
+h4 Two Column
+.a-grid.-show
+  .a-col
+  .a-col
+.-mb4.-mt2
+  :code(lang="html")
+    <div class="a-grid">
+      <div class="a-col"></div>
+      <div class="a-col"></div>
+    </div>
+
+h3 Equal-width without gutters
+
+.a-grid.-noGutter.-show
+  .a-col
+  .a-col
+  .a-col
+.-mb4.-mt2
+  :code(lang="html")
+    <div class="a-grid -noGutter">
+      <div class="a-col"></div>
+      <div class="a-col"></div>
+      <div class="a-col"></div>
+    </div>
+
+h3 Defined column widths
+h4 One width defined column
+.a-grid.-show
+  .a-col.-w2
+  .a-col
+.-mb4.-mt2
+  :code(lang="html")
+    <div class="a-grid">
+      <div class="a-col -w2"></div>
+      <div class="a-col"></div>
+    </div>
+h4 Two width defined columns
+.a-grid.-show
+  .a-col.-w2
+  .a-col
+  .a-col.-w2
+.-mb4.-mt2
+  :code(lang="html")
+    <div class="a-grid">
+      <div class="a-col -w2"></div>
+      <div class="a-col"></div>
+      <div class="a-col -w2"></div>
+    </div>
+h3 Column Sizes
+.a-grid.-show.-mb3
+  .a-col
+.a-grid.-show.-mb3
+  .a-col.-w11
+  .a-col.-w1
+.a-grid.-show.-mb3
+  .a-col.-w10
+  .a-col.-w2
+.a-grid.-show.-mb3
+  .a-col.-w9
+  .a-col.-w3
+.a-grid.-show.-mb3
+  .a-col.-w8
+  .a-col.-w4
+.a-grid.-show.-mb3
+  .a-col.-w7
+  .a-col.-w5
+.a-grid.-show.-mb3
+  .a-col.-w6
+  .a-col.-w6
+.a-grid.-show.-mb3
+  .a-col.-w5
+  .a-col.-w5
+  .a-col.-w2
+.a-grid.-show.-mb3
+  .a-col.-w4
+  .a-col.-w4
+  .a-col.-w4
+.a-grid.-show.-mb3
+  .a-col.-w3
+  .a-col.-w3
+  .a-col.-w3
+  .a-col.-w3
+.a-grid.-show.-mb3
+  .a-col.-w2
+  .a-col.-w2
+  .a-col.-w2
+  .a-col.-w2
+  .a-col.-w2
+  .a-col.-w2
+.a-grid.-show.-mb3
+  .a-col.-w1
+  .a-col.-w1
+  .a-col.-w1
+  .a-col.-w1
+  .a-col.-w1
+  .a-col.-w1
+  .a-col.-w1
+  .a-col.-w1
+  .a-col.-w1
+  .a-col.-w1
+  .a-col.-w1
+  .a-col.-w1
+h3 Responsive classes
+.a-grid.-show.-mb3
+  .a-col.-w2.-sm--w3.-md--w8.-lg--w1.-xl--w11
+  .a-col.-w2.-sm--w5.-md--w4.-lg--w11.-xl--w1
+.-mb4.-mt2
+  :code(lang="html")
+    <div class="a-grid">
+      <div class="a-col -w2 -sm--w3 -md--w8 -lg--w1 -xl--w11"></div>
+      <div class="a-col -w2 -sm--w5 -md--w4 -lg--w11 -xl--w1"></div>
+    </div>
+h3 Offsets
+h4 Generic offsets
+.a-grid.-show.-mb3
+    .a-col.-w2.-o1
+    .a-col.-w2.-o2
+    .a-col.-w2.-o2
+.-mb4.-mt2
+  :code(lang="html")
+    <div class="a-grid">
+      <div class="a-col -w2 -o1"></div>
+      <div class="a-col -w2 -o2"></div>
+      <div class="a-col -w2 -o2"></div>
+    </div>
+h4 Column offsets for specific screen sizes
+.a-grid.-show.-mb3
+    .a-col.-w2
+    .a-col.-w6.-o4.-sm--w4.-sm--o2.-xs--w2.-xs--o1
+.-mb4.-mt2
+  :code(lang="html")
+    <div class="a-grid">
+      <div class="a-col -w2"></div>
+      <div class="a-col -w6 -o4 -sm--w4 -sm--o2 -xs--w2 -xs--o1"></div>
+    </div>
+h3 Aligns
+h4 Align columns relative to the grid
+.a-grid.-show.-mb3(style="height: 160px")
+    .a-col.-alignTop
+    .a-col.-alignMiddle
+    .a-col.-alignBottom
+.-mb4.-mt2
+  :code(lang="html")
+    <div class="a-grid" style="height:160px;">
+      <div class="a-col -alignTop"></div>
+      <div class="a-col -alignMiddle"></div>
+      <div class="a-col -alignBottom"></div>
+    </div>
+h4 Align content relative to the column
+.a-grid.-show.-mb3(style="height: 160px")
+    .a-col.-top
+    .a-col.-middle
+    .a-col.-bottom
+.-mb4.-mt2
+  :code(lang="html")
+    <div class="a-grid" style="height:160px;">
+      <div class="a-col -top"></div>
+      <div class="a-col -middle"></div>
+      <div class="a-col -bottom"></div>
+    </div>
