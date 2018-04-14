@@ -1,0 +1,17 @@
+@import '@centurylink/chi/src/css/variables';
+@import '@centurylink/chi/src/css/mixins';
+
+.a-grid.-show {
+  [class*=a-col]:before {
+    background-color: #F2FAE6;
+    box-shadow: inset 0 0 0 1px #C6DBA7;
+    content: attr(class);
+    display: block;
+    line-height: 3rem;
+    min-height: 4rem;
+    overflow: hidden;
+    padding: 1rem 2rem;
+    text-overflow: ellipsis;
+    white-space: pre;
+  }
+}
