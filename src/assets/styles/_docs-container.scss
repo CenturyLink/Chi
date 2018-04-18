@@ -85,6 +85,51 @@
         .-text {
           font-size: 1.75rem;
         }
+        p.-large,
+        .-text.-large {
+          font-size: 2rem;
+          line-height: 3rem;
+        }
+        p.-larger,
+        .-text.-larger {
+          font-size: 2.25rem;
+          line-height: 3.5rem;
+        }
+        p.-small,
+        .-text.-small {
+          font-size: 1.625rem;
+          line-height: 2.5rem;
+        }
+        p.-smaller,
+        .-text.-smaller {
+          font-size: 1.5rem;
+          line-height: 2.5rem;
+        }
+        ul.-noStyle,
+        ol.-noStyle,
+        li.-noStyle {
+          padding-left: 0;
+          list-style: none;
+        }
+        blockquote {
+          padding-left: 2rem;
+          border-left: .5rem solid set-color(grey, 500);
+        }
+        .example {
+          border: 0.125rem solid set-color(grey, 500);
+          border-radius: .3em;
+
+          pre[class*=language-] {
+            margin: 0;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-top: 0.125rem solid set-color(grey, 500);
+          }
+          .code-block>pre {
+            border-top: 0;
+            border-radius: .3em;
+          }
+        }
       }
     }
   }
