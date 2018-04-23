@@ -74,6 +74,8 @@ $bg-inverse: map-get(map-get($colorscheme, carbon), 500);
 $text-color: map-get(map-get($colorscheme, carbon), 500);
 $text-inverse: map-get(map-get($colorscheme, grey), 100);
 
+$link-color: map-get(map-get($colorscheme, blue), 500);
+
 $accent-color: map-get(map-get($colorscheme, green), 500);
 $danger-color: map-get(map-get($colorscheme, red), 500);
 $info-color: map-get(map-get($colorscheme, blue), 500);

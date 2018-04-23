@@ -2,6 +2,7 @@
 
 ### 0.8.0 (unreleased)
 
+* Added text size and style utility classes.
 * Removed hosted fallback support for Open Sans fonts.
 * Updated Google Fonts reference to always load via https.
 * Moved the package into the `@centurylink` scope (from `@ctl`, which we don't control).
