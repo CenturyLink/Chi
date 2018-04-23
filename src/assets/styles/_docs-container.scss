@@ -82,6 +82,13 @@
           }
         }
 
+        @media only screen and (min-width: 1280px) {
+          >.a-grid__container {
+          margin: 0 auto;
+          width: 960px;
+          }
+        }
+
         .example {
           border: 0.125rem solid set-color(grey, 500);
           border-radius: .3em;
