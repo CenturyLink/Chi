@@ -1,6 +1,14 @@
-.palette-container {
-  align-items: flex-start;
-  display: flex;
+.palette {
+  font-size: 1.625rem;
+  height: 9rem;
+  line-height: 2rem;
+  padding: 2rem;
+
+  strong {
+    display: block;
+    font-size: 2rem;
+    padding-bottom: 1rem;
+  }
 }
 
 .color-palette {
