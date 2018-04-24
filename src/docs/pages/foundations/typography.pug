@@ -194,7 +194,22 @@ p.-text To remove default list styling, apply the class <code>.-noStyle</code>
     li List item 4
   :code(lang="html")
     <ul class="-noStyle">
-      <li class="-noStyle"></li>
+      <li></li>
+    </ul>
+h4 Inline
+p.-text To display list items inline, apply the class <code>.-inline</code>
+.example.-mb3
+  ul.-inline.-m3
+    li List item 1
+    li List item 2
+      ul.-inline
+        li List item 2.1
+        li List item 2.2
+    li List item 3
+    li List item 4
+  :code(lang="html")
+    <ul class="-inline">
+      <li></li>
     </ul>
 h3 Blockquotes
 p.-text Blockquotes are used to quote content from another source.
