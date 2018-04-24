@@ -6,80 +6,169 @@ $base-unit: 8px;
 // colors
 // sass-lint:disable no-color-hex
 $colorscheme: (
-  green: (
-    100: #edf7e1,
-    200: #cce8a9,
-    300: #a0dd4c,
-    400: #8cc63f,
-    500: #009f00,
-    600: #008100,
-    700: #006c00,
-    800: #205020,
-  ),
-  carbon: (
-    100: #969696,
-    200: #757575,
-    300: #616161,
-    400: #424242,
-    500: #333333,
-    600: #212121,
-    700: #0e0e0e,
-    800: #000000,
-  ),
   grey: (
-    100: #ffffff,
-    200: #fafafa,
-    300: #f8f8f8,
-    400: #eeeeee,
-    500: #e0e0e0,
-    600: #d5d5d5,
-    700: #cacaca,
-    800: #bdbdbd,
-  ),
-  blue: (
-    100: #e5f4fb,
-    200: #b8e2f5,
-    300: #a1d0ec,
-    400: #7ec3f4,
-    500: #007ad1,
-    600: #0067b6,
-    700: #00569c,
+    100: #242424,
+    90: #333333,
+    80: #424242,
+    70: #616161,
+    60: #757575,
+    50: #919191,
+    40: #b0b0b0,
+    30: #d5d5d5,
+    20: #eeeeee,
+    10: #f8f8f8,
   ),
   red: (
-    100: #fcebea,
-    200: #f9d6d4,
-    300: #ffb4b0,
-    400: #ff6360,
-    500: #de0c10,
-    600: #c32720,
-    700: #9b0000,
+    100: #471819,
+    90: #691518,
+    80: #8f0e13,
+    70: #b50d12,
+    60: #de1b21,
+    50: #fa5056,
+    40: #fc9094,
+    30: #fcc7c9,
+    20: #fce8e9,
+    10: #fff5f5,
+  ),
+  pink: (
+    100: #451726,
+    90: #661430,
+    80: #8c0e38,
+    70: #b30c44,
+    60: #db1a5b,
+    50: #f74f87,
+    40: #fa8eb2,
+    30: #fcc7d9,
+    20: #fce8ef,
+    10: #fcf5f7,
+  ),
+  purple: (
+    100: #371c52,
+    90: #4d2378,
+    80: #642b9e,
+    70: #7e40bd,
+    60: #9557d4,
+    50: #b277ed,
+    40: #cda3f7,
+    30: #e2cdf7,
+    20: #f2ebfa,
+    10: #faf7fc,
+  ),
+  indigo: (
+    100: #222261,
+    90: #2b2b94,
+    80: #3939bd,
+    70: #4f4fdb,
+    60: #6666e3,
+    50: #8787fa,
+    40: #adadff,
+    30: #d1d1ff,
+    20: #ededff,
+    10: #f7f7ff,
+  ),
+  navy: (
+    100: #172945,
+    90: #173a6e,
+    80: #10489c,
+    70: #0e5bcf,
+    60: #2973e3,
+    50: #5394f5,
+    40: #8cb6f5,
+    30: #c0d7fa,
+    20: #e6f0ff,
+    10: #f5f8fc,
+  ),
+  blue: (
+    100: #0c2b3b,
+    90: #093d57,
+    80: #064e73,
+    70: #066594,
+    60: #0d7db5,
+    50: #239cd9,
+    40: #53bff5,
+    30: #b0def5,
+    20: #e1f2fa,
+    10: #f2f9fc,
+  ),
+  teal: (
+    100: #082e2b,
+    90: #06403b,
+    80: #07524b,
+    70: #056960,
+    60: #038277,
+    50: #0aa396,
+    40: #1ec7b9,
+    30: #abe0dc,
+    20: #d7f5f2,
+    10: #edfaf9,
+  ),
+  emerald: (
+    100: #0a2e1b,
+    90: #094023,
+    80: #07542b,
+    70: #056b35,
+    60: #03853f,
+    50: #0aa653,
+    40: #1ec96e,
+    30: #abe0c4,
+    20: #daf5e6,
+    10: #edfaf3,
+  ),
+  green: (
+    100: #1e2b0a,
+    90: #283d09,
+    80: #344f0b,
+    70: #3f6605,
+    60: #4e8003,
+    50: #689e18,
+    40: #7ec219,
+    30: #c6dba7,
+    20: #e4f2ce,
+    10: #f2fae6,
   ),
   yellow: (
-    100: #fdf9e8,
-    200: #f8e4bc,
-    300: #f6d490,
-    400: #ffba10,
-    500: #ffa633,
-    600: #ff8f00,
-    700: #e8730c,
-  )
+    100: #36240c,
+    90: #4d310b,
+    80: #663e07,
+    70: #854e03,
+    60: #a66102,
+    50: #c97d12,
+    40: #e6a243,
+    30: #f5cc93,
+    20: #faecd9,
+    10: #fff8ed,
+  ),
+  orange: (
+    100: #3d1e14,
+    90: #5e2413,
+    80: #80280d,
+    70: #a6310d,
+    60: #c94218,
+    50: #e8663f,
+    40: #f2997e,
+    30: #f5ccbf,
+    20: #fce9e3,
+    10: #faf6f5,
+  ),
+  black: #000000,
+  white: #ffffff
 );
 // sass-lint:enable no-color-keywords
 // sass-lint:enable no-color-hex
 
 $state-colors: (success: green, warning: yellow, danger: red);
 
-$bg-inverse: map-get(map-get($colorscheme, carbon), 500);
+$bg-inverse: map-get(map-get($colorscheme, grey), 90);
 
-$text-color: map-get(map-get($colorscheme, carbon), 500);
-$text-inverse: map-get(map-get($colorscheme, grey), 100);
+$text-color: map-get(map-get($colorscheme, grey), 100);
+$text-inverse: map-get(map-get($colorscheme, grey), 10);
 
-$link-color: map-get(map-get($colorscheme, blue), 500);
+$link-color: map-get(map-get($colorscheme, blue), 60);
 
-$accent-color: map-get(map-get($colorscheme, green), 500);
-$danger-color: map-get(map-get($colorscheme, red), 500);
-$info-color: map-get(map-get($colorscheme, blue), 500);
-$warning-color: map-get(map-get($colorscheme, yellow), 500);
+$accent-color: map-get(map-get($colorscheme, emerald), 60);
+$danger-color: map-get(map-get($colorscheme, red), 60);
+$info-color: map-get(map-get($colorscheme, blue), 60);
+$warning-color: map-get(map-get($colorscheme, yellow), 60);
 
 // screen breakpoints
 $sm-breakpoint: 600px;
