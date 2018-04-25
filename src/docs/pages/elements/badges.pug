@@ -6,89 +6,143 @@ mixin badge(data)
   .a-badge(class!=attributes.class)
     span= data
 
+p.-text Badges are inline elements used to label, categorize, or organize a list of items.
+
+h3 Examples
 p.-text
-  | Badges are useful, for example, to define tags.
+  | To display a badge, use the class <code>a-badge</code>.
+  | A contextual class (e.g. <code>-danger</code>) can also be applied to provide alternate styling.
 
-+badge('example')
+h4 Base
+.example.-mb3
+  .-p2
+    +badge('Base').-m1
+    each type in ['brand', 'danger', 'info', 'light', 'dark']
+      +badge(type)(class=`-${type} -m1`)
+  :code(lang="html")
+    <div class="a-badge">
+      <span>base</span>
+    </div>
+    <div class="a-badge -brand">
+      <span>brand</span>
+    </div>
+    <div class="a-badge -danger">
+      <span>danger</span>
+    </div>
+    <div class="a-badge -info">
+      <span>info</span>
+    </div>
+    <div class="a-badge -light">
+      <span>light</span>
+    </div>
+    <div class="a-badge -dark">
+      <span>dark</span>
+    </div>
 
-:code(lang="html")
-  <div class="a-badge">
-    <span>example</span>
-  </div>
+h4 Outline
+.example.-mb3
+  .-p2
+    +badge('Base').-outline.-m1
+    each type in ['brand', 'danger', 'info', 'light', 'dark']
+      +badge(type)(class=`-${type} -outline -m1`)
+  :code(lang="html")
+    <div class="a-badge -outline">
+      <span>base</span>
+    </div>
+    <div class="a-badge -outline -brand">
+      <span>brand</span>
+    </div>
+    <div class="a-badge -outline -danger">
+      <span>danger</span>
+    </div>
+    <div class="a-badge -outline -info">
+      <span>info</span>
+    </div>
+    <div class="a-badge -outline -light">
+      <span>light</span>
+    </div>
+    <div class="a-badge -outline -dark">
+      <span>dark</span>
+    </div>
 
-p.-text Badges are inline elements
+h4 Flat
+.example.-mb3
+  .-p2
+    +badge('Base').-flat.-m1
+    each type in ['brand', 'danger', 'info', 'light', 'dark']
+      +badge(type)(class=`-${type} -flat -m1`)
+  :code(lang="html")
+    <div class="a-badge -flat">
+      <span>base</span>
+    </div>
+    <div class="a-badge -flat -brand">
+      <span>brand</span>
+    </div>
+    <div class="a-badge -flat -danger">
+      <span>danger</span>
+    </div>
+    <div class="a-badge -flat -info">
+      <span>info</span>
+    </div>
+    <div class="a-badge -flat -light">
+      <span>light</span>
+    </div>
+    <div class="a-badge -flat -dark">
+      <span>dark</span>
+    </div>
 
-+badge('one').-mr1
-+badge('two')
-
-:code(lang="html")
-  <div class="a-badge">
-    <span>one</span>
-  </div>
-
-  <div class="a-badge">
-    <span>two</span>
-  </div>
-
-p.-text Exists different modifiers to express the badge nature.
-
-ul.-text
-  li <code>-brand</code> Brand color badge
-  li <code>-info</code> Information bagde
-  li <code>-danger</code> Danger badge
-  li <code>-dark</code> Dark badge
-  li <code>-light</code> Light badge
-
-each style in ['brand', 'info', 'danger', 'dark', 'light']
-  +badge(style)(class=`-${style} -mr1`)
-
-p.-text Example of usage
-:code(lang="html")
-  <div class="a-badge -brand">
-    <span>brand</span>
-  </div>
-
-p.-text Also there are available modifiers to change the type of badge.
-
-ul.-text
-  li <code>-outline</code> Outline style
-  li <code>-flat</code> Flat style
-
-each style in ['outline', 'flat']
-  h4= `${style} badges`
-  div.-mb2
-    each state in ['base', 'brand', 'info', 'danger', 'dark', 'light']
-      +badge(state).-mr1(
-        class=`-${style}`
-        class={
-          [`-${state}`]:state != 'base',
-        }
-      )
-
-p.-text Example of usage
-:code(lang="html")
-  <div class="a-badge -outline">
-    <span>outline</span>
-  </div>
-
-h2 Pills
-
+h3 Pills
 p.-text
- | Pills could be used, for example, to show a number of notifications. To create a pill use the modifier
- | <code>-pill</code>.
+ | Use the <code>-pill</code> modifier class to render badges with a more pronounced border-radius.
 
-each style in ['solid', 'outline']
-  h4= `${style} pills`
-  each state, index in ['base', 'brand', 'info', 'danger', 'dark', 'light']
-    +badge((index * 10) + 10).-pill.-mr1(
-      class={
-        [`-${style}`]:style != 'solid',
-        [`-${state}`]:state != 'base',
-      }
-    )
+ h4 Base
+ .example.-mb3
+   .-p2
+     +badge('Base').-pill.-m1
+     each type in ['brand', 'danger', 'info', 'light', 'dark']
+       +badge(type)(class=`-${type} -pill -m1`)
+   :code(lang="html")
+     <div class="a-badge -pill">
+       <span>base</span>
+     </div>
+     <div class="a-badge -pill -brand">
+       <span>brand</span>
+     </div>
+     <div class="a-badge -pill -danger">
+       <span>danger</span>
+     </div>
+     <div class="a-badge -pill -info">
+       <span>info</span>
+     </div>
+     <div class="a-badge -pill -light">
+       <span>light</span>
+     </div>
+     <div class="a-badge -pill -dark">
+       <span>dark</span>
+     </div>
 
-p.-text Example of usage
-:code(lang="html")
-  <div class="a-badge -pill">
-    <span>50</span>
-  </div>
+ h4 Outline
+ .example.-mb3
+   .-p2
+     +badge('Base').-pill.-outline.-m1
+     each type in ['brand', 'danger', 'info', 'light', 'dark']
+       +badge(type)(class=`-${type} -pill -outline -m1`)
+   :code(lang="html")
+     <div class="a-badge -pill -outline">
+       <span>base</span>
+     </div>
+     <div class="a-badge -pill -outline -brand">
+       <span>brand</span>
+     </div>
+     <div class="a-badge -pill -outline -danger">
+       <span>danger</span>
+     </div>
+     <div class="a-badge -pill -outline -info">
+       <span>info</span>
+     </div>
+     <div class="a-badge -pill -outline -light">
+       <span>light</span>
+     </div>
+     <div class="a-badge -pill -outline -dark">
+       <span>dark</span>
+     </div>
