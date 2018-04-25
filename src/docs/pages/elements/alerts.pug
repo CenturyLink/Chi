@@ -2,87 +2,128 @@
 title: Alerts
 ---
 
-p.-text To show an alert use the class <code>m-alert</code> and add a modifier to specify the type of alert:
+p.-text Alert messages provide contextual feedback for user actions.
 
-ul.-text
-  li <code>-banner</code>
-  li <code>-bubble</code>
-  li <code>-toast</code>
+h3 Examples
+p.-text
+  | To render an alert, use the class <code>m-alert</code>.
+  | A contextual class (e.g. <code>-warning</code>) is required to provide proper styling.
 
-each type in ['banner', 'bubble', 'toast']
-  .-mb1
-    h5= type
-    .m-alert.-light(class=`-${type}`, data-title="Banner title")
-      | This is a banner example
-
-p.-text and also the style of the alert must be specified:
-
-ul.-text
-  li <code>-light</code>
-  li <code>-success</code>
-  li <code>-danger</code>
-  li <code>-warning</code>
-  li <code>-info</code>
-  li <code>-dark</code>
-
-each type in ['light', 'success', 'danger', 'warning', 'info', 'dark']
-  .-mb1
-    h5= type
-    .m-alert.-bubble(class=`-${type}`, data-title="Banner title")
-      = `This is a ${type} alert`
-
-h4 Example
-.-mb4
+h4 Base
+.example.-mb3
+  .-p1
+    each type in ['success', 'danger', 'warning', 'info', 'light', 'dark']
+      .m-alert.-bubble.-m2(class=`-${type}`)
+        = `This is a ${type} alert`
   :code(lang="html")
-    <div class="m-alert -banner -info" data-title="Banner title">
-      This is a banner example
-    </div>
+      <div class="m-alert -success" role="alert">This is a success alert</div>
+      <div class="m-alert -danger" role="alert">This is a danger alert</div>
+      <div class="m-alert -warning" role="alert">This is a warning alert</div>
+      <div class="m-alert -info" role="alert">This is an info alert</div>
+      <div class="m-alert -light" role="alert">This is a light alert</div>
+      <div class="m-alert -dark" role="alert">This is a dark alert</div>
 
-p.-text Also can show an icon to emphasize more the type of nature applying the modifier <code>-hasIcon</code>.
-
-each type in ['light', 'success', 'danger', 'warning', 'info', 'dark']
-  .-mb1
-    h5= type
-    .m-alert.-banner.-hasIcon(class=`-${type}`, data-title="Banner title")
-      | This is a banner example
-
-.-mt2.-mb4
+h4 Icons
+p.-text Use icons to provide additional clarity. Icons can be added to any alert by applying the class <code>-hasIcon</code>
+.example.-mb3
+  .-p1
+    each type in ['success', 'danger', 'warning', 'info', 'light', 'dark']
+      .m-alert.-bubble.-hasIcon.-m2(class=`-${type}`)
+        = `This is a ${type} alert`
   :code(lang="html")
-    <div class="m-alert -banner -info -hasIcon" data-title="Banner title">
-      This is a banner example
-    </div>
+      <div class="m-alert -success -hasIcon" role="alert">This is a success alert</div>
+      <div class="m-alert -danger -hasIcon" role="alert">This is a danger alert</div>
+      <div class="m-alert -warning -hasIcon" role="alert">This is a warning alert</div>
+      <div class="m-alert -info -hasIcon" role="alert">This is an info alert</div>
+      <div class="m-alert -light -hasIcon" role="alert">This is a light alert</div>
+      <div class="m-alert -dark -hasIcon" role="alert">This is a dark alert</div>
 
-p.-text A button can be added to force the user to close the alert.
-
-.-mb1
-  h5= type
-  .m-alert.-banner.-warning.-hasIcon(data-title="Banner title")
-    | This is a banner example
-    button
-
-.-mt2.-mb4
+h4 Titled
+.example.-mb3
+  .-p1
+    .m-alert.-bubble.-danger.-hasIcon.-m2(data-title="Danger")
+      | This is a danger alert
   :code(lang="html")
-    <div class="m-alert -banner -info -hasIcon" data-title="Banner title">
-      This is a banner example
-      <button></button>
-    </div>
+      <div class="m-alert -danger -hasIcon" data-title="Danger" role="alert">
+        This is a danger alert
+      </div>
 
-p.-text Also alerts supports size modifiers:
-
-ul.-text
-  li <code>-small</code>
-  li <code>-large</code>
-
-each size in ['small', 'large']
-  .-mb1
-    h5= size
-    .m-alert.-banner.-info(class=`-${size}`, data-title="Banner title")
-      | This is a banner example
-      button
-
-.-mt2.-mb4
+h4 Dismissible
+p.-text A button can be added to allow the user to dismiss the alert.
+.example.-mb3
+  .-p1
+    .m-alert.-bubble.-warning.-hasIcon.-m2(data-title="Warning")
+      | This is a warning alert
+      button(aria-label="Close")
   :code(lang="html")
-    <div class="m-alert -banner -info -small" data-title="Banner title">
-      This is a banner example
-      <button></button>
-    </div>
+      <div class="m-alert -warning -hasIcon" data-title="Warning" role="alert">
+        This is a warning alert
+        <button aria-label="Close"></button>
+      </div>
+
+h4 Sizes
+h5 Large
+p.-text Apply a <code>-large</code> class to increase the size of the alert.
+.example.-mb3
+  .-p1
+    .m-alert.-bubble.-warning.-large.-hasIcon.-m2(data-title="Warning")
+      | This is a warning alert
+      button(aria-label="Close")
+  :code(lang="html")
+      <div class="m-alert -warning -large -hasIcon" data-title="Warning" role="alert">
+        This is a warning alert
+        <button aria-label="Close"></button>
+      </div>
+h3 Additional alert types
+h4 Banner
+p.-text
+  | For alerts that stretch the full length of the page, apply the class <code>-banner</code>.
+  | This will remove the border-left, border-right, and border-radius from the alert.
+  | Banner alerts are commonly used to remind new users to confirm their email address or notify users
+  | when they are experiencing connectivity issues.
+.example.-mb3
+  .-p1
+    .m-alert.-banner.-success.-hasIcon.-m2(data-title="Success")
+      | This is a success alert
+      button(aria-label="Close")
+  :code(lang="html")
+      <div class="m-alert -banner -success -hasIcon" data-title="Success" role="alert">
+        This is a success alert
+        <button aria-label="Close"></button>
+      </div>
+h4 Toast
+p.-text
+  | Toasts are unobtrusive alerts used to display brief, auto-expiring information.
+  | To use a toast alert, apply the class <code>-toast</code> and ensure the alert
+  | is placed in the top right corner or bottom left corner of the screen.
+.example.-mb3
+  .-p1
+    each type in ['success', 'danger', 'warning', 'info', 'light', 'dark']
+      .m-alert.-toast.-hasIcon.-m2(class=`-${type}`, data-title=`${type}`)
+        = `This is a ${type} alert`
+        button(aria-label="Close")
+  :code(lang="html")
+      <div class="m-alert -toast -success -hasIcon" data-title="Success" role="alert">
+        This is a success alert
+        <button aria-label="Close"></button>
+      </div>
+      <div class="m-alert -toast -danger -hasIcon" data-title="Danger" role="alert">
+        This is a danger alert
+        <button aria-label="Close"></button>
+      </div>
+      <div class="m-alert -toast -warning -hasIcon" data-title="Warning" role="alert">
+        This is a warning alert
+        <button aria-label="Close"></button>
+      </div>
+      <div class="m-alert -toast -info -hasIcon" data-title="Info" role="alert">
+        This is an info alert
+        <button aria-label="Close"></button>
+      </div>
+      <div class="m-alert -toast -light -hasIcon" data-title="Light" role="alert">
+        This is a light alert
+        <button aria-label="Close"></button>
+      </div>
+      <div class="m-alert -toast -dark -hasIcon" data-title="Dark" role="alert">
+        This is a dark alert
+        <button aria-label="Close"></button>
+      </div>
