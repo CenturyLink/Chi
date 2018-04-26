@@ -15,8 +15,8 @@
         margin: 0 ($base-unit * -1.5);
       }
       display: flex;
-      flex: 1 0 auto;
-      flex-direction: row;
+      // flex: 1 0 auto;
+      // flex-direction: row;
       flex-wrap: wrap;
       margin: 0 ($base-unit * -1);
     }
@@ -35,59 +35,45 @@
       @include respond-to(md) {
         padding: 0 ($base-unit * 1.5);
       }
-      flex: 1 0 0;
-      max-width: 100%;
-      min-width: 0;
+      flex-basis: 0;
+      flex-grow: 1;
+      // flex: 1 0 0;
+      // max-width: 100%;
+      // min-width: 0;
       padding: 0 $base-unit;
       position: relative;
+      // width: 100%;
     }
 
     // column widths
     @for $i from 1 through 11 {
       &.-w#{$i} {
-        @include respond-to(sm) {
-          @if $i < 8 {
-            width: (100% / 8 * $i);
-          } @else {
-            width: 100%;
-          }
-        }
+        flex: 0 1 auto;
+        width: (100% / 12 * $i);
+      }
+    }
 
-        @include respond-to(md) {
-          width: (100% / 12 * $i);
-        }
-
-        @if $i < 4 {
-          width: (100% / 4 * $i);
-        } @else {
+    @include respond-to-only(xs) {
+      &.-sm {
+        flex: 1 0 auto;
+        width: 100%;
+      }
+      @for $i from 1 through 11 {
+        &.-sm--w#{$i} {
+          flex: 1 0 auto;
           width: 100%;
         }
-
-        flex: 0 1 auto;
       }
     }
 
-    @include respond-to(xs, true) {
-      @for $i from 1 through 4 {
-        &.-xs--w#{$i} {
-          flex: 0 1 auto;
-          width: (100% / 4 * $i);
-        }
-      }
-    }
-    @include respond-to(sm, true) {
-      @for $i from 1 through 8 {
-        &.-sm--w#{$i} {
-          flex: 0 1 auto;
-          width: (100% / 8 * $i);
-        }
-      }
-    }
-    @each $size in md lg xl {
-      @include respond-to($size, true) {
+    @each $size in sm md lg xl {
+      @include respond-to-only($size) {
         @for $i from 1 through 12 {
           &.-#{$size}--w#{$i} {
-            flex: 0 1 auto;
+            // flex: 0 1 auto;
+            flex-basis: auto;
+            flex-grow: 0;
+            flex-shrink: 1;
             width: (100% / 12 * $i);
           }
         }
@@ -97,41 +83,41 @@
     // offsets
     @for $i from 1 through 11 {
       &.-o#{$i} {
-        @include respond-to(sm) {
-          margin-left: (100% / 8 * $i);
-        }
-
-        @include respond-to(md) {
-          margin-left: (100% / 12 * $i);
-        }
-
-        margin-left: (100% / 4 * $i);
+        // @include respond-to(sm) {
+        //   margin-left: (100% / 8 * $i);
+        // }
+        //
+        // @include respond-to(md) {
+        margin-left: (100% / 12 * $i);
+        // }
+        //
+        // margin-left: (100% / 4 * $i);
       }
     }
 
-    @include respond-to(xs, true) {
-      @for $i from 0 through 4 {
-        &.-xs--o#{$i} {
-          margin-left: (100% / 4 * $i);
-        }
-      }
-    }
-    @include respond-to(sm, true) {
-      @for $i from 0 through 8 {
-        &.-sm--o#{$i} {
-          margin-left: (100% / 8 * $i);
-        }
-      }
-    }
-    @each $size in md lg xl {
-      @include respond-to($size, true) {
-        @for $i from 0 through 12 {
-          &.-#{$size}--o#{$i} {
-            margin-left: (100% / 8 * $i);
-          }
-        }
-      }
-    }
+    // @include respond-to(xs, true) {
+    //   @for $i from 0 through 4 {
+    //     &.-xs--o#{$i} {
+    //       margin-left: (100% / 4 * $i);
+    //     }
+    //   }
+    // }
+    // @include respond-to(sm, true) {
+    //   @for $i from 0 through 8 {
+    //     &.-sm--o#{$i} {
+    //       margin-left: (100% / 8 * $i);
+    //     }
+    //   }
+    // }
+    // @each $size in md lg xl {
+    //   @include respond-to($size, true) {
+    //     @for $i from 0 through 12 {
+    //       &.-#{$size}--o#{$i} {
+    //         margin-left: (100% / 8 * $i);
+    //       }
+    //     }
+    //   }
+    // }
 
     &.-alignStretch {
       align-self: stretch;
@@ -171,7 +157,7 @@
       }
 
       @each $size in xs sm md lg xl {
-        @include respond-to($size, true) {
+        @include respond-to-only($size) {
           @for $i from 1 through 12 {
             &.-#{$size}--n#{$i} {
               order: #{$i};
@@ -182,7 +168,7 @@
     }
 
     @each $size in xs sm md lg xl {
-      @include respond-to($size, true) {
+      @include respond-to-only($size) {
         &.-#{$size}--hide {
           display: none;
         }
