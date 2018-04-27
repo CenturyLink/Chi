@@ -1,34 +1,23 @@
 ---
-title: radio
+title: Radio
 ---
-h4 States
-
 .test-states
-
-  .-mb1
-    h5 Base
-    input(type="radio", class="a-input", id="radio01")
-    label.-mr1(for="radio01")
-    label(for="radio01") Radio
-    span.-text  aligned with text
-
-  .-mb1
-    h5 Hover
-    input(type="radio", class="a-input", id="radio02")
-    label.-mr1(class="-hover", for="radio02")
-    label(for="radio02") Radio
-    span.-text  aligned with text
-
-  .-mb1
-    h5 Focus
-    input(type="radio", class="a-input -focus", id="radio03", checked)
-    label.-mr1(for="radio03")
-    label(for="radio03") Radio
-    span.-text  aligned with text
-
-  .-mb1
-    h5 Disabled
-    input(type="radio", class="a-input", id="radio04", checked, disabled)
-    label.-mr1(for="radio04")
-    label(for="radio04") Radio
-    span.-text  aligned with text
+  each state, index in ['default', 'hover', 'focus', 'checked', 'disabled']
+    h5= `Radio / ${state}`
+    .m-formGroup.-mb1
+      input.a-input(
+        type="radio"
+        id=`radio-${index}`
+        class={
+          [`-${state}`]: state == 'focus'
+        }
+        checked=state=='checked' ? 'checked' : false
+        disabled=state=='disabled' ? 'disabled' : false
+      )
+      label(
+        for=`radio-${index}`
+        class={
+          [`-${state}`]: state == 'hover'
+        }
+      )
+      label(for=`radio-${index}`) Radio
