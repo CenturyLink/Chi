@@ -2,6 +2,7 @@
 
 ### 0.8.0 (unreleased)
 
+* Updated margin and padding utility classes to include zero.
 * Added text size and style utility classes.
 * Removed hosted fallback support for Open Sans fonts.
 * Updated Google Fonts reference to always load via https.
