@@ -16,7 +16,6 @@
       }
       display: flex;
       flex: 1 0 auto;
-      // flex-direction: row;
       flex-wrap: wrap;
       margin: 0 ($base-unit * -1);
     }
@@ -28,6 +27,17 @@
         padding: 0;
       }
     }
+
+    // Vertical Alignment
+    &.-alignTop {
+      align-items: flex-start;
+    }
+    &.-alignCenter {
+      align-items: center;
+    }
+    &.-alignBottom {
+      align-items: flex-end;
+    }
   }
 
   .a-col {
@@ -35,104 +45,71 @@
       @include respond-to(md) {
         padding: 0 ($base-unit * 1.5);
       }
-      flex-basis: 0;
-      flex-grow: 1;
-      flex-shrink: 0;
-      // flex: 1 0 0;
+      flex: 1 0 0;
       max-width: 100%;
       min-width: 0;
       padding: 0 $base-unit;
       position: relative;
-      // width: 100%;
     }
 
-
-    @include respond-to-only(xs) {
-      &.-sm {
-        flex: 1 0 auto;
-        width: 100%;
-      }
-      @for $i from 1 through 11 {
-        &.-sm--w#{$i} {
+    // Stack Explicit Viewport Columns in XS Viewports
+    @each $size in sm md lg xl {
+      @include respond-to-only(xs) {
+        &.-#{$size} {
           flex: 1 0 auto;
           width: 100%;
+        }
+        @for $i from 1 through 12 {
+          &.-#{$size}--w#{$i} {
+            flex: 1 0 auto;
+            width: 100%;
+          }
         }
       }
     }
 
-    // column widths
+    // Explicit Column Widths
     @for $i from 1 through 12 {
       &.-w#{$i} {
-        flex-basis: (100% / 12 * $i);
-        flex-grow: 0;
-        flex-shrink: 1;
-        // flex: 0 1 auto;
+        flex: 0 1 (100% / 12 * $i);
         width: (100% / 12 * $i);
       }
     }
 
+    // Explicit Column Widths by Viewport
     @each $size in sm md lg xl {
       @include respond-to($size) {
         @for $i from 1 through 12 {
           &.-#{$size}--w#{$i} {
-            // flex: 0 1 auto;
-            flex-basis: (100% / 12 * $i);
-            flex-grow: 0;
-            flex-shrink: 1;
+            flex: 0 1 (100% / 12 * $i);
             max-width: (100% / 12 * $i);
           }
         }
       }
     }
 
-    // offsets
+    // Offsets
     @for $i from 1 through 11 {
       &.-o#{$i} {
-        // @include respond-to(sm) {
-        //   margin-left: (100% / 8 * $i);
-        // }
-        //
-        // @include respond-to(md) {
         margin-left: (100% / 12 * $i);
-        // }
-        //
-        // margin-left: (100% / 4 * $i);
+      }
+      @each $size in sm md lg xl {
+        @include respond-to($size) {
+          @for $i from 1 through 11 {
+            &.-#{$size}--o#{$i} {
+              margin-left: (100% / 12 * $i);
+            }
+          }
+        }
       }
     }
 
-    // @include respond-to(xs, true) {
-    //   @for $i from 0 through 4 {
-    //     &.-xs--o#{$i} {
-    //       margin-left: (100% / 4 * $i);
-    //     }
-    //   }
-    // }
-    // @include respond-to(sm, true) {
-    //   @for $i from 0 through 8 {
-    //     &.-sm--o#{$i} {
-    //       margin-left: (100% / 8 * $i);
-    //     }
-    //   }
-    // }
-    // @each $size in md lg xl {
-    //   @include respond-to($size, true) {
-    //     @for $i from 0 through 12 {
-    //       &.-#{$size}--o#{$i} {
-    //         margin-left: (100% / 8 * $i);
-    //       }
-    //     }
-    //   }
-    // }
-
-    &.-alignStretch {
-      align-self: stretch;
-    }
-
+    // Vertical Alignment (Specific Column)
     &.-alignTop {
       align-self: flex-start;
     }
 
-    &.-alignMiddle {
+    &.-alignCenter {
       align-self: center;
     }
 
@@ -140,22 +117,7 @@
       align-self: flex-end;
     }
 
-    &.-top {
-      align-items: flex-start;
-      display: flex;
-    }
-
-    &.-middle {
-      align-items: center;
-      display: flex;
-    }
-
-    &.-bottom {
-      align-items: flex-end;
-      display: flex;
-    }
-
-    // order number
+    // Reordering
     @for $i from 1 through 12 {
       &.-n#{$i} {
         order: #{$i};

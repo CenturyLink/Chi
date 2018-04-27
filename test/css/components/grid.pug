@@ -16,7 +16,7 @@ title: Grid
     .a-col
     .a-col
 
-h3 Column Sizing
+h3 Sizing
 
 .test-automatic-column-sizing.-w100
   h4 Automatic
@@ -122,41 +122,53 @@ h3 Column Sizing
     .a-col.-w6
     .a-col.-w6
 
-h3 Column Offsets
+h3 Offsets
 
 .test-offsets.-w100
-  h4 Generic offsets
+  h4 Offset Sizes
   .a-grid.-show
-    .a-col.-w1
-    .a-col.-w2.-o1
-    .a-col.-w2.-o1
-    .a-col.-w2.-o1
-    .a-col.-w1.-o1
+    .a-col.-w11.-o1
+    .a-col.-w10.-o2
+    .a-col.-w9.-o3
+    .a-col.-w8.-o4
+    .a-col.-w7.-o5
+    .a-col.-w6.-o6
+    .a-col.-w5.-o7
+    .a-col.-w4.-o8
+    .a-col.-w3.-o9
+    .a-col.-w2.-o10
+    .a-col.-w1.-o11
 
-  .a-grid.-show
-    .a-col.-w2
-    .a-col.-w6.-o4
+h3 Reordering
 
-  //- h4 Column offsets for specific screen sizes
-  //- .a-grid.-show
-  //-   .a-col.-w1
-  //-   .a-col.-w6.-o5.-sm--w4.-sm--o3.-xs--w2.-xs--o1
+.test-reordering.-w100
 
 h3 Responsive
 
-.test-stacked-columns.-w100
+.test-responsive-column-stacking.-w100
   h4 Stacked (XS)
   .a-grid.-show
-    .a-col.-sm--w8
+    .a-col.-sm--w2
     .a-col.-sm--w4
-    .a-col.-sm
     .a-col.-sm
   .a-grid.-show
     .a-col.-sm
     .a-col.-sm
     .a-col.-sm
+  .a-grid.-show
+    .a-col.-md
+    .a-col.-md
+    .a-col.-md
+  .a-grid.-show
+    .a-col.-lg
+    .a-col.-lg
+    .a-col.-lg
+  .a-grid.-show
+    .a-col.-xl
+    .a-col.-xl
+    .a-col.-xl
 
-.test-stacked-columns.-w100
+.test-mixed-responsive-column-sizing.-w100
   h4 Mixed
   .a-grid.-show
     .a-col.-w12.-md--w8
@@ -169,17 +181,37 @@ h3 Responsive
     .a-col.-w6
     .a-col.-w6
 
-h3 Aligns
+.test-responsive-offsets.-w100
+  h4 Offsets
+  .a-grid.-show
+    .a-col.-w12.-sm--w11.-sm--o1
+    .a-col.-w12.-md--w10.-md--o2
+    .a-col.-w12.-lg--w9.-lg--o3
+    .a-col.-w12.-xl--w8.-xl--o4
 
-.test-aligns.-w100
-  h4 Align columns relative to the grid
-  .a-grid.-show(style={height: '160px'})
+h3 Alignment
+
+.test-vertical-alignment-on-container.-w100
+  h4 Vertical Alignment (Grid Container)
+  h5 .-alignTop
+  .a-grid.-alignTop.-show(style = { height: '160px', outline: '1px solid red' })
+    .a-col
+    .a-col
+    .a-col
+  h5 .-alignCenter
+  .a-grid.-alignCenter.-show(style = { height: '160px', outline: '1px solid red' })
+    .a-col
+    .a-col
+    .a-col
+  h5 .-alignBottom
+  .a-grid.-alignBottom.-show(style = { height: '160px', outline: '1px solid red' })
+    .a-col
+    .a-col
+    .a-col
+
+.test-vertical-alignment-on-column.-w100
+  h4 Vertical Alignment (Column Specific)
+  .a-grid.-show(style = { height: '160px', outline: '1px solid red' })
     .a-col.-alignTop
-    .a-col.-alignMiddle
+    .a-col.-alignCenter
     .a-col.-alignBottom
-
-  h4 Align content relative to the column
-  .a-grid.-show(style={height: '160px'})
-    .a-col.-top
-    .a-col.-middle
-    .a-col.-bottom
