@@ -1,22 +1,59 @@
 ---
 title: Checkboxes
 ---
+p.-text Checboxes are used to select one or several options in a list.
 
+h3 Examples
 p.-text
-  | In order to use a checkbox just use an <code>input type="checkbox"</code> with the class <code>a-input</code>. Also,
-  | in order to have the checkbox properly styled you must add an empty label for the checkbox immediately after it's
-  | declaration. You can add any other label next to the previous one.
+  | To render a checkbox, apply the class <code>a-input</code> to an <code>input type="checkbox"</code>.
+  | For proper styling, checkboxes require an empty label element defined immediately after their declaration.
 
-.-mb4.-mt2
-  div(style="display:flex; align-items: center")
-    input(type="checkbox", class="a-input", id="checkbox")
-    label(for="checkbox")
-
-    label.-text.-ml1(for="checkbox") Checkbox
-
+h4 Stacked
+p.-text
+  | Group checkboxes in <code>m-formGroup</code> for easy stacking.
+.example.-mb3
+  .-p3
+    .m-formGroup
+      input(type="checkbox", class="a-input", id="checkbox1")
+      label(for="checkbox1")
+      label.-text.-m1(for="checkbox1") Checkbox
+    .m-formGroup
+      input(type="checkbox", class="a-input", id="checkbox2", disabled)
+      label(for="checkbox2")
+      label.-text.-m1(for="checkbox2") Disabled Checkbox
   :code(lang="html")
-    <input type="checkbox" class="a-input" id="checkbox">
-    <label for="checkbox"></label>
+    <div class="m-formGroup">
+      <input type="checkbox" class="a-input" id="checkbox1">
+      <label for="checkbox1"></label>
+      <label class="-text -ml1" for="checkbox1">Checkbox</label>
+    </div>
+    <div class="m-formGroup">
+      <input type="checkbox" class="a-input" id="checkbox2" disabled>
+      <label for="checkbox2"></label>
+      <label class="-text -ml1" for="checkbox2">Disabled Checkbox</label>
+    </div>
 
-    <label class="-text -ml1" for="checkbox">Checkbox</label>
-
+h4 Inline
+p.-text
+  | Apply the class <code>-inline</code> to <code>m-formGroup</code> to display checkboxes inline.
+.example.-mb3
+  .-p3
+    .m-formGroup.-inline
+      input(type="checkbox", class="a-input", id="inlineCheckbox1")
+      label(for="inlineCheckbox1")
+      label.-text.-m1(for="inlineCheckbox1") Option 1
+    .m-formGroup.-inline
+      input(type="checkbox", class="a-input", id="inlineCheckbox2")
+      label(for="inlineCheckbox2")
+      label.-text.-m1(for="inlineCheckbox2") Option 2
+  :code(lang="html")
+    <div class="m-formGroup -inline">
+      <input type="checkbox" class="a-input" id="inlineCheckbox1">
+      <label for="inlineCheckbox1"></label>
+      <label class="-text -ml1" for="inlineCheckbox1">Option 1</label>
+    </div>
+    <div class="m-formGroup -inline">
+      <input type="checkbox" class="a-input" id="inlineCheckbox2">
+      <label for="inlineCheckbox2"></label>
+      <label class="-text -ml1" for="inlineCheckbox2">Option 2</label>
+    </div>
