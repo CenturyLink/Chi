@@ -1,48 +1,75 @@
 ---
 title: Number inputs
 ---
+p.-text Number inputs are used to increase or decrease numeric values.
 
+h3 Examples
 p.-text
-  | In order to use a number input just use an <code>input type="number"</code> with the class <code>a-input</code>, add
-  | two buttons next to it and wrap all items inside a <code>div</code> with the class <code>a-inputWrapper</code>.
+  | To render a number input, apply the classes <code>a-input</code> to an <code>input type="number"</code>.
+  | For proper styling, number inputs must be wrapped in an <code>a-inputWrapper</code> div with two buttons.
+  | Number inputs also require the <code>-compact</code> modifier class.
 
-  | Input numbers also needs a modifier, <code>-compact</code>.
+h4 Base
+.example.-mb3
+  .-p3
+    .m-formGroup
+      .a-inputWrapper.-compact
+        input.a-input(type="number", value="0")
+        button
+        button
+  :code(lang="html")
+    <div class="a-inputWrapper -compact">
+      <input type="number" class="a-input" value="0">
+      <button></button>
+      <button></button>
+    </div>
 
-.a-inputWrapper.-compact.-mb4.-mt2
-  input.a-input(type="number", value="0")
-  button
-  button
+h4 Disabled
+.example.-mb3
+  .-p3
+    .m-formGroup
+      .a-inputWrapper.-compact
+        input.a-input(type="number", value="0", disabled)
+        button
+        button
+  :code(lang="html")
+    <div class="a-inputWrapper -compact">
+      <input type="number" class="a-input" value="0" disabled>
+      <button></button>
+      <button></button>
+    </div>
 
-:code(lang="html")
-  <div class="a-inputWrapper -compact">
-    <input type="number" class="a-input" value="0">
-    <button></button>
-    <button></button>
-  </div>
-
-p.-text We have two modifiers in relation to the size of the component.
-
-ul.-text
-  li
-    code -small
-  li
-    code -large
-
-each size, index in ['small', 'large']
-  h4= `${size} size`
-  .a-inputWrapper.-compact.-mb2
-    input.a-input(
-      class=`-${size}`
-      type="number"
-      value="0"
-    )
-    button
-    button
-
-p.-text Example
-:code(lang="html")
-  <div class="a-inputWrapper -compact">
-    <input type="number" class="a-input -small" value="0">
-    <button></button>
-    <button></button>
-  </div>
+h4 Sizes
+.example.-mb3
+  .-p3
+    .m-formGroup.-inline.-mr3
+      .a-inputWrapper.-compact
+        input.a-input.-small(type="number", value="0")
+        button
+        button
+    .m-formGroup.-inline.-mr3
+      .a-inputWrapper.-compact
+        input.a-input(type="number", value="0")
+        button
+        button
+    .m-formGroup.-inline
+      .a-inputWrapper.-compact
+        input.a-input.-large(type="number", value="0")
+        button
+        button
+  :code(lang="html")
+    <div class="a-inputWrapper -compact">
+      <input type="number" class="a-input -small" value="0">
+      <button></button>
+      <button></button>
+    </div>
+    <div class="a-inputWrapper -compact">
+      <input type="number" class="a-input" value="0">
+      <button></button>
+      <button></button>
+    </div>
+    <div class="a-inputWrapper -compact">
+      <input type="number" class="a-input -large" value="0">
+      <button></button>
+      <button></button>
+    </div>
