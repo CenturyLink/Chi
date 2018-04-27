@@ -1,40 +1,59 @@
 ---
 title: Radio Buttons
 ---
+p.-text Radio buttons are used to select a single item in a list of options.
 
+h3 Examples
 p.-text
-  | In order to use a radio button just use an <code>input type="radio"</code> with the class <code>a-input</code>.
-  | Also, in order to have the checkbox properly styled, you must add an empty label for the checkbox immediately after
-  | it's declaration. More labels can be added next to it.
+  | To render a radio button, apply the class <code>a-input</code> to an <code>input type="radio"</code>.
+  | For proper styling, radio buttons require an empty label element defined immediately after their declaration.
 
-.-mb4.-mt2
-  div(style="display:flex; align-items: center")
-    input(type="radio", class="a-input", name="example", id="radio01", checked)
-    label(for="radio01")
-
-    label.-text.-ml1(for="radio01") Radio 1
-
-  div(style="display:flex; align-items: center")
-    input(type="radio", class="a-input", name="example", id="radio02")
-    label(for="radio02")
-
-    label.-text.-ml1(for="radio02") Radio 2
-
-  div(style="display:flex; align-items: center")
-    input(type="radio", class="a-input", name="example", id="radio03")
-    label(for="radio03")
-
-    label.-text.-ml1(for="radio03") Radio 3
-
+h4 Stacked
+p.-text
+  | Group radio buttons in <code>m-formGroup</code> for easy stacking.
+.example.-mb3
+  .-p3
+    .m-formGroup
+      input(class="a-input", type="radio", name="radios", id="radio1")
+      label(for="radio1")
+      label.-text.-m1(for="radio1") Radio Button
+    .m-formGroup
+      input(class="a-input", type="radio", name="radios", id="radio2", disabled)
+      label(for="radio2")
+      label.-text.-m1(for="radio2") Disabled Radio Button
   :code(lang="html")
-    <input type="checkbox" class="a-input" name="example" id="radio01" checked>
-    <label for="radio01"></label>
-    <label class="c-text -ml1" for="radio01">Radio 1</label>
+    <div class="m-formGroup">
+      <input class="a-input" type="radio" name="radios" id="radio1">
+      <label for="radio1"></label>
+      <label class="-text -ml1" for="radio1">Radio Button</label>
+    </div>
+    <div class="m-formGroup">
+      <input class="a-input" type="radio" name="radios" id="radio2" disabled>
+      <label for="radio2"></label>
+      <label class="-text -ml1" for="radio2">Disabled Radio Button</label>
+    </div>
 
-    <input type="checkbox" class="a-input" name="example" id="radio02">
-    <label for="radio02"></label>
-    <label class="c-text -ml1" for="radio02">Radio 2</label>
-
-    <input type="checkbox" class="a-input" name="example" id="radio03">
-    <label for="radio03"></label>
-    <label class="c-text -ml1" for="radio03">Radio 3</label>
+h4 Inline
+p.-text
+  | Apply the class <code>-inline</code> to <code>m-formGroup</code> to display radio buttons inline.
+.example.-mb3
+  .-p3
+    .m-formGroup.-inline
+      input(class="a-input", type="radio", name="inlineRadios", id="inlineRadio1")
+      label(for="inlineRadio1")
+      label.-text.-m1(for="inlineRadio1") Option 1
+    .m-formGroup.-inline
+      input(class="a-input", type="radio", name="inlineRadios", id="inlineRadio2")
+      label(for="inlineRadio2")
+      label.-text.-m1(for="inlineRadio2") Option 2
+  :code(lang="html")
+    <div class="m-formGroup -inline">
+      <input class="a-input" type="radio" name="inlineRadios" id="inlineRadio1">
+      <label for="inlineRadio1"></label>
+      <label class="-text -ml1" for="inlineRadio1">Option 1</label>
+    </div>
+    <div class="m-formGroup -inline">
+      <input class="a-input" type="radio" name="inlineRadios" id="inlineRadio2" disabled>
+      <label for="inlineRadio2"></label>
+      <label class="-text -ml1" for="inlineRadio2">Option 2</label>
+    </div>

@@ -1,34 +1,91 @@
 ---
 title: Toggle Switch
 ---
+p.-text Toggle switches are used to switch between two possible states.
 
+h3 Examples
 p.-text
-  | In order to use a toggle switch just use an <code>input type="checkbox"</code> with the classes <code>a-input</code>
-  | and <code>-toggle</code>. Also, in order to have the switch properly styled you must add an empty label for
-  | the checkbox immediately after it's declaration.
+  | To render a toggle switch, apply the classes <code>a-input</code> and <code>-toggle</code> to an <code>input type="checkbox"</code>.
+  | For proper styling, toggle switches require an empty label element defined immediately after their declaration.
 
-.-mb4.-mt2
-  div(style="display:flex; align-items: center")
-    input(type="checkbox", class="a-input -toggle", id="checkbox01")
-    label(class="-mr1", for="checkbox01")
-    span Very important flag
-
+h4 Base
+.example.-mb3
+  .-p3
+    .m-formGroup
+      input(type="checkbox", class="a-input -toggle", id="toggle1")
+      label(for="toggle1")
   :code(lang="html")
-    <input type="checkbox" class="a-input -toggle" id="checkbox">
-    <label for="checkbox"></label>
-    <span>Very important flag</span>
+    <input type="checkbox" class="a-input -toggle" id="toggle1">
+    <label for="toggle1"></label>
 
+h4 Disabled
+.example.-mb3
+  .-p3
+    .m-formGroup
+      input(type="checkbox", class="a-input -toggle", id="toggle2", disabled)
+      label(for="toggle2")
+  :code(lang="html")
+    <input type="checkbox" class="a-input -toggle" id="toggle2" disabled>
+    <label for="toggle2"></label>
+
+h4 No Label
 p.-text
-  | The toggle switches by default contains the text <code>ON/OFF</code>, but we could disable it with the use of the
-  | modifier <code>-noText</code>.
-
-.-mb4.-mt2
-  div(style="display:flex; align-items: center")
-    input(type="checkbox", class="a-input -toggle -noText", id="checkbox02")
-    label(class="-mr1", for="checkbox02")
-    span Very important flag
-
+  | By default, toggle switches are labeled with text <code>ON/OFF</code>. To disable this, apply the modifier <code>-noText</code>.
+.example.-mb3
+  .-p3
+    .m-formGroup
+      input(type="checkbox", class="a-input -toggle -noText", id="toggle3")
+      label(for="toggle3")
   :code(lang="html")
-    <input type="checkbox" class="a-input -toggle -noText" id="checkbox">
-    <label for="checkbox"></label>
-    <span>Very important flag</span>
+    <input type="checkbox" class="a-input -toggle -noText" id="toggle3">
+    <label for="toggle3"></label>
+
+h4 Stacked
+p.-text
+  | Group toggle switches in <code>m-formGroup</code> for easy stacking.
+.example.-mb3
+  .-p3
+    .m-formGroup.-mb2
+      input(type="checkbox", class="a-input -toggle -noText", id="toggle4")
+      label(class="-mr1", for="toggle4")
+      span.-text Notifications
+    .m-formGroup
+      input(type="checkbox", class="a-input -toggle -noText", id="toggle5")
+      label(class="-mr1", for="toggle5")
+      span.-text Outage Alerts
+  :code(lang="html")
+    <div class="m-formGroup -mb2">
+      <input type="checkbox" class="a-input -toggle -noText" id="toggle4">
+      <label for="toggle4"></label>
+      <span class="-text">Notifications</span>
+    </div>
+    <div class="m-formGroup">
+      <input type="checkbox" class="a-input -toggle -noText" id="toggle5">
+      <label for="toggle5"></label>
+      <span class="-text">Outage Alerts</span>
+    </div>
+
+h4 Inline
+p.-text
+  | Apply the class <code>-inline</code> to <code>m-formGroup</code> to display toggle switches inline.
+.example.-mb3
+  .-p3
+    .m-formGroup.-inline.-mr3
+      input(type="checkbox", class="a-input -toggle -noText", id="toggle6")
+      label(class="-mr1", for="toggle6")
+      span.-text Notifications
+    .m-formGroup.-inline
+      input(type="checkbox", class="a-input -toggle -noText", id="toggle7")
+      label(class="-mr1", for="toggle7")
+      span.-text Outage Alerts
+  :code(lang="html")
+    <div class="m-formGroup -inline -mr3">
+      <input type="checkbox" class="a-input -toggle -noText" id="toggle6">
+      <label class="-mr1" for="toggle6"></label>
+      <span class="-text">Notifications</span>
+    </div>
+    <div class="m-formGroup -inline">
+      <input type="checkbox" class="a-input -toggle -noText" id="toggle7">
+      <label class="-mr1" for="toggle7"></label>
+      <span class="-text">Outage Alerts</span>
+    </div>
