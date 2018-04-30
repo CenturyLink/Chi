@@ -29,12 +29,15 @@
     }
 
     // Vertical Alignment
+
     &.-alignTop {
       align-items: flex-start;
     }
+
     &.-alignCenter {
       align-items: center;
     }
+
     &.-alignBottom {
       align-items: flex-end;
     }
@@ -52,7 +55,8 @@
       position: relative;
     }
 
-    // Stack Explicit Viewport Columns in XS Viewports
+    // Stacking (on XS Viewports)
+
     @each $size in sm md lg xl {
       @include respond-to-only(xs) {
         &.-#{$size} {
@@ -68,7 +72,8 @@
       }
     }
 
-    // Explicit Column Widths
+    // Sizing
+
     @for $i from 1 through 12 {
       &.-w#{$i} {
         flex: 0 1 (100% / 12 * $i);
@@ -76,7 +81,8 @@
       }
     }
 
-    // Explicit Column Widths by Viewport
+    // Sizing by Viewport
+
     @each $size in sm md lg xl {
       @include respond-to($size) {
         @for $i from 1 through 12 {
@@ -89,6 +95,7 @@
     }
 
     // Offsets
+
     @for $i from 1 through 11 {
       &.-o#{$i} {
         margin-left: (100% / 12 * $i);
@@ -104,7 +111,8 @@
       }
     }
 
-    // Vertical Alignment (Specific Column)
+    // Vertical Alignment (Column-Specifics)
+
     &.-alignTop {
       align-self: flex-start;
     }
