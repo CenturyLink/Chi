@@ -1,51 +1,50 @@
 ---
 title: File inputs
 ---
+p.-text File inputs are used to select one or more files from a users device storage.
 
-.m-alert.-bubble.-warning(data-title="Warning")
-  | This component needs Javascript
+.m-alert.-bubble.-info.-hasIcon
+  | This component requires Javascript
 
+h3 Examples
 p.-text
-  | In order to use a file input just use an <code>input type="file"</code> with the class <code>a-input</code> and add
-  | a label next to it.
+  | To render a file input, apply the class <code>a-input</code> to an <code>input type="file"</code> and
+  | add a label next to it.
 
-.-mb4.-mt2
-  input.a-input(type="file", id="file01")
-  label(for="file01") No file chosen
-
+h4 Base
+.example.-mb3
+  .-p3
+    .m-formGroup
+      input.a-input(type="file", id="file01")
+      label(for="file01") No file chosen
   :code(lang="html")
     <input type="file" class="a-input" id="file01">
     <label for="file01">No file chosen</label>
 
-p.-text We have two modifiers in relation to the size of the component.
+h4 Small
+.example.-mb3
+  .-p3
+    .m-formGroup
+      input.a-input.-small(type="file", id="file01")
+      label(for="file01") No file chosen
+  :code(lang="html")
+    <input type="file" class="a-input -small" id="file01">
+    <label for="file01">No file chosen</label>
 
-ul.-text
-  li
-    code -small
-  li
-    code -large
-
-each size, index in ['small', 'large']
-  h4= `${size} size`
-  .-mb2
-    input.a-input(
-      class=`-${size}`
-      type="file"
-      id=`file-${index}`
-    )
-    label(for=`file-${index}`) No file chosen
-
-p.-text Example
-:code(lang="html")
-  <input type="file" class="a-input -small" id="file01">
-  <label for="file01">No file chosen</label>
+h4 Large
+.example.-mb3
+  .-p3
+    .m-formGroup
+      input.a-input.-large(type="file", id="file01")
+      label(for="file01") No file chosen
+  :code(lang="html")
+    <input type="file" class="a-input -large" id="file01">
+    <label for="file01">No file chosen</label>
 
 h3 JavaScript
+p.-text This component requires JavaScript to update the label content once a file or files have been selected.
 
-p.-text This component needs JavaScript in order to update the label content once a file or files are selected.
-
-p.-text The next piece of JavaScript is an example of how it should work.
-
+h4 Example
 .-mb4
   include:code(lang="js") ../../../../../node_modules/@centurylink/chi/src/css/components/input-file/input-file.js
 
