@@ -2,6 +2,7 @@
 
 ### 0.8.0 (unreleased)
 
+* Updated margin and padding utility classes to include zero.
 * Updated checkboxes and radios to dim both the input and label when disabled.
 * Added margin to checkboxes and radios to provide sufficient space between the input and label.
 * Added support for displaying checkboxes and radios as stacked or inline.
