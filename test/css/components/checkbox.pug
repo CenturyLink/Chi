@@ -4,8 +4,8 @@ title: Checkbox
 
 .test-states
   each state, index in ['default', 'hover', 'focus', 'checked', 'disabled']
-    .-mb1
-      h5= `Checkbox / ${state}`
+    h5= `Checkbox / ${state}`
+    .m-formGroup.-mb1
       input.a-input(
         type="checkbox"
         id=`checkbox-${index}`
@@ -15,11 +15,10 @@ title: Checkbox
         checked=state=='checked' ? 'checked' : false
         disabled=state=='disabled' ? 'disabled' : false
       )
-      label.-mr1(
+      label(
         for=`checkbox-${index}`
         class={
           [`-${state}`]: state == 'hover'
         }
       )
-      label(for=`checkbox-${index}`) checkbox
-      span.-text  aligned with text
+      label(for=`checkbox-${index}`) Checkbox
