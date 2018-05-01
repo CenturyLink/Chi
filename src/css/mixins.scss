@@ -33,3 +33,7 @@
     @media only screen and (min-width: $xl-breakpoint) { @content; }
   }
 }
+
+@mixin respond-to-only($media) {
+  @include respond-to($media, true) { @content };
+}

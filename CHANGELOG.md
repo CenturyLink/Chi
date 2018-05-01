@@ -6,6 +6,7 @@
 * Added margin to checkboxes and radios to provide sufficient space between the input and label.
 * Added support for displaying checkboxes and radios as stacked or inline.
 * Renamed the green themed Badge modifier class from brand to success.
+* Updated the grid system with cleanups and improved responsive support.
 * Added text size and style utility classes.
 * Removed hosted fallback support for Open Sans fonts.
 * Updated Google Fonts reference to always load via https.
