@@ -16,7 +16,6 @@
       }
       display: flex;
       flex: 1 0 auto;
-      flex-direction: row;
       flex-wrap: wrap;
       margin: 0 ($base-unit * -1);
     }
@@ -28,6 +27,20 @@
         padding: 0;
       }
     }
+
+    // Vertical Alignment
+
+    &.-alignTop {
+      align-items: flex-start;
+    }
+
+    &.-alignCenter {
+      align-items: center;
+    }
+
+    &.-alignBottom {
+      align-items: flex-end;
+    }
   }
 
   .a-col {
@@ -37,111 +50,74 @@
       }
       flex: 1 0 0;
       max-width: 100%;
-      min-width: 0;
+      min-width: (100% / 12);
       padding: 0 $base-unit;
       position: relative;
     }
 
-    // column widths
-    @for $i from 1 through 11 {
-      &.-w#{$i} {
-        @include respond-to(sm) {
-          @if $i < 8 {
-            width: (100% / 8 * $i);
-          } @else {
+    // Stacking (on XS Viewports)
+
+    @each $size in sm md lg xl {
+      @include respond-to-only(xs) {
+        &.-#{$size} {
+          flex: 1 0 auto;
+          width: 100%;
+        }
+        @for $i from 1 through 12 {
+          &.-#{$size}--w#{$i} {
+            flex: 1 0 auto;
             width: 100%;
           }
         }
-
-        @include respond-to(md) {
-          width: (100% / 12 * $i);
-        }
-
-        @if $i < 4 {
-          width: (100% / 4 * $i);
-        } @else {
-          width: 100%;
-        }
-
-        flex: 0 1 auto;
       }
     }
 
-    @include respond-to(xs, true) {
-      @for $i from 1 through 4 {
-        &.-xs--w#{$i} {
-          flex: 0 1 auto;
-          width: (100% / 4 * $i);
-        }
+    // Sizing
+
+    @for $i from 1 through 12 {
+      &.-w#{$i} {
+        flex: 0 1 (100% / 12 * $i);
+        width: (100% / 12 * $i);
       }
     }
-    @include respond-to(sm, true) {
-      @for $i from 1 through 8 {
-        &.-sm--w#{$i} {
-          flex: 0 1 auto;
-          width: (100% / 8 * $i);
-        }
-      }
-    }
-    @each $size in md lg xl {
-      @include respond-to($size, true) {
+
+    // Sizing by Viewport
+
+    @each $size in sm md lg xl {
+      @include respond-to($size) {
         @for $i from 1 through 12 {
           &.-#{$size}--w#{$i} {
-            flex: 0 1 auto;
-            width: (100% / 12 * $i);
+            flex: 0 1 (100% / 12 * $i);
+            max-width: (100% / 12 * $i);
           }
         }
       }
     }
 
-    // offsets
+    // Offsets
+
     @for $i from 1 through 11 {
       &.-o#{$i} {
-        @include respond-to(sm) {
-          margin-left: (100% / 8 * $i);
-        }
-
-        @include respond-to(md) {
-          margin-left: (100% / 12 * $i);
-        }
-
-        margin-left: (100% / 4 * $i);
+        margin-left: (100% / 12 * $i);
       }
-    }
-
-    @include respond-to(xs, true) {
-      @for $i from 0 through 4 {
-        &.-xs--o#{$i} {
-          margin-left: (100% / 4 * $i);
-        }
-      }
-    }
-    @include respond-to(sm, true) {
-      @for $i from 0 through 8 {
-        &.-sm--o#{$i} {
-          margin-left: (100% / 8 * $i);
-        }
-      }
-    }
-    @each $size in md lg xl {
-      @include respond-to($size, true) {
-        @for $i from 0 through 12 {
-          &.-#{$size}--o#{$i} {
-            margin-left: (100% / 8 * $i);
+      @each $size in sm md lg xl {
+        @include respond-to($size) {
+          @for $i from 1 through 11 {
+            &.-#{$size}--o#{$i} {
+              margin-left: (100% / 12 * $i);
+            }
           }
         }
       }
     }
 
-    &.-alignStretch {
-      align-self: stretch;
-    }
+    // Vertical Alignment (Column-Specifics)
 
     &.-alignTop {
       align-self: flex-start;
     }
 
-    &.-alignMiddle {
+    &.-alignCenter {
       align-self: center;
     }
 
@@ -149,29 +125,15 @@
       align-self: flex-end;
     }
 
-    &.-top {
-      align-items: flex-start;
-      display: flex;
-    }
+    // Reordering
 
-    &.-middle {
-      align-items: center;
-      display: flex;
-    }
-
-    &.-bottom {
-      align-items: flex-end;
-      display: flex;
-    }
-
-    // order number
     @for $i from 1 through 12 {
       &.-n#{$i} {
         order: #{$i};
       }
 
       @each $size in xs sm md lg xl {
-        @include respond-to($size, true) {
+        @include respond-to-only($size) {
           @for $i from 1 through 12 {
             &.-#{$size}--n#{$i} {
               order: #{$i};
@@ -182,7 +144,7 @@
     }
 
     @each $size in xs sm md lg xl {
-      @include respond-to($size, true) {
+      @include respond-to-only($size) {
         &.-#{$size}--hide {
           display: none;
         }

@@ -14,6 +14,7 @@
             cursor: pointer;
             display: inline-flex;
             line-height: 2rem;
+            margin-right: 1rem;
             position: relative;
           }
 
@@ -70,9 +71,15 @@
           }
         }
 
-        &[disabled] + label {
-          opacity: 0.65;
-          pointer-events: none;
+        &[disabled] {
+          & ~ label {
+            color: set-color(carbon, 100);
+          }
+
+          & + label {
+            opacity: 0.65;
+            pointer-events: none;
+          }
         }
 
         &:focus,
