@@ -2,6 +2,7 @@
 
 ### 0.8.0 (unreleased)
 
+* Updated the grid system with cleanups and improved responsive support.
 * Added text size and style utility classes.
 * Removed hosted fallback support for Open Sans fonts.
 * Updated Google Fonts reference to always load via https.
