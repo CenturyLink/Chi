@@ -6,29 +6,43 @@ img(inline src='node_modules/@centurylink/chi/src/css/components/icons/icons/ico
 img(inline src='node_modules/@centurylink/chi/src/css/components/icons/icons/icon-warning.svg')
 img(inline src='node_modules/@centurylink/chi/src/css/components/icons/icons/icon-circle-warning.svg')
 
+p.-text Text inputs are used for inputting single line text data.
+
+h3 Examples
 p.-text
-  | In order to use a text input, a password or an email input just use an <code>input type="[text|password|email]"</code>
-  | with the class <code>a-input</code>. By default text inputs are fluid, adjusting them to it's parent width.
+  | To render a text input, apply the class <code>a-input</code> to an <code>input type="text"</code>,
+  | <code>input type="password"</code>, <code>input type="email"</code>, etc.
 
-.-mb4.-mt2
-  div(style="max-width:30rem")
-    input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
-
+h4 Base
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:40rem")
+      input(type="text", class="a-input", placeholder="Placeholder")
   :code(lang="html")
-    <input type="text" class="a-input" placeholder="Placeholder" value="Sample Text">
+    <input type="text" class="a-input" placeholder="Placeholder">
 
+h4 Disabled
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:40rem")
+      input(type="text", class="a-input", value="Sample Text", disabled)
+  :code(lang="html")
+    <input type="text" class="a-input" value="Sample Text" disabled>
+
+h3 Icons
 p.-text
-  | If we want to add some icon to the text input we must wrap the input inside a <code>div</code> using the class
-  | <code>a-inputWrapper</code>, add the icon as a sibling of the <code>input</code> and specify where is going to be
-  | placed the icon.
+  | To add icons to a text input, wrap the input in a <code>div</code> using the class
+  | <code>a-inputWrapper</code>. Next, add the icon as a sibling of the <code>input</code> and utilize
+  | an icon alignment utility class (e.g. <code>-iconLeft</code>) to specify where it should be placed.
 
-.-mb4
-  .a-inputWrapper.-iconLeft(style="max-width:30rem")
-    input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
-    .a-icon
-      svg
-        use(xlink:href='#edit')
-
+h4 Left Aligned
+.example.-mb3
+  .-p3
+    .a-inputWrapper.-iconLeft(style="max-width:40rem")
+      input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+      .a-icon
+        svg
+          use(xlink:href='#edit')
   :code(lang="html")
     <div class="a-inputWrapper -iconLeft">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
@@ -39,13 +53,14 @@ p.-text
       </div>
     </div>
 
-.-mb4
-  .a-inputWrapper.-iconRight(style="max-width:30rem")
-    input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
-    .a-icon
-      svg
-        use(xlink:href='#edit')
-
+h4 Right Aligned
+.example.-mb3
+  .-p3
+    .a-inputWrapper.-iconRight(style="max-width:40rem")
+      input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+      .a-icon
+        svg
+          use(xlink:href='#edit')
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
@@ -56,16 +71,17 @@ p.-text
       </div>
     </div>
 
-.-mb4
-  .a-inputWrapper.-iconLeft.-iconRight(style="max-width:30rem")
-    input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
-    .a-icon
-      svg
-        use(xlink:href='#edit')
-    .a-icon
-      svg
-        use(xlink:href='#check')
-
+h4 Left + Right Aligned
+.example.-mb3
+  .-p3
+    .a-inputWrapper.-iconLeft.-iconRight(style="max-width:40rem")
+      input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+      .a-icon
+        svg
+          use(xlink:href='#edit')
+      .a-icon
+        svg
+          use(xlink:href='#check')
   :code(lang="html")
     <div class="a-inputWrapper -iconLeft -iconRight">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
@@ -84,44 +100,23 @@ p.-text
 h3 States
 
 p.-text
-  | Text inputs has three states vailable:
+  | Text inputs offer three validation states: <code>-success</code>, <code>-warning</code>, and <code>-danger</code>.
 
-ul.-text
-  li success: <code>-success</code>
-  li warning: <code>-warning</code>
-  li danger: <code>-danger</code>
-
-.-mb4.-mt2
-  div(style="max-width:30rem")
-    input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
-
+h4 Success
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:40rem")
+      input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
   :code(lang="html")
     <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
 
-.-mb4.-mt2
-  div(style="max-width:30rem")
-    input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
-
-  :code(lang="html")
-    <input type="text" class="a-input -warning" placeholder="Placeholder" value="Sample Text">
-
-.-mb4.-mt2
-  div(style="max-width:30rem")
-    input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
-
-  :code(lang="html")
-    <input type="text" class="a-input -danger" placeholder="Placeholder" value="Sample Text">
-
-p.-text Also we can add icons to emphasize the state.
-
-.-mb4.-mt2
-  div(style="max-width:30rem")
-    .a-inputWrapper.-iconRight
+.example.-mb3
+  .-p3
+    .a-inputWrapper.-iconRight(style="max-width:40rem")
       input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
       .a-icon.-success
         svg
           use(xlink:href="#check")
-
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
@@ -132,32 +127,46 @@ p.-text Also we can add icons to emphasize the state.
       </div>
     </div>
 
-.-mb4.-mt2
-  div(style="max-width:30rem")
-    .a-inputWrapper.-iconRight
+h4 Warning
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:40rem")
+      input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
+  :code(lang="html")
+    <input type="text" class="a-input -warning" placeholder="Placeholder" value="Sample Text">
+
+.example.-mb3
+  .-p3
+    .a-inputWrapper.-iconRight(style="max-width:40rem")
       input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
       .a-icon.-warning
         svg
           use(xlink:href="#warning")
-
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
-      <input type="text" class="a-input -warning" placeholder="Placeholder" value="Sample Text">
-      <div class="a-icon -warning">
+      <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
+      <div class="a-icon -success">
         <svg>
-          <use xlink:href="#warning"></use>
+          <use xlink:href="#check"></use>
         </svg>
       </div>
     </div>
 
-.-mb4.-mt2
-  div(style="max-width:30rem")
-    .a-inputWrapper.-iconRight
+h4 Danger
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:40rem")
+      input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
+  :code(lang="html")
+    <input type="text" class="a-input -danger" placeholder="Placeholder" value="Sample Text">
+
+.example.-mb3
+  .-p3
+    .a-inputWrapper.-iconRight(style="max-width:40rem")
       input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
       .a-icon.-danger
         svg
           use(xlink:href="#circle-warning")
-
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <input type="text" class="a-input -danger" placeholder="Placeholder" value="Sample Text">
@@ -168,24 +177,21 @@ p.-text Also we can add icons to emphasize the state.
       </div>
     </div>
 
-h3 Sizes
+h3 Additional Sizes
+p.-text Text inputs offer two size modifiers, <code>-small</code> and <code>-large</code>
 
-p.-text There are two modifiers available for the text input size:
-
-ul.-text
-  li Small: <code>-small</code>
-  li Large: <code>-large</code>
-
-.-mb4.-mt2
-  div(style="max-width:30rem")
-    input(type="text", class="a-input -small", placeholder="Placeholder", value="Sample Text")
-
+h4 Small
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:40rem")
+      input(type="text", class="a-input -small", placeholder="Placeholder", value="Sample Text")
   :code(lang="html")
     <input type="text" class="a-input -small" placeholder="Placeholder" value="Sample Text">
 
-.-mb4.-mt2
-  div(style="max-width:30rem")
-    input(type="text", class="a-input -large", placeholder="Placeholder", value="Sample Text")
-
+h4 Large
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:40rem")
+      input(type="text", class="a-input -large", placeholder="Placeholder", value="Sample Text")
   :code(lang="html")
     <input type="text" class="a-input -large" placeholder="Placeholder" value="Sample Text">
