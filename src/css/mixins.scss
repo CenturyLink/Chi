@@ -1,7 +1,12 @@
 @import 'variables';
 
-@function set-color($scheme, $tone) {
-  @return map-get(map-get($colorscheme, $scheme), $tone);
+@function set-color($scheme, $tone: null) {
+  $resolved-color-scheme: map-get($colorscheme, $scheme);
+  @if type-of($tone) != 'null' {
+    @return map-get($resolved-color-scheme, $tone);
+  } @else {
+    @return $resolved-color-scheme;
+  }
 }
 
 @function capitalize($string) {
