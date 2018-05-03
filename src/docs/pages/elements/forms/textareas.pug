@@ -6,29 +6,46 @@ img(inline src='node_modules/@centurylink/chi/src/css/components/icons/icons/ico
 img(inline src='node_modules/@centurylink/chi/src/css/components/icons/icons/icon-warning.svg')
 img(inline src='node_modules/@centurylink/chi/src/css/components/icons/icons/icon-circle-warning.svg')
 
-p.-text In order to use a textarea just use <code>textarea</code> with the class <code>a-input</code>.
+p.-text Textareas are used to input multi-line text data
 
-.-mb4.-mt2
-  div(style="max-width:60rem")
-    textarea.a-input Sample text
+h3 Examples
+p.-text
+  | To render a textarea, apply the class <code>a-input</code> to a <code>textarea</code>.
 
+h4 Base
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:60rem")
+      textarea.a-input Sample text
   :code(lang="html")
     <textarea class="a-input">
       Sample text
     </textarea>
 
+h4 Disabled
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:60rem")
+      textarea.a-input(disabled) Sample text
+  :code(lang="html")
+    <textarea class="a-input" disabled>
+      Sample text
+    </textarea>
+
+h3 Icons
 p.-text
-  | If we want to add some icon to the textarea we must wrap it inside a <code>div</code> using the class
-  | <code>a-inputWrapper</code>, add the icon as a sibling of the <code>textarea</code> and specify where is going to
-  | be placed the icon.
+  | To add icons to a textarea, wrap the input in a <code>div</code> using the class <code>a-inputWrapper</code>.
+  | Next, add the icon as a sibling of the <code>textarea</code> and use an icon alignment utility class
+  | (e.g. <code>-iconLeft</code>) to specify where it should be placed.
 
-.-mb4
-  .a-inputWrapper.-iconLeft(style="max-width:60rem")
-    textarea.a-input Sample text
-    .a-icon
-      svg
-        use(xlink:href='#edit')
-
+h4 Left Aligned
+.example.-mb3
+  .-p3
+    .a-inputWrapper.-iconLeft(style="max-width:60rem")
+      textarea.a-input Sample text
+      .a-icon
+        svg
+          use(xlink:href='#edit')
   :code(lang="html")
     <div class="a-inputWrapper -iconLeft">
       <textarea class="a-input">
@@ -41,13 +58,14 @@ p.-text
       </div>
     </div>
 
-.-mb4
-  .a-inputWrapper.-iconRight(style="max-width:60rem")
-    textarea.a-input Sample text
-    .a-icon
-      svg
-        use(xlink:href='#edit')
-
+h4 Right Aligned
+.example.-mb3
+  .-p3
+    .a-inputWrapper.-iconRight(style="max-width:60rem")
+      textarea.a-input Sample text
+      .a-icon
+        svg
+          use(xlink:href='#edit')
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <textarea class="a-input">
@@ -60,16 +78,17 @@ p.-text
       </div>
     </div>
 
-.-mb4
-  .a-inputWrapper.-iconLeft.-iconRight(style="max-width:60rem")
-    textarea.a-input Sample text
-    .a-icon
-      svg
-        use(xlink:href='#edit')
-    .a-icon
-      svg
-        use(xlink:href='#check')
-
+h4 Left + Right Aligned
+.example.-mb3
+  .-p3
+    .a-inputWrapper.-iconLeft.-iconRight(style="max-width:60rem")
+      textarea.a-input Sample text
+      .a-icon
+        svg
+          use(xlink:href='#edit')
+      .a-icon
+        svg
+          use(xlink:href='#check')
   :code(lang="html")
     <div class="a-inputWrapper -iconLeft -iconRight">
       <textarea class="a-input">
@@ -89,50 +108,27 @@ p.-text
 
 h3 States
 
-p.-text Textareas has three states vailable:
+p.-text
+  | Textareas offer three validation states: <code>-success</code>,
+  | <code>-warning</code>, and <code>-danger</code>.
 
-ul.-text
-  li success: <code>-success</code>
-  li warning: <code>-warning</code>
-  li danger: <code>-danger</code>
-
-.-mb4.-mt2
-  div(style="max-width:60rem")
-    textarea.a-input.-success Sample text
-
+h4 Success
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:60rem")
+      textarea.a-input.-success Sample text
   :code(lang="html")
     <textarea class="a-input -success">
       Sample text
     </textarea>
 
-.-mb4.-mt2
-  div(style="max-width:60rem")
-    textarea.a-input.-warning Sample text
-
-  :code(lang="html")
-    <textarea class="a-input -warning">
-      Sample text
-    </textarea>
-
-.-mb4.-mt2
-  div(style="max-width:60rem")
-    textarea.a-input.-danger Sample text
-
-  :code(lang="html")
-    <textarea class="a-input -danger">
-      Sample text
-    </textarea>
-
-p.-text Also we can add icons to emphasize the state.
-
-.-mb4.-mt2
-  div(style="max-width:60rem")
-    .a-inputWrapper.-iconRight
+.example.-mb3
+  .-p3
+    .a-inputWrapper.-iconRight(style="max-width:60rem")
       textarea.a-input.-success Sample text
       .a-icon.-success
         svg
           use(xlink:href="#check")
-
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <textarea class="a-input -success">
@@ -145,14 +141,23 @@ p.-text Also we can add icons to emphasize the state.
       </div>
     </div>
 
-.-mb4.-mt2
-  div(style="max-width:60rem")
-    .a-inputWrapper.-iconRight
+h4 Warning
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:60rem")
+      textarea.a-input.-warning Sample text
+  :code(lang="html")
+    <textarea class="a-input -warning">
+      Sample text
+    </textarea>
+
+.example.-mb3
+  .-p3
+    .a-inputWrapper.-iconRight(style="max-width:60rem")
       textarea.a-input.-warning Sample text
       .a-icon.-warning
         svg
           use(xlink:href="#warning")
-
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <textarea class="a-input -warning">
@@ -165,14 +170,23 @@ p.-text Also we can add icons to emphasize the state.
       </div>
     </div>
 
-.-mb4.-mt2
-  div(style="max-width:60rem")
-    .a-inputWrapper.-iconRight
+h4 Danger
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:60rem")
+      textarea.a-input.-danger Sample text
+  :code(lang="html")
+    <textarea class="a-input -danger">
+      Sample text
+    </textarea>
+
+.example.-mb3
+  .-p3
+    .a-inputWrapper.-iconRight(style="max-width:60rem")
       textarea.a-input.-danger Sample text
       .a-icon.-danger
         svg
           use(xlink:href="#circle-warning")
-
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <textarea class="a-input -danger">
@@ -185,27 +199,25 @@ p.-text Also we can add icons to emphasize the state.
       </div>
     </div>
 
-h3 Sizes
+h3 Additional Sizes
 
-p.-text There are two modifiers available for the textarea size:
+p.-text Textareas offer two size modifiers: <code>-small</code> and <code>-large</code>.
 
-ul.-text
-  li Small: <code>-small</code>
-  li Large: <code>-large</code>
-
-.-mb4.-mt2
-  div(style="max-width:60rem")
-    textarea.a-input.-small Sample text
-
+h4 Small
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:60rem")
+      textarea.a-input.-small Sample text
   :code(lang="html")
     <textarea class="a-input -small">
       Sample text
     </textarea>
 
-.-mb4.-mt2
-  div(style="max-width:60rem")
-    textarea.a-input.-large Sample text
-
+h4 Large
+.example.-mb3
+  .-p3
+    .m-formGroup(style="max-width:60rem")
+      textarea.a-input.-large Sample text
   :code(lang="html")
     <textarea class="a-input -large">
       Sample text
