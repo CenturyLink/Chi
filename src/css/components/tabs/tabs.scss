@@ -11,11 +11,11 @@
       display: inline-block;
 
       &.-active > a {
-        color: set-color(green, 500);
+        color: set-color(green, 50);
       }
 
       & > a {
-        color: set-color(carbon, 500);
+        color: set-color(grey, 90);
         cursor: pointer;
         display: block;
         font-size: 1.625rem;
@@ -37,7 +37,7 @@
       height: 7rem;
 
       &.-border {
-        border-bottom: 0.125rem solid set-color(grey, 600);
+        border-bottom: 0.125rem solid set-color(grey, 30);
       }
 
       & > li {
@@ -46,7 +46,7 @@
         }
 
         &.-active > a {
-          border-bottom: 0.5rem solid set-color(green, 500);
+          border-bottom: 0.5rem solid set-color(green, 50);
           padding-bottom: 2rem;
         }
 
@@ -106,7 +106,7 @@
           }
 
           & > a {
-            color: set-color(carbon, 500);
+            color: set-color(grey, 90);
             cursor: pointer;
             display: block;
             font-size: 1.625rem;
@@ -125,7 +125,7 @@
             position: relative;
 
             & > .a-icon {
-              color: set-color(carbon, 100);
+              color: set-color(grey, 50);
               left: 3rem;
               position: absolute;
             }
@@ -149,12 +149,12 @@
             position: relative;
 
             & > .a-icon {
-              color: set-color(green, 500);
+              color: set-color(green, 50);
               left: 3rem;
             }
 
             &::before {
-              background-color: set-color(green, 500);
+              background-color: set-color(green, 50);
               content: '';
               height: 4rem;
               left: 0;
@@ -167,11 +167,11 @@
 
         &.-activeAlt {
           & > a {
-            background-color: set-color(grey, 400);
-            color: set-color(carbon, 500);
+            background-color: set-color(grey, 20);
+            color: set-color(grey, 90);
 
             & > .a-icon {
-              color: set-color(carbon, 500);
+              color: set-color(grey, 90);
             }
           }
         }
@@ -237,7 +237,7 @@
 
       &.-border {
         & > li {
-          border-bottom: 0.125rem solid set-color(grey, 600);
+          border-bottom: 0.125rem solid set-color(grey, 30);
 
           &.-active {
             & > a {
@@ -253,7 +253,7 @@
           }
 
           &:first-child {
-            border-top: 0.125rem solid set-color(grey, 600);
+            border-top: 0.125rem solid set-color(grey, 30);
 
             & > a {
               padding-bottom: 0.875rem;

@@ -2,8 +2,8 @@
 @import 'mixins';
 
 @mixin thumb-style {
-  background-color: set-color(grey, 100);
-  border: 2px solid set-color(green, 500);
+  background-color: set-color(white);
+  border: 2px solid set-color(green, 50);
   border-radius: 12px;
   box-sizing: border-box;
   cursor: pointer;
@@ -14,15 +14,15 @@
 }
 
 @mixin green-thumb-shadow {
-  box-shadow: 0 0 1px 4px rgba(set-color(green, 500), 0.3);
+  box-shadow: 0 0 1px 4px rgba(set-color(green, 50), 0.3);
 }
 
 @mixin grey-thumb-shadow {
-  box-shadow: 0 0 1px 4px rgba(set-color(carbon, 100), 0.3);
+  box-shadow: 0 0 1px 4px rgba(set-color(grey, 50), 0.3);
 }
 
 @mixin track-style {
-  background-color: set-color(grey, 600);
+  background-color: set-color(grey, 30);
   border-radius: 10px;
   box-sizing: border-box;
   height: 8px;
@@ -72,26 +72,26 @@
 
           // Safari, Chrome and Opera
           &::-webkit-slider-thumb {
-            background-color: set-color(carbon, 100);
-            border-color: set-color(carbon, 100);
+            background-color: set-color(grey, 50);
+            border-color: set-color(grey, 50);
           }
 
           // Firefox
           &::-moz-range-thumb {
-            border-color: set-color(carbon, 100);
+            border-color: set-color(grey, 50);
           }
 
           &::-moz-range-progress {
-            background-color: set-color(grey, 600);
+            background-color: set-color(grey, 30);
           }
 
           // Internet Explorer
           &::-ms-thumb {
-            border-color: set-color(carbon, 100);
+            border-color: set-color(grey, 50);
           }
 
           &::-ms-fill-lower {
-            background-color: set-color(grey, 600);
+            background-color: set-color(grey, 30);
           }
         }
 
@@ -119,7 +119,7 @@
         &::-webkit-slider-thumb {
           @include thumb-style;
           -webkit-appearance: none;
-          background-color: set-color(green, 500);
+          background-color: set-color(green, 50);
           margin-top: -6px;
         }
 
@@ -140,7 +140,7 @@
 
         &::-moz-range-progress {
           @include track-style;
-          background-color: set-color(green, 500);
+          background-color: set-color(green, 50);
         }
 
         // Internet Explorer
@@ -160,7 +160,7 @@
 
         &::-ms-fill-lower {
           @include track-style;
-          background-color: set-color(green, 500);
+          background-color: set-color(green, 50);
         }
 
         &::-ms-fill-upper {

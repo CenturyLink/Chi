@@ -10,7 +10,7 @@
           position: absolute;
 
           & + label {
-            background-color: set-color(carbon, 100);
+            background-color: set-color(grey, 50);
             border: 0;
             border-radius: 12px;
             cursor: pointer;
@@ -22,7 +22,7 @@
             width: 7rem;
 
             &::before {
-              background-color: set-color(grey, 100);
+              background-color: set-color(white);
               background-image: none;
               border: 0;
               border-radius: 12px;
@@ -40,7 +40,7 @@
 
             &::after {
               background-image: none;
-              color: set-color(grey, 100);
+              color: set-color(white);
               content: 'OFF';
               display: block;
               font-size: 1.375rem;
@@ -56,7 +56,7 @@
 
           &:checked {
             & + label {
-              background-color: set-color(green, 500);
+              background-color: set-color(green, 50);
 
               &::before {
                 left: 4.25rem;
@@ -71,7 +71,7 @@
             &:focus,
             &.-focus {
               & + label {
-                box-shadow: 0 0 1px 4px rgba(set-color(green, 500), 0.3);
+                box-shadow: 0 0 1px 4px rgba(set-color(green, 50), 0.3);
               }
             }
           }
@@ -84,7 +84,7 @@
           &:focus,
           &.-focus {
             & + label {
-              box-shadow: 0 0 1px 4px rgba(set-color(carbon, 100), 0.3);
+              box-shadow: 0 0 1px 4px rgba(set-color(grey, 50), 0.3);
 
               &::before {
                 box-shadow: none;
