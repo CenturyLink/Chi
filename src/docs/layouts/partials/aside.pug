@@ -12,10 +12,11 @@ aside.docs-body__aside
               if utils.hasSections(collection)
                 ul.a-tabs__subtabs
                   each section in collection
-                    li(class=section.path === path ? "-active" : "")
-                      if section.disabled
-                        a(href=`${rootPath}${section.path}/index.html`, disabled="disabled") #{section.title}
-                      else
+                    if section.disabled
+                      //- li
+                      //-   a(href=`${rootPath}${section.path}/index.html`, disabled="disabled") #{section.title}
+                    else
+                      li(class=section.path === path ? "-active" : "")
                         a(href=`${rootPath}${section.path}/index.html`) #{section.title} #{section.disabled}
           else
             li
