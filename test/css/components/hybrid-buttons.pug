@@ -27,17 +27,17 @@ each size in ['default', 'small', 'large']
               use(xlink:href='#workspace')
 
   div(class={
-    'test-expanded': size == 'default',
-    [`test-${size}-expanded`]: size != 'default'
+    'test-fluid': size == 'default',
+    [`test-${size}-fluid`]: size != 'default'
   })
-    span.a-h2= `Hybrid buttons / ${size} / expanded`
+    span.a-h2= `Hybrid buttons / ${size} / fluid`
     each modifier in ['alignLeft', '', 'alignRight']
-      .m-btnGroup.-expanded.-m1(style="width:200px")
+      .m-btnGroup.-fluid.-m1(style="width:200px")
         button.a-btn(class={
           [`-${size}`]: size != 'default',
           [`-${modifier}`]: modifier != ''
         }) Button
-        button.a-btn.-icon.-notExpand(class={
+        button.a-btn.-icon.-notFluid(class={
           [`-${size}`]: size != 'default'
         })
           .a-btn__content
