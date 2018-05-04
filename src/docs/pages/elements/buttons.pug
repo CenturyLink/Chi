@@ -2,34 +2,101 @@
 title: Buttons
 ---
 img(inline src='src/assets/images/icon-workspace.svg')
-
-h3 Description
+img(inline src='src/assets/images/icon-workspace.svg')
 
 p.-text
-  | Use buttons as triggers for actions. Try to avoid the usage of buttons for navigation and use links for that purpose
-  | instead.
+  | Buttons are used to trigger actions in forms, modals, and more.
 
-h3 Button styles
+h3 Button tags
+p.-text
+  | To render a button, apply the class <code>a-btn</code> to a <code>&lt;button&gt;</code> element.
+  | Although buttons were designed for the <code>&lt;button&gt;</code> element, Chi
+  | also supports button classes on <code>&lt;a&gt;</code> and <code>&lt;input&gt;</code> elements.
+.example.-mb3
+  .-p3
+    button.a-btn.-mr2 Button
+    a.a-btn.-mr2 Link
+    input(class='a-btn -mr2', type='button', value='Input')
+    input(class='a-btn -mr2', type='submit', value='Submit')
+    input(class='a-btn -mr2', type='reset', value='Reset')
+  :code(lang='html')
+    <!-- default -->
+    <button class="a-btn">Button</button>
+    <!-- also supported -->
+    <a class="a-btn" role="button">Link</a>
+    <input class="a-btn" type="button" value="Input">
+    <input class="a-btn" type="submit" value="Submit">
+    <input class="a-btn" type="reset" value="Reset">
 
-h4 Default buttons
-.-mb4
-  each type in ['solid', 'outline', 'flat']
-    button(class=`a-btn -${type} -mr1`)= type
-    button(class=`a-btn -${type} -icon -mr1`)
+h3 Examples
+
+h4 Base
+p.-text
+  | Chi includes a wide variety of predefined button styles. For most cases,
+  | the base primary and secondary button will be sufficient. For special cases,
+  | such as styling a destructive action button, a <code>-danger</code> button may be used.
+.example.-mb3
+  .-p3
+    each type, val in {Primary:'primary', Secondary:'secondary', Danger:'danger', Info:'info', Dark:'dark'}
+      button(class=`a-btn -${type} -mr2`)= val
+  :code(lang='html')
+    <!-- default buttons -->
+    <button class="a-btn -primary">Primary</button>
+    <button class="a-btn">Secondary</button>
+    <!-- special case buttons -->
+    <button class="a-btn -danger">Danger</button>
+    <button class="a-btn -info">Info</button>
+    <button class="a-btn -dark">Dark</button>
+
+h4 Outline
+p.-text
+  | To remove a buttons solid background and keep its colored border, apply the class
+  | <code>-outline</code>.
+.example.-mb3
+  .-p3
+    each type, val in {Primary:'primary', Secondary:'secondary', Danger:'danger', Info:'info', Dark:'dark'}
+      button(class=`a-btn -${type} -outline -mr2`)= val
+  :code(lang='html')
+    <button class="a-btn -primary -outline">Primary</button>
+    <button class="a-btn -outline">Secondary</button>
+    <button class="a-btn -danger -outline">Danger</button>
+    <button class="a-btn -info -outline">Info</button>
+    <button class="a-btn -dark -outline">Dark</button>
+
+h4 Flat
+p.-text
+  | To render a button with a transparent background and border, apply the class
+  | <code>-flat</code>.
+.example.-mb3
+  .-p3
+    each type, val in {Primary:'primary', Secondary:'secondary', Danger:'danger', Info:'info', Dark:'dark'}
+      button(class=`a-btn -${type} -flat -mr2`)= val
+  :code(lang='html')
+    <button class="a-btn -primary -flat">Primary</button>
+    <button class="a-btn -flat">Secondary</button>
+    <button class="a-btn -danger -flat">Danger</button>
+    <button class="a-btn -info -flat">Info</button>
+    <button class="a-btn -dark -flat">Dark</button>
+
+h3 Icon buttons
+p.-text
+  | For interfaces with limited space, an <code>-icon</code> button can
+  | be used for common actions such as editing, deleting, closing, etc.
+.example.-mb3
+  .-p3
+    button(class=`a-btn -icon -mr2`)
       .a-btn__content
         .a-icon
           svg
             use(xlink:href='#workspace')
-  button(class=`a-btn -float`)
-    .a-btn__content
-      .a-icon
-        svg
-          use(xlink:href='#workspace')
-
+    button(class=`a-btn -icon -flat -mr2`)
+      .a-btn__content
+        .a-icon
+          svg
+            use(xlink:href='#workspace')
   :code(lang='html')
-    <button class="a-btn -solid">solid</button>
-
-    <button class="a-btn -icon -solid">
+    <!-- base -->
+    <button class="a-btn -icon">
       <div class="a-btn__content">
         <div class="a-icon">
           <svg>
@@ -38,21 +105,7 @@ h4 Default buttons
         </div>
       </div>
     </button>
-
-    <button class="a-btn -outline">outline</button>
-
-    <button class="a-btn -icon -outline">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
-    <button class="a-btn -flat">flat</button>
-
+    <!-- flat -->
     <button class="a-btn -icon -flat">
       <div class="a-btn__content">
         <div class="a-icon">
@@ -63,36 +116,62 @@ h4 Default buttons
       </div>
     </button>
 
-    <button class="a-btn -float">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
-h4 Primary buttons
-.-mb4
-  each type in ['solid', 'outline', 'flat']
-    button(class=`a-btn -primary -${type} -mr1`)= type
-    button(class=`a-btn -primary -${style} -${type} -icon -mr1`)
+h4 Labeled icon buttons
+.example.-mb3
+  .-p3
+    button(class=`a-btn -mr2`)
       .a-btn__content
         .a-icon
           svg
             use(xlink:href='#workspace')
-  button(class=`a-btn -primary -float`)
-    .a-btn__content
-      .a-icon
-        svg
-          use(xlink:href='#workspace')
-
+        span Button
+    button(class=`a-btn -mr2`)
+      .a-btn__content
+        span Button
+        .a-icon
+          svg
+            use(xlink:href='#workspace')
+    button(class=`a-btn -mr2`)
+      .a-btn__content
+        .a-icon
+          svg
+            use(xlink:href='#workspace')
+        span Button
+        .a-icon
+          svg
+            use(xlink:href='#workspace')
   :code(lang='html')
-    <button class="a-btn -primary -solid">solid</button>
-
-    <button class="a-btn -primary -icon -solid">
+    <!-- left aligned -->
+    <button class="a-btn">
       <div class="a-btn__content">
+        <div class="a-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+        <span>Button</span>
+      </div>
+    </button>
+    <!-- right aligned -->
+    <button class="a-btn">
+      <div class="a-btn__content">
+        <span>Button</span>
+        <div class="a-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+      </div>
+    </button>
+    <!-- both sides -->
+    <button class="a-btn">
+      <div class="a-btn__content">
+        <div class="a-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+        <span>Button</span>
         <div class="a-icon">
           <svg>
             <use xlink:href="#workspace"></use>
@@ -101,30 +180,16 @@ h4 Primary buttons
       </div>
     </button>
 
-    <button class="a-btn -primary -outline">outline</button>
-
-    <button class="a-btn -primary -icon -outline">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
-    <button class="a-btn -primary -flat">flat</button>
-
-    <button class="a-btn -primary -icon -flat">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
+h4 Floating icon buttons
+.example.-mb3
+  .-p3
+    each type in ['primary', 'secondary', 'danger', 'info', 'dark']
+      button(class=`a-btn -${type} -float -mr2`)
+        .a-btn__content
+          .a-icon
+            svg
+              use(xlink:href='#workspace')
+  :code(lang='html')
     <button class="a-btn -primary -float">
       <div class="a-btn__content">
         <div class="a-icon">
@@ -134,26 +199,34 @@ h4 Primary buttons
         </div>
       </div>
     </button>
-
-h4 Danger buttons
-.-mb4
-  each type in ['solid', 'outline', 'flat']
-    button(class=`a-btn -danger -${type} -mr1`)= type
-    button(class=`a-btn -danger -${type} -icon -mr1`)
-      .a-btn__content
-        .a-icon
-          svg
-            use(xlink:href='#workspace')
-  button(class=`a-btn -danger -primary -float`)
-    .a-btn__content
-      .a-icon
-        svg
-          use(xlink:href='#workspace')
-
-  :code(lang='html')
-    <button class="a-btn -danger -solid">solid</button>
-
-    <button class="a-btn -danger -icon -solid">
+    <button class="a-btn -float">
+      <div class="a-btn__content">
+        <div class="a-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+      </div>
+    </button>
+    <button class="a-btn -float -danger">
+      <div class="a-btn__content">
+        <div class="a-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+      </div>
+    </button>
+    <button class="a-btn -float -info">
+      <div class="a-btn__content">
+        <div class="a-icon">
+          <svg>
+            <use xlink:href="#workspace"></use>
+          </svg>
+        </div>
+      </div>
+    </button>
+    <button class="a-btn -float -dark">
       <div class="a-btn__content">
         <div class="a-icon">
           <svg>
@@ -163,174 +236,16 @@ h4 Danger buttons
       </div>
     </button>
 
-    <button class="a-btn -danger -outline">outline</button>
-
-    <button class="a-btn -danger -icon -outline">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
-    <button class="a-btn -danger -flat">flat</button>
-
-    <button class="a-btn -danger -icon -flat">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
-    <button class="a-btn -danger -float">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
-h4 Info buttons
-.-mb4
-  each type in ['solid', 'outline', 'flat']
-    button(class=`a-btn -info -${type} -mr1`)= type
-    button(class=`a-btn -info -${type} -icon -mr1`)
-      .a-btn__content
-        .a-icon
-          svg
-            use(xlink:href='#workspace')
-  button(class=`a-btn -info -primary -float`)
-    .a-btn__content
-      .a-icon
-        svg
-          use(xlink:href='#workspace')
-
-  :code(lang='html')
-    <button class="a-btn -info -solid">solid</button>
-
-    <button class="a-btn -info -icon -solid">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
-    <button class="a-btn -info -outline">outline</button>
-
-    <button class="a-btn -info -icon -outline">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
-    <button class="a-btn -info -flat">flat</button>
-
-    <button class="a-btn -info -icon -flat">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
-    <button class="a-btn -info -float">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
-h4 Dark buttons
-.-mb4
-  each type in ['solid', 'outline', 'flat']
-    button(class=`a-btn -dark -${type} -mr1`)= type
-    button(class=`a-btn -dark -${type} -icon -mr1`)
-      .a-btn__content
-        .a-icon
-          svg
-            use(xlink:href='#workspace')
-  button(class=`a-btn -dark -primary -float`)
-    .a-btn__content
-      .a-icon
-        svg
-          use(xlink:href='#workspace')
-
-:code(lang='html')
-  <button class="a-btn -dark -solid">solid</button>
-
-  <button class="a-btn -dark -icon -solid">
-    <div class="a-btn__content">
-      <div class="a-icon">
-        <svg>
-          <use xlink:href="#workspace"></use>
-        </svg>
-      </div>
-    </div>
-  </button>
-
-  <button class="a-btn -dark -outline">outline</button>
-
-  <button class="a-btn -dark -icon -outline">
-    <div class="a-btn__content">
-      <div class="a-icon">
-        <svg>
-          <use xlink:href="#workspace"></use>
-        </svg>
-      </div>
-    </div>
-  </button>
-
-  <button class="a-btn -dark -flat">flat</button>
-
-  <button class="a-btn -dark -icon -flat">
-    <div class="a-btn__content">
-      <div class="a-icon">
-        <svg>
-          <use xlink:href="#workspace"></use>
-        </svg>
-      </div>
-    </div>
-  </button>
-
-  <button class="a-btn -dark -float">
-    <div class="a-btn__content">
-      <div class="a-icon">
-        <svg>
-          <use xlink:href="#workspace"></use>
-        </svg>
-      </div>
-    </div>
-  </button>
-
-h3 Button sizes
-.-mb4
-  each size in ['small', 'medium', 'large']
-    button(class=`a-btn -${size} -mr1`)= size
-    button(class=`a-btn -${size} -icon -mr1`)
-      .a-btn__content
-        .a-icon
-          svg
-            use(xlink:href='#workspace')
-
+h3 Additional sizes
+h4 Small
+.example.-mb3
+  .-p3
+      button(class='a-btn -small -mr1') Small
+      button(class='a-btn -small -icon -mr1')
+        .a-btn__content
+          .a-icon
+            svg
+              use(xlink:href='#workspace')
   :code(lang='html')
     <button class="a-btn -small">small</button>
     <button class="a-btn -small -icon">
@@ -343,96 +258,19 @@ h3 Button sizes
       </div>
     </button>
 
-    <button class="a-btn -medium">medium</button>
-    <button class="a-btn -medium -icon">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
+h4 Large
+.example.-mb3
+  .-p3
+      button(class='a-btn -large -mr1') Large
+      button(class='a-btn -large -icon -mr1')
+        .a-btn__content
+          .a-icon
+            svg
+              use(xlink:href='#workspace')
+  :code(lang='html')
     <button class="a-btn -large">large</button>
     <button class="a-btn -large -icon">
       <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
-H3 Buttons containing icons
-
-h4 Left aligned
-
-.-mb4
-  button(class=`a-btn`)
-    .a-btn__content
-      .a-icon
-        svg
-            use(xlink:href='#workspace')
-      span Button
-
-  :code(lang='html')
-    <button class="a-btn">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-        <span>Button</span>
-      </div>
-    </button>
-
-h4 Right aligned
-
-.-mb4
-  button(class=`a-btn`)
-    .a-btn__content
-      span Button
-      .a-icon
-        svg
-            use(xlink:href='#workspace')
-
-  :code(lang='html')
-    <button class="a-btn">
-      <div class="a-btn__content">
-        <span>Button</span>
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-
-h4 Both sides
-
-.-mb4
-  button(class=`a-btn`)
-    .a-btn__content
-      .a-icon
-        svg
-            use(xlink:href='#workspace')
-      span Button
-      .a-icon
-        svg
-            use(xlink:href='#workspace')
-
-  :code(lang='html')
-    <button class="a-btn">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#workspace"></use>
-          </svg>
-        </div>
-        <span>Button</span>
         <div class="a-icon">
           <svg>
             <use xlink:href="#workspace"></use>
