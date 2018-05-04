@@ -151,10 +151,17 @@
       "selectors": [
         ".test-flex-cells",
         ".test-no-gutter",
-        ".test-column-sizes",
-        ".test-column-sizes-specific-screens",
+        ".test-automatic-column-sizing",
+        ".test-mixed-column-sizing",
+        ".test-specific-column-sizing",
+        ".test-wrapping",
         ".test-offsets",
-        ".test-aligns"
+        ".test-reordering",
+        ".test-responsive-column-stacking",
+        ".test-mixed-responsive-column-sizing",
+        ".test-responsive-offsets",
+        ".test-vertical-alignment-on-container",
+        ".test-vertical-alignment-on-column"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
