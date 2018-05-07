@@ -62,15 +62,15 @@ each size in ['default', 'small', 'large']
                           span Button
 
     div(class={
-        [`test-${type}-expanded`]: size == 'default',
-        [`test-${type}-${size}-expanded`]: size != 'default'
+        [`test-${type}-fluid`]: size == 'default',
+        [`test-${type}-${size}-fluid`]: size != 'default'
       })
-        span.a-h2= `Vertical button groups / ${type} / ${size} / expanded`
+        span.a-h2= `Vertical button groups / ${type} / ${size} / fluid`
         table(cellpadding="0", cellspacing="0")
           tr
             each style in ['default', 'primary', 'danger', 'info', 'dark']
               td(style="width:120px")
-                .m-btnGroup.-vertical.-expanded.-m1
+                .m-btnGroup.-vertical.-fluid.-m1
                   each modifier in ['alignLeft', '', 'alignRight']
                     button.a-btn(class={
                       [`-${type}`]: type != 'solid',
@@ -83,7 +83,7 @@ each size in ['default', 'small', 'large']
           tr
             each style in ['default', 'primary', 'danger', 'info', 'dark']
               td(style="width:70px")
-                .m-btnGroup.-vertical.-expanded.-m1
+                .m-btnGroup.-vertical.-fluid.-m1
                   each modifier in ['alignLeft', '', 'alignRight']
                     button.a-btn.-icon(class={
                       [`-${type}`]: type != 'solid',
@@ -100,7 +100,7 @@ each size in ['default', 'small', 'large']
           tr
             each style in ['default', 'primary', 'danger', 'info', 'dark']
               td(style="width:140px")
-                .m-btnGroup.-vertical.-expanded.-m1
+                .m-btnGroup.-vertical.-fluid.-m1
                   each modifier in ['alignLeft', '', 'alignRight']
                     button.a-btn(class={
                       [`-${type}`]: type != 'solid',

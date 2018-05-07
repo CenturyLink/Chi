@@ -3,7 +3,7 @@
 
 .chi {
   .m-btnGroup {
-    &.-expanded {
+    &.-fluid {
       display: flex;
 
       .a-btn {
@@ -11,7 +11,7 @@
         flex: 1 0 auto;
         justify-content: center;
 
-        &.-notExpand {
+        &.-notFluid {
           flex: 0 0 auto;
         }
 
