@@ -28,8 +28,8 @@
 
       &:focus,
       &.-focus {
-        border-color: set-color(blue, 60);
-        box-shadow: 0 0 0 3px rgba(set-color(blue, 60), 0.3);
+        border-color: $focus-color;
+        box-shadow: 0 0 0 3px rgba($focus-color, 0.3);
       }
 
       &[disabled],

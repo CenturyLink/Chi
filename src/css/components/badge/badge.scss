@@ -44,77 +44,76 @@ $badge: c-badge;
     }
 
     &.-success {
-      background-color: set-color(green, 500);
-      border: 0.125rem solid set-color(green, 500);
-      color: set-color(grey, 100);
+      background-color: $success-color;
+      border: 0.125rem solid $success-color;
+      color: set-color(white);
 
       &.-outline {
         background-color: set-color(white);
-        color: set-color(green, 60);
+        color: $success-color;
       }
 
       &.-flat {
         background-color: transparent;
         border-color: transparent;
-        color: set-color(green, 60);
+        color: $success-color;
       }
     }
 
     &.-danger {
-      background-color: set-color(red, 60);
-      border: 0.125rem solid set-color(red, 60);
+      background-color: $danger-color;
+      border: 0.125rem solid $danger-color;
       color: set-color(white);
 
       &.-outline {
         background-color: set-color(white);
-        color: set-color(red, 60);
+        color: $danger-color;
       }
 
       &.-flat {
         background-color: transparent;
         border-color: transparent;
-        color: set-color(red, 60);
+        color: $danger-color;
       }
     }
 
     &.-info {
-      background-color: set-color(navy, 60);
-      border: 0.125rem solid set-color(navy, 60);
+      background-color: $info-color;
+      border: 0.125rem solid $info-color;
       color: set-color(white);
 
       &.-outline {
         background-color: set-color(white);
-        color: set-color(navy, 60);
+        color: $info-color;
       }
 
       &.-flat {
         background-color: transparent;
         border-color: transparent;
-        color: set-color(navy, 60);
+        color: $info-color;
       }
     }
 
     &.-dark {
-      background-color: set-color(grey, 90);
-      border: 0.125rem solid set-color(grey, 90);
+      background-color: $dark-color;
+      border: 0.125rem solid $dark-color;
       color: set-color(white);
 
       &.-outline {
         background-color: set-color(white);
-        color: set-color(grey, 90);
+        color: $dark-color;
       }
 
       &.-flat {
         background-color: transparent;
         border-color: transparent;
-        color: set-color(grey, 90);
+        color: $dark-color;
       }
     }
 
     &.-light {
-      background-color: set-color(grey, 30);
-      border: 0.125rem solid set-color(grey, 30);
-      color: set-color(grey, 90);
+      background-color: $light-color;
+      border: 0.125rem solid $light-color;
 
       &.-outline {
         background-color: set-color(white);
