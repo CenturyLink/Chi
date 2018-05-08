@@ -3,7 +3,7 @@
 
 @mixin thumb-style {
   background-color: set-color(white);
-  border: 2px solid set-color(green, 50);
+  border: 2px solid set-color(emerald, 60);
   border-radius: 12px;
   box-sizing: border-box;
   cursor: pointer;
@@ -14,7 +14,7 @@
 }
 
 @mixin green-thumb-shadow {
-  box-shadow: 0 0 1px 4px rgba(set-color(green, 50), 0.3);
+  box-shadow: 0 0 1px 4px rgba(set-color(emerald, 60), 0.3);
 }
 
 @mixin grey-thumb-shadow {
@@ -119,7 +119,7 @@
         &::-webkit-slider-thumb {
           @include thumb-style;
           -webkit-appearance: none;
-          background-color: set-color(green, 50);
+          background-color: set-color(emerald, 60);
           margin-top: -6px;
         }
 
@@ -140,7 +140,7 @@
 
         &::-moz-range-progress {
           @include track-style;
-          background-color: set-color(green, 50);
+          background-color: set-color(emerald, 60);
         }
 
         // Internet Explorer
@@ -160,7 +160,7 @@
 
         &::-ms-fill-lower {
           @include track-style;
-          background-color: set-color(green, 50);
+          background-color: set-color(emerald, 60);
         }
 
         &::-ms-fill-upper {

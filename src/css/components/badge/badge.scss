@@ -50,13 +50,13 @@ $badge: c-badge;
 
       &.-outline {
         background-color: set-color(white);
-        color: set-color(green, 50);
+        color: set-color(green, 60);
       }
 
       &.-flat {
         background-color: transparent;
         border-color: transparent;
-        color: set-color(green, 50);
+        color: set-color(green, 60);
       }
     }
 
@@ -78,19 +78,19 @@ $badge: c-badge;
     }
 
     &.-info {
-      background-color: set-color(blue, 60);
-      border: 0.125rem solid set-color(blue, 60);
+      background-color: set-color(navy, 60);
+      border: 0.125rem solid set-color(navy, 60);
       color: set-color(white);
 
       &.-outline {
         background-color: set-color(white);
-        color: set-color(blue, 60);
+        color: set-color(navy, 60);
       }
 
       &.-flat {
         background-color: transparent;
         border-color: transparent;
-        color: set-color(blue, 60);
+        color: set-color(navy, 60);
       }
     }
 

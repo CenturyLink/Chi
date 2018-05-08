@@ -56,7 +56,7 @@
 
           &:checked {
             & + label {
-              background-color: set-color(green, 50);
+              background-color: set-color(emerald, 60);
 
               &::before {
                 left: 4.25rem;
@@ -71,7 +71,7 @@
             &:focus,
             &.-focus {
               & + label {
-                box-shadow: 0 0 1px 4px rgba(set-color(green, 50), 0.3);
+                box-shadow: 0 0 1px 4px rgba(set-color(emerald, 60), 0.3);
               }
             }
           }

@@ -55,11 +55,11 @@
         &:checked {
           & + label {
             &::before {
-              border-color: set-color(green, 50);
+              border-color: set-color(emerald, 60);
             }
 
             &::after {
-              background-color: set-color(green, 50);
+              background-color: set-color(emerald, 60);
               opacity: 1;
             }
           }
@@ -67,7 +67,7 @@
           &:focus,
           &.-focus {
             & + label::before {
-              box-shadow: 0 0 1px 4px rgba(set-color(green, 50), 0.3);
+              box-shadow: 0 0 1px 4px rgba(set-color(emerald, 60), 0.3);
             }
           }
         }

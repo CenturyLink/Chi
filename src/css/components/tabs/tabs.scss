@@ -11,7 +11,7 @@
       display: inline-block;
 
       &.-active > a {
-        color: set-color(green, 50);
+        color: set-color(emerald, 60);
       }
 
       & > a {
@@ -46,7 +46,7 @@
         }
 
         &.-active > a {
-          border-bottom: 0.5rem solid set-color(green, 50);
+          border-bottom: 0.5rem solid set-color(emerald, 60);
           padding-bottom: 2rem;
         }
 
@@ -149,12 +149,12 @@
             position: relative;
 
             & > .a-icon {
-              color: set-color(green, 50);
+              color: set-color(emerald, 60);
               left: 3rem;
             }
 
             &::before {
-              background-color: set-color(green, 50);
+              background-color: set-color(emerald, 60);
               content: '';
               height: 4rem;
               left: 0;

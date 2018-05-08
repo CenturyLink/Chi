@@ -163,12 +163,13 @@ $bg-inverse: map-get(map-get($colorscheme, grey), 90);
 $text-color: map-get(map-get($colorscheme, grey), 100);
 $text-inverse: map-get(map-get($colorscheme, grey), 10);
 
-$link-color: map-get(map-get($colorscheme, blue), 60);
+$link-color: map-get(map-get($colorscheme, navy), 60);
 
 $accent-color: map-get(map-get($colorscheme, emerald), 60);
+$success-color: map-get(map-get($colorscheme, green), 50);
 $danger-color: map-get(map-get($colorscheme, red), 60);
-$info-color: map-get(map-get($colorscheme, blue), 60);
-$warning-color: map-get(map-get($colorscheme, yellow), 60);
+$info-color: map-get(map-get($colorscheme, navy), 60);
+$warning-color: map-get(map-get($colorscheme, yellow), 50);
 
 // screen breakpoints
 $sm-breakpoint: 600px;
