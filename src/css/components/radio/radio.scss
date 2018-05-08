@@ -74,9 +74,9 @@
 
         &[disabled] {
           & ~ label {
-            color: set-color(carbon, 100);
+            color: set-color(grey, 50);
           }
-          
+
           & + label {
             opacity: 0.65;
             pointer-events: none;

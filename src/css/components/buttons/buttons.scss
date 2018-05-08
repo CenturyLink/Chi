@@ -1,7 +1,7 @@
 @import 'mixins';
 @import 'variables';
 
-$state-colors: (primary: emerald, danger: red, info: navy, dark: grey);
+$state-colors: (primary: emerald, danger: red, info: navy/*, dark: grey */);
 
 .chi {
   .a-btn {
