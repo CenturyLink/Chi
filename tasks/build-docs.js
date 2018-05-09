@@ -48,8 +48,8 @@ gulp.task('build-docs', () => {
           pattern: 'foundations/**/*.{md,pug}',
           sortBy: collectionSorter(['Overview'])
         },
-        Elements: {
-          pattern: 'elements/**/*.{md,pug}',
+        Components: {
+          pattern: 'components/**/*.{md,pug}',
           sortBy: collectionSorter(['Overview'])
         }
       }))
