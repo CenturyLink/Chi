@@ -2,7 +2,7 @@ aside.docs-body__aside
   nav
     ul.a-tabs.-vertical.-large
       li(class=path === '' ? '-active' : '')
-        a(href=`${rootPath}index.html`) Getting started
+        a(href=`${rootPath}index.html`) Getting Started
 
       each collection, key in collections
         if utils.hasActiveSections(collection)
@@ -23,4 +23,4 @@ aside.docs-body__aside
               a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}/index.html`) #{key}
         else
           li
-              a(href=`#`, disabled="disabled") #{key}
+            a(href=`#`, disabled="disabled") #{key}
