@@ -15,11 +15,11 @@
             border-radius: 12px;
             cursor: pointer;
             display: inline-block;
-            height: 3rem;
-            line-height: 3rem;
+            height: 1.5rem;
+            line-height: 1.5rem;
             position: relative;
             transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            width: 7rem;
+            width: 3.5rem;
 
             &::before {
               background-color: set-color(white);
@@ -28,14 +28,14 @@
               border-radius: 12px;
               content: '';
               display: block;
-              height: 2.5rem;
-              left: 0.25rem;
+              height: 1.25rem;
+              left: 0.125rem;
               margin: 0;
               opacity: 1;
               position: absolute;
-              top: 0.25rem;
+              top: 0.125rem;
               transition: left 0.2s cubic-bezier(1, 0.38, 0, 1.19) 0.1s;
-              width: 2.5rem;
+              width: 1.25rem;
             }
 
             &::after {
@@ -43,10 +43,10 @@
               color: set-color(white);
               content: 'OFF';
               display: block;
-              font-size: 1.375rem;
+              font-size: 0.6875rem;
               font-weight: bold;
-              height: 3rem;
-              left: 3.125rem;
+              height: 1.5rem;
+              left: 1.5625rem;
               opacity: 1;
               position: absolute;
               top: 0;
@@ -59,12 +59,12 @@
               background-color: $brand-color;
 
               &::before {
-                left: 4.25rem;
+                left: 2.125rem;
               }
 
               &::after {
                 content: 'ON';
-                left: 1.25rem;
+                left: 0.625rem;
               }
             }
 
@@ -94,7 +94,7 @@
 
           &.-noText {
             & + label {
-              width: 5rem;
+              width: 2.5rem;
 
               &::after {
                 display: none;
@@ -104,7 +104,7 @@
             &:checked {
               & + label {
                 &::before {
-                  left: 2.25rem;
+                  left: 1.125rem;
                 }
               }
             }

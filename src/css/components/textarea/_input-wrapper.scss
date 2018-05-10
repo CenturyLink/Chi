@@ -5,23 +5,23 @@
     textarea {
       &.a-input {
         & ~ .a-icon {
-          height: 2rem;
+          height: 1rem;
           position: absolute;
-          top: 1rem;
-          width: 2rem;
+          top: 0.5rem;
+          width: 1rem;
         }
 
         &.-small {
           & ~ .a-icon {
-            height: 1.5rem;
-            top: 0.75rem;
-            width: 1.5rem;
+            height: 0.75rem;
+            top: 0.375rem;
+            width: 0.75rem;
           }
         }
 
         &.-large {
           & ~ .a-icon {
-            top: 1.5rem;
+            top: 0.75rem;
           }
         }
       }
@@ -30,25 +30,25 @@
     &.-iconLeft {
       textarea {
         &.a-input {
-          padding-left: 3.875rem;
+          padding-left: 1.9375rem;
 
           &.-small {
-            padding-left: 3.375rem;
+            padding-left: 1.6875rem;
           }
 
           &.-large {
-            padding-left: 4.875rem;
+            padding-left: 2.4375rem;
 
             & ~ .a-icon {
               &:first-of-type {
-                left: 1.5rem;
+                left: 0.7rem;
               }
             }
           }
 
           & ~ .a-icon {
             &:first-of-type {
-              left: 1rem;
+              left: 0.5rem;
             }
           }
         }
@@ -58,25 +58,25 @@
     &.-iconRight {
       textarea {
         &.a-input {
-          padding-right: 3.875rem;
+          padding-right: 1.9375rem;
 
           &.-small {
-            padding-right: 3.375rem;
+            padding-right: 1.6875rem;
           }
 
           &.-large {
-            padding-right: 4.875rem;
+            padding-right: 2.4375rem;
 
             & ~ .a-icon {
               &:last-of-type {
-                right: 1.5rem;
+                right: 0.75rem;
               }
             }
           }
 
           & ~ .a-icon {
             &:last-of-type {
-              right: 1rem;
+              right: 0.5rem;
             }
           }
         }

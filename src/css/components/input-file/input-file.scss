@@ -12,8 +12,8 @@
           & {
             align-items: center;
             display: flex;
-            font-size: 1.625rem;
-            line-height: 2rem;
+            font-size: 0.8125rem;
+            line-height: 1rem;
             pointer-events: none;
             position: relative;
           }
@@ -21,24 +21,24 @@
           &::before {
             align-items: center;
             background-color: set-color(white);
-            border: 0.125rem solid set-color(grey, 30);
+            border: 0.0625rem solid set-color(grey, 30);
             border-radius: 3px;
             content: 'Choose File';
             cursor: pointer;
             display: flex;
             font-weight: 600;
-            height: 4rem;
+            height: 2rem;
             justify-content: center;
-            line-height: 2.25rem;
-            margin-right: 2rem;
+            line-height: 1.125rem;
+            margin-right: 1rem;
             pointer-events: initial;
-            width: 13rem;
+            width: 6.5rem;
           }
 
           &:hover,
           &.-hover {
             &::before {
-              border: 0.125rem solid set-color(grey, 40);
+              border: 0.0625rem solid set-color(grey, 40);
               box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
             }
           }
@@ -60,7 +60,7 @@
         &:focus,
         &.-focus {
           & + label::before {
-            border: 0.125rem solid set-color(grey, 40);
+            border: 0.0625rem solid set-color(grey, 40);
             box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
             z-index: 1;
           }
@@ -68,25 +68,25 @@
 
         &.-small {
           & + label {
-            font-size: 1.375rem;
+            font-size: 0.6875rem;
 
             &::before {
-              height: 3rem;
-              line-height: 2rem;
-              width: 9.625rem;
+              height: 1.5rem;
+              line-height: 1rem;
+              width: 4.8125rem;
             }
           }
         }
 
         &.-large {
           & + label {
-            font-size: 2rem;
-            line-height: 3rem;
+            font-size: 1rem;
+            line-height: 1.5rem;
 
             &::before {
-              height: 5rem;
-              line-height: 3rem;
-              width: 17rem;
+              height: 2.5rem;
+              line-height: 1.5rem;
+              width: 8.5rem;
             }
           }
         }

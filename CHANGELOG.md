@@ -2,6 +2,7 @@
 
 ### 0.8.0 (unreleased)
 
+* Changed relative base size to 16px (the default on most browsers).
 * Removed API and CLI support to focus strictly on CDN and packaged source as integration options.
 * Added WCAG 2.0 compliant color palette.
 * Updated margin and padding utility classes to include zero.
