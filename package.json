@@ -3,10 +3,6 @@
   "version": "0.8.0-alpha.3",
   "description": "CenturyLink Human Interface",
   "license": "MIT",
-  "bin": {
-    "chi": "bin/cli.js"
-  },
-  "main": "bin/chi.js",
   "repository": "https://github.com/CenturyLinkCloud/ux-chi",
   "homepage": "https://assets.ctl.io/chi",
   "scripts": {
@@ -14,7 +10,6 @@
     "test": "gulp test",
     "ci": "gulp ci",
     "approve": "gulp backstop-approve",
-    "prepublish": "babel scripts --out-dir bin",
     "start": "gulp watch"
   },
   "dependencies": {
