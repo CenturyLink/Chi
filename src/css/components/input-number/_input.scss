@@ -7,9 +7,9 @@
       &.a-input {
         // sass-lint:disable no-vendor-prefixes
         -moz-appearance: textfield;
-        border: 0.125rem solid set-color(grey, 600);
+        border: 0.125rem solid set-color(grey, 30);
         border-radius: 3px;
-        color: set-color(carbon, 500);
+        color: set-color(grey, 90);
         display: block;
         font-size: 1.625rem;
         height: 4rem;
@@ -31,20 +31,20 @@
 
         &:hover,
         &.-hover {
-          border-color: set-color(grey, 800);
+          border-color: set-color(grey, 40);
         }
 
         &:focus,
         &.-focus {
-          border-color: set-color(blue, 500);
-          box-shadow: 0 0 0 3px rgba(set-color(blue, 500), 0.3);
+          border-color: $focus-color;
+          box-shadow: 0 0 0 3px rgba($focus-color, 0.3);
         }
 
         &[disabled],
         &.-disabled {
-          background-color: set-color(grey, 300);
-          border-color: set-color(grey, 600);
-          color: set-color(carbon, 500);
+          background-color: set-color(grey, 10);
+          border-color: set-color(grey, 30);
+          color: set-color(grey, 90);
           pointer-events: none;
         }
 
@@ -64,16 +64,16 @@
 
         &:not([disabled]) {
           &.-danger {
-            border-color: set-color(map-get($state-colors, 'danger'), 500);
+            border-color: $danger-color;
           }
         }
 
         &.-danger {
-          color: set-color(carbon, 500);
+          color: set-color(grey, 90);
 
           &:focus,
           &.-focus {
-            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, 'danger'), 500), 0.2);
+            box-shadow: 0 0 0 3px rgba($danger-color, 0.2);
           }
         }
       }

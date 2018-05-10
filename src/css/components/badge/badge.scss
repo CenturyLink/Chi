@@ -5,10 +5,10 @@ $badge: c-badge;
 
 .chi {
   .a-badge {
-    background-color: set-color(grey, 100);
-    border: 0.125rem solid set-color(grey, 600);
+    background-color: set-color(white);
+    border: 0.125rem solid set-color(grey, 30);
     border-radius: 3px;
-    box-shadow: 0 1px 1px 0 rgba(set-color(carbon, 800), 0.04);
+    box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
     display: inline-block;
     font-size: 1.375rem;
     font-weight: 600;
@@ -30,101 +30,100 @@ $badge: c-badge;
     }
 
     &.-outline {
-      background-color: set-color(grey, 100);
-      border-color: set-color(carbon, 100);
+      background-color: set-color(white);
+      border-color: set-color(grey, 50);
       box-shadow: initial;
-      color: set-color(carbon, 200);
+      color: set-color(grey, 60);
     }
 
     &.-flat {
       background-color: transparent;
       border-color: transparent;
       box-shadow: initial;
-      color: set-color(carbon, 200);
+      color: set-color(grey, 60);
     }
 
     &.-success {
-      background-color: set-color(green, 500);
-      border: 0.125rem solid set-color(green, 500);
-      color: set-color(grey, 100);
+      background-color: $success-color;
+      border: 0.125rem solid $success-color;
+      color: set-color(white);
 
       &.-outline {
-        background-color: set-color(grey, 100);
-        color: set-color(green, 500);
+        background-color: set-color(white);
+        color: $success-color;
       }
 
       &.-flat {
         background-color: transparent;
         border-color: transparent;
-        color: set-color(green, 500);
+        color: $success-color;
       }
     }
 
     &.-danger {
-      background-color: set-color(red, 500);
-      border: 0.125rem solid set-color(red, 500);
-      color: set-color(grey, 100);
+      background-color: $danger-color;
+      border: 0.125rem solid $danger-color;
+      color: set-color(white);
 
       &.-outline {
-        background-color: set-color(grey, 100);
-        color: set-color(red, 500);
+        background-color: set-color(white);
+        color: $danger-color;
       }
 
       &.-flat {
         background-color: transparent;
         border-color: transparent;
-        color: set-color(red, 500);
+        color: $danger-color;
       }
     }
 
     &.-info {
-      background-color: set-color(blue, 500);
-      border: 0.125rem solid set-color(blue, 500);
-      color: set-color(grey, 100);
+      background-color: $info-color;
+      border: 0.125rem solid $info-color;
+      color: set-color(white);
 
       &.-outline {
-        background-color: set-color(grey, 100);
-        color: set-color(blue, 500);
+        background-color: set-color(white);
+        color: $info-color;
       }
 
       &.-flat {
         background-color: transparent;
         border-color: transparent;
-        color: set-color(blue, 500);
+        color: $info-color;
       }
     }
 
     &.-dark {
-      background-color: set-color(carbon, 500);
-      border: 0.125rem solid set-color(carbon, 500);
-      color: set-color(grey, 100);
+      background-color: $dark-color;
+      border: 0.125rem solid $dark-color;
+      color: set-color(white);
 
       &.-outline {
-        background-color: set-color(grey, 100);
-        color: set-color(carbon, 500);
+        background-color: set-color(white);
+        color: $dark-color;
       }
 
       &.-flat {
         background-color: transparent;
         border-color: transparent;
-        color: set-color(carbon, 500);
+        color: $dark-color;
       }
     }
 
     &.-light {
-      background-color: set-color(grey, 600);
-      border: 0.125rem solid set-color(grey, 600);
-      color: set-color(carbon, 500);
+      background-color: $light-color;
+      border: 0.125rem solid $light-color;
 
       &.-outline {
-        background-color: set-color(grey, 100);
-        color: set-color(carbon, 100);
+        background-color: set-color(white);
+        color: set-color(grey, 50);
       }
 
       &.-flat {
         background-color: transparent;
         border-color: transparent;
-        color: set-color(carbon, 100);
+        color: set-color(grey, 50);
       }
     }
   }
