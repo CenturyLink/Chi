@@ -10,7 +10,7 @@ $backdrop: #{$modal}-backdrop;
 
 .chi {
   .a-modal__backdrop {
-    background-color: rgba(set-color(carbon, 800), 0.65);
+    background-color: rgba(set-color(black), 0.65);
     height: 100%;
     left: 0;
     padding: 0 1rem;
@@ -20,14 +20,14 @@ $backdrop: #{$modal}-backdrop;
     width: 100%;
 
     &.-inverse {
-      background-color: rgba(set-color(grey, 100), 0.8);
+      background-color: rgba(set-color(white), 0.8);
     }
   }
 
   .a-modal {
-    background-color: set-color(grey, 100);
+    background-color: set-color(white);
     border-radius: 3px;
-    box-shadow: 0 0 25px 10px rgba(set-color(carbon, 800), 0.15);
+    box-shadow: 0 0 25px 10px rgba(set-color(black), 0.15);
     margin: 128px auto 0;
     max-width: 600px;
     min-width: 0;
@@ -37,7 +37,7 @@ $backdrop: #{$modal}-backdrop;
     width: 100%;
 
     &__header {
-      box-shadow: inset 0 -1px 0 0 set-color(grey, 500);
+      box-shadow: inset 0 -1px 0 0 set-color(grey, 30);
       min-height: 7rem;
       padding: 2rem;
       position: relative;
@@ -96,7 +96,7 @@ $backdrop: #{$modal}-backdrop;
         }
 
         &::after {
-          color: set-color(carbon, 100);
+          color: set-color(grey, 50);
           content: 'Back';
           display: block;
           font-size: 1.75rem;
@@ -113,7 +113,7 @@ $backdrop: #{$modal}-backdrop;
     }
 
     &__footer {
-      box-shadow: inset 0 1px 0 0 set-color(grey, 500);
+      box-shadow: inset 0 1px 0 0 set-color(grey, 30);
       display: flex;
       flex-direction: row;
       justify-content: flex-end;

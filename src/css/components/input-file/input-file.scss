@@ -20,8 +20,8 @@
 
           &::before {
             align-items: center;
-            background-color: set-color(grey, 100);
-            border: 0.125rem solid set-color(grey, 600);
+            background-color: set-color(white);
+            border: 0.125rem solid set-color(grey, 30);
             border-radius: 3px;
             content: 'Choose File';
             cursor: pointer;
@@ -38,8 +38,8 @@
           &:hover,
           &.-hover {
             &::before {
-              border: 0.125rem solid set-color(grey, 800);
-              box-shadow: 0 1px 4px 0 rgba(set-color(carbon, 800), 0.15);
+              border: 0.125rem solid set-color(grey, 40);
+              box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
             }
           }
         }
@@ -60,8 +60,8 @@
         &:focus,
         &.-focus {
           & + label::before {
-            border: 0.125rem solid set-color(grey, 800);
-            box-shadow: 0 0 0 3px rgba(set-color(grey, 600), 0.6);
+            border: 0.125rem solid set-color(grey, 40);
+            box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
             z-index: 1;
           }
         }

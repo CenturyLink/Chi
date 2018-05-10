@@ -4,9 +4,9 @@
 .chi {
   textarea {
     &.a-input {
-      border: 0.125rem solid set-color(grey, 600);
+      border: 0.125rem solid set-color(grey, 30);
       border-radius: 3px;
-      color: set-color(carbon, 500);
+      color: set-color(grey, 90);
       display: block;
       font-size: 1.625rem;
       line-height: 2rem;
@@ -18,25 +18,25 @@
       width: 100%;
 
       &::placeholder {
-        color: set-color(carbon, 100);
+        color: set-color(grey, 50);
       }
 
       &:hover,
       &.-hover {
-        border-color: set-color(grey, 800);
+        border-color: set-color(grey, 40);
       }
 
       &:focus,
       &.-focus {
-        border-color: set-color(blue, 500);
-        box-shadow: 0 0 0 3px rgba(set-color(blue, 500), 0.3);
+        border-color: $focus-color;
+        box-shadow: 0 0 0 3px rgba($focus-color, 0.3);
       }
 
       &[disabled],
       &.-disabled {
-        background-color: set-color(grey, 300);
-        border-color: set-color(grey, 600);
-        color: set-color(carbon, 500);
+        background-color: set-color(grey, 10);
+        border-color: set-color(grey, 30);
+        color: set-color(grey, 90);
       }
 
       &.-small {
@@ -56,16 +56,16 @@
       @each $type in map-keys($state-colors) {
         &:not([disabled]) {
           &.-#{$type} {
-            border-color: set-color(map-get($state-colors, $type), 500);
+            border-color: set-color(map-get($state-colors, $type), 60);
           }
         }
 
         &.-#{$type} {
-          color: set-color(carbon, 500);
+          color: set-color(grey, 90);
 
           &:focus,
           &.-focus {
-            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 500), 0.2);
+            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 60), 0.2);
           }
         }
       }
