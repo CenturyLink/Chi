@@ -100,12 +100,16 @@
   }
 
   pre {
+    background-color: set-color(grey, 300);
+    border-radius: 3px;
     color: $text-color;
     display: block;
     font-size: 1.625rem;
     margin-bottom: 1rem;
     margin-top: 0;
     overflow: auto;
+    padding: 2rem;
+    width: 100%;
 
     code {
       color: inherit;
