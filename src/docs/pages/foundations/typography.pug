@@ -266,3 +266,20 @@ p.-text Prevent text wrapping with nowrap or control overflow with truncate.
   :code(lang="html")
       <p class="-textNoWrap">This text will render without wrapping</p>
       <p class="-textTruncate">This text will truncate with an ellipsis</p>
+h3 Text colors
+p.-text Change text colors with contextual classes.
+.example.-mb3
+  .-m3
+    p.-text.-textBrand .-textBrand
+    p.-text.-textSuccess .-textSuccess
+    p.-text.-textWarning .-textWarning
+    p.-text.-textDanger .-textDanger
+    p.-text.-textInfo .-textInfo
+    p.-text.-textInverse(style="background:#000;") .-textInverse
+  :code(lang="html")
+      <p class="-textBrand">.-textBrand</p>
+      <p class="-textSuccess">.-textSuccess</p>
+      <p class="-textWarning">.-textWarning</p>
+      <p class="-textDanger">.-textDanger</p>
+      <p class="-textInfo">.-textInfo</p>
+      <p class="-textInverse">.-textInverse</p>
