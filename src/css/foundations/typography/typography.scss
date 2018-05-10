@@ -228,23 +228,27 @@
   }
 
   // text colors
-  .-inverse {
+  .-textInverse {
     color: $text-inverse;
   }
 
-  .-success {
+  .-textBrand {
+    color: $brand-color;
+  }
+
+  .-textSuccess {
     color: $success-color;
   }
 
-  .-danger {
+  .-textDanger {
     color: $danger-color;
   }
 
-  .-info {
+  .-textInfo {
     color: $info-color;
   }
 
-  .-warning {
+  .-textWarning {
     color: $warning-color;
   }
 
