@@ -11,30 +11,30 @@ p.-text
   | and table header text must be wrapped with a <code>&lt;div&gt;</code>.
 h3 Examples
 h4 Base
-:example(lang="html"):html-beautify:pug include ./default.pug
+:example(lang="html"):html-beautify:pug include ./_default.pug
 
 h4 Scrollable
 p.-text
   | If the <code>section</code> height is smaller than the <code>table</code>
   | height, the <code>table</code> header will be fixed positioned and
   | content will scroll.
-:example(lang="html"):html-beautify:pug include ./scroll.pug
+:example(lang="html"):html-beautify:pug include ./_scroll.pug
 
 h4 Bordered
 p.-text Tables can be bordered by applying the modifier class <code>-bordered</code>.
-:example(lang="html"):html-beautify:pug include ./bordered.pug
+:example(lang="html"):html-beautify:pug include ./_bordered.pug
 
 h4 Borderless
 p.-text Remove all borders by applying the modifier class <code>-borderless</code>.
-:example(lang="html"):html-beautify:pug include ./borderless.pug
+:example(lang="html"):html-beautify:pug include ./_borderless.pug
 
 h4 Striped
 p.-text Alternate the table row color by applying the modifier class <code>-striped</code>.
-:example(lang="html"):html-beautify:pug include ./striped.pug
+:example(lang="html"):html-beautify:pug include ./_striped.pug
 
 h4 Hover
 p.-text Enable a hover state by applying the modifier class <code>-hover</code>.
-:example(lang="html"):html-beautify:pug include ./hover.pug
+:example(lang="html"):html-beautify:pug include ./_hover.pug
 
 h3 Row States
 p.-text
@@ -42,23 +42,23 @@ p.-text
 
 h4 Disabled
 p.-text Disable a row by applying the attribute <code>disabled="disabled"</code>.
-:example(lang="html"):html-beautify:pug include ./disabled.pug
+:example(lang="html"):html-beautify:pug include ./_disabled.pug
 
 h4 Success
 p.-text Render a success state by applying the modifier class <code>-rowSuccess</code>.
-:example(lang="html"):html-beautify:pug include ./row-success.pug
+:example(lang="html"):html-beautify:pug include ./_row-success.pug
 
 h4 Warning
 p.-text Render a warning state by applying the modifier class <code>-rowWarning</code>.
-:example(lang="html"):html-beautify:pug include ./row-warning.pug
+:example(lang="html"):html-beautify:pug include ./_row-warning.pug
 
 h4 Danger
 p.-text Render a danger state by applying the modifier class <code>-rowDanger</code>.
-:example(lang="html"):html-beautify:pug include ./row-danger.pug
+:example(lang="html"):html-beautify:pug include ./_row-danger.pug
 
 h4 Info
 p.-text Render an info state by applying the modifier class <code>-rowInfo</code>.
-:example(lang="html"):html-beautify:pug include ./row-info.pug
+:example(lang="html"):html-beautify:pug include ./_row-info.pug
 
 h3 Column Sorting
 p.-text
@@ -66,10 +66,10 @@ p.-text
   | the following modifiers: <code>-ascending</code> or <code>-descending</code>.
 
 h4 Ascending
-:example(lang="html"):html-beautify:pug include ./sort-ascending.pug
+:example(lang="html"):html-beautify:pug include ./_sort-ascending.pug
 
 h4 Descending
-:example(lang="html"):html-beautify:pug include ./sort-descending.pug
+:example(lang="html"):html-beautify:pug include ./_sort-descending.pug
 
 h3 Additional Sizes
 p.-text
@@ -77,15 +77,15 @@ p.-text
   | applying the modifier class <code>-small</code> or <code>-large</code>.
 
 h4 Small
-:example(lang="html"):html-beautify:pug include ./small.pug
+:example(lang="html"):html-beautify:pug include ./_small.pug
 
 h4 Large
-:example(lang="html"):html-beautify:pug include ./large.pug
+:example(lang="html"):html-beautify:pug include ./_large.pug
 
 h3 Selectable
 p.-text Combine several different modifiers to create complex and beautiful tables.
 :example(lang="html"):html-beautify:pug
-  include ./common.pug
+  include ./_common.pug
   section.a-table(style="width: 640px")
     div
       table(cellpadding="0", cellspacing="0")
