@@ -2,47 +2,62 @@
 
 Chi is a CenturyLink CSS pattern library for building fast, reusable, and consistent responsive interfaces.
 
-# Development
+## Getting Started
 
-The preferred way to setup your dev env is through docker. If you have docker installed then run the command
+Integrating Chi with your project is as simple as loading the Chi stylesheet from the [CenturyLink Assets Server](https://assets.ctl.io). Not only is this a great way to get started with Chi, it is also a highly available and performant option for loading the required assets into your project.
 
-``` sh
-vader:example luke$ npm run docker -- start
+Begin by adding the Chi stylesheet to your project's layout template, replacing `VERSION` with the most recent release of Chi:
+
+``` html
+<link rel="stylesheet" href="https://assets.ctl.io/chi/VERSION/chi.css">
 ```
 
-And connect to `http://localhost:8000` to start developing in chi and see your changes in the browser.
+Next, in order to begin styling your project with Chi, you will need to add the `chi` CSS class to the `<html>` tag of your document, for example:
 
-However, if you don't have docker installed and don't plan to install, follow the normal process for all npm projects.
+``` html
+<!DOCTYPE html>
 
-``` sh
-vader:example luke$ npm install
-vader:example luke$ npm start
+<html class="chi">
+  ...
+</html>
 ```
 
-## test
+At this point you will be able to target the styles available in Chi by referencing its [documentation](https://assets.ctl.io/chi).
 
-We are using backstopJS to unit test our css components. In order to execute the unit test run the command
+## Development Workflow
 
-``` sh
-vader:example luke$ npm run docker -- test
-```
-or
-``` sh
-vader:example luke$ npm test
-```
-
-Test report is created under `reports/html_report` and you can browse the results with your browser.
-
-In the event you receive a test failure after adding a new test or making a change and your changes are correct, you will need to override the baseline test with your new changes by running an approve.
-
+The preferred way to setup your development environment is with Docker. If you have Docker installed, run the command:
 
 ``` sh
-vader:example luke$ npm run docker -- approve
+$ npm run docker -- start
 ```
-or
+
+Once the container has been bootstrapped and the Chi project has started, connect to [http://localhost:8000](http://localhost:8000) in your browser to load Chi. While running, any changes to the Chi source will be automatically reloaded in your browser.
+
+You may also run the project without Docker by following the standard conventions for Node.js-based applications:
+
 ``` sh
-vader:example luke$ npm run approve
+$ npm install
+$ npm start
 ```
+
+#### Testing Changes
+
+We use [BackstopJS](https://garris.github.io/BackstopJS) for visual regression testing of our CSS components. In order to account for differences in development environments we always run these tests in a consistent Docker container. To execute the test suite, run the following command:
+
+``` sh
+$ npm run docker -- test
+```
+
+A report containing the results of the test will be created under `reports/html_report`. If there were failures, you will need to visually examine the changes and act appropriately based on the anticipated results.
+
+If you receive a test failure and you've made changes that you know are correct, you will need to override the test references with your new changes by running the `approve` command on BackstopJS:
+
+``` sh
+$ npm run docker -- approve
+```
+
+Once you have approved the changes, commit the new reference files with your changes.
 
 ## License
 
