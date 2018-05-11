@@ -1,0 +1,87 @@
+---
+title: Text
+---
+
+p.-text Use text utility classes to control sizing, color, alignment and more.
+
+h3 Examples
+h4 Text line height
+p.-text
+  | Use shorthand utility classes to control an elements line-height. Line height sizes are equal to <code>$base-unit * {size}</code>
+  | and illustrated in green in the example below.
+.example.-mb3
+  .-m3
+    each type in ['lh1', 'lh2', 'lh3', 'lh4', 'lh5', 'lh6', 'lh7', 'lh8', 'lh9']
+      p.-text(class=`-${type}`, style=`background:#E4F2CE;`)
+        = `.-${type}`
+  :code(lang="html")
+      <p class="-text -lh1">.-lh1</p>
+      <p class="-text -lh2">.-lh2</p>
+      <p class="-text -lh3">.-lh3</p>
+      <p class="-text -lh4">.-lh4</p>
+      <p class="-text -lh5">.-lh5</p>
+      <p class="-text -lh6">.-lh6</p>
+      <p class="-text -lh7">.-lh7</p>
+      <p class="-text -lh8">.-lh8</p>
+      <p class="-text -lh9">.-lh9</p>
+h4 Text alignment
+p.-text Change text alignment to justified, left, center, or right.
+.example.-mb3
+  .-m3
+    p.-text.-textJustify This text will render as justified
+    p.-text.-textLeft This text will render as left aligned
+    p.-text.-textCenter This text will render as center aligned
+    p.-text.-textRight This text will render as right aligned
+  :code(lang="html")
+      <p class="-textJustify">This text will render as justified</p>
+      <p class="-textLeft">This text will render as left aligned</p>
+      <p class="-textCenter">This text will render as center aligned</p>
+      <p class="-textRight">This text will render as right aligned</p>
+h4 Text transform
+p.-text Change text transform to lowercase, uppercase, or capitalized.
+.example.-mb3
+  .-m3
+    p.-text.-textLowercase This text will render as lowercase
+    p.-text.-textUppercase This text will render as uppercase
+    p.-text.-textCapitalized This text will render as capitalized
+  :code(lang="html")
+      <p class="-textLowercase">This text will render as lowercase</p>
+      <p class="-textUppercase">This text will render as uppercase</p>
+      <p class="-textCapitalized">This text will render as capitalized</p>
+h4 Text weight
+p.-text Change text weight to thin, normal, bold, or bolder.
+.example.-mb3
+  .-m3
+    p.-text.-textThin This text will render as thin
+    p.-text.-textNormal This text will render as normal
+    p.-text.-textBold This text will render as bold
+    p.-text.-textBolder This text will render as bolder
+  :code(lang="html")
+      <p class="-textThin">This text will render as thin</p>
+      <p class="-textNormal">This text will render as normal</p>
+      <p class="-textBold">This text will render as bold</p>
+      <p class="-textBolder">This text will render as bolder</p>
+h4 Text wrapping
+p.-text Prevent text wrapping with nowrap or control overflow with truncate.
+.example.-mb3
+  .-m3
+    p.-text.-textNoWrap(style="width: 22rem;background:#eeeeee;") This text will render without wrapping
+    p.-text.-textTruncate(style="width: 22rem;") This text will truncate with an ellipsis
+  :code(lang="html")
+      <p class="-textNoWrap">This text will render without wrapping</p>
+      <p class="-textTruncate">This text will truncate with an ellipsis</p>
+h4 Text colors
+p.-text Change text colors with contextual classes.
+.example.-mb3
+  .-m3
+    each type in ['textBrand', 'textSuccess', 'textWarning', 'textDanger', 'textInfo']
+      p.-text(class=`-${type}`)
+        = `.-${type}`
+    p.-text.-textInverse(style="background:#000;") .-textInverse
+  :code(lang="html")
+      <p class="-textBrand">.-textBrand</p>
+      <p class="-textSuccess">.-textSuccess</p>
+      <p class="-textWarning">.-textWarning</p>
+      <p class="-textDanger">.-textDanger</p>
+      <p class="-textInfo">.-textInfo</p>
+      <p class="-textInverse">.-textInverse</p>
