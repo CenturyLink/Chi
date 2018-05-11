@@ -51,6 +51,10 @@ gulp.task('build-docs', () => {
         Components: {
           pattern: [ 'components/**/*.{md,pug}', '!components/**/_*.{md,pug}' ],
           sortBy: collectionSorter(['Overview'])
+        },
+        Utilities: {
+          pattern: 'utilities/**/*.{md,pug}',
+          sortBy: collectionSorter(['Overview'])
         }
       }))
       .use(metalsmithPlugins.inPlace({
