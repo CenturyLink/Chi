@@ -1,138 +1,71 @@
 ---
-title: Getting started
+title: Getting Started
 ---
 
 p.-text
   | Chi provides developers with a collection of HTML and CSS patterns to build fast, reusable, and consistent responsive interfaces.
 
-h3 Install
+h3 Adding Chi
+p.-text
+  | Adding Chi to your project is as simple as loading the Chi stylesheet from the <a href="https://assets.ctl.io">CenturyLink Assets Server</a>.
+  | Not only is this a great way to get started with Chi, it is also a highly available and performant option for loading the required
+  | assets into your project.
+
+.-mb2
+  :code(lang='html')
+    <link rel="stylesheet" href="https://assets.ctl.io/chi/0.8.0/chi.css">
 
 p.-text
-  | Import Chi into your project using npm. Once Chi is installed as a dependency, it can be used via CLI or API.
+  | Next, in order to begin styling your project with Chi, you will need to add the <code>chi</code> CSS class to the <code>&lt;html&gt;</code>
+  | tag of your document, for example:
+
+.-mb2
+  :code(lang='html')
+    <html class="chi">
+      ...
+    </html>
+
+p.-text
+  | At this point you will be able to target the styles available in Chi by referencing documentation.
+
+h3 Development Workflow
+p.-text The preferred way to setup your development environment is with Docker. If you have Docker installed, run the command:
 
 .-mb2
   :code(lang='bash')
-    npm i @centurylink/chi --save-dev
-
-h4 CLI
+    $ npm run docker -- start
 
 p.-text
-  | The CLI is installed in <code>node_modules/.bin/</code> folder as <code>chi</code>.
+  | Once the container has been bootstrapped and the Chi project has started, connect to <a href="http://localhost:8000">http://localhost:8000</a>
+  | in your browser to load Chi. While running, any changes to the Chi source will be automatically reloaded in your browser.
 
-p.-text
-  | <code>chi</code> command allows you to create a css that contains just the foundations of Chi and the components you
-  | use in your project. Also it helps you to copy all Chi assets used by those selected components into the assets
-  | folder used by your web app.
+p.-text You may also run the project without Docker by following the standard conventions for Node.js-based applications:
 
-.-mb4
+.-mb2
   :code(lang='bash')
-    vader:example luke$ ./node_modules/.bin/chi buttons grid -c css -o dist
+    $ npm install
+    $ npm start
+
+h3 Testing Changes
+p.-text
+  | We use <a href="https://garris.github.io/BackstopJS">BackstopJS</a> for visual regression testing of our CSS components.
+  | In order to account for differences in development environments we always run these tests in a consistent Docker container.
+  | To execute the test suite, run the following command:
+
+.-mb2
+  :code(lang='bash')
+    $ npm run docker -- test
 
 p.-text
-  | In the example chi compiles the foundations, buttons and grid into a minified css and place it inside the dist
-  | folder. All <code>chi</code> options can be checked invoking the help.
-
-.-mb4
-  :code(lang='bash')
-    vader:example luke$ ./node_modules/.bin/chi --help
-    Usage: bin/cli.js <component-list> -c command -o <output-dir> -p <assets_path>
-
-    Commands:
-      all     generates the stylesheet and copies the assets of the selected
-              components
-      css     generates the stylesheet with the selected components
-      assets  copy the selected components assets
-
-    Options:
-      --help         Show help                                             [boolean]
-      --version      Show version number                                   [boolean]
-      -c, --command  command      [choices: "all", "css", "assets"] [default: "all"]
-      -o, --output   output folder                               [string] [required]
-      -p, --path     assets path                             [string] [default: "/"]
-
-    Examples:
-      bin/cli.js grid buttons avatars -o dist/assets -p /assets/
-
-h4 API
+  | A report containing the results of the test will be created under <code>reports/html_report</code>. If there were failures,
+  | you will need to visually examine the changes and act appropriately based on the anticipated results.
 
 p.-text
-  | To use the API just require `chi` in your javascript file.
+  | If you receive a test failure and you've made changes that you know are correct, you will need to override the test
+  | references with your new changes by running the <code>approve</code> command on BackstopJS:
 
-.-mb4
-  :code(lang='js')
-    var chi = require('@centurylink/chi');
-
-p.-text
-  | <code>chi</code> provides three methods:
-
-ul.-text
-  li build(options): Generates the css and copies the assets into the dest folder.
-  li buildCss(options): Generates the css with the specified components and the foundations and moves it into the dest folder.
-  li copyAssets(options): Copies the assets used by the selected components into the dest folder.
-
-h5 options
-
-p.-text Options are common for both methods.
-
-section.a-table.-bordered.-mt3.-mb3
-  div
-    table(cellpadding='0', cellspacing='0')
-      thead
-        tr
-          th
-            div option
-          th
-            div description
-      tbody
-        tr
-          td names
-          td List of components to include. Omit the option to include all of them
-        tr
-          td dest
-          td dest folder in which the result is going to ve copied.
-        tr
-          td assetsPath
-          td root path where the assets are located.
-
-h3 Development
-
-p.-text
-  | The preferred way to setup your dev env is through docker. If you have docker installed then run the command
-
-.-mb4
+.-mb2
   :code(lang='bash')
-    vader:example luke$ npm run docker -- start
+    $ npm run docker -- approve
 
-p.-text
-  | And connect to <a href="http://localhost:8000">http://localhost:8000</a> to start developing in chi and see your
-  | changes in the browser. However, if you don't have docker installed and don't plan to install, follow the normal
-  | process for all npm projects.
-
-.-mb4
-  :code(lang='bash')
-    vader:example luke$ npm install
-    vader:example luke$ npm start
-
-h4 test
-
-p.-text
-  | We are using backstopJS to unit test our css components. In order to execute the unit test run the command
-
-.-mb4
-  :code(lang='bash')
-    vader:example luke$ npm run docker -- test
-  p.-text or
-  :code(lang='bash')
-    vader:example luke$ npm test
-
-p.-text
-  | Test report is created under "reports/html_report" and you can browse the results with your browser.
-  | In the event you receive a test failure after adding a new test or making a change and your changes are correct,
-  | you will need to override the baseline test with your new changes by running an approve.
-
-.-mb4
-  :code(lang='bash')
-    vader:example luke$ npm run docker -- approve
-  p.-text or
-  :code(lang='bash')
-    vader:example luke$ npm run approve
+p.-text Once you have approved the changes, commit the new reference files with your changes.
