@@ -17,9 +17,24 @@
     width: 100%;
     padding: 0 3rem;
     z-index: 1;
+    @media only screen and (max-width: 900px) {
+      flex-direction: column;
+      height: 12rem;
+      justify-content: center;
+      position: static;
+    }
 
     &__logo {
+      display: inline-flex;
+      justify-content: center;
       max-width: 18rem;
+      width: 100%;
+      img {
+        max-width: 18rem;
+        @media only screen and (max-width: 900px) {
+          height: 3rem;
+        }
+      }
     }
 
     &__title {
@@ -27,6 +42,11 @@
       display: inline-flex;
       font-weight: 400;
       margin-left: 4rem;
+      @media only screen and (max-width: 900px) {
+        font-size: 2rem;
+        line-height: 3rem;
+        margin: 1rem 0 0 0;
+      }
     }
   }
 }
