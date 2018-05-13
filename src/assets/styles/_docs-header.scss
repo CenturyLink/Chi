@@ -19,7 +19,7 @@
     z-index: 1;
     @media only screen and (max-width: 900px) {
       flex-direction: column;
-      height: 12rem;
+      height: 10rem;
       justify-content: center;
       position: static;
     }
@@ -45,7 +45,7 @@
       @media only screen and (max-width: 900px) {
         font-size: 2rem;
         line-height: 3rem;
-        margin: 1rem 0 0 0;
+        margin: .5rem 0 0 0;
       }
     }
   }
