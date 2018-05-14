@@ -12,6 +12,11 @@
       flex: 1 0 auto;
       flex-direction: row;
       padding: 8rem 0 0 32rem;
+      @media only screen and (max-width: 900px) {
+        flex-direction: column;
+        padding-left: 0;
+        padding-top: 1rem;
+      }
 
       &__aside {
         position: fixed;
@@ -26,12 +31,27 @@
         height: 100%;
         width: 32rem;
         padding-top: 1rem;
+        @media only screen and (max-width: 900px) {
+          position: static;
+          width: 100%;
+          border-right: 0;
+          padding-bottom: 2rem;
+          border-bottom: 0.125rem solid set-color(grey, 500);
+        }
 
         a[disabled] {
           color: set-color(carbon, 100) !important;
           pointer-events: none;
         }
         .a-tabs.-vertical {
+          @media only screen and (max-width: 900px) {
+            >li {
+              >a {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+              }
+            }
+          }
           >li.-active {
             >a {
               color: #00853F;
@@ -69,7 +89,9 @@
         flex-grow: 1;
         min-width: 0;
         padding-top: 2rem;
-
+        @media only screen and (max-width: 900px) {
+          padding-top: 1rem;
+        }
         .a-table {
           &:before, th>div, &.-bordered td {
             border-color: set-color(grey, 500);
