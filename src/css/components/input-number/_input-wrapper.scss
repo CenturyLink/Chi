@@ -85,4 +85,11 @@
       }
     }
   }
+
+  // Hide the increment/decrement buttons on IE and Edge
+  // sass-lint:disable-all
+  _:-ms-lang(x), input[type='number'].a-input ~ button {
+    display: none;
+  }
+  // sass-lint:enable-all
 }
