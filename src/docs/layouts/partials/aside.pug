@@ -2,25 +2,25 @@ aside.docs-body__aside
   nav
     ul.a-tabs.-vertical.-large
       li(class=path === '' ? '-active' : '')
-        a(href=`${rootPath}index.html`) Getting Started
+        a(href=`${rootPath}`) Getting Started
 
       each collection, key in collections
         if utils.hasActiveSections(collection)
           if utils.isCurrentCollection(collection, path)
             li.-active
-              a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}/index.html`) #{key}
+              a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
               if utils.hasSections(collection)
                 ul.a-tabs__subtabs
                   each section in collection
                     if section.disabled
                       //- li
-                      //-   a(href=`${rootPath}${section.path}/index.html`, disabled="disabled") #{section.title}
+                      //-   a(href=`${rootPath}${section.path}`, disabled="disabled") #{section.title}
                     else
                       li(class=section.path === path ? "-active" : "")
-                        a(href=`${rootPath}${section.path}/index.html`) #{section.title} #{section.disabled}
+                        a(href=`${rootPath}${section.path}`) #{section.title} #{section.disabled}
           else
             li
-              a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}/index.html`) #{key}
+              a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
         else
           li
             a(href=`#`, disabled="disabled") #{key}
