@@ -7,9 +7,9 @@
     left: 0;
     top: 0;
     align-items: center;
-    background-color: set-color(grey, 100);
-    box-shadow: 0 1px 2px 0 rgba(set-color(carbon, 800), 0.04),
-    0 2px 2px 0 rgba(set-color(carbon, 800), 0.12);
+    background-color: set-color(white);
+    box-shadow: 0 1px 2px 0 rgba(set-color(black), 0.04),
+      0 2px 2px 0 rgba(set-color(black), 0.12);
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
@@ -38,7 +38,7 @@
     }
 
     &__title {
-      color: set-color(carbon, 200);
+      color: set-color(grey, 60);
       display: inline-flex;
       font-weight: 400;
       margin-left: 4rem;
