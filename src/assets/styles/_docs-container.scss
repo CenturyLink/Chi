@@ -11,11 +11,11 @@
       display: flex;
       flex: 1 0 auto;
       flex-direction: row;
-      padding: 8rem 0 0 32rem;
+      padding: 4rem 0 0 16rem;
       @media only screen and (max-width: 900px) {
         flex-direction: column;
         padding-left: 0;
-        padding-top: 1rem;
+        padding-top: 0.5rem;
       }
 
       &__aside {
@@ -23,20 +23,20 @@
         left: 0;
         top: 64px;
         background-color: set-color(white);
-        border-right: 0.125rem solid set-color(grey, 30);
+        border-right: 0.0625rem solid set-color(grey, 30);
         display: flex;
         flex-direction: column;
         flex-shrink: 0;
         overflow: auto;
         height: 100%;
-        width: 32rem;
-        padding-top: 1rem;
+        width: 16rem;
+        padding-top: 0.5rem;
         @media only screen and (max-width: 900px) {
           position: static;
           width: 100%;
           border-right: 0;
-          padding-bottom: 2rem;
-          border-bottom: 0.125rem solid set-color(grey, 30);
+          padding-bottom: 1rem;
+          border-bottom: 0.0625rem solid set-color(grey, 30);
         }
 
         a[disabled] {
@@ -47,8 +47,8 @@
           @media only screen and (max-width: 900px) {
             >li {
               >a {
-                padding-top: 1rem;
-                padding-bottom: 1rem;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
               }
             }
           }
@@ -73,8 +73,8 @@
                     left: 0;
                     position: absolute;
                     top: 0;
-                    width: .25rem;
-                    height: 4rem;
+                    width: .125rem;
+                    height: 2rem;
                   }
                 }
               }
@@ -88,9 +88,9 @@
         background-color: set-color(white);
         flex-grow: 1;
         min-width: 0;
-        padding-top: 2rem;
+        padding-top: 1rem;
         @media only screen and (max-width: 900px) {
-          padding-top: 1rem;
+          padding-top: 0.5rem;
         }
         .a-table {
           &:before, th>div, &.-bordered td {
@@ -100,30 +100,30 @@
 
         @media only screen and (min-width: 900px) {
           >.a-grid__container {
-          margin: 0 40px;
+            margin: 0 40px;
           }
         }
 
         @media only screen and (min-width: 1280px) {
           >.a-grid__container {
-          margin: 0 auto;
-          width: 960px;
+            margin: 0 auto;
+            width: 960px;
           }
         }
 
         .example {
-          border: 0.125rem solid set-color(grey, 30);
-          border-radius: .3em;
+          border: 0.0625rem solid set-color(grey, 30);
+          border-radius: 0.15em;
 
           pre[class*=language-] {
             margin: 0;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
-            border-top: 0.125rem solid set-color(grey, 30);
+            border-top: 0.0625rem solid set-color(grey, 30);
           }
           .code-block>pre {
             border-top: 0;
-            border-radius: .3em;
+            border-radius: 0.15em;
           }
         }
       }

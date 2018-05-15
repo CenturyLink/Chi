@@ -1,13 +1,13 @@
 .palette {
-  font-size: 1.625rem;
-  height: 9rem;
-  line-height: 2rem;
-  padding: 2rem;
+  font-size: 0.8125rem;
+  height: 4.5rem;
+  line-height: 1rem;
+  padding: 1rem;
 
   strong {
     display: block;
-    font-size: 2rem;
-    padding-bottom: 1rem;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
   }
 }
 
@@ -16,20 +16,20 @@
   box-sizing: border-box;
   display: inline-flex;
   flex-direction: column;
-  font-size: 1.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  margin-bottom: 4rem;
-  margin-right: 8rem;
+  margin-bottom: 2rem;
+  margin-right: 4rem;
   overflow: hidden;
   width: 256px;
 
   & > div {
-    padding: 1.5rem 2rem;
+    padding: 0.75rem 1rem;
     position: relative;
 
     .value {
-      bottom: 1.5rem;
-      left: 2rem;
+      bottom: 0.75rem;
+      left: 1rem;
       position: absolute;
     }
 
@@ -43,9 +43,9 @@
     height: 128px;
 
     .hexa {
-      bottom: 1.5rem;
+      bottom: 0.75rem;
       position: absolute;
-      right: 2rem;
+      right: 1rem;
     }
   }
 }

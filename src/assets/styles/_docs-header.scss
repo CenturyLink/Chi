@@ -13,13 +13,13 @@
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
-    height: 8rem;
+    height: 4rem;
     width: 100%;
-    padding: 0 3rem;
+    padding: 0 1.5rem;
     z-index: 1;
     @media only screen and (max-width: 900px) {
       flex-direction: column;
-      height: 10rem;
+      height: 5rem;
       justify-content: center;
       position: static;
     }
@@ -27,12 +27,12 @@
     &__logo {
       display: inline-flex;
       justify-content: center;
-      max-width: 18rem;
+      max-width: 9rem;
       width: 100%;
       img {
-        max-width: 18rem;
+        max-width: 9rem;
         @media only screen and (max-width: 900px) {
-          height: 3rem;
+          height: 1.5rem;
         }
       }
     }
@@ -41,11 +41,11 @@
       color: set-color(grey, 60);
       display: inline-flex;
       font-weight: 400;
-      margin-left: 4rem;
+      margin-left: 2rem;
       @media only screen and (max-width: 900px) {
-        font-size: 2rem;
-        line-height: 3rem;
-        margin: .5rem 0 0 0;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin: .25rem 0 0 0;
       }
     }
   }
