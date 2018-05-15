@@ -22,8 +22,8 @@
         position: fixed;
         left: 0;
         top: 64px;
-        background-color: set-color(grey, 100);
-        border-right: 0.125rem solid set-color(grey, 500);
+        background-color: set-color(white);
+        border-right: 0.125rem solid set-color(grey, 30);
         display: flex;
         flex-direction: column;
         flex-shrink: 0;
@@ -36,11 +36,11 @@
           width: 100%;
           border-right: 0;
           padding-bottom: 2rem;
-          border-bottom: 0.125rem solid set-color(grey, 500);
+          border-bottom: 0.125rem solid set-color(grey, 30);
         }
 
         a[disabled] {
-          color: set-color(carbon, 100) !important;
+          color: set-color(white) !important;
           pointer-events: none;
         }
         .a-tabs.-vertical {
@@ -85,7 +85,7 @@
 
 
       &__content {
-        background-color: set-color(grey, 100);
+        background-color: set-color(white);
         flex-grow: 1;
         min-width: 0;
         padding-top: 2rem;
@@ -94,7 +94,7 @@
         }
         .a-table {
           &:before, th>div, &.-bordered td {
-            border-color: set-color(grey, 500);
+            border-color: set-color(grey, 30);
           }
         }
 
@@ -112,14 +112,14 @@
         }
 
         .example {
-          border: 0.125rem solid set-color(grey, 500);
+          border: 0.125rem solid set-color(grey, 30);
           border-radius: .3em;
 
           pre[class*=language-] {
             margin: 0;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
-            border-top: 0.125rem solid set-color(grey, 500);
+            border-top: 0.125rem solid set-color(grey, 30);
           }
           .code-block>pre {
             border-top: 0;
