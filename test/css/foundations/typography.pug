@@ -3,14 +3,21 @@ title: Typography
 ---
 
 .test-headers
-  h1 h1 - 48pt Open Sans
-  h2 h2 - 32pt Open Sans
-  h3 h3 - 24pt Open Sans
-  h4 h4 - 18pt Open Sans
-  h5 h5 - 16pt Open Sans
-  h6 h6 - 14pt Open Sans
-  p.-text 16pt Body Default
-  small 11pt Body Small
+  h3 Headings
+  h1 h1 heading - 48px
+  h2 h2 heading - 32px
+  h3 h3 heading - 24px
+  h4 h4 heading - 18px
+  h5 h5 heading - 16px
+  h6 h6 heading - 14px
+
+.test-text-utilities
+  h3 Text Utilities
+  p.-text -text paragraph - 14px
+  p.-textLarge -textLarge paragraph - 16px
+  p.-textLarger -textLarger paragraph - 18px
+  p.-textSmall -textSmall paragraph - 13px
+  p.-textSmaller -textSmaller paragraph - 12px
 
 .test-colors
   h3 Colors
@@ -21,14 +28,14 @@ title: Typography
       .-text.-bgInverse Default text color
     .a-col
       .-text .-text
-  each modifier in ['inverse', 'danger', 'info', 'warning']
+  each modifier in ['Inverse', 'Brand', 'Success', 'Danger', 'Info', 'Warning']
     .a-grid
       .a-col
-        .-text(class=`-${modifier}`)= `${modifier} text color`
+        .-text(class=`-$text{modifier}`)= `${modifier} text color`
       .a-col
-        .-text.-bgInverse(class=`-${modifier}`)= `${modifier} text color`
+        .-text.-bgInverse(class=`-text${modifier}`)= `${modifier} text color`
       .a-col
-        .-text= `.-${modifier}`
+        .-text= `.-text${modifier}`
 
 .test-paragraph
   h3 Fancy header title
