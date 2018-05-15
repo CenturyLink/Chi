@@ -3,14 +3,14 @@
 .chi {
   .m-alert {
     &.-toast {
-      max-width: 40rem;
-      padding-bottom: 2.375rem;
-      padding-top: 1.5rem;
+      max-width: 20rem;
+      padding-bottom: 1.1875rem;
+      padding-top: 0.75rem;
 
       &::before {
-        font-size: 2rem;
-        line-height: 3rem;
-        margin-bottom: 0.875rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin-bottom: 0.4375rem;
       }
 
       & > button {
@@ -18,24 +18,24 @@
         background-image: url('./icon-close.svg');
         border: 0;
         cursor: pointer;
-        height: 1.5rem;
+        height: 0.75rem;
         outline: none;
         padding: 0;
         position: absolute;
-        right: 1.875rem;
-        top: 1.875rem;
-        width: 1.5rem;
+        right: 0.9375rem;
+        top: 0.9375rem;
+        width: 0.75rem;
       }
 
       @each $state in map-keys($states) {
         &.-#{$state} {
           &.-hasIcon {
             &::after {
-              height: 3rem;
-              left: 1.875rem;
-              top: 1.875rem;
+              height: 1.5rem;
+              left: 0.9375rem;
+              top: 0.9375rem;
               transform: initial;
-              width: 3rem;
+              width: 1.5rem;
             }
           }
         }

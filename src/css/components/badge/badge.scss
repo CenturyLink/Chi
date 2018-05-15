@@ -6,22 +6,22 @@ $badge: c-badge;
 .chi {
   .a-badge {
     background-color: set-color(white);
-    border: 0.125rem solid set-color(grey, 30);
+    border: 0.0625rem solid set-color(grey, 30);
     border-radius: 3px;
     box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
     display: inline-block;
-    font-size: 1.375rem;
+    font-size: 0.6875rem;
     font-weight: 600;
-    height: 2rem;
-    line-height: 2rem;
-    padding: 0 0.875rem;
+    height: 1rem;
+    line-height: 1rem;
+    padding: 0 0.4375rem;
     text-align: center;
     text-transform: uppercase;
 
     span {
-      line-height: 2rem;
+      line-height: 1rem;
       position: relative;
-      top: -0.125rem;
+      top: -0.0625rem;
       width: 100%;
     }
 
@@ -45,7 +45,7 @@ $badge: c-badge;
 
     &.-success {
       background-color: $success-color;
-      border: 0.125rem solid $success-color;
+      border: 0.0625rem solid $success-color;
       color: set-color(white);
 
       &.-outline {
@@ -62,7 +62,7 @@ $badge: c-badge;
 
     &.-danger {
       background-color: $danger-color;
-      border: 0.125rem solid $danger-color;
+      border: 0.0625rem solid $danger-color;
       color: set-color(white);
 
       &.-outline {
@@ -79,7 +79,7 @@ $badge: c-badge;
 
     &.-info {
       background-color: $info-color;
-      border: 0.125rem solid $info-color;
+      border: 0.0625rem solid $info-color;
       color: set-color(white);
 
       &.-outline {
@@ -96,7 +96,7 @@ $badge: c-badge;
 
     &.-dark {
       background-color: $dark-color;
-      border: 0.125rem solid $dark-color;
+      border: 0.0625rem solid $dark-color;
       color: set-color(white);
 
       &.-outline {
@@ -113,7 +113,7 @@ $badge: c-badge;
 
     &.-light {
       background-color: $light-color;
-      border: 0.125rem solid $light-color;
+      border: 0.0625rem solid $light-color;
 
       &.-outline {
         background-color: set-color(white);

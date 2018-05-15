@@ -9,14 +9,14 @@
         background-image: url('./icon-close.svg');
         border: 0;
         cursor: pointer;
-        height: 1.5rem;
+        height: 0.75rem;
         outline: none;
         padding: 0;
         position: absolute;
-        right: 2rem;
+        right: 1rem;
         top: 50%;
         transform: translateY(-50%);
-        width: 1.5rem;
+        width: 0.75rem;
       }
 
       &.-small {
@@ -26,18 +26,18 @@
       }
 
       &.-large {
-        padding-bottom: 2.375rem;
-        padding-top: 1.5rem;
+        padding-bottom: 1.1875rem;
+        padding-top: 0.75rem;
 
         & > button {
-          top: 1.875rem;
+          top: 0.9375rem;
           transform: initial;
         }
 
         &::before {
-          font-size: 2rem;
-          line-height: 3rem;
-          margin-bottom: 0.875rem;
+          font-size: 1rem;
+          line-height: 1.5rem;
+          margin-bottom: 0.4375rem;
         }
       }
 
@@ -45,22 +45,22 @@
         &.-#{$state} {
           &.-hasIcon {
             &.-small {
-              padding-left: 4.875rem;
+              padding-left: 2.4375rem;
 
               &::after {
-                height: 2rem;
-                left: 1.875rem;
-                width: 2rem;
+                height: 1rem;
+                left: 0.9375rem;
+                width: 1rem;
               }
             }
 
             &.-large {
               &::after {
-                height: 3rem;
-                left: 1.875rem;
-                top: 1.875rem;
+                height: 1.5rem;
+                left: 0.9375rem;
+                top: 0.9375rem;
                 transform: initial;
-                width: 3rem;
+                width: 1.5rem;
               }
             }
           }

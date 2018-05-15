@@ -4,15 +4,15 @@
 .chi {
   section {
     &.a-table {
-      padding-top: 6rem;
+      padding-top: 3rem;
       position: relative;
 
       &::before {
         background-color: set-color(white);
-        border-bottom: 0.125rem solid set-color(grey, 20);
+        border-bottom: 0.0625rem solid set-color(grey, 20);
         content: '';
         display: block;
-        height: 6rem;
+        height: 3rem;
         position: absolute;
         top: 0;
         width: 100%;
@@ -25,8 +25,8 @@
 
       table {
         border-spacing: 0;
-        font-size: 1.625rem;
-        line-height: 2rem;
+        font-size: 0.8125rem;
+        line-height: 1rem;
         margin: 0;
         padding: 0;
         width: 100%;
@@ -42,7 +42,7 @@
         text-transform: capitalize;
 
         div {
-          padding: 2rem;
+          padding: 1rem;
           position: absolute;
           text-align: start;
           top: 0;
@@ -60,10 +60,10 @@
               background-image: url('./icon-chevron-thin-up.svg');
               content: '';
               display: block;
-              height: 1.5rem;
-              margin-left: 1rem;
+              height: 0.75rem;
+              margin-left: 0.5rem;
               opacity: 0;
-              width: 1.5rem;
+              width: 0.75rem;
             }
           }
         }
@@ -83,9 +83,9 @@
       }
 
       td {
-        border-bottom: 0.125rem solid set-color(grey, 20);
-        padding: 2rem;
-        padding-bottom: 1.875rem;
+        border-bottom: 0.0625rem solid set-color(grey, 20);
+        padding: 1rem;
+        padding-bottom: 0.9375rem;
         text-align: start;
         vertical-align: center;
       }
@@ -140,7 +140,7 @@
 
         td {
           border: 0;
-          padding: 2rem;
+          padding: 1rem;
         }
       }
 
@@ -150,12 +150,12 @@
           border-color: set-color(grey, 20);
           border-left-width: 0;
           border-style: solid;
-          border-width: 0.125rem;
+          border-width: 0.0625rem;
         }
 
         th > div {
-          border-left: 0.125rem solid set-color(grey, 20);
-          padding-left: 1.875rem;
+          border-left: 0.0625rem solid set-color(grey, 20);
+          padding-left: 0.9375rem;
         }
 
         td {
@@ -163,74 +163,74 @@
           border-right-width: 0;
           border-style: solid;
           border-top-width: 0;
-          border-width: 0.125rem;
-          padding: 2rem 2rem 1.875rem 1.875rem;
+          border-width: 0.0625rem;
+          padding: 1rem 1rem 0.9375rem 0.9375rem;
 
           &:last-of-type {
-            border-right-width: 0.125rem;
-            padding-right: 1.875rem;
+            border-right-width: 0.0625rem;
+            padding-right: 0.9375rem;
           }
         }
       }
 
       &.-small {
+        padding-top: 2rem;
+
+        &::before {
+          height: 2rem;
+        }
+
+        th > div,
+        td {
+          padding: 0.5rem 1rem;
+        }
+
+        td {
+          padding-bottom: 0.4375rem;
+        }
+
+        &.-borderless {
+          td {
+            padding: 0.5rem 1rem;
+          }
+        }
+
+        &.-bordered {
+          td {
+            padding: 0.5rem 1rem 0.4375rem 0.9375rem;
+          }
+        }
+      }
+
+      &.-large {
         padding-top: 4rem;
 
         &::before {
           height: 4rem;
         }
 
-        th > div,
-        td {
-          padding: 1rem 2rem;
-        }
-
-        td {
-          padding-bottom: 0.875rem;
-        }
-
-        &.-borderless {
-          td {
-            padding: 1rem 2rem;
-          }
-        }
-
-        &.-bordered {
-          td {
-            padding: 1rem 2rem 0.875rem 1.875rem;
-          }
-        }
-      }
-
-      &.-large {
-        padding-top: 8rem;
-
-        &::before {
-          height: 8rem;
-        }
-
         th {
-          font-size: 1.75rem;
+          font-size: 0.875rem;
         }
 
         th > div,
         td {
-          padding: 3rem 2rem;
+          padding: 1.5rem 1rem;
         }
 
         td {
-          padding-bottom: 2.875rem;
+          padding-bottom: 1.4375rem;
         }
 
         &.-borderless {
           td {
-            padding: 3rem 2rem;
+            padding: 1.5rem 1rem;
           }
         }
 
         &.-bordered {
           td {
-            padding: 3rem 2rem 2.875rem 1.875rem;
+            padding: 1.5rem 1rem 1.4375rem 0.9375rem;
           }
         }
       }
