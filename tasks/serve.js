@@ -7,7 +7,7 @@ const plugins = require('gulp-load-plugins')();
 
 gulp.task('serve', ['build'], () => {
   server = plugins.connect.server({
-      name: 'CenturyLink Human Interface Documentation',
+      name: 'Chi Documentation',
       root: [Folders.DIST],
       port: 8080,
       livereload: {
