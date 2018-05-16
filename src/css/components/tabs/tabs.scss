@@ -120,6 +120,12 @@
 
       &.-icons {
         & > li {
+          &.-active {
+            .a-icon {
+              color: $brand-color;
+            }
+          }
+
           & > a {
             padding-left: 3.5rem;
             position: relative;
