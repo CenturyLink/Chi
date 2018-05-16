@@ -11,7 +11,7 @@ p.-text
 h4 Base
 .example.-mb3
   .-p3
-    .m-formGroup
+    .a-formGroup
       input(type="checkbox", class="a-input -toggle", id="toggle1")
       label(for="toggle1")
   :code(lang="html")
@@ -21,7 +21,7 @@ h4 Base
 h4 Disabled
 .example.-mb3
   .-p3
-    .m-formGroup
+    .a-formGroup
       input(type="checkbox", class="a-input -toggle", id="toggle2", disabled)
       label(for="toggle2")
   :code(lang="html")
@@ -33,7 +33,7 @@ p.-text
   | By default, toggle switches are labeled with text <code>ON/OFF</code>. To disable this, apply the modifier <code>-noText</code>.
 .example.-mb3
   .-p3
-    .m-formGroup
+    .a-formGroup
       input(type="checkbox", class="a-input -toggle -noText", id="toggle3")
       label(for="toggle3")
   :code(lang="html")
@@ -42,24 +42,24 @@ p.-text
 
 h4 Stacked
 p.-text
-  | Group toggle switches in <code>m-formGroup</code> for easy stacking.
+  | Group toggle switches in <code>a-formGroup</code> for easy stacking.
 .example.-mb3
   .-p3
-    .m-formGroup.-mb2
+    .a-formGroup.-mb2
       input(type="checkbox", class="a-input -toggle -noText", id="toggle4")
       label(class="-mr1", for="toggle4")
       span.-text Notifications
-    .m-formGroup
+    .a-formGroup
       input(type="checkbox", class="a-input -toggle -noText", id="toggle5")
       label(class="-mr1", for="toggle5")
       span.-text Outage Alerts
   :code(lang="html")
-    <div class="m-formGroup -mb2">
+    <div class="a-formGroup -mb2">
       <input type="checkbox" class="a-input -toggle -noText" id="toggle4">
       <label for="toggle4"></label>
       <span class="-text">Notifications</span>
     </div>
-    <div class="m-formGroup">
+    <div class="a-formGroup">
       <input type="checkbox" class="a-input -toggle -noText" id="toggle5">
       <label for="toggle5"></label>
       <span class="-text">Outage Alerts</span>
@@ -67,24 +67,24 @@ p.-text
 
 h4 Inline
 p.-text
-  | Apply the class <code>-inline</code> to <code>m-formGroup</code> to display toggle switches inline.
+  | Apply the class <code>-inline</code> to <code>a-formGroup</code> to display toggle switches inline.
 .example.-mb3
   .-p3
-    .m-formGroup.-inline.-mr3
+    .a-formGroup.-inline.-mr3
       input(type="checkbox", class="a-input -toggle -noText", id="toggle6")
       label(class="-mr1", for="toggle6")
       span.-text Notifications
-    .m-formGroup.-inline
+    .a-formGroup.-inline
       input(type="checkbox", class="a-input -toggle -noText", id="toggle7")
       label(class="-mr1", for="toggle7")
       span.-text Outage Alerts
   :code(lang="html")
-    <div class="m-formGroup -inline -mr3">
+    <div class="a-formGroup -inline -mr3">
       <input type="checkbox" class="a-input -toggle -noText" id="toggle6">
       <label class="-mr1" for="toggle6"></label>
       <span class="-text">Notifications</span>
     </div>
-    <div class="m-formGroup -inline">
+    <div class="a-formGroup -inline">
       <input type="checkbox" class="a-input -toggle -noText" id="toggle7">
       <label class="-mr1" for="toggle7"></label>
       <span class="-text">Outage Alerts</span>

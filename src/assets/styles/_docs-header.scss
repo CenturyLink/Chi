@@ -17,7 +17,7 @@
     width: 100%;
     padding: 0 1.5rem;
     z-index: 1;
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: $md-breakpoint) {
       flex-direction: column;
       height: 5rem;
       justify-content: center;
@@ -31,7 +31,7 @@
       width: 100%;
       img {
         max-width: 9rem;
-        @media only screen and (max-width: 900px) {
+        @media only screen and (max-width: $md-breakpoint) {
           height: 1.5rem;
         }
       }
@@ -42,7 +42,7 @@
       display: inline-flex;
       font-weight: 400;
       margin-left: 2rem;
-      @media only screen and (max-width: 900px) {
+      @media only screen and (max-width: $md-breakpoint) {
         font-size: 1rem;
         line-height: 1.5rem;
         margin: .25rem 0 0 0;

@@ -12,7 +12,7 @@
       flex: 1 0 auto;
       flex-direction: row;
       padding: 4rem 0 0 16rem;
-      @media only screen and (max-width: 900px) {
+      @media only screen and (max-width: $md-breakpoint) {
         flex-direction: column;
         padding-left: 0;
         padding-top: 0.5rem;
@@ -23,7 +23,7 @@
         left: 0;
         top: 64px;
         background-color: set-color(white);
-        border-right: 0.0625rem solid set-color(grey, 30);
+        border-right: 0.0625rem solid #e0e0e0;
         display: flex;
         flex-direction: column;
         flex-shrink: 0;
@@ -31,12 +31,13 @@
         height: 100%;
         width: 16rem;
         padding-top: 0.5rem;
-        @media only screen and (max-width: 900px) {
+        padding-bottom: 4.5rem;
+        @media only screen and (max-width: $md-breakpoint) {
           position: static;
           width: 100%;
           border-right: 0;
           padding-bottom: 1rem;
-          border-bottom: 0.0625rem solid set-color(grey, 30);
+          border-bottom: 0.0625rem solid #e0e0e0;
         }
 
         a[disabled] {
@@ -44,7 +45,7 @@
           pointer-events: none;
         }
         .a-tabs.-vertical {
-          @media only screen and (max-width: 900px) {
+          @media only screen and (max-width: $md-breakpoint) {
             >li {
               >a {
                 padding-top: 0.5rem;
@@ -54,7 +55,7 @@
           }
           >li.-active {
             >a {
-              color: #00853F;
+              color: $brand-color;
               &:before {
                 display: none;
               }
@@ -65,10 +66,10 @@
               margin-bottom: 0;
               &.-active {
                 >a {
-                  color: #00853F;
+                  color: $brand-color;
                   position: relative;
                   &:before {
-                    background-color: #00853F;
+                    background-color: $brand-color;
                     content: "";
                     left: 0;
                     position: absolute;
@@ -89,7 +90,7 @@
         flex-grow: 1;
         min-width: 0;
         padding-top: 1rem;
-        @media only screen and (max-width: 900px) {
+        @media only screen and (max-width: $md-breakpoint) {
           padding-top: 0.5rem;
         }
         .a-table {
@@ -98,28 +99,28 @@
           }
         }
 
-        @media only screen and (min-width: 900px) {
+        @media only screen and (min-width: $md-breakpoint) {
           >.a-grid__container {
             margin: 0 40px;
           }
         }
 
-        @media only screen and (min-width: 1280px) {
+        @media only screen and (min-width: 1260px) {
           >.a-grid__container {
             margin: 0 auto;
-            width: 960px;
+            max-width: 960px;
           }
         }
 
         .example {
-          border: 0.0625rem solid set-color(grey, 30);
+          border: 0.0625rem solid #e0e0e0;
           border-radius: 0.15em;
 
           pre[class*=language-] {
             margin: 0;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
-            border-top: 0.0625rem solid set-color(grey, 30);
+            border-top: 0.0625rem solid #e0e0e0;
           }
           .code-block>pre {
             border-top: 0;
