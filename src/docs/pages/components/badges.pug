@@ -17,7 +17,7 @@ h4 Base
 .example.-mb3
   .-p2
     +badge('Base').-m1
-    each type in ['brand', 'danger', 'info', 'light', 'dark']
+    each type in ['brand', 'success', 'danger', 'info', 'light', 'dark']
       +badge(type)(class=`-${type} -m1`)
   :code(lang="html")
     <div class="a-badge">
@@ -25,6 +25,9 @@ h4 Base
     </div>
     <div class="a-badge -brand">
       <span>brand</span>
+    </div>
+    <div class="a-badge -success">
+      <span>success</span>
     </div>
     <div class="a-badge -danger">
       <span>danger</span>
@@ -43,7 +46,7 @@ h4 Outline
 .example.-mb3
   .-p2
     +badge('Base').-outline.-m1
-    each type in ['brand', 'danger', 'info', 'light', 'dark']
+    each type in ['brand', 'success', 'danger', 'info', 'light', 'dark']
       +badge(type)(class=`-${type} -outline -m1`)
   :code(lang="html")
     <div class="a-badge -outline">
@@ -51,6 +54,9 @@ h4 Outline
     </div>
     <div class="a-badge -outline -brand">
       <span>brand</span>
+    </div>
+    <div class="a-badge -outline -success">
+      <span>success</span>
     </div>
     <div class="a-badge -outline -danger">
       <span>danger</span>
@@ -69,7 +75,7 @@ h4 Flat
 .example.-mb3
   .-p2
     +badge('Base').-flat.-m1
-    each type in ['brand', 'danger', 'info', 'light', 'dark']
+    each type in ['brand', 'success', 'danger', 'info', 'light', 'dark']
       +badge(type)(class=`-${type} -flat -m1`)
   :code(lang="html")
     <div class="a-badge -flat">
@@ -77,6 +83,9 @@ h4 Flat
     </div>
     <div class="a-badge -flat -brand">
       <span>brand</span>
+    </div>
+    <div class="a-badge -flat -success">
+      <span>success</span>
     </div>
     <div class="a-badge -flat -danger">
       <span>danger</span>
@@ -99,7 +108,7 @@ p.-text
  .example.-mb3
    .-p2
      +badge('Base').-pill.-m1
-     each type in ['brand', 'danger', 'info', 'light', 'dark']
+     each type in ['brand', 'success', 'danger', 'info', 'light', 'dark']
        +badge(type)(class=`-${type} -pill -m1`)
    :code(lang="html")
      <div class="a-badge -pill">
@@ -107,6 +116,9 @@ p.-text
      </div>
      <div class="a-badge -pill -brand">
        <span>brand</span>
+     </div>
+     <div class="a-badge -pill -success">
+       <span>success</span>
      </div>
      <div class="a-badge -pill -danger">
        <span>danger</span>
@@ -125,7 +137,7 @@ p.-text
  .example.-mb3
    .-p2
      +badge('Base').-pill.-outline.-m1
-     each type in ['brand', 'danger', 'info', 'light', 'dark']
+     each type in ['brand', 'success', 'danger', 'info', 'light', 'dark']
        +badge(type)(class=`-${type} -pill -outline -m1`)
    :code(lang="html")
      <div class="a-badge -pill -outline">
@@ -133,6 +145,9 @@ p.-text
      </div>
      <div class="a-badge -pill -outline -brand">
        <span>brand</span>
+     </div>
+     <div class="a-badge -pill -outline -success">
+       <span>success</span>
      </div>
      <div class="a-badge -pill -outline -danger">
        <span>danger</span>
