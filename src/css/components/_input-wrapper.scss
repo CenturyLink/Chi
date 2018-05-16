@@ -8,3 +8,14 @@
     display: table;
   }
 }
+
+.a-formGroup {
+  display: block;
+  position: relative;
+
+  &.-inline {
+    align-items: center;
+    display: inline-flex;
+    margin-right: 0.5rem;
+  }
+}
