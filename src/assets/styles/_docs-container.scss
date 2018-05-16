@@ -12,7 +12,7 @@
       flex: 1 0 auto;
       flex-direction: row;
       padding: 4rem 0 0 16rem;
-      @media only screen and (max-width: 900px) {
+      @media only screen and (max-width: $md-breakpoint) {
         flex-direction: column;
         padding-left: 0;
         padding-top: 0.5rem;
@@ -32,7 +32,7 @@
         width: 16rem;
         padding-top: 0.5rem;
         padding-bottom: 4.5rem;
-        @media only screen and (max-width: 900px) {
+        @media only screen and (max-width: $md-breakpoint) {
           position: static;
           width: 100%;
           border-right: 0;
@@ -45,7 +45,7 @@
           pointer-events: none;
         }
         .a-tabs.-vertical {
-          @media only screen and (max-width: 900px) {
+          @media only screen and (max-width: $md-breakpoint) {
             >li {
               >a {
                 padding-top: 0.5rem;
@@ -55,7 +55,7 @@
           }
           >li.-active {
             >a {
-              color: #00853F;
+              color: $brand-color;
               &:before {
                 display: none;
               }
@@ -66,10 +66,10 @@
               margin-bottom: 0;
               &.-active {
                 >a {
-                  color: #00853F;
+                  color: $brand-color;
                   position: relative;
                   &:before {
-                    background-color: #00853F;
+                    background-color: $brand-color;
                     content: "";
                     left: 0;
                     position: absolute;
@@ -90,7 +90,7 @@
         flex-grow: 1;
         min-width: 0;
         padding-top: 1rem;
-        @media only screen and (max-width: 900px) {
+        @media only screen and (max-width: $md-breakpoint) {
           padding-top: 0.5rem;
         }
         .a-table {
@@ -99,16 +99,16 @@
           }
         }
 
-        @media only screen and (min-width: 900px) {
+        @media only screen and (min-width: $md-breakpoint) {
           >.a-grid__container {
             margin: 0 40px;
           }
         }
 
-        @media only screen and (min-width: 1280px) {
+        @media only screen and (min-width: 1260px) {
           >.a-grid__container {
             margin: 0 auto;
-            width: 960px;
+            max-width: 960px;
           }
         }
 
