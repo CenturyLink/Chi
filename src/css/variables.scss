@@ -176,10 +176,10 @@ $dark-color: map-get(map-get($colorscheme, grey), 90);
 $light-color: map-get(map-get($colorscheme, grey), 30);
 
 // screen breakpoints
-$sm-breakpoint: 540px;
-$md-breakpoint: 720px;
-$lg-breakpoint: 960px;
-$xl-breakpoint: 1140px;
+$sm-breakpoint: 576px;
+$md-breakpoint: 768px;
+$lg-breakpoint: 992px;
+$xl-breakpoint: 1200px;
 
 $screen-sizes: xs sm md lg xl;
 
