@@ -43,6 +43,23 @@ $badge: c-badge;
       color: set-color(grey, 60);
     }
 
+    &.-brand {
+      background-color: $brand-color;
+      border: 0.0625rem solid $brand-color;
+      color: set-color(white);
+
+      &.-outline {
+        background-color: set-color(white);
+        color: $brand-color;
+      }
+
+      &.-flat {
+        background-color: transparent;
+        border-color: transparent;
+        color: $brand-color;
+      }
+    }
+
     &.-success {
       background-color: $success-color;
       border: 0.0625rem solid $success-color;
