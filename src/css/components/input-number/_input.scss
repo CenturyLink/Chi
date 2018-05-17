@@ -64,7 +64,7 @@
 
         &:not([disabled]) {
           &.-danger {
-            border-color: $danger-color;
+            border-color: set-color(red, 50);
           }
         }
 
@@ -73,7 +73,7 @@
 
           &:focus,
           &.-focus {
-            box-shadow: 0 0 0 3px rgba($danger-color, 0.2);
+            box-shadow: 0 0 0 3px rgba(set-color(red, 50), 0.2);
           }
         }
       }
