@@ -25,8 +25,8 @@
 
       table {
         border-spacing: 0;
-        font-size: 0.8125rem;
-        line-height: 1rem;
+        font-size: $text-small;
+        line-height: $line-height-smaller;
         margin: 0;
         padding: 0;
         width: 100%;
@@ -210,7 +210,7 @@
         }
 
         th {
-          font-size: 0.875rem;
+          font-size: $text;
         }
 
         th > div,

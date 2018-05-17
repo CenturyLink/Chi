@@ -175,6 +175,21 @@ $warning-color: map-get(map-get($colorscheme, yellow), 50);
 $dark-color: map-get(map-get($colorscheme, grey), 90);
 $light-color: map-get(map-get($colorscheme, grey), 30);
 
+// text sizes
+$text: 0.875rem; // 14px
+$text-large: 1rem; // 16px
+$text-larger: 1.125rem; // 18px
+$text-small: 0.8125rem; // 13px
+$text-smaller: 0.75rem; // 12px
+$text-smallest: 0.6875rem; // 11px
+
+// line height sizes
+$line-height: 1.5rem; // 24px
+$line-height-large: 1.5rem; // 24px
+$line-height-larger: 1.75rem; // 28px
+$line-height-small: 1.25rem; // 20px
+$line-height-smaller: 1rem; // 16px
+
 // screen breakpoints
 $sm-breakpoint: 576px;
 $md-breakpoint: 768px;

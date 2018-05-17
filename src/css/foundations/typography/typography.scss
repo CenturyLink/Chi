@@ -9,7 +9,7 @@
 .chi {
   color: $text-color;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
-  line-height: 1.5rem;
+  line-height: $line-height;
 
   a {
     background-color: transparent;
@@ -47,7 +47,7 @@
 
   h4,
   .a-h4 {
-    font-size: 1.125rem;
+    font-size: $text-larger;
     font-weight: 600;
     line-height: 2rem;
     margin: 0.5rem 0;
@@ -55,17 +55,17 @@
 
   h5,
   .a-h5 {
-    font-size: 1rem;
+    font-size: $text-large;
     font-weight: 600;
-    line-height: 2rem;
+    line-height: $line-height-large;
     margin: 0.5rem 0;
   }
 
   h6,
   .a-h6 {
-    font-size: 0.875rem;
+    font-size: $text;
     font-weight: 600;
-    line-height: 1.5rem;
+    line-height: $line-height;
     margin: 0.5rem 0;
   }
 
@@ -86,7 +86,7 @@
   .a-code,
   pre {
     font-family: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
-    font-size: 0.8125rem;
+    font-size: $text-small;
   }
 
   code {
@@ -99,7 +99,7 @@
     border-radius: 3px;
     color: $text-color;
     display: block;
-    font-size: 0.8125rem;
+    font-size: $text-small;
     margin-bottom: 0.5rem;
     margin-top: 0;
     overflow: auto;
@@ -147,29 +147,29 @@
 
   p,
   .-text {
-    font-size: 0.875rem;
-    line-height: 1.5rem;
+    font-size: $text;
+    line-height: $line-height;
   }
 
   .-textLarge {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: $text-large;
+    line-height: $line-height-large;
   }
 
   .-textLarger {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: $text-larger;
+    line-height: $line-height-larger;
   }
 
   small,
   .-textSmall {
-    font-size: 0.8125rem;
-    line-height: 1.25rem;
+    font-size: $text-small;
+    line-height: $line-height-small;
   }
 
   .-textSmaller {
-    font-size: 0.75rem;
-    line-height: 1.25rem;
+    font-size: $text-smaller;
+    line-height: $line-height-smaller;
   }
 
   .-textJustify {

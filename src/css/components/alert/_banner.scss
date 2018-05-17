@@ -43,8 +43,8 @@
         }
 
         &::before {
-          font-size: 1rem;
-          line-height: 1.5rem;
+          font-size: $text-large;
+          line-height: $line-height;
           margin-bottom: 0.4375rem;
         }
       }
