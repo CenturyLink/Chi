@@ -373,5 +373,79 @@ $state-colors: (primary: emerald, danger: red, info: navy, dark: grey);
         }
       }
     }
+
+    &.-dark {
+      background-color: set-color(grey, 90);
+      border-color: set-color(grey, 90);
+
+      &:hover,
+      &.-hover {
+        background-color: set-color(grey, 100);
+        border-color: set-color(grey, 100);
+      }
+
+      &:focus,
+      &.-focus {
+        box-shadow: 0 0 0 3px rgba(set-color(grey, 90), 0.3);
+      }
+
+      &:active,
+      &.-active {
+        &,
+        &:focus,
+        &.-focus {
+          background-color: set-color(black);
+        }
+      }
+
+      &.-outline {
+        border-color: set-color(grey, 90);
+        color: set-color(grey, 90);
+
+        &:hover,
+        &.-hover {
+          background-color: set-color(grey, 90);
+        }
+
+        &:focus,
+        &.-focus {
+          border-color: set-color(grey, 90);
+          box-shadow: 0 0 0 3px rgba(set-color(grey, 90), 0.3);
+        }
+
+        &:active,
+        &.-active {
+          &,
+          &:focus,
+          &.-focus {
+            background-color: set-color(grey, 100);
+          }
+        }
+      }
+
+      &.-flat {
+        color: set-color(grey, 90);
+
+        &:hover,
+        &.-hover {
+          border: 0.0625rem solid set-color(grey, 90);
+        }
+
+        &:focus,
+        &.-focus {
+          border-color: set-color(grey, 90);
+          box-shadow: 0 0 0 3px rgba(set-color(grey, 90), 0.3);
+        }
+
+        &:active,
+        &.-active {
+          &,
+          &:focus,
+          &.-focus {
+            background-color: set-color(grey, 90);
+          }
+        }
+      }
+    }
   }
 }
