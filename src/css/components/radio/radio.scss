@@ -39,7 +39,7 @@
             left: 0.25rem;
             opacity: 0;
             position: absolute;
-            top: 0.25rem;
+            top: calc(50% - 0.25rem);
             transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
             width: 0.5rem;
           }
