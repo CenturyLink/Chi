@@ -10,19 +10,39 @@ $badge: c-badge;
     border-radius: 3px;
     box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
     display: inline-block;
-    font-size: $text-smallest;
+    font-size: $text;
     font-weight: 600;
-    height: 1rem;
-    line-height: $line-height-smaller;
-    padding: 0 0.4375rem;
+    height: 1.5rem;
+    line-height: $line-height;
+    padding: 0 0.5rem;
     text-align: center;
-    text-transform: uppercase;
 
     span {
-      line-height: $line-height-smaller;
+      line-height: $line-height;
       position: relative;
       top: -0.0625rem;
       width: 100%;
+    }
+
+    &.-small {
+      font-size: $text-smaller;
+      height: 1.25rem;
+      line-height: $line-height-small;
+
+      span {
+        line-height: $line-height-small;
+      }
+    }
+
+    &.-smaller {
+      font-size: $text-smallest;
+      height: 1rem;
+      line-height: $line-height-smaller;
+      padding: 0 0.25rem;
+
+      span {
+        line-height: $line-height-smaller;
+      }
     }
 
     &.-pill {
