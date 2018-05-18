@@ -6,7 +6,7 @@ each type in ['solid', 'outline', 'flat']
   div(class=`test-${type}`)
     span.a-h2= `Badge / ${type}`
     div
-      each style in ['base', 'success', 'danger', 'info', 'dark', 'light']
+      each style in ['base', 'brand', 'success', 'danger', 'info', 'dark', 'light']
         div(
           class="a-badge -mr1"
           class={
@@ -21,7 +21,7 @@ each type in ['solid', 'outline']
     span.a-h2= `Badge / Pill / ${type}`
     table(cellpadding="0", cellspacing="0")
       tr
-        each style in ['base', 'success', 'danger', 'info', 'dark', 'light']
+        each style in ['base', 'brand', 'success', 'danger', 'info', 'dark', 'light']
           td
             div(
               class="a-badge -pill -mr1"
