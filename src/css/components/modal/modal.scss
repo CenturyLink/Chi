@@ -47,9 +47,9 @@ $backdrop: #{$modal}-backdrop;
       }
 
       .a-modal__title {
-        font-size: 1rem;
+        font-size: $text-large;
         font-weight: bold;
-        line-height: 1.5rem;
+        line-height: $line-height-large;
         margin: 0;
         text-transform: capitalize;
 
@@ -99,7 +99,7 @@ $backdrop: #{$modal}-backdrop;
           color: set-color(grey, 50);
           content: 'Back';
           display: block;
-          font-size: 0.875rem;
+          font-size: $text;
           font-weight: 600;
         }
 
@@ -107,8 +107,8 @@ $backdrop: #{$modal}-backdrop;
     }
 
     &__content {
-      font-size: 0.8125rem;
-      line-height: 1rem;
+      font-size: $text-small;
+      line-height: $line-height-smaller;
       padding: 1.5rem;
     }
 

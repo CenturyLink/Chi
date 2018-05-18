@@ -43,15 +43,15 @@ $states: (
     border-width: 0.0625rem;
     box-sizing: border-box;
     color: $text-color;
-    font-size: 0.8125rem;
-    line-height: 1rem;
+    font-size: $text-small;
+    line-height: $line-height-smaller;
     padding: 0.6875rem 0.9375rem;
     position: relative;
 
     &::before {
       content: attr(data-title);
       display: block;
-      font-size: 0.875rem;
+      font-size: $text;
       font-weight: 600;
       text-transform: capitalize;
     }

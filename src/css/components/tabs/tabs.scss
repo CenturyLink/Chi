@@ -18,7 +18,7 @@
         color: set-color(grey, 90);
         cursor: pointer;
         display: block;
-        font-size: 0.8125rem;
+        font-size: $text-small;
         font-weight: 600;
         text-decoration: none;
         text-transform: capitalize;
@@ -28,13 +28,23 @@
     &.-large {
       & > li {
         & > a {
-          font-size: 0.875rem;
+          font-size: $text;
         }
       }
     }
 
     &:not(.-vertical) {
       height: 3.5rem;
+
+      &.-icons {
+        & > li {
+          &.-active {
+            .a-icon {
+              color: $brand-color;
+            }
+          }
+        }
+      }
 
       &.-border {
         border-bottom: 0.0625rem solid set-color(grey, 30);
@@ -51,7 +61,7 @@
         }
 
         & > a {
-          line-height: 1rem;
+          line-height: $line-height-smaller;
           padding: 1.25rem 0;
         }
       }
@@ -65,7 +75,7 @@
           }
 
           & > a {
-            line-height: 1rem;
+            line-height: $line-height-smaller;
             padding: 1rem 0;
           }
         }
@@ -84,7 +94,7 @@
           }
 
           & > a {
-            line-height: 1.5rem;
+            line-height: $line-height-large;
             padding: 1.25rem 0;
           }
         }
@@ -94,7 +104,7 @@
     &.-vertical {
       display: flex;
       flex-direction: column;
-      line-height: 1rem;
+      line-height: $line-height-smaller;
 
       .a-tabs__subtabs {
         list-style: none;
@@ -109,8 +119,8 @@
             color: set-color(grey, 90);
             cursor: pointer;
             display: block;
-            font-size: 0.8125rem;
-            line-height: 1rem;
+            font-size: $text-small;
+            line-height: $line-height-smaller;
             padding: 0.5rem 0 0.5rem 2.5rem;
             text-decoration: none;
             text-transform: capitalize;
@@ -210,7 +220,7 @@
       &.-large {
         & > li {
           & > a {
-            line-height: 1.5rem;
+            line-height: $line-height-large;
             padding-bottom: 0.75rem;
             padding-top: 0.75rem;
 

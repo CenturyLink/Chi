@@ -12,8 +12,8 @@
           & {
             align-items: center;
             display: flex;
-            font-size: 0.8125rem;
-            line-height: 1rem;
+            font-size: $text-small;
+            line-height: $line-height-smaller;
             pointer-events: none;
             position: relative;
           }
@@ -68,11 +68,11 @@
 
         &.-small {
           & + label {
-            font-size: 0.6875rem;
+            font-size: $text-smallest;
 
             &::before {
               height: 1.5rem;
-              line-height: 1rem;
+              line-height: $line-height-smaller;
               width: 4.8125rem;
             }
           }
@@ -80,12 +80,12 @@
 
         &.-large {
           & + label {
-            font-size: 1rem;
-            line-height: 1.5rem;
+            font-size: $text-large;
+            line-height: $line-height-large;
 
             &::before {
               height: 2.5rem;
-              line-height: 1.5rem;
+              line-height: $line-height-large;
               width: 8.5rem;
             }
           }

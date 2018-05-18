@@ -8,8 +8,8 @@
       border-radius: 3px;
       color: set-color(grey, 90);
       display: block;
-      font-size: 0.8125rem;
-      line-height: 1rem;
+      font-size: $text-small;
+      line-height: $line-height-smaller;
       min-height: 4rem;
       outline: none;
       padding: 0.4375rem 0.6875rem;
@@ -40,15 +40,15 @@
       }
 
       &.-small {
-        font-size: 0.75rem;
-        line-height: 1rem;
+        font-size: $text-smaller;
+        line-height: $line-height-smaller;
         min-height: 3.5rem;
         padding: 0.1875rem 0.4375rem;
       }
 
       &.-large {
-        font-size: 1rem;
-        line-height: 1.5rem;
+        font-size: $text-large;
+        line-height: $line-height-large;
         min-height: 5.5rem;
         padding: 0.4375rem 0.6875rem;
       }
@@ -56,7 +56,7 @@
       @each $type in map-keys($state-colors) {
         &:not([disabled]) {
           &.-#{$type} {
-            border-color: set-color(map-get($state-colors, $type), 60);
+            border-color: set-color(map-get($state-colors, $type), 50);
           }
         }
 
@@ -65,7 +65,7 @@
 
           &:focus,
           &.-focus {
-            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 60), 0.2);
+            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 50), 0.2);
           }
         }
       }

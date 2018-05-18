@@ -16,7 +16,7 @@
             cursor: pointer;
             display: inline-block;
             height: 1.5rem;
-            line-height: 1.5rem;
+            line-height: $line-height;
             position: relative;
             transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             width: 3.5rem;
@@ -43,7 +43,7 @@
               color: set-color(white);
               content: 'OFF';
               display: block;
-              font-size: 0.6875rem;
+              font-size: $text-smallest;
               font-weight: bold;
               height: 1.5rem;
               left: 1.5625rem;

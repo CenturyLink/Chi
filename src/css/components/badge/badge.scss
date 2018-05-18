@@ -10,16 +10,16 @@ $badge: c-badge;
     border-radius: 3px;
     box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
     display: inline-block;
-    font-size: 0.6875rem;
+    font-size: $text-smallest;
     font-weight: 600;
     height: 1rem;
-    line-height: 1rem;
+    line-height: $line-height-smaller;
     padding: 0 0.4375rem;
     text-align: center;
     text-transform: uppercase;
 
     span {
-      line-height: 1rem;
+      line-height: $line-height-smaller;
       position: relative;
       top: -0.0625rem;
       width: 100%;
