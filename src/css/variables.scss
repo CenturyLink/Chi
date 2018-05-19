@@ -165,7 +165,7 @@ $text-inverse: map-get(map-get($colorscheme, grey), 10);
 
 $link-color: map-get(map-get($colorscheme, navy), 60);
 
-$focus-color: map-get(map-get($colorscheme, blue), 60);
+$focus-color: map-get(map-get($colorscheme, navy), 60);
 
 $brand-color: map-get(map-get($colorscheme, emerald), 60);
 $success-color: map-get(map-get($colorscheme, green), 50);
