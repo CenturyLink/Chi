@@ -211,3 +211,33 @@ p.-text Use the <code>-smaller</code> modifier class to render even smaller badg
     <div class="a-badge -light -smaller">
       <span>Light</span>
     </div>
+h3 Text Transform
+h4 Uppercase
+p.-text Use the <code>-textUppercase</code> text utility class to render badges in all uppercase. <code>-textLowercase</code> and <code>-textCapitalized</code> are also supported.
+.example.-mb3
+  .-p2
+    each type, val in {Base:'base', Brand:'brand', Success:'success', Danger:'danger', Info:'info', Dark:'dark', Light:'light'}
+      .a-badge(class=`-${type} -textUppercase -m1`)
+        span= val
+  :code(lang="html")
+    <div class="a-badge">
+      <span>Base</span>
+    </div>
+    <div class="a-badge -brand -textUppercase">
+      <span>Brand</span>
+    </div>
+    <div class="a-badge -success -textUppercase">
+      <span>Success</span>
+    </div>
+    <div class="a-badge -danger -textUppercase">
+      <span>Danger</span>
+    </div>
+    <div class="a-badge -info -textUppercase">
+      <span>Info</span>
+    </div>
+    <div class="a-badge -dark -textUppercase">
+      <span>Dark</span>
+    </div>
+    <div class="a-badge -light -textUppercase">
+      <span>Light</span>
+    </div>
