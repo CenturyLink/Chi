@@ -251,6 +251,10 @@
     color: $warning-color;
   }
 
+  .-textMuted {
+    color: $muted-color;
+  }
+
   // line heights
   @for $index from 1 through 9 {
     .-lh#{$index} {
