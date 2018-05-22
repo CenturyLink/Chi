@@ -69,7 +69,9 @@ export function copyAssets({ names = ['all'], dest = 'dist' }) {
     .map(name => `${path.join(componentsFolder, name)}`);
 
   return gulp.src(
-    foundationFolders.concat(componentFolders)
+    foundationFolders
+      .concat(componentFolders)
+      .concat(utilitiesFolder)
       .map(folder => `${path.join(folder, '**', '!(*.scss)')}`)
   )
     .pipe(gulp.dest(dest));
