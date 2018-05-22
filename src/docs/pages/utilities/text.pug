@@ -74,7 +74,7 @@ h4 Text colors
 p.-text Change text colors with contextual classes.
 .example.-mb3
   .-m3
-    each type in ['textBrand', 'textSuccess', 'textWarning', 'textDanger', 'textInfo']
+    each type in ['textBrand', 'textSuccess', 'textWarning', 'textDanger', 'textInfo', 'textMuted']
       p.-text(class=`-${type}`)
         = `.-${type}`
     p.-text.-textInverse(style="background:#000;") .-textInverse
@@ -84,4 +84,5 @@ p.-text Change text colors with contextual classes.
       <p class="-textWarning">.-textWarning</p>
       <p class="-textDanger">.-textDanger</p>
       <p class="-textInfo">.-textInfo</p>
+      <p class="-textMuted">.-textMuted</p>
       <p class="-textInverse">.-textInverse</p>
