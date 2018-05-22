@@ -4,15 +4,14 @@ import gulp from 'gulp';
 
 const plugins = require('gulp-load-plugins')();
 const componentsFolder = path.join(__dirname, '..', 'src', 'css', 'components');
+const utilitiesFolder = path.join(__dirname, '..', 'src', 'css', 'utilities');
 const foundationFolders = [
   'fonts',
   'reset',
   'typography',
-  'colors',
-  'layout'
+  'colors'
 ].map(item =>
   path.join(__dirname, '..', 'src', 'css', 'foundations', item));
-
 function getFolders(dir) {
   return fs.readdirSync(dir)
     .filter(file => fs.statSync(path.join(dir, file)).isDirectory());
@@ -35,6 +34,7 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
   return gulp.src(
     foundationFolders
       .concat(componentFolders)
+      .concat(utilitiesFolder)
       .map(folder => `${path.join(folder, '*.scss')}`)
       .concat(`!${path.join(componentsFolder, '*.scss')}`)
   )
@@ -69,7 +69,9 @@ export function copyAssets({ names = ['all'], dest = 'dist' }) {
     .map(name => `${path.join(componentsFolder, name)}`);
 
   return gulp.src(
-    foundationFolders.concat(componentFolders)
+    foundationFolders
+      .concat(componentFolders)
+      .concat(utilitiesFolder)
       .map(folder => `${path.join(folder, '**', '!(*.scss)')}`)
   )
     .pipe(gulp.dest(dest));

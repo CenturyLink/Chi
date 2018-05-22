@@ -1,0 +1,95 @@
+@import 'variables';
+
+.chi {
+
+  /* Margins */
+
+  @for $index from 0 through 6 {
+    .-m#{$index} {
+      margin: ($index / 2) + rem;
+    }
+  }
+
+  @for $index from 0 through 6 {
+
+    /* Top Margin */
+    .-mt#{$index} {
+      margin-top: ($index / 2) + rem;
+    }
+
+    /* Right Margin */
+    .-mr#{$index} {
+      margin-right: ($index / 2) + rem;
+    }
+
+    /* Bottom Margin */
+    .-mb#{$index} {
+      margin-bottom: ($index / 2) + rem;
+    }
+
+    /* Left Margin */
+    .-ml#{$index} {
+      margin-left: ($index / 2) + rem;
+    }
+
+    /* Horizontal Margins */
+    .-mx#{$index} {
+      margin-left: ($index / 2) + rem;
+      margin-right: ($index / 2) + rem;
+    }
+
+    /* Vertical Margins */
+    .-my#{$index} {
+      margin-bottom: ($index / 2) + rem;
+      margin-top: ($index / 2) + rem;
+    }
+
+  }
+
+  /* Padding */
+
+  @for $index from 0 through 6 {
+    .-p#{$index} {
+      padding-bottom: ($index / 2) + rem;
+      padding-left: ($index / 2) + rem;
+      padding-right: ($index / 2) + rem;
+      padding-top: ($index / 2) + rem;
+    }
+  }
+
+  @for $index from 0 through 6 {
+
+    /* Top Padding */
+    .-pt#{$index} {
+      padding-top: ($index / 2) + rem;
+    }
+
+    /* Right Padding */
+    .-pr#{$index} {
+      padding-right: ($index / 2) + rem;
+    }
+
+    /* Bottom Padding */
+    .-pb#{$index} {
+      padding-bottom: ($index / 2) + rem;
+    }
+
+    /* Left Padding */
+    .-pl#{$index} {
+      padding-left: ($index / 2) + rem;
+    }
+
+    /* Horizontal Padding */
+    .-px#{$index} {
+      padding-left: ($index / 2) + rem;
+      padding-right: ($index / 2) + rem;
+    }
+
+    /* Vertical Padding */
+    .-py#{$index} {
+      padding-bottom: ($index / 2) + rem;
+      padding-top: ($index / 2) + rem;
+    }
+
+  }
+}
