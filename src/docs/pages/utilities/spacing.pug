@@ -16,6 +16,8 @@ ul
   li <code>b</code> - use to apply <code>margin-bottom</code> or <code>padding-bottom</code>
   li <code>l</code> - use to apply <code>margin-left</code> or <code>padding-left</code>
   li <code>r</code> - use to apply <code>margin-right</code> or <code>padding-right</code>
+  li <code>x</code> - use to apply <code>margin-left</code> and <code>margin-right</code> or <code>padding-left</code> and <code>padding-right</code>
+  li <code>y</code> - use to apply <code>margin-top</code> and <code>margin-bottom</code> or <code>padding-top</code> and <code>padding-bottom</code>
   li blank - leave blank to apply <code>margin</code> or <code>padding</code> to all 4 sides.
 h4 {size}
 ul
@@ -48,7 +50,8 @@ p.-text
 h4 Side Margins
 p.-text
   | Apply margin to specific sides of an element by adding <code>t</code>,
-  | <code>b</code>, <code>l</code>, or <code>r</code> to the class name.
+  | <code>b</code>, <code>l</code>, <code>r</code>, <code>x</code> or <code>y</code>
+  | to the class name.
 .example.-mb3
   .-p3
     .a-grid.-noGutter
@@ -60,6 +63,10 @@ p.-text
         .-ml3(style="width:3rem;height:3rem;background:#F74F87;")
       .-mr3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
         .-mr3(style="width:3rem;height:3rem;background:#F74F87;")
+      .-mr3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
+        .-mx3(style="width:3rem;height:3rem;background:#F74F87;")
+      .-mr3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
+        .-my3(style="width:3rem;height:3rem;background:#F74F87;")
   :code(lang="html")
     <!-- margin-top -->
     <div class="-mt3"></div>
@@ -69,6 +76,10 @@ p.-text
     <div class="-ml3"></div>
     <!-- margin-right -->
     <div class="-mr3"></div>
+    <!-- margin-left and margin-right -->
+    <div class="-mx3"></div>
+    <!-- margin-top and margin-bottom -->
+    <div class="-my3"></div>
 h4 Padding
 p.-text
   | In this example, various padding classes have been applied to render padding
@@ -89,7 +100,8 @@ p.-text
 h4 Side Paddings
 p.-text
   | Apply padding to specific sides of an element by adding <code>t</code>,
-  | <code>b</code>, <code>l</code>, or <code>r</code> to the class name.
+  | <code>b</code>, <code>l</code>, <code>r</code>, <code>x</code> or <code>y</code>
+  | to the class name.
 .example.-mb3
   .-p3
     .a-grid.-noGutter
@@ -101,6 +113,10 @@ p.-text
         div(style="width:3rem;height:3rem;background:#F74F87;")
       .-pr3.-mr3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
         div(style="width:3rem;height:3rem;background:#F74F87;")
+      .-px3.-mr3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
+        div(style="width:3rem;height:3rem;background:#F74F87;")
+      .-py3.-mr3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
+        div(style="width:3rem;height:3rem;background:#F74F87;")
   :code(lang="html")
     <!-- padding-top -->
     <div class="-pt3"></div>
@@ -110,6 +126,10 @@ p.-text
     <div class="-pl3"></div>
     <!-- padding-right -->
     <div class="-pr3"></div>
+    <!-- padding-left and padding-right -->
+    <div class="-px3"></div>
+    <!-- padding-top and padding-bottom -->
+    <div class="-py3"></div>
 h4 Margin + Padding
 p.-text
   | Apply both margin and padding to an element by adding both class names.
