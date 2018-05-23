@@ -155,7 +155,7 @@ p.-text Use <code>&lt;ul&gt;</code> tags for unordered lists and <code>&lt;ol&gt
 .a-grid
   .a-col.-w6
     .example.-mb3
-      ul
+      ul.-text
         li List item 1
         li List item 2
           ul
@@ -164,12 +164,12 @@ p.-text Use <code>&lt;ul&gt;</code> tags for unordered lists and <code>&lt;ol&gt
         li List item 3
         li List item 4
       :code(lang="html")
-        <ul>
+        <ul class="-text">
           <li></li>
         </ul>
   .a-col.-w6
     .example.-mb3
-      ol
+      ol.-text
         li List item 1
         li List item 2
           ul
@@ -178,13 +178,13 @@ p.-text Use <code>&lt;ul&gt;</code> tags for unordered lists and <code>&lt;ol&gt
         li List item 3
         li List item 4
       :code(lang="html")
-        <ol>
+        <ol class="-text">
           <li></li>
         </ol>
 h4 No style
 p.-text To remove default list styling, apply the class <code>.-noStyle</code>
 .example.-mb3
-  ul.-noStyle.-m3
+  ul.-text.-noStyle.-m3
     li List item 1
     li List item 2
       ul.-noStyle
@@ -193,13 +193,13 @@ p.-text To remove default list styling, apply the class <code>.-noStyle</code>
     li List item 3
     li List item 4
   :code(lang="html")
-    <ul class="-noStyle">
+    <ul class="-text -noStyle">
       <li></li>
     </ul>
 h4 Inline
 p.-text To display list items inline, apply the class <code>.-inline</code>
 .example.-mb3
-  ul.-inline.-m3
+  ul.-text.-inline.-m3
     li List item 1
     li List item 2
       ul.-inline
@@ -208,7 +208,7 @@ p.-text To display list items inline, apply the class <code>.-inline</code>
     li List item 3
     li List item 4
   :code(lang="html")
-    <ul class="-inline">
+    <ul class="-text -inline">
       <li></li>
     </ul>
 h3 Blockquotes
