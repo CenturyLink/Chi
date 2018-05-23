@@ -191,6 +191,15 @@ $line-height-larger: 1.75rem; // 28px
 $line-height-small: 1.25rem; // 20px
 $line-height-smaller: 1rem; // 16px
 
+// depth box shadows
+$depth0: none;
+$depth1: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+$depth2: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+$depth3: 0 6px 12px 0 rgba(0, 0, 0, 0.1);
+$depth4: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+$depth5: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
+
+
 // screen breakpoints
 $sm-breakpoint: 576px;
 $md-breakpoint: 768px;
