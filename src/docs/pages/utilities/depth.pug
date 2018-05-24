@@ -8,12 +8,12 @@ h3 Notation
 p.-text Depth utility classes can be defined using the format <code>-d{size}</code>.
 h4 {size}
 ul.-text
-  li <code>0</code> - use to set <code>box-shadow</code> to <code>$depth0</code>
-  li <code>1</code> - use to set <code>box-shadow</code> to <code>$depth1</code>
-  li <code>2</code> - use to set <code>box-shadow</code> to <code>$depth2</code>
-  li <code>3</code> - use to set <code>box-shadow</code> to <code>$depth3</code>
-  li <code>4</code> - use to set <code>box-shadow</code> to <code>$depth4</code>
-  li <code>5</code> - use to set <code>box-shadow</code> to <code>$depth5</code>
+  li <code>0</code> - use to set <code>box-shadow</code> to <code>none</code>
+  li <code>1</code> - use to set <code>box-shadow</code> to <code>1px</code>
+  li <code>2</code> - use to set <code>box-shadow</code> to <code>4px</code>
+  li <code>3</code> - use to set <code>box-shadow</code> to <code>6px</code>
+  li <code>4</code> - use to set <code>box-shadow</code> to <code>8px</code>
+  li <code>5</code> - use to set <code>box-shadow</code> to <code>12px</code>
 
 h3 Examples
 .example.-mb3
@@ -32,3 +32,16 @@ h3 Examples
     <div class="-d3"></div>
     <div class="-d4"></div>
     <div class="-d5"></div>
+
+h3 SASS
+p.-text
+  | Chi defines depths with Saas maps. The following example will render
+  | a depth equivalent to <code>-d1</code> / <code>1px</code>.
+
+.-mb4
+  :code(lang='sass')
+    @import '@centurylink/chi/src/css/variables';
+
+    .example {
+      box-shadow: map-get($depth, 1);
+    }
