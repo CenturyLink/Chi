@@ -53,14 +53,12 @@ $badge: c-badge;
       background-color: set-color(white);
       border-color: set-color(grey, 50);
       box-shadow: initial;
-      color: set-color(grey, 60);
     }
 
     &.-flat {
       background-color: transparent;
       border-color: transparent;
       box-shadow: initial;
-      color: set-color(grey, 60);
     }
 
     &.-brand {
@@ -154,13 +152,13 @@ $badge: c-badge;
 
       &.-outline {
         background-color: set-color(white);
-        color: set-color(grey, 50);
+        color: set-color(grey, 60);
       }
 
       &.-flat {
         background-color: transparent;
         border-color: transparent;
-        color: set-color(grey, 50);
+        color: set-color(grey, 60);
       }
     }
   }
