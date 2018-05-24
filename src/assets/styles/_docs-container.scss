@@ -79,6 +79,11 @@
                   }
                 }
               }
+              a {
+                &:hover {
+                  color: $brand-color;
+                }
+              }
             }
           }
         }
