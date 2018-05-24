@@ -4,28 +4,10 @@
 
   /* Depth */
 
-  .-d0 {
-    box-shadow: $depth0;
-  }
-
-  .-d1 {
-    box-shadow: $depth1;
-  }
-
-  .-d2 {
-    box-shadow: $depth2;
-  }
-
-  .-d3 {
-    box-shadow: $depth3;
-  }
-
-  .-d4 {
-    box-shadow: $depth4;
-  }
-
-  .-d5 {
-    box-shadow: $depth5;
+  @for $index from 0 through 5 {
+    .-d#{$index} {
+      box-shadow: map-get($depth, $index);
+    }
   }
 
 }
