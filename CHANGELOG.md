@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### 0.8.0 (unreleased)
+### 0.8.0 (May 24, 2018)
 
 * Added depth utility classes.
 * Enabled spacing utility classes to be combined (i.e. .-p4 .-pb0).
