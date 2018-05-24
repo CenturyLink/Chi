@@ -2,6 +2,7 @@
 
 ### 0.8.0 (unreleased)
 
+* Added depth utility classes.
 * Enabled spacing utility classes to be combined (i.e. .-p4 .-pb0).
 * Added card component.
 * Changed relative base size to 16px (the default on most browsers).

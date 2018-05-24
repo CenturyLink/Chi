@@ -1,0 +1,13 @@
+@import 'variables';
+
+.chi {
+
+  /* Depth */
+
+  @for $index from 0 through 5 {
+    .-d#{$index} {
+      box-shadow: map-get($depth, $index);
+    }
+  }
+
+}
