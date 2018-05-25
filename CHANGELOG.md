@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.8.1 (unreleased)
+
+* Added border utility classes.
+
 ### 0.8.0 (May 24, 2018)
 
 * Added depth utility classes.
