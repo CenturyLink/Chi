@@ -1,0 +1,13 @@
+@import 'variables';
+
+.chi {
+
+  /* Shadows */
+
+  @for $index from 0 through 5 {
+    .-s#{$index} {
+      box-shadow: map-get($shadow, $index);
+    }
+  }
+
+}
