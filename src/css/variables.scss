@@ -164,7 +164,6 @@ $text-color: map-get(map-get($colorscheme, grey), 100);
 $text-inverse: map-get(map-get($colorscheme, grey), 10);
 
 $link-color: map-get(map-get($colorscheme, navy), 60);
-
 $focus-color: map-get(map-get($colorscheme, navy), 60);
 
 $brand-color: map-get(map-get($colorscheme, emerald), 60);
@@ -175,6 +174,10 @@ $warning-color: map-get(map-get($colorscheme, yellow), 50);
 $dark-color: map-get(map-get($colorscheme, grey), 90);
 $light-color: map-get(map-get($colorscheme, grey), 30);
 $muted-color: map-get(map-get($colorscheme, grey), 60);
+
+// borders
+$border-color: rgba(0, 0, 0, 0.12);
+$border-radius: 3px;
 
 // text sizes
 $text: 0.875rem; // 14px
@@ -208,5 +211,3 @@ $lg-breakpoint: 992px;
 $xl-breakpoint: 1200px;
 
 $screen-sizes: xs sm md lg xl;
-
-$border-radius: 3px;
