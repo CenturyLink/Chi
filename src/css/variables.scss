@@ -194,8 +194,8 @@ $line-height-larger: 1.75rem; // 28px
 $line-height-small: 1.25rem; // 20px
 $line-height-smaller: 1rem; // 16px
 
-// depth box shadows
-$depth: (
+// shadows
+$shadow: (
   0: none,
   1: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
   2: 0 4px 8px 0 rgba(0, 0, 0, 0.1),

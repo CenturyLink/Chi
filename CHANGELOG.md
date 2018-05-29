@@ -2,6 +2,8 @@
 
 ### 0.8.1 (unreleased)
 
+* Renamed -d (depth) utility class to -s (shadow).
+* Renamed -primary button class to -brand.
 * Added border utility classes.
 
 ### 0.8.0 (May 24, 2018)
