@@ -33,16 +33,16 @@ h3 Examples
 h4 Base
 p.-text
   | Chi includes a wide variety of predefined button styles. For most cases,
-  | the base primary and secondary button will be sufficient. For special cases,
+  | the base and <code>-brand</code> buttons will be sufficient. For special cases,
   | such as styling a destructive action button, a <code>-danger</code> button may be used.
 .example.-mb3
   .-p3
-    each type, val in {Primary:'primary', Secondary:'secondary', Danger:'danger', Info:'info', Dark:'dark'}
+    each type, val in {Base:'base', Brand:'brand', Danger:'danger', Info:'info', Dark:'dark'}
       button(class=`a-btn -${type} -mr2`)= val
   :code(lang='html')
     <!-- default buttons -->
-    <button class="a-btn -primary">Primary</button>
-    <button class="a-btn">Secondary</button>
+    <button class="a-btn">Base</button>
+    <button class="a-btn -brand">Brand</button>
     <!-- special case buttons -->
     <button class="a-btn -danger">Danger</button>
     <button class="a-btn -info">Info</button>
@@ -54,11 +54,11 @@ p.-text
   | <code>-outline</code>.
 .example.-mb3
   .-p3
-    each type, val in {Primary:'primary', Secondary:'secondary', Danger:'danger', Info:'info', Dark:'dark'}
+    each type, val in {Base:'base', Brand:'brand', Danger:'danger', Info:'info', Dark:'dark'}
       button(class=`a-btn -${type} -outline -mr2`)= val
   :code(lang='html')
-    <button class="a-btn -primary -outline">Primary</button>
-    <button class="a-btn -outline">Secondary</button>
+    <button class="a-btn -outline">Base</button>
+    <button class="a-btn -brand -outline">Brand</button>
     <button class="a-btn -danger -outline">Danger</button>
     <button class="a-btn -info -outline">Info</button>
     <button class="a-btn -dark -outline">Dark</button>
@@ -69,11 +69,11 @@ p.-text
   | <code>-flat</code>.
 .example.-mb3
   .-p3
-    each type, val in {Primary:'primary', Secondary:'secondary', Danger:'danger', Info:'info', Dark:'dark'}
+    each type, val in {Base:'base', Brand:'brand', Danger:'danger', Info:'info', Dark:'dark'}
       button(class=`a-btn -${type} -flat -mr2`)= val
   :code(lang='html')
-    <button class="a-btn -primary -flat">Primary</button>
-    <button class="a-btn -flat">Secondary</button>
+    <button class="a-btn -flat">Base</button>
+    <button class="a-btn -brand -flat">Brand</button>
     <button class="a-btn -danger -flat">Danger</button>
     <button class="a-btn -info -flat">Info</button>
     <button class="a-btn -dark -flat">Dark</button>
@@ -183,14 +183,14 @@ h4 Labeled icon buttons
 h4 Floating icon buttons
 .example.-mb3
   .-p3
-    each type in ['primary', 'secondary', 'danger', 'info', 'dark']
+    each type in ['base', 'brand', 'danger', 'info', 'dark']
       button(class=`a-btn -${type} -float -mr2`)
         .a-btn__content
           .a-icon
             svg
               use(xlink:href='#workspace')
   :code(lang='html')
-    <button class="a-btn -primary -float">
+    <button class="a-btn -float">
       <div class="a-btn__content">
         <div class="a-icon">
           <svg>
@@ -199,7 +199,7 @@ h4 Floating icon buttons
         </div>
       </div>
     </button>
-    <button class="a-btn -float">
+    <button class="a-btn -brand -float">
       <div class="a-btn__content">
         <div class="a-icon">
           <svg>
