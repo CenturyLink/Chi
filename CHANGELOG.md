@@ -2,6 +2,7 @@
 
 ### 0.8.1 (unreleased)
 
+* Added display utility classes
 * Renamed -d (depth) utility class to -s (shadow).
 * Renamed -primary button class to -brand.
 * Added border utility classes.
