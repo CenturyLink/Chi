@@ -1,0 +1,87 @@
+---
+title: Border
+---
+
+p.-text Use shorthand border utility classes to control border, border width and border color on elements.
+
+h3 Notation
+p.-text Border utility classes can be defined using the format <code>-b{sides}{size}</code>.
+h4 {sides}
+ul.-text
+  li <code>t</code> - use to apply <code>border-top</code>
+  li <code>b</code> - use to apply <code>border-bottom</code>
+  li <code>l</code> - use to apply <code>border-left</code>
+  li <code>r</code> - use to apply <code>border-right</code>
+  li <code>x</code> - use to apply <code>border-left</code> and <code>border-right</code>
+  li <code>y</code> - use to apply <code>border-top</code> and <code>border-bottom</code>
+  li blank - leave blank to apply <code>border</code> to all 4 sides.
+h4 {size}
+ul.-text
+  li <code>0</code> - use to eliminate existing <code>border</code> and set to <code>0</code>
+  li <code>1</code> - use to set <code>border</code> to <code>1px</code>
+  li <code>2</code> - use to set <code>border</code> to <code>2px</code>
+  li <code>3</code> - use to set <code>border</code> to <code>3px</code>
+  li <code>4</code> - use to set <code>border</code> to <code>4px</code>
+
+h3 Examples
+h4 Border Sides
+p.-text
+  | Apply borders to specific sides of an element by adding <code>t</code>,
+  | <code>b</code>, <code>l</code>, <code>r</code>, <code>x</code> or <code>y</code>
+  | to the class name.
+.example.-mb3
+  .-p2
+    .a-grid.-text.-noGutter.-textCenter
+      .-py5.-m2.-bt1(style="background:#F8F8F8;width:7.5rem;") -bt1
+      .-py5.-m2.-br1(style="background:#F8F8F8;width:7.5rem;") -br1
+      .-py5.-m2.-bb1(style="background:#F8F8F8;width:7.5rem;") -bb1
+      .-py5.-m2.-bl1(style="background:#F8F8F8;width:7.5rem;") -bl1
+      .-py5.-m2.-bx1(style="background:#F8F8F8;width:7.5rem;") -bx1
+      .-py5.-m2.-by1(style="background:#F8F8F8;width:7.5rem;") -by1
+  :code(lang="html")
+    <div class="-bt1"></div>
+    <div class="-br1"></div>
+    <div class="-bb1"></div>
+    <div class="-bl1"></div>
+    <div class="-bx1"></div>
+    <div class="-by1"></div>
+h4 Border Sizes
+p.-text
+  | Control an elements border size by adjusting the size from <code>0</code> - <code>4</code>.
+.example.-mb3
+  .-p2
+    .a-grid.-text.-noGutter.-textCenter
+      .-py5.-m2.-b0(style="background:#F8F8F8;width:7.5rem;") -b0
+      .-py5.-m2.-b1(style="background:#F8F8F8;width:7.5rem;") -b1
+      .-py5.-m2.-b2(style="background:#F8F8F8;width:7.5rem;") -b2
+      .-py5.-m2.-b3(style="background:#F8F8F8;width:7.5rem;") -b3
+      .-py5.-m2.-b4(style="background:#F8F8F8;width:7.5rem;") -b4
+  :code(lang="html")
+    <div class="-b0"></div>
+    <div class="-b1"></div>
+    <div class="-b2"></div>
+    <div class="-b3"></div>
+    <div class="-b4"></div>
+h4 Border Colors
+p.-text
+  | Use contextual color classes to change a borders color.
+.example.-mb3
+  .-p2
+    .a-grid.-noGutter.-text.-textCenter
+      .-m2.-py5.-b1(style="background:#F8F8F8;width:7.5rem;") Base
+      .-m2.-py5.-b1.-bBrand(style="background:#F8F8F8;width:7.5rem;") -bBrand
+      .-m2.-py5.-b1.-bSuccess(style="background:#F8F8F8;width:7.5rem;") -bSuccess
+      .-m2.-py5.-b1.-bDanger(style="background:#F8F8F8;width:7.5rem;") -bDanger
+      .-m2.-py5.-b1.-bInfo(style="background:#F8F8F8;width:7.5rem;") -bInfo
+      .-m2.-py5.-b1.-bWarning(style="background:#F8F8F8;width:7.5rem;") -bWarning
+      .-m2.-py5.-b1.-bDark(style="background:#F8F8F8;width:7.5rem;") -bDark
+      .-m2.-py5.-b1.-bLight(style="background:#F8F8F8;width:7.5rem;") -bLight
+  :code(lang="html")
+    <div class="-b1"></div>
+    <div class="-b1 -bBrand"></div>
+    <div class="-b1 -bSuccess"></div>
+    <div class="-b1 -bDanger"></div>
+    <div class="-b1 -bInfo"></div>
+    <div class="-b1 -bWarning"></div>
+    <div class="-b1 -bDark"></div>
+    <div class="-b1 -bLight"></div>

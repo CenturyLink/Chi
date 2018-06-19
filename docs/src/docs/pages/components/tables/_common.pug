@@ -1,0 +1,54 @@
+mixin str(cid, name, id, date, checked)
+  tr(class={
+    '-rowWarning': checked
+  })
+    td.-lh1
+      input.a-input(
+        type="checkbox"
+        id=cid
+        checked=checked
+      )
+      label(for=cid)
+    td= name
+    td= id
+    td= date
+
+mixin tr(name, id, date)
+  tr&attributes(attributes)
+    td= name
+    td= id
+    td= date
+
+mixin table(row, column)
+  section.a-table(style="width: 100%")&attributes(attributes)
+    div
+      table(cellpadding="0", cellspacing="0")
+        thead
+          tr
+            th(class={
+              [`-sorted -${column}`]: column != undefined
+            })
+              div name
+            th
+              div ID
+            th
+              div last login
+        tbody
+          if column == 'ascending'
+            +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+            +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')(
+              class={
+                [`-${row}`]: row != undefined && row != 'disabled'
+              }
+              disabled= row=='disabled' ? 'disabled' : false
+            )
+            +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
+          else
+            +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
+            +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')(
+              class={
+                [`-${row}`]: row != undefined && row != 'disabled'
+              }
+              disabled= row=='disabled' ? 'disabled' : false
+            )
+            +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')

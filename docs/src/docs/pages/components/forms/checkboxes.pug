@@ -1,0 +1,59 @@
+---
+title: Checkboxes
+---
+p.-text Checboxes are used to select one or several options in a list.
+
+h3 Examples
+p.-text
+  | To render a checkbox, apply the class <code>a-input</code> to an <code>input type="checkbox"</code>.
+  | For proper styling, checkboxes require an empty label element defined immediately after their declaration.
+
+h4 Stacked
+p.-text
+  | Group checkboxes in <code>a-formGroup</code> for easy stacking.
+.example.-mb3
+  .-p3
+    .a-formGroup
+      input(type="checkbox", class="a-input", id="checkbox1")
+      label(for="checkbox1")
+      label.-text(for="checkbox1") Checkbox
+    .a-formGroup
+      input(type="checkbox", class="a-input", id="checkbox2", disabled)
+      label(for="checkbox2")
+      label.-text(for="checkbox2") Disabled Checkbox
+  :code(lang="html")
+    <div class="a-formGroup">
+      <input type="checkbox" class="a-input" id="checkbox1">
+      <label for="checkbox1"></label>
+      <label class="-text" for="checkbox1">Checkbox</label>
+    </div>
+    <div class="a-formGroup">
+      <input type="checkbox" class="a-input" id="checkbox2" disabled>
+      <label for="checkbox2"></label>
+      <label class="-text" for="checkbox2">Disabled Checkbox</label>
+    </div>
+
+h4 Inline
+p.-text
+  | Apply the class <code>-inline</code> to <code>a-formGroup</code> to display checkboxes inline.
+.example.-mb3
+  .-p3
+    .a-formGroup.-inline
+      input(type="checkbox", class="a-input", id="inlineCheckbox1")
+      label(for="inlineCheckbox1")
+      label.-text(for="inlineCheckbox1") Option 1
+    .a-formGroup.-inline.-ml1
+      input(type="checkbox", class="a-input", id="inlineCheckbox2")
+      label(for="inlineCheckbox2")
+      label.-text(for="inlineCheckbox2") Option 2
+  :code(lang="html")
+    <div class="a-formGroup -inline">
+      <input type="checkbox" class="a-input" id="inlineCheckbox1">
+      <label for="inlineCheckbox1"></label>
+      <label class="-text" for="inlineCheckbox1">Option 1</label>
+    </div>
+    <div class="a-formGroup -inline">
+      <input type="checkbox" class="a-input" id="inlineCheckbox2">
+      <label for="inlineCheckbox2"></label>
+      <label class="-text" for="inlineCheckbox2">Option 2</label>
+    </div>
