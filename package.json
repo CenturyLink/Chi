@@ -43,14 +43,34 @@
     "yargs": "9.0.1"
   },
   "devDependencies": {
+    "babel-loader": "7.1.2",
     "backstopjs": "3.0.29",
+    "eslint-loader": "1.9.0",
+    "file-loader": "1.1.5",
+    "gulp-cached": "1.1.1",
+    "gulp-image": "4.0.0",
+    "html-loader": "0.5.1",
+    "jstransformer-html-beautify": "0.0.1",
+    "jstransformer-marked": "1.0.2",
     "jstransformer-pug": "0.2.3",
+    "lodash": "4.17.4",
+    "marked": "0.3.6",
     "metalsmith": "2.3.0",
+    "metalsmith-collections": "0.9.0",
+    "metalsmith-headings": "0.2.0",
+    "metalsmith-in-place": "3.0.1",
     "metalsmith-inline-source": "1.0.6",
     "metalsmith-layouts": "1.8.1",
+    "metalsmith-permalinks": "0.5.0",
     "metalsmith-pug": "2.0.0",
     "metalsmith-rename": "1.0.0",
+    "metalsmith-rootpath": "1.0.4",
     "mkdirp": "0.5.1",
-    "pug": "2.0.0-rc.4"
+    "prismjs": "1.8.3",
+    "pug": "2.0.0-rc.4",
+    "url-loader": "0.6.2",
+    "vinyl-named": "1.1.0",
+    "webpack": "3.8.1",
+    "webpack-stream": "4.0.0"
   }
 }
