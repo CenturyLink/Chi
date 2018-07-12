@@ -12,7 +12,7 @@ Begin by adding the Chi stylesheet to your project's layout template, replacing 
 <link rel="stylesheet" href="https://assets.ctl.io/chi/VERSION/chi.css">
 ```
 
-Next, in order to begin styling your project with Chi, you will need to add the `chi` CSS class to the `<html>` tag of your document, for example:
+Next, add the `chi` CSS class to the `<html>` tag of your document to properly scope the styles. This allows Chi to override any existing styles that have been defined by legacy markup.
 
 ``` html
 <!DOCTYPE html>
