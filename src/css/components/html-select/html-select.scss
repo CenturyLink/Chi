@@ -6,7 +6,7 @@
     &.a-input {
       appearance: none;
       background-color: set-color(white);
-      background-image: url('./icon-triangle-down.svg');
+      background-image: url('./icon-chevron-thin-down.svg');
       background-position: right 8px center;
       background-repeat: no-repeat;
       background-size: 12px 12px;
@@ -49,8 +49,8 @@
 
       &:focus,
       &.-focus {
-        border: 0.0625rem solid set-color(grey, 40);
-        box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
+        border-color: $focus-color;
+        box-shadow: 0 0 0 3px rgba($focus-color, 0.3);
       }
 
       &[disabled] {
