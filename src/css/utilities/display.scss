@@ -1,0 +1,23 @@
+@import 'variables';
+
+.chi {
+
+  /* Display */
+
+  @each $type in none inline inline-block block table table-cell table-row flex inline-flex {
+    .-d--#{$type} {
+      display: #{$type};
+    }
+  }
+
+  @each $size in xs sm md lg xl {
+    @include respond-to-only($size) {
+      @each $type in none inline inline-block block table table-cell table-row flex inline-flex {
+        .-d-#{$size}--#{$type} {
+          display: #{$type};
+        }
+      }
+    }
+  }
+
+}
