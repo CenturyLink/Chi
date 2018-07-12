@@ -3,15 +3,15 @@ import path from 'path';
 import gulp from 'gulp';
 
 const plugins = require('gulp-load-plugins')();
-const componentsFolder = path.join(__dirname, '..', 'src', 'css', 'components');
-const utilitiesFolder = path.join(__dirname, '..', 'src', 'css', 'utilities');
+const componentsFolder = path.join(__dirname, '..', 'src', 'chi', 'components');
+const utilitiesFolder = path.join(__dirname, '..', 'src', 'chi', 'utilities');
 const foundationFolders = [
   'fonts',
   'reset',
   'typography',
   'colors'
 ].map(item =>
-  path.join(__dirname, '..', 'src', 'css', 'foundations', item));
+  path.join(__dirname, '..', 'src', 'chi', 'foundations', item));
 function getFolders(dir) {
   return fs.readdirSync(dir)
     .filter(file => fs.statSync(path.join(dir, file)).isDirectory());
@@ -42,7 +42,7 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
     .pipe(plugins.sass({
       includePaths: [
         'node_modules',
-        path.join(__dirname, '..', 'src', 'css')
+        path.join(__dirname, '..', 'src', 'chi')
       ],
       outputstyle: 'expanded'
     }))

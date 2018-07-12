@@ -21,7 +21,7 @@ gulp.task('test-clean', done =>
 gulp.task('test-build-html', () => {
   const promise = new Promise((resolve, reject) => {
     metalsmith(rootFolder)
-      .source('test/css')
+      .source('test/chi')
       .destination(publicFolder)
       .clean(false)
       .use(metalsmithPug({
@@ -55,12 +55,12 @@ gulp.task('test-build-html', () => {
 });
 
 gulp.task('test-build-css', () =>
-  gulp.src(path.join(rootFolder, 'test', 'css', '**', '*.scss'))
+  gulp.src(path.join(rootFolder, 'test', 'chi', '**', '*.scss'))
     .pipe(plugins.plumber())
     .pipe(plugins.sass({
       includePaths: [
         'node_modules',
-        path.join(rootFolder, 'src', 'css')
+        path.join(rootFolder, 'src', 'chi')
       ],
       outputStyle: 'compressed'
     })
