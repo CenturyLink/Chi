@@ -1,0 +1,91 @@
+---
+title: Number Inputs
+---
+
+p.-text Number inputs are used to increase or decrease numeric values.
+
+.m-alert.-bubble.-info.-hasIcon
+  | This component requires Javascript
+
+h3 Examples
+
+p.-text
+  | To render a number input, apply the classes <code>a-input</code> to an <code>input type="number"</code>.
+  | For proper styling, number inputs must be wrapped in an <code>a-inputWrapper</code> div with two buttons.
+  | Number inputs also require the <code>-compact</code> modifier class.
+
+h4 Base
+
+.example.-mb3
+  .-p3
+    .a-formGroup
+      .a-inputWrapper.-compact
+        input.a-input(type="number", value="0")
+        button
+        button
+  :code(lang="html")
+    <div class="a-inputWrapper -compact">
+      <input type="number" class="a-input" value="0">
+      <button></button>
+      <button></button>
+    </div>
+
+h4 Disabled
+.example.-mb3
+  .-p3
+    .a-formGroup
+      .a-inputWrapper.-compact
+        input.a-input(type="number", value="0", disabled)
+        button
+        button
+  :code(lang="html")
+    <div class="a-inputWrapper -compact">
+      <input type="number" class="a-input" value="0" disabled>
+      <button></button>
+      <button></button>
+    </div>
+
+h4 Sizes
+.example.-mb3
+  .-p3
+    .a-formGroup.-inline.-mr3
+      .a-inputWrapper.-compact
+        input.a-input.-small(type="number", value="0")
+        button
+        button
+    .a-formGroup.-inline.-mr3
+      .a-inputWrapper.-compact
+        input.a-input(type="number", value="0")
+        button
+        button
+    .a-formGroup.-inline
+      .a-inputWrapper.-compact
+        input.a-input.-large(type="number", value="0")
+        button
+        button
+  :code(lang="html")
+    <div class="a-inputWrapper -compact">
+      <input type="number" class="a-input -small" value="0">
+      <button></button>
+      <button></button>
+    </div>
+    <div class="a-inputWrapper -compact">
+      <input type="number" class="a-input" value="0">
+      <button></button>
+      <button></button>
+    </div>
+    <div class="a-inputWrapper -compact">
+      <input type="number" class="a-input -large" value="0">
+      <button></button>
+      <button></button>
+    </div>
+
+h3 JavaScript
+p.-text This component requires JavaScript to increment and decrement the value when the buttons are pressed.
+
+h4 Example
+.-mb4
+  include:code(lang="js") ../../../../chi/components/input-number/input-number.js
+
+script
+  include ../../../../chi/components/input-number/input-number.js

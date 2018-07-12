@@ -5,6 +5,6 @@ gulp.task('ci', done => {
   process.env.CI = true;
 
   runSequence(
-    'css-lint', 'backstop-test', done
+    'lint:css', 'backstop-test', done
   );
 });
