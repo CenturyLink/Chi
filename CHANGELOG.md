@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### 0.8.1 (unreleased)
+### 0.8.1 (July 13th, 2018)
 
 * Added display utility classes
 * Renamed -d (depth) utility class to -s (shadow).
