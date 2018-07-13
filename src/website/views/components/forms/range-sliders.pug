@@ -1,0 +1,39 @@
+---
+title: Range Sliders
+---
+p.-text Range sliders are used for inputting numeric values within a range.
+
+h3 Examples
+p.-text
+  | To render a range slider, apply the class <code>a-input</code> to an <code>input type="range"</code>.
+  | Range widths are fluid by default.
+
+h4 Base
+.example.-mb3
+  .-p3
+    .a-formGroup
+      input(class="a-input", type="range")
+  :code(lang="html")
+    <input class="a-input" type="range">
+
+h4 Disabled
+.example.-mb3
+  .-p3
+    .a-formGroup
+      input(class="a-input", type="range", disabled)
+  :code(lang="html")
+    <input class="a-input" type="range" disabled>
+
+h4 With Labels
+.example.-mb3
+  .-p3
+    .a-formGroup.-inline
+      label.-text.-mr2 200GB
+      input(type="range", class="a-input")
+      label.-text.-ml2 5TB
+  :code(lang="html")
+    <div class="a-formGroup -inline">
+      <label class="-text -mr2">200GB</label>
+      <input class="a-input" type="range">
+      <label class="-text -ml2">5TB</label>
+    </div>

@@ -1,0 +1,98 @@
+---
+title: Horizontal button groups
+---
+img(inline src='test/chi/components/icon-workspace.svg')
+
+mixin icon(name)
+  .a-icon
+    svg
+      use(xlink:href=`#${name}`)
+
+mixin button(icon, type, style, size, modifier)
+  button.a-btn(class={
+    '-icon': icon,
+    [`-${type}`]: type != 'solid',
+    [`-${style}`]: style != 'default',
+    [`-${modifier}`]: modifier,
+    [`-${size}`]: size != 'default'
+  })
+    if block
+      block
+
+each size in ['default', 'small', 'large']
+  each type in ['solid', 'outline', 'flat']
+    div(class={
+      [`test-${type}`]: size == 'default',
+      [`test-${type}-${size}`]: size != 'default'
+    })
+      span.a-h2= `Horizontal button groups / ${type} / ${size}`
+      table(cellpadding="0", cellspacing="0")
+        each style in ['default', 'brand', 'danger', 'info', 'dark']
+          tr
+            each val, index in [2,3,4]
+              td
+                .m-btnGroup.-m1(class={'-ml3': index != 0})
+                  while val > 0
+                    - val--
+                    +button(false, type, style, size)
+                      | Button
+
+      table(cellpadding="0", cellspacing="0")
+        each style in ['default', 'brand', 'danger', 'info', 'dark']
+          tr
+            each val, index in [2,3,4]
+              td
+                .m-btnGroup.-m1(class={'-ml3': index != 0})
+                  while val > 0
+                    - val--
+                    +button(true, type, style, size)
+                      .a-btn__content
+                        +icon('workspace')
+
+      table(cellpadding="0", cellspacing="0")
+        each style in ['default', 'brand', 'danger', 'info', 'dark']
+          tr
+            each val, index in [2,3,4]
+              td
+                .m-btnGroup.-m1(class={'-ml3': index != 0})
+                  while val > 0
+                    - val--
+                    +button(false, type, style, size)
+                      .a-btn__content
+                        +icon('workspace')
+                        span Button
+
+    div(class={
+      [`test-${type}-fluid`]: size == 'default',
+      [`test-${type}-${size}-fluid`]: size != 'default'
+    })
+      span.a-h2= `Horizontal Button groups / ${type} / ${size} / fluid`
+      table(cellpadding="0", cellspacing="0", width="600")
+        each style in ['default', 'brand', 'danger', 'info', 'dark']
+          tr
+            td
+              .m-btnGroup.-fluid.-m1
+                each modifier in ['notFluid', 'alignLeft', false, 'alignRight']
+                  +button(false, type, style, size, modifier)
+                    | Button
+
+      table(cellpadding="0", cellspacing="0", width="300")
+        each style in ['default', 'brand', 'danger', 'info', 'dark']
+          tr
+            td
+              .m-btnGroup.-fluid.-m1
+                each modifier in ['notFluid', 'alignLeft', false, 'alignRight']
+                  +button(true, type, style, size, modifier)
+                    .a-btn__content
+                      +icon('workspace')
+
+      table(cellpadding="0", cellspacing="0", width="600")
+        each style in ['default', 'brand', 'danger', 'info', 'dark']
+          tr
+            td
+              .m-btnGroup.-fluid.-m1
+                each modifier in ['notFluid', 'alignLeft', false, 'alignRight']
+                  +button(false, type, style, size, modifier)
+                    .a-btn__content
+                      +icon('workspace')
+                      span Button

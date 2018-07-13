@@ -1,0 +1,28 @@
+aside.docs-body__aside
+  nav
+    ul.a-tabs.-vertical.-large
+      li(class=path === '' ? '-active' : '')
+        a(href=`${rootPath}`) Getting Started
+
+      each collection, key in collections
+        if utils.hasActiveSections(collection)
+          if utils.isCurrentCollection(collection, path)
+            li.-active
+              a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
+              if utils.hasSections(collection)
+                ul.a-tabs__subtabs
+                  each section in collection
+                    if section.disabled
+                      //- li
+                      //-   a(href=`${rootPath}${section.path}`, disabled="disabled") #{section.title}
+                    else
+                      li(class=section.path === path ? "-active" : "")
+                        a(href=`${rootPath}${section.path}`) #{section.title} #{section.disabled}
+          else
+            li
+              a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
+        else
+          li
+            a(href=`#`, disabled="disabled") #{key}
+  .-m3
+    a(class="a-btn -outline -brand", href=`https://github.com/CenturyLinkCloud/ux-chi-design`, target="_blank") Design Kit

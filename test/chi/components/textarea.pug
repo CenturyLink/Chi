@@ -1,0 +1,110 @@
+---
+title: Textarea
+---
+img(inline src='test/chi/components/icon-workspace.svg')
+img(inline src='src/chi/components/icons/icons/icon-check.svg')
+img(inline src='src/chi/components/icons/icons/icon-circle-info-outline.svg')
+img(inline src='src/chi/components/icons/icons/icon-circle-warning.svg')
+img(inline src='src/chi/components/icons/icons/icon-warning.svg')
+
+each size in ['default', 'small', 'large']
+  div(class=`test-${size}`)
+    span.a-h2= `Textarea / ${size}`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m1
+                if state == 'disabled'
+                  textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                else
+                  textarea(class=`a-input -${style} -${state} -${size}`) Value
+
+  div(class=`test-${size}-icon-left`)
+    span.a-h2= `Textarea / ${size} / icon left`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m1
+                .a-inputWrapper.-iconLeft
+                  if state == 'disabled'
+                    textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                  else
+                    textarea(class=`a-input -${style} -${state} -${size}`) Value
+                  .a-icon
+                    svg
+                      use(xlink:href='#workspace')
+
+  div(class=`test-${size}-icon-right`)
+    span.a-h2= `Textarea / ${size} / icon right`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m1
+                .a-inputWrapper.-iconRight
+                  if state == 'disabled'
+                    textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                  else
+                    textarea(class=`a-input -${style} -${state} -${size}`) Value
+                  if style == 'success'
+                    .a-icon.-success
+                      svg
+                        use(xlink:href='#check')
+                  else if style == 'warning'
+                    .a-icon.-warning
+                      svg
+                        use(xlink:href='#warning')
+                  else if style == 'danger'
+                    .a-icon.-danger
+                      svg
+                        use(xlink:href='#circle-warning')
+                  else
+                    .a-icon
+                      svg
+                        use(xlink:href='#circle-info-outline')
+
+  div(class=`test-${size}-icon-left-right`)
+    span.a-h2= `Textarea / ${size} / icon left / icon right`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m1
+                .a-inputWrapper.-iconLeft.-iconRight
+                  if state == 'disabled'
+                    textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                  else
+                    textarea(class=`a-input -${style} -${state} -${size}`) Value
+                  .a-icon
+                    svg
+                      use(xlink:href='#workspace')
+                  if style == 'success'
+                    .a-icon.-success
+                      svg
+                        use(xlink:href='#check')
+                  else if style == 'warning'
+                    .a-icon.-warning
+                      svg
+                        use(xlink:href='#warning')
+                  else if style == 'danger'
+                    .a-icon.-danger
+                      svg
+                        use(xlink:href='#circle-warning')
+                  else
+                    .a-icon
+                      svg
+                        use(xlink:href='#circle-info-outline')
