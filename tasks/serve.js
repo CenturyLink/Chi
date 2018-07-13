@@ -1,15 +1,14 @@
 import gulp from 'gulp';
+const plugins = require('gulp-load-plugins')();
 
 export let server;
 
-const plugins = require('gulp-load-plugins')();
-
-gulp.task('serve', ['test-build'], () => {
+gulp.task('serve', [ 'build' ], () => {
   server = plugins.connect.server({
-      name: 'Chi',
-      root: ['public'],
-      port: 8000,
-      livereload: true
+    name: 'Chi',
+    root: 'dist',
+    port: 8000,
+    livereload: true
   });
 
   return server;

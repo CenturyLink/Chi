@@ -1,0 +1,69 @@
+---
+title: Selects
+---
+p.-text Selects are used to select a single item in a list of many options.
+
+h3 Examples
+p.-text
+  | To render a select, apply the class <code>a-input</code> to a <code>select</code>.
+
+h4 Base
+.example.-mb3
+  .-p3
+    .a-formGroup(style="max-width:20rem")
+      select(class="a-input")
+        option Base Select
+  :code(lang="html")
+    <select class="a-input">
+      <option>Base Select</option>
+    </select>
+
+h4 Disabled
+.example.-mb3
+  .-p3
+    .a-formGroup(style="max-width:20rem")
+      select(class="a-input", disabled)
+        option Disabled Select
+  :code(lang="html")
+    <select class="a-input" disabled>
+      <option>Disabled Select</option>
+    </select>
+
+h4 Danger
+p.-text
+  | Selects support the validation class modifier <code>-danger</code> for indicating
+  | an invalid selection.
+.example.-mb3
+  .-p3
+    .a-formGroup(style="max-width:20rem")
+      select(class="a-input -danger")
+        option Danger Select
+  :code(lang="html")
+    <select class="a-input -danger">
+      <option>Danger Select</option>
+    </select>
+
+h3 Additional Sizes
+p.-text Selects offer two size modifiers, <code>-small</code> and <code>-large</code>.
+
+h4 Small
+.example.-mb3
+  .-p3
+    .a-formGroup(style="max-width:20rem")
+      select(class="a-input -small")
+        option Small Select
+  :code(lang="html")
+    <select class="a-input -small">
+      <option>Small Select</option>
+    </select>
+
+h4 Large
+.example.-mb3
+  .-p3
+    .a-formGroup(style="max-width:20rem")
+      select(class="a-input -large")
+        option Large Select
+  :code(lang="html")
+    <select class="a-input -large">
+      <option>Large Select</option>
+    </select>

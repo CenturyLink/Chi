@@ -1,0 +1,92 @@
+---
+title: Text Inputs
+---
+img(inline src='test/chi/components/icon-workspace.svg')
+img(inline src='src/chi/components/icons/icons/icon-check.svg')
+img(inline src='src/chi/components/icons/icons/icon-circle-info-outline.svg')
+img(inline src='src/chi/components/icons/icons/icon-circle-warning.svg')
+img(inline src='src/chi/components/icons/icons/icon-warning.svg')
+
+mixin input(style, state, size, disabled)
+  input.a-input(
+    type="text"
+    class={
+      [`-${style}`]:style != 'default',
+      [`-${state}`]:state != 'initial',
+      [`-${size}`]:size != 'default'
+    }
+    value="Value"
+    disabled=state=='disabled'?'disabled':false
+  )
+
+mixin icon(name)
+  .a-icon(class={
+    [`-${name}`]: ['success', 'warning', 'danger'].indexOf(name) != -1
+  })
+    svg
+      if name == 'success'
+        use(xlink:href='#check')
+      else if name == 'warning'
+        use(xlink:href='#warning')
+      else if name == 'danger'
+        use(xlink:href='#circle-warning')
+      else if name == 'default'
+        use(xlink:href='#circle-info-outline')
+      else
+        use(xlink:href=`#${name}`)
+
+each size in ['default', 'small', 'large']
+  div(class=`test-${size}`)
+    span.a-h2= `Text Input / ${size}`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m1
+                +input(style, state, size, disabled)
+
+  div(class=`test-${size}-icon-left`)
+    span.a-h2= `Text Input / ${size} / icon left`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m1
+                .a-inputWrapper.-iconLeft
+                  +input(style, state, size, disabled)
+                  +icon('workspace')
+
+  div(class=`test-${size}-icon-right`)
+    span.a-h2= `Text Input / ${size} / icon right`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m1
+                .a-inputWrapper.-iconRight
+                  +input(style, state, size, disabled)
+                  +icon(style)
+
+  div(class=`test-${size}-icon-left-right`)
+    span.a-h2= `Text Input / ${size} / icon left / icon right`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m1
+                .a-inputWrapper.-iconLeft.-iconRight
+                  +input(style, state, size, disabled)
+                  +icon('workspace')
+                  +icon(style)

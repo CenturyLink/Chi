@@ -1,0 +1,46 @@
+---
+title: Hybrid buttons
+---
+img(inline src='test/chi/components/icon-workspace.svg')
+
+each size in ['default', 'small', 'large']
+  div(class={
+    'test': size == 'default',
+    [`test-${size}`]: size != 'default'
+  })
+    span.a-h2= `Hybrid buttons / ${size}`
+    .m-btnGroup
+      button.a-btn(class={
+        [`-${size}`]: size != 'default'
+      })
+        .a-btn__content
+          .a-icon
+            svg
+              use(xlink:href='#workspace')
+          span Reinstall
+      button.a-btn.-icon.-brand(class={
+        [`-${size}`]: size != 'default'
+      })
+        .a-btn__content
+          .a-icon
+            svg
+              use(xlink:href='#workspace')
+
+  div(class={
+    'test-fluid': size == 'default',
+    [`test-${size}-fluid`]: size != 'default'
+  })
+    span.a-h2= `Hybrid buttons / ${size} / fluid`
+    each modifier in ['alignLeft', '', 'alignRight']
+      .m-btnGroup.-fluid.-m1(style="width:200px")
+        button.a-btn(class={
+          [`-${size}`]: size != 'default',
+          [`-${modifier}`]: modifier != ''
+        }) Button
+        button.a-btn.-icon.-notFluid(class={
+          [`-${size}`]: size != 'default'
+        })
+          .a-btn__content
+            .a-icon
+              svg
+                use(xlink:href='#workspace')
