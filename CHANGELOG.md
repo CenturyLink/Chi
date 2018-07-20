@@ -1,8 +1,14 @@
 # CHANGELOG
 
-### 0.8.1 (July 13th, 2018)
+### 0.8.2 (Unreleased)
 
-* Added display utility classes
+* Added flex utility classes.
+* Merged ux-chi-docs into ux-chi.
+
+### 0.8.1 (July 13, 2018)
+
+* Updated select form arrow icon and focus color.
+* Added display utility classes.
 * Renamed -d (depth) utility class to -s (shadow).
 * Renamed -primary button class to -brand.
 * Added border utility classes.
