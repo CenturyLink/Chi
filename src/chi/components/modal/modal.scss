@@ -101,6 +101,9 @@ $backdrop: #{$modal}-backdrop;
           display: block;
           font-size: $text;
           font-weight: 600;
+          left: 1.5rem;
+          position: absolute;
+          top: 0;
         }
 
       }
