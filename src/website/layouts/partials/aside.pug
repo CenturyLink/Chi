@@ -1,9 +1,6 @@
 aside.docs-body__aside
   nav
     ul.a-tabs.-vertical.-large
-      li(class=path === '' ? '-active' : '')
-        a(href=`${rootPath}`) Getting Started
-
       each collection, key in collections
         if utils.hasActiveSections(collection)
           if utils.isCurrentCollection(collection, path)

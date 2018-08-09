@@ -44,15 +44,20 @@ gulp.task('build:website:views', () => {
       .clean(false)
 
       .use(metalsmithPlugins.collections({
-        Foundations: {
+        'Getting Started': {
+          pattern: 'getting-started/**/*.{md,pug}',
+          sortBy: collectionSorter(['Overview']),
+          reverse: true
+        },
+        'Foundations': {
           pattern: 'foundations/**/*.{md,pug}',
           sortBy: collectionSorter(['Overview'])
         },
-        Components: {
+        'Components': {
           pattern: [ 'components/**/*.{md,pug}', '!components/**/_*.{md,pug}' ],
           sortBy: collectionSorter(['Overview'])
         },
-        Utilities: {
+        'Utilities': {
           pattern: 'utilities/**/*.{md,pug}',
           sortBy: collectionSorter(['Overview'])
         }
