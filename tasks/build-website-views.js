@@ -14,6 +14,7 @@ const metalsmithPlugins = {
   inlineSource: require('metalsmith-inline-source'),
   layouts: require('metalsmith-layouts'),
   permalinks: require('metalsmith-permalinks'),
+  redirect: require('metalsmith-redirect'),
   rename: require('metalsmith-rename'),
   rootPath: require('metalsmith-rootpath')
 };
@@ -103,6 +104,9 @@ gulp.task('build:website:views', () => {
         pattern: '**/*.html',
         directory: Folders.src.LAYOUTS,
         utils: pugUtils
+      }))
+      .use(metalsmithPlugins.redirect({
+        '/': '/getting-started'
       }))
       .build(error => {
         if (error) {
