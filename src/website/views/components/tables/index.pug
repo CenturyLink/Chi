@@ -86,12 +86,12 @@ h3 Selectable
 p.-text Combine several different modifiers to create complex and beautiful tables.
 :example(lang="html"):html-beautify:pug
   include ./_common.pug
-  section.a-table(style="width: 100%")
+  section.a-table
     div
       table(cellpadding="0", cellspacing="0")
         thead
           tr
-            th(width="48px")
+            th
               div.-lh1
                 input.a-input(type="checkbox", id=`chk-1`)
                 label(for=`chk-1`)
