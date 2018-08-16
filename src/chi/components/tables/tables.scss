@@ -39,6 +39,7 @@
       th {
         font-weight: 600;
         height: 0;
+        padding: 0;
         text-transform: capitalize;
 
         div {
@@ -46,7 +47,7 @@
           position: absolute;
           text-align: start;
           top: 0;
-          vertical-align: center;
+          vertical-align: middle;
         }
 
         &.-sorted {
@@ -87,7 +88,7 @@
         padding: 1rem;
         padding-bottom: 0.9375rem;
         text-align: start;
-        vertical-align: center;
+        vertical-align: middle;
       }
 
       tbody {

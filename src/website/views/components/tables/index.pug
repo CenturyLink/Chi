@@ -6,9 +6,8 @@ p.-text Tables are used to present data sets in a simple and organized way.
 h3 Requirements
 p.-text
   | Tables must be wrapped in a <code>&lt;section class="a-table"&gt;</code>
-  | with a nested <code>&lt;div&gt;</code>. The table must have the
-  | <code>cellpadding</code> and the <code>cellspacing</code> set to <code>0</code>
-  | and table header text must be wrapped with a <code>&lt;div&gt;</code>.
+  | with a nested <code>&lt;div&gt;</code>. Table header text must be
+  | wrapped in a <code>&lt;div&gt;</code>.
 h3 Examples
 h4 Base
 :example(lang="html"):html-beautify:pug include ./_default.pug
@@ -88,7 +87,7 @@ p.-text Combine several different modifiers to create complex and beautiful tabl
   include ./_common.pug
   section.a-table
     div
-      table(cellpadding="0", cellspacing="0")
+      table
         thead
           tr
             th
