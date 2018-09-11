@@ -13,3 +13,13 @@ h2 Sizes
         div(class=`a-icon -${size}`)
           svg
             use(xlink:href='#workspace')
+
+h2 Icons
+.test-icons
+  .a-grid
+    each name in ['check', 'chevron-thin-down', 'chevron-thin-left', 'chevron-thin-right', 'chevron-thin-up', 'circle-check', 'circle-info-outline', 'circle-info', 'circle-warning', 'delete', 'edit', 'settings', 'triangle-down', 'triangle-left', 'triangle-right', 'triangle-up', 'warning', 'x']
+      .a-col.-w2.-o1.-middle
+        .a-icon.-sm
+          svg
+            use(xlink:href=`../../sprite/chi-icons.svg#${name}`)
+        h4= name
