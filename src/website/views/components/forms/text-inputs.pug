@@ -1,10 +1,6 @@
 ---
 title: Text Inputs
 ---
-img(inline src='src/chi/components/icons/icons/icon-edit.svg')
-img(inline src='src/chi/components/icons/icons/icon-check.svg')
-img(inline src='src/chi/components/icons/icons/icon-warning.svg')
-img(inline src='src/chi/components/icons/icons/icon-circle-warning.svg')
 
 p.-text Text inputs are used for inputting single line text data.
 
@@ -42,13 +38,13 @@ h4 Left Aligned
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
       .a-icon
         svg
-          use(xlink:href='#edit')
+          use(xlink:href='../../../sprite/chi-icons.svg#icon-edit')
   :code(lang="html")
     <div class="a-inputWrapper -iconLeft">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
       <div class="a-icon">
         <svg>
-          <use xlink:href="#edit"></use>
+          <use xlink:href="#icon-edit"></use>
         </svg>
       </div>
     </div>
@@ -60,13 +56,13 @@ h4 Right Aligned
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
       .a-icon
         svg
-          use(xlink:href='#edit')
+          use(xlink:href='../../../sprite/chi-icons.svg#icon-edit')
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
       <div class="a-icon">
         <svg>
-          <use xlink:href="#edit"></use>
+          <use xlink:href="#icon-edit"></use>
         </svg>
       </div>
     </div>
@@ -78,21 +74,21 @@ h4 Left + Right Aligned
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
       .a-icon
         svg
-          use(xlink:href='#edit')
+          use(xlink:href='../../../sprite/chi-icons.svg#icon-edit')
       .a-icon
         svg
-          use(xlink:href='#check')
+          use(xlink:href='../../../sprite/chi-icons.svg#icon-check')
   :code(lang="html")
     <div class="a-inputWrapper -iconLeft -iconRight">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
       <div class="a-icon">
         <svg>
-          <use xlink:href="#edit"></use>
+          <use xlink:href="#icon-edit"></use>
         </svg>
       </div>
       <div class="a-icon">
         <svg>
-          <use xlink:href="#check"></use>
+          <use xlink:href="#icon-check"></use>
         </svg>
       </div>
     </div>
@@ -116,13 +112,13 @@ h4 Success
       input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
       .a-icon.-success
         svg
-          use(xlink:href="#check")
+          use(xlink:href="../../../sprite/chi-icons.svg#icon-check")
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
       <div class="a-icon -success">
         <svg>
-          <use xlink:href="#check"></use>
+          <use xlink:href="#icon-check"></use>
         </svg>
       </div>
     </div>
@@ -141,13 +137,13 @@ h4 Warning
       input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
       .a-icon.-warning
         svg
-          use(xlink:href="#warning")
+          use(xlink:href="../../../sprite/chi-icons.svg#icon-warning")
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
-      <div class="a-icon -success">
+      <div class="a-icon -warning">
         <svg>
-          <use xlink:href="#check"></use>
+          <use xlink:href="#icon-warning"></use>
         </svg>
       </div>
     </div>
@@ -166,13 +162,13 @@ h4 Danger
       input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
       .a-icon.-danger
         svg
-          use(xlink:href="#circle-warning")
+          use(xlink:href="../../../sprite/chi-icons.svg#icon-circle-warning")
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <input type="text" class="a-input -danger" placeholder="Placeholder" value="Sample Text">
       <div class="a-icon -danger">
         <svg>
-          <use xlink:href="#circle-warning"></use>
+          <use xlink:href="#icon-circle-warning"></use>
         </svg>
       </div>
     </div>

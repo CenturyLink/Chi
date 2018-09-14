@@ -1,11 +1,6 @@
 ---
 title: Text Inputs
 ---
-img(inline src='test/chi/components/icon-workspace.svg')
-img(inline src='src/chi/components/icons/icons/icon-check.svg')
-img(inline src='src/chi/components/icons/icons/icon-circle-info-outline.svg')
-img(inline src='src/chi/components/icons/icons/icon-circle-warning.svg')
-img(inline src='src/chi/components/icons/icons/icon-warning.svg')
 
 mixin input(style, state, size, disabled)
   input.a-input(
@@ -25,15 +20,15 @@ mixin icon(name)
   })
     svg
       if name == 'success'
-        use(xlink:href='#check')
+        use(xlink:href='../../sprite/chi-icons.svg#icon-check')
       else if name == 'warning'
-        use(xlink:href='#warning')
+        use(xlink:href='../../sprite/chi-icons.svg#icon-warning')
       else if name == 'danger'
-        use(xlink:href='#circle-warning')
+        use(xlink:href='../../sprite/chi-icons.svg#icon-circle-warning')
       else if name == 'default'
-        use(xlink:href='#circle-info-outline')
+        use(xlink:href='../../sprite/chi-icons.svg#icon-circle-info-outline')
       else
-        use(xlink:href=`#${name}`)
+        use(xlink:href=`../../sprite/chi-icons.svg#icon-${name}`)
 
 each size in ['default', 'small', 'large']
   div(class=`test-${size}`)
@@ -60,7 +55,7 @@ each size in ['default', 'small', 'large']
               .-m1
                 .a-inputWrapper.-iconLeft
                   +input(style, state, size, disabled)
-                  +icon('workspace')
+                  +icon('atom')
 
   div(class=`test-${size}-icon-right`)
     span.a-h2= `Text Input / ${size} / icon right`
@@ -88,5 +83,5 @@ each size in ['default', 'small', 'large']
               .-m1
                 .a-inputWrapper.-iconLeft.-iconRight
                   +input(style, state, size, disabled)
-                  +icon('workspace')
+                  +icon('atom')
                   +icon(style)

@@ -2,6 +2,8 @@
 
 ### 0.8.2 (Unreleased)
 
+* Added Icon sprite generation.
+* Added Getting Started section.
 * Added flex utility classes.
 * Merged ux-chi-docs into ux-chi.
 

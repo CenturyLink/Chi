@@ -81,16 +81,13 @@ export function buildSprite({ dest = 'dist' }) {
       xmlDeclaration: false,
       doctypeDeclaration: false,
       namespaceIDs: false,
-      namespaceClassnames: false
+      namespaceClassnames: false,
+      dimensionAttributes: false
     }
   };
 
-  return gulp.src('./src/chi/components/icons/icons/**/*.svg')
-    .pipe(plugins.plumber())
+  return gulp.src('./src/chi/components/icons/svg/**/*.svg')
     .pipe(plugins.svgSprite(config))
-    .on('error', function(error) {
-      log.warn('blablablablabla');
-    })
     .pipe(gulp.dest(dest));
 }
 

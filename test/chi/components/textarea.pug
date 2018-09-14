@@ -1,11 +1,6 @@
 ---
 title: Textarea
 ---
-img(inline src='test/chi/components/icon-workspace.svg')
-img(inline src='src/chi/components/icons/icons/icon-check.svg')
-img(inline src='src/chi/components/icons/icons/icon-circle-info-outline.svg')
-img(inline src='src/chi/components/icons/icons/icon-circle-warning.svg')
-img(inline src='src/chi/components/icons/icons/icon-warning.svg')
 
 each size in ['default', 'small', 'large']
   div(class=`test-${size}`)
@@ -40,7 +35,7 @@ each size in ['default', 'small', 'large']
                     textarea(class=`a-input -${style} -${state} -${size}`) Value
                   .a-icon
                     svg
-                      use(xlink:href='#workspace')
+                      use(xlink:href='../../sprite/chi-icons.svg#icon-atom')
 
   div(class=`test-${size}-icon-right`)
     span.a-h2= `Textarea / ${size} / icon right`
@@ -60,19 +55,19 @@ each size in ['default', 'small', 'large']
                   if style == 'success'
                     .a-icon.-success
                       svg
-                        use(xlink:href='#check')
+                        use(xlink:href='../../sprite/chi-icons.svg#icon-check')
                   else if style == 'warning'
                     .a-icon.-warning
                       svg
-                        use(xlink:href='#warning')
+                        use(xlink:href='../../sprite/chi-icons.svg#icon-warning')
                   else if style == 'danger'
                     .a-icon.-danger
                       svg
-                        use(xlink:href='#circle-warning')
+                        use(xlink:href='../../sprite/chi-icons.svg#icon-circle-warning')
                   else
                     .a-icon
                       svg
-                        use(xlink:href='#circle-info-outline')
+                        use(xlink:href='../../sprite/chi-icons.svg#icon-circle-info-outline')
 
   div(class=`test-${size}-icon-left-right`)
     span.a-h2= `Textarea / ${size} / icon left / icon right`
@@ -91,20 +86,20 @@ each size in ['default', 'small', 'large']
                     textarea(class=`a-input -${style} -${state} -${size}`) Value
                   .a-icon
                     svg
-                      use(xlink:href='#workspace')
+                      use(xlink:href='../../sprite/chi-icons.svg#icon-atom')
                   if style == 'success'
                     .a-icon.-success
                       svg
-                        use(xlink:href='#check')
+                        use(xlink:href='../../sprite/chi-icons.svg#icon-check')
                   else if style == 'warning'
                     .a-icon.-warning
                       svg
-                        use(xlink:href='#warning')
+                        use(xlink:href='../../sprite/chi-icons.svg#icon-warning')
                   else if style == 'danger'
                     .a-icon.-danger
                       svg
-                        use(xlink:href='#circle-warning')
+                        use(xlink:href='../../sprite/chi-icons.svg#icon-circle-warning')
                   else
                     .a-icon
                       svg
-                        use(xlink:href='#circle-info-outline')
+                        use(xlink:href='../../sprite/chi-icons.svg#icon-circle-info-outline')

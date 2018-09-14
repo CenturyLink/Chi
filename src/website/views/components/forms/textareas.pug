@@ -1,10 +1,6 @@
 ---
 title: Textareas
 ---
-img(inline src='src/chi/components/icons/icons/icon-edit.svg')
-img(inline src='src/chi/components/icons/icons/icon-check.svg')
-img(inline src='src/chi/components/icons/icons/icon-warning.svg')
-img(inline src='src/chi/components/icons/icons/icon-circle-warning.svg')
 
 p.-text Textareas are used to input multi-line text data
 
@@ -45,7 +41,7 @@ h4 Left Aligned
       textarea.a-input Sample text
       .a-icon
         svg
-          use(xlink:href='#edit')
+          use(xlink:href='../../../sprite/chi-icons.svg#icon-edit')
   :code(lang="html")
     <div class="a-inputWrapper -iconLeft">
       <textarea class="a-input">
@@ -53,7 +49,7 @@ h4 Left Aligned
       </textarea>
       <div class="a-icon">
         <svg>
-          <use xlink:href="#edit"></use>
+          <use xlink:href="#icon-edit"></use>
         </svg>
       </div>
     </div>
@@ -65,7 +61,7 @@ h4 Right Aligned
       textarea.a-input Sample text
       .a-icon
         svg
-          use(xlink:href='#edit')
+          use(xlink:href='../../../sprite/chi-icons.svg#icon-edit')
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <textarea class="a-input">
@@ -73,7 +69,7 @@ h4 Right Aligned
       </textarea>
       <div class="a-icon">
         <svg>
-          <use xlink:href="#edit"></use>
+          <use xlink:href="#icon-edit"></use>
         </svg>
       </div>
     </div>
@@ -85,10 +81,10 @@ h4 Left + Right Aligned
       textarea.a-input Sample text
       .a-icon
         svg
-          use(xlink:href='#edit')
+          use(xlink:href='../../../sprite/chi-icons.svg#icon-edit')
       .a-icon
         svg
-          use(xlink:href='#check')
+          use(xlink:href='../../../sprite/chi-icons.svg#icon-check')
   :code(lang="html")
     <div class="a-inputWrapper -iconLeft -iconRight">
       <textarea class="a-input">
@@ -96,12 +92,12 @@ h4 Left + Right Aligned
       </textarea>
       <div class="a-icon">
         <svg>
-          <use xlink:href="#edit"></use>
+          <use xlink:href="#icon-edit"></use>
         </svg>
       </div>
       <div class="a-icon">
         <svg>
-          <use xlink:href="#check"></use>
+          <use xlink:href="#icon-check"></use>
         </svg>
       </div>
     </div>
@@ -128,7 +124,7 @@ h4 Success
       textarea.a-input.-success Sample text
       .a-icon.-success
         svg
-          use(xlink:href="#check")
+          use(xlink:href="../../../sprite/chi-icons.svg#icon-check")
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <textarea class="a-input -success">
@@ -136,7 +132,7 @@ h4 Success
       </textarea>
       <div class="a-icon -success">
         <svg>
-          <use xlink:href="#check"></use>
+          <use xlink:href="#icon-check"></use>
         </svg>
       </div>
     </div>
@@ -157,7 +153,7 @@ h4 Warning
       textarea.a-input.-warning Sample text
       .a-icon.-warning
         svg
-          use(xlink:href="#warning")
+          use(xlink:href="../../../sprite/chi-icons.svg#icon-warning")
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <textarea class="a-input -warning">
@@ -165,7 +161,7 @@ h4 Warning
       </textarea>
       <div class="a-icon -warning">
         <svg>
-          <use xlink:href="#warning"></use>
+          <use xlink:href="#icon-warning"></use>
         </svg>
       </div>
     </div>
@@ -186,7 +182,7 @@ h4 Danger
       textarea.a-input.-danger Sample text
       .a-icon.-danger
         svg
-          use(xlink:href="#circle-warning")
+          use(xlink:href="../../../sprite/chi-icons.svg#icon-circle-warning")
   :code(lang="html")
     <div class="a-inputWrapper -iconRight">
       <textarea class="a-input -danger">
@@ -194,7 +190,7 @@ h4 Danger
       </textarea>
       <div class="a-icon -danger">
         <svg>
-          <use xlink:href="#circle-warning"></use>
+          <use xlink:href="#icon-circle-warning"></use>
         </svg>
       </div>
     </div>
