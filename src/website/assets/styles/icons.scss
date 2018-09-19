@@ -1,0 +1,18 @@
+@import '../../../chi/variables';
+@import '../../../chi/mixins';
+
+.icon-library {
+  >.a-col {
+    >.a-card {
+      align-items: center;
+      background: set-color(grey, 10);
+      border-color: transparent;
+      justify-content: center;
+
+      .a-icon {
+        color: set-color(grey, 90);
+      }
+
+    }
+  }
+}

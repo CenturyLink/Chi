@@ -18,20 +18,32 @@ $icon-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg: 4r
       width: 100%;
     }
 
-    &.-success {
+    &.-textInverse {
+      color: $text-inverse;
+    }
+
+    &.-textBrand {
+      color: $brand-color;
+    }
+
+    &.-textSuccess {
       color: $success-color;
     }
 
-    &.-danger {
+    &.-textDanger {
       color: $danger-color;
     }
 
-    &.-info {
+    &.-textInfo {
       color: $info-color;
     }
 
-    &.-warning {
+    &.-textWarning {
       color: $warning-color;
+    }
+
+    &.-textMuted {
+      color: $muted-color;
     }
 
     @each $type in map-keys($icon-sizes) {
