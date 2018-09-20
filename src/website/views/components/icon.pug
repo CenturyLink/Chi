@@ -31,15 +31,12 @@ p.-text Web Font based implementations offer the widest browser support and fast
 .-mb2
   :code(lang='html')
     <link rel="stylesheet" href="https://assets.ctl.io/chi/0.8.0/chi-icons.css">
-p.-text To render a Web Font icon, apply the class <code>a-icon</code> to an element. Next, add an <code>&lt;i&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;i&gt;</code>'s class attribute:
+p.-text To render a Web Font icon, apply the class <code>a-icon</code> to an <code>&lt;i&gt;</code> tag and specify the name of the icon you wish to use in the <code>&lt;i&gt;</code>'s class attribute:
 .example.-mb3
   .-p3
-    .a-icon.-sm
-      span(class='icon-logo-centurylink')
+    i(class='a-icon icon-logo-centurylink')
   :code(lang="html")
-    <div class="a-icon -sm">
-      <i class="icon-logo-centurylink"></i>
-    </div>
+    <i class="a-icon icon-logo-centurylink"></i>
 
 h3 Sizes
 p.-text By default, icons render at 16x16px (<code>-sm</code>). Apply size classes to render icons larger or smaller:
