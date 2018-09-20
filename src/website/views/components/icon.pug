@@ -3,10 +3,17 @@ title: Icon
 styles: [icons]
 ---
 
-p.-text Icons are used to visually represent objects. Chi leverages an SVG sprite based implementation for ease of maintainability and customization.
+p.-text Chi has adopted a subset of icons from Cyclops and CenturyLink's Cloud Application Manager.
 
-h3 Example
-p.-text To render an icon, apply the class <code>a-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> element and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
+h3 Using Icons
+p.-text Icons can be added via SVG or Web Font. Choose the method that best suits your projects needs.
+
+h4 SVG & JS Method
+p.-text SVG based implementations are recommended as they provide better semantics, accessibility, rendering, and relability.
+.-mb2
+  :code(lang='html')
+    <script src="https://assets.ctl.io/chi/0.8.0/chi-icons.js"></script>
+p.-text To render an SVG icon, apply the class <code>a-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
 .example.-mb3
   .-p3
     .a-icon.-sm
@@ -15,9 +22,21 @@ p.-text To render an icon, apply the class <code>a-icon</code> to an element. Ne
   :code(lang="html")
     <div class="a-icon -sm">
       <svg aria-hidden="true">
-        <use xlink:href='chi-icons.svg#icon-logo-centurylink'/>
+        <use xlink:href='#icon-logo-centurylink'/>
       </svg>
     </div>
+
+h4 Web Font & CSS Method
+p.-text Web Font based implementations offer the widest browser support and fastest rendering speed.
+.-mb2
+  :code(lang='html')
+    <link rel="stylesheet" href="https://assets.ctl.io/chi/0.8.0/chi-icons.css">
+p.-text To render a Web Font icon, apply the class <code>a-icon</code> to an <code>&lt;i&gt;</code> tag and specify the name of the icon you wish to use in the <code>&lt;i&gt;</code>'s class attribute:
+.example.-mb3
+  .-p3
+    i(class='a-icon icon-logo-centurylink')
+  :code(lang="html")
+    <i class="a-icon icon-logo-centurylink"></i>
 
 h3 Sizes
 p.-text By default, icons render at 16x16px (<code>-sm</code>). Apply size classes to render icons larger or smaller:

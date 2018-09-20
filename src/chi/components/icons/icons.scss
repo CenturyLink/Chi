@@ -5,7 +5,6 @@ $icon-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg: 4r
 
 .chi {
   .a-icon {
-    color: set-color(grey, 50);
     display: inline-block;
     position: relative;
 
@@ -16,34 +15,6 @@ $icon-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg: 4r
       position: absolute;
       top: 0;
       width: 100%;
-    }
-
-    &.-textInverse {
-      color: $text-inverse;
-    }
-
-    &.-textBrand {
-      color: $brand-color;
-    }
-
-    &.-textSuccess {
-      color: $success-color;
-    }
-
-    &.-textDanger {
-      color: $danger-color;
-    }
-
-    &.-textInfo {
-      color: $info-color;
-    }
-
-    &.-textWarning {
-      color: $warning-color;
-    }
-
-    &.-textMuted {
-      color: $muted-color;
     }
 
     @each $type in map-keys($icon-sizes) {
