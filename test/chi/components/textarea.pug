@@ -35,7 +35,7 @@ each size in ['default', 'small', 'large']
                     textarea(class=`a-input -${style} -${state} -${size}`) Value
                   .a-icon
                     svg
-                      use(xlink:href='../../sprite/chi-icons.svg#icon-atom')
+                      use(xlink:href='#icon-atom')
 
   div(class=`test-${size}-icon-right`)
     span.a-h2= `Textarea / ${size} / icon right`
@@ -53,21 +53,21 @@ each size in ['default', 'small', 'large']
                   else
                     textarea(class=`a-input -${style} -${state} -${size}`) Value
                   if style == 'success'
-                    .a-icon.-success
+                    .a-icon.-textSuccess
                       svg
-                        use(xlink:href='../../sprite/chi-icons.svg#icon-check')
+                        use(xlink:href='#icon-check')
                   else if style == 'warning'
-                    .a-icon.-warning
+                    .a-icon.-textWarning
                       svg
-                        use(xlink:href='../../sprite/chi-icons.svg#icon-warning')
+                        use(xlink:href='#icon-warning')
                   else if style == 'danger'
-                    .a-icon.-danger
+                    .a-icon.-textDanger
                       svg
-                        use(xlink:href='../../sprite/chi-icons.svg#icon-circle-warning')
+                        use(xlink:href='#icon-circle-warning')
                   else
                     .a-icon
                       svg
-                        use(xlink:href='../../sprite/chi-icons.svg#icon-circle-info-outline')
+                        use(xlink:href='#icon-circle-info-outline')
 
   div(class=`test-${size}-icon-left-right`)
     span.a-h2= `Textarea / ${size} / icon left / icon right`
@@ -86,20 +86,20 @@ each size in ['default', 'small', 'large']
                     textarea(class=`a-input -${style} -${state} -${size}`) Value
                   .a-icon
                     svg
-                      use(xlink:href='../../sprite/chi-icons.svg#icon-atom')
+                      use(xlink:href='#icon-atom')
                   if style == 'success'
-                    .a-icon.-success
+                    .a-icon.-textSuccess
                       svg
-                        use(xlink:href='../../sprite/chi-icons.svg#icon-check')
+                        use(xlink:href='#icon-check')
                   else if style == 'warning'
-                    .a-icon.-warning
+                    .a-icon.-textWarning
                       svg
-                        use(xlink:href='../../sprite/chi-icons.svg#icon-warning')
+                        use(xlink:href='#icon-warning')
                   else if style == 'danger'
-                    .a-icon.-danger
+                    .a-icon.-textDanger
                       svg
-                        use(xlink:href='../../sprite/chi-icons.svg#icon-circle-warning')
+                        use(xlink:href='#icon-circle-warning')
                   else
                     .a-icon
                       svg
-                        use(xlink:href='../../sprite/chi-icons.svg#icon-circle-info-outline')
+                        use(xlink:href='#icon-circle-info-outline')

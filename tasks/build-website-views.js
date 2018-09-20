@@ -106,7 +106,7 @@ gulp.task('build:website:views', () => {
         utils: pugUtils
       }))
       .use(metalsmithPlugins.redirect({
-        '/': '/getting-started'
+        '/': '/getting-started/'
       }))
       .build(error => {
         if (error) {

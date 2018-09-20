@@ -9,6 +9,8 @@
   font-style: normal;
 }
 
+$icon-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg: 4rem, xl: 6rem, xxl: 8rem);
+
 .chi {
 
   i[class^="icon-"], i[class*=" icon-"] {
@@ -22,6 +24,12 @@
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    @each $type in map-keys($icon-sizes) {
+      &.-#{$type} {
+        font-size: map-get($icon-sizes, $type);
+      }
+    }
   }
 
   .icon-activity:before {
