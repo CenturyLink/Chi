@@ -51,6 +51,11 @@ $state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
         .a-icon {
           height: 0.75rem;
           width: 0.75rem;
+
+          &[class^="icon-"], &[class*=" icon-"] {
+            font-size: 0.75rem;
+            line-height: 0.75rem;
+          }
         }
       }
 
@@ -62,6 +67,11 @@ $state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
         .a-icon {
           height: 1.25rem;
           width: 1.25rem;
+
+          &[class^="icon-"], &[class*=" icon-"] {
+            font-size: 1.25rem;
+            line-height: 1.25rem;
+          }
         }
       }
 

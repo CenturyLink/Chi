@@ -1,7 +1,9 @@
 # CHANGELOG
 
-### 0.8.2 (Unreleased)
+### 0.8.2 (September 19, 2018)
 
+* Added font and svg icons.
+* Added Getting Started section.
 * Added flex utility classes.
 * Merged ux-chi-docs into ux-chi.
 
