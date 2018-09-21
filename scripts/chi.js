@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import gulp from 'gulp';
+import log from 'loglevel';
 
 const plugins = require('gulp-load-plugins')();
 const componentsFolder = path.join(__dirname, '..', 'src', 'chi', 'components');
@@ -64,6 +65,32 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
     .pipe(gulp.dest(dest));
 }
 
+export function buildSprite({ dest = 'dist' }) {
+  var config = {
+    shape: {
+        transform: []
+    },
+    mode: {
+      symbol: {
+         sprite: 'chi-icons',
+         dest: 'sprite',
+         example: true
+       },
+    },
+    svg: {
+      xmlDeclaration: false,
+      doctypeDeclaration: false,
+      namespaceIDs: false,
+      namespaceClassnames: false,
+      dimensionAttributes: false
+    }
+  };
+
+  return gulp.src('./src/chi/components/icons/svg/**/*.svg')
+    .pipe(plugins.svgSprite(config))
+    .pipe(gulp.dest(dest));
+}
+
 export function copyAssets({ names = ['all'], dest = 'dist' }) {
   const componentFolders = getComponentNamesToInclude(names)
     .map(name => `${path.join(componentsFolder, name)}`);
@@ -79,5 +106,6 @@ export function copyAssets({ names = ['all'], dest = 'dist' }) {
 
 export function build({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
   buildCss({ names, dest, assetsPath });
+  buildSprite({ dest });
   copyAssets({ names, dest });
 }

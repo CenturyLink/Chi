@@ -1,7 +1,6 @@
 ---
 title: Hybrid buttons
 ---
-img(inline src='test/chi/components/icon-workspace.svg')
 
 each size in ['default', 'small', 'large']
   div(class={
@@ -16,7 +15,7 @@ each size in ['default', 'small', 'large']
         .a-btn__content
           .a-icon
             svg
-              use(xlink:href='#workspace')
+              use(xlink:href='#icon-atom')
           span Reinstall
       button.a-btn.-icon.-brand(class={
         [`-${size}`]: size != 'default'
@@ -24,7 +23,7 @@ each size in ['default', 'small', 'large']
         .a-btn__content
           .a-icon
             svg
-              use(xlink:href='#workspace')
+              use(xlink:href='#icon-atom')
 
   div(class={
     'test-fluid': size == 'default',
@@ -43,4 +42,4 @@ each size in ['default', 'small', 'large']
           .a-btn__content
             .a-icon
               svg
-                use(xlink:href='#workspace')
+                use(xlink:href='#icon-atom')
