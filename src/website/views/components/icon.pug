@@ -9,28 +9,25 @@ h3 Using Icons
 p.-text Icons can be added via SVG or Web Font. Choose the method that best suits your projects needs.
 
 h4 SVG & JS Method
-p.-text SVG based implementations are recommended as they provide better semantics, accessibility, rendering, and relability.
+p.-text SVG based implementations provide better semantics, accessibility, rendering, and reliability. Place the following script in your projects footer to use this method.
 .-mb2
   :code(lang='html')
     <script src="https://assets.ctl.io/chi/0.8.2/chi-icons.js"></script>
-p.-text To render an SVG icon, apply the class <code>a-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
+p.-text Then to render an SVG icon, apply the class <code>a-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
 .example.-mb3
   .-p3
-    .a-icon.-sm
+    .a-icon
       svg
         use(xlink:href='#icon-logo-centurylink')
   :code(lang="html")
-    <div class="a-icon -sm">
+    <div class="a-icon">
       <svg aria-hidden="true">
         <use xlink:href='#icon-logo-centurylink'/>
       </svg>
     </div>
 
 h4 Web Font & CSS Method
-p.-text Web Font based implementations offer the widest browser support and fastest rendering speed.
-.-mb2
-  :code(lang='html')
-    <link rel="stylesheet" href="https://assets.ctl.io/chi/0.8.2/chi-icons.css">
+p.-text Web Font based implementations offer the widest browser support, fastest rendering speed, and require no additional script or stylesheet.
 p.-text To render a Web Font icon, apply the class <code>a-icon</code> to an <code>&lt;i&gt;</code> tag and specify the name of the icon you wish to use in the <code>&lt;i&gt;</code>'s class attribute:
 .example.-mb3
   .-p3
@@ -86,7 +83,7 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
     <div class="a-icon -md -textInverse"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
     <div class="a-icon -md -textMuted"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
 
-h3 UI Icons
+h3 Available Icons
 .a-grid.icon-library.-pt2.-pb6
   each name in ['activity', 'address-book', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'arrow-to-bottom', 'arrow-vertical', 'arrows','asterisk', 'atom', 'ban', 'bank', 'bell-off', 'bell', 'box-application', 'box-cloudformation', 'box-container', 'box-deployment', 'box-fill', 'box-outline', 'box-script', 'box', 'chart-bar', 'chart-pie', 'chat', 'check-alt', 'check', 'checkbox-checked', 'checkbox', 'chevron-down', 'chevron-left', 'chevron-right', 'chevron-up', 'circle-alert-outline', 'circle-alert', 'circle-arrow-down-outline', 'circle-arrow-down', 'circle-arrow-up-outline', 'circle-arrow-up', 'circle-check-outline', 'circle-check', 'circle-clock-outline', 'circle-clock', 'circle-code-outline', 'circle-code', 'circle-gear-outline','circle-gear', 'circle-info-outline', 'circle-info', 'circle-minus-outline', 'circle-minus', 'circle-outline', 'circle-play-outline', 'circle-play', 'circle-plus-outline', 'circle-plus', 'circle-question-outline', 'circle-question', 'circle-reload-outline', 'circle-reload', 'circle-stop-outline', 'circle-stop', 'circle-warning', 'circle-x-outline', 'circle-x', 'circle', 'cloud', 'cost', 'database', 'delete', 'edit', 'file-error-outline', 'file-outline', 'file', 'filter', 'folder-gear', 'folder-open', 'folder', 'globe-network', 'globe-outline', 'grid', 'heart', 'home', 'key', 'life-ring', 'link', 'list', 'lock-outline', 'lock', 'logo-amazon', 'logo-aws', 'logo-azure', 'logo-centurylink', 'logo-cloudstack', 'logo-dimensiondata', 'logo-facebook', 'logo-github', 'logo-google', 'logo-hp', 'logo-linkedin', 'logo-linux', 'logo-openstack', 'logo-rackspace', 'logo-softlayer', 'logo-twitter', 'logo-vcloud', 'logo-vsphere', 'logout', 'mail', 'map-marker-alt', 'map-marker', 'menu', 'microphone-mute', 'microphone', 'minus-alt', 'minus', 'more-vert', 'more', 'nodes', 'number', 'pause', 'phone', 'play', 'plus-alt', 'plus', 'radio-checked', 'radio', 'refresh', 'rocket', 'search', 'settings', 'share', 'shield', 'shopping-cart', 'star-outline', 'star', 'stop', 'sync', 'tag-outline', 'tag', 'text', 'triangle-down', 'triangle-left', 'triangle-right', 'triangle-up', 'user', 'users', 'verified', 'video-camera-mute', 'video-camera', 'visible-off', 'visible', 'warning', 'x-alt', 'x']
     .a-col.-w6.-xl--w2.-lg--w3.-md--w6.-mb2

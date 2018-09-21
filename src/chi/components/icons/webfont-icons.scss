@@ -16,12 +16,13 @@ $icon-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg: 4r
   i[class^="icon-"], i[class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'chi' !important;
-    speak: none;
+    font-size: 1rem;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
+    line-height: 1rem;
+    speak: none;
     text-transform: none;
-    line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
@@ -111,10 +112,10 @@ $icon-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg: 4r
     content: "\e919";
   }
   .icon-check-alt:before {
-    content: "\e91a";
+    content: "\e91b";
   }
   .icon-check:before {
-    content: "\e91b";
+    content: "\e91a";
   }
   .icon-checkbox-checked:before {
     content: "\e91c";
