@@ -4,6 +4,7 @@
 
 * Added font and svg icons.
 * Added Getting Started section.
+* Improved compatibility with Edge and IE11.
 * Added flex utility classes.
 * Merged ux-chi-docs into ux-chi.
 

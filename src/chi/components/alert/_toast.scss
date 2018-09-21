@@ -9,8 +9,8 @@
 
       &::before {
         font-size: $text-large;
-        line-height: $line-height-large;
         margin-bottom: 0.4375rem;
+        padding: 0.25rem 0;
       }
 
       & > button {
