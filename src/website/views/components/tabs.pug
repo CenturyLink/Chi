@@ -23,15 +23,16 @@ h4 Horizontal
   :code(lang='html')
     <ul class="a-tabs">
       <li class="-active">
-        <a href="#">Active Tab</a>
+        <a href="#">Active a Tab</a>
       </li>
       <li>
-        <a href="#">Tab Link</a>
+        <a href="#">a Tab Link</a>
       </li>
       <li>
-        <a href="#">Tab Link</a>
+        <a href="#">a Tab Link</a>
       </li>
     </ul>
+
 
 h4 Vertical
 .example.-mb3
@@ -315,3 +316,94 @@ h4 Large
         <a href="#">Tab Link</a>
       </li>
     </ul>
+
+
+h3 JavaScript
+p.-text
+| Chi library provides a vanilla JavaScript file that enables default tabs functionality.
+| You have to link the tabs.js file and initialize every single tab panel you want to be activated.
+
+h4 Example
+.example.-mb3
+  .-p3.-pb4
+    ul#example-tabs.a-tabs
+      li.-active
+        a(href='#a') Tab a
+      li
+        a(href='#b') Tab b
+      li
+        a(href='#c') Tab c
+    #a.a-tabs-panel.-active
+      p Content for tab a
+    #b.a-tabs-panel
+      p Content for tab b
+    #c.a-tabs-panel
+      p Content for tab c
+  :code(lang='html')
+    <ul class="a-tabs" id="example-tabs">
+      <li class="-active"><a href="#a">Tab a</a></li>
+      <li><a href="#b">Tab b</a></li>
+      <li><a href="#c">Tab c</a></li>
+    </ul>
+
+    <div class="a-tabs-panel -active" id="a">
+      <p>Content for tab a</p>
+    </div>
+    <div class="a-tabs-panel" id="b">
+      <p>Content for tab b</p>
+    </div>
+    <div class="a-tabs-panel" id="c">
+      <p>Content for tab c</p>
+    </div>
+
+    <script src="https://assets.ctl.io/chi/0.8.2/tabs.js"></script>
+    <script>chiTabs.init(document.getElementById('example-tabs'));</script>
+
+h4 Keep default link behaviour
+p By default, Chi javascript enabled tabs will ignore their default anchor behaviour.
+  | To preserve it, you only have to specify the target property of that link.
+
+h5 Example
+.example.-mb3
+  .-p3.-pb4
+    ul#example-tabs-2.a-tabs
+      li.-active
+        a(href='#a2') Tab a
+      li
+        a(href='#b2') Tab b
+      li
+        a(href='#c2') Tab c
+      li
+        a(href='/')(target='_self') Link
+      li Adios
+
+    #a2.a-tabs-panel.-active
+      p Content for tab a
+    #b2.a-tabs-panel
+      p Content for tab b
+    #c2.a-tabs-panel
+      p Content for tab c
+  :code(lang='html')
+    <ul class="a-tabs" id="example-tabs">
+      <li class="-active"><a href="#a">Tab a</a></li>
+      <li><a href="#b">Tab b</a></li>
+      <li><a href="#c">Tab c</a></li>
+    </ul>
+
+    <div class="a-tabs-panel -active" id="a">
+      <p>Content for tab a</p>
+    </div>
+    <div class="a-tabs-panel" id="b">
+      <p>Content for tab b</p>
+    </div>
+    <div class="a-tabs-panel" id="c">
+      <p>Content for tab c</p>
+    </div>
+
+    <script src="https://assets.ctl.io/chi/0.8.2/tabs.js"></script>
+    <script>chiTabs.init(document.getElementById('example-tabs'));</script>
+
+script(type="text/javascript", src=`../../tabs.js`)
+//!= '<script>Array.prototype.forEach.call(document.getElementsByClassName(\'a-tabs\'), function(e){chiTabs.init(e);});</script>'
+!= '<script>chiTabs.init(document.getElementById(\'example-tabs\'));chiTabs.init(document.getElementById(\'example-tabs-2\'));</script>'
+

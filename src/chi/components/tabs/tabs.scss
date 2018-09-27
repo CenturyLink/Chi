@@ -328,4 +328,9 @@
       }
     }
   }
+
+  .a-tabs-panel:not(.-active) {
+    display:none;
+  }
+
 }

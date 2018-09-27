@@ -1,5 +1,4 @@
-(function () {
-
+let chiTabs = (function () {
   "use strict";
 
   //configuration
@@ -49,15 +48,21 @@
     }
 
     let anchor;
-    for (let i = 0; i < tab.childNodes.length && !anchor; i++) {
-      if (tab.childNodes[i].nodeName === 'A') {
-        anchor = tab.childNodes[i];
+
+    anchor = Array.prototype.filter.call(tab.childNodes, function (elem) {
+      if (elem.nodeName === 'A') {
+        return true;
+      } else {
+        return false;
       }
-    }
+    })[0];
 
     if (
+      !anchor ||
       !anchor.hasAttribute('href') ||
-      anchor.getAttribute('href').indexOf('#') !== 0) {
+      anchor.getAttribute('href').indexOf('#') !== 0 ||
+      anchor.getAttribute('href').length <= 1
+    ) {
       return null;
     }
     return document.getElementById(anchor.getAttribute('href').substr(1));
@@ -133,7 +138,7 @@
       let parentTab;
 
       for (let cur = e.target; cur && cur !== tabsComponent; cur = cur.parentNode) {
-        if (cur.nodeName === 'A') {
+        if (cur.nodeName === 'A' && !cur.getAttribute('target')) {
           e.preventDefault();
         } else if (cur.nodeName === 'LI') {
           if (tab) {
@@ -142,6 +147,10 @@
             tab = cur;
           }
         }
+      }
+
+      if (!tab) {
+        return;
       }
 
       if (helpers.hasClass(tab, chiActiveClass)) {
@@ -181,11 +190,21 @@
 
   };
 
-  document.addEventListener("DOMContentLoaded", function () {
-    helpers.findByClassNameAndApply(
-      document.body, componentClass, initComponent
+  let init = function (elem) {
+    initComponent(elem);
+  };
+
+  let initAll = function () {
+    Array.prototype.forEach.call(
+      document.getElementsByClassName(componentClass), function (elem) {
+        initComponent(elem);
+      }
     );
-  });
+  };
+
+  return {
+    init: init,
+    initAll: initAll
+  };
 
 })();
-
