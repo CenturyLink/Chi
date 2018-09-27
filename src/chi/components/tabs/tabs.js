@@ -48,7 +48,13 @@
       return null;
     }
 
-    let anchor = tab.childNodes[0];
+    let anchor;
+    for ( let i = 0; i < tab.childNodes.length && !anchor; i++) {
+      if (tab.childNodes[i].nodeName === 'A') {
+        anchor = tab.childNodes[i];
+      }
+    }
+
     if (
       !anchor.hasAttribute('href') ||
       anchor.getAttribute('href').indexOf('#') !== 0) {
@@ -73,6 +79,49 @@
     }
   };
 
+  let moveSlidingBorder = function (tab, tabsComponent) {
+    let offset = 0;
+    let size = 0;
+    let found = false;
+    const vertical = helpers.hasClass(tabsComponent, '-vertical');
+
+    for (let i = 0 ; !found && i < tabsComponent.childNodes.length ; i++) {
+      let childNode = tabsComponent.childNodes[i];
+      let style = window.getComputedStyle(childNode);
+      offset += parseInt(vertical ? style.marginTop : style.marginLeft, 10);
+      if (childNode === tab) {
+        size = vertical ? childNode.childNodes[0].scrollHeight : childNode.childNodes[0].scrollWidth;
+        found = true;
+      } else {
+        offset += vertical ? childNode.scrollHeight : childNode.scrollWidth;
+      }
+    }
+    if (found) {
+      helpers.findByClassNameAndApply(tabsComponent, 'a-tabs__sliding-border', function(elem) {
+        if (vertical) {
+          elem.setAttribute('style', 'height:' + size + 'px;top:' + offset + 'px;');
+        } else {
+          elem.setAttribute('style', 'width:' + size + 'px;left:' + offset + 'px;');
+        }
+      });
+    } else {
+      console.error("Not found desplazamiento: " + offset + "px");
+    }
+  };
+
+  let addSlidingBorder = function (tabsComponent) {
+    const slidingBorder= document.createElement('li');
+    slidingBorder.setAttribute('class', 'a-tabs__sliding-border');
+    tabsComponent.appendChild(slidingBorder);
+    let borderActivated = false;
+    for (let i = 0 ; i < tabsComponent.childNodes.length && !borderActivated ; i++) {
+      if (helpers.hasClass(tabsComponent.childNodes[i], chiActiveClass)) {
+        moveSlidingBorder(tabsComponent.childNodes[i], tabsComponent);
+        borderActivated = true;
+      }
+    }
+  };
+
   let initComponent = function (tabsComponent) {
     if (helpers.hasClass(tabsComponent, jsModifierClass)) {
       return;
@@ -80,25 +129,53 @@
 
     tabsComponent.addEventListener('click', function (e) {
 
-      let tab = e.target;
-      if (e.target.nodeName ==='A') {
-        e.preventDefault();
-        tab = e.target.parentNode;
-      } else if (e.target.nodeName ==='LI') {
-        console.error('Tab component incorrectly built.');
+      let tab;
+      let parentTab;
+
+      for ( let cur = e.target; cur && cur !== tabsComponent; cur = cur.parentNode ) {
+        if (cur.nodeName ==='A') {
+          e.preventDefault();
+        } else if (cur.nodeName === 'LI') {
+          if (tab) {
+            parentTab = cur;
+          } else {
+            tab = cur;
+          }
+        }
       }
 
       if (helpers.hasClass(tab, chiActiveClass)) {
+        Array.prototype.forEach.call(tab.getElementsByClassName(chiActiveClass), function(tabElement){
+          if (tabElement.nodeName === 'LI') {
+            hideTab(tabElement);
+          }
+        });
         return;
       }
-      Array.prototype.forEach.call(this.childNodes, function(tabElement) {
-        if (helpers.hasClass(tabElement, chiActiveClass)) {
+      Array.prototype.forEach.call(this.getElementsByTagName('LI'), function(tabElement) {
+        if (helpers.hasClass(tabElement, chiActiveClass) && tabElement !== parentTab) {
           hideTab(tabElement);
         }
       });
+
       showTab(tab);
 
+      if (parentTab && !helpers.hasClass(parentTab, chiActiveClass)) {
+        helpers.addClass(parentTab, chiActiveClass);
+      }
+      if (animation) {
+        if (parentTab) {
+          moveSlidingBorder(parentTab, tabsComponent);
+        } else {
+          moveSlidingBorder(tab, tabsComponent);
+        }
+      }
+
     });
+
+    if (animation) {
+      addSlidingBorder(tabsComponent);
+    }
 
     helpers.addClass(tabsComponent, jsModifierClass);
 
