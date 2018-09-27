@@ -4,6 +4,30 @@
 
   /* Margins */
 
+  .-m-small {
+    margin: 0.25rem;
+  }
+
+  /* Top Margin */
+  .-mt-small {
+    margin-top: 0.25rem;
+  }
+
+  /* Right Margin */
+  .-mr-small {
+    margin-right: 0.25rem;
+  }
+
+  /* Bottom Margin */
+  .-mb-small {
+    margin-bottom: 0.25rem;
+  }
+
+  /* Left Margin */
+  .-ml-small {
+    margin-left: 0.25rem;
+  }
+
   @for $index from 0 through 6 {
     .-m#{$index} {
       margin: ($index / 2) + rem;

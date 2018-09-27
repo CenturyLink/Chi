@@ -14,7 +14,43 @@ each type in ['solid', 'outline', 'flat']
             [`-${style}`]: style != 'base'
           }
         )
-          span= style
+          = style
+        div(
+          class="a-badge -mr1"
+          class={
+            [`-${type}`]: type != 'solid',
+            [`-${style}`]: style != 'base'
+          }
+        )
+          .a-badge__content
+            .a-icon(class=`-mr1`)
+              svg
+                use(xlink:href='#icon-atom')
+            = style
+        div(
+          class="a-badge -small -mr1"
+          class={
+            [`-${type}`]: type != 'solid',
+            [`-${style}`]: style != 'base'
+          }
+        )
+          .a-badge__content
+            .a-icon(class=`-mr-small`)
+              svg
+                use(xlink:href='#icon-atom')
+            = style
+        div(
+          class="a-badge -smaller -mr1"
+          class={
+            [`-${type}`]: type != 'solid',
+            [`-${style}`]: style != 'base'
+          }
+        )
+          .a-badge__content
+            .a-icon(class=`-mr-small`)
+              svg
+                use(xlink:href='#icon-atom')
+            = style
 
 each type in ['solid', 'outline']
   div(class=`test-pill-${type}`)
@@ -30,4 +66,65 @@ each type in ['solid', 'outline']
                 [`-${style}`]: style != 'base'
               }
             )
-              span 50
+              | 50
+            div(
+              class="a-badge -pill -mr1"
+              class={
+                [`-${type}`]: type != 'solid',
+                [`-${style}`]: style != 'base'
+              }
+            )
+              .a-badge__content
+                .a-icon(class=`-mr1`)
+                  svg
+                    use(xlink:href='#icon-atom')
+                | 50
+            div(
+              class="a-badge -pill -small -mr1"
+              class={
+                [`-${type}`]: type != 'solid',
+                [`-${style}`]: style != 'base'
+              }
+            )
+              .a-badge__content
+                .a-icon(class=`-mr-small`)
+                  svg
+                    use(xlink:href='#icon-atom')
+                | 50
+            div(
+              class="a-badge -pill -smaller -mr1"
+              class={
+                [`-${type}`]: type != 'solid',
+                [`-${style}`]: style != 'base'
+              }
+            )
+              .a-badge__content
+                .a-icon(class=`-mr-small`)
+                  svg
+                    use(xlink:href='#icon-atom')
+                | 50
+
+div(class=`test`)
+  span.a-h2= `Badge Icons`
+  div
+    .a-badge(class=`-mr2`)
+      .a-badge__content
+        .a-icon(class=`-mr1`)
+          svg
+            use(xlink:href='#icon-atom')
+        | Badge
+    .a-badge(class=`-mr2`)
+      .a-badge__content
+        | Badge
+        .a-icon(class=`-ml1`)
+          svg
+            use(xlink:href='#icon-atom')
+    .a-badge(class=`-mr2`)
+      .a-badge__content
+        .a-icon(class=`-mr1`)
+          svg
+            use(xlink:href='#icon-atom')
+        | Badge
+        .a-icon(class=`-ml1`)
+          svg
+            use(xlink:href='#icon-atom')

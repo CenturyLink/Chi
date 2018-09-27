@@ -14,84 +14,84 @@ h4 Base
   .-p2
     each type, val in {Base:'base', Brand:'brand', Success:'success', Danger:'danger', Info:'info', Dark:'dark', Light:'light'}
       .a-badge(class=`-${type} -m1`)
-        span= val
+        = val
   :code(lang="html")
     <div class="a-badge">
-      <span>Base</span>
+      Base
     </div>
     <div class="a-badge -brand">
-      <span>Brand</span>
+      Brand
     </div>
     <div class="a-badge -success">
-      <span>Success</span>
+      Success
     </div>
     <div class="a-badge -danger">
-      <span>Danger</span>
+      Danger
     </div>
     <div class="a-badge -info">
-      <span>Info</span>
+      Info
     </div>
     <div class="a-badge -dark">
-      <span>Dark</span>
+      Dark
     </div>
     <div class="a-badge -light">
-      <span>Light</span>
+      Light
     </div>
 h4 Outline
 .example.-mb3
   .-p2
     each type, val in {Base:'base', Brand:'brand', Success:'success', Danger:'danger', Info:'info', Dark:'dark', Light:'light'}
       .a-badge(class=`-${type} -outline -m1`)
-        span= val
+        = val
   :code(lang="html")
     <div class="a-badge -outline">
-      <span>Base</span>
+      Base
     </div>
     <div class="a-badge -brand -outline">
-      <span>Brand</span>
+      Brand
     </div>
     <div class="a-badge -success -outline">
-      <span>Success</span>
+      Success
     </div>
     <div class="a-badge -danger -outline">
-      <span>Danger</span>
+      Danger
     </div>
     <div class="a-badge -info -outline">
-      <span>Info</span>
+      Info
     </div>
     <div class="a-badge -dark -outline">
-      <span>Dark</span>
+      Dark
     </div>
     <div class="a-badge -light -outline">
-      <span>Light</span>
+      Light
     </div>
 h4 Flat
 .example.-mb3
   .-p2
     each type, val in {Base:'base', Brand:'brand', Success:'success', Danger:'danger', Info:'info', Dark:'dark', Light:'light'}
       .a-badge(class=`-${type} -flat -m1`)
-        span= val
+        = val
   :code(lang="html")
     <div class="a-badge -outline">
-      <span>Base</span>
+      Base
     </div>
     <div class="a-badge -brand -flat">
-      <span>Brand</span>
+      Brand
     </div>
     <div class="a-badge -success -flat">
-      <span>Success</span>
+      Success
     </div>
     <div class="a-badge -danger -flat">
-      <span>Danger</span>
+      Danger
     </div>
     <div class="a-badge -info -flat">
-      <span>Info</span>
+      Info
     </div>
     <div class="a-badge -dark -flat">
-      <span>Dark</span>
+      Dark
     </div>
     <div class="a-badge -light -flat">
-      <span>Light</span>
+      Light
     </div>
 
 h3 Pills
@@ -101,56 +101,119 @@ h4 Base
   .-p2
     each type, val in {Base:'base', Brand:'brand', Success:'success', Danger:'danger', Info:'info', Dark:'dark', Light:'light'}
       .a-badge(class=`-${type} -pill -m1`)
-        span= val
+        = val
   :code(lang="html")
     <div class="a-badge -pill">
-      <span>Base</span>
+      Base
     </div>
     <div class="a-badge -brand -pill">
-      <span>Brand</span>
+      Brand
     </div>
     <div class="a-badge -success -pill">
-      <span>Success</span>
+      Success
     </div>
     <div class="a-badge -danger -pill">
-      <span>Danger</span>
+      Danger
     </div>
     <div class="a-badge -info -pill">
-      <span>Info</span>
+      Info
     </div>
     <div class="a-badge -dark -pill">
-      <span>Dark</span>
+      Dark
     </div>
     <div class="a-badge -light -pill">
-      <span>Light</span>
+      Light
     </div>
 h4 Outline
 .example.-mb3
   .-p2
     each type, val in {Base:'base', Brand:'brand', Success:'success', Danger:'danger', Info:'info', Dark:'dark', Light:'light'}
       .a-badge(class=`-${type} -pill -outline -m1`)
-        span= val
+        = val
   :code(lang="html")
     <div class="a-badge -pill">
-      <span>Base</span>
+      Base
     </div>
     <div class="a-badge -brand -pill -outline">
-      <span>Brand</span>
+      Brand
     </div>
     <div class="a-badge -success -pill -outline">
-      <span>Success</span>
+      Success
     </div>
     <div class="a-badge -danger -pill -outline">
-      <span>Danger</span>
+      Danger
     </div>
     <div class="a-badge -info -pill -outline">
-      <span>Info</span>
+      Info
     </div>
     <div class="a-badge -dark -pill -outline">
-      <span>Dark</span>
+      Dark
     </div>
     <div class="a-badge -light -pill -outline">
-      <span>Light</span>
+      Light
+    </div>
+h4 Icon badges
+.example.-mb3
+  .-p3
+    .a-badge(class=`-mr2`)
+      .a-badge__content
+        .a-icon(class=`-mr1`)
+          svg
+            use(xlink:href='#icon-atom')
+        | Badge
+    .a-badge(class=`-mr2`)
+      .a-badge__content
+        | Badge
+        .a-icon(class=`-ml1`)
+          svg
+            use(xlink:href='#icon-atom')
+    .a-badge(class=`-mr2`)
+      .a-badge__content
+        .a-icon(class=`-mr1`)
+          svg
+            use(xlink:href='#icon-atom')
+        | Badge
+        .a-icon(class=`-ml1`)
+          svg
+            use(xlink:href='#icon-atom')
+  :code(lang='html')
+    <!-- left aligned -->
+    <div class="a-badge">
+      <div class="a-badge__content">
+        <div class="a-icon -mr1">
+          <svg>
+            <use xlink:href="#icon-atom"></use>
+          </svg>
+        </div>
+        Badge
+      </div>
+    </div>
+    <!-- right aligned -->
+    <div class="a-badge">
+      <div class="a-badge__content">
+        Badge
+        <div class="a-icon -ml1">
+          <svg>
+            <use xlink:href="#icon-atom"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <!-- both sides -->
+    <div class="a-badge">
+      <div class="a-badge__content">
+        <div class="a-icon -mr1">
+          <svg>
+            <use xlink:href="#icon-atom"></use>
+          </svg>
+        </div>
+        Badge
+        <div class="a-icon -ml1">
+          <svg>
+            <use xlink:href="#icon-atom"></use>
+          </svg>
+        </div>
+      </div>
     </div>
 h3 Additional Sizes
 h4 Small
@@ -159,28 +222,74 @@ p.-text Use the <code>-small</code> modifier class to render small badges.
   .-p2
     each type, val in {Base:'base', Brand:'brand', Success:'success', Danger:'danger', Info:'info', Dark:'dark', Light:'light'}
       .a-badge(class=`-${type} -small -m1`)
-        span= val
+        = val
+    .a-badge(class=`-base -small -m1`)
+      .a-badge__content
+        .a-icon(class=`-mr-small`)
+          svg
+            use(xlink:href='#icon-atom')
+        | Base
+    .a-badge(class=`-base -small -m1`)
+      .a-badge__content
+        | Base
+        .a-icon(class=`-ml-small`)
+          svg
+            use(xlink:href='#icon-atom')
+    .a-badge(class=`-base -small -m1`)
+      .a-badge__content
+        .a-icon(class=`-mr-small`)
+          svg
+            use(xlink:href='#icon-atom')
+        | Base
+        .a-icon(class=`-ml-small`)
+          svg
+            use(xlink:href='#icon-atom')
   :code(lang="html")
     <div class="a-badge -small">
-      <span>Base</span>
+      Base
     </div>
     <div class="a-badge -brand -small">
-      <span>Brand</span>
+      Brand
     </div>
     <div class="a-badge -success -small">
-      <span>Success</span>
+      Success
     </div>
     <div class="a-badge -danger -small">
-      <span>Danger</span>
+      Danger
     </div>
     <div class="a-badge -info -small">
-      <span>Info</span>
+      Info
     </div>
     <div class="a-badge -dark -small">
-      <span>Dark</span>
+      Dark
     </div>
     <div class="a-badge -light -small">
-      <span>Light</span>
+      Light
+    </div>
+    <div class="a-badge -base -small">
+      <div class="a-badge__content">
+        <div class="a-icon -mr-small">
+          <svg>
+            <use xlink:href="#icon-atom"></use>
+          </svg>
+        </div>
+        Base
+      </div>
+    </div>
+    <div class="a-badge -base -small">
+      <div class="a-badge__content">
+        <div class="a-icon -mr-small">
+          <svg>
+            <use xlink:href="#icon-atom"></use>
+          </svg>
+        </div>
+        Base
+        <div class="a-icon -ml-small">
+          <svg>
+            <use xlink:href="#icon-atom"></use>
+          </svg>
+        </div>
+      </div>
     </div>
 h4 Smaller
 p.-text Use the <code>-smaller</code> modifier class to render even smaller badges.
@@ -188,28 +297,84 @@ p.-text Use the <code>-smaller</code> modifier class to render even smaller badg
   .-p2
     each type, val in {Base:'base', Brand:'brand', Success:'success', Danger:'danger', Info:'info', Dark:'dark', Light:'light'}
       .a-badge(class=`-${type} -smaller -m1`)
-        span= val
+        = val
+    .a-badge(class=`-base -smaller -m1`)
+      .a-badge__content
+        .a-icon(class=`-mr-small`)
+          svg
+            use(xlink:href='#icon-atom')
+        | Base
+    .a-badge(class=`-base -smaller -m1`)
+      .a-badge__content
+        | Base
+        .a-icon(class=`-ml-small`)
+          svg
+            use(xlink:href='#icon-atom')
+    .a-badge(class=`-base -smaller -m1`)
+      .a-badge__content
+        .a-icon(class=`-mr-small`)
+          svg
+            use(xlink:href='#icon-atom')
+        | Base
+        .a-icon(class=`-ml-small`)
+          svg
+            use(xlink:href='#icon-atom')
   :code(lang="html")
     <div class="a-badge -smaller">
-      <span>Base</span>
+      Base
     </div>
     <div class="a-badge -brand -smaller">
-      <span>Brand</span>
+      Brand
     </div>
     <div class="a-badge -success -smaller">
-      <span>Success</span>
+      Success
     </div>
     <div class="a-badge -danger -smaller">
-      <span>Danger</span>
+      Danger
     </div>
     <div class="a-badge -info -smaller">
-      <span>Info</span>
+      Info
     </div>
     <div class="a-badge -dark -smaller">
-      <span>Dark</span>
+      Dark
     </div>
     <div class="a-badge -light -smaller">
-      <span>Light</span>
+      Light
+    </div>
+    <div class="a-badge -base -smaller">
+      <div class="a-badge__content">
+        <div class="a-icon -mr-small">
+          <svg>
+            <use xlink:href="#icon-atom"></use>
+          </svg>
+        </div>
+        Base
+      </div>
+    </div>
+    <div class="a-badge -base -smaller">
+      <div class="a-badge__content">
+        Base
+        <div class="a-icon -ml-small">
+          <svg>
+            <use xlink:href="#icon-atom"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="a-badge -base -smaller">
+      <div class="a-badge__content">
+        <div class="a-icon -mr-small">
+          <svg>
+            <use xlink:href="#icon-atom"></use>
+          </svg>
+        </div>
+        Base
+        <div class="a-icon -ml-small">
+          <svg>
+            <use xlink:href="#icon-atom"></use>
+          </svg>
+        </div>
+      </div>
     </div>
 h3 Text Transform
 h4 Uppercase
@@ -218,26 +383,26 @@ p.-text Use the <code>-textUppercase</code> text utility class to render badges 
   .-p2
     each type, val in {Base:'base', Brand:'brand', Success:'success', Danger:'danger', Info:'info', Dark:'dark', Light:'light'}
       .a-badge(class=`-${type} -textUppercase -m1`)
-        span= val
+        = val
   :code(lang="html")
     <div class="a-badge">
-      <span>Base</span>
+      Base
     </div>
     <div class="a-badge -brand -textUppercase">
-      <span>Brand</span>
+      Brand
     </div>
     <div class="a-badge -success -textUppercase">
-      <span>Success</span>
+      Success
     </div>
     <div class="a-badge -danger -textUppercase">
-      <span>Danger</span>
+      Danger
     </div>
     <div class="a-badge -info -textUppercase">
-      <span>Info</span>
+      Info
     </div>
     <div class="a-badge -dark -textUppercase">
-      <span>Dark</span>
+      Dark
     </div>
     <div class="a-badge -light -textUppercase">
-      <span>Light</span>
+      Light
     </div>
