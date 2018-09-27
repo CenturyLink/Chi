@@ -6,6 +6,10 @@
   -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
 }
 
+html {
+  -ms-overflow-style: -ms-autohiding-scrollbar; // sass-lint:disable-line no-vendor-prefixes
+}
+
 .chi {
   color: $text-color;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
@@ -95,6 +99,7 @@
   }
 
   pre {
+    -ms-overflow-style: -ms-autohiding-scrollbar; // sass-lint:disable-line no-vendor-prefixes
     background-color: set-color(grey, 300);
     border-radius: 3px;
     color: $text-color;
