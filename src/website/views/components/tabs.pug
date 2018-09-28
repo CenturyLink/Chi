@@ -23,15 +23,16 @@ h4 Horizontal
   :code(lang='html')
     <ul class="a-tabs">
       <li class="-active">
-        <a href="#">Active Tab</a>
+        <a href="#">Active a Tab</a>
       </li>
       <li>
-        <a href="#">Tab Link</a>
+        <a href="#">a Tab Link</a>
       </li>
       <li>
-        <a href="#">Tab Link</a>
+        <a href="#">a Tab Link</a>
       </li>
     </ul>
+
 
 h4 Vertical
 .example.-mb3
@@ -315,3 +316,190 @@ h4 Large
         <a href="#">Tab Link</a>
       </li>
     </ul>
+
+
+h3 JavaScript
+p.-text
+  | Chi library provides a vanilla JavaScript file that enables default tabs functionality.
+
+.-mb2
+  :code(lang='html')
+    <script src="https://assets.ctl.io/chi/0.8.2/tabs.js"></script>
+
+p.-text
+  | You have to link the tabs.js file and initialize every single tab panel you want to be activated.
+
+h4 Example
+.example.-mb3
+  .-p3.-pb4
+    ul#example-tabs.a-tabs
+      li.-active
+        a(href='#a') Tab a
+      li
+        a(href='#b') Tab b
+      li
+        a(href='#c') Tab c
+    #a.a-tabs-panel.-active
+      p.-text Content for tab a
+    #b.a-tabs-panel
+      p.-text Content for tab b
+    #c.a-tabs-panel
+      p.-text Content for tab c
+  :code(lang='html')
+    <ul class="a-tabs" id="example-tabs">
+      <li class="-active"><a href="#a">Tab a</a></li>
+      <li><a href="#b">Tab b</a></li>
+      <li><a href="#c">Tab c</a></li>
+    </ul>
+
+    <div class="a-tabs-panel -active" id="a">
+      <p class="-text">Content for tab a</p>
+    </div>
+    <div class="a-tabs-panel" id="b">
+      <p class="-text">Content for tab b</p>
+    </div>
+    <div class="a-tabs-panel" id="c">
+      <p class="-text">Content for tab c</p>
+    </div>
+
+    <script>chiTabs.init(document.getElementById('example-tabs'));</script>
+
+h4 Keep default link behaviour
+p.-text
+  | By default, Chi JavaScript enabled tabs will ignore their default anchor behaviour.
+  | To preserve it, you only have to specify the target property of that link.
+
+h5 Example
+.example.-mb3
+  .-p3.-pb4
+    ul#example-tabs-2.a-tabs
+      li.-active
+        a(href='#a2') Tab a
+      li
+        a(href='#b2') Tab b
+      li
+        a(href='#c2') Tab c
+      li
+        a(href='https://assets.ctl.io/chi/')(target='_self') Link
+
+    #a2.a-tabs-panel.-active
+      p.-text Content for tab a
+    #b2.a-tabs-panel
+      p.-text Content for tab b
+    #c2.a-tabs-panel
+      p.-text Content for tab c
+  :code(lang='html')
+    <ul class="a-tabs" id="example-tabs-2">
+      <li class="-active"><a href="#a">Tab a</a></li>
+      <li><a href="#b">Tab b</a></li>
+      <li><a href="#c">Tab c</a></li>
+      <li><a href="https://assets.ctl.io/chi/" target="_self">Link</a></li>
+    </ul>
+
+    <div class="a-tabs-panel -active" id="a">
+      <p class="-text">Content for tab a</p>
+    </div>
+    <div class="a-tabs-panel" id="b">
+      <p class="-text">Content for tab b</p>
+    </div>
+    <div class="a-tabs-panel" id="c">
+      <p class="-text">Content for tab c</p>
+    </div>
+
+    <script>chiTabs.init(document.getElementById('example-tabs-2'));</script>
+
+
+h4 Vertical Subnav
+p.-text
+  | The script also handles vertical tabs.
+
+.example.-mb3
+  .-p3.-pb4
+    ul#example-tabs-3.a-tabs.-vertical
+      li.-active
+        a(href='#a3') Tab a
+        ul.a-tabs__subtabs
+          li
+            a(href='#a3-1') Tab a-1
+          li
+            a(href='#a3-2') Tab a-2
+          li
+            a(href='#a3-3') Tab a-3
+      li
+        a(href='#b3') Tab b
+      li
+        a(href='#c3') Tab c
+
+    #a3.a-tabs-panel.-active
+      p.-text Content for tab a
+    #a3-1.a-tabs-panel
+      p.-text Content for tab a-1
+    #a3-2.a-tabs-panel
+      p.-text Content for tab a-2
+    #a3-3.a-tabs-panel
+      p.-text Content for tab a-3
+    #b3.a-tabs-panel
+      p.-text Content for tab b
+    #c3.a-tabs-panel
+      p.-text Content for tab c
+
+  :code(lang='html')
+    <ul class="a-tabs -vertical" id="example-tabs-3">
+      <li class=" -active">
+        <a href="#a3">Tab a</a>
+        <ul class="a-tabs__subtabs">
+          <li class="">
+            <a href="#a3-1">Tab a-1</a>
+          </li>
+          <li class="">
+            <a href="#a3-2">Tab a-2</a>
+          </li>
+          <li class="">
+            <a href="#a3-3">Tab a-3</a>
+          </li>
+        </ul>
+      </li>
+      <li class="">
+        <a href="#b3">Tab b</a>
+      </li>
+      <li class="">
+        <a href="#c3">Tab c</a>
+      </li>
+    </ul>
+    <div class="a-tabs-panel" id="a3">
+      <p class="-text">
+        Content for tab a
+      </p>
+    </div>
+    <div class="a-tabs-panel" id="a3-1">
+      <p class="-text">
+        Content for tab a
+      </p>
+    </div>
+    <div class="a-tabs-panel" id="a3-2">
+      <p class="-text">
+        Content for tab a
+      </p>
+    </div>
+    <div class="a-tabs-panel" id="a3-3">
+      <p class="-text">
+        Content for tab a
+      </p>
+    </div>
+    <div class="a-tabs-panel" id="b3">
+      <p class="-text">
+        Content for tab b
+      </p>
+    </div>
+    <div class="a-tabs-panel" id="c3">
+      <p class="-text">
+        Content for tab c
+      </p>
+    </div>
+
+    <script>chiTabs.init(document.getElementById('example-tabs3'));</script>
+
+script(type="text/javascript", src=`../../tabs.js`)
+//!= '<script>Array.prototype.forEach.call(document.getElementsByClassName(\'a-tabs\'), function(e){chiTabs.init(e);});</script>'
+!= '<script>chiTabs.init(document.getElementById(\'example-tabs\'));chiTabs.init(document.getElementById(\'example-tabs-2\'));chiTabs.init(document.getElementById(\'example-tabs-3\'));</script>'
+

@@ -6,6 +6,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    position: relative;
 
     & > li {
       display: inline-block;
@@ -22,6 +23,13 @@
         font-weight: 600;
         text-decoration: none;
         text-transform: capitalize;
+      }
+
+      &.a-tabs__sliding-border {
+        display: block;
+        position: absolute;
+        transition: .5s cubic-bezier(.35,0,.25,1);
+        background-color: $brand-color;
       }
     }
 
@@ -55,15 +63,22 @@
           margin-left: 1.5rem;
         }
 
-        &.-active > a {
-          border-bottom: 0.25rem solid $brand-color;
-          padding-bottom: 1rem;
-        }
-
         & > a {
           line-height: $line-height-smaller;
           padding: 1.25rem 0;
         }
+
+        &.a-tabs__sliding-border {
+          margin-left: 0;
+          height: 0.125rem;
+          bottom: 0;
+        }
+
+      }
+
+      &:not(.a-tabs--js) > li.-active > a {
+        border-bottom: 0.125rem solid $brand-color;
+        padding-bottom: 1.125rem;
       }
 
       &.-small {
@@ -153,6 +168,12 @@
       & > li {
         position: relative;
 
+        &.a-tabs__sliding-border {
+          left: 0;
+          width: 0.125rem;
+          position: absolute;
+        }
+
         &.-active {
           & > a {
             position: relative;
@@ -160,16 +181,6 @@
             & > .a-icon {
               color: $brand-color;
               left: 1.5rem;
-            }
-
-            &::before {
-              background-color: $brand-color;
-              content: '';
-              height: 2rem;
-              left: 0;
-              position: absolute;
-              top: 0;
-              width: 0.25rem;
             }
           }
         }
@@ -188,6 +199,18 @@
         & > a {
           padding: 0.5rem 0 0.5rem 1.5rem;
           width: 100%;
+        }
+      }
+
+      &:not(.a-tabs--js) > li.-active > a {
+        &::before {
+          background-color: $brand-color;
+          content: '';
+          height: 2rem;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 0.125rem;
         }
       }
 
@@ -305,4 +328,9 @@
       }
     }
   }
+
+  .a-tabs-panel:not(.-active) {
+    display:none;
+  }
+
 }
