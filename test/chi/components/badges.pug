@@ -8,49 +8,25 @@ each type in ['solid', 'outline', 'flat']
     div
       each style in ['base', 'brand', 'success', 'danger', 'info', 'dark', 'light']
         div(
-          class="a-badge -mr1"
-          class={
-            [`-${type}`]: type != 'solid',
-            [`-${style}`]: style != 'base'
-          }
+        class="a-badge -mr1"
+        class={
+          [`-${type}`]: type != 'solid',
+          [`-${style}`]: style != 'base'
+        }
         )
-          = style
+          span= style
         div(
-          class="a-badge -mr1"
-          class={
-            [`-${type}`]: type != 'solid',
-            [`-${style}`]: style != 'base'
-          }
+        class="a-badge -mr1"
+        class={
+          [`-${type}`]: type != 'solid',
+          [`-${style}`]: style != 'base'
+        }
         )
           .a-badge__content
-            .a-icon(class=`-mr1`)
+            .a-icon
               svg
                 use(xlink:href='#icon-atom')
-            = style
-        div(
-          class="a-badge -small -mr1"
-          class={
-            [`-${type}`]: type != 'solid',
-            [`-${style}`]: style != 'base'
-          }
-        )
-          .a-badge__content
-            .a-icon(class=`-mr-small`)
-              svg
-                use(xlink:href='#icon-atom')
-            = style
-        div(
-          class="a-badge -smaller -mr1"
-          class={
-            [`-${type}`]: type != 'solid',
-            [`-${style}`]: style != 'base'
-          }
-        )
-          .a-badge__content
-            .a-icon(class=`-mr-small`)
-              svg
-                use(xlink:href='#icon-atom')
-            = style
+            span= style
 
 each type in ['solid', 'outline']
   div(class=`test-pill-${type}`)
@@ -60,71 +36,116 @@ each type in ['solid', 'outline']
         each style in ['base', 'brand', 'success', 'danger', 'info', 'dark', 'light']
           td
             div(
-              class="a-badge -pill -mr1"
-              class={
-                [`-${type}`]: type != 'solid',
-                [`-${style}`]: style != 'base'
-              }
+            class="a-badge -pill -mr1"
+            class={
+              [`-${type}`]: type != 'solid',
+              [`-${style}`]: style != 'base'
+            }
             )
-              | 50
+              span 50
             div(
-              class="a-badge -pill -mr1"
-              class={
-                [`-${type}`]: type != 'solid',
-                [`-${style}`]: style != 'base'
-              }
+            class="a-badge -pill -mr1"
+            class={
+              [`-${type}`]: type != 'solid',
+              [`-${style}`]: style != 'base'
+            }
             )
               .a-badge__content
-                .a-icon(class=`-mr1`)
+                .a-icon
                   svg
                     use(xlink:href='#icon-atom')
-                | 50
+                span 50
+each type in ['solid', 'outline']
+  div(class=`test-pill-${type}`)
+    span.a-h2= `Badge / Pill / ${type}`
+    table(cellpadding="0", cellspacing="0")
+      tr
+        each style in ['base', 'brand', 'success', 'danger', 'info', 'dark', 'light']
+          td
             div(
-              class="a-badge -pill -small -mr1"
-              class={
-                [`-${type}`]: type != 'solid',
-                [`-${style}`]: style != 'base'
-              }
+            class="a-badge -pill -mr1"
+            class={
+              [`-${type}`]: type != 'solid',
+              [`-${style}`]: style != 'base'
+            }
+            )
+              span 50
+            div(
+            class="a-badge -pill -mr1"
+            class={
+              [`-${type}`]: type != 'solid',
+              [`-${style}`]: style != 'base'
+            }
             )
               .a-badge__content
-                .a-icon(class=`-mr-small`)
+                .a-icon
                   svg
                     use(xlink:href='#icon-atom')
-                | 50
-            div(
-              class="a-badge -pill -smaller -mr1"
-              class={
-                [`-${type}`]: type != 'solid',
-                [`-${style}`]: style != 'base'
-              }
-            )
-              .a-badge__content
-                .a-icon(class=`-mr-small`)
-                  svg
-                    use(xlink:href='#icon-atom')
-                | 50
+                span 50
 
-div(class=`test`)
-  span.a-h2= `Badge Icons`
-  div
-    .a-badge(class=`-mr2`)
+h2 Badge Icons
+.example.-mb1
+  .-p1
+    .a-badge(class=`-m1`)
       .a-badge__content
-        .a-icon(class=`-mr1`)
+        .a-icon
           svg
             use(xlink:href='#icon-atom')
-        | Badge
-    .a-badge(class=`-mr2`)
+        span Badge
+    .a-badge(class=`-m1`)
       .a-badge__content
-        | Badge
-        .a-icon(class=`-ml1`)
+        span Badge
+        .a-icon
           svg
             use(xlink:href='#icon-atom')
-    .a-badge(class=`-mr2`)
+    .a-badge(class=`-m1`)
       .a-badge__content
-        .a-icon(class=`-mr1`)
+        .a-icon
           svg
             use(xlink:href='#icon-atom')
-        | Badge
-        .a-icon(class=`-ml1`)
+        span Badge
+        .a-icon
+          svg
+            use(xlink:href='#icon-atom')
+    .a-badge(class=`-small -m1`)
+      .a-badge__content
+        .a-icon
+          svg
+            use(xlink:href='#icon-atom')
+        span Badge
+    .a-badge(class=`-small -m1`)
+      .a-badge__content
+        span Badge
+        .a-icon
+          svg
+            use(xlink:href='#icon-atom')
+    .a-badge(class=`-small -m1`)
+      .a-badge__content
+        .a-icon
+          svg
+            use(xlink:href='#icon-atom')
+        span Badge
+        .a-icon
+          svg
+            use(xlink:href='#icon-atom')
+    .a-badge(class=`-smaller -m1`)
+      .a-badge__content
+        .a-icon
+          svg
+            use(xlink:href='#icon-atom')
+        span Badge
+    .a-badge(class=`-smaller -m1`)
+      .a-badge__content
+        span Badge
+        .a-icon
+          svg
+            use(xlink:href='#icon-atom')
+    .a-badge(class=`-smaller -m1`)
+      .a-badge__content
+        .a-icon
+          svg
+            use(xlink:href='#icon-atom')
+        span Badge
+        .a-icon
           svg
             use(xlink:href='#icon-atom')
