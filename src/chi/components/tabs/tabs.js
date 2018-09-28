@@ -42,7 +42,7 @@ let chiTabs = (function () {
     };
   })();
 
-  let getAssociatedTabPane = function (tab) {
+  let getAssociatedTabPanel = function (tab) {
     if (!tab.hasChildNodes()) {
       return null;
     }
@@ -68,19 +68,25 @@ let chiTabs = (function () {
     return document.getElementById(anchor.getAttribute('href').substr(1));
   };
 
-  let showTab = function (tab) {
+  let activateTab = function (tab) {
     helpers.addClass(tab, chiActiveClass);
-    let tabPane = getAssociatedTabPane(tab);
-    if (tabPane) {
-      helpers.addClass(tabPane, chiActiveClass);
+  };
+
+  let showTabPanel = function (tab) {
+    let tabPanel = getAssociatedTabPanel(tab);
+    if (tabPanel) {
+      helpers.addClass(tabPanel, chiActiveClass);
     }
   };
 
-  let hideTab = function (tab) {
+  let deactivateTab = function (tab) {
     helpers.removeClass(tab, chiActiveClass);
-    let tabPane = getAssociatedTabPane(tab);
-    if (tabPane) {
-      helpers.removeClass(tabPane, chiActiveClass);
+  };
+
+  let hideTabPanel = function (tab) {
+    let tabPanel = getAssociatedTabPanel(tab);
+    if (tabPanel) {
+      helpers.removeClass(tabPanel, chiActiveClass);
     }
   };
 
@@ -138,7 +144,9 @@ let chiTabs = (function () {
       let parentTab;
 
       for (let cur = e.target; cur && cur !== tabsComponent; cur = cur.parentNode) {
-        if (cur.nodeName === 'A' && !cur.getAttribute('target')) {
+        if (cur.getAttribute('target')) {
+          return;
+        } else if (cur.nodeName === 'A') {
           e.preventDefault();
         } else if (cur.nodeName === 'LI') {
           if (tab) {
@@ -154,23 +162,32 @@ let chiTabs = (function () {
       }
 
       if (helpers.hasClass(tab, chiActiveClass)) {
+
         Array.prototype.forEach.call(tab.getElementsByClassName(chiActiveClass), function (tabElement) {
           if (tabElement.nodeName === 'LI') {
-            hideTab(tabElement);
+            deactivateTab(tabElement);
+            hideTabPanel(tabElement);
+            showTabPanel(tab);
           }
         });
+
         return;
+
       }
+
       Array.prototype.forEach.call(this.getElementsByTagName('LI'), function (tabElement) {
         if (helpers.hasClass(tabElement, chiActiveClass) && tabElement !== parentTab) {
-          hideTab(tabElement);
+          deactivateTab(tabElement);
+          hideTabPanel(tabElement);
         }
       });
 
-      showTab(tab);
+      activateTab(tab);
+      showTabPanel(tab);
 
-      if (parentTab && !helpers.hasClass(parentTab, chiActiveClass)) {
-        helpers.addClass(parentTab, chiActiveClass);
+      if (parentTab) {
+        hideTabPanel(parentTab);
+        activateTab(parentTab);
       }
       if (animation) {
         if (parentTab) {
