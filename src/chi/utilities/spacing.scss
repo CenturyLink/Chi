@@ -3,7 +3,6 @@
 .chi {
 
   /* Margins */
-
   @for $index from 0 through 6 {
     .-m#{$index} {
       margin: ($index / 2) + rem;
