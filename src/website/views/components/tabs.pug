@@ -33,7 +33,6 @@ h4 Horizontal
       </li>
     </ul>
 
-
 h4 Vertical
 .example.-mb3
   .-p3.-pb4
@@ -183,7 +182,7 @@ h3 Icons
       </li>
     </ul>
 
-h4 Vertical Subnav
+h3 Vertical Subtabs
 .example.-mb3
   .-p3.-pb4
     ul.a-tabs.-vertical
@@ -224,7 +223,7 @@ h4 Vertical Subnav
       </li>
     </ul>
 
-h4 Bordered
+h3 Bordered
 .example.-mb3
   .-p3.-pb4
     ul.a-tabs.-border(style="max-width:400px")
@@ -320,16 +319,15 @@ h4 Large
 
 h3 JavaScript
 p.-text
-  | Chi library provides a vanilla JavaScript file that enables default tabs functionality.
+  | Use Chi's optional <code>tabs.js</code> file to extend tab functionality by creating
+  | tabbable panes of content and animating active tab borders. Add the following
+  | script to your project and initialize each tab panel to activate.
 
 .-mb2
   :code(lang='html')
     <script src="https://assets.ctl.io/chi/0.8.2/tabs.js"></script>
 
-p.-text
-  | You have to link the tabs.js file and initialize every single tab panel you want to be activated.
-
-h4 Example
+h4 Base
 .example.-mb3
   .-p3.-pb4
     ul#example-tabs.a-tabs
@@ -364,12 +362,11 @@ h4 Example
 
     <script>chiTabs.init(document.getElementById('example-tabs'));</script>
 
-h4 Keep default link behaviour
+h4 Keep default link behavior
 p.-text
-  | By default, Chi JavaScript enabled tabs will ignore their default anchor behaviour.
-  | To preserve it, you only have to specify the target property of that link.
+  | By default, Chi JavaScript enabled tabs will ignore default link behavior.
+  | To preserve it, specify a target property on the link.
 
-h5 Example
 .example.-mb3
   .-p3.-pb4
     ul#example-tabs-2.a-tabs
@@ -380,7 +377,7 @@ h5 Example
       li
         a(href='#c2') Tab c
       li
-        a(href='https://assets.ctl.io/chi/')(target='_self') Link
+        a(href='https://assets.ctl.io/chi/')(target='_self') External Link
 
     #a2.a-tabs-panel.-active
       p.-text Content for tab a
@@ -393,7 +390,7 @@ h5 Example
       <li class="-active"><a href="#a">Tab a</a></li>
       <li><a href="#b">Tab b</a></li>
       <li><a href="#c">Tab c</a></li>
-      <li><a href="https://assets.ctl.io/chi/" target="_self">Link</a></li>
+      <li><a href="https://assets.ctl.io/chi/" target="_self">External Link</a></li>
     </ul>
 
     <div class="a-tabs-panel -active" id="a">
@@ -409,7 +406,7 @@ h5 Example
     <script>chiTabs.init(document.getElementById('example-tabs-2'));</script>
 
 
-h4 Vertical Subnav
+h4 Vertical
 p.-text
   | The script also handles vertical tabs.
 
@@ -448,21 +445,21 @@ p.-text
       <li class=" -active">
         <a href="#a3">Tab a</a>
         <ul class="a-tabs__subtabs">
-          <li class="">
+          <li>
             <a href="#a3-1">Tab a-1</a>
           </li>
-          <li class="">
+          <li>
             <a href="#a3-2">Tab a-2</a>
           </li>
-          <li class="">
+          <li>
             <a href="#a3-3">Tab a-3</a>
           </li>
         </ul>
       </li>
-      <li class="">
+      <li>
         <a href="#b3">Tab b</a>
       </li>
-      <li class="">
+      <li>
         <a href="#c3">Tab c</a>
       </li>
     </ul>
