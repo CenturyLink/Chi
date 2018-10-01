@@ -49,19 +49,39 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
           div(class=`a-icon -${size}`)
             svg
               use(xlink:href='#icon-logo-centurylink')
-  :code(lang="html")
-    <!-- -xs : 12x12px -->
-    <div class="a-icon -xs"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-    <!-- -sm : 16x16px -->
-    <div class="a-icon -sm"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-    <!-- -md : 32x32px -->
-    <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-    <!-- -lg : 64x64px -->
-    <div class="a-icon -lg"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-    <!-- -xl : 96x96px -->
-    <div class="a-icon -xl"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-    <!-- -xxl : 128x128px -->
-    <div class="a-icon -xxl"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+  ul#a-tabs--sizes.a-tabs.-ml3
+    li.-active
+      a(href='#a-tabs-panel--sizes-svg') SVG
+    li
+      a(href='#a-tabs-panel--sizes-webfont') Web Font
+  #a-tabs-panel--sizes-svg.a-tabs-panel.-active
+    :code(lang="html")
+      <!-- -xs : 12x12px -->
+      <div class="a-icon -xs"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <!-- -sm : 16x16px -->
+      <div class="a-icon -sm"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <!-- -md : 32x32px -->
+      <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <!-- -lg : 64x64px -->
+      <div class="a-icon -lg"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <!-- -xl : 96x96px -->
+      <div class="a-icon -xl"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <!-- -xxl : 128x128px -->
+      <div class="a-icon -xxl"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+  #a-tabs-panel--sizes-webfont.a-tabs-panel
+    :code(lang="html")
+      <!-- -xs : 12x12px -->
+      <i class="a-icon icon-logo-centurylink -xs"></i>
+      <!-- -sm : 16x16px -->
+      <i class="a-icon icon-logo-centurylink -sm"></i>
+      <!-- -md : 32x32px -->
+      <i class="a-icon icon-logo-centurylink -md"></i>
+      <!-- -lg : 64x64px -->
+      <i class="a-icon icon-logo-centurylink -lg"></i>
+      <!-- -xl : 96x96px -->
+      <i class="a-icon icon-logo-centurylink -xl"></i>
+      <!-- -xxl : 128x128px -->
+      <i class="a-icon icon-logo-centurylink -xxl"></i>
 
 h3 Colors
 p.-text By default, icons are the same color as text. Use Chi text color utilities to set a specific color.
@@ -73,15 +93,31 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
           div(class=`a-icon -md -text${color}`)
             svg
               use(xlink:href='#icon-logo-centurylink')
-  :code(lang="html")
-    <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-    <div class="a-icon -md -textBrand"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-    <div class="a-icon -md -textSuccess"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-    <div class="a-icon -md -textWarning"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-    <div class="a-icon -md -textDanger"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-    <div class="a-icon -md -textInfo"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-    <div class="a-icon -md -textInverse"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-    <div class="a-icon -md -textMuted"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+  ul#a-tabs--colors.a-tabs.-ml3
+    li.-active
+      a(href='#a-tabs-panel--colors-svg') SVG
+    li
+      a(href='#a-tabs-panel--colors-webfont') Web Font
+  #a-tabs-panel--colors-svg.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -textBrand"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -textSuccess"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -textWarning"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -textDanger"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -textInfo"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -textInverse"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -textMuted"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+  #a-tabs-panel--colors-webfont.a-tabs-panel
+    :code(lang="html")
+      <i class="a-icon icon-logo-centurylink -md"></i>
+      <i class="a-icon icon-logo-centurylink -md -textBrand"></i>
+      <i class="a-icon icon-logo-centurylink -md -textSuccess"></i>
+      <i class="a-icon icon-logo-centurylink -md -textWarning"></i>
+      <i class="a-icon icon-logo-centurylink -md -textDanger"></i>
+      <i class="a-icon icon-logo-centurylink -md -textInfo"></i>
+      <i class="a-icon icon-logo-centurylink -md -textInverse"></i>
+      <i class="a-icon icon-logo-centurylink -md -textMuted"></i>
 
 h3 Available Icons
 .a-grid.icon-library.-pt2.-pb6
@@ -93,3 +129,7 @@ h3 Available Icons
             svg
               use(xlink:href=`#icon-${name}`)
       p.-textCenter= 'icon-' + name
+
+script(type="text/javascript", src=`../../tabs.js`)
+//!= '<script>Array.prototype.forEach.call(document.getElementsByClassName(\'a-tabs\'), function(e){chiTabs.init(e);});</script>'
+!= '<script>chiTabs.init(document.getElementById(\'a-tabs--sizes\'));chiTabs.init(document.getElementById(\'a-tabs--colors\'));</script>'
