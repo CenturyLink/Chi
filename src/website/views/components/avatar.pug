@@ -1,0 +1,180 @@
+---
+title: Avatar
+---
+
+- var sizes = ['xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl'];
+- var borders = {'xs':'1', 'sm':'1', 'sm2':'1', 'sm3':'1', 'md':'1', 'lg':'2', 'xl':'2', 'xxl':'2'};
+- var columnWidths = {'xs':'1', 'sm':'1', 'sm2':'1', 'sm3':'1', 'md':'1', 'lg':'2', 'xl':'2', 'xxl':'3'};
+- var colors = ["#757575", "#de1b21", "#db1a5b", "#9557d4", "#6666e3", "#2973e3", "#0d7db5", "#038277", "#03853f", "#4e8003", "#a66102", "#c94218"];
+
+
+div(
+  style={
+    position: 'absolute',
+    left: '-9999px'
+  }
+)
+  img(inline src='/src/website/assets/images/avatar.svg')
+  img(inline src='/src/website/assets/images/person.svg')
+
+h2 Sizes using files
+.example.-mb3
+  .-p3
+    .a-grid.-align-items--end
+      each size in sizes
+        div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-avatar -${size}`)
+            svg
+             use(xlink:href='#avatar', fill="url(#person)")
+          p= size
+
+h2 Sizes using SVG code
+.example.-mb3
+  .-p3
+    .a-grid.-align-items--end
+      each size in sizes
+        div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-avatar -${size}`)
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+              <defs>
+                <pattern id="img-${size}" x="0" y="0" patternUnits="userSpaceOnUse" height="100" width="100">
+                  <image width="100" height="100" preserveAspectRatio="xMidYMid slice" xlink:href="/assets/images/person-h.jpg"/>
+                </pattern>
+              </defs>
+              <circle cx="50" cy="50" r="50" fill="url(#img-${size})" />
+            </svg>
+          p= size
+
+h3 Icons, just for size reference
+.example.-mb3
+  .-p3
+    .a-grid.-align-items--end
+      each size in sizes
+        div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-icon -${size}`)
+            svg
+              use(xlink:href='#icon-logo-centurylink')
+          p= size
+
+h3 Icons as avatar
+.example.-mb3
+  .-p3
+    .a-grid.-align-items--end
+      each size in sizes
+        div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-icon a-avatar -${size}`)
+            svg
+              use(xlink:href='#icon-user')
+          p= size
+
+h3 Horizontal image streched.
+.example.-mb3
+  .-p3
+    .a-grid.-align-items--end
+      each size in sizes
+        div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-avatar -${size}`)
+            img(src='../../assets/images/person-h.jpg')
+          p= size
+
+
+h3 Vertical image streched
+.example.-mb3
+  .-p3
+    .a-grid.-align-items--end
+      each size in sizes
+        div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-avatar -${size}`)
+            img(src='../../assets/images/person-v.jpg')
+          p= size
+
+h3 Square image
+.example.-mb3
+  .-p3
+    .a-grid.-align-items--end
+      each size in sizes
+        div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-avatar -${size}`)
+            img(src='../../assets/images/person-s.jpg')
+          p= size
+
+
+h3 Using background-image
+.example.-mb3
+  .-p3
+    .a-grid.-align-items--end
+      each size in sizes
+        div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-avatar -${size}`)(style='background-image:url(../../assets/images/person-v.jpg)')
+          p= size
+
+h3 Two A letters
+.example.-mb3
+  .-p3
+    .a-grid.-align-items--end
+      each size in sizes
+        div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-avatar -b${borders[size]} -${size}`)(style=`color:#de1b21;border-color:#de1b21;`) AA
+          p= size
+
+h3 Two M letters
+.example.-mb3
+  .-p3
+    .a-grid.-align-items--end
+      each size in sizes
+        div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-avatar -b${borders[size]} -${size}`)(style=`color:#de1b21;border-color:#de1b21;`) MM
+          p= size
+
+h3 One letter
+.example.-mb3
+  .-p3
+    .a-grid.-align-items--end
+      each size in sizes
+        div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-avatar -b${borders[size]} -${size}`) M
+          p= size
+
+h3 Colors two letters
+.example.-mb3
+  .-p3
+    .a-grid.-align-items--end
+      each color in colors
+        div(class=`a-col -w2 -textCenter`)
+          div(class=`a-avatar -b${borders.md} -md`)(style=`color:${color};border-color:${color};`) AA
+          p= color
+
+h3 Colors one letter
+.example.-mb3
+  .-p3
+    .a-grid.-align-items--end
+      each color in colors
+        div(class=`a-col -w2 -textCenter`)
+          div(class=`a-avatar -b${borders.md} -md`)(style=`color:${color};border-color:${color};`) M
+          p= color
+
+h3 Labeled icons
+.example.-mb3
+  .-p3.a-grid
+    each color in colors
+      .-mb1.a-col.-w3
+        .a-avatarGroup
+          div(class=`a-avatar -b${borders.md} -md`)(style=`color:${color};border-color:${color};`) M
+          = color
+
+.example.-mb3
+  .-p3.a-grid
+    each color in colors
+      .-mb1.a-col.-w3
+        .a-avatarGroup
+          div(class=`a-avatar -b${borders.md} -lg`)(style=`color:${color};border-color:${color};`) lg
+          = color
+
+.example.-mb3
+  .-p3.a-grid
+    each color in colors
+      .-mb1.a-col.-w3
+        .a-avatarGroup
+          div(class=`a-avatar -b${borders.md} -xl`)(style=`color:${color};border-color:${color};`) XL
+          = color
+

@@ -2,26 +2,66 @@
 @import 'variables';
 
 $avatar-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg: 4rem, xl: 6rem, xxl: 8rem);
+$avatar-font-sizes: (xs: 0.15rem, sm: 0.3rem, sm2: 0.4rem, sm3: 0.55rem, md: 0.75rem, lg: 1.4rem, xl: 2rem, xxl: 3rem);
+
+//$icon-sizes:   (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg: 4rem, xl: 6rem, xxl: 8rem);
+
+//$avatar-sizes: $icon-sizes;
 
 .chi {
   .a-avatar {
+
+    background-color: set-color(grey, 20);
+    background-position: center center;
+    background-size: cover;
+    border-radius: 50%;
     color: set-color(grey, 50);
     display: inline-block;
+    overflow: hidden;
     position: relative;
+    text-align: center;
 
+    &.-b2,
+    &.-b1,
+    &.-b3,
+    &.-b4 {
+      background-color: white;
+    }
+
+    & > img,
     & > svg {
       height: 100%;
       left: 0;
       position: absolute;
-      top: 0;
+      right: 0;
       width: 100%;
+    }
+
+    &.a-icon > svg {
+      height: 50%;
+      left: 0;
+      margin: 25%;
+      position: absolute;
+      top: 0;
+      width: 50%;
     }
 
     @each $type in map-keys($avatar-sizes) {
       &.-#{$type} {
+        font-size: map-get($avatar-sizes, $type) / 2;
         height: map-get($avatar-sizes, $type);
+        line-height: map-get($avatar-sizes, $type);
         width: map-get($avatar-sizes, $type);
       }
     }
   }
+
+  .a-avatarGroup {
+    .a-avatar {
+      margin-right: 12px;
+    }
+    align-items: center;
+    display: flex;
+  }
+
 }
