@@ -72,7 +72,7 @@ h4 Flat
       .a-badge(class=`-${type} -flat -m1`)
         span= val
   :code(lang="html")
-    <div class="a-badge -outline">
+    <div class="a-badge -flat">
       <span>Base</span>
     </div>
     <div class="a-badge -brand -flat">
@@ -131,7 +131,7 @@ h4 Outline
       .a-badge(class=`-${type} -pill -outline -m1`)
         span= val
   :code(lang="html")
-    <div class="a-badge -pill">
+    <div class="a-badge -pill -outline">
       <span>Base</span>
     </div>
     <div class="a-badge -brand -pill -outline">
@@ -155,19 +155,19 @@ h4 Outline
 h4 Icon badges
 .example.-mb3
   .-p2
-    .a-badge(class=`-m1`)
+    .a-badge(class=`-flat -m1`)
       .a-badge__content
         .a-icon
           svg
             use(xlink:href='#icon-atom')
         span Badge
-    .a-badge(class=`-m1`)
+    .a-badge(class=`-flat -m1`)
       .a-badge__content
         span Badge
         .a-icon
           svg
             use(xlink:href='#icon-atom')
-    .a-badge(class=`-m1`)
+    .a-badge(class=`-flat -m1`)
       .a-badge__content
         .a-icon
           svg
@@ -177,7 +177,7 @@ h4 Icon badges
           svg
             use(xlink:href='#icon-atom')
   :code(lang="html")
-    <div class="a-badge">
+    <div class="a-badge -flat">
       <div class="a-badge__content">
         <div class="a-icon">
           <svg>
@@ -187,7 +187,7 @@ h4 Icon badges
         <span>Badge</span>
       </div>
     </div>
-    <div class="a-badge">
+    <div class="a-badge -flat">
       <div class="a-badge__content">
         <span>Badge</span>
         <div class="a-icon">
@@ -197,7 +197,7 @@ h4 Icon badges
         </div>
       </div>
     </div>
-    <div class="a-badge">
+    <div class="a-badge -flat">
       <div class="a-badge__content">
         <div class="a-icon">
           <svg>
@@ -220,7 +220,7 @@ p.-text Use the <code>-small</code> modifier class to render small badges.
     each type, val in {Base:'base', Brand:'brand', Success:'success', Danger:'danger', Info:'info', Dark:'dark', Light:'light'}
       .a-badge(class=`-${type} -small -m1`)
         span= val
-    .a-badge(class=`-small -m1`)
+    .a-badge(class=`-small -flat -m1`)
       .a-badge__content
         .a-icon
           svg
@@ -248,7 +248,7 @@ p.-text Use the <code>-small</code> modifier class to render small badges.
     <div class="a-badge -light -small">
       <span>Light</span>
     </div>
-    <div class="a-badge -small">
+    <div class="a-badge -flat -small">
       <div class="a-badge__content">
         <div class="a-icon">
           <svg>
@@ -265,7 +265,7 @@ p.-text Use the <code>-smaller</code> modifier class to render even smaller badg
     each type, val in {Base:'base', Brand:'brand', Success:'success', Danger:'danger', Info:'info', Dark:'dark', Light:'light'}
       .a-badge(class=`-${type} -smaller -m1`)
         span= val
-    .a-badge(class=`-smaller -m1`)
+    .a-badge(class=`-flat -smaller -m1`)
       .a-badge__content
         .a-icon
           svg
@@ -293,7 +293,7 @@ p.-text Use the <code>-smaller</code> modifier class to render even smaller badg
     <div class="a-badge -light -smaller">
       <span>Light</span>
     </div>
-    <div class="a-badge -smaller">
+    <div class="a-badge -flat -smaller">
       <div class="a-badge__content">
         <div class="a-icon">
           <svg>
