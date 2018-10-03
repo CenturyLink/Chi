@@ -3,178 +3,321 @@ title: Avatar
 ---
 
 - var sizes = ['xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl'];
-- var borders = {'xs':'1', 'sm':'1', 'sm2':'1', 'sm3':'1', 'md':'1', 'lg':'2', 'xl':'2', 'xxl':'2'};
 - var columnWidths = {'xs':'1', 'sm':'1', 'sm2':'1', 'sm3':'1', 'md':'1', 'lg':'2', 'xl':'2', 'xxl':'3'};
-- var colors = ["#757575", "#de1b21", "#db1a5b", "#9557d4", "#6666e3", "#2973e3", "#0d7db5", "#038277", "#03853f", "#4e8003", "#a66102", "#c94218"];
+- var colors = ["grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "emerald", "green", "yellow", "orange"];
 
+- var iconExamples = ['user', 'users', 'star', 'visible', 'rocket'];
 
-div(
-  style={
-    position: 'absolute',
-    left: '-9999px'
-  }
-)
-  img(inline src='/src/website/assets/images/avatar.svg')
-  img(inline src='/src/website/assets/images/person.svg')
+p.-text An avatar is a graphical representation of the user. It can be build from a photo, an icon or one or two letters.
 
-h2 Sizes using files
+h3 Using avatars
+
+p.-text
+  | To render an avatar, use the class <code>a-avatar</code> in a div element and put an image inside. The image
+  | must be square in order not to be stretched.
 .example.-mb3
   .-p3
-    .a-grid.-align-items--end
-      each size in sizes
-        div(class=`a-col -w${columnWidths[size]} -textCenter`)
-          div(class=`a-avatar -${size}`)
-            svg
-             use(xlink:href='#avatar', fill="url(#person)")
-          p= size
+    div(class=`a-avatar`)
+      img(src='../../assets/images/person-s.jpg')(alt="avatar")
+  :code(lang="html")
+    <div class="a-avatar">
+      <img src="path/to/image.jpg">
+    </div>
 
-h2 Sizes using SVG code
+h3 Using icons as avatars
+
+p.-text
+  | You can use an avatarized version of the <a href="../icon/">Chi icons library</a>. Just include the
+  | <code>a-avatar</code> to the icon container.
+ul#a-tabs--icons.a-tabs
+  li.-active
+    a(href="#iconsSVG") SVG
+  li
+    a(href="#iconsWebFont") Web Font
 .example.-mb3
-  .-p3
-    .a-grid.-align-items--end
-      each size in sizes
-        div(class=`a-col -w${columnWidths[size]} -textCenter`)
-          div(class=`a-avatar -${size}`)
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
-              <defs>
-                <pattern id="img-${size}" x="0" y="0" patternUnits="userSpaceOnUse" height="100" width="100">
-                  <image width="100" height="100" preserveAspectRatio="xMidYMid slice" xlink:href="/assets/images/person-h.jpg"/>
-                </pattern>
-              </defs>
-              <circle cx="50" cy="50" r="50" fill="url(#img-${size})" />
-            </svg>
-          p= size
+  #iconsSVG.a-tabs-panel.-active
+    .-p3
+      .a-grid
+        each icon in iconExamples
+          .a-col.-w1
+            div(class="a-icon a-avatar")
+              svg
+                use(xlink:href=`#icon-${icon}`)
+    :code(lang="html")
+      <div class="a-icon a-avatar">
+        <svg>
+          <use xlink:href="#icon-user"></use>
+        </svg>
+      </div>
 
-h3 Icons, just for size reference
+  #iconsWebFont.a-tabs-panel
+    .-p3
+      .a-grid
+        each icon in iconExamples
+          .a-col.-w1
+            div(class="a-avatar")
+              i(class=`a-icon icon-${icon}`)
+    :code(lang="html")
+      <div class="a-avatar">
+        <i class="a-icon icon-user"></i>
+      </div>
+
+h3 Using letters as avatars
+
+p.-text
+  | Where there is not an available photograph for the user, use one or two letters to create one. Use the
+  | <code>-textUppercase</code> text utility class to render badges in all uppercase. <code>-textLowercase</code> and
+  | <code>-textCapitalized</code> are also supported.
 .example.-mb3
-  .-p3
-    .a-grid.-align-items--end
-      each size in sizes
-        div(class=`a-col -w${columnWidths[size]} -textCenter`)
-          div(class=`a-icon -${size}`)
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          p= size
+  .-p3.a-grid
+    .a-col.-w1
+      div(class=`a-avatar`) AA
+    .a-col.-w1
+      div(class=`a-avatar`) M
+  :code(lang="html")
+    <div class="a-avatar">AA</div>
 
-h3 Icons as avatar
+h3 Variations
+
+h4 Colours
+
+p.-text
+  | The icon and the letter version of the avatar component support the <a href="../../foundations/color/">colors</a>
+  | defined in the foundation section. They can be configured using the classes <code>-grey</code>, <code>-red</code>,
+  | <code>-pink</code>, <code>-purple</code>, <code>-indigo</code>, <code>-navy</code>, <code>-blue</code>,
+  | <code>-teal</code>, <code>-emerald</code>, <code>-green</code>, <code>-yellow</code>, <code>-orange</code>
+
+ul#a-tabs--colors.a-tabs
+  li.-active
+   a(href="#coloredLetters") Letters
+  li
+    a(href="#coloredIcons") Icons
 .example.-mb3
-  .-p3
-    .a-grid.-align-items--end
-      each size in sizes
-        div(class=`a-col -w${columnWidths[size]} -textCenter`)
-          div(class=`a-icon a-avatar -${size}`)
-            svg
-              use(xlink:href='#icon-user')
-          p= size
+  #coloredLetters.a-tabs-panel.-active
+    .-p3
+      .a-grid.-align-items--end
+        each color in colors
+          div(class=`a-col -w2 -textCenter`)
+            div(class=`a-avatar -${color}`) AA
+            p= color
+    :code(lang="html")
+      <div class="a-avatar -grey">AA</div>
+      <div class="a-avatar -red">AA</div>
+      <div class="a-avatar -pink">AA</div>
+      <div class="a-avatar -purple">AA</div>
+      <div class="a-avatar -indigo">AA</div>
+      <div class="a-avatar -navy">AA</div>
+      <div class="a-avatar -blue">AA</div>
+      <div class="a-avatar -teal">AA</div>
+      <div class="a-avatar -emerald">AA</div>
+      <div class="a-avatar -green">AA</div>
+      <div class="a-avatar -yellow">AA</div>
+      <div class="a-avatar -orange">AA</div>
 
-h3 Horizontal image streched.
+  #coloredIcons.a-tabs-panel
+    .-p3
+      .a-grid.-align-items--end
+        each color in colors
+          div(class=`a-col -w2 -textCenter`)
+            div(class=`a-avatar a-icon -${color}`)
+              svg
+                use(xlink:href=`#icon-user`)
+            p= color
+    :code(lang="html")
+      <div class="a-avatar a-icon -grey">
+          <svg>
+              <use xlink:href="#icon-user"></use>
+          </svg>
+      </div>
+      <div class="a-avatar a-icon -red">
+          <svg>
+              <use xlink:href="#icon-user"></use>
+          </svg>
+      </div>
+      <div class="a-avatar a-icon -pink">
+          <svg>
+              <use xlink:href="#icon-user"></use>
+          </svg>
+      </div>
+      <div class="a-avatar a-icon -purple">
+          <svg>
+              <use xlink:href="#icon-user"></use>
+          </svg>
+      </div>
+      <div class="a-avatar a-icon -indigo">
+          <svg>
+              <use xlink:href="#icon-user"></use>
+          </svg>
+      </div>
+      <div class="a-avatar a-icon -navy">
+          <svg>
+              <use xlink:href="#icon-user"></use>
+          </svg>
+      </div>
+      <div class="a-avatar a-icon -blue">
+          <svg>
+              <use xlink:href="#icon-user"></use>
+          </svg>
+      </div>
+      <div class="a-avatar a-icon -teal">
+          <svg>
+              <use xlink:href="#icon-user"></use>
+          </svg>
+      </div>
+      <div class="a-avatar a-icon -emerald">
+          <svg>
+              <use xlink:href="#icon-user"></use>
+          </svg>
+      </div>
+      <div class="a-avatar a-icon -green">
+          <svg>
+              <use xlink:href="#icon-user"></use>
+          </svg>
+      </div>
+      <div class="a-avatar a-icon -yellow">
+          <svg>
+              <use xlink:href="#icon-user"></use>
+          </svg>
+      </div>
+      <div class="a-avatar a-icon -orange">
+          <svg>
+              <use xlink:href="#icon-user"></use>
+          </svg>
+      </div>
+
+h4 Size
+
+p.-text
+  | All three versions support diferent sizes including one of the classes: <code>-xs</code>, <code>-sm</code>,
+  | <code>-sm2</code>, <code>-sm3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
+  | <code>-md</code> is the default size.
+ul#a-tabs--sizes.a-tabs
+  li.-active
+    a(href="#sizedLetters") Letters
+  li
+    a(href="#sizedIcons") Icons
+  li
+    a(href="#sizedImages") Images
+
 .example.-mb3
-  .-p3
-    .a-grid.-align-items--end
-      each size in sizes
-        div(class=`a-col -w${columnWidths[size]} -textCenter`)
-          div(class=`a-avatar -${size}`)
-            img(src='../../assets/images/person-h.jpg')
-          p= size
+  #sizedLetters.a-tabs-panel.-active
+    .-p3
+      .a-grid.-align-items--end
+        each size in sizes
+          div(class=`a-col -w${columnWidths[size]} -textCenter`)
+            div(class=`a-avatar -${size}`) AA
+            p.-text= size
+    :code(lang="html")
+      <div class="a-avatar -xs">AA</div>
+      <div class="a-avatar -sm">AA</div>
+      <div class="a-avatar -sm2">AA</div>
+      <div class="a-avatar -sm3">AA</div>
+      <div class="a-avatar -md">AA</div>
+      <div class="a-avatar -lg">AA</div>
+      <div class="a-avatar -xl">AA</div>
+      <div class="a-avatar -xxl">AA</div>
 
+  #sizedIcons.a-tabs-panel
+    .-p3
+      .a-grid.-align-items--end
+        each size in sizes
+          div(class=`a-col -w${columnWidths[size]} -textCenter`)
+            div(class=`a-avatar a-icon -${size}`)
+              svg
+                use(xlink:href=`#icon-user`)
+            p.-text= size
 
-h3 Vertical image streched
-.example.-mb3
-  .-p3
-    .a-grid.-align-items--end
-      each size in sizes
-        div(class=`a-col -w${columnWidths[size]} -textCenter`)
-          div(class=`a-avatar -${size}`)
-            img(src='../../assets/images/person-v.jpg')
-          p= size
+    :code(lang="html")
+      <div class="a-avatar a-icon -xs">
+        <svg>
+          <use xlink:href="#icon-user"></use>
+        </svg>
+      </div>
+      <div class="a-avatar a-icon -sm">
+        <svg>
+          <use xlink:href="#icon-user"></use>
+        </svg>
+      </div>
+      <div class="a-avatar a-icon -sm2">
+        <svg>
+          <use xlink:href="#icon-user"></use>
+        </svg>
+      </div>
+      <div class="a-avatar a-icon -sm3">
+        <svg>
+          <use xlink:href="#icon-user"></use>
+        </svg>
+      </div>
+      <div class="a-avatar a-icon -md">
+        <svg>
+          <use xlink:href="#icon-user"></use>
+        </svg>
+      </div>
+      <div class="a-avatar a-icon -lg">
+        <svg>
+          <use xlink:href="#icon-user"></use>
+        </svg>
+      </div>
+      <div class="a-avatar a-icon -xl">
+        <svg>
+          <use xlink:href="#icon-user"></use>
+        </svg>
+      </div>
+      <div class="a-avatar a-icon -xxl">
+        <svg>
+          <use xlink:href="#icon-user"></use>
+        </svg>
+      </div>
+  #sizedImages.a-tabs-panel
+    .-p3
+      .a-grid.-align-items--end
+        each size in sizes
+          div(class=`a-col -w${columnWidths[size]} -textCenter`)
+            div(class=`a-avatar -${size}`)
+              img(src='../../assets/images/person-s.jpg')(alt="avatar")
+            p.-text= size
+    :code(lang="html")
+      <div class="a-avatar a-icon -xs">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar a-icon -sm">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar a-icon -sm2">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar a-icon -sm3">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar a-icon -md">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar a-icon -lg">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar a-icon -xl">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar a-icon -xxl">
+        <img src="path/to/image.jpg">
+      </div>
 
-h3 Square image
-.example.-mb3
-  .-p3
-    .a-grid.-align-items--end
-      each size in sizes
-        div(class=`a-col -w${columnWidths[size]} -textCenter`)
-          div(class=`a-avatar -${size}`)
-            img(src='../../assets/images/person-s.jpg')
-          p= size
+h3 Labeled avatars
 
-
-h3 Using background-image
-.example.-mb3
-  .-p3
-    .a-grid.-align-items--end
-      each size in sizes
-        div(class=`a-col -w${columnWidths[size]} -textCenter`)
-          div(class=`a-avatar -${size}`)(style='background-image:url(../../assets/images/person-v.jpg)')
-          p= size
-
-h3 Two A letters
-.example.-mb3
-  .-p3
-    .a-grid.-align-items--end
-      each size in sizes
-        div(class=`a-col -w${columnWidths[size]} -textCenter`)
-          div(class=`a-avatar -b${borders[size]} -${size}`)(style=`color:#de1b21;border-color:#de1b21;`) AA
-          p= size
-
-h3 Two M letters
-.example.-mb3
-  .-p3
-    .a-grid.-align-items--end
-      each size in sizes
-        div(class=`a-col -w${columnWidths[size]} -textCenter`)
-          div(class=`a-avatar -b${borders[size]} -${size}`)(style=`color:#de1b21;border-color:#de1b21;`) MM
-          p= size
-
-h3 One letter
-.example.-mb3
-  .-p3
-    .a-grid.-align-items--end
-      each size in sizes
-        div(class=`a-col -w${columnWidths[size]} -textCenter`)
-          div(class=`a-avatar -b${borders[size]} -${size}`) M
-          p= size
-
-h3 Colors two letters
-.example.-mb3
-  .-p3
-    .a-grid.-align-items--end
-      each color in colors
-        div(class=`a-col -w2 -textCenter`)
-          div(class=`a-avatar -b${borders.md} -md`)(style=`color:${color};border-color:${color};`) AA
-          p= color
-
-h3 Colors one letter
-.example.-mb3
-  .-p3
-    .a-grid.-align-items--end
-      each color in colors
-        div(class=`a-col -w2 -textCenter`)
-          div(class=`a-avatar -b${borders.md} -md`)(style=`color:${color};border-color:${color};`) M
-          p= color
-
-h3 Labeled icons
+p.-text
+  | Avatars can be accompanied by a label. Include the avatar and the label in a div with a <code>a-avatarGroup</code>
+  | class. Labeled avatars still support type, size and color variations.
 .example.-mb3
   .-p3.a-grid
     each color in colors
       .-mb1.a-col.-w3
         .a-avatarGroup
-          div(class=`a-avatar -b${borders.md} -md`)(style=`color:${color};border-color:${color};`) M
-          = color
+          div(class=`a-avatar -${color}`) L
+          = `Label ${color}`
+  :code(lang="html")
+    <div class="a-avatarGroup">
+      <div class="a-avatar">L</div>Label text
+    </div>
 
-.example.-mb3
-  .-p3.a-grid
-    each color in colors
-      .-mb1.a-col.-w3
-        .a-avatarGroup
-          div(class=`a-avatar -b${borders.md} -lg`)(style=`color:${color};border-color:${color};`) lg
-          = color
-
-.example.-mb3
-  .-p3.a-grid
-    each color in colors
-      .-mb1.a-col.-w3
-        .a-avatarGroup
-          div(class=`a-avatar -b${borders.md} -xl`)(style=`color:${color};border-color:${color};`) XL
-          = color
-
+script(type="text/javascript", src=`../../tabs.js`)
+!= '<script>chiTabs.init(document.getElementById(\'a-tabs--sizes\'));chiTabs.init(document.getElementById(\'a-tabs--colors\'));chiTabs.init(document.getElementById(\'a-tabs--icons\'));</script>'
