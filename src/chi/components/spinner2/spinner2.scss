@@ -1,0 +1,108 @@
+@import 'variables';
+@import 'mixins';
+
+.chi {
+  .a-spinner__backdrop {
+    background: rgba(set-color(white), 0.7);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .a-spinner__icon2 {
+      animation: rotator 5s linear infinite;
+      transform-origin: center;
+      width: 4rem;
+      height: 4rem;
+
+      .path {
+        stroke-dasharray: 265;
+        stroke-dashoffset: 0;
+        transform-origin: center;
+        stroke: $brand-color;
+        stroke-linecap: round;
+        animation: dash 1s ease-in-out infinite;
+      }
+    }
+
+    &.-inverse {
+      background: rgba(set-color(black), 0.7);
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      .a-spinner__icon2 {
+        animation: rotator 5s linear infinite;
+        transform-origin: center;
+        width: 4rem;
+        height: 4rem;
+
+        .path {
+          stroke-dasharray: 265;
+          stroke-dashoffset: 0;
+          transform-origin: center;
+          stroke: set-color(white);
+          stroke-linecap: round;
+          animation: dash 1s ease-in-out infinite;
+        }
+      }
+    }
+  }
+
+  .a-spinner {
+    .a-spinner__icon2 {
+      animation: rotator 5s linear infinite;
+      transform-origin: center;
+      width: 1rem;
+      height: 1rem;
+
+      .path {
+        stroke-dasharray: 265;
+        stroke-dashoffset: 0;
+        transform-origin: center;
+        stroke: $brand-color;
+        stroke-linecap: round;
+        animation: dash 1s ease-in-out infinite;
+      }
+    }
+
+    &.-small {
+      .a-spinner__icon2 {
+        height: 0.75rem;
+        width: 0.75rem;
+      }
+    }
+
+    &.-large {
+      .a-spinner__icon2 {
+        height: 1.25rem;
+        width: 1.25rem;
+      }
+    }
+  }
+
+  @keyframes rotator {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dashoffset: 265;
+    }
+    50% {
+      stroke-dashoffset: 65;
+      transform: rotate(90deg);
+    }
+    100% {
+      stroke-dashoffset: 265;
+      transform: rotate(360deg);
+    }
+  }
+}

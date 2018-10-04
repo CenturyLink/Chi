@@ -1,0 +1,152 @@
+---
+title: Spinner2
+---
+
+p.-text Loading Spinner is a progress indicator to indicate that the client wait while the browser waits for the results.
+
+h3 Examples
+p.-text
+  | To display a Loading Spinner, use the class <code>a-spinner__backdrop</code> and <code>a-spinner__icon</code>.
+  | A contextual class (e.g. <code>-inverse</code>) can also be applied to provide alternate styling.
+
+h3 Backdrop
+
+h4 Base
+.example.-mb3
+  .a-spinner__backdrop.-p6(style="position:relative;height:25rem;")
+    svg(class=`a-spinner__icon2`,viewBox=`0 0 100 100`)
+      title Loading
+      circle(class=`path`,cx=`50`,cy=`50`,r=`40`,fill=`none`,stroke-width=`10`)
+  :code(lang="html")
+    <div class="a-spinner__backdrop">
+      <svg class="a-spinner__icon2" viewBox="0 0 100 100">
+        <title>Loading</title>
+        <circle class="path" cx="50" cy="50" r="40" fill="none" stroke-width="10"></circle>
+      </svg>
+    </div>
+
+h4 Inverse Backdrop
+.example.-mb3
+  .a-spinner__backdrop.-inverse.-p6(style="position:relative;height:25rem;")
+    svg(class=`a-spinner__icon2`,viewBox=`0 0 100 100`)
+      title Loading
+      circle(class=`path`,cx=`50`,cy=`50`,r=`40`,fill=`none`,stroke-width=`10`)
+  :code(lang="html")
+    <div class="a-spinner__backdrop -inverse">
+      <svg class="a-spinner__icon2" viewBox="0 0 100 100">
+        <title>Loading</title>
+        <circle class="path" cx="50" cy="50" r="40" fill="none" stroke-width="10"></circle>
+      </svg>
+    </div>
+
+h3 Contextual
+
+h4 Spinner Buttons
+.example.-mb3
+  .-p3
+    button(class=`a-btn -mr3`)
+      .a-btn__content
+        span Button
+        .a-spinner
+          svg(class=`a-spinner__icon2`,viewBox=`0 0 100 100`)
+            title Loading
+            circle(class=`path`,cx=`50`,cy=`50`,r=`40`,fill=`none`,stroke-width=`10`)
+    button(class='a-btn -small -mr3')
+      .a-btn__content
+        span Small
+        .a-spinner(class='-small')
+          svg(class=`a-spinner__icon2`,viewBox=`0 0 100 100`)
+            title Loading
+            circle(class=`path`,cx=`50`,cy=`50`,r=`40`,fill=`none`,stroke-width=`10`)
+    button(class='a-btn -large -mr3')
+      .a-btn__content
+        span Large
+        .a-spinner(class='-large')
+          svg(class=`a-spinner__icon2`,viewBox=`0 0 100 100`)
+            title Loading
+            circle(class=`path`,cx=`50`,cy=`50`,r=`40`,fill=`none`,stroke-width=`10`)
+  :code(lang='html')
+    <button class="a-btn">
+      <div class="a-btn__content">
+        <span>Button</span>
+        <div class="a-spinner">
+          <svg class="a-spinner__icon2" viewBox="0 0 100 100">
+            <title>Loading</title>
+            <circle class="path" cx="50" cy="50" r="40" fill="none" stroke-width="10"></circle>
+          </svg>
+        </div>
+      </div>
+    </button>
+    <button class="a-btn">
+      <div class="a-btn__content">
+        <span>Small</span>
+        <div class="a-spinner -small">
+          <svg class="a-spinner__icon2" viewBox="0 0 100 100">
+            <title>Loading</title>
+            <circle class="path" cx="50" cy="50" r="40" fill="none" stroke-width="10"></circle>
+          </svg>
+        </div>
+      </div>
+    </button>
+    <button class="a-btn">
+      <div class="a-btn__content">
+        <span>Large</span>
+        <div class="a-spinner -large">
+          <svg class="a-spinner__icon2" viewBox="0 0 100 100">
+            <title>Loading</title>
+            <circle class="path" cx="50" cy="50" r="40" fill="none" stroke-width="10"></circle>
+          </svg>
+        </div>
+      </div>
+    </button>
+
+h4 Spinner Text Input
+.example.-mb3
+  .-p3
+    .a-inputWrapper.-pb2(style="max-width:20rem")
+      input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+      .a-spinner.-textMuted
+        svg(class=`a-spinner__icon2`,viewBox=`0 0 100 100`)
+          title Loading
+          circle(class=`path`,cx=`50`,cy=`50`,r=`40`,fill=`none`,stroke-width=`10`)
+    .a-inputWrapper.-pb2(style="max-width:20rem")
+      input(type="text", class="a-input -small", placeholder="Placeholder", value="Sample Text")
+      .a-spinner.-small.-textMuted
+        svg(class=`a-spinner__icon2`,viewBox=`0 0 100 100`)
+          title Loading
+          circle(class=`path`,cx=`50`,cy=`50`,r=`40`,fill=`none`,stroke-width=`10`)
+    .a-inputWrapper.-pb2(style="max-width:20rem")
+      input(type="text", class="a-input -large", placeholder="Placeholder", value="Sample Text")
+      .a-spinner.-large.-textMuted
+        svg(class=`a-spinner__icon2`,viewBox=`0 0 100 100`)
+          title Loading
+          circle(class=`path`,cx=`50`,cy=`50`,r=`40`,fill=`none`,stroke-width=`10`)
+  :code(lang="html")
+    <div class="a-inputWrapper">
+      <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
+      <div class="a-spinner -textMuted">
+        <svg class="a-spinner__icon2" viewBox="0 0 100 100">
+          <title>Loading</title>
+          <circle class="path" cx="50" cy="50" r="40" fill="none" stroke-width="10"></circle>
+        </svg>
+      </div>
+    </div>
+    <div class="a-inputWrapper">
+      <input type="text" class="a-input -small" placeholder="Placeholder" value="Sample text">
+      <div class="a-spinner -small -textMuted">
+        <svg class="a-spinner__icon2" viewBox="0 0 100 100">
+          <title>Loading</title>
+          <circle class="path" cx="50" cy="50" r="40" fill="none" stroke-width="10"></circle>
+        </svg>
+      </div>
+    </div>
+    <div class="a-inputWrapper">
+      <input type="text" class="a-input -large" placeholder="Placeholder" value="Sample text">
+      <div class="a-spinner -large -textMuted">
+        <svg class="a-spinner__icon2" viewBox="0 0 100 100">
+          <title>Loading</title>
+          <circle class="path" cx="50" cy="50" r="40" fill="none" stroke-width="10"></circle>
+        </svg>
+      </div>
+    </div>
+
