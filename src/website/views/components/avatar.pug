@@ -18,7 +18,7 @@ p.-text
 .example.-mb3
   .-p3
     div(class=`a-avatar`)
-      img(src='../../assets/images/person-s.jpg')(alt="avatar")
+      img(src='../../assets/images/avatar.jpg')(alt="avatar")
   :code(lang="html")
     <div class="a-avatar">
       <img src="path/to/image.jpg">
@@ -99,7 +99,7 @@ ul#a-tabs--colors.a-tabs
         each color in colors
           div(class=`a-col -w2 -textCenter`)
             div(class=`a-avatar -${color}`) AA
-            p= color
+            p.-text= color
     :code(lang="html")
       <div class="a-avatar -grey">AA</div>
       <div class="a-avatar -red">AA</div>
@@ -122,7 +122,7 @@ ul#a-tabs--colors.a-tabs
             div(class=`a-avatar a-icon -${color}`)
               svg
                 use(xlink:href=`#icon-user`)
-            p= color
+            p.-text= color
     :code(lang="html")
       <div class="a-avatar a-icon -grey">
           <svg>
@@ -274,7 +274,7 @@ ul#a-tabs--sizes.a-tabs
         each size in sizes
           div(class=`a-col -w${columnWidths[size]} -textCenter`)
             div(class=`a-avatar -${size}`)
-              img(src='../../assets/images/person-s.jpg')(alt="avatar")
+              img(src='../../assets/images/avatar.jpg')(alt="avatar")
             p.-text= size
     :code(lang="html")
       <div class="a-avatar a-icon -xs">
