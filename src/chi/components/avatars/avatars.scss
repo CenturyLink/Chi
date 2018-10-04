@@ -18,6 +18,7 @@ $avatar-default-size: 'md';
     overflow: hidden;
     position: relative;
     text-align: center;
+    vertical-align: middle;
     width: map-get($avatar-sizes, $avatar-default-size);
 
     & > img,
@@ -26,20 +27,18 @@ $avatar-default-size: 'md';
       width: 100%;
     }
 
+    & > i,
+    &.a-icon > svg {
+      height: 50%;
+      margin: 25%;
+      width: 50%;
+    }
+
     &.a-icon {
       font-size: map-get($avatar-sizes, $avatar-default-size) / 2;
       height: map-get($avatar-sizes, $avatar-default-size);
       line-height: map-get($avatar-sizes, $avatar-default-size);
       width: map-get($avatar-sizes, $avatar-default-size);
-
-      &> svg {
-        height: 50%;
-        left: 0;
-        margin: 25%;
-        position: absolute;
-        top: 0;
-        width: 50%;
-      }
     }
 
     @each $type in map-keys($avatar-sizes) {
@@ -48,10 +47,11 @@ $avatar-default-size: 'md';
         height: map-get($avatar-sizes, $type);
         line-height: map-get($avatar-sizes, $type);
         width: map-get($avatar-sizes, $type);
-        & > i.a-icon {
-          font-size: map-get($avatar-sizes, $type) / 2;
-          height: map-get($avatar-sizes, $type) / 2;
-          width: map-get($avatar-sizes, $type) / 2;
+
+        & > i {
+          &.a-icon {
+            font-size: map-get($avatar-sizes, $type) / 2;
+          }
         }
       }
     }
