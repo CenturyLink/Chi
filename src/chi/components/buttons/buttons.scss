@@ -33,6 +33,11 @@ $state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
         width: 1rem;
       }
 
+      .a-spinner {
+        height: 1rem;
+        width: 1rem;
+      }
+
       &__content {
         align-items: center;
         display: inline-flex;
@@ -57,6 +62,11 @@ $state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
             line-height: 0.75rem;
           }
         }
+
+        .a-spinner {
+          height: 0.75rem;
+          width: 0.75rem;
+        }
       }
 
       &.-large {
@@ -72,6 +82,11 @@ $state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
             font-size: 1.25rem;
             line-height: 1.25rem;
           }
+        }
+
+        .a-spinner {
+          height: 1.25rem;
+          width: 1.25rem;
         }
       }
 
@@ -143,6 +158,10 @@ $state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
 
           .a-icon {
             color: set-color(white);
+          }
+
+          .a-spinner__icon .path {
+            stroke: set-color(white);
           }
         }
 
@@ -297,6 +316,10 @@ $state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
           color: inherit;
         }
 
+        .a-spinner__icon .path {
+          stroke: set-color(white);
+        }
+
         &:hover,
         &.-hover {
           background-color: set-color(map-get($state-colors, $type), 70);
@@ -325,10 +348,18 @@ $state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
           border: 0.0625rem solid set-color(map-get($state-colors, $type), 60);
           color: set-color(map-get($state-colors, $type), 60);
 
+          .a-spinner__icon .path {
+            stroke: set-color(map-get($state-colors, $type), 60);
+          }
+
           &:hover,
           &.-hover {
             background-color: set-color(map-get($state-colors, $type), 60);
             color: set-color(white);
+
+            .a-spinner__icon .path {
+              stroke: set-color(white);
+            }
           }
 
           &:focus,
@@ -346,6 +377,10 @@ $state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
               border: 0.0625rem solid rgba(set-color(black), 0.2);
               box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
               color: set-color(white);
+
+              .a-spinner__icon .path {
+                stroke: set-color(white);
+              }
             }
           }
         }

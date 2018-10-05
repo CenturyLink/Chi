@@ -15,11 +15,22 @@
             width: 1rem;
           }
 
+          & ~ .a-spinner {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.75rem;
+          }
+
           &.-small {
             & ~ .a-icon {
               height: 0.75rem;
               top: 0.375rem;
               width: 0.75rem;
+            }
+
+            & ~ .a-spinner {
+              top: 0.25rem;
+              right: 0.5rem
             }
           }
 
