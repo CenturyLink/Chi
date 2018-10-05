@@ -16,11 +16,9 @@
           }
 
           & ~ .a-spinner {
-            height: 1rem;
             position: absolute;
-            top: 0.3rem;
+            top: 0.5rem;
             right: 0.5rem;
-            width: 1rem;
           }
 
           &.-small {
@@ -31,9 +29,7 @@
             }
 
             & ~ .a-spinner {
-              height: 0.75rem;
-              top: 0rem;
-              width: 0.75rem;
+              top: 0.3rem;
               right: 0.5rem
             }
           }
@@ -44,7 +40,7 @@
             }
 
             & ~ .a-spinner {
-              top: 0.60rem;
+              top: 0.6rem;
               right: 1rem;
             }
           }
