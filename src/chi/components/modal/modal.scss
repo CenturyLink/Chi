@@ -58,18 +58,10 @@ $backdrop: #{$modal}-backdrop;
         }
       }
 
-      .a-modal__close {
-        background-color: transparent;
-        background-image: url('./icon-close.svg');
-        border: 0;
-        cursor: pointer;
-        height: 1rem;
-        outline: none;
-        padding: 0;
+      & > button.a-close {
         position: absolute;
         right: 1rem;
-        top: 1.25rem;
-        width: 1rem;
+        top: 0.8125rem;
       }
 
       .a-modal__back {

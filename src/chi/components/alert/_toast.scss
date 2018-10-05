@@ -13,18 +13,10 @@
         padding: 0.25rem 0;
       }
 
-      & > button {
-        background-color: transparent;
-        background-image: url('./icon-close.svg');
-        border: 0;
-        cursor: pointer;
-        height: 0.75rem;
-        outline: none;
-        padding: 0;
+      & > button.a-close {
         position: absolute;
         right: 0.9375rem;
         top: 0.9375rem;
-        width: 0.75rem;
       }
 
       @each $state in map-keys($states) {

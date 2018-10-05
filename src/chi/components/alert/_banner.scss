@@ -8,19 +8,10 @@
       padding-left: 1rem;
       padding-right: 2rem;
 
-      & > button {
-        background-color: transparent;
-        background-image: url('./icon-close.svg');
-        border: 0;
-        cursor: pointer;
-        height: 0.75rem;
-        outline: none;
-        padding: 0;
+      & > button.a-close {
         position: absolute;
         right: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 0.75rem;
+        top: 0.8125rem;
       }
 
       &.-small {
@@ -31,13 +22,18 @@
         &::before {
           display: none;
         }
+
+        & > button.a-close {
+          top: 0.3rem;
+          transform: initial;
+        }
       }
 
       &.-large {
         padding-bottom: 1.1875rem;
         padding-top: 0.75rem;
 
-        & > button {
+        & > button.a-close {
           top: 0.9375rem;
           transform: initial;
         }

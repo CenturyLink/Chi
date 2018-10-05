@@ -69,7 +69,7 @@ h3 Headers
   })
     .a-modal__header
       h1.a-modal__title Modal alert title
-      button.a-modal__close
+      button.a-close(aria-label='Close')
 
   h4 header / title / no border / close
   .a-modal(style={
@@ -80,7 +80,7 @@ h3 Headers
   })
     .a-modal__header.-noBorder
       h1.a-modal__title Modal alert title
-      button.a-modal__close
+      button.a-close(aria-label='Close')
 
   h4 header / title / centered / close
   .a-modal(style={
@@ -91,7 +91,7 @@ h3 Headers
   })
     .a-modal__header
       h1.a-modal__title.-centered Modal alert title
-      button.a-modal__close
+      button.a-close(aria-label='Close')
 
   h4 header / title / centered / back/ close
   .a-modal(style={
@@ -103,7 +103,7 @@ h3 Headers
     .a-modal__header
       h1.a-modal__title.-centered Modal alert title
       button.a-modal__back
-      button.a-modal__close
+      button.a-close(aria-label='Close')
 
 h3 Footers
 
