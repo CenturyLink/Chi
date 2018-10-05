@@ -8,6 +8,7 @@ $spinner-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg:
     background: rgba(set-color(white), 0.7);
     position: fixed;
     top: 0;
+    bottom: 0;
     right: 0;
     left: 0;
     display: flex;
@@ -32,11 +33,6 @@ $spinner-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg:
 
     &.-inverse {
       background: rgba(set-color(black), 0.7);
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
 
       .a-spinner {
         animation: rotator 1.4s linear infinite;
