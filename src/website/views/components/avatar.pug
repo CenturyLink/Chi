@@ -3,9 +3,8 @@ title: Avatar
 ---
 
 - var sizes = ['xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl'];
-- var columnWidths = {'xs':'1', 'sm':'1', 'sm2':'1', 'sm3':'1', 'md':'1', 'lg':'2', 'xl':'2', 'xxl':'3'};
+- var columnWidths = {'xs':[ '4', '3', '1'], 'sm':[ '4', '3', '1'], 'sm2':[ '4', '3', '1'], 'sm3':[ '4', '3', '1'], 'md':[ '4', '2', '1'], 'lg':[ '4', '3', '2'], 'xl':[ '6', '3', '2'], 'xxl':[ '6', '4', '3']};
 - var colors = ["grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "emerald", "green", "yellow", "orange"];
-
 - var iconExamples = ['user', 'users', 'star', 'visible', 'rocket'];
 
 p.-text An avatar is a graphical representation of the user. It can be build from a photo, an icon or one or two letters.
@@ -29,20 +28,20 @@ h3 Using icons as avatars
 p.-text
   | You can use an avatarized version of the <a href="../icon/">Chi icons library</a>. Just include the
   | <code>a-avatar</code> to the icon container.
-ul#a-tabs--icons.a-tabs
-  li.-active
-    a(href="#iconsSVG") SVG
-  li
-    a(href="#iconsWebFont") Web Font
 .example.-mb3
+  .-p3
+    .a-grid
+      each icon in iconExamples
+        .a-col.-w1
+          div(class="a-icon a-avatar")
+            svg
+              use(xlink:href=`#icon-${icon}`)
+  ul#a-tabs--icons.a-tabs.-ml3
+    li.-active
+      a(href="#iconsSVG") SVG
+    li
+      a(href="#iconsWebFont") Web Font
   #iconsSVG.a-tabs-panel.-active
-    .-p3
-      .a-grid
-        each icon in iconExamples
-          .a-col.-w1
-            div(class="a-icon a-avatar")
-              svg
-                use(xlink:href=`#icon-${icon}`)
     :code(lang="html")
       <div class="a-icon a-avatar">
         <svg>
@@ -51,12 +50,6 @@ ul#a-tabs--icons.a-tabs
       </div>
 
   #iconsWebFont.a-tabs-panel
-    .-p3
-      .a-grid
-        each icon in iconExamples
-          .a-col.-w1
-            div(class="a-avatar")
-              i(class=`a-icon icon-${icon}`)
     :code(lang="html")
       <div class="a-avatar">
         <i class="a-icon icon-user"></i>
@@ -204,7 +197,7 @@ ul#a-tabs--sizes.a-tabs
     .-p3
       .a-grid.-align-items--end
         each size in sizes
-          div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -textCenter`)
             div(class=`a-avatar -${size}`) AA
             p.-text= size
     :code(lang="html")
@@ -221,7 +214,7 @@ ul#a-tabs--sizes.a-tabs
     .-p3
       .a-grid.-align-items--end
         each size in sizes
-          div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -textCenter`)
             div(class=`a-avatar a-icon -${size}`)
               svg
                 use(xlink:href=`#icon-user`)
@@ -272,50 +265,50 @@ ul#a-tabs--sizes.a-tabs
     .-p3
       .a-grid.-align-items--end
         each size in sizes
-          div(class=`a-col -w${columnWidths[size]} -textCenter`)
+          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -textCenter`)
             div(class=`a-avatar -${size}`)
               img(src='../../assets/images/avatar.jpg')(alt="avatar")
             p.-text= size
     :code(lang="html")
-      <div class="a-avatar a-icon -xs">
+      <div class="a-avatar -xs">
         <img src="path/to/image.jpg">
       </div>
-      <div class="a-avatar a-icon -sm">
+      <div class="a-avatar -sm">
         <img src="path/to/image.jpg">
       </div>
-      <div class="a-avatar a-icon -sm2">
+      <div class="a-avatar -sm2">
         <img src="path/to/image.jpg">
       </div>
-      <div class="a-avatar a-icon -sm3">
+      <div class="a-avatar -sm3">
         <img src="path/to/image.jpg">
       </div>
-      <div class="a-avatar a-icon -md">
+      <div class="a-avatar -md">
         <img src="path/to/image.jpg">
       </div>
-      <div class="a-avatar a-icon -lg">
+      <div class="a-avatar -lg">
         <img src="path/to/image.jpg">
       </div>
-      <div class="a-avatar a-icon -xl">
+      <div class="a-avatar -xl">
         <img src="path/to/image.jpg">
       </div>
-      <div class="a-avatar a-icon -xxl">
+      <div class="a-avatar -xxl">
         <img src="path/to/image.jpg">
       </div>
 
 h3 Labeled avatars
 
 p.-text
-  | Avatars can be accompanied by a label. Include the avatar and the label in a div with a <code>a-avatarGroup</code>
+  | Avatars can be accompanied by a label. Include the avatar and the label in a div with a <code>m-avatarGroup</code>
   | class. Labeled avatars still support type, size and color variations.
 .example.-mb3
   .-p3.a-grid
     each color in colors
-      .-mb1.a-col.-w3
-        .a-avatarGroup
+      .-mb1.a-col.-w6.-sm--w4.-md--w6.-lg--w4.-xl--w3
+        .m-avatarGroup
           div(class=`a-avatar -${color}`) L
           = `Label ${color}`
   :code(lang="html")
-    <div class="a-avatarGroup">
+    <div class="m-avatarGroup">
       <div class="a-avatar">L</div>Label text
     </div>
 
