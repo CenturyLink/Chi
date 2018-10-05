@@ -1,22 +1,73 @@
 ---
 title: Avatars
 ---
-div(
-  style={
-    position: 'absolute',
-    left: '-9999px'
-  }
-)
-  img(inline src='test/chi/components/avatar.svg')
-  img(inline src='test/chi/components/manolakis.svg')
+- var types = ['img', 'icon', 'icon-web-font', 'letter', 'double-letter'];
+- var colors = ["default", "grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "emerald", "green", "yellow", "orange"];
+- var sizes = ['default', 'xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl'];
 
-h2 Sizes
-.test-sizes
-  .a-grid
-    each size in ['xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl']
-      .a-col.-w1.-o1.-middle
-        h4= size
-      .a-col.-w2.-middle
-        div(class=`a-avatar -${size}`)
-          svg
-            use(xlink:href='#avatar', fill="url(#manolakis)")
+each type in types
+  div(class=`test-${type}`)
+    span.a-h2= `Avatar / ${type}`
+    table(cellpadding="0", cellspacing="0")
+      thead
+        tr
+          th
+          each size in sizes
+            th.-p1=size
+      tbody
+        each color in colors
+          tr
+            td=color
+            each size in sizes
+              td.-p1
+                if type == 'img'
+                  div(
+                    class={
+                      "a-avatar": true,
+                      [`-${color}`]: type != 'default',
+                      [`-${size}`]: style != 'default'
+                    }
+                  )
+                    img(src='../../assets/images/avatar.jpg')(alt="avatar")
+                else if type == 'icon'
+                  div(
+                    class={
+                      "a-avatar a-icon": true,
+                      [`-${color}`]: type != 'default',
+                      [`-${size}`]: style != 'default'
+                    }
+                  )
+                    svg
+                      use(xlink:href=`#icon-user`)
+                else if type == 'icon-web-font'
+                  div(
+                    class={
+                      "a-avatar": true,
+                      [`-${color}`]: type != 'default',
+                      [`-${size}`]: style != 'default'
+                    }
+                  )
+                    i(class="a-icon icon-user")
+                else if type == 'letter'
+                  div(
+                    class={
+                      "a-avatar": true,
+                      [`-${color}`]: type != 'default',
+                      [`-${size}`]: style != 'default'
+                    }
+                  ) M
+
+                else if type == 'double-letter'
+                  div(
+                    class={
+                      "a-avatar": true,
+                      [`-${color}`]: type != 'default',
+                      [`-${size}`]: style != 'default'
+                    }
+                  ) AA
+
+
+
+
+
+

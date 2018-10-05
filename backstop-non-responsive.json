@@ -25,7 +25,11 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-sizes"
+        ".test-img",
+        ".test-icon",
+        ".test-icon-web-font",
+        ".test-letter",
+        ".test-double-letter"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
