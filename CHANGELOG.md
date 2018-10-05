@@ -1,10 +1,16 @@
 # CHANGELOG
 
+### 0.8.3 (Unreleased)
+
+* Renamed a-formGroup to m-formGroup.
+* Added Spinner component.
+* Added Avatar component.
+
 ### 0.8.2 (October 2, 2018)
 
 * Extended tab functionality by creating tabbable panes of content and animating active tab borders.
-* Added badge icon support.
-* Added font and svg icons.
+* Updated Badge component to include icon support.
+* Added Icon component with SVG and Web font support.
 * Added Getting Started section.
 * Improved compatibility with Edge and IE11.
 * Added flex utility classes.
