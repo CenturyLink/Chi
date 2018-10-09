@@ -1,0 +1,133 @@
+@import 'mixins';
+@import 'variables';
+
+.chi {
+  .m-dropdown {
+    position: relative;
+    display: inline-block;
+
+    .a-dropdown {
+      position:absolute;
+      left: 0;
+      min-width: 100%;
+    }
+  }
+
+  .a-dropdown-trigger {
+    background-image: url('./icon-chevron-thin-down.svg');
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 0.75rem 0.75rem;
+    padding-right: 2rem;
+
+    &.-active {
+      background-image: url('./icon-chevron-thin-up.svg');
+    }
+  }
+
+  .a-dropdown {
+    background-color: set-color(white);
+    border: 0.0625rem solid set-color(grey, 30);
+    border-radius: $border-radius;
+    box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.1);
+    font-size: $text;
+    z-index: 1;
+    margin: 0;
+    padding: 0.5rem 0;
+    display: none;
+
+    &.-active {
+      display: block;
+    }
+
+    & > .-divider {
+      border-bottom: 0.0625rem solid set-color(grey, 20);
+      margin: 0.5rem 0;
+    }
+
+    & > a.a-menu-item {
+      color: inherit;
+
+      &:hover {
+        text-decoration: inherit;
+      }
+
+      &:hover:not(.-disabled):not(.-active),
+      &.-hover:not(.-disabled):not(.-active),
+      &:focus:not(.-disabled):not(.-active),
+      &.focus:not(.-disabled):not(.-active)
+      {
+        background-color: set-color(grey, 20);
+      }
+    }
+
+    & > .a-menu-item {
+
+      height: 2rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      display: flex; // Ver clase -flex-ellipsis
+      align-items: center;
+      white-space: nowrap;
+
+      &.-h--auto {
+        height: auto;
+        white-space: normal;
+      }
+
+     .-flex--ellipsis {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        flex: 1;
+      }
+
+      .a-icon {
+        margin-right: 1rem;
+        color: set-color(grey, 50);
+      }
+
+      &.-active {
+        padding-right: 3rem;
+        background: url("./icon-check-alt.svg") no-repeat right 1rem center;
+        background-size: 1rem 1rem;
+      }
+
+      &.-disabled {
+        color: set-color(grey, 50);
+        pointer-events: none;
+        .a-icon {
+          color: set-color(grey, 50);
+        }
+      }
+    }
+
+    & > .a-inputWrapper {
+      padding-left: 0rem;
+      padding-right: 0rem;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+
+      &:not(:first-child) {
+        margin-top: 0.5rem;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    & > .a-formGroup {
+
+      & > label.-text {
+        display: flex;
+        align-items: center;
+      }
+
+      input[type='checkbox'].a-input + label, input[type='radio'].a-input + label {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
