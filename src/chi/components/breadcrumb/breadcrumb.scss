@@ -1,0 +1,44 @@
+@import 'variables';
+@import 'mixins';
+
+.chi {
+  .a-breadcrumb {
+    &.-separatorIcon {
+      .a-breadcrumb__item {
+        + .a-breadcrumb__item::before {
+          content: url('./icon-chevron-right.svg');
+          height: 1rem;
+          position: relative;
+          width: 1rem;
+          top: 0.1rem;
+        }
+      }
+    }
+    > ol {
+      list-style: none;
+      display: flex;
+      font-weight: 600;
+    }
+  }
+
+  .a-breadcrumb__item {
+    + .a-breadcrumb__item {
+      padding-left: .25rem;
+
+      &::before {
+        display: inline-block;
+        padding-right: .25rem;
+        color: set-color(gray, 50);
+        content: quote("/");
+      }
+    }
+
+    + .a-breadcrumb__item:hover::before {
+      text-decoration: none;
+    }
+
+    &.-active {
+      color: set-color(gray, 50);
+    }
+  }
+}
