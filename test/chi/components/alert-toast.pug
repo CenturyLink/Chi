@@ -6,10 +6,16 @@ title: Alert Toasts
   each type in ['light', 'success', 'danger', 'warning', 'info', 'dark']
     div(class=`m-alert -${type} -toast -mb2`, data-title=`${type}`)
       = `This is a ${type} message`
-      button.a-close(aria-label='Close')
+      button(class='a-btn -icon -close')
+        .a-btn__content
+          .a-icon
+            i.a-icon.icon-x
 
   h4 Has icon
   each type in ['light', 'success', 'danger', 'warning', 'info', 'dark']
     div(class=`m-alert -hasIcon -${type} -toast -mb2`, data-title=`${type}`)
       = `This is a ${type} message`
-      button.a-close(aria-label='Close')
+      button(class='a-btn -icon -close')
+        .a-btn__content
+          .a-icon
+            i.a-icon.icon-x

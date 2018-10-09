@@ -58,9 +58,9 @@ $backdrop: #{$modal}-backdrop;
         }
       }
 
-      & > button.a-close {
+      & > .-close {
         position: absolute;
-        right: 1rem;
+        right: 0.75rem;
         top: 0.8125rem;
       }
 

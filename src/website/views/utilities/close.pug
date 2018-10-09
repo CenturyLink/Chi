@@ -2,55 +2,39 @@
 title: Close
 ---
 
-p.-text Use a dismiss button with the class <code>a-close</code> to use in components who need to hide the information
+p.-text Use a dismiss button with the class <code>-close</code> to use in components who need to hide the information
   |  ( alerts, modals, etc).
 
 .example.-mb3
   .-p3
-    button(class='a-close',aria-label='Close')
-  :code(lang="html")
-    <button class="a-close" aria-label="Close"></button>
-
-h3 Examples
-
-h4 In Alerts
-p.-text A button can be added to allow the user to dismiss the alert.
-.example.-mb3
-  .-p1
-    .m-alert.-bubble.-warning.-hasIcon.-m2(data-title="Warning")
-      | This is a warning alert
-      button(class='a-close',aria-label='Close')
-  :code(lang="html")
-    <div class="m-alert -warning -hasIcon" data-title="Warning" role="alert">
-      This is a warning alert
-      <button class="a-close" aria-label="Close"></button>
-    </div>
-
-h4 In Modals
-.example.-mb3
-  .a-modal__backdrop.-p6(style="position:relative;border-top-left-radius:3px;border-top-right-radius:3px;")
-    .a-modal(style="margin-top:0;")
-      .a-modal__header
-        h3.a-modal__title Modal Title
-        button.a-close(aria-label='Close')
-      .a-modal__content
-        p.-text.-m0 Modal content
-      .a-modal__footer
-        button.a-btn Cancel
-        button.a-btn.-brand.-ml2 Save
-  :code(lang="html")
-    <div class="a-modal__backdrop">
-      <div class="a-modal">
-        <div class="a-modal__header">
-          <h3 class="a-modal__title">Modal Title</h3>
-          <button class="a-close" aria-label="Close"></button>
+    button(class='a-btn -icon -close')
+      .a-btn__content
+        .a-icon
+          i.a-icon.icon-x
+  ul#a-tabs.a-tabs.-ml3
+    li.-active
+      a(href='#a-tabs-panel-webfont') Web Font
+    li
+      a(href='#a-tabs-panel-svg') SVG
+  #a-tabs-panel-webfont.a-tabs-panel.-active
+    :code(lang="html")
+      <button class="a-btn -icon -close">
+        <div class="a-btn__content">
+          <i class="a-icon icon-x"></i>
         </div>
-        <div class="a-modal__content">
-          <p class="-text -m0">Modal content</p>
+      </button>
+  #a-tabs-panel-svg.a-tabs-panel
+    :code(lang="html")
+      <button class="a-btn -icon -close">
+        <div class="a-btn__content">
+          <div class="a-icon">
+            <svg>
+              <use xlink:href="#icon-x"></use>
+            </svg>
+          </div>
         </div>
-        <div class="a-modal__footer">
-          <button class="a-btn">Cancel</button>
-          <button class="a-btn -brand -ml2">Save</button>
-        </div>
-      </div>
-    </div>
+      </button>
+
+script(type="text/javascript", src=`../../tabs.js`)
+//!= '<script>Array.prototype.forEach.call(document.getElementsByClassName(\'a-tabs\'), function(e){chiTabs.init(e);});</script>'
+!= '<script>chiTabs.init(document.getElementById(\'a-tabs\'));chiTabs.init(document.getElementById(\'a-tabs\'));</script>'
