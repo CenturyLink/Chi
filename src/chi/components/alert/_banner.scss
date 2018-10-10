@@ -8,12 +8,6 @@
       padding-left: 1rem;
       padding-right: 2rem;
 
-      & > button.a-close {
-        position: absolute;
-        right: 1rem;
-        top: 0.8125rem;
-      }
-
       &.-small {
         display: flex;
         justify-content: center;
@@ -22,21 +16,11 @@
         &::before {
           display: none;
         }
-
-        & > button.a-close {
-          top: 0.3rem;
-          transform: initial;
-        }
       }
 
       &.-large {
         padding-bottom: 1.1875rem;
         padding-top: 0.75rem;
-
-        & > button.a-close {
-          top: 0.9375rem;
-          transform: initial;
-        }
 
         &::before {
           font-size: $text-large;
