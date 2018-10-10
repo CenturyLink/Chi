@@ -54,14 +54,13 @@ p.-text A button can be added to allow the user to dismiss the alert.
   .-p1
     .m-alert.-bubble.-warning.-hasIcon.-m2(data-title="Warning")
       | This is a warning alert
-      button(class='a-btn -icon -close')
+      button(class='a-btn -icon -close -small')
         .a-btn__content
-          .a-icon
-            i.a-icon.icon-x
+          i.a-icon.icon-x
   :code(lang="html")
       <div class="m-alert -warning -hasIcon" data-title="Warning" role="alert">
         This is a warning alert
-        <button class="a-btn -icon -close">
+        <button class="a-btn -icon -close -small">
           <div class="a-btn__content">
             <i class="a-icon icon-x"></i>
           </div>
@@ -75,14 +74,13 @@ p.-text Apply a <code>-large</code> class to increase the size of the alert.
   .-p1
     .m-alert.-bubble.-warning.-large.-hasIcon.-m2(data-title="Warning")
       | This is a warning alert
-      button(class='a-btn -icon -close')
+      button(class='a-btn -icon -close -small')
         .a-btn__content
-          .a-icon
-            i.a-icon.icon-x
+          i.a-icon.icon-x
   :code(lang="html")
       <div class="m-alert -warning -large -hasIcon" data-title="Warning" role="alert">
         This is a warning alert
-        <button class="a-btn -icon -close">
+        <button class="a-btn -icon -close -small">
           <div class="a-btn__content">
             <i class="a-icon icon-x"></i>
           </div>
@@ -113,14 +111,13 @@ p.-text
     each type in ['success', 'danger', 'warning', 'info', 'light', 'dark']
       .m-alert.-toast.-hasIcon.-m2(class=`-${type}`, data-title=`${type}`)
         = `This is a ${type} alert`
-        button(class='a-btn -icon -close')
+        button(class='a-btn -icon -close -small')
           .a-btn__content
-            .a-icon
-              i.a-icon.icon-x
+            i.a-icon.icon-x
   :code(lang="html")
       <div class="m-alert -toast -success -hasIcon" data-title="Success" role="alert">
         This is a success alert
-        <button class="a-btn -icon -close">
+        <button class="a-btn -icon -close -small">
           <div class="a-btn__content">
             <i class="a-icon icon-x"></i>
           </div>
@@ -128,7 +125,7 @@ p.-text
       </div>
       <div class="m-alert -toast -danger -hasIcon" data-title="Danger" role="alert">
         This is a danger alert
-        <button class="a-btn -icon -close">
+        <button class="a-btn -icon -close -small">
           <div class="a-btn__content">
             <i class="a-icon icon-x"></i>
           </div>
@@ -136,7 +133,7 @@ p.-text
       </div>
       <div class="m-alert -toast -warning -hasIcon" data-title="Warning" role="alert">
         This is a warning alert
-        <button class="a-btn -icon -close">
+        <button class="a-btn -icon -close -small">
           <div class="a-btn__content">
             <i class="a-icon icon-x"></i>
           </div>
@@ -144,7 +141,7 @@ p.-text
       </div>
       <div class="m-alert -toast -info -hasIcon" data-title="Info" role="alert">
         This is an info alert
-        <button class="a-btn -icon -close">
+        <button class="a-btn -icon -close -small">
           <div class="a-btn__content">
             <i class="a-icon icon-x"></i>
           </div>
@@ -152,7 +149,7 @@ p.-text
       </div>
       <div class="m-alert -toast -light -hasIcon" data-title="Light" role="alert">
         This is a light alert
-        <button class="a-btn -icon -close">
+        <button class="a-btn -icon -close -small">
           <div class="a-btn__content">
             <i class="a-icon icon-x"></i>
           </div>
@@ -160,7 +157,7 @@ p.-text
       </div>
       <div class="m-alert -toast -dark -hasIcon" data-title="Dark" role="alert">
         This is a dark alert
-        <button class="a-btn -icon -close">
+        <button class="a-btn -icon -close -small">
           <div class="a-btn__content">
             <i class="a-icon icon-x"></i>
           </div>
