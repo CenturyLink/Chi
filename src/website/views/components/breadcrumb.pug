@@ -7,21 +7,21 @@ p.-text Breadcrumb indicate the current page’s location within a navigational 
 h3 Examples
 p.-text
   | To render a breadcrumb, use the class <code>a-breadcrumb</code>.
-  | A contextual class (e.g. <code>-separatorIcon</code>) is required to provide alternative separator styling.
+  | A contextual class (e.g. <code>-alt</code>) is required to provide alternative separator styling.
 
 h4 Base
 .example.-mb3
-  .-p1
-    nav.a-breadcrumb.-text
+  .-p3
+    nav.a-breadcrumb.-text(aria-label="Breadcrumb")
       ol
         li.a-breadcrumb__item
           a(href='#') Parent
         li.a-breadcrumb__item
           a(href='#') Child 1
         li.a-breadcrumb__item.-active
-          | Child 2
+          a(href='#',aria-current="page") Child 2
   :code(lang="html")
-    <nav class="a-breadcrumb -text">
+    <nav class="a-breadcrumb -text" aria-label="Breadcrumb">
       <ol>
           <li class="a-breadcrumb__item">
             <a href="#">Parent</a>
@@ -30,24 +30,24 @@ h4 Base
             <a href="#">Child 1</a>
           </li>
           <li class="a-breadcrumb__item -active">
-            Child 2
+            <a href="#" aria-current="page">Child 2</a>
           </li>
       </ol>
     </nav>
 
 h4 Alternative Separator
 .example.-mb3
-  .-p1
-    nav.a-breadcrumb.-text.-separatorIcon
+  .-p3
+    nav.a-breadcrumb.-alt.-text(aria-label="Breadcrumb")
       ol
         li.a-breadcrumb__item
           a(href='#') Parent
         li.a-breadcrumb__item
           a(href='#') Child 1
         li.a-breadcrumb__item.-active
-          | Child 2
+          a(href='#',aria-current="page") Child 2
   :code(lang="html")
-    <nav class="a-breadcrumb -text -separatorIcon">
+    <nav class="a-breadcrumb -alt -text" aria-label="Breadcrumb">
       <ol>
           <li class="a-breadcrumb__item">
             <a href="#">Parent</a>
@@ -56,7 +56,7 @@ h4 Alternative Separator
             <a href="#">Child 1</a>
           </li>
           <li class="a-breadcrumb__item -active">
-            Child 2
+            <a href="#" aria-current="page">Child 2</a>
           </li>
       </ol>
     </nav>
@@ -64,93 +64,81 @@ h4 Alternative Separator
 h3 Size
 h4 Large
 .example.-mb3
-  .-p1
-    nav.a-breadcrumb.-textLarge
+  .-p3
+    nav.a-breadcrumb.-textLarge(aria-label="Breadcrumb")
       ol
         li.a-breadcrumb__item
           a(href='#') Parent
         li.a-breadcrumb__item.-active
-          | Child
+          a(href='#',aria-current="page") Child
   :code(lang="html")
-    <nav class="a-breadcrumb -textLarge">
+    <nav class="a-breadcrumb -textLarge" aria-label="Breadcrumb">
       <ol>
         <li class="a-breadcrumb__item">
           <a href="#">Parent</a>
         </li>
-        <li class="a-breadcrumb__item">
-          <a href="#">Child 1</a>
-        </li>
         <li class="a-breadcrumb__item -active">
-          Child 2
+          <a href="#" aria-current="page">Child</a>
         </li>
       </ol>
     </nav>
 h4 Larger
 .example.-mb3
-  .-p1
-    nav.a-breadcrumb.-textLarger
+  .-p3
+    nav.a-breadcrumb.-textLarger(aria-label="Breadcrumb")
       ol
         li.a-breadcrumb__item
           a(href='#') Parent
         li.a-breadcrumb__item.-active
-          | Child
+          a(href='#',aria-current="page") Child
   :code(lang="html")
-    <nav class="a-breadcrumb -textLarger">
+    <nav class="a-breadcrumb -textLarger" aria-label="Breadcrumb">
       <ol>
         <li class="a-breadcrumb__item">
           <a href="#">Parent</a>
         </li>
-        <li class="a-breadcrumb__item">
-          <a href="#">Child 1</a>
-        </li>
         <li class="a-breadcrumb__item -active">
-          Child 2
+          <a href="#" aria-current="page">Child</a>
         </li>
       </ol>
     </nav>
 h4 Small
 .example.-mb3
-  .-p1
-    nav.a-breadcrumb.-textSmall
+  .-p3
+    nav.a-breadcrumb.-textSmall(aria-label="Breadcrumb")
       ol
         li.a-breadcrumb__item
           a(href='#') Parent
         li.a-breadcrumb__item.-active
-          | Child
+          a(href='#',aria-current="page") Child
   :code(lang="html")
-    <nav class="a-breadcrumb -textSmall">
+    <nav class="a-breadcrumb -textSmall" aria-label="Breadcrumb">
       <ol>
         <li class="a-breadcrumb__item">
           <a href="#">Parent</a>
         </li>
-        <li class="a-breadcrumb__item">
-          <a href="#">Child 1</a>
-        </li>
         <li class="a-breadcrumb__item -active">
-          Child 2
+          <a href="#" aria-current="page">Child</a>
         </li>
       </ol>
     </nav>
 h4 Smaller
 .example.-mb3
-  .-p1
-    nav.a-breadcrumb.-textSmaller
+  .-p3
+    nav.a-breadcrumb.-textSmaller(aria-label="Breadcrumb")
       ol
         li.a-breadcrumb__item
           a(href='#') Parent
         li.a-breadcrumb__item.-active
-          | Child
+          a(href='#',aria-current="page") Child
   :code(lang="html")
-    <nav class="a-breadcrumb -textSmaller">
+    <nav class="a-breadcrumb -textSmaller" aria-label="Breadcrumb">
       <ol>
         <li class="a-breadcrumb__item">
           <a href="#">Parent</a>
         </li>
-        <li class="a-breadcrumb__item">
-          <a href="#">Child 1</a>
-        </li>
         <li class="a-breadcrumb__item -active">
-          Child 2
+          <a href="#" aria-current="page">Child</a>
         </li>
       </ol>
     </nav>
