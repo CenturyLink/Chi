@@ -16,15 +16,14 @@ p.-text
   | must be square in order not to be stretched.
 .example.-mb3
   .-p3
-    div(class=`a-avatar`)
-      img(src='../../assets/images/avatar.jpg')(alt="avatar")
+    .a-avatar
+      img(src='../../assets/images/avatar.jpg', alt="avatar")
   :code(lang="html")
     <div class="a-avatar">
       <img src="path/to/image.jpg">
     </div>
 
 h3 Using icons as avatars
-
 p.-text
   | You can use an avatarized version of the <a href="../icon/">Chi icons library</a>. Just include the
   | <code>a-avatar</code> to the icon container.
@@ -33,7 +32,7 @@ p.-text
     .a-grid
       each icon in iconExamples
         .a-col.-w1
-          div(class="a-icon a-avatar")
+          .a-icon.a-avatar
             svg
               use(xlink:href=`#icon-${icon}`)
   ul#a-tabs--icons.a-tabs.-ml3
@@ -64,9 +63,9 @@ p.-text
 .example.-mb3
   .-p3.a-grid
     .a-col.-w1
-      div(class=`a-avatar`) AA
+      .a-avatar AA
     .a-col.-w1
-      div(class=`a-avatar`) M
+      .a-avatar M
   :code(lang="html")
     <div class="a-avatar">AA</div>
 
@@ -90,7 +89,7 @@ ul#a-tabs--colors.a-tabs
     .-p3
       .a-grid.-align-items--end
         each color in colors
-          div(class=`a-col -w2 -textCenter`)
+          .a-col.-w2.-textCenter
             div(class=`a-avatar -${color}`) AA
             p.-text= color
     :code(lang="html")
@@ -111,7 +110,7 @@ ul#a-tabs--colors.a-tabs
     .-p3
       .a-grid.-align-items--end
         each color in colors
-          div(class=`a-col -w2 -textCenter`)
+          .a-col.-w2.-textCenter
             div(class=`a-avatar a-icon -${color}`)
               svg
                 use(xlink:href=`#icon-user`)
@@ -267,7 +266,7 @@ ul#a-tabs--sizes.a-tabs
         each size in sizes
           div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -textCenter`)
             div(class=`a-avatar -${size}`)
-              img(src='../../assets/images/avatar.jpg')(alt="avatar")
+              img(src='../../assets/images/avatar.jpg', alt="avatar")
             p.-text= size
     :code(lang="html")
       <div class="a-avatar -xs">
