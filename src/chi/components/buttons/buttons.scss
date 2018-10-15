@@ -147,6 +147,37 @@ $state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
         }
       }
 
+      &.-close {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        opacity: 0.6;
+
+        &:hover,
+        &.-hover {
+          border: none;
+          box-shadow: none;
+          opacity: 1;
+        }
+
+        &:focus,
+        &.-focus {
+          border: none;
+          box-shadow: none;
+        }
+
+        &:active,
+        &.-active {
+          &,
+          &:focus,
+          &.-focus {
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+          }
+        }
+      }
+
       &.-outline {
         background-color: set-color(white);
         border: 0.0625rem solid set-color(grey, 50);

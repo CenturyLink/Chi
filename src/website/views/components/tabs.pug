@@ -62,60 +62,50 @@ h3 Icons
     ul.a-tabs.-icons
       li.-active
         a(href='#')
-          .a-btn__content
-            .a-icon.-sm
-              svg
-                use(xlink:href='#icon-atom')
-            span Active Tab
+          .a-icon
+            svg
+              use(xlink:href='#icon-atom')
+          span Active Tab
       li
         a(href='#')
-          .a-btn__content
-            .a-icon.-sm
-              svg
-                use(xlink:href='#icon-atom')
-            span Tab Link
+          .a-icon
+            svg
+              use(xlink:href='#icon-atom')
+          span Tab Link
       li
         a(href='#')
-          .a-btn__content
-            .a-icon.-sm
-              svg
-                use(xlink:href='#icon-atom')
-            span Tab Link
+          .a-icon
+            svg
+              use(xlink:href='#icon-atom')
+          span Tab Link
   :code(lang='html')
     <ul class="a-tabs -icons">
       <li class="-active">
         <a href="#">
-          <div class="a-btn__content">
-            <div class="a-icon -sm">
-              <svg>
-                <use xlink:href="#icon-atom"></use>
-              </svg>
-            </div>
-            <span>Active Tab</span>
+          <div class="a-icon">
+            <svg>
+              <use xlink:href="#icon-atom"></use>
+            </svg>
           </div>
+          <span>Active Tab</span>
         </a>
       </li>
       <li>
         <a href="#">
-          <div class="a-btn__content">
-            <div class="a-icon -sm">
-              <svg>
-                <use xlink:href="#icon-atom"></use>
-              </svg>
-            </div>
-            <span>Tab Link</span>
+          <div class="a-icon">
+            <svg>
+              <use xlink:href="#icon-atom"></use>
+            </svg>
           </div>
+          <span>Tab Link</span>
         </a>
       </li>
       <li>
         <a href="#">
-          <div class="a-btn__content">
-            <div class="a-icon -sm">
-              <svg>
-                <use xlink:href="#icon-atom"></use>
-              </svg>
-            </div>
-            <span>Tab Link</span>
+          <div class="a-icon">
+            <svg>
+              <use xlink:href="#icon-atom"></use>
+            </svg>
           </div>
         </a>
       </li>
@@ -126,33 +116,34 @@ h3 Icons
     ul.a-tabs.-vertical.-icons
       li.-active
         a(href='#')
-            <div class="a-icon -sm">
-              <svg>
-                <use xlink:href="#icon-atom"></use>
-              </svg>
-            </div>
-            <span>Active Tab</span>
+          .a-icon
+            svg
+              use(xlink:href='#icon-atom')
+          span Active Tab
+        ul.a-tabs__subtabs
+          li.-active
+            a(href='#') Subtab Link
+          li
+            a(href='#') Subtab Link
+          li
+            a(href='#') Subtab Link
       li
         a(href='#')
-          <div class="a-icon -sm">
-            <svg>
-              <use xlink:href="#icon-atom"></use>
-            </svg>
-          </div>
-          <span>Tab link</span>
+          .a-icon
+            svg
+              use(xlink:href='#icon-atom')
+          span Tab Link
       li
         a(href='#')
-          <div class="a-icon -sm">
-            <svg>
-              <use xlink:href="#icon-atom"></use>
-            </svg>
-          </div>
-          <span>Tab link</span>
+          .a-icon
+            svg
+              use(xlink:href='#icon-atom')
+          span Tab Link
   :code(lang='html')
     <ul class="a-tabs -vertical -icons">
       <li class="-active">
         <a href="#">
-          <div class="a-icon -sm">
+          <div class="a-icon">
             <svg>
               <use xlink:href="#icon-atom"></use>
             </svg>
@@ -162,7 +153,7 @@ h3 Icons
       </li>
       <li>
         <a href="#">
-          <div class="a-icon -sm">
+          <div class="a-icon">
             <svg>
               <use xlink:href="#icon-atom"></use>
             </svg>
@@ -172,7 +163,7 @@ h3 Icons
       </li>
       <li>
         <a href="#">
-          <div class="a-icon -sm">
+          <div class="a-icon">
             <svg>
               <use xlink:href="#icon-atom"></use>
             </svg>
@@ -277,17 +268,13 @@ h4 Large
     ul.a-tabs.-vertical.-large
       li.-active
         a(href='#') Active Tab
-        <ul class="a-tabs__subtabs">
-          <li class="-active">
-            <a href="#">Subtab Link</a>
-          </li>
-          <li>
-            <a href="#">Subtab Link</a>
-          </li>
-          <li>
-            <a href="#">Subtab Link</a>
-          </li>
-        </ul>
+        ul.a-tabs__subtabs
+          li.-active
+            a(href='#') Subtab Link
+          li
+            a(href='#') Subtab Link
+          li
+            a(href='#') Subtab Link
       li
         a(href='#') Tab Link
       li
@@ -377,7 +364,7 @@ p.-text
       li
         a(href='#c2') Tab c
       li
-        a(href='https://assets.ctl.io/chi/')(target='_self') External Link
+        a(href='https://assets.ctl.io/chi/', target='_self') External Link
 
     #a2.a-tabs-panel.-active
       p.-text Content for tab a

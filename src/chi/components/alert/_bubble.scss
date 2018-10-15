@@ -4,24 +4,21 @@
   .m-alert {
     &.-bubble {
 
-      & > button {
-        background-color: transparent;
-        background-image: url('./icon-close.svg');
-        border: 0;
-        cursor: pointer;
-        height: 0.75rem;
-        outline: none;
-        padding: 0;
+      & > .-close {
         position: absolute;
         right: 1rem;
         top: 50%;
         transform: translateY(-50%);
-        width: 0.75rem;
       }
 
       &.-small {
         &::before {
           display: none;
+        }
+
+        & > .-close {
+          top: 0.3rem;
+          transform: initial;
         }
       }
 
@@ -29,7 +26,7 @@
         padding-bottom: 1.1875rem;
         padding-top: 0.75rem;
 
-        & > button {
+        & > .-close {
           top: 0.9375rem;
           transform: initial;
         }
