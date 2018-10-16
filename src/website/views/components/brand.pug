@@ -1,0 +1,61 @@
+---
+title: Brand
+---
+
+- var sizes = ['xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl'];
+
+p.-text Brand is the graphic symbol that represents the company or organization.
+
+h3 Examples
+p.-text
+  | To render the brand, use the class <code>a-brand</code>.
+
+h4 Base
+.example.-mb3
+  .-p3
+    a.a-brand(href="#", aria-label="CenturyLink")
+      img(src='../../assets/images/centurylink-logo.svg', alt="CenturyLink")
+  :code(lang="html")
+    <a class="a-brand" href="#" aria-label="CenturyLink">
+      <img src="../../assets/images/centurylink-logo.svg" alt="CenturyLink">
+    </a>
+
+h4 Sizes
+
+p.-text
+  | We support different sizes including one of the classes: <code>-xs</code>, <code>-sm</code>,
+  | <code>-sm2</code>, <code>-sm3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
+  | <code>-md</code> is the default size.
+
+.example.-mb3
+  .-p3
+    each size in sizes
+      div(class=`a-col -w12 -textCenter -p3`)
+        a(class=`a-brand -${size}`, href='#', aria-label='CenturyLink')
+          img(src='../../assets/images/centurylink-logo.svg', alt='CenturyLink')
+        p.-textBold= size
+  :code(lang="html")
+    <a class="a-brand -xs" href="#" aria-label="CenturyLink">
+      <img src="../../assets/images/centurylink-logo.svg" alt="CenturyLink">
+    </a>
+    <a class="a-brand -sm" href="#" aria-label="CenturyLink">
+      <img src="../../assets/images/centurylink-logo.svg" alt="CenturyLink">
+    </a>
+    <a class="a-brand -sm2" href="#" aria-label="CenturyLink">
+      <img src="../../assets/images/centurylink-logo.svg" alt="CenturyLink">
+    </a>
+    <a class="a-brand -sm3" href="#" aria-label="CenturyLink">
+      <img src="../../assets/images/centurylink-logo.svg" alt="CenturyLink">
+    </a>
+    <a class="a-brand -md" href="#" aria-label="CenturyLink">
+      <img src="../../assets/images/centurylink-logo.svg" alt="CenturyLink">
+    </a>
+    <a class="a-brand -lg" href="#" aria-label="CenturyLink">
+      <img src="../../assets/images/centurylink-logo.svg" alt="CenturyLink">
+    </a>
+    <a class="a-brand -xl" href="#" aria-label="CenturyLink">
+      <img src="../../assets/images/centurylink-logo.svg" alt="CenturyLink">
+    </a>
+    <a class="a-brand -xxl" href="#" aria-label="CenturyLink">
+      <img src="../../assets/images/centurylink-logo.svg" alt="CenturyLink">
+    </a>

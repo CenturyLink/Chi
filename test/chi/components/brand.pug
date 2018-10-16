@@ -1,0 +1,14 @@
+---
+title: Brand
+---
+
+- var sizes = ['default', 'xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl'];
+
+h4 Sizes
+.example.-mb3
+  .-p3
+    each size in sizes
+      div(class=`a-col -w12 -textCenter -p3`)
+        a(class=`a-brand -${size}`, href='#', aria-label='CenturyLink')
+          img(src='../../assets/images/centurylink-logo.svg', alt='CenturyLink')
+        p.-textBold= size
