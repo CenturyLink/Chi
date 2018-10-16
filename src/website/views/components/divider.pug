@@ -47,6 +47,14 @@ h4 Dark
     <div class="a-divider -dark">
     </div>
 
+h4 Inverse
+.example.-mb3
+  .-p3(style="background-color:#000000")
+    .a-divider.-inverse
+  :code(lang="html")
+    <div class="a-divider -inverse">
+    </div>
+
 h4 Base with text in a form
 .example.-mb3
   .-p3
@@ -56,38 +64,6 @@ h4 Base with text in a form
       or
     </div>
 
-h4 Base within a card
-.example.-mb3
-  .-p3
-    .a-card(style="width:20rem;")
-      .a-card__content
-        p.-text.-m0
-          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
-          | Ut felis magna, facilisis ut malesuada nec.
-        p.-text.-m0
-          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
-          | Ut felis magna, facilisis ut malesuada nec.
-      .a-divider
-      .-d--flex.-align-items--center.-ml2.-mb1
-        .a-avatar
-          img(src='../../assets/images/avatar.jpg')(alt="avatar")
-        p.-text.-m0.-pl1
-          | Alberto Solutions
-  :code(lang="html")
-    <div class="a-card">
-      <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
-      </div>
-      <div class="a-divider">
-      </div>
-      <div class="-d--flex -align-items--center -ml2 -mb1">
-        <div class="a-avatar">
-          <img src="path/to/image.jpg">
-        </div>
-        <p class="-text -m0 -pl1">Alberto Solutions</p>
-      </div>
-    </div>
 h4 Divider Sizes
 p.-text
   | Use the <code>-b</code> modifier class to control the divider's size. Adjust the size from <code>1</code> - <code>4</code>.
