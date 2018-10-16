@@ -1,134 +1,156 @@
-let chi = (function() {
-  "use strict";
+import {Util} from "../javascript/util.js";
+import {chi} from "../javascript/chi.js";
+import Popper from 'popper.js';
 
-  let help = (function(){
-    const removeClass = function (elem, className) {
-      elem.className = elem.className.split(' ').filter(function (v) {
-        return v !== className;
-      }).join(' ');
-    };
+const CLASS_MOLECULE = "m-dropdown";
+const CLASS_COMPONENT = 'm-dropdown__trigger';
+const CLASS_DROPDOWN = 'm-dropdown__menu';
+const CLASS_ACTIVE = "-active";
+const COMPONENT_TYPE = "dropdown";
+const DEFAULT_POSITION = "bottom-start";
 
-    const addClass = function (elem, className) {
-      elem.className += ' ' + className;
-    };
+class Dropdown {
 
-    const hasClass = function (elem, className) {
-      return new RegExp('(\\s|^)' + className + '(\\s|$)').test(elem.className);
-    };
+  constructor (elem, config) {
+    this._elem = elem;
+    this._config = config;
+    this._eventCaptured = false;
+    this._shown = Util.hasClass(elem, CLASS_ACTIVE);
+    this._locateDropdown();
+    let that = this;
+    let dropdownPosition = false;
 
-    const toggleClass = function (elem, className) {
-      if (hasClass(elem, className)) {
-        removeClass(elem, className);
-      } else {
-        addClass(elem, className);
+    Util.registerComponent(COMPONENT_TYPE, this._elem, this);
+
+    if (this._elem.dataset.position) {
+      if (this._elem.dataset.position === 'default') {
+        dropdownPosition = DEFAULT_POSITION;
+      } else if (this._elem.dataset.position !== "initial") {
+        dropdownPosition = this._elem.dataset.position;
       }
-    };
-
-    const getTarget = function (element) {
-
-      let selector = element.dataset && element.dataset.target ? element.dataset.target.trim() : '';
-      if (!selector) {
-        const hrefTarget = element.getAttribute('href');
-        selector = hrefTarget ? hrefTarget.trim() : '';
-      }
-
-      return selector ? document.querySelector(selector) : null;
-
-    };
-
-    const findAndApply = function (ancestor, className, callback) {
-      if (hasClass(ancestor, className)) {
-        callback(ancestor);
-      } else if (ancestor.getElementsByClassName) {
-        Array.prototype.forEach.call(
-          ancestor.getElementsByClassName(className), function (elem) {
-            callback(elem);
-          }
-        );
-      }
-    };
-
-    return {
-      removeClass: removeClass,
-      addClass: addClass,
-      hasClass: hasClass,
-      toggleClass: toggleClass,
-      getTarget: getTarget,
-      findAndApply: findAndApply
-    };
-
-  })();
-
-  return {
-    h: help
-  };
-
-})();
-
-
-
-chi.dropdown = (function () {
-  "use strict";
-
-  //configuration
-  const moleculeClass = "m-dropdown";
-  const componentClass = 'a-dropdown-trigger';
-  const componentContentClass = 'a-dropdown';
-
-  let locateContent = function (triggerElem) {
-
-    let dropdownContent = chi.h.getTarget(triggerElem);
-    if (dropdownContent) {
-      return dropdownContent;
+    } else if (this._molecule) {
+      dropdownPosition = DEFAULT_POSITION;
     }
 
-    if (chi.h.hasClass(triggerElem.parentNode, moleculeClass)) {
-      let contents = triggerElem.parentNode.getElementsByClassName(componentContentClass);
-      if (contents && contents.length) {
-        return contents[0];
-      }
-      return null;
+    if (dropdownPosition && typeof Popper !== 'undefined') {
+      this._popper = new Popper (this._elem, this._dropdownElem, {
+        modifiers: {
+          applyStyle: {enabled: true}
+        },
+        placement: dropdownPosition
+      });
     }
 
-  };
+    this._triggerClickEventListener = function() {
+      that._clickOnTrigger();
+    };
+    this._elem.addEventListener('click', this._triggerClickEventListener);
 
-  let triggerDropdown = function (triggerElem) {
-    let dropdownContent = locateContent(triggerElem);
-    if (dropdownContent) {
-      chi.h.toggleClass(dropdownContent, "-active");
-      chi.h.toggleClass(triggerElem, "-active");
+    this._documentClickEventListener = function() {
+      that._clickOnDocument();
+    };
+    document.addEventListener('click', this._documentClickEventListener);
+
+  }
+
+  _clickOnTrigger() {
+    this.toggle();
+    this._eventCaptured = true;
+  }
+
+  _clickOnDocument() {
+    if (this._eventCaptured) {
+      this._eventCaptured = false;
     } else {
-      console.err("Could not find conent for dropdown trigger. ");
+      this.hide();
     }
+  }
 
-  };
+  _locateDropdown () {
+    this._dropdownElem = Util.getTarget(this._elem);
+    if (!this._dropdownElem) {
+      if (!this._molecule) {
+        if (Util.hasClass(this._elem.parentNode, CLASS_MOLECULE)) {
+          this._molecule = this._elem.parentNode;
+        }
+      }
+      if (this._molecule) {
+        let dropdown = this._molecule.getElementsByClassName(CLASS_DROPDOWN);
+        if (dropdown && dropdown.length) {
+          this._dropdownElem = dropdown[0];
+        }
+      }
+    }
+    if (!this._dropdownElem) {
+      console.err("Could not find dropdown conent for dropdown trigger. ");
+    }
+  }
 
-  let initComponent = function(elem) {
-    elem.addEventListener('click', function(){
-      triggerDropdown(elem);
-    });
-    chi.h.toggleClass(document, 'chi');
-  };
+  show() {
+    if (!this._shown) {
+      Util.addClass(this._elem, CLASS_ACTIVE);
+      Util.addClass(this._dropdownElem, CLASS_ACTIVE);
+      if (this._popper) {
+        this._popper.update();
+      }
+      this._shown = true;
+    }
+  }
 
+  hide() {
+    if (this._shown) {
+      Util.removeClass(this._elem, CLASS_ACTIVE);
+      Util.removeClass(this._dropdownElem, CLASS_ACTIVE);
+      this._shown = false;
+    }
+  }
 
-  let init = function (elem) {
-    initComponent(elem);
-  };
+  toggle () {
+    if (this._shown) {
+      this.hide();
+    } else {
+      this.show();
+    }
+  }
 
-  let initAll = function () {
+  dispose() {
+    this._config = null;
+    this._dropdownElem = null;
+    this._molecule = null;
+    this._shown = null;
+    this._eventCaptured = null;
+    this._elem.removeEventListener('click', this._triggerClickEventListener);
+    this._triggerClickEventListener = null;
+    document.removeEventListener('click', this._documentClickEventListener);
+    this._documentClickEventListener = null;
+    Util.unregisterComponent(COMPONENT_TYPE, this._elem);
+    this._elem = null;
+    if (this._popper) {
+      this._popper.destroy();
+      this._popper = null;
+    }
+  }
+
+  static factory(elem, config) {
+
+    return Util.getRegisteredComponent(COMPONENT_TYPE, elem) ||
+      new Dropdown(elem, config);
+
+  }
+
+  static initAll(config) {
     Array.prototype.forEach.call(
-      document.getElementsByClassName(componentClass), function (elem) {
-        initComponent(elem);
+      document.getElementsByClassName(CLASS_COMPONENT), function (elem) {
+        Dropdown.factory(elem, config);
       }
     );
-  };
+  }
 
-  return {
-    init: init,
-    initAll: initAll
-  };
+}
 
-})();
+let chiDropdown = function(elem, config) {
+  return Dropdown.factory(elem, config);
+};
 
-
-chi.dropdown.initAll();
+chi.dropdown = chiDropdown;
+export {Dropdown, chiDropdown};

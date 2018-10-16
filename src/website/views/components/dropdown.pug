@@ -13,19 +13,19 @@ p.-text
 p.-text
   span.a-badge.-brand.-mr1
     span Tip
-  | Use the <code>a-dropdown-trigger</code> class in your activator button to make the chevron appear.
+  | Use the <code>m-dropdown__trigger</code> class in your activator button to make the chevron appear.
 h4 Example 1
 p.-text
   | Trigger and dropdown enclosed in the same div.
 .example.-mb3
   .-p3
     .m-dropdown
-      button.a-btn.a-dropdown-trigger Dropdown, click me
-      .a-dropdown
-        a.a-menu-item(href='#') Element 1
-        a.a-menu-item(href='#') Element 2
-        a.a-menu-item(href='#') Element 3
-        a.a-menu-item(href='#') Element 4
+      button.a-btn.m-dropdown__trigger Dropdown, click me
+      .m-dropdown__menu
+        a.m-dropdown__menu-item(href='#') Element 1
+        a.m-dropdown__menu-item(href='#') Element 2
+        a.m-dropdown__menu-item(href='#') Element 3
+        a.m-dropdown__menu-item(href='#') Element 4
   ul#a-tabs--expanded.a-tabs.-ml3
     li.-active
       a(href='#a-tabs-panel--expanded-false') Initial
@@ -34,23 +34,23 @@ p.-text
   #a-tabs-panel--expanded-false.a-tabs-panel.-active
     :code(lang="html")
       <div class="m-dropdown">
-        <button class="a-btn a-dropdown-trigger">Dropdown, click me</button>
-        <div class="a-dropdown">
-          <a class="a-menu-item" href="#">Element 1</a>
-          <a class="a-menu-item" href="#">Element 2</a>
-          <a class="a-menu-item" href="#">Element 3</a>
-          <a class="a-menu-item" href="#">Element 4</a>
+        <button class="a-btn m-dropdown__trigger">Dropdown, click me</button>
+        <div class="m-dropdown__menu">
+          <a class="m-dropdown__menu-item" href="#">Element 1</a>
+          <a class="m-dropdown__menu-item" href="#">Element 2</a>
+          <a class="m-dropdown__menu-item" href="#">Element 3</a>
+          <a class="m-dropdown__menu-item" href="#">Element 4</a>
         </div>
       </div>
   #a-tabs-panel--expanded-true.a-tabs-panel
     :code(lang="html")
       <div class="m-dropdown">
-        <button class="a-btn a-dropdown-trigger -active">Dropdown, click me</button>
-        <div class="a-dropdown -active">
-          <a class="a-menu-item" href="#">Element 1</a>
-          <a class="a-menu-item" href="#">Element 2</a>
-          <a class="a-menu-item" href="#">Element 3</a>
-          <a class="a-menu-item" href="#">Element 4</a>
+        <button class="a-btn m-dropdown__trigger -active">Dropdown, click me</button>
+        <div class="m-dropdown__menu -active">
+          <a class="m-dropdown__menu-item" href="#">Element 1</a>
+          <a class="m-dropdown__menu-item" href="#">Element 2</a>
+          <a class="m-dropdown__menu-item" href="#">Element 3</a>
+          <a class="m-dropdown__menu-item" href="#">Element 4</a>
         </div>
       </div>
 
@@ -59,13 +59,13 @@ p.-text
   | Dropdown referenced by a <code>data-target</code> attribute in the activator.
 .example.-mb3
   .-p3
-    button.a-btn.a-dropdown-trigger(data-target="#dropdown-1") Dropdown, click me
+    button.a-btn.m-dropdown__trigger(data-target="#dropdown-1") Dropdown, click me
     p.-text There is no need of proximity between the both elements.
-    #dropdown-1.a-dropdown
-      a.a-menu-item(href='#') Element 1
-      a.a-menu-item(href='#') Element 2
-      a.a-menu-item(href='#') Element 3
-      a.a-menu-item(href='#') Element 4
+    #dropdown-1.m-dropdown__menu
+      a.m-dropdown__menu-item(href='#') Element 1
+      a.m-dropdown__menu-item(href='#') Element 2
+      a.m-dropdown__menu-item(href='#') Element 3
+      a.m-dropdown__menu-item(href='#') Element 4
   ul#a-tabs--expanded-2.a-tabs.-ml3
     li.-active
       a(href='#a-tabs-panel--expanded-2-false') Initial
@@ -74,25 +74,25 @@ p.-text
   #a-tabs-panel--expanded-2-false.a-tabs-panel.-active
     :code(lang="html")
       <div class="-p3">
-        <button class="a-btn a-dropdown-trigger" data-target="#dropdown-1">Dropdown, click me</button>
+        <button class="a-btn m-dropdown__trigger" data-target="#dropdown-1">Dropdown, click me</button>
         <p class="-text">There is no need of proximity between the both elements.</p>
-        <div class="a-dropdown" id="dropdown-1">
-          <a class="a-menu-item" href="#">Element 1</a>
-          <a class="a-menu-item" href="#">Element 2</a>
-          <a class="a-menu-item" href="#">Element 3</a>
-          <a class="a-menu-item" href="#">Element 4</a>
+        <div class="m-dropdown__menu" id="dropdown-1">
+          <a class="m-dropdown__menu-item" href="#">Element 1</a>
+          <a class="m-dropdown__menu-item" href="#">Element 2</a>
+          <a class="m-dropdown__menu-item" href="#">Element 3</a>
+          <a class="m-dropdown__menu-item" href="#">Element 4</a>
         </div>
       </div>
   #a-tabs-panel--expanded-2-true.a-tabs-panel
     :code(lang="html")
       <div class="-p3">
-        <button class="a-btn a-dropdown-trigger -active" data-target="#dropdown-1">Dropdown, click me</button>
+        <button class="a-btn m-dropdown__trigger -active" data-target="#dropdown-1">Dropdown, click me</button>
         <p class="-text">There is no need of proximity between the both elements.</p>
-        <div class="a-dropdown -active" id="dropdown-1">
-          <a class="a-menu-item" href="#">Element 1</a>
-          <a class="a-menu-item" href="#">Element 2</a>
-          <a class="a-menu-item" href="#">Element 3</a>
-          <a class="a-menu-item" href="#">Element 4</a>
+        <div class="m-dropdown__menu -active" id="dropdown-1">
+          <a class="m-dropdown__menu-item" href="#">Element 1</a>
+          <a class="m-dropdown__menu-item" href="#">Element 2</a>
+          <a class="m-dropdown__menu-item" href="#">Element 3</a>
+          <a class="m-dropdown__menu-item" href="#">Element 4</a>
         </div>
       </div>
 
@@ -100,26 +100,21 @@ h3 Divider
 p.-text
   | Several menu items can be arranged together by using a divider. Use the <code>-divider</code> class.
 h4 Example
-.example.-mb3
-  .-p3
-    .m-dropdown
-      button.a-btn.a-dropdown-trigger Dropdown, click me
-      .a-dropdown
-        a.a-menu-item(href='#') Element 1
-        a.a-menu-item(href='#') Element 2
-        a.a-menu-item(href='#') Element 3
-        .-divider
-        a.a-menu-item(href='#') Element 4
+.example.-mb3.a-grid
+  .-p3.a-col.-w7.-sm--w4.-md--w5.-lg--w3
+    .m-dropdown__menu.-active
+      a.m-dropdown__menu-item(href='#') Element 1
+      a.m-dropdown__menu-item(href='#') Element 2
+      a.m-dropdown__menu-item(href='#') Element 3
+      .-divider
+      a.m-dropdown__menu-item(href='#') Element 4
   :code(lang="html")
-    <div class="m-dropdown">
-      <button class="a-btn a-dropdown-trigger">Dropdown, click me</button>
-      <div class="a-dropdown">
-        <a class="a-menu-item" href="#">Element 1</a>
-        <a class="a-menu-item" href="#">Element 2</a>
-        <a class="a-menu-item" href="#">Element 3</a>
-        <div class="-divider"></div>
-        <a class="a-menu-item" href="#">Element 4</a>
-      </div>
+    <div class="m-dropdown__menu">
+      <a class="m-dropdown__menu-item" href="#">Element 1</a>
+      <a class="m-dropdown__menu-item" href="#">Element 2</a>
+      <a class="m-dropdown__menu-item" href="#">Element 3</a>
+      <div class="-divider"></div>
+      <a class="m-dropdown__menu-item" href="#">Element 4</a>
     </div>
 
 h3 Menu item states
@@ -129,24 +124,19 @@ p.-text
   | a class to force this state.
 
 h4 Example
-.example.-mb3
-  .-p3
-    .m-dropdown
-      button.a-btn.a-dropdown-trigger Dropdown, click me
-      .a-dropdown
-        a.a-menu-item(href='#') Normal element
-        a.a-menu-item.-active(href='#') Active element
-        a.a-menu-item.-disabled(href='#') Disabled element
-        a.a-menu-item.-hover(href='#') Hovered item
+.example.-mb3.a-grid
+  .-p3.a-col.-w12.-sm--w7.-md--w8.-lg--w6.-xl--w4
+    .m-dropdown__menu.-active
+      a.m-dropdown__menu-item(href='#') Normal element
+      a.m-dropdown__menu-item.-active(href='#') Active element
+      a.m-dropdown__menu-item.-disabled(href='#') Disabled element
+      a.m-dropdown__menu-item.-hover(href='#') Hovered item
   :code(lang="html")
-    <div class="m-dropdown">
-      <button class="a-btn a-dropdown-trigger">Dropdown, click me</button>
-       <div class="a-dropdown">
-        <a class="a-menu-item" href="#">Normal element</a>
-        <a class="a-menu-item -active" href="#">Active element</a>
-        <a class="a-menu-item -disabled href="#">Disabled element</a>
-        <a class="a-menu-item -hover" href="#">Hovered item</a>
-      </div>
+    <div class="m-dropdown__menu">
+      <a class="m-dropdown__menu-item" href="#">Normal element</a>
+      <a class="m-dropdown__menu-item -active" href="#">Active element</a>
+      <a class="m-dropdown__menu-item -disabled href="#">Disabled element</a>
+      <a class="m-dropdown__menu-item -hover" href="#">Hovered item</a>
     </div>
 
 h3 Icons
@@ -154,92 +144,87 @@ p.-text
   | Dropdown component has been developed to support Chi icons in the menu items.
 
 h4 Example
-.example.-mb3
-  .-p3
-    .m-dropdown
-      button.a-btn.a-dropdown-trigger Dropdown, click me
-      .a-dropdown
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-file-outline')
-          = "New"
-        a.a-menu-item.-disabled(href='http://www.centurylink.com')
-          .a-icon
-            svg
-              use(xlink:href='#icon-arrow-to-bottom')
-          = "Save"
-        .-divider
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-mail')
-          = "Send"
-        a.a-menu-item.-active(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-shopping-cart')
-          = "Buy"
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-users')
-          = "Share"
-        .-divider
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logout')
-          = "Logout"
+.example.-mb3.a-grid
+  .-p3.a-col.-w7.-sm--w4.-md--w5.-lg--w3
+    .m-dropdown__menu.-active
+      a.m-dropdown__menu-item(href='#')
+        .a-icon
+          svg
+            use(xlink:href='#icon-file-outline')
+        = "New"
+      a.m-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
+        .a-icon
+          svg
+            use(xlink:href='#icon-arrow-to-bottom')
+        = "Save"
+      .-divider
+      a.m-dropdown__menu-item(href='#')
+        .a-icon
+          svg
+            use(xlink:href='#icon-mail')
+        = "Send"
+      a.m-dropdown__menu-item.-active(href='#')
+        .a-icon
+          svg
+            use(xlink:href='#icon-shopping-cart')
+        = "Buy"
+      a.m-dropdown__menu-item(href='#')
+        .a-icon
+          svg
+            use(xlink:href='#icon-users')
+        = "Share"
+      .-divider
+      a.m-dropdown__menu-item(href='#')
+        .a-icon
+          svg
+            use(xlink:href='#icon-logout')
+        = "Logout"
   :code(lang="html")
-    <div class="m-dropdown">
-      <button class="a-btn a-dropdown-trigger">Dropdown, click me</button>
-      <div class="a-dropdown">
-        <a class="a-menu-item" href="#">
-          <div class="a-icon">
-            <svg>
-              <use xlink:href="#icon-file-outline"></use>
-            </svg>
-          </div>New
-        </a>
-        <a class="a-menu-item -disabled" href="#">
-          <div class="a-icon">
+    <div class="m-dropdown__menu">
+      <a class="m-dropdown__menu-item" href="#">
+        <div class="a-icon">
           <svg>
-            <use xlink:href="#icon-arrow-to-bottom"></use>
+            <use xlink:href="#icon-file-outline"></use>
           </svg>
-          </div>Save
-        </a>
-        <div class="-divider"></div>
-        <a class="a-menu-item" href="#">
-          <div class="a-icon">
-            <svg>
-              <use xlink:href="#icon-mail"></use>
-            </svg>
-          </div>Send
-        </a>
-        <a class="a-menu-item -active" href="#">
-          <div class="a-icon">
-            <svg>
-              <use xlink:href="#icon-shopping-cart"></use>
-            </svg>
-          </div>Buy
-        </a>
-        <a class="a-menu-item" href="#">
-          <div class="a-icon">
-            <svg>
-              <use xlink:href="#icon-users"></use>
-            </svg>
-          </div>Share
-        </a>
-        <div class="-divider"></div>
-        <a class="a-menu-item" href="#">
-          <div class="a-icon">
-            <svg>
-              <use xlink:href="#icon-logout"></use>
-            </svg>
-          </div>Logout
-        </a>
-      </div>
+        </div>New
+      </a>
+      <a class="m-dropdown__menu-item -disabled" href="#">
+        <div class="a-icon">
+        <svg>
+          <use xlink:href="#icon-arrow-to-bottom"></use>
+        </svg>
+        </div>Save
+      </a>
+      <div class="-divider"></div>
+      <a class="m-dropdown__menu-item" href="#">
+        <div class="a-icon">
+          <svg>
+            <use xlink:href="#icon-mail"></use>
+          </svg>
+        </div>Send
+      </a>
+      <a class="m-dropdown__menu-item -active" href="#">
+        <div class="a-icon">
+          <svg>
+            <use xlink:href="#icon-shopping-cart"></use>
+          </svg>
+        </div>Buy
+      </a>
+      <a class="m-dropdown__menu-item" href="#">
+        <div class="a-icon">
+          <svg>
+            <use xlink:href="#icon-users"></use>
+          </svg>
+        </div>Share
+      </a>
+      <div class="-divider"></div>
+      <a class="m-dropdown__menu-item" href="#">
+        <div class="a-icon">
+          <svg>
+            <use xlink:href="#icon-logout"></use>
+          </svg>
+        </div>Logout
+      </a>
     </div>
 
 h3 Form elements
@@ -250,37 +235,32 @@ h4 Search box
 p.-text
   | This search box is a special kind of text input prepared to be located on top of the menu-item. It has slightly
   | smaller padding at the sides.
-.example.-mb3
-  .-p3
-    .m-dropdown
-      button.a-btn.a-dropdown-trigger Dropdown, click me
-      .a-dropdown
-        .a-inputWrapper.-iconLeft.a-menu-item
-          input(type="text", class="a-input", placeholder="Search")
-          .a-icon.-textMuted
-            svg
-              use(xlink:href='#icon-search')
-        a.a-menu-item(href='#') Element 1
-        a.a-menu-item(href='#') Element 2
-        a.a-menu-item(href='#') Element 3
-        a.a-menu-item(href='#') Element 4
+.example.-mb3.a-grid
+  .-p3.a-col.-w7.-sm--w4.-md--w5.-lg--w3
+    .m-dropdown__menu.-active
+      .a-inputWrapper.-iconLeft.m-dropdown__menu-item
+        input(type="text", class="a-input", placeholder="Search")
+        .a-icon.-textMuted
+          svg
+            use(xlink:href='#icon-search')
+      a.m-dropdown__menu-item(href='#') Element 1
+      a.m-dropdown__menu-item(href='#') Element 2
+      a.m-dropdown__menu-item(href='#') Element 3
+      a.m-dropdown__menu-item(href='#') Element 4
   :code(lang="html")
-    <div class="m-dropdown">
-      <button class="a-btn a-dropdown-trigger">Dropdown, click me</button>
-      <div class="a-dropdown">
-        <div class="a-inputWrapper -iconLeft a-menu-item">
-          <input class="a-input" type="text" placeholder="Search">
-          <div class="a-icon -textMuted">
-            <svg>
-              <use xlink:href="#icon-search"></use>
-            </svg>
-          </div>
+    <div class="m-dropdown__menu">
+      <div class="a-inputWrapper -iconLeft m-dropdown__menu-item">
+        <input class="a-input" type="text" placeholder="Search">
+        <div class="a-icon -textMuted">
+          <svg>
+            <use xlink:href="#icon-search"></use>
+          </svg>
         </div>
-        <a class="a-menu-item" href="#">Element 1</a>
-        <a class="a-menu-item" href="#">Element 2</a>
-        <a class="a-menu-item" href="#">Element 3</a>
-        <a class="a-menu-item" href="#">Element 4</a>
       </div>
+      <a class="m-dropdown__menu-item" href="#">Element 1</a>
+      <a class="m-dropdown__menu-item" href="#">Element 2</a>
+      <a class="m-dropdown__menu-item" href="#">Element 3</a>
+      <a class="m-dropdown__menu-item" href="#">Element 4</a>
     </div>
 
 h4 Checkboxes
@@ -294,59 +274,54 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
     a(href='#a-tabs-panel--icon-checkboxes') With icons
 .example.-mb3
   #a-tabs-panel--checkbox.a-tabs-panel.-active
-    .-p3
-      .m-dropdown
-        button.a-btn.a-dropdown-trigger Dropdown, click me
-        .a-dropdown
-          .a-formGroup.a-menu-item
+    .a-grid
+      .-p3.a-col.-w7.-sm--w4.-md--w5.-lg--w3
+        .m-dropdown__menu.-active
+          .a-formGroup.m-dropdown__menu-item
             input(type="checkbox", class="a-input", id="checkbox1")
             label(for="checkbox1")
             label.-text(for="checkbox1") Element 1
-          .a-formGroup.a-menu-item
+          .a-formGroup.m-dropdown__menu-item
             input(type="checkbox", class="a-input", id="checkbox2", disabled)
             label(for="checkbox2")
             label.-text(for="checkbox2") Element 2
-          .a-formGroup.a-menu-item
+          .a-formGroup.m-dropdown__menu-item
             input(type="checkbox", class="a-input", id="checkbox3", checked)
             label(for="checkbox3")
             label.-text(for="checkbox3") Element 3
-          .a-formGroup.a-menu-item
+          .a-formGroup.m-dropdown__menu-item
             input(type="checkbox", class="a-input", id="checkbox4")
             label(for="checkbox4")
             label.-text(for="checkbox4") Element 4
     :code(lang="html")
-      <div class="m-dropdown">
-        <button class="a-btn a-dropdown-trigger">Dropdown, click me</button>
-        <div class="a-dropdown">
-          <div class="a-formGroup a-menu-item">
-            <input class="a-input" type="checkbox" id="checkbox1">
-            <label for="checkbox1"></label>
-            <label class="-text" for="checkbox1">Element 1</label>
-          </div>
-          <div class="a-formGroup a-menu-item">
-            <input class="a-input" type="checkbox" id="checkbox2" disabled>
-            <label for="checkbox2"></label>
-            <label class="-text" for="checkbox2">Element 2</label>
-          </div>
-          <div class="a-formGroup a-menu-item">
-            <input class="a-input" type="checkbox" id="checkbox3" checked>
-            <label for="checkbox3"></label>
-            <label class="-text" for="checkbox3">Element 3</label>
-          </div>
-          <div class="a-formGroup a-menu-item">
-            <input class="a-input" type="checkbox" id="checkbox4">
-            <label for="checkbox4"></label>
-            <label class="-text" for="checkbox4">Element 4</label>
-          </div>
+      <div class="m-dropdown__menu">
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input" type="checkbox" id="checkbox1">
+          <label for="checkbox1"></label>
+          <label class="-text" for="checkbox1">Element 1</label>
+        </div>
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input" type="checkbox" id="checkbox2" disabled>
+          <label for="checkbox2"></label>
+          <label class="-text" for="checkbox2">Element 2</label>
+        </div>
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input" type="checkbox" id="checkbox3" checked>
+          <label for="checkbox3"></label>
+          <label class="-text" for="checkbox3">Element 3</label>
+        </div>
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input" type="checkbox" id="checkbox4">
+          <label for="checkbox4"></label>
+          <label class="-text" for="checkbox4">Element 4</label>
         </div>
       </div>
 
   #a-tabs-panel--icon-checkboxes.a-tabs-panel
-    .-p3
-      .m-dropdown
-        button.a-btn.a-dropdown-trigger Dropdown, click me
-        .a-dropdown
-          .a-formGroup.a-menu-item
+    .a-grid
+      .-p3.a-col.-w10.-sm--w6.-md--w7.-lg--w5.-xl--w3
+        .m-dropdown__menu.-active
+          .a-formGroup.m-dropdown__menu-item
             input(type="checkbox", class="a-input", id="checkbox1b")
             label(for="checkbox1b")
             label.-text(for="checkbox1b")
@@ -354,7 +329,7 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
                 svg
                   use(xlink:href='#icon-logo-centurylink')
               | Element 1
-          .a-formGroup.a-menu-item
+          .a-formGroup.m-dropdown__menu-item
             input(type="checkbox", class="a-input", id="checkbox2b", disabled)
             label(for="checkbox2b")
             label.-text(for="checkbox2b")
@@ -362,7 +337,7 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
                 svg
                   use(xlink:href='#icon-logo-centurylink')
               | Element 2
-          .a-formGroup.a-menu-item
+          .a-formGroup.m-dropdown__menu-item
             input(type="checkbox", class="a-input", id="checkbox3b", checked)
             label(for="checkbox3b")
             label.-text(for="checkbox3b")
@@ -370,7 +345,7 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
                 svg
                   use(xlink:href='#icon-logo-centurylink')
               | Element 3
-          .a-formGroup.a-menu-item
+          .a-formGroup.m-dropdown__menu-item
             input(type="checkbox", class="a-input", id="checkbox4b")
             label(for="checkbox4b")
             label.-text(for="checkbox4b")
@@ -378,59 +353,55 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
                 svg
                   use(xlink:href='#icon-logo-centurylink')
               | Element 4
-
     :code(lang="html")
-      <div class="m-dropdown">
-        <button class="a-btn a-dropdown-trigger">Dropdown, click me</button>
-        <div class="a-dropdown">
-          <div class="a-formGroup a-menu-item">
-            <input class="a-input" type="checkbox" id="checkbox1">
-            <label for="checkbox1"></label>
-            <label class="-text" for="checkbox1">
-              <div class="a-icon">
-                <svg>
-                  <use xlink:href="#icon-logo-centurylink"></use>
-                </svg>
-              </div>
-              Element 1
-            </label>
-          </div>
-          <div class="a-formGroup a-menu-item">
-            <input class="a-input" type="checkbox" id="checkbox2" disabled>
-            <label for="checkbox2"></label>
-            <label class="-text" for="checkbox2">
-              <div class="a-icon">
-                <svg>
-                  <use xlink:href="#icon-logo-centurylink"></use>
-                </svg>
-              </div>
-              Element 2
-            </label>
-          </div>
-          <div class="a-formGroup a-menu-item">
-            <input class="a-input" type="checkbox" id="checkbox3" checked>
-            <label for="checkbox3"></label>
-            <label class="-text" for="checkbox3">
-              <div class="a-icon">
-                <svg>
-                  <use xlink:href="#icon-logo-centurylink"></use>
-                </svg>
-              </div>
-              Element 3
-            </label>
-          </div>
-          <div class="a-formGroup a-menu-item">
-            <input class="a-input" type="checkbox" id="checkbox4">
-            <label for="checkbox4"></label>
-            <label class="-text" for="checkbox4">
-              <div class="a-icon">
-                <svg>
-                  <use xlink:href="#icon-logo-centurylink"></use>
-                </svg>
-              </div>
-              Element 4
-            </label>
-          </div>
+      <div class="m-dropdown__menu">
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input" type="checkbox" id="checkbox1">
+          <label for="checkbox1"></label>
+          <label class="-text" for="checkbox1">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-logo-centurylink"></use>
+              </svg>
+            </div>
+            Element 1
+          </label>
+        </div>
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input" type="checkbox" id="checkbox2" disabled>
+          <label for="checkbox2"></label>
+          <label class="-text" for="checkbox2">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-logo-centurylink"></use>
+              </svg>
+            </div>
+            Element 2
+          </label>
+        </div>
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input" type="checkbox" id="checkbox3" checked>
+          <label for="checkbox3"></label>
+          <label class="-text" for="checkbox3">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-logo-centurylink"></use>
+              </svg>
+            </div>
+            Element 3
+          </label>
+        </div>
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input" type="checkbox" id="checkbox4">
+          <label for="checkbox4"></label>
+          <label class="-text" for="checkbox4">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-logo-centurylink"></use>
+              </svg>
+            </div>
+            Element 4
+          </label>
         </div>
       </div>
 
@@ -438,7 +409,7 @@ h4 Others
 p.-text
   span.a-badge.-brand.-mr1
     span Pro tip
-  | You can add your content as a menu item using the class <code>a-menu-item</code>. It sets the height, padding,
+  | You can add your content as a menu item using the class <code>m-dropdown__menu-item</code>. It sets the height, padding,
   | and alignment to fit other menu items rendering.
 
 ul#a-tabs--others.a-tabs.-ml3
@@ -457,157 +428,138 @@ ul#a-tabs--others.a-tabs.-ml3
   #a-tabs-panel--others-text.a-tabs-panel.-active
     .-p3
       p.-text It is possible to include text, without link, using a span tag.
-      .m-dropdown
-        button.a-btn.a-dropdown-trigger Dropdown, click me
-        .a-dropdown
-          span.a-menu-item Text 1
-          span.a-menu-item Text 2
-          span.a-menu-item Text 3
-          span.a-menu-item Text 4
+      .a-grid
+        .a-col.-w7.-sm--w4.-md--w5.-lg--w3
+          .m-dropdown__menu.-active
+            span.m-dropdown__menu-item Text 1
+            span.m-dropdown__menu-item Text 2
+            span.m-dropdown__menu-item Text 3
+            span.m-dropdown__menu-item Text 4
     :code(lang="html")
-      <div class="m-dropdown">
-        <button class="a-btn a-dropdown-trigger">Dropdown, click me</button>
-        <div class="a-dropdown">
-          <span class="a-menu-item">Text 1</span>
-          <span class="a-menu-item">Text 2</span>
-          <span class="a-menu-item">Text 3</span>
-          <span class="a-menu-item">Text 4</span>
-        </div>
+      <div class="m-dropdown__menu">
+        <span class="m-dropdown__menu-item">Text 1</span>
+        <span class="m-dropdown__menu-item">Text 2</span>
+        <span class="m-dropdown__menu-item">Text 3</span>
+        <span class="m-dropdown__menu-item">Text 4</span>
       </div>
   #a-tabs-panel--others-radio.a-tabs-panel
-    .-p3
-      .m-dropdown
-        button.a-btn.a-dropdown-trigger Dropdown, click me
-        .a-dropdown
-          .a-formGroup.a-menu-item
+    .-p3.a-grid
+      .a-col.-w12.-sm--w7.-md--w8.-lg--w6.-xl--w4
+        .m-dropdown__menu.-active
+          .a-formGroup.m-dropdown__menu-item
             input(class="a-input", type="radio", name="radios", id="radio1")
             label(for="radio1")
             label.-text(for="radio1") Radio Button 1
-          .a-formGroup.a-menu-item
+          .a-formGroup.m-dropdown__menu-item
             input(class="a-input", type="radio", name="radios", id="radio2", disabled)
             label(for="radio2")
             label.-text(for="radio2") Disabled Radio Button 2
-          .a-formGroup.a-menu-item
+          .a-formGroup.m-dropdown__menu-item
             input(class="a-input", type="radio", name="radios", id="radio3")
             label(for="radio3")
             label.-text(for="radio3") Radio Button 3
-          .a-formGroup.a-menu-item
+          .a-formGroup.m-dropdown__menu-item
             input(class="a-input", type="radio", name="radios", id="radio4")
             label(for="radio4")
             label.-text(for="radio4") Radio Button 4
     :code(lang="html")
-      <div class="m-dropdown">
-          <button class="a-btn a-dropdown-trigger">Dropdown, click me</button>
-          <div class="a-dropdown">
-            <div class="a-formGroup a-menu-item">
-              <input class="a-input" type="radio" name="radios" id="radio1">
-              <label for="radio1"></label>
-              <label class="-text" for="radio1">Radio Button 1</label>
-            </div>
-            <div class="a-formGroup a-menu-item">
-              <input class="a-input" type="radio" name="radios" id="radio2" disabled="">
-              <label for="radio2"></label>
-              <label class="-text" for="radio2">Disabled Radio Button 2</label>
-            </div>
-            <div class="a-formGroup a-menu-item">
-              <input class="a-input" type="radio" name="radios" id="radio3">
-              <label for="radio3"></label>
-              <label class="-text" for="radio3">Radio Button 3</label>
-            </div>
-            <div class="a-formGroup a-menu-item">
-              <input class="a-input" type="radio" name="radios" id="radio4">
-              <label for="radio4"></label>
-              <label class="-text" for="radio4">Radio Button 4</label>
-            </div>
-          </div>
+      <div class="m-dropdown__menu">
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input" type="radio" name="radios" id="radio1">
+          <label for="radio1"></label>
+          <label class="-text" for="radio1">Radio Button 1</label>
         </div>
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input" type="radio" name="radios" id="radio2" disabled="">
+          <label for="radio2"></label>
+          <label class="-text" for="radio2">Disabled Radio Button 2</label>
+        </div>
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input" type="radio" name="radios" id="radio3">
+          <label for="radio3"></label>
+          <label class="-text" for="radio3">Radio Button 3</label>
+        </div>
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input" type="radio" name="radios" id="radio4">
+          <label for="radio4"></label>
+          <label class="-text" for="radio4">Radio Button 4</label>
+        </div>
+      </div>
   #a-tabs-panel--others-input.a-tabs-panel
-    .-p3
-      .m-dropdown
-        button.a-btn.a-dropdown-trigger Dropdown, click me
-        .a-dropdown
-          a.a-menu-item(href='#') Link 1
-          a.a-menu-item(href='#') Link 2
+    .a-grid
+      .-p3.a-col.-w7.-sm--w4.-md--w5.-lg--w3
+        .m-dropdown__menu.-active
+          a.m-dropdown__menu-item(href='#') Link 1
+          a.m-dropdown__menu-item(href='#') Link 2
           .-divider
-          .a-menu-item
+          .m-dropdown__menu-item
             input.a-input(type="text",placeholder="Placeholder")
     :code(lang="html")
-      <div class="m-dropdown">
-        <button class="a-btn a-dropdown-trigger">Dropdown, click me</button>
-        <div class="a-dropdown">
-          <a class="a-menu-item" href="#">Link 1</a>
-          <a class="a-menu-item" href="#">Link 2</a>
-          <div class="-divider"></div>
-          <div class="a-menu-item">
-            <input class="a-input" type="text" placeholder="Placeholder">
-          </div>
+      <div class="m-dropdown__menu">
+        <a class="m-dropdown__menu-item" href="#">Link 1</a>
+        <a class="m-dropdown__menu-item" href="#">Link 2</a>
+        <div class="-divider"></div>
+        <div class="m-dropdown__menu-item">
+          <input class="a-input" type="text" placeholder="Placeholder">
         </div>
       </div>
   #a-tabs-panel--others-range.a-tabs-panel
-    .-p3
-      .m-dropdown
-        button.a-btn.a-dropdown-trigger Dropdown, click me
-        .a-dropdown
-          .a-formGroup.a-menu-item
+    .a-grid
+      .-p3.a-col.-w12.-sm--w7.-md--w8.-lg--w6.-xl--w4
+        .m-dropdown__menu.-active
+          .a-formGroup.m-dropdown__menu-item
             label.-text.-mr2 200GB
             input.a-input(type="range")
             label.-text.-ml2 5TB
           .-divider
-          span.a-menu-item Select range
-          .a-menu-item
+          span.m-dropdown__menu-item Select range
+          .m-dropdown__menu-item
             input.a-input(type="range")
     :code(lang="html")
-      <div class="m-dropdown">
-          <button class="a-btn a-dropdown-trigger">Dropdown, click me</button>
-          <div class="a-dropdown">
-            <div class="a-formGroup a-menu-item">
-              <label class="-text -mr2">200GB</label>
-              <input class="a-input" type="range">
-              <label class="-text -ml2">5TB</label>
-            </div>
-            <div class="-divider"></div>
-            <span class="a-menu-item">Select range</span>
-            <div class="a-menu-item">
-              <input class="a-input" type="range">
-            </div>
-          </div>
+      <div class="m-dropdown__menu">
+        <div class="a-formGroup m-dropdown__menu-item">
+          <label class="-text -mr2">200GB</label>
+          <input class="a-input" type="range">
+          <label class="-text -ml2">5TB</label>
         </div>
+        <div class="-divider"></div>
+        <span class="m-dropdown__menu-item">Select range</span>
+        <div class="m-dropdown__menu-item">
+          <input class="a-input" type="range">
+        </div>
+      </div>
   #a-tabs-panel--others-toggle.a-tabs-panel
-    .-p3
-      .m-dropdown
-        button.a-btn.a-dropdown-trigger Longer button for longer content
-        .a-dropdown
-          .a-formGroup.a-menu-item
+    .a-grid
+      .-p3.a-col.-w12.-sm--w7.-md--w8.-lg--w6.-xl--w4
+        .m-dropdown__menu.-active
+          .a-formGroup.m-dropdown__menu-item
             input(type="checkbox", class="a-input -toggle", id="toggle-mail")
             label(class="-mr1", for="toggle-mail")
             label(class="-text", for="toggle-mail") Email notifications
-          .a-formGroup.a-menu-item
+          .a-formGroup.m-dropdown__menu-item
             input(type="checkbox", class="a-input -toggle", id="toggle-tlf")
             label(class="-mr1", for="toggle-tlf")
             label(class="-text", for="toggle-tlf") Phone notifications
-          .a-formGroup.a-menu-item
+          .a-formGroup.m-dropdown__menu-item
             input(type="checkbox", class="a-input -toggle", id="toggle-app")
             label(class="-mr1", for="toggle-app")
             label(class="-text", for="toggle-app") App notifications
     :code(lang="html")
-      <div class="m-dropdown">
-        <button class="a-btn a-dropdown-trigger">Longer button for longer content</button>
-        <div class="a-dropdown">
-          <div class="a-formGroup a-menu-item">
-            <input class="a-input -toggle" type="checkbox" id="toggle-mail">
-            <label class="-mr1" for="toggle-mail"></label>
-            <label class="-text" for="toggle-mail">Email notifications</label>
-          </div>
-          <div class="a-formGroup a-menu-item">
-            <input class="a-input -toggle" type="checkbox" id="toggle-tlf">
-            <label class="-mr1" for="toggle-tlf"></label>
-            <label class="-text" for="toggle-tlf">Phone notifications</label>
-          </div>
-          <div class="a-formGroup a-menu-item">
-            <input class="a-input -toggle" type="checkbox" id="toggle-app">
-            <label class="-mr1" for="toggle-app"></label>
-            <label class="-text" for="toggle-app">App notifications</label>
-          </div>
+      <div class="m-dropdown__menu">
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input -toggle" type="checkbox" id="toggle-mail">
+          <label class="-mr1" for="toggle-mail"></label>
+          <label class="-text" for="toggle-mail">Email notifications</label>
+        </div>
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input -toggle" type="checkbox" id="toggle-tlf">
+          <label class="-mr1" for="toggle-tlf"></label>
+          <label class="-text" for="toggle-tlf">Phone notifications</label>
+        </div>
+        <div class="a-formGroup m-dropdown__menu-item">
+          <input class="a-input -toggle" type="checkbox" id="toggle-app">
+          <label class="-mr1" for="toggle-app"></label>
+          <label class="-text" for="toggle-app">App notifications</label>
         </div>
       </div>
 
@@ -619,318 +571,164 @@ p.-text
   | You can wrap the menu-item content into a div with the class <code>-flex--ellipsis</code>.
 .example.-mb3
   .-p3
-    .m-dropdown
-      button.a-btn.a-dropdown-trigger Click me
-      .a-dropdown(style="width:100%")
-        a.a-menu-item(href='#') Element 1
-        a.a-menu-item(href='#') Element 2
-        a.a-menu-item(href='#')
-          .-flex--ellipsis Long text element 3
-        a.a-menu-item(href='#') Element 4
+    .m-dropdown__menu.-active(style="width:10rem")
+      a.m-dropdown__menu-item(href='#') Element 1
+      a.m-dropdown__menu-item(href='#') Element 2
+      a.m-dropdown__menu-item(href='#')
+        .-flex--ellipsis Longer text element 3
+      a.m-dropdown__menu-item(href='#') Element 4
   :code(lang="html")
-    <div class="m-dropdown">
-      <button class="a-btn a-dropdown-trigger">Click me</button>
-      <div class="a-dropdown" style="width:100%">
-        <a class="a-menu-item" href="#">Element 1</a>
-        <a class="a-menu-item" href="#">Element 2</a>
-        <a class="a-menu-item" href="#">
-          <div class="-flex--ellipsis">Long text element 3</div>
-        </a>
-        <a class="a-menu-item" href="#">Element 4</a>
-      </div>
+    <div class="m-dropdown__menu" style="width:10rem">
+      <a class="m-dropdown__menu-item" href="#">Element 1</a>
+      <a class="m-dropdown__menu-item" href="#">Element 2</a>
+      <a class="m-dropdown__menu-item" href="#">
+        <div class="-flex--ellipsis">Long text element 3</div>
+      </a>
+      <a class="m-dropdown__menu-item" href="#">Element 4</a>
     </div>
 
 h4 Higher menu items
 p.-text If you need to insert higher menu items than default, add the class <code>-h--auto</code>.
 .example.-mb3
   .-p3
-    .m-dropdown
-      button.a-btn.a-dropdown-trigger Dropdown, click me
-      .a-dropdown(style="width:100%")
-        a.a-menu-item(href="#") Link 1
-        .a-menu-item.-h--auto.-py1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        a.a-menu-item(href="#") Link 2
+    .m-dropdown__menu.-active(style="width:10rem")
+      a.m-dropdown__menu-item(href="#") Link 1
+      .m-dropdown__menu-item.-h--auto.-py1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      a.m-dropdown__menu-item(href="#") Link 2
   :code(lang="html")
-    <div class="m-dropdown">
-      <button class="a-btn a-dropdown-trigger">Dropdown, click me</button>
-      <div class="a-dropdown" style="width:100%">
-        <a class="a-menu-item" href="#">Link 1</a>
-        <div class="a-menu-item -h--auto -py1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-        <a class="a-menu-item" href="#">Link 2</a>
-      </div>
+    <div class="m-dropdown__menu" style="width:10rem">
+      <a class="m-dropdown__menu-item" href="#">Link 1</a>
+      <div class="m-dropdown__menu-item -h--auto -py1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+      <a class="m-dropdown__menu-item" href="#">Link 2</a>
     </div>
 
-p
+h3 JavaScript
 
+p.-text
+  | Chi provides a JavaScript main file that includes the components functionality.
+.-mb2
+  :code(lang='html')
+    <script src="https://assets.ctl.io/chi/0.8.2/js/chi.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-h3 Tests (to be erased)
+h4 Basic functionality
+p.-text
+  | Use the function <code>chi.dropdown(elem)</code> to instantiate a new dropdown in the DOM
+  | element passed as a parameter. You must use the trigger element.
 
 .example.-mb3
   .-p3
-    .m-dropdown.-mr1
-      button.a-btn.a-dropdown-trigger.-active Button with a long text
-      .a-dropdown.-active(style="width:100%")
-        .a-formGroup.a-menu-item
-          input(type="checkbox", class="a-input", id="checkbox4")
-          label(for="checkbox4")
-          label.-text(for="checkbox4")
-            .a-icon
-              svg
-                use(xlink:href='#icon-logo-centurylink')
-            = "Element one"
-        .a-formGroup.a-menu-item
-          input(type="checkbox", class="a-input", id="checkbox5", disabled)
-          label(for="checkbox5")
-          label.-text(for="checkbox5")
-            .a-icon
-              svg
-                use(xlink:href='#icon-logo-centurylink')
-            span Element two demasiado largo para container
-        .-divider
-        span.a-menu-item ---------------------
-        .-divider
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Element no activo"
-        a.a-menu-item.-active(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Active element"
-        .-divider
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Element no activo que es muy largo"
-        a.a-menu-item.-active(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Active element que es muy largo"
-        .-divider
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          span.-flex--ellipsis Element no activo que es muy largo
-        a.a-menu-item.-active(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          span.-flex--ellipsis Active element que es muy largo
-
-        .-divider
-        span.a-menu-item ---------------------
-
-
-    .m-dropdown.-mr1
-      button.a-btn.a-dropdown-trigger(data-target="#dropdown-2") Button with a long text
-      #dropdown-2.a-dropdown
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Element"
-        a.a-menu-item.-disabled
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Disabled element"
-        .-divider
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Element"
-        a.a-menu-item.-active(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Active element"
-        .-divider
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Another element"
-
-    .m-dropdown.-mr1
-      button.a-btn.a-dropdown-trigger(data-target="#dropdown-3") Button with a long text
-      #dropdown-3.a-dropdown
-        .a-inputWrapper.-iconLeft.a-menu-item
-          input(type="text", class="a-input", placeholder="Search")
-          .a-icon.-textMuted
-            svg
-              use(xlink:href='#icon-search')
-        a.a-menu-item(href='#') Element
-        a.a-menu-item.-disabled Disabled element
-        .-divider
-        a.a-menu-item(href='#') Element
-        a.a-menu-item.-active(href='#') Active element
-        .-divider
-        a.a-menu-item(href='#') Another element
-
     .m-dropdown
-      button.a-btn.a-dropdown-trigger(data-target="#dropdown-4") Button with quite a long text
-      #dropdown-4.a-dropdown
-        .a-formGroup.a-menu-item
-          input(type="checkbox", class="a-input", id="checkbox1")
-          label(for="checkbox1")
-          label.-text(for="checkbox1") Element
-        .a-formGroup.a-menu-item
-          input(type="checkbox", class="a-input", id="checkbox2", disabled)
-          label(for="checkbox2")
-          label.-text(for="checkbox2") Disabled Element
-        .-divider
-        .a-formGroup.a-menu-item
-          input(type="checkbox", class="a-input", id="checkbox3", checked)
-          label(for="checkbox3")
-          label.-text(for="checkbox3") Test element (*) <!-- Este codigo no valida label inside label -->
-        a.a-menu-item.-active(href='#') Active element
-        .-divider
-        a.a-menu-item(href='#') Another element
-        .a-formGroup.a-menu-item
-          input(type="checkbox", class="a-input", id="checkbox4")
-          label(for="checkbox4")
-          label.-text(for="checkbox4")
-            .a-icon
-              svg
-                use(xlink:href='#icon-logo-centurylink')
-            = "Element one"
-        .a-formGroup.a-menu-item
-          input(type="checkbox", class="a-input", id="checkbox5", disabled)
-          label(for="checkbox5")
-          label.-text(for="checkbox5")
-            .a-icon
-              svg
-                use(xlink:href='#icon-logo-centurylink')
-            span Element two demasiado largo para container
-        .-divider
-        span.a-menu-item ---------------------
-        .-divider
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Element no activo"
-        a.a-menu-item.-active(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Active element"
-        .-divider
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Element no activo que es muy largo"
-        a.a-menu-item.-active(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Active element que es muy largo"
-        .-divider
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          span.-flex--ellipsis Element no activo que es muy largo
-        a.a-menu-item.-active(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          span.-flex--ellipsis Active element que es muy largo
+      button.a-btn.m-dropdown__trigger Dropdown, click me
+      .m-dropdown__menu
+        a.m-dropdown__menu-item(href='#') Element 1
+        a.m-dropdown__menu-item(href='#') Element 2
+        a.m-dropdown__menu-item(href='#') Element 3
+        a.m-dropdown__menu-item(href='#') Element 4
+  :code(lang="html")
+    <div class="m-dropdown">
+      <button id="dropdown-1" class="a-btn m-dropdown__trigger">Dropdown, click me</button>
+      <div class="m-dropdown__menu">
+        <a class="m-dropdown__menu-item" href="#">Element 1</a>
+        <a class="m-dropdown__menu-item" href="#">Element 2</a>
+        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+        <a class="m-dropdown__menu-item" href="#">Element 4</a>
+      </div>
+    </div>
+    <script>chi.dropdown(document.getElementById('dropdown-1'));</script>
 
-        .-divider
-        span.a-menu-item ---------------------
-        .-divider
+h4 No JavaScript
+p.-text
+  | You can imitate the Chi JavaScript functionality by adding the class <code>-active</code>
+  | to the <code>m-dropdown__trigger</code> and the <code>dropdown__menu</code> elements.
 
-        a.a-menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          = "Another element"
-        .-divider
-        .a-formGroup.a-menu-item
-          input(class="a-input", type="radio", name="radios", id="radiob1")
-          label(for="radiob1")
-          label.-text(for="radiob1") Radio Button 1
-        .a-formGroup.a-menu-item
-          input(class="a-input", type="radio", name="radios", id="radiob2", disabled)
-          label(for="radiob2")
-          label.-text(for="radiob2") Disabled Radio Button 2
-        .a-formGroup.a-menu-item
-          input(class="a-input", type="radio", name="radios", id="radiob3")
-          label(for="radiob3")
-          label.-text(for="radiob3") Radio Button 3
-        .a-formGroup.a-menu-item
-          input(class="a-input", type="radio", name="radios", id="radiob4")
-          label(for="radiob4")
-          label.-text(for="radiob4") Radio Button 4
-        .a-formGroup.a-menu-item
-          label.-text.-mr2 200GB
-          input.a-input(type="range")
-          label.-text.-ml2 5TB
-        .-divider
-        span.a-menu-item Hola
-        .a-menu-item
-          input.a-input(type="range")
-        .a-menu-item
-          input.a-input(type="text",placeholder="Placeholder")
-        .a-formGroup.a-menu-item
-          input(type="checkbox", class="a-input -toggle", id="toggle4")
-          label(class="-mr1", for="toggle4")
-          label(class="-text", for="toggle4") Notifications
+h4 Positioning
+p.-text
+  | We use Popper.js library for positioning. It is boundled inside the chi.js file. You are able to
+  | specify position of the dropdown using the data-position attribute. Valid values are
+  | <code>default</code>, <code>initial</code>, <code>top</code>, <code>right</code>, <code>bottom</code>,
+  | <code>left</code>, <code>top-start</code>, <code>top-end</code>, <code>right-start</code>, <code>right-end</code>,
+  | <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>, <code>left-end</code>.
+p.-text
+  | Default position is <code>bottom-start</code>
+p.-text
+  | Use position <code>initial</code> if you want to manage dropdown position on your own; chi won't modify styles
+  | in this case.
+p.-text
+  | Chi will do it best to locate the dropdown in the selected position, however, if it can not, it will locate
+  | the dropdown in the most suitable position.
 
+.example.-mb3
+  .-p3
+    .a-grid
+      .a-col.-w12.-sm--w6.-md--w3
+        .m-dropdown
+          button.a-btn.m-dropdown__trigger(data-position="bottom") Drop-down
+          .m-dropdown__menu
+            a.m-dropdown__menu-item(href='#') Element 1
+            a.m-dropdown__menu-item(href='#') Element 2
+            a.m-dropdown__menu-item(href='#') Element 3
+            a.m-dropdown__menu-item(href='#') Element 4
+      .a-col.-w12.-sm--w6.-md--w3
+        .m-dropdown
+          button.a-btn.m-dropdown__trigger(data-position="top") Drop-top
+          .m-dropdown__menu
+            a.m-dropdown__menu-item(href='#') Element 1
+            a.m-dropdown__menu-item(href='#') Element 2
+            a.m-dropdown__menu-item(href='#') Element 3
+            a.m-dropdown__menu-item(href='#') Element 4
+      .a-col.-w12.-sm--w6.-md--w3
+        .m-dropdown
+          button.a-btn.m-dropdown__trigger(data-position="left") Drop-left
+          .m-dropdown__menu
+            a.m-dropdown__menu-item(href='#') Element 1
+            a.m-dropdown__menu-item(href='#') Element 2
+            a.m-dropdown__menu-item(href='#') Element 3
+            a.m-dropdown__menu-item(href='#') Element 4
+      .a-col.-w12.-sm--w6.-md--w3
+        .m-dropdown
+          button.a-btn.m-dropdown__trigger(data-position="right") Drop-right
+          .m-dropdown__menu
+            a.m-dropdown__menu-item(href='#') Element 1
+            a.m-dropdown__menu-item(href='#') Element 2
+            a.m-dropdown__menu-item(href='#') Element 3
+            a.m-dropdown__menu-item(href='#') Element 4
+  :code(lang="html")
+    <div class="m-dropdown">
+      <button id="dropdown-2" class="a-btn m-dropdown__trigger" data-position="bottom">Drop-down</button>
+      <div class="m-dropdown__menu">
+        <a class="m-dropdown__menu-item" href="#">Element 1</a>
+        <a class="m-dropdown__menu-item" href="#">Element 2</a>
+        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+        <a class="m-dropdown__menu-item" href="#">Element 4</a>
+      </div>
+    </div>
+    <script>chi.dropdown(document.getElementById('dropdown-2'));</script>
 
-script(type="text/javascript", src=`../../dropdown.js`)
+h4 Preventing memory leaks
+p.-text
+  | Dropdown components have a dispose function to free all resources attached to the element, such as event listeners
+  | and object data. You must call this method when you want to remove the component.
+:code(lang="javascript")
+  var elem = document.getElementById('dropdown-3');
+  var dropdown = chi.dropdown(elem);
+  // do stuff
+  dropdown.dispose();
+
+p.-text
+  span.a-badge.-brand.-mr1
+    span Tip
+  | It is safe to call the dropdown method more than once, as it will return any previously created dropdown component
+  | associated to the trigger.
+:code(lang="javascript")
+  var elem = document.getElementById('dropdown-4');
+  var dropdown = chi.dropdown(elem);
+  var elem2 = document.getElementById('dropdown-4');
+  var dropdown2 = chi.dropdown(elem2);
+  dropdown === dropdown2; // returns true
+
+  dropdown.dispose(); // Only have to do it once.
+
+script(type="text/javascript", src=`../../js/chi.js`)
 script(type="text/javascript", src=`../../tabs.js`)
 != '<script>chiTabs.init(document.getElementById(\'a-tabs--checkboxes\'));chiTabs.init(document.getElementById(\'a-tabs--expanded\'));chiTabs.init(document.getElementById(\'a-tabs--expanded-2\'));chiTabs.init(document.getElementById(\'a-tabs--others\'));</script>'
+!= '<script>Array.prototype.forEach.call(document.getElementsByClassName("m-dropdown__trigger"), function(el){chi.dropdown(el);});</script>'
