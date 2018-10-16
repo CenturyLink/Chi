@@ -1,4 +1,115 @@
 ---
 title: Divider
-disabled: true
 ---
+
+p.-text Divider is a line separator with some orientation options.
+
+h3 Examples
+p.-text
+| To render a divider, use the class <code>a-divider</code>.
+
+h4 Base
+.example.-mb3
+  .-p3
+    .a-divider
+  :code(lang="html")
+    <div class="a-divider">
+    </div>
+
+h4 Vertical
+.example.-mb3
+  .-p3.-d--flex.-align-items--center
+    | option
+    .a-divider.-vertical
+    | option
+    .a-divider.-vertical
+    | option
+  :code(lang="html")
+    <div>
+      option
+    </div>
+    <div class="a-divider -vertical">
+    </div>
+    <div>
+      option
+    </div>
+    <div class="a-divider -vertical">
+    </div>
+    <div>
+      option
+    </div>
+
+h4 Dark
+.example.-mb3
+  .-p3(style="background-color:#eeeeee")
+    .a-divider.-dark
+  :code(lang="html")
+    <div class="a-divider -dark">
+    </div>
+
+h4 Base with text in a form
+.example.-mb3
+  .-p3
+    .a-divider.-textDivider or
+  :code(lang="html")
+    <div class="a-divider -textDivider">
+      or
+    </div>
+
+h4 Base within a card
+.example.-mb3
+  .-p3
+    .a-card(style="width:20rem;")
+      .a-card__content
+        p.-text.-m0
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+        p.-text.-m0
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+      .a-divider
+      .-d--flex.-align-items--center.-ml2.-mb1
+        .a-avatar
+          img(src='../../assets/images/avatar.jpg')(alt="avatar")
+        p.-text.-m0.-pl1
+          | Alberto Solutions
+  :code(lang="html")
+    <div class="a-card">
+      <div class="a-card__content">
+        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+      </div>
+      <div class="a-divider">
+      </div>
+      <div class="-d--flex -align-items--center -ml2 -mb1">
+        <div class="a-avatar">
+          <img src="path/to/image.jpg">
+        </div>
+        <p class="-text -m0 -pl1">Alberto Solutions</p>
+      </div>
+    </div>
+h4 Divider Sizes
+p.-text
+  | Use the <code>-b</code> modifier class to control the divider's size. Adjust the size from <code>1</code> - <code>4</code>.
+.example.-mb3
+  .-p3
+    p.-text.-m0
+      | -b1
+    .a-divider.-b1
+  .-p3
+    p.-text.-m0
+      | -b2
+    .a-divider.-b2
+  .-p3
+    p.-text.-m0
+      | -b3
+    .a-divider.-b3
+  .-p3
+    p.-text.-m0
+      | -b4
+    .a-divider.-b4
+  :code(lang="html")
+    <div class="a-divider -b1"></div>
+    <div class="a-divider -b2"></div>
+    <div class="a-divider -b3"></div>
+    <div class="a-divider -b4"></div>
