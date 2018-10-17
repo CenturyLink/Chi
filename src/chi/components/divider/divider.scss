@@ -3,42 +3,36 @@
 
 .chi {
   .a-divider {
-    border-top: 0.0625rem solid set-color(grey, 20);
+    border-top: 0.0625rem solid rgba(set-color(black), 0.2);
     margin: 0.5rem 0;
-
-    &.-dark {
-       border-top: 0.0625rem solid set-color(grey, 30);
-    }
 
     &.-inverse {
       border-top: 0.0625rem solid rgba(set-color(white), 0.2);
     }
 
     &.-vertical {
-      border-right: 0.0625rem solid set-color(grey, 20);
+      border-right: 0.0625rem solid rgba(set-color(black), 0.2);
       border-top: 0;
-      height: 1.75rem;
+      height: 100%;
       margin: 0 0.5rem;
     }
 
-    &.-textDivider {
+    &.-hasLabel {
       align-items: center;
       border-top: 0;
       color: set-color(grey, 50);
       display: grid;
+      grid-gap: 1rem;
       grid-template-columns: 1fr auto 1fr;
-      grid-gap: 1.25rem;
       text-transform: uppercase;
 
       &::after {
-        background: set-color(grey, 20);
+        border-top: 0.0625rem solid rgba(set-color(black), 0.2);
         content: '';
-        height: 0.0625rem;
       }
       &::before {
-        background: set-color(grey, 20);
+        border-top: 0.0625rem solid rgba(set-color(black), 0.2);
         content: '';
-        height: 0.0625rem;
       }
     }
   }

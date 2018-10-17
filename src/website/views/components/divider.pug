@@ -17,8 +17,9 @@ h4 Base
     </div>
 
 h4 Vertical
+p.-text To render a vertical divider require the parent container to have a height specified.
 .example.-mb3
-  .-p3.-d--flex.-align-items--center
+  .-p3.-d--flex.-align-items--center(style="height:72px")
     | option
     .a-divider.-vertical
     | option
@@ -37,14 +38,6 @@ h4 Vertical
     </div>
     <div>
       option
-    </div>
-
-h4 Dark
-.example.-mb3
-  .-p3(style="background-color:#eeeeee")
-    .a-divider.-dark
-  :code(lang="html")
-    <div class="a-divider -dark">
     </div>
 
 h4 Inverse
@@ -55,37 +48,37 @@ h4 Inverse
     <div class="a-divider -inverse">
     </div>
 
-h4 Base with text in a form
+h4 Labeled Divider
 .example.-mb3
   .-p3
-    .a-divider.-textDivider or
+    .a-divider.-hasLabel or
   :code(lang="html")
-    <div class="a-divider -textDivider">
+    <div class="a-divider -hasLabel">
       or
     </div>
 
 h4 Divider Sizes
 p.-text
-  | Use the <code>-b</code> modifier class to control the divider's size. Adjust the size from <code>1</code> - <code>4</code>.
+  | Use the <code>-bt</code> modifier class to control the divider's size. Adjust the size from <code>1</code> - <code>4</code>.
 .example.-mb3
   .-p3
     p.-text.-m0
-      | -b1
-    .a-divider.-b1
+      | -bt1
+    .a-divider.-bt1
   .-p3
     p.-text.-m0
-      | -b2
-    .a-divider.-b2
+      | -bt2
+    .a-divider.-bt2
   .-p3
     p.-text.-m0
-      | -b3
-    .a-divider.-b3
+      | -bt3
+    .a-divider.-bt3
   .-p3
     p.-text.-m0
-      | -b4
-    .a-divider.-b4
+      | -bt4
+    .a-divider.-bt4
   :code(lang="html")
-    <div class="a-divider -b1"></div>
-    <div class="a-divider -b2"></div>
-    <div class="a-divider -b3"></div>
-    <div class="a-divider -b4"></div>
+    <div class="a-divider -bt1"></div>
+    <div class="a-divider -bt2"></div>
+    <div class="a-divider -bt3"></div>
+    <div class="a-divider -bt4"></div>
