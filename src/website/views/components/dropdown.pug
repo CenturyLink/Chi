@@ -98,22 +98,22 @@ p.-text
 
 h3 Divider
 p.-text
-  | Several menu items can be arranged together by using a divider. Use the <code>-divider</code> class.
+  | Several menu items can be arranged together by using a divider. Use the <code>a-divider</code> component.
 h4 Example
-.example.-mb3.a-grid
-  .-p3.a-col.-w7.-sm--w4.-md--w5.-lg--w3
+.example.-mb3
+  .-p3.-d--flex
     .m-dropdown__menu.-active
       a.m-dropdown__menu-item(href='#') Element 1
       a.m-dropdown__menu-item(href='#') Element 2
       a.m-dropdown__menu-item(href='#') Element 3
-      .-divider
+      .a-divider
       a.m-dropdown__menu-item(href='#') Element 4
   :code(lang="html")
     <div class="m-dropdown__menu">
       <a class="m-dropdown__menu-item" href="#">Element 1</a>
       <a class="m-dropdown__menu-item" href="#">Element 2</a>
       <a class="m-dropdown__menu-item" href="#">Element 3</a>
-      <div class="-divider"></div>
+      <div class="a-divider"></div>
       <a class="m-dropdown__menu-item" href="#">Element 4</a>
     </div>
 
@@ -124,8 +124,8 @@ p.-text
   | a class to force this state.
 
 h4 Example
-.example.-mb3.a-grid
-  .-p3.a-col.-w12.-sm--w7.-md--w8.-lg--w6.-xl--w4
+.example.-mb3
+  .-p3.-d--flex
     .m-dropdown__menu.-active
       a.m-dropdown__menu-item(href='#') Normal element
       a.m-dropdown__menu-item.-active(href='#') Active element
@@ -135,7 +135,7 @@ h4 Example
     <div class="m-dropdown__menu">
       <a class="m-dropdown__menu-item" href="#">Normal element</a>
       <a class="m-dropdown__menu-item -active" href="#">Active element</a>
-      <a class="m-dropdown__menu-item -disabled href="#">Disabled element</a>
+      <a class="m-dropdown__menu-item -disabled" href="#">Disabled element</a>
       <a class="m-dropdown__menu-item -hover" href="#">Hovered item</a>
     </div>
 
@@ -144,8 +144,8 @@ p.-text
   | Dropdown component has been developed to support Chi icons in the menu items.
 
 h4 Example
-.example.-mb3.a-grid
-  .-p3.a-col.-w7.-sm--w4.-md--w5.-lg--w3
+.example.-mb3
+  .-p3.-d--flex
     .m-dropdown__menu.-active
       a.m-dropdown__menu-item(href='#')
         .a-icon
@@ -157,7 +157,7 @@ h4 Example
           svg
             use(xlink:href='#icon-arrow-to-bottom')
         = "Save"
-      .-divider
+      .a-divider
       a.m-dropdown__menu-item(href='#')
         .a-icon
           svg
@@ -173,7 +173,7 @@ h4 Example
           svg
             use(xlink:href='#icon-users')
         = "Share"
-      .-divider
+      .a-divider
       a.m-dropdown__menu-item(href='#')
         .a-icon
           svg
@@ -195,7 +195,7 @@ h4 Example
         </svg>
         </div>Save
       </a>
-      <div class="-divider"></div>
+      <div class="a-divider"></div>
       <a class="m-dropdown__menu-item" href="#">
         <div class="a-icon">
           <svg>
@@ -217,7 +217,7 @@ h4 Example
           </svg>
         </div>Share
       </a>
-      <div class="-divider"></div>
+      <div class="a-divider"></div>
       <a class="m-dropdown__menu-item" href="#">
         <div class="a-icon">
           <svg>
@@ -235,8 +235,8 @@ h4 Search box
 p.-text
   | This search box is a special kind of text input prepared to be located on top of the menu-item. It has slightly
   | smaller padding at the sides.
-.example.-mb3.a-grid
-  .-p3.a-col.-w7.-sm--w4.-md--w5.-lg--w3
+.example.-mb3
+  .-p3.-d--flex
     .m-dropdown__menu.-active
       .a-inputWrapper.-iconLeft.m-dropdown__menu-item
         input(type="text", class="a-input", placeholder="Search")
@@ -274,43 +274,42 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
     a(href='#a-tabs-panel--icon-checkboxes') With icons
 .example.-mb3
   #a-tabs-panel--checkbox.a-tabs-panel.-active
-    .a-grid
-      .-p3.a-col.-w7.-sm--w4.-md--w5.-lg--w3
-        .m-dropdown__menu.-active
-          .a-formGroup.m-dropdown__menu-item
-            input(type="checkbox", class="a-input", id="checkbox1")
-            label(for="checkbox1")
-            label.-text(for="checkbox1") Element 1
-          .a-formGroup.m-dropdown__menu-item
-            input(type="checkbox", class="a-input", id="checkbox2", disabled)
-            label(for="checkbox2")
-            label.-text(for="checkbox2") Element 2
-          .a-formGroup.m-dropdown__menu-item
-            input(type="checkbox", class="a-input", id="checkbox3", checked)
-            label(for="checkbox3")
-            label.-text(for="checkbox3") Element 3
-          .a-formGroup.m-dropdown__menu-item
-            input(type="checkbox", class="a-input", id="checkbox4")
-            label(for="checkbox4")
-            label.-text(for="checkbox4") Element 4
+    .-p3.-d--flex
+      .m-dropdown__menu.-active
+        .m-dropdown__menu-item
+          input(type="checkbox", class="a-input", id="checkbox1")
+          label(for="checkbox1")
+          label.-text(for="checkbox1") Element 1
+        .m-dropdown__menu-item
+          input(type="checkbox", class="a-input", id="checkbox2", disabled)
+          label(for="checkbox2")
+          label.-text(for="checkbox2") Element 2
+        .m-dropdown__menu-item
+          input(type="checkbox", class="a-input", id="checkbox3", checked)
+          label(for="checkbox3")
+          label.-text(for="checkbox3") Element 3
+        .m-dropdown__menu-item
+          input(type="checkbox", class="a-input", id="checkbox4")
+          label(for="checkbox4")
+          label.-text(for="checkbox4") Element 4
     :code(lang="html")
       <div class="m-dropdown__menu">
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input" type="checkbox" id="checkbox1">
           <label for="checkbox1"></label>
           <label class="-text" for="checkbox1">Element 1</label>
         </div>
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input" type="checkbox" id="checkbox2" disabled>
           <label for="checkbox2"></label>
           <label class="-text" for="checkbox2">Element 2</label>
         </div>
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input" type="checkbox" id="checkbox3" checked>
           <label for="checkbox3"></label>
           <label class="-text" for="checkbox3">Element 3</label>
         </div>
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input" type="checkbox" id="checkbox4">
           <label for="checkbox4"></label>
           <label class="-text" for="checkbox4">Element 4</label>
@@ -318,44 +317,43 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
       </div>
 
   #a-tabs-panel--icon-checkboxes.a-tabs-panel
-    .a-grid
-      .-p3.a-col.-w10.-sm--w6.-md--w7.-lg--w5.-xl--w3
-        .m-dropdown__menu.-active
-          .a-formGroup.m-dropdown__menu-item
-            input(type="checkbox", class="a-input", id="checkbox1b")
-            label(for="checkbox1b")
-            label.-text(for="checkbox1b")
-              .a-icon
-                svg
-                  use(xlink:href='#icon-logo-centurylink')
-              | Element 1
-          .a-formGroup.m-dropdown__menu-item
-            input(type="checkbox", class="a-input", id="checkbox2b", disabled)
-            label(for="checkbox2b")
-            label.-text(for="checkbox2b")
-              .a-icon
-                svg
-                  use(xlink:href='#icon-logo-centurylink')
-              | Element 2
-          .a-formGroup.m-dropdown__menu-item
-            input(type="checkbox", class="a-input", id="checkbox3b", checked)
-            label(for="checkbox3b")
-            label.-text(for="checkbox3b")
-              .a-icon
-                svg
-                  use(xlink:href='#icon-logo-centurylink')
-              | Element 3
-          .a-formGroup.m-dropdown__menu-item
-            input(type="checkbox", class="a-input", id="checkbox4b")
-            label(for="checkbox4b")
-            label.-text(for="checkbox4b")
-              .a-icon
-                svg
-                  use(xlink:href='#icon-logo-centurylink')
-              | Element 4
+    .-p3.-d--flex
+      .m-dropdown__menu.-active
+        .m-dropdown__menu-item
+          input(type="checkbox", class="a-input", id="checkbox1b")
+          label(for="checkbox1b")
+          label.-text(for="checkbox1b")
+            .a-icon
+              svg
+                use(xlink:href='#icon-logo-centurylink')
+            | Element 1
+        .m-dropdown__menu-item
+          input(type="checkbox", class="a-input", id="checkbox2b", disabled)
+          label(for="checkbox2b")
+          label.-text(for="checkbox2b")
+            .a-icon
+              svg
+                use(xlink:href='#icon-logo-centurylink')
+            | Element 2
+        .m-dropdown__menu-item
+          input(type="checkbox", class="a-input", id="checkbox3b", checked)
+          label(for="checkbox3b")
+          label.-text(for="checkbox3b")
+            .a-icon
+              svg
+                use(xlink:href='#icon-logo-centurylink')
+            | Element 3
+        .m-dropdown__menu-item
+          input(type="checkbox", class="a-input", id="checkbox4b")
+          label(for="checkbox4b")
+          label.-text(for="checkbox4b")
+            .a-icon
+              svg
+                use(xlink:href='#icon-logo-centurylink')
+            | Element 4
     :code(lang="html")
       <div class="m-dropdown__menu">
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input" type="checkbox" id="checkbox1">
           <label for="checkbox1"></label>
           <label class="-text" for="checkbox1">
@@ -367,7 +365,7 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
             Element 1
           </label>
         </div>
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input" type="checkbox" id="checkbox2" disabled>
           <label for="checkbox2"></label>
           <label class="-text" for="checkbox2">
@@ -379,7 +377,7 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
             Element 2
           </label>
         </div>
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input" type="checkbox" id="checkbox3" checked>
           <label for="checkbox3"></label>
           <label class="-text" for="checkbox3">
@@ -391,7 +389,7 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
             Element 3
           </label>
         </div>
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input" type="checkbox" id="checkbox4">
           <label for="checkbox4"></label>
           <label class="-text" for="checkbox4">
@@ -428,13 +426,12 @@ ul#a-tabs--others.a-tabs.-ml3
   #a-tabs-panel--others-text.a-tabs-panel.-active
     .-p3
       p.-text It is possible to include text, without link, using a span tag.
-      .a-grid
-        .a-col.-w7.-sm--w4.-md--w5.-lg--w3
-          .m-dropdown__menu.-active
-            span.m-dropdown__menu-item Text 1
-            span.m-dropdown__menu-item Text 2
-            span.m-dropdown__menu-item Text 3
-            span.m-dropdown__menu-item Text 4
+      .-d--flex
+        .m-dropdown__menu.-active
+          span.m-dropdown__menu-item Text 1
+          span.m-dropdown__menu-item Text 2
+          span.m-dropdown__menu-item Text 3
+          span.m-dropdown__menu-item Text 4
     :code(lang="html")
       <div class="m-dropdown__menu">
         <span class="m-dropdown__menu-item">Text 1</span>
@@ -443,120 +440,116 @@ ul#a-tabs--others.a-tabs.-ml3
         <span class="m-dropdown__menu-item">Text 4</span>
       </div>
   #a-tabs-panel--others-radio.a-tabs-panel
-    .-p3.a-grid
-      .a-col.-w12.-sm--w7.-md--w8.-lg--w6.-xl--w4
-        .m-dropdown__menu.-active
-          .a-formGroup.m-dropdown__menu-item
-            input(class="a-input", type="radio", name="radios", id="radio1")
-            label(for="radio1")
-            label.-text(for="radio1") Radio Button 1
-          .a-formGroup.m-dropdown__menu-item
-            input(class="a-input", type="radio", name="radios", id="radio2", disabled)
-            label(for="radio2")
-            label.-text(for="radio2") Disabled Radio Button 2
-          .a-formGroup.m-dropdown__menu-item
-            input(class="a-input", type="radio", name="radios", id="radio3")
-            label(for="radio3")
-            label.-text(for="radio3") Radio Button 3
-          .a-formGroup.m-dropdown__menu-item
-            input(class="a-input", type="radio", name="radios", id="radio4")
-            label(for="radio4")
-            label.-text(for="radio4") Radio Button 4
+    .-p3.-d--flex
+      .m-dropdown__menu.-active
+        .m-dropdown__menu-item
+          input(class="a-input", type="radio", name="radios", id="radio1")
+          label(for="radio1")
+          label.-text(for="radio1") Radio Button 1
+        .m-dropdown__menu-item
+          input(class="a-input", type="radio", name="radios", id="radio2", disabled)
+          label(for="radio2")
+          label.-text(for="radio2") Disabled Radio Button 2
+        .m-dropdown__menu-item
+          input(class="a-input", type="radio", name="radios", id="radio3")
+          label(for="radio3")
+          label.-text(for="radio3") Radio Button 3
+        .m-dropdown__menu-item
+          input(class="a-input", type="radio", name="radios", id="radio4")
+          label(for="radio4")
+          label.-text(for="radio4") Radio Button 4
     :code(lang="html")
       <div class="m-dropdown__menu">
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input" type="radio" name="radios" id="radio1">
           <label for="radio1"></label>
           <label class="-text" for="radio1">Radio Button 1</label>
         </div>
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input" type="radio" name="radios" id="radio2" disabled="">
           <label for="radio2"></label>
           <label class="-text" for="radio2">Disabled Radio Button 2</label>
         </div>
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input" type="radio" name="radios" id="radio3">
           <label for="radio3"></label>
           <label class="-text" for="radio3">Radio Button 3</label>
         </div>
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input" type="radio" name="radios" id="radio4">
           <label for="radio4"></label>
           <label class="-text" for="radio4">Radio Button 4</label>
         </div>
       </div>
   #a-tabs-panel--others-input.a-tabs-panel
-    .a-grid
-      .-p3.a-col.-w7.-sm--w4.-md--w5.-lg--w3
-        .m-dropdown__menu.-active
-          a.m-dropdown__menu-item(href='#') Link 1
-          a.m-dropdown__menu-item(href='#') Link 2
-          .-divider
-          .m-dropdown__menu-item
-            input.a-input(type="text",placeholder="Placeholder")
+    .-p3.-d--flex
+      .m-dropdown__menu.-active
+        a.m-dropdown__menu-item(href='#') Link 1
+        a.m-dropdown__menu-item(href='#') Link 2
+        .a-divider
+        .m-dropdown__menu-item
+          input.a-input(type="text",placeholder="Placeholder")
     :code(lang="html")
       <div class="m-dropdown__menu">
         <a class="m-dropdown__menu-item" href="#">Link 1</a>
         <a class="m-dropdown__menu-item" href="#">Link 2</a>
-        <div class="-divider"></div>
+        <div class="a-divider"></div>
         <div class="m-dropdown__menu-item">
           <input class="a-input" type="text" placeholder="Placeholder">
         </div>
       </div>
   #a-tabs-panel--others-range.a-tabs-panel
-    .a-grid
-      .-p3.a-col.-w12.-sm--w7.-md--w8.-lg--w6.-xl--w4
-        .m-dropdown__menu.-active
-          .a-formGroup.m-dropdown__menu-item
-            label.-text.-mr2 200GB
-            input.a-input(type="range")
-            label.-text.-ml2 5TB
-          .-divider
-          span.m-dropdown__menu-item Select range
-          .m-dropdown__menu-item
-            input.a-input(type="range")
+    .-p3.-d--flex
+      .m-dropdown__menu.-active
+        .m-dropdown__menu-item
+          label.-text.-mr2 200GB
+          input.a-input(type="range")
+          label.-text.-ml2 5TB
+        .a-divider
+        span.m-dropdown__menu-item Select range
+        .m-dropdown__menu-item
+          input.a-input(type="range")
     :code(lang="html")
       <div class="m-dropdown__menu">
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <label class="-text -mr2">200GB</label>
           <input class="a-input" type="range">
           <label class="-text -ml2">5TB</label>
         </div>
-        <div class="-divider"></div>
+        <div class="a-divider"></div>
         <span class="m-dropdown__menu-item">Select range</span>
         <div class="m-dropdown__menu-item">
           <input class="a-input" type="range">
         </div>
       </div>
   #a-tabs-panel--others-toggle.a-tabs-panel
-    .a-grid
-      .-p3.a-col.-w12.-sm--w7.-md--w8.-lg--w6.-xl--w4
-        .m-dropdown__menu.-active
-          .a-formGroup.m-dropdown__menu-item
-            input(type="checkbox", class="a-input -toggle", id="toggle-mail")
-            label(class="-mr1", for="toggle-mail")
-            label(class="-text", for="toggle-mail") Email notifications
-          .a-formGroup.m-dropdown__menu-item
-            input(type="checkbox", class="a-input -toggle", id="toggle-tlf")
-            label(class="-mr1", for="toggle-tlf")
-            label(class="-text", for="toggle-tlf") Phone notifications
-          .a-formGroup.m-dropdown__menu-item
-            input(type="checkbox", class="a-input -toggle", id="toggle-app")
-            label(class="-mr1", for="toggle-app")
-            label(class="-text", for="toggle-app") App notifications
+    .-p3.-d--flex
+      .m-dropdown__menu.-active
+        .m-dropdown__menu-item
+          input(type="checkbox", class="a-input -toggle", id="toggle-mail")
+          label(class="-mr1", for="toggle-mail")
+          label(class="-text", for="toggle-mail") Email notifications
+        .m-dropdown__menu-item
+          input(type="checkbox", class="a-input -toggle", id="toggle-tlf")
+          label(class="-mr1", for="toggle-tlf")
+          label(class="-text", for="toggle-tlf") Phone notifications
+        .m-dropdown__menu-item
+          input(type="checkbox", class="a-input -toggle", id="toggle-app")
+          label(class="-mr1", for="toggle-app")
+          label(class="-text", for="toggle-app") App notifications
     :code(lang="html")
       <div class="m-dropdown__menu">
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input -toggle" type="checkbox" id="toggle-mail">
           <label class="-mr1" for="toggle-mail"></label>
           <label class="-text" for="toggle-mail">Email notifications</label>
         </div>
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input -toggle" type="checkbox" id="toggle-tlf">
           <label class="-mr1" for="toggle-tlf"></label>
           <label class="-text" for="toggle-tlf">Phone notifications</label>
         </div>
-        <div class="a-formGroup m-dropdown__menu-item">
+        <div class="m-dropdown__menu-item">
           <input class="a-input -toggle" type="checkbox" id="toggle-app">
           <label class="-mr1" for="toggle-app"></label>
           <label class="-text" for="toggle-app">App notifications</label>
@@ -658,40 +651,35 @@ p.-text
   | the dropdown in the most suitable position.
 
 .example.-mb3
-  .-p3
-    .a-grid
-      .a-col.-w12.-sm--w6.-md--w3
-        .m-dropdown
-          button.a-btn.m-dropdown__trigger(data-position="bottom") Drop-down
-          .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#') Element 1
-            a.m-dropdown__menu-item(href='#') Element 2
-            a.m-dropdown__menu-item(href='#') Element 3
-            a.m-dropdown__menu-item(href='#') Element 4
-      .a-col.-w12.-sm--w6.-md--w3
-        .m-dropdown
-          button.a-btn.m-dropdown__trigger(data-position="top") Drop-top
-          .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#') Element 1
-            a.m-dropdown__menu-item(href='#') Element 2
-            a.m-dropdown__menu-item(href='#') Element 3
-            a.m-dropdown__menu-item(href='#') Element 4
-      .a-col.-w12.-sm--w6.-md--w3
-        .m-dropdown
-          button.a-btn.m-dropdown__trigger(data-position="left") Drop-left
-          .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#') Element 1
-            a.m-dropdown__menu-item(href='#') Element 2
-            a.m-dropdown__menu-item(href='#') Element 3
-            a.m-dropdown__menu-item(href='#') Element 4
-      .a-col.-w12.-sm--w6.-md--w3
-        .m-dropdown
-          button.a-btn.m-dropdown__trigger(data-position="right") Drop-right
-          .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#') Element 1
-            a.m-dropdown__menu-item(href='#') Element 2
-            a.m-dropdown__menu-item(href='#') Element 3
-            a.m-dropdown__menu-item(href='#') Element 4
+  .-p3.-d--flex
+    .m-dropdown.-mr3
+      button.a-btn.m-dropdown__trigger(data-position="bottom") Drop-down
+      .m-dropdown__menu
+        a.m-dropdown__menu-item(href='#') Element 1
+        a.m-dropdown__menu-item(href='#') Element 2
+        a.m-dropdown__menu-item(href='#') Element 3
+        a.m-dropdown__menu-item(href='#') Element 4
+    .m-dropdown.-mr3
+      button.a-btn.m-dropdown__trigger(data-position="top") Drop-top
+      .m-dropdown__menu
+        a.m-dropdown__menu-item(href='#') Element 1
+        a.m-dropdown__menu-item(href='#') Element 2
+        a.m-dropdown__menu-item(href='#') Element 3
+        a.m-dropdown__menu-item(href='#') Element 4
+    .m-dropdown.-mr3
+      button.a-btn.m-dropdown__trigger(data-position="left") Drop-left
+      .m-dropdown__menu
+        a.m-dropdown__menu-item(href='#') Element 1
+        a.m-dropdown__menu-item(href='#') Element 2
+        a.m-dropdown__menu-item(href='#') Element 3
+        a.m-dropdown__menu-item(href='#') Element 4
+    .m-dropdown.-mr3
+      button.a-btn.m-dropdown__trigger(data-position="right") Drop-right
+      .m-dropdown__menu
+        a.m-dropdown__menu-item(href='#') Element 1
+        a.m-dropdown__menu-item(href='#') Element 2
+        a.m-dropdown__menu-item(href='#') Element 3
+        a.m-dropdown__menu-item(href='#') Element 4
   :code(lang="html")
     <div class="m-dropdown">
       <button id="dropdown-2" class="a-btn m-dropdown__trigger" data-position="bottom">Drop-down</button>

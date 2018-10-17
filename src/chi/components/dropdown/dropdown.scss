@@ -3,128 +3,193 @@
 
 .chi {
   .m-dropdown {
-    position: relative;
     display: inline-block;
+    position: relative;
 
     .m-dropdown__menu {
-      position:absolute;
       left: 0;
       min-width: 100%;
-    }
-  }
-
-  .m-dropdown__trigger {
-    background-image: url('./icon-chevron-thin-down.svg');
-    background-position: right 0.5rem center;
-    background-repeat: no-repeat;
-    background-size: 0.75rem 0.75rem;
-    padding-right: 2rem;
-
-    &.-active {
-      background-image: url('./icon-chevron-thin-up.svg');
-    }
-  }
-
-  .m-dropdown__menu {
-    background-color: set-color(white);
-    border: 0.0625rem solid set-color(grey, 30);
-    border-radius: $border-radius;
-    box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.1);
-    font-size: $text;
-    z-index: 1;
-    margin: 0;
-    padding: 0.5rem 0;
-    display: none;
-
-    &.-active {
-      display: block;
+      position:absolute;
+      z-index: 1;
     }
 
-    & > .-divider {
-      border-bottom: 0.0625rem solid set-color(grey, 20);
-      margin: 0.5rem 0;
-    }
+    &__trigger {
 
-    & > a.m-dropdown__menu-item {
-      color: inherit;
+      &:not([data-position^="left"]) {
+        &:after {
+          background-image: url(./icon-chevron-thin-down.svg);
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: .75rem .75rem;
+          content: '';
+          height: 1rem;
+          margin-left: 0.75rem;
+          transition: transform 0.2s ease-in-out;
+          width: 0.75rem;
+        }
+        &.-active:after {
+          transform: rotate(-180deg);
+        }
 
-      &:hover {
-        text-decoration: inherit;
+        &.-large:after {
+          height: 1.5rem;
+          margin-left: 1rem;
+        }
+        &.-small:after {
+          background-size: .5rem .5rem;
+          height: 1rem;
+          margin-left: 0.5rem;
+        }
+
+        &[data-position^="top"] {
+          &:after {
+            transform: rotate(-180deg);
+          }
+          &.-active:after {
+            transform: rotate(0deg);
+          }
+        }
+
+        &[data-position^="right"] {
+          &:after {
+            transform: rotate(270deg);
+          }
+          &.-active:after {
+            transform: rotate(90deg);
+          }
+        }
       }
 
-      &:hover:not(.-disabled):not(.-active),
-      &.-hover:not(.-disabled):not(.-active),
-      &:focus:not(.-disabled):not(.-active),
-      &.focus:not(.-disabled):not(.-active)
-      {
-        background-color: set-color(grey, 20);
-      }
-    }
-
-    & > .m-dropdown__menu-item {
-
-      height: 2rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      display: flex; // Ver clase -flex-ellipsis
-      align-items: center;
-      white-space: nowrap;
-
-      &.-h--auto {
-        height: auto;
-        white-space: normal;
-      }
-
-     .-flex--ellipsis {
-        display: block;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        flex: 1;
-      }
-
-      .a-icon {
-        margin-right: 1rem;
-        color: set-color(grey, 50);
-      }
-
-      &.-active {
-        padding-right: 3rem;
-        background: url("./icon-check-alt.svg") no-repeat right 1rem center;
-        background-size: 1rem 1rem;
-      }
-
-      &.-disabled {
-        color: set-color(grey, 50);
-        pointer-events: none;
-        .a-icon {
-          color: set-color(grey, 50);
+      &[data-position^="left"] {
+        &:before {
+          background-image: url(./icon-chevron-thin-down.svg);
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: .75rem .75rem;
+          content: '';
+          height: 1rem;
+          margin-right: 0.75rem;
+          transform: rotate(90deg);
+          transition: transform 0.2s ease-in-out;
+          width: 0.75rem;
+        }
+        &.-active:before {
+          transform: rotate(270deg);
+        }
+        &.-large:before {
+          height: 1.5rem;
+          margin-right: 1rem;
+        }
+        &.-small:before {
+          background-size: .5rem .5rem;
+          height: 1rem;
+          margin-right: 0.5rem;
         }
       }
     }
 
-    & > .a-inputWrapper {
-      padding-left: 0rem;
-      padding-right: 0rem;
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
+    &__menu {
+      background-color: set-color(white);
+      border: 0.0625rem solid set-color(grey, 30);
+      border-radius: $border-radius;
+      box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.1);
+      display: none;
+      font-size: $text;
+      margin: 0;
+      padding: 0.5rem 0;
 
-      &:not(:first-child) {
-        margin-top: 0.5rem;
+      &.-active {
+        display: block;
       }
 
-      &:not(:last-child) {
-        margin-bottom: 0.5rem;
+      & > a.m-dropdown__menu-item {
+        color: inherit;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        &:hover:not(.-disabled):not(.-active),
+        &.-hover:not(.-disabled):not(.-active),
+        &:focus:not(.-disabled):not(.-active),
+        &.focus:not(.-disabled):not(.-active)
+        {
+          background-color: set-color(grey, 20);
+        }
+      }
+
+      & > .m-dropdown__menu-item {
+
+        align-items: center;
+        display: flex;
+        height: 2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        white-space: nowrap;
+
+        &.-h--auto {
+          height: auto;
+          white-space: normal;
+        }
+
+        .-flex--ellipsis {
+          display: block;
+          flex: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .a-icon {
+          margin-right: 1rem;
+        }
+
+        &:not(.-active) .a-icon {
+          color: set-color(grey, 50);
+        }
+
+        &.-active {
+          background: url("./icon-check-alt.svg") no-repeat right 1rem center;
+          background-size: 1rem 1rem;
+          color: $brand-color;
+          padding-right: 3rem;
+        }
+
+        &.-disabled {
+          color: set-color(grey, 50);
+          pointer-events: none;
+          .a-icon {
+            color: set-color(grey, 50);
+          }
+        }
+      }
+
+      & > .a-inputWrapper {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        padding-left: 0rem;
+        padding-right: 0rem;
+
+        &:not(:first-child) {
+          margin-top: 0.5rem;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      label.-text {
+        align-items: center;
+        display: flex;
+      }
+
+      input[type='checkbox'].a-input + label, input[type='radio'].a-input + label {
+        margin-right: 1rem;
       }
     }
 
-    label.-text {
-      display: flex;
-      align-items: center;
-    }
-
-    input[type='checkbox'].a-input + label, input[type='radio'].a-input + label {
-      margin-right: 1rem;
-    }
   }
+
+
 }
