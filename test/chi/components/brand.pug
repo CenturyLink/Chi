@@ -8,7 +8,7 @@ h4 Sizes
 .example.-mb3
   .-p3
     each size in sizes
-      div(class=`a-col -w12 -textCenter -p3`)
+      div(class=`a-col -w12 -p3`)
         a(class=`a-brand -${size}`, href='#', aria-label='CenturyLink')
           img(src='../../assets/images/centurylink-logo.svg', alt='CenturyLink')
-        p.-textBold= size
+        p.-textBold= '-' + size
