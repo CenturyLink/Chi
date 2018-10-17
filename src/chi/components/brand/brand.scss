@@ -5,7 +5,8 @@ $brand-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg: 4
 
 .chi {
   .a-brand {
-    & > img {
+    & > img,
+    & > svg {
       display: block;
       height: 2rem;
       width: auto;
@@ -13,7 +14,8 @@ $brand-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg: 4
 
     @each $type in map-keys($brand-sizes) {
       &.-#{$type} {
-        & > img {
+        & > img,
+        & > svg {
           height: map-get($brand-sizes, $type);
         }
       }
