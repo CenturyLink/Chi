@@ -1,5 +1,5 @@
-@import 'mixins';
 @import 'variables';
+@import 'mixins';
 
 .chi {
   .m-dropdown {
@@ -17,11 +17,12 @@
 
       &:not([data-position^="left"]) {
         &:after {
-          background-image: url(./icon-chevron-thin-down.svg);
+          background-image: url(../html-select/icon-chevron-thin-down.svg);
           background-position: center center;
           background-repeat: no-repeat;
           background-size: .75rem .75rem;
           content: '';
+          display: block;
           height: 1rem;
           margin-left: 0.75rem;
           transition: transform 0.2s ease-in-out;
@@ -62,7 +63,7 @@
 
       &[data-position^="left"] {
         &:before {
-          background-image: url(./icon-chevron-thin-down.svg);
+          background-image: url(../html-select/icon-chevron-thin-down.svg);
           background-position: center center;
           background-repeat: no-repeat;
           background-size: .75rem .75rem;
