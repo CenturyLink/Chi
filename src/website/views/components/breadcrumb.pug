@@ -2,12 +2,10 @@
 title: Breadcrumb
 ---
 
-p.-text Breadcrumb indicate the current page’s location within a navigational hierarchy.
+p.-text Breadcrumbs are used to help users identify where they are in a sites page hierarchy.
 
 h3 Examples
-p.-text
-  | To render a breadcrumb, use the class <code>a-breadcrumb</code>.
-  | A contextual class (e.g. <code>-alt</code>) is required to provide alternative separator styling.
+p.-text To render a breadcrumb, use the class <code>a-breadcrumb</code>.
 
 h4 Base
 .example.-mb3
@@ -35,7 +33,8 @@ h4 Base
       </ol>
     </nav>
 
-h4 Alternative Separator
+h4 Alternate Separator
+p.-text Apply the <code>-alt</code> class to render breadcrumbs with an alternate separator.
 .example.-mb3
   .-p3
     nav.a-breadcrumb.-alt.-text(aria-label="Breadcrumb")
@@ -61,7 +60,10 @@ h4 Alternative Separator
       </ol>
     </nav>
 
-h3 Size
+h3 Additional Sizes
+p.-text
+  | Use <a href="../../utilities/text">text utilities</a> such as <code>-textSmall</code> or
+  |  <code>-textLarge</code> to change the size of breadcrumb text.
 h4 Large
 .example.-mb3
   .-p3
