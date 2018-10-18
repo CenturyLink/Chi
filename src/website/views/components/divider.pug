@@ -2,64 +2,53 @@
 title: Divider
 ---
 
-p.-text Divider is a line separator with some orientation options.
+p.-text Dividers are lines that render a break or separation between content.
 
 h3 Examples
-p.-text
-| To render a divider, use the class <code>a-divider</code>.
+p.-text To render a divider, apply the class <code>a-divider</code> to an <code>hr</code> or <code>div</code> tag.
 
 h4 Base
 .example.-mb3
   .-p3
-    .a-divider
+    hr.a-divider
   :code(lang="html")
-    <div class="a-divider">
-    </div>
+    <div class="a-divider"></div>
 
 h4 Vertical
-p.-text To render a vertical divider require the parent container to have a height specified.
+p.-text To render a vertical divider, apply <code>-vertical</code> and ensure the parent container has a height specified.
 .example.-mb3
-  .-p3.-d--flex.-align-items--center(style="height:72px")
-    | option
+  .-p3.-text.-d--flex.-align-items--center(style="height:72px")
+    | Option
     .a-divider.-vertical
-    | option
+    | Option
     .a-divider.-vertical
-    | option
+    | Option
   :code(lang="html")
-    <div>
-      option
-    </div>
-    <div class="a-divider -vertical">
-    </div>
-    <div>
-      option
-    </div>
-    <div class="a-divider -vertical">
-    </div>
-    <div>
-      option
-    </div>
+    <div class="a-divider -vertical"></div>
 
 h4 Inverse
+p.-text Use the <code>-inverse</code> class to render dividers on dark backgrounds.
 .example.-mb3
-  .-p3(style="background-color:#000000")
+  .-p3(style="background-color:#000;border-radius:.15em .15em 0 0;")
     .a-divider.-inverse
   :code(lang="html")
-    <div class="a-divider -inverse">
-    </div>
+    <div class="a-divider -inverse"></div>
 
-h4 Labeled Divider
+h4 Label
+p.-text
+  | Add text to a divider and apply the class <code>-hasLabel</code> to include a label.
+  | This method is especially useful for login and sign up forms.
+  | Label text size can be changed by applying text utility classes such as <code>-text</code>, <code>-textSmall</code>, or <code>-textLarge</code>.
 .example.-mb3
   .-p3
-    .a-divider.-hasLabel or
+    .a-divider.-text.-hasLabel or
   :code(lang="html")
-    <div class="a-divider -hasLabel">
-      or
-    </div>
+    <div class="a-divider -hasLabel">or</div>
 
-h4 Divider Sizes
+h3 Additional Sizes
 p.-text
-  | Use the <code>-bt</code> modifier class to control the divider's size. Adjust the size from <code>1</code> - <code>4</code>.
+  | Use border top <a href="../../utilities/border">utilities</a> such as
+  | <code>-bt1</code>, <code>-bt2</code>, <code>-bt3</code>, or <code>-bt4</code> to customize a dividers size.
 .example.-mb3
   .-p3
     p.-text.-m0
