@@ -5,15 +5,15 @@ title: Avatar
 - var sizes = ['xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl'];
 - var columnWidths = {'xs':[ '4', '3', '1'], 'sm':[ '4', '3', '1'], 'sm2':[ '4', '3', '1'], 'sm3':[ '4', '3', '1'], 'md':[ '4', '2', '1'], 'lg':[ '4', '3', '2'], 'xl':[ '6', '3', '2'], 'xxl':[ '6', '4', '3']};
 - var colors = ["grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "emerald", "green", "yellow", "orange"];
-- var iconExamples = ['user', 'users', 'star', 'visible', 'rocket'];
+- var iconExamples = ['user', 'users', 'atom'];
 
-p.-text An avatar is a graphical representation of the user. It can be build from a photo, an icon or one or two letters.
+p.-text Avatars are used to represent users, groups, and entities.
 
-h3 Using avatars
+h3 Examples
 
 p.-text
-  | To render an avatar, use the class <code>a-avatar</code> in a div element and put an image inside. The image
-  | must be square in order not to be stretched.
+  | To render an avatar, apply the class <code>a-avatar</code> to a div element and place an image inside.
+h4 Base
 .example.-mb3
   .-p3
     .a-avatar
@@ -23,69 +23,67 @@ p.-text
       <img src="path/to/image.jpg">
     </div>
 
-h3 Using icons as avatars
+h4 Icon Avatars
 p.-text
-  | You can use an avatarized version of the <a href="../icon/">Chi icons library</a>. Just include the
-  | <code>a-avatar</code> to the icon container.
+  | Icon avatars can be used when an image is not available.
+  | To use, wrap any <a href="../icon/">Chi icon</a> with <code>a-avatar</code>.
 .example.-mb3
   .-p3
     .a-grid
       each icon in iconExamples
-        .a-col.-w1
+        .a-col.-w2.-sm--w1
           .a-icon.a-avatar
             svg
               use(xlink:href=`#icon-${icon}`)
   ul#a-tabs--icons.a-tabs.-ml3
     li.-active
-      a(href="#iconsSVG") SVG
-    li
       a(href="#iconsWebFont") Web Font
-  #iconsSVG.a-tabs-panel.-active
+    li
+      a(href="#iconsSVG") SVG
+  #iconsWebFont.a-tabs-panel.-active
     :code(lang="html")
-      <div class="a-icon a-avatar">
+      <div class="a-avatar">
+        <i class="a-icon icon-user"></i>
+      </div>
+  #iconsSVG.a-tabs-panel
+    :code(lang="html")
+      <div class="a-avatar a-icon">
         <svg>
           <use xlink:href="#icon-user"></use>
         </svg>
       </div>
 
-  #iconsWebFont.a-tabs-panel
-    :code(lang="html")
-      <div class="a-avatar">
-        <i class="a-icon icon-user"></i>
-      </div>
-
-h3 Using letters as avatars
-
+h4 Initial avatars
 p.-text
-  | Where there is not an available photograph for the user, use one or two letters to create one. Use the
-  | <code>-textUppercase</code> text utility class to render badges in all uppercase. <code>-textLowercase</code> and
-  | <code>-textCapitalized</code> are also supported.
+  | Initial avatars can also be used when an image is not available.
+  | They are more versatile than icon avatars and support up to two letters.
+  | Text utility classes such as <code>-textUppercase</code>, <code>-textLowercase</code>,
+  | and <code>-textCapitalized</code> can be applied to force specific casing.
 .example.-mb3
   .-p3.a-grid
-    .a-col.-w1
+    .a-col.-w2.-sm--w1
       .a-avatar AA
-    .a-col.-w1
+    .a-col.-w2.-sm--w1
       .a-avatar M
   :code(lang="html")
     <div class="a-avatar">AA</div>
 
-h3 Variations
+h3 Customizations
 
-h4 Colours
-
+h4 Color
 p.-text
-  | The icon and the letter version of the avatar component support the <a href="../../foundations/color/">colors</a>
-  | defined in the foundation section. They can be configured using the classes <code>-grey</code>, <code>-red</code>,
+  | Both icon and initial avatars support <a href="../../foundations/color/">Chi colors</a>.
+  | To color an icon, apply any of the following color classes: <code>-grey</code>, <code>-red</code>,
   | <code>-pink</code>, <code>-purple</code>, <code>-indigo</code>, <code>-navy</code>, <code>-blue</code>,
   | <code>-teal</code>, <code>-emerald</code>, <code>-green</code>, <code>-yellow</code>, <code>-orange</code>
 
 ul#a-tabs--colors.a-tabs
   li.-active
-   a(href="#coloredLetters") Letters
+   a(href="#coloredInitials") Initial
   li
-    a(href="#coloredIcons") Icons
+    a(href="#coloredIcons") Icon
 .example.-mb3
-  #coloredLetters.a-tabs-panel.-active
+  #coloredInitials.a-tabs-panel.-active
     .-p3
       .a-grid.-align-items--end
         each color in colors
@@ -117,82 +115,82 @@ ul#a-tabs--colors.a-tabs
             p.-text= color
     :code(lang="html")
       <div class="a-avatar a-icon -grey">
-          <svg>
-              <use xlink:href="#icon-user"></use>
-          </svg>
+        <svg>
+            <use xlink:href="#icon-user"></use>
+        </svg>
       </div>
       <div class="a-avatar a-icon -red">
-          <svg>
-              <use xlink:href="#icon-user"></use>
-          </svg>
+        <svg>
+            <use xlink:href="#icon-user"></use>
+        </svg>
       </div>
       <div class="a-avatar a-icon -pink">
-          <svg>
-              <use xlink:href="#icon-user"></use>
-          </svg>
+        <svg>
+            <use xlink:href="#icon-user"></use>
+        </svg>
       </div>
       <div class="a-avatar a-icon -purple">
-          <svg>
-              <use xlink:href="#icon-user"></use>
-          </svg>
+        <svg>
+            <use xlink:href="#icon-user"></use>
+        </svg>
       </div>
       <div class="a-avatar a-icon -indigo">
-          <svg>
-              <use xlink:href="#icon-user"></use>
-          </svg>
+        <svg>
+            <use xlink:href="#icon-user"></use>
+        </svg>
       </div>
       <div class="a-avatar a-icon -navy">
-          <svg>
-              <use xlink:href="#icon-user"></use>
-          </svg>
+        <svg>
+            <use xlink:href="#icon-user"></use>
+        </svg>
       </div>
       <div class="a-avatar a-icon -blue">
-          <svg>
-              <use xlink:href="#icon-user"></use>
-          </svg>
+        <svg>
+            <use xlink:href="#icon-user"></use>
+        </svg>
       </div>
       <div class="a-avatar a-icon -teal">
-          <svg>
-              <use xlink:href="#icon-user"></use>
-          </svg>
+        <svg>
+            <use xlink:href="#icon-user"></use>
+        </svg>
       </div>
       <div class="a-avatar a-icon -emerald">
-          <svg>
-              <use xlink:href="#icon-user"></use>
-          </svg>
+        <svg>
+            <use xlink:href="#icon-user"></use>
+        </svg>
       </div>
       <div class="a-avatar a-icon -green">
-          <svg>
-              <use xlink:href="#icon-user"></use>
-          </svg>
+        <svg>
+            <use xlink:href="#icon-user"></use>
+        </svg>
       </div>
       <div class="a-avatar a-icon -yellow">
-          <svg>
-              <use xlink:href="#icon-user"></use>
-          </svg>
+        <svg>
+            <use xlink:href="#icon-user"></use>
+        </svg>
       </div>
       <div class="a-avatar a-icon -orange">
-          <svg>
-              <use xlink:href="#icon-user"></use>
-          </svg>
+        <svg>
+            <use xlink:href="#icon-user"></use>
+        </svg>
       </div>
 
 h4 Size
 
 p.-text
-  | All three versions support diferent sizes including one of the classes: <code>-xs</code>, <code>-sm</code>,
+  | All three avatar styles support a full spectrum of sizes: <code>-xs</code>, <code>-sm</code>,
   | <code>-sm2</code>, <code>-sm3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
   | <code>-md</code> is the default size.
 ul#a-tabs--sizes.a-tabs
   li.-active
-    a(href="#sizedLetters") Letters
+    a(href="#sizedInitials") Initial
   li
-    a(href="#sizedIcons") Icons
+    a(href="#sizedIcons") Icon
   li
-    a(href="#sizedImages") Images
+    a(href="#sizedImages") Image
 
 .example.-mb3
-  #sizedLetters.a-tabs-panel.-active
+  #sizedInitials.a-tabs-panel.-active
     .-p3
       .a-grid.-align-items--end
         each size in sizes
@@ -294,11 +292,11 @@ ul#a-tabs--sizes.a-tabs
         <img src="path/to/image.jpg">
       </div>
 
-h3 Labeled avatars
+h3 Avatar Groups
 
 p.-text
-  | Avatars can be accompanied by a label. Include the avatar and the label in a div with a <code>m-avatarGroup</code>
-  | class. Labeled avatars still support type, size and color variations.
+  | Use avatar groups to group multiple avatars or add descriptive text such as a users name.
+  | Render an avatar group by wrapping an avatar in the class <code>m-avatarGroup</code>.
 .example.-mb3
   .-p3.a-grid
     each color in colors
