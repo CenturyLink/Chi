@@ -1,4 +1,84 @@
 ---
 title: Divider
-disabled: true
 ---
+
+p.-text Divider is a line separator with some orientation options.
+
+h3 Examples
+p.-text
+| To render a divider, use the class <code>a-divider</code>.
+
+h4 Base
+.example.-mb3
+  .-p3
+    .a-divider
+  :code(lang="html")
+    <div class="a-divider">
+    </div>
+
+h4 Vertical
+p.-text To render a vertical divider require the parent container to have a height specified.
+.example.-mb3
+  .-p3.-d--flex.-align-items--center(style="height:72px")
+    | option
+    .a-divider.-vertical
+    | option
+    .a-divider.-vertical
+    | option
+  :code(lang="html")
+    <div>
+      option
+    </div>
+    <div class="a-divider -vertical">
+    </div>
+    <div>
+      option
+    </div>
+    <div class="a-divider -vertical">
+    </div>
+    <div>
+      option
+    </div>
+
+h4 Inverse
+.example.-mb3
+  .-p3(style="background-color:#000000")
+    .a-divider.-inverse
+  :code(lang="html")
+    <div class="a-divider -inverse">
+    </div>
+
+h4 Labeled Divider
+.example.-mb3
+  .-p3
+    .a-divider.-hasLabel or
+  :code(lang="html")
+    <div class="a-divider -hasLabel">
+      or
+    </div>
+
+h4 Divider Sizes
+p.-text
+  | Use the <code>-bt</code> modifier class to control the divider's size. Adjust the size from <code>1</code> - <code>4</code>.
+.example.-mb3
+  .-p3
+    p.-text.-m0
+      | -bt1
+    .a-divider.-bt1
+  .-p3
+    p.-text.-m0
+      | -bt2
+    .a-divider.-bt2
+  .-p3
+    p.-text.-m0
+      | -bt3
+    .a-divider.-bt3
+  .-p3
+    p.-text.-m0
+      | -bt4
+    .a-divider.-bt4
+  :code(lang="html")
+    <div class="a-divider -bt1"></div>
+    <div class="a-divider -bt2"></div>
+    <div class="a-divider -bt3"></div>
+    <div class="a-divider -bt4"></div>
