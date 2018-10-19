@@ -3,13 +3,13 @@
 .chi {
 
   /* Margins */
-  @for $index from 0 through 6 {
+  @for $index from 0 through 10 {
     .-m#{$index} {
       margin: ($index / 2) + rem;
     }
   }
 
-  @for $index from 0 through 6 {
+  @for $index from 0 through 10 {
 
     /* Top Margin */
     .-mt#{$index} {
@@ -47,7 +47,7 @@
 
   /* Padding */
 
-  @for $index from 0 through 6 {
+  @for $index from 0 through 10 {
     .-p#{$index} {
       padding-bottom: ($index / 2) + rem;
       padding-left: ($index / 2) + rem;
@@ -56,7 +56,7 @@
     }
   }
 
-  @for $index from 0 through 6 {
+  @for $index from 0 through 10 {
 
     /* Top Padding */
     .-pt#{$index} {
