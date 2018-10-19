@@ -156,3 +156,34 @@ p.-text
         </div>
       </div>
     </div>
+
+h4 Simple
+p.-text Remove <code>a-modal__header</code> and <code>a-modal__footer</code> for a simple and customizable modal.
+.example.-mb3
+  .a-modal__backdrop.-p6(style="position:relative;border-top-left-radius:3px;border-top-right-radius:3px;")
+    .a-modal(style="margin-top:0;")
+      button(class='a-btn -icon -close')
+        .a-btn__content
+          i.a-icon.icon-x
+      .a-modal__content.-textCenter.-p6
+        h3.-m0.-textBolder Modal Title
+        p.-text.-py1.-px3
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis
+          | mollis nulla, eget ornare tellus. Lorem ipsum dolor sit amet,
+          | consectetur adipiscing elit. Donec laoreet rutrum eros laoreet.
+        button.a-btn.-brand.-large.-mt1 Action
+  :code(lang="html")
+    <div class="a-modal__backdrop">
+      <div class="a-modal">
+        <button class="a-btn -icon -close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+        <div class="a-modal__content -textCenter -p6">
+          <h3 class="-textBolder -m0">Modal Title</h3>
+          <p class="-text -py1 -px3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis mollis nulla, eget ornare tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet rutrum eros laoreet.</p>
+          <button class="a-btn -brand -large -mt1">Action</button>
+        </div>
+      </div>
+    </div>
