@@ -11,7 +11,7 @@
     .-flex--#{$type} { flex-direction: #{$type}; }
   }
 
-  @each $size in xs sm md lg xl {
+  @each $size in sm md lg xl {
     @include respond-to($size) {
       @each $type in $flex-direction {
         .-flex-#{$size}--#{$type} { flex-direction: #{$type}; }
@@ -28,7 +28,7 @@
     .-justify-content--#{$type} { justify-content: #{$value}; }
   }
 
-  @each $size in xs sm md lg xl {
+  @each $size in sm md lg xl {
     @include respond-to($size) {
       @each $type, $value in $justify-content {
         .-justify-content-#{$size}--#{$type} { justify-content: #{$value}; }
@@ -45,7 +45,7 @@
     .-align-items--#{$type} { align-items: #{$value}; }
   }
 
-  @each $size in xs sm md lg xl {
+  @each $size in sm md lg xl {
     @include respond-to($size) {
       @each $type, $value in $align {
         .-align-items-#{$size}--#{$type} { align-items: #{$value}; }
@@ -57,7 +57,7 @@
     .-align-self--#{$type} { align-self: #{$value}; }
   }
 
-  @each $size in xs sm md lg xl {
+  @each $size in sm md lg xl {
     @include respond-to($size) {
       @each $type, $value in $align {
         .-align-self-#{$size}--#{$type} { align-self: #{$value}; }
@@ -74,7 +74,7 @@
     .-align-content--#{$type} { align-content: #{$value}; }
   }
 
-  @each $size in xs sm md lg xl {
+  @each $size in sm md lg xl {
     @include respond-to($size) {
       @each $type, $value in $align-content {
         .-align-content-#{$size}--#{$type} { align-content: #{$value}; }
@@ -86,7 +86,7 @@
 
   .-flex--fill { flex: 1 1 auto; }
 
-  @each $size in xs sm md lg xl {
+  @each $size in sm md lg xl {
     @include respond-to($size) {
       .-flex-#{$size}--fill { flex: 1 1 auto; }
     }
@@ -97,7 +97,7 @@
   .-flex--grow0 { flex-grow: 0; }
   .-flex--grow1 { flex-grow: 1; }
 
-  @each $size in xs sm md lg xl {
+  @each $size in sm md lg xl {
     @include respond-to($size) {
       .-flex-#{$size}--grow0 { flex-grow: 0; }
       .-flex-#{$size}--grow1 { flex-grow: 1; }
@@ -109,7 +109,7 @@
   .-flex--shrink0 { flex-shrink: 0; }
   .-flex--shrink1 { flex-shrink: 1; }
 
-  @each $size in xs sm md lg xl {
+  @each $size in sm md lg xl {
     @include respond-to($size) {
       .-flex-#{$size}--shrink0 { flex-shrink: 0; }
       .-flex-#{$size}--shrink1 { flex-shrink: 1; }
@@ -124,7 +124,7 @@
     .-flex--#{$type} { flex-wrap: #{$type}; }
   }
 
-  @each $size in xs sm md lg xl {
+  @each $size in sm md lg xl {
     @include respond-to($size) {
       @each $type in $flex-wrap {
         .-flex-#{$size}--#{$type} { flex-wrap: #{$type}; }
