@@ -7,7 +7,7 @@ p.-text Use shorthand display utility classes to quickly change an elements disp
 h3 Notation
 p.-text
   | Display utility classes can be defined using the format <code>-d-{breakpoint}--{value}</code>.
-  | Breakpoints supported are <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
+  | Breakpoints supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
 
 h4 Target all breakpoints
 p.-text Display utility classes with no breakpoint defined apply to all screen sizes.
@@ -40,7 +40,7 @@ section.a-table.-bordered.-mt3.-mb3
           th
             div Value
       tbody
-        each type in ['xs', 'sm', 'md', 'lg', 'xl']
+        each type in ['sm', 'md', 'lg', 'xl']
           tr
             td.-text(width='40%')
               code= '-d-' + type + '--none'
@@ -50,14 +50,14 @@ h3 Examples
 .example.-mb3
   .-p3
     .-text.-b1.-p3.-m1.-d--none.-d-xl--inline-flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--none -d-xl--inline-flex
-    .-text.-b1.-p3.-m1.-d--flex.-d-xs--none(style="background:#E4F2CE;border-color:#C6DBA7;") -d-xs--none
+    .-text.-b1.-p3.-m1.-d--flex.-d-sm--none(style="background:#E4F2CE;border-color:#C6DBA7;") -d-sm--none
     .-text.-b1.-p3.-m1.-d--inline-flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--inline-flex
     .-text.-b1.-p3.-m1.-d--flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--flex
   :code(lang="html")
     <!-- hidden on all breakpoints except xl -->
     <div class="-d--none -d-xl--inline-flex"></div>
-    <!-- hidden on xs breakpoints -->
-    <div class="-d-xs--none"></div>
+    <!-- hidden on sm breakpoints -->
+    <div class="-d-sm--none"></div>
     <!-- inline-flex on all breakpoints -->
     <div class="-d--inline-flex"></div>
     <!-- flex on all breakpoints -->
