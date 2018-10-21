@@ -10,44 +10,48 @@
     .docs-body {
       display: flex;
       flex: 1 0 auto;
-      flex-direction: row;
-      padding: 4rem 0 0 16rem;
+      flex-direction: column;
+      padding: 0.5rem 0 0 0;
       position: relative;
-      @media only screen and (max-width: $md-breakpoint) {
-        flex-direction: column;
-        padding-left: 0;
-        padding-top: 0.5rem;
+      @include respond-to(lg) {
+        flex-direction: row;
+        padding-left: 16rem;
+        padding-top: 4rem;
       }
 
       &__aside {
-        position: fixed;
-        left: 0;
-        top: 64px;
         background-color: set-color(white);
-        border-right: 0.0625rem solid rgba(set-color(black), 0.12);
-        overflow: auto;
+        border-bottom: 0.0625rem solid rgba(set-color(black), 0.12);
+        border-right: 0;
         height: 100%;
-        width: 16rem;
+        left: 0;
+        overflow: auto;
+        padding-bottom: 1rem;
         padding-top: 0.5rem;
-        padding-bottom: 4.5rem;
-        @media only screen and (max-width: $md-breakpoint) {
-          position: static;
-          width: 100%;
-          border-right: 0;
-          padding-bottom: 1rem;
-          border-bottom: 0.0625rem solid rgba(set-color(black), 0.12);
+        position: static;
+        top: 64px;
+        width: 100%;
+        @include respond-to(lg) {
+          border-right: 0.0625rem solid rgba(set-color(black), 0.12);
+          border-bottom: 0;
+          padding-bottom: 4.5rem;
+          position: fixed;
+          width: 16rem;
         }
 
         a[disabled] {
-          color: set-color(white) !important;
+          color: set-color(grey, 50) !important;
           pointer-events: none;
         }
+
         .a-tabs.-vertical {
-          @media only screen and (max-width: $md-breakpoint) {
-            >li {
-              >a {
-                padding-top: 0.5rem;
-                padding-bottom: 0.5rem;
+          >li {
+            >a {
+              padding-bottom: 0.5rem;
+              padding-top: 0.5rem;
+              @include respond-to(lg) {
+                padding-bottom: 0.75rem;
+                padding-top: 0.75rem;
               }
             }
           }
@@ -91,30 +95,26 @@
       &__content {
         background-color: set-color(white);
         flex-grow: 1;
-        padding-top: 1rem;
+        padding-top: 0.5rem;
         width: 100%;
-        @media only screen and (max-width: $md-breakpoint) {
-          padding-top: 0.5rem;
+        @include respond-to(lg) {
+          padding-top: 1rem;
         }
         .a-table {
           &:before, th>div, &.-bordered td {
             border-color: set-color(grey, 30);
           }
         }
-
-        @media only screen and (min-width: $md-breakpoint) {
-          >.a-grid__container {
+        >.a-grid__container {
+          @include respond-to(lg) {
             margin: 0 40px;
           }
-        }
-
-        @media only screen and (min-width: 1260px) {
-          >.a-grid__container {
+          @include respond-to(xl) {
             margin: 0 auto;
             max-width: 960px;
+            padding: 0 2rem;
           }
         }
-
         .example {
           border: 0.0625rem solid rgba(set-color(black), 0.12);
           border-radius: 0.15em;
