@@ -1,0 +1,23 @@
+@import 'mixins';
+@import 'variables';
+
+.chi {
+
+  /* Position */
+
+  @each $type in static relative fixed absolute sticky {
+    .-position--#{$type} {
+      position: #{$type};
+    }
+  }
+
+  @each $size in sm md lg xl {
+    @include respond-to($size) {
+      @each $type in static relative fixed absolute sticky {
+        .-position-#{$size}--#{$type} {
+          position: #{$type};
+        }
+      }
+    }
+  }
+}
