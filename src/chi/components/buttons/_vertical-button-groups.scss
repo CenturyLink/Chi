@@ -236,6 +236,41 @@
           }
         }
       }
+
+      &.-pill {
+        .a-btn {
+          &:first-child {
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+          }
+          &:last-child {
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+          }
+
+          &.-small {
+            &:first-child {
+              border-top-left-radius: 0.75rem;
+              border-top-right-radius: 0.75rem;
+            }
+            &:last-child {
+              border-bottom-left-radius: 0.75rem;
+              border-bottom-right-radius: 0.75rem;
+            }
+          }
+
+          &.-large {
+            &:first-child {
+              border-top-left-radius: 1.25rem;
+              border-top-right-radius: 1.25rem;
+            }
+            &:last-child {
+              border-bottom-left-radius: 1.25rem;
+              border-bottom-right-radius: 1.25rem;
+            }
+          }
+        }
+      }
     }
   }
 }

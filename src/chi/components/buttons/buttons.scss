@@ -334,6 +334,18 @@ $state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
           }
         }
       }
+
+      &.-pill {
+        border-radius: 1rem;
+
+        &.-small {
+          border-radius: 0.75rem;
+        }
+
+        &.-large {
+          border-radius: 1.25rem;
+        }
+      }
     }
 
     @each $type in map-keys($state-colors) {

@@ -30,3 +30,23 @@ each size in ['default', 'small', 'large']
                   option Select
                   option An option
                   option Another option
+    span.a-h2= `HTML Select / ${size} / Pills`
+    table(cellpadding="0", cellspacing="0", width="600px")
+      tr
+        td
+          small= 'pill'
+        each style in ['default', 'danger']
+          td
+            .-m1
+              select(
+                class='a-input -pill'
+                class={
+                 [`-${style}`]: style != 'default',
+                 [`-${size}`]: size != 'default',
+                 [`-${state}`]: state != 'initial' && state != 'disabled'
+                }
+                disabled=state == 'disabled' ? 'disabled' : false
+              )
+                option Select
+                option An option
+                option Another option

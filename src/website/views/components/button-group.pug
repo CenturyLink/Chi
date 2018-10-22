@@ -36,6 +36,36 @@ p.-text To render a series of buttons vertically, apply the class modifier <code
       <button class="a-btn">Button</button>
     </div>
 
+h3 Pills
+p.-text Use the <code>-pill</code> modifier class to render a series of buttons with a more pronounced border-radius.
+h4 Base
+.example.-mb3
+  .-p3
+    .m-btnGroup.-pill
+      button(class=`a-btn`) Button
+      button(class=`a-btn`) Button
+      button(class=`a-btn`) Button
+  :code(lang='html')
+    <div class="m-btnGroup -pill">
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+    </div>
+
+h4 Vertical
+.example.-mb3
+  .-p3
+    .m-btnGroup.-vertical.-pill
+      button(class=`a-btn`) Button
+      button(class=`a-btn`) Button
+      button(class=`a-btn`) Button
+  :code(lang='html')
+    <div class="m-btnGroup -vertical -pill">
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+    </div>
+
 h3 Fluid buttons
 p.-text Button groups can be expanded to fill the parent space by applying the class <code>-fluid</code>.
 h4 Horizontal

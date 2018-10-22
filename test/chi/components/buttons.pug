@@ -55,6 +55,18 @@ each size in ['default', 'small', 'large']
                       svg
                         use(xlink:href='#icon-atom')
                     span Button
+                button.a-btn.-pill.-m1.-ml2(
+                class={
+                  [`-${type}`]: type != 'solid',
+                  [`-${style}`]: style != 'default',
+                  [`-${state}`]: state != 'initial',
+                  [`-${size}`]: size != 'default'
+                }
+                disabled=state == 'disabled' ? 'disabled' : false
+                )
+                  .a-btn__content
+                    span Button
+
 
   if size == 'default'
     .test-float
