@@ -32,9 +32,8 @@ p.-text
     .a-grid
       each icon in iconExamples
         .a-col.-w2.-sm--w1
-          .a-icon.a-avatar
-            svg
-              use(xlink:href=`#icon-${icon}`)
+          .a-avatar
+            i(class=`a-icon icon-${icon}`)
   ul#a-tabs--icons.a-tabs.-ml3
     li.-active
       a(href="#iconsWebFont") Web Font
@@ -109,70 +108,45 @@ ul#a-tabs--colors.a-tabs
       .a-grid.-align-items--end
         each color in colors
           .a-col.-w2.-textCenter
-            div(class=`a-avatar a-icon -${color}`)
-              svg
-                use(xlink:href=`#icon-user`)
+            div(class=`a-avatar -${color}`)
+              i.a-icon.icon-user
             p.-text= color
     :code(lang="html")
-      <div class="a-avatar a-icon -grey">
-        <svg>
-            <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -grey">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -red">
-        <svg>
-            <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -red">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -pink">
-        <svg>
-            <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -pink">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -purple">
-        <svg>
-            <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -purple">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -indigo">
-        <svg>
-            <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -indigo">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -navy">
-        <svg>
-            <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -navy">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -blue">
-        <svg>
-            <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -blue">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -teal">
-        <svg>
-            <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -teal">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -emerald">
-        <svg>
-            <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -emerald">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -green">
-        <svg>
-            <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -green">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -yellow">
-        <svg>
-            <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -yellow">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -orange">
-        <svg>
-            <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -orange">
+        <i class="a-icon icon-user"></i>
       </div>
 
 h4 Size
@@ -212,51 +186,34 @@ ul#a-tabs--sizes.a-tabs
       .a-grid.-align-items--end
         each size in sizes
           div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -textCenter`)
-            div(class=`a-avatar a-icon -${size}`)
-              svg
-                use(xlink:href=`#icon-user`)
+            div(class=`a-avatar -${size}`)
+              i.a-icon.icon-user
             p.-text= size
 
     :code(lang="html")
-      <div class="a-avatar a-icon -xs">
-        <svg>
-          <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -xs">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -sm">
-        <svg>
-          <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -sm">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -sm2">
-        <svg>
-          <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -sm2">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -sm3">
-        <svg>
-          <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -sm3">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -md">
-        <svg>
-          <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -md">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -lg">
-        <svg>
-          <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -lg">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -xl">
-        <svg>
-          <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -xl">
+        <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar a-icon -xxl">
-        <svg>
-          <use xlink:href="#icon-user"></use>
-        </svg>
+      <div class="a-avatar -xxl">
+        <i class="a-icon icon-user"></i>
       </div>
   #sizedImages.a-tabs-panel
     .-p3
