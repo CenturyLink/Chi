@@ -2,6 +2,7 @@
 
 ### 0.8.3 (Unreleased)
 
+* Added Position utilities.
 * Added Header component.
 * Removed unnecessary xs breakpoint from display and flex utilities.
 * Updated Modal component to allow close buttons to render outside of a-modal__header.
