@@ -61,7 +61,22 @@ p.-text
     <button class="a-btn -info -outline">Info</button>
     <button class="a-btn -dark -outline">Dark</button>
 
-h3 Pills
+h4 Flat
+p.-text
+  | To render a button with a transparent background and border, apply the class
+  | <code>-flat</code>.
+.example.-mb3
+  .-p3
+    each type, val in {Base:'base', Brand:'brand', Danger:'danger', Info:'info', Dark:'dark'}
+      button(class=`a-btn -${type} -flat -mr2`)= val
+  :code(lang='html')
+    <button class="a-btn -flat">Base</button>
+    <button class="a-btn -brand -flat">Brand</button>
+    <button class="a-btn -danger -flat">Danger</button>
+    <button class="a-btn -info -flat">Info</button>
+    <button class="a-btn -dark -flat">Dark</button>
+
+h3 Pill
 p.-text Use the <code>-pill</code> modifier class to render buttons with a more pronounced border-radius.
 h4 Base
 .example.-mb3
@@ -88,21 +103,6 @@ h4 Outline
     <button class="a-btn -danger -pill -outline">Danger</button>
     <button class="a-btn -info -pill -outline">Info</button>
     <button class="a-btn -dark -pill -outline">Dark</button>
-
-h4 Flat
-p.-text
-  | To render a button with a transparent background and border, apply the class
-  | <code>-flat</code>.
-.example.-mb3
-  .-p3
-    each type, val in {Base:'base', Brand:'brand', Danger:'danger', Info:'info', Dark:'dark'}
-      button(class=`a-btn -${type} -flat -mr2`)= val
-  :code(lang='html')
-    <button class="a-btn -flat">Base</button>
-    <button class="a-btn -brand -flat">Brand</button>
-    <button class="a-btn -danger -flat">Danger</button>
-    <button class="a-btn -info -flat">Info</button>
-    <button class="a-btn -dark -flat">Dark</button>
 
 h3 Icon buttons
 p.-text
