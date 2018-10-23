@@ -91,6 +91,30 @@
           }
         }
       }
+
+      &.-pill {
+        & + label {
+          &::before {
+            border-radius: 1rem;
+          }
+        }
+
+        &.-small  {
+          & + label {
+            &::before {
+              border-radius: 0.75rem;
+            }
+          }
+        }
+
+        &.-large {
+          & + label {
+            &::before {
+              border-radius: 1.25rem;
+            }
+          }
+        }
+      }
     }
   }
 }
