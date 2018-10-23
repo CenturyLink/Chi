@@ -1,0 +1,94 @@
+@import 'mixins';
+@import 'variables';
+
+.chi {
+  .o-header {
+    align-items: center;
+    background-color: set-color(white);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.04), 0 2px 2px 0 rgba(0,0,0,.12);
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    justify-content: center;
+    height: auto;
+    min-height: 4rem;
+    padding: .75rem 1rem;
+    width: 100%;
+    z-index: 1;
+    @include respond-to(sm) {
+      height: 4rem;
+      padding: 0 1rem;
+    }
+    @include respond-to(md) {
+      padding: 0 1.5rem;
+    }
+
+    &__content {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+      @include respond-to(sm) {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .a-brand {
+        display: inline-flex;
+        width: 7.5rem;
+        & > img,
+        & > svg {
+          height: 1.5rem;
+          @include respond-to(sm) {
+            height: 2rem;
+          }
+        }
+        @include respond-to(sm) {
+          margin-right: 1rem;
+          width: 10rem;
+        }
+        @include respond-to(md) {
+          margin-right: 2rem;
+        }
+      }
+    }
+
+    &__start {
+      display: flex;
+      flex-wrap: nowrap;
+      @include respond-to(sm) {
+        flex-grow: 1;
+        overflow: hidden;
+      }
+      .o-header__title {
+        font-size: 0.875rem;
+        @include respond-to(sm) {
+          font-size: 1rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        @include respond-to(md) {
+          font-size: 1.125rem;
+        }
+      }
+    }
+
+    &__end {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-top: .5rem;
+      @include respond-to(sm) {
+        margin-left: 1rem;
+        padding-top: 0;
+      }
+      .a-tabs {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+    }
+
+  }
+}

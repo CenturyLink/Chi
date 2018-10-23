@@ -2,6 +2,13 @@
 
 ### 0.8.3 (Unreleased)
 
+* Added Header component.
+* Removed unnecessary xs breakpoint from display and flex utilities.
+* Updated Modal component to allow close buttons to render outside of a-modal__header.
+* Improved color documentation.
+* Added Brand component.
+* Added Divider component.
+* Fixed bug that prevented adding buttons to Alert components.
 * Renamed a-formGroup to m-formGroup.
 * Added Spinner component.
 * Added Avatar component.

@@ -256,6 +256,33 @@
       "requireSameDimensions": true
     },
     {
+      "label": "header",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/header.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-header-base",
+        ".test-header-brand",
+        ".test-header-title",
+        ".test-header-buttons",
+        ".test-header-title-buttons",
+        ".test-header-tabs",
+        ".test-header-title-tabs",
+        ".test-header-tabs-buttons"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "html-select",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/html-select.html",
