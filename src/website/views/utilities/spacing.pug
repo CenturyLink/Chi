@@ -5,7 +5,7 @@ title: Spacing
 p.-text Use shorthand margin and padding utility classes to control spacing between elements.
 
 h3 Notation
-p.-text Spacing utility classes can be defined using the format <code>-{property}{sides}{size}</code>.
+p.-text Spacing utility classes can be defined using the format <code>-{property}{sides}[-{breakpoint}]--{size}</code>.
 h4 {property}
 ul.-text
   li <code>m</code> - use to apply <code>margin</code>
@@ -19,6 +19,16 @@ ul.-text
   li <code>x</code> - use to apply <code>margin-left</code> and <code>margin-right</code> or <code>padding-left</code> and <code>padding-right</code>
   li <code>y</code> - use to apply <code>margin-top</code> and <code>margin-bottom</code> or <code>padding-top</code> and <code>padding-bottom</code>
   li blank - leave blank to apply <code>margin</code> or <code>padding</code> to all 4 sides.
+h4 {breakpoint}
+p.-text
+  | Optionally include -{breakpoint} to apply the utility behaviour to some breakpoints. As a mobile first library,
+  | any applying to smaller breakpoint will modify also larger ones unless other class overrides this behaviour.
+ul.-text
+  li blank - leave blank to apply <code>margin</code> or <code>padding</code> to all breakpoints.
+  li <code>sm</code> - use to apply <code>margin</code> or <code>padding</code> to sm and larger breakpoints.
+  li <code>md</code> - use to apply <code>margin</code> or <code>padding</code> to ms and larger breakpoints.
+  li <code>lg</code> - use to apply <code>margin</code> or <code>padding</code> to lg and larger breakpoints.
+  li <code>xl</code> - use to apply <code>margin</code> or <code>padding</code> to xl breakpoints.
 h4 {size}
 ul.-text
   li <code>0</code> - use to eliminate existing <code>margin</code> or <code>padding</code> and set to <code>0</code>
@@ -38,110 +48,121 @@ h4 Margins
 p.-text
   | In this example, various margin classes have been applied to render margin
   | on all 4 sides of the pink squares. The margin can be visualized in blue.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-grid.-noGutter
-      .-mr3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
-        .-m2(style="width:3rem;height:3rem;background:#F74F87;")
-      .-mr3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
-        .-m4(style="width:3rem;height:3rem;background:#F74F87;")
-      .-mr3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
-        .-m6(style="width:3rem;height:3rem;background:#F74F87;")
+      .-mr--3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
+        .-m--2(style="width:3rem;height:3rem;background:#F74F87;")
+      .-mr--3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
+        .-m--4(style="width:3rem;height:3rem;background:#F74F87;")
+      .-mr--3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
+        .-m--6(style="width:3rem;height:3rem;background:#F74F87;")
   :code(lang="html")
-    <div class="-m2"></div>
-    <div class="-m4"></div>
-    <div class="-m6"></div>
+    <div class="-m--2"></div>
+    <div class="-m--4"></div>
+    <div class="-m--6"></div>
 h4 Side Margins
 p.-text
   | Apply margin to specific sides of an element by adding <code>t</code>,
   | <code>b</code>, <code>l</code>, <code>r</code>, <code>x</code> or <code>y</code>
   | to the class name.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-grid.-noGutter
-      .-mr3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
-        .-mt3(style="width:3rem;height:3rem;background:#F74F87;")
-      .-mr3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
-        .-mb3(style="width:3rem;height:3rem;background:#F74F87;")
-      .-mr3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
-        .-ml3(style="width:3rem;height:3rem;background:#F74F87;")
-      .-mr3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
-        .-mr3(style="width:3rem;height:3rem;background:#F74F87;")
-      .-mr3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
-        .-mx3(style="width:3rem;height:3rem;background:#F74F87;")
-      .-mr3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
-        .-my3(style="width:3rem;height:3rem;background:#F74F87;")
+      .-mr--3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
+        .-mt--3(style="width:3rem;height:3rem;background:#F74F87;")
+      .-mr--3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
+        .-mb--3(style="width:3rem;height:3rem;background:#F74F87;")
+      .-mr--3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
+        .-ml--3(style="width:3rem;height:3rem;background:#F74F87;")
+      .-mr--3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
+        .-mr--3(style="width:3rem;height:3rem;background:#F74F87;")
+      .-mr--3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
+        .-mx--3(style="width:3rem;height:3rem;background:#F74F87;")
+      .-mr--3(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
+        .-my--3(style="width:3rem;height:3rem;background:#F74F87;")
   :code(lang="html")
     <!-- margin-top -->
-    <div class="-mt3"></div>
+    <div class="-mt--3"></div>
     <!-- margin-bottom -->
-    <div class="-mb3"></div>
+    <div class="-mb--3"></div>
     <!-- margin-left -->
-    <div class="-ml3"></div>
+    <div class="-ml--3"></div>
     <!-- margin-right -->
-    <div class="-mr3"></div>
+    <div class="-mr--3"></div>
     <!-- margin-left and margin-right -->
-    <div class="-mx3"></div>
+    <div class="-mx--3"></div>
     <!-- margin-top and margin-bottom -->
-    <div class="-my3"></div>
+    <div class="-my--3"></div>
 h4 Padding
 p.-text
   | In this example, various padding classes have been applied to render padding
   | on all 4 sides of the pink squares. The padding can be visualized in yellow.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-grid.-noGutter
-      .-p2.-mr3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
+      .-p--2.-mr--3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
         div(style="width:3rem;height:3rem;background:#F74F87;")
-      .-p4.-mr3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
+      .-p--4.-mr--3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
         div(style="width:3rem;height:3rem;background:#F74F87;")
-      .-p6.-mr3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
+      .-p--6.-mr--3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
         div(style="width:3rem;height:3rem;background:#F74F87;")
   :code(lang="html")
-    <div class="-p2"></div>
-    <div class="-p4"></div>
-    <div class="-p6"></div>
+    <div class="-p--2"></div>
+    <div class="-p--4"></div>
+    <div class="-p--6"></div>
 h4 Side Paddings
 p.-text
   | Apply padding to specific sides of an element by adding <code>t</code>,
   | <code>b</code>, <code>l</code>, <code>r</code>, <code>x</code> or <code>y</code>
   | to the class name.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-grid.-noGutter
-      .-pt3.-mr3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
+      .-pt--3.-mr--3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
         div(style="width:3rem;height:3rem;background:#F74F87;")
-      .-pb3.-mr3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
+      .-pb--3.-mr--3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
         div(style="width:3rem;height:3rem;background:#F74F87;")
-      .-pl3.-mr3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
+      .-pl--3.-mr--3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
         div(style="width:3rem;height:3rem;background:#F74F87;")
-      .-pr3.-mr3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
+      .-pr--3.-mr--3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
         div(style="width:3rem;height:3rem;background:#F74F87;")
-      .-px3.-mr3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
+      .-px--3.-mr--3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
         div(style="width:3rem;height:3rem;background:#F74F87;")
-      .-py3.-mr3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
+      .-py--3.-mr--3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
         div(style="width:3rem;height:3rem;background:#F74F87;")
   :code(lang="html")
     <!-- padding-top -->
-    <div class="-pt3"></div>
+    <div class="-pt--3"></div>
     <!-- padding-bottom -->
-    <div class="-pb3"></div>
+    <div class="-pb--3"></div>
     <!-- padding-left -->
-    <div class="-pl3"></div>
+    <div class="-pl--3"></div>
     <!-- padding-right -->
-    <div class="-pr3"></div>
+    <div class="-pr--3"></div>
     <!-- padding-left and padding-right -->
-    <div class="-px3"></div>
+    <div class="-px--3"></div>
     <!-- padding-top and padding-bottom -->
-    <div class="-py3"></div>
+    <div class="-py--3"></div>
 h4 Margin + Padding
 p.-text
   | Apply both margin and padding to an element by adding both class names.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-grid.-noGutter
       div(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
-        .-m3.-p3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
+        .-m--3.-p--3(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
           div(style="width:3rem;height:3rem;background:#F74F87;")
   :code(lang="html")
-    <div class="-m3 -p3"></div>
+    <div class="-m--3 -p--3"></div>
+h4 Breakpoints
+p.-text
+  | Target specific breakpoints with reponsive classes.
+.example.-mb--3
+  .-p--3
+    .a-grid.-noGutter
+      div(style="background:#E6F0FF;border:1px dashed #2973E3;align-self:flex-start;")
+        .-mx--0.-px--0.-mx-lg--6.-px-lg--6(style="background:#FAECD9;border:1px dashed #C97D12;align-self:flex-start;")
+          div(style="width:3rem;height:3rem;background:#F74F87;")
+  :code(lang="html")
+    <div class="-mx--0 -px--0 -mx-lg--6 -px-lg--6"></div>

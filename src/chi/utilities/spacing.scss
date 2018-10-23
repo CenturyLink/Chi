@@ -1,3 +1,4 @@
+@import 'mixins';
 @import 'variables';
 
 .chi {
@@ -90,5 +91,68 @@
       padding-top: ($index / 2) + rem;
     }
 
+  }
+}
+
+$attributes: (
+  margin: m,
+  padding: p
+);
+
+$positions: (
+  a: '',
+  b: '-bottom',
+  l: '-left',
+  r: '-right',
+  t: '-top',
+  x: '-x',
+  y: '-y'
+);
+
+$screen-sizes-prefixes: (
+  xs: '',
+  sm: '-sm',
+  md: '-md',
+  lg: '-lg',
+  xl: '-xl'
+);
+
+
+@mixin create-spacing($attribute, $attr-prefix, $screen-size, $size-infix) {
+  @for $index from 0 through 10 {
+    @each $position, $pos-suffix in $positions {
+      @if ($position == a) {
+        .-#{$attr-prefix}#{$size-infix}--#{$index} {
+          #{$attribute}: ($index / 2) + rem;
+        }
+      } @else if ($position == x) {
+        .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
+          #{$attribute}-left: ($index / 2) + rem;
+          #{$attribute}-right: ($index / 2) + rem;
+        }
+      } @else if ($position == y) {
+        .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
+          #{$attribute}-bottom: ($index / 2) + rem;
+          #{$attribute}-top: ($index / 2) + rem;
+        }
+      } @else {
+        .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
+          #{$attribute}#{$pos-suffix}: ($index / 2) + rem;
+        }
+      }
+    }
+  }
+}
+
+
+@each $attribute, $attr-prefix in $attributes {
+  @each $screen-size, $size-infix in $screen-sizes-prefixes {
+    @if ($screen-size == 'xs') {
+      @include create-spacing($attribute, $attr-prefix, $screen-size, $size-infix);
+    } @else {
+      @include respond-to($screen-size) {
+        @include create-spacing($attribute, $attr-prefix, $screen-size, $size-infix);
+      }
+    }
   }
 }
