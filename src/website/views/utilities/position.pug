@@ -1,0 +1,84 @@
+---
+title: Position
+---
+
+p.-text Use shorthand position utility classes to quickly change an elements position value.
+
+h3 Notation
+p.-text
+  | Position utility classes can be defined using the format <code>-position-{viewport}--{value}</code>.
+  | Viewports supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
+
+h3 Target all viewports
+p.-text Use to set an elements position on all viewports.
+
+h4 Static
+.-mb2
+  :code(lang='html')
+    <div class="-position--static"></div>
+
+h4 Relative
+.-mb2
+  :code(lang='html')
+    <div class="-position--relative"></div>
+
+h4 Fixed
+.-mb2
+  :code(lang='html')
+    <div class="-position--fixed"></div>
+
+h4 Absolute
+.-mb2
+  :code(lang='html')
+    <div class="-position--absolute"></div>
+
+h4 Sticky
+.-mb4
+  :code(lang='html')
+    <div class="-position--sticky"></div>
+
+h3 Target specific viewports
+p.-text
+ | To target a specific viewport, add the viewport abbreviation to the class.
+ | It's important to note that viewport-specific classes apply to their respective
+ | viewport and any larger viewport (unless overridden by a larger viewport class).
+
+h4 Static
+.-mb2
+  :code(lang='html')
+    <div class="-position-sm--static"></div>
+    <div class="-position-md--static"></div>
+    <div class="-position-lg--static"></div>
+    <div class="-position-xl--static"></div>
+
+h4 Relative
+.-mb2
+  :code(lang='html')
+    <div class="-position-sm--relative"></div>
+    <div class="-position-md--relative"></div>
+    <div class="-position-lg--relative"></div>
+    <div class="-position-xl--relative"></div>
+
+h4 Fixed
+.-mb2
+  :code(lang='html')
+    <div class="-position-sm--fixed"></div>
+    <div class="-position-md--fixed"></div>
+    <div class="-position-lg--fixed"></div>
+    <div class="-position-xl--fixed"></div>
+
+h4 Absolute
+.-mb2
+  :code(lang='html')
+    <div class="-position-sm--absolute"></div>
+    <div class="-position-md--absolute"></div>
+    <div class="-position-lg--absolute"></div>
+    <div class="-position-xl--absolute"></div>
+
+h4 Sticky
+.-mb2
+  :code(lang='html')
+    <div class="-position-sm--sticky"></div>
+    <div class="-position-md--sticky"></div>
+    <div class="-position-lg--sticky"></div>
+    <div class="-position-xl--sticky"></div>
