@@ -1,0 +1,136 @@
+---
+title: Sizing
+---
+
+p.-text Use responsive sizing utility classes to quickly apply widths and heights on elements.
+
+h3 Notation
+p.-text
+  | Sizing utility classes can be defined using the format <code>-w-{breakpoint}--{value}</code> for widths and
+  | <code>-h-{breakpoint}--{value}</code> for heights.
+  | Breakpoints supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
+
+h3 Width
+h4 Target all breakpoints
+p.-text Sizing utility classes with no breakpoint defined apply to all screen sizes.
+section.a-table.-bordered.-mt3.-mb3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Sizing Class
+          th
+            div Value
+      tbody
+        each type in ['auto', '25', '50', '75', '100']
+          tr
+            td(width='40%')
+              code= '-w--' + type
+            td
+              if (type == 'auto')
+                code= 'width: ' + type + ';'
+              else
+                code= 'width: ' + type + '%;'
+
+h4 Target specific breakpoints
+p.-text To target a specific breakpoint, add the breakpoint abbreviation to the class.
+section.a-table.-bordered.-mt3.-mb3
+  div
+    table(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Sizing Class
+          th
+            div Value
+      tbody
+        each type in ['sm', 'md', 'lg', 'xl']
+          each size in ['auto', '25', '50', '75', '100']
+            tr
+              td.-text(width='40%')
+                code= '-w-' + type + '--' + size
+              td.-text Visible only from <code>#{type}</code>
+
+h3 Examples
+.example.-mb3
+  .-p3
+    .-text.-b1.-p3.-m1.-w--auto(style="background:#E4F2CE;border-color:#C6DBA7;") -w--auto
+    .-text.-b1.-p3.-m1.-w--25(style="background:#E4F2CE;border-color:#C6DBA7;") -w--25
+    .-text.-b1.-p3.-m1.-w--50(style="background:#E4F2CE;border-color:#C6DBA7;") -w--50
+    .-text.-b1.-p3.-m1.-w-md--75(style="background:#E4F2CE;border-color:#C6DBA7;") -w-md--75
+    .-text.-b1.-p3.-m1.-w-xl--50(style="background:#E4F2CE;border-color:#C6DBA7;") -w-xl--50
+  :code(lang="html")
+    <!-- width auto on all breakpoints -->
+    <div class="-w--auto"></div>
+    <!-- width 25% on all breakpoints -->
+    <div class="-w--25"></div>
+    <!-- width 50% on all breakpoints -->
+    <div class="-w--50"></div>
+    <!-- width 75% from md -->
+    <div class="-w-md--75"></div>
+    <!-- width 50% from xl -->
+    <div class="-w-xl--50"></div>
+
+h3 Height
+h4 Target all breakpoints
+p.-text Sizing utility classes with no breakpoint defined apply to all screen sizes.
+section.a-table.-bordered.-mt3.-mb3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Sizing Class
+          th
+            div Value
+      tbody
+        each type in ['auto', '25', '50', '75', '100']
+          tr
+            td(width='40%')
+              code= '-h--' + type
+            td
+              if (type == 'auto')
+                code= 'height: ' + type + ';'
+              else
+                code= 'height: ' + type + '%;'
+
+h4 Target specific breakpoints
+p.-text To target a specific breakpoint, add the breakpoint abbreviation to the class.
+section.a-table.-bordered.-mt3.-mb3
+  div
+    table(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Sizing Class
+          th
+            div Value
+      tbody
+        each type in ['sm', 'md', 'lg', 'xl']
+          each size in ['auto', '25', '50', '75', '100']
+            tr
+              td.-text(width='40%')
+                code= '-h-' + type + '--' + size
+              td.-text Visible only from <code>#{type}</code>
+
+h3 Examples
+
+.a-grid(style="height: 300px;")
+  .-text.a-col.-b1.-p3.-m1.-h--auto(style="background:#E4F2CE;border-color:#C6DBA7;") -h--auto
+  .-text.a-col.-b1.-p3.-m1.-h--25(style="background:#E4F2CE;border-color:#C6DBA7;") -h--25
+  .-text.a-col.-b1.-p3.-m1.-h--50(style="background:#E4F2CE;border-color:#C6DBA7;") -h--50
+  .-text.a-col.-b1.-p3.-m1.-h-md--75(style="background:#E4F2CE;border-color:#C6DBA7;") -h-md--75
+  .-text.a-col.-b1.-p3.-m1.-h-xl--50(style="background:#E4F2CE;border-color:#C6DBA7;") -h-xl--50
+.-mb4.-mt2
+  :code(lang="html")
+    <!-- height auto on all breakpoints -->
+    <div class="-h--auto"></div>
+    <!-- height 25% on all breakpoints -->
+    <div class="-h--25"></div>
+    <!-- height 50% on all breakpoints -->
+    <div class="-h--50"></div>
+    <!-- height 75% from md -->
+    <div class="-h-md--75"></div>
+    <!-- height 50% from xl -->
+    <div class="-h-xl--50"></div>
