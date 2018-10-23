@@ -162,82 +162,46 @@ h4 Example
     .a-col.-w7.-sm--w4.-md--w5.-lg--w3
       .m-dropdown__menu.-active
         a.m-dropdown__menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-file-outline')
+          i.a-icon.icon-file-outline
           = "New"
         a.m-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
-          .a-icon
-            svg
-              use(xlink:href='#icon-arrow-to-bottom')
+          i.a-icon.icon-arrow-to-bottom
           = "Save"
         .a-divider
         a.m-dropdown__menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-mail')
+          i.a-icon.icon-mail
           = "Send"
         a.m-dropdown__menu-item.-active(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-shopping-cart')
+          i.a-icon.icon-shopping-cart
           = "Buy"
         a.m-dropdown__menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-users')
+          i.a-icon.icon-users
           = "Share"
         .a-divider
         a.m-dropdown__menu-item(href='#')
-          .a-icon
-            svg
-              use(xlink:href='#icon-logout')
+          i.a-icon.icon-logout
           = "Logout"
   :code(lang="html")
     <div class="m-dropdown__menu">
       <a class="m-dropdown__menu-item" href="#">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-file-outline"></use>
-          </svg>
-        </div>New
+        <i class="a-icon icon-file-outline"></i>New
       </a>
       <a class="m-dropdown__menu-item -disabled" href="#">
-        <div class="a-icon">
-        <svg>
-          <use xlink:href="#icon-arrow-to-bottom"></use>
-        </svg>
-        </div>Save
+        <i class="a-icon icon-arrow-to-bottom"></i>Save
       </a>
       <div class="a-divider"></div>
       <a class="m-dropdown__menu-item" href="#">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-mail"></use>
-          </svg>
-        </div>Send
+        <i class="a-icon icon-mail"></i>Send
       </a>
       <a class="m-dropdown__menu-item -active" href="#">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-shopping-cart"></use>
-          </svg>
-        </div>Buy
+        <i class="a-icon icon-shopping-cart"></i>Buy
       </a>
       <a class="m-dropdown__menu-item" href="#">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-users"></use>
-          </svg>
-        </div>Share
+        <i class="a-icon icon-users"></i>Share
       </a>
       <div class="a-divider"></div>
       <a class="m-dropdown__menu-item" href="#">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-logout"></use>
-          </svg>
-        </div>Logout
+        <i class="a-icon icon-logout"></i>Logout
       </a>
     </div>
 
@@ -255,9 +219,7 @@ p.-text
       .m-dropdown__menu.-active
         .a-inputWrapper.-iconLeft.m-dropdown__menu-item
           input(type="text", class="a-input", placeholder="Search")
-          .a-icon.-textMuted
-            svg
-              use(xlink:href='#icon-search')
+          i.a-icon.icon-search.-textMuted
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
@@ -266,11 +228,7 @@ p.-text
     <div class="m-dropdown__menu">
       <div class="a-inputWrapper -iconLeft m-dropdown__menu-item">
         <input class="a-input" type="text" placeholder="Search">
-        <div class="a-icon -textMuted">
-          <svg>
-            <use xlink:href="#icon-search"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-search -textMuted"></i>
       </div>
       <a class="m-dropdown__menu-item" href="#">Element 1</a>
       <a class="m-dropdown__menu-item" href="#">Element 2</a>
@@ -340,33 +298,25 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
             input(type="checkbox", class="a-input", id="checkbox1b")
             label(for="checkbox1b")
             label.-text(for="checkbox1b")
-              .a-icon
-                svg
-                  use(xlink:href='#icon-logo-centurylink')
+              i.a-icon.icon-logo-centurylink
               | Element 1
           .m-dropdown__menu-item
             input(type="checkbox", class="a-input", id="checkbox2b", disabled)
             label(for="checkbox2b")
             label.-text(for="checkbox2b")
-              .a-icon
-                svg
-                  use(xlink:href='#icon-logo-centurylink')
+              i.a-icon.icon-logo-centurylink
               | Element 2
           .m-dropdown__menu-item
             input(type="checkbox", class="a-input", id="checkbox3b", checked)
             label(for="checkbox3b")
             label.-text(for="checkbox3b")
-              .a-icon
-                svg
-                  use(xlink:href='#icon-logo-centurylink')
+              i.a-icon.icon-logo-centurylink
               | Element 3
           .m-dropdown__menu-item
             input(type="checkbox", class="a-input", id="checkbox4b")
             label(for="checkbox4b")
             label.-text(for="checkbox4b")
-              .a-icon
-                svg
-                  use(xlink:href='#icon-logo-centurylink')
+              i.a-icon.icon-logo-centurylink
               | Element 4
     :code(lang="html")
       <div class="m-dropdown__menu">
@@ -374,11 +324,7 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
           <input class="a-input" type="checkbox" id="checkbox1">
           <label for="checkbox1"></label>
           <label class="-text" for="checkbox1">
-            <div class="a-icon">
-              <svg>
-                <use xlink:href="#icon-logo-centurylink"></use>
-              </svg>
-            </div>
+            <i class="a-icon icon-logo-centurylink"></i>
             Element 1
           </label>
         </div>
@@ -386,11 +332,7 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
           <input class="a-input" type="checkbox" id="checkbox2" disabled>
           <label for="checkbox2"></label>
           <label class="-text" for="checkbox2">
-            <div class="a-icon">
-              <svg>
-                <use xlink:href="#icon-logo-centurylink"></use>
-              </svg>
-            </div>
+            <i class="a-icon icon-logo-centurylink"></i>
             Element 2
           </label>
         </div>
@@ -398,11 +340,7 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
           <input class="a-input" type="checkbox" id="checkbox3" checked>
           <label for="checkbox3"></label>
           <label class="-text" for="checkbox3">
-            <div class="a-icon">
-              <svg>
-                <use xlink:href="#icon-logo-centurylink"></use>
-              </svg>
-            </div>
+            <i class="a-icon icon-logo-centurylink"></i>
             Element 3
           </label>
         </div>
@@ -410,11 +348,7 @@ ul#a-tabs--checkboxes.a-tabs.-ml3
           <input class="a-input" type="checkbox" id="checkbox4">
           <label for="checkbox4"></label>
           <label class="-text" for="checkbox4">
-            <div class="a-icon">
-              <svg>
-                <use xlink:href="#icon-logo-centurylink"></use>
-              </svg>
-            </div>
+            <i class="a-icon icon-logo-centurylink"></i>
             Element 4
           </label>
         </div>
@@ -637,7 +571,7 @@ ul#a-tabs--animation-expanded.a-tabs.-ml3
           a.m-dropdown__menu-item(href='#') Element 3
     :code(lang="html")
       <div class="m-dropdown">
-        <button id="dropdown-1" class="a-btn m-dropdown__trigger -animate">Animated dropdown trigger</button>
+        <button class="a-btn m-dropdown__trigger -animate">Animated dropdown trigger</button>
         <div class="m-dropdown__menu">
           <a class="m-dropdown__menu-item" href="#">Element 1</a>
           <a class="m-dropdown__menu-item" href="#">Element 2</a>
@@ -654,8 +588,8 @@ ul#a-tabs--animation-expanded.a-tabs.-ml3
           a.m-dropdown__menu-item(href='#') Element 3
     :code(lang="html")
       <div class="m-dropdown">
-        <button id="dropdown-1" class="a-btn m-dropdown__trigger -animate">Animated dropdown trigger</button>
-        <div class="m-dropdown__menu">
+        <button class="a-btn m-dropdown__trigger -animate -active">Animated dropdown trigger</button>
+        <div class="m-dropdown__menu -active">
           <a class="m-dropdown__menu-item" href="#">Element 1</a>
           <a class="m-dropdown__menu-item" href="#">Element 2</a>
           <a class="m-dropdown__menu-item" href="#">Element 3</a>
@@ -697,7 +631,7 @@ p.-text
         a.m-dropdown__menu-item(href='#') Element 3
   :code(lang="html")
     <div class="m-dropdown">
-      <button id="dropdown-2" class="a-btn m-dropdown__trigger" data-position="bottom">Drop-down</button>
+      <button class="a-btn m-dropdown__trigger" data-position="bottom">Drop-down</button>
       <div class="m-dropdown__menu">
         <a class="m-dropdown__menu-item" href="#">Element 1</a>
         <a class="m-dropdown__menu-item" href="#">Element 2</a>
