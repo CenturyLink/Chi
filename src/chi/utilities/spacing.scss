@@ -149,14 +149,15 @@ $screen-sizes-prefixes: (
   }
 }
 
-
-@each $attribute, $attr-prefix in $attributes {
-  @each $screen-size, $size-infix in $screen-sizes-prefixes {
-    @if ($screen-size == 'xs') {
-      @include create-spacing($attribute, $attr-prefix, $screen-size, $size-infix);
-    } @else {
-      @include respond-to($screen-size) {
+.chi {
+  @each $attribute, $attr-prefix in $attributes {
+    @each $screen-size, $size-infix in $screen-sizes-prefixes {
+      @if ($screen-size == 'xs') {
         @include create-spacing($attribute, $attr-prefix, $screen-size, $size-infix);
+      } @else {
+        @include respond-to($screen-size) {
+          @include create-spacing($attribute, $attr-prefix, $screen-size, $size-infix);
+        }
       }
     }
   }
