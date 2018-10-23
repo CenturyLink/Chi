@@ -42,6 +42,7 @@ ul.-text
   li <code>8</code> - use to set <code>margin</code> or <code>padding</code> to <code>$base-unit * 8</code>
   li <code>9</code> - use to set <code>margin</code> or <code>padding</code> to <code>$base-unit * 9</code>
   li <code>10</code> - use to set <code>margin</code> or <code>padding</code> to <code>$base-unit * 10</code>
+  li <code>auto</code> - use to set <code>margin</code> to <code>auto</code> value
 
 h3 Examples
 h4 Margins
@@ -155,6 +156,16 @@ p.-text
           div(style="width:3rem;height:3rem;background:#F74F87;")
   :code(lang="html")
     <div class="-m--3 -p--3"></div>
+h4 Auto margin
+p.-text
+  | Apply margin auto to an element
+.example.-mb--3
+  .-p--3
+      div(style="background:#E6F0FF;border:1px dashed #2973E3")
+        .-m--auto(style="background:#FAECD9;border:1px dashed #C97D12;width:3rem;height:3rem;")
+          div(style="background:#F74F87;")
+  :code(lang="html")
+    <div class="-m--auto"></div>
 h4 Breakpoints
 p.-text
   | Target specific breakpoints with reponsive classes.
