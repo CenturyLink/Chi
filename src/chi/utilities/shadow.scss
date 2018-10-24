@@ -11,7 +11,7 @@
     }
   }
 
- /* New class naming */
+  /* New class naming */
   @each $screen-size in $screen-sizes {
     @if $screen-size == xs {
       @each $index, $value in $shadow {
