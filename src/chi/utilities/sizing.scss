@@ -1,0 +1,56 @@
+@import 'variables';
+@import 'mixins';
+
+.chi {
+
+  $dimensions: (
+    auto: auto,
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%
+  );
+
+  $max-dimensions: (
+    100: 100%,
+    980: 980px,
+    960: 960px,
+    640: 640px,
+    480: 480px
+  );
+
+  @each $dimension-key, $dimension-value in $dimensions  {
+    .-w--#{$dimension-key} {
+      width: $dimension-value;
+    }
+
+    .-h--#{$dimension-key} {
+      height: $dimension-value;
+    }
+  }
+
+  @each $size in sm md lg xl {
+    @include respond-to($size) {
+      @each $dimension-key, $dimension-value in $dimensions {
+        .-w-#{$size}--#{$dimension-key} {
+          width: $dimension-value;
+        }
+
+        .-h-#{$size}--#{$dimension-key} {
+          height: $dimension-value;
+        }
+      }
+    }
+  }
+
+  @each $dimension-key, $dimension-value in $max-dimensions  {
+    .-mw--#{$dimension-key} {
+      max-width: $dimension-value;
+    }
+    @if $dimension-key == 100 {
+      .-mh--#{$dimension-key} {
+        max-height: $dimension-value;
+      }
+    }
+  }
+}
