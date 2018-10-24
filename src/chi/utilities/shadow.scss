@@ -1,3 +1,4 @@
+@import 'mixins';
 @import 'variables';
 
 .chi {
@@ -10,4 +11,22 @@
     }
   }
 
+ /* New class naming */
+  @each $screen-size in $screen-sizes {
+    @if $screen-size == xs {
+      @each $index, $value in $shadow {
+        .-s--#{$index} {
+          box-shadow: $value;
+        }
+      }
+    } @else {
+      @include respond-to($screen-size) {
+        @each $index, $value in $shadow {
+          .-s-#{$screen-size}--#{$index} {
+            box-shadow: $value;
+          }
+        }
+      }
+    }
+  }
 }

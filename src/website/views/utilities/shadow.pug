@@ -1,11 +1,10 @@
 ---
 title: Shadow
 ---
-
 p.-text Use shadow utility classes to assist in creating a visual hierarchy.
 
 h3 Notation
-p.-text Shadow utility classes can be defined using the format <code>-s{size}</code>.
+p.-text Shadow utility classes can be defined using the format <code>-s[-{breakpoint}]--{size}</code>.
 h4 {size}
 ul.-text
   li <code>0</code> - use to set <code>box-shadow</code> to <code>none</code>
@@ -14,29 +13,54 @@ ul.-text
   li <code>3</code> - use to set <code>box-shadow</code> to <code>6px</code>
   li <code>4</code> - use to set <code>box-shadow</code> to <code>8px</code>
   li <code>5</code> - use to set <code>box-shadow</code> to <code>12px</code>
+h4 {breakpoint}
+p.-text
+  | Optionally include -{breakpoint} to apply the utility behaviour to some breakpoints. As a mobile first library,
+  | any applying to smaller breakpoint will modify also larger ones unless other class overrides this behaviour.
+ul.-text
+  li blank - leave blank to apply <code>shadow</code> to all breakpoints.
+  li <code>sm</code> - use to apply <code>shadow</code> to sm and larger breakpoints.
+  li <code>md</code> - use to apply <code>shadow</code> to ms and larger breakpoints.
+  li <code>lg</code> - use to apply <code>shadow</code> to lg and larger breakpoints.
+  li <code>xl</code> - use to apply <code>shadow</code> to xl breakpoints.
 
 h3 Examples
+h4 Default
 .example.-mb3
   .-p2(style="background:#F5F5F5;")
     .a-grid.-text.-noGutter.-textCenter
-      .-p5.-m2.-s0(style="background:#FFFFFF;border-radius:3px;") -s0
-      .-p5.-m2.-s1(style="background:#FFFFFF;border-radius:3px;") -s1
-      .-p5.-m2.-s2(style="background:#FFFFFF;border-radius:3px;") -s2
-      .-p5.-m2.-s3(style="background:#FFFFFF;border-radius:3px;") -s3
-      .-p5.-m2.-s4(style="background:#FFFFFF;border-radius:3px;") -s4
-      .-p5.-m2.-s5(style="background:#FFFFFF;border-radius:3px;") -s5
+      .-p5.-m2.-s--0(style="background:#FFFFFF;border-radius:3px;") -s--0
+      .-p5.-m2.-s--1(style="background:#FFFFFF;border-radius:3px;") -s--1
+      .-p5.-m2.-s--2(style="background:#FFFFFF;border-radius:3px;") -s--2
+      .-p5.-m2.-s--3(style="background:#FFFFFF;border-radius:3px;") -s--3
+      .-p5.-m2.-s--4(style="background:#FFFFFF;border-radius:3px;") -s--4
+      .-p5.-m2.-s--5(style="background:#FFFFFF;border-radius:3px;") -s--5
   :code(lang="html")
-    <div class="-s0"></div>
-    <div class="-s1"></div>
-    <div class="-s2"></div>
-    <div class="-s3"></div>
-    <div class="-s4"></div>
-    <div class="-s5"></div>
+    <div class="-s--0"></div>
+    <div class="-s--1"></div>
+    <div class="-s--2"></div>
+    <div class="-s--3"></div>
+    <div class="-s--4"></div>
+    <div class="-s--5"></div>
+
+h4 Responsive
+p.-text
+  | Change viewport size to view the effect. You can do it by resizing your browser window. 
+.example.-mb3
+  .-p2(style="background:#F5F5F5;")
+    .a-grid.-text.-noGutter.-textCenter
+      .-p5.-m2.-s--5.-s-md--0(style="background:#FFFFFF;border-radius:3px;") -s--5 -s-md--0
+      .-p5.-m2.-s-md--5.-s-xl--0(style="background:#FFFFFF;border-radius:3px;") -s-md--5 -s-xl--0
+      .-p5.-m2.-s-xl--5(style="background:#FFFFFF;border-radius:3px;") -s-xl--5
+  :code(lang="html")
+    <div class="-s--5 -s-md--0"></div>
+    <div class="-s-md--5 -s-xl--0"></div>
+    <div class="-s-xl--5"></div>
 
 h3 SASS
 p.-text
   | Chi defines shadows with Saas maps. The following example will render
-  | a shadow equivalent to <code>-s1</code> / <code>1px</code>.
+  | a shadow equivalent to <code>-s--1</code> / <code>1px</code>.
 
 .-mb4
   :code(lang='sass')
