@@ -61,6 +61,10 @@ gulp.task('build:website:views', () => {
         'Utilities': {
           pattern: 'utilities/**/*.{md,pug}',
           sortBy: collectionSorter(['Overview'])
+        },
+        'Templates': {
+          pattern: 'templates/**/*.{md,pug}',
+          sortBy: collectionSorter(['Overview'])
         }
       }))
       .use(metalsmithPlugins.inPlace({
