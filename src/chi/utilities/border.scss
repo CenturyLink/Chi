@@ -1,3 +1,4 @@
+@import 'mixins';
 @import 'variables';
 
 .chi {
@@ -73,5 +74,83 @@
 
   .-bLight {
     border-color: $light-color;
+  }
+
+  $positions: (
+    a: '',
+    b: '-bottom',
+    l: '-left',
+    r: '-right',
+    t: '-top',
+    x: '-x',
+    y: '-y'
+  );
+
+  $border-colors: (
+    brand: $brand-color,
+    success: $success-color,
+    danger: $danger-color,
+    info: $info-color,
+    warning: $warning-color,
+    dark: $dark-color,
+    light: $light-color
+  );
+
+  @mixin create-border($position, $position-suffix, $breakpoint-infix, $thickness-index) {
+    @if ($position == 'a') {
+      .-b#{$breakpoint-infix}--#{$thickness-index} {
+        border#{$position-suffix}: ($thickness-index / 16) + rem solid $border-color;
+      }
+    } @else if ($position == 'x') {
+      .-b#{$position}#{$breakpoint-infix}--#{$thickness-index} {
+        border-left: ($thickness-index / 16) + rem solid $border-color;
+        border-right: ($thickness-index / 16) + rem solid $border-color;
+      }
+    } @else if ($position == 'y') {
+      .-b#{$position}#{$breakpoint-infix}--#{$thickness-index} {
+        border-bottom: ($thickness-index / 16) + rem solid $border-color;
+        border-top: ($thickness-index / 16) + rem solid $border-color;
+      }
+    } @else {
+      .-b#{$position}#{$breakpoint-infix}--#{$thickness-index} {
+        border#{$position-suffix}: ($thickness-index / 16) + rem solid $border-color;
+      }
+    }
+  }
+
+  @each $screen-size in $screen-sizes {
+    @if ($screen-size == 'xs') {
+      @each $position, $position-suffix in $positions {
+        @for $index from 0 through 4 {
+          @include create-border($position, $position-suffix, '', $index);
+        }
+      }
+    } @else {
+      @include respond-to($screen-size) {
+        @each $position, $position-suffix in $positions {
+          @for $index from 0 through 4 {
+            @include create-border($position, $position-suffix, '-' + $screen-size, $index);
+          }
+        }
+      }
+    }
+  }
+
+  @each $screen-size in $screen-sizes {
+    @if ($screen-size == 'xs') {
+      @each $color-name, $color-value in $border-colors {
+        .-b--#{$color-name} {
+          border-color: $color-value;
+        }
+      }
+    } @else {
+      @include respond-to($screen-size) {
+        @each $color-name, $color-value in $border-colors {
+          .-b-#{$screen-size}--#{$color-name} {
+            border-color: $color-value;
+          }
+        }
+      }
+    }
   }
 }

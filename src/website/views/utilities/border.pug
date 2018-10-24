@@ -1,11 +1,10 @@
 ---
 title: Border
 ---
-
 p.-text Use shorthand border utility classes to control border, border width and border color on elements.
 
 h3 Notation
-p.-text Border utility classes can be defined using the format <code>-b{sides}{size}</code>.
+p.-text Border utility classes can be defined using the format <code>-b{sides}[-{breakpoint}]--{size}</code>.
 h4 {sides}
 ul.-text
   li <code>t</code> - use to apply <code>border-top</code>
@@ -15,6 +14,16 @@ ul.-text
   li <code>x</code> - use to apply <code>border-left</code> and <code>border-right</code>
   li <code>y</code> - use to apply <code>border-top</code> and <code>border-bottom</code>
   li blank - leave blank to apply <code>border</code> to all 4 sides.
+h4 {breakpoint}
+p.-text
+  | Optionally include -{breakpoint} to apply the utility behaviour to some breakpoints. As a mobile first library,
+  | any applying to smaller breakpoint will modify also larger ones unless other class overrides this behaviour.
+ul.-text
+  li blank - leave blank to apply <code>border</code> to all breakpoints.
+  li <code>sm</code> - use to apply <code>border</code> to sm and larger breakpoints.
+  li <code>md</code> - use to apply <code>border</code> to ms and larger breakpoints.
+  li <code>lg</code> - use to apply <code>border</code> to lg and larger breakpoints.
+  li <code>xl</code> - use to apply <code>border</code> to xl breakpoints.
 h4 {size}
 ul.-text
   li <code>0</code> - use to eliminate existing <code>border</code> and set to <code>0</code>
@@ -32,56 +41,75 @@ p.-text
 .example.-mb3
   .-p2
     .a-grid.-text.-noGutter.-textCenter
-      .-py5.-m2.-bt1(style="background:#F8F8F8;width:7.5rem;") -bt1
-      .-py5.-m2.-br1(style="background:#F8F8F8;width:7.5rem;") -br1
-      .-py5.-m2.-bb1(style="background:#F8F8F8;width:7.5rem;") -bb1
-      .-py5.-m2.-bl1(style="background:#F8F8F8;width:7.5rem;") -bl1
-      .-py5.-m2.-bx1(style="background:#F8F8F8;width:7.5rem;") -bx1
-      .-py5.-m2.-by1(style="background:#F8F8F8;width:7.5rem;") -by1
+      .-py5.-m2.-bt--1(style="background:#F8F8F8;width:7.5rem;") -bt--1
+      .-py5.-m2.-br--1(style="background:#F8F8F8;width:7.5rem;") -br--1
+      .-py5.-m2.-bb--1(style="background:#F8F8F8;width:7.5rem;") -bb--1
+      .-py5.-m2.-bl--1(style="background:#F8F8F8;width:7.5rem;") -bl--1
+      .-py5.-m2.-bx--1(style="background:#F8F8F8;width:7.5rem;") -bx--1
+      .-py5.-m2.-by--1(style="background:#F8F8F8;width:7.5rem;") -by--1
   :code(lang="html")
-    <div class="-bt1"></div>
-    <div class="-br1"></div>
-    <div class="-bb1"></div>
-    <div class="-bl1"></div>
-    <div class="-bx1"></div>
-    <div class="-by1"></div>
+    <div class="-bt--1"></div>
+    <div class="-br--1"></div>
+    <div class="-bb--1"></div>
+    <div class="-bl--1"></div>
+    <div class="-bx--1"></div>
+    <div class="-by--1"></div>
+h4 Breakpoints
+p.-text
+  | Target specific breakpoints with reponsive classes.
+.example.-mb--3
+  .-p--2
+    .a-grid.-text.-noGutter.-textCenter
+      .-py5.-m2.-bx--0.-by--4.-bx-lg--4.-by-lg--0(style="background:#F8F8F8;width:9rem;") -bx--0 -by--4<br>-bx-lg--4 -by-lg--0
+      .-py5.-m2.-b--0.-b-sm--1.-b-md--2.-b-lg--3.-b-xl--4(style="background:#F8F8F8;width:9rem;") -b--0 -b-sm--1<br>-b-md--2 -b-lg--3<br>-b-xl--4
+  :code(lang="html")
+    <div class="-bx--0 -by--4 -bx-lg--4 -by-lg--0"></div>
+    <div class="-b--0 -b-sm--1 -b-md--2 -b-lg--3 -b-xl--4"></div>
 h4 Border Sizes
 p.-text
   | Control an elements border size by adjusting the size from <code>0</code> - <code>4</code>.
 .example.-mb3
   .-p2
     .a-grid.-text.-noGutter.-textCenter
-      .-py5.-m2.-b0(style="background:#F8F8F8;width:7.5rem;") -b0
-      .-py5.-m2.-b1(style="background:#F8F8F8;width:7.5rem;") -b1
-      .-py5.-m2.-b2(style="background:#F8F8F8;width:7.5rem;") -b2
-      .-py5.-m2.-b3(style="background:#F8F8F8;width:7.5rem;") -b3
-      .-py5.-m2.-b4(style="background:#F8F8F8;width:7.5rem;") -b4
+      .-py5.-m2.-b--0(style="background:#F8F8F8;width:7.5rem;") -b--0
+      .-py5.-m2.-b--1(style="background:#F8F8F8;width:7.5rem;") -b--1
+      .-py5.-m2.-b--2(style="background:#F8F8F8;width:7.5rem;") -b--2
+      .-py5.-m2.-b--3(style="background:#F8F8F8;width:7.5rem;") -b--3
+      .-py5.-m2.-b--4(style="background:#F8F8F8;width:7.5rem;") -b--4
   :code(lang="html")
-    <div class="-b0"></div>
-    <div class="-b1"></div>
-    <div class="-b2"></div>
-    <div class="-b3"></div>
-    <div class="-b4"></div>
+    <div class="-b--0"></div>
+    <div class="-b--1"></div>
+    <div class="-b--2"></div>
+    <div class="-b--3"></div>
+    <div class="-b--4"></div>
 h4 Border Colors
 p.-text
   | Use contextual color classes to change a borders color.
 .example.-mb3
   .-p2
     .a-grid.-noGutter.-text.-textCenter
-      .-m2.-py5.-b1(style="background:#F8F8F8;width:7.5rem;") Base
-      .-m2.-py5.-b1.-bBrand(style="background:#F8F8F8;width:7.5rem;") -bBrand
-      .-m2.-py5.-b1.-bSuccess(style="background:#F8F8F8;width:7.5rem;") -bSuccess
-      .-m2.-py5.-b1.-bDanger(style="background:#F8F8F8;width:7.5rem;") -bDanger
-      .-m2.-py5.-b1.-bInfo(style="background:#F8F8F8;width:7.5rem;") -bInfo
-      .-m2.-py5.-b1.-bWarning(style="background:#F8F8F8;width:7.5rem;") -bWarning
-      .-m2.-py5.-b1.-bDark(style="background:#F8F8F8;width:7.5rem;") -bDark
-      .-m2.-py5.-b1.-bLight(style="background:#F8F8F8;width:7.5rem;") -bLight
+      .-m2.-py5.-b--1(style="background:#F8F8F8;width:7.5rem;") Base
+      .-m2.-py5.-b--1.-b--brand(style="background:#F8F8F8;width:7.5rem;") -b--brand
+      .-m2.-py5.-b--1.-b--success(style="background:#F8F8F8;width:7.5rem;") -b--success
+      .-m2.-py5.-b--1.-b--danger(style="background:#F8F8F8;width:7.5rem;") -b--danger
+      .-m2.-py5.-b--1.-b--info(style="background:#F8F8F8;width:7.5rem;") -b--info
+      .-m2.-py5.-b--1.-b--warning(style="background:#F8F8F8;width:7.5rem;") -b--warning
+      .-m2.-py5.-b--1.-b--dark(style="background:#F8F8F8;width:7.5rem;") -b--dark
+      .-m2.-py5.-b--1.-b--light(style="background:#F8F8F8;width:7.5rem;") -b--light
   :code(lang="html")
-    <div class="-b1"></div>
-    <div class="-b1 -bBrand"></div>
-    <div class="-b1 -bSuccess"></div>
-    <div class="-b1 -bDanger"></div>
-    <div class="-b1 -bInfo"></div>
-    <div class="-b1 -bWarning"></div>
-    <div class="-b1 -bDark"></div>
-    <div class="-b1 -bLight"></div>
+    <div class="-b--1"></div>
+    <div class="-b--1 -b--brand"></div>
+    <div class="-b--1 -b--success"></div>
+    <div class="-b--1 -b--danger"></div>
+    <div class="-b--1 -b--info"></div>
+    <div class="-b--1 -b--warning"></div>
+    <div class="-b--1 -b--dark"></div>
+    <div class="-b--1 -b--light"></div>
+p.-text
+  | Breakpoint classes also work here. The format is <code>-b[-{breakpoint}]--{color}</code>.
+.example.-mb3
+  .-p2
+    .a-grid.-noGutter.-text.-textCenter
+      .-m2.-p--5.-b--1.-b--brand.-b-sm--dark.-b-md--danger.-b-lg--info.-b-xl--warning(style="background:#F8F8F8") -b--brand -b-sm--dark -b-md--danger -b-lg--info -b-xl--warning
+  :code(lang="html")
+    <div class="-b--1 -b--brand -b-sm--dark -b-md--danger -b-lg--info -b-xl--warning"></div>
