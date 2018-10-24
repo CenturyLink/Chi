@@ -1,0 +1,178 @@
+---
+title: Dropdown
+---
+
+- var dropdownStates = ["", "-active"];
+- var textCombinations = [{"t_text": "Click me", "d_text": "Element"}, {"t_text": "Long trigger text, click me", "d_text": "Element"}, {"t_text": "Click me", "d_text": "Long text dropdown element"}];
+- var menuItemStates = [{"title":"Normal", "class": ""}, {"title":"Active", "class": "-active"}, {"title":"Disabled", "class": "-disabled"}, {"title":"Hover", "class": "-hover"}];
+
+each menuItemState in menuItemStates
+  div(class=`test-basicDropdown${menuItemState.class}`)
+    span.a-h2=menuItemState.title
+    .-d--flex
+      each textCombination in textCombinations
+        each dropdownState in dropdownStates
+          .m-dropdown(style="margin-bottom: 8em")
+            button(class=`a-btn m-dropdown__trigger ${dropdownState}`)=textCombination.t_text
+            div(class=`m-dropdown__menu ${dropdownState}`)
+              each i in [1, 2, 3]
+                a(class=`m-dropdown__menu-item ${menuItemState.class}`, href='#')=textCombination.d_text + " " + i
+
+div(class=`test-dropdown-divider`)
+  span.a-h2 Divider
+  .-d--flex
+    div(class=`m-dropdown__menu -active`)
+      each i in [1, 2]
+        a(class=`m-dropdown__menu-item`, href='#')="Text " + i
+      .a-divider
+      each i in [3, 4]
+        a(class=`m-dropdown__menu-item`, href='#')="Text " + i
+
+
+div(class=`test-dropdown-icons`)
+  span.a-h2 Icons
+  .-d--flex
+    .m-dropdown__menu.-active
+      a.m-dropdown__menu-item(href='#')
+        .a-icon
+          svg
+            use(xlink:href='#icon-file-outline')
+        = "New"
+      a.m-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
+        .a-icon
+          svg
+            use(xlink:href='#icon-arrow-to-bottom')
+        = "Save"
+      .a-divider
+      a.m-dropdown__menu-item(href='#')
+        .a-icon
+          svg
+            use(xlink:href='#icon-mail')
+        = "Send"
+      a.m-dropdown__menu-item.-active(href='#')
+        .a-icon
+          svg
+            use(xlink:href='#icon-shopping-cart')
+        = "Buy"
+      a.m-dropdown__menu-item.-hover(href='#')
+        .a-icon
+          svg
+            use(xlink:href='#icon-users')
+        = "Share"
+      .a-divider
+      a.m-dropdown__menu-item(href='#')
+        .a-icon
+          svg
+            use(xlink:href='#icon-logout')
+        = "Logout"
+
+div(class=`test-dropdown-searchBox`)
+  span.a-h2 Search box
+  .-d--flex
+    .m-dropdown__menu.-active
+      .a-inputWrapper.-iconLeft.m-dropdown__menu-item
+        input(type="text", class="a-input", placeholder="Search")
+        .a-icon.-textMuted
+          svg
+            use(xlink:href='#icon-search')
+      a.m-dropdown__menu-item(href='#') Element 1
+      a.m-dropdown__menu-item(href='#') Element 2
+
+- var inputTypes = ["checkbox", "radio"];
+- var inputStates = ["", "disabled", "checked"]
+each inputType in inputTypes
+  div(class=`test-dropdown-${inputType}`)
+    span.a-h2=inputType
+    .m-dropdown__menu.-active
+      each inputState in inputStates
+        .m-dropdown__menu-item
+          input(type=inputType, class="a-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+          label(for=`${inputType}${inputState}`)
+          label.-text(for=`${inputType}${inputState}`)="Element " + inputType + " " + inputState
+
+each inputType in inputTypes
+  div(class=`test-dropdown-${inputType}-icon`)
+    span.a-h2=inputType + " with icons"
+    .m-dropdown__menu.-active
+      each inputState in inputStates
+        .m-dropdown__menu-item
+          input(type=inputType, class="a-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+          label(for=`${inputType}${inputState}`)
+          label.-text(for=`${inputType}${inputState}`)
+            .a-icon
+              svg
+                use(xlink:href='#icon-logo-centurylink')
+            ="Element " + inputType + " " + inputState
+
+div(class=`test-dropdown-text`)
+  span.a-h2 Plain text
+  .-d--flex
+    .m-dropdown__menu.-active
+      span.m-dropdown__menu-item Text 1
+      span.m-dropdown__menu-item Text 2
+      span.m-dropdown__menu-item Text 3
+      span.m-dropdown__menu-item Text 4
+
+div(class=`test-dropdown-range`)
+  span.a-h2 Range
+  .-d--flex
+    .m-dropdown__menu.-active
+      .m-dropdown__menu-item
+        label.-text.-mr2 200GB
+        input.a-input(type="range")
+        label.-text.-ml2 5TB
+      .a-divider
+      span.m-dropdown__menu-item Select range
+      .m-dropdown__menu-item
+        input.a-input(type="range")
+
+div(class=`test-dropdown-toggle`)
+  span.a-h2 Toggle input
+  .-d--flex
+    .m-dropdown__menu.-active
+      .m-dropdown__menu-item
+        input(type="checkbox", class="a-input -toggle", id="toggle-mail")
+        label(class="-mr1", for="toggle-mail")
+        label(class="-text", for="toggle-mail") Email notifications
+      .m-dropdown__menu-item
+        input(type="checkbox", class="a-input -toggle", id="toggle-tlf", checked)
+        label(class="-mr1", for="toggle-tlf")
+        label(class="-text", for="toggle-tlf") Phone notifications
+      .m-dropdown__menu-item
+        input(type="checkbox", class="a-input -toggle", id="toggle-app", disabled)
+        label(class="-mr1", for="toggle-app")
+        label(class="-text", for="toggle-app") App notifications
+
+
+div(class=`test-dropdown-ellipsis-helper`)
+  span.a-h2 Ellipsis helper
+  .-d--flex
+    .m-dropdown__menu.-active(style="width:10rem")
+      a.m-dropdown__menu-item(href='#') Element 1
+      a.m-dropdown__menu-item(href='#') Element 2
+      a.m-dropdown__menu-item(href='#')
+        .-flex--ellipsis Longer text element 3
+      a.m-dropdown__menu-item(href='#') Element 4
+
+div(class=`test-dropdown-higher-helper`)
+  span.a-h2 Higher menu items helper
+  .-d--flex
+    .m-dropdown__menu.-active(style="width:10rem")
+      a.m-dropdown__menu-item(href="#") Link 1
+      .m-dropdown__menu-item.-h--auto.-py1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      a.m-dropdown__menu-item(href="#") Link 2
+
+- var triggerSizes = ["-large", "", "-small"];
+- var triggerStates = dropdownStates;
+- var dropdownPositions = ["", "default", "initial", "top", "right", "bottom", "left", "top-start", "top-end", "right-start", "right-end", "bottom-start", "bottom-end", "left-start", "left-end"];
+
+each triggerSize in triggerSizes
+  div(class=`test-dropdown-button${triggerSize}`)
+    span.a-h2=`Button${triggerSize}`
+    each triggerState in triggerStates
+      span.a-h3=`State ${triggerState}`
+      each position in dropdownPositions
+        .-d--flex
+          button(class=`a-btn m-dropdown__trigger ${triggerSize} ${triggerState}`, data-position=position)=`Button ${triggerState} ${position}`
+
+
