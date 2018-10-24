@@ -20,6 +20,7 @@
 * Renamed a-formGroup to m-formGroup.
 * Added Spinner component.
 * Added Avatar component.
+* Added Dropdown component.
 
 ### 0.8.2 (October 2, 2018)
 

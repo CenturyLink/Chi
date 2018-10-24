@@ -3,6 +3,74 @@
 
 .chi {
 
+  $attributes: (
+    margin: m,
+    padding: p
+  );
+
+  $values: (
+    margin: 0 1 2 3 4 5 6 7 8 9 10 auto,
+    padding: 0 1 2 3 4 5 6 7 8 9 10
+  );
+
+  $positions: (
+    a: '',
+    b: '-bottom',
+    l: '-left',
+    r: '-right',
+    t: '-top',
+    x: '-x',
+    y: '-y'
+  );
+
+  $screen-sizes-prefixes: (
+    xs: '',
+    sm: '-sm',
+    md: '-md',
+    lg: '-lg',
+    xl: '-xl'
+  );
+
+  @mixin create-spacing($attribute, $attr-prefix, $screen-size, $size-infix) {
+    @each $index in map-get($values, $attribute) {
+      @each $position, $pos-suffix in $positions {
+        @if ($position == a) {
+          .-#{$attr-prefix}#{$size-infix}--#{$index} {
+            #{$attribute}: if($index == 'auto', $index, ($index / 2) + rem);
+          }
+        } @else if ($position == x) {
+          .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
+            #{$attribute}-left: if($index == 'auto', $index, ($index / 2) + rem);
+            #{$attribute}-right: if($index == 'auto', $index, ($index / 2) + rem);
+          }
+        } @else if ($position == y) {
+          .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
+            #{$attribute}-bottom: if($index == 'auto', $index, ($index / 2) + rem);
+            #{$attribute}-top: if($index == 'auto', $index, ($index / 2) + rem);
+          }
+        } @else {
+          .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
+            #{$attribute}#{$pos-suffix}: if($index == 'auto', $index, ($index / 2) + rem);
+          }
+        }
+      }
+    }
+  }
+
+  @each $attribute, $attr-prefix in $attributes {
+    @each $screen-size, $size-infix in $screen-sizes-prefixes {
+      @if ($screen-size == 'xs') {
+        @include create-spacing($attribute, $attr-prefix, $screen-size, $size-infix);
+      } @else {
+        @include respond-to($screen-size) {
+          @include create-spacing($attribute, $attr-prefix, $screen-size, $size-infix);
+        }
+      }
+    }
+  }
+
+  /* Legacy code below this line */
+
   /* Margins */
   @for $index from 0 through 10 {
     .-m#{$index} {
@@ -89,76 +157,6 @@
     .-py#{$index} {
       padding-bottom: ($index / 2) + rem;
       padding-top: ($index / 2) + rem;
-    }
-
-  }
-}
-
-$attributes: (
-  margin: m,
-  padding: p
-);
-
-$values: (
-  margin: 0 1 2 3 4 5 6 7 8 9 10 auto,
-  padding: 0 1 2 3 4 5 6 7 8 9 10
-);
-
-$positions: (
-  a: '',
-  b: '-bottom',
-  l: '-left',
-  r: '-right',
-  t: '-top',
-  x: '-x',
-  y: '-y'
-);
-
-$screen-sizes-prefixes: (
-  xs: '',
-  sm: '-sm',
-  md: '-md',
-  lg: '-lg',
-  xl: '-xl'
-);
-
-
-@mixin create-spacing($attribute, $attr-prefix, $screen-size, $size-infix) {
-  @each $index in map-get($values, $attribute) {
-    @each $position, $pos-suffix in $positions {
-      @if ($position == a) {
-        .-#{$attr-prefix}#{$size-infix}--#{$index} {
-          #{$attribute}: if($index == 'auto', $index, ($index / 2) + rem);
-        }
-      } @else if ($position == x) {
-        .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
-          #{$attribute}-left: if($index == 'auto', $index, ($index / 2) + rem);
-          #{$attribute}-right: if($index == 'auto', $index, ($index / 2) + rem);
-        }
-      } @else if ($position == y) {
-        .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
-          #{$attribute}-bottom: if($index == 'auto', $index, ($index / 2) + rem);
-          #{$attribute}-top: if($index == 'auto', $index, ($index / 2) + rem);
-        }
-      } @else {
-        .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
-          #{$attribute}#{$pos-suffix}: if($index == 'auto', $index, ($index / 2) + rem);
-        }
-      }
-    }
-  }
-}
-
-.chi {
-  @each $attribute, $attr-prefix in $attributes {
-    @each $screen-size, $size-infix in $screen-sizes-prefixes {
-      @if ($screen-size == 'xs') {
-        @include create-spacing($attribute, $attr-prefix, $screen-size, $size-infix);
-      } @else {
-        @include respond-to($screen-size) {
-          @include create-spacing($attribute, $attr-prefix, $screen-size, $size-infix);
-        }
-      }
     }
   }
 }
