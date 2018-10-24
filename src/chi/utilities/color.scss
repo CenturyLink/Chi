@@ -1,0 +1,49 @@
+@import 'mixins';
+@import 'variables';
+
+.chi {
+
+  $colors: (
+    brand: $brand-color,
+    white: set-color(white),
+    black: set-color(black),
+    grey-10: set-color(grey, 10),
+    grey-20: set-color(grey, 20),
+    green-40: set-color(green, 40),
+    success: set-color(green, 60),
+    warning: set-color(yellow, 60),
+    danger: set-color(red, 60),
+    info: set-color(navy, 60),
+    none: none
+  );
+
+  @each $color-key, $color-value in $colors  {
+
+    @if $color-key == 'none' {
+      .-bg--#{$color-key} {
+        background: $color-value;
+      }
+    } @else {
+      .-bg--#{$color-key} {
+        background-color: $color-value;
+      }
+    }
+  }
+
+  @each $size in sm md lg xl {
+    @include respond-to($size) {
+      @each $color-key, $color-value in $colors {
+
+        @if $color-key == 'none' {
+          .-bg-#{$size}--#{$color-key} {
+            background: $color-value;
+          }
+        } @else {
+          .-bg-#{$size}--#{$color-key} {
+            background-color: $color-value;
+          }
+        }
+      }
+    }
+  }
+}
