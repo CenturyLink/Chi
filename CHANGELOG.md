@@ -2,7 +2,14 @@
 
 ### 0.8.3 (Unreleased)
 
-* Added Position utilities.
+* Added Templates section to documentation with Sign In and Error 500 layout examples.
+* Added Color utility.
+* Added responsive support to Border utility.
+* Added responsive support to Shadow utility.
+* Added Sizing utility.
+* Added responsive support to Spacing utility.
+* Added -pill support to Button component.
+* Added Position utility.
 * Added Header component.
 * Removed unnecessary xs breakpoint from display and flex utilities.
 * Updated Modal component to allow close buttons to render outside of a-modal__header.
