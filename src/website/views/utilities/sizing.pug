@@ -122,6 +122,7 @@ h3 Examples
   .-text.a-col.-b1.-p3.-m1.-h--50(style="background:#E4F2CE;border-color:#C6DBA7;") -h--50
   .-text.a-col.-b1.-p3.-m1.-h-md--75(style="background:#E4F2CE;border-color:#C6DBA7;") -h-md--75
   .-text.a-col.-b1.-p3.-m1.-h-xl--50(style="background:#E4F2CE;border-color:#C6DBA7;") -h-xl--50
+  .-text.a-col.-b1.-p3.-m1.-h-lg--25(style="background:#E4F2CE;border-color:#C6DBA7;") -h-lg--25
 .-mb4.-mt2
   :code(lang="html")
     <!-- height auto on all breakpoints -->
@@ -134,3 +135,32 @@ h3 Examples
     <div class="-h-md--75"></div>
     <!-- height 50% from xl -->
     <div class="-h-xl--50"></div>
+    <!-- height 25% from lg -->
+    <div class="-h-lg--25"></div>
+
+h4 Maximum width/height
+p.-text Using the format <code>-mw--{value}</code> for max-width and <code>-mh--{value}</code> for max-height
+section.a-table.-bordered.-mt3.-mb3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Sizing Class
+          th
+            div Value
+      tbody
+        each type in ['100', '480', '640', '960', '980']
+          tr
+            td(width='40%')
+              code= '-mw--' + type
+            td
+              if (type != 100)
+                code= 'max-width: ' + type + 'px;'
+              else
+                code= 'max-width: ' + type + '%;'
+        tr
+          td(width='40%')
+            code= '-mh--100'
+          td
+            code= 'max-height: 100%;'

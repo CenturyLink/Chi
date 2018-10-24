@@ -3,323 +3,54 @@
 
 .chi {
 
-  //Width Auto
-  .-w--auto {
-    width: auto;
-  }
+  $dimensions: (
+    auto: auto,
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%
+  );
 
-  .-w-sm--auto {
-    @include respond-to(sm) {
-      width: auto;
+  $max-dimensions: (
+    100: 100%,
+    980: 980px,
+    960: 960px,
+    640: 640px,
+    480: 480px
+  );
+
+  @each $dimension-key, $dimension-value in $dimensions  {
+    .-w--#{$dimension-key} {
+      width: $dimension-value;
+    }
+
+    .-h--#{$dimension-key} {
+      height: $dimension-value;
     }
   }
 
-  .-w-md--auto {
-    @include respond-to(md) {
-      width: auto;
+  @each $size in sm md lg xl {
+    @include respond-to($size) {
+      @each $dimension-key, $dimension-value in $dimensions {
+        .-w-#{$size}--#{$dimension-key} {
+          width: $dimension-value;
+        }
+
+        .-h-#{$size}--#{$dimension-key} {
+          height: $dimension-value;
+        }
+      }
     }
   }
 
-  .-w-lg--auto {
-    @include respond-to(lg) {
-      width: auto;
+  @each $dimension-key, $dimension-value in $max-dimensions  {
+    .-mw--#{$dimension-key} {
+      max-width: $dimension-value;
     }
-  }
-
-  .-w-xl--auto {
-    @include respond-to(xl) {
-      width: auto;
+    @if $dimension-key == 100 {
+      .-mh--#{$dimension-key} {
+        max-height: $dimension-value;
+      }
     }
-  }
-
-  //Width 25%
-  .-w--25 {
-    width: 25%;
-  }
-
-  .-w-sm--25 {
-    @include respond-to(sm) {
-      width: 25%;
-    }
-  }
-
-  .-w-md--25 {
-    @include respond-to(md) {
-      width: 25%;
-    }
-  }
-
-  .-w-lg--25 {
-    @include respond-to(lg) {
-      width: 25%;
-    }
-  }
-
-  .-w-xl--25 {
-    @include respond-to(xl) {
-      width: 25%;
-    }
-  }
-
-  //Width 50%
-  .-w--50 {
-    width: 50%;
-  }
-
-  .-w-sm--50 {
-    @include respond-to(sm) {
-      width: 50%;
-    }
-  }
-
-  .-w-md--50 {
-    @include respond-to(md) {
-      width: 50%;
-    }
-  }
-
-  .-w-lg--50 {
-    @include respond-to(lg) {
-      width: 50%;
-    }
-  }
-
-  .-w-xl--50 {
-    @include respond-to(xl) {
-      width: 50%;
-    }
-  }
-
-  //Width 75%
-  .-w--75 {
-    width: 75%;
-  }
-
-  .-w-sm--75 {
-    @include respond-to(sm) {
-      width: 75%;
-    }
-  }
-
-  .-w-md--75 {
-    @include respond-to(md) {
-      width: 75%;
-    }
-  }
-
-  .-w-lg--75 {
-    @include respond-to(lg) {
-      width: 75%;
-    }
-  }
-
-  .-w-xl--75 {
-    @include respond-to(xl) {
-      width: 75%;
-    }
-  }
-
-  //Width 100%
-  .-w--100 {
-    width: 100%;
-  }
-
-  .-w-sm--100 {
-    @include respond-to(sm) {
-      width: 100%;
-    }
-  }
-
-  .-w-md--100 {
-    @include respond-to(md) {
-      width: 100%;
-    }
-  }
-
-  .-w-lg--100 {
-    @include respond-to(lg) {
-      width: 100%;
-    }
-  }
-
-  .-w-xl--100 {
-    @include respond-to(xl) {
-      width: 100%;
-    }
-  }
-
-  //Max Width 100%
-  .-mw--100 {
-    max-width: 100%;
-  }
-
-  //Max Width 980px
-  .-mw--980 {
-    max-width: 980px;
-  }
-
-  //Max Width 960px
-  .-mw--960 {
-    max-width: 960px;
-  }
-
-  //Max Width 640px
-  .-mw--640 {
-    max-width: 640px;
-  }
-
-  //Max Width 480px
-  .-mw--480 {
-    max-width: 480px;
-  }
-
-  //Height Auto
-  .-h--auto {
-    height: auto;
-  }
-
-  .-h-sm--auto {
-    @include respond-to(sm) {
-      height: auto;
-    }
-  }
-
-  .-h-md--auto {
-    @include respond-to(md) {
-      height: auto;
-    }
-  }
-
-  .-h-lg--auto {
-    @include respond-to(lg) {
-      height: auto;
-    }
-  }
-
-  .-h-xl--auto {
-    @include respond-to(xl) {
-      height: auto;
-    }
-  }
-
-  //Height 25%
-  .-h--25 {
-    height: 25%;
-  }
-
-  .-h-sm--25 {
-    @include respond-to(sm) {
-      height: 25%;
-    }
-  }
-
-  .-h-md--25 {
-    @include respond-to(md) {
-      height: 25%;
-    }
-  }
-
-  .-h-lg--25 {
-    @include respond-to(lg) {
-      height: 25%;
-    }
-  }
-
-  .-h-xl--25 {
-    @include respond-to(xl) {
-      height: 25%;
-    }
-  }
-
-  //Height 50%
-  .-h--50 {
-    height: 50%;
-  }
-
-  .-h-sm--50 {
-    @include respond-to(sm) {
-      height: 50%;
-    }
-  }
-
-  .-h-md--50 {
-    @include respond-to(md) {
-      height: 50%;
-    }
-  }
-
-  .-h-lg--50 {
-    @include respond-to(lg) {
-      height: 50%;
-    }
-  }
-
-  .-h-xl--50 {
-    @include respond-to(xl) {
-      height: 50%;
-    }
-  }
-
-  //Height 75%
-  .-h--75 {
-    height: 75%;
-  }
-
-  .-h-sm--75 {
-    @include respond-to(sm) {
-      height: 75%;
-    }
-  }
-
-  .-h-md--75 {
-    @include respond-to(md) {
-      height: 75%;
-    }
-  }
-
-  .-h-lg--75 {
-    @include respond-to(lg) {
-      height: 75%;
-    }
-  }
-
-  .-h-xl--75 {
-    @include respond-to(xl) {
-      height: 75%;
-    }
-  }
-
-  //Height 100%
-  .-h--100 {
-    height: 100%;
-  }
-
-  .-h-sm--100 {
-    @include respond-to(sm) {
-      height: 100%;
-    }
-  }
-
-  .-h-md--100 {
-    @include respond-to(md) {
-      height: 100%;
-    }
-  }
-
-  .-h-lg--100 {
-    @include respond-to(lg) {
-      height: 100%;
-    }
-  }
-
-  .-h-xl--100 {
-    @include respond-to(xl) {
-      height: 100%;
-    }
-  }
-
-  //Max Height 100%
-  .-mh--100 {
-    max-height: 100%;
   }
 }
