@@ -1,7 +1,8 @@
 # CHANGELOG
 
-### 0.8.3 (Unreleased)
+### 0.8.3 (October 24, 2018)
 
+* Added Dropdown component.
 * Added Templates section to documentation with Sign In and Error 500 layout examples.
 * Added Color utility.
 * Added responsive support to Border utility.
@@ -20,7 +21,6 @@
 * Renamed a-formGroup to m-formGroup.
 * Added Spinner component.
 * Added Avatar component.
-* Added Dropdown component.
 
 ### 0.8.2 (October 2, 2018)
 
