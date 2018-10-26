@@ -30,6 +30,19 @@
 
     // Vertical Alignment
 
+    &.-align--top {
+      align-items: flex-start;
+    }
+
+    &.-align--center {
+      align-items: center;
+    }
+
+    &.-align--bottom {
+      align-items: flex-end;
+    }
+
+    // Legacy code start
     &.-alignTop {
       align-items: flex-start;
     }
@@ -41,6 +54,7 @@
     &.-alignBottom {
       align-items: flex-end;
     }
+    // Legacy code end
   }
 
   .a-col {
@@ -167,6 +181,18 @@
 
     // Vertical Alignment (Column-Specifics)
 
+    &.-align--top {
+      align-self: flex-start;
+    }
+
+    &.-align--center {
+      align-self: center;
+    }
+
+    &.-align--bottom {
+      align-self: flex-end;
+    }
+    // Legacy code start
     &.-alignTop {
       align-self: flex-start;
     }
@@ -178,6 +204,7 @@
     &.-alignBottom {
       align-self: flex-end;
     }
+    // Legacy code end
 
     // Reordering
 

@@ -15,6 +15,14 @@
           flex: 0 0 auto;
         }
 
+        &.-align--left {
+          justify-content: flex-start;
+        }
+
+        &.-align--right {
+          justify-content: flex-end;
+        }
+        // Legacy code start
         &.-alignLeft {
           justify-content: flex-start;
         }
@@ -22,6 +30,7 @@
         &.-alignRight {
           justify-content: flex-end;
         }
+        // Legacy code end
       }
     }
   }
