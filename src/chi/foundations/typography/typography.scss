@@ -139,6 +139,17 @@ html {
       }
     }
 
+    &.-nostyle {
+      list-style: none;
+      padding-left: 0;
+
+      >li {
+        list-style: none;
+        padding-left: 0;
+      }
+    }
+
+    // Legacy code start
     &.-noStyle {
       list-style: none;
       padding-left: 0;
@@ -148,6 +159,7 @@ html {
         padding-left: 0;
       }
     }
+    // Legacy code end
   }
 
   p,
@@ -156,6 +168,118 @@ html {
     line-height: $line-height;
   }
 
+  .-text--large {
+    font-size: $text-large;
+    line-height: $line-height-large;
+  }
+
+  .-text--larger {
+    font-size: $text-larger;
+    line-height: $line-height-larger;
+  }
+
+  small,
+  .-text--small {
+    font-size: $text-small;
+    line-height: $line-height-small;
+  }
+
+  .-text--smaller {
+    font-size: $text-smaller;
+    line-height: $line-height-smaller;
+  }
+
+  .-text--justify {
+    text-align: justify;
+  }
+
+  .-text--left {
+    text-align: left;
+  }
+
+  .-text--center {
+    text-align: center;
+  }
+
+  .-text--right {
+    text-align: right;
+  }
+
+  .-text--lowercase {
+    text-transform: lowercase;
+  }
+
+  .-text--uppercase {
+    text-transform: uppercase;
+  }
+
+  .-text--capitalized {
+    text-transform: capitalized;
+  }
+
+  .-text--thin {
+    font-weight: 300;
+  }
+
+  .-text--normal {
+    font-weight: normal;
+  }
+
+  .-text--bold {
+    font-weight: 600;
+  }
+
+  .-text--bolder {
+    font-weight: 800;
+  }
+
+  .-text--nowrap {
+    white-space: nowrap !important;
+  }
+
+  .-text--truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // text colors
+  .-text--inverse {
+    color: $text-inverse;
+  }
+
+  .-text--brand {
+    color: $brand-color;
+  }
+
+  .-text--success {
+    color: $success-color;
+  }
+
+  .-text--danger {
+    color: $danger-color;
+  }
+
+  .-text--info {
+    color: $info-color;
+  }
+
+  .-text--warning {
+    color: $warning-color;
+  }
+
+  .-text--muted {
+    color: $muted-color;
+  }
+
+  // line heights
+  @for $index from 1 through 9 {
+    .-lh--#{$index} {
+      line-height: ($index / 2) + rem;
+    }
+  }
+
+  // Legacy code start
   .-textLarge {
     font-size: $text-large;
     line-height: $line-height-large;
@@ -266,4 +390,5 @@ html {
       line-height: ($index / 2) + rem;
     }
   }
+  // Legacy code end
 }

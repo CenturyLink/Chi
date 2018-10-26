@@ -100,35 +100,35 @@ p.-text 14px (0.875rem) font size with 24px (1.5rem) line-height
 h4 Large
 p.-text 16px (1rem) font size with 24px (1.5rem) line-height
 .example.-mb3
-  p.-text.-textLarge.-m3
+  p.-text.-text--large.-m3
     | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
     | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
   :code(lang="html")
-    <p class="-textLarge"></p>
+    <p class="-text--large"></p>
 h4 Larger
 p.-text 18px (1.125rem) font size with 28px (1.75rem) line-height
 .example.-mb3
-  p.-text.-textLarger.-m3
+  p.-text.-text--larger.-m3
     | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
     | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
   :code(lang="html")
-    <p class="-textLarger"></p>
+    <p class="-text--larger"></p>
 h4 Small
 p.-text 13px (0.8125rem) font size with 20px (1.25rem) line-height
 .example.-mb3
-  p.-text.-textSmall.-m3
+  p.-text.-text--small.-m3
     | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
     | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
   :code(lang="html")
-    <p class="-textSmall"></p>
+    <p class="-text--small"></p>
 h4 Smaller
 p.-text 12px (0.75rem) font size with 20px (1.25rem) line-height
 .example.-mb3
-  p.-text.-textSmaller.-m3
+  p.-text.-text--smaller.-m3
     | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
     | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
   :code(lang="html")
-    <p class="-textSmaller"></p>
+    <p class="-text--smaller"></p>
 
 h3 Code
 h4 Inline code
@@ -182,18 +182,18 @@ p.-text Use <code>&lt;ul&gt;</code> tags for unordered lists and <code>&lt;ol&gt
           <li></li>
         </ol>
 h4 No style
-p.-text To remove default list styling, apply the class <code>.-noStyle</code>
+p.-text To remove default list styling, apply the class <code>.-nostyle</code>
 .example.-mb3
-  ul.-text.-noStyle.-m3
+  ul.-text.-nostyle.-m3
     li List item 1
     li List item 2
-      ul.-noStyle
+      ul.-nostyle
         li List item 2.1
         li List item 2.2
     li List item 3
     li List item 4
   :code(lang="html")
-    <ul class="-text -noStyle">
+    <ul class="-text -nostyle">
       <li></li>
     </ul>
 h4 Inline
@@ -224,64 +224,64 @@ h3 Text alignment
 p.-text Change text alignment to justified, left, center, or right.
 .example.-mb3
   .-m3
-    p.-text.-textJustify This text will render as justified
-    p.-text.-textLeft This text will render as left aligned
-    p.-text.-textCenter This text will render as center aligned
-    p.-text.-textRight This text will render as right aligned
+    p.-text.-text--justify This text will render as justified
+    p.-text.-text--left This text will render as left aligned
+    p.-text.-text--center This text will render as center aligned
+    p.-text.-text--right This text will render as right aligned
   :code(lang="html")
-      <p class="-textJustify">This text will render as justified</p>
-      <p class="-textLeft">This text will render as left aligned</p>
-      <p class="-textCenter">This text will render as center aligned</p>
-      <p class="-textRight">This text will render as right aligned</p>
+      <p class="-text--justify">This text will render as justified</p>
+      <p class="-text--left">This text will render as left aligned</p>
+      <p class="-text--center">This text will render as center aligned</p>
+      <p class="-text--right">This text will render as right aligned</p>
 h3 Text transform
 p.-text Change text transform to lowercase, uppercase, or capitalized.
 .example.-mb3
   .-m3
-    p.-text.-textLowercase This text will render as lowercase
-    p.-text.-textUppercase This text will render as uppercase
-    p.-text.-textCapitalized This text will render as capitalized
+    p.-text.-text--lowercase This text will render as lowercase
+    p.-text.-text--uppercase This text will render as uppercase
+    p.-text.-text--capitalized This text will render as capitalized
   :code(lang="html")
-      <p class="-textLowercase">This text will render as lowercase</p>
-      <p class="-textUppercase">This text will render as uppercase</p>
-      <p class="-textCapitalized">This text will render as capitalized</p>
+      <p class="-text--lowercase">This text will render as lowercase</p>
+      <p class="-text--uppercase">This text will render as uppercase</p>
+      <p class="-text--capitalized">This text will render as capitalized</p>
 h3 Text weight
 p.-text Change text weight to thin, normal, bold, or bolder.
 .example.-mb3
   .-m3
-    p.-text.-textThin This text will render as thin
-    p.-text.-textNormal This text will render as normal
-    p.-text.-textBold This text will render as bold
-    p.-text.-textBolder This text will render as bolder
+    p.-text.-text--thin This text will render as thin
+    p.-text.-text--normal This text will render as normal
+    p.-text.-text--bold This text will render as bold
+    p.-text.-text--bolder This text will render as bolder
   :code(lang="html")
-      <p class="-textThin">This text will render as thin</p>
-      <p class="-textNormal">This text will render as normal</p>
-      <p class="-textBold">This text will render as bold</p>
-      <p class="-textBolder">This text will render as bolder</p>
+      <p class="-text--thin">This text will render as thin</p>
+      <p class="-text--normal">This text will render as normal</p>
+      <p class="-text--bold">This text will render as bold</p>
+      <p class="-text--bolder">This text will render as bolder</p>
 h3 Text wrapping
 p.-text Prevent text wrapping with nowrap or control overflow with truncate.
 .example.-mb3
   .-m3
-    p.-text.-textNoWrap(style="width: 11rem;background:#eeeeee;") This text will render without wrapping
-    p.-text.-textTruncate(style="width: 11rem;") This text will truncate with an ellipsis
+    p.-text.-text--nowrap(style="width: 11rem;background:#eeeeee;") This text will render without wrapping
+    p.-text.-text--truncate(style="width: 11rem;") This text will truncate with an ellipsis
   :code(lang="html")
-      <p class="-textNoWrap">This text will render without wrapping</p>
-      <p class="-textTruncate">This text will truncate with an ellipsis</p>
+      <p class="-text--nowrap">This text will render without wrapping</p>
+      <p class="-text--truncate">This text will truncate with an ellipsis</p>
 h3 Text colors
 p.-text Change text colors with contextual classes.
 .example.-mb3
   .-m3
-    p.-text.-textBrand .-textBrand
-    p.-text.-textSuccess .-textSuccess
-    p.-text.-textWarning .-textWarning
-    p.-text.-textDanger .-textDanger
-    p.-text.-textInfo .-textInfo
-    p.-text.-textMuted .-textMuted
-    p.-text.-textInverse(style="background:#000;") .-textInverse
+    p.-text.-text--brand .-text--brand
+    p.-text.-text--success .-text--success
+    p.-text.-text--warning .-text--warning
+    p.-text.-text--danger .-text--danger
+    p.-text.-text--info .-text--info
+    p.-text.-text--muted .-text--muted
+    p.-text.-text--inverse(style="background:#000;") .-text--inverse
   :code(lang="html")
-      <p class="-textBrand">.-textBrand</p>
-      <p class="-textSuccess">.-textSuccess</p>
-      <p class="-textWarning">.-textWarning</p>
-      <p class="-textDanger">.-textDanger</p>
-      <p class="-textInfo">.-textInfo</p>
-      <p class="-textMuted">.-textMuted</p>
-      <p class="-textInverse">.-textInverse</p>
+      <p class="-text--brand">.-text--brand</p>
+      <p class="-text--success">.-text--success</p>
+      <p class="-text--warning">.-text--warning</p>
+      <p class="-text--danger">.-text--danger</p>
+      <p class="-text--info">.-text--info</p>
+      <p class="-text--muted">.-text--muted</p>
+      <p class="-text--inverse">.-text--inverse</p>
