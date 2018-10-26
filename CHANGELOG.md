@@ -3,7 +3,8 @@
 ### 0.8.3 (October 26, 2018)
 
 * Updated grid utility notation. 
-* Updated text utilities notation.* Added Dropdown component.
+* Updated text utilities notation.
+* Added Dropdown component.
 * Added Dropdown component.
 * Added Templates section to documentation with Sign In and Error 500 layout examples.
 * Added Color utility.
