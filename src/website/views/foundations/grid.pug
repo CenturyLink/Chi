@@ -307,7 +307,7 @@ p.-text The columns in the following rows will be 50% wide until they are in the
 
 h4 Column Stacking
 
-p.-text On extra small (xs) viewports you can make columns stack by specifying the column with the <code>-w-sm</code> or any <code>-sm--w*</code> size modifier classes. Columns will start out stacked until viewed in the small viewport, at which point they will display horizontally in the row according to automatic layout or its assigned viewport size class.
+p.-text On extra small (xs) viewports you can make columns stack by specifying the column with the <code>-w-sm</code> or any <code>-w-sm--*</code> size modifier classes. Columns will start out stacked until viewed in the small viewport, at which point they will display horizontally in the row according to automatic layout or its assigned viewport size class.
 
 .a-grid.-show.-mb3
   .a-col.-w-sm--2
@@ -345,46 +345,46 @@ h4 Container-Level Vertical Alignment
 
 p.-text Setting alignment on the grid container will apply to all columns within the container. Use this method if you do not need to change the vertical alignment for each individual column.
 
-h5 -alignTop
+h5 -align--top
 
-.a-grid.-alignTop.-show.-mb3(style="height: 160px")
+.a-grid.-align--top.-show.-mb3(style="height: 160px")
   .a-col
   .a-col
   .a-col
 
 .-mb4.-mt2
   :code(lang="html")
-    <div class="a-grid -alignTop" style="height: 160px;">
+    <div class="a-grid -align--top" style="height: 160px;">
       <div class="a-col"></div>
       <div class="a-col"></div>
       <div class="a-col"></div>
     </div>
 
-h5 -alignCenter
+h5 -align--center
 
-.a-grid.-alignCenter.-show.-mb3(style="height: 160px")
+.a-grid.-align--center.-show.-mb3(style="height: 160px")
   .a-col
   .a-col
   .a-col
 
 .-mb4.-mt2
   :code(lang="html")
-    <div class="a-grid -alignCenter" style="height: 160px;">
+    <div class="a-grid -align--center" style="height: 160px;">
       <div class="a-col"></div>
       <div class="a-col"></div>
       <div class="a-col"></div>
     </div>
 
-h5 -alignBottom
+h5 -align--bottom
 
-.a-grid.-alignBottom.-show.-mb3(style="height: 128px")
+.a-grid.-align--bottom.-show.-mb3(style="height: 128px")
   .a-col
   .a-col
   .a-col
 
 .-mb4.-mt2
   :code(lang="html")
-    <div class="a-grid -alignBottom" style="height: 160px">
+    <div class="a-grid -align--bottom" style="height: 160px">
       <div class="a-col"></div>
       <div class="a-col"></div>
       <div class="a-col"></div>
@@ -395,14 +395,14 @@ h4 Column-Specific Vertical Alignment
 p.-text Changing the alignment of an individual column is as easy as applying an alignment modifier to the column in question.
 
 .a-grid.-show.-mb3(style="height: 160px")
-  .a-col.-alignTop
-  .a-col.-alignCenter
-  .a-col.-alignBottom
+  .a-col.-align--top
+  .a-col.-align--center
+  .a-col.-align--bottom
 
 .-mb4.-mt2
   :code(lang="html")
     <div class="a-grid" style="height: 160px">
-      <div class="a-col -alignTop"></div>
-      <div class="a-col -alignCenter"></div>
-      <div class="a-col -alignBottom"></div>
+      <div class="a-col -align--top"></div>
+      <div class="a-col -align--center"></div>
+      <div class="a-col -align--bottom"></div>
     </div>

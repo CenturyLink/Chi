@@ -39,6 +39,19 @@
       padding: 1rem;
       position: relative;
 
+      &.-align--left {
+        justify-content: flex-start;
+      }
+
+      &.-align--right {
+        justify-content: flex-end;
+      }
+
+      &.-align--center {
+        justify-content: center;
+      }
+
+      // Legacy code start
       &.-alignLeft {
         justify-content: flex-start;
       }
@@ -50,6 +63,7 @@
       &.-alignCenter {
         justify-content: center;
       }
+      // Legacy code end
 
       &.-noBorder {
         box-shadow: none;
@@ -78,6 +92,18 @@
       padding: 1rem;
       position: relative;
 
+      &.-align--left {
+        justify-content: flex-start;
+      }
+
+      &.-align--right {
+        justify-content: flex-end;
+      }
+
+      &.-align--center {
+        justify-content: center;
+      }
+      // Legacy code start
       &.-alignLeft {
         justify-content: flex-start;
       }
@@ -89,6 +115,7 @@
       &.-alignCenter {
         justify-content: center;
       }
+      // Legacy code end
 
       &.-small {
         padding: 0.5rem 1rem;
