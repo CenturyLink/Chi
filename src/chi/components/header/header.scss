@@ -38,6 +38,9 @@
       .a-brand {
         display: inline-flex;
         width: 7.5rem;
+        &:only-child {
+          margin-right: 0;
+        }
         & > img,
         & > svg {
           height: 1.5rem;
