@@ -13,20 +13,22 @@
 
     &__item {
       &:not(:first-child) {
-        padding-left: .25rem;
+        padding-left: 0.25rem;
 
         &::before {
           color: set-color(gray, 50);
-          content: quote("/");
+          content: quote('/');
           font-weight: normal;
-          padding-right: .25rem;
+          padding-right: 0.25rem;
         }
       }
 
-      &.-active a {
-        color: $text-color;
-        font-weight: normal;
-        text-decoration: none;
+      &.-active {
+        a {
+          color: $text-color;
+          font-weight: normal;
+          text-decoration: none;
+        }
       }
     }
 
