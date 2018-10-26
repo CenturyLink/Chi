@@ -6,7 +6,7 @@ mixin str(cid, name, id, date, checked)
   tr(class={
     '-rowWarning': checked
   })
-    td.-lh1
+    td.-lh--1
       input.a-input(
         type="checkbox"
         id=cid
@@ -109,7 +109,7 @@ each size, index in ['default', 'small', 'large']
           thead
             tr
               th(width="48px")
-                div.-lh1
+                div.-lh--1
                   input.a-input(type="checkbox", id=`chk-${index}`)
                   label(for=`chk-${index}`)
               th.-sorted.-descending

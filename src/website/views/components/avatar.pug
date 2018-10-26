@@ -56,8 +56,8 @@ h4 Initial avatars
 p.-text
   | Initial avatars can also be used when an image is not available.
   | They are more versatile than icon avatars and support up to two letters.
-  | Text utility classes such as <code>-textUppercase</code>, <code>-textLowercase</code>,
-  | and <code>-textCapitalized</code> can be applied to force specific casing.
+  | Text utility classes such as <code>-text--uppercase</code>, <code>-text--lowercase</code>,
+  | and <code>-text--capitalized</code> can be applied to force specific casing.
 .example.-mb3
   .-p3.a-grid
     .a-col.-w2.-sm--w1
@@ -86,7 +86,7 @@ ul#a-tabs--colors.a-tabs
     .-p3
       .a-grid.-align-items--end
         each color in colors
-          .a-col.-w2.-textCenter
+          .a-col.-w2.-text--center
             div(class=`a-avatar -${color}`) AA
             p.-text= color
     :code(lang="html")
@@ -107,7 +107,7 @@ ul#a-tabs--colors.a-tabs
     .-p3
       .a-grid.-align-items--end
         each color in colors
-          .a-col.-w2.-textCenter
+          .a-col.-w2.-text--center
             div(class=`a-avatar -${color}`)
               i.a-icon.icon-user
             p.-text= color
@@ -168,7 +168,7 @@ ul#a-tabs--sizes.a-tabs
     .-p3
       .a-grid.-align-items--end
         each size in sizes
-          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -textCenter`)
+          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
             div(class=`a-avatar -${size}`) AA
             p.-text= size
     :code(lang="html")
@@ -185,7 +185,7 @@ ul#a-tabs--sizes.a-tabs
     .-p3
       .a-grid.-align-items--end
         each size in sizes
-          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -textCenter`)
+          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
             div(class=`a-avatar -${size}`)
               i.a-icon.icon-user
             p.-text= size
@@ -219,7 +219,7 @@ ul#a-tabs--sizes.a-tabs
     .-p3
       .a-grid.-align-items--end
         each size in sizes
-          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -textCenter`)
+          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
             div(class=`a-avatar -${size}`)
               img(src='../../assets/images/avatar.jpg', alt="avatar")
             p.-text= size

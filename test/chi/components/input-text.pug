@@ -70,15 +70,15 @@ each size in ['default', 'small', 'large']
                 .a-inputWrapper.-iconRight
                   +input(style, state, size, disabled)
                   if style == 'success'
-                    .a-icon.-textSuccess
+                    .a-icon.-text--success
                       svg
                         use(xlink:href='#icon-check')
                   else if style == 'warning'
-                    .a-icon.-textWarning
+                    .a-icon.-text--warning
                       svg
                         use(xlink:href='#icon-warning')
                   else if style == 'danger'
-                    .a-icon.-textDanger
+                    .a-icon.-text--danger
                       svg
                         use(xlink:href='#icon-circle-warning')
                   else
@@ -100,15 +100,15 @@ each size in ['default', 'small', 'large']
                   +input(style, state, size, disabled)
                   +icon('atom')
                   if style == 'success'
-                    .a-icon.-textSuccess
+                    .a-icon.-text--success
                       svg
                         use(xlink:href='#icon-check')
                   else if style == 'warning'
-                    .a-icon.-textWarning
+                    .a-icon.-text--warning
                       svg
                         use(xlink:href='#icon-warning')
                   else if style == 'danger'
-                    .a-icon.-textDanger
+                    .a-icon.-text--danger
                       svg
                         use(xlink:href='#icon-circle-warning')
                   else

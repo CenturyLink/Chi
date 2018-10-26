@@ -101,23 +101,23 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
   #a-tabs-panel--colors-svg.a-tabs-panel.-active
     :code(lang="html")
       <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -textBrand"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -textSuccess"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -textWarning"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -textDanger"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -textInfo"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -textInverse"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -textMuted"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -text--brand"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -text--success"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -text--warning"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -text--danger"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -text--info"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -text--inverse"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -text--muted"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
   #a-tabs-panel--colors-webfont.a-tabs-panel
     :code(lang="html")
       <i class="a-icon icon-logo-centurylink -md"></i>
-      <i class="a-icon icon-logo-centurylink -md -textBrand"></i>
-      <i class="a-icon icon-logo-centurylink -md -textSuccess"></i>
-      <i class="a-icon icon-logo-centurylink -md -textWarning"></i>
-      <i class="a-icon icon-logo-centurylink -md -textDanger"></i>
-      <i class="a-icon icon-logo-centurylink -md -textInfo"></i>
-      <i class="a-icon icon-logo-centurylink -md -textInverse"></i>
-      <i class="a-icon icon-logo-centurylink -md -textMuted"></i>
+      <i class="a-icon icon-logo-centurylink -md -text--brand"></i>
+      <i class="a-icon icon-logo-centurylink -md -text--success"></i>
+      <i class="a-icon icon-logo-centurylink -md -text--warning"></i>
+      <i class="a-icon icon-logo-centurylink -md -text--danger"></i>
+      <i class="a-icon icon-logo-centurylink -md -text--info"></i>
+      <i class="a-icon icon-logo-centurylink -md -text--inverse"></i>
+      <i class="a-icon icon-logo-centurylink -md -text--muted"></i>
 
 h3 Available Icons
 .a-grid.icon-library.-pt2.-pb6
@@ -128,7 +128,7 @@ h3 Available Icons
           .a-icon.-sm
             svg
               use(xlink:href=`#icon-${name}`)
-      p.-textCenter= 'icon-' + name
+      p.-text--center= 'icon-' + name
 
 script(type="text/javascript", src=`../../tabs.js`)
 //!= '<script>Array.prototype.forEach.call(document.getElementsByClassName(\'a-tabs\'), function(e){chiTabs.init(e);});</script>'

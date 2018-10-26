@@ -11,78 +11,78 @@ p.-text
   | and illustrated in green in the example below.
 .example.-mb3
   .-m3
-    each type in ['lh1', 'lh2', 'lh3', 'lh4', 'lh5', 'lh6', 'lh7', 'lh8', 'lh9']
+    each type in ['lh--1', 'lh--2', 'lh--3', 'lh--4', 'lh--5', 'lh--6', 'lh--7', 'lh--8', 'lh--9']
       p.-text.-pl1(class=`-${type}`, style=`background:#E4F2CE;`)
         = `-${type}`
   :code(lang="html")
-      <p class="-text -lh1">-lh1</p>
-      <p class="-text -lh2">-lh2</p>
-      <p class="-text -lh3">-lh3</p>
-      <p class="-text -lh4">-lh4</p>
-      <p class="-text -lh5">-lh5</p>
-      <p class="-text -lh6">-lh6</p>
-      <p class="-text -lh7">-lh7</p>
-      <p class="-text -lh8">-lh8</p>
-      <p class="-text -lh9">-lh9</p>
+      <p class="-text -lh--1">-lh--1</p>
+      <p class="-text -lh--2">-lh--2</p>
+      <p class="-text -lh--3">-lh--3</p>
+      <p class="-text -lh--4">-lh--4</p>
+      <p class="-text -lh--5">-lh--5</p>
+      <p class="-text -lh--6">-lh--6</p>
+      <p class="-text -lh--7">-lh--7</p>
+      <p class="-text -lh--8">-lh--8</p>
+      <p class="-text -lh--9">-lh--9</p>
 h4 Text alignment
 p.-text Change text alignment to justified, left, center, or right.
 .example.-mb3
   .-m3
-    p.-text.-textJustify This text will render as justified
-    p.-text.-textLeft This text will render as left aligned
-    p.-text.-textCenter This text will render as center aligned
-    p.-text.-textRight This text will render as right aligned
+    p.-text.-text--justify This text will render as justified
+    p.-text.-text--left This text will render as left aligned
+    p.-text.-text--center This text will render as center aligned
+    p.-text.-text--right This text will render as right aligned
   :code(lang="html")
-      <p class="-textJustify">This text will render as justified</p>
-      <p class="-textLeft">This text will render as left aligned</p>
-      <p class="-textCenter">This text will render as center aligned</p>
-      <p class="-textRight">This text will render as right aligned</p>
+      <p class="-text--justify">This text will render as justified</p>
+      <p class="-text--left">This text will render as left aligned</p>
+      <p class="-text--center">This text will render as center aligned</p>
+      <p class="-text--right">This text will render as right aligned</p>
 h4 Text transform
 p.-text Change text transform to lowercase, uppercase, or capitalized.
 .example.-mb3
   .-m3
-    p.-text.-textLowercase This text will render as lowercase
-    p.-text.-textUppercase This text will render as uppercase
-    p.-text.-textCapitalized This text will render as capitalized
+    p.-text.-text--lowercase This text will render as lowercase
+    p.-text.-text--uppercase This text will render as uppercase
+    p.-text.-text--capitalized This text will render as capitalized
   :code(lang="html")
-      <p class="-textLowercase">This text will render as lowercase</p>
-      <p class="-textUppercase">This text will render as uppercase</p>
-      <p class="-textCapitalized">This text will render as capitalized</p>
+      <p class="-text--lowercase">This text will render as lowercase</p>
+      <p class="-text--uppercase">This text will render as uppercase</p>
+      <p class="-text--capitalized">This text will render as capitalized</p>
 h4 Text weight
 p.-text Change text weight to thin, normal, bold, or bolder.
 .example.-mb3
   .-m3
-    p.-text.-textThin This text will render as thin
-    p.-text.-textNormal This text will render as normal
-    p.-text.-textBold This text will render as bold
-    p.-text.-textBolder This text will render as bolder
+    p.-text.-text--thin This text will render as thin
+    p.-text.-text--normal This text will render as normal
+    p.-text.-text--bold This text will render as bold
+    p.-text.-text--bolder This text will render as bolder
   :code(lang="html")
-      <p class="-textThin">This text will render as thin</p>
-      <p class="-textNormal">This text will render as normal</p>
-      <p class="-textBold">This text will render as bold</p>
-      <p class="-textBolder">This text will render as bolder</p>
+      <p class="-text--thin">This text will render as thin</p>
+      <p class="-text--normal">This text will render as normal</p>
+      <p class="-text--bold">This text will render as bold</p>
+      <p class="-text--bolder">This text will render as bolder</p>
 h4 Text wrapping
 p.-text Prevent text wrapping with nowrap or control overflow with truncate.
 .example.-mb3
   .-m3
-    p.-text.-textNoWrap(style="width: 11rem;background:#eeeeee;") This text will render without wrapping
-    p.-text.-textTruncate(style="width: 11rem;") This text will truncate with an ellipsis
+    p.-text.-text--nowrap(style="width: 11rem;background:#eeeeee;") This text will render without wrapping
+    p.-text.-text--truncate(style="width: 11rem;") This text will truncate with an ellipsis
   :code(lang="html")
-      <p class="-textNoWrap">This text will render without wrapping</p>
-      <p class="-textTruncate">This text will truncate with an ellipsis</p>
+      <p class="-text--nowrap">This text will render without wrapping</p>
+      <p class="-text--truncate">This text will truncate with an ellipsis</p>
 h4 Text colors
 p.-text Change text colors with contextual classes.
 .example.-mb3
   .-m3
-    each type in ['textBrand', 'textSuccess', 'textWarning', 'textDanger', 'textInfo', 'textMuted']
+    each type in ['text--brand', 'text--success', 'text--warning', 'text--danger', 'text--info', 'text--muted']
       p.-text(class=`-${type}`)
         = `.-${type}`
-    p.-text.-textInverse(style="background:#000;") .-textInverse
+    p.-text.-text--inverse(style="background:#000;") .-text--inverse
   :code(lang="html")
-      <p class="-textBrand">.-textBrand</p>
-      <p class="-textSuccess">.-textSuccess</p>
-      <p class="-textWarning">.-textWarning</p>
-      <p class="-textDanger">.-textDanger</p>
-      <p class="-textInfo">.-textInfo</p>
-      <p class="-textMuted">.-textMuted</p>
-      <p class="-textInverse">.-textInverse</p>
+      <p class="-text--brand">.-text--brand</p>
+      <p class="-text--success">.-text--success</p>
+      <p class="-text--warning">.-text--warning</p>
+      <p class="-text--danger">.-text--danger</p>
+      <p class="-text--info">.-text--info</p>
+      <p class="-text--muted">.-text--muted</p>
+      <p class="-text--inverse">.-text--inverse</p>

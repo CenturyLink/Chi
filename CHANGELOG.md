@@ -20,7 +20,9 @@
 * Fixed bug that prevented adding buttons to Alert components.
 * Renamed a-formGroup to m-formGroup.
 * Added Spinner component.
-* Added Avatar component.
+* Added Avatar component. 
+* Uptated grid utility notation. 
+* Updated text utilities notation.
 
 ### 0.8.2 (October 2, 2018)
 
