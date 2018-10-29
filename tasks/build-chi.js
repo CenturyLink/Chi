@@ -5,6 +5,7 @@ gulp.task('build:chi', done => runSequence(
   'build:chi:styles',
   'build:chi:assets',
   'build:chi:sprite',
+  'build:chi:scripts',
   'build:test:fixtures',
   done
 ));
