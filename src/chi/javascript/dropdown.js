@@ -1,5 +1,5 @@
-import {Util} from "../javascript/util.js";
-import {chi} from "../javascript/chi.js";
+import {Util} from "./util.js";
+import {chi} from "./chi.js";
 import Popper from 'popper.js';
 
 const CLASS_MOLECULE = "m-dropdown";
@@ -82,7 +82,7 @@ class Dropdown {
       }
     }
     if (!this._dropdownElem) {
-      console.err("Could not find dropdown conent for dropdown trigger. ");
+      throw new Error ("Could not find dropdown conent for dropdown trigger. ");
     }
   }
 
@@ -148,9 +148,7 @@ class Dropdown {
 
 }
 
-let chiDropdown = function(elem, config) {
-  return Dropdown.factory(elem, config);
-};
+let chiDropdown = Dropdown.factory;
 
 chi.dropdown = chiDropdown;
 export {Dropdown, chiDropdown};

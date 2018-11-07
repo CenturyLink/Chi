@@ -7,14 +7,14 @@ import { Folders } from './constants';
 
 const gulpPlugins = require('gulp-load-plugins')();
 const sources = path.join(Folders.SRC, 'chi/javascript/index.js');
-const destination = path.join(Folders.DIST, 'js');
+const destination = path.join(Folders.DIST, 'amd');
 
 
 const webpackConfig = {
   output: {
     library: 'chi',
-    filename: 'chi.js'
-    //libraryTarget: 'umd'
+    filename: 'chi.js',
+    libraryTarget: 'amd'
   },
   module: {
     loaders: [
@@ -26,6 +26,9 @@ const webpackConfig = {
         }
       }
     ]
+  },
+  externals: {
+    'popper.js': 'popper'
   }
 };
 
@@ -54,7 +57,7 @@ if (process.env.PRODUCTION) {
   })];
 }
 
-gulp.task('build:chi:scripts', () => gulp.src(sources)
+gulp.task('build:chi:scriptsAMD', () => gulp.src(sources)
   .pipe(gulpPlugins.plumber())
   .pipe(vinylNamed())
   .pipe(webpackStream(webpackConfig))

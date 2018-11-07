@@ -10,6 +10,10 @@ export class Util {
 
   static addClass (elem, className) {
     elem.className += ' ' + className;
+
+    //TODO remove this
+    let constante = 'nombreConstanteUtil';
+    Util.removeClass(elem, constante);
   }
 
   static hasClass (elem, className) {
