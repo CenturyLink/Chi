@@ -12,7 +12,7 @@
   }
 
   @each $size in sm md lg xl {
-    @include respond-to-only($size) {
+    @include respond-to($size) {
       @each $type in none inline inline-block block table table-cell table-row flex inline-flex {
         .-d-#{$size}--#{$type} {
           display: #{$type};
