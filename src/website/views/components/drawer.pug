@@ -1,0 +1,212 @@
+---
+title: Drawer
+---
+p.-text
+  | Drawer primary use case is to slide in navigation on small devices. However, it can be also utilized on
+  | standard desktop displays.
+
+h3 Examples
+
+p Drawers support sliding in from top, right, bottom, or left. They 
+
+ul#a-tabs--drawer.a-tabs
+  li.-active
+    a(href='#a-tabs--drawer-left') Left
+  li
+    a(href='#a-tabs--drawer-right') Right
+  li
+    a(href='#a-tabs--drawer-top') Top
+  li
+    a(href='#a-tabs--drawer-bottom') Bottom
+#a-tabs--drawer-left.a-tabs-panel.-active
+  .example.-mb3(style='overflow:hidden;')
+    div(style="position:relative;height:30rem;overflow:hidden;")
+      div
+        each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+          .-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. A culpa cupiditate earum fugiat illo minima qui, quo, recusandae reiciendis reprehenderit saepe vitae? A blanditiis doloribus facere incidunt labore, magnam odit!
+      .m-drawer.-left.-active
+        .m-drawer__header
+          button(class='a-btn -icon -close')
+            .a-btn__content
+              i.a-icon.icon-x
+        .m-drawer__content
+          .-px--2.-text Drawer content here
+    :code(lang="html")
+      <div class="m-drawer -left -active">
+        <div class="m-drawer__header">
+          <button class="a-btn -icon -close">
+            <div class="a-btn__content">
+              <i class="a-icon icon-x"></i>
+            </div>
+          </button>
+        </div>
+        <div class="m-drawer__content">
+          <div class="-px--2 -text">Drawer content here</div>
+        </div>
+      </div>
+#a-tabs--drawer-right.a-tabs-panel
+  .example.-mb3(style='overflow:hidden;')
+    div(style="position:relative;height:30rem;overflow:hidden;")
+      div
+        each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+          .-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. A culpa cupiditate earum fugiat illo minima qui, quo, recusandae reiciendis reprehenderit saepe vitae? A blanditiis doloribus facere incidunt labore, magnam odit!
+      .m-drawer.-right.-active
+        .m-drawer__header
+          button(class='a-btn -icon -close')
+            .a-btn__content
+              i.a-icon.icon-x
+        .m-drawer__content
+          .-px--2.-text Drawer content here
+    :code(lang="html")
+      <div class="m-drawer -right -active">
+        <div class="m-drawer__header">
+          <button class="a-btn -icon -close">
+            <div class="a-btn__content">
+              <i class="a-icon icon-x"></i>
+            </div>
+          </button>
+        </div>
+        <div class="m-drawer__content">
+          <div class="-px--2 -text">Drawer content here</div>
+        </div>
+      </div>
+#a-tabs--drawer-top.a-tabs-panel
+  .example.-mb3(style='overflow:hidden;')
+    div(style="position:relative;height:30rem;overflow:hidden;")
+      div
+        each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+          .-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. A culpa cupiditate earum fugiat illo minima qui, quo, recusandae reiciendis reprehenderit saepe vitae? A blanditiis doloribus facere incidunt labore, magnam odit!
+      .m-drawer.-top.-active
+        .m-drawer__header
+          button(class='a-btn -icon -close')
+            .a-btn__content
+              i.a-icon.icon-x
+        .m-drawer__content
+          .-px--2.-text Drawer content here
+    :code(lang="html")
+      <div class="m-drawer -top -active">
+        <div class="m-drawer__header">
+          <button class="a-btn -icon -close">
+            <div class="a-btn__content">
+              <i class="a-icon icon-x"></i>
+            </div>
+          </button>
+        </div>
+        <div class="m-drawer__content">
+          <div class="-px--2 -text">Drawer content here</div>
+        </div>
+      </div>
+#a-tabs--drawer-bottom.a-tabs-panel
+  .example.-mb3(style='overflow:hidden;')
+    div(style="position:relative;height:30rem;overflow:hidden;")
+      div
+        each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+          .-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. A culpa cupiditate earum fugiat illo minima qui, quo, recusandae reiciendis reprehenderit saepe vitae? A blanditiis doloribus facere incidunt labore, magnam odit!
+      .m-drawer.-bottom.-active
+        .m-drawer__header
+          button(class='a-btn -icon -close')
+            .a-btn__content
+              i.a-icon.icon-x
+        .m-drawer__content
+          .-px--2.-text Drawer content here
+    :code(lang="html")
+      <div class="m-drawer -bottom -active">
+        <div class="m-drawer__header">
+          <button class="a-btn -icon -close">
+            <div class="a-btn__content">
+              <i class="a-icon icon-x"></i>
+            </div>
+          </button>
+        </div>
+        <div class="m-drawer__content">
+          <div class="-px--2 -text">Drawer content here</div>
+        </div>
+      </div>
+
+h4 Backdrop
+p.-text
+  | Optionaly, you can add a backdrop to focus user attention in the drawer content.
+.example.-mb3(style='overflow:hidden;')
+  .a-backdrop(style="position:relative;height:30rem")
+    .m-drawer.-bottom.-active
+      button(class='a-btn -icon -close')
+        .a-btn__content
+          i.a-icon.icon-x
+      .m-drawer__content.-d--flex.-align-items--center.-justify-content--center
+        .-px--2.-text Drawer content here
+  :code(lang="html")
+    <div class="a-backdrop">
+      <div class="m-drawer -bottom -active">
+        <button class="a-btn -icon -close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+        <div class="m-drawer__content -d--flex -align-items--center -justify-content--center">
+          <div class="-px--2 -text">Drawer content here</div>
+        </div>
+      </div>
+    </div>
+
+h4 Header
+
+p.-text
+  | Header markup is optional. Remove it to make the content fill all the drawer.
+
+ul#a-tabs--header.a-tabs
+  li.-active
+    a(href='#a-tabs--header-with') Header
+  li
+    a(href='#a-tabs--header-without') No header
+#a-tabs--header-with.a-tabs-panel.-active
+  .example.-mb3(style='overflow:hidden;')
+    div(style="position:relative;height:15rem;overflow:hidden;")
+      .a-backdrop(style="position:relative;height:30rem")
+        .m-drawer.-left.-active
+          .m-drawer__header
+            button(class='a-btn -icon -close')
+              .a-btn__content
+                i.a-icon.icon-x
+          .m-drawer__content
+            .-px--2.-text Drawer content here
+    :code(lang="html")
+      <div class="a-backdrop">
+        <div class="m-drawer -left -active">
+          <div class="m-drawer__header">
+            <button class="a-btn -icon -close">
+              <div class="a-btn__content">
+                <i class="a-icon icon-x"></i>
+              </div>
+            </button>
+          </div>
+          <div class="m-drawer__content">
+            <div class="-px--2 -text">Drawer content here</div>
+          </div>
+        </div>
+      </div>
+#a-tabs--header-without.a-tabs-panel
+  .example.-mb3(style='overflow:hidden;')
+    div(style="position:relative;height:15rem;overflow:hidden;")
+      .a-backdrop(style="position:relative;height:30rem")
+        .m-drawer.-left.-active
+          button(class='a-btn -icon -close')
+            .a-btn__content
+              i.a-icon.icon-x
+          .m-drawer__content
+            .-px--2.-text Drawer content here
+    :code(lang="html")
+      <div class="a-backdrop">
+        <div class="m-drawer -left -active">
+          <button class="a-btn -icon -close">
+            <div class="a-btn__content">
+              <i class="a-icon icon-x"></i>
+            </div>
+          </button>
+          <div class="m-drawer__content">
+            <div class="-px--2 -text">Drawer content here</div>
+          </div>
+        </div>
+      </div>
+
+script(type="text/javascript", src=`../../tabs.js`)
+!= '<script>chiTabs.init(document.getElementById(\'a-tabs--drawer\'));chiTabs.init(document.getElementById(\'a-tabs--header\'));</script>'

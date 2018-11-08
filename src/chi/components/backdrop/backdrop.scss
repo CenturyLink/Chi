@@ -1,0 +1,21 @@
+@import 'mixins';
+
+.a-backdrop {
+  align-items: center;
+  background-color: rgba(set-color(black), 0.65);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  overflow: hidden;
+  padding: 0 0.5rem;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  &.-inverse {
+    background-color: rgba(set-color(white), 0.8);
+  }
+}
+

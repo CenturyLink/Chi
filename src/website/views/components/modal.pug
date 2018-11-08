@@ -10,7 +10,7 @@ p.-text
 
 h4 Base
 .example.-mb3
-  .a-modal__backdrop.-p6(style="position:relative;border-top-left-radius:3px;border-top-right-radius:3px;")
+  .a-backdrop.-p6(style="position:relative;border-top-left-radius:3px;border-top-right-radius:3px;")
     .a-modal(style="margin-top:0;")
       .a-modal__header
         h3.a-modal__title Modal Title
@@ -23,7 +23,7 @@ h4 Base
         button.a-btn Cancel
         button.a-btn.-brand.-ml2 Save
   :code(lang="html")
-    <div class="a-modal__backdrop">
+    <div class="a-backdrop">
       <div class="a-modal">
         <div class="a-modal__header">
           <h3 class="a-modal__title">Modal Title</h3>
@@ -47,7 +47,7 @@ h4 Inverse Backdrop
 p.-text
   | Invert a modals backdrop by applying the class <code>-inverse</code>.
 .example.-mb3
-  .a-modal__backdrop.-inverse.-p6(style="position:relative;border-top-left-radius:3px;border-top-right-radius:3px;")
+  .a-backdrop.-inverse.-p6(style="position:relative;border-top-left-radius:3px;border-top-right-radius:3px;")
     .a-modal(style="margin-top:0;")
       .a-modal__header
         h3.a-modal__title Modal Title
@@ -60,7 +60,7 @@ p.-text
         button.a-btn Cancel
         button.a-btn.-brand.-ml2 Save
   :code(lang="html")
-    <div class="a-modal__backdrop -inverse">
+    <div class="a-backdrop -inverse">
       <div class="a-modal">
         <div class="a-modal__header">
           <h3 class="a-modal__title">Modal Title</h3>
@@ -85,7 +85,7 @@ p.-text
   | Disable header or footer borders by applying the class <code>-noBorder</code> to
   | <code>a-modal__header</code> or <code>a-modal__footer</code>.
 .example.-mb3
-  .a-modal__backdrop.-p6(style="position:relative;border-top-left-radius:3px;border-top-right-radius:3px;")
+  .a-backdrop.-p6(style="position:relative;border-top-left-radius:3px;border-top-right-radius:3px;")
     .a-modal(style="margin-top:0;")
       .a-modal__header.-noBorder
         h3.a-modal__title Modal Title
@@ -98,7 +98,7 @@ p.-text
         button.a-btn Cancel
         button.a-btn.-brand.-ml2 Save
   :code(lang="html")
-    <div class="a-modal__backdrop">
+    <div class="a-backdrop">
       <div class="a-modal">
         <div class="a-modal__header -noBorder">
           <h3 class="a-modal__title">Modal Title</h3>
@@ -124,7 +124,7 @@ p.-text
   | to <code>a-modal__title</code>. This will provide sufficient real estate on the
   | left side to store a back button <code>a-modal__back</code>.
 .example.-mb3
-  .a-modal__backdrop.-p6(style="position:relative;border-top-left-radius:3px;border-top-right-radius:3px;")
+  .a-backdrop.-p6(style="position:relative;border-top-left-radius:3px;border-top-right-radius:3px;")
     .a-modal(style="margin-top:0;")
       .a-modal__header
         h3.a-modal__title.-centered Modal Title
@@ -137,7 +137,7 @@ p.-text
       .a-modal__footer
         button.a-btn.-brand.-ml2 Next
   :code(lang="html")
-    <div class="a-modal__backdrop">
+    <div class="a-backdrop">
       <div class="a-modal">
         <div class="a-modal__header">
           <h3 class="a-modal__title -centered">Modal Title</h3>
@@ -160,7 +160,7 @@ p.-text
 h4 Simple
 p.-text Remove <code>a-modal__header</code> and <code>a-modal__footer</code> for a simple and customizable modal.
 .example.-mb3
-  .a-modal__backdrop.-p6(style="position:relative;border-top-left-radius:3px;border-top-right-radius:3px;")
+  .a-backdrop.-p6(style="position:relative;border-top-left-radius:3px;border-top-right-radius:3px;")
     .a-modal(style="margin-top:0;")
       button(class='a-btn -icon -close')
         .a-btn__content
@@ -173,7 +173,7 @@ p.-text Remove <code>a-modal__header</code> and <code>a-modal__footer</code> for
           | consectetur adipiscing elit. Donec laoreet rutrum eros laoreet.
         button.a-btn.-brand.-large.-mt1 Action
   :code(lang="html")
-    <div class="a-modal__backdrop">
+    <div class="a-backdrop">
       <div class="a-modal">
         <button class="a-btn -icon -close">
           <div class="a-btn__content">
