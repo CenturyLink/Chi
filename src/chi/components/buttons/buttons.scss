@@ -2,73 +2,74 @@
 @import 'variables';
 
 $state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
+$border: 0.0625rem;
 
 $sizes: (
-  xs: (
+  sm: (
+    border-radius: 0.75rem,
     font-size: 0.75rem,
     line-height: 1rem,
-    padding: 0.25rem 0.5rem,
-    border-radius: 0.75rem,
+    padding: (0.25rem - $border) (0.5rem - $border),
     icons: (
       height: 0.75rem,
+      padding: 0.375rem - $border,
       width: 0.75rem,
-      padding: 0.375rem,
-    ),
+    )
   ),
-  sm: (
-    font-size: 0.8125rem,
+  small: (
+    border-radius: 0.75rem,
+    font-size: 0.75rem,
     line-height: 1rem,
-    padding: 0.5rem 1rem,
-    border-radius: 1rem,
+    padding: (0.25rem - $border) (0.5rem - $border),
     icons: (
-      height: 1rem,
-      width: 1rem,
-      padding: 0.5rem,
-    ),
+      height: 0.75rem,
+      padding: 0.375rem - $border,
+      width: 0.75rem,
+    )
   ),
   md: (
+    border-radius: 1rem,
     font-size: 0.875rem,
     line-height: 1rem,
-    padding: 0.5rem 1rem,
-    border-radius: 1rem,
+    padding: (0.5rem - $border) (1rem - $border),
     icons: (
       height: 1rem,
+      padding: 0.5rem - $border,
       width: 1rem,
-      padding: 0.5rem,
-    ),
+    )
   ),
   lg: (
+    border-radius: 1.25rem,
     font-size: 0.875rem,
-    line-height: 1rem,
-    padding: 0.75rem 1.5rem,
-    border-radius: 1.5rem,
+    line-height: 1.25rem,
+    padding: (0.625rem - $border) (1.5rem - $border),
     icons: (
       height: 1rem,
+      padding: 0.75rem - $border,
       width: 1rem,
-      padding: 0.75rem,
-    ),
+    )
+  ),
+  large: (
+    border-radius: 1.25rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    padding: (0.625rem - $border) (1.5rem - $border),
+    icons: (
+      height: 1rem,
+      padding: 0.75rem - $border,
+      width: 1rem,
+    )
   ),
   xl: (
-    font-size: 1rem,
-    line-height: 1rem,
-    padding: 0.75rem 1.5rem,
     border-radius: 1.5rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    padding: (0.875rem - $border) (1.5rem - $border),
     icons: (
-      height: 1.25rem,
-      width: 1.25rem,
-      padding: 0.625rem,
-    ),
-  ),
-  xxl: (
-    font-size: 1.125rem,
-    line-height: 1.125rem,
-    padding: 0.875rem 1.5rem,
-    border-radius: 1.5rem,
-    icons: (
-      height: 1.5rem,
-      width: 1.5rem,
-      padding: 0.75rem,
-    ),
+      height: 1rem,
+      padding: 1rem - $border,
+      width: 1rem,
+    )
   )
 );
 
@@ -76,7 +77,7 @@ $sizes: (
   .a-btn {
     & {
       background-color: set-color(white);
-      border: 0.0625rem solid set-color(grey, 30);
+      border: $border solid set-color(grey, 30);
       border-radius: $border-radius;
       box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
       color: $text-color;
@@ -87,7 +88,7 @@ $sizes: (
       font-weight: 600;
       line-height: $line-height-smaller;
       outline: 0;
-      padding: 0.4375rem 0.9375rem;
+      padding: (0.5rem - $border) (1rem - $border);
       text-align: center;
       vertical-align: middle;
       white-space: nowrap;
@@ -150,14 +151,14 @@ $sizes: (
 
       &:hover,
       &.-hover {
-        border: 0.0625rem solid set-color(grey, 40);
+        border: $border solid set-color(grey, 40);
         box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
         text-decoration: none;
       }
 
       &:focus,
       &.-focus {
-        border: 0.0625rem solid set-color(grey, 40);
+        border: $border solid set-color(grey, 40);
         box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
         z-index: 1;
       }
@@ -168,13 +169,13 @@ $sizes: (
         &:focus,
         &.-focus {
           background-color: set-color(grey, 20);
-          border: 0.0625rem solid set-color(grey, 40);
+          border: $border solid set-color(grey, 40);
           box-shadow: inset 0 1px 2px 0 rgba(set-color(black), 0.2);
         }
       }
 
       &.-icon {
-        padding: 0.4375rem;
+        padding: (0.5rem - $border);
       }
 
       &.-pill {
@@ -234,7 +235,7 @@ $sizes: (
 
       &.-outline {
         background-color: set-color(white);
-        border: 0.0625rem solid set-color(grey, 50);
+        border: $border solid set-color(grey, 50);
 
         &:hover,
         &.-hover {
@@ -252,7 +253,7 @@ $sizes: (
 
         &:focus,
         &.-focus {
-          border: 0.0625rem solid set-color(grey, 50);
+          border: $border solid set-color(grey, 50);
           box-shadow: 0 0 0 3px rgba(set-color(grey, 50), 0.3);
         }
 
@@ -262,7 +263,7 @@ $sizes: (
           &:focus,
           &.-focus {
             background-color: set-color(grey, 60);
-            border: 0.0625rem solid rgba(set-color(black), 0.2);
+            border: $border solid rgba(set-color(black), 0.2);
             box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
             color: set-color(white);
           }
@@ -288,7 +289,12 @@ $sizes: (
           &.-#{$type} {
             font-size: map-get(map-get($sizes, $type), font-size);
             line-height: map-get(map-get($sizes, $type), line-height);
-            padding: map-get(map-get($sizes, $type), padding);
+            @if $type == 'sm' { padding: 0.25rem 0.5rem }
+            @else if $type == 'small' { padding: 0.25rem 0.5rem }
+            @else if $type == 'md' { padding: 0.5rem 1rem }
+            @else if $type == 'lg' { padding: 0.625rem 1.5rem }
+            @else if $type == 'large' { padding: 0.625rem 1.5rem }
+            @else if $type == 'xl' { padding: 0.875rem 1.5rem }
 
             .a-icon {
               height: map-get(map-get(map-get($sizes, $type), icons), height);
@@ -314,24 +320,19 @@ $sizes: (
         &:hover,
         &.-hover {
           background-color: set-color(white);
-          border: 0.0625rem solid set-color(grey, 40);
+          border: $border solid set-color(grey, 40);
           box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
-          padding: 0.4375rem 0.9375rem;
+          padding: (0.5rem - $border) (1rem - $border);
 
           &.-icon {
-            padding: 0.4375rem;
+            padding: (0.5rem - $border);
           }
 
           @each $type in map-keys($sizes) {
             &.-#{$type} {
               font-size: map-get(map-get($sizes, $type), font-size);
               line-height: map-get(map-get($sizes, $type), line-height);
-              @if $type == 'xs' { padding: 0.1875rem 0.4375rem }
-                @else if $type == 'sm' { padding: 0.4375rem 0.9375rem }
-                  @else if $type == 'md' { padding: 0.4375rem 0.9375rem }
-                    @else if $type == 'lg' { padding: 0.6875rem 1.4375rem }
-                      @else if $type == 'xl' { padding: 0.6875rem 1.4375rem }
-                        @else if $type == 'xxl' { padding: 0.8125rem 1.4375rem }
+              padding: map-get(map-get($sizes, $type), padding);
 
               .a-icon {
                 height: map-get(map-get(map-get($sizes, $type), icons), height);
@@ -349,7 +350,7 @@ $sizes: (
               }
 
               &.-icon {
-                padding: (map-get(map-get(map-get($sizes, $type), icons), padding)) - 0.0625rem;
+                padding: (map-get(map-get(map-get($sizes, $type), icons), padding)) - $border;
               }
             }
           }
@@ -358,12 +359,12 @@ $sizes: (
         &:focus,
         &.-focus {
           background-color: set-color(white);
-          border: 0.0625rem solid set-color(grey, 40);
+          border: $border solid set-color(grey, 40);
           box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
           padding: 0.4375rem 0.9375rem;
 
           &.-icon {
-            padding: 0.4375rem;
+            padding: (0.5rem - $border);
           }
 
           @each $type in map-keys($sizes) {
@@ -400,13 +401,13 @@ $sizes: (
           &:focus,
           &.-focus {
             background-color: set-color(grey, 20);
-            border: 0.0625rem solid rgba(set-color(black), 0.2);
+            border: $border solid rgba(set-color(black), 0.2);
             box-shadow: inset 0 1px 2px 0 rgba(set-color(black), 0.2);
             padding: 0.4375rem 0.9375rem;
           }
 
           &.-icon {
-            padding: 0.4375rem;
+            padding: (0.5rem - $border);
           }
 
           @each $type in map-keys($sizes) {
@@ -431,7 +432,7 @@ $sizes: (
               }
 
               &.-icon {
-                padding: (map-get(map-get(map-get($sizes, $type), icons), padding)) - 0.0625rem;
+                padding: (map-get(map-get(map-get($sizes, $type), icons), padding)) - $border;
               }
             }
           }
@@ -442,7 +443,7 @@ $sizes: (
     @each $type in map-keys($state-colors) {
       &.-#{$type} {
         background-color: set-color(map-get($state-colors, $type), 60);
-        border: 0.0625rem solid set-color(map-get($state-colors, $type), 60);
+        border: $border solid set-color(map-get($state-colors, $type), 60);
         box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
         color: set-color(white);
 
@@ -457,7 +458,7 @@ $sizes: (
         &:hover,
         &.-hover {
           background-color: set-color(map-get($state-colors, $type), 70);
-          border: 0.0625rem solid set-color(map-get($state-colors, $type), 70);
+          border: $border solid set-color(map-get($state-colors, $type), 70);
           box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
         }
 
@@ -472,14 +473,14 @@ $sizes: (
           &:focus,
           &.-focus {
             background-color: set-color(map-get($state-colors, $type), 80);
-            border: 0.0625rem solid rgba(set-color(black), 0.2);
+            border: $border solid rgba(set-color(black), 0.2);
             box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
           }
         }
 
         &.-outline {
           background-color: set-color(white);
-          border: 0.0625rem solid set-color(map-get($state-colors, $type), 60);
+          border: $border solid set-color(map-get($state-colors, $type), 60);
           color: set-color(map-get($state-colors, $type), 60);
 
           .a-spinner__icon .path {
@@ -498,7 +499,7 @@ $sizes: (
 
           &:focus,
           &.-focus {
-            border: 0.0625rem solid set-color(map-get($state-colors, $type), 60);
+            border: $border solid set-color(map-get($state-colors, $type), 60);
             box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 70), 0.4);
           }
 
@@ -508,7 +509,7 @@ $sizes: (
             &:focus,
             &.-focus {
               background-color: set-color(map-get($state-colors, $type), 80);
-              border: 0.0625rem solid rgba(set-color(black), 0.2);
+              border: $border solid rgba(set-color(black), 0.2);
               box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
               color: set-color(white);
 
@@ -528,13 +529,13 @@ $sizes: (
           &:hover,
           &.-hover {
             background-color: set-color(white);
-            border: 0.0625rem solid set-color(map-get($state-colors, $type), 60);
+            border: $border solid set-color(map-get($state-colors, $type), 60);
           }
 
           &:focus,
           &.-focus {
             background-color: set-color(white);
-            border: 0.0625rem solid set-color(map-get($state-colors, $type), 60);
+            border: $border solid set-color(map-get($state-colors, $type), 60);
             box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 70), 0.4);
           }
 
@@ -544,7 +545,7 @@ $sizes: (
             &:focus,
             &.-focus {
               background-color: set-color(map-get($state-colors, $type), 60);
-              border: 0.0625rem solid rgba(set-color(black), 0.2);
+              border: $border solid rgba(set-color(black), 0.2);
               box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
               color: set-color(white);
             }
@@ -607,7 +608,7 @@ $sizes: (
 
         &:hover,
         &.-hover {
-          border: 0.0625rem solid set-color(grey, 90);
+          border: $border solid set-color(grey, 90);
         }
 
         &:focus,

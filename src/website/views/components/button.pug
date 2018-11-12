@@ -295,22 +295,22 @@ h4 Close icon button
 
 h3 Sizes
 p.-text
-  | Buttons supports a full spectrum of sizes: <code>-xs</code>, <code>-sm</code>,
-  | <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
+  | Buttons supports a full spectrum of sizes: <code>-sm</code>, <code>-small</code>,
+  | <code>-md</code>, <code>-lg</code>, <code>-large</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
 .example.-mb3
   .-p3
-    each val, size in {xs:'Button -xs', sm:'Button -sm', md:'Button -md', lg:'Button -lg', xl:'Button -xl', xxl:'Button -xxl'}
+    each size in ['sm', 'small', 'md', 'lg', 'large', 'xl']
       div(class=`a-col -w12 -p2`)
-        button(class=`a-btn -${size} -mr1`)= val
+        button(class=`a-btn -${size} -mr1`) Button
         button(class=`a-btn -${size} -icon`)
           .a-btn__content
             .a-icon
               svg
                 use(xlink:href='#icon-atom')
   :code(lang='html')
-    <button class="a-btn -xs">Button -xs</button>
-    <button class="a-btn -xs -icon">
+    <button class="a-btn -sm">Button -xs</button>
+    <button class="a-btn -sm -icon">
        <div class="a-btn__content">
          <div class="a-icon">
            <svg>
@@ -319,8 +319,8 @@ p.-text
          </div>
        </div>
     </button>
-    <button class="a-btn -sm">Button -sm</button>
-    <button class="a-btn -sm -icon">
+    <button class="a-btn -small">Button -sm</button>
+    <button class="a-btn -small -icon">
        <div class="a-btn__content">
          <div class="a-icon">
            <svg>
@@ -349,8 +349,8 @@ p.-text
          </div>
        </div>
     </button>
-    <button class="a-btn -xl">Button -xl</button>
-    <button class="a-btn -xl -icon">
+    <button class="a-btn -large">Button -xl</button>
+    <button class="a-btn -large -icon">
        <div class="a-btn__content">
          <div class="a-icon">
            <svg>
@@ -359,8 +359,8 @@ p.-text
          </div>
        </div>
     </button>
-    <button class="a-btn -xxl">Button -xxl</button>
-    <button class="a-btn -xxl -icon">
+    <button class="a-btn -xl">Button -xxl</button>
+    <button class="a-btn -xl -icon">
        <div class="a-btn__content">
          <div class="a-icon">
            <svg>
