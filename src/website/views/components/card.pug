@@ -8,8 +8,8 @@ p.-text
   | To display a card, use the class <code>a-card</code>.
 
 h4 Base
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__content.-text
         | This is a card
@@ -24,27 +24,27 @@ h4 Titled
 p.-text
   | Add a title to a card by applying the class <code>a-card__title</code> to any heading element
   | <code>h1</code> - <code>h6</code>. The class will override the headings default margin for optimal rendering.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__content
         h5.a-card__title Title
-        p.-text.-m0 This is a titled card
+        p.-text.-m--0 This is a titled card
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__content">
         <h5 class="a-card__title">Title</h5>
-        <p class="-text -m0">This is a titled card</p>
+        <p class="-text -m--0">This is a titled card</p>
       </div>
     </div>
 
 h4 Titled with content
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__content
         h5.a-card__title Title
-        p.-text.-mt0
+        p.-text.-mt--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
         button.a-btn.-brand Link
@@ -52,7 +52,7 @@ h4 Titled with content
     <div class="a-card">
       <div class="a-card__content">
         <h5 class="a-card__title">Title</h5>
-        <p class="-text -mt0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -mt--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
         <button class="a-btn -brand">Link</button>
       </div>
     </div>
@@ -60,13 +60,13 @@ h4 Titled with content
 h4 Hero
 p.-text
   | Add a full width image or banner to the top of a card by applying the class <code>a-card__hero</code>.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__hero.-text--inverse(style="width:100%;background:rgba(0,0,0,0.8);")
-        p.-text.-p6.-text--center Hero Image
+        p.-text.-p--6.-text--center Hero Image
       .a-card__content
-        p.-text.-m0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
           | Donec sit amet consectetur elit.
@@ -74,60 +74,60 @@ p.-text
     <div class="a-card">
       <img src="a-card__hero" src="..." alt="Card Image">
       <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec, ultrices in turpis. Donec sit amet consectetur elit.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec, ultrices in turpis. Donec sit amet consectetur elit.</p>
       </div>
     </div>
 
 h4 Footer
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__content
-        p.-text.-m0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .a-card__footer
         button.a-btn.-brand Link
-        button.a-btn.-ml1 Link
+        button.a-btn.-ml--1 Link
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
       <div class="a-card__footer">
         <button class="a-btn -brand">Link</button>
-        <button class="a-btn -ml1">Link</button>
+        <button class="a-btn -ml--1">Link</button>
       </div>
     </div>
 h4 Footer Right Aligned
 p.-text Apply the class <code>-align--right</code> on <code>a-card__footer</code> to right align its contents.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__content
-        p.-text.-m0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .a-card__footer.-align--right
         button.a-btn.-brand Link
-        button.a-btn.-ml1 Link
+        button.a-btn.-ml--1 Link
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
       <div class="a-card__footer -align--right">
         <button class="a-btn -brand">Link</button>
-        <button class="a-btn -ml1">Link</button>
+        <button class="a-btn -ml--1">Link</button>
       </div>
     </div>
 h4 Footer Center Aligned
 p.-text Apply the class <code>-align--center</code> on <code>a-card__footer</code> to center align its contents.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__content
-        p.-text.-m0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .a-card__footer.-align--center
@@ -135,7 +135,7 @@ p.-text Apply the class <code>-align--center</code> on <code>a-card__footer</cod
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
       <div class="a-card__footer -align--center">
         <button class="a-btn -brand">Link</button>
@@ -143,11 +143,11 @@ p.-text Apply the class <code>-align--center</code> on <code>a-card__footer</cod
     </div>
 h4 Footer No Border
 p.-text Apply the class <code>-noBorder</code> on <code>a-card__footer</code> to remove the default border.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__content
-        p.-text.-m0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .a-card__footer.-noBorder
@@ -155,7 +155,7 @@ p.-text Apply the class <code>-noBorder</code> on <code>a-card__footer</code> to
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
       <div class="a-card__footer -noBorder">
         <button class="a-btn -brand">Link</button>
@@ -163,11 +163,11 @@ p.-text Apply the class <code>-noBorder</code> on <code>a-card__footer</code> to
     </div>
 h4 Footer Small
 p.-text Apply the class <code>-small</code> on <code>a-card__footer</code> to reduce its padding.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__content
-        p.-text.-m0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .a-card__footer.-small
@@ -175,20 +175,20 @@ p.-text Apply the class <code>-small</code> on <code>a-card__footer</code> to re
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
       <div class="a-card__footer -small">
         <a class="-text" href="#">Link</a>
       </div>
     </div>
 h4 Header
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__header
         h5.a-card__title Title
       .a-card__content
-        p.-text.-m0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
   :code(lang="html")
@@ -197,18 +197,18 @@ h4 Header
         <h5 class="a-card__title">Title</h5>
       </div>
       <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
     </div>
 h4 Header Right Aligned
 p.-text Apply the class <code>-align--right</code> on <code>a-card__header</code> to right align its contents.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__header.-align--right
         h5.a-card__title Title
       .a-card__content
-        p.-text.-m0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
   :code(lang="html")
@@ -217,18 +217,18 @@ p.-text Apply the class <code>-align--right</code> on <code>a-card__header</code
         <h5 class="a-card__title">Title</h5>
       </div>
       <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
     </div>
 h4 Header Center Aligned
 p.-text Apply the class <code>-align--center</code> on <code>a-card__header</code> to center align its contents.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__header.-align--center
         h5.a-card__title Title
       .a-card__content
-        p.-text.-m0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
   :code(lang="html")
@@ -237,18 +237,18 @@ p.-text Apply the class <code>-align--center</code> on <code>a-card__header</cod
         <h5 class="a-card__title">Title</h5>
       </div>
       <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
     </div>
 h4 Header No Border
 p.-text Apply the class <code>-noBorder</code> on <code>a-card__header</code> to remove the default border.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__header.-noBorder
         h5.a-card__title Title
       .a-card__content
-        p.-text.-m0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
   :code(lang="html")
@@ -257,18 +257,18 @@ p.-text Apply the class <code>-noBorder</code> on <code>a-card__header</code> to
         <h5 class="a-card__title">Title</h5>
       </div>
       <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
     </div>
 h4 Header Small
 p.-text Apply the class <code>-small</code> on <code>a-card__header</code> to reduce its padding.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__header.-small
         h5.a-card__title Title
       .a-card__content
-        p.-text.-m0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
   :code(lang="html")
@@ -277,18 +277,18 @@ p.-text Apply the class <code>-small</code> on <code>a-card__header</code> to re
         <h5 class="a-card__title">Title</h5>
       </div>
       <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
     </div>
 h4 Header + Footer
 p.-text Further customize cards by adding both headers <code>a-card__header</code> and footers <code>a-card__footer</code>.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__header
         h5.a-card__title Title
       .a-card__content
-        p.-text.-m0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .a-card__footer
@@ -299,7 +299,7 @@ p.-text Further customize cards by adding both headers <code>a-card__header</cod
         <h5 class="a-card__title">Title</h5>
       </div>
       <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
       <div class="a-card__footer">
         <button class="a-btn -brand">Link</button>
@@ -307,13 +307,13 @@ p.-text Further customize cards by adding both headers <code>a-card__header</cod
     </div>
 h4 Header Small + Footer Small
 p.-text Reduce the size of the header and footer by applying the class <code>-small</code> to each element.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-card(style="width:20rem;")
       .a-card__header.-small
         h5.a-card__title Title
       .a-card__content
-        p.-text.-m0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .a-card__footer.-small
@@ -324,7 +324,7 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
         <h5 class="a-card__title">Title</h5>
       </div>
       <div class="a-card__content">
-        <p class="-text -m0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
       <div class="a-card__footer -small">
         <a class="-text" href="#">Link</a>

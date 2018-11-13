@@ -10,10 +10,10 @@ p.-text
   | A contextual class (e.g. <code>-warning</code>) is required to provide proper styling.
 
 h4 Base
-.example.-mb3
-  .-p1
+.example.-mb--3
+  .-p--1
     each type in ['success', 'danger', 'warning', 'info', 'light', 'dark']
-      .m-alert.-bubble.-m2(class=`-${type}`)
+      .m-alert.-bubble.-m--2(class=`-${type}`)
         = `This is a ${type} alert`
   :code(lang="html")
       <div class="m-alert -success" role="alert">This is a success alert</div>
@@ -25,10 +25,10 @@ h4 Base
 
 h4 Icons
 p.-text Use icons to provide additional clarity. Icons can be added to any alert by applying the class <code>-hasIcon</code>
-.example.-mb3
-  .-p1
+.example.-mb--3
+  .-p--1
     each type in ['success', 'danger', 'warning', 'info', 'light', 'dark']
-      .m-alert.-bubble.-hasIcon.-m2(class=`-${type}`)
+      .m-alert.-bubble.-hasIcon.-m--2(class=`-${type}`)
         = `This is a ${type} alert`
   :code(lang="html")
       <div class="m-alert -success -hasIcon" role="alert">This is a success alert</div>
@@ -39,9 +39,9 @@ p.-text Use icons to provide additional clarity. Icons can be added to any alert
       <div class="m-alert -dark -hasIcon" role="alert">This is a dark alert</div>
 
 h4 Titled
-.example.-mb3
-  .-p1
-    .m-alert.-bubble.-danger.-hasIcon.-m2(data-title="Danger")
+.example.-mb--3
+  .-p--1
+    .m-alert.-bubble.-danger.-hasIcon.-m--2(data-title="Danger")
       | This is a danger alert
   :code(lang="html")
       <div class="m-alert -danger -hasIcon" data-title="Danger" role="alert">
@@ -50,9 +50,9 @@ h4 Titled
 
 h4 Dismissible
 p.-text A button can be added to allow the user to dismiss the alert.
-.example.-mb3
-  .-p1
-    .m-alert.-bubble.-warning.-hasIcon.-m2(data-title="Warning")
+.example.-mb--3
+  .-p--1
+    .m-alert.-bubble.-warning.-hasIcon.-m--2(data-title="Warning")
       | This is a warning alert
       button(class='a-btn -icon -close -small')
         .a-btn__content
@@ -70,9 +70,9 @@ p.-text A button can be added to allow the user to dismiss the alert.
 h4 Sizes
 h5 Large
 p.-text Apply a <code>-large</code> class to increase the size of the alert.
-.example.-mb3
-  .-p1
-    .m-alert.-bubble.-warning.-large.-hasIcon.-m2(data-title="Warning")
+.example.-mb--3
+  .-p--1
+    .m-alert.-bubble.-warning.-large.-hasIcon.-m--2(data-title="Warning")
       | This is a warning alert
       button(class='a-btn -icon -close -small')
         .a-btn__content
@@ -93,9 +93,9 @@ p.-text
   | This will remove the border-left, border-right, and border-radius from the alert.
   | Banner alerts are commonly used to remind new users to confirm their email address or notify users
   | when they are experiencing connectivity issues.
-.example.-mb3
-  .-p1
-    .m-alert.-banner.-small.-success.-hasIcon.-m2
+.example.-mb--3
+  .-p--1
+    .m-alert.-banner.-small.-success.-hasIcon.-m--2
       | This is a success alert
   :code(lang="html")
       <div class="m-alert -banner -small -success -hasIcon" role="alert">
@@ -106,10 +106,10 @@ p.-text
   | Toasts are unobtrusive alerts used to display brief, auto-expiring information.
   | To use a toast alert, apply the class <code>-toast</code> and ensure the alert
   | is placed in the top right corner or bottom left corner of the screen.
-.example.-mb3
-  .-p1
+.example.-mb--3
+  .-p--1
     each type in ['success', 'danger', 'warning', 'info', 'light', 'dark']
-      .m-alert.-toast.-hasIcon.-m2(class=`-${type}`, data-title=`${type}`)
+      .m-alert.-toast.-hasIcon.-m--2(class=`-${type}`, data-title=`${type}`)
         = `This is a ${type} alert`
         button(class='a-btn -icon -close -small')
           .a-btn__content

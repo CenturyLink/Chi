@@ -12,12 +12,12 @@ h4 Automatic Layout
 
 p.-text By default, columns within a grid container will occupy an equal amount of horizontal space. Content within those columns is constrained to the width of the column (i.e. the column will not widen to accommodate its contents).
 
-.a-grid.-mb3.-show
+.a-grid.-mb--3.-show
   .a-col
   .a-col
   .a-col
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <!-- three columns of equal width -->
     <div class="a-grid">
@@ -33,7 +33,7 @@ p.-text By default, columns within a grid container will occupy an equal amount 
   .a-col
   .a-col
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <!-- five columns of equal width -->
     <div class="a-grid">
@@ -53,7 +53,7 @@ p.-text Columns are rendered with a consistent amount of spacing between them. T
   .a-col
   .a-col
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <!-- grid container with collapsed margins -->
     <div class="a-grid -noGutter">
@@ -74,7 +74,7 @@ p.-text You can specify the amount of horizontal space that a column may consume
   .a-col.-w--3
   .a-col.-w--9
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <div class="a-grid">
       <div class="a-col -w--3"></div>
@@ -93,7 +93,7 @@ p.-text For example, if we wanted to create a layout with 3 columns where the le
   .a-col
   .a-col.-w--2
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <div class="a-grid">
       <div class="a-col -w--2"></div>
@@ -106,32 +106,32 @@ p.-text Any columns that do not have an explicit size class associated with them
 h4 Available Column Sizes
 
 p.-text The size classes are defined from <code>-w--1</code>, which takes up ~8.3% of the width to <code>-w--12</code>, which consumes the entire row.
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--12
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--11
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--10
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--9
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--8
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--7
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--6
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--5
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--4
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--3
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--2
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--1
 
-//- .-mb4.-mt2
+//- .-mb--4.-mt--2
 //-   :code(lang="html")
 //-     <div class="a-grid">
 //-       <div class="a-col -w--12"></div>
@@ -182,7 +182,7 @@ p.-text Grid containers can accommodate any number of columns, however, the grid
   .a-col.-w--6
   .a-col.-w--6
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <div class="a-grid">
 
@@ -202,11 +202,11 @@ h4 Offset Positioning of Columns
 
 p.-text You may position columns with an offset of one or more column units by specifying an offset size class on your column.
 
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--5.-o--1
   .a-col.-w--3.-o--3
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <div class="a-grid">
       <div class="a-col -w--2 -o--1"></div>
@@ -218,27 +218,27 @@ h5 Available Offset Sizes
 
 p.-text Offset sizes, like column sizes, range from <code>-o--1</code>, which takes up ~8.3% of the width to <code>-o--11</code>, which consumes ~91.6% of the row.
 
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-o--1
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-o--2
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-o--3
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-o--4
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-o--5
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-o--6
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-o--7
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-o--8
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-o--9
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-o--10
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-o--11
 
 h4 Reordering Columns
@@ -252,7 +252,7 @@ p.-text To display a column or columns in an order that is different than that w
     .a-col.-n--1
     .a-col.-n--2
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <div class="a-grid">
       <div class="a-col -n--3"></div> <!-- displayed last -->
@@ -265,25 +265,25 @@ h3 Responsive Layout
 p.-text Chi defines 5 different viewports: XS, SM, MD, LG and XL. By default, columns in a grid container behave the same across viewport sizes. You will often want to change the layout based on the user's current viewport. You may accomplish this by setting viewport-specific classes to each of your columns that denote sizing or layout preferences for the viewport or viewports you are concerned with changing.
 p.-text It is important to note that viewport-specific classes apply to their respective viewport and any larger viewport (unless overridden by a larger viewport class). For example, specifying <code>-w-md--6</code> would apply a width of 6 units to the column in MD, LG and XL viewports.
 
-.m-alert.-info.-hasIcon.-mb3 Try resizing your browser window to see the following examples in action as you change the viewport size.
+.m-alert.-info.-hasIcon.-mb--3 Try resizing your browser window to see the following examples in action as you change the viewport size.
 
 h4 Viewport-Specific Column Sizing
 
 p.-text The columns in the following rows will be 50% wide until they are in the configured viewport, at which point they will become 12 column units wide.
 
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--6.-w-sm--12
 
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--6.-w-md--12
 
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--6.-w-lg--12
 
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w--6.-w-xl--12
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <!-- 50% on xs viewports; 100% on sm, md, lg and xl viewports -->
     <div class="a-grid">
@@ -309,16 +309,16 @@ h4 Column Stacking
 
 p.-text On extra small (xs) viewports you can make columns stack by specifying the column with the <code>-w-sm</code> or any <code>-w-sm--*</code> size modifier classes. Columns will start out stacked until viewed in the small viewport, at which point they will display horizontally in the row according to automatic layout or its assigned viewport size class.
 
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w-sm--2
   .a-col.-w-sm--4
   .a-col.-w-sm
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-w-sm
   .a-col.-w-sm
   .a-col.-w-sm
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <div class="a-grid">
       <div class="a-col -w-sm--2"></div>
@@ -330,10 +330,10 @@ h4 Viewport-Specific Column Offsets
 
 p.-text You may also use offsets on a per-viewport basis. For example, it may make sense to offset content on a desktop, but where space is limited on a mobile device you may want to have the content occupy more space. In the following example, the column will be offset by 50% when on medium viewports, but will not be offset on extra small or small viewports.
 
-.a-grid.-show.-mb3
+.a-grid.-show.-mb--3
   .a-col.-o-md--6
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <div class="a-grid">
       <div class="a-col -o-md--6"></div>
@@ -347,12 +347,12 @@ p.-text Setting alignment on the grid container will apply to all columns within
 
 h5 -align--top
 
-.a-grid.-align--top.-show.-mb3(style="height: 160px")
+.a-grid.-align--top.-show.-mb--3(style="height: 160px")
   .a-col
   .a-col
   .a-col
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <div class="a-grid -align--top" style="height: 160px;">
       <div class="a-col"></div>
@@ -362,12 +362,12 @@ h5 -align--top
 
 h5 -align--center
 
-.a-grid.-align--center.-show.-mb3(style="height: 160px")
+.a-grid.-align--center.-show.-mb--3(style="height: 160px")
   .a-col
   .a-col
   .a-col
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <div class="a-grid -align--center" style="height: 160px;">
       <div class="a-col"></div>
@@ -377,12 +377,12 @@ h5 -align--center
 
 h5 -align--bottom
 
-.a-grid.-align--bottom.-show.-mb3(style="height: 128px")
+.a-grid.-align--bottom.-show.-mb--3(style="height: 128px")
   .a-col
   .a-col
   .a-col
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <div class="a-grid -align--bottom" style="height: 160px">
       <div class="a-col"></div>
@@ -394,12 +394,12 @@ h4 Column-Specific Vertical Alignment
 
 p.-text Changing the alignment of an individual column is as easy as applying an alignment modifier to the column in question.
 
-.a-grid.-show.-mb3(style="height: 160px")
+.a-grid.-show.-mb--3(style="height: 160px")
   .a-col.-align--top
   .a-col.-align--center
   .a-col.-align--bottom
 
-.-mb4.-mt2
+.-mb--4.-mt--2
   :code(lang="html")
     <div class="a-grid" style="height: 160px">
       <div class="a-col -align--top"></div>

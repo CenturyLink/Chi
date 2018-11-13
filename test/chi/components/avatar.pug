@@ -13,13 +13,13 @@ each type in types
         tr
           th
           each size in sizes
-            th.-p1=size
+            th.-p--1=size
       tbody
         each color in colors
           tr
             td=color
             each size in sizes
-              td.-p1
+              td.-p--1
                 if type == 'img'
                   div(
                     class={

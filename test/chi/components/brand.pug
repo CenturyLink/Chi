@@ -5,10 +5,10 @@ title: Brand
 - var sizes = ['default', 'xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl'];
 
 h4 Sizes
-.example.-mb3
-  .-p3(style='overflow:auto')
+.example.-mb--3
+  .-p--3(style='overflow:auto')
     each size in sizes
-      div(class=`a-col -w12 -p3`)
+      div(class=`a-col -w12 -p--3`)
         a(class=`a-brand -${size}`, href='#', aria-label='CenturyLink')
           img(src='https://assets.ctl.io/images/centurylink-logo.svg', alt='CenturyLink')
         p.-text--bold= '-' + size

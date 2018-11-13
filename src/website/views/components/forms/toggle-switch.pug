@@ -9,8 +9,8 @@ p.-text
   | For proper styling, toggle switches require an empty label element defined immediately after their declaration.
 
 h4 Base
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup
       input(type="checkbox", class="a-input -toggle", id="toggle1")
       label(for="toggle1")
@@ -19,8 +19,8 @@ h4 Base
     <label for="toggle1"></label>
 
 h4 Disabled
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup
       input(type="checkbox", class="a-input -toggle", id="toggle2", disabled)
       label(for="toggle2")
@@ -31,8 +31,8 @@ h4 Disabled
 h4 No Label
 p.-text
   | By default, toggle switches are labeled with text <code>ON/OFF</code>. To disable this, apply the modifier <code>-noText</code>.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup
       input(type="checkbox", class="a-input -toggle -noText", id="toggle3")
       label(for="toggle3")
@@ -43,18 +43,18 @@ p.-text
 h4 Stacked
 p.-text
   | Group toggle switches in <code>m-formGroup</code> for easy stacking.
-.example.-mb3
-  .-p3
-    .m-formGroup.-mb2
+.example.-mb--3
+  .-p--3
+    .m-formGroup.-mb--2
       input(type="checkbox", class="a-input -toggle -noText", id="toggle4")
-      label(class="-mr1", for="toggle4")
+      label(class="-mr--1", for="toggle4")
       label(class="-text", for="toggle4") Notifications
     .m-formGroup
       input(type="checkbox", class="a-input -toggle -noText", id="toggle5")
-      label(class="-mr1", for="toggle5")
+      label(class="-mr--1", for="toggle5")
       label(class="-text", for="toggle5") Outage Alerts
   :code(lang="html")
-    <div class="m-formGroup -mb2">
+    <div class="m-formGroup -mb--2">
       <input type="checkbox" class="a-input -toggle -noText" id="toggle4">
       <label for="toggle4"></label>
       <label class="-text" for="toggle4">Notifications</label>
@@ -68,24 +68,24 @@ p.-text
 h4 Inline
 p.-text
   | Apply the class <code>-inline</code> to <code>m-formGroup</code> to display toggle switches inline.
-.example.-mb3
-  .-p3.-d--flex
-    .m-formGroup.-inline.-mr3
+.example.-mb--3
+  .-p--3.-d--flex
+    .m-formGroup.-inline.-mr--3
       input(type="checkbox", class="a-input -toggle -noText", id="toggle6")
-      label(class="-mr1", for="toggle6")
+      label(class="-mr--1", for="toggle6")
       label(class="-text", for="toggle6") Notifications
     .m-formGroup.-inline
       input(type="checkbox", class="a-input -toggle -noText", id="toggle7")
-      label(class="-mr1", for="toggle7")
+      label(class="-mr--1", for="toggle7")
       label(class="-text", for="toggle7") Outage Alerts
   :code(lang="html")
-    <div class="m-formGroup -inline -mr3">
+    <div class="m-formGroup -inline -mr--3">
       <input type="checkbox" class="a-input -toggle -noText" id="toggle6">
-      <label class="-mr1" for="toggle6"></label>
+      <label class="-mr--1" for="toggle6"></label>
       <label class="-text" for="toggle6">Notifications</label>
     </div>
     <div class="m-formGroup -inline">
       <input type="checkbox" class="a-input -toggle -noText" id="toggle7">
-      <label class="-mr1" for="toggle7"></label>
+      <label class="-mr--1" for="toggle7"></label>
       <label class="-text" for="toggle7">Outage Alerts</label>
     </div>

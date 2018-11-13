@@ -8,8 +8,8 @@ p.-text
   | To render a select, apply the class <code>a-input</code> to a <code>select</code>.
 
 h4 Base
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:20rem")
       select(class="a-input")
         option Base Select
@@ -20,8 +20,8 @@ h4 Base
 
 h4 Pill
 p.-text Use the <code>-pill</code> modifier class to render a select with a more pronounced border-radius.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:20rem")
       select(class="a-input -pill")
         option Base Select
@@ -31,8 +31,8 @@ p.-text Use the <code>-pill</code> modifier class to render a select with a more
     </select>
 
 h4 Disabled
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:20rem")
       select(class="a-input", disabled)
         option Disabled Select
@@ -45,8 +45,8 @@ h4 Danger
 p.-text
   | Selects support the validation class modifier <code>-danger</code> for indicating
   | an invalid selection.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:20rem")
       select(class="a-input -danger")
         option Danger Select
@@ -60,10 +60,10 @@ p.-text
   | Selects supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
   |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
-      div(class=`a-col -w12 -p2`)
+      div(class=`a-col -w12 -p--2`)
         .m-formGroup(style="max-width:20rem")
           select(class=`a-input -${size}`)
             option= '-' + size + ' Select'

@@ -20,9 +20,9 @@ ul#a-tabs--expanded.a-tabs
     a(href='#a-tabs-panel--expanded-false') Initial
   li
     a(href='#a-tabs-panel--expanded-true') Expanded
-.example.-mb3
+.example.-mb--3
   #a-tabs-panel--expanded-false.a-tabs-panel.-active
-    .-p3
+    .-p--3
       .m-dropdown(style='margin-bottom: 7rem')
         button.a-btn.m-dropdown__trigger Dropdown component
         .m-dropdown__menu
@@ -39,7 +39,7 @@ ul#a-tabs--expanded.a-tabs
         </div>
       </div>
   #a-tabs-panel--expanded-true.a-tabs-panel
-    .-p3
+    .-p--3
       .m-dropdown(style='margin-bottom: 7rem')
         button.a-btn.m-dropdown__trigger.-active Dropdown component
         .m-dropdown__menu.-active
@@ -64,9 +64,9 @@ ul#a-tabs--expanded-2.a-tabs
     a(href='#a-tabs-panel--expanded-2-false') Initial
   li
     a(href='#a-tabs-panel--expanded-2-true') Expanded
-.example.-mb3
+.example.-mb--3
   #a-tabs-panel--expanded-2-false.a-tabs-panel.-active
-    .-p3
+    .-p--3
       button.a-btn.m-dropdown__trigger(data-target="#dropdown-1") Dropdown component
       p.-text There is no need for proximity between elements.
       #dropdown-1.m-dropdown__menu
@@ -75,7 +75,7 @@ ul#a-tabs--expanded-2.a-tabs
         a.m-dropdown__menu-item(href='#') Element 3
         a.m-dropdown__menu-item(href='#') Element 4
     :code(lang="html")
-      <div class="-p3">
+      <div class="-p--3">
         <button class="a-btn m-dropdown__trigger" data-target="#dropdown-1">Dropdown component</button>
         <p class="-text">There is no need for proximity between elements.</p>
         <div class="m-dropdown__menu" id="dropdown-1">
@@ -86,7 +86,7 @@ ul#a-tabs--expanded-2.a-tabs
         </div>
       </div>
   #a-tabs-panel--expanded-2-true.a-tabs-panel
-    .-p3
+    .-p--3
       button.a-btn.m-dropdown__trigger.-active(data-target="#dropdown-1") Dropdown component
       p.-text There is no need for proximity between elements.
       #dropdown-1b.m-dropdown__menu.-active
@@ -95,7 +95,7 @@ ul#a-tabs--expanded-2.a-tabs
         a.m-dropdown__menu-item(href='#') Element 3
         a.m-dropdown__menu-item(href='#') Element 4
     :code(lang="html")
-      <div class="-p3">
+      <div class="-p--3">
         <button class="a-btn m-dropdown__trigger -active" data-target="#dropdown-1">Dropdown component</button>
         <p class="-text">There is no need for proximity between elements.</p>
         <div class="m-dropdown__menu -active" id="dropdown-1">
@@ -109,9 +109,9 @@ h3 Divider
 p.-text
   | Several menu items can be arranged together by using a divider. Use the <code>a-divider</code> component.
 h4 Example
-.example.-mb3
-  .-p3
-    .a-col.-w7.-sm--w4.-md--w5.-lg--w3
+.example.-mb--3
+  .-p--3
+    .a-col.-w--7.-sm--w4.-md--w5.-lg--w3
       .m-dropdown__menu.-active
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
@@ -133,8 +133,8 @@ p.-text
   | <code>hover</code>.
 
 h4 Example
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-col.-w12.-sm--w7.-md--w8.-lg--w6.-xl--w4
       .m-dropdown__menu.-active
         a.m-dropdown__menu-item(href='#') Normal element
@@ -154,9 +154,9 @@ p.-text
   | Dropdown component has been developed to support Chi icons in the menu items.
 
 h4 Example
-.example.-mb3
-  .-p3
-    .a-col.-w7.-sm--w4.-md--w5.-lg--w3
+.example.-mb--3
+  .-p--3
+    .a-col.-w--7.-sm--w4.-md--w5.-lg--w3
       .m-dropdown__menu.-active
         a.m-dropdown__menu-item(href='#')
           i.a-icon.icon-file-outline
@@ -210,9 +210,9 @@ h4 Search box
 p.-text
   | This search box is a special kind of text input prepared to be located on top of the menu-item. It has slightly
   | smaller padding at the sides.
-.example.-mb3
-  .-p3
-    .a-col.-w7.-sm--w4.-md--w5.-lg--w3
+.example.-mb--3
+  .-p--3
+    .a-col.-w--7.-sm--w4.-md--w5.-lg--w3
       .m-dropdown__menu.-active
         .a-inputWrapper.-iconLeft.m-dropdown__menu-item
           input(type="text", class="a-input", placeholder="Search")
@@ -238,9 +238,9 @@ p.-text
   | Two versions of checkboxes, with and without icon have been included in the library to be used as menu items.
 
 h5 Base
-.example.-mb3
-  .-p3
-    .a-col.-w7.-sm--w4.-md--w5.-lg--w3
+.example.-mb--3
+  .-p--3
+    .a-col.-w--7.-sm--w4.-md--w5.-lg--w3
       .m-dropdown__menu.-active
         .m-dropdown__menu-item
           input(type="checkbox", class="a-input", id="checkbox1")
@@ -283,8 +283,8 @@ h5 Base
     </div>
 
 h5 With Icons
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-col.-w10.-sm--w6.-md--w7.-lg--w5.-xl--w3
       .m-dropdown__menu.-active
         .m-dropdown__menu-item
@@ -349,9 +349,9 @@ h5 With Icons
 
 h4 Plain Text
 p.-text Use a <code>span</code> tag to include text without rendering as a link.
-.example.-mb3
-  .-p3
-    .a-col.-w7.-sm--w4.-md--w5.-lg--w3
+.example.-mb--3
+  .-p--3
+    .a-col.-w--7.-sm--w4.-md--w5.-lg--w3
       .m-dropdown__menu.-active
         span.m-dropdown__menu-item Text 1
         span.m-dropdown__menu-item Text 2
@@ -366,8 +366,8 @@ p.-text Use a <code>span</code> tag to include text without rendering as a link.
     </div>
 
 h4 Radio Buttons
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-col.-w12.-sm--w7.-md--w8.-lg--w6.-xl--w4
       .m-dropdown__menu.-active
         .m-dropdown__menu-item
@@ -411,9 +411,9 @@ h4 Radio Buttons
     </div>
 
 h4 Text Input
-.example.-mb3
-  .-p3
-    .a-col.-w7.-sm--w4.-md--w5.-lg--w3
+.example.-mb--3
+  .-p--3
+    .a-col.-w--7.-sm--w4.-md--w5.-lg--w3
       .m-dropdown__menu.-active
         a.m-dropdown__menu-item(href='#') Link 1
         a.m-dropdown__menu-item(href='#') Link 2
@@ -431,14 +431,14 @@ h4 Text Input
     </div>
 
 h4 Range Input
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-col.-w12.-sm--w7.-md--w8.-lg--w6.-xl--w4
       .m-dropdown__menu.-active
         .m-dropdown__menu-item
-          label.-text.-mr2 200GB
+          label.-text.-mr--2 200GB
           input.a-input(type="range")
-          label.-text.-ml2 5TB
+          label.-text.-ml--2 5TB
         .a-divider
         span.m-dropdown__menu-item Select range
         .m-dropdown__menu-item
@@ -446,9 +446,9 @@ h4 Range Input
   :code(lang="html")
     <div class="m-dropdown__menu">
       <div class="m-dropdown__menu-item">
-        <label class="-text -mr2">200GB</label>
+        <label class="-text -mr--2">200GB</label>
         <input class="a-input" type="range">
-        <label class="-text -ml2">5TB</label>
+        <label class="-text -ml--2">5TB</label>
       </div>
       <div class="a-divider"></div>
       <span class="m-dropdown__menu-item">Select range</span>
@@ -458,37 +458,37 @@ h4 Range Input
     </div>
 
 h4 Toggle Switch
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-col.-w12.-sm--w7.-md--w8.-lg--w6.-xl--w4
       .m-dropdown__menu.-active
         .m-dropdown__menu-item
           input(type="checkbox", class="a-input -toggle", id="toggle-mail")
-          label(class="-mr1", for="toggle-mail")
+          label(class="-mr--1", for="toggle-mail")
           label(class="-text", for="toggle-mail") Email notifications
         .m-dropdown__menu-item
           input(type="checkbox", class="a-input -toggle", id="toggle-tlf")
-          label(class="-mr1", for="toggle-tlf")
+          label(class="-mr--1", for="toggle-tlf")
           label(class="-text", for="toggle-tlf") Phone notifications
         .m-dropdown__menu-item
           input(type="checkbox", class="a-input -toggle", id="toggle-app")
-          label(class="-mr1", for="toggle-app")
+          label(class="-mr--1", for="toggle-app")
           label(class="-text", for="toggle-app") App notifications
   :code(lang="html")
     <div class="m-dropdown__menu">
       <div class="m-dropdown__menu-item">
         <input class="a-input -toggle" type="checkbox" id="toggle-mail">
-        <label class="-mr1" for="toggle-mail"></label>
+        <label class="-mr--1" for="toggle-mail"></label>
         <label class="-text" for="toggle-mail">Email notifications</label>
       </div>
       <div class="m-dropdown__menu-item">
         <input class="a-input -toggle" type="checkbox" id="toggle-tlf">
-        <label class="-mr1" for="toggle-tlf"></label>
+        <label class="-mr--1" for="toggle-tlf"></label>
         <label class="-text" for="toggle-tlf">Phone notifications</label>
       </div>
       <div class="m-dropdown__menu-item">
         <input class="a-input -toggle" type="checkbox" id="toggle-app">
-        <label class="-mr1" for="toggle-app"></label>
+        <label class="-mr--1" for="toggle-app"></label>
         <label class="-text" for="toggle-app">App notifications</label>
       </div>
     </div>
@@ -499,8 +499,8 @@ h3 Helpers
 h4 Truncate long menu-items
 p.-text
   | Wrap the menu-item content in a div with the class <code>-flex--ellipsis</code> to truncate long strings.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-dropdown__menu.-active(style="width:10rem")
       a.m-dropdown__menu-item(href='#') Element 1
       a.m-dropdown__menu-item(href='#') Element 2
@@ -519,16 +519,16 @@ p.-text
 
 h4 Flexible height
 p.-text Add the class <code>-h--auto</code> to set menu item height to auto.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-dropdown__menu.-active(style="width:10rem")
       a.m-dropdown__menu-item(href="#") Link 1
-      .m-dropdown__menu-item.-h--auto.-py1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      .m-dropdown__menu-item.-h--auto.-py--1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
       a.m-dropdown__menu-item(href="#") Link 2
   :code(lang="html")
     <div class="m-dropdown__menu" style="width:10rem">
       <a class="m-dropdown__menu-item" href="#">Link 1</a>
-      <div class="m-dropdown__menu-item -h--auto -py1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+      <div class="m-dropdown__menu-item -h--auto -py--1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
       <a class="m-dropdown__menu-item" href="#">Link 2</a>
     </div>
 
@@ -541,9 +541,9 @@ ul#a-tabs--animation-expanded.a-tabs
     a(href='#a-tabs-panel--animation-expanded-false') Initial
   li
     a(href='#a-tabs-panel--animation-expanded-true') Expanded
-.example.-mb3
+.example.-mb--3
   #a-tabs-panel--animation-expanded-false.a-tabs-panel.-active
-    .-p3
+    .-p--3
       .m-dropdown(style='margin-bottom:7rem')
         button.a-btn.m-dropdown__trigger.-animate Animated dropdown trigger
         .m-dropdown__menu
@@ -560,7 +560,7 @@ ul#a-tabs--animation-expanded.a-tabs
         </div>
       </div>
   #a-tabs-panel--animation-expanded-true.a-tabs-panel
-    .-p3
+    .-p--3
       .m-dropdown(style='margin-bottom:7rem')
         button.a-btn.m-dropdown__trigger.-animate.-active Animated dropdown trigger
         .m-dropdown__menu.-active
@@ -584,27 +584,27 @@ p.-text
   | <code>top-start</code>, <code>top-end</code>, <code>right-start</code>, <code>right-end</code>,
   | <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>, <code>left-end</code>.
 
-.example.-mb3
-  .-p3.-d--flex
-    .m-dropdown.-mr3
+.example.-mb--3
+  .-p--3.-d--flex
+    .m-dropdown.-mr--3
       button.a-btn.m-dropdown__trigger(data-position="bottom") Drop-down
       .m-dropdown__menu
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
-    .m-dropdown.-mr3
+    .m-dropdown.-mr--3
       button.a-btn.m-dropdown__trigger(data-position="top") Drop-top
       .m-dropdown__menu
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
-    .m-dropdown.-mr3
+    .m-dropdown.-mr--3
       button.a-btn.m-dropdown__trigger(data-position="left") Drop-left
       .m-dropdown__menu
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
-    .m-dropdown.-mr3
+    .m-dropdown.-mr--3
       button.a-btn.m-dropdown__trigger(data-position="right") Drop-right
       .m-dropdown__menu
         a.m-dropdown__menu-item(href='#') Element 1

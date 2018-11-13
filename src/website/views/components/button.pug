@@ -10,13 +10,13 @@ p.-text
   | To render a button, apply the class <code>a-btn</code> to a <code>&lt;button&gt;</code> element.
   | Although buttons were designed for the <code>&lt;button&gt;</code> element, Chi
   | also supports button classes on <code>&lt;a&gt;</code> and <code>&lt;input&gt;</code> elements.
-.example.-mb3
-  .-p3.-d--flex
-    button.a-btn.-mr2 Button
-    a.a-btn.-mr2 Link
-    input(class='a-btn -mr2', type='button', value='Input')
-    input(class='a-btn -mr2', type='submit', value='Submit')
-    input(class='a-btn -mr2', type='reset', value='Reset')
+.example.-mb--3
+  .-p--3.-d--flex
+    button.a-btn.-mr--2 Button
+    a.a-btn.-mr--2 Link
+    input(class='a-btn -mr--2', type='button', value='Input')
+    input(class='a-btn -mr--2', type='submit', value='Submit')
+    input(class='a-btn -mr--2', type='reset', value='Reset')
   :code(lang='html')
     <!-- default -->
     <button class="a-btn">Button</button>
@@ -33,10 +33,10 @@ p.-text
   | Chi includes a wide variety of predefined button styles. For most cases,
   | the base and <code>-brand</code> buttons will be sufficient. For special cases,
   | such as styling a destructive action button, a <code>-danger</code> button may be used.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     each type, val in {Base:'base', Brand:'brand', Danger:'danger', Info:'info', Dark:'dark'}
-      button(class=`a-btn -${type} -mr2`)= val
+      button(class=`a-btn -${type} -mr--2`)= val
   :code(lang='html')
     <!-- default buttons -->
     <button class="a-btn">Base</button>
@@ -50,10 +50,10 @@ h4 Outline
 p.-text
   | To remove a buttons solid background and keep its colored border, apply the class
   | <code>-outline</code>.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     each type, val in {Base:'base', Brand:'brand', Danger:'danger', Info:'info', Dark:'dark'}
-      button(class=`a-btn -${type} -outline -mr2`)= val
+      button(class=`a-btn -${type} -outline -mr--2`)= val
   :code(lang='html')
     <button class="a-btn -outline">Base</button>
     <button class="a-btn -brand -outline">Brand</button>
@@ -65,10 +65,10 @@ h4 Flat
 p.-text
   | To render a button with a transparent background and border, apply the class
   | <code>-flat</code>.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     each type, val in {Base:'base', Brand:'brand', Danger:'danger', Info:'info', Dark:'dark'}
-      button(class=`a-btn -${type} -flat -mr2`)= val
+      button(class=`a-btn -${type} -flat -mr--2`)= val
   :code(lang='html')
     <button class="a-btn -flat">Base</button>
     <button class="a-btn -brand -flat">Brand</button>
@@ -79,10 +79,10 @@ p.-text
 h3 Pill
 p.-text Use the <code>-pill</code> modifier class to render buttons with a more pronounced border-radius.
 h4 Base
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     each type, val in {Base:'base', Brand:'brand', Danger:'danger', Info:'info', Dark:'dark'}
-      button(class=`a-btn -${type} -pill -mr2`)= val
+      button(class=`a-btn -${type} -pill -mr--2`)= val
   :code(lang='html')
     <!-- default buttons -->
     <button class="a-btn -pill">Base</button>
@@ -93,10 +93,10 @@ h4 Base
     <button class="a-btn -dark -pill">Dark</button>
 
 h4 Outline
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     each type, val in {Base:'base', Brand:'brand', Danger:'danger', Info:'info', Dark:'dark'}
-      button(class=`a-btn -${type} -pill -outline -mr2`)= val
+      button(class=`a-btn -${type} -pill -outline -mr--2`)= val
   :code(lang='html')
     <button class="a-btn -pill -outline">Base</button>
     <button class="a-btn -brand -pill -outline">Brand</button>
@@ -108,14 +108,14 @@ h3 Icon buttons
 p.-text
   | For interfaces with limited space, an <code>-icon</code> button can
   | be used for common actions such as editing, deleting, closing, etc.
-.example.-mb3
-  .-p3
-    button(class=`a-btn -icon -mr2`)
+.example.-mb--3
+  .-p--3
+    button(class=`a-btn -icon -mr--2`)
       .a-btn__content
         .a-icon
           svg
             use(xlink:href='#icon-atom')
-    button(class=`a-btn -icon -flat -mr2`)
+    button(class=`a-btn -icon -flat -mr--2`)
       .a-btn__content
         .a-icon
           svg
@@ -143,21 +143,21 @@ p.-text
     </button>
 
 h4 Labeled icon buttons
-.example.-mb3
-  .-p3
-    button(class=`a-btn -mr2`)
+.example.-mb--3
+  .-p--3
+    button(class=`a-btn -mr--2`)
       .a-btn__content
         .a-icon
           svg
             use(xlink:href='#icon-atom')
         span Button
-    button(class=`a-btn -mr2`)
+    button(class=`a-btn -mr--2`)
       .a-btn__content
         span Button
         .a-icon
           svg
             use(xlink:href='#icon-atom')
-    button(class=`a-btn -mr2`)
+    button(class=`a-btn -mr--2`)
       .a-btn__content
         .a-icon
           svg
@@ -207,10 +207,10 @@ h4 Labeled icon buttons
     </button>
 
 h4 Floating icon buttons
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     each type in ['base', 'brand', 'danger', 'info', 'dark']
-      button(class=`a-btn -${type} -float -mr2`)
+      button(class=`a-btn -${type} -float -mr--2`)
         .a-btn__content
           .a-icon
             svg
@@ -264,12 +264,12 @@ h4 Floating icon buttons
 
 h4 Close icon button
 
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     button(class='a-btn -icon -close')
       .a-btn__content
         i.a-icon.icon-x
-  ul#a-tabs.a-tabs.-ml3
+  ul#a-tabs.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-panel-webfont') Web Font
     li
@@ -298,11 +298,11 @@ p.-text
   | Buttons supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
   |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
-      div(class=`a-col -w12 -p2`)
-        button(class=`a-btn -${size} -mr1`) Button
+      div(class=`a-col -w12 -p--2`)
+        button(class=`a-btn -${size} -mr--1`) Button
         button(class=`a-btn -${size} -icon`)
           .a-btn__content
             .a-icon

@@ -31,7 +31,7 @@ each size in ['default', 'small', 'large']
   })
     span.a-h2= `Hybrid buttons / ${size} / fluid`
     each modifier in ['align--left', '', 'align--right']
-      .m-btnGroup.-fluid.-m1(style="width:200px")
+      .m-btnGroup.-fluid.-m--1(style="width:200px")
         button.a-btn(class={
           [`-${size}`]: size != 'default',
           [`-${modifier}`]: modifier != ''

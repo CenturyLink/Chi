@@ -30,7 +30,7 @@ each size in ['default', 'small', 'large']
           tr
             each val, index in [2,3,4]
               td
-                .m-btnGroup.-m1(class={'-ml3': index != 0})
+                .m-btnGroup.-m--1(class={'-ml--3': index != 0})
                   while val > 0
                     - val--
                     +button(false, type, style, size)
@@ -40,7 +40,7 @@ each size in ['default', 'small', 'large']
           tr
             each val, index in [2,3,4]
               td
-                .m-btnGroup.-m1(class={'-ml3': index != 0})
+                .m-btnGroup.-m--1(class={'-ml--3': index != 0})
                   while val > 0
                     - val--
                     +button(true, type, style, size)
@@ -51,7 +51,7 @@ each size in ['default', 'small', 'large']
           tr
             each val, index in [2,3,4]
               td
-                .m-btnGroup.-m1(class={'-ml3': index != 0})
+                .m-btnGroup.-m--1(class={'-ml--3': index != 0})
                   while val > 0
                     - val--
                     +button(false, type, style, size)
@@ -61,7 +61,7 @@ each size in ['default', 'small', 'large']
           tr
             each val, index in [2,3,4]
               td
-                .m-btnGroup.-m1.-pill(class={'-ml3': index != 0})
+                .m-btnGroup.-m--1.-pill(class={'-ml--3': index != 0})
                   while val > 0
                     - val--
                     +button(false, type, style, size)
@@ -78,13 +78,13 @@ each size in ['default', 'small', 'large']
         each style in ['default', 'brand', 'danger', 'info', 'dark']
           tr
             td
-              .m-btnGroup.-fluid.-m1
+              .m-btnGroup.-fluid.-m--1
                 each modifier in ['notFluid', 'align--left', false, 'align--right']
                   +button(false, type, style, size, modifier)
                     | Button
           tr
             td
-              .m-btnGroup.-pill.-fluid.-m1
+              .m-btnGroup.-pill.-fluid.-m--1
                 each modifier in ['notFluid', 'align--left', false, 'align--right']
                   +button(false, type, style, size, modifier)
                     | Button
@@ -93,14 +93,14 @@ each size in ['default', 'small', 'large']
         each style in ['default', 'brand', 'danger', 'info', 'dark']
           tr
             td
-              .m-btnGroup.-fluid.-m1
+              .m-btnGroup.-fluid.-m--1
                 each modifier in ['notFluid', 'align--left', false, 'align--right']
                   +button(true, type, style, size, modifier)
                     .a-btn__content
                       +icon('atom')
           tr
             td
-              .m-btnGroup.-pill.-fluid.-m1
+              .m-btnGroup.-pill.-fluid.-m--1
                 each modifier in ['notFluid', 'align--left', false, 'align--right']
                   +button(true, type, style, size, modifier)
                     .a-btn__content
@@ -110,7 +110,7 @@ each size in ['default', 'small', 'large']
         each style in ['default', 'brand', 'danger', 'info', 'dark']
           tr
             td
-              .m-btnGroup.-fluid.-m1
+              .m-btnGroup.-fluid.-m--1
                 each modifier in ['notFluid', 'align--left', false, 'align--right']
                   +button(false, type, style, size, modifier)
                     .a-btn__content
@@ -118,7 +118,7 @@ each size in ['default', 'small', 'large']
                       span Button
           tr
             td
-              .m-btnGroup.-pill.-fluid.-m1
+              .m-btnGroup.-pill.-fluid.-m--1
                 each modifier in ['notFluid', 'align--left', false, 'align--right']
                   +button(false, type, style, size, modifier)
                     .a-btn__content

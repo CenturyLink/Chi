@@ -9,8 +9,8 @@ p.-text
   | To render a textarea, apply the class <code>a-input</code> to a <code>textarea</code>.
 
 h4 Base
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:30rem")
       textarea.a-input Sample text
   :code(lang="html")
@@ -19,8 +19,8 @@ h4 Base
     </textarea>
 
 h4 Disabled
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:30rem")
       textarea.a-input(disabled) Sample text
   :code(lang="html")
@@ -35,8 +35,8 @@ p.-text
   | (e.g. <code>-iconLeft</code>) to specify where it should be placed.
 
 h4 Left Aligned
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-inputWrapper.-iconLeft(style="max-width:30rem")
       textarea.a-input Sample text
       .a-icon.-text--muted
@@ -55,8 +55,8 @@ h4 Left Aligned
     </div>
 
 h4 Right Aligned
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-inputWrapper.-iconRight(style="max-width:30rem")
       textarea.a-input Sample text
       .a-icon.-text--muted
@@ -75,8 +75,8 @@ h4 Right Aligned
     </div>
 
 h4 Left + Right Aligned
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-inputWrapper.-iconLeft.-iconRight(style="max-width:30rem")
       textarea.a-input Sample text
       .a-icon.-text--muted
@@ -109,8 +109,8 @@ p.-text
   | <code>-warning</code>, and <code>-danger</code>.
 
 h4 Success
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:30rem")
       textarea.a-input.-success Sample text
   :code(lang="html")
@@ -118,8 +118,8 @@ h4 Success
       Sample text
     </textarea>
 
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-inputWrapper.-iconRight(style="max-width:30rem")
       textarea.a-input.-success Sample text
       .a-icon.-text--success
@@ -138,8 +138,8 @@ h4 Success
     </div>
 
 h4 Warning
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:30rem")
       textarea.a-input.-warning Sample text
   :code(lang="html")
@@ -147,8 +147,8 @@ h4 Warning
       Sample text
     </textarea>
 
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-inputWrapper.-iconRight(style="max-width:30rem")
       textarea.a-input.-warning Sample text
       .a-icon.-text--warning
@@ -167,8 +167,8 @@ h4 Warning
     </div>
 
 h4 Danger
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:30rem")
       textarea.a-input.-danger Sample text
   :code(lang="html")
@@ -176,8 +176,8 @@ h4 Danger
       Sample text
     </textarea>
 
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-inputWrapper.-iconRight(style="max-width:30rem")
       textarea.a-input.-danger Sample text
       .a-icon.-text--danger
@@ -200,10 +200,10 @@ p.-text
   | Textareas supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
   |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
-      div(class=`a-col -w12 -p2`)
+      div(class=`a-col -w12 -p--2`)
         .a-inputWrapper(style="max-width:30rem")
           textarea.a-input(class=`-${size}`) Sample text
   :code(lang='html')

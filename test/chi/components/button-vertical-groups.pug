@@ -14,7 +14,7 @@ each size in ['default', 'small', 'large']
           each style in ['default', 'brand', 'danger', 'info', 'dark']
             each val, index2 in [2,3,4]
               td(style="vertical-align:top")
-                .m-btnGroup.-vertical.-m1(class={'-ml1': index1 != 0 && index2 != 0})
+                .m-btnGroup.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
                   while val > 0
                     - val--
                     button.a-btn(class={
@@ -28,7 +28,7 @@ each size in ['default', 'small', 'large']
           each style in ['default', 'brand', 'danger', 'info', 'dark']
             each val, index2 in [2,3,4]
               td(style="vertical-align:top")
-                .m-btnGroup.-vertical.-m1(class={'-ml1': index1 != 0 && index2 != 0})
+                .m-btnGroup.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
                   while val > 0
                     - val--
                     button.a-btn.-icon(class={
@@ -46,7 +46,7 @@ each size in ['default', 'small', 'large']
           each style in ['default', 'brand', 'danger', 'info', 'dark']
             each val, index2 in [2,3,4]
               td(style="vertical-align:top")
-                .m-btnGroup.-vertical.-m1(class={'-ml1': index1 != 0 && index2 != 0})
+                .m-btnGroup.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
                   while val > 0
                     - val--
                     button.a-btn(class={
@@ -69,7 +69,7 @@ each size in ['default', 'small', 'large']
           tr
             each style in ['default', 'brand', 'danger', 'info', 'dark']
               td(style="width:120px")
-                .m-btnGroup.-vertical.-fluid.-m1
+                .m-btnGroup.-vertical.-fluid.-m--1
                   each modifier in ['align--left', '', 'align--right']
                     button.a-btn(class={
                       [`-${type}`]: type != 'solid',
@@ -82,7 +82,7 @@ each size in ['default', 'small', 'large']
           tr
             each style in ['default', 'brand', 'danger', 'info', 'dark']
               td(style="width:70px")
-                .m-btnGroup.-vertical.-fluid.-m1
+                .m-btnGroup.-vertical.-fluid.-m--1
                   each modifier in ['align--left', '', 'align--right']
                     button.a-btn.-icon(class={
                       [`-${type}`]: type != 'solid',
@@ -99,7 +99,7 @@ each size in ['default', 'small', 'large']
           tr
             each style in ['default', 'brand', 'danger', 'info', 'dark']
               td(style="width:140px")
-                .m-btnGroup.-vertical.-fluid.-m1
+                .m-btnGroup.-vertical.-fluid.-m--1
                   each modifier in ['align--left', '', 'align--right']
                     button.a-btn(class={
                       [`-${type}`]: type != 'solid',

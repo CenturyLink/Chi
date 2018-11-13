@@ -11,7 +11,7 @@ p.-text
 
 h4 Target all breakpoints
 p.-text Display utility classes with no breakpoint defined apply to all screen sizes.
-section.a-table.-bordered.-mt3.-mb3
+section.a-table.-bordered.-mt--3.-mb--3
   div
     table.-text(cellpadding='0', cellspacing='0')
       thead
@@ -32,7 +32,7 @@ h4 Target specific breakpoints
 p.-text
   | To target a specific breakpoint, add the breakpoint abbreviation to the class. As a mobile first framework, it will
   | apply to that specific breakpoint and up.
-section.a-table.-bordered.-mt3.-mb3
+section.a-table.-bordered.-mt--3.-mb--3
   div
     table(cellpadding='0', cellspacing='0')
       thead
@@ -49,12 +49,12 @@ section.a-table.-bordered.-mt3.-mb3
             td.-text Hidden only on <code>#{type}</code>
 
 h3 Examples
-.example.-mb3
-  .-p3
-    .-text.-b1.-p3.-m1.-d--none.-d-xl--inline-flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--none -d-xl--inline-flex
-    .-text.-b1.-p3.-m1.-d--flex.-d-sm--none(style="background:#E4F2CE;border-color:#C6DBA7;") -d-sm--none
-    .-text.-b1.-p3.-m1.-d--inline-flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--inline-flex
-    .-text.-b1.-p3.-m1.-d--flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--flex
+.example.-mb--3
+  .-p--3
+    .-text.-b--1.-p--3.-m--1.-d--none.-d-xl--inline-flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--none -d-xl--inline-flex
+    .-text.-b--1.-p--3.-m--1.-d--flex.-d-sm--none(style="background:#E4F2CE;border-color:#C6DBA7;") -d-sm--none
+    .-text.-b--1.-p--3.-m--1.-d--inline-flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--inline-flex
+    .-text.-b--1.-p--3.-m--1.-d--flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--flex
   :code(lang="html")
     <!-- hidden on all breakpoints except xl -->
     <div class="-d--none -d-xl--inline-flex"></div>
