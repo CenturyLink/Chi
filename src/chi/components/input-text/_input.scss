@@ -1,6 +1,69 @@
 @import 'variables';
 @import 'mixins';
 
+$sizes: (
+  sm: (
+    height: 1.5rem,
+    font-size: 0.75rem,
+    line-height: 1rem,
+    icons: (
+      height: 0.75rem,
+      padding: 0.375rem,
+      width: 0.75rem,
+    )
+  ),
+  small: (
+    height: 1.5rem,
+    font-size: 0.75rem,
+    line-height: 1rem,
+    icons: (
+      height: 0.75rem,
+      padding: 0.375rem,
+      width: 0.75rem,
+    )
+  ),
+  md: (
+    height: 2rem,
+    font-size: 0.875rem,
+    line-height: 1rem,
+    icons: (
+      height: 1rem,
+      padding: 0.5rem,
+      width: 1rem,
+    )
+  ),
+  lg: (
+    height: 2.5rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    icons: (
+      height: 1rem,
+      padding: 0.75rem,
+      width: 1rem,
+    )
+  ),
+  large: (
+    height: 2.5rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    icons: (
+      height: 1rem,
+      padding: 0.75rem,
+      width: 1rem,
+    )
+  ),
+  xl: (
+    height: 3rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    icons: (
+      height: 1rem,
+      padding: 1rem,
+      width: 1rem,
+    )
+  )
+);
+
 .chi {
   input {
     &[type='email'],
@@ -11,7 +74,7 @@
         border-radius: 3px;
         color: set-color(grey, 90);
         display: block;
-        font-size: $text-small;
+        font-size: $text;
         height: 2rem;
         line-height: $line-height-smaller;
         outline: none;
@@ -41,18 +104,22 @@
           color: set-color(grey, 90);
         }
 
-        &.-small {
-          font-size: $text-smaller;
-          height: 1.5rem;
-          line-height: $line-height-smaller;
-          padding: 0.1875rem 0.4375rem;
-        }
+        @each $type in map-keys($sizes) {
+          &.-#{$type} {
+            height: map-get(map-get($sizes, $type), height);
+            font-size: map-get(map-get($sizes, $type), font-size);
+            line-height: map-get(map-get($sizes, $type), line-height);
 
-        &.-large {
-          font-size: $text-large;
-          height: 2.5rem;
-          line-height: $line-height-large;
-          padding: 0.4375rem 0.6875rem;
+            .a-icon {
+              height: map-get(map-get(map-get($sizes, $type), icons), height);
+              width: map-get(map-get(map-get($sizes, $type), icons), width);
+
+              &[class^="icon-"], &[class*=" icon-"] {
+                font-size: map-get(map-get($sizes, $type), font-size);
+                line-height: map-get(map-get($sizes, $type), line-height);
+              }
+            }
+          }
         }
 
         @each $type in map-keys($state-colors) {

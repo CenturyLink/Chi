@@ -1,6 +1,45 @@
 @import 'variables';
 @import 'mixins';
 
+$sizes: (
+  sm: (
+    font-size: 0.75rem,
+    line-height: 1rem,
+    min-height: 3.5rem,
+    padding: 0.1875rem 0.4375rem
+  ),
+  small: (
+    font-size: 0.75rem,
+    line-height: 1rem,
+    min-height: 3.5rem,
+    padding: 0.1875rem 0.4375rem
+  ),
+  md: (
+    font-size: 0.875rem,
+    line-height: 1rem,
+    min-height: 4rem,
+    padding: 0.4375rem 0.6875rem
+  ),
+  lg: (
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    min-height: 5.5rem,
+    padding: 0.5rem 0.6875rem
+  ),
+  large: (
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    min-height: 5.5rem,
+    padding: 0.5rem 0.6875rem
+  ),
+  xl: (
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    min-height: 7rem,
+    padding: 0.75rem 0.625rem
+  )
+);
+
 .chi {
   textarea {
     &.a-input {
@@ -8,7 +47,7 @@
       border-radius: 3px;
       color: set-color(grey, 90);
       display: block;
-      font-size: $text-small;
+      font-size: $text;
       line-height: $line-height-smaller;
       min-height: 4rem;
       outline: none;
@@ -39,18 +78,13 @@
         color: set-color(grey, 90);
       }
 
-      &.-small {
-        font-size: $text-smaller;
-        line-height: $line-height-smaller;
-        min-height: 3.5rem;
-        padding: 0.1875rem 0.4375rem;
-      }
-
-      &.-large {
-        font-size: $text-large;
-        line-height: $line-height-large;
-        min-height: 5.5rem;
-        padding: 0.4375rem 0.6875rem;
+      @each $type in map-keys($sizes) {
+        &.-#{$type} {
+          font-size: map-get(map-get($sizes, $type), font-size);
+          line-height: map-get(map-get($sizes, $type), line-height);
+          min-height: map-get(map-get($sizes, $type), min-height);
+          padding: map-get(map-get($sizes, $type), padding);
+        }
       }
 
       @each $type in map-keys($state-colors) {

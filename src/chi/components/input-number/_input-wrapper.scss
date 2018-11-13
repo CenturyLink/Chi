@@ -1,5 +1,62 @@
 @import '../input-wrapper';
 
+$sizes: (
+  sm: (
+    height: 0.5rem,
+    padding-right: 1.25rem,
+    right: 0.1875rem,
+    width: 1rem,
+    top: 0.1875rem,
+    bottom: 0.1875rem,
+    background-size: 0.375rem
+  ),
+  small: (
+    height: 0.5rem,
+    padding-right: 1.25rem,
+    right: 0.1875rem,
+    width: 1rem,
+    top: 0.1875rem,
+    bottom: 0.1875rem,
+    background-size: 0.375rem
+  ),
+  md: (
+    height: 0.6875rem,
+    padding-right: 0rem,
+    right: 0.25rem,
+    width: 1rem,
+    top: 0.25rem,
+    bottom: 0.25rem,
+    background-size: 0.5rem
+  ),
+  lg: (
+    height: 0.875rem,
+    padding-right: 1.8125rem,
+    right: 0.3125rem,
+    width: 1.25rem,
+    top: 0.3125rem,
+    bottom: 0.3125rem,
+    background-size: 0.5rem
+  ),
+  large: (
+    height: 0.875rem,
+    padding-right: 1.8125rem,
+    right: 0.3125rem,
+    width: 1.25rem,
+    top: 0.3125rem,
+    bottom: 0.3125rem,
+    background-size: 0.5rem
+  ),
+  xl: (
+    height: 1rem,
+    padding-right: 1.8125rem,
+    right: 0.3125rem,
+    width: 1.5rem,
+    top: 0.3125rem,
+    bottom: 0.3125rem,
+    background-size: 0.625rem
+  )
+);
+
 .chi {
   .a-inputWrapper {
     input {
@@ -39,38 +96,23 @@
             }
           }
 
-          &.-small {
-            padding-right: 1.25rem;
+          @each $type in map-keys($sizes) {
+            &.-#{$type} {
+              padding-right: map-get(map-get($sizes, $type), padding-right);
 
-            & ~ button {
-              background-size: 0.375rem;
-              height: 0.5rem;
-              right: 0.1875rem;
+              & ~ button {
+                height: map-get(map-get($sizes, $type), height);
+                right: map-get(map-get($sizes, $type), right);
+                width: map-get(map-get($sizes, $type), width);
+                background-size: map-get(map-get($sizes, $type), background-size);
 
-              &:first-of-type {
-                top: 0.1875rem;
-              }
+                &:first-of-type {
+                  top: map-get(map-get($sizes, $type), top);
+                }
 
-              &:last-of-type {
-                bottom: 0.1875rem;
-              }
-            }
-          }
-
-          &.-large {
-            padding-right: 1.8125rem;
-
-            & ~ button {
-              height: 0.875rem;
-              right: 0.3125rem;
-              width: 1.25rem;
-
-              &:first-of-type {
-                top: 0.3125rem;
-              }
-
-              &:last-of-type {
-                bottom: 0.3125rem;
+                &:last-of-type {
+                  bottom: map-get(map-get($sizes, $type), bottom);
+                }
               }
             }
           }

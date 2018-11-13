@@ -1,6 +1,57 @@
 @import 'variables';
 @import 'mixins';
 
+$sizes: (
+  sm: (
+    height: 1.5rem,
+    font-size: 0.75rem,
+    line-height: 1rem,
+    border-radius: 0.75rem,
+    background-position: right 0.5rem center,
+    padding-left: 0.75rem,
+  ),
+  small: (
+    height: 1.5rem,
+    font-size: 0.75rem,
+    line-height: 1rem,
+    border-radius: 0.75rem,
+    background-position: right 0.5rem center,
+    padding-left: 0.75rem,
+  ),
+  md: (
+    height: 2rem,
+    font-size: 0.875rem,
+    line-height: 1rem,
+    border-radius: 1rem,
+    background-position: right 0.5rem center,
+    padding-left: 0.75rem,
+  ),
+  lg: (
+    height: 2.5rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    border-radius: 1.25rem,
+    background-position: right 1rem center,
+    padding-left: 1rem,
+  ),
+  large: (
+    height: 2.5rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    border-radius: 1.25rem,
+    background-position: right 1rem center,
+    padding-left: 1rem,
+  ),
+  xl: (
+    height: 3rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    border-radius: 1.5rem,
+    background-position: right 1rem center,
+    padding-left: 1rem,
+  )
+);
+
 .chi {
   select {
     &.a-input {
@@ -15,7 +66,7 @@
       color: set-color(grey, 90);
       cursor: pointer;
       cursor: hand; // sass-lint:disable-line no-duplicate-properties
-      font-size: $text-small;
+      font-size: $text;
       height: 2rem;
       line-height: $line-height-smaller;
       outline: none;
@@ -58,15 +109,14 @@
         pointer-events: none;
       }
 
-      &.-small {
-        font-size: $text-smallest;
-        height: 1.5rem;
-      }
-
-      &.-large {
-        font-size: $text-large;
-        height: 2.5rem;
-        line-height: $line-height-large;
+      @each $type in map-keys($sizes) {
+        &.-#{$type} {
+          height: map-get(map-get($sizes, $type), height);
+          font-size: map-get(map-get($sizes, $type), font-size);
+          line-height: map-get(map-get($sizes, $type), line-height);
+          background-position: map-get(map-get($sizes, $type), background-position);
+          padding-left: map-get(map-get($sizes, $type), padding-left);
+        }
       }
 
       &:not([disabled]) {
@@ -88,12 +138,10 @@
     &.-pill {
       border-radius: 1rem;
 
-      &.-small {
-        border-radius: 0.75rem;
-      }
-
-      &.-large {
-        border-radius: 1.25rem;
+      @each $type in map-keys($sizes) {
+        &.-#{$type} {
+          border-radius: map-get(map-get($sizes, $type), border-radius);
+        }
       }
     }
   }

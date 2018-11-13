@@ -45,37 +45,37 @@ h4 Disabled
       <button></button>
     </div>
 
-h4 Sizes
+h3 Sizes
+p.-text
+  | Number inputs supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
 .example.-mb3
   .-p3
-    .m-formGroup.-inline.-mr3
-      .a-inputWrapper.-compact
-        input.a-input.-small(type="number", value="0")
-        button
-        button
-    .m-formGroup.-inline.-mr3
-      .a-inputWrapper.-compact
-        input.a-input(type="number", value="0")
-        button
-        button
-    .m-formGroup.-inline
-      .a-inputWrapper.-compact
-        input.a-input.-large(type="number", value="0")
-        button
-        button
-  :code(lang="html")
+    each size in ['sm', 'md', 'lg', 'xl']
+      .m-formGroup.-inline.-mr3
+        .a-inputWrapper.-compact
+          input.a-input(type="number", class=`-${size}`, value="0")
+          button
+          button
+  :code(lang='html')
     <div class="a-inputWrapper -compact">
-      <input type="number" class="a-input -small" value="0">
+      <input type="number" class="a-input -sm" value="0">
       <button></button>
       <button></button>
     </div>
     <div class="a-inputWrapper -compact">
-      <input type="number" class="a-input" value="0">
+      <input type="number" class="a-input -md" value="0">
       <button></button>
       <button></button>
     </div>
     <div class="a-inputWrapper -compact">
-      <input type="number" class="a-input -large" value="0">
+      <input type="number" class="a-input -lg" value="0">
+      <button></button>
+      <button></button>
+    </div>
+    <div class="a-inputWrapper -compact">
+      <input type="number" class="a-input -xl" value="0">
       <button></button>
       <button></button>
     </div>

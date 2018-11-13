@@ -55,27 +55,28 @@ p.-text
       <option>Danger Select</option>
     </select>
 
-h3 Additional Sizes
-p.-text Selects offer two size modifiers, <code>-small</code> and <code>-large</code>.
-
-h4 Small
+h3 Sizes
+p.-text
+  | Selects supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
 .example.-mb3
   .-p3
-    .m-formGroup(style="max-width:20rem")
-      select(class="a-input -small")
-        option Small Select
-  :code(lang="html")
-    <select class="a-input -small">
-      <option>Small Select</option>
+    each size in ['sm', 'md', 'lg', 'xl']
+      div(class=`a-col -w12 -p2`)
+        .m-formGroup(style="max-width:20rem")
+          select(class=`a-input -${size}`)
+            option= '-' + size + ' Select'
+  :code(lang='html')
+    <select class="a-input -sm">
+      <option>-sm Select</option>
     </select>
-
-h4 Large
-.example.-mb3
-  .-p3
-    .m-formGroup(style="max-width:20rem")
-      select(class="a-input -large")
-        option Large Select
-  :code(lang="html")
-    <select class="a-input -large">
-      <option>Large Select</option>
+    <select class="a-input -md">
+      <option>-md Select</option>
+    </select>
+    <select class="a-input -lg">
+      <option>-lg Select</option>
+    </select>
+    <select class="a-input -xl">
+      <option>-xl Select</option>
     </select>

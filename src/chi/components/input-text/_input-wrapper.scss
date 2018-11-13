@@ -1,5 +1,62 @@
 @import '../input-wrapper';
 
+$sizes: (
+  sm: (
+    height: 0.75rem,
+    top: 0.375rem,
+    width: 0.75rem,
+    spinner: (
+      right: 0.75rem,
+      top: 0.375rem,
+    ),
+  ),
+  small: (
+    height: 0.75rem,
+    top: 0.375rem,
+    width: 0.75rem,
+    spinner: (
+      right: 0.75rem,
+      top: 0.375rem,
+    ),
+  ),
+  md: (
+    height: 1rem,
+    top: 0.5rem,
+    width: 1rem,
+    spinner: (
+      right: 0.75rem,
+      top: 0.5rem,
+    ),
+  ),
+  lg: (
+    height: 1rem,
+    top: 0.75rem,
+    width: 1rem,
+    spinner: (
+      right: 0.625rem,
+      top: 0.625rem,
+    ),
+  ),
+  large: (
+    height: 1rem,
+    top: 0.75rem,
+    width: 1rem,
+    spinner: (
+      right: 0.625rem,
+      top: 0.625rem,
+    ),
+  ),
+  xl: (
+    height: 1rem,
+    top: 1rem,
+    width: 1rem,
+    spinner: (
+      right: 0.75rem,
+      top: 0.75rem,
+    ),
+  )
+);
+
 .chi {
   .a-inputWrapper {
     input {
@@ -21,22 +78,18 @@
             right: 0.75rem;
           }
 
-          &.-small {
-            & ~ .a-icon {
-              height: 0.75rem;
-              top: 0.375rem;
-              width: 0.75rem;
-            }
+          @each $type in map-keys($sizes) {
+            &.-#{$type} {
+              & ~ .a-icon {
+                height: map-get(map-get($sizes, $type), height);
+                top: map-get(map-get($sizes, $type), top);
+                width: map-get(map-get($sizes, $type), width);
+              }
 
-            & ~ .a-spinner {
-              top: 0.25rem;
-              right: 0.5rem
-            }
-          }
-
-          &.-large {
-            & ~ .a-icon {
-              top: 0.75rem;
+              & ~ .a-spinner {
+                right: map-get(map-get(map-get($sizes, $type), spinner), right);
+                top: map-get(map-get(map-get($sizes, $type), spinner), top);
+              }
             }
           }
         }
@@ -51,11 +104,18 @@
           &.a-input {
             padding-left: 1.9375rem;
 
-            &.-small {
+            &.-small,
+            &.-sm {
               padding-left: 1.6875rem;
             }
 
-            &.-large {
+            &.-md {
+              padding-left: 1.9375rem;
+            }
+
+            &.-large,
+            &.-lg,
+            &.-xl {
               padding-left: 2.4375rem;
 
               & ~ .a-icon {
@@ -83,11 +143,18 @@
           &.a-input {
             padding-right: 1.9375rem;
 
-            &.-small {
+            &.-small,
+            &.-sm {
               padding-right: 1.6875rem;
             }
 
-            &.-large {
+            &.-md {
+              padding-right: 1.9375rem;
+            }
+
+            &.-large,
+            &.-lg,
+            &.-xl {
               padding-right: 2.4375rem;
 
               & ~ .a-icon {

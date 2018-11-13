@@ -2,7 +2,7 @@
 title: Buttons
 ---
 
-each size in ['default', 'small', 'large']
+each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
   each type in ['solid', 'outline', 'flat']
     div(class={
       [`test-${type}`]: size == 'default',
@@ -66,7 +66,33 @@ each size in ['default', 'small', 'large']
                 )
                   .a-btn__content
                     span Button
-
+                button.a-btn.-icon.-pill.-m1(
+                class={
+                  [`-${type}`]: type != 'solid',
+                  [`-${style}`]: style != 'default',
+                  [`-${state}`]: state != 'initial',
+                  [`-${size}`]: size != 'default'
+                }
+                disabled=state == 'disabled' ? 'disabled' : false
+                )
+                  .a-btn__content
+                    .a-icon
+                      svg
+                        use(xlink:href='#icon-atom')
+                button.a-btn.-pill.-m1(
+                class={
+                  [`-${type}`]: type != 'solid',
+                  [`-${style}`]: style != 'default',
+                  [`-${state}`]: state != 'initial',
+                  [`-${size}`]: size != 'default'
+                }
+                disabled=state == 'disabled' ? 'disabled' : false
+                )
+                  .a-btn__content
+                    .a-icon
+                      svg
+                        use(xlink:href='#icon-atom')
+                    span Button
 
   if size == 'default'
     .test-float
@@ -84,7 +110,7 @@ each size in ['default', 'small', 'large']
                       svg
                         use(xlink:href='#icon-atom')
 
-each size in ['default', 'small', 'large']
+each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
   div(class={
     [`test-${type}`]: size == 'default',
     [`test-${type}-${size}`]: size != 'default'

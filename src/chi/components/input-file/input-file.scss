@@ -1,6 +1,51 @@
 @import 'variables';
 @import 'mixins';
 
+$sizes: (
+  sm: (
+    height: 1.5rem,
+    width: 4.8125rem,
+    font-size: 0.75rem,
+    line-height: 1rem,
+    border-radius: 0.75rem,
+  ),
+  small: (
+    height: 1.5rem,
+    width: 4.8125rem,
+    font-size: 0.75rem,
+    line-height: 1rem,
+    border-radius: 0.75rem,
+  ),
+  md: (
+    height: 2rem,
+    width: 6.5rem,
+    font-size: 0.875rem,
+    line-height: 1rem,
+    border-radius: 1rem,
+  ),
+  lg: (
+    height: 2.5rem,
+    width: 8.5rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    border-radius: 1.25rem,
+  ),
+  large: (
+    height: 2.5rem,
+    width: 8.5rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    border-radius: 1.25rem,
+  ),
+  xl: (
+    height: 3rem,
+    width: 10rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    border-radius: 1.5rem,
+  )
+);
+
 .chi {
   input {
     &[type='file'] {
@@ -12,7 +57,7 @@
           & {
             align-items: center;
             display: flex;
-            font-size: $text-small;
+            font-size: $text;
             line-height: $line-height-smaller;
             pointer-events: none;
             position: relative;
@@ -66,51 +111,34 @@
           }
         }
 
-        &.-small {
-          & + label {
-            font-size: $text-smallest;
+        @each $type in map-keys($sizes) {
+          &.-#{$type} {
+            & + label {
+              font-size: map-get(map-get($sizes, $type), font-size);
 
-            &::before {
-              height: 1.5rem;
-              line-height: $line-height-smaller;
-              width: 4.8125rem;
-            }
-          }
-        }
-
-        &.-large {
-          & + label {
-            font-size: $text-large;
-            line-height: $line-height-large;
-
-            &::before {
-              height: 2.5rem;
-              line-height: $line-height-large;
-              width: 8.5rem;
+              &::before {
+                height: map-get(map-get($sizes, $type), height);
+                line-height: map-get(map-get($sizes, $type), line-height);
+                width: map-get(map-get($sizes, $type), width);
+              }
             }
           }
         }
       }
 
       &.-pill {
-        & + label {
-          &::before {
-            border-radius: 1rem;
-          }
-        }
-
-        &.-small  {
+        @each $type in map-keys($sizes) {
           & + label {
             &::before {
-              border-radius: 0.75rem;
+              border-radius: 1rem;
             }
           }
-        }
 
-        &.-large {
-          & + label {
-            &::before {
-              border-radius: 1.25rem;
+          &.-#{$type} {
+            & + label {
+              &::before {
+                border-radius: map-get(map-get($sizes, $type), border-radius);
+              }
             }
           }
         }
