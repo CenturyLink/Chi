@@ -57,7 +57,7 @@ function enableCopyToClipboardFeature (preElem) {
   copyButtonWrapper.setAttribute('class', 'copy2clipboard');
   const copyButton = document.createElement('button');
   copyButton.textContent = 'Copy';
-  copyButton.setAttribute('class', 'copy2clipboard__button a-btn -flat -small');
+  copyButton.setAttribute('class', 'copy2clipboard__button a-btn -sm -flat');
   copyButtonWrapper.appendChild(copyButton);
   const textAreaWrapper = document.createElement('div');
   textAreaWrapper.setAttribute('class', 'copy2clipboard__ta-wrapper');
