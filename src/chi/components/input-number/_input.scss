@@ -1,6 +1,39 @@
 @import 'variables';
 @import 'mixins';
 
+$sizes: (
+  sm: (
+    height: 1.5rem,
+    font-size: 0.75rem,
+    line-height: 1rem,
+  ),
+  small: (
+    height: 1.5rem,
+    font-size: 0.75rem,
+    line-height: 1rem,
+  ),
+  md: (
+    height: 2rem,
+    font-size: 0.875rem,
+    line-height: 1rem,
+  ),
+  lg: (
+    height: 2.5rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+  ),
+  large: (
+    height: 2.5rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+  ),
+  xl: (
+    height: 3rem,
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+  )
+);
+
 .chi {
   input {
     &[type='number'] {
@@ -11,7 +44,7 @@
         border-radius: 3px;
         color: set-color(grey, 90);
         display: block;
-        font-size: $text-small;
+        font-size: $text;
         height: 2rem;
         line-height: $line-height-smaller;
         outline: none;
@@ -48,18 +81,12 @@
           pointer-events: none;
         }
 
-        &.-small {
-          font-size: $text-smallest;
-          height: 1.5rem;
-          line-height: $line-height-smaller;
-          padding: 0.1875rem 0.4375rem;
-        }
-
-        &.-large {
-          font-size: $text-large;
-          height: 2.5rem;
-          line-height: $line-height-large;
-          padding: 0.4375rem;
+        @each $type in map-keys($sizes) {
+          &.-#{$type} {
+            height: map-get(map-get($sizes, $type), height);
+            font-size: map-get(map-get($sizes, $type), font-size);
+            line-height: map-get(map-get($sizes, $type), line-height);
+          }
         }
 
         &:not([disabled]) {

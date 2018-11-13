@@ -195,26 +195,27 @@ h4 Danger
       </div>
     </div>
 
-h3 Additional Sizes
-
-p.-text Textareas offer two size modifiers: <code>-small</code> and <code>-large</code>.
-
-h4 Small
+h3 Sizes
+p.-text
+  | Textareas supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
 .example.-mb3
   .-p3
-    .m-formGroup(style="max-width:30rem")
-      textarea.a-input.-small Sample text
-  :code(lang="html")
-    <textarea class="a-input -small">
+    each size in ['sm', 'md', 'lg', 'xl']
+      div(class=`a-col -w12 -p2`)
+        .a-inputWrapper(style="max-width:30rem")
+          textarea.a-input(class=`-${size}`) Sample text
+  :code(lang='html')
+    <textarea class="a-input -sm">
       Sample text
     </textarea>
-
-h4 Large
-.example.-mb3
-  .-p3
-    .m-formGroup(style="max-width:30rem")
-      textarea.a-input.-large Sample text
-  :code(lang="html")
-    <textarea class="a-input -large">
+    <textarea class="a-input -md">
+      Sample text
+    </textarea>
+    <textarea class="a-input -lg">
+      Sample text
+    </textarea>
+    <textarea class="a-input -xl">
       Sample text
     </textarea>

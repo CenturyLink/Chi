@@ -21,24 +21,26 @@ h4 Base
     <input type="file" class="a-input" id="file01">
     <label for="file01">No file chosen</label>
 
-h4 Small
+h3 Sizes
+p.-text
+  | File inputs supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
 .example.-mb3
   .-p3
-    .m-formGroup
-      input.a-input.-small(type="file", id="file01")
-      label(for="file01") No file chosen
-  :code(lang="html")
-    <input type="file" class="a-input -small" id="file01">
+    each size in ['sm', 'md', 'lg', 'xl']
+      div(class=`a-col -w12 -p2`)
+        .m-formGroup
+          input.a-input(type="file", class=`-${size}`, id="file01")
+          label(for="file01") No file chosen
+  :code(lang='html')
+    <input type="file" class="a-input -sm" id="file01">
     <label for="file01">No file chosen</label>
-
-h4 Large
-.example.-mb3
-  .-p3
-    .m-formGroup
-      input.a-input.-large(type="file", id="file01")
-      label(for="file01") No file chosen
-  :code(lang="html")
-    <input type="file" class="a-input -large" id="file01">
+    <input type="file" class="a-input -md" id="file01">
+    <label for="file01">No file chosen</label>
+    <input type="file" class="a-input -lg" id="file01">
+    <label for="file01">No file chosen</label>
+    <input type="file" class="a-input -xl" id="file01">
     <label for="file01">No file chosen</label>
 
 h3 JavaScript
