@@ -54,15 +54,13 @@ function enableCopyToClipboardFeature (preElem) {
   }
 
   const copyButtonWrapper = document.createElement('div');
-  copyButtonWrapper.setAttribute('style', 'position: relative;');
+  copyButtonWrapper.setAttribute('class', 'copy2clipboard');
   const copyButton = document.createElement('button');
   copyButton.textContent = 'Copy';
-  copyButton.setAttribute('style', 'position:absolute;top:0.5rem;right:0.5rem;');
-  copyButton.setAttribute('class', 'a-btn -flat -small');
+  copyButton.setAttribute('class', 'copy2clipboard__button a-btn -flat -small');
   copyButtonWrapper.appendChild(copyButton);
   const textAreaWrapper = document.createElement('div');
-  textAreaWrapper
-    .setAttribute('style', 'position: relative;height: 0px;');
+  textAreaWrapper.setAttribute('class', 'copy2clipboard__ta-wrapper');
   copyButtonWrapper.appendChild(textAreaWrapper);
 
   preElem.parentNode.insertBefore(copyButtonWrapper, preElem);
@@ -114,5 +112,4 @@ onLoad(() => {
   Array.prototype.forEach.call(codeSnippets, function(codeSnippet) {
     enableCopyToClipboardFeature(codeSnippet);
   });
-
 });
