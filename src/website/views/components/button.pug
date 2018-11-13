@@ -295,12 +295,12 @@ h4 Close icon button
 
 h3 Sizes
 p.-text
-  | Buttons supports a full spectrum of sizes: <code>-sm</code>, <code>-small</code>,
-  | <code>-md</code>, <code>-lg</code>, <code>-large</code>, <code>-xl</code>.
+  | Buttons supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
 .example.-mb3
   .-p3
-    each size in ['sm', 'small', 'md', 'lg', 'large', 'xl']
+    each size in ['sm', 'md', 'lg', 'xl']
       div(class=`a-col -w12 -p2`)
         button(class=`a-btn -${size} -mr1`) Button
         button(class=`a-btn -${size} -icon`)
@@ -309,18 +309,8 @@ p.-text
               svg
                 use(xlink:href='#icon-atom')
   :code(lang='html')
-    <button class="a-btn -sm">Button -xs</button>
+    <button class="a-btn -sm">Button -sm</button>
     <button class="a-btn -sm -icon">
-       <div class="a-btn__content">
-         <div class="a-icon">
-           <svg>
-             <use xlink:href="#icon-atom"></use>
-           </svg>
-         </div>
-       </div>
-    </button>
-    <button class="a-btn -small">Button -sm</button>
-    <button class="a-btn -small -icon">
        <div class="a-btn__content">
          <div class="a-icon">
            <svg>
@@ -349,17 +339,7 @@ p.-text
          </div>
        </div>
     </button>
-    <button class="a-btn -large">Button -xl</button>
-    <button class="a-btn -large -icon">
-       <div class="a-btn__content">
-         <div class="a-icon">
-           <svg>
-             <use xlink:href="#icon-atom"></use>
-           </svg>
-         </div>
-       </div>
-    </button>
-    <button class="a-btn -xl">Button -xxl</button>
+    <button class="a-btn -xl">Button -xl</button>
     <button class="a-btn -xl -icon">
        <div class="a-btn__content">
          <div class="a-icon">

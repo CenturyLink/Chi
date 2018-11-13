@@ -175,19 +175,17 @@ h4 Danger
 
 h3 Sizes
 p.-text
-  | Text inputs supports a full spectrum of sizes: <code>-sm</code>, <code>-small</code>,
-  | <code>-md</code>, <code>-lg</code>, <code>-large</code>, <code>-xl</code>.
+  | Text inputs supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
 .example.-mb3
   .-p3
-    each size in ['sm', 'small', 'md', 'lg', 'large', 'xl']
+    each size in ['sm', 'md', 'lg', 'xl']
       div(class=`a-col -w12 -p2`)
         .m-formGroup(style="max-width:20rem")
           input(type="text", class=`a-input -${size} -mr3`, placeholder="Sample Text")
   :code(lang='html')
     <input type="text" class="a-input -sm" placeholder="Sample Text">
-    <input type="text" class="a-input -small" placeholder="Sample Text">
     <input type="text" class="a-input -md" placeholder="Sample Text">
     <input type="text" class="a-input -lg" placeholder="Sample Text">
-    <input type="text" class="a-input -large" placeholder="Sample Text">
     <input type="text" class="a-input -xl" placeholder="Sample Text">
