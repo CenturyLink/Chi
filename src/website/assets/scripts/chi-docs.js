@@ -45,7 +45,42 @@ function removeClass(item, className) {
   item.className = classes.filter(name => name !== className);
 }
 
+function enableCopyToClipboardFeature (preElem) {
+
+  const code = preElem.childNodes && preElem.childNodes[0];
+
+  if ( code.nodeName !== 'CODE' || !code.textContent ) {
+    return;
+  }
+
+  const copyButtonWrapper = document.createElement('div');
+  copyButtonWrapper.setAttribute('class', 'copy2clipboard');
+  const copyButton = document.createElement('button');
+  copyButton.textContent = 'Copy';
+  copyButton.setAttribute('class', 'copy2clipboard__button a-btn -sm -flat');
+  copyButtonWrapper.appendChild(copyButton);
+  const textAreaWrapper = document.createElement('div');
+  textAreaWrapper.setAttribute('class', 'copy2clipboard__ta-wrapper');
+  copyButtonWrapper.appendChild(textAreaWrapper);
+
+  preElem.parentNode.insertBefore(copyButtonWrapper, preElem);
+
+  const copy = function() {
+    const textArea = document.createElement("textarea");
+    textArea.textContent = code.textContent;
+    textArea.style.opacity = "0.01";
+    textAreaWrapper.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    textAreaWrapper.removeChild(textArea);
+  };
+
+  copyButton.addEventListener('click', copy);
+
+}
+
 onLoad(() => {
+
   var examples = document.querySelectorAll('.m-example');
 
   Array.prototype.forEach.call(examples, function(example) {
@@ -53,7 +88,7 @@ onLoad(() => {
     const lastChild = example.querySelector('li:last-child');
     const htmlItem = example.querySelector('.m-example__html');
     const codeItem = example.querySelector('.m-example__code');
-    
+
     firstChild.onclick = function(evt) {
       evt.preventDefault();
 
@@ -65,11 +100,16 @@ onLoad(() => {
 
     lastChild.onclick = function(evt) {
       evt.preventDefault();
-      
+
       removeClass(firstChild, '-active');
       addClass(lastChild, '-active');
       addClass(htmlItem, '-hidden');
       removeClass(codeItem, '-hidden');
     };
+  });
+
+  var codeSnippets = document.getElementsByTagName('pre');
+  Array.prototype.forEach.call(codeSnippets, function(codeSnippet) {
+    enableCopyToClipboardFeature(codeSnippet);
   });
 });
