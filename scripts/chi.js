@@ -57,7 +57,8 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
           discardComments: {
             removeAll: true
           }
-        }]
+        }],
+        zindex: false
       })
     ]))
     .pipe(plugins.concat('chi.css'))

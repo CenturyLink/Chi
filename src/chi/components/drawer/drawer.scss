@@ -1,0 +1,109 @@
+@import 'mixins';
+@import 'variables';
+
+$drawer-width: 18.75rem;
+$drawer-height: 18.75rem;
+
+.chi {
+
+  .m-drawer {
+
+    & {
+      background-color: set-color(white);
+      box-shadow: 0 0 25px 10px rgba(set-color(black), 0.15);
+      display: none;
+      flex-direction: column;
+      overflow-x: hidden;
+      overflow-y: auto;
+      pointer-events: auto;
+      position: fixed;
+      z-index: $zindex-fixed;
+    }
+
+    &.-active {
+      display: flex;
+    }
+
+    &.-animated {
+      &.-transitioning {
+        display: flex;
+      }
+    }
+
+    &.-top {
+      height: $drawer-height;
+      left: 0;
+      right: 0;
+      top: 0;
+
+      &.-animated {
+        &:not(.-active) {
+          top: -$drawer-height;
+        }
+        transition: top 0.25s ease-in-out;
+      }
+    }
+
+    &.-right {
+      bottom: 0;
+      right: 0;
+      top: 0;
+      width: $drawer-width;
+
+      &.-animated {
+        &:not(.-active) {
+          right: -$drawer-width;
+        }
+        transition: right 0.25s ease-in-out;
+      }
+    }
+
+    &.-bottom {
+      bottom: 0;
+      height: $drawer-height;
+      left: 0;
+      right: 0;
+
+      &.-animated {
+        &:not(.-active) {
+          bottom: -$drawer-height;
+        }
+        transition: bottom 0.25s ease-in-out;
+      }
+    }
+
+    &.-left {
+      bottom: 0;
+      left: 0;
+      top: 0;
+      width: $drawer-width;
+
+      &.-animated {
+        &:not(.-active) {
+          left: -$drawer-width;
+        }
+        transition: left 0.25s ease-in-out;
+      }
+    }
+
+    &__header {
+      min-height: 3.5rem;
+      padding: 1rem;
+      position: relative;
+    }
+
+    &__content {
+      flex-grow: 1;
+    }
+
+    .-close {
+      position: absolute;
+      right: 0.75rem;
+      top: 0.8125rem;
+    }
+  }
+
+  .a-backdrop > .m-drawer {
+    z-index: $zindex-fixed-with-backdrop;
+  }
+}

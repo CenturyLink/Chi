@@ -8,31 +8,31 @@ h3 Examples
 p.-text To render a spinner, use the class <code>a-spinner</code>.
 
 h3 Backdrop
-p.-text Wrap spinners in <code>a-spinner__backdrop</code> to overlay content similar to a modal.
+p.-text Wrap spinners in <code>a-backdrop</code> to overlay content similar to a modal.
 h4 Base
 .example.-mb3
-  .a-spinner__backdrop.-p6(style="position:relative;height:25rem;")
-    svg(class=`a-spinner -text--brand`,viewBox=`0 0 66 66`)
+  .a-backdrop.-p6(style="position:relative;height:25rem;")
+    svg(class=`a-spinner -text--inverse`,viewBox=`0 0 66 66`)
       title Loading
       circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
   :code(lang="html")
-    <div class="a-spinner__backdrop">
-      <svg class="a-spinner -text--brand" viewBox="0 0 66 66">
+    <div class="a-backdrop">
+      <svg class="a-spinner -text--inverse" viewBox="0 0 66 66">
         <title>Loading</title>
         <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
       </svg>
     </div>
 
 h4 Inverse
-p.-text Apply the class <code>-inverse</code> to render spinners on dark backgrounds.
+p.-text Apply the class <code>-inverse</code> to render spinners on light backgrounds.
 .example.-mb3
-  .a-spinner__backdrop.-inverse.-p6(style="position:relative;height:25rem;")
-    svg(class=`a-spinner -text--inverse`,viewBox=`0 0 66 66`)
+  .a-backdrop.-inverse.-p6(style="position:relative;height:25rem;")
+    svg(class=`a-spinner -text--brand`,viewBox=`0 0 66 66`)
       title Loading
       circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
   :code(lang="html")
-    <div class="a-spinner__backdrop -inverse">
-      <svg class="a-spinner -text--inverse" viewBox="0 0 66 66">
+    <div class="a-backdrop -inverse">
+      <svg class="a-spinner -text--brand" viewBox="0 0 66 66">
         <title>Loading</title>
         <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
       </svg>

@@ -4,53 +4,6 @@
 $spinner-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg: 4rem, xl: 6rem, xxl: 8rem);
 
 .chi {
-  .a-spinner__backdrop {
-    background: rgba(set-color(white), 0.7);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .a-spinner {
-      animation: rotator 1.4s linear infinite;
-      transform-origin: center;
-      stroke: currentColor;
-      width: 4rem;
-      height: 4rem;
-
-      & .path {
-        stroke-dasharray: 150,190;
-        stroke-dashoffset: 0;
-        transform-origin: center;
-        stroke-linecap: round;
-        animation: dash 1.4s ease-in-out infinite;
-      }
-    }
-
-    &.-inverse {
-      background: rgba(set-color(black), 0.7);
-
-      .a-spinner {
-        animation: rotator 1.4s linear infinite;
-        transform-origin: center;
-        stroke: currentColor;
-        width: 4rem;
-        height: 4rem;
-
-        & .path {
-          stroke-dasharray: 150,190;
-          stroke-dashoffset: 0;
-          transform-origin: center;
-          stroke-linecap: round;
-          animation: dash 1.4s ease-in-out infinite;
-        }
-      }
-    }
-  }
 
   .a-spinner {
     animation: rotator 1.4s linear infinite;
@@ -72,6 +25,14 @@ $spinner-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg:
         height: map-get($spinner-sizes, $type);
         width: map-get($spinner-sizes, $type);
       }
+    }
+  }
+
+  .a-backdrop {
+    .a-spinner {
+      transform-origin: center;
+      width: 4rem;
+      height: 4rem;
     }
   }
 
