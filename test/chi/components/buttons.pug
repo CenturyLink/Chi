@@ -16,7 +16,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
               small= `${state}`
             each style in ['default', 'brand', 'danger', 'info', 'dark']
               td
-                input.a-btn.-m1.-ml2(
+                input.a-btn.-m--1.-ml--2(
                   type="button"
                   class={
                     [`-${type}`]: type != 'solid',
@@ -27,7 +27,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                   value="Button"
                   disabled=state=='disabled' ? 'disabled' : false
                 )
-                a.a-btn.-icon.-m1(
+                a.a-btn.-icon.-m--1(
                   href="#"
                   class={
                     [`-${type}`]: type != 'solid',
@@ -41,7 +41,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     .a-icon
                       svg
                         use(xlink:href='#icon-atom')
-                button.a-btn.-m1(
+                button.a-btn.-m--1(
                   class={
                     [`-${type}`]: type != 'solid',
                     [`-${style}`]: style != 'default',
@@ -55,7 +55,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                       svg
                         use(xlink:href='#icon-atom')
                     span Button
-                button.a-btn.-pill.-m1.-ml2(
+                button.a-btn.-pill.-m--1.-ml--2(
                 class={
                   [`-${type}`]: type != 'solid',
                   [`-${style}`]: style != 'default',
@@ -66,7 +66,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                 )
                   .a-btn__content
                     span Button
-                button.a-btn.-icon.-pill.-m1(
+                button.a-btn.-icon.-pill.-m--1(
                 class={
                   [`-${type}`]: type != 'solid',
                   [`-${style}`]: style != 'default',
@@ -79,7 +79,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     .a-icon
                       svg
                         use(xlink:href='#icon-atom')
-                button.a-btn.-pill.-m1(
+                button.a-btn.-pill.-m--1(
                 class={
                   [`-${type}`]: type != 'solid',
                   [`-${style}`]: style != 'default',
@@ -104,7 +104,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
               small= `${state}`
             each style in ['default', 'brand', 'danger', 'info', 'dark']
               td
-                button(type="button", class=`a-btn -float -${style} -${state} -ml4 -m1`)
+                button(type="button", class=`a-btn -float -${style} -${state} -ml--4 -m--1`)
                   .a-btn__content
                     .a-icon
                       svg

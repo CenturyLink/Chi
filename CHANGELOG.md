@@ -45,7 +45,7 @@
 ### 0.8.0 (May 24, 2018)
 
 * Added depth utility classes.
-* Enabled spacing utility classes to be combined (i.e. .-p4 .-pb0).
+* Enabled spacing utility classes to be combined (i.e. .-p--4 .-pb--0).
 * Added card component.
 * Changed relative base size to 16px (the default on most browsers).
 * Removed API and CLI support to focus strictly on CDN and packaged source as integration options.

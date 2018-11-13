@@ -10,11 +10,11 @@ h3 Examples
 p.-text To render brand, wrap the CenturyLink logo image or svg element in <code>a-brand</code>.
 
 h4 Base
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     a.a-brand(href="#", aria-label="CenturyLink")
       img(src='https://assets.ctl.io/images/centurylink-logo.svg', alt="CenturyLink")
-  ul#a-tabs--formats.a-tabs.-ml3
+  ul#a-tabs--formats.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-panel--formats-img') IMG
     li
@@ -36,14 +36,14 @@ p.-text
   | <code>-sm2</code>, <code>-sm3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
   | The default size is <code>-md</code>.
 
-.example.-mb3
-  .-p3(style='overflow:auto')
+.example.-mb--3
+  .-p--3(style='overflow:auto')
     each size in sizes
-      div(class=`a-col -w12 -p3`)
+      div(class=`a-col -w12 -p--3`)
         a(class=`a-brand -${size}`, href='#', aria-label='CenturyLink')
           img(src='https://assets.ctl.io/images/centurylink-logo.svg', alt='CenturyLink')
         p.-text--bold= '-' + size
-  ul#a-tabs--sizes.a-tabs.-ml3
+  ul#a-tabs--sizes.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-panel--sizes-img') IMG
     li

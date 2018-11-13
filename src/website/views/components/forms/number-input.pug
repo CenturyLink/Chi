@@ -16,8 +16,8 @@ p.-text
 
 h4 Base
 
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup
       .a-inputWrapper.-compact
         input.a-input(type="number", value="0")
@@ -31,8 +31,8 @@ h4 Base
     </div>
 
 h4 Disabled
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup
       .a-inputWrapper.-compact
         input.a-input(type="number", value="0", disabled)
@@ -50,10 +50,10 @@ p.-text
   | Number inputs supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
   |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
-      .m-formGroup.-inline.-mr3
+      .m-formGroup.-inline.-mr--3
         .a-inputWrapper.-compact
           input.a-input(type="number", class=`-${size}`, value="0")
           button
@@ -84,7 +84,7 @@ h3 JavaScript
 p.-text This component requires JavaScript to increment and decrement the value when the buttons are pressed.
 
 h4 Example
-.-mb4
+.-mb--4
   include:code(lang="js") ../../../../chi/components/input-number/input-number.js
 
 script

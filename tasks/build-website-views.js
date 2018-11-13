@@ -80,8 +80,8 @@ gulp.task('build:website:views', () => {
             example: (text, options) => {
               const lang = getLang(options.lang);
 
-              return `<div class="m-example -mb4">
-                <ul class="a-tabs -base -small -border -mb2">
+              return `<div class="m-example -mb--4">
+                <ul class="a-tabs -base -small -border -mb--2">
                   <li class="-active"><a href="#">HTML</a></li>
                   <li><a href="#">Code</a></li>
                 </ul>

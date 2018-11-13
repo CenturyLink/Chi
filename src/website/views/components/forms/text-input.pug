@@ -10,16 +10,16 @@ p.-text
   | <code>input type="password"</code>, <code>input type="email"</code>, etc.
 
 h4 Base
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder")
   :code(lang="html")
     <input type="text" class="a-input" placeholder="Placeholder">
 
 h4 Disabled
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:20rem")
       input(type="text", class="a-input", value="Sample Text", disabled)
   :code(lang="html")
@@ -32,8 +32,8 @@ p.-text
   | an icon alignment utility class (e.g. <code>-iconLeft</code>) to specify where it should be placed.
 
 h4 Left Aligned
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-inputWrapper.-iconLeft(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
       .a-icon.-text--muted
@@ -50,8 +50,8 @@ h4 Left Aligned
     </div>
 
 h4 Right Aligned
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-inputWrapper.-iconRight(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
       .a-icon.-text--muted
@@ -68,8 +68,8 @@ h4 Right Aligned
     </div>
 
 h4 Left + Right Aligned
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-inputWrapper.-iconLeft.-iconRight(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
       .a-icon.-text--muted
@@ -99,15 +99,15 @@ p.-text
   | Text inputs offer three validation states: <code>-success</code>, <code>-warning</code>, and <code>-danger</code>.
 
 h4 Success
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:20rem")
       input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
   :code(lang="html")
     <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
 
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-inputWrapper.-iconRight(style="max-width:20rem")
       input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
       .a-icon.-text--success
@@ -124,15 +124,15 @@ h4 Success
     </div>
 
 h4 Warning
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:20rem")
       input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
   :code(lang="html")
     <input type="text" class="a-input -warning" placeholder="Placeholder" value="Sample Text">
 
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-inputWrapper.-iconRight(style="max-width:20rem")
       input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
       .a-icon.-text--warning
@@ -149,15 +149,15 @@ h4 Warning
     </div>
 
 h4 Danger
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup(style="max-width:20rem")
       input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
   :code(lang="html")
     <input type="text" class="a-input -danger" placeholder="Placeholder" value="Sample Text">
 
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-inputWrapper.-iconRight(style="max-width:20rem")
       input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
       .a-icon.-text--danger
@@ -178,12 +178,12 @@ p.-text
   | Text inputs supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
   |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
-      div(class=`a-col -w12 -p2`)
+      div(class=`a-col -w12 -p--2`)
         .m-formGroup(style="max-width:20rem")
-          input(type="text", class=`a-input -${size} -mr3`, placeholder="Sample Text")
+          input(type="text", class=`a-input -${size} -mr--3`, placeholder="Sample Text")
   :code(lang='html')
     <input type="text" class="a-input -sm" placeholder="Sample Text">
     <input type="text" class="a-input -md" placeholder="Sample Text">

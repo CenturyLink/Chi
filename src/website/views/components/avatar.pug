@@ -14,8 +14,8 @@ h3 Examples
 p.-text
   | To render an avatar, apply the class <code>a-avatar</code> to a div element and place an image inside.
 h4 Base
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-avatar
       img(src='../../assets/images/avatar.jpg', alt="avatar")
   :code(lang="html")
@@ -27,14 +27,14 @@ h4 Icon Avatars
 p.-text
   | Icon avatars can be used when an image is not available.
   | To use, wrap any <a href="../icon/">Chi icon</a> with <code>a-avatar</code>.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .a-grid
       each icon in iconExamples
-        .a-col.-w2.-sm--w1
+        .a-col.-w--2.-sm--w1
           .a-avatar
             i(class=`a-icon icon-${icon}`)
-  ul#a-tabs--icons.a-tabs.-ml3
+  ul#a-tabs--icons.a-tabs.-ml--3
     li.-active
       a(href="#iconsWebFont") Web Font
     li
@@ -58,11 +58,11 @@ p.-text
   | They are more versatile than icon avatars and support up to two letters.
   | Text utility classes such as <code>-text--uppercase</code>, <code>-text--lowercase</code>,
   | and <code>-text--capitalized</code> can be applied to force specific casing.
-.example.-mb3
-  .-p3.a-grid
-    .a-col.-w2.-sm--w1
+.example.-mb--3
+  .-p--3.a-grid
+    .a-col.-w--2.-sm--w1
       .a-avatar AA
-    .a-col.-w2.-sm--w1
+    .a-col.-w--2.-sm--w1
       .a-avatar M
   :code(lang="html")
     <div class="a-avatar">AA</div>
@@ -81,12 +81,12 @@ ul#a-tabs--colors.a-tabs
    a(href="#coloredInitials") Initial
   li
     a(href="#coloredIcons") Icon
-.example.-mb3
+.example.-mb--3
   #coloredInitials.a-tabs-panel.-active
-    .-p3
+    .-p--3
       .a-grid.-align-items--end
         each color in colors
-          .a-col.-w2.-text--center
+          .a-col.-w--2.-text--center
             div(class=`a-avatar -${color}`) AA
             p.-text= color
     :code(lang="html")
@@ -104,10 +104,10 @@ ul#a-tabs--colors.a-tabs
       <div class="a-avatar -orange">AA</div>
 
   #coloredIcons.a-tabs-panel
-    .-p3
+    .-p--3
       .a-grid.-align-items--end
         each color in colors
-          .a-col.-w2.-text--center
+          .a-col.-w--2.-text--center
             div(class=`a-avatar -${color}`)
               i.a-icon.icon-user
             p.-text= color
@@ -163,9 +163,9 @@ ul#a-tabs--sizes.a-tabs
   li
     a(href="#sizedImages") Image
 
-.example.-mb3
+.example.-mb--3
   #sizedInitials.a-tabs-panel.-active
-    .-p3
+    .-p--3
       .a-grid.-align-items--end
         each size in sizes
           div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
@@ -182,7 +182,7 @@ ul#a-tabs--sizes.a-tabs
       <div class="a-avatar -xxl">AA</div>
 
   #sizedIcons.a-tabs-panel
-    .-p3
+    .-p--3
       .a-grid.-align-items--end
         each size in sizes
           div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
@@ -216,7 +216,7 @@ ul#a-tabs--sizes.a-tabs
         <i class="a-icon icon-user"></i>
       </div>
   #sizedImages.a-tabs-panel
-    .-p3
+    .-p--3
       .a-grid.-align-items--end
         each size in sizes
           div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
@@ -254,10 +254,10 @@ h3 Avatar Groups
 p.-text
   | Use avatar groups to group multiple avatars or add descriptive text such as a users name.
   | Render an avatar group by wrapping an avatar in the class <code>m-avatarGroup</code>.
-.example.-mb3
-  .-p3.a-grid
+.example.-mb--3
+  .-p--3.a-grid
     each color in colors
-      .-mb1.a-col.-w6.-sm--w4.-md--w6.-lg--w4.-xl--w3
+      .-mb--1.a-col.-w--6.-sm--w4.-md--w6.-lg--w4.-xl--w3
         .m-avatarGroup
           div(class=`a-avatar -${color}`) L
           = `Label ${color}`

@@ -12,7 +12,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             small= `${state}`
           each style in ['default', 'success', 'warning', 'danger']
             td
-              .-m1
+              .-m--1
                 if state == 'disabled'
                   textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
                 else
@@ -27,7 +27,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             small= `${state}`
           each style in ['default', 'success', 'warning', 'danger']
             td
-              .-m1
+              .-m--1
                 .a-inputWrapper.-iconLeft
                   if state == 'disabled'
                     textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
@@ -46,7 +46,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             small= `${state}`
           each style in ['default', 'success', 'warning', 'danger']
             td
-              .-m1
+              .-m--1
                 .a-inputWrapper.-iconRight
                   if state == 'disabled'
                     textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
@@ -78,7 +78,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             small= `${state}`
           each style in ['default', 'success', 'warning', 'danger']
             td
-              .-m1
+              .-m--1
                 .a-inputWrapper.-iconLeft.-iconRight
                   if state == 'disabled'
                     textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value

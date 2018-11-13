@@ -118,9 +118,9 @@ div(class=`test-dropdown-range`)
   .-d--flex
     .m-dropdown__menu.-active
       .m-dropdown__menu-item
-        label.-text.-mr2 200GB
+        label.-text.-mr--2 200GB
         input.a-input(type="range")
-        label.-text.-ml2 5TB
+        label.-text.-ml--2 5TB
       .a-divider
       span.m-dropdown__menu-item Select range
       .m-dropdown__menu-item
@@ -132,15 +132,15 @@ div(class=`test-dropdown-toggle`)
     .m-dropdown__menu.-active
       .m-dropdown__menu-item
         input(type="checkbox", class="a-input -toggle", id="toggle-mail")
-        label(class="-mr1", for="toggle-mail")
+        label(class="-mr--1", for="toggle-mail")
         label(class="-text", for="toggle-mail") Email notifications
       .m-dropdown__menu-item
         input(type="checkbox", class="a-input -toggle", id="toggle-tlf", checked)
-        label(class="-mr1", for="toggle-tlf")
+        label(class="-mr--1", for="toggle-tlf")
         label(class="-text", for="toggle-tlf") Phone notifications
       .m-dropdown__menu-item
         input(type="checkbox", class="a-input -toggle", id="toggle-app", disabled)
-        label(class="-mr1", for="toggle-app")
+        label(class="-mr--1", for="toggle-app")
         label(class="-text", for="toggle-app") App notifications
 
 
@@ -159,7 +159,7 @@ div(class=`test-dropdown-higher-helper`)
   .-d--flex
     .m-dropdown__menu.-active(style="width:10rem")
       a.m-dropdown__menu-item(href="#") Link 1
-      .m-dropdown__menu-item.-h--auto.-py1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      .m-dropdown__menu-item.-h--auto.-py--1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
       a.m-dropdown__menu-item(href="#") Link 2
 
 - var triggerSizes = ["-large", "", "-small"];

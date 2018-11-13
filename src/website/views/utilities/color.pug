@@ -11,7 +11,7 @@ p.-text
 
 h4 Target all breakpoints
 p.-text Color utility classes with no breakpoint defined apply to all screen sizes.
-section.a-table.-bordered.-mt3.-mb3
+section.a-table.-bordered.-mt--3.-mb--3
   div
     table.-text(cellpadding='0', cellspacing='0')
       thead
@@ -34,13 +34,13 @@ section.a-table.-bordered.-mt3.-mb3
                 code= 'background-color:' + val
             td(width='40%')
               if (type == 'none')
-                .-text.-b1(style=`background:${val};height:15px;`)
+                .-text.-b--1(style=`background:${val};height:15px;`)
               else
-                .-text.-b1(style=`background-color:${val};height:15px;`)
+                .-text.-b--1(style=`background-color:${val};height:15px;`)
 
 h4 Target specific breakpoints
 p.-text To target a specific breakpoint, add the breakpoint abbreviation to the class.
-section.a-table.-bordered.-mt3.-mb3
+section.a-table.-bordered.-mt--3.-mb--3
   div
     table(cellpadding='0', cellspacing='0')
       thead
@@ -58,14 +58,14 @@ section.a-table.-bordered.-mt3.-mb3
               td.-text Visible only from <code>#{size}</code>
 
 h3 Examples
-.example.-mb3
-  .-p3
-    .-text.-b1.-p3.-m1.-bg--success(style="color:white;") -bg--success
-    .-text.-b1.-p3.-m1.-bg-sm--danger(style="color:white;") -bg-sm--danger
-    .-text.-b1.-p3.-m1.-bg-md--warning(style="color:white;") -bg-md--warning
-    .-text.-b1.-p3.-m1.-bg-lg--info(style="color:white;") -bg-lg--info
-    .-text.-b1.-p3.-m1.-bg-xl--brand(style="color:white;") -bg-xl--brand
-    .-text.-b1.-p3.-m1.-bg--none(style="color:black;") -bg--none
+.example.-mb--3
+  .-p--3
+    .-text.-b--1.-p--3.-m--1.-bg--success(style="color:white;") -bg--success
+    .-text.-b--1.-p--3.-m--1.-bg-sm--danger(style="color:white;") -bg-sm--danger
+    .-text.-b--1.-p--3.-m--1.-bg-md--warning(style="color:white;") -bg-md--warning
+    .-text.-b--1.-p--3.-m--1.-bg-lg--info(style="color:white;") -bg-lg--info
+    .-text.-b--1.-p--3.-m--1.-bg-xl--brand(style="color:white;") -bg-xl--brand
+    .-text.-b--1.-p--3.-m--1.-bg--none(style="color:black;") -bg--none
   :code(lang="html")
     <!-- background-color success on all breakpoints -->
     <div class="-bg--success"></div>

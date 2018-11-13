@@ -12,8 +12,8 @@ p.-text
   | add a label next to it.
 
 h4 Base
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     .m-formGroup
       input.a-input(type="file", id="file01")
       label(for="file01") No file chosen
@@ -26,10 +26,10 @@ p.-text
   | File inputs supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
   |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
-.example.-mb3
-  .-p3
+.example.-mb--3
+  .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
-      div(class=`a-col -w12 -p2`)
+      div(class=`a-col -w12 -p--2`)
         .m-formGroup
           input.a-input(type="file", class=`-${size}`, id="file01")
           label(for="file01") No file chosen
@@ -47,7 +47,7 @@ h3 JavaScript
 p.-text This component requires JavaScript to update the label content once a file or files have been selected.
 
 h4 Example
-.-mb4
+.-mb--4
   include:code(lang="js") ../../../../chi/components/input-file/input-file.js
 
 script

@@ -9,10 +9,10 @@ h4 Text line height
 p.-text
   | Use shorthand utility classes to control an elements line-height. Line height sizes are equal to <code>$base-unit * {size}</code>
   | and illustrated in green in the example below.
-.example.-mb3
-  .-m3
+.example.-mb--3
+  .-m--3
     each type in ['lh--1', 'lh--2', 'lh--3', 'lh--4', 'lh--5', 'lh--6', 'lh--7', 'lh--8', 'lh--9']
-      p.-text.-pl1(class=`-${type}`, style=`background:#E4F2CE;`)
+      p.-text.-pl--1(class=`-${type}`, style=`background:#E4F2CE;`)
         = `-${type}`
   :code(lang="html")
       <p class="-text -lh--1">-lh--1</p>
@@ -26,8 +26,8 @@ p.-text
       <p class="-text -lh--9">-lh--9</p>
 h4 Text alignment
 p.-text Change text alignment to justified, left, center, or right.
-.example.-mb3
-  .-m3
+.example.-mb--3
+  .-m--3
     p.-text.-text--justify This text will render as justified
     p.-text.-text--left This text will render as left aligned
     p.-text.-text--center This text will render as center aligned
@@ -39,8 +39,8 @@ p.-text Change text alignment to justified, left, center, or right.
       <p class="-text--right">This text will render as right aligned</p>
 h4 Text transform
 p.-text Change text transform to lowercase, uppercase, or capitalized.
-.example.-mb3
-  .-m3
+.example.-mb--3
+  .-m--3
     p.-text.-text--lowercase This text will render as lowercase
     p.-text.-text--uppercase This text will render as uppercase
     p.-text.-text--capitalized This text will render as capitalized
@@ -50,8 +50,8 @@ p.-text Change text transform to lowercase, uppercase, or capitalized.
       <p class="-text--capitalized">This text will render as capitalized</p>
 h4 Text weight
 p.-text Change text weight to thin, normal, bold, or bolder.
-.example.-mb3
-  .-m3
+.example.-mb--3
+  .-m--3
     p.-text.-text--thin This text will render as thin
     p.-text.-text--normal This text will render as normal
     p.-text.-text--bold This text will render as bold
@@ -63,8 +63,8 @@ p.-text Change text weight to thin, normal, bold, or bolder.
       <p class="-text--bolder">This text will render as bolder</p>
 h4 Text wrapping
 p.-text Prevent text wrapping with nowrap or control overflow with truncate.
-.example.-mb3
-  .-m3
+.example.-mb--3
+  .-m--3
     p.-text.-text--nowrap(style="width: 11rem;background:#eeeeee;") This text will render without wrapping
     p.-text.-text--truncate(style="width: 11rem;") This text will truncate with an ellipsis
   :code(lang="html")
@@ -72,8 +72,8 @@ p.-text Prevent text wrapping with nowrap or control overflow with truncate.
       <p class="-text--truncate">This text will truncate with an ellipsis</p>
 h4 Text colors
 p.-text Change text colors with contextual classes.
-.example.-mb3
-  .-m3
+.example.-mb--3
+  .-m--3
     each type in ['text--brand', 'text--success', 'text--warning', 'text--danger', 'text--info', 'text--muted']
       p.-text(class=`-${type}`)
         = `.-${type}`
