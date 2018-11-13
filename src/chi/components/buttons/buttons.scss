@@ -101,7 +101,7 @@ $state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
       &.-focus {
         border: 0.0625rem solid set-color(grey, 40);
         box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
-        z-index: 1;
+        z-index: $zindex-focus;
       }
 
       &:active,

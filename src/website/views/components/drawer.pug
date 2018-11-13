@@ -7,7 +7,7 @@ p.-text
 
 h3 Examples
 
-p Drawers support sliding in from top, right, bottom, or left. They 
+p Drawers support sliding in from top, right, bottom, or left. They
 
 ul#a-tabs--drawer.a-tabs
   li.-active
@@ -24,7 +24,7 @@ ul#a-tabs--drawer.a-tabs
       div
         each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
           .-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. A culpa cupiditate earum fugiat illo minima qui, quo, recusandae reiciendis reprehenderit saepe vitae? A blanditiis doloribus facere incidunt labore, magnam odit!
-      .m-drawer.-left.-active
+      .m-drawer.-left.-active(style="position:absolute;")
         .m-drawer__header
           button(class='a-btn -icon -close')
             .a-btn__content
@@ -50,7 +50,7 @@ ul#a-tabs--drawer.a-tabs
       div
         each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
           .-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. A culpa cupiditate earum fugiat illo minima qui, quo, recusandae reiciendis reprehenderit saepe vitae? A blanditiis doloribus facere incidunt labore, magnam odit!
-      .m-drawer.-right.-active
+      .m-drawer.-right.-active(style="position:absolute;")
         .m-drawer__header
           button(class='a-btn -icon -close')
             .a-btn__content
@@ -76,7 +76,7 @@ ul#a-tabs--drawer.a-tabs
       div
         each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
           .-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. A culpa cupiditate earum fugiat illo minima qui, quo, recusandae reiciendis reprehenderit saepe vitae? A blanditiis doloribus facere incidunt labore, magnam odit!
-      .m-drawer.-top.-active
+      .m-drawer.-top.-active(style="position:absolute;")
         .m-drawer__header
           button(class='a-btn -icon -close')
             .a-btn__content
@@ -102,7 +102,7 @@ ul#a-tabs--drawer.a-tabs
       div
         each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
           .-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. A culpa cupiditate earum fugiat illo minima qui, quo, recusandae reiciendis reprehenderit saepe vitae? A blanditiis doloribus facere incidunt labore, magnam odit!
-      .m-drawer.-bottom.-active
+      .m-drawer.-bottom.-active(style="position:absolute;")
         .m-drawer__header
           button(class='a-btn -icon -close')
             .a-btn__content
@@ -128,7 +128,7 @@ p.-text
   | Optionaly, you can add a backdrop to focus user attention in the drawer content.
 .example.-mb3(style='overflow:hidden;')
   .a-backdrop(style="position:relative;height:30rem")
-    .m-drawer.-bottom.-active
+    .m-drawer.-bottom.-active(style="position:absolute;")
       button(class='a-btn -icon -close')
         .a-btn__content
           i.a-icon.icon-x
@@ -162,7 +162,7 @@ ul#a-tabs--header.a-tabs
   .example.-mb3(style='overflow:hidden;')
     div(style="position:relative;height:15rem;overflow:hidden;")
       .a-backdrop(style="position:relative;height:30rem")
-        .m-drawer.-left.-active
+        .m-drawer.-left.-active(style="position:absolute;")
           .m-drawer__header
             button(class='a-btn -icon -close')
               .a-btn__content
@@ -188,7 +188,7 @@ ul#a-tabs--header.a-tabs
   .example.-mb3(style='overflow:hidden;')
     div(style="position:relative;height:15rem;overflow:hidden;")
       .a-backdrop(style="position:relative;height:30rem")
-        .m-drawer.-left.-active
+        .m-drawer.-left.-active(style="position:absolute;")
           button(class='a-btn -icon -close')
             .a-btn__content
               i.a-icon.icon-x

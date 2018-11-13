@@ -30,7 +30,7 @@ gulp.task('build:test:styles', () =>
       autoprefixer({
         browsers: ['last 2 versions', 'ie >= 10']
       }),
-      cssnano()
+      cssnano({zindex: false})
     ]))
     .pipe(gulp.dest(publicFolder))
     .pipe(plugins.wait(1500))

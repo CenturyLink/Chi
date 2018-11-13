@@ -16,8 +16,8 @@ $drawer-height: 18.75rem;
       overflow-x: hidden;
       overflow-y: auto;
       pointer-events: auto;
-      position: absolute;
-      z-index: 100;
+      position: fixed;
+      z-index: $zindex-fixed;
     }
 
     &.-active {
@@ -101,6 +101,9 @@ $drawer-height: 18.75rem;
       right: 0.75rem;
       top: 0.8125rem;
     }
+  }
 
+  .a-backdrop > .m-drawer {
+    z-index: $zindex-fixed-with-backdrop;
   }
 }

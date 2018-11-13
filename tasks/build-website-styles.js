@@ -20,7 +20,7 @@ gulp.task('build:website:styles', () =>
       autoprefixer({
         browsers: ['last 2 versions', 'ie >= 10']
       }),
-      cssnano()
+      cssnano({zindex: false})
     ]))
     .pipe(gulp.dest('dist/assets/styles'))
     .pipe(gulpPlugins.connect.reload())
