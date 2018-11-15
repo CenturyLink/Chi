@@ -31,7 +31,7 @@ p.-text
   .-p--3
     .a-grid
       each icon in iconExamples
-        .a-col.-w--2.-sm--w1
+        .a-col.-w--2.-w-sm--1
           .a-avatar
             i(class=`a-icon icon-${icon}`)
   ul#a-tabs--icons.a-tabs.-ml--3
@@ -60,9 +60,9 @@ p.-text
   | and <code>-text--capitalized</code> can be applied to force specific casing.
 .example.-mb--3
   .-p--3.a-grid
-    .a-col.-w--2.-sm--w1
+    .a-col.-w--2.-w-sm--1
       .a-avatar AA
-    .a-col.-w--2.-sm--w1
+    .a-col.-w--2.-w-sm--1
       .a-avatar M
   :code(lang="html")
     <div class="a-avatar">AA</div>
@@ -257,7 +257,7 @@ p.-text
 .example.-mb--3
   .-p--3.a-grid
     each color in colors
-      .-mb--1.a-col.-w--6.-sm--w4.-md--w6.-lg--w4.-xl--w3
+      .-mb--1.a-col.-w--6.-w-sm--4.-w-md--6.-w-lg--4.-w-xl--3
         .m-avatarGroup
           div(class=`a-avatar -${color}`) L
           = `Label ${color}`

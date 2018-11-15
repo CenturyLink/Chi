@@ -54,13 +54,13 @@ function enableCopyToClipboardFeature (preElem) {
   }
 
   const copyButtonWrapper = document.createElement('div');
-  copyButtonWrapper.setAttribute('class', 'copy2clipboard');
+  copyButtonWrapper.setAttribute('class', 'clipboard');
   const copyButton = document.createElement('button');
   copyButton.textContent = 'Copy';
-  copyButton.setAttribute('class', 'copy2clipboard__button a-btn -sm -flat');
+  copyButton.setAttribute('class', 'clipboard__button a-btn -sm -flat');
   copyButtonWrapper.appendChild(copyButton);
   const textAreaWrapper = document.createElement('div');
-  textAreaWrapper.setAttribute('class', 'copy2clipboard__ta-wrapper');
+  textAreaWrapper.setAttribute('class', 'clipboard__text-wrapper');
   copyButtonWrapper.appendChild(textAreaWrapper);
 
   preElem.parentNode.insertBefore(copyButtonWrapper, preElem);

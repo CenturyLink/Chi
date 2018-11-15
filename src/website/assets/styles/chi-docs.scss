@@ -50,22 +50,22 @@ body {
     }
   }
 
-  .copy2clipboard {
+  .clipboard {
     position: relative;
 
     &__button {
       opacity: 0.7;
-      position:absolute;
-      right:0.5rem;
-      top:0.5rem;
+      position: absolute;
+      right: 0.5rem;
+      top: 0.5rem;
       transition: opacity 0.25ms ease-in-out;
       &:hover {
         opacity: 1;
       }
     }
 
-    &__ta-wrapper {
-      height: 0px;
+    &__text-wrapper {
+      height: 0;
       position: relative;
     }
   }

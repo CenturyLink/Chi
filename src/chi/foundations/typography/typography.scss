@@ -244,8 +244,16 @@ html {
   }
 
   // text colors
+  .-text--body {
+    color: $text-color;
+  }
+
   .-text--inverse {
     color: $text-inverse;
+  }
+
+  .-text--white {
+    color: $text-white;
   }
 
   .-text--brand {
