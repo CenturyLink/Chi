@@ -3,34 +3,29 @@
 .chi {
   .m-alert {
     &.-toast {
+      align-items: start;
       max-width: 20rem;
       padding-bottom: 1.1875rem;
       padding-top: 0.75rem;
 
-      &::before {
-        font-size: $text-large;
-        margin-bottom: 0.4375rem;
-        padding: 0.25rem 0;
+      & > :first-child {
+        margin-top: 0.3125rem;
+        margin-left: 1rem;
+      }
+
+      & .a-h5 {
+        margin-top: 0;
+      }
+
+      & ~ .a-icon {
+        position: absolute;
+        top: 0rem;
       }
 
       & > .-close {
         position: absolute;
         right: 0.9375rem;
         top: 0.9375rem;
-      }
-
-      @each $state in map-keys($states) {
-        &.-#{$state} {
-          &.-hasIcon {
-            &::after {
-              height: 1.5rem;
-              left: 0.9375rem;
-              top: 0.9375rem;
-              transform: initial;
-              width: 1.5rem;
-            }
-          }
-        }
       }
     }
   }

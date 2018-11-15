@@ -3,6 +3,7 @@
 .chi {
   .m-alert {
     &.-bubble {
+      align-items: center;
 
       & > .-close {
         position: absolute;
@@ -11,14 +12,10 @@
         transform: translateY(-50%);
       }
 
-      &.-small {
-        &::before {
-          display: none;
-        }
-
-        & > .-close {
-          top: 0.3rem;
-          transform: initial;
+      &.-titled {
+        & .a-icon {
+          align-self: start;
+          top: 0.75rem;
         }
       }
 
@@ -27,40 +24,8 @@
         padding-top: 0.75rem;
 
         & > .-close {
-          top: 0.9375rem;
+          top: 0.75rem;
           transform: initial;
-        }
-
-        &::before {
-          font-size: $text-large;
-          margin-bottom: 0.4375rem;
-          padding: 0.25rem 0;
-        }
-      }
-
-      @each $state in map-keys($states) {
-        &.-#{$state} {
-          &.-hasIcon {
-            &.-small {
-              padding-left: 2.4375rem;
-
-              &::after {
-                height: 1rem;
-                left: 0.9375rem;
-                width: 1rem;
-              }
-            }
-
-            &.-large {
-              &::after {
-                height: 1.5rem;
-                left: 0.9375rem;
-                top: 0.9375rem;
-                transform: initial;
-                width: 1.5rem;
-              }
-            }
-          }
         }
       }
     }
