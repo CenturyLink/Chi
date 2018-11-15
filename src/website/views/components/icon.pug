@@ -44,7 +44,7 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
 .example.-mb--3
   .-p--3
     .a-grid.-align-items--end
-      each size in ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']
+      each size in ['xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl']
         div.-p--2
           div(class=`a-icon -${size}`)
             svg
@@ -60,6 +60,10 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
       <div class="a-icon -xs"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <!-- -sm : 16x16px -->
       <div class="a-icon -sm"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <!-- -sm2 : 20x20px -->
+      <div class="a-icon -sm2"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <!-- -sm3 : 24x24px -->
+      <div class="a-icon -sm3"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <!-- -md : 32x32px -->
       <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <!-- -lg : 64x64px -->
@@ -119,13 +123,13 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
       <i class="a-icon icon-logo-centurylink -md -text--inverse"></i>
       <i class="a-icon icon-logo-centurylink -md -text--muted"></i>
 
-h3 Available Icons
+h3 UI Icons
 .a-grid.icon-library.-pt--2.-pb--6
   each name in ['activity', 'address-book', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'arrow-to-bottom', 'arrow-vertical', 'arrows','asterisk', 'atom', 'ban', 'bank', 'bell-off', 'bell', 'box-application', 'box-cloudformation', 'box-container', 'box-deployment', 'box-fill', 'box-outline', 'box-script', 'box', 'chart-bar', 'chart-pie', 'chat', 'check-alt', 'check', 'checkbox-checked', 'checkbox', 'chevron-down', 'chevron-left', 'chevron-right', 'chevron-up', 'circle-alert-outline', 'circle-alert', 'circle-arrow-down-outline', 'circle-arrow-down', 'circle-arrow-up-outline', 'circle-arrow-up', 'circle-check-outline', 'circle-check', 'circle-clock-outline', 'circle-clock', 'circle-code-outline', 'circle-code', 'circle-gear-outline','circle-gear', 'circle-info-outline', 'circle-info', 'circle-minus-outline', 'circle-minus', 'circle-outline', 'circle-play-outline', 'circle-play', 'circle-plus-outline', 'circle-plus', 'circle-question-outline', 'circle-question', 'circle-reload-outline', 'circle-reload', 'circle-stop-outline', 'circle-stop', 'circle-warning', 'circle-x-outline', 'circle-x', 'circle', 'cloud', 'cost', 'database', 'delete', 'edit', 'file-error-outline', 'file-outline', 'file', 'filter', 'folder-gear', 'folder-open', 'folder', 'globe-network', 'globe-outline', 'grid', 'heart', 'home', 'key', 'life-ring', 'link', 'list', 'lock-outline', 'lock', 'logo-amazon', 'logo-aws', 'logo-azure', 'logo-centurylink', 'logo-cloudstack', 'logo-dimensiondata', 'logo-facebook', 'logo-github', 'logo-google', 'logo-hp', 'logo-linkedin', 'logo-linux', 'logo-openstack', 'logo-rackspace', 'logo-softlayer', 'logo-twitter', 'logo-vcloud', 'logo-vsphere', 'logout', 'mail', 'map-marker-alt', 'map-marker', 'menu', 'microphone-mute', 'microphone', 'minus-alt', 'minus', 'more-vert', 'more', 'nodes', 'number', 'pause', 'phone', 'play', 'plus-alt', 'plus', 'radio-checked', 'radio', 'refresh', 'rocket', 'search', 'settings', 'share', 'shield', 'shopping-cart', 'star-outline', 'star', 'stop', 'sync', 'tag-outline', 'tag', 'text', 'triangle-down', 'triangle-left', 'triangle-right', 'triangle-up', 'user', 'users', 'verified', 'video-camera-mute', 'video-camera', 'visible-off', 'visible', 'warning', 'x-alt', 'x']
     .a-col.-w--6.-w-xl--2.-w-lg--3.-w-md--6.-mb--2
-      .a-card.-py--4
+      .a-card.-py--4.-bg--grey-10
         .a-card__content
-          .a-icon.-sm
+          .a-icon.-sm3
             svg
               use(xlink:href=`#icon-${name}`)
       p.-text--center= 'icon-' + name
