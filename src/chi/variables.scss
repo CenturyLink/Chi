@@ -213,16 +213,12 @@ $xl-breakpoint: 1200px;
 
 $screen-sizes: xs sm md lg xl;
 
-//z-index
-
-$zindex-default:                1;
-$zindex-hover:                  2;
-$zindex-active:                 3;
-$zindex-focus:                  4;
-$zindex-dropdown:            1000;
-$zindex-fixed:               1010;
-$zindex-backdrop:            1020;
-$zindex-fixed-with-backdrop: 1030;
-$zindex-modal:               1040;
-$zindex-popover:             1050;
-$zindex-tooltip:             1060;
+//z-index default values
+$zindex-prominent:            1;
+$zindex-dropdown:            10;
+$zindex-fixed:               20;
+$zindex-backdrop:            30;
+$zindex-fixed-with-backdrop: 40;
+$zindex-modal:               50;
+$zindex-popover:             60;
+$zindex-tooltip:             70;

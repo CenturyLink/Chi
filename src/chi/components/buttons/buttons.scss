@@ -160,7 +160,7 @@ $sizes: (
       &.-focus {
         border: $border solid set-color(grey, 40);
         box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
-        z-index: $zindex-focus;
+        z-index: $zindex-prominent;
       }
 
       &:active,
