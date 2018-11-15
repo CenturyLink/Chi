@@ -161,6 +161,7 @@ $state-colors: (success: green, warning: yellow, danger: red);
 $bg-inverse: map-get(map-get($colorscheme, grey), 90);
 
 $text-color: map-get(map-get($colorscheme, grey), 100);
+$text-white: map-get($colorscheme, white);
 $text-inverse: map-get(map-get($colorscheme, grey), 10);
 
 $link-color: map-get(map-get($colorscheme, navy), 70);

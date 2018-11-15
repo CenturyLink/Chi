@@ -2,13 +2,10 @@
 title: Drawer
 ---
 p.-text
-  | Drawer primary use case is to slide in navigation on small devices. However, it can be also utilized on
-  | standard desktop displays.
+  | Drawers are flexible containers anchored to the top, right, bottom, or left of the screen.
+  | They are used primarily in Chi for displaying menus on small devices.
 
 h3 Examples
-
-p Drawers support sliding in from top, right, bottom, or left.
-
 ul#a-tabs--drawer.a-tabs
   li.-active
     a(href='#a-tabs--drawer-left') Left
@@ -20,10 +17,10 @@ ul#a-tabs--drawer.a-tabs
     a(href='#a-tabs--drawer-bottom') Bottom
 #a-tabs--drawer-left.a-tabs-panel.-active
   .example.-mb--3(style='overflow:hidden;')
-    div(style="position:relative;height:30rem;overflow:hidden;")
-      div
-        each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-          .-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. A culpa cupiditate earum fugiat illo minima qui, quo, recusandae reiciendis reprehenderit saepe vitae? A blanditiis doloribus facere incidunt labore, magnam odit!
+    .-position--relative(style="height:30rem;overflow:hidden;z-index:0;")
+      .-p--3
+        each i in [1, 2, 3]
+          .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
       .m-drawer.-left.-active(style="position:absolute;")
         .m-drawer__header
           button(class='a-btn -icon -close')
@@ -46,10 +43,10 @@ ul#a-tabs--drawer.a-tabs
       </div>
 #a-tabs--drawer-right.a-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
-    div(style="position:relative;height:30rem;overflow:hidden;")
-      div
-        each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-          .-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. A culpa cupiditate earum fugiat illo minima qui, quo, recusandae reiciendis reprehenderit saepe vitae? A blanditiis doloribus facere incidunt labore, magnam odit!
+    .-position--relative(style="height:30rem;overflow:hidden;z-index:0;")
+      .-p--3
+        each i in [1, 2, 3]
+          .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
       .m-drawer.-right.-active(style="position:absolute;")
         .m-drawer__header
           button(class='a-btn -icon -close')
@@ -72,10 +69,10 @@ ul#a-tabs--drawer.a-tabs
       </div>
 #a-tabs--drawer-top.a-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
-    div(style="position:relative;height:30rem;overflow:hidden;")
-      div
-        each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-          .-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. A culpa cupiditate earum fugiat illo minima qui, quo, recusandae reiciendis reprehenderit saepe vitae? A blanditiis doloribus facere incidunt labore, magnam odit!
+    .-position--relative(style="height:30rem;overflow:hidden;z-index:0;")
+      .-p--3
+        each i in [1, 2, 3]
+          .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
       .m-drawer.-top.-active(style="position:absolute;")
         .m-drawer__header
           button(class='a-btn -icon -close')
@@ -98,10 +95,10 @@ ul#a-tabs--drawer.a-tabs
       </div>
 #a-tabs--drawer-bottom.a-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
-    div(style="position:relative;height:30rem;overflow:hidden;")
-      div
-        each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-          .-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. A culpa cupiditate earum fugiat illo minima qui, quo, recusandae reiciendis reprehenderit saepe vitae? A blanditiis doloribus facere incidunt labore, magnam odit!
+    .-position--relative(style="height:30rem;overflow:hidden;z-index:0;")
+      .-p--3
+        each i in [1, 2, 3]
+          .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
       .m-drawer.-bottom.-active(style="position:absolute;")
         .m-drawer__header
           button(class='a-btn -icon -close')
@@ -125,10 +122,10 @@ ul#a-tabs--drawer.a-tabs
 
 h4 Backdrop
 p.-text
-  | Optionaly, you can add a backdrop to focus user attention in the drawer content.
+  | An optional backdrop can be added to focus the users attention on drawer content.
 .example.-mb--3(style='overflow:hidden;')
-  .a-backdrop(style="position:relative;height:30rem")
-    .m-drawer.-bottom.-active(style="position:absolute;")
+  .a-backdrop.-position--relative(style="height:30rem;z-index:0;")
+    .m-drawer.-bottom.-active.-position--absolute
       button(class='a-btn -icon -close')
         .a-btn__content
           i.a-icon.icon-x
@@ -151,7 +148,7 @@ p.-text
 h4 Header
 
 p.-text
-  | Header markup is optional. Remove it to make the content fill all the drawer.
+  | Header markup is optional. Remove it to make the content fill the drawer.
 
 ul#a-tabs--header.a-tabs
   li.-active
@@ -160,7 +157,7 @@ ul#a-tabs--header.a-tabs
     a(href='#a-tabs--header-without') No header
 #a-tabs--header-with.a-tabs-panel.-active
   .example.-mb--3(style='overflow:hidden;')
-    div(style="position:relative;height:15rem;overflow:hidden;")
+    .-position--relative(style="height:15rem;overflow:hidden;z-index:0;")
       .a-backdrop(style="position:relative;height:30rem")
         .m-drawer.-left.-active(style="position:absolute;")
           .m-drawer__header
@@ -186,7 +183,7 @@ ul#a-tabs--header.a-tabs
       </div>
 #a-tabs--header-without.a-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
-    div(style="position:relative;height:15rem;overflow:hidden;")
+    .-position--relative(style="height:15rem;overflow:hidden;z-index:0;")
       .a-backdrop(style="position:relative;height:30rem")
         .m-drawer.-left.-active(style="position:absolute;")
           button(class='a-btn -icon -close')
