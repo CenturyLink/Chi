@@ -10,10 +10,6 @@ export class Util {
 
   static addClass (elem, className) {
     elem.className += ' ' + className;
-
-    //TODO remove this
-    let constante = 'nombreConstanteUtil';
-    Util.removeClass(elem, constante);
   }
 
   static hasClass (elem, className) {
@@ -29,7 +25,6 @@ export class Util {
   }
 
   static getTarget (element) {
-
     let selector = element.dataset && element.dataset.target ?
       element.dataset.target.trim() :
       '';
@@ -37,9 +32,7 @@ export class Util {
       const hrefTarget = element.getAttribute('href');
       selector = hrefTarget ? hrefTarget.trim() : '';
     }
-
     return selector ? document.querySelector(selector) : null;
-
   }
 
   static findAndApply (ancestor, className, callback) {
@@ -53,7 +46,6 @@ export class Util {
       );
     }
   }
-
 
 
   static setData (elem, key, value) {
@@ -83,7 +75,6 @@ export class Util {
   }
 
 
-
   static registerComponent (type, elem, obj) {
     let index = Util._getNewRegistrationIndex();
     Util.setData(elem, type, index);
@@ -109,12 +100,9 @@ export class Util {
     } else {
       return false;
     }
-
   }
 
   static _getNewRegistrationIndex () {
     return chi.componentIndex++;
   }
-
-
 }

@@ -82,7 +82,7 @@ class Dropdown {
       }
     }
     if (!this._dropdownElem) {
-      throw new Error ("Could not find dropdown conent for dropdown trigger. ");
+      throw new Error ("Could not find dropdown content for dropdown trigger. ");
     }
   }
 
@@ -132,10 +132,8 @@ class Dropdown {
   }
 
   static factory(elem, config) {
-
     return Util.getRegisteredComponent(COMPONENT_TYPE, elem) ||
       new Dropdown(elem, config);
-
   }
 
   static initAll(config) {
