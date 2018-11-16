@@ -4,6 +4,7 @@ import {chi} from "./chi.js";
 const ANIMATION_DURATION = 500;
 const CLASS_ACTIVE = "-active";
 const CLASS_ANIMATED = "-animated";
+const CLASS_BACKDROP_CLOSED = "-closed";
 const CLASS_COMPONENT = 'm-drawer__trigger';
 const CLASS_DRAWER = 'm-drawer';
 const CLASS_TRANSITIONING = "-transitioning";
@@ -17,8 +18,9 @@ class Drawer {
     this._config = config;
     this._shown = Util.hasClass(elem, CLASS_ACTIVE);
     this._transitioning = false;
-    this._locateDrawer();
-    this._locateCloseButton();
+    this._drawerElem = this._locateDrawer();
+    this._closeButton = this._locateCloseButton();
+    this._backdrop = this._locateBackdrop();
     let self = this;
 
     Util.registerComponent(COMPONENT_TYPE, this._elem, this);
@@ -35,15 +37,27 @@ class Drawer {
   }
 
   _locateDrawer () {
-    this._drawerElem = Util.getTarget(this._elem);
-    if (!this._drawerElem) {
+    const drawerElem = Util.getTarget(this._elem);
+    if (!drawerElem) {
       throw new Error ("Could not find drawer content for drawer trigger. ");
     }
+    return drawerElem;
   }
   _locateCloseButton() {
-    let closeButtons = this._drawerElem.querySelectorAll(CLOSE_TRIGGER_SELECTOR);
+    const closeButtons = this._drawerElem.querySelectorAll(CLOSE_TRIGGER_SELECTOR);
     if (closeButtons) {
-      this._closeButton = closeButtons[0];
+      return closeButtons[0];
+    } else {
+      return null;
+    }
+  }
+
+  _locateBackdrop() {
+    const parent = this._drawerElem.parentNode;
+    if (Util.hasClass(parent, 'a-backdrop')) {
+      return parent;
+    } else {
+      return null;
     }
   }
 
@@ -54,18 +68,22 @@ class Drawer {
       const animated = Util.hasClass(this._drawerElem, CLASS_ANIMATED);
       if (animated) {
         Util.addClass(this._drawerElem, CLASS_TRANSITIONING);
+        if (self._backdrop) { Util.addClass(self._backdrop, CLASS_TRANSITIONING); }
         window.setTimeout(function(){
           Util.addClass(self._drawerElem, CLASS_ACTIVE);
+          if (self._backdrop) { Util.removeClass(self._backdrop, CLASS_BACKDROP_CLOSED); }
         }, 0);
         Util.emulateTransitionEnd(ANIMATION_DURATION, function() {
-          Util.removeClass(self._drawerElem, CLASS_TRANSITIONING);
           Util.addClass(self._elem, CLASS_ACTIVE);
+          Util.removeClass(self._drawerElem, CLASS_TRANSITIONING);
+          if (self._backdrop) { Util.removeClass(self._backdrop, CLASS_TRANSITIONING); }
           self._shown = true;
           self._transitioning = false;
         });
       } else {
         Util.addClass(self._drawerElem, CLASS_ACTIVE);
         Util.addClass(self._elem, CLASS_ACTIVE);
+        if (self._backdrop) { Util.removeClass(self._backdrop, CLASS_BACKDROP_CLOSED); }
         self._transitioning = false;
         self._shown = true;
       }
@@ -79,18 +97,22 @@ class Drawer {
       const animated = Util.hasClass(this._drawerElem, CLASS_ANIMATED);
       if (animated) {
         Util.addClass(this._drawerElem, CLASS_TRANSITIONING);
+        if (self._backdrop) { Util.addClass(self._backdrop, CLASS_TRANSITIONING); }
         window.setTimeout(function(){
           Util.removeClass(self._drawerElem, CLASS_ACTIVE);
+          if (self._backdrop) { Util.addClass(self._backdrop, CLASS_BACKDROP_CLOSED); }
         }, 0);
         Util.emulateTransitionEnd(ANIMATION_DURATION, function() {
           Util.removeClass(self._drawerElem, CLASS_TRANSITIONING);
           Util.removeClass(self._elem, CLASS_ACTIVE);
+          if (self._backdrop) { Util.removeClass(self._backdrop, CLASS_TRANSITIONING); }
           self._shown = false;
           self._transitioning = false;
         });
       } else {
         Util.removeClass(self._drawerElem, CLASS_ACTIVE);
         Util.removeClass(self._elem, CLASS_ACTIVE);
+        if (self._backdrop) { Util.addClass(self._backdrop, CLASS_BACKDROP_CLOSED); }
         self._transitioning = false;
         self._shown = false;
       }

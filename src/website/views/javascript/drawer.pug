@@ -93,6 +93,99 @@ h3 Example
 
       <script>chi.drawer(document.getElementById('drawer-trigger-2'));</script>
 
+h3 With backdrop
+
+.example.-mb--3(style='overflow:hidden;')
+  .-position--relative(style="height:20rem;overflow:hidden;z-index:0;")
+    .-p--3
+      .-d--flex.-justify-content--between.-align-items--start
+        button#drawer-trigger-3.a-btn.-icon.m-drawer__trigger(data-target='#drawer-3')
+          .a-btn__content
+            i.a-icon.icon-menu
+        button#drawer-trigger-4.a-btn.-icon.m-drawer__trigger(data-target='#drawer-4')
+          .a-btn__content
+            i.a-icon.icon-menu
+      each i in [1, 2]
+        .-text.-mb--3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
+    .a-backdrop.-animated.-closed(style='position:absolute;')
+      .m-drawer.-left#drawer-3(style="position:absolute;")
+        .m-drawer__header
+          button(class='a-btn -icon -close')
+            .a-btn__content
+              i.a-icon.icon-x
+        .m-drawer__content
+          .-px--2.-text Drawer content here
+    .a-backdrop.-animated.-closed(style='position:absolute;')
+      .m-drawer.-right.-animated#drawer-4(style="position:absolute;")
+        .m-drawer__header
+          button(class='a-btn -icon -close')
+            .a-btn__content
+              i.a-icon.icon-x
+        .m-drawer__content
+          .-px--2.-text Drawer content here
+  ul#a-tabs--drawer2.a-tabs.-ml--3
+    li.-active
+      a(href='#a-tabs--static2') Static
+    li
+      a(href='#a-tabs--animated2') Animated
+  #a-tabs--static2.a-tabs-panel.-active
+    :code(lang="html")
+      <!-- ---------------  Drawer --------------- -->
+      <div class="a-backdrop -animated -closed">
+        <div id="drawer-3" class="m-drawer -left">
+          <div class="m-drawer__header">
+            <button class="a-btn -icon -close">
+              <div class="a-btn__content">
+                <i class="a-icon icon-x"></i>
+              </div>
+            </button>
+          </div>
+          <div class="m-drawer__content">
+            <div class="-px--2 -text">Drawer content here</div>
+          </div>
+        </div>
+      </div>
+      <!-- ---------------- Button ---------------- -->
+
+      <button id="drawer-trigger-3" class="a-btn -icon m-drawer__trigger" data-target="#drawer-3">
+        <div class="a-btn__content">
+          <i class="a-icon icon-menu"></i>
+        </div>
+      </button>
+
+      <!-- -------------- Javascript -------------- -->
+
+      <script>chi.drawer(document.getElementById('drawer-trigger-3'));</script>
+  #a-tabs--animated2.a-tabs-panel
+    :code(lang="html")
+      <!-- ---------------  Drawer --------------- -->
+      <div class="a-backdrop -animated -closed">
+        <div id="drawer-4" class="m-drawer -left -animated">
+          <div class="m-drawer__header">
+            <button class="a-btn -icon -close">
+              <div class="a-btn__content">
+                <i class="a-icon icon-x"></i>
+              </div>
+            </button>
+          </div>
+          <div class="m-drawer__content">
+            <div class="-px--2 -text">Drawer content here</div>
+          </div>
+        </div>
+      </div>
+      <!-- ---------------- Button ---------------- -->
+
+      <button id="drawer-trigger-4" class="a-btn -icon m-drawer__trigger" data-target="#drawer-4">
+        <div class="a-btn__content">
+          <i class="a-icon icon-menu"></i>
+        </div>
+      </button>
+
+      <!-- -------------- Javascript -------------- -->
+
+      <script>chi.drawer(document.getElementById('drawer-trigger-4'));</script>
+
+
 h4 Preventing memory leaks
 p.-text
   | Drawer components have a dispose function to free all resources attached to the element, such as event listeners
@@ -121,4 +214,4 @@ script(type="text/javascript", src=`../../js/chi.js`)
 != '<script>Array.prototype.forEach.call(document.getElementsByClassName("m-drawer__trigger"), function(el){chi.drawer(el);});</script>'
 
 script(type="text/javascript", src=`../../tabs.js`)
-!= '<script>chiTabs.init(document.getElementById(\'a-tabs--drawer\'));</script>'
+!= '<script>chiTabs.init(document.getElementById(\'a-tabs--drawer\'));chiTabs.init(document.getElementById(\'a-tabs--drawer2\'));</script>'
