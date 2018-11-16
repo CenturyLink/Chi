@@ -17,7 +17,7 @@ class Dropdown {
     this._eventCaptured = false;
     this._shown = Util.hasClass(elem, CLASS_ACTIVE);
     this._locateDropdown();
-    let that = this;
+    let self = this;
     let dropdownPosition = false;
 
     Util.registerComponent(COMPONENT_TYPE, this._elem, this);
@@ -42,12 +42,12 @@ class Dropdown {
     }
 
     this._triggerClickEventListener = function() {
-      that._clickOnTrigger();
+      self._clickOnTrigger();
     };
     this._elem.addEventListener('click', this._triggerClickEventListener);
 
     this._documentClickEventListener = function() {
-      that._clickOnDocument();
+      self._clickOnDocument();
     };
     document.addEventListener('click', this._documentClickEventListener);
 

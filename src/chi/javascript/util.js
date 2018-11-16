@@ -47,6 +47,9 @@ export class Util {
     }
   }
 
+  static emulateTransitionEnd (transitionDuration, eventHandler) {
+    window.setTimeout(eventHandler, transitionDuration);
+  }
 
   static setData (elem, key, value) {
     Util.prepareDataStructure(elem);

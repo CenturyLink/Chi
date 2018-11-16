@@ -25,6 +25,9 @@ $drawer-height: 18.75rem;
     }
 
     &.-animated {
+      transition-duration: .5s;
+      transition-timing-function: cubic-bezier(0.38, 0.52, 0.37, 1);
+
       &.-transitioning {
         display: flex;
       }
@@ -40,7 +43,7 @@ $drawer-height: 18.75rem;
         &:not(.-active) {
           top: -$drawer-height;
         }
-        transition: top 0.25s ease-in-out;
+        transition-property: top;
       }
     }
 
@@ -54,7 +57,7 @@ $drawer-height: 18.75rem;
         &:not(.-active) {
           right: -$drawer-width;
         }
-        transition: right 0.25s ease-in-out;
+        transition-property: right;
       }
     }
 
@@ -68,7 +71,7 @@ $drawer-height: 18.75rem;
         &:not(.-active) {
           bottom: -$drawer-height;
         }
-        transition: bottom 0.25s ease-in-out;
+        transition-property: bottom;
       }
     }
 
@@ -82,7 +85,7 @@ $drawer-height: 18.75rem;
         &:not(.-active) {
           left: -$drawer-width;
         }
-        transition: left 0.25s ease-in-out;
+        transition-property: left;
       }
     }
 
