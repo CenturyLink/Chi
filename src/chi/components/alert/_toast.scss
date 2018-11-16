@@ -4,28 +4,24 @@
   .m-alert {
     &.-toast {
       align-items: start;
+      justify-content: space-between;
       max-width: 20rem;
       padding-bottom: 1.1875rem;
       padding-top: 0.75rem;
 
       & > :first-child {
-        margin-top: 0.3125rem;
-        margin-left: 1rem;
+        margin-left: 0.5rem;
       }
 
-      & .a-h5 {
-        margin-top: 0;
-      }
+      & .m-alert__content {
+        & .a-icon {
+          align-self: start;
+          top: 0.3125rem
+        }
 
-      & ~ .a-icon {
-        position: absolute;
-        top: 0rem;
-      }
-
-      & > .-close {
-        position: absolute;
-        right: 0.9375rem;
-        top: 0.9375rem;
+        & .a-h5 {
+          margin-top: 0;
+        }
       }
     }
   }

@@ -5,18 +5,19 @@
     &.-bubble {
       align-items: center;
 
-      & > .-close {
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
+      &.-titled {
+        align-items: start;
+
+        & .m-alert__content {
+          & .a-icon {
+            align-self: start;
+            top: 0.3125rem
+          }
+        }
       }
 
-      &.-titled {
-        & .a-icon {
-          align-self: start;
-          top: 0.75rem;
-        }
+      &.-dismiss {
+        justify-content: space-between;
       }
 
       &.-large {

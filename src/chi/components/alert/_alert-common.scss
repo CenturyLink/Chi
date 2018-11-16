@@ -49,7 +49,6 @@ $states: (
     }
 
     &.-center {
-      display: flex;
       justify-content: center;
       align-items: center;
     }
@@ -58,6 +57,15 @@ $states: (
       &.-#{$state} {
         background-color: map-get(map-get($states, $state), background-color);
         border-color: map-get(map-get($states, $state), border-color);
+      }
+    }
+
+    &__content {
+      display: flex;
+      align-items: center;
+
+      & .a-h5 {
+        margin-top: 0;
       }
     }
   }

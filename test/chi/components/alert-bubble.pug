@@ -3,55 +3,19 @@ title: Alert Bubbles
 ---
 
 each size in ['medium', 'large']
-  div(class=`test-${size} -w100`)
+  div(class=`test-${size} -w--100`)
     h3= `${size}`
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
       .m-alert.-bubble.-m2(class=`-${type}`, class={[`-${size}`]: size != 'medium'})
-        if (type == 'success')
-          i.a-icon(class =`${val} -text--${type}`)
-        else if (type == 'danger')
-          i.a-icon(class =`${val} -text--${type}`)
-        else if (type == 'warning')
-          i.a-icon(class =`${val} -text--${type}`)
-        else if (type == 'info')
-          i.a-icon(class =`${val} -text--${type}`)
-        else if (type == 'light')
-          i.a-icon(class =`${val} -text--${type}`)
-        else if (type == 'dark')
-          i.a-icon(class =`${val} -text--${type}`)
+        i.a-icon(class =`${val} -text--${type}`)
         = `This is a ${type} message`
 
 h3 Titled
 each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
-  div(class=`test-${size} -w100`)
+  div(class=`test-${size} -w--100`)
     .m-alert.-bubble.-titled.-m2(class=`-${type}`, class={[`-${size}`]: size != 'medium'})
-      if (type == 'success')
+      .m-alert__content
         i.a-icon(class =`${val} -text--${type}`)
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'danger')
-        i.a-icon(class =`${val} -text--${type}`)
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'warning')
-        i.a-icon(class =`${val} -text--${type}`)
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'info')
-        i.a-icon(class =`${val} -text--${type}`)
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'light')
-        i.a-icon(class =`${val} -text--${type}`)
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'dark')
-        i.a-icon(class =`${val} -text--${type}`)
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
+        div
+          h5.a-h5 Danger
+          | This is a danger alert

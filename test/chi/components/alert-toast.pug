@@ -5,28 +5,8 @@ title: Alert Toasts
 .test-toast.-w100
   each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
     .m-alert.-toast.-m2(class=`-${type}`)
-      if (type == 'success')
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'danger')
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'warning')
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'info')
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'light')
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'dark')
-        .m-alert__content
+      .m-alert__content
+        div
           h5.a-h5= type
           = `This is a ${type} alert`
       button(class='a-btn -icon -close -small')
@@ -36,34 +16,9 @@ title: Alert Toasts
   h4 Has icon
   each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
     .m-alert.-toast.-m2(class=`-${type}`)
-      if (type == 'success')
-        i.a-icon(class =`${val} -text--success`)
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'danger')
-        i.a-icon(class =`${val} -text--danger`)
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'warning')
-        i.a-icon(class =`${val} -text--warning`)
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'info')
-        i.a-icon(class =`${val} -text--info`)
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'light')
-        i.a-icon(class =`${val} -text--muted`)
-        .m-alert__content
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      else if (type == 'dark')
-        i.a-icon(class =`${val} -text--muted`)
-        .m-alert__content
+      .m-alert__content
+        i.a-icon(class =`${val} -text--${type}`)
+        div
           h5.a-h5= type
           = `This is a ${type} alert`
       button(class='a-btn -icon -close -small')
