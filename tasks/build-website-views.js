@@ -58,6 +58,10 @@ gulp.task('build:website:views', () => {
           pattern: [ 'components/**/*.{md,pug}', '!components/**/_*.{md,pug}' ],
           sortBy: collectionSorter(['Overview'])
         },
+        'JavaScript': {
+          pattern: [ 'javascript/**/*.{md,pug}', '!javascript/**/_*.{md,pug}' ],
+          sortBy: collectionSorter(['Overview'])
+        },
         'Utilities': {
           pattern: 'utilities/**/*.{md,pug}',
           sortBy: collectionSorter(['Overview'])

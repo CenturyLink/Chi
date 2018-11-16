@@ -1,0 +1,49 @@
+---
+title: Overview
+---
+p.-text.-mb--3
+  | Chi is a pure CSS and HTML framework. However, some of the components need JavaScript to work. In most cases,
+  | the need is reduced to having to add or remove some classes to the components. You can write your JavaScript code
+  | to integrate Chi into your project, but for those who need a complete solution, we have written a JavaScript
+  | library to make things easier.
+
+h3 Dependencies
+p.-text
+  | Chi JavaScript library depends on Popper.js library to position some components. For the rest, this library is
+  | entirely independent. It doesn't require jQuery nor any other library to work correctly.
+
+h3 Integration
+p.-text
+  | Chi JavaScript library is developed as an ES6 component, but with the help of Webpack, it is released in several
+  | flavours. It is up to you to choose the one that best fit your project.
+
+h4 JavaScript file
+p.-text
+  | You can use the old way to include Chi into your project. Just include the ES5, browser prepared, JavaScript
+  | file from the <a href="https://assets.ctl.io">CenturyLink Assets Server</a>. It is a highly available and performant
+  | option for loading the required assets into your project. In this solution Popper.js is bundled into the file.
+.-mb2
+  :code(lang='html')
+    <script src="https://assets.ctl.io/chi/0.9.0/js/chi.js"></script>
+
+h4 AMD module
+p.-text
+  | If you use RequireJS or any other AMD compatible module loader in your project, you will find the AMD compatible
+  | version in the <code>amd</code> folder. Then, you will have to update your require configuration:
+:code(lang='javascript')
+  'chi': {
+    path: [CHI_PATH, 'amd', 'chi'].join('/'),
+    shim: {
+      deps: ['Popper'],
+      exports: 'chi'
+    }
+  }
+
+h4 ES6 modules
+p.-text
+  | For recent projects already using ES6 modules, will find their version in the <code>es6</code> folder. In this case, there is no
+  | need for importing the whole chi library as you can import each component separately by using ES6 import syntax.
+:code(lang='javascript')
+  import {Dropdown} from "route/to/chi/es6/dropdown.js";
+
+script(type="text/javascript", src=`../../js/chi.js`)
