@@ -79,7 +79,7 @@ h4 Titled
           h5.a-h5 Danger
           | This is a danger alert
   :code(lang="html")
-    <div class="m-alert -bubble -danger">
+    <div class="m-alert -bubble -titled -danger">
       <div class="m-alert__content">
         <i class="a-icon icon-warning -text--danger"></i>
         <div>
@@ -100,11 +100,34 @@ p.-text A button can be added to allow the user to dismiss the alert.
       button(class='a-btn -icon -close -small')
         .a-btn__content
           i.a-icon.icon-x
+    .m-alert.-bubble.-titled.-dismiss.-danger.-m2
+      .m-alert__content
+        i.a-icon.icon-warning.-text--danger
+        div
+          h5.a-h5 Danger
+          | This is a danger alert
+      button(class='a-btn -icon -close -small')
+        .a-btn__content
+          i.a-icon.icon-x
   :code(lang="html")
     <div class="m-alert -bubble -dismiss -warning">
       <div class="m-alert__content">
         <i class="a-icon icon-warning -text--warning"></i>
         This is a warning alert<button class="a-btn -icon -close -small">
+      </div>
+      <button class="a-btn -icon -close -small">
+        <div class="a-btn__content">
+          <i class="a-icon icon-x"></i>
+        </div>
+      </button>
+    </div>
+    <div class="m-alert -bubble -titled -dismiss -danger">
+      <div class="m-alert__content">
+        <i class="a-icon icon-warning -text--danger"></i>
+        <div>
+          <h5 class="a-h5">Danger</h5>
+          This is a danger alert
+        </div>
       </div>
       <button class="a-btn -icon -close -small">
         <div class="a-btn__content">

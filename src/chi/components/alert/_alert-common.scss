@@ -49,8 +49,8 @@ $states: (
     }
 
     &.-center {
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
 
     @each $state in map-keys($states) {
@@ -61,8 +61,9 @@ $states: (
     }
 
     &__content {
-      display: flex;
       align-items: center;
+      justify-content: center;
+      display: flex;
 
       & .a-h5 {
         margin-top: 0;

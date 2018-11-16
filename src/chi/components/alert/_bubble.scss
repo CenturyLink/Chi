@@ -4,9 +4,11 @@
   .m-alert {
     &.-bubble {
       align-items: center;
+      justify-content: start;
 
       &.-titled {
         align-items: start;
+        justify-content: start;
 
         & .m-alert__content {
           & .a-icon {
