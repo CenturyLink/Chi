@@ -40,11 +40,10 @@ $states: (
     display: flex;
     font-size: $text-small;
     line-height: $line-height-small;
-    padding: 0.5625rem 0.5625rem;
+    padding: 0.5625rem 1rem;
     position: relative;
 
     & i {
-      margin-left: 0.5rem;
       margin-right: 1rem;
     }
 

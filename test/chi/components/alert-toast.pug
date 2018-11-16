@@ -17,7 +17,7 @@ title: Alert Toasts
   each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
     .m-alert.-toast.-m2(class=`-${type}`)
       .m-alert__content
-        i.a-icon(class =`${val} -text--${type}`)
+        i.a-icon.-sm2(class =`${val} -text--${type}`)
         div
           h5.a-h5= type
           = `This is a ${type} alert`
