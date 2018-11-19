@@ -212,6 +212,4 @@ p.-text
 
 script(type="text/javascript", src=`../../js/chi.js`)
 != '<script>Array.prototype.forEach.call(document.getElementsByClassName("m-drawer__trigger"), function(el){chi.drawer(el);});</script>'
-
-script(type="text/javascript", src=`../../tabs.js`)
-!= '<script>chiTabs.init(document.getElementById(\'a-tabs--drawer\'));chiTabs.init(document.getElementById(\'a-tabs--drawer2\'));</script>'
+!= '<script>chi.tab(document.getElementById(\'a-tabs--drawer\'));chi.tab(document.getElementById(\'a-tabs--drawer2\'));</script>'

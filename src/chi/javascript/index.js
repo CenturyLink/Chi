@@ -3,14 +3,17 @@ import {Util} from './util.js';
 
 import {Drawer, chiDrawer} from './drawer';
 import {Dropdown, chiDropdown} from './dropdown';
+import {Tab, chiTab} from './tab';
 
-//Dropdown.initAll({});
 export {
   chi,
   Util,
 
   chiDrawer as drawer,
   chiDropdown as dropdown,
+  chiTab as tab,
+
   Drawer,
-  Dropdown
+  Dropdown,
+  Tab
 };
