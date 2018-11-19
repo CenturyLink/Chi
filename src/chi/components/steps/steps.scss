@@ -1,0 +1,78 @@
+@import 'variables';
+@import 'mixins';
+
+.chi {
+
+  .a-steps {
+    padding: 0;
+
+    & > li {
+      color: $brand-color;
+      display: inline-block;
+      font-size: $text;
+      position: relative;
+      text-align: center;
+      width: 20%;
+      z-index: 0;
+
+      &:before {
+        background-color: $text-white;
+        border-radius: 50%;
+        content: '\25CF';
+        display: block;
+        font-size: 1.7rem;
+        height: 1.125rem;
+        line-height: 1rem;
+        margin: 0 auto 0.25rem;
+        width: 1.125rem;
+      }
+
+      &:after {
+        background-color: $brand-color;
+        content: '';
+        height: 0.125rem;
+        left: 50%;
+        position: absolute;
+        top: 0.5rem;
+        width: 100%;
+        z-index: -1;
+      }
+
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+
+      &.-active {
+        & a {
+          color: $brand-color;
+        }
+
+        &:before {
+          box-shadow: 0 0 0 0.125rem $brand-color;
+        }
+
+        &:after {
+          background-color: $muted-color;
+        }
+
+        & ~ li {
+          color: $muted-color;
+
+          &:before {
+            border-color: $text-white;
+          }
+
+          &:after {
+            background-color: $muted-color;
+          }
+        }
+      }
+    }
+
+    & a {
+      color: $muted-color;
+    }
+  }
+}

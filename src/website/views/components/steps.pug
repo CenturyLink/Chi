@@ -1,0 +1,44 @@
+---
+title: Steps
+---
+
+p.-text Steps are a navigation component that helps the user to know the steps of a process.
+
+h3 Examples
+
+p.-text
+  | To display steps, apply the class <code>a-steps</code> to a unordered list <code>ul</code>
+  | and indicate the active link with the class <code>-active</code> in the corresponding li tag.
+
+h4 Base
+.example.-mb--3
+  .-p--3
+    ul.a-steps
+      li
+        a(href='#') Create account
+      li
+        a(href='#') Choose number
+      li.-active
+        a(href='#') Add seats
+      li
+        a(href='#') Choose services
+      li
+        a(href='#') Checkout
+  :code(lang="html")
+    <ul class="a-steps">
+      <li>
+        <a href="#">Create account</a>
+      </li>
+      <li>
+        <a href="#">Choose number</a>
+      </li>
+      <li class="-active">
+        <a href="#">Add seats</a>
+      </li>
+      <li>
+        <a href="#">Choose services</a>
+      </li>
+      <li>
+        <a href="#">Checkout</a>
+      </li>
+    </ul>
