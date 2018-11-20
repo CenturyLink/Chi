@@ -9,6 +9,9 @@ class NumberInput {
     this._config = config;
     this._elemInput = elem;
     this._elemWrapper = this._elemInput.parentElement;
+    this._initialValue = Util.isNumeric(this._elemInput.value) ?
+      Number(this._elemInput.value) : 0;
+    this._stepped = {};
 
     let buttons = this._elemWrapper.getElementsByTagName('button');
     if (buttons.length !== 2) {
@@ -19,12 +22,12 @@ class NumberInput {
 
     let self = this;
     this._increment = function() {
-      self._elemInput.stepUp();
+      self._stepUp();
       self.checkMinMax();
     };
 
     this._decrement = function() {
-      self._elemInput.stepDown();
+      self._stepDown();
       self.checkMinMax();
     };
 
@@ -53,26 +56,69 @@ class NumberInput {
     this._decrementButton = null;
     this._increment = null;
     this._decrement = null;
+    this._stepped = null;
+  }
+
+  _updateSteppedValues() {
+    this.step = Util.isNumeric(this._elemInput.step) ? Number(this._elemInput.step) : 1;
+    this._stepped.current = this._value2step(this._elemInput.value);
+    this._stepped.max = Util.isNumeric(this._elemInput.max) ?
+      this._value2step(Number(this._elemInput.max), Math.floor):
+      Number.POSITIVE_INFINITY;
+    this._stepped.min = Util.isNumeric(this._elemInput.min) ?
+      this._value2step(Number(this._elemInput.min), Math.ceil):
+      Number.NEGATIVE_INFINITY;
+  }
+
+  _value2step (value, roundFunction) {
+    if (typeof roundFunction !== 'function') {
+      roundFunction = value => value;
+    }
+    return Math.round(10000*roundFunction((value-this._initialValue)/this.step))/10000;
+  }
+
+  _step2value (step) {
+    return Math.round(10000*(step * this.step + this._initialValue))/10000;
   }
 
   checkMinMax() {
-
-    let value = parseInt(this._elemInput.value);
-    let min = parseInt(this._elemInput.getAttribute('min'));
-    let max = parseInt(this._elemInput.getAttribute('max'));
-
-    if (value <= min) {
+    this._updateSteppedValues();
+    if (this._stepped.current <= this._stepped.min) {
       this._decrementButton.setAttribute('disabled', true);
     } else {
       this._decrementButton.removeAttribute('disabled');
     }
-
-    if (value >= max) {
+    if (this._stepped.current >= this._stepped.max) {
       this._incrementButton.setAttribute('disabled', true);
     } else {
       this._incrementButton.removeAttribute('disabled');
     }
+  }
 
+  _stepUp() {
+    this._updateSteppedValues();
+    if (this._stepped.current >= this._stepped.max) {
+      return;
+    }
+    if (Number.isInteger(this._stepped.current)) {
+      this._stepped.current++;
+    } else {
+      this._stepped.current = Math.ceil(this._stepped.current);
+    }
+    this._elemInput.value = this._step2value(this._stepped.current);
+  }
+
+  _stepDown() {
+    this._updateSteppedValues();
+    if (this._stepped.current <= this._stepped.min) {
+      return;
+    }
+    if (Number.isInteger(this._stepped.current)) {
+      this._stepped.current--;
+    } else {
+      this._stepped.current = Math.floor(this._stepped.current);
+    }
+    this._elemInput.value = this._step2value(this._stepped.current);
   }
 
   static factory(elem, config) {

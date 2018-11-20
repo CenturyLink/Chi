@@ -105,6 +105,11 @@ export class Util {
     }
   }
 
+  static isNumeric (n) {
+    return ( typeof n === "number" || typeof n === "string" ) &&
+      !isNaN( n - parseFloat( n ) );
+  }
+
   static _getNewRegistrationIndex () {
     return chi.componentIndex++;
   }
