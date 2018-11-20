@@ -86,7 +86,7 @@
 
       }
 
-      &:not(.a-tabs--js) > li.-active > a {
+      &:not(.-animated) > li.-active > a {
         border-bottom: 0.125rem solid $brand-color;
         padding-bottom: 1.125rem;
       }
@@ -212,7 +212,7 @@
         }
       }
 
-      &:not(.a-tabs--js) > li.-active > a {
+      &:not(.-animated) > li.-active > a {
         &::before {
           background-color: $brand-color;
           content: '';

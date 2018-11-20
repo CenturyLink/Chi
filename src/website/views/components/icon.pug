@@ -134,6 +134,6 @@ h3 UI Icons
               use(xlink:href=`#icon-${name}`)
       p.-text--center= 'icon-' + name
 
-script(type="text/javascript", src=`../../tabs.js`)
-//!= '<script>Array.prototype.forEach.call(document.getElementsByClassName(\'a-tabs\'), function(e){chiTabs.init(e);});</script>'
-!= '<script>chiTabs.init(document.getElementById(\'a-tabs--sizes\'));chiTabs.init(document.getElementById(\'a-tabs--colors\'));</script>'
+script(type="text/javascript", src=`../../js/chi.js`)
+//!= '<script>Array.prototype.forEach.call(document.getElementsByClassName(\'a-tabs\'), function(e){chi.tab(e);});</script>'
+!= '<script>chi.tab(document.getElementById(\'a-tabs--sizes\'));chi.tab(document.getElementById(\'a-tabs--colors\'));</script>'
