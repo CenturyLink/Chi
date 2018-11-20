@@ -13,11 +13,12 @@
       color: $brand-color;
       display: table-cell;
       font-size: $text;
+      line-height: 1rem;
       position: relative;
       text-align: center;
       z-index: 0;
 
-      &:before {
+      &::before {
         background-color: $text-white;
         border-radius: 50%;
         content: '\25CF';
@@ -25,11 +26,11 @@
         font-size: 1.85rem;
         height: 1.125rem;
         line-height: 1rem;
-        margin: 0 auto 0.25rem;
+        margin: 0 auto 0.5rem;
         width: 1.125rem;
       }
 
-      &:after {
+      &::after {
         background-color: $brand-color;
         content: '';
         height: 0.125rem;
@@ -41,7 +42,7 @@
       }
 
       &:last-child {
-        &:after {
+        &::after {
           display: none;
         }
       }
@@ -51,11 +52,11 @@
           color: $brand-color;
         }
 
-        &:before {
+        &::before {
           box-shadow: 0 0 0 0.125rem $brand-color;
         }
 
-        &:after {
+        &::after {
           background-color: set-color(grey, 40);
         }
 
@@ -66,11 +67,11 @@
             color: $muted-color;
           }
 
-          &:before {
+          &::before {
             border-color: $text-white;
           }
 
-          &:after {
+          &::after {
             background-color: set-color(grey, 40);
           }
         }
@@ -79,6 +80,7 @@
 
     & a {
       color: $text-color;
+      text-decoration: none;
     }
   }
 }

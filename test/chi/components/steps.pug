@@ -2,14 +2,14 @@
 title: Steps
 ---
 
-- var steps = ['Create account', 'Choose number', 'Add seats', 'Choose services', 'Checkout'];
+- var steps = ['Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5'];
 
 h4 Base
   .example.-mb--3(style="width:900px")
     .-p--3
       ul.a-steps.-mb--8
         each step in steps
-          if step == 'Create account'
+          if step == 'Step 1'
             li.-active
               a(href='#')= `${step}`
           else
@@ -17,7 +17,7 @@ h4 Base
               a(href='#')= `${step}`
       ul.a-steps.-mb--8
         each step in steps
-          if step == 'Choose number'
+          if step == 'Step 2'
             li.-active
               a(href='#')= `${step}`
           else
@@ -25,7 +25,7 @@ h4 Base
               a(href='#')= `${step}`
       ul.a-steps.-mb--8
         each step in steps
-          if step == 'Add seats'
+          if step == 'Step 3'
             li.-active
               a(href='#')= `${step}`
           else
@@ -33,7 +33,7 @@ h4 Base
               a(href='#')= `${step}`
       ul.a-steps.-mb--8
         each step in steps
-          if step == 'Choose services'
+          if step == 'Step 4'
             li.-active
               a(href='#')= `${step}`
           else
@@ -41,7 +41,7 @@ h4 Base
               a(href='#')= `${step}`
       ul.a-steps.-mb--8
         each step in steps
-          if step == 'Checkout'
+          if step == 'Step 5'
             li.-active
               a(href='#')= `${step}`
           else
