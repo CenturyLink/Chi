@@ -14,6 +14,8 @@ $sizes: (
       height: 0.75rem,
       padding: 0.375rem - $border,
       width: 0.75rem,
+      line-height: 0.75rem,
+      font-size: 0.75rem,
     )
   ),
   small: (
@@ -25,6 +27,8 @@ $sizes: (
       height: 0.75rem,
       padding: 0.375rem - $border,
       width: 0.75rem,
+      line-height: 0.75rem,
+      font-size: 0.75rem,
     )
   ),
   md: (
@@ -36,6 +40,8 @@ $sizes: (
       height: 1rem,
       padding: 0.5rem - $border,
       width: 1rem,
+      line-height: 1rem,
+      font-size: 1rem,
     )
   ),
   lg: (
@@ -47,6 +53,8 @@ $sizes: (
       height: 1rem,
       padding: 0.75rem - $border,
       width: 1rem,
+      line-height: 1rem,
+      font-size: 1rem,
     )
   ),
   large: (
@@ -58,6 +66,8 @@ $sizes: (
       height: 1rem,
       padding: 0.75rem - $border,
       width: 1rem,
+      line-height: 1rem,
+      font-size: 1rem,
     )
   ),
   xl: (
@@ -69,6 +79,8 @@ $sizes: (
       height: 1rem,
       padding: 1rem - $border,
       width: 1rem,
+      line-height: 1rem,
+      font-size: 1rem,
     )
   )
 );
@@ -129,8 +141,8 @@ $sizes: (
             width: map-get(map-get(map-get($sizes, $type), icons), width);
 
             &[class^="icon-"], &[class*=" icon-"] {
-              font-size: map-get(map-get($sizes, $type), font-size);
-              line-height: map-get(map-get($sizes, $type), line-height);
+              font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
+              line-height:map-get(map-get(map-get($sizes, $type), icons), line-height);
             }
           }
 
@@ -301,8 +313,8 @@ $sizes: (
               width: map-get(map-get(map-get($sizes, $type), icons), width);
 
               &[class^="icon-"], &[class*=" icon-"] {
-                font-size: map-get(map-get($sizes, $type), font-size);
-                line-height: map-get(map-get($sizes, $type), line-height);
+                font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
+                line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
               }
             }
 
@@ -339,8 +351,8 @@ $sizes: (
                 width: map-get(map-get(map-get($sizes, $type), icons), width);
 
                 &[class^="icon-"], &[class*=" icon-"] {
-                  font-size: map-get(map-get($sizes, $type), font-size);
-                  line-height: map-get(map-get($sizes, $type), line-height);
+                  font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
+                  line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
                 }
               }
 
@@ -378,8 +390,8 @@ $sizes: (
                 width: map-get(map-get(map-get($sizes, $type), icons), width);
 
                 &[class^="icon-"], &[class*=" icon-"] {
-                  font-size: map-get(map-get($sizes, $type), font-size);
-                  line-height: map-get(map-get($sizes, $type), line-height);
+                  font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
+                  line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
                 }
               }
 
@@ -421,8 +433,8 @@ $sizes: (
                 width: map-get(map-get(map-get($sizes, $type), icons), width);
 
                 &[class^="icon-"], &[class*=" icon-"] {
-                  font-size: map-get(map-get($sizes, $type), font-size);
-                  line-height: map-get(map-get($sizes, $type), line-height);
+                  font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
+                  line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
                 }
               }
 

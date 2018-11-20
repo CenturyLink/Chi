@@ -3,7 +3,8 @@ title: Number input
 ---
 p.-text
   | Number inputs are used to increase or decrease numeric values, and they require JavaScript to increment and
-  | decrement the value when the buttons are pressed.
+  | decrement the value when the buttons are pressed. This piece of JavaScripts makes the number increase and decrease
+  | when the buttons are pressed and enables and disables the buttons when the number exceeds the min and max limits.
 
 h3 Default
 p.-text
@@ -28,7 +29,7 @@ h3 Expanded version
 .example.-mb--3
   .-p--3
     .m-inputNumber
-      input#input-number-2.a-input(type="number", value="0")
+      input#input-number-2.a-input(type="number", value="0", min="0", max="3")
       button.a-btn.-icon
         .a-btn__content
           i.a-icon.icon-minus
@@ -37,7 +38,7 @@ h3 Expanded version
           i.a-icon.icon-plus
   :code(lang="html")
     <div class="m-inputNumber">
-      <input id="input-number-2" class="a-input" type="number" value="0">
+      <input id="input-number-2" class="a-input" type="number" value="0" min="0" max="3">
       <button class="a-btn -icon">
         <div class="a-btn__content">
           <i class="a-icon icon-minus"></i>

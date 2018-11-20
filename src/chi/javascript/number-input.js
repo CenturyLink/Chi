@@ -20,14 +20,23 @@ class NumberInput {
     let self = this;
     this._increment = function() {
       self._elemInput.stepUp();
+      self.checkMinMax();
     };
 
     this._decrement = function() {
       self._elemInput.stepDown();
+      self.checkMinMax();
+    };
+
+    this._check = function() {
+      self.checkMinMax();
     };
 
     this._incrementButton.addEventListener('click', this._increment);
     this._decrementButton.addEventListener('click', this._decrement);
+    this._elemInput.addEventListener('keyup', this._check);
+
+    this._check();
 
     Util.registerComponent(COMPONENT_TYPE, this._elemInput, this);
 
@@ -39,10 +48,31 @@ class NumberInput {
     this._elemWrapper = null;
     this._incrementButton.removeEventListener('click', this._increment);
     this._decrementButton.removeEventListener('click', this._decrement);
+    this._elemInput.removeEventListener('keyup', this._check);
     this._incrementButton = null;
     this._decrementButton = null;
     this._increment = null;
     this._decrement = null;
+  }
+
+  checkMinMax() {
+
+    let value = parseInt(this._elemInput.value);
+    let min = parseInt(this._elemInput.getAttribute('min'));
+    let max = parseInt(this._elemInput.getAttribute('max'));
+
+    if (value <= min) {
+      this._decrementButton.setAttribute('disabled', true);
+    } else {
+      this._decrementButton.removeAttribute('disabled');
+    }
+
+    if (value >= max) {
+      this._incrementButton.setAttribute('disabled', true);
+    } else {
+      this._incrementButton.removeAttribute('disabled');
+    }
+
   }
 
   static factory(elem, config) {

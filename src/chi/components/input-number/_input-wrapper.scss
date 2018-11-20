@@ -157,7 +157,12 @@ $m-inputNumber-width: (
     }
 
     & > input[type='number'][disabled].a-input ~ button {
-      opacity: 0.65;
+      color: rgba($text-color, 0.3);
+      pointer-events: none;
+    }
+
+    & > button[disabled] {
+      color: rgba($text-color, 0.3);
       pointer-events: none;
     }
 
