@@ -4,15 +4,17 @@
 .chi {
 
   .a-steps {
+    display: table;
     padding: 0;
+    table-layout: fixed;
+    width: 100%;
 
     & > li {
       color: $brand-color;
-      display: inline-block;
+      display: table-cell;
       font-size: $text;
       position: relative;
       text-align: center;
-      width: 20%;
       z-index: 0;
 
       &:before {
@@ -20,7 +22,7 @@
         border-radius: 50%;
         content: '\25CF';
         display: block;
-        font-size: 1.7rem;
+        font-size: 1.85rem;
         height: 1.125rem;
         line-height: 1rem;
         margin: 0 auto 0.25rem;
@@ -54,25 +56,29 @@
         }
 
         &:after {
-          background-color: $muted-color;
+          background-color: set-color(grey, 40);
         }
 
         & ~ li {
-          color: $muted-color;
+          color: set-color(grey, 40);
+
+          & a {
+            color: $muted-color;
+          }
 
           &:before {
             border-color: $text-white;
           }
 
           &:after {
-            background-color: $muted-color;
+            background-color: set-color(grey, 40);
           }
         }
       }
     }
 
     & a {
-      color: $muted-color;
+      color: $text-color;
     }
   }
 }
