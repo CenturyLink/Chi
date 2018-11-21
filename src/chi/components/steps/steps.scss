@@ -19,15 +19,15 @@
       z-index: 0;
 
       &::before {
-        background-color: $text-white;
+        background-color: $brand-color;
+        border: 0.125rem solid $text-white;
         border-radius: 50%;
-        content: '\25CF';
+        content: '';
         display: block;
-        font-size: 1.85rem;
-        height: 1.125rem;
+        height: 1rem;
         line-height: 1rem;
         margin: 0 auto 0.5rem;
-        width: 1.125rem;
+        width: 1rem;
       }
 
       &::after {
@@ -68,6 +68,7 @@
           }
 
           &::before {
+            background-color: set-color(grey, 40);
             border-color: $text-white;
           }
 
@@ -81,6 +82,10 @@
     & a {
       color: $text-color;
       text-decoration: none;
+
+      &:hover {
+        color: $brand-color;
+      }
     }
   }
 }
