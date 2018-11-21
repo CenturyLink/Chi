@@ -105,6 +105,25 @@ export class Util {
     }
   }
 
+  static extend (a, b) {
+    if (!b) {
+      return a;
+    }
+    for (let key in b) {
+      if (b[key] === undefined) {
+        delete a[key];
+      } else {
+        a[key] = b[key];
+      }
+    }
+    return a;
+  }
+
+  static isNumeric (n) {
+    return ( typeof n === "number" || typeof n === "string" ) &&
+      !isNaN( n - parseFloat( n ) );
+  }
+
   static _getNewRegistrationIndex () {
     return chi.componentIndex++;
   }

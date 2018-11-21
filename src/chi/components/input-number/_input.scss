@@ -6,31 +6,37 @@ $sizes: (
     height: 1.5rem,
     font-size: 0.75rem,
     line-height: 1rem,
+    padding: 0.1875rem 0.4375rem,
   ),
   small: (
     height: 1.5rem,
     font-size: 0.75rem,
     line-height: 1rem,
+    padding: 0.1875rem 0.4375rem,
   ),
   md: (
     height: 2rem,
     font-size: 0.875rem,
     line-height: 1rem,
+    padding: 0.4375rem 0.4375rem,
   ),
   lg: (
     height: 2.5rem,
     font-size: 0.875rem,
     line-height: 1.25rem,
+    padding: 0.5625rem 0.4375rem,
   ),
   large: (
     height: 2.5rem,
     font-size: 0.875rem,
     line-height: 1.25rem,
+    padding: 0.5625rem 0.4375rem,
   ),
   xl: (
     height: 3rem,
     font-size: 0.875rem,
     line-height: 1.25rem,
+    padding: 0.8125rem 0.4375rem,
   )
 );
 
@@ -86,6 +92,7 @@ $sizes: (
             height: map-get(map-get($sizes, $type), height);
             font-size: map-get(map-get($sizes, $type), font-size);
             line-height: map-get(map-get($sizes, $type), line-height);
+            padding: map-get(map-get($sizes, $type), padding);
           }
         }
 
