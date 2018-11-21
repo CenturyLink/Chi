@@ -101,7 +101,7 @@ html {
   pre {
     -ms-overflow-style: -ms-autohiding-scrollbar; // sass-lint:disable-line no-vendor-prefixes
     background-color: set-color(grey, 300);
-    border-radius: 3px;
+    border-radius: $border-radius;
     color: $text-color;
     display: block;
     font-size: $text-small;

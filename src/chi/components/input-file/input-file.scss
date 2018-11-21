@@ -67,7 +67,7 @@ $sizes: (
             align-items: center;
             background-color: set-color(white);
             border: 0.0625rem solid set-color(grey, 30);
-            border-radius: 3px;
+            border-radius: $border-radius;
             content: 'Choose File';
             cursor: pointer;
             display: flex;
