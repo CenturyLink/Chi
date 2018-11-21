@@ -6,7 +6,11 @@ const COMPONENT_TYPE = "numberInput";
 class NumberInput {
 
   constructor (elem, config) {
-    this._config = config;
+
+    this._config = {
+      autofix: true
+    };
+    this._config = Util.extend(this._config, config);
     this._elemInput = elem;
     this._elemWrapper = this._elemInput.parentElement;
     this._initialValue = Util.isNumeric(this._elemInput.value) ?
@@ -31,13 +35,17 @@ class NumberInput {
       self.checkMinMax();
     };
 
-    this._check = function() {
+    this._check = function(e) {
       self.checkMinMax();
+      if (e && e.type === 'change' && self._config.autofix) {
+        self.autofix();
+      }
     };
 
     this._incrementButton.addEventListener('click', this._increment);
     this._decrementButton.addEventListener('click', this._decrement);
     this._elemInput.addEventListener('keyup', this._check);
+    this._elemInput.addEventListener('change', this._check);
 
     this._check();
 
@@ -52,6 +60,7 @@ class NumberInput {
     this._incrementButton.removeEventListener('click', this._increment);
     this._decrementButton.removeEventListener('click', this._decrement);
     this._elemInput.removeEventListener('keyup', this._check);
+    this._elemInput.removeEventListener('change', this._check);
     this._incrementButton = null;
     this._decrementButton = null;
     this._increment = null;
@@ -95,6 +104,23 @@ class NumberInput {
     }
   }
 
+  autofix() {
+    this._updateSteppedValues();
+    const previousValue = this._stepped.current;
+    if (!Number.isInteger(this._stepped.current)) {
+      this._stepped.current = Math.round(this._stepped.current);
+    }
+    this._stepped.current = Math.min(this._stepped.current, this._stepped.max);
+    this._stepped.current = Math.max(this._stepped.current, this._stepped.min);
+    if (
+      this._stepped.current !== previousValue ||
+      this._elemInput.value !== this._step2value(this._stepped.current).toString()
+    ) {
+      this._elemInput.value = this._step2value(this._stepped.current);
+      this._elemInput.dispatchEvent(new Event('change'));
+    }
+  }
+
   _stepUp() {
     this._updateSteppedValues();
     if (this._stepped.current >= this._stepped.max) {
@@ -106,6 +132,7 @@ class NumberInput {
       this._stepped.current = Math.ceil(this._stepped.current);
     }
     this._elemInput.value = this._step2value(this._stepped.current);
+    this._elemInput.dispatchEvent(new Event('change'));
   }
 
   _stepDown() {
@@ -119,6 +146,7 @@ class NumberInput {
       this._stepped.current = Math.floor(this._stepped.current);
     }
     this._elemInput.value = this._step2value(this._stepped.current);
+    this._elemInput.dispatchEvent(new Event('change'));
   }
 
   static factory(elem, config) {
