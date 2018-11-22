@@ -4,7 +4,7 @@ title: Tables
 
 mixin str(cid, name, id, date, checked)
   tr(class={
-    '-rowWarning': checked
+    '-row--warning': checked
   })
     td.-lh--1
       input.a-input(
@@ -23,7 +23,7 @@ mixin tr(name, id, date)
     td= id
     td= date
 
-mixin table(row, column)
+mixin table-advanced(row, column)
   section.a-table(style="width: 640px")&attributes(attributes)
     div
       table(cellpadding="0", cellspacing="0")
@@ -57,68 +57,166 @@ mixin table(row, column)
             )
             +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
 
+mixin table(row, column)
+  table(cellpadding="0", cellspacing="0").a-table(style="width: 640px")&attributes(attributes)
+    thead
+      tr
+        th(class={
+          [`-sorted -${column}`]: column != undefined
+        })
+          div name
+        th ID
+        th last login
+    tbody
+      if column == 'ascending'
+        +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+        +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')(
+        class={
+          [`-${row}`]: row != undefined && row != 'disabled'
+        }
+        disabled= row=='disabled' ? 'disabled' : false
+        )
+        +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
+      else
+        +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
+        +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')(
+        class={
+          [`-${row}`]: row != undefined && row != 'disabled'
+        }
+        disabled= row=='disabled' ? 'disabled' : false
+        )
+        +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
 
-each size in ['default', 'small', 'large']
-  each tablestyle in ['default', 'striped']
-    each borderstyle in ['default', 'bordered', 'borderless']
-      div(class=`test-${size}-${tablestyle}-${borderstyle}`)
+.a-grid
+  .a-col.-w--6
+    h2 Without section container
+    each size in ['default', 'small', 'large']
+      each tablestyle in ['default', 'striped']
+        each borderstyle in ['default', 'bordered', 'borderless']
+          div(class=`test-${size}-${tablestyle}-${borderstyle}`)
+            span.a-h2
+              | table
+              if size != 'default'
+                = ` / ${size}`
+              if tablestyle != 'default'
+                = ` / ${tablestyle}`
+              if borderstyle != 'default'
+                = ` / ${borderstyle}`
+
+            +table()(class={
+              [`-${size}`]: size!= 'default',
+              [`-${tablestyle}`]: tablestyle!= 'default',
+              [`-${borderstyle}`]: borderstyle!= 'default'
+            })
+
+    each rowstyle in ['disabled', 'row--success', 'row--warning', 'row--danger', 'row--info']
+      div(class=`test-${rowstyle}`)
+        span.a-h2= `table / ${rowstyle}`
+        +table(rowstyle)
+
+    div(class=`test-hover`)
+        span.a-h2= `table / hover`
+        +table('hover').-hover
+
+    each columnstyle in ['ascending', 'descending']
+      div(class=`test-${columnstyle}`)
+        span.a-h2= `table / column sort / ${columnstyle}`
+        +table(undefined, columnstyle)
+
+    each size, index in ['default', 'small', 'large']
+      div(class=`test-${size}-selectable`)
         span.a-h2
           | table
           if size != 'default'
             = ` / ${size}`
-          if tablestyle != 'default'
-            = ` / ${tablestyle}`
-          if borderstyle != 'default'
-            = ` / ${borderstyle}`
+          = ' / selectable'
+        section.a-table(
+          class={
+            [`-${size}`]: size!= 'default'
+          }
+          style="width: 640px"
+        )
+          div
+            table(cellpadding="0", cellspacing="0")
+              thead
+                tr
+                  th(width="48px")
+                    div.-lh--1
+                      input.a-input(type="checkbox", id=`chk-${index}`)
+                      label(for=`chk-${index}`)
+                  th.-sorted.-descending
+                    div name
+                  th
+                    div ID
+                  th
+                    div last login
+              tbody
+                +str(`chk-${index}-01`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
+                +str(`chk-${index}-02`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
+                +str(`chk-${index}-03`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+  .a-col.-w--6
+    h2 With section container
+    each size in ['default', 'small', 'large']
+      each tablestyle in ['default', 'striped']
+        each borderstyle in ['default', 'bordered', 'borderless']
+          div(class=`test-${size}-${tablestyle}-${borderstyle}`)
+            span.a-h2
+              | table
+              if size != 'default'
+                = ` / ${size}`
+              if tablestyle != 'default'
+                = ` / ${tablestyle}`
+              if borderstyle != 'default'
+                = ` / ${borderstyle}`
 
-        +table()(class={
-          [`-${size}`]: size!= 'default',
-          [`-${tablestyle}`]: tablestyle!= 'default',
-          [`-${borderstyle}`]: borderstyle!= 'default'
-        })
+            +table-advanced()(class={
+              [`-${size}`]: size != 'default',
+              [`-${tablestyle}`]: tablestyle != 'default',
+              [`-${borderstyle}`]: borderstyle != 'default'
+            })
 
-each rowstyle in ['disabled', 'rowSuccess', 'rowWarning', 'rowDanger', 'rowInfo']
-  div(class=`test-${rowstyle}`)
-    span.a-h2= `table / ${rowstyle}`
-    +table(rowstyle)
+    each rowstyle in ['disabled', 'row--success', 'row--warning', 'row--danger', 'row--info']
+      div(class=`test-${rowstyle}`)
+        span.a-h2= `table / ${rowstyle}`
+        +table-advanced(rowstyle)
 
-div(class=`test-hover`)
-    span.a-h2= `table / hover`
-    +table('hover').-hover
+    div(class=`test-hover`)
+      span.a-h2= `table / hover`
+      +table-advanced('hover').-hover
 
-each columnstyle in ['ascending', 'descending']
-  div(class=`test-${columnstyle}`)
-    span.a-h2= `table / column sort / ${columnstyle}`
-    +table(undefined, columnstyle)
+    each columnstyle in ['ascending', 'descending']
+      div(class=`test-${columnstyle}`)
+        span.a-h2= `table / column sort / ${columnstyle}`
+        +table-advanced(undefined, columnstyle)
 
-each size, index in ['default', 'small', 'large']
-  div(class=`test-${size}-selectable`)
-    span.a-h2
-      | table
-      if size != 'default'
-        = ` / ${size}`
-      = ' / selectable'
-    section.a-table(
-      class={
-        [`-${size}`]: size!= 'default'
-      }
-      style="width: 640px"
-    )
-      div
-        table(cellpadding="0", cellspacing="0")
-          thead
-            tr
-              th(width="48px")
-                div.-lh--1
-                  input.a-input(type="checkbox", id=`chk-${index}`)
-                  label(for=`chk-${index}`)
-              th.-sorted.-descending
-                div name
-              th
-                div ID
-              th
-                div last login
-          tbody
-            +str(`chk-${index}-01`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
-            +str(`chk-${index}-02`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
-            +str(`chk-${index}-03`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+    each size, index in ['default', 'small', 'large']
+      div(class=`test-${size}-selectable`)
+        span.a-h2
+          | table
+          if size != 'default'
+            = ` / ${size}`
+          = ' / selectable'
+        section.a-table(
+        class={
+          [`-${size}`]: size != 'default'
+        }
+        style="width: 640px"
+        )
+          div
+            table(cellpadding="0", cellspacing="0")
+              thead
+                tr
+                  th(width="48px")
+                    div.-lh--1
+                      input.a-input(type="checkbox", id=`chk-${index}-a`)
+                      label(for=`chk-${index}-a`)
+                  th.-sorted.-descending
+                    div name
+                  th
+                    div ID
+                  th
+                    div last login
+              tbody
+                +str(`chk-${index}-01-1`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
+                +str(`chk-${index}-02-2`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
+                +str(`chk-${index}-03-3`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')

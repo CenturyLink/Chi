@@ -3,21 +3,9 @@ title: Table
 ---
 p.-text Tables are used to present data sets in a simple and organized way.
 
-h3 Requirements
-p.-text
-  | Tables must be wrapped in a <code>&lt;section class="a-table"&gt;</code>
-  | with a nested <code>&lt;div&gt;</code>. Table header text must be
-  | wrapped in a <code>&lt;div&gt;</code>.
 h3 Examples
 h4 Base
 :example(lang="html"):html-beautify:pug include ./_default.pug
-
-h4 Scrollable
-p.-text
-  | If the <code>section</code> height is smaller than the <code>table</code>
-  | height, the <code>table</code> header will be fixed positioned and
-  | content will scroll.
-:example(lang="html"):html-beautify:pug include ./_scroll.pug
 
 h4 Bordered
 p.-text Tables can be bordered by applying the modifier class <code>-bordered</code>.
@@ -44,19 +32,19 @@ p.-text Disable a row by applying the attribute <code>disabled="disabled"</code>
 :example(lang="html"):html-beautify:pug include ./_disabled.pug
 
 h4 Success
-p.-text Render a success state by applying the modifier class <code>-rowSuccess</code>.
+p.-text Render a success state by applying the modifier class <code>-row--success</code>.
 :example(lang="html"):html-beautify:pug include ./_row-success.pug
 
 h4 Warning
-p.-text Render a warning state by applying the modifier class <code>-rowWarning</code>.
+p.-text Render a warning state by applying the modifier class <code>-row--warning</code>.
 :example(lang="html"):html-beautify:pug include ./_row-warning.pug
 
 h4 Danger
-p.-text Render a danger state by applying the modifier class <code>-rowDanger</code>.
+p.-text Render a danger state by applying the modifier class <code>-row--danger</code>.
 :example(lang="html"):html-beautify:pug include ./_row-danger.pug
 
 h4 Info
-p.-text Render an info state by applying the modifier class <code>-rowInfo</code>.
+p.-text Render an info state by applying the modifier class <code>-row--info</code>.
 :example(lang="html"):html-beautify:pug include ./_row-info.pug
 
 h3 Column Sorting
@@ -70,6 +58,34 @@ h4 Ascending
 h4 Descending
 :example(lang="html"):html-beautify:pug include ./_sort-descending.pug
 
+h3 Content alignment
+p.-text
+  | Chi also supports additional content alignment with inline text align utilities
+  | applying the modifier class <code>-text--left</code> , <code>-text--center</code>
+  | or <code>-text--right</code>.
+
+:example(lang="html"):html-beautify:pug
+  include ./_common.pug
+  table.a-table
+    thead
+      tr
+        th.-text--left name
+        th.-text--center ID
+        th.-text--right last login
+    tbody
+      tr
+        td.-text--left David Navarro
+        td.-text--center david
+        td.-text--right 2017 3:26 PM
+      tr
+        td.-text--left Diego Sanjuan
+        td.-text--center diego
+        td.-text--right 2017 3:26 PM
+      tr
+        td.-text--left Manuel Martin
+        td.-text--center manuel
+        td.-text--right 2017 3:26 PM
+
 h3 Additional Sizes
 p.-text
   | Chi also supports additional table sizes which can be configured by
@@ -82,25 +98,30 @@ h4 Large
 :example(lang="html"):html-beautify:pug include ./_large.pug
 
 h3 Selectable
-p.-text Combine several different modifiers to create complex and beautiful tables.
+:example(lang="html"):html-beautify:pug include ./_selectable.pug
+
+h3 Scrollable
+p.-text
+  | If the <code>section</code> height is smaller than the <code>table</code>
+  | height, the <code>table</code> header will be fixed positioned and
+  | content will scroll.
+h4 Requirements
+p.-text
+  | Tables must be wrapped in a <code>&lt;section class="a-table -advanced"&gt;</code>
 :example(lang="html"):html-beautify:pug
   include ./_common.pug
-  section.a-table
+  section.a-table.-advanced(style="height: 150px")
     div
       table
         thead
           tr
             th
-              div.-lh--1
-                input.a-input(type="checkbox", id=`chk-1`)
-                label(for=`chk-1`)
-            th.-sorted.-descending
               div name
             th
               div ID
             th
               div last login
         tbody
-          +str(`chk-1-01`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
-          +str(`chk-1-02`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
-          +str(`chk-1-03`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+          +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
+          +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
+          +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
