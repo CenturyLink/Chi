@@ -1,0 +1,91 @@
+@import 'variables';
+@import 'mixins';
+
+.chi {
+
+  .a-steps {
+    display: table;
+    padding: 0;
+    table-layout: fixed;
+    width: 100%;
+
+    & > li {
+      color: $brand-color;
+      display: table-cell;
+      font-size: $text;
+      line-height: 1rem;
+      position: relative;
+      text-align: center;
+      z-index: 0;
+
+      &::before {
+        background-color: $brand-color;
+        border: 0.125rem solid $text-white;
+        border-radius: 50%;
+        content: '';
+        display: block;
+        height: 1rem;
+        line-height: 1rem;
+        margin: 0 auto 0.5rem;
+        width: 1rem;
+      }
+
+      &::after {
+        background-color: $brand-color;
+        content: '';
+        height: 0.125rem;
+        left: 50%;
+        position: absolute;
+        top: .4375rem;
+        width: 100%;
+        z-index: -1;
+      }
+
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+
+      &.-active {
+        & a {
+          color: $brand-color;
+        }
+
+        &::before {
+          box-shadow: 0 0 0 0.125rem $brand-color;
+        }
+
+        &::after {
+          background-color: set-color(grey, 40);
+        }
+
+        & ~ li {
+          color: set-color(grey, 40);
+
+          & a {
+            color: $muted-color;
+          }
+
+          &::before {
+            background-color: set-color(grey, 40);
+            border-color: $text-white;
+          }
+
+          &::after {
+            background-color: set-color(grey, 40);
+          }
+        }
+      }
+    }
+
+    & a {
+      color: $text-color;
+      text-decoration: none;
+
+      &:hover {
+        color: $brand-color;
+      }
+    }
+  }
+}
