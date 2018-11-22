@@ -619,5 +619,14 @@ p.-text
         <a class="m-dropdown__menu-item" href="#">Element 3</a>
       </div>
     </div>
-script(type="text/javascript", src=`../../js/chi.js`)
-!= '<script>chi.tab(document.getElementById(\'a-tabs--animation-expanded\'));chi.tab(document.getElementById(\'a-tabs--expanded\'));chi.tab(document.getElementById(\'a-tabs--expanded-2\'));</script>'
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('a-tabs--animation-expanded'));
+      chi.tab(document.getElementById('a-tabs--expanded'));
+      chi.tab(document.getElementById('a-tabs--expanded-2'));
+    },
+    false
+  );

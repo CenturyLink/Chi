@@ -122,5 +122,16 @@ p.-text
 
   drawer.dispose(); // Only have to do it once.
 
-script(type="text/javascript", src=`../../js/chi.js`)
-!= '<script>Array.prototype.forEach.call(document.getElementsByClassName("m-drawer__trigger"), function(el){chi.drawer(el);});</script>'
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      Array.prototype.forEach.call(
+        document.getElementsByClassName("m-drawer__trigger"),
+        function(el){
+          chi.drawer(el);
+        }
+      );
+    },
+    false
+  );

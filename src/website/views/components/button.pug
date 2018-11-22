@@ -350,7 +350,12 @@ p.-text
        </div>
     </button>
 
-
-script(type="text/javascript", src=`../../js/chi.js`)
-//!= '<script>Array.prototype.forEach.call(document.getElementsByClassName(\'a-tabs\'), function(e){chi.tab(e);});</script>'
-!= '<script>chi.tab(document.getElementById(\'a-tabs\'));chi.tab(document.getElementById(\'a-tabs\'));</script>'
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('a-tabs'));
+      chi.tab(document.getElementById('a-tabs'));
+    },
+    false
+  );

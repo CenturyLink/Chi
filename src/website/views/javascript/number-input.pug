@@ -143,5 +143,16 @@ p.-text
 
   inputNumberComponent.dispose(); // Only have to do it once.
 
-script(type="text/javascript", src=`../../js/chi.js`)
-!= '<script>chi.numberInput(document.getElementById(\'input-number-1\'));chi.numberInput(document.getElementById(\'input-number-2\'));chi.numberInput(document.getElementById(\'input-number-3\'), {autofix:true});</script>'
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.numberInput(document.getElementById('input-number-1'));
+      chi.numberInput(document.getElementById('input-number-2'));
+      chi.numberInput(
+        document.getElementById('input-number-3'),
+        {autofix:true}
+      );
+    },
+    false
+  );
