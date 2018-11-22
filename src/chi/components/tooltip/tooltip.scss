@@ -1,0 +1,87 @@
+@import 'variables';
+@import 'mixins';
+
+.chi {
+
+  [data-tooltip] {
+    position: relative;
+
+    &::after {
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      background: rgba(set-color(grey, 100), 0.95);
+      border-radius: $border-radius;
+      bottom: 100%;
+      color: set-color(white);
+      content: attr(data-tooltip);
+      display: block;
+      font-family: $font-family;
+      font-size: $text;
+      font-weight: normal;
+      left: 50%;
+      line-height: $line-height-small;
+      max-width: 20rem;
+      opacity: 0;
+      overflow: hidden;
+      padding: .25rem .5rem;
+      pointer-events: none;
+      position: absolute;
+      text-overflow: ellipsis;
+      transform: translate(-50%, .5rem);
+      transition: opacity .2s, transform .2s;
+      white-space: pre;
+      z-index: $zindex-tooltip;
+    }
+
+    &:focus, &:hover {
+      &::after {
+        opacity: 1;
+        transform: translate(-50%, -.25rem);
+      }
+    }
+
+    &[data-position='right'] {
+      &::after {
+        bottom: 50%;
+        left: 100%;
+        transform: translate(-.25rem, 50%);
+      }
+
+      &:focus, &:hover {
+        &::after {
+          transform: translate(.25rem, 50%);;
+        }
+      }
+    }
+
+    &[data-position='bottom'] {
+      &::after {
+        bottom: auto;
+        top: 100%;
+        transform: translate(-50%, -.5rem);
+      }
+
+      &:focus, &:hover {
+        &::after {
+          transform: translate(-50%, .25rem);;
+        }
+      }
+    }
+
+    &[data-position='left'] {
+      &::after {
+        bottom: 50%;
+        left: auto;
+        right: 100%;
+        transform: translate(.5rem, 50%);
+      }
+
+      &:focus, &:hover {
+        &::after {
+          transform: translate(-.25rem, 50%);;
+        }
+      }
+    }
+
+  }
+}
