@@ -207,16 +207,16 @@ ul#a-tabs.a-tabs
       each size in ['lg', 'xl']
         div(class=`a-col -w--12 -p--2`)
           .a-inputWrapper.-floatingLabel(style="max-width:20rem")
-            input(type="text", class=`a-input -${size} -mr--3`, placeholder="Placeholder Text", id=`floating-label-${size}`)
+            input(type="text", class=`a-input -${size} -mr--3`, id=`floating-label-${size}`)
             label(for=`floating-label-${size}`) Placeholder text
     :code(lang='html')
       <div class="a-inputWrapper -floatingLabel">
-        <input class="a-input -lg" type="text" placeholder="Placeholder Text" id="floating-label-lg">
+        <input class="a-input -lg" type="text" id="floating-label-lg">
         <label for="floating-label-lg">Placeholder text</label>
       </div>
 
       <div class="a-inputWrapper -floatingLabel">
-        <input class="a-input -xl" type="text" placeholder="Placeholder Text" id="floating-label-xl">
+        <input class="a-input -xl" type="text" id="floating-label-xl">
         <label for="floating-label-xl">Placeholder text</label>
       </div>
   #floatingActive.a-tabs-panel
@@ -224,16 +224,16 @@ ul#a-tabs.a-tabs
       each size in ['lg', 'xl']
         div(class=`a-col -w--12 -p--2`)
           .a-inputWrapper.-floatingLabel(style="max-width:20rem")
-            input(type="text", class=`a-input -${size} -mr--3`, placeholder="Placeholder Text", id=`floating-label-${size}`)
-            label(for=`floating-label-${size}`) Placeholder text
+            input(type="text", class=`a-input -${size} -mr--3`, id=`floating-label-${size}-2`, value="Sample text")
+            label.-active(for=`floating-label-${size}-2`) Placeholder text
     :code(lang='html')
       <div class="a-inputWrapper -floatingLabel">
-        <input class="a-input -lg" type="text" placeholder="Placeholder Text" id="floating-label-lg">
+        <input class="a-input -lg" type="text" id="floating-label-lg">
         <label class="-active" for="floating-label-lg">Placeholder text</label>
       </div>
 
       <div class="a-inputWrapper -floatingLabel">
-        <input class="a-input -xl" type="text" placeholder="Placeholder Text" id="floating-label-xl">
+        <input class="a-input -xl" type="text" id="floating-label-xl">
         <label class="-active" for="floating-label-xl">Placeholder text</label>
       </div>
 
