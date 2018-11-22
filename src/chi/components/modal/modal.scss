@@ -9,7 +9,7 @@
 
   .a-modal {
     background-color: set-color(white);
-    border-radius: 3px;
+    border-radius: $border-radius;
     box-shadow: 0 0 25px 10px rgba(set-color(black), 0.15);
     margin: 128px auto 0;
     max-width: 600px;
