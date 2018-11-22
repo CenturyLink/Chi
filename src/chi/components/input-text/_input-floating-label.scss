@@ -8,13 +8,12 @@ $label-left: 0.6875rem+0.0625rem;
 $sizes: (
   lg: (
     label-bottom: 0.9375rem,
-    label-bottom-relaxed: 0.625rem,
+    label-bottom-relaxed: 0.5rem,
     label-font-size: 0.75rem,
     label-font-size-relaxed: 0.875rem,
     label-line-height: 0.75rem,
-    old-padding-y: 0.5625rem,
-    new-padding-bottom: 0,
-    new-padding-top: 1.125rem,
+    padding-bottom: 0.15625rem,
+    padding-top: 0.96875rem
   ),
   xl: (
     label-bottom: 1.1875rem,
@@ -22,9 +21,8 @@ $sizes: (
     label-font-size: 0.75rem,
     label-font-size-relaxed: 0.875rem,
     label-line-height: 1.5rem,
-    old-padding-y: 0.6875rem,
-    new-padding-bottom: 0.0625rem,
-    new-padding-top: 1.3125rem,
+    padding-bottom: 0.25rem,
+    padding-top: 1.125rem,
   )
 );
 
@@ -33,32 +31,16 @@ $sizes: (
     & > input {
       @each $type in map-keys($sizes) {
         &.-#{$type} {
-          padding-bottom: map-get(map-get($sizes, $type), new-padding-bottom);
-          padding-top: map-get(map-get($sizes, $type), new-padding-top);
+          padding-bottom: map-get(map-get($sizes, $type), padding-bottom);
+          padding-top: map-get(map-get($sizes, $type), padding-top);
 
           & ~ label {
-            bottom: map-get(map-get($sizes, $type), label-bottom);
-          }
+            bottom: map-get(map-get($sizes, $type), label-bottom-relaxed);
 
-          &:placeholder-shown {
-            padding-bottom: map-get(map-get($sizes, $type), old-padding-y);
-            padding-top: map-get(map-get($sizes, $type), old-padding-y);
-
-            & ~ label {
-              bottom: map-get(map-get($sizes, $type), label-bottom-relaxed);
+            &.-active {
+              bottom: map-get(map-get($sizes, $type), label-bottom);
             }
           }
-
-          // sass-lint:disable no-vendor-prefixes
-          &:-ms-input-placeholder {
-            padding-bottom: map-get(map-get($sizes, $type), old-padding-y);
-            padding-top: map-get(map-get($sizes, $type), old-padding-y);
-
-            & ~ label {
-              bottom: map-get(map-get($sizes, $type), label-bottom-relaxed);
-            }
-          }
-          // sass-lint:enable no-vendor-prefixes
         }
       }
 
@@ -67,21 +49,16 @@ $sizes: (
       }
 
       & ~ label {
-        font-size: $label-font-size;
+        font-size: $label-font-size-relaxed;
         left: $label-left;
         position: absolute;
         color: set-color(grey, 50);;
         transition: all 0.2s ease-in-out;
-      }
 
-      &:placeholder-shown ~ label {
-        font-size: $label-font-size-relaxed;
+        &.-active {
+          font-size: $label-font-size;
+        }
       }
-      // sass-lint:disable no-vendor-prefixes
-      &:-ms-input-placeholder ~ label {
-        font-size: $label-font-size-relaxed;
-      }
-      // sass-lint:enable no-vendor-prefixes
     }
   }
 }

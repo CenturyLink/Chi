@@ -9,7 +9,9 @@ export class Util {
   }
 
   static addClass (elem, className) {
-    elem.className += ' ' + className;
+    if (!Util.hasClass(elem, className)) {
+      elem.className += ' ' + className;
+    }
   }
 
   static hasClass (elem, className) {
@@ -117,6 +119,19 @@ export class Util {
       }
     }
     return a;
+  }
+
+  static addArraySupportToFactory (factoryMethod) {
+    return function(elem) {
+      if (Array.isArray(elem)) {
+        const returnV = [];
+        for (let i = 0 ; i < elem.length() ; i++) {
+          returnV.push(factoryMethod(elem[i]));
+        }
+      } else {
+        return factoryMethod(elem);
+      }
+    };
   }
 
   static isNumeric (n) {

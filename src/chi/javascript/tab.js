@@ -14,9 +14,7 @@ class Tab {
     this._config = {
       animated: true
     };
-    config && config.forEach(function(confVal, confKey) {
-      this._config[confKey] = confVal;
-    });
+    this._config = Util.extend(this._config, config);
 
     let self = this;
 
@@ -193,7 +191,7 @@ class Tab {
 
 }
 
-let chiTab = Tab.factory;
+let chiTab = Util.addArraySupportToFactory(Tab.factory);
 
 chi.tab = chiTab;
 export {Tab, chiTab};

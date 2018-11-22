@@ -13,7 +13,7 @@ class Dropdown {
 
   constructor (elem, config) {
     this._elem = elem;
-    this._config = config;
+    this._config = Util.extend({}, config);
     this._eventCaptured = false;
     this._shown = Util.hasClass(elem, CLASS_ACTIVE);
     this._locateDropdown();
@@ -146,7 +146,7 @@ class Dropdown {
 
 }
 
-let chiDropdown = Dropdown.factory;
+let chiDropdown = Util.addArraySupportToFactory(Dropdown.factory);
 
 chi.dropdown = chiDropdown;
 export {Dropdown, chiDropdown};
