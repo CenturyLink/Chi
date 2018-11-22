@@ -47,8 +47,7 @@ gulp.task('build:website:views', () => {
       .use(metalsmithPlugins.collections({
         'Getting Started': {
           pattern: 'getting-started/**/*.{md,pug}',
-          sortBy: collectionSorter(['Overview']),
-          reverse: true
+          sortBy: 'order'
         },
         'Foundations': {
           pattern: 'foundations/**/*.{md,pug}',

@@ -1,8 +1,24 @@
 # CHANGELOG
 
+### 0.8.4 (Unreleased)
+
+* Added new Number Input component.
+* Migrated javascript Tabs component into the new Chi core javascript library.
+* Added javascript Drawer component.
+* Added Z-index utility.
+* Added browser support page to documentation.
+* Added new text color utilities for base/body text and white text.
+* Updated documentation examples to reference new utility notation.
+* Added copy to clipboard functionality to all documentation examples.
+* Added Drawer component.
+* Updated Button component to support a larger set of sizes.
+* Fixed Display utility bug which targeted single breakpoints instead of specific breakpoint + larger.
+* Added javascript Dropdown component.
+* Updated Alert component to enable more flexibility with icons, header sizes, and alignment.
+
 ### 0.8.3 (October 26, 2018)
 
-* Updated grid utility notation. 
+* Updated grid utility notation.
 * Updated text utilities notation.
 * Added Dropdown component.
 * Added Templates section to documentation with Sign In and Error 500 layout examples.
