@@ -14,6 +14,12 @@ header.o-header.docs-header
     .o-header__start
       span.o-header__title.-text--muted Chi Documentation
     .o-header__end
-      a.a-btn.-icon.-flat(href="https://github.com/CenturyLinkCloud/ux-chi")
+      .m-dropdown.-mr--1
+        button.a-btn.-flat.m-dropdown__trigger(data-position='bottom-end', id='version-dropdown') v0.8.4
+        .m-dropdown__menu(style='width:10rem;')
+          a.m-dropdown__menu-item.-active(href='https://assets.ctl.io/chi/0.8.4') v0.8.4
+          a.m-dropdown__menu-item(href='https://assets.ctl.io/chi/0.8.3') v0.8.3
+          a.m-dropdown__menu-item(href='https://assets.ctl.io/chi/0.8.2') v0.8.2
+      a.a-btn.-icon.-flat(href='https://github.com/CenturyLinkCloud/ux-chi')
         .a-btn__content
           i.a-icon.icon-logo-github
