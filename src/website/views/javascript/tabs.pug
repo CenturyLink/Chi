@@ -201,5 +201,13 @@ p.-text
 
   tabComponent.dispose(); // Only have to do it once.
 
-script(type="text/javascript", src=`../../js/chi.js`)
-!= '<script>chi.tab(document.getElementById(\'example-tabs\'));chi.tab(document.getElementById(\'example-tabs-2\'));chi.tab(document.getElementById(\'example-tabs-3\'));</script>'
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('example-tabs'));
+      chi.tab(document.getElementById('example-tabs-2'));
+      chi.tab(document.getElementById('example-tabs-3'));
+    },
+    false
+  );

@@ -50,5 +50,16 @@ p.-text
 
   dropdown.dispose(); // Only have to do it once.
 
-script(type="text/javascript", src=`../../js/chi.js`)
-!= '<script>Array.prototype.forEach.call(document.getElementsByClassName("m-dropdown__trigger"), function(el){chi.dropdown(el);});</script>'
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      Array.prototype.forEach.call(
+        document.getElementsByClassName("m-dropdown__trigger"),
+        function(el){
+          chi.dropdown(el);
+        }
+      );
+    },
+    false
+  );
