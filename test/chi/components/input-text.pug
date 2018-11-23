@@ -53,7 +53,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .a-inputWrapper.-iconLeft
+                .a-inputWrapper.-icon--left
                   +input(style, state, size, disabled)
                   +icon('atom')
 
@@ -67,7 +67,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .a-inputWrapper.-iconRight
+                .a-inputWrapper.-icon--right
                   +input(style, state, size, disabled)
                   if style == 'success'
                     .a-icon.-text--success
@@ -96,7 +96,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .a-inputWrapper.-iconLeft.-iconRight
+                .a-inputWrapper.-icon--left.-icon--right
                   +input(style, state, size, disabled)
                   +icon('atom')
                   if style == 'success'

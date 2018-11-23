@@ -29,18 +29,18 @@ h3 Icons
 p.-text
   | To add icons to a text input, wrap the input in a <code>div</code> using the class
   | <code>a-inputWrapper</code>. Next, add the icon as a sibling of the <code>input</code> and utilize
-  | an icon alignment utility class (e.g. <code>-iconLeft</code>) to specify where it should be placed.
+  | an icon alignment utility class (e.g. <code>-icon--left</code>) to specify where it should be placed.
 
 h4 Left Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-iconLeft(style="max-width:20rem")
+    .a-inputWrapper.-icon--left(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
       .a-icon.-text--muted
         svg
           use(xlink:href='#icon-edit')
   :code(lang="html")
-    <div class="a-inputWrapper -iconLeft">
+    <div class="a-inputWrapper -icon--left">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
       <div class="a-icon -text--muted">
         <svg>
@@ -52,13 +52,13 @@ h4 Left Aligned
 h4 Right Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-iconRight(style="max-width:20rem")
+    .a-inputWrapper.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
       .a-icon.-text--muted
         svg
           use(xlink:href='#icon-edit')
   :code(lang="html")
-    <div class="a-inputWrapper -iconRight">
+    <div class="a-inputWrapper -icon--right">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
       <div class="a-icon -text--muted">
         <svg>
@@ -70,7 +70,7 @@ h4 Right Aligned
 h4 Left + Right Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-iconLeft.-iconRight(style="max-width:20rem")
+    .a-inputWrapper.-icon--left.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
       .a-icon.-text--muted
         svg
@@ -79,7 +79,7 @@ h4 Left + Right Aligned
         svg
           use(xlink:href='#icon-check')
   :code(lang="html")
-    <div class="a-inputWrapper -iconLeft -iconRight">
+    <div class="a-inputWrapper -icon--left -icon--right">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
       <div class="a-icon -text--muted">
         <svg>
@@ -108,13 +108,13 @@ h4 Success
 
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-iconRight(style="max-width:20rem")
+    .a-inputWrapper.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
       .a-icon.-text--success
         svg
           use(xlink:href="#icon-check")
   :code(lang="html")
-    <div class="a-inputWrapper -iconRight">
+    <div class="a-inputWrapper -icon--right">
       <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
       <div class="a-icon -text--success">
         <svg>
@@ -133,13 +133,13 @@ h4 Warning
 
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-iconRight(style="max-width:20rem")
+    .a-inputWrapper.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
       .a-icon.-text--warning
         svg
           use(xlink:href="#icon-warning")
   :code(lang="html")
-    <div class="a-inputWrapper -iconRight">
+    <div class="a-inputWrapper -icon--right">
       <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
       <div class="a-icon -text--warning">
         <svg>
@@ -158,13 +158,13 @@ h4 Danger
 
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-iconRight(style="max-width:20rem")
+    .a-inputWrapper.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
       .a-icon.-text--danger
         svg
           use(xlink:href="#icon-circle-warning")
   :code(lang="html")
-    <div class="a-inputWrapper -iconRight">
+    <div class="a-inputWrapper -icon--right">
       <input type="text" class="a-input -danger" placeholder="Placeholder" value="Sample Text">
       <div class="a-icon -text--danger">
         <svg>
