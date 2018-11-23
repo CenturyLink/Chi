@@ -44,7 +44,9 @@ $states: (
     position: relative;
 
     & i {
-      margin-right: 1rem;
+      &:not(.icon-x) {
+        margin-right: 1rem;
+      }
     }
 
     &.-center {
