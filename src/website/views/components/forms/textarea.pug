@@ -32,18 +32,18 @@ h3 Icons
 p.-text
   | To add icons to a textarea, wrap the input in a <code>div</code> using the class <code>a-inputWrapper</code>.
   | Next, add the icon as a sibling of the <code>textarea</code> and use an icon alignment utility class
-  | (e.g. <code>-iconLeft</code>) to specify where it should be placed.
+  | (e.g. <code>-icon--left</code>) to specify where it should be placed.
 
 h4 Left Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-iconLeft(style="max-width:30rem")
+    .a-inputWrapper.-icon--left(style="max-width:30rem")
       textarea.a-input Sample text
       .a-icon.-text--muted
         svg
           use(xlink:href='#icon-edit')
   :code(lang="html")
-    <div class="a-inputWrapper -iconLeft">
+    <div class="a-inputWrapper -icon--left">
       <textarea class="a-input">
         Sample text
       </textarea>
@@ -57,13 +57,13 @@ h4 Left Aligned
 h4 Right Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-iconRight(style="max-width:30rem")
+    .a-inputWrapper.-icon--right(style="max-width:30rem")
       textarea.a-input Sample text
       .a-icon.-text--muted
         svg
           use(xlink:href='#icon-edit')
   :code(lang="html")
-    <div class="a-inputWrapper -iconRight">
+    <div class="a-inputWrapper -icon--right">
       <textarea class="a-input">
         Sample text
       </textarea>
@@ -77,7 +77,7 @@ h4 Right Aligned
 h4 Left + Right Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-iconLeft.-iconRight(style="max-width:30rem")
+    .a-inputWrapper.-icon--left.-icon--right(style="max-width:30rem")
       textarea.a-input Sample text
       .a-icon.-text--muted
         svg
@@ -86,7 +86,7 @@ h4 Left + Right Aligned
         svg
           use(xlink:href='#icon-check')
   :code(lang="html")
-    <div class="a-inputWrapper -iconLeft -iconRight">
+    <div class="a-inputWrapper -icon--left -icon--right">
       <textarea class="a-input">
         Sample text
       </textarea>
@@ -120,13 +120,13 @@ h4 Success
 
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-iconRight(style="max-width:30rem")
+    .a-inputWrapper.-icon--right(style="max-width:30rem")
       textarea.a-input.-success Sample text
       .a-icon.-text--success
         svg
           use(xlink:href="#icon-check")
   :code(lang="html")
-    <div class="a-inputWrapper -iconRight">
+    <div class="a-inputWrapper -icon--right">
       <textarea class="a-input -success">
         Sample text
       </textarea>
@@ -149,13 +149,13 @@ h4 Warning
 
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-iconRight(style="max-width:30rem")
+    .a-inputWrapper.-icon--right(style="max-width:30rem")
       textarea.a-input.-warning Sample text
       .a-icon.-text--warning
         svg
           use(xlink:href="#icon-warning")
   :code(lang="html")
-    <div class="a-inputWrapper -iconRight">
+    <div class="a-inputWrapper -icon--right">
       <textarea class="a-input -warning">
         Sample text
       </textarea>
@@ -178,13 +178,13 @@ h4 Danger
 
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-iconRight(style="max-width:30rem")
+    .a-inputWrapper.-icon--right(style="max-width:30rem")
       textarea.a-input.-danger Sample text
       .a-icon.-text--danger
         svg
           use(xlink:href="#icon-circle-warning")
   :code(lang="html")
-    <div class="a-inputWrapper -iconRight">
+    <div class="a-inputWrapper -icon--right">
       <textarea class="a-input -danger">
         Sample text
       </textarea>

@@ -96,7 +96,7 @@ $sizes: (
       }
     }
 
-    &.-iconLeft {
+    &.-icon--left {
       input {
         &[type='email'],
         &[type='text'],
@@ -135,7 +135,7 @@ $sizes: (
       }
     }
 
-    &.-iconRight {
+    &.-icon--right {
       input {
         &[type='email'],
         &[type='text'],
