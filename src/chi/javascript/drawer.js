@@ -1,5 +1,6 @@
 import {Util} from "./util.js";
 import {chi} from "./chi.js";
+import {FloatingLabel} from "./floating-label";
 
 const ANIMATION_DURATION = 500;
 const CLASS_ACTIVE = "-active";
@@ -15,7 +16,7 @@ class Drawer {
 
   constructor (elem, config) {
     this._elem = elem;
-    this._config = config;
+    this._config = Util.extend({}, config);
     this._shown = Util.hasClass(elem, CLASS_ACTIVE);
     this._transitioning = false;
     this._drawerElem = this._locateDrawer();
@@ -153,7 +154,7 @@ class Drawer {
   }
 }
 
-let chiDrawer = Drawer.factory;
+let chiDrawer = Util.addArraySupportToFactory(Drawer.factory);
 
 chi.drawer = chiDrawer;
 export {Drawer, chiDrawer};

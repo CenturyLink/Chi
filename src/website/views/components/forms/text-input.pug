@@ -189,3 +189,53 @@ p.-text
     <input type="text" class="a-input -md" placeholder="Sample Text">
     <input type="text" class="a-input -lg" placeholder="Sample Text">
     <input type="text" class="a-input -xl" placeholder="Sample Text">
+
+h3 Floating labels
+p.-text
+  | Floating labels are a solution to keep the placeholder visible when no label is attached to the input. Chi supports
+  | floating labels for <code>-lg</code> and <code>-xl</code> inputs. This component requires JavaScript to add/remove
+  | the <code>-active</code> class whenever the input focuses or is not empty.
+
+ul#a-tabs.a-tabs
+  li.-active
+    a(href="#floatingInitial") Initial
+  li
+    a(href="#floatingActive") Active
+.example.-mb--3
+  #floatingInitial.a-tabs-panel.-active
+    .-p--3
+      each size in ['lg', 'xl']
+        div(class=`a-col -w--12 -p--2`)
+          .a-inputWrapper.-floatingLabel(style="max-width:20rem")
+            input(type="text", class=`a-input -${size} -mr--3`, id=`floating-label-${size}`)
+            label(for=`floating-label-${size}`) Placeholder text
+    :code(lang='html')
+      <div class="a-inputWrapper -floatingLabel">
+        <input class="a-input -lg" type="text" id="floating-label-lg">
+        <label for="floating-label-lg">Placeholder text</label>
+      </div>
+
+      <div class="a-inputWrapper -floatingLabel">
+        <input class="a-input -xl" type="text" id="floating-label-xl">
+        <label for="floating-label-xl">Placeholder text</label>
+      </div>
+  #floatingActive.a-tabs-panel
+    .-p--3
+      each size in ['lg', 'xl']
+        div(class=`a-col -w--12 -p--2`)
+          .a-inputWrapper.-floatingLabel(style="max-width:20rem")
+            input(type="text", class=`a-input -${size} -mr--3`, id=`floating-label-${size}-2`, value="Sample text")
+            label.-active(for=`floating-label-${size}-2`) Placeholder text
+    :code(lang='html')
+      <div class="a-inputWrapper -floatingLabel">
+        <input class="a-input -lg" type="text" id="floating-label-lg">
+        <label class="-active" for="floating-label-lg">Placeholder text</label>
+      </div>
+
+      <div class="a-inputWrapper -floatingLabel">
+        <input class="a-input -xl" type="text" id="floating-label-xl">
+        <label class="-active" for="floating-label-xl">Placeholder text</label>
+      </div>
+
+script(type="text/javascript", src=`../../../js/chi.js`)
+!= '<script>chi.tab(document.getElementById(\'a-tabs\'));</script>'

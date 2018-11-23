@@ -156,7 +156,7 @@ class NumberInput {
 
 }
 
-let chiNumberInput = NumberInput.factory;
+let chiNumberInput = Util.addArraySupportToFactory(NumberInput.factory);
 
 chi.numberInput = chiNumberInput;
 export {NumberInput, chiNumberInput};

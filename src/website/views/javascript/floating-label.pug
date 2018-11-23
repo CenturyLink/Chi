@@ -1,0 +1,47 @@
+---
+title: Floating labels
+---
+p.-text
+  | Floating labels rely on JavaScript to add/remove the <code>-active</code> class whenever the input focuses or has
+  | a value.
+
+.example.-mb--3
+  .-p--3
+    div(class=`a-col -w--12 -p--2`)
+      .a-inputWrapper.-floatingLabel(style="max-width:20rem")
+        input(type="text", class=`a-input -xl -mr--3`, id="floating-label-xl")
+        label(for="floating-label-xl") Placeholder text
+  :code(lang='html')
+    <div id="floating-label-1" class="a-inputWrapper -floatingLabel">
+      <input class="a-input -xl" type="text" id="floating-label-xl">
+      <label for="floating-label-xl">Placeholder text</label>
+    </div>
+
+    <script>chi.floatingLabel(document.getElementById('floating-label-1'));</script>
+
+h4 Preventing memory leaks
+p.-text
+  | Floating label components have a dispose function to free all resources attached to the element, such as event listeners
+  | and object data. You must call this method when you want to remove the component.
+:code(lang="javascript")
+  var elem = document.getElementById('floating-label-1');
+  var floatingLabel = chi.floatingLabel(elem);
+  // do stuff
+  floatingLabel.dispose();
+
+p.-text
+  span.a-badge.-brand.-mr1
+    span Tip
+  | It is safe to call the <code>floatingLabel</code> method more than once, as it will return any previously created floating label component
+  | associated to the trigger.
+:code(lang="javascript")
+  var elem = document.getElementById('floating-label-1');
+  var floatingLabel = chi.floatingLabel(elem);
+  var elem2 = document.getElementById('floating-label-1');
+  var floatingLabel2 = chi.floatingLabel(elem2);
+  floatingLabel === floatingLabel2; // returns true
+
+  floatingLabel.dispose(); // Only have to do it once.
+
+script(type="text/javascript", src=`../../js/chi.js`)
+!= '<script>chi.FloatingLabel.initAll();</script>'
