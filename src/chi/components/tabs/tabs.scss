@@ -23,6 +23,10 @@
         font-weight: 600;
         text-decoration: none;
         text-transform: capitalize;
+
+        &:hover {
+          color: $brand-color;
+        }
       }
 
       &.a-tabs__sliding-border {
@@ -149,6 +153,10 @@
             padding: 0.5rem 0 0.5rem 2.5rem;
             text-decoration: none;
             text-transform: capitalize;
+
+            &:hover {
+              color: $brand-color;
+            }
           }
         }
       }
