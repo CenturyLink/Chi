@@ -108,6 +108,13 @@ onLoad(() => {
     };
   });
 
+  Array.prototype.forEach.call(
+    document.getElementsByClassName("m-dropdown__trigger"),
+    function(el){
+      chi.dropdown(el);
+    }
+  );
+
   var codeSnippets = document.getElementsByTagName('pre');
   Array.prototype.forEach.call(codeSnippets, function(codeSnippet) {
     enableCopyToClipboardFeature(codeSnippet);
