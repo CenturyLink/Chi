@@ -1,6 +1,7 @@
 ---
 title: Alert Toasts
 ---
+- var sizes = ['h6', 'h5', 'h4', 'h3', 'h2', 'h1'];
 
 .test-toast.-w100
   each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
@@ -13,13 +14,73 @@ title: Alert Toasts
         .a-btn__content
           i.a-icon.icon-x
 
-  h4 Has icon
+  h2 Has icon
+  h3 With a-h1 - a-h6
+  each size in sizes
+    h4= `a-${size}`
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
+      .m-alert.-toast.-m2(class=`-${type}`)
+        .m-alert__content
+          i.a-icon.-sm2(class =`${val} -text--${type}`)
+          div
+            div(class=`a-${size}`)= type
+            = `This is a ${type} alert`
+        button(class='a-btn -icon -close -small')
+          .a-btn__content
+            i.a-icon.icon-x
+
+  h3 With h1 - h6
   each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
     .m-alert.-toast.-m2(class=`-${type}`)
       .m-alert__content
         i.a-icon.-sm2(class =`${val} -text--${type}`)
         div
-          h5.a-h5= type
+          h1= type
+          = `This is a ${type} alert`
+      button(class='a-btn -icon -close -small')
+        .a-btn__content
+          i.a-icon.icon-x
+    .m-alert.-toast.-m2(class=`-${type}`)
+      .m-alert__content
+        i.a-icon.-sm2(class =`${val} -text--${type}`)
+        div
+          h2= type
+          = `This is a ${type} alert`
+      button(class='a-btn -icon -close -small')
+        .a-btn__content
+          i.a-icon.icon-x
+    .m-alert.-toast.-m2(class=`-${type}`)
+      .m-alert__content
+        i.a-icon.-sm2(class =`${val} -text--${type}`)
+        div
+          h3= type
+          = `This is a ${type} alert`
+      button(class='a-btn -icon -close -small')
+        .a-btn__content
+          i.a-icon.icon-x
+    .m-alert.-toast.-m2(class=`-${type}`)
+      .m-alert__content
+        i.a-icon.-sm2(class =`${val} -text--${type}`)
+        div
+          h4= type
+          = `This is a ${type} alert`
+      button(class='a-btn -icon -close -small')
+        .a-btn__content
+          i.a-icon.icon-x
+    .m-alert.-toast.-m2(class=`-${type}`)
+      .m-alert__content
+        i.a-icon.-sm2(class =`${val} -text--${type}`)
+        div
+          h5= type
+          = `This is a ${type} alert`
+      button(class='a-btn -icon -close -small')
+        .a-btn__content
+          i.a-icon.icon-x
+    .m-alert.-toast.-m2(class=`-${type}`)
+      .m-alert__content
+        i.a-icon.-sm2(class =`${val} -text--${type}`)
+        div
+          h6= type
           = `This is a ${type} alert`
       button(class='a-btn -icon -close -small')
         .a-btn__content

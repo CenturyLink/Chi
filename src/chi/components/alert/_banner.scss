@@ -6,7 +6,11 @@
       border-radius: 0;
       border-width: 0.0625rem 0;
       padding-left: 1rem;
-      padding-right: 2rem;
+      padding-right: 1rem;
+
+      &.-dismiss {
+        justify-content: space-between;
+      }
 
       &.-large {
         padding-bottom: 1.1875rem;

@@ -6,18 +6,6 @@
       align-items: center;
       justify-content: start;
 
-      &.-titled {
-        align-items: start;
-        justify-content: start;
-
-        & .m-alert__content {
-          & .a-icon {
-            align-self: start;
-            top: 0.1875rem
-          }
-        }
-      }
-
       &.-dismiss {
         justify-content: space-between;
       }
@@ -25,6 +13,25 @@
       &.-large {
         padding-bottom: 1.1875rem;
         padding-top: 0.75rem;
+
+        &.-titled {
+          align-items: start;
+          justify-content: start;
+
+          & .m-alert__content {
+            & .a-icon {
+              align-self: start;
+              top: 0.1875rem
+            }
+            & div:first-child {
+              text-transform: capitalize;
+            }
+          }
+
+          &.-dismiss {
+            justify-content: space-between;
+          }
+        }
 
         & > .-close {
           top: 0.75rem;
