@@ -15,6 +15,9 @@ class Tooltip {
     this._popperData = null;
     this._preAnimationTransformStyle = null;
     this._postAnimationTransformStyle = null;
+    this._hovered = false;
+    this._focused = false;
+    this._shown = false;
 
     this._config = {
       parent: this._elem,
@@ -32,34 +35,74 @@ class Tooltip {
     this._createTooltip();
 
     this._mouseOverEventHandler = function() {
-      Util.addClass(self._tooltipElem, CLASS_ACTIVE);
-      const transition = self._tooltipElem.style.transition;
-      self._tooltipElem.style.transition = 'none';
-      self._tooltipElem.style.transform = self._preAnimationTransformStyle;
-      self._tooltipElem.style.opacity = '0';
-      window.setTimeout(function(){
-        self._tooltipElem.style.transition = transition;
-        self._tooltipElem.style.transform = self._postAnimationTransformStyle;
-        self._tooltipElem.style.opacity = '1';
-      },0);
+      self._hovered = true;
+      if (!self._shown) {
+        self.show();
+      }
     };
     this._mouseOutEventHandler = function() {
-      Util.removeClass(self._tooltipElem, CLASS_ACTIVE);
-      window.setTimeout(function(){
-        self._tooltipElem.style.transform = self._preAnimationTransformStyle;
-        self._tooltipElem.style.opacity = '0';
-      },0);
+      self._hovered = false;
+      if (self._shown && !self._focused) {
+        self.hide();
+      }
     };
-    this._elem.addEventListener("mouseover",this._mouseOverEventHandler,false);
-    this._elem.addEventListener("mouseout", this._mouseOutEventHandler, false);
+    this._focusEventHandler = function() {
+      self._focused = true;
+      if (!self._shown) {
+        self.show();
+      }
+    };
+    this._blurEventHandler = function() {
+      self._focused = false;
+      if (self._shown && !self._hovered) {
+        self.hide();
+      }
+    };
 
+    this._elem.addEventListener('mouseover',this._mouseOverEventHandler,false);
+    this._elem.addEventListener('mouseout', this._mouseOutEventHandler, false);
+    this._elem.addEventListener('focus',this._focusEventHandler,false);
+    this._elem.addEventListener('blur', this._blurEventHandler, false);
+
+  }
+
+  show() {
+    this._shown = true;
+    Util.addClass(this._tooltipElem, CLASS_ACTIVE);
+    const transition = this._tooltipElem.style.transition;
+    this._tooltipElem.style.transition = 'none';
+    this._tooltipElem.style.transform = this._preAnimationTransformStyle;
+    this._tooltipElem.style.opacity = '0';
+    let self = this;
+    window.setTimeout(function(){
+      self._tooltipElem.style.transition = transition;
+      self._tooltipElem.style.transform = self._postAnimationTransformStyle;
+      self._tooltipElem.style.opacity = '1';
+      self._tooltipElem.setAttribute('aria-hidden', 'false');
+    },0);
+  }
+
+  hide() {
+    this._shown = false;
+    Util.removeClass(this._tooltipElem, CLASS_ACTIVE);
+    let self = this;
+    window.setTimeout(function(){
+      self._tooltipElem.style.transform = self._preAnimationTransformStyle;
+      self._tooltipElem.style.opacity = '0';
+      self._tooltipElem.setAttribute('aria-hidden', 'true');
+    },0);
   }
 
   _createTooltip () {
     this._tooltipElem = document.createElement('div');
     this._tooltipElem.setAttribute('class', 'a-tooltip');
+    this._tooltipElem.id = COMPONENT_TYPE + Util.getData(this._elem, COMPONENT_TYPE);
     this._tooltipElem.innerText = this._elem.dataset.tooltip;
     this._elem.parentNode.appendChild(this._tooltipElem);
+    this._elem.setAttribute('aria-describedby', this._tooltipElem.id);
+    this._tooltipElem.setAttribute('aria-hidden', 'true');
+
+
     let self = this;
 
     this._savePopperData = function (data) {
