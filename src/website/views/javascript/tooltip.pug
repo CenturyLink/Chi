@@ -10,7 +10,7 @@ p.-text
   | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then,
   | you can initialize it with the chi.tooltip factory method.
 .example.-mb--3
-  .-p--3.-d--flex
+  .-p--3
     button(data-tooltip='Your tooltip text on a button').a-btn.-mr--2 Tooltip
   :code(lang='html')
     <button id='tootltip-1' class="a-btn" data-tooltip="Your tooltip text on a button">Tooltip</button>
@@ -23,11 +23,11 @@ p.-text
   | <code>right</code>, <code>bottom</code>, <code>left</code>. You can pass an array
   | of Elements and initialize all at once.
 .example.-mb--3
-  .-p--3.-d--flex
-    button(data-tooltip='Your top tooltip text').a-btn.-mr--2 Top Tooltip
-    button(data-tooltip='Your right tooltip text', data-position='right').a-btn.-mr--2 Right Tooltip
-    button(data-tooltip='Your bottom tooltip text', data-position='bottom').a-btn.-mr--2 Bottom Tooltip
-    button(data-tooltip='Your left tooltip text', data-position='left').a-btn.-mr--2 Left Tooltip
+  .-p--3
+    button(data-tooltip='Your top tooltip text').a-btn.-mr--2.-mb--2.-mb-md--0 Top Tooltip
+    button(data-tooltip='Your right tooltip text', data-position='right').a-btn.-mr--2.-mb--2.-mb-md--0 Right Tooltip
+    button(data-tooltip='Your bottom tooltip text', data-position='bottom').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom Tooltip
+    button(data-tooltip='Your left tooltip text', data-position='left').a-btn.-mr--2.-mb--2.-mb-md--0 Left Tooltip
   :code(lang='html')
     <button class="a-btn" data-tooltip="Your top tooltip text">Top Tooltip</button>
     <button class="a-btn" data-tooltip="Your right tooltip text" data-position="right">Right Tooltip</button>
