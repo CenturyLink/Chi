@@ -112,4 +112,6 @@ onLoad(() => {
   Array.prototype.forEach.call(codeSnippets, function(codeSnippet) {
     enableCopyToClipboardFeature(codeSnippet);
   });
+
+  chi.dropdown(document.getElementById('version-dropdown'));
 });
