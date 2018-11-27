@@ -116,7 +116,7 @@ class Tooltip {
       } else if (data.placement.indexOf("bottom") === 0) {
         self._preAnimationTransformStyle = `translate3d(${data.popper.left}px, ${data.popper.top - 20}px, 0px)`;
       } else if (data.placement.indexOf("left") === 0) {
-        self._preAnimationTransformStyle = `translate3d(${data.popper.left - 20}px, ${data.popper.top+20}px, 0px)`;
+        self._preAnimationTransformStyle = `translate3d(${data.popper.left - 20}px, ${data.popper.top}px, 0px)`;
       } else {
         self._preAnimationTransformStyle = data.styles.transform;
       }
