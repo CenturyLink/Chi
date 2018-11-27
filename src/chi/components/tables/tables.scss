@@ -1,6 +1,24 @@
 @import 'mixins';
 @import 'variables';
 
+$sizes: (
+  xs: (
+    padding: 0.5rem,
+  ),
+  sm: (
+    padding: 0.75rem,
+  ),
+  md: (
+    padding: 1rem,
+  ),
+  lg: (
+    padding: 1.25rem,
+  ),
+  xl: (
+    padding: 1.5rem,
+  )
+);
+
 .chi {
 
   th {
@@ -9,7 +27,6 @@
 
   .a-table {
     padding-top: 3rem;
-    position: relative;
     border-spacing: 0;
     font-size: $text;
     line-height: $line-height-smaller;
@@ -28,13 +45,35 @@
 
     tr {
       background-color: set-color(white);
-      height: 3rem;
+
+      & th {
+        border-bottom: 0.0625rem solid set-color(grey, 30);
+        padding: 1rem;
+      }
+
+      & td {
+        border-bottom: 0.0625rem solid set-color(grey, 20);
+        padding: 1rem;
+      }
+
+      @each $type in map-keys($sizes) {
+        &.-#{$type} {
+          & th {
+            border-bottom: 0.0625rem solid set-color(grey, 30);
+            padding: map-get(map-get($sizes, $type), padding);
+          }
+
+          & td {
+            border-bottom: 0.0625rem solid set-color(grey, 20);
+            padding: map-get(map-get($sizes, $type), padding);
+          }
+        }
+      }
     }
 
     th {
       border-bottom: 0.0625rem solid set-color(grey, 30);
       font-weight: 600;
-      height: 0;
       padding: 1rem;
       text-transform: capitalize;
 
@@ -73,13 +112,6 @@
           transform: rotate(180deg);
         }
       }
-    }
-
-    & td {
-      border-bottom: 0.0625rem solid set-color(grey, 20);
-      padding: 1rem;
-      padding-bottom: 0.9375rem;
-      vertical-align: middle;
     }
 
     & tbody {
@@ -130,13 +162,14 @@
         border: 0;
       }
 
-      th {
-        border-bottom: 0.0625rem solid set-color(grey, 30);
-      }
+      tr {
+        & th {
+          border: 0;
+        }
 
-      td {
-        border: 0;
-        padding: 1rem;
+        & td {
+          border: 0;
+        }
       }
     }
 
@@ -147,94 +180,34 @@
         border-left-width: 0;
       }
 
-      th {
-        border-bottom: 0;
-      }
-
-      th {
-        border: 0.0625rem solid set-color(grey, 30);
-        border-right-width: 0;
-        border-style: solid;
-
-        &:last-of-type {
-          border-right-width: 0.0625rem;
-        }
-      }
-
-      td {
-        border: 0.0625rem solid set-color(grey, 30);
-        border-right-width: 0;
-        border-top-width: 0;
-
-        &:last-of-type {
-          border-right-width: 0.0625rem;
-        }
-      }
-    }
-
-    &.-small {
       tr {
-        height: 2rem;
-      }
+        & th {
+          border: 0.0625rem solid set-color(grey, 30);
+          border-right-width: 0;
 
-      th {
-        padding: .5rem 1rem .4375rem .9375rem
-      }
-
-      td {
-        padding-bottom: 0.4375rem;
-      }
-
-      &.-borderless {
-        td {
-          padding: 0.5rem 1rem;
+          &:last-of-type {
+            border-right-width: 0.0625rem;
+          }
         }
-      }
 
-      &.-bordered {
-        td {
-          padding: 0.5rem 1rem 0.4375rem 0.9375rem;
+        & td {
+          border: 0.0625rem solid set-color(grey, 30);
+          border-right-width: 0;
+          border-top-width: 0;
+
+          &:last-of-type {
+            border-right-width: 0.0625rem;
+          }
         }
       }
     }
 
-    &.-large {
-      tr {
-        height: 4rem;
-      }
-
-      th {
-        font-size: $text;
-      }
-
-      td {
-        padding: 1.5rem 1rem;
-      }
-
-      td {
-        padding-bottom: 1.4375rem;
-      }
-
-      &.-borderless {
-        td {
-          padding: 1.5rem 1rem;
-        }
-      }
-
-      &.-bordered {
-        td {
-          padding: 1.5rem 1rem 1.4375rem 0.9375rem;
-        }
-      }
-    }
-
-    &.-advanced {
+    &.-fixed--header {
       padding-top: 3rem;
       position: relative;
 
       &::before {
         background-color: set-color(white);
-        border-bottom: 0.0625rem solid set-color(grey, 20);
         content: '';
         display: block;
         height: 3rem;

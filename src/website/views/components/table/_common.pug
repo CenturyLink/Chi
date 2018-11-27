@@ -23,16 +23,16 @@ mixin table(row, column, selectable)
   table.a-table&attributes(attributes)
     thead
       if !selectable
-        tr
+        tr(class=(`-${row}`))
           if column != undefined
             if column == 'ascending'
-              th(class=(`-sorted -${column}`)) name
-                i.a-icon.icon-chevron-up.-xs
+              th(class=(`-sorted -${column}`))
+                div name
               th ID
               th last login
             else if column == 'descending'
-              th(class=(`-sorted -${column}`)) name
-                i.a-icon.icon-chevron-down.-xs
+              th(class=(`-sorted -${column}`))
+                div name
               th ID
               th last login
           else
@@ -47,8 +47,8 @@ mixin table(row, column, selectable)
                 div.-lh--1
                   input.a-input(type="checkbox", id=`chk-1`)
                   label(for=`chk-1`)
-              th(class=(`-sorted -${column}`)) name
-                i.a-icon.icon-chevron-up.-xs
+              th(class=(`-sorted -${column}`))
+                div name
               th ID
               th last login
             else if column == 'descending'
@@ -56,8 +56,8 @@ mixin table(row, column, selectable)
                 div.-lh--1
                   input.a-input(type="checkbox", id=`chk-1`)
                   label(for=`chk-1`)
-              th(class=(`-sorted -${column}`)) name
-                i.a-icon.icon-chevron-down.-xs
+              th(class=(`-sorted -${column}`))
+                div name
               th ID
               th last login
           else
@@ -70,14 +70,22 @@ mixin table(row, column, selectable)
             th last login
     tbody
       if !selectable
-        +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
+        +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')(
+          class={
+              [`-${row}`]: row == 'xs' || row == 'sm' || row == 'md' || row == 'lg' || row == 'xl'
+          }
+        )
         +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')(
           class={
             [`-${row}`]: row != undefined && row != 'disabled'
           }
           disabled= row=='disabled' ? 'disabled' : false
         )
-        +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+        +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')(
+          class={
+            [`-${row}`]: row == 'xs' || row == 'sm' || row == 'md' || row == 'lg' || row == 'xl'
+          }
+        )
       else if selectable
         +str(`chk-1-01`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
         +str(`chk-1-02`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')

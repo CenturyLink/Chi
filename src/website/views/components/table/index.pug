@@ -73,29 +73,44 @@ p.-text
         th.-text--center ID
         th.-text--right last login
     tbody
-      tr
+      tr.-md
         td.-text--left David Navarro
         td.-text--center david
         td.-text--right 2017 3:26 PM
-      tr
+      tr.-md
         td.-text--left Diego Sanjuan
         td.-text--center diego
         td.-text--right 2017 3:26 PM
-      tr
+      tr.-md
         td.-text--left Manuel Martin
         td.-text--center manuel
         td.-text--right 2017 3:26 PM
 
 h3 Additional Sizes
 p.-text
-  | Chi also supports additional table sizes which can be configured by
-  | applying the modifier class <code>-small</code> or <code>-large</code>.
+  | Chi also supports additional table sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
 
-h4 Small
-:example(lang="html"):html-beautify:pug include ./_small.pug
+h4 xs
+p.-text Render a <strong>xs</strong> size by applying the modifier class <code>-xs</code>.
+:example(lang="html"):html-beautify:pug include ./_row-xs.pug
 
-h4 Large
-:example(lang="html"):html-beautify:pug include ./_large.pug
+h4 sm
+p.-text Render a <strong>sm</strong> size by applying the modifier class <code>-sm</code>.
+:example(lang="html"):html-beautify:pug include ./_row-sm.pug
+
+h4 md
+p.-text Render a <strong>md</strong> size by applying the modifier class <code>-md</code>.
+:example(lang="html"):html-beautify:pug include ./_row-md.pug
+
+h4 lg
+p.-text Render a <strong>lg</strong> size by applying the modifier class <code>-lg</code>.
+:example(lang="html"):html-beautify:pug include ./_row-lg.pug
+
+h4 xl
+p.-text Render a <strong>xl</strong> size by applying the modifier class <code>-xl</code>.
+:example(lang="html"):html-beautify:pug include ./_row-xl.pug
 
 h3 Selectable
 :example(lang="html"):html-beautify:pug include ./_selectable.pug
@@ -107,10 +122,10 @@ p.-text
   | content will scroll.
 h4 Requirements
 p.-text
-  | Tables must be wrapped in a <code>&lt;section class="a-table -advanced"&gt;</code>
+  | Tables must be wrapped in a <code>&lt;section class="a-table -fixed--header"&gt;</code>
 :example(lang="html"):html-beautify:pug
   include ./_common.pug
-  section.a-table.-advanced(style="height: 150px")
+  section.a-table.-fixed--header(style="height: 150px")
     div
       table
         thead
