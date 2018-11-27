@@ -123,11 +123,16 @@ export class Util {
 
   static addArraySupportToFactory (factoryMethod) {
     return function(elem) {
-      if (Array.isArray(elem)) {
+      if (
+        Array.isArray(elem) ||
+        NodeList.prototype.isPrototypeOf(elem) ||
+        HTMLCollection.prototype.isPrototypeOf(elem)
+      ) {
         const returnV = [];
-        for (let i = 0 ; i < elem.length() ; i++) {
-          returnV.push(factoryMethod(elem[i]));
-        }
+        Array.prototype.forEach.call(elem, function(e) {
+          returnV.push(factoryMethod(e));
+        });
+        return returnV;
       } else {
         return factoryMethod(elem);
       }

@@ -12,7 +12,7 @@ html {
 
 .chi {
   color: $text-color;
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
+  font-family: $font-family;
   line-height: $line-height;
 
   a {
@@ -89,7 +89,7 @@ html {
   code,
   .a-code,
   pre {
-    font-family: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
+    font-family: $font-family-monospace;
     font-size: $text-small;
   }
 
