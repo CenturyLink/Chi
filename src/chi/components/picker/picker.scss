@@ -1,0 +1,113 @@
+@import 'variables';
+@import 'mixins';
+
+.chi {
+  .a-picker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      &[type='checkbox'],
+      &[type='radio'] {
+        &.a-input {
+          cursor: pointer;
+          left: -9999px;
+          position: absolute;
+
+          & + label {
+            align-items: center;
+            background-color: $text-white;
+            border: solid 0.125rem $text-white;
+            border-radius: 5rem;
+            color: $dark-color;
+            display: flex;
+            font-size: $text;
+            height: 5rem;
+            justify-content: center;
+            line-height: 1rem;
+            margin: 0.5rem;
+            max-width: 8rem;
+            padding: 1.125rem;
+            text-align: center;
+            transition: all .2s;
+            width: 8rem;
+
+            &:hover {
+              background-color: set-color(grey, 10);
+            }
+            &:active {
+              background-color: set-color(grey, 20);
+            }
+
+            &::before {
+              display: none;
+            }
+
+            &::after {
+              display: none;
+            }
+          }
+
+          &:checked {
+            & + label {
+              border: solid 0.125rem $brand-color;
+            }
+          }
+
+          &.-withIcon {
+            & + label {
+              align-items: center;
+              background-color: $text-white;
+              border-radius: 0.3125rem;
+              border: solid 0.125rem $text-white;
+              color: $dark-color;
+              display: flex;
+              flex-direction: column;
+              font-size: $text;
+              height: 8rem;
+              justify-content: center;
+              line-height: 1rem;
+              margin: 0.5rem;
+              padding: 1.125rem;
+              transition: all .2s;
+              text-align: center;
+              width: 7rem;
+
+              &:hover {
+                background-color: set-color(grey, 10);
+              }
+              &:active {
+                background-color: set-color(grey, 20);
+              }
+
+              &::before {
+                display: none;
+              }
+
+              &::after {
+                display: none;
+              }
+
+              & i {
+                margin-bottom: 2rem;
+              }
+            }
+
+            &:checked {
+              & + label {
+                border: solid 0.125rem $brand-color;
+              }
+            }
+          }
+        }
+
+        &:checked {
+          & + label {
+            border: solid 0.125rem $brand-color;
+          }
+        }
+      }
+    }
+  }
+}

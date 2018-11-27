@@ -1,0 +1,171 @@
+---
+title: Picker
+---
+
+p.-text Picker are used to select one or several options in a list.
+
+h3 Base
+
+h4 Type checkbox
+p.-text
+  | To render a checkbox picker, apply the class <code>a-input</code> to an <code>input type="checkbox"</code>
+  |  inside a container with the class <code>a-picker</code>.
+.example.-mb--3
+  .-p--4(style="background-color:#eee;border-radius:.15em .15em 0 0;")
+    .a-picker
+      each type in ['checkbox1','checkbox2','checkbox3','checkbox4','checkbox5']
+        input(type="checkbox", class="a-input", id=`${type}`)
+        label(for=`${type}`)
+          = type
+  :code(lang="html")
+    <div class="a-picker">
+      <input class="a-input" type="checkbox" id="checkbox1">
+      <label for="checkbox1">
+        checkbox1
+      </label>
+      <input class="a-input" type="checkbox" id="checkbox2">
+      <label for="checkbox2">
+        checkbox2
+      </label>
+      <input class="a-input" type="checkbox" id="checkbox3">
+      <label for="checkbox3">
+        checkbox3
+      </label>
+      <input class="a-input" type="checkbox" id="checkbox4">
+      <label for="checkbox4">
+        checkbox4
+      </label>
+      <input class="a-input" type="checkbox" id="checkbox5">
+      <label for="checkbox5">
+        checkbox5
+      </label>
+    </div>
+
+h4 Type radio
+p.-text
+  | To render a radio picker, apply the class <code>a-input</code> to an <code>input type="radio"</code>
+  |  inside a container with the class <code>a-picker</code>.
+.example.-mb--3
+  .-p--4(style="background-color:#eee;border-radius:.15em .15em 0 0;")
+    .a-picker
+      each type in ['radio1','radio2','radio3','radio4','radio5']
+        input(type="radio", class="a-input", name='box', id=`${type}`)
+        label(for=`${type}`)
+          = type
+  :code(lang="html")
+    <div class="a-picker">
+      <input class="a-input" type="radio" name="box-icon" id="radio1">
+      <label for="radio1">
+        radio1
+      </label>
+      <input class="a-input" type="radio" name="box-icon" id="radio2">
+      <label for="radio2">
+        radio2
+      </label>
+      <input class="a-input" type="radio" name="box-icon" id="radio3">
+      <label for="radio3">
+        radio3
+      </label>
+      <input class="a-input" type="radio" name="box-icon" id="radio4">
+      <label for="radio4">
+        radio4
+      </label>
+      <input class="a-input" type="radio" name="box-icon" id="radio5">
+      <label for="radio5">
+        radio5
+      </label>
+    </div>
+
+h3 Picker with icon
+
+h4 Type checkbox
+p.-text
+  | To render a checkbox picker, apply the class <code>-withIcon</code> to an <code>input type="checkbox"</code>
+  |  inside a container with the class <code>a-picker</code>
+.example.-mb--3
+  .-p--4(style="background-color:#eee;border-radius:.15em .15em 0 0;")
+    .a-picker
+      each type, val in {application:'icon-box-application',outline:'icon-box-outline',box:'icon-box',deployment:'icon-box-deployment',container:'icon-box-container',script:'icon-box-script'}
+        input(type="checkbox", class="a-input -withIcon", id=`i-${type}`)
+        label(for=`i-${type}`)
+          i(class=`a-icon ${type} -md`)
+          = val
+  :code(lang="html")
+    <div class="a-picker">
+      <input class="a-input -withIcon" type="checkbox" id="icon-box-application">
+      <label for="icon-box-application">
+        <i class="a-icon icon-box-application -md"></i>
+        application
+      </label>
+      <input class="a-input -withIcon" type="checkbox" id="icon-box-outline">
+      <label for="icon-box-outline">
+        <i class="a-icon icon-box-outline -md"></i>
+        outline
+      </label>
+      <input class="a-input -withIcon" type="checkbox" id="icon-box">
+      <label for="icon-box">
+        <i class="a-icon icon-box -md"></i>
+        box
+      </label>
+      <input class="a-input -withIcon" type="checkbox" id="icon-box-deployment">
+      <label for="icon-box-deployment">
+        <i class="a-icon icon-box-deployment -md"></i>
+        deployment
+      </label>
+      <input class="a-input -withIcon" type="checkbox" id="icon-box-container">
+      <label for="icon-box-container">
+        <i class="a-icon icon-box-container -md"></i>
+        container
+      </label>
+      <input class="a-input -withIcon" type="checkbox" id="icon-box-script">
+      <label for="icon-box-script">
+        <i class="a-icon icon-box-script -md"></i>
+        script
+      </label>
+    </div>
+
+h4 Type radio
+p.-text
+  | To render a radio picker, apply the class <code>-withIcon</code> to an <code>input type="radio"</code>
+  |  inside a container with the class <code>a-picker</code>
+.example.-mb--3
+  .-p--4(style="background-color:#eee;border-radius:.15em .15em 0 0;")
+    .a-picker
+      each type, val in {application:'icon-box-application',outline:'icon-box-outline',box:'icon-box',deployment:'icon-box-deployment',container:'icon-box-container',script:'icon-box-script'}
+        input(type="radio", class="a-input -withIcon", name='box-icon', id=`i-${val}`)
+        label(for=`i-${val}`)
+          i(class=`a-icon ${type} -md`)
+          = val
+  :code(lang="html")
+    <div class="a-picker">
+      <input class="a-input -withIcon" type="radio" name="box" id="icon-box-application">
+      <label for="icon-box-application">
+        <i class="a-icon icon-box-application -md"></i>
+        application
+      </label>
+      <input class="a-input -withIcon" type="radio" name="box" id="icon-box-outline">
+      <label for="icon-box-outline">
+        <i class="a-icon icon-box-outline -md"></i>
+        outline
+      </label>
+      <input class="a-input -withIcon" type="radio" name="box" id="icon-box">
+      <label for="icon-box">
+        <i class="a-icon icon-box -md"></i>
+        box
+      </label>
+      <input class="a-input -withIcon" type="radio" name="box" id="icon-box-deployment">
+      <label for="icon-box-deployment">
+        <i class="a-icon icon-box-deployment -md"></i>
+        deployment
+      </label>
+      <input class="a-input -withIcon" type="radio" name="box" id="icon-box-container">
+      <label for="icon-box-container">
+        <i class="a-icon icon-box-container -md"></i>
+        container
+      </label>
+      <input class="a-input -withIcon" type="radio" name="box" id="icon-box-script">
+      <label for="icon-box-script">
+        <i class="a-icon icon-box-script -md"></i>
+        script
+      </label>
+    </div

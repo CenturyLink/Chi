@@ -1,0 +1,43 @@
+---
+title: Picker
+---
+
+h3 Base
+
+h4 Type checkbox
+.example.-mb--3
+  .-p--3(style="background-color:#eee;border-radius:.15em .15em 0 0;")
+    section.a-picker
+      each type in ['checkbox1','checkbox2','checkbox3','checkbox4','checkbox5']
+        input(type="checkbox", class="a-input", id=`${type}`)
+        label(for=`${type}`)
+          = type
+h4 Type radio
+.example.-mb--3
+  .-p--3(style="background-color:#eee;border-radius:.15em .15em 0 0;")
+    section.a-picker
+      each type in ['radio1','radio2','radio3','radio4','radio5']
+        input(type="radio", class="a-input", name='box', id=`${type}`)
+        label(for=`${type}`)
+          = type
+
+h3 With icon
+
+h4 Type checkbox
+.example.-mb--3
+  .-p--3(style="background-color:#eee;border-radius:.15em .15em 0 0;")
+    section.a-picker
+      each type, val in {application:'icon-box-application',outline:'icon-box-outline',box:'icon-box',deployment:'icon-box-deployment',container:'icon-box-container',script:'icon-box-script'}
+        input(type="checkbox", class="a-input -withIcon", id=`i-${type}`)
+        label(for=`i-${type}`)
+          i(class=`a-icon ${type} -md`)
+          = val
+h4 Type radio
+.example.-mb--3
+  .-p--3(style="background-color:#eee;border-radius:.15em .15em 0 0;")
+    section.a-picker
+      each type, val in {application:'icon-box-application',outline:'icon-box-outline',box:'icon-box',deployment:'icon-box-deployment',container:'icon-box-container',script:'icon-box-script'}
+        input(type="radio", class="a-input -withIcon", name='box-icon', id=`i-${val}`)
+        label(for=`i-${val}`)
+          i(class=`a-icon ${type} -md`)
+          = val
