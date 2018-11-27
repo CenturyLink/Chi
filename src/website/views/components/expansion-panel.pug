@@ -1,0 +1,278 @@
+---
+title: Expansion panel
+---
+p.-text
+  | Expansion panels are components designed to be folded and stacked one over the other. It has three states: active,
+  | pending and done. When it is pending, only the title is shown, when it is active, it unfolds to show its content,
+  | and when it is in state done, only some information is shown to the user. Two classes represent this three states:
+  | <code>-done</code> is for done, <code>-active</code> is for active and no class for pending state.
+
+.example.-mb3
+  .-p3.-bg--grey-20
+    .m-epanel.-done.-bg--white.-mb--2
+      .m-epanel__header
+        h4.m-epanel__title 1. Done state expansion panel
+        .m-epanel__activator-header
+          button.a-btn.-brand.-flat Change
+      .m-epanel__contentWrapper
+        .m-epanel__body
+          dl.-d--flex.-text.-flex--wrap.-m--0
+            dt.-d--block.-w--25.-m--0.-text--muted Numbers:
+            dd.-d--block.-w--75.-m--0 50 New numbers
+            dt.-d--block.-w--25.-m--0.-text--muted Type:
+            dd.-d--block.-w--75.-m--0 Local
+            dt.-d--block.-w--25.-m--0.-text--muted Area Code:
+            dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
+
+    .m-epanel.-active.-bg--white.-mb--2
+      .m-epanel__header
+        h4.m-epanel__title 2. Active expansion panel
+      .m-epanel__contentWrapper
+        .m-epanel__body
+          h5 Some title
+          p.-text
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+            | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+            | nihil sed veritatis!
+        .m-epanel__footer
+          button.a-btn.-lg Previous
+          button.a-btn.-lg.-brand.-ml--2 Continue
+
+    .m-epanel.-bg--white.-mb--2
+        .m-epanel__header
+          h4.m-epanel__title 3. Pending expansion panel
+
+    .m-epanel.-bg--white.-mb--2
+      .m-epanel__header
+        h4.m-epanel__title 4. Another pending expansion panel
+  ul#a-tabs.a-tabs.-ml--3
+    li.-active
+      a(href='#a-tabs-done') Done
+    li
+      a(href='#a-tabs-active') Active
+    li
+      a(href='#a-tabs-pending') Pending
+  #a-tabs-done.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="m-epanel -done">
+        <div class="m-epanel__header">
+          <h4 class="m-epanel__title">1. Done state expansion panel</h4>
+          <div class="m-epanel__activator-header">
+            <button class="a-btn -brand -flat">Change</button>
+          </div>
+        </div>
+        <div class="m-epanel__contentWrapper">
+          <div class="m-epanel__body">
+            <!-- body content -->
+          </div>
+        </div>
+      </div>
+  #a-tabs-active.a-tabs-panel
+    :code(lang="html")
+      <div class="m-epanel -active">
+        <div class="m-epanel__header">
+          <h4 class="m-epanel__title">2. Active expansion panel</h4>
+        </div>
+        <div class="m-epanel__contentWrapper">
+          <div class="m-epanel__body">
+            <!-- body content -->
+          </div>
+          <div class="m-epanel__footer">
+            <button class="a-btn -lg">Previous</button>
+            <button class="a-btn -lg -brand -ml--2">Continue</button>
+          </div>
+        </div>
+      </div>
+  #a-tabs-pending.a-tabs-panel
+    :code(lang="html")
+      <div class="m-epanel">
+        <div class="m-epanel__header">
+          <h4 class="m-epanel__title">3. Pending expansion panel</h4>
+        </div>
+      </div>
+
+h3 State custom behavior
+p.-text
+  | The three expansion panel states behave very similar one from each other. For example, you shouldn't, but you may
+  | use an <code>m-epanel__footer</code> element in a <code>pending</code> panel, or an
+  | <code>m-epanel__activator-header</code> button in an <code>active</code> panel.
+p.-text
+  | There are two main differences between them.
+ol.-text
+  li The title in the active panel will render in the brand color.
+  li Two hiding utility classes will hide content depending on the state.
+
+h4 Hidding by state
+p.-text
+  | The three examples below differ only on the state. Thanks to the state support and the <code>-active--only</code> and
+  | <code>-done--only</code> utility classes, we can represent the three states of the same content changing only the
+  | state class.
+p.-text
+  span.a-badge.-brand.-mr1
+    span Tip
+  | It is not a best practice to use this utility classes in frontend frameworks such as Angular, React or Vue as they
+  | have their own solutions to accomplish this goal.
+
+.example.-mb3
+  .-p3.-bg--grey-20
+    .m-epanel.-done.-bg--white.-mb--2
+      .m-epanel__header
+        h4.m-epanel__title Expansion panel
+        .m-epanel__activator-header.-done--only
+          button.a-btn.-brand.-flat Change
+      .m-epanel__contentWrapper.-done--only
+        .m-epanel__body
+          dl.-d--flex.-text.-flex--wrap.-m--0
+            dt.-d--block.-w--25.-m--0.-text--muted Numbers:
+            dd.-d--block.-w--75.-m--0 50 New numbers
+            dt.-d--block.-w--25.-m--0.-text--muted Type:
+            dd.-d--block.-w--75.-m--0 Local
+            dt.-d--block.-w--25.-m--0.-text--muted Area Code:
+            dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
+      .m-epanel__contentWrapper.-active--only
+        .m-epanel__body
+          h5 Some title
+          p.-text
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+            | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+            | nihil sed veritatis!
+        .m-epanel__footer
+          button.a-btn.-lg Previous
+          button.a-btn.-lg.-brand.-ml--2 Continue
+    .m-epanel.-active.-bg--white.-mb--2
+      .m-epanel__header
+        h4.m-epanel__title Expansion panel
+        .m-epanel__activator-header.-done--only
+          button.a-btn.-brand.-flat Change
+      .m-epanel__contentWrapper.-done--only
+        .m-epanel__body
+          dl.-d--flex.-text.-flex--wrap.-m--0
+            dt.-d--block.-w--25.-m--0.-text--muted Numbers:
+            dd.-d--block.-w--75.-m--0 50 New numbers
+            dt.-d--block.-w--25.-m--0.-text--muted Type:
+            dd.-d--block.-w--75.-m--0 Local
+            dt.-d--block.-w--25.-m--0.-text--muted Area Code:
+            dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
+      .m-epanel__contentWrapper.-active--only
+        .m-epanel__body
+          h5 Some title
+          p.-text
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+            | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+            | nihil sed veritatis!
+        .m-epanel__footer
+          button.a-btn.-lg Previous
+          button.a-btn.-lg.-brand.-ml--2 Continue
+    .m-epanel.-bg--white.-mb--2
+      .m-epanel__header
+        h4.m-epanel__title Expansion panel
+        .m-epanel__activator-header.-done--only
+          button.a-btn.-brand.-flat Change
+      .m-epanel__contentWrapper.-done--only
+        .m-epanel__body
+          dl.-d--flex.-text.-flex--wrap.-m--0
+            dt.-d--block.-w--25.-m--0.-text--muted Numbers:
+            dd.-d--block.-w--75.-m--0 50 New numbers
+            dt.-d--block.-w--25.-m--0.-text--muted Type:
+            dd.-d--block.-w--75.-m--0 Local
+            dt.-d--block.-w--25.-m--0.-text--muted Area Code:
+            dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
+      .m-epanel__contentWrapper.-active--only
+        .m-epanel__body
+          h5 Some title
+          p.-text
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+            | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+            | nihil sed veritatis!
+        .m-epanel__footer
+          button.a-btn.-lg Previous
+          button.a-btn.-lg.-brand.-ml--2 Continue
+
+  ul#a-tabs-ex.a-tabs.-ml--3
+    li.-active
+      a(href='#a-tabs-ex-done') Done
+    li
+      a(href='#a-tabs-ex-active') Active
+    li
+      a(href='#a-tabs-ex-pending') Pending
+  #a-tabs-ex-done.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="m-epanel -done">
+        <div class="m-epanel__header">
+          <h4 class="m-epanel__title">Expansion panel</h4>
+          <div class="m-epanel__activator-header -done--only">
+            <button class="a-btn -brand -flat">Change</button>
+          </div>
+        </div>
+        <div class="m-epanel__contentWrapper -done--only">
+          <div class="m-epanel__body">
+            <!-- some body content -->
+          </div>
+        </div>
+        <div class="m-epanel__contentWrapper -active--only">
+          <div class="m-epanel__body">
+            <!-- some body content -->
+          </div>
+          <div class="m-epanel__footer">
+            <button class="a-btn -lg">Previous</button>
+            <button class="a-btn -lg -brand -ml--2">Continue</button>
+          </div>
+        </div>
+      </div>
+  #a-tabs-ex-active.a-tabs-panel
+    :code(lang="html")
+      <div class="m-epanel -active">
+        <div class="m-epanel__header">
+          <h4 class="m-epanel__title">Expansion panel</h4>
+          <div class="m-epanel__activator-header -done--only">
+            <button class="a-btn -brand -flat">Change</button>
+          </div>
+        </div>
+        <div class="m-epanel__contentWrapper -done--only">
+          <div class="m-epanel__body">
+            <!-- some body content -->
+          </div>
+        </div>
+        <div class="m-epanel__contentWrapper -active--only">
+          <div class="m-epanel__body">
+            <!-- some body content -->
+          </div>
+          <div class="m-epanel__footer">
+            <button class="a-btn -lg">Previous</button>
+            <button class="a-btn -lg -brand -ml--2">Continue</button>
+          </div>
+        </div>
+      </div>
+  #a-tabs-ex-pending.a-tabs-panel
+    :code(lang="html")
+      <div class="m-epanel">
+        <div class="m-epanel__header">
+          <h4 class="m-epanel__title">Expansion panel</h4>
+          <div class="m-epanel__activator-header -done--only">
+            <button class="a-btn -brand -flat">Change</button>
+          </div>
+        </div>
+        <div class="m-epanel__contentWrapper -done--only">
+          <div class="m-epanel__body">
+            <!-- some body content -->
+          </div>
+        </div>
+        <div class="m-epanel__contentWrapper -active--only">
+          <div class="m-epanel__body">
+            <!-- some body content -->
+          </div>
+          <div class="m-epanel__footer">
+            <button class="a-btn -lg">Previous</button>
+            <button class="a-btn -lg -brand -ml--2">Continue</button>
+          </div>
+        </div>
+      </div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementsByClassName('a-tabs'));
+    },
+    false
+  );
