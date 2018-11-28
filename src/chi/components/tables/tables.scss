@@ -59,12 +59,10 @@ $sizes: (
       @each $type in map-keys($sizes) {
         &.-#{$type} {
           & th {
-            border-bottom: 0.0625rem solid set-color(grey, 30);
             padding: map-get(map-get($sizes, $type), padding);
           }
 
           & td {
-            border-bottom: 0.0625rem solid set-color(grey, 20);
             padding: map-get(map-get($sizes, $type), padding);
           }
         }
@@ -72,9 +70,7 @@ $sizes: (
     }
 
     th {
-      border-bottom: 0.0625rem solid set-color(grey, 30);
       font-weight: 600;
-      padding: 1rem;
       text-transform: capitalize;
 
       &.-sorted {
