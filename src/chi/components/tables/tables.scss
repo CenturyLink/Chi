@@ -1,15 +1,209 @@
 @import 'mixins';
 @import 'variables';
 
+$sizes: (
+  xs: (
+    padding: 0.5rem,
+  ),
+  sm: (
+    padding: 0.75rem,
+  ),
+  md: (
+    padding: 1rem,
+  ),
+  lg: (
+    padding: 1.25rem,
+  ),
+  xl: (
+    padding: 1.5rem,
+  )
+);
+
 .chi {
-  section {
-    &.a-table {
+
+  th {
+    text-align: left;
+  }
+
+  .a-table {
+    padding-top: 3rem;
+    border-spacing: 0;
+    font-size: $text;
+    line-height: $line-height-smaller;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    table {
+      border-spacing: 0;
+      font-size: $text;
+      line-height: $line-height-smaller;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    tr {
+      background-color: set-color(white);
+
+      & th {
+        border-bottom: 0.0625rem solid set-color(grey, 30);
+        padding: 1rem;
+      }
+
+      & td {
+        border-bottom: 0.0625rem solid set-color(grey, 20);
+        padding: 1rem;
+      }
+
+      @each $type in map-keys($sizes) {
+        &.-#{$type} {
+          & th {
+            padding: map-get(map-get($sizes, $type), padding);
+          }
+
+          & td {
+            padding: map-get(map-get($sizes, $type), padding);
+          }
+        }
+      }
+    }
+
+    th {
+      font-weight: 600;
+      text-transform: capitalize;
+
+      &.-sorted {
+        div {
+          align-items: center;
+          cursor: pointer;
+          display: flex;
+          flex-direction: row;
+
+          &::after {
+            background-image: url('./icon-chevron-thin-up.svg');
+            content: '';
+            display: block;
+            height: 0.75rem;
+            margin-left: 0.5rem;
+            opacity: 0;
+            width: 0.75rem;
+          }
+        }
+
+        & i {
+          margin-left: 0.5rem
+        }
+      }
+
+      &.-ascending {
+        div::after {
+          opacity: 1;
+        }
+      }
+
+      &.-descending {
+        div::after {
+          opacity: 1;
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    & tbody {
+      tr {
+        &.-row--success {
+          background-color: set-color(green, 10);
+        }
+
+        &.-row--warning {
+          background-color: set-color(yellow, 10);
+        }
+
+        &.-row--danger {
+          background-color: set-color(red, 10);
+        }
+
+        &.-row--info {
+          background-color: set-color(blue, 10);
+        }
+
+        &[disabled] {
+          color: rgba(set-color(grey, 90), 0.4);
+        }
+      }
+    }
+
+    &.-hover {
+      tbody {
+        tr {
+          &:hover,
+          &.-hover {
+            background-color: set-color(grey, 10);
+          }
+        }
+      }
+    }
+
+    &.-striped {
+      tbody {
+        tr:nth-child(odd) {
+          background-color: set-color(grey, 10);
+        }
+      }
+    }
+
+    &.-borderless {
+      &::before {
+        border: 0;
+      }
+
+      tr {
+        & th {
+          border: 0;
+        }
+
+        & td {
+          border: 0;
+        }
+      }
+    }
+
+    &.-bordered {
+      &::before {
+        border: 0.0625rem solid set-color(grey, 30);
+        border-bottom-width: 0;
+        border-left-width: 0;
+      }
+
+      tr {
+        & th {
+          border: 0.0625rem solid set-color(grey, 30);
+          border-right-width: 0;
+
+          &:last-of-type {
+            border-right-width: 0.0625rem;
+          }
+        }
+
+        & td {
+          border: 0.0625rem solid set-color(grey, 30);
+          border-right-width: 0;
+          border-top-width: 0;
+
+          &:last-of-type {
+            border-right-width: 0.0625rem;
+          }
+        }
+      }
+    }
+
+    &.-fixed--header {
       padding-top: 3rem;
       position: relative;
 
       &::before {
         background-color: set-color(white);
-        border-bottom: 0.0625rem solid set-color(grey, 20);
         content: '';
         display: block;
         height: 3rem;
@@ -23,24 +217,13 @@
         overflow-y: auto;
       }
 
-      table {
-        border-spacing: 0;
-        font-size: $text-small;
-        line-height: $line-height-smaller;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-      }
-
       tr {
-        background-color: set-color(white);
+        height: 0;
       }
 
       th {
-        font-weight: 600;
         height: 0;
         padding: 0;
-        text-transform: capitalize;
 
         div {
           padding: 1rem;
@@ -91,30 +274,6 @@
         vertical-align: middle;
       }
 
-      tbody {
-        tr {
-          &.-rowSuccess {
-            background-color: set-color(green, 10);
-          }
-
-          &.-rowWarning {
-            background-color: set-color(yellow, 10);
-          }
-
-          &.-rowDanger {
-            background-color: set-color(red, 10);
-          }
-
-          &.-rowInfo {
-            background-color: set-color(blue, 10);
-          }
-
-          &[disabled] {
-            color: rgba(set-color(grey, 90), 0.4);
-          }
-        }
-      }
-
       &.-hover {
         tbody {
           tr {
@@ -147,11 +306,12 @@
 
       &.-bordered {
         &::before {
-          border-bottom-width: 0;
-          border-color: set-color(grey, 20);
+          border: 0.0625rem solid set-color(grey, 20);
           border-left-width: 0;
-          border-style: solid;
-          border-width: 0.0625rem;
+        }
+
+        th {
+          border: 0;
         }
 
         th > div {
@@ -160,78 +320,14 @@
         }
 
         td {
-          border-color: set-color(grey, 20);
+          border: 0.0625rem solid set-color(grey, 20);
           border-right-width: 0;
-          border-style: solid;
           border-top-width: 0;
-          border-width: 0.0625rem;
           padding: 1rem 1rem 0.9375rem 0.9375rem;
 
           &:last-of-type {
             border-right-width: 0.0625rem;
             padding-right: 0.9375rem;
-          }
-        }
-      }
-
-      &.-small {
-        padding-top: 2rem;
-
-        &::before {
-          height: 2rem;
-        }
-
-        th > div,
-        td {
-          padding: 0.5rem 1rem;
-        }
-
-        td {
-          padding-bottom: 0.4375rem;
-        }
-
-        &.-borderless {
-          td {
-            padding: 0.5rem 1rem;
-          }
-        }
-
-        &.-bordered {
-          td {
-            padding: 0.5rem 1rem 0.4375rem 0.9375rem;
-          }
-        }
-      }
-
-      &.-large {
-        padding-top: 4rem;
-
-        &::before {
-          height: 4rem;
-        }
-
-        th {
-          font-size: $text;
-        }
-
-        th > div,
-        td {
-          padding: 1.5rem 1rem;
-        }
-
-        td {
-          padding-bottom: 1.4375rem;
-        }
-
-        &.-borderless {
-          td {
-            padding: 1.5rem 1rem;
-          }
-        }
-
-        &.-bordered {
-          td {
-            padding: 1.5rem 1rem 1.4375rem 0.9375rem;
           }
         }
       }
