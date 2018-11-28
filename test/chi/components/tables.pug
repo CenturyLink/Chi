@@ -61,22 +61,40 @@ mixin table(row, column, selectable)
   table.a-table&attributes(attributes)
     thead
       if !selectable
-        tr(class=(`-${row}`))
-          if column != undefined
-            if column == 'ascending'
-              th(class=(`-sorted -${column}`))
-                div name
+        if row != undefined
+          tr(class=(`-${row}`))
+            if column != undefined
+              if column == 'ascending'
+                th(class=(`-sorted -${column}`))
+                  div name
+                th ID
+                th last login
+              else if column == 'descending'
+                th(class=(`-sorted -${column}`))
+                  div name
+                th ID
+                th last login
+            else
+              th name
               th ID
               th last login
-            else if column == 'descending'
-              th(class=(`-sorted -${column}`))
-                div name
+        else
+          tr
+            if column != undefined
+              if column == 'ascending'
+                th(class=(`-sorted -${column}`))
+                  div name
+                th ID
+                th last login
+              else if column == 'descending'
+                th(class=(`-sorted -${column}`))
+                  div name
+                th ID
+                th last login
+            else
+              th name
               th ID
               th last login
-          else
-            th name
-            th ID
-            th last login
       else if selectable
         tr
           if column != undefined
