@@ -16,6 +16,13 @@
         padding-bottom: 1.1875rem;
         padding-top: 0.75rem;
       }
+
+      & > .-close {
+        &.-small {
+          line-height: .75rem;
+          padding: .25rem
+        }
+      }
     }
   }
 }
