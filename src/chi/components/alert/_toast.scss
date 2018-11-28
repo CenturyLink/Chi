@@ -14,7 +14,7 @@ $hr-sizes: (h1, h2, h3, h4, h5, h6);
       & .m-alert__content {
         & .a-icon {
           align-self: start;
-          top: 0.1875rem
+          top: 0.1875rem;
         }
 
         @each $size in $hr-sizes {

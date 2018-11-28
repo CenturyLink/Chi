@@ -12,8 +12,8 @@
 
       & > .-close {
         &.-small {
-          line-height: .75rem;
-          padding: .25rem
+          line-height: 0.75rem;
+          padding: 0.25rem;
         }
       }
 
@@ -21,26 +21,23 @@
         padding-bottom: 1.1875rem;
         padding-top: 0.75rem;
 
-        &.-titled {
-          align-items: start;
-          justify-content: start;
-
-          & .m-alert__content {
-            & .a-icon {
-              align-self: start;
-              top: 0.1875rem
-            }
-            & div:first-child {
-              text-transform: capitalize;
-            }
+        & .m-alert__content {
+          & .a-icon {
+            align-self: start;
+            top: 0.1875rem;
           }
 
-          &.-dismiss {
-            justify-content: space-between;
+          & > div:not(p) {
+            text-transform: capitalize;
           }
         }
 
+        &.-dismiss {
+          justify-content: space-between;
+        }
+
         & > .-close {
+          align-self: start;
           top: 0.75rem;
           transform: initial;
         }
