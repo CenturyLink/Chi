@@ -23,7 +23,7 @@ mixin tr(name, id, date)
     td= id
     td= date
 
-mixin table-advanced(row, column)
+mixin table-fix-header(row, column)
   section.a-table(style="width: 640px")&attributes(attributes)
     div
       table(cellpadding="0", cellspacing="0")
@@ -132,24 +132,19 @@ mixin table(row, column, selectable)
 .a-grid
   .a-col.-w--6
     h2 Without section container
-    each size in ['default', 'small', 'large']
-      each tablestyle in ['default', 'striped']
-        each borderstyle in ['default', 'bordered', 'borderless']
-          div(class=`test-${size}-${tablestyle}-${borderstyle}`)
-            span.a-h2
-              | table
-              if size != 'default'
-                = ` / ${size}`
-              if tablestyle != 'default'
-                = ` / ${tablestyle}`
-              if borderstyle != 'default'
-                = ` / ${borderstyle}`
-
-            +table()(class={
-              [`-${size}`]: size!= 'default',
-              [`-${tablestyle}`]: tablestyle!= 'default',
-              [`-${borderstyle}`]: borderstyle!= 'default'
-            })
+    each tablestyle in ['default', 'striped']
+      each borderstyle in ['default', 'bordered', 'borderless']
+        div(class=`test-${tablestyle}-${borderstyle}`)
+          span.a-h2
+            | table
+            if tablestyle != 'default'
+              = ` / ${tablestyle}`
+            if borderstyle != 'default'
+              = ` / ${borderstyle}`
+          +table()(class={
+            [`-${tablestyle}`]: tablestyle!= 'default',
+            [`-${borderstyle}`]: borderstyle!= 'default'
+          })
 
     each rowstyle in ['disabled', 'row--success', 'row--warning', 'row--danger', 'row--info']
       div(class=`test-${rowstyle}`)
@@ -170,62 +165,52 @@ mixin table(row, column, selectable)
         span.a-h2= `table / column sort / ${columnstyle}`
         +table(undefined, columnstyle)
 
-    each size, index in ['default', 'small', 'large']
-      div(class=`test-${size}-selectable`)
-        span.a-h2
-          | table
-          if size != 'default'
-            = ` / ${size}`
-          = ' / selectable'
-        section.a-table(
-          class={
-            [`-${size}`]: size!= 'default'
-          }
-          style="width: 640px"
-        )
-          div
-            table(cellpadding="0", cellspacing="0")
-              thead
-                tr
-                  th(width="48px")
-                    div.-lh--1
-                      input.a-input(type="checkbox", id=`chk-${index}`)
-                      label(for=`chk-${index}`)
-                  th.-sorted.-descending
-                    div name
-                  th
-                    div ID
-                  th
-                    div last login
-              tbody
-                +str(`chk-${index}-01`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
-                +str(`chk-${index}-02`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
-                +str(`chk-${index}-03`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+    div(class=`test-selectable`)
+      span.a-h2
+        | table
+        = ' / selectable'
+      section.a-table(
+        style="width: 640px"
+      )
+        div
+          table(cellpadding="0", cellspacing="0")
+            thead
+              tr
+                th(width="48px")
+                  div.-lh--1
+                    input.a-input(type="checkbox", id=`chk-${index}`)
+                    label(for=`chk-${index}`)
+                th.-sorted.-descending
+                  div name
+                th
+                  div ID
+                th
+                  div last login
+            tbody
+              +str(`chk-${index}-01`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
+              +str(`chk-${index}-02`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
+              +str(`chk-${index}-03`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
   .a-col.-w--6
     h2 With section container
-    each size in ['default', 'small', 'large']
-      each tablestyle in ['default', 'striped']
-        each borderstyle in ['default', 'bordered', 'borderless']
-          div(class=`test-${size}-${tablestyle}-${borderstyle}`)
-            span.a-h2
-              | table
-              if size != 'default'
-                = ` / ${size}`
-              if tablestyle != 'default'
-                = ` / ${tablestyle}`
-              if borderstyle != 'default'
-                = ` / ${borderstyle}`
+    each tablestyle in ['default', 'striped']
+      each borderstyle in ['default', 'bordered', 'borderless']
+        div(class=`test-${tablestyle}-${borderstyle}`)
+          span.a-h2
+            | table
+            if tablestyle != 'default'
+              = ` / ${tablestyle}`
+            if borderstyle != 'default'
+              = ` / ${borderstyle}`
 
-            +table-advanced()(class={
-              [`-${size}`]: size != 'default',
-              [`-${tablestyle}`]: tablestyle != 'default',
-              [`-${borderstyle}`]: borderstyle != 'default'
-            })
+          +table-fix-header()(class={
+            [`-${tablestyle}`]: tablestyle != 'default',
+            [`-${borderstyle}`]: borderstyle != 'default'
+          })
 
     each rowstyle in ['disabled', 'row--success', 'row--warning', 'row--danger', 'row--info']
       div(class=`test-${rowstyle}`)
         span.a-h2= `table / ${rowstyle}`
-        +table-advanced(rowstyle)
+        +table-fix-header(rowstyle)
 
     each rowsize in ['xs', 'sm', 'md', 'lg', 'xl']
       div(class=`test-${rowsize}`)
@@ -234,41 +219,56 @@ mixin table(row, column, selectable)
 
     div(class=`test-hover`)
       span.a-h2= `table / hover`
-      +table-advanced('hover').-hover
+      +table-fix-header('hover').-hover
 
     each columnstyle in ['ascending', 'descending']
       div(class=`test-${columnstyle}`)
         span.a-h2= `table / column sort / ${columnstyle}`
-        +table-advanced(undefined, columnstyle)
+        +table-fix-header(undefined, columnstyle)
 
-    each size, index in ['default', 'small', 'large']
-      div(class=`test-${size}-selectable`)
-        span.a-h2
-          | table
-          if size != 'default'
-            = ` / ${size}`
-          = ' / selectable'
-        section.a-table(
-        class={
-          [`-${size}`]: size != 'default'
-        }
-        style="width: 640px"
-        )
-          div
-            table(cellpadding="0", cellspacing="0")
-              thead
-                tr
-                  th(width="48px")
-                    div.-lh--1
-                      input.a-input(type="checkbox", id=`chk-${index}-a`)
-                      label(for=`chk-${index}-a`)
-                  th.-sorted.-descending
-                    div name
-                  th
-                    div ID
-                  th
-                    div last login
-              tbody
-                +str(`chk-${index}-01-1`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
-                +str(`chk-${index}-02-2`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
-                +str(`chk-${index}-03-3`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+    div(class=`test-selectable`)
+      span.a-h2
+        | table
+        = ' / selectable'
+      section.a-table(
+      class=
+      style="width: 640px"
+      )
+        div
+          table(cellpadding="0", cellspacing="0")
+            thead
+              tr
+                th(width="48px")
+                  div.-lh--1
+                    input.a-input(type="checkbox", id=`chk-${index}-a`)
+                    label(for=`chk-${index}-a`)
+                th.-sorted.-descending
+                  div name
+                th
+                  div ID
+                th
+                  div last login
+            tbody
+              +str(`chk-${index}-01-1`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
+              +str(`chk-${index}-02-2`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
+              +str(`chk-${index}-03-3`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+
+    div(class=`test-selectable`)
+      span.a-h2
+        | table
+        = ' / scrollable'
+      section.a-table.-fixed--header(style="height: 150px")
+        div
+          table
+            thead
+              tr
+                th
+                  div name
+                th
+                  div ID
+                th
+                  div last login
+            tbody
+              +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
+              +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
+              +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
