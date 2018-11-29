@@ -107,7 +107,7 @@ class NumberInput {
   autofix() {
     this._updateSteppedValues();
     const previousValue = this._stepped.current;
-    if (!Number.isInteger(this._stepped.current)) {
+    if (!Util.isInteger(this._stepped.current)) {
       this._stepped.current = Math.round(this._stepped.current);
     }
     this._stepped.current = Math.min(this._stepped.current, this._stepped.max);
@@ -117,7 +117,7 @@ class NumberInput {
       this._elemInput.value !== this._step2value(this._stepped.current).toString()
     ) {
       this._elemInput.value = this._step2value(this._stepped.current);
-      this._elemInput.dispatchEvent(new Event('change'));
+      this._elemInput.dispatchEvent(Util.createEvent('change'));
     }
   }
 
@@ -126,13 +126,13 @@ class NumberInput {
     if (this._stepped.current >= this._stepped.max) {
       return;
     }
-    if (Number.isInteger(this._stepped.current)) {
+    if (Util.isInteger(this._stepped.current)) {
       this._stepped.current++;
     } else {
       this._stepped.current = Math.ceil(this._stepped.current);
     }
     this._elemInput.value = this._step2value(this._stepped.current);
-    this._elemInput.dispatchEvent(new Event('change'));
+    this._elemInput.dispatchEvent(Util.createEvent('change'));
   }
 
   _stepDown() {
@@ -140,13 +140,13 @@ class NumberInput {
     if (this._stepped.current <= this._stepped.min) {
       return;
     }
-    if (Number.isInteger(this._stepped.current)) {
+    if (Util.isInteger(this._stepped.current)) {
       this._stepped.current--;
     } else {
       this._stepped.current = Math.floor(this._stepped.current);
     }
     this._elemInput.value = this._step2value(this._stepped.current);
-    this._elemInput.dispatchEvent(new Event('change'));
+    this._elemInput.dispatchEvent(Util.createEvent('change'));
   }
 
   static factory(elem, config) {

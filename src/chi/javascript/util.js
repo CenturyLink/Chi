@@ -144,6 +144,23 @@ export class Util {
       !isNaN( n - parseFloat( n ) );
   }
 
+  static isInteger (n) {
+    return typeof n === 'number' &&
+      isFinite(n) &&
+      Math.floor(n) === n;
+  }
+
+  static createEvent (eventType) {
+    let event;
+    if(typeof Event  === 'function') {
+      event = new Event(eventType);
+    }else{
+      event = document.createEvent('Event');
+      event.initEvent(eventType, true, true);
+    }
+    return event;
+  }
+
   static _getNewRegistrationIndex () {
     return chi.componentIndex++;
   }
