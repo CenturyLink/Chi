@@ -186,14 +186,6 @@ $m-inputNumber: (
       display: block;
       height: map-get(map-get($m-inputNumber, md), button-height);
 
-      & > div.a-btn__content {
-        display: block;
-
-        & > .a-icon {
-          display: block;
-        }
-      }
-
       &:first-of-type, &:focus:first-of-type {
         border-right-width: 0;
         border-top-right-radius: 0;
@@ -220,4 +212,11 @@ $m-inputNumber: (
       }
     }
   }
+
+  // sass-lint:disable-all
+  _:-ms-lang(x), .m-inputNumber button .a-btn__content, .m-inputNumber button .a-icon {
+      display: block;
+  }
+  // sass-lint:enable-all
+
 }
