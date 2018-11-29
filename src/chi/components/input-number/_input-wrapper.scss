@@ -58,11 +58,23 @@ $sizes: (
   )
 );
 
-$m-inputNumber-width: (
-  sm: 4.875rem,
-  md: 6.875rem,
-  lg: 8.875rem,
-  xl: 10.875rem
+$m-inputNumber: (
+  sm: (
+    width: 4.875rem,
+    button-height: 1.5rem
+  ),
+  md: (
+    width: 6.875rem,
+    button-height: 2rem
+  ),
+  lg: (
+    width: 8.875rem,
+    button-height: 2.5rem
+  ),
+  xl: (
+    width: 10.875rem,
+    button-height: 3rem
+  )
 );
 
 .chi {
@@ -141,9 +153,12 @@ $m-inputNumber-width: (
     display: flex;
     width: 6.875rem;
 
-    @each $size, $minWidth in $m-inputNumber-width {
+    @each $size, $values in $m-inputNumber {
       &.-#{$size} {
-        width: $minWidth;
+        width: map-get($values, width);
+        & > button {
+          height: map-get($values, button-height);
+        }
       }
     }
 
@@ -168,6 +183,8 @@ $m-inputNumber-width: (
 
     & > button {
       color: $brand-color;
+      display: block;
+      height: map-get(map-get($m-inputNumber, md), button-height);
 
       &:first-of-type, &:focus:first-of-type {
         border-right-width: 0;
@@ -196,10 +213,10 @@ $m-inputNumber-width: (
     }
   }
 
-  // Hide the increment/decrement buttons on IE and Edge
   // sass-lint:disable-all
-  _:-ms-lang(x), input[type='number'].a-input ~ button {
-    display: none;
+  _:-ms-lang(x), .m-inputNumber button .a-btn__content, .m-inputNumber button .a-icon {
+      display: block;
   }
   // sass-lint:enable-all
+
 }
