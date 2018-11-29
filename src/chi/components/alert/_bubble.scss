@@ -30,6 +30,20 @@
           & > div:not(p) {
             text-transform: capitalize;
           }
+
+          @each $size in $hr-sizes {
+            & .a-#{$size} {
+              margin-bottom: 0;
+              margin-top: 0;
+              text-transform: capitalize;
+            }
+
+            & #{$size} {
+              margin-bottom: 0;
+              margin-top: 0;
+              text-transform: capitalize;
+            }
+          }
         }
 
         & > .-close {

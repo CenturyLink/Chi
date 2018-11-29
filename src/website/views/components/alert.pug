@@ -1,7 +1,6 @@
 ---
 title: Alert
 ---
-- var sizes = ['h6', 'h5', 'h4', 'h3', 'h2', 'h1'];
 
 p.-text Alert messages provide contextual feedback for user actions.
 
@@ -138,12 +137,9 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
 h4 Sizes
 h5 Large
 p.-text
-  | Apply a <code>-large</code> class to increase the size of the alert and
+  | Apply a <code>-large</code> class to increase the size of the alert.
 .example.-mb3
   .-p1
-    .m-alert.-bubble.-large.-warning.-m--2
-      i.a-icon.-sm2.icon-warning.-text--warning
-      | This is a warning alert
     .m-alert.-bubble.-large.-warning.-m--2
       .m-alert__content
         i.a-icon.-sm2.icon-warning.-text--warning
@@ -151,10 +147,6 @@ p.-text
           h5.a-h5 Warning
           | This is a warning alert
   :code(lang="html")
-    <div class="m-alert -bubble -large -warning">
-        <i class="a-icon -sm2 icon-warning -text--warning"></i>
-        This is a warning alert
-    </div>
     <div class="m-alert -bubble -large -warning">
       <div class="m-alert__content">
         <i class="a-icon -sm2 icon-warning -text--warning"></i>
@@ -193,194 +185,98 @@ p.-text
 
 .example.-mb3
   .-p1
-    each size in sizes
-      each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
-        .m-alert.-toast.-m--2(class=`-${type}`)
-          .m-alert__content
-            i.a-icon.-sm2(class =`${val} -text--${type}`)
-            div
-              div(class=`a-${size}`)= type
-              = `This is a ${type} alert`
-          button(class='a-btn -icon -close -small')
-            .a-btn__content
-              i.a-icon.icon-x
-  ul#a-tabs--sizes.a-tabs.-ml--3
-    li.-active
-      a(href='#a-tabs-panel--sizes--ah') .a-h1 to .a-h6 Notation
-    li
-      a(href='#a-tabs-panel--sizes--h') h1 to h6 Notation
-  #a-tabs-panel--sizes--ah.a-tabs-panel.-active
-    :code(lang="html")
-      <div class="m-alert -toast -success">
-        <div class="m-alert__content">
-          <i class="a-icon -sm2 icon-circle-check -text--success"></i>
-          <div>
-            <div class="a-h5">success</div>
-            This is a success alert
-          </div>
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
+      .m-alert.-toast.-m--2(class=`-${type}`)
+        .m-alert__content
+          i.a-icon.-sm2(class =`${val} -text--${type}`)
+          div
+            div(class=`a-h5`)= type
+            = `This is a ${type} alert`
+        button(class='a-btn -icon -close -small')
+          .a-btn__content
+            i.a-icon.icon-x
+  :code(lang="html")
+    <div class="m-alert -toast -success">
+      <div class="m-alert__content">
+        <i class="a-icon -sm2 icon-circle-check -text--success"></i>
+        <div>
+          <div class="a-h5">success</div>
+          This is a success alert
         </div>
-        <button class="a-btn -icon -close -small">
-          <div class="a-btn__content">
-            <i class="a-icon icon-x"></i>
-          </div>
-        </button>
-        </div>
-      <div class="m-alert -toast -danger">
-        <div class="m-alert__content">
-          <i class="a-icon -sm2 icon-circle-warning -text--danger"></i>
-          <div>
-            <div class="a-h5">danger</div>
-            This is a danger alert
-          </div>
-        </div>
-        <button class="a-btn -icon -close -small">
-          <div class="a-btn__content">
-            <i class="a-icon icon-x"></i>
-          </div>
-        </button>
       </div>
-      <div class="m-alert -toast -warning">
-        <div class="m-alert__content">
-          <i class="a-icon -sm2 icon-warning -text--warning"></i>
-          <div>
-            <div class="a-h5">warning</div>
-            This is a warning alert
-          </div>
+      <button class="a-btn -icon -close -small">
+        <div class="a-btn__content">
+          <i class="a-icon icon-x"></i>
         </div>
-        <button class="a-btn -icon -close -small">
-          <div class="a-btn__content">
-            <i class="a-icon icon-x"></i>
-          </div>
-        </button>
+      </button>
       </div>
-      <div class="m-alert -toast -info">
-        <div class="m-alert__content">
-          <i class="a-icon -sm2 icon-circle-info -text--info"></i>
-          <div>
-            <div class="a-h5">info</div>
-            This is a info alert
-          </div>
+    <div class="m-alert -toast -danger">
+      <div class="m-alert__content">
+        <i class="a-icon -sm2 icon-circle-warning -text--danger"></i>
+        <div>
+          <div class="a-h5">danger</div>
+          This is a danger alert
         </div>
-        <button class="a-btn -icon -close -small">
-          <div class="a-btn__content">
-            <i class="a-icon icon-x"></i>
-          </div>
-        </button>
       </div>
-      <div class="m-alert -toast -light">
-        <div class="m-alert__content">
-          <i class="a-icon -sm2 icon-circle-info-outline -text--light"></i>
-          <div>
-            <div class="a-h5">success</div>
-            This is a success alert
-          </div>
+      <button class="a-btn -icon -close -small">
+        <div class="a-btn__content">
+          <i class="a-icon icon-x"></i>
         </div>
-        <button class="a-btn -icon -close -small">
-          <div class="a-btn__content">
-            <i class="a-icon icon-x"></i>
-          </div>
-        </button>
-      </div>
-      <div class="m-alert -toast -dark">
-        <div class="m-alert__content">
-          <i class="a-icon -sm2 icon-circle-info -text--dark"></i>
-          <div>
-            <div class="a-h5">dark</div>
-            This is a dark alert
-          </div>
+      </button>
+    </div>
+    <div class="m-alert -toast -warning">
+      <div class="m-alert__content">
+        <i class="a-icon -sm2 icon-warning -text--warning"></i>
+        <div>
+          <div class="a-h5">warning</div>
+          This is a warning alert
         </div>
-        <button class="a-btn -icon -close -small">
-          <div class="a-btn__content">
-            <i class="a-icon icon-x"></i>
-          </div>
-        </button>
       </div>
-  #a-tabs-panel--sizes--h.a-tabs-panel
-    :code(lang="html")
-      <div class="m-alert -toast -success">
-        <div class="m-alert__content">
-          <i class="a-icon -sm2 icon-circle-check -text--success"></i>
-          <div>
-            <h5>success</h5>
-            This is a success alert
-          </div>
+      <button class="a-btn -icon -close -small">
+        <div class="a-btn__content">
+          <i class="a-icon icon-x"></i>
         </div>
-        <button class="a-btn -icon -close -small">
-          <div class="a-btn__content">
-            <i class="a-icon icon-x"></i>
-          </div>
-        </button>
-      </div>
-      <div class="m-alert -toast -danger">
-        <div class="m-alert__content">
-          <i class="a-icon -sm2 icon-circle-warning -text--danger"></i>
-          <div>
-            <h5>danger</h5>
-            This is a danger alert
-          </div>
+      </button>
+    </div>
+    <div class="m-alert -toast -info">
+      <div class="m-alert__content">
+        <i class="a-icon -sm2 icon-circle-info -text--info"></i>
+        <div>
+          <div class="a-h5">info</div>
+          This is a info alert
         </div>
-        <button class="a-btn -icon -close -small">
-          <div class="a-btn__content">
-            <i class="a-icon icon-x"></i>
-          </div>
-        </button>
       </div>
-      <div class="m-alert -toast -warning">
-        <div class="m-alert__content">
-          <i class="a-icon -sm2 icon-warning -text--warning"></i>
-          <div>
-            <h5>warning</h5>
-            This is a warning alert
-          </div>
+      <button class="a-btn -icon -close -small">
+        <div class="a-btn__content">
+          <i class="a-icon icon-x"></i>
         </div>
-        <button class="a-btn -icon -close -small">
-          <div class="a-btn__content">
-            <i class="a-icon icon-x"></i>
-          </div>
-        </button>
-      </div>
-      <div class="m-alert -toast -info">
-        <div class="m-alert__content">
-          <i class="a-icon -sm2 icon-circle-info -text--info"></i>
-          <div>
-           <h5>info</h5>
-            This is a info alert
-          </div>
+      </button>
+    </div>
+    <div class="m-alert -toast -light">
+      <div class="m-alert__content">
+        <i class="a-icon -sm2 icon-circle-info-outline -text--light"></i>
+        <div>
+          <div class="a-h5">success</div>
+          This is a success alert
         </div>
-        <button class="a-btn -icon -close -small">
-          <div class="a-btn__content">
-            <i class="a-icon icon-x"></i>
-          </div>
-        </button>
       </div>
-      <div class="m-alert -toast -light">
-        <div class="m-alert__content">
-          <i class="a-icon -sm2 icon-circle-info-outline -text--light"></i>
-          <div>
-            <h5>success</h5>
-            This is a success alert
-          </div>
+      <button class="a-btn -icon -close -small">
+        <div class="a-btn__content">
+          <i class="a-icon icon-x"></i>
         </div>
-        <button class="a-btn -icon -close -small">
-          <div class="a-btn__content">
-            <i class="a-icon icon-x"></i>
-          </div>
-        </button>
-      </div>
-      <div class="m-alert -toast -dark">
-        <div class="m-alert__content">
-          <i class="a-icon -sm2 icon-circle-info -text--dark"></i>
-          <div>
-            <h5>success</h5>
-            This is a dark alert
-          </div>
+      </button>
+    </div>
+    <div class="m-alert -toast -dark">
+      <div class="m-alert__content">
+        <i class="a-icon -sm2 icon-circle-info -text--dark"></i>
+        <div>
+          <div class="a-h5">dark</div>
+          This is a dark alert
         </div>
-        <button class="a-btn -icon -close -small">
-          <div class="a-btn__content">
-            <i class="a-icon icon-x"></i>
-          </div>
-        </button>
       </div>
-
-script(type="text/javascript", src=`../../tabs.js`)
-!= '<script>chiTabs.init(document.getElementById(\'a-tabs--sizes\'));chiTabs.init(document.getElementById(\'a-tabs--colors\'));chiTabs.init(document.getElementById(\'a-tabs--icons\'));</script>'
+      <button class="a-btn -icon -close -small">
+        <div class="a-btn__content">
+          <i class="a-icon icon-x"></i>
+        </div>
+      </button>
+    </div>
