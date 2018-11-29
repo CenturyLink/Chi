@@ -750,5 +750,30 @@ p.-text
         }
       );
 
+h4 Preventing memory leaks
+p.-text
+  | Expansion panel components have a dispose function to free all resources attached to the element, such as event
+  | listeners and object data. You should call this method when you want to remove the component.
+:code(lang="javascript")
+  var elemArray = document.querySelectorAll('[data-chi-ep-group="groupName"]');
+  var expansionPanelsArray = chi.expansionPanel(elemArray);
+  // do stuff
+  expansionPanelsArray.forEach(function (expansionPanel) {
+    expansionPanel.dispose();
+  });
+
+p.-text
+  span.a-badge.-brand.-mr1
+    span Tip
+  | It is safe to call the <code>expansionPanel</code> method more than once, as it will return any previously created
+  | number input component associated to the input.
+:code(lang="javascript")
+  var elem = document.getElementById('expansion-panel-1');
+  var expansionPanelComponent = chi.expansionPanel(elem);
+  var elem2 = document.getElementById('expansion-panel-1');
+  var expansionPanelComponent2 = chi.expansionPanel(elem2);
+  expansionPanelComponent === expansionPanelComponent2; // returns true
+
+  expansionPanelComponent.dispose(); // Only have to do it once.
 
 script(src=`/assets/scripts/docs-expansion-panel.js`)
