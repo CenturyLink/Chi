@@ -7,8 +7,15 @@ title: Brand
 h4 Sizes
 .example.-mb--3
   .-p--3(style='overflow:auto')
+    h3 Base
     each size in sizes
       div(class=`a-col -w--12 -p--3`)
         a(class=`a-brand -${size}`, href='#', aria-label='CenturyLink')
           img(src='https://assets.ctl.io/images/centurylink-logo.svg', alt='CenturyLink')
+        p.-text--bold= '-' + size
+    h3 Inverse
+    each size in sizes
+      div(class=`a-col -w--12 -p--3`, style='background-color: black;')
+        a(class=`a-brand -${size}`, href='#', aria-label='CenturyLink')
+          img(src='https://assets.ctl.io/images/centurylink-logo-inverse.svg', alt='CenturyLink')
         p.-text--bold= '-' + size
