@@ -122,7 +122,7 @@ export class Util {
   }
 
   static addArraySupportToFactory (factoryMethod) {
-    return function(elem) {
+    return function(elem, config) {
       if (
         Array.isArray(elem) ||
         NodeList.prototype.isPrototypeOf(elem) ||
@@ -130,11 +130,11 @@ export class Util {
       ) {
         const returnV = [];
         Array.prototype.forEach.call(elem, function(e) {
-          returnV.push(factoryMethod(e));
+          returnV.push(factoryMethod(e, config));
         });
         return returnV;
       } else {
-        return factoryMethod(elem);
+        return factoryMethod(elem, config);
       }
     };
   }
@@ -164,4 +164,7 @@ export class Util {
   static _getNewRegistrationIndex () {
     return chi.componentIndex++;
   }
+
+  static noOp () {}
+
 }

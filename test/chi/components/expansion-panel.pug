@@ -1,0 +1,59 @@
+---
+title: Expansion panel
+---
+.test-expansion-panel-done.-mb--3(style="min-width: 20rem")
+  .m-epanel.-done.-bg--white.-mb--2
+    .m-epanel__header
+      h4.m-epanel__title Expansion panel #1
+      .m-epanel__activator-header.-done--only
+        button.a-btn.-brand.-flat Change
+    .m-epanel__content-wrapper
+      .m-epanel__content-view.-active--only
+        .m-epanel__body
+          h5 Active
+          p.-text content in expansion panel.
+        .m-epanel__footer.-justify-content--end
+          button.a-btn.-lg Previous
+          button.a-btn.-lg.-brand.-ml--2 Continue
+      .m-epanel__content-view.-done--only
+        .m-epanel__body
+          h5 Done
+          p.-text content in expansion panel.
+
+.test-expansion-panel-active.-mb--3(style="min-width: 20rem")
+  .m-epanel.-active.-bg--white.-mb--2(data-chi-ep-group='example3')
+    .m-epanel__header
+      h4.m-epanel__title Expansion panel #2
+      .m-epanel__activator-header.-done--only
+        button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+    .m-epanel__content-wrapper
+      .m-epanel__content-view.-active--only
+        .m-epanel__body
+          h5 Active
+          p.-text content in expansion panel.
+        .m-epanel__footer.-justify-content--end
+          button.a-btn.-lg(data-chi-ep-action='previous') Previous
+          button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+      .m-epanel__content-view.-done--only
+        .m-epanel__body
+          h5 Done
+          p.-text content in expansion panel.
+
+.test-expansion-panel-pending.-mb--3(style="min-width: 20rem")
+  .m-epanel.-bg--white.-mb--2(data-chi-ep-group='example3')
+    .m-epanel__header
+      h4.m-epanel__title Expansion panel #2
+      .m-epanel__activator-header.-done--only
+        button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+    .m-epanel__content-wrapper
+      .m-epanel__content-view.-active--only
+        .m-epanel__body
+          h5 Active
+          p.-text content in expansion panel.
+        .m-epanel__footer.-justify-content--end
+          button.a-btn.-lg(data-chi-ep-action='previous') Previous
+          button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+      .m-epanel__content-view.-done--only
+        .m-epanel__body
+          h5 Done
+          p.-text content in expansion panel.

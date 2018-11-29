@@ -14,33 +14,31 @@ p.-text
         h4.m-epanel__title 1. Done state expansion panel
         .m-epanel__activator-header
           button.a-btn.-brand.-flat Change
-      .m-epanel__contentWrapper
-        .m-epanel__body
-          dl.-d--flex.-text.-flex--wrap.-m--0
-            dt.-d--block.-w--25.-m--0.-text--muted Numbers:
-            dd.-d--block.-w--75.-m--0 50 New numbers
-            dt.-d--block.-w--25.-m--0.-text--muted Type:
-            dd.-d--block.-w--75.-m--0 Local
-            dt.-d--block.-w--25.-m--0.-text--muted Area Code:
-            dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
+      .m-epanel__body
+        dl.-d--flex.-text.-flex--wrap.-m--0
+          dt.-d--block.-w--25.-m--0.-text--muted Numbers:
+          dd.-d--block.-w--75.-m--0 50 New numbers
+          dt.-d--block.-w--25.-m--0.-text--muted Type:
+          dd.-d--block.-w--75.-m--0 Local
+          dt.-d--block.-w--25.-m--0.-text--muted Area Code:
+          dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
 
     .m-epanel.-active.-bg--white.-mb--2
       .m-epanel__header
         h4.m-epanel__title 2. Active expansion panel
-      .m-epanel__contentWrapper
-        .m-epanel__body
-          h5 Some title
-          p.-text
-            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
-            | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
-            | nihil sed veritatis!
-        .m-epanel__footer
-          button.a-btn.-lg Previous
-          button.a-btn.-lg.-brand.-ml--2 Continue
+      .m-epanel__body
+        h5 Some title
+        p.-text
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+          | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+          | nihil sed veritatis!
+      .m-epanel__footer.-justify-content--end
+        button.a-btn.-lg Previous
+        button.a-btn.-lg.-brand.-ml--2 Continue
 
     .m-epanel.-bg--white.-mb--2
-        .m-epanel__header
-          h4.m-epanel__title 3. Pending expansion panel
+      .m-epanel__header
+        h4.m-epanel__title 3. Pending expansion panel
 
     .m-epanel.-bg--white.-mb--2
       .m-epanel__header
@@ -61,10 +59,8 @@ p.-text
             <button class="a-btn -brand -flat">Change</button>
           </div>
         </div>
-        <div class="m-epanel__contentWrapper">
-          <div class="m-epanel__body">
-            <!-- body content -->
-          </div>
+        <div class="m-epanel__body">
+          <!-- body content -->
         </div>
       </div>
   #a-tabs-active.a-tabs-panel
@@ -73,14 +69,12 @@ p.-text
         <div class="m-epanel__header">
           <h4 class="m-epanel__title">2. Active expansion panel</h4>
         </div>
-        <div class="m-epanel__contentWrapper">
-          <div class="m-epanel__body">
-            <!-- body content -->
-          </div>
-          <div class="m-epanel__footer">
-            <button class="a-btn -lg">Previous</button>
-            <button class="a-btn -lg -brand -ml--2">Continue</button>
-          </div>
+        <div class="m-epanel__body">
+          <!-- body content -->
+        </div>
+        <div class="m-epanel__footer -justify-content--end">
+          <button class="a-btn -lg">Previous</button>
+          <button class="a-btn -lg -brand -ml--2">Continue</button>
         </div>
       </div>
   #a-tabs-pending.a-tabs-panel
@@ -120,73 +114,76 @@ p.-text
         h4.m-epanel__title Expansion panel
         .m-epanel__activator-header.-done--only
           button.a-btn.-brand.-flat Change
-      .m-epanel__contentWrapper.-done--only
-        .m-epanel__body
-          dl.-d--flex.-text.-flex--wrap.-m--0
-            dt.-d--block.-w--25.-m--0.-text--muted Numbers:
-            dd.-d--block.-w--75.-m--0 50 New numbers
-            dt.-d--block.-w--25.-m--0.-text--muted Type:
-            dd.-d--block.-w--75.-m--0 Local
-            dt.-d--block.-w--25.-m--0.-text--muted Area Code:
-            dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
-      .m-epanel__contentWrapper.-active--only
-        .m-epanel__body
-          h5 Some title
-          p.-text
-            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
-            | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
-            | nihil sed veritatis!
-        .m-epanel__footer
-          button.a-btn.-lg Previous
-          button.a-btn.-lg.-brand.-ml--2 Continue
+      .m-epanel__content-wrapper
+        .m-epanel__content-view.-done--only
+          .m-epanel__body
+            dl.-d--flex.-text.-flex--wrap.-m--0
+              dt.-d--block.-w--25.-m--0.-text--muted Numbers:
+              dd.-d--block.-w--75.-m--0 50 New numbers
+              dt.-d--block.-w--25.-m--0.-text--muted Type:
+              dd.-d--block.-w--75.-m--0 Local
+              dt.-d--block.-w--25.-m--0.-text--muted Area Code:
+              dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
+        .m-epanel__content-view.-active--only
+          .m-epanel__body
+            h5 Some title
+            p.-text
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+              | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+              | nihil sed veritatis!
+          .m-epanel__footer.-justify-content--end
+            button.a-btn.-lg Previous
+            button.a-btn.-lg.-brand.-ml--2 Continue
     .m-epanel.-active.-bg--white.-mb--2
       .m-epanel__header
         h4.m-epanel__title Expansion panel
         .m-epanel__activator-header.-done--only
           button.a-btn.-brand.-flat Change
-      .m-epanel__contentWrapper.-done--only
-        .m-epanel__body
-          dl.-d--flex.-text.-flex--wrap.-m--0
-            dt.-d--block.-w--25.-m--0.-text--muted Numbers:
-            dd.-d--block.-w--75.-m--0 50 New numbers
-            dt.-d--block.-w--25.-m--0.-text--muted Type:
-            dd.-d--block.-w--75.-m--0 Local
-            dt.-d--block.-w--25.-m--0.-text--muted Area Code:
-            dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
-      .m-epanel__contentWrapper.-active--only
-        .m-epanel__body
-          h5 Some title
-          p.-text
-            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
-            | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
-            | nihil sed veritatis!
-        .m-epanel__footer
-          button.a-btn.-lg Previous
-          button.a-btn.-lg.-brand.-ml--2 Continue
+      .m-epanel__content-wrapper
+        .m-epanel__content-view.-done--only
+          .m-epanel__body
+            dl.-d--flex.-text.-flex--wrap.-m--0
+              dt.-d--block.-w--25.-m--0.-text--muted Numbers:
+              dd.-d--block.-w--75.-m--0 50 New numbers
+              dt.-d--block.-w--25.-m--0.-text--muted Type:
+              dd.-d--block.-w--75.-m--0 Local
+              dt.-d--block.-w--25.-m--0.-text--muted Area Code:
+              dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
+        .m-epanel__content-view.-active--only
+          .m-epanel__body
+            h5 Some title
+            p.-text
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+              | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+              | nihil sed veritatis!
+          .m-epanel__footer.-justify-content--end
+            button.a-btn.-lg Previous
+            button.a-btn.-lg.-brand.-ml--2 Continue
     .m-epanel.-bg--white.-mb--2
       .m-epanel__header
         h4.m-epanel__title Expansion panel
         .m-epanel__activator-header.-done--only
           button.a-btn.-brand.-flat Change
-      .m-epanel__contentWrapper.-done--only
-        .m-epanel__body
-          dl.-d--flex.-text.-flex--wrap.-m--0
-            dt.-d--block.-w--25.-m--0.-text--muted Numbers:
-            dd.-d--block.-w--75.-m--0 50 New numbers
-            dt.-d--block.-w--25.-m--0.-text--muted Type:
-            dd.-d--block.-w--75.-m--0 Local
-            dt.-d--block.-w--25.-m--0.-text--muted Area Code:
-            dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
-      .m-epanel__contentWrapper.-active--only
-        .m-epanel__body
-          h5 Some title
-          p.-text
-            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
-            | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
-            | nihil sed veritatis!
-        .m-epanel__footer
-          button.a-btn.-lg Previous
-          button.a-btn.-lg.-brand.-ml--2 Continue
+      .m-epanel__content-wrapper
+        .m-epanel__content-view.-done--only
+          .m-epanel__body
+            dl.-d--flex.-text.-flex--wrap.-m--0
+              dt.-d--block.-w--25.-m--0.-text--muted Numbers:
+              dd.-d--block.-w--75.-m--0 50 New numbers
+              dt.-d--block.-w--25.-m--0.-text--muted Type:
+              dd.-d--block.-w--75.-m--0 Local
+              dt.-d--block.-w--25.-m--0.-text--muted Area Code:
+              dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
+        .m-epanel__content-view.-active--only
+          .m-epanel__body
+            h5 Some title
+            p.-text
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+              | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+              | nihil sed veritatis!
+          .m-epanel__footer.-justify-content--end
+            button.a-btn.-lg Previous
+            button.a-btn.-lg.-brand.-ml--2 Continue
 
   ul#a-tabs-ex.a-tabs.-ml--3
     li.-active
@@ -204,18 +201,22 @@ p.-text
             <button class="a-btn -brand -flat">Change</button>
           </div>
         </div>
-        <div class="m-epanel__contentWrapper -done--only">
-          <div class="m-epanel__body">
-            <!-- some body content -->
+        <div class="m-epanel__content-wrapper">
+          <div class="m-epanel__content-view -done--only">
+            <div class="m-epanel__body">
+              <!-- some body content -->
+            </div>
           </div>
         </div>
-        <div class="m-epanel__contentWrapper -active--only">
-          <div class="m-epanel__body">
-            <!-- some body content -->
-          </div>
-          <div class="m-epanel__footer">
-            <button class="a-btn -lg">Previous</button>
-            <button class="a-btn -lg -brand -ml--2">Continue</button>
+        <div class="m-epanel__content-wrapper">
+          <div class="m-epanel__content-view -active--only">
+            <div class="m-epanel__body">
+              <!-- some body content -->
+            </div>
+            <div class="m-epanel__footer -justify-content--end">
+              <button class="a-btn -lg">Previous</button>
+              <button class="a-btn -lg -brand -ml--2">Continue</button>
+            </div>
           </div>
         </div>
       </div>
@@ -228,18 +229,22 @@ p.-text
             <button class="a-btn -brand -flat">Change</button>
           </div>
         </div>
-        <div class="m-epanel__contentWrapper -done--only">
-          <div class="m-epanel__body">
-            <!-- some body content -->
+        <div class="m-epanel__content-wrapper">
+          <div class="m-epanel__content-view -done--only">
+            <div class="m-epanel__body">
+              <!-- some body content -->
+            </div>
           </div>
         </div>
-        <div class="m-epanel__contentWrapper -active--only">
-          <div class="m-epanel__body">
-            <!-- some body content -->
-          </div>
-          <div class="m-epanel__footer">
-            <button class="a-btn -lg">Previous</button>
-            <button class="a-btn -lg -brand -ml--2">Continue</button>
+        <div class="m-epanel__content-wrapper">
+          <div class="m-epanel__content-view -active--only">
+            <div class="m-epanel__body">
+              <!-- some body content -->
+            </div>
+            <div class="m-epanel__footer -justify-content--end">
+              <button class="a-btn -lg">Previous</button>
+              <button class="a-btn -lg -brand -ml--2">Continue</button>
+            </div>
           </div>
         </div>
       </div>
@@ -252,18 +257,22 @@ p.-text
             <button class="a-btn -brand -flat">Change</button>
           </div>
         </div>
-        <div class="m-epanel__contentWrapper -done--only">
-          <div class="m-epanel__body">
-            <!-- some body content -->
+        <div class="m-epanel__content-wrapper">
+          <div class="m-epanel__content-view -done--only">
+            <div class="m-epanel__body">
+              <!-- some body content -->
+            </div>
           </div>
         </div>
-        <div class="m-epanel__contentWrapper -active--only">
-          <div class="m-epanel__body">
-            <!-- some body content -->
-          </div>
-          <div class="m-epanel__footer">
-            <button class="a-btn -lg">Previous</button>
-            <button class="a-btn -lg -brand -ml--2">Continue</button>
+        <div class="m-epanel__content-wrapper">
+          <div class="m-epanel__content-view -active--only">
+            <div class="m-epanel__body">
+              <!-- some body content -->
+            </div>
+            <div class="m-epanel__footer -justify-content--end">
+              <button class="a-btn -lg">Previous</button>
+              <button class="a-btn -lg -brand -ml--2">Continue</button>
+            </div>
           </div>
         </div>
       </div>
@@ -272,7 +281,7 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementsByClassName('a-tabs'));
+      chi.tab(document.querySelectorAll('.docs-body__content .a-tabs'));
     },
     false
   );

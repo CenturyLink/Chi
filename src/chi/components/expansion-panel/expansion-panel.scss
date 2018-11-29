@@ -1,6 +1,8 @@
 @import 'mixins';
 @import 'variables';
 
+$transition-duration: 0.2s;
+
 .chi {
 
   .m-epanel {
@@ -16,23 +18,29 @@
       align-items: center;
       display: flex;
       height: 3.5rem;
+      opacity: 1;
       position: absolute;
       right: 1rem;
       top: 0;
+      transition: opacity $transition-duration;
     }
 
-    &:not(.-done) .-done--only {
+    &:not(.-done):not(.-done--transitioning) .-done--only, &:not(.-active):not(.-active--transitioning) .-active--only {
       display: none;
     }
 
-    &:not(.-active) .-active--only {
-      display: none;
+    &:not(.-done) .-done--only, &:not(.-active) .-active--only {
+
+      &.m-epanel__activator-header {
+        opacity: 0;
+      }
     }
 
     &__title {
       font-size: $text-larger;
       line-height: $line-height-larger;
       margin: 0;
+      transition: color $transition-duration;
 
       &.-centered {
         text-align: center;
@@ -43,8 +51,12 @@
       color: $brand-color;
     }
 
-    &__contentWrapper {
+    &__content-wrapper {
+      transition: height $transition-duration;
+    }
 
+    &__content-view {
+      transition: opacity $transition-duration;
     }
 
     &__body {
@@ -64,7 +76,6 @@
       box-shadow: inset 0 1px 0 0 rgba(set-color(black), 0.12);
       display: flex;
       flex-direction: row;
-      justify-content: flex-end;
       min-height: 4rem;
       padding: 1rem;
       position: relative;
@@ -73,6 +84,11 @@
         box-shadow: none;
       }
     }
+
+    [data-chi-ep-action] {
+      cursor: pointer;
+    }
+
   }
 
 }
