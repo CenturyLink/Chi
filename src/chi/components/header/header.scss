@@ -93,5 +93,26 @@
       }
     }
 
+    &.-inverse {
+      background-color: set-color(black);
+
+      .o-header__title {
+        color: set-color(grey, 50);
+      }
+
+      .a-tabs li {
+        & > a {
+          color: set-color(white);
+
+          &:hover {
+            color: $brand-color;
+          }
+        }
+
+        &.-active > a {
+          color: $brand-color;
+        }
+      }
+    }
   }
 }
