@@ -3,32 +3,29 @@
 .chi {
   .m-alert {
     &.-toast {
+      align-items: start;
+      justify-content: space-between;
       max-width: 20rem;
-      padding-bottom: 1.1875rem;
+      padding-bottom: 0.75rem;
       padding-top: 0.75rem;
 
-      &::before {
-        font-size: $text-large;
-        margin-bottom: 0.4375rem;
-        padding: 0.25rem 0;
-      }
+      & .m-alert__content {
+        & .a-icon {
+          align-self: start;
+          top: 0.1875rem;
+        }
 
-      & > .-close {
-        position: absolute;
-        right: 0.9375rem;
-        top: 0.9375rem;
-      }
+        @each $size in $hr-sizes {
+          & .a-#{$size} {
+            margin-bottom: 0;
+            margin-top: 0;
+            text-transform: capitalize;
+          }
 
-      @each $state in map-keys($states) {
-        &.-#{$state} {
-          &.-hasIcon {
-            &::after {
-              height: 1.5rem;
-              left: 0.9375rem;
-              top: 0.9375rem;
-              transform: initial;
-              width: 1.5rem;
-            }
+          & #{$size} {
+            margin-bottom: 0;
+            margin-top: 0;
+            text-transform: capitalize;
           }
         }
       }

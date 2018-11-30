@@ -1,34 +1,30 @@
 @import 'variables';
 @import 'mixins';
 
+$hr-sizes: (h1, h2, h3, h4, h5, h6);
+
 $states: (
   light: (
-    icon: './icon-light.svg',
     background-color: set-color(white),
     border-color: set-color(grey, 30)
   ),
   success: (
-    icon: './icon-success.svg',
     background-color: set-color(green, 10),
     border-color: set-color(green, 30)
   ),
   danger: (
-    icon: './icon-danger.svg',
     background-color: set-color(red, 10),
     border-color: set-color(red, 30)
   ),
   warning: (
-    icon: './icon-warning.svg',
     background-color: set-color(yellow, 10),
     border-color: set-color(yellow, 30)
   ),
   info: (
-    icon: './icon-info.svg',
     background-color: set-color(navy, 10),
     border-color: set-color(navy, 30)
   ),
   dark: (
-    icon: './icon-dark.svg',
     background-color: set-color(grey, 10),
     border-color: set-color(grey, 30)
   )
@@ -43,45 +39,37 @@ $states: (
     border-width: 0.0625rem;
     box-sizing: border-box;
     color: $text-color;
+    display: flex;
     font-size: $text-small;
-    line-height: $line-height-smaller;
-    padding: 0.6875rem 0.9375rem;
+    line-height: $line-height-small;
+    padding: 0.5625rem 1rem;
     position: relative;
 
-    &::before {
-      content: attr(data-title);
-      display: block;
-      font-size: $text;
-      font-weight: 600;
-      text-transform: capitalize;
+    & i {
+      &:not(.icon-x) {
+        margin-right: 1rem;
+      }
     }
 
-    &.-hasIcon {
-      padding-left: 3.4375rem;
-
-      &::after {
-        background-image: url(map-get(map-get($states, light), icon));
-        content: '';
-        display: block;
-        height: 1.25rem;
-        left: 1.0625rem;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 1.25rem;
-      }
+    &.-center {
+      align-items: center;
+      justify-content: center;
     }
 
     @each $state in map-keys($states) {
       &.-#{$state} {
         background-color: map-get(map-get($states, $state), background-color);
         border-color: map-get(map-get($states, $state), border-color);
+      }
+    }
 
-        &.-hasIcon {
-          &::after {
-            background-image: url(map-get(map-get($states, $state), icon));
-          }
-        }
+    &__content {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+
+      & .a-h5 {
+        margin-top: 0;
       }
     }
   }

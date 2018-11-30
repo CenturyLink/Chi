@@ -3,64 +3,56 @@
 .chi {
   .m-alert {
     &.-bubble {
+      align-items: center;
+      justify-content: start;
 
-      & > .-close {
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      &.-small {
-        &::before {
-          display: none;
-        }
+      &.-dismiss {
+        justify-content: space-between;
 
         & > .-close {
-          top: 0.3rem;
-          transform: initial;
+          &.-small {
+            padding: 0.25rem;
+          }
+
+          & .a-icon {
+            line-height: 0.75rem;
+          }
         }
       }
 
       &.-large {
-        padding-bottom: 1.1875rem;
+        padding-bottom: 0.75rem;
         padding-top: 0.75rem;
 
-        & > .-close {
-          top: 0.9375rem;
-          transform: initial;
-        }
+        & .m-alert__content {
+          & .a-icon {
+            align-self: start;
+            top: 0.1875rem;
+          }
 
-        &::before {
-          font-size: $text-large;
-          margin-bottom: 0.4375rem;
-          padding: 0.25rem 0;
-        }
-      }
+          & > div:not(p) {
+            text-transform: capitalize;
+          }
 
-      @each $state in map-keys($states) {
-        &.-#{$state} {
-          &.-hasIcon {
-            &.-small {
-              padding-left: 2.4375rem;
-
-              &::after {
-                height: 1rem;
-                left: 0.9375rem;
-                width: 1rem;
-              }
+          @each $size in $hr-sizes {
+            & .a-#{$size} {
+              margin-bottom: 0;
+              margin-top: 0;
+              text-transform: capitalize;
             }
 
-            &.-large {
-              &::after {
-                height: 1.5rem;
-                left: 0.9375rem;
-                top: 0.9375rem;
-                transform: initial;
-                width: 1.5rem;
-              }
+            & #{$size} {
+              margin-bottom: 0;
+              margin-top: 0;
+              text-transform: capitalize;
             }
           }
+        }
+
+        & > .-close {
+          align-self: start;
+          top: 0.75rem;
+          transform: initial;
         }
       }
     }

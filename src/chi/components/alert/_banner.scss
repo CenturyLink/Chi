@@ -6,64 +6,25 @@
       border-radius: 0;
       border-width: 0.0625rem 0;
       padding-left: 1rem;
-      padding-right: 2rem;
+      padding-right: 1rem;
 
-      &.-small {
-        display: flex;
-        justify-content: center;
-        padding-left: 2rem;
+      &.-dismiss {
+        justify-content: space-between;
 
-        &::before {
-          display: none;
+        & > .-close {
+          &.-small {
+            padding: 0.25rem;
+          }
+
+          & .a-icon {
+            line-height: 0.75rem;
+          }
         }
       }
 
       &.-large {
-        padding-bottom: 1.1875rem;
+        padding-bottom: 0.75rem;
         padding-top: 0.75rem;
-
-        &::before {
-          font-size: $text-large;
-          line-height: $line-height;
-          margin-bottom: 0.4375rem;
-        }
-      }
-
-      @each $state in map-keys($states) {
-        &.-#{$state} {
-          &.-hasIcon {
-            flex-direction: row-reverse;
-            padding-left: 3.5rem;
-
-            &::after {
-              left: 1.125rem;
-            }
-
-            &.-small {
-              padding-left: 2rem;
-
-              &::after {
-                height: 1rem;
-                left: initial;
-                margin-right: 0.5rem;
-                position: relative;
-                top: initial;
-                transform: initial;
-                width: 1rem;
-              }
-            }
-
-            &.-large {
-              &::after {
-                height: 1.5rem;
-                left: 1rem;
-                top: 0.9375rem;
-                transform: initial;
-                width: 1.5rem;
-              }
-            }
-          }
-        }
       }
     }
   }
