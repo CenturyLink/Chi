@@ -8,17 +8,20 @@
 
       &.-dismiss {
         justify-content: space-between;
-      }
 
-      & > .-close {
-        &.-small {
-          line-height: 0.75rem;
-          padding: 0.25rem;
+        & > .-close {
+          &.-small {
+            padding: 0.25rem;
+          }
+
+          & .a-icon {
+            line-height: 0.75rem;
+          }
         }
       }
 
       &.-large {
-        padding-bottom: 1.1875rem;
+        padding-bottom: 0.75rem;
         padding-top: 0.75rem;
 
         & .m-alert__content {
