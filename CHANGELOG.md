@@ -2,6 +2,16 @@
 
 ### 0.8.4 (Unreleased)
 
+* Updated Brand component to support rendering on dark backgrounds.
+* Updated font-size of tab component to match Chi's base font-size.
+* Added Tooltip javascript component.
+* Updated Tab component to include hover state.
+* Updated input alignment notation.
+* Fixed flat button bug which prevented the ability to override the button padding with a utility class.
+* Added version dropdown to documentation.
+* Added Changelog page to documentation.
+* Added Floating Label javascript component.
+* Added Steps component.
 * Added new Number Input component.
 * Migrated javascript Tabs component into the new Chi core javascript library.
 * Added javascript Drawer component.
