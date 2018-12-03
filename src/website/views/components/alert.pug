@@ -73,33 +73,33 @@ h4 Dismissible
 p.-text Use the class <code>-dismiss</code> and a button to allow the user to dismiss the alert.
 .example.-mb3
   .-p1
-    .m-alert.-bubble.-dismiss.-danger.-m--2
+    .m-alert.-bubble.-dismiss.-warning.-m--2
       .m-alert__content
-        i.a-icon.-sm2.icon-circle-warning.-text--danger
-        | This is a danger alert
+        i.a-icon.-sm2.icon-warning.-text--warning
+        | This is a warning alert
       button(class='a-btn -icon -close -small')
         .a-btn__content
           i.a-icon.icon-x
-    .m-alert.-bubble.-large.-dismiss.-danger.-m--2
+    .m-alert.-bubble.-large.-dismiss.-warning.-m--2
       .m-alert__content
-        i.a-icon.-sm2.icon-circle-warning.-text--danger
+        i.a-icon.-sm2.icon-warning.-text--warning
         div
-          h5.a-h5 danger
-          | This is a danger alert
+          h5.a-h5 Warning
+          | This is a warning alert
       button(class='a-btn -icon -close -small')
         .a-btn__content
           i.a-icon.icon-x
-    .m-alert.-banner.-dismiss.-danger.-m--2
+    .m-alert.-banner.-dismiss.-warning.-m--2
       .m-alert__content
-        i.a-icon.-sm2(class ='icon-circle-warning -text--danger')
-        | This is a danger alert
+        i.a-icon.-sm2.icon-warning.-text--warning
+        | This is a warning alert
       button(class='a-btn -icon -close -small')
         .a-btn__content
           i.a-icon.icon-x
   :code(lang="html")
-    <div class="m-alert -bubble -dismiss -warning">
+    <div class="m-alert -bubble -dismiss -warning" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm2 icon-circle-warning -text--warning"></i>
+        <i class="a-icon -sm2 icon-warning -text--warning"></i>
         This is a warning alert<button class="a-btn -icon -close -small">
       </div>
       <button class="a-btn -icon -close -small">
@@ -108,12 +108,12 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
         </div>
       </button>
     </div>
-    <div class="m-alert -bubble -large -dismiss -danger">
+    <div class="m-alert -bubble -large -dismiss -warning" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm2 icon-circle-warning -text--danger"></i>
+        <i class="a-icon -sm2 icon-warning -text--warning"></i>
         <div>
-          <h5 class="a-h5">Danger</h5>
-          This is a danger alert
+          <h5 class="a-h5">Warning</h5>
+          This is a warning alert
         </div>
       </div>
       <button class="a-btn -icon -close -small">
@@ -122,10 +122,10 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
         </div>
       </button>
     </div>
-    <div class="m-alert -banner -dismiss -danger">
+    <div class="m-alert -banner -dismiss -warning" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm2 icon-circle-warning -text--danger"></i>
-        This is a danger alert
+        <i class="a-icon -sm2 icon-warning -text--warning"></i>
+        This is a warning alert
       </div>
       <button class="a-btn -icon -close -small">
         <div class="a-btn__content">
@@ -147,7 +147,7 @@ p.-text
           h5.a-h5 Warning
           | This is a warning alert
   :code(lang="html")
-    <div class="m-alert -bubble -large -warning">
+    <div class="m-alert -bubble -large -warning" role="alert">
       <div class="m-alert__content">
         <i class="a-icon -sm2 icon-warning -text--warning"></i>
         <div>
@@ -179,9 +179,6 @@ p.-text
   | Toasts are unobtrusive alerts used to display brief, auto-expiring information.
   | To use a toast alert, apply the class <code>-toast</code> and ensure the alert
   | is placed in the top right corner or bottom left corner of the screen.
-p.-text
-  | You can change the size of the title with <code> h1 to h6</code> markup or
-  | with the class <code>.a-h1 to .a-h6</code>
 
 .example.-mb3
   .-p1
@@ -196,7 +193,7 @@ p.-text
           .a-btn__content
             i.a-icon.icon-x
   :code(lang="html")
-    <div class="m-alert -toast -success">
+    <div class="m-alert -toast -success" role="alert">
       <div class="m-alert__content">
         <i class="a-icon -sm2 icon-circle-check -text--success"></i>
         <div>
@@ -210,7 +207,7 @@ p.-text
         </div>
       </button>
       </div>
-    <div class="m-alert -toast -danger">
+    <div class="m-alert -toast -danger" role="alert">
       <div class="m-alert__content">
         <i class="a-icon -sm2 icon-circle-warning -text--danger"></i>
         <div>
@@ -224,7 +221,7 @@ p.-text
         </div>
       </button>
     </div>
-    <div class="m-alert -toast -warning">
+    <div class="m-alert -toast -warning" role="alert">
       <div class="m-alert__content">
         <i class="a-icon -sm2 icon-warning -text--warning"></i>
         <div>
@@ -238,7 +235,7 @@ p.-text
         </div>
       </button>
     </div>
-    <div class="m-alert -toast -info">
+    <div class="m-alert -toast -info" role="alert">
       <div class="m-alert__content">
         <i class="a-icon -sm2 icon-circle-info -text--info"></i>
         <div>
@@ -252,7 +249,7 @@ p.-text
         </div>
       </button>
     </div>
-    <div class="m-alert -toast -light">
+    <div class="m-alert -toast -light" role="alert">
       <div class="m-alert__content">
         <i class="a-icon -sm2 icon-circle-info-outline -text--light"></i>
         <div>
@@ -266,7 +263,7 @@ p.-text
         </div>
       </button>
     </div>
-    <div class="m-alert -toast -dark">
+    <div class="m-alert -toast -dark" role="alert">
       <div class="m-alert__content">
         <i class="a-icon -sm2 icon-circle-info -text--dark"></i>
         <div>
