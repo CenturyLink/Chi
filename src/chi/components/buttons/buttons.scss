@@ -437,8 +437,36 @@ $sizes: (
 
             &:hover,
             &.-hover {
-              background-color: set-color(transparent);
-              border: $border solid set-color(grey, 50);
+              background-color: transparent;
+              border: $border solid transparent;
+              color: set-color(map-get($state-colors, $type));
+
+              .a-icon {
+                color: set-color(map-get($state-colors, $type));
+              }
+            }
+
+            &:focus,
+            &.-focus {
+              background-color: transparent;
+              border: $border solid transparent;
+              box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type)), 0.4);
+
+              .a-icon {
+                color: set-color(map-get($state-colors, $type));
+              }
+            }
+
+            &:active,
+            &.-active {
+              &,
+              &:focus,
+              &.-focus {
+                background-color: transparent;
+                border: $border solid transparent;
+                box-shadow: none;
+                color: set-color(grey, 50);
+              }
             }
           }
 
@@ -447,11 +475,6 @@ $sizes: (
             border: $border solid transparent;
             box-shadow: none;
             color: set-color(map-get($state-colors, $type));
-
-            &:focus,
-            &.-focus {
-              border: $border solid set-color(grey, 50);
-            }
           }
 
           &:hover,
@@ -475,7 +498,7 @@ $sizes: (
               background-color: set-color(map-get($state-colors, $type));
               border: $border solid rgba(set-color(map-get($state-colors, $type)), 0.2);
               box-shadow: inset 0 1px 1px 0 rgba(set-color(map-get($state-colors, $type)), 0.2);
-              color: set-color(grey, 50);
+              color: set-color(grey, 90);
             }
           }
         }
