@@ -1,8 +1,9 @@
 # CHANGELOG
 
-### 0.8.4 (Unreleased)
+### 0.9.0 (December 4, 2018)
 
-* Updated Brand component to support rendering on dark backgrounds.
+* Updated Header component to support black backgrounds.
+* Updated Brand component to support rendering on black backgrounds.
 * Updated font-size of tab component to match Chi's base font-size.
 * Added Tooltip javascript component.
 * Updated Tab component to include hover state.
