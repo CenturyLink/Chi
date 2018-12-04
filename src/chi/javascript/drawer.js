@@ -68,12 +68,14 @@ class Drawer {
       const self = this;
       const animated = Util.hasClass(this._drawerElem, CLASS_ANIMATED);
       if (animated) {
-        Util.addClass(this._drawerElem, CLASS_TRANSITIONING);
-        if (self._backdrop) { Util.addClass(self._backdrop, CLASS_TRANSITIONING); }
-        window.setTimeout(function(){
-          Util.addClass(self._drawerElem, CLASS_ACTIVE);
-          if (self._backdrop) { Util.removeClass(self._backdrop, CLASS_BACKDROP_CLOSED); }
-        }, 0);
+        window.requestAnimationFrame(function () {
+          Util.addClass(self._drawerElem, CLASS_TRANSITIONING);
+          if (self._backdrop) { Util.addClass(self._backdrop, CLASS_TRANSITIONING); }
+          window.requestAnimationFrame(function(){
+            Util.addClass(self._drawerElem, CLASS_ACTIVE);
+            if (self._backdrop) { Util.removeClass(self._backdrop, CLASS_BACKDROP_CLOSED); }
+          });
+        });
         Util.emulateTransitionEnd(ANIMATION_DURATION, function() {
           Util.addClass(self._elem, CLASS_ACTIVE);
           Util.removeClass(self._drawerElem, CLASS_TRANSITIONING);
@@ -97,12 +99,14 @@ class Drawer {
       const self = this;
       const animated = Util.hasClass(this._drawerElem, CLASS_ANIMATED);
       if (animated) {
-        Util.addClass(this._drawerElem, CLASS_TRANSITIONING);
-        if (self._backdrop) { Util.addClass(self._backdrop, CLASS_TRANSITIONING); }
-        window.setTimeout(function(){
-          Util.removeClass(self._drawerElem, CLASS_ACTIVE);
-          if (self._backdrop) { Util.addClass(self._backdrop, CLASS_BACKDROP_CLOSED); }
-        }, 0);
+        window.requestAnimationFrame(function() {
+          Util.addClass(self._drawerElem, CLASS_TRANSITIONING);
+          if (self._backdrop) { Util.addClass(self._backdrop, CLASS_TRANSITIONING); }
+          window.requestAnimationFrame(function(){
+            Util.removeClass(self._drawerElem, CLASS_ACTIVE);
+            if (self._backdrop) { Util.addClass(self._backdrop, CLASS_BACKDROP_CLOSED); }
+          });
+        });
         Util.emulateTransitionEnd(ANIMATION_DURATION, function() {
           Util.removeClass(self._drawerElem, CLASS_TRANSITIONING);
           Util.removeClass(self._elem, CLASS_ACTIVE);
