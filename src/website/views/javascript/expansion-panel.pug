@@ -12,7 +12,7 @@ p.-text
       .m-epanel__header
         h4.m-epanel__title Expansion panel
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-done--only
           .m-epanel__body
@@ -31,8 +31,8 @@ p.-text
               | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
               | nihil sed veritatis!
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+            button.a-btn.-lg Previous
+            button.a-btn.-lg.-brand.-ml--2 Continue
     .-d--flex.-justify-content--center
       .m-formGroup.-inline
         input.a-input(type='radio', name='example1', value='pending', id='example1_radio1', checked='checked')
@@ -57,7 +57,7 @@ p.-text
         <div class="m-epanel__header">
           <h4 class="m-epanel__title">Expansion panel</h4>
           <div class="m-epanel__activator-header -done--only">
-            <button class="a-btn -brand -flat" data-chi-ep-action="active">Change</button>
+            <button class="a-btn -brand -flat" data-chi-epanel-action="active">Change</button>
           </div>
         </div>
         <div class="m-epanel__content-wrapper">
@@ -99,22 +99,38 @@ p.-text
       </div>
   #a-tabs-e1-js.a-tabs-panel
     :code(lang="javascript")
-      var ep = chi.expansionPanel(document.getElementById('example1'));
+      var epDom = document.getElementById('example1');
+      var ePanel = chi.expansionPanel(epDom);
+      var checkBoxes = document.querySelectorAll('input[name="example1"]');
 
+      // Add event listeners to radio buttons
       Array.prototype.forEach.call(
-        document.querySelectorAll('input[name="example1"]'),
+        checkBoxes,
         function(input) {
-          input.addEventListener('change', function(e) {
+          input.addEventListener('change', function() {
             if (this.checked) {
-              ep.setState(this.value);
+              ePanel.setState(this.value);
             }
           }, false);
         }
       );
 
+      // Listen to Extension Panel state changes and update radio buttons
+      epDom.addEventListener('chi.epanel.change', function() {
+        var state = ePanel.getStateName();
+        Array.prototype.forEach.call(
+          checkBoxes,
+          function(input) {
+            if (input.value === state) {
+              input.checked = true;
+            }
+          }
+        );
+      });
+
 h3 Actions
 p.-text
-  | You can bind actions to activators inside the expansion panel with the <code>data-chi-ep-action</code> attribute.
+  | You can bind actions to activators inside the expansion panel with the <code>data-chi-epanel-action</code> attribute.
 
 table.a-table.-hover
   thead
@@ -152,26 +168,26 @@ table.a-table.-hover
 h4 Example
 .example.-mb3
   .-p3.-bg--grey-20
-    .m-epanel.-bg--white.-mb--2#example2(data-chi-ep-group='example2')
+    .m-epanel.-bg--white.-mb--2#example2(data-chi-epanel-group='example2')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-ep-action='toggle') Click me to toggle
+        h4.m-epanel__title(data-chi-epanel-action='toggle') Click me to toggle
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--center
-            button.a-btn.-lg(data-chi-ep-action='pending') Pending
-            button.a-btn.-lg(data-chi-ep-action='done').-brand.-ml--2 Done
+            button.a-btn.-lg(data-chi-epanel-action='pending') Pending
+            button.a-btn.-lg(data-chi-epanel-action='done').-brand.-ml--2 Done
         .m-epanel__content-view.-done--only
           .m-epanel__body
             h5 Done
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--center
-            button.a-btn.-lg(data-chi-ep-action='active') Active
-            button.a-btn.-lg(data-chi-ep-action='pending').-brand.-ml--2 Pending
+            button.a-btn.-lg(data-chi-epanel-action='active') Active
+            button.a-btn.-lg(data-chi-epanel-action='pending').-brand.-ml--2 Pending
   ul#a-tabs-e2.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-e2-html') HTML
@@ -181,9 +197,9 @@ h4 Example
     :code(lang="html")
       <div id="example2" class="m-epanel -done">
         <div class="m-epanel__header">
-          <h4 data-chi-ep-action="toggle" class="m-epanel__title">Click me to toggle</h4>
+          <h4 data-chi-epanel-action="toggle" class="m-epanel__title">Click me to toggle</h4>
           <div class="m-epanel__activator-header -done--only">
-            <button class="a-btn -brand -flat" data-chi-ep-action="active">Change</button>
+            <button class="a-btn -brand -flat" data-chi-epanel-action="active">Change</button>
           </div>
         </div>
         <div class="m-epanel__content-wrapper">
@@ -192,8 +208,8 @@ h4 Example
               <!-- some body content -->
             </div>
             <div class="m-epanel__footer -justify-content--center">
-              <button data-chi-ep-action="pending" class="a-btn -lg">Pending</button>
-              <button data-chi-ep-action="done" class="a-btn -lg -brand -ml--2">Done</button>
+              <button data-chi-epanel-action="pending" class="a-btn -lg">Pending</button>
+              <button data-chi-epanel-action="done" class="a-btn -lg -brand -ml--2">Done</button>
             </div>
           </div>
         </div>
@@ -203,8 +219,8 @@ h4 Example
               <!-- some body content -->
             </div>
             <div class="m-epanel__footer -justify-content--center">
-              <button data-chi-ep-action="active" class="a-btn -lg">Active</button>
-              <button data-chi-ep-action="pending" class="a-btn -lg -brand -ml--2">Pending</button>
+              <button data-chi-epanel-action="active" class="a-btn -lg">Active</button>
+              <button data-chi-epanel-action="pending" class="a-btn -lg -brand -ml--2">Pending</button>
             </div>
           </div>
         </div>
@@ -216,76 +232,75 @@ h4 Example
 h3 Group of expansion panels
 p.-text
   | The real power of the component comes when several expansion panels are used together. You can group them using the
-  | attribute <code>data-chi-ep-group="name-of-the-group"</code>. Now they will work together as an stepped form. When
+  | attribute <code>data-chi-epanel-group="name-of-the-group"</code>. Now they will work together as an stepped form. When
   | an element is activated, the previous expanding panels will get the done state and the next will get the pending
   | state.
 
 .example.-mb3#example3
   .-p3.-bg--grey-20
-    .m-epanel.-active.-bg--white.-mb--2(data-chi-ep-group='example3')
+    .m-epanel.-active.-bg--white.-mb--2(data-chi-epanel-group='example3')
       .m-epanel__header
         h4.m-epanel__title Expansion panel #1
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+            button.a-btn.-lg(data-chi-epanel-action='next').-brand.-ml--2 Continue
         .m-epanel__content-view.-done--only
           .m-epanel__body
             h5 Done
             p.-text content in expansion panel.
-    .m-epanel.-bg--white.-mb--2(data-chi-ep-group='example3')
+    .m-epanel.-bg--white.-mb--2(data-chi-epanel-group='example3')
       .m-epanel__header
         h4.m-epanel__title Expansion panel #2
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+            button.a-btn.-lg(data-chi-epanel-action='previous') Previous
+            button.a-btn.-lg(data-chi-epanel-action='next').-brand.-ml--2 Continue
         .m-epanel__content-view.-done--only
           .m-epanel__body
             h5 Done
             p.-text content in expansion panel.
-    .m-epanel.-bg--white.-mb--2(data-chi-ep-group='example3')
+    .m-epanel.-bg--white.-mb--2(data-chi-epanel-group='example3')
       .m-epanel__header
         h4.m-epanel__title Expansion panel #3
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+            button.a-btn.-lg(data-chi-epanel-action='previous') Previous
+            button.a-btn.-lg(data-chi-epanel-action='next').-brand.-ml--2 Continue
         .m-epanel__content-view.-done--only
           .m-epanel__body
             h5 Done
             p.-text content in expansion panel.
-    .m-epanel.-bg--white.-mb--2(data-chi-ep-group='example3')
+    .m-epanel.-bg--white.-mb--2(data-chi-epanel-group='example3')
       .m-epanel__header
         h4.m-epanel__title Expansion panel #4
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+            button.a-btn.-lg(data-chi-epanel-action='previous') Previous
+            button.a-btn.-lg.-brand.-ml--2 Finish
         .m-epanel__content-view.-done--only
           .m-epanel__body
             h5 Done
@@ -297,11 +312,11 @@ p.-text
       a(href='#a-tabs-e3-js') JS
   #a-tabs-e3-html.a-tabs-panel.-active
     :code(lang="html")
-      <div class="m-epanel -active -bg--white -mb--2" data-chi-ep-group="example3">
+      <div class="m-epanel -active -bg--white -mb--2" data-chi-epanel-group="example3">
         <div class="m-epanel__header">
           <h4 class="m-epanel__title">Expansion panel #1</h4>
           <div class="m-epanel__activator-header -done--only">
-            <button class="a-btn -brand -flat" data-chi-ep-action="active">Change</button>
+            <button class="a-btn -brand -flat" data-chi-epanel-action="active">Change</button>
           </div>
         </div>
         <div class="m-epanel__content-wrapper">
@@ -311,8 +326,7 @@ p.-text
               <p class="-text">content in expansion panel.</p>
             </div>
             <div class="m-epanel__footer -justify-content--end">
-              <button class="a-btn -lg" data-chi-ep-action="previous">Previous</button>
-              <button class="a-btn -lg -brand -ml--2" data-chi-ep-action="next">Continue</button>
+              <button class="a-btn -lg -brand -ml--2" data-chi-epanel-action="next">Continue</button>
             </div>
           </div>
           <div class="m-epanel__content-view -done--only">
@@ -324,11 +338,11 @@ p.-text
         </div>
       </div>
 
-      <div class="m-epanel -bg--white -mb--2" data-chi-ep-group="example3">
+      <div class="m-epanel -bg--white -mb--2" data-chi-epanel-group="example3">
         <div class="m-epanel__header">
           <h4 class="m-epanel__title">Expansion panel #2</h4>
           <div class="m-epanel__activator-header -done--only">
-            <button class="a-btn -brand -flat" data-chi-ep-action="active">Change</button>
+            <button class="a-btn -brand -flat" data-chi-epanel-action="active">Change</button>
           </div>
         </div>
         <div class="m-epanel__content-wrapper">
@@ -338,8 +352,8 @@ p.-text
               <p class="-text">content in expansion panel.</p>
             </div>
             <div class="m-epanel__footer -justify-content--end">
-              <button class="a-btn -lg" data-chi-ep-action="previous">Previous</button>
-              <button class="a-btn -lg -brand -ml--2" data-chi-ep-action="next">Continue</button>
+              <button class="a-btn -lg" data-chi-epanel-action="previous">Previous</button>
+              <button class="a-btn -lg -brand -ml--2" data-chi-epanel-action="next">Continue</button>
             </div>
           </div>
           <div class="m-epanel__content-view -done--only">
@@ -355,7 +369,7 @@ p.-text
 
   #a-tabs-e3-js.a-tabs-panel
     :code(lang="javascript")
-      chi.expansionPanel(document.querySelectorAll('[data-chi-ep-group="example3"]'));
+      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example3"]'));
 
 h3 Accordion mode
 p.-text
@@ -366,36 +380,36 @@ p.-text
   | and the expansion panel #3 also have next and previous buttons that fulfills the accordion behavior.
 .example.-mb3#example4
   .-p3.-bg--grey-20
-    .m-epanel.-active.-bg--white.-mb--2(data-chi-ep-group='example4')
+    .m-epanel.-active.-bg--white.-mb--2(data-chi-epanel-group='example4')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-ep-action='toggle') Expansion panel #1
+        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #1
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
-    .m-epanel.-bg--white.-mb--2(data-chi-ep-group='example4')
+    .m-epanel.-bg--white.-mb--2(data-chi-epanel-group='example4')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-ep-action='toggle') Expansion panel #2
+        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #2
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
-    .m-epanel.-bg--white.-mb--2(data-chi-ep-group='example4')
+    .m-epanel.-bg--white.-mb--2(data-chi-epanel-group='example4')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-ep-action='toggle') Expansion panel #3
+        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #3
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
-    .m-epanel.-bg--white.-mb--2(data-chi-ep-group='example4')
+            button.a-btn.-lg(data-chi-epanel-action='previous') Previous
+            button.a-btn.-lg(data-chi-epanel-action='next').-brand.-ml--2 Continue
+    .m-epanel.-bg--white.-mb--2(data-chi-epanel-group='example4')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-ep-action='toggle') Expansion panel #4
+        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #4
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
@@ -408,7 +422,7 @@ p.-text
       a(href='#a-tabs-e4-js') JS
   #a-tabs-e4-html.a-tabs-panel.-active
     :code(lang="html")
-      <div class="m-epanel -active -bg--white -mb--2" data-chi-ep-group="example4">
+      <div class="m-epanel -active -bg--white -mb--2" data-chi-epanel-group="example4">
         <div class="m-epanel__header">
           <h4 class="m-epanel__title">Expansion panel #1</h4>
         </div>
@@ -422,7 +436,7 @@ p.-text
         </div>
       </div>
 
-      <div class="m-epanel -bg--white -mb--2" data-chi-ep-group="example4">
+      <div class="m-epanel -bg--white -mb--2" data-chi-epanel-group="example4">
         <div class="m-epanel__header">
           <h4 class="m-epanel__title">Expansion panel #2</h4>
         </div>
@@ -433,8 +447,8 @@ p.-text
               <p class="-text">content in expansion panel.</p>
             </div>
             <div class="m-epanel__footer -justify-content--end">
-              <button class="a-btn -lg" data-chi-ep-action="previous">Previous</button>
-              <button class="a-btn -lg -brand -ml--2" data-chi-ep-action="next">Next</button>
+              <button class="a-btn -lg" data-chi-epanel-action="previous">Previous</button>
+              <button class="a-btn -lg -brand -ml--2" data-chi-epanel-action="next">Next</button>
             </div>
           </div>
         </div>
@@ -445,7 +459,7 @@ p.-text
   #a-tabs-e4-js.a-tabs-panel
     :code(lang="javascript")
       chi.expansionPanel(
-        document.querySelectorAll('[data-chi-ep-group="example4"]'),
+        document.querySelectorAll('[data-chi-epanel-group="example4"]'),
         {mode: 'accordion'}
       );
 
@@ -456,70 +470,68 @@ p.-text
 
 .example.-mb3#example5
   .-p3.-bg--grey-20
-    .m-epanel.-active.-bg--white.-mb--2(data-chi-ep-group='example5')
+    .m-epanel.-active.-bg--white.-mb--2(data-chi-epanel-group='example5')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-ep-action='toggle') Expansion panel #1
+        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #1
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+            button.a-btn.-lg(data-chi-epanel-action='next').-brand.-ml--2 Continue
         .m-epanel__content-view.-done--only
           .m-epanel__body
             h5 Done
             p.-text content in expansion panel.
-    .m-epanel.-bg--white.-mb--2(data-chi-ep-group='example5')
+    .m-epanel.-bg--white.-mb--2(data-chi-epanel-group='example5')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-ep-action='toggle') Expansion panel #2
+        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #2
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+            button.a-btn.-lg(data-chi-epanel-action='previous') Previous
+            button.a-btn.-lg(data-chi-epanel-action='next').-brand.-ml--2 Continue
         .m-epanel__content-view.-done--only
           .m-epanel__body
             h5 Done
             p.-text content in expansion panel.
-    .m-epanel.-bg--white.-mb--2(data-chi-ep-group='example5')
+    .m-epanel.-bg--white.-mb--2(data-chi-epanel-group='example5')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-ep-action='toggle') Expansion panel #3
+        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #3
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+            button.a-btn.-lg(data-chi-epanel-action='previous') Previous
+            button.a-btn.-lg(data-chi-epanel-action='next').-brand.-ml--2 Continue
         .m-epanel__content-view.-done--only
           .m-epanel__body
             h5 Done
             p.-text content in expansion panel.
-    .m-epanel.-bg--white.-mb--2(data-chi-ep-group='example5')
+    .m-epanel.-bg--white.-mb--2(data-chi-epanel-group='example5')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-ep-action='toggle') Expansion panel #4
+        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #4
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+            button.a-btn.-lg(data-chi-epanel-action='previous') Previous
         .m-epanel__content-view.-done--only
           .m-epanel__body
             h5 Done
@@ -531,11 +543,11 @@ p.-text
       a(href='#a-tabs-e5-js') JS
   #a-tabs-e5-html.a-tabs-panel.-active
     :code(lang="html")
-      <div class="m-epanel -active -bg--white -mb--2" data-chi-ep-group="example5">
+      <div class="m-epanel -active -bg--white -mb--2" data-chi-epanel-group="example5">
         <div class="m-epanel__header">
-          <h4 class="m-epanel__title" data-chi-ep-action="toggle">Expansion panel #1</h4>
+          <h4 class="m-epanel__title" data-chi-epanel-action="toggle">Expansion panel #1</h4>
           <div class="m-epanel__activator-header -done--only">
-            <button class="a-btn -brand -flat" data-chi-ep-action="active">Change</button>
+            <button class="a-btn -brand -flat" data-chi-epanel-action="active">Change</button>
           </div>
         </div>
         <div class="m-epanel__content-wrapper">
@@ -545,8 +557,7 @@ p.-text
               <p class="-text">content in expansion panel.</p>
             </div>
             <div class="m-epanel__footer -justify-content--end">
-              <button class="a-btn -lg" data-chi-ep-action="previous">Previous</button>
-              <button class="a-btn -lg -brand -ml--2" data-chi-ep-action="next">Continue</button>
+              <button class="a-btn -lg -brand -ml--2" data-chi-epanel-action="next">Continue</button>
             </div>
           </div>
           <div class="m-epanel__content-view -done--only">
@@ -558,11 +569,11 @@ p.-text
         </div>
       </div>
 
-      <div class="m-epanel -bg--white -mb--2" data-chi-ep-group="example5">
+      <div class="m-epanel -bg--white -mb--2" data-chi-epanel-group="example5">
         <div class="m-epanel__header">
-          <h4 class="m-epanel__title" data-chi-ep-action="toggle">Expansion panel #2</h4>
+          <h4 class="m-epanel__title" data-chi-epanel-action="toggle">Expansion panel #2</h4>
           <div class="m-epanel__activator-header -done--only">
-            <button class="a-btn -brand -flat" data-chi-ep-action="active">Change</button>
+            <button class="a-btn -brand -flat" data-chi-epanel-action="active">Change</button>
           </div>
         </div>
         <div class="m-epanel__content-wrapper">
@@ -572,8 +583,8 @@ p.-text
               <p class="-text">content in expansion panel.</p>
             </div>
             <div class="m-epanel__footer -justify-content--end">
-              <button class="a-btn -lg" data-chi-ep-action="previous">Previous</button>
-              <button class="a-btn -lg -brand -ml--2" data-chi-ep-action="next">Continue</button>
+              <button class="a-btn -lg" data-chi-epanel-action="previous">Previous</button>
+              <button class="a-btn -lg -brand -ml--2" data-chi-epanel-action="next">Continue</button>
             </div>
           </div>
           <div class="m-epanel__content-view -done--only">
@@ -590,7 +601,7 @@ p.-text
   #a-tabs-e5-js.a-tabs-panel
     :code(lang="javascript")
       chi.expansionPanel(
-        document.querySelectorAll('[data-chi-ep-group="example5"]'),
+        document.querySelectorAll('[data-chi-epanel-group="example5"]'),
         {mode: 'free'}
       );
 h3 Custom mode
@@ -601,70 +612,69 @@ p.-text
 
 .example.-mb3#example6
   .-p3.-bg--grey-20
-    .m-epanel.-active.-bg--white.-mb--2(data-chi-ep-group='example6')
+    .m-epanel.-active.-bg--white.-mb--2(data-chi-epanel-group='example6')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-ep-action='toggle') Expansion panel #1
+        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #1
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+            button.a-btn.-lg(data-chi-epanel-action='next').-brand.-ml--2 Continue
         .m-epanel__content-view.-done--only
           .m-epanel__body
             h5 Done
             p.-text content in expansion panel.
-    .m-epanel.-done.-bg--white.-mb--2(data-chi-ep-group='example6')
+    .m-epanel.-done.-bg--white.-mb--2(data-chi-epanel-group='example6')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-ep-action='toggle') Expansion panel #2
+        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #2
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+            button.a-btn.-lg(data-chi-epanel-action='previous') Previous
+            button.a-btn.-lg(data-chi-epanel-action='next').-brand.-ml--2 Continue
         .m-epanel__content-view.-done--only
           .m-epanel__body
             h5 Done
             p.-text content in expansion panel.
-    .m-epanel.-done.-bg--white.-mb--2(data-chi-ep-group='example6')
+    .m-epanel.-done.-bg--white.-mb--2(data-chi-epanel-group='example6')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-ep-action='toggle') Expansion panel #3
+        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #3
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+            button.a-btn.-lg(data-chi-epanel-action='previous') Previous
+            button.a-btn.-lg(data-chi-epanel-action='next').-brand.-ml--2 Continue
         .m-epanel__content-view.-done--only
           .m-epanel__body
             h5 Done
             p.-text content in expansion panel.
-    .m-epanel.-done.-bg--white.-mb--2(data-chi-ep-group='example6')
+    .m-epanel.-done.-bg--white.-mb--2(data-chi-epanel-group='example6')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-ep-action='toggle') Expansion panel #4
+        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #4
         .m-epanel__activator-header.-done--only
-          button.a-btn.-brand.-flat(data-chi-ep-action='active') Change
+          button.a-btn.-brand.-flat(data-chi-epanel-action='active') Change
       .m-epanel__content-wrapper
         .m-epanel__content-view.-active--only
           .m-epanel__body
             h5 Active
             p.-text content in expansion panel.
           .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg(data-chi-ep-action='previous') Previous
-            button.a-btn.-lg(data-chi-ep-action='next').-brand.-ml--2 Continue
+            button.a-btn.-lg(data-chi-epanel-action='previous') Previous
+            button.a-btn.-lg.-brand.-ml--2 Finish
         .m-epanel__content-view.-done--only
           .m-epanel__body
             h5 Done
@@ -676,11 +686,11 @@ p.-text
       a(href='#a-tabs-e6-js') JS
   #a-tabs-e6-html.a-tabs-panel.-active
     :code(lang="html")
-      <div class="m-epanel -active -bg--white -mb--2" data-chi-ep-group="example6">
+      <div class="m-epanel -active -bg--white -mb--2" data-chi-epanel-group="example6">
         <div class="m-epanel__header">
-          <h4 class="m-epanel__title" data-chi-ep-action="toggle">Expansion panel #1</h4>
+          <h4 class="m-epanel__title" data-chi-epanel-action="toggle">Expansion panel #1</h4>
           <div class="m-epanel__activator-header -done--only">
-            <button class="a-btn -brand -flat" data-chi-ep-action="active">Change</button>
+            <button class="a-btn -brand -flat" data-chi-epanel-action="active">Change</button>
           </div>
         </div>
         <div class="m-epanel__content-wrapper">
@@ -690,8 +700,7 @@ p.-text
               <p class="-text">content in expansion panel.</p>
             </div>
             <div class="m-epanel__footer -justify-content--end">
-              <button class="a-btn -lg" data-chi-ep-action="previous">Previous</button>
-              <button class="a-btn -lg -brand -ml--2" data-chi-ep-action="next">Continue</button>
+              <button class="a-btn -lg -brand -ml--2" data-chi-epanel-action="next">Continue</button>
             </div>
           </div>
           <div class="m-epanel__content-view -done--only">
@@ -703,11 +712,11 @@ p.-text
         </div>
       </div>
 
-      <div class="m-epanel -done -bg--white -mb--2" data-chi-ep-group="example6">
+      <div class="m-epanel -done -bg--white -mb--2" data-chi-epanel-group="example6">
         <div class="m-epanel__header">
-          <h4 class="m-epanel__title" data-chi-ep-action="toggle">Expansion panel #2</h4>
+          <h4 class="m-epanel__title" data-chi-epanel-action="toggle">Expansion panel #2</h4>
           <div class="m-epanel__activator-header -done--only">
-            <button class="a-btn -brand -flat" data-chi-ep-action="active">Change</button>
+            <button class="a-btn -brand -flat" data-chi-epanel-action="active">Change</button>
           </div>
         </div>
         <div class="m-epanel__content-wrapper">
@@ -717,8 +726,8 @@ p.-text
               <p class="-text">content in expansion panel.</p>
             </div>
             <div class="m-epanel__footer -justify-content--end">
-              <button class="a-btn -lg" data-chi-ep-action="previous">Previous</button>
-              <button class="a-btn -lg -brand -ml--2" data-chi-ep-action="next">Continue</button>
+              <button class="a-btn -lg" data-chi-epanel-action="previous">Previous</button>
+              <button class="a-btn -lg -brand -ml--2" data-chi-epanel-action="next">Continue</button>
             </div>
           </div>
           <div class="m-epanel__content-view -done--only">
@@ -735,7 +744,7 @@ p.-text
   #a-tabs-e6-js.a-tabs-panel
     :code(lang="javascript")
       chi.expansionPanel(
-        document.querySelectorAll('[data-chi-ep-group="example6"]'),
+        document.querySelectorAll('[data-chi-epanel-group="example6"]'),
         {
           mode: 'custom',
           changeHandler: function (newState, oldState, expansionPanel, panelGroup) {
@@ -755,7 +764,7 @@ p.-text
   | Expansion panel components have a dispose function to free all resources attached to the element, such as event
   | listeners and object data. You should call this method when you want to remove the component.
 :code(lang="javascript")
-  var elemArray = document.querySelectorAll('[data-chi-ep-group="groupName"]');
+  var elemArray = document.querySelectorAll('[data-chi-epanel-group="groupName"]');
   var expansionPanelsArray = chi.expansionPanel(elemArray);
   // do stuff
   expansionPanelsArray.forEach(function (expansionPanel) {

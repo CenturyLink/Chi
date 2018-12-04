@@ -6,6 +6,7 @@ const COMPONENT_TYPE = "expansionPanel";
 const ANIMATION_DURATION = 200;
 const CLASS_CONTENT_WRAPPER = 'm-epanel__content-wrapper';
 const CLASS_CONTENT_VIEW = 'm-epanel__content-view';
+const EPANEL_EVENT_CHANGE = 'chi.epanel.change';
 
 const STATE = {
   ACTIVE: {
@@ -181,10 +182,12 @@ class ExpansionPanel {
       self._clickHandler(e);
     };
     this._elem.addEventListener('click', this._onClickEventListener);
+
+    this._initEventDispatcher();
   }
 
   _initGroup () {
-    const groupName = this._elem.dataset.chiEpGroup;
+    const groupName = this._elem.dataset.chiEpanelGroup;
     if (!groupName) {
       return;
     }
@@ -234,10 +237,10 @@ class ExpansionPanel {
   }
 
   _clickHandler (e) {
-    if (!e.target || !e.target.dataset || !e.target.dataset.chiEpAction) {
+    if (!e.target || !e.target.dataset || !e.target.dataset.chiEpanelAction) {
       return;
     }
-    this.execute(e.target.dataset.chiEpAction);
+    this.execute(e.target.dataset.chiEpanelAction);
   }
 
   execute (action) {
@@ -261,6 +264,14 @@ class ExpansionPanel {
         listener => listener(newState, oldState, this)
       );
     }
+  }
+
+  getState () {
+    return this._state;
+  }
+
+  getStateName () {
+    return this._state.NAME;
   }
 
   addStateChangeListener (listener) {
@@ -319,7 +330,6 @@ class ExpansionPanel {
           updateStyle(viewIn, 'top', '0');
           updateStyle(viewIn, 'left', '0');
           updateStyle(viewIn, 'right', '0');
-          updateStyle(viewIn, 'background-color', 'white');
           updateStyle(viewIn, 'z-index', '1');
 
         }
@@ -372,6 +382,14 @@ class ExpansionPanel {
     this.animationEndTimeoutId = window.setTimeout(animationStart, 0);
     Util.emulateTransitionEnd(ANIMATION_DURATION, this.animationEnd);
 
+  }
+
+  _initEventDispatcher () {
+    const self = this;
+    const eventDispatcher = function () {
+      self._elem.dispatchEvent(Util.createEvent(EPANEL_EVENT_CHANGE));
+    };
+    this.addStateChangeListener(eventDispatcher);
   }
 
   dispose () {

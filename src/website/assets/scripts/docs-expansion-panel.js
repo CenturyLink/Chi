@@ -2,25 +2,40 @@
 document.addEventListener('DOMContentLoaded',
   function() {
 
-    const ep = chi.expansionPanel(document.getElementById('example1'));
+    const epDom = document.getElementById('example1');
+    const ePanel = chi.expansionPanel(epDom);
+
+    const checkBoxes = document.querySelectorAll('input[name="example1"]');
 
     Array.prototype.forEach.call(
-      document.querySelectorAll('input[name="example1"]'),
+      checkBoxes,
       function(input) {
         input.addEventListener('change', function() {
           if (this.checked) {
-            ep.setState(this.value);
+            ePanel.setState(this.value);
           }
         }, false);
       }
     );
 
+    epDom.addEventListener('chi.epanel.change', function() {
+      const state = ePanel.getStateName();
+      Array.prototype.forEach.call(
+        checkBoxes,
+        function(input) {
+          if (input.value === state) {
+            input.checked = true;
+          }
+        }
+      );
+    });
+
     chi.expansionPanel(document.getElementById('example2'));
-    chi.expansionPanel(document.querySelectorAll('[data-chi-ep-group="example3"]'));
-    chi.expansionPanel(document.querySelectorAll('[data-chi-ep-group="example4"]'), {mode: 'accordion'});
-    chi.expansionPanel(document.querySelectorAll('[data-chi-ep-group="example5"]'), {mode: 'free'});
+    chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example3"]'));
+    chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example4"]'), {mode: 'accordion'});
+    chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example5"]'), {mode: 'free'});
     chi.expansionPanel(
-      document.querySelectorAll('[data-chi-ep-group="example6"]'),
+      document.querySelectorAll('[data-chi-epanel-group="example6"]'),
       {
         mode: 'custom',
         changeHandler: function (newState, oldState, expansionPanel, panelGroup) {

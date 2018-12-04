@@ -6,7 +6,8 @@ $transition-duration: 0.2s;
 .chi {
 
   .m-epanel {
-    border: .0625rem solid rgba(0,0,0,.12);
+    border: .0625rem solid $border-color;
+    border-radius: $border-radius;
 
     &__header {
       min-height: 3.5rem;
@@ -56,6 +57,7 @@ $transition-duration: 0.2s;
     }
 
     &__content-view {
+      background-color: white;
       transition: opacity $transition-duration;
     }
 
@@ -85,7 +87,7 @@ $transition-duration: 0.2s;
       }
     }
 
-    [data-chi-ep-action] {
+    [data-chi-epanel-action] {
       cursor: pointer;
     }
 
