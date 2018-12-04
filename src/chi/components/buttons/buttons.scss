@@ -1,7 +1,7 @@
 @import 'mixins';
 @import 'variables';
 
-$state-colors: (brand: emerald, danger: red, info: navy, dark: grey);
+$state-colors: (brand: emerald, danger: red, info: navy, dark: grey, inverse: white);
 $border: 0.0625rem;
 
 $sizes: (
@@ -426,66 +426,107 @@ $sizes: (
     }
 
     @each $type in map-keys($state-colors) {
-      &.-#{$type} {
-        background-color: set-color(map-get($state-colors, $type), 60);
-        border: $border solid set-color(map-get($state-colors, $type), 60);
-        box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
-        color: set-color(white);
-
-        .a-icon {
-          color: inherit;
-        }
-
-        .a-spinner__icon .path {
-          stroke: set-color(white);
-        }
-
-        &:hover,
-        &.-hover {
-          background-color: set-color(map-get($state-colors, $type), 70);
-          border: $border solid set-color(map-get($state-colors, $type), 70);
-          box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
-        }
-
-        &:focus,
-        &.-focus {
-          box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 70), 0.3);
-        }
-
-        &:active,
-        &.-active {
-          &,
-          &:focus,
-          &.-focus {
-            background-color: set-color(map-get($state-colors, $type), 80);
-            border: $border solid rgba(set-color(black), 0.2);
-            box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
+      @if( $type == 'inverse') {
+        &.-#{$type} {
+          .a-icon {
+            color: set-color(grey, 50);
           }
-        }
 
-        &.-outline {
-          background-color: set-color(white);
-          border: $border solid set-color(map-get($state-colors, $type), 60);
-          color: set-color(map-get($state-colors, $type), 60);
+          &.-icon {
+            color: set-color(grey, 50);
 
-          .a-spinner__icon .path {
-            stroke: set-color(map-get($state-colors, $type), 60);
+            &:hover,
+            &.-hover {
+              background-color: transparent;
+              border: $border solid transparent;
+              color: set-color(map-get($state-colors, $type));
+
+              .a-icon {
+                color: set-color(map-get($state-colors, $type));
+              }
+            }
+
+            &:focus,
+            &.-focus {
+              background-color: transparent;
+              border: $border solid transparent;
+              box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type)), 0.4);
+
+              .a-icon {
+                color: set-color(map-get($state-colors, $type));
+              }
+            }
+
+            &:active,
+            &.-active {
+              &,
+              &:focus,
+              &.-focus {
+                background-color: transparent;
+                border: $border solid transparent;
+                box-shadow: none;
+                color: set-color(grey, 50);
+              }
+            }
+          }
+
+          &.-flat {
+            background-color: transparent;
+            border: $border solid transparent;
+            box-shadow: none;
+            color: set-color(map-get($state-colors, $type));
           }
 
           &:hover,
           &.-hover {
-            background-color: set-color(map-get($state-colors, $type), 60);
-            color: set-color(white);
-
-            .a-spinner__icon .path {
-              stroke: set-color(white);
-            }
+            background-color: set-color(transparent);
+            border: $border solid set-color(map-get($state-colors, $type));
           }
 
           &:focus,
           &.-focus {
-            border: $border solid set-color(map-get($state-colors, $type), 60);
-            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 70), 0.4);
+            background-color: set-color(transparent);
+            border: $border solid set-color(map-get($state-colors, $type));
+            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type)), 0.4);
+          }
+
+          &:active,
+          &.-active {
+            &,
+            &:focus,
+            &.-focus {
+              background-color: set-color(map-get($state-colors, $type));
+              border: $border solid rgba(set-color(map-get($state-colors, $type)), 0.2);
+              box-shadow: inset 0 1px 1px 0 rgba(set-color(map-get($state-colors, $type)), 0.2);
+              color: set-color(grey, 90);
+            }
+          }
+        }
+      } @else {
+        &.-#{$type} {
+          background-color: set-color(map-get($state-colors, $type), 60);
+          border: $border solid set-color(map-get($state-colors, $type), 60);
+          box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
+          color: set-color(white);
+
+          .a-icon {
+            color: inherit;
+          }
+
+          .a-spinner__icon .path {
+            stroke: set-color(white);
+          }
+
+          &:hover,
+          &.-hover {
+            background-color: set-color(map-get($state-colors, $type), 70);
+            border: $border solid set-color(map-get($state-colors, $type), 70);
+            box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+          }
+
+          &:focus,
+          &.-focus {
+            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 70), 0.3);
           }
 
           &:active,
@@ -496,43 +537,80 @@ $sizes: (
               background-color: set-color(map-get($state-colors, $type), 80);
               border: $border solid rgba(set-color(black), 0.2);
               box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
+            }
+          }
+
+          &.-outline {
+            background-color: set-color(white);
+            border: $border solid set-color(map-get($state-colors, $type), 60);
+            color: set-color(map-get($state-colors, $type), 60);
+
+            .a-spinner__icon .path {
+              stroke: set-color(map-get($state-colors, $type), 60);
+            }
+
+            &:hover,
+            &.-hover {
+              background-color: set-color(map-get($state-colors, $type), 60);
               color: set-color(white);
 
               .a-spinner__icon .path {
                 stroke: set-color(white);
               }
             }
-          }
-        }
 
-        &.-flat {
-          background-color: transparent;
-          border: $border solid transparent;
-          box-shadow: none;
-          color: set-color(map-get($state-colors, $type), 60);
-
-          &:hover,
-          &.-hover {
-            background-color: set-color(white);
-            border: $border solid set-color(map-get($state-colors, $type), 60);
-          }
-
-          &:focus,
-          &.-focus {
-            background-color: set-color(white);
-            border: $border solid set-color(map-get($state-colors, $type), 60);
-            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 70), 0.4);
-          }
-
-          &:active,
-          &.-active {
-            &,
             &:focus,
             &.-focus {
-              background-color: set-color(map-get($state-colors, $type), 60);
-              border: $border solid rgba(set-color(black), 0.2);
-              box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
-              color: set-color(white);
+              border: $border solid set-color(map-get($state-colors, $type), 60);
+              box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 70), 0.4);
+            }
+
+            &:active,
+            &.-active {
+              &,
+              &:focus,
+              &.-focus {
+                background-color: set-color(map-get($state-colors, $type), 80);
+                border: $border solid rgba(set-color(black), 0.2);
+                box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
+                color: set-color(white);
+
+                .a-spinner__icon .path {
+                  stroke: set-color(white);
+                }
+              }
+            }
+          }
+
+          &.-flat {
+            background-color: transparent;
+            border: $border solid transparent;
+            box-shadow: none;
+            color: set-color(map-get($state-colors, $type), 60);
+
+            &:hover,
+            &.-hover {
+              background-color: set-color(white);
+              border: $border solid set-color(map-get($state-colors, $type), 60);
+            }
+
+            &:focus,
+            &.-focus {
+              background-color: set-color(white);
+              border: $border solid set-color(map-get($state-colors, $type), 60);
+              box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 70), 0.4);
+            }
+
+            &:active,
+            &.-active {
+              &,
+              &:focus,
+              &.-focus {
+                background-color: set-color(map-get($state-colors, $type), 60);
+                border: $border solid rgba(set-color(black), 0.2);
+                box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
+                color: set-color(white);
+              }
             }
           }
         }
