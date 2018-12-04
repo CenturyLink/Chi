@@ -447,6 +447,11 @@ $sizes: (
             border: $border solid transparent;
             box-shadow: none;
             color: set-color(map-get($state-colors, $type));
+
+            &:focus,
+            &.-focus {
+              border: $border solid set-color(grey, 50);
+            }
           }
 
           &:hover,
