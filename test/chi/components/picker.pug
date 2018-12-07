@@ -6,38 +6,143 @@ h3 Base
 
 h4 Type checkbox
 .example.-mb--3
-  .-p--3(style="background-color:#eee;border-radius:.15em .15em 0 0;")
-    section.a-picker
-      each type in ['checkbox1','checkbox2','checkbox3','checkbox4','checkbox5']
-        input(type="checkbox", class="a-input", id=`${type}`)
-        label(for=`${type}`)
-          = type
-h4 Type radio
-.example.-mb--3
-  .-p--3(style="background-color:#eee;border-radius:.15em .15em 0 0;")
-    section.a-picker
-      each type in ['radio1','radio2','radio3','radio4','radio5']
-        input(type="radio", class="a-input", name='box', id=`${type}`)
+  .-p--3.-d--flex.-align-items--center.-justify-content--center
+    each type in ['checkbox1','checkbox2','checkbox3','checkbox4']
+      .m-picker.-m--2
+        input(type="checkbox", class="a-picker", id=`${type}`)
         label(for=`${type}`)
           = type
 
-h3 With icon
+h4 Type radio
+.example.-mb--3
+  .-p--3.-d--flex.-align-items--center.-justify-content--center
+    each type in ['radio1','radio2','radio3','radio4']
+      .m-picker.-m--2
+        input(type="radio", class="a-picker", name='box', id=`${type}`)
+        label(for=`${type}`)
+          = type
+
+h3 Number
 
 h4 Type checkbox
 .example.-mb--3
-  .-p--3(style="background-color:#eee;border-radius:.15em .15em 0 0;")
-    section.a-picker
-      each type, val in {application:'icon-box-application',outline:'icon-box-outline',box:'icon-box',deployment:'icon-box-deployment',container:'icon-box-container',script:'icon-box-script'}
-        input(type="checkbox", class="a-input -withIcon", id=`i-${type}`)
-        label(for=`i-${type}`)
-          i(class=`a-icon ${type} -md`)
+  .-p--3.-d--flex.-align-items--center.-justify-content--center
+    each type in ['1','2','3','4','5']
+      .m-picker.-number.-m--2
+        input(type="radio", class="a-picker", name='box', id=`${type}`)
+        label(for=`${type}`)
+          = type
+
+h3 Pill
+
+.example.-mb--3
+  .-p--3.-d--flex.-align-items--center.-justify-content--center
+    each type in ['10','20','30']
+      .m-picker.-number.-pill.-m--2
+        input(type="radio", class="a-picker", name='box', id=`${type}`)
+        label(for=`${type}`)
+          = type
+
+h3 Picker with icon
+
+h4 Type checkbox
+.example.-mb--3
+  .-p--3.-d--flex.-align-items--center.-justify-content--center
+    each type, val in {application:'icon-box-application',outline:'icon-box-outline',deployment:'icon-box-deployment',script:'icon-box-script'}
+      .m-picker.-m--2
+        input(type="checkbox", class="a-picker -icon", id=`c-${type}`)
+        label(for=`c-${type}`)
           = val
+          i(class=`a-icon ${type} -md -text--muted`)
+
 h4 Type radio
 .example.-mb--3
-  .-p--3(style="background-color:#eee;border-radius:.15em .15em 0 0;")
-    section.a-picker
-      each type, val in {application:'icon-box-application',outline:'icon-box-outline',box:'icon-box',deployment:'icon-box-deployment',container:'icon-box-container',script:'icon-box-script'}
-        input(type="radio", class="a-input -withIcon", name='box-icon', id=`i-${val}`)
-        label(for=`i-${val}`)
-          i(class=`a-icon ${type} -md`)
+  .-p--3.-d--flex.-align-items--center.-justify-content--center
+    each type, val in {application:'icon-box-application',outline:'icon-box-outline',deployment:'icon-box-deployment',script:'icon-box-script'}
+      .m-picker.-m--2
+        input(type="radio", class="a-picker -icon", name='box-icon', id=`r-${val}`)
+        label(for=`r-${val}`)
           = val
+          i(class=`a-icon ${type} -md -text--muted`)
+
+h3 Inline
+
+h4 Type checkbox
+h4 Base
+.example.-mb--3(style='width: 700px')
+  .-p--3
+    each type in ['checkbox1','checkbox2']
+      .m-picker.-inline.-p--1
+        input(type="checkbox", class="a-picker", id=`i-${type}`)
+        label(for=`i-${type}`)
+          = type
+h4 With checkbox
+.example.-mb--3(style='width: 700px')
+  .-p--3
+    each type in ['checkbox1','checkbox2']
+      .m-picker.-inline.-p--1
+        input(type="checkbox", class="a-picker", id=`ic-${type}`)
+        label(for=`ic-${type}`)
+          input(type="checkbox", class="a-input", id=`ic-${type}`)
+          label(for=`ic-${type}`)
+          = type
+h4 Type radio
+h4 Base
+.example.-mb--3(style='width: 700px')
+  .-p--3
+    each type in ['radio1','radio2']
+      .m-picker.-inline.-p--1
+        input(type="radio", class="a-picker", name='box', id=`ei-${type}`)
+        label(for=`ei-${type}`)
+          = type
+h4 With radio
+.example.-mb--3(style='width: 700px')
+  .-p--3
+    each type in ['radio1','radio2']
+      .m-picker.-inline.-p--1
+        input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
+        label(for=`ri-${type}`)
+          input(type="radio", class="a-input", id=`ri-${type}`)
+          label(for=`ri-${type}`)
+          = type
+
+h3 Picker group
+
+h4 Type checkbox
+.example.-mb--3
+  .-p--3.-d--flex.-align-items--center.-justify-content--center
+    .m-pickerGroup
+      each type in ['1','2','3','4','5']
+        .m-picker.-number
+          input(type="checkbox", class="a-picker", name='checkbox', id=`gg-${type}`)
+          label(for=`gg-${type}`)
+            = type
+h4 Type radio
+.example.-mb--3
+  .-p--3.-d--flex.-align-items--center.-justify-content--center
+    .m-pickerGroup
+      each type in ['1','2','3','4','5']
+        .m-picker.-number
+          input(type="radio", class="a-picker", name='box', id=`pg-${type}`)
+          label(for=`pg-${type}`)
+            = type
+h4 With Icon
+.example.-mb--3
+  .-p--3.-d--flex.-align-items--center.-justify-content--center
+    .m-pickerGroup
+      each type, val in {application:'icon-box-application',outline:'icon-box-outline',deployment:'icon-box-deployment',script:'icon-box-script'}
+        .m-picker
+          input(type="radio", class="a-picker -icon", name='box-icon', id=`pg-${val}`)
+          label(for=`pg-${val}`)
+            = val
+            i(class=`a-icon ${type} -md -text--muted`)
+
+h4 Picker group inline
+.example.-mb--3
+  .-p--3.-d--flex.-align-items--center.-justify-content--center
+    .m-pickerGroup
+      each type in ['1','2','3']
+        .m-picker.-inline
+          input(type="radio", class="a-picker", name='box', id=`in-${type}`)
+          label(for=`in-${type}`)
+            = type

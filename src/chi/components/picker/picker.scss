@@ -2,33 +2,31 @@
 @import 'mixins';
 
 .chi {
-  .a-picker {
+  .m-picker {
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
 
     input {
       &[type='checkbox'],
       &[type='radio'] {
-        &.a-input {
-          cursor: pointer;
+        &.a-picker {
           left: -9999px;
           position: absolute;
 
           & + label {
+            align-items: center;
             background-color: $text-white;
-            border: solid 0.125rem $text-white;
-            border-radius: 5rem;
+            border: solid 0.125rem set-color(grey, 30);
+            border-radius: 0.1875rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
             color: $dark-color;
             font-size: $text;
-            height: 5rem;
+            font-weight: 600;
             justify-content: center;
-            line-height: 1rem;
-            margin: 0.5rem;
-            max-width: 8rem;
-            padding: 1.125rem;
-            transition: all .2s;
-            width: 8rem;
+            padding: 3rem;
+            text-transform: capitalize;
+            transition: all 0.2s;
 
             &:active {
               background-color: set-color(grey, 20);
@@ -36,6 +34,7 @@
 
             &:hover {
               background-color: set-color(grey, 10);
+              cursor: pointer;
             }
 
             &::after,
@@ -47,25 +46,36 @@
           &:checked {
             & + label {
               border: solid 0.125rem $brand-color;
+              color: $brand-color;
+
+              & .a-input {
+                & + label {
+                  &::before {
+                    background-color: #00853f;
+                    border-color: #00853f;
+                  }
+
+                  &::after {
+                    background-image: url('./icon-check.svg');
+                    transform: scale(1);
+                  }
+                }
+              }
             }
           }
 
-          &.-withIcon {
+          &.-icon {
             & + label {
               background-color: $text-white;
-              border-radius: 0.3125rem;
-              border: solid 0.125rem $text-white;
+              border-radius: 0.125rem;
+              border: solid 0.125rem set-color(grey, 30);
               color: $dark-color;
               display: flex;
               flex-direction: column;
               font-size: $text;
-              height: 8rem;
+              font-weight: 600;
               justify-content: center;
-              line-height: 1rem;
-              margin: 0.5rem;
-              padding: 1.125rem;
-              transition: all .2s;
-              width: 7rem;
+              transition: all 0.2s;
 
               &:active {
                 background-color: set-color(grey, 20);
@@ -81,13 +91,14 @@
               }
 
               & i {
-                margin-bottom: 2rem;
+                margin-top: 1rem;
               }
             }
 
             &:checked {
               & + label {
                 border: solid 0.125rem $brand-color;
+                color: $brand-color;
               }
             }
           }
@@ -96,6 +107,49 @@
         &:checked {
           & + label {
             border: solid 0.125rem $brand-color;
+            padding: 3rem;
+          }
+        }
+      }
+    }
+
+    &.-number {
+      input {
+        &[type='checkbox'],
+        &[type='radio'] {
+          &.a-picker {
+            & + label {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+    }
+
+    &.-pill {
+      input {
+        &[type='checkbox'],
+        &[type='radio'] {
+          &.a-picker {
+            & + label {
+              border-radius: 5rem;
+              padding-left: 5rem;
+              padding-right: 5rem;
+            }
+          }
+        }
+      }
+    }
+
+    &.-inline {
+      input {
+        &[type='checkbox'],
+        &[type='radio'] {
+          &.a-picker {
+            & + label {
+              padding: 0.5rem 1rem;
+              width: 100%;
+            }
           }
         }
       }

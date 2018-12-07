@@ -1,0 +1,117 @@
+@import 'mixins';
+@import 'variables';
+
+.chi {
+  .m-pickerGroup {
+    display: inline-flex;
+
+    &:not(.-vertical) {
+      .m-picker {
+        input {
+          &[type='checkbox'],
+          &[type='radio'] {
+            &.a-picker {
+              & + label {
+                margin: 0;
+                padding: 3rem;
+              }
+
+              & + label {
+                border-radius: 0;
+                border-right-width: 0;
+              }
+            }
+          }
+        }
+
+        &.-number {
+          input {
+            &[type='checkbox'],
+            &[type='radio'] {
+              &.a-picker {
+                & + label {
+                  border-radius: 0;
+                  border-right-width: 0;
+                  font-size: 2rem;
+                  margin: 0;
+                  padding: 3rem;
+                }
+
+                &:checked {
+                  & + label  {
+                    outline: 0.125rem solid $brand-color;
+                    outline-offset: -0.125rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &.-inline {
+          input {
+            &[type='checkbox'],
+            &[type='radio'] {
+              &.a-picker {
+                & + label {
+                  border-radius: 0;
+                  border-right-width: 0;
+                  padding: 0.5rem 1rem;
+                  min-width: 7rem;
+                  text-align: center;
+                }
+
+                &:checked {
+                  & + label  {
+                    outline: 0.125rem solid $brand-color;
+                    outline-offset: -0.125rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        & .-icon {
+          &.a-picker {
+            &:checked {
+              & + label {
+                outline: 0.125rem solid $brand-color;
+                outline-offset: -0.125rem;
+              }
+            }
+          }
+        }
+
+        &:first-child {
+          input {
+            &[type='checkbox'],
+            &[type='radio'] {
+              &.a-picker {
+                & + label {
+                  border-bottom-left-radius: $border-radius;
+                  border-top-left-radius: $border-radius;
+                }
+              }
+            }
+          }
+        }
+
+        &:last-child {
+          input {
+            &[type='checkbox'],
+            &[type='radio'] {
+              &.a-picker {
+                & + label {
+                  border-bottom-right-radius: $border-radius;
+                  border-right-width: 0.125rem;
+                  border-top-right-radius: $border-radius;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
