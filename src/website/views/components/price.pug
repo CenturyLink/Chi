@@ -1,0 +1,99 @@
+---
+title: Price
+---
+
+p.-text Use price to display prices in your project.
+
+h3 Examples
+p.-text
+  | To render price, use the class <code>a-price</code>.
+
+h4 Base
+.example.-mb--3
+  .-p--3
+    .a-price.-mb--3
+      span.-currency
+        | $
+      | 100
+      span.-cents
+        | 00
+  :code(lang="html")
+    <div class="a-price">
+      <span class="-currency">$</span>
+      100
+      <span class="-cents">00</span>
+    </div>
+
+h4 Base sup version
+.example.-mb--3
+  .-p--3
+    .a-price.-mb--3
+      sup
+        | $
+      | 100
+      sup
+        | 00
+  :code(lang="html")
+    <div class="a-price">
+      <sup>$</sup>
+      100
+      <sup>00</sup>
+    </div>
+
+h3 Sizes
+
+h4 Base
+.example.-mb--3
+  .-p--3
+    each size in ['sm', 'md', 'lg']
+      .a-price(class=`-${size}`)
+        span.-currency
+          | $
+        | 100
+        span.-cents
+          | 00
+      p(class=`-text--bold -mb--3`)= '-' + size
+  :code(lang="html")
+    <div class="a-price -sm">
+      <span class="-currency">$</span>
+      100
+      <span class="-cents">00</span>
+    </div>
+    <div class="a-price -md">
+      <span class="-currency">$</span>
+      100
+      <span class="-cents">00</span>
+    </div>
+    <div class="a-price -lg">
+      <span class="-currency">$</span>
+      100
+      <span class="-cents">00</span>
+    </div>
+
+h4 Sup version
+.example.-mb--3
+  .-p--3
+    each size in ['sm', 'md', 'lg']
+      .a-price(class=`-${size}`)
+        sup
+          | $
+        | 100
+        sup
+          | 00
+      p(class=`-text--bold -mb--3`)= '-' + size
+  :code(lang="html")
+    <div class="a-price -sm">
+      <sup>$</sup>
+      100
+      <sup>00</sup>
+    </div>
+    <div class="a-price -md">
+      <sup>$</sup>
+      100
+      <sup>00</sup>
+    </div>
+    <div class="a-price -lg">
+      <sup>$</sup>
+      100
+      <sup>00</sup>
+    </div>
