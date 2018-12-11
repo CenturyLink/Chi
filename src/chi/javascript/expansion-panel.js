@@ -1,11 +1,10 @@
 import {Util} from "./util.js";
 import {chi} from "./chi.js";
 
+const ANIMATION_DURATION = 200;
+const CLASS_COLLAPSE_WRAPPER = 'm-epanel__collapse';
 const CLASS_COMPONENT = '-m-epanel';
 const COMPONENT_TYPE = "expansionPanel";
-const ANIMATION_DURATION = 200;
-const CLASS_CONTENT_WRAPPER = 'm-epanel__content-wrapper';
-const CLASS_CONTENT_VIEW = 'm-epanel__content-view';
 const EPANEL_EVENT_CHANGE = 'chi.epanel.change';
 
 const STATE = {
@@ -14,6 +13,12 @@ const STATE = {
     CLASS: '-active',
     CLASS_TARGET: '-active--only',
     CLASS_TRANSITIONING: '-active--transitioning'
+  },
+  DISABLED: {
+    NAME: 'disabled',
+    CLASS: '-disabled',
+    CLASS_TARGET: '',
+    CLASS_TRANSITIONING: '-disabled--transitioning'
   },
   DONE: {
     NAME: 'done',
@@ -201,7 +206,8 @@ class ExpansionPanel {
           epGroups[groupName] = new ExpansionPanelFreeGroup();
           break;
         case 'custom':
-          epGroups[groupName] = new ExpansionPanelCustomGroup(this._config.changeHandler);
+          epGroups[groupName] =
+            new ExpansionPanelCustomGroup(this._config.changeHandler);
           break;
         default:
           epGroups[groupName] = new ExpansionPanelSteppedGroup();
@@ -288,100 +294,173 @@ class ExpansionPanel {
   animateStateChange (oldState, newState) {
 
     if (this._transitioning) {
-      window.clearTimeout(this.animationEndTimeoutId);
+      if (this.animationTimeouts) {
+        if (typeof this.animationTimeouts[2] !== 'undefined') {
+          window.clearTimeout(this.animationTimeouts[2]);
+        } else if (typeof this.animationTimeouts[1] !== 'undefined') {
+          window.cancelAnimationFrame(this.animationTimeouts[1]);
+        } else if (typeof this.animationTimeouts[0] !== 'undefined') {
+          window.cancelAnimationFrame(this.animationTimeouts[0]);
+        }
+      }
       this.animationEnd();
     }
 
     this._transitioning = true;
+    const epElement = this._elem;
 
-    const
-      viewIn = {found: false, elem: null, height: 0, oldStyle: {}},
-      viewOut = {found: false, elem: null, height: 0, oldStyle: {}},
-      wrapper = {found: false, elem: null, height: 0, oldStyle: {}};
-
-    const updateStyle = function (elem, property, value, writeOnlyIfNotEmpty) {
-      elem.oldStyle[property] = elem.elem.style[property];
-      if (writeOnlyIfNotEmpty && !elem.elem.style[property]) {
-        elem.elem.style[property] = value;
-      } else if (!writeOnlyIfNotEmpty) {
-        elem.elem.style[property] = value;
+    class Collapsible {
+      constructor(elem) {
+        this.elem = elem;
+        this.oldStyle = {};
       }
-    };
-    const restoreStyle = function (elem) {
-      Object.getOwnPropertyNames(elem.oldStyle).forEach(function (key) {
-        elem.elem.style[key] = elem.oldStyle[key];
-      });
-    };
 
-    const prepare = function () {
-
-      Util.findAndApply(this._elem, CLASS_CONTENT_VIEW, function (elem) {
-        if (Util.hasClass(elem, oldState.CLASS_TARGET)) {
-          viewOut.found = true;
-          viewOut.elem = elem;
-          updateStyle(viewOut, 'opacity', '1', true);
-
-          viewOut.height = window.getComputedStyle(elem).height;
-        } else if (Util.hasClass(elem, newState.CLASS_TARGET)) {
-          viewIn.found = true;
-          viewIn.elem = elem;
-          updateStyle(viewIn, 'opacity', '0');
-          updateStyle(viewIn, 'position', 'absolute');
-          updateStyle(viewIn, 'top', '0');
-          updateStyle(viewIn, 'left', '0');
-          updateStyle(viewIn, 'right', '0');
-          updateStyle(viewIn, 'z-index', '1');
-
+      updateStyle(property, value, writeOnlyIfNotEmpty) {
+        if (typeof this.oldStyle[property] === 'undefined') {
+          this.oldStyle[property] = this.elem.style[property];
         }
-      });
+        if (writeOnlyIfNotEmpty && !this.elem.style[property]) {
+          this.elem.style[property] = value;
+        } else if (!writeOnlyIfNotEmpty) {
+          this.elem.style[property] = value;
+        }
+      }
 
-      Util.findAndApply(this._elem, CLASS_CONTENT_WRAPPER, function (elem) {
-        if (!wrapper.found) {
-          wrapper.elem = elem;
-          updateStyle(wrapper, 'position', 'relative');
-          updateStyle(wrapper, 'overflow', 'hidden');
+      restoreStyle() {
+        Object.getOwnPropertyNames(this.oldStyle).forEach(function (key) {
+          this.elem.style[key] = this.oldStyle[key];
+        }.bind(this));
+        this.oldStyle = {};
+      }
+    }
 
-          if (viewOut.found) {
-            updateStyle(wrapper, 'height', viewOut.height);
+    class CollapsiblesWrapper extends Collapsible {
+      constructor(elem) {
+        super(elem);
+        this.inElements = [];
+        this.outElements = [];
+      }
+
+      restoreStyle() {
+        super.restoreStyle();
+        this.inElements.forEach(function (collapsible) {
+          collapsible.restoreStyle();
+        });
+        this.outElements.forEach(function (collapsible) {
+          collapsible.restoreStyle();
+        });
+
+      }
+    }
+
+    const wrappers = [];
+    const wrappersElemsIndexes = [];
+    const wrapperlessElements = {
+      inElements: [],
+      outElements: []
+    };
+
+    const constructElements = function () {
+      Util.findAndApply(epElement, newState.CLASS_TARGET, function (elem) {
+        const collapsible = new Collapsible(elem);
+        const wrapperElem = Util.getClosest(elem, CLASS_COLLAPSE_WRAPPER, epElement);
+        if (wrapperElem) {
+          const index = wrappersElemsIndexes.indexOf(wrapperElem);
+          if (index === -1) {
+            const wrapper = new CollapsiblesWrapper(wrapperElem);
+            wrapper.inElements.push(collapsible);
+            wrappers.push(wrapper);
+            wrappersElemsIndexes.push(wrapperElem);
           } else {
-            updateStyle(wrapper, 'height', '0');
+            wrappers[index].inElements.push(collapsible);
           }
+        } else {
+          wrapperlessElements.inElements.push(collapsible);
         }
       });
+      Util.findAndApply(epElement, oldState.CLASS_TARGET, function (elem) {
+        const collapsible = new Collapsible(elem);
+        const wrapperElem = Util.getClosest(elem, CLASS_COLLAPSE_WRAPPER, epElement);
+        if (wrapperElem) {
+          const index = wrappersElemsIndexes.indexOf(wrapperElem);
+          if (index === -1) {
+            const wrapper = new CollapsiblesWrapper(wrapperElem);
+            wrapper.outElements.push(collapsible);
+            wrappers.push(wrapper);
+            wrappersElemsIndexes.push(wrapperElem);
+          } else {
+            wrappers[index].outElements.push(collapsible);
+          }
+        } else {
+          wrapperlessElements.outElements.push(collapsible);
+        }
+      });
+    };
 
-      Util.addClass(this._elem, oldState.CLASS_TRANSITIONING);
-      Util.addClass(this._elem, newState.CLASS_TRANSITIONING);
+    const animationPrepare = function () {
+      Util.addClass(epElement, oldState.CLASS_TRANSITIONING);
+      Util.addClass(epElement, newState.CLASS_TRANSITIONING);
 
-    }.bind(this);
+      wrappers.forEach(function(wrapper) {
+        wrapper.inElements.forEach(function (collapsible) {
+          collapsible.updateStyle('willChange', 'opacity');
+          collapsible.updateStyle('opacity', '0');
+          collapsible.updateStyle('position', 'absolute');
+          collapsible.updateStyle('top', '0');
+          collapsible.updateStyle('left', '0');
+          collapsible.updateStyle('right', '0');
+          collapsible.updateStyle('zIndex', '1');
+        });
+        let outHeight = window.getComputedStyle(wrapper.elem).height;
+        wrapper.outElements.forEach(function (collapsible) {
+          collapsible.updateStyle('willChange', 'opacity');
+          collapsible.updateStyle('opacity', '1', true);
+          collapsible.updateStyle(
+            'height',
+            window.getComputedStyle(collapsible.elem).height
+          );
+        });
+        wrapper.updateStyle('height', outHeight);
+        wrapper.updateStyle('position', 'relative');
+        wrapper.updateStyle('overflow', 'hidden');
+        wrapper.updateStyle('willChange', 'height');
+      });
+    };
 
     const animationStart = function () {
-      Util.addClass(this._elem, newState.CLASS);
-      Util.removeClass(this._elem, oldState.CLASS);
-      if (viewIn.found) {
-        viewIn.height = window.getComputedStyle(viewIn.elem).height;
-        wrapper.elem.style.height = viewIn.height;
-        viewIn.elem.style.opacity = '1';
-      } else {
-        wrapper.elem.style.height = '0px';
-        viewOut.elem.style.opacity = '0';
-      }
-
-    }.bind(this);
+      Util.addClass(epElement, newState.CLASS);
+      Util.removeClass(epElement, oldState.CLASS);
+      wrappers.forEach(function (wrapper) {
+        let outHeight = wrapper.inElements.reduce(function(prev, curr) {
+          return prev + parseInt(window.getComputedStyle(curr.elem).height);
+        }, 0);
+        wrapper.elem.style.height = outHeight + 'px';
+        wrapper.inElements.forEach(function(collapsible){
+          collapsible.elem.style.opacity = '1';
+        });
+        wrapper.outElements.forEach(function(collapsible){
+          collapsible.elem.style.opacity = '0';
+        });
+      });
+    };
 
     this.animationEnd = function () {
-      Util.removeClass(this._elem, oldState.CLASS_TRANSITIONING);
-      Util.removeClass(this._elem, newState.CLASS_TRANSITIONING);
-      restoreStyle(viewIn);
-      restoreStyle(viewOut);
-      restoreStyle(wrapper);
+      Util.removeClass(epElement, oldState.CLASS_TRANSITIONING);
+      Util.removeClass(epElement, newState.CLASS_TRANSITIONING);
+      wrappers.forEach(function(wrapper) {
+        wrapper.restoreStyle();
+      });
       this._transitioning = false;
       this.animationEnd = null;
     }.bind(this);
 
-    prepare();
-    this.animationEndTimeoutId = window.setTimeout(animationStart, 0);
-    Util.emulateTransitionEnd(ANIMATION_DURATION, this.animationEnd);
-
+    constructElements();
+    this.animationTimeouts = Util.threeStepsAnimation(
+      animationPrepare,
+      animationStart,
+      this.animationEnd,
+      ANIMATION_DURATION
+    );
   }
 
   _initEventDispatcher () {

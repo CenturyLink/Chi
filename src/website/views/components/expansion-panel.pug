@@ -2,47 +2,51 @@
 title: Expansion panel
 ---
 p.-text
-  | Expansion panels are components designed to be folded and stacked one over the other. It has three states: active,
-  | pending and done. When it is pending, only the title is shown, when it is active, it unfolds to show its content,
-  | and when it is in state done, only some information is shown to the user. Two classes represent this three states:
-  | <code>-done</code> is for done, <code>-active</code> is for active and no class for pending state.
+  | Expansion panels are components designed to be folded and stacked one over the other. It has four states: active,
+  | pending, done and disabled. When it is pending, only the title is shown, when it is active, it unfolds to show its
+  | content, and when it is in state done, only some information is shown to the user. Disabled state is similar to
+  | pending state, but the title is snow in gray and is not clickable. Three classes represent this three states:
+  | <code>-done</code> is for done, <code>-active</code> is for active, <code>-disabled</code> is for disabled and no
+  | class for pending state.
 
 .example.-mb3
-  .-p3.-bg--grey-20
-    .m-epanel.-done.-bg--white.-mb--2
+  .-p3
+    .m-epanel.-done
       .m-epanel__header
-        h4.m-epanel__title 1. Done state expansion panel
-        .m-epanel__activator-header
+        span.m-epanel__number 1.
+        h4.m-epanel__title Done panel
+        .m-epanel__content
+          .m-epanel__collapse
+            .-done--only.-text
+              | CenturyLink<br />
+              | 1100 112th Ave NE<br />
+              | Suite 400<br />
+              | Bellevue, WA 98004
+        .m-epanel__action.-done--only
           button.a-btn.-brand.-flat Change
-      .m-epanel__body
-        dl.-d--flex.-text.-flex--wrap.-m--0
-          dt.-d--block.-w--25.-m--0.-text--muted Numbers:
-          dd.-d--block.-w--75.-m--0 50 New numbers
-          dt.-d--block.-w--25.-m--0.-text--muted Type:
-          dd.-d--block.-w--75.-m--0 Local
-          dt.-d--block.-w--25.-m--0.-text--muted Area Code:
-          dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
-
-    .m-epanel.-active.-bg--white.-mb--2
+    .m-epanel.-active
       .m-epanel__header
-        h4.m-epanel__title 2. Active expansion panel
-      .m-epanel__body
-        h5 Some title
-        p.-text
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
-          | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
-          | nihil sed veritatis!
-      .m-epanel__footer.-justify-content--end
-        button.a-btn.-lg Previous
-        button.a-btn.-lg.-brand.-ml--2 Continue
-
-    .m-epanel.-bg--white.-mb--2
+        span.m-epanel__number 2.
+        h4.m-epanel__title Active panel
+      .m-epanel__collapse
+        .-active--only
+          .m-epanel__body
+            .m-epanel__content
+              h5 Active panel title
+              p.-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+                | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+                | nihil sed veritatis!
+            .m-epanel__footer.-justify-content--end
+              button.a-btn.-lg.-brand.-ml--2 Continue
+    .m-epanel
       .m-epanel__header
-        h4.m-epanel__title 3. Pending expansion panel
-
-    .m-epanel.-bg--white.-mb--2
+        span.m-epanel__number 3.
+        h4.m-epanel__title Pending panel
+    .m-epanel.-disabled
       .m-epanel__header
-        h4.m-epanel__title 4. Another pending expansion panel
+        span.m-epanel__number 4.
+        h4.m-epanel__title Disabled panel
   ul#a-tabs.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-done') Done
@@ -50,55 +54,231 @@ p.-text
       a(href='#a-tabs-active') Active
     li
       a(href='#a-tabs-pending') Pending
+    li
+      a(href='#a-tabs-disabled') Disabled
   #a-tabs-done.a-tabs-panel.-active
     :code(lang="html")
       <div class="m-epanel -done">
         <div class="m-epanel__header">
-          <h4 class="m-epanel__title">1. Done state expansion panel</h4>
-          <div class="m-epanel__activator-header">
+          <span class="m-epanel__number">1.</span>
+          <h4 class="m-epanel__title">Expansion panel</h4>
+          <div class="m-epanel__content">
+            <div class="m-epanel__collapse">
+              <div class="-done--only -text">CenturyLink...</div>
+            </div>
+          </div>
+          <div class="m-epanel__action -done--only">
             <button class="a-btn -brand -flat">Change</button>
           </div>
-        </div>
-        <div class="m-epanel__body">
-          <!-- body content -->
         </div>
       </div>
   #a-tabs-active.a-tabs-panel
     :code(lang="html")
       <div class="m-epanel -active">
         <div class="m-epanel__header">
-          <h4 class="m-epanel__title">2. Active expansion panel</h4>
+          <span class="m-epanel__number">2.</span>
+          <h4 class="m-epanel__title">Active panel</h4>
         </div>
-        <div class="m-epanel__body">
-          <!-- body content -->
-        </div>
-        <div class="m-epanel__footer -justify-content--end">
-          <button class="a-btn -lg">Previous</button>
-          <button class="a-btn -lg -brand -ml--2">Continue</button>
+        <div class="m-epanel__collapse">
+          <div class="-active--only">
+            <div class="m-epanel__body">
+              <div class="m-epanel__content">
+                <h5>Active panel title</h5>
+                <p class="-text">Lorem ipsum</p>
+              </div>
+              <div class="m-epanel__footer -justify-content--end">
+                <button class="a-btn -lg -brand -ml--2">Continue</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
   #a-tabs-pending.a-tabs-panel
     :code(lang="html")
       <div class="m-epanel">
         <div class="m-epanel__header">
-          <h4 class="m-epanel__title">3. Pending expansion panel</h4>
+          <span class="m-epanel__number">3.</span>
+          <h4 class="m-epanel__title">Pending panel</h4>
+        </div>
+      </div>
+  #a-tabs-disabled.a-tabs-panel
+    :code(lang="html")
+      <div class="m-epanel -disabled">
+        <div class="m-epanel__header">
+          <span class="m-epanel__number">4.</span>
+          <h4 class="m-epanel__title">Disabled panel</h4>
+        </div>
+      </div>
+
+h4 Customization
+p.-text
+  | This component accepts a small number of visual changes. The numbering of the panels is optional, so you can omit
+  | the <code>m-epanel__number</code> class elements. In this case, the active content will render with a not desired
+  | margin, that can be removed with the <code>-ml--0</code> class.
+.example.-mb3
+  .-p3.-bg--grey-10
+    .m-epanel.-active
+      .m-epanel__header
+        h4.m-epanel__title Expansion panel
+        .m-epanel__action.-done--only
+          button.a-btn.-brand.-flat Change
+      .m-epanel__collapse.-ml--0
+        .-active--only
+          .m-epanel__body
+            .m-epanel__content
+              h5 Active panel title
+              p.-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+                | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+                | nihil sed veritatis!
+            .m-epanel__footer.-justify-content--end
+              button.a-btn.-lg Previous
+              button.a-btn.-lg.-brand.-ml--2 Continue
+  :code(lang="html")
+    <div class="m-epanel -done">
+      <div class="m-epanel__header">
+        <h4 class="m-epanel__title">Expansion panel</h4>
+        <div class="m-epanel__action -done--only">
+          <button class="a-btn -brand -flat">Change</button>
+        </div>
+      </div>
+      <div class="m-epanel__collapse -ml--0">
+        <div class="-active--only">
+          <div class="m-epanel__body">
+            <div class="m-epanel__content">
+              <h5>Active panel title</h5>
+              <p class="-text">Lorem ipsum...</p>
+            </div>
+            <div class="m-epanel__footer -justify-content--end">
+              <button class="a-btn -lg">Previous</button>
+              <button class="a-btn -lg -brand -ml--2">Continue</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+h4 Bordered expansion panel
+p.-text
+  | Expansion pnale component also supports a bordered version. Apply the <code>-bordered</code> class where desired.
+
+.example.-mb3
+  .-p3
+    .m-epanel.-bordered.-done
+      .m-epanel__header
+        span.m-epanel__number 1.
+        h4.m-epanel__title Done panel
+        .m-epanel__content
+          .m-epanel__collapse
+            .-done--only.-text
+              | CenturyLink<br />
+              | 1100 112th Ave NE<br />
+              | Suite 400<br />
+              | Bellevue, WA 98004
+        .m-epanel__action.-done--only
+          button.a-btn.-brand.-flat Change
+    .m-epanel.-bordered.-active
+      .m-epanel__header
+        span.m-epanel__number 2.
+        h4.m-epanel__title Active panel
+      .m-epanel__collapse
+        .-active--only
+          .m-epanel__body
+            .m-epanel__content
+              h5 Active panel title
+              p.-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+                | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+                | nihil sed veritatis!
+            .m-epanel__footer.-justify-content--end
+              button.a-btn.-lg.-brand.-ml--2 Continue
+    .m-epanel.-bordered
+      .m-epanel__header
+        span.m-epanel__number 3.
+        h4.m-epanel__title Pending panel
+    .m-epanel.-bordered.-disabled
+      .m-epanel__header
+        span.m-epanel__number 4.
+        h4.m-epanel__title Disabled panel
+  ul#a-tabs-bordered.a-tabs.-ml--3
+    li.-active
+      a(href='#a-tabs-bordered-done') Done
+    li
+      a(href='#a-tabs-bordered-active') Active
+    li
+      a(href='#a-tabs-bordered-pending') Pending
+    li
+      a(href='#a-tabs-bordered-disabled') Disabled
+  #a-tabs-bordered-done.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="m-epanel -bordered -done">
+        <div class="m-epanel__header">
+          <span class="m-epanel__number">1.</span>
+          <h4 class="m-epanel__title">Expansion panel</h4>
+          <div class="m-epanel__content">
+            <div class="m-epanel__collapse">
+              <div class="-done--only -text">CenturyLink...</div>
+            </div>
+          </div>
+          <div class="m-epanel__action -done--only">
+            <button class="a-btn -brand -flat">Change</button>
+          </div>
+        </div>
+      </div>
+  #a-tabs-bordered-active.a-tabs-panel
+    :code(lang="html")
+      <div class="m-epanel -bordered -active">
+        <div class="m-epanel__header">
+          <span class="m-epanel__number">2.</span>
+          <h4 class="m-epanel__title">Active panel</h4>
+        </div>
+        <div class="m-epanel__collapse">
+          <div class="-active--only">
+            <div class="m-epanel__body">
+              <div class="m-epanel__content">
+                <h5>Active panel title</h5>
+                <p class="-text">Lorem ipsum</p>
+              </div>
+              <div class="m-epanel__footer -justify-content--end">
+                <button class="a-btn -lg -brand -ml--2">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  #a-tabs-bordered-pending.a-tabs-panel
+    :code(lang="html")
+      <div class="m-epanel -bordered">
+        <div class="m-epanel__header">
+          <span class="m-epanel__number">3.</span>
+          <h4 class="m-epanel__title">Pending panel</h4>
+        </div>
+      </div>
+  #a-tabs-bordered-disabled.a-tabs-panel
+    :code(lang="html")
+      <div class="m-epanel -bordered -disabled">
+        <div class="m-epanel__header">
+          <span class="m-epanel__number">4.</span>
+          <h4 class="m-epanel__title">Disabled panel</h4>
         </div>
       </div>
 
 h3 State custom behavior
 p.-text
-  | The three expansion panel states behave very similar one from each other. For example, you shouldn't, but you may
+  | The four expansion panel states behave very similar one from each other. For example, you shouldn't, but you may
   | use an <code>m-epanel__footer</code> element in a <code>pending</code> panel, or an
-  | <code>m-epanel__activator-header</code> button in an <code>active</code> panel.
+  | <code>m-epanel__action</code> button in an <code>active</code> panel.
 p.-text
   | There are two main differences between them.
 ol.-text
-  li The title in the active panel will render in the brand color.
+  li
+    | The title will render in the brand color for the active panel, in soft gray for the disabled panel and black for
+    | the other panel states.
   li Two hiding utility classes will hide content depending on the state.
 
-h4 Hidding by state
+h4 Hiding by state
 p.-text
-  | The three examples below differ only on the state. Thanks to the state support and the <code>-active--only</code> and
+  | The four examples below differ only on the state. Thanks to the state support and the <code>-active--only</code> and
   | <code>-done--only</code> utility classes, we can represent the three states of the same content changing only the
   | state class.
 p.-text
@@ -108,83 +288,103 @@ p.-text
   | have their own solutions to accomplish this goal.
 
 .example.-mb3
-  .-p3.-bg--grey-20
-    .m-epanel.-done.-bg--white.-mb--2
+  .-p3.-bg--grey-10
+    .m-epanel.-done
       .m-epanel__header
         h4.m-epanel__title Expansion panel
-        .m-epanel__activator-header.-done--only
+        .m-epanel__content
+          .m-epanel__collapse
+            .-done--only.-text
+              | CenturyLink<br />
+              | 1100 112th Ave NE<br />
+              | Suite 400<br />
+              | Bellevue, WA 98004
+        .m-epanel__action.-done--only
           button.a-btn.-brand.-flat Change
-      .m-epanel__content-wrapper
-        .m-epanel__content-view.-done--only
+      .m-epanel__collapse.-ml--0
+        .-active--only
           .m-epanel__body
-            dl.-d--flex.-text.-flex--wrap.-m--0
-              dt.-d--block.-w--25.-m--0.-text--muted Numbers:
-              dd.-d--block.-w--75.-m--0 50 New numbers
-              dt.-d--block.-w--25.-m--0.-text--muted Type:
-              dd.-d--block.-w--75.-m--0 Local
-              dt.-d--block.-w--25.-m--0.-text--muted Area Code:
-              dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
-        .m-epanel__content-view.-active--only
-          .m-epanel__body
-            h5 Some title
-            p.-text
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
-              | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
-              | nihil sed veritatis!
-          .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg Previous
-            button.a-btn.-lg.-brand.-ml--2 Continue
-    .m-epanel.-active.-bg--white.-mb--2
+            .m-epanel__content
+              h5 Active panel title
+              p.-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+                | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+                | nihil sed veritatis!
+            .m-epanel__footer.-justify-content--end
+              button.a-btn.-lg Previous
+              button.a-btn.-lg.-brand.-ml--2 Continue
+    .m-epanel.-active
       .m-epanel__header
         h4.m-epanel__title Expansion panel
-        .m-epanel__activator-header.-done--only
+        .m-epanel__content
+          .m-epanel__collapse
+            .-done--only.-text
+              | CenturyLink<br />
+              | 1100 112th Ave NE<br />
+              | Suite 400<br />
+              | Bellevue, WA 98004
+        .m-epanel__action.-done--only
           button.a-btn.-brand.-flat Change
-      .m-epanel__content-wrapper
-        .m-epanel__content-view.-done--only
+      .m-epanel__collapse.-ml--0
+        .-active--only
           .m-epanel__body
-            dl.-d--flex.-text.-flex--wrap.-m--0
-              dt.-d--block.-w--25.-m--0.-text--muted Numbers:
-              dd.-d--block.-w--75.-m--0 50 New numbers
-              dt.-d--block.-w--25.-m--0.-text--muted Type:
-              dd.-d--block.-w--75.-m--0 Local
-              dt.-d--block.-w--25.-m--0.-text--muted Area Code:
-              dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
-        .m-epanel__content-view.-active--only
-          .m-epanel__body
-            h5 Some title
-            p.-text
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
-              | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
-              | nihil sed veritatis!
-          .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg Previous
-            button.a-btn.-lg.-brand.-ml--2 Continue
-    .m-epanel.-bg--white.-mb--2
+            .m-epanel__content
+              h5 Active panel title
+              p.-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+                | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+                | nihil sed veritatis!
+            .m-epanel__footer.-justify-content--end
+              button.a-btn.-lg Previous
+              button.a-btn.-lg.-brand.-ml--2 Continue
+    .m-epanel
       .m-epanel__header
         h4.m-epanel__title Expansion panel
-        .m-epanel__activator-header.-done--only
+        .m-epanel__content
+          .m-epanel__collapse
+            .-done--only.-text
+              | CenturyLink<br />
+              | 1100 112th Ave NE<br />
+              | Suite 400<br />
+              | Bellevue, WA 98004
+        .m-epanel__action.-done--only
           button.a-btn.-brand.-flat Change
-      .m-epanel__content-wrapper
-        .m-epanel__content-view.-done--only
+      .m-epanel__collapse.-ml--0
+        .-active--only
           .m-epanel__body
-            dl.-d--flex.-text.-flex--wrap.-m--0
-              dt.-d--block.-w--25.-m--0.-text--muted Numbers:
-              dd.-d--block.-w--75.-m--0 50 New numbers
-              dt.-d--block.-w--25.-m--0.-text--muted Type:
-              dd.-d--block.-w--75.-m--0 Local
-              dt.-d--block.-w--25.-m--0.-text--muted Area Code:
-              dd.-d--block.-w--75.-m--0 415 (San Francisco, CA)
-        .m-epanel__content-view.-active--only
+            .m-epanel__content
+              h5 Active panel title
+              p.-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+                | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+                | nihil sed veritatis!
+            .m-epanel__footer.-justify-content--end
+              button.a-btn.-lg Previous
+              button.a-btn.-lg.-brand.-ml--2 Continue
+    .m-epanel.-disabled
+      .m-epanel__header
+        h4.m-epanel__title Expansion panel
+        .m-epanel__content
+          .m-epanel__collapse
+            .-done--only.-text
+              | CenturyLink<br />
+              | 1100 112th Ave NE<br />
+              | Suite 400<br />
+              | Bellevue, WA 98004
+        .m-epanel__action.-done--only
+          button.a-btn.-brand.-flat Change
+      .m-epanel__collapse.-ml--0
+        .-active--only
           .m-epanel__body
-            h5 Some title
-            p.-text
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
-              | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
-              | nihil sed veritatis!
-          .m-epanel__footer.-justify-content--end
-            button.a-btn.-lg Previous
-            button.a-btn.-lg.-brand.-ml--2 Continue
-
+            .m-epanel__content
+              h5 Active panel title
+              p.-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+                | illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+                | nihil sed veritatis!
+            .m-epanel__footer.-justify-content--end
+              button.a-btn.-lg Previous
+              button.a-btn.-lg.-brand.-ml--2 Continue
   ul#a-tabs-ex.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-ex-done') Done
@@ -192,30 +392,33 @@ p.-text
       a(href='#a-tabs-ex-active') Active
     li
       a(href='#a-tabs-ex-pending') Pending
+    li
+      a(href='#a-tabs-ex-disabled') Disabled
   #a-tabs-ex-done.a-tabs-panel.-active
     :code(lang="html")
       <div class="m-epanel -done">
         <div class="m-epanel__header">
           <h4 class="m-epanel__title">Expansion panel</h4>
-          <div class="m-epanel__activator-header -done--only">
+          <div class="m-epanel__content">
+            <div class="m-epanel__collapse">
+              <div class="-done--only -text">CenturyLink...</div>
+            </div>
+          </div>
+          <div class="m-epanel__action -done--only">
             <button class="a-btn -brand -flat">Change</button>
           </div>
         </div>
-        <div class="m-epanel__content-wrapper">
-          <div class="m-epanel__content-view -done--only">
+        <div class="m-epanel__collapse -ml--0">
+          <div class="-active--only">
             <div class="m-epanel__body">
-              <!-- some body content -->
-            </div>
-          </div>
-        </div>
-        <div class="m-epanel__content-wrapper">
-          <div class="m-epanel__content-view -active--only">
-            <div class="m-epanel__body">
-              <!-- some body content -->
-            </div>
-            <div class="m-epanel__footer -justify-content--end">
-              <button class="a-btn -lg">Previous</button>
-              <button class="a-btn -lg -brand -ml--2">Continue</button>
+              <div class="m-epanel__content">
+                <h5>Active panel title</h5>
+                <p class="-text">Lorem ipsum...</p>
+              </div>
+              <div class="m-epanel__footer -justify-content--end">
+                <button class="a-btn -lg">Previous</button>
+                <button class="a-btn -lg -brand -ml--2">Continue</button>
+              </div>
             </div>
           </div>
         </div>
@@ -225,25 +428,26 @@ p.-text
       <div class="m-epanel -active">
         <div class="m-epanel__header">
           <h4 class="m-epanel__title">Expansion panel</h4>
-          <div class="m-epanel__activator-header -done--only">
+          <div class="m-epanel__content">
+            <div class="m-epanel__collapse">
+              <div class="-done--only -text">CenturyLink...</div>
+            </div>
+          </div>
+          <div class="m-epanel__action -done--only">
             <button class="a-btn -brand -flat">Change</button>
           </div>
         </div>
-        <div class="m-epanel__content-wrapper">
-          <div class="m-epanel__content-view -done--only">
+        <div class="m-epanel__collapse -ml--0">
+          <div class="-active--only">
             <div class="m-epanel__body">
-              <!-- some body content -->
-            </div>
-          </div>
-        </div>
-        <div class="m-epanel__content-wrapper">
-          <div class="m-epanel__content-view -active--only">
-            <div class="m-epanel__body">
-              <!-- some body content -->
-            </div>
-            <div class="m-epanel__footer -justify-content--end">
-              <button class="a-btn -lg">Previous</button>
-              <button class="a-btn -lg -brand -ml--2">Continue</button>
+              <div class="m-epanel__content">
+                <h5>Active panel title</h5>
+                <p class="-text">Lorem ipsum...</p>
+              </div>
+              <div class="m-epanel__footer -justify-content--end">
+                <button class="a-btn -lg">Previous</button>
+                <button class="a-btn -lg -brand -ml--2">Continue</button>
+              </div>
             </div>
           </div>
         </div>
@@ -253,25 +457,55 @@ p.-text
       <div class="m-epanel">
         <div class="m-epanel__header">
           <h4 class="m-epanel__title">Expansion panel</h4>
-          <div class="m-epanel__activator-header -done--only">
+          <div class="m-epanel__content">
+            <div class="m-epanel__collapse">
+              <div class="-done--only -text">CenturyLink...</div>
+            </div>
+          </div>
+          <div class="m-epanel__action -done--only">
             <button class="a-btn -brand -flat">Change</button>
           </div>
         </div>
-        <div class="m-epanel__content-wrapper">
-          <div class="m-epanel__content-view -done--only">
+        <div class="m-epanel__collapse -ml--0">
+          <div class="-active--only">
             <div class="m-epanel__body">
-              <!-- some body content -->
+              <div class="m-epanel__content">
+                <h5>Active panel title</h5>
+                <p class="-text">Lorem ipsum...</p>
+              </div>
+              <div class="m-epanel__footer -justify-content--end">
+                <button class="a-btn -lg">Previous</button>
+                <button class="a-btn -lg -brand -ml--2">Continue</button>
+              </div>
             </div>
           </div>
         </div>
-        <div class="m-epanel__content-wrapper">
-          <div class="m-epanel__content-view -active--only">
-            <div class="m-epanel__body">
-              <!-- some body content -->
+      </div>
+  #a-tabs-ex-disabled.a-tabs-panel
+    :code(lang="html")
+      <div class="m-epanel -disabled">
+        <div class="m-epanel__header">
+          <h4 class="m-epanel__title">Expansion panel</h4>
+          <div class="m-epanel__content">
+            <div class="m-epanel__collapse">
+              <div class="-done--only -text">CenturyLink...</div>
             </div>
-            <div class="m-epanel__footer -justify-content--end">
-              <button class="a-btn -lg">Previous</button>
-              <button class="a-btn -lg -brand -ml--2">Continue</button>
+          </div>
+          <div class="m-epanel__action -done--only">
+            <button class="a-btn -brand -flat">Change</button>
+          </div>
+        </div>
+        <div class="m-epanel__collapse -ml--0">
+          <div class="-active--only">
+            <div class="m-epanel__body">
+              <div class="m-epanel__content">
+                <h5>Active panel title</h5>
+                <p class="-text">Lorem ipsum...</p>
+              </div>
+              <div class="m-epanel__footer -justify-content--end">
+                <button class="a-btn -lg">Previous</button>
+                <button class="a-btn -lg -brand -ml--2">Continue</button>
+              </div>
             </div>
           </div>
         </div>

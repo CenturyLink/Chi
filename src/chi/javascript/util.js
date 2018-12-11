@@ -53,20 +53,24 @@ export class Util {
     window.setTimeout(eventHandler, transitionDuration);
   }
 
-  static setData (elem, key, value) {
-    Util.prepareDataStructure(elem);
-    elem[chi.expando][key] = value;
-  }
-
   static getData (elem, key) {
     return elem[chi.expando] && elem[chi.expando][key];
   }
 
+  static isSetData (elem, key) {
+    return elem[chi.expando] && elem[chi.expando].hasOwnProperty(key);
+  }
+
   static removeData (elem, key) {
     delete elem[chi.expando][key];
-    if (elem[chi.expando].length === 0) {
+    if (Object.getOwnPropertyNames(elem[chi.expando]).length === 0) {
       Util.removeDataStructure(elem);
     }
+  }
+
+  static setData (elem, key, value) {
+    Util.prepareDataStructure(elem);
+    elem[chi.expando][key] = value;
   }
 
   static prepareDataStructure (elem) {
@@ -159,6 +163,34 @@ export class Util {
       event.initEvent(eventType, true, true);
     }
     return event;
+  }
+
+  static threeStepsAnimation (
+    prepareAnimation, startAnimation, emulateTransitionEnd, transitionDuration
+  ) {
+    const animations = [];
+    animations[0] = window.requestAnimationFrame(function() {
+      prepareAnimation();
+      animations[1] = window.requestAnimationFrame(function () {
+        startAnimation();
+        animations[2] =
+          Util.emulateTransitionEnd(transitionDuration, emulateTransitionEnd);
+      });
+    });
+    return animations;
+  }
+
+  static getClosest (elem, className, stopElement) {
+    if (typeof stopElement === 'undefined') {
+      stopElement = document;
+    }
+    if (elem.parentNode === stopElement || elem.parentNode === null) {
+      return null;
+    } else if (Util.hasClass(elem.parentNode, className)) {
+      return elem.parentNode;
+    } else {
+      return Util.getClosest(elem.parentNode, className, stopElement);
+    }
   }
 
   static _getNewRegistrationIndex () {

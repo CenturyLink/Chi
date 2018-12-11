@@ -6,40 +6,48 @@ $transition-duration: 0.2s;
 .chi {
 
   .m-epanel {
-    border: .0625rem solid $border-color;
-    border-radius: $border-radius;
 
     &__header {
       min-height: 3.5rem;
-      padding: 1rem;
-      position: relative;
     }
 
-    &__activator-header {
-      align-items: center;
+    & > .m-epanel__header {
       display: flex;
-      height: 3.5rem;
-      opacity: 1;
-      position: absolute;
-      right: 1rem;
-      top: 0;
-      transition: opacity $transition-duration;
-    }
+      margin-left: -0.25rem;
+      margin-right: -0.25rem;
+      min-height: 0rem;
 
-    &:not(.-done):not(.-done--transitioning) .-done--only, &:not(.-active):not(.-active--transitioning) .-active--only {
-      display: none;
-    }
+      & > * {
+        display: block;
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+      }
 
-    &:not(.-done) .-done--only, &:not(.-active) .-active--only {
+      & > .m-epanel__number {
+        width: 7.5%;
 
-      &.m-epanel__activator-header {
-        opacity: 0;
+        & ~ .m-epanel__title {
+          width: 27%;
+        }
+      }
+
+      & > .m-epanel__title {
+        width: 34.5%;
+      }
+
+      & > .m-epanel__content {
+        flex: 1;
+      }
+
+      & > .m-epanel__action {
+        margin-left: auto;
       }
     }
 
-    &__title {
+    &__title,
+    &__number {
       font-size: $text-larger;
-      line-height: $line-height-larger;
+      line-height: 2rem;
       margin: 0;
       transition: color $transition-duration;
 
@@ -52,25 +60,24 @@ $transition-duration: 0.2s;
       color: $brand-color;
     }
 
-    &__content-wrapper {
+    &.-disabled .m-epanel__title,
+    &.-disabled .m-epanel__number {
+      color: $light-color;
+    }
+
+    &:not(.-done):not(.-done--transitioning) .-done--only,
+    &:not(.-active):not(.-active--transitioning) .-active--only {
+      display: none;
+    }
+
+    &:not(.-done) .-done--only,
+    &:not(.-active) .-active--only {
+      opacity: 0;
+    }
+
+    &__collapse {
+      position: relative;
       transition: height $transition-duration;
-    }
-
-    &__content-view {
-      background-color: white;
-      transition: opacity $transition-duration;
-    }
-
-    &__body {
-      padding: 1rem;
-
-      & > :first-child {
-        margin-top: 0;
-      }
-
-      & > :last-child {
-        margin-bottom: 0;
-      }
     }
 
     &__footer {
@@ -81,16 +88,85 @@ $transition-duration: 0.2s;
       min-height: 4rem;
       padding: 1rem;
       position: relative;
+    }
 
-      &.-noBorder {
-        box-shadow: none;
-      }
+    .-done--only,
+    .-active--only {
+      opacity: 1;
+      transition: opacity $transition-duration;
     }
 
     [data-chi-epanel-action] {
       cursor: pointer;
     }
 
-  }
+    &.-bordered {
+      border: .0625rem solid $border-color;
+      border-radius: $border-radius;
+      margin-bottom: 0.5rem;
+      background-color: white;
 
+      .m-epanel__header {
+        padding: 1.25rem;
+      }
+
+      .m-epanel__body {
+        border-top: .0625rem solid $border-color;
+
+        .m-epanel__content {
+          padding: 1.25rem;
+
+          & > :first-child {
+            margin-top: 0;
+          }
+
+          & > :last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      & > :first-child {
+        margin-top: 0;
+      }
+
+      & > :last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &:not(.-bordered) {
+      border-bottom: .0625rem solid $border-color;
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
+
+      &:first-child {
+        border-top: .0625rem solid $border-color;
+      }
+
+      & > .m-epanel__header+.m-epanel__collapse:not(.-ml--0) {
+        margin-left: 7.5%;
+      }
+
+      .m-epanel__body {
+        margin-top: 1.25rem;
+        background-color: white;
+        border: .0625rem solid $border-color;
+        border-radius: $border-radius;
+        margin-bottom: 0.5rem;
+
+        .m-epanel__content {
+          padding: 1.5rem;
+
+          & > :first-child {
+            margin-top: 0;
+          }
+
+          & > :last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
 }
