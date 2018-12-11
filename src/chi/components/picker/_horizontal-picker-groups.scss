@@ -1,6 +1,8 @@
 @import 'mixins';
 @import 'variables';
 
+$border: 0.0625rem;
+
 .chi {
   .m-pickerGroup {
     display: inline-flex;
@@ -12,13 +14,9 @@
           &[type='radio'] {
             &.a-picker {
               & + label {
-                margin: 0;
-                padding: 3rem;
-              }
-
-              & + label {
                 border-radius: 0;
                 border-right-width: 0;
+                margin: 0;
               }
             }
           }
@@ -29,18 +27,14 @@
             &[type='checkbox'],
             &[type='radio'] {
               &.a-picker {
-                & + label {
-                  border-radius: 0;
-                  border-right-width: 0;
-                  font-size: 2rem;
-                  margin: 0;
-                  padding: 3rem;
+                & + label::before {
+                  border: solid 0.125rem $brand-color;
                 }
 
                 &:checked {
                   & + label  {
-                    outline: 0.125rem solid $brand-color;
-                    outline-offset: -0.125rem;
+                    border: solid 0.125rem $brand-color;
+                    color: $brand-color;
                   }
                 }
               }
@@ -56,15 +50,16 @@
                 & + label {
                   border-radius: 0;
                   border-right-width: 0;
-                  padding: 0.5rem 1rem;
+                  padding: (0.5rem - $border)  (1rem - $border);
                   min-width: 7rem;
                   text-align: center;
                 }
 
                 &:checked {
                   & + label  {
-                    outline: 0.125rem solid $brand-color;
-                    outline-offset: -0.125rem;
+                    border: solid 0.125rem $brand-color;
+                    color: $brand-color;
+                    padding: (0.5rem - ($border * 2))  (1rem - ($border * 2));
                   }
                 }
               }
@@ -76,8 +71,8 @@
           &.a-picker {
             &:checked {
               & + label {
-                outline: 0.125rem solid $brand-color;
-                outline-offset: -0.125rem;
+                border: solid 0.125rem $brand-color;
+                color: $brand-color;
               }
             }
           }

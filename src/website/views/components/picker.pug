@@ -11,7 +11,7 @@ p.-text
   | To render a checkbox picker, apply the class <code>a-picker</code> to an <code>input type="checkbox"</code>
   |  inside a container with the class <code>m-picker</code>.
 .example.-mb--3
-  .-p--4.-d--flex.-align-items--center.-justify-content--center
+  .a-grid.-p--4
     each type in ['checkbox1','checkbox2','checkbox3','checkbox4']
       .m-picker.-m--2
         input(type="checkbox", class="a-picker", id=`${type}`)
@@ -54,7 +54,7 @@ p.-text
   | To render a radio picker, apply the class <code>a-picker</code> to an <code>input type="radio"</code>
   |  inside a container with the class <code>m-picker</code>.
 .example.-mb--3
-  .-p--4.-d--flex.-align-items--center.-justify-content--center
+  .a-grid.-p--4
     each type in ['radio1','radio2','radio3','radio4']
       .m-picker.-m--2
         input(type="radio", class="a-picker", name='box', id=`${type}`)
@@ -98,7 +98,7 @@ h4 Type checkbox
 p.-text
   | Use the <code>-number</code> modifier class to render a number picker.
 .example.-mb--3
-  .-p--4.-d--flex.-align-items--center.-justify-content--center
+  .a-grid.-p--4
     each type in ['1','2','3','4','5']
       .m-picker.-number.-m--2
         input(type="radio", class="a-picker", name='box', id=`${type}`)
@@ -141,7 +141,7 @@ h3 Pill
 p.-text
   | Use the <code>-pill</code> modifier class to render pickers with a more pronounced border-radius.
 .example.-mb--3
-  .-p--4.-d--flex.-align-items--center.-justify-content--center
+  .a-grid.-p--4
     each type in ['10','20','30']
       .m-picker.-number.-pill.-m--2
         input(type="radio", class="a-picker", name='box', id=`${type}`)
@@ -171,7 +171,7 @@ h3 Picker with icon
 
 h4 Type checkbox
 .example.-mb--3
-  .-p--4.-d--flex.-align-items--center.-justify-content--center
+  .a-grid.-p--4
     each type, val in {application:'icon-box-application',outline:'icon-box-outline',deployment:'icon-box-deployment',script:'icon-box-script'}
       .m-picker.-m--2
         input(type="checkbox", class="a-picker -icon", id=`c-${type}`)
@@ -210,7 +210,7 @@ h4 Type checkbox
 
 h4 Type radio
 .example.-mb--3
-  .-p--4.-d--flex.-align-items--center.-justify-content--center
+  .a-grid.-p--4
     each type, val in {application:'icon-box-application',outline:'icon-box-outline',deployment:'icon-box-deployment',script:'icon-box-script'}
       .m-picker.-m--2
         input(type="radio", class="a-picker -icon", name='box-icon', id=`r-${val}`)
@@ -368,7 +368,7 @@ h3 Picker group
 p.-text To render a picker group, wrap a series of pickers in a div and apply the class <code>m-pickerGroup</code>.
 h4 Type checkbox
 .example.-mb--3
-  .-p--4.-d--flex.-align-items--center.-justify-content--center
+  .-p--4
     .m-pickerGroup
       each type in ['1','2','3','4','5']
         .m-picker.-number
@@ -411,7 +411,7 @@ h4 Type checkbox
 
 h4 Type radio
 .example.-mb--3
-  .-p--4.-d--flex.-align-items--center.-justify-content--center
+  .-p--4
     .m-pickerGroup
       each type in ['1','2','3','4','5']
         .m-picker.-number
@@ -454,7 +454,7 @@ h4 Type radio
 
 h4 With Icon
 .example.-mb--3
-  .-p--4.-d--flex.-align-items--center.-justify-content--center
+  .-p--4
     .m-pickerGroup
       each type, val in {application:'icon-box-application',outline:'icon-box-outline',deployment:'icon-box-deployment',script:'icon-box-script'}
         .m-picker
@@ -498,7 +498,7 @@ h4 Picker group inline
 
 p.-text Apply the class <code>-inline</code> to <code>m-pickerGroup</code> to display pickers inline.
 .example.-mb--3
-  .-p--4.-d--flex.-align-items--center.-justify-content--center
+  .-p--4
     .m-pickerGroup
       each type in ['1','2','3']
         .m-picker.-inline
@@ -540,18 +540,6 @@ p.-text Apply the class <code>-inline</code> to <code>m-pickerGroup</code> to di
         </div>
       </div>
     </div>
-
-p.-text Example with Grid
-.example.-mb--3
-  .-p--4
-    .a-grid.-noGutter.-align-items--center.-justify-content--center
-      each type, val in {application:'icon-box-application',outline:'icon-box-outline',deployment:'icon-box-deployment',script:'icon-box-script'}
-        .a-col.-w--2.-text--center
-          .m-picker.-inline
-            input(type="radio", class="a-picker -icon", name='box-icon', id=`gr-${val}`)
-            label(for=`gr-${val}`)(style='padding:3rem')
-              = val
-              i(class=`a-icon ${type} -md -text--muted`)
 
 script.
   document.addEventListener(

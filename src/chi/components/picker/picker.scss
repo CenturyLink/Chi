@@ -1,6 +1,8 @@
 @import 'variables';
 @import 'mixins';
 
+$border: 0.0625rem;
+
 .chi {
   .m-picker {
     align-items: center;
@@ -15,16 +17,16 @@
           position: absolute;
 
           & + label {
-            align-items: center;
             background-color: $text-white;
-            border: solid 0.125rem set-color(grey, 30);
+            border: solid 0.0625rem set-color(grey, 30);
             border-radius: 0.1875rem;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
             color: $dark-color;
             font-size: $text;
             font-weight: 600;
-            justify-content: center;
-            padding: 3rem;
+            outline: 0.0625rem solid transparent;
+            outline-offset: -0.0625rem;
+            padding: 3rem - $border;
             text-transform: capitalize;
             transition: all 0.2s;
 
@@ -39,7 +41,7 @@
 
             &::after,
             &::before {
-              display: none;
+                display: none;
             }
           }
 
@@ -47,6 +49,7 @@
             & + label {
               border: solid 0.125rem $brand-color;
               color: $brand-color;
+              padding: 3rem - ($border * 2);
 
               & .a-input {
                 & + label {
@@ -66,48 +69,14 @@
 
           &.-icon {
             & + label {
-              background-color: $text-white;
-              border-radius: 0.125rem;
-              border: solid 0.125rem set-color(grey, 30);
-              color: $dark-color;
+              align-items: center;
               display: flex;
               flex-direction: column;
-              font-size: $text;
-              font-weight: 600;
-              justify-content: center;
-              transition: all 0.2s;
-
-              &:active {
-                background-color: set-color(grey, 20);
-              }
-
-              &:hover {
-                background-color: set-color(grey, 10);
-              }
-
-              &::after,
-              &::before {
-                display: none;
-              }
 
               & i {
                 margin-top: 1rem;
               }
             }
-
-            &:checked {
-              & + label {
-                border: solid 0.125rem $brand-color;
-                color: $brand-color;
-              }
-            }
-          }
-        }
-
-        &:checked {
-          & + label {
-            border: solid 0.125rem $brand-color;
-            padding: 3rem;
           }
         }
       }
@@ -136,6 +105,13 @@
               padding-left: 5rem;
               padding-right: 5rem;
             }
+
+            &:checked {
+              & + label {
+                padding-left: 5rem - $border;
+                padding-right: 5rem - $border;
+              }
+            }
           }
         }
       }
@@ -147,8 +123,23 @@
         &[type='radio'] {
           &.a-picker {
             & + label {
-              padding: 0.5rem 1rem;
+              padding: (0.5rem - $border)  (1rem - $border);
               width: 100%;
+            }
+
+            &:checked {
+              & + label {
+                padding: (0.5rem - ($border * 2))  (1rem - ($border * 2));
+              }
+            }
+          }
+
+          &.a-input {
+            & + label {
+              &::after,
+              &::before {
+                background-color: transparent;
+              }
             }
           }
         }
