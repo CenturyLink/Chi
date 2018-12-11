@@ -39,19 +39,9 @@ $sizes: (
     & sup {
       font-size: 0.875rem;
       line-height: 0.875rem;
-      position: relative;
       top: -0.125rem;
       vertical-align: super;
     }
-
-    //IE10+ hack
-    @media screen and (-ms-high-contrast:active),
-    (-ms-high-contrast:none) {
-      & sup {
-        top: 0.25rem;
-      }
-    }
-
 
     @each $type in map-keys($sizes) {
       &.-#{$type} {
@@ -63,15 +53,13 @@ $sizes: (
           line-height: map-get(map-get(map-get($sizes, $type), sup), line-height);
           top: map-get(map-get(map-get($sizes, $type), sup), top);
         }
-
-        //IE10+ hack
-        @media screen and (-ms-high-contrast:active),
-        (-ms-high-contrast:none) {
-          & sup {
-            top: 0.25rem;
-          }
-        }
       }
     }
   }
+
+  // sass-lint:disable-all
+  _:-ms-lang(x), .a-price sup, .a-price.-sm sup, .a-price.-md sup, .a-price.-lg sup {
+    top: 0.25rem;
+  }
+  // sass-lint:enable-all
 }
