@@ -262,7 +262,7 @@ ul#a-tabs--inlineCheckbox.a-tabs
   #inlineBaseCheckbox.a-tabs-panel.-active
     .-p--4
       each type in ['checkbox1','checkbox2']
-        .m-picker.-inline.-p--1
+        .m-picker.-inline
           input(type="checkbox", class="a-picker", id=`i-${type}`)
           label(for=`i-${type}`)
             = type
@@ -283,12 +283,13 @@ ul#a-tabs--inlineCheckbox.a-tabs
   #inlineWithCheckbox.a-tabs-panel
     .-p--4
       each type in ['checkbox1','checkbox2']
-        .m-picker.-inline.-p--1
+        .m-picker.-inline
           input(type="checkbox", class="a-picker", id=`ic-${type}`)
           label(for=`ic-${type}`)
-            input(type="checkbox", class="a-input", id=`ic-${type}`)
-            label(for=`ic-${type}`)
-            = type
+            div
+              input(type="checkbox", class="a-input", id=`ic-${type}`)
+              label(for=`ic-${type}`)
+              = type
     :code(lang="html")
       <div class="m-picker -inline">
         <input class="a-picker" type="checkbox" id="checkbox1">
@@ -318,7 +319,7 @@ ul#a-tabs--inlineRadio.a-tabs
   #inlineBaseRadio.a-tabs-panel.-active
     .-p--4
       each type in ['radio1','radio2']
-        .m-picker.-inline.-p--1
+        .m-picker.-inline
           input(type="radio", class="a-picker", name='box', id=`ei-${type}`)
           label(for=`ei-${type}`)
             = type
@@ -339,12 +340,13 @@ ul#a-tabs--inlineRadio.a-tabs
   #inlineWithRadio.a-tabs-panel
     .-p--4
       each type in ['radio1','radio2']
-        .m-picker.-inline.-p--1
+        .m-picker.-inline
           input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
           label(for=`ri-${type}`)
-            input(type="radio", class="a-input", id=`ri-${type}`)
-            label(for=`ri-${type}`)
-            = type
+            div
+              input(type="radio", class="a-input", id=`ri-${type}`)
+              label(for=`ri-${type}`)
+              = type
     :code(lang="html")
       <div class="m-picker -inline">
         <input class="a-picker" type="radio" name="radios" id="radio1">
@@ -360,6 +362,120 @@ ul#a-tabs--inlineRadio.a-tabs
           <input class="a-input" type="radio" id="radio2">
           <label for="radio2"></label>
           radio2
+        </label>
+      </div>
+
+h3 Inline Sizes
+p.-text
+  | Apply size classes to render inline pickers larger or smaller: <code>-sm</code>, <code>-md</code>, <code>-lg</code>
+ul#a-tabs--inlineSizes.a-tabs
+  li.-active
+    a(href="#inlineSm") Size -sm
+  li
+    a(href="#inlineMd") Size -md
+  li
+    a(href="#inlineLg") Size -lg
+
+.example.-mb--3
+  #inlineSm.a-tabs-panel.-active
+    .-p--4
+      each type in ['Radio1 -sm','Radio2 -sm']
+        .m-picker.-inline.-sm
+          input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
+          label(for=`ri-${type}`)
+            div
+              = type
+            div
+              span $00
+              span.-text--muted no charges
+    :code(lang="html")
+      <div class="m-picker -inline -sm">
+        <input class="a-picker" type="radio" name="box" id="Radio1 -sm">
+        <label for="Radio1 -sm">
+          <div>Radio1 -sm</div>
+          <div>
+            <span>$00</span>
+            <span class="-text--muted">no charges</span>
+          </div>
+        </label>
+      </div>
+      <div class="m-picker -inline -sm">
+        <input class="a-picker" type="radio" name="box" id="Radio2 -sm">
+        <label for="Radio2 -sm">
+          <div>Radio2 -sm</div>
+          <div>
+            <span>$00</span>
+            <span class="-text--muted">no charges</span>
+          </div>
+        </label>
+      </div>
+  #inlineMd.a-tabs-panel
+    .-p--4
+      each type in ['Radio1 -md','Radio2 -md']
+        .m-picker.-inline.-md
+          input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
+          label(for=`ri-${type}`)
+            div
+              = type
+            div
+              span $00
+              span.-text--muted no charges
+    :code(lang="html")
+      <div class="m-picker -inline -md">
+        <input class="a-picker" type="radio" name="box" id="Radio1 -md">
+        <label for="Radio1 -md">
+          <div>Radio1 -md</div>
+          <div>
+            <span>$00</span>
+            <span class="-text--muted">no charges</span>
+          </div>
+        </label>
+      </div>
+      <div class="m-picker -inline -md">
+        <input class="a-picker" type="radio" name="box" id="Radio2 -md">
+        <label for="Radio2 -md">
+          <div>Radio2 -md</div>
+          <div>
+            <span>$00</span>
+            <span class="-text--muted">no charges</span>
+          </div>
+        </label>
+      </div>
+  #inlineLg.a-tabs-panel
+    .-p--4
+      each type in ['Radio1 -lg','Radio2 -lg']
+        .m-picker.-inline.-lg
+          input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
+          label(for=`ri-${type}`)
+            div
+              label
+                = type
+              span.-text--muted Text example
+            div
+              span $200
+    :code(lang="html")
+      <div class="m-picker -inline -lg">
+        <input class="a-picker" type="radio" name="box" id="Radio1 -lg">
+        <label for="Radio1 -lg">
+          <div>
+            <label>Radio1 -lg</label>
+            <span class="-text--muted">Text example</span>
+          </div>
+          <div>
+            <span>$200</span>
+          </div>
+        </label>
+      </div>
+      <div class="m-picker -inline -lg">
+        <input class="a-picker" type="radio" name="box" id="Radio2 -lg">
+        <label for="Radio2 -lg">
+          <div>
+            <label>Radio2 -lg</label>
+            <span class="-text--muted">Text example</span>
+          </div>
+          <div>
+            <span>$200</span>
+          </div>
         </label>
       </div>
 
@@ -547,6 +663,7 @@ script.
     function() {
       chi.tab(document.getElementById('a-tabs--inlineCheckbox'));
       chi.tab(document.getElementById('a-tabs--inlineRadio'));
+      chi.tab(document.getElementById('a-tabs--inlineSizes'));
     },
     false
   );

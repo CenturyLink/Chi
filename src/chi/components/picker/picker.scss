@@ -2,6 +2,20 @@
 @import 'mixins';
 
 $border: 0.0625rem;
+$sizes: (
+  sm: (
+    font-size: $text-small,
+    padding: (0.3125rem - $border) (1rem - $border) (0.3125rem - $border) (1rem - $border)
+  ),
+  md: (
+    font-size: $text,
+    padding: (0.5rem - $border) (1rem - $border) (0.5rem - $border) (1.5rem - $border)
+  ),
+  lg: (
+    font-size: $text-large,
+    padding: (1rem - $border) (1rem - $border) (1rem - $border) (1.5rem - $border)
+  )
+);
 
 .chi {
   .m-picker {
@@ -20,12 +34,10 @@ $border: 0.0625rem;
             background-color: $text-white;
             border: solid 0.0625rem set-color(grey, 30);
             border-radius: 0.1875rem;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+            box-shadow: map-get($shadow, 1);
             color: $dark-color;
             font-size: $text;
             font-weight: 600;
-            outline: 0.0625rem solid transparent;
-            outline-offset: -0.0625rem;
             padding: 3rem - $border;
             text-transform: capitalize;
             transition: all 0.2s;
@@ -47,15 +59,19 @@ $border: 0.0625rem;
 
           &:checked {
             & + label {
-              border: solid 0.125rem $brand-color;
+              border: solid 0.0625rem $brand-color;
+              box-shadow: inset 0 0 0 0.0625rem $brand-color;
               color: $brand-color;
-              padding: 3rem - ($border * 2);
+
+              & span:first-of-type {
+                color: $dark-color;
+              }
 
               & .a-input {
                 & + label {
                   &::before {
-                    background-color: #00853f;
-                    border-color: #00853f;
+                    background-color: $brand-color;
+                    border-color: $brand-color;
                   }
 
                   &::after {
@@ -105,13 +121,6 @@ $border: 0.0625rem;
               padding-left: 5rem;
               padding-right: 5rem;
             }
-
-            &:checked {
-              & + label {
-                padding-left: 5rem - $border;
-                padding-right: 5rem - $border;
-              }
-            }
           }
         }
       }
@@ -123,13 +132,31 @@ $border: 0.0625rem;
         &[type='radio'] {
           &.a-picker {
             & + label {
-              padding: (0.5rem - $border)  (1rem - $border);
+              align-items: center;
+              display: flex;
+              justify-content: space-between;
+              padding: 1rem - $border;
+              margin-bottom: 0.5rem;
               width: 100%;
+
+              & div {
+                text-transform: none;
+
+                & :not(label) {
+                  display: flex;
+                  flex-direction: column;
+                  line-height: 1.25rem;
+                }
+
+                &:last-of-type {
+                  text-align: right;
+                }
+              }
             }
 
             &:checked {
               & + label {
-                padding: (0.5rem - ($border * 2))  (1rem - ($border * 2));
+                box-shadow: inset 0 0 0 0.0625rem $brand-color;
               }
             }
           }
@@ -139,6 +166,27 @@ $border: 0.0625rem;
               &::after,
               &::before {
                 background-color: transparent;
+              }
+            }
+          }
+        }
+      }
+
+      @each $type in map-keys($sizes) {
+        &.-#{$type} {
+          input {
+            &[type='checkbox'],
+            &[type='radio'] {
+              &.a-picker {
+                & + label {
+                  padding: map-get(map-get($sizes, $type), padding);
+
+                  & div {
+                    &:last-of-type {
+                      font-size: map-get(map-get($sizes, $type), font-size);
+                    }
+                  }
+                }
               }
             }
           }

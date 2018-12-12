@@ -16,7 +16,6 @@ $border: 0.0625rem;
               & + label {
                 border-radius: 0;
                 border-right-width: 0;
-                margin: 0;
               }
             }
           }
@@ -28,12 +27,14 @@ $border: 0.0625rem;
             &[type='radio'] {
               &.a-picker {
                 & + label::before {
-                  border: solid 0.125rem $brand-color;
+                  border: solid 0.0625rem $brand-color;
+                  box-shadow: inset 0 0 0 0.0625rem $brand-color;
                 }
 
                 &:checked {
                   & + label  {
-                    border: solid 0.125rem $brand-color;
+                    border: solid 0.0625rem $brand-color;
+                    box-shadow: inset 0 0 0 0.0625rem $brand-color;
                     color: $brand-color;
                   }
                 }
@@ -50,16 +51,17 @@ $border: 0.0625rem;
                 & + label {
                   border-radius: 0;
                   border-right-width: 0;
-                  padding: (0.5rem - $border)  (1rem - $border);
+                  display: block;
+                  padding: 1rem - $border;
                   min-width: 7rem;
                   text-align: center;
                 }
 
                 &:checked {
                   & + label  {
-                    border: solid 0.125rem $brand-color;
+                    border: solid 0.0625rem $brand-color;
+                    box-shadow: inset 0 0 0 0.0625rem $brand-color;
                     color: $brand-color;
-                    padding: (0.5rem - ($border * 2))  (1rem - ($border * 2));
                   }
                 }
               }
@@ -71,7 +73,8 @@ $border: 0.0625rem;
           &.a-picker {
             &:checked {
               & + label {
-                border: solid 0.125rem $brand-color;
+                border: solid 0.0625rem $brand-color;
+                box-shadow: inset 0 0 0 0.0625rem $brand-color;
                 color: $brand-color;
               }
             }
@@ -99,7 +102,7 @@ $border: 0.0625rem;
               &.a-picker {
                 & + label {
                   border-bottom-right-radius: $border-radius;
-                  border-right-width: 0.125rem;
+                  border-right-width: 0.0625rem;
                   border-top-right-radius: $border-radius;
                 }
               }
