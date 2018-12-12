@@ -1,0 +1,29 @@
+---
+title: Price
+---
+
+- var sizes = ['sm', 'md', 'lg'];
+
+h3 Base
+.example.-mb--3
+  .-p--3(style='overflow:auto')
+    div(class=`a-col -w--12 -p--3`)
+      .a-price
+        sup
+          | $
+        | 100
+        sup
+          | 00
+
+h3 Sizes
+.example.-mb--3
+  .-p--3(style='overflow:auto')
+    each size in sizes
+      div(class=`a-col -w--12 -p--3`)
+        .a-price(class=`-${size}`)
+          sup
+            | $
+          | 100
+          sup
+            | 00
+        p(class=`-text--bold -mb--3`)= '-' + size

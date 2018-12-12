@@ -1,0 +1,65 @@
+@import 'variables';
+@import 'mixins';
+
+$sizes: (
+  sm: (
+    font-size: 1.5rem,
+    line-height: 1.5rem,
+    sup: (
+      font-size: 0.6875rem,
+      line-height: 0.6875rem,
+      top: 0rem,
+    )
+  ),
+  md: (
+    font-size: 2rem,
+    line-height: 2rem,
+    sup: (
+      font-size: 0.875rem,
+      line-height: 0.875rem,
+      top: -0.125rem,
+    )
+  ),
+  lg: (
+    font-size: 3rem,
+    line-height: 3rem,
+    sup: (
+      font-size: 1.125rem,
+      line-height: 1.125rem,
+      top: -0.25rem,
+    )
+  )
+);
+
+.chi {
+  .a-price {
+    font-size: 2rem;
+    font-weight: 600;
+
+    & sup {
+      font-size: 0.875rem;
+      line-height: 0.875rem;
+      top: -0.125rem;
+      vertical-align: super;
+    }
+
+    @each $type in map-keys($sizes) {
+      &.-#{$type} {
+        font-size: map-get(map-get($sizes, $type), font-size);
+        line-height: map-get(map-get($sizes, $type), line-height);
+
+        & sup {
+          font-size: map-get(map-get(map-get($sizes, $type), sup), font-size);
+          line-height: map-get(map-get(map-get($sizes, $type), sup), line-height);
+          top: map-get(map-get(map-get($sizes, $type), sup), top);
+        }
+      }
+    }
+  }
+
+  // sass-lint:disable-all
+  _:-ms-lang(x), .a-price sup, .a-price.-sm sup, .a-price.-md sup, .a-price.-lg sup {
+    top: 0.25rem;
+  }
+  // sass-lint:enable-all
+}
