@@ -2,6 +2,8 @@
 title: Picker
 ---
 
+- var sizes = ['sm', 'md', 'lg'];
+
 h3 Base
 
 h4 Type checkbox
@@ -72,7 +74,7 @@ h4 Base
 .example.-mb--3(style='width: 700px')
   .-p--3
     each type in ['checkbox1','checkbox2']
-      .m-picker.-inline.-p--1
+      .m-picker.-inline
         input(type="checkbox", class="a-picker", id=`i-${type}`)
         label(for=`i-${type}`)
           = type
@@ -80,18 +82,19 @@ h4 With checkbox
 .example.-mb--3(style='width: 700px')
   .-p--3
     each type in ['checkbox1','checkbox2']
-      .m-picker.-inline.-p--1
+      .m-picker.-inline
         input(type="checkbox", class="a-picker", id=`ic-${type}`)
         label(for=`ic-${type}`)
-          input(type="checkbox", class="a-input", id=`ic-${type}`)
-          label(for=`ic-${type}`)
-          = type
+          div
+            input(type="checkbox", class="a-input", id=`ic-${type}`)
+            label(for=`ic-${type}`)
+            = type
 h4 Type radio
 h4 Base
 .example.-mb--3(style='width: 700px')
   .-p--3
     each type in ['radio1','radio2']
-      .m-picker.-inline.-p--1
+      .m-picker.-inline
         input(type="radio", class="a-picker", name='box', id=`ei-${type}`)
         label(for=`ei-${type}`)
           = type
@@ -99,12 +102,27 @@ h4 With radio
 .example.-mb--3(style='width: 700px')
   .-p--3
     each type in ['radio1','radio2']
-      .m-picker.-inline.-p--1
+      .m-picker.-inline
         input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
         label(for=`ri-${type}`)
-          input(type="radio", class="a-input", id=`ri-${type}`)
-          label(for=`ri-${type}`)
-          = type
+          div
+            input(type="radio", class="a-input", id=`ri-${type}`)
+            label(for=`ri-${type}`)
+            = type
+h3 Sizes
+.example.-mb--3(style='width: 700px')
+  .-p--3
+    each size in sizes
+      h4= '-' + size
+      each type in ['Radio1','Radio2']
+        .m-picker.-inline(class=`-${size}`)
+          input(type="radio", class="a-picker", name='box', id=`ri-${type}-${size}`)
+          label(for=`ri-${type}-${size}`)
+            div
+              = type
+            div
+              span $00
+              span.-text--muted no charges
 
 h3 Picker group
 

@@ -15,7 +15,6 @@ $border: 0.0625rem;
             &.a-picker {
               & + label {
                 border-radius: 0;
-                border-right-width: 0;
               }
             }
           }
@@ -52,8 +51,7 @@ $border: 0.0625rem;
                   border-radius: 0;
                   border-right-width: 0;
                   display: block;
-                  padding: 1rem - $border;
-                  min-width: 7rem;
+                  padding: (1rem - $border) (3rem - $border);
                   text-align: center;
                 }
 
