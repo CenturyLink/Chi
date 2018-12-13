@@ -93,10 +93,50 @@ p.-text
     </div>
 
 h3 Number
-
-h4 Type checkbox
 p.-text
   | Use the <code>-number</code> modifier class to render a number picker.
+h4 Type checkbox
+
+.example.-mb--3
+  .a-grid.-p--4
+    each type in ['1','2','3','4','5']
+      .m-picker.-number.-m--2
+        input(type="checkbox", class="a-picker", name='box', id=`c-${type}`)
+        label(for=`c-${type}`)
+          = type
+  :code(lang="html")
+    <div class="m-picker -number -m--2">
+      <input class="a-picker" type="checkbox" name="box-icon" id="1">
+      <label for="1">
+      1
+      </label>
+    </div>
+    <div class="m-picker -number -m--2">
+      <input class="a-picker" type="checkbox" name="box-icon" id="2">
+      <label for="2">
+      2
+      </label>
+    </div>
+    <div class="m-picker -number -m--2">
+      <input class="a-picker" type="checkbox" name="box-icon" id="3">
+      <label for="3">
+      3
+      </label>
+    </div>
+    <div class="m-picker -number -m--2">
+      <input class="a-picker" type="checkbox" name="box-icon" id="4">
+      <label for="4">
+      4
+      </label>
+    </div>
+    <div class="m-picker -number -m--2">
+      <input class="a-picker" type="checkbox" name="box-icon" id="5">
+      <label for="5">
+      5
+      </label>
+    </div>
+
+h4 Type radio
 .example.-mb--3
   .a-grid.-p--4
     each type in ['1','2','3','4','5']
@@ -399,8 +439,8 @@ ul#a-tabs--inlineSizes.a-tabs
               span.-text--muted no charges
     :code(lang="html")
       <div class="m-picker -inline -sm">
-        <input class="a-picker" type="radio" name="box" id="Radio1 -sm">
-        <label for="Radio1 -sm">
+        <input class="a-picker" type="radio" name="box" id="Radio1">
+        <label for="Radio1">
           <div>Radio1 -sm</div>
           <div>
             <span>$00</span>
@@ -409,8 +449,8 @@ ul#a-tabs--inlineSizes.a-tabs
         </label>
       </div>
       <div class="m-picker -inline -sm">
-        <input class="a-picker" type="radio" name="box" id="Radio2 -sm">
-        <label for="Radio2 -sm">
+        <input class="a-picker" type="radio" name="box" id="Radio2">
+        <label for="Radio2">
           <div>Radio2 -sm</div>
           <div>
             <span>$00</span>
@@ -431,8 +471,8 @@ ul#a-tabs--inlineSizes.a-tabs
               span.-text--muted no charges
     :code(lang="html")
       <div class="m-picker -inline -md">
-        <input class="a-picker" type="radio" name="box" id="Radio1 -md">
-        <label for="Radio1 -md">
+        <input class="a-picker" type="radio" name="box" id="Radio1">
+        <label for="Radio1">
           <div>Radio1 -md</div>
           <div>
             <span>$00</span>
@@ -441,8 +481,8 @@ ul#a-tabs--inlineSizes.a-tabs
         </label>
       </div>
       <div class="m-picker -inline -md">
-        <input class="a-picker" type="radio" name="box" id="Radio2 -md">
-        <label for="Radio2 -md">
+        <input class="a-picker" type="radio" name="box" id="Radio2">
+        <label for="Radio2">
           <div>Radio2 -md</div>
           <div>
             <span>$00</span>
@@ -464,8 +504,8 @@ ul#a-tabs--inlineSizes.a-tabs
               span $200
     :code(lang="html")
       <div class="m-picker -inline -lg">
-        <input class="a-picker" type="radio" name="box" id="Radio1 -lg">
-        <label for="Radio1 -lg">
+        <input class="a-picker" type="radio" name="box" id="Radio1">
+        <label for="Radio1">
           <div>
             <label>Radio1 -lg</label>
             <span class="-text--muted">Text example</span>
@@ -476,8 +516,8 @@ ul#a-tabs--inlineSizes.a-tabs
         </label>
       </div>
       <div class="m-picker -inline -lg">
-        <input class="a-picker" type="radio" name="box" id="Radio2 -lg">
-        <label for="Radio2 -lg">
+        <input class="a-picker" type="radio" name="box" id="Radio2">
+        <label for="Radio2">
           <div>
             <label>Radio2 -lg</label>
             <span class="-text--muted">Text example</span>
