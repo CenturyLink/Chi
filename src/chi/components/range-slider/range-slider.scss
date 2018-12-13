@@ -4,13 +4,13 @@
 @mixin thumb-style {
   background-color: set-color(white);
   border: 2px solid $brand-color;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   box-sizing: border-box;
   cursor: pointer;
   display: block;
-  height: 20px;
-  transition: all 0.2s ease-in-out;
-  width: 20px;
+  height: 1.25rem;
+  //transition: all 0.2s ease-in-out;
+  width: 1.25rem;
 }
 
 @mixin green-thumb-shadow {
@@ -23,10 +23,10 @@
 
 @mixin track-style {
   background-color: set-color(grey, 30);
-  border-radius: 10px;
+  border-radius: 0.25rem;
   box-sizing: border-box;
-  height: 8px;
-  transition: all 0.2s ease-in-out;
+  height: 0.5rem;
+  //transition: all 0.2s ease-in-out;
   width: 100%;
 }
 
@@ -45,6 +45,17 @@
         &[disabled] {
           opacity: 0.65;
           pointer-events: none;
+
+          // Chi cross browser
+          & ~ .a-input__thumb {
+            border-color: #58af81;
+            border-color: tint($brand-color, 35%);
+          }
+
+          & ~ .a-input__progress {
+            background-color: #58af81;
+            background-color: tint($brand-color, 35%);
+          }
         }
 
         &::-moz-focus-outer {
@@ -93,10 +104,20 @@
           &::-ms-fill-lower {
             background-color: set-color(grey, 30);
           }
+
+          // Chi cross browser
+          & ~ .a-input__thumb {
+            border-color: set-color(grey, 50);
+          }
+
+          & ~ .a-input__progress {
+            background-color: set-color(grey, 30);
+          }
         }
 
         &:focus,
-        &.-focus {
+        &.-focus,
+        &:active {
           outline: none;
 
           // Safari, Chrome and Opera
@@ -113,13 +134,17 @@
           &::-ms-thumb {
             @include green-thumb-shadow;
           }
+
+          // Chi cross browser
+          & ~ .a-input__thumb {
+            @include green-thumb-shadow;
+          }
         }
 
         // Safari, Chrome and Opera
         &::-webkit-slider-thumb {
           @include thumb-style;
           -webkit-appearance: none;
-          background-color: $brand-color;
           margin-top: -6px;
         }
 
@@ -166,8 +191,47 @@
         &::-ms-fill-upper {
           @include track-style;
         }
+
+        // Chi cross browser
+        & ~ .a-input__thumb {
+          @include thumb-style;
+          content: '';
+          left: 50%;
+          margin-left: -0.625rem;
+          pointer-events: none;
+          position: absolute;
+          top: 0.125rem;
+        }
+
+        & ~ .a-input__progress {
+          @include track-style;
+          background-color: $brand-color;
+          content: '';
+          pointer-events: none;
+          position: absolute;
+          top: 0.5rem;
+          width: 50%;
+        }
       }
     }
   }
+
+  .a-inputWrapper > input.a-input[type='range'] {
+    // Safari, Chrome and Opera
+    &::-webkit-slider-thumb {
+      opacity: 0;
+    }
+
+    // Firefox
+    &::-moz-range-thumb {
+      opacity: 0;
+    }
+
+    // Internet Explorer
+    &::-ms-thumb {
+      opacity: 0;
+    }
+  }
+
 }
 // sass-lint:enable no-vendor-prefixes

@@ -3,6 +3,11 @@ title: Range Slider
 ---
 p.-text Range sliders are used for inputting numeric values within a range.
 
+.m-alert.-bubble.-info
+  i.a-icon.-sm2.icon-circle-info.-text--info
+  | This component requires Javascript to render consistently between browsers.
+
+
 h3 Examples
 p.-text
   | To render a range slider, apply the class <code>a-input</code> to an <code>input type="range"</code>.
@@ -30,6 +35,51 @@ h4 With Labels
     .m-formGroup
       label.-text.-mr--2 200GB
       input(type="range", class="a-input")
+      label.-text.-ml--2 5TB
+  :code(lang="html")
+    <div class="m-formGroup">
+      <label class="-text">200GB</label>
+      <input class="a-input -mx--2" type="range">
+      <label class="-text">5TB</label>
+    </div>
+
+h3 Achieve consistent rendering
+
+p.-text
+  | As webkit browsers doesn't support a two different sections for the track of the slider, we need to create our own
+  | elements to change left side color of the track. You will have to develop a JavaScript code for moving
+  | <code>a-input__thumb</code> element and changing size to <code>a-input__progress</code> element, or
+  | use Chi JavaScript library as it provides this functionality out of the box.
+
+h4 Base
+.example.-mb--3
+  .-p--3
+    .a-inputWrapper
+      input(class="a-input", type="range")
+      .a-input__progress
+      .a-input__thumb
+  :code(lang="html")
+    <input class="a-input" type="range">
+
+h4 Disabled
+.example.-mb--3
+  .-p--3
+    .a-inputWrapper
+      input(class="a-input", type="range", disabled)
+      .a-input__progress
+      .a-input__thumb
+  :code(lang="html")
+    <input class="a-input" type="range" disabled>
+
+h4 With Labels
+.example.-mb--3
+  .-p--3
+    .m-formGroup
+      label.-text.-mr--2 200GB
+      .a-inputWrapper.-w--100
+        input(type="range", class="a-input")
+        .a-input__progress
+        .a-input__thumb
       label.-text.-ml--2 5TB
   :code(lang="html")
     <div class="m-formGroup">
