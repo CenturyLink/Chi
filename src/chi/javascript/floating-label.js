@@ -1,6 +1,5 @@
 import {Util} from "./util.js";
 import {chi} from "./chi.js";
-import {Dropdown} from "./dropdown";
 
 const CLASS_COMPONENT = '-floatingLabel';
 const CLASS_ACTIVE = "-active";

@@ -132,6 +132,10 @@ class Tab {
       }
     }
 
+    if (!tab) {
+      return;
+    }
+
     if (Util.hasClass(tab, CLASS_ACTIVE)) {
       Array.prototype.forEach.call(tab.getElementsByClassName(CLASS_ACTIVE), function (tabElement) {
         if (tabElement.nodeName === 'LI') {
