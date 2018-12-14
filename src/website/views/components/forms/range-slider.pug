@@ -87,3 +87,74 @@ h4 With Labels
       <input class="a-input -mx--2" type="range">
       <label class="-text">5TB</label>
     </div>
+
+
+h3 Radio buttons as range slider
+
+p.-text
+  | Range slider can easily work in the way radio buttons do. Chi has a special design for this purpose.
+
+h4#please-review Please review this
+.example.-mb--3
+  .-p--3
+    .m-formGroups#solution-1
+      input(class='a-input', type='range', min='0', max='4', step='1')
+      div.a-input__tick-bar
+        div -<br>step 1
+        div -<br>step 2
+        div -<br>step 3
+        div -<br>step 4
+        div -<br>step 5
+    hr
+    .m-formGroups#solution-2
+      input(class='a-input', type='range', min='0', max='4', step='1')
+      div.a-input__tick-bar
+        div
+          div
+            | -<br>step x
+        div
+          div
+            | -<br>step x
+        div
+          div
+            | -<br>step x
+        div
+          div
+            | -<br>step x
+        div
+          div
+            | -<br>step x
+
+  .-my--6
+    hello
+
+
+  :code(lang="html")
+    <input class="a-input" type="range">
+
+h4 Disabled
+.example.-mb--3
+  .-p--3
+    .a-inputWrapper
+      input(class="a-input", type="range", disabled)
+      .a-input__progress
+      .a-input__thumb
+  :code(lang="html")
+    <input class="a-input" type="range" disabled>
+
+h4 With Labels
+.example.-mb--3
+  .-p--3
+    .m-formGroup
+      label.-text.-mr--2 200GB
+      .a-inputWrapper.-w--100
+        input(type="range", class="a-input")
+        .a-input__progress
+        .a-input__thumb
+      label.-text.-ml--2 5TB
+  :code(lang="html")
+    <div class="m-formGroup">
+      <label class="-text">200GB</label>
+      <input class="a-input -mx--2" type="range">
+      <label class="-text">5TB</label>
+    </div>
