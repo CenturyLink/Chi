@@ -24,17 +24,6 @@ h4 Type radio
         label(for=`${type}`)
           = type
 
-h3 Number
-
-h4 Type checkbox
-.example.-mb--3
-  .-p--3.-d--flex.-align-items--center.-justify-content--center
-    each type in ['1','2','3','4','5']
-      .m-picker.-number.-m--2
-        input(type="radio", class="a-picker", name='box', id=`${type}`)
-        label(for=`${type}`)
-          = type
-
 h3 Pill
 
 .example.-mb--3
@@ -123,44 +112,3 @@ h3 Sizes
             div
               span $00
               span.-text--muted no charges
-
-h3 Picker group
-
-h4 Type checkbox
-.example.-mb--3
-  .-p--3.-d--flex.-align-items--center.-justify-content--center
-    .m-pickerGroup
-      each type in ['1','2','3','4','5']
-        .m-picker.-number
-          input(type="checkbox", class="a-picker", name='checkbox', id=`gg-${type}`)
-          label(for=`gg-${type}`)
-            = type
-h4 Type radio
-.example.-mb--3
-  .-p--3.-d--flex.-align-items--center.-justify-content--center
-    .m-pickerGroup
-      each type in ['1','2','3','4','5']
-        .m-picker.-number
-          input(type="radio", class="a-picker", name='box', id=`pg-${type}`)
-          label(for=`pg-${type}`)
-            = type
-h4 With Icon
-.example.-mb--3
-  .-p--3.-d--flex.-align-items--center.-justify-content--center
-    .m-pickerGroup
-      each type, val in {application:'icon-box-application',outline:'icon-box-outline',deployment:'icon-box-deployment',script:'icon-box-script'}
-        .m-picker
-          input(type="radio", class="a-picker -icon", name='box-icon', id=`pg-${val}`)
-          label(for=`pg-${val}`)
-            = val
-            i(class=`a-icon ${type} -md -text--muted`)
-
-h4 Picker group inline
-.example.-mb--3
-  .-p--3.-d--flex.-align-items--center.-justify-content--center
-    .m-pickerGroup
-      each type in ['1','2','3']
-        .m-picker.-inline
-          input(type="radio", class="a-picker", name='box', id=`in-${type}`)
-          label(for=`in-${type}`)
-            = type

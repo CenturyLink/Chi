@@ -1,20 +1,22 @@
 @import 'variables';
 @import 'mixins';
-@import 'picker-groups';
 
 $border: 0.0625rem;
 $sizes: (
   sm: (
     font-size: $text-small,
-    padding: (0.3125rem - $border) (1rem - $border) (0.3125rem - $border) (1rem - $border)
+    line-height: 1rem,
+    padding: (0.5rem - $border) (1rem - $border) (0.5rem - $border) (1.5rem - $border)
   ),
   md: (
     font-size: $text,
-    padding: (0.5rem - $border) (1rem - $border) (0.5rem - $border) (1rem - $border)
+    line-height: 1rem,
+    padding: (0.75rem - $border) (1rem - $border) (0.75rem - $border) (1.5rem - $border)
   ),
   lg: (
     font-size: $text-large,
-    padding: (1rem - $border) (1rem - $border) (1rem - $border) (1rem - $border)
+    line-height: 1rem,
+    padding: (1rem - $border) (1.5rem - $border) (1rem - $border) (1.5rem - $border)
   )
 );
 
@@ -99,19 +101,6 @@ $sizes: (
       }
     }
 
-    &.-number {
-      input {
-        &[type='checkbox'],
-        &[type='radio'] {
-          &.a-picker {
-            & + label {
-              font-size: 2rem;
-            }
-          }
-        }
-      }
-    }
-
     &.-pill {
       input {
         &[type='checkbox'],
@@ -146,7 +135,7 @@ $sizes: (
                 & :not(label) {
                   display: flex;
                   flex-direction: column;
-                  line-height: 1.25rem;
+                  line-height: 1rem;
                 }
 
                 &:last-of-type {
@@ -177,6 +166,8 @@ $sizes: (
                   padding: map-get(map-get($sizes, $type), padding);
 
                   & div {
+                    line-height: map-get(map-get($sizes, $type), line-height);
+
                     &:last-of-type {
                       font-size: map-get(map-get($sizes, $type), font-size);
                     }

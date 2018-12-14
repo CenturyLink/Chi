@@ -92,90 +92,6 @@ p.-text
       </label>
     </div>
 
-h3 Number
-p.-text
-  | Use the <code>-number</code> modifier class to render a number picker.
-h4 Type checkbox
-
-.example.-mb--3
-  .a-grid.-p--4
-    each type in ['1','2','3','4','5']
-      .m-picker.-number.-m--2
-        input(type="checkbox", class="a-picker", name='box', id=`c-${type}`)
-        label(for=`c-${type}`)
-          = type
-  :code(lang="html")
-    <div class="m-picker -number -m--2">
-      <input class="a-picker" type="checkbox" name="box-icon" id="1">
-      <label for="1">
-      1
-      </label>
-    </div>
-    <div class="m-picker -number -m--2">
-      <input class="a-picker" type="checkbox" name="box-icon" id="2">
-      <label for="2">
-      2
-      </label>
-    </div>
-    <div class="m-picker -number -m--2">
-      <input class="a-picker" type="checkbox" name="box-icon" id="3">
-      <label for="3">
-      3
-      </label>
-    </div>
-    <div class="m-picker -number -m--2">
-      <input class="a-picker" type="checkbox" name="box-icon" id="4">
-      <label for="4">
-      4
-      </label>
-    </div>
-    <div class="m-picker -number -m--2">
-      <input class="a-picker" type="checkbox" name="box-icon" id="5">
-      <label for="5">
-      5
-      </label>
-    </div>
-
-h4 Type radio
-.example.-mb--3
-  .a-grid.-p--4
-    each type in ['1','2','3','4','5']
-      .m-picker.-number.-m--2
-        input(type="radio", class="a-picker", name='box', id=`${type}`)
-        label(for=`${type}`)
-          = type
-  :code(lang="html")
-    <div class="m-picker -number -m--2">
-      <input class="a-picker" type="radio" name="box-icon" id="1">
-      <label for="1">
-      1
-      </label>
-    </div>
-    <div class="m-picker -number -m--2">
-      <input class="a-picker" type="radio" name="box-icon" id="2">
-      <label for="2">
-      2
-      </label>
-    </div>
-    <div class="m-picker -number -m--2">
-      <input class="a-picker" type="radio" name="box-icon" id="3">
-      <label for="3">
-      3
-      </label>
-    </div>
-    <div class="m-picker -number -m--2">
-      <input class="a-picker" type="radio" name="box-icon" id="4">
-      <label for="4">
-      4
-      </label>
-    </div>
-    <div class="m-picker -number -m--2">
-      <input class="a-picker" type="radio" name="box-icon" id="5">
-      <label for="5">
-      5
-      </label>
-    </div>
-
 h3 Pill
 
 p.-text
@@ -183,24 +99,24 @@ p.-text
 .example.-mb--3
   .a-grid.-p--4
     each type in ['10','20','30']
-      .m-picker.-number.-pill.-m--2
+      .m-picker.-pill.-m--2
         input(type="radio", class="a-picker", name='box', id=`${type}`)
         label(for=`${type}`)
           = type
   :code(lang="html")
-    <div class="m-picker -number -pill -m--2">
+    <div class="m-picker -pill -m--2">
       <input class="a-picker" type="radio" name="box-icon" id="10">
       <label for="10">
       10
       </label>
     </div>
-    <div class="m-picker -number -pill -m--2">
+    <div class="m-picker -pill -m--2">
       <input class="a-picker" type="radio" name="box-icon" id="20">
       <label for="20">
       20
       </label>
     </div>
-    <div class="m-picker -number -pill -m--2">
+    <div class="m-picker -pill -m--2">
       <input class="a-picker" type="radio" name="box-icon" id="30">
       <label for="30">
       30
@@ -527,164 +443,6 @@ ul#a-tabs--inlineSizes.a-tabs
           </div>
         </label>
       </div>
-
-h3 Picker group
-
-p.-text To render a picker group, wrap a series of pickers in a div and apply the class <code>m-pickerGroup</code>.
-h4 Type checkbox
-.example.-mb--3
-  .-p--4
-    .m-pickerGroup
-      each type in ['1','2','3','4','5']
-        .m-picker.-number
-          input(type="checkbox", class="a-picker", name='checkbox', id=`gg-${type}`)
-          label(for=`gg-${type}`)
-            = type
-  :code(lang="html")
-    <div class="m-pickerGroup">
-      <div class="m-picker -number">
-        <input class="a-picker" type="checkbox" name="checkbox" id="1">
-          <label for="1">
-            1
-          </label>
-      </div>
-      <div class="m-picker -number">
-        <input class="a-picker" type="checkbox" name="checkbox" id="2">
-          <label for="2">
-            2
-          </label>
-      </div>
-      <div class="m-picker -number">
-        <input class="a-picker" type="checkbox" name="checkbox" id="3">
-          <label for="3">
-            3
-          </label>
-      </div>
-      <div class="m-picker -number">
-        <input class="a-picker" type="checkbox" name="checkbox" id="4">
-          <label for="4">
-            4
-          </label>
-      </div>
-      <div class="m-picker -number">
-        <input class="a-picker" type="checkbox" name="checkbox" id="5">
-          <label for="5">
-            5
-          </label>
-      </div>
-    </div>
-
-h4 Type radio
-.example.-mb--3
-  .-p--4
-    .m-pickerGroup
-      each type in ['1','2','3','4','5']
-        .m-picker.-number
-          input(type="radio", class="a-picker", name='box', id=`pg-${type}`)
-          label(for=`pg-${type}`)
-            = type
-  :code(lang="html")
-    <div class="m-pickerGroup">
-      <div class="m-picker -number">
-        <input class="a-picker" type="radio" name="box-icon" id="1">
-          <label for="1">
-            1
-          </label>
-      </div>
-      <div class="m-picker -number">
-        <input class="a-picker" type="radio" name="box-icon" id="2">
-          <label for="2">
-            2
-          </label>
-      </div>
-      <div class="m-picker -number">
-        <input class="a-picker" type="radio" name="box-icon" id="3">
-          <label for="3">
-            3
-          </label>
-      </div>
-      <div class="m-picker -number">
-        <input class="a-picker" type="radio" name="box-icon" id="4">
-          <label for="4">
-            4
-          </label>
-      </div>
-      <div class="m-picker -number">
-        <input class="a-picker" type="radio" name="box-icon" id="5">
-          <label for="5">
-            5
-          </label>
-      </div>
-    </div>
-
-h4 With Icon
-.example.-mb--3
-  .-p--4
-    .m-pickerGroup
-      each type, val in {application:'icon-box-application',outline:'icon-box-outline',deployment:'icon-box-deployment',script:'icon-box-script'}
-        .m-picker
-          input(type="radio", class="a-picker -icon", name='box-icon', id=`pg-${val}`)
-          label(for=`pg-${val}`)
-            = val
-            i(class=`a-icon ${type} -md -text--muted`)
-  :code(lang="html")
-    <div class="m-pickerGroup">
-      <div class="m-picker">
-        <input class="a-picker -icon" type="radio" name="box" id="icon-box-application">
-        <label for="icon-box-application">
-          application
-          <i class="a-icon icon-box-application -md -text--muted"></i>
-        </label>
-      </div>
-      <div class="m-picker">
-        <input class="a-picker -icon" type="radio" name="box" id="icon-box-outline">
-        <label for="icon-box-outline">
-          outline
-          <i class="a-icon icon-box-outline -md -text--muted"></i>
-        </label>
-      </div>
-      <div class="m-picker">
-        <input class="a-picker -icon" type="radio" name="box" id="icon-box-deployment">
-        <label for="icon-box-deployment">
-          deployment
-          <i class="a-icon icon-box-deployment -md -text--muted"></i>
-        </label>
-      </div>
-      <div class="m-picker">
-        <input class="a-picker -icon" type="radio" name="box" id="icon-box-script">
-        <label for="icon-box-script">
-          script
-          <i class="a-icon icon-box-script -md -text--muted"></i>
-        </label>
-      </div
-    </div>
-
-h4 Picker group inline
-
-p.-text Apply the class <code>-inline</code> to <code>m-pickerGroup</code> to display pickers inline.
-.example.-mb--3
-  .-p--4
-    .m-pickerGroup
-      each type in ['1','2','3']
-        .m-picker.-inline
-          input(type="radio", class="a-picker", name='box', id=`in-${type}`)
-          label(for=`in-${type}`)
-            = type
-  :code(lang="html")
-    <div class="m-pickerGroup">
-      <div class="m-picker -inline">
-        <input class="a-picker" type="radio" name="box" id="1">
-        <label for="1">1</label>
-      </div>
-      <div class="m-picker -inline">
-        <input class="a-picker" type="radio" name="box" id="2">
-        <label for="2">2</label>
-      </div>
-      <div class="m-picker -inline">
-        <input class="a-picker" type="radio" name="box" id="3">
-        <label for="3">3</label>
-      </div>
-    </div>
 
 script.
   document.addEventListener(
