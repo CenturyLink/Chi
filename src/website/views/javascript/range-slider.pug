@@ -53,6 +53,67 @@ h4 With Labels
       </div>
       <label class="-text -ml--2">5TB</label>
     </div>
+h4 Radio buttons as range slider
+.example.-mb--3
+  .-p--3
+    .m-formGroups
+      .a-inputWrapper
+        input(class='a-input', type='range', min='0', max='4', step='1')
+        div.a-input__tick-bar
+          div
+            div.a-input__tick
+            div.a-input__tick-label
+              | Monthly
+          div
+            div.a-input__tick
+            div.a-input__tick-label
+              | 1 year
+          div
+            div.a-input__tick
+            div.a-input__tick-label
+              | 2 years
+          div
+            div.a-input__tick
+            div.a-input__tick-label
+              | 3 years
+          div
+            div.a-input__tick
+            div.a-input__tick-label
+              | > 3 years
+        .a-input__progress
+        .a-input__thumb
+
+  :code(lang="html")
+    <div class="m-formGroups">
+      <div class="a-inputWrapper">
+        <input class="a-input" type="range" min="0" max="4" step="1">
+        <div class="a-input__tick-bar">
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">Monthly</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">1 year</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">2 years</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">3 years</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">&gt; 3 years</div>
+          </div>
+        </div>
+        <div class="a-input__progress"></div>
+        <div class="a-input__thumb"></div>
+      </div>
+    </div>
+
 script.
   document.addEventListener(
     'DOMContentLoaded',

@@ -15,6 +15,8 @@ class RangeSlider {
     this._maxValue = 100;
     this._currentValue = 50;
 
+    Util.registerComponent(COMPONENT_TYPE, this._elem, this);
+
     const thumbs = this._elem.parentElement.getElementsByClassName(
       'a-input__thumb'
     );
@@ -27,6 +29,9 @@ class RangeSlider {
     if (progress.length) {
       this._progressElem = progress[0];
     }
+
+    this._minValue = this._elem.getAttribute('min') || this._minValue;
+    this._maxValue = this._elem.getAttribute('max') || this._maxValue;
 
     this._updateValues = function() {
       if (this._elem.value !== this._currentValue) {
@@ -51,12 +56,13 @@ class RangeSlider {
 
   dispose() {
     this._config = null;
-    this._elem = null;
     this._thumbElem.removeEventListener('click', this._updateValues);
     this._progressElem.removeEventListener('click', this._updateValues);
     this._updateValues = null;
     this._thumbElem = null;
     this._progressElem = null;
+    Util.unregisterComponent(COMPONENT_TYPE, this._elem);
+    this._elem = null;
   }
 
   static factory(elem, config) {

@@ -1,6 +1,9 @@
 @import 'variables';
 @import 'mixins';
 
+$input-range-height: 1.5rem;
+$input-range-track-height: 0.5rem;
+
 @mixin thumb-style {
   background-color: set-color(white);
   border: 2px solid $brand-color;
@@ -9,7 +12,6 @@
   cursor: pointer;
   display: block;
   height: 1.25rem;
-  //transition: all 0.2s ease-in-out;
   width: 1.25rem;
 }
 
@@ -26,7 +28,6 @@
   border-radius: 0.25rem;
   box-sizing: border-box;
   height: 0.5rem;
-  //transition: all 0.2s ease-in-out;
   width: 100%;
 }
 
@@ -37,9 +38,8 @@
       &.a-input {
         -webkit-appearance: none;
         background-color: transparent;
-        height: 24px;
+        height: $input-range-height;
         padding: 0;
-        transition: all 0.2s ease-in-out;
         width: 100%;
 
         &[disabled] {
@@ -48,13 +48,11 @@
 
           // Chi cross browser
           & ~ .a-input__thumb {
-            border-color: #58af81;
-            border-color: tint($brand-color, 35%);
+            border-color: mix(white, $brand-color, 35%);
           }
 
           & ~ .a-input__progress {
-            background-color: #58af81;
-            background-color: tint($brand-color, 35%);
+            background-color: mix(white, $brand-color, 35%);
           }
         }
 
@@ -201,6 +199,7 @@
           pointer-events: none;
           position: absolute;
           top: 0.125rem;
+          z-index: 1;
         }
 
         & ~ .a-input__progress {
@@ -211,58 +210,27 @@
           position: absolute;
           top: 0.5rem;
           width: 50%;
+          z-index: 1;
         }
       }
-    }
-  }
-
-  .a-inputWrapper > input.a-input[type='range'] {
-    // Safari, Chrome and Opera
-    &::-webkit-slider-thumb {
-      opacity: 0;
-    }
-
-    // Firefox
-    &::-moz-range-thumb {
-      opacity: 0;
-    }
-
-    // Internet Explorer
-    &::-ms-thumb {
-      opacity: 0;
     }
   }
 
   // sass-lint:enable no-vendor-prefixes
-
-  #solution-1 {
-    .a-input__tick-bar {
-      display: flex;
-      justify-content: space-between;
-      padding-left: 0.625rem;
-      padding-right: 0.625rem;
-
-      & > div {
-        text-align: center;
-        flex: 1;
-      }
-    }
-
-    @for $index from 2 through 20 { // I don't like it is limited to 20 ticks.
-      input[max="#{$index}"] ~ .a-input__tick-bar {
-        div:first-child {
-          margin-left: -100% / 2 / $index;
-        }
-        div:last-child {
-          margin-right: -100% / 2 / $index;
-        }
-      }
-    }
+  .a-inputWrapper > input[type='range'].a-input {
+    display: block;
+    position: relative;
+    z-index: 1;
   }
 
-  #solution-2 {
-    .a-input__tick-bar {
+  .a-input__tick {
+    border-left: 1px solid set-color(grey, 30);
+    height: 0.25rem;
+    margin: -($input-range-height - $input-range-track-height)/2 auto 0;
+
+    &-bar {
       display: flex;
+      height: 1.5rem;
       justify-content: space-between;
       padding-left: 0.625rem;
       padding-right: 0.625rem;
@@ -270,25 +238,26 @@
       & > div {
         position: relative;
 
-        & > div {
-          position: absolute;
-          text-align: center;
-          top: 0;
-          left: -8em;// I don't like this arbitrary values. Used just for center align.
-          width: 16em;
-        }
-
-        &:first-child > div {
+        &:first-child .a-input__tick-label {
           text-align: left;
           left: -0.625rem;
         }
 
-        &:last-child > div {
+        &:last-child .a-input__tick-label {
           text-align: right;
           left: initial;
           right: -0.625rem;
         }
       }
+    }
+
+    &-label {
+      font-size: $text-smaller;
+      left: -4em;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      width: 8em;
     }
   }
 }
