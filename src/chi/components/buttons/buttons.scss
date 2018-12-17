@@ -465,7 +465,7 @@ $sizes: (
                 background-color: transparent;
                 border: $border solid transparent;
                 box-shadow: none;
-                color: set-color(grey, 50);
+                color: set-color(map-get($state-colors, $type));
               }
             }
           }
@@ -495,10 +495,10 @@ $sizes: (
             &,
             &:focus,
             &.-focus {
-              background-color: set-color(map-get($state-colors, $type));
-              border: $border solid rgba(set-color(map-get($state-colors, $type)), 0.2);
-              box-shadow: inset 0 1px 1px 0 rgba(set-color(map-get($state-colors, $type)), 0.2);
-              color: set-color(grey, 90);
+              background-color: transparent;
+              border: $border solid set-color(map-get($state-colors, $type));
+              box-shadow: none;
+              color: set-color(map-get($state-colors, $type));
             }
           }
         }

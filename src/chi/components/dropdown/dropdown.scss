@@ -107,6 +107,20 @@
       }
     }
 
+    & .-inverse {
+      &:not([data-position^="left"]) {
+        &:after {
+          background-image: url(../html-select/icon-chevron-thin-down-inverse.svg);
+        }
+      }
+
+      &[data-position^="left"] {
+        &:before {
+          background-image: url(../html-select/icon-chevron-thin-down-inverse.svg);
+        }
+      }
+    }
+
     &__menu {
       background-color: set-color(white);
       border: 0.0625rem solid set-color(grey, 30);
