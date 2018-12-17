@@ -186,5 +186,11 @@
       }
     }
   }
+
+  // sass-lint:disable-all
+  _:-ms-lang(x), .a-steps.-inverse.-horizontalLabels li a {
+    left: 50%;
+  }
+  // sass-lint:enable-all
 }
 
