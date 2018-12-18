@@ -124,7 +124,54 @@
       &.-noBorder {
         box-shadow: none;
       }
+    }
 
+    &.-empty {
+      background-color: transparent;
+      border: dashed rgba(set-color(black), 0.12);
+      transition: all 0.2s;
+
+      & .a-card__content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 1rem;
+
+        & .a-icon {
+          color: set-color(grey, 60);
+          margin-bottom: 1rem;
+        }
+
+        & span {
+          font-size: $text-large;
+          font-weight: 600;
+        }
+      }
+
+      &:hover {
+        border: dashed $brand-color;
+        color: $brand-color;
+        cursor: pointer;
+
+        & .a-icon {
+          color: $brand-color;
+        }
+      }
+
+      &:active,
+      &.-active {
+        &,
+        &:focus,
+        &.-focus {
+          border: dashed $brand-color;
+          color: $brand-color;
+        }
+
+        & .a-icon {
+          color: $brand-color;
+        }
+      }
     }
   }
 }
