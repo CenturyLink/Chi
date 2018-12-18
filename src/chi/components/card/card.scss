@@ -148,30 +148,6 @@
           font-weight: 600;
         }
       }
-
-      &:hover {
-        border: dashed $brand-color;
-        color: $brand-color;
-        cursor: pointer;
-
-        & .a-icon {
-          color: $brand-color;
-        }
-      }
-
-      &:active,
-      &.-active {
-        &,
-        &:focus,
-        &.-focus {
-          border: dashed $brand-color;
-          color: $brand-color;
-        }
-
-        & .a-icon {
-          color: $brand-color;
-        }
-      }
     }
   }
 }
