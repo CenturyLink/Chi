@@ -543,7 +543,16 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-states"
+        ".test-base",
+        ".test-zero",
+        ".test-zero",
+        ".test-disabled",
+        ".test-lateral-labels",
+        ".test-track-lables",
+        ".test-interoperability-base",
+        ".test-interoperability-disabled",
+        ".test-interoperability-lateral-lables",
+        ".test-interoperability-track-labels"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,

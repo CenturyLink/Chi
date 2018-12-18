@@ -55,7 +55,6 @@ class NumberInput {
 
   dispose() {
     this._config = null;
-    this._elemInput = null;
     this._elemWrapper = null;
     this._incrementButton.removeEventListener('click', this._increment);
     this._decrementButton.removeEventListener('click', this._decrement);
@@ -66,6 +65,8 @@ class NumberInput {
     this._increment = null;
     this._decrement = null;
     this._stepped = null;
+    Util.unregisterComponent(COMPONENT_TYPE, this._elemInput);
+    this._elemInput = null;
   }
 
   _updateSteppedValues() {

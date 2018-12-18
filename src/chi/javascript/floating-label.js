@@ -43,10 +43,11 @@ class FloatingLabel {
   }
 
   dispose() {
-    this._elem = null;
     this._label = null;
     this._input = null;
     this._config = null;
+    Util.unregisterComponent(COMPONENT_TYPE, this._elem);
+    this._elem = null;
 
     this._input.removeEventListener('focus', this._onFocusEventListener);
     this._input.removeEventListener('blur', this._onBlurEventListener);

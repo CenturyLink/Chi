@@ -176,7 +176,7 @@ class Tab {
 
     this._elem.removeEventListener('click', this._clickEventHandler);
     this._clickEventHandler = null;
-
+    Util.unregisterComponent(COMPONENT_TYPE, this._elem);
     this._elem = null;
   }
 

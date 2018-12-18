@@ -139,7 +139,6 @@ class Tooltip {
   }
 
   dispose() {
-    this._elem = null;
     this._tooltipElem = null;
     this._popper.destroy();
     this._config = null;
@@ -148,6 +147,8 @@ class Tooltip {
     this._postAnimationTransformStyle = null;
     this._elem.removeEventListener("mouseover",this._mouseOverEventHandler,false);
     this._elem.removeEventListener("mouseout", this._mouseOutEventHandler, false);
+    Util.unregisterComponent(COMPONENT_TYPE, this._elem);
+    this._elem = null;
   }
 
   static factory(elem, config) {
