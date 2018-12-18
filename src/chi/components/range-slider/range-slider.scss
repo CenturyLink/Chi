@@ -139,6 +139,24 @@ $input-range-track-height: 0.5rem;
           }
         }
 
+
+        &.a-rangeSlider__thumbOverwritten {
+          // Safari, Chrome and Opera
+          &::-webkit-slider-thumb {
+            opacity: 0;
+          }
+
+          // Firefox
+          &::-moz-range-thumb {
+            opacity: 0;
+          }
+
+          // Internet Explorer
+          &::-ms-thumb {
+            opacity: 0;
+          }
+        }
+
         // Safari, Chrome and Opera
         &::-webkit-slider-thumb {
           @include thumb-style;
@@ -236,6 +254,7 @@ $input-range-track-height: 0.5rem;
       padding-right: 0.625rem;
 
       & > div {
+        font-size: $text;
         position: relative;
 
         &:first-child .a-input__tick-label {
@@ -252,8 +271,8 @@ $input-range-track-height: 0.5rem;
     }
 
     &-label {
-      font-size: $text-smaller;
       left: -4em;
+      line-height: $line-height-smaller;
       position: absolute;
       text-align: center;
       top: 0;

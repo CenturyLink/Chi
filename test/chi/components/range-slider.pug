@@ -32,27 +32,22 @@ h4 States
     h5.test-track-lables With labels
     .a-inputWrapper
       input(class='a-input', type='range', min='0', max='4', step='1')
-      div.a-input__tick-bar
+      .a-input__tick-bar
         div
-          div.a-input__tick
-          div.a-input__tick-label
-            | Monthly
+          .a-input__tick
+          .a-input__tick-label Monthly
         div
-          div.a-input__tick
-          div.a-input__tick-label
-            | 1 year
+          .a-input__tick
+          .a-input__tick-label 1 year
         div
-          div.a-input__tick
-          div.a-input__tick-label
-            | 2 years
+          .a-input__tick
+          .a-input__tick-label 2 years
         div
-          div.a-input__tick
-          div.a-input__tick-label
-            | 3 years
+          .a-input__tick
+          .a-input__tick-label 3 years
         div
-          div.a-input__tick
-          div.a-input__tick-label
-            | > 3 years
+          .a-input__tick
+          .a-input__tick-label > 3 years
 
   .-mb--1
     h5.test-interoperability-base Base consistent rendering
@@ -70,6 +65,7 @@ h4 States
 
   .-mb--1
     h5.test-interoperability-lateral-lables With lateral labels consistent rendering
+    .m-formGroup
       label.-text.-mr--2 200GB
       .a-inputWrapper.-w--100
         input(type="range", class="a-input")
@@ -79,30 +75,25 @@ h4 States
 
   .-mb--1
     h5.test-interoperability-track-labels With track labels
-      .a-inputWrapper
-        input(class='a-input', type='range', min='0', max='4', step='1')
-        div.a-input__tick-bar
-          div
-            div.a-input__tick
-            div.a-input__tick-label
-              | Monthly
-          div
-            div.a-input__tick
-            div.a-input__tick-label
-              | 1 year
-          div
-            div.a-input__tick
-            div.a-input__tick-label
-              | 2 years
-          div
-            div.a-input__tick
-            div.a-input__tick-label
-              | 3 years
-          div
-            div.a-input__tick
-            div.a-input__tick-label
-              | > 3 years
-        .a-input__progress
-        .a-input__thumb
+    .a-inputWrapper
+      input(class='a-input', type='range', min='0', max='4', step='1')
+      .a-input__tick-bar
+        div
+          .a-input__tick
+          .a-input__tick-label Monthly
+        div
+          .a-input__tick
+          .a-input__tick-label 1 year
+        div
+          .a-input__tick
+          .a-input__tick-label 2 years
+        div
+          .a-input__tick
+          .a-input__tick-label 3 years
+        div
+          .a-input__tick
+          .a-input__tick-label > 3 years
+      .a-input__progress
+      .a-input__thumb
 
 
