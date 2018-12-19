@@ -13,14 +13,83 @@ class Dropdown {
 
   constructor (elem, config) {
     this._elem = elem;
-    this._config = Util.extend({}, config);
+    this._config = Util.extend({
+      popper: true,
+      dropdownElem: null
+    }, config);
     this._eventCaptured = false;
     this._shown = Util.hasClass(elem, CLASS_ACTIVE);
+    this._childrenDropdowns = [];
+    this._parentDropdown = null;
+    this._locateMolecule();
     this._locateDropdown();
     let self = this;
-    let dropdownPosition = false;
 
-    Util.registerComponent(COMPONENT_TYPE, this._elem, this);
+    if (this._config.popper) {
+      this.enablePopper();
+    }
+
+    this._triggerClickEventListener = function(e) {
+      self._clickOnTrigger();
+      e.preventDefault();
+      self._eventCaptured = true;
+    };
+    this._triggerFocusEventListener = function() {
+      self._triggerOnFocus();
+    };
+    this._triggerBlurEventListener = function() {
+      self._triggerOnBlur();
+    };
+    this._elem.addEventListener('click', this._triggerClickEventListener);
+    this._elem.addEventListener('focus', this._triggerFocusEventListener);
+    this._elem.addEventListener('blur', this._triggerBlurEventListener);
+
+    this._documentClickEventListener = function() {
+      if (self._eventCaptured === true) {
+        self._eventCaptured = false;
+      } else {
+        self._clickOnDocument();
+      }
+    };
+
+    this._dropdownElemClickEventListener = function() {
+      self._eventCaptured = true;
+    };
+    document.addEventListener(
+      'click',
+      this._documentClickEventListener
+    );
+    this._dropdownElem.addEventListener(
+      'click',
+      this._dropdownElemClickEventListener
+    );
+    this._initInnerDropdowns();
+  }
+
+  _initInnerDropdowns () {
+    const self = this;
+    Array.prototype.forEach.call(
+      this._dropdownElem.getElementsByClassName(CLASS_COMPONENT),
+      function (elem) {
+        const dropdownElem = elem.nextSibling;
+        const config = Util.copyObject(self._config);
+        config.popper = false;
+        if (dropdownElem && Util.hasClass(dropdownElem, CLASS_DROPDOWN)) {
+          config.dropdownElem = dropdownElem;
+        }
+        const dd = Dropdown.factory(elem, config);
+        dd._parentDropdown = self;
+        self._childrenDropdowns.push(dd);
+      }
+    );
+  }
+
+  enablePopper () {
+    if (this._popper) {
+      return;
+    }
+
+    let dropdownPosition = null;
 
     if (this._elem.dataset.position) {
       if (this._elem.dataset.position === 'default') {
@@ -40,49 +109,75 @@ class Dropdown {
         placement: dropdownPosition
       });
     }
+  }
 
-    this._triggerClickEventListener = function() {
-      self._clickOnTrigger();
-    };
-    this._elem.addEventListener('click', this._triggerClickEventListener);
-
-    this._documentClickEventListener = function() {
-      self._clickOnDocument();
-    };
-    document.addEventListener('click', this._documentClickEventListener);
-
+  disablePopper () {
+    if (this._popper) {
+      this._popper.destroy();
+      this._popper = null;
+    }
   }
 
   _clickOnTrigger() {
-    this.toggle();
-    this._eventCaptured = true;
+    if (!this.focused) {
+      this.toggle();
+    }
   }
 
-  _clickOnDocument() {
-    if (this._eventCaptured) {
-      this._eventCaptured = false;
-    } else {
+  _triggerOnFocus () {
+    this.focused = true;
+    if (!this._shown) {
+      this.show();
+    }
+  }
+
+  _triggerOnBlur () {
+    this.focused = false;
+    if (this._shown) {
       this.hide();
     }
   }
 
+  _clickOnDocument() {
+    this.hide();
+  }
+
+  _locateMolecule (elem) {
+    if (typeof elem === 'undefined') {
+      elem = this._elem.parentNode;
+    }
+
+    if (elem === null) {
+      return;
+    } else if (Util.hasClass(elem, CLASS_MOLECULE)) {
+      this._molecule = elem;
+      return;
+    } else if (elem.nodeName === 'body' || elem.nodeName === 'document') {
+      return;
+    } else {
+      this._locateMolecule(elem.parentNode);
+    }
+  }
+
   _locateDropdown () {
-    this._dropdownElem = Util.getTarget(this._elem);
-    if (!this._dropdownElem) {
-      if (!this._molecule) {
-        if (Util.hasClass(this._elem.parentNode, CLASS_MOLECULE)) {
-          this._molecule = this._elem.parentNode;
-        }
-      }
-      if (this._molecule) {
-        let dropdown = this._molecule.getElementsByClassName(CLASS_DROPDOWN);
-        if (dropdown && dropdown.length) {
-          this._dropdownElem = dropdown[0];
-        }
+
+    if (this._config.dropdownElem) {
+      this._dropdownElem = this._config.dropdownElem;
+    } else {
+      this._dropdownElem = Util.getTarget(this._elem);
+    }
+
+    if (this._molecule && !this._dropdownElem) {
+      let dropdown = this._molecule.getElementsByClassName(CLASS_DROPDOWN);
+      if (dropdown && dropdown.length) {
+        this._dropdownElem = dropdown[0];
       }
     }
+
     if (!this._dropdownElem) {
-      throw new Error ("Could not find dropdown content for dropdown trigger. ");
+      throw new Error (
+        "Could not find dropdown content for dropdown trigger. "
+      );
     }
   }
 
@@ -93,6 +188,14 @@ class Dropdown {
       if (this._popper) {
         this._popper.update();
       }
+      if (this._parentDropdown) {
+        this._parentDropdown.show();
+        this._parentDropdown._childrenDropdowns.forEach(function(dd) {
+          if (dd !== this) {
+            //dd.hide();
+          }
+        });
+      }
       this._shown = true;
     }
   }
@@ -102,6 +205,9 @@ class Dropdown {
       Util.removeClass(this._elem, CLASS_ACTIVE);
       Util.removeClass(this._dropdownElem, CLASS_ACTIVE);
       this._shown = false;
+      this._childrenDropdowns.forEach(function(dd) {
+        dd.hide();
+      });
     }
   }
 
@@ -121,19 +227,32 @@ class Dropdown {
     this._eventCaptured = null;
     this._elem.removeEventListener('click', this._triggerClickEventListener);
     this._triggerClickEventListener = null;
+    this._elem.removeEventListener('focus', this._triggerFocusEventListener);
+    this._triggerFocusEventListener = null;
+    this._elem.removeEventListener('blur', this._triggerBlurEventListener);
+    this._triggerBlurEventListener = null;
+
+    this._childrenDropdowns.forEach(function(dropdown) {
+      dropdown.dispose();
+    });
+    this._childrenDropdowns = null;
+    this._parentDropdown = null;
+
     document.removeEventListener('click', this._documentClickEventListener);
     this._documentClickEventListener = null;
-    Util.unregisterComponent(COMPONENT_TYPE, this._elem);
     this._elem = null;
-    if (this._popper) {
-      this._popper.destroy();
-      this._popper = null;
-    }
+    this.disablePopper();
   }
 
   static factory(elem, config) {
-    return Util.getRegisteredComponent(COMPONENT_TYPE, elem) ||
-      new Dropdown(elem, config);
+    return Util.cachedComponentFactory(
+      elem,
+      config,
+      COMPONENT_TYPE,
+      function() {
+        return new Dropdown(elem, config);
+      }
+    );
   }
 
   static initAll(config) {
@@ -149,4 +268,14 @@ class Dropdown {
 let chiDropdown = Util.addArraySupportToFactory(Dropdown.factory);
 
 chi.dropdown = chiDropdown;
-export {Dropdown, chiDropdown};
+export {
+  Dropdown,
+  chiDropdown,
+
+  CLASS_ACTIVE,
+  CLASS_COMPONENT,
+  CLASS_DROPDOWN,
+  CLASS_MOLECULE,
+  COMPONENT_TYPE,
+  DEFAULT_POSITION
+};

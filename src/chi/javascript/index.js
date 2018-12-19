@@ -5,6 +5,7 @@ import {Drawer, chiDrawer} from './drawer';
 import {Dropdown, chiDropdown} from './dropdown';
 import {ExpansionPanel, chiExpansionPanel, EXPANSION_PANEL_STATES} from "./expansion-panel";
 import {FloatingLabel, chiFloatingLabel} from "./floating-label";
+import {Navigation, chiNavigation} from "./navigation";
 import {NumberInput, chiNumberInput} from './number-input';
 import {chiRangeSlider, RangeSlider} from "./range-slider";
 import {Tab, chiTab} from './tab';
@@ -18,6 +19,7 @@ export {
   chiDropdown as dropdown,
   chiExpansionPanel as expansionPanel,
   chiFloatingLabel as floatingLabel,
+  chiNavigation as navigation,
   chiNumberInput as numberInput,
   chiRangeSlider as rangeSlider,
   chiTab as tab,
@@ -27,6 +29,7 @@ export {
   Dropdown,
   ExpansionPanel,
   FloatingLabel,
+  Navigation,
   NumberInput,
   RangeSlider,
   Tab,

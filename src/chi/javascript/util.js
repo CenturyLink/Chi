@@ -32,7 +32,9 @@ export class Util {
       '';
     if (!selector) {
       const hrefTarget = element.getAttribute('href');
-      selector = hrefTarget ? hrefTarget.trim() : '';
+      selector = hrefTarget && hrefTarget.charAt(0) === '#' ?
+        hrefTarget.trim() :
+        '';
     }
     return selector ? document.querySelector(selector) : null;
   }
@@ -50,7 +52,7 @@ export class Util {
   }
 
   static emulateTransitionEnd (transitionDuration, eventHandler) {
-    window.setTimeout(eventHandler, transitionDuration);
+    return window.setTimeout(eventHandler, transitionDuration);
   }
 
   static getData (elem, key) {
@@ -109,6 +111,24 @@ export class Util {
     } else {
       return false;
     }
+  }
+
+  static cachedComponentFactory (elem, config, componentType, objectGenerator) {
+    let object = Util.getRegisteredComponent(componentType, elem);
+    if (!object) {
+      object = objectGenerator(elem, config);
+      const objectDispose = object.dispose;
+      object.dispose = function() {
+        objectDispose.call(object);
+        Util.unregisterComponent(componentType, elem);
+      };
+      Util.registerComponent(componentType, elem, object);
+    }
+    return object;
+  }
+
+  static _getNewRegistrationIndex () {
+    return chi.componentIndex++;
   }
 
   static extend (a, b) {
@@ -193,8 +213,14 @@ export class Util {
     }
   }
 
-  static _getNewRegistrationIndex () {
-    return chi.componentIndex++;
+  static copyObject (src) {
+    let target = {};
+    for (let prop in src) {
+      if (src.hasOwnProperty(prop)) {
+        target[prop] = src[prop];
+      }
+    }
+    return target;
   }
 
   static noOp () {}

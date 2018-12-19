@@ -1,11 +1,12 @@
 import {Util} from "./util.js";
 import {chi} from "./chi.js";
 
-const CLASS_COMPONENT = 'a-tabs';
 const CLASS_ACTIVE = "-active";
-const COMPONENT_TYPE = "tab";
-const CLASS_SLIDING_BORDER='a-tabs__sliding-border';
 const CLASS_ANIMATED = "-animated";
+const CLASS_COMPONENT = 'a-tabs';
+const CLASS_SLIDING_BORDER='a-tabs__sliding-border';
+const CLASS_VERTICAL = "-vertical";
+const COMPONENT_TYPE = "tab";
 
 class Tab {
 
@@ -14,7 +15,9 @@ class Tab {
     this._config = {
       animated: true
     };
+
     this._config = Util.extend(this._config, config);
+    this._vertical = Util.hasClass(this._elem, CLASS_VERTICAL);
 
     let self = this;
 
@@ -22,7 +25,6 @@ class Tab {
       self.clickEventHandler(e);
     };
     this._elem.addEventListener('click', this._clickEventHandler);
-    Util.registerComponent(COMPONENT_TYPE, this._elem, this);
 
     if (this._config.animated) {
       Util.addClass(this._elem, CLASS_ANIMATED);
@@ -47,25 +49,27 @@ class Tab {
     let offset = 0;
     let size = 0;
     let found = false;
-    const vertical = Util.hasClass(this._elem, '-vertical');
+    const self = this;
 
     for (let i = 0; !found && i < this._elem.childNodes.length; i++) {
       let childNode = this._elem.childNodes[i];
       let style = window.getComputedStyle(childNode);
-      offset += parseInt(vertical ? style.marginTop : style.marginLeft, 10);
+      offset += parseInt(this._vertical ? style.marginTop : style.marginLeft, 10);
       if (childNode === tab) {
-        size = vertical ? childNode.childNodes[0].scrollHeight : childNode.childNodes[0].scrollWidth;
+        size = this._vertical ? childNode.childNodes[0].scrollHeight : childNode.childNodes[0].scrollWidth;
         found = true;
       } else {
-        offset += vertical ? childNode.scrollHeight : childNode.scrollWidth;
+        offset += this._vertical ? childNode.scrollHeight : childNode.scrollWidth;
       }
     }
     if (found) {
       Util.findAndApply(this._elem, CLASS_SLIDING_BORDER, function (elem) {
-        if (vertical) {
-          elem.setAttribute('style', 'height:' + size + 'px;top:' + offset + 'px;');
+        if (self._vertical) {
+          elem.setAttribute('style',
+            'height:' + size + 'px;top:' + offset + 'px;');
         } else {
-          elem.setAttribute('style', 'width:' + size + 'px;left:' + offset + 'px;');
+          elem.setAttribute('style',
+            'width:' + size + 'px;left:' + offset + 'px;');
         }
       });
     } else {
@@ -113,6 +117,10 @@ class Tab {
     }
   }
 
+  get vertical () {
+    return this._vertical;
+  }
+
   clickEventHandler(e) {
 
     let tab, parentTab;
@@ -137,22 +145,31 @@ class Tab {
     }
 
     if (Util.hasClass(tab, CLASS_ACTIVE)) {
-      Array.prototype.forEach.call(tab.getElementsByClassName(CLASS_ACTIVE), function (tabElement) {
-        if (tabElement.nodeName === 'LI') {
-          Util.removeClass(tabElement, CLASS_ACTIVE);
-          self.hideTabPanel(tabElement);
-          self.showTabPanel(tab);
+      Array.prototype.forEach.call(
+        tab.getElementsByClassName(CLASS_ACTIVE),
+        function (tabElement) {
+          if (tabElement.nodeName === 'LI') {
+            Util.removeClass(tabElement, CLASS_ACTIVE);
+            self.hideTabPanel(tabElement);
+            self.showTabPanel(tab);
+          }
         }
-      });
+      );
       return;
     }
 
-    Array.prototype.forEach.call(self._elem.getElementsByTagName('LI'), function (tabElement) {
-      if (Util.hasClass(tabElement, CLASS_ACTIVE) && tabElement !== parentTab) {
-        Util.removeClass(tabElement, CLASS_ACTIVE);
-        self.hideTabPanel(tabElement);
+    Array.prototype.forEach.call(
+      self._elem.getElementsByTagName('LI'),
+      function (tabElement) {
+        if (
+          Util.hasClass(tabElement, CLASS_ACTIVE) &&
+          tabElement !== parentTab
+        ) {
+          Util.removeClass(tabElement, CLASS_ACTIVE);
+          self.hideTabPanel(tabElement);
+        }
       }
-    });
+    );
 
     Util.addClass(tab, CLASS_ACTIVE);
     self.showTabPanel(tab);
@@ -173,16 +190,16 @@ class Tab {
 
   dispose () {
     this._config = null;
-
+    this._vertical = null;
     this._elem.removeEventListener('click', this._clickEventHandler);
     this._clickEventHandler = null;
-    Util.unregisterComponent(COMPONENT_TYPE, this._elem);
     this._elem = null;
   }
 
   static factory(elem, config) {
-    return Util.getRegisteredComponent(COMPONENT_TYPE, elem) ||
-      new Tab(elem, config);
+    return Util.cachedComponentFactory(elem, config, COMPONENT_TYPE, function() {
+      return new Tab(elem, config);
+    });
   }
 
   static initAll(config) {
@@ -192,7 +209,6 @@ class Tab {
       }
     );
   }
-
 }
 
 let chiTab = Util.addArraySupportToFactory(Tab.factory);
