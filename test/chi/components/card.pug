@@ -22,7 +22,7 @@ title: Card
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec.
       button.a-btn.-brand Link
-.test-card-empty
+.test-card-hero
   h3 Hero
   .a-card(style="width: 20rem")
     .a-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8);")
@@ -32,12 +32,18 @@ title: Card
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
         | Donec sit amet consectetur elit.
-.test-card-hero
+.test-card-empty
   h3 Empty
   .a-card.-empty(style="width:20rem;")
     .a-card__content
       i.a-icon.-md(class ='icon-circle-plus-outline')
-      span Add Product
+      span.-title Add Product
+.test-card-empty-active
+  h3 Empty active state
+  .a-card.-empty.-active(style="width:20rem;")
+    .a-card__content
+      i.a-icon.-md(class ='icon-circle-plus-outline')
+      span.-title Add Product
 .test-card-footer
   h3 Footer
   .a-card(style="width: 20rem")
