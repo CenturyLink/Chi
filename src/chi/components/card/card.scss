@@ -124,7 +124,27 @@
       &.-noBorder {
         box-shadow: none;
       }
+    }
 
+    &.-active {
+      border: 0.0625rem solid $brand-color;
+      box-shadow: 0 0 0 0.0625rem $brand-color;
+    }
+
+    &.-empty {
+      background-color: transparent;
+      border: dashed rgba(set-color(black), 0.12);
+
+      & .a-card__content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        & .a-icon {
+          margin-bottom: 1rem;
+        }
+      }
     }
   }
 }
