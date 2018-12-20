@@ -126,40 +126,23 @@
       }
     }
 
+    &.-active {
+      border: 0.0625rem solid $brand-color;
+      box-shadow: 0 0 0 0.0625rem $brand-color;
+    }
+
     &.-empty {
       background-color: transparent;
       border: dashed rgba(set-color(black), 0.12);
-      transition: all 0.2s;
 
       & .a-card__content {
         align-items: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin: 1rem;
 
         & .a-icon {
-          color: set-color(grey, 60);
           margin-bottom: 1rem;
-        }
-
-        & .-title {
-          font-size: $text-large;
-          font-weight: 600;
-        }
-      }
-
-      &:active,
-      &.-active {
-        &,
-        &:focus,
-        &.-focus {
-          border: dashed $brand-color;
-          color: $brand-color;
-        }
-
-        & .a-icon {
-          color: $brand-color;
         }
       }
     }

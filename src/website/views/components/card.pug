@@ -78,23 +78,6 @@ p.-text
       </div>
     </div>
 
-h4 Empty
-p.-text
-  | Add a empty state card by applying the modifier class <code>-empty</code>.
-.example.-mb--3
-  .-p--3
-    .a-card.-empty(style="width:20rem;")
-      .a-card__content
-        i.a-icon.-md(class ='icon-circle-plus-outline')
-        span.-title Add Product
-  :code(lang="html")
-    <div class="a-card -empty">
-      <div class="a-card__content">
-        <i class="a-icon -md icon-circle-plus-outline"></i>
-        <span class="-title">Add Product</span>
-      </div>
-    </div>
-
 h4 Footer
 .example.-mb--3
   .-p--3
@@ -356,5 +339,39 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
       </div>
       <div class="a-card__footer -small">
         <a class="-text" href="#">Link</a>
+      </div>
+    </div>
+
+h4 Empty
+p.-text
+  | Add an empty state card by applying the modifier class <code>-empty</code>.
+.example.-mb--3
+  .-p--3
+    .a-card.-empty(style="width:20rem;")
+      .a-card__content
+        i.a-icon.-md.-text--muted(class ='icon-circle-plus-outline')
+        p.-text.-m--0 Add Product
+  :code(lang="html")
+    <div class="a-card -empty">
+      <div class="a-card__content">
+        <i class="a-icon icon-circle-plus-outline -md -text--muted"></i>
+        <p class="-text -m--0">Add Product</p>
+      </div>
+    </div>
+
+h4 Active
+p.-text
+  | Add an active state card by applying the modifier class <code>-active</code>.
+.example.-mb--3
+  .-p--3
+    .a-card.-active(style="width:20rem;")
+      .a-card__content
+        h5.a-card__title Title
+        p.-text.-m--0 This is an active card
+  :code(lang="html")
+    <div class="a-card -active">
+      <div class="a-card__content">
+        <h5 class="a-card__title">Title</h5>
+        <p class="-text -m--0">This is an active card</p>
       </div>
     </div>

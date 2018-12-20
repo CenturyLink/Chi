@@ -32,18 +32,6 @@ title: Card
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
         | Donec sit amet consectetur elit.
-.test-card-empty
-  h3 Empty
-  .a-card.-empty(style="width:20rem;")
-    .a-card__content
-      i.a-icon.-md(class ='icon-circle-plus-outline')
-      span.-title Add Product
-.test-card-empty-active
-  h3 Empty active state
-  .a-card.-empty.-active(style="width:20rem;")
-    .a-card__content
-      i.a-icon.-md(class ='icon-circle-plus-outline')
-      span.-title Add Product
 .test-card-footer
   h3 Footer
   .a-card(style="width: 20rem")
@@ -148,3 +136,15 @@ title: Card
         | Ut felis magna, facilisis ut malesuada nec.
     .a-card__footer.-small
       a(href="#") Link
+.test-card-empty
+  h3 Empty
+  .a-card.-empty(style="width:20rem;")
+    .a-card__content
+      i.a-icon.-md.-text--muted(class ='icon-circle-plus-outline')
+      p.-text.-m--0 Add Product
+.test-card-active
+  h3 Active
+  .a-card.-active(style="width:20rem;")
+    .a-card__content
+      h5.a-card__title Title
+      p.-text.-m--0 This is an active card
