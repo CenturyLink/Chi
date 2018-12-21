@@ -32,7 +32,8 @@ export class Util {
       '';
     if (!selector) {
       const hrefTarget = element.getAttribute('href');
-      selector = hrefTarget && hrefTarget.charAt(0) === '#' ?
+      selector =
+        hrefTarget && hrefTarget.length > 1 && hrefTarget.charAt(0) === '#' ?
         hrefTarget.trim() :
         '';
     }
@@ -131,18 +132,18 @@ export class Util {
     return chi.componentIndex++;
   }
 
-  static extend (a, b) {
-    if (!b) {
-      return a;
+  static extend (originArray, extensorArray) {
+    if (!extensorArray) {
+      return originArray;
     }
-    for (let key in b) {
-      if (b[key] === undefined) {
-        delete a[key];
+    for (let key in extensorArray) {
+      if (extensorArray[key] === undefined) {
+        delete originArray[key];
       } else {
-        a[key] = b[key];
+        originArray[key] = extensorArray[key];
       }
     }
-    return a;
+    return originArray;
   }
 
   static addArraySupportToFactory (factoryMethod) {
@@ -178,7 +179,7 @@ export class Util {
     let event;
     if(typeof Event  === 'function') {
       event = new Event(eventType);
-    }else{
+    } else {
       event = document.createEvent('Event');
       event.initEvent(eventType, true, true);
     }
