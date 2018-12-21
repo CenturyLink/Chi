@@ -92,6 +92,80 @@ h4 Inverse
             li
               a(href='#')= `${step}`
 
+h4 Horizontal labels
+  .example.-mb--3(style="width:900px")
+    .-p--3
+      ul.a-steps.-mb--8.-horizontalLabels
+        each step in steps
+          if step == 'Step 1'
+            li.-active
+              a(href='#')= `${step}`
+          else
+            li
+              a(href='#')= `${step}`
+      ul.a-steps.-mb--8.-horizontalLabels
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              a(href='#')= `${step}`
+          else if step == 'Step 2'
+            li.-active
+              a(href='#')= `${step}`
+          else
+            li
+              a(href='#')= `${step}`
+      ul.a-steps.-mb--8.-horizontalLabels
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              a(href='#')= `${step}`
+          else if step == 'Step 2'
+            li.-completed
+              a(href='#')= `${step}`
+          else if step == 'Step 3'
+            li.-active
+              a(href='#')= `${step}`
+          else
+            li
+              a(href='#')= `${step}`
+      ul.a-steps.-mb--8.-horizontalLabels
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              a(href='#')= `${step}`
+          else if step == 'Step 2'
+            li.-completed
+              a(href='#')= `${step}`
+          else if step == 'Step 3'
+            li.-completed
+              a(href='#')= `${step}`
+          else if step == 'Step 4'
+            li.-active
+              a(href='#')= `${step}`
+          else
+            li
+              a(href='#')= `${step}`
+      ul.a-steps.-mb--8.-horizontalLabels
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              a(href='#')= `${step}`
+          else if step == 'Step 2'
+            li.-completed
+              a(href='#')= `${step}`
+          else if step == 'Step 3'
+            li.-completed
+              a(href='#')= `${step}`
+          else if step == 'Step 4'
+            li.-completed
+              a(href='#')= `${step}`
+          else if step == 'Step 5'
+            li.-active
+              a(href='#')= `${step}`
+          else
+            li
+              a(href='#')= `${step}`
+
 h4 Inverse horizontal labels
   .example.-mb--3(style="width:900px")
     .-p--3

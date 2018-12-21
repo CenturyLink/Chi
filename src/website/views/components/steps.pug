@@ -77,10 +77,49 @@ h4 Inverse
       </li>
     </ul>
 
-h4 Inverse with horizontal labels
+h4 Horizontal labels
 p.-text
   | To display steps with horizontal labels, apply the class <code>-horizontalLabels</code> to the steps to a unordered list <code>ul</code>
   | and indicate the active link with the class <code>-active</code> and the class <code>-completed</code> in the corresponding li tag.
+
+.example.-mb--3
+  .-p--3
+    ul.a-steps.-mb--5.-horizontalLabels
+      each step in steps
+        if step == 'Step 1'
+          li.-completed
+            a(href='#')= `${step}`
+        else if step == 'Step 2'
+          li.-completed
+            a(href='#')= `${step}`
+        else if step == 'Step 3'
+          li.-active
+            a(href='#')= `${step}`
+        else
+          li
+            a(href='#')= `${step}`
+  :code(lang="html")
+    <ul class="a-steps -horizontalLabels">
+      <li class="-completed">
+        <a href="#">Step 1</a>
+      </li>
+      <li class="-completed">
+        <a href="#">Step 2</a>
+      </li>
+      <li class="-active">
+        <a href="#">Step 3</a>
+      </li>
+      <li>
+        <a href="#">Step 4</a>
+      </li>
+      <li>
+        <a href="#">Step 5</a>
+      </li>
+    </ul>
+
+h4 Inverse with horizontal labels
+p.-text
+  | To display the inverse state apply the class <code>-inverse</code> to the steps to a unordered list <code>ul</code>
 
 .example.-mb--3
   .-p--3
