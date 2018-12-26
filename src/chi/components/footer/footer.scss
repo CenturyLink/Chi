@@ -1,0 +1,143 @@
+@import 'mixins';
+@import 'variables';
+
+.chi {
+  .o-footer {
+    align-items: center;
+    background-color: transparent;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .04), 0 2px 2px 0 rgba(0, 0, 0, .12);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    z-index: 1;
+
+    &__content {
+      padding: 0 1.5rem;
+      position: relative;
+      width: 100%;
+    }
+
+    &__header {
+      color: set-color(black);
+      display: flex;
+      padding: 3rem 0;
+      position: relative;
+      width: 100%;
+      @include respond-to(sm) {
+        flex-direction: row;
+      }
+    }
+
+    &__footer {
+      align-items: center;
+      color: set-color(grey, 50);
+      display: flex;
+      font-size: $text-smaller;
+      font-weight: 600;
+      height: 4rem;
+      justify-content: space-between;
+
+      & .a-brand {
+        display: block;
+        width: 6rem;
+
+        & > img,
+        & > svg {
+          height: 1.5rem;
+          @include respond-to(sm) {
+            height: 2rem;
+          }
+        }
+        @include respond-to(sm) {
+          margin-right: 1rem;
+          width: 10rem;
+        }
+        @include respond-to(md) {
+          margin-right: 2rem;
+        }
+      }
+    }
+
+    &__start {
+      text-align: left;
+    }
+
+    &__end {
+      text-align: right;
+      text-decoration: none;
+      text-transform: capitalize;
+
+      .a-menu {
+        display: flex;
+        flex-wrap: nowrap;
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+
+        & > li {
+          display: inline-block;
+
+          & > a {
+            color: set-color(grey, 50);
+            cursor: pointer;
+            display: block;
+
+            &:hover {
+              color: $brand-color;
+            }
+          }
+        }
+
+        & > li {
+          &:not(:first-child) {
+            margin-left: 1.5rem;
+          }
+        }
+      }
+    }
+
+    &__column {
+      color: set-color(black);
+      display: flex;
+      flex-direction: column;
+      flex: 1 0 0%;
+      position: relative;
+
+      & .-title {
+        font-weight: 600;
+        font-size: $text-large;
+        margin-bottom: 0.5rem;
+      }
+
+      & a {
+        color: set-color(grey, 50);
+        cursor: pointer;
+        font-size: $text;
+      }
+    }
+
+    & .a-divider {
+      margin: 0;
+      width: 100%;
+    }
+
+    &.-inverse {
+      background-color: set-color(black);
+
+      & .o-footer__header {
+        color: set-color(white);
+      }
+
+      & .o-footer__column {
+        color: set-color(white);
+
+        & a {
+          color: set-color(grey, 40);
+        }
+      }
+    }
+  }
+}
