@@ -1,0 +1,27 @@
+---
+title: RadiobuttonList
+---
+.test-states
+  each state, index in ['default', 'hover', 'focus', 'disabled']
+    h5= `Radio / ${state}`
+    .m-radiobuttonList(style="width:400px")
+      each element in [1, 2, 3, 4, 5]
+        div
+          input.a-input(
+          type="radio"
+          id=`radio-${element}`
+          name=`radio`
+          class={
+            [`-${state}`]: state == 'focus'
+          }
+          checked=state=='checked' ? 'checked' : false
+          disabled=state=='disabled' ? 'disabled' : false
+          )
+          label(
+          for=`radio-${element}`
+          class={
+            [`-${state}`]: state == 'hover'
+          }
+          )
+          label(for=`radio-${element}`)= `Radio-${element}`
+        .a-divider

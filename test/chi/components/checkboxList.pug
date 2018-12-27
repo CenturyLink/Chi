@@ -1,0 +1,27 @@
+---
+title: CheckboxList
+---
+
+.test-states
+  each state, index in ['default', 'hover', 'focus', 'checked', 'disabled']
+    h5= `Checkbox / ${state}`
+    .m-checkboxList(style="width:400px")
+      each element in [1, 2, 3, 4, 5]
+        div
+          input.a-input(
+          type="checkbox"
+          id=`checkbox-${element}`
+          class={
+            [`-${state}`]: state == 'focus'
+          }
+          checked=state == 'checked' ? 'checked' : false
+          disabled=state == 'disabled' ? 'disabled' : false
+          )
+          label(
+          for=`checkbox-${element}`
+          class={
+            [`-${state}`]: state == 'hover'
+          }
+          )
+          label(for=`checkbox-${element}`)= `Checkbox-${element}`
+        .a-divider
