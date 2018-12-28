@@ -2,10 +2,11 @@ import {Util} from "./util.js";
 import {chi} from "./chi.js";
 import Popper from 'popper.js';
 
-const CLASS_MOLECULE = "m-dropdown";
+const CLASS_ACTIVE = "-active";
 const CLASS_COMPONENT = 'm-dropdown__trigger';
 const CLASS_DROPDOWN = 'm-dropdown__menu';
-const CLASS_ACTIVE = "-active";
+const CLASS_DROPDOWN_ITEM = 'm-dropdown__menu-item';
+const CLASS_MOLECULE = "m-dropdown";
 const COMPONENT_TYPE = "dropdown";
 const DEFAULT_POSITION = "bottom-start";
 
@@ -20,7 +21,9 @@ class Dropdown {
     this._eventCaptured = false;
     this._shown = Util.hasClass(elem, CLASS_ACTIVE);
     this._childrenDropdowns = [];
+    this._dropdownElem = null;
     this._parentDropdown = null;
+    this._activedDescendants = [];
     this._locateMolecule();
     this._locateDropdown();
     let self = this;
@@ -41,8 +44,8 @@ class Dropdown {
       self._triggerOnBlur();
     };
     this._elem.addEventListener('click', this._triggerClickEventListener);
-    this._elem.addEventListener('focus', this._triggerFocusEventListener);
-    this._elem.addEventListener('blur', this._triggerBlurEventListener);
+    //this._elem.addEventListener('focus', this._triggerFocusEventListener);
+    //this._elem.addEventListener('blur', this._triggerBlurEventListener);
 
     this._documentClickEventListener = function() {
       if (self._eventCaptured === true) {
@@ -52,8 +55,8 @@ class Dropdown {
       }
     };
 
-    this._dropdownElemClickEventListener = function() {
-      self._eventCaptured = true;
+    this._dropdownElemClickEventListener = function(e) {
+      self._dropdownClickedEventManager(e);
     };
     document.addEventListener(
       'click',
@@ -64,6 +67,10 @@ class Dropdown {
       this._dropdownElemClickEventListener
     );
     this._initInnerDropdowns();
+  }
+
+  _dropdownClickedEventManager (e) {
+    this._eventCaptured = true;
   }
 
   _initInnerDropdowns () {
@@ -78,17 +85,15 @@ class Dropdown {
           config.dropdownElem = dropdownElem;
         }
         const dd = Dropdown.factory(elem, config);
-        dd._parentDropdown = self;
-        self._childrenDropdowns.push(dd);
+        if (!dd._parentDropdown) {
+          dd._parentDropdown = self;
+          self._childrenDropdowns.push(dd);
+        }
       }
     );
   }
 
-  enablePopper () {
-    if (this._popper) {
-      return;
-    }
-
+  _calculateDropdownPosition() {
     let dropdownPosition = null;
 
     if (this._elem.dataset.position) {
@@ -100,6 +105,15 @@ class Dropdown {
     } else if (this._molecule) {
       dropdownPosition = DEFAULT_POSITION;
     }
+    return dropdownPosition;
+  }
+
+  enablePopper () {
+    if (this._popper) {
+      return;
+    }
+
+    let dropdownPosition = this._calculateDropdownPosition();
 
     if (dropdownPosition && typeof Popper !== 'undefined') {
       this._popper = new Popper (this._elem, this._dropdownElem, {
@@ -110,6 +124,19 @@ class Dropdown {
       });
     }
   }
+
+  // getHeight (includeDescendants) {
+  //   if (typeof includeDescendants === 'undefined') {
+  //     includeDescendants = false;
+  //   }
+  //   let height = this._elem.getBoundingClientRect().height;
+  //   if (includeDescendants && this._shown && !this._transitioning) {
+  //     height += this._dropdownElem.getBoundingClientRect().height;
+  //   } else if (includeDescendants && this._shown) {
+  //     height += this._transitionEndHeight;
+  //   }
+  //   return height;
+  // }
 
   disablePopper () {
     if (this._popper) {
@@ -182,6 +209,9 @@ class Dropdown {
   }
 
   show() {
+    if (this._parentDropdown) {
+      this._parentDropdown._setActiveDescendants(this, this._activedDescendants);
+    }
     if (!this._shown) {
       Util.addClass(this._elem, CLASS_ACTIVE);
       Util.addClass(this._dropdownElem, CLASS_ACTIVE);
@@ -190,11 +220,6 @@ class Dropdown {
       }
       if (this._parentDropdown) {
         this._parentDropdown.show();
-        this._parentDropdown._childrenDropdowns.forEach(function(dd) {
-          if (dd !== this) {
-            //dd.hide();
-          }
-        });
       }
       this._shown = true;
     }
@@ -202,6 +227,10 @@ class Dropdown {
 
   hide() {
     if (this._shown) {
+      if (this._parentDropdown) {
+        this._parentDropdown._setActiveDescendants();
+      }
+      this._setActiveDescendants();
       Util.removeClass(this._elem, CLASS_ACTIVE);
       Util.removeClass(this._dropdownElem, CLASS_ACTIVE);
       this._shown = false;
@@ -210,6 +239,25 @@ class Dropdown {
       });
     }
   }
+
+  _setActiveDescendants (...descendants) {
+    this._activedDescendants = [];
+    for (let descendant of descendants) {
+      if (Array.isArray(descendant)) {
+        this._activedDescendants.push(...descendant);
+      } else {
+        this._activedDescendants.push(descendant);
+      }
+    }
+  }
+
+  // getFurthestAncestor () {
+  //   if (this._parentDropdown) {
+  //     return this._parentDropdown.getFurthestAncestor();
+  //   } else {
+  //     return this;
+  //   }
+  // }
 
   toggle () {
     if (this._shown) {
@@ -237,6 +285,7 @@ class Dropdown {
     });
     this._childrenDropdowns = null;
     this._parentDropdown = null;
+    this._activedDescendants = null;
 
     document.removeEventListener('click', this._documentClickEventListener);
     this._documentClickEventListener = null;
@@ -275,6 +324,7 @@ export {
   CLASS_ACTIVE,
   CLASS_COMPONENT,
   CLASS_DROPDOWN,
+  CLASS_DROPDOWN_ITEM,
   CLASS_MOLECULE,
   COMPONENT_TYPE,
   DEFAULT_POSITION

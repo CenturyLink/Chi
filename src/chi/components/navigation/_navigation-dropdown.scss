@@ -1,5 +1,12 @@
 .chi {
   .a-tabs {
+
+    .m-dropdown__menu-item.-active {
+      background-image: none;
+      background-size: initial;
+      padding-right: 1rem;
+    }
+
     &:not(.-vertical) {
       & > li {
         & > a.m-dropdown__trigger {
@@ -12,6 +19,7 @@
         }
       }
     }
+
     &.-vertical {
       .m-dropdown {
         &__trigger {
@@ -19,6 +27,7 @@
             display: none;
           }
         }
+
         &__menu {
           border: 0px solid transparent;
           box-shadow: none;
@@ -26,15 +35,31 @@
           padding-top: 0;
           position: initial;
 
-          &-item {
-            padding-left: 2.5rem;
+          .m-dropdown__menu {
+            &-item {
+              padding-left: 2.5rem;
+            }
+
+            .m-dropdown__menu {
+              &-item {
+                padding-left: 4.5rem;
+              }
+
+              .m-dropdown__menu {
+                &-item {
+                  padding-left: 6.5rem;
+                }
+
+                .m-dropdown__menu {
+                  &-item {
+                    padding-left: 8.5rem;
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
   }
 }
-
-
-
-

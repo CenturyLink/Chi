@@ -29,7 +29,7 @@
         }
       }
 
-      &.a-tabs__sliding-border {
+      &.a-sliding-border {
         display: block;
         position: absolute;
         transition: .5s cubic-bezier(.35,0,.25,1);
@@ -82,7 +82,7 @@
           padding: 1.25rem 0;
         }
 
-        &.a-tabs__sliding-border {
+        &.a-sliding-border {
           margin-left: 0;
           height: 0.125rem;
           bottom: 0;
@@ -186,7 +186,7 @@
       & > li {
         position: relative;
 
-        &.a-tabs__sliding-border {
+        &.a-sliding-border {
           left: 0;
           width: 0.125rem;
           position: absolute;

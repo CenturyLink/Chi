@@ -17,10 +17,26 @@
         border: 0px solid transparent;
         box-shadow: none;
         padding-bottom: 0;
-        padding-left: 2rem;
         padding-top: 0;
         position: initial;
 
+        .m-dropdown__menu {
+          &-item {
+            padding-left: 2.5rem;
+          }
+
+          .m-dropdown__menu {
+            &-item {
+              padding-left: 4.5rem;
+            }
+
+            .m-dropdown__menu {
+              &-item {
+                padding-left: 6.5rem;
+              }
+            }
+          }
+        }
       }
     }
 
