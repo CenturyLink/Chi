@@ -118,10 +118,6 @@
               background-color: set-color(white);
               border-color: set-color(grey, 40);
             }
-
-            & a {
-              color: set-color(grey, 40);
-            }
           }
 
           & a {
@@ -155,14 +151,6 @@
       & > li {
         &::before {
           border: 0.125rem solid set-color(black);
-        }
-
-        &.-active {
-          & ~ li {
-            & a {
-              color: set-color(grey, 40);
-            }
-          }
         }
 
         & a {
