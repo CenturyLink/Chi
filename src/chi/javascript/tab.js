@@ -7,6 +7,7 @@ const CLASS_ACTIVE = "-active";
 const CLASS_ANIMATED = "-animated";
 const CLASS_COMPONENT = 'a-tabs';
 const CLASS_VERTICAL = "-vertical";
+const CLASS_RESPONSIVE = "-responsive";
 const COMPONENT_TYPE = "tab";
 
 class Tab {
@@ -75,22 +76,27 @@ class Tab {
   }
 
   isVertical () {
+
+    let isVertical = Util.hasClass(this._elem, CLASS_VERTICAL) ||
+      Util.hasClass(this._elem, CLASS_RESPONSIVE) &&
+      Util.getMediaWidth() < chi.responsiveBreakpoints.md
+    ;
+
     if (this._slidingBorder) {
-      const newValue = Util.hasClass(this._elem, CLASS_VERTICAL);
+      const newValue = isVertical;
       if (newValue !== this.previousVerticalValue) {
         this.previousVerticalValue = newValue;
         this._slidingBorder.setVertical(newValue);
       }
       return newValue;
     } else {
-      return Util.hasClass(this._elem, CLASS_VERTICAL);
+      return isVertical;
     }
   }
 
   showTab (tab, parentTab) {
 
     const self = this;
-
     if (Util.hasClass(tab, CLASS_ACTIVE)) {
       Array.prototype.forEach.call(
         tab.getElementsByClassName(CLASS_ACTIVE),

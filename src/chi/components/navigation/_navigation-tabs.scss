@@ -1,12 +1,23 @@
+@import 'variables';
+
+@mixin navigation-tabs-not-vertical() {
+  & > li {
+    & > a.m-dropdown__trigger {
+      padding-right: 1.5rem;
+      position: relative;
+    }
+  }
+}
 
 .chi {
   .a-tabs {
-    &:not(.-vertical) {
-      & > li {
-        & > a.m-dropdown__trigger {
-          padding-right: 1.5rem;
-          position: relative;
-        }
+    &:not(.-vertical):not(.-responsive) {
+      @include navigation-tabs-not-vertical
+    }
+
+    @media only screen and (min-width: $md-breakpoint) {
+      &.-responsive {
+        @include navigation-tabs-not-vertical;
       }
     }
   }

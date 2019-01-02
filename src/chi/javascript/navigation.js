@@ -214,9 +214,6 @@ class Navigation {
 
       this._elem.addEventListener('click', this._clickOnComponentHandler);
       document.addEventListener('click', this._clickOnDocumentHandler);
-
-      // TODO: when an active element falls into the overflow menu,
-      //  the overflow menu should be rendered as active.
     }
     this.saveState();
   }

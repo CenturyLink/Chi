@@ -364,6 +364,20 @@ export class Util {
     }
   }
 
+  static getMediaWidth () {
+    return Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    );
+  }
+
+  static getMediaHeight () {
+    return Math.max(
+      document.documentElement.clientHeight,
+      window.innerHeight || 0
+    );
+  }
+
   static getClosest (elem, className, stopElement) {
     if (typeof stopElement === 'undefined') {
       stopElement = document;
