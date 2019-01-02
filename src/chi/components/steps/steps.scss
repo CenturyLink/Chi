@@ -10,7 +10,6 @@
   .a-steps {
     display: table;
     font-weight: 600;
-    padding: 0;
     table-layout: fixed;
     width: 100%;
 
@@ -94,9 +93,7 @@
     }
 
     &.-horizontalLabels {
-      background-color: set-color(white);
       counter-reset: step;
-      padding: 1rem;
 
       & > li {
         &::before {
@@ -127,7 +124,7 @@
             }
 
             & a {
-              color: set-color($brand-color);
+              color: set-color(grey, 40);
             }
           }
 
@@ -138,7 +135,6 @@
 
         &.-completed {
           &::before {
-            border: .125rem solid set-color($brand-color);
             content: "\e91b";
             font-family: 'chi' !important;
             font-size: 0.75rem;
@@ -159,7 +155,6 @@
 
     &.-inverse {
       background-color: set-color(black);
-      padding: 1rem;
 
       & > li {
         &::before {
@@ -189,11 +184,11 @@
         & > li {
           &::before {
             background-color: set-color(black);
+            border: 0 0 0 0.125rem solid $brand-color;
           }
 
           &.-active {
             &::before {
-              border: .125rem solid set-color($brand-color);
               box-shadow: 0 0 0 0.125rem set-color(black);
             }
 
@@ -214,7 +209,7 @@
   }
 
   // sass-lint:disable-all
-  _:-ms-lang(x), .a-steps.-inverse.-horizontalLabels li a {
+  _:-ms-lang(x), .a-steps.-horizontalLabels li a {
     left: 50%;
   }
   // sass-lint:enable-all

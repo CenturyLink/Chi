@@ -14,7 +14,7 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--3
-    ul.a-steps
+    ul.a-steps.-p--2
       li
         a(href='#') Step 1
       li
@@ -26,7 +26,7 @@ h4 Base
       li
         a(href='#') Step 5
   :code(lang="html")
-    <ul class="a-steps">
+    <ul class="a-steps -p--2">
       <li>
         <a href="#">Step 1</a>
       </li>
@@ -47,7 +47,7 @@ h4 Base
 h4 Inverse
 .example.-mb--3
   .-p--3
-    ul.a-steps.-inverse
+    ul.a-steps.-inverse.-p--2
       li
         a(href='#') Step 1
       li
@@ -59,7 +59,7 @@ h4 Inverse
       li
         a(href='#') Step 5
   :code(lang="html")
-    <ul class="a-steps">
+    <ul class="a-steps -inverse -p--2">
       <li>
         <a href="#">Step 1</a>
       </li>
@@ -84,7 +84,7 @@ p.-text
 
 .example.-mb--3
   .-p--3
-    ul.a-steps.-mb--5.-horizontalLabels
+    ul.a-steps.-horizontalLabels.-p--2
       each step in steps
         if step == 'Step 1'
           li.-completed
@@ -99,7 +99,7 @@ p.-text
           li
             a(href='#')= `${step}`
   :code(lang="html")
-    <ul class="a-steps -horizontalLabels">
+    <ul class="a-steps -horizontalLabels -p--2">
       <li class="-completed">
         <a href="#">Step 1</a>
       </li>
@@ -123,7 +123,7 @@ p.-text
 
 .example.-mb--3
   .-p--3
-    ul.a-steps.-mb--5.-inverse.-horizontalLabels
+    ul.a-steps.-inverse.-horizontalLabels.-p--2
       each step in steps
         if step == 'Step 1'
           li.-completed
@@ -138,7 +138,7 @@ p.-text
           li
             a(href='#')= `${step}`
   :code(lang="html")
-    <ul class="a-steps -inverse -horizontalLabels">
+    <ul class="a-steps -inverse -horizontalLabels -p--2">
       <li class="-completed">
         <a href="#">Step 1</a>
       </li>
