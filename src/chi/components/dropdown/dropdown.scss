@@ -131,6 +131,12 @@
           }
         }
       }
+
+      &[data-position='bottom-end'] ~ .m-dropdown__menu {
+        left: initial;
+        right: 0;
+      }
+
     }
 
     & .-inverse {

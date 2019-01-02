@@ -135,6 +135,21 @@ class Tab {
     }
   }
 
+  hideTabs () {
+    const self = this;
+    Array.prototype.forEach.call(
+      this._elem.getElementsByTagName('LI'),
+      function (tabElement) {
+        Util.removeClass(tabElement, CLASS_ACTIVE);
+        self.hideTabPanel(tabElement);
+      }
+    );
+
+    if (this._config.animated) {
+      this.moveSlidingBorderToTab();
+    }
+  }
+
   _isLinkATabActivator (anchorElem) {
     return Util.getTarget(anchorElem) ? true : false;
   }
@@ -144,6 +159,7 @@ class Tab {
       event.preventDefault();
     } else {
       if (this._config.animated && this._config.waitForAnimations) {
+        event.preventDefault();
         window.setTimeout(
           function(){
             window.location.href = anchorElem.getAttribute('href');

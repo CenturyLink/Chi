@@ -21,6 +21,7 @@ class NavigationTab extends Tab {
 
   constructor (elem, config) {
     super(elem, config);
+    this._navigationComponent = config.navigationComponent;
     this.resetSlidingBorder();
   }
 
@@ -47,6 +48,7 @@ class NavigationTab extends Tab {
       }
     } else {
       super.clickEventHandler(e);
+      this._navigationComponent.saveState();
     }
     if (Util.hasClass(e.target, CLASS_DROPDOWN_ITEM)) {
       this.moveSlidingBorderToDropdownMenuItem(e.target);
@@ -95,16 +97,6 @@ class NavigationTab extends Tab {
       }
     );
   }
-
-  // static getTabHeight (tab) {
-  //   if (Util.hasClass(tab, CLASS_MOLECULE)) {
-  //     const dropdownTrigger =
-  //       tab.getElementsByClassName(DROPDOWN_CLASS_COMPONENT)[0];
-  //     return Util.calculateExternalHeight(dropdownTrigger, false);
-  //   } else {
-  //     return Util.calculateExternalHeight(tab, false);
-  //   }
-  // }
 }
 
 class NavigationDropdown extends Dropdown {
@@ -144,7 +136,6 @@ class NavigationDropdown extends Dropdown {
 
   _dropdownClickedEventManager (e) {
     super._dropdownClickedEventManager(e);
-
     if (
       Util.hasClass(e.target, CLASS_DROPDOWN_ITEM) &&
       !Util.hasClass(e.target, DROPDOWN_CLASS_COMPONENT)
@@ -160,11 +151,19 @@ class Navigation {
   constructor (elem, config) {
     this._config = Util.extend(
       {
-        confineOverflow: true,
-        waitForAnimations: true
+        overflowMenu: true,
+        overflowMenuLabel: 'More&hellip;',
+        waitForAnimations: true,
+
       }, config);
     this._elem = elem;
-    this._tabComponent = NavigationTab.factory(elem);
+    this._tabComponent = NavigationTab.factory(
+      elem,
+      {
+        waitForAnimations: this._config.waitForAnimations,
+        navigationComponent: this
+      }
+    );
     this._dropdowns = [];
     const self = this;
     Array.prototype.forEach.call(
@@ -182,8 +181,11 @@ class Navigation {
       }
     );
 
-    if (this._config.confineOverflow) {
-      this._overflowMenu = new OverflowMenu(this, this._tabComponent);
+    if (this._config.overflowMenu) {
+      this._overflowMenu = new OverflowMenu(this, {
+        tabComponent: this._tabComponent,
+        overflowMenuLabel: this._config.overflowMenuLabel
+      });
       window.requestAnimationFrame(function() {
         self._overflowMenu.manageOverflow();
       });
@@ -237,6 +239,8 @@ class Navigation {
   restoreState () {
     if (this._initialState.activeTab) {
       this._tabComponent.showTab(this._initialState.activeTab);
+    } else {
+      this._tabComponent.hideTabs();
     }
     this._initialState.activeDropdowns.forEach (function (dropdown) {
       dropdown.show();
@@ -292,11 +296,14 @@ class Navigation {
     ) {
       clickEvent.preventDefault();
       const link = clickEvent.target.getAttribute('href');
+      this.saveState();
       window.setTimeout(
         function() {
           window.location.href = link;
         }, SLIDING_BORDER_ANIMATION_DURATION
       );
+    } else {
+      this.saveState();
     }
   }
 

@@ -39,8 +39,8 @@ class SlidingBorder {
       }
     }
 
+    const style = {};
     if (found) {
-      const style = {};
       if (this._isVertical) {
         style.height = size + 'px';
         style.top = offset + 'px';
@@ -52,10 +52,20 @@ class SlidingBorder {
         style.height = '';
         style.top = '';
       }
-      return style;
     } else {
-      throw "Not found offset: " + offset + "px";
+      if (this._isVertical) {
+        style.height = '0px';
+        style.top = '0px';
+        style.left = '';
+        style.width = '';
+      } else {
+        style.width = '0px';
+        style.left = '0px';
+        style.height = '';
+        style.top = '';
+      }
     }
+    return style;
   }
 
   moveSlidingBorder (style) {

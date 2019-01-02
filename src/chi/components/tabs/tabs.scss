@@ -163,6 +163,17 @@
 
       &.-icons {
         & > li {
+          &.-active {
+            & > a {
+              position: relative;
+
+              & > .a-icon {
+                color: $brand-color;
+                left: 1.5rem;
+              }
+            }
+          }
+
           & > a {
             padding-left: 3.5rem;
             position: relative;
@@ -190,17 +201,6 @@
           left: 0;
           width: 0.125rem;
           position: absolute;
-        }
-
-        &.-active {
-          & > a {
-            position: relative;
-
-            & > .a-icon {
-              color: $brand-color;
-              left: 1.5rem;
-            }
-          }
         }
 
         &.-activeAlt {

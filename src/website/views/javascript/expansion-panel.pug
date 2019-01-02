@@ -143,7 +143,7 @@ h3 Actions
 p.-text
   | You can bind actions to activators inside the expansion panel with the <code>data-chi-epanel-action</code> attribute.
 
-table.a-table.-hover
+table.a-table.a-table__options.-hover
   thead
     tr
       th Action
@@ -737,7 +737,7 @@ p.-text
   span.a-badge.-brand.-mr1
     span Tip
   | It is safe to call the <code>expansionPanel</code> method more than once, as it will return any previously created
-  | number input component associated to the input.
+  | expansion panel component associated to the element.
 :code(lang="javascript")
   var elem = document.getElementById('expansion-panel-1');
   var expansionPanelComponent = chi.expansionPanel(elem);

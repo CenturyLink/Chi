@@ -4,10 +4,16 @@ import {NavigationDropdown} from "../navigation";
 
 class OverflowMenu {
 
-  constructor (navigation, tabComponent) {
+  constructor (navigation, config) {
+    this._config = Util.extend(
+      {
+        tabComponent: null,
+        overflowMenuLabel: 'More&hellip;'
+      }, config
+    );
     this._navigationComponent = navigation;
     this._elem = navigation._elem;
-    this._tabComponent = tabComponent;
+    this._tabComponent = this._config.tabComponent;
     this._overflowTabWidth = 0;
     this._totalTabElementsWidth = 0;
   }
@@ -99,7 +105,8 @@ class OverflowMenu {
     this._overflowTab = document.createElement('LI');
     Util.addClass(this._overflowTab, 'm-dropdown');
     this._overflowTab.innerHTML =
-      '<a href="#" class="m-dropdown__trigger"> More&hellip;</a>' +
+      '<a href="#" class="m-dropdown__trigger" data-position="bottom-end"> ' +
+      this._config.overflowMenuLabel + '</a>' +
       '<div class="m-dropdown__menu"></div>';
     this._overflowTabMenu =
       this._overflowTab.getElementsByClassName('m-dropdown__menu')[0];

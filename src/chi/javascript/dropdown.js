@@ -118,25 +118,23 @@ class Dropdown {
     if (dropdownPosition && typeof Popper !== 'undefined') {
       this._popper = new Popper (this._elem, this._dropdownElem, {
         modifiers: {
-          applyStyle: {enabled: true}
+          applyStyle: {enabled: true},
+          applyChiStyle: {
+            enabled: true,
+            fn: this._popperPatchForBottomLeftPropperLocation,
+            order: 890
+          },
         },
         placement: dropdownPosition
       });
     }
   }
 
-  // getHeight (includeDescendants) {
-  //   if (typeof includeDescendants === 'undefined') {
-  //     includeDescendants = false;
-  //   }
-  //   let height = this._elem.getBoundingClientRect().height;
-  //   if (includeDescendants && this._shown && !this._transitioning) {
-  //     height += this._dropdownElem.getBoundingClientRect().height;
-  //   } else if (includeDescendants && this._shown) {
-  //     height += this._transitionEndHeight;
-  //   }
-  //   return height;
-  // }
+  _popperPatchForBottomLeftPropperLocation (data) {
+    data.styles.left = data.styles.left || 'initial';
+    data.styles.right = data.styles.right || 'initial';
+    return data;
+  }
 
   disablePopper () {
     if (this._popper) {

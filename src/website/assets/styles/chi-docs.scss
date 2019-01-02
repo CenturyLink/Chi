@@ -75,4 +75,9 @@ body {
       padding: 0.25rem 0;
     }
   }
+
+  .a-table__options code {
+    word-break: normal;
+  }
+
 }
