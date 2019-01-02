@@ -158,14 +158,12 @@
 
       & > li {
         &::before {
-          background-color: $brand-color;
           border: 0.125rem solid set-color(black);
         }
 
         &.-active {
           & ~ li {
             &::before {
-              background-color: set-color(grey, 40);
               border-color: set-color(black);
             }
 
@@ -184,7 +182,7 @@
         & > li {
           &::before {
             background-color: set-color(black);
-            border: 0 0 0 0.125rem solid $brand-color;
+            border: 0.125rem solid $brand-color;
           }
 
           &.-active {
