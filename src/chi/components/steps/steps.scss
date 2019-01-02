@@ -68,14 +68,10 @@
           color: set-color(grey, 40);
 
           & a {
-            color: $muted-color;
+            color: set-color(grey, 40);
           }
 
-          &::before {
-            background-color: set-color(grey, 40);
-            border-color: $text-white;
-          }
-
+          &::before,
           &::after {
             background-color: set-color(grey, 40);
           }
@@ -163,10 +159,6 @@
 
         &.-active {
           & ~ li {
-            &::before {
-              border-color: set-color(black);
-            }
-
             & a {
               color: set-color(grey, 40);
             }
@@ -193,7 +185,6 @@
             & ~ li {
               &::before {
                 background-color: set-color(black);
-                border-color: set-color(grey, 40);
               }
             }
           }
