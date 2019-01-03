@@ -1,13 +1,13 @@
 ---
-title: CheckboxList
+title: Checkbox List
 ---
 
 .test-states
   each state, index in ['default', 'hover', 'focus', 'checked', 'disabled']
     h5= `Checkbox / ${state}`
-    .m-checkboxList(style="width:400px")
+    ul.m-listGroup(style="max-width:20rem")
       each element in [1, 2, 3, 4, 5]
-        div
+        li.m-formGroup
           input.a-input(
           type="checkbox"
           id=`checkbox-${element}`
@@ -24,4 +24,3 @@ title: CheckboxList
           }
           )
           label(for=`checkbox-${element}`)= `Checkbox-${element}`
-        .a-divider

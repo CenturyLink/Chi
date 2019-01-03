@@ -7,65 +7,57 @@ p.-text
 
 h3 Examples
 h4 Base
-p.-text To render a series of checkbox in a list, apply the class <code>m-checkboxList</code>.
+p.-text To render a series of checkbox in a list, apply the class <code>m-listGroup</code> in a list.
 .example.-mb--3
   .-p--3
     h5 Select an option
-    .m-checkboxList(style="width:400px")
-      div
+    ul.m-listGroup(style="max-width:20rem")
+      li.m-formGroup
         input(type="checkbox", class="a-input", id="checkbox1")
         label(for="checkbox1")
         label.-text(for="checkbox1") Option 1
-      .a-divider
-      div
+      li.m-formGroup
         input(type="checkbox", class="a-input", id="checkbox2")
         label(for="checkbox2")
         label.-text(for="checkbox2") Option 2
-      .a-divider
-      div
+      li.m-formGroup
         input(type="checkbox", class="a-input", id="checkbox3")
         label(for="checkbox3")
         label.-text(for="checkbox3") Option 3
-      .a-divider
-      div
+      li.m-formGroup
         input(type="checkbox", class="a-input", id="checkbox4")
         label(for="checkbox4")
         label.-text(for="checkbox4") Option 4
-      .a-divider
-      div
+      li.m-formGroup
         input(type="checkbox", class="a-input", id="checkbox5")
         label(for="checkbox5")
         label.-text(for="checkbox5") Option 5
   :code(lang='html')
     <h5> Select an option </h5>
-    <div class="m-checkboxList">
-      <div>
+    <ul class="m-listGroup">
+      <li class="m-formGroup">
         <input type="checkbox" class="a-input" id="checkbox1">
         <label for="checkbox1"></label>
         <label class="-text" for="checkbox1">Option 1</label>
-      </div>
-      <div class="a-divider"></div>
-      <div>
+      </li>
+      <li class="m-formGroup">
         <input type="checkbox" class="a-input" id="checkbox2">
         <label for="checkbox2"></label>
         <label class="-text" for="checkbox2">Option 2</label>
-      </div>
-      <div class="a-divider"></div>
-      <div>
+      </li>
+      <li class="m-formGroup">
         <input type="checkbox" class="a-input" id="checkbox3">
         <label for="checkbox3"></label>
         <label class="-text" for="checkbox3">Option 3</label>
-      </div>
-      <div class="a-divider"></div>
-      <div>
+      </li>
+      <li class="m-formGroup">
         <input type="checkbox" class="a-input" id="checkbox4">
         <label for="checkbox4"></label>
         <label class="-text" for="checkbox4">Option 4</label>
-      </div>
-      <div class="a-divider"></div>
-        <div>
-          <input type="checkbox" class="a-input" id="checkbox5">
-          <label for="checkbox5"></label>
-          <label class="-text" for="checkbox5">Option 5</label>
-        </div>
-    </div>
+      </li>
+      <li class="m-formGroup">
+        <input type="checkbox" class="a-input" id="checkbox5">
+        <label for="checkbox5"></label>
+        <label class="-text" for="checkbox5">Option 5</label>
+      </li>
+    </ul>
