@@ -208,7 +208,12 @@ class Dropdown {
 
   show() {
     if (this._parentDropdown) {
-      this._parentDropdown._setActiveDescendants(this, this._activedDescendants);
+      this._parentDropdown._setActiveDescendants(
+        [
+          this,
+          this._activedDescendants
+        ]
+      );
     }
     if (!this._shown) {
       Util.addClass(this._elem, CLASS_ACTIVE);
@@ -238,24 +243,22 @@ class Dropdown {
     }
   }
 
-  _setActiveDescendants (...descendants) {
+  _setActiveDescendants (descendants) {
     this._activedDescendants = [];
-    for (let descendant of descendants) {
-      if (Array.isArray(descendant)) {
-        this._activedDescendants.push(...descendant);
-      } else {
-        this._activedDescendants.push(descendant);
-      }
+    const self = this;
+    if (typeof descendants === 'undefined') {
+      return;
     }
+    descendants.forEach(function(descendant) {
+      if (Array.isArray(descendant)) {
+        descendant.forEach(function(subDescendant) {
+          self._activedDescendants.push(subDescendant);
+        });
+      } else {
+        self._activedDescendants.push(descendant);
+      }
+    });
   }
-
-  // getFurthestAncestor () {
-  //   if (this._parentDropdown) {
-  //     return this._parentDropdown.getFurthestAncestor();
-  //   } else {
-  //     return this;
-  //   }
-  // }
 
   toggle () {
     if (this._shown) {
