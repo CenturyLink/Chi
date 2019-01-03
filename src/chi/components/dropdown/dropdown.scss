@@ -207,6 +207,41 @@
     }
   }
 
+  .m-dropdown__hover:hover,
+  .m-dropdown__hover.-hover,
+  .m-dropdown__hover:active {
+
+    .m-dropdown__trigger {
+      &:not([data-position^="left"]) {
+        &.-animate {
+          &:after {
+            transform: rotate(180deg);
+          }
+
+          &[data-position^="right"]:after {
+            transform: rotate(90deg);
+          }
+
+          &[data-position^="top"]:after {
+            transform: rotate(0deg);
+          }
+        }
+      }
+
+      &[data-position^="left"] {
+        &.-animate {
+          &:before {
+            transform: rotate(270deg);
+          }
+        }
+      }
+    }
+
+    .m-dropdown__menu {
+      display: block;
+    }
+  }
+
   a.m-dropdown__menu-item {
     color: inherit;
 
