@@ -57,3 +57,63 @@ p.-text
       <label for="inlineRadio2"></label>
       <label class="-text" for="inlineRadio2">Option 2</label>
     </div>
+
+h2 Radio Button List
+p.-text
+  | Radio button lists are used to wrap a series of radio buttons on a list.
+
+h3 Examples
+p.-text To render a series of radio buttons in a list, apply the class <code>m-listGroup</code> in a list.
+.example.-mb--3
+  .-p--3
+    h5 Select an option
+    ul.m-listGroup(style="max-width:20rem")
+      li.m-formGroup
+        input(type="radio", class="a-input", name="radiobuttonList", id="radio-1")
+        label(for="radio-1")
+        label.-text(for="radio-1") Option 1
+      li.m-formGroup
+        input(type="radio", class="a-input", name="radiobuttonList", id="radio-2")
+        label(for="radio-2")
+        label.-text(for="radio-2") Option 2
+      li.m-formGroup
+        input(type="radio", class="a-input", name="radiobuttonList", id="radio-3")
+        label(for="radio-3")
+        label.-text(for="radio-3") Option 3
+      li.m-formGroup
+        input(type="radio", class="a-input", name="radiobuttonList", id="radio-4")
+        label(for="radio-4")
+        label.-text(for="radio-4") Option 4
+      li.m-formGroup
+        input(type="radio", class="a-input", name="radiobuttonList", id="radio-5")
+        label(for="radio-5")
+        label.-text(for="radio-5") Option 5
+  :code(lang='html')
+    <h5> Select an option </h5>
+    <ul class="m-listGroup">
+      <li class="m-formGroup">
+        <input type="radio" class="a-input" name="radiobuttonList" id="radio1">
+        <label for="radio1"></label>
+        <label class="-text" for="radio1">Option 1</label>
+      </li>
+      <li class="m-formGroup">
+        <input type="radio" class="a-input" name="radiobuttonList" id="radio2">
+        <label for="radio2"></label>
+        <label class="-text" for="radio2">Option 2</label>
+      </li>
+      <li class="m-formGroup">
+        <input type="radio" class="a-input" name="radiobuttonList" id="radio3">
+        <label for="radio3"></label>
+        <label class="-text" for="radio3">Option 3</label>
+      </li>
+      <li class="m-formGroup">
+        <input type="radio" class="a-input" name="radiobuttonList" id="radio4">
+        <label for="radio4"></label>
+        <label class="-text" for="radio4">Option 4</label>
+      </li>
+      <li class="m-formGroup">
+        <input type="radio" class="a-input" name="radiobuttonList" id="radio5">
+        <label for="radio5"></label>
+        <label class="-text" for="radio5">Option 5</label>
+      </li>
+    </ul>
