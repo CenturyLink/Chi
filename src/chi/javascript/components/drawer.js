@@ -1,30 +1,28 @@
-import {Util} from "./util.js";
-import {chi} from "./chi.js";
-import {FloatingLabel} from "./floating-label";
+import {Component} from "../core/component";
+import {Util} from "../core/util.js";
 
 const ANIMATION_DURATION = 500;
 const CLASS_ACTIVE = "-active";
 const CLASS_ANIMATED = "-animated";
 const CLASS_BACKDROP_CLOSED = "-closed";
-const CLASS_COMPONENT = 'm-drawer__trigger';
 const CLASS_DRAWER = 'm-drawer';
 const CLASS_TRANSITIONING = "-transitioning";
 const CLOSE_TRIGGER_SELECTOR = `.${CLASS_DRAWER} > .-close, .${CLASS_DRAWER} > .m-drawer__header > .-close`;
+const COMPONENT_SELECTOR = '.m-drawer__trigger';
 const COMPONENT_TYPE = "drawer";
+const DEFAULT_CONFIG = {};
 
-class Drawer {
+class Drawer extends Component {
 
   constructor (elem, config) {
-    this._elem = elem;
-    this._config = Util.extend({}, config);
+
+    super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._shown = Util.hasClass(elem, CLASS_ACTIVE);
     this._transitioning = false;
     this._drawerElem = this._locateDrawer();
     this._closeButton = this._locateCloseButton();
     this._backdrop = this._locateBackdrop();
     let self = this;
-
-    Util.registerComponent(COMPONENT_TYPE, this._elem, this);
 
     this._triggerClickEventListener = function() {
       self.toggle();
@@ -144,21 +142,15 @@ class Drawer {
     this._elem = null;
   }
 
-  static factory(elem, config) {
-    return Util.getRegisteredComponent(COMPONENT_TYPE, elem) ||
-      new Drawer(elem, config);
+  static get componentType () {
+    return COMPONENT_TYPE;
   }
 
-  static initAll(config) {
-    Array.prototype.forEach.call(
-      document.getElementsByClassName(CLASS_COMPONENT), function (elem) {
-        Drawer.factory(elem, config);
-      }
-    );
+  static get componentSelector () {
+    return COMPONENT_SELECTOR;
   }
+
 }
 
-let chiDrawer = Util.addArraySupportToFactory(Drawer.factory);
-
-chi.drawer = chiDrawer;
-export {Drawer, chiDrawer};
+const factory = Component.factory.bind(Drawer);
+export {Drawer, factory, CLASS_ACTIVE};

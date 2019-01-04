@@ -1,26 +1,25 @@
-import {Util} from "./util.js";
-import {chi} from "./chi.js";
+import {Component} from "../core/component";
+import {Util} from "../core/util.js";
 import Popper from 'popper.js';
 
-const CLASS_MOLECULE = "m-dropdown";
-const CLASS_COMPONENT = 'm-dropdown__trigger';
-const CLASS_DROPDOWN = 'm-dropdown__menu';
 const CLASS_ACTIVE = "-active";
+const CLASS_DROPDOWN = 'm-dropdown__menu';
+const CLASS_MOLECULE = "m-dropdown";
+const COMPONENT_SELECTOR = '.m-dropdown__trigger';
 const COMPONENT_TYPE = "dropdown";
+const DEFAULT_CONFIG = {};
 const DEFAULT_POSITION = "bottom-start";
 
-class Dropdown {
+class Dropdown extends Component {
 
   constructor (elem, config) {
-    this._elem = elem;
-    this._config = Util.extend({}, config);
+
+    super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._eventCaptured = false;
     this._shown = Util.hasClass(elem, CLASS_ACTIVE);
     this._locateDropdown();
     let self = this;
-    let dropdownPosition = false;
-
-    Util.registerComponent(COMPONENT_TYPE, this._elem, this);
+    let dropdownPosition = null;
 
     if (this._elem.dataset.position) {
       if (this._elem.dataset.position === 'default') {
@@ -131,22 +130,14 @@ class Dropdown {
     }
   }
 
-  static factory(elem, config) {
-    return Util.getRegisteredComponent(COMPONENT_TYPE, elem) ||
-      new Dropdown(elem, config);
+  static get componentType () {
+    return COMPONENT_TYPE;
   }
 
-  static initAll(config) {
-    Array.prototype.forEach.call(
-      document.getElementsByClassName(CLASS_COMPONENT), function (elem) {
-        Dropdown.factory(elem, config);
-      }
-    );
+  static get componentSelector () {
+    return COMPONENT_SELECTOR;
   }
-
 }
 
-let chiDropdown = Util.addArraySupportToFactory(Dropdown.factory);
-
-chi.dropdown = chiDropdown;
-export {Dropdown, chiDropdown};
+const factory = Component.factory.bind(Dropdown);
+export {Dropdown, factory, CLASS_ACTIVE};

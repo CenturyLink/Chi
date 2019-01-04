@@ -1,28 +1,25 @@
-import {Util} from "./util.js";
-import {chi} from "./chi.js";
+import {Component} from "../core/component";
+import {Util} from "../core/util.js";
 
-const CLASS_COMPONENT = 'a-tabs';
 const CLASS_ACTIVE = "-active";
-const COMPONENT_TYPE = "tab";
-const CLASS_SLIDING_BORDER='a-tabs__sliding-border';
 const CLASS_ANIMATED = "-animated";
+const CLASS_SLIDING_BORDER='a-tabs__sliding-border';
+const COMPONENT_SELECTOR = '.a-tabs';
+const COMPONENT_TYPE = "tab";
+const DEFAULT_CONFIG = {animated: true};
 
-class Tab {
+class Tab extends Component {
 
   constructor (elem, config) {
-    this._elem = elem;
-    this._config = {
-      animated: true
-    };
-    this._config = Util.extend(this._config, config);
 
+    super(elem, Util.extend(DEFAULT_CONFIG, config));
     let self = this;
 
     this._clickEventHandler = function(e) {
       self.clickEventHandler(e);
     };
+
     this._elem.addEventListener('click', this._clickEventHandler);
-    Util.registerComponent(COMPONENT_TYPE, this._elem, this);
 
     if (this._config.animated) {
       Util.addClass(this._elem, CLASS_ANIMATED);
@@ -180,22 +177,14 @@ class Tab {
     this._elem = null;
   }
 
-  static factory(elem, config) {
-    return Util.getRegisteredComponent(COMPONENT_TYPE, elem) ||
-      new Tab(elem, config);
+  static get componentType () {
+    return COMPONENT_TYPE;
   }
 
-  static initAll(config) {
-    Array.prototype.forEach.call(
-      document.getElementsByClassName(CLASS_COMPONENT), function (elem) {
-        Tab.factory(elem, config);
-      }
-    );
+  static get componentSelector () {
+    return COMPONENT_SELECTOR;
   }
-
 }
 
-let chiTab = Util.addArraySupportToFactory(Tab.factory);
-
-chi.tab = chiTab;
-export {Tab, chiTab};
+const factory = Component.factory.bind(Tab);
+export {Tab, factory};

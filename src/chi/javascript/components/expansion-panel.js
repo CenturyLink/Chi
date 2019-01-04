@@ -1,10 +1,15 @@
-import {Util} from "./util.js";
-import {chi} from "./chi.js";
+import {Component} from "../core/component";
+import {Util} from "../core/util.js";
 
 const ANIMATION_DURATION = 200;
 const CLASS_COLLAPSE_WRAPPER = 'm-epanel__collapse';
-const CLASS_COMPONENT = '-m-epanel';
+const COMPONENT_SELECTOR = '.-m-epanel';
 const COMPONENT_TYPE = "expansionPanel";
+const DEFAULT_CONFIG = {
+  animated: true,
+  mode: 'stepped',
+  changeHandler: Util.noOp
+};
 const EPANEL_EVENT_CHANGE = 'chi.epanel.change';
 
 const STATE = {
@@ -157,22 +162,16 @@ class ExpansionPanelCustomGroup extends ExpansionPanelGroup {
 }
 
 
-class ExpansionPanel {
+class ExpansionPanel extends Component {
+
 
   constructor (elem, config) {
-    this._elem = elem;
-    this._config = Util.extend({
-      animated: true,
-      mode: 'stepped',
-      changeHandler: Util.noOp
-    }, config);
 
+    super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._epGroup = null;
     this._state = STATE.PENDING;
     this._stateChangeListeners = [];
     const self = this;
-
-    Util.registerComponent(COMPONENT_TYPE, this._elem, this);
 
     if (Util.hasClass(this._elem, STATE.ACTIVE.CLASS)) {
       this._state = STATE.ACTIVE;
@@ -481,22 +480,14 @@ class ExpansionPanel {
     this._onClickEventListener = null;
   }
 
-  static factory (elem, config) {
-    return Util.getRegisteredComponent(COMPONENT_TYPE, elem) ||
-      new ExpansionPanel(elem, config);
+  static get componentType () {
+    return COMPONENT_TYPE;
   }
 
-  static initAll (config) {
-    Array.prototype.forEach.call(
-      document.getElementsByClassName(CLASS_COMPONENT), function (elem) {
-        ExpansionPanel.factory(elem, config);
-      }
-    );
+  static get componentSelector () {
+    return COMPONENT_SELECTOR;
   }
-
 }
 
-const chiExpansionPanel = Util.addArraySupportToFactory(ExpansionPanel.factory);
-
-chi.expansionPanel = chiExpansionPanel;
-export {ExpansionPanel, chiExpansionPanel, STATE as EXPANSION_PANEL_STATES};
+const factory = Component.factory.bind(ExpansionPanel);
+export {ExpansionPanel, factory, STATE as EXPANSION_PANEL_STATES};

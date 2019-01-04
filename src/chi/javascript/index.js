@@ -1,27 +1,27 @@
-import {chi} from './chi.js';
-import {Util} from './util.js';
+import {chi} from './core/chi.js';
+import {Util} from './core/util.js';
 
-import {Drawer, chiDrawer} from './drawer';
-import {Dropdown, chiDropdown} from './dropdown';
-import {ExpansionPanel, chiExpansionPanel, EXPANSION_PANEL_STATES} from "./expansion-panel";
-import {FloatingLabel, chiFloatingLabel} from "./floating-label";
-import {NumberInput, chiNumberInput} from './number-input';
-import {chiRangeSlider, RangeSlider} from "./range-slider";
-import {Tab, chiTab} from './tab';
-import {Tooltip, chiTooltip} from "./tooltip";
+import {Drawer, factory as drawer} from './components/drawer';
+import {Dropdown, factory as dropdown} from './components/dropdown';
+import {ExpansionPanel, factory as expansionPanel, EXPANSION_PANEL_STATES} from "./components/expansion-panel";
+import {FloatingLabel, factory as floatingLabel} from "./components/floating-label";
+import {NumberInput, factory as numberInput} from './components/number-input';
+import {RangeSlider, factory as rangeSlider} from "./components/range-slider";
+import {Tab, factory as tab} from './components/tab';
+import {Tooltip, factory as tooltip} from "./components/tooltip";
 
 export {
   chi as core,
   Util,
 
-  chiDrawer as drawer,
-  chiDropdown as dropdown,
-  chiExpansionPanel as expansionPanel,
-  chiFloatingLabel as floatingLabel,
-  chiNumberInput as numberInput,
-  chiRangeSlider as rangeSlider,
-  chiTab as tab,
-  chiTooltip as tooltip,
+  drawer,
+  dropdown,
+  expansionPanel,
+  floatingLabel,
+  numberInput,
+  rangeSlider,
+  tab,
+  tooltip,
 
   Drawer,
   Dropdown,
