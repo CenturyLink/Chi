@@ -62,7 +62,6 @@ class NumberInput extends Component {
     this._increment = null;
     this._decrement = null;
     this._stepped = null;
-    Util.unregisterComponent(COMPONENT_TYPE, this._elem);
     this._elem = null;
   }
 

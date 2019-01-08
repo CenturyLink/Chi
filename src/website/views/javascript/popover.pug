@@ -1,0 +1,119 @@
+---
+title: Popover
+---
+
+p.-text
+  | Popovers provide an contextual space, attached to an element and in an upper z-index layer, where you can
+  | include any kind of HTML code related to the trigger.
+
+h3 Base
+p.-text
+  | To render a popover, add your HTML code to a <code>data-popover-content</code> attribute. Then,
+  | you can initialize it with the chi.popover factory method.
+.example.-mb--3
+  .-p--3
+    button(data-popover-content='<div class="-px--2"><h4>Popover!</h4><p>This is a popover content triggered by a button. </p></div>').a-btn.-mr--2 Popover
+  :code(lang='html')
+    <button id='popover-1' class="a-btn" data-popover-content='<div class="-px--2"><h4>Popover!</h4><p>This is a popover content triggered by a button. </p></div>'>Popover</button>
+    <script>chi.popover(document.getElementById('popover-1'));</script>
+
+h3 Positioning
+p.-text
+  | By default, tooltip's position on top of an element. To alter position, use
+  | the <code>data-position</code> attribute. Valid values are <code>top</code>,
+  | <code>right</code>, <code>bottom</code>, <code>left</code>, <code>top-start</code>,
+  | <code>top-end</code>, <code>right-start</code>, <code>right-end</code>,
+  | <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>,
+  | <code>left-end</code>.
+.example.-mb--3
+  .-p--3.-text--center
+    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Top popover
+    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top start positioned.</p></div>', data-position='top-start').a-btn.-mr--2.-mb--2.-mb-md--0 Top start popover
+    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top end positioned.</p></div>', data-position='top-end').a-btn.-mr--2.-mb--2.-mb-md--0 Top end popover
+    hr.a-divider
+    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left positioned.</p></div>', data-position='left').a-btn.-mr--2.-mb--2.-mb-md--0 Left popover
+    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left start positioned.</p></div>', data-position='left-start').a-btn.-mr--2.-mb--2.-mb-md--0 Left start popover
+    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left end positioned.</p></div>', data-position='left-end').a-btn.-mr--2.-mb--2.-mb-md--0 Left end popover
+    hr.a-divider
+    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom positioned.</p></div>', data-position='bottom').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom popover
+    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom start positioned.</p></div>', data-position='bottom-start').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom start popover
+    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom end positioned.</p></div>', data-position='bottom-end').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom end popover
+    hr.a-divider
+    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right positioned.</p></div>', data-position='right').a-btn.-mr--2.-mb--2.-mb-md--0 Right popover
+    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right start positioned.</p></div>', data-position='right-start').a-btn.-mr--2.-mb--2.-mb-md--0 Right start popover
+    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right end positioned.</p></div>', data-position='right-end').a-btn.-mr--2.-mb--2.-mb-md--0 Right end popover
+
+  :code(lang='html')
+    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top positioned.</p></div>' class="a-btn">Top popover</button>
+    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top start positioned.</p></div>' data-position='top-start'>Top start popover</button>
+    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top end positioned.</p></div>' data-position='top-end'>Top end popover</button>
+    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left positioned.</p></div>' data-position='left'>Left popover</button>
+    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left start positioned.</p></div>' data-position='left-start'>Left start popover</button>
+    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left end positioned.</p></div>' data-position='left-end'>Left end popover</button>
+    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom positioned.</p></div>' data-position='bottom'>Bottom popover</button>
+    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom start positioned.</p></div>' data-position='bottom-start'>Bottom start popover</button>
+    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom end positioned.</p></div>' data-position='bottom-end'>Bottom end popover</button>
+    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right positioned.</p></div>' data-position='right'>Right popover</button>
+    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right start positioned.</p></div>' data-position='right-start'>Right start popover</button>
+    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right end positioned.</p></div>' data-position='right-end'>Right end popover</button>
+
+    <script>chi.tooltip(document.querySelectorAll('[data-tooltip])');</script>
+
+h3 Options
+p.-text This component accepts options to configure its behavior.
+
+section.a-table.a-table__options.-bordered.-my--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Option
+          th
+            div Default
+          th
+            div Description
+      tbody
+        tr
+          td
+            div
+              code= 'animate'
+          td
+            div
+              code= 'true'
+          td
+            div
+              | Enables animation on popover display and hide.
+
+h4 Preventing memory leaks
+p.-text
+  | Popover components have a dispose function to free all resources attached to the element, such as event listeners
+  | and object data. You must call this method when you want to remove the component.
+:code(lang="javascript")
+  var elem = document.getElementById('popover');
+  var popover = chi.popover(elem);
+  // do stuff
+  popover.dispose();
+
+p.-text
+  span.a-badge.-brand.-mr1
+    span Tip
+  | It is safe to call the <code>popover</code> method more than once, as it will return any previously created popover component
+  | associated to the trigger.
+:code(lang="javascript")
+  var elem = document.getElementById('popover-1');
+  var popover = chi.popover(elem);
+  var elem2 = document.getElementById('popover-1');
+  var popover2 = chi.popover(elem2);
+  popover === popover2; // returns true
+
+  popover.dispose(); // Only have to do it once.
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.Popover.initAll();
+    },
+    false
+  );

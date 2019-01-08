@@ -141,7 +141,6 @@ class Tooltip extends Component {
     this._postAnimationTransformStyle = null;
     this._elem.removeEventListener("mouseover",this._mouseOverEventHandler,false);
     this._elem.removeEventListener("mouseout", this._mouseOutEventHandler, false);
-    Util.unregisterComponent(COMPONENT_TYPE, this._elem);
     this._elem = null;
   }
 

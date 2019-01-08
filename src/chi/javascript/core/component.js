@@ -1,10 +1,20 @@
 import {Util} from "./util";
 
+const classes = {
+  ACTIVE: '-active',
+  ANIMATED: '-animated',
+  TRANSITIONING : '-transitioning',
+};
+
+let componentCounter = 0;
+
 class Component {
 
   constructor(elem, config) {
     this._elem = elem;
     this._config = config;
+    this._eventHandlers = [];
+    this._componentCounterNo = componentCounter++;
   }
 
   static get componentType () {
@@ -14,6 +24,10 @@ class Component {
 
   static get componentSelector () {
     throw "There is no defined selector for this component. ";
+  }
+
+  get componentCounterNo () {
+    return this._componentCounterNo;
   }
 
   static factory(elem, config) {
@@ -46,6 +60,25 @@ class Component {
       }
     );
   }
+
+  _addEventHandler (elem, type, handler, useCapture) {
+    elem.addEventListener(type, handler, useCapture || false);
+    const eventHandler = {
+      elem: elem,
+      type: type,
+      handler: handler,
+      useCapture: useCapture
+    };
+    this._eventHandlers.push(eventHandler);
+  }
+
+  _removeEventHandlers () {
+    this._eventHandlers.forEach(function (eh) {
+      eh.elem.removeEventListener(eh.type, eh.handler);
+    });
+    this._eventHandlers.length = 0;
+  }
+
 }
 
-export {Component};
+export {Component, classes};
