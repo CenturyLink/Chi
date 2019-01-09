@@ -19,45 +19,67 @@ p.-text
 
 h3 Positioning
 p.-text
-  | By default, tooltip's position on top of an element. To alter position, use
+  | By default, popover's position on top of an element. To alter position, use
   | the <code>data-position</code> attribute. Valid values are <code>top</code>,
   | <code>right</code>, <code>bottom</code>, <code>left</code>, <code>top-start</code>,
   | <code>top-end</code>, <code>right-start</code>, <code>right-end</code>,
   | <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>,
   | <code>left-end</code>.
-.example.-mb--3
-  .-p--3.-text--center
-    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Top popover
-    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top start positioned.</p></div>', data-position='top-start').a-btn.-mr--2.-mb--2.-mb-md--0 Top start popover
-    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top end positioned.</p></div>', data-position='top-end').a-btn.-mr--2.-mb--2.-mb-md--0 Top end popover
-    hr.a-divider
-    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left positioned.</p></div>', data-position='left').a-btn.-mr--2.-mb--2.-mb-md--0 Left popover
-    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left start positioned.</p></div>', data-position='left-start').a-btn.-mr--2.-mb--2.-mb-md--0 Left start popover
-    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left end positioned.</p></div>', data-position='left-end').a-btn.-mr--2.-mb--2.-mb-md--0 Left end popover
-    hr.a-divider
-    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom positioned.</p></div>', data-position='bottom').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom popover
-    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom start positioned.</p></div>', data-position='bottom-start').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom start popover
-    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom end positioned.</p></div>', data-position='bottom-end').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom end popover
-    hr.a-divider
-    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right positioned.</p></div>', data-position='right').a-btn.-mr--2.-mb--2.-mb-md--0 Right popover
-    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right start positioned.</p></div>', data-position='right-start').a-btn.-mr--2.-mb--2.-mb-md--0 Right start popover
-    button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right end positioned.</p></div>', data-position='right-end').a-btn.-mr--2.-mb--2.-mb-md--0 Right end popover
 
-  :code(lang='html')
-    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top positioned.</p></div>' class="a-btn">Top popover</button>
-    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top start positioned.</p></div>' data-position='top-start'>Top start popover</button>
-    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top end positioned.</p></div>' data-position='top-end'>Top end popover</button>
-    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left positioned.</p></div>' data-position='left'>Left popover</button>
-    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left start positioned.</p></div>' data-position='left-start'>Left start popover</button>
-    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left end positioned.</p></div>' data-position='left-end'>Left end popover</button>
-    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom positioned.</p></div>' data-position='bottom'>Bottom popover</button>
-    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom start positioned.</p></div>' data-position='bottom-start'>Bottom start popover</button>
-    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom end positioned.</p></div>' data-position='bottom-end'>Bottom end popover</button>
-    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right positioned.</p></div>' data-position='right'>Right popover</button>
-    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right start positioned.</p></div>' data-position='right-start'>Right start popover</button>
-    <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right end positioned.</p></div>' data-position='right-end'>Right end popover</button>
+ul#a-tabs--positioning.a-tabs
+  li.-active
+    a(href='#a-tabs--positioning-top') Top
+  li
+    a(href='#a-tabs--positioning-right') Right
+  li
+    a(href='#a-tabs--positioning-bottom') Bottom
+  li
+    a(href='#a-tabs--positioning-left') Left
+#a-tabs--positioning-top.a-tabs-panel.-active
+  .example.-mb--3
+    .-p--3
+      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Top popover
+      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top start positioned.</p></div>', data-position='top-start').a-btn.-mr--2.-mb--2.-mb-md--0 Top start popover
+      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top end positioned.</p></div>', data-position='top-end').a-btn.-mr--2.-mb--2.-mb-md--0 Top end popover
 
-    <script>chi.tooltip(document.querySelectorAll('[data-tooltip])');</script>
+    :code(lang="html")
+      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top positioned.</p></div>' class="a-btn">Top popover</button>
+      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top start positioned.</p></div>' data-position='top-start'>Top start popover</button>
+      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top end positioned.</p></div>' data-position='top-end'>Top end popover</button>
+      <script>chi.popover(document.querySelectorAll('[data-popover-content])');</script>
+#a-tabs--positioning-right.a-tabs-panel
+  .example.-mb--3
+    .-p--3
+      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right positioned.</p></div>', data-position='right').a-btn.-mr--2.-mb--2.-mb-md--0 Right popover
+      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right start positioned.</p></div>', data-position='right-start').a-btn.-mr--2.-mb--2.-mb-md--0 Right start popover
+      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right end positioned.</p></div>', data-position='right-end').a-btn.-mr--2.-mb--2.-mb-md--0 Right end popover
+    :code(lang="html")
+      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right positioned.</p></div>' data-position='right'>Right popover</button>
+      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right start positioned.</p></div>' data-position='right-start'>Right start popover</button>
+      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right end positioned.</p></div>' data-position='right-end'>Right end popover</button>
+      <script>chi.popover(document.querySelectorAll('[data-popover-content])');</script>
+#a-tabs--positioning-bottom.a-tabs-panel
+  .example.-mb--3
+    .-p--3
+      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom positioned.</p></div>', data-position='bottom').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom popover
+      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom start positioned.</p></div>', data-position='bottom-start').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom start popover
+      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom end positioned.</p></div>', data-position='bottom-end').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom end popover
+    :code(lang="html")
+      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom positioned.</p></div>' data-position='bottom'>Bottom popover</button>
+      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom start positioned.</p></div>' data-position='bottom-start'>Bottom start popover</button>
+      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom end positioned.</p></div>' data-position='bottom-end'>Bottom end popover</button>
+      <script>chi.popover(document.querySelectorAll('[data-popover-content])');</script>
+#a-tabs--positioning-left.a-tabs-panel
+  .example.-mb--3
+    .-p--3
+      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left positioned.</p></div>', data-position='left').a-btn.-mr--2.-mb--2.-mb-md--0 Left popover
+      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left start positioned.</p></div>', data-position='left-start').a-btn.-mr--2.-mb--2.-mb-md--0 Left start popover
+      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left end positioned.</p></div>', data-position='left-end').a-btn.-mr--2.-mb--2.-mb-md--0 Left end popover
+    :code(lang="html")
+      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left positioned.</p></div>' data-position='left'>Left popover</button>
+      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left start positioned.</p></div>' data-position='left-start'>Left start popover</button>
+      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left end positioned.</p></div>' data-position='left-end'>Left end popover</button>
+      <script>chi.popover(document.querySelectorAll('[data-popover-content])');</script>
 
 h3 Options
 p.-text This component accepts options to configure its behavior.
@@ -114,6 +136,7 @@ script.
     'DOMContentLoaded',
     function() {
       chi.Popover.initAll();
+      chi.tab(document.getElementById('a-tabs--positioning'));
     },
     false
   );

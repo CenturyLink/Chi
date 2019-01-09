@@ -72,6 +72,10 @@ class Popover extends Component{
   }
 
   show() {
+    if (this._shown) {
+      return;
+    }
+
     this._shown = true;
 
     if (!this._config.animate) {
@@ -105,6 +109,9 @@ class Popover extends Component{
   }
 
   hide() {
+    if (!this._shown) {
+      return;
+    }
     this._shown = false;
     if (!this._config.animate) {
       Util.removeClass(this._popoverElem, classes.ACTIVE);
