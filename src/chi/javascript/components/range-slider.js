@@ -1,23 +1,22 @@
-import {Util} from "./util.js";
-import {chi} from "./chi.js";
+import {Component} from "../core/component";
+import {Util} from "../core/util.js";
 
-const COMPONENT_TYPE = "rangeSlider";
+const COMPONENT_TYPE = 'rangeSlider';
+const COMPONENT_SELECTOR = '.a-inputWrapper > input[type="range"]';
 const COMPONENT_OWN_THUMB_CLASS = 'a-rangeSlider__thumbOverwritten';
 
-class RangeSlider {
+const DEFAULT_CONFIG = {};
+
+class RangeSlider extends Component {
 
   constructor(elem, config) {
 
-    this._config = Util.extend({}, config);
-    this._elem = elem;
+    super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._thumbElem = null;
     this._progressElem = null;
     this._minValue = 0;
     this._maxValue = 100;
     this._currentValue = 50;
-
-    Util.registerComponent(COMPONENT_TYPE, this._elem, this);
-
 
     if (this._config.thumb) {
       this._thumbElem = thumb;
@@ -83,13 +82,14 @@ class RangeSlider {
     this._elem = null;
   }
 
-  static factory(elem, config) {
-    return Util.getRegisteredComponent(COMPONENT_TYPE, elem) ||
-      new RangeSlider(elem, config);
+  static get componentType () {
+    return COMPONENT_TYPE;
+  }
+
+  static get componentSelector () {
+    return COMPONENT_SELECTOR;
   }
 }
 
-let chiRangeSlider = Util.addArraySupportToFactory(RangeSlider.factory);
-
-chi.rangeSlider = chiRangeSlider;
-export {RangeSlider, chiRangeSlider};
+const factory = Component.factory.bind(RangeSlider);
+export {RangeSlider, factory};

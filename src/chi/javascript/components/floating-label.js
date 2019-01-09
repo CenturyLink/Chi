@@ -1,20 +1,19 @@
-import {Util} from "./util.js";
-import {chi} from "./chi.js";
+import {Component} from "../core/component";
+import {Util} from "../core/util.js";
 
-const CLASS_COMPONENT = '-floatingLabel';
 const CLASS_ACTIVE = "-active";
+const COMPONENT_SELECTOR = '.-floatingLabel';
 const COMPONENT_TYPE = "floatingLabel";
+const DEFAULT_CONFIG = {};
 
-class FloatingLabel {
+class FloatingLabel extends Component {
 
   constructor (elem, config) {
-    this._elem = elem;
+
+    super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._label = elem.getElementsByTagName("label")[0];
     this._input = elem.getElementsByTagName("input")[0];
-    this._config = Util.extend({}, config);
     let self = this;
-
-    Util.registerComponent(COMPONENT_TYPE, this._elem, this);
 
     if (!this._input.value && !this._input.value.trim()) {
       Util.removeClass(this._label, CLASS_ACTIVE);
@@ -54,22 +53,15 @@ class FloatingLabel {
 
   }
 
-  static factory(elem, config) {
-    return Util.getRegisteredComponent(COMPONENT_TYPE, elem) ||
-      new FloatingLabel(elem, config);
+  static get componentType () {
+    return COMPONENT_TYPE;
   }
 
-  static initAll(config) {
-    Array.prototype.forEach.call(
-      document.getElementsByClassName(CLASS_COMPONENT), function (elem) {
-        FloatingLabel.factory(elem, config);
-      }
-    );
+  static get componentSelector () {
+    return COMPONENT_SELECTOR;
   }
-
 }
 
-let chiFloatingLabel = Util.addArraySupportToFactory(FloatingLabel.factory);
+const factory = Component.factory.bind(FloatingLabel);
+export {FloatingLabel, factory};
 
-chi.floatingLabel = chiFloatingLabel;
-export {FloatingLabel, chiFloatingLabel};

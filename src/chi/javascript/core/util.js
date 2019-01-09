@@ -111,18 +111,33 @@ export class Util {
     }
   }
 
-  static extend (a, b) {
-    if (!b) {
-      return a;
+  static cachedComponentFactory (elem, config, componentType, objectGenerator) {
+    let object = Util.getRegisteredComponent(componentType, elem);
+    if (!object) {
+      object = objectGenerator(elem, config);
+      const objectDispose = object.dispose;
+      object.dispose = function() {
+        objectDispose.call(object);
+        Util.unregisterComponent(componentType, elem);
+      };
+      Util.registerComponent(componentType, elem, object);
     }
-    for (let key in b) {
-      if (b[key] === undefined) {
-        delete a[key];
+    return object;
+  }
+
+  static extend (originArray, extensorArray) {
+    const resultArray = Util.copyObject(originArray);
+    if (!extensorArray) {
+      return resultArray;
+    }
+    for (let key in extensorArray) {
+      if (extensorArray[key] === undefined) {
+        delete resultArray[key];
       } else {
-        a[key] = b[key];
+        resultArray[key] = extensorArray[key];
       }
     }
-    return a;
+    return resultArray;
   }
 
   static addArraySupportToFactory (factoryMethod) {
@@ -195,6 +210,16 @@ export class Util {
 
   static _getNewRegistrationIndex () {
     return chi.componentIndex++;
+  }
+
+  static copyObject (src) {
+    let target = {};
+    for (let prop in src) {
+      if (src.hasOwnProperty(prop)) {
+        target[prop] = src[prop];
+      }
+    }
+    return target;
   }
 
   static noOp () {}
