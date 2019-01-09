@@ -10,236 +10,38 @@ h4 Type checkbox
 p.-text
   | To render a checkbox picker, apply the class <code>a-picker</code> to an <code>input type="checkbox"</code>
   |  inside a container with the class <code>m-picker</code>.
-.example.-mb--3
-  .a-grid.-p--4
-    each type in ['checkbox1','checkbox2','checkbox3','checkbox4']
-      .m-picker.-m--2
-        input(type="checkbox", class="a-picker", id=`${type}`)
-        label(for=`${type}`)
-          = type
-  :code(lang="html")
-    <div class="m-picker -m--2">
-      <input class="a-picker" type="checkbox" id="checkbox1">
-      <label for="checkbox1">
-        checkbox1
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker" type="checkbox" id="checkbox2">
-      <label for="checkbox2">
-        checkbox2
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker" type="checkbox" id="checkbox3">
-      <label for="checkbox3">
-        checkbox3
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker" type="checkbox" id="checkbox4">
-      <label for="checkbox4">
-        checkbox4
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker" type="checkbox" id="checkbox5">
-      <label for="checkbox5">
-        checkbox5
-      </label>
-    </div>
-
-h4 Type radio
-p.-text
-  | To render a radio picker, apply the class <code>a-picker</code> to an <code>input type="radio"</code>
-  |  inside a container with the class <code>m-picker</code>.
-.example.-mb--3
-  .a-grid.-p--4
-    each type in ['radio1','radio2','radio3','radio4']
-      .m-picker.-m--2
-        input(type="radio", class="a-picker", name='box', id=`${type}`)
-        label(for=`${type}`)
-          = type
-  :code(lang="html")
-    <div class="m-picker -m--2">
-      <input class="a-picker" type="radio" name="box-icon" id="radio1">
-      <label for="radio1">
-        radio1
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker" type="radio" name="box-icon" id="radio2">
-      <label for="radio2">
-        radio2
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker" type="radio" name="box-icon" id="radio3">
-      <label for="radio3">
-        radio3
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker" type="radio" name="box-icon" id="radio4">
-      <label for="radio4">
-        radio4
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker" type="radio" name="box-icon" id="radio5">
-      <label for="radio5">
-        radio5
-      </label>
-    </div>
-
-h3 Pill
-
-p.-text
-  | Use the <code>-pill</code> modifier class to render pickers with a more pronounced border-radius.
-.example.-mb--3
-  .a-grid.-p--4
-    each type in ['10','20','30']
-      .m-picker.-pill.-m--2
-        input(type="radio", class="a-picker", name='box', id=`${type}`)
-        label(for=`${type}`)
-          = type
-  :code(lang="html")
-    <div class="m-picker -pill -m--2">
-      <input class="a-picker" type="radio" name="box-icon" id="10">
-      <label for="10">
-      10
-      </label>
-    </div>
-    <div class="m-picker -pill -m--2">
-      <input class="a-picker" type="radio" name="box-icon" id="20">
-      <label for="20">
-      20
-      </label>
-    </div>
-    <div class="m-picker -pill -m--2">
-      <input class="a-picker" type="radio" name="box-icon" id="30">
-      <label for="30">
-      30
-      </label>
-    </div>
-
-h3 Picker with icon
-
-h4 Type checkbox
-.example.-mb--3
-  .a-grid.-p--4
-    each type, val in {application:'icon-box-application',outline:'icon-box-outline',deployment:'icon-box-deployment',script:'icon-box-script'}
-      .m-picker.-m--2
-        input(type="checkbox", class="a-picker -icon", id=`c-${type}`)
-        label(for=`c-${type}`)
-          = val
-          i(class=`a-icon ${type} -md -text--muted`)
-  :code(lang="html")
-    <div class="m-picker -m--2">
-      <input class="a-picker -icon" type="checkbox" id="icon-box-application">
-      <label for="icon-box-application">
-        <i class="a-icon icon-box-application -md -text--muted"></i>
-        application
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker -icon" type="checkbox" id="icon-box-outline">
-      <label for="icon-box-outline">
-        <i class="a-icon icon-box-outline -md -text--muted"></i>
-        outline
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker -icon" type="checkbox" id="icon-box-deployment">
-      <label for="icon-box-deployment">
-        <i class="a-icon icon-box-deployment -md -text--muted"></i>
-        deployment
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker -icon" type="checkbox" id="icon-box-script">
-      <label for="icon-box-script">
-        <i class="a-icon icon-box-script -md -text--muted"></i>
-        script
-      </label>
-    </div>
-
-h4 Type radio
-.example.-mb--3
-  .a-grid.-p--4
-    each type, val in {application:'icon-box-application',outline:'icon-box-outline',deployment:'icon-box-deployment',script:'icon-box-script'}
-      .m-picker.-m--2
-        input(type="radio", class="a-picker -icon", name='box-icon', id=`r-${val}`)
-        label(for=`r-${val}`)
-          = val
-          i(class=`a-icon ${type} -md -text--muted`)
-  :code(lang="html")
-    <div class="m-picker -m--2">
-      <input class="a-picker -icon" type="radio" name="box-icon" id="application">
-      <label for="application">
-        application
-        <i class="a-icon icon-box-application -md -text--muted"></i>
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker -icon" type="radio" name="box-icon" id="outline">
-      <label for="outline">
-        outline
-        <i class="a-icon icon-box-outline -md -text--muted"></i>
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker -icon" type="radio" name="box-icon" id="deployment">
-      <label for="deployment">
-        deployment
-        <i class="a-icon icon-box-deployment -md -text--muted"></i>
-      </label>
-    </div>
-    <div class="m-picker -m--2">
-      <input class="a-picker -icon" type="radio" name="box-icon" id="script">
-      <label for="script">
-        script
-        <i class="a-icon icon-box-script -md -text--muted"></i>
-      </label>
-    </div>
-
-h3 Inline
-
-p.-text
-  | Use the <code>-inline</code> modifier class to render pickers inline.
-h4 Type checkbox
-ul#a-tabs--inlineCheckbox.a-tabs
+ul#a-tabs--Checkbox.a-tabs
   li.-active
-    a(href="#inlineBaseCheckbox") Base
+    a(href="#BaseCheckbox") Base
   li
-    a(href="#inlineWithCheckbox") With checkbox
+    a(href="#WithCheckbox") With checkbox
 
 .example.-mb--3
-  #inlineBaseCheckbox.a-tabs-panel.-active
+  #BaseCheckbox.a-tabs-panel.-active
     .-p--4
-      each type in ['checkbox1','checkbox2']
-        .m-picker.-inline
+      each type in ['Checkbox1','Checkbox2']
+        .m-picker
           input(type="checkbox", class="a-picker", id=`i-${type}`)
           label(for=`i-${type}`)
             = type
     :code(lang="html")
-      <div class="m-picker -inline">
+      <div class="m-picker">
         <input class="a-picker" type="checkbox" id="checkbox1">
         <label for="checkbox1">
-          checkbox1
+          Checkbox1
         </label>
       </div>
-      <div class="m-picker -inline">
+      <div class="m-picker">
         <input class="a-picker" type="checkbox" id="checkbox2">
         <label for="checkbox2">
-          checkbox2
+          Checkbox2
         </label>
       </div>
 
-  #inlineWithCheckbox.a-tabs-panel
+  #WithCheckbox.a-tabs-panel
     .-p--4
-      each type in ['checkbox1','checkbox2']
-        .m-picker.-inline
+      each type in ['Checkbox1','Checkbox2']
+        .m-picker
           input(type="checkbox", class="a-picker", id=`ic-${type}`)
           label(for=`ic-${type}`)
             div
@@ -247,60 +49,60 @@ ul#a-tabs--inlineCheckbox.a-tabs
               label(for=`ic-${type}`)
               = type
     :code(lang="html")
-      <div class="m-picker -inline">
+      <div class="m-picker">
         <input class="a-picker" type="checkbox" id="checkbox1">
         <label for="checkbox1">
           <div>
             <input class="a-input" type="checkbox" id="checkbox1">
             <label for="checkbox1"></label>
-            checkbox1
+            Checkbox1
           </div>
         </label>
       </div>
-      <div class="m-picker -inline">
+      <div class="m-picker">
         <input class="a-picker" type="checkbox" id="checkbox2">
         <label for="checkbox2">
           <div>
             <input class="a-input" type="checkbox" id="checkbox2">
             <label for="checkbox2"></label>
-            checkbox2
+            Checkbox2
           </div>
         </label>
       </div>
 
 h4 Type radio
-ul#a-tabs--inlineRadio.a-tabs
+ul#a-tabs--Radio.a-tabs
   li.-active
-    a(href="#inlineBaseRadio") Base
+    a(href="#BaseRadio") Base
   li
-    a(href="#inlineWithRadio") With Radio
+    a(href="#WithRadio") With Radio
 
 .example.-mb--3
-  #inlineBaseRadio.a-tabs-panel.-active
+  #BaseRadio.a-tabs-panel.-active
     .-p--4
-      each type in ['radio1','radio2']
-        .m-picker.-inline
+      each type in ['Radio1','Radio2']
+        .m-picker
           input(type="radio", class="a-picker", name='box', id=`ei-${type}`)
           label(for=`ei-${type}`)
             = type
     :code(lang="html")
-      <div class="m-picker -inline">
+      <div class="m-picker">
         <input class="a-picker" type="radio" name="radios" id="radio1">
         <label for="radio1">
-          radio2
+          Radio2
         </label>
       </div>
-      <div class="m-picker -inline">
+      <div class="m-picker">
         <input class="a-picker" type="radio" name="radios" id="radio2">
         <label for="radio2">
-          radio2
+          Radio2
         </label>
       </div>
 
-  #inlineWithRadio.a-tabs-panel
+  #WithRadio.a-tabs-panel
     .-p--4
-      each type in ['radio1','radio2']
-        .m-picker.-inline
+      each type in ['Radio1','Radio2']
+        .m-picker
           input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
           label(for=`ri-${type}`)
             div
@@ -308,138 +110,135 @@ ul#a-tabs--inlineRadio.a-tabs
               label(for=`ri-${type}`)
               = type
     :code(lang="html")
-      <div class="m-picker -inline">
+      <div class="m-picker">
         <input class="a-picker" type="radio" name="box" id="radio1">
         <label for="radio1">
           <div>
             <input class="a-input" type="radio" id="radio1">
             <label for="radio1"></label>
-            radio1
+            Radio1
           </div>
         </label>
       </div>
-      <div class="m-picker -inline">
+      <div class="m-picker">
         <input class="a-picker" type="radio" name="box" id="radio2">
         <label for="radio2">
           <div>
             <input class="a-input" type="radio" id="radio2">
             <label for="radio2"></label>
-            radio2
+            Radio2
           </div>
         </label>
       </div>
 
-h3 Inline Sizes
+h3 Sizes
 p.-text
-  | Apply size classes to render inline pickers larger or smaller: <code>-sm</code>, <code>-md</code>, <code>-lg</code>.
+  | Apply size classes to render pickers larger or smaller: <code>-sm</code>, <code>-md</code>, <code>-lg</code>.
   | The default size is <code>-md</code>.
-ul#a-tabs--inlineSizes.a-tabs
+ul#a-tabs--Sizes.a-tabs
   li.-active
-    a(href="#inlineSm") Size -sm
+    a(href="#Sm") Size -sm
   li
-    a(href="#inlineMd") Size -md
+    a(href="#Md") Size -md
   li
-    a(href="#inlineLg") Size -lg
+    a(href="#Lg") Size -lg
 
 .example.-mb--3
-  #inlineSm.a-tabs-panel.-active
+  #Sm.a-tabs-panel.-active
     .-p--4
       each type in ['Radio1 -sm','Radio2 -sm']
-        .m-picker.-inline.-sm
+        .m-picker.-sm
           input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
           label(for=`ri-${type}`)
             div
               = type
-            div
-              span $00
-              span.-text--muted no charges
+            div $00
+              span.-text--normal.-text--muted no charge
     :code(lang="html")
-      <div class="m-picker -inline -sm">
+      <div class="m-picker -sm">
         <input class="a-picker" type="radio" name="box" id="Radio1">
         <label for="Radio1">
           <div>Radio1 -sm</div>
           <div>
-            <span>$00</span>
-            <span class="-text--muted">no charges</span>
+            $00
+            <span class="-text--normal -text--muted">no charge</span>
           </div>
         </label>
       </div>
-      <div class="m-picker -inline -sm">
+      <div class="m-picker -sm">
         <input class="a-picker" type="radio" name="box" id="Radio2">
         <label for="Radio2">
           <div>Radio2 -sm</div>
           <div>
-            <span>$00</span>
-            <span class="-text--muted">no charges</span>
+            $00
+            <span class="-text--normal -text--muted">no charge</span>
           </div>
         </label>
       </div>
-  #inlineMd.a-tabs-panel
+  #Md.a-tabs-panel
     .-p--4
-      each type in ['Radio1 -md','Radio2 -md']
-        .m-picker.-inline.-md
+      each type in ['No equipment, will only use the soft client','Radio2 -md']
+        .m-picker.-md
           input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
           label(for=`ri-${type}`)
             div
               = type
-            div
-              span $00
-              span.-text--muted no charges
+            div $00
+              span.-text--normal.-text--muted no charge
     :code(lang="html")
-      <div class="m-picker -inline -md">
+      <div class="m-picker -md">
         <input class="a-picker" type="radio" name="box" id="Radio1">
         <label for="Radio1">
           <div>Radio1 -md</div>
           <div>
-            <span>$00</span>
-            <span class="-text--muted">no charges</span>
+            $00
+            <span class="-text--normal -text--muted">no charge</span>
           </div>
         </label>
       </div>
-      <div class="m-picker -inline -md">
+      <div class="m-picker -md">
         <input class="a-picker" type="radio" name="box" id="Radio2">
         <label for="Radio2">
           <div>Radio2 -md</div>
           <div>
-            <span>$00</span>
-            <span class="-text--muted">no charges</span>
+            $00
+            <span class="-text--normal -text--muted">no charge</span>
           </div>
         </label>
       </div>
-  #inlineLg.a-tabs-panel
+  #Lg.a-tabs-panel
     .-p--4
-      each type in ['Radio1 -lg','Radio2 -lg']
-        .m-picker.-inline.-lg
+      each type in ['Expedited shipping','Radio2 -lg']
+        .m-picker.-lg
           input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
           label(for=`ri-${type}`)
             div
               label
                 = type
-              span Text example
-            div
-              span $200
+              span.-text--normal.-text--muted Est delivery:
+            div $200
     :code(lang="html")
-      <div class="m-picker -inline -lg">
+      <div class="m-picker -lg">
         <input class="a-picker" type="radio" name="box" id="Radio1">
         <label for="Radio1">
           <div>
             <label>Radio1 -lg</label>
-            <span>Text example</span>
+            <span class="-text--normal -text--muted">Text example</span>
           </div>
           <div>
-            <span>$200</span>
+            $200
           </div>
         </label>
       </div>
-      <div class="m-picker -inline -lg">
+      <div class="m-picker -lg">
         <input class="a-picker" type="radio" name="box" id="Radio2">
         <label for="Radio2">
           <div>
             <label>Radio2 -lg</label>
-            <span>Text example</span>
+            <span class="-text--normal -text--muted">Text example</span>
           </div>
           <div>
-            <span>$200</span>
+            $200
           </div>
         </label>
       </div>
@@ -448,9 +247,9 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('a-tabs--inlineCheckbox'));
-      chi.tab(document.getElementById('a-tabs--inlineRadio'));
-      chi.tab(document.getElementById('a-tabs--inlineSizes'));
+      chi.tab(document.getElementById('a-tabs--Checkbox'));
+      chi.tab(document.getElementById('a-tabs--Radio'));
+      chi.tab(document.getElementById('a-tabs--Sizes'));
     },
     false
   );

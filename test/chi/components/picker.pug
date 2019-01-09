@@ -7,71 +7,19 @@ title: Picker
 h3 Base
 
 h4 Type checkbox
-.example.-mb--3
-  .-p--3.-d--flex.-align-items--center.-justify-content--center
-    each type in ['checkbox1','checkbox2','checkbox3','checkbox4']
-      .m-picker.-m--2
-        input(type="checkbox", class="a-picker", id=`${type}`)
-        label(for=`${type}`)
-          = type
-
-h4 Type radio
-.example.-mb--3
-  .-p--3.-d--flex.-align-items--center.-justify-content--center
-    each type in ['radio1','radio2','radio3','radio4']
-      .m-picker.-m--2
-        input(type="radio", class="a-picker", name='box', id=`${type}`)
-        label(for=`${type}`)
-          = type
-
-h3 Pill
-
-.example.-mb--3
-  .-p--3.-d--flex.-align-items--center.-justify-content--center
-    each type in ['10','20','30']
-      .m-picker.-number.-pill.-m--2
-        input(type="radio", class="a-picker", name='box', id=`${type}`)
-        label(for=`${type}`)
-          = type
-
-h3 Picker with icon
-
-h4 Type checkbox
-.example.-mb--3
-  .-p--3.-d--flex.-align-items--center.-justify-content--center
-    each type, val in {application:'icon-box-application',outline:'icon-box-outline',deployment:'icon-box-deployment',script:'icon-box-script'}
-      .m-picker.-m--2
-        input(type="checkbox", class="a-picker -icon", id=`c-${type}`)
-        label(for=`c-${type}`)
-          = val
-          i(class=`a-icon ${type} -md -text--muted`)
-
-h4 Type radio
-.example.-mb--3
-  .-p--3.-d--flex.-align-items--center.-justify-content--center
-    each type, val in {application:'icon-box-application',outline:'icon-box-outline',deployment:'icon-box-deployment',script:'icon-box-script'}
-      .m-picker.-m--2
-        input(type="radio", class="a-picker -icon", name='box-icon', id=`r-${val}`)
-        label(for=`r-${val}`)
-          = val
-          i(class=`a-icon ${type} -md -text--muted`)
-
-h3 Inline
-
-h4 Type checkbox
 h4 Base
 .example.-mb--3(style='width: 700px')
   .-p--3
-    each type in ['checkbox1','checkbox2']
-      .m-picker.-inline
+    each type in ['Checkbox1','Checkbox2']
+      .m-picker
         input(type="checkbox", class="a-picker", id=`i-${type}`)
         label(for=`i-${type}`)
           = type
 h4 With checkbox
 .example.-mb--3(style='width: 700px')
   .-p--3
-    each type in ['checkbox1','checkbox2']
-      .m-picker.-inline
+    each type in ['Checkbox1','Checkbox2']
+      .m-picker
         input(type="checkbox", class="a-picker", id=`ic-${type}`)
         label(for=`ic-${type}`)
           div
@@ -82,16 +30,16 @@ h4 Type radio
 h4 Base
 .example.-mb--3(style='width: 700px')
   .-p--3
-    each type in ['radio1','radio2']
-      .m-picker.-inline
+    each type in ['Radio1','Radio2']
+      .m-picker
         input(type="radio", class="a-picker", name='box', id=`ei-${type}`)
         label(for=`ei-${type}`)
           = type
 h4 With radio
 .example.-mb--3(style='width: 700px')
   .-p--3
-    each type in ['radio1','radio2']
-      .m-picker.-inline
+    each type in ['Radio1','Radio2']
+      .m-picker
         input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
         label(for=`ri-${type}`)
           div
@@ -104,11 +52,18 @@ h3 Sizes
     each size in sizes
       h4= '-' + size
       each type in ['Radio1','Radio2']
-        .m-picker.-inline(class=`-${size}`)
+        .m-picker(class=`-${size}`)
           input(type="radio", class="a-picker", name='box', id=`ri-${type}-${size}`)
           label(for=`ri-${type}-${size}`)
             div
               = type
+            div $00
+              span.-text--normal no charge
+        .m-picker(class=`-${size}`)
+          input(type="radio", class="a-picker", name='box', id=`rd-${type}-${size}`)
+          label(for=`rd-${type}-${size}`)
             div
-              span $00
-              span.-text--muted no charges
+              label
+                = type
+              span.-text--normal Text example
+            div $200
