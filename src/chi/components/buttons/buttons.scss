@@ -1,7 +1,40 @@
 @import 'mixins';
 @import 'variables';
 
-$state-colors: (brand: emerald, danger: red, info: navy, dark: grey, inverse: white);
+$state-colors: (
+  brand: (
+    color: emerald,
+    tone: 60,
+    tone-hover: 70,
+    tone-focus: 80
+  ),
+  danger: (
+    color: red,
+    tone: 60,
+    tone-hover: 70,
+    tone-focus: 80
+  ),
+  info: (
+    color: navy,
+    tone: 60,
+    tone-hover: 70,
+    tone-focus: 80
+  ),
+  dark: (
+    color: grey,
+    tone: 90,
+    tone-hover: 100,
+    tone-focus: 90
+  ),
+  inverse: (
+    color: white,
+    tone: null,
+    tone-hover: null,
+    tone-focus: null
+  )
+  ,
+);
+
 $border: 0.0625rem;
 
 $sizes: (
@@ -18,6 +51,7 @@ $sizes: (
       font-size: 0.75rem,
     )
   ),
+  // Legacy code start
   small: (
     border-radius: 0.75rem,
     font-size: 0.75rem,
@@ -31,6 +65,7 @@ $sizes: (
       font-size: 0.75rem,
     )
   ),
+  // Legacy code end
   md: (
     border-radius: 1rem,
     font-size: 0.875rem,
@@ -57,6 +92,7 @@ $sizes: (
       font-size: 1rem,
     )
   ),
+  // Legacy code start
   large: (
     border-radius: 1.25rem,
     font-size: 0.875rem,
@@ -70,6 +106,7 @@ $sizes: (
       font-size: 1rem,
     )
   ),
+  // Legacy code end
   xl: (
     border-radius: 1.5rem,
     font-size: 0.875rem,
@@ -425,7 +462,14 @@ $sizes: (
       }
     }
 
-    @each $type in map-keys($state-colors) {
+    @each $color-definition in $state-colors {
+      $type: nth($color-definition, 1);
+      $color: map_get(nth($color-definition, 2), color);
+      $tone: map_get(nth($color-definition, 2), tone);
+      $tone-hover: map_get(nth($color-definition, 2), tone-hover);
+      $tone-focus: map_get(nth($color-definition, 2), tone-focus);
+      $tone-focus-shadow: map_get(nth($color-definition, 2), tone-hover);
+
       @if( $type == 'inverse') {
         &.-#{$type} {
           .a-icon {
@@ -439,10 +483,10 @@ $sizes: (
             &.-hover {
               background-color: transparent;
               border: $border solid transparent;
-              color: set-color(map-get($state-colors, $type));
+              color: set-color($color);
 
               .a-icon {
-                color: set-color(map-get($state-colors, $type));
+                color: set-color($color);
               }
             }
 
@@ -450,10 +494,10 @@ $sizes: (
             &.-focus {
               background-color: transparent;
               border: $border solid transparent;
-              box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type)), 0.4);
+              box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
 
               .a-icon {
-                color: set-color(map-get($state-colors, $type));
+                color: set-color($color);
               }
             }
 
@@ -465,7 +509,7 @@ $sizes: (
                 background-color: transparent;
                 border: $border solid transparent;
                 box-shadow: none;
-                color: set-color(map-get($state-colors, $type));
+                color: set-color($color);
               }
             }
           }
@@ -474,20 +518,20 @@ $sizes: (
             background-color: transparent;
             border: $border solid transparent;
             box-shadow: none;
-            color: set-color(map-get($state-colors, $type));
+            color: set-color($color);
           }
 
           &:hover,
           &.-hover {
             background-color: set-color(transparent);
-            border: $border solid set-color(map-get($state-colors, $type));
+            border: $border solid set-color($color);
           }
 
           &:focus,
           &.-focus {
             background-color: set-color(transparent);
-            border: $border solid set-color(map-get($state-colors, $type));
-            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type)), 0.4);
+            border: $border solid set-color($color);
+            box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
           }
 
           &:active,
@@ -496,16 +540,16 @@ $sizes: (
             &:focus,
             &.-focus {
               background-color: transparent;
-              border: $border solid set-color(map-get($state-colors, $type));
+              border: $border solid set-color($color);
               box-shadow: none;
-              color: set-color(map-get($state-colors, $type));
+              color: set-color($color);
             }
           }
         }
       } @else {
         &.-#{$type} {
-          background-color: set-color(map-get($state-colors, $type), 60);
-          border: $border solid set-color(map-get($state-colors, $type), 60);
+          background-color: set-color($color, $tone);
+          border: $border solid set-color($color, $tone);
           box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
           color: set-color(white);
 
@@ -519,14 +563,14 @@ $sizes: (
 
           &:hover,
           &.-hover {
-            background-color: set-color(map-get($state-colors, $type), 70);
-            border: $border solid set-color(map-get($state-colors, $type), 70);
+            background-color: set-color($color, $tone-hover);
+            border: $border solid set-color($color, $tone-hover);
             box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
           }
 
           &:focus,
           &.-focus {
-            box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 70), 0.3);
+            box-shadow: 0 0 0 3px rgba(set-color($color, 70), 0.3);
           }
 
           &:active,
@@ -534,7 +578,7 @@ $sizes: (
             &,
             &:focus,
             &.-focus {
-              background-color: set-color(map-get($state-colors, $type), 80);
+              background-color: set-color($color, $tone-focus);
               border: $border solid rgba(set-color(black), 0.2);
               box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
             }
@@ -542,16 +586,16 @@ $sizes: (
 
           &.-outline {
             background-color: set-color(white);
-            border: $border solid set-color(map-get($state-colors, $type), 60);
-            color: set-color(map-get($state-colors, $type), 60);
+            border: $border solid set-color($color, $tone);
+            color: set-color($color, 60);
 
             .a-spinner__icon .path {
-              stroke: set-color(map-get($state-colors, $type), 60);
+              stroke: set-color($color, 60);
             }
 
             &:hover,
             &.-hover {
-              background-color: set-color(map-get($state-colors, $type), 60);
+              background-color: set-color($color, $tone);
               color: set-color(white);
 
               .a-spinner__icon .path {
@@ -561,8 +605,8 @@ $sizes: (
 
             &:focus,
             &.-focus {
-              border: $border solid set-color(map-get($state-colors, $type), 60);
-              box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 70), 0.4);
+              border: $border solid set-color($color, $tone);
+              box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
             }
 
             &:active,
@@ -570,7 +614,7 @@ $sizes: (
               &,
               &:focus,
               &.-focus {
-                background-color: set-color(map-get($state-colors, $type), 80);
+                background-color: set-color($color, $tone-focus);
                 border: $border solid rgba(set-color(black), 0.2);
                 box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
                 color: set-color(white);
@@ -586,19 +630,19 @@ $sizes: (
             background-color: transparent;
             border: $border solid transparent;
             box-shadow: none;
-            color: set-color(map-get($state-colors, $type), 60);
+            color: set-color($color, $tone);
 
             &:hover,
             &.-hover {
               background-color: set-color(white);
-              border: $border solid set-color(map-get($state-colors, $type), 60);
+              border: $border solid set-color($color, $tone);
             }
 
             &:focus,
             &.-focus {
               background-color: set-color(white);
-              border: $border solid set-color(map-get($state-colors, $type), 60);
-              box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 70), 0.4);
+              border: $border solid set-color($color, $tone);
+              box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
             }
 
             &:active,
@@ -606,86 +650,12 @@ $sizes: (
               &,
               &:focus,
               &.-focus {
-                background-color: set-color(map-get($state-colors, $type), 60);
+                background-color: set-color($color, $tone);
                 border: $border solid rgba(set-color(black), 0.2);
                 box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
                 color: set-color(white);
               }
             }
-          }
-        }
-      }
-    }
-
-    &.-dark {
-      background-color: set-color(grey, 90);
-      border-color: set-color(grey, 90);
-
-      &:hover,
-      &.-hover {
-        background-color: set-color(grey, 100);
-        border-color: set-color(grey, 100);
-      }
-
-      &:focus,
-      &.-focus {
-        box-shadow: 0 0 0 3px rgba(set-color(grey, 90), 0.3);
-      }
-
-      &:active,
-      &.-active {
-        &,
-        &:focus,
-        &.-focus {
-          background-color: set-color(black);
-        }
-      }
-
-      &.-outline {
-        border-color: set-color(grey, 90);
-        color: set-color(grey, 90);
-
-        &:hover,
-        &.-hover {
-          background-color: set-color(grey, 90);
-        }
-
-        &:focus,
-        &.-focus {
-          border-color: set-color(grey, 90);
-          box-shadow: 0 0 0 3px rgba(set-color(grey, 90), 0.3);
-        }
-
-        &:active,
-        &.-active {
-          &,
-          &:focus,
-          &.-focus {
-            background-color: set-color(grey, 100);
-          }
-        }
-      }
-
-      &.-flat {
-        color: set-color(grey, 90);
-
-        &:hover,
-        &.-hover {
-          border: $border solid set-color(grey, 90);
-        }
-
-        &:focus,
-        &.-focus {
-          border-color: set-color(grey, 90);
-          box-shadow: 0 0 0 3px rgba(set-color(grey, 90), 0.3);
-        }
-
-        &:active,
-        &.-active {
-          &,
-          &:focus,
-          &.-focus {
-            background-color: set-color(grey, 90);
           }
         }
       }
