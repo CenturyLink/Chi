@@ -26,7 +26,7 @@ h2 Radio Button List
 .test-states
   each state, index in ['default', 'hover', 'focus', 'disabled']
     h5= `Radio / ${state}`
-    ul.m-listGroup(style="max-width:20rem")
+    ul.m-formGroup.-list(style="max-width:20rem")
       each element in [1, 2, 3, 4, 5]
         li.m-formGroup
           input.a-input(

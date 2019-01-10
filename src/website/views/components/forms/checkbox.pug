@@ -63,11 +63,12 @@ p.-text
   | Checkbox lists are used to wrap a series of checkbox on a list.
 
 h3 Examples
-p.-text To render a series of checkbox in a list, apply the class <code>m-listGroup</code> in a list.
+p.-text To render a series of checkbox in a list, apply the class<code>m-formGroup</code> in a list with
+  |  a contextual class <code>-list</code> that apply the right style.
 .example.-mb--3
   .-p--3
     h5 Select an option
-    ul.m-listGroup(style="max-width:20rem")
+    ul.m-formGroup.-list(style="max-width:20rem")
       li.m-formGroup
         input(type="checkbox", class="a-input", id="checkbox-1")
         label(for="checkbox-1")
@@ -90,7 +91,7 @@ p.-text To render a series of checkbox in a list, apply the class <code>m-listGr
         label.-text(for="checkbox-5") Option 5
   :code(lang='html')
     <h5> Select an option </h5>
-    <ul class="m-listGroup">
+    <ul class="m-formGroup -list">
       <li class="m-formGroup">
         <input type="checkbox" class="a-input" id="checkbox1">
         <label for="checkbox1"></label>
