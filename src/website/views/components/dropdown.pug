@@ -105,6 +105,29 @@ ul#a-tabs--expanded-2.a-tabs
           <a class="m-dropdown__menu-item" href="#">Element 4</a>
         </div>
       </div>
+
+h4 Example 3
+p.-text
+  | Dropdown on hover is only supported when trigger and dropdown elements are enclosed in the same div. Use the
+  | <code>m-dropdown__hover</code> class to achieve this.
+.example.-mb--3
+  .-p--3
+    .m-dropdown.m-dropdown__hover(style='margin-bottom: 7rem')
+      button.a-btn.m-dropdown__trigger Dropdown component
+      .m-dropdown__menu
+        a.m-dropdown__menu-item(href='#') Element 1
+        a.m-dropdown__menu-item(href='#') Element 2
+        a.m-dropdown__menu-item(href='#') Element 3
+  :code(lang="html")
+    <div class="m-dropdown m-dropdown__hover">
+      <button class="a-btn m-dropdown__trigger">Dropdown component</button>
+      <div class="m-dropdown__menu">
+        <a class="m-dropdown__menu-item" href="#">Element 1</a>
+        <a class="m-dropdown__menu-item" href="#">Element 2</a>
+        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+      </div>
+    </div>
+
 h3 Divider
 p.-text
   | Several menu items can be arranged together by using a divider. Use the <code>a-divider</code> component.
@@ -585,26 +608,26 @@ p.-text
   | <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>, <code>left-end</code>.
 
 .example.-mb--3
-  .-p--3.-d--flex
-    .m-dropdown.-mr--3
+  .-p--3.-d--flex.-flex--wrap
+    .m-dropdown.-mr--3.-mb--2.-mb-md--0
       button.a-btn.m-dropdown__trigger(data-position="bottom") Drop-down
       .m-dropdown__menu
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
-    .m-dropdown.-mr--3
+    .m-dropdown.-mr--3.-mb--2.-mb-md--0
       button.a-btn.m-dropdown__trigger(data-position="top") Drop-top
       .m-dropdown__menu
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
-    .m-dropdown.-mr--3
+    .m-dropdown.-mr--3.-mb--2.-mb-md--0
       button.a-btn.m-dropdown__trigger(data-position="left") Drop-left
       .m-dropdown__menu
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
-    .m-dropdown.-mr--3
+    .m-dropdown.-mr--3.-mb--2.-mb-md--0
       button.a-btn.m-dropdown__trigger(data-position="right") Drop-right
       .m-dropdown__menu
         a.m-dropdown__menu-item(href='#') Element 1

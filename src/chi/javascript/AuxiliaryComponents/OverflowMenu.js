@@ -1,6 +1,6 @@
-import {Util} from "../util";
+import {Util} from "../core/util.js";
 import {CLASS_SLIDING_BORDER} from "./SlidingBorder";
-import {NavigationDropdown} from "../navigation";
+import {NavigationDropdown} from "../components/navigation";
 
 class OverflowMenu {
 

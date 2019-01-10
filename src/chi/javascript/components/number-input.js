@@ -1,20 +1,20 @@
-import {Util} from "./util.js";
-import {chi} from "./chi.js";
+import {Component} from "../core/component";
+import {Util} from "../core/util.js";
 
+const COMPONENT_SELECTOR =
+  '.a-inputWrapper > input.a-input[type="number"], ' +
+  '.m-inputNumber > input.a-input[type="number"]';
 const COMPONENT_TYPE = "numberInput";
+const DEFAULT_CONFIG = {autofix: true};
 
-class NumberInput {
+class NumberInput extends Component {
 
   constructor (elem, config) {
 
-    this._config = {
-      autofix: true
-    };
-    this._config = Util.extend(this._config, config);
-    this._elemInput = elem;
-    this._elemWrapper = this._elemInput.parentElement;
-    this._initialValue = Util.isNumeric(this._elemInput.value) ?
-      Number(this._elemInput.value) : 0;
+    super(elem, Util.extend(DEFAULT_CONFIG, config));
+    this._elemWrapper = this._elem.parentElement;
+    this._initialValue = Util.isNumeric(this._elem.value) ?
+      Number(this._elem.value) : 0;
     this._stepped = {};
 
     let buttons = this._elemWrapper.getElementsByTagName('button');
@@ -44,13 +44,10 @@ class NumberInput {
 
     this._incrementButton.addEventListener('click', this._increment);
     this._decrementButton.addEventListener('click', this._decrement);
-    this._elemInput.addEventListener('keyup', this._check);
-    this._elemInput.addEventListener('change', this._check);
+    this._elem.addEventListener('keyup', this._check);
+    this._elem.addEventListener('change', this._check);
 
     this._check();
-
-    Util.registerComponent(COMPONENT_TYPE, this._elemInput, this);
-
   }
 
   dispose() {
@@ -58,25 +55,25 @@ class NumberInput {
     this._elemWrapper = null;
     this._incrementButton.removeEventListener('click', this._increment);
     this._decrementButton.removeEventListener('click', this._decrement);
-    this._elemInput.removeEventListener('keyup', this._check);
-    this._elemInput.removeEventListener('change', this._check);
+    this._elem.removeEventListener('keyup', this._check);
+    this._elem.removeEventListener('change', this._check);
     this._incrementButton = null;
     this._decrementButton = null;
     this._increment = null;
     this._decrement = null;
     this._stepped = null;
-    Util.unregisterComponent(COMPONENT_TYPE, this._elemInput);
-    this._elemInput = null;
+    Util.unregisterComponent(COMPONENT_TYPE, this._elem);
+    this._elem = null;
   }
 
   _updateSteppedValues() {
-    this.step = Util.isNumeric(this._elemInput.step) ? Number(this._elemInput.step) : 1;
-    this._stepped.current = this._value2step(this._elemInput.value);
-    this._stepped.max = Util.isNumeric(this._elemInput.max) ?
-      this._value2step(Number(this._elemInput.max), Math.floor):
+    this.step = Util.isNumeric(this._elem.step) ? Number(this._elem.step) : 1;
+    this._stepped.current = this._value2step(this._elem.value);
+    this._stepped.max = Util.isNumeric(this._elem.max) ?
+      this._value2step(Number(this._elem.max), Math.floor):
       Number.POSITIVE_INFINITY;
-    this._stepped.min = Util.isNumeric(this._elemInput.min) ?
-      this._value2step(Number(this._elemInput.min), Math.ceil):
+    this._stepped.min = Util.isNumeric(this._elem.min) ?
+      this._value2step(Number(this._elem.min), Math.ceil):
       Number.NEGATIVE_INFINITY;
   }
 
@@ -115,10 +112,10 @@ class NumberInput {
     this._stepped.current = Math.max(this._stepped.current, this._stepped.min);
     if (
       this._stepped.current !== previousValue ||
-      this._elemInput.value !== this._step2value(this._stepped.current).toString()
+      this._elem.value !== this._step2value(this._stepped.current).toString()
     ) {
-      this._elemInput.value = this._step2value(this._stepped.current);
-      this._elemInput.dispatchEvent(Util.createEvent('change'));
+      this._elem.value = this._step2value(this._stepped.current);
+      this._elem.dispatchEvent(Util.createEvent('change'));
     }
   }
 
@@ -132,8 +129,8 @@ class NumberInput {
     } else {
       this._stepped.current = Math.ceil(this._stepped.current);
     }
-    this._elemInput.value = this._step2value(this._stepped.current);
-    this._elemInput.dispatchEvent(Util.createEvent('change'));
+    this._elem.value = this._step2value(this._stepped.current);
+    this._elem.dispatchEvent(Util.createEvent('change'));
   }
 
   _stepDown() {
@@ -146,18 +143,18 @@ class NumberInput {
     } else {
       this._stepped.current = Math.floor(this._stepped.current);
     }
-    this._elemInput.value = this._step2value(this._stepped.current);
-    this._elemInput.dispatchEvent(Util.createEvent('change'));
+    this._elem.value = this._step2value(this._stepped.current);
+    this._elem.dispatchEvent(Util.createEvent('change'));
   }
 
-  static factory(elem, config) {
-    return Util.getRegisteredComponent(COMPONENT_TYPE, elem) ||
-      new NumberInput(elem, config);
+  static get componentType () {
+    return COMPONENT_TYPE;
   }
 
+  static get componentSelector () {
+    return COMPONENT_SELECTOR;
+  }
 }
 
-let chiNumberInput = Util.addArraySupportToFactory(NumberInput.factory);
-
-chi.numberInput = chiNumberInput;
-export {NumberInput, chiNumberInput};
+const factory = Component.factory.bind(NumberInput);
+export {NumberInput, factory};

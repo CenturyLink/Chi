@@ -1,15 +1,17 @@
-import {Util} from "./util.js";
-import {chi} from "./chi.js";
 import Popper from 'popper.js';
+import {Component} from "../core/component";
+import {Util} from "../core/util.js";
 
-const COMPONENT_SELECTOR = '[data-tooltip]';
 const CLASS_ACTIVE = "-active";
+const COMPONENT_SELECTOR = '[data-tooltip]';
 const COMPONENT_TYPE = "tooltip";
+const DEFAULT_CONFIG = {position: 'top', parent: null};
 
-class Tooltip {
+class Tooltip extends Component {
 
   constructor (elem, config) {
-    this._elem = elem;
+
+    super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._tooltipElem = null;
     this._popper = null;
     this._popperData = null;
@@ -19,19 +21,12 @@ class Tooltip {
     this._focused = false;
     this._shown = false;
 
-    this._config = {
-      parent: this._elem,
-      position: "top"
-    };
-
-    this._config = Util.extend(this._config, config);
+    this._config.parent = this._config.parent || this._elem;
     this._config.position = config && config.position ||
       this._elem.dataset.position ||
       this._config.position;
 
     let self = this;
-    Util.registerComponent(COMPONENT_TYPE, this._elem, this);
-
     this._createTooltip();
 
     this._mouseOverEventHandler = function() {
@@ -63,7 +58,6 @@ class Tooltip {
     this._elem.addEventListener('mouseout', this._mouseOutEventHandler, false);
     this._elem.addEventListener('focus',this._focusEventHandler,false);
     this._elem.addEventListener('blur', this._blurEventHandler, false);
-
   }
 
   show() {
@@ -151,21 +145,14 @@ class Tooltip {
     this._elem = null;
   }
 
-  static factory(elem, config) {
-    return Util.getRegisteredComponent(COMPONENT_TYPE, elem) ||
-      new Tooltip(elem, config);
+  static get componentType () {
+    return COMPONENT_TYPE;
   }
 
-  static initAll(config) {
-    Array.prototype.forEach.call(
-      document.querySelectorAll(COMPONENT_SELECTOR), function (elem) {
-        Tooltip.factory(elem, config);
-      }
-    );
+  static get componentSelector () {
+    return COMPONENT_SELECTOR;
   }
 }
 
-let chiTooltip = Util.addArraySupportToFactory(Tooltip.factory);
-
-chi.tooltip = chiTooltip;
-export {Tooltip, chiTooltip};
+const factory = Component.factory.bind(Tooltip);
+export {Tooltip, factory, CLASS_ACTIVE};

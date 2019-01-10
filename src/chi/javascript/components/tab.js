@@ -1,29 +1,30 @@
-import {Util} from "./util.js";
-import {chi} from "./chi.js";
-import {SlidingBorder, ANIMATION_DURATION as BORDER_ANIMATION_DURATION} from "./AuxiliaryComponents/SlidingBorder";
-
+import {chi} from "../core/chi";
+import {Component} from "../core/component";
+import {SlidingBorder, ANIMATION_DURATION as BORDER_ANIMATION_DURATION} from "../AuxiliaryComponents/SlidingBorder";
+import {Util} from "../core/util.js";
 
 const CLASS_ACTIVE = "-active";
 const CLASS_ANIMATED = "-animated";
-const CLASS_COMPONENT = 'a-tabs';
-const CLASS_VERTICAL = "-vertical";
 const CLASS_RESPONSIVE = "-responsive";
+const CLASS_VERTICAL = "-vertical";
+const COMPONENT_SELECTOR = '.a-tabs';
 const COMPONENT_TYPE = "tab";
 
-class Tab {
+const DEFAULT_CONFIG = {
+  animated: true,
+  waitForAnimations: true
+};
+
+class Tab extends Component {
 
   constructor (elem, config) {
-    this._elem = elem;
-    this._config = {
-      animated: true,
-      waitForAnimations: true
-    };
-    this._config = Util.extend(this._config, config);
+    super(elem, Util.extend(DEFAULT_CONFIG, config));
     let self = this;
 
     this._clickEventHandler = function(e) {
       self.clickEventHandler(e);
     };
+
     this._elem.addEventListener('click', this._clickEventHandler);
 
     if (this._config.animated) {
@@ -217,22 +218,14 @@ class Tab {
     }
   }
 
-  static factory(elem, config) {
-    return Util.cachedComponentFactory(elem, config, COMPONENT_TYPE, function() {
-      return new Tab(elem, config);
-    });
+  static get componentType () {
+    return COMPONENT_TYPE;
   }
 
-  static initAll(config) {
-    Array.prototype.forEach.call(
-      document.getElementsByClassName(CLASS_COMPONENT), function (elem) {
-        Tab.factory(elem, config);
-      }
-    );
+  static get componentSelector () {
+    return COMPONENT_SELECTOR;
   }
 }
 
-let chiTab = Util.addArraySupportToFactory(Tab.factory);
-
-chi.tab = chiTab;
-export {Tab, chiTab, COMPONENT_TYPE};
+const factory = Component.factory.bind(Tab);
+export {Tab, factory, COMPONENT_TYPE};

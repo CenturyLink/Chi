@@ -147,17 +147,18 @@ export class Util {
   }
 
   static extend (originArray, extensorArray) {
+    const resultArray = Util.copyObject(originArray);
     if (!extensorArray) {
-      return originArray;
+      return resultArray;
     }
     for (let key in extensorArray) {
       if (extensorArray[key] === undefined) {
-        delete originArray[key];
+        delete resultArray[key];
       } else {
-        originArray[key] = extensorArray[key];
+        resultArray[key] = extensorArray[key];
       }
     }
-    return originArray;
+    return resultArray;
   }
 
   static addArraySupportToFactory (factoryMethod) {

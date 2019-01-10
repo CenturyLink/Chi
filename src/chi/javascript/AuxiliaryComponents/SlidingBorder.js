@@ -1,4 +1,4 @@
-import {Util} from "../util";
+import {Util} from "../core/util.js";
 
 const CLASS_SLIDING_BORDER='a-sliding-border';
 const ANIMATION_DURATION=500;

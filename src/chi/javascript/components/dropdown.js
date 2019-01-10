@@ -1,23 +1,24 @@
-import {Util} from "./util.js";
-import {chi} from "./chi.js";
+import {Component} from "../core/component";
+import {Util} from "../core/util.js";
 import Popper from 'popper.js';
 
 const CLASS_ACTIVE = "-active";
-const CLASS_COMPONENT = 'm-dropdown__trigger';
 const CLASS_DROPDOWN = 'm-dropdown__menu';
 const CLASS_DROPDOWN_ITEM = 'm-dropdown__menu-item';
 const CLASS_MOLECULE = "m-dropdown";
+const CLASS_COMPONENT = 'm-dropdown__trigger';
+const COMPONENT_SELECTOR = '.m-dropdown__trigger';
 const COMPONENT_TYPE = "dropdown";
+const DEFAULT_CONFIG = {
+  popper: true,
+  dropdownElem: null
+};
 const DEFAULT_POSITION = "bottom-start";
 
-class Dropdown {
+class Dropdown extends Component {
 
   constructor (elem, config) {
-    this._elem = elem;
-    this._config = Util.extend({
-      popper: true,
-      dropdownElem: null
-    }, config);
+    super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._eventCaptured = false;
     this._shown = Util.hasClass(elem, CLASS_ACTIVE);
     this._childrenDropdowns = [];
@@ -44,8 +45,6 @@ class Dropdown {
       self._triggerOnBlur();
     };
     this._elem.addEventListener('click', this._triggerClickEventListener);
-    //this._elem.addEventListener('focus', this._triggerFocusEventListener);
-    //this._elem.addEventListener('blur', this._triggerBlurEventListener);
 
     this._documentClickEventListener = function() {
       if (self._eventCaptured === true) {
@@ -294,34 +293,20 @@ class Dropdown {
     this.disablePopper();
   }
 
-  static factory(elem, config) {
-    return Util.cachedComponentFactory(
-      elem,
-      config,
-      COMPONENT_TYPE,
-      function() {
-        return new Dropdown(elem, config);
-      }
-    );
+
+  static get componentType () {
+    return COMPONENT_TYPE;
   }
 
-  static initAll(config) {
-    Array.prototype.forEach.call(
-      document.getElementsByClassName(CLASS_COMPONENT), function (elem) {
-        Dropdown.factory(elem, config);
-      }
-    );
+  static get componentSelector () {
+    return COMPONENT_SELECTOR;
   }
-
 }
 
-let chiDropdown = Util.addArraySupportToFactory(Dropdown.factory);
-
-chi.dropdown = chiDropdown;
+const factory = Component.factory.bind(Dropdown);
 export {
   Dropdown,
-  chiDropdown,
-
+  factory,
   CLASS_ACTIVE,
   CLASS_COMPONENT,
   CLASS_DROPDOWN,

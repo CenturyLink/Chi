@@ -1,21 +1,28 @@
-import {Util} from "./util.js";
-import {chi} from "./chi.js";
-import {OverflowMenu} from "./AuxiliaryComponents/OverflowMenu";
+import {OverflowMenu} from "../AuxiliaryComponents/OverflowMenu";
+import {Util} from "../core/util.js";
 import {
   Tab,
   COMPONENT_TYPE as TAB_COMPONENT_TYPE
 } from "./tab";
 import {
   Dropdown,
+  factory as dropdownFactyory,
   CLASS_ACTIVE as DROPDOWN_CLASS_ACTIVE,
   CLASS_COMPONENT as DROPDOWN_CLASS_COMPONENT,
   CLASS_DROPDOWN_ITEM,
   CLASS_MOLECULE,
   COMPONENT_TYPE as DROPDOWN_COMPONENT_TYPE
 } from "./dropdown";
-import {ANIMATION_DURATION as SLIDING_BORDER_ANIMATION_DURATION} from "./AuxiliaryComponents/SlidingBorder";
+import {ANIMATION_DURATION as SLIDING_BORDER_ANIMATION_DURATION} from
+    "../AuxiliaryComponents/SlidingBorder";
+import {Component} from "../core/component";
 
 const COMPONENT_TYPE = "navigation";
+const DEFAULT_CONFIG = {
+  overflowMenu: true,
+  overflowMenuLabel: 'More&hellip;',
+  waitForAnimations: true,
+};
 
 class NavigationTab extends Tab {
 
@@ -146,17 +153,11 @@ class NavigationDropdown extends Dropdown {
   }
 }
 
-class Navigation {
+class Navigation extends Component {
 
   constructor (elem, config) {
-    this._config = Util.extend(
-      {
-        overflowMenu: true,
-        overflowMenuLabel: 'More&hellip;',
-        waitForAnimations: true,
 
-      }, config);
-    this._elem = elem;
+    super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._tabComponent = NavigationTab.factory(
       elem,
       {
@@ -222,7 +223,7 @@ class Navigation {
     this._initialState = {};
     this._initialState.activeTab = this._tabComponent.getActiveTab();
     this._initialState.activeDropdowns =
-      Util.addArraySupportToFactory(Dropdown.factory)(
+      dropdownFactyory (
         this._elem.querySelectorAll(
           '.' + DROPDOWN_CLASS_COMPONENT + '.' + DROPDOWN_CLASS_ACTIVE
         )
@@ -239,9 +240,12 @@ class Navigation {
     } else {
       this._tabComponent.hideTabs();
     }
-    this._initialState.activeDropdowns.forEach (function (dropdown) {
-      dropdown.show();
-    });
+
+    if (this.isVertical()) {
+      this._initialState.activeDropdowns.forEach (function (dropdown) {
+        dropdown.show();
+      });
+    }
 
     if (this._initialState.activeMenuItems.length) {
       this.activateMenuItem(
@@ -323,16 +327,11 @@ class Navigation {
     this._initialState = null;
   }
 
-  static factory(elem, config) {
-    return Util.cachedComponentFactory(elem, config, COMPONENT_TYPE,
-      function() {
-        return new Navigation(elem, config);
-      }
-    );
+  static get componentType () {
+    return COMPONENT_TYPE;
   }
+
 }
 
-let chiNavigation = Util.addArraySupportToFactory(Navigation.factory);
-
-chi.navigation = chiNavigation;
-export {Navigation, chiNavigation, NavigationDropdown};
+const factory = Component.factory.bind(Navigation);
+export {Navigation, factory, NavigationDropdown};
