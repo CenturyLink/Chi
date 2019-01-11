@@ -5,21 +5,15 @@ $border: 0.0625rem;
 $sizes: (
   sm: (
     font-size: $text-small,
-    font-weight: 400,
-    line-height: 1rem,
-    padding: (0.5rem - $border) (1rem - $border) (0.5rem - $border) (1.5rem - $border)
+    min-height: 3rem
   ),
   md: (
     font-size: $text,
-    font-weight: 400,
-    line-height: 1rem,
-    padding: (0.75rem - $border) (1rem - $border) (0.75rem - $border) (1.5rem - $border)
+    min-height: 3.5rem
   ),
   lg: (
     font-size: $text-large,
-    font-weight: 600,
-    line-height: 1rem,
-    padding: (1rem - $border) (1.5rem - $border) (1rem - $border) (1.5rem - $border)
+    min-height: 4rem
   )
 );
 
@@ -42,7 +36,6 @@ $sizes: (
             border: solid 0.0625rem set-color(grey, 30);
             border-radius: 0.1875rem;
             box-shadow: map-get($shadow, 1);
-            color: $dark-color;
             display: flex;
             font-size: $text;
             justify-content: space-between;
@@ -52,16 +45,10 @@ $sizes: (
             width: 100%;
 
             & div {
-              text-transform: none;
-
               & :not(label) {
                 display: flex;
                 flex-direction: column;
                 line-height: 1rem;
-              }
-
-              &:last-of-type {
-                text-align: right;
               }
             }
 
@@ -85,7 +72,15 @@ $sizes: (
               & span {
                 color: $dark-color;
               }
+            }
+          }
+        }
+      }
 
+      &[type='checkbox'] {
+        &.a-picker {
+          &:checked {
+            & + label {
               & .a-input {
                 & + label {
                   &::before {
@@ -103,6 +98,27 @@ $sizes: (
           }
         }
       }
+
+      &[type='radio'] {
+        &.a-picker {
+          &:checked {
+            & + label {
+              & .a-input {
+                & + label {
+                  &::before {
+                    border-color: $brand-color;
+                  }
+
+                  &::after {
+                    background-color: $brand-color;
+                    transform: scale(1);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
     @each $type in map-keys($sizes) {
@@ -112,11 +128,11 @@ $sizes: (
           &[type='radio'] {
             &.a-picker {
               & + label {
-                padding: map-get(map-get($sizes, $type), padding);
+                min-height: map-get(map-get($sizes, $type), min-height);
+                padding: (0.5rem - $border) (1rem - $border) (0.5rem - $border) (1.5rem - $border);
 
                 & div {
-                  font-weight: map-get(map-get($sizes, $type), font-weight);
-                  line-height: map-get(map-get($sizes, $type), line-height);
+                  line-height: 1rem;
 
                   &:first-of-type {
                     & span {
@@ -126,7 +142,6 @@ $sizes: (
 
                   &:last-of-type {
                     font-size: map-get(map-get($sizes, $type), font-size);
-                    font-weight: 600;
 
                     & span {
                       font-size: $text-small;
