@@ -88,63 +88,6 @@
       }
     }
 
-    &.-horizontalLabels {
-      counter-reset: step;
-
-      & > li {
-        &::before {
-          background-color: set-color(white);
-          border: 0.125rem solid $brand-color;
-          content: counter(step);
-          counter-increment: step;
-          font-size: 0.8125rem;
-          height: 1.3rem;
-          margin: 0 auto;
-          width: 1.3rem;
-        }
-
-        &::after {
-          top: 0.5625rem;
-          width: 90%;
-        }
-
-        &.-active {
-          &::before {
-            box-shadow: 0 0 0 0.125rem set-color(white);
-          }
-
-          & ~ li {
-            &::before {
-              background-color: set-color(white);
-              border-color: set-color(grey, 40);
-            }
-          }
-
-          & a {
-            margin-left: 0.75rem;
-          }
-        }
-
-        &.-completed {
-          &::before {
-            content: "\e91b";
-            font-family: 'chi' !important;
-            font-size: 0.75rem;
-          }
-        }
-      }
-
-      & a {
-        background-color: set-color(white);
-        color: $brand-color;
-        margin-left: 0.65rem;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-        position: absolute;
-        top: 0.125rem;
-      }
-    }
-
     &.-inverse {
       background-color: set-color(black);
 
@@ -157,37 +100,122 @@
           color: $brand-color;
         }
       }
+    }
 
-      &.-horizontalLabels {
-        & > li {
+    &__icon {
+      align-items: center;
+      color: $brand-color;
+      display: flex;
+      justify-content: center;
+      height: 2rem;
+      padding: 0.25rem;
+      width: 2rem;
+    }
+
+    &__line {
+      border-top: 0.0625rem solid set-color(grey, 40);
+      margin: 0.5rem;
+      width: 100%;
+    }
+
+    &.-horizontalLabels {
+      align-items: center;
+      counter-reset: step;
+      display: flex;
+      justify-content: space-between;
+
+      & > div {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        & > .a-steps__icon {
           &::before {
-            background-color: set-color(black);
-            border: 0.125rem solid $brand-color;
+            content: counter(step);
+            counter-increment: step;
+            font-size: 0.8125rem;
           }
 
-          &.-active {
-            &::before {
-              box-shadow: 0 0 0 0.125rem set-color(black);
-            }
+          &::after {
+            content: "\e928";
+            font-family: 'chi' !important;
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            display: block;
+            position: absolute;
+          }
+        }
 
-            & ~ li {
-              &::before {
-                background-color: set-color(black);
-              }
+        &.-completed {
+          & > .a-steps__icon {
+            &::before {
+              content: "";
             }
           }
         }
 
-        & a {
-          background-color: set-color(black);
+        &.-active {
+          & > .a-steps__icon {
+            &::after {
+              content: "\e934";
+            }
+          }
+
+          & ~ div {
+            & > .a-steps__icon {
+              color: set-color(grey, 40);
+
+              &::after {
+                content: "\e934";
+              }
+            }
+
+            & > .a-steps__line {
+              border-color: set-color(grey, 40);
+            }
+
+            & > a {
+              color: set-color(grey, 40);
+            }
+
+            &:last-child {
+              & > .a-steps__line {
+                border-color: transparent;
+              }
+            }
+          }
+
+          & > .a-steps__line {
+            border-color: set-color(grey, 40);
+          }
+        }
+
+        & > a {
+          color: $brand-color;
+          margin-left: 0.5rem;
+          white-space: nowrap;
+        }
+
+        & > .a-steps__line {
+          border-color: $brand-color;
+          border-width: .125rem;
+        }
+
+        &:last-child {
+          & > .a-steps__line {
+            border-color: transparent;
+          }
         }
       }
     }
   }
 
   // sass-lint:disable-all
-  _:-ms-lang(x), .a-steps.-horizontalLabels li a {
-    left: 50%;
+  _:-ms-lang(x), .a-steps.-horizontalLabels div.a-steps__icon::after {
+    height: 1.125rem;
   }
   // sass-lint:enable-all
 }
