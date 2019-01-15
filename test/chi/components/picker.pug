@@ -22,7 +22,7 @@ h4 With checkbox
       .m-picker
         input(type="checkbox", class="a-picker", id=`ic-${type}`)
         label(for=`ic-${type}`)
-          div
+          .m-formGroup
             input(type="checkbox", class="a-input", id=`ic-${type}`)
             label(for=`ic-${type}`)
             = type
@@ -42,7 +42,7 @@ h4 With radio
       .m-picker
         input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
         label(for=`ri-${type}`)
-          div
+          .m-formGroup
             input(type="radio", class="a-input", id=`ri-${type}`)
             label(for=`ri-${type}`)
             = type
@@ -55,15 +55,19 @@ h3 Sizes
         .m-picker(class=`-${size}`)
           input(type="radio", class="a-picker", name='box', id=`ri-${type}-${size}`)
           label(for=`ri-${type}-${size}`)
-            div
+            .m-picker__content--start
               = type
-            div $00
-              span.-text--normal no charge
+            .m-picker__content--end
+              span.-text--bold.-text--body.-text--right Data
+              span.-text--normal.-text--muted.-text--small Value
+      each type in ['Radio1','Radio2']
         .m-picker(class=`-${size}`)
           input(type="radio", class="a-picker", name='box', id=`rd-${type}-${size}`)
           label(for=`rd-${type}-${size}`)
-            div
-              label
+            .m-picker__content--start
+              label.-text--bold
                 = type
-              span.-text--normal Text example
-            div $200
+              span.-text--normal.-text--body.-text--small Data:
+                strong  Value
+            .m-picker__content--end
+              span.-text--bold.-text--body.-text--large Data

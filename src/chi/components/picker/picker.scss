@@ -4,15 +4,12 @@
 $border: 0.0625rem;
 $sizes: (
   sm: (
-    font-size: $text-small,
     min-height: 3rem
   ),
   md: (
-    font-size: $text,
     min-height: 3.5rem
   ),
   lg: (
-    font-size: $text-large,
     min-height: 4rem
   )
 );
@@ -44,11 +41,15 @@ $sizes: (
             transition: all 0.2s;
             width: 100%;
 
-            & div {
-              & :not(label) {
+            .m-picker__content {
+              &--start,
+              &--end {
                 display: flex;
                 flex-direction: column;
-                line-height: 1rem;
+
+                & * {
+                  line-height: 1rem;
+                }
               }
             }
 
@@ -64,14 +65,6 @@ $sizes: (
               box-shadow: inset 0 0 0 0.0625rem $brand-color;
               color: $brand-color;
               font-weight: 600;
-
-              & div {
-                font-weight: 600;
-              }
-
-              & span {
-                color: $dark-color;
-              }
             }
           }
         }
@@ -130,37 +123,6 @@ $sizes: (
               & + label {
                 min-height: map-get(map-get($sizes, $type), min-height);
                 padding: (0.5rem - $border) (1rem - $border) (0.5rem - $border) (1.5rem - $border);
-
-                & div {
-                  line-height: 1rem;
-
-                  &:first-of-type {
-                    & span {
-                      font-size: $text-small;
-                    }
-                  }
-
-                  &:last-of-type {
-                    font-size: map-get(map-get($sizes, $type), font-size);
-
-                    & span {
-                      font-size: $text-small;
-                    }
-                  }
-                }
-              }
-
-              &:checked {
-                & + label {
-                  & div {
-                    &:first-of-type {
-                      font-weight: 600;
-                    }
-                    &:last-of-type {
-                      color: $dark-color;
-                    }
-                  }
-                }
               }
             }
           }
