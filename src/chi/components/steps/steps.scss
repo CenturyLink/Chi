@@ -190,52 +190,45 @@
   // sass-lint:disable-all
   /* IE10+ CSS hack */
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .a-steps div.a-steps__icon a {
+      position: relative;
+      right: 1.5625rem;
+    }
     .a-steps li.-active div.a-steps__icon::after {
       position: relative;
-      right: 20px;
+      right: 3.4375rem;
     }
     .a-steps div.a-steps__icon::before,
     .a-steps.-horizontalLabels div.a-steps__icon::before  {
       position: relative;
+      left: 0.1875rem;
     }
-    .a-steps.-horizontalLabels div.a-steps__icon::after {
+    .a-steps.-horizontalLabels div.a-steps__icon::after,
+    .a-steps.-horizontalLabels li.-active div.a-steps__icon::after {
       position: relative;
-      top: 0px;
-      right: 14px;
+      right: 0.875rem;
     }
     .a-steps.-horizontalLabels li.-completed div.a-steps__icon::after {
       position: relative;
-      top: 0px;
-      right: 5px;
+      right: 0.3125rem;
     }
   }
 
   /* EDGE CSS hack */
   @supports (-ms-ime-align: auto) {
-    .a-steps div.a-steps__icon::after {
-      position: relative;
-      top: -15px;
+    .a-steps div.a-steps__icon::before,
+    .a-steps li.-active div.a-steps__icon::before,
+    .a-steps li.-active div.a-steps__icon::after,
+    .a-steps.-horizontalLabels li.-active div.a-steps__icon::before,
+    .a-steps.-horizontalLabels div.a-steps__icon::before {
+      position: absolute;
     }
-    .a-steps div.a-steps__icon::before {
-      position: relative;
-      top: 10px;
-    }
-    .a-steps li.-active div.a-steps__icon::before {
-      position: relative;
-      top: 16px;
-    }
-    .a-steps.-horizontalLabels div.a-steps__icon::after {
-      position: relative;
-      top: -5px;
-    }
-    .a-steps.-horizontalLabels div.a-steps__icon::before,
-    .a-steps.-horizontalLabels li.-active div.a-steps__icon::before {
-      position: relative;
-      top: 8px;
-    }
+
+    .a-steps.-horizontalLabels div.a-steps__icon::after,
+    .a-steps.-horizontalLabels li.-active div.a-steps__icon::after,
     .a-steps.-horizontalLabels li.-completed div.a-steps__icon::after {
       position: relative;
-      top: 3px;
+      top: 0.1875rem;
     }
   }
   // sass-lint:enable-all
