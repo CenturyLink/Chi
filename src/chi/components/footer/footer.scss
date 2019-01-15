@@ -16,7 +16,6 @@
 
     &__top {
       align-items: center;
-      border-bottom: 0.0625rem solid rgba(set-color(black), 0.12);
       display: flex;
       justify-content: center;
       flex-direction: row;
@@ -72,10 +71,6 @@
 
     &.-inverse {
       background-color: set-color(black);
-
-      & .o-footer__top {
-        border-bottom: 0.0625rem solid rgba(set-color(white), 0.2);
-      }
 
       & .o-footer__column {
         color: set-color(white);
