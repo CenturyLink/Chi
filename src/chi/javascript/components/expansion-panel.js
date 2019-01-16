@@ -293,16 +293,7 @@ class ExpansionPanel extends Component {
   animateStateChange (oldState, newState) {
 
     if (this._transitioning) {
-      if (this.animationTimeouts) {
-        if (typeof this.animationTimeouts[2] !== 'undefined') {
-          window.clearTimeout(this.animationTimeouts[2]);
-        } else if (typeof this.animationTimeouts[1] !== 'undefined') {
-          window.cancelAnimationFrame(this.animationTimeouts[1]);
-        } else if (typeof this.animationTimeouts[0] !== 'undefined') {
-          window.cancelAnimationFrame(this.animationTimeouts[0]);
-        }
-      }
-      this.animationEnd();
+      Util.stopThreeStepsAnimation(this.animation);
     }
 
     this._transitioning = true;
@@ -454,7 +445,7 @@ class ExpansionPanel extends Component {
     }.bind(this);
 
     constructElements();
-    this.animationTimeouts = Util.threeStepsAnimation(
+    this.animation = Util.threeStepsAnimation(
       animationPrepare,
       animationStart,
       this.animationEnd,

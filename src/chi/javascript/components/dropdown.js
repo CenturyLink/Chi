@@ -1,6 +1,7 @@
 import {Component} from "../core/component";
 import {Util} from "../core/util.js";
 import Popper from 'popper.js';
+import {CLASS_HAS_ACTIVE} from "./tab";
 
 const CLASS_ACTIVE = "-active";
 const CLASS_DROPDOWN = 'm-dropdown__menu';
@@ -68,7 +69,7 @@ class Dropdown extends Component {
     this._initInnerDropdowns();
   }
 
-  _dropdownClickedEventManager (e) {
+  _dropdownClickedEventManager () {
     this._eventCaptured = true;
   }
 
@@ -216,6 +217,7 @@ class Dropdown extends Component {
     }
     if (!this._shown) {
       Util.addClass(this._elem, CLASS_ACTIVE);
+      Util.addClass(this._elem, CLASS_HAS_ACTIVE);
       Util.addClass(this._dropdownElem, CLASS_ACTIVE);
       if (this._popper) {
         this._popper.update();

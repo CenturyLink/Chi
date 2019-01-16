@@ -4,11 +4,14 @@ import {SlidingBorder, ANIMATION_DURATION as BORDER_ANIMATION_DURATION} from "..
 import {Util} from "../core/util.js";
 
 const CLASS_ACTIVE = "-active";
+const CLASS_HAS_ACTIVE = "-hasActive";
 const CLASS_ANIMATED = "-animated";
+const CLASS_SLIDING_BORDER = '-slidingBorder';
 const CLASS_RESPONSIVE = "-responsive";
 const CLASS_VERTICAL = "-vertical";
 const COMPONENT_SELECTOR = '.a-tabs';
 const COMPONENT_TYPE = "tab";
+const SUBTAB_SELECTORS = 'ul.a-tabs__subtabs';
 
 const DEFAULT_CONFIG = {
   animated: true,
@@ -20,6 +23,7 @@ class Tab extends Component {
   constructor (elem, config) {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     let self = this;
+    this._slidingBorder = null;
 
     this._clickEventHandler = function(e) {
       self.clickEventHandler(e);
@@ -34,20 +38,16 @@ class Tab extends Component {
         this._elem,
         this.isVertical(),
         'li');
-
-      const activeTab = this.getActiveTab();
-      const style = this._slidingBorder.calculateStaticChildStyle(activeTab);
-      this._slidingBorder.moveSlidingBorder(style);
     }
   }
 
   getActiveTab () {
-    for (let i = 0; i < this._elem.childNodes.length; i++) {
-      if (Util.hasClass(this._elem.childNodes[i], CLASS_ACTIVE)) {
-        return this._elem.childNodes[i];
-      }
-    }
-    return null;
+    return this._elem.querySelector(
+      COMPONENT_SELECTOR + ' > .' + CLASS_ACTIVE +
+      ':NOT(.' + CLASS_HAS_ACTIVE + '), ' +
+      SUBTAB_SELECTORS + ' > .' + CLASS_ACTIVE +
+      ':NOT(.' + CLASS_HAS_ACTIVE + ')'
+    );
   }
 
   getAssociatedTabPanel (tab) {
@@ -98,49 +98,65 @@ class Tab extends Component {
   showTab (tab, parentTab) {
 
     const self = this;
-    if (Util.hasClass(tab, CLASS_ACTIVE)) {
-      Array.prototype.forEach.call(
-        tab.getElementsByClassName(CLASS_ACTIVE),
-        function (tabElement) {
-          if (tabElement.nodeName === 'LI') {
-            Util.removeClass(tabElement, CLASS_ACTIVE);
-            self.hideTabPanel(tabElement);
-            self.showTabPanel(tab);
-          }
-        }
-      );
+
+    const currentlyActiveTab = this.getActiveTab();
+    if (tab === currentlyActiveTab) {
       return;
     }
 
-    Array.prototype.forEach.call(
-      this._elem.getElementsByTagName('LI'),
-      function (tabElement) {
-        if (
-          Util.hasClass(tabElement, CLASS_ACTIVE) &&
-          tabElement !== parentTab
-        ) {
-          Util.removeClass(tabElement, CLASS_ACTIVE);
-          self.hideTabPanel(tabElement);
-        }
-      }
-    );
-
-    Util.addClass(tab, CLASS_ACTIVE);
-    this.showTabPanel(tab);
-
-    if (parentTab) {
-      this.hideTabPanel(parentTab);
-      Util.addClass(parentTab, CLASS_ACTIVE);
+    if (this._config.animated) {
+      this._slidingBorder.hide();
+      this._slidingBorder.moveSlidingBorderToChild(
+        this._getElementToMoveTo(currentlyActiveTab)
+      );
+      this._slidingBorder.show();
     }
 
+    const currentlyActiveParentTab = this._elem.querySelector(
+      COMPONENT_SELECTOR + ' > .' + CLASS_ACTIVE + '.' + CLASS_HAS_ACTIVE
+    );
+
+    this._handleActiveClassOnTabs(tab, parentTab, currentlyActiveTab, currentlyActiveParentTab);
+
+    if (currentlyActiveTab) {
+      self.hideTabPanel(currentlyActiveTab);
+    }
+    self.showTabPanel(tab);
+
     if (this._config.animated) {
-      if (parentTab) {
-        this.moveSlidingBorderToTab(parentTab);
+      if (parentTab && !this.isVertical()) {
+        this._slidingBorder.moveSlidingBorderToChild(
+          this._getElementToMoveTo(parentTab)
+        );
       } else {
-        this.moveSlidingBorderToTab(tab);
+        this._slidingBorder.moveSlidingBorderToChild(
+          this._getElementToMoveTo(tab)
+        );
       }
     }
   }
+
+  _handleActiveClassOnTabs (newTab, newParentTab, oldTab, oldParentTab) {
+    if (newTab === oldTab) {
+      return;
+    }
+    if (oldTab && oldTab !== newParentTab) {
+      Util.removeClass(oldTab, CLASS_ACTIVE);
+    }
+    if (oldParentTab) {
+      Util.removeClass(oldParentTab, CLASS_HAS_ACTIVE);
+      if (oldParentTab !== newTab) {
+        Util.removeClass(oldParentTab, CLASS_ACTIVE);
+      }
+    }
+    if (newParentTab) {
+      Util.addClass(newParentTab, CLASS_HAS_ACTIVE);
+      Util.addClass(newParentTab, CLASS_ACTIVE);
+    }
+    Util.addClass(newTab, CLASS_ACTIVE);
+  }
+
+
 
   hideTabs () {
     const self = this;
@@ -196,15 +212,26 @@ class Tab extends Component {
     }
   }
 
-  moveSlidingBorderToTab(tab) {
-    window.requestAnimationFrame(function () {
-      const style = this._slidingBorder.calculateStaticChildStyle(tab);
-      this.moveSlidingBorder(style);
-    }.bind(this));
+  _getElementToMoveTo (tab) {
+    if (!tab) {
+      return tab;
+    }
+    let found = false;
+    let child = null;
+    for (let i = 0 ; i < tab.childNodes.length && !found; i++) {
+      if (tab.childNodes[i].nodeName === 'A') {
+        child = tab.childNodes[i];
+        found = true;
+      } else if (tab.childNodes[i].nodeName !== 'UL') {
+        child = tab.childNodes[i];
+      }
+    }
+    return child || tab;
   }
 
-  moveSlidingBorder (style) {
-    this._slidingBorder.moveSlidingBorder(style);
+  moveSlidingBorderToTab(tab) {
+    const elementToMoveTo = this._getElementToMoveTo(tab);
+    this._slidingBorder.moveSlidingBorderToChild(elementToMoveTo);
   }
 
   dispose () {
@@ -228,4 +255,4 @@ class Tab extends Component {
 }
 
 const factory = Component.factory.bind(Tab);
-export {Tab, factory, COMPONENT_TYPE};
+export {Tab, factory, COMPONENT_TYPE, CLASS_ACTIVE, CLASS_HAS_ACTIVE};

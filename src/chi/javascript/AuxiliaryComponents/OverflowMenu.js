@@ -1,6 +1,12 @@
 import {Util} from "../core/util.js";
 import {CLASS_SLIDING_BORDER} from "./SlidingBorder";
 import {NavigationDropdown} from "../components/navigation";
+import {EventManager} from "./EventManager";
+
+const EVENT = {
+  MOVE_TAB_INTO_OVERFLOW_MENU: 'addTabToMenu',
+  RELEASE_TAB_FROM_OVERFLOW_MENU: 'removeTabFromMenu'
+};
 
 class OverflowMenu {
 
@@ -16,6 +22,7 @@ class OverflowMenu {
     this._tabComponent = this._config.tabComponent;
     this._overflowTabWidth = 0;
     this._totalTabElementsWidth = 0;
+    this._eventManager = new EventManager();
   }
 
   _removeAndSaveSlidingBorders () {
@@ -161,6 +168,12 @@ class OverflowMenu {
       newElem.appendChild(child);
     }
     this._overflowTabMenu.prepend(newElem);
+    this._eventManager.dispatchEvent(
+      EVENT.MOVE_TAB_INTO_OVERFLOW_MENU,
+      this,
+      newElem,
+      this._overflowTab
+    );
   }
 
   _moveTabFromMoreContainer (tab) {
@@ -177,6 +190,19 @@ class OverflowMenu {
     }
     tab.parentNode.removeChild(tab);
     this._elem.insertBefore(oldTab, this._overflowTab);
+    this._eventManager.dispatchEvent(
+      EVENT.RELEASE_TAB_FROM_OVERFLOW_MENU,
+      this,
+      oldTab,
+      this._overflowTab
+    );
+  }
+
+  addEventListener (eventName, listener) {
+    this._eventManager.addEventListener(eventName, listener);
+  }
+  removeEventListener (eventName, listener) {
+    this._eventManager.removeEventListener(eventName, listener);
   }
 
   resetOverflow () {
@@ -194,7 +220,8 @@ class OverflowMenu {
     if (this._overflowTab) {
       this.resetOverflow();
     }
+    this._eventManager.dispose();
   }
 }
 
-export {OverflowMenu};
+export {OverflowMenu, EVENT};

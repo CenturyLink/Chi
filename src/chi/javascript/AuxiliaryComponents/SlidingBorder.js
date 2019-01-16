@@ -1,58 +1,31 @@
 import {Util} from "../core/util.js";
 
 const CLASS_SLIDING_BORDER='a-sliding-border';
+const CLASS_SLIDING='-sliding';
 const ANIMATION_DURATION=500;
 
 class SlidingBorder {
 
   constructor (parentElem, isVertical, tagName) {
-    this._parentElem = parentElem;
+    this._animation = null;
     this._isVertical = isVertical ? true : false;
+    this._parentElem = parentElem;
     this._tagName = tagName;
+    this._lastBorderedElement = null;
+    this._shown = false;
 
     this._findOrCreateSlidingBorder();
   }
 
   calculateStaticChildStyle (childElem) {
-    let offset = 0;
-    let size = 0;
-    let found = false;
+    const style = {
+      top: '',
+      left: '',
+      height: '',
+      width: ''
+    };
 
-    for (let i = 0; !found && i < this._parentElem.childNodes.length; i++) {
-      let childNode = this._parentElem.childNodes[i];
-      let style = window.getComputedStyle(childNode);
-      offset += parseInt(
-        this._isVertical ?
-        style.marginTop :
-        style.marginLeft,
-        10
-      );
-      if (childNode === childElem) {
-        size = this._isVertical ?
-          childNode.childNodes[0].scrollHeight :
-          childNode.childNodes[0].scrollWidth;
-        found = true;
-      } else {
-        offset += this._isVertical ?
-          childNode.scrollHeight :
-          childNode.scrollWidth;
-      }
-    }
-
-    const style = {};
-    if (found) {
-      if (this._isVertical) {
-        style.height = size + 'px';
-        style.top = offset + 'px';
-        style.left = '';
-        style.width = '';
-      } else {
-        style.width = size + 'px';
-        style.left = offset + 'px';
-        style.height = '';
-        style.top = '';
-      }
-    } else {
+    if (typeof childElem === 'undefined') {
       if (this._isVertical) {
         style.height = '0px';
         style.top = '0px';
@@ -64,11 +37,58 @@ class SlidingBorder {
         style.height = '';
         style.top = '';
       }
+    } else {
+      if (this._isVertical) {
+        style.height = Util.calculateExternalHeight(childElem, false) + 'px';
+        style.top = Util.calculateDistance(
+          this._parentElem, childElem, 'y', true
+        ) + 'px';
+      } else {
+        style.width = Util.calculateExternalWidth(childElem, false) + 'px';
+        style.left = Util.calculateDistance(
+          this._parentElem, childElem, 'x', true
+        ) + 'px';
+      }
     }
     return style;
   }
 
-  moveSlidingBorder (style) {
+  moveToLastChild () {
+    this.moveSlidingBorderToChild(this._lastBorderedElement);
+  }
+
+  moveSlidingBorderToChild (child) {
+    this._lastBorderedElement = child;
+    this.stop();
+    if (!this._shown) {
+      this.setSlidingBorder(
+        this.calculateStaticChildStyle(child)
+      );
+    } else {
+      const self = this;
+      this._animation = Util.threeStepsAnimation (
+        Util.noOp,
+        function() {
+          self.setSlidingBorder(
+            self.calculateStaticChildStyle(child)
+          );
+        },
+        function () {
+          self.hide();
+          self._animation = null;
+        }, ANIMATION_DURATION
+      );
+    }
+  }
+
+  stop () {
+    if (this._animation) {
+      Util.stopThreeStepsAnimation(this._animation, false);
+      this._animation = null;
+    }
+  }
+
+  setSlidingBorder (style) {
     if (!this._slidingBorder) {
       this._findOrCreateSlidingBorder();
     }
@@ -78,6 +98,9 @@ class SlidingBorder {
   }
 
   _findOrCreateSlidingBorder () {
+    if (this._slidingBorder) {
+      return;
+    }
     let found = false;
     for (let i = 0; !found && i < this._parentElem.childNodes.length; i++) {
       let childNode = this._parentElem.childNodes[i];
@@ -93,8 +116,29 @@ class SlidingBorder {
     }
   }
 
+  show () {
+    if (!this._shown) {
+      Util.addClass(this._parentElem, CLASS_SLIDING);
+      this._shown = true;
+    }
+  }
+
+  hide () {
+    if (this._shown) {
+      Util.removeClass(this._parentElem, CLASS_SLIDING);
+      this._shown = false;
+    }
+  }
+
+  removeSlidingBorder () {
+    if (this._slidingBorder) {
+      this._parentElem.removeChild(this._slidingBorder);
+      this._slidingBorder = null;
+    }
+  }
+
   setVertical (newValue) {
-    newValue = newValue ? true : false;
+    newValue = !!newValue;
     if (newValue !== this._isVertical) {
       this._isVertical = newValue;
       this._parentElem.removeChild(this._slidingBorder);
@@ -103,11 +147,13 @@ class SlidingBorder {
   }
 
   dispose () {
-    this._parentElem.removeChild(this._slidingBorder);
-    this._parentElem = null;
+    this.stop();
+    this.hide();
+    this.removeSlidingBorder();
     this._isVertical = null;
+    this._parentElem = null;
     this._tagName = null;
-    this._slidingBorder = null;
+    this._lastBorderedElement = null;
   }
 }
 

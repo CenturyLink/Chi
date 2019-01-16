@@ -1,8 +1,10 @@
-import {OverflowMenu} from "../AuxiliaryComponents/OverflowMenu";
+import {EVENT as OverflowMenuEvents, OverflowMenu} from "../AuxiliaryComponents/OverflowMenu";
 import {Util} from "../core/util.js";
 import {
   Tab,
-  COMPONENT_TYPE as TAB_COMPONENT_TYPE
+  COMPONENT_TYPE as TAB_COMPONENT_TYPE,
+  CLASS_ACTIVE as TAB_CLASS_ACTIVE,
+  CLASS_HAS_ACTIVE
 } from "./tab";
 import {
   Dropdown,
@@ -10,7 +12,7 @@ import {
   CLASS_ACTIVE as DROPDOWN_CLASS_ACTIVE,
   CLASS_COMPONENT as DROPDOWN_CLASS_COMPONENT,
   CLASS_DROPDOWN_ITEM,
-  CLASS_MOLECULE,
+  CLASS_DROPDOWN,
   COMPONENT_TYPE as DROPDOWN_COMPONENT_TYPE
 } from "./dropdown";
 import {ANIMATION_DURATION as SLIDING_BORDER_ANIMATION_DURATION} from
@@ -36,52 +38,109 @@ class NavigationTab extends Tab {
     const deepestActiveMenuItem = this.getDeepestActiveMenuItem();
     const activeTab = this.getActiveTab();
     if (deepestActiveMenuItem) {
-      this.moveSlidingBorderToDropdownMenuItem(deepestActiveMenuItem);
+      this._slidingBorder.moveSlidingBorderToChild(deepestActiveMenuItem);
     } else if (activeTab) {
-      this.moveSlidingBorderToTab(activeTab);
+      this._slidingBorder.moveSlidingBorderToChild(activeTab.childNodes[0]);
     }
   }
 
   clickEventHandler(e) {
-    if (
-      e.target.nodeName === 'A' &&
-      Util.hasClass(e.target, DROPDOWN_CLASS_COMPONENT)
+
+    let ddTrigger = null;
+    let ddMenuItem = null;
+    let tab = null;
+    let tabLink = null;
+    let moveSlidingTo = null;
+
+    for (
+      let elem = e.target ;
+      elem && elem !== this._elem;
+      elem = elem.parentNode
     ) {
-      e.preventDefault();
-      if (
-        this._isATabWithDropdown(e.target.parentNode)
-      ) {
-        this.moveSlidingBorderToTab(e.target.parentNode);
+      if (Util.hasClass(elem, DROPDOWN_CLASS_COMPONENT)) {
+        ddTrigger = elem;
+      } else if (Util.hasClass(elem, CLASS_DROPDOWN_ITEM)) {
+        ddMenuItem = ddMenuItem || elem;
+      } else if (elem.nodeName === 'A' && elem.parentNode.nodeName === 'LI') {
+        tabLink = elem;
+      } else if (elem.nodeName === 'LI') {
+        tab = elem;
       }
-    } else {
-      super.clickEventHandler(e);
-      this._navigationComponent.saveState();
     }
-    if (Util.hasClass(e.target, CLASS_DROPDOWN_ITEM)) {
-      this.moveSlidingBorderToDropdownMenuItem(e.target);
+
+    if (!ddTrigger) {
+      this._slidingBorder.moveToLastChild();
+      this._slidingBorder.show();
+      moveSlidingTo = tabLink || tab.childNodes[0] || tab;
+
+      if (this.getActiveTab() !== tab) {
+        this._handleActiveClassOnTabs(tab, null, this.getActiveTab(), null);
+      }
+
+      if (tabLink) {
+        this._navigationComponent.manageClickOnCommonLinks(e);
+      } else if (ddMenuItem && this.isVertical()) {
+        moveSlidingTo = ddMenuItem;
+      }
+      this._slidingBorder.moveSlidingBorderToChild(moveSlidingTo);
+      this.manageActiveClass(moveSlidingTo);
     }
   }
 
-  _isATabWithDropdown (elem) {
-    return elem.nodeName === 'LI' && Util.hasClass(elem, CLASS_MOLECULE);
-  }
+  manageActiveClass (clickedElem) {
+    const shouldHaveHasActiveClass = [];
+    const shouldHaveActiveClass = [clickedElem];
 
-  moveSlidingBorderToDropdownMenuItem (dropdownMenuItem) {
-    if (this.isVertical()) {
-      window.requestAnimationFrame(function() {
-        const style = {
-          top: 0,
-          left: '',
-          height: Util.calculateExternalHeight(dropdownMenuItem, false) + 'px',
-          width: ''
-        };
-        style.top += Util.calculateDistance(
-          this._elem, dropdownMenuItem, 'y', true
-        );
-        style.top = style.top + 'px';
-        this.moveSlidingBorder(style);
-      }.bind(this));
+    for (
+      let elem = clickedElem.parentNode ;
+      elem && elem !== this._elem ;
+      elem = elem.parentNode
+    ) {
+
+      if (elem.nodeName === 'LI') {
+        shouldHaveActiveClass.push(elem);
+        if (clickedElem.parentNode !== elem) {
+          shouldHaveHasActiveClass.push(elem);
+        }
+      }
+      if (Util.hasClass(elem, CLASS_DROPDOWN)) {
+        shouldHaveActiveClass.push(elem);
+        const siblings = elem.parentNode.childNodes;
+        Array.prototype.forEach.call(siblings, function (sibling) {
+          if (
+            sibling !== elem &&
+            Util.hasClass(sibling, DROPDOWN_CLASS_COMPONENT)
+          ) {
+            shouldHaveHasActiveClass.push(sibling);
+            shouldHaveActiveClass.push(sibling);
+          }
+        });
+      }
     }
+
+    Array.prototype.forEach.call(
+      this._elem.querySelectorAll('.' + TAB_CLASS_ACTIVE),
+      function (activeElem) {
+        if (shouldHaveActiveClass.indexOf(activeElem) < 0) {
+          Util.removeClass(activeElem, TAB_CLASS_ACTIVE);
+        }
+      }
+    );
+    shouldHaveActiveClass.forEach(function(elem) {
+      Util.addClass(elem, TAB_CLASS_ACTIVE);
+    });
+
+    Array.prototype.forEach.call(
+      this._elem.querySelectorAll('.' + CLASS_HAS_ACTIVE),
+      function (hasActiveElem) {
+        if (shouldHaveHasActiveClass.indexOf(hasActiveElem) < 0) {
+          Util.removeClass(hasActiveElem, CLASS_HAS_ACTIVE);
+        }
+      }
+    );
+    shouldHaveHasActiveClass.forEach(function(elem) {
+      Util.addClass(elem, CLASS_HAS_ACTIVE);
+    });
   }
 
   getDeepestActiveMenuItem () {
@@ -183,40 +242,71 @@ class Navigation extends Component {
     );
 
     if (this._config.overflowMenu) {
-      this._overflowMenu = new OverflowMenu(this, {
-        tabComponent: this._tabComponent,
-        overflowMenuLabel: this._config.overflowMenuLabel
-      });
-      window.requestAnimationFrame(function() {
-        self._overflowMenu.manageOverflow();
-      });
-      this._onWindowResize = function() {
-        if (self.checkOverflowTimeout) {
-          window.clearTimeout(self.checkOverflowTimeout);
-        }
-        self.checkOverflowTimeout = window.setTimeout(function() {
-          window.requestAnimationFrame(function() {
-            self._overflowMenu.manageOverflow();
-          });
-        }, 200);
-      };
-      window.addEventListener('resize', this._onWindowResize);
-
-      this._clickOnComponentHandler = function() {
-        this._clickedOnComponent = true;
-      }.bind(this);
-      this._clickOnDocumentHandler = function () {
-        if (this._clickedOnComponent) {
-          this._clickedOnComponent = false;
-        } else {
-          this.restoreState();
-        }
-      }.bind(this);
-
-      this._elem.addEventListener('click', this._clickOnComponentHandler);
-      document.addEventListener('click', this._clickOnDocumentHandler);
+      this._initOverflowMenu();
     }
+
     this.saveState();
+  }
+
+  _initOverflowMenu () {
+    if (this._overflowMenu) {
+      return;
+    }
+    const self = this;
+    this._overflowMenu = new OverflowMenu(this, {
+      tabComponent: this._tabComponent,
+      overflowMenuLabel: this._config.overflowMenuLabel
+    });
+    window.requestAnimationFrame(function() {
+      self._overflowMenu.manageOverflow();
+    });
+    this._onWindowResize = function() {
+      if (self.checkOverflowTimeout) {
+        window.clearTimeout(self.checkOverflowTimeout);
+      }
+      self.checkOverflowTimeout = window.setTimeout(function() {
+        window.requestAnimationFrame(function() {
+          self._overflowMenu.manageOverflow();
+        });
+      }, 200);
+    };
+    window.addEventListener('resize', this._onWindowResize);
+
+    this._onOverflowMenuAddElement = function (newElem, overflowTab) {
+      if (Util.hasClass(newElem, TAB_CLASS_ACTIVE)) {
+        self._tabComponent.showTab(overflowTab);
+      }
+    };
+
+    this._onOverflowMenuRemoveElement = function (extractedTab) {
+      if (Util.hasClass(extractedTab, TAB_CLASS_ACTIVE)) {
+        self._tabComponent.showTab(extractedTab);
+      }
+    };
+
+    this._overflowMenu.addEventListener(
+      OverflowMenuEvents.MOVE_TAB_INTO_OVERFLOW_MENU,
+      this._onOverflowMenuAddElement
+    );
+
+    this._overflowMenu.addEventListener(
+      OverflowMenuEvents.RELEASE_TAB_FROM_OVERFLOW_MENU,
+      this._onOverflowMenuRemoveElement
+    );
+
+    this._clickOnComponentHandler = function() {
+      this._clickedOnComponent = true;
+    }.bind(this);
+    this._clickOnDocumentHandler = function () {
+      if (this._clickedOnComponent) {
+        this._clickedOnComponent = false;
+      } else {
+        this.restoreState();
+      }
+    }.bind(this);
+
+    this._elem.addEventListener('click', this._clickOnComponentHandler);
+    document.addEventListener('click', this._clickOnDocumentHandler);
   }
 
   saveState () {
@@ -256,7 +346,6 @@ class Navigation extends Component {
     } else {
       this.deactivateAllMenuItems();
     }
-    this._tabComponent.resetSlidingBorder();
   }
 
   isVertical () {

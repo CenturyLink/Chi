@@ -40,6 +40,20 @@
       }
     }
   }
+
+  &:not(.-sliding) .m-dropdown__menu-item.-active:not(.-hasActive) {
+    position: relative;
+
+    &::before {
+      background-color: $brand-color;
+      content: '';
+      height: 2rem;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 0.125rem;
+    }
+  }
 }
 
 @mixin navigation-dropdown-not-vertical() {

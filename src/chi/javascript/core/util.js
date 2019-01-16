@@ -204,16 +204,72 @@ export class Util {
   static threeStepsAnimation (
     prepareAnimation, startAnimation, emulateTransitionEnd, transitionDuration
   ) {
-    const animations = [];
-    animations[0] = window.requestAnimationFrame(function() {
-      prepareAnimation();
-      animations[1] = window.requestAnimationFrame(function () {
-        startAnimation();
-        animations[2] =
-          Util.emulateTransitionEnd(transitionDuration, emulateTransitionEnd);
+    const animation = {};
+    animation.stopped = false;
+    animation.status = '';
+    animation.prepare = prepareAnimation;
+    animation.start = startAnimation;
+    animation.end = emulateTransitionEnd;
+    animation.duration = transitionDuration;
+
+    animation.prepareAnimationFrame = window.requestAnimationFrame(function() {
+      if (animation.stopped) {
+        return;
+      }
+      animation.status = 'preparing';
+      animation.prepare();
+      animation.status = 'prepared';
+      animation.startAnimationFrame = window.requestAnimationFrame(function () {
+        if (animation.stopped) {
+          return;
+        }
+        animation.status = 'starting';
+        animation.start();
+        animation.status = 'started';
+        animation.endTimeOut =
+          Util.emulateTransitionEnd(transitionDuration, function() {
+            if (animation.stopped) {
+              return;
+            }
+            animation.status = 'ending';
+            animation.end();
+            animation.stuatus = 'ended';
+          });
       });
     });
-    return animations;
+    return animation;
+  }
+
+  static stopThreeStepsAnimation (animation, endAnimation) {
+    if (typeof endAnimation === 'undefined') {
+      endAnimation = true;
+    }
+    animation.stopped = true;
+    if (animation.prepareAnimationFrame) {
+      window.cancelAnimationFrame(animation.prepareAnimationFrame);
+    }
+    if (animation.startAnimationFrame) {
+      window.cancelAnimationFrame(animation.startAnimationFrame);
+    }
+    if (animation.endTimeOut) {
+      window.clearTimeout(animation.endTimeOut);
+    }
+
+    const shouldEndAnimationStatus = [
+      'preparing',
+      'prepared',
+      'starting',
+      'started'
+    ];
+
+    if (
+      endAnimation &&
+      shouldEndAnimationStatus.indexOf(animation.status) > -1
+    ) {
+      animation.end();
+      animation.status = 'force stopped';
+    }
+
   }
 
   static calculateExternalWidth (elem, safe) {
