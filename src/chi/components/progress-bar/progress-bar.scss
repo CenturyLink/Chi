@@ -1,0 +1,67 @@
+@import 'variables';
+@import 'mixins';
+
+$states: (
+  light: (
+    background-color: $light-color,
+  ),
+  danger: (
+    background-color: $danger-color,
+  ),
+  warning: (
+    background-color: $warning-color,
+  ),
+  info: (
+    background-color: $info-color,
+  ),
+  success: (
+    background-color: $success-color,
+  )
+);
+
+.chi {
+  progress {
+    /* Reset the default appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Get rid of default border in Firefox. */
+    border: none;
+    border-radius: 0.1875rem;
+    /* For IE10 / IE 11 / Edge */
+    color:  $success-color;
+    height: 1rem;
+    overflow: hidden;
+    width: 100%;
+
+    //Chrome, Safari
+    &::-webkit-progress-bar {
+      background-color: set-color(grey, 20);
+    }
+    &::-webkit-progress-value {
+      background-color: $success-color;
+    }
+
+    //Firefox
+    &::-moz-progress-bar {
+      background-color: $success-color;
+    }
+
+    //Fix for 1 px border-right on progress bar in IE10 / IE 11 / Edge
+    &::-ms-fill {
+      border-color: currentColor;
+    }
+
+    @each $state in map-keys($states) {
+      &.-#{$state} {
+        &::-webkit-progress-value {
+          background-color: map-get(map-get($states, $state), background-color);
+        }
+        &::-moz-progress-bar {
+          background-color: map-get(map-get($states, $state), background-color);
+        }
+        color: map-get(map-get($states, $state), background-color);
+      }
+    }
+  }
+}
