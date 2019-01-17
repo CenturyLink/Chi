@@ -95,7 +95,7 @@
     }
   }
 
-  &:not(.-sliding) li.-active:not(.-hasActive) > a {
+  &:not(.-sliding) > li.-active:not(.-hasActive) > a {
     &::before {
       background-color: $brand-color;
       content: '';
@@ -336,7 +336,7 @@
       &.a-sliding-border {
         display: none;
         position: absolute;
-        background-color: red;//$brand-color;
+        background-color: $brand-color;
       }
     }
 

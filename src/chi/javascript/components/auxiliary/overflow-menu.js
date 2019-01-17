@@ -2,6 +2,7 @@ import {Util} from "../../core/util.js";
 import {CLASS_SLIDING_BORDER} from "./sliding-border";
 import {NavigationDropdown} from "../navigation";
 import {EventManager} from "./event-manager";
+import {CLASS_ACTIVE, CLASS_HAS_ACTIVE} from "../tab";
 
 const EVENT = {
   MOVE_TAB_INTO_OVERFLOW_MENU: 'addTabToMenu',
@@ -178,6 +179,8 @@ class OverflowMenu {
 
   _moveTabFromMoreContainer (tab) {
     const oldTab = Util.getData(tab, 'navigationTab');
+    Util.removeClass(oldTab, CLASS_ACTIVE);
+    Util.removeClass(oldTab, CLASS_HAS_ACTIVE);
     while (tab.childNodes.length) {
       const child = tab.childNodes[0];
       if (child.nodeName === 'A') {
@@ -185,6 +188,13 @@ class OverflowMenu {
       }
       if (Util.hasClass(child,'m-dropdown__trigger')) {
         NavigationDropdown.factory(child).enablePopper();
+        if (Util.hasClass(child, CLASS_HAS_ACTIVE)) {
+          Util.addClass(oldTab, CLASS_ACTIVE);
+        }
+      } else if (child.nodeName === 'A') {
+        if (Util.hasClass(child, CLASS_ACTIVE)) {
+          Util.addClass(oldTab, CLASS_ACTIVE);
+        }
       }
       oldTab.appendChild(child);
     }
@@ -214,6 +224,12 @@ class OverflowMenu {
     this._overflowTabDropdown = null;
     this._overflowTab = null;
     this._overflowTabWidth = 0;
+  }
+
+  hide () {
+    if (this._overflowTabDropdown) {
+      this._overflowTabDropdown.hide();
+    }
   }
 
   dispose() {

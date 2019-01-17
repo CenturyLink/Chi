@@ -32,6 +32,7 @@ class NavigationTab extends Tab {
     let tab = null;
     let tabLink = null;
     let moveSlidingTo = null;
+    let clickedElem = null;
 
     for (
       let elem = e.target ;
@@ -40,12 +41,16 @@ class NavigationTab extends Tab {
     ) {
       if (Util.hasClass(elem, DROPDOWN_CLASS_COMPONENT)) {
         ddTrigger = elem;
+        clickedElem = clickedElem || elem;
       } else if (Util.hasClass(elem, CLASS_DROPDOWN_ITEM)) {
         ddMenuItem = ddMenuItem || elem;
+        clickedElem = clickedElem || elem;
       } else if (elem.nodeName === 'A' && elem.parentNode.nodeName === 'LI') {
         tabLink = elem;
+        clickedElem = clickedElem || elem;
       } else if (elem.nodeName === 'LI') {
         tab = elem;
+        clickedElem = clickedElem || elem;
       }
     }
 
@@ -60,11 +65,10 @@ class NavigationTab extends Tab {
 
       if (tabLink) {
         this._navigationComponent.manageClickOnCommonLinks(e);
-      } else if (ddMenuItem && this.isVertical()) {
-        moveSlidingTo = ddMenuItem;
       }
+
       this._slidingBorder.moveSlidingBorderToChild(moveSlidingTo);
-      this.manageActiveClass(moveSlidingTo);
+      this.manageActiveClass(clickedElem);
     }
   }
 

@@ -204,6 +204,10 @@
           padding-right: 3rem;
         }
 
+        &.-hasActive {
+          color: $brand-color;
+        }
+
         &.-disabled {
           color: set-color(grey, 50);
           pointer-events: none;

@@ -12,171 +12,36 @@ p.-text
 h3 Nav Tabs
 p.-text
   | You can use a combination of tabs and dropdowns for an any-level navigation menu. More than two levels are not
-  | recommended, although this component will support more if needed. It supports horizontal and vertical views
-  | by the <strong>only</strong> adding of a <code>-vertical</code> class to the <code>ul.a-tabs</code> element.
+  | recommended, although this component will support more if needed.
 
-ul.a-tabs
-  li.-active
-    a(href='#example-1__horizontal') Horizontal
-  li
-    a(href='#example-1__vertical') Vertical
-  li
-    a(href='#example-1__responsive') Responsive
-#example-1__horizontal.a-tabs-panel.-active
-  .example.-mb--3
-    .-p--3.-pb--4
-      ul.a-tabs.a-navigationExample
-        li.m-dropdown.-active
-          a.m-dropdown__trigger(href='#') Active tab, click me
-          .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#') Elem 1
-            a.m-dropdown__menu-item(href='#') Elem 2
-            div
-              a.m-dropdown__menu-item.m-dropdown__trigger(href='#') Elem 3 more
-              .m-dropdown__menu
-                a.m-dropdown__menu-item(href='#') Elem 3.1
-                a.m-dropdown__menu-item(href='#') Elem 3.2
-                a.m-dropdown__menu-item(href='#') Elem 3.3
-                a.m-dropdown__menu-item(href='#') Elem 3.4
-            a.m-dropdown__menu-item(href='#') Elem 4
-        li
-          a(href='#') Tab Link
-        li
-          a(href='#') Tab Link
-        li.m-dropdown
-          a.m-dropdown__trigger(href='#') Tab Link
-          .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#') Element 1
-            a.m-dropdown__menu-item(href='#') Element 2
-            a.m-dropdown__menu-item(href='#') Element 3
-    :code(lang='html')
-      <ul class="a-tabs">
-        <li class="m-dropdown -active">
-          <a class="m-dropdown__trigger" href="#">Active tab, click me</a>
-          <div class="m-dropdown__menu">
-            <a class="m-dropdown__menu-item" href="#">Elem 1</a>
-            <a class="m-dropdown__menu-item" href="#">Elem 2</a>
-            <div>
-              <a class="m-dropdown__menu-item m-dropdown__trigger" href="#">Elem 3 more</a>
-              <div class="m-dropdown__menu">
-                <a class="m-dropdown__menu-item" href="#">Elem 3.1</a>
-                <a class="m-dropdown__menu-item" href="#">Elem 3.2</a>
-                <a class="m-dropdown__menu-item" href="#">Elem 3.3</a>
-                <a class="m-dropdown__menu-item" href="#">Elem 3.4</a>
-              </div>
-            </div>
-            <a class="m-dropdown__menu-item" href="#">Elem 4</a>
-          </div>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li class="m-dropdown">
-          <a class="m-dropdown__trigger" href="#">Tab Link</a>
-          <div class="m-dropdown__menu">
-            <a class="m-dropdown__menu-item" href="#">Element 1</a>
-            <a class="m-dropdown__menu-item" href="#">Element 2</a>
-            <a class="m-dropdown__menu-item" href="#">Element 3</a>
-          </div>
-        </li>
-      </ul>
-#example-1__vertical.a-tabs-panel
-  .example.-mb--3
-    .-p--3.-pb--4
-      ul.a-tabs.-vertical.a-navigationExample
-        li.m-dropdown.-active
-          a.m-dropdown__trigger(href='#') Active tab, click me
-          .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#') Elem 1
-            a.m-dropdown__menu-item(href='#') Elem 2
-            div
-              a.m-dropdown__menu-item.m-dropdown__trigger(href='#') Elem 3 more
-              .m-dropdown__menu
-                a.m-dropdown__menu-item(href='#') Elem 3.1
-                a.m-dropdown__menu-item(href='#') Elem 3.2
-                a.m-dropdown__menu-item(href='#') Elem 3.3
-                a.m-dropdown__menu-item(href='#') Elem 3.4
-            a.m-dropdown__menu-item(href='#') Elem 4
-        li
-          a(href='#') Tab Link
-        li
-          a(href='#') Tab Link
-        li.m-dropdown
-          a.m-dropdown__trigger(href='#') Tab Link
-          .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#') Element 1
-            a.m-dropdown__menu-item(href='#') Element 2
-            a.m-dropdown__menu-item(href='#') Element 3
+.example.-mb--3
+  .-p--3.-pb--4
+    ul.a-tabs.a-navigationExample
+      li.m-dropdown.-active
+        a.m-dropdown__trigger(href='#') Active tab, click me
+        .m-dropdown__menu
+          a.m-dropdown__menu-item(href='#') Elem 1
+          a.m-dropdown__menu-item(href='#') Elem 2
+          div
+            a.m-dropdown__menu-item.m-dropdown__trigger(href='#') Elem 3 more
+            .m-dropdown__menu
+              a.m-dropdown__menu-item(href='#') Elem 3.1
+              a.m-dropdown__menu-item(href='#') Elem 3.2
+              a.m-dropdown__menu-item(href='#') Elem 3.3
+              a.m-dropdown__menu-item(href='#') Elem 3.4
+          a.m-dropdown__menu-item(href='#') Elem 4
+      li
+        a(href='#') Tab Link
+      li
+        a(href='#') Tab Link
+      li.m-dropdown
+        a.m-dropdown__trigger(href='#') Tab Link
+        .m-dropdown__menu
+          a.m-dropdown__menu-item(href='#') Element 1
+          a.m-dropdown__menu-item(href='#') Element 2
+          a.m-dropdown__menu-item(href='#') Element 3
   :code(lang='html')
-    <ul class="a-tabs -vertical">
-      <li class="m-dropdown -active">
-        <a class="m-dropdown__trigger" href="#">Active tab, click me</a>
-        <div class="m-dropdown__menu">
-          <a class="m-dropdown__menu-item" href="#">Elem 1</a>
-          <a class="m-dropdown__menu-item" href="#">Elem 2</a>
-          <div>
-            <a class="m-dropdown__menu-item m-dropdown__trigger" href="#">Elem 3 more</a>
-            <div class="m-dropdown__menu">
-              <a class="m-dropdown__menu-item" href="#">Elem 3.1</a>
-              <a class="m-dropdown__menu-item" href="#">Elem 3.2</a>
-              <a class="m-dropdown__menu-item" href="#">Elem 3.3</a>
-              <a class="m-dropdown__menu-item" href="#">Elem 3.4</a>
-            </div>
-          </div>
-          <a class="m-dropdown__menu-item" href="#">Elem 4</a>
-        </div>
-      </li>
-      <li>
-        <a href="#">Tab Link</a>
-      </li>
-      <li>
-        <a href="#">Tab Link</a>
-      </li>
-      <li class="m-dropdown">
-        <a class="m-dropdown__trigger" href="#">Tab Link</a>
-        <div class="m-dropdown__menu">
-          <a class="m-dropdown__menu-item" href="#">Element 1</a>
-          <a class="m-dropdown__menu-item" href="#">Element 2</a>
-          <a class="m-dropdown__menu-item" href="#">Element 3</a>
-        </div>
-      </li>
-    </ul>
-#example-1__responsive.a-tabs-panel
-  .example.-mb--3
-    .-p--3.-pb--4
-      p.-text
-        | Responsive version of the navigation component will render horizontally on medium and above screen devices and
-        | vertically on small and extra small screen devices.
-      .a-divider
-      ul.a-tabs.-responsive.a-navigationExample
-        li.m-dropdown.-active
-          a.m-dropdown__trigger(href='#') Active tab, click me
-          .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#') Elem 1
-            a.m-dropdown__menu-item(href='#') Elem 2
-            div
-              a.m-dropdown__menu-item.m-dropdown__trigger(href='#') Elem 3 more
-              .m-dropdown__menu
-                a.m-dropdown__menu-item(href='#') Elem 3.1
-                a.m-dropdown__menu-item(href='#') Elem 3.2
-                a.m-dropdown__menu-item(href='#') Elem 3.3
-                a.m-dropdown__menu-item(href='#') Elem 3.4
-            a.m-dropdown__menu-item(href='#') Elem 4
-        li
-          a(href='#') Tab Link
-        li
-          a(href='#') Tab Link
-        li.m-dropdown
-          a.m-dropdown__trigger(href='#') Tab Link
-          .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#') Element 1
-            a.m-dropdown__menu-item(href='#') Element 2
-            a.m-dropdown__menu-item(href='#') Element 3
-  :code(lang='html')
-    <ul class="a-tabs -responsive">
+    <ul class="a-tabs">
       <li class="m-dropdown -active">
         <a class="m-dropdown__trigger" href="#">Active tab, click me</a>
         <div class="m-dropdown__menu">
@@ -254,7 +119,7 @@ ul.a-tabs
         | Dropdowns get active status by adding <code>-active</code> class to both the <code>m-dropdown__trigger</code> and
         | the <code>m-dropdown__menu</code>. Active dropdowns will be shown unfolded.
       .a-divider
-      ul.a-tabs.-vertical.a-navigationExample
+      ul.a-tabs.a-navigationExample
         li.m-dropdown.-active
           a.m-dropdown__trigger.-active(href='#') Active tab & dropdown
           .m-dropdown__menu.-active
@@ -271,7 +136,7 @@ ul.a-tabs
         li
           a(href='#') Tab Link
   :code(lang='html')
-    <ul class="a-tabs -vertical">
+    <ul class="a-tabs">
       <li class="m-dropdown -active">
         <a class="m-dropdown__trigger -active" href="#">Active tab & dropdown</a>
         <div class="m-dropdown__menu -active">
@@ -301,7 +166,7 @@ ul.a-tabs
         | To show menu items as active, add the <code>-active</code> class to the <code>.m-dropdown__menu-item</code>
         | elements.
       .a-divider
-      ul.a-tabs.-vertical.a-navigationExample
+      ul.a-tabs.a-navigationExample
         li.m-dropdown.-active
           a.m-dropdown__trigger.-active(href='#') Active tab & dropdown
           .m-dropdown__menu.-active
@@ -313,7 +178,7 @@ ul.a-tabs
         li
           a(href='#') Tab Link
   :code(lang='html')
-    <ul class="a-tabs -vertical">
+    <ul class="a-tabs">
       <li class="m-dropdown -active">
         <a class="m-dropdown__trigger -active" href="#">Active tab & dropdown</a>
         <div class="m-dropdown__menu -active">

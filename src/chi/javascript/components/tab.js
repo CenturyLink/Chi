@@ -105,10 +105,12 @@ class Tab extends Component {
     }
 
     if (this._config.animated) {
-      this._slidingBorder.hide();
-      this._slidingBorder.moveSlidingBorderToChild(
-        this._getElementToMoveTo(currentlyActiveTab)
-      );
+      if (currentlyActiveTab) {
+        this._slidingBorder.hide();
+        this._slidingBorder.moveSlidingBorderToChild(
+          this._getElementToMoveTo(currentlyActiveTab)
+        );
+      }
       this._slidingBorder.show();
     }
 

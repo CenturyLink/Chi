@@ -54,18 +54,19 @@ class Dropdown extends Component {
         self._clickOnDocument();
       }
     };
-
-    this._dropdownElemClickEventListener = function(e) {
-      self._dropdownClickedEventManager(e);
-    };
     document.addEventListener(
       'click',
       this._documentClickEventListener
     );
+
+    this._dropdownElemClickEventListener = function(e) {
+      self._dropdownClickedEventManager(e);
+    };
     this._dropdownElem.addEventListener(
       'click',
       this._dropdownElemClickEventListener
     );
+
     this._initInnerDropdowns();
   }
 
@@ -281,6 +282,11 @@ class Dropdown extends Component {
     this._triggerFocusEventListener = null;
     this._elem.removeEventListener('blur', this._triggerBlurEventListener);
     this._triggerBlurEventListener = null;
+    this._dropdownElem.removeEventListener(
+      'click',
+      this._dropdownElemClickEventListener
+    );
+    this._dropdownElemClickEventListener = null;
 
     this._childrenDropdowns.forEach(function(dropdown) {
       dropdown.dispose();
@@ -288,6 +294,7 @@ class Dropdown extends Component {
     this._childrenDropdowns = null;
     this._parentDropdown = null;
     this._activedDescendants = null;
+    this._dropdownElem = null;
 
     document.removeEventListener('click', this._documentClickEventListener);
     this._documentClickEventListener = null;

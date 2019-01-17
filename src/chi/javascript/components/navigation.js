@@ -12,6 +12,7 @@ import {
 import {ANIMATION_DURATION as SLIDING_BORDER_ANIMATION_DURATION} from
     "./auxiliary/sliding-border";
 import {Component} from "../core/component";
+import {CLASS_HAS_ACTIVE} from "./tab";
 
 const COMPONENT_TYPE = "navigation";
 const DEFAULT_CONFIG = {
@@ -52,8 +53,6 @@ class Navigation extends Component {
     if (this._config.overflowMenu) {
       this._initOverflowMenu();
     }
-
-    this.saveState();
   }
 
   _initOverflowMenu () {
@@ -88,6 +87,7 @@ class Navigation extends Component {
 
     this._onOverflowMenuRemoveElement = function (extractedTab) {
       if (Util.hasClass(extractedTab, TAB_CLASS_ACTIVE)) {
+        Util.removeClass(extractedTab, TAB_CLASS_ACTIVE);
         self._tabComponent.showTab(extractedTab);
       }
     };
@@ -108,56 +108,11 @@ class Navigation extends Component {
     this._clickOnDocumentHandler = function () {
       if (this._clickedOnComponent) {
         this._clickedOnComponent = false;
-      } else {
-        this.restoreState();
       }
     }.bind(this);
 
     this._elem.addEventListener('click', this._clickOnComponentHandler);
     document.addEventListener('click', this._clickOnDocumentHandler);
-  }
-
-  saveState () {
-    this._initialState = {};
-    this._initialState.activeTab = this._tabComponent.getActiveTab();
-    this._initialState.activeDropdowns =
-      NavigationDropdown.factory (
-        this._elem.querySelectorAll(
-          '.' + DROPDOWN_CLASS_COMPONENT + '.' + DROPDOWN_CLASS_ACTIVE
-        )
-      );
-    this._initialState.activeMenuItems =
-      this._elem.querySelectorAll(
-        '.' + CLASS_DROPDOWN_ITEM + '.' + DROPDOWN_CLASS_ACTIVE
-      );
-  }
-
-  restoreState () {
-    if (this._initialState.activeTab) {
-      this._tabComponent.showTab(this._initialState.activeTab);
-    } else {
-      this._tabComponent.hideTabs();
-    }
-
-    if (this.isVertical()) {
-      this._initialState.activeDropdowns.forEach (function (dropdown) {
-        dropdown.show();
-      });
-    }
-
-    if (this._initialState.activeMenuItems.length) {
-      this.activateMenuItem(
-        this._initialState.activeMenuItems[
-          this._initialState.activeMenuItems.length -1
-        ]
-      );
-    } else {
-      this.deactivateAllMenuItems();
-    }
-  }
-
-  isVertical () {
-    return this._tabComponent.isVertical();
   }
 
   activateMenuItem (menuItem) {
@@ -194,14 +149,16 @@ class Navigation extends Component {
     ) {
       clickEvent.preventDefault();
       const link = clickEvent.target.getAttribute('href');
-      this.saveState();
+      const self = this;
       window.setTimeout(
         function() {
           window.location.href = link;
+          self._dropdowns.forEach(function (dd) {
+            dd.hide();
+          });
+          self._overflowMenu.hide();
         }, SLIDING_BORDER_ANIMATION_DURATION
       );
-    } else {
-      this.saveState();
     }
   }
 

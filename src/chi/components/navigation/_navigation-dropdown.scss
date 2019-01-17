@@ -1,61 +1,5 @@
 @import 'variables';
 
-@mixin navigation-dropdown-vertical() {
-  .m-dropdown {
-    &__trigger {
-      &:after {
-        display: none;
-      }
-    }
-
-    &__menu {
-      border: 0px solid transparent;
-      box-shadow: none;
-      padding-bottom: 0;
-      padding-top: 0;
-      position: initial;
-
-      .m-dropdown__menu {
-        &-item {
-          padding-left: 2.5rem;
-        }
-
-        .m-dropdown__menu {
-          &-item {
-            padding-left: 4.5rem;
-          }
-
-          .m-dropdown__menu {
-            &-item {
-              padding-left: 6.5rem;
-            }
-
-            .m-dropdown__menu {
-              &-item {
-                padding-left: 8.5rem;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &:not(.-sliding) .m-dropdown__menu-item.-active:not(.-hasActive) {
-    position: relative;
-
-    &::before {
-      background-color: $brand-color;
-      content: '';
-      height: 2rem;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 0.125rem;
-    }
-  }
-}
-
 @mixin navigation-dropdown-not-vertical() {
   & > li {
     & > a.m-dropdown__trigger {
@@ -70,31 +14,14 @@
 
 .chi {
   .a-tabs {
-
     .m-dropdown__menu-item.-active {
       background-image: none;
       background-size: initial;
       padding-right: 1rem;
     }
 
-    &:not(.-vertical):not(.-responsive) {
+    &  {
       @include navigation-dropdown-not-vertical;
-    }
-
-    &.-vertical {
-      @include navigation-dropdown-vertical;
-    }
-
-    @media only screen and (min-width: $md-breakpoint) {
-      &.-responsive {
-        @include navigation-dropdown-not-vertical;
-      }
-    }
-
-    @media only screen and (max-width: $md-breakpoint - 1) {
-      &.-responsive {
-        @include navigation-dropdown-vertical;
-      }
     }
   }
 }
