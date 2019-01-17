@@ -1,6 +1,6 @@
 import {chi} from "../core/chi";
 import {Component} from "../core/component";
-import {SlidingBorder, ANIMATION_DURATION as BORDER_ANIMATION_DURATION} from "../AuxiliaryComponents/SlidingBorder";
+import {SlidingBorder, ANIMATION_DURATION as BORDER_ANIMATION_DURATION} from "./auxiliary/sliding-border";
 import {Util} from "../core/util.js";
 
 const CLASS_ACTIVE = "-active";

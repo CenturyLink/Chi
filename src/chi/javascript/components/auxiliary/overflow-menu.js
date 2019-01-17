@@ -1,7 +1,7 @@
-import {Util} from "../core/util.js";
-import {CLASS_SLIDING_BORDER} from "./SlidingBorder";
-import {NavigationDropdown} from "../components/navigation";
-import {EventManager} from "./EventManager";
+import {Util} from "../../core/util.js";
+import {CLASS_SLIDING_BORDER} from "./sliding-border";
+import {NavigationDropdown} from "../navigation";
+import {EventManager} from "./event-manager";
 
 const EVENT = {
   MOVE_TAB_INTO_OVERFLOW_MENU: 'addTabToMenu',
