@@ -15,10 +15,10 @@
     &__icon {
       align-items: center;
       display: flex;
+      flex: 1 0 auto;
+      height: 1rem;
       justify-content: center;
-      height: 2rem;
-      padding: 0.25rem;
-      width: 2rem;
+      width: 1rem;
     }
 
     &__line {
@@ -27,29 +27,29 @@
     }
 
     & > li {
-      color: $brand-color;
-      font-size: $text;
-      line-height: 1rem;
       align-items: center;
+      color: $brand-color;
       display: flex;
-      justify-content: space-between;
-      width: 100%;
+      flex: 1 0 auto;
+      font-size: $text;
+      justify-content: center;
+      line-height: 1rem;
 
       & > .a-steps__icon {
         &::before {
           content: "\e942";
           font-family: 'chi';
-          position: absolute;
           font-size: 0.75rem;
+          position: absolute;
         }
 
         &::after {
           content: "";
-          font-size: 1.4rem;
+          display: block;
+          font-size: 1.3rem;
           font-style: normal;
           font-weight: normal;
           font-variant: normal;
-          display: block;
           position: absolute;
         }
 
@@ -72,10 +72,16 @@
 
       &.-active {
         & > .a-steps__icon {
+          margin-left: 0.125rem;
           &::after {
             content: "\e934";
             font-family: 'chi' !important;
           }
+        }
+
+        & > .a-steps__line {
+          border-color: set-color(grey, 40);
+          margin-left: 0.125rem;
         }
 
         & a {
@@ -83,9 +89,7 @@
         }
 
         &:last-child {
-          & > .a-steps__line {
-            border-color: transparent;
-          }
+          flex-grow: 0;
         }
 
         & ~ li {
@@ -103,14 +107,8 @@
           }
 
           &:last-child {
-            & > .a-steps__line {
-              border-color: transparent;
-            }
+            flex-grow: 0;
           }
-        }
-
-        & > .a-steps__line {
-          border-color: set-color(grey, 40);
         }
       }
     }
@@ -201,12 +199,12 @@
     .a-steps div.a-steps__icon::before,
     .a-steps.-horizontalLabels div.a-steps__icon::before  {
       position: relative;
-      left: 0.1875rem;
+      left: 0.15rem;
     }
     .a-steps.-horizontalLabels div.a-steps__icon::after,
     .a-steps.-horizontalLabels li.-active div.a-steps__icon::after {
       position: relative;
-      right: 0.875rem;
+      right: 0.75rem;
     }
     .a-steps.-horizontalLabels li.-completed div.a-steps__icon::after {
       position: relative;
@@ -216,12 +214,23 @@
 
   /* EDGE CSS hack */
   @supports (-ms-ime-align: auto) {
-    .a-steps div.a-steps__icon::before,
-    .a-steps li.-active div.a-steps__icon::before,
+    .a-steps div.a-steps__line {
+      padding-bottom: 0.1875rem;
+    }
+
     .a-steps li.-active div.a-steps__icon::after,
+    .a-steps.-inverse li.-active div.a-steps__icon::after{
+      font-size: 1.4rem;
+    }
+
+    .a-steps.-horizontalLabels div.a-steps__icon::before,
     .a-steps.-horizontalLabels li.-active div.a-steps__icon::before,
     .a-steps.-horizontalLabels div.a-steps__icon::before {
       position: absolute;
+    }
+
+    .a-steps.-horizontalLabels div.a-steps__line {
+      padding-bottom: 0;
     }
 
     .a-steps.-horizontalLabels div.a-steps__icon::after,
