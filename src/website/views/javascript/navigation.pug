@@ -141,7 +141,7 @@ section.a-table.a-table__options.-bordered.-my--3
               code= 'waitForAnimations'
           td
             div
-              code= 'true'
+              code= 'false'
           td
             div
               | Makes the browser wait for the sliding border to move to the clicked link before following links.
@@ -347,8 +347,8 @@ p.-text
   | Browsers stop any execution of JavaScript as soon as a link is clicked and it starts to fetch the destination URL.
   | For this reason, the sliding border animation will not be perceived by the user when an external link is clicked, as
   | the animation will not be done, an this can be confusing for the user. To prevent this possible confusion, this
-  | component waits for the animation to finish and, then, it will redirect the user to the destination URL. You can
-  | disable this behavior by setting the <code>waitForAnimations</code> option to <code>false</code>.
+  | component has the option to wait for the animation to finish and, then, it will redirect the user to the destination
+  | URL. You can enable this behavior by setting the <code>waitForAnimations</code> option to <code>true</code>.
 ul.a-tabs
   li.-active
     a(href='#example-4__enabled') Enabled
@@ -400,7 +400,10 @@ ul.a-tabs
     #example-4__enabled-script.a-tabs-panel
       :code(lang="javascript")
         const navigationElem = document.getElementById('#navigationexample-4-enabled');
-        chi.navigation(navigationElem);
+        chi.navigation(
+          navigationElem,
+          {waitForAnimations: true}
+        );
 #example-4__disabled.a-tabs-panel
   .example.-mb--3
     .-p--3.-pb--4
@@ -449,7 +452,7 @@ ul.a-tabs
         const navigationElem = document.getElementById('#navigationexample-4-disabled');
         chi.navigation(
           navigationElem,
-          {overflowMenu: false}
+          {waitForAnimations: false}
         );
 
 h4 Preventing memory leaks
@@ -487,6 +490,10 @@ script.
       chi.navigation(
         document.querySelectorAll('#example-3__disabled .a-tabs.a-navigationExample'),
         {overflowMenu: false}
+      );
+      chi.navigation(
+        document.querySelectorAll('#example-4__enabled .a-tabs.a-navigationExample'),
+        {waitForAnimations: true}
       );
       chi.navigation(
         document.querySelectorAll('#example-4__disabled .a-tabs.a-navigationExample'),

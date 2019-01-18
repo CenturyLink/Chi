@@ -12,13 +12,12 @@ import {
 import {ANIMATION_DURATION as SLIDING_BORDER_ANIMATION_DURATION} from
     "./auxiliary/sliding-border";
 import {Component} from "../core/component";
-import {CLASS_HAS_ACTIVE} from "./tab";
 
 const COMPONENT_TYPE = "navigation";
 const DEFAULT_CONFIG = {
   overflowMenu: true,
   overflowMenuLabel: 'More&hellip;',
-  waitForAnimations: true,
+  waitForAnimations: false,
 };
 
 class Navigation extends Component {
@@ -143,22 +142,25 @@ class Navigation extends Component {
   }
 
   manageClickOnCommonLinks (clickEvent) {
-    if (
-      this._checkIfCommonLink(clickEvent.target) &&
-      this._config.waitForAnimations
-    ) {
-      clickEvent.preventDefault();
-      const link = clickEvent.target.getAttribute('href');
+    if (this._checkIfCommonLink(clickEvent.target)) {
       const self = this;
-      window.setTimeout(
-        function() {
-          window.location.href = link;
-          self._dropdowns.forEach(function (dd) {
-            dd.hide();
-          });
-          self._overflowMenu.hide();
-        }, SLIDING_BORDER_ANIMATION_DURATION
-      );
+
+      if (this._config.waitForAnimations) {
+        clickEvent.preventDefault();
+        const link = clickEvent.target.getAttribute('href');
+        window.setTimeout(
+          function() {
+            window.location.href = link;
+          }, SLIDING_BORDER_ANIMATION_DURATION
+        );
+      }
+
+      window.requestAnimationFrame(function(){
+        self._dropdowns.forEach(function (dd) {
+          dd.hide();
+        });
+        self._overflowMenu.hide();
+      });
     }
   }
 

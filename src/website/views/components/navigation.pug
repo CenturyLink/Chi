@@ -315,7 +315,7 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.navigation(document.querySelectorAll('.docs-body__content .a-tabs.a-navigationExample'));
+      chi.navigation(document.querySelectorAll('.docs-body__content .a-tabs.a-navigationExample'), {waitForAnimations: true});
       chi.tab(document.querySelectorAll('.docs-body__content .a-tabs:not(.a-navigationExample)'));
     },
     false
