@@ -6,16 +6,56 @@
   /* Position */
 
   @each $type in static relative fixed absolute sticky {
-    .-position--#{$type} {
-      position: #{$type};
+    @if( $type == 'fixed') {
+      .-position--#{$type} {
+        position: #{$type};
+      }
+
+      .-position--#{$type}-bottom {
+        bottom: 0;
+        left: 0;
+        position: #{$type};
+        right: 0;
+      }
+
+      .-position--#{$type}-top {
+        left: 0;
+        position: #{$type};
+        right: 0;
+        top: 0;
+      }
+    } @else {
+      .-position--#{$type} {
+        position: #{$type};
+      }
     }
   }
 
   @each $size in sm md lg xl {
     @include respond-to($size) {
       @each $type in static relative fixed absolute sticky {
-        .-position-#{$size}--#{$type} {
-          position: #{$type};
+        @if( $type == 'fixed') {
+          .-position-#{$size}--#{$type} {
+            position: #{$type};
+          }
+
+          .-position-#{$size}--#{$type}-bottom {
+            bottom: 0;
+            left: 0;
+            position: #{$type};
+            right: 0;
+          }
+
+          .-position-#{$size}--#{$type}-top {
+            left: 0;
+            position: #{$type};
+            right: 0;
+            top: 0;
+          }
+        } @else {
+          .-position-#{$size}--#{$type} {
+            position: #{$type};
+          }
         }
       }
     }

@@ -12,6 +12,8 @@ p.-text
 h3 Target all viewports
 p.-text Use to set an elements position on all viewports.
 
+h3.-py--2 Base
+
 h4 Static
 .-mb--2
   :code(lang='html')
@@ -37,7 +39,22 @@ h4 Sticky
   :code(lang='html')
     <div class="-position--sticky"></div>
 
-h3 Target specific viewports
+h3.-py--2 Additional classes
+h4 Fixed Top
+p.-text
+  | Use the <code>-position--fixed-top</code> class to position an element at the top of the viewport.
+.-mb--2
+  :code(lang='html')
+    <div class="-position--fixed-top"></div>
+
+h4 Fixed Bottom
+p.-text
+  | Use the <code>-position--fixed-bottom</code> class to position an element at the bottom of the viewport.
+.-mb--2
+  :code(lang='html')
+    <div class="-position--fixed-bottom"></div>
+
+h3.-py--2 Target specific viewports
 p.-text
  | To target a specific viewport, add the viewport abbreviation to the class.
  | It's important to note that viewport-specific classes apply to their respective
@@ -82,3 +99,19 @@ h4 Sticky
     <div class="-position-md--sticky"></div>
     <div class="-position-lg--sticky"></div>
     <div class="-position-xl--sticky"></div>
+
+h4 Fixed Top
+.-mb--2
+  :code(lang='html')
+    <div class="-position-sm--fixed-top"></div>
+    <div class="-position-md--fixed-top"></div>
+    <div class="-position-lg--fixed-top"></div>
+    <div class="-position-xl--fixed-top"></div>
+
+h4 Fixed Bottom
+.-mb--2
+  :code(lang='html')
+    <div class="-position-sm--fixed-bottom"></div>
+    <div class="-position-md--fixed-bottom"></div>
+    <div class="-position-lg--fixed-bottom"></div>
+    <div class="-position-xl--fixed-bottom"></div>
