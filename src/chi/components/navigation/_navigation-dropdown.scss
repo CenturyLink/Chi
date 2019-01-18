@@ -1,0 +1,27 @@
+@import 'variables';
+
+@mixin navigation-dropdown-not-vertical() {
+  & > li {
+    & > a.m-dropdown__trigger {
+      &:after {
+        position: absolute;
+        right: 0;
+        top: 1.3rem;
+      }
+    }
+  }
+}
+
+.chi {
+  .a-tabs {
+    .m-dropdown__menu-item.-active {
+      background-image: none;
+      background-size: initial;
+      padding-right: 1rem;
+    }
+
+    &  {
+      @include navigation-dropdown-not-vertical;
+    }
+  }
+}

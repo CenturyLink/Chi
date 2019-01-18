@@ -5,6 +5,7 @@ import {Drawer, factory as drawer} from './components/drawer';
 import {Dropdown, factory as dropdown} from './components/dropdown';
 import {ExpansionPanel, factory as expansionPanel, EXPANSION_PANEL_STATES} from "./components/expansion-panel";
 import {FloatingLabel, factory as floatingLabel} from "./components/floating-label";
+import {Navigation, factory as navigation} from "./components/navigation";
 import {NumberInput, factory as numberInput} from './components/number-input';
 import {RangeSlider, factory as rangeSlider} from "./components/range-slider";
 import {Tab, factory as tab} from './components/tab';
@@ -14,6 +15,7 @@ export {
   chi as core,
   Util,
 
+  navigation,
   drawer,
   dropdown,
   expansionPanel,
@@ -27,6 +29,7 @@ export {
   Dropdown,
   ExpansionPanel,
   FloatingLabel,
+  Navigation,
   NumberInput,
   RangeSlider,
   Tab,

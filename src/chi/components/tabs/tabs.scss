@@ -1,6 +1,311 @@
 @import 'mixins';
 @import 'variables';
 
+@mixin tabs-vertical() {
+  display: flex;
+  flex-direction: column;
+  line-height: $line-height-smaller;
+
+  .a-tabs__subtabs {
+    list-style: none;
+    padding: 0;
+
+    & > li {
+      &.-active {
+        position: relative;
+
+        & > a {
+          font-weight: 600;
+        }
+      }
+
+      & > a {
+        color: set-color(grey, 90);
+        cursor: pointer;
+        display: block;
+        font-size: $text-small;
+        line-height: $line-height-smaller;
+        padding: 0.5rem 0 0.5rem 2.5rem;
+        text-decoration: none;
+        text-transform: capitalize;
+
+        &:hover {
+          color: $brand-color;
+        }
+      }
+    }
+  }
+
+  &.-icons {
+    & > li {
+      &.-active {
+        & > a {
+          position: relative;
+
+          & > .a-icon {
+            color: $brand-color;
+            left: 1.5rem;
+          }
+        }
+      }
+
+      & > a {
+        padding-left: 3.5rem;
+        position: relative;
+
+        & > .a-icon {
+          left: 1.5rem;
+          position: absolute;
+        }
+      }
+
+      .a-tabs__subtabs {
+        & > li {
+          & > a {
+            padding-left: 4.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  & > li {
+    position: relative;
+
+    &.a-sliding-border {
+      left: 0;
+      width: 0.125rem;
+      position: absolute;
+    }
+
+    &.-activeAlt {
+      & > a {
+        background-color: set-color(grey, 20);
+        color: set-color(grey, 90);
+
+        & > .a-icon {
+          color: set-color(grey, 90);
+        }
+      }
+    }
+
+    & > a {
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      width: 100%;
+    }
+  }
+
+  &:not(.-sliding) > li.-active:not(.-hasActive) > a,
+  &:not(.-sliding).-animated  li.-active:not(.-hasActive) > a {
+    &::before {
+      background-color: $brand-color;
+      content: '';
+      height: 2rem;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 0.125rem;
+    }
+  }
+
+  &.-small {
+    & > li {
+      & > a {
+        padding-bottom: 0.25rem;
+        padding-top: 0.25rem;
+      }
+
+      &.-active {
+        & > a {
+          &::before {
+            height: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .a-tabs__subtabs {
+      & > li {
+        & > a {
+          padding: 0.25rem 0 0.25rem 2.5rem;
+        }
+      }
+    }
+  }
+
+  &.-large {
+    & > li {
+      & > a {
+        line-height: $line-height-large;
+        padding-bottom: 0.75rem;
+        padding-top: 0.75rem;
+
+        & > .a-icon {
+          margin-top: 0.25rem;
+        }
+      }
+
+      &.-active {
+        & > a {
+          &::before {
+            height: 3rem;
+          }
+        }
+      }
+
+      .a-tabs__subtabs {
+        & > li {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+
+  &.-border {
+    & > li {
+      border-bottom: 0.0625rem solid set-color(grey, 30);
+
+      &.-active {
+        & > a {
+          &::before {
+            top: -0.0625rem;
+          }
+        }
+      }
+
+      & > a {
+        padding-bottom: 0.5rem;
+        padding-top: 0.4375rem;
+      }
+
+      &:first-child {
+        border-top: 0.0625rem solid set-color(grey, 30);
+
+        & > a {
+          padding-bottom: 0.4375rem;
+          padding-top: 0.4375rem;
+        }
+      }
+    }
+
+    &.-small {
+      & > li {
+        & > a {
+          padding-bottom: 0.25rem;
+          padding-top: 0.1875rem;
+        }
+
+        &:first-child {
+          & > a {
+            padding-bottom: 0.1875rem;
+            padding-top: 0.1875rem;
+          }
+        }
+      }
+    }
+
+    &.-large {
+      & > li {
+        & > a {
+          padding-bottom: 0.75rem;
+          padding-top: 0.6875rem;
+        }
+
+        &:first-child {
+          & > a {
+            padding-bottom: 0.6875rem;
+            padding-top: 0.6875rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin tabs-not-vertical() {
+  height: 3.5rem;
+
+  &.-icons {
+    & > li {
+      &.-active {
+        .a-icon {
+          color: $brand-color;
+        }
+      }
+
+      & > a {
+        padding-left: 1.5rem;
+        position: relative;
+
+        .a-icon {
+          left: 0rem;
+          position: absolute;
+        }
+      }
+    }
+  }
+
+  &.-border {
+    border-bottom: 0.0625rem solid set-color(grey, 30);
+  }
+
+  & > li {
+    &:not(:first-child) {
+      margin-left: 1.5rem;
+    }
+
+    & > a {
+      line-height: $line-height-smaller;
+      padding: 1.25rem 0;
+    }
+
+    &.a-sliding-border {
+      margin-left: 0;
+      height: 0.125rem;
+      bottom: 0;
+    }
+  }
+
+  &:not(.-sliding) > li.-active > a {
+    border-bottom: 0.125rem solid $brand-color;
+    padding-bottom: 1.125rem;
+  }
+
+  &.-small {
+    height: 3rem;
+
+    & > li {
+      &.-active > a {
+        padding-bottom: 0.875rem;
+      }
+
+      & > a {
+        line-height: $line-height-smaller;
+        padding: 1rem 0;
+      }
+    }
+  }
+
+  &.-large {
+    height: 4rem;
+
+    & > li {
+      &:not(:first-child) {
+        margin-left: 2rem;
+      }
+
+      &.-active > a {
+        padding-bottom: 1.125rem;
+      }
+
+      & > a {
+        line-height: $line-height-large;
+        padding: 1.25rem 0;
+      }
+    }
+  }
+}
+
 .chi {
   .a-tabs {
     list-style: none;
@@ -29,12 +334,16 @@
         }
       }
 
-      &.a-tabs__sliding-border {
-        display: block;
+      &.a-sliding-border {
+        display: none;
         position: absolute;
-        transition: .5s cubic-bezier(.35,0,.25,1);
         background-color: $brand-color;
       }
+    }
+
+    &.-sliding > li.a-sliding-border {
+      display: block;
+      transition: .5s cubic-bezier(.35,0,.25,1);
     }
 
     &.-large {
@@ -45,304 +354,23 @@
       }
     }
 
-    &:not(.-vertical) {
-      height: 3.5rem;
-
-      &.-icons {
-        & > li {
-          &.-active {
-            .a-icon {
-              color: $brand-color;
-            }
-          }
-
-          & > a {
-            padding-left: 1.5rem;
-            position: relative;
-
-            .a-icon {
-              left: 0rem;
-              position: absolute;
-            }
-          }
-        }
-      }
-
-      &.-border {
-        border-bottom: 0.0625rem solid set-color(grey, 30);
-      }
-
-      & > li {
-        &:not(:first-child) {
-          margin-left: 1.5rem;
-        }
-
-        & > a {
-          line-height: $line-height-smaller;
-          padding: 1.25rem 0;
-        }
-
-        &.a-tabs__sliding-border {
-          margin-left: 0;
-          height: 0.125rem;
-          bottom: 0;
-        }
-
-      }
-
-      &:not(.-animated) > li.-active > a {
-        border-bottom: 0.125rem solid $brand-color;
-        padding-bottom: 1.125rem;
-      }
-
-      &.-small {
-        height: 3rem;
-
-        & > li {
-          &.-active > a {
-            padding-bottom: 0.875rem;
-          }
-
-          & > a {
-            line-height: $line-height-smaller;
-            padding: 1rem 0;
-          }
-        }
-      }
-
-      &.-large {
-        height: 4rem;
-
-        & > li {
-          &:not(:first-child) {
-            margin-left: 2rem;
-          }
-
-          &.-active > a {
-            padding-bottom: 1.125rem;
-          }
-
-          & > a {
-            line-height: $line-height-large;
-            padding: 1.25rem 0;
-          }
-        }
-      }
+    &:not(.-vertical):not(.-responsive) {
+      @include tabs-not-vertical;
     }
 
     &.-vertical {
-      display: flex;
-      flex-direction: column;
-      line-height: $line-height-smaller;
+      @include tabs-vertical;
+    }
 
-      .a-tabs__subtabs {
-        list-style: none;
-        padding: 0;
-
-        & > li {
-          &.-active > a {
-            font-weight: 600;
-          }
-
-          & > a {
-            color: set-color(grey, 90);
-            cursor: pointer;
-            display: block;
-            font-size: $text-small;
-            line-height: $line-height-smaller;
-            padding: 0.5rem 0 0.5rem 2.5rem;
-            text-decoration: none;
-            text-transform: capitalize;
-
-            &:hover {
-              color: $brand-color;
-            }
-          }
-        }
+    @media only screen and (min-width: $md-breakpoint) {
+      &.-responsive {
+        @include tabs-not-vertical;
       }
+    }
 
-      &.-icons {
-        & > li {
-          & > a {
-            padding-left: 3.5rem;
-            position: relative;
-
-            & > .a-icon {
-              left: 1.5rem;
-              position: absolute;
-            }
-          }
-
-          .a-tabs__subtabs {
-            & > li {
-              & > a {
-                padding-left: 4.5rem;
-              }
-            }
-          }
-        }
-      }
-
-      & > li {
-        position: relative;
-
-        &.a-tabs__sliding-border {
-          left: 0;
-          width: 0.125rem;
-          position: absolute;
-        }
-
-        &.-active {
-          & > a {
-            position: relative;
-
-            & > .a-icon {
-              color: $brand-color;
-              left: 1.5rem;
-            }
-          }
-        }
-
-        &.-activeAlt {
-          & > a {
-            background-color: set-color(grey, 20);
-            color: set-color(grey, 90);
-
-            & > .a-icon {
-              color: set-color(grey, 90);
-            }
-          }
-        }
-
-        & > a {
-          padding: 0.5rem 0 0.5rem 1.5rem;
-          width: 100%;
-        }
-      }
-
-      &:not(.-animated) > li.-active > a {
-        &::before {
-          background-color: $brand-color;
-          content: '';
-          height: 2rem;
-          left: 0;
-          position: absolute;
-          top: 0;
-          width: 0.125rem;
-        }
-      }
-
-      &.-small {
-        & > li {
-          & > a {
-            padding-bottom: 0.25rem;
-            padding-top: 0.25rem;
-          }
-
-          &.-active {
-            & > a {
-              &::before {
-                height: 1.5rem;
-              }
-            }
-          }
-        }
-
-        .a-tabs__subtabs {
-          & > li {
-            & > a {
-              padding: 0.25rem 0 0.25rem 2.5rem;
-            }
-          }
-        }
-      }
-
-      &.-large {
-        & > li {
-          & > a {
-            line-height: $line-height-large;
-            padding-bottom: 0.75rem;
-            padding-top: 0.75rem;
-
-            & > .a-icon {
-              margin-top: 0.25rem;
-            }
-          }
-
-          &.-active {
-            & > a {
-              &::before {
-                height: 3rem;
-              }
-            }
-          }
-
-          .a-tabs__subtabs {
-            & > li {
-              margin-bottom: 0.5rem;
-            }
-          }
-        }
-      }
-
-      &.-border {
-        & > li {
-          border-bottom: 0.0625rem solid set-color(grey, 30);
-
-          &.-active {
-            & > a {
-              &::before {
-                top: -0.0625rem;
-              }
-            }
-          }
-
-          & > a {
-            padding-bottom: 0.5rem;
-            padding-top: 0.4375rem;
-          }
-
-          &:first-child {
-            border-top: 0.0625rem solid set-color(grey, 30);
-
-            & > a {
-              padding-bottom: 0.4375rem;
-              padding-top: 0.4375rem;
-            }
-          }
-        }
-
-        &.-small {
-          & > li {
-            & > a {
-              padding-bottom: 0.25rem;
-              padding-top: 0.1875rem;
-            }
-
-            &:first-child {
-              & > a {
-                padding-bottom: 0.1875rem;
-                padding-top: 0.1875rem;
-              }
-            }
-          }
-        }
-
-        &.-large {
-          & > li {
-            & > a {
-              padding-bottom: 0.75rem;
-              padding-top: 0.6875rem;
-            }
-
-            &:first-child {
-              & > a {
-                padding-bottom: 0.6875rem;
-                padding-top: 0.6875rem;
-              }
-            }
-          }
-        }
+    @media only screen and (max-width: $md-breakpoint - 1) {
+      &.-responsive {
+        @include tabs-vertical;
       }
     }
   }
@@ -350,5 +378,4 @@
   .a-tabs-panel:not(.-active) {
     display:none;
   }
-
 }

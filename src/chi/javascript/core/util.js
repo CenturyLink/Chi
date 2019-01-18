@@ -26,15 +26,32 @@ export class Util {
     }
   }
 
+  /**
+   * Tests if an element has a target and returns it.
+   * Target can be described by an xpath selector in href or in data-target
+   * attributes. If an element has a target attribute, cancels the target
+   * normal finding. data-target takes prevalence over href.
+   * @param {Element} element Element which has the target associated.
+   * @returns {Element|null} First target element found or null if none.
+   */
   static getTarget (element) {
     let selector = element.dataset && element.dataset.target ?
       element.dataset.target.trim() :
       '';
-    if (!selector) {
+    if (!selector && !element.getAttribute('target')) {
       const hrefTarget = element.getAttribute('href');
-      selector = hrefTarget ? hrefTarget.trim() : '';
+      selector =
+        hrefTarget && hrefTarget.length > 1 && hrefTarget.charAt(0) === '#' ?
+        hrefTarget.trim() :
+        '';
     }
-    return selector ? document.querySelector(selector) : null;
+    if (selector) {
+      const target = document.querySelector(selector);
+      if (target) {
+        return target;
+      }
+    }
+    return null;
   }
 
   static findAndApply (ancestor, className, callback) {
@@ -50,7 +67,7 @@ export class Util {
   }
 
   static emulateTransitionEnd (transitionDuration, eventHandler) {
-    window.setTimeout(eventHandler, transitionDuration);
+    return window.setTimeout(eventHandler, transitionDuration);
   }
 
   static getData (elem, key) {
@@ -125,6 +142,10 @@ export class Util {
     return object;
   }
 
+  static _getNewRegistrationIndex () {
+    return chi.componentIndex++;
+  }
+
   static extend (originArray, extensorArray) {
     const resultArray = Util.copyObject(originArray);
     if (!extensorArray) {
@@ -173,7 +194,7 @@ export class Util {
     let event;
     if(typeof Event  === 'function') {
       event = new Event(eventType);
-    }else{
+    } else {
       event = document.createEvent('Event');
       event.initEvent(eventType, true, true);
     }
@@ -183,16 +204,235 @@ export class Util {
   static threeStepsAnimation (
     prepareAnimation, startAnimation, emulateTransitionEnd, transitionDuration
   ) {
-    const animations = [];
-    animations[0] = window.requestAnimationFrame(function() {
-      prepareAnimation();
-      animations[1] = window.requestAnimationFrame(function () {
-        startAnimation();
-        animations[2] =
-          Util.emulateTransitionEnd(transitionDuration, emulateTransitionEnd);
+    const animation = {};
+    animation.stopped = false;
+    animation.status = '';
+    animation.prepare = prepareAnimation;
+    animation.start = startAnimation;
+    animation.end = emulateTransitionEnd;
+    animation.duration = transitionDuration;
+
+    animation.prepareAnimationFrame = window.requestAnimationFrame(function() {
+      if (animation.stopped) {
+        return;
+      }
+      animation.status = 'preparing';
+      animation.prepare();
+      animation.status = 'prepared';
+      animation.startAnimationFrame = window.requestAnimationFrame(function () {
+        if (animation.stopped) {
+          return;
+        }
+        animation.status = 'starting';
+        animation.start();
+        animation.status = 'started';
+        animation.endTimeOut =
+          Util.emulateTransitionEnd(transitionDuration, function() {
+            if (animation.stopped) {
+              return;
+            }
+            animation.status = 'ending';
+            animation.end();
+            animation.stuatus = 'ended';
+          });
       });
     });
-    return animations;
+    return animation;
+  }
+
+  static stopThreeStepsAnimation (animation, endAnimation) {
+    if (typeof endAnimation === 'undefined') {
+      endAnimation = true;
+    }
+    animation.stopped = true;
+    if (animation.prepareAnimationFrame) {
+      window.cancelAnimationFrame(animation.prepareAnimationFrame);
+    }
+    if (animation.startAnimationFrame) {
+      window.cancelAnimationFrame(animation.startAnimationFrame);
+    }
+    if (animation.endTimeOut) {
+      window.clearTimeout(animation.endTimeOut);
+    }
+
+    const shouldEndAnimationStatus = [
+      'preparing',
+      'prepared',
+      'starting',
+      'started'
+    ];
+
+    if (
+      endAnimation &&
+      shouldEndAnimationStatus.indexOf(animation.status) > -1
+    ) {
+      animation.end();
+      animation.status = 'force stopped';
+    }
+
+  }
+
+  static calculateExternalWidth (elem, safe) {
+    const style = window.getComputedStyle(elem);
+    if (typeof safe === 'undefined') {
+      safe = false;
+    }
+    if (safe) {
+      if (style.boxSizing === 'border-box') {
+        return Math.ceil(parseFloat(style.width)) +
+          Math.ceil(parseFloat(style.marginLeft)) +
+          Math.ceil(parseFloat(style.marginRight));
+      } else {
+        return Math.ceil(parseFloat(style.width)) +
+          Math.ceil(parseFloat(style.marginLeft)) +
+          Math.ceil(parseFloat(style.marginRight)) +
+          Math.ceil(parseFloat(style.paddingLeft)) +
+          Math.ceil(parseFloat(style.paddingRight)) +
+          Math.ceil(parseFloat(style.borderLeftWidth)) +
+          Math.ceil(parseFloat(style.borderRightWidth));
+      }
+    } else {
+      if (style.boxSizing === 'border-box') {
+        return parseFloat(style.width) +
+          parseFloat(style.marginLeft) +
+          parseFloat(style.marginRight);
+      } else {
+        return parseFloat(style.width) +
+          parseFloat(style.marginLeft) +
+          parseFloat(style.marginRight) +
+          parseFloat(style.paddingLeft) +
+          parseFloat(style.paddingRight) +
+          parseFloat(style.borderLeftWidth) +
+          parseFloat(style.borderRightWidth);
+      }
+    }
+  }
+
+  static calculateInternalWidth (elem, safe) {
+    const style = window.getComputedStyle(elem);
+    if (typeof safe === 'undefined') {
+      safe = false;
+    }
+    if (safe) {
+      if (style.boxSizing === 'border-box') {
+        return Math.floor(parseFloat(style.width)) -
+          Math.ceil(parseFloat(style.paddingLeft)) -
+          Math.ceil(parseFloat(style.paddingRight)) -
+          Math.ceil(parseFloat(style.borderLeftWidth)) -
+          Math.ceil(parseFloat(style.borderRightWidth));
+      } else {
+        return Math.floor(parseFloat(style.width));
+      }
+    } else {
+      if (style.boxSizing === 'border-box') {
+        return parseFloat(style.width) -
+          parseFloat(style.paddingLeft) -
+          parseFloat(style.paddingRight) -
+          parseFloat(style.borderLeftWidth) -
+          parseFloat(style.borderRightWidth);
+      } else {
+        return parseFloat(style.width);
+      }
+    }
+  }
+
+  static calculateExternalHeight (elem, safe) {
+    const style = window.getComputedStyle(elem);
+    if (typeof safe === 'undefined') {
+      safe = false;
+    }
+    if (safe) {
+      if (style.boxSizing === 'border-box') {
+        return Math.ceil(parseFloat(style.height)) +
+          Math.ceil(parseFloat(style.marginBottom)) +
+          Math.ceil(parseFloat(style.marginTop));
+      } else {
+        return Math.ceil(parseFloat(style.height)) +
+          Math.ceil(parseFloat(style.marginBottom)) +
+          Math.ceil(parseFloat(style.marginTop)) +
+          Math.ceil(parseFloat(style.paddingBottom)) +
+          Math.ceil(parseFloat(style.paddingTop)) +
+          Math.ceil(parseFloat(style.borderLeftWidth)) +
+          Math.ceil(parseFloat(style.borderRightWidth));
+      }
+    } else {
+      if (style.boxSizing === 'border-box') {
+        return parseFloat(style.height) +
+          parseFloat(style.marginBottom) +
+          parseFloat(style.marginTop);
+      } else {
+        return parseFloat(style.height) +
+          parseFloat(style.marginBottom) +
+          parseFloat(style.marginTop) +
+          parseFloat(style.paddingBottom) +
+          parseFloat(style.paddingTop) +
+          parseFloat(style.borderLeftWidth) +
+          parseFloat(style.borderRightWidth);
+      }
+    }
+  }
+
+  static calculateInternalHeight (elem, safe) {
+    const style = window.getComputedStyle(elem);
+    if (typeof safe === 'undefined') {
+      safe = false;
+    }
+    if (safe) {
+      if (style.boxSizing === 'border-box') {
+        return Math.floor(parseFloat(style.height)) -
+          Math.ceil(parseFloat(style.paddingBottom)) -
+          Math.ceil(parseFloat(style.paddingTop)) -
+          Math.ceil(parseFloat(style.borderLeftWidth)) -
+          Math.ceil(parseFloat(style.borderRightWidth));
+      } else {
+        return Math.floor(parseFloat(style.height));
+      }
+    } else {
+      if (style.boxSizing === 'border-box') {
+        return parseFloat(style.height) -
+          parseFloat(style.paddingBottom) -
+          parseFloat(style.paddingTop) -
+          parseFloat(style.borderLeftWidth) -
+          parseFloat(style.borderRightWidth);
+      } else {
+        return parseFloat(style.height);
+      }
+    }
+  }
+
+  static calculateDistance (elem1, elem2, xy, fromOrigin) {
+    const bcr1 = elem1.getBoundingClientRect();
+    const bcr2 = elem2.getBoundingClientRect();
+    if (typeof fromOrigin === 'undefined') {
+      fromOrigin = true;
+    }
+    if (xy ==='x') {
+      if (fromOrigin) {
+        return bcr2.left - bcr1.left;
+      } else {
+        return bcr2.left - bcr1.left - bcr1.width;
+      }
+    } else {
+      if (fromOrigin) {
+        return bcr2.top - bcr1.top;
+      } else {
+        return bcr2.top - bcr1.top - bcr1.height;
+      }
+    }
+  }
+
+  static getMediaWidth () {
+    return Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    );
+  }
+
+  static getMediaHeight () {
+    return Math.max(
+      document.documentElement.clientHeight,
+      window.innerHeight || 0
+    );
   }
 
   static getClosest (elem, className, stopElement) {
@@ -206,10 +446,6 @@ export class Util {
     } else {
       return Util.getClosest(elem.parentNode, className, stopElement);
     }
-  }
-
-  static _getNewRegistrationIndex () {
-    return chi.componentIndex++;
   }
 
   static copyObject (src) {
