@@ -229,7 +229,7 @@ p.-text
               a.m-dropdown__menu-item(href='#navigationExample') Elem 3.2
               a.m-dropdown__menu-item(href='#navigationExample') Elem 3.3
               a.m-dropdown__menu-item(href='#navigationExample') Elem 3.4
-          a.m-dropdown__menu-item(href='#') Elem 4
+          a.m-dropdown__menu-item(href='#navigationExample') Elem 4
       li
         a(href='#navigationExample') Tab Link
       li
@@ -302,7 +302,7 @@ p.-text
       const navigationElem = document.getElementById('#navigationExample-1');
       chi.navigation(navigationElem);
 
-h3 Options
+h4 Options
 p.-text This component accepts options to configure its behavior.
 
 section.a-table.a-table__options.-bordered.-my--3
@@ -334,7 +334,7 @@ section.a-table.a-table__options.-bordered.-my--3
               code= 'overflowMenuLabel'
           td
             div
-              code= 'More&hellip;'
+              code= 'More…'
           td
             div
               | Text for the overflow menu dropdown.
@@ -350,7 +350,7 @@ section.a-table.a-table__options.-bordered.-my--3
               | Makes the browser wait for the sliding border to move to the clicked link before following links.
               | It only works with common links.
 
-h3#navigationExampleOverflowMenu Overflow Menu
+h4#navigationExampleOverflowMenu Overflow Menu
 p.-text
   | Overflow menu encloses overflowed tabs into a dropdown menu at the end of the navigation component. Any
   | instantiation of a new horizontal Navigation component will automatically support this Overflow Menu. You can
@@ -545,7 +545,7 @@ ul.a-tabs
           {overflowMenu: false}
         );
 
-h3#navigationExampleWatiForAnimations Wait for animations
+h4#navigationExampleWatiForAnimations Wait for animations
 p.-text
   | Browsers stop any execution of JavaScript as soon as a link is clicked and it starts to fetch the destination URL.
   | For this reason, the sliding border animation will not be perceived by the user when an external link is clicked, as
@@ -658,7 +658,7 @@ ul.a-tabs
           {waitForAnimations: false}
         );
 
-h3#navigationExampleComponentsContained Components contained
+h4#navigationExampleComponentsContained Components contained
 p.-text
   | As navigation component is built from other primitive Chi components, most of these components behavior can be
   | replicated on the navigation component.
@@ -671,26 +671,26 @@ p.-text
       li.m-dropdown.-active
         a.m-dropdown__trigger.-animate(href='#') Active Tab
         .m-dropdown__menu
-          a.m-dropdown__menu-item(href='#navigationExampleWatiForAnimations') Elem 1
-          a.m-dropdown__menu-item(href='#navigationExampleWatiForAnimations') Elem 2
+          a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Elem 1
+          a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Elem 2
           div
             a.m-dropdown__menu-item.m-dropdown__trigger.-animate(href='#') Elem 3 more
             .m-dropdown__menu
-              a.m-dropdown__menu-item(href='#navigationExampleWatiForAnimations') Elem 3.1
-              a.m-dropdown__menu-item(href='#navigationExampleWatiForAnimations') Elem 3.2
-              a.m-dropdown__menu-item(href='#navigationExampleWatiForAnimations') Elem 3.3
-              a.m-dropdown__menu-item(href='#navigationExampleWatiForAnimations') Elem 3.4
+              a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Elem 3.1
+              a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Elem 3.2
+              a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Elem 3.3
+              a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Elem 3.4
           a.m-dropdown__menu-item(href='#') Elem 4
       li
-        a(href='#navigationExampleWatiForAnimations') Tab Link
+        a(href='#navigationExampleComponentsContained') Tab Link
       li
-        a(href='#navigationExampleWatiForAnimations') Tab Link
+        a(href='#navigationExampleComponentsContained') Tab Link
       li.m-dropdown
         a.m-dropdown__trigger.-animate(href='#') Tab Link
         .m-dropdown__menu
-          a.m-dropdown__menu-item(href='#navigationExampleWatiForAnimations') Element 1
-          a.m-dropdown__menu-item(href='#navigationExampleWatiForAnimations') Element 2
-          a.m-dropdown__menu-item(href='#navigationExampleWatiForAnimations') Element 3
+          a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Element 1
+          a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Element 2
+          a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Element 3
   :code(lang='html')
     <ul class="a-tabs">
       <li class="m-dropdown -active">

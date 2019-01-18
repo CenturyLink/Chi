@@ -15,7 +15,7 @@ class OverflowMenu {
     this._config = Util.extend(
       {
         tabComponent: null,
-        overflowMenuLabel: 'More&hellip;'
+        overflowMenuLabel: 'More…'
       }, config
     );
     this._navigationComponent = navigation;
@@ -129,10 +129,6 @@ class OverflowMenu {
     );
 
     this._elem.appendChild(this._overflowTab);
-    this._overflowTab.setAttribute(
-      'title',
-      Util.calculateExternalWidth(this._overflowTab, true)
-    );
     this._overflowTabWidth =
       Util.calculateExternalWidth(this._overflowTab, true);
   }
