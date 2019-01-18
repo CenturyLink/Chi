@@ -1,6 +1,8 @@
 @import 'variables';
 @import 'mixins';
 
+$border: 0.0625rem;
+
 .a-inputWrapper {
   position: relative;
 }
@@ -13,5 +15,26 @@
     align-items: center;
     display: inline-flex;
     margin-right: 0.5rem;
+  }
+
+  &.-list {
+    border: $border solid set-color(grey, 30);
+    border-radius: $border-radius;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+
+    & li {
+      border-bottom: $border solid set-color(grey, 20);
+      flex: 1 0 auto;
+      line-height: 1rem;
+      padding: (0.5rem - $border) (1rem - $border);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
   }
 }

@@ -57,3 +57,64 @@ p.-text
       <label for="inlineCheckbox2"></label>
       <label class="-text" for="inlineCheckbox2">Option 2</label>
     </div>
+
+h2 Checkbox List
+p.-text
+  | Checkbox lists are used to wrap a series of checkbox on a list.
+
+h3 Examples
+p.-text To render a series of checkbox in a list, apply the class<code>m-formGroup</code> in a list with
+  |  a contextual class <code>-list</code> that apply the right style.
+.example.-mb--3
+  .-p--3
+    h5 Select an option
+    ul.m-formGroup.-list(style="max-width:20rem")
+      li.m-formGroup
+        input(type="checkbox", class="a-input", id="checkbox-1")
+        label(for="checkbox-1")
+        label.-text(for="checkbox-1") Option 1
+      li.m-formGroup
+        input(type="checkbox", class="a-input", id="checkbox-2")
+        label(for="checkbox-2")
+        label.-text(for="checkbox-2") Option 2
+      li.m-formGroup
+        input(type="checkbox", class="a-input", id="checkbox-3")
+        label(for="checkbox-3")
+        label.-text(for="checkbox-3") Option 3
+      li.m-formGroup
+        input(type="checkbox", class="a-input", id="checkbox-4")
+        label(for="checkbox-4")
+        label.-text(for="checkbox-4") Option 4
+      li.m-formGroup
+        input(type="checkbox", class="a-input", id="checkbox-5")
+        label(for="checkbox-5")
+        label.-text(for="checkbox-5") Option 5
+  :code(lang='html')
+    <h5> Select an option </h5>
+    <ul class="m-formGroup -list">
+      <li class="m-formGroup">
+        <input type="checkbox" class="a-input" id="checkbox1">
+        <label for="checkbox1"></label>
+        <label class="-text" for="checkbox1">Option 1</label>
+      </li>
+      <li class="m-formGroup">
+        <input type="checkbox" class="a-input" id="checkbox2">
+        <label for="checkbox2"></label>
+        <label class="-text" for="checkbox2">Option 2</label>
+      </li>
+      <li class="m-formGroup">
+        <input type="checkbox" class="a-input" id="checkbox3">
+        <label for="checkbox3"></label>
+        <label class="-text" for="checkbox3">Option 3</label>
+      </li>
+      <li class="m-formGroup">
+        <input type="checkbox" class="a-input" id="checkbox4">
+        <label for="checkbox4"></label>
+        <label class="-text" for="checkbox4">Option 4</label>
+      </li>
+      <li class="m-formGroup">
+        <input type="checkbox" class="a-input" id="checkbox5">
+        <label for="checkbox5"></label>
+        <label class="-text" for="checkbox5">Option 5</label>
+      </li>
+    </ul>
