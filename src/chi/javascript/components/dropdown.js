@@ -272,7 +272,6 @@ class Dropdown extends Component {
 
   dispose() {
     this._config = null;
-    this._dropdownElem = null;
     this._molecule = null;
     this._shown = null;
     this._eventCaptured = null;

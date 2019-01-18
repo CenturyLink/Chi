@@ -138,7 +138,10 @@ class Navigation extends Component {
   _checkIfCommonLink (elem) {
     return elem.nodeName === 'A' &&
       elem.getAttribute('href') &&
-      !Util.getTarget(elem);
+      (
+        !Util.getTarget(elem) ||
+        !Util.hasClass(Util.getTarget(elem), 'a-tabs-panel')
+      );
   }
 
   manageClickOnCommonLinks (clickEvent) {
