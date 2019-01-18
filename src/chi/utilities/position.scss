@@ -11,17 +11,17 @@
         position: #{$type};
       }
 
-      .-position--#{$type}-top {
-        position: #{$type};
-        top: 0;
+      .-position--#{$type}-bottom {
         left: 0;
+        position: #{$type};
         right: 0;
+        top: 0;
       }
 
-      .-position--#{$type}-bottom {
-        position: #{$type};
+      .-position--#{$type}-top {
         bottom: 0;
         left: 0;
+        position: #{$type};
         right: 0;
       }
     } @else {
@@ -39,17 +39,17 @@
             position: #{$type};
           }
 
-          .-position-#{$size}--#{$type}-top {
-            position: #{$type};
-            top: 0;
+          .-position-#{$size}--#{$type}-bottom {
             left: 0;
+            position: #{$type};
             right: 0;
+            top: 0;
           }
 
-          .-position-#{$size}--#{$type}-bottom {
-            position: #{$type};
+          .-position-#{$size}--#{$type}-top {
             bottom: 0;
             left: 0;
+            position: #{$type};
             right: 0;
           }
         } @else {
