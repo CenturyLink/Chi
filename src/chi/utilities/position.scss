@@ -12,17 +12,17 @@
       }
 
       .-position--#{$type}-bottom {
-        left: 0;
-        position: #{$type};
-        right: 0;
-        top: 0;
-      }
-
-      .-position--#{$type}-top {
         bottom: 0;
         left: 0;
         position: #{$type};
         right: 0;
+      }
+
+      .-position--#{$type}-top {
+        left: 0;
+        position: #{$type};
+        right: 0;
+        top: 0;
       }
     } @else {
       .-position--#{$type} {
@@ -40,17 +40,17 @@
           }
 
           .-position-#{$size}--#{$type}-bottom {
-            left: 0;
-            position: #{$type};
-            right: 0;
-            top: 0;
-          }
-
-          .-position-#{$size}--#{$type}-top {
             bottom: 0;
             left: 0;
             position: #{$type};
             right: 0;
+          }
+
+          .-position-#{$size}--#{$type}-top {
+            left: 0;
+            position: #{$type};
+            right: 0;
+            top: 0;
           }
         } @else {
           .-position-#{$size}--#{$type} {
