@@ -193,6 +193,10 @@ $input-range-track-height: 0.5rem;
           width: 20px;
         }
 
+        &::-ms-tooltip {
+          display: none;
+        }
+
         &::-ms-track {
           @include track-style;
           border-color: transparent;
