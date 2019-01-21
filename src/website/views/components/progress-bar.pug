@@ -1,0 +1,50 @@
+---
+title: Progress bar
+---
+
+p.-text The progressbar role should be used for an element that displays the progress status for a task that take a long time or consists of several steps.
+
+h3 Examples
+p.-text
+  | To render a progress bar use the <code>progress</code> HTML5 tag.
+  | Set the value attribute to the amount of work complete. The default color is green.
+
+h4 Base
+.example.-mb--3
+  .-p--3
+    h5 0%
+    progress(value='0' max='100')
+    h5 50%
+    progress(value='50' max='100')
+    h5 100%
+    progress(value='100' max='100')
+  :code(lang="html")
+    <h5>0%</h5>
+    <progress value="0" max="100" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></progress>
+    <h5>50%</h5>
+    <progress value="50" max="100" max="100" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></progress>
+    <h5>100%</h5>
+    <progress value="100" max="100" max="100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></progress>
+
+h4 States
+p.-text
+  | To indicate a progress-bar state use the class <code> -info -warning -danger -success</code>.
+.example.-mb--3
+  .-p--3
+    h5 Danger
+    progress.-danger(value='75' max='100')
+    h5 Info
+    progress.-info(value='75' max='100')
+    h5 Warning
+    progress.-warning(value='75' max='100')
+    h5 Success
+    progress.-success(value='75' max='100')
+  :code(lang="html")
+    <h5>Danger</h5>
+    <progress class="-danger" value="75" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>
+    <h5>Info</h5>
+    <progress class="-info" value="75" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>
+    <h5>Warning</h5>
+    <progress class="-warning" value="75" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>
+    <h5>Success</h5>
+    <progress class="-success" value="75" max="100" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>
