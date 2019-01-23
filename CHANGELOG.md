@@ -1,5 +1,25 @@
 # CHANGELOG
 
+### 0.9.1 (January 23, 2019)
+
+* Added progress component.
+* Fixed bug in Range Slider component which prevented tooltips from rendering in IE.
+* Added Footer component.
+* Added dropdown and responsive support to Tab component.
+* Updated Position utility with fixed-bottom and fixed-top support.
+* Added concept of grouping to Checkbox and Radio button components.
+* Added Picker component.
+* Added horizontal label support to Steps component.
+* Updated Button component color definition logic in preparation for the rebrand.
+* Updated javascript components to remove redundancies and instantiate consistently.
+* Updated Dropdown component to include the ability to initiate on hover.
+* Added empty and active states to Card component.
+* Added Range slider javascript component.
+* Fixed bug in Button component which colored icons in inverse buttons incorrectly.
+* Added Expansion Panel javascript component.
+* Added Price component.
+* Fixed bug in Drawer component which prevented some drawers from animating.
+
 ### 0.9.0 (December 4, 2018)
 
 * Updated Header component to support black backgrounds.
