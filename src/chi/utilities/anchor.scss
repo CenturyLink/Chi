@@ -1,0 +1,38 @@
+@import 'mixins';
+@import 'variables';
+
+.chi {
+
+  .-anchor {
+    &::before {
+      content: '';
+      display: block;
+      height: 5rem;
+      margin: -5rem 0 0;
+    }
+
+    & span {
+      & a {
+        color: $brand-color;
+        cursor: pointer;
+        font-weight: 600;
+        opacity: 0;
+        transition: opacity 0.15s ease-in-out;
+
+        &:hover {
+          opacity: 1;
+          text-decoration: none;
+        }
+      }
+    }
+
+    @media only screen and (max-width: $md-breakpoint) {
+      &.-anchor {
+        &::before {
+          height: 1rem;
+          margin: -1rem 0 0;
+        }
+      }
+    }
+  }
+}

@@ -45,6 +45,10 @@ function removeClass(item, className) {
   item.className = classes.filter(name => name !== className);
 }
 
+function addId(item) {
+  item.id = item.textContent;
+}
+
 function enableCopyToClipboardFeature (preElem) {
 
   const code = preElem.childNodes && preElem.childNodes[0];
@@ -106,6 +110,20 @@ onLoad(() => {
       addClass(htmlItem, '-hidden');
       removeClass(codeItem, '-hidden');
     };
+  });
+
+  var anchors = document.querySelectorAll('h3,h4');
+
+  Array.prototype.forEach.call(anchors, function(anchor) {
+    addClass(anchor, '-anchor');
+    addId(anchor);
+    const spanContainer = document.createElement('span');
+    const anchorLink = document.createElement('a');
+    spanContainer.appendChild(anchorLink);
+    anchorLink.textContent = '#';
+    anchorLink.setAttribute('class', '-ml--1');
+    anchorLink.setAttribute('href', '#' + anchor.textContent);
+    anchor.appendChild(spanContainer);
   });
 
   var codeSnippets = document.getElementsByTagName('pre');
