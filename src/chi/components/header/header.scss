@@ -14,7 +14,6 @@
     min-height: 4rem;
     padding: .75rem 1rem;
     width: 100%;
-    z-index: 1;
     @include respond-to(sm) {
       height: 4rem;
       padding: 0 1rem;
