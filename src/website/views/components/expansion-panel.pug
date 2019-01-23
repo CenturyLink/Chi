@@ -2,12 +2,11 @@
 title: Expansion panel
 ---
 p.-text
-  | Expansion panels are components designed to be folded and stacked one over the other. It has four states: active,
-  | pending, done and disabled. When it is pending, only the title is shown, when it is active, it unfolds to show its
-  | content, and when it is in state done, only some information is shown to the user. Disabled state is similar to
-  | pending state, but the title is snow in gray and is not clickable. Three classes represent this three states:
-  | <code>-done</code> is for done, <code>-active</code> is for active, <code>-disabled</code> is for disabled and no
-  | class for pending state.
+  | Expansion panels are components designed to be folded and stacked in sequence. They have four states: active,
+  | pending, done and disabled. When pending, only the title is shown. When active, panels expand to show
+  | content or forms. When done, content or form data is presented in a read only state. When disabled, a muted title
+  | is shown in a non-clickable state. Three classes represent these states:
+  | <code>-done</code>, <code>-active</code>, and <code>-disabled</code>. Pending is the default state.
 
 .example.-mb3
   .-p3
