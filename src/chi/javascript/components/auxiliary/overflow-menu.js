@@ -15,7 +15,7 @@ class OverflowMenu {
     this._config = Util.extend(
       {
         tabComponent: null,
-        overflowMenuLabel: 'More…'
+        overflowMenuLabel: 'More...'
       }, config
     );
     this._navigationComponent = navigation;
