@@ -8,7 +8,8 @@ const DEFAULT_CONFIG = {
   parent: null,
   position: 'top',
   animate: true,
-  delayBeforeClosing: 200
+  delayBeforeClosing: 200,
+  content: null
 };
 
 class Popover extends Component{
@@ -149,8 +150,11 @@ class Popover extends Component{
     this._popoverElem.id =
       this._popoverElem.id ||
       'chi-' + COMPONENT_TYPE + '-' + this.componentCounterNo;
-    this._popoverElem.innerHTML = this._elem.dataset.popoverContent +
-      '<div class="a-arrow"></div>';
+    this.setContent(
+      this._config.content ||
+      this._elem.dataset.popoverContent ||
+      ''
+    );
     this._elem.parentNode.appendChild(this._popoverElem);
     this._elem.setAttribute('aria-describedby', this._popoverElem.id);
     this._popoverElem.setAttribute('aria-hidden', 'true');
@@ -200,6 +204,18 @@ class Popover extends Component{
       removeOnDestroy: true,
       placement: this._config.position
     });
+  }
+
+  setContent (content) {
+    Util.empty(this._popoverElem);
+    if (content instanceof Element) {
+      this._popoverElem.appendChild(content);
+      const arrow = document.createElement('div');
+      arrow.className = 'a-arrow';
+      this._popoverElem.appendChild(arrow);
+    } else {
+      this._popoverElem.innerHTML = content + '<div class="a-arrow"></div>';
+    }
   }
 
   dispose() {

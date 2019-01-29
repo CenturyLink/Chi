@@ -106,6 +106,31 @@ section.a-table.a-table__options.-bordered.-my--3
           td
             div
               | Enables animation on popover display and hide.
+        tr
+          td
+            div
+              code= 'content'
+          td
+            div
+              code= 'null'
+          td
+            div
+              | Lets the developer include the popover content programmatically on the creation phase.
+h3 Methods
+h4 .setContent()
+p.-text
+  | You can use this method to change the content of the popover. This will discard any previously attached content.
+  | Developers should remove any resources attached to the content by themselves to prevent memory leaks. This method
+  | accepts string or Element as a parameter.
+.example.-mb--3
+  .-p--3
+    button#popover-2(data-popover-content='<div class="-p--2">Hello</div>').a-btn.-mr--2 Popover
+  :code(lang='html')
+    <button id='popover-2' class="a-btn" data-popover-content='<div class="-p--2">Hello</div>'>Popover</button>
+    <script>
+      var popover = chi.popover(document.getElementById('popover-2'));
+      popover.setContent('<div class="-p--2">Goodbye</div>');
+    </script>
 
 h4 Preventing memory leaks
 p.-text
@@ -137,6 +162,8 @@ script.
     function() {
       chi.Popover.initAll();
       chi.tab(document.getElementById('a-tabs--positioning'));
+      var popover2 = chi.popover(document.getElementById('popover-2'));
+      popover2.setContent('<div class="-p--2">Goodbye</div>');
     },
     false
   );
