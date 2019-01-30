@@ -1,5 +1,68 @@
 @import 'button-groups-variables';
 
+$border: 0.0625rem;
+
+$sizes: (
+  sm: (
+    border-radius: 0.75rem,
+    padding: 0.5rem,
+    padding_hover: (0.5rem - $border),
+    icons: (
+      padding: 0.375rem,
+      padding_hover: (0.375rem - $border),
+    )
+  ),
+  // Legacy code start
+  small: (
+    border-radius: 0.75rem,
+    padding: 0.5rem,
+    padding_hover: (0.5rem - $border),
+    icons: (
+      padding: 0.375rem,
+      padding_hover: (0.375rem - $border),
+    )
+  ),
+  // Legacy code end
+  md: (
+    border-radius: 1rem,
+    padding: 1rem,
+    padding_hover: (1rem - $border),
+    icons: (
+      padding: 0.5rem,
+      padding_hover: (0.5rem - $border),
+    )
+  ),
+  lg: (
+    border-radius: 1.25rem,
+    padding: 1.5rem,
+    padding_hover: (1.5rem - $border),
+    icons: (
+      padding: 0.75rem,
+      padding_hover: (0.75rem - $border),
+    )
+  ),
+  // Legacy code start
+  large: (
+    border-radius: 1.25rem,
+    padding: 1.5rem,
+    padding_hover: (1.5rem - $border),
+    icons: (
+      padding: 0.75rem,
+      padding_hover: (0.75rem - $border),
+    )
+  ),
+  // Legacy code end
+  xl: (
+    border-radius: 1.5rem,
+    padding: 1.5rem,
+    padding_hover: (1.5rem - $border),
+    icons: (
+      padding: 1rem,
+      padding_hover: (1rem - $border),
+    )
+  )
+);
+
 .chi {
   .m-btnGroup {
     display: inline-flex;
@@ -22,19 +85,13 @@
               padding-right: 0.5rem;
             }
 
-            &.-small {
-              padding-right: 0.5rem;
+            @each $type in map-keys($sizes) {
+              &.-#{$type} {
+                padding-right: map-get(map-get($sizes, $type), padding);
 
-              &.-icon {
-                padding-right: 0.375rem;
-              }
-            }
-
-            &.-large {
-              padding-right: 1.5rem;
-
-              &.-icon {
-                padding-right: 0.625rem;
+                &.-icon {
+                  padding-right: map-get(map-get(map-get($sizes, $type), icons), padding);
+                }
               }
             }
 
@@ -53,19 +110,13 @@
                 padding-right: 0.4375rem;
               }
 
-              &.-small {
-                padding-right: 0.4375rem;
+              @each $type in map-keys($sizes) {
+                &.-#{$type} {
+                  padding-right: map-get(map-get($sizes, $type), padding_hover);
 
-                &.-icon {
-                  padding-right: 0.3125rem;
-                }
-              }
-
-              &.-large {
-                padding-right: 1.4375rem;
-
-                &.-icon {
-                  padding-right: 0.5625rem;
+                  &.-icon {
+                    padding-right: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
+                  }
                 }
               }
             }
@@ -83,19 +134,13 @@
                 padding-right: 0.4375rem;
               }
 
-              &.-small {
-                padding-right: 0.4375rem;
+              @each $type in map-keys($sizes) {
+                &.-#{$type} {
+                  padding-right: map-get(map-get($sizes, $type), padding_hover);
 
-                &.-icon {
-                  padding-right: 0.3125rem;
-                }
-              }
-
-              &.-large {
-                padding-right: 1.4375rem;
-
-                &.-icon {
-                  padding-right: 0.5625rem;
+                  &.-icon {
+                    padding-right: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
+                  }
                 }
               }
 
@@ -107,19 +152,13 @@
                   padding-left: 0.5rem;
                 }
 
-                &.-small {
-                  padding-left: 0.5rem;
+                @each $type in map-keys($sizes) {
+                  &.-#{$type} {
+                    padding-left: map-get(map-get($sizes, $type), padding);
 
-                  &.-icon {
-                    padding-left: 0.375rem;
-                  }
-                }
-
-                &.-large {
-                  padding-left: 1.5rem;
-
-                  &.-icon {
-                    padding-left: 0.625rem;
+                    &.-icon {
+                      padding-left: map-get(map-get(map-get($sizes, $type), icons), padding);
+                    }
                   }
                 }
               }
@@ -136,19 +175,13 @@
                   padding-left: 0.4375rem;
                 }
 
-                &.-small {
-                  padding-left: 0.4375rem;
+                @each $type in map-keys($sizes) {
+                  &.-#{$type} {
+                    padding-left: map-get(map-get($sizes, $type), padding_hover);
 
-                  &.-icon {
-                    padding-left: 0.3125rem;
-                  }
-                }
-
-                &.-large {
-                  padding-left: 1.4375rem;
-
-                  &.-icon {
-                    padding-left: 0.5625rem;
+                    &.-icon {
+                      padding-left: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
+                    }
                   }
                 }
               }
@@ -156,32 +189,25 @@
           }
 
           &.-flat {
+            border: 0.0625rem solid transparent;
             border-radius: $border-radius;
-            padding-left: 1rem;
-            padding-right: 1rem;
+            padding-left: 0.9375rem;
+            padding-right: 0.9375rem;
 
             &.-icon {
-              padding-left: 0.5rem;
-              padding-right: 0.5rem;
+              padding-left: 0.4375rem;
+              padding-right: 0.4375rem;
             }
 
-            &.-small {
-              padding-left: 0.5rem;
-              padding-right: 0.5rem;
+            @each $type in map-keys($sizes) {
+              &.-#{$type} {
+                padding-left: map-get(map-get($sizes, $type), padding_hover);
+                padding-right: map-get(map-get($sizes, $type), padding_hover);
 
-              &.-icon {
-                padding-left: 0.375rem;
-                padding-right: 0.375rem;
-              }
-            }
-
-            &.-large {
-              padding-left: 1.5rem;
-              padding-right: 1.5rem;
-
-              &.-icon {
-                padding-left: 0.625rem;
-                padding-right: 0.625rem;
+                &.-icon {
+                  padding-left: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
+                  padding-right: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
+                }
               }
             }
 
@@ -191,6 +217,7 @@
             &.-hover,
             &:focus,
             &.-focus {
+              border: 0.0625rem solid set-color(grey, 40);
               padding-left: 0.9375rem;
               padding-right: 0.9375rem;
 
@@ -199,23 +226,15 @@
                 padding-right: 0.4375rem;
               }
 
-              &.-small {
-                padding-left: 0.4375rem;
-                padding-right: 0.4375rem;
+              @each $type in map-keys($sizes) {
+                &.-#{$type} {
+                  padding-left: map-get(map-get($sizes, $type), padding_hover);
+                  padding-right: map-get(map-get($sizes, $type), padding_hover);
 
-                &.-icon {
-                  padding-left: 0.3125rem;
-                  padding-right: 0.3125rem;
-                }
-              }
-
-              &.-large {
-                padding-left: 1.4375rem;
-                padding-right: 1.4375rem;
-
-                &.-icon {
-                  padding-left: 0.5625rem;
-                  padding-right: 0.5625rem;
+                  &.-icon {
+                    padding-left: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
+                    padding-right: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
+                  }
                 }
               }
             }
@@ -234,25 +253,16 @@
             border-top-right-radius: 1rem;
           }
 
-          &.-small {
-            &:first-child {
-              border-bottom-left-radius: 0.75rem;
-              border-top-left-radius: 0.75rem;
-            }
-            &:last-child {
-              border-bottom-right-radius: 0.75rem;
-              border-top-right-radius: 0.75rem;
-            }
-          }
-
-          &.-large {
-            &:first-child {
-              border-bottom-left-radius: 1.25rem;
-              border-top-left-radius: 1.25rem;
-            }
-            &:last-child {
-              border-bottom-right-radius: 1.25rem;
-              border-top-right-radius: 1.25rem;
+          @each $type in map-keys($sizes) {
+            &.-#{$type} {
+              &:first-child {
+                border-bottom-left-radius: map-get(map-get($sizes, $type), border-radius);
+                border-top-left-radius: map-get(map-get($sizes, $type), border-radius);
+              }
+              &:last-child {
+                border-bottom-right-radius: map-get(map-get($sizes, $type), border-radius);
+                border-top-right-radius: map-get(map-get($sizes, $type), border-radius);
+              }
             }
           }
         }
