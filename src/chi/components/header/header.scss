@@ -7,20 +7,12 @@
     background-color: set-color(white);
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.04), 0 2px 2px 0 rgba(0,0,0,.12);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-shrink: 0;
     justify-content: center;
     height: auto;
     min-height: 4rem;
-    padding: .75rem 1rem;
     width: 100%;
-    @include respond-to(sm) {
-      height: 4rem;
-      padding: 0 1rem;
-    }
-    @include respond-to(md) {
-      padding: 0 1.5rem;
-    }
 
     &__content {
       align-items: center;
@@ -92,6 +84,41 @@
       }
     }
 
+    & .a-navbar {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      justify-content: center;
+      height: auto;
+      min-height: 4rem;
+      padding: .75rem 1rem;
+      width: 100%;
+      @include respond-to(sm) {
+        padding: 0 1rem;
+      }
+      @include respond-to(md) {
+        padding: 0 1.5rem;
+      }
+    }
+
+    & .a-navbar__top {
+      border-bottom: 0.0625rem solid rgba(set-color(black), 0.12);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      justify-content: center;
+      height: auto;
+      min-height: 3rem;
+      padding: .75rem 1rem;
+      width: 100%;
+      @include respond-to(sm) {
+        padding: 0 1rem;
+      }
+      @include respond-to(md) {
+        padding: 0 1.5rem;
+      }
+    }
+
     &.-inverse {
       background-color: set-color(black);
 
@@ -99,7 +126,7 @@
         color: set-color(grey, 50);
       }
 
-      .a-tabs li {
+      .a-tabs li, li {
         & > a {
           color: set-color(white);
 
@@ -111,6 +138,10 @@
         &.-active > a {
           color: $brand-color;
         }
+      }
+
+      & .a-navbar__top {
+        border-bottom: 0.0625rem solid rgba(set-color(white), 0.2);
       }
     }
   }
