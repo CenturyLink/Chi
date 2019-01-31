@@ -114,13 +114,13 @@ h3 Text colors
 p.-text Change text colors with contextual classes.
 .example.-mb--3
   .-m--3
-    each type in ['text--body', 'text--brand', 'text--success', 'text--warning', 'text--danger', 'text--info', 'text--muted']
+    each type in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--info', 'text--muted']
       p.-text(class=`-${type}`)
         = `.-${type}`
     p.-text.-text--white(style="background:#000;") .-text--white
   :code(lang="html")
       <p class="-text--body">.-text--body</p>
-      <p class="-text--brand">.-text--brand</p>
+      <p class="-text--primary">.-text--primary</p>
       <p class="-text--success">.-text--success</p>
       <p class="-text--warning">.-text--warning</p>
       <p class="-text--danger">.-text--danger</p>

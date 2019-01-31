@@ -7,7 +7,7 @@ h2 Backdrop
 h3 Base
 .example.-mb--3(style="height:30rem;width:100%")
   .a-backdrop.-p--6(style="position:relative;height:100%;")
-    svg(class=`a-spinner -text--brand`,viewBox=`0 0 66 66`)
+    svg(class=`a-spinner -text--primary`,viewBox=`0 0 66 66`)
       title Loading
       circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
 
@@ -75,7 +75,7 @@ h2 Sizes
 h2 Colors
 .test-sizes
   .a-grid.-align-items--center
-    each type in ['text--brand', 'text--success', 'text--warning', 'text--danger', 'text--info', 'text--muted']
+    each type in ['text--primary', 'text--success', 'text--warning', 'text--danger', 'text--info', 'text--muted']
       div.-p--2
         svg(class=`a-spinner -${type} -lg -m--3`,viewBox=`0 0 66 66`)
           title Loading

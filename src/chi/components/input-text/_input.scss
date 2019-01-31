@@ -10,7 +10,7 @@
       &.a-input {
         border: 0.0625rem solid set-color(grey, 30);
         border-radius: $border-radius;
-        color: set-color(grey, 90);
+        color: $text-color;
         display: block;
         font-size: $text;
         height: 2rem;
@@ -32,7 +32,7 @@
         &:focus,
         &.-focus {
           border-color: $focus-color;
-          box-shadow: 0 0 0 3px rgba($focus-color, 0.3);
+          box-shadow: 0 0 0 1px rgba($focus-color, 1);
         }
 
         &[disabled],
@@ -73,7 +73,7 @@
 
             &:focus,
             &.-focus {
-              box-shadow: 0 0 0 3px rgba(set-color(map-get($state-colors, $type), 50), 0.2);
+              box-shadow: 0 0 0 1px rgba(set-color(map-get($state-colors, $type), 50), 1);
             }
           }
         }

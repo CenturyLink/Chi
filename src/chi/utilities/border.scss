@@ -48,8 +48,9 @@
 
   /* Border Colors */
 
-  .-bBrand {
-    border-color: $brand-color;
+  .-bBrand,
+  .-bPrimary {
+    border-color: $primary-color;
   }
 
   .-bSuccess {
@@ -58,10 +59,6 @@
 
   .-bDanger {
     border-color: $danger-color;
-  }
-
-  .-bInfo {
-    border-color: $info-color;
   }
 
   .-bWarning {
@@ -87,10 +84,9 @@
   );
 
   $border-colors: (
-    brand: $brand-color,
+    primary: $primary-color,
     success: $success-color,
     danger: $danger-color,
-    info: $info-color,
     warning: $warning-color,
     dark: $dark-color,
     light: $light-color

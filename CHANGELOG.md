@@ -1,5 +1,8 @@
 # CHANGELOG
 
+### 1.0.0 (February 5, 2019)
+* Updated colors to comply with new guidelines from brand team.
+
 ### 0.9.1 (January 23, 2019)
 
 * Added progress component.

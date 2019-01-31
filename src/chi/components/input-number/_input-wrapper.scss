@@ -182,7 +182,7 @@ $m-inputNumber: (
     }
 
     & > button {
-      color: $brand-color;
+      color: $text-color;
       display: block;
       height: map-get(map-get($m-inputNumber, md), button-height);
 

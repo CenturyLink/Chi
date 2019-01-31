@@ -21,7 +21,7 @@
 
       &__aside {
         background-color: set-color(white);
-        border-bottom: 0.0625rem solid rgba(set-color(black), 0.12);
+        border-bottom: 0.0625rem solid set-color(grey, 25);
         border-right: 0;
         height: 100%;
         left: 0;
@@ -32,7 +32,7 @@
         top: 64px;
         width: 100%;
         @include respond-to(lg) {
-          border-right: 0.0625rem solid rgba(set-color(black), 0.12);
+          border-right: 0.0625rem solid set-color(grey, 25);
           border-bottom: 0;
           padding-bottom: 4.5rem;
           position: fixed;
@@ -111,14 +111,14 @@
           }
         }
         .example {
-          border: 0.0625rem solid rgba(set-color(black), 0.12);
+          border: 0.0625rem solid set-color(grey, 25);
           border-radius: 0.15em;
 
           pre[class*=language-] {
             margin: 0;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
-            border-top: 0.0625rem solid rgba(set-color(black), 0.12);
+            border-top: 0.0625rem solid set-color(grey, 25);
           }
           .code-block>pre {
             border-top: 0;

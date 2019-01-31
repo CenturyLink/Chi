@@ -12,7 +12,7 @@ h4 SVG & JS Method
 p.-text SVG based implementations provide better semantics, accessibility, rendering, and reliability. Place the following script in your projects footer to use this method.
 .-mb--2
   :code(lang='html')
-    <script src="https://assets.ctl.io/chi/0.9.1/chi-icons.js"></script>
+    <script src="https://assets.ctl.io/chi/1.0.0/chi-icons.js"></script>
 p.-text Then to render an SVG icon, apply the class <code>a-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
 .example.-mb--3
   .-p--3
@@ -92,7 +92,7 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
 .example.-mb--3
   .-p--3
     .a-grid.-align-items--end
-      each color in ['Base', 'Brand', 'Success', 'Warning', 'Danger', 'Info', 'Inverse', 'Muted']
+      each color in ['Base', 'Primary', 'Success', 'Warning', 'Danger', 'Info', 'Inverse', 'Muted']
         div.-p--2
           div(class=`a-icon -md -text${color}`)
             svg
@@ -105,7 +105,7 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
   #a-tabs-panel--colors-svg.a-tabs-panel.-active
     :code(lang="html")
       <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -text--brand"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -text--primary"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--success"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--warning"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--danger"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
@@ -115,7 +115,7 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
   #a-tabs-panel--colors-webfont.a-tabs-panel
     :code(lang="html")
       <i class="a-icon icon-logo-centurylink -md"></i>
-      <i class="a-icon icon-logo-centurylink -md -text--brand"></i>
+      <i class="a-icon icon-logo-centurylink -md -text--primary"></i>
       <i class="a-icon icon-logo-centurylink -md -text--success"></i>
       <i class="a-icon icon-logo-centurylink -md -text--warning"></i>
       <i class="a-icon icon-logo-centurylink -md -text--danger"></i>

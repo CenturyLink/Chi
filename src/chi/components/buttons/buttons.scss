@@ -2,20 +2,20 @@
 @import 'variables';
 
 $state-colors: (
-  brand: (
-    color: emerald,
-    tone: 60,
-    tone-hover: 70,
-    tone-focus: 80
+  primary: (
+    color: navy,
+    tone: 70,
+    tone-hover: 80,
+    tone-focus: 90
+  ),
+  secondary: (
+    color: mint,
+    tone: 40,
+    tone-hover: 50,
+    tone-focus: 60
   ),
   danger: (
     color: red,
-    tone: 60,
-    tone-hover: 70,
-    tone-focus: 80
-  ),
-  info: (
-    color: navy,
     tone: 60,
     tone-hover: 70,
     tone-focus: 80
@@ -587,10 +587,10 @@ $sizes: (
           &.-outline {
             background-color: set-color(white);
             border: $border solid set-color($color, $tone);
-            color: set-color($color, 60);
+            color: set-color($color, $tone);
 
             .a-spinner__icon .path {
-              stroke: set-color($color, 60);
+              stroke: set-color($color, $tone);
             }
 
             &:hover,
