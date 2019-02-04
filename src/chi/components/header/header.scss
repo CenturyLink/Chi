@@ -101,7 +101,6 @@
       }
 
       &.-top {
-        border-bottom: 0.0625rem solid rgba(set-color(black), 0.12);
         display: flex;
         flex-direction: column;
         flex-shrink: 0;
@@ -137,12 +136,6 @@
 
         &.-active > a {
           color: $brand-color;
-        }
-      }
-
-      & .a-navbar {
-        &.-top {
-          border-bottom: 0.0625rem solid rgba(set-color(white), 0.2);
         }
       }
     }
