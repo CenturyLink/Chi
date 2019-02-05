@@ -5,19 +5,44 @@ p.-text
   | Floating labels rely on JavaScript to add/remove the <code>-active</code> class whenever the input focuses or has
   | a value.
 
+h3 Input boxes
 .example.-mb--3
   .-p--3
     div(class=`a-col -w--12 -p--2`)
       .a-inputWrapper.-floatingLabel(style="max-width:20rem")
-        input(type="text", class=`a-input -xl -mr--3`, id="floating-label-xl")
-        label(for="floating-label-xl") Placeholder text
+        input(type="text", class=`a-input -xl -mr--3`, id="floating-label-1")
+        label(for="floating-label-1") Placeholder text
   :code(lang='html')
     <div id="floating-label-1" class="a-inputWrapper -floatingLabel">
-      <input class="a-input -xl" type="text" id="floating-label-xl">
-      <label for="floating-label-xl">Placeholder text</label>
+      <input class="a-input -xl" type="text" id="floating-label-input">
+      <label for="floating-label-input">Placeholder text</label>
     </div>
 
     <script>chi.floatingLabel(document.getElementById('floating-label-1'));</script>
+
+h3 Select boxes
+.example.-mb--3
+  .-p--3
+    div(class=`a-col -w--12 -p--2`)
+      .a-inputWrapper.-floatingLabel(style="max-width:20rem")
+        select#floating-label-select.a-input.-xl.-mr--3
+          option
+          option Option 1
+          option Option 2
+          option Option 3
+        label(for="floating-label-select") Placeholder text
+  :code(lang='html')
+    <div id="floating-label-2" class="a-inputWrapper -floatingLabel">
+      <select class="a-input -xl" id="floating-label-select">
+        <option></option>
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </select>
+      <label for="floating-label-select">Placeholder text</label>
+    </div>
+
+    <script>chi.floatingLabel(document.getElementById('floating-label-2'));</script>
 
 h4 Preventing memory leaks
 p.-text
