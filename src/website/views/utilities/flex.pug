@@ -1,5 +1,6 @@
 ---
 title: Flex
+styles: [show-example]
 ---
 
 p.-text Use shorthand flex utility classes to manage the layout, alignment, and size of Chi components.
@@ -9,14 +10,14 @@ p.-text To enable flex, apply a flex display utility class. This will transform
   |  your element into a flexbox container and its direct children into flex items.
 h4 Flexbox container
 .example.-mb--3
-  .-p--3
-    .-text.-p--2.-m--1.-b--1.-d--flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--flex
+  .-p--3.-show--example
+    .-text.-p--2.-m--1.-d--flex -d--flex
   :code(lang="html")
     <div class="-d--flex"></div>
 h4 Inline Flexbox container
 .example.-mb--3
-  .-p--3
-    .-text.-p--2.-m--1.-b--1.-d--inline-flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--inline-flex
+  .-p--3.-show--example
+    .-text.-p--2.-m--1.-d--inline-flex -d--inline-flex
   :code(lang="html")
     <div class="-d--inline-flex"></div>
 
@@ -38,10 +39,10 @@ h4 Row (default)
 p.-text Use <code>.-flex--row</code> to display items horizontally. In most cases this class
   |  can be omitted as it is the browsers default behavior.
 .example.-mb--3
-  .-p--3.-d--flex.-flex--row
-    .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 1
-    .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 2
-    .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 3
+  .-p--3.-d--flex.-flex--row.-show--example
+    .-text.-p--2 Item 1
+    .-text.-p--2 Item 2
+    .-text.-p--2 Item 3
   :code(lang="html")
     <div class="-d--flex -flex--row">
       <div>Item 1</div>
@@ -51,10 +52,10 @@ p.-text Use <code>.-flex--row</code> to display items horizontally. In most case
 h4 Row reverse
 p.-text Use <code>.-flex--row-reverse</code> to display the items horizontally in reverse.
 .example.-mb--3
-  .-p--3.-d--flex.-flex--row-reverse
-    .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 1
-    .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 2
-    .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 3
+  .-p--3.-d--flex.-flex--row-reverse.-show--example
+    .-text.-p--2 Item 1
+    .-text.-p--2 Item 2
+    .-text.-p--2 Item 3
   :code(lang="html")
     <div class="-d--flex -flex--row-reverse">
       <div>Item 1</div>
@@ -64,10 +65,10 @@ p.-text Use <code>.-flex--row-reverse</code> to display the items horizontally i
 h4 Column
 p.-text Use <code>.-flex--column</code> to display items vertically.
 .example.-mb--3
-  .-p--3.-d--flex.-flex--column
-    .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 1
-    .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 2
-    .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 3
+  .-p--3.-d--flex.-flex--column.-show--example
+    .-text.-p--2 Item 1
+    .-text.-p--2 Item 2
+    .-text.-p--2 Item 3
   :code(lang="html")
     <div class="-d--flex -flex--column">
       <div>Item 1</div>
@@ -77,10 +78,10 @@ p.-text Use <code>.-flex--column</code> to display items vertically.
 h4 Column reverse
 p.-text Use <code>.-flex--column-reverse</code> to display the items vertically in reverse.
 .example.-mb--3
-  .-p--3.-d--flex.-flex--column-reverse
-    .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 1
-    .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 2
-    .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 3
+  .-p--3.-d--flex.-flex--column-reverse.-show--example
+    .-text.-p--2 Item 1
+    .-text.-p--2 Item 2
+    .-text.-p--2 Item 3
   :code(lang="html")
     <div class="-d--flex -flex--column-reverse">
       <div>Item 1</div>
@@ -107,10 +108,10 @@ p.-text Use justify-content utilities to alter the alignment of flex items on th
 .example.-mb--3
   .-p--3.-pb--1
     each type in ['start', 'end', 'center', 'between', 'around']
-      .-mb--2.-d--flex(style="background:#F2FAE6;", class='-justify-content--' + type)
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 1
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 2
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 3
+      .-mb--2.-d--flex.-show--example(style="background:#EDFAF3;", class='-justify-content--' + type)
+        .-text.-p--2 Item 1
+        .-text.-p--2 Item 2
+        .-text.-p--2 Item 3
   :code(lang="html")
     <div class="-d--flex -justify-content--start"></div>
     <div class="-d--flex -justify-content--end"></div>
@@ -132,10 +133,10 @@ p.-text Use align-items utilities to alter the alignment of flex items on the cr
 .example.-mb--3
   .-p--3.-pb--1
     each type in ['start', 'end', 'center', 'baseline', 'stretch']
-      .-mb--2.-d--flex(style="background:#F2FAE6;height:7rem;", class='-align-items--' + type)
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 1
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 2
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item 3
+      .-mb--2.-d--flex.-show--example(style="background:#EDFAF3;", class='-align-items--' + type)
+        .-text.-p--2 Item 1
+        .-text.-p--2 Item 2
+        .-text.-p--2 Item 3
   :code(lang="html")
     <div class="-d--flex -align-items--start"></div>
     <div class="-d--flex -align-items--end"></div>
@@ -158,10 +159,10 @@ p.-text Use align-self utilities to alter the alignment of individual flex items
 h4 Start
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex(style="background:#F2FAE6;height:7rem;")
-      .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
-      .-text.-p--2.-b--1.-align-self--start(style="background:#E4F2CE;border-color:#C6DBA7;") Aligned Item
-      .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+    .-mb--2.-d--flex.-show--example(style="background:#EDFAF3;height:7rem;")
+      .-text.-p--2 Item
+      .-text.-p--2.-align-self--start Aligned Item
+      .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex">
       <div>Item</div>
@@ -171,10 +172,10 @@ h4 Start
 h4 End
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex(style="background:#F2FAE6;height:7rem;")
-      .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
-      .-text.-p--2.-b--1.-align-self--end(style="background:#E4F2CE;border-color:#C6DBA7;") Aligned Item
-      .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+    .-mb--2.-d--flex.-show--example(style="background:#EDFAF3;height:7rem;")
+      .-text.-p--2 Item
+      .-text.-p--2.-align-self--end Aligned Item
+      .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex">
       <div>Item</div>
@@ -184,10 +185,10 @@ h4 End
 h4 Center
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex(style="background:#F2FAE6;height:7rem;")
-      .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
-      .-text.-p--2.-b--1.-align-self--center(style="background:#E4F2CE;border-color:#C6DBA7;") Aligned Item
-      .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+    .-mb--2.-d--flex.-show--example(style="background:#EDFAF3;height:7rem;")
+      .-text.-p--2 Item
+      .-text.-p--2.-align-self--center Aligned Item
+      .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex">
       <div>Item</div>
@@ -197,10 +198,10 @@ h4 Center
 h4 Baseline
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex(style="background:#F2FAE6;height:7rem;")
-      .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
-      .-text.-p--2.-b--1.-align-self--baseline(style="background:#E4F2CE;border-color:#C6DBA7;") Aligned Item
-      .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+    .-mb--2.-d--flex.-show--example(style="background:#EDFAF3;height:7rem;")
+      .-text.-p--2 Item
+      .-text.-p--2.-align-self--baseline Aligned Item
+      .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex">
       <div>Item</div>
@@ -210,10 +211,10 @@ h4 Baseline
 h4 Stretch (Browser default)
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex(style="background:#F2FAE6;height:7rem;")
-      .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
-      .-text.-p--2.-b--1.-align-self--stretch(style="background:#E4F2CE;border-color:#C6DBA7;") Aligned Item
-      .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+    .-mb--2.-d--flex.-show--example(style="background:#EDFAF3;height:7rem;")
+      .-text.-p--2 Item
+      .-text.-p--2.-align-self--stretch Aligned Item
+      .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex">
       <div>Item</div>
@@ -235,9 +236,9 @@ p.-text Use wrap utilities to define how flex items wrap in a flex container.
 h4 No Wrap (default)
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex.-flex--nowrap.-align-items--start(style="background:#F2FAE6;height:116px;width:224px;")
+    .-mb--2.-d--flex.-flex--nowrap.-align-items--start.-show--example(style="background:#EDFAF3;height:116px;width:224px;")
       each item in new Array(4)
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+        .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex -align-items--start -flex--nowrap" style="height:116px;width:224px;">
       <div>Item</div>
@@ -245,9 +246,9 @@ h4 No Wrap (default)
 h4 Wrap
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex.-flex--wrap.-align-items--start(style="background:#F2FAE6;height:116px;width:224px;")
+    .-mb--2.-d--flex.-flex--wrap.-align-items--start.-show--example(style="background:#EDFAF3;height:116px;width:224px;")
       each item in new Array(4)
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+        .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex -align-items--start -flex--wrap" style="height:116px;width:224px;">
       <div>Item</div>
@@ -255,9 +256,9 @@ h4 Wrap
 h4 Wrap Reverse
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex.-flex--wrap-reverse.-align-items--start(style="background:#F2FAE6;height:116px;width:224px;")
+    .-mb--2.-d--flex.-flex--wrap-reverse.-align-items--start.-show--example(style="background:#EDFAF3;height:116px;width:224px;")
       each item in new Array(4)
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+        .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex -align-items--start -flex--wrap-reverse" style="height:116px;width:224px;">
       <div>Item</div>
@@ -277,9 +278,9 @@ p.-text Use align-content utilities on flexbox containers to alter the alignment
 h4 Start (default)
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex.-align-content--start.-flex--wrap(style="background:#F2FAE6;height:12rem;")
+    .-mb--2.-d--flex.-align-content--start.-flex--wrap.-show--example(style="background:#EDFAF3;height:12rem;")
       each item in new Array(20)
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+        .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex -align-content--start -flex--wrap">
       <div>Item</div>
@@ -287,9 +288,9 @@ h4 Start (default)
 h4 End
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex.-align-content--end.-flex--wrap(style="background:#F2FAE6;height:12rem;")
+    .-mb--2.-d--flex.-align-content--end.-flex--wrap.-show--example(style="background:#EDFAF3;height:12rem;")
       each item in new Array(20)
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+        .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex -align-content--end -flex--wrap">
       <div>Item</div>
@@ -297,9 +298,9 @@ h4 End
 h4 Center
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex.-align-content--center.-flex--wrap(style="background:#F2FAE6;height:12rem;")
+    .-mb--2.-d--flex.-align-content--center.-flex--wrap.-show--example(style="background:#EDFAF3;height:12rem;")
       each item in new Array(20)
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+        .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex -align-content--center -flex--wrap">
       <div>Item</div>
@@ -307,9 +308,9 @@ h4 Center
 h4 Around
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex.-align-content--around.-flex--wrap(style="background:#F2FAE6;height:12rem;")
+    .-mb--2.-d--flex.-align-content--around.-flex--wrap.-show--example(style="background:#EDFAF3;height:12rem;")
       each item in new Array(20)
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+        .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex -align-content--around -flex--wrap">
       <div>Item</div>
@@ -317,9 +318,9 @@ h4 Around
 h4 Between
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex.-align-content--between.-flex--wrap(style="background:#F2FAE6;height:12rem;")
+    .-mb--2.-d--flex.-align-content--between.-flex--wrap.-show--example(style="background:#EDFAF3;height:12rem;")
       each item in new Array(20)
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+        .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex -align-content--between -flex--wrap">
       <div>Item</div>
@@ -327,9 +328,9 @@ h4 Between
 h4 Stretch
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex.-align-content--stretch.-flex--wrap(style="background:#F2FAE6;height:12rem;")
+    .-mb--2.-d--flex.-align-content--stretch.-flex--wrap.-show--example(style="background:#EDFAF3;height:12rem;")
       each item in new Array(20)
-        .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+        .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex -align-content--stretch -flex--wrap">
       <div>Item</div>
@@ -349,9 +350,9 @@ h3 Fill
 p.-text Use the <code>.-flex--fill</code> class on flexbox items to display as equal widths while taking up all available horizontal space.
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex(style="background:#F2FAE6;")
+    .-mb--2.-d--flex.-show--example(style="background:#EDFAF3;")
       each item in new Array(3)
-        .-text.-p--2.-b--1.-flex--fill(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+        .-text.-p--2.-flex--fill Item
   :code(lang="html")
     <div class="-d--flex">
       <div class="-flex--fill">Item</div>
@@ -370,10 +371,10 @@ h3 Grow
 p.-text Use the <code>.-flex--grow*</code> class to toggle a flex item's ability to grow and take up all available space.
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex(style="background:#F2FAE6;")
-      .-text.-p--2.-b--1.-flex--grow1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
-      .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
-      .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;") Item
+    .-mb--2.-d--flex.-show--example(style="background:#EDFAF3;")
+      .-text.-p--2.-flex--grow1 Item
+      .-text.-p--2 Item
+      .-text.-p--2 Item
   :code(lang="html")
     <div class="-d--flex">
       <div class="-flex--grow1">Item</div>
@@ -395,9 +396,9 @@ h3 Shrink
 p.-text Use the <code>.-flex--shrink*</code> class to toggle a flex item's ability to shrink when its size is larger than its container.
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex(style="background:#F2FAE6;")
-      .-text.-p--2.-b--1(style="background:#E4F2CE;border-color:#C6DBA7;width:100%;") Item
-      .-text.-p--2.-b--1.-flex--shrink1(style="background:#E4F2CE;border-color:#C6DBA7;") Shrink Item
+    .-mb--2.-d--flex.-show--example(style="background:#EDFAF3;")
+      .-text.-p--2(style="width:100%;") Item
+      .-text.-p--2.-flex--shrink1 Shrink Item
   :code(lang="html")
     <div class="-d--flex">
       <div style="width:100%;">Item</div>
