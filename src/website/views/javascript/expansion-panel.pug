@@ -158,16 +158,22 @@ table.a-table.a-table__options.-hover
     tr
       td
         code(style='word-break: initial') active
-      td Set the panel to the active state. All the contents under the <code>-active--only</code> will be visible.
+      td Sets the panel to the active state. All the contents under the <code>-active--only</code> will be visible.
+    tr
+      td
+        code(style='word-break: initial') toggle
+      td
+        | In the case the panel is previously set to active, this action sets it to pending. It sets to active state
+        | otherwise.
     tr
       td
         code(style='word-break: initial') done
-      td Set the panel to the done state. All the contents under the <code>-done--only</code> will be visible.
+      td Sets the panel to the done state. All the contents under the <code>-done--only</code> will be visible.
     tr
       td
         code(style='word-break: initial') disabled
       td
-        | Set the panel to the disabled state. All the contents under the <code>-active--only</code> and the
+        | Sets the panel to the disabled state. All the contents under the <code>-active--only</code> and the
         | <code>-done--only</code> will not be visible, and the title will render in a soft grey color.
     tr
       td
@@ -176,11 +182,11 @@ table.a-table.a-table__options.-hover
     tr
       td
         code(style='word-break: initial') next
-      td Set the next panel in <code>active</code> status.
+      td Sets the next panel in <code>active</code> status.
     tr
       td
         code(style='word-break: initial') previous
-      td Set the previous panel in <code>active</code> status.
+      td Sets the previous panel in <code>active</code> status.
 
 p.-text
   span.a-badge.-brand.-mr1
@@ -586,7 +592,7 @@ p.-text
       a(href='#a-tabs-e5-js') JS
   #a-tabs-e5-html.a-tabs-panel.-active
     :code(lang="html")
-      <div class="m-epanel -bordered -active" data-chi-epanel-group="example4">
+      <div class="m-epanel -bordered -active" data-chi-epanel-group="example5">
         <div class="m-epanel__header">
           <h4 class="m-epanel__title" data-chi-epanel-action="toggle">Expansion panel #1</h4>
         </div>

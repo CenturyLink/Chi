@@ -83,6 +83,7 @@ class ExpansionPanelGroup {
       return next;
     }
   }
+
   previous () {
     const prev = this.expansion_panels[this.lastAccessedIndex-1];
     if (prev) {
@@ -90,10 +91,10 @@ class ExpansionPanelGroup {
       return prev;
     }
   }
+
   reset (ep) {
     this.lastAccessedIndex = this.getIndex(ep);
   }
-
 }
 
 class ExpansionPanelSteppedGroup extends ExpansionPanelGroup {
@@ -118,7 +119,9 @@ class ExpansionPanelSteppedGroup extends ExpansionPanelGroup {
       this.reset(ep);
       let next = this.next();
       while (next) {
-        next.setState(STATE.PENDING.NAME);
+        if (next.getState() !== STATE.DISABLED) {
+          next.setState(STATE.PENDING.NAME);
+        }
         next = this.next();
       }
     }
@@ -161,12 +164,9 @@ class ExpansionPanelCustomGroup extends ExpansionPanelGroup {
   }
 }
 
-
 class ExpansionPanel extends Component {
 
-
   constructor (elem, config) {
-
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._epGroup = null;
     this._state = STATE.PENDING;
@@ -177,6 +177,8 @@ class ExpansionPanel extends Component {
       this._state = STATE.ACTIVE;
     } else if (Util.hasClass(this._elem, STATE.DONE.CLASS)) {
       this._state = STATE.DONE;
+    } else if (Util.hasClass(this._elem, STATE.DISABLED.CLASS)) {
+      this._state = STATE.DISABLED;
     }
 
     this._initGroup();
@@ -242,10 +244,25 @@ class ExpansionPanel extends Component {
   }
 
   _clickHandler (e) {
-    if (!e.target || !e.target.dataset || !e.target.dataset.chiEpanelAction) {
+    const epanelAction = this._findEpanelAction(e.target);
+    if (!epanelAction) {
       return;
     }
-    this.execute(e.target.dataset.chiEpanelAction);
+    this.execute(epanelAction);
+  }
+
+  _findEpanelAction (elem) {
+    if (elem.dataset && elem.dataset.chiEpanelAction) {
+      return elem.dataset.chiEpanelAction;
+    } else if (
+      elem.parentNode &&
+      elem.parentNode !== this._elem &&
+      elem.parentNode !== document
+    ) {
+      return this._findEpanelAction(elem.parentNode);
+    } else {
+      return null;
+    }
   }
 
   execute (action) {
