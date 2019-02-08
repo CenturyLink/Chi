@@ -11,6 +11,19 @@
       margin: -5rem 0 0;
     }
 
+    &:hover {
+      & span {
+        & a {
+          text-decoration: none;
+          color: $brand-color;
+          cursor: pointer;
+          font-weight: 600;
+          opacity: 1;
+          transition: opacity 0.15s ease-in-out;
+        }
+      }
+    }
+
     & span {
       & a {
         color: $brand-color;
