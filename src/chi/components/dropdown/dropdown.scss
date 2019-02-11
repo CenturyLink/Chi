@@ -241,6 +241,14 @@
         margin-right: 1rem;
       }
     }
+
+    &.-active {
+      .m-dropdown__trigger {
+        &:after {
+          background-image: url(../html-select/icon-chevron-thin-down-active.svg);
+        }
+      }
+    }
   }
 
   .m-dropdown__hover:hover,
