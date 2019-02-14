@@ -4,12 +4,22 @@ import Popper from 'popper.js';
 
 const COMPONENT_SELECTOR = '[data-popover-content]';
 const COMPONENT_TYPE = "popover";
+const CLASS_POPOVER = 'm-popover';
+const TRANSITION_DURATION = 200;
+const EVENTS = {
+  SHOW: 'chi.popover.show',
+  HIDE: 'chi.popover.hide'
+};
 const DEFAULT_CONFIG = {
+  animate: true,
+  arrow: true,
+  classes: [],
+  content: null,
+  delayBetweenInteractions: 50,
   parent: null,
   position: 'top',
-  animate: true,
-  delayBeforeClosing: 200,
-  content: null
+  trigger: 'click',
+  preventAutoHide: false
 };
 
 class Popover extends Component{
@@ -23,11 +33,11 @@ class Popover extends Component{
     this._preAnimationTransformStyle = null;
     this._postAnimationTransformStyle = null;
     this._shown = false;
-
-    this._config.position = config && config.position ||
-      this._elem.dataset && this._elem.dataset.position ||
-      this._config.position;
     this._config.parent = this._config.parent || this._elem;
+    this._config.position = config && config.position ||
+      this._elem && this._elem.dataset && this._elem.dataset.position ||
+      this._config.parent && this._config.parent.dataset && this._config.parent.dataset.position ||
+      this._config.position;
 
     this._createPopover();
     this._initDefaultEventListeners();
@@ -36,32 +46,40 @@ class Popover extends Component{
   _initDefaultEventListeners () {
 
     let self = this;
-    this._mouseClickEventHandler = function () {
-      self._closeOnClickOnDocument = false;
-      self.toggle();
-    };
 
     this._mouseClickOnPopover = function () {
       self._closeOnClickOnDocument = false;
     };
 
-    this._mouseClickOnDocument = function () {
-      if (self._closeOnClickOnDocument) {
-        self.hide();
-      } else {
-        self._closeOnClickOnDocument = true;
-      }
-    };
-
-    this._addEventHandler(
-      this._elem, 'click', this._mouseClickEventHandler
-    );
     this._addEventHandler(
       this._popoverElem, 'click', this._mouseClickOnPopover
     );
-    this._addEventHandler(
-      document, 'click', this._mouseClickOnDocument
-    );
+
+    if (!this._config.preventAutoHide) {
+
+      this._mouseClickOnDocument = function () {
+        if (self._closeOnClickOnDocument) {
+          self.hide();
+        } else {
+          self._closeOnClickOnDocument = true;
+        }
+      };
+
+      this._addEventHandler(
+        document, 'click', this._mouseClickOnDocument
+      );
+    }
+
+    if(this._config.trigger === 'click') {
+      this._mouseClickEventHandler = function () {
+        self._closeOnClickOnDocument = false;
+        self.toggle();
+      };
+
+      this._addEventHandler(
+        this._elem, 'click', this._mouseClickEventHandler
+      );
+    }
   }
 
   static get componentType () {
@@ -72,12 +90,13 @@ class Popover extends Component{
     return COMPONENT_SELECTOR;
   }
 
-  show() {
-    if (this._shown) {
+  show(force) {
+    if (this._shown || !this.allowConsecutiveActions() && !force) {
       return;
     }
 
     this._shown = true;
+    this._elem.dispatchEvent(Util.createEvent(EVENTS.SHOW));
 
     if (!this._config.animate) {
       Util.addClass(this._popoverElem, classes.ACTIVE);
@@ -91,7 +110,7 @@ class Popover extends Component{
     Util.addClass(self._popoverElem, classes.TRANSITIONING);
     //Because this popper method is asynchronous, cannot be done in step 1 of
     // animation, as it will be executed between step 1 and step 2.
-    self._popper.update();
+    self.resetPosition();
 
     Util.threeStepsAnimation(
       function(){
@@ -105,15 +124,18 @@ class Popover extends Component{
       function(){
         Util.removeClass(self._popoverElem, classes.TRANSITIONING);
         self._popoverElem.setAttribute('aria-hidden', 'false');
-      }, 200
+      }, TRANSITION_DURATION
     );
   }
 
-  hide() {
-    if (!this._shown) {
+  hide(force) {
+    if (!this._shown || !this.allowConsecutiveActions() && !force) {
       return;
     }
+
     this._shown = false;
+    this._elem.dispatchEvent(Util.createEvent(EVENTS.HIDE));
+
     if (!this._config.animate) {
       Util.removeClass(this._popoverElem, classes.ACTIVE);
       this._popoverElem.setAttribute('aria-hidden', 'true');
@@ -132,8 +154,21 @@ class Popover extends Component{
       function(){
         Util.removeClass(self._popoverElem, classes.TRANSITIONING);
         self._popoverElem.setAttribute('aria-hidden', 'true');
-      }, 200
+      }, TRANSITION_DURATION
     );
+  }
+
+  allowConsecutiveActions () {
+    const now = new Date();
+    const nowInMillis = now.getTime();
+    if (!this.lastActioned) {
+      this.lastActioned = nowInMillis;
+      return true;
+    } else if (nowInMillis - this.lastActioned > this._config.delayBetweenInteractions) {this.lastActioned = nowInMillis;
+      return true;
+    } else {
+      return false;
+    }
   }
 
   toggle(){
@@ -144,9 +179,20 @@ class Popover extends Component{
     }
   }
 
+  resetPosition() {
+    this._popper.update();
+  }
+
   _createPopover () {
     this._popoverElem = document.createElement('div');
-    this._popoverElem.setAttribute('class', 'm-popover');
+
+    const classes = this._config.classes.slice(0);
+    classes.push(CLASS_POPOVER);
+    if (!this._config.arrow) {
+      classes.push('-no-arrow');
+    }
+    this._popoverElem.setAttribute('class', classes.join(' '));
+
     this._popoverElem.id =
       this._popoverElem.id ||
       'chi-' + COMPONENT_TYPE + '-' + this.componentCounterNo;
@@ -155,8 +201,8 @@ class Popover extends Component{
       this._elem.dataset.popoverContent ||
       ''
     );
-    this._elem.parentNode.appendChild(this._popoverElem);
-    this._elem.setAttribute('aria-describedby', this._popoverElem.id);
+    this._config.parent.parentNode.appendChild(this._popoverElem);
+    this._config.parent.setAttribute('aria-describedby', this._popoverElem.id);
     this._popoverElem.setAttribute('aria-hidden', 'true');
 
     if (this._config.animate) {
@@ -198,7 +244,8 @@ class Popover extends Component{
           order: 875
         },
         arrow: {
-          element: '.a-arrow'
+          element: '.a-arrow',
+          enabled: this._config.arrow
         }
       },
       removeOnDestroy: true,
@@ -210,11 +257,17 @@ class Popover extends Component{
     Util.empty(this._popoverElem);
     if (content instanceof Element) {
       this._popoverElem.appendChild(content);
-      const arrow = document.createElement('div');
-      arrow.className = 'a-arrow';
-      this._popoverElem.appendChild(arrow);
+      if (this._config.arrow) {
+        const arrow = document.createElement('div');
+        arrow.className = 'a-arrow';
+        this._popoverElem.appendChild(arrow);
+      }
     } else {
-      this._popoverElem.innerHTML = content + '<div class="a-arrow"></div>';
+      if (this._config.arrow) {
+        this._popoverElem.innerHTML = content + '<div class="a-arrow"></div>';
+      } else {
+        this._popoverElem.innerHTML = content;
+      }
     }
   }
 
@@ -226,6 +279,11 @@ class Popover extends Component{
     this._popperData = null;
     this._preAnimationTransformStyle = null;
     this._postAnimationTransformStyle = null;
+
+    this._mouseClickOnDocument = null;
+    this._mouseClickOnPopover = null;
+    this._mouseClickEventHandler = null;
+
     this._elem = null;
   }
 }

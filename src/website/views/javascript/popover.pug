@@ -9,12 +9,12 @@ p.-text
 h3 Base
 p.-text
   | To render a popover, add your HTML code to a <code>data-popover-content</code> attribute. Then,
-  | you can initialize it with the chi.popover factory method.
+  | you can initialize it with the <code>chi.popover</code> factory method.
 .example.-mb--3
   .-p--3
-    button(data-popover-content='<div class="-px--2"><h4>Popover!</h4><p>This is a popover content triggered by a button. </p></div>').a-btn.-mr--2 Popover
+    button#popover-1(data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover!</h5><p>This is a popover content triggered by a button. </p></div>').a-btn.-mr--2 Popover
   :code(lang='html')
-    <button id='popover-1' class="a-btn" data-popover-content='<div class="-px--2"><h4>Popover!</h4><p>This is a popover content triggered by a button. </p></div>'>Popover</button>
+    <button id='popover-1' class="a-btn" data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover!</h5><p>This is a popover content triggered by a button. </p></div>'>Popover</button>
     <script>chi.popover(document.getElementById('popover-1'));</script>
 
 h3 Positioning
@@ -38,47 +38,47 @@ ul#a-tabs--positioning.a-tabs
 #a-tabs--positioning-top.a-tabs-panel.-active
   .example.-mb--3
     .-p--3
-      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Top popover
-      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top start positioned.</p></div>', data-position='top-start').a-btn.-mr--2.-mb--2.-mb-md--0 Top start popover
-      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top end positioned.</p></div>', data-position='top-end').a-btn.-mr--2.-mb--2.-mb-md--0 Top end popover
+      button(data-position='top', data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is top positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Top popover
+      button(data-position='top-start', data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is top start positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Top start popover
+      button(data-position='top-end', data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is top end positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Top end popover
 
     :code(lang="html")
-      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top positioned.</p></div>' class="a-btn">Top popover</button>
-      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top start positioned.</p></div>' data-position='top-start'>Top start popover</button>
-      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is top end positioned.</p></div>' data-position='top-end'>Top end popover</button>
+      <button data-position='top' data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is top positioned.</p></div>' class="a-btn">Top popover</button>
+      <button data-position='top-start' data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is top start positioned.</p></div>'>Top start popover</button>
+      <button data-position='top-end' data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is top end positioned.</p></div>'>Top end popover</button>
       <script>chi.popover(document.querySelectorAll('[data-popover-content])');</script>
 #a-tabs--positioning-right.a-tabs-panel
   .example.-mb--3
     .-p--3
-      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right positioned.</p></div>', data-position='right').a-btn.-mr--2.-mb--2.-mb-md--0 Right popover
-      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right start positioned.</p></div>', data-position='right-start').a-btn.-mr--2.-mb--2.-mb-md--0 Right start popover
-      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right end positioned.</p></div>', data-position='right-end').a-btn.-mr--2.-mb--2.-mb-md--0 Right end popover
+      button(data-position='right', data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is right positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Right popover
+      button(data-position='right-start', data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is right start positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Right start popover
+      button(data-position='right-end', data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is right end positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Right end popover
     :code(lang="html")
-      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right positioned.</p></div>' data-position='right'>Right popover</button>
-      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right start positioned.</p></div>' data-position='right-start'>Right start popover</button>
-      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is right end positioned.</p></div>' data-position='right-end'>Right end popover</button>
+      <button data-position='right' data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is right positioned.</p></div>'>Right popover</button>
+      <button data-position='right-start' data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is right start positioned.</p></div>'>Right start popover</button>
+      <button data-position='right-end' data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is right end positioned.</p></div>'>Right end popover</button>
       <script>chi.popover(document.querySelectorAll('[data-popover-content])');</script>
 #a-tabs--positioning-bottom.a-tabs-panel
   .example.-mb--3
     .-p--3
-      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom positioned.</p></div>', data-position='bottom').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom popover
-      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom start positioned.</p></div>', data-position='bottom-start').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom start popover
-      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom end positioned.</p></div>', data-position='bottom-end').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom end popover
+      button(data-position='bottom', data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is bottom positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom popover
+      button(data-position='bottom-start', data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is bottom start positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom start popover
+      button(data-position='bottom-end', data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is bottom end positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom end popover
     :code(lang="html")
-      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom positioned.</p></div>' data-position='bottom'>Bottom popover</button>
-      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom start positioned.</p></div>' data-position='bottom-start'>Bottom start popover</button>
-      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is bottom end positioned.</p></div>' data-position='bottom-end'>Bottom end popover</button>
+      <button data-position='bottom' data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is bottom positioned.</p></div>'>Bottom popover</button>
+      <button data-position='bottom-start' data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is bottom start positioned.</p></div>'>Bottom start popover</button>
+      <button data-position='bottom-end' data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is bottom end positioned.</p></div>'>Bottom end popover</button>
       <script>chi.popover(document.querySelectorAll('[data-popover-content])');</script>
 #a-tabs--positioning-left.a-tabs-panel
   .example.-mb--3
     .-p--3
-      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left positioned.</p></div>', data-position='left').a-btn.-mr--2.-mb--2.-mb-md--0 Left popover
-      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left start positioned.</p></div>', data-position='left-start').a-btn.-mr--2.-mb--2.-mb-md--0 Left start popover
-      button(data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left end positioned.</p></div>', data-position='left-end').a-btn.-mr--2.-mb--2.-mb-md--0 Left end popover
+      button(data-position='left', data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is left positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Left popover
+      button(data-position='left-start', data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is left start positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Left start popover
+      button(data-position='left-end', data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is left end positioned.</p></div>').a-btn.-mr--2.-mb--2.-mb-md--0 Left end popover
     :code(lang="html")
-      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left positioned.</p></div>' data-position='left'>Left popover</button>
-      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left start positioned.</p></div>' data-position='left-start'>Left start popover</button>
-      <button data-popover-content='<div class="-px--2"><h4>Popover positioning</h4><p>This popover is left end positioned.</p></div>' data-position='left-end'>Left end popover</button>
+      <button data-position='left' data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is left positioned.</p></div>'>Left popover</button>
+      <button data-position='left-start' data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is left start positioned.</p></div>'>Left start popover</button>
+      <button data-position='left-end' data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover positioning</h5><p>This popover is left end positioned.</p></div>'>Left end popover</button>
       <script>chi.popover(document.querySelectorAll('[data-popover-content])');</script>
 
 h3 Options
@@ -116,20 +116,119 @@ section.a-table.a-table__options.-bordered.-my--3
           td
             div
               | Lets the developer include the popover content programmatically on the creation phase.
+        tr
+          td
+            div
+              code= 'position'
+          td
+            div
+              code 'top'
+          td
+            div
+              | Where the popover will be located by default. If there is no free space in that position, the popover will try
+              | to flip the position to the opposite side. <code>data-position</code> takes precedence over this configuration
+              | option.
+        tr
+          td
+            div
+              code= 'arrow'
+          td
+            div
+              code= 'true'
+          td
+            div
+              | If set to true, an arrow will appear between the popover and the trigger element.
+        tr
+          td
+            div
+              code= 'parent'
+          td
+            div
+              code= 'null'
+          td
+            div
+              | If an element is provided as parent, the popover will be attached visually to that element. If not, the
+              | popover will be attached to the trigger used in instantiation.
+        tr
+          td
+            div
+              code= 'classes'
+          td
+            div
+              code= '[]'
+          td
+            div
+              | Lets the developer add any classes to the popover element in the creation phase.
+        tr
+          td
+            div
+              code= 'trigger'
+          td
+            div
+              code 'click'
+          td
+            div
+              | Available options are <code>click</code> or <code>manual</code>. Use click to attach the toggle action
+              | to the trigger element, and manual for develop a custom solution.
+        tr
+          td
+            div
+              code= 'preventAutoHide'
+          td
+            div
+              code= 'false'
+          td
+            div
+              | Set <code>preventAutoHide</code> to <code>true</code> to prevent hidding the popover when clicking
+              | outside the popover.
+
 h3 Methods
 h4 .setContent()
 p.-text
-  | You can use this method to change the content of the popover. This will discard any previously attached content.
-  | Developers should remove any resources attached to the content by themselves to prevent memory leaks. This method
-  | accepts string or Element as a parameter.
+  | Use this method to change the content of the popover. It discards any previously attached content, so any
+  | resources attached to the content should be removed to prevent memory leaks. This method accepts a string or an
+  | HTML DOM Element as a parameter.
 .example.-mb--3
   .-p--3
-    button#popover-2(data-popover-content='<div class="-p--2">Hello</div>').a-btn.-mr--2 Popover
+    button#popover-2(data-popover-content='<div class="-px--2 -py--1 -s--3">Foo</div>').a-btn.-mr--2 Popover
   :code(lang='html')
-    <button id='popover-2' class="a-btn" data-popover-content='<div class="-p--2">Hello</div>'>Popover</button>
+    <button id='popover-2' class="a-btn" data-popover-content='<div class="-px--2 -py--1 -s--3">Foo</div>'>Popover</button>
     <script>
       var popover = chi.popover(document.getElementById('popover-2'));
-      popover.setContent('<div class="-p--2">Goodbye</div>');
+      popover.setContent('<div class="-px--2 -py--1 -s--3">Bar</div>');
+    </script>
+    
+h4 .show(), .hide(), .toggle()
+p.-text
+  | Use this methods to control popover visibility.
+.example.-mb--3
+  .-p--3
+    button#popover-3(data-popover-content='<div class="-px--2 -py--1 -s--3">Foo</div>').a-btn.-mr--2 Popover
+    button#show-popover-3.a-btn.-mr--2 Show
+    button#hide-popover-3.a-btn.-mr--2 Hide
+    button#toggle-popover-3.a-btn.-mr--2 Toggle
+  :code(lang='html')
+    <button id='popover-3' class="a-btn -mr--2" data-popover-content='<div class="-px--2 -py--1 -s--3">Foo</div>'>Manual popover</button>
+    <button id='show-popover-3' class="a-btn -mr--2">Show</button>
+    <button id='hide-popover-3' class="a-btn -mr--2">Hide</button>
+    <button id='toggle-popover-3' class="a-btn -mr--2">Toggle</button>
+    <script>
+      var popover = chi.popover(
+        document.getElementById('popover-3'),
+        {
+          trigger: 'manual',
+          preventAutoHide: true
+        }
+      );
+      document.getElementById('show-popover-3').addEventListener('click', function(e) {
+        popover.show()
+      });
+      document.getElementById('hide-popover-3').addEventListener('click', function(e) {
+        popover.hide()
+      });
+      document.getElementById('toggle-popover-3').addEventListener('click', function(e) {
+        popover.toggle()
+      });
     </script>
 
 h4 Preventing memory leaks
@@ -160,10 +259,39 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.Popover.initAll();
+
       chi.tab(document.getElementById('a-tabs--positioning'));
+
+      chi.popover(
+        document.querySelectorAll(
+          '#popover-1, ' +
+          '#a-tabs--positioning-top button, ' +
+          '#a-tabs--positioning-right button, ' +
+          '#a-tabs--positioning-bottom button, ' +
+          '#a-tabs--positioning-left button'
+        )
+      );
+
       var popover2 = chi.popover(document.getElementById('popover-2'));
-      popover2.setContent('<div class="-p--2">Goodbye</div>');
+      popover2.setContent('<div class="-px--2 -py--1 -s--3">Bar</div>');
+
+      var popover3 = chi.popover(
+        document.getElementById('popover-3'),
+        {
+          trigger: 'manual',
+          preventAutoHide: true
+        }
+      );
+      document.getElementById('show-popover-3').addEventListener('click', function (e) {
+        popover3.show()
+      });
+      document.getElementById('hide-popover-3').addEventListener('click', function (e) {
+        popover3.hide()
+      });
+      document.getElementById('toggle-popover-3').addEventListener('click', function (e) {
+        popover3.toggle()
+      });
+
     },
     false
   );
