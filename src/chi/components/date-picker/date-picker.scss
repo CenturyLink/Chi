@@ -1,0 +1,166 @@
+@import 'variables';
+@import 'mixins';
+
+$sundayStartingWeek: (
+  Sun: 0,
+  Mon: 1,
+  Tue: 2,
+  Wed: 3,
+  Thu: 4,
+  Fri: 5,
+  Sat: 6
+);
+$mondayStartingWeek: (
+  Mon: 0,
+  Tue: 1,
+  Wed: 2,
+  Thu: 3,
+  Fri: 4,
+  Sat: 5,
+  Sun: 6
+);
+
+.chi {
+  .m-datepicker {
+    font-size: $text;
+    width: 14rem;
+
+    &__day {
+      text-align: center;
+      line-height: 2rem;
+      width: calc(100% / 7);
+      transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+
+      &.-active {
+        background-color: $brand-color;
+        border-radius: $border-radius;
+        color: white;
+        &.-today:after {
+          background-color: white;
+        }
+      }
+
+      &.-inactive {
+        color: rgba(set-color(grey, 90), 0.4);
+        pointer-events: none;
+        &.-today:after {
+          background-color: rgba(set-color(grey, 90), 0.4);
+        }
+      }
+
+      &.-today {
+        position: relative;
+        &:after {
+          background-color: $brand-color;
+          border-radius: 2px;
+          bottom: 3px;
+          content: '';
+          height: 4px;
+          left: calc(50% - 1px);
+          position: absolute;
+          width: 4px;
+          transition: background-color 0.1s ease-in-out;
+        }
+      }
+
+      &:not(.-inactive):not(.-active):hover {
+        background-color: (set-color(grey, 20));
+        border-radius: 2px;
+      }
+
+      &:not(.-inactive) {
+        cursor: pointer;
+        font-weight: 600;
+      }
+    }
+
+    &__weekDay {
+      font-weight: 600;
+      text-align: center;
+      line-height: 2rem;
+      width: calc(100% / 7);
+    }
+
+    &__month {
+      font-weight: 600;
+      text-align: center;
+      width: calc(100% * 5 / 7);
+      margin-left: calc(100% / 7);
+
+      &Row {
+        .prev, .next {
+          width: calc(100% / 7);
+          text-align: center;
+          &.-disabled {
+            color: rgba(set-color(grey, 90), 0.2);
+            pointer-events: none;
+          }
+          &:not(.-disabled) {
+            cursor: pointer;
+            color: $brand-color;
+          }
+        }
+      }
+    }
+
+    .prev + .m-datepicker__month {
+      margin-left: 0;
+    }
+
+    &__days, &__dayNames {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &__monthRow {
+      display: flex;
+      align-items: center;
+      height: 2.5rem;
+    }
+
+    &.-weekStartsOnSun {
+      @each $weekDay, $columnStart in $sundayStartingWeek {
+        &.-monthStartsOn#{$weekDay} {
+          .m-datepicker__day:first-child {
+            margin-left: calc(100% * #{$columnStart} / 7);
+          }
+        }
+      }
+    }
+
+    &.-weekStartsOnMon {
+      @each $weekDay, $columnStart in $mondayStartingWeek {
+        &.-monthStartsOn#{$weekDay} {
+          .m-datepicker__day:first-child {
+            margin-left: calc(100% * #{$columnStart} / 7);
+          }
+        }
+      }
+    }
+  }
+
+  .m-popover {
+
+    .m-datepicker {
+      padding: 0.5rem 1rem;
+    }
+
+    &__datepicker.-no-arrow {
+      &.m-popover--top, &[x-placement^="top"] {
+        margin-bottom: 1px;
+      }
+
+      &.m-popover--right, &[x-placement^="right"] {
+        margin-left: 1px;
+      }
+
+      &.m-popover--bottom, &[x-placement^="bottom"] {
+        margin-top: 1px;
+      }
+
+      &.m-popover--left, &[x-placement^="left"] {
+        margin-right: 1px;
+      }
+    }
+  }
+}

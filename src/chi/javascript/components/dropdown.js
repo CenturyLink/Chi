@@ -114,21 +114,25 @@ class Dropdown extends Component {
       return;
     }
 
-    let dropdownPosition = this._calculateDropdownPosition();
+    this._popper = 'loading';
+    const self = this;
+    window.requestAnimationFrame(function() {
+      let dropdownPosition = self._calculateDropdownPosition();
 
-    if (dropdownPosition && typeof Popper !== 'undefined') {
-      this._popper = new Popper (this._elem, this._dropdownElem, {
-        modifiers: {
-          applyStyle: {enabled: true},
-          applyChiStyle: {
-            enabled: true,
-            fn: this._popperPatchForBottomLeftPropperLocation,
-            order: 890
+      if (dropdownPosition && typeof Popper !== 'undefined') {
+        self._popper = new Popper (self._elem, self._dropdownElem, {
+          modifiers: {
+            applyStyle: {enabled: true},
+            applyChiStyle: {
+              enabled: true,
+              fn: self._popperPatchForBottomLeftPropperLocation,
+              order: 890
+            },
           },
-        },
-        placement: dropdownPosition
-      });
-    }
+          placement: dropdownPosition
+        });
+      }
+    });
   }
 
   _popperPatchForBottomLeftPropperLocation (data) {
