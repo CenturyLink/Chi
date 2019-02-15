@@ -5,6 +5,8 @@ let chi = {
   classes : {
     ACTIVE: '-active',
     ANIMATED: '-animated',
+    DISABLED: '-disabled',
+    INACTIVE: '-inactive',
     TRANSITIONING : '-transitioning',
   },
   componentIndex: 0,
