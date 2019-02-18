@@ -1,10 +1,14 @@
 import gulp from 'gulp';
-import runSequence from 'run-sequence';
 
-gulp.task('ci', done => {
+function ci(done) {
   process.env.CI = true;
-
-  runSequence(
-    'lint:css', 'backstop-test', done
+  gulp.series(
+    'lint:css',
+    'backstop-test',
+    done
   );
-});
+}
+
+ci.description = 'Lints and run backstop test. ';
+
+gulp.task('ci', ci);

@@ -1,12 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import gulp from 'gulp';
+import sassLint from 'gulp-sass-lint';
+import plumber from 'gulp-plumber';
 
 const rootFolder = path.join(__dirname, '..');
 const sources = path.join(rootFolder, '{src,test}', 'chi', '**', '*.scss');
 const reportsFolder = path.join(rootFolder, 'reports');
 const reportFile = path.join(reportsFolder, 'sass-lint.xml');
-const plugins = require('gulp-load-plugins')();
 
 function createFolderIfNotExists(folder) {
   if (!fs.existsSync(folder)) {
@@ -33,24 +34,29 @@ function setupReportFileIfExecutionIsInCIServer() {
 }
 
 function preventPipeBreakingFromGulpPluginErrors(stream) {
-  stream.pipe(plugins.plumber());
+  stream.pipe(plumber());
 }
 
 function lintSassCode(stream, file) {
-  stream.pipe(plugins.sassLint({
+  stream.pipe(sassLint({
     options: {
       configFile: '.sass-lint.yml',
       formatter: process.env.CI ? 'checkstyle' : 'stylish'
     }
   }))
-    .pipe(plugins.sassLint.format(file));
+    .pipe(sassLint.format(file));
 }
 
-gulp.task('lint:css', () => {
+function lintCss (done) {
   const stream = gulp.src(sources);
   const reportFile = setupReportFileIfExecutionIsInCIServer();
 
   closeFileOnStreamFinish(stream, reportFile);
   preventPipeBreakingFromGulpPluginErrors(stream);
   lintSassCode(stream, reportFile);
-});
+  done();
+}
+
+lintCss.description = "Lints SASS code. ";
+
+gulp.task('lint:css', lintCss);

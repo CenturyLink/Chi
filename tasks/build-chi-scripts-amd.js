@@ -1,11 +1,12 @@
 import gulp from 'gulp';
 import path from 'path';
 import vinylNamed from 'vinyl-named';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import webpack from 'webpack';
+import plumber from 'gulp-plumber';
 import webpackStream from 'webpack-stream';
 import { Folders } from './constants';
 
-const gulpPlugins = require('gulp-load-plugins')();
 const sources = path.join(Folders.SRC, 'chi/javascript/index.js');
 const destination = path.join(Folders.DIST, 'amd');
 
@@ -17,23 +18,27 @@ const webpackConfig = {
     libraryTarget: 'amd'
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['env']
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
         }
       }
     ]
   },
   externals: {
-    'popper.js': 'popper'
+    'popper.js': 'popper',
+    'dayjs': 'dayjs'
   }
 };
 
 if (process.env.PRODUCTION) {
-  webpackConfig.plugins = [new webpack.optimize.UglifyJsPlugin({
+  webpackConfig.plugins = [new UglifyJsPlugin({
     comments: false,
     sourceMap: false,
     compress: {
@@ -57,10 +62,15 @@ if (process.env.PRODUCTION) {
   })];
 }
 
-gulp.task('build:chi:scriptsAMD', () => gulp.src(sources)
-  .pipe(gulpPlugins.plumber())
-  .pipe(vinylNamed())
-  .pipe(webpackStream(webpackConfig))
-  .pipe(gulp.dest(destination))
-  .pipe(gulpPlugins.connect.reload())
-);
+function buildChiScriptsAmd () {
+  return gulp.src(sources)
+    .pipe(plumber())
+    .pipe(vinylNamed())
+    .pipe(webpackStream(webpackConfig))
+    .pipe(gulp.dest(destination));
+}
+
+buildChiScriptsAmd.description = 'Compiles Chi JavaScript library into an ' +
+  'AMD ES5 module. Returns a stream. ';
+
+gulp.task('build:chi:scriptsAMD', buildChiScriptsAmd);

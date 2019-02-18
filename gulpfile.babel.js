@@ -1,6 +1,30 @@
-import requireDir from 'require-dir';
 import gulp from 'gulp';
 
-requireDir('./tasks');
+const requires = {
+  'clean': require('./tasks/clean.js'),
+  'serve': require('./tasks/serve.js'),
+  'build-chi-styles': require('./tasks/build-chi-styles.js'),
+  'build-chi-assets': require('./tasks/build-chi-assets.js'),
+  'build-chi-sprite': require('./tasks/build-chi-sprite.js'),
+  'build-chi-scripts-amd': require('./tasks/build-chi-scripts-amd.js'),
+  'build-chi-scripts-es6': require('./tasks/build-chi-scripts-es6.js'),
+  'build-chi-scripts': require('./tasks/build-chi-scripts.js'),
+  'build-test-fixtures': require('./tasks/build-test-fixtures.js'),
+  'build-chi': require('./tasks/build-chi.js'),
+  'build-test-styles': require('./tasks/build-test-styles.js'),
+  'build-test': require('./tasks/build-test.js'),
+  'build-website-images': require('./tasks/build-website-images.js'),
+  'build-website-scripts': require('./tasks/build-website-scripts.js'),
+  'build-website-styles': require('./tasks/build-website-styles.js'),
+  'build-website-views': require('./tasks/build-website-views.js'),
+  'build-website': require('./tasks/build-website.js'),
+  'build': require('./tasks/build.js'),
+  'backstop': require('./tasks/backstop.js'),
+  'ci': require('./tasks/ci.js'),
+  'constants': require('./tasks/constants.js'),
+  'lint-css': require('./tasks/lint-css.js'),
+  'test': require('./tasks/test.js'),
+  'watch': require('./tasks/watch.js')
+};
 
-gulp.task('default', []);
+gulp.task('default', function(){});

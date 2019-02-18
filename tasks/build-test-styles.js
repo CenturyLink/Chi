@@ -1,38 +1,36 @@
 import path from 'path';
 
-import del from 'del';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import gulp from 'gulp';
-import metalsmith from 'metalsmith';
-import metalsmithInlineSource from 'metalsmith-inline-source';
-import metalsmithLayouts from 'metalsmith-layouts';
-import metalsmithPug from 'metalsmith-pug';
-import runSequence from 'run-sequence';
-import * as chi from '../scripts/chi';
+import plumber from 'gulp-plumber';
+import sass from 'gulp-sass';
+import postcss from 'gulp-postcss';
+import wait from 'gulp-wait';
 
-const plugins = require('gulp-load-plugins')();
 const publicFolder = 'dist/tests';
 const rootFolder = path.join(__dirname, '..');
 
-gulp.task('build:test:styles', () =>
-  gulp.src(path.join(rootFolder, 'test', 'chi', '**', '*.scss'))
-    .pipe(plugins.plumber())
-    .pipe(plugins.sass({
+function buildTestStyles () {
+  return gulp.src(path.join(rootFolder, 'test', 'chi', '**', '*.scss'))
+    .pipe(plumber())
+    .pipe(sass({
       includePaths: [
         'node_modules',
         path.join(rootFolder, 'src', 'chi')
       ],
       outputStyle: 'compressed'
     })
-    .on('error', plugins.sass.logError))
-    .pipe(plugins.postcss([
+      .on('error', sass.logError))
+    .pipe(postcss([
       autoprefixer({
         browsers: ['last 2 versions', 'ie >= 10']
       }),
       cssnano({zindex: false})
     ]))
     .pipe(gulp.dest(publicFolder))
-    .pipe(plugins.wait(1500))
-    .pipe(plugins.connect.reload())
-);
+    .pipe(wait(1500));
+}
+
+buildTestStyles.description = 'Builds stiles for test pages. Returns a stream. ';
+gulp.task('build:test:styles', buildTestStyles);

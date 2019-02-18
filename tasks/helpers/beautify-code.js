@@ -19,4 +19,4 @@ export function getLang(lang) {
 
 export function highlight(code, lang) {
   return prism.highlight(code, prism.languages[getLang(lang)]);
-};
+}

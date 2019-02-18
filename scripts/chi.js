@@ -1,9 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import gulp from 'gulp';
-import log from 'loglevel';
+import sass from 'gulp-sass';
+import concat from 'gulp-concat';
+import plumber from 'gulp-plumber';
+import postcss from 'gulp-postcss';
+import svgSprite from 'gulp-svg-sprite';
 
-const plugins = require('gulp-load-plugins')();
+
 const componentsFolder = path.join(__dirname, '..', 'src', 'chi', 'components');
 const utilitiesFolder = path.join(__dirname, '..', 'src', 'chi', 'utilities');
 const foundationFolders = [
@@ -39,15 +43,15 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
       .map(folder => `${path.join(folder, '*.scss')}`)
       .concat(`!${path.join(componentsFolder, '*.scss')}`)
   )
-    .pipe(plugins.plumber())
-    .pipe(plugins.sass({
+    .pipe(plumber())
+    .pipe(sass({
       includePaths: [
         'node_modules',
         path.join(__dirname, '..', 'src', 'chi')
       ],
       outputstyle: 'expanded'
     }))
-    .pipe(plugins.postcss([
+    .pipe(postcss([
       require('autoprefixer')({
         browsers: ['last 2 versions', 'ie >= 10']
       }),
@@ -61,8 +65,7 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
         zindex: false
       })
     ]))
-    .pipe(plugins.concat('chi.css'))
-    .pipe(plugins.tokenReplace({global: { path: assetsPath }}))
+    .pipe(concat('chi.css'))
     .pipe(gulp.dest(dest));
 }
 
@@ -88,7 +91,7 @@ export function buildSprite({ dest = 'dist' }) {
   };
 
   return gulp.src('./src/chi/components/icons/svg/**/*.svg')
-    .pipe(plugins.svgSprite(config))
+    .pipe(svgSprite(config))
     .pipe(gulp.dest(dest));
 }
 

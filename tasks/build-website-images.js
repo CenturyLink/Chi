@@ -1,23 +1,27 @@
 import gulp from 'gulp';
-import { Folders } from './constants';
+import plumber from 'gulp-plumber';
+import imagemin from 'gulp-imagemin';
 
-const gulpPlugins = require('gulp-load-plugins')();
+function buildWebsiteImages() {
+  return gulp.src(
+    'src/website/assets/images/**/*',
+    { since: gulp.lastRun(buildWebsiteImages) })
+    .pipe(plumber())
+    .pipe(imagemin([
+      imagemin.gifsicle({interlaced: true}),
+      imagemin.jpegtran({progressive: true}),
+      imagemin.optipng({optimizationLevel: 5}),
+      imagemin.svgo({
+        plugins: [
+          {removeViewBox: true},
+          {cleanupIDs: false}
+        ]
+      })
+    ]))
+    .pipe(gulp.dest('dist/assets/images'));
+}
 
-gulp.task('build:website:images', () => gulp.src('src/website/assets/images/**/*')
-  .pipe(gulpPlugins.cached('images', {
-    optimizeMemory: true
-  }))
-  .pipe(gulpPlugins.plumber())
-  .pipe(gulpPlugins.image({
-    pngquant: true,
-    optipng: true,
-    zopflipng: true,
-    jpegRecompress: true,
-    jpegoptim: true,
-    mozjpeg: true,
-    gifsicle: true,
-    svgo: true
-  }))
-  .pipe(gulp.dest('dist/assets/images'))
-  .pipe(gulpPlugins.connect.reload())
-);
+buildWebsiteImages.description = 'Optimizes images and puts them in ' +
+  'the dist/assets/images folder. Returns a stream. ';
+
+gulp.task('build:website:images', buildWebsiteImages);

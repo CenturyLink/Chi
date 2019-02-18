@@ -2,9 +2,8 @@ import gulp from 'gulp';
 import vinylNamed from 'vinyl-named';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
+import plumber from 'gulp-plumber';
 import { Folders } from './constants';
-
-const gulpPlugins = require('gulp-load-plugins')();
 
 const webpackConfig = {
   module: {
@@ -46,10 +45,16 @@ if (process.env.PRODUCTION) {
   webpackConfig.devtool = 'eval';
 }
 
-gulp.task('build:website:scripts', () => gulp.src('src/website/assets/scripts/**/*.js')
-  .pipe(gulpPlugins.plumber())
-  .pipe(vinylNamed())
-  .pipe(webpackStream(webpackConfig))
-  .pipe(gulp.dest('dist/assets/scripts'))
-  .pipe(gulpPlugins.connect.reload())
-);
+function buildWebsiteScripts() {
+  return gulp.src('src/website/assets/scripts/**/*.js')
+    .pipe(plumber())
+    .pipe(vinylNamed())
+    .pipe(webpackStream(webpackConfig))
+    .pipe(gulp.dest('dist/assets/scripts'));
+}
+
+buildWebsiteScripts.description = 'Compiles Chi JavaScript library into ES6. ' +
+  'Returns a stream. ';
+
+
+gulp.task('build:website:scripts', buildWebsiteScripts);

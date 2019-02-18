@@ -1,23 +1,23 @@
 import gulp from 'gulp';
 import backstopjs from 'backstopjs';
-import { server } from './serve.js';
+import { server } from './serve';
 
-const plugins = require('gulp-load-plugins')();
+gulp.task('backstop-test', gulp.series(
+  'serve',
+  () => {
+    const promise = new Promise((resolve) => {
+      return backstopjs('test', { config: 'backstop-responsive.json' })
+        .finally(() => backstopjs('test', { config: 'backstop-non-responsive.json' })
+          .finally(resolve));
+    });
 
-gulp.task('backstop-test', ['serve'], () => {
-  const promise = new Promise((resolve) => {
-    return backstopjs('test', { config: 'backstop-responsive.json' })
-      .finally(() => backstopjs('test', { config: 'backstop-non-responsive.json' })
-        .finally(resolve));
-  });
+    promise.finally(() => {
+      server.exit();
+    });
 
-  promise.finally(() => {
-    server.lr.close();
-    plugins.connect.serverClose();
-  });
-
-  return promise;
-});
+    return promise;
+  }
+));
 
 gulp.task('backstop-approve', () => Promise.all([
   backstopjs('approve', { config: 'backstop-responsive.json' }),
