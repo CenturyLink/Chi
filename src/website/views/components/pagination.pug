@@ -1,4 +1,351 @@
 ---
 title: Pagination
-disabled: true
 ---
+
+- var steps = ['0', '1', '2', '3', '4', '5', '6'];
+
+p.-text Use pagination to separate long sets of data so that it is easier for a user to consume information.
+  | Use the class <code>a-pagination</code> to render a pagination component.
+
+h4 Base
+.example.-mb--3
+  .-p--5
+    nav(role='navigation', aria-label='Pagination')
+      ul.a-pagination
+        each step in steps
+          if step == '0'
+            li
+              a(href='#', aria-label='Previous')
+                span(aria-hidden='true') &laquo;
+                span.-sr--only Previous
+          else if step == '6'
+            li
+              a(href='#', aria-label='Next')
+                span(aria-hidden='true') &raquo;
+                span.-sr--only Next
+          else
+            li
+              a(href='#')= `${step}`
+  :code(lang="html")
+    <nav role="navigation" aria-label="Pagination">
+      <ul class="a-pagination">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="-sr--only">Previous</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">1</a>
+        </li>
+        <li>
+          <a href="#">2</a>
+        </li>
+        <li>
+          <a href="#">3</a>
+        </li>
+        <li>
+          <a href="#">4</a>
+        </li>
+        <li>
+          <a href="#">5</a>
+        </li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="-sr--only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+h3 Pill
+p.-text Use the <code>-pill</code> modifier class to render Pagination with a more pronounced border-radius.
+.example.-mb--3
+  .-p--5
+    nav(role='navigation', aria-label='Pagination')
+      ul.a-pagination.-pill
+        each step in steps
+          if step == '0'
+            li
+              a(href='#', aria-label='Previous')
+                span(aria-hidden='true') &laquo;
+                span.-sr--only Previous
+          else if step == '6'
+            li
+              a(href='#', aria-label='Next')
+                span(aria-hidden='true') &raquo;
+                span.-sr--only Next
+          else
+            li
+              a(href='#')= `${step}`
+  :code(lang="html")
+    <nav role="navigation" aria-label="Pagination">
+      <ul class="a-pagination -pill">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="-sr--only">Previous</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">1</a>
+        </li>
+        <li>
+          <a href="#">2</a>
+        </li>
+        <li>
+          <a href="#">3</a>
+        </li>
+        <li>
+          <a href="#">4</a>
+        </li>
+        <li>
+          <a href="#">5</a>
+        </li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="-sr--only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+h4 States
+p.-text Pagination links are customizable for different circumstances. Use <code>-active</code> to indicate the current page, and <code>-disabled</code> for unclickable links (i.e. beginning or end of the list).
+h5 Active
+.example.-mb--3
+  .-p--5
+    nav(role='navigation', aria-label='Pagination')
+      ul.a-pagination
+        each step in steps
+          if step == '0'
+            li
+              a(href='#', aria-label='Previous')
+                span(aria-hidden='true') &laquo;
+                span.-sr--only Previous
+          else if step == '6'
+            li
+              a(href='#', aria-label='Next')
+                span(aria-hidden='true') &raquo;
+                span.-sr--only Next
+          else if step == '3'
+            li.-active
+              a(href='#', aria-current='page')= `${step}`
+          else
+            li
+              a(href='#')= `${step}`
+  :code(lang="html")
+    <nav role="navigation" aria-label="Pagination">
+      <ul class="a-pagination">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="-sr--only">Previous</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">1</a>
+        </li>
+        <li>
+          <a href="#">2</a>
+        </li>
+        <li class="-active">
+          <a href="#" aria-current="page">3</a>
+        </li>
+        <li>
+          <a href="#">4</a>
+        </li>
+        <li>
+          <a href="#">5</a>
+        </li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="-sr--only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+h5 Disabled
+.example.-mb--3
+  .-p--5
+    nav(role='navigation', aria-label='Pagination')
+      ul.a-pagination
+        each step in steps
+          if step == '0'
+            li.-disabled
+              a(href='#', aria-disabled='true')
+                span(aria-hidden='true') &laquo;
+                span.-sr--only Previous
+          else if step == '6'
+            li
+              a(href='#', aria-label='Next')
+                span(aria-hidden='true') &raquo;
+                span.-sr--only Next
+          else if step == '3'
+            li
+              a(href='#')= `${step}`
+          else
+            li
+              a(href='#')= `${step}`
+  :code(lang="html")
+    <nav role="navigation" aria-label="Pagination">
+      <ul class="a-pagination">
+        <li class="-disabled">
+          <a href="#" aria-disabled="true">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="-sr--only">Previous</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">1</a>
+        </li>
+        <li>
+          <a href="#">2</a>
+        </li>
+        <li>
+          <a href="#">3</a>
+        </li>
+        <li>
+          <a href="#">4</a>
+        </li>
+        <li>
+          <a href="#">5</a>
+        </li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="-sr--only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+h3 Additional Sizes
+p.-text
+  | Pagination supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
+.example.-mb--3
+  .-p--5
+    each size in ['sm', 'md', 'lg', 'xl']
+      nav(role='navigation', aria-label='Pagination').-pb--1
+        ul.a-pagination(class=`-${size}`)
+          each step in steps
+            if step == '0'
+              li
+                a(href='#', aria-label='Previous')
+                  span(aria-hidden='true') &laquo;
+                  span.-sr--only Previous
+            else if step == '6'
+              li
+                a(href='#', aria-label='Next')
+                  span(aria-hidden='true') &raquo;
+                  span.-sr--only Next
+            else
+              li
+                a(href='#')= `${step}`
+      p.-text=`-${size}`
+  :code(lang="html")
+    <nav role="navigation" aria-label="Pagination">
+      <ul class="a-pagination -sm">
+        <li>
+          <a href="#" aria-disabled="true">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="-sr--only">Previous</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">1</a>
+        </li>
+        <li>
+          <a href="#">2</a>
+        </li>
+        <li>
+          <a href="#">3</a>
+        </li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="-sr--only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav role="navigation" aria-label="Pagination">
+      <ul class="a-pagination -md">
+        <li>
+          <a href="#" aria-disabled="true">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="-sr--only">Previous</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">1</a>
+        </li>
+        <li>
+          <a href="#">2</a>
+        </li>
+        <li>
+          <a href="#">3</a>
+        </li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="-sr--only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav role="navigation" aria-label="Pagination">
+      <ul class="a-pagination -lg">
+        <li>
+          <a href="#" aria-disabled="true">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="-sr--only">Previous</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">1</a>
+        </li>
+        <li>
+          <a href="#">2</a>
+        </li>
+        <li>
+          <a href="#">3</a>
+        </li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="-sr--only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav role="navigation" aria-label="Pagination">
+      <ul class="a-pagination -xl">
+        <li>
+          <a href="#" aria-disabled="true">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="-sr--only">Previous</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">1</a>
+        </li>
+        <li>
+          <a href="#">2</a>
+        </li>
+        <li>
+          <a href="#">3</a>
+        </li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="-sr--only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>

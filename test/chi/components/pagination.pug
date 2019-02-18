@@ -1,0 +1,131 @@
+---
+title: Pagination
+---
+- var steps = ['0', '1', '2', '3', '4', '5', '6'];
+
+h4 Base
+.example.-mb--3
+  .-p--5
+    nav(role='navigation', aria-label='Pagination')
+      ul.a-pagination
+        each step in steps
+          if step == '0'
+            li
+              a(href='#', aria-label='Previous')
+                span(aria-hidden="true") &laquo;
+                span.-sr--only Previous
+          else if step == '6'
+            li
+              a(href='#', aria-label='Next')
+                span(aria-hidden="true") &raquo;
+                span.-sr--only Next
+          else
+            li
+              a(href='#')= `${step}`
+h4 Pill
+.example.-mb--3
+  .-p--5
+    nav(role='navigation', aria-label='Pagination')
+      ul.a-pagination.-pill
+        each step in steps
+          if step == '0'
+            li
+              a(href='#', aria-label='Previous')
+                span(aria-hidden="true") &laquo;
+                span.-sr--only Previous
+          else if step == '6'
+            li
+              a(href='#', aria-label='Next')
+                span(aria-hidden="true") &raquo;
+                span.-sr--only Next
+          else
+            li
+              a(href='#')= `${step}`
+h5 Active
+.example.-mb--3
+  .-p--5
+    nav(role='navigation', aria-label='Pagination')
+      ul.a-pagination
+        each step in steps
+          if step == '0'
+            li
+              a(href='#', aria-label='Previous')
+                span(aria-hidden="true") &laquo;
+                span.-sr--only Previous
+          else if step == '6'
+            li
+              a(href='#', aria-label='Next')
+                span(aria-hidden="true") &raquo;
+                span.-sr--only Next
+          else if step == '3'
+            li.-active
+              a(href='#', aria-current='page')= `${step}`
+          else
+            li
+              a(href='#')= `${step}`
+h5 Disabled
+.example.-mb--3
+  .-p--5
+    nav(role='navigation', aria-label='Pagination')
+      ul.a-pagination
+        each step in steps
+          if step == '0'
+            li.-disabled
+              a(href='#', aria-disabled='true')
+                span(aria-hidden="true") &laquo;
+                span.-sr--only Previous
+          else if step == '6'
+            li.-disabled
+              a(href='#', aria-label='Next')
+                span(aria-hidden="true") &raquo;
+                span.-sr--only Next
+          else
+            li
+              a(href='#')= `${step}`
+h2 Sizes
+.test-sizes
+  table(cellpadding="0", cellspacing="0", width="600px")
+    each size in ['sm', 'md', 'lg', 'xl']
+      tr
+        td
+          h5= `-${size}`
+          td
+            .-m--2
+              nav(role='navigation', aria-label='Pagination')
+                ul.a-pagination(class=`-${size}`)
+                  each step in steps
+                    if step == '0'
+                      li
+                        a(href='#', aria-label='Previous')
+                          span(aria-hidden="true") &laquo;
+                          span.-sr--only Previous
+                    else if step == '6'
+                      li
+                        a(href='#', aria-label='Next')
+                          span(aria-hidden="true") &raquo;
+                          span.-sr--only Next
+                    else
+                      li
+                        a(href='#')= `${step}`
+    each size in ['sm', 'md', 'lg', 'xl']
+      tr
+        td
+          h5= `-${size}`
+          td
+            .-m--2
+              nav(role='navigation', aria-label='Pagination')
+                ul.a-pagination(class=`-${size} -pill`)
+                  each step in steps
+                    if step == '0'
+                      li
+                        a(href='#', aria-label='Previous')
+                          span(aria-hidden="true") &laquo;
+                          span.-sr--only Previous
+                    else if step == '6'
+                      li
+                        a(href='#', aria-label='Next')
+                          span(aria-hidden="true") &raquo;
+                          span.-sr--only Next
+                    else
+                      li
+                        a(href='#')= `${step}`
