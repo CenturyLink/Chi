@@ -1,5 +1,6 @@
 ---
 title: Text
+styles: [show-example]
 ---
 
 p.-text Use text utility classes to control sizing, color, alignment and more.
@@ -50,9 +51,9 @@ p.-text
   | Use shorthand utility classes to control an elements line-height. Line height sizes are equal to <code>$base-unit * {size}</code>
   | and illustrated in green in the example below.
 .example.-mb--3
-  .-m--3
+  .-m--3.-show--example
     each type in ['lh--1', 'lh--2', 'lh--3', 'lh--4', 'lh--5', 'lh--6', 'lh--7', 'lh--8', 'lh--9']
-      p.-text.-pl--1(class=`-${type}`, style=`background:#E4F2CE;`)
+      p.-text.-pl--1(class=`-${type}`)
         = `-${type}`
   :code(lang="html")
       <p class="-text -lh--1">-lh--1</p>

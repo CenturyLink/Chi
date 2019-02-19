@@ -51,6 +51,22 @@ $sizes: (
                   line-height: 1rem;
                 }
               }
+
+              &--start {
+                & .m-formGroup {
+                  font-weight: 600;
+                  margin: 0.5rem 0 0 0.5rem;
+
+                  & label {
+                    margin-right: 1rem;
+                  }
+                }
+
+                & div:not(.m-formGroup) {
+                  margin-left: 2.5rem;
+                  padding: 0.5rem 0 0.5rem 0;
+                }
+              }
             }
 
             &:hover {

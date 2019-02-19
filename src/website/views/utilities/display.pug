@@ -1,5 +1,6 @@
 ---
 title: Display
+styles: [show-example]
 ---
 
 p.-text Use shorthand display utility classes to quickly change an elements display value.
@@ -50,11 +51,11 @@ section.a-table.-bordered.-mt--3.-mb--3
 
 h3 Examples
 .example.-mb--3
-  .-p--3
-    .-text.-b--1.-p--3.-m--1.-d--none.-d-xl--inline-flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--none -d-xl--inline-flex
-    .-text.-b--1.-p--3.-m--1.-d--flex.-d-sm--none(style="background:#E4F2CE;border-color:#C6DBA7;") -d-sm--none
-    .-text.-b--1.-p--3.-m--1.-d--inline-flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--inline-flex
-    .-text.-b--1.-p--3.-m--1.-d--flex(style="background:#E4F2CE;border-color:#C6DBA7;") -d--flex
+  .-p--3.-show--example
+    .-text.-p--3.-m--1.-d--none.-d-xl--inline-flex -d--none -d-xl--inline-flex
+    .-text.-p--3.-m--1.-d--flex.-d-sm--none -d-sm--none
+    .-text.-p--3.-m--1.-d--inline-flex -d--inline-flex
+    .-text.-p--3.-m--1.-d--flex -d--flex
   :code(lang="html")
     <!-- hidden on all breakpoints except xl -->
     <div class="-d--none -d-xl--inline-flex"></div>
