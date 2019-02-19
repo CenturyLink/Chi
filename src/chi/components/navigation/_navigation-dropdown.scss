@@ -10,6 +10,14 @@
       }
     }
   }
+
+  &.-small > li > a.m-dropdown__trigger:after {
+    top: 1.1rem;
+  }
+
+  &.-large > li > a.m-dropdown__trigger:after {
+    top: 1.55rem;
+  }
 }
 
 .chi {
