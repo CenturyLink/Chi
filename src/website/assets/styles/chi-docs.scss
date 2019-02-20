@@ -79,4 +79,11 @@ body {
   .a-table__options code {
     word-break: normal;
   }
+
+  .-anchor {
+    &::before {
+      height: 5rem;
+      margin: -5rem 0 0;
+    }
+  }
 }

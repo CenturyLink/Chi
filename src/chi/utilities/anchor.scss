@@ -7,8 +7,6 @@
     &::before {
       content: '';
       display: block;
-      height: 5rem;
-      margin: -5rem 0 0;
     }
 
     &:hover {
@@ -35,15 +33,6 @@
         &:hover {
           opacity: 1;
           text-decoration: none;
-        }
-      }
-    }
-
-    @media only screen and (max-width: $md-breakpoint) {
-      &.-anchor {
-        &::before {
-          height: 1rem;
-          margin: -1rem 0 0;
         }
       }
     }

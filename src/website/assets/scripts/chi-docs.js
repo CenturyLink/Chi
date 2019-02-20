@@ -119,11 +119,16 @@ onLoad(() => {
     addId(anchor);
     const spanContainer = document.createElement('span');
     const anchorLink = document.createElement('a');
+    const textContent = anchor.textContent;
     spanContainer.appendChild(anchorLink);
     anchorLink.textContent = '#';
     anchorLink.setAttribute('class', '-ml--1');
-    anchorLink.setAttribute('href', '#' + anchor.textContent);
+    anchorLink.setAttribute('href', '#' + textContent);
     anchor.appendChild(spanContainer);
+    if (window.location.hash === '#'+textContent) {
+      window.location.hash = '#';
+      window.location.hash = '#'+textContent;
+    }
   });
 
   var codeSnippets = document.getElementsByTagName('pre');
