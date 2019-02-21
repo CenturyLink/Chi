@@ -3,16 +3,16 @@ title: Z-index
 ---
 -
   var indexes = {
-    '0':    {color: '-bg--info',     margin: 1, text: 'Initial value'},
+    '0':    {color: '-bg--black',    margin: 1, text: 'Initial value'},
     '1':    {color: '',              margin: 0, text: 'Prominent elements (E.g. focused buttons)'},
     '10':   {color: '-bg--danger',   margin: 2, text: 'Dropdowns'},
     '20':   {color: '-bg--warning',  margin: 3, text: 'Fixed elements (E.g. drawer)'},
     '30':   {color: '-bg--success',  margin: 4, text: 'Backdrops'},
-    '40':   {color: '-bg--green-40', margin: 5, text: 'Fixed elements with backdrop (E.g. drawer with backdrop)'},
+    '40':   {color: '-bg--secondary', margin: 5, text: 'Fixed elements with backdrop (E.g. drawer with backdrop)'},
     '50':   {color: '-bg--grey-20',  margin: 6, text: 'Modals'},
     '60':   {color: '-bg--grey-10',  margin: 7, text: 'Popovers'},
     '70':   {color: '-bg--black',    margin: 8, text: 'Tooltips'},
-    '80':   {color: '-bg--brand',    margin: 9, text: '-'},
+    '80':   {color: '-bg--primary',    margin: 9, text: '-'},
     '90':   {color: '',              margin: 0, text: '-'},
     '100':  {color: '',              margin: 0, text: '-'},
     'auto': {color: '',              margin: 0, text: '-'}
@@ -52,7 +52,7 @@ h3 Example
             =`-z--${index}`
   :code(lang="html")
     <div class="-position--relative">
-      <div class="-position--absolute -z--0  -bg--info">-z--0</div>
+      <div class="-position--absolute -z--0  -bg--black">-z--0</div>
       <div class="-position--absolute -z--10 -bg--danger">-z--10</div>
       <div class="-position--absolute -z--20 -bg--warning">-z--20</div>
       <div class="-position--absolute -z--30 -bg--success">-z--30</div>
@@ -60,5 +60,5 @@ h3 Example
       <div class="-position--absolute -z--50 -bg--grey-20">-z--50</div>
       <div class="-position--absolute -z--60 -bg--grey-10">-z--60</div>
       <div class="-position--absolute -z--70 -bg--black">-z--70</div>
-      <div class="-position--absolute -z--80 -bg--brand">-z--80</div>
+      <div class="-position--absolute -z--80 -bg--primary">-z--80</div>
     </div>

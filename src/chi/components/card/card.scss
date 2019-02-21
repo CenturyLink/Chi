@@ -127,8 +127,8 @@
     }
 
     &.-active {
-      border: 0.0625rem solid $brand-color;
-      box-shadow: 0 0 0 0.0625rem $brand-color;
+      border: 0.0625rem solid $secondary-color;
+      box-shadow: 0 0 0 0.0625rem $secondary-color;
     }
 
     &.-empty {
@@ -142,7 +142,7 @@
         justify-content: center;
 
         & .a-icon {
-          margin-bottom: 1rem;
+          margin: 0.5rem 0;
         }
       }
     }

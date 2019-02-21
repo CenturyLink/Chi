@@ -3,8 +3,8 @@
 
 .-show--example {
   [class*=a-col]:before {
-    background-color: #F2FAE6;
-    box-shadow: inset 0 0 0 1px #C6DBA7;
+    background-color: set-color(mint, 10);
+    box-shadow: inset 0 0 0 1px set-color(mint, 30);
     content: attr(class);
     display: block;
     font-size: 0.875rem;
@@ -17,7 +17,7 @@
 
   & > div:not(.a-col),
   & > p {
-    background-color: #F2FAE6;
-    box-shadow: inset 0 0 0 1px #C6DBA7;
+    background-color: set-color(mint, 10);
+    box-shadow: inset 0 0 0 1px set-color(mint, 30);
   }
 }

@@ -23,7 +23,7 @@ section.a-table.-bordered.-mt--3.-mb--3
           th
             div Result
       tbody
-        each val, type in {'none':'none', 'brand': '#4E8003', 'white': '#FFFFFF', 'black': '#000000', 'grey-10': '#F8F8F8', 'grey-20': '#EEEEEE', 'green-40': '#8CC63F', 'success': '#4E8003', 'warning': '#A66102','danger': '#DE1B21', 'info': '#2973E3'}
+        each val, type in {'none':'none', 'primary': '#0047BB', 'secondary': '#48D597', 'white': '#FFFFFF', 'black': '#000000', 'grey-10': '#F8F9F9', 'grey-20': '#EDF0F2', 'success': '#097A49', 'warning': '#854E03','danger': '#B50D12'}
           tr
             td(width='25%')
               code= '-bg--' + type
@@ -51,7 +51,7 @@ section.a-table.-bordered.-mt--3.-mb--3
             div Value
       tbody
         each size in ['sm', 'md', 'lg', 'xl']
-          each type in ['none', 'brand', 'white', 'black', 'grey-10', 'grey-20', 'green-40', 'success', 'warning', 'danger', 'info']
+          each type in ['none', 'primary', 'secondary', 'white', 'black', 'grey-10', 'grey-20', 'success', 'warning', 'danger']
             tr
               td.-text(width='40%')
                 code= '-bg-' + size + '--' + type
@@ -60,22 +60,22 @@ section.a-table.-bordered.-mt--3.-mb--3
 h3 Examples
 .example.-mb--3
   .-p--3
-    .-text.-b--1.-p--3.-m--1.-bg--success(style="color:white;") -bg--success
-    .-text.-b--1.-p--3.-m--1.-bg-sm--danger(style="color:white;") -bg-sm--danger
+    .-text.-b--1.-p--3.-m--1.-bg--primary(style="color:white;") -bg--primary
+    .-text.-b--1.-p--3.-m--1.-bg-sm--secondary(style="color:black;") -bg-sm--secondary
     .-text.-b--1.-p--3.-m--1.-bg-md--warning(style="color:white;") -bg-md--warning
-    .-text.-b--1.-p--3.-m--1.-bg-lg--info(style="color:white;") -bg-lg--info
-    .-text.-b--1.-p--3.-m--1.-bg-xl--brand(style="color:white;") -bg-xl--brand
+    .-text.-b--1.-p--3.-m--1.-bg-lg--danger(style="color:white;") -bg-lg--danger
+    .-text.-b--1.-p--3.-m--1.-bg-xl--black(style="color:white;") -bg-xl--black
     .-text.-b--1.-p--3.-m--1.-bg--none(style="color:black;") -bg--none
   :code(lang="html")
-    <!-- background-color success on all breakpoints -->
-    <div class="-bg--success"></div>
-    <!-- background-color danger from sm -->
-    <div class="-bg-sm--danger"></div>
+    <!-- background-color primary on all breakpoints -->
+    <div class="-bg--primary"></div>
+    <!-- background-color secondary from sm -->
+    <div class="-bg-sm--secondary"></div>
     <!-- background-color warning from md -->
     <div class="-bg-md--warning"></div>
-    <!-- background-color info from lg -->
-    <div class="-bg-lg--info"></div>
-    <!-- background-color brand from xl -->
-    <div class="-bg-xl--brand"></div>
+    <!-- background-color danger from lg -->
+    <div class="-bg-lg--danger"></div>
+    <!-- background-color black from xl -->
+    <div class="-bg-xl--black"></div>
     <!-- background none on all breakpoints -->
     <div class="-bg--none"></div>

@@ -113,7 +113,7 @@ $sizes: (
     & tbody {
       tr {
         &.-row--success {
-          background-color: set-color(green, 10);
+          background-color: set-color(mint, 10);
         }
 
         &.-row--warning {
@@ -125,7 +125,7 @@ $sizes: (
         }
 
         &.-row--info {
-          background-color: set-color(blue, 10);
+          background-color: set-color(navy, 10);
         }
 
         &[disabled] {
