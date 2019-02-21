@@ -127,7 +127,6 @@ $badge: c-badge;
     &.-secondary {
       background-color: $secondary-color;
       border: 0.0625rem solid $secondary-color;
-      color: set-color(white);
 
       &.-outline {
         background-color: set-color(white);

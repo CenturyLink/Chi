@@ -92,9 +92,9 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
 .example.-mb--3
   .-p--3
     .a-grid.-align-items--end
-      each color in ['Base', 'Primary', 'Success', 'Warning', 'Danger', 'Info', 'Inverse', 'Muted']
+      each color in ['base', 'primary', 'success', 'warning', 'danger', 'inverse', 'muted']
         div.-p--2
-          div(class=`a-icon -md -text${color}`)
+          div(class=`a-icon -md -text--${color}`)
             svg
               use(xlink:href='#icon-logo-centurylink')
   ul#a-tabs--colors.a-tabs.-ml--3
@@ -109,7 +109,6 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
       <div class="a-icon -md -text--success"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--warning"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--danger"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -text--info"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--inverse"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--muted"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
   #a-tabs-panel--colors-webfont.a-tabs-panel
@@ -119,7 +118,6 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
       <i class="a-icon icon-logo-centurylink -md -text--success"></i>
       <i class="a-icon icon-logo-centurylink -md -text--warning"></i>
       <i class="a-icon icon-logo-centurylink -md -text--danger"></i>
-      <i class="a-icon icon-logo-centurylink -md -text--info"></i>
       <i class="a-icon icon-logo-centurylink -md -text--inverse"></i>
       <i class="a-icon icon-logo-centurylink -md -text--muted"></i>
 

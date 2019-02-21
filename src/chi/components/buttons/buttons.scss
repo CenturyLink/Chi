@@ -4,30 +4,35 @@
 $state-colors: (
   primary: (
     color: navy,
+    button-text-color: $text-white,
     tone: 70,
     tone-hover: 80,
     tone-focus: 90
   ),
   secondary: (
     color: mint,
+    button-text-color: $text-color,
     tone: 40,
     tone-hover: 50,
     tone-focus: 60
   ),
   danger: (
     color: red,
+    button-text-color: $text-white,
     tone: 60,
     tone-hover: 70,
     tone-focus: 80
   ),
   dark: (
     color: grey,
+    button-text-color: $text-white,
     tone: 90,
     tone-hover: 100,
     tone-focus: 90
   ),
   inverse: (
     color: white,
+    button-text-color: $text-white,
     tone: null,
     tone-hover: null,
     tone-focus: null
@@ -465,6 +470,7 @@ $sizes: (
     @each $color-definition in $state-colors {
       $type: nth($color-definition, 1);
       $color: map_get(nth($color-definition, 2), color);
+      $button-text-color: map_get(nth($color-definition, 2), button-text-color);
       $tone: map_get(nth($color-definition, 2), tone);
       $tone-hover: map_get(nth($color-definition, 2), tone-hover);
       $tone-focus: map_get(nth($color-definition, 2), tone-focus);
@@ -551,7 +557,7 @@ $sizes: (
           background-color: set-color($color, $tone);
           border: $border solid set-color($color, $tone);
           box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
-          color: set-color(white);
+          color: set-color($button-text-color);
 
           .a-icon {
             color: inherit;

@@ -74,7 +74,7 @@ $colorscheme: (
     80: #00308a,
     70: #0047bb,
     60: #005bed,
-    50: #4288f3,
+    50: #4289f5,
     40: #8cb6f5,
     30: #c0d7fa,
     20: #e6f0ff,
@@ -175,6 +175,7 @@ $secondary-alt: map-get(map-get($colorscheme, mint), 50);
 
 $primary-color: map-get(map-get($colorscheme, navy), 70);
 $secondary-color: map-get(map-get($colorscheme, mint), 40);
+$secondary-color-alt: map-get(map-get($colorscheme, mint), 50);
 $brand-color: map-get(map-get($colorscheme, navy), 70);
 $success-color: map-get(map-get($colorscheme, mint), 50);
 $danger-color: map-get(map-get($colorscheme, red), 60);

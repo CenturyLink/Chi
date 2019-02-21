@@ -99,17 +99,20 @@
         color: set-color(grey, 50);
       }
 
-      .a-tabs li {
-        & > a {
-          color: set-color(white);
+      .a-tabs {
+        li {
+          & > a {
+            color: set-color(white);
 
-          &:hover {
-            color: $brand-color;
+            &:hover {
+              color: $secondary-color;
+            }
           }
         }
 
-        &.-active > a {
-          color: $brand-color;
+        &:not(.-vertical):not(.-responsive):not(.-sliding) > li.-active > a {
+          color: $secondary-color;
+          border-bottom-color: $secondary-color;
         }
       }
     }
