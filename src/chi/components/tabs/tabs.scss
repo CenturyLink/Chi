@@ -307,9 +307,13 @@
 
   &.-toolbar {
     & > li {
-
-      &.-active > a {
+      &.m-dropdown.-active > a {
+        border-bottom: 0.0625rem solid $brand-color;
         padding-bottom: 0.5rem;
+
+        &.m-dropdown__trigger {
+          padding-right: 1rem;
+        }
       }
 
       & > a {
