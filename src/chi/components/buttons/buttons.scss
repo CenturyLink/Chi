@@ -2,6 +2,13 @@
 @import 'variables';
 
 $state-colors: (
+  brand: (
+    color: navy,
+    button-text-color: $text-white,
+    tone: 70,
+    tone-hover: 80,
+    tone-focus: 90
+  ),
   primary: (
     color: navy,
     button-text-color: $text-white,
