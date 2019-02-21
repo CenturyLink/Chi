@@ -127,8 +127,8 @@
     }
 
     &.-active {
-      border: 0.0625rem solid $brand-color;
-      box-shadow: 0 0 0 0.0625rem $brand-color;
+      border: 0.0625rem solid $secondary-color;
+      box-shadow: 0 0 0 0.0625rem $secondary-color;
     }
 
     &.-empty {
