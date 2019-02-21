@@ -23,7 +23,7 @@ section.a-table.-bordered.-mt--3.-mb--3
           th
             div Result
       tbody
-        each val, type in {'none':'none', 'primary': '#0047BB', 'secondary': '#48D597', 'white': '#FFFFFF', 'black': '#000000', 'grey-10': '#F8F8F8', 'grey-20': '#EEEEEE', 'success': '#48D597', 'warning': '#A66102','danger': '#DE1B21'}
+        each val, type in {'none':'none', 'primary': '#0047BB', 'secondary': '#48D597', 'white': '#FFFFFF', 'black': '#000000', 'grey-10': '#F8F9F9', 'grey-20': '#EDF0F2', 'success': '#097A49', 'warning': '#854E03','danger': '#B50D12'}
           tr
             td(width='25%')
               code= '-bg--' + type
@@ -61,13 +61,13 @@ h3 Examples
 .example.-mb--3
   .-p--3
     .-text.-b--1.-p--3.-m--1.-bg--primary(style="color:white;") -bg--primary
-    .-text.-b--1.-p--3.-m--1.-bg-sm--secondary(style="color:white;") -bg-sm--secondary
+    .-text.-b--1.-p--3.-m--1.-bg-sm--secondary(style="color:black;") -bg-sm--secondary
     .-text.-b--1.-p--3.-m--1.-bg-md--warning(style="color:white;") -bg-md--warning
     .-text.-b--1.-p--3.-m--1.-bg-lg--danger(style="color:white;") -bg-lg--danger
     .-text.-b--1.-p--3.-m--1.-bg-xl--black(style="color:white;") -bg-xl--black
     .-text.-b--1.-p--3.-m--1.-bg--none(style="color:black;") -bg--none
   :code(lang="html")
-    <!-- background-color success on all breakpoints -->
+    <!-- background-color primary on all breakpoints -->
     <div class="-bg--primary"></div>
     <!-- background-color secondary from sm -->
     <div class="-bg-sm--secondary"></div>
