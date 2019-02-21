@@ -131,6 +131,8 @@ ul#a-tabs.a-tabs
 .example.-mb--3
   #horizontal.a-tabs-panel.-active
     each size in ['sm', 'md', 'lg', 'xl']
+      .-pl--3
+        p.-text--bold= '-' + size
       .-d--flex.-flex--wrap
         .m-btnGroup.-m--3
           button(class=`a-btn -${size}`) Button
@@ -175,8 +177,6 @@ ul#a-tabs.a-tabs
                 svg
                   use(xlink:href='#icon-atom')
               span Button
-      .-pl--3
-        p.-text--bold= '-' + size
     :code(lang='html')
       <div class="m-btnGroup">
         <button class="a-btn -sm">Button</button>
@@ -417,12 +417,10 @@ ul#a-tabs.a-tabs
 
   #vertical.a-tabs-panel
     each size in ['sm', 'md', 'lg', 'xl']
+      .-pl--3
+        p.-text--bold= '-' + size
       .-d--flex.-flex--wrap
         .m-btnGroup.-vertical.-fluid.-m--3(style="width:12rem")
-          button(class=`a-btn -${size}`) Button
-          button(class=`a-btn -${size}`) Button
-          button(class=`a-btn -${size}`) Button
-        .m-btnGroup.-vertical.-fluid.-pill.-m--3(style="width:12rem")
           button(class=`a-btn -${size}`) Button
           button(class=`a-btn -${size}`) Button
           button(class=`a-btn -${size}`) Button
@@ -461,15 +459,8 @@ ul#a-tabs.a-tabs
                 svg
                   use(xlink:href='#icon-atom')
               span Button
-      .-pl--3
-        p.-text--bold= '-' + size
     :code(lang="html")
       <div class="m-btnGroup -vertical -fluid">
-        <button class="a-btn -sm">Button</button>
-        <button class="a-btn -sm">Button</button>
-        <button class="a-btn -sm">Button</button>
-      </div>
-      <div class="m-btnGroup -vertical -fluid -pill">
         <button class="a-btn -sm">Button</button>
         <button class="a-btn -sm">Button</button>
         <button class="a-btn -sm">Button</button>
@@ -528,11 +519,6 @@ ul#a-tabs.a-tabs
         <button class="a-btn -md">Button</button>
         <button class="a-btn -md">Button</button>
       </div>
-      <div class="m-btnGroup -vertical -fluid -pill">
-        <button class="a-btn -md">Button</button>
-        <button class="a-btn -md">Button</button>
-        <button class="a-btn -md">Button</button>
-      </div>
       <div class="m-btnGroup -vertical -fluid">
         <button class="a-btn -md -icon">
           <div class="a-btn__content">
@@ -587,11 +573,6 @@ ul#a-tabs.a-tabs
         <button class="a-btn -lg">Button</button>
         <button class="a-btn -lg">Button</button>
       </div>
-      <div class="m-btnGroup -vertical -fluid -pill">
-        <button class="a-btn -lg">Button</button>
-        <button class="a-btn -lg">Button</button>
-        <button class="a-btn -lg">Button</button>
-      </div>
       <div class="m-btnGroup -vertical -fluid">
         <button class="a-btn -lg -icon">
           <div class="a-btn__content">
@@ -642,11 +623,6 @@ ul#a-tabs.a-tabs
         </button>
       </div>
       <div class="m-btnGroup -vertical -fluid">
-        <button class="a-btn -xl">Button</button>
-        <button class="a-btn -xl">Button</button>
-        <button class="a-btn -xl">Button</button>
-      </div>
-      <div class="m-btnGroup -vertical -fluid -pill">
         <button class="a-btn -xl">Button</button>
         <button class="a-btn -xl">Button</button>
         <button class="a-btn -xl">Button</button>
@@ -757,6 +733,11 @@ p.-text
     </div>
 
 h4 Hybrid buttons sizes
+
+p.-text
+  | Hybrid buttons supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']

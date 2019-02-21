@@ -223,33 +223,6 @@ $sizes: (
           }
         }
       }
-
-      &.-pill {
-        .a-btn {
-          &:first-child {
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
-          }
-
-          &:last-child {
-            border-bottom-left-radius: 1rem;
-            border-bottom-right-radius: 1rem;
-          }
-
-          @each $type in map-keys($sizes) {
-            &.-#{$type} {
-              &:first-child {
-                border-top-left-radius: map-get(map-get($sizes, $type), border-radius);
-                border-top-right-radius: map-get(map-get($sizes, $type), border-radius);
-              }
-              &:last-child {
-                border-bottom-left-radius: map-get(map-get($sizes, $type), border-radius);
-                border-bottom-right-radius: map-get(map-get($sizes, $type), border-radius);
-              }
-            }
-          }
-        }
-      }
     }
   }
 }
