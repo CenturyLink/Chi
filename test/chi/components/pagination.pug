@@ -6,83 +6,71 @@ title: Pagination
 h4 Base
 .example.-mb--3
   .-p--5
-    nav(role='navigation', aria-label='Pagination')
-      ul.a-pagination
+    nav.a-pagination(role='navigation', aria-label='Pagination')
+      .m-btnGroup
         each step in steps
           if step == '0'
-            li
-              a(href='#', aria-label='Previous')
-                span(aria-hidden="true") &laquo;
-                span.-sr--only Previous
+            a(class=`a-btn`, href='#', aria-label='Previous')
+              span(aria-hidden='true') &laquo;
+              span.-sr--only Previous
           else if step == '6'
-            li
-              a(href='#', aria-label='Next')
-                span(aria-hidden="true") &raquo;
-                span.-sr--only Next
+            a(class=`a-btn`, href='#')
+              span(aria-hidden='true', aria-label='Next') &raquo;
+              span.-sr--only Next
           else
-            li
-              a(href='#')= `${step}`
+            a(class=`a-btn`, href='#')= `${step}`
 h4 Pill
 .example.-mb--3
   .-p--5
-    nav(role='navigation', aria-label='Pagination')
-      ul.a-pagination.-pill
+    nav.a-pagination(role='navigation', aria-label='Pagination')
+      .m-btnGroup.-pill
         each step in steps
           if step == '0'
-            li
-              a(href='#', aria-label='Previous')
-                span(aria-hidden="true") &laquo;
-                span.-sr--only Previous
+            a(class=`a-btn`, href='#', aria-label='Previous')
+              span(aria-hidden='true') &laquo;
+              span.-sr--only Previous
           else if step == '6'
-            li
-              a(href='#', aria-label='Next')
-                span(aria-hidden="true") &raquo;
-                span.-sr--only Next
+            a(class=`a-btn`, href='#')
+              span(aria-hidden='true', aria-label='Next') &raquo;
+              span.-sr--only Next
           else
-            li
-              a(href='#')= `${step}`
+            a(class=`a-btn`, href='#')= `${step}`
 h5 Active
 .example.-mb--3
   .-p--5
-    nav(role='navigation', aria-label='Pagination')
-      ul.a-pagination
+    nav.a-pagination(role='navigation', aria-label='Pagination')
+      .m-btnGroup
         each step in steps
           if step == '0'
-            li
-              a(href='#', aria-label='Previous')
-                span(aria-hidden="true") &laquo;
-                span.-sr--only Previous
-          else if step == '6'
-            li
-              a(href='#', aria-label='Next')
-                span(aria-hidden="true") &raquo;
-                span.-sr--only Next
+            a(class=`a-btn`, href='#', aria-label='Previous')
+              span(aria-hidden='true') &laquo;
+              span.-sr--only Previous
           else if step == '3'
-            li.-active
-              a(href='#', aria-current='page')= `${step}`
+            a(class=`a-btn -active`, href='#')= `${step}`
+          else if step == '6'
+            a(class=`a-btn`, href='#')
+              span(aria-hidden='true', aria-label='Next') &raquo;
+              span.-sr--only Next
           else
-            li
-              a(href='#')= `${step}`
+            a(class=`a-btn`, href='#')= `${step}`
 h5 Disabled
 .example.-mb--3
   .-p--5
-    nav(role='navigation', aria-label='Pagination')
-      ul.a-pagination
+    nav.a-pagination(role='navigation', aria-label='Pagination')
+      .m-btnGroup
         each step in steps
           if step == '0'
-            li.-disabled
-              a(href='#', aria-disabled='true')
-                span(aria-hidden="true") &laquo;
-                span.-sr--only Previous
+            a(class=`a-btn -disabled`, href='#', aria-disabled='true' disabled)
+              span(aria-hidden='true') &laquo;
+              span.-sr--only Previous
           else if step == '6'
-            li.-disabled
-              a(href='#', aria-label='Next')
-                span(aria-hidden="true") &raquo;
-                span.-sr--only Next
+            a(class=`a-btn`, href='#')
+              span(aria-hidden='true', aria-label='Next') &raquo;
+              span.-sr--only Next
           else
-            li
-              a(href='#')= `${step}`
+            a(class=`a-btn`, href='#')= `${step}`
 h2 Sizes
+h3 Base
 .test-sizes
   table(cellpadding="0", cellspacing="0", width="600px")
     each size in ['sm', 'md', 'lg', 'xl']
@@ -91,41 +79,38 @@ h2 Sizes
           h5= `-${size}`
           td
             .-m--2
-              nav(role='navigation', aria-label='Pagination')
-                ul.a-pagination(class=`-${size}`)
+              nav.a-pagination(role='navigation', aria-label='Pagination').-mb--2
+                .m-btnGroup
                   each step in steps
                     if step == '0'
-                      li
-                        a(href='#', aria-label='Previous')
-                          span(aria-hidden="true") &laquo;
-                          span.-sr--only Previous
+                      a(class=`a-btn -${size}`, href='#', aria-label='Previous')
+                        span(aria-hidden='true') &laquo;
+                        span.-sr--only Previous
                     else if step == '6'
-                      li
-                        a(href='#', aria-label='Next')
-                          span(aria-hidden="true") &raquo;
-                          span.-sr--only Next
+                      a(class=`a-btn -${size}`, href='#')
+                        span(aria-hidden='true', aria-label='Next') &raquo;
+                        span.-sr--only Next
                     else
-                      li
-                        a(href='#')= `${step}`
+                      a(class=`a-btn -${size}`, href='#')= `${step}`
+h3 Pill
+.test-sizes
+  table(cellpadding="0", cellspacing="0", width="600px")
     each size in ['sm', 'md', 'lg', 'xl']
       tr
         td
           h5= `-${size}`
           td
             .-m--2
-              nav(role='navigation', aria-label='Pagination')
-                ul.a-pagination(class=`-${size} -pill`)
+              nav.a-pagination(role='navigation', aria-label='Pagination').-mb--2
+                .m-btnGroup.-pill
                   each step in steps
                     if step == '0'
-                      li
-                        a(href='#', aria-label='Previous')
-                          span(aria-hidden="true") &laquo;
-                          span.-sr--only Previous
+                      a(class=`a-btn -${size}`, href='#', aria-label='Previous')
+                        span(aria-hidden='true') &laquo;
+                        span.-sr--only Previous
                     else if step == '6'
-                      li
-                        a(href='#', aria-label='Next')
-                          span(aria-hidden="true") &raquo;
-                          span.-sr--only Next
+                      a(class=`a-btn -${size}`, href='#')
+                        span(aria-hidden='true', aria-label='Next') &raquo;
+                        span.-sr--only Next
                     else
-                      li
-                        a(href='#')= `${step}`
+                      a(class=`a-btn -${size}`, href='#')= `${step}`
