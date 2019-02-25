@@ -14,7 +14,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           tr
             td
               small= `${state}`
-            each style in ['default', 'brand', 'danger', 'info', 'dark']
+            each style in ['default', 'primary', 'secondary', 'danger', 'dark']
               td
                 input.a-btn.-m--1.-ml--2(
                   type="button"
@@ -102,7 +102,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           tr
             td
               small= `${state}`
-            each style in ['default', 'brand', 'danger', 'info', 'dark']
+            each style in ['default', 'primary', 'secondary', 'danger', 'dark']
               td
                 button(type="button", class=`a-btn -float -${style} -${state} -ml--4 -m--1`)
                   .a-btn__content

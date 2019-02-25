@@ -26,7 +26,7 @@ each size in ['default', 'small', 'large']
     })
       span.a-h2= `Horizontal button groups / ${type} / ${size}`
       table(cellpadding="0", cellspacing="0")
-        each style in ['default', 'brand', 'danger', 'info', 'dark']
+        each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             each val, index in [2,3,4]
               td
@@ -36,7 +36,7 @@ each size in ['default', 'small', 'large']
                     +button(false, type, style, size)
                       | Button
       table(cellpadding="0", cellspacing="0")
-        each style in ['default', 'brand', 'danger', 'info', 'dark']
+        each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             each val, index in [2,3,4]
               td
@@ -47,7 +47,7 @@ each size in ['default', 'small', 'large']
                       .a-btn__content
                         +icon('atom')
       table(cellpadding="0", cellspacing="0")
-        each style in ['default', 'brand', 'danger', 'info', 'dark']
+        each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             each val, index in [2,3,4]
               td
@@ -75,7 +75,7 @@ each size in ['default', 'small', 'large']
     })
       span.a-h2= `Horizontal Button groups / ${type} / ${size} / fluid`
       table(cellpadding="0", cellspacing="0", width="600")
-        each style in ['default', 'brand', 'danger', 'info', 'dark']
+        each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             td
               .m-btnGroup.-fluid.-m--1
@@ -90,7 +90,7 @@ each size in ['default', 'small', 'large']
                     | Button
 
       table(cellpadding="0", cellspacing="0", width="300")
-        each style in ['default', 'brand', 'danger', 'info', 'dark']
+        each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             td
               .m-btnGroup.-fluid.-m--1
@@ -107,7 +107,7 @@ each size in ['default', 'small', 'large']
                       +icon('atom')
 
       table(cellpadding="0", cellspacing="0", width="600")
-        each style in ['default', 'brand', 'danger', 'info', 'dark']
+        each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             td
               .m-btnGroup.-fluid.-m--1
