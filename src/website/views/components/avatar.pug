@@ -2,8 +2,8 @@
 title: Avatar
 ---
 
-- var sizes = ['xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl'];
-- var columnWidths = {'xs':[ '4', '3', '1'], 'sm':[ '4', '3', '1'], 'sm2':[ '4', '3', '1'], 'sm3':[ '4', '3', '1'], 'md':[ '4', '2', '1'], 'lg':[ '4', '3', '2'], 'xl':[ '6', '3', '2'], 'xxl':[ '6', '4', '3']};
+- var sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
+- var columnWidths = {'xs':[ '4', '3', '1'], 'sm':[ '4', '3', '1'], 'sm--2':[ '4', '3', '1'], 'sm--3':[ '4', '3', '1'], 'md':[ '4', '2', '1'], 'lg':[ '4', '3', '2'], 'xl':[ '6', '3', '2'], 'xxl':[ '6', '4', '3']};
 - var colors = ["grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "mint", "green", "yellow", "orange"];
 - var iconExamples = ['user', 'users', 'atom'];
 
@@ -189,7 +189,7 @@ p.-text
 h4 Size
 p.-text
   | All three avatar styles support a full spectrum of sizes: <code>-xs</code>, <code>-sm</code>,
-  | <code>-sm2</code>, <code>-sm3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
+  | <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
   | <code>-md</code> is the default size.
 ul#a-tabs--sizes.a-tabs
   li.-active
@@ -210,8 +210,8 @@ ul#a-tabs--sizes.a-tabs
     :code(lang="html")
       <div class="a-avatar -xs">AA</div>
       <div class="a-avatar -sm">AA</div>
-      <div class="a-avatar -sm2">AA</div>
-      <div class="a-avatar -sm3">AA</div>
+      <div class="a-avatar -sm--2">AA</div>
+      <div class="a-avatar -sm--3">AA</div>
       <div class="a-avatar -md">AA</div>
       <div class="a-avatar -lg">AA</div>
       <div class="a-avatar -xl">AA</div>
@@ -233,10 +233,10 @@ ul#a-tabs--sizes.a-tabs
       <div class="a-avatar -sm">
         <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar -sm2">
+      <div class="a-avatar -sm--2">
         <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar -sm3">
+      <div class="a-avatar -sm--3">
         <i class="a-icon icon-user"></i>
       </div>
       <div class="a-avatar -md">
@@ -266,10 +266,10 @@ ul#a-tabs--sizes.a-tabs
       <div class="a-avatar -sm">
         <img src="path/to/image.jpg">
       </div>
-      <div class="a-avatar -sm2">
+      <div class="a-avatar -sm--2">
         <img src="path/to/image.jpg">
       </div>
-      <div class="a-avatar -sm3">
+      <div class="a-avatar -sm--3">
         <img src="path/to/image.jpg">
       </div>
       <div class="a-avatar -md">

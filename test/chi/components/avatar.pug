@@ -3,7 +3,7 @@ title: Avatar
 ---
 - var types = ['img', 'icon', 'icon-web-font', 'letter', 'double-letter'];
 - var colors = ["default", "grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "mint", "green", "yellow", "orange", "inverse"];
-- var sizes = ['default', 'xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl'];
+- var sizes = ['default', 'xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
 - var transparents = [false, true];
 
 each type in types
@@ -14,7 +14,7 @@ each type in types
         tr
           th
           each size in sizes
-            th.-p--1=size
+            th.-p--1.-text--center=size
       tbody
         each color in colors
           each transparent in transparents
