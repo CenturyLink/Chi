@@ -1,7 +1,17 @@
 @import 'mixins';
 @import 'variables';
 
-$avatar-sizes: (xs: 0.75rem, sm: 1rem, sm--2: 1.25rem, sm--3: 1.5rem, md: 2rem, lg: 4rem, xl: 6rem, xxl: 8rem);
+$avatar-sizes: (
+  xs: 0.75rem,
+  sm: 1rem,
+  sm2: 1.25rem,  // Legacy size code
+  sm--2: 1.25rem,
+  sm3: 1.5rem,  // Legacy size code
+  sm--3: 1.5rem,
+  md: 2rem,
+  lg: 4rem,
+  xl: 6rem,
+  xxl: 8rem);
 $avatar-colors: (grey, red, pink, purple, indigo, navy, blue, teal, mint, green, yellow, orange, inverse);
 $avatar-default-size: 'md';
 
