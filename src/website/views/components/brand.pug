@@ -60,10 +60,10 @@ p.-text
 .example.-mb--3
   .-p--3(style='overflow:auto')
     each size in sizes
-      div(class=`a-col -w--12 -p--3`)
+      div(class=`a-col -w--12 -p--2`)
+        p.-text--bold= '-' + size
         a(class=`a-brand -${size}`, href='#', aria-label='CenturyLink')
           img(src='https://assets.ctl.io/images/centurylink-logo.svg', alt='CenturyLink')
-        p.-text--bold= '-' + size
   ul#a-tabs--sizes.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-panel--sizes-img') IMG
