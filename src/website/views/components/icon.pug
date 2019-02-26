@@ -45,7 +45,7 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
   .-p--3
     .a-grid.-align-items--end
       each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
-        div.-p--2
+        div.-p--2.-m--1
           div(class=`a-icon -${size}`)
             svg
               use(xlink:href='#icon-logo-centurylink')
@@ -78,6 +78,10 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
       <i class="a-icon icon-logo-centurylink -xs"></i>
       <!-- -sm : 16x16px -->
       <i class="a-icon icon-logo-centurylink -sm"></i>
+      <!-- -sm--2 : 20x20px -->
+      <i class="a-icon icon-logo-centurylink -sm--2"></i>
+      <!-- -sm--3 : 24x24px -->
+      <i class="a-icon icon-logo-centurylink -sm--3"></i>
       <!-- -md : 32x32px -->
       <i class="a-icon icon-logo-centurylink -md"></i>
       <!-- -lg : 64x64px -->
@@ -127,7 +131,7 @@ h3 UI Icons
     .a-col.-w--6.-w-xl--2.-w-lg--3.-w-md--6.-mb--2
       .a-card.-py--4.-bg--grey-10
         .a-card__content
-          .a-icon.-sm3
+          .a-icon.-sm--3
             svg
               use(xlink:href=`#icon-${name}`)
       p.-text--center= 'icon-' + name

@@ -17,20 +17,20 @@ each size in ['medium', 'large']
     h4 Has icon
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
       .m-alert.-banner.-m2(class=`-${type}`, class={[`-${size}`]: size != 'medium'})
-        i.a-icon.-sm2(class =`${val} -text--${type}`)
+        i.a-icon.-sm--2(class =`${val} -text--${type}`)
         = `This is a ${type} message`
 
     h4 Has icon center
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
       .m-alert.-banner.-center.-m2(class=`-${type}`, class={[`-${size}`]: size != 'medium'})
-        i.a-icon.-sm2(class =`${val} -text--${type}`)
+        i.a-icon.-sm--2(class =`${val} -text--${type}`)
         = `This is a ${type} message`
 
     h4 Dismiss
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
       .m-alert.-banner.-dismiss.-m--2(class=`-${type}`, class={[`-${size}`]: size != 'medium'})
         .m-alert__content
-          i.a-icon.-sm2(class =`${val} -text--${type}`)
+          i.a-icon.-sm--2(class =`${val} -text--${type}`)
           = `This is a ${type} message`
         button(class='a-btn -icon -close -small')
           .a-btn__content
