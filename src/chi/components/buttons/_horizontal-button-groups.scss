@@ -228,8 +228,8 @@
 
     &.-pill {
       &:not(.-vertical) {
-        &.a-btn,
-        &.a-btn.-outline {
+        & .a-btn,
+        & .a-btn.-outline {
           &:first-child {
             border-bottom-left-radius: 1rem;
             border-top-left-radius: 1rem;
