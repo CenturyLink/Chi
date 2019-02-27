@@ -226,7 +226,9 @@
       }
 
       &.-pill {
-        .a-btn {
+        .a-btn,
+        .a-btn .-outline,
+        .a-btn .-flat {
           &:first-child {
             border-bottom-left-radius: 1rem;
             border-top-left-radius: 1rem;

@@ -35,12 +35,29 @@ each size in ['default', 'small', 'large']
                     - val--
                     +button(false, type, style, size)
                       | Button
+          tr
+            each val, index in [2,3,4]
+              td
+                .m-btnGroup.-pill.-m--1(class={'-ml--3': index != 0})
+                  while val > 0
+                    - val--
+                    +button(false, type, style, size)
+                      | Button
       table(cellpadding="0", cellspacing="0")
         each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             each val, index in [2,3,4]
               td
                 .m-btnGroup.-m--1(class={'-ml--3': index != 0})
+                  while val > 0
+                    - val--
+                    +button(true, type, style, size)
+                      .a-btn__content
+                        +icon('atom')
+          tr
+            each val, index in [2,3,4]
+              td
+                .m-btnGroup.-pill.-m--1(class={'-ml--3': index != 0})
                   while val > 0
                     - val--
                     +button(true, type, style, size)
