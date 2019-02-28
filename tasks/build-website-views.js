@@ -5,8 +5,8 @@ import { getLang, highlight } from './helpers/beautify-code';
 import collectionSorter from './helpers/collection-sorter';
 import * as pugUtils from './helpers/pug-utils';
 import { Folders, Paths } from './constants';
+import metalsmithPug from "metalsmith-pug";
 
-const gulpPlugins = require('gulp-load-plugins')();
 const metalsmithPlugins = {
   collections: require('metalsmith-collections'),
   headings: require('metalsmith-headings'),
@@ -37,7 +37,7 @@ function highlightCode(text, lang) {
   return `<pre class="language-${lang}"><code class="language-${lang}">${highlight(text, lang)}</code></pre>`;
 }
 
-gulp.task('build:website:views', () => {
+function buildWebsiteViews () {
   const promise = new Promise((resolve, reject) => {
     metalsmith(Folders.ROOT)
       .source(Paths.src.PAGES)
@@ -46,57 +46,57 @@ gulp.task('build:website:views', () => {
 
       .use(metalsmithPlugins.collections({
         'Getting Started': {
-          pattern: 'getting-started/**/*.{md,pug}',
+          pattern: 'getting-started/**/*.pug',
           sortBy: 'order'
         },
         'Foundations': {
-          pattern: 'foundations/**/*.{md,pug}',
+          pattern: 'foundations/**/*.pug',
           sortBy: collectionSorter(['Overview'])
         },
         'Components': {
-          pattern: [ 'components/**/*.{md,pug}', '!components/**/_*.{md,pug}' ],
+          pattern: [ 'components/**/*.pug', '!components/**/_*.pug' ],
           sortBy: collectionSorter(['Overview'])
         },
         'JavaScript': {
-          pattern: [ 'javascript/**/*.{md,pug}', '!javascript/**/_*.{md,pug}' ],
+          pattern: [ 'javascript/**/*.pug', '!javascript/**/_*.pug' ],
           sortBy: collectionSorter(['Overview'])
         },
         'Utilities': {
-          pattern: 'utilities/**/*.{md,pug}',
+          pattern: 'utilities/**/*.pug',
           sortBy: collectionSorter(['Overview'])
         },
         'Templates': {
-          pattern: 'templates/**/*.{md,pug}',
+          pattern: 'templates/**/*.pug',
           sortBy: collectionSorter(['Overview'])
         }
       }))
-      .use(metalsmithPlugins.inPlace({
-        pattern: '**/*.{md,pug}',
-        engineOptions: {
-          doctype: 'html',
-          gfm: true,
-          smartypants: true,
-          renderer: renderer,
-          langPrefix: 'language-',
-          highlight,
-          filters: {
-            example: (text, options) => {
-              const lang = getLang(options.lang);
+      .use(metalsmithPug({
+        doctype: 'html',
+        gfm: true,
+        smartypants: true,
+        renderer: renderer,
+        langPrefix: 'language-',
+        highlight,
+        filters: {
+          example: (text, options) => {
+            const lang = getLang(options.lang);
 
-              return `<div class="m-example -mb--4">
+            return `
+              <div class="m-example -mb--4">
                 <ul class="a-tabs -base -small -border -mb--2">
                   <li class="-active"><a href="#">HTML</a></li>
                   <li><a href="#">Code</a></li>
                 </ul>
                 <div class="m-example__html">${text}</div>
-                <div class="m-example__code -hidden">${highlightCode(text, lang)}</div>
+                <div class="m-example__code -hidden">
+                  ${highlightCode(text, lang)}
+                </div>
               </div>`;
-            },
-            code: (text, options) => {
-              const lang = getLang(options.lang);
+          },
+          code: (text, options) => {
+            const lang = getLang(options.lang);
 
-              return highlightCode(text, lang);
-            }
+            return highlightCode(text, lang);
           }
         }
       }))
@@ -104,13 +104,17 @@ gulp.task('build:website:views', () => {
       .use(metalsmithPlugins.inlineSource())
       .use(metalsmithPlugins.permalinks())
       .use(metalsmithPlugins.rootPath())
+      // metalsmith matadata will be loaded into the locals
+      // parameter for the render function of the pug engine.
+      .metadata({
+        utils: pugUtils
+      })
       .use(metalsmithPlugins.layouts({
         engine: 'pug',
         doctype: 'html',
         default: 'default.pug',
         pattern: '**/*.html',
         directory: Folders.src.LAYOUTS,
-        utils: pugUtils
       }))
       .use(metalsmithPlugins.redirect({
         '/': './getting-started/'
@@ -124,10 +128,13 @@ gulp.task('build:website:views', () => {
       });
   });
 
-  promise.then(() => {
+  promise.then(() =>
     gulp.src(`${Folders.DIST}/**/*.html`)
-      .pipe(gulpPlugins.connect.reload());
-  });
+  );
 
   return promise;
-});
+}
+
+buildWebsiteViews.description = 'Builds pug documentation pages. Returns a promise.';
+
+gulp.task('build:website:views', buildWebsiteViews);

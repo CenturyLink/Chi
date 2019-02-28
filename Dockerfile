@@ -1,18 +1,15 @@
-FROM ubuntu:16.04
+FROM node:dubnium
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 ENV BABEL_DISABLE_CACHE=1
 
 RUN apt-get update
 RUN apt-get install -y build-essential libssl-dev curl wget
 
-# install node 7
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
-RUN apt-get install -y nodejs
-
 # install chrome
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN apt-get install -y gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 libfontconfig1 libgdk-pixbuf2.0-0 \
-                       libgtk-3-0 libnspr4 libpango-1.0-0 libxss1 fonts-liberation libappindicator1 libnss3 xdg-utils
+                       libgtk-3-0 libnspr4 libpango-1.0-0 libxss1 fonts-liberation libappindicator1 libnss3 xdg-utils \
+                       libappindicator3-1 lsb-release
 RUN dpkg -i google-chrome-stable_current_amd64.deb
 
 RUN mkdir /app

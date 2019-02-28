@@ -1,8 +1,6 @@
 import gulp from 'gulp';
-import runSequence from 'run-sequence';
 
-gulp.task('build:test', done => runSequence(
+gulp.task('build:test', gulp.series(
   'build:test:styles',
-  'build:test:fixtures',
-  done
+  'build:test:fixtures'
 ));

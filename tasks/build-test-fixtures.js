@@ -1,21 +1,15 @@
 import path from 'path';
-
-import del from 'del';
-import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
 import gulp from 'gulp';
 import metalsmith from 'metalsmith';
 import metalsmithInlineSource from 'metalsmith-inline-source';
 import metalsmithLayouts from 'metalsmith-layouts';
 import metalsmithPug from 'metalsmith-pug';
-import runSequence from 'run-sequence';
-import * as chi from '../scripts/chi';
+import wait from 'gulp-wait';
 
-const plugins = require('gulp-load-plugins')();
 const publicFolder = 'dist/tests';
 const rootFolder = path.join(__dirname, '..');
 
-gulp.task('build:test:fixtures', () => {
+function buildTestFixtures () {
   const promise = new Promise((resolve, reject) => {
     metalsmith(rootFolder)
       .source('test/chi')
@@ -44,9 +38,13 @@ gulp.task('build:test:fixtures', () => {
 
   promise.then(() => {
     gulp.src(`${publicFolder}/**/*.html`)
-      .pipe(plugins.wait(1500))
-      .pipe(plugins.connect.reload());
+      .pipe(wait(1500));
   });
 
   return promise;
-});
+}
+
+buildTestFixtures.description = 'Builds html pages por backstop tests. ' +
+  'Returns a promise. ';
+
+gulp.task('build:test:fixtures', buildTestFixtures);

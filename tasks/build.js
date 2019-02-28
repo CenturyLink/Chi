@@ -1,10 +1,8 @@
 import gulp from 'gulp';
-import runSequence from 'run-sequence';
 
-gulp.task('build', done => runSequence(
+gulp.task('build', gulp.series(
   'clean',
   'build:chi',
   'build:test',
-  'build:website',
-  done
+  'build:website'
 ));
