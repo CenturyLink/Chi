@@ -268,7 +268,7 @@ p.-text
   .-p3.-bg--grey-10
     .m-epanel.-active(data-chi-epanel-group='example3')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #1
+        h4.m-epanel__title Expansion panel #1
         .m-epanel__content
           .m-epanel__collapse
             .-done--only.-text
@@ -290,7 +290,7 @@ p.-text
 
     .m-epanel(data-chi-epanel-group='example3')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #2
+        h4.m-epanel__title Expansion panel #2
         .m-epanel__content
           .m-epanel__collapse
             .-done--only.-text
@@ -313,7 +313,7 @@ p.-text
 
     .m-epanel(data-chi-epanel-group='example3')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #3
+        h4.m-epanel__title Expansion panel #3
         .m-epanel__content
           .m-epanel__collapse
             .-done--only.-text
@@ -336,7 +336,7 @@ p.-text
 
     .m-epanel(data-chi-epanel-group='example3')
       .m-epanel__header
-        h4.m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #4
+        h4.m-epanel__title Expansion panel #4
         .m-epanel__content
           .m-epanel__collapse
             .-done--only.-text
@@ -355,7 +355,7 @@ p.-text
               p.-text Content in expansion panel
             .m-epanel__footer.-justify-content--end
               button.a-btn.-lg(data-chi-epanel-action='previous') Previous
-              button.a-btn.-lg.-primary.-ml--2 Finish
+              button.a-btn.-lg(data-chi-epanel-action='done').-primary.-ml--2 Finish
 
   ul#a-tabs-e3.a-tabs.-ml--3
     li.-active
@@ -366,7 +366,7 @@ p.-text
     :code(lang="html")
       <div class="m-epanel -active" data-chi-epanel-group="example3">
         <div class="m-epanel__header">
-          <h4 class="m-epanel__title" data-chi-epanel-action="toggle">Expansion panel #1</h4>
+          <h4 class="m-epanel__title">Expansion panel #1</h4>
           <div class="m-epanel__content">
             <div class="m-epanel__collapse">
               <div class="-done--only -text">Done<br>CenturyLink...</div>
@@ -393,7 +393,7 @@ p.-text
 
       <div class="m-epanel" data-chi-epanel-group="example3">
         <div class="m-epanel__header">
-          <h4 class="m-epanel__title" data-chi-epanel-action="toggle">Expansion panel #2</h4>
+          <h4 class="m-epanel__title">Expansion panel #2</h4>
           <div class="m-epanel__content">
             <div class="m-epanel__collapse">
               <div class="-done--only -text">Done<br>CenturyLink...</div>
@@ -634,9 +634,12 @@ p.-text
       );
 h3 Custom mode
 p.-text
-  | Write your custom mode by adding a handler for state changes of the expansion panels in the configuration. In the
+  | Write your custom mode by adding a handler for state changes of the expansion panels in the configuration, and
+  | writing your own functions for the <code>active</code>, <code>done</code>, <code>pending</code>,
+  | <code>disabled</code>, <code>toggle</code>, <code>next</code> and <code>previous</code> actions. In the
   | example, the component behaves similar to the accordion but alternates between <code>done</code> and
-  | <code>pending</code> states instead of <code>active</code> and <code>pending</code> states.
+  | <code>pending</code> states instead of <code>active</code> and <code>pending</code> states. The overridden action
+  | functions are for documenting purposes only because they clone the functionality of the default ones.
 
 .example.-mb3#example6
   .-p3.-bg--grey-10
@@ -723,6 +726,31 @@ p.-text
                 }
               });
             }
+          },
+          customActions: {
+            active: (expansionPanel, epGroup) =>
+              expansionPanel.setState(chi.EXPANSION_PANEL_STATES.ACTIVE.NAME),
+            done: (expansionPanel, epGroup) =>
+              expansionPanel.setState(chi.EXPANSION_PANEL_STATES.DONE.NAME),
+            pending: (expansionPanel, epGroup) =>
+              expansionPanel.setState(chi.EXPANSION_PANEL_STATES.PENDING.NAME),
+            toggle: (expansionPanel, epGroup) => {
+              if (expansionPanel._state === chi.EXPANSION_PANEL_STATES.ACTIVE) {
+                expansionPanel.setState(chi.EXPANSION_PANEL_STATES.PENDING.NAME);
+              } else {
+                expansionPanel.setState(chi.EXPANSION_PANEL_STATES.ACTIVE.NAME);
+              }
+            },
+            next: (expansionPanel, epGroup) => {
+              epGroup.reset(expansionPanel);
+              epGroup.next().setState(chi.EXPANSION_PANEL_STATES.ACTIVE.NAME);
+            },
+            previous: (expansionPanel, epGroup) => {
+              epGroup.reset(expansionPanel);
+              epGroup.previous().setState(chi.EXPANSION_PANEL_STATES.ACTIVE.NAME);
+            },
+            disabled: (expansionPanel, epGroup) =>
+              expansionPanel.setState(chi.EXPANSION_PANEL_STATES.DISABLED.NAME)
           }
         }
       );

@@ -6,11 +6,11 @@ h3 medium
 div(class=`test-medium -w--100`)
   each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
     .m-alert.-bubble.-m--2(class=`-${type}`)
-      i.a-icon.-sm2(class =`${val} -text--${type}`)
+      i.a-icon.-sm--2(class =`${val} -text--${type}`)
       = `this is a ${type} message`
     .m-alert.-bubble.-dismiss.-m--2(class=`-${type} -large`)
       .m-alert__content
-        i.a-icon.-sm2(class =`${val} -text--${type}`)
+        i.a-icon.-sm--2(class =`${val} -text--${type}`)
         = `This is a ${type} alert`
       button(class='a-btn -icon -close -small')
         .a-btn__content
@@ -19,17 +19,17 @@ h3 large
 div(class=`test-large -w--100`)
   each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
     .m-alert.-bubble.-large.-m--2(class=`-${type} -large`)
-      i.a-icon.-sm2(class =`${val} -text--${type}`)
+      i.a-icon.-sm--2(class =`${val} -text--${type}`)
       = `This is a ${type} alert`
     .m-alert.-bubble.-large.-m--2(class=`-${type} -large`)
       .m-alert__content
-        i.a-icon.-sm2(class =`${val} -text--${type}`)
+        i.a-icon.-sm--2(class =`${val} -text--${type}`)
         div
           h5.a-h5= type
           = `this is a ${type} message`
     .m-alert.-bubble.-large.-dismiss.-m--2(class=`-${type} -large`)
       .m-alert__content
-        i.a-icon.-sm2(class =`${val} -text--${type}`)
+        i.a-icon.-sm--2(class =`${val} -text--${type}`)
         div
           h5.a-h5= type
           = `This is a ${type} alert`

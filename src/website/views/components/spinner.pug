@@ -144,11 +144,12 @@ p.-text
 .example.-mb--3
   .-p--3
     .a-grid.-align-items--end
-      each size in ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']
+      each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
         div.-p--2
-          svg(class=`a-spinner -${size} -m--3`,viewBox=`0 0 66 66`)
+          svg(class=`a-spinner -${size} -m--1`,viewBox=`0 0 66 66`)
             title Loading
             circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+          p.-text.-text--center= size
   :code(lang="html")
     <!-- -xs : 12x12px -->
     <svg class="a-spinner -xs" viewBox="0 0 66 66">
@@ -157,6 +158,16 @@ p.-text
     </svg>
     <!-- -sm : 16x16px -->
     <svg class="a-spinner -sm" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <!-- -sm--2 : 20x20px -->
+    <svg class="a-spinner -sm--2" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <!-- -sm--3 : 24x24px -->
+    <svg class="a-spinner -sm--3" viewBox="0 0 66 66">
       <title>Loading</title>
       <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
     </svg>

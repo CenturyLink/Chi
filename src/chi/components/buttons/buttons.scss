@@ -609,7 +609,11 @@ $sizes: (
             &:hover,
             &.-hover {
               background-color: set-color($color, $tone);
-              color: set-color(white);
+              @if ($type == 'secondary') {
+                color: $text-color;
+              } @else {
+                color: set-color(white);
+              }
 
               .a-spinner__icon .path {
                 stroke: set-color(white);
