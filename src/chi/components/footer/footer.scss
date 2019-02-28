@@ -80,7 +80,7 @@
           color: set-color(white);
 
           &:hover {
-            color: $brand-color;
+            color: $secondary-color;
           }
         }
       }
@@ -89,10 +89,10 @@
         color: set-color(grey, 50);
 
         & a {
-          color: set-color(grey, 50);
+          color: set-color(white);
 
           &:hover {
-            color: $brand-color;
+            color: $secondary-color;
           }
         }
       }

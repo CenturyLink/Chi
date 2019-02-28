@@ -114,14 +114,6 @@
         padding-bottom: 0.25rem;
         padding-top: 0.25rem;
       }
-
-      &.-active {
-        & > a {
-          &::before {
-            height: 1.5rem;
-          }
-        }
-      }
     }
 
     .a-tabs__subtabs {
@@ -129,6 +121,13 @@
         & > a {
           padding: 0.25rem 0 0.25rem 2.5rem;
         }
+      }
+    }
+
+    &:not(.-sliding) > li.-active:not(.-hasActive) > a,
+    &:not(.-sliding).-animated  li.-active:not(.-hasActive) > a {
+      &::before {
+        height: 1.5rem;
       }
     }
   }
@@ -145,18 +144,17 @@
         }
       }
 
-      &.-active {
-        & > a {
-          &::before {
-            height: 3rem;
-          }
-        }
-      }
-
       .a-tabs__subtabs {
         & > li {
           margin-bottom: 0.5rem;
         }
+      }
+    }
+
+    &:not(.-sliding) > li.-active:not(.-hasActive) > a,
+    &:not(.-sliding).-animated  li.-active:not(.-hasActive) > a {
+      &::before {
+        height: 3rem;
       }
     }
   }

@@ -27,12 +27,12 @@ h4 Inverse
 p.-text Apply the class <code>-inverse</code> to render spinners on light backgrounds.
 .example.-mb--3
   .a-backdrop.-inverse.-p--6(style="position:relative;height:25rem;")
-    svg(class=`a-spinner -text--brand`,viewBox=`0 0 66 66`)
+    svg(class=`a-spinner -text--primary`,viewBox=`0 0 66 66`)
       title Loading
       circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
   :code(lang="html")
     <div class="a-backdrop -inverse">
-      <svg class="a-spinner -text--brand" viewBox="0 0 66 66">
+      <svg class="a-spinner -text--primary" viewBox="0 0 66 66">
         <title>Loading</title>
         <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
       </svg>
@@ -144,11 +144,12 @@ p.-text
 .example.-mb--3
   .-p--3
     .a-grid.-align-items--end
-      each size in ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']
+      each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
         div.-p--2
-          svg(class=`a-spinner -${size} -m--3`,viewBox=`0 0 66 66`)
+          svg(class=`a-spinner -${size} -m--1`,viewBox=`0 0 66 66`)
             title Loading
             circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+          p.-text.-text--center= size
   :code(lang="html")
     <!-- -xs : 12x12px -->
     <svg class="a-spinner -xs" viewBox="0 0 66 66">
@@ -157,6 +158,16 @@ p.-text
     </svg>
     <!-- -sm : 16x16px -->
     <svg class="a-spinner -sm" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <!-- -sm--2 : 20x20px -->
+    <svg class="a-spinner -sm--2" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <!-- -sm--3 : 24x24px -->
+    <svg class="a-spinner -sm--3" viewBox="0 0 66 66">
       <title>Loading</title>
       <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
     </svg>
@@ -184,12 +195,12 @@ p.-text
 
 h3 Spinner Colors
 p.-text
-  | Use <a href="../../utilities/text">text utilities</a> such as <code>-text--brand</code>
+  | Use <a href="../../utilities/text">text utilities</a> such as <code>-text--primary</code>
   | and <code>-text--muted</code> to change the color of any spinner.
 .example.-mb--3
   .-m--3
     .a-grid.-align-items--center
-      each type in ['text--brand', 'text--success', 'text--warning', 'text--danger', 'text--info', 'text--muted']
+      each type in ['text--primary', 'text--success', 'text--warning', 'text--danger', 'text--muted']
         div.-p--2
           svg(class=`a-spinner -${type} -md -m--3`,viewBox=`0 0 66 66`)
             title Loading
@@ -197,7 +208,7 @@ p.-text
             p.-text(class=`-${type}`)
               = `-${type}`
   :code(lang="html")
-    <svg class="a-spinner -text--brand" viewBox="0 0 66 66">
+    <svg class="a-spinner -text--primary" viewBox="0 0 66 66">
       <title>Loading</title>
       <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
     </svg>
@@ -210,10 +221,6 @@ p.-text
       <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
     </svg>
     <svg class="a-spinner -text--danger" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    <svg class="a-spinner -text--info" viewBox="0 0 66 66">
       <title>Loading</title>
       <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
     </svg>

@@ -13,7 +13,7 @@ h3 Base
       .-d--flex.-justify-content--end.-align-items--start
         button#drawer-trigger-1.a-btn.-icon.m-drawer__trigger(data-target='#drawer-1')
           .a-btn__content
-            i.a-icon.-sm2.icon-menu
+            i.a-icon.-sm--2.icon-menu
       each i in [1, 2]
         p.-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
     .m-drawer.-right.-animated#drawer-1.-position--absolute
@@ -42,7 +42,7 @@ h3 Base
 
     <button id="drawer-trigger-1" class="a-btn -icon m-drawer__trigger" data-target="#drawer-1">
       <div class="a-btn__content">
-        <i class="a-icon -sm2 icon-menu"></i>
+        <i class="a-icon -sm--2 icon-menu"></i>
       </div>
     </button>
 
@@ -58,7 +58,7 @@ h3 With backdrop
       .-d--flex.-justify-content--end.-align-items--start
         button#drawer-trigger-2.a-btn.-icon.m-drawer__trigger(data-target='#drawer-2')
           .a-btn__content
-            i.a-icon.-sm2.icon-menu
+            i.a-icon.-sm--2.icon-menu
       each i in [1, 2]
         p.-text.-mb--3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
     .a-backdrop.-animated.-closed.-position--absolute
@@ -89,7 +89,7 @@ h3 With backdrop
 
     <button id="drawer-trigger-2" class="a-btn -icon m-drawer__trigger" data-target="#drawer-2">
       <div class="a-btn__content">
-        <i class="a-icon -sm2 icon-menu"></i>
+        <i class="a-icon -sm--2 icon-menu"></i>
       </div>
     </button>
 
@@ -109,7 +109,7 @@ p.-text
   drawer.dispose();
 
 p.-text
-  span.a-badge.-brand.-mr1
+  span.a-badge.-primary.-mr1
     span Tip
   | It is safe to call the <code>drawer</code> method more than once, as it will return any previously created drawer component
   | associated to the trigger.

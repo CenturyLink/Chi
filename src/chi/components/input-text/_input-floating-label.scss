@@ -28,7 +28,7 @@ $sizes: (
 
 .chi {
   .a-inputWrapper.-floatingLabel {
-    & > input {
+    & > input, & > select {
       @each $type in map-keys($sizes) {
         &.-#{$type} {
           padding-bottom: map-get(map-get($sizes, $type), padding-bottom);
@@ -36,6 +36,7 @@ $sizes: (
 
           & ~ label {
             bottom: map-get(map-get($sizes, $type), label-bottom-relaxed);
+            pointer-events: none;
 
             &.-active {
               bottom: map-get(map-get($sizes, $type), label-bottom);

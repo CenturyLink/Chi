@@ -2,9 +2,9 @@
 title: Avatar
 ---
 
-- var sizes = ['xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl'];
-- var columnWidths = {'xs':[ '4', '3', '1'], 'sm':[ '4', '3', '1'], 'sm2':[ '4', '3', '1'], 'sm3':[ '4', '3', '1'], 'md':[ '4', '2', '1'], 'lg':[ '4', '3', '2'], 'xl':[ '6', '3', '2'], 'xxl':[ '6', '4', '3']};
-- var colors = ["grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "emerald", "green", "yellow", "orange"];
+- var sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
+- var columnWidths = {'xs':[ '4', '3', '1'], 'sm':[ '4', '3', '1'], 'sm--2':[ '4', '3', '1'], 'sm--3':[ '4', '3', '1'], 'md':[ '4', '2', '1'], 'lg':[ '4', '3', '2'], 'xl':[ '6', '3', '2'], 'xxl':[ '6', '4', '3']};
+- var colors = ["grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "mint", "green", "yellow", "orange"];
 - var iconExamples = ['user', 'users', 'atom'];
 
 p.-text Avatars are used to represent users, groups, and entities.
@@ -74,7 +74,7 @@ p.-text
   | Both icon and initial avatars support <a href="../../foundations/color/">Chi colors</a>.
   | To color an icon, apply any of the following color classes: <code>-grey</code>, <code>-red</code>,
   | <code>-pink</code>, <code>-purple</code>, <code>-indigo</code>, <code>-navy</code>, <code>-blue</code>,
-  | <code>-teal</code>, <code>-emerald</code>, <code>-green</code>, <code>-yellow</code>, <code>-orange</code>
+  | <code>-teal</code>, <code>-mint</code>, <code>-green</code>, <code>-yellow</code>, <code>-orange</code>
 
 ul#a-tabs--colors.a-tabs
   li.-active
@@ -98,7 +98,7 @@ ul#a-tabs--colors.a-tabs
       <div class="a-avatar -navy">AA</div>
       <div class="a-avatar -blue">AA</div>
       <div class="a-avatar -teal">AA</div>
-      <div class="a-avatar -emerald">AA</div>
+      <div class="a-avatar -mint">AA</div>
       <div class="a-avatar -green">AA</div>
       <div class="a-avatar -yellow">AA</div>
       <div class="a-avatar -orange">AA</div>
@@ -136,7 +136,7 @@ ul#a-tabs--colors.a-tabs
       <div class="a-avatar -teal">
         <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar -emerald">
+      <div class="a-avatar -mint">
         <i class="a-icon icon-user"></i>
       </div>
       <div class="a-avatar -green">
@@ -149,11 +149,47 @@ ul#a-tabs--colors.a-tabs
         <i class="a-icon icon-user"></i>
       </div>
 
-h4 Size
+h4 Inverse and transparent background
+p.-text
+  | Both icon and initial avatars support inverse version and transparent background.
+.example.-mb--3
+  .-p--3.-bg--black
+    .a-grid.-align-items--end
+      .a-col.-w--2.-text--center
+        div.a-avatar.-inverse AA
+      .a-col.-w--2.-text--center
+        div.a-avatar.-mint AA
+      .a-col.-w--2.-text--center
+        div.a-avatar.-mint.-transparent AA
+      .a-col.-w--2.-text--center
+        div.a-avatar.-inverse
+          i.a-icon.icon-user
+      .a-col.-w--2.-text--center
+        div.a-avatar.-mint
+          i.a-icon.icon-user
+      .a-col.-w--2.-text--center
+        div.a-avatar.-mint.-transparent
+          i.a-icon.icon-user
+  :code(lang="html")
+    <div class="-bg--black">
+      <div class="a-avatar -inverse">AA</div>
+      <div class="a-avatar -mint">AA</div>
+      <div class="a-avatar -mint -transparent">AA</div>
+      <div class="a-avatar -inverse">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -mint">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -mint -transparent">
+        <i class="a-icon icon-user"></i>
+      </div>
+    </div>
 
+h4 Size
 p.-text
   | All three avatar styles support a full spectrum of sizes: <code>-xs</code>, <code>-sm</code>,
-  | <code>-sm2</code>, <code>-sm3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
+  | <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
   | <code>-md</code> is the default size.
 ul#a-tabs--sizes.a-tabs
   li.-active
@@ -174,8 +210,8 @@ ul#a-tabs--sizes.a-tabs
     :code(lang="html")
       <div class="a-avatar -xs">AA</div>
       <div class="a-avatar -sm">AA</div>
-      <div class="a-avatar -sm2">AA</div>
-      <div class="a-avatar -sm3">AA</div>
+      <div class="a-avatar -sm--2">AA</div>
+      <div class="a-avatar -sm--3">AA</div>
       <div class="a-avatar -md">AA</div>
       <div class="a-avatar -lg">AA</div>
       <div class="a-avatar -xl">AA</div>
@@ -197,10 +233,10 @@ ul#a-tabs--sizes.a-tabs
       <div class="a-avatar -sm">
         <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar -sm2">
+      <div class="a-avatar -sm--2">
         <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar -sm3">
+      <div class="a-avatar -sm--3">
         <i class="a-icon icon-user"></i>
       </div>
       <div class="a-avatar -md">
@@ -230,10 +266,10 @@ ul#a-tabs--sizes.a-tabs
       <div class="a-avatar -sm">
         <img src="path/to/image.jpg">
       </div>
-      <div class="a-avatar -sm2">
+      <div class="a-avatar -sm--2">
         <img src="path/to/image.jpg">
       </div>
-      <div class="a-avatar -sm3">
+      <div class="a-avatar -sm--3">
         <img src="path/to/image.jpg">
       </div>
       <div class="a-avatar -md">

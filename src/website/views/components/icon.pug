@@ -12,7 +12,7 @@ h4 SVG & JS Method
 p.-text SVG based implementations provide better semantics, accessibility, rendering, and reliability. Place the following script in your projects footer to use this method.
 .-mb--2
   :code(lang='html')
-    <script src="https://assets.ctl.io/chi/0.9.1/chi-icons.js"></script>
+    <script src="https://assets.ctl.io/chi/1.0.0/chi-icons.js"></script>
 p.-text Then to render an SVG icon, apply the class <code>a-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
 .example.-mb--3
   .-p--3
@@ -38,17 +38,18 @@ p.-text To render a Web Font icon, apply the class <code>a-icon</code> to an <co
 h3 Sizes
 p.-text By default, icons render at 16x16px (<code>-sm</code>). Apply size classes to render icons larger or smaller:
   | <code>-xs</code>, <code>-sm</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
-p.-text Two alternate small classes are available for specific app scenarios. Use <code>-sm2</code>
-  | for displaying 20px icons within a 40px container (e.g. large button), and <code>-sm3</code> for displaying
+p.-text Two alternate small classes are available for specific app scenarios. Use <code>-sm--2</code>
+  |  for displaying 20px icons within a 40px container (e.g. large button), and <code>-sm--3</code> for displaying
   | 24px icons within a 48px container.
 .example.-mb--3
   .-p--3
     .a-grid.-align-items--end
-      each size in ['xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl']
-        div.-p--2
+      each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
+        div.-p--2.-m--1
           div(class=`a-icon -${size}`)
             svg
               use(xlink:href='#icon-logo-centurylink')
+          p.-text.-text--center= size
   ul#a-tabs--sizes.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-panel--sizes-svg') SVG
@@ -60,10 +61,10 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
       <div class="a-icon -xs"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <!-- -sm : 16x16px -->
       <div class="a-icon -sm"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <!-- -sm2 : 20x20px -->
-      <div class="a-icon -sm2"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <!-- -sm3 : 24x24px -->
-      <div class="a-icon -sm3"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <!-- -sm--2 : 20x20px -->
+      <div class="a-icon -sm--2"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <!-- -sm--3 : 24x24px -->
+      <div class="a-icon -sm--3"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <!-- -md : 32x32px -->
       <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <!-- -lg : 64x64px -->
@@ -78,6 +79,10 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
       <i class="a-icon icon-logo-centurylink -xs"></i>
       <!-- -sm : 16x16px -->
       <i class="a-icon icon-logo-centurylink -sm"></i>
+      <!-- -sm--2 : 20x20px -->
+      <i class="a-icon icon-logo-centurylink -sm--2"></i>
+      <!-- -sm--3 : 24x24px -->
+      <i class="a-icon icon-logo-centurylink -sm--3"></i>
       <!-- -md : 32x32px -->
       <i class="a-icon icon-logo-centurylink -md"></i>
       <!-- -lg : 64x64px -->
@@ -92,9 +97,9 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
 .example.-mb--3
   .-p--3
     .a-grid.-align-items--end
-      each color in ['Base', 'Brand', 'Success', 'Warning', 'Danger', 'Info', 'Inverse', 'Muted']
+      each color in ['base', 'primary', 'success', 'warning', 'danger', 'inverse', 'muted']
         div.-p--2
-          div(class=`a-icon -md -text${color}`)
+          div(class=`a-icon -md -text--${color}`)
             svg
               use(xlink:href='#icon-logo-centurylink')
   ul#a-tabs--colors.a-tabs.-ml--3
@@ -105,21 +110,19 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
   #a-tabs-panel--colors-svg.a-tabs-panel.-active
     :code(lang="html")
       <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -text--brand"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -text--primary"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--success"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--warning"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--danger"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -text--info"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--inverse"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--muted"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
   #a-tabs-panel--colors-webfont.a-tabs-panel
     :code(lang="html")
       <i class="a-icon icon-logo-centurylink -md"></i>
-      <i class="a-icon icon-logo-centurylink -md -text--brand"></i>
+      <i class="a-icon icon-logo-centurylink -md -text--primary"></i>
       <i class="a-icon icon-logo-centurylink -md -text--success"></i>
       <i class="a-icon icon-logo-centurylink -md -text--warning"></i>
       <i class="a-icon icon-logo-centurylink -md -text--danger"></i>
-      <i class="a-icon icon-logo-centurylink -md -text--info"></i>
       <i class="a-icon icon-logo-centurylink -md -text--inverse"></i>
       <i class="a-icon icon-logo-centurylink -md -text--muted"></i>
 
@@ -129,7 +132,7 @@ h3 UI Icons
     .a-col.-w--6.-w-xl--2.-w-lg--3.-w-md--6.-mb--2
       .a-card.-py--4.-bg--grey-10
         .a-card__content
-          .a-icon.-sm3
+          .a-icon.-sm--3
             svg
               use(xlink:href=`#icon-${name}`)
       p.-text--center= 'icon-' + name

@@ -51,6 +51,22 @@ $sizes: (
                   line-height: 1rem;
                 }
               }
+
+              &--start {
+                & .m-formGroup {
+                  font-weight: 600;
+                  margin: 0.5rem 0 0 0.5rem;
+
+                  & label {
+                    margin-right: 1rem;
+                  }
+                }
+
+                & div:not(.m-formGroup) {
+                  margin-left: 2.5rem;
+                  padding: 0.5rem 0 0.5rem 0;
+                }
+              }
             }
 
             &:hover {
@@ -61,9 +77,9 @@ $sizes: (
 
           &:checked {
             & + label {
-              border: solid 0.0625rem $brand-color;
-              box-shadow: inset 0 0 0 0.0625rem $brand-color;
-              color: $brand-color;
+              border: solid 0.0625rem $secondary-color;
+              box-shadow: inset 0 0 0 0.0625rem $secondary-color;
+              color: $text-color;
               font-weight: 600;
             }
           }

@@ -107,20 +107,36 @@ $badge: c-badge;
       box-shadow: initial;
     }
 
-    &.-brand {
-      background-color: $brand-color;
-      border: 0.0625rem solid $brand-color;
+    &.-primary {
+      background-color: $primary-color;
+      border: 0.0625rem solid $primary-color;
       color: set-color(white);
 
       &.-outline {
         background-color: set-color(white);
-        color: $brand-color;
+        color: $primary-color;
       }
 
       &.-flat {
         background-color: transparent;
         border-color: transparent;
-        color: $brand-color;
+        color: $primary-color;
+      }
+    }
+
+    &.-secondary {
+      background-color: $secondary-color;
+      border: 0.0625rem solid $secondary-color;
+
+      &.-outline {
+        background-color: set-color(white);
+        color: $secondary-color;
+      }
+
+      &.-flat {
+        background-color: transparent;
+        border-color: transparent;
+        color: $secondary-color;
       }
     }
 

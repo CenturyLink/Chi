@@ -28,31 +28,31 @@ h4 Icons
   .-p1
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
       .m-alert.-bubble.-m2(class=`-${type}`)
-        i.a-icon.-sm2(class =`${val} -text--${type}`)
+        i.a-icon.-sm--2(class =`${val} -text--${type}`)
         = `This is a ${type} alert`
   :code(lang="html")
     <div class="m-alert -bubble -success" role="alert">
-      <i class="a-icon -sm2 icon-circle-check -text--success"></i>
+      <i class="a-icon -sm--2 icon-circle-check -text--success"></i>
       This is a success alert
     </div>
     <div class="m-alert -bubble -danger" role="alert">
-      <i class="a-icon -sm2 icon-circle-warning -text--danger"></i>
+      <i class="a-icon -sm--2 icon-circle-warning -text--danger"></i>
       This is a danger alert
     </div>
     <div class="m-alert -bubble -warning" role="alert">
-      <i class="a-icon -sm2 icon-warning -text--warning"></i>
+      <i class="a-icon -sm--2 icon-warning -text--warning"></i>
       This is a warning alert
     </div>
     <div class="m-alert -bubble -info" role="alert">
-      <i class="a-icon -sm2 icon-circle-info -text--info"></i>
+      <i class="a-icon -sm--2 icon-circle-info -text--info"></i>
       This is a info alert
     </div>
     <div class="m-alert -bubble -light" role="alert">
-      <i class="a-icon -sm2 icon-circle-info-outline -text--light"></i>
+      <i class="a-icon -sm--2 icon-circle-info-outline -text--light"></i>
       This is a light alert
     </div>
     <div class="m-alert -bubble -dark" role="alert">
-      <i class="a-icon -sm2 icon-circle-info -text--dark"></i>
+      <i class="a-icon -sm--2 icon-circle-info -text--dark"></i>
       This is a dark alert
     </div>
 
@@ -61,11 +61,11 @@ p.-text Use the class <code>-center</code> to center the icons.
 .example.-mb3
   .-p1
     .m-alert.-bubble.-m2.-center(class=`-info`)
-      i.a-icon.-sm2(class ='icon-circle-info -text--info')
+      i.a-icon.-sm--2(class ='icon-circle-info -text--info')
       = `Info alert with centered icon`
   :code(lang="html")
     <div class="m-alert -bubble -center -info" role="alert">
-      <i class="a-icon -sm2 icon-circle-info -text--info"></i>
+      <i class="a-icon -sm--2 icon-circle-info -text--info"></i>
       Info alert with centered icon
     </div>
 
@@ -75,14 +75,14 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
   .-p1
     .m-alert.-bubble.-dismiss.-warning.-m--2
       .m-alert__content
-        i.a-icon.-sm2.icon-warning.-text--warning
+        i.a-icon.-sm--2.icon-warning.-text--warning
         | This is a warning alert
       button(class='a-btn -icon -close -small')
         .a-btn__content
           i.a-icon.icon-x
     .m-alert.-bubble.-large.-dismiss.-warning.-m--2
       .m-alert__content
-        i.a-icon.-sm2.icon-warning.-text--warning
+        i.a-icon.-sm--2.icon-warning.-text--warning
         div
           h5.a-h5 Warning
           | This is a warning alert
@@ -91,7 +91,7 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
           i.a-icon.icon-x
     .m-alert.-banner.-dismiss.-warning.-m--2
       .m-alert__content
-        i.a-icon.-sm2.icon-warning.-text--warning
+        i.a-icon.-sm--2.icon-warning.-text--warning
         | This is a warning alert
       button(class='a-btn -icon -close -small')
         .a-btn__content
@@ -99,7 +99,7 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
   :code(lang="html")
     <div class="m-alert -bubble -dismiss -warning" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm2 icon-warning -text--warning"></i>
+        <i class="a-icon -sm--2 icon-warning -text--warning"></i>
         This is a warning alert<button class="a-btn -icon -close -small">
       </div>
       <button class="a-btn -icon -close -small">
@@ -110,7 +110,7 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
     </div>
     <div class="m-alert -bubble -large -dismiss -warning" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm2 icon-warning -text--warning"></i>
+        <i class="a-icon -sm--2 icon-warning -text--warning"></i>
         <div>
           <h5 class="a-h5">Warning</h5>
           This is a warning alert
@@ -124,7 +124,7 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
     </div>
     <div class="m-alert -banner -dismiss -warning" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm2 icon-warning -text--warning"></i>
+        <i class="a-icon -sm--2 icon-warning -text--warning"></i>
         This is a warning alert
       </div>
       <button class="a-btn -icon -close -small">
@@ -142,14 +142,14 @@ p.-text
   .-p1
     .m-alert.-bubble.-large.-warning.-m--2
       .m-alert__content
-        i.a-icon.-sm2.icon-warning.-text--warning
+        i.a-icon.-sm--2.icon-warning.-text--warning
         div
           h5.a-h5 Warning
           | This is a warning alert
   :code(lang="html")
     <div class="m-alert -bubble -large -warning" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm2 icon-warning -text--warning"></i>
+        <i class="a-icon -sm--2 icon-warning -text--warning"></i>
         <div>
           <h5 class="a-h5">Warning</h5>
           This is a warning alert
@@ -166,11 +166,11 @@ p.-text
 .example.-mb--3
   .-p--1
     .m-alert.-banner.-center.-success.-m--2
-      i.a-icon.-sm2(class ='icon-circle-check -text--success')
+      i.a-icon.-sm--2(class ='icon-circle-check -text--success')
       | This is a success alert
   :code(lang="html")
     <div class="m-alert -banner -center -success" role="alert">
-      <i class="a-icon -sm2 icon-circle-check -text--success"></i>
+      <i class="a-icon -sm--2 icon-circle-check -text--success"></i>
       This is a success alert
     </div>
 
@@ -185,7 +185,7 @@ p.-text
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
       .m-alert.-toast.-m--2(class=`-${type}`)
         .m-alert__content
-          i.a-icon.-sm2(class =`${val} -text--${type}`)
+          i.a-icon.-sm--2(class =`${val} -text--${type}`)
           div
             div(class=`a-h5`)= type
             = `This is a ${type} alert`
@@ -195,7 +195,7 @@ p.-text
   :code(lang="html")
     <div class="m-alert -toast -success" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm2 icon-circle-check -text--success"></i>
+        <i class="a-icon -sm--2 icon-circle-check -text--success"></i>
         <div>
           <div class="a-h5">success</div>
           This is a success alert
@@ -209,7 +209,7 @@ p.-text
       </div>
     <div class="m-alert -toast -danger" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm2 icon-circle-warning -text--danger"></i>
+        <i class="a-icon -sm--2 icon-circle-warning -text--danger"></i>
         <div>
           <div class="a-h5">danger</div>
           This is a danger alert
@@ -223,7 +223,7 @@ p.-text
     </div>
     <div class="m-alert -toast -warning" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm2 icon-warning -text--warning"></i>
+        <i class="a-icon -sm--2 icon-warning -text--warning"></i>
         <div>
           <div class="a-h5">warning</div>
           This is a warning alert
@@ -237,7 +237,7 @@ p.-text
     </div>
     <div class="m-alert -toast -info" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm2 icon-circle-info -text--info"></i>
+        <i class="a-icon -sm--2 icon-circle-info -text--info"></i>
         <div>
           <div class="a-h5">info</div>
           This is a info alert
@@ -251,7 +251,7 @@ p.-text
     </div>
     <div class="m-alert -toast -light" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm2 icon-circle-info-outline -text--light"></i>
+        <i class="a-icon -sm--2 icon-circle-info-outline -text--light"></i>
         <div>
           <div class="a-h5">success</div>
           This is a success alert
@@ -265,7 +265,7 @@ p.-text
     </div>
     <div class="m-alert -toast -dark" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm2 icon-circle-info -text--dark"></i>
+        <i class="a-icon -sm--2 icon-circle-info -text--dark"></i>
         <div>
           <div class="a-h5">dark</div>
           This is a dark alert

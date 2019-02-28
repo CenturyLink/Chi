@@ -1,5 +1,6 @@
 ---
 title: Sizing
+styles: [show-example]
 ---
 
 p.-text Use responsive sizing utility classes to quickly apply widths and heights on elements.
@@ -54,12 +55,12 @@ section.a-table.-bordered.-mt--3.-mb--3
 
 h3 Examples
 .example.-mb--3
-  .-p--3
-    .-text.-b--1.-p--3.-m--1.-w--auto(style="background:#E4F2CE;border-color:#C6DBA7;") -w--auto
-    .-text.-b--1.-p--3.-m--1.-w--25(style="background:#E4F2CE;border-color:#C6DBA7;") -w--25
-    .-text.-b--1.-p--3.-m--1.-w--50(style="background:#E4F2CE;border-color:#C6DBA7;") -w--50
-    .-text.-b--1.-p--3.-m--1.-w-md--75(style="background:#E4F2CE;border-color:#C6DBA7;") -w-md--75
-    .-text.-b--1.-p--3.-m--1.-w-xl--50(style="background:#E4F2CE;border-color:#C6DBA7;") -w-xl--50
+  .-p--3.-show--example
+    .-text.-p--3.-m--1.-w--auto -w--auto
+    .-text.-p--3.-m--1.-w--25 -w--25
+    .-text.-p--3.-m--1.-w--50 -w--50
+    .-text.-p--3.-m--1.-w-md--75 -w-md--75
+    .-text.-p--3.-m--1.-w-xl--50 -w-xl--50
   :code(lang="html")
     <!-- width auto on all breakpoints -->
     <div class="-w--auto"></div>
@@ -116,14 +117,13 @@ section.a-table.-bordered.-mt--3.-mb--3
 
 h3 Examples
 
-.a-grid(style="height: 300px;")
-  .-text.a-col.-b--1.-p--3.-m--1.-h--auto(style="background:#E4F2CE;border-color:#C6DBA7;") -h--auto
-  .-text.a-col.-b--1.-p--3.-m--1.-h--25(style="background:#E4F2CE;border-color:#C6DBA7;") -h--25
-  .-text.a-col.-b--1.-p--3.-m--1.-h--50(style="background:#E4F2CE;border-color:#C6DBA7;") -h--50
-  .-text.a-col.-b--1.-p--3.-m--1.-h-md--75(style="background:#E4F2CE;border-color:#C6DBA7;") -h-md--75
-  .-text.a-col.-b--1.-p--3.-m--1.-h-xl--50(style="background:#E4F2CE;border-color:#C6DBA7;") -h-xl--50
-  .-text.a-col.-b--1.-p--3.-m--1.-h-lg--25(style="background:#E4F2CE;border-color:#C6DBA7;") -h-lg--25
-.-mb--4.-mt--2
+.example.-mb--3
+  .-p--3.-d--flex.-flex--row.-justify-content--around.-show--example(style="height: 500px;")
+    .-text.-p--5.-m--1.-h--25 -h--25
+    .-text.-p--5.-m--1.-h--50 -h--50
+    .-text.-p--5.-m--1.-h-md--75 -h-md--75
+    .-text.-p--5.-m--1.-h-xl--50 -h-xl--50
+    .-text.-p--5.-m--1.-h-lg--25 -h-lg--25
   :code(lang="html")
     <!-- height auto on all breakpoints -->
     <div class="-h--auto"></div>

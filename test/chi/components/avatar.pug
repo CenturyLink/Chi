@@ -2,8 +2,9 @@
 title: Avatar
 ---
 - var types = ['img', 'icon', 'icon-web-font', 'letter', 'double-letter'];
-- var colors = ["default", "grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "emerald", "green", "yellow", "orange"];
-- var sizes = ['default', 'xs', 'sm', 'sm2', 'sm3', 'md', 'lg', 'xl', 'xxl'];
+- var colors = ["default", "grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "mint", "green", "yellow", "orange", "inverse"];
+- var sizes = ['default', 'xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
+- var transparents = [false, true];
 
 each type in types
   div(class=`test-${type}`)
@@ -13,61 +14,62 @@ each type in types
         tr
           th
           each size in sizes
-            th.-p--1=size
+            th.-p--1.-text--center=size
       tbody
         each color in colors
-          tr
-            td=color
-            each size in sizes
-              td.-p--1
-                if type == 'img'
-                  div(
-                    class={
-                      "a-avatar": true,
-                      [`-${color}`]: type != 'default',
-                      [`-${size}`]: style != 'default'
-                    }
-                  )
-                    img(src='../../assets/images/avatar.jpg', alt="avatar")
-                else if type == 'icon'
-                  div(
-                    class={
-                      "a-avatar a-icon": true,
-                      [`-${color}`]: type != 'default',
-                      [`-${size}`]: style != 'default'
-                    }
-                  )
-                    svg
-                      use(xlink:href=`#icon-user`)
-                else if type == 'icon-web-font'
-                  div(
-                    class={
-                      "a-avatar": true,
-                      [`-${color}`]: type != 'default',
-                      [`-${size}`]: style != 'default'
-                    }
-                  )
-                    i(class="a-icon icon-user")
-                else if type == 'letter'
-                  div(
-                    class={
-                      "a-avatar": true,
-                      [`-${color}`]: type != 'default',
-                      [`-${size}`]: style != 'default'
-                    }
-                  ) M
+          each transparent in transparents
+            if !transparent || (color!=='default' && color!=='inverse' && (type==='icon' || type==='icon-web-font' || type==='letter' || type==='double-letter'))
+              tr(class={'-bg--black': color==='inverse'})
+                td(class={'-text--white': color==='inverse'})=color + (transparent ? ' trans bg' : '')
+                each size in sizes
+                  td.-p--1
+                    if type === 'img'
+                      div(
+                        class={
+                          "a-avatar": true,
+                          [`-${color}`]: type !== 'default',
+                          [`-${size}`]: style !== 'default',
+                          [`-transparent`]: transparent
+                        }
+                      )
+                        img(src='../../assets/images/avatar.jpg', alt="avatar")
+                    else if type === 'icon'
+                      div(
+                        class={
+                          "a-avatar a-icon": true,
+                          [`-${color}`]: type !== 'default',
+                          [`-${size}`]: style !== 'default',
+                          [`-transparent`]: transparent
+                        }
+                      )
+                        svg
+                          use(xlink:href=`#icon-user`)
+                    else if type === 'icon-web-font'
+                      div(
+                        class={
+                          "a-avatar": true,
+                          [`-${color}`]: type !== 'default',
+                          [`-${size}`]: style !== 'default',
+                          [`-transparent`]: transparent
+                        }
+                      )
+                        i(class="a-icon icon-user")
+                    else if type === 'letter'
+                      div(
+                        class={
+                          "a-avatar": true,
+                          [`-${color}`]: type !== 'default',
+                          [`-${size}`]: style !== 'default',
+                          [`-transparent`]: transparent
+                        }
+                      ) M
 
-                else if type == 'double-letter'
-                  div(
-                    class={
-                      "a-avatar": true,
-                      [`-${color}`]: type != 'default',
-                      [`-${size}`]: style != 'default'
-                    }
-                  ) AA
-
-
-
-
-
-
+                    else if type === 'double-letter'
+                      div(
+                        class={
+                          "a-avatar": true,
+                          [`-${color}`]: type !== 'default',
+                          [`-${size}`]: style !== 'default',
+                          [`-transparent`]: transparent
+                        }
+                      ) AA

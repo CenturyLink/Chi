@@ -1,8 +1,18 @@
 @import 'mixins';
 @import 'variables';
 
-$avatar-sizes: (xs: 0.75rem, sm: 1rem, sm2: 1.25rem, sm3: 1.5rem, md: 2rem, lg: 4rem, xl: 6rem, xxl: 8rem);
-$avatar-colors: (grey, red, pink, purple, indigo, navy, blue, teal, emerald, green, yellow, orange);
+$avatar-sizes: (
+  xs: 0.75rem,
+  sm: 1rem,
+  sm2: 1.25rem,  // Legacy size code
+  sm--2: 1.25rem,
+  sm3: 1.5rem,  // Legacy size code
+  sm--3: 1.5rem,
+  md: 2rem,
+  lg: 4rem,
+  xl: 6rem,
+  xxl: 8rem);
+$avatar-colors: (grey, red, pink, purple, indigo, navy, blue, teal, mint, green, yellow, orange, inverse);
 $avatar-default-size: 'md';
 
 .chi {
@@ -58,12 +68,24 @@ $avatar-default-size: 'md';
 
     @each $color in $avatar-colors {
       &.-#{$color} {
-        background-color: white;
-        border: map-get($avatar-sizes, $avatar-default-size) / 48 solid map-get(map-get($colorscheme, $color), 60);
-        color: map-get(map-get($colorscheme, $color), 60);
+
+        @if( $color == 'inverse') {
+          background-color: transparent;
+          border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get($colorscheme, white);
+          color: map-get($colorscheme, white);
+        } @else {
+          background-color: white;
+          border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get(map-get($colorscheme, $color), 60);
+          color: map-get(map-get($colorscheme, $color), 60);
+
+          &.-transparent {
+            background-color: transparent;
+          }
+        }
+
         @each $type in map-keys($avatar-sizes) {
           &.-#{$type} {
-            border-width: map-get($avatar-sizes, $type) / 48;
+            border-width: max(0.0625rem, map-get($avatar-sizes, $type) / 48);
           }
         }
       }

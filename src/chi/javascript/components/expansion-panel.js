@@ -8,7 +8,8 @@ const COMPONENT_TYPE = "expansionPanel";
 const DEFAULT_CONFIG = {
   animated: true,
   mode: 'stepped',
-  changeHandler: Util.noOp
+  changeHandler: Util.noOp,
+  customActions: {}
 };
 const EPANEL_EVENT_CHANGE = 'chi.epanel.change';
 
@@ -80,48 +81,66 @@ class ExpansionPanelGroup {
     const next = this.expansion_panels[this.lastAccessedIndex+1];
     if (next) {
       this.lastAccessedIndex++;
-      return next;
     }
+    return next;
   }
+
   previous () {
     const prev = this.expansion_panels[this.lastAccessedIndex-1];
     if (prev) {
       this.lastAccessedIndex--;
-      return prev;
     }
+    return prev;
   }
+
   reset (ep) {
     this.lastAccessedIndex = this.getIndex(ep);
   }
-
 }
 
 class ExpansionPanelSteppedGroup extends ExpansionPanelGroup {
 
   constructor () {
     super();
-    const self = this;
-    this.epChangedListener = function (newState, oldState, ep){
-      self.epChangedHandler(newState, oldState, ep);
+    this.epChangedListener = (newState, oldState, ep) => {
+      this.epChangedHandler(newState, oldState, ep);
     };
+    this.completedPanels = new Set();
   }
 
   epChangedHandler (newState, oldState, ep){
     if (newState === STATE.ACTIVE) {
-      this.reset();
-      this.reset(ep);
-      let prev = this.previous();
-      while (prev) {
-        prev.setState(STATE.DONE.NAME);
-        prev = this.previous();
-      }
-      this.reset(ep);
-      let next = this.next();
-      while (next) {
-        next.setState(STATE.PENDING.NAME);
-        next = this.next();
-      }
+      this.expansion_panels.map(otherEp => {
+         if (otherEp !== ep && otherEp.getState() === STATE.ACTIVE) {
+           if (this.completedPanels.has(otherEp)) {
+             otherEp.setState(STATE.DONE.NAME);
+           } else {
+             otherEp.setState(STATE.PENDING.NAME);
+           }
+         }
+      });
     }
+  }
+
+  push(ep) {
+    super.push(ep);
+    ep._actions.next = (expansionPanel, epGroup) => {
+      this.completedPanels.add(expansionPanel);
+      let firstPendingPanel = (function(){
+        epGroup.reset(expansionPanel);
+        for (let nextPanel=epGroup.next(); nextPanel; nextPanel=epGroup.next()){
+          if (nextPanel.getState() !== STATE.DONE) {
+            return nextPanel;
+          }
+        }
+      })();
+
+      if (firstPendingPanel) {
+        firstPendingPanel.setState(STATE.ACTIVE.NAME);
+      } else {
+        expansionPanel.setState(STATE.DONE.NAME);
+      }
+    };
   }
 }
 
@@ -161,12 +180,9 @@ class ExpansionPanelCustomGroup extends ExpansionPanelGroup {
   }
 }
 
-
 class ExpansionPanel extends Component {
 
-
   constructor (elem, config) {
-
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._epGroup = null;
     this._state = STATE.PENDING;
@@ -177,10 +193,12 @@ class ExpansionPanel extends Component {
       this._state = STATE.ACTIVE;
     } else if (Util.hasClass(this._elem, STATE.DONE.CLASS)) {
       this._state = STATE.DONE;
+    } else if (Util.hasClass(this._elem, STATE.DISABLED.CLASS)) {
+      this._state = STATE.DISABLED;
     }
 
-    this._initGroup();
     this._initDefaultActions();
+    this._initGroup();
 
     this._onClickEventListener = function (e) {
       self._clickHandler(e);
@@ -218,39 +236,64 @@ class ExpansionPanel extends Component {
   }
 
   _initDefaultActions () {
-    this._actions = {
-      active: () => this.setState(STATE.ACTIVE.NAME),
-      done: () => this.setState(STATE.DONE.NAME),
-      pending: () => this.setState(STATE.PENDING.NAME),
-      toggle: () => {
-        if (this._state === STATE.ACTIVE) {
-          this.setState(STATE.PENDING.NAME);
-        } else {
-          this.setState(STATE.ACTIVE.NAME);
-        }
+    this._actions = Util.extend(
+      {
+        active: (expansionPanel) =>
+          expansionPanel.setState(STATE.ACTIVE.NAME),
+        done: (expansionPanel) =>
+          expansionPanel.setState(STATE.DONE.NAME),
+        pending: (expansionPanel) =>
+          expansionPanel.setState(STATE.PENDING.NAME),
+        toggle: (expansionPanel) => {
+          if (expansionPanel._state === STATE.ACTIVE) {
+            expansionPanel.setState(STATE.PENDING.NAME);
+          } else {
+            expansionPanel.setState(STATE.ACTIVE.NAME);
+          }
+        },
+        next: (expansionPanel, epGroup) => {
+          epGroup.reset(expansionPanel);
+          epGroup.next().setState(STATE.ACTIVE.NAME);
+        },
+        previous: (expansionPanel, epGroup) => {
+          epGroup.reset(expansionPanel);
+          epGroup.previous().setState(STATE.ACTIVE.NAME);
+        },
+        disabled: (expansionPanel) =>
+          expansionPanel.setState(STATE.DISABLED.NAME)
       },
-      next: () => {
-        this._epGroup.reset(this);
-        this._epGroup.next().setState(STATE.ACTIVE.NAME);
-      },
-      previous: () => {
-        this._epGroup.reset(this);
-        this._epGroup.previous().setState(STATE.ACTIVE.NAME);
-      }
-    };
+      this._config.customActions
+    );
     this._actions.inactive = this._actions.pending;
   }
 
   _clickHandler (e) {
-    if (!e.target || !e.target.dataset || !e.target.dataset.chiEpanelAction) {
+    const epanelAction = this._findEpanelAction(e.target);
+    if (!epanelAction) {
       return;
     }
-    this.execute(e.target.dataset.chiEpanelAction);
+    this.execute(epanelAction);
+  }
+
+  _findEpanelAction (elem) {
+    if (elem.dataset && elem.dataset.chiEpanelAction) {
+      return elem.dataset.chiEpanelAction;
+    } else if (
+      elem.parentNode &&
+      elem.parentNode !== this._elem &&
+      elem.parentNode !== document
+    ) {
+      return this._findEpanelAction(elem.parentNode);
+    } else {
+      return null;
+    }
   }
 
   execute (action) {
     if (this._actions[action]) {
-      this._actions[action]();
+      this._actions[action](this, this._epGroup);
+    } else {
+      throw `Action ${action} not supported `;
     }
   }
 

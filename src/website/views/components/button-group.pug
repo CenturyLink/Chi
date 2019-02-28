@@ -115,6 +115,568 @@ p.-text
       <button class="a-btn">Button</button>
     </div>
 
+h3 Sizes
+
+p.-text
+  | Button groups supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
+
+ul#a-tabs.a-tabs
+  li.-active
+    a(href='#horizontal') Horizontal
+  li
+    a(href='#vertical') Vertical
+
+.example.-mb--3
+  #horizontal.a-tabs-panel.-active
+    each size in ['sm', 'md', 'lg', 'xl']
+      .-pl--3
+        p.-text--bold= '-' + size
+      .-d--flex.-flex--wrap
+        .m-btnGroup.-m--3
+          button(class=`a-btn -${size}`) Button
+          button(class=`a-btn -${size}`) Button
+          button(class=`a-btn -${size}`) Button
+        .m-btnGroup.-pill.-m--3
+          button(class=`a-btn -${size}`) Button
+          button(class=`a-btn -${size}`) Button
+          button(class=`a-btn -${size}`) Button
+        .m-btnGroup.-m--3
+          button(class=`a-btn -${size} -icon`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+          button(class=`a-btn -${size} -icon`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+          button(class=`a-btn -${size} -icon`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+        .m-btnGroup.-m--3
+          button(class=`a-btn -${size}`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Button
+          button(class=`a-btn -${size}`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Button
+          button(class=`a-btn -${size}`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Button
+    :code(lang='html')
+      <div class="m-btnGroup">
+        <button class="a-btn -sm">Button</button>
+        <button class="a-btn -sm">Button</button>
+        <button class="a-btn -sm">Button</button>
+      </div>
+      <div class="m-btnGroup -pill">
+        <button class="a-btn -sm">Button</button>
+        <button class="a-btn -sm">Button</button>
+        <button class="a-btn -sm">Button</button>
+      </div>
+      <div class="m-btnGroup">
+        <button class="a-btn -sm -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -sm -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -sm -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="m-btnGroup">
+        <button class="a-btn -sm">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+        <button class="a-btn -sm">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          <span>Button</span>
+        </div>
+        </button>
+        <button class="a-btn -sm">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          <span>Button</span>
+          </div>
+        </button>
+      </div>
+      <div class="m-btnGroup">
+        <button class="a-btn -md">Button</button>
+        <button class="a-btn -md">Button</button>
+        <button class="a-btn -md">Button</button>
+      </div>
+      <div class="m-btnGroup -pill">
+        <button class="a-btn -md">Button</button>
+        <button class="a-btn -md">Button</button>
+        <button class="a-btn -md">Button</button>
+      </div>
+      <div class="m-btnGroup">
+        <button class="a-btn -md -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -md -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -md -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="m-btnGroup">
+        <button class="a-btn -md">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+        <button class="a-btn -md">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          <span>Button</span>
+        </div>
+        </button>
+        <button class="a-btn -md">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          <span>Button</span>
+          </div>
+        </button>
+      </div>
+      <div class="m-btnGroup">
+        <button class="a-btn -lg">Button</button>
+        <button class="a-btn -lg">Button</button>
+        <button class="a-btn -lg">Button</button>
+      </div>
+      <div class="m-btnGroup -pill">
+        <button class="a-btn -lg">Button</button>
+        <button class="a-btn -lg">Button</button>
+        <button class="a-btn -lg">Button</button>
+      </div>
+      <div class="m-btnGroup">
+        <button class="a-btn -lg -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -lg -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -lg -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="m-btnGroup">
+        <button class="a-btn -lg">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+        <button class="a-btn -lg">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          <span>Button</span>
+        </div>
+        </button>
+        <button class="a-btn -lg">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          <span>Button</span>
+        </div>
+        </button>
+      </div>
+      <div class="m-btnGroup">
+        <button class="a-btn -xl">Button</button>
+        <button class="a-btn -xl">Button</button>
+        <button class="a-btn -xl">Button</button>
+      </div>
+      <div class="m-btnGroup -pill">
+        <button class="a-btn -xl">Button</button>
+        <button class="a-btn -xl">Button</button>
+        <button class="a-btn -xl">Button</button>
+      </div>
+      <div class="m-btnGroup">
+        <button class="a-btn -xl -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -xl -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -xl -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="m-btnGroup">
+        <button class="a-btn -xl">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+        <button class="a-btn -xl">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          <span>Button</span>
+        </div>
+        </button>
+        <button class="a-btn -xl">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          <span>Button</span>
+        </div>
+        </button>
+      </div>
+
+  #vertical.a-tabs-panel
+    each size in ['sm', 'md', 'lg', 'xl']
+      .-pl--3
+        p.-text--bold= '-' + size
+      .-d--flex.-flex--wrap
+        .m-btnGroup.-vertical.-fluid.-m--3(style="width:12rem")
+          button(class=`a-btn -${size}`) Button
+          button(class=`a-btn -${size}`) Button
+          button(class=`a-btn -${size}`) Button
+        .m-btnGroup.-vertical.-fluid.-m--3
+          button(class=`a-btn -${size} -icon`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+          button(class=`a-btn -${size} -icon`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+          button(class=`a-btn -${size} -icon`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+        .m-btnGroup.-vertical.-fluid.-m--3(style="width:12rem")
+          button(class=`a-btn -${size}`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Button
+          button(class=`a-btn -${size}`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Button
+          button(class=`a-btn -${size}`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Button
+    :code(lang="html")
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -sm">Button</button>
+        <button class="a-btn -sm">Button</button>
+        <button class="a-btn -sm">Button</button>
+      </div>
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -sm -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -sm -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -sm -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -sm">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+        <button class="a-btn -sm">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          <span>Button</span>
+        </div>
+        </button>
+        <button class="a-btn -sm">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+      </div>
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -md">Button</button>
+        <button class="a-btn -md">Button</button>
+        <button class="a-btn -md">Button</button>
+      </div>
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -md -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -md -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -md -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -md">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+        <button class="a-btn -md">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+        <button class="a-btn -md">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+      </div>
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -lg">Button</button>
+        <button class="a-btn -lg">Button</button>
+        <button class="a-btn -lg">Button</button>
+      </div>
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -lg -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -lg -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -lg -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -lg">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+        <button class="a-btn -lg">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+        <button class="a-btn -lg">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+      </div>
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -xl">Button</button>
+        <button class="a-btn -xl">Button</button>
+        <button class="a-btn -xl">Button</button>
+      </div>
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -xl -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -xl -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+        <button class="a-btn -xl -icon">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -xl">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+        <button class="a-btn -xl">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+        <button class="a-btn -xl">
+          <div class="a-btn__content">
+            <div class="a-icon">
+              <svg><use xlink:href="#icon-atom"></use></svg>
+            </div>
+            <span>Button</span>
+          </div>
+        </button>
+      </div>
+
 h3 Hybrid buttons
 
 p.-text
@@ -169,3 +731,78 @@ p.-text
         </div>
       </button>
     </div>
+
+h4 Hybrid buttons sizes
+
+p.-text
+  | Hybrid buttons supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
+.example.-mb--3
+  .-p--3
+    each size in ['sm', 'md', 'lg', 'xl']
+      .m-btnGroup.-mr--3
+        button(class=`a-btn -${size}`) Button
+        button(class=`a-btn -${size} -icon`)
+          .a-btn__content
+            .a-icon
+              svg
+                use(xlink:href='#icon-atom')
+  :code(lang='html')
+    <div class="m-btnGroup">
+      <button class="a-btn -sm">Button</button>
+      <button class="a-btn -sm -icon">
+        <div class="a-btn__content">
+          <div class="a-icon">
+            <svg>
+              <use xlink:href="#icon-atom"></use>
+            </svg>
+          </div>
+        </div>
+      </button>
+    </div>
+    <div class="m-btnGroup">
+      <button class="a-btn -md">Button</button>
+      <button class="a-btn -md -icon">
+        <div class="a-btn__content">
+          <div class="a-icon">
+            <svg>
+              <use xlink:href="#icon-atom"></use>
+            </svg>
+          </div>
+        </div>
+      </button>
+    </div>
+    <div class="m-btnGroup">
+      <button class="a-btn -lg">Button</button>
+      <button class="a-btn -lg -icon">
+        <div class="a-btn__content">
+          <div class="a-icon">
+            <svg>
+              <use xlink:href="#icon-atom"></use>
+            </svg>
+          </div>
+        </div>
+      </button>
+    </div>
+    <div class="m-btnGroup">
+      <button class="a-btn -xl">Button</button>
+      <button class="a-btn -xl -icon">
+        <div class="a-btn__content">
+          <div class="a-icon">
+            <svg>
+              <use xlink:href="#icon-atom"></use>
+            </svg>
+          </div>
+        </div>
+      </button>
+    </div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('a-tabs'));
+    },
+    false
+  );
