@@ -77,38 +77,38 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
       .m-alert__content
         i.a-icon.-sm--2.icon-warning.-text--warning
         | This is a warning alert
-      button(class='a-btn -icon -close -small')
+      button(class='a-btn -icon -close -sm')
         .a-btn__content
           i.a-icon.icon-x
-    .m-alert.-bubble.-large.-dismiss.-warning.-m--2
+    .m-alert.-bubble.-lg.-dismiss.-warning.-m--2
       .m-alert__content
         i.a-icon.-sm--2.icon-warning.-text--warning
         div
           h5.a-h5 Warning
           | This is a warning alert
-      button(class='a-btn -icon -close -small')
+      button(class='a-btn -icon -close -sm')
         .a-btn__content
           i.a-icon.icon-x
     .m-alert.-banner.-dismiss.-warning.-m--2
       .m-alert__content
         i.a-icon.-sm--2.icon-warning.-text--warning
         | This is a warning alert
-      button(class='a-btn -icon -close -small')
+      button(class='a-btn -icon -close -sm')
         .a-btn__content
           i.a-icon.icon-x
   :code(lang="html")
     <div class="m-alert -bubble -dismiss -warning" role="alert">
       <div class="m-alert__content">
         <i class="a-icon -sm--2 icon-warning -text--warning"></i>
-        This is a warning alert<button class="a-btn -icon -close -small">
+        This is a warning alert<button class="a-btn -icon -close -sm">
       </div>
-      <button class="a-btn -icon -close -small">
+      <button class="a-btn -icon -close -sm">
         <div class="a-btn__content">
           <i class="a-icon icon-x"></i>
         </div>
       </button>
     </div>
-    <div class="m-alert -bubble -large -dismiss -warning" role="alert">
+    <div class="m-alert -bubble -lg -dismiss -warning" role="alert">
       <div class="m-alert__content">
         <i class="a-icon -sm--2 icon-warning -text--warning"></i>
         <div>
@@ -116,7 +116,7 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
           This is a warning alert
         </div>
       </div>
-      <button class="a-btn -icon -close -small">
+      <button class="a-btn -icon -close -sm">
         <div class="a-btn__content">
           <i class="a-icon icon-x"></i>
         </div>
@@ -127,7 +127,7 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
         <i class="a-icon -sm--2 icon-warning -text--warning"></i>
         This is a warning alert
       </div>
-      <button class="a-btn -icon -close -small">
+      <button class="a-btn -icon -close -sm">
         <div class="a-btn__content">
           <i class="a-icon icon-x"></i>
         </div>
@@ -137,17 +137,17 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
 h4 Sizes
 h5 Large
 p.-text
-  | Apply a <code>-large</code> class to increase the size of the alert.
+  | Apply a <code>-lg</code> class to increase the size of the alert.
 .example.-mb3
   .-p1
-    .m-alert.-bubble.-large.-warning.-m--2
+    .m-alert.-bubble.-lg.-warning.-m--2
       .m-alert__content
         i.a-icon.-sm--2.icon-warning.-text--warning
         div
           h5.a-h5 Warning
           | This is a warning alert
   :code(lang="html")
-    <div class="m-alert -bubble -large -warning" role="alert">
+    <div class="m-alert -bubble -lg -warning" role="alert">
       <div class="m-alert__content">
         <i class="a-icon -sm--2 icon-warning -text--warning"></i>
         <div>
@@ -189,7 +189,7 @@ p.-text
           div
             div(class=`a-h5`)= type
             = `This is a ${type} alert`
-        button(class='a-btn -icon -close -small')
+        button(class='a-btn -icon -close -sm')
           .a-btn__content
             i.a-icon.icon-x
   :code(lang="html")
@@ -201,7 +201,7 @@ p.-text
           This is a success alert
         </div>
       </div>
-      <button class="a-btn -icon -close -small">
+      <button class="a-btn -icon -close -sm">
         <div class="a-btn__content">
           <i class="a-icon icon-x"></i>
         </div>
@@ -215,7 +215,7 @@ p.-text
           This is a danger alert
         </div>
       </div>
-      <button class="a-btn -icon -close -small">
+      <button class="a-btn -icon -close -sm">
         <div class="a-btn__content">
           <i class="a-icon icon-x"></i>
         </div>
@@ -229,7 +229,7 @@ p.-text
           This is a warning alert
         </div>
       </div>
-      <button class="a-btn -icon -close -small">
+      <button class="a-btn -icon -close -sm">
         <div class="a-btn__content">
           <i class="a-icon icon-x"></i>
         </div>
@@ -243,7 +243,7 @@ p.-text
           This is a info alert
         </div>
       </div>
-      <button class="a-btn -icon -close -small">
+      <button class="a-btn -icon -close -sm">
         <div class="a-btn__content">
           <i class="a-icon icon-x"></i>
         </div>
@@ -257,7 +257,7 @@ p.-text
           This is a success alert
         </div>
       </div>
-      <button class="a-btn -icon -close -small">
+      <button class="a-btn -icon -close -sm">
         <div class="a-btn__content">
           <i class="a-icon icon-x"></i>
         </div>
@@ -271,7 +271,7 @@ p.-text
           This is a dark alert
         </div>
       </div>
-      <button class="a-btn -icon -close -small">
+      <button class="a-btn -icon -close -sm">
         <div class="a-btn__content">
           <i class="a-icon icon-x"></i>
         </div>

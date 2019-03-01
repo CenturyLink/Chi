@@ -108,7 +108,7 @@
     }
   }
 
-  &.-small {
+  &.-sm, &.-small { //Legacy code: -small to be removed.
     & > li {
       & > a {
         padding-bottom: 0.25rem;
@@ -132,7 +132,7 @@
     }
   }
 
-  &.-large {
+  &.-lg, &.-large { //Legacy code: -large to be removed.
     & > li {
       & > a {
         line-height: $line-height-large;
@@ -186,7 +186,7 @@
       }
     }
 
-    &.-small {
+    &.-sm, &.-small { //Legacy code: -small to be removed.
       & > li {
         & > a {
           padding-bottom: 0.25rem;
@@ -202,7 +202,7 @@
       }
     }
 
-    &.-large {
+    &.-lg, &.-large { //Legacy code: -large to be removed.
       & > li {
         & > a {
           padding-bottom: 0.75rem;
@@ -269,7 +269,7 @@
     padding-bottom: 1.125rem;
   }
 
-  &.-small {
+  &.-sm, &.-small { //Legacy code: -small to be removed.
     height: 3rem;
 
     & > li {
@@ -284,7 +284,7 @@
     }
   }
 
-  &.-large {
+  &.-lg, &.-large { //Legacy code: -large to be removed.
     height: 4rem;
 
     & > li {
@@ -344,7 +344,7 @@
       transition: .5s cubic-bezier(.35,0,.25,1);
     }
 
-    &.-large {
+    &.-lg, &.-large { //Legacy code: -large to be removed.
       & > li {
         & > a {
           font-size: $text;
