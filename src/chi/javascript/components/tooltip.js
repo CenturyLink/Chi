@@ -13,6 +13,7 @@ class Tooltip extends Component {
 
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._tooltipElem = null;
+    this._tooltipContent = null;
     this._popper = null;
     this._popperData = null;
     this._preAnimationTransformStyle = null;
@@ -68,12 +69,13 @@ class Tooltip extends Component {
     this._tooltipElem.style.transform = this._preAnimationTransformStyle;
     this._tooltipElem.style.opacity = '0';
     let self = this;
-    window.setTimeout(function(){
+    window.requestAnimationFrame(function(){
       self._tooltipElem.style.transition = transition;
       self._tooltipElem.style.transform = self._postAnimationTransformStyle;
       self._tooltipElem.style.opacity = '1';
       self._tooltipElem.setAttribute('aria-hidden', 'false');
-    },0);
+      self._preventOverflow();
+    });
   }
 
   hide() {
@@ -90,12 +92,14 @@ class Tooltip extends Component {
   _createTooltip () {
     this._tooltipElem = document.createElement('div');
     this._tooltipElem.setAttribute('class', 'a-tooltip');
-    this._tooltipElem.id = COMPONENT_TYPE + Util.getData(this._elem, COMPONENT_TYPE);
-    this._tooltipElem.innerText = this._elem.dataset.tooltip;
+    this._tooltipElem.id = COMPONENT_TYPE +
+      Util.getData(this._elem, COMPONENT_TYPE);
+    this._tooltipContent = document.createElement('span');
+    this._tooltipContent.innerText = this._elem.dataset.tooltip;
+    this._tooltipElem.appendChild(this._tooltipContent);
     this._elem.parentNode.appendChild(this._tooltipElem);
     this._elem.setAttribute('aria-describedby', this._tooltipElem.id);
     this._tooltipElem.setAttribute('aria-hidden', 'true');
-
 
     let self = this;
 
@@ -132,8 +136,25 @@ class Tooltip extends Component {
     });
   }
 
+  _preventOverflow() {
+    if (Util.checkOverflow(this._tooltipElem)) {
+      const text = this._elem.dataset.tooltip;
+      Util.binarySearchClosest(
+        text.length,
+        function(length){
+          this._tooltipContent.innerText = text.substr(0, length) + '...';
+          if(Util.checkOverflow(this._tooltipElem)) {
+            return 1;
+          } else {
+            return -1;
+          }
+        }.bind(this));
+    }
+  }
+
   dispose() {
     this._tooltipElem = null;
+    this._tooltipContent = null;
     this._popper.destroy();
     this._config = null;
     this._popperData = null;
