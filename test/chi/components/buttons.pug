@@ -3,7 +3,7 @@ title: Buttons
 ---
 
 each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
-  each type in ['solid', 'outline', 'flat']
+  each type in ['solid', 'outline', 'flat', 'fluid']
     div(class={
       [`test-${type}`]: size == 'default',
       [`test-${type}-${size}`]: size != 'default'
@@ -16,83 +16,84 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
               small= `${state}`
             each style in ['default', 'brand', 'danger', 'info', 'dark']
               td
-                input.a-btn.-m--1.-ml--2(
-                  type="button"
+                .-mr--2
+                  input.a-btn.-m--1.-ml--2(
+                    type="button"
+                    class={
+                      [`-${type}`]: type != 'solid',
+                      [`-${style}`]: style != 'default',
+                      [`-${state}`]: state != 'initial',
+                      [`-${size}`]: size != 'default'
+                    }
+                    value="Button"
+                    disabled=state=='disabled' ? 'disabled' : false
+                  )
+                  a.a-btn.-icon.-m--1(
+                    href="#"
+                    class={
+                      [`-${type}`]: type != 'solid',
+                      [`-${style}`]: style != 'default',
+                      [`-${state}`]: state != 'initial',
+                      [`-${size}`]: size != 'default'
+                    }
+                    disabled=state=='disabled' ? 'disabled' : false
+                  )
+                    .a-btn__content
+                      .a-icon
+                        svg
+                          use(xlink:href='#icon-atom')
+                  button.a-btn.-m--1(
+                    class={
+                      [`-${type}`]: type != 'solid',
+                      [`-${style}`]: style != 'default',
+                      [`-${state}`]: state != 'initial',
+                      [`-${size}`]: size != 'default'
+                    }
+                    disabled=state=='disabled' ? 'disabled' : false
+                  )
+                    .a-btn__content
+                      .a-icon
+                        svg
+                          use(xlink:href='#icon-atom')
+                      span Button
+                  button.a-btn.-pill.-m--1.-ml--2(
                   class={
                     [`-${type}`]: type != 'solid',
                     [`-${style}`]: style != 'default',
                     [`-${state}`]: state != 'initial',
                     [`-${size}`]: size != 'default'
                   }
-                  value="Button"
-                  disabled=state=='disabled' ? 'disabled' : false
-                )
-                a.a-btn.-icon.-m--1(
-                  href="#"
+                  disabled=state == 'disabled' ? 'disabled' : false
+                  )
+                    .a-btn__content
+                      span Button
+                  button.a-btn.-icon.-pill.-m--1(
                   class={
                     [`-${type}`]: type != 'solid',
                     [`-${style}`]: style != 'default',
                     [`-${state}`]: state != 'initial',
                     [`-${size}`]: size != 'default'
                   }
-                  disabled=state=='disabled' ? 'disabled' : false
-                )
-                  .a-btn__content
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                button.a-btn.-m--1(
+                  disabled=state == 'disabled' ? 'disabled' : false
+                  )
+                    .a-btn__content
+                      .a-icon
+                        svg
+                          use(xlink:href='#icon-atom')
+                  button.a-btn.-pill.-m--1(
                   class={
                     [`-${type}`]: type != 'solid',
                     [`-${style}`]: style != 'default',
                     [`-${state}`]: state != 'initial',
                     [`-${size}`]: size != 'default'
                   }
-                  disabled=state=='disabled' ? 'disabled' : false
-                )
-                  .a-btn__content
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                    span Button
-                button.a-btn.-pill.-m--1.-ml--2(
-                class={
-                  [`-${type}`]: type != 'solid',
-                  [`-${style}`]: style != 'default',
-                  [`-${state}`]: state != 'initial',
-                  [`-${size}`]: size != 'default'
-                }
-                disabled=state == 'disabled' ? 'disabled' : false
-                )
-                  .a-btn__content
-                    span Button
-                button.a-btn.-icon.-pill.-m--1(
-                class={
-                  [`-${type}`]: type != 'solid',
-                  [`-${style}`]: style != 'default',
-                  [`-${state}`]: state != 'initial',
-                  [`-${size}`]: size != 'default'
-                }
-                disabled=state == 'disabled' ? 'disabled' : false
-                )
-                  .a-btn__content
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                button.a-btn.-pill.-m--1(
-                class={
-                  [`-${type}`]: type != 'solid',
-                  [`-${style}`]: style != 'default',
-                  [`-${state}`]: state != 'initial',
-                  [`-${size}`]: size != 'default'
-                }
-                disabled=state == 'disabled' ? 'disabled' : false
-                )
-                  .a-btn__content
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                    span Button
+                  disabled=state == 'disabled' ? 'disabled' : false
+                  )
+                    .a-btn__content
+                      .a-icon
+                        svg
+                          use(xlink:href='#icon-atom')
+                      span Button
 
   if size == 'default'
     .test-float
