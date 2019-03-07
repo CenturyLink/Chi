@@ -120,6 +120,24 @@
       }
     }
 
+    &.-toolbar {
+      & > li {
+        &.m-dropdown.-active > a {
+          border-bottom: 0.0625rem solid $brand-color;
+          padding-bottom: 0.5rem;
+
+          &.m-dropdown__trigger {
+            padding-right: 1rem;
+          }
+        }
+
+        & > a {
+          font-size: $text-smaller;
+          padding-bottom: 0.5rem;
+        }
+      }
+    }
+
     &.-inverse {
       background-color: set-color(black);
 
@@ -133,27 +151,43 @@
             color: set-color(white);
 
             &:hover {
-              color: $brand-color;
+              color: $secondary;
             }
           }
 
           &.-active > a {
-            color: $brand-color;
+            color: $secondary;
           }
         }
       }
 
       .a-tabs {
-        li a {
-          color: set-color(white);
+        li {
+          & > a {
+            color: set-color(white);
 
-          &:hover {
-            color: $brand-color;
+            &:hover {
+              color: $secondary-color;
+            }
           }
         }
-        
-        li.-active a {
-          color: $brand-color;
+
+        & li.-active {
+          & a {
+            border-bottom: 0.125rem solid $secondary;
+            color: $secondary;
+          }
+
+          & .m-dropdown__trigger {
+            &:after {
+              background-image: url(../html-select/icon-chevron-thin-down-active-inverse.svg);
+            }
+          }
+        }
+
+        &:not(.-vertical):not(.-responsive):not(.-sliding) > li.-active > a {
+          color: $secondary-color;
+          border-bottom-color: $secondary-color;
         }
       }
     }

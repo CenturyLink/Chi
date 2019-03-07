@@ -264,7 +264,7 @@
     }
   }
 
-  &:not(.-sliding) > li.-active > a {
+  &:not(.-sliding .-toolbar) > li.-active > a {
     border-bottom: 0.125rem solid $brand-color;
     padding-bottom: 1.125rem;
   }
@@ -304,19 +304,23 @@
   }
 
   &.-toolbar {
+    height: 2rem;
+
     & > li {
-      &.m-dropdown.-active > a {
-        border-bottom: 0.0625rem solid $brand-color;
-        padding-bottom: 0.5rem;
+      &.m-dropdown > a {
+        padding-bottom: .4375rem;
 
         &.m-dropdown__trigger {
           padding-right: 1rem;
+          &:after {
+            top: 0.5rem;
+          }
         }
       }
 
       & > a {
         font-size: $text-smaller;
-        padding-bottom: 0.5rem;
+        padding: 0.5rem 0;
       }
     }
   }
