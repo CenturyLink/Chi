@@ -22,7 +22,7 @@
         }
       }
 
-      &.-large {
+      &.-large, &.-lg { //Legacy code: -large to be removed.
         padding-bottom: 0.75rem;
         padding-top: 0.75rem;
       }
