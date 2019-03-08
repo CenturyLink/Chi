@@ -20,7 +20,7 @@
       }
 
       & > a {
-        color: set-color(grey, 90);
+        color: $text-color;
         cursor: pointer;
         display: block;
         font-size: $text-small;
@@ -81,10 +81,10 @@
     &.-activeAlt {
       & > a {
         background-color: set-color(grey, 20);
-        color: set-color(grey, 90);
+        color: $text-color;
 
         & > .a-icon {
-          color: set-color(grey, 90);
+          color: $text-color;
         }
       }
     }
@@ -319,7 +319,7 @@
       }
 
       & > a {
-        color: set-color(grey, 90);
+        color: $text-color;
         cursor: pointer;
         display: block;
         font-size: $text;
