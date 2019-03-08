@@ -92,6 +92,21 @@ h4 Base
     <button class="a-btn -danger -pill">Danger</button>
     <button class="a-btn -dark -pill">Dark</button>
 
+h3 Fluid
+p.-text Buttons can be expanded to fill the parent space by applying the class <code>-fluid</code>.
+.example.-mb--3
+  .-p--3
+    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark'}
+      button(class=`a-btn -${type} -fluid -mb--2`)= val
+  :code(lang='html')
+    <!-- default buttons -->
+    <button class="a-btn -fluid">Base</button>
+    <button class="a-btn -primary -fluid">Primary</button>
+    <!-- special case buttons -->
+    <button class="a-btn -secondary -fluid">Secondary</button>
+    <button class="a-btn -danger -fluid">Danger</button>
+    <button class="a-btn -dark -fluid">Dark</button>
+
 h4 Outline
 .example.-mb--3
   .-p--3

@@ -263,6 +263,10 @@ $sizes: (
         }
       }
 
+      &.-fluid:not(.-float) {
+        width: 100%;
+      }
+
       &.-close {
         background-color: transparent;
         border: none;
