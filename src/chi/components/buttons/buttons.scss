@@ -295,7 +295,7 @@ $sizes: (
       }
 
       &.-outline {
-        background-color: set-color(white);
+        background-color: transparent;
         border: $border solid set-color(grey, 50);
 
         &:hover,
@@ -596,7 +596,7 @@ $sizes: (
           }
 
           &.-outline {
-            background-color: set-color(white);
+            background-color: transparent;
             border: $border solid set-color($color, $tone);
             color: set-color($color, $tone);
 
