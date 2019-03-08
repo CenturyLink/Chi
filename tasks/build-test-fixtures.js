@@ -5,6 +5,7 @@ import metalsmithInlineSource from 'metalsmith-inline-source';
 import metalsmithLayouts from 'metalsmith-layouts';
 import metalsmithPug from 'metalsmith-pug';
 import wait from 'gulp-wait';
+import index from 'gulp-index';
 
 const publicFolder = 'dist/tests';
 const rootFolder = path.join(__dirname, '..');
@@ -48,3 +49,16 @@ buildTestFixtures.description = 'Builds html pages por backstop tests. ' +
   'Returns a promise. ';
 
 gulp.task('build:test:fixtures', buildTestFixtures);
+
+function generateIndexTestFile () {
+  return gulp.src(publicFolder + '/**/*.html')
+    .pipe(index({
+      'relativePath': publicFolder,
+    }))
+    .pipe(gulp.dest(publicFolder));
+}
+
+gulp.task('build:test:index', generateIndexTestFile);
+
+generateIndexTestFile.description = 'Generates index.html files ' +
+  'for easy accessing to test pages. ';
