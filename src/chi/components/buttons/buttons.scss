@@ -295,7 +295,7 @@ $sizes: (
       }
 
       &.-outline {
-        background-color: set-color(white);
+        background-color: transparent;
         border: $border solid set-color(grey, 50);
 
         &:hover,
@@ -365,7 +365,6 @@ $sizes: (
 
         &:hover,
         &.-hover {
-          background-color: set-color(white);
           border: $border solid set-color(grey, 40);
           box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
 
@@ -394,7 +393,6 @@ $sizes: (
 
         &:focus,
         &.-focus {
-          background-color: set-color(white);
           border: $border solid set-color(grey, 40);
           box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
 
@@ -598,7 +596,7 @@ $sizes: (
           }
 
           &.-outline {
-            background-color: set-color(white);
+            background-color: transparent;
             border: $border solid set-color($color, $tone);
             color: set-color($color, $tone);
 
@@ -651,13 +649,11 @@ $sizes: (
 
             &:hover,
             &.-hover {
-              background-color: set-color(white);
               border: $border solid set-color($color, $tone);
             }
 
             &:focus,
             &.-focus {
-              background-color: set-color(white);
               border: $border solid set-color($color, $tone);
               box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
             }
@@ -667,7 +663,6 @@ $sizes: (
               &,
               &:focus,
               &.-focus {
-                background-color: set-color($color, $tone);
                 border: $border solid rgba(set-color(black), 0.2);
                 box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
                 color: set-color(white);
