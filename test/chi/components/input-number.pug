@@ -13,16 +13,17 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'danger']
             td
               .-m--1
-                .a-inputWrapper
-                  input.a-input(
-                    type="number"
-                    class={
-                      [`-${style}`]: style != 'default',
-                      [`-${state}`]: state != 'disabled',
-                      [`-${size}`]: size != 'default'
-                    }
-                    value="0"
-                    disabled=state=='disabled'?'disabled': false
-                  )
-                  button(tabindex="-1")
-                  button(tabindex="-1")
+                .m-formGroup.-inline
+                  .a-inputWrapper
+                    input.a-input(
+                      type="number"
+                      class={
+                        [`-${style}`]: style != 'default',
+                        [`-${state}`]: state != 'disabled',
+                        [`-${size}`]: size != 'default'
+                      }
+                      value="0"
+                      disabled=state=='disabled'?'disabled': false
+                    )
+                    button(tabindex="-1")
+                    button(tabindex="-1")

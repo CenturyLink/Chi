@@ -243,27 +243,41 @@ $sizes: (
           }
         }
       }
+    }
 
-      &.-pill {
+    &.-pill {
+      &:not(.-vertical) {
         .a-btn {
-          &:first-child {
-            border-bottom-left-radius: 1rem;
-            border-top-left-radius: 1rem;
-          }
-          &:last-child {
-            border-bottom-right-radius: 1rem;
-            border-top-right-radius: 1rem;
-          }
+          &,
+          &.-outline {
+            &:first-child {
+              border-bottom-left-radius: 1rem;
+              border-top-left-radius: 1rem;
+            }
+            &:last-child {
+              border-bottom-right-radius: 1rem;
+              border-top-right-radius: 1rem;
+            }
 
-          @each $type in map-keys($sizes) {
-            &.-#{$type} {
+            &.-small {
               &:first-child {
-                border-bottom-left-radius: map-get(map-get($sizes, $type), border-radius);
-                border-top-left-radius: map-get(map-get($sizes, $type), border-radius);
+                border-bottom-left-radius: 0.75rem;
+                border-top-left-radius: 0.75rem;
               }
               &:last-child {
-                border-bottom-right-radius: map-get(map-get($sizes, $type), border-radius);
-                border-top-right-radius: map-get(map-get($sizes, $type), border-radius);
+                border-bottom-right-radius: 0.75rem;
+                border-top-right-radius: 0.75rem;
+              }
+            }
+
+            &.-large {
+              &:first-child {
+                border-bottom-left-radius: 1.25rem;
+                border-top-left-radius: 1.25rem;
+              }
+              &:last-child {
+                border-bottom-right-radius: 1.25rem;
+                border-top-right-radius: 1.25rem;
               }
             }
           }
