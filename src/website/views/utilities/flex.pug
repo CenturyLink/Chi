@@ -133,7 +133,7 @@ p.-text Use align-items utilities to alter the alignment of flex items on the cr
 .example.-mb--3
   .-p--3.-pb--1
     each type in ['start', 'end', 'center', 'baseline', 'stretch']
-      .-mb--2.-d--flex.-show--example.-bg--grey-10(class='-align-items--' + type)
+      .-mb--2.-d--flex.-show--example.-bg--grey-10(class='-align-items--' + type, style='height:7rem;')
         .-text.-p--2 Item 1
         .-text.-p--2 Item 2
         .-text.-p--2 Item 3
@@ -172,7 +172,7 @@ h4 Start
 h4 End
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex.-show--example.-bg--grey-10
+    .-mb--2.-d--flex.-show--example.-bg--grey-10(style="height:7rem;")
       .-text.-p--2 Item
       .-text.-p--2.-align-self--end Aligned Item
       .-text.-p--2 Item
@@ -185,7 +185,7 @@ h4 End
 h4 Center
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex.-show--example.-bg--grey-10
+    .-mb--2.-d--flex.-show--example.-bg--grey-10(style="height:7rem;")
       .-text.-p--2 Item
       .-text.-p--2.-align-self--center Aligned Item
       .-text.-p--2 Item
@@ -198,7 +198,7 @@ h4 Center
 h4 Baseline
 .example.-mb--3
   .-p--3.-pb--1
-    .-mb--2.-d--flex.-show--example.-bg--grey-10
+    .-mb--2.-d--flex.-show--example.-bg--grey-10(style="height:7rem;")
       .-text.-p--2 Item
       .-text.-p--2.-align-self--baseline Aligned Item
       .-text.-p--2 Item
