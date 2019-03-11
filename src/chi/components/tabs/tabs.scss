@@ -264,7 +264,7 @@
     }
   }
 
-  &:not(.-sliding .-toolbar) > li.-active > a {
+  &:not(.-sliding) > li.-active > a {
     border-bottom: 0.125rem solid $brand-color;
     padding-bottom: 1.125rem;
   }
@@ -299,28 +299,6 @@
       & > a {
         line-height: $line-height-large;
         padding: 1.25rem 0;
-      }
-    }
-  }
-
-  &.-toolbar {
-    height: 2rem;
-
-    & > li {
-      &.m-dropdown > a {
-        padding-bottom: .4375rem;
-
-        &.m-dropdown__trigger {
-          padding-right: 1rem;
-          &:after {
-            top: 0.5rem;
-          }
-        }
-      }
-
-      & > a {
-        font-size: $text-smaller;
-        padding: 0.5rem 0;
       }
     }
   }
