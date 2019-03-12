@@ -13,7 +13,8 @@ function serve(done) {
     ui: {
       port: 8001
     },
-    open: false //dont open browser automatically after start serving.
+    ghostMode: false,
+    open: false
   });
   done();
 }
