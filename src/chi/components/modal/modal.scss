@@ -47,6 +47,16 @@
         }
       }
 
+      .a-modal__subtitle {
+        font-size: $text;
+        font-weight: normal;
+        margin: 0;
+
+        &.-centered {
+          text-align: center;
+        }
+      }
+
       .a-modal__back {
         & {
           align-items: center;
@@ -80,7 +90,6 @@
           position: absolute;
           top: 0;
         }
-
       }
     }
 

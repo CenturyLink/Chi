@@ -60,6 +60,17 @@ h3 Headers
     .a-modal__header
       h1.a-modal__title Modal alert title
 
+  h4 header / subtitle
+    .a-modal(style={
+      'box-shadow': 'none',
+      'border-bottom-left-radius': 0,
+      'border-bottom-right-radius': 0,
+      'margin-top': 0
+    })
+      .a-modal__header
+        h1.a-modal__title Modal alert title
+        p.a-modal__subtitle Modal alert subtitle
+
   h4 header / title / close
   .a-modal(style={
     'box-shadow': 'none',
@@ -112,6 +123,21 @@ h3 Headers
       button(class='a-btn -icon -close')
         .a-btn__content
           i.a-icon.icon-x
+
+  h4 header / subtitle / centered / back/ close
+    .a-modal(style={
+      'box-shadow': 'none',
+      'border-bottom-left-radius': 0,
+      'border-bottom-right-radius': 0,
+      'margin-top': 0
+    })
+      .a-modal__header
+        h1.a-modal__title.-centered Modal alert title
+        p.a-modal__subtitle.-centered Modal alert subtitle
+        button.a-modal__back
+        button(class='a-btn -icon -close')
+          .a-btn__content
+            i.a-icon.icon-x
 
 h3 Footers
 
