@@ -1,0 +1,176 @@
+---
+title: Fieldset
+---
+
+p.-text Basic example of several types of form elements in one fieldset.
+
+.example.-mb--3
+  .-p--3.-bg--grey-20(style="border-radius:.15em .15em 0 0;")
+    .chi-app.-bg--white
+      div.-b--1.-p--3
+        h5.-mb--2 Business Information
+        .a-inputWrapper.-floatingLabel.-mb--1#bname
+          input(type='text', class='a-input -xl', id='name')
+          label(for='name') Business name
+        .a-inputWrapper.-floatingLabel#bphone
+          input(type='text', class='a-input -xl', id='phone')
+          label(for='phone') Business phone
+        h6.-mt--2 Business address
+        .a-inputWrapper.-floatingLabel.-mb--1#baddress1
+          input(type='text', class='a-input -xl', id='address1')
+          label(for='address1') Address line 1
+        .a-inputWrapper.-floatingLabel.-mb--1#baddress2
+          input(type='text', class='a-input -xl', id='address2')
+          label(for='address2') Address line 2
+        .m-formGroup
+          .a-inputWrapper.-floatingLabel.-mr--1(style='width:50%')#bcity
+            input(type='text', class='a-input -xl', id='city')
+            label(for='city') City
+          .a-inputWrapper.-floatingLabel.-mr--1(style="width:30%")#bstate
+            select#floating-label-select.a-input.-xl
+              option
+              option Option 1
+              option Option 2
+              option Option 3
+            label(for="floating-label-select") State
+          .a-inputWrapper.-floatingLabel(style='width:20%')#bzip
+            input(type='text', class='a-input -xl', id='zip')
+            label(for='zip') Zip
+        .m-formGroup.-mt--2.-mb--3
+          input(type="checkbox", class="a-input", id="checkbox1" checked)
+          label(for="checkbox1")
+          label.-text(for="checkbox1") This has been my business's address for more than one year
+        h6.-mt--2 Business contact
+        .m-formGroup.-mb--1
+          .a-inputWrapper.-floatingLabel.-mr--1(style='width:50%')#bcname
+            input(type='text', class='a-input -xl', id='contact_name')
+            label(for='contact_name') Name
+          .a-inputWrapper.-floatingLabel(style='width:50%')#bctitle
+            input(type='text', class='a-input -xl', id='contact_title')
+            label(for='contact_title') Title
+        .a-inputWrapper.-floatingLabel#bcemail
+          input(type='text', class='a-input -xl', id='email')
+          label(for='email') Email
+        h6.-mt--2 Executive contact
+        .m-formGroup.-mb--3
+          input(type="checkbox", class="a-input", id="checkbox2" checked)
+          label(for="checkbox2")
+          label.-text(for="checkbox2") Same as business contact
+        h6.-mt--2 Additional business information
+          i.-text.-text--normal  (optional)
+        .a-inputWrapper.-floatingLabel.-mb--1#bwebsite
+          input(type='text', class='a-input -xl', id='website')
+          label(for='website') Website
+        .m-formGroup
+          .a-inputWrapper.-floatingLabel.-mr--1(style='width:50%')#bdunns_number
+            input(type='text', class='a-input -xl', id='dunns_number')
+            label(for='dunns_number') Dunns number
+          .a-inputWrapper.-floatingLabel(style='width:50%')#btax_id
+            input(type='text', class='a-input -xl', id='tax_id')
+            label(for='tax_id') Tax ID
+  :code(lang="html")
+    <div class="chi-app -bg--white">
+      <div class="-b--1 -p--3">
+        <h5 class="-mb--2">Business Information</h5>
+        <div class="a-inputWrapper -floatingLabel -mb--1" id="bname">
+          <input type="text" class="a-input -xl" id="name">
+          <label for="name">Business name</label>
+        </div>
+        <div class="a-inputWrapper -floatingLabel" id="bphone">
+          <input type="text" class="a-input -xl" id="phone">
+          <label for="phone">Business phone</label>
+        </div>
+        <h6 class="-mt--2">Business address</h6>
+        <div class="a-inputWrapper -floatingLabel -mb--1" id="baddress1">
+          <input type="text" class="a-input -xl" id="address1">
+          <label for="address1">Address line 1</label>
+        </div>
+        <div class="a-inputWrapper -floatingLabel -mb--1" id="baddress2">
+          <input type="text" class="a-input -xl" id="address2">
+          <label for="address2"> Address line 2</label>
+        </div>
+        <div class="m-formGroup">
+          <div class="a-inputWrapper -floatingLabel -mr--1" style="width:50%" id="bcity">
+            <input type="text" class="a-input -xl" id="city">
+            <label for="city">City</label>
+          </div>
+          <div class="a-inputWrapper -floatingLabel -mr--1" style="width:30%" id="bstate">
+            <select id="floating-label-select" class="a-input -xl">
+              <option></option>
+              <option> Option 1 </option>
+              <option> Option 2 </option>
+              <option> Option 3 </option>
+            </select>
+            <label for="floating-label-select">State</label>
+          </div>
+          <div class="a-inputWrapper -floatingLabel" style="width:20%" id="bzip">
+            <input type="text" class="a-input -xl" id="zip">
+            <label for="state"> Zip </label>
+          </div>
+        </div>
+        <div class="m-formGroup -mt--2 -mb--3">
+          <input type="checkbox" class="a-input" id="checkbox1" checked>
+          <label for="checkbox1"></label>
+          <label class="-text for="checkbox1"> This has been my business's address for more than one year</label>
+        </div>
+        <h6 class="-mt--2"> Business contact </h6>
+        <div class="m-formGroup -mb--1">
+          <div class="a-inputWrapper -floatingLabel -mr--1" style="width:50%" id="bcname">
+            <input type="text" class="a-input -xl" id="contact_name">
+            <label for="contact_name"> Name </label>
+          </div>
+          <div class="a-inputWrapper -floatingLabel" style="width:50%" id="bctitle">
+            <input type="text" class="a-input -xl" id="contact_title">
+            <label for="contact_title"> Title </label>
+          </div>
+        </div>
+        <div class="a-inputWrapper -floatingLabel" id="bcemail">
+          <input type="text" class="a-input -xl" id="email">
+          <label for="email"> Email </label>
+        </div>
+        <h6 class="-mt--2"> Executive contact </h6>
+        <div class="m-formGroup -mb--3">
+          <input type="checkbox" class="a-input" id="checkbox2" checked>
+          <label for="checkbox2"></label>
+          <label class="-text" for="checkbox2"> Same as business contact </label>
+        </div>
+        <h6 class="-mt--2"> Additional business information
+          <i class="-text -text--normal"> (optional)</i>
+        </h6>
+        <div class="a-inputWrapper -floatingLabel -mb--1" id="bwebsite">
+          <input type="text" class="a-input -xl" id="website">
+          <label for="website"> Website </label>
+        </div>
+        <div class="m-formGroup">
+          <div class="a-inputWrapper -floatingLabel -mr--1" style="width:50%" id="bdunns_number">
+            <input type="text" class="a-input -xl" id="dunns_number">
+            <label for="dunns_number"> Dunns number </label>
+          </div>
+          <div class="a-inputWrapper -floatingLabel" style="width:50%" id="btax_id">
+            <input type="text" class="a-input -xl" id="tax_id">
+            <label for="tax_id"> Tax ID </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.floatingLabel(document.getElementById('bname'));
+      chi.floatingLabel(document.getElementById('bphone'));
+      chi.floatingLabel(document.getElementById('baddress1'));
+      chi.floatingLabel(document.getElementById('baddress2'));
+      chi.floatingLabel(document.getElementById('bcity'));
+      chi.floatingLabel(document.getElementById('bstate'));
+      chi.floatingLabel(document.getElementById('bzip'));
+      chi.floatingLabel(document.getElementById('bcname'));
+      chi.floatingLabel(document.getElementById('bctitle'));
+      chi.floatingLabel(document.getElementById('bcemail'));
+      chi.floatingLabel(document.getElementById('bwebsite'));
+      chi.floatingLabel(document.getElementById('bdunns_number'));
+      chi.floatingLabel(document.getElementById('btax_id'));
+    },
+    false
+  );
