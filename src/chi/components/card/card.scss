@@ -11,6 +11,7 @@
     flex-direction: column;
     min-width: 0;
     position: relative;
+    word-wrap: break-word;
 
     &__hero {
       border-top-left-radius: $border-radius;
@@ -25,10 +26,6 @@
 
       .a-card__title {
         margin: 0 0 0.5rem 0;
-      }
-
-      & p {
-        word-wrap: break-word;
       }
     }
 
