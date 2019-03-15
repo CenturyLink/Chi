@@ -42,6 +42,11 @@
           color: set-color(grey, 90);
         }
 
+        //Remove ie11,edge clear field
+        &::-ms-clear {
+          display: none;
+        }
+
         @each $type in map-keys($sizes) {
           &.-#{$type} {
             height: map-get(map-get($sizes, $type), height);
