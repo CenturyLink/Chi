@@ -28,6 +28,20 @@ h4 Disabled
       Sample text
     </textarea>
 
+h4 With Label
+.example.-mb--3
+  .-p--3
+    .m-formGroup.-labelled(style="max-width:30rem")
+      label.a-label(for='example') Label
+      textarea.a-input(id='example') Sample text
+  :code(lang="html")
+    <div class="m-formGroup -labelled">
+      <label class="a-label" for="example">Label</label>
+      <textarea class="a-input" id="example">
+        Sample text
+      </textarea>
+    </div>
+
 h3 Icons
 p.-text
   | To add icons to a textarea, wrap the input in a <code>div</code> using the class <code>a-inputWrapper</code>.

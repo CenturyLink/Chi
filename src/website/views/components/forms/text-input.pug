@@ -25,6 +25,18 @@ h4 Disabled
   :code(lang="html")
     <input type="text" class="a-input" value="Sample Text" disabled>
 
+h4 With Label
+.example.-mb--3
+  .-p--3
+    .m-formGroup.-labelled(style="max-width:20rem")
+      label.a-label(for='example') Label
+      input(type="text", class="a-input", id='example', placeholder="Placeholder")
+  :code(lang="html")
+    <div class="m-formGroup -labelled">
+      <label class="a-label" for="example">Label</label>
+      <input type="text" class="a-input" id="example" placeholder="Placeholder">
+    </div>
+
 h3 Icons
 p.-text
   | To add icons to a text input, wrap the input in a <code>div</code> using the class
@@ -34,11 +46,19 @@ p.-text
 h4 Left Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--left(style="max-width:20rem")
-      input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
-      .a-icon.-text--muted
-        svg
-          use(xlink:href='#icon-edit')
+    .-d--flex.-flex--row.-align-items--end
+      .a-inputWrapper.-icon--left.-mr--3(style="max-width:20rem")
+        input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+        .a-icon.-text--muted
+          svg
+            use(xlink:href='#icon-edit')
+      .m-formGroup.-labelled(style="max-width:20rem")
+        label.a-label(for='example') Label
+        .a-inputWrapper.-icon--left(style="max-width:20rem")
+          input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+          .a-icon.-text--muted
+            svg
+              use(xlink:href='#icon-edit')
   :code(lang="html")
     <div class="a-inputWrapper -icon--left">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
@@ -48,15 +68,34 @@ h4 Left Aligned
         </svg>
       </div>
     </div>
+    <div class="m-formGroup -labelled">
+      <label class="a-label" for="example">Label</label>
+        <div class="a-inputWrapper -icon--left">
+          <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
+          <div class="a-icon -text--muted">
+            <svg>
+              <use xlink:href="#icon-edit"></use>
+            </svg>
+          </div>
+        </div>
+    </div>
 
 h4 Right Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--right(style="max-width:20rem")
-      input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
-      .a-icon.-text--muted
-        svg
-          use(xlink:href='#icon-edit')
+    .-d--flex.-flex--row.-align-items--end
+      .a-inputWrapper.-icon--right.-mr--3(style="max-width:20rem")
+        input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+        .a-icon.-text--muted
+          svg
+            use(xlink:href='#icon-edit')
+      .m-formGroup.-labelled(style="max-width:20rem")
+        label.a-label(for='example') Label
+        .a-inputWrapper.-icon--right(style="max-width:20rem")
+          input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+          .a-icon.-text--muted
+            svg
+              use(xlink:href='#icon-edit')
   :code(lang="html")
     <div class="a-inputWrapper -icon--right">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
@@ -66,18 +105,40 @@ h4 Right Aligned
         </svg>
       </div>
     </div>
+    <div class="m-formGroup -labelled">
+      <label class="a-label" for="example">Label</label>
+      <div class="a-inputWrapper -icon--right">
+        <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
+        <div class="a-icon -text--muted">
+          <svg>
+            <use xlink:href="#icon-edit"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
 
 h4 Left + Right Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--left.-icon--right(style="max-width:20rem")
-      input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
-      .a-icon.-text--muted
-        svg
-          use(xlink:href='#icon-edit')
-      .a-icon.-text--muted
-        svg
-          use(xlink:href='#icon-check')
+    .-d--flex.-flex--row.-align-items--end
+      .a-inputWrapper.-icon--left.-icon--right.-mr--3(style="max-width:20rem")
+        input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+        .a-icon.-text--muted
+          svg
+            use(xlink:href='#icon-edit')
+        .a-icon.-text--muted
+          svg
+            use(xlink:href='#icon-check')
+      .m-formGroup.-labelled(style="max-width:20rem")
+        label.a-label(for='example') Label
+        .a-inputWrapper.-icon--left.-icon--right(style="max-width:20rem")
+          input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+          .a-icon.-text--muted
+            svg
+              use(xlink:href='#icon-edit')
+          .a-icon.-text--muted
+            svg
+              use(xlink:href='#icon-check')
   :code(lang="html")
     <div class="a-inputWrapper -icon--left -icon--right">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
@@ -90,6 +151,22 @@ h4 Left + Right Aligned
         <svg>
           <use xlink:href="#icon-check"></use>
         </svg>
+      </div>
+    </div>
+    <div class="m-formGroup -labelled">
+      <label class="a-label" for="example">Label</label>
+      <div class="a-inputWrapper -icon--left -icon--right">
+        <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
+        <div class="a-icon -text--muted">
+          <svg>
+            <use xlink:href="#icon-edit"></use>
+          </svg>
+        </div>
+        <div class="a-icon -text--muted">
+          <svg>
+            <use xlink:href="#icon-check"></use>
+          </svg>
+        </div>
       </div>
     </div>
 
@@ -181,14 +258,33 @@ p.-text
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
-      div(class=`a-col -w--12 -p--2`)
-        .m-formGroup(style="max-width:20rem")
+      div(class=`-d--flex -flex--row -align-items--end -p--2`)
+        .m-formGroup(style="width:20rem")
+          input(type="text", class=`a-input -${size} -mr--3`, placeholder="Sample Text")
+        .m-formGroup.-labelled(style="width:20rem")
+          label.a-label(class=`a-input -${size}`, for='example') Label
           input(type="text", class=`a-input -${size} -mr--3`, placeholder="Sample Text")
   :code(lang='html')
     <input type="text" class="a-input -sm" placeholder="Sample Text">
+    <div class="m-formGroup -labelled">
+      <label class="a-label -sm" for="example">Label</label>
+      <input type="text" class="a-input -sm" placeholder="Placeholder" value="Sample text">
+    </div>
     <input type="text" class="a-input -md" placeholder="Sample Text">
+    <div class="m-formGroup -labelled">
+      <label class="a-label -md" for="example">Label</label>
+      <input type="text" class="a-input -md" placeholder="Placeholder" value="Sample text">
+    </div>
     <input type="text" class="a-input -lg" placeholder="Sample Text">
+    <div class="m-formGroup -labelled">
+      <label class="a-label -lg" for="example">Label</label>
+      <input type="text" class="a-input -lg" placeholder="Placeholder" value="Sample text">
+    </div>
     <input type="text" class="a-input -xl" placeholder="Sample Text">
+    <div class="m-formGroup -labelled">
+      <label class="a-label -lg" for="example">Label</label>
+      <input type="text" class="a-input -lg" placeholder="Placeholder" value="Sample text">
+    </div>
 
 h3 Floating labels
 p.-text
@@ -237,5 +333,11 @@ ul#a-tabs.a-tabs
         <label class="-active" for="floating-label-xl">Placeholder text</label>
       </div>
 
-script(type="text/javascript", src=`../../../js/chi.js`)
-!= '<script>chi.tab(document.getElementById(\'a-tabs\'));</script>'
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('a-tabs'));
+    },
+    false
+  );
