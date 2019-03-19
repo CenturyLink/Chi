@@ -1,0 +1,245 @@
+---
+title: Sidebar
+---
+- var example=0;
+- var menuItems=[1, 2, 3, 4];
+- var drawerMenuItems=['A', 'B', 'C', 'D']
+-
+  var active = {
+    menuItem: 1,
+    drawerMenuItem: 'B'
+  };
+
+p.-text
+  | Use the sidebar to add a navigation menu with a drawer for deeper navigation. This JavaScript module depends on
+  | the <a href="../drawer/">drawer component</a> for the second level of the menu. You can initiate this component by
+  | calling <code>chi.sidebar(document.querySelector('.m-sidebar'));</code>
+
+h3 Examples
+p.-text
+
+h4#base Base
+.example.-mb--3(id=`example-${example}`)
+  .-d--flex(style='overflow: hidden;')
+    aside.m-sidebar.-flex--shrink0
+      .m-sidebar__content
+        nav
+          ul.m-sidebar__link-list
+            each val in menuItems
+              li(class=`${val===active.menuItem ? '-active':''}`)
+                a(href=`#drawer-${example}-${val}`)
+                  .a-icon
+                    svg
+                      use(xlink:href='#icon-atom')
+                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+      .m-sidebar__drawers
+        each val1 in menuItems
+          .m-drawer.-left(id=`drawer-${example}-${val1}`)
+            .m-drawer__header
+              button(class='a-btn -icon -close')
+                .a-btn__content
+                  i.a-icon.icon-x
+            .m-drawer__content
+              ul.m-sidebar__drawer-link-list
+                each val2 in drawerMenuItems
+                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
+                    a(href=`#example-${example}`)
+                      h5=`Title ${String.fromCharCode(val2.charCodeAt(0)+(drawerMenuItems.length*(val1-1)))}`
+                      p.-text Description for title a in a drawer inside a menu.
+    .-flex--grow1.-p--3.-pb--4
+      each val2 in [1,2,3,4,5]
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+  :code(lang='html')
+    <aside class="m-sidebar">
+      <div class="m-sidebar__content">
+        <nav>
+          <ul class="m-sidebar__link-list">
+            <li class="-active">
+              <a href="#drawer-0-1">
+                <div class="a-icon">
+                  <svg><use xlink:href="#icon-atom"></use></svg>
+                </div>
+                <span>Active Item</span>
+              </a>
+            </li>
+            <li>
+              <a href="#drawer-0-2">
+                <div class="a-icon">
+                  <svg><use xlink:href="#icon-atom"></use></svg>
+                </div>
+                <span>Menu Item</span>
+              </a>
+            </li>
+            <li>
+              <a href="#drawer-0-3">
+                <div class="a-icon">
+                  <svg><use xlink:href="#icon-atom"></use></svg>
+                </div>
+                <span>Menu Item</span>
+              </a>
+            </li>
+            <li>
+              <a href="#drawer-0-4">
+                <div class="a-icon">
+                  <svg><use xlink:href="#icon-atom"></use></svg>
+                </div>
+                <span>Menu Item</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="m-sidebar__drawers">
+        <div class="m-drawer -left" id="drawer-0-1">
+          <div class="m-drawer__header">
+            <button class="a-btn -icon -close">
+              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+            </button>
+          </div>
+          <div class="m-drawer__content">
+            <ul class="m-sidebar__drawer-link-list">
+              <li>
+                <a href="#">
+                  <h5>Title A</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+              <li class="-active">
+                <a href="#">
+                  <h5>Title B</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h5>Title C</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h5>Title D</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="m-drawer -left" id="drawer-0-2">
+          <div class="m-drawer__header">
+            <button class="a-btn -icon -close">
+              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+            </button>
+          </div>
+          <div class="m-drawer__content">
+            <ul class="m-sidebar__drawer-link-list">
+              <li>
+                <a href="#">
+                  <h5>Title E</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h5>Title F</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h5>Title G</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h5>Title H</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="m-drawer -left" id="drawer-0-3">
+          <div class="m-drawer__header">
+            <button class="a-btn -icon -close">
+              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+            </button>
+          </div>
+          <div class="m-drawer__content">
+            <ul class="m-sidebar__drawer-link-list">
+              <li>
+                <a href="#">
+                  <h5>Title I</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h5>Title J</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h5>Title K</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h5>Title L</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="m-drawer -left" id="drawer-0-4">
+          <div class="m-drawer__header">
+            <button class="a-btn -icon -close">
+              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+            </button>
+          </div>
+          <div class="m-drawer__content">
+            <ul class="m-sidebar__drawer-link-list">
+              <li>
+                <a href="#">
+                  <h5>Title M</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h5>Title N</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h5>Title O</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <h5>Title P</h5>
+                  <p class="-text">Description for title a in a drawer inside a menu.</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.sidebar(document.querySelectorAll('.m-sidebar'));
+    },
+    false
+  );

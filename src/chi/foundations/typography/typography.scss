@@ -16,13 +16,7 @@ html {
   line-height: $line-height;
 
   a {
-    background-color: transparent;
-    color: $link-color;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
+    @include anchor-style;
   }
 
   h1,

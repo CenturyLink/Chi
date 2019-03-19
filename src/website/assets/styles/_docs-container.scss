@@ -120,6 +120,11 @@
             border-top-right-radius: 0;
             border-top: 0.0625rem solid set-color(grey, 25);
           }
+
+          & > .clipboard:first-child + pre[class*=language-] {
+            border-top: none;
+          }
+
           .code-block>pre {
             border-top: 0;
             border-radius: 0.15em;

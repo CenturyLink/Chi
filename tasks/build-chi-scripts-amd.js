@@ -5,13 +5,14 @@ import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import webpack from 'webpack';
 import plumber from 'gulp-plumber';
 import webpackStream from 'webpack-stream';
-import { Folders } from './constants';
+import {Folders, WEBPACK_MODE} from './constants';
 
 const sources = path.join(Folders.SRC, 'chi/javascript/index.js');
 const destination = path.join(Folders.DIST, 'amd');
 
 
 const webpackConfig = {
+  mode: WEBPACK_MODE,
   output: {
     library: 'chi',
     filename: 'chi.js',

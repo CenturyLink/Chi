@@ -6,12 +6,12 @@ import {Util} from "../core/util.js";
 const CLASS_ACTIVE = "-active";
 const CLASS_HAS_ACTIVE = "-hasActive";
 const CLASS_ANIMATED = "-animated";
-const CLASS_SLIDING_BORDER = '-slidingBorder';
 const CLASS_RESPONSIVE = "-responsive";
 const CLASS_VERTICAL = "-vertical";
 const COMPONENT_SELECTOR = '.a-tabs';
 const COMPONENT_TYPE = "tab";
 const SUBTAB_SELECTORS = 'ul.a-tabs__subtabs';
+const TABS_PANEL_CLASS = "a-tabs-panel";
 
 const DEFAULT_CONFIG = {
   animated: true,
@@ -56,7 +56,7 @@ class Tab extends Component {
     }
     for (let i = 0 ; i < tab.childNodes.length ; i++) {
       const target = Util.getTarget(tab.childNodes[i]);
-      if (target) {
+      if (target && Util.hasClass(target, TABS_PANEL_CLASS)) {
         return target;
       }
     }
@@ -201,7 +201,9 @@ class Tab extends Component {
     for (let cur = e.target; cur && cur !== this._elem; cur = cur.parentNode) {
       if (cur.nodeName === 'A') {
         this._clickedOnAnchor(cur, e);
-      } else if (cur.nodeName === 'LI') {
+      } else if (
+        cur.nodeName === 'LI'
+      ) {
         if (tab) {
           parentTab = cur;
         } else {

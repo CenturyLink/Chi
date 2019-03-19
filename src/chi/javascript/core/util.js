@@ -200,7 +200,11 @@ export class Util {
   static createEvent (eventType) {
     let event;
     if(typeof Event  === 'function') {
-      event = new Event(eventType);
+      event = new Event(eventType, {
+        'view': window,
+        'bubbles': true,
+        'cancelable': true
+      });
     } else {
       event = document.createEvent('Event');
       event.initEvent(eventType, true, true);

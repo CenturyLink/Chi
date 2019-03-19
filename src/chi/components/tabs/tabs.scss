@@ -1,7 +1,7 @@
 @import 'mixins';
 @import 'variables';
 
-@mixin tabs-vertical() {
+@mixin tabs-vertical {
   display: flex;
   flex-direction: column;
   line-height: $line-height-smaller;
@@ -92,7 +92,8 @@
   }
 
   &:not(.-sliding) > li.-active:not(.-hasActive) > a,
-  &:not(.-sliding).-animated  li.-active:not(.-hasActive) > a {
+  &:not(.-sliding).-animated > li.-active:not(.-hasActive) > a,
+  &:not(.-sliding).-animated .a-tabs__subtabs > li.-active:not(.-hasActive) > a{
     box-shadow: inset 0.125rem 0 0 $primary-color;
   }
 
