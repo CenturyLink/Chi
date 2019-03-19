@@ -12,7 +12,7 @@ h4 Base
 .example.-mb--3
   .-p--3
     .m-formGroup(style="max-width:30rem")
-      textarea.a-input Sample text
+      textarea.a-input(placeholder='Placeholder') Sample text
   :code(lang="html")
     <textarea class="a-input">
       Sample text
@@ -31,11 +31,11 @@ h4 Disabled
 h4 With Label
 .example.-mb--3
   .-p--3
-    .m-formGroup.-labelled(style="max-width:30rem")
+    .m-formGroup.-labeled(style="max-width:30rem")
       label.a-label(for='example') Label
       textarea.a-input(id='example') Sample text
   :code(lang="html")
-    <div class="m-formGroup -labelled">
+    <div class="m-formGroup -labeled">
       <label class="a-label" for="example">Label</label>
       <textarea class="a-input" id="example">
         Sample text

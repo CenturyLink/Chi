@@ -11,11 +11,11 @@ $border: 0.0625rem;
   display: flex;
   position: relative;
 
-  &.-labelled {
+  &.-labeled {
     flex-direction: column;
   }
 
-  &:not(.-labelled) {
+  &:not(.-labeled) {
     & label {
       margin-bottom: 0;
     }

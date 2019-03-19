@@ -20,11 +20,11 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             td(style='vertical-align: bottom')
               .-m--1
                 if state == 'disabled'
-                  .m-formGroup.-labelled
+                  .m-formGroup.-labeled
                     label.a-label(class=`-${size}` for='example') Label
                     textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
                 else
-                  .m-formGroup.-labelled
+                  .m-formGroup.-labeled
                     label.a-label(class=`-${size}` for='example') Label
                     textarea(class=`a-input -${style} -${state} -${size}`) Value
 
@@ -48,7 +48,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                       use(xlink:href='#icon-atom')
             td(style='vertical-align: bottom')
               .-m--1
-                .m-formGroup.-labelled
+                .m-formGroup.-labeled
                   label.a-label(class=`-${size}` for='example') Label
                   .a-inputWrapper.-icon--left
                     if state == 'disabled'
@@ -92,7 +92,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                         use(xlink:href='#icon-circle-info-outline')
             td(style='vertical-align: bottom')
               .-m--1
-                .m-formGroup.-labelled
+                .m-formGroup.-labeled
                   label.a-label(class=`-${size}` for='example') Label
                   .a-inputWrapper.-icon--right
                     if state == 'disabled'
@@ -152,7 +152,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                         use(xlink:href='#icon-circle-info-outline')
             td(style='vertical-align: bottom')
               .-m--1
-                .m-formGroup.-labelled
+                .m-formGroup.-labeled
                   label.a-label(class=`-${size}` for='example') Label
                   .a-inputWrapper.-icon--left.-icon--right
                     if state == 'disabled'
