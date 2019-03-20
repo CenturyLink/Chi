@@ -114,4 +114,10 @@ onLoad(() => {
   });
 
   chi.dropdown(document.getElementById('version-dropdown'));
+  chi.tab(
+    document.querySelector('.docs-body__aside > nav > ul'),
+    {
+      waitForAnimations: true
+    }
+  );
 });

@@ -43,52 +43,6 @@
           color: set-color(grey, 50) !important;
           pointer-events: none;
         }
-
-        .a-tabs.-vertical {
-          >li {
-            >a {
-              padding-bottom: 0.5rem;
-              padding-top: 0.5rem;
-              @include respond-to(lg) {
-                padding-bottom: 0.75rem;
-                padding-top: 0.75rem;
-              }
-            }
-          }
-          >li.-active {
-            >a {
-              color: $brand-color;
-              &:before {
-                display: none;
-              }
-            }
-          }
-          .a-tabs__subtabs {
-            li {
-              margin-bottom: 0;
-              &.-active {
-                >a {
-                  color: $brand-color;
-                  position: relative;
-                  &:before {
-                    background-color: $brand-color;
-                    content: "";
-                    left: 0;
-                    position: absolute;
-                    top: 0;
-                    width: .125rem;
-                    height: 2rem;
-                  }
-                }
-              }
-              a {
-                &:hover {
-                  color: $brand-color;
-                }
-              }
-            }
-          }
-        }
       }
 
 
