@@ -1,6 +1,7 @@
 import {Util} from "../core/util.js";
-import {classes, Component} from "../core/component";
+import {Component} from "../core/component";
 import Popper from 'popper.js';
+import {chi} from "../core/chi";
 
 const COMPONENT_SELECTOR = '[data-popover-content]';
 const COMPONENT_TYPE = "popover";
@@ -39,7 +40,7 @@ class Popover extends Component{
       this._config.parent && this._config.parent.dataset && this._config.parent.dataset.position ||
       this._config.position;
 
-    this._createPopover();
+    this._configurePopover();
     this._initDefaultEventListeners();
   }
 
@@ -99,7 +100,7 @@ class Popover extends Component{
     this._elem.dispatchEvent(Util.createEvent(EVENTS.SHOW));
 
     if (!this._config.animate) {
-      Util.addClass(this._popoverElem, classes.ACTIVE);
+      Util.addClass(this._popoverElem, chi.classes.ACTIVE);
       this._popoverElem.setAttribute('aria-hidden', 'false');
       return;
     }
@@ -107,7 +108,7 @@ class Popover extends Component{
     const self = this;
     const transition = this._popoverElem.style.transition;
     self._popoverElem.style.transition = 'none';
-    Util.addClass(self._popoverElem, classes.TRANSITIONING);
+    Util.addClass(self._popoverElem, chi.classes.TRANSITIONING);
     //Because this popper method is asynchronous, cannot be done in step 1 of
     // animation, as it will be executed between step 1 and step 2.
     self.resetPosition();
@@ -117,12 +118,12 @@ class Popover extends Component{
         self._popoverElem.style.transform = self._preAnimationTransformStyle;
       },
       function(){
-        Util.addClass(self._popoverElem, classes.ACTIVE);
+        Util.addClass(self._popoverElem, chi.classes.ACTIVE);
         self._popoverElem.style.transition = transition;
         self._popoverElem.style.transform = self._postAnimationTransformStyle;
       },
       function(){
-        Util.removeClass(self._popoverElem, classes.TRANSITIONING);
+        Util.removeClass(self._popoverElem, chi.classes.TRANSITIONING);
         self._popoverElem.setAttribute('aria-hidden', 'false');
       }, TRANSITION_DURATION
     );
@@ -137,7 +138,7 @@ class Popover extends Component{
     this._elem.dispatchEvent(Util.createEvent(EVENTS.HIDE));
 
     if (!this._config.animate) {
-      Util.removeClass(this._popoverElem, classes.ACTIVE);
+      Util.removeClass(this._popoverElem, chi.classes.ACTIVE);
       this._popoverElem.setAttribute('aria-hidden', 'true');
       return;
     }
@@ -145,14 +146,14 @@ class Popover extends Component{
     let self = this;
     Util.threeStepsAnimation(
       function(){
-        Util.addClass(self._popoverElem, classes.TRANSITIONING);
+        Util.addClass(self._popoverElem, chi.classes.TRANSITIONING);
       },
       function(){
         self._popoverElem.style.transform = self._preAnimationTransformStyle;
-        Util.removeClass(self._popoverElem, classes.ACTIVE);
+        Util.removeClass(self._popoverElem, chi.classes.ACTIVE);
       },
       function(){
-        Util.removeClass(self._popoverElem, classes.TRANSITIONING);
+        Util.removeClass(self._popoverElem, chi.classes.TRANSITIONING);
         self._popoverElem.setAttribute('aria-hidden', 'true');
       }, TRANSITION_DURATION
     );
@@ -183,34 +184,69 @@ class Popover extends Component{
     this._popper.update();
   }
 
-  _createPopover () {
-    this._popoverElem = document.createElement('div');
+  _configurePopover () {
+    this._configurePopoverElement();
+    this._configurePopoverClasses();
+    this._configurePopoverContent();
+    this._configurePopoverIdAria();
+    this._configurePopoverPopper();
+  }
 
-    const classes = this._config.classes.slice(0);
-    classes.push(CLASS_POPOVER);
-    if (!this._config.arrow) {
-      classes.push('-no-arrow');
+  _configurePopoverElement() {
+    const target = this._elem.dataset && this._elem.dataset.target ||
+      this._config.target;
+
+    if (target) {
+      if (target instanceof Element) {
+        this._popoverElem = target;
+      } else {
+        this._popoverElem = document.querySelector(target);
+      }
+    } else {
+      this._popoverElem = document.createElement('div');
+      this._config.parent.parentNode.appendChild(this._popoverElem);
     }
-    this._popoverElem.setAttribute('class', classes.join(' '));
+  }
 
+  _configurePopoverClasses() {
+    const self = this;
+    Util.addClass(this._popoverElem, CLASS_POPOVER);
+    this._config.classes.forEach(function (className) {
+      Util.addClass(self._popoverElem, className);
+    });
+
+    if (!this._config.arrow) {
+      Util.addClass(self._popoverElem, '-no-arrow');
+    }
+
+    if (this._config.animate) {
+      Util.addClass(this._popoverElem, chi.classes.ANIMATED);
+    }
+  }
+
+  _configurePopoverContent() {
+    const content = this._config.content ||
+      this._elem.dataset.popoverContent;
+    if (content) {
+      this.setContent(content);
+    }
+    if (this._config.arrow) {
+      const arrow = document.createElement('div');
+      arrow.className = 'a-arrow';
+      this._popoverElem.appendChild(arrow);
+    }
+  }
+
+  _configurePopoverIdAria() {
     this._popoverElem.id =
       this._popoverElem.id ||
       'chi-' + COMPONENT_TYPE + '-' + this.componentCounterNo;
-    this.setContent(
-      this._config.content ||
-      this._elem.dataset.popoverContent ||
-      ''
-    );
-    this._config.parent.parentNode.appendChild(this._popoverElem);
     this._config.parent.setAttribute('aria-describedby', this._popoverElem.id);
     this._popoverElem.setAttribute('aria-hidden', 'true');
+  }
 
-    if (this._config.animate) {
-      Util.addClass(this._popoverElem, classes.ANIMATED);
-    }
-
-    let self = this;
-
+  _configurePopoverPopper() {
+    const self = this;
     this._savePopperData = function (data) {
       self._popperData = data;
       self._preAnimationTransformStyle = null;
@@ -233,7 +269,7 @@ class Popover extends Component{
       return data;
     };
 
-    this._popper = new Popper (this._config.parent, this._popoverElem, {
+    this._popper = new Popper(this._config.parent, this._popoverElem, {
       modifiers: {
         applyStyle: {enabled: true},
         applyChiStyle: {
@@ -257,17 +293,8 @@ class Popover extends Component{
     Util.empty(this._popoverElem);
     if (content instanceof Element) {
       this._popoverElem.appendChild(content);
-      if (this._config.arrow) {
-        const arrow = document.createElement('div');
-        arrow.className = 'a-arrow';
-        this._popoverElem.appendChild(arrow);
-      }
     } else {
-      if (this._config.arrow) {
-        this._popoverElem.innerHTML = content + '<div class="a-arrow"></div>';
-      } else {
-        this._popoverElem.innerHTML = content;
-      }
+      this._popoverElem.innerHTML = content;
     }
   }
 

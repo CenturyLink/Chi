@@ -1,21 +1,41 @@
 ---
 title: Popover
 ---
-
-p.-text
-  | Popovers provide an contextual space, attached to an element and in an upper z-index layer, where you can
-  | include any kind of HTML code related to the trigger.
-
 h3 Base
 p.-text
   | To render a popover, add your HTML code to a <code>data-popover-content</code> attribute. Then,
   | you can initialize it with the <code>chi.popover</code> factory method.
 .example.-mb--3
   .-p--3
-    button#popover-1(data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover!</h5><p>This is a popover content triggered by a button. </p></div>').a-btn.-mr--2 Popover
+    button#popover-1(data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover!</h5><p>This is a popover content triggered by a button. </p></div>').a-btn Popover
   :code(lang='html')
     <button id='popover-1' class="a-btn" data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover!</h5><p>This is a popover content triggered by a button. </p></div>'>Popover</button>
     <script>chi.popover(document.getElementById('popover-1'));</script>
+
+p.-text
+  | You can also link the popover via <code>data-target</code> attribute.
+p.-text
+  span.a-badge.-primary.-mr1
+    span Tip
+  | Don't add the arrow to the Popover template. It is configured via the <code>arrow</code> configuration parameter.
+p.-text
+  span.a-badge.-primary.-mr1
+    span Tip
+  | If you specify the content via the <code>data-content</code> attribute or the <code>content</code> configuration
+  | parameter, it will override the contents of the target. Use it wisely. 
+.example.-mb--3
+  .-p--3
+    button#popover-1b(data-target='#popover-in-html').a-btn Popover
+  :code(lang='html')
+    <button class="a-btn" id="popover-1b" data-target="#popover-in-html">Popover</button>
+    <!-- put the following code anywere in the DOM, e.g. at the end of the DOM -->
+    <div class="m-popover" id="popover-in-html">
+      <div class="-px--2 -py--1 -s--3">
+        <h5>Popover!</h5>
+        <p>This is a popover content in the dom.</p>
+      </div>
+    </div>
+    <script>chi.popover(document.getElementById('popover-1b'));</script>
 
 h3 Positioning
 p.-text
@@ -173,6 +193,17 @@ section.a-table.a-table__options.-bordered.-my--3
         tr
           td
             div
+              code= 'target'
+          td
+            div
+              code 'null'
+          td
+            div
+              | If you specify a target, the Popover will be build over that Element. You can specify the xpath selector
+              | of the element or the element itself.
+        tr
+          td
+            div
               code= 'preventAutoHide'
           td
             div
@@ -231,6 +262,16 @@ p.-text
       });
     </script>
 
+h3 Events
+h4 chi.popover.show
+p.-text
+  | The element the popover is attached to (usually a button), dispatches this event when the popover is to be
+  | <strong>shown</strong>.
+h4 chi.popover.hide
+p.-text
+  | The element the popover is attached to (usually a button), dispatches this event when the popover is to be
+  | <strong>hidden</strong>.
+
 h4 Preventing memory leaks
 p.-text
   | Popover components have a dispose function to free all resources attached to the element, such as event listeners
@@ -242,7 +283,7 @@ p.-text
   popover.dispose();
 
 p.-text
-  span.a-badge.-brand.-mr1
+  span.a-badge.-primary.-mr1
     span Tip
   | It is safe to call the <code>popover</code> method more than once, as it will return any previously created popover component
   | associated to the trigger.
@@ -255,6 +296,12 @@ p.-text
 
   popover.dispose(); // Only have to do it once.
 
+//From the popover-1b
+.m-popover#popover-in-html
+  .-px--2.-py--1.-s--3
+    h5 Popover!
+    p This is a popover content at the end of the DOM
+
 script.
   document.addEventListener(
     'DOMContentLoaded',
@@ -265,6 +312,7 @@ script.
       chi.popover(
         document.querySelectorAll(
           '#popover-1, ' +
+          '#popover-1b, ' +
           '#a-tabs--positioning-top button, ' +
           '#a-tabs--positioning-right button, ' +
           '#a-tabs--positioning-bottom button, ' +

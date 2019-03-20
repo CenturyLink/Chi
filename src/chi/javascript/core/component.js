@@ -1,11 +1,5 @@
 import {Util} from "./util";
 
-const classes = {
-  ACTIVE: '-active',
-  ANIMATED: '-animated',
-  TRANSITIONING : '-transitioning',
-};
-
 let componentCounter = 0;
 
 class Component {
@@ -81,4 +75,4 @@ class Component {
 
 }
 
-export {Component, classes};
+export {Component};
