@@ -77,7 +77,6 @@ class RangeSlider extends Component {
     this._updateValues = null;
     this._thumbElem = null;
     this._progressElem = null;
-    Util.unregisterComponent(COMPONENT_TYPE, this._elem);
     Util.removeClass(this._elem, COMPONENT_OWN_THUMB_CLASS);
     this._elem = null;
   }

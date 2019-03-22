@@ -1,0 +1,127 @@
+---
+title: Popover
+---
+p.-text
+  | Popovers provide a contextual space, attached to an element and in an upper z-index layer, where you can
+  | include any kind of HTML code related to the trigger.
+
+.m-alert.-bubble.-info
+  i.a-icon.-sm--2.icon-circle-info.-text--info
+  | This component requires Javascript
+
+h3 Examples
+
+h4 Base
+p.-text
+  | Popover components are absolutely positioned. For this example we have forced a relative position.
+p.-text
+  span.a-badge.-primary.-mr1
+    span Tip
+  | Remove the <code>-active</code> class to hide the popover.
+.example.-mb--3
+  .-p--3
+    .m-popover.-active(aria-hidden="false",style="position: relative")
+      .-px--2.-py--1.-s--3
+        h5 Popover!
+        p This is a popover content.
+  :code(lang="html")
+    <div class="m-popover -active" style="position: relative">
+      <div class="-px--2 -py--1 -s--3">
+        <h5>Popover!</h5>
+        <p>This is a popover content.</p>
+      </div>
+    </div>
+
+h4 Arrow
+p.-text
+  | Popovers support arrows to show the origin where they come from. Arrows can be located anywhere around the Popover.
+  | Use the classes <code>m-popover--top</code>, <code>m-popover--right</code>, <code>m-popover--bottom</code> and
+  | <code>m-popover--left</code> to position the arrow in the proper place.
+p.-text
+  span.a-badge.-primary.-mr1
+    span Tip
+  | If you use a position engine as Popper.js (as our <a href="../../javascript/popover/">JavaScript solution</a>),
+  | the attribute <code>x-placement</code> should be used instead of these classes. It accepts all the values Popper.js
+  | does. Popper.js sets this attribute automatically, so there is no need to include it on the code.
+ul#a-tabs--positioning.a-tabs
+  li.-active
+    a(href='#a-tabs--positioning-top') Top
+  li
+    a(href='#a-tabs--positioning-right') Right
+  li
+    a(href='#a-tabs--positioning-bottom') Bottom
+  li
+    a(href='#a-tabs--positioning-left') Left
+#a-tabs--positioning-top.a-tabs-panel.-active
+  .example.-mb--3
+    .-p--3
+      .m-popover.m-popover--top.-active(aria-hidden="false",style="position: relative")
+        .-px--2.-py--1.-s--3
+          h5 Popover!
+          p This is a popover content.
+        .a-arrow
+    :code(lang="html")
+      <div class="m-popover m-popover--top -active" style="position: relative">
+        <div class="-px--2 -py--1 -s--3">
+          <h5>Popover!</h5>
+          <p>This is a popover content.</p>
+        </div>
+        <div class="a-arrow"></div>
+      </div>
+#a-tabs--positioning-right.a-tabs-panel
+  .example.-mb--3
+    .-p--3
+      .m-popover.m-popover--right.-active(aria-hidden="false",style="position: relative")
+        .-px--2.-py--1.-s--3
+          h5 Popover!
+          p This is a popover content.
+        .a-arrow
+    :code(lang="html")
+      <div class="m-popover m-popover--right -active" style="position: relative">
+        <div class="-px--2 -py--1 -s--3">
+          <h5>Popover!</h5>
+          <p>This is a popover content.</p>
+        </div>
+        <div class="a-arrow"></div>
+      </div>
+#a-tabs--positioning-bottom.a-tabs-panel
+  .example.-mb--3
+    .-p--3
+      .m-popover.m-popover--bottom.-active(aria-hidden="false",style="position: relative")
+        .-px--2.-py--1.-s--3
+          h5 Popover!
+          p This is a popover content.
+        .a-arrow
+    :code(lang="html")
+      <div class="m-popover m-popover--bottom -active" style="position: relative">
+        <div class="-px--2 -py--1 -s--3">
+          <h5>Popover!</h5>
+          <p>This is a popover content.</p>
+        </div>
+        <div class="a-arrow"></div>
+      </div>
+#a-tabs--positioning-left.a-tabs-panel
+  .example.-mb--3
+    .-p--3
+      .m-popover.m-popover--left.-active(aria-hidden="false",style="position: relative")
+        .-px--2.-py--1.-s--3
+          h5 Popover!
+          p This is a popover content.
+        .a-arrow
+    :code(lang="html")
+      <div class="m-popover m-popover--left -active" style="position: relative">
+        <div class="-px--2 -py--1 -s--3">
+          <h5>Popover!</h5>
+          <p>This is a popover content.</p>
+        </div>
+        <div class="a-arrow"></div>
+      </div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function () {
+      chi.tab(document.getElementById('a-tabs--positioning'));
+    },
+    false
+  );

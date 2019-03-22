@@ -7,6 +7,7 @@ import {ExpansionPanel, factory as expansionPanel, EXPANSION_PANEL_STATES} from 
 import {FloatingLabel, factory as floatingLabel} from "./components/floating-label";
 import {Navigation, factory as navigation} from "./components/navigation";
 import {NumberInput, factory as numberInput} from './components/number-input';
+import {Popover, factory as popover} from "./components/popover";
 import {RangeSlider, factory as rangeSlider} from "./components/range-slider";
 import {Tab, factory as tab} from './components/tab';
 import {Tooltip, factory as tooltip} from "./components/tooltip";
@@ -21,6 +22,7 @@ export {
   expansionPanel,
   floatingLabel,
   numberInput,
+  popover,
   rangeSlider,
   tab,
   tooltip,
@@ -31,6 +33,7 @@ export {
   FloatingLabel,
   Navigation,
   NumberInput,
+  Popover,
   RangeSlider,
   Tab,
   Tooltip,
