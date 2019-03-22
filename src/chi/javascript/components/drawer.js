@@ -138,7 +138,6 @@ class Drawer extends Component {
     this._elem.removeEventListener('click', this._triggerClickEventListener);
     this._closeButton.removeEventListener('click', this._closeClickEventListener);
     this._closeButton = null;
-    Util.unregisterComponent(COMPONENT_TYPE, this._elem);
     this._elem = null;
   }
 

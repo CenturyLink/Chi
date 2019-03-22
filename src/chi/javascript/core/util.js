@@ -26,6 +26,13 @@ export class Util {
     }
   }
 
+  static empty (elem) {
+    while (elem.firstChild) {
+      elem.removeChild (elem.firstChild);
+    }
+    elem.innerHTML = '';
+  }
+
   /**
    * Tests if an element has a target and returns it.
    * Target can be described by an xpath selector in href or in data-target
