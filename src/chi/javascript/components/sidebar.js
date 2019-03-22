@@ -15,7 +15,7 @@ const DRAWER_LINKLIST_CLASS = "m-sidebar__drawer-link-list";
 
 const DEFAULT_CONFIG = {
   animated: true,
-  waitForAnimations: false
+  autoClose: false
 };
 
 class Sidebar extends Component {
@@ -26,6 +26,8 @@ class Sidebar extends Component {
     this._slidingBorder = null;
     this._drawersContainer = this._elem.querySelector('.' + SIDEBAR_DRAWERS_CLASS);
     this._drawers = [];
+    this._clickOnComponent = false;
+    this._autocloseTimeoutId = null;
 
     this._addEventHandler(
       this._drawersContainer,
@@ -53,6 +55,7 @@ class Sidebar extends Component {
     }
 
     this.syncDrawers();
+    this._configureAutoClose();
   }
 
   syncDrawers() {
@@ -95,9 +98,9 @@ class Sidebar extends Component {
   getAssociatedDrawer (menuItemLink) {
     const drawerElem = Util.getTarget(menuItemLink);
     if (drawerElem && Util.hasClass(drawerElem, DRAWER_CLASS)) {
-      const drawer = Drawer.factory(menuItemLink);
+      const drawer = this._createDrawer(menuItemLink);
       if (this._drawers.indexOf(drawer) === -1) {
-        self._drawers.push(drawer);
+        this._drawers.push(drawer);
       }
       return drawer;
     }
@@ -109,6 +112,12 @@ class Sidebar extends Component {
     if (drawer) {
       drawer.hide();
     }
+  }
+
+  _createDrawer (drawerTrigger) {
+    return Drawer.factory(drawerTrigger, {
+      animated: this._config.animated
+    });
   }
 
   activateMenuItem(menuItem) {
@@ -163,22 +172,6 @@ class Sidebar extends Component {
     return Util.getTarget(anchorElem) ? true : false;
   }
 
-  _clickedOnAnchor (anchorElem, event) {
-    if (this._isLinkAMenuItemActivator(anchorElem)) {
-      event.preventDefault();
-    } else {
-      if (this._config.animated && this._config.waitForAnimations) {
-        event.preventDefault();
-        window.setTimeout(
-          function(){
-            window.location.href = anchorElem.getAttribute('href');
-          },
-          BORDER_ANIMATION_DURATION
-        );
-      }
-    }
-  }
-
   _handlerClickOnDrawer (e) {
 
     let drawer, activator, menuItem, menuItemLink, drawerMenuItem;
@@ -208,11 +201,10 @@ class Sidebar extends Component {
     }
   }
 
-
   _handlerDrawerShown(e) {
     const menuItemLink = this._getMenuItemLink(e.target);
     if (menuItemLink) {
-      const drawer = Drawer.factory(menuItemLink);
+      const drawer = this._createDrawer(menuItemLink);
       this._drawers.forEach(function(otherDrawer){
         if (otherDrawer !== drawer) {
           otherDrawer.hide();
@@ -245,16 +237,13 @@ class Sidebar extends Component {
     return child || menuItem;
   }
 
-  moveSlidingBorderToMenuItem(menuItem) {
-    const elementToMoveTo = this._getElementToMoveTo(menuItem);
-    this._slidingBorder.moveSlidingBorderToChild(elementToMoveTo);
-  }
-
   dispose () {
     this._config = null;
 
     this._elem = null;
     this._drawersContainer = null;
+    this._clickOnComponent = null;
+    this._autocloseTimeoutId = null;
     if (this._slidingBorder) {
       this._slidingBorder.dispose();
     }
@@ -266,6 +255,57 @@ class Sidebar extends Component {
 
   static get componentSelector () {
     return COMPONENT_SELECTOR;
+  }
+
+  _configureAutoClose() {
+
+    const self = this;
+
+    this._addEventHandler(
+      this._elem,
+      'click',
+      function(){
+        self._clickOnComponent = true;
+      }
+    );
+
+    this._addEventHandler(
+      document,
+      'click',
+      function(){
+        if (self._clickOnComponent) {
+          self._clickOnComponent=false;
+        } else {
+          self.hideAll();
+        }
+      }
+    );
+
+    this._addEventHandler(
+      this._elem,
+      'mouseleave',
+      function(e){
+        if (
+          self._config.autoClose !== false &&
+          e.target === self._elem &&
+          self._config.autoClose >= 0
+        ){
+          self._autocloseTimeoutId = window.setTimeout(function(){
+            self.hideAll();
+          }, self._config.autoClose);
+        }
+      }
+    );
+
+    this._addEventHandler(
+      this._elem,
+      'mouseenter',
+      function(e){
+        if (e.target === self._elem){
+          window.clearTimeout(self._autocloseTimeoutId);
+        }
+      }
+    );
   }
 }
 

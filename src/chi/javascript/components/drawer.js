@@ -15,7 +15,8 @@ const EVENTS = {
   hide: 'chi.drawer.hide'
 };
 const DEFAULT_CONFIG = {
-  target: null
+  target: null,
+  animated: true
 };
 
 class Drawer extends Component {
@@ -25,12 +26,28 @@ class Drawer extends Component {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._shown = Util.hasClass(elem, CLASS_ACTIVE);
     this._transitioning = false;
-    this._drawerElem = this._config.target || this._locateDrawer();
+    if (this._config.target) {
+      if (this._config.target instanceof Element) {
+        this._drawerElem = this._config.target;
+      } else {
+        this._drawerElem = document.querySelector(this._config.target);
+      }
+    } else {
+      this._drawerElem = this._locateDrawer();
+    }
     this._closeButton = this._locateCloseButton();
     this._backdrop = this._locateBackdrop();
     let self = this;
 
-    this._triggerClickEventListener = function() {
+    if (this._config.animated){
+      Util.addClass(this._drawerElem, CLASS_ANIMATED);
+      if (this._backdrop) {
+        Util.addClass(this._backdrop, CLASS_ANIMATED);
+      }
+    }
+
+    this._triggerClickEventListener = function(e) {
+      e.preventDefault();
       self.toggle();
     };
     this._closeClickEventListener = function() {
@@ -70,8 +87,7 @@ class Drawer extends Component {
     if (!this._shown && !this._transitioning) {
       this._transitioning = true;
       const self = this;
-      const animated = Util.hasClass(this._drawerElem, CLASS_ANIMATED);
-      if (animated) {
+      if (this._config.animated){
         Util.threeStepsAnimation(
           function () {
             Util.addClass(self._drawerElem, CLASS_TRANSITIONING);
@@ -116,8 +132,7 @@ class Drawer extends Component {
     if (this._shown && !this._transitioning) {
       this._transitioning = true;
       const self = this;
-      const animated = Util.hasClass(this._drawerElem, CLASS_ANIMATED);
-      if (animated) {
+      if (this._config.animated){
         Util.threeStepsAnimation(
           function() {
             Util.addClass(self._drawerElem, CLASS_TRANSITIONING);

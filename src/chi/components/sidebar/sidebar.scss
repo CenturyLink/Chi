@@ -18,7 +18,7 @@ $sidebar-xl-width: 12.5rem;
       z-index: $zindex-fixed + 2;
 
       > * + nav {
-        border-top: 0.0625rem solid $border-color;
+        border-top: 0.0625rem solid map-get(map-get($colorscheme, grey), 20);
       }
     }
 
@@ -31,7 +31,7 @@ $sidebar-xl-width: 12.5rem;
       > li {
         list-style: none;
         padding-left: 0;
-        border-bottom: 0.0625rem solid $border-color;
+        border-bottom: 0.0625rem solid map-get(map-get($colorscheme, grey), 20);
 
         >a {
           @include remove-anchor-style;
@@ -65,11 +65,15 @@ $sidebar-xl-width: 12.5rem;
         color: $primary-color
       }
 
-      &.-active > a{
+      &.-active > a{ // List item -active. The one that has the left 3px navy border.
         background-color: set-color(grey, 20);
       }
 
-      &:not(.-active) > a:hover{
+      & > a.-active{ // Drawer shown, will sets active the trigger (this anchor element)
+        background-color: set-color(grey, 20);
+      }
+
+      &:not(.-active) > a:not(.-active):hover{
         background-color: set-color(grey, 10);
       }
     }
@@ -79,7 +83,7 @@ $sidebar-xl-width: 12.5rem;
     }
 
     &__drawer-link-list {
-      border-top: 0.0625rem solid $border-color;
+      border-top: 0.0625rem solid map-get(map-get($colorscheme, grey), 20);
 
       &>li {
         & > a{
@@ -109,6 +113,11 @@ $sidebar-xl-width: 12.5rem;
       &.-left {
         left: $sidebar-sm-width;
       }
+
+      &.-left.-animated:not(.-active) {
+        left: -$drawer-width + $sidebar-sm-width;
+      }
+
     }
 
     .a-sliding-border {
@@ -130,6 +139,10 @@ $sidebar-xl-width: 12.5rem;
       width: $sidebar-md-width;
       .m-drawer.-left {
         left: $sidebar-md-width;
+
+        &.-animated:not(.-active) {
+          left: -$drawer-width + $sidebar-md-width;
+        }
       }
 
       &__link-list >li {
@@ -146,6 +159,10 @@ $sidebar-xl-width: 12.5rem;
       width: $sidebar-xl-width;
       .m-drawer.-left {
         left: $sidebar-xl-width;
+
+        &.-animated:not(.-active) {
+          left: -$drawer-width + $sidebar-xl-width;
+        }
       }
 
       &__link-list >li {
