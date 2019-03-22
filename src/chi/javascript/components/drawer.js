@@ -37,6 +37,7 @@ class Drawer extends Component {
     }
     this._closeButton = this._locateCloseButton();
     this._backdrop = this._locateBackdrop();
+    this._currentThreeStepsAnimation = null;
     let self = this;
 
     if (this._config.animated){
@@ -84,11 +85,14 @@ class Drawer extends Component {
   }
 
   show() {
-    if (!this._shown && !this._transitioning) {
+    if (!this._shown) {
+      if (this._transitioning) {
+        Util.stopThreeStepsAnimation(this._currentThreeStepsAnimation, false);
+      }
       this._transitioning = true;
       const self = this;
       if (this._config.animated){
-        Util.threeStepsAnimation(
+        this._currentThreeStepsAnimation = Util.threeStepsAnimation(
           function () {
             Util.addClass(self._drawerElem, CLASS_TRANSITIONING);
             if (self._backdrop) {
@@ -100,6 +104,7 @@ class Drawer extends Component {
             if (self._backdrop) {
               Util.removeClass(self._backdrop, CLASS_BACKDROP_CLOSED);
             }
+            self._shown = true;
             self._drawerElem.dispatchEvent(
               Util.createEvent(EVENTS.show)
             );
@@ -110,7 +115,6 @@ class Drawer extends Component {
             if (self._backdrop) {
               Util.removeClass(self._backdrop, CLASS_TRANSITIONING);
             }
-            self._shown = true;
             self._transitioning = false;
           },
           ANIMATION_DURATION
@@ -129,11 +133,14 @@ class Drawer extends Component {
   }
 
   hide() {
-    if (this._shown && !this._transitioning) {
+    if (this._shown) {
+      if (this._transitioning) {
+        Util.stopThreeStepsAnimation(this._currentThreeStepsAnimation, false);
+      }
       this._transitioning = true;
       const self = this;
       if (this._config.animated){
-        Util.threeStepsAnimation(
+        this._currentThreeStepsAnimation = Util.threeStepsAnimation(
           function() {
             Util.addClass(self._drawerElem, CLASS_TRANSITIONING);
             if (self._backdrop) {
@@ -145,6 +152,7 @@ class Drawer extends Component {
             if (self._backdrop) {
               Util.addClass(self._backdrop, CLASS_BACKDROP_CLOSED);
             }
+            self._shown = false;
             self._drawerElem.dispatchEvent(
               Util.createEvent(EVENTS.hide)
             );
@@ -155,7 +163,6 @@ class Drawer extends Component {
             if (self._backdrop) {
               Util.removeClass(self._backdrop, CLASS_TRANSITIONING);
             }
-            self._shown = false;
             self._transitioning = false;
           },
           ANIMATION_DURATION
@@ -189,6 +196,7 @@ class Drawer extends Component {
     this._elem.removeEventListener('click', this._triggerClickEventListener);
     this._closeButton.removeEventListener('click', this._closeClickEventListener);
     this._closeButton = null;
+    this._currentThreeStepsAnimation = null;
     this._elem = null;
   }
 
