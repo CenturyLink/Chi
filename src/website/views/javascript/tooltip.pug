@@ -35,6 +35,20 @@ p.-text
     <button class="a-btn" data-tooltip="Yourleft tooltip text" data-position="left">Left Tooltip</button>
     <script>chi.tooltip(document.querySelectorAll('[data-tooltip])');</script>
 
+h3 Long Tooltips
+p.-text
+  | Long Tooltips will be truncated on the third line.
+.example.-mb--3
+  .-p--3
+    button(data-tooltip='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et interdum purus. ' +
+    'Curabitur faucibus varius libero, vel hendrerit enim tincidunt sit amet. Ut eros purus, semper nec ipsum et, ' +
+    'maximus suscipit nibh.').a-btn.-mr--2.-mb--2.-mb-md--0 Top Tooltip
+  :code(lang='html')
+    <button class="a-btn" data-tooltip="Lorem ipsum...">
+      Top Tooltip
+    </button>
+    <script>chi.tooltip(document.querySelectorAll('[data-tooltip])');</script>
+
 h4 Preventing memory leaks
 p.-text
   | Tooltip components have a dispose function to free all resources attached to the element, such as event listeners
