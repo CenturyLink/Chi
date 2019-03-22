@@ -1,0 +1,13 @@
+@import 'variables';
+@import 'mixins';
+
+.chi {
+  .a-pagination {
+    & .-disabled {
+      & span {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
