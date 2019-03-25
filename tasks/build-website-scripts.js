@@ -3,9 +3,10 @@ import vinylNamed from 'vinyl-named';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 import plumber from 'gulp-plumber';
-import { Folders } from './constants';
+import {Folders, WEBPACK_MODE} from './constants';
 
 const webpackConfig = {
+  mode: WEBPACK_MODE,
   module: {
     rules: [
       {

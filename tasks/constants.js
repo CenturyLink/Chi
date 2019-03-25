@@ -3,8 +3,7 @@ import path from 'path';
 const SRC = 'src';
 const DIST = 'dist';
 
-
-
+export const WEBPACK_MODE = 'production'; //development
 
 const ASSETS = 'website/assets';
 const IMAGES = 'images';

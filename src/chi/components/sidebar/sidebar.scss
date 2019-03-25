@@ -1,0 +1,182 @@
+@import 'mixins';
+@import 'variables';
+
+$sidebar-sm-width: 3rem;
+$sidebar-md-width: 6.5rem;
+$sidebar-xl-width: 12.5rem;
+
+.chi {
+  .m-sidebar {
+    width: $sidebar-sm-width;
+    position: relative;
+
+    &__content {
+      background-color: set-color(white);
+      border-right: 0.0625rem solid $border-color;
+      height: 100%;
+      position: relative;
+      z-index: $zindex-fixed + 2;
+
+      > * + nav {
+        border-top: 0.0625rem solid map-get(map-get($colorscheme, grey), 20);
+      }
+    }
+
+    &__link-list, &__drawer-link-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      > li {
+        list-style: none;
+        padding-left: 0;
+        border-bottom: 0.0625rem solid map-get(map-get($colorscheme, grey), 20);
+
+        >a {
+          @include remove-anchor-style;
+        }
+      }
+    }
+
+    &__link-list >li{
+      >a{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        font-size: .875rem;
+        font-weight: 600;
+        min-height: 3rem;
+
+        >*:not(.a-icon) {
+          display:none;
+        }
+      }
+
+      &.-active{
+        >a {
+          box-shadow: inset .125rem 0 0 $primary-color;
+          color: $primary-color
+        }
+      }
+
+      &>a:hover{
+        color: $primary-color
+      }
+
+      &.-active > a{ // List item -active. The one that has the left 3px navy border.
+        background-color: set-color(grey, 20);
+      }
+
+      & > a.-active{ // Drawer shown, will sets active the trigger (this anchor element)
+        background-color: set-color(grey, 20);
+      }
+
+      &:not(.-active) > a:not(.-active):hover{
+        background-color: set-color(grey, 10);
+      }
+    }
+
+    &.-sliding .m-sidebar__link-list>li.-active>a{
+      box-shadow: none;
+    }
+
+    &__drawer-link-list {
+      border-top: 0.0625rem solid map-get(map-get($colorscheme, grey), 20);
+
+      &>li {
+        & > a{
+          display: block;
+          padding: 1rem;
+        }
+
+        &.-active > a{
+          background-color: set-color(grey, 20);
+        }
+
+        &:not(.-active) > a:hover{
+          background-color: set-color(grey, 10);
+        }
+      }
+    }
+
+    .m-drawer {
+      box-shadow: 0.5rem 0 0.5rem -0.5rem rgba(set-color(black),.1);
+      position: absolute;
+      z-index: $zindex-fixed;
+
+      &.-active {
+        z-index: $zindex-fixed + 1;
+      }
+
+      &.-left {
+        left: $sidebar-sm-width;
+      }
+
+      &.-left.-animated:not(.-active) {
+        left: -$drawer-width + $sidebar-sm-width;
+      }
+
+    }
+
+    .a-sliding-border {
+      background-color: $brand-color;
+      display: none;
+      left: 0;
+      position: absolute;
+      width: 0.125rem;
+      z-index: $zindex-fixed + 2;
+
+    }
+
+    &.-sliding .a-sliding-border {
+      display: block;
+      transition: .5s cubic-bezier(.35,0,.25,1);
+    }
+
+    @include respond-to(md) {
+      width: $sidebar-md-width;
+      .m-drawer.-left {
+        left: $sidebar-md-width;
+
+        &.-animated:not(.-active) {
+          left: -$drawer-width + $sidebar-md-width;
+        }
+      }
+
+      &__link-list >li {
+        > a {
+          min-height: 4rem;
+          > *:not(.a-icon) {
+            display: initial;
+          }
+        }
+      }
+    }
+
+    @include respond-to(lg) {
+      width: $sidebar-xl-width;
+      .m-drawer.-left {
+        left: $sidebar-xl-width;
+
+        &.-animated:not(.-active) {
+          left: -$drawer-width + $sidebar-xl-width;
+        }
+      }
+
+      &__link-list >li {
+        > a {
+          flex-direction: row;
+          justify-content: flex-start;
+          padding-left: 1.5rem;
+          min-height: 3rem;
+
+          >.a-icon {
+            margin-right: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

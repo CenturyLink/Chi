@@ -4,13 +4,14 @@ import plumber from 'gulp-plumber';
 import vinylNamed from 'vinyl-named';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
-import { Folders } from './constants';
+import { Folders, WEBPACK_MODE } from './constants';
 
 const sources = path.join(Folders.SRC, 'chi/javascript/index.js');
 const destination = path.join(Folders.DIST, 'js');
 
 
 const webpackConfig = {
+  mode: WEBPACK_MODE,
   output: {
     library: 'chi',
     filename: 'chi.js'
@@ -65,6 +66,6 @@ function buildChiScripts () {
     .pipe(gulp.dest(destination));
 }
 
-buildChiScripts.description = 'Compiles Chi JavaScript library into ES5. Returns a stream. ';
+buildChiScripts.description = 'Compiles Chi JavaScript library into ES5. ';
 
 gulp.task('build:chi:scripts', buildChiScripts);
