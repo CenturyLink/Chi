@@ -465,6 +465,54 @@ export class Util {
     return target;
   }
 
+  static checkOverflow(element) {
+    const savedOverflow = element.style.overflow;
+    element.style.overflow = 'hidden';
+    const overflows =
+      element.clientWidth < element.scrollWidth ||
+      element.clientHeight < element.scrollHeight;
+    element.style.overflow = savedOverflow;
+    return overflows;
+  }
+
+  static binarySearchClosest(length, testFunction){
+    let left = 0;
+    let right = length-1;
+    let middle = -1;
+
+    while (left <= right) {
+      middle=~~((left+right)/2);
+      const test = testFunction(middle);
+      if (test > 0) {
+        right=middle-1;
+      } else if (test < 0) {
+        left=middle+1;
+      } else {
+        return middle;
+      }
+    }
+    return left;
+  }
+
+  static binarySearch(length, testFunction){
+    let left = 0;
+    let right = length-1;
+    let middle = -1;
+
+    while (left <= right) {
+      middle=~~((left+right)/2);
+      const test = testFunction(middle);
+      if (test > 0) {
+        right=middle-1;
+      } else if (test < 0) {
+        left=middle+1;
+      } else {
+        return middle;
+      }
+    }
+    return null;
+  }
+
   static noOp () {}
 
 }

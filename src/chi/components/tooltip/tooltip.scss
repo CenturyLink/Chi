@@ -1,6 +1,9 @@
 @import 'variables';
 @import 'mixins';
 
+$multiLineEllipsisMax: 3;
+$paddingVertical: 0.25rem;
+
 .chi {
 
   .a-tooltip {
@@ -14,19 +17,16 @@
     font-size: $text;
     font-weight: normal;
     line-height: $line-height-small;
-    max-width: 18rem;
+    max-height: $line-height-small * $multiLineEllipsisMax + $paddingVertical * 2;
+    max-width: 20rem;
     opacity: 0;
     overflow: hidden;
-    padding: .25rem .5rem;
+    padding: $paddingVertical .5rem;
     pointer-events: none;
-    text-overflow: ellipsis;
     transition: opacity .2s, transform .2s;
-    white-space: pre;
 
     &.-active {
       opacity: 1;
     }
-
   }
-
 }

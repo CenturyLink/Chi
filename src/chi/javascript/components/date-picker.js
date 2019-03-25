@@ -9,7 +9,7 @@ const COMPONENT_TYPE = "datePicker";
 const CLASS_TODAY = '-today';
 const DEFAULT_CONFIG = {
   date: null,
-  locale: 'en-US',
+  locale: 'en',
   min: '01/01/1900',
   max: '12/31/2099',
   format: 'MM/DD/YYYY'
@@ -27,8 +27,12 @@ class DatePicker extends Component {
     this._popover = null;
     this._elem.setAttribute('type', 'text');
 
-    if (this._config.locale !== 'en-US') {
-      dayjs.locale(this._config.locale);
+    dayjs.locale(this._config.locale);
+
+    if (dayjs().startOf('week').day()===1) {
+      this._weekStartClass = '-weekStartsOnMon';
+    } else {
+      this._weekStartClass = '-weekStartsOnSun';
     }
 
     this.elems = {
@@ -117,7 +121,7 @@ class DatePicker extends Component {
 
     if (
       Util.hasClass(target, 'm-datepicker__day') &&
-      !Util.hasClass(target, CLASS_INACTIVE)
+      !Util.hasClass(target, chi.classes.INACTIVE)
     ) {
       this.setDate(target.dataset.date);
       this.hide();
@@ -138,7 +142,7 @@ class DatePicker extends Component {
   }
 
   hide() {
-    if (!this.shown) {
+    if (!this.shown || document.activeElement === this._elem) {
       return;
     }
     this.shown = false;
@@ -254,7 +258,7 @@ class DatePicker extends Component {
 
     calendar = document.createElement('div');
     calendar.setAttribute(
-      'class', 'm-datepicker -weekStartsOnSun'
+      'class', 'm-datepicker ' + this._weekStartClass
     );
 
     calendar.innerHTML = `
