@@ -1,6 +1,7 @@
 import {chi} from './core/chi.js';
 import {Util} from './core/util.js';
 
+import {DatePicker, factory as datePicker} from "./components/date-picker";
 import {Drawer, factory as drawer} from './components/drawer';
 import {Dropdown, factory as dropdown} from './components/dropdown';
 import {ExpansionPanel, factory as expansionPanel, EXPANSION_PANEL_STATES} from "./components/expansion-panel";
@@ -17,11 +18,12 @@ export {
   chi as core,
   Util,
 
-  navigation,
+  datePicker,
   drawer,
   dropdown,
   expansionPanel,
   floatingLabel,
+  navigation,
   numberInput,
   popover,
   rangeSlider,
@@ -29,6 +31,7 @@ export {
   tab,
   tooltip,
 
+  DatePicker,
   Drawer,
   Dropdown,
   ExpansionPanel,
