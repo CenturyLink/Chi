@@ -17,5 +17,17 @@ h4 Sizes
     each size in sizes
       div(class=`a-col -w--12 -p--3 -bg--black`)
         a(class=`a-brand -${size}`, href='#', aria-label='CenturyLink')
-          img(src='https://assets.ctl.io/images/centurylink-logo-white.svg', alt='CenturyLink')
-        p.-text--bold= '-' + size
+          img(src='https://assets.ctl.io/images/centurylink-logo-inverse.svg', alt='CenturyLink')
+        p.-text--bold.-text--white= '-' + size
+    h3 White
+      each size in sizes
+        div(class=`a-col -w--12 -p--3 -bg--black`)
+          a(class=`a-brand -${size}`, href='#', aria-label='CenturyLink')
+            img(src='https://assets.ctl.io/images/centurylink-logo-white.svg', alt='CenturyLink')
+          p.-text--bold.-text--white= '-' + size
+    h3 Black
+      each size in sizes
+        div(class=`a-col -w--12 -p--3`)
+          a(class=`a-brand -${size}`, href='#', aria-label='CenturyLink')
+            img(src='https://assets.ctl.io/images/centurylink-logo-black.svg', alt='CenturyLink')
+          p.-text--bold= '-' + size
