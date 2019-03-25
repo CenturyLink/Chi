@@ -117,7 +117,7 @@ onLoad(() => {
   chi.tab(
     document.querySelector('.docs-body__aside > nav > ul'),
     {
-      waitForAnimations: true
+      waitForAnimations: false
     }
   );
 });
