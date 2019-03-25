@@ -14,7 +14,7 @@ const DEFAULT_CONFIG = {
   max: '12/31/2099',
   format: 'MM/DD/YYYY'
 };
-const WEEK_CLASS_PART = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const WEEK_CLASS_PART = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
 class DatePicker extends Component {
 
@@ -30,9 +30,9 @@ class DatePicker extends Component {
     dayjs.locale(this._config.locale);
 
     if (dayjs().startOf('week').day()===1) {
-      this._weekStartClass = '-weekStartsOnMon';
+      this._weekStartClass = '-week-starts-on-mon';
     } else {
-      this._weekStartClass = '-weekStartsOnSun';
+      this._weekStartClass = '-week-starts-on-sun';
     }
 
     this.elems = {
@@ -262,7 +262,7 @@ class DatePicker extends Component {
     );
 
     calendar.innerHTML = `
-    <div class="m-datepicker__monthRow">
+    <div class="m-datepicker__month-row">
       <div class="prev">
         <i class="a-icon icon-chevron-left -sm"></i>
       </div>
@@ -271,7 +271,7 @@ class DatePicker extends Component {
         <i class="a-icon icon-chevron-right -sm"></i>
       </div>
     </div>
-    <div class="m-datepicker__dayNames">
+    <div class="m-datepicker__day-names">
       ${this._renderWeekDays()}
     </div>
     <div class="m-datepicker__days"></div>`;
@@ -303,9 +303,9 @@ class DatePicker extends Component {
       month.format('MMMM') + ' ' + month.format('YYYY');
 
     const calendarClasses = this.elems.calendar.className
-      .replace(/-monthStartsOn.../, '');
+      .replace(/-month-starts-on-.../, '');
     this.elems.calendar.className = calendarClasses + ' ' +
-      '-monthStartsOn' + WEEK_CLASS_PART[month.set('date', 1).day()];
+      '-month-starts-on-' + WEEK_CLASS_PART[month.set('date', 1).day()];
 
     if (!month.isSame(this.lastShownMonth, 'month')) {
       while (this.elems.dayList.firstChild) {
@@ -378,7 +378,7 @@ class DatePicker extends Component {
         day = day.add(1, 'day')
       ) {
         this.weekDaysHtml +=
-          '<div class="m-datepicker__weekDay">' +
+          '<div class="m-datepicker__week-day">' +
           day.format('dddd').substr(0,1) +
           '</div>';
       }

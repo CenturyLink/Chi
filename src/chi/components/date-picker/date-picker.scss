@@ -2,22 +2,22 @@
 @import 'mixins';
 
 $sundayStartingWeek: (
-  Sun: 0,
-  Mon: 1,
-  Tue: 2,
-  Wed: 3,
-  Thu: 4,
-  Fri: 5,
-  Sat: 6
+  sun: 0,
+  mon: 1,
+  tue: 2,
+  wed: 3,
+  thu: 4,
+  fri: 5,
+  sat: 6
 );
 $mondayStartingWeek: (
-  Mon: 0,
-  Tue: 1,
-  Wed: 2,
-  Thu: 3,
-  Fri: 4,
-  Sat: 5,
-  Sun: 6
+  mon: 0,
+  tue: 1,
+  wed: 2,
+  thu: 3,
+  fri: 4,
+  sat: 5,
+  sun: 6
 );
 
 .chi {
@@ -74,7 +74,7 @@ $mondayStartingWeek: (
       }
     }
 
-    &__weekDay {
+    &__week-day {
       font-weight: 600;
       text-align: center;
       line-height: 2rem;
@@ -87,7 +87,7 @@ $mondayStartingWeek: (
       width: calc(100% * 5 / 7);
       margin-left: calc(100% / 7);
 
-      &Row {
+      &-row {
         .prev, .next {
           width: calc(100% / 7);
           text-align: center;
@@ -107,20 +107,20 @@ $mondayStartingWeek: (
       margin-left: 0;
     }
 
-    &__days, &__dayNames {
+    &__days, &__day-names {
       display: flex;
       flex-wrap: wrap;
     }
 
-    &__monthRow {
+    &__month-row {
       display: flex;
       align-items: center;
       height: 2.5rem;
     }
 
-    &.-weekStartsOnSun {
+    &.-week-starts-on-sun {
       @each $weekDay, $columnStart in $sundayStartingWeek {
-        &.-monthStartsOn#{$weekDay} {
+        &.-month-starts-on-#{$weekDay} {
           .m-datepicker__day:first-child {
             margin-left: calc(100% * #{$columnStart} / 7);
           }
@@ -128,9 +128,9 @@ $mondayStartingWeek: (
       }
     }
 
-    &.-weekStartsOnMon {
+    &.-week-starts-on-mon {
       @each $weekDay, $columnStart in $mondayStartingWeek {
-        &.-monthStartsOn#{$weekDay} {
+        &.-month-starts-on-#{$weekDay} {
           .m-datepicker__day:first-child {
             margin-left: calc(100% * #{$columnStart} / 7);
           }
