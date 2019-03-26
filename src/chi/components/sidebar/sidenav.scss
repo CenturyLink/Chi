@@ -1,13 +1,13 @@
 @import 'mixins';
 @import 'variables';
 
-$sidebar-sm-width: 3rem;
-$sidebar-md-width: 6.5rem;
-$sidebar-xl-width: 12.5rem;
+$sidenav-sm-width: 3rem;
+$sidenav-md-width: 6.5rem;
+$sidenav-xl-width: 12.5rem;
 
 .chi {
-  .m-sidebar {
-    width: $sidebar-sm-width;
+  .m-sidenav {
+    width: $sidenav-sm-width;
     position: relative;
 
     &__content {
@@ -22,7 +22,7 @@ $sidebar-xl-width: 12.5rem;
       }
     }
 
-    &__link-list, &__drawer-link-list {
+    &__list, &__drawer-list {
       list-style: none;
       padding-left: 0;
       margin-top: 0;
@@ -33,14 +33,14 @@ $sidebar-xl-width: 12.5rem;
         padding-left: 0;
         border-bottom: 0.0625rem solid map-get(map-get($colorscheme, grey), 20);
 
-        >a {
+        > a {
           @include remove-anchor-style;
         }
       }
     }
 
-    &__link-list >li{
-      >a{
+    &__list > li {
+      > a {
         align-items: center;
         justify-content: center;
         display: flex;
@@ -49,60 +49,79 @@ $sidebar-xl-width: 12.5rem;
         font-weight: 600;
         min-height: 3rem;
 
-        >*:not(.a-icon) {
+        > *:not(.a-icon) {
           display:none;
         }
       }
 
-      &.-active{
-        >a {
+      &.-active {
+        > a {
           box-shadow: inset .125rem 0 0 $primary-color;
           color: $primary-color
         }
       }
 
-      &>a:hover{
+      & > a:hover {
         color: $primary-color
       }
 
-      &.-active > a{ // List item -active. The one that has the left 3px navy border.
+      &.-active > a { // List item -active. The one that has the left 3px navy border.
         background-color: set-color(grey, 20);
       }
 
-      & > a.-active{ // Drawer shown, will sets active the trigger (this anchor element)
+      & > a.-active { // Drawer shown, will sets active the trigger (this anchor element)
         background-color: set-color(grey, 20);
       }
 
-      &:not(.-active) > a:not(.-active):hover{
+      &:not(.-active) > a:not(.-active):hover {
         background-color: set-color(grey, 10);
       }
     }
 
-    &.-sliding .m-sidebar__link-list>li.-active>a{
+    &.-sliding .m-sidenav__list > li.-active > a {
       box-shadow: none;
     }
 
-    &__drawer-link-list {
+    &__drawer-list {
       border-top: 0.0625rem solid map-get(map-get($colorscheme, grey), 20);
 
-      &>li {
-        & > a{
+      & > li {
+        & > a {
           display: block;
           padding: 1rem;
+
+          & > *:first-child {
+            margin-top: 0;
+          }
+
+          & > *:last-child {
+            margin-bottom: 0;
+          }
         }
 
-        &.-active > a{
+        &.-active > a {
           background-color: set-color(grey, 20);
         }
 
-        &:not(.-active) > a:hover{
+        &:not(.-active) > a:hover {
           background-color: set-color(grey, 10);
         }
       }
     }
 
+    &__title {
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    &__description {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      margin: 0;
+    }
+
     .m-drawer {
-      box-shadow: 0.5rem 0 0.5rem -0.5rem rgba(set-color(black),.1);
+      box-shadow: 0.5rem 0 0.5rem -0.5rem rgba(set-color(black),.2);
       position: absolute;
       z-index: $zindex-fixed;
 
@@ -111,11 +130,11 @@ $sidebar-xl-width: 12.5rem;
       }
 
       &.-left {
-        left: $sidebar-sm-width;
+        left: $sidenav-sm-width;
       }
 
       &.-left.-animated:not(.-active) {
-        left: -$drawer-width + $sidebar-sm-width;
+        left: -$drawer-width + $sidenav-sm-width;
       }
 
     }
@@ -136,16 +155,16 @@ $sidebar-xl-width: 12.5rem;
     }
 
     @include respond-to(md) {
-      width: $sidebar-md-width;
+      width: $sidenav-md-width;
       .m-drawer.-left {
-        left: $sidebar-md-width;
+        left: $sidenav-md-width;
 
         &.-animated:not(.-active) {
-          left: -$drawer-width + $sidebar-md-width;
+          left: -$drawer-width + $sidenav-md-width;
         }
       }
 
-      &__link-list >li {
+      &__list > li {
         > a {
           min-height: 4rem;
           > *:not(.a-icon) {
@@ -156,23 +175,23 @@ $sidebar-xl-width: 12.5rem;
     }
 
     @include respond-to(lg) {
-      width: $sidebar-xl-width;
+      width: $sidenav-xl-width;
       .m-drawer.-left {
-        left: $sidebar-xl-width;
+        left: $sidenav-xl-width;
 
         &.-animated:not(.-active) {
-          left: -$drawer-width + $sidebar-xl-width;
+          left: -$drawer-width + $sidenav-xl-width;
         }
       }
 
-      &__link-list >li {
+      &__list > li {
         > a {
           flex-direction: row;
           justify-content: flex-start;
           padding-left: 1.5rem;
           min-height: 3rem;
 
-          >.a-icon {
+          > .a-icon {
             margin-right: 1rem;
           }
         }

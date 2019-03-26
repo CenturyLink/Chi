@@ -5,26 +5,26 @@ import {Drawer, EVENTS as DRAWER_EVENTS} from "./drawer";
 
 const CLASS_ACTIVE = "-active";
 const CLASS_ANIMATED = "-animated";
-const COMPONENT_SELECTOR = '.m-sidebar';
-const COMPONENT_TYPE = "sidebar";
+const COMPONENT_SELECTOR = '.m-sidenav';
+const COMPONENT_TYPE = "sidenav";
 const DRAWER_CLASS = "m-drawer";
-const LINKLIST_CLASS = 'm-sidebar__link-list';
-const SIDEBAR_CONTENT_CLASS = 'm-sidebar__content';
-const SIDEBAR_DRAWERS_CLASS = 'm-sidebar__drawers';
-const DRAWER_LINKLIST_CLASS = "m-sidebar__drawer-link-list";
+const LINKLIST_CLASS = 'm-sidenav__list';
+const SIDENAV_CONTENT_CLASS = 'm-sidenav__content';
+const SIDENAV_DRAWERS_CLASS = 'm-sidenav__drawers';
+const DRAWER_LINKLIST_CLASS = "m-sidenav__drawer-list";
 
 const DEFAULT_CONFIG = {
   animated: true,
   autoClose: false
 };
 
-class Sidebar extends Component {
+class Sidenav extends Component {
 
   constructor (elem, config) {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     let self = this;
     this._slidingBorder = null;
-    this._drawersContainer = this._elem.querySelector('.' + SIDEBAR_DRAWERS_CLASS);
+    this._drawersContainer = this._elem.querySelector('.' + SIDENAV_DRAWERS_CLASS);
     this._drawers = [];
     this._clickOnComponent = false;
     this._autocloseTimeoutId = null;
@@ -309,5 +309,5 @@ class Sidebar extends Component {
   }
 }
 
-const factory = Component.factory.bind(Sidebar);
-export {Sidebar, factory, COMPONENT_TYPE};
+const factory = Component.factory.bind(Sidenav);
+export {Sidenav, factory, COMPONENT_TYPE};
