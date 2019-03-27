@@ -1,12 +1,9 @@
 import {Component} from "../core/component";
 import {Util} from "../core/util.js";
+import {chi} from "../core/chi";
 
 const ANIMATION_DURATION = 500;
-const CLASS_ACTIVE = "-active";
-const CLASS_ANIMATED = "-animated";
-const CLASS_BACKDROP_CLOSED = "-closed";
 const CLASS_DRAWER = 'm-drawer';
-const CLASS_TRANSITIONING = "-transitioning";
 const CLOSE_TRIGGER_SELECTOR = `.${CLASS_DRAWER} > .-close, .${CLASS_DRAWER} > .m-drawer__header > .-close`;
 const COMPONENT_SELECTOR = '.m-drawer__trigger';
 const COMPONENT_TYPE = "drawer";
@@ -24,7 +21,7 @@ class Drawer extends Component {
   constructor (elem, config) {
 
     super(elem, Util.extend(DEFAULT_CONFIG, config));
-    this._shown = Util.hasClass(elem, CLASS_ACTIVE);
+    this._shown = Util.hasClass(elem, chi.classes.ACTIVE);
     this._transitioning = false;
     if (this._config.target) {
       if (this._config.target instanceof Element) {
@@ -41,9 +38,9 @@ class Drawer extends Component {
     let self = this;
 
     if (this._config.animated){
-      Util.addClass(this._drawerElem, CLASS_ANIMATED);
+      Util.addClass(this._drawerElem, chi.classes.ANIMATED);
       if (this._backdrop) {
-        Util.addClass(this._backdrop, CLASS_ANIMATED);
+        Util.addClass(this._backdrop, chi.classes.ANIMATED);
       }
     }
 
@@ -94,15 +91,16 @@ class Drawer extends Component {
       if (this._config.animated){
         this._currentThreeStepsAnimation = Util.threeStepsAnimation(
           function () {
-            Util.addClass(self._drawerElem, CLASS_TRANSITIONING);
+            Util.addClass(self._drawerElem, chi.classes.TRANSITIONING);
             if (self._backdrop) {
-              Util.addClass(self._backdrop, CLASS_TRANSITIONING);
+              Util.addClass(self._backdrop, chi.classes.TRANSITIONING);
             }
           },
           function(){
-            Util.addClass(self._drawerElem, CLASS_ACTIVE);
+            Util.addClass(self._drawerElem, chi.classes.ACTIVE);
+            Util.addClass(self._elem, chi.classes.ACTIVE);
             if (self._backdrop) {
-              Util.removeClass(self._backdrop, CLASS_BACKDROP_CLOSED);
+              Util.removeClass(self._backdrop, chi.classes.CLOSED);
             }
             self._shown = true;
             self._drawerElem.dispatchEvent(
@@ -110,19 +108,18 @@ class Drawer extends Component {
             );
           },
           function() {
-            Util.addClass(self._elem, CLASS_ACTIVE);
-            Util.removeClass(self._drawerElem, CLASS_TRANSITIONING);
+            Util.removeClass(self._drawerElem, chi.classes.TRANSITIONING);
             if (self._backdrop) {
-              Util.removeClass(self._backdrop, CLASS_TRANSITIONING);
+              Util.removeClass(self._backdrop, chi.classes.TRANSITIONING);
             }
             self._transitioning = false;
           },
           ANIMATION_DURATION
         );
       } else {
-        Util.addClass(self._drawerElem, CLASS_ACTIVE);
-        Util.addClass(self._elem, CLASS_ACTIVE);
-        if (self._backdrop) { Util.removeClass(self._backdrop, CLASS_BACKDROP_CLOSED); }
+        Util.addClass(self._drawerElem, chi.classes.ACTIVE);
+        Util.addClass(self._elem, chi.classes.ACTIVE);
+        if (self._backdrop) { Util.removeClass(self._backdrop, chi.classes.CLOSED); }
         self._transitioning = false;
         self._shown = true;
         self._drawerElem.dispatchEvent(
@@ -142,15 +139,16 @@ class Drawer extends Component {
       if (this._config.animated){
         this._currentThreeStepsAnimation = Util.threeStepsAnimation(
           function() {
-            Util.addClass(self._drawerElem, CLASS_TRANSITIONING);
+            Util.addClass(self._drawerElem, chi.classes.TRANSITIONING);
             if (self._backdrop) {
-              Util.addClass(self._backdrop, CLASS_TRANSITIONING);
+              Util.addClass(self._backdrop, chi.classes.TRANSITIONING);
             }
           },
           function(){
-            Util.removeClass(self._drawerElem, CLASS_ACTIVE);
+            Util.removeClass(self._drawerElem, chi.classes.ACTIVE);
+            Util.removeClass(self._elem, chi.classes.ACTIVE);
             if (self._backdrop) {
-              Util.addClass(self._backdrop, CLASS_BACKDROP_CLOSED);
+              Util.addClass(self._backdrop, chi.classes.CLOSED);
             }
             self._shown = false;
             self._drawerElem.dispatchEvent(
@@ -158,19 +156,18 @@ class Drawer extends Component {
             );
           },
           function() {
-            Util.removeClass(self._drawerElem, CLASS_TRANSITIONING);
-            Util.removeClass(self._elem, CLASS_ACTIVE);
+            Util.removeClass(self._drawerElem, chi.classes.TRANSITIONING);
             if (self._backdrop) {
-              Util.removeClass(self._backdrop, CLASS_TRANSITIONING);
+              Util.removeClass(self._backdrop, chi.classes.TRANSITIONING);
             }
             self._transitioning = false;
           },
           ANIMATION_DURATION
         );
       } else {
-        Util.removeClass(self._drawerElem, CLASS_ACTIVE);
-        Util.removeClass(self._elem, CLASS_ACTIVE);
-        if (self._backdrop) { Util.addClass(self._backdrop, CLASS_BACKDROP_CLOSED); }
+        Util.removeClass(self._drawerElem, chi.classes.ACTIVE);
+        Util.removeClass(self._elem, chi.classes.ACTIVE);
+        if (self._backdrop) { Util.addClass(self._backdrop, chi.classes.CLOSED); }
         self._transitioning = false;
         self._shown = false;
         self._drawerElem.dispatchEvent(
@@ -211,4 +208,4 @@ class Drawer extends Component {
 }
 
 const factory = Component.factory.bind(Drawer);
-export {Drawer, factory, CLASS_ACTIVE, EVENTS};
+export {Drawer, factory, EVENTS};

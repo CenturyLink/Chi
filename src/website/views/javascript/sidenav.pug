@@ -1,5 +1,5 @@
 ---
-title: Sidebar
+title: Sidenav
 ---
 - var example=0;
 - var menuItems=[1, 2, 3, 4];
@@ -11,19 +11,19 @@ title: Sidebar
   };
 
 p.-text
-  | Use the sidebar to add a navigation menu with a drawer for deeper navigation. This JavaScript module depends on
+  | Use the sidenav to add a navigation menu with a drawer for deeper navigation. This JavaScript module depends on
   | the <a href="../drawer/">drawer component</a> for the second level of the menu. You can initiate this component by
-  | calling <code>chi.sidebar(document.querySelector('.m-sidebar'));</code>
+  | calling <code>chi.sidenav(document.querySelector('.m-sidenav'));</code>
 
 h3 Examples
 
 h4(id=`example-${example}`) Base
 .example.-mb--3
   .-d--flex(style='overflow: hidden;')
-    aside.m-sidebar.-flex--shrink0(id=`sidebar-${example}`)
-      .m-sidebar__content
+    aside.m-sidenav.-flex--shrink0(id=`sidenav-${example}`)
+      .m-sidenav__content
         nav
-          ul.m-sidebar__link-list
+          ul.m-sidenav__list
             each val in menuItems
               li(class=`${val===active.menuItem ? '-active':''}`)
                 a(href=`#drawer-${example}-${val}`)
@@ -31,7 +31,7 @@ h4(id=`example-${example}`) Base
                     svg
                       use(xlink:href='#icon-atom')
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .m-sidebar__drawers
+      .m-sidenav__drawers
         each val1 in menuItems
           .m-drawer.-animated.-left(id=`drawer-${example}-${val1}`)
             .m-drawer__header
@@ -39,12 +39,15 @@ h4(id=`example-${example}`) Base
                 .a-btn__content
                   i.a-icon.icon-x
             .m-drawer__content
-              ul.m-sidebar__drawer-link-list
-                each val2 in drawerMenuItems
+              ul.m-sidenav__drawer-list
+                each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
                     a(href=`#example-${example}`)
-                      h5=`Title ${String.fromCharCode(val2.charCodeAt(0)+(drawerMenuItems.length*(val1-1)))}`
-                      p.-text Description for title a in a drawer inside a menu.
+                      if index % 4 < 2
+                        h5.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        p.m-sidenav__description Description for title a in a drawer inside a menu.
+                      else
+                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -55,10 +58,10 @@ h4(id=`example-${example}`) Base
       a(href='#a-tabs-e0-js') JS
   #a-tabs-e0-html.a-tabs-panel.-active
     :code(lang="html")
-      <aside id="sidebar-0" class="m-sidebar">
-        <div class="m-sidebar__content">
+      <aside id="sidenav-0" class="m-sidenav">
+        <div class="m-sidenav__content">
           <nav>
-            <ul class="m-sidebar__link-list">
+            <ul class="m-sidenav__list">
               <li class="-active">
                 <a href="#drawer-0-1">
                   <div class="a-icon">
@@ -94,7 +97,7 @@ h4(id=`example-${example}`) Base
             </ul>
           </nav>
         </div>
-        <div class="m-sidebar__drawers">
+        <div class="m-sidenav__drawers">
           <div class="m-drawer -left" id="drawer-0-1">
             <div class="m-drawer__header">
               <button class="a-btn -icon -close">
@@ -102,29 +105,27 @@ h4(id=`example-${example}`) Base
               </button>
             </div>
             <div class="m-drawer__content">
-              <ul class="m-sidebar__drawer-link-list">
+              <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5>Title A</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title A</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li class="-active">
                   <a href="#">
-                    <h5>Title B</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title B</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title C</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title C</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title D</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title D</span>
                   </a>
                 </li>
               </ul>
@@ -137,29 +138,27 @@ h4(id=`example-${example}`) Base
               </button>
             </div>
             <div class="m-drawer__content">
-              <ul class="m-sidebar__drawer-link-list">
+              <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5>Title E</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title E</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title F</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title F</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title G</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title G</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title H</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title H</span>
                   </a>
                 </li>
               </ul>
@@ -172,29 +171,27 @@ h4(id=`example-${example}`) Base
               </button>
             </div>
             <div class="m-drawer__content">
-              <ul class="m-sidebar__drawer-link-list">
+              <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5>Title I</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title I</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title J</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title J</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title K</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title K</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title L</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title L</span>
                   </a>
                 </li>
               </ul>
@@ -207,29 +204,27 @@ h4(id=`example-${example}`) Base
               </button>
             </div>
             <div class="m-drawer__content">
-              <ul class="m-sidebar__drawer-link-list">
+              <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5>Title M</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title M</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title N</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title N</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title O</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title O</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title P</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title P</span>
                   </a>
                 </li>
               </ul>
@@ -239,7 +234,7 @@ h4(id=`example-${example}`) Base
       </aside>
   #a-tabs-e0-js.a-tabs-panel
     :code(lang="html")
-      <script>chi.sidebar(document.getElementById('sidebar-0'));</script>
+      <script>chi.sidenav(document.getElementById('sidenav-0'));</script>
 
 h3 Options
 p.-text This component accepts options to configure its behavior.
@@ -282,10 +277,10 @@ section.a-table.a-table__options.-bordered.-my--3
 h4(id=`example-${example}`) Autoclose
 .example.-mb--3
   .-d--flex(style='overflow: hidden;')
-    aside.m-sidebar.-flex--shrink0(id=`sidebar-${example}`)
-      .m-sidebar__content
+    aside.m-sidenav.-flex--shrink0(id=`sidenav-${example}`)
+      .m-sidenav__content
         nav
-          ul.m-sidebar__link-list
+          ul.m-sidenav__list
             each val in menuItems
               li(class=`${val===active.menuItem ? '-active':''}`)
                 a(href=`#drawer-${example}-${val}`)
@@ -293,7 +288,7 @@ h4(id=`example-${example}`) Autoclose
                     svg
                       use(xlink:href='#icon-atom')
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .m-sidebar__drawers
+      .m-sidenav__drawers
         each val1 in menuItems
           .m-drawer.-animated.-left(id=`drawer-${example}-${val1}`)
             .m-drawer__header
@@ -301,12 +296,15 @@ h4(id=`example-${example}`) Autoclose
                 .a-btn__content
                   i.a-icon.icon-x
             .m-drawer__content
-              ul.m-sidebar__drawer-link-list
-                each val2 in drawerMenuItems
+              ul.m-sidenav__drawer-list
+                each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
                     a(href=`#example-${example}`)
-                      h5=`Title ${String.fromCharCode(val2.charCodeAt(0)+(drawerMenuItems.length*(val1-1)))}`
-                      p.-text Description for title a in a drawer inside a menu.
+                      if index % 4 < 2
+                        h5.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        p.m-sidenav__description Description for title a in a drawer inside a menu.
+                      else
+                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -317,10 +315,10 @@ h4(id=`example-${example}`) Autoclose
       a(href='#a-tabs-e1-js') JS
   #a-tabs-e1-html.a-tabs-panel.-active
     :code(lang="html")
-      <aside id="sidebar-1" class="m-sidebar">
-        <div class="m-sidebar__content">
+      <aside id="sidenav-1" class="m-sidenav">
+        <div class="m-sidenav__content">
           <nav>
-            <ul class="m-sidebar__link-list">
+            <ul class="m-sidenav__list">
               <li class="-active">
                 <a href="#drawer-1-1">
                   <div class="a-icon">
@@ -356,7 +354,7 @@ h4(id=`example-${example}`) Autoclose
             </ul>
           </nav>
         </div>
-        <div class="m-sidebar__drawers">
+        <div class="m-sidenav__drawers">
           <div class="m-drawer -left" id="drawer-1-1">
             <div class="m-drawer__header">
               <button class="a-btn -icon -close">
@@ -364,29 +362,27 @@ h4(id=`example-${example}`) Autoclose
               </button>
             </div>
             <div class="m-drawer__content">
-              <ul class="m-sidebar__drawer-link-list">
+              <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5>Title A</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title A</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li class="-active">
                   <a href="#">
-                    <h5>Title B</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title B</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title C</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title C</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title D</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title D</span>
                   </a>
                 </li>
               </ul>
@@ -399,29 +395,27 @@ h4(id=`example-${example}`) Autoclose
               </button>
             </div>
             <div class="m-drawer__content">
-              <ul class="m-sidebar__drawer-link-list">
+              <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5>Title E</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title E</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title F</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title F</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title G</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title G</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title H</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title H</span>
                   </a>
                 </li>
               </ul>
@@ -434,29 +428,27 @@ h4(id=`example-${example}`) Autoclose
               </button>
             </div>
             <div class="m-drawer__content">
-              <ul class="m-sidebar__drawer-link-list">
+              <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5>Title I</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title I</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title J</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title J</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title K</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title K</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title L</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title L</span>
                   </a>
                 </li>
               </ul>
@@ -469,29 +461,27 @@ h4(id=`example-${example}`) Autoclose
               </button>
             </div>
             <div class="m-drawer__content">
-              <ul class="m-sidebar__drawer-link-list">
+              <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5>Title M</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title M</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title N</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <h5 class="m-sidenav__title">Title N</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title O</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title O</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5>Title P</h5>
-                    <p class="-text">Description for title a in a drawer inside a menu.</p>
+                    <span class="m-sidenav__title">Title P</span>
                   </a>
                 </li>
               </ul>
@@ -502,8 +492,8 @@ h4(id=`example-${example}`) Autoclose
   #a-tabs-e1-js.a-tabs-panel
     :code(lang="html")
       <script>
-        chi.sidebar(
-          document.getElementById('sidebar-1'),
+        chi.sidenav(
+          document.getElementById('sidenav-1'),
           {
             autoClose: 2000
           }
@@ -539,9 +529,9 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.sidebar(document.querySelectorAll('#sidebar-0'));
-      chi.sidebar(
-        document.querySelectorAll('#sidebar-1'),
+      chi.sidenav(document.querySelectorAll('#sidenav-0'));
+      chi.sidenav(
+        document.querySelectorAll('#sidenav-1'),
         {
           autoClose: 2000
         }

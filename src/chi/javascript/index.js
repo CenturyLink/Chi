@@ -10,7 +10,7 @@ import {Navigation, factory as navigation} from "./components/navigation";
 import {NumberInput, factory as numberInput} from './components/number-input';
 import {Popover, factory as popover} from "./components/popover";
 import {RangeSlider, factory as rangeSlider} from "./components/range-slider";
-import {Sidebar, factory as sidebar} from "./components/sidebar";
+import {Sidenav, factory as sidenav} from "./components/sidenav";
 import {Tab, factory as tab} from './components/tab';
 import {Tooltip, factory as tooltip} from "./components/tooltip";
 
@@ -27,7 +27,7 @@ export {
   numberInput,
   popover,
   rangeSlider,
-  sidebar,
+  sidenav,
   tab,
   tooltip,
 
@@ -40,7 +40,7 @@ export {
   NumberInput,
   Popover,
   RangeSlider,
-  Sidebar,
+  Sidenav,
   Tab,
   Tooltip,
 
