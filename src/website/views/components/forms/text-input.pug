@@ -25,6 +25,18 @@ h4 Disabled
   :code(lang="html")
     <input type="text" class="a-input" value="Sample Text" disabled>
 
+h4 With Label
+.example.-mb--3
+  .-p--3
+    .m-formGroup.-labeled(style="max-width:20rem")
+      label.a-label(for='example') Label
+      input(type="text", class="a-input", id='example', placeholder="Placeholder")
+  :code(lang="html")
+    <div class="m-formGroup -labeled">
+      <label class="a-label" for="example">Label</label>
+      <input type="text" class="a-input" id="example" placeholder="Placeholder">
+    </div>
+
 h3 Icons
 p.-text
   | To add icons to a text input, wrap the input in a <code>div</code> using the class
@@ -181,8 +193,8 @@ p.-text
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
-      div(class=`a-col -w--12 -p--2`)
-        .m-formGroup(style="max-width:20rem")
+      div(class=`-d--flex -flex--row -align-items--end -p--2`)
+        .m-formGroup(style="width:20rem")
           input(type="text", class=`a-input -${size} -mr--3`, placeholder="Sample Text")
   :code(lang='html')
     <input type="text" class="a-input -sm" placeholder="Sample Text">
@@ -237,5 +249,11 @@ ul#a-tabs.a-tabs
         <label class="-active" for="floating-label-xl">Placeholder text</label>
       </div>
 
-script(type="text/javascript", src=`../../../js/chi.js`)
-!= '<script>chi.tab(document.getElementById(\'a-tabs\'));</script>'
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('a-tabs'));
+    },
+    false
+  );

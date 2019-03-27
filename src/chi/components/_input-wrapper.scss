@@ -11,6 +11,16 @@ $border: 0.0625rem;
   display: flex;
   position: relative;
 
+  &.-labeled {
+    flex-direction: column;
+  }
+
+  &:not(.-labeled) {
+    & label {
+      margin-bottom: 0;
+    }
+  }
+
   &.-inline {
     align-items: center;
     display: inline-flex;

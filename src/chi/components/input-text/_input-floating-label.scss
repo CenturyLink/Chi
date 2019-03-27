@@ -52,8 +52,10 @@ $sizes: (
       & ~ label {
         color: set-color(grey, 50);
         font-size: $label-font-size-relaxed;
+        font-weight: normal;
         left: $label-left;
         line-height: 1.5rem;
+        margin-bottom: unset;
         position: absolute;
         transition: all 0.2s ease-in-out;
 

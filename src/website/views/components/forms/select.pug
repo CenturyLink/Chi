@@ -41,6 +41,21 @@ h4 Disabled
       <option>Disabled Select</option>
     </select>
 
+h4 With Label
+.example.-mb--3
+  .-p--3
+    .m-formGroup.-labeled(style="max-width:20rem")
+      label.a-label(for='example') Label
+      select(class='a-input', id='example')
+        option Base Select
+  :code(lang="html")
+    <div class="m-formGroup -labeled">
+      <label class="a-label" for="example">Label</label>
+      <select class="a-input" id="example">
+        <option>Base Select</option>
+      </select>
+    </div>
+
 h4 Danger
 p.-text
   | Selects support the validation class modifier <code>-danger</code> for indicating

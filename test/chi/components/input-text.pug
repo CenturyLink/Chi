@@ -14,6 +14,13 @@ mixin input(style, state, size, disabled)
     disabled=state=='disabled'?'disabled':false
   )
 
+mixin label(size)
+  label.a-label(
+  class={
+    [`-${size}`]:size != 'default'
+  }
+  ) Label
+
 mixin icon(name)
   .a-icon(class={
     [`-text${name}`]: ['success', 'warning', 'danger'].indexOf(name) != -1
@@ -43,6 +50,21 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
               .-m--1
                 +input(style, state, size, disabled)
 
+each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
+  div(class=`test-${size}`)
+    span.a-h2= `Text Input + Label / ${size}`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m--1
+                .m-formGroup.-labeled
+                  +label(size)
+                  +input(style, state, size, disabled, id='example')
+
   div(class=`test-${size}-icon-left`)
     span.a-h2= `Text Input / ${size} / icon left`
     table(cellpadding="0", cellspacing="0", width="1200px")
@@ -56,6 +78,22 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                 .a-inputWrapper.-icon--left
                   +input(style, state, size, disabled)
                   +icon('atom')
+
+  div(class=`test-${size}-icon-left`)
+    span.a-h2= `Text Input + Label / ${size} / icon left`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m--1
+                .m-formGroup.-labeled
+                  +label(size)
+                  .a-inputWrapper.-icon--left
+                    +input(style, state, size, disabled, id='example')
+                    +icon('atom')
 
   div(class=`test-${size}-icon-right`)
     span.a-h2= `Text Input / ${size} / icon right`
@@ -86,6 +124,37 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                       svg
                         use(xlink:href='#icon-circle-info-outline')
 
+  div(class=`test-${size}-icon-right`)
+    span.a-h2= `Text Input + Label / ${size} / icon right`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m--1
+                .m-formGroup.-labeled
+                  +label(size)
+                  .a-inputWrapper.-icon--right
+                    +input(style, state, size, disabled, id='example')
+                    if style == 'success'
+                      .a-icon.-text--success
+                        svg
+                          use(xlink:href='#icon-check')
+                    else if style == 'warning'
+                      .a-icon.-text--warning
+                        svg
+                          use(xlink:href='#icon-warning')
+                    else if style == 'danger'
+                      .a-icon.-text--danger
+                        svg
+                          use(xlink:href='#icon-circle-warning')
+                    else
+                      .a-icon
+                        svg
+                          use(xlink:href='#icon-circle-info-outline')
+
   div(class=`test-${size}-icon-left-right`)
     span.a-h2= `Text Input / ${size} / icon left / icon right`
     table(cellpadding="0", cellspacing="0", width="1200px")
@@ -115,3 +184,35 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     .a-icon
                       svg
                         use(xlink:href='#icon-circle-info-outline')
+
+  div(class=`test-${size}-icon-left-right`)
+    span.a-h2= `Text Input + label / ${size} / icon left / icon right`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m--1
+                .m-formGroup.-labeled
+                  +label(size)
+                  .a-inputWrapper.-icon--left.-icon--right
+                    +input(style, state, size, disabled, id='example')
+                    +icon('atom')
+                    if style == 'success'
+                      .a-icon.-text--success
+                        svg
+                          use(xlink:href='#icon-check')
+                    else if style == 'warning'
+                      .a-icon.-text--warning
+                        svg
+                          use(xlink:href='#icon-warning')
+                    else if style == 'danger'
+                      .a-icon.-text--danger
+                        svg
+                          use(xlink:href='#icon-circle-warning')
+                    else
+                      .a-icon
+                        svg
+                          use(xlink:href='#icon-circle-info-outline')

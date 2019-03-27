@@ -11,12 +11,22 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           td
             small= `${state}`
           each style in ['default', 'success', 'warning', 'danger']
-            td
+            td(style='vertical-align: bottom')
               .-m--1
                 if state == 'disabled'
                   textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
                 else
                   textarea(class=`a-input -${style} -${state} -${size}`) Value
+            td(style='vertical-align: bottom')
+              .-m--1
+                if state == 'disabled'
+                  .m-formGroup.-labeled
+                    label.a-label(class=`-${size}` for='example') Label
+                    textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                else
+                  .m-formGroup.-labeled
+                    label.a-label(class=`-${size}` for='example') Label
+                    textarea(class=`a-input -${style} -${state} -${size}`) Value
 
   div(class=`test-${size}-icon-left`)
     span.a-h2= `Textarea / ${size} / icon left`
@@ -26,7 +36,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           td
             small= `${state}`
           each style in ['default', 'success', 'warning', 'danger']
-            td
+            td(style='vertical-align: bottom')
               .-m--1
                 .a-inputWrapper.-icon--left
                   if state == 'disabled'
@@ -36,6 +46,18 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                   .a-icon
                     svg
                       use(xlink:href='#icon-atom')
+            td(style='vertical-align: bottom')
+              .-m--1
+                .m-formGroup.-labeled
+                  label.a-label(class=`-${size}` for='example') Label
+                  .a-inputWrapper.-icon--left
+                    if state == 'disabled'
+                      textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                    else
+                      textarea(class=`a-input -${style} -${state} -${size}`) Value
+                    .a-icon
+                      svg
+                        use(xlink:href='#icon-atom')
 
   div(class=`test-${size}-icon-right`)
     span.a-h2= `Textarea / ${size} / icon right`
@@ -45,7 +67,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           td
             small= `${state}`
           each style in ['default', 'success', 'warning', 'danger']
-            td
+            td(style='vertical-align: bottom')
               .-m--1
                 .a-inputWrapper.-icon--right
                   if state == 'disabled'
@@ -68,6 +90,31 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     .a-icon
                       svg
                         use(xlink:href='#icon-circle-info-outline')
+            td(style='vertical-align: bottom')
+              .-m--1
+                .m-formGroup.-labeled
+                  label.a-label(class=`-${size}` for='example') Label
+                  .a-inputWrapper.-icon--right
+                    if state == 'disabled'
+                      textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                    else
+                      textarea(class=`a-input -${style} -${state} -${size}`) Value
+                    if style == 'success'
+                      .a-icon.-text--success
+                        svg
+                          use(xlink:href='#icon-check')
+                    else if style == 'warning'
+                      .a-icon.-text--warning
+                        svg
+                          use(xlink:href='#icon-warning')
+                    else if style == 'danger'
+                      .a-icon.-text--danger
+                        svg
+                          use(xlink:href='#icon-circle-warning')
+                    else
+                      .a-icon
+                        svg
+                          use(xlink:href='#icon-circle-info-outline')
 
   div(class=`test-${size}-icon-left-right`)
     span.a-h2= `Textarea / ${size} / icon left / icon right`
@@ -77,7 +124,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           td
             small= `${state}`
           each style in ['default', 'success', 'warning', 'danger']
-            td
+            td(style='vertical-align: bottom')
               .-m--1
                 .a-inputWrapper.-icon--left.-icon--right
                   if state == 'disabled'
@@ -103,3 +150,31 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     .a-icon
                       svg
                         use(xlink:href='#icon-circle-info-outline')
+            td(style='vertical-align: bottom')
+              .-m--1
+                .m-formGroup.-labeled
+                  label.a-label(class=`-${size}` for='example') Label
+                  .a-inputWrapper.-icon--left.-icon--right
+                    if state == 'disabled'
+                      textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                    else
+                      textarea(class=`a-input -${style} -${state} -${size}`) Value
+                    .a-icon
+                      svg
+                        use(xlink:href='#icon-atom')
+                    if style == 'success'
+                      .a-icon.-text--success
+                        svg
+                          use(xlink:href='#icon-check')
+                    else if style == 'warning'
+                      .a-icon.-text--warning
+                        svg
+                          use(xlink:href='#icon-warning')
+                    else if style == 'danger'
+                      .a-icon.-text--danger
+                        svg
+                          use(xlink:href='#icon-circle-warning')
+                    else
+                      .a-icon
+                        svg
+                          use(xlink:href='#icon-circle-info-outline')
