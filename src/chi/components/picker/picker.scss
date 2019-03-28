@@ -35,6 +35,7 @@ $sizes: (
             box-shadow: map-get($shadow, 1);
             display: flex;
             font-size: $text;
+            font-weight: normal;
             justify-content: space-between;
             padding: 1rem - $border;
             margin-bottom: 0.5rem;
