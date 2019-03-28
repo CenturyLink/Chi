@@ -17,6 +17,7 @@ $border: 0.0625rem;
 
   &:not(.-labeled) {
     & label {
+      font-weight: normal;
       margin-bottom: 0;
     }
   }
