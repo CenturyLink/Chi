@@ -1,5 +1,26 @@
 # CHANGELOG
 
+### 1.0.1 (March 28, 2019)
+
+* Added support for solid white and solid black logos to brand component.
+* Added label examples to text input and textarea documentation.
+* Added Fieldset template.
+* Added sidenav component which emulates Cyclops's Main Nav component.
+* Added date picker component.
+* Improved truncating logic in Tooltip component to support more characters.
+* Added popover component.
+* Added pagination component.
+* Added tooltip component.
+* Updated Tab component size classes from -large and -small to the more consistent, -lg and -sm.
+* Fixed browser sync issues in dev environment.
+* Added subtitle support to modal component.
+* Fixed line-height bug in Floating Label component.
+* Fixed toggle switches from incorrectly wrapping within Card components.
+* Added fluid support to Button component.
+* Removed white background from outline button hover states.
+* Fixed text input and select input padding inconsistency.
+* Added floating label support to Select component.
+
 ### 1.0.0 (February 22, 2019)
 
 * Updated colors to comply with new guidelines from brand team.
