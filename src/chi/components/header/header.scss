@@ -30,7 +30,6 @@
         padding: 0 1.5rem;
       }
 
-
       .a-brand {
         display: inline-flex;
         width: 7.5rem;
@@ -141,7 +140,14 @@
         }
       }
 
-      & .o-header__end {
+      .o-header__end {
+        margin-left: 1rem;
+        padding-top: 0;
+
+        @include respond-to(sm) {
+          margin-left: 0rem;
+        }
+
         & a {
           color: set-color(grey, 90);
           font-size: $text-smaller;
