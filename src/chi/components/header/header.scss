@@ -7,31 +7,27 @@
     background-color: set-color(white);
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.04), 0 2px 2px 0 rgba(0,0,0,.12);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-shrink: 0;
     justify-content: center;
-    height: auto;
-    min-height: 4rem;
-    padding: .75rem 1rem;
     width: 100%;
-    @include respond-to(sm) {
-      height: 4rem;
-      padding: 0 1rem;
-    }
-    @include respond-to(md) {
-      padding: 0 1.5rem;
-    }
 
     &__content {
       align-items: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      height: auto;
+      min-height: 4rem;
       position: relative;
       width: 100%;
       @include respond-to(sm) {
         flex-direction: row;
         justify-content: space-between;
+        padding: 0 1rem;
+      }
+      @include respond-to(md) {
+        padding: 0 1.5rem;
       }
 
       .a-brand {
@@ -92,11 +88,100 @@
       }
     }
 
+    &__toolbar {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      height: 2rem;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+      @include respond-to(sm) {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 1rem;
+      }
+      @include respond-to(md) {
+        padding: 0 1.5rem;
+      }
+
+      & .a-tabs:not(.-vertical):not(.-responsive) {
+        height: 2rem;
+
+        & > li {
+          & > a {
+            font-size: $text-smaller;
+            padding: 0.5rem 0;
+          }
+
+          &.m-dropdown {
+            &.-active > a {
+              border-bottom: 0.0625rem solid $brand-color;
+              padding-bottom: .4375rem;
+            }
+
+            .m-dropdown__trigger {
+              padding-right: 1rem;
+              &:after {
+                top: 0.5rem;
+              }
+            }
+          }
+
+          &.a-sliding-border {
+            height: 0.0625rem;
+          }
+        }
+
+        &:not(.-sliding) {
+          & > li.-active > a {
+            padding-bottom: .4375rem;
+          }
+        }
+      }
+
+      .o-header__end {
+        margin-left: 1rem;
+        padding-top: 0;
+
+        @include respond-to(sm) {
+          margin-left: 0rem;
+        }
+
+        & a {
+          color: set-color(grey, 90);
+          font-size: $text-smaller;
+          font-weight: 600;
+
+          &:hover {
+            color: $brand-color;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
     &.-inverse {
       background-color: set-color(black);
 
       .o-header__title {
         color: set-color(grey, 50);
+      }
+
+      .o-header__toolbar {
+        .o-header__end {
+          & > a {
+            color: set-color(white);
+
+            &:hover {
+              color: $secondary;
+            }
+          }
+
+          &.-active > a {
+            color: $secondary;
+          }
+        }
       }
 
       .a-tabs {
@@ -106,6 +191,19 @@
 
             &:hover {
               color: $secondary-color;
+            }
+          }
+        }
+
+        & li.-active {
+          & a {
+            border-bottom: 0.125rem solid $secondary;
+            color: $secondary;
+          }
+
+          & .m-dropdown__trigger {
+            &:after {
+              background-image: url(../html-select/icon-chevron-thin-down-active-inverse.svg);
             }
           }
         }
