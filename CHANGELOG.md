@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### 1.0.1 (March 28, 2019)
+### 1.1.0 (March 28, 2019)
 
 * Added support for solid white and solid black logos to brand component.
 * Added label examples to text input and textarea documentation.
