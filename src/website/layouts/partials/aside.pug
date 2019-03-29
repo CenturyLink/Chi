@@ -4,7 +4,7 @@ aside.docs-body__aside
       each collection, key in collections
         if utils.hasActiveSections(collection)
           if utils.isCurrentCollection(collection, path)
-            li.-active
+            li.-active.-hasActive
               a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
               if utils.hasSections(collection)
                 ul.a-tabs__subtabs
