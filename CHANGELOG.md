@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 1.1.1 (March 29, 2019)
+
+* Fixed vertical nav tab active state.
+* Fixed padding on header mobile.
+
 ### 1.1.0 (March 28, 2019)
 
 * Added support for solid white and solid black logos to brand component.
