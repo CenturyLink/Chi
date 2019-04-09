@@ -25,7 +25,6 @@
         line-height: $line-height-smaller;
         padding: 0.5rem 0 0.5rem 2.5rem;
         text-decoration: none;
-        text-transform: capitalize;
 
         &:hover {
           color: $brand-color;
@@ -300,7 +299,6 @@
         font-size: $text;
         font-weight: 600;
         text-decoration: none;
-        text-transform: capitalize;
 
         &:hover {
           color: $brand-color;
