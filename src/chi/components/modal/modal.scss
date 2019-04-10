@@ -95,6 +95,7 @@
     &__content {
       font-size: $text-small;
       line-height: $line-height-smaller;
+      overflow-y: auto;
       padding: 1.5rem;
     }
 
