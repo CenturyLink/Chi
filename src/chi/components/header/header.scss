@@ -224,3 +224,12 @@
     }
   }
 }
+
+/* IE11 CSS hack */
+@media all and (-ms-high-contrast:none) {
+  .chi {
+    .o-header {
+      height: 4rem;
+    }
+  }
+}
