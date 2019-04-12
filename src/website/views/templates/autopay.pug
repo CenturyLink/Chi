@@ -7,9 +7,273 @@ title: Autopay
 
 p.-text Basic Autopay page template. Indicates several ways to automate the way to pay.
 
+h4 Base
+.example.-mb--3.-bg--grey-10
+  .chi-app.-p3#autopayBase
+    .a-card.-p3
+      .a-grid.-noGutter
+        div
+          h5.-m--0.a-card__title Automatic Payments
+          p.-text.-mb--3 Each month, an automatic payment for the full amount of your bill will be paid to CenturyLink from the payment method of your choosing.
+        div.a-col.-w-md--4
+          .m-formGroup.-labeled.-mb--1
+            label.a-label(for='Base') Choose a payment method
+            .m-dropdown
+              button.a-btn.-xl.m-dropdown__trigger(id='Base', onclick='selectPayment(id)') Checking Account
+              .m-dropdown__menu
+                a.m-dropdown__menu-item(href='#checkingAccountBase', name='Checking') Checking account
+                a.m-dropdown__menu-item(href='#savingsAccountBase', name='Savings') Savings account
+                a.m-dropdown__menu-item(href='#creditDebitCardBase', name='Credit') Credit or debit card
+      .a-card#checkingAccountBase.-mt--1
+        .a-card__header.-py--0.-bg--grey-10
+          h6 Add a checking account
+        .a-card__content.-p--3
+          fieldset
+            .a-grid.-noGutter
+              div.a-col.-w--12.-w-md--6
+                .m-formGroup.-labeled.-mb--2.-mr-md--1
+                  label.a-label(for='checking-routing-number') Routing number
+                  input(type="text", class="a-input -xl", id='checking-routing-number', placeholder="")
+              div.a-col.-w--12.-w-md--6
+                .m-formGroup.-labeled.-mb--2
+                  label.a-label(for='checking-account-number') Account number
+                  input(type="text", class="a-input -xl", id='checking-account-number', placeholder="")
+              div.a-col.-w--12
+                .-d--flex.-justify-content--center.-mt--2
+                  img.-mw--100.-h--auto(src='../../assets/images/autopay-check-hint.png', alt="savings account")
+      .a-card#savingsAccountBase.-mt--1.-d--none
+        .a-card__header.-py--0.-bg--grey-10
+          h6 Add a savings account
+        .a-card__content.-p--3
+          fieldset
+            .a-grid.-noGutter
+              div.a-col.-w--12.-w-md--6
+                .m-formGroup.-labeled.-mb--2.-mr-md--1
+                  label.a-label(for='savings-routing-number') Routing number
+                  input(type="text", class="a-input -xl", id='savings-routing-number', placeholder="")
+              div.a-col.-w--12.-w-md--6
+                .m-formGroup.-labeled.-mb--2
+                  label.a-label(for='savings-account-number') Account number
+                  input(type="text", class="a-input -xl", id='savings-account-number', placeholder="")
+              div.a-col.-w--12
+                .-d--flex.-justify-content--center.-mt--2
+                  img.-mw--100.-h--auto(src='../../assets/images/autopay-check-hint.png', alt="savings account")
+      .a-card#creditDebitCardBase.-mt--1.-d--none
+        .a-card__header.-py--0.-bg--grey-10
+          h6 Add a credit or debit card
+        .a-card__content.-p--3
+          fieldset
+            .a-grid.-noGutter
+              div.a-col.-w--12
+                .m-formGroup.-labeled.-mb--2
+                  label.a-label(for='name') Name on card
+                  input(type="text", class="a-input -xl", id='name', placeholder="")
+              div.a-col.-w--12
+                .m-formGroup.-labeled.-mb--2
+                  div.-d--flex.-justify-content--between.-align-items--center
+                    label.a-label(for='number') Card number
+                    img(src='../../assets/images/autopay-credit-cards.jpg', alt="credit cards")
+                  input(type="text", class="a-input -xl", id='number', placeholder="")
+              div.a-col.-w-md--4.-w-sm--12
+                .m-formGroup.-labeled
+                  label.a-label(for='expiration') Expiration
+                  .-d--flex
+                    select(class="a-input -xl -mr--1", id='expiration')
+                      each day in days
+                        option= day
+                    select(class="a-input -xl -mr-md--1", id='expiration')
+                      each year in years
+                        option= year
+              div.a-col.-w-md--4.-w-sm--12
+                .m-formGroup.-labeled
+                  label.a-label(for='zip') Billing zip code
+                  input(type="text", class="a-input -xl", id='zip', placeholder="")
+  :code(lang="html")
+    <div class="chi-app -p3" id="autopayBase">
+      <div class="a-card -p3">
+        <div class="a-grid -noGutter">
+          <div><h5 class="-m--0 a-card__title">Automatic Payments</h5>
+            <p class="-text -mb--3">
+              Each month, an automatic payment for the full amount of your bill will be paid to
+              CenturyLink from the payment method of your choosing.
+            </p>
+          </div>
+          <div class="a-col -w-md--4">
+            <div class="m-formGroup -labeled -mb--1">
+              <label class="a-label" for="Base">Choose a payment method</label>
+              <div class="m-dropdown">
+                <button class="a-btn -xl m-dropdown__trigger" id="Base">Checking Account</button>
+                <div class="m-dropdown__menu">
+                  <a class="m-dropdown__menu-item" href="#checkingAccountBase" name="Checking">
+                    Checking account
+                  </a>
+                  <a class="m-dropdown__menu-item" href="#savingsAccountBase" name="Savings">
+                    Savings account
+                  </a>
+                  <a class="m-dropdown__menu-item" href="#creditDebitCardBase" name="Credit">
+                    Credit or debit card
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="a-card -mt--1" id="checkingAccountBase">
+          <div class="a-card__header -py--0 -bg--grey-10">
+            <h6>Add a checking account</h6>
+          </div>
+          <div class="a-card__content -p--3">
+            <fieldset>
+              <div class="a-grid -noGutter">
+                <div class="a-col -w--12 -w-md--6">
+                  <div class="m-formGroup -labeled -mb--2 -mr-md--1">
+                    <label class="a-label" for="checking-routing-number">
+                      Routing number
+                    </label>
+                    <input class="a-input -xl" type="text" id="checking-routing-number" placeholder="">
+                  </div>
+                </div>
+                <div class="a-col -w--12 -w-md--6">
+                  <div class="m-formGroup -labeled -mb--2">
+                    <label class="a-label" for="checking-account-number">
+                      Account number
+                    </label>
+                    <input class="a-input -xl" type="text" id="checking-account-number" placeholder="">
+                  </div>
+                </div>
+                <div class="a-col -w--12">
+                  <div class="-d--flex -justify-content--center -mt--2">
+                    <img class="-mw--100 -h--auto" src="../../assets/images/autopay-check-hint.png" alt="savings account">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="a-card -mt--1 -d--none" id="savingsAccountBase">
+          <div class="a-card__header -py--0 -bg--grey-10">
+            <h6>Add a savings account</h6>
+          </div>
+          <div class="a-card__content -p--3">
+            <fieldset>
+              <div class="a-grid -noGutter">
+                <div class="a-col -w--12 -w-md--6">
+                  <div class="m-formGroup -labeled -mb--2 -mr-md--1">
+                    <label class="a-label" for="savings-routing-number">
+                      Routing number
+                    </label>
+                    <input class="a-input -xl" type="text" id="savings-routing-number" placeholder="">
+                  </div>
+                </div>
+                <div class="a-col -w--12 -w-md--6">
+                  <div class="m-formGroup -labeled -mb--2">
+                    <label class="a-label" for="savings-account-number">
+                      Account number
+                    </label>
+                    <input class="a-input -xl" type="text" id="savings-account-number" placeholder="">
+                  </div>
+                </div>
+                <div class="a-col -w--12">
+                  <div class="-d--flex -justify-content--center -mt--2">
+                    <img class="-mw--100 -h--auto" src="../../assets/images/autopay-check-hint.png" alt="savings account">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="a-card -mt--1 -d--none" id="creditDebitCardBase">
+          <div class="a-card__header -py--0 -bg--grey-10">
+            <h6>Add a credit or debit card</h6>
+          </div>
+          <div class="a-card__content -p--3">
+            <fieldset>
+              <div class="a-grid -noGutter">
+                <div class="a-col -w--12">
+                  <div class="m-formGroup -labeled -mb--2">
+                    <label class="a-label" for="name">Name on card</label>
+                    <input class="a-input -xl" type="text" id="name" placeholder="">
+                  </div>
+                </div>
+                <div class="a-col -w--12">
+                  <div class="m-formGroup -labeled -mb--2">
+                    <div class="-d--flex -justify-content--between -align-items--center">
+                      <label class="a-label" for="number">
+                        Card number
+                      </label>
+                      <img src="../../assets/images/autopay-credit-cards.jpg" alt="credit cards">
+                    </div>
+                    <input class="a-input -xl" type="text" id="number" placeholder="">
+                  </div>
+                </div>
+                <div class="a-col -w-md--4 -w-sm--12">
+                  <div class="m-formGroup -labeled">
+                    <label class="a-label" for="expiration">Expiration</label>
+                    <div class="-d--flex"><select class="a-input -xl -mr--1" id="expiration">
+                      <option>01</option>
+                      <option>02</option>
+                      <option>03</option>
+                      <option>04</option>
+                      <option>05</option>
+                      <option>06</option>
+                      <option>07</option>
+                      <option>08</option>
+                      <option>09</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>13</option>
+                      <option>14</option>
+                      <option>15</option>
+                      <option>16</option>
+                      <option>17</option>
+                      <option>18</option>
+                      <option>19</option>
+                      <option>20</option>
+                      <option>21</option>
+                      <option>22</option>
+                      <option>23</option>
+                      <option>24</option>
+                      <option>25</option>
+                      <option>26</option>
+                      <option>27</option>
+                      <option>28</option>
+                      <option>29</option>
+                      <option>30</option>
+                      <option>31</option>
+                    </select><select class="a-input -xl -mr-md--1" id="expiration">
+                      <option>2019</option>
+                      <option>2020</option>
+                      <option>2021</option>
+                      <option>2022</option>
+                      <option>2023</option>
+                      <option>2024</option>
+                      <option>2025</option>
+                      <option>2026</option>
+                      <option>2027</option>
+                      <option>2028</option>
+                      <option>2029</option>
+                      <option>2030</option>
+                    </select></div>
+                  </div>
+                </div>
+                <div class="a-col -w-md--4 -w-sm--12">
+                  <div class="m-formGroup -labeled">
+                    <label class="a-label" for="zip">Billing zip code</label>
+                    <input class="a-input -xl" type="text" id="zip" placeholder="">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+
+h4 Optional
 .example.-mb--3.-bg--grey-10
   .chi-app.-p3
-    .m-epanel.-bordered.-p--1#autopay
+    .m-epanel.-bordered.-p--1#autopayOptional
       .m-epanel__header.-d--flex.-justify-content--between
         div
           h5.-m--0.a-card__title Automatic Payments
@@ -24,63 +288,18 @@ p.-text Basic Autopay page template. Indicates several ways to automate the way 
               .a-grid.-noGutter
                 div.a-col.-w-md--4
                   .m-formGroup.-labeled.-mb--1
-                    label.a-label(for='method') Choose a payment method
-                    select(class="a-input -xl", id='method', onchange='selectPay(value)')
-                      option(value='Credit') Credit or debit card
-                      option(value='Savings') Savings account
-                      option(value='Checking') Checking account
-              .a-card#creditDebitCard.-mt--2
-                .a-card__header.-py--0.-bg--grey-10
-                  h6 Add a credit or debit card
-                .a-card__content.-p--3
-                  fieldset.-b--0
-                    .a-grid.-noGutter
-                      div.a-col.-w--12
-                        .m-formGroup.-labeled.-mb--2
-                          label.a-label(for='name') Name on card
-                          input(type="text", class="a-input -xl", id='name', placeholder="")
-                      div.a-col.-w--12
-                        .m-formGroup.-labeled.-mb--2
-                          div.-d--flex.-justify-content--between.-align-items--center
-                            label.a-label(for='number') Card number
-                            img(src='../../assets/images/autopay-credit-cards.jpg', alt="credit cards")
-                          input(type="text", class="a-input -xl", id='number', placeholder="")
-                      div.a-col.-w-md--6.-w-sm--12
-                        .m-formGroup.-labeled.-mb--2
-                          label.a-label(for='expiration') Expiration
-                          .-d--flex
-                            select(class="a-input -xl -mr--1", id='expiration')
-                              each day in days
-                                option= day
-                            select(class="a-input -xl -mr-md--1", id='expiration')
-                              each year in years
-                                option= year
-                      div.a-col.-w-md--6.-w-sm--12
-                        .m-formGroup.-labeled.-mb--2
-                          label.a-label(for='zip') Billing zip code
-                          input(type="text", class="a-input -xl", id='zip', placeholder="")
-              .a-card#savingsAccount.-mt--2.-d--none
-                .a-card__header.-py--0.-bg--grey-10
-                  h6 Add a savings account
-                .a-card__content.-p--3
-                  fieldset.-b--0
-                    .a-grid.-noGutter
-                      div.a-col.-w--12.-w-md--6
-                        .m-formGroup.-labeled.-mb--2.-mr-md--1
-                          label.a-label(for='savings-routing-number') Routing number
-                          input(type="text", class="a-input -xl", id='savings-routing-number', placeholder="")
-                      div.a-col.-w--12.-w-md--6
-                        .m-formGroup.-labeled.-mb--2
-                          label.a-label(for='savings-account-number') Account number
-                          input(type="text", class="a-input -xl", id='savings-account-number', placeholder="")
-                      div.a-col.-w--12
-                        .-d--flex.-justify-content--center.-mt--2
-                          img.-mw--100.-h--auto(src='../../assets/images/autopay-check-hint.png', alt="savings account")
-              .a-card#checkingAccount.-mt--2.-d--none
+                    label.a-label(for='Optional') Choose a payment method
+                    .m-dropdown
+                      button.a-btn.-xl.m-dropdown__trigger(id='Optional', onclick='selectPayment(id)') Checking Account
+                      .m-dropdown__menu
+                        a.m-dropdown__menu-item(href='#checkingAccountOptional', name='Checking') Checking account
+                          a.m-dropdown__menu-item(href='#savingsAccountOptional', name='Savings') Savings account
+                          a.m-dropdown__menu-item(href='#creditDebitCardOptional', name='Credit') Credit or debit card
+              .a-card#checkingAccountOptional.-mt--1
                 .a-card__header.-py--0.-bg--grey-10
                   h6 Add a checking account
                 .a-card__content.-p--3
-                  fieldset.-b--0
+                  fieldset
                     .a-grid.-noGutter
                       div.a-col.-w--12.-w-md--6
                         .m-formGroup.-labeled.-mb--2.-mr-md--1
@@ -93,6 +312,53 @@ p.-text Basic Autopay page template. Indicates several ways to automate the way 
                       div.a-col.-w--12
                         .-d--flex.-justify-content--center.-mt--2
                           img.-mw--100.-h--auto(src='../../assets/images/autopay-check-hint.png', alt="savings account")
+              .a-card#savingsAccountOptional.-mt--1.-d--none
+                .a-card__header.-py--0.-bg--grey-10
+                  h6 Add a savings account
+                .a-card__content.-p--3
+                  fieldset
+                    .a-grid.-noGutter
+                      div.a-col.-w--12.-w-md--6
+                        .m-formGroup.-labeled.-mb--2.-mr-md--1
+                          label.a-label(for='savings-routing-number') Routing number
+                          input(type="text", class="a-input -xl", id='savings-routing-number', placeholder="")
+                      div.a-col.-w--12.-w-md--6
+                        .m-formGroup.-labeled.-mb--2
+                          label.a-label(for='savings-account-number') Account number
+                          input(type="text", class="a-input -xl", id='savings-account-number', placeholder="")
+                      div.a-col.-w--12
+                        .-d--flex.-justify-content--center.-mt--2
+                          img.-mw--100.-h--auto(src='../../assets/images/autopay-check-hint.png', alt="savings account")
+              .a-card#creditDebitCardOptional.-mt--1.-d--none
+                .a-card__header.-py--0.-bg--grey-10
+                  h6 Add a credit or debit card
+                .a-card__content.-p--3
+                  fieldset
+                    .a-grid.-noGutter
+                      div.a-col.-w--12
+                        .m-formGroup.-labeled.-mb--2
+                          label.a-label(for='name') Name on card
+                          input(type="text", class="a-input -xl", id='name', placeholder="")
+                      div.a-col.-w--12
+                        .m-formGroup.-labeled.-mb--2
+                          div.-d--flex.-justify-content--between.-align-items--center
+                            label.a-label(for='number') Card number
+                            img(src='../../assets/images/autopay-credit-cards.jpg', alt="credit cards")
+                          input(type="text", class="a-input -xl", id='number', placeholder="")
+                      div.a-col.-w-md--4.-w-sm--12
+                        .m-formGroup.-labeled
+                          label.a-label(for='expiration') Expiration
+                          .-d--flex
+                            select(class="a-input -xl -mr--1", id='expiration')
+                              each day in days
+                                option= day
+                            select(class="a-input -xl -mr-md--1", id='expiration')
+                              each year in years
+                                option= year
+                      div.a-col.-w-md--4.-w-sm--12
+                        .m-formGroup.-labeled
+                          label.a-label(for='zip') Billing zip code
+                          input(type="text", class="a-input -xl", id='zip', placeholder="")
   :code(lang="html")
     <div class="chi-app">
       <div class="m-epanel -bordered -p--1" id="autopay">
@@ -115,20 +381,95 @@ p.-text Basic Autopay page template. Indicates several ways to automate the way 
                   <div class="a-col -w-md--4">
                     <div class="m-formGroup -labeled -mb--1">
                       <label class="a-label" for="method">Choose a payment method</label>
-                      <select class="a-input -xl" id="method" onchange="selectPay(value)">
-                        <option value="Credit">Credit or debit card</option>
-                        <option value="Savings">Savings account</option>
-                        <option value="Checking">Checking account</option>
-                      </select>
+                      <div class="m-dropdown">
+                        <button class="a-btn -xl m-dropdown__trigger" id="Optional">
+                          Checking Account
+                        </button>
+                        <div class="m-dropdown__menu">
+                          <a class="m-dropdown__menu-item" href="#checkingAccountOptional" name="Checking">
+                            Checking account
+                          </a>
+                          <a class="m-dropdown__menu-item" href="#savingsAccountOptional" name="Savings">
+                            Savings account
+                          </a>
+                          <a class="m-dropdown__menu-item" href="#creditDebitCardOptional" name="Credit">
+                            Credit or debit card
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="a-card -mt--2" id="creditDebitCard">
+                <div class="a-card -mt--1" id="checkingAccount">
+                  <div class="a-card__header -py--0 -bg--grey-10">
+                    <h6>Add a checking account</h6>
+                  </div>
+                  <div class="a-card__content -p--3">
+                    <fieldset>
+                      <div class="a-grid -noGutter">
+                        <div class="a-col -w--12 -w-md--6">
+                          <div class="m-formGroup -labeled -mb--2 -mr-md--1">
+                            <label class="a-label" for="checking-routing-number">
+                              Routing number
+                            </label>
+                            <input class="a-input -xl" id="checking-routing-number" type="text" placeholder="">
+                          </div>
+                        </div>
+                        <div class="a-col -w--12 -w-md--6">
+                          <div class="m-formGroup -labeled -mb--2">
+                            <label class="a-label" for="checking-account-number">
+                              Account number
+                            </label>
+                            <input class="a-input -xl" id="checking-account-number" type="text" placeholder="">
+                          </div>
+                        </div>
+                        <div class="a-col -w--12">
+                          <div class="-d--flex -justify-content--center -mt--2">
+                            <img class="-mw--100 -h--auto" src="../../assets/images/autopay-check-hint.png" alt="savings account">
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+                <div class="a-card -mt--1 -d--none" id="savingsAccount">
+                  <div class="a-card__header -py--0 -bg--grey-10">
+                    <h6>Add a savings account</h6>
+                  </div>
+                  <div class="a-card__content -p--3">
+                    <fieldset>
+                      <div class="a-grid -noGutter">
+                        <div class="a-col -w--12 -w-md--6">
+                          <div class="m-formGroup -labeled -mb--2 -mr-md--1">
+                            <label class="a-label" for="savings-routing-number">
+                              Routing number
+                            </label>
+                            <input class="a-input -xl" id="savings-routing-number" type="text" placeholder="">
+                          </div>
+                        </div>
+                        <div class="a-col -w--12 -w-md--6">
+                          <div class="m-formGroup -labeled -mb--2">
+                            <label class="a-label" for="savings-account-number">
+                              Account number
+                            </label>
+                            <input class="a-input -xl" id="savings-account-number" type="text" placeholder="">
+                          </div>
+                        </div>
+                        <div class="a-col -w--12">
+                          <div class="-d--flex -justify-content--center -mt--2">
+                            <img class="-mw--100 -h--auto" src="../../assets/images/autopay-check-hint.png" alt="savings account">
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+                <div class="a-card -mt--1 -d--none" id="creditDebitCard">
                   <div class="a-card__header -py--0 -bg--grey-10">
                     <h6>Add a credit or debit card</h6>
                   </div>
                   <div class="a-card__content -p--3">
-                    <fieldset class="-b--0">
+                    <fieldset>
                       <div class="a-grid -noGutter">
                         <div class="a-col -w--12">
                           <div class="m-formGroup -labeled -mb--2">
@@ -147,8 +488,8 @@ p.-text Basic Autopay page template. Indicates several ways to automate the way 
                             <input class="a-input -xl" id="number" type="text" placeholder="">
                           </div>
                         </div>
-                        <div class="a-col -w-md--6 -w-sm--12">
-                          <div class="m-formGroup -labeled -mb--2">
+                        <div class="a-col -w-md--4 -w-sm--12">
+                          <div class="m-formGroup -labeled">
                             <label class="a-label" for="expiration">Expiration</label>
                             <div class="-d--flex">
                               <select class="a-input -xl -mr--1" id="expiration">
@@ -201,76 +542,12 @@ p.-text Basic Autopay page template. Indicates several ways to automate the way 
                             </div>
                           </div>
                         </div>
-                        <div class="a-col -w-md--6 -w-sm--12">
-                          <div class="m-formGroup -labeled -mb--2">
+                        <div class="a-col -w-md--4 -w-sm--12">
+                          <div class="m-formGroup -labeled">
                             <label class="a-label" for="zip">
                               Billing zip code
                             </label>
                             <input class="a-input -xl" id="zip" type="text" placeholder="">
-                          </div>
-                        </div>
-                      </div>
-                    </fieldset>
-                  </div>
-                </div>
-                <div class="a-card -mt--2 -d--none" id="savingsAccount">
-                  <div class="a-card__header -py--0 -bg--grey-10">
-                    <h6>Add a savings account</h6>
-                  </div>
-                  <div class="a-card__content -p--3">
-                    <fieldset class="-b--0">
-                      <div class="a-grid -noGutter">
-                        <div class="a-col -w--12 -w-md--6">
-                          <div class="m-formGroup -labeled -mb--2 -mr-md--1">
-                            <label class="a-label" for="savings-routing-number">
-                              Routing number
-                            </label>
-                            <input class="a-input -xl" id="savings-routing-number" type="text" placeholder="">
-                          </div>
-                        </div>
-                        <div class="a-col -w--12 -w-md--6">
-                          <div class="m-formGroup -labeled -mb--2">
-                            <label class="a-label" for="savings-account-number">
-                              Account number
-                            </label>
-                            <input class="a-input -xl" id="savings-account-number" type="text" placeholder="">
-                          </div>
-                        </div>
-                        <div class="a-col -w--12">
-                          <div class="-d--flex -justify-content--center -mt--2">
-                            <img class="-mw--100 -h--auto" src="../../assets/images/autopay-check-hint.png" alt="savings account">
-                          </div>
-                        </div>
-                      </div>
-                    </fieldset>
-                  </div>
-                </div>
-                <div class="a-card -mt--2 -d--none" id="checkingAccount">
-                  <div class="a-card__header -py--0 -bg--grey-10">
-                    <h6>Add a checking account</h6>
-                  </div>
-                  <div class="a-card__content -p--3">
-                    <fieldset class="-b--0">
-                      <div class="a-grid -noGutter">
-                        <div class="a-col -w--12 -w-md--6">
-                          <div class="m-formGroup -labeled -mb--2 -mr-md--1">
-                            <label class="a-label" for="checking-routing-number">
-                              Routing number
-                            </label>
-                            <input class="a-input -xl" id="checking-routing-number" type="text" placeholder="">
-                          </div>
-                        </div>
-                        <div class="a-col -w--12 -w-md--6">
-                          <div class="m-formGroup -labeled -mb--2">
-                            <label class="a-label" for="checking-account-number">
-                              Account number
-                            </label>
-                            <input class="a-input -xl" id="checking-account-number" type="text" placeholder="">
-                          </div>
-                        </div>
-                        <div class="a-col -w--12">
-                          <div class="-d--flex -justify-content--center -mt--2">
-                            <img class="-mw--100 -h--auto" src="../../assets/images/autopay-check-hint.png" alt="savings account">
                           </div>
                         </div>
                       </div>
@@ -288,28 +565,28 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.expansionPanel(document.getElementById('autopay'));
+      chi.expansionPanel(document.getElementById('autopayOptional'));
+      chi.dropdown(document.getElementById('Base'));
+      chi.dropdown(document.getElementById('Optional'));
     },
     false
   );
 
 script.
-  function selectPay (value) {
-    var credit = document.getElementById('creditDebitCard');
-    var savings = document.getElementById('savingsAccount');
-    var checking = document.getElementById('checkingAccount');
-    if (value === 'Credit') {
-      credit.style.display = 'block';
-      savings.style.display = 'none';
-      checking.style.display = 'none';
-    } else if (value === 'Savings') {
-      credit.style.display = 'none';
-      savings.style.display = 'block';
-      checking.style.display = 'none';
-    } else {
-      credit.style.display = 'none';
-      savings.style.display = 'none';
-      checking.style.display = 'block';
-    }
+  function selectPayment (id) {
+    var elem = document.getElementById(id);
+    Array.prototype.forEach.call(elem.parentElement.querySelectorAll('.m-dropdown__menu-item'), function (button) {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        var target = chi.Util.getTarget(e.target);
+        Array.prototype.forEach.call(target.parentElement.childNodes, function (card) {
+          if (card !== target && chi.Util.hasClass(card, 'a-card')) {
+            card.style.display = 'none';
+          }
+        });
+        target.style.display = 'block';
+        elem.innerText = e.target.innerText;
+      });
+    });
   }
 
