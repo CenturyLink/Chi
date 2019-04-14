@@ -14,7 +14,7 @@ aside.docs-body__aside
                       //-   a(href=`${rootPath}${section.path}`, disabled="disabled") #{section.title}
                     else
                       li(class=section.path === path ? "-active" : "")
-                        a(href=`${rootPath}${section.path}`) #{section.title} #{section.disabled}
+                        a(href=`${rootPath}${section.path}`) #{section.title}
           else
             li
               a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
