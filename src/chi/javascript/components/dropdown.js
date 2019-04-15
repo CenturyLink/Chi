@@ -61,6 +61,9 @@ class Dropdown extends Component {
 
     this._dropdownElemClickEventListener = function(e) {
       self._dropdownClickedEventManager(e);
+      if (e.target.tagName.toLowerCase() === 'a' || e.target.tagName.toLowerCase() === 'button') {
+        self._clickDropdownElemItem();
+      }
     };
     this._dropdownElem.addEventListener(
       'click',
@@ -169,6 +172,10 @@ class Dropdown extends Component {
   }
 
   _clickOnDocument() {
+    this.hide();
+  }
+
+  _clickDropdownElemItem() {
     this.hide();
   }
 
