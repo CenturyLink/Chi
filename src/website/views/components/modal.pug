@@ -43,6 +43,78 @@ h4 Base
       </div>
     </div>
 
+h4 Scrollable
+p.-text
+  | If the content height is bigger than the content modal container
+  | height, we can make the content scrollable.
+h5 Requirements
+p.-text
+  | Content Modal must have the<code>max-height</code> defined.
+
+.example.-mb--3
+  .a-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+    .a-modal(style="margin-top:0;")
+      .a-modal__header
+        h3.a-modal__title Modal Title
+        button(class='a-btn -icon -close')
+          .a-btn__content
+            i.a-icon.icon-x
+      .a-modal__content(style='max-height:400px;')
+        p.-text.-mt--0
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+        p.-text
+          | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
+        p.-text
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+        p.-text
+          | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
+          | Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ac odio quis sem placerat porta vel nec leo. Phasellus et malesuada nisi.
+        p.-text
+          | Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+          | Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+          | Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+          | cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+      .a-modal__footer
+        button.a-btn Cancel
+        button.a-btn.-primary.-ml--2 Save
+  :code(lang="html")
+    <div class="a-backdrop">
+      <div class="a-modal">
+        <div class="a-modal__header">
+          <h3 class="a-modal__title">Modal Title</h3>
+          <button class="a-btn -icon -close">
+            <div class="a-btn__content">
+              <i class="a-icon icon-x"></i>
+            </div>
+          </button>
+        </div>
+        <div class="a-modal__content" style="max-height:400px">
+          <p class="-text -mt--0">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+          </p>
+          <p class="-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+          </p>
+          <p class="-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+          </p>
+          <p class="-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+          </p>
+          <p class="-text">
+            Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+            Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+            cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+          </p>
+        </div>
+        <div class="a-modal__footer">
+          <button class="a-btn">Cancel</button>
+          <button class="a-btn -primary -ml--2">Save</button>
+        </div>
+      </div>
+    </div>
+
 h4 With Subtitle
 .example.-mb--3
   .a-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
@@ -221,67 +293,6 @@ p.-text Remove <code>a-modal__header</code> and <code>a-modal__footer</code> for
           <h3 class="-text--bolder -m--0">Modal Title</h3>
           <p class="-text -py--1 -px--3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis mollis nulla, eget ornare tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet rutrum eros laoreet.</p>
           <button class="a-btn -primary -lg -mt--1">Action</button>
-        </div>
-      </div>
-    </div>
-
-h4 Scrollable
-p.-text
-  | If the content height is bigger than the content modal container
-  | height, we can make the content scrollable.
-h5 Requirements
-p.-text
-  | Content Modal must have the<code>max-height</code> defined.
-
-.example.-mb--3
-  .a-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
-    .a-modal(style="margin-top:0;")
-      .a-modal__header
-        h3.a-modal__title Modal Title
-        button(class='a-btn -icon -close')
-          .a-btn__content
-            i.a-icon.icon-x
-      .a-modal__content(style='max-height:400px;')
-        p.-text
-        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-        p.-text
-        | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
-        p.-text
-        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-        p.-text
-        | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
-        | Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ac odio quis sem placerat porta vel nec leo. Phasellus et malesuada nisi.
-      .a-modal__footer
-        button.a-btn Cancel
-        button.a-btn.-primary.-ml--2 Save
-  :code(lang="html")
-    <div class="a-backdrop">
-      <div class="a-modal">
-        <div class="a-modal__header">
-          <h3 class="a-modal__title">Modal Title</h3>
-          <button class="a-btn -icon -close">
-            <div class="a-btn__content">
-              <i class="a-icon icon-x"></i>
-            </div>
-          </button>
-        </div>
-        <div class="a-modal__content" style="max-height:400px">
-          <p class="-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-          </p>
-          <p class="-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-          </p>
-          <p class="-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-          </p>
-          <p class="-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-          </p>
-        </div>
-        <div class="a-modal__footer">
-          <button class="a-btn">Cancel</button>
-          <button class="a-btn -primary -ml--2">Save</button>
         </div>
       </div>
     </div>
