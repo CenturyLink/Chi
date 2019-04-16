@@ -61,7 +61,7 @@ class Dropdown extends Component {
 
     this._dropdownElemClickEventListener = function(e) {
       self._dropdownClickedEventManager(e);
-      if (e.target.tagName.toLowerCase() === 'a' || e.target.tagName.toLowerCase() === 'button') {
+      if (e.target.nodeName === 'A' || e.target.nodeName === 'BUTTON') {
         self._clickDropdownElemItem();
       }
     };

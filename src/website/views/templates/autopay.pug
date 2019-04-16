@@ -89,7 +89,7 @@ h4 Base
                   label.a-label(for='zip') Billing zip code
                   input(type="text", class="a-input -xl", id='zip', placeholder="")
   :code(lang="html")
-    <div class="chi-app -p3" id="autopayBase">
+    <div class="chi-app">
       <div class="a-card -p3">
         <div class="a-grid -noGutter">
           <div><h5 class="-m--0 a-card__title">Automatic Payments</h5>
@@ -578,6 +578,11 @@ script.
     Array.prototype.forEach.call(elem.parentElement.querySelectorAll('.m-dropdown__menu-item'), function (button) {
       button.addEventListener('click', function (e) {
         e.preventDefault();
+        var elems = document.querySelectorAll('a.-active');
+        [].forEach.call(elems, function (el) {
+          chi.Util.removeClass(el, '-active');
+        });
+        chi.Util.addClass(button, '-active');
         var target = chi.Util.getTarget(e.target);
         Array.prototype.forEach.call(target.parentElement.childNodes, function (card) {
           if (card !== target && chi.Util.hasClass(card, 'a-card')) {
