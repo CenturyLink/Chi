@@ -45,11 +45,11 @@ h4 Base
 
 h4 Scrollable
 p.-text
-  | If the content height is bigger than the content modal container
-  | height, we can make the content scrollable.
+  | Enable scrolling if the height of the modal's content is larger than the modal's content container.
 h5 Requirements
 p.-text
-  | Content Modal must have the<code>max-height</code> defined.
+  | A <code>max-height</code> must be defined on <code>a-modal__content</code>.
+  | Use max-height utility classes such as <code>-mh--400</code> or <code>-mh--480</code>, or define your own value.
 
 .example.-mb--3
   .a-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
