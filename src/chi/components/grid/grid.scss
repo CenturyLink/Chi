@@ -1,260 +1,258 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
-.chi {
-  .a-grid {
-    &__container {
-      @include respond-to(md) {
-        margin: 0 ($base-unit * 3);
-      }
-      margin: 0 ($base-unit * 2);
+.a-grid {
+  &__container {
+    @include respond-to(md) {
+      margin: 0 ($base-unit * 3);
     }
-
-    & {
-      @include respond-to(md) {
-        margin: 0 ($base-unit * -1.5);
-      }
-      display: flex;
-      flex: 1 0 auto;
-      flex-wrap: wrap;
-      margin: 0 ($base-unit * -1);
-    }
-
-    &.-noGutter {
-      margin: 0;
-
-      & > .a-col {
-        padding: 0;
-      }
-    }
-
-    // Vertical Alignment
-
-    &.-align--top {
-      align-items: flex-start;
-    }
-
-    &.-align--center {
-      align-items: center;
-    }
-
-    &.-align--bottom {
-      align-items: flex-end;
-    }
-
-    // Legacy code start
-    &.-alignTop {
-      align-items: flex-start;
-    }
-
-    &.-alignCenter {
-      align-items: center;
-    }
-
-    &.-alignBottom {
-      align-items: flex-end;
-    }
-    // Legacy code end
+    margin: 0 ($base-unit * 2);
   }
 
-  .a-col {
-    & {
-      @include respond-to(md) {
-        padding: 0 ($base-unit * 1.5);
-      }
-      flex: 1 0 0%;
-      max-width: 100%;
-      min-width: (100% / 12);
-      padding: 0 $base-unit;
-      position: relative;
+  & {
+    @include respond-to(md) {
+      margin: 0 ($base-unit * -1.5);
     }
+    display: flex;
+    flex: 1 0 auto;
+    flex-wrap: wrap;
+    margin: 0 ($base-unit * -1);
+  }
 
-    // Stacking (on XS Viewports)
-    @each $size in sm md lg xl {
-      @include respond-to-only(xs) {
-        &.-w-#{$size} {
+  &.-noGutter {
+    margin: 0;
+
+    & > .a-col {
+      padding: 0;
+    }
+  }
+
+  // Vertical Alignment
+
+  &.-align--top {
+    align-items: flex-start;
+  }
+
+  &.-align--center {
+    align-items: center;
+  }
+
+  &.-align--bottom {
+    align-items: flex-end;
+  }
+
+  // Legacy code start
+  &.-alignTop {
+    align-items: flex-start;
+  }
+
+  &.-alignCenter {
+    align-items: center;
+  }
+
+  &.-alignBottom {
+    align-items: flex-end;
+  }
+  // Legacy code end
+}
+
+.a-col {
+  & {
+    @include respond-to(md) {
+      padding: 0 ($base-unit * 1.5);
+    }
+    flex: 1 0 0%;
+    max-width: 100%;
+    min-width: (100% / 12);
+    padding: 0 $base-unit;
+    position: relative;
+  }
+
+  // Stacking (on XS Viewports)
+  @each $size in sm md lg xl {
+    @include respond-to-only(xs) {
+      &.-w-#{$size} {
+        flex: 1 0 auto;
+        width: 100%;
+      }
+      @for $i from 1 through 12 {
+        &.-w-#{$size}--#{$i} {
           flex: 1 0 auto;
           width: 100%;
         }
-        @for $i from 1 through 12 {
-          &.-w-#{$size}--#{$i} {
-            flex: 1 0 auto;
-            width: 100%;
-          }
-        }
       }
     }
-    // Legacy code start
-    @each $size in sm md lg xl {
-      @include respond-to-only(xs) {
-        &.-#{$size} {
+  }
+  // Legacy code start
+  @each $size in sm md lg xl {
+    @include respond-to-only(xs) {
+      &.-#{$size} {
+        flex: 1 0 auto;
+        width: 100%;
+      }
+      @for $i from 1 through 12 {
+        &.-#{$size}--w#{$i} {
           flex: 1 0 auto;
           width: 100%;
         }
-        @for $i from 1 through 12 {
-          &.-#{$size}--w#{$i} {
-            flex: 1 0 auto;
-            width: 100%;
-          }
+      }
+    }
+  }
+  // Legacy code end
+
+  // Sizing
+
+  @for $i from 1 through 12 {
+    &.-w--#{$i} {
+      flex: 0 1 (100% / 12 * $i);
+      width: (100% / 12 * $i);
+    }
+  }
+
+  // Sizing by Viewport
+
+  @each $size in sm md lg xl {
+    @include respond-to($size) {
+      @for $i from 1 through 12 {
+        &.-w-#{$size}--#{$i} {
+          flex: 0 1 (100% / 12 * $i);
+          max-width: (100% / 12 * $i);
         }
       }
     }
-    // Legacy code end
+  }
 
-    // Sizing
+  // Legacy code start
+  @for $i from 1 through 12 {
+    &.-w#{$i} {
+      flex: 0 1 (100% / 12 * $i);
+      width: (100% / 12 * $i);
+    }
+  }
 
-    @for $i from 1 through 12 {
-      &.-w--#{$i} {
-        flex: 0 1 (100% / 12 * $i);
-        width: (100% / 12 * $i);
+  // Sizing by Viewport
+
+  @each $size in sm md lg xl {
+    @include respond-to($size) {
+      @for $i from 1 through 12 {
+        &.-#{$size}--w#{$i} {
+          flex: 0 1 (100% / 12 * $i);
+          max-width: (100% / 12 * $i);
+        }
       }
     }
+  }
+  // Legacy code end
 
-    // Sizing by Viewport
+  // Offsets
 
+  @for $i from 1 through 11 {
+    &.-o--#{$i} {
+      margin-left: (100% / 12 * $i);
+    }
     @each $size in sm md lg xl {
       @include respond-to($size) {
-        @for $i from 1 through 12 {
-          &.-w-#{$size}--#{$i} {
-            flex: 0 1 (100% / 12 * $i);
-            max-width: (100% / 12 * $i);
+        @for $i from 1 through 11 {
+          &.-o-#{$size}--#{$i} {
+            margin-left: (100% / 12 * $i);
           }
         }
       }
     }
+  }
 
-    // Legacy code start
-    @for $i from 1 through 12 {
-      &.-w#{$i} {
-        flex: 0 1 (100% / 12 * $i);
-        width: (100% / 12 * $i);
-      }
+  // Legacy code start
+  @for $i from 1 through 11 {
+    &.-o#{$i} {
+      margin-left: (100% / 12 * $i);
     }
-
-    // Sizing by Viewport
-
     @each $size in sm md lg xl {
       @include respond-to($size) {
-        @for $i from 1 through 12 {
-          &.-#{$size}--w#{$i} {
-            flex: 0 1 (100% / 12 * $i);
-            max-width: (100% / 12 * $i);
+        @for $i from 1 through 11 {
+          &.-#{$size}--o#{$i} {
+            margin-left: (100% / 12 * $i);
           }
         }
       }
     }
-    // Legacy code end
+  }
+  // Legacy code end
 
-    // Offsets
+  // Vertical Alignment (Column-Specifics)
 
-    @for $i from 1 through 11 {
-      &.-o--#{$i} {
-        margin-left: (100% / 12 * $i);
-      }
-      @each $size in sm md lg xl {
-        @include respond-to($size) {
-          @for $i from 1 through 11 {
-            &.-o-#{$size}--#{$i} {
-              margin-left: (100% / 12 * $i);
-            }
-          }
-        }
-      }
+  &.-align--top {
+    align-self: flex-start;
+  }
+
+  &.-align--center {
+    align-self: center;
+  }
+
+  &.-align--bottom {
+    align-self: flex-end;
+  }
+  // Legacy code start
+  &.-alignTop {
+    align-self: flex-start;
+  }
+
+  &.-alignCenter {
+    align-self: center;
+  }
+
+  &.-alignBottom {
+    align-self: flex-end;
+  }
+  // Legacy code end
+
+  // Reordering
+
+  @for $i from 1 through 12 {
+    &.-n--#{$i} {
+      order: #{$i};
     }
-
-    // Legacy code start
-    @for $i from 1 through 11 {
-      &.-o#{$i} {
-        margin-left: (100% / 12 * $i);
-      }
-      @each $size in sm md lg xl {
-        @include respond-to($size) {
-          @for $i from 1 through 11 {
-            &.-#{$size}--o#{$i} {
-              margin-left: (100% / 12 * $i);
-            }
-          }
-        }
-      }
-    }
-    // Legacy code end
-
-    // Vertical Alignment (Column-Specifics)
-
-    &.-align--top {
-      align-self: flex-start;
-    }
-
-    &.-align--center {
-      align-self: center;
-    }
-
-    &.-align--bottom {
-      align-self: flex-end;
-    }
-    // Legacy code start
-    &.-alignTop {
-      align-self: flex-start;
-    }
-
-    &.-alignCenter {
-      align-self: center;
-    }
-
-    &.-alignBottom {
-      align-self: flex-end;
-    }
-    // Legacy code end
-
-    // Reordering
-
-    @for $i from 1 through 12 {
-      &.-n--#{$i} {
-        order: #{$i};
-      }
-
-      @each $size in xs sm md lg xl {
-        @include respond-to-only($size) {
-          @for $i from 1 through 12 {
-            &.-n-#{$size}--#{$i} {
-              order: #{$i};
-            }
-          }
-        }
-      }
-    }
-
-    // Legacy code start
-    @for $i from 1 through 12 {
-      &.-n#{$i} {
-        order: #{$i};
-      }
-
-      @each $size in xs sm md lg xl {
-        @include respond-to-only($size) {
-          @for $i from 1 through 12 {
-            &.-#{$size}--n#{$i} {
-              order: #{$i};
-            }
-          }
-        }
-      }
-    }
-    // Legacy code end
 
     @each $size in xs sm md lg xl {
       @include respond-to-only($size) {
-        &.-#{$size}--hide {
-          display: none;
+        @for $i from 1 through 12 {
+          &.-n-#{$size}--#{$i} {
+            order: #{$i};
+          }
         }
       }
     }
+  }
 
-    @each $size in sm md lg xl {
-      @include respond-to($size) {
-        &.-#{$size}--hide-from {
-          display: none;
+  // Legacy code start
+  @for $i from 1 through 12 {
+    &.-n#{$i} {
+      order: #{$i};
+    }
+
+    @each $size in xs sm md lg xl {
+      @include respond-to-only($size) {
+        @for $i from 1 through 12 {
+          &.-#{$size}--n#{$i} {
+            order: #{$i};
+          }
         }
+      }
+    }
+  }
+  // Legacy code end
+
+  @each $size in xs sm md lg xl {
+    @include respond-to-only($size) {
+      &.-#{$size}--hide {
+        display: none;
+      }
+    }
+  }
+
+  @each $size in sm md lg xl {
+    @include respond-to($size) {
+      &.-#{$size}--hide-from {
+        display: none;
       }
     }
   }

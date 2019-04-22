@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
 $sizes: (
   sm: (
@@ -52,96 +52,94 @@ $sizes: (
   )
 );
 
-.chi {
-  select {
-    &.a-input {
-      appearance: none;
-      background-color: set-color(white);
-      background-image: url('./icon-chevron-thin-down.svg');
-      background-position: map-get(map-get($sizes, md), background-position);
-      background-repeat: no-repeat;
-      background-size: 0.75rem 0.75rem;
-      border-radius: $border-radius;
-      border: 0.0625rem solid set-color(grey, 30);
-      color: set-color(grey, 90);
-      cursor: hand; // sass-lint:disable-line no-duplicate-properties
-      cursor: pointer;
-      font-size: map-get(map-get($sizes, md), font-size);
-      height: map-get(map-get($sizes, md), height);
-      line-height: map-get(map-get($sizes, md), line-height);
-      outline: none;
-      padding-left: map-get(map-get($sizes, md), padding-left);
-      padding-right: 1.6875rem;
-      width: 100%;
+select {
+  &.a-input {
+    appearance: none;
+    background-color: set-color(white);
+    background-image: url(icon-chevron-thin-down.svg);
+    background-position: map-get(map-get($sizes, md), background-position);
+    background-repeat: no-repeat;
+    background-size: 0.75rem 0.75rem;
+    border-radius: $border-radius;
+    border: 0.0625rem solid set-color(grey, 30);
+    color: set-color(grey, 90);
+    cursor: hand; // sass-lint:disable-line no-duplicate-properties
+    cursor: pointer;
+    font-size: map-get(map-get($sizes, md), font-size);
+    height: map-get(map-get($sizes, md), height);
+    line-height: map-get(map-get($sizes, md), line-height);
+    outline: none;
+    padding-left: map-get(map-get($sizes, md), padding-left);
+    padding-right: 1.6875rem;
+    width: 100%;
 
-      // sass-lint:disable no-vendor-prefixes
-      &::-ms-expand {
-        display: none;
-      }
+    // sass-lint:disable no-vendor-prefixes
+    &::-ms-expand {
+      display: none;
+    }
 
-      &::-moz-focus-outer,
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      // sass-lint:enable no-vendor-prefixes
+    &::-moz-focus-outer,
+    &::-moz-focus-inner {
+      border: 0;
+    }
+    // sass-lint:enable no-vendor-prefixes
 
-      &:hover,
-      &.-hover {
-        border-color: set-color(grey, 40);
-        box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
-      }
+    &:hover,
+    &.-hover {
+      border-color: set-color(grey, 40);
+      box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+    }
 
-      &:active,
-      &.-active {
-        background-color: set-color(grey, 20);
-        border-color: set-color(grey, 40);
-        box-shadow: inset 0 2px 2px 0 rgba(set-color(black), 0.1);
-      }
+    &:active,
+    &.-active {
+      background-color: set-color(grey, 20);
+      border-color: set-color(grey, 40);
+      box-shadow: inset 0 2px 2px 0 rgba(set-color(black), 0.1);
+    }
 
-      &:focus,
-      &.-focus {
-        border-color: $focus-color;
-        box-shadow: 0 0 0 1px rgba($focus-color, 1);
-      }
+    &:focus,
+    &.-focus {
+      border-color: $focus-color;
+      box-shadow: 0 0 0 1px rgba($focus-color, 1);
+    }
 
-      &[disabled] {
-        opacity: 0.6;
-        pointer-events: none;
-      }
+    &[disabled] {
+      opacity: 0.6;
+      pointer-events: none;
+    }
 
-      @each $type in map-keys($sizes) {
-        &.-#{$type} {
-          height: map-get(map-get($sizes, $type), height);
-          font-size: map-get(map-get($sizes, $type), font-size);
-          line-height: map-get(map-get($sizes, $type), line-height);
-          background-position: map-get(map-get($sizes, $type), background-position);
-          padding-left: map-get(map-get($sizes, $type), padding-left);
-        }
-      }
-
-      &:not([disabled]) {
-        &.-danger {
-          border-color: set-color(red, 50);
-        }
-      }
-
-      &.-danger {
-        color: set-color(grey, 90);
-
-        &:focus,
-        &.-focus {
-          box-shadow: 0 0 0 1px rgba(set-color(red, 50), 1);
-        }
+    @each $type in map-keys($sizes) {
+      &.-#{$type} {
+        height: map-get(map-get($sizes, $type), height);
+        font-size: map-get(map-get($sizes, $type), font-size);
+        line-height: map-get(map-get($sizes, $type), line-height);
+        background-position: map-get(map-get($sizes, $type), background-position);
+        padding-left: map-get(map-get($sizes, $type), padding-left);
       }
     }
 
-    &.-pill {
-      border-radius: 1rem;
+    &:not([disabled]) {
+      &.-danger {
+        border-color: set-color(red, 50);
+      }
+    }
 
-      @each $type in map-keys($sizes) {
-        &.-#{$type} {
-          border-radius: map-get(map-get($sizes, $type), border-radius);
-        }
+    &.-danger {
+      color: set-color(grey, 90);
+
+      &:focus,
+      &.-focus {
+        box-shadow: 0 0 0 1px rgba(set-color(red, 50), 1);
+      }
+    }
+  }
+
+  &.-pill {
+    border-radius: 1rem;
+
+    @each $type in map-keys($sizes) {
+      &.-#{$type} {
+        border-radius: map-get(map-get($sizes, $type), border-radius);
       }
     }
   }

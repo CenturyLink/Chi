@@ -1,30 +1,27 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
-.chi {
+/* Shadows */
 
-  /* Shadows */
-
-  @for $index from 0 through 5 {
-    .-s#{$index} {
-      box-shadow: map-get($shadow, $index);
-    }
+@for $index from 0 through 5 {
+  .-s#{$index} {
+    box-shadow: map-get($shadow, $index);
   }
+}
 
-  /* New class naming */
-  @each $screen-size in $screen-sizes {
-    @if $screen-size == xs {
-      @each $index, $value in $shadow {
-        .-s--#{$index} {
-          box-shadow: $value;
-        }
+/* New class naming */
+@each $screen-size in $screen-sizes {
+  @if $screen-size == xs {
+    @each $index, $value in $shadow {
+      .-s--#{$index} {
+        box-shadow: $value;
       }
-    } @else {
-      @include respond-to($screen-size) {
-        @each $index, $value in $shadow {
-          .-s-#{$screen-size}--#{$index} {
-            box-shadow: $value;
-          }
+    }
+  } @else {
+    @include respond-to($screen-size) {
+      @each $index, $value in $shadow {
+        .-s-#{$screen-size}--#{$index} {
+          box-shadow: $value;
         }
       }
     }

@@ -1,46 +1,49 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
-.chi {
+// Legacy code start
+.-bgInverse {
+  background-color: $bg-inverse;
+}
+// Legacy code end
 
-  $colors: (
-    primary: $primary-color,
-    secondary: $secondary-color,
-    white: set-color(white),
-    black: set-color(black),
-    grey-10: set-color(grey, 10),
-    grey-20: set-color(grey, 20),
-    success: set-color(mint, 70),
-    warning: set-color(yellow, 70),
-    danger: set-color(red, 70),
-    none: none
-  );
+$colors: (
+  primary: $primary-color,
+  secondary: $secondary-color,
+  white: set-color(white),
+  black: set-color(black),
+  grey-10: set-color(grey, 10),
+  grey-20: set-color(grey, 20),
+  success: set-color(mint, 70),
+  warning: set-color(yellow, 70),
+  danger: set-color(red, 70),
+  none: none
+);
 
-  @each $color-key, $color-value in $colors  {
+@each $color-key, $color-value in $colors  {
 
-    @if $color-key == 'none' {
-      .-bg--#{$color-key} {
-        background: $color-value;
-      }
-    } @else {
-      .-bg--#{$color-key} {
-        background-color: $color-value;
-      }
+  @if $color-key == 'none' {
+    .-bg--#{$color-key} {
+      background: $color-value;
+    }
+  } @else {
+    .-bg--#{$color-key} {
+      background-color: $color-value;
     }
   }
+}
 
-  @each $size in sm md lg xl {
-    @include respond-to($size) {
-      @each $color-key, $color-value in $colors {
+@each $size in sm md lg xl {
+  @include respond-to($size) {
+    @each $color-key, $color-value in $colors {
 
-        @if $color-key == 'none' {
-          .-bg-#{$size}--#{$color-key} {
-            background: $color-value;
-          }
-        } @else {
-          .-bg-#{$size}--#{$color-key} {
-            background-color: $color-value;
-          }
+      @if $color-key == 'none' {
+        .-bg-#{$size}--#{$color-key} {
+          background: $color-value;
+        }
+      } @else {
+        .-bg-#{$size}--#{$color-key} {
+          background-color: $color-value;
         }
       }
     }

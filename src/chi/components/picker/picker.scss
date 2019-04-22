@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
 $border: 0.0625rem;
 $sizes: (
@@ -14,115 +14,92 @@ $sizes: (
   )
 );
 
-.chi {
-  .m-picker {
-    align-items: center;
-    display: flex;
-    justify-content: center;
+.m-picker {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 
-    input {
-      &[type='checkbox'],
-      &[type='radio'] {
-        &.a-picker {
-          left: -9999px;
-          position: absolute;
+  input {
+    &[type='checkbox'],
+    &[type='radio'] {
+      &.a-picker {
+        left: -9999px;
+        position: absolute;
 
+        & + label {
+          align-items: center;
+          background-color: $text-white;
+          border: solid 0.0625rem set-color(grey, 30);
+          border-radius: 0.1875rem;
+          box-shadow: map-get($shadow, 1);
+          display: flex;
+          font-size: $text;
+          font-weight: normal;
+          justify-content: space-between;
+          padding: 1rem - $border;
+          margin-bottom: 0.5rem;
+          transition: all 0.2s;
+          width: 100%;
+
+          .m-picker__content {
+            &--start,
+            &--end {
+              display: flex;
+              flex-direction: column;
+
+              & * {
+                line-height: 1rem;
+              }
+            }
+
+            &--start {
+              & .m-formGroup {
+                font-weight: 600;
+                margin: 0.5rem 0 0 0.5rem;
+
+                & label {
+                  margin-right: 1rem;
+                }
+              }
+
+              & div:not(.m-formGroup) {
+                margin-left: 2.5rem;
+                padding: 0.5rem 0 0.5rem 0;
+              }
+            }
+          }
+
+          &:hover {
+            background-color: set-color(grey, 10);
+            cursor: pointer;
+          }
+        }
+
+        &:checked {
           & + label {
-            align-items: center;
-            background-color: $text-white;
-            border: solid 0.0625rem set-color(grey, 30);
-            border-radius: 0.1875rem;
-            box-shadow: map-get($shadow, 1);
-            display: flex;
-            font-size: $text;
-            font-weight: normal;
-            justify-content: space-between;
-            padding: 1rem - $border;
-            margin-bottom: 0.5rem;
-            transition: all 0.2s;
-            width: 100%;
-
-            .m-picker__content {
-              &--start,
-              &--end {
-                display: flex;
-                flex-direction: column;
-
-                & * {
-                  line-height: 1rem;
-                }
-              }
-
-              &--start {
-                & .m-formGroup {
-                  font-weight: 600;
-                  margin: 0.5rem 0 0 0.5rem;
-
-                  & label {
-                    margin-right: 1rem;
-                  }
-                }
-
-                & div:not(.m-formGroup) {
-                  margin-left: 2.5rem;
-                  padding: 0.5rem 0 0.5rem 0;
-                }
-              }
-            }
-
-            &:hover {
-              background-color: set-color(grey, 10);
-              cursor: pointer;
-            }
-          }
-
-          &:checked {
-            & + label {
-              border: solid 0.0625rem $secondary-color;
-              box-shadow: inset 0 0 0 0.0625rem $secondary-color;
-              color: $text-color;
-              font-weight: 600;
-            }
+            border: solid 0.0625rem $secondary-color;
+            box-shadow: inset 0 0 0 0.0625rem $secondary-color;
+            color: $text-color;
+            font-weight: 600;
           }
         }
       }
+    }
 
-      &[type='checkbox'] {
-        &.a-picker {
-          &:checked {
-            & + label {
-              & .a-input {
-                & + label {
-                  &::before {
-                    background-color: $brand-color;
-                    border-color: $brand-color;
-                  }
-
-                  &::after {
-                    background-image: url('./icon-check.svg');
-                    transform: scale(1);
-                  }
+    &[type='checkbox'] {
+      &.a-picker {
+        &:checked {
+          & + label {
+            & .a-input {
+              & + label {
+                &::before {
+                  background-color: $brand-color;
+                  border-color: $brand-color;
                 }
-              }
-            }
-          }
-        }
-      }
 
-      &[type='radio'] {
-        &.a-picker {
-          &:checked {
-            & + label {
-              & .a-input {
-                & + label {
-                  &::before {
-                    border-color: $brand-color;
-                  }
-
-                  &::after {
-                    background-color: $brand-color;
-                    transform: scale(1);
-                  }
+                &::after {
+                  background-image: url(icon-check.svg);
+                  transform: scale(1);
                 }
               }
             }
@@ -131,16 +108,37 @@ $sizes: (
       }
     }
 
-    @each $type in map-keys($sizes) {
-      &.-#{$type} {
-        input {
-          &[type='checkbox'],
-          &[type='radio'] {
-            &.a-picker {
+    &[type='radio'] {
+      &.a-picker {
+        &:checked {
+          & + label {
+            & .a-input {
               & + label {
-                min-height: map-get(map-get($sizes, $type), min-height);
-                padding: (0.5rem - $border) (1rem - $border) (0.5rem - $border) (1.5rem - $border);
+                &::before {
+                  border-color: $brand-color;
+                }
+
+                &::after {
+                  background-color: $brand-color;
+                  transform: scale(1);
+                }
               }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @each $type in map-keys($sizes) {
+    &.-#{$type} {
+      input {
+        &[type='checkbox'],
+        &[type='radio'] {
+          &.a-picker {
+            & + label {
+              min-height: map-get(map-get($sizes, $type), min-height);
+              padding: (0.5rem - $border) (1rem - $border) (0.5rem - $border) (1.5rem - $border);
             }
           }
         }

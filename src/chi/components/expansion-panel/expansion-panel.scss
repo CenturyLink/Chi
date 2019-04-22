@@ -1,174 +1,172 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
 $transition-duration: 0.2s;
 
-.chi {
-  .m-epanel {
-    &__header {
-      min-height: 3.5rem;
+.m-epanel {
+  &__header {
+    min-height: 3.5rem;
+  }
+
+  & > .m-epanel__header {
+    display: flex;
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+    min-height: 0rem;
+
+    & > * {
+      display: block;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
     }
 
-    & > .m-epanel__header {
-      display: flex;
-      margin-left: -0.25rem;
-      margin-right: -0.25rem;
-      min-height: 0rem;
+    & > .m-epanel__title {
+      width: 34.5%;
+    }
 
-      & > * {
-        display: block;
-        padding-left: 0.25rem;
-        padding-right: 0.25rem;
+    & > .m-epanel__content {
+      flex: 1;
+    }
+
+    & > .m-epanel__action {
+      margin-left: auto;
+    }
+
+    @include respond-to-only(xs) {
+      & > .m-epanel__number {
+        display: none;
       }
+    }
+    @include respond-to(sm) {
+      & > .m-epanel__number {
+        width: 7.5%;
 
-      & > .m-epanel__title {
-        width: 34.5%;
-      }
-
-      & > .m-epanel__content {
-        flex: 1;
-      }
-
-      & > .m-epanel__action {
-        margin-left: auto;
-      }
-
-      @include respond-to-only(xs) {
-        & > .m-epanel__number {
-          display: none;
+        & ~ .m-epanel__title {
+          width: 27%;
         }
       }
-      @include respond-to(sm) {
-        & > .m-epanel__number {
-          width: 7.5%;
+    }
+  }
 
-          & ~ .m-epanel__title {
-            width: 27%;
-          }
+  &__title,
+  &__number {
+    font-size: $text-larger;
+    line-height: 2rem;
+    margin: 0;
+    transition: color $transition-duration;
+
+    &.-centered {
+      text-align: center;
+    }
+  }
+
+  &.-active .m-epanel__title {
+    color: $brand-color;
+  }
+
+  &.-disabled .m-epanel__title,
+  &.-disabled .m-epanel__number {
+    color: $light-color;
+  }
+
+  &:not(.-done):not(.-done--transitioning) .-done--only,
+  &:not(.-active):not(.-active--transitioning) .-active--only {
+    display: none;
+  }
+
+  &:not(.-done) .-done--only,
+  &:not(.-active) .-active--only {
+    opacity: 0;
+  }
+
+  &__collapse {
+    position: relative;
+    transition: height $transition-duration;
+  }
+
+  &__footer {
+    align-items: center;
+    box-shadow: inset 0 1px 0 0 rgba(set-color(black), 0.12);
+    display: flex;
+    flex-direction: row;
+    min-height: 4rem;
+    padding: 1rem;
+    position: relative;
+  }
+
+  .-done--only,
+  .-active--only {
+    opacity: 1;
+    transition: opacity $transition-duration;
+  }
+
+  [data-chi-epanel-action] {
+    cursor: pointer;
+  }
+
+  &.-bordered {
+    background-color: white;
+    border-radius: $border-radius;
+    border: .0625rem solid $border-color;
+    box-shadow: map-get($shadow, 1);
+    margin-bottom: 0.5rem;
+
+    .m-epanel__header {
+      padding: 1.25rem;
+    }
+
+    .m-epanel__body {
+      .m-epanel__content {
+        padding: 1.25rem;
+
+        & > :first-child {
+          margin-top: 0;
+        }
+
+        & > :last-child {
+          margin-bottom: 0;
         }
       }
     }
 
-    &__title,
-    &__number {
-      font-size: $text-larger;
-      line-height: 2rem;
-      margin: 0;
-      transition: color $transition-duration;
-
-      &.-centered {
-        text-align: center;
-      }
+    & > :first-child {
+      margin-top: 0;
     }
 
-    &.-active .m-epanel__title {
-      color: $brand-color;
+    & > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &:not(.-bordered) {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+
+    &:not(:last-child) {
+      border-bottom: .0625rem solid $border-color;
     }
 
-    &.-disabled .m-epanel__title,
-    &.-disabled .m-epanel__number {
-      color: $light-color;
+    & > .m-epanel__header+.m-epanel__collapse:not(.-ml--0) {
+      margin-left: 7.5%;
     }
 
-    &:not(.-done):not(.-done--transitioning) .-done--only,
-    &:not(.-active):not(.-active--transitioning) .-active--only {
-      display: none;
-    }
-
-    &:not(.-done) .-done--only,
-    &:not(.-active) .-active--only {
-      opacity: 0;
-    }
-
-    &__collapse {
-      position: relative;
-      transition: height $transition-duration;
-    }
-
-    &__footer {
-      align-items: center;
-      box-shadow: inset 0 1px 0 0 rgba(set-color(black), 0.12);
-      display: flex;
-      flex-direction: row;
-      min-height: 4rem;
-      padding: 1rem;
-      position: relative;
-    }
-
-    .-done--only,
-    .-active--only {
-      opacity: 1;
-      transition: opacity $transition-duration;
-    }
-
-    [data-chi-epanel-action] {
-      cursor: pointer;
-    }
-
-    &.-bordered {
+    .m-epanel__body {
+      margin-top: 1.25rem;
       background-color: white;
-      border-radius: $border-radius;
       border: .0625rem solid $border-color;
+      border-radius: $border-radius;
       box-shadow: map-get($shadow, 1);
       margin-bottom: 0.5rem;
 
-      .m-epanel__header {
-        padding: 1.25rem;
-      }
+      .m-epanel__content {
+        padding: 1.5rem;
 
-      .m-epanel__body {
-        .m-epanel__content {
-          padding: 1.25rem;
-
-          & > :first-child {
-            margin-top: 0;
-          }
-
-          & > :last-child {
-            margin-bottom: 0;
-          }
+        & > :first-child {
+          margin-top: 0;
         }
-      }
 
-      & > :first-child {
-        margin-top: 0;
-      }
-
-      & > :last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    &:not(.-bordered) {
-      padding-top: 1.25rem;
-      padding-bottom: 1.25rem;
-
-      &:not(:last-child) {
-        border-bottom: .0625rem solid $border-color;
-      }
-
-      & > .m-epanel__header+.m-epanel__collapse:not(.-ml--0) {
-        margin-left: 7.5%;
-      }
-
-      .m-epanel__body {
-        margin-top: 1.25rem;
-        background-color: white;
-        border: .0625rem solid $border-color;
-        border-radius: $border-radius;
-        box-shadow: map-get($shadow, 1);
-        margin-bottom: 0.5rem;
-
-        .m-epanel__content {
-          padding: 1.5rem;
-
-          & > :first-child {
-            margin-top: 0;
-          }
-
-          & > :last-child {
-            margin-bottom: 0;
-          }
+        & > :last-child {
+          margin-bottom: 0;
         }
       }
     }

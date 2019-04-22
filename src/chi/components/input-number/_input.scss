@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
 $sizes: (
   sm: (
@@ -40,75 +40,73 @@ $sizes: (
   )
 );
 
-.chi {
-  input {
-    &[type='number'] {
-      &.a-input {
-        // sass-lint:disable no-vendor-prefixes
-        -moz-appearance: textfield;
-        border: 0.0625rem solid set-color(grey, 30);
-        border-radius: $border-radius;
+input {
+  &[type='number'] {
+    &.a-input {
+      // sass-lint:disable no-vendor-prefixes
+      -moz-appearance: textfield;
+      border: 0.0625rem solid set-color(grey, 30);
+      border-radius: $border-radius;
+      color: set-color(grey, 90);
+      display: block;
+      font-size: $text;
+      height: 2rem;
+      line-height: $line-height-smaller;
+      outline: none;
+      padding: 0.4375rem;
+      width: 5.5rem;
+
+      &::-ms-clear {
+        display: none;
+      }
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      // sass-lint:enable no-vendor-prefixes
+
+      &:hover,
+      &.-hover {
+        border-color: set-color(grey, 40);
+      }
+
+      &:focus,
+      &.-focus {
+        border-color: $focus-color;
+        box-shadow: 0 0 0 1px rgba($focus-color, 1);
+      }
+
+      &[disabled],
+      &.-disabled {
+        background-color: set-color(grey, 10);
+        border-color: set-color(grey, 30);
         color: set-color(grey, 90);
-        display: block;
-        font-size: $text;
-        height: 2rem;
-        line-height: $line-height-smaller;
-        outline: none;
-        padding: 0.4375rem;
-        width: 5.5rem;
+        pointer-events: none;
+      }
 
-        &::-ms-clear {
-          display: none;
+      @each $type in map-keys($sizes) {
+        &.-#{$type} {
+          height: map-get(map-get($sizes, $type), height);
+          font-size: map-get(map-get($sizes, $type), font-size);
+          line-height: map-get(map-get($sizes, $type), line-height);
+          padding: map-get(map-get($sizes, $type), padding);
         }
+      }
 
-        &::-webkit-inner-spin-button,
-        &::-webkit-outer-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
+      &:not([disabled]) {
+        &.-danger {
+          border-color: set-color(red, 50);
         }
-        // sass-lint:enable no-vendor-prefixes
+      }
 
-        &:hover,
-        &.-hover {
-          border-color: set-color(grey, 40);
-        }
+      &.-danger {
+        color: set-color(grey, 90);
 
         &:focus,
         &.-focus {
-          border-color: $focus-color;
-          box-shadow: 0 0 0 1px rgba($focus-color, 1);
-        }
-
-        &[disabled],
-        &.-disabled {
-          background-color: set-color(grey, 10);
-          border-color: set-color(grey, 30);
-          color: set-color(grey, 90);
-          pointer-events: none;
-        }
-
-        @each $type in map-keys($sizes) {
-          &.-#{$type} {
-            height: map-get(map-get($sizes, $type), height);
-            font-size: map-get(map-get($sizes, $type), font-size);
-            line-height: map-get(map-get($sizes, $type), line-height);
-            padding: map-get(map-get($sizes, $type), padding);
-          }
-        }
-
-        &:not([disabled]) {
-          &.-danger {
-            border-color: set-color(red, 50);
-          }
-        }
-
-        &.-danger {
-          color: set-color(grey, 90);
-
-          &:focus,
-          &.-focus {
-            box-shadow: 0 0 0 1px rgba(set-color(red, 50), 1);
-          }
+          box-shadow: 0 0 0 1px rgba(set-color(red, 50), 1);
         }
       }
     }

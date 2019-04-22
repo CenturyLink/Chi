@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
 $hr-sizes: (h1, h2, h3, h4, h5, h6);
 
@@ -30,47 +30,45 @@ $states: (
   )
 );
 
-.chi {
-  .m-alert {
-    background-color: map-get(map-get($states, light), background-color);
-    border-color: map-get(map-get($states, light), border-color);
-    border-radius: $border-radius;
-    border-style: solid;
-    border-width: 0.0625rem;
-    box-sizing: border-box;
-    color: $text-color;
+.m-alert {
+  background-color: map-get(map-get($states, light), background-color);
+  border-color: map-get(map-get($states, light), border-color);
+  border-radius: $border-radius;
+  border-style: solid;
+  border-width: 0.0625rem;
+  box-sizing: border-box;
+  color: $text-color;
+  display: flex;
+  font-size: $text-small;
+  line-height: $line-height-small;
+  padding: 0.5625rem 1rem;
+  position: relative;
+
+  & i {
+    &:not(.icon-x) {
+      margin-right: 1rem;
+    }
+  }
+
+  &.-center {
+    align-items: center;
+    justify-content: center;
+  }
+
+  @each $state in map-keys($states) {
+    &.-#{$state} {
+      background-color: map-get(map-get($states, $state), background-color);
+      border-color: map-get(map-get($states, $state), border-color);
+    }
+  }
+
+  &__content {
+    align-items: center;
     display: flex;
-    font-size: $text-small;
-    line-height: $line-height-small;
-    padding: 0.5625rem 1rem;
-    position: relative;
+    justify-content: center;
 
-    & i {
-      &:not(.icon-x) {
-        margin-right: 1rem;
-      }
-    }
-
-    &.-center {
-      align-items: center;
-      justify-content: center;
-    }
-
-    @each $state in map-keys($states) {
-      &.-#{$state} {
-        background-color: map-get(map-get($states, $state), background-color);
-        border-color: map-get(map-get($states, $state), border-color);
-      }
-    }
-
-    &__content {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-
-      & .a-h5 {
-        margin-top: 0;
-      }
+    & .a-h5 {
+      margin-top: 0;
     }
   }
 }

@@ -1,4 +1,4 @@
-@import 'variables';
+@import '_variables';
 
 @mixin navigation-tabs-not-vertical() {
   & > li,
@@ -15,16 +15,14 @@
   }
 }
 
-.chi {
-  .a-tabs {
-    &:not(.-vertical):not(.-responsive) {
-      @include navigation-tabs-not-vertical
-    }
+.a-tabs {
+  &:not(.-vertical):not(.-responsive) {
+    @include navigation-tabs-not-vertical
+  }
 
-    @media only screen and (min-width: $md-breakpoint) {
-      &.-responsive {
-        @include navigation-tabs-not-vertical;
-      }
+  @media only screen and (min-width: $md-breakpoint) {
+    &.-responsive {
+      @include navigation-tabs-not-vertical;
     }
   }
 }

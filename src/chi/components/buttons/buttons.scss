@@ -1,5 +1,5 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
 $state-colors: (
   brand: (
@@ -44,7 +44,6 @@ $state-colors: (
     tone-hover: null,
     tone-focus: null
   )
-  ,
 );
 
 $border: 0.0625rem;
@@ -134,57 +133,221 @@ $sizes: (
   )
 );
 
-.chi {
-  .a-btn {
-    & {
-      align-items: center;
-      background-color: set-color(white);
-      border: $border solid set-color(grey, 30);
-      border-radius: $border-radius;
-      box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
-      color: $text-color;
-      cursor: pointer;
-      display: inline-flex;
-      font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
-      font-size: $text;
-      font-weight: 600;
-      line-height: $line-height-smaller;
-      outline: 0;
-      padding: (0.5rem - $border) (1rem - $border);
-      text-align: center;
-      vertical-align: middle;
-      white-space: nowrap;
+.a-btn {
+  & {
+    align-items: center;
+    background-color: set-color(white);
+    border: $border solid set-color(grey, 30);
+    border-radius: $border-radius;
+    box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
+    color: $text-color;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
+    font-size: $text;
+    font-weight: 600;
+    line-height: $line-height-smaller;
+    outline: 0;
+    padding: (0.5rem - $border) (1rem - $border);
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
 
-      &[disabled] {
-        opacity: 0.65;
-        pointer-events: none;
+    &[disabled] {
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    .a-icon {
+      height: 1rem;
+      width: 1rem;
+    }
+
+    .a-spinner {
+      height: 1rem;
+      width: 1rem;
+    }
+
+    &__content {
+      align-items: center;
+      display: inline-flex;
+      justify-content: center;
+
+      & > :not(:last-child) {
+        margin-right: 0.5rem;
       }
+    }
+
+    @each $type in map-keys($sizes) {
+      &.-#{$type} {
+        font-size: map-get(map-get($sizes, $type), font-size);
+        line-height: map-get(map-get($sizes, $type), line-height);
+        padding: map-get(map-get($sizes, $type), padding);
+
+        .a-icon {
+          height: map-get(map-get(map-get($sizes, $type), icons), height);
+          width: map-get(map-get(map-get($sizes, $type), icons), width);
+
+          &[class^="icon-"], &[class*=" icon-"] {
+            font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
+            line-height:map-get(map-get(map-get($sizes, $type), icons), line-height);
+          }
+        }
+
+        .a-spinner {
+          height: map-get(map-get(map-get($sizes, $type), icons), height);
+          width: map-get(map-get(map-get($sizes, $type), icons), width);
+        }
+
+        &.-icon {
+          padding: map-get(map-get(map-get($sizes, $type), icons), padding);
+        }
+
+        &.-pill {
+          border-radius: map-get(map-get($sizes, $type), border-radius);
+        }
+      }
+    }
+
+    &:hover,
+    &.-hover {
+      border: $border solid set-color(grey, 40);
+      box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+      text-decoration: none;
+    }
+
+    &:focus,
+    &.-focus {
+      border: $border solid set-color(grey, 40);
+      box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
+      z-index: $zindex-prominent;
+    }
+
+    &:active,
+    &.-active {
+      &,
+      &:focus,
+      &.-focus {
+        background-color: set-color(grey, 20);
+        border: $border solid set-color(grey, 40);
+        box-shadow: inset 0 1px 2px 0 rgba(set-color(black), 0.2);
+      }
+    }
+
+    &.-icon {
+      padding: (0.5rem - $border);
+    }
+
+    &.-pill {
+      border-radius: 1rem;
+    }
+
+    &.-float {
+      border-radius: 50%;
+      padding: 0.6875rem;
+      transition: transform 0.2s cubic-bezier(0.95, -0.18, 0.65, 2.46);
 
       .a-icon {
         height: 1rem;
         width: 1rem;
       }
 
-      .a-spinner {
-        height: 1rem;
-        width: 1rem;
+      &:active,
+      &.-active,
+      &:focus,
+      &.-focus,
+      &:hover,
+      &.-hover {
+        transform: scale(1.2);
+      }
+    }
+
+    &.-fluid:not(.-float) {
+      width: 100%;
+    }
+
+    &.-close {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      opacity: 0.6;
+
+      &:hover,
+      &.-hover {
+        border: none;
+        box-shadow: none;
+        opacity: 1;
       }
 
-      &__content {
-        align-items: center;
-        display: inline-flex;
-        justify-content: center;
+      &:focus,
+      &.-focus {
+        border: none;
+        box-shadow: none;
+      }
 
-        & > :not(:last-child) {
-          margin-right: 0.5rem;
+      &:active,
+      &.-active {
+        &,
+        &:focus,
+        &.-focus {
+          background-color: transparent;
+          border: none;
+          box-shadow: none;
         }
       }
+    }
+
+    &.-outline {
+      background-color: transparent;
+      border: $border solid set-color(grey, 50);
+
+      &:hover,
+      &.-hover {
+        background-color: set-color(grey, 50);
+        color: set-color(white);
+
+        .a-icon {
+          color: set-color(white);
+        }
+
+        .a-spinner__icon .path {
+          stroke: set-color(white);
+        }
+      }
+
+      &:focus,
+      &.-focus {
+        border: $border solid set-color(grey, 50);
+        box-shadow: 0 0 0 3px rgba(set-color(grey, 50), 0.3);
+      }
+
+      &:active,
+      &.-active {
+        &,
+        &:focus,
+        &.-focus {
+          background-color: set-color(grey, 60);
+          border: $border solid rgba(set-color(black), 0.2);
+          box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
+          color: set-color(white);
+        }
+
+        .a-icon {
+          color: set-color(white);
+        }
+      }
+    }
+
+    &.-flat {
+      background-color: transparent;
+      border: $border solid transparent;
+      box-shadow: none;
+      color: set-color(grey, 90);
 
       @each $type in map-keys($sizes) {
         &.-#{$type} {
           font-size: map-get(map-get($sizes, $type), font-size);
           line-height: map-get(map-get($sizes, $type), line-height);
-          padding: map-get(map-get($sizes, $type), padding);
 
           .a-icon {
             height: map-get(map-get(map-get($sizes, $type), icons), height);
@@ -192,21 +355,13 @@ $sizes: (
 
             &[class^="icon-"], &[class*=" icon-"] {
               font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
-              line-height:map-get(map-get(map-get($sizes, $type), icons), line-height);
+              line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
             }
           }
 
           .a-spinner {
             height: map-get(map-get(map-get($sizes, $type), icons), height);
             width: map-get(map-get(map-get($sizes, $type), icons), width);
-          }
-
-          &.-icon {
-            padding: map-get(map-get(map-get($sizes, $type), icons), padding);
-          }
-
-          &.-pill {
-            border-radius: map-get(map-get($sizes, $type), border-radius);
           }
         }
       }
@@ -215,136 +370,6 @@ $sizes: (
       &.-hover {
         border: $border solid set-color(grey, 40);
         box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
-        text-decoration: none;
-      }
-
-      &:focus,
-      &.-focus {
-        border: $border solid set-color(grey, 40);
-        box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
-        z-index: $zindex-prominent;
-      }
-
-      &:active,
-      &.-active {
-        &,
-        &:focus,
-        &.-focus {
-          background-color: set-color(grey, 20);
-          border: $border solid set-color(grey, 40);
-          box-shadow: inset 0 1px 2px 0 rgba(set-color(black), 0.2);
-        }
-      }
-
-      &.-icon {
-        padding: (0.5rem - $border);
-      }
-
-      &.-pill {
-        border-radius: 1rem;
-      }
-
-      &.-float {
-        border-radius: 50%;
-        padding: 0.6875rem;
-        transition: transform 0.2s cubic-bezier(0.95, -0.18, 0.65, 2.46);
-
-        .a-icon {
-          height: 1rem;
-          width: 1rem;
-        }
-
-        &:active,
-        &.-active,
-        &:focus,
-        &.-focus,
-        &:hover,
-        &.-hover {
-          transform: scale(1.2);
-        }
-      }
-
-      &.-fluid:not(.-float) {
-        width: 100%;
-      }
-
-      &.-close {
-        background-color: transparent;
-        border: none;
-        box-shadow: none;
-        opacity: 0.6;
-
-        &:hover,
-        &.-hover {
-          border: none;
-          box-shadow: none;
-          opacity: 1;
-        }
-
-        &:focus,
-        &.-focus {
-          border: none;
-          box-shadow: none;
-        }
-
-        &:active,
-        &.-active {
-          &,
-          &:focus,
-          &.-focus {
-            background-color: transparent;
-            border: none;
-            box-shadow: none;
-          }
-        }
-      }
-
-      &.-outline {
-        background-color: transparent;
-        border: $border solid set-color(grey, 50);
-
-        &:hover,
-        &.-hover {
-          background-color: set-color(grey, 50);
-          color: set-color(white);
-
-          .a-icon {
-            color: set-color(white);
-          }
-
-          .a-spinner__icon .path {
-            stroke: set-color(white);
-          }
-        }
-
-        &:focus,
-        &.-focus {
-          border: $border solid set-color(grey, 50);
-          box-shadow: 0 0 0 3px rgba(set-color(grey, 50), 0.3);
-        }
-
-        &:active,
-        &.-active {
-          &,
-          &:focus,
-          &.-focus {
-            background-color: set-color(grey, 60);
-            border: $border solid rgba(set-color(black), 0.2);
-            box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
-            color: set-color(white);
-          }
-
-          .a-icon {
-            color: set-color(white);
-          }
-        }
-      }
-
-      &.-flat {
-        background-color: transparent;
-        border: $border solid transparent;
-        box-shadow: none;
-        color: set-color(grey, 90);
 
         @each $type in map-keys($sizes) {
           &.-#{$type} {
@@ -367,187 +392,127 @@ $sizes: (
             }
           }
         }
+      }
 
-        &:hover,
-        &.-hover {
-          border: $border solid set-color(grey, 40);
-          box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+      &:focus,
+      &.-focus {
+        border: $border solid set-color(grey, 40);
+        box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
 
-          @each $type in map-keys($sizes) {
-            &.-#{$type} {
-              font-size: map-get(map-get($sizes, $type), font-size);
-              line-height: map-get(map-get($sizes, $type), line-height);
+        &.-icon {
+          padding: (0.5rem - $border);
+        }
 
-              .a-icon {
-                height: map-get(map-get(map-get($sizes, $type), icons), height);
-                width: map-get(map-get(map-get($sizes, $type), icons), width);
+        @each $type in map-keys($sizes) {
+          &.-#{$type} {
+            font-size: map-get(map-get($sizes, $type), font-size);
+            line-height: map-get(map-get($sizes, $type), line-height);
+            padding: map-get(map-get($sizes, $type), padding);
 
-                &[class^="icon-"], &[class*=" icon-"] {
-                  font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
-                  line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
-                }
+            .a-icon {
+              height: map-get(map-get(map-get($sizes, $type), icons), height);
+              width: map-get(map-get(map-get($sizes, $type), icons), width);
+
+              &[class^="icon-"], &[class*=" icon-"] {
+                font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
+                line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
               }
+            }
 
-              .a-spinner {
-                height: map-get(map-get(map-get($sizes, $type), icons), height);
-                width: map-get(map-get(map-get($sizes, $type), icons), width);
-              }
+            .a-spinner {
+              height: map-get(map-get(map-get($sizes, $type), icons), height);
+              width: map-get(map-get(map-get($sizes, $type), icons), width);
+            }
+
+            &.-icon {
+              padding: map-get(map-get(map-get($sizes, $type), icons), padding);
             }
           }
         }
+      }
 
+      &:active,
+      &.-active {
+        &,
         &:focus,
         &.-focus {
-          border: $border solid set-color(grey, 40);
-          box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
-
-          &.-icon {
-            padding: (0.5rem - $border);
-          }
-
-          @each $type in map-keys($sizes) {
-            &.-#{$type} {
-              font-size: map-get(map-get($sizes, $type), font-size);
-              line-height: map-get(map-get($sizes, $type), line-height);
-              padding: map-get(map-get($sizes, $type), padding);
-
-              .a-icon {
-                height: map-get(map-get(map-get($sizes, $type), icons), height);
-                width: map-get(map-get(map-get($sizes, $type), icons), width);
-
-                &[class^="icon-"], &[class*=" icon-"] {
-                  font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
-                  line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
-                }
-              }
-
-              .a-spinner {
-                height: map-get(map-get(map-get($sizes, $type), icons), height);
-                width: map-get(map-get(map-get($sizes, $type), icons), width);
-              }
-
-              &.-icon {
-                padding: map-get(map-get(map-get($sizes, $type), icons), padding);
-              }
-            }
-          }
+          background-color: set-color(grey, 20);
+          border: $border solid rgba(set-color(black), 0.2);
+          box-shadow: inset 0 1px 2px 0 rgba(set-color(black), 0.2);
         }
 
-        &:active,
-        &.-active {
-          &,
-          &:focus,
-          &.-focus {
-            background-color: set-color(grey, 20);
-            border: $border solid rgba(set-color(black), 0.2);
-            box-shadow: inset 0 1px 2px 0 rgba(set-color(black), 0.2);
-          }
+        &.-icon {
+          padding: (0.5rem - $border);
+        }
 
-          &.-icon {
-            padding: (0.5rem - $border);
-          }
+        @each $type in map-keys($sizes) {
+          &.-#{$type} {
+            font-size: map-get(map-get($sizes, $type), font-size);
+            line-height: map-get(map-get($sizes, $type), line-height);
+            padding: map-get(map-get($sizes, $type), padding);
 
-          @each $type in map-keys($sizes) {
-            &.-#{$type} {
-              font-size: map-get(map-get($sizes, $type), font-size);
-              line-height: map-get(map-get($sizes, $type), line-height);
-              padding: map-get(map-get($sizes, $type), padding);
+            .a-icon {
+              height: map-get(map-get(map-get($sizes, $type), icons), height);
+              width: map-get(map-get(map-get($sizes, $type), icons), width);
 
-              .a-icon {
-                height: map-get(map-get(map-get($sizes, $type), icons), height);
-                width: map-get(map-get(map-get($sizes, $type), icons), width);
-
-                &[class^="icon-"], &[class*=" icon-"] {
-                  font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
-                  line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
-                }
+              &[class^="icon-"], &[class*=" icon-"] {
+                font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
+                line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
               }
+            }
 
-              .a-spinner {
-                height: map-get(map-get(map-get($sizes, $type), icons), height);
-                width: map-get(map-get(map-get($sizes, $type), icons), width);
-              }
+            .a-spinner {
+              height: map-get(map-get(map-get($sizes, $type), icons), height);
+              width: map-get(map-get(map-get($sizes, $type), icons), width);
+            }
 
-              &.-icon {
-                padding: (map-get(map-get(map-get($sizes, $type), icons), padding)) - $border;
-              }
+            &.-icon {
+              padding: (map-get(map-get(map-get($sizes, $type), icons), padding)) - $border;
             }
           }
         }
       }
     }
+  }
 
-    @each $color-definition in $state-colors {
-      $type: nth($color-definition, 1);
-      $color: map_get(nth($color-definition, 2), color);
-      $button-text-color: map_get(nth($color-definition, 2), button-text-color);
-      $tone: map_get(nth($color-definition, 2), tone);
-      $tone-hover: map_get(nth($color-definition, 2), tone-hover);
-      $tone-focus: map_get(nth($color-definition, 2), tone-focus);
-      $tone-focus-shadow: map_get(nth($color-definition, 2), tone-hover);
+  @each $color-definition in $state-colors {
+    $type: nth($color-definition, 1);
+    $color: map_get(nth($color-definition, 2), color);
+    $button-text-color: map_get(nth($color-definition, 2), button-text-color);
+    $tone: map_get(nth($color-definition, 2), tone);
+    $tone-hover: map_get(nth($color-definition, 2), tone-hover);
+    $tone-focus: map_get(nth($color-definition, 2), tone-focus);
+    $tone-focus-shadow: map_get(nth($color-definition, 2), tone-hover);
 
-      @if( $type == 'inverse') {
-        &.-#{$type} {
-          .a-icon {
-            color: set-color(grey, 50);
-          }
+    @if( $type == 'inverse') {
+      &.-#{$type} {
+        .a-icon {
+          color: set-color(grey, 50);
+        }
 
-          &.-icon {
-            color: set-color(grey, 50);
-
-            &:hover,
-            &.-hover {
-              background-color: transparent;
-              border: $border solid transparent;
-              color: set-color($color);
-
-              .a-icon {
-                color: set-color($color);
-              }
-            }
-
-            &:focus,
-            &.-focus {
-              background-color: transparent;
-              border: $border solid transparent;
-              box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
-
-              .a-icon {
-                color: set-color($color);
-              }
-            }
-
-            &:active,
-            &.-active {
-              &,
-              &:focus,
-              &.-focus {
-                background-color: transparent;
-                border: $border solid transparent;
-                box-shadow: none;
-                color: set-color($color);
-              }
-            }
-          }
-
-          &.-flat {
-            background-color: transparent;
-            border: $border solid transparent;
-            box-shadow: none;
-            color: set-color($color);
-          }
+        &.-icon {
+          color: set-color(grey, 50);
 
           &:hover,
           &.-hover {
-            background-color: set-color(transparent);
-            border: $border solid set-color($color);
+            background-color: transparent;
+            border: $border solid transparent;
+            color: set-color($color);
+
+            .a-icon {
+              color: set-color($color);
+            }
           }
 
           &:focus,
           &.-focus {
-            background-color: set-color(transparent);
-            border: $border solid set-color($color);
+            background-color: transparent;
+            border: $border solid transparent;
             box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
+
+            .a-icon {
+              color: set-color($color);
+            }
           }
 
           &:active,
@@ -556,37 +521,110 @@ $sizes: (
             &:focus,
             &.-focus {
               background-color: transparent;
-              border: $border solid set-color($color);
+              border: $border solid transparent;
               box-shadow: none;
               color: set-color($color);
             }
           }
         }
-      } @else {
-        &.-#{$type} {
-          background-color: set-color($color, $tone);
-          border: $border solid set-color($color, $tone);
-          box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
-          color: set-color($button-text-color);
 
-          .a-icon {
-            color: inherit;
+        &.-flat {
+          background-color: transparent;
+          border: $border solid transparent;
+          box-shadow: none;
+          color: set-color($color);
+        }
+
+        &:hover,
+        &.-hover {
+          background-color: set-color(transparent);
+          border: $border solid set-color($color);
+        }
+
+        &:focus,
+        &.-focus {
+          background-color: set-color(transparent);
+          border: $border solid set-color($color);
+          box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
+        }
+
+        &:active,
+        &.-active {
+          &,
+          &:focus,
+          &.-focus {
+            background-color: transparent;
+            border: $border solid set-color($color);
+            box-shadow: none;
+            color: set-color($color);
           }
+        }
+      }
+    } @else {
+      &.-#{$type} {
+        background-color: set-color($color, $tone);
+        border: $border solid set-color($color, $tone);
+        box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
+        color: set-color($button-text-color);
+
+        .a-icon {
+          color: inherit;
+        }
+
+        .a-spinner__icon .path {
+          stroke: set-color(white);
+        }
+
+        &:hover,
+        &.-hover {
+          background-color: set-color($color, $tone-hover);
+          border: $border solid set-color($color, $tone-hover);
+          box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+        }
+
+        &:focus,
+        &.-focus {
+          box-shadow: 0 0 0 3px rgba(set-color($color, 70), 0.3);
+        }
+
+        &:active,
+        &.-active {
+          &,
+          &:focus,
+          &.-focus {
+            background-color: set-color($color, $tone-focus);
+            border: $border solid rgba(set-color(black), 0.2);
+            box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
+          }
+        }
+
+        &.-outline {
+          background-color: transparent;
+          border: $border solid set-color($color, $tone);
+          color: set-color($color, $tone);
 
           .a-spinner__icon .path {
-            stroke: set-color(white);
+            stroke: set-color($color, $tone);
           }
 
           &:hover,
           &.-hover {
-            background-color: set-color($color, $tone-hover);
-            border: $border solid set-color($color, $tone-hover);
-            box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+            background-color: set-color($color, $tone);
+            @if ($type == 'secondary') {
+              color: $text-color;
+            } @else {
+              color: set-color(white);
+            }
+
+            .a-spinner__icon .path {
+              stroke: set-color(white);
+            }
           }
 
           &:focus,
           &.-focus {
-            box-shadow: 0 0 0 3px rgba(set-color($color, 70), 0.3);
+            border: $border solid set-color($color, $tone);
+            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
           }
 
           &:active,
@@ -597,81 +635,40 @@ $sizes: (
               background-color: set-color($color, $tone-focus);
               border: $border solid rgba(set-color(black), 0.2);
               box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
-            }
-          }
-
-          &.-outline {
-            background-color: transparent;
-            border: $border solid set-color($color, $tone);
-            color: set-color($color, $tone);
-
-            .a-spinner__icon .path {
-              stroke: set-color($color, $tone);
-            }
-
-            &:hover,
-            &.-hover {
-              background-color: set-color($color, $tone);
-              @if ($type == 'secondary') {
-                color: $text-color;
-              } @else {
-                color: set-color(white);
-              }
+              color: set-color(white);
 
               .a-spinner__icon .path {
                 stroke: set-color(white);
               }
             }
+          }
+        }
 
-            &:focus,
-            &.-focus {
-              border: $border solid set-color($color, $tone);
-              box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
-            }
+        &.-flat {
+          background-color: transparent;
+          border: $border solid transparent;
+          box-shadow: none;
+          color: set-color($color, $tone);
 
-            &:active,
-            &.-active {
-              &,
-              &:focus,
-              &.-focus {
-                background-color: set-color($color, $tone-focus);
-                border: $border solid rgba(set-color(black), 0.2);
-                box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
-                color: set-color(white);
-
-                .a-spinner__icon .path {
-                  stroke: set-color(white);
-                }
-              }
-            }
+          &:hover,
+          &.-hover {
+            border: $border solid set-color($color, $tone);
           }
 
-          &.-flat {
-            background-color: transparent;
-            border: $border solid transparent;
-            box-shadow: none;
-            color: set-color($color, $tone);
+          &:focus,
+          &.-focus {
+            border: $border solid set-color($color, $tone);
+            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
+          }
 
-            &:hover,
-            &.-hover {
-              border: $border solid set-color($color, $tone);
-            }
-
+          &:active,
+          &.-active {
+            &,
             &:focus,
             &.-focus {
-              border: $border solid set-color($color, $tone);
-              box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
-            }
-
-            &:active,
-            &.-active {
-              &,
-              &:focus,
-              &.-focus {
-                border: $border solid rgba(set-color(black), 0.2);
-                box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
-                color: set-color(white);
-              }
+              border: $border solid rgba(set-color(black), 0.2);
+              box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
+              color: set-color(white);
             }
           }
         }

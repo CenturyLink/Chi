@@ -1,405 +1,398 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
-* { // sass-lint:disable-line no-universal-selectors
-  -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
-  -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
 }
 
-html {
-  -ms-overflow-style: -ms-autohiding-scrollbar; // sass-lint:disable-line no-vendor-prefixes
+a {
+  @include anchor-style;
 }
 
-.chi {
-  color: $text-color;
-  font-family: $font-family;
+h1,
+.a-h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 4rem;
+  margin: 2rem 0;
+}
+
+h2,
+.a-h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3rem;
+  margin: 1rem 0;
+}
+
+h3,
+.a-h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 2rem;
+  margin: 1rem 0;
+}
+
+h4,
+.a-h4 {
+  font-size: $text-larger;
+  font-weight: 600;
+  line-height: 2rem;
+  margin: 0.5rem 0;
+}
+
+h5,
+.a-h5 {
+  font-size: $text-large;
+  font-weight: 600;
+  line-height: $line-height-large;
+  margin: 0.5rem 0;
+}
+
+h6,
+.a-h6 {
+  font-size: $text;
+  font-weight: 600;
   line-height: $line-height;
+  margin: 0.5rem 0;
+}
 
-  a {
-    @include anchor-style;
-  }
+blockquote,
+.a-blockquote {
+  border-left: 0.25rem solid set-color(grey, 30);
+  padding-left: 1rem;
+}
 
-  h1,
-  .a-h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 4rem;
-    margin: 2rem 0;
-  }
+abbr,
+.a-abbr {
+  border-bottom: 0;
+  cursor: help;
+  text-decoration: underline dotted;
+}
 
-  h2,
-  .a-h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 3rem;
-    margin: 1rem 0;
-  }
+code,
+.a-code,
+pre {
+  font-family: $font-family-monospace;
+  font-size: $text-small;
+}
 
-  h3,
-  .a-h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    line-height: 2rem;
-    margin: 1rem 0;
-  }
+code {
+  color: set-color(mint, 70);
+  word-break: break-word;
+}
 
-  h4,
-  .a-h4 {
-    font-size: $text-larger;
-    font-weight: 600;
-    line-height: 2rem;
-    margin: 0.5rem 0;
-  }
-
-  h5,
-  .a-h5 {
-    font-size: $text-large;
-    font-weight: 600;
-    line-height: $line-height-large;
-    margin: 0.5rem 0;
-  }
-
-  h6,
-  .a-h6 {
-    font-size: $text;
-    font-weight: 600;
-    line-height: $line-height;
-    margin: 0.5rem 0;
-  }
-
-  blockquote,
-  .a-blockquote {
-    border-left: 0.25rem solid set-color(grey, 30);
-    padding-left: 1rem;
-  }
-
-  abbr,
-  .a-abbr {
-    border-bottom: 0;
-    cursor: help;
-    text-decoration: underline dotted;
-  }
-
-  code,
-  .a-code,
-  pre {
-    font-family: $font-family-monospace;
-    font-size: $text-small;
-  }
+pre {
+  -ms-overflow-style: -ms-autohiding-scrollbar; // sass-lint:disable-line no-vendor-prefixes
+  background-color: set-color(grey, 15);
+  border-radius: $border-radius;
+  color: $text-color;
+  display: block;
+  font-size: $text-small;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  overflow: auto;
+  padding: 1.5rem;
+  width: 100%;
 
   code {
-    color: set-color(mint, 70);
-    word-break: break-word;
+    color: inherit;
+    font-size: inherit;
+    word-break: normal;
   }
+}
 
-  pre {
-    -ms-overflow-style: -ms-autohiding-scrollbar; // sass-lint:disable-line no-vendor-prefixes
-    background-color: set-color(grey, 15);
-    border-radius: $border-radius;
-    color: $text-color;
-    display: block;
-    font-size: $text-small;
-    margin-bottom: 0.5rem;
-    margin-top: 0;
-    overflow: auto;
-    padding: 1.5rem;
-    width: 100%;
+ul,
+ol {
+  &.-inline {
+    display: inline-flex;
+    list-style: none;
+    padding-left: 0;
 
-    code {
-      color: inherit;
-      font-size: inherit;
-      word-break: normal;
-    }
-  }
-
-  ul,
-  ol {
-    &.-inline {
+    >li {
       display: inline-flex;
-      list-style: none;
-      padding-left: 0;
+      padding: 0 0.5rem;
 
-      >li {
-        display: inline-flex;
-        padding: 0 0.5rem;
-
-        ul,
-        ol {
-          &.-inline {
-            margin-left: 0.5rem;
-            margin-right: -0.5rem;
-          }
+      ul,
+      ol {
+        &.-inline {
+          margin-left: 0.5rem;
+          margin-right: -0.5rem;
         }
       }
     }
+  }
 
-    &.-nostyle {
+  &.-nostyle {
+    list-style: none;
+    padding-left: 0;
+
+    >li {
       list-style: none;
       padding-left: 0;
-
-      >li {
-        list-style: none;
-        padding-left: 0;
-      }
-    }
-
-    // Legacy code start
-    &.-noStyle {
-      list-style: none;
-      padding-left: 0;
-
-      >li {
-        list-style: none;
-        padding-left: 0;
-      }
-    }
-    // Legacy code end
-  }
-
-  p,
-  .-text {
-    font-size: $text;
-    line-height: $line-height;
-  }
-
-  .-text--large {
-    font-size: $text-large;
-    line-height: $line-height-large;
-  }
-
-  .-text--larger {
-    font-size: $text-larger;
-    line-height: $line-height-larger;
-  }
-
-  small,
-  .-text--small {
-    font-size: $text-small;
-    line-height: $line-height-small;
-  }
-
-  .-text--smaller {
-    font-size: $text-smaller;
-    line-height: $line-height-smaller;
-  }
-
-  .-text--justify {
-    text-align: justify;
-  }
-
-  .-text--left {
-    text-align: left;
-  }
-
-  .-text--center {
-    text-align: center;
-  }
-
-  .-text--right {
-    text-align: right;
-  }
-
-  .-text--lowercase {
-    text-transform: lowercase;
-  }
-
-  .-text--uppercase {
-    text-transform: uppercase;
-  }
-
-  .-text--capitalized {
-    text-transform: capitalize;
-  }
-
-  .-text--thin {
-    font-weight: 300;
-  }
-
-  .-text--normal {
-    font-weight: normal;
-  }
-
-  .-text--bold {
-    font-weight: 600;
-  }
-
-  .-text--bolder {
-    font-weight: 800;
-  }
-
-  .-text--nowrap {
-    white-space: nowrap !important;
-  }
-
-  .-text--truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  // text colors
-  .-text--body {
-    color: $text-color;
-  }
-
-  .-text--inverse {
-    color: $text-inverse;
-  }
-
-  .-text--white {
-    color: $text-white;
-  }
-
-  .-text--brand,
-  .-text--primary {
-    color: $primary;
-  }
-
-  .-text--secondary {
-    color: $secondary;
-  }
-
-  .-text--secondary-alt {
-    color: $secondary-alt;
-  }
-
-  .-text--success {
-    color: $success-color;
-  }
-
-  .-text--danger {
-    color: $danger-color;
-  }
-
-  .-text--info {
-    color: $info-color;
-  }
-
-  .-text--warning {
-    color: $warning-color;
-  }
-
-  .-text--muted {
-    color: $muted-color;
-  }
-
-  // line heights
-  @for $index from 1 through 9 {
-    .-lh--#{$index} {
-      line-height: ($index / 2) + rem;
     }
   }
 
   // Legacy code start
-  .-textLarge {
-    font-size: $text-large;
-    line-height: $line-height-large;
-  }
+  &.-noStyle {
+    list-style: none;
+    padding-left: 0;
 
-  .-textLarger {
-    font-size: $text-larger;
-    line-height: $line-height-larger;
-  }
-
-  small,
-  .-textSmall {
-    font-size: $text-small;
-    line-height: $line-height-small;
-  }
-
-  .-textSmaller {
-    font-size: $text-smaller;
-    line-height: $line-height-smaller;
-  }
-
-  .-textJustify {
-    text-align: justify;
-  }
-
-  .-textLeft {
-    text-align: left;
-  }
-
-  .-textCenter {
-    text-align: center;
-  }
-
-  .-textRight {
-    text-align: right;
-  }
-
-  .-textLowercase {
-    text-transform: lowercase;
-  }
-
-  .-textUppercase {
-    text-transform: uppercase;
-  }
-
-  .-textCapitalized {
-    text-transform: capitalize;
-  }
-
-  .-textThin {
-    font-weight: 300;
-  }
-
-  .-textNormal {
-    font-weight: normal;
-  }
-
-  .-textBold {
-    font-weight: 600;
-  }
-
-  .-textBolder {
-    font-weight: 800;
-  }
-
-  .-textNoWrap {
-    white-space: nowrap !important;
-  }
-
-  .-textTruncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  // text colors
-  .-textInverse {
-    color: $text-inverse;
-  }
-
-  .-textBrand {
-    color: $brand-color;
-  }
-
-  .-textSuccess {
-    color: $success-color;
-  }
-
-  .-textDanger {
-    color: $danger-color;
-  }
-
-  .-textInfo {
-    color: $info-color;
-  }
-
-  .-textWarning {
-    color: $warning-color;
-  }
-
-  .-textMuted {
-    color: $muted-color;
-  }
-
-  // line heights
-  @for $index from 1 through 9 {
-    .-lh#{$index} {
-      line-height: ($index / 2) + rem;
+    >li {
+      list-style: none;
+      padding-left: 0;
     }
   }
   // Legacy code end
 }
+
+p,
+.-text {
+  font-size: $text;
+  line-height: $line-height;
+}
+
+.-text--large {
+  font-size: $text-large;
+  line-height: $line-height-large;
+}
+
+.-text--larger {
+  font-size: $text-larger;
+  line-height: $line-height-larger;
+}
+
+small,
+.-text--small {
+  font-size: $text-small;
+  line-height: $line-height-small;
+}
+
+.-text--smaller {
+  font-size: $text-smaller;
+  line-height: $line-height-smaller;
+}
+
+.-text--justify {
+  text-align: justify;
+}
+
+.-text--left {
+  text-align: left;
+}
+
+.-text--center {
+  text-align: center;
+}
+
+.-text--right {
+  text-align: right;
+}
+
+.-text--lowercase {
+  text-transform: lowercase;
+}
+
+.-text--uppercase {
+  text-transform: uppercase;
+}
+
+.-text--capitalized {
+  text-transform: capitalize;
+}
+
+.-text--thin {
+  font-weight: 300;
+}
+
+.-text--normal {
+  font-weight: normal;
+}
+
+.-text--bold {
+  font-weight: 600;
+}
+
+.-text--bolder {
+  font-weight: 800;
+}
+
+.-text--nowrap {
+  white-space: nowrap !important;
+}
+
+.-text--truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// text colors
+.-text--body {
+  color: $text-color;
+}
+
+.-text--inverse {
+  color: $text-inverse;
+}
+
+.-text--white {
+  color: $text-white;
+}
+
+.-text--brand,
+.-text--primary {
+  color: $primary;
+}
+
+.-text--secondary {
+  color: $secondary;
+}
+
+.-text--secondary-alt {
+  color: $secondary-alt;
+}
+
+.-text--success {
+  color: $success-color;
+}
+
+.-text--danger {
+  color: $danger-color;
+}
+
+.-text--info {
+  color: $info-color;
+}
+
+.-text--warning {
+  color: $warning-color;
+}
+
+.-text--muted {
+  color: $muted-color;
+}
+
+// line heights
+@for $index from 1 through 9 {
+  .-lh--#{$index} {
+    line-height: ($index / 2) + rem;
+  }
+}
+
+// Legacy code start
+.-textLarge {
+  font-size: $text-large;
+  line-height: $line-height-large;
+}
+
+.-textLarger {
+  font-size: $text-larger;
+  line-height: $line-height-larger;
+}
+
+small,
+.-textSmall {
+  font-size: $text-small;
+  line-height: $line-height-small;
+}
+
+.-textSmaller {
+  font-size: $text-smaller;
+  line-height: $line-height-smaller;
+}
+
+.-textJustify {
+  text-align: justify;
+}
+
+.-textLeft {
+  text-align: left;
+}
+
+.-textCenter {
+  text-align: center;
+}
+
+.-textRight {
+  text-align: right;
+}
+
+.-textLowercase {
+  text-transform: lowercase;
+}
+
+.-textUppercase {
+  text-transform: uppercase;
+}
+
+.-textCapitalized {
+  text-transform: capitalize;
+}
+
+.-textThin {
+  font-weight: 300;
+}
+
+.-textNormal {
+  font-weight: normal;
+}
+
+.-textBold {
+  font-weight: 600;
+}
+
+.-textBolder {
+  font-weight: 800;
+}
+
+.-textNoWrap {
+  white-space: nowrap !important;
+}
+
+.-textTruncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// text colors
+.-textInverse {
+  color: $text-inverse;
+}
+
+.-textBrand {
+  color: $brand-color;
+}
+
+.-textSuccess {
+  color: $success-color;
+}
+
+.-textDanger {
+  color: $danger-color;
+}
+
+.-textInfo {
+  color: $info-color;
+}
+
+.-textWarning {
+  color: $warning-color;
+}
+
+.-textMuted {
+  color: $muted-color;
+}
+
+// line heights
+@for $index from 1 through 9 {
+  .-lh#{$index} {
+    line-height: ($index / 2) + rem;
+  }
+}
+// Legacy code end

@@ -1,5 +1,5 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
 $brand-sizes: (
   xs: 0.75rem,
@@ -13,21 +13,19 @@ $brand-sizes: (
   xl: 6rem,
   xxl: 8rem);
 
-.chi {
-  .a-brand {
-    & > img,
-    & > svg {
-      display: block;
-      height: 2rem;
-      width: auto;
-    }
+.a-brand {
+  & > img,
+  & > svg {
+    display: block;
+    height: 2rem;
+    width: auto;
+  }
 
-    @each $type in map-keys($brand-sizes) {
-      &.-#{$type} {
-        & > img,
-        & > svg {
-          height: map-get($brand-sizes, $type);
-        }
+  @each $type in map-keys($brand-sizes) {
+    &.-#{$type} {
+      & > img,
+      & > svg {
+        height: map-get($brand-sizes, $type);
       }
     }
   }

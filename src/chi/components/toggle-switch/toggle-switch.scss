@@ -1,113 +1,111 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
-.chi {
-  input {
-    &[type='checkbox'] {
-      &.a-input {
-        &.-toggle {
-          left: -9999px;
-          position: absolute;
+input {
+  &[type='checkbox'] {
+    &.a-input {
+      &.-toggle {
+        left: -9999px;
+        position: absolute;
 
-          & + label {
-            background-color: set-color(grey, 50);
+        & + label {
+          background-color: set-color(grey, 50);
+          border: 0;
+          border-radius: 12px;
+          cursor: pointer;
+          display: inline-block;
+          height: 1.5rem;
+          line-height: $line-height;
+          position: relative;
+          transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+          width: 3.5rem;
+
+          &::before {
+            background-color: set-color(white);
+            background-image: none;
             border: 0;
             border-radius: 12px;
-            cursor: pointer;
-            display: inline-block;
+            content: '';
+            display: block;
+            height: 1.25rem;
+            left: 0.125rem;
+            margin: 0;
+            opacity: 1;
+            position: absolute;
+            top: 0.125rem;
+            transition: left 0.2s cubic-bezier(1, 0.38, 0, 1.19) 0.1s;
+            width: 1.25rem;
+          }
+
+          &::after {
+            background-image: none;
+            color: set-color(white);
+            content: 'OFF';
+            display: block;
+            font-size: $text-smallest;
+            font-weight: bold;
             height: 1.5rem;
-            line-height: $line-height;
-            position: relative;
-            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            width: 3.5rem;
+            left: 1.5625rem;
+            opacity: 1;
+            position: absolute;
+            top: 0;
+            transform: scale(1);
+            transition: left 0.2s ease-in 0.1s;
+            word-wrap: normal;
+          }
+        }
+
+        &:checked {
+          & + label {
+            background-color: $brand-color;
 
             &::before {
-              background-color: set-color(white);
-              background-image: none;
-              border: 0;
-              border-radius: 12px;
-              content: '';
-              display: block;
-              height: 1.25rem;
-              left: 0.125rem;
-              margin: 0;
-              opacity: 1;
-              position: absolute;
-              top: 0.125rem;
-              transition: left 0.2s cubic-bezier(1, 0.38, 0, 1.19) 0.1s;
-              width: 1.25rem;
+              left: 2.125rem;
             }
 
             &::after {
-              background-image: none;
-              color: set-color(white);
-              content: 'OFF';
-              display: block;
-              font-size: $text-smallest;
-              font-weight: bold;
-              height: 1.5rem;
-              left: 1.5625rem;
-              opacity: 1;
-              position: absolute;
-              top: 0;
-              transform: scale(1);
-              transition: left 0.2s ease-in 0.1s;
-              word-wrap: normal;
+              content: 'ON';
+              left: 0.625rem;
             }
-          }
-
-          &:checked {
-            & + label {
-              background-color: $brand-color;
-
-              &::before {
-                left: 2.125rem;
-              }
-
-              &::after {
-                content: 'ON';
-                left: 0.625rem;
-              }
-            }
-
-            &:focus,
-            &.-focus {
-              & + label {
-                box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
-              }
-            }
-          }
-
-          &[disabled] + label {
-            opacity: 0.65;
-            pointer-events: none;
           }
 
           &:focus,
           &.-focus {
             & + label {
-              box-shadow: 0 0 0 0.25rem rgba(set-color(grey, 50), 0.25);
+              box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
+            }
+          }
+        }
 
-              &::before {
-                box-shadow: none;
-              }
+        &[disabled] + label {
+          opacity: 0.65;
+          pointer-events: none;
+        }
+
+        &:focus,
+        &.-focus {
+          & + label {
+            box-shadow: 0 0 0 0.25rem rgba(set-color(grey, 50), 0.25);
+
+            &::before {
+              box-shadow: none;
+            }
+          }
+        }
+
+        &.-noText {
+          & + label {
+            width: 2.5rem;
+
+            &::after {
+              display: none;
             }
           }
 
-          &.-noText {
+          &:checked {
             & + label {
-              width: 2.5rem;
-
-              &::after {
-                display: none;
-              }
-            }
-
-            &:checked {
-              & + label {
-                &::before {
-                  left: 1.125rem;
-                }
+              &::before {
+                left: 1.125rem;
               }
             }
           }

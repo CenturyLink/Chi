@@ -1,20 +1,18 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 @import 'input-text-variables';
 
-.chi {
-  label,
-  .a-label {
-    font-size: $text;
-    font-weight: 600;
-    line-height: $line-height-small;
-    margin-bottom: 0.5rem;
+label,
+.a-label {
+  font-size: $text;
+  font-weight: 600;
+  line-height: $line-height-small;
+  margin-bottom: 0.5rem;
 
-    @each $type in map-keys($sizes) {
-      &.-#{$type} {
-        font-size: map-get(map-get($sizes, $type), font-size);
-        line-height: map-get(map-get($sizes, $type), line-height);
-      }
+  @each $type in map-keys($sizes) {
+    &.-#{$type} {
+      font-size: map-get(map-get($sizes, $type), font-size);
+      line-height: map-get(map-get($sizes, $type), line-height);
     }
   }
 }

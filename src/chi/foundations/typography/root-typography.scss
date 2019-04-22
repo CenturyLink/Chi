@@ -1,0 +1,7 @@
+@import 'variables';
+
+%root-typography {
+  color: $text-color;
+  font-family: $font-family;
+  line-height: $line-height;
+}

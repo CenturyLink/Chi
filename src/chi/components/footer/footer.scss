@@ -1,98 +1,96 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
-.chi {
-  .o-footer {
-    background-color: transparent;
+.o-footer {
+  background-color: transparent;
+  width: 100%;
+  z-index: 1;
+
+  &__content {
+    position: relative;
     width: 100%;
-    z-index: 1;
+    text-decoration: none;
+  }
 
-    &__content {
-      position: relative;
-      width: 100%;
-      text-decoration: none;
-    }
+  &__top {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    padding: 3rem 1.5rem 3rem 1.5rem;
+    width: 100%;
+  }
 
-    &__top {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      flex-direction: row;
-      padding: 3rem 1.5rem 3rem 1.5rem;
-      width: 100%;
-    }
+  &__column {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0%;
+    justify-content: flex-start;
 
-    &__column {
-      align-items: flex-start;
-      display: flex;
-      flex-direction: column;
-      flex: 1 0 0%;
-      justify-content: flex-start;
-
-      & .-title {
-        font-size: $text;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
-
-      & a {
-        font-size: $text;
-      }
-    }
-
-    &__bottom {
-      align-items: center;
-      display: flex;
-      font-size: $text-smaller;
-      justify-content: space-between;
-      padding: 1.5rem;
+    & .-title {
+      font-size: $text;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
     }
 
     & a {
-      color: set-color(grey, 100);
-      text-decoration: none;
+      font-size: $text;
+    }
+  }
 
-      &:hover {
-        color: $brand-color;
-        cursor: pointer;
+  &__bottom {
+    align-items: center;
+    display: flex;
+    font-size: $text-smaller;
+    justify-content: space-between;
+    padding: 1.5rem;
+  }
+
+  & a {
+    color: set-color(grey, 100);
+    text-decoration: none;
+
+    &:hover {
+      color: $brand-color;
+      cursor: pointer;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-wrap: nowrap;
+
+    & > a {
+      &:not(:last-child) {
+        margin-right: 1rem;
       }
     }
+  }
 
-    &__menu {
-      display: flex;
-      flex-wrap: nowrap;
+  &.-inverse {
+    background-color: set-color(black);
 
-      & > a {
-        &:not(:last-child) {
-          margin-right: 1rem;
-        }
-      }
-    }
+    & .o-footer__column {
+      color: set-color(white);
 
-    &.-inverse {
-      background-color: set-color(black);
-
-      & .o-footer__column {
+      & a {
         color: set-color(white);
 
-        & a {
-          color: set-color(white);
-
-          &:hover {
-            color: $secondary-color;
-          }
+        &:hover {
+          color: $secondary-color;
         }
       }
+    }
 
-      & .o-footer__bottom {
-        color: set-color(grey, 50);
+    & .o-footer__bottom {
+      color: set-color(grey, 50);
 
-        & a {
-          color: set-color(white);
+      & a {
+        color: set-color(white);
 
-          &:hover {
-            color: $secondary-color;
-          }
+        &:hover {
+          color: $secondary-color;
         }
       }
     }

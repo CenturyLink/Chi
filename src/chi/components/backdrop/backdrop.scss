@@ -1,40 +1,37 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
-.chi {
+.a-backdrop {
+  align-items: center;
+  background-color: rgba(set-color(black), 0.65);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  overflow: hidden;
+  padding: 0 0.5rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $zindex-backdrop;
 
-  .a-backdrop {
-    align-items: center;
-    background-color: rgba(set-color(black), 0.65);
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    left: 0;
-    overflow: hidden;
-    padding: 0 0.5rem;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: $zindex-backdrop;
-
-    &.-animated {
-      transition: background-color 0.5s cubic-bezier(0.38, 0.52, 0.37, 1);
-
-      &.-closed {
-        background-color: rgba(set-color(black), 0);
-      }
-    }
-
-    &.-inverse {
-      background-color: rgba(set-color(white), 0.8);
-    }
+  &.-animated {
+    transition: background-color 0.5s cubic-bezier(0.38, 0.52, 0.37, 1);
 
     &.-closed {
-      display: none;
+      background-color: rgba(set-color(black), 0);
+    }
+  }
 
-      &.-transitioning {
-        display: flex;
-      }
+  &.-inverse {
+    background-color: rgba(set-color(white), 0.8);
+  }
+
+  &.-closed {
+    display: none;
+
+    &.-transitioning {
+      display: flex;
     }
   }
 }

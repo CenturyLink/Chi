@@ -1,267 +1,84 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
-.chi {
+.m-dropdown {
+  display: inline-block;
+  position: relative;
 
-  .m-dropdown {
-    display: inline-block;
-    position: relative;
+  .m-dropdown__menu {
+    left: 0;
+    min-width: 100%;
+    position:absolute;
+    z-index: $zindex-dropdown;
 
     .m-dropdown__menu {
-      left: 0;
-      min-width: 100%;
-      position:absolute;
-      z-index: $zindex-dropdown;
+      border: 0px solid transparent;
+      box-shadow: none;
+      padding-bottom: 0;
+      padding-top: 0;
+      position: initial;
 
       .m-dropdown__menu {
-        border: 0px solid transparent;
-        box-shadow: none;
-        padding-bottom: 0;
-        padding-top: 0;
-        position: initial;
+        &-item {
+          padding-left: 2.5rem;
+        }
 
         .m-dropdown__menu {
           &-item {
-            padding-left: 2.5rem;
+            padding-left: 4.5rem;
           }
 
           .m-dropdown__menu {
             &-item {
-              padding-left: 4.5rem;
-            }
-
-            .m-dropdown__menu {
-              &-item {
-                padding-left: 6.5rem;
-              }
+              padding-left: 6.5rem;
             }
           }
-        }
-      }
-    }
-
-    &__trigger {
-
-      &:not([data-position^="left"]) {
-
-        &:after {
-          background-image: url(../html-select/icon-chevron-thin-down.svg);
-          background-position: center center;
-          background-repeat: no-repeat;
-          background-size: .75rem .75rem;
-          content: '';
-          display: block;
-          height: 1rem;
-          margin-left: 0.75rem;
-          width: 0.75rem;
-        }
-
-        &.-lg:after, &.-large:after {//Legacy code: -large to be removed.
-          height: 1.5rem;
-          margin-left: 1rem;
-        }
-
-        &.-sm:after, &.-small:after { //Legacy code: -small to be removed.
-          background-size: .5rem .5rem;
-          height: 1rem;
-          margin-left: 0.5rem;
-        }
-
-        &[data-position^="top"]:after {
-          transform: rotate(-180deg);
-        }
-
-        &[data-position^="right"]:after {
-          transform: rotate(-90deg);
-        }
-
-        &.-animate {
-          &:after {
-            transition: transform 0.2s ease-in-out;
-          }
-
-          &.-active {
-            &:after {
-              transform: rotate(180deg);
-            }
-
-            &[data-position^="right"]:after {
-              transform: rotate(90deg);
-            }
-
-            &[data-position^="top"]:after {
-                transform: rotate(0deg);
-            }
-          }
-        }
-      }
-
-      &[data-position^="left"] {
-
-        &:before {
-          background-image: url(../html-select/icon-chevron-thin-down.svg);
-          background-position: center center;
-          background-repeat: no-repeat;
-          background-size: .75rem .75rem;
-          content: '';
-          height: 1rem;
-          margin-right: 0.75rem;
-          transform: rotate(90deg);
-          width: 0.75rem;
-        }
-
-        &.-lg:before, &.-large:before { //Legacy code: -large to be removed.
-          height: 1.5rem;
-          margin-right: 1rem;
-        }
-
-        &.-sm:before, &.-small:before { //Legacy code: -small to be removed.
-          background-size: .5rem .5rem;
-          height: 1rem;
-          margin-right: 0.5rem;
-        }
-
-        &.-animate {
-          &:before {
-            transition: transform 0.2s ease-in-out;
-          }
-
-          &.-active:before {
-            transform: rotate(270deg);
-          }
-        }
-      }
-
-      &[data-position='bottom-end'] ~ .m-dropdown__menu {
-        left: initial;
-        right: 0;
-      }
-
-    }
-
-    & .-inverse {
-      &:not([data-position^="left"]) {
-        &:after {
-          background-image: url(../html-select/icon-chevron-thin-down-inverse.svg);
-        }
-      }
-
-      &[data-position^="left"] {
-        &:before {
-          background-image: url(../html-select/icon-chevron-thin-down-inverse.svg);
-        }
-      }
-    }
-
-    &__menu {
-      background-color: set-color(white);
-      border: 0.0625rem solid set-color(grey, 30);
-      border-radius: $border-radius;
-      box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.1);
-      display: none;
-      font-size: $text;
-      margin: 0;
-      padding: 0.5rem 0;
-
-      &.-active {
-        display: block;
-      }
-
-      &-item {
-
-        align-items: center;
-        display: flex;
-        height: 2rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        white-space: nowrap;
-
-        &.-h--auto {
-          height: auto;
-          white-space: normal;
-        }
-
-        .-flex--ellipsis {
-          display: block;
-          flex: 1;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
-        .a-icon {
-          margin-right: 1rem;
-        }
-
-        &:not(.-active) .a-icon {
-          color: set-color(grey, 50);
-        }
-
-        &.-active {
-          background: url("./icon-check-alt.svg") no-repeat right 1rem center;
-          background-size: 1rem 1rem;
-          color: $brand-color;
-          font-weight: 600;
-          padding-right: 3rem;
-        }
-
-        &.-hasActive {
-          color: $brand-color;
-        }
-
-        &.-disabled {
-          color: set-color(grey, 50);
-          pointer-events: none;
-          .a-icon {
-            color: set-color(grey, 50);
-          }
-        }
-      }
-
-      & > .a-inputWrapper {
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-        padding-left: 0rem;
-        padding-right: 0rem;
-
-        &:not(:first-child) {
-          margin-top: 0.5rem;
-        }
-
-        &:not(:last-child) {
-          margin-bottom: 0.5rem;
-        }
-      }
-
-      label.-text {
-        align-items: center;
-        display: flex;
-        font-weight: normal;
-        margin-bottom: 0;
-      }
-
-      input[type='checkbox'].a-input + label, input[type='radio'].a-input + label {
-        margin-bottom: 0;
-        margin-right: 1rem;
-      }
-    }
-
-    &.-active {
-      .m-dropdown__trigger {
-        &:after {
-          background-image: url(../html-select/icon-chevron-thin-down-active.svg);
         }
       }
     }
   }
 
-  .m-dropdown__hover:hover,
-  .m-dropdown__hover.-hover,
-  .m-dropdown__hover:active {
+  &__trigger {
 
-    .m-dropdown__trigger {
-      &:not([data-position^="left"]) {
-        &.-animate {
+    &:not([data-position^="left"]) {
+
+      &:after {
+        background-image: url(icon-chevron-thin-down.svg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: .75rem .75rem;
+        content: '';
+        display: block;
+        height: 1rem;
+        margin-left: 0.75rem;
+        width: 0.75rem;
+      }
+
+      &.-lg:after, &.-large:after {//Legacy code: -large to be removed.
+        height: 1.5rem;
+        margin-left: 1rem;
+      }
+
+      &.-sm:after, &.-small:after { //Legacy code: -small to be removed.
+        background-size: .5rem .5rem;
+        height: 1rem;
+        margin-left: 0.5rem;
+      }
+
+      &[data-position^="top"]:after {
+        transform: rotate(-180deg);
+      }
+
+      &[data-position^="right"]:after {
+        transform: rotate(-90deg);
+      }
+
+      &.-animate {
+        &:after {
+          transition: transform 0.2s ease-in-out;
+        }
+
+        &.-active {
           &:after {
             transform: rotate(180deg);
           }
@@ -275,34 +92,214 @@
           }
         }
       }
+    }
 
-      &[data-position^="left"] {
-        &.-animate {
-          &:before {
-            transform: rotate(270deg);
-          }
+    &[data-position^="left"] {
+
+      &:before {
+        background-image: url(icon-chevron-thin-down.svg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: .75rem .75rem;
+        content: '';
+        height: 1rem;
+        margin-right: 0.75rem;
+        transform: rotate(90deg);
+        width: 0.75rem;
+      }
+
+      &.-lg:before, &.-large:before { //Legacy code: -large to be removed.
+        height: 1.5rem;
+        margin-right: 1rem;
+      }
+
+      &.-sm:before, &.-small:before { //Legacy code: -small to be removed.
+        background-size: .5rem .5rem;
+        height: 1rem;
+        margin-right: 0.5rem;
+      }
+
+      &.-animate {
+        &:before {
+          transition: transform 0.2s ease-in-out;
+        }
+
+        &.-active:before {
+          transform: rotate(270deg);
         }
       }
     }
 
-    .m-dropdown__menu {
-      display: block;
+    &[data-position='bottom-end'] ~ .m-dropdown__menu {
+      left: initial;
+      right: 0;
+    }
+
+  }
+
+  & .-inverse {
+    &:not([data-position^="left"]) {
+      &:after {
+        background-image: url(icon-chevron-thin-down-inverse.svg);
+      }
+    }
+
+    &[data-position^="left"] {
+      &:before {
+        background-image: url(icon-chevron-thin-down-inverse.svg);
+      }
     }
   }
 
-  a.m-dropdown__menu-item {
-    color: inherit;
+  &__menu {
+    background-color: set-color(white);
+    border: 0.0625rem solid set-color(grey, 30);
+    border-radius: $border-radius;
+    box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.1);
+    display: none;
+    font-size: $text;
+    margin: 0;
+    padding: 0.5rem 0;
 
-    &:hover {
-      text-decoration: none;
+    &.-active {
+      display: block;
     }
 
-    &:hover:not(.-disabled):not(.-active),
-    &.-hover:not(.-disabled):not(.-active),
-    &:focus:not(.-disabled):not(.-active),
-    &.focus:not(.-disabled):not(.-active)
-    {
-      background-color: set-color(grey, 20);
+    &-item {
+
+      align-items: center;
+      display: flex;
+      height: 2rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      white-space: nowrap;
+
+      &.-h--auto {
+        height: auto;
+        white-space: normal;
+      }
+
+      .-flex--ellipsis {
+        display: block;
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .a-icon {
+        margin-right: 1rem;
+      }
+
+      &:not(.-active) .a-icon {
+        color: set-color(grey, 50);
+      }
+
+      &.-active {
+        background: url(icon-check-alt.svg) no-repeat right 1rem center;
+        background-size: 1rem 1rem;
+        color: $brand-color;
+        font-weight: 600;
+        padding-right: 3rem;
+      }
+
+      &.-hasActive {
+        color: $brand-color;
+      }
+
+      &.-disabled {
+        color: set-color(grey, 50);
+        pointer-events: none;
+        .a-icon {
+          color: set-color(grey, 50);
+        }
+      }
     }
+
+    & > .a-inputWrapper {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      padding-left: 0rem;
+      padding-right: 0rem;
+
+      &:not(:first-child) {
+        margin-top: 0.5rem;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    label.-text {
+      align-items: center;
+      display: flex;
+      font-weight: normal;
+      margin-bottom: 0;
+    }
+
+    input[type='checkbox'].a-input + label, input[type='radio'].a-input + label {
+      margin-bottom: 0;
+      margin-right: 1rem;
+    }
+  }
+
+  &.-active {
+    .m-dropdown__trigger {
+      &:after {
+        background-image: url(icon-chevron-thin-down-active.svg);
+      }
+    }
+  }
+}
+
+.m-dropdown__hover:hover,
+.m-dropdown__hover.-hover,
+.m-dropdown__hover:active {
+
+  .m-dropdown__trigger {
+    &:not([data-position^="left"]) {
+      &.-animate {
+        &:after {
+          transform: rotate(180deg);
+        }
+
+        &[data-position^="right"]:after {
+          transform: rotate(90deg);
+        }
+
+        &[data-position^="top"]:after {
+          transform: rotate(0deg);
+        }
+      }
+    }
+
+    &[data-position^="left"] {
+      &.-animate {
+        &:before {
+          transform: rotate(270deg);
+        }
+      }
+    }
+  }
+
+  .m-dropdown__menu {
+    display: block;
+  }
+}
+
+a.m-dropdown__menu-item {
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:hover:not(.-disabled):not(.-active),
+  &.-hover:not(.-disabled):not(.-active),
+  &:focus:not(.-disabled):not(.-active),
+  &.focus:not(.-disabled):not(.-active)
+  {
+    background-color: set-color(grey, 20);
   }
 }

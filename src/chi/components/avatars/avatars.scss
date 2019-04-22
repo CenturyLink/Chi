@@ -1,5 +1,5 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
 $avatar-sizes: (
   xs: 0.75rem,
@@ -15,107 +15,103 @@ $avatar-sizes: (
 $avatar-colors: (grey, red, pink, purple, indigo, navy, blue, teal, mint, green, yellow, orange, inverse, secondary, primary);
 $avatar-default-size: 'md';
 
-.chi {
-  .a-avatar {
+.a-avatar {
 
-    background-color: set-color(grey, 20);
-    border-radius: 50%;
-    color: set-color(grey, 50);
-    display: inline-block;
+  background-color: set-color(grey, 20);
+  border-radius: 50%;
+  color: set-color(grey, 50);
+  display: inline-block;
+  font-size: map-get($avatar-sizes, $avatar-default-size) / 2;
+  height: map-get($avatar-sizes, $avatar-default-size);
+  line-height: map-get($avatar-sizes, $avatar-default-size);
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  width: map-get($avatar-sizes, $avatar-default-size);
+
+  & > img,
+  & > svg {
+    height: 100%;
+    width: 100%;
+  }
+
+  & > i,
+  &.a-icon > svg {
+    height: 50%;
+    margin: 25%;
+    width: 50%;
+  }
+
+  &.a-icon {
     font-size: map-get($avatar-sizes, $avatar-default-size) / 2;
     height: map-get($avatar-sizes, $avatar-default-size);
     line-height: map-get($avatar-sizes, $avatar-default-size);
-    overflow: hidden;
-    position: relative;
-    text-align: center;
-    vertical-align: middle;
     width: map-get($avatar-sizes, $avatar-default-size);
+  }
 
-    & > img,
-    & > svg {
-      height: 100%;
-      width: 100%;
-    }
+  @each $type in map-keys($avatar-sizes) {
+    &.-#{$type} {
+      font-size: map-get($avatar-sizes, $type) / 2;
+      height: map-get($avatar-sizes, $type);
+      line-height: map-get($avatar-sizes, $type);
+      width: map-get($avatar-sizes, $type);
 
-    & > i,
-    &.a-icon > svg {
-      height: 50%;
-      margin: 25%;
-      width: 50%;
-    }
-
-    &.a-icon {
-      font-size: map-get($avatar-sizes, $avatar-default-size) / 2;
-      height: map-get($avatar-sizes, $avatar-default-size);
-      line-height: map-get($avatar-sizes, $avatar-default-size);
-      width: map-get($avatar-sizes, $avatar-default-size);
-    }
-
-    @each $type in map-keys($avatar-sizes) {
-      &.-#{$type} {
-        font-size: map-get($avatar-sizes, $type) / 2;
-        height: map-get($avatar-sizes, $type);
-        line-height: map-get($avatar-sizes, $type);
-        width: map-get($avatar-sizes, $type);
-
-        & > i {
-          &.a-icon {
-            font-size: map-get($avatar-sizes, $type) / 2;
-          }
+      & > i {
+        &.a-icon {
+          font-size: map-get($avatar-sizes, $type) / 2;
         }
       }
     }
+  }
 
-    @each $color in $avatar-colors {
-      &.-#{$color} {
+  @each $color in $avatar-colors {
+    &.-#{$color} {
 
-        @if( $color == 'inverse') {
+      @if( $color == 'inverse') {
+        background-color: transparent;
+        border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get($colorscheme, white);
+        color: map-get($colorscheme, white);
+      } @else if ( $color == 'secondary'){
+        background-color: white;
+        border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid $secondary-color;
+        color: $secondary-color;
+
+        &.-transparent {
           background-color: transparent;
-          border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get($colorscheme, white);
-          color: map-get($colorscheme, white);
-        } @else if ( $color == 'secondary'){
-          background-color: white;
-          border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid $secondary-color;
-          color: $secondary-color;
-
-          &.-transparent {
-            background-color: transparent;
-          }
-        } @else if ( $color == 'primary'){
-          background-color: white;
-          border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid $primary-color;
-          color: $primary-color;
-
-          &.-transparent {
-            background-color: transparent;
-          }
-        } @else {
-          background-color: white;
-          border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get(map-get($colorscheme, $color), 60);
-          color: map-get(map-get($colorscheme, $color), 60);
-
-          &.-transparent {
-            background-color: transparent;
-          }
         }
+      } @else if ( $color == 'primary'){
+        background-color: white;
+        border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid $primary-color;
+        color: $primary-color;
 
-        @each $type in map-keys($avatar-sizes) {
-          &.-#{$type} {
-            border-width: max(0.0625rem, map-get($avatar-sizes, $type) / 48);
-          }
+        &.-transparent {
+          background-color: transparent;
+        }
+      } @else {
+        background-color: white;
+        border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get(map-get($colorscheme, $color), 60);
+        color: map-get(map-get($colorscheme, $color), 60);
+
+        &.-transparent {
+          background-color: transparent;
+        }
+      }
+
+      @each $type in map-keys($avatar-sizes) {
+        &.-#{$type} {
+          border-width: max(0.0625rem, map-get($avatar-sizes, $type) / 48);
         }
       }
     }
   }
-
-  .m-avatarGroup {
-    align-items: center;
-    display: flex;
-
-    .a-avatar {
-      margin-right: 0.75rem;
-    }
-  }
-
 }
 
+.m-avatarGroup {
+  align-items: center;
+  display: flex;
+
+  .a-avatar {
+    margin-right: 0.75rem;
+  }
+}
