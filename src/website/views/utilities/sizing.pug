@@ -159,8 +159,12 @@ section.a-table.-bordered.-mt--3.-mb--3
                 code= 'max-width: ' + type + 'px;'
               else
                 code= 'max-width: ' + type + '%;'
-        tr
-          td(width='40%')
-            code= '-mh--100'
-          td
-            code= 'max-height: 100%;'
+        each type in ['100', '400', '480']
+          tr
+            td(width='40%')
+              code= '-mh--' + type
+            td
+              if (type != 100)
+                code= 'max-height: ' + type + 'px;'
+              else
+                code= 'max-height: ' + type + '%;'
