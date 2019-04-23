@@ -61,6 +61,13 @@ class Dropdown extends Component {
 
     this._dropdownElemClickEventListener = function(e) {
       self._dropdownClickedEventManager(e);
+      if (e.target.nodeName === 'A' ||
+        e.target.nodeName === 'BUTTON' ||
+        e.target.getAttribute('type') === 'button' ||
+        e.target.getAttribute('type') === 'submit' ||
+        e.target.getAttribute('type') === 'reset') {
+        self._clickDropdownElemItem();
+      }
     };
     this._dropdownElem.addEventListener(
       'click',
@@ -169,6 +176,10 @@ class Dropdown extends Component {
   }
 
   _clickOnDocument() {
+    this.hide();
+  }
+
+  _clickDropdownElemItem() {
     this.hide();
   }
 
