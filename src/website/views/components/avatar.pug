@@ -4,7 +4,7 @@ title: Avatar
 
 - var sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
 - var columnWidths = {'xs':[ '4', '3', '1'], 'sm':[ '4', '3', '1'], 'sm--2':[ '4', '3', '1'], 'sm--3':[ '4', '3', '1'], 'md':[ '4', '2', '1'], 'lg':[ '4', '3', '2'], 'xl':[ '6', '3', '2'], 'xxl':[ '6', '4', '3']};
-- var colors = ["grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "mint", "green", "yellow", "orange"];
+- var colors = ["grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "mint", "green", "yellow", "orange", "secondary", "primary"];
 - var iconExamples = ['user', 'users', 'atom'];
 
 p.-text Avatars are used to represent users, groups, and entities.
@@ -74,7 +74,8 @@ p.-text
   | Both icon and initial avatars support <a href="../../foundations/color/">Chi colors</a>.
   | To color an icon, apply any of the following color classes: <code>-grey</code>, <code>-red</code>,
   | <code>-pink</code>, <code>-purple</code>, <code>-indigo</code>, <code>-navy</code>, <code>-blue</code>,
-  | <code>-teal</code>, <code>-mint</code>, <code>-green</code>, <code>-yellow</code>, <code>-orange</code>
+  | <code>-teal</code>, <code>-mint</code>, <code>-green</code>, <code>-yellow</code>, <code>-orange</code>,
+  | <code>-secondary</code>, <code>-primary</code>
 
 ul#a-tabs--colors.a-tabs
   li.-active
@@ -86,9 +87,10 @@ ul#a-tabs--colors.a-tabs
     .-p--3
       .a-grid.-align-items--end
         each color in colors
-          .a-col.-w--2.-text--center
-            div(class=`a-avatar -${color}`) AA
-            p.-text= color
+          if (color !== 'secondary')
+            .a-col.-w--2.-text--center
+              div(class=`a-avatar -${color}`) AA
+              p.-text= color
     :code(lang="html")
       <div class="a-avatar -grey">AA</div>
       <div class="a-avatar -red">AA</div>
@@ -102,15 +104,17 @@ ul#a-tabs--colors.a-tabs
       <div class="a-avatar -green">AA</div>
       <div class="a-avatar -yellow">AA</div>
       <div class="a-avatar -orange">AA</div>
+      <div class="a-avatar -primary">AA</div>
 
   #coloredIcons.a-tabs-panel
     .-p--3
       .a-grid.-align-items--end
         each color in colors
-          .a-col.-w--2.-text--center
-            div(class=`a-avatar -${color}`)
-              i.a-icon.icon-user
-            p.-text= color
+          if (color !== 'secondary')
+            .a-col.-w--2.-text--center
+              div(class=`a-avatar -${color}`)
+                i.a-icon.icon-user
+              p.-text= color
     :code(lang="html")
       <div class="a-avatar -grey">
         <i class="a-icon icon-user"></i>
@@ -148,6 +152,9 @@ ul#a-tabs--colors.a-tabs
       <div class="a-avatar -orange">
         <i class="a-icon icon-user"></i>
       </div>
+      <div class="a-avatar -primary">
+        <i class="a-icon icon-user"></i>
+      </div>
 
 h4 Inverse and transparent background
 p.-text
@@ -155,33 +162,24 @@ p.-text
 .example.-mb--3
   .-p--3.-bg--black
     .a-grid.-align-items--end
-      .a-col.-w--2.-text--center
+      .a-col.-w--3.-text--center
         div.a-avatar.-inverse AA
-      .a-col.-w--2.-text--center
-        div.a-avatar.-mint AA
-      .a-col.-w--2.-text--center
-        div.a-avatar.-mint.-transparent AA
-      .a-col.-w--2.-text--center
+      .a-col.-w--3.-text--center
+        div.a-avatar.-secondary.-transparent AA
+      .a-col.-w--3.-text--center
         div.a-avatar.-inverse
           i.a-icon.icon-user
-      .a-col.-w--2.-text--center
-        div.a-avatar.-mint
-          i.a-icon.icon-user
-      .a-col.-w--2.-text--center
-        div.a-avatar.-mint.-transparent
+      .a-col.-w--3.-text--center
+        div.a-avatar.-secondary.-transparent
           i.a-icon.icon-user
   :code(lang="html")
     <div class="-bg--black">
       <div class="a-avatar -inverse">AA</div>
-      <div class="a-avatar -mint">AA</div>
-      <div class="a-avatar -mint -transparent">AA</div>
+      <div class="a-avatar -secondary -transparent">AA</div>
       <div class="a-avatar -inverse">
         <i class="a-icon icon-user"></i>
       </div>
-      <div class="a-avatar -mint">
-        <i class="a-icon icon-user"></i>
-      </div>
-      <div class="a-avatar -mint -transparent">
+      <div class="a-avatar -secondary -transparent">
         <i class="a-icon icon-user"></i>
       </div>
     </div>
@@ -293,10 +291,11 @@ p.-text
 .example.-mb--3
   .-p--3.a-grid
     each color in colors
-      .-mb--1.a-col.-w--6.-w-sm--4.-w-md--6.-w-lg--4.-w-xl--3
-        .m-avatarGroup
-          div(class=`a-avatar -${color}`) L
-          = `Label ${color}`
+      if (color !== 'secondary')
+        .-mb--1.a-col.-w--6.-w-sm--4.-w-md--6.-w-lg--4.-w-xl--3
+          .m-avatarGroup
+            div(class=`a-avatar -${color}`) L
+            = `Label ${color}`
   :code(lang="html")
     <div class="m-avatarGroup">
       <div class="a-avatar">L</div>Label text
