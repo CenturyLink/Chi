@@ -24,7 +24,9 @@ const requires = {
   'constants': require('./tasks/constants.js'),
   'lint-css': require('./tasks/lint-css.js'),
   'test': require('./tasks/test.js'),
-  'watch': require('./tasks/watch.js')
+  'watch': require('./tasks/watch.js'),
+  'stencil-start': require('./tasks/start-stencil.js'),
+  'custom-elements-watch': require('./tasks/watch-custom-elements.js')
 };
 
 gulp.task('default', function(){});

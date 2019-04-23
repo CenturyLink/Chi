@@ -1,0 +1,9 @@
+@import 'foundations/fonts/fonts';
+*, // sass-lint:disable-line no-universal-selectors
+::after,
+::before {
+  box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
+  -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+}
+@import 'foundations/typography/typography';

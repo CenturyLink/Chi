@@ -11,7 +11,7 @@ html(lang="en")
 
         if styles
             each style in styles
-                link(rel="stylesheet", media="all", href=`${rootPath}assets/styles/${style}.css`)
+                link(rel="stylesheet", media="all", href=`${rootPath}${style}.css`)
 
     body.chi.show-grid
       .docs-container
@@ -31,4 +31,4 @@ html(lang="en")
 
       if scripts
           each script in scripts
-              script(type="text/javascript", src=`${rootPath}/assets/scripts/${script}.js`)
+              script(type="text/javascript", src=`${rootPath}${script}.js`)
