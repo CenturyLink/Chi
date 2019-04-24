@@ -1,4 +1,4 @@
-@import 'variables';
+@import '_variables';
 
 @function set-color($scheme, $tone: null) {
   $resolved-color-scheme: map-get($colorscheme, $scheme);

@@ -1,48 +1,46 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
-.chi {
-  .a-breadcrumb {
-    > ol {
-      display: flex;
-      font-weight: 600;
-      list-style: none;
-      margin: 0;
-      padding: 0;
+.a-breadcrumb {
+  > ol {
+    display: flex;
+    font-weight: 600;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    &:not(:first-child) {
+      padding-left: 0.25rem;
+
+      &::before {
+        color: set-color(gray, 50);
+        content: quote('/');
+        font-weight: normal;
+        padding-right: 0.25rem;
+      }
     }
 
-    &__item {
+    &.-active {
+      a {
+        color: $text-color;
+        font-weight: normal;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &.-alt {
+    .a-breadcrumb__item {
       &:not(:first-child) {
-        padding-left: 0.25rem;
-
         &::before {
-          color: set-color(gray, 50);
-          content: quote('/');
-          font-weight: normal;
-          padding-right: 0.25rem;
-        }
-      }
-
-      &.-active {
-        a {
-          color: $text-color;
-          font-weight: normal;
-          text-decoration: none;
-        }
-      }
-    }
-
-    &.-alt {
-      .a-breadcrumb__item {
-        &:not(:first-child) {
-          &::before {
-            content: url('./icon-chevron-right.svg');
-            display: inline-block;
-            height: 1rem;
-            position: relative;
-            top: 0.1rem;
-            width: 1rem;
-          }
+          content: url(icon-chevron-right.svg);
+          display: inline-block;
+          height: 1rem;
+          position: relative;
+          top: 0.1rem;
+          width: 1rem;
         }
       }
     }

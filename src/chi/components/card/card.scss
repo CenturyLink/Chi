@@ -1,148 +1,145 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
-.chi {
+.a-card {
+  background-color: set-color(white);
+  border: 0.0625rem solid rgba(set-color(black), 0.12);
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  position: relative;
+  word-wrap: break-word;
 
-  .a-card {
-    background-color: set-color(white);
-    border: 0.0625rem solid rgba(set-color(black), 0.12);
-    border-radius: $border-radius;
+  &__hero {
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    width: 100%;
+  }
+
+  &__content {
+    font-size: $text-small;
+    line-height: $line-height-smaller;
+    padding: 1rem;
+
+    .a-card__title {
+      margin: 0 0 0.5rem 0;
+    }
+  }
+
+  &__header {
+    box-shadow: inset 0 -1px 0 0 rgba(set-color(black), 0.12);
     display: flex;
-    flex-direction: column;
-    min-width: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    min-height: 2rem;
+    padding: 1rem;
     position: relative;
-    word-wrap: break-word;
 
-    &__hero {
-      border-top-left-radius: $border-radius;
-      border-top-right-radius: $border-radius;
-      width: 100%;
-    }
-
-    &__content {
-      font-size: $text-small;
-      line-height: $line-height-smaller;
-      padding: 1rem;
-
-      .a-card__title {
-        margin: 0 0 0.5rem 0;
-      }
-    }
-
-    &__header {
-      box-shadow: inset 0 -1px 0 0 rgba(set-color(black), 0.12);
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+    &.-align--left {
       justify-content: flex-start;
-      min-height: 2rem;
-      padding: 1rem;
-      position: relative;
-
-      &.-align--left {
-        justify-content: flex-start;
-      }
-
-      &.-align--right {
-        justify-content: flex-end;
-      }
-
-      &.-align--center {
-        justify-content: center;
-      }
-
-      // Legacy code start
-      &.-alignLeft {
-        justify-content: flex-start;
-      }
-
-      &.-alignRight {
-        justify-content: flex-end;
-      }
-
-      &.-alignCenter {
-        justify-content: center;
-      }
-      // Legacy code end
-
-      &.-noBorder {
-        box-shadow: none;
-      }
-
-      &.-sm, &.-small { //Legacy code: -small to be removed.
-        padding: 0.5rem 1rem;
-      }
-
-      .a-card__title {
-        font-size: $text-large;
-        font-weight: 600;
-        line-height: $line-height-large;
-        margin: 0;
-      }
     }
 
-    &__footer {
-      box-shadow: inset 0 1px 0 0 rgba(set-color(black), 0.12);
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+    &.-align--right {
+      justify-content: flex-end;
+    }
+
+    &.-align--center {
+      justify-content: center;
+    }
+
+    // Legacy code start
+    &.-alignLeft {
       justify-content: flex-start;
-      min-height: 2rem;
-      padding: 1rem;
-      position: relative;
-
-      &.-align--left {
-        justify-content: flex-start;
-      }
-
-      &.-align--right {
-        justify-content: flex-end;
-      }
-
-      &.-align--center {
-        justify-content: center;
-      }
-      // Legacy code start
-      &.-alignLeft {
-        justify-content: flex-start;
-      }
-
-      &.-alignRight {
-        justify-content: flex-end;
-      }
-
-      &.-alignCenter {
-        justify-content: center;
-      }
-      // Legacy code end
-
-      &.-sm, &.-small { //Legacy code: -small to be removed.
-        padding: 0.5rem 1rem;
-      }
-
-      &.-noBorder {
-        box-shadow: none;
-      }
     }
 
-    &.-active {
-      border: 0.0625rem solid $secondary-color;
-      box-shadow: 0 0 0 0.0625rem $secondary-color;
+    &.-alignRight {
+      justify-content: flex-end;
     }
 
-    &.-empty {
-      background-color: transparent;
-      border: dashed rgba(set-color(black), 0.12);
+    &.-alignCenter {
+      justify-content: center;
+    }
+    // Legacy code end
 
-      & .a-card__content {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    &.-noBorder {
+      box-shadow: none;
+    }
 
-        & .a-icon {
-          margin: 0.5rem 0;
-        }
+    &.-sm, &.-small { //Legacy code: -small to be removed.
+      padding: 0.5rem 1rem;
+    }
+
+    .a-card__title {
+      font-size: $text-large;
+      font-weight: 600;
+      line-height: $line-height-large;
+      margin: 0;
+    }
+  }
+
+  &__footer {
+    box-shadow: inset 0 1px 0 0 rgba(set-color(black), 0.12);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    min-height: 2rem;
+    padding: 1rem;
+    position: relative;
+
+    &.-align--left {
+      justify-content: flex-start;
+    }
+
+    &.-align--right {
+      justify-content: flex-end;
+    }
+
+    &.-align--center {
+      justify-content: center;
+    }
+    // Legacy code start
+    &.-alignLeft {
+      justify-content: flex-start;
+    }
+
+    &.-alignRight {
+      justify-content: flex-end;
+    }
+
+    &.-alignCenter {
+      justify-content: center;
+    }
+    // Legacy code end
+
+    &.-sm, &.-small { //Legacy code: -small to be removed.
+      padding: 0.5rem 1rem;
+    }
+
+    &.-noBorder {
+      box-shadow: none;
+    }
+  }
+
+  &.-active {
+    border: 0.0625rem solid $secondary-color;
+    box-shadow: 0 0 0 0.0625rem $secondary-color;
+  }
+
+  &.-empty {
+    background-color: transparent;
+    border: dashed rgba(set-color(black), 0.12);
+
+    & .a-card__content {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      & .a-icon {
+        margin: 0.5rem 0;
       }
     }
   }

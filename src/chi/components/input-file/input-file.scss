@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
 $sizes: (
   sm: (
@@ -46,99 +46,97 @@ $sizes: (
   )
 );
 
-.chi {
-  input {
-    &[type='file'] {
-      &.a-input {
-        left: -9999px;
-        position: absolute;
+input {
+  &[type='file'] {
+    &.a-input {
+      left: -9999px;
+      position: absolute;
 
-        & + label {
-          & {
-            align-items: center;
-            display: flex;
-            font-size: $text;
-            line-height: $line-height-smaller;
-            pointer-events: none;
-            position: relative;
-          }
+      & + label {
+        & {
+          align-items: center;
+          display: flex;
+          font-size: $text;
+          line-height: $line-height-smaller;
+          pointer-events: none;
+          position: relative;
+        }
 
+        &::before {
+          align-items: center;
+          background-color: set-color(white);
+          border: 0.0625rem solid set-color(grey, 30);
+          border-radius: $border-radius;
+          content: 'Choose File';
+          cursor: pointer;
+          display: flex;
+          font-weight: 600;
+          height: 2rem;
+          justify-content: center;
+          line-height: 1.125rem;
+          margin-right: 1rem;
+          pointer-events: initial;
+          width: 6.5rem;
+        }
+
+        &:hover,
+        &.-hover {
           &::before {
-            align-items: center;
-            background-color: set-color(white);
-            border: 0.0625rem solid set-color(grey, 30);
-            border-radius: $border-radius;
-            content: 'Choose File';
-            cursor: pointer;
-            display: flex;
-            font-weight: 600;
-            height: 2rem;
-            justify-content: center;
-            line-height: 1.125rem;
-            margin-right: 1rem;
-            pointer-events: initial;
-            width: 6.5rem;
-          }
-
-          &:hover,
-          &.-hover {
-            &::before {
-              border: 0.0625rem solid set-color(grey, 40);
-              box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
-            }
-          }
-        }
-
-        &[multiple] + label::before {
-          content: 'Choose Files';
-        }
-
-        &[disabled] + label {
-          opacity: 0.65;
-
-          &::before {
-            cursor: initial;
-            pointer-events: none;
-          }
-        }
-
-        &:focus,
-        &.-focus {
-          & + label::before {
             border: 0.0625rem solid set-color(grey, 40);
-            box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
-            z-index: $zindex-prominent;
-          }
-        }
-
-        @each $type in map-keys($sizes) {
-          &.-#{$type} {
-            & + label {
-              font-size: map-get(map-get($sizes, $type), font-size);
-
-              &::before {
-                height: map-get(map-get($sizes, $type), height);
-                line-height: map-get(map-get($sizes, $type), line-height);
-                width: map-get(map-get($sizes, $type), width);
-              }
-            }
+            box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
           }
         }
       }
 
-      &.-pill {
-        @each $type in map-keys($sizes) {
+      &[multiple] + label::before {
+        content: 'Choose Files';
+      }
+
+      &[disabled] + label {
+        opacity: 0.65;
+
+        &::before {
+          cursor: initial;
+          pointer-events: none;
+        }
+      }
+
+      &:focus,
+      &.-focus {
+        & + label::before {
+          border: 0.0625rem solid set-color(grey, 40);
+          box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
+          z-index: $zindex-prominent;
+        }
+      }
+
+      @each $type in map-keys($sizes) {
+        &.-#{$type} {
           & + label {
+            font-size: map-get(map-get($sizes, $type), font-size);
+
             &::before {
-              border-radius: 1rem;
+              height: map-get(map-get($sizes, $type), height);
+              line-height: map-get(map-get($sizes, $type), line-height);
+              width: map-get(map-get($sizes, $type), width);
             }
           }
+        }
+      }
+    }
 
-          &.-#{$type} {
-            & + label {
-              &::before {
-                border-radius: map-get(map-get($sizes, $type), border-radius);
-              }
+    &.-pill {
+      @each $type in map-keys($sizes) {
+        & + label {
+          &::before {
+            border-radius: 1rem;
+          }
+        }
+
+        &.-#{$type} {
+          & + label {
+            &::before {
+              border-radius: map-get(map-get($sizes, $type), border-radius);
             }
           }
         }

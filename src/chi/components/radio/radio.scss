@@ -1,93 +1,91 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
-.chi {
-  input {
-    &[type='radio'] {
-      &.a-input {
-        left: -9999px;
-        position: absolute;
+input {
+  &[type='radio'] {
+    &.a-input {
+      left: -9999px;
+      position: absolute;
 
-        & + label {
-          & {
-            align-items: center;
-            cursor: pointer;
-            display: inline-flex;
-            line-height: $line-height-smaller;
-            margin: 0 0.5rem 0 0;
-            position: relative;
+      & + label {
+        & {
+          align-items: center;
+          cursor: pointer;
+          display: inline-flex;
+          line-height: $line-height-smaller;
+          margin: 0 0.5rem 0 0;
+          position: relative;
+        }
+
+        &::before {
+          background-color: set-color(white);
+          border: 0.125rem solid set-color(grey, 50);
+          border-radius: 0.5rem;
+          content: '';
+          cursor: pointer;
+          display: block;
+          height: 1rem;
+          transition: box-shadow 0.2s ease-in-out;
+          width: 1rem;
+        }
+
+        &::after {
+          background-color: set-color(grey, 50);
+          border-radius: 0.5rem;
+          content: '';
+          display: block;
+          height: 0.5rem;
+          left: 0.25rem;
+          position: absolute;
+          top: calc(50% - 0.25rem);
+          transform: scale(0);
+          transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+          width: 0.5rem;
+        }
+
+        &:hover,
+        &.-hover {
+          &::after {
+            transform: scale(1);
           }
+        }
+      }
 
+      &:checked {
+        & + label {
           &::before {
-            background-color: set-color(white);
-            border: 0.125rem solid set-color(grey, 50);
-            border-radius: 0.5rem;
-            content: '';
-            cursor: pointer;
-            display: block;
-            height: 1rem;
-            transition: box-shadow 0.2s ease-in-out;
-            width: 1rem;
+            border-color: $brand-color;
           }
 
           &::after {
-            background-color: set-color(grey, 50);
-            border-radius: 0.5rem;
-            content: '';
-            display: block;
-            height: 0.5rem;
-            left: 0.25rem;
-            position: absolute;
-            top: calc(50% - 0.25rem);
-            transform: scale(0);
-            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
-            width: 0.5rem;
-          }
-
-          &:hover,
-          &.-hover {
-            &::after {
-              transform: scale(1);
-            }
-          }
-        }
-
-        &:checked {
-          & + label {
-            &::before {
-              border-color: $brand-color;
-            }
-
-            &::after {
-              background-color: $brand-color;
-              transform: scale(1);
-            }
-          }
-
-          &:focus,
-          &.-focus {
-            & + label::before {
-              box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
-            }
-          }
-        }
-
-        &[disabled] {
-          & ~ label {
-            color: set-color(grey, 50);
-          }
-
-          & + label {
-            opacity: 0.65;
-            pointer-events: none;
+            background-color: $brand-color;
+            transform: scale(1);
           }
         }
 
         &:focus,
         &.-focus {
           & + label::before {
-            box-shadow: 0 0 0 0.25rem rgba(set-color(grey, 50), 0.25);
+            box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
           }
+        }
+      }
+
+      &[disabled] {
+        & ~ label {
+          color: set-color(grey, 50);
+        }
+
+        & + label {
+          opacity: 0.65;
+          pointer-events: none;
+        }
+      }
+
+      &:focus,
+      &.-focus {
+        & + label::before {
+          box-shadow: 0 0 0 0.25rem rgba(set-color(grey, 50), 0.25);
         }
       }
     }

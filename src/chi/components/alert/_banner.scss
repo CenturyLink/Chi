@@ -1,31 +1,28 @@
-@import 'alert-common';
+.m-alert {
+  &.-banner {
+    border-radius: 0;
+    border-width: 0.0625rem 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
-.chi {
-  .m-alert {
-    &.-banner {
-      border-radius: 0;
-      border-width: 0.0625rem 0;
-      padding-left: 1rem;
-      padding-right: 1rem;
+    &.-dismiss {
+      justify-content: space-between;
 
-      &.-dismiss {
-        justify-content: space-between;
+      & > .-close {
+        &.-small {
+          padding: 0.25rem;
+        }
 
-        & > .-close {
-          &.-small {
-            padding: 0.25rem;
-          }
-
-          & .a-icon {
-            line-height: 0.75rem;
-          }
+        & .a-icon {
+          line-height: 0.75rem;
         }
       }
+    }
 
-      &.-large, &.-lg { //Legacy code: -large to be removed.
-        padding-bottom: 0.75rem;
-        padding-top: 0.75rem;
-      }
+    &.-large, //Legacy code: -large to be removed.
+    &.-lg {
+      padding-bottom: 0.75rem;
+      padding-top: 0.75rem;
     }
   }
 }

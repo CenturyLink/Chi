@@ -1,4 +1,4 @@
-@import 'variables';
+@import '_variables';
 
 @mixin navigation-dropdown-not-vertical() {
   & > li {
@@ -30,16 +30,14 @@
   }
 }
 
-.chi {
-  .a-tabs {
-    .m-dropdown__menu-item.-active {
-      background-image: none;
-      background-size: initial;
-      padding-right: 1rem;
-    }
+.a-tabs {
+  .m-dropdown__menu-item.-active {
+    background-image: none;
+    background-size: initial;
+    padding-right: 1rem;
+  }
 
-    &  {
-      @include navigation-dropdown-not-vertical;
-    }
+  &  {
+    @include navigation-dropdown-not-vertical;
   }
 }

@@ -1,7 +1,5 @@
-@import 'variables';
-@import 'mixins';
-
-.chi {
+@import '_variables';
+@import '_mixins';
 
   $dimensions: (
     auto: auto,
@@ -25,39 +23,38 @@
     400: 400px
   );
 
-  @each $dimension-key, $dimension-value in $dimensions  {
-    .-w--#{$dimension-key} {
-      width: $dimension-value;
-    }
-
-    .-h--#{$dimension-key} {
-      height: $dimension-value;
-    }
+@each $dimension-key, $dimension-value in $dimensions  {
+  .-w--#{$dimension-key} {
+    width: $dimension-value;
   }
 
-  @each $size in sm md lg xl {
-    @include respond-to($size) {
-      @each $dimension-key, $dimension-value in $dimensions {
-        .-w-#{$size}--#{$dimension-key} {
-          width: $dimension-value;
-        }
+  .-h--#{$dimension-key} {
+    height: $dimension-value;
+  }
+}
 
-        .-h-#{$size}--#{$dimension-key} {
-          height: $dimension-value;
-        }
+@each $size in sm md lg xl {
+  @include respond-to($size) {
+    @each $dimension-key, $dimension-value in $dimensions {
+      .-w-#{$size}--#{$dimension-key} {
+        width: $dimension-value;
+      }
+
+      .-h-#{$size}--#{$dimension-key} {
+        height: $dimension-value;
       }
     }
   }
+}
 
-  @each $dimension-key, $dimension-value in $max-width-dimensions {
-    .-mw--#{$dimension-key} {
-      max-width: $dimension-value;
-    }
+@each $dimension-key, $dimension-value in $max-width-dimensions {
+  .-mw--#{$dimension-key} {
+    max-width: $dimension-value;
   }
+}
 
-  @each $dimension-key, $dimension-value in $max-height-dimensions {
-    .-mh--#{$dimension-key} {
-      max-height: $dimension-value;
-    }
+@each $dimension-key, $dimension-value in $max-height-dimensions {
+  .-mh--#{$dimension-key} {
+    max-height: $dimension-value;
   }
 }

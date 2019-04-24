@@ -1,227 +1,225 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
 $badge: c-badge;
 
-.chi {
-  .a-badge {
-    background-color: set-color(white);
-    border: 0.0625rem solid set-color(grey, 30);
-    border-radius: $border-radius;
-    box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
-    display: inline-block;
-    font-size: $text;
-    font-weight: 600;
-    height: 1.5rem;
+.a-badge {
+  background-color: set-color(white);
+  border: 0.0625rem solid set-color(grey, 30);
+  border-radius: $border-radius;
+  box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
+  display: inline-block;
+  font-size: $text;
+  font-weight: 600;
+  height: 1.5rem;
+  line-height: $line-height;
+  padding: 0 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+
+  .a-icon {
+    height: 1rem;
+    top: -0.07rem;
+    width: 1rem;
+  }
+
+  &__content {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+
+    & > :not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  span {
     line-height: $line-height;
-    padding: 0 0.5rem;
-    text-align: center;
-    vertical-align: middle;
+    position: relative;
+    top: -0.07rem;
+  }
+
+  &.-small {
+    font-size: $text-smaller;
+    height: 1.25rem;
+    line-height: $line-height-small;
 
     .a-icon {
-      height: 1rem;
-      top: -0.07rem;
-      width: 1rem;
+      height: 0.75rem;
+      width: 0.75rem;
+
+      &[class^='icon-'],
+      &[class*=' icon-'] {
+        font-size: 0.75rem;
+        line-height: 0.75rem;
+      }
     }
 
-    &__content {
-      align-items: center;
-      display: inline-flex;
-      justify-content: center;
-
-      & > :not(:last-child) {
-        margin-right: 0.5rem;
-      }
+    & > div > :not(:last-child) {
+      margin-right: 0.25rem;
     }
 
     span {
-      line-height: $line-height;
-      position: relative;
-      top: -0.07rem;
-    }
-
-    &.-small {
-      font-size: $text-smaller;
-      height: 1.25rem;
       line-height: $line-height-small;
+    }
+  }
 
-      .a-icon {
-        height: 0.75rem;
-        width: 0.75rem;
+  &.-smaller {
+    font-size: $text-smallest;
+    height: 1rem;
+    line-height: $line-height-smaller;
+    padding: 0 0.25rem;
 
-        &[class^='icon-'],
-        &[class*=' icon-'] {
-          font-size: 0.75rem;
-          line-height: 0.75rem;
-        }
-      }
+    .a-icon {
+      height: 0.75rem;
+      width: 0.75rem;
 
-      & > div > :not(:last-child) {
-        margin-right: 0.25rem;
-      }
-
-      span {
-        line-height: $line-height-small;
+      &[class^='icon-'],
+      &[class*=' icon-'] {
+        font-size: 0.75rem;
+        line-height: 0.75rem;
       }
     }
 
-    &.-smaller {
-      font-size: $text-smallest;
-      height: 1rem;
+    & > div > :not(:last-child) {
+      margin-right: 0.25rem;
+    }
+
+    span {
       line-height: $line-height-smaller;
-      padding: 0 0.25rem;
-
-      .a-icon {
-        height: 0.75rem;
-        width: 0.75rem;
-
-        &[class^='icon-'],
-        &[class*=' icon-'] {
-          font-size: 0.75rem;
-          line-height: 0.75rem;
-        }
-      }
-
-      & > div > :not(:last-child) {
-        margin-right: 0.25rem;
-      }
-
-      span {
-        line-height: $line-height-smaller;
-      }
     }
+  }
 
-    &.-pill {
-      border-radius: 0.75rem;
-    }
+  &.-pill {
+    border-radius: 0.75rem;
+  }
+
+  &.-outline {
+    background-color: set-color(white);
+    border-color: set-color(grey, 50);
+    box-shadow: initial;
+  }
+
+  &.-flat {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: initial;
+  }
+
+  &.-primary {
+    background-color: $primary-color;
+    border: 0.0625rem solid $primary-color;
+    color: set-color(white);
 
     &.-outline {
       background-color: set-color(white);
-      border-color: set-color(grey, 50);
-      box-shadow: initial;
+      color: $primary-color;
     }
 
     &.-flat {
       background-color: transparent;
       border-color: transparent;
-      box-shadow: initial;
+      color: $primary-color;
+    }
+  }
+
+  &.-secondary {
+    background-color: $secondary-color;
+    border: 0.0625rem solid $secondary-color;
+
+    &.-outline {
+      background-color: set-color(white);
+      color: $secondary-color;
     }
 
-    &.-primary {
-      background-color: $primary-color;
-      border: 0.0625rem solid $primary-color;
-      color: set-color(white);
+    &.-flat {
+      background-color: transparent;
+      border-color: transparent;
+      color: $secondary-color;
+    }
+  }
 
-      &.-outline {
-        background-color: set-color(white);
-        color: $primary-color;
-      }
+  &.-success {
+    background-color: $success-color;
+    border: 0.0625rem solid $success-color;
+    color: set-color(white);
 
-      &.-flat {
-        background-color: transparent;
-        border-color: transparent;
-        color: $primary-color;
-      }
+    &.-outline {
+      background-color: set-color(white);
+      color: $success-color;
     }
 
-    &.-secondary {
-      background-color: $secondary-color;
-      border: 0.0625rem solid $secondary-color;
+    &.-flat {
+      background-color: transparent;
+      border-color: transparent;
+      color: $success-color;
+    }
+  }
 
-      &.-outline {
-        background-color: set-color(white);
-        color: $secondary-color;
-      }
+  &.-danger {
+    background-color: $danger-color;
+    border: 0.0625rem solid $danger-color;
+    color: set-color(white);
 
-      &.-flat {
-        background-color: transparent;
-        border-color: transparent;
-        color: $secondary-color;
-      }
+    &.-outline {
+      background-color: set-color(white);
+      color: $danger-color;
     }
 
-    &.-success {
-      background-color: $success-color;
-      border: 0.0625rem solid $success-color;
-      color: set-color(white);
+    &.-flat {
+      background-color: transparent;
+      border-color: transparent;
+      color: $danger-color;
+    }
+  }
 
-      &.-outline {
-        background-color: set-color(white);
-        color: $success-color;
-      }
+  &.-info {
+    background-color: $info-color;
+    border: 0.0625rem solid $info-color;
+    color: set-color(white);
 
-      &.-flat {
-        background-color: transparent;
-        border-color: transparent;
-        color: $success-color;
-      }
+    &.-outline {
+      background-color: set-color(white);
+      color: $info-color;
     }
 
-    &.-danger {
-      background-color: $danger-color;
-      border: 0.0625rem solid $danger-color;
-      color: set-color(white);
+    &.-flat {
+      background-color: transparent;
+      border-color: transparent;
+      color: $info-color;
+    }
+  }
 
-      &.-outline {
-        background-color: set-color(white);
-        color: $danger-color;
-      }
+  &.-dark {
+    background-color: $dark-color;
+    border: 0.0625rem solid $dark-color;
+    color: set-color(white);
 
-      &.-flat {
-        background-color: transparent;
-        border-color: transparent;
-        color: $danger-color;
-      }
+    &.-outline {
+      background-color: set-color(white);
+      color: $dark-color;
     }
 
-    &.-info {
-      background-color: $info-color;
-      border: 0.0625rem solid $info-color;
-      color: set-color(white);
+    &.-flat {
+      background-color: transparent;
+      border-color: transparent;
+      color: $dark-color;
+    }
+  }
 
-      &.-outline {
-        background-color: set-color(white);
-        color: $info-color;
-      }
+  &.-light {
+    background-color: $light-color;
+    border: 0.0625rem solid $light-color;
 
-      &.-flat {
-        background-color: transparent;
-        border-color: transparent;
-        color: $info-color;
-      }
+    &.-outline {
+      background-color: set-color(white);
+      color: set-color(grey, 60);
     }
 
-    &.-dark {
-      background-color: $dark-color;
-      border: 0.0625rem solid $dark-color;
-      color: set-color(white);
-
-      &.-outline {
-        background-color: set-color(white);
-        color: $dark-color;
-      }
-
-      &.-flat {
-        background-color: transparent;
-        border-color: transparent;
-        color: $dark-color;
-      }
-    }
-
-    &.-light {
-      background-color: $light-color;
-      border: 0.0625rem solid $light-color;
-
-      &.-outline {
-        background-color: set-color(white);
-        color: set-color(grey, 60);
-      }
-
-      &.-flat {
-        background-color: transparent;
-        border-color: transparent;
-        color: set-color(grey, 60);
-      }
+    &.-flat {
+      background-color: transparent;
+      border-color: transparent;
+      color: set-color(grey, 60);
     }
   }
 }

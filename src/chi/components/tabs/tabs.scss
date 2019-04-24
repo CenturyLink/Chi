@@ -1,5 +1,5 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
 @mixin tabs-vertical {
   display: flex;
@@ -273,75 +273,73 @@
   }
 }
 
-.chi {
-  .a-tabs {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: relative;
+.a-tabs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
 
-    & > li {
-      display: inline-block;
+  & > li {
+    display: inline-block;
 
-      &.-active > a {
+    &.-active > a {
+      color: $brand-color;
+    }
+
+    & > a {
+      color: $text-color;
+      cursor: pointer;
+      display: block;
+      font-size: $text;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
         color: $brand-color;
       }
+    }
 
+    &.a-sliding-border {
+      display: none;
+      position: absolute;
+      background-color: $brand-color;
+    }
+  }
+
+  &.-sliding > li.a-sliding-border {
+    display: block;
+    transition: .5s cubic-bezier(.35,0,.25,1);
+  }
+
+  &.-lg, &.-large { //Legacy code: -large to be removed.
+    & > li {
       & > a {
-        color: $text-color;
-        cursor: pointer;
-        display: block;
         font-size: $text;
-        font-weight: 600;
-        text-decoration: none;
-
-        &:hover {
-          color: $brand-color;
-        }
-      }
-
-      &.a-sliding-border {
-        display: none;
-        position: absolute;
-        background-color: $brand-color;
       }
     }
+  }
 
-    &.-sliding > li.a-sliding-border {
-      display: block;
-      transition: .5s cubic-bezier(.35,0,.25,1);
-    }
+  &:not(.-vertical):not(.-responsive) {
+    @include tabs-not-vertical;
+  }
 
-    &.-lg, &.-large { //Legacy code: -large to be removed.
-      & > li {
-        & > a {
-          font-size: $text;
-        }
-      }
-    }
+  &.-vertical {
+    @include tabs-vertical;
+  }
 
-    &:not(.-vertical):not(.-responsive) {
+  @media only screen and (min-width: $md-breakpoint) {
+    &.-responsive {
       @include tabs-not-vertical;
     }
+  }
 
-    &.-vertical {
+  @media only screen and (max-width: $md-breakpoint - 1) {
+    &.-responsive {
       @include tabs-vertical;
     }
-
-    @media only screen and (min-width: $md-breakpoint) {
-      &.-responsive {
-        @include tabs-not-vertical;
-      }
-    }
-
-    @media only screen and (max-width: $md-breakpoint - 1) {
-      &.-responsive {
-        @include tabs-vertical;
-      }
-    }
   }
+}
 
-  .a-tabs-panel:not(.-active) {
-    display:none;
-  }
+.a-tabs-panel:not(.-active) {
+  display:none;
 }

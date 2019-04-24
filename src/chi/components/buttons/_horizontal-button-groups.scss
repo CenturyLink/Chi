@@ -63,136 +63,162 @@ $sizes: (
   )
 );
 
-.chi {
-  .m-btnGroup {
-    display: inline-flex;
+.m-btnGroup {
+  display: inline-flex;
 
-    &:not(.-vertical) {
-      .a-btn {
+  &:not(.-vertical) {
+    .a-btn {
+      &,
+      &.-primary,
+      &.-secondary,
+      &.-brand,
+      &.-danger,
+      &.-info,
+      &.-dark {
+
         &,
-        &.-primary,
-        &.-secondary,
-        &.-brand,
-        &.-danger,
-        &.-info,
-        &.-dark {
+        &.-outline {
+          border-radius: 0;
+          border-right-width: 0;
+          padding-right: 1rem;
 
-          &,
-          &.-outline {
-            border-radius: 0;
-            border-right-width: 0;
-            padding-right: 1rem;
+          &.-icon {
+            padding-right: 0.5rem;
+          }
+
+          @each $type in map-keys($sizes) {
+            &.-#{$type} {
+              padding-right: map-get(map-get($sizes, $type), padding);
+
+              &.-icon {
+                padding-right: map-get(map-get(map-get($sizes, $type), icons), padding);
+              }
+            }
+          }
+
+          &:first-child {
+            border-bottom-left-radius: $border-radius;
+            border-top-left-radius: $border-radius;
+          }
+
+          &:last-child {
+            border-bottom-right-radius: $border-radius;
+            border-right-width: 0.0625rem;
+            border-top-right-radius: $border-radius;
+            padding-right: 0.9375rem;
 
             &.-icon {
-              padding-right: 0.5rem;
+              padding-right: 0.4375rem;
             }
 
             @each $type in map-keys($sizes) {
               &.-#{$type} {
-                padding-right: map-get(map-get($sizes, $type), padding);
+                padding-right: map-get(map-get($sizes, $type), padding_hover);
 
                 &.-icon {
-                  padding-right: map-get(map-get(map-get($sizes, $type), icons), padding);
+                  padding-right: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
+                }
+              }
+            }
+          }
+
+          &:active,
+          &.-active,
+          &:hover,
+          &.-hover,
+          &:focus,
+          &.-focus {
+            border-right-width: 0.0625rem;
+            padding-right: 0.9375rem;
+
+            &.-icon {
+              padding-right: 0.4375rem;
+            }
+
+            @each $type in map-keys($sizes) {
+              &.-#{$type} {
+                padding-right: map-get(map-get($sizes, $type), padding_hover);
+
+                &.-icon {
+                  padding-right: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
                 }
               }
             }
 
-            &:first-child {
-              border-bottom-left-radius: $border-radius;
-              border-top-left-radius: $border-radius;
-            }
-
-            &:last-child {
-              border-bottom-right-radius: $border-radius;
-              border-right-width: 0.0625rem;
-              border-top-right-radius: $border-radius;
-              padding-right: 0.9375rem;
+            & + .a-btn:not(.-flat) {
+              border-left-width: 0;
+              padding-left: 1rem;
 
               &.-icon {
-                padding-right: 0.4375rem;
+                padding-left: 0.5rem;
               }
 
               @each $type in map-keys($sizes) {
                 &.-#{$type} {
-                  padding-right: map-get(map-get($sizes, $type), padding_hover);
+                  padding-left: map-get(map-get($sizes, $type), padding);
 
                   &.-icon {
-                    padding-right: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
-                  }
-                }
-              }
-            }
-
-            &:active,
-            &.-active,
-            &:hover,
-            &.-hover,
-            &:focus,
-            &.-focus {
-              border-right-width: 0.0625rem;
-              padding-right: 0.9375rem;
-
-              &.-icon {
-                padding-right: 0.4375rem;
-              }
-
-              @each $type in map-keys($sizes) {
-                &.-#{$type} {
-                  padding-right: map-get(map-get($sizes, $type), padding_hover);
-
-                  &.-icon {
-                    padding-right: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
-                  }
-                }
-              }
-
-              & + .a-btn:not(.-flat) {
-                border-left-width: 0;
-                padding-left: 1rem;
-
-                &.-icon {
-                  padding-left: 0.5rem;
-                }
-
-                @each $type in map-keys($sizes) {
-                  &.-#{$type} {
-                    padding-left: map-get(map-get($sizes, $type), padding);
-
-                    &.-icon {
-                      padding-left: map-get(map-get(map-get($sizes, $type), icons), padding);
-                    }
-                  }
-                }
-              }
-            }
-
-            &:hover,
-            &.-hover {
-              & + .a-btn:focus,
-              & + .-focus {
-                border-left-width: 0.0625rem;
-                padding-left: 0.9375rem;
-
-                &.-icon {
-                  padding-left: 0.4375rem;
-                }
-
-                @each $type in map-keys($sizes) {
-                  &.-#{$type} {
-                    padding-left: map-get(map-get($sizes, $type), padding_hover);
-
-                    &.-icon {
-                      padding-left: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
-                    }
+                    padding-left: map-get(map-get(map-get($sizes, $type), icons), padding);
                   }
                 }
               }
             }
           }
 
-          &.-flat {
-            border: 0.0625rem solid transparent;
-            border-radius: $border-radius;
+          &:hover,
+          &.-hover {
+            & + .a-btn:focus,
+            & + .-focus {
+              border-left-width: 0.0625rem;
+              padding-left: 0.9375rem;
+
+              &.-icon {
+                padding-left: 0.4375rem;
+              }
+
+              @each $type in map-keys($sizes) {
+                &.-#{$type} {
+                  padding-left: map-get(map-get($sizes, $type), padding_hover);
+
+                  &.-icon {
+                    padding-left: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &.-flat {
+          border: 0.0625rem solid transparent;
+          border-radius: $border-radius;
+          padding-left: 0.9375rem;
+          padding-right: 0.9375rem;
+
+          &.-icon {
+            padding-left: 0.4375rem;
+            padding-right: 0.4375rem;
+          }
+
+          @each $type in map-keys($sizes) {
+            &.-#{$type} {
+              padding-left: map-get(map-get($sizes, $type), padding_hover);
+              padding-right: map-get(map-get($sizes, $type), padding_hover);
+
+              &.-icon {
+                padding-left: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
+                padding-right: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
+              }
+            }
+          }
+
+          &:active,
+          &.-active,
+          &:hover,
+          &.-hover,
+          &:focus,
+          &.-focus {
+            border: 0.0625rem solid set-color(grey, 40);
             padding-left: 0.9375rem;
             padding-right: 0.9375rem;
 
@@ -212,73 +238,45 @@ $sizes: (
                 }
               }
             }
-
-            &:active,
-            &.-active,
-            &:hover,
-            &.-hover,
-            &:focus,
-            &.-focus {
-              border: 0.0625rem solid set-color(grey, 40);
-              padding-left: 0.9375rem;
-              padding-right: 0.9375rem;
-
-              &.-icon {
-                padding-left: 0.4375rem;
-                padding-right: 0.4375rem;
-              }
-
-              @each $type in map-keys($sizes) {
-                &.-#{$type} {
-                  padding-left: map-get(map-get($sizes, $type), padding_hover);
-                  padding-right: map-get(map-get($sizes, $type), padding_hover);
-
-                  &.-icon {
-                    padding-left: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
-                    padding-right: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
-                  }
-                }
-              }
-            }
           }
         }
       }
     }
+  }
 
-    &.-pill {
-      &:not(.-vertical) {
-        .a-btn {
-          &,
-          &.-outline {
+  &.-pill {
+    &:not(.-vertical) {
+      .a-btn {
+        &,
+        &.-outline {
+          &:first-child {
+            border-bottom-left-radius: 1rem;
+            border-top-left-radius: 1rem;
+          }
+          &:last-child {
+            border-bottom-right-radius: 1rem;
+            border-top-right-radius: 1rem;
+          }
+
+          &.-small {
             &:first-child {
-              border-bottom-left-radius: 1rem;
-              border-top-left-radius: 1rem;
+              border-bottom-left-radius: 0.75rem;
+              border-top-left-radius: 0.75rem;
             }
             &:last-child {
-              border-bottom-right-radius: 1rem;
-              border-top-right-radius: 1rem;
+              border-bottom-right-radius: 0.75rem;
+              border-top-right-radius: 0.75rem;
             }
+          }
 
-            &.-small {
-              &:first-child {
-                border-bottom-left-radius: 0.75rem;
-                border-top-left-radius: 0.75rem;
-              }
-              &:last-child {
-                border-bottom-right-radius: 0.75rem;
-                border-top-right-radius: 0.75rem;
-              }
+          &.-large {
+            &:first-child {
+              border-bottom-left-radius: 1.25rem;
+              border-top-left-radius: 1.25rem;
             }
-
-            &.-large {
-              &:first-child {
-                border-bottom-left-radius: 1.25rem;
-                border-top-left-radius: 1.25rem;
-              }
-              &:last-child {
-                border-bottom-right-radius: 1.25rem;
-                border-top-right-radius: 1.25rem;
-              }
+            &:last-child {
+              border-bottom-right-radius: 1.25rem;
+              border-top-right-radius: 1.25rem;
             }
           }
         }

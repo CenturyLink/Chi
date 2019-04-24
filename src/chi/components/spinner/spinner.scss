@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
 $spinner-sizes: (
   xs: 0.75rem,
@@ -13,55 +13,52 @@ $spinner-sizes: (
   xl: 6rem,
   xxl: 8rem);
 
-.chi {
+.a-spinner {
+  animation: rotator 1.4s linear infinite;
+  stroke: currentColor;
+  position: relative;
+  height: 1rem;
+  width: 1rem;
 
+  & .path {
+    stroke-dasharray: 150,190;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    stroke-linecap: round;
+    animation: dash 1.4s ease-in-out infinite;
+  }
+
+  @each $type in map-keys($spinner-sizes) {
+    &.-#{$type} {
+      height: map-get($spinner-sizes, $type);
+      width: map-get($spinner-sizes, $type);
+    }
+  }
+}
+
+.a-backdrop {
   .a-spinner {
-    animation: rotator 1.4s linear infinite;
-    stroke: currentColor;
-    position: relative;
-    height: 1rem;
-    width: 1rem;
-
-    & .path {
-      stroke-dasharray: 150,190;
-      stroke-dashoffset: 0;
-      transform-origin: center;
-      stroke-linecap: round;
-      animation: dash 1.4s ease-in-out infinite;
-    }
-
-    @each $type in map-keys($spinner-sizes) {
-      &.-#{$type} {
-        height: map-get($spinner-sizes, $type);
-        width: map-get($spinner-sizes, $type);
-      }
-    }
+    transform-origin: center;
+    width: 4rem;
+    height: 4rem;
   }
+}
 
-  .a-backdrop {
-    .a-spinner {
-      transform-origin: center;
-      width: 4rem;
-      height: 4rem;
-    }
+@keyframes rotator {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 265;
   }
-
-  @keyframes rotator {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  50% {
+    stroke-dashoffset: 65;
+    transform: rotate(90deg);
   }
-
-  @keyframes dash {
-    0% {
-      stroke-dashoffset: 265;
-    }
-    50% {
-      stroke-dashoffset: 65;
-      transform: rotate(90deg);
-    }
-    100% {
-      stroke-dashoffset: 265;
-      transform: rotate(360deg);
-    }
+  100% {
+    stroke-dashoffset: 265;
+    transform: rotate(360deg);
   }
 }

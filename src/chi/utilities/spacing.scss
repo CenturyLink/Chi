@@ -1,162 +1,159 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
-.chi {
+$attributes: (
+  margin: m,
+  padding: p
+);
 
-  $attributes: (
-    margin: m,
-    padding: p
-  );
+$values: (
+  margin: 0 1 2 3 4 5 6 7 8 9 10 auto,
+  padding: 0 1 2 3 4 5 6 7 8 9 10
+);
 
-  $values: (
-    margin: 0 1 2 3 4 5 6 7 8 9 10 auto,
-    padding: 0 1 2 3 4 5 6 7 8 9 10
-  );
+$positions: (
+  a: '',
+  b: '-bottom',
+  l: '-left',
+  r: '-right',
+  t: '-top',
+  x: '-x',
+  y: '-y'
+);
 
-  $positions: (
-    a: '',
-    b: '-bottom',
-    l: '-left',
-    r: '-right',
-    t: '-top',
-    x: '-x',
-    y: '-y'
-  );
+$screen-sizes-prefixes: (
+  xs: '',
+  sm: '-sm',
+  md: '-md',
+  lg: '-lg',
+  xl: '-xl'
+);
 
-  $screen-sizes-prefixes: (
-    xs: '',
-    sm: '-sm',
-    md: '-md',
-    lg: '-lg',
-    xl: '-xl'
-  );
-
-  @mixin create-spacing($attribute, $attr-prefix, $screen-size, $size-infix) {
-    @each $index in map-get($values, $attribute) {
-      @each $position, $pos-suffix in $positions {
-        @if ($position == a) {
-          .-#{$attr-prefix}#{$size-infix}--#{$index} {
-            #{$attribute}: if($index == 'auto', $index, ($index / 2) + rem);
-          }
-        } @else if ($position == x) {
-          .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
-            #{$attribute}-left: if($index == 'auto', $index, ($index / 2) + rem);
-            #{$attribute}-right: if($index == 'auto', $index, ($index / 2) + rem);
-          }
-        } @else if ($position == y) {
-          .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
-            #{$attribute}-bottom: if($index == 'auto', $index, ($index / 2) + rem);
-            #{$attribute}-top: if($index == 'auto', $index, ($index / 2) + rem);
-          }
-        } @else {
-          .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
-            #{$attribute}#{$pos-suffix}: if($index == 'auto', $index, ($index / 2) + rem);
-          }
+@mixin create-spacing($attribute, $attr-prefix, $screen-size, $size-infix) {
+  @each $index in map-get($values, $attribute) {
+    @each $position, $pos-suffix in $positions {
+      @if ($position == a) {
+        .-#{$attr-prefix}#{$size-infix}--#{$index} {
+          #{$attribute}: if($index == 'auto', $index, ($index / 2) + rem);
         }
-      }
-    }
-  }
-
-  @each $attribute, $attr-prefix in $attributes {
-    @each $screen-size, $size-infix in $screen-sizes-prefixes {
-      @if ($screen-size == 'xs') {
-        @include create-spacing($attribute, $attr-prefix, $screen-size, $size-infix);
+      } @else if ($position == x) {
+        .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
+          #{$attribute}-left: if($index == 'auto', $index, ($index / 2) + rem);
+          #{$attribute}-right: if($index == 'auto', $index, ($index / 2) + rem);
+        }
+      } @else if ($position == y) {
+        .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
+          #{$attribute}-bottom: if($index == 'auto', $index, ($index / 2) + rem);
+          #{$attribute}-top: if($index == 'auto', $index, ($index / 2) + rem);
+        }
       } @else {
-        @include respond-to($screen-size) {
-          @include create-spacing($attribute, $attr-prefix, $screen-size, $size-infix);
+        .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
+          #{$attribute}#{$pos-suffix}: if($index == 'auto', $index, ($index / 2) + rem);
         }
       }
     }
   }
+}
 
-  /* Legacy code below this line */
-
-  /* Margins */
-  @for $index from 0 through 10 {
-    .-m#{$index} {
-      margin: ($index / 2) + rem;
+@each $attribute, $attr-prefix in $attributes {
+  @each $screen-size, $size-infix in $screen-sizes-prefixes {
+    @if ($screen-size == 'xs') {
+      @include create-spacing($attribute, $attr-prefix, $screen-size, $size-infix);
+    } @else {
+      @include respond-to($screen-size) {
+        @include create-spacing($attribute, $attr-prefix, $screen-size, $size-infix);
+      }
     }
   }
+}
 
-  @for $index from 0 through 10 {
+/* Legacy code below this line */
 
-    /* Top Margin */
-    .-mt#{$index} {
-      margin-top: ($index / 2) + rem;
-    }
+/* Margins */
+@for $index from 0 through 10 {
+  .-m#{$index} {
+    margin: ($index / 2) + rem;
+  }
+}
 
-    /* Right Margin */
-    .-mr#{$index} {
-      margin-right: ($index / 2) + rem;
-    }
+@for $index from 0 through 10 {
 
-    /* Bottom Margin */
-    .-mb#{$index} {
-      margin-bottom: ($index / 2) + rem;
-    }
-
-    /* Left Margin */
-    .-ml#{$index} {
-      margin-left: ($index / 2) + rem;
-    }
-
-    /* Horizontal Margins */
-    .-mx#{$index} {
-      margin-left: ($index / 2) + rem;
-      margin-right: ($index / 2) + rem;
-    }
-
-    /* Vertical Margins */
-    .-my#{$index} {
-      margin-bottom: ($index / 2) + rem;
-      margin-top: ($index / 2) + rem;
-    }
-
+  /* Top Margin */
+  .-mt#{$index} {
+    margin-top: ($index / 2) + rem;
   }
 
-  /* Padding */
-
-  @for $index from 0 through 10 {
-    .-p#{$index} {
-      padding-bottom: ($index / 2) + rem;
-      padding-left: ($index / 2) + rem;
-      padding-right: ($index / 2) + rem;
-      padding-top: ($index / 2) + rem;
-    }
+  /* Right Margin */
+  .-mr#{$index} {
+    margin-right: ($index / 2) + rem;
   }
 
-  @for $index from 0 through 10 {
+  /* Bottom Margin */
+  .-mb#{$index} {
+    margin-bottom: ($index / 2) + rem;
+  }
 
-    /* Top Padding */
-    .-pt#{$index} {
-      padding-top: ($index / 2) + rem;
-    }
+  /* Left Margin */
+  .-ml#{$index} {
+    margin-left: ($index / 2) + rem;
+  }
 
-    /* Right Padding */
-    .-pr#{$index} {
-      padding-right: ($index / 2) + rem;
-    }
+  /* Horizontal Margins */
+  .-mx#{$index} {
+    margin-left: ($index / 2) + rem;
+    margin-right: ($index / 2) + rem;
+  }
 
-    /* Bottom Padding */
-    .-pb#{$index} {
-      padding-bottom: ($index / 2) + rem;
-    }
+  /* Vertical Margins */
+  .-my#{$index} {
+    margin-bottom: ($index / 2) + rem;
+    margin-top: ($index / 2) + rem;
+  }
 
-    /* Left Padding */
-    .-pl#{$index} {
-      padding-left: ($index / 2) + rem;
-    }
+}
 
-    /* Horizontal Padding */
-    .-px#{$index} {
-      padding-left: ($index / 2) + rem;
-      padding-right: ($index / 2) + rem;
-    }
+/* Padding */
 
-    /* Vertical Padding */
-    .-py#{$index} {
-      padding-bottom: ($index / 2) + rem;
-      padding-top: ($index / 2) + rem;
-    }
+@for $index from 0 through 10 {
+  .-p#{$index} {
+    padding-bottom: ($index / 2) + rem;
+    padding-left: ($index / 2) + rem;
+    padding-right: ($index / 2) + rem;
+    padding-top: ($index / 2) + rem;
+  }
+}
+
+@for $index from 0 through 10 {
+
+  /* Top Padding */
+  .-pt#{$index} {
+    padding-top: ($index / 2) + rem;
+  }
+
+  /* Right Padding */
+  .-pr#{$index} {
+    padding-right: ($index / 2) + rem;
+  }
+
+  /* Bottom Padding */
+  .-pb#{$index} {
+    padding-bottom: ($index / 2) + rem;
+  }
+
+  /* Left Padding */
+  .-pl#{$index} {
+    padding-left: ($index / 2) + rem;
+  }
+
+  /* Horizontal Padding */
+  .-px#{$index} {
+    padding-left: ($index / 2) + rem;
+    padding-right: ($index / 2) + rem;
+  }
+
+  /* Vertical Padding */
+  .-py#{$index} {
+    padding-bottom: ($index / 2) + rem;
+    padding-top: ($index / 2) + rem;
   }
 }

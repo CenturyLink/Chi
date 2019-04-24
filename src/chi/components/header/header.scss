@@ -1,225 +1,223 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
-.chi {
-  .o-header {
+.o-header {
+  align-items: center;
+  background-color: set-color(white);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.04), 0 2px 2px 0 rgba(0,0,0,.12);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: auto;
+  justify-content: center;
+  min-height: 4rem;
+  width: 100%;
+
+  &__content {
     align-items: center;
-    background-color: set-color(white);
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,.04), 0 2px 2px 0 rgba(0,0,0,.12);
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
-    height: auto;
     justify-content: center;
-    min-height: 4rem;
+    padding: .75rem 0;
+    position: relative;
     width: 100%;
-
-    &__content {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: .75rem 0;
-      position: relative;
-      width: 100%;
-      @include respond-to(sm) {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0 1rem;
-      }
-      @include respond-to(md) {
-        padding: 0 1.5rem;
-      }
-
-      .a-brand {
-        display: inline-flex;
-        width: 7.5rem;
-        &:only-child {
-          margin-right: 0;
-        }
-        & > img,
-        & > svg {
-          height: 1.5rem;
-          @include respond-to(sm) {
-            height: 2rem;
-          }
-        }
-        @include respond-to(sm) {
-          margin-right: 1rem;
-          width: 10rem;
-        }
-        @include respond-to(md) {
-          margin-right: 2rem;
-        }
-      }
-    }
-
-    &__start {
-      display: flex;
-      flex-wrap: nowrap;
-      @include respond-to(sm) {
-        flex-grow: 1;
-        overflow: hidden;
-      }
-      .o-header__title {
-        font-size: 0.875rem;
-        @include respond-to(sm) {
-          font-size: 1rem;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-        @include respond-to(md) {
-          font-size: 1.125rem;
-        }
-      }
-    }
-
-    &__end {
-      display: flex;
-      flex-wrap: nowrap;
-      padding-top: .5rem;
-      @include respond-to(sm) {
-        margin-left: 1rem;
-        padding-top: 0;
-      }
-      .a-tabs {
-        display: flex;
-        flex-wrap: nowrap;
-      }
-    }
-
-    &__toolbar {
-      align-items: center;
-      display: flex;
+    @include respond-to(sm) {
       flex-direction: row;
-      height: 2rem;
-      justify-content: center;
-      margin-top: .25rem;
-      position: relative;
-      width: 100%;
+      justify-content: space-between;
+      padding: 0 1rem;
+    }
+    @include respond-to(md) {
+      padding: 0 1.5rem;
+    }
+
+    .a-brand {
+      display: inline-flex;
+      width: 7.5rem;
+      &:only-child {
+        margin-right: 0;
+      }
+      & > img,
+      & > svg {
+        height: 1.5rem;
+        @include respond-to(sm) {
+          height: 2rem;
+        }
+      }
       @include respond-to(sm) {
-        flex-direction: row;
-        justify-content: space-between;
-        margin-top: 0;
-        padding: 0 1rem;
+        margin-right: 1rem;
+        width: 10rem;
       }
       @include respond-to(md) {
-        padding: 0 1.5rem;
+        margin-right: 2rem;
       }
+    }
+  }
 
-      ~ .o-header__content {
-        height: auto;
-        min-height: 4rem;
+  &__start {
+    display: flex;
+    flex-wrap: nowrap;
+    @include respond-to(sm) {
+      flex-grow: 1;
+      overflow: hidden;
+    }
+    .o-header__title {
+      font-size: 0.875rem;
+      @include respond-to(sm) {
+        font-size: 1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
+      @include respond-to(md) {
+        font-size: 1.125rem;
+      }
+    }
+  }
 
-      & .a-tabs:not(.-vertical):not(.-responsive) {
-        height: 2rem;
+  &__end {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-top: .5rem;
+    @include respond-to(sm) {
+      margin-left: 1rem;
+      padding-top: 0;
+    }
+    .a-tabs {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+  }
 
-        & > li {
-          & > a {
-            font-size: $text-smaller;
-            padding: 0.5rem 0;
-          }
+  &__toolbar {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 2rem;
+    justify-content: center;
+    margin-top: .25rem;
+    position: relative;
+    width: 100%;
+    @include respond-to(sm) {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 0;
+      padding: 0 1rem;
+    }
+    @include respond-to(md) {
+      padding: 0 1.5rem;
+    }
 
-          &.m-dropdown {
-            &.-active > a {
-              border-bottom: 0.0625rem solid $brand-color;
-              padding-bottom: .4375rem;
-            }
+    ~ .o-header__content {
+      height: auto;
+      min-height: 4rem;
+    }
 
-            .m-dropdown__trigger {
-              padding-right: 1rem;
-              &:after {
-                top: 0.5rem;
-              }
-            }
-          }
+    & .a-tabs:not(.-vertical):not(.-responsive) {
+      height: 2rem;
 
-          &.a-sliding-border {
-            height: 0.0625rem;
-          }
+      & > li {
+        & > a {
+          font-size: $text-smaller;
+          padding: 0.5rem 0;
         }
 
-        &:not(.-sliding) {
-          & > li.-active > a {
+        &.m-dropdown {
+          &.-active > a {
+            border-bottom: 0.0625rem solid $brand-color;
             padding-bottom: .4375rem;
           }
+
+          .m-dropdown__trigger {
+            padding-right: 1rem;
+            &:after {
+              top: 0.5rem;
+            }
+          }
+        }
+
+        &.a-sliding-border {
+          height: 0.0625rem;
         }
       }
 
-      .o-header__end {
-        margin-left: 1rem;
-        padding-top: 0;
-
-        @include respond-to(sm) {
-          margin-left: 0rem;
-        }
-
-        & a {
-          color: set-color(grey, 90);
-          font-size: $text-smaller;
-          font-weight: 600;
-
-          &:hover {
-            color: $brand-color;
-            text-decoration: none;
-          }
+      &:not(.-sliding) {
+        & > li.-active > a {
+          padding-bottom: .4375rem;
         }
       }
     }
 
-    &.-inverse {
-      background-color: set-color(black);
+    .o-header__end {
+      margin-left: 1rem;
+      padding-top: 0;
 
-      .o-header__title {
-        color: set-color(grey, 50);
+      @include respond-to(sm) {
+        margin-left: 0rem;
       }
 
-      .o-header__toolbar {
-        .o-header__end {
-          & > a {
-            color: set-color(white);
+      & a {
+        color: set-color(grey, 90);
+        font-size: $text-smaller;
+        font-weight: 600;
 
-            &:hover {
-              color: $secondary;
-            }
-          }
+        &:hover {
+          color: $brand-color;
+          text-decoration: none;
+        }
+      }
+    }
+  }
 
-          &.-active > a {
+  &.-inverse {
+    background-color: set-color(black);
+
+    .o-header__title {
+      color: set-color(grey, 50);
+    }
+
+    .o-header__toolbar {
+      .o-header__end {
+        & > a {
+          color: set-color(white);
+
+          &:hover {
             color: $secondary;
           }
         }
+
+        &.-active > a {
+          color: $secondary;
+        }
+      }
+    }
+
+    .a-tabs {
+      li {
+        & > a {
+          color: set-color(white);
+
+          &:hover {
+            color: $secondary-color;
+          }
+        }
       }
 
-      .a-tabs {
-        li {
-          & > a {
-            color: set-color(white);
-
-            &:hover {
-              color: $secondary-color;
-            }
-          }
+      & li.-active {
+        & a {
+          border-bottom: 0.125rem solid $secondary;
+          color: $secondary;
         }
 
-        & li.-active {
-          & a {
-            border-bottom: 0.125rem solid $secondary;
-            color: $secondary;
-          }
-
-          & .m-dropdown__trigger {
-            &:after {
-              background-image: url(../html-select/icon-chevron-thin-down-active-inverse.svg);
-            }
+        & .m-dropdown__trigger {
+          &:after {
+            background-image: url(icon-chevron-thin-down-active-inverse.svg);
           }
         }
+      }
 
-        &:not(.-vertical):not(.-responsive):not(.-sliding) > li.-active > a {
-          color: $secondary-color;
-          border-bottom-color: $secondary-color;
-        }
+      &:not(.-vertical):not(.-responsive):not(.-sliding) > li.-active > a {
+        color: $secondary-color;
+        border-bottom-color: $secondary-color;
       }
     }
   }
@@ -227,9 +225,7 @@
 
 /* IE11 CSS hack */
 @media all and (-ms-high-contrast:none) {
-  .chi {
-    .o-header__content, .o-header__toolbar ~ .o-header__content {
-      height: 4rem;
-    }
+  .o-header__content, .o-header__toolbar ~ .o-header__content {
+    height: 4rem;
   }
 }

@@ -14,7 +14,14 @@ function serve(done) {
       port: 8001
     },
     ghostMode: false,
-    open: false
+    open: false,
+    middleware: [
+      function (req, res, next) {
+        res.setHeader('cache-control', 'public, max-age=0');
+        res.setHeader('chi-custom-header', 'ok');
+        next();
+      }
+    ]
   });
   done();
 }

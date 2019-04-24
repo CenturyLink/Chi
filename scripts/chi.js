@@ -10,11 +10,12 @@ import svgSprite from 'gulp-svg-sprite';
 
 const componentsFolder = path.join(__dirname, '..', 'src', 'chi', 'components');
 const utilitiesFolder = path.join(__dirname, '..', 'src', 'chi', 'utilities');
+const iconsFolder = path.join(__dirname, '..', 'src', 'chi', 'assets', 'icons');
+
 const foundationFolders = [
   'fonts',
   'reset',
-  'typography',
-  'colors'
+  'typography'
 ].map(item =>
   path.join(__dirname, '..', 'src', 'chi', 'foundations', item));
 function getFolders(dir) {
@@ -37,11 +38,7 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
     .map(name => `${path.join(componentsFolder, name)}`);
 
   return gulp.src(
-    foundationFolders
-      .concat(componentFolders)
-      .concat(utilitiesFolder)
-      .map(folder => `${path.join(folder, '*.scss')}`)
-      .concat(`!${path.join(componentsFolder, '*.scss')}`)
+       path.join(__dirname, '..', 'src', 'chi', 'index.scss')
   )
     .pipe(plumber())
     .pipe(sass({
@@ -55,7 +52,9 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
       require('autoprefixer')({
         browsers: ['last 2 versions', 'ie >= 10']
       }),
-      require('postcss-svg')(),
+      require('postcss-svg')({
+        dirs: [iconsFolder]
+      }),
       require('cssnano')({
         preset: ['default', {
           discardComments: {

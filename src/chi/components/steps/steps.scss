@@ -1,253 +1,250 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
 @font-face {
   font-family: 'chi';
   src: url('webfont/chi.eot');
 }
 
-.chi {
-  .a-steps {
+.a-steps {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  &__icon {
     align-items: center;
     display: flex;
+    flex: 1 0 auto;
+    height: 1rem;
     justify-content: center;
+    width: 1rem;
+  }
 
-    &__icon {
-      align-items: center;
-      display: flex;
-      flex: 1 0 auto;
-      height: 1rem;
-      justify-content: center;
-      width: 1rem;
-    }
+  &__line {
+    border-top: 0.125rem solid set-color(grey, 40);
+    width: 100%;
+  }
 
-    &__line {
-      border-top: 0.125rem solid set-color(grey, 40);
-      width: 100%;
-    }
+  & > li {
+    align-items: center;
+    color: $brand-color;
+    display: flex;
+    flex: 1 0 auto;
+    font-size: $text;
+    justify-content: center;
+    line-height: 1rem;
 
-    & > li {
-      align-items: center;
-      color: $brand-color;
-      display: flex;
-      flex: 1 0 auto;
-      font-size: $text;
-      justify-content: center;
-      line-height: 1rem;
-
-      & > .a-steps__icon {
-        &::before {
-          content: "\e942";
-          font-family: 'chi';
-          font-size: 0.75rem;
-          position: absolute;
-        }
-
-        &::after {
-          content: "";
-          display: block;
-          font-size: 1.3rem;
-          font-style: normal;
-          font-weight: normal;
-          font-variant: normal;
-          position: absolute;
-        }
-
-        & a {
-          position: relative;
-          top: 1.5rem;
-          white-space: nowrap;
-        }
+    & > .a-steps__icon {
+      &::before {
+        content: "\e942";
+        font-family: 'chi';
+        font-size: 0.75rem;
+        position: absolute;
       }
 
-      & > a {
-        color: $brand-color;
-        font-weight: 600;
-        margin-left: 0.5rem;
+      &::after {
+        content: "";
+        display: block;
+        font-size: 1.3rem;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        position: absolute;
+      }
+
+      & a {
+        position: relative;
+        top: 1.5rem;
         white-space: nowrap;
+      }
+    }
+
+    & > a {
+      color: $brand-color;
+      font-weight: 600;
+      margin-left: 0.5rem;
+      white-space: nowrap;
+    }
+
+    & > .a-steps__line {
+      border-color: $brand-color;
+    }
+
+    &.-active {
+      & > .a-steps__icon {
+        margin-left: 0.125rem;
+        &::after {
+          content: "\e934";
+          font-family: 'chi' !important;
+        }
       }
 
       & > .a-steps__line {
-        border-color: $brand-color;
+        border-color: set-color(grey, 40);
+        margin-left: 0.125rem;
       }
 
-      &.-active {
+      & a {
+        color: $brand-color;
+      }
+
+      &:last-child {
+        flex-grow: 0;
+      }
+
+      & ~ li {
         & > .a-steps__icon {
-          margin-left: 0.125rem;
-          &::after {
-            content: "\e934";
-            font-family: 'chi' !important;
-          }
+          color: set-color(grey, 40);
+
         }
 
         & > .a-steps__line {
           border-color: set-color(grey, 40);
-          margin-left: 0.125rem;
         }
 
         & a {
-          color: $brand-color;
+          color: set-color(grey, 40);
         }
 
         &:last-child {
           flex-grow: 0;
         }
-
-        & ~ li {
-          & > .a-steps__icon {
-            color: set-color(grey, 40);
-
-          }
-
-          & > .a-steps__line {
-            border-color: set-color(grey, 40);
-          }
-
-          & a {
-            color: set-color(grey, 40);
-          }
-
-          &:last-child {
-            flex-grow: 0;
-          }
-        }
       }
     }
+  }
 
-    & a {
-      color: $text-color;
-      text-decoration: none;
+  & a {
+    color: $text-color;
+    text-decoration: none;
 
-      &:hover {
-        color: $brand-color;
-      }
+    &:hover {
+      color: $brand-color;
     }
+  }
 
-    &.-inverse {
-      background-color: set-color(black);
+  &.-inverse {
+    background-color: set-color(black);
 
-      & > li {
+    & > li {
+      color: $secondary-color;
+
+      &::before {
+        border: 0.125rem solid set-color(black);
+      }
+
+      & a {
         color: $secondary-color;
+      }
 
-        &::before {
-          border: 0.125rem solid set-color(black);
-        }
-
-        & a {
-          color: $secondary-color;
-        }
-
-        & > .a-steps__line {
-          border-color: $secondary-color;
-        }
+      & > .a-steps__line {
+        border-color: $secondary-color;
       }
     }
+  }
 
-    &.-horizontalLabels {
-      counter-reset: step;
+  &.-horizontalLabels {
+    counter-reset: step;
 
-      & > li {
+    & > li {
+      & > .a-steps__icon {
+        &::before {
+          content: counter(step);
+          counter-increment: step;
+          font-family: $font-family;
+          font-size: .6875rem;
+          font-weight: 600;
+        }
+
+        &::after {
+          content: "\e928";
+          font-family: 'chi' !important;
+        }
+      }
+
+      &.-completed {
         & > .a-steps__icon {
           &::before {
-            content: counter(step);
-            counter-increment: step;
-            font-family: $font-family;
-            font-size: .6875rem;
-            font-weight: 600;
+            content: "";
           }
+        }
+      }
 
+      &.-active {
+        & > .a-steps__icon {
           &::after {
-            content: "\e928";
-            font-family: 'chi' !important;
+            content: "\e934";
           }
         }
 
-        &.-completed {
-          & > .a-steps__icon {
-            &::before {
-              content: "";
-            }
-          }
-        }
-
-        &.-active {
+        & ~ li {
           & > .a-steps__icon {
             &::after {
               content: "\e934";
             }
           }
-
-          & ~ li {
-            & > .a-steps__icon {
-              &::after {
-                content: "\e934";
-              }
-            }
-          }
         }
+      }
 
-        & > .a-steps__line {
-          margin: 0.5rem;
-        }
+      & > .a-steps__line {
+        margin: 0.5rem;
       }
     }
   }
-
-  // sass-lint:disable-all
-  /* IE10+ CSS hack */
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    .a-steps div.a-steps__icon a {
-      position: relative;
-      right: 1.5625rem;
-    }
-    .a-steps li.-active div.a-steps__icon::after {
-      position: relative;
-      right: 3.4375rem;
-    }
-    .a-steps div.a-steps__icon::before,
-    .a-steps.-horizontalLabels div.a-steps__icon::before  {
-      position: relative;
-      left: 0.15rem;
-    }
-    .a-steps.-horizontalLabels div.a-steps__icon::after,
-    .a-steps.-horizontalLabels li.-active div.a-steps__icon::after {
-      position: relative;
-      right: 0.75rem;
-    }
-    .a-steps.-horizontalLabels li.-completed div.a-steps__icon::after {
-      position: relative;
-      right: 0.3125rem;
-    }
-  }
-
-  /* EDGE CSS hack */
-  @supports (-ms-ime-align: auto) {
-    .a-steps div.a-steps__line {
-      padding-bottom: 0.1875rem;
-    }
-
-    .a-steps li.-active div.a-steps__icon::after,
-    .a-steps.-inverse li.-active div.a-steps__icon::after{
-      font-size: 1.4rem;
-    }
-
-    .a-steps.-horizontalLabels div.a-steps__icon::before,
-    .a-steps.-horizontalLabels li.-active div.a-steps__icon::before,
-    .a-steps.-horizontalLabels div.a-steps__icon::before {
-      position: absolute;
-    }
-
-    .a-steps.-horizontalLabels div.a-steps__line {
-      padding-bottom: 0;
-    }
-
-    .a-steps.-horizontalLabels div.a-steps__icon::after,
-    .a-steps.-horizontalLabels li.-active div.a-steps__icon::after,
-    .a-steps.-horizontalLabels li.-completed div.a-steps__icon::after {
-      position: relative;
-      top: 0.1875rem;
-    }
-  }
-  // sass-lint:enable-all
 }
 
+// sass-lint:disable-all
+/* IE10+ CSS hack */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .a-steps div.a-steps__icon a {
+    position: relative;
+    right: 1.5625rem;
+  }
+  .a-steps li.-active div.a-steps__icon::after {
+    position: relative;
+    right: 3.4375rem;
+  }
+  .a-steps div.a-steps__icon::before,
+  .a-steps.-horizontalLabels div.a-steps__icon::before  {
+    position: relative;
+    left: 0.15rem;
+  }
+  .a-steps.-horizontalLabels div.a-steps__icon::after,
+  .a-steps.-horizontalLabels li.-active div.a-steps__icon::after {
+    position: relative;
+    right: 0.75rem;
+  }
+  .a-steps.-horizontalLabels li.-completed div.a-steps__icon::after {
+    position: relative;
+    right: 0.3125rem;
+  }
+}
+
+/* EDGE CSS hack */
+@supports (-ms-ime-align: auto) {
+  .a-steps div.a-steps__line {
+    padding-bottom: 0.1875rem;
+  }
+
+  .a-steps li.-active div.a-steps__icon::after,
+  .a-steps.-inverse li.-active div.a-steps__icon::after{
+    font-size: 1.4rem;
+  }
+
+  .a-steps.-horizontalLabels div.a-steps__icon::before,
+  .a-steps.-horizontalLabels li.-active div.a-steps__icon::before,
+  .a-steps.-horizontalLabels div.a-steps__icon::before {
+    position: absolute;
+  }
+
+  .a-steps.-horizontalLabels div.a-steps__line {
+    padding-bottom: 0;
+  }
+
+  .a-steps.-horizontalLabels div.a-steps__icon::after,
+  .a-steps.-horizontalLabels li.-active div.a-steps__icon::after,
+  .a-steps.-horizontalLabels li.-completed div.a-steps__icon::after {
+    position: relative;
+    top: 0.1875rem;
+  }
+}
+// sass-lint:enable-all

@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 
 $input-range-height: 1.5rem;
 $input-range-track-height: 0.5rem;
@@ -32,255 +32,253 @@ $input-range-track-height: 0.5rem;
 }
 
 // sass-lint:disable no-vendor-prefixes
-.chi {
-  input {
-    &[type='range'] {
-      &.a-input {
-        -webkit-appearance: none;
-        background-color: transparent;
-        height: $input-range-height;
-        padding: 0;
-        width: 100%;
+input {
+  &[type='range'] {
+    &.a-input {
+      -webkit-appearance: none;
+      background-color: transparent;
+      height: $input-range-height;
+      padding: 0;
+      width: 100%;
 
-        &[disabled] {
-          opacity: 0.65;
-          pointer-events: none;
+      &[disabled] {
+        opacity: 0.65;
+        pointer-events: none;
 
-          // Chi cross browser
-          & ~ .a-input__thumb {
-            border-color: mix(white, $brand-color, 35%);
-          }
-
-          & ~ .a-input__progress {
-            background-color: mix(white, $brand-color, 35%);
-          }
+        // Chi cross browser
+        & ~ .a-input__thumb {
+          border-color: mix(white, $brand-color, 35%);
         }
 
-        &::-moz-focus-outer {
-          border: 0;
+        & ~ .a-input__progress {
+          background-color: mix(white, $brand-color, 35%);
         }
+      }
 
-        &.-zero {
-          &:focus,
-          &.-focus {
-            // Safari, Chrome and Opera
-            &::-webkit-slider-thumb {
-              @include grey-thumb-shadow;
-            }
+      &::-moz-focus-outer {
+        border: 0;
+      }
 
-            // Firefox
-            &::-moz-range-thumb {
-              @include grey-thumb-shadow;
-            }
-
-            // Internet Explorer
-            &::-ms-thumb {
-              @include grey-thumb-shadow;
-            }
-          }
-
-          // Safari, Chrome and Opera
-          &::-webkit-slider-thumb {
-            background-color: set-color(grey, 50);
-            border-color: set-color(grey, 50);
-          }
-
-          // Firefox
-          &::-moz-range-thumb {
-            border-color: set-color(grey, 50);
-          }
-
-          &::-moz-range-progress {
-            background-color: set-color(grey, 30);
-          }
-
-          // Internet Explorer
-          &::-ms-thumb {
-            border-color: set-color(grey, 50);
-          }
-
-          &::-ms-fill-lower {
-            background-color: set-color(grey, 30);
-          }
-
-          // Chi cross browser
-          & ~ .a-input__thumb {
-            border-color: set-color(grey, 50);
-          }
-
-          & ~ .a-input__progress {
-            background-color: set-color(grey, 30);
-          }
-        }
-
+      &.-zero {
         &:focus,
-        &.-focus,
-        &:active {
-          outline: none;
-
+        &.-focus {
           // Safari, Chrome and Opera
           &::-webkit-slider-thumb {
-            @include green-thumb-shadow;
+            @include grey-thumb-shadow;
           }
 
           // Firefox
           &::-moz-range-thumb {
-            @include green-thumb-shadow;
+            @include grey-thumb-shadow;
           }
 
           // Internet Explorer
           &::-ms-thumb {
-            @include green-thumb-shadow;
-          }
-
-          // Chi cross browser
-          & ~ .a-input__thumb {
-            @include green-thumb-shadow;
-          }
-        }
-
-
-        &.a-rangeSlider__thumbOverwritten {
-          // Safari, Chrome and Opera
-          &::-webkit-slider-thumb {
-            opacity: 0;
-          }
-
-          // Firefox
-          &::-moz-range-thumb {
-            opacity: 0;
-          }
-
-          // Internet Explorer
-          &::-ms-thumb {
-            opacity: 0;
+            @include grey-thumb-shadow;
           }
         }
 
         // Safari, Chrome and Opera
         &::-webkit-slider-thumb {
-          @include thumb-style;
-          -webkit-appearance: none;
-          margin-top: -6px;
-        }
-
-        &::-webkit-slider-runnable-track {
-          @include track-style;
+          background-color: set-color(grey, 50);
+          border-color: set-color(grey, 50);
         }
 
         // Firefox
         &::-moz-range-thumb {
-          @include thumb-style;
-          margin-left: 4px;
-          margin-right: 4px;
-        }
-
-        &::-moz-range-track {
-          @include track-style;
+          border-color: set-color(grey, 50);
         }
 
         &::-moz-range-progress {
-          @include track-style;
-          background-color: $brand-color;
+          background-color: set-color(grey, 30);
         }
 
         // Internet Explorer
         &::-ms-thumb {
-          @include thumb-style;
-          border-width: 2px;
-          height: 20px;
-          margin: 0 4px;
-          width: 20px;
-        }
-
-        &::-ms-tooltip {
-          display: none;
-        }
-
-        &::-ms-track {
-          @include track-style;
-          border-color: transparent;
-          color: transparent;
+          border-color: set-color(grey, 50);
         }
 
         &::-ms-fill-lower {
-          @include track-style;
-          background-color: $brand-color;
-        }
-
-        &::-ms-fill-upper {
-          @include track-style;
+          background-color: set-color(grey, 30);
         }
 
         // Chi cross browser
         & ~ .a-input__thumb {
-          @include thumb-style;
-          content: '';
-          left: 50%;
-          margin-left: -0.625rem;
-          pointer-events: none;
-          position: absolute;
-          top: 0.125rem;
-          z-index: 1;
+          border-color: set-color(grey, 50);
         }
 
         & ~ .a-input__progress {
-          @include track-style;
-          background-color: $brand-color;
-          content: '';
-          pointer-events: none;
-          position: absolute;
-          top: 0.5rem;
-          width: 50%;
-          z-index: 1;
+          background-color: set-color(grey, 30);
         }
+      }
+
+      &:focus,
+      &.-focus,
+      &:active {
+        outline: none;
+
+        // Safari, Chrome and Opera
+        &::-webkit-slider-thumb {
+          @include green-thumb-shadow;
+        }
+
+        // Firefox
+        &::-moz-range-thumb {
+          @include green-thumb-shadow;
+        }
+
+        // Internet Explorer
+        &::-ms-thumb {
+          @include green-thumb-shadow;
+        }
+
+        // Chi cross browser
+        & ~ .a-input__thumb {
+          @include green-thumb-shadow;
+        }
+      }
+
+
+      &.a-rangeSlider__thumbOverwritten {
+        // Safari, Chrome and Opera
+        &::-webkit-slider-thumb {
+          opacity: 0;
+        }
+
+        // Firefox
+        &::-moz-range-thumb {
+          opacity: 0;
+        }
+
+        // Internet Explorer
+        &::-ms-thumb {
+          opacity: 0;
+        }
+      }
+
+      // Safari, Chrome and Opera
+      &::-webkit-slider-thumb {
+        @include thumb-style;
+        -webkit-appearance: none;
+        margin-top: -6px;
+      }
+
+      &::-webkit-slider-runnable-track {
+        @include track-style;
+      }
+
+      // Firefox
+      &::-moz-range-thumb {
+        @include thumb-style;
+        margin-left: 4px;
+        margin-right: 4px;
+      }
+
+      &::-moz-range-track {
+        @include track-style;
+      }
+
+      &::-moz-range-progress {
+        @include track-style;
+        background-color: $brand-color;
+      }
+
+      // Internet Explorer
+      &::-ms-thumb {
+        @include thumb-style;
+        border-width: 2px;
+        height: 20px;
+        margin: 0 4px;
+        width: 20px;
+      }
+
+      &::-ms-tooltip {
+        display: none;
+      }
+
+      &::-ms-track {
+        @include track-style;
+        border-color: transparent;
+        color: transparent;
+      }
+
+      &::-ms-fill-lower {
+        @include track-style;
+        background-color: $brand-color;
+      }
+
+      &::-ms-fill-upper {
+        @include track-style;
+      }
+
+      // Chi cross browser
+      & ~ .a-input__thumb {
+        @include thumb-style;
+        content: '';
+        left: 50%;
+        margin-left: -0.625rem;
+        pointer-events: none;
+        position: absolute;
+        top: 0.125rem;
+        z-index: 1;
+      }
+
+      & ~ .a-input__progress {
+        @include track-style;
+        background-color: $brand-color;
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        top: 0.5rem;
+        width: 50%;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+// sass-lint:enable no-vendor-prefixes
+.a-inputWrapper > input[type='range'].a-input {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.a-input__tick {
+  border-left: 1px solid set-color(grey, 30);
+  height: 0.25rem;
+  margin: -($input-range-height - $input-range-track-height)/2 auto 0;
+
+  &-bar {
+    display: flex;
+    height: 1.5rem;
+    justify-content: space-between;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+
+    & > div {
+      font-size: $text;
+      position: relative;
+
+      &:first-child .a-input__tick-label {
+        text-align: left;
+        left: -0.625rem;
+      }
+
+      &:last-child .a-input__tick-label {
+        text-align: right;
+        left: initial;
+        right: -0.625rem;
       }
     }
   }
 
-  // sass-lint:enable no-vendor-prefixes
-  .a-inputWrapper > input[type='range'].a-input {
-    display: block;
-    position: relative;
-    z-index: 1;
-  }
-
-  .a-input__tick {
-    border-left: 1px solid set-color(grey, 30);
-    height: 0.25rem;
-    margin: -($input-range-height - $input-range-track-height)/2 auto 0;
-
-    &-bar {
-      display: flex;
-      height: 1.5rem;
-      justify-content: space-between;
-      padding-left: 0.625rem;
-      padding-right: 0.625rem;
-
-      & > div {
-        font-size: $text;
-        position: relative;
-
-        &:first-child .a-input__tick-label {
-          text-align: left;
-          left: -0.625rem;
-        }
-
-        &:last-child .a-input__tick-label {
-          text-align: right;
-          left: initial;
-          right: -0.625rem;
-        }
-      }
-    }
-
-    &-label {
-      left: -4em;
-      line-height: $line-height-smaller;
-      position: absolute;
-      text-align: center;
-      top: 0;
-      width: 8em;
-    }
+  &-label {
+    left: -4em;
+    line-height: $line-height-smaller;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 8em;
   }
 }

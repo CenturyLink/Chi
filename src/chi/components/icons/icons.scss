@@ -1,5 +1,5 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
 $icon-sizes: (
   xs: 0.75rem,
@@ -13,27 +13,25 @@ $icon-sizes: (
   xl: 6rem,
   xxl: 8rem);
 
-.chi {
-  .a-icon {
-    display: inline-block;
-    height: 1rem;
-    position: relative;
-    width: 1rem;
+.a-icon {
+  display: inline-block;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
 
-    & > svg {
-      fill: currentColor;
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
+  & > svg {
+    fill: currentColor;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 
-    @each $type in map-keys($icon-sizes) {
-      &.-#{$type} {
-        height: map-get($icon-sizes, $type);
-        width: map-get($icon-sizes, $type);
-      }
+  @each $type in map-keys($icon-sizes) {
+    &.-#{$type} {
+      height: map-get($icon-sizes, $type);
+      width: map-get($icon-sizes, $type);
     }
   }
 }

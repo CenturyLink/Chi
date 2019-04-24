@@ -1,85 +1,83 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 @import 'input-text-variables';
 
-.chi {
-  input {
-    &[type='email'],
-    &[type='text'],
-    &[type='password'] {
-      &.a-input {
-        border: 0.0625rem solid set-color(grey, 30);
-        border-radius: $border-radius;
-        color: $text-color;
-        display: block;
-        font-size: map-get(map-get($sizes, md), font-size);
-        height: map-get(map-get($sizes, md), height);
-        line-height: map-get(map-get($sizes, md), line-height);
-        outline: none;
-        padding: map-get(map-get($sizes, md), padding);
-        transition: all 0.15s ease-in-out;
-        width: 100%;
+input {
+  &[type='email'],
+  &[type='text'],
+  &[type='password'] {
+    &.a-input {
+      border: 0.0625rem solid set-color(grey, 30);
+      border-radius: $border-radius;
+      color: $text-color;
+      display: block;
+      font-size: map-get(map-get($sizes, md), font-size);
+      height: map-get(map-get($sizes, md), height);
+      line-height: map-get(map-get($sizes, md), line-height);
+      outline: none;
+      padding: map-get(map-get($sizes, md), padding);
+      transition: all 0.15s ease-in-out;
+      width: 100%;
 
-        &::placeholder {
-          color: set-color(grey, 50);
+      &::placeholder {
+        color: set-color(grey, 50);
+      }
+
+      &:hover,
+      &.-hover {
+        border-color: set-color(grey, 40);
+      }
+
+      &:focus,
+      &.-focus {
+        border-color: $focus-color;
+        box-shadow: 0 0 0 1px rgba($focus-color, 1);
+      }
+
+      &[disabled],
+      &.-disabled {
+        background-color: set-color(grey, 10);
+        border-color: set-color(grey, 30);
+        color: set-color(grey, 90);
+      }
+
+      //Remove ie11,edge clear field
+      &::-ms-clear {
+        display: none;
+      }
+
+      @each $type in map-keys($sizes) {
+        &.-#{$type} {
+          height: map-get(map-get($sizes, $type), height);
+          font-size: map-get(map-get($sizes, $type), font-size);
+          line-height: map-get(map-get($sizes, $type), line-height);
+          padding: map-get(map-get($sizes, $type), padding);
+
+          .a-icon {
+            height: map-get(map-get(map-get($sizes, $type), icons), height);
+            width: map-get(map-get(map-get($sizes, $type), icons), width);
+
+            &[class^="icon-"], &[class*=" icon-"] {
+              font-size: map-get(map-get($sizes, $type), font-size);
+              line-height: map-get(map-get($sizes, $type), line-height);
+            }
+          }
+        }
+      }
+
+      @each $type in map-keys($state-colors) {
+        &:not([disabled]) {
+          &.-#{$type} {
+            border-color: set-color(map-get($state-colors, $type), 50);
+          }
         }
 
-        &:hover,
-        &.-hover {
-          border-color: set-color(grey, 40);
-        }
-
-        &:focus,
-        &.-focus {
-          border-color: $focus-color;
-          box-shadow: 0 0 0 1px rgba($focus-color, 1);
-        }
-
-        &[disabled],
-        &.-disabled {
-          background-color: set-color(grey, 10);
-          border-color: set-color(grey, 30);
+        &.-#{$type} {
           color: set-color(grey, 90);
-        }
 
-        //Remove ie11,edge clear field
-        &::-ms-clear {
-          display: none;
-        }
-
-        @each $type in map-keys($sizes) {
-          &.-#{$type} {
-            height: map-get(map-get($sizes, $type), height);
-            font-size: map-get(map-get($sizes, $type), font-size);
-            line-height: map-get(map-get($sizes, $type), line-height);
-            padding: map-get(map-get($sizes, $type), padding);
-
-            .a-icon {
-              height: map-get(map-get(map-get($sizes, $type), icons), height);
-              width: map-get(map-get(map-get($sizes, $type), icons), width);
-
-              &[class^="icon-"], &[class*=" icon-"] {
-                font-size: map-get(map-get($sizes, $type), font-size);
-                line-height: map-get(map-get($sizes, $type), line-height);
-              }
-            }
-          }
-        }
-
-        @each $type in map-keys($state-colors) {
-          &:not([disabled]) {
-            &.-#{$type} {
-              border-color: set-color(map-get($state-colors, $type), 50);
-            }
-          }
-
-          &.-#{$type} {
-            color: set-color(grey, 90);
-
-            &:focus,
-            &.-focus {
-              box-shadow: 0 0 0 1px rgba(set-color(map-get($state-colors, $type), 50), 1);
-            }
+          &:focus,
+          &.-focus {
+            box-shadow: 0 0 0 1px rgba(set-color(map-get($state-colors, $type), 50), 1);
           }
         }
       }

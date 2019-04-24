@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import '_variables';
+@import '_mixins';
 @import 'input-text-variables';
 
 $label-font-size: 0.75rem;
@@ -26,42 +26,40 @@ $sizes: (
   )
 );
 
-.chi {
-  .a-inputWrapper.-floatingLabel {
-    & > input, & > select {
-      @each $type in map-keys($sizes) {
-        &.-#{$type} {
-          padding-bottom: map-get(map-get($sizes, $type), padding-bottom);
-          padding-top: map-get(map-get($sizes, $type), padding-top);
+.a-inputWrapper.-floatingLabel {
+  & > input, & > select {
+    @each $type in map-keys($sizes) {
+      &.-#{$type} {
+        padding-bottom: map-get(map-get($sizes, $type), padding-bottom);
+        padding-top: map-get(map-get($sizes, $type), padding-top);
 
-          & ~ label {
-            bottom: map-get(map-get($sizes, $type), label-bottom-relaxed);
-            pointer-events: none;
+        & ~ label {
+          bottom: map-get(map-get($sizes, $type), label-bottom-relaxed);
+          pointer-events: none;
 
-            &.-active {
-              bottom: map-get(map-get($sizes, $type), label-bottom);
-            }
+          &.-active {
+            bottom: map-get(map-get($sizes, $type), label-bottom);
           }
         }
       }
+    }
 
-      &::placeholder {
-        color: transparent;
-      }
+    &::placeholder {
+      color: transparent;
+    }
 
-      & ~ label {
-        color: set-color(grey, 50);
-        font-size: $label-font-size-relaxed;
-        font-weight: normal;
-        left: $label-left;
-        line-height: 1.5rem;
-        margin-bottom: unset;
-        position: absolute;
-        transition: all 0.2s ease-in-out;
+    & ~ label {
+      color: set-color(grey, 50);
+      font-size: $label-font-size-relaxed;
+      font-weight: normal;
+      left: $label-left;
+      line-height: 1.5rem;
+      margin-bottom: unset;
+      position: absolute;
+      transition: all 0.2s ease-in-out;
 
-        &.-active {
-          font-size: $label-font-size;
-        }
+      &.-active {
+        font-size: $label-font-size;
       }
     }
   }
