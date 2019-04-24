@@ -1,7 +1,6 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 
-// @ts-ignore
 export const config: Config = {
   namespace: 'ux-chi-ce',
   devServer: {
@@ -10,6 +9,7 @@ export const config: Config = {
   plugins: [
     sass(
       {
+        // @ts-ignore
         includePaths: [
           '../chi/'
         ],
@@ -29,7 +29,7 @@ export const config: Config = {
     { type: 'docs' },
     {
       type: 'www',
-      serviceWorker: null // disable service workers
+      serviceWorker: null
     }
   ]
 };

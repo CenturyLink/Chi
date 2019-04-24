@@ -12,25 +12,58 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface ChiIcon {
+    /**
+    * OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, inverse, muted}
+    */
+    'color': string;
+    /**
+    * Icon to be rendered. View accepted values on text documentation.
+    */
+    'icon': string;
+    /**
+    * OPTIONAL. Size of the Icon. {xs, sm, sm--2, sm--3, md, lg, xl, xxl}
+    */
+    'size': string;
+  }
+  interface ChiIconAttributes extends StencilHTMLAttributes {
+    /**
+    * OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, inverse, muted}
+    */
+    'color'?: string;
+    /**
+    * Icon to be rendered. View accepted values on text documentation.
+    */
+    'icon'?: string;
+    /**
+    * OPTIONAL. Size of the Icon. {xs, sm, sm--2, sm--3, md, lg, xl, xxl}
+    */
+    'size'?: string;
+  }
 }
 
 declare global {
   interface StencilElementInterfaces {
-
+    'ChiIcon': Components.ChiIcon;
   }
 
   interface StencilIntrinsicElements {
-
+    'chi-icon': Components.ChiIconAttributes;
   }
 
 
+  interface HTMLChiIconElement extends Components.ChiIcon, HTMLStencilElement {}
+  var HTMLChiIconElement: {
+    prototype: HTMLChiIconElement;
+    new (): HTMLChiIconElement;
+  };
 
   interface HTMLElementTagNameMap {
-
+    'chi-icon': HTMLChiIconElement
   }
 
   interface ElementTagNameMap {
-
+    'chi-icon': HTMLChiIconElement;
   }
 
 
