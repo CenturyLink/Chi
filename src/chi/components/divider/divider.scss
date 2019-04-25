@@ -17,6 +17,32 @@
     margin: 0 0.5rem;
   }
 
+  &.-colorbar {
+    border-top: none;
+    display: flex;
+    height: 0.5rem;
+    margin: 0;
+    width: 100%;
+
+    & div:nth-child(1) {
+      background-color: set-color(navy,90);
+      height:100%;
+      width: 12%;
+    }
+
+    & div:nth-child(2) {
+      background-color: $primary;
+      height:100%;
+      width: 22%;
+    }
+
+    & div:nth-child(3) {
+      background-color: $secondary;
+      height:100%;
+      width: 66%;
+    }
+  }
+
   &.-hasLabel {
     align-items: center;
     border-top: 0;
