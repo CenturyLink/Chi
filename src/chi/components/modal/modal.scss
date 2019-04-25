@@ -20,89 +20,21 @@ $animation-duration: 0.5s;
   top: 0;
   width: 100%;
 
-  &.-active {
-    display: block;
-  }
-
-  &.-animated {
-    display: block;
-    &:not(.-active) {
-      top: -1000px;
-    }
-
-    transition-duration: $animation-duration;
-    transition-property: top;
-    transition-timing-function: ease-in-out;
-
-    &.-transitioning {
-      display: block;
-    }
-  }
-
-  .-close {
-    position: absolute;
-    right: 0.75rem;
-    top: 0.8125rem;
-  }
-
-  .-closed {
-    display: none;
-  }
-
   &__header {
     box-shadow: inset 0 -1px 0 0 rgba(set-color(black), 0.12);
     min-height: 3.5rem;
     padding: 1rem;
     position: relative;
-    top: 0;
-    width: 100%;
 
-    &.-active {
-      display: block;
+    &.-noBorder {
+      box-shadow: none;
     }
 
-    &.-animated {
-      display: block;
-      &:not(.-active) {
-        top: -1000px;
-      }
-
-      transition-duration: $animation-duration;
-      transition-property: top;
-      transition-timing-function: ease-in-out;
-
-      &.-transitioning {
-        display: block;
-      }
-    }
-
-    .-close {
-      position: absolute;
-      right: 0.75rem;
-      top: 0.8125rem;
-    }
-
-    .-closed {
-      display: none;
-    }
-
-    &__header {
-      box-shadow: inset 0 -1px 0 0 rgba(set-color(black), 0.12);
-      min-height: 3.5rem;
-      padding: 1rem;
-      position: relative;
-
-      &.-noBorder {
-        box-shadow: none;
-      }
-
-      .a-modal__title {
-        font-size: $text-large;
-        font-weight: bold;
-        line-height: $line-height-large;
-        margin: 0;
-      }
-
+    .a-modal__title {
+      font-size: $text-large;
+      font-weight: bold;
+      line-height: $line-height-large;
+      margin: 0;
 
       &.-centered {
         text-align: center;
@@ -134,7 +66,7 @@ $animation-duration: 0.5s;
       }
 
       &::before {
-        background-image: url('./icon-back.svg');
+        background-image: url(icon-back.svg);
         content: '';
         display: block;
         height: 1rem;
@@ -174,5 +106,34 @@ $animation-duration: 0.5s;
     &.-noBorder {
       box-shadow: none;
     }
+  }
+
+  .-close {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.8125rem;
+  }
+
+  &.-active {
+    display: block;
+  }
+
+  &.-animated {
+    display: block;
+    &:not(.-active) {
+      top: -1000px;
+    }
+
+    transition-duration: $animation-duration;
+    transition-property: top;
+    transition-timing-function: ease-in-out;
+
+    &.-transitioning {
+      display: block;
+    }
+  }
+
+  .-closed {
+    display: none;
   }
 }
