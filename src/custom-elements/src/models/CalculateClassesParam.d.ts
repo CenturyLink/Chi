@@ -1,13 +1,13 @@
-export interface ClassesBuilderParam {
+export interface CalculateClassesParam {
     default?: string[];
     binary?: [string, boolean][];
     prefixed?: {
         prefix?: string;
         value: string;
-        sufix?: string;
+        suffix?: string;
     }[];
     generated?: {
         value: string;
-        genertor?: (source: string) => string;
+        generator: (source: string) => string;
     }[];
 }

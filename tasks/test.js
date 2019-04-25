@@ -1,9 +1,7 @@
 import gulp from 'gulp';
 
-gulp.task('test', done => {
-  gulp.series(
-    'lint:css',
-    'backstop-test',
-    done
-  );
-});
+gulp.task('test', gulp.series(
+  'lint:css',
+  'backstop-test',
+  'backstop-custom-elements-test'
+));

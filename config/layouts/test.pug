@@ -19,3 +19,7 @@ html(lang="en")
       .tests!= contents
 
     script(src='/chi-icons.js')
+    if scripts
+      each script in scripts
+        script(type="text/javascript", src=`/${script}.js`)
+

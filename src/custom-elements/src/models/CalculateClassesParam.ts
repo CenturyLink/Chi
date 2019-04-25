@@ -11,3 +11,4 @@ export interface CalculateClassesParam {
     generator: (source: string) => string,
   }[];
 }
+
