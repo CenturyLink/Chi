@@ -12,6 +12,7 @@
     "ci": "gulp ci",
     "docker": "scripts/docker.sh",
     "start": "gulp watch",
+    "start:customElements": "gulp custom-elements:watch",
     "test": "gulp test",
     "echo": "gulp --version"
   },
@@ -30,6 +31,7 @@
     "gulp": "4.0.0",
     "gulp-babel": "8.0.0",
     "gulp-concat": "2.6.1",
+    "gulp-debug": "4.0.0",
     "gulp-imagemin": "5.0.3",
     "gulp-index": "0.2.0",
     "gulp-plumber": "1.2.1",

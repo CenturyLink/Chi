@@ -1,0 +1,224 @@
+---
+title: Overview
+---
+p.-text.-mb--3
+  | Chi Custom Elements is a library build on top of Chi and the
+  | <a href="https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements">Custom Elements API</a>
+  | from the HTML Living Standard.
+
+h3 Adding Chi Custom Elements
+p.-text
+  | Adding Chi Custom Elements to your project is as simple as loading the Chi Custom Elements JavaScript file in the
+  | header of your web application, from the <a href="https://assets.ctl.io">CenturyLink Assets Server</a>. Not only is
+  | this a great way to get started with Chi, but it is also a highly available and performant option for loading the
+  | required assets into your project.
+
+.-mb--2
+  :code(lang='html')
+    <script src="https://assets.ctl.io/chi/1.1.1/js/chi-ce.js"></script>
+
+p.-text
+  span.a-badge.-primary.-mr1
+    span Tip
+  | It is important to place it in the header of your document to let it load any Polyfill in the case the browser
+  | doesn't support Custom Elements.
+
+p.-text: em An NPM package will be available shortly.
+
+p.-text.-mb--3
+  | At this point, you can use the components described in this documentation.
+
+h2 Development Workflow
+p.-text
+  | Although the preferred way to set up your development environment is with Docker, the Custom Elements development
+  | environment doesn't support it yet. So you need a modern version of <a href="https://www.npmjs.com">NPM</a>.
+
+p.-text
+  | First, install the dependencies:
+
+.-mb--2
+  :code(lang='bash')
+    $ npm install
+    $ cd src/custom-elements; npm install
+
+p.-text
+  | Then, <strong>from the root directory</strong>, run:
+
+.-mb--2
+  :code(lang='bash')
+    $ npm run start:customElements
+p.-text This command makes run both: Chi documentation and Stencil Dev Envs.
+
+p.-text
+  | Once the container has been bootstrapped and the Chi project has started, connect to
+  | <a href="http://localhost:8000/custom-elements/overview/">http://localhost:8000/custom-elements/overview/</a>
+  | in your browser to load Chi. While running, any changes to the Chi source will be automatically reloaded in your
+  | browser.
+
+p.-text
+  | Further information regarding testing will be available soon.
+
+h2 Style guide
+
+p.-text: em This style guide is based on <a href="https://stenciljs.com/docs/style-guide">the one is used by the Iconic team</a>.
+
+h3 File structure
+ul
+  li.-text One component per file.
+  li.-text One component per directory. Though it may make sense to group similar components into the same directory, it's easier to document components when each one has its own directory.
+  li.-text Implementation (.tsx) and styles of a component should live in the same directory.
+
+:code
+  ├── icon
+  │   ├── icon.scss
+  │   ├── icon.tsx
+  ├── card
+  │   ├── card.scss
+  │   ├── card.tsx
+  │   └── test (to be defined)
+  ├── card-content
+  │   ├── card-content.scss
+  │   └── card-content.tsx
+  ├── card-title
+  │   ├── card-title.scss
+  │   ├── card-title.tsx
+
+h3 Naming
+h4 HTML tag
+h5 PREFIX
+
+p.-text
+  | The prefix has a major role when you are creating a collection of components intended to be used across different
+  | projects. Web Components are not scoped because they are globally declared within the webpage, which means a
+  | "unique" prefix is needed to prevent collisions. The prefix is also able help to quickly identify the collection of
+  | a component. Additionally, web components are required to contain a "-" dash within the tag name, so using the
+  | first section to namespace your components is a natural fit.
+
+p.-text Tag prefix must be <code>chi</code>:
+
+:code(lang="html")
+  <chi-button>
+  <chi-header>
+
+h5 NAME
+
+p.-text
+  | Components are not actions, they are conceptually "things". It is better to use nouns instead of verbs, such as
+  | "animation" instead of "animating". "input", "tab", "nav", "menu" are some examples. We must reproduce the name
+  | of the <em>atom</em> or the <em>molecule</em> names used in the main Chi project.
+
+p.-text
+  | Chi dropdown uses the molecule name <code>m-dropdown</code>, and Chi icon uses the atom name <code>a-icon</code>,
+  | so we must use <code>dropdown</code> and <code>icon</code> respectively.
+
+h5 MODIFIERS
+
+p.-text
+  | When several components are related and/or coupled, it is a good idea to share the name, and then add different
+  | modifiers, for example:
+:code(lang="html")
+  <chi-card>
+  <chi-card-header>
+  <chi-card-content>
+
+h4 Component (TS class)
+p.-text The name of the ES6 class of the component SHOULD NOT have a prefix since classes are scoped. There is no risk of collision.
+
+:code(lang="javascript")
+  @Component({
+    tag: 'chi-button'
+  })
+  export class Button { ... }
+
+  @Component({
+    tag: 'chi-icon'
+  })
+  export class Icon { ... }
+
+h3 TypeScript
+p.-text
+  | Follow <a href="https://github.com/ionic-team/tslint-ionic-rules/blob/master/tslint.js">tslint-ionic-rules</a>.
+  | This file is located in /src/custom-elements/ and has to be configured in your editor.
+
+p.-text Variable decorators should be inlined.
+
+:code(lang="javascript")
+  @Prop() name: string;
+  @Element() el: HTMLElement;
+
+p.-text Method decorator should be multi-line
+
+:code(lang="javascript")
+  @Listen('click')
+  onClick() {
+    ...
+  }
+
+p.-text Use private variables and methods as much possible: They are useful to detect dead code and enforce encapsulation. Note that this is a feature which TypeScript provides to help harden your code, but using private, public or protected does not make a difference in the actual JavaScript output.
+
+p.-text Code with Method/Prop/Event/Component decorators should have jsdocs: This allows for documentation generation and for better user experience in an editor that has TypeScript intellisense. <em>Stencil auto-generated documentation will be included in the Chi documentation pages. </em>
+
+h4 Properties
+
+p.-text It is considered a good practice and SHOULD be configured to Reflect public properties to attributes.
+:code(lang="javascript")
+  @Prop({ reflectToAttr: true }) color: string;
+
+p.-text
+  | Properties SHOULDN'T be configured as mutables and, once a value is set by a user, the component should not update
+  | it internally. Use only if strictly necessary.
+:code(lang="javascript")
+  @Prop({ mutable: true}) color: string;
+
+p.-text
+  | Properties SHOULD have a default value and MUST be validated.
+
+p.-text Sometimes it is enough validation the use of a definition type:
+:code(lang="javascript")
+  @Prop() bordered: boolean = false;
+p.-text Other times a function with a @Watch decorator is necessary:
+:code(lang="javascript")
+  @Watch('name')
+    validateName(newValue: string, oldValue: string) {
+      const isBlank = typeof newValue == null;
+      const has2chars = typeof newValue === 'string' && newValue.length >= 2;
+      if (isBlank) { throw new Error('name: required') };
+      if (!has2chars ) { throw new Error('name: has2chars') };
+    }
+
+h3 Styling
+
+p.-text
+  | Chi components will have scoped CSS, to prevent collisions when using in non-chi compatible environments.
+:code(lang="javascript")
+  @Component({
+    tag: 'chi-icon',
+    styleUrl: 'icon.scss',
+    scoped: true
+  })
+
+p.-text
+  | For the moment there is no support for per-version scoped CSS. This means that rules from two different
+  | versions of chi components will collide so should be avoided.
+
+h4 Rules
+
+ul.-text
+  li Components MIGHT have a *.scss file that will import the necessary files from the project
+  li All rules but font-face ones MUST be wrapped inside a <code>:host</code> rule to override a possible Chi default stylesheet
+  li The default display for Custom Elements is <code>inline</code> so the developer MUST take care of this.
+
+:code(lang="css")
+  @import 'components/icons/webfont-font-face';
+  :host(chi-icon) {
+    @import '../../global/styles/common';
+    @extend %root-typography;
+    @import 'components/icons/icons';
+    @import 'components/icons/webfont-icons';
+
+    display: inline-block;
+  }
+
+
+
+
