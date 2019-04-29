@@ -6,9 +6,9 @@
   "main": "dist/index.js",
   "unpkg": "dist/ionic.js",
   "types": "dist/types/components.d.ts",
-  "collection": "../../dist/js/ce/collection/collection-manifest.json",
+  "collection": "dist/collection/collection-manifest.json",
   "files": [
-    "../../dist/js/ce/"
+    "dist/"
   ],
   "scripts": {
     "build": "stencil build --docs",
