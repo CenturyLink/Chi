@@ -75,6 +75,12 @@ gulp.task('watch', gulp.series(
         'serve:notify:end',
         'serve:reload'
       )
+    ),
+    () => gulp.watch(
+      'src/custom-elements/dist/**/*',
+      watchOptions,
+      gulp.src('src/custom-elements/dist/**/*')
+        .pipe(gulp.dest('dist/js/ce'))
     )
   )
 ));
