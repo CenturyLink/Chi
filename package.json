@@ -15,6 +15,8 @@
     "start:customElements": "gulp custom-elements:watch",
     "test": "gulp test",
     "test-ce": "gulp test:custom-elements",
+    "test:e2e": "gulp test:e2e",
+    "test:e2e:interactive": "gulp test:e2e:interactive",
     "echo": "gulp --version"
   },
   "devDependencies": {

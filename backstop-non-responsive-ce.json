@@ -25,7 +25,10 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-sizes"
+        ".test-single",
+        ".test-sizes",
+        ".test-colors",
+        ".test-icons"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,

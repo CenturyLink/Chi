@@ -67,7 +67,16 @@ p.-text
   $ npx stencil test --spec
 
 h3 End 2 end tests
-p.-text: em This tests are not defined yet.
+p.-text
+  | <a href="https://www.cypress.io">Cypress</a> is used for end to end testing. Tests are located in the
+  | <code>cypress/integration</code> folder. To make them run:
+:code(lang='bash')
+  npm run test:e2e
+
+p.-text
+  | You can use the following command if you want to run them interactively:
+:code(lang='bash')
+  npm run test:e2e:interactive
 
 h3 Visual regression tests
 p.-text
@@ -87,9 +96,6 @@ p.-text
 :code(lang='bash')
   npm run test-ce
 p.-text Reports are available in the <code>reports/html_report/non_responsive_ce/</code> folder.
-
-p.-text
-  | Further information regarding testing will be available soon.
 
 h2 Style guide
 

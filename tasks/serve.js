@@ -1,5 +1,6 @@
 import gulp from 'gulp';
 import browserSync from 'browser-sync';
+import Processes from "./helpers/processes";
 
 export const server = browserSync.create();
 
@@ -41,6 +42,12 @@ function reload(done) {
   done();
 }
 
+function stop(done) {
+  server.exit();
+  Processes.killAll();
+  done();
+}
+
 serve.description = 'Serves the dist folder. ';
 reload.description = 'Reloads browser. ';
 notifyStart.description = 'Notifies the developer ' +
@@ -52,3 +59,4 @@ gulp.task('serve', serve);
 gulp.task('serve:notify:start', notifyStart);
 gulp.task('serve:notify:end', notifyEnd);
 gulp.task('serve:reload', reload);
+gulp.task('serve:stop', stop);
