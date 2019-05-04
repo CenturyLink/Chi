@@ -55,6 +55,39 @@ p.-text
   | in your browser to load Chi. While running, any changes to the Chi source will be automatically reloaded in your
   | browser.
 
+h2 Testing
+
+h3 Unit tests
+p.-text
+  | Unit tests should be written to cover code that doesn't depend on a view or need a browser to be run. Unit test
+  | files are located in the same folder of the file that is tested and adding the extension .spec.ts. (utils.ts is
+  | tested by utils.spec.ts). Unit test are run by the next command:
+:code(lang='bash')
+  $ cd src/custom-elements
+  $ npx stencil test --spec
+
+h3 End 2 end tests
+p.-text: em This tests are not defined yet.
+
+h3 Visual regression tests
+p.-text
+  | Chi has visual regression tests build for each component that are implemented in
+  | <a href="https://github.com/garris/BackstopJS">BackstopJS</a>. Each Custom Element
+  | component MUST have a Custom Element version for the same tests files that are implemented in Chi normal version.
+  | This tests are configured in the <code>backstop-non-responsive-ce.json</code> file.
+p.-text
+  | E.g. <code>test/chi/custom-elements/icons.pug</code> will be compared to <code>test/chi/components/icons.pug</code>
+  | to ensure both components are rendered in the same way.
+p.-text
+  | This tests are run by the common test command
+:code(lang='bash')
+  npm run test
+p.-text
+  | And can be run independently by
+:code(lang='bash')
+  npm run test-ce
+p.-text Reports are available in the <code>reports/html_report/non_responsive_ce/</code> folder.
+
 p.-text
   | Further information regarding testing will be available soon.
 
@@ -65,7 +98,9 @@ p.-text: em This style guide is based on <a href="https://stenciljs.com/docs/sty
 h3 File structure
 ul
   li.-text One component per file.
-  li.-text One component per directory. Though it may make sense to group similar components into the same directory, it's easier to document components when each one has its own directory.
+  li.-text
+    | One component per directory. Though it may make sense to group similar components into the same directory, it's
+    | easier to document components when each one has its own directory.
   li.-text Implementation (.tsx) and styles of a component should live in the same directory.
 
 :code

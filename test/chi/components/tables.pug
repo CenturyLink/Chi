@@ -208,11 +208,31 @@ mixin table(row, column, selectable)
               +str(`chk-${index}-01`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
               +str(`chk-${index}-02`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
               +str(`chk-${index}-03`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+    div(class=`test-scrollable`)
+      span.a-h2
+        | table
+        = ' / scrollable'
+      section.a-table.-fixed--header(style="height: 150px")
+        div
+          table
+            thead
+              tr
+                th
+                  div name
+                th
+                  div ID
+                th
+                  div last login
+            tbody
+              +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
+              +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
+              +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+
   .a-col.-w--6
     h2 With section container
     each tablestyle in ['default', 'striped']
       each borderstyle in ['default', 'bordered', 'borderless']
-        div(class=`test-${tablestyle}-${borderstyle}`)
+        div(class=`test-section-${tablestyle}-${borderstyle}`)
           span.a-h2
             | table
             if tablestyle != 'default'
@@ -226,25 +246,25 @@ mixin table(row, column, selectable)
           })
 
     each rowstyle in ['disabled', 'row--success', 'row--warning', 'row--danger', 'row--info']
-      div(class=`test-${rowstyle}`)
+      div(class=`test-section-${rowstyle}`)
         span.a-h2= `table / ${rowstyle}`
         +table-fix-header(rowstyle)
 
     each rowsize in ['xs', 'sm', 'md', 'lg', 'xl']
-      div(class=`test-${rowsize}`)
+      div(class=`test-section-${rowsize}`)
         span.a-h2= `table / ${rowsize}`
         +table(rowsize)
 
-    div(class=`test-hover`)
+    div(class=`test-section-hover`)
       span.a-h2= `table / hover`
       +table-fix-header('hover').-hover
 
     each columnstyle in ['ascending', 'descending']
-      div(class=`test-${columnstyle}`)
+      div(class=`test-section-${columnstyle}`)
         span.a-h2= `table / column sort / ${columnstyle}`
         +table-fix-header(undefined, columnstyle)
 
-    div(class=`test-selectable`)
+    div(class=`test-section-selectable`)
       span.a-h2
         | table
         = ' / selectable'
@@ -271,7 +291,7 @@ mixin table(row, column, selectable)
               +str(`chk-${index}-02-2`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
               +str(`chk-${index}-03-3`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
 
-    div(class=`test-selectable`)
+    div(class=`test-section-scrollable`)
       span.a-h2
         | table
         = ' / scrollable'

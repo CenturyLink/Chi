@@ -14,6 +14,7 @@
     "start": "gulp watch",
     "start:customElements": "gulp custom-elements:watch",
     "test": "gulp test",
+    "test-ce": "gulp test:custom-elements",
     "echo": "gulp --version"
   },
   "devDependencies": {
