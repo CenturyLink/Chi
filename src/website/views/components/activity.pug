@@ -1,0 +1,1105 @@
+---
+title: Activity
+---
+p.-text Activity is used to represent the logging of user activity.
+
+h3 Examples
+p.-text To render an activity history apply the class <code>m-activity</code>. A contextual class (e.g. <code>-feed</code>) is required to provide proper styling.
+
+h4 Base
+
+.example.-mb--3
+  .-p--5
+    .m-activity
+      .m-activity__day
+        .m-activity__header
+          | Monday, Apr 22 2019
+        .m-activity__content
+          .m-activity__item
+            .m-activity__start
+              div
+                | 04/22/2019
+            .m-activity__end
+              .m-activity__end-header
+                |  Password change for user trent.anderson
+              .m-activity__end-footer
+                | CTlops-Admin
+          .m-activity__item
+            .m-activity__start
+              div
+                | 04/22/2019
+            .m-activity__end
+              .m-activity__end-header
+                |  Password change for user trent.anderson
+              .m-activity__end-footer
+                | CTlops-Admin
+          .m-activity__item
+            .m-activity__start
+              div
+                | 04/22/2019
+            .m-activity__end
+              .m-activity__end-header
+                |  Password change for user trent.anderson
+              .m-activity__end-footer
+                | CTlops-Admin
+      .m-activity__day
+        .m-activity__header
+          | Monday, Apr 21 2019
+        .m-activity__content
+          .m-activity__item
+            .m-activity__start
+              div
+                | 04/22/2019
+            .m-activity__end
+              .m-activity__end-header
+                |  Password change for user trent.anderson
+              .m-activity__end-footer
+                | CTlops-Admin
+          .m-activity__item
+            .m-activity__start
+              div
+                | 04/22/2019
+            .m-activity__end
+              .m-activity__end-header
+                |  Password change for user trent.anderson
+              .m-activity__end-footer
+                | CTlops-Admin
+          .m-activity__item
+            .m-activity__start
+              div
+                | 04/22/2019
+            .m-activity__end
+              .m-activity__end-header
+                |  Password change for user trent.anderson
+              .m-activity__end-footer
+                | CTlops-Admin
+  :code(lang='html')
+    <div class="m-activity">
+      <div class="m-activity__day">
+        <div class="m-activity__header">Monday, Apr 22 2019</div>
+        <div class="m-activity__content">
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>04/22/2019</div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header">Password change for user trent.anderson</div>
+              <div class="m-activity__end-footer">CTlops-Admin</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>04/22/2019</div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header">Password change for user trent.anderson</div>
+              <div class="m-activity__end-footer">CTlops-Admin</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>04/22/2019</div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header">Password change for user trent.anderson</div>
+              <div class="m-activity__end-footer">CTlops-Admin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="m-activity__day">
+        <div class="m-activity__header">Monday, Apr 21 2019</div>
+        <div class="m-activity__content">
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>04/22/2019</div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header">Password change for user trent.anderson</div>
+              <div class="m-activity__end-footer">CTlops-Admin</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>04/22/2019</div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header">Password change for user trent.anderson</div>
+              <div class="m-activity__end-footer">CTlops-Admin</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>04/22/2019</div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header">Password change for user trent.anderson</div>
+              <div class="m-activity__end-footer">CTlops-Admin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+h4 With Avatar
+
+.example.-mb--3
+  .-p--5
+    .m-activity
+      .m-activity__day
+        .m-activity__header
+          | Monday, Apr 22 2019
+        .m-activity__content
+          .m-activity__item
+            .m-activity__start
+              div
+                | 04/22/2019
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                |  Password change for user trent.anderson
+              .m-activity__end-footer
+                | CTlops-Admin
+          .m-activity__item
+            .m-activity__start
+              div
+                | 04/22/2019
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                |  Password change for user trent.anderson
+              .m-activity__end-footer
+                | CTlops-Admin
+          .m-activity__item
+            .m-activity__start
+              div
+                | 04/22/2019
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                |  Password change for user trent.anderson
+              .m-activity__end-footer
+                | CTlops-Admin
+      .m-activity__day
+        .m-activity__header
+          | Monday, Apr 21 2019
+        .m-activity__content
+          .m-activity__item
+            .m-activity__start
+              div
+                | 04/22/2019
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                |  Password change for user trent.anderson
+              .m-activity__end-footer
+                | CTlops-Admin
+          .m-activity__item
+            .m-activity__start
+              div
+                | 04/22/2019
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                |  Password change for user trent.anderson
+              .m-activity__end-footer
+                | CTlops-Admin
+          .m-activity__item
+            .m-activity__start
+              div
+                | 04/22/2019
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                |  Password change for user trent.anderson
+              .m-activity__end-footer
+                | CTlops-Admin
+  :code(lang='html')
+    <div class="m-activity">
+      <div class="m-activity__day">
+        <div class="m-activity__header">Monday, Apr 22 2019</div>
+        <div class="m-activity__content">
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>04/22/2019</div>
+            </div>
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar">
+                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header">Password change for user trent.anderson</div>
+              <div class="m-activity__end-footer">CTlops-Admin</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>04/22/2019</div>
+            </div>
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar">
+                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header">Password change for user trent.anderson</div>
+              <div class="m-activity__end-footer">CTlops-Admin</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>04/22/2019</div>
+            </div>
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar">
+                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header">Password change for user trent.anderson</div>
+              <div class="m-activity__end-footer">CTlops-Admin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="m-activity__day">
+        <div class="m-activity__header">Monday, Apr 21 2019</div>
+        <div class="m-activity__content">
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>04/22/2019</div>
+            </div>
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar">
+                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header">Password change for user trent.anderson</div>
+              <div class="m-activity__end-footer">CTlops-Admin</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>04/22/2019</div>
+            </div>
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar">
+                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header">Password change for user trent.anderson</div>
+              <div class="m-activity__end-footer">CTlops-Admin</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>04/22/2019</div>
+            </div>
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar">
+                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header">Password change for user trent.anderson</div>
+              <div class="m-activity__end-footer">CTlops-Admin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+h4 Feed
+p.-text Apply the modifier class <code>-feed</code> to render with feed style
+.example.-mb--3
+  .-p--5
+    .m-activity.-feed
+      .m-activity__day
+        .m-activity__content
+          .m-activity__item
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-footer
+                | 04/22/2019 · 2:50 PM
+          .m-activity__item
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-footer
+                | 04/22/2019 · 2:38 PM
+          .m-activity__item
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-footer
+                | 04/22/2019 · 2:37 PM
+          .m-activity__item
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-footer
+                | 04/16/2019 · 5:00 PM
+          .m-activity__item
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-footer
+                | 04/16/2019 · 3:00 PM
+          .m-activity__item
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-footer
+                | 04/16/2019 · 11:20 AM
+  :code(lang='html')
+    <div class="m-activity -feed">
+      <div class="m-activity__day">
+        <div class="m-activity__content">
+          <div class="m-activity__item">
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-footer">04/22/2019 · 2:50 PM</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-footer">04/22/2019 · 2:38 PM</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-footer">04/22/2019 · 2:37 PM</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-footer">04/16/2019 · 5:00 PM</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-footer">04/16/2019 · 3:00 PM</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-footer">04/16/2019 · 11:20 AM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+h4 Compact Feed
+p.-text Apply the modifier class <code>-feed</code> and the modifier class <code>-compact</code> to render with compact feed style
+.example.-mb--3
+  .-p--5
+    .m-activity.-feed.-compact
+      .m-activity__day
+        .m-activity__content
+          .m-activity__item
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-footer
+                | 04/22/2019 · 2:50 PM
+          .m-activity__item
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-footer
+                | 04/22/2019 · 2:38 PM
+          .m-activity__item
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-footer
+                | 04/22/2019 · 2:37 PM
+          .m-activity__item
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-footer
+                | 04/16/2019 · 5:00 PM
+          .m-activity__item
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-footer
+                | 04/16/2019 · 5:00 PM
+          .m-activity__item
+            .m-activity__item-avatar
+              .a-avatar
+                img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-footer
+                | 04/16/2019 · 11:20 AM
+  :code(lang='html')
+    <div class="m-activity -feed -compact">
+      <div class="m-activity__day">
+        <div class="m-activity__content">
+          <div class="m-activity__item">
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar">
+                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-footer">04/22/2019 · 2:50 PM</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar">
+                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-footer">04/22/2019 · 2:38 PM</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar">
+                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-footer">04/22/2019 · 2:37 PM</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar">
+                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-footer">04/16/2019 · 5:00 PM</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar">
+                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-footer">04/16/2019 · 5:00 PM</div>
+            </div>
+          </div>
+          <div class="m-activity__item">
+            <div class="m-activity__item-avatar">
+              <div class="a-avatar">
+                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-footer">04/16/2019 · 11:20 AM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+h4 Feed with stories
+.example.-mb--3
+  .-p--5
+    .m-activity.-feed.-stories
+      .m-activity__day
+        .m-activity__content
+          .m-activity__item
+            .m-activity__start
+              div
+                .a-avatar
+                  img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-content
+                ul.-stories
+                  li
+                    div
+                      .a-icon.-text--primary
+                        svg
+                          use(xlink:href='#icon-check-alt')
+                      | Instance successfully deployed
+                    .-time
+                      | 1 minute ago
+                  li
+                    div
+                      .a-icon.-text--primary
+                        svg
+                          use(xlink:href='#icon-check-alt')
+                      | Machine active-directory-vbo8o-1 successfully deployed
+                    .-time
+                      | 2 minute ago
+                  li
+                    div
+                      .a-icon.-text--muted
+                        svg
+                          use(xlink:href='#icon-circle-plus-outline')
+                      | Executing install:Active Directory in machine active-directory-vbo8o-1
+                    .-time
+                      | 2 minute ago
+                  li
+                    div
+                      .a-icon.-text--muted
+                        svg
+                          use(xlink:href='#icon-circle-plus-outline')
+                      | Updating machine IPs
+                    .-time
+                      | 3 minute ago
+              .m-activity__end-footer
+                | 04/22/2019
+      .m-activity__day
+        .m-activity__content
+          .m-activity__item
+            .m-activity__start
+              div
+                .a-avatar
+                  img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-content
+                ul.-stories
+                  li
+                    div
+                      .a-icon.-text--primary
+                        svg
+                          use(xlink:href='#icon-check-alt')
+                      | Instance successfully deployed
+                    .-time
+                      | 1 minute ago
+                  li
+                    div
+                      .a-icon.-text--primary
+                        svg
+                          use(xlink:href='#icon-check-alt')
+                      | Machine active-directory-vbo8o-1 successfully deployed
+                    .-time
+                      | 2 minute ago
+                  li
+                    div
+                      .a-icon.-text--muted
+                        svg
+                          use(xlink:href='#icon-circle-plus-outline')
+                      | Executing install:Active Directory in machine active-directory-vbo8o-1
+                    .-time
+                      | 2 minute ago
+                  li
+                    div
+                      .a-icon.-text--muted
+                        svg
+                          use(xlink:href='#icon-circle-plus-outline')
+                      | Updating machine IPs
+                    .-time
+                      | 3 minute ago
+              .m-activity__end-footer
+                | 04/21/2019
+  :code(lang='html')
+    <div class="m-activity -feed -stories">
+      <div class="m-activity__day">
+        <div class="m-activity__content">
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>
+                <div class="a-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-content">
+                <ul class="-stories">
+                  <li>
+                    <div>
+                      <div class="a-icon -text--primary">
+                        <svg>
+                          <use xlink:href="#icon-check-alt"></use>
+                        </svg>
+                      </div>
+                      Instance successfully deployed
+                    </div>
+                    <div class="-time">1 minute ago</div>
+                  </li>
+                  <li>
+                    <div>
+                      <div class="a-icon -text--primary">
+                        <svg>
+                          <use xlink:href="#icon-check-alt"></use>
+                        </svg>
+                      </div>
+                      Machine active-directory-vbo8o-1 successfully deployed
+                    </div>
+                    <div class="-time">2 minute ago</div>
+                  </li>
+                  <li>
+                    <div>
+                      <div class="a-icon -text--muted">
+                        <svg>
+                          <use xlink:href="#icon-circle-plus-outline"></use>
+                        </svg>
+                      </div>
+                      Executing install:Active Directory in machine active-directory-vbo8o-1
+                    </div>
+                    <div class="-time">2 minute ago</div>
+                  </li>
+                  <li>
+                    <div>
+                      <div class="a-icon -text--muted">
+                        <svg>
+                          <use xlink:href="#icon-circle-plus-outline"></use>
+                        </svg>
+                      </div>
+                      Updating machine IPs
+                    </div>
+                    <div class="-time">3 minute ago</div>
+                  </li>
+                </ul>
+              </div>
+              <div class="m-activity__end-footer">04/22/2019</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="m-activity__day">
+        <div class="m-activity__content">
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>
+                <div class="a-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-content">
+                <ul class="-stories">
+                  <li>
+                    <div>
+                      <div class="a-icon -text--primary">
+                        <svg>
+                          <use xlink:href="#icon-check-alt"></use>
+                        </svg>
+                      </div>
+                      Instance successfully deployed
+                    </div>
+                    <div class="-time">1 minute ago</div>
+                  </li>
+                  <li>
+                    <div>
+                      <div class="a-icon -text--primary">
+                        <svg>
+                          <use xlink:href="#icon-check-alt"></use>
+                        </svg>
+                      </div>
+                      Machine active-directory-vbo8o-1 successfully deployed
+                    </div>
+                    <div class="-time">2 minute ago</div>
+                  </li>
+                  <li>
+                    <div>
+                      <div class="a-icon -text--muted">
+                        <svg>
+                          <use xlink:href="#icon-circle-plus-outline"></use>
+                        </svg>
+                      </div>
+                      Executing install:Active Directory in machine active-directory-vbo8o-1
+                    </div>
+                    <div class="-time">2 minute ago</div>
+                  </li>
+                  <li>
+                    <div>
+                      <div class="a-icon -text--muted">
+                        <svg>
+                          <use xlink:href="#icon-circle-plus-outline"></use>
+                        </svg>
+                      </div>
+                      Updating machine IPs
+                    </div>
+                    <div class="-time">3 minute ago</div>
+                  </li>
+                </ul>
+              </div>
+              <div class="m-activity__end-footer">04/21/2019</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+h4 Feed with stories and operation icons
+.example.-mb--3
+  .-p--5
+    .m-activity.-feed.-stories
+      .m-activity__day
+        .m-activity__content
+          .m-activity__item
+            .m-activity__start
+              div
+                .a-icon
+                  svg
+                    use(xlink:href='#icon-circle-play-outline')
+                .a-avatar
+                  img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-content
+                ul.-stories
+                  li
+                    div
+                      .a-icon.-text--primary
+                        svg
+                          use(xlink:href='#icon-check-alt')
+                      | Instance successfully deployed
+                    .-time
+                      | 1 minute ago
+                  li
+                    div
+                      .a-icon.-text--primary
+                        svg
+                          use(xlink:href='#icon-check-alt')
+                      | Machine active-directory-vbo8o-1 successfully deployed
+                    .-time
+                      | 2 minute ago
+                  li
+                    div
+                      .a-icon.-text--muted
+                        svg
+                          use(xlink:href='#icon-circle-plus-outline')
+                      | Executing install:Active Directory in machine active-directory-vbo8o-1
+                    .-time
+                      | 2 minute ago
+                  li
+                    div
+                      .a-icon.-text--muted
+                        svg
+                          use(xlink:href='#icon-circle-plus-outline')
+                      | Updating machine IPs
+                    .-time
+                      | 3 minute ago
+              .m-activity__end-footer
+                | 04/22/2019
+      .m-activity__day
+        .m-activity__content
+          .m-activity__item
+            .m-activity__start
+              div
+                .a-icon
+                  svg
+                    use(xlink:href='#icon-circle-play-outline')
+                .a-avatar
+                  img(src='../../assets/images/avatar.jpg', alt="avatar")
+            .m-activity__end
+              .m-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .m-activity__end-content
+                ul.-stories
+                  li
+                    div
+                      .a-icon.-text--primary
+                        svg
+                          use(xlink:href='#icon-check-alt')
+                      | Instance successfully deployed
+                    .-time
+                      | 1 minute ago
+                  li
+                    div
+                      .a-icon.-text--primary
+                        svg
+                          use(xlink:href='#icon-check-alt')
+                      | Machine active-directory-vbo8o-1 successfully deployed
+                    .-time
+                      | 2 minute ago
+                  li
+                    div
+                      .a-icon.-text--muted
+                        svg
+                          use(xlink:href='#icon-circle-plus-outline')
+                      | Executing install:Active Directory in machine active-directory-vbo8o-1
+                    .-time
+                      | 2 minute ago
+                  li
+                    div
+                      .a-icon.-text--muted
+                        svg
+                          use(xlink:href='#icon-circle-plus-outline')
+                      | Updating machine IPs
+                    .-time
+                      | 3 minute ago
+              .m-activity__end-footer
+                | 04/21/2019
+  :code(lang='html')
+    <div class="m-activity -feed -stories">
+      <div class="m-activity__day">
+        <div class="m-activity__content">
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>
+                <div class="a-icon -text--muted">
+                  <svg>
+                    <use xlink:href="#icon-circle-play-outline"></use>
+                  </svg>
+                </div>
+                <div class="a-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-content">
+                <ul class="-stories">
+                  <li>
+                    <div>
+                      <div class="a-icon -text--primary">
+                        <svg>
+                          <use xlink:href="#icon-check-alt"></use>
+                        </svg>
+                      </div>
+                      Instance successfully deployed
+                    </div>
+                    <div class="-time">1 minute ago</div>
+                  </li>
+                  <li>
+                    <div>
+                      <div class="a-icon -text--primary">
+                        <svg>
+                          <use xlink:href="#icon-check-alt"></use>
+                        </svg>
+                      </div>
+                      Machine active-directory-vbo8o-1 successfully deployed
+                    </div>
+                    <div class="-time">2 minute ago</div>
+                  </li>
+                  <li>
+                    <div>
+                      <div class="a-icon -text--muted">
+                        <svg>
+                          <use xlink:href="#icon-circle-plus-outline"></use>
+                        </svg>
+                      </div>
+                      Executing install:Active Directory in machine active-directory-vbo8o-1
+                    </div>
+                    <div class="-time">2 minute ago</div>
+                  </li>
+                  <li>
+                    <div>
+                      <div class="a-icon -text--muted">
+                        <svg>
+                          <use xlink:href="#icon-circle-plus-outline"></use>
+                        </svg>
+                      </div>
+                      Updating machine IPs
+                    </div>
+                    <div class="-time">3 minute ago</div>
+                  </li>
+                </ul>
+              </div>
+              <div class="m-activity__end-footer">04/22/2019</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="m-activity__day">
+        <div class="m-activity__content">
+          <div class="m-activity__item">
+            <div class="m-activity__start">
+              <div>
+                <div class="a-icon -text--muted">
+                  <svg>
+                    <use xlink:href="#icon-circle-play-outline"></use>
+                  </svg>
+                </div>
+                <div class="a-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
+              </div>
+            </div>
+            <div class="m-activity__end">
+              <div class="m-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              </div>
+              <div class="m-activity__end-content">
+                <ul class="-stories">
+                  <li>
+                    <div>
+                      <div class="a-icon -text--primary">
+                        <svg>
+                          <use xlink:href="#icon-check-alt"></use>
+                        </svg>
+                      </div>
+                      Instance successfully deployed
+                    </div>
+                    <div class="-time">1 minute ago</div>
+                  </li>
+                  <li>
+                    <div>
+                      <div class="a-icon -text--primary">
+                        <svg>
+                          <use xlink:href="#icon-check-alt"></use>
+                        </svg>
+                      </div>
+                      Machine active-directory-vbo8o-1 successfully deployed
+                    </div>
+                    <div class="-time">2 minute ago</div>
+                  </li>
+                  <li>
+                    <div>
+                      <div class="a-icon -text--muted">
+                        <svg>
+                          <use xlink:href="#icon-circle-plus-outline"></use>
+                        </svg>
+                      </div>
+                      Executing install:Active Directory in machine active-directory-vbo8o-1
+                    </div>
+                    <div class="-time">2 minute ago</div>
+                  </li>
+                  <li>
+                    <div>
+                      <div class="a-icon -text--muted">
+                        <svg>
+                          <use xlink:href="#icon-circle-plus-outline"></use>
+                        </svg>
+                      </div>
+                      Updating machine IPs
+                    </div>
+                    <div class="-time">3 minute ago</div>
+                  </li>
+                </ul>
+              </div>
+              <div class="m-activity__end-footer">04/21/2019</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

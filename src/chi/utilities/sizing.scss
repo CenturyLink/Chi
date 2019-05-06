@@ -1,29 +1,29 @@
 @import '_variables';
 @import '_mixins';
 
-  $dimensions: (
-    auto: auto,
-    25: 25%,
-    50: 50%,
-    75: 75%,
-    100: 100%
-  );
+$dimensions: (
+  auto: auto,
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%
+);
 
-  $max-width-dimensions: (
-    100: 100%,
-    980: 980px,
-    960: 960px,
-    640: 640px,
-    480: 480px,
-  );
+$max-width-dimensions: (
+  100: 100%,
+  980: 980px,
+  960: 960px,
+  640: 640px,
+  480: 480px,
+);
 
-  $max-height-dimensions: (
-    100: 100%,
-    480: 480px,
-    400: 400px
-  );
+$max-height-dimensions: (
+  100: 100%,
+  480: 480px,
+  400: 400px
+);
 
-@each $dimension-key, $dimension-value in $dimensions  {
+@each $dimension-key, $dimension-value in $dimensions {
   .-w--#{$dimension-key} {
     width: $dimension-value;
   }
