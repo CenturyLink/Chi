@@ -67,6 +67,8 @@
         .example {
           border: 0.0625rem solid set-color(grey, 25);
           border-radius: 0.15em;
+          position: relative;
+          z-index: 10;
 
           pre[class*=language-] {
             margin: 0;
