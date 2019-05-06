@@ -616,6 +616,14 @@ $sizes: (
               color: set-color(white);
             }
 
+            .a-icon {
+              @if ($type == 'secondary') {
+                color: $text-color;
+              } @else {
+                color: inherit;
+              }
+            }
+
             .a-spinner__icon .path {
               stroke: set-color(white);
             }
