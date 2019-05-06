@@ -643,7 +643,20 @@ $sizes: (
               background-color: set-color($color, $tone-focus);
               border: $border solid rgba(set-color(black), 0.2);
               box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
-              color: set-color(white);
+
+              @if ($type == 'secondary') {
+                color: $text-color;
+              } @else {
+                color: set-color(white);
+              }
+
+              .a-icon {
+                @if ($type == 'secondary') {
+                  color: $text-color;
+                } @else {
+                  color: inherit;
+                }
+              }
 
               .a-spinner__icon .path {
                 stroke: set-color(white);
