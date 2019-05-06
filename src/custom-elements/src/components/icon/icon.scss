@@ -1,0 +1,8 @@
+@import 'components/icons/webfont-font-face';
+:host(chi-icon) {
+  @import '../../global/styles/common';
+  @import 'components/icons/icons';
+  @import 'components/icons/webfont-icons';
+
+  display: inline-block;
+}

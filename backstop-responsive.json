@@ -85,7 +85,6 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-small",
         ".test-medium",
         ".test-large"
       ],
@@ -107,7 +106,6 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-small",
         ".test-medium",
         ".test-large"
       ],
@@ -138,7 +136,7 @@
     {
       "label": "grid",
       "cookiePath": "",
-      "url": "http://localhost:8000/tests/components/grid.html",
+      "url": "http://localhost:8000/tests/foundations/grid.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -166,7 +164,9 @@
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
-    },
+    }
+  ],
+  "removedScenarios": [
     {
       "label": "modals",
       "cookiePath": "",

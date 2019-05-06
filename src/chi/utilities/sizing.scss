@@ -23,7 +23,7 @@ $max-height-dimensions: (
   400: 400px
 );
 
-@each $dimension-key, $dimension-value in $dimensions {
+@each $dimension-key, $dimension-value in $dimensions  {
   .-w--#{$dimension-key} {
     width: $dimension-value;
   }

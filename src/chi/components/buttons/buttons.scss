@@ -666,6 +666,7 @@ $sizes: (
             &,
             &:focus,
             &.-focus {
+              background-color: set-color($color, $tone-focus);
               border: $border solid rgba(set-color(black), 0.2);
               box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
               color: set-color(white);

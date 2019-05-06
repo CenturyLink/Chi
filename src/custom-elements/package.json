@@ -1,0 +1,30 @@
+{
+  "name": "ux-chi-custom-elements",
+  "version": "0.0.1",
+  "description": "Stencil Component Starter",
+  "module": "dist/esm/index.js",
+  "main": "dist/index.js",
+  "unpkg": "dist/ionic.js",
+  "types": "dist/types/components.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "stencil build --docs",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@stencil/core": "~0.16.2",
+    "@stencil/sass": "^0.1.1",
+    "@types/jest": "23.3.14",
+    "jest": "23.6.0",
+    "jest-cli": "23.6.0",
+    "normalize.css": "^8.0.1",
+    "tslint": "^5.16.0"
+  },
+  "license": "MIT"
+}
