@@ -1,0 +1,142 @@
+---
+title: Modal
+---
+p.-text
+  | Use the function <code>chi.modal(elem)</code> to instantiate a new modal component in the DOM
+  | element passed as a parameter. You must use the trigger element as the parameter.
+
+p.-text
+  | To activate a modal set <code>data-target="#id"</code> to select a modal by id on a controller element, like a button.
+  | To easily close a modal set <code>data-dismiss="modal"</code> on a controller element, like a button, inside the modal
+  | or will also close by pressing the escape key.
+
+h3 Base
+.example.-mb--3(style='position: unset')
+  .-p--3
+    .-d--flex.-justify-content--start.-align-items--start
+      button#modal-trigger-1.a-btn.-primary.a-modal__trigger(data-target='#modal-1')
+        | Launch demo modal
+  .a-backdrop.-closed
+    .a-modal#modal-1
+      .a-modal__header
+        h3.a-modal__title Modal Title
+        button(class='a-btn -icon -close', data-dismiss='modal')
+          .a-btn__content
+            i.a-icon.icon-x
+      .a-modal__content
+        p.-text.-m--0 Modal content
+      .a-modal__footer
+        button.a-btn(data-dismiss='modal') Cancel
+        button.a-btn.-primary.-ml--2 Save
+  ul#a-tabs-base.a-tabs.-ml--3
+    li.-active
+      a(href='#a-tabs-e2-button') Button
+    li
+      a(href='#a-tabs-e2-modal') Modal
+    li
+      a(href='#a-tabs-e2-js') JS
+  #a-tabs-e2-button.a-tabs-panel.-active
+    :code(lang="html")
+      <button id="modal-trigger-1" class="a-btn a-modal__trigger" data-target="#modal-1">
+        Launch demo modal
+      </button>
+  #a-tabs-e2-modal.a-tabs-panel
+    :code(lang="html")
+      <div class="a-backdrop -closed">
+        <div id="modal-1" class="a-modal">
+          <div class="a-modal__header">
+            <h3 class="a-modal__title">Modal Title</h3>
+            <button class="a-btn -icon -close" data-dismiss="modal">
+              <div class="a-btn__content">
+                <i class="a-icon icon-x"></i>
+              </div>
+            </button>
+          </div>
+          <div class="a-modal__content">
+            <p class="-text -m--0">Modal content</p>
+          </div>
+          <div class="a-modal__footer">
+            <button class="a-btn" data-dismiss="modal">Cancel</button>
+            <button class="a-btn -primary -ml--2">Save</button>
+          </div>
+        </div>
+      </div>
+  #a-tabs-e2-js.a-tabs-panel
+    :code(lang="html")
+      <script>chi.modal(document.getElementById('modal-trigger-1'));</script>
+
+h3 Options
+p.-text This component accepts options to configure its behavior.
+
+section.a-table.a-table__options.-bordered.-my--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Option
+          th
+            div Default
+          th
+            div Description
+      tbody
+        tr
+          td
+            div
+              code= 'animated'
+          td
+            div
+              code= 'true'
+          td
+            div
+              | Enables animation on modal display and hide, and fade effect in the backdrop.
+        tr
+          td
+            div
+              code= 'target'
+          td
+            div
+              code= 'null'
+          td
+            div
+              | Lets the developer referer the target programmatically instead of by data-target attribute.
+              | It accepts Element object and xpath selector string.
+
+h4 Preventing memory leaks
+p.-text
+  | Modal components have a dispose function to free all resources attached to the element, such as event listeners
+  | and object data. You should call this method when you want to remove the component.
+:code(lang="javascript")
+  var elem = document.getElementById('modal-1');
+  var modal = chi.modal(elem);
+  // do stuff
+  modal.dispose();
+
+p.-text
+  span.a-badge.-primary.-mr1
+    span Tip
+  | It is safe to call the <code>modal</code> method more than once, as it will return any previously created modal component
+  | associated to the trigger.
+:code(lang="javascript")
+  var elem = document.getElementById('modal-1');
+  var modal = chi.modal(elem);
+  var elem2 = document.getElementById('modal-1');
+  var modal2 = chi.modal(elem2);
+  modal === modal2; // returns true
+
+  modal.dispose(); // Only have to do it once.
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      Array.prototype.forEach.call(
+        document.getElementsByClassName("a-modal__trigger"),
+        function (el) {
+          chi.modal(el);
+        }
+      );
+      chi.tab(document.querySelectorAll('#a-tabs-base'));
+    },
+    false
+  );
