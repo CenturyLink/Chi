@@ -114,6 +114,24 @@ onLoad(() => {
 
   var anchors = document.querySelectorAll('h3,h4');
 
+ // Polyfill element.closest IE9+
+  if (!Element.prototype.matches) {
+    Element.prototype.matches = Element.prototype.msMatchesSelector ||
+      Element.prototype.webkitMatchesSelector;
+  }
+
+  if (!Element.prototype.closest) {
+    Element.prototype.closest = function(s) {
+      var el = this;
+
+      do {
+        if (el.matches(s)) return el;
+        el = el.parentElement || el.parentNode;
+      } while (el !== null && el.nodeType === 1);
+      return null;
+    };
+  }
+
   Array.prototype.forEach.call(anchors, function(anchor) {
     const spanContainer = document.createElement('span');
     const anchorLink = document.createElement('a');
