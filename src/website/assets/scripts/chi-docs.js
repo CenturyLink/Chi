@@ -1,5 +1,9 @@
 const onLoadCallbacks = [];
 let onLoadExecuted = false;
+const processedAnchors = {
+  all: [],
+  latestH3: ''
+};
 
 function onLoad(callback) {
   if (!onLoadExecuted) {
@@ -43,6 +47,23 @@ function removeClass(item, className) {
   const classes = item.className.split(' ');
 
   item.className = classes.filter(name => name !== className);
+}
+
+function addId(item) {
+  var id = item.textContent.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase();
+
+  if (item.nodeName === 'H3') {
+    processedAnchors.latestH3 = id;
+  } else if (processedAnchors.latestH3) {
+    id = processedAnchors.latestH3 + '-' + id;
+  }
+  let counter = 1;
+  while (processedAnchors.all.indexOf(id) !== -1) {
+    id = id.replace(/^(.*?)(-\d+)?$/, '$1-' + counter);
+    counter++;
+  }
+  item.id = id;
+  processedAnchors.all.push(id);
 }
 
 function enableCopyToClipboardFeature (preElem) {
@@ -106,6 +127,46 @@ onLoad(() => {
       addClass(htmlItem, '-hidden');
       removeClass(codeItem, '-hidden');
     };
+  });
+
+  var anchors = document.querySelectorAll('h3,h4');
+
+ // Polyfill element.closest IE9+
+  if (!Element.prototype.matches) {
+    Element.prototype.matches = Element.prototype.msMatchesSelector ||
+      Element.prototype.webkitMatchesSelector;
+  }
+
+  if (!Element.prototype.closest) {
+    Element.prototype.closest = function(s) {
+      var el = this;
+
+      do {
+        if (el.matches(s)) return el;
+        el = el.parentElement || el.parentNode;
+      } while (el !== null && el.nodeType === 1);
+      return null;
+    };
+  }
+
+  Array.prototype.forEach.call(anchors, function(anchor) {
+    const spanContainer = document.createElement('span');
+    const anchorLink = document.createElement('a');
+    if (anchor.closest(".example")) {
+      return;
+    } else {
+      addClass(anchor, '-anchor');
+      addId(anchor);
+      spanContainer.appendChild(anchorLink);
+      anchorLink.textContent = '#';
+      anchorLink.setAttribute('class', '-ml--1');
+      anchorLink.setAttribute('href', '#'+anchor.id);
+      anchor.appendChild(spanContainer);
+      if (window.location.hash === '#'+anchor.id) {
+        window.location.hash = '#';
+        window.location.hash = '#'+anchor.id;
+      }
+    }
   });
 
   var codeSnippets = document.getElementsByTagName('pre');
