@@ -1,5 +1,9 @@
 const onLoadCallbacks = [];
 let onLoadExecuted = false;
+const processedAnchors = {
+  all: [],
+  latestH3: ''
+};
 
 function onLoad(callback) {
   if (!onLoadExecuted) {
@@ -46,7 +50,20 @@ function removeClass(item, className) {
 }
 
 function addId(item) {
-  item.id = item.textContent.replace(/\s/g, '');
+  var id = item.textContent.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase();
+
+  if (item.nodeName === 'H3') {
+    processedAnchors.latestH3 = id;
+  } else if (processedAnchors.latestH3) {
+    id = processedAnchors.latestH3 + '-' + id;
+  }
+  let counter = 1;
+  while (processedAnchors.all.indexOf(id) !== -1) {
+    id = id.replace(/^(.*?)(-\d+)?$/, '$1-' + counter);
+    counter++;
+  }
+  item.id = id;
+  processedAnchors.all.push(id);
 }
 
 function enableCopyToClipboardFeature (preElem) {
@@ -135,7 +152,6 @@ onLoad(() => {
   Array.prototype.forEach.call(anchors, function(anchor) {
     const spanContainer = document.createElement('span');
     const anchorLink = document.createElement('a');
-    const textContent = anchor.textContent.replace(/\s/g, '');
     if (anchor.closest(".example")) {
       return;
     } else {
@@ -144,11 +160,11 @@ onLoad(() => {
       spanContainer.appendChild(anchorLink);
       anchorLink.textContent = '#';
       anchorLink.setAttribute('class', '-ml--1');
-      anchorLink.setAttribute('href', '#' + textContent);
+      anchorLink.setAttribute('href', '#'+anchor.id);
       anchor.appendChild(spanContainer);
-      if (window.location.hash === '#'+textContent) {
+      if (window.location.hash === '#'+anchor.id) {
         window.location.hash = '#';
-        window.location.hash = '#'+textContent;
+        window.location.hash = '#'+anchor.id;
       }
     }
   });

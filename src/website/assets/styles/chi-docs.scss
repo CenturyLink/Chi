@@ -80,10 +80,12 @@ body {
     word-break: normal;
   }
 
-  .-anchor {
-    &::before {
-      height: 5rem;
-      margin: -5rem 0 0;
+  @include respond-to(lg) {
+    .-anchor {
+      &::before {
+        height: 5rem;
+        margin: -5rem 0 0;
+      }
     }
   }
 }
