@@ -71,15 +71,9 @@ class Modal extends Component {
 
     let self = this;
 
-    this._closeElements = function(value) {
-      value.addEventListener('click', self._closeClickEventListener);
-    };
-
-    this._closeRemoveElements = function(value) {
-      value.removeEventListener('click', self._closeClickEventListener);
-    };
-
-    this._closeButtons.forEach(this._closeElements);
+    Array.prototype.forEach.call(this._closeButtons, function(value) {
+        value.addEventListener('click', self._closeClickEventListener);
+    });
 
     this._addEventHandler(
       this._elem, 'click', this._triggerClickEventListener
@@ -226,7 +220,6 @@ class Modal extends Component {
     this._modalElem = null;
     this._shown = null;
     this._transitioning = null;
-    this._closeButtons.forEach(this._closeRemoveElements);
     this._closeButtons = null;
     this._currentThreeStepsAnimation = null;
     this._elem = null;
