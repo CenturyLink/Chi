@@ -18,6 +18,7 @@ const requires = {
   'build-website-styles': require('./tasks/build-website-styles.js'),
   'build-website-views': require('./tasks/build-website-views.js'),
   'build-website': require('./tasks/build-website.js'),
+  'copy-chi-ce-scripts': require('./tasks/copy-chi-ce-scripts'),
   'build': require('./tasks/build.js'),
   'backstop': require('./tasks/backstop.js'),
   'ci': require('./tasks/ci.js'),

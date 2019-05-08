@@ -14,6 +14,7 @@ $animation-duration: 0.5s;
     overflow-y: auto;
     pointer-events: auto;
     position: fixed;
+    transform: translate(0, 0);
     z-index: $zindex-fixed;
   }
 
@@ -24,6 +25,7 @@ $animation-duration: 0.5s;
   &.-animated {
     transition-duration: $animation-duration;
     transition-timing-function: cubic-bezier(0.38, 0.52, 0.37, 1);
+    transition-property: transform;
 
     &.-transitioning {
       display: flex;
@@ -38,9 +40,8 @@ $animation-duration: 0.5s;
 
     &.-animated {
       &:not(.-active) {
-        top: -$drawer-height;
+        transform: translate(0, -$drawer-height);
       }
-      transition-property: top;
     }
   }
 
@@ -52,9 +53,8 @@ $animation-duration: 0.5s;
 
     &.-animated {
       &:not(.-active) {
-        right: -$drawer-width;
+        transform: translate($drawer-width, 0);
       }
-      transition-property: right;
     }
   }
 
@@ -66,9 +66,8 @@ $animation-duration: 0.5s;
 
     &.-animated {
       &:not(.-active) {
-        bottom: -$drawer-height;
+        transform: translate(0, $drawer-height);
       }
-      transition-property: bottom;
     }
   }
 
@@ -80,9 +79,8 @@ $animation-duration: 0.5s;
 
     &.-animated {
       &:not(.-active) {
-        left: -$drawer-width;
+        transform: translate(-$drawer-width, 0);
       }
-      transition-property: left;
     }
   }
 
@@ -90,6 +88,10 @@ $animation-duration: 0.5s;
     min-height: 3.5rem;
     padding: 1rem;
     position: relative;
+
+    h5 {
+      margin: 0;
+    }
   }
 
   &__title {

@@ -12,6 +12,87 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface ChiDrawer {
+    /**
+    * to open or close the drawer
+    */
+    'active': boolean;
+    /**
+    * to add a backdrop behind the drawer, which covers the viewport
+    */
+    'backdrop': boolean | string;
+    /**
+    * adds a close button
+    */
+    'collapsible': boolean;
+    /**
+    * header title. Not compatible with headless
+    */
+    'headerTitle': string;
+    /**
+    * to remove the space for the header
+    */
+    'headless': boolean;
+    /**
+    * Hides the drawer
+    */
+    'hide': () => void;
+    /**
+    * to set position of the drawer { top, right, bottom or left }
+    */
+    'position': string;
+    /**
+    * Shows the drawer.
+    */
+    'show': () => void;
+    /**
+    * Toggles active state (show/hide)
+    */
+    'toggle': () => void;
+  }
+  interface ChiDrawerAttributes extends StencilHTMLAttributes {
+    /**
+    * to open or close the drawer
+    */
+    'active'?: boolean;
+    /**
+    * to add a backdrop behind the drawer, which covers the viewport
+    */
+    'backdrop'?: boolean | string;
+    /**
+    * adds a close button
+    */
+    'collapsible'?: boolean;
+    /**
+    * header title. Not compatible with headless
+    */
+    'headerTitle'?: string;
+    /**
+    * to remove the space for the header
+    */
+    'headless'?: boolean;
+    /**
+    * Drawer has been hidden to the user. The animation has completed.
+    */
+    'onChi:hidden'?: (event: CustomEvent) => void;
+    /**
+    * Drawer hide method has executed, but the closing animation has not started yet
+    */
+    'onChi:hide'?: (event: CustomEvent) => void;
+    /**
+    * Drawer show method has executed, but the showing animation has not started yet
+    */
+    'onChi:show'?: (event: CustomEvent) => void;
+    /**
+    * Drawer has been shown to the user and is fully visible. The animation has completed.
+    */
+    'onChi:shown'?: (event: CustomEvent) => void;
+    /**
+    * to set position of the drawer { top, right, bottom or left }
+    */
+    'position'?: string;
+  }
+
   interface ChiIcon {
     /**
     * OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, inverse, muted}
@@ -44,13 +125,21 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'ChiDrawer': Components.ChiDrawer;
     'ChiIcon': Components.ChiIcon;
   }
 
   interface StencilIntrinsicElements {
+    'chi-drawer': Components.ChiDrawerAttributes;
     'chi-icon': Components.ChiIconAttributes;
   }
 
+
+  interface HTMLChiDrawerElement extends Components.ChiDrawer, HTMLStencilElement {}
+  var HTMLChiDrawerElement: {
+    prototype: HTMLChiDrawerElement;
+    new (): HTMLChiDrawerElement;
+  };
 
   interface HTMLChiIconElement extends Components.ChiIcon, HTMLStencilElement {}
   var HTMLChiIconElement: {
@@ -59,10 +148,12 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'chi-drawer': HTMLChiDrawerElement
     'chi-icon': HTMLChiIconElement
   }
 
   interface ElementTagNameMap {
+    'chi-drawer': HTMLChiDrawerElement;
     'chi-icon': HTMLChiIconElement;
   }
 
