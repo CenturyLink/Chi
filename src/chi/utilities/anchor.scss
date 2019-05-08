@@ -1,39 +1,36 @@
-@import 'mixins';
-@import 'variables';
+@import '_mixins';
+@import '_variables';
 
-.chi {
+.-anchor {
+  &::before {
+    content: '';
+    display: block;
+  }
 
-  .-anchor {
-    &::before {
-      content: '';
-      display: block;
-    }
-
-    &:hover {
-      & span {
-        & a {
-          color: $brand-color;
-          cursor: pointer;
-          font-weight: 600;
-          opacity: 1;
-          text-decoration: none;
-          transition: opacity 0.15s ease-in-out;
-        }
-      }
-    }
-
+  &:hover {
     & span {
       & a {
         color: $brand-color;
         cursor: pointer;
         font-weight: 600;
-        opacity: 0;
+        opacity: 1;
+        text-decoration: none;
         transition: opacity 0.15s ease-in-out;
+      }
+    }
+  }
 
-        &:hover {
-          opacity: 1;
-          text-decoration: none;
-        }
+  & span {
+    & a {
+      color: $brand-color;
+      cursor: pointer;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.15s ease-in-out;
+
+      &:hover {
+        opacity: 1;
+        text-decoration: none;
       }
     }
   }
