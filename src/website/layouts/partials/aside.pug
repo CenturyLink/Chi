@@ -2,7 +2,7 @@ aside.docs-body__aside
   nav
     ul.a-tabs.-vertical.-lg
       each collection, key in collections
-        if utils.hasActiveSections(collection)
+        if utils.hasActiveSections(collection) && key !== "Custom Elements"
           if utils.isCurrentCollection(collection, path)
             li.-active.-hasActive
               a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
@@ -18,7 +18,7 @@ aside.docs-body__aside
           else
             li
               a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
-        else
+        else if key !== "Custom Elements"
           li
             a(href=`#`, disabled="disabled") #{key}
   .-m--3
