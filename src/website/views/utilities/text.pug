@@ -115,7 +115,7 @@ h3 Text colors
 p.-text Change text colors with contextual classes.
 .example.-mb--3
   .-m--3
-    each type in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--muted', 'text--secondary-alt']
+    each type in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--muted']
       p.-text(class=`-${type}`)
         = `.-${type}`
     p.-text.-text--secondary(style="background:#000;") .-text--secondary
@@ -127,6 +127,5 @@ p.-text Change text colors with contextual classes.
       <p class="-text--warning">.-text--warning</p>
       <p class="-text--danger">.-text--danger</p>
       <p class="-text--muted">.-text--muted</p>
-      <p class="-text--secondary-alt">.-text--secondary-alt</p>
       <p class="-text--secondary">.-text--secondary</p>
       <p class="-text--white">.-text--white</p>

@@ -3,9 +3,10 @@ title: Color
 styles: [assets/styles/colors]
 ---
 p.-text
-  | Chi colors are designed to comply with <a href="https://www.w3.org/TR/WCAG20/">WCAG AA+</a>
-  | accessibility standards. AA colors have a contrast ratio of 4.5:1 or higher, and AAA colors have a
-  | contrast ratio of at least 7:1. Each color has been marked accordingly.
+  | Chi colors are designed to comply with U.S. <a href="https://www.section508.gov/">Section 508</a> federal requirements.
+  | Section 508 follows the Web Content Accessibility Guidelines (<a href="https://www.w3.org/TR/WCAG20/">WCAG 2.0</a>) Level AA
+  | standards which require text and background color contrast ratios of 4.5:1 or higher.
+  | All Chi colors either meet (AA) or exceed (AAA) these standards and have been marked below accordingly.
 
 h3 Brand
 div.a-grid
@@ -58,7 +59,7 @@ div.a-grid
         .a-col.-w--6.-text--small
           code.hexa #097A49
         .a-col.-w--6.-text--right.-text--small
-          .a11y AAA+
+          .a11y AA
   .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
     .palette-container
       .palette.a-grid.-noGutter.-text.-text--white(style="background-color:#53565A;")
@@ -70,9 +71,21 @@ div.a-grid
           .a11y AAA
 .a-divider.-mt--3.-mb--5
 h3 Neutral
+p.-text.-mb--3
+  | Neutral palette is an extension of CenturyLink Brand's Dark
+  | Grey swatch (Grey 70). Each shade is based off the original hue.
 div.a-grid
   .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-    h5 Body Text
+    .palette-container
+      .palette.a-grid.-noGutter.-text.-text--white(style="background-color:#000000;")
+        .a-col.-w--12
+          .-text--bold Black
+        .a-col.-w--6.-text--small
+          code.hexa #000000
+        .a-col.-w--6.-text--right.-text--small
+          .a11y AAA
+    p.-text--small.-mb--0 Used to brand business and corporate content (mastheads, heroes, etc.).
+  .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
     .palette-container
       .palette.a-grid.-noGutter.-text.-text--white(style="background-color:#242526;")
         .a-col.-w--12
@@ -81,8 +94,39 @@ div.a-grid
           code.hexa #242526
         .a-col.-w--6.-text--right.-text--small
           .a11y AAA
+    p.-text--small.-mb--0 Used for primary text color on white and low-contrast backgrounds on black.
   .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-    h5 Muted Text
+    .palette-container
+      .palette.a-grid.-noGutter.-text.-text--white(style="background-color:#313336;")
+        .a-col.-w--12
+          .-text--bold Grey 90
+        .a-col.-w--6.-text--small
+          code.hexa #313336
+        .a-col.-w--6.-text--right.-text--small
+          .a11y AAA
+    p.-text--small.-mb--0 Used for low-contrast borders on black and medium-contrast backgrounds on black.
+  .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.a-grid.-noGutter.-text.-text--white(style="background-color:#3F4145;")
+        .a-col.-w--12
+          .-text--bold Grey 80
+        .a-col.-w--6.-text--small
+          code.hexa #3F4145
+        .a-col.-w--6.-text--right.-text--small
+          .a11y AAA
+    p.-text--small.-mb--0 Used for medium-contrast borders on black and high-contrast backgrounds on black.
+div.a-grid
+  .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.a-grid.-noGutter.-text.-text--white(style="background-color:#53565A;")
+        .a-col.-w--12
+          .-text--bold Grey 70
+        .a-col.-w--6.-text--small
+          code.hexa #53565A
+        .a-col.-w--6.-text--right.-text--small
+          .a11y AA
+    p.-text--small.-mb--0 Used for secondary text on white and high-contrast borders on black.
+  .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
     .palette-container
       .palette.a-grid.-noGutter.-text.-text--white(style="background-color:#72767A;")
         .a-col.-w--12
@@ -90,9 +134,9 @@ div.a-grid
         .a-col.-w--6.-text--small
           code.hexa #72767A
         .a-col.-w--6.-text--right.-text--small
-          .a11y AAA+
+          .a11y AA
+    p.-text--small.-mb--0 Used for muted or disabled text and icons on white.
   .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-    h5 Muted Icon
     .palette-container
       .palette.a-grid.-noGutter.-text.-text--body(style="background-color:#8E9399;")
         .a-col.-w--12
@@ -100,9 +144,9 @@ div.a-grid
         .a-col.-w--6.-text--small
           code.hexa #8E9399
         .a-col.-w--6.-text--right.-text--small
-          .a11y AAA+
+          .a11y AA
+    p.-text--small.-mb--0 Used for muted or disabled text and icons on black.
   .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-    h5 Layout
     .palette-container
       .palette.a-grid.-noGutter.-text.-text--body(style="background-color:#ACB0B5;")
         .a-col.-w--12
@@ -111,9 +155,9 @@ div.a-grid
           code.hexa #ACB0B5
         .a-col.-w--6.-text--right.-text--small
           .a11y AAA
+    p.-text--small.-mb--0 Used for high-contrast borders on white.
 div.a-grid
   .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-    h5 Layout
     .palette-container
       .palette.a-grid.-noGutter.-text.-text--body(style="background-color:#D0D4D9;")
         .a-col.-w--12
@@ -122,8 +166,8 @@ div.a-grid
           code.hexa #D0D4D9
         .a-col.-w--6.-text--right.-text--small
           .a11y AAA
+    p.-text--small.-mb--0 Used for medium-contrast borders on white.
   .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-    h5 Layout
     .palette-container
       .palette.a-grid.-noGutter.-text.-text--body(style="background-color:#EDF0F2;")
         .a-col.-w--12
@@ -132,8 +176,8 @@ div.a-grid
           code.hexa #EDF0F2
         .a-col.-w--6.-text--right.-text--small
           .a11y AAA
+    p.-text--small.-mb--0 Used for low-contrast borders and medium-contrast backgrounds on white.
   .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-    h5 Layout
     .palette-container
       .palette.a-grid.-noGutter.-text.-text--body(style="background-color:#F8F9F9;")
         .a-col.-w--12
@@ -142,8 +186,8 @@ div.a-grid
           code.hexa #F8F9F9
         .a-col.-w--6.-text--right.-text--small
           .a11y AAA
+    p.-text--small.-mb--0 Used for low-contrast backgrounds on white.
   .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-    h5 Layout
     .palette-container
       .palette.a-grid.-noGutter.-text(style="background-color:#ffffff;color:#242424;box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06)")
         .a-col.-w--12
@@ -152,6 +196,7 @@ div.a-grid
           code.hexa #FFFFFF
         .a-col.-w--6.-text--right.-text--small
           .a11y AAA
+    p.-text--small.-mb--0 Used as body background color and primary text color on black.
 .a-divider.-mt--3.-mb--5
 h3 Semantic
 div.a-grid
@@ -164,7 +209,7 @@ div.a-grid
         .a-col.-w--6.-text--small
           code.hexa #097A49
         .a-col.-w--6.-text--right.-text--small
-          .a11y AAA+
+          .a11y AA
   .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
     h5 Info
     .palette-container
@@ -184,7 +229,7 @@ div.a-grid
         .a-col.-w--6.-text--small
           code.hexa #B50D12
         .a-col.-w--6.-text--right.-text--small
-          .a11y AAA+
+          .a11y AA
   .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
     h5 Warning
     .palette-container
@@ -194,7 +239,7 @@ div.a-grid
         .a-col.-w--6.-text--small
           code.hexa #854E03
         .a-col.-w--6.-text--right.-text--small
-          .a11y AAA+
+          .a11y AA
 .a-divider.-mt--3.-mb--5
 h3 Palettes
 p.-text
@@ -232,21 +277,21 @@ div.a-grid
         .a-col.-w--6
           code.hexa #53565A
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#72767A;color:#ffffff")
         .a-col.-w--12
           strong 60
         .a-col.-w--6
           code.hexa #72767A
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#8E9399;color:#242424")
         .a-col.-w--12
           strong 50
         .a-col.-w--6
           code.hexa #8E9399
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#ACB0B5;color:#242424")
         .a-col.-w--12
           strong 40
@@ -305,21 +350,21 @@ div.a-grid
         .a-col.-w--6
           code.hexa #B50D12
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#DE1B21;color:#ffffff")
         .a-col.-w--12
           strong 60
         .a-col.-w--6
           code.hexa #DE1B21
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#FA5056;color:#242424")
         .a-col.-w--12
           strong 50
         .a-col.-w--6
           code.hexa #FA5056
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#FC9094;color:#242424")
         .a-col.-w--12
           strong 40
@@ -378,21 +423,21 @@ div.a-grid
         .a-col.-w--6
           code.hexa #B30C44
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#DB1A5B;color:#ffffff")
         .a-col.-w--12
           strong 60
         .a-col.-w--6
           code.hexa #DB1A5B
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#F74F87;color:#242424")
         .a-col.-w--12
           strong 50
         .a-col.-w--6
           code.hexa #F74F87
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#FA8EB2;color:#242424")
         .a-col.-w--12
           strong 40
@@ -451,21 +496,21 @@ div.a-grid
         .a-col.-w--6
           code.hexa #7E40BD
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#9557D4;color:#ffffff")
         .a-col.-w--12
           strong 60
         .a-col.-w--6
           code.hexa #9557D4
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#B277ED;color:#242424")
         .a-col.-w--12
           strong 50
         .a-col.-w--6
           code.hexa #B277ED
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#CDA3F7;color:#242424")
         .a-col.-w--12
           strong 40
@@ -524,21 +569,21 @@ div.a-grid
         .a-col.-w--6
           code.hexa #4F4FDB
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#6666E3;color:#ffffff")
         .a-col.-w--12
           strong 60
         .a-col.-w--6
           code.hexa #6666E3
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#8787FA;color:#242424")
         .a-col.-w--12
           strong 50
         .a-col.-w--6
           code.hexa #8787FA
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#ADADFF;color:#242424")
         .a-col.-w--12
           strong 40
@@ -604,14 +649,14 @@ div.a-grid
         .a-col.-w--6
           code.hexa #005BED
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#4289F5;color:#242424")
         .a-col.-w--12
           strong 50
         .a-col.-w--6
           code.hexa #4289F5
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#8CB6F5;color:#242424")
         .a-col.-w--12
           strong 40
@@ -670,21 +715,21 @@ div.a-grid
         .a-col.-w--6
           code.hexa #066594
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#0D7DB5;color:#ffffff")
         .a-col.-w--12
           strong 60
         .a-col.-w--6
           code.hexa #0D7DB5
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#239CD9;color:#242424")
         .a-col.-w--12
           strong 50
         .a-col.-w--6
           code.hexa #239CD9
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#53BFF5;color:#242424")
         .a-col.-w--12
           strong 40
@@ -743,21 +788,21 @@ div.a-grid
         .a-col.-w--6
           code.hexa #056960
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#038277;color:#ffffff")
         .a-col.-w--12
           strong 60
         .a-col.-w--6
           code.hexa #038277
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#0AA396;color:#242424")
         .a-col.-w--12
           strong 50
         .a-col.-w--6
           code.hexa #0AA396
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#1EC7B9;color:#242424")
         .a-col.-w--12
           strong 40
@@ -816,7 +861,7 @@ div.a-grid
         .a-col.-w--6
           code.hexa #097A49
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#12995f;color:#ffffff")
         .a-col.-w--12
           strong 60
@@ -830,7 +875,7 @@ div.a-grid
         .a-col.-w--6
           code.hexa #27B875
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#48d597;color:#242424")
         .a-col.-w--12
           strong 40
@@ -889,21 +934,21 @@ div.a-grid
         .a-col.-w--6
           code.hexa #3F6605
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#4E8003;color:#ffffff")
         .a-col.-w--12
           strong 60
         .a-col.-w--6
           code.hexa #4E8003
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#689E18;color:#242424")
         .a-col.-w--12
           strong 50
         .a-col.-w--6
           code.hexa #689E18
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#8CC63F;color:#242424")
         .a-col.-w--12
           strong 40
@@ -962,21 +1007,21 @@ div.a-grid
         .a-col.-w--6
           code.hexa #854E03
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#A66102;color:#ffffff")
         .a-col.-w--12
           strong 60
         .a-col.-w--6
           code.hexa #A66102
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#C97D12;color:#242424")
         .a-col.-w--12
           strong 50
         .a-col.-w--6
           code.hexa #C97D12
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#E6A243;color:#242424")
         .a-col.-w--12
           strong 40
@@ -1035,21 +1080,21 @@ div.a-grid
         .a-col.-w--6
           code.hexa #A6310D
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#C94218;color:#ffffff")
         .a-col.-w--12
           strong 60
         .a-col.-w--6
           code.hexa #C94218
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#E8663F;color:#242424")
         .a-col.-w--12
           strong 50
         .a-col.-w--6
           code.hexa #E8663F
         .a-col.-w--6.-text--right
-          .a11y AAA+
+          .a11y AA
       .palette.a-grid.-noGutter(style="background-color:#F2997E;color:#242424")
         .a-col.-w--12
           strong 40
