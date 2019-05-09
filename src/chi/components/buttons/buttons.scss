@@ -576,6 +576,13 @@ $sizes: (
             background-color: set-color($color, $tone);
             color: $text-color;
           }
+
+          &:focus,
+          &.-focus {
+            background-color: set-color(transparent);
+            border: $border solid set-color($color);
+            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
+          }
         }
       }
     } @else {
