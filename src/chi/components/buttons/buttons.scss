@@ -540,8 +540,8 @@ $sizes: (
           box-shadow: none;
           color: set-color($color);
 
-          &:hover,
-          &.-hover {
+          &:hover:not(.-icon),
+          &.-hover:not(.-icon) {
             background-color: set-color(transparent);
             border: $border solid set-color($color);
             color: set-color($color);
