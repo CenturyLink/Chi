@@ -500,7 +500,9 @@ $sizes: (
         }
 
         &.-icon {
-          color: set-color(grey, 50);
+          & .a-icon {
+            color: set-color(grey, 50);
+          }
 
           &:hover,
           &.-hover {
@@ -515,8 +517,6 @@ $sizes: (
 
           &:focus,
           &.-focus {
-            background-color: transparent;
-            border: $border solid transparent;
             box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
 
             .a-icon {
@@ -529,10 +529,7 @@ $sizes: (
             &,
             &:focus,
             &.-focus {
-              background-color: transparent;
-              border: $border solid transparent;
               box-shadow: none;
-              color: set-color($color);
             }
           }
         }
@@ -547,12 +544,14 @@ $sizes: (
           &.-hover {
             background-color: set-color(transparent);
             border: $border solid set-color($color);
+            color: set-color($color);
           }
 
           &:focus,
           &.-focus {
             background-color: set-color(transparent);
             border: $border solid set-color($color);
+            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
           }
 
           &:active,
@@ -698,6 +697,7 @@ $sizes: (
           &:focus,
           &.-focus {
             border: $border solid set-color($color, $tone);
+            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
           }
 
           &:active,
@@ -706,6 +706,8 @@ $sizes: (
             &:focus,
             &.-focus {
               background-color: transparent;
+              border: $border solid set-color($color, $tone);
+              box-shadow: none;
             }
           }
         }
