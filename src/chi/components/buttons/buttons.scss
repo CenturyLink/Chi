@@ -486,8 +486,17 @@ $sizes: (
 
     @if( $type == 'inverse') {
       &.-#{$type} {
+        border: $border solid map_get(nth($color-definition, 2), button-text-color);
+
+        &:hover,
+        &.-hover {
+          background-color: set-color($color, $tone-hover);
+          border: $border solid set-color($color, $tone-hover);
+          box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+        }
+
         .a-icon {
-          color: set-color(grey, 50);
+          color: $text-color;
         }
 
         &.-icon {
@@ -533,30 +542,40 @@ $sizes: (
           border: $border solid transparent;
           box-shadow: none;
           color: set-color($color);
-        }
 
-        &:hover,
-        &.-hover {
-          background-color: set-color(transparent);
-          border: $border solid set-color($color);
-        }
+          &:hover,
+          &.-hover {
+            background-color: set-color(transparent);
+            border: $border solid set-color($color);
+          }
 
-        &:focus,
-        &.-focus {
-          background-color: set-color(transparent);
-          border: $border solid set-color($color);
-          box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
-        }
-
-        &:active,
-        &.-active {
-          &,
           &:focus,
           &.-focus {
-            background-color: transparent;
+            background-color: set-color(transparent);
             border: $border solid set-color($color);
-            box-shadow: none;
-            color: set-color($color);
+          }
+
+          &:active,
+          &.-active {
+            &,
+            &:focus,
+            &.-focus {
+              background-color: transparent;
+              border: $border solid set-color($color);
+              box-shadow: none;
+              color: set-color($color);
+            }
+          }
+        }
+
+        &.-outline {
+          border: $border solid $text-white;
+          color: set-color($color);
+
+          &:hover,
+          &.-hover {
+            background-color: set-color($color, $tone);
+            color: $text-color;
           }
         }
       }
@@ -610,10 +629,10 @@ $sizes: (
           &:hover,
           &.-hover {
             background-color: set-color($color, $tone);
+            color: set-color(white);
+
             @if ($type == 'secondary') {
               color: $text-color;
-            } @else {
-              color: set-color(white);
             }
 
             .a-icon {
@@ -679,7 +698,6 @@ $sizes: (
           &:focus,
           &.-focus {
             border: $border solid set-color($color, $tone);
-            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
           }
 
           &:active,
@@ -687,10 +705,7 @@ $sizes: (
             &,
             &:focus,
             &.-focus {
-              background-color: set-color($color, $tone-focus);
-              border: $border solid rgba(set-color(black), 0.2);
-              box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
-              color: set-color(white);
+              background-color: transparent;
             }
           }
         }
