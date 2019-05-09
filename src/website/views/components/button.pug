@@ -18,9 +18,9 @@ p.-text
     input(class='a-btn -mr--2', type='submit', value='Submit')
     input(class='a-btn -mr--2', type='reset', value='Reset')
   :code(lang='html')
-    <!-- default -->
+    <!-- default tag -->
     <button class="a-btn">Button</button>
-    <!-- also supported -->
+    <!-- tags also supported -->
     <a class="a-btn" role="button">Link</a>
     <input class="a-btn" type="button" value="Input">
     <input class="a-btn" type="submit" value="Submit">
@@ -30,94 +30,93 @@ h3 Examples
 
 h4 Base
 p.-text
-  | Chi includes a wide variety of predefined button styles. For most cases,
-  | the base and <code>-primary</code> buttons will be sufficient. For special cases,
-  | such as styling a destructive action button, a <code>-danger</code> button may be used.
+  | Chi includes a wide variety of predefined button styles. For light backgrounds,
+  | please use base, <code>-primary</code>, or <code>-dark</code> buttons. For
+  | dark backgrounds, please limit usage to <code>-secondary</code> or <code>-inverse</code>.
+
 .example.-mb--3
-  .-p--3
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark'}
-      button(class=`a-btn -${type} -mr--2`)= val
+  .a-grid
+    .a-col.-w-sm--6
+      .-p--3.-text--center
+        button(class=`a-btn -mr--2`) Base
+        button(class=`a-btn -primary -mr--2`) Primary
+        button(class=`a-btn -dark`) Dark
+    .a-col.-w-sm--6
+      .-p--3.-bg--black.-text--center
+        button(class=`a-btn -secondary -mr--2`) Secondary
+        button(class=`a-btn -inverse`) Inverse
   :code(lang='html')
-    <!-- default buttons -->
+    <!-- For light backgrounds -->
     <button class="a-btn">Base</button>
     <button class="a-btn -primary">Primary</button>
-    <!-- special case buttons -->
-    <button class="a-btn -secondary">Secondary</button>
-    <button class="a-btn -danger">Danger</button>
     <button class="a-btn -dark">Dark</button>
+    <!-- For dark backgrounds -->
+    <button class="a-btn -secondary">Secondary</button>
+    <button class="a-btn -inverse">Inverse</button>
 
 h4 Outline
 p.-text
   | To remove a buttons solid background and keep its colored border, apply the class
   | <code>-outline</code>.
 .example.-mb--3
-  .-p--3
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark'}
-      button(class=`a-btn -${type} -outline -mr--2`)= val
+  .a-grid
+    .a-col.-w-sm--6
+      .-p--3.-text--center
+        button(class=`a-btn -primary -outline -mr--2`) Primary
+        button(class=`a-btn -dark -outline`) Dark
+    .a-col.-w-sm--6
+      .-p--3.-bg--black.-text--center
+        button(class=`a-btn -secondary -outline -mr--2`) Secondary
+        button(class=`a-btn -inverse -outline`) Inverse
   :code(lang='html')
-    <button class="a-btn -outline">Base</button>
+    <!-- For light backgrounds -->
     <button class="a-btn -primary -outline">Primary</button>
-    <button class="a-btn -secondary -outline">Secondary</button>
-    <button class="a-btn -danger -outline">Danger</button>
     <button class="a-btn -dark -outline">Dark</button>
+    <!-- For dark backgrounds -->
+    <button class="a-btn -secondary -outline">Secondary</button>
+    <button class="a-btn -inverse -outline">Inverse</button>
 
 h4 Flat
 p.-text
   | To render a button with a transparent background and border, apply the class
   | <code>-flat</code>.
 .example.-mb--3
-  .-p--3
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark'}
-      button(class=`a-btn -${type} -flat -mr--2`)= val
+  .a-grid
+    .a-col.-w-sm--6
+      .-p--3.-text--center
+        button(class=`a-btn -primary -flat -mr--2`) Primary
+        button(class=`a-btn -dark -flat`) Dark
+    .a-col.-w-sm--6
+      .-p--3.-bg--black.-text--center
+        button(class=`a-btn -secondary -flat -mr--2`) Secondary
+        button(class=`a-btn -inverse -flat`) Inverse
   :code(lang='html')
-    <button class="a-btn -flat">Base</button>
+    <!-- For light backgrounds -->
     <button class="a-btn -primary -flat">Primary</button>
-    <button class="a-btn -secondary -flat">Secondary</button>
-    <button class="a-btn -danger -flat">Danger</button>
     <button class="a-btn -dark -flat">Dark</button>
+    <!-- For dark backgrounds -->
+    <button class="a-btn -secondary -flat">Secondary</button>
+    <button class="a-btn -inverse -flat">Inverse</button>
 
 h3 Pill
 p.-text Use the <code>-pill</code> modifier class to render buttons with a more pronounced border-radius.
-h4 Base
 .example.-mb--3
   .-p--3
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark'}
-      button(class=`a-btn -${type} -pill -mr--2`)= val
+      button(class=`a-btn -pill`) Button
   :code(lang='html')
-    <!-- default buttons -->
-    <button class="a-btn -pill">Base</button>
-    <button class="a-btn -primary -pill">Primary</button>
-    <!-- special case buttons -->
-    <button class="a-btn -secondary -pill">Secondary</button>
-    <button class="a-btn -danger -pill">Danger</button>
-    <button class="a-btn -dark -pill">Dark</button>
+    <button class="a-btn -pill">Button</button>
 
 h3 Fluid
 p.-text Buttons can be expanded to fill the parent space by applying the class <code>-fluid</code>.
 .example.-mb--3
   .-p--3
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark'}
-      button(class=`a-btn -${type} -fluid -mb--2`)= val
+    button(class=`a-btn -fluid -mb--2`) Button
+    button(class=`a-btn -fluid -justify-content--center`) Button
   :code(lang='html')
-    <!-- default buttons -->
-    <button class="a-btn -fluid">Base</button>
-    <button class="a-btn -primary -fluid">Primary</button>
-    <!-- special case buttons -->
-    <button class="a-btn -secondary -fluid">Secondary</button>
-    <button class="a-btn -danger -fluid">Danger</button>
-    <button class="a-btn -dark -fluid">Dark</button>
-
-h4 Outline
-.example.-mb--3
-  .-p--3
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark'}
-      button(class=`a-btn -${type} -pill -outline -mr--2`)= val
-  :code(lang='html')
-    <button class="a-btn -pill -outline">Base</button>
-    <button class="a-btn -primary -pill -outline">Primary</button>
-    <button class="a-btn -secondary -pill -outline">Secondary</button>
-    <button class="a-btn -danger -pill -outline">Danger</button>
-    <button class="a-btn -dark -pill -outline">Dark</button>
+    <!-- left aligned content -->
+    <button class="a-btn -fluid">Button</button>
+    <!-- center aligned content -->
+    <button class="a-btn -fluid -justify-content--center">Button</button>
 
 h3 Icon buttons
 p.-text
@@ -223,13 +222,23 @@ h4 Labeled icon buttons
 
 h4 Floating icon buttons
 .example.-mb--3
-  .-p--3
-    each type in ['base', 'primary', 'secondary', 'danger', 'dark']
-      button(class=`a-btn -${type} -float -mr--2`)
-        .a-btn__content
-          .a-icon
-            svg
-              use(xlink:href="#icon-atom")
+  .a-grid
+    .a-col.-w-sm--6
+      .-p--3.-text--center
+        each type in ['base', 'primary', 'dark']
+          button(class=`a-btn -${type} -float -mr--2`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href="#icon-atom")
+    .a-col.-w-sm--6
+      .-p--3.-bg--black.-text--center
+        each type in ['secondary', 'inverse']
+          button(class=`a-btn -${type} -float -mr--2`)
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href="#icon-atom")
   :code(lang='html')
     <button class="a-btn -float">
       <div class="a-btn__content">
@@ -249,6 +258,15 @@ h4 Floating icon buttons
         </div>
       </div>
     </button>
+    <button class="a-btn -dark -float">
+      <div class="a-btn__content">
+        <div class="a-icon">
+          <svg>
+            <use xlink:href="#icon-atom"></use>
+          </svg>
+        </div>
+      </div>
+    </button>
     <button class="a-btn -secondary -float">
       <div class="a-btn__content">
         <div class="a-icon">
@@ -258,16 +276,7 @@ h4 Floating icon buttons
         </div>
       </div>
     </button>
-    <button class="a-btn -float -danger">
-      <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
-      </div>
-    </button>
-    <button class="a-btn -float -dark">
+    <button class="a-btn -inverse -float">
       <div class="a-btn__content">
         <div class="a-icon">
           <svg>
@@ -307,6 +316,20 @@ h4 Close icon button
           </div>
         </div>
       </button>
+
+h3 Danger
+p.-text
+  | For special cases, such as styling a destructive action in an
+  | application (e.g. Delete Account), a <code>-danger</code> button may be used.
+.example.-mb--3
+  .-p--3
+      button(class=`a-btn -danger -mr--2`) Danger
+      button(class=`a-btn -danger -outline -mr--2`) Danger
+      button(class=`a-btn -danger -flat`) Danger
+  :code(lang='html')
+    <button class="a-btn -danger">Danger</button>
+    <button class="a-btn -danger -outline">Danger</button>
+    <button class="a-btn -danger -flat">Danger</button>
 
 h3 Sizes
 p.-text
