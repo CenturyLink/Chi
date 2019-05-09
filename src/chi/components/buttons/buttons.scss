@@ -40,9 +40,9 @@ $state-colors: (
   inverse: (
     color: white,
     button-text-color: $text-white,
-    tone: null,
-    tone-hover: null,
-    tone-focus: null
+    tone:  white,
+    tone-hover: white,
+    tone-focus: white,
   )
 );
 
