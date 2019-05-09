@@ -587,8 +587,10 @@ $sizes: (
         }
 
         &.-outline {
+          background-color: transparent;
           border: $border solid $text-white;
-          color: $text-color;
+          box-shadow: none;
+          color: $text-white;
 
           &:hover,
           &.-hover {
