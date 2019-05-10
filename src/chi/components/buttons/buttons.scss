@@ -630,7 +630,7 @@ $sizes: (
 
         &:focus,
         &.-focus {
-          box-shadow: 0 0 0 3px rgba(set-color($color, 70), 0.3);
+          box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
         }
 
         &:active,
