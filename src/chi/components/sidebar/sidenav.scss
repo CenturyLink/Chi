@@ -167,7 +167,7 @@ $sidenav-xl-width: 12.5rem;
       > a {
         min-height: 4rem;
         > *:not(.a-icon) {
-          display: initial;
+          display: block;
         }
       }
     }
@@ -185,6 +185,7 @@ $sidenav-xl-width: 12.5rem;
 
     &__list > li {
       > a {
+        align-items: center;
         flex-direction: row;
         justify-content: flex-start;
         padding-left: 1.5rem;
@@ -197,3 +198,16 @@ $sidenav-xl-width: 12.5rem;
     }
   }
 }
+
+/* IE11 CSS hack */
+@media only screen and (min-width: $md-breakpoint) and (max-width: $lg-breakpoint -1) and (-ms-high-contrast:none) {
+  .m-sidenav__list li a {
+    height: 4rem;
+  }
+}
+@media only screen and (min-width: $lg-breakpoint) and (-ms-high-contrast:none) {
+  .m-sidenav__list li a {
+    height: 3rem;
+  }
+}
+
