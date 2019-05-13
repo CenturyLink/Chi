@@ -146,3 +146,10 @@ $sizes: (
     }
   }
 }
+
+/* IE11 CSS hack */
+@media all and (-ms-high-contrast:none) {
+  .m-picker:not(.-sm):not(.-md):not(.-lg) input[type=checkbox].a-picker + label, .m-picker:not(.-sm):not(.-md):not(.-lg) input[type=radio].a-picker + label {
+    display: block;
+  }
+}
