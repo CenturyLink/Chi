@@ -21,7 +21,7 @@ $border: 0.0625rem;
           flex-direction: row;
           display: flex;
           justify-content: start;
-          padding: 1.25rem 0;
+          padding: 1.5rem 0;
 
           & .a-avatar {
             height: 3rem;
@@ -39,11 +39,6 @@ $border: 0.0625rem;
               & .a-icon {
                 color: set-color(grey, 50);
                 margin-right: 1.5rem;
-              }
-
-              & .a-avatar {
-                height: 3rem;
-                width: 3rem;
               }
             }
           }
@@ -120,21 +115,15 @@ $border: 0.0625rem;
 
   &.-feed {
     & .m-activity__item {
-      padding: 1.25rem 0;
-
       .m-activity__start {
-        min-width: unset;
-      }
-
-      & .a-avatar {
-        margin-right: 1rem;
+        min-width: auto;
       }
     }
 
     &.-compact {
       & .m-activity__item {
         align-items: center;
-        padding: 0.5rem 0;
+        padding: 0.75rem 0;
 
         & .a-avatar {
           height: 2rem;
