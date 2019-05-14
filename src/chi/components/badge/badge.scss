@@ -95,7 +95,7 @@ $badge: c-badge;
   }
 
   &.-outline {
-    background-color: set-color(white);
+    background-color: transparent;
     border-color: set-color(grey, 50);
     box-shadow: initial;
   }
@@ -112,7 +112,7 @@ $badge: c-badge;
     color: set-color(white);
 
     &.-outline {
-      background-color: set-color(white);
+      background-color: transparent;
       color: $primary-color;
     }
 
@@ -145,7 +145,7 @@ $badge: c-badge;
     color: set-color(white);
 
     &.-outline {
-      background-color: set-color(white);
+      background-color: transparent;
       color: $success-color;
     }
 
@@ -162,7 +162,7 @@ $badge: c-badge;
     color: set-color(white);
 
     &.-outline {
-      background-color: set-color(white);
+      background-color: transparent;
       color: $danger-color;
     }
 
@@ -179,7 +179,7 @@ $badge: c-badge;
     color: set-color(white);
 
     &.-outline {
-      background-color: set-color(white);
+      background-color: transparent;
       color: $info-color;
     }
 
@@ -196,7 +196,7 @@ $badge: c-badge;
     color: set-color(white);
 
     &.-outline {
-      background-color: set-color(white);
+      background-color: transparent;
       color: $dark-color;
     }
 
@@ -212,14 +212,15 @@ $badge: c-badge;
     border: 0.0625rem solid $light-color;
 
     &.-outline {
-      background-color: set-color(white);
-      color: set-color(grey, 60);
+      background-color: transparent;
+      border-color: set-color(grey, 50);
+      color: set-color(grey, 50);
     }
 
     &.-flat {
       background-color: transparent;
       border-color: transparent;
-      color: set-color(grey, 60);
+      color: set-color(grey, 50);
     }
   }
 
