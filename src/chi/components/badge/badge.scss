@@ -128,7 +128,7 @@ $badge: c-badge;
     border: 0.0625rem solid $secondary-color;
 
     &.-outline {
-      background-color: set-color(white);
+      background-color:  transparent;
       color: $secondary-color;
     }
 
@@ -207,7 +207,7 @@ $badge: c-badge;
     }
   }
 
-  &.-light {
+  &.-muted {
     background-color: $light-color;
     border: 0.0625rem solid $light-color;
 
@@ -220,6 +220,22 @@ $badge: c-badge;
       background-color: transparent;
       border-color: transparent;
       color: set-color(grey, 60);
+    }
+  }
+
+  &.-inverse {
+    background-color: set-color(white);
+    border: 0.0625rem solid set-color(white);
+
+    &.-outline {
+      background-color: transparent;
+      color: set-color(white);
+    }
+
+    &.-flat {
+      background-color: transparent;
+      border-color: transparent;
+      color: set-color(white);
     }
   }
 }
