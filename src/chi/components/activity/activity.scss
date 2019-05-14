@@ -5,6 +5,7 @@ $border: 0.0625rem;
 
 .m-activity {
   font-size: $text;
+  line-height: $line-height-small;
 
   &__day {
     .m-activity__header {
@@ -37,7 +38,7 @@ $border: 0.0625rem;
               align-items: center;
 
               & .a-icon {
-                color: set-color(grey, 50);
+                color: set-color(grey, 60);
                 margin-right: 1.5rem;
               }
             }
@@ -88,9 +89,10 @@ $border: 0.0625rem;
 
                   & .-time {
                     align-self: start;
-                    color: set-color(grey, 50);
+                    color: set-color(grey, 60);
                     font-size: $text-small;
                     margin-left: 2rem;
+                    text-align: right;
                   }
 
                   &:last-child {
@@ -101,7 +103,7 @@ $border: 0.0625rem;
             }
 
             &-footer {
-              color: set-color(grey, 50);
+              color: set-color(grey, 60);
             }
           }
 
