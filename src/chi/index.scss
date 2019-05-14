@@ -9,6 +9,7 @@
 .chi {
   @extend %root-typography;
   @import 'foundations/typography/typography';
+  @import 'components/activity/activity';
   @import 'components/alert/alert';
   @import 'components/avatars/avatars';
   @import 'components/backdrop/backdrop';
