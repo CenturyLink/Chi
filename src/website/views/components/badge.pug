@@ -12,7 +12,7 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--2
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Light:'light'}
+    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Muted:'muted'}
       .a-badge(class=`-${type} -m--1`)
         span= val
   :code(lang="html")
@@ -31,13 +31,13 @@ h4 Base
     <div class="a-badge -dark">
       <span>Dark</span>
     </div>
-    <div class="a-badge -light">
-      <span>Light</span>
+    <div class="a-badge -muted">
+      <span>Muted</span>
     </div>
 h4 Outline
 .example.-mb--3
   .-p--2
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Light:'light'}
+    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Muted:'muted'}
       .a-badge(class=`-${type} -outline -m--1`)
         span= val
   :code(lang="html")
@@ -56,13 +56,13 @@ h4 Outline
     <div class="a-badge -dark -outline">
       <span>Dark</span>
     </div>
-    <div class="a-badge -light -outline">
-      <span>Light</span>
+    <div class="a-badge -muted -outline">
+      <span>Muted</span>
     </div>
 h4 Flat
 .example.-mb--3
   .-p--2
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Light:'light'}
+    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Muted:'muted'}
       .a-badge(class=`-${type} -flat -m--1`)
         span= val
   :code(lang="html")
@@ -81,8 +81,8 @@ h4 Flat
     <div class="a-badge -dark -flat">
       <span>Dark</span>
     </div>
-    <div class="a-badge -light -flat">
-      <span>Light</span>
+    <div class="a-badge -muted -flat">
+      <span>Muted</span>
     </div>
 
 h3 Pills
@@ -90,7 +90,7 @@ p.-text Use the <code>-pill</code> modifier class to render badges with a more p
 h4 Base
 .example.-mb--3
   .-p--2
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Light:'light'}
+    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Muted:'muted'}
       .a-badge(class=`-${type} -pill -m--1`)
         span= val
   :code(lang="html")
@@ -109,13 +109,13 @@ h4 Base
     <div class="a-badge -dark -pill">
       <span>Dark</span>
     </div>
-    <div class="a-badge -light -pill">
-      <span>Light</span>
+    <div class="a-badge -muted -pill">
+      <span>Muted</span>
     </div>
 h4 Outline
 .example.-mb--3
   .-p--2
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Light:'light'}
+    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Muted:'muted'}
       .a-badge(class=`-${type} -pill -outline -m--1`)
         span= val
   :code(lang="html")
@@ -134,8 +134,8 @@ h4 Outline
     <div class="a-badge -dark -pill -outline">
       <span>Dark</span>
     </div>
-    <div class="a-badge -light -pill -outline">
-      <span>Light</span>
+    <div class="a-badge -muted -pill -outline">
+      <span>Muted</span>
     </div>
 h4 Icon badges
 .example.-mb--3
@@ -202,7 +202,7 @@ h4 Small
 p.-text Use the <code>-small</code> modifier class to render small badges.
 .example.-mb--3
   .-p--2
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Light:'light'}
+    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Muted:'muted'}
       .a-badge(class=`-${type} -small -m--1`)
         span= val
     .a-badge(class=`-small -flat -m--1`)
@@ -227,8 +227,8 @@ p.-text Use the <code>-small</code> modifier class to render small badges.
     <div class="a-badge -dark -small">
       <span>Dark</span>
     </div>
-    <div class="a-badge -light -small">
-      <span>Light</span>
+    <div class="a-badge -muted -small">
+      <span>Muted</span>
     </div>
     <div class="a-badge -flat -small">
       <div class="a-badge__content">
@@ -244,7 +244,7 @@ h4 Smaller
 p.-text Use the <code>-smaller</code> modifier class to render even smaller badges.
 .example.-mb--3
   .-p--2
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Light:'light'}
+    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Muted:'muted'}
       .a-badge(class=`-${type} -smaller -m--1`)
         span= val
     .a-badge(class=`-flat -smaller -m--1`)
@@ -269,8 +269,8 @@ p.-text Use the <code>-smaller</code> modifier class to render even smaller badg
     <div class="a-badge -dark -smaller">
       <span>Dark</span>
     </div>
-    <div class="a-badge -light -smaller">
-      <span>Light</span>
+    <div class="a-badge -muted -smaller">
+      <span>Muted</span>
     </div>
     <div class="a-badge -flat -smaller">
       <div class="a-badge__content">
@@ -287,7 +287,7 @@ h4 Uppercase
 p.-text Use the <code>-text--uppercase</code> text utility class to render badges in all uppercase. <code>-text--lowercase</code> and <code>-text--capitalized</code> are also supported.
 .example.-mb--3
   .-p--2
-    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Light:'light'}
+    each type, val in {Base:'base', Primary:'primary', Secondary:'secondary', Danger:'danger', Dark:'dark', Muted:'muted'}
       .a-badge(class=`-${type} -text--uppercase -m--1`)
         span= val
   :code(lang="html")
@@ -306,6 +306,6 @@ p.-text Use the <code>-text--uppercase</code> text utility class to render badge
     <div class="a-badge -dark -text--uppercase">
       <span>Dark</span>
     </div>
-    <div class="a-badge -light -text--uppercase">
-      <span>Light</span>
+    <div class="a-badge -muted -text--uppercase">
+      <span>Muted</span>
     </div>
