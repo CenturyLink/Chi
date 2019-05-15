@@ -130,30 +130,34 @@ ul#a-tabs.a-tabs
 
 .example.-mb--3
   #horizontal.a-tabs-panel.-active
-    each size in ['sm', 'md', 'lg', 'xl']
-      .-pl--3
+    .-px--3.-pt--0.-pb--3
+      each size in ['sm', 'md', 'lg', 'xl']
         p.-text--bold= '-' + size
-      .-d--flex.-flex--wrap
-        .m-btnGroup.-m--3
-          button(class=`a-btn -${size}`) Button
-          button(class=`a-btn -${size}`) Button
-          button(class=`a-btn -${size}`) Button
+        .-d--flex.-flex--wrap
+          .m-btnGroup
+            button(class=`a-btn -${size}`) Button
+            button(class=`a-btn -${size}`) Button
+            button(class=`a-btn -${size}`) Button
     :code(lang='html')
+      <!-- sm -->
       <div class="m-btnGroup">
         <button class="a-btn -sm">Button</button>
         <button class="a-btn -sm">Button</button>
         <button class="a-btn -sm">Button</button>
       </div>
+      <!-- md -->
       <div class="m-btnGroup">
         <button class="a-btn -md">Button</button>
         <button class="a-btn -md">Button</button>
         <button class="a-btn -md">Button</button>
       </div>
+      <!-- lg -->
       <div class="m-btnGroup">
         <button class="a-btn -lg">Button</button>
         <button class="a-btn -lg">Button</button>
         <button class="a-btn -lg">Button</button>
       </div>
+      <!-- xl -->
       <div class="m-btnGroup">
         <button class="a-btn -xl">Button</button>
         <button class="a-btn -xl">Button</button>
@@ -161,30 +165,34 @@ ul#a-tabs.a-tabs
       </div>
 
   #vertical.a-tabs-panel
-    each size in ['sm', 'md', 'lg', 'xl']
-      .-pl--3
+    .-px--3.-pt--0.-pb--3
+      each size in ['sm', 'md', 'lg', 'xl']
         p.-text--bold= '-' + size
-      .-d--flex.-flex--wrap
-        .m-btnGroup.-vertical.-fluid.-m--3(style="width:12rem")
-          button(class=`a-btn -${size}`) Button
-          button(class=`a-btn -${size}`) Button
-          button(class=`a-btn -${size}`) Button
+        .-d--flex.-flex--wrap
+          .m-btnGroup.-vertical.-fluid(style="width:12rem")
+            button(class=`a-btn -${size}`) Button
+            button(class=`a-btn -${size}`) Button
+            button(class=`a-btn -${size}`) Button
     :code(lang="html")
+      <!-- sm -->
       <div class="m-btnGroup -vertical -fluid">
         <button class="a-btn -sm">Button</button>
         <button class="a-btn -sm">Button</button>
         <button class="a-btn -sm">Button</button>
       </div>
+      <!-- md -->
       <div class="m-btnGroup -vertical -fluid">
         <button class="a-btn -md">Button</button>
         <button class="a-btn -md">Button</button>
         <button class="a-btn -md">Button</button>
       </div>
+      <!-- lg -->
       <div class="m-btnGroup -vertical -fluid">
         <button class="a-btn -lg">Button</button>
         <button class="a-btn -lg">Button</button>
         <button class="a-btn -lg">Button</button>
       </div>
+      <!-- xl -->
       <div class="m-btnGroup -vertical -fluid">
         <button class="a-btn -xl">Button</button>
         <button class="a-btn -xl">Button</button>
@@ -203,19 +211,13 @@ p.-text
       button(class=`a-btn`) Button
       button(class=`a-btn -icon`)
         .a-btn__content
-          .a-icon
-            svg
-              use(xlink:href='#icon-atom')
+          i.a-icon.icon-atom
   :code(lang='html')
     <div class="m-btnGroup">
       <button class="a-btn">Button</button>
       <button class="a-btn -icon">
         <div class="a-btn__content">
-          <div class="a-icon">
-            <svg>
-              <use xlink:href="#icon-atom"></use>
-            </svg>
-          </div>
+          <i class="a-icon icon-atom"></i>
         </div>
       </button>
     </div>
@@ -225,23 +227,17 @@ p.-text
 
 .example.-mb--3
   .-p--3
-    .m-btnGroup.-fluid(style="width:12rem")
+    .m-btnGroup.-fluid
       button(class=`a-btn`) Button
       button(class=`a-btn -icon -notFluid`)
         .a-btn__content
-          .a-icon
-            svg
-              use(xlink:href='#icon-atom')
+          i.a-icon.icon-atom
   :code(lang='html')
     <div class="m-btnGroup -fluid">
       <button class="a-btn">Button</button>
       <button class="a-btn -icon -notFluid">
         <div class="a-btn__content">
-          <div class="a-icon">
-            <svg>
-              <use xlink:href="#icon-atom"></use>
-            </svg>
-          </div>
+          <i class="a-icon icon-atom"></i>
         </div>
       </button>
     </div>
@@ -259,55 +255,41 @@ p.-text
         button(class=`a-btn -${size}`) Button
         button(class=`a-btn -${size} -icon`)
           .a-btn__content
-            .a-icon
-              svg
-                use(xlink:href='#icon-atom')
+            i.a-icon.icon-atom
   :code(lang='html')
+    <!-- sm -->
     <div class="m-btnGroup">
       <button class="a-btn -sm">Button</button>
       <button class="a-btn -sm -icon">
         <div class="a-btn__content">
-          <div class="a-icon">
-            <svg>
-              <use xlink:href="#icon-atom"></use>
-            </svg>
-          </div>
+          <i class="a-icon icon-atom"></i>
         </div>
       </button>
     </div>
+    <!-- md -->
     <div class="m-btnGroup">
       <button class="a-btn -md">Button</button>
       <button class="a-btn -md -icon">
         <div class="a-btn__content">
-          <div class="a-icon">
-            <svg>
-              <use xlink:href="#icon-atom"></use>
-            </svg>
-          </div>
+          <i class="a-icon icon-atom"></i>
         </div>
       </button>
     </div>
+    <!-- lg -->
     <div class="m-btnGroup">
       <button class="a-btn -lg">Button</button>
       <button class="a-btn -lg -icon">
         <div class="a-btn__content">
-          <div class="a-icon">
-            <svg>
-              <use xlink:href="#icon-atom"></use>
-            </svg>
-          </div>
+          <i class="a-icon icon-atom"></i>
         </div>
       </button>
     </div>
+    <!-- xl -->
     <div class="m-btnGroup">
       <button class="a-btn -xl">Button</button>
       <button class="a-btn -xl -icon">
         <div class="a-btn__content">
-          <div class="a-icon">
-            <svg>
-              <use xlink:href="#icon-atom"></use>
-            </svg>
-          </div>
+          <i class="a-icon icon-atom"></i>
         </div>
       </button>
     </div>
