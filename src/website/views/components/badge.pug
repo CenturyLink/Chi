@@ -11,22 +11,28 @@ p.-text
 
 h4 Base
 .example.-mb--3
-  .a-grid
-    .a-col.-w-sm--6
-      .-p--3.-text--center
-        .a-badge(class=`-mr--2`)
+  .a-grid.-noGutter
+    .a-col.-w--12
+      .-p--2.-text--center
+        .a-badge(class=`-m--1`)
           span Base
-        .a-badge(class=`-primary -mr--2`)
+        .a-badge(class=`-primary -m--1`)
           span Primary
-        .a-badge(class=`-dark -mr--2`)
+        .a-badge(class=`-success -m--1`)
+          span Success
+        .a-badge(class=`-warning -m--1`)
+          span Warning
+        .a-badge(class=`-danger -m--1`)
+          span Danger
+        .a-badge(class=`-dark -m--1`)
           span Dark
-        .a-badge(class=`-muted -mr--2`)
+        .a-badge(class=`-muted -m--1`)
           span Muted
-    .a-col.-w-sm--6
-      .-p--3.-bg--black.-text--center
-        .a-badge(class=`-secondary -mr--2`)
+    .a-col.-w--12
+      .-p--2.-bg--black.-text--center
+        .a-badge(class=`-secondary -m--1`)
           span Secondary
-        .a-badge(class=`-inverse`)
+        .a-badge(class=`-inverse -m--1`)
           span Inverse
   :code(lang='html')
     <!-- For light backgrounds -->
@@ -35,6 +41,15 @@ h4 Base
     </div>
     <div class="a-badge -primary">
       <span>Primary</span>
+    </div>
+    <div class="a-badge -success">
+      <span>Success</span>
+    </div>
+    <div class="a-badge -warning">
+      <span>Warning</span>
+    </div>
+    <div class="a-badge -danger">
+      <span>Danger</span>
     </div>
     <div class="a-badge -dark">
       <span>Dark</span>
@@ -52,25 +67,37 @@ h4 Base
 
 h4 Outline
 .example.-mb--3
-  .a-grid
-    .a-col.-w-sm--6
-      .-p--3.-text--center
-        .a-badge(class=`-primary -outline -mr--2`)
+  .a-grid.-noGutter
+    .a-col.-w--12
+      .-p--2.-text--center
+        .a-badge(class=`-primary -outline -m--1`)
           span Primary
-        .a-badge(class=`-dark -outline -mr--2`)
+        .a-badge(class=`-success -outline -m--1`)
+          span Success
+        .a-badge(class=`-warning -outline -m--1`)
+          span Warning
+        .a-badge(class=`-danger -outline -m--1`)
+          span Danger
+        .a-badge(class=`-dark -outline -m--1`)
           span Dark
-        .a-badge(class=`-muted -outline -mr--2`)
+        .a-badge(class=`-muted -outline -m--1`)
           span Muted
-    .a-col.-w-sm--6
-      .-p--3.-bg--black.-text--center
-        .a-badge(class=`-secondary -outline -mr--2`)
+    .a-col.-w--12
+      .-p--2.-bg--black.-text--center
+        .a-badge(class=`-secondary -outline -m--1`)
           span Secondary
-        .a-badge(class=`-inverse -outline`)
+        .a-badge(class=`-inverse -outline -m--1`)
           span Inverse
   :code(lang="html")
     <!-- For light backgrounds -->
     <div class="a-badge -primary -outline">
       <span>Primary</span>
+    </div>
+    <div class="a-badge -success -outline">
+      <span>Success</span>
+    </div>
+    <div class="a-badge -danger -outline">
+      <span>Danger</span>
     </div>
     <div class="a-badge -dark -outline">
       <span>Dark</span>
@@ -88,25 +115,40 @@ h4 Outline
 
 h4 Flat
 .example.-mb--3
-  .a-grid
-    .a-col.-w-sm--6
-      .-p--3.-text--center
-        .a-badge(class=`-primary -flat -mr--2`)
+  .a-grid.-noGutter
+    .a-col.-w--12
+      .-p--2.-text--center
+        .a-badge(class=`-primary -flat -m--1`)
           span Primary
-        .a-badge(class=`-dark -flat -mr--2`)
+        .a-badge(class=`-success -flat -m--1`)
+          span Success
+        .a-badge(class=`-warning -flat -m--1`)
+          span Warning
+        .a-badge(class=`-danger -flat -m--1`)
+          span Danger
+        .a-badge(class=`-dark -flat -m--1`)
           span Dark
-        .a-badge(class=`-muted -flat -mr--2`)
+        .a-badge(class=`-muted -flat -m--1`)
           span Muted
-    .a-col.-w-sm--6
-      .-p--3.-bg--black.-text--center
-        .a-badge(class=`-secondary -flat -mr--2`)
+    .a-col.-w--12
+      .-p--2.-bg--black.-text--center
+        .a-badge(class=`-secondary -flat -m--1`)
           span Secondary
-        .a-badge(class=`-inverse -flat`)
+        .a-badge(class=`-inverse -flat -m--1`)
           span Inverse
   :code(lang="html")
     <!-- For light backgrounds -->
     <div class="a-badge -primary -flat">
       <span>Primary</span>
+    </div>
+    <div class="a-badge -success -flat">
+      <span>Success</span>
+    </div>
+    <div class="a-badge -warning -flat">
+      <span>Warning</span>
+    </div>
+    <div class="a-badge -danger -flat">
+      <span>Danger</span>
     </div>
     <div class="a-badge -dark -flat">
       <span>Dark</span>
@@ -132,88 +174,71 @@ p.-text Use the <code>-pill</code> modifier class to render badges with a more p
     <div class="a-badge -pill">
       <span>Badge</span>
     </div>
+
 h3 Icon badges
+p.-text Icons can be placed before, after, or on both sides of text.
 .example.-mb--3
   .-p--2
-    .a-badge(class=`-flat -m--1`)
+    .a-badge(class=`-m--1`)
       .a-badge__content
-        .a-icon
-          svg
-            use(xlink:href='#icon-atom')
+        i.a-icon.-xs.icon-plus
         span Badge
-    .a-badge(class=`-flat -m--1`)
+    .a-badge(class=`-m--1`)
       .a-badge__content
         span Badge
-        .a-icon
-          svg
-            use(xlink:href='#icon-atom')
-    .a-badge(class=`-flat -m--1`)
+        i.a-icon.-xs.icon-x
+    .a-badge(class=`-flat -success -m--1`)
       .a-badge__content
-        .a-icon
-          svg
-            use(xlink:href='#icon-atom')
-        span Badge
-        .a-icon
-          svg
-            use(xlink:href='#icon-atom')
+        i.a-icon.icon-circle
+        span Active
+    .a-badge(class=`-flat -warning -m--1`)
+      .a-badge__content
+        i.a-icon.icon-circle-clock
+        span Away
+    .a-badge(class=`-flat -danger -m--1`)
+      .a-badge__content
+        i.a-icon.icon-circle-minus
+        span Do not disturb
+    .a-badge(class=`-flat -muted -m--1`)
+      .a-badge__content
+        i.a-icon.icon-circle
+        span Offline
   :code(lang="html")
-    <div class="a-badge -flat">
+    <div class="a-badge">
       <div class="a-badge__content">
-        <div class="a-icon">
-          <svg>
-           <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon -xs icon-plus"></i>
         <span>Badge</span>
       </div>
     </div>
-    <div class="a-badge -flat">
+    <div class="a-badge">
       <div class="a-badge__content">
         <span>Badge</span>
-        <div class="a-icon">
-          <svg>
-           <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon -xs icon-x"></i>
       </div>
     </div>
-    <div class="a-badge -flat">
+    <div class="a-badge -flat -success">
       <div class="a-badge__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
-        <span>Badge</span>
-        <div class="a-icon">
-          <svg>
-           <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-circle"></i>
+        <span>Active</span>
       </div>
     </div>
-
-h3 Danger
-p.-text
-  | For special cases, such as styling a destructive category in an
-  | application (e.g. Delete Account), a <code>-danger</code> badge may be used.
-.example.-mb--3
-  .-p--3
-    .a-badge(class=`-danger -mr--2`)
-      span Danger
-    .a-badge(class=`-danger -outline -mr--2`)
-      span Danger
-    .a-badge(class=`-danger -flat -mr--2`)
-      span Danger
-  :code(lang='html')
-    <div class="a-badge -danger">
-      <span>Danger</span>
+    <div class="a-badge -flat -warning">
+      <div class="a-badge__content">
+        <i class="a-icon icon-circle-clock"></i>
+        <span>Away</span>
+      </div>
     </div>
-    <div class="a-badge -danger -outline">
-      <span>Danger</span>
+    <div class="a-badge -flat -danger">
+      <div class="a-badge__content">
+        <i class="a-icon icon-circle-minus"></i>
+        <span>Do not disturb</span>
+      </div>
     </div>
-    <div class="a-badge -danger -flat">
-      <span>Danger</span>
+    <div class="a-badge -flat -muted">
+      <div class="a-badge__content">
+        <i class="a-icon icon-circle"></i>
+        <span>Offline</span>
+      </div>
     </div>
 
 h3 Additional Sizes
@@ -225,9 +250,7 @@ p.-text Use the <code>-small</code> modifier class to render small badges.
       span Badge
     .a-badge(class=`-small -flat -m--1`)
       .a-badge__content
-        .a-icon
-          svg
-            use(xlink:href='#icon-atom')
+        i.a-icon.icon-atom
         span Badge
   :code(lang="html")
     <div class="a-badge -small">
@@ -235,11 +258,7 @@ p.-text Use the <code>-small</code> modifier class to render small badges.
     </div>
     <div class="a-badge -flat -small">
       <div class="a-badge__content">
-        <div class="a-icon">
-          <svg>
-           <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-atom"></i>
         <span>Badge</span>
       </div>
     </div>
@@ -251,9 +270,7 @@ p.-text Use the <code>-smaller</code> modifier class to render even smaller badg
       span Badge
     .a-badge(class=`-flat -smaller -m--1`)
       .a-badge__content
-        .a-icon
-          svg
-            use(xlink:href='#icon-atom')
+        i.a-icon.icon-atom
         span Badge
   :code(lang="html")
     <div class="a-badge -smaller">
@@ -261,11 +278,7 @@ p.-text Use the <code>-smaller</code> modifier class to render even smaller badg
     </div>
     <div class="a-badge -flat -smaller">
       <div class="a-badge__content">
-        <div class="a-icon">
-          <svg>
-           <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-atom"></i>
         <span>Badge</span>
       </div>
     </div>
@@ -277,6 +290,6 @@ p.-text Use the <code>-text--uppercase</code> text utility class to render badge
     .a-badge(class=`-text--uppercase -m--1`)
       span Badge
   :code(lang="html")
-    <div class="a-badge">
+    <div class="a-badge -text--uppercase">
       <span>Badge</span>
     </div>

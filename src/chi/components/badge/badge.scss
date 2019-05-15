@@ -156,6 +156,23 @@ $badge: c-badge;
     }
   }
 
+  &.-warning {
+    background-color: $warning-color;
+    border: 0.0625rem solid $warning-color;
+    color: set-color(white);
+
+    &.-outline {
+      background-color: transparent;
+      color: $warning-color;
+    }
+
+    &.-flat {
+      background-color: transparent;
+      border-color: transparent;
+      color: $warning-color;
+    }
+  }
+
   &.-danger {
     background-color: $danger-color;
     border: 0.0625rem solid $danger-color;
