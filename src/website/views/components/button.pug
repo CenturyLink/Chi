@@ -32,7 +32,7 @@ h4 Base
 p.-text
   | Chi includes a wide variety of predefined button styles. For light backgrounds,
   | please use base, <code>-primary</code>, or <code>-dark</code> buttons. For
-  | dark backgrounds, please limit usage to <code>-secondary</code> or <code>-inverse</code>.
+  | dark backgrounds, please limit usage to <code>-secondary</code> or <code>-light</code>.
 
 .example.-mb--3
   .a-grid.-noGutter
@@ -44,7 +44,7 @@ p.-text
     .a-col.-w--12.-w-md--6
       .-p--3.-bg--black.-text--center
         button(class=`a-btn -secondary -mr--2`) Secondary
-        button(class=`a-btn -inverse`) Inverse
+        button(class=`a-btn -light`) Light
   :code(lang='html')
     <!-- For light backgrounds -->
     <button class="a-btn">Base</button>
@@ -52,7 +52,7 @@ p.-text
     <button class="a-btn -dark">Dark</button>
     <!-- For dark backgrounds -->
     <button class="a-btn -secondary">Secondary</button>
-    <button class="a-btn -inverse">Inverse</button>
+    <button class="a-btn -light">Light</button>
 
 h4 Outline
 p.-text
@@ -67,14 +67,14 @@ p.-text
     .a-col.-w--12.-w-md--6
       .-p--3.-bg--black.-text--center
         button(class=`a-btn -secondary -outline -mr--2`) Secondary
-        button(class=`a-btn -inverse -outline`) Inverse
+        button(class=`a-btn -light -outline`) Light
   :code(lang='html')
     <!-- For light backgrounds -->
     <button class="a-btn -primary -outline">Primary</button>
     <button class="a-btn -dark -outline">Dark</button>
     <!-- For dark backgrounds -->
     <button class="a-btn -secondary -outline">Secondary</button>
-    <button class="a-btn -inverse -outline">Inverse</button>
+    <button class="a-btn -light -outline">Light</button>
 
 h4 Flat
 p.-text
@@ -89,14 +89,14 @@ p.-text
     .a-col.-w--12.-w-md--6
       .-p--3.-bg--black.-text--center
         button(class=`a-btn -secondary -flat -mr--2`) Secondary
-        button(class=`a-btn -inverse -flat`) Inverse
+        button(class=`a-btn -light -flat`) Light
   :code(lang='html')
     <!-- For light backgrounds -->
     <button class="a-btn -primary -flat">Primary</button>
     <button class="a-btn -dark -flat">Dark</button>
     <!-- For dark backgrounds -->
     <button class="a-btn -secondary -flat">Secondary</button>
-    <button class="a-btn -inverse -flat">Inverse</button>
+    <button class="a-btn -light -flat">Light</button>
 
 h3 Pill
 p.-text Use the <code>-pill</code> modifier class to render buttons with a more pronounced border-radius.
@@ -195,7 +195,7 @@ h4 Floating icon buttons
               i.a-icon.icon-atom
     .a-col.-w--12.-w-md--6
       .-p--3.-bg--black.-text--center
-        each type in ['secondary', 'inverse']
+        each type in ['secondary', 'light']
           button(class=`a-btn -${type} -float -mr--2`)
             .a-btn__content
               i.a-icon.icon-atom
@@ -222,7 +222,7 @@ h4 Floating icon buttons
         <i class="a-icon icon-atom"></i>
       </div>
     </button>
-    <button class="a-btn -inverse -float">
+    <button class="a-btn -light -float">
       <div class="a-btn__content">
         <i class="a-icon icon-atom"></i>
       </div>

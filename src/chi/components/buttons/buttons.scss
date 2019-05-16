@@ -43,6 +43,13 @@ $state-colors: (
     tone:  null,
     tone-hover: null,
     tone-focus: null,
+  ),
+  light: (
+    color: white,
+    button-text-color: $text-white,
+    tone:  null,
+    tone-hover: null,
+    tone-focus: null,
   )
 );
 
@@ -520,17 +527,17 @@ $sizes: (
 
         &.-icon {
           & .a-icon {
-            color: set-color(grey, 50);
+            color: $text-color;
           }
 
           &:hover,
           &.-hover {
-            background-color: transparent;
-            border: $border solid transparent;
-            color: set-color($color);
+            background-color: white;
+            border: $border solid rgba(set-color(black), 0.2);
+            color: $text-color;
 
             .a-icon {
-              color: set-color($color);
+              color: $text-color;
             }
           }
 
@@ -539,7 +546,7 @@ $sizes: (
             box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
 
             .a-icon {
-              color: set-color($color);
+              color: $text-color;
             }
           }
 
@@ -584,6 +591,49 @@ $sizes: (
               color: set-color($color);
             }
           }
+
+          .a-icon {
+            color: $text-white;
+          }
+
+          &.-icon {
+            & .a-icon {
+              color: set-color(grey, 50);
+            }
+
+            &:hover,
+            &.-hover {
+              background-color: transparent;
+              border: $border solid set-color($color);
+              color: $text-white;
+
+              .a-icon {
+                color: $text-white;
+              }
+            }
+
+            &:focus,
+            &.-focus {
+              box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
+
+              .a-icon {
+                color: $text-white;
+              }
+            }
+
+            &:active,
+            &.-active {
+              &,
+              &:focus,
+              &.-focus {
+                box-shadow: none;
+
+                .a-icon {
+                  color: $text-white;
+                }
+              }
+            }
+          }
         }
 
         &.-outline {
@@ -594,8 +644,12 @@ $sizes: (
 
           &:hover,
           &.-hover {
-            background-color: set-color($color, $tone);
+            background-color: white;
             color: $text-color;
+
+            .a-icon {
+              color: $text-color;
+            }
           }
 
           &:focus,
@@ -603,6 +657,297 @@ $sizes: (
             background-color: set-color(transparent);
             border: $border solid set-color($color);
             box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
+          }
+
+          &:active,
+          &.-active {
+            &,
+            &:focus,
+            &.-focus {
+              background-color: white;
+              border: $border solid white;
+              color: $text-color;
+
+              .a-icon {
+                color: $text-color;
+              }
+            }
+          }
+
+          .a-icon {
+            color: $text-white;
+          }
+
+          &.-icon {
+            & .a-icon {
+              color: $text-white;
+            }
+
+            &:hover,
+            &.-hover {
+              background-color: white;
+              border: $border solid white;
+              color: $text-color;
+
+              .a-icon {
+                color: $text-color;
+              }
+            }
+
+            &:focus,
+            &.-focus {
+              box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
+
+              .a-icon {
+                color: $text-white;
+              }
+            }
+
+            &:active,
+            &.-active {
+              &,
+              &:focus,
+              &.-focus {
+                background-color: white;
+                box-shadow: none;
+                border: $border solid white;
+                color: $text-color;
+
+                .a-icon {
+                  color: $text-color;
+                }
+              }
+            }
+          }
+        }
+      }
+    } @else if( $type == 'light') {
+      &.-#{$type} {
+        background-color: white;
+        border: $border solid map_get(nth($color-definition, 2), button-text-color);
+        box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
+        color: $text-color;
+
+        &:hover,
+        &.-hover {
+          background-color: white;
+          border: $border solid white;
+          box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+        }
+
+        &:focus,
+        &.-focus {
+          box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
+        }
+
+        &:active,
+        &.-active {
+          &,
+          &:focus,
+          &.-focus {
+            background-color: white;
+            border: $border solid rgba(set-color(black), 0.2);
+            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
+          }
+        }
+
+        .a-icon {
+          color: $text-color;
+        }
+
+        &.-icon {
+          & .a-icon {
+            color: $text-color;
+          }
+
+          &:hover,
+          &.-hover {
+            background-color: white;
+            border: $border solid rgba(set-color(black), 0.2);
+            color: $text-color;
+
+            .a-icon {
+              color: $text-color;
+            }
+          }
+
+          &:focus,
+          &.-focus {
+            box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
+
+            .a-icon {
+              color: $text-color;
+            }
+          }
+
+          &:active,
+          &.-active {
+            &,
+            &:focus,
+            &.-focus {
+              box-shadow: none;
+            }
+          }
+        }
+
+        &.-flat {
+          background-color: transparent;
+          border: $border solid transparent;
+          box-shadow: none;
+          color: set-color($color);
+
+          &:hover:not(.-icon),
+          &.-hover:not(.-icon) {
+            background-color: set-color(transparent);
+            border: $border solid set-color($color);
+            color: set-color($color);
+          }
+
+          &:focus,
+          &.-focus {
+            background-color: set-color(transparent);
+            border: $border solid set-color($color);
+            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
+          }
+
+          &:active,
+          &.-active {
+            &,
+            &:focus,
+            &.-focus {
+              background-color: transparent;
+              border: $border solid set-color($color);
+              box-shadow: none;
+              color: set-color($color);
+            }
+          }
+
+          .a-icon {
+            color: $text-white;
+          }
+
+          &.-icon {
+            & .a-icon {
+              color: set-color(grey, 50);
+            }
+
+            &:hover,
+            &.-hover {
+              background-color: transparent;
+              border: $border solid set-color($color);
+              color: $text-white;
+
+              .a-icon {
+                color: $text-white;
+              }
+            }
+
+            &:focus,
+            &.-focus {
+              box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
+
+              .a-icon {
+                color: $text-white;
+              }
+            }
+
+            &:active,
+            &.-active {
+              &,
+              &:focus,
+              &.-focus {
+                box-shadow: none;
+
+                .a-icon {
+                  color: $text-white;
+                }
+              }
+            }
+          }
+        }
+
+        &.-outline {
+          background-color: transparent;
+          border: $border solid $text-white;
+          box-shadow: none;
+          color: $text-white;
+
+          &:hover,
+          &.-hover {
+            background-color: white;
+            color: $text-color;
+
+            .a-icon {
+              color: $text-color;
+            }
+          }
+
+          &:focus,
+          &.-focus {
+            background-color: set-color(transparent);
+            border: $border solid set-color($color);
+            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
+          }
+
+          &:active,
+          &.-active {
+            &,
+            &:focus,
+            &.-focus {
+              background-color: white;
+              border: $border solid white;
+              color: $text-color;
+
+              .a-icon {
+                color: $text-color;
+              }
+            }
+          }
+
+          .a-icon {
+            color: $text-white;
+          }
+
+          &.-icon {
+            & .a-icon {
+              color: $text-white;
+            }
+
+            &:hover,
+            &.-hover {
+              background-color: white;
+              border: $border solid white;
+              color: $text-color;
+
+              .a-icon {
+                color: $text-color;
+              }
+            }
+
+            &:focus,
+            &.-focus {
+              box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
+
+              .a-icon {
+                color: $text-white;
+              }
+            }
+
+            &:active,
+            &.-active {
+              &,
+              &:focus,
+              &.-focus {
+                background-color: white;
+                box-shadow: none;
+                border: $border solid white;
+                color: $text-color;
+
+                .a-icon {
+                  color: $text-color;
+                }
+              }
+            }
           }
         }
       }
