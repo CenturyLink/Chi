@@ -54,7 +54,7 @@ class NavigationTab extends Tab {
       }
     }
 
-    if (!ddTrigger) {
+    if (!ddTrigger && tab) {
       this._slidingBorder.moveToLastChild();
       this._slidingBorder.show();
       moveSlidingTo = tabLink || tab.childNodes[0] || tab;

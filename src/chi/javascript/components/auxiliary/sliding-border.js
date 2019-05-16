@@ -54,7 +54,9 @@ class SlidingBorder {
   }
 
   moveToLastChild () {
-    this.moveSlidingBorderToChild(this._lastBorderedElement);
+    if (this._lastBorderedElement) {
+      this.moveSlidingBorderToChild(this._lastBorderedElement);
+    }
   }
 
   moveSlidingBorderToChild (child) {

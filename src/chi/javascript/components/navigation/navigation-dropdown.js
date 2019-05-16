@@ -15,7 +15,7 @@ class NavigationDropdown extends Dropdown {
   }
 
   _dropdownClickedEventManager (e) {
-    super._dropdownClickedEventManager(e);
+    this._eventCaptured = true;
     if (
       Util.hasClass(e.target, CLASS_DROPDOWN_ITEM) &&
       !Util.hasClass(e.target, DROPDOWN_CLASS_COMPONENT)
