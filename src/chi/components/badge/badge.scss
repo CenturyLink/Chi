@@ -256,4 +256,20 @@ $badge: c-badge;
       color: set-color(white);
     }
   }
+
+  &.-light {
+    background-color: set-color(white);
+    border: 0.0625rem solid set-color(white);
+
+    &.-outline {
+      background-color: transparent;
+      color: set-color(white);
+    }
+
+    &.-flat {
+      background-color: transparent;
+      border-color: transparent;
+      color: set-color(white);
+    }
+  }
 }

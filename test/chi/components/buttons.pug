@@ -14,10 +14,11 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           tr
             td
               small= `${state}`
-            each style in ['default', 'primary', 'secondary', 'danger', 'dark']
-              td
-                .-mr--2
-                  input.a-btn.-m--1.-ml--2(
+            each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light', 'inverse']
+              if style === 'light' || style === 'inverse'
+                td.-bg--black
+                  .-mr--2
+                    input.a-btn.-m--1.-mx--2(
                     type="button"
                     class={
                       [`-${type}`]: type != 'solid',
@@ -26,9 +27,9 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                       [`-${size}`]: size != 'default'
                     }
                     value="Button"
-                    disabled=state=='disabled' ? 'disabled' : false
-                  )
-                  a.a-btn.-icon.-m--1(
+                    disabled=state == 'disabled' ? 'disabled' : false
+                    )
+                    a.a-btn.-icon.-m--1(
                     href="#"
                     class={
                       [`-${type}`]: type != 'solid',
@@ -36,64 +37,145 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                       [`-${state}`]: state != 'initial',
                       [`-${size}`]: size != 'default'
                     }
-                    disabled=state=='disabled' ? 'disabled' : false
-                  )
-                    .a-btn__content
-                      .a-icon
-                        svg
-                          use(xlink:href='#icon-atom')
-                  button.a-btn.-m--1(
+                    disabled=state == 'disabled' ? 'disabled' : false
+                    )
+                      .a-btn__content
+                        .a-icon
+                          svg
+                            use(xlink:href='#icon-atom')
+                    button.a-btn.-m--1(
                     class={
                       [`-${type}`]: type != 'solid',
                       [`-${style}`]: style != 'default',
                       [`-${state}`]: state != 'initial',
                       [`-${size}`]: size != 'default'
                     }
-                    disabled=state=='disabled' ? 'disabled' : false
-                  )
-                    .a-btn__content
-                      .a-icon
-                        svg
-                          use(xlink:href='#icon-atom')
-                      span Button
-                  button.a-btn.-pill.-m--1.-ml--2(
-                  class={
-                    [`-${type}`]: type != 'solid',
-                    [`-${style}`]: style != 'default',
-                    [`-${state}`]: state != 'initial',
-                    [`-${size}`]: size != 'default'
-                  }
-                  disabled=state == 'disabled' ? 'disabled' : false
-                  )
-                    .a-btn__content
-                      span Button
-                  button.a-btn.-icon.-pill.-m--1(
-                  class={
-                    [`-${type}`]: type != 'solid',
-                    [`-${style}`]: style != 'default',
-                    [`-${state}`]: state != 'initial',
-                    [`-${size}`]: size != 'default'
-                  }
-                  disabled=state == 'disabled' ? 'disabled' : false
-                  )
-                    .a-btn__content
-                      .a-icon
-                        svg
-                          use(xlink:href='#icon-atom')
-                  button.a-btn.-pill.-m--1(
-                  class={
-                    [`-${type}`]: type != 'solid',
-                    [`-${style}`]: style != 'default',
-                    [`-${state}`]: state != 'initial',
-                    [`-${size}`]: size != 'default'
-                  }
-                  disabled=state == 'disabled' ? 'disabled' : false
-                  )
-                    .a-btn__content
-                      .a-icon
-                        svg
-                          use(xlink:href='#icon-atom')
-                      span Button
+                    disabled=state == 'disabled' ? 'disabled' : false
+                    )
+                      .a-btn__content
+                        .a-icon
+                          svg
+                            use(xlink:href='#icon-atom')
+                        span Button
+                    button.a-btn.-pill.-m--1.-mx--2(
+                    class={
+                      [`-${type}`]: type != 'solid',
+                      [`-${style}`]: style != 'default',
+                      [`-${state}`]: state != 'initial',
+                      [`-${size}`]: size != 'default'
+                    }
+                    disabled=state == 'disabled' ? 'disabled' : false
+                    )
+                      .a-btn__content
+                        span Button
+                    button.a-btn.-icon.-pill.-m--1(
+                    class={
+                      [`-${type}`]: type != 'solid',
+                      [`-${style}`]: style != 'default',
+                      [`-${state}`]: state != 'initial',
+                      [`-${size}`]: size != 'default'
+                    }
+                    disabled=state == 'disabled' ? 'disabled' : false
+                    )
+                      .a-btn__content
+                        .a-icon
+                          svg
+                            use(xlink:href='#icon-atom')
+                    button.a-btn.-pill.-m--1(
+                    class={
+                      [`-${type}`]: type != 'solid',
+                      [`-${style}`]: style != 'default',
+                      [`-${state}`]: state != 'initial',
+                      [`-${size}`]: size != 'default'
+                    }
+                    disabled=state == 'disabled' ? 'disabled' : false
+                    )
+                      .a-btn__content
+                        .a-icon
+                          svg
+                            use(xlink:href='#icon-atom')
+                        span Button
+              else
+                td
+                  .-mr--2
+                    input.a-btn.-m--1.-mx--2(
+                    type="button"
+                    class={
+                      [`-${type}`]: type != 'solid',
+                      [`-${style}`]: style != 'default',
+                      [`-${state}`]: state != 'initial',
+                      [`-${size}`]: size != 'default'
+                    }
+                    value="Button"
+                    disabled=state == 'disabled' ? 'disabled' : false
+                    )
+                    a.a-btn.-icon.-m--1(
+                    href="#"
+                    class={
+                      [`-${type}`]: type != 'solid',
+                      [`-${style}`]: style != 'default',
+                      [`-${state}`]: state != 'initial',
+                      [`-${size}`]: size != 'default'
+                    }
+                    disabled=state == 'disabled' ? 'disabled' : false
+                    )
+                      .a-btn__content
+                        .a-icon
+                          svg
+                            use(xlink:href='#icon-atom')
+                    button.a-btn.-m--1(
+                    class={
+                      [`-${type}`]: type != 'solid',
+                      [`-${style}`]: style != 'default',
+                      [`-${state}`]: state != 'initial',
+                      [`-${size}`]: size != 'default'
+                    }
+                    disabled=state == 'disabled' ? 'disabled' : false
+                    )
+                      .a-btn__content
+                        .a-icon
+                          svg
+                            use(xlink:href='#icon-atom')
+                        span Button
+                    button.a-btn.-pill.-m--1.-mx--2(
+                    class={
+                      [`-${type}`]: type != 'solid',
+                      [`-${style}`]: style != 'default',
+                      [`-${state}`]: state != 'initial',
+                      [`-${size}`]: size != 'default'
+                    }
+                    disabled=state == 'disabled' ? 'disabled' : false
+                    )
+                      .a-btn__content
+                        span Button
+                    button.a-btn.-icon.-pill.-m--1(
+                    class={
+                      [`-${type}`]: type != 'solid',
+                      [`-${style}`]: style != 'default',
+                      [`-${state}`]: state != 'initial',
+                      [`-${size}`]: size != 'default'
+                    }
+                    disabled=state == 'disabled' ? 'disabled' : false
+                    )
+                      .a-btn__content
+                        .a-icon
+                          svg
+                            use(xlink:href='#icon-atom')
+                    button.a-btn.-pill.-m--1(
+                    class={
+                      [`-${type}`]: type != 'solid',
+                      [`-${style}`]: style != 'default',
+                      [`-${state}`]: state != 'initial',
+                      [`-${size}`]: size != 'default'
+                    }
+                    disabled=state == 'disabled' ? 'disabled' : false
+                    )
+                      .a-btn__content
+                        .a-icon
+                          svg
+                            use(xlink:href='#icon-atom')
+                        span Button
+
 
   if size == 'default'
     .test-float
@@ -103,13 +185,21 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           tr
             td
               small= `${state}`
-            each style in ['default', 'primary', 'secondary', 'danger', 'dark']
-              td
-                button(type="button", class=`a-btn -float -${style} -${state} -ml--4 -m--1`)
-                  .a-btn__content
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
+            each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light', 'inverse']
+              if style === 'light' || style === 'inverse'
+                td.-bg--black
+                  button(type="button", class=`a-btn -float -${style} -${state} -mx--2 -m--1`)
+                    .a-btn__content
+                      .a-icon
+                        svg
+                          use(xlink:href='#icon-atom')
+              else
+                td
+                  button(type="button", class=`a-btn -float -${style} -${state} -mx--2 -m--1`)
+                    .a-btn__content
+                      .a-icon
+                        svg
+                          use(xlink:href='#icon-atom')
 
 each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
   div(class={
