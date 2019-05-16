@@ -604,7 +604,7 @@ $sizes: (
             &:hover,
             &.-hover {
               background-color: transparent;
-              border: $border solid transparent;
+              border: $border solid set-color($color);
               color: $text-white;
 
               .a-icon {
@@ -834,7 +834,7 @@ $sizes: (
             &:hover,
             &.-hover {
               background-color: transparent;
-              border: $border solid transparent;
+              border: $border solid set-color($color);
               color: $text-white;
 
               .a-icon {
