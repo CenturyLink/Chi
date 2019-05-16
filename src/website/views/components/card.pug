@@ -20,6 +20,38 @@ h4 Base
       </div>
     </div>
 
+h4 Active
+p.-text
+  | Render an active state card with the class <code>-active</code>.
+.example.-mb--3
+  .-p--3
+    .a-card.-active(style="width:20rem;")
+      .a-card__content.-text
+        | This is an active card
+  :code(lang="html")
+    <div class="a-card -active">
+      <div class="a-card__content">
+        This is an active card
+      </div>
+    </div>
+
+h4 Empty
+p.-text
+  | Render an empty state card with the class <code>-empty</code>.
+.example.-mb--3
+  .-p--3
+    .a-card.-empty(style="width:20rem;")
+      .a-card__content
+        i.a-icon.-md.-text--muted(class ='icon-circle-plus-outline')
+        p.-text.-m--0 Add Product
+  :code(lang="html")
+    <div class="a-card -empty">
+      <div class="a-card__content">
+        <i class="a-icon icon-circle-plus-outline -md -text--muted"></i>
+        <p class="-text -m--0">Add Product</p>
+      </div>
+    </div>
+
 h4 Titled
 p.-text
   | Add a title to a card by applying the class <code>a-card__title</code> to any heading element
@@ -206,27 +238,6 @@ h4 Header
       </div>
     </div>
 
-h4 Header Right Aligned
-p.-text Apply the class <code>-align--right</code> on <code>a-card__header</code> to right align its contents.
-.example.-mb--3
-  .-p--3
-    .a-card(style="width:20rem;")
-      .a-card__header.-align--right
-        h5.a-card__title Title
-      .a-card__content
-        p.-text.-m--0
-          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
-          | Ut felis magna, facilisis ut malesuada nec.
-  :code(lang="html")
-    <div class="a-card">
-      <div class="a-card__header -align--right">
-        <h5 class="a-card__title">Title</h5>
-      </div>
-      <div class="a-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
-      </div>
-    </div>
-
 h4 Header Center Aligned
 p.-text Apply the class <code>-align--center</code> on <code>a-card__header</code> to center align its contents.
 .example.-mb--3
@@ -339,39 +350,5 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
       </div>
       <div class="a-card__footer -sm">
         <a class="-text" href="#">Link</a>
-      </div>
-    </div>
-
-h4 Empty
-p.-text
-  | Add an empty state card by applying the modifier class <code>-empty</code>.
-.example.-mb--3
-  .-p--3
-    .a-card.-empty(style="width:20rem;")
-      .a-card__content
-        i.a-icon.-md.-text--muted(class ='icon-circle-plus-outline')
-        p.-text.-m--0 Add Product
-  :code(lang="html")
-    <div class="a-card -empty">
-      <div class="a-card__content">
-        <i class="a-icon icon-circle-plus-outline -md -text--muted"></i>
-        <p class="-text -m--0">Add Product</p>
-      </div>
-    </div>
-
-h4 Active
-p.-text
-  | Add an active state card by applying the modifier class <code>-active</code>.
-.example.-mb--3
-  .-p--3
-    .a-card.-active(style="width:20rem;")
-      .a-card__content
-        h5.a-card__title Title
-        p.-text.-m--0 This is an active card
-  :code(lang="html")
-    <div class="a-card -active">
-      <div class="a-card__content">
-        <h5 class="a-card__title">Title</h5>
-        <p class="-text -m--0">This is an active card</p>
       </div>
     </div>

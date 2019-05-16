@@ -233,11 +233,11 @@ div.a-grid
   .a-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
     h5 Warning
     .palette-container
-      .palette.a-grid.-noGutter.-text(style="background-color:#854E03;color:#ffffff")
+      .palette.a-grid.-noGutter.-text(style="background-color:#A66102;color:#ffffff")
         .a-col.-w--12
-          .-text--bold Yellow 70
+          .-text--bold Yellow 60
         .a-col.-w--6.-text--small
-          code.hexa #854E03
+          code.hexa #A66102
         .a-col.-w--6.-text--right.-text--small
           .a11y AA
 .a-divider.-mt--3.-mb--5
@@ -1174,141 +1174,7 @@ p.-text Chi defines colors with Sass language variables.
         30: #d0d4d9,
         20: #edf0f2,
         10: #f8f9f9,
-      ),
-      red: (
-        100: #471819,
-        90: #691518,
-        80: #8f0e13,
-        70: #b50d12,
-        60: #de1b21,
-        50: #fa5056,
-        40: #fc9094,
-        30: #fcc7c9,
-        20: #fce8e9,
-        10: #fff5f5,
-      ),
-      pink: (
-        100: #451726,
-        90: #661430,
-        80: #8c0e38,
-        70: #b30c44,
-        60: #db1a5b,
-        50: #f74f87,
-        40: #fa8eb2,
-        30: #fcc7d9,
-        20: #fce8ef,
-        10: #fcf5f7,
-      ),
-      purple: (
-        100: #371c52,
-        90: #4d2378,
-        80: #642b9e,
-        70: #7e40bd,
-        60: #9557d4,
-        50: #b277ed,
-        40: #cda3f7,
-        30: #e2cdf7,
-        20: #f2ebfa,
-        10: #faf7fc,
-      ),
-      indigo: (
-        100: #222261,
-        90: #2b2b94,
-        80: #3939bd,
-        70: #4f4fdb,
-        60: #6666e3,
-        50: #8787fa,
-        40: #adadff,
-        30: #d1d1ff,
-        20: #ededff,
-        10: #f7f7ff,
-      ),
-      navy: (
-        100: #001238,
-        90: #001e60,
-        80: #00308a,
-        70: #0047bb,
-        60: #005bed,
-        50: #4289f5,
-        40: #8cb6f5,
-        30: #c0d7fa,
-        20: #e6f0ff,
-        10: #f5f8fc,
-      ),
-      blue: (
-        100: #0c2b3b,
-        90: #093d57,
-        80: #064e73,
-        70: #066594,
-        60: #0d7db5,
-        50: #239cd9,
-        40: #53bff5,
-        30: #b0def5,
-        20: #e1f2fa,
-        10: #f2f9fc,
-      ),
-      teal: (
-        100: #082e2b,
-        90: #06403b,
-        80: #07524b,
-        70: #056960,
-        60: #038277,
-        50: #0aa396,
-        40: #1ec7b9,
-        30: #abe0dc,
-        20: #d7f5f2,
-        10: #edfaf9,
-      ),
-      mint: (
-        100: #0a2e1e,
-        90: #094028,
-        80: #075433,
-        70: #097a49,
-        60: #12995f,
-        50: #27b875,
-        40: #48d597,
-        30: #abe0c9,
-        20: #daf5e9,
-        10: #edfaf3,
-      ),
-      green: (
-        100: #1e2b0a,
-        90: #283d09,
-        80: #344f0b,
-        70: #3f6605,
-        60: #4e8003,
-        50: #689e18,
-        40: #8CC63F,
-        30: #c6dba7,
-        20: #e4f2ce,
-        10: #f2fae6,
-      ),
-      yellow: (
-        100: #36240c,
-        90: #4d310b,
-        80: #663e07,
-        70: #854e03,
-        60: #a66102,
-        50: #c97d12,
-        40: #e6a243,
-        30: #f5cc93,
-        20: #faecd9,
-        10: #fff8ed,
-      ),
-      orange: (
-        100: #3d1e14,
-        90: #5e2413,
-        80: #80280d,
-        70: #a6310d,
-        60: #c94218,
-        50: #e8663f,
-        40: #f2997e,
-        30: #f5ccbf,
-        20: #fce9e3,
-        10: #faf6f5,
-      ),
-      black: #000000,
-      white: #ffffff
+      )
     );
 
 p.-text A utility function has been created to reference them.
@@ -1327,9 +1193,8 @@ p.-text
     @import '@centurylink/chi/src/chi/_mixins';
 
     .example {
-      color: set-color(red, 60);
+      color: set-color(grey, 60);
     }
-
 
 script.
   document.addEventListener(

@@ -180,7 +180,7 @@ $brand-color: map-get(map-get($colorscheme, navy), 70);
 $success-color: map-get(map-get($colorscheme, mint), 70);
 $danger-color: map-get(map-get($colorscheme, red), 70);
 $info-color: map-get(map-get($colorscheme, navy), 70);
-$warning-color: map-get(map-get($colorscheme, yellow), 70);
+$warning-color: map-get(map-get($colorscheme, yellow), 60);
 $dark-color: map-get(map-get($colorscheme, grey), 90);
 $light-color: map-get(map-get($colorscheme, grey), 30);
 $muted-color: map-get(map-get($colorscheme, grey), 60);

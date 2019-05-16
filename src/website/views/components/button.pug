@@ -35,13 +35,13 @@ p.-text
   | dark backgrounds, please limit usage to <code>-secondary</code> or <code>-inverse</code>.
 
 .example.-mb--3
-  .a-grid
-    .a-col.-w-sm--6
+  .a-grid.-noGutter
+    .a-col.-w--12.-w-md--6
       .-p--3.-text--center
         button(class=`a-btn -mr--2`) Base
         button(class=`a-btn -primary -mr--2`) Primary
         button(class=`a-btn -dark`) Dark
-    .a-col.-w-sm--6
+    .a-col.-w--12.-w-md--6
       .-p--3.-bg--black.-text--center
         button(class=`a-btn -secondary -mr--2`) Secondary
         button(class=`a-btn -inverse`) Inverse
@@ -59,12 +59,12 @@ p.-text
   | To remove a buttons solid background and keep its colored border, apply the class
   | <code>-outline</code>.
 .example.-mb--3
-  .a-grid
-    .a-col.-w-sm--6
+  .a-grid.-noGutter
+    .a-col.-w--12.-w-md--6
       .-p--3.-text--center
         button(class=`a-btn -primary -outline -mr--2`) Primary
         button(class=`a-btn -dark -outline`) Dark
-    .a-col.-w-sm--6
+    .a-col.-w--12.-w-md--6
       .-p--3.-bg--black.-text--center
         button(class=`a-btn -secondary -outline -mr--2`) Secondary
         button(class=`a-btn -inverse -outline`) Inverse
@@ -81,12 +81,12 @@ p.-text
   | To render a button with a transparent background and border, apply the class
   | <code>-flat</code>.
 .example.-mb--3
-  .a-grid
-    .a-col.-w-sm--6
+  .a-grid.-noGutter
+    .a-col.-w--12.-w-md--6
       .-p--3.-text--center
         button(class=`a-btn -primary -flat -mr--2`) Primary
         button(class=`a-btn -dark -flat`) Dark
-    .a-col.-w-sm--6
+    .a-col.-w--12.-w-md--6
       .-p--3.-bg--black.-text--center
         button(class=`a-btn -secondary -flat -mr--2`) Secondary
         button(class=`a-btn -inverse -flat`) Inverse
@@ -126,33 +126,21 @@ p.-text
   .-p--3
     button(class=`a-btn -icon -mr--2`)
       .a-btn__content
-        .a-icon
-          svg
-            use(xlink:href='#icon-atom')
+        i.a-icon.icon-atom
     button(class=`a-btn -icon -flat -mr--2`)
       .a-btn__content
-        .a-icon
-          svg
-            use(xlink:href='#icon-atom')
+        i.a-icon.icon-atom
   :code(lang='html')
     <!-- base -->
     <button class="a-btn -icon">
       <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-atom"></i>
       </div>
     </button>
     <!-- flat -->
     <button class="a-btn -icon -flat">
       <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-atom"></i>
       </div>
     </button>
 
@@ -161,34 +149,22 @@ h4 Labeled icon buttons
   .-p--3
     button(class=`a-btn -mr--2`)
       .a-btn__content
-        .a-icon
-          svg
-            use(xlink:href='#icon-atom')
+        i.a-icon.icon-atom
         span Button
     button(class=`a-btn -mr--2`)
       .a-btn__content
         span Button
-        .a-icon
-          svg
-            use(xlink:href='#icon-atom')
+        i.a-icon.icon-atom
     button(class=`a-btn -mr--2`)
       .a-btn__content
-        .a-icon
-          svg
-            use(xlink:href='#icon-atom')
+        i.a-icon.icon-atom
         span Button
-        .a-icon
-          svg
-            use(xlink:href='#icon-atom')
+        i.a-icon.icon-atom
   :code(lang='html')
     <!-- left aligned -->
     <button class="a-btn">
       <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-atom"></i>
         <span>Button</span>
       </div>
     </button>
@@ -196,95 +172,59 @@ h4 Labeled icon buttons
     <button class="a-btn">
       <div class="a-btn__content">
         <span>Button</span>
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-atom"></i>
       </div>
     </button>
     <!-- both sides -->
     <button class="a-btn">
       <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-atom"></i>
         <span>Button</span>
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-atom"></i>
       </div>
     </button>
 
 h4 Floating icon buttons
 .example.-mb--3
-  .a-grid
-    .a-col.-w-sm--6
+  .a-grid.-noGutter
+    .a-col.-w--12.-w-md--6
       .-p--3.-text--center
         each type in ['base', 'primary', 'dark']
           button(class=`a-btn -${type} -float -mr--2`)
             .a-btn__content
-              .a-icon
-                svg
-                  use(xlink:href="#icon-atom")
-    .a-col.-w-sm--6
+              i.a-icon.icon-atom
+    .a-col.-w--12.-w-md--6
       .-p--3.-bg--black.-text--center
         each type in ['secondary', 'inverse']
           button(class=`a-btn -${type} -float -mr--2`)
             .a-btn__content
-              .a-icon
-                svg
-                  use(xlink:href="#icon-atom")
+              i.a-icon.icon-atom
   :code(lang='html')
     <!-- For light backgrounds -->
     <button class="a-btn -float">
       <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-atom"></i>
       </div>
     </button>
     <button class="a-btn -primary -float">
       <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-atom"></i>
       </div>
     </button>
     <button class="a-btn -dark -float">
       <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-atom"></i>
       </div>
     </button>
     <!-- For dark backgrounds -->
     <button class="a-btn -secondary -float">
       <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-atom"></i>
       </div>
     </button>
     <button class="a-btn -inverse -float">
       <div class="a-btn__content">
-        <div class="a-icon">
-          <svg>
-            <use xlink:href="#icon-atom"></use>
-          </svg>
-        </div>
+        <i class="a-icon icon-atom"></i>
       </div>
     </button>
 
@@ -339,55 +279,41 @@ p.-text
   |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
 .example.-mb--3
-  .-p--3
+  .a-grid.-noGutter.-px--3.-pt--0.-pb--3
     each size in ['sm', 'md', 'lg', 'xl']
-      div(class=`a-col -w--12 -pb--2`)
+      div(class=`a-col -w--12`)
         p.-text--bold= '-' + size
         button(class=`a-btn -${size} -mr--1`) Button
         button(class=`a-btn -${size} -icon`)
           .a-btn__content
-            .a-icon
-              svg
-                use(xlink:href='#icon-atom')
+            i.a-icon.icon-atom
   :code(lang='html')
-    <button class="a-btn -sm">Button -sm</button>
+    <!-- sm -->
+    <button class="a-btn -sm">Button</button>
     <button class="a-btn -sm -icon">
        <div class="a-btn__content">
-         <div class="a-icon">
-           <svg>
-             <use xlink:href="#icon-atom"></use>
-           </svg>
-         </div>
+         <i class="a-icon icon-atom"></i>
        </div>
     </button>
-    <button class="a-btn -md">Button -md</button>
+    <!-- md -->
+    <button class="a-btn -md">Button</button>
     <button class="a-btn -md -icon">
        <div class="a-btn__content">
-         <div class="a-icon">
-           <svg>
-             <use xlink:href="#icon-atom"></use>
-           </svg>
-         </div>
+         <i class="a-icon icon-atom"></i>
        </div>
     </button>
-    <button class="a-btn -lg">Button -lg</button>
+    <!-- lg -->
+    <button class="a-btn -lg">Button</button>
     <button class="a-btn -lg -icon">
        <div class="a-btn__content">
-         <div class="a-icon">
-           <svg>
-             <use xlink:href="#icon-atom"></use>
-           </svg>
-         </div>
+         <i class="a-icon icon-atom"></i>
        </div>
     </button>
-    <button class="a-btn -xl">Button -xl</button>
+    <!-- xl -->
+    <button class="a-btn -xl">Button</button>
     <button class="a-btn -xl -icon">
        <div class="a-btn__content">
-         <div class="a-icon">
-           <svg>
-             <use xlink:href="#icon-atom"></use>
-           </svg>
-         </div>
+         <i class="a-icon icon-atom"></i>
        </div>
     </button>
 

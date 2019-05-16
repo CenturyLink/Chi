@@ -28,35 +28,35 @@ mixin table(row, column, selectable)
             if column != undefined
               if column == 'ascending'
                 th(class=(`-sorted -${column}`))
-                  div name
+                  div Name
                 th ID
-                th last login
+                th Last login
               else if column == 'descending'
                 th(class=(`-sorted -${column}`))
-                  div name
+                  div Name
                 th ID
-                th last login
+                th Last login
             else
-              th name
+              th Name
               th ID
-              th last login
+              th Last login
         else
           tr
             if column != undefined
               if column == 'ascending'
                 th(class=(`-sorted -${column}`))
-                  div name
+                  div Name
                 th ID
-                th last login
+                th Last login
               else if column == 'descending'
                 th(class=(`-sorted -${column}`))
-                  div name
+                  div Name
                 th ID
-                th last login
+                th Last login
             else
-              th name
+              th Name
               th ID
-              th last login
+              th Last login
       else if selectable
         tr
           if column != undefined
@@ -66,26 +66,26 @@ mixin table(row, column, selectable)
                   input.a-input(type="checkbox", id=`chk-1`)
                   label(for=`chk-1`)
               th(class=(`-sorted -${column}`))
-                div name
+                div Name
               th ID
-              th last login
+              th Last login
             else if column == 'descending'
               th
                 div.-lh--1
                   input.a-input(type="checkbox", id=`chk-1`)
                   label(for=`chk-1`)
               th(class=(`-sorted -${column}`))
-                div name
+                div Name
               th ID
-              th last login
+              th Last login
           else
             th
               div.-lh--1
                 input.a-input(type="checkbox", id=`chk-1`)
                 label(for=`chk-1`)
-            th name
+            th Name
             th ID
-            th last login
+            th Last login
     tbody
       if !selectable
         +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')(
