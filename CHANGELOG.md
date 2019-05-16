@@ -11,13 +11,15 @@
 * Fixed IE11 content misalignment bug in Header component.
 * Added Activity component.
 * Added support for Warning styles to Badge component.
-* Updated Icon component arrow icons.
-* Renamed Badge style Light to Muted.
+* Updated Icon component with new arrow icons.
+* Renamed grey Badge style from Light to Muted.
+* Added new Light Badge and Button style for use on black backgrounds.
 * Fixed IE11 text overflow bug in Picker component.
 * Fixed IE11 tab display bug in Sidenav component.
 * Fixed bug in Button component where outline button background was set to white instead of transparent.
 * Fixed bug in Button component where outline button secondary hover icon color wasn't inheriting text color.
 * Added anchor link support to all sections within Documentation.
+* Added State template to illustrate common user and application states.
 
 ### 1.1.1 (March 29, 2019)
 
