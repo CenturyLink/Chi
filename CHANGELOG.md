@@ -1,5 +1,24 @@
 # CHANGELOG
 
+### 1.2.0 (May 16, 2019)
+
+* Added Javascript Modal component.
+* Added ability to close Modal component via escape key.
+* Fixed margin misalignment bug in Modal component.
+* Added scrolling support to Modal component.
+* Removed forced text-transform from Modal title.
+* Added support for CenturyLink's Color Bar brand element to Divider component.
+* Fixed IE11 content misalignment bug in Header component.
+* Added Activity component.
+* Added support for Warning styles to Badge component.
+* Updated Icon component arrow icons.
+* Renamed Badge style Light to Muted.
+* Fixed IE11 text overflow bug in Picker component.
+* Fixed IE11 tab display bug in Sidenav component.
+* Fixed bug in Button component where outline button background was set to white instead of transparent.
+* Fixed bug in Button component where outline button secondary hover icon color wasn't inheriting text color.
+* Added anchor link support to all sections within Documentation.
+
 ### 1.1.1 (March 29, 2019)
 
 * Fixed vertical nav tab active state.
