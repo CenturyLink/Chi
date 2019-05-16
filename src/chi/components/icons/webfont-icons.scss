@@ -42,6 +42,9 @@ i[class^="icon-"], i[class*=" icon-"] {
 .icon-arrow-up:before {
   content: "\e906";
 }
+.icon-arrow-sync:before {
+  content: "\e99e";
+}
 .icon-arrow-vertical:before {
   content: "\e907";
 }
@@ -359,6 +362,9 @@ i[class^="icon-"], i[class*=" icon-"] {
 }
 .icon-map-marker:before {
   content: "\e96f";
+}
+.icon-map-marker-outline:before {
+  content: "\e99f";
 }
 .icon-menu:before {
   content: "\e970";
