@@ -137,7 +137,8 @@
 
   }
 
-  & .-light {
+  & .-light,
+  & .-inverse {
     &:not([data-position^="left"]) {
       &:after {
         background-image: url(icon-chevron-thin-down-inverse.svg);
