@@ -4,10 +4,6 @@ title: Text Input
 
 p.-text Text inputs are used for inputting single line text data.
 
-.m-alert.-bubble.-info
-  i.a-icon.-sm--2.icon-circle-info.-text--info
-  | This component requires Javascript
-
 h3 Examples
 p.-text
   | To render a text input, apply the class <code>a-input</code> to an <code>input type="text"</code>,
@@ -52,16 +48,11 @@ h4 Left Aligned
   .-p--3
     .a-inputWrapper.-icon--left(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
-      .a-icon.-text--muted
-        svg
-          use(xlink:href='#icon-edit')
+      i.a-icon.icon-search.-text--muted
   :code(lang="html")
     <div class="a-inputWrapper -icon--left">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
-      <div class="a-icon -text--muted">
-        <svg>
-          <use xlink:href="#icon-edit"></use>
-        </svg>
+      <i class="a-icon icon-search -text--muted"></i>
       </div>
     </div>
 
@@ -70,17 +61,11 @@ h4 Right Aligned
   .-p--3
     .a-inputWrapper.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
-      .a-icon.-text--muted
-        svg
-          use(xlink:href='#icon-edit')
+      i.a-icon.icon-search.-text--muted
   :code(lang="html")
     <div class="a-inputWrapper -icon--right">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
-      <div class="a-icon -text--muted">
-        <svg>
-          <use xlink:href="#icon-edit"></use>
-        </svg>
-      </div>
+      <i class="a-icon icon-search -text--muted"></i>
     </div>
 
 h4 Left + Right Aligned
@@ -88,25 +73,13 @@ h4 Left + Right Aligned
   .-p--3
     .a-inputWrapper.-icon--left.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
-      .a-icon.-text--muted
-        svg
-          use(xlink:href='#icon-edit')
-      .a-icon.-text--muted
-        svg
-          use(xlink:href='#icon-check')
+      i.a-icon.icon-search.-text--muted
+      i.a-icon.icon-check-alt.-text--success
   :code(lang="html")
     <div class="a-inputWrapper -icon--left -icon--right">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
-      <div class="a-icon -text--muted">
-        <svg>
-          <use xlink:href="#icon-edit"></use>
-        </svg>
-      </div>
-      <div class="a-icon -text--muted">
-        <svg>
-          <use xlink:href="#icon-check"></use>
-        </svg>
-      </div>
+      <i class="a-icon icon-search -text--muted"></i>
+      <i class="a-icon icon-check-alt -text--success"></i>
     </div>
 
 h3 States
@@ -126,17 +99,11 @@ h4 Success
   .-p--3
     .a-inputWrapper.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
-      .a-icon.-text--success
-        svg
-          use(xlink:href="#icon-check")
+      i.a-icon.icon-check-alt.-text--success
   :code(lang="html")
     <div class="a-inputWrapper -icon--right">
       <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
-      <div class="a-icon -text--success">
-        <svg>
-          <use xlink:href="#icon-check"></use>
-        </svg>
-      </div>
+      <i class="a-icon icon-check-alt -text--success"></i>
     </div>
 
 h4 Warning
@@ -151,17 +118,11 @@ h4 Warning
   .-p--3
     .a-inputWrapper.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
-      .a-icon.-text--warning
-        svg
-          use(xlink:href="#icon-warning")
+      i.a-icon.icon-warning.-text--warning
   :code(lang="html")
     <div class="a-inputWrapper -icon--right">
       <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
-      <div class="a-icon -text--warning">
-        <svg>
-          <use xlink:href="#icon-warning"></use>
-        </svg>
-      </div>
+      <i class="a-icon icon-warning -text--warning"></i>
     </div>
 
 h4 Danger
@@ -176,17 +137,11 @@ h4 Danger
   .-p--3
     .a-inputWrapper.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
-      .a-icon.-text--danger
-        svg
-          use(xlink:href="#icon-circle-warning")
+      i.a-icon.icon-circle-warning.-text--danger
   :code(lang="html")
     <div class="a-inputWrapper -icon--right">
       <input type="text" class="a-input -danger" placeholder="Placeholder" value="Sample Text">
-      <div class="a-icon -text--danger">
-        <svg>
-          <use xlink:href="#icon-circle-warning"></use>
-        </svg>
-      </div>
+      <div class="a-icon icon-circle-warning -text--danger"></i>
     </div>
 
 h3 Sizes
@@ -207,6 +162,9 @@ p.-text
     <input type="text" class="a-input -xl" placeholder="Sample Text">
 
 h3 Floating labels
+.m-alert.-bubble.-info
+  i.a-icon.-sm--2.icon-circle-info.-text--info
+  | This component requires Javascript
 p.-text
   | Floating labels are a solution to keep the placeholder visible when no label is attached to the input. Chi supports
   | floating labels for <code>-lg</code> and <code>-xl</code> inputs. This component requires JavaScript to add/remove
