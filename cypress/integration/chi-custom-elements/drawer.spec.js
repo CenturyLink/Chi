@@ -7,7 +7,7 @@ describe('Drawer', function() {
   });
 
   it('Drawer custom element should initiate a Chi drawer component. ', function() {
-    cy.visit('http://localhost:8000/tests/custom-elements/drawer.html');
+    cy.visit('tests/custom-elements/drawer.html');
 
     cy.get('[data-cy="test-top"]')
       .should('have.class', 'hydrated')

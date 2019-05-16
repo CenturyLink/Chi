@@ -20,7 +20,7 @@ export namespace Components {
     /**
     * to add a backdrop behind the drawer, which covers the viewport
     */
-    'backdrop': boolean | string;
+    'backdrop': string;
     /**
     * adds a close button
     */
@@ -58,7 +58,7 @@ export namespace Components {
     /**
     * to add a backdrop behind the drawer, which covers the viewport
     */
-    'backdrop'?: boolean | string;
+    'backdrop'?: string;
     /**
     * adds a close button
     */

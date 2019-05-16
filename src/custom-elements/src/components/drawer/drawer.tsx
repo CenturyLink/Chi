@@ -18,7 +18,7 @@ export class Drawer {
   /**
    * to add a backdrop behind the drawer, which covers the viewport
    */
-  @Prop({ reflectToAttr: true }) backdrop: boolean | string;
+  @Prop({ reflectToAttr: true }) backdrop: string;
 
   /**
    * to open or close the drawer
