@@ -7,7 +7,7 @@ describe('Icons', function() {
   });
 
   it('Base icon should be included inside the custom element', function() {
-    cy.visit('http://localhost:8000/tests/custom-elements/icons.html');
+    cy.visit('tests/custom-elements/icons.html');
 
     cy.get('[data-cy="icon-single"]')
       .should('have.class', 'hydrated')
