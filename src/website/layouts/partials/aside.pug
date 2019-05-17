@@ -2,7 +2,7 @@ aside.docs-body__aside
   nav
     ul.a-tabs.-vertical.-lg.-animated
       each collection, key in collections
-        if utils.hasActiveSections(collection) && key !== "Custom Elements"
+        if utils.hasActiveSections(collection)
           if utils.isCurrentCollection(collection, path)
             li.-active.-hasActive
               a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
@@ -15,7 +15,7 @@ aside.docs-body__aside
                     else
                       li(class=section.path === path ? "-active" : "")
                         a(href=`${rootPath}${section.path}`) #{section.title}
-          else
+          else if key !== "Custom Elements"
             li
               a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
         else if key !== "Custom Elements"

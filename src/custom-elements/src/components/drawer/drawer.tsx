@@ -60,8 +60,8 @@ export class Drawer {
   }
 
   @Watch('backdrop')
-  backdropValidation(newValue: string | boolean) {
-    if (newValue && newValue !== true && newValue !== 'inverse' && newValue !== 'backdrop') {
+  backdropValidation(newValue: string) {
+    if (newValue && newValue !== 'inverse' && newValue !== 'backdrop') {
       throw new Error(`Not valid backdrop ${newValue} for drawer. Valid values are inverse, backdrop, empty or true. `);
     }
   }
