@@ -160,9 +160,14 @@ $sizes: (
     vertical-align: middle;
     white-space: nowrap;
 
-    &[disabled] {
+    &[disabled],
+    &.-disabled {
       opacity: 0.65;
       pointer-events: none;
+
+      & .a-icon {
+        opacity: 0.65;
+      }
     }
 
     .a-icon {
