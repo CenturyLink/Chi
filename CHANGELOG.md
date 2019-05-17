@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 1.2.1 (May 17, 2019)
+
+* Fixed Sidenav animation.
+* Fixed Activity lint warnings.
+
 ### 1.2.0 (May 16, 2019)
 
 * Added Javascript Modal component.
