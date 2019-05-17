@@ -32,13 +32,15 @@ h3 App Basic Sign In
           .a-card.-b--0.-bg--none
             .a-card__content.-text--center.-px--4.-px-sm--6.-pb--4
               h3.-text--normal Sign In
-              .m-formGroup.-pt--2
-                input.a-input.-lg(type="email", placeholder="Email")
-              .m-formGroup.-pt--1
-                input.a-input.-lg(type="password", placeholder="Password")
+              .a-inputWrapper.-floatingLabel.-pt--2#aemail
+                input(type='email', class='a-input -xl', id='email')
+                label(for='email') Email
+              .a-inputWrapper.-floatingLabel.-pt--1#apassword
+                input(type='password', class='a-input -xl', id='password')
+                label(for='password') Password
               .m-formGroup.-pt--3.-pt-sm--4.-justify-content--between.-align-items--center.-flex--column.-flex-sm--row
                 a.-text.-mb--2.-mb-sm--0(href="#") Forgot email or password?
-                button.a-btn.-primary.-lg Sign In
+                button.a-btn.-primary.-xl Sign In
           .-text.-text--center.-py--2 Don't have an account? <a href="#">Sign Up</a>
   :code(lang="html")
     <div class="chi-app -bg--white">
@@ -66,15 +68,17 @@ h3 App Basic Sign In
           <div class="a-card -b--0 -bg--none">
             <div class="a-card__content -text--center -px--4 -px-sm--6 -pb--4">
               <h3 class="-text--normal">Sign In</h3>
-              <div class="m-formGroup -pt--2">
-                <input class="a-input -lg" type="email" placeholder="Email">
+              <div class="a-inputWrapper -floatingLabel -pt--2" id="aemail">
+                <input class="a-input -xl" type="email" id="email">
+                <label for="email">Email</label>
               </div>
-              <div class="m-formGroup -pt--1">
-                <input class="a-input -lg" type="password" placeholder="Password">
+              <div class="a-inputWrapper -floatingLabel -pt--1" id="apassword">
+                <input class="a-input -xl" type="password" id="password">
+                <label for="password">Password</label>
               </div>
               <div class="m-formGroup -justify-content--between -align-items--center -flex--column -flex-sm--row -pt--3 -pt-sm--4">
                 <a class="-text -mb--2 -mb-sm--0" href="#">Forgot email or password?</a>
-                <button class="a-btn -primary -lg">Sign In</button>
+                <button class="a-btn -primary -xl">Sign In</button>
               </div>
             </div>
           </div>
@@ -114,13 +118,15 @@ h3 App Basic Sign In - Error
               .m-alert.-danger.-center(role="alert")
                 i.a-icon.-sm--2.icon-circle-warning.-text--danger
                 | Invalid email or password
-              .m-formGroup.-pt--2
-                input.a-input.-lg(type="email", placeholder="Email")
-              .m-formGroup.-pt--1
-                input.a-input.-lg(type="password", placeholder="Password")
+              .a-inputWrapper.-floatingLabel.-pt--2#aemail2
+                input(type='email', class='a-input -xl', id='email2')
+                label(for='email2') Email
+              .a-inputWrapper.-floatingLabel.-pt--1#apassword2
+                input(type='password', class='a-input -xl', id='password2')
+                label(for='password2') Password
               .m-formGroup.-pt--3.-pt-sm--4.-justify-content--between.-align-items--center.-flex--column.-flex-sm--row
                 a.-text.-mb--2.-mb-sm--0(href="#") Forgot email or password?
-                button.a-btn.-primary.-lg Sign In
+                button.a-btn.-primary.-xl Sign In
           .-text.-text--center.-py--2 Don't have an account? <a href="#">Sign Up</a>
   :code(lang="html")
     <div class="chi-app -bg--white">
@@ -152,15 +158,17 @@ h3 App Basic Sign In - Error
               <i class="a-icon -sm--2 icon-circle-warning -text--danger"></i>
               Invalid email or password
               </div>
-              <div class="m-formGroup -pt--2">
-                <input class="a-input -lg" type="email" placeholder="Email">
+              <div class="a-inputWrapper -floatingLabel -pt--2" id="aemail2">
+                <input class="a-input -xl" type="email" id="email2">
+                <label for="email2">Email</label>
               </div>
-              <div class="m-formGroup -pt--1">
-                <input class="a-input -lg" type="password" placeholder="Password">
+              <div class="a-inputWrapper -floatingLabel -pt--1" id="apassword2">
+                <input class="a-input -xl" type="password" id="password2">
+                <label for="password2">Password</label>
               </div>
               <div class="m-formGroup -justify-content--between -align-items--center -flex--column -flex-sm--row -pt--3 -pt-sm--4">
                 <a class="-text -mb--2 -mb-sm--0" href="#">Forgot email or password?</a>
-                <button class="a-btn -primary -lg">Sign In</button>
+                <button class="a-btn -primary -xl">Sign In</button>
               </div>
             </div>
           </div>
@@ -168,3 +176,15 @@ h3 App Basic Sign In - Error
         </div>
       </div>
     </div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.floatingLabel(document.getElementById('aemail'));
+      chi.floatingLabel(document.getElementById('apassword'));
+      chi.floatingLabel(document.getElementById('aemail2'));
+      chi.floatingLabel(document.getElementById('apassword2'));
+    },
+    false
+  );
