@@ -1,6 +1,6 @@
 .m-alert {
   &.-toast {
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
     max-width: 20rem;
     padding-bottom: 0.75rem;
@@ -8,7 +8,7 @@
 
     & .m-alert__content {
       & .a-icon {
-        align-self: start;
+        align-self: flex-start;
         top: 0.1875rem;
       }
 

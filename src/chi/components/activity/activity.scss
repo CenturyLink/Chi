@@ -1,5 +1,5 @@
-@import '_variables';
-@import '_mixins';
+@import 'variables';
+@import 'mixins';
 
 $border: 0.0625rem;
 
@@ -17,11 +17,11 @@ $border: 0.0625rem;
     .m-activity__content {
       .m-activity {
         &__item {
-          align-items: start;
+          align-items: flex-start;
           border-bottom: $border solid set-color(grey, 20);
-          flex-direction: row;
           display: flex;
-          justify-content: start;
+          flex-direction: row;
+          justify-content: flex-start;
           padding: 1.5rem 0;
 
           & .a-avatar {
@@ -34,8 +34,8 @@ $border: 0.0625rem;
             min-width: 9rem;
 
             & div {
-              display: flex;
               align-items: center;
+              display: flex;
 
               & .a-icon {
                 color: set-color(grey, 60);
@@ -51,8 +51,8 @@ $border: 0.0625rem;
             &-header {
               & strong,
               & a {
-                font-weight: 600;
                 color: $text-color;
+                font-weight: 600;
               }
             }
 
@@ -69,10 +69,10 @@ $border: 0.0625rem;
                 padding: 0;
 
                 & li {
+                  align-items: center;
                   border-bottom: $border solid set-color(grey, 20);
                   display: flex;
                   justify-content: space-between;
-                  align-items: center;
                   line-height: $line-height-small;
                   padding: 0.875rem 1rem;
 
@@ -141,6 +141,7 @@ $border: 0.0625rem;
           border-bottom: 0;
         }
       }
+
       & .m-activity__item {
         padding: 1.5rem 0;
 

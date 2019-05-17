@@ -1,7 +1,7 @@
 .m-alert {
   &.-bubble {
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
 
     &.-dismiss {
       justify-content: space-between;
@@ -23,7 +23,7 @@
 
       & .m-alert__content {
         & .a-icon {
-          align-self: start;
+          align-self: flex-start;
           top: 0.1875rem;
         }
 
@@ -41,7 +41,7 @@
       }
 
       & > .-close {
-        align-self: start;
+        align-self: flex-start;
         top: 0.75rem;
         transform: initial;
       }
