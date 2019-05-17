@@ -1,0 +1,34 @@
+@import '_variables';
+@import '_mixins';
+
+$icon-sizes: (
+  sm: 0.5rem,
+  md: 0.75rem,
+  lg: 0.75rem,
+  xl: 0.75rem,
+);
+
+.a-pagination {
+
+  .a-btn {
+    & .a-icon {
+      font-size: 0.75rem;
+      height: 0.75rem;
+      line-height: 0.75rem;
+      width: 0.75rem;
+    }
+  }
+
+  @each $type in map-keys($icon-sizes) {
+    .a-btn {
+      &.-#{$type} {
+        & .a-icon {
+          font-size: map-get($icon-sizes, $type);
+          height: map-get($icon-sizes, $type);
+          line-height: map-get($icon-sizes, $type);
+          width: map-get($icon-sizes, $type);
+        }
+      }
+    }
+  }
+}
