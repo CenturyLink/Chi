@@ -21,11 +21,11 @@ export class ThreeStepsAnimation {
   }
 
   prepare() {
+    this.status = AnimationState.Preparing;
     this.prepareAnimationFrame = window.requestAnimationFrame(() => {
-      if (this.status !== AnimationState.Initialized) {
+      if (this.status !== AnimationState.Preparing) {
         return;
       }
-      this.status = AnimationState.Preparing;
       this.prepareFunction();
       this.status = AnimationState.Prepared;
       this.startAnimationFrame = window.requestAnimationFrame(() => {
