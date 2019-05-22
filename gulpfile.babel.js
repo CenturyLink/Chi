@@ -28,7 +28,8 @@ const requires = {
   'stencil-start': require('./tasks/start-stencil.js'),
   'custom-elements-watch': require('./tasks/watch-custom-elements.js'),
   'lint-typescript': require('./tasks/lint-typescript'),
-  'test-custom-elements': require('./tasks/test-custom-elements')
+  'test-custom-elements': require('./tasks/test-custom-elements'),
+  'test-e2e': require('./tasks/test-e2e')
 };
 
 gulp.task('default', function(){});
