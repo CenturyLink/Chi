@@ -1,0 +1,344 @@
+{
+  "timestamp": "2019-06-06T15:29:28",
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "0.16.4",
+    "typescriptVersion": "3.2.2"
+  },
+  "components": [
+    {
+      "tag": "chi-button",
+      "encapsulation": "scoped",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "center",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "center",
+          "reflectToAttr": true,
+          "docs": "to center align the text .",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "to set button color { primary, secondary, danger, dark }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "to disabled chi-button.",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "extraClass",
+          "type": "string",
+          "mutable": false,
+          "attr": "extra-class",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "flat",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "flat",
+          "reflectToAttr": true,
+          "docs": "to render a button with a transparent background and border.",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "fluid",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "fluid",
+          "reflectToAttr": true,
+          "docs": "to render a button to fill the parent space.",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "outline",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "outline",
+          "reflectToAttr": true,
+          "docs": "to remove a buttons solid background and keep its colored border.",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "pill",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "pill",
+          "reflectToAttr": true,
+          "docs": "to to render buttons with a more pronounced border-radius.",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "to set button size { sm, md, lg, xl }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": true,
+          "docs": "to set button type { float, close, icon }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiClick",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "to emit a custom event when button is clicked.",
+          "docsTags": []
+        }
+      ],
+      "styles": []
+    },
+    {
+      "tag": "chi-drawer",
+      "encapsulation": "scoped",
+      "readme": "# chi-drawer\n\n\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "active",
+          "reflectToAttr": true,
+          "docs": "to open or close the drawer",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "backdrop",
+          "type": "string",
+          "mutable": false,
+          "attr": "backdrop",
+          "reflectToAttr": true,
+          "docs": "to add a backdrop behind the drawer, which covers the viewport",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "collapsible",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "collapsible",
+          "reflectToAttr": true,
+          "docs": "adds a close button",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "headerTitle",
+          "type": "string",
+          "mutable": false,
+          "attr": "header-title",
+          "reflectToAttr": true,
+          "docs": "header title. Not compatible with headless",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "headless",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "headless",
+          "reflectToAttr": true,
+          "docs": "to remove the space for the header",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "position",
+          "type": "string",
+          "mutable": false,
+          "attr": "position",
+          "reflectToAttr": true,
+          "docs": "to set position of the drawer { top, right, bottom or left }",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "hide",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "hide() => void",
+          "parameters": [],
+          "docs": "Hides the drawer",
+          "docsTags": []
+        },
+        {
+          "name": "show",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "show() => void",
+          "parameters": [],
+          "docs": "Shows the drawer.",
+          "docsTags": []
+        },
+        {
+          "name": "toggle",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "toggle() => void",
+          "parameters": [],
+          "docs": "Toggles active state (show/hide)",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "chi:hidden",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Drawer has been hidden to the user. The animation has completed.",
+          "docsTags": []
+        },
+        {
+          "event": "chi:hide",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Drawer hide method has executed, but the closing animation has not started yet",
+          "docsTags": []
+        },
+        {
+          "event": "chi:show",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Drawer show method has executed, but the showing animation has not started yet",
+          "docsTags": []
+        },
+        {
+          "event": "chi:shown",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Drawer has been shown to the user and is fully visible. The animation has completed.",
+          "docsTags": []
+        }
+      ],
+      "styles": []
+    },
+    {
+      "tag": "chi-icon",
+      "encapsulation": "scoped",
+      "readme": "# chi-icon\n\n\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, inverse, muted}",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "mutable": false,
+          "attr": "icon",
+          "reflectToAttr": true,
+          "docs": "Icon to be rendered. View accepted values on text documentation.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "OPTIONAL. Size of the Icon. {xs, sm, sm--2, sm--3, md, lg, xl, xxl}",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": []
+    }
+  ]
+}

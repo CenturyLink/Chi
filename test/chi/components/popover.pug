@@ -1,0 +1,46 @@
+---
+title: Popover
+scripts:
+  - js/chi
+  - js/ce/ux-chi-ce
+---
+- var sides = ['top', 'right', 'bottom', 'left'];
+- var moreSides = ['top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'];
+
+.test-base(style='width: 220px; height: 220px;')
+  span.a-h2 Base
+  .-position--relative
+    .m-popover.m-popover--top.-active.-position--absolute(aria-hidden="false")
+      .-px--2.-py--1.-s--3
+        h5 Popover!
+        p This is a popover content.
+
+each side in sides
+  div(class=`test-${side}`, style='width: 330px; height: 220px;')
+    span.a-h2=`Simple side ${side}`
+    .-position--relative
+      .m-popover.-active.-position--absolute(aria-hidden="false", class=`m-popover--${side}`)
+        .-px--2.-py--1.-s--3
+          h5 Popover!
+          p This is a popover content.
+        .a-arrow
+
+each side in moreSides
+  div(class=`test-more-${side}`)
+    span.a-h2=`Popper side ${side}`
+    .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
+      button(data-position=side, data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover!</h5><p>This is a popover content.</p></div>').a-btn.autostart Popover
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function () {
+      var popovers = chi.popover(
+        document.querySelectorAll('.autostart')
+      );
+      Array.prototype.forEach.call(popovers, function(popover){
+        popover.show();
+      });
+    },
+    false
+  );

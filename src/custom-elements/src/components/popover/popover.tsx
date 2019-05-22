@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch } from '@stencil/core';
-import { CARDINAL_EXTENDED_POSITIONS } from '../../models/positions';
+import { CARDINAL_EXTENDED_POSITIONS } from '../../models/Positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { ANIMATION_DURATION, CLASSES } from '../../models/Constants';
 import Popper, { Placement } from 'popper.js';
