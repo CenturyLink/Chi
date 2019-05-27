@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-06-19T12:34:09",
+  "timestamp": "2019-06-19T13:06:31",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
@@ -139,6 +139,230 @@
           "cancelable": true,
           "composed": true,
           "docs": "to emit a custom event when button is clicked.",
+          "docsTags": []
+        }
+      ],
+      "styles": []
+    },
+    {
+      "tag": "chi-date-picker",
+      "encapsulation": "scoped",
+      "readme": "# chi-date-picker\n\n\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "active",
+          "reflectToAttr": true,
+          "docs": "Indicates whether the dropdown calendar is open or closed",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "mutable": false,
+          "attr": "format",
+          "reflectToAttr": true,
+          "docs": "Date format used in the attributes and how it will be shown to the user.",
+          "docsTags": [],
+          "default": "'MM/DD/YYYY'",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "mutable": false,
+          "attr": "locale",
+          "reflectToAttr": true,
+          "docs": "Locale to use in date picker",
+          "docsTags": [],
+          "default": "'en'",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "max",
+          "type": "string",
+          "mutable": false,
+          "attr": "max",
+          "reflectToAttr": true,
+          "docs": "Maximum eligible date",
+          "docsTags": [],
+          "default": "'12/31/2099'",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "min",
+          "type": "string",
+          "mutable": false,
+          "attr": "min",
+          "reflectToAttr": true,
+          "docs": "Minimum eligible date",
+          "docsTags": [],
+          "default": "'01/01/1900'",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "Selected date in the date picker",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getDate",
+          "returns": {
+            "type": "Promise<string>",
+            "docs": ""
+          },
+          "signature": "getDate() => Promise<string>",
+          "parameters": [],
+          "docs": "Gets date",
+          "docsTags": []
+        },
+        {
+          "name": "setDate",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "setDate(date: any) => void",
+          "parameters": [
+            {
+              "name": "date",
+              "type": "any",
+              "docs": ""
+            }
+          ],
+          "docs": "Sets date",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "styles": []
+    },
+    {
+      "tag": "chi-date",
+      "encapsulation": "scoped",
+      "readme": "# chi-date\n\n\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "format",
+          "type": "string",
+          "mutable": false,
+          "attr": "format",
+          "reflectToAttr": true,
+          "docs": "Date format used in the attributes and how it will be shown to the user.",
+          "docsTags": [],
+          "default": "'MM/DD/YYYY'",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "mutable": false,
+          "attr": "locale",
+          "reflectToAttr": true,
+          "docs": "Locale to use in date picker",
+          "docsTags": [],
+          "default": "'en'",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "max",
+          "type": "string",
+          "mutable": false,
+          "attr": "max",
+          "reflectToAttr": true,
+          "docs": "Maximum eligible date",
+          "docsTags": [],
+          "default": "'12/31/2099'",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "min",
+          "type": "string",
+          "mutable": false,
+          "attr": "min",
+          "reflectToAttr": true,
+          "docs": "Minimum eligible date",
+          "docsTags": [],
+          "default": "'01/01/1900'",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "Selected date in the date picker",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getDate",
+          "returns": {
+            "type": "Promise<string>",
+            "docs": ""
+          },
+          "signature": "getDate() => Promise<string>",
+          "parameters": [],
+          "docs": "Gets date",
+          "docsTags": []
+        },
+        {
+          "name": "setDate",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "setDate(date: any) => void",
+          "parameters": [
+            {
+              "name": "date",
+              "type": "any",
+              "docs": ""
+            }
+          ],
+          "docs": "Sets date",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "chiDateChange",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Date change value event",
           "docsTags": []
         }
       ],

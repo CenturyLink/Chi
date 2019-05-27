@@ -62,7 +62,7 @@ $mondayStartingWeek: (
       }
     }
 
-    &:not(.-inactive):not(.-active):hover {
+    &:not(.-inactive):not(.-active):hover, &:not(.-inactive):not(.-active).-hover {
       background-color: (set-color(grey, 20));
       border-radius: 2px;
     }
@@ -144,7 +144,7 @@ $mondayStartingWeek: (
     padding: 0.5rem 1rem;
   }
 
-  &__datepicker.-no-arrow {
+  &__datepicker.-no-arrow, &__input.-no-arrow {
     &.m-popover--top, &[x-placement^="top"] {
       margin-bottom: 1px;
     }

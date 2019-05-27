@@ -1,0 +1,5 @@
+:host(chi-datepicker) {
+  @import '../../global/styles/common';
+  @import 'components/date-picker/date-picker';
+  display: inline-block;
+}

@@ -1,0 +1,37 @@
+---
+title: Date picker
+scripts:
+  - js/chi
+  - js/ce/ux-chi-ce
+---
+- var day = 1;
+- var weekS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+- var weekS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+- var today = 19;
+- var active = 23;
+- var date1 = '11/23/2018';
+- var dateMin = '11/19/2018';
+- var date2 = '01/24/2019';
+
+.test-active(data-cy="test-active")
+  span.a-h2 Active
+  .-position--relative
+    chi-date(value=date1)
+
+.test-combined(data-cy="test-combined")
+  span.a-h2 Combined
+  .-position--relative
+    chi-date(value=date1, min=dateMin)
+
+.test-input-combined(data-cy="test-input-combined")
+  span.a-h2 Input Popover Combined
+  .-position--relative(style="height: 18rem; width:14rem;")
+    chi-date-picker(value=date2, min=date2, active)
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+    },
+    false
+  );

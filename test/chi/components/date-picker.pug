@@ -1,0 +1,188 @@
+---
+title: Date picker
+scripts:
+  - js/chi
+  - js/ce/ux-chi-ce
+---
+- var day = 1;
+- var weekS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+- var weekS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+- var today = 19;
+- var active = 23;
+
+.test-base
+  span.a-h2 Base
+  .-position--relative
+    .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
+      .m-datepicker__month-row
+        .prev
+          i.a-icon.icon-chevron-left.-sm.-text--brand
+        .m-datepicker__month
+          | November 2018
+        .next
+          i.a-icon.icon-chevron-right.-sm.-text--brand
+      .m-datepicker__day-names
+        each weekDay in weekS
+          .m-datepicker__week-day=weekDay
+      .m-datepicker__days
+        while day < 31
+          .m-datepicker__day=day++
+
+- var day = 1;
+
+.test-today
+  span.a-h2 Today
+  .-position--relative
+    .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
+      .m-datepicker__month-row
+        .prev
+          i.a-icon.icon-chevron-left.-sm.-text--brand
+        .m-datepicker__month
+          | November 2018
+        .next
+          i.a-icon.icon-chevron-right.-sm.-text--brand
+      .m-datepicker__day-names
+        each weekDay in weekS
+          .m-datepicker__week-day=weekDay
+      .m-datepicker__days
+        while day < 31
+          if day === today
+            .m-datepicker__day.-today=day++
+          else
+            .m-datepicker__day=day++
+
+- var day = 1;
+
+.test-active
+  span.a-h2 Active
+  .-position--relative
+    .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
+      .m-datepicker__month-row
+        .prev
+          i.a-icon.icon-chevron-left.-sm.-text--brand
+        .m-datepicker__month
+          | November 2018
+        .next
+          i.a-icon.icon-chevron-right.-sm.-text--brand
+      .m-datepicker__day-names
+        each weekDay in weekS
+          .m-datepicker__week-day=weekDay
+      .m-datepicker__days
+        while day < 31
+          if day === active
+            .m-datepicker__day.-active=day++
+          else
+            .m-datepicker__day=day++
+
+- var day = 1;
+
+.test-hover
+  span.a-h2 Hover
+  .-position--relative
+    .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
+      .m-datepicker__month-row
+        .prev
+          i.a-icon.icon-chevron-left.-sm.-text--brand
+        .m-datepicker__month
+          | November 2018
+        .next
+          i.a-icon.icon-chevron-right.-sm.-text--brand
+      .m-datepicker__day-names
+        each weekDay in weekS
+          .m-datepicker__week-day=weekDay
+      .m-datepicker__days
+        while day < 31
+          if day === active
+            .m-datepicker__day.-hover=day++
+          else
+            .m-datepicker__day=day++
+
+
+- var day = 1;
+
+.test-inactive
+  span.a-h2 Inactive
+  .-position--relative
+    .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
+      .m-datepicker__month-row
+        .prev.-disabled
+          i.a-icon.icon-chevron-left.-sm
+        .m-datepicker__month
+          | November 2018
+        .next.-disabled
+          i.a-icon.icon-chevron-right.-sm
+      .m-datepicker__day-names
+        each weekDay in weekS
+          .m-datepicker__week-day=weekDay
+      .m-datepicker__days
+        while day < 31
+          if day < today || day > today
+            .m-datepicker__day.-inactive=day++
+          else
+            .m-datepicker__day=day++
+
+- var day = 1;
+
+.test-combined
+  span.a-h2 Combined
+  .-position--relative
+    .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
+      .m-datepicker__month-row
+        .prev.-disabled
+          i.a-icon.icon-chevron-left.-sm
+        .m-datepicker__month
+          | November 2018
+        .next
+          i.a-icon.icon-chevron-right.-sm.-text--brand
+      .m-datepicker__day-names
+        each weekDay in weekS
+          .m-datepicker__week-day=weekDay
+      .m-datepicker__days
+        while day < 31
+          if day === active
+            .m-datepicker__day.-active=day++
+          else if day < today
+            .m-datepicker__day.-inactive=day++
+          else
+            .m-datepicker__day=day++
+
+.test-input-combined
+  span.a-h2 Input Popover Combined
+  .-position--relative(style="height: 18rem; width:14rem;")
+    input#datepicker-1.a-input.-load__datepicker(type="text", placeholder="mm/dd/yyyy" value="")
+
+.test-input-combined-icon
+  span.a-h2 Input Popover Combined w/ icon
+  .-position--relative(style="height: 18rem; width:14rem;")
+    .a-inputWrapper.-icon--right
+      input#datepicker-2.a-input.-load__datepicker(type="text", placeholder="mm/dd/yyyy" value="")
+      .a-icon.-text--muted
+        svg
+          use(xlink:href="#icon-date")
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.datePicker(
+        document.getElementById('datepicker-1'),
+        {
+          date: '01/24/2019',
+          min: '01/24/2019'
+        }
+      );
+      chi.datePicker(
+        document.getElementById('datepicker-2'),
+        {
+          date: '01/24/2019',
+          min: '01/24/2019'
+        }
+      );
+
+      document.getElementById('datepicker-1').focus();
+      document.getElementById('datepicker-2').focus();
+      document.getElementById('datepicker-2').blur();
+
+    },
+    false
+  );
