@@ -6,7 +6,6 @@ export const server = browserSync.create();
 
 function serve(done) {
   server.init({
-    //watch: true,
     server: {
       baseDir: 'dist',
     },

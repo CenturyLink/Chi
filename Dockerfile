@@ -1,26 +1,30 @@
-FROM node:dubnium
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+FROM node:dubnium-stretch-slim
+
 ENV BABEL_DISABLE_CACHE=1
 
-RUN apt-get update
-RUN apt-get install -y build-essential libssl-dev curl wget
+# Add Tini
+ENV TINI_VERSION v0.18.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
 
-# install chrome
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN apt-get install -y gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 libfontconfig1 libgdk-pixbuf2.0-0 \
-                       libgtk-3-0 libnspr4 libpango-1.0-0 libxss1 fonts-liberation libappindicator1 libnss3 xdg-utils \
-                       libappindicator3-1 lsb-release
-RUN dpkg -i google-chrome-stable_current_amd64.deb
+RUN mkdir -p /chi
+WORKDIR /chi
 
-RUN mkdir /app
-WORKDIR /app
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+ && apt-get update \
+ && apt-get install -y ./google-chrome-stable_current_amd64.deb expect\
+ && apt-get clean \
+ && rm ./google-chrome-stable_current_amd64.deb
 
-COPY .npmrc package.json ./
-RUN npm install
-COPY .babelrc .eslintrc.json .jshintrc .sass-lint.yml backstop-responsive.json backstop-non-responsive.json gulpfile.babel.js ./
+RUN mkdir /tmp/{chi,custom-elements}
+COPY package_chi.json /tmp/chi/package.json
+COPY package_custom-elements.json /tmp/custom-elements/package.json
 
-RUN chmod a+rwx /app \
-    && chmod a+rw /app/* \
-    && chmod a+rw /app/.*
-RUN mkdir /app/public \
-    && chmod a+rwx /app/public
+RUN  cd /tmp/chi \
+ && yarn install \
+ && cd /tmp/custom-elements \
+ && yarn install \
+ && yarn cache clean
+
+COPY entrypoint.sh /
+ENTRYPOINT ["/tini", "--", "/entrypoint.sh"]
