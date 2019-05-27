@@ -68,6 +68,14 @@ case ${OPTION} in
         build
         test
         ;;
+    test-e2e)
+        mount -t tmpfs tmpfs /chi/dist
+        build
+        cd /chi
+        npx gulp serve 2>&1 >/dev/null &
+        ./node_modules/.bin/cypress run
+        npx gulp serve:stop
+        ;;
     approve)
         cd /chi
         npm run approve

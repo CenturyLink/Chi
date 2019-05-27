@@ -12,7 +12,7 @@ WORKDIR /chi
 
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
  && apt-get update \
- && apt-get install -y ./google-chrome-stable_current_amd64.deb expect\
+ && apt-get install -y ./google-chrome-stable_current_amd64.deb expect libgconf-2-4 xvfb busybox \
  && apt-get clean \
  && rm ./google-chrome-stable_current_amd64.deb
 
