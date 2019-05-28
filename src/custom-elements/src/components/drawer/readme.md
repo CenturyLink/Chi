@@ -7,14 +7,14 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                                    | Type                | Default     |
-| ------------- | -------------- | -------------------------------------------------------------- | ------------------- | ----------- |
-| `active`      | `active`       | to open or close the drawer                                    | `boolean`           | `undefined` |
-| `backdrop`    | `backdrop`     | to add a backdrop behind the drawer, which covers the viewport | `boolean \| string` | `undefined` |
-| `collapsible` | `collapsible`  | adds a close button                                            | `boolean`           | `undefined` |
-| `headerTitle` | `header-title` | header title. Not compatible with headless                     | `string`            | `undefined` |
-| `headless`    | `headless`     | to remove the space for the header                             | `boolean`           | `undefined` |
-| `position`    | `position`     | to set position of the drawer { top, right, bottom or left }   | `string`            | `undefined` |
+| Property      | Attribute      | Description                                                    | Type      | Default     |
+| ------------- | -------------- | -------------------------------------------------------------- | --------- | ----------- |
+| `active`      | `active`       | to open or close the drawer                                    | `boolean` | `undefined` |
+| `backdrop`    | `backdrop`     | to add a backdrop behind the drawer, which covers the viewport | `string`  | `undefined` |
+| `collapsible` | `collapsible`  | adds a close button                                            | `boolean` | `undefined` |
+| `headerTitle` | `header-title` | header title. Not compatible with headless                     | `string`  | `undefined` |
+| `headless`    | `headless`     | to remove the space for the header                             | `boolean` | `undefined` |
+| `position`    | `position`     | to set position of the drawer { top, right, bottom or left }   | `string`  | `undefined` |
 
 
 ## Events
