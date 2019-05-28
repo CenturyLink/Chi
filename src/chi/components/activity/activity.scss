@@ -25,13 +25,20 @@ $border: 0.0625rem;
           padding: 1.5rem 0;
 
           & .a-avatar {
-            height: 3rem;
             margin-right: 0.75rem;
-            width: 3rem;
+
+            @include respond-to(md) {
+              height: 3rem;
+              width: 3rem;
+            }
           }
 
           .m-activity__start {
-            min-width: 9rem;
+            min-width: 6rem;
+
+            @include respond-to(md) {
+              min-width: 9rem;
+            }
 
             & div {
               align-items: center;
@@ -39,7 +46,12 @@ $border: 0.0625rem;
 
               & .a-icon {
                 color: set-color(grey, 60);
+                display: none;
                 margin-right: 1.5rem;
+
+                @include respond-to(md) {
+                  display: block;
+                }
               }
             }
           }
@@ -69,16 +81,21 @@ $border: 0.0625rem;
                 padding: 0;
 
                 & li {
-                  align-items: center;
                   border-bottom: $border solid set-color(grey, 20);
                   display: flex;
-                  justify-content: space-between;
+                  justify-content: flex-start;
                   line-height: $line-height-small;
                   padding: 0.875rem 1rem;
 
-                  & div {
-                    align-items: center;
+                  & div:first-of-type {
                     display: flex;
+                    flex-direction: column;
+
+                    @include respond-to(md) {
+                      align-items: center;
+                      flex-direction: row;
+                      flex-grow: 1;
+                    }
                   }
 
                   & .a-icon {
@@ -90,8 +107,11 @@ $border: 0.0625rem;
                     align-self: start;
                     color: set-color(grey, 60);
                     font-size: $text-small;
-                    margin-left: 2rem;
                     text-align: right;
+
+                    @include respond-to(md) {
+                      margin-left: 2rem;
+                    }
                   }
 
                   &:last-child {
@@ -136,6 +156,12 @@ $border: 0.0625rem;
     &.-stories {
       & .m-activity__day {
         border-bottom: 0.0625rem solid rgba(set-color(black), 0.12);
+
+        &:first-of-type {
+          & .m-activity__item {
+            padding-top: 0;
+          }
+        }
 
         &:last-child {
           border-bottom: 0;
