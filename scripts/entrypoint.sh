@@ -6,13 +6,17 @@ mount -o bind /tmp/custom-elements/node_modules /chi/src/custom-elements/node_mo
 #mount -o bind /tmp/dist /chi/dist
 #mount -t tmpfs tmpfs /chi/dist
 
-if [ ! -h /chi/src/custom-elements/dist ]; then
-    ln -s /chi/dist/js/ce /chi/src/custom-elements/dist
-fi
-
 RED='\E[0;31m'
 GREEN='\E[0;32m'
 NC='\E[0m' # No Color
+
+if [ ! -h /chi/src/custom-elements/dist ]; then
+    if [ -d /chi/src/custom-elements/dist ]; then
+        echo -e "${RED}src/custom-elements/dist is a directory. Please, remove it${NC}";
+        exit 1;
+    fi
+    ln -s /chi/dist/js/ce /chi/src/custom-elements/dist || ( echo "Cannot create symbolic link from src/custom-elements/dist to dist/js/ce"; exit 1 )
+fi
 
 addheader_chi() {
     while IFS= read -r line; do
