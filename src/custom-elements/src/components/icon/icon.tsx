@@ -16,17 +16,17 @@ export class Icon {
   /**
    * OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, inverse, muted}
    */
-  @Prop() color: string;
+  @Prop({ reflectToAttr: true }) color: string;
 
   /**
    * Icon to be rendered. View accepted values on text documentation.
    */
-  @Prop() icon: string;
+  @Prop({ reflectToAttr: true }) icon: string;
 
   /**
    * OPTIONAL. Size of the Icon. {xs, sm, sm--2, sm--3, md, lg, xl, xxl}
    */
-  @Prop() size: string;
+  @Prop({ reflectToAttr: true }) size: string;
 
   @Watch('color')
   validateColorAttribute(newValue: string) {

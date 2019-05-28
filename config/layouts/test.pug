@@ -11,8 +11,12 @@ html(lang="en")
     link(rel="stylesheet", media="all", href="/chi.css")
     link(rel="stylesheet", media="all", href="/tests/test.css")
 
+    if styles
+      each style in styles
+        link(rel="stylesheet", media="all", href=`/${style}.css`)
+
   body.chi(
-    style= background ? `background-color: #${background}` : false
+    style= background ? `background-color: #${background}`: false
   )
     .a-grid__container
       h1= title

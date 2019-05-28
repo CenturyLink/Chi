@@ -75,10 +75,14 @@ export const serveAndWatch = gulp.parallel(
     )
   ),
   () => gulp.watch(
-    'src/custom-elements/dist/**/*',
+    'src/custom-elements/dist/**/*.js',
     watchOptions,
-    gulp.src('src/custom-elements/dist/**/*')
-      .pipe(gulp.dest('dist/js/ce'))
+    gulp.series(
+      'serve:notify:start',
+      'copy:chi:ce-scripts',
+      'serve:notify:end',
+      'serve:reload'
+    )
   )
 );
 

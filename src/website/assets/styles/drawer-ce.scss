@@ -1,0 +1,15 @@
+.docs-container {
+  .example {
+    chi-drawer {
+      display: block;
+
+      .m-drawer {
+        position: absolute;
+      }
+
+      .a-backdrop {
+        position: absolute;
+      }
+    }
+  }
+}

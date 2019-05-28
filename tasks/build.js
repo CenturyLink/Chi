@@ -4,5 +4,6 @@ gulp.task('build', gulp.series(
   'clean',
   'build:chi',
   'build:test',
-  'build:website'
+  'build:website',
+  'copy:chi:ce-scripts'
 ));
