@@ -28,6 +28,71 @@ p.-text: em An NPM package will be available shortly.
 p.-text.-mb--3
   | At this point, you can use the components described in this documentation.
 
+h3 Regarding HTML attributes and DOM properties
+p.-text
+  | Chi custom elements have different ways to operate with them. The most common ones are the HTML attributes
+  | and the DOM properties. In most of the cases, we keep them synchronized. For example, the chi-button element has
+  | the attribute <code>size</code> that can be accessed and modified in two ways.
+p.-text Modifying the HTML attribute:
+.-mb--2
+  :code(lang='html')
+    <chi-button id="close-btn" size="md">Close</chi-button>
+    <script>
+      document.getElementById("close-btn").setAttribute("size", "xl");
+    </script>
+p.-text Setting the DOM property:
+.-mb--2
+  :code(lang='html')
+    <chi-button id="close-btn" size="md">Close</chi-button>
+    <script>
+      document.getElementById("close-btn").size="xl";
+    </script>
+p.-text
+  span.a-badge.-primary.-mr1
+    span Tip
+  | DOM properties are camel case (headerTitle) while HTML attributes are kebab case (header-title).
+
+
+h4 Boolean attributes and properties
+p.-text
+  | Some of our components have boolean attributes, that work in the same way the well known <code>disabled</code>
+  | attribute. Boolean attributes are true when the HTML element has the attribute and false when
+  | not. You cannot set it to false like this:
+.-mb--2
+  :code(lang='html')
+    <input type="text" disabled="false" />
+    <chi-drawer active="false" />
+p.-text
+  | Boolean attributes can set to true this way:
+.-mb--2
+  :code(lang='html')
+    <input type="text" disabled />
+    <chi-drawer id="drawer" active />
+    <script>
+      document.getElementById("drawer").active = true;
+      document.getElementById("drawer").setAttribute("active", "active");
+    </script>
+p.-text
+  | And can set to false:
+.-mb--2
+  :code(lang='html')
+    <input type="text"  />
+    <chi-drawer id="drawer" />
+    <script>
+      document.getElementById("drawer").active = false;
+      document.getElementById("drawer").removeAttribute("active");
+    </script>
+p.-text
+  | Some components, like chi-drawer, have helper methods to make change the state of commonly modified attributes:
+.-mb--2
+  :code(lang='html')
+    <chi-drawer id="drawer" />
+    <script>
+      document.getElementById("drawer").show();   // This sets the active property to true
+      document.getElementById("drawer").hide();   // This sets the active property to false
+      document.getElementById("drawer").toggle(); // This toggles the state of the active property
+    </script>
+
 h2 Development Workflow
 p.-text
   | Although the preferred way to set up your development environment is with Docker, the Custom Elements development

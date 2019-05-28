@@ -145,8 +145,17 @@ ul#a-tabs--header.a-tabs
 
 h3 Interaction
 p.-text
-  | The <code>chi-drawer</code> Element has three public methods to interact with it: <code>show()</code>,
-  | <code>hide()</code>, <code>toggle()</code>
+  span.a-badge.-primary.-mr1
+    span Tip
+  | Read this handy introduction to
+  |
+  a(href=`../overview/#regarding-html-attributes-and-dom-properties`) HTML attributes and DOM properties
+  | .
+
+p.-text
+  | Modify the <code>active</code> attribute or property to make the drawer show or hide. The <code>chi-drawer</code>
+  | element also has three public methods to interact with it: <code>show()</code>, <code>hide()</code>,
+  | <code>toggle()</code>.
 .example.-mb--3(style='overflow:hidden;')
   .-position--relative.-z--0.-bb--1(style='height:20rem;overflow:hidden;')
     .-p--3
@@ -185,6 +194,7 @@ p.-text
         var drawerTrigger = document.getElementById('drawer-trigger');
         drawerTrigger.addEventListener('click', function(){
           drawer.toggle();
+          // or drawer.active = !drawer.active;
         });
       </script>
 

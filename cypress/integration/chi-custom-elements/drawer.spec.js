@@ -2,10 +2,6 @@
 
 describe('Drawer', function() {
 
-  beforeEach(()=>{
-    cy.fixture('chidata.json').as('chidata');
-  });
-
   it('Drawer custom element should initiate a Chi drawer component. ', function() {
     cy.visit('tests/custom-elements/drawer.html');
 
