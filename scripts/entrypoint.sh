@@ -2,6 +2,8 @@
 
 mount -o bind /tmp/chi/node_modules /chi/node_modules
 mount -o bind /tmp/custom-elements/node_modules /chi/src/custom-elements/node_modules
+
+mount -t tmpfs tmpfs /chi/src/custom-elements/.stencil
 #mkdir /tmp/dist
 #mount -o bind /tmp/dist /chi/dist
 #mount -t tmpfs tmpfs /chi/dist
