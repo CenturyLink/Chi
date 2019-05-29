@@ -26,27 +26,22 @@ At this point you will be able to target the styles available in Chi by referenc
 
 ## Development Workflow
 
-The preferred way to setup your development environment is with Docker. If you have Docker installed, run the command:
+The way to setup your development environment is with Docker. First make sure you have Docker installed, then run the command:
 
 ``` sh
-$ npm run docker -- start
+$ scripts/docker.sh start
 ```
 
 Once the container has been bootstrapped and the Chi project has started, connect to [http://localhost:8000](http://localhost:8000) in your browser to load Chi. While running, any changes to the Chi source will be automatically reloaded in your browser.
 
-You may also run the project without Docker by following the standard conventions for Node.js-based applications:
+The project has been configured to run inside a Docker container so it won't work as a regular node application.
 
-``` sh
-$ npm install
-$ npm start
-```
-
-#### Testing Changes
+## Testing Changes
 
 We use [BackstopJS](https://garris.github.io/BackstopJS) for visual regression testing of our CSS components. In order to account for differences in development environments we always run these tests in a consistent Docker container. To execute the test suite, run the following command:
 
 ``` sh
-$ npm run docker -- test
+$ scripts/docker.sh test
 ```
 
 A report containing the results of the test will be created under `reports/html_report`. If there were failures, you will need to visually examine the changes and act appropriately based on the anticipated results.
@@ -54,10 +49,18 @@ A report containing the results of the test will be created under `reports/html_
 If you receive a test failure and you've made changes that you know are correct, you will need to override the test references with your new changes by running the `approve` command on BackstopJS:
 
 ``` sh
-$ npm run docker -- approve
+$ scripts/docker.sh approve
 ```
 
 Once you have approved the changes, commit the new reference files with your changes.
+
+## Production
+
+Use the build command to make a ready-to-production build:
+
+``` sh
+$ scripts/docker.sh build
+```
 
 ## License
 

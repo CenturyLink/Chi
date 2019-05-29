@@ -30,22 +30,19 @@ p.-text.-mb--3
   | At this point you will be able to target the styles available in Chi by referencing documentation.
 
 h3 Development Workflow
-p.-text The preferred way to setup your development environment is with Docker. If you have Docker installed, run the command:
+p.-text
+  | The way to setup your development environment is with Docker. First make sure you have Docker installed, then run
+  | the command:
 
 .-mb--2
   :code(lang='bash')
-    $ npm run docker -- start
+    $ scripts/docker.sh start
 
 p.-text
   | Once the container has been bootstrapped and the Chi project has started, connect to <a href="http://localhost:8000">http://localhost:8000</a>
   | in your browser to load Chi. While running, any changes to the Chi source will be automatically reloaded in your browser.
 
-p.-text You may also run the project without Docker by following the standard conventions for Node.js-based applications:
-
-.-mb--3
-  :code(lang='bash')
-    $ npm install
-    $ npm start
+p.-text The project has been configured to run inside a Docker container so it won't work as a regular node application.
 
 h3 Testing Changes
 p.-text
@@ -55,7 +52,7 @@ p.-text
 
 .-mb--2
   :code(lang='bash')
-    $ npm run docker -- test
+    $ scripts/docker.sh test
 
 p.-text
   | A report containing the results of the test will be created under <code>reports/html_report</code>. If there were failures,
@@ -67,6 +64,12 @@ p.-text
 
 .-mb--2
   :code(lang='bash')
-    $ npm run docker -- approve
+    $ scripts/docker.sh approve
 
 p.-text.-mb--3 Once you have approved the changes, commit the new reference files with your changes.
+
+h3 Production
+p.-text Use the build command to make a ready-to-production build:
+.-mb--2
+  :code(lang='bash')
+    $ scripts/docker.sh build

@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 
-const watchOptions = { usePolling: true, interval: 500 };
+const watchOptions = { };
 
 export const serveAndWatch = gulp.parallel(
   'serve',
@@ -75,11 +75,11 @@ export const serveAndWatch = gulp.parallel(
     )
   ),
   () => gulp.watch(
-    'src/custom-elements/dist/**/*.js',
+    'src/website/views/**/*',
     watchOptions,
     gulp.series(
       'serve:notify:start',
-      'copy:chi:ce-scripts',
+      'build:website:views',
       'serve:notify:end',
       'serve:reload'
     )

@@ -95,24 +95,11 @@ p.-text
 
 h2 Development Workflow
 p.-text
-  | Although the preferred way to set up your development environment is with Docker, the Custom Elements development
-  | environment doesn't support it yet. So you need a modern version of <a href="https://www.npmjs.com">NPM</a>.
-
-p.-text
-  | First, install the dependencies:
+  | Use the start command to start the Development Environment.
 
 .-mb--2
   :code(lang='bash')
-    $ npm install
-    $ cd src/custom-elements; npm install
-
-p.-text
-  | Then, <strong>from the root directory</strong>, run:
-
-.-mb--2
-  :code(lang='bash')
-    $ npm run start:customElements
-p.-text This command makes run both: Chi documentation and Stencil Dev Envs.
+    $ scripts/docker.sh start
 
 p.-text
   | Once the container has been bootstrapped and the Chi project has started, connect to
@@ -122,26 +109,17 @@ p.-text
 
 h2 Testing
 
-h3 Unit tests
-p.-text
-  | Unit tests should be written to cover code that doesn't depend on a view or need a browser to be run. Unit test
-  | files are located in the same folder of the file that is tested and adding the extension .spec.ts. (utils.ts is
-  | tested by utils.spec.ts). Unit test are run by the next command:
-:code(lang='bash')
-  $ cd src/custom-elements
-  $ npx stencil test --spec
-
 h3 End-to-end tests
 p.-text
-  | <a href="https://www.cypress.io">Cypress</a> is used for end to end testing. Tests are located in the
+  | <a href="https://www.cypress.io">Cypress</a> is used for end-to-end testing. Tests are located in the
   | <code>cypress/integration</code> folder. To make them run:
 :code(lang='bash')
-  npm run test:e2e
+  $ scripts/docker.sh test-e2e
 
-p.-text
-  | You can use the following command if you want to run them interactively:
-:code(lang='bash')
-  npm run test:e2e:interactive
+//p.-text
+//  | You can use the following command if you want to run them interactively:
+//:code(lang='bash')
+//  npm run test:e2e:interactive
 
 h3 Visual regression tests
 p.-text
@@ -155,16 +133,12 @@ p.-text
 p.-text
   | This tests are run by the common test command
 :code(lang='bash')
-  npm run test
-p.-text
-  | And can be run independently by
-:code(lang='bash')
-  npm run test-ce
+  $ scripts/docker.sh test
 p.-text Reports are available in the <code>reports/html_report/non_responsive_ce/</code> folder.
 
 h2 Style guide
 
-p.-text: em This style guide is based on <a href="https://stenciljs.com/docs/style-guide">the one is used by the Iconic team</a>.
+p.-text: em This style guide is based on <a href="https://stenciljs.com/docs/style-guide">the one is used by the Ionic team</a>.
 
 h3 File structure
 ul
