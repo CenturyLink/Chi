@@ -3,7 +3,7 @@ title: Overview
 ---
 p.-text.-mb--3
   | Chi Custom Elements is a library build on top of Chi and the
-  | <a href="https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements">Custom Elements API</a>
+  | <a target="_blank" href="https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements">Custom Elements API</a>
   | from the HTML Living Standard.
 
 h3 Adding Chi Custom Elements
@@ -111,20 +111,21 @@ h2 Testing
 
 h3 End-to-end tests
 p.-text
-  | <a href="https://www.cypress.io">Cypress</a> is used for end-to-end testing. Tests are located in the
+  | <a target="_blank" href="https://www.cypress.io">Cypress</a> is used for end-to-end testing. Tests are located in the
   | <code>cypress/integration</code> folder. To make them run:
 :code(lang='bash')
   $ scripts/docker.sh test-e2e
 
-//p.-text
-//  | You can use the following command if you want to run them interactively:
-//:code(lang='bash')
-//  npm run test:e2e:interactive
+p.-text
+  | You can run end-to-end tests interactively by launching the <code>start</code> command and open a local version of
+  | the Cypress application. Then select the ux-chi root folder as the project folder.
+:code(lang='bash')
+  $ scripts/docker.sh start
 
 h3 Visual regression tests
 p.-text
   | Chi has visual regression tests build for each component that are implemented in
-  | <a href="https://github.com/garris/BackstopJS">BackstopJS</a>. Each Custom Element
+  | <a target="_blank" href="https://github.com/garris/BackstopJS">BackstopJS</a>. Each Custom Element
   | component MUST have a Custom Element version for the same tests files that are implemented in Chi normal version.
   | This tests are configured in the <code>backstop-non-responsive-ce.json</code> file.
 p.-text
@@ -138,7 +139,7 @@ p.-text Reports are available in the <code>reports/html_report/non_responsive_ce
 
 h2 Style guide
 
-p.-text: em This style guide is based on <a href="https://stenciljs.com/docs/style-guide">the one is used by the Ionic team</a>.
+p.-text: em This style guide is based on <a target="_blank" href="https://stenciljs.com/docs/style-guide">the one is used by the Ionic team</a>.
 
 h3 File structure
 ul
@@ -217,7 +218,7 @@ p.-text The name of the ES6 class of the component SHOULD NOT have a prefix sinc
 
 h3 TypeScript
 p.-text
-  | Follow <a href="https://github.com/ionic-team/tslint-ionic-rules/blob/master/tslint.js">tslint-ionic-rules</a>.
+  | Follow <a target="_blank" href="https://github.com/ionic-team/tslint-ionic-rules/blob/master/tslint.js">tslint-ionic-rules</a>.
   | This file is located in /src/custom-elements/ and has to be configured in your editor.
 
 p.-text Variable decorators should be inlined.
