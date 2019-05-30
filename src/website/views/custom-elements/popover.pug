@@ -18,10 +18,17 @@ p.-text
   span.a-badge.-primary.-mr1
     span Tip
   | Remove the <code>active</code> attribute to hide the popover.
+p.-text
+  span.a-badge.-primary.-mr1
+    span Tip
+  | Read this handy introduction to
+  |
+  a(href=`../overview/#regarding-html-attributes-and-dom-properties`) HTML attributes and DOM properties
+  | .
 #example-1.example.-mb--3
   .-p--3(style='height: 146px')
     .-position--relative
-      chi-popover(active)
+      chi-popover(active, prevent-auto-hide)
         .-px--2.-py--1.-s--3
           h5 Popover!
           p This is a popover content.
@@ -51,7 +58,7 @@ ul#a-tabs--positioning.a-tabs
   #example-2.example.-mb--3
     .-p--3(style='height: 158px')
       .-position--relative
-        chi-popover(position="top", active, arrow)
+        chi-popover(position="top", active, arrow, prevent-auto-hide)
           .-px--2.-py--1.-s--3
             h5 Popover!
             p This is a popover content.
@@ -66,7 +73,7 @@ ul#a-tabs--positioning.a-tabs
   .example.-mb--3
     .-p--3(style='height: 158px')
       .-position--relative
-        chi-popover(position="right", active, arrow)
+        chi-popover(position="right", active, arrow, prevent-auto-hide)
           .-px--2.-py--1.-s--3
             h5 Popover!
             p This is a popover content.
@@ -81,7 +88,7 @@ ul#a-tabs--positioning.a-tabs
   .example.-mb--3
     .-p--3(style='height: 158px')
       .-position--relative
-        chi-popover(position="bottom", active, arrow)
+        chi-popover(position="bottom", active, arrow, prevent-auto-hide)
           .-px--2.-py--1.-s--3
             h5 Popover!
             p This is a popover content.
@@ -96,7 +103,7 @@ ul#a-tabs--positioning.a-tabs
   .example.-mb--3
     .-p--3(style='height: 158px')
       .-position--relative
-        chi-popover(position="left", active, arrow)
+        chi-popover(position="left", active, arrow, prevent-auto-hide)
           .-px--2.-py--1.-s--3
             h5 Popover!
             p This is a popover content.
@@ -122,7 +129,7 @@ p.-text
   span.a-badge.-primary.-mr1
     span Tip 2
   | This example uses extra JavaScript. See <a href="#show-hide-toggle">Show, hide & toggle section</a>.
-  
+
 .example.-mb--3
   .-p--3
     button#example-3-button.a-btn Click me!
@@ -140,7 +147,7 @@ p.-text
         <p>This is a popover content.</p>
       </div>
     </chi-popover>
-    
+
 h4 Reference element
 p.-text
   | Further positions can be used in this mode: <code>top</code>,
@@ -336,10 +343,19 @@ ul#a-tabsb--positioning.a-tabs
         </div>
       </chi-popover>
 
-h3 Show, hide & toggle
+h3 Interaction
 p.-text
-  | Popover elements have public methods that let the developer modify it status. This methods are <code>show</code>,
-  | <code>hide</code> and <code>toggle</code>
+  span.a-badge.-primary.-mr1
+    span Tip
+  | Read this handy introduction to
+  |
+  a(href=`../overview/#regarding-html-attributes-and-dom-properties`) HTML attributes and DOM properties
+  | .
+p.-text
+  | Modify the <code>active</code> attribute or property to make the popover show or hide. The <code>chi-popover</code>
+  | element also has three public methods to interact with it: <code>show()</code>, <code>hide()</code>,
+  | <code>toggle()</code>.
+
 .example.-mb--3
   .-p--3
     button#example-5-button-show.a-btn.-mr--2.-mb--2.-mb-md--0 Show
@@ -377,43 +393,90 @@ p.-text
         var bShow = document.getElementById('example-5-button-show');
         bShow.addEventListener('click', function(){
           popover5.show();
+          // or popover5.active = true;
         });
 
         var bHide = document.getElementById('example-5-button-hide');
         bHide.addEventListener('click', function () {
           popover5.hide();
+          // or popover5.active = false;
         });
 
         var bToggle = document.getElementById('example-5-button-toggle');
         bToggle.addEventListener('click', function(){
           popover5.toggle();
+          // or popover5.active = !popover5.active;
         });
       </script>
+
+h4 Auto hide
+p.-text
+  | Popovers automatically hide when clicking outside of it or when pressing the ESC key. You can prevent this behavior
+  | with the <code>prevent-auto-hide</code> attribute.
+
+.example.-mb--3
+  .-p--3
+    button#example-6-auto-hide-button.a-btn.-mr--2.-mb--2.-mb-md--0 Auto hide
+    button#example-6-no-auto-hide-button.a-btn.-mr--2.-mb--2.-mb-md--0 No auto hide
+    chi-popover#example-6-auto-hide-popover(position="top", arrow, reference="#example-6-auto-hide-button")
+      .-px--2.-py--1.-s--3
+        h5 Auto hide!
+        p Click outside. I will disappear!
+    chi-popover#example-6-no-auto-hide-popover(position="top", arrow, prevent-auto-hide, reference="#example-6-no-auto-hide-button")
+      .-px--2.-py--1.-s--3
+        h5 Auto hide!
+        p Click outside. I will stay!
+
+  ul#a-tabs-e6.a-tabs.-ml--3
+    li.-active
+      a(href='#a-tabs-e6-auto-hide') Auto hide
+    li
+      a(href='#a-tabs-e6-no-auto-hide') No auto hide
+  #a-tabs-e6-auto-hide.a-tabs-panel.-active
+    :code(lang="html")
+      <chi-popover id="example-6-popover-auto-hide-popover" position="top" arrow reference="#example-6-auto-hide-button">
+        <div class="-px--2 -py--1 -s--3">
+          <h5>Auto hide!</h5>
+          <p>Click outside. I will disappear!</p>
+        </div>
+      </chi-popover>
+  #a-tabs-e6-no-auto-hide.a-tabs-panel
+    :code(lang="html")
+      <chi-popover id="example-6-popover-no-auto-hide-popover" position="top" arrow prevent-auto-hide reference="#example-6-no-auto-hide-button">
+        <div class="-px--2 -py--1 -s--3">
+          <h5>Auto hide!</h5>
+          <p>Click outside. I will stay!</p>
+        </div>
+      </chi-popover>
+
+
 
 script.
   document.addEventListener(
     'DOMContentLoaded',
     function () {
 
-      chi.tab(document.querySelectorAll('#a-tabs--positioning, #a-tabsb--positioning, #a-tabs-e5'));
+      chi.tab(document.querySelectorAll('#a-tabs--positioning, #a-tabsb--positioning, #a-tabs-e5, #a-tabs-e6'));
 
       var popovers = [
-        {button: '#example-3-button',        popover: '#example-3-popover',    action: "toggle"},
-        {button: '#example-4-t-button',      popover: '#example-4-t-popover',  action: "toggle"},
-        {button: '#example-4-ts-button',     popover: '#example-4-ts-popover', action: "toggle"},
-        {button: '#example-4-te-button',     popover: '#example-4-te-popover', action: "toggle"},
-        {button: '#example-4-r-button',      popover: '#example-4-r-popover',  action: "toggle"},
-        {button: '#example-4-rs-button',     popover: '#example-4-rs-popover', action: "toggle"},
-        {button: '#example-4-re-button',     popover: '#example-4-re-popover', action: "toggle"},
-        {button: '#example-4-b-button',      popover: '#example-4-b-popover',  action: "toggle"},
-        {button: '#example-4-bs-button',     popover: '#example-4-bs-popover', action: "toggle"},
-        {button: '#example-4-be-button',     popover: '#example-4-be-popover', action: "toggle"},
-        {button: '#example-4-l-button',      popover: '#example-4-l-popover',  action: "toggle"},
-        {button: '#example-4-ls-button',     popover: '#example-4-ls-popover', action: "toggle"},
-        {button: '#example-4-le-button',     popover: '#example-4-le-popover', action: "toggle"},
-        {button: '#example-5-button-show',   popover: '#example-5-popover',    action: "show"},
-        {button: '#example-5-button-hide',   popover: '#example-5-popover',    action: "hide"},
-        {button: '#example-5-button-toggle', popover: '#example-5-popover',    action: "toggle"}
+        {button: '#example-3-button',               popover: '#example-3-popover',              action: "toggle"},
+        {button: '#example-4-t-button',             popover: '#example-4-t-popover',            action: "toggle"},
+        {button: '#example-4-ts-button',            popover: '#example-4-ts-popover',           action: "toggle"},
+        {button: '#example-4-te-button',            popover: '#example-4-te-popover',           action: "toggle"},
+        {button: '#example-4-r-button',             popover: '#example-4-r-popover',            action: "toggle"},
+        {button: '#example-4-rs-button',            popover: '#example-4-rs-popover',           action: "toggle"},
+        {button: '#example-4-re-button',            popover: '#example-4-re-popover',           action: "toggle"},
+        {button: '#example-4-b-button',             popover: '#example-4-b-popover',            action: "toggle"},
+        {button: '#example-4-bs-button',            popover: '#example-4-bs-popover',           action: "toggle"},
+        {button: '#example-4-be-button',            popover: '#example-4-be-popover',           action: "toggle"},
+        {button: '#example-4-l-button',             popover: '#example-4-l-popover',            action: "toggle"},
+        {button: '#example-4-ls-button',            popover: '#example-4-ls-popover',           action: "toggle"},
+        {button: '#example-4-le-button',            popover: '#example-4-le-popover',           action: "toggle"},
+        {button: '#example-5-button-show',          popover: '#example-5-popover',              action: "show"},
+        {button: '#example-5-button-hide',          popover: '#example-5-popover',              action: "hide"},
+        {button: '#example-5-button-toggle',        popover: '#example-5-popover',              action: "toggle"},
+        {button: '#example-6-auto-hide-button',     popover: '#example-6-auto-hide-popover',    action: "toggle"},
+        {button: '#example-6-no-auto-hide-button',  popover: '#example-6-no-auto-hide-popover', action: "toggle"}
       ];
 
       Array.prototype.forEach.call(popovers, function(popover){

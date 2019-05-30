@@ -1,7 +1,20 @@
-import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+  Prop,
+  State,
+  Watch
+} from '@stencil/core';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../models/Positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
-import { ANIMATION_DURATION, CLASSES } from '../../models/Constants';
+import {
+  ANIMATION_DURATION,
+  CLASSES,
+  ESCAPE_KEYCODE
+} from '../../models/Constants';
 import Popper, { Placement } from 'popper.js';
 
 @Component({
@@ -10,7 +23,6 @@ import Popper, { Placement } from 'popper.js';
   scoped: true
 })
 export class Popover {
-
   /**
    * to set position of the popover { top, top-start, top-end, right, right-start, right-end, bottom, bottom-start, bottom-end, left, left-start, left-end }
    */
@@ -51,11 +63,17 @@ export class Popover {
   private _postAnimationTransformStyle: string;
   private _componentLoaded = false;
   private _didUpdateCallBackOnceQueue: (() => void)[] = [];
+  private _closePrevented = false;
+  private _closePreventedTimeout: number;
+  private _documentClickHandler: () => void;
+  private _documentKeyHandler: (event: KeyboardEvent) => void;
 
   @Watch('position')
   positionValidation(newValue: string) {
     if (newValue && !CARDINAL_EXTENDED_POSITIONS.includes(newValue)) {
-      throw new Error(`Not valid position ${newValue} for popover. Valid values are top, top-start, top-end, right, right-start, right-end, bottom, bottom-start, bottom-end, left, left-start and left-end. `);
+      throw new Error(
+        `Not valid position ${newValue} for popover. Valid values are top, top-start, top-end, right, right-start, right-end, bottom, bottom-start, bottom-end, left, left-start and left-end. `
+      );
     }
     if (this._componentLoaded) {
       this._configurePopoverPopper();
@@ -66,7 +84,7 @@ export class Popover {
   referenceElementChanged(newValue: string) {
     Popover.referenceElementValidation(newValue);
     this._reference = newValue
-      ? document.querySelector(newValue) as HTMLElement
+      ? (document.querySelector(newValue) as HTMLElement)
       : null;
 
     if (this._componentLoaded) {
@@ -81,7 +99,9 @@ export class Popover {
         throw new Error(`Reference element could not be found. `);
       }
       if (referenceCandidates.length > 1) {
-        throw new Error(`More than one reference candidates were found. Not able to discern which one is the preferred. `);
+        throw new Error(
+          `More than one reference candidates were found. Not able to discern which one is the preferred. `
+        );
       }
     }
   }
@@ -98,6 +118,7 @@ export class Popover {
     // This weird double negation check is because of a stencil bug: https://github.com/ionic-team/stencil/issues/1238
     if (!!newValue !== !!oldValue) {
       if (newValue) {
+        this.preventAutoClose();
         this._show();
       } else {
         this._hide();
@@ -136,19 +157,19 @@ export class Popover {
   /**
    * Popover show method has executed, but the showing animation has not started yet
    */
-  @Event({eventName: 'chi:show'}) eventShow: EventEmitter;
+  @Event({ eventName: 'chi:show' }) eventShow: EventEmitter;
   /**
    * Popover hide method has executed, but the closing animation has not started yet
    */
-  @Event({eventName: 'chi:hide'}) eventHide: EventEmitter;
+  @Event({ eventName: 'chi:hide' }) eventHide: EventEmitter;
   /**
    * Popover has been shown to the user and is fully visible. The animation has completed.
    */
-  @Event({eventName: 'chi:shown'}) eventShown: EventEmitter;
+  @Event({ eventName: 'chi:shown' }) eventShown: EventEmitter;
   /**
    * Popover has been hidden to the user. The animation has completed.
    */
-  @Event({eventName: 'chi:hidden'}) eventHidden: EventEmitter;
+  @Event({ eventName: 'chi:hidden' }) eventHidden: EventEmitter;
 
   private _resetPopperPosition(): void {
     this._popper.update();
@@ -179,7 +200,8 @@ export class Popover {
         },
         () => {
           this._animationClasses = CLASSES.ACTIVE;
-        }, ANIMATION_DURATION.SHORT
+        },
+        ANIMATION_DURATION.SHORT
       );
     });
     this.eventShow.emit();
@@ -208,7 +230,6 @@ export class Popover {
   }
 
   private _configurePopoverPopper() {
-
     if (!this._reference) {
       if (this._popper) {
         this._popper.destroy();
@@ -222,17 +243,19 @@ export class Popover {
       this._preAnimationTransformStyle = null;
       this._postAnimationTransformStyle = data.styles.transform;
       if (data.placement.indexOf('top') === 0) {
-        this._preAnimationTransformStyle =
-          `translate3d(${data.popper.left}px, ${data.popper.top + 20}px, 0)`;
+        this._preAnimationTransformStyle = `translate3d(${
+          data.popper.left
+        }px, ${data.popper.top + 20}px, 0)`;
       } else if (data.placement.indexOf('right') === 0) {
-        this._preAnimationTransformStyle =
-          `translate3d(${data.popper.left - 20}px, ${data.popper.top}px, 0)`;
+        this._preAnimationTransformStyle = `translate3d(${data.popper.left -
+          20}px, ${data.popper.top}px, 0)`;
       } else if (data.placement.indexOf('bottom') === 0) {
-        this._preAnimationTransformStyle =
-          `translate3d(${data.popper.left}px, ${data.popper.top - 20}px, 0)`;
+        this._preAnimationTransformStyle = `translate3d(${
+          data.popper.left
+        }px, ${data.popper.top - 20}px, 0)`;
       } else if (data.placement.indexOf('left') === 0) {
-        this._preAnimationTransformStyle =
-          `translate3d(${data.popper.left + 20}px, ${data.popper.top}px, 0)`;
+        this._preAnimationTransformStyle = `translate3d(${data.popper.left +
+          20}px, ${data.popper.top}px, 0)`;
       } else {
         this._preAnimationTransformStyle = data.styles.transform;
       }
@@ -241,7 +264,7 @@ export class Popover {
 
     this._popper = new Popper(this._reference, this._popoverElement, {
       modifiers: {
-        applyStyle: {enabled: true},
+        applyStyle: { enabled: true },
         applyChiStyle: {
           enabled: true,
           fn: savePopperData,
@@ -278,8 +301,22 @@ export class Popover {
   }
 
   componentDidLoad(): void {
+    this._documentClickHandler = () => {
+      !this._closePrevented && !this.preventAutoHide && this.hide();
+    };
+    this._documentKeyHandler = e => {
+      if (
+        !this.preventAutoHide &&
+        'key' in e &&
+        (e.key === 'Escape' || e.key === 'Esc' || e.key === ESCAPE_KEYCODE)
+      ) {
+        this.hide();
+      }
+    };
     this._configurePopoverPopper();
     this._componentLoaded = true;
+    document.addEventListener('click', this._documentClickHandler);
+    document.addEventListener('keyup', this._documentKeyHandler);
   }
 
   componentDidUnload(): void {
@@ -289,6 +326,8 @@ export class Popover {
     }
     this.currentAnimation = null;
     this._componentLoaded = false;
+    document.removeEventListener('click', this._documentClickHandler);
+    document.removeEventListener('keyup', this._documentKeyHandler);
   }
 
   componentDidUpdate(): void {
@@ -296,6 +335,14 @@ export class Popover {
       const cb = this._didUpdateCallBackOnceQueue.shift();
       cb();
     }
+  }
+
+  preventAutoClose() {
+    this._closePrevented = true;
+    window.clearTimeout(this._closePreventedTimeout);
+    this._closePreventedTimeout = window.setTimeout(() => {
+      this._closePrevented = false;
+    }, 100);
   }
 
   hostData() {
@@ -313,11 +360,12 @@ export class Popover {
           ${this.arrow ? '' : '-no-arrow'}
           ${this._animationClasses}
         `}
-        ref={(el) => this._popoverElement = el as HTMLElement}
+        ref={el => (this._popoverElement = el as HTMLElement)}
         aria-hidden={!this.active}
+        onClick={() => this.preventAutoClose()}
       >
-        <slot/>
-        {this.arrow && <div class="a-arrow"/>}
+        <slot />
+        {this.arrow && <div class="a-arrow" />}
       </div>
     );
   }

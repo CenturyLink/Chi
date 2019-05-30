@@ -17,3 +17,5 @@ export const ANIMATION_DURATION = {
   MEDIUM: 500,
   LONG: 1000
 };
+
+export const ESCAPE_KEYCODE = '27';
