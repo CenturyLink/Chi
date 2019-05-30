@@ -29,7 +29,14 @@ At this point you will be able to target the styles available in Chi by referenc
 The way to setup your development environment is with Docker. First make sure you have Docker installed, then run the command:
 
 ``` sh
-$ scripts/docker.sh start
+$ scripts/docker.sh alias
+$ source ~/.bash_profile
+```
+
+Now your environment it's set up. To start development run:
+
+``` sh
+$ chi start
 ```
 
 Once the container has been bootstrapped and the Chi project has started, connect to [http://localhost:8000](http://localhost:8000) in your browser to load Chi. While running, any changes to the Chi source will be automatically reloaded in your browser.
@@ -41,7 +48,7 @@ The project has been configured to run inside a Docker container so it won't wor
 We use [BackstopJS](https://garris.github.io/BackstopJS) for visual regression testing of our CSS components. In order to account for differences in development environments we always run these tests in a consistent Docker container. To execute the test suite, run the following command:
 
 ``` sh
-$ scripts/docker.sh test
+$ chi test
 ```
 
 A report containing the results of the test will be created under `reports/html_report`. If there were failures, you will need to visually examine the changes and act appropriately based on the anticipated results.
@@ -49,7 +56,7 @@ A report containing the results of the test will be created under `reports/html_
 If you receive a test failure and you've made changes that you know are correct, you will need to override the test references with your new changes by running the `approve` command on BackstopJS:
 
 ``` sh
-$ scripts/docker.sh approve
+$ chi approve
 ```
 
 Once you have approved the changes, commit the new reference files with your changes.
@@ -59,7 +66,7 @@ Once you have approved the changes, commit the new reference files with your cha
 Use the build command to make a ready-to-production build:
 
 ``` sh
-$ scripts/docker.sh build
+$ chi build
 ```
 
 ## License

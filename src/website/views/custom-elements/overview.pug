@@ -99,7 +99,7 @@ p.-text
 
 .-mb--2
   :code(lang='bash')
-    $ scripts/docker.sh start
+    $ chi start
 
 p.-text
   | Once the container has been bootstrapped and the Chi project has started, connect to
@@ -114,13 +114,13 @@ p.-text
   | <a target="_blank" href="https://www.cypress.io">Cypress</a> is used for end-to-end testing. Tests are located in the
   | <code>cypress/integration</code> folder. To make them run:
 :code(lang='bash')
-  $ scripts/docker.sh test-e2e
+  $ chi test-e2e
 
 p.-text
   | You can run end-to-end tests interactively by launching the <code>start</code> command and open a local version of
   | the Cypress application. Then select the ux-chi root folder as the project folder.
 :code(lang='bash')
-  $ scripts/docker.sh start
+  $ chi start
 
 h3 Visual regression tests
 p.-text
@@ -134,7 +134,7 @@ p.-text
 p.-text
   | This tests are run by the common test command
 :code(lang='bash')
-  $ scripts/docker.sh test
+  $ chi test
 p.-text Reports are available in the <code>reports/html_report/non_responsive_ce/</code> folder.
 
 h2 Style guide

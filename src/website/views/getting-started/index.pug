@@ -36,7 +36,14 @@ p.-text
 
 .-mb--2
   :code(lang='bash')
-    $ scripts/docker.sh start
+    scripts/docker.sh alias
+    source ~/.bash_profile
+
+  | Now your environment it's set up. To start development run:
+
+.-mb--2
+  :code(lang='bash')
+    chi start
 
 p.-text
   | Once the container has been bootstrapped and the Chi project has started, connect to <a href="http://localhost:8000">http://localhost:8000</a>
@@ -52,7 +59,7 @@ p.-text
 
 .-mb--2
   :code(lang='bash')
-    $ scripts/docker.sh test
+    chi test
 
 p.-text
   | A report containing the results of the test will be created under <code>reports/html_report</code>. If there were failures,
@@ -64,7 +71,7 @@ p.-text
 
 .-mb--2
   :code(lang='bash')
-    $ scripts/docker.sh approve
+    chi approve
 
 p.-text.-mb--3 Once you have approved the changes, commit the new reference files with your changes.
 
@@ -72,4 +79,4 @@ h3 Production
 p.-text Use the build command to make a ready-to-production build:
 .-mb--2
   :code(lang='bash')
-    $ scripts/docker.sh build
+    chi build
