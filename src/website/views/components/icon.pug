@@ -95,13 +95,25 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
 h3 Colors
 p.-text By default, icons are the same color as text. Use Chi text color utilities to set a specific color.
 .example.-mb--3
-  .-p--3
-    .a-grid.-align-items--end
-      each color in ['base', 'primary', 'success', 'warning', 'danger', 'inverse', 'muted']
-        div.-p--2
-          div(class=`a-icon -md -text--${color}`)
+  .a-grid.-noGutter
+    .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap
+      each type in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--muted']
+        div.-p--1.-p-sm--2.-text--center
+          div(class=`a-icon -md -${type}`)
             svg
               use(xlink:href='#icon-logo-centurylink')
+    .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap(style="background:#000;")
+      each type in ['text--secondary', 'text--light']
+        if (type === 'text--secondary')
+          div.-p--1.-p-sm--2.-text--center
+            div(class=`a-icon -md -text--secondary`)
+              svg
+                use(xlink:href='#icon-logo-centurylink')
+        else if (type === 'text--light')
+          div.-p--1.-p-sm--2.-text--center
+            div(class=`a-icon -md -text--light`)
+              svg
+                use(xlink:href='#icon-logo-centurylink')
   ul#a-tabs--colors.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-panel--colors-svg') SVG
@@ -109,22 +121,28 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
       a(href='#a-tabs-panel--colors-webfont') Web Font
   #a-tabs-panel--colors-svg.a-tabs-panel.-active
     :code(lang="html")
+      <!-- For light backgrounds -->
       <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--primary"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--success"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--warning"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--danger"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -text--inverse"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--muted"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <!-- For dark backgrounds -->
+      <div class="a-icon -md -text--secondary"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -text--light"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
   #a-tabs-panel--colors-webfont.a-tabs-panel
     :code(lang="html")
+      <!-- For light backgrounds -->
       <i class="a-icon icon-logo-centurylink -md"></i>
       <i class="a-icon icon-logo-centurylink -md -text--primary"></i>
       <i class="a-icon icon-logo-centurylink -md -text--success"></i>
       <i class="a-icon icon-logo-centurylink -md -text--warning"></i>
       <i class="a-icon icon-logo-centurylink -md -text--danger"></i>
-      <i class="a-icon icon-logo-centurylink -md -text--inverse"></i>
       <i class="a-icon icon-logo-centurylink -md -text--muted"></i>
+      <!-- For dark backgrounds -->
+      <i class="a-icon icon-logo-centurylink -md -text--secondary"></i>
+      <i class="a-icon icon-logo-centurylink -md -text--light"></i>
 
 h3 UI Icons
 .a-grid.icon-library.-pt--2.-pb--6
