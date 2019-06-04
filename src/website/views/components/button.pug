@@ -11,12 +11,12 @@ p.-text
   | Although buttons were designed for the <code>&lt;button&gt;</code> element, Chi
   | also supports button classes on <code>&lt;a&gt;</code> and <code>&lt;input&gt;</code> elements.
 .example.-mb--3
-  .-p--3.-d--flex
-    button.a-btn.-mr--2 Button
-    a.a-btn.-mr--2 Link
-    input(class='a-btn -mr--2', type='button', value='Input')
-    input(class='a-btn -mr--2', type='submit', value='Submit')
-    input(class='a-btn -mr--2', type='reset', value='Reset')
+  .-p--2
+    button.a-btn.-m--1 Button
+    a.a-btn.-m--1 Link
+    input(class='a-btn -m--1', type='button', value='Input')
+    input(class='a-btn -m--1', type='submit', value='Submit')
+    input(class='a-btn -m--1', type='reset', value='Reset')
   :code(lang='html')
     <!-- default tag -->
     <button class="a-btn">Button</button>
@@ -146,16 +146,16 @@ p.-text
 
 h4 Labeled icon buttons
 .example.-mb--3
-  .-p--3
-    button(class=`a-btn -mr--2`)
+  .-p--2
+    button(class=`a-btn -m--1`)
       .a-btn__content
         i.a-icon.icon-atom
         span Button
-    button(class=`a-btn -mr--2`)
+    button(class=`a-btn -m--1`)
       .a-btn__content
         span Button
         i.a-icon.icon-atom
-    button(class=`a-btn -mr--2`)
+    button(class=`a-btn -m--1`)
       .a-btn__content
         i.a-icon.icon-atom
         span Button
@@ -264,10 +264,10 @@ p.-text
   | For special cases, such as styling a destructive action in an
   | application (e.g. Delete Account), a <code>-danger</code> button may be used.
 .example.-mb--3
-  .-p--3
-      button(class=`a-btn -danger -mr--2`) Danger
-      button(class=`a-btn -danger -outline -mr--2`) Danger
-      button(class=`a-btn -danger -flat`) Danger
+  .-p--2
+      button(class=`a-btn -danger -m--1`) Danger
+      button(class=`a-btn -danger -outline -m--1`) Danger
+      button(class=`a-btn -danger -flat -m--1`) Danger
   :code(lang='html')
     <button class="a-btn -danger">Danger</button>
     <button class="a-btn -danger -outline">Danger</button>
