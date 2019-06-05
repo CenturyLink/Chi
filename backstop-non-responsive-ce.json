@@ -60,6 +60,30 @@
       "requireSameDimensions": true
     },
     {
+      "label": "badges",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/badges.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-solid",
+        ".test-outline",
+        ".test-flat",
+        ".test-pill-solid",
+        ".test-pill-outline"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "buttons",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/custom-elements/buttons.html",
