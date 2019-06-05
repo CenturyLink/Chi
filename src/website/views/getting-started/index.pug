@@ -31,7 +31,7 @@ p.-text.-mb--3
 
 h3 Development Workflow
 p.-text
-  | The way to setup your development environment is with Docker. First make sure you have Docker installed, then run
+  | Set up your Chi development environment with Docker. First make sure you have Docker installed, then run
   | the command:
 
 .-mb--2
@@ -39,7 +39,7 @@ p.-text
     scripts/docker.sh alias
     source ~/.bash_profile
 
-p.-text Now your environment it's set up. To start development run:
+p.-text Now your environment is set up. To start development run:
 
 .-mb--2
   :code(lang='bash')
@@ -47,9 +47,9 @@ p.-text Now your environment it's set up. To start development run:
 
 p.-text
   | Once the container has been bootstrapped and the Chi project has started, connect to <a href="http://localhost:8000">http://localhost:8000</a>
-  | in your browser to load Chi. While running, any changes to the Chi source will be automatically reloaded in your browser.
+  | in your browser to load Chi. While running, any changes to the Chi source will automatically be reloaded in your browser.
 
-p.-text The project has been configured to run inside a Docker container so it won't work as a regular node application.
+p.-text.-mb--3 The project has been configured to run inside a Docker container so it won't work as a regular node application.
 
 h3 Testing Changes
 p.-text
@@ -77,6 +77,6 @@ p.-text.-mb--3 Once you have approved the changes, commit the new reference file
 
 h3 Production
 p.-text Use the build command to make a ready-to-production build:
-.-mb--2
+.-mb--4
   :code(lang='bash')
     chi build
