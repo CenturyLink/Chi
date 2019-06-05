@@ -4,10 +4,6 @@
 $hr-sizes: (h1, h2, h3, h4, h5, h6);
 
 $states: (
-  light: (
-    background-color: set-color(white),
-    border-color: set-color(grey, 30)
-  ),
   success: (
     background-color: set-color(mint, 10),
     border-color: set-color(mint, 30)
@@ -24,15 +20,15 @@ $states: (
     background-color: set-color(navy, 10),
     border-color: set-color(navy, 30)
   ),
-  dark: (
+  muted: (
     background-color: set-color(grey, 10),
     border-color: set-color(grey, 30)
   )
 );
 
 .m-alert {
-  background-color: map-get(map-get($states, light), background-color);
-  border-color: map-get(map-get($states, light), border-color);
+  background-color: set-color(white);
+  border-color: set-color(grey, 30);
   border-radius: $border-radius;
   border-style: solid;
   border-width: 0.0625rem;

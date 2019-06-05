@@ -12,7 +12,7 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--1
-    each type in ['success', 'danger', 'warning', 'info', 'light', 'dark']
+    each type in ['success', 'danger', 'warning', 'info', 'muted']
       .m-alert.-bubble.-m--2(class=`-${type}`)
         = `This is a ${type} alert`
   :code(lang="html")
@@ -20,13 +20,12 @@ h4 Base
     <div class="m-alert -bubble -danger" role="alert">This is a danger alert</div>
     <div class="m-alert -bubble -warning" role="alert">This is a warning alert</div>
     <div class="m-alert -bubble -info" role="alert">This is an info alert</div>
-    <div class="m-alert -bubble -light" role="alert">This is a light alert</div>
-    <div class="m-alert -bubble -dark" role="alert">This is a dark alert</div>
+    <div class="m-alert -bubble -muted" role="alert">This is a muted alert</div>
 
 h4 Icons
 .example.-mb3
   .-p1
-    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .m-alert.-bubble.-m2(class=`-${type}`)
         i.a-icon.-sm--2(class =`${val} -text--${type}`)
         = `This is a ${type} alert`
@@ -47,13 +46,9 @@ h4 Icons
       <i class="a-icon -sm--2 icon-circle-info -text--info"></i>
       This is a info alert
     </div>
-    <div class="m-alert -bubble -light" role="alert">
-      <i class="a-icon -sm--2 icon-circle-info-outline -text--light"></i>
-      This is a light alert
-    </div>
-    <div class="m-alert -bubble -dark" role="alert">
-      <i class="a-icon -sm--2 icon-circle-info -text--dark"></i>
-      This is a dark alert
+    <div class="m-alert -bubble -muted" role="alert">
+      <i class="a-icon -sm--2 icon-circle-info -text--muted"></i>
+      This is a muted alert
     </div>
 
 h5 Icon Center
@@ -182,7 +177,7 @@ p.-text
 
 .example.-mb3
   .-p1
-    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', light:'icon-circle-info-outline', dark:'icon-circle-info'}
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .m-alert.-toast.-m--2(class=`-${type}`)
         .m-alert__content
           i.a-icon.-sm--2(class =`${val} -text--${type}`)
@@ -249,26 +244,12 @@ p.-text
         </div>
       </button>
     </div>
-    <div class="m-alert -toast -light" role="alert">
+    <div class="m-alert -toast -muted" role="alert">
       <div class="m-alert__content">
-        <i class="a-icon -sm--2 icon-circle-info-outline -text--light"></i>
+        <i class="a-icon -sm--2 icon-circle-info -text--muted"></i>
         <div>
-          <div class="a-h5">success</div>
-          This is a success alert
-        </div>
-      </div>
-      <button class="a-btn -icon -close -sm">
-        <div class="a-btn__content">
-          <i class="a-icon icon-x"></i>
-        </div>
-      </button>
-    </div>
-    <div class="m-alert -toast -dark" role="alert">
-      <div class="m-alert__content">
-        <i class="a-icon -sm--2 icon-circle-info -text--dark"></i>
-        <div>
-          <div class="a-h5">dark</div>
-          This is a dark alert
+          <div class="a-h5">muted</div>
+          This is a muted alert
         </div>
       </div>
       <button class="a-btn -icon -close -sm">
