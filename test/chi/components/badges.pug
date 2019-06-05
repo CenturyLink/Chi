@@ -1,25 +1,25 @@
 ---
 title: Badges
----
 
+---
 each type in ['solid', 'outline', 'flat']
   div(class=`test-${type}`)
     span.a-h2= `Badge / ${type}`
     div
-      each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'inverse', 'light']
+      each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'light']
         div(
         class="a-badge -mr--1"
         class={
-          [`-${type}`]: type != 'solid',
-          [`-${style}`]: style != 'base'
+          [`-${type}`]: type !== 'solid',
+          [`-${style}`]: style !== 'base'
         }
         )
           span= style
         div(
         class="a-badge -mr--1"
         class={
-          [`-${type}`]: type != 'solid',
-          [`-${style}`]: style != 'base'
+          [`-${type}`]: type !== 'solid',
+          [`-${style}`]: style !== 'base'
         }
         )
           .a-badge__content
@@ -33,21 +33,21 @@ each type in ['solid', 'outline']
     span.a-h2= `Badge / Pill / ${type}`
     table(cellpadding="0", cellspacing="0")
       tr
-        each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'inverse', 'light']
+        each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'light']
           td
             div(
             class="a-badge -pill -mr--1"
             class={
-              [`-${type}`]: type != 'solid',
-              [`-${style}`]: style != 'base'
+              [`-${type}`]: type !== 'solid',
+              [`-${style}`]: style !== 'base'
             }
             )
               span 50
             div(
             class="a-badge -pill -mr--1"
             class={
-              [`-${type}`]: type != 'solid',
-              [`-${style}`]: style != 'base'
+              [`-${type}`]: type !== 'solid',
+              [`-${style}`]: style !== 'base'
             }
             )
               .a-badge__content

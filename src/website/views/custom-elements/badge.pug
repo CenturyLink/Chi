@@ -1,0 +1,193 @@
+---
+title: Badge
+scripts:
+  - js/ce/ux-chi-ce
+
+---
+p.-text Badges are inline elements used to label, categorize, or organize a list of items.
+
+h3 Examples
+p.-text
+  | To display a badge, use the tag <code>&lt;chi-badge&gt;</code>.
+  | A contextual color (e.g. <code>dark</code>) can also be set to <code>color</code> attribute to provide alternate styling.
+
+h4 Base
+.example.-mb--3
+  .a-grid.-noGutter
+    .a-col.-w--12
+      .-p--2.-text--center
+        chi-badge(class='-m--1')= 'Base'
+        chi-badge(class='-m--1', color='primary')= 'Primary'
+        chi-badge(class='-m--1', color='success')= 'Success'
+        chi-badge(class='-m--1', color='warning')= 'Warning'
+        chi-badge(class='-m--1', color='danger')= 'Danger'
+        chi-badge(class='-m--1', color='dark')= 'Dark'
+        chi-badge(class='-m--1', color='muted')= 'Muted'
+    .a-col.-w--12
+      .-p--2.-bg--black.-text--center
+        chi-badge(class='-m--1', color='secondary')= 'Secondary'
+        chi-badge(class='-m--1', color='light')= 'Light'
+  :code(lang='html')
+    <!-- For light backgrounds -->
+    <chi-badge>Base</chi-badge>
+    <chi-badge color='primary'>Primary</chi-badge>
+    <chi-badge color='success'>Success</chi-badge>
+    <chi-badge color='warning'>Warning</chi-badge>
+    <chi-badge color='danger'>Danger</chi-badge>
+    <chi-badge color='dark'>Dark</chi-badge>
+    <chi-badge color='muted'>Muted</chi-badge>
+    <!-- For dark backgrounds -->
+    <chi-badge color='secondary'>Secondary</chi-badge>
+    <chi-badge color='light'>Light</chi-badge>
+
+h4 Outline
+.example.-mb--3
+  .a-grid.-noGutter
+    .a-col.-w--12
+      .-p--2.-text--center
+        chi-badge(class='-m--1', color='primary', outline)= 'Primary'
+        chi-badge(class='-m--1', color='success', outline)= 'Success'
+        chi-badge(class='-m--1', color='warning', outline)= 'Warning'
+        chi-badge(class='-m--1', color='danger', outline)= 'Danger'
+        chi-badge(class='-m--1', color='dark', outline)= 'Dark'
+        chi-badge(class='-m--1', color='muted', outline)= 'Muted'
+    .a-col.-w--12
+      .-p--2.-bg--black.-text--center
+        chi-badge(class='-m--1', color='secondary', outline)= 'Secondary'
+        chi-badge(class='-m--1', color='light', outline)= 'Light'
+  :code(lang="html")
+    <!-- For light backgrounds -->
+    <chi-badge color='primary' outline>Primary</chi-badge>
+    <chi-badge color='success' outline>Success</chi-badge>
+    <chi-badge color='warning' outline>Warning</chi-badge>
+    <chi-badge color='danger' outline>Danger</chi-badge>
+    <chi-badge color='dark' outline>Dark</chi-badge>
+    <chi-badge color='muted' outline>Muted</chi-badge>
+    <!-- For dark backgrounds -->
+    <chi-badge color='secondary' outline>Secondary</chi-badge>
+    <chi-badge color='light' outline>Light</chi-badge>
+
+h4 Flat
+.example.-mb--3
+  .a-grid.-noGutter
+    .a-col.-w--12
+      .-p--2.-text--center
+        chi-badge(class='-m--1', color='primary', flat)= 'Primary'
+        chi-badge(class='-m--1', color='success', flat)= 'Success'
+        chi-badge(class='-m--1', color='warning', flat)= 'Warning'
+        chi-badge(class='-m--1', color='danger', flat)= 'Danger'
+        chi-badge(class='-m--1', color='dark', flat)= 'Dark'
+        chi-badge(class='-m--1', color='muted', flat)= 'Muted'
+    .a-col.-w--12
+      .-p--2.-bg--black.-text--center
+        chi-badge(class='-m--1', color='secondary', flat)= 'Secondary'
+        chi-badge(class='-m--1', color='light', flat)= 'Light'
+  :code(lang="html")
+    <!-- For light backgrounds -->
+    <chi-badge color='primary' flat>Primary</chi-badge>
+    <chi-badge color='success' flat>Success</chi-badge>
+    <chi-badge color='warning' flat>Warning</chi-badge>
+    <chi-badge color='danger' flat>Danger</chi-badge>
+    <chi-badge color='dark' flat>Dark</chi-badge>
+    <chi-badge color='muted' flat>Muted</chi-badge>
+    <!-- For dark backgrounds -->
+    <chi-badge color='secondary' flat>Secondary</chi-badge>
+    <chi-badge color='light' flat>Light</chi-badge>
+
+h3 Pills
+p.-text Use the <code>pill</code> attribute to render badges with a more pronounced border-radius.
+.example.-mb--3
+  .-p--2
+    chi-badge(class='-m--1', pill)= 'Badge'
+  :code(lang="html")
+    <chi-badge pill>Badge</chi-badge>
+
+h3 Icon badges
+p.-text Icons can be placed before, after, or on both sides of text.
+.example.-mb--3
+  .-p--2
+    chi-badge(class='-m--1')
+      chi-icon(icon='plus', size='xs')
+      span Badge
+    chi-badge(class='-m--1')
+      span Badge
+      chi-icon(icon='x', size='xs')
+    chi-badge(class='-m--1', flat, color='success')
+      chi-icon(icon='circle')
+      span Active
+    chi-badge(class='-m--1', flat, color='warning')
+      chi-icon(icon='circle-clock')
+      span Away
+    chi-badge(class='-m--1', flat, color='danger')
+      chi-icon(icon='circle-minus')
+      span Do not Disturb
+    chi-badge(class='-m--1', flat, color='muted')
+      chi-icon(icon='circle')
+      span Offline
+  :code(lang="html")
+    <chi-badge>
+      <chi-icon icon='plus'></chi-icon>
+      <span>Badge</Badge>
+    </chi-badge>
+    <chi-badge>
+      <span>Badge</Badge>
+      <chi-icon icon='x'></chi-icon>
+    </chi-badge>
+    <chi-badge flat color='success'>
+      <chi-icon icon='circle'></chi-icon>
+      <span>Active</Badge>
+    </chi-badge>
+    <chi-badge flat color='warning'>
+      <chi-icon icon='circle-clock'></chi-icon>
+      <span>Away</Badge>
+    </chi-badge>
+    <chi-badge flat color='danger'>
+      <chi-icon icon='circle-minus'></chi-icon>
+      <span>Do not Disturb</Badge>
+    </chi-badge>
+    <chi-badge flat color='muted'>
+      <chi-icon icon='circle'></chi-icon>
+      <span>Offline</Badge>
+    </chi-badge>
+
+h3 Additional Sizes
+h4 Small
+p.-text Set the attribute <code>size</code> to <code>small</code> to render small badges.
+.example.-mb--3
+  .-p--2
+    chi-badge(size='small', class='-m--1')= 'Badge'
+    chi-badge(size='small', class='-m--1', flat)
+      chi-icon(icon='atom')
+      span Badge
+  :code(lang="html")
+    <chi-badge size='small'>Badge</chi-badge>
+    <chi-badge size='small' flat>
+      <chi-icon icon='atom'></chi-icon>
+      <span>Badge</span>
+    </chi-badge>
+h4 Smaller
+p.-text Set the attribute <code>size</code> to <code>smaller</code> to render even smaller badges.
+.example.-mb--3
+  .-p--2
+    chi-badge(size='smaller', class='-m--1')= 'Badge'
+    chi-badge(size='smaller', class='-m--1', flat)
+      chi-icon(icon='atom')
+      span Badge
+  :code(lang="html")
+    <chi-badge size='smaller'>Badge</chi-badge>
+    <chi-badge size='smaller' flat>
+      <chi-icon icon='atom'></chi-icon>
+      <span>Badge</span>
+    </chi-badge>
+h3 Text Transform
+p.-text Set the <code>text-transform</code> attribute to <code>uppercase</code> to render badges in uppercase,
+  | <code>lowercase</code> to render badges in lowercase and <code>capitalized</code> to render badges as capitalized.
+.example.-mb--3
+  .-p--2
+    chi-badge(text-transform='uppercase', class='-m--1')= 'Badge'
+    chi-badge(text-transform='lowercase', class='-m--1')= 'BADGE'
+    chi-badge(text-transform='capitalized', class='-m--1')= 'badge'
+  :code(lang="html")
+    <chi-badge text-transform='uppercase'>Badge</chi-badge>
+    <chi-badge text-transform='lowercase'>BADGE</chi-badge>
+    <chi-badge text-transform='captalized'>badge</chi-badge>
