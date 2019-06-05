@@ -1,5 +1,24 @@
 # CHANGELOG
 
+### 1.2.2 (June 5, 2019)
+
+* Added text and background utility for CenturyLink's primary grey.
+* Added support for -muted to Alert component.
+* Removed support for -light and -dark from Alert component.
+* Fixed Expansion Panel component bug which failed to apply active styles to active panel step numbers.
+* Updated Footer component with correct legal links.
+* Updated base Header and Footer components to use the black Brand logo for consistency with dot com.
+* Fixed Icon Button bug which rendered incorrect padding on :active when a size class was defined.
+* Fixed Tab component animation which was buggy on -lg sized horizontal tabs.
+* Created chi alias to run all development environment commands.
+* Fixed wrapping and margin bugs in documentation examples.
+* Renamed text color utility from -text--inverse to -text--light.
+* Added new reference images for BackstopJS regression tests.
+* Updated development environment tasks to run in Docker.
+* Fixed responsive behavior in Activity component.
+* Updated Authentication templates with Floating Label Input component.
+* Improved design of disabled icon buttons to look more disabled.
+
 ### 1.2.1 (May 17, 2019)
 
 * Fixed Sidenav animation.
