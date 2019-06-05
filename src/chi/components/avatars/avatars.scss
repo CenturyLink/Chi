@@ -12,7 +12,7 @@ $avatar-sizes: (
   lg: 4rem,
   xl: 6rem,
   xxl: 8rem);
-$avatar-colors: (grey, red, pink, purple, indigo, navy, blue, teal, mint, green, yellow, orange, inverse, secondary, primary);
+$avatar-colors: (grey, red, pink, purple, indigo, navy, blue, teal, mint, green, yellow, orange, light, inverse, secondary, primary);
 $avatar-default-size: 'md';
 
 .a-avatar {
@@ -68,7 +68,11 @@ $avatar-default-size: 'md';
   @each $color in $avatar-colors {
     &.-#{$color} {
 
-      @if( $color == 'inverse') {
+      @if( $color == 'light') {
+        background-color: transparent;
+        border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get($colorscheme, white);
+        color: map-get($colorscheme, white);
+      } @else if( $color == 'inverse') {
         background-color: transparent;
         border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get($colorscheme, white);
         color: map-get($colorscheme, white);

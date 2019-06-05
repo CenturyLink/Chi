@@ -12,12 +12,12 @@ p.-text Wrap spinners in <code>a-backdrop</code> to overlay content similar to a
 h4 Base
 .example.-mb--3
   .a-backdrop.-p--6(style="position:relative;height:25rem;")
-    svg(class=`a-spinner -text--inverse`,viewBox=`0 0 66 66`)
+    svg(class=`a-spinner -text--light`,viewBox=`0 0 66 66`)
       title Loading
       circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
   :code(lang="html")
     <div class="a-backdrop">
-      <svg class="a-spinner -text--inverse" viewBox="0 0 66 66">
+      <svg class="a-spinner -text--light" viewBox="0 0 66 66">
         <title>Loading</title>
         <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
       </svg>
@@ -198,16 +198,31 @@ p.-text
   | Use <a href="../../utilities/text">text utilities</a> such as <code>-text--primary</code>
   | and <code>-text--muted</code> to change the color of any spinner.
 .example.-mb--3
-  .-m--3
-    .a-grid.-align-items--center
+  .a-grid.-noGutter
+    .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap
       each type in ['text--primary', 'text--success', 'text--warning', 'text--danger', 'text--muted']
-        div.-p--2
+        div.-p--2.-text--center
           svg(class=`a-spinner -${type} -md -m--3`,viewBox=`0 0 66 66`)
             title Loading
             circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
-            p.-text(class=`-${type}`)
+            p.-text(class=`-${type} -px--1`)
               = `-${type}`
+    .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap.-bg--black
+      each type in ['text--secondary', 'text--light']
+        if (type === 'text--secondary')
+          div.-p--2.-text--center
+            svg(class=`a-spinner -text--secondary -md -m--3`,viewBox=`0 0 66 66`)
+              title Loading
+              circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+              p.-text.-text--secondary.-px--1 -text--secondary
+        else if (type === 'text--light')
+          div.-p--2.-text--center
+            svg(class=`a-spinner -text--light -md -m--3`,viewBox=`0 0 66 66`)
+              title Loading
+              circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+              p.-text.-text--light.-px--1 -text--light
   :code(lang="html")
+    <!-- For light backgrounds -->
     <svg class="a-spinner -text--primary" viewBox="0 0 66 66">
       <title>Loading</title>
       <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
@@ -225,6 +240,15 @@ p.-text
       <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
     </svg>
     <svg class="a-spinner -text--muted" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <!-- For dark backgrounds -->
+    <svg class="a-spinner -text--secondary" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <svg class="a-spinner -text--light" viewBox="0 0 66 66">
       <title>Loading</title>
       <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
     </svg>

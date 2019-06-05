@@ -2,7 +2,7 @@
 title: Avatar
 ---
 - var types = ['img', 'icon', 'icon-web-font', 'letter', 'double-letter'];
-- var colors = ["default", "grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "mint", "green", "yellow", "orange", "inverse", "secondary", "primary"];
+- var colors = ["default", "grey", "red", "pink", "purple", "indigo", "navy", "blue", "teal", "mint", "green", "yellow", "orange", "light", "secondary", "primary", "inverse"];
 - var sizes = ['default', 'xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
 - var transparents = [false, true];
 
@@ -18,9 +18,9 @@ each type in types
       tbody
         each color in colors
           each transparent in transparents
-            if !transparent || (color!=='default' && color!=='inverse' && (type==='icon' || type==='icon-web-font' || type==='letter' || type==='double-letter'))
-              tr(class={'-bg--black': color==='inverse'})
-                td(class={'-text--white': color==='inverse'})=color + (transparent ? ' trans bg' : '')
+            if !transparent || (color!=='default' && color!=='light' && color!=='inverse' && (type==='icon' || type==='icon-web-font' || type==='letter' || type==='double-letter'))
+              tr(class={'-bg--black': color==='light' || color==='inverse'})
+                td(class={'-text--white': color==='light' || color==='inverse'})=color + (transparent ? ' trans bg' : '')
                 each size in sizes
                   td.-p--1
                     if type === 'img'
