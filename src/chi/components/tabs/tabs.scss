@@ -256,7 +256,7 @@
   &.-lg, &.-large { //Legacy code: -large to be removed.
     height: 4rem;
 
-    & > li {
+    & > li:not(.a-sliding-border) {
       &:not(:first-child) {
         margin-left: 2rem;
       }
