@@ -23,7 +23,7 @@ section.a-table.-bordered.-mt--3.-mb--3
           th
             div Result
       tbody
-        each val, type in {'none':'none', 'primary': '#0047BB', 'secondary': '#48D597', 'white': '#FFFFFF', 'black': '#000000', 'grey-10': '#F8F9F9', 'grey-20': '#EDF0F2', 'success': '#097A49', 'warning': '#854E03','danger': '#B50D12'}
+        each val, type in {'none':'none', 'primary': '#0047BB', 'secondary': '#48D597', 'white': '#FFFFFF', 'black': '#000000', 'grey': '#53565A', 'grey-10': '#F8F9F9', 'grey-20': '#EDF0F2', 'success': '#097A49', 'warning': '#854E03','danger': '#B50D12'}
           tr
             td(width='25%')
               code= '-bg--' + type
@@ -51,7 +51,7 @@ section.a-table.-bordered.-mt--3.-mb--3
             div Value
       tbody
         each size in ['sm', 'md', 'lg', 'xl']
-          each type in ['none', 'primary', 'secondary', 'white', 'black', 'grey-10', 'grey-20', 'success', 'warning', 'danger']
+          each type in ['none', 'primary', 'secondary', 'white', 'black', 'grey', 'grey-10', 'grey-20', 'success', 'warning', 'danger']
             tr
               td.-text(width='40%')
                 code= '-bg-' + size + '--' + type
