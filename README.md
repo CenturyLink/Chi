@@ -26,20 +26,20 @@ At this point you will be able to target the styles available in Chi by referenc
 
 ## Development Workflow
 
-The way to setup your development environment is with Docker. First make sure you have Docker installed, then run the command:
+Set up your Chi development environment with Docker. First make sure you have Docker installed, then run the command:
 
 ``` sh
 $ scripts/docker.sh alias
 $ source ~/.bash_profile
 ```
 
-Now your environment it's set up. To start development run:
+Now your environment is set up. To start development run:
 
 ``` sh
 $ chi start
 ```
 
-Once the container has been bootstrapped and the Chi project has started, connect to [http://localhost:8000](http://localhost:8000) in your browser to load Chi. While running, any changes to the Chi source will be automatically reloaded in your browser.
+Once the container has been bootstrapped and the Chi project has started, connect to [http://localhost:8000](http://localhost:8000) in your browser to load Chi. While running, any changes to the Chi source will automatically be reloaded in your browser.
 
 The project has been configured to run inside a Docker container so it won't work as a regular node application.
 
