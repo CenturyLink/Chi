@@ -278,6 +278,10 @@ small,
   color: $muted-color;
 }
 
+.-text--grey {
+  color: $grey-color;
+}
+
 // line heights
 @for $index from 1 through 9 {
   .-lh--#{$index} {

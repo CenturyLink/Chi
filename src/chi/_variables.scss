@@ -184,6 +184,7 @@ $warning-color: map-get(map-get($colorscheme, yellow), 60);
 $dark-color: map-get(map-get($colorscheme, grey), 90);
 $light-color: map-get(map-get($colorscheme, grey), 30);
 $muted-color: map-get(map-get($colorscheme, grey), 60);
+$grey-color: map-get(map-get($colorscheme, grey), 70);
 
 // borders
 $border-color: rgba(0, 0, 0, 0.12);
