@@ -831,10 +831,6 @@ $sizes: (
           }
 
           &.-icon {
-            & .a-icon {
-              color: set-color(grey, 50);
-            }
-
             &:hover,
             &.-hover {
               background-color: transparent;
