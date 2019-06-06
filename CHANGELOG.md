@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### 1.2.2 (June 6, 2019)
+### 1.2.2 (June 7, 2019)
 
 * Added text and background utility for CenturyLink's primary grey.
 * Added support for -muted to Alert component.
