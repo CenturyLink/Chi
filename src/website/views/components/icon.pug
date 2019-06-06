@@ -12,7 +12,7 @@ h4 SVG & JS Method
 p.-text SVG based implementations provide better semantics, accessibility, rendering, and reliability. Place the following script in your projects footer to use this method.
 .-mb--2
   :code(lang='html')
-    <script src="https://assets.ctl.io/chi/1.2.1/chi-icons.js"></script>
+    <script src="https://assets.ctl.io/chi/1.2.2/chi-icons.js"></script>
 p.-text Then to render an SVG icon, apply the class <code>a-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
 .example.-mb--3
   .-p--3
@@ -95,25 +95,21 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
 h3 Colors
 p.-text By default, icons are the same color as text. Use Chi text color utilities to set a specific color.
 .example.-mb--3
-  .a-grid.-noGutter
-    .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap
-      each type in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--muted']
-        div.-p--1.-p-sm--2.-text--center
-          div(class=`a-icon -md -${type}`)
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-    .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap.-bg--black
-      each type in ['text--secondary', 'text--light']
-        if (type === 'text--secondary')
-          div.-p--1.-p-sm--2.-text--center
-            div(class=`a-icon -md -text--secondary`)
-              svg
-                use(xlink:href='#icon-logo-centurylink')
-        else if (type === 'text--light')
-          div.-p--1.-p-sm--2.-text--center
-            div(class=`a-icon -md -text--light`)
-              svg
-                use(xlink:href='#icon-logo-centurylink')
+  .-d--flex.-w--12.-justify-content--center.-flex--wrap.-p--1
+    each type in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--grey', 'text--muted']
+      div(class=`a-icon -md -${type} -m--1`)
+        svg
+          use(xlink:href='#icon-logo-centurylink')
+  .-d--flex.-w--12.-justify-content--center.-flex--wrap.-bg--black.-p--1
+    each type in ['text--secondary', 'text--light']
+      if (type === 'text--secondary')
+        div(class=`a-icon -md -text--secondary -m--1`)
+          svg
+            use(xlink:href='#icon-logo-centurylink')
+      else if (type === 'text--light')
+        div(class=`a-icon -md -text--light -m--1`)
+          svg
+            use(xlink:href='#icon-logo-centurylink')
   ul#a-tabs--colors.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-panel--colors-svg') SVG
@@ -127,6 +123,7 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
       <div class="a-icon -md -text--success"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--warning"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--danger"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -text--grey"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <div class="a-icon -md -text--muted"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
       <!-- For dark backgrounds -->
       <div class="a-icon -md -text--secondary"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
@@ -139,6 +136,7 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
       <i class="a-icon icon-logo-centurylink -md -text--success"></i>
       <i class="a-icon icon-logo-centurylink -md -text--warning"></i>
       <i class="a-icon icon-logo-centurylink -md -text--danger"></i>
+      <i class="a-icon icon-logo-centurylink -md -text--grey"></i>
       <i class="a-icon icon-logo-centurylink -md -text--muted"></i>
       <!-- For dark backgrounds -->
       <i class="a-icon icon-logo-centurylink -md -text--secondary"></i>
