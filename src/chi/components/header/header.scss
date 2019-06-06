@@ -235,7 +235,20 @@
     }
 
     .a-btn.-icon.-flat.-light {
-      color: set-color(grey, 50);
+      .a-icon {
+        color: set-color(grey, 50);
+      }
+
+      &:active,
+      &.-active,
+      &:focus,
+      &.-focus,
+      &:hover,
+      &.-hover {
+        .a-icon {
+          color: $text-white;
+        }
+      }
     }
   }
 }
