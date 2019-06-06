@@ -152,73 +152,73 @@ ol {
 
 p,
 .-text {
-  font-size: $text;
-  line-height: $line-height;
+  font-size: $text !important;
+  line-height: $line-height !important;
 }
 
 .-text--large {
-  font-size: $text-large;
-  line-height: $line-height-large;
+  font-size: $text-large !important;
+  line-height: $line-height-large !important;
 }
 
 .-text--larger {
-  font-size: $text-larger;
-  line-height: $line-height-larger;
+  font-size: $text-larger !important;
+  line-height: $line-height-larger !important;
 }
 
 small,
 .-text--small {
-  font-size: $text-small;
-  line-height: $line-height-small;
+  font-size: $text-small !important;
+  line-height: $line-height-small !important;
 }
 
 .-text--smaller {
-  font-size: $text-smaller;
-  line-height: $line-height-smaller;
+  font-size: $text-smaller !important;
+  line-height: $line-height-smaller !important;
 }
 
 .-text--justify {
-  text-align: justify;
+  text-align: justify !important;
 }
 
 .-text--left {
-  text-align: left;
+  text-align: left !important;
 }
 
 .-text--center {
-  text-align: center;
+  text-align: center !important;
 }
 
 .-text--right {
-  text-align: right;
+  text-align: right !important;
 }
 
 .-text--lowercase {
-  text-transform: lowercase;
+  text-transform: lowercase !important;
 }
 
 .-text--uppercase {
-  text-transform: uppercase;
+  text-transform: uppercase !important;
 }
 
 .-text--capitalized {
-  text-transform: capitalize;
+  text-transform: capitalize !important;
 }
 
 .-text--thin {
-  font-weight: 300;
+  font-weight: 300 !important;
 }
 
 .-text--normal {
-  font-weight: normal;
+  font-weight: normal !important;
 }
 
 .-text--bold {
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 
 .-text--bolder {
-  font-weight: 800;
+  font-weight: 800 !important;
 }
 
 .-text--nowrap {
@@ -226,60 +226,60 @@ small,
 }
 
 .-text--truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
 }
 
 // text colors
 .-text--body {
-  color: $text-color;
+  color: $text-color !important;
 }
 
 .-text--inverse {
-  color: $text-inverse;
+  color: $text-inverse !important;
 }
 
 .-text--white,
 .-text--light {
-  color: $text-white;
+  color: $text-white !important;
 }
 
 .-text--brand,
 .-text--primary {
-  color: $primary;
+  color: $primary !important;
 }
 
 .-text--secondary {
-  color: $secondary;
+  color: $secondary !important;
 }
 
 .-text--secondary-alt {
-  color: $secondary-alt;
+  color: $secondary-alt !important;
 }
 
 .-text--success {
-  color: $success-color;
+  color: $success-color !important;
 }
 
 .-text--danger {
-  color: $danger-color;
+  color: $danger-color !important;
 }
 
 .-text--info {
-  color: $info-color;
+  color: $info-color !important;
 }
 
 .-text--warning {
-  color: $warning-color;
+  color: $warning-color !important;
 }
 
 .-text--muted {
-  color: $muted-color;
+  color: $muted-color !important;
 }
 
 .-text--grey {
-  color: $grey-color;
+  color: $grey-color !important;
 }
 
 // line heights
