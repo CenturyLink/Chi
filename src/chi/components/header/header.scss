@@ -51,6 +51,19 @@
         margin-right: 2rem;
       }
     }
+
+    .a-btn.-icon.-flat.-dark {
+      color: set-color(grey, 60);
+
+      &:active,
+      &.-active,
+      &:focus,
+      &.-focus,
+      &:hover,
+      &.-hover {
+        color: set-color(grey, 100);
+      }
+    }
   }
 
   &__start {
@@ -219,6 +232,10 @@
         color: $secondary-color;
         border-bottom-color: $secondary-color;
       }
+    }
+
+    .a-btn.-icon.-flat.-light {
+      color: set-color(grey, 50);
     }
   }
 }
