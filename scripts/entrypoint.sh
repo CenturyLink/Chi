@@ -51,7 +51,12 @@ build() {
 
 test() {
     rm -rf /chi/reports /chi/test/bitmaps_test
-    
+    mkdir -p /chi/reports/html_report/non_responsive{,_ce}
+    mkdir -p /chi/reports/html_report/responsive
+    cp -a /chi/config/backstop_data/bitmaps_reference/non_responsive /chi/reports/html_report/non_responsive_ce/bitmaps_reference
+    cp -a /chi/config/backstop_data/bitmaps_reference/non_responsive /chi/reports/html_report/non_responsive/bitmaps_reference
+    cp -a /chi/config/backstop_data/bitmaps_reference/responsive /chi/reports/html_report/responsive/bitmaps_reference
+
     cd /chi
     npm run test
 }
