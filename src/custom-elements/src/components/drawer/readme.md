@@ -19,12 +19,12 @@
 
 ## Events
 
-| Event        | Description                                                                          | Type                |
-| ------------ | ------------------------------------------------------------------------------------ | ------------------- |
-| `chi:hidden` | Drawer has been hidden to the user. The animation has completed.                     | `CustomEvent<void>` |
-| `chi:hide`   | Drawer hide method has executed, but the closing animation has not started yet       | `CustomEvent<void>` |
-| `chi:show`   | Drawer show method has executed, but the showing animation has not started yet       | `CustomEvent<void>` |
-| `chi:shown`  | Drawer has been shown to the user and is fully visible. The animation has completed. | `CustomEvent<void>` |
+| Event              | Description                                                                          | Type                |
+| ------------------ | ------------------------------------------------------------------------------------ | ------------------- |
+| `chiDrawer:hidden` | Drawer has been hidden to the user. The animation has completed.                     | `CustomEvent<void>` |
+| `chiDrawer:hide`   | Drawer hide method has executed, but the closing animation has not started yet       | `CustomEvent<void>` |
+| `chiDrawer:show`   | Drawer show method has executed, but the showing animation has not started yet       | `CustomEvent<void>` |
+| `chiDrawer:shown`  | Drawer has been shown to the user and is fully visible. The animation has completed. | `CustomEvent<void>` |
 
 
 ## Methods
