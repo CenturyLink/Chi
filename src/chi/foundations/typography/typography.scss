@@ -152,8 +152,8 @@ ol {
 
 p,
 .-text {
-  font-size: $text !important;
-  line-height: $line-height !important;
+  font-size: $text;
+  line-height: $line-height;
 }
 
 .-text--large {
@@ -285,7 +285,7 @@ small,
 // line heights
 @for $index from 1 through 9 {
   .-lh--#{$index} {
-    line-height: ($index / 2) + rem;
+    line-height: ($index / 2) + rem !important;
   }
 }
 

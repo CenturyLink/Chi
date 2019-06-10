@@ -34,21 +34,21 @@ $screen-sizes-prefixes: (
     @each $position, $pos-suffix in $positions {
       @if ($position == a) {
         .-#{$attr-prefix}#{$size-infix}--#{$index} {
-          #{$attribute}: if($index == 'auto', $index, ($index / 2) + rem);
+          #{$attribute}: if($index == 'auto', $index, ($index / 2) + rem !important);
         }
       } @else if ($position == x) {
         .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
-          #{$attribute}-left: if($index == 'auto', $index, ($index / 2) + rem);
-          #{$attribute}-right: if($index == 'auto', $index, ($index / 2) + rem);
+          #{$attribute}-left: if($index == 'auto', $index, ($index / 2) + rem !important);
+          #{$attribute}-right: if($index == 'auto', $index, ($index / 2) + rem !important);
         }
       } @else if ($position == y) {
         .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
-          #{$attribute}-bottom: if($index == 'auto', $index, ($index / 2) + rem);
-          #{$attribute}-top: if($index == 'auto', $index, ($index / 2) + rem);
+          #{$attribute}-bottom: if($index == 'auto', $index, ($index / 2) + rem !important);
+          #{$attribute}-top: if($index == 'auto', $index, ($index / 2) + rem !important);
         }
       } @else {
         .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
-          #{$attribute}#{$pos-suffix}: if($index == 'auto', $index, ($index / 2) + rem);
+          #{$attribute}#{$pos-suffix}: if($index == 'auto', $index, ($index / 2) + rem !important);
         }
       }
     }
