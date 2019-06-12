@@ -1,7 +1,5 @@
 ---
 title: Popover
-styles:
-  - assets/styles/popover-ce
 scripts:
   - js/ce/ux-chi-ce
 ---
@@ -12,7 +10,7 @@ scripts:
   span.a-h2 Base
   div.-position--relative
     chi-popover(active)
-      .-px--2.-py--1.-s--3
+      .-px--2.-py--1
         h5 Popover!
         p This is a popover content.
 
@@ -21,16 +19,16 @@ each side in sides
     span.a-h2=`Simple side ${side}`
     .-position--relative
       chi-popover(position=side, active, arrow)
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is a popover content.
 
 each side in moreSides
-  div.-position--relative(class=`test-more-${side}`, data-cy=`test-more-${side}`)
+  div(class=`test-more-${side} -position--relative`, data-cy=`test-more-${side}`)
     span.a-h2=`Popper side ${side}`
     .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
       button(id=side).a-btn Popover
     chi-popover(position=side, arrow, reference=`#${side}`, active)
-      .-px--2.-py--1.-s--3
+      .-px--2.-py--1
         h5 Popover!
         p This is a popover content.

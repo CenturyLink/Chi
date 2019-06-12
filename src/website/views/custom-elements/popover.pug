@@ -2,8 +2,6 @@
 title: Popover
 scripts:
   - js/ce/ux-chi-ce
-styles:
-- assets/styles/popover-ce
 ---
 p.-text
   | Popovers provide a contextual space, attached to an element and in an upper z-index layer, where you can
@@ -29,12 +27,12 @@ p.-text
   .-p--3(style='height: 146px')
     .-position--relative
       chi-popover(active, prevent-auto-hide)
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is a popover content.
   :code(lang="html")
     <chi-popover active>
-      <div class="-px--2 -py--1 -s--3">
+      <div class="-px--2 -py--1">
         <h5>Popover!</h5>
         <p>This is a popover content.</p>
       </div>
@@ -59,12 +57,12 @@ ul#a-tabs--positioning.a-tabs
     .-p--3(style='height: 158px')
       .-position--relative
         chi-popover(position="top", active, arrow, prevent-auto-hide)
-          .-px--2.-py--1.-s--3
+          .-px--2.-py--1
             h5 Popover!
             p This is a popover content.
     :code(lang="html")
       <chi-popover position="top" active arrow>
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is a popover content.</p>
         </div>
@@ -74,12 +72,12 @@ ul#a-tabs--positioning.a-tabs
     .-p--3(style='height: 158px')
       .-position--relative
         chi-popover(position="right", active, arrow, prevent-auto-hide)
-          .-px--2.-py--1.-s--3
+          .-px--2.-py--1
             h5 Popover!
             p This is a popover content.
     :code(lang="html")
       <chi-popover position="right" active arrow>
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is a popover content.</p>
         </div>
@@ -89,12 +87,12 @@ ul#a-tabs--positioning.a-tabs
     .-p--3(style='height: 158px')
       .-position--relative
         chi-popover(position="bottom", active, arrow, prevent-auto-hide)
-          .-px--2.-py--1.-s--3
+          .-px--2.-py--1
             h5 Popover!
             p This is a popover content.
     :code(lang="html")
       <chi-popover position="bottom" active arrow>
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is a popover content.</p>
         </div>
@@ -104,12 +102,12 @@ ul#a-tabs--positioning.a-tabs
     .-p--3(style='height: 158px')
       .-position--relative
         chi-popover(position="left", active, arrow, prevent-auto-hide)
-          .-px--2.-py--1.-s--3
+          .-px--2.-py--1
             h5 Popover!
             p This is a popover content.
     :code(lang="html")
       <chi-popover position="left" active arrow>
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is a popover content.</p>
         </div>
@@ -134,7 +132,7 @@ p.-text
   .-p--3
     button#example-3-button.a-btn Click me!
     chi-popover#example-3-popover(position="top", arrow, reference="#example-3-button")
-      .-px--2.-py--1.-s--3
+      .-px--2.-py--1
         h5 Popover!
         p This is a popover content.
 
@@ -142,13 +140,13 @@ p.-text
     <button class="a-btn" id="example-3-button">Click me!</button>
     <!-- put the following code anywere in the DOM, e.g. at the end of the DOM -->
     <chi-popover position="top" arrow reference="example-3-button">
-      <div class="-px--2 -py--1 -s--3">
+      <div class="-px--2 -py--1">
         <h5>Popover!</h5>
         <p>This is a popover content.</p>
       </div>
     </chi-popover>
 
-h4 Reference element
+h4 Positioning
 p.-text
   | Further positions can be used in this mode: <code>top</code>,
   | <code>right</code>, <code>bottom</code>, <code>left</code>, <code>top-start</code>,
@@ -170,26 +168,26 @@ ul#a-tabsb--positioning.a-tabs
     .-p--3
       button#example-4-t-button.a-btn.-mr--2.-mb--2.-mb-md--0 Top popover
       chi-popover#example-4-t-popover(position="top", arrow, reference="#example-4-t-button")
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is popover is top positioned.
 
       button#example-4-ts-button.a-btn.-mr--2.-mb--2.-mb-md--0 Top start popover
       chi-popover#example-4-ts-popover(position="top-start", arrow, reference="#example-4-ts-button")
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is popover is top-start positioned.
 
       button#example-4-te-button.a-btn.-mr--2.-mb--2.-mb-md--0 Top end popover
       chi-popover#example-4-te-popover(position="top-end", arrow, reference="#example-4-te-button")
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is popover is top-end positioned.
 
     :code(lang="html")
       <button class="a-btn -mr--2 -mb--2 -mb-md--0" id="example-4-t-button">Top popover</button>
       <chi-popover id="example-4-t-popover" position="top" arrow reference="#example-4-t-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is popover is top positioned.</p>
         </div>
@@ -197,7 +195,7 @@ ul#a-tabsb--positioning.a-tabs
 
       <button class="a-btn -mr--2 -mb--2 -mb-md--0" id="example-4-ts-button">Top start popover</button>
       <chi-popover id="example-4-ts-popover" position="top-start" arrow reference="#example-4-ts-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is popover is top-start positioned.</p>
         </div>
@@ -205,7 +203,7 @@ ul#a-tabsb--positioning.a-tabs
 
       <button class="a-btn -mr--2 -mb--2 -mb-md--0" id="example-4-te-button">Top end popover</button>
       <chi-popover id="example-4-te-popover" position="top-end" arrow="" reference="#example-4-te-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is popover is top-end positioned.</p>
         </div>
@@ -215,25 +213,25 @@ ul#a-tabsb--positioning.a-tabs
     .-p--3
       button#example-4-r-button.a-btn.-mr--2.-mb--2.-mb-md--0 Right popover
       chi-popover#example-4-r-popover(position="right", arrow, reference="#example-4-r-button")
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is popover is right positioned.
 
       button#example-4-rs-button.a-btn.-mr--2.-mb--2.-mb-md--0 Right start popover
       chi-popover#example-4-rs-popover(position="right-start", arrow, reference="#example-4-rs-button")
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is popover is right-start positioned.
 
       button#example-4-re-button.a-btn.-mr--2.-mb--2.-mb-md--0 Right end popover
       chi-popover#example-4-re-popover(position="right-end", arrow, reference="#example-4-re-button")
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is popover is right-end positioned.
     :code(lang="html")
       <button class="a-btn -mr--2 -mb--2 -mb-md--0" id="example-4-r-button">Right popover</button>
       <chi-popover id="example-4-r-popover" position="right" arrow reference="#example-4-r-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is popover is right positioned.</p>
         </div>
@@ -241,7 +239,7 @@ ul#a-tabsb--positioning.a-tabs
 
       <button class="a-btn -mr--2 -mb--2 -mb-md--0" id="example-4-rs-button">Right start popover</button>
       <chi-popover id="example-4-rs-popover" position="right-start" arrow reference="#example-4-rs-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is popover is right-start positioned.</p>
         </div>
@@ -249,7 +247,7 @@ ul#a-tabsb--positioning.a-tabs
 
       <button class="a-btn -mr--2 -mb--2 -mb-md--0" id="example-4-re-button">Right end popover</button>
       <chi-popover id="example-4-re-popover" position="right-end" arrow="" reference="#example-4-re-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is popover is right-end positioned.</p>
         </div>
@@ -259,25 +257,25 @@ ul#a-tabsb--positioning.a-tabs
     .-p--3
       button#example-4-b-button.a-btn.-mr--2.-mb--2.-mb-md--0 Bottom popover
       chi-popover#example-4-b-popover(position="bottom", arrow, reference="#example-4-b-button")
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is popover is bottom positioned.
 
       button#example-4-bs-button.a-btn.-mr--2.-mb--2.-mb-md--0 Bottom start popover
       chi-popover#example-4-bs-popover(position="bottom-start", arrow, reference="#example-4-bs-button")
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is popover is bottom-start positioned.
 
       button#example-4-be-button.a-btn.-mr--2.-mb--2.-mb-md--0 Bottom end popover
       chi-popover#example-4-be-popover(position="bottom-end", arrow, reference="#example-4-be-button")
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is popover is bottom-end positioned.
     :code(lang="html")
       <button class="a-btn -mr--2 -mb--2 -mb-md--0" id="example-4-b-button">Bottom popover</button>
       <chi-popover id="example-4-b-popover" position="bottom" arrow reference="#example-4-b-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is popover is bottom positioned.</p>
         </div>
@@ -285,7 +283,7 @@ ul#a-tabsb--positioning.a-tabs
 
       <button class="a-btn -mr--2 -mb--2 -mb-md--0" id="example-4-bs-button">Bottom start popover</button>
       <chi-popover id="example-4-bs-popover" position="bottom-start" arrow reference="#example-4-bs-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is popover is bottom-start positioned.</p>
         </div>
@@ -293,7 +291,7 @@ ul#a-tabsb--positioning.a-tabs
 
       <button class="a-btn -mr--2 -mb--2 -mb-md--0" id="example-4-be-button">Bottom end popover</button>
       <chi-popover id="example-4-be-popover" position="bottom-end" arrow="" reference="#example-4-be-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is popover is bottom-end positioned.</p>
         </div>
@@ -303,25 +301,25 @@ ul#a-tabsb--positioning.a-tabs
     .-p--3
       button#example-4-l-button.a-btn.-mr--2.-mb--2.-mb-md--0 Left popover
       chi-popover#example-4-l-popover(position="left", arrow, reference="#example-4-l-button")
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is popover is left positioned.
 
       button#example-4-ls-button.a-btn.-mr--2.-mb--2.-mb-md--0 Left start popover
       chi-popover#example-4-ls-popover(position="left-start", arrow, reference="#example-4-ls-button")
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is popover is left-start positioned.
 
       button#example-4-le-button.a-btn.-mr--2.-mb--2.-mb-md--0 Left end popover
       chi-popover#example-4-le-popover(position="left-end", arrow, reference="#example-4-le-button")
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is popover is left-end positioned.
     :code(lang="html")
       <button class="a-btn -mr--2 -mb--2 -mb-md--0" id="example-4-l-button">Left popover</button>
       <chi-popover id="example-4-l-popover" position="left" arrow reference="#example-4-l-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is popover is left positioned.</p>
         </div>
@@ -329,7 +327,7 @@ ul#a-tabsb--positioning.a-tabs
 
       <button class="a-btn -mr--2 -mb--2 -mb-md--0" id="example-4-ls-button">Left start popover</button>
       <chi-popover id="example-4-ls-popover" position="left-start" arrow reference="#example-4-ls-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is popover is left-start positioned.</p>
         </div>
@@ -337,7 +335,7 @@ ul#a-tabsb--positioning.a-tabs
 
       <button class="a-btn -mr--2 -mb--2 -mb-md--0" id="example-4-le-button">Left end popover</button>
       <chi-popover id="example-4-le-popover" position="left-end" arrow="" reference="#example-4-le-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is popover is left-end positioned.</p>
         </div>
@@ -364,7 +362,7 @@ p.-text
     button#example-5-button-reference.a-btn.-mr--2.-mb--2.-mb-md--0 Reference
 
     chi-popover#example-5-popover(position="top", arrow, reference="#example-5-button-reference")
-      .-px--2.-py--1.-s--3
+      .-px--2.-py--1
         h5 Popover!
         p This is a popover.
   ul#a-tabs-e5.a-tabs.-ml--3
@@ -380,7 +378,7 @@ p.-text
       <button class="a-btn -mr--2 -mb--2 -mb-md--0" id="example-5-button-reference">Reference</button>
 
       <chi-popover id="example-5-popover" position="top" arrow reference="#example-5-button-reference">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Popover!</h5>
           <p>This is a popover.</p>
         </div>
@@ -419,11 +417,11 @@ p.-text
     button#example-6-auto-hide-button.a-btn.-mr--2.-mb--2.-mb-md--0 Auto hide
     button#example-6-no-auto-hide-button.a-btn.-mr--2.-mb--2.-mb-md--0 No auto hide
     chi-popover#example-6-auto-hide-popover(position="top", arrow, reference="#example-6-auto-hide-button")
-      .-px--2.-py--1.-s--3
+      .-px--2.-py--1
         h5 Auto hide!
         p Click outside. I will disappear!
     chi-popover#example-6-no-auto-hide-popover(position="top", arrow, prevent-auto-hide, reference="#example-6-no-auto-hide-button")
-      .-px--2.-py--1.-s--3
+      .-px--2.-py--1
         h5 Auto hide!
         p Click outside. I will stay!
 
@@ -435,7 +433,7 @@ p.-text
   #a-tabs-e6-auto-hide.a-tabs-panel.-active
     :code(lang="html")
       <chi-popover id="example-6-popover-auto-hide-popover" position="top" arrow reference="#example-6-auto-hide-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Auto hide!</h5>
           <p>Click outside. I will disappear!</p>
         </div>
@@ -443,7 +441,7 @@ p.-text
   #a-tabs-e6-no-auto-hide.a-tabs-panel
     :code(lang="html")
       <chi-popover id="example-6-popover-no-auto-hide-popover" position="top" arrow prevent-auto-hide reference="#example-6-no-auto-hide-button">
-        <div class="-px--2 -py--1 -s--3">
+        <div class="-px--2 -py--1">
           <h5>Auto hide!</h5>
           <p>Click outside. I will stay!</p>
         </div>

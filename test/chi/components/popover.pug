@@ -11,7 +11,7 @@ scripts:
   span.a-h2 Base
   .-position--relative
     .m-popover.m-popover--top.-active.-position--absolute(aria-hidden="false")
-      .-px--2.-py--1.-s--3
+      .-px--2.-py--1
         h5 Popover!
         p This is a popover content.
 
@@ -20,7 +20,7 @@ each side in sides
     span.a-h2=`Simple side ${side}`
     .-position--relative
       .m-popover.-active.-position--absolute(aria-hidden="false", class=`m-popover--${side}`)
-        .-px--2.-py--1.-s--3
+        .-px--2.-py--1
           h5 Popover!
           p This is a popover content.
         .a-arrow
@@ -29,7 +29,7 @@ each side in moreSides
   div(class=`test-more-${side}`)
     span.a-h2=`Popper side ${side}`
     .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
-      button(data-position=side, data-popover-content='<div class="-px--2 -py--1 -s--3"><h5>Popover!</h5><p>This is a popover content.</p></div>').a-btn.autostart Popover
+      button(data-position=side, data-popover-content='<div class="-px--2 -py--1"><h5>Popover!</h5><p>This is a popover content.</p></div>').a-btn.autostart Popover
 
 script.
   document.addEventListener(

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-06-06T15:29:28",
+  "timestamp": "2019-06-19T12:34:09",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
@@ -31,7 +31,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "to set button color { primary, secondary, danger, dark }.",
+          "docs": "to set button color { primary, secondary, danger, dark, light }.",
           "docsTags": [],
           "optional": false,
           "required": false
@@ -256,7 +256,7 @@
       ],
       "events": [
         {
-          "event": "chi:hidden",
+          "event": "chiDrawer:hidden",
           "detail": "void",
           "bubbles": true,
           "cancelable": true,
@@ -265,7 +265,7 @@
           "docsTags": []
         },
         {
-          "event": "chi:hide",
+          "event": "chiDrawer:hide",
           "detail": "void",
           "bubbles": true,
           "cancelable": true,
@@ -274,7 +274,7 @@
           "docsTags": []
         },
         {
-          "event": "chi:show",
+          "event": "chiDrawer:show",
           "detail": "void",
           "bubbles": true,
           "cancelable": true,
@@ -283,7 +283,7 @@
           "docsTags": []
         },
         {
-          "event": "chi:shown",
+          "event": "chiDrawer:shown",
           "detail": "void",
           "bubbles": true,
           "cancelable": true,
@@ -338,6 +338,146 @@
       ],
       "methods": [],
       "events": [],
+      "styles": []
+    },
+    {
+      "tag": "chi-popover",
+      "encapsulation": "scoped",
+      "readme": "# chi-popover\n\n\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "active",
+          "reflectToAttr": true,
+          "docs": "to open or close the popover",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "arrow",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "arrow",
+          "reflectToAttr": true,
+          "docs": "to add an arrow between the popover and the reference element",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "position",
+          "type": "\"auto\" | \"auto-end\" | \"auto-start\" | \"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
+          "mutable": false,
+          "attr": "position",
+          "reflectToAttr": true,
+          "docs": "to set position of the popover { top, top-start, top-end, right, right-start, right-end, bottom, bottom-start, bottom-end, left, left-start, left-end }",
+          "docsTags": [],
+          "default": "'top'",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "preventAutoHide",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "prevent-auto-hide",
+          "reflectToAttr": true,
+          "docs": "Prevents closing the popover when clicking out of its bounds",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "reference",
+          "type": "string",
+          "mutable": false,
+          "attr": "reference",
+          "reflectToAttr": true,
+          "docs": "CSS Selector to the reference Element. I.e. #id > p",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "hide",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "hide() => void",
+          "parameters": [],
+          "docs": "Hides the popover",
+          "docsTags": []
+        },
+        {
+          "name": "show",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "show() => void",
+          "parameters": [],
+          "docs": "Shows the popover.",
+          "docsTags": []
+        },
+        {
+          "name": "toggle",
+          "returns": {
+            "type": "void",
+            "docs": ""
+          },
+          "signature": "toggle() => void",
+          "parameters": [],
+          "docs": "Toggles active state (show/hide)",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "chiPopover:hidden",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Popover has been hidden to the user. The animation has completed.",
+          "docsTags": []
+        },
+        {
+          "event": "chiPopover:hide",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Popover hide method has executed, but the closing animation has not started yet",
+          "docsTags": []
+        },
+        {
+          "event": "chiPopover:show",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Popover show method has executed, but the showing animation has not started yet",
+          "docsTags": []
+        },
+        {
+          "event": "chiPopover:shown",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Popover has been shown to the user and is fully visible. The animation has completed.",
+          "docsTags": []
+        }
+      ],
       "styles": []
     }
   ]
