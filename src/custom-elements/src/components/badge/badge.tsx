@@ -10,9 +10,9 @@ export class Badge {
   @Element() el: HTMLElement;
 
   /**
-   *  to render badges no border.
+   *  to set mode of a badges { outline, flat }.
    */
-  @Prop({ reflectToAttr: true }) flat: boolean;
+  @Prop({ reflectToAttr: true }) mode: string;
 
   /**
    *  to render badges with a more pronounced border-radius.
@@ -28,11 +28,6 @@ export class Badge {
    *  to transform the badge text { uppercase, lowercase, capitalize }.
    */
   @Prop({ reflectToAttr: true }) textTransform: string;
-
-  /**
-   *  to set outline on a badge.
-   */
-  @Prop({ reflectToAttr: true }) outline: boolean;
 
   /**
    *  to set size of a badge { small or smaller }.
@@ -53,6 +48,13 @@ export class Badge {
     }
   }
 
+  @Watch('mode')
+  modeValidation(newValue: string) {
+    if (newValue && !['', 'outline', 'flat'].includes(newValue)) {
+      throw new Error(`${newValue} is not a valid mode for badge. Valid modes are outline, flat or ''. `);
+    }
+  }
+
   componentDidLoad() {
     if (!this.el.children[0].innerHTML.includes('<chi-icon')) {
       this.slotBadgeContent = false;
@@ -62,6 +64,7 @@ export class Badge {
   componentWillLoad() {
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
+    this.modeValidation(this.mode);
   }
 
   render() {
@@ -69,8 +72,7 @@ export class Badge {
       <div class={`a-badge
 	        ${this.size ? `-${this.size}` : ''}
 	        ${this.color ? `-${this.color}` : ''}
-	        ${this.flat ? '-flat' : ''}
-	        ${this.outline ? '-outline' : ''}
+	        ${this.mode ? `-${this.mode}` : ''}
 	        ${this.pill ? '-pill' : ''}
 	        ${this.textTransform ? `-text--${this.textTransform}` : ''}`}
       >

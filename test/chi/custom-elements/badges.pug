@@ -9,8 +9,8 @@ each type in ['solid', 'outline', 'flat']
     span.a-h2= `Badge / ${type}`
     div
       each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'light']
-        chi-badge(class='-mr--1', outline=`${type === 'outline'}`, flat=`${type === 'flat'}`, color=`${style === 'base' ? '' : style}`, id=`badge-${type}-${style}` )= `${style}`
-        chi-badge(class='-mr--1', outline=`${type === 'outline'}`, flat=`${type === 'flat'}`, color=`${style === 'base' ? '' : style}`, id=`badge-icon-${type}-${style}` )
+        chi-badge(class='-mr--1', mode=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-${type}-${style}` )= `${style}`
+        chi-badge(class='-mr--1', mode=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-icon-${type}-${style}` )
           chi-icon(icon='atom')
           span= style
 
@@ -21,8 +21,8 @@ each type in ['solid', 'outline']
       tr
         each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'light']
           td
-            chi-badge(pill, class='-mr--1', color=`${style === 'base' ? '' : style}`, outline=`${type === 'outline'}`, id=`badge-pill-${type}-${style}`)= '50'
-            chi-badge(pill, class='-mr--1', color=`${style === 'base' ? '' : style}`, outline=`${type === 'outline'}`, id=`badge-pill-icon-${type}-${style}`)
+            chi-badge(pill, class='-mr--1', color=`${style === 'base' ? '' : style}`, mode=`${type === 'solid' ? '' : type}`, id=`badge-pill-${type}-${style}`)= '50'
+            chi-badge(pill, class='-mr--1', color=`${style === 'base' ? '' : style}`, mode=`${type === 'solid' ? '' : type}`, id=`badge-pill-icon-${type}-${style}`)
               chi-icon(icon='atom')
               span 50
 
@@ -30,13 +30,13 @@ h2 Badge Icons
 .example.-mb--1
   each size in ['smaller', 'small', 'default']
     .p.-text--bold= size
-    chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1', id=`badge-${size}`)
-      chi-icon(icon='atom')
-      span Badge
-    chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1')
-      span Badge
-      chi-icon(icon='atom')
-    chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1')
-      chi-icon(icon='atom')
-      span Badge
-      chi-icon(icon='atom')
+      chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1', id=`badge-${size}`)
+        chi-icon(icon='atom')
+        span Badge
+      chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1')
+        span Badge
+        chi-icon(icon='atom')
+      chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1')
+        chi-icon(icon='atom')
+        span Badge
+        chi-icon(icon='atom')
