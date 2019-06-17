@@ -243,7 +243,7 @@ p.-text
       .m-dropdown__menu.-active
         .a-inputWrapper.-icon--left.m-dropdown__menu-item
           input(type="text", class="a-input", placeholder="Search")
-          i.a-icon.icon-search.-text--muted
+          i.a-icon.icon-search
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
@@ -252,7 +252,7 @@ p.-text
     <div class="m-dropdown__menu">
       <div class="a-inputWrapper -icon--left m-dropdown__menu-item">
         <input class="a-input" type="text" placeholder="Search">
-        <i class="a-icon icon-search -text--muted"></i>
+        <i class="a-icon icon-search"></i>
       </div>
       <a class="m-dropdown__menu-item" href="#">Element 1</a>
       <a class="m-dropdown__menu-item" href="#">Element 2</a>
@@ -491,31 +491,31 @@ h4 Toggle Switch
       .m-dropdown__menu.-active
         .m-dropdown__menu-item
           input(type="checkbox", class="a-input -toggle", id="toggle-mail")
-          label(class="-mr--1", for="toggle-mail")
+          label(for="toggle-mail")
           label(class="-text", for="toggle-mail") Email notifications
         .m-dropdown__menu-item
           input(type="checkbox", class="a-input -toggle", id="toggle-tlf")
-          label(class="-mr--1", for="toggle-tlf")
+          label(for="toggle-tlf")
           label(class="-text", for="toggle-tlf") Phone notifications
         .m-dropdown__menu-item
           input(type="checkbox", class="a-input -toggle", id="toggle-app")
-          label(class="-mr--1", for="toggle-app")
+          label(for="toggle-app")
           label(class="-text", for="toggle-app") App notifications
   :code(lang="html")
     <div class="m-dropdown__menu">
       <div class="m-dropdown__menu-item">
         <input class="a-input -toggle" type="checkbox" id="toggle-mail">
-        <label class="-mr--1" for="toggle-mail"></label>
+        <label for="toggle-mail"></label>
         <label class="-text" for="toggle-mail">Email notifications</label>
       </div>
       <div class="m-dropdown__menu-item">
         <input class="a-input -toggle" type="checkbox" id="toggle-tlf">
-        <label class="-mr--1" for="toggle-tlf"></label>
+        <label for="toggle-tlf"></label>
         <label class="-text" for="toggle-tlf">Phone notifications</label>
       </div>
       <div class="m-dropdown__menu-item">
         <input class="a-input -toggle" type="checkbox" id="toggle-app">
-        <label class="-mr--1" for="toggle-app"></label>
+        <label for="toggle-app"></label>
         <label class="-text" for="toggle-app">App notifications</label>
       </div>
     </div>
