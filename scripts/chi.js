@@ -38,7 +38,7 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
     .map(name => `${path.join(componentsFolder, name)}`);
 
   return gulp.src(
-       path.join(__dirname, '..', 'src', 'chi', 'index.scss')
+    path.join(__dirname, '..', 'src', 'chi', 'index.scss')
   )
     .pipe(plumber())
     .pipe(sass({
@@ -71,14 +71,14 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
 export function buildSprite({ dest = 'dist' }) {
   var config = {
     shape: {
-        transform: []
+      transform: []
     },
     mode: {
       symbol: {
-         sprite: 'chi-icons',
-         dest: 'sprite',
-         example: true
-       },
+        sprite: 'chi-icons',
+        dest: 'sprite',
+        example: true
+      },
     },
     svg: {
       xmlDeclaration: false,

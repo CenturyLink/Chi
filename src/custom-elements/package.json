@@ -11,7 +11,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "stencil build --docs",
+    "build": "stencil build --docs-json /docs/docs.json",
     "start.es5": "stencil build --dev --watch --serve --es5",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",

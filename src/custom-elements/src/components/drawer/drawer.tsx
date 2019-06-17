@@ -1,7 +1,7 @@
 import { Component, Event, EventEmitter, Method, Prop, State, Watch } from '@stencil/core';
-import { CARDINAL_POSITIONS } from '../../models/Positions';
+import { CARDINAL_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
-import { ANIMATION_DURATION, CLASSES } from '../../models/Constants';
+import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
 
 @Component({
   tag: 'chi-drawer',

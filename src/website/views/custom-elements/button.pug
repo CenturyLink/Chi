@@ -1,0 +1,260 @@
+---
+title: Button
+scripts:
+- js/ce/ux-chi-ce
+
+---
+h3 Button
+p.-text
+  | To render a button, use the tag <code>&lt;chi-button&gt;</code>.
+  | The <code>&lt;chi-button&gt;</code> emits a custom event that you can listen to, the event name is <code>chiClick</code>
+.example.-mb--3
+  .-p--3.-d--flex
+    div.-pr--2
+      chi-button()= 'Button'
+  :code(lang='html')
+    <chi-button>Button</chi-button>
+
+h3 Examples
+
+h4 Base
+p.-text
+  | Chi includes a wide variety of predefined button colors. For light backgrounds set <code>color</code> attribute value to <code>primary</code> or <code>dark</code>.
+  | For dark backgrounds, please limit usage to <code>secondary</code> or <code>light</code>
+.example.-mb--3
+  .a-grid.-noGutter
+    .a-col.-w--12.-w-md--6
+      .-p--3.-d--flex(style="justify-content: center;")
+        each type, val in {Base:'', Primary:'primary', Dark:'dark'}
+          div.-pr--2
+            chi-button(color=type)= val
+    .a-col.-w--12.-w-md--6
+      .-p--3.-bg--black.-d--flex(style="justify-content: center;")
+        each type, val in {Secondary:'secondary', Light:'light'}
+          div.-pr--2
+            chi-button(color=type)= val
+  :code(lang='html')
+    <!-- For light backgrounds -->
+    <chi-button>Base</chi-button>
+    <chi-button color='primary'>Primary</chi-button>
+    <chi-button color='dark'>Dark</chi-button>
+
+    <!-- For dark backgrounds -->
+    <chi-button color='secondary'>Secondary</chi-button>
+    <chi-button color='light'>Light</chi-button>
+
+
+h4 Outline
+p.-text
+  | To remove a buttons solid background and keep it's colored border, apply the attribute
+  | <code>outline</code> on the <code>&lt;chi-button&gt;</code> tag.
+.example.-mb--3
+  .a-grid.-noGutter
+    .a-col.-w--12.-w-md--6
+      .-p--3.-d--flex(style="justify-content: center;")
+        each type, val in {Primary:'primary', Dark:'dark'}
+          div.-pr--2
+            chi-button(color=type, outline)= val
+    .a-col.-w--12.-w-md--6
+      .-p--3.-bg--black.-d--flex(style="justify-content: center;")
+        each type, val in {Secondary:'secondary', Light:'light'}
+          div.-pr--2
+            chi-button(color=type, outline)= val
+  :code(lang='html')
+    <chi-button color='primary' outline>Primary</chi-button>
+    <chi-button color='dark' outline>Dark</chi-button>
+    <chi-button color='secondary' outline>Secondary</chi-button>
+    <chi-button color='light' outline>Light</chi-button>
+
+h4 Flat
+p.-text
+  | To render a button with a transparent background and border, set the attribute <code>type</code> value to
+  | <code>flat</code> on the <code>&lt;chi-button&gt;</code> tag.
+.example.-mb--3
+  .a-grid.-noGutter
+    .a-col.-w--12.-w-md--6
+      .-p--3.-d--flex(style="justify-content: center;")
+        each type, val in {Primary:'primary', Dark:'dark'}
+          div.-pr--2
+            chi-button(color=type, flat)= val
+    .a-col.-w--12.-w-md--6
+      .-p--3.-bg--black.-d--flex(style="justify-content: center;")
+        each type, val in {Secondary:'secondary', Light:'light'}
+          div.-pr--2
+            chi-button(color=type, flat)= val
+  :code(lang='html')
+    <chi-button color='primary' flat>Primary</chi-button>
+    <chi-button color='dark' flat>Dark</chi-button>
+    <chi-button color='secondary' flat>Secondary</chi-button>
+    <chi-button color='light' flat>Light</chi-button>
+
+h3 Pill
+p.-text To render buttons with a more pronounced border-radius, set the attribute <code>pill</code> on the <code>&lt;chi-button&gt;</code> tag.
+h4 Base
+.example.-mb--3
+  .-p--3
+    chi-button(color=type, pill)= 'Button'
+  :code(lang='html')
+    <chi-button pill>Button</chi-button>
+
+h3 Fluid
+p.-text Buttons can be expanded to fill the parent space by applying the attribute
+  | <code>fluid</code> on the <code>&lt;chi-button&gt;</code> tag.
+.example.-mb--3
+  .-p--3
+    chi-button(fluid, class='-mb--2')= 'Submit'
+    chi-button(fluid, center)= 'Submit'
+  :code(lang='html')
+    <chi-button fluid>Submit</chi-button>
+    <chi-button fluid center>Submit</chi-button>
+
+h3 Icon buttons
+p.-text
+  | For interfaces with limited space, an <code>icon</code> button can
+  | be used for common actions such as editing, deleting, closing, etc.
+.example.-mb--3
+  .-p--3.-d--flex
+    chi-button(type='icon')
+      chi-icon(icon='atom')
+    chi-button(flat, class='-ml--2', type='icon')
+      chi-icon(icon='atom')
+  :code(lang='html')
+    <chi-button type='icon' >
+      <chi-icon icon='atom'></chi-icon>
+    </chi-button>
+
+    <!-- flat -->
+    <chi-button flat type='icon' >
+      <chi-icon icon='atom'></chi-icon>
+    </chi-button>
+
+h4 Labeled icon buttons
+.example.-mb--3
+  .-p--3.-d--flex
+    chi-button()
+      chi-icon(icon='atom')
+      span Button
+    chi-button(class='-mr--2 -ml--2')
+      span Button
+      chi-icon(icon='atom')
+    chi-button()
+      chi-icon(icon='atom')
+      span Button
+      chi-icon(icon='atom')
+  :code(lang='html')
+    <!-- left aligned -->
+    <chi-button>
+      <chi-icon icon='atom' />
+      <span>Button</span>
+    </chi-button>
+
+    <!-- right aligned -->
+    <chi-button>
+      <span>Button</span>
+      <chi-icon icon='atom' />
+    </chi-button>
+
+    <!-- both sides -->
+    <chi-button>
+      <chi-icon icon='atom' />
+      <span>Button</span>
+      <chi-icon icon='atom' />
+    </chi-button>
+
+h4 Floating icon buttons
+.example.-mb--3
+  .a-grid.-noGutter
+    .a-col.-w--12.-w-md--6
+      .-p--3.-d--flex(style="justify-content: center;")
+        each type, val in {Base:'', Primary:'primary', Dark:'dark'}
+          div.-pr--2
+            chi-button(color=type, type='float')
+              chi-icon(icon='atom')
+    .a-col.-w--12.-w-md--6
+      .-p--3.-bg--black.-d--flex(style="justify-content: center;")
+        each type, val in {Secondary:'secondary', Light:'light'}
+          div.-pr--2
+            chi-button(color=type, type='float')
+              chi-icon(icon='atom')
+  :code(lang='html')
+    <chi-button type='float'>
+      <chi-icon icon='atom' />
+    </chi-button>
+
+    <chi-button type='float' color='primary'>
+      <chi-icon icon='atom' />
+    </chi-button>
+
+    <chi-button type='float' color='secondary'>
+      <chi-icon icon='atom' />
+    </chi-button>
+
+    <chi-button type='float' color='danger'>
+      <chi-icon icon='atom' />
+    </chi-button>
+
+    <chi-button type='float' color='dark'>
+      <chi-icon icon='atom' />
+    </chi-button>
+
+
+h4 Close icon button
+
+.example.-mb--3
+  .-p--3
+    chi-button(type='close')
+  :code(lang="html")
+    <chi-button type='close'></chi-button>
+
+h3 Danger
+p.-text
+  | For special cases, such as a button used for a destructive action in an application we might have to set <code>color</code>
+  | attribute to <code>danger</code>.
+
+.example.-mb--3
+  .-p--3.-d--flex
+    .-pr--2
+      chi-button(color='danger', class='-mr--2')= 'Danger'
+      chi-button(outline, color='danger', class='-mr--2')= 'Danger'
+      chi-button(flat, color='danger')= 'Danger'
+  :code(lang="html")
+    <chi-button color='danger'>Danger</chi-button>
+    <chi-button color='danger' outline'>Danger</chi-button>
+    <chi-button flat color='danger'>Danger</chi-button>
+h3 Sizes
+p.-text
+  | Buttons supports a full spectrum of sizes: <code>sm</code>, <code>md</code>,
+  |  <code>lg</code>, <code>xl</code>.
+  | The default size is <code>md</code>.
+.example.-mb--3
+  .-p--3
+    each size in ['sm', 'md', 'lg', 'xl']
+      p.-text--bold.-pl--2= size
+      div(class=`a-col -w--12 -pb--2 -mr--0 -d--flex`)
+        chi-button(size=size)= 'Button'
+        chi-button(size=size, type='icon', class='-ml--1')
+          chi-icon(icon='atom')
+  :code(lang='html')
+    <!-- sm -->
+    <chi-button size='sm'>Button</chi-button>
+    <chi-button type='icon' size='sm'>
+      <chi-icon icon='atom' />
+    </chi-button>
+
+    <!-- md -->
+    <chi-button size='md'>Button</chi-button>
+    <chi-button type='icon' size='md'>
+      <chi-icon icon='atom' />
+    </chi-button>
+
+    <!-- lg -->
+    <chi-button size='lg'>Button</chi-button>
+    <chi-button type='icon' size='lg'>
+      <chi-icon icon='atom' />
+    </chi-button>
+
+    <!-- xl -->
+    <chi-button size='xl'>Button</chi-button>
+    <chi-button type='icon' size='xl'>
+      <chi-icon icon='atom' />
+    </chi-button>

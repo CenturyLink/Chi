@@ -19,7 +19,7 @@ if [ "x$1" = "xalias" ]; then
 fi
 
 cp ${REPO_PATH}/Dockerfile ${TMPDIR}/
-cp ${REPO_PATH}/package.json ${TMPDIR}/package_chi.json 
+cp ${REPO_PATH}/package.json ${TMPDIR}/package_chi.json
 cp ${REPO_PATH}/src/custom-elements/package.json ${TMPDIR}/package_custom-elements.json
 cp ${REPO_PATH}/scripts/entrypoint.sh ${TMPDIR}/
 

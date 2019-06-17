@@ -226,7 +226,9 @@
     "CI"
   ],
   "engine": "chrome",
-  "engineFlags": [],
+  "engineOptions": {
+    "waitTimeout": 120000
+  },
   "asyncCaptureLimit": 4,
   "asyncCompareLimit": 4,
   "debug": false,

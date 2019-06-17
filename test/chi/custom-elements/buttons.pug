@@ -1,0 +1,184 @@
+---
+title: Buttons
+scripts:
+  - js/ce/ux-chi-ce
+---
+each size in ['default', 'sm', 'md', 'lg', 'xl']
+  each type in ['solid', 'outline', 'flat', 'fluid']
+    div(class={
+      [`test-${type}`]: size === 'default',
+      [`test-${type}-${size}`]: size !== 'default'
+    })
+      span.a-h2= `Button / ${type} / ${size}`
+      table(cellpadding="0", cellspacing="0")
+        each state in ['initial', 'hover', 'active', 'focus', 'disabled']
+          tr
+            td
+              small= `${state}`
+            each style in ['', 'primary', 'secondary', 'danger', 'dark', 'light']
+              if style === 'light'
+                td.-bg--black
+                  .-mr--2
+                    chi-button.-m--1.-mx--2(
+                      color=style
+                      outline= type === 'outline'
+                      flat= type === 'flat'
+                      fluid= type === 'fluid'
+                      size= size !== 'default' ? size : ''
+                      disabled= state === 'disabled'
+                      extra-class= `-${state}`
+                    )= 'Button'
+                    chi-button.-m--1(
+                      type='icon'
+                      color=style
+                      size= size !== 'default' ? size : ''
+                      outline= type === 'outline'
+                      flat= type === 'flat'
+                      fluid= type === 'fluid'
+                      disabled= state === 'disabled'
+                      extra-class= `-${state}`
+                    )
+                      chi-icon(icon='atom')
+                    chi-button.-m--1(
+                      color=style
+                      size= size !== 'default' ? size : ''
+                      outline= type === 'outline'
+                      flat= type === 'flat'
+                      fluid= type === 'fluid'
+                      disabled= state === 'disabled'
+                      extra-class= `-${state}`
+                    )
+                      chi-icon(icon='atom')
+                      span Button
+                    chi-button.-m--1.-mx--2(
+                      color=style
+                      size= size !== 'default' ? size : ''
+                      outline= type === 'outline'
+                      flat= type === 'flat'
+                      fluid= type === 'fluid'
+                      pill
+                      disabled= state === 'disabled'
+                      extra-class= `-${state}`
+                    )= 'Button'
+                    chi-button.-m--1(
+                      color=style
+                      size= size !== 'default' ? size : ''
+                      type='icon'
+                      outline= type === 'outline'
+                      flat= type === 'flat'
+                      fluid= type === 'fluid'
+                      pill
+                      disabled= state === 'disabled'
+                      extra-class= `-${state}`
+                    )
+                      chi-icon(icon='atom')
+                    chi-button.-m--1(
+                      color=style
+                      size= size !== 'default' ? size : ''
+                      pill
+                      outline= type === 'outline'
+                      flat= type === 'flat'
+                      fluid= type === 'fluid'
+                      disabled= state === 'disabled'
+                      extra-class= `-${state}`
+                    )
+                      chi-icon(icon='atom')
+                      span Button
+              else
+                td
+                  .-mr--2
+                    chi-button.-m--1.-mx--2(
+                      data-cy=`button-${style}-${size}`
+                      color=style
+                      outline= type === 'outline'
+                      flat= type === 'flat'
+                      fluid= type === 'fluid'
+                      size= size !== 'default' ? size : ''
+                      disabled= state === 'disabled'
+                      extra-class= `-${state}`
+                    )= 'Button'
+                    chi-button.-m--1(
+                      type='icon'
+                      color=style
+                      size= size !== 'default' ? size : ''
+                      outline= type === 'outline'
+                      flat= type === 'flat'
+                      fluid= type === 'fluid'
+                      disabled= state === 'disabled'
+                      extra-class= `-${state}`
+                    )
+                      chi-icon(icon='atom')
+                    chi-button.-m--1(
+                      color=style
+                      size= size !== 'default' ? size : ''
+                      outline= type === 'outline'
+                      flat= type === 'flat'
+                      fluid= type === 'fluid'
+                      disabled= state === 'disabled'
+                      extra-class= `-${state}`
+                    )
+                      chi-icon(icon='atom')
+                      span Button
+                    chi-button.-m--1.-mx--2(
+                      color=style
+                      size= size !== 'default' ? size : ''
+                      outline= type === 'outline'
+                      flat= type === 'flat'
+                      fluid= type === 'fluid'
+                      pill
+                      disabled= state === 'disabled'
+                      extra-class= `-${state}`
+                    )= 'Button'
+                    chi-button.-m--1(
+                      color=style
+                      size= size !== 'default' ? size : ''
+                      type='icon'
+                      outline= type === 'outline'
+                      flat= type === 'flat'
+                      fluid= type === 'fluid'
+                      pill
+                      disabled= state === 'disabled'
+                      extra-class= `-${state}`
+                    )
+                      chi-icon(icon='atom')
+                    chi-button.-m--1(
+                      color=style
+                      size= size !== 'default' ? size : ''
+                      pill
+                      outline= type === 'outline'
+                      flat= type === 'flat'
+                      fluid= type === 'fluid'
+                      disabled= state === 'disabled'
+                      extra-class= `-${state}`
+                    )
+                      chi-icon(icon='atom')
+                      span Button
+  if size === 'default'
+    .test-float
+      h2 Button / floating
+      table(cellpadding="0", cellspacing="0")
+        each state in ['initial', 'hover', 'active', 'focus', 'disabled']
+          tr
+            td
+              small= `${state}`
+            each style in ['', 'primary', 'secondary', 'danger', 'dark', 'light']
+              if style === 'light'
+                td.-bg--black
+                  chi-button(type='float', class=`-mx--2 -m--1`, color=style, disabled= state === 'disabled', extra-class=`-${state}`)
+                    chi-icon(icon='atom')
+              else
+                td
+                  chi-button(type='float', class=`-mx--2 -m--1`, color=style, disabled= state === 'disabled', extra-class=`-${state}`)
+                    chi-icon(icon='atom')
+
+each size in ['default', 'sm', 'md', 'lg', 'xl']
+  div(class={
+    [`test-${type}`]: size === 'default',
+    [`test-${type}-${size}`]: size !== 'default'
+  })
+    span.a-h2= `Button Close Icon / ${size}`
+    table(cellpadding="0", cellspacing="0")
+      tr
+        td
+          chi-button(type='close', size= size !== 'default' ? size : '')
+
