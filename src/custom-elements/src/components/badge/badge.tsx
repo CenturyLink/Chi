@@ -7,6 +7,7 @@ import { Component, Element, Prop, State, Watch } from '@stencil/core';
 })
 export class Badge {
   @State() slotBadgeContent = true;
+
   @Element() el: HTMLElement;
 
   /**
