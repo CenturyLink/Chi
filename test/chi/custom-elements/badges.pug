@@ -27,16 +27,17 @@ each type in ['solid', 'outline']
               span 50
 
 h2 Badge Icons
-.example.-mb--1
-  each size in ['smaller', 'small', 'default']
-    .p.-text--bold= size
-      chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1', id=`badge-${size}`)
-        chi-icon(icon='atom')
-        span Badge
-      chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1')
-        span Badge
-        chi-icon(icon='atom')
-      chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1')
-        chi-icon(icon='atom')
-        span Badge
-        chi-icon(icon='atom')
+.test-badge-icons
+  .example.-mb--1
+    each size in ['smaller', 'small', 'default']
+      .p.-text--bold= size
+        chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1', id=`badge-${size}`)
+          chi-icon(icon='atom')
+          span Badge
+        chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1')
+          span Badge
+          chi-icon(icon='atom')
+        chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1')
+          chi-icon(icon='atom')
+          span Badge
+          chi-icon(icon='atom')

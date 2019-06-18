@@ -57,27 +57,28 @@ each type in ['solid', 'outline']
                 span 50
 
 h2 Badge Icons
-.example.-mb--1
-  each size in ['smaller', 'small', 'default']
-    .p.-text--bold= size
-      .a-badge(class=`-${size} -m--1`)
-        .a-badge__content
-          .a-icon
-            svg
-              use(xlink:href='#icon-atom')
-          span Badge
-      .a-badge(class=`-${size} -m--1`)
-        .a-badge__content
-          span Badge
-          .a-icon
-            svg
-              use(xlink:href='#icon-atom')
-      .a-badge(class=`-${size} -m--1`)
-        .a-badge__content
-          .a-icon
-            svg
-              use(xlink:href='#icon-atom')
-          span Badge
-          .a-icon
-            svg
-              use(xlink:href='#icon-atom')
+.test-badge-icons
+  .example.-mb--1
+    each size in ['smaller', 'small', 'default']
+      .p.-text--bold= size
+        .a-badge(class=`-${size} -m--1`)
+          .a-badge__content
+            .a-icon
+              svg
+                use(xlink:href='#icon-atom')
+            span Badge
+        .a-badge(class=`-${size} -m--1`)
+          .a-badge__content
+            span Badge
+            .a-icon
+              svg
+                use(xlink:href='#icon-atom')
+        .a-badge(class=`-${size} -m--1`)
+          .a-badge__content
+            .a-icon
+              svg
+                use(xlink:href='#icon-atom')
+            span Badge
+            .a-icon
+              svg
+                use(xlink:href='#icon-atom')
