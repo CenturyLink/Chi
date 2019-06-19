@@ -41,3 +41,9 @@ h2 Badge Icons
           chi-icon(icon='atom')
           span Badge
           chi-icon(icon='atom')
+
+h2 Text Transform
+.example.-mb--1
+  each transform, text in { BADge: 'lowercase', badGE: 'uppercase', badge: 'capitalized' }
+    .p.-text--bold= transform
+      chi-badge(text-transform= transform, class='-m--1', id=`badge-${transform}`)= text

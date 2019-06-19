@@ -74,4 +74,14 @@ describe('Badges', () => {
       .first()
       .should('match', 'div.a-badge__content');
   });
+
+  it('Text transformed badge should have appropriate class', () => {
+    cy.get('#badge-lowercase')
+      .first()
+      .should('have.class', 'hydrated')
+      .children()
+      .first()
+      .should('match', 'div.a-badge')
+      .and('have.class', '-text--lowercase');
+  });
 });
