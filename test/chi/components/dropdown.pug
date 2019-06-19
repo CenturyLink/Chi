@@ -72,7 +72,7 @@ div(class=`test-dropdown-searchBox`)
     .m-dropdown__menu.-active
       .a-inputWrapper.-icon--left.m-dropdown__menu-item
         input(type="text", class="a-input", placeholder="Search")
-        .a-icon.-text--muted
+        .a-icon
           svg
             use(xlink:href='#icon-search')
       a.m-dropdown__menu-item(href='#') Element 1
@@ -132,15 +132,15 @@ div(class=`test-dropdown-toggle`)
     .m-dropdown__menu.-active
       .m-dropdown__menu-item
         input(type="checkbox", class="a-input -toggle", id="toggle-mail")
-        label(class="-mr--1", for="toggle-mail")
+        label(for="toggle-mail")
         label(class="-text", for="toggle-mail") Email notifications
       .m-dropdown__menu-item
         input(type="checkbox", class="a-input -toggle", id="toggle-tlf", checked)
-        label(class="-mr--1", for="toggle-tlf")
+        label(for="toggle-tlf")
         label(class="-text", for="toggle-tlf") Phone notifications
       .m-dropdown__menu-item
         input(type="checkbox", class="a-input -toggle", id="toggle-app", disabled)
-        label(class="-mr--1", for="toggle-app")
+        label(for="toggle-app")
         label(class="-text", for="toggle-app") App notifications
 
 
@@ -174,5 +174,3 @@ each triggerSize in triggerSizes
       each position in dropdownPositions
         .-d--flex
           button(class=`a-btn m-dropdown__trigger ${triggerSize} ${triggerState}`, data-position=position)=`Button ${triggerState} ${position}`
-
-
