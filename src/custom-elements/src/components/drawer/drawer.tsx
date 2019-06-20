@@ -60,8 +60,8 @@ export class Drawer {
   }
 
   @Watch('backdrop')
-  backdropValidation(newValue: string | boolean) {
-    if (newValue && newValue !== true && newValue !== 'inverse' && newValue !== 'backdrop') {
+  backdropValidation(newValue: string) {
+    if (newValue && newValue !== 'inverse' && newValue !== 'backdrop') {
       throw new Error(`Not valid backdrop ${newValue} for drawer. Valid values are inverse, backdrop, empty or true. `);
     }
   }
@@ -109,19 +109,19 @@ export class Drawer {
   /**
    * Drawer show method has executed, but the showing animation has not started yet
    */
-  @Event({eventName: 'chi:show'}) eventShow: EventEmitter;
+  @Event({eventName: 'chiDrawer:show'}) eventShow: EventEmitter;
   /**
    * Drawer hide method has executed, but the closing animation has not started yet
    */
-  @Event({eventName: 'chi:hide'}) eventHide: EventEmitter;
+  @Event({eventName: 'chiDrawer:hide'}) eventHide: EventEmitter;
   /**
    * Drawer has been shown to the user and is fully visible. The animation has completed.
    */
-  @Event({eventName: 'chi:shown'}) eventShown: EventEmitter;
+  @Event({eventName: 'chiDrawer:shown'}) eventShown: EventEmitter;
   /**
    * Drawer has been hidden to the user. The animation has completed.
    */
-  @Event({eventName: 'chi:hidden'}) eventHidden: EventEmitter;
+  @Event({eventName: 'chiDrawer:hidden'}) eventHidden: EventEmitter;
 
   private _show() {
     if (this.animation && !this.animation.isStopped()) {

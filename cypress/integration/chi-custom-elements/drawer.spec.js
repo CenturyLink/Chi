@@ -11,7 +11,7 @@ describe('Drawer', function() {
       .first()
       .should('match', 'div.m-drawer.-top.-active')
       .find('.m-drawer__header')
-      .should('have.length', 0);
+      .should('not.exist');
   });
 
   it('Collapsible Headed drawer custom element should include a header and a close button. ', function() {

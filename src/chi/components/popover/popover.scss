@@ -1,5 +1,5 @@
-@import '_variables';
-@import '_mixins';
+@import 'variables';
+@import 'mixins';
 
 $popover-arrow-width: 1rem;
 $popover-arrow-height: 0.5rem;
@@ -9,6 +9,7 @@ $popover-border-width: 0.0625rem;
   background-color: set-color(white);
   border-radius: $border-radius;
   border: $popover-border-width solid set-color(grey, 30);
+  box-shadow: map-get($shadow, 3);
   color: $text-color;
   display: none;
   font-family: $font-family;
