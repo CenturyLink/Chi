@@ -91,7 +91,7 @@ export class Button {
   }
 
   componentDidLoad() {
-    if (!this.el.children[0].innerHTML.includes('<chi-icon')) {
+    if (!this.el.children[0].innerHTML.includes('<chi-icon') && !this.el.children[0].innerHTML.includes('<chi-spinner')) {
       this.slotBtnContent = false;
     }
   }
