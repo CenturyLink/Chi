@@ -11,9 +11,9 @@ export class Badge {
   @Element() el: HTMLElement;
 
   /**
-   *  to set mode of a badges { outline, flat }.
+   *  to set mode of a badge { outline, flat }.
    */
-  @Prop({ reflectToAttr: true }) mode: string;
+  @Prop({ reflectToAttr: true }) badgeMode: string;
 
   /**
    *  to render badges with a more pronounced border-radius.
@@ -49,7 +49,7 @@ export class Badge {
     }
   }
 
-  @Watch('mode')
+  @Watch('badgeMode')
   modeValidation(newValue: string) {
     if (newValue && !['', 'outline', 'flat'].includes(newValue)) {
       throw new Error(`${newValue} is not a valid mode for badge. Valid modes are outline, flat or ''. `);
@@ -65,7 +65,7 @@ export class Badge {
   componentWillLoad() {
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
-    this.modeValidation(this.mode);
+    this.modeValidation(this.badgeMode);
   }
 
   render() {
@@ -73,7 +73,7 @@ export class Badge {
       <div class={`a-badge
 	        ${this.size ? `-${this.size}` : ''}
 	        ${this.color ? `-${this.color}` : ''}
-	        ${this.mode ? `-${this.mode}` : ''}
+	        ${this.badgeMode ? `-${this.badgeMode}` : ''}
 	        ${this.pill ? '-pill' : ''}
 	        ${this.textTransform ? `-text--${this.textTransform}` : ''}`}
       >
