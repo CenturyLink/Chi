@@ -15,7 +15,6 @@ describe('Badges', () => {
 
   it('Colored badge should have appropriate class', () => {
     cy.get('#badge-solid-secondary')
-      .first()
       .should('have.class', 'hydrated')
       .children()
       .first()
@@ -25,7 +24,6 @@ describe('Badges', () => {
 
   it('Sized badge should have appropriate class', () => {
     cy.get('#badge-smaller')
-      .first()
       .should('have.class', 'hydrated')
       .children()
       .first()
@@ -35,7 +33,6 @@ describe('Badges', () => {
 
   it('Pill badge should have appropriate class', () => {
     cy.get('#badge-pill-solid-base')
-      .first()
       .should('have.class', 'hydrated')
       .children()
       .first()
@@ -45,7 +42,6 @@ describe('Badges', () => {
 
   it('Flat badge should have appropriate class', () => {
     cy.get('#badge-flat-base')
-      .first()
       .should('have.class', 'hydrated')
       .children()
       .first()
@@ -55,7 +51,6 @@ describe('Badges', () => {
 
   it('Outlined badge should have appropriate class', () => {
     cy.get('#badge-outline-primary')
-      .first()
       .should('have.class', 'hydrated')
       .children()
       .first()
@@ -65,7 +60,6 @@ describe('Badges', () => {
 
   it('Icon badge should have appropriate class', () => {
     cy.get('#badge-icon-solid-base')
-      .first()
       .should('have.class', 'hydrated')
       .children()
       .first()
@@ -77,7 +71,6 @@ describe('Badges', () => {
 
   it('Text transformed badge should have appropriate class', () => {
     cy.get('#badge-lowercase')
-      .first()
       .should('have.class', 'hydrated')
       .children()
       .first()

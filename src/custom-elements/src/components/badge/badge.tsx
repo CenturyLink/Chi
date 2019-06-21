@@ -38,7 +38,7 @@ export class Badge {
   @Watch('size')
   sizeValidation(newValue: string) {
     if (newValue && !['', 'small', 'smaller'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid size for badge. Valid values are small, smaller, ''. `);
+      throw new Error(`${newValue} is not a valid size for badge. Valid values are small, smaller or ''. `);
     }
   }
 
