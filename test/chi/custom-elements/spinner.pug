@@ -8,7 +8,7 @@ h2 Backdrop
 h3 Base
 .example.-mb--3(style="height:30rem;width:100%")
   .-p--6(style="position:relative;height:100%;")
-    chi-spinner(color='inverse', backdrop, data-cy='base-backdrop-spinner')
+    chi-spinner(color='light', backdrop, data-cy='base-backdrop-spinner')
 
 h3 Inverse Backdrop
 .example.-mb--3(style="height:30rem;width:100%")
@@ -42,7 +42,7 @@ h2 Sizes
 h2 Colors
 .test-colors
   .a-grid.-align-items--center
-    each type in ['primary', 'success', 'warning', 'danger', 'info', 'muted', 'secondary', 'light']
+    each type in ['primary', 'success', 'warning', 'danger', 'muted', 'secondary', 'light']
       div.-p--2
         chi-spinner(color=type, class='-m--3', size='lg', data-cy=`spinner-${type}`)
         p.-text(class=`-text--${type}`)

@@ -27,21 +27,21 @@ export class Spinner {
   @Watch('size')
   sizeValidation(newValue: string) {
     if (newValue && !ICON_SIZES.includes(newValue)) {
-      throw new Error(`Not valid size ${newValue} for spinner. Valid values are xs, sm, sm--2, sm--3, md, lg, xl, xxl or ''. `);
+      throw new Error(`${newValue} is not a valid size for spinner. Valid values are xs, sm, sm--2, sm--3, md, lg, xl, xxl or ''. `);
     }
   }
 
   @Watch('color')
   colorValidation(newValue: string) {
     if (newValue && !SPINNER_COLORS.includes(newValue)) {
-      throw new Error(`Not valid color ${newValue} for spinner. Valid values are primary, success, warning, danger, muted, secondary, light or ''. `);
+      throw new Error(`${newValue} is not a valid color for spinner. Valid values are primary, success, warning, danger, muted, secondary, light or ''. `);
     }
   }
 
   @Watch('backdrop')
   backdropValidation(newValue: string) {
     if (newValue && newValue !== 'inverse' && newValue !== 'backdrop') {
-      throw new Error(`Not valid backdrop ${newValue} for spinner. Valid values are inverse, backdrop, '' or true. `);
+      throw new Error(`${newValue} is not a valid backdrop for spinner. Valid values are inverse, backdrop, '' or true. `);
     }
   }
 
