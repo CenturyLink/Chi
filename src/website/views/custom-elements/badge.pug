@@ -40,60 +40,60 @@ h4 Base
     <chi-badge color="light">Light</chi-badge>
 
 h4 Outline
-p.-text Set the <code>surface</code> attribute value to <code>outline</code>.
+p.-text Set the <code>variant</code> attribute value to <code>outline</code>.
 .example.-mb--3
   .a-grid.-noGutter
     .a-col.-w--12
       .-p--2.-text--center
-        chi-badge(class='-m--1', color='primary', surface='outline')= 'Primary'
-        chi-badge(class='-m--1', color='success', surface='outline')= 'Success'
-        chi-badge(class='-m--1', color='warning', surface='outline')= 'Warning'
-        chi-badge(class='-m--1', color='danger', surface='outline')= 'Danger'
-        chi-badge(class='-m--1', color='dark', surface='outline')= 'Dark'
-        chi-badge(class='-m--1', color='muted', surface='outline')= 'Muted'
+        chi-badge(class='-m--1', color='primary', variant='outline')= 'Primary'
+        chi-badge(class='-m--1', color='success', variant='outline')= 'Success'
+        chi-badge(class='-m--1', color='warning', variant='outline')= 'Warning'
+        chi-badge(class='-m--1', color='danger', variant='outline')= 'Danger'
+        chi-badge(class='-m--1', color='dark', variant='outline')= 'Dark'
+        chi-badge(class='-m--1', color='muted', variant='outline')= 'Muted'
     .a-col.-w--12
       .-p--2.-bg--black.-text--center
-        chi-badge(class='-m--1', color='secondary', surface='outline')= 'Secondary'
-        chi-badge(class='-m--1', color='light', surface='outline')= 'Light'
+        chi-badge(class='-m--1', color='secondary', variant='outline')= 'Secondary'
+        chi-badge(class='-m--1', color='light', variant='outline')= 'Light'
   :code(lang="html")
     <!-- For light backgrounds -->
-    <chi-badge color="primary" surface="outline">Primary</chi-badge>
-    <chi-badge color="success" surface="outline">Success</chi-badge>
-    <chi-badge color="warning" surface="outline">Warning</chi-badge>
-    <chi-badge color="danger" surface="outline">Danger</chi-badge>
-    <chi-badge color="dark" surface="outline">Dark</chi-badge>
-    <chi-badge color="muted" surface="outline">Muted</chi-badge>
+    <chi-badge color="primary" variant="outline">Primary</chi-badge>
+    <chi-badge color="success" variant="outline">Success</chi-badge>
+    <chi-badge color="warning" variant="outline">Warning</chi-badge>
+    <chi-badge color="danger" variant="outline">Danger</chi-badge>
+    <chi-badge color="dark" variant="outline">Dark</chi-badge>
+    <chi-badge color="muted" variant="outline">Muted</chi-badge>
     <!-- For dark backgrounds -->
-    <chi-badge color="secondary" surface="outline">Secondary</chi-badge>
-    <chi-badge color="light" surface="outline">Light</chi-badge>
+    <chi-badge color="secondary" variant="outline">Secondary</chi-badge>
+    <chi-badge color="light" variant="outline">Light</chi-badge>
 
 h4 Flat
-p.-text Set the <code>surface</code> attribute value to <code>flat</code>.
+p.-text Set the <code>variant</code> attribute value to <code>flat</code>.
 .example.-mb--3
   .a-grid.-noGutter
     .a-col.-w--12
       .-p--2.-text--center
-        chi-badge(class='-m--1', color='primary', surface='flat')= 'Primary'
-        chi-badge(class='-m--1', color='success', surface='flat')= 'Success'
-        chi-badge(class='-m--1', color='warning', surface='flat')= 'Warning'
-        chi-badge(class='-m--1', color='danger', surface='flat')= 'Danger'
-        chi-badge(class='-m--1', color='dark', surface='flat')= 'Dark'
-        chi-badge(class='-m--1', color='muted', surface='flat')= 'Muted'
+        chi-badge(class='-m--1', color='primary', variant='flat')= 'Primary'
+        chi-badge(class='-m--1', color='success', variant='flat')= 'Success'
+        chi-badge(class='-m--1', color='warning', variant='flat')= 'Warning'
+        chi-badge(class='-m--1', color='danger', variant='flat')= 'Danger'
+        chi-badge(class='-m--1', color='dark', variant='flat')= 'Dark'
+        chi-badge(class='-m--1', color='muted', variant='flat')= 'Muted'
     .a-col.-w--12
       .-p--2.-bg--black.-text--center
-        chi-badge(class='-m--1', color='secondary', surface='flat')= 'Secondary'
-        chi-badge(class='-m--1', color='light', surface='flat')= 'Light'
+        chi-badge(class='-m--1', color='secondary', variant='flat')= 'Secondary'
+        chi-badge(class='-m--1', color='light', variant='flat')= 'Light'
   :code(lang="html")
     <!-- For light backgrounds -->
-    <chi-badge color="primary" surface="flat">Primary</chi-badge>
-    <chi-badge color="success" surface="flat">Success</chi-badge>
-    <chi-badge color="warning" surface="flat">Warning</chi-badge>
-    <chi-badge color="danger" surface="flat">Danger</chi-badge>
-    <chi-badge color="dark" surface="flat">Dark</chi-badge>
-    <chi-badge color="muted" surface="flat">Muted</chi-badge>
+    <chi-badge color="primary" variant="flat">Primary</chi-badge>
+    <chi-badge color="success" variant="flat">Success</chi-badge>
+    <chi-badge color="warning" variant="flat">Warning</chi-badge>
+    <chi-badge color="danger" variant="flat">Danger</chi-badge>
+    <chi-badge color="dark" variant="flat">Dark</chi-badge>
+    <chi-badge color="muted" variant="flat">Muted</chi-badge>
     <!-- For dark backgrounds -->
-    <chi-badge color="secondary" surface="flat">Secondary</chi-badge>
-    <chi-badge color="light" surface="flat">Light</chi-badge>
+    <chi-badge color="secondary" variant="flat">Secondary</chi-badge>
+    <chi-badge color="light" variant="flat">Light</chi-badge>
 
 h3 Pills
 p.-text Use the <code>pill</code> attribute to render badges with a more pronounced border-radius.
@@ -113,16 +113,16 @@ p.-text Icons can be placed before, after, or on both sides of text.
     chi-badge(class='-m--1')
       span Badge
       chi-icon(icon='x', size='xs')
-    chi-badge(class='-m--1', surface='flat', color='success')
+    chi-badge(class='-m--1', variant='flat', color='success')
       chi-icon(icon='circle')
       span Active
-    chi-badge(class='-m--1', surface='flat', color='warning')
+    chi-badge(class='-m--1', variant='flat', color='warning')
       chi-icon(icon='circle-clock')
       span Away
-    chi-badge(class='-m--1', surface='flat', color='danger')
+    chi-badge(class='-m--1', variant='flat', color='danger')
       chi-icon(icon='circle-minus')
       span Do not Disturb
-    chi-badge(class='-m--1', surface='flat', color='muted')
+    chi-badge(class='-m--1', variant='flat', color='muted')
       chi-icon(icon='circle')
       span Offline
   :code(lang="html")
@@ -134,19 +134,19 @@ p.-text Icons can be placed before, after, or on both sides of text.
       <span>Badge</Badge>
       <chi-icon icon="x"></chi-icon>
     </chi-badge>
-    <chi-badge surface="flat" color="success">
+    <chi-badge variant="flat" color="success">
       <chi-icon icon="circle"></chi-icon>
       <span>Active</Badge>
     </chi-badge>
-    <chi-badge surface="flat" color="warning">
+    <chi-badge variant="flat" color="warning">
       <chi-icon icon="circle-clock"></chi-icon>
       <span>Away</Badge>
     </chi-badge>
-    <chi-badge surface="flat" color="danger">
+    <chi-badge variant="flat" color="danger">
       <chi-icon icon="circle-minus"></chi-icon>
       <span>Do not Disturb</Badge>
     </chi-badge>
-    <chi-badge surface="flat" color="muted">
+    <chi-badge variant="flat" color="muted">
       <chi-icon icon="circle"></chi-icon>
       <span>Offline</Badge>
     </chi-badge>
@@ -157,12 +157,12 @@ p.-text Set the attribute <code>size</code> to <code>small</code> to render smal
 .example.-mb--3
   .-p--2
     chi-badge(size='small', class='-m--1')= 'Badge'
-    chi-badge(size='small', class='-m--1', surface='flat')
+    chi-badge(size='small', class='-m--1', variant='flat')
       chi-icon(icon='atom')
       span Badge
   :code(lang="html")
     <chi-badge size="small">Badge</chi-badge>
-    <chi-badge size="small" surface="flat">
+    <chi-badge size="small" variant="flat">
       <chi-icon icon="atom"></chi-icon>
       <span>Badge</span>
     </chi-badge>
@@ -171,12 +171,12 @@ p.-text Set the attribute <code>size</code> to <code>smaller</code> to render ev
 .example.-mb--3
   .-p--2
     chi-badge(size='smaller', class='-m--1')= 'Badge'
-    chi-badge(size='smaller', class='-m--1', surface='flat')
+    chi-badge(size='smaller', class='-m--1', variant='flat')
       chi-icon(icon='atom')
       span Badge
   :code(lang="html")
     <chi-badge size="smaller">Badge</chi-badge>
-    <chi-badge size="smaller" surface="flat">
+    <chi-badge size="smaller" variant="flat">
       <chi-icon icon="atom"></chi-icon>
       <span>Badge</span>
     </chi-badge>

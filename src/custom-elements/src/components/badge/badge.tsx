@@ -11,9 +11,9 @@ export class Badge {
   @Element() el: HTMLElement;
 
   /**
-   *  to set surface of a badge { outline, flat }.
+   *  to set variant of a badge { outline, flat }.
    */
-  @Prop({ reflectToAttr: true }) surface: string;
+  @Prop({ reflectToAttr: true }) variant: string;
 
   /**
    *  to render badges with a more pronounced border-radius.
@@ -49,10 +49,10 @@ export class Badge {
     }
   }
 
-  @Watch('surface')
-  surfaceValidation(newValue: string) {
+  @Watch('variant')
+  variantValidation(newValue: string) {
     if (newValue && !['', 'outline', 'flat'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid surface for badge. Valid values are outline, flat or ''. `);
+      throw new Error(`${newValue} is not a valid variant value for badge. Valid values are outline, flat or ''. `);
     }
   }
 
@@ -65,7 +65,7 @@ export class Badge {
   componentWillLoad() {
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
-    this.surfaceValidation(this.surface);
+    this.variantValidation(this.variant);
   }
 
   render() {
@@ -73,7 +73,7 @@ export class Badge {
       <div class={`a-badge
 	        ${this.size ? `-${this.size}` : ''}
 	        ${this.color ? `-${this.color}` : ''}
-	        ${this.surface ? `-${this.surface}` : ''}
+	        ${this.variant ? `-${this.variant}` : ''}
 	        ${this.pill ? '-pill' : ''}
 	        ${this.textTransform ? `-text--${this.textTransform}` : ''}`}
       >

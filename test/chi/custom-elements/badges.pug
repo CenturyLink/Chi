@@ -8,8 +8,8 @@ each type in ['solid', 'outline', 'flat']
     span.a-h2= `Badge / ${type}`
     div
       each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'light']
-        chi-badge(class='-mr--1', surface=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-${type}-${style}` )= `${style}`
-        chi-badge(class='-mr--1', surface=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-icon-${type}-${style}` )
+        chi-badge(class='-mr--1', variant=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-${type}-${style}` )= `${style}`
+        chi-badge(class='-mr--1', variant=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-icon-${type}-${style}` )
           chi-icon(icon='atom')
           span= style
 
@@ -20,8 +20,8 @@ each type in ['solid', 'outline']
       tr
         each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'light']
           td
-            chi-badge(pill, class='-mr--1', color=`${style === 'base' ? '' : style}`, surface=`${type === 'solid' ? '' : type}`, id=`badge-pill-${type}-${style}`)= '50'
-            chi-badge(pill, class='-mr--1', color=`${style === 'base' ? '' : style}`, surface=`${type === 'solid' ? '' : type}`, id=`badge-pill-icon-${type}-${style}`)
+            chi-badge(pill, class='-mr--1', color=`${style === 'base' ? '' : style}`, variant=`${type === 'solid' ? '' : type}`, id=`badge-pill-${type}-${style}`)= '50'
+            chi-badge(pill, class='-mr--1', color=`${style === 'base' ? '' : style}`, variant=`${type === 'solid' ? '' : type}`, id=`badge-pill-icon-${type}-${style}`)
               chi-icon(icon='atom')
               span 50
 
