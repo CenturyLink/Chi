@@ -1,0 +1,127 @@
+---
+title: Number input
+scripts:
+  - js/ce/ux-chi-ce
+styles:
+  - assets/styles/number-input-ce
+---
+
+p.-text
+  | Number inputs are used to increase or decrease numeric values.
+
+h3 Examples
+
+p.-text
+  | To render a number input, just place a <code>chi-number-input</code> tag and set an initial value (optional). If
+  | an initial value is not provided, <code>0</code> will be taken as default.
+
+ul#a-tabs--number-input.a-tabs
+  li.-active
+    a(href='#a-tabs--number-input-base') Base
+  li
+    a(href='#a-tabs--number-input-value') Value
+#a-tabs--number-input-base.a-tabs-panel.-active
+  .example.-mb--3
+    .-p--3
+      .m-formGroup
+        chi-number-input()
+    :code(lang='html')
+      <chi-number-input></chi-number-input>
+#a-tabs--number-input-value.a-tabs-panel
+  .example.-mb--3
+    .-p--3
+      .m-formGroup
+        chi-number-input(value='2')
+    :code(lang="html")
+      <chi-number-input value="2"></chi-number-input>
+
+h4 Options
+
+p.-text
+  | Apart from an initial value, number inputs allow to set some other options like <code>max</code>, <code>min</code>,
+  | and <code>step</code>. It is important to remark that when the value is suffering from a step mismatch, it will be
+  | rounded to the nearest number which prevents this to happen.
+
+.example.-mb--3
+  .-p--3
+    .m-formGroup
+      chi-number-input(min='-4', max='4', step='3')
+  :code(lang='html')
+    <chi-number-input min="-4" max="4" step="3"></chi-number-input>
+
+h4 Disabled
+
+.example.-mb--3
+  .-p--3
+    .m-formGroup
+      chi-number-input(disabled=true)
+  :code(lang='html')
+    <chi-number-input disabled></chi-number-input>
+
+h4 Sizes
+
+p.-text
+  | Number inputs support a full spectrum of sizes: <code>sm</code>, <code>md</code>,
+  |  <code>lg</code>, <code>xl</code>.
+  | The default size is <code>md</code>.
+.example.-mb--3
+  .-p--3
+    each size in ['sm', 'md', 'lg', 'xl']
+      .m-formGroup.-inline.-mr--3
+        chi-number-input(size=`${size}`)
+  :code(lang='html')
+    <chi-number-input size="sm"></chi-number-input>
+    <chi-number-input></chi-number-input>
+    <chi-number-input size="lg"></chi-number-input>
+    <chi-number-input size="xl"></chi-number-input>
+
+h3 Expanded version
+
+p.-text
+  | There is available an expanded version of the number input component.
+
+h4 Base
+.example.-mb--3
+  .-p--3
+    chi-number-input(expanded=true)
+  :code(lang='html')
+    <chi-number-input expanded></chi-number-input>
+
+h4 Pill
+.example.-mb--3
+  .-p--3
+    chi-number-input(expanded=true, pill=true)
+  :code(lang='html')
+    <chi-number-input expanded pill></chi-number-input>
+
+h4 Disabled
+.example.-mb--3
+  .-p--3
+    chi-number-input(expanded=true disabled=true)
+  :code(lang='html')
+    <chi-number-input expanded disabled></chi-number-input>
+
+h4 Sizes
+p.-text
+  | Expanded number inputs support a full spectrum of sizes: <code>sm</code>, <code>md</code>,
+  |  <code>lg</code>, <code>xl</code>.
+  | The default size is <code>md</code>.
+.example.-mb--3
+  .-p--3.-d--flex.-justify-content--start.-align-items--center
+    each size in ['sm', 'md', 'lg', 'xl']
+      chi-number-input(expanded=true size=`${size}` class='-mr--2')
+  :code(lang='html')
+    <chi-number-input expanded size="sm"></chi-number-input>
+    <chi-number-input expanded></chi-number-input>
+    <chi-number-input expanded size="lg"></chi-number-input>
+    <chi-number-input expanded size="xl"></chi-number-input>
+
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('a-tabs--number-input'));
+    },
+    false
+  );

@@ -531,8 +531,10 @@
       "postInteractionWait": "",
       "selectors": [
         ".test-default",
-        ".test-small",
-        ".test-large"
+        ".test-sm",
+        ".test-md",
+        ".test-lg",
+        ".test-xl"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,

@@ -1,0 +1,70 @@
+@import 'components/icons/webfont-font-face';
+:host(chi-number-input) {
+  @import '../../global/styles/common';
+  @import 'components/input-number/input-number';
+  @import 'components/buttons/_button-groups-variables';
+  @import 'components/buttons/_horizontal-button-groups';
+  @import 'components/buttons/_vertical-button-groups';
+  @import 'components/buttons/button-groups';
+  @import 'components/buttons/buttons';
+  
+  display: inline-flex !important;
+  position: relative;
+
+  & > div > button {
+    background-image: none !important;
+  }
+
+  .arrow {
+    pointer-events: none;
+    margin-left: (3rem / 16);
+    width: 0; 
+    height: 0; 
+    border-left: 0.25rem solid transparent;
+    border-right: 0.25rem solid transparent;
+
+    &.-sm {
+      margin-left: 0.25rem;
+      border-left: (3rem / 16) solid transparent;
+      border-right: (3rem / 16) solid transparent;
+    }
+
+    &.-lg {
+      margin-left: (5rem / 16);
+    }
+
+    &.-xl {
+      margin-left: (6rem / 16);
+      border-left: (5rem / 16) solid transparent;
+      border-right: (5rem / 16) solid transparent;
+    }
+
+    &.up {
+      border-bottom: 0.25rem solid #333333;
+
+      &.-sm {
+        border-bottom: (3rem / 16) solid #333333;
+      }
+
+      &.-xl {
+        border-bottom: (5rem / 16) solid #333333;
+      }
+    }
+
+    &.down {
+      border-top: 0.25rem solid #333333;
+
+      &.-sm {
+        border-top: (3rem / 16) solid #333333;
+      }
+
+      &.-xl {
+        border-top: (5rem / 16) solid #333333;
+      }
+    }
+  }
+
+  &[expanded] {
+    display: inline-flex;
+  }
+}

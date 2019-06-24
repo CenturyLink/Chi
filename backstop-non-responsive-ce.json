@@ -227,6 +227,40 @@
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
+    },
+    {
+      "label": "number-input",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/number-input.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-default",
+        ".test-sm",
+        ".test-md",
+        ".test-lg",
+        ".test-xl",
+        ".test-expanded-default",
+        ".test-expanded-sm",
+        ".test-expanded-md",
+        ".test-expanded-lg",
+        ".test-expanded-xl",
+        ".test-expanded-pill-default",
+        ".test-expanded-pill-sm",
+        ".test-expanded-pill-md",
+        ".test-expanded-pill-lg",
+        ".test-expanded-pill-xl"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
     }
   ],
   "paths": {

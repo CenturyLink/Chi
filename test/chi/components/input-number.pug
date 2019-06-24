@@ -2,10 +2,10 @@
 title: Input numbers
 ---
 
-each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
+each size in ['default', 'sm', 'md', 'lg', 'xl']
   div(class=`test-${size}`)
     span.a-h2= `Text Input / ${size}`
-    table(cellpadding="0", cellspacing="0", width="600px")
+    table(cellpadding='0', cellspacing='0', width='600px')
       each state in ['initial', 'hover', 'focus', 'disabled']
         tr
           td
@@ -16,14 +16,14 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                 .m-formGroup.-inline
                   .a-inputWrapper
                     input.a-input(
-                      type="number"
+                      type='number'
                       class={
                         [`-${style}`]: style != 'default',
                         [`-${state}`]: state != 'disabled',
                         [`-${size}`]: size != 'default'
                       }
-                      value="0"
+                      value='0'
                       disabled=state=='disabled'?'disabled': false
                     )
-                    button(tabindex="-1")
-                    button(tabindex="-1")
+                    button(tabindex='-1')
+                    button(tabindex='-1')
