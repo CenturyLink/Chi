@@ -139,6 +139,12 @@
       & > .a-steps__line {
         border-color: $secondary-color;
       }
+
+      &.-active {
+        & > .a-steps__line {
+          border-color: set-color(grey, 40);
+        }
+      }
     }
   }
 
