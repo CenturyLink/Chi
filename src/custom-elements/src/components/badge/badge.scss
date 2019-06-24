@@ -1,0 +1,9 @@
+:host(chi-badge) {
+  @import '../../global/styles/common';
+  @import 'components/badge/badge';
+  display: inline-flex;
+  vertical-align: middle;
+}
+::slotted(*)>:not(:last-child) {
+  margin-right: .5rem;
+}

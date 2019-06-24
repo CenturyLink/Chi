@@ -1,0 +1,48 @@
+---
+title: Badges
+scripts:
+  - js/ce/ux-chi-ce
+---
+each type in ['solid', 'outline', 'flat']
+  div(class=`test-${type}`)
+    span.a-h2= `Badge / ${type}`
+    div
+      each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'light']
+        chi-badge(class='-mr--1', variant=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-${type}-${style}` )= `${style}`
+        chi-badge(class='-mr--1', variant=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-icon-${type}-${style}` )
+          chi-icon(icon='atom')
+          span= style
+
+each type in ['solid', 'outline']
+  div(class=`test-pill-${type}`)
+    span.a-h2= `Badge / Pill / ${type}`
+    table(cellpadding="0", cellspacing="0")
+      tr
+        each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'light']
+          td
+            chi-badge(pill, class='-mr--1', color=`${style === 'base' ? '' : style}`, variant=`${type === 'solid' ? '' : type}`, id=`badge-pill-${type}-${style}`)= '50'
+            chi-badge(pill, class='-mr--1', color=`${style === 'base' ? '' : style}`, variant=`${type === 'solid' ? '' : type}`, id=`badge-pill-icon-${type}-${style}`)
+              chi-icon(icon='atom')
+              span 50
+
+h2 Badge Icons
+.test-badge-icons
+  .example.-mb--1
+    each size in ['smaller', 'small', 'default']
+      .p.-text--bold= size
+        chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1', id=`badge-${size}`)
+          chi-icon(icon='atom')
+          span Badge
+        chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1')
+          span Badge
+          chi-icon(icon='atom')
+        chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1')
+          chi-icon(icon='atom')
+          span Badge
+          chi-icon(icon='atom')
+
+h2 Text Transform
+.example.-mb--1
+  each transform, text in { BADge: 'lowercase', badGE: 'uppercase', badge: 'capitalized' }
+    .p.-text--bold= transform
+      chi-badge(text-transform= transform, class='-m--1', id=`badge-${transform}`)= text
