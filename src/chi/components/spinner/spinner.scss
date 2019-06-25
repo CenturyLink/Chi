@@ -37,7 +37,7 @@ $spinner-sizes: (
 }
 
 .a-backdrop {
-  .a-spinner {
+  & > .a-spinner {
     transform-origin: center;
     width: 4rem;
     height: 4rem;
