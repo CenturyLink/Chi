@@ -14,7 +14,12 @@ export class Button {
   @Prop({ reflectToAttr: true }) type: string;
 
   /**
-   *  to disabled chi-button.
+   *  to set variant of a button { outline, flat }.
+   */
+  @Prop({ reflectToAttr: true }) variant: string;
+
+  /**
+   *  to disable chi-button.
    */
   @Prop({ reflectToAttr: true }) disabled = false;
 
@@ -32,16 +37,6 @@ export class Button {
    *  to to render buttons with a more pronounced border-radius.
    */
   @Prop({ reflectToAttr: true }) pill = false;
-
-  /**
-   *  to remove a buttons solid background and keep its colored border.
-   */
-  @Prop({ reflectToAttr: true }) outline = false;
-
-  /**
-   *  to render a button with a transparent background and border.
-   */
-  @Prop({ reflectToAttr: true }) flat = false;
 
   /**
    *  to render a button to fill the parent space.
@@ -81,10 +76,18 @@ export class Button {
     }
   }
 
+  @Watch('variant')
+  variantValidation(newValue: string) {
+    if (newValue && !['', 'outline', 'flat'].includes(newValue)) {
+      throw new Error(`${newValue} is not a valid variant for button. Valid values are outline, flat or ''. `);
+    }
+  }
+
   componentWillLoad(): void {
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
     this.buttonTypeValidation(this.type);
+    this.variantValidation(this.variant);
   }
 
   componentDidLoad() {
@@ -110,8 +113,7 @@ export class Button {
       return (
         <button
           class={`a-btn
-          ${this.outline ? '-outline' : ''}
-          ${this.flat ? '-flat' : ''}
+          ${this.variant ? `-${this.variant}` : ''}
           ${this.pill ? '-pill' : ''}
           ${this.color ? `-${this.color}` : ''}
           ${this.type ? `-${this.type}` : ''}

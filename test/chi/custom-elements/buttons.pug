@@ -21,8 +21,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                   .-mr--2
                     chi-button.-m--1.-mx--2(
                       color=style
-                      outline= type === 'outline'
-                      flat= type === 'flat'
+                      variant= type === 'solid' || type === 'fluid' ? '' : type
                       fluid= type === 'fluid'
                       size= size !== 'default' ? size : ''
                       disabled= state === 'disabled'
@@ -32,8 +31,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       type='icon'
                       color=style
                       size= size !== 'default' ? size : ''
-                      outline= type === 'outline'
-                      flat= type === 'flat'
+                      variant= type === 'solid' || type === 'fluid' ? '' : type
                       fluid= type === 'fluid'
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
@@ -42,8 +40,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     chi-button.-m--1(
                       color=style
                       size= size !== 'default' ? size : ''
-                      outline= type === 'outline'
-                      flat= type === 'flat'
+                      variant= type === 'solid' || type === 'fluid' ? '' : type
                       fluid= type === 'fluid'
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
@@ -53,8 +50,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     chi-button.-m--1.-mx--2(
                       color=style
                       size= size !== 'default' ? size : ''
-                      outline= type === 'outline'
-                      flat= type === 'flat'
+                      variant= type === 'solid' || type === 'fluid' ? '' : type
                       fluid= type === 'fluid'
                       pill
                       disabled= state === 'disabled'
@@ -64,8 +60,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       color=style
                       size= size !== 'default' ? size : ''
                       type='icon'
-                      outline= type === 'outline'
-                      flat= type === 'flat'
+                      variant= type === 'solid' || type === 'fluid' ? '' : type
                       fluid= type === 'fluid'
                       pill
                       disabled= state === 'disabled'
@@ -76,8 +71,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       color=style
                       size= size !== 'default' ? size : ''
                       pill
-                      outline= type === 'outline'
-                      flat= type === 'flat'
+                      variant= type === 'solid' || type === 'fluid' ? '' : type
                       fluid= type === 'fluid'
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
@@ -90,8 +84,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     chi-button.-m--1.-mx--2(
                       data-cy=`button-${style}-${size}`
                       color=style
-                      outline= type === 'outline'
-                      flat= type === 'flat'
+                      variant= type === 'solid' || type === 'fluid' ? '' : type
                       fluid= type === 'fluid'
                       size= size !== 'default' ? size : ''
                       disabled= state === 'disabled'
@@ -101,8 +94,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       type='icon'
                       color=style
                       size= size !== 'default' ? size : ''
-                      outline= type === 'outline'
-                      flat= type === 'flat'
+                      variant= type === 'solid' || type === 'fluid' ? '' : type
                       fluid= type === 'fluid'
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
@@ -111,8 +103,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     chi-button.-m--1(
                       color=style
                       size= size !== 'default' ? size : ''
-                      outline= type === 'outline'
-                      flat= type === 'flat'
+                      variant= type === 'solid' || type === 'fluid' ? '' : type
                       fluid= type === 'fluid'
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
@@ -122,8 +113,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     chi-button.-m--1.-mx--2(
                       color=style
                       size= size !== 'default' ? size : ''
-                      outline= type === 'outline'
-                      flat= type === 'flat'
+                      variant= type === 'solid' || type === 'fluid' ? '' : type
                       fluid= type === 'fluid'
                       pill
                       disabled= state === 'disabled'
@@ -133,8 +123,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       color=style
                       size= size !== 'default' ? size : ''
                       type='icon'
-                      outline= type === 'outline'
-                      flat= type === 'flat'
+                      variant= type === 'solid' || type === 'fluid' ? '' : type
                       fluid= type === 'fluid'
                       pill
                       disabled= state === 'disabled'
@@ -145,8 +134,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       color=style
                       size= size !== 'default' ? size : ''
                       pill
-                      outline= type === 'outline'
-                      flat= type === 'flat'
+                      variant= type === 'solid' || type === 'fluid' ? '' : type
                       fluid= type === 'fluid'
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
