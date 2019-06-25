@@ -9,7 +9,6 @@ describe('Date picker', function() {
 
   beforeEach(()=>{
     cy.visit('tests/custom-elements/date-picker.html');
-    //cy.fixture('chidata.json').as('chidata');
   });
 
   it('Clicking on a day emits an event. ', function() {

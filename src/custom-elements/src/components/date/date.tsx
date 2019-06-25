@@ -219,7 +219,7 @@ export class Date {
             }`}
             onClick={() => this.prevMonth()}
           >
-            <i class="a-icon icon-chevron-left -sm" />
+            <chi-icon icon="chevron-left" size="sm" />
           </div>
           <div class="m-datepicker__month">
             {`${this.viewMonth.format('MMMM')}
@@ -233,7 +233,7 @@ export class Date {
             }`}
             onClick={() => this.nextMonth()}
           >
-            <i class="a-icon icon-chevron-right -sm" />
+            <chi-icon icon="chevron-right" size="sm" />
           </div>
         </div>
         <div class="m-datepicker__day-names">
