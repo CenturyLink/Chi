@@ -5,55 +5,70 @@ title: Expansion panel
   .m-epanel.-done
     .m-epanel__header
       h4.m-epanel__title Expansion panel #1
+      .m-epanel__content
+        .m-epanel__collapse
+          .-done--only.-text
+              h5 Done
+              p.-text content in expansion panel.
       .m-epanel__action.-done--only
         button.a-btn.-primary.-flat Change
-    .m-epanel__collapse
-      .m-epanel__content.-active--only
-        .m-epanel__body
-          h5 Active
-          p.-text content in expansion panel.
-        .m-epanel__footer.-justify-content--end
-          button.a-btn.-lg Previous
-          button.a-btn.-lg.-primary.-ml--2 Continue
-      .m-epanel__content.-done--only
-        .m-epanel__body
-          h5 Done
-          p.-text content in expansion panel.
 
 .test-expansion-panel-active.-mb--3(style="min-width: 20rem")
   .m-epanel.-active(data-chi-epanel-group='example3')
     .m-epanel__header
       h4.m-epanel__title Expansion panel #2
-      .m-epanel__action.-done--only
-        button.a-btn.-primary.-flat(data-chi-epanel-action='active') Change
-    .m-epanel__collapse
-      .m-epanel__content.-active--only
+    .m-epanel__collapse.-ml--0
+      .-active--only
         .m-epanel__body
-          h5 Active
-          p.-text content in expansion panel.
-        .m-epanel__footer.-justify-content--end
-          button.a-btn.-lg(data-chi-epanel-action='previous') Previous
-          button.a-btn.-lg(data-chi-epanel-action='next').-primary.-ml--2 Continue
-      .m-epanel__content.-done--only
-        .m-epanel__body
-          h5 Done
-          p.-text content in expansion panel.
+          .m-epanel__content
+            h5 Active
+            p.-text content in expansion panel.
+          .m-epanel__footer.-justify-content--end
+            button.a-btn.-lg(data-chi-epanel-action='previous') Previous
+            button.a-btn.-lg(data-chi-epanel-action='next').-primary.-ml--2 Continue
 
 .test-expansion-panel-pending.-mb--3(style="min-width: 20rem")
   .m-epanel(data-chi-epanel-group='example3')
     .m-epanel__header
-      h4.m-epanel__title Expansion panel #2
+      h4.m-epanel__title Expansion panel #3
+
+.test-expansion-panel-disabled.-mb--3(style="min-width: 20rem")
+  .m-epanel.-disabled(data-chi-epanel-group='example3')
+    .m-epanel__header
+      h4.m-epanel__title Expansion panel #4
+
+.test-expansion-panel-done-bordered.-mb--3(style="min-width: 20rem")
+  .m-epanel.-done.-bordered
+    .m-epanel__header
+      h4.m-epanel__title Expansion panel #5
+      .m-epanel__content
+        .m-epanel__collapse
+          .-done--only.-text
+              h5 Done
+              p.-text content in expansion panel.
       .m-epanel__action.-done--only
-        button.a-btn.-primary.-flat(data-chi-epanel-action='active') Change
-    .m-epanel__collapse
-      .m-epanel__content.-active--only
+        button.a-btn.-primary.-flat Change
+
+.test-expansion-panel-active-bordered.-mb--3(style="min-width: 20rem")
+  .m-epanel.-active(data-chi-epanel-group='example3').-bordered
+    .m-epanel__header
+      h4.m-epanel__title Expansion panel #6
+    .m-epanel__collapse.-ml--0
+      .-active--only
         .m-epanel__body
-          h5 Active
-          p.-text content in expansion panel.
-        .m-epanel__footer.-justify-content--end
-          button.a-btn.-lg(data-chi-epanel-action='previous') Previous
-          button.a-btn.-lg(data-chi-epanel-action='next').-primary.-ml--2 Continue
-      .m-epanel__content.-done--only
-        .m-epanel__body
-          h5 Done
-          p.-text content in expansion panel.
+          .m-epanel__content
+            h5 Active
+            p.-text content in expansion panel.
+          .m-epanel__footer.-justify-content--end
+            button.a-btn.-lg(data-chi-epanel-action='previous') Previous
+            button.a-btn.-lg(data-chi-epanel-action='next').-primary.-ml--2 Continue
+
+.test-expansion-panel-pending-bordered.-mb--3(style="min-width: 20rem")
+  .m-epanel(data-chi-epanel-group='example3').-bordered
+    .m-epanel__header
+      h4.m-epanel__title Expansion panel #7
+
+.test-expansion-panel-disabled-bordered.-mb--3(style="min-width: 20rem")
+  .m-epanel.-disabled(data-chi-epanel-group='example3').-bordered
+    .m-epanel__header
+      h4.m-epanel__title Expansion panel #8

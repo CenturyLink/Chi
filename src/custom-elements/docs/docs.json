@@ -685,6 +685,94 @@
       "styles": []
     },
     {
+      "tag": "chi-expansion-panel",
+      "encapsulation": "scoped",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "active",
+          "reflectToAttr": true,
+          "docs": "",
+          "docsTags": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "bordered",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "bordered",
+          "reflectToAttr": true,
+          "docs": "",
+          "docsTags": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "",
+          "docsTags": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "done",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "done",
+          "reflectToAttr": true,
+          "docs": "",
+          "docsTags": [],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "eptitle",
+          "type": "string",
+          "mutable": false,
+          "attr": "eptitle",
+          "reflectToAttr": true,
+          "docs": "",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "step",
+          "type": "string",
+          "mutable": false,
+          "attr": "step",
+          "reflectToAttr": true,
+          "docs": "",
+          "docsTags": [],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiEpChangeClick",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "styles": []
+    },
+    {
       "tag": "chi-icon",
       "encapsulation": "scoped",
       "readme": "# chi-icon\n\n\n",

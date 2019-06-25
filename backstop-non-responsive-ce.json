@@ -193,6 +193,33 @@
       "requireSameDimensions": true
     },
     {
+      "label": "expansion-panel",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/expansion-panel.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-expansion-panel-done",
+        ".test-expansion-panel-active",
+        ".test-expansion-panel-pending",
+        ".test-expansion-panel-disabled",
+        ".test-expansion-panel-done-bordered",
+        ".test-expansion-panel-active-bordered",
+        ".test-expansion-panel-pending-bordered",
+        ".test-expansion-panel-disabled-bordered"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "popover",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/custom-elements/popover.html",

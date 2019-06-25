@@ -391,7 +391,12 @@
       "selectors": [
         ".test-expansion-panel-done",
         ".test-expansion-panel-active",
-        ".test-expansion-panel-pending"
+        ".test-expansion-panel-pending",
+        ".test-expansion-panel-disabled",
+        ".test-expansion-panel-done-bordered",
+        ".test-expansion-panel-active-bordered",
+        ".test-expansion-panel-pending-bordered",
+        ".test-expansion-panel-disabled-bordered"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,

@@ -1,0 +1,278 @@
+---
+title: Expansion panel
+scripts:
+  - js/ce/ux-chi-ce
+styles:
+  - assets/styles/expansion-panel-ce
+---
+
+p.-text
+  | Expansion panels are components designed to be folded and stacked in sequence. They have four states: active,
+  | pending, done and disabled. When pending, only the title is shown. When active, panels expand to show
+  | content or forms. When done, content or form data is presented in a read only state. When disabled, a muted title
+  | is shown in a non-clickable state. Three classes represent these states:
+  | <code>-done</code>, <code>-active</code>, and <code>-disabled</code>. Pending is the default state.
+
+  .example.-mb3.-mt3
+    .-p3
+      chi-expansion-panel(step='1', eptitle='Done panel', done=true)
+        span(slot='done' class='-text') 
+          | CenturyLink
+          br
+          | 1100 112th Ave NE
+          br
+          | Suite 400
+          br
+          | Bellevue, WA 98004
+      chi-expansion-panel(step='2', eptitle='Active panel', active=true)
+        span(slot='active') 
+          h5 Active panel title
+          p.-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+            |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+            | nihil sed veritatis!
+        span(slot='footer')
+          button.a-btn.-lg.-primary Continue
+      chi-expansion-panel(step='3', eptitle='Pending panel')
+      chi-expansion-panel(step='4', eptitle='Disabled panel', disabled=true)
+    ul#a-tabs.a-tabs.-ml--3
+      li.-active
+        a(href='#a-tabs-done') Done
+      li
+        a(href='#a-tabs-active') Active
+      li
+        a(href='#a-tabs-pending') Pending
+      li
+        a(href='#a-tabs-disabled') Disabled
+    #a-tabs-done.a-tabs-panel.-active
+      :code(lang='html')
+        <chi-expansion-panel step="1" eptitle="Done panel" done>
+          <span slot="done" class="-text">
+            CenturyLink</br>
+            1100 112th Ave NE</br>
+            Suite 400</br>
+            Bellevue, WA 98004</br>
+          </span>
+        </chi-expansion-panel>
+    #a-tabs-active.a-tabs-panel
+      :code(lang='html')
+        <chi-expansion-panel step="2" eptitle="Active panel" active>
+          <span slot="active"> 
+            <h5>
+              Active panel title
+            </h5>
+            <p class="-text">
+              Lorem ipsum dolor sit amet...
+            </p>
+          </span>
+          <span slot="footer">
+            <button class="a-btn -lg -primary">
+              Continue
+            </button>
+          </span>
+        </chi-expansion-panel>
+    #a-tabs-pending.a-tabs-panel
+      :code(lang='html')
+        <chi-expansion-panel step="3" eptitle="Pending panel"></chi-expansion-panel>
+    #a-tabs-disabled.a-tabs-panel
+      :code(lang='html')
+        <chi-expansion-panel step="4" eptitle="Disabled panel" disabled></chi-expansion-panel>
+
+h4 Customization
+p.-text
+  | This component accepts a small number of visual changes. The numbering of the panels is optional, so you can omit
+  | the <code>m-epanel__number</code> class elements. In this case, the active content will render with a not desired
+  | margin, that can be removed with the <code>-ml--0</code> class.
+.example.-mb3
+  .-p3.-bg--grey-10
+    chi-expansion-panel(eptitle='Expansion panel', active=true)
+      span(slot='active') 
+        h5 Active panel title
+        p.-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+          |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+          | nihil sed veritatis!
+      span(slot='footer')
+        button.a-btn.-lg Previous
+        button.a-btn.-lg.-primary.-ml--2 Continue
+  :code(lang='html')
+    <chi-expansion-panel eptitle="Expansion panel" active>
+      <span slot="active"> 
+        <h5>
+          Active panel title
+        </h5>
+        <p class="-text">
+          Lorem ipsum dolor sit amet...
+        </p>
+      </span>
+      <span slot="footer">
+        <button class="a-btn -lg">
+          Previous
+        </button>
+        <button class="a-btn -lg -primary -ml--2">
+          Continue
+        </button>
+      </span>
+    </chi-expansion-panel>
+
+h4 Bordered expansion panel
+p.-text
+  | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
+
+.example.-mb3
+  .-p3
+    chi-expansion-panel(step='1', eptitle='Done panel', done=true, bordered=true)
+      span(slot='done' class='-text') 
+          | CenturyLink
+          br
+          | 1100 112th Ave NE
+          br
+          | Suite 400
+          br
+          | Bellevue, WA 98004
+    chi-expansion-panel(step='2', eptitle='Active panel', active=true, bordered=true)
+      span(slot='active') 
+        h5 Active panel title
+        p.-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+          |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+          | nihil sed veritatis!
+      span(slot='footer')
+        button.a-btn.-lg.-primary Continue
+    chi-expansion-panel(step='3', eptitle='Pending panel', bordered=true)
+    chi-expansion-panel(step='4', eptitle='Disabled panel', disabled=true, bordered=true)
+  ul#a-tabs-bordered.a-tabs.-ml--3
+    li.-active
+      a(href='#a-tabs-bordered-done') Done
+    li
+      a(href='#a-tabs-bordered-active') Active
+    li
+      a(href='#a-tabs-bordered-pending') Pending
+    li
+      a(href='#a-tabs-bordered-disabled') Disabled
+  #a-tabs-bordered-done.a-tabs-panel.-active
+    :code(lang='html')
+      <chi-expansion-panel step="1" eptitle="Done panel" done bordered>
+        <span slot="done" class="-text">
+          CenturyLink</br>
+          1100 112th Ave NE</br>
+          Suite 400</br>
+          Bellevue, WA 98004</br>
+        </span>
+      </chi-expansion-panel>
+  #a-tabs-bordered-active.a-tabs-panel
+    :code(lang='html')
+      <chi-expansion-panel step="2" eptitle="Active panel" active bordered>
+        <span slot="active"> 
+          <h5>
+            Active panel title
+          </h5>
+          <p class="-text">
+            Lorem ipsum dolor sit amet...
+          </p>
+        </span>
+        <span slot="footer">
+          <button class="a-btn -lg -primary">
+            Continue
+          </button>
+        </span>
+      </chi-expansion-panel>
+  #a-tabs-bordered-pending.a-tabs-panel
+    :code(lang='html')
+      <chi-expansion-panel step="3" eptitle="Pending panel" bordered></chi-expansion-panel>
+  #a-tabs-bordered-disabled.a-tabs-panel
+    :code(lang='html')
+      <chi-expansion-panel step="4" eptitle="Disabled panel" disabled bordered></chi-expansion-panel>
+
+h3 State custom behavior
+p.-text
+  | The four expansion panel states behave very similar one from each other. Although you shouldn't, you may, 
+  | for example, use footer element in a <code>pending</code> panel, or an
+  | action button in an <code>active</code> panel.
+p.-text
+  | There are two main differences between them.
+ol.-text
+  li
+    | The title will render in the brand color for the active panel, in soft gray for the disabled panel and black for
+    | the other panel states.
+  li Two hiding utility classes will hide content depending on the state.
+
+h4 Hiding by state
+p.-text
+  | The four examples below differ only on the state. Thanks to the state support and internal utility classes we can 
+  | represent the three states of the same content changing only the state class.
+p.-text
+  span.a-badge.-primary.-mr1
+    span Tip
+  | It is not a good practice to use these utility classes in frontend frameworks such as Angular, React or Vue as they
+  | have their own solutions to accomplish this goal.
+
+.example.-mb3
+  .-p3.-bg--grey-10
+    chi-expansion-panel(eptitle='Expansion panel', done=true)
+      span(slot='done' class='-text') 
+        | CenturyLink
+        br
+        | 1100 112th Ave NE
+        br
+        | Suite 400
+        br
+        | Bellevue, WA 98004
+    chi-expansion-panel(eptitle='Expansion panel', active=true)
+      span(slot='active') 
+        h5 Active panel title
+        p.-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+          |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
+          | nihil sed veritatis!
+      span(slot='footer')
+        button.a-btn.-lg Previous
+        button.a-btn.-lg.-primary.-ml--2 Continue
+    chi-expansion-panel(eptitle='Expansion panel')
+    chi-expansion-panel(eptitle='Expansion panel', disabled=true)
+  ul#a-tabs-ex.a-tabs.-ml--3
+    li.-active
+      a(href='#a-tabs-ex-done') Done
+    li
+      a(href='#a-tabs-ex-active') Active
+    li
+      a(href='#a-tabs-ex-pending') Pending
+    li
+      a(href='#a-tabs-ex-disabled') Disabled
+  #a-tabs-ex-done.a-tabs-panel.-active
+    :code(lang='html')
+      <chi-expansion-panel step="1" eptitle="Done panel" done>
+        <span slot="done" class="-text">
+          CenturyLink</br>
+          1100 112th Ave NE</br>
+          Suite 400</br>
+          Bellevue, WA 98004</br>
+        </span>
+      </chi-expansion-panel>
+  #a-tabs-ex-active.a-tabs-panel
+    :code(lang='html')
+      <chi-expansion-panel step="2" eptitle="Active panel" active>
+        <span slot="active"> 
+          <h5>
+            Active panel title
+          </h5>
+          <p class="-text">
+            Lorem ipsum dolor sit amet...
+          </p>
+        </span>
+        <span slot="footer">
+          <button class="a-btn -lg -primary">
+            Continue
+          </button>
+        </span>
+      </chi-expansion-panel>
+  #a-tabs-ex-pending.a-tabs-panel
+    :code(lang='html')
+      <chi-expansion-panel step="3" eptitle="Pending panel"></chi-expansion-panel>
+  #a-tabs-ex-disabled.a-tabs-panel
+    :code(lang='html')
+      <chi-expansion-panel step="4" eptitle="Disabled panel" disabled></chi-expansion-panel>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.docs-body__content .a-tabs'));
+    }
+  );
