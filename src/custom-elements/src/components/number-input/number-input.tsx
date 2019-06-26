@@ -7,7 +7,6 @@ import { CallbackQueue } from '../../utils/CallbackQueue';
   scoped: true
 })
 export class NumberInput {
-
   /**
    * used to enqueue the value changes events
    */
@@ -81,19 +80,30 @@ export class NumberInput {
   handleChange(ev: Event) {
     let stepDifference = 0;
 
-    this.value = !!ev.target ? (ev.target as HTMLInputElement).value.toString() : null;
+    this.value = !!ev.target
+      ? (ev.target as HTMLInputElement).value.toString()
+      : null;
 
-    stepDifference = Math.round((+this.value % this.step - this.initialValue) * 10000) / 10000;
+    stepDifference =
+      Math.round(((+this.value % this.step) - this.initialValue) * 10000) /
+      10000;
 
     if (stepDifference !== 0) {
-      this.value = (Math.round(((+this.value - stepDifference) * 10000) / 10000) + this.step).toString();
+      this.value = (
+        Math.round(((+this.value - stepDifference) * 10000) / 10000) + this.step
+      ).toString();
     }
 
-    if ((+this.value > this.max) || (+this.value < this.min)) {
-      stepDifference = Math.round((+this.value % this.step - this.initialValue) * 10000) / 10000;
+    if (+this.value > this.max || +this.value < this.min) {
+      stepDifference =
+        Math.round(((+this.value % this.step) - this.initialValue) * 10000) /
+        10000;
 
       if (stepDifference !== 0) {
-        this.value = (Math.round(((+this.value - stepDifference) * 10000) / 10000) + this.step).toString();
+        this.value = (
+          Math.round(((+this.value - stepDifference) * 10000) / 10000) +
+          this.step
+        ).toString();
       }
     }
 
@@ -106,10 +116,8 @@ export class NumberInput {
     const step = this.step;
     const newValue = Math.round((+this.value + step) * 10000) / 10000;
 
-    if (newValue > this.max) {
-      return;
-    } else {
-      this.value =  newValue.toString();
+    if (newValue <= this.max) {
+      this.value = newValue.toString();
       this._didUpdateCallBackOnceQueue.push(() => {
         this.chiChange.emit(this.value);
       });
@@ -120,9 +128,7 @@ export class NumberInput {
     const step = this.step;
     const newValue = Math.round((+this.value - step) * 10000) / 10000;
 
-    if (newValue < this.min) {
-      return;
-    } else {
+    if (newValue >= this.min) {
       this.value = newValue.toString();
       this._didUpdateCallBackOnceQueue.push(() => {
         this.chiChange.emit(this.value);
@@ -132,45 +138,59 @@ export class NumberInput {
 
   render() {
     const input = (
-      <input type="number"
-               class={`a-input ${this.size ? `-${this.size}` : ''} ${this.inputstyle ? `-${this.inputstyle}` : ''} ${this.state ? `-${this.state}` : ''}`}
-               disabled={this.disabled}
-               value={this.value}
-               step={this.step}
-               max={this.max}
-               min={this.min}
-               onChange={(ev) => this.handleChange(ev)}/>
+      <input
+        type="number"
+        class={`a-input ${this.size ? `-${this.size}` : ''} ${
+          this.inputstyle ? `-${this.inputstyle}` : ''
+          } ${this.state ? `-${this.state}` : ''}`}
+        disabled={this.disabled}
+        value={this.value}
+        step={this.step}
+        max={this.max}
+        min={this.min}
+        onChange={ev => this.handleChange(ev)}
+      />
     );
 
     const base = (
       <div class="a-inputWrapper">
         {input}
-        <button disabled={+this.value - this.step < this.min}
-                onClick={() => this.decrement()}>
-          <div class={`arrow down ${this.size ? `-${this.size}` : ''}`}></div>
+        <button
+          disabled={+this.value - this.step < this.min}
+          onClick={() => this.decrement()}
+        >
         </button>
-        <button disabled={+this.value + this.step > this.max}
-                onClick={() => this.increment()}>
-          <div class={`arrow up ${this.size ? `-${this.size}` : ''}`}></div>
+        <button
+          disabled={+this.value + this.step > this.max}
+          onClick={() => this.increment()}
+        >
         </button>
       </div>
     );
 
     const expanded = (
-      <div class={`m-inputNumber ${this.size ? `-${this.size}` : ''} ${this.pill ? '-pill' : ''}`}>
+      <div
+        class={`m-inputNumber ${this.size ? `-${this.size}` : ''} ${
+          this.pill ? '-pill' : ''
+          }`}
+      >
         {input}
-        <button class={`a-btn -icon ${this.size ? `-${this.size}` : ''}`}
-                disabled={+this.value - this.step < this.min}
-                onClick={() => this.decrement()}>
+        <button
+          class={`a-btn -icon ${this.size ? `-${this.size}` : ''}`}
+          disabled={+this.value - this.step < this.min}
+          onClick={() => this.decrement()}
+        >
           <div class="a-btn__content">
-            <chi-icon icon="minus"></chi-icon>
+            <chi-icon icon="minus" />
           </div>
-        </button>
-        <button class={`a-btn -icon ${this.size ? `-${this.size}` : ''}`}
-                disabled={+this.value + this.step > this.max}
-                onClick={() => this.increment()}>
+        </button >
+        <button
+          class={`a-btn -icon ${this.size ? `-${this.size}` : ''}`}
+          disabled={+this.value + this.step > this.max}
+          onClick={() => this.increment()}
+        >
           <div class="a-btn__content">
-            <chi-icon icon="plus"></chi-icon>
+            <chi-icon icon="plus" />
           </div>
         </button>
       </div>
