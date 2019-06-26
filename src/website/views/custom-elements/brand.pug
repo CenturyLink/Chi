@@ -1,0 +1,63 @@
+---
+title: Brand
+scripts:
+  - js/ce/ux-chi-ce
+---
+- const sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
+
+p.-text Use brand to display the CenturyLink logo in your project.
+
+h3 Examples
+p.-text To render brand, use the tag <code>&lt;chi-brand&gt;</code>.
+
+h4 Base
+.example.-mb--3
+  .-p--3
+    chi-brand
+  :code(lang="html")
+    <chi-brand></chi-brand>
+
+h4 Inverse
+.example.-mb--3
+  .-p--3.-bg--black
+    chi-brand(type='inverse')
+  :code(lang="html")
+    <chi-brand type='inverse'></chi-brand>
+
+h4 White
+.example.-mb--3
+  .-p--3.-bg--black
+    chi-brand(type='white')
+  :code(lang="html")
+    <chi-brand type='white'></chi-brand>
+
+h4 Black
+.example.-mb--3
+  .-p--3
+    chi-brand(type='black')
+  :code(lang="html")
+    <chi-brand type='black'></chi-brand>
+
+h3 Sizes
+p.-text
+  | Brand supports a full spectrum of sizes: <code>xs</code>, <code>sm</code>,
+  | <code>sm--2</code>, <code>sm--3</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
+  | The default size is <code>md</code>.
+  | To set the brand size use attribute <code>size</code>.
+
+.example.-mb--3
+  .-p--3(style='overflow:auto')
+    each size in sizes
+      div(class=`a-col -w--12 -pb--2`)
+        p.-text--bold= size
+        chi-brand(size=size)
+  :code(lang="html")
+    <chi-brand></chi-brand>
+    <chi-brand size='xs'></chi-brand>
+    <chi-brand size='sm'></chi-brand>
+    <chi-brand size='sm--2'></chi-brand>
+    <chi-brand size='sm--3'></chi-brand>
+    <chi-brand size='md'></chi-brand>
+    <chi-brand size='lg'></chi-brand>
+    <chi-brand size='xl'></chi-brand>
+    <chi-brand size='xxl'></chi-brand>

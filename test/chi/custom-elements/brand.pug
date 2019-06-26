@@ -1,0 +1,43 @@
+---
+title: Brand
+scripts:
+  - js/ce/ux-chi-ce
+---
+- const sizes = ['default', 'xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
+
+h4 Sizes
+.test-base
+  .example.-mb--3
+    .-p--3(style='overflow:auto')
+      h3 Base
+      each size in sizes
+        div(class=`a-col -w--12 -p--3`)
+          chi-brand(size=`${size === 'default' ? '' : size}`, data-cy=`brand-base-${size}`)
+          p.-text--bold= '-' + size
+
+.test-inverse
+  .example.-mb--3
+    .-p--3(style='overflow:auto')
+      h3 Inverse
+      each size in sizes
+        div(class=`a-col -w--12 -p--3 -bg--black`)
+          chi-brand(size=`${size === 'default' ? '' : size}`, type='inverse', data-cy=`brand-inverse-${size}`)
+          p.-text--bold.-text--white= '-' + size
+
+.test-white
+  .example.-mb--3
+    .-p--3(style='overflow:auto')
+      h3 White
+        each size in sizes
+          div(class=`a-col -w--12 -p--3 -bg--black`)
+            chi-brand(size=`${size === 'default' ? '' : size}`, type='white', data-cy=`brand-white-${size}`)
+            p.-text--bold.-text--white= '-' + size
+
+.test-black
+  .example.-mb--3
+    .-p--3(style='overflow:auto')
+      h3 Black
+        each size in sizes
+          div(class=`a-col -w--12 -p--3`)
+            chi-brand(size=`${size === 'default' ? '' : size}`, type='black', data-cy=`brand-black-${size}`)
+            p.-text--bold= '-' + size
