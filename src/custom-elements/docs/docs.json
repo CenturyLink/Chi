@@ -1,11 +1,78 @@
 {
-  "timestamp": "2019-06-19T13:06:31",
+  "timestamp": "2019-06-26T09:54:33",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
     "typescriptVersion": "3.2.2"
   },
   "components": [
+    {
+      "tag": "chi-badge",
+      "encapsulation": "scoped",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "to set color of a badge.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "pill",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "pill",
+          "reflectToAttr": true,
+          "docs": "to render badges with a more pronounced border-radius.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "to set size of a badge { small or smaller }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "textTransform",
+          "type": "string",
+          "mutable": false,
+          "attr": "text-transform",
+          "reflectToAttr": true,
+          "docs": "to transform the badge text { uppercase, lowercase, capitalize }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": true,
+          "docs": "to set variant of a badge { outline, flat }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": []
+    },
     {
       "tag": "chi-button",
       "encapsulation": "scoped",

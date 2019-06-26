@@ -4,11 +4,10 @@ scripts:
   - js/chi
   - js/ce/ux-chi-ce
 ---
-- var day = 1;
-- var weekS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-- var weekS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-- var today = 19;
-- var active = 23;
+-  let day = 1;
+-  const weekS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+-  const today = 19;
+-  const active = 23;
 
 .test-base
   span.a-h2 Base
@@ -16,11 +15,15 @@ scripts:
     .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
       .m-datepicker__month-row
         .prev
-          i.a-icon.icon-chevron-left.-sm.-text--brand
+          .a-icon.-sm.-text--brand
+            svg
+              use(xlink:href='#icon-chevron-left')
         .m-datepicker__month
           | November 2018
         .next
-          i.a-icon.icon-chevron-right.-sm.-text--brand
+          .a-icon.-sm.-text--brand
+            svg
+              use(xlink:href='#icon-chevron-right')
       .m-datepicker__day-names
         each weekDay in weekS
           .m-datepicker__week-day=weekDay
@@ -28,7 +31,7 @@ scripts:
         while day < 31
           .m-datepicker__day=day++
 
-- var day = 1;
+- day = 1;
 
 .test-today
   span.a-h2 Today
@@ -36,11 +39,15 @@ scripts:
     .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
       .m-datepicker__month-row
         .prev
-          i.a-icon.icon-chevron-left.-sm.-text--brand
+          .a-icon.-sm.-text--brand
+            svg
+              use(xlink:href='#icon-chevron-left')
         .m-datepicker__month
           | November 2018
         .next
-          i.a-icon.icon-chevron-right.-sm.-text--brand
+          .a-icon.-sm.-text--brand
+            svg
+              use(xlink:href='#icon-chevron-right')
       .m-datepicker__day-names
         each weekDay in weekS
           .m-datepicker__week-day=weekDay
@@ -51,7 +58,7 @@ scripts:
           else
             .m-datepicker__day=day++
 
-- var day = 1;
+- day = 1;
 
 .test-active
   span.a-h2 Active
@@ -59,11 +66,15 @@ scripts:
     .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
       .m-datepicker__month-row
         .prev
-          i.a-icon.icon-chevron-left.-sm.-text--brand
+          .a-icon.-sm.-text--brand
+            svg
+              use(xlink:href='#icon-chevron-left')
         .m-datepicker__month
           | November 2018
         .next
-          i.a-icon.icon-chevron-right.-sm.-text--brand
+          .a-icon.-sm.-text--brand
+            svg
+              use(xlink:href='#icon-chevron-right')
       .m-datepicker__day-names
         each weekDay in weekS
           .m-datepicker__week-day=weekDay
@@ -74,7 +85,7 @@ scripts:
           else
             .m-datepicker__day=day++
 
-- var day = 1;
+- day = 1;
 
 .test-hover
   span.a-h2 Hover
@@ -82,11 +93,15 @@ scripts:
     .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
       .m-datepicker__month-row
         .prev
-          i.a-icon.icon-chevron-left.-sm.-text--brand
+          .a-icon.-sm.-text--brand
+            svg
+              use(xlink:href='#icon-chevron-left')
         .m-datepicker__month
           | November 2018
         .next
-          i.a-icon.icon-chevron-right.-sm.-text--brand
+          .a-icon.-sm.-text--brand
+            svg
+              use(xlink:href='#icon-chevron-right')
       .m-datepicker__day-names
         each weekDay in weekS
           .m-datepicker__week-day=weekDay
@@ -98,7 +113,7 @@ scripts:
             .m-datepicker__day=day++
 
 
-- var day = 1;
+- day = 1;
 
 .test-inactive
   span.a-h2 Inactive
@@ -106,11 +121,15 @@ scripts:
     .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
       .m-datepicker__month-row
         .prev.-disabled
-          i.a-icon.icon-chevron-left.-sm
+          .a-icon.-sm
+            svg
+              use(xlink:href='#icon-chevron-left')
         .m-datepicker__month
           | November 2018
         .next.-disabled
-          i.a-icon.icon-chevron-right.-sm
+          .a-icon.-sm
+            svg
+              use(xlink:href='#icon-chevron-right')
       .m-datepicker__day-names
         each weekDay in weekS
           .m-datepicker__week-day=weekDay
@@ -121,7 +140,7 @@ scripts:
           else
             .m-datepicker__day=day++
 
-- var day = 1;
+- day = 1;
 
 .test-combined
   span.a-h2 Combined
@@ -129,11 +148,15 @@ scripts:
     .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
       .m-datepicker__month-row
         .prev.-disabled
-          i.a-icon.icon-chevron-left.-sm
+          .a-icon.-sm
+            svg
+              use(xlink:href='#icon-chevron-left')
         .m-datepicker__month
           | November 2018
         .next
-          i.a-icon.icon-chevron-right.-sm.-text--brand
+          .a-icon.-sm.-text--brand
+            svg
+              use(xlink:href='#icon-chevron-right')
       .m-datepicker__day-names
         each weekDay in weekS
           .m-datepicker__week-day=weekDay
@@ -183,6 +206,5 @@ script.
       document.getElementById('datepicker-2').focus();
       document.getElementById('datepicker-2').blur();
 
-    },
-    false
+    }
   );

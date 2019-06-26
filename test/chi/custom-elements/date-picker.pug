@@ -4,14 +4,13 @@ scripts:
   - js/chi
   - js/ce/ux-chi-ce
 ---
-- var day = 1;
-- var weekS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-- var weekS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-- var today = 19;
-- var active = 23;
-- var date1 = '11/23/2018';
-- var dateMin = '11/19/2018';
-- var date2 = '01/24/2019';
+- const day = 1;
+- const weekS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+- const today = 19;
+- const active = 23;
+- const date1 = '11/23/2018';
+- const dateMin = '11/19/2018';
+- const date2 = '01/24/2019';
 
 .test-active(data-cy="test-active")
   span.a-h2 Active
@@ -27,11 +26,3 @@ scripts:
   span.a-h2 Input Popover Combined
   .-position--relative(style="height: 18rem; width:14rem;")
     chi-date-picker(value=date2, min=date2, active)
-
-script.
-  document.addEventListener(
-    'DOMContentLoaded',
-    function() {
-    },
-    false
-  );
