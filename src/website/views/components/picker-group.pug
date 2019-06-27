@@ -38,7 +38,7 @@ p.-text To render a picker group, wrap a series of pickers in a div and apply th
       </div>
     </div>
 
-h3 Fluid buttons
+h3 Fluid
 p.-text Picker groups can be expanded to fill the parent space by applying the class <code>-fluid</code>.
 h4 Horizontal
 .example.-mb--3
@@ -73,8 +73,8 @@ h4 Horizontal
 
 h4 Alignment
 p.-text
-  | Button text is centered by default. However, this behavior can change by applying the modifiers
-  | <code>-align--left</code> or <code>-align--right</code>.
+  | Picker group text is left aligned by default. However, this behavior can change by applying the modifiers
+  | <code>-align--center</code> or <code>-align--right</code>.
 .example.-mb--3
   .-p--3
     .m-pickerGroup.-fluid
@@ -111,7 +111,7 @@ p.-text
 
 h4 Disable Fluidity
 p.-text
-  | To disable the fluidity of a specific button in a fluid button group, apply the class <code>-notFluid</code> to the button.
+  | To disable the fluidity of a specific picker in a fluid picker group, apply the class <code>-notFluid</code> to the picker.
 
 .example.-mb--3
   .-p--3
@@ -150,7 +150,7 @@ p.-text
 h3 Sizes
 
 p.-text
-  | Button groups supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  | Picker groups supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
   |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
 
@@ -162,8 +162,8 @@ p.-text
           .m-pickerGroup
             each type in ['Radio1','Radio2','Radio3']
               .m-picker
-                input(type="radio", class="a-picker", name='box', id=`if-${type}`)
-                label(for=`if-${type}`, class=`-${size}`)
+                input(type="radio", class="a-picker", name='box', id=`if-${type}-${size}`)
+                label(for=`if-${type}-${size}`, class=`-${size}`)
                   = type
     :code(lang='html')
       <!-- sm -->

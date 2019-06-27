@@ -2,46 +2,24 @@ $border: 0.0625rem;
 
 $sizes: (
   sm: (
-    border-radius: 0.75rem,
     font-size: 0.75rem,
     line-height: 1rem,
     padding: (0.25rem - $border) (0.5rem - $border),
     padding_hover: (0.5rem - $border)
   ),
-  // Legacy code start
-  small: (
-    border-radius: 0.75rem,
-    font-size: 0.75rem,
-    line-height: 1rem,
-    padding: (0.25rem - $border) (0.5rem - $border),
-    padding_hover: (0.5rem - $border)
-  ),
-  // Legacy code end
   md: (
-    border-radius: 1rem,
     font-size: 0.875rem,
     line-height: 1rem,
     padding: (0.5rem - $border) (1rem - $border),
     padding_hover: (1rem - $border)
   ),
   lg: (
-    border-radius: 1.25rem,
     font-size: 0.875rem,
     line-height: 1.25rem,
     padding: (0.625rem - $border) (1.5rem - $border),
     padding_hover: (1.5rem - $border)
   ),
-  // Legacy code start
-  large: (
-    border-radius: 1.25rem,
-    font-size: 0.875rem,
-    line-height: 1.25rem,
-    padding: (0.625rem - $border) (1.5rem - $border),
-    padding_hover: (1.5rem - $border)
-  ),
-  // Legacy code end
   xl: (
-    border-radius: 1.5rem,
     font-size: 0.875rem,
     line-height: 1.25rem,
     padding: (0.875rem - $border) (1.5rem - $border),
@@ -65,6 +43,7 @@ $sizes: (
         }
       }
     }
+
     &:last-child {
       input {
         &[type='checkbox'],
@@ -72,14 +51,12 @@ $sizes: (
           &.a-picker {
             & + label {
               border-bottom-right-radius: $border-radius;
-              border-right-width: 0.0625rem;
+              border-right: 0.0625rem solid set-color(grey, 30);
               border-top-right-radius: $border-radius;
+            }
 
-              @each $type in map-keys($sizes) {
-                &.-#{$type} {
-                  padding-right: map-get(map-get($sizes, $type), padding_hover);
-                }
-              }
+            &:checked + label {
+              border-right: 0.0625rem solid $secondary-color;
             }
           }
         }
@@ -92,7 +69,8 @@ $sizes: (
         &.a-picker {
           & + label {
             border-radius: 0;
-            border-right-width: 0;
+            border-right: 0.0625rem solid transparent;
+            font-weight: 600;
             line-height: 1rem;
             margin-bottom: 0;
             padding: (0.5rem - $border) (1rem - $border);
@@ -109,16 +87,9 @@ $sizes: (
             &.-active,
             &:focus,
             &.-focus {
-              border: .0625rem solid #48d597;
-              border-right-width: 0.0625rem;
-              box-shadow: 0 0 0 0.0625rem #48d597;
-              padding-right: 0.9375rem;
-
-              @each $type in map-keys($sizes) {
-                &.-#{$type} {
-                  padding-right: map-get(map-get($sizes, $type), padding_hover);
-                }
-              }
+              border: solid 0.0625rem $secondary-color;
+              box-shadow: 0 0 0 0.0625rem $secondary-color;
+              outline: none;
             }
           }
         }
