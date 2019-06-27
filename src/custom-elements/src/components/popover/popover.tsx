@@ -359,6 +359,7 @@ export class Popover {
           ${this.position ? `m-popover--${this.position}` : ''}
           ${this.arrow ? '' : '-no-arrow'}
           ${this._animationClasses}
+          ${this._reference && this._reference.classList.contains('a-input') ? 'm-popover__input' : ''}
         `}
         ref={el => (this._popoverElement = el as HTMLElement)}
         aria-hidden={!this.active}

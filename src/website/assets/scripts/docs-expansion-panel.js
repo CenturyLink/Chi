@@ -53,6 +53,5 @@ document.addEventListener('DOMContentLoaded',
 
     chi.tab(document.querySelectorAll('.docs-body__content .a-tabs'));
 
-  },
-  false
+  }
 );

@@ -4,7 +4,8 @@ export const CLASSES = {
   CLOSED: '-closed',
   DISABLED: '-disabled',
   INACTIVE: '-inactive',
-  TRANSITIONING : '-transitioning'
+  TRANSITIONING : '-transitioning',
+  TODAY: '-today'
 };
 export const RESPONSIVE_BREAKPOINTS =  {
   sm: 576,

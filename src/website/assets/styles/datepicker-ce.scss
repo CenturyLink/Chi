@@ -1,0 +1,12 @@
+.chi {
+  .docs-container {
+    .docs-body {
+      &__content {
+        .example {
+          position: static;
+        }
+      }
+    }
+  }
+}
+

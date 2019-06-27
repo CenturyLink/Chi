@@ -128,6 +128,28 @@
       "requireSameDimensions": true
     },
     {
+      "label": "date-picker",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/date-picker.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": ".test-input-combined chi-date-picker.hydrated",
+    "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-active",
+        ".test-combined",
+        ".test-input-combined"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "drawer",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/custom-elements/drawer.html",

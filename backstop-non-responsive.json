@@ -268,6 +268,33 @@
       "requireSameDimensions": true
     },
     {
+      "label": "date-picker",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/date-picker.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-base",
+        ".test-today",
+        ".test-active",
+        ".test-hover",
+        ".test-inactive",
+        ".test-combined",
+        ".test-input-combined",
+        ".test-input-combined-icon"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "dropdown",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/dropdown.html",
