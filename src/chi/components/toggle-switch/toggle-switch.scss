@@ -16,6 +16,7 @@ input {
           display: inline-block;
           height: 1.5rem;
           line-height: $line-height;
+          margin-right: 0;
           position: relative;
           transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
           width: 3.5rem;
@@ -53,7 +54,13 @@ input {
             transition: left 0.2s ease-in 0.1s;
             word-wrap: normal;
           }
+
+          & + label {
+            margin-left: 0.5rem;
+          }
         }
+
+
 
         &:checked {
           & + label {
