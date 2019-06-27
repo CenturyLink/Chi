@@ -2,7 +2,7 @@
   @import '../../global/styles/common';
   @import 'components/spinner/spinner';
   @import 'components/backdrop/backdrop';
-  display: inline-flex;
+  display: inline-block;
   &[backdrop] {
     .a-backdrop {
       position: absolute;

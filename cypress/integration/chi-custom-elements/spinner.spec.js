@@ -1,9 +1,14 @@
 describe('Spinner', () => {
-  const selectors = ['spinner-md', 'base-backdrop-spinner', 'inverse-backdrop-spinner', 'spinner-secondary', 'spinner-xxl'];
+  const selectors = [
+    'spinner-md',
+    'base-backdrop-spinner',
+    'inverse-backdrop-spinner',
+    'spinner-secondary',
+    'spinner-xxl'
+  ];
 
   const assertion = (el, value) => {
-    cy.get(el)
-      .should('match', value);
+    cy.get(el).should('match', value);
   };
 
   before(() => {
@@ -11,7 +16,7 @@ describe('Spinner', () => {
   });
 
   beforeEach(() => {
-    selectors.forEach((s) => {
+    selectors.forEach(s => {
       cy.get(`[data-cy=${s}]`, { timeout: 5000 })
         .should('have.class', 'hydrated')
         .children()

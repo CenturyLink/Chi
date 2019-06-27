@@ -1,11 +1,89 @@
 {
-  "timestamp": "2019-06-26T09:54:33",
+  "timestamp": "2019-06-28T16:48:20",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
     "typescriptVersion": "3.2.2"
   },
   "components": [
+    {
+      "tag": "chi-avatar",
+      "encapsulation": "scoped",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "to set color of an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "inverse",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "inverse",
+          "reflectToAttr": true,
+          "docs": "to set inverse background for an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": true,
+          "docs": "to set a label for an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "to set size of an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "textTransform",
+          "type": "string",
+          "mutable": false,
+          "attr": "text-transform",
+          "reflectToAttr": true,
+          "docs": "to transform initial avatar { uppercase, lowercase, capitalized }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "transparent",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "transparent",
+          "reflectToAttr": true,
+          "docs": "to set transparent background for an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": []
+    },
     {
       "tag": "chi-badge",
       "encapsulation": "scoped",
@@ -74,6 +152,40 @@
       "styles": []
     },
     {
+      "tag": "chi-brand",
+      "encapsulation": "scoped",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "to set size of brand.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": true,
+          "docs": "to set brand type { black, white, inverse }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": []
+    },
+    {
       "tag": "chi-button",
       "encapsulation": "scoped",
       "docs": "",
@@ -109,7 +221,7 @@
           "mutable": false,
           "attr": "disabled",
           "reflectToAttr": true,
-          "docs": "to disabled chi-button.",
+          "docs": "to disable chi-button.",
           "docsTags": [],
           "default": "false",
           "optional": false,
@@ -127,36 +239,12 @@
           "required": false
         },
         {
-          "name": "flat",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "flat",
-          "reflectToAttr": true,
-          "docs": "to render a button with a transparent background and border.",
-          "docsTags": [],
-          "default": "false",
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "fluid",
           "type": "boolean",
           "mutable": false,
           "attr": "fluid",
           "reflectToAttr": true,
           "docs": "to render a button to fill the parent space.",
-          "docsTags": [],
-          "default": "false",
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "outline",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "outline",
-          "reflectToAttr": true,
-          "docs": "to remove a buttons solid background and keep its colored border.",
           "docsTags": [],
           "default": "false",
           "optional": false,
@@ -192,6 +280,17 @@
           "attr": "type",
           "reflectToAttr": true,
           "docs": "to set button type { float, close, icon }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": true,
+          "docs": "to set variant of a button { outline, flat }.",
           "docsTags": [],
           "optional": false,
           "required": false
@@ -905,6 +1004,51 @@
           "docsTags": []
         }
       ],
+      "styles": []
+    },
+    {
+      "tag": "chi-spinner",
+      "encapsulation": "scoped",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "backdrop",
+          "type": "string",
+          "mutable": false,
+          "attr": "backdrop",
+          "reflectToAttr": true,
+          "docs": "to render spinners on dark or light backgrounds.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "to set color of a spinner { primary, success, warning, danger, muted }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "to set size of a spinner { xs, sm, sm--2, sm--3, md, lg, xl, xxl }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
       "styles": []
     }
   ]

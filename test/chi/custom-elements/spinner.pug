@@ -6,29 +6,52 @@ scripts:
 h2 Backdrop
 
 h3 Base
-.example.-mb--3(style="height:30rem;width:100%")
-  .-p--6(style="position:relative;height:100%;")
-    chi-spinner(color='light', backdrop, data-cy='base-backdrop-spinner')
+.test-backdrop-base(style="height:31rem;width:100%")
+  .example.-mb--3(style="height:30rem;width:100%")
+    .-p--6(style="position:relative;height:100%;")
+      chi-spinner(color='light', backdrop, data-cy='base-backdrop-spinner')
 
 h3 Inverse Backdrop
-.example.-mb--3(style="height:30rem;width:100%")
-  .-p--6(style="position:relative;height:100%;")
-    chi-spinner(color='primary', backdrop='inverse', data-cy='inverse-backdrop-spinner')
+.test-backdrop-inverse(style="height:31rem;width:100%")
+  .example.-mb--3(style="height:30rem;width:100%")
+    .-p--6(style="position:relative;height:100%;")
+      chi-spinner(color='primary', backdrop='inverse', data-cy='inverse-backdrop-spinner')
 
 h2 Contextual
 
 h3 Spinner Buttons
+.test-buttons
+  .example.-mb--3
+    .-p--3
+      chi-button.-mr--3
+        span Button
+        chi-spinner(color='muted')
+      chi-button.-mr--3(size='sm')
+        span Small
+        chi-spinner(color='muted', size='xs')
+      chi-button.-mr--3(size='lg')
+        span Large
+        chi-spinner(color='muted', size='sm--2')
+
+// TODO: Change after we have input ce
+h3 Spinner Text Input
 .example.-mb--3
   .-p--3
-    chi-button(class='-mr--3')
-      span Button
-      chi-spinner(color='muted')
-    chi-button(class='-mr--3', size='sm')
-      span Small
-      chi-spinner(color='muted', size='xs')
-    chi-button(class='-mr--3', size='lg')
-      span Large
-      chi-spinner(color='muted', size='sm--2')
+    .a-inputWrapper.-pb--2(style="max-width:20rem")
+      input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+      svg(class='a-spinner -text--muted',viewBox='0 0 66 66')
+        title Loading
+        circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
+    .a-inputWrapper.-pb--2(style="max-width:20rem")
+      input(type="text", class="a-input -sm", placeholder="Placeholder", value="Sample Text")
+      svg(class='a-spinner -text--muted -xs',viewBox='0 0 66 66')
+        title Loading
+        circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
+    .a-inputWrapper.-pb--2(style="max-width:20rem")
+      input(type="text", class="a-input -lg", placeholder="Placeholder", value="Sample Text")
+      svg(class='a-spinner -text--muted -sm--2',viewBox='0 0 66 66')
+        title Loading
+        circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
 
 h2 Sizes
 .test-sizes
@@ -44,6 +67,15 @@ h2 Colors
   .a-grid.-align-items--center
     each type in ['primary', 'success', 'warning', 'danger', 'muted', 'secondary', 'light']
       div.-p--2
-        chi-spinner(color=type, class='-m--3', size='lg', data-cy=`spinner-${type}`)
+        chi-spinner.-m--3(color=type, size='lg', data-cy=`spinner-${type}`)
         p.-text(class=`-text--${type}`)
           = `-text--${type}`
+
+style.
+  svg {
+    animation: none !important;
+  }
+  .path {
+    animation: none !important;
+    stroke-dasharray: 0, 0 !important;
+  }
