@@ -1,0 +1,34 @@
+---
+title: Alert Banners
+scripts:
+  - js/ce/ux-chi-ce
+---
+each size in ['default', 'large']
+  div(class=`test-${size} -w--100`)
+    h3= `${size}`
+    each type in ['success', 'danger', 'warning', 'info', 'muted']
+      chi-alert.-m2(type='banner', color=type, size=`${size === 'default' ? '' : 'lg'}`, data-cy=`alert-banner-${size}-${type}`)
+        = `This is a ${type} message`
+
+    h4 center
+    each type in ['success', 'danger', 'warning', 'info', 'muted']
+      chi-alert.-m2(type='banner', center, color=type, size=`${size === 'default' ? '' : 'lg'}`, data-cy=`alert-banner-${size}-${type}-center`)
+        = `This is a ${type} message`
+
+    h4 Has icon
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m2(type='banner', color=type, size=`${size === 'default' ? '' : 'lg'}`, data-cy=`alert-banner-${size}-${type}-icon`)
+        chi-icon(size='sm--2', color=type, icon=val)
+        = `This is a ${type} message`
+
+    h4 Has icon center
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m2(type='banner', center, color=type, size=`${size === 'default' ? '' : 'lg'}`, data-cy=`alert-banner-${size}-${type}-icon-center`)
+        chi-icon(size='sm--2', color=type, icon=val)
+        = `This is a ${type} message`
+
+    h4 Dismiss
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m2(type='banner', color=type, size=`${size === 'default' ? '' : 'lg'}`, dismissible, data-cy=`alert-banner-${size}-${type}-dismiss`)
+        chi-icon(size='sm--2', color=type, icon=val)
+        = `This is a ${type} message`

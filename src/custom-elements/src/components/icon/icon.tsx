@@ -2,7 +2,7 @@ import { Component, Prop, Watch } from '@stencil/core';
 import { calculateClasses } from '../../utils/utils';
 
 let loadedIcons = 0;
-const VALID_COLORS = ['', 'primary', 'success', 'warning', 'danger', 'inverse', 'muted'];
+const VALID_COLORS = ['', 'primary', 'success', 'warning', 'danger', 'inverse', 'muted', 'info'];
 const VALID_SIZES = ['', 'xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
 
 

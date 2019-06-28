@@ -1,0 +1,21 @@
+:host(chi-alert) {
+  @import '../../global/styles/common';
+  @import 'components/alert/_alert-common';
+  @import 'components/alert/_banner';
+  @import 'components/alert/_bubble';
+  @import 'components/alert/_toast';
+  @import 'components/alert/alert';
+  display: block;
+  &[center] {
+    .-center {
+      justify-content: center;
+    }
+  }
+
+  chi-button {
+    align-self: flex-start;
+  }
+}
+::slotted(chi-icon) {
+  align-self: flex-start;
+}
