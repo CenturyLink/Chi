@@ -1,0 +1,134 @@
+//mixin usage(usage)
+  // TODO
+
+mixin props(props)
+  if props.length
+    h3 Poperties
+    section.a-table.a-table__options.-bordered.-my--3
+      div
+        table.-text(cellpadding='0', cellspacing='0')
+          thead
+            tr
+              th
+                div Property
+              th
+                div Attribute
+              th
+                div Description
+              th
+                div Type
+              th
+                div Default
+          tbody
+            each prop in props
+              if prop.name !== 'extraClass'
+                tr
+                  td
+                    div
+                      code=prop.name
+                      if prop.required
+                        strong (required)
+                  td
+                    div
+                      if prop.attr
+                        code=prop.attr
+                      else
+                        | --
+                  td
+                    div
+                      if prop.deprecation !== undefined
+                        .-text--danger **[DEPRECATED]** #{prop.deprecation}
+                        br
+                        br
+                      =prop.docs
+                  td
+                    div
+                      code=prop.type
+                  td
+                    div
+                      code=prop.default
+
+mixin events(events)
+  if events.length
+    h3 Events
+    section.a-table.a-table__options.-bordered.-my--3
+      div
+        table.-text(cellpadding='0', cellspacing='0')
+          thead
+            tr
+              th
+                div Event
+              th
+                div Description
+              th
+                div Type
+          tbody
+            each ev in events
+              tr
+                td
+                  div
+                    code=ev.event
+                td
+                  div=ev.docs
+                td
+                  div
+                    code=`CustomEvent<${ev.detail}>`
+
+mixin methods(methods)
+  if methods.length
+    h3 Methods
+
+    each method in methods
+      h4=method.signature
+      if method.docs
+        p.-text=method.docs
+      if method.parameters.length
+        h5 Parameters
+        if method.parameters.length
+          section.a-table.a-table__options.-bordered.-my--3
+            div
+              table.-text(cellpadding='0', cellspacing='0')
+                thead
+                  tr
+                    th
+                      div Name
+                    th
+                      div Type
+                    th
+                      div Description
+                tbody
+                  each parameter in method.parameters
+                    tr
+                      td
+                        div
+                          code=parameter.name
+                      td
+                        div
+                          code=parameter.type
+                      td
+                        div=parameter.docs
+      if method.returns
+        h5 Returns
+        p.-text Type: #{method.returns.type}
+        p.-text= method.returns.docs
+
+//mixin slots(slots)
+  // TODO
+
+//mixin styles(styles)
+  // TODO
+
+//mixin deps(config, cmp, cmps)
+  // TODO
+
+each component in data.components
+  if component.tag === name
+    h2 &lt;#{component.tag} /&gt; documentation
+      //+usage(component.usage)
+      +props(component.props)
+      +events(component.events)
+      +methods(component.methods)
+      //+slots()
+      //+styles(component.styles)
+      //+deps()
+
