@@ -20,14 +20,14 @@ export class Brand {
   @Watch('size')
   sizeValidation(newValue: string) {
     if (newValue && !ICON_SIZES.includes(newValue)) {
-      throw new Error(`${newValue} is not a valid size for brand. Valid values are${ICON_SIZES.reverse().map(s => s === '' ? ` or ''` : ` ${s}`)}.`);
+      throw new Error(`${newValue} is not a valid size for brand. Valid values are xs, sm, sm--2, sm--3, md, lg, xl or xxl. `);
     }
   }
 
   @Watch('type')
   typeValidation(newValue: string) {
     if (newValue && !['', 'inverse', 'white', 'black'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid type for brand. Valid values are inverse, white, black or ''.`);
+      throw new Error(`${newValue} is not a valid type for brand. Valid values are inverse, white or black.`);
     }
   }
 

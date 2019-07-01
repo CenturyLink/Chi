@@ -21,3 +21,12 @@
 ::slotted(*)>:not(:last-child) {
   margin-right: .5rem !important;
 }
+::slotted(chi-spinner) {
+  display: inline-flex !important;
+    &[size='sm--2'], &[size='md'], &[size='lg'], &[size='xl'], &[size='xxl'] {
+      svg {
+        height: 1rem !important;
+        width: 1rem !important;
+      }
+    }
+}

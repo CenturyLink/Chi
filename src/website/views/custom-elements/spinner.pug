@@ -1,0 +1,113 @@
+---
+title: Spinner
+scripts:
+  - js/ce/ux-chi-ce
+---
+p.-text Spinners are animated circles that let users know when information is being saved or loaded.
+
+h3 Examples
+p.-text To render a spinner, use the tag <code>&lt;chi-spinner&gt;</code>.
+
+h3 Backdrop
+p.-text An optional backdrop can be added to focus the user's attention on a spinner. To set a backdrop, use the <code>backdrop</code> attribute.
+h4 Base
+.example.-mb--3
+  .-p--6(style="position:relative;height:25rem;")
+    chi-spinner(color='light', backdrop)
+  :code(lang="html")
+    <chi-spinner color="light" backdrop></chi-spinner>
+
+h4 Inverse
+p.-text Set the <code>backdrop</code> value to <code>inverse</code> to render spinners on light backgrounds.
+.example.-mb--3
+  .-p--6(style="position:relative;height:25rem;")
+    chi-spinner(color='primary', backdrop='inverse')
+  :code(lang="html")
+    <chi-spinner color="primary" backdrop="inverse"></chi-spinner>
+
+h3 Contextual
+
+h4 Spinners in Buttons
+.example.-mb--3
+  .-p--3
+    chi-button(class='-mr--3')
+      span= 'Button'
+      chi-spinner(color='muted')
+    chi-button(class='-mr--3', size='sm')
+      span= 'Small'
+      chi-spinner(color='muted', size='xs')
+    chi-button(class='-mr--3', size='lg')
+      span= 'Large'
+      chi-spinner(color='muted', size='sm--2')
+  :code(lang='html')
+    <chi-button>
+      <span>Button</span>
+      <chi-spinner color="muted"></chi-spinner>
+    </chi-button>
+    <chi-button size="sm">
+      <span>Small</span>
+      <chi-spinner color="muted" size="xs"></chi-spinner>
+    </chi-button>
+    <chi-button siz="lg">
+      <span>Large</span>
+      <chi-spinner color="muted" size="sm--2"></chi-spinner>
+    </chi-button>
+
+h3 Spinner Sizes
+p.-text
+  | By default, spinners are rendered at 16x16px (<code>sm</code>).
+p.-text
+  | Set <code>size</code> attribute to render spinners larger or smaller: <code>xs</code>,
+  | <code>sm</code>, <code>sm--2</code>, <code>sm--3</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
+.example.-mb--3
+  .-p--3
+    .a-grid.-align-items--end
+      each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
+        div.-p--2
+          chi-spinner(size=size, class='-m--1')
+          p.-text.-text--center= size
+  :code(lang="html")
+    <!-- xs : 12x12px -->
+    <chi-spinner size="xs"></chi-spinner>
+    <!-- sm : 16x16px -->
+    <chi-spinner size="sm"></chi-spinner>
+    <!-- sm--2 : 20x20px -->
+    <chi-spinner size="sm--2"></chi-spinner>
+    <!-- sm--3 : 24x24px -->
+    <chi-spinner size="sm--3"></chi-spinner>
+    <!-- md : 32x32px -->
+    <chi-spinner size="md"></chi-spinner>
+    <!-- lg : 64x64px -->
+    <chi-spinner size="lg"></chi-spinner>
+    <!-- xl : 96x96px -->
+    <chi-spinner size="xl"></chi-spinner>
+    <!-- xxl : 128x128px -->
+    <chi-spinner size="xxl"></chi-spinner>
+
+h3 Spinner Colors
+p.-text
+  | To change the color of a spinner set the value to <code>color</code> attribute.
+.example.-mb--3
+  .a-grid.-noGutter
+    .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap
+      each type in ['primary', 'success', 'warning', 'danger', 'muted']
+        div.-p--2.-text--center
+          chi-spinner(color=type, class='-m--3', size='md')
+          p.-text(class=`-text--${type} -px--1`)
+            = type
+    .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap.-bg--black
+      each type in ['secondary', 'light']
+        div.-p--2.-text--center
+          chi-spinner(color=type, class='-m--3', size='md')
+          p.-text(class=`-text--${type} -px--1`)
+            = type
+  :code(lang="html")
+    <!-- For light backgrounds -->
+    <chi-spinner color="primary"></chi-spinner>
+    <chi-spinner color="success"></chi-spinner>
+    <chi-spinner color="warning"></chi-spinner>
+    <chi-spinner color="danger"></chi-spinner>
+    <chi-spinner color="muted"></chi-spinner>
+    <!-- For dark backgrounds -->
+    <chi-spinner color="secondary"></chi-spinner>
+    <chi-spinner color="light"></chi-spinner>
