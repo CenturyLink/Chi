@@ -43,6 +43,23 @@ $animation-duration: 0.5s;
         transform: translate(0, -$drawer-height);
       }
     }
+
+    &.-menu {
+      height: 95vh;
+      &.-animated:not(.-active) {
+        transform: translateY(-95vh)
+      }
+
+      @include respond-to(md) {
+        height: $drawer-height;
+
+        &.-animated {
+          &:not(.-active) {
+            transform: translateY(0, -$drawer-height);
+          }
+        }
+      }
+    }
   }
 
   &.-right {
@@ -54,6 +71,23 @@ $animation-duration: 0.5s;
     &.-animated {
       &:not(.-active) {
         transform: translate($drawer-width, 0);
+      }
+    }
+
+    &.-menu {
+      width: 95vw;
+      &.-animated:not(.-active) {
+        transform: translate(95vw)
+      }
+
+      @include respond-to(md) {
+        width: $drawer-width;
+
+        &.-animated {
+          &:not(.-active) {
+            transform: translate($drawer-width, 0);
+          }
+        }
       }
     }
   }
@@ -69,6 +103,23 @@ $animation-duration: 0.5s;
         transform: translate(0, $drawer-height);
       }
     }
+
+    &.-menu {
+      height: 95vh;
+      &.-animated:not(.-active) {
+        transform: translateY(95vh)
+      }
+
+      @include respond-to(md) {
+        height: $drawer-height;
+
+        &.-animated {
+          &:not(.-active) {
+            transform: translateY(0, $drawer-height);
+          }
+        }
+      }
+    }
   }
 
   &.-left {
@@ -80,6 +131,23 @@ $animation-duration: 0.5s;
     &.-animated {
       &:not(.-active) {
         transform: translate(-$drawer-width, 0);
+      }
+    }
+
+    &.-menu {
+      width: 95vw;
+      &.-animated:not(.-active) {
+        transform: translate(-95vw)
+      }
+
+      @include respond-to(md) {
+        width: $drawer-width;
+
+        &.-animated {
+          &:not(.-active) {
+            transform: translate(-$drawer-width, 0);
+          }
+        }
       }
     }
   }
@@ -115,3 +183,4 @@ $animation-duration: 0.5s;
 .a-backdrop > .m-drawer {
   z-index: $zindex-fixed-with-backdrop;
 }
+

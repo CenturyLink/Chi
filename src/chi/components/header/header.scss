@@ -16,41 +16,12 @@
   &__content {
     align-items: center;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: .75rem 0;
+    flex-direction: row;
+    height: 4rem;
+    justify-content: space-between;
+    padding: 0 1.5rem;
     position: relative;
     width: 100%;
-    @include respond-to(sm) {
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 0 1rem;
-    }
-    @include respond-to(md) {
-      padding: 0 1.5rem;
-    }
-
-    .a-brand {
-      display: inline-flex;
-      width: 7.5rem;
-      &:only-child {
-        margin-right: 0;
-      }
-      & > img,
-      & > svg {
-        height: 1.5rem;
-        @include respond-to(sm) {
-          height: 2rem;
-        }
-      }
-      @include respond-to(sm) {
-        margin-right: 1rem;
-        width: 10rem;
-      }
-      @include respond-to(md) {
-        margin-right: 2rem;
-      }
-    }
 
     .a-btn.-icon.-flat.-dark {
       color: set-color(grey, 60);
@@ -64,26 +35,61 @@
         color: set-color(grey, 100);
       }
     }
+
+    ~ .o-header__toolbar {
+      height: 3rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__brand {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    order: 2;
+
+    @include respond-to(xl) {
+      order: 1;
+    }
+
+    .a-brand {
+      margin-right: 1rem;
+      width: 8rem;
+
+      @include respond-to(xl) {
+        width: 10rem;
+      }
+
+      & > img,
+      & > svg {
+        height: 1.75rem;
+
+        @include respond-to(xl) {
+          height: 2rem;
+        }
+      }
+    }
+
+    .o-header__title {
+      font-size: 1rem;
+
+      @include respond-to(xl) {
+        margin-right: 1rem;
+      }
+    }
   }
 
   &__start {
     display: flex;
     flex-wrap: nowrap;
-    @include respond-to(sm) {
+    overflow: hidden;
+
+    @include respond-to(xl) {
       flex-grow: 1;
-      overflow: hidden;
-    }
-    .o-header__title {
-      font-size: 0.875rem;
-      @include respond-to(sm) {
-        font-size: 1rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      @include respond-to(md) {
-        font-size: 1.125rem;
-      }
+      order: 2;
     }
   }
 
@@ -91,10 +97,9 @@
     display: flex;
     flex-wrap: nowrap;
     padding-top: .5rem;
-    @include respond-to(sm) {
-      margin-left: 1rem;
-      padding-top: 0;
-    }
+    order: 3;
+    padding-top: 0;
+
     .a-tabs {
       display: flex;
       flex-wrap: nowrap;
@@ -106,19 +111,11 @@
     display: flex;
     flex-direction: row;
     height: 2rem;
-    justify-content: center;
-    margin-top: .25rem;
+    justify-content: space-between;
+    margin-top: 0;
+    padding: 0 1.5rem;
     position: relative;
     width: 100%;
-    @include respond-to(sm) {
-      flex-direction: row;
-      justify-content: space-between;
-      margin-top: 0;
-      padding: 0 1rem;
-    }
-    @include respond-to(md) {
-      padding: 0 1.5rem;
-    }
 
     ~ .o-header__content {
       height: auto;
@@ -160,13 +157,13 @@
       }
     }
 
+    .o-header__start {
+      align-items: center;
+    }
+
     .o-header__end {
       margin-left: 1rem;
       padding-top: 0;
-
-      @include respond-to(sm) {
-        margin-left: 0rem;
-      }
 
       & a {
         color: set-color(grey, 90);
@@ -235,7 +232,7 @@
     }
 
     .a-btn.-icon.-flat.-light {
-      .a-icon {
+      .a-icon:not(.icon-menu) {
         color: set-color(grey, 50);
       }
 
