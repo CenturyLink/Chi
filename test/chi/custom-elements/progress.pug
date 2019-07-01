@@ -1,5 +1,7 @@
 ---
 title: Progress
+scripts:
+  - js/ce/ux-chi-ce
 ---
 each max in ['100', '200']
   each state, index in ['default', 'danger', 'info', 'warning', 'success']
@@ -9,4 +11,4 @@ each max in ['100', '200']
           h3.-mb--3= `Progress / ${state} / ${max}`
           each value, index in [0,25,33.3,50,75,100]
             h5= `${value}%`
-            progress( class=`-${state}` value=`${value}` max=max)
+            chi-progress(state=`${state === 'default' ? '' : state}`, max=max, value=value, data-cy=`progress-${value}-${state}-max-${max}`)
