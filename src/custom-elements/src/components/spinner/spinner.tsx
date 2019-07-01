@@ -1,7 +1,7 @@
 import { Component, Prop, Watch } from '@stencil/core';
 import { ICON_SIZES } from '../../constants/size';
 
-const SPINNER_COLORS = ['', 'primary', 'success', 'warning', 'danger', 'muted', 'secondary', 'light'];
+const SPINNER_COLORS = ['primary', 'success', 'warning', 'danger', 'muted', 'secondary', 'light'];
 
 @Component({
   tag: 'chi-spinner',
@@ -12,7 +12,7 @@ export class Spinner {
   /**
    *  to set size of a spinner { xs, sm, sm--2, sm--3, md, lg, xl, xxl }.
    */
-  @Prop({ reflectToAttr: true }) size: string;
+  @Prop({ reflectToAttr: true }) size = 'sm';
 
   /**
    *  to set color of a spinner { primary, success, warning, danger, muted }.
@@ -27,21 +27,21 @@ export class Spinner {
   @Watch('size')
   sizeValidation(newValue: string) {
     if (newValue && !ICON_SIZES.includes(newValue)) {
-      throw new Error(`${newValue} is not a valid size for spinner. Valid values are xs, sm, sm--2, sm--3, md, lg, xl, xxl or ''. `);
+      throw new Error(`${newValue} is not a valid size for spinner. If provided, valid values are: xs, sm, sm--2, sm--3, md, lg, xl or xxl. `);
     }
   }
 
   @Watch('color')
   colorValidation(newValue: string) {
     if (newValue && !SPINNER_COLORS.includes(newValue)) {
-      throw new Error(`${newValue} is not a valid color for spinner. Valid values are primary, success, warning, danger, muted, secondary, light or ''. `);
+      throw new Error(`${newValue} is not a valid color for spinner. If provided, valid values are: primary, success, warning, danger, muted, secondary or light. `);
     }
   }
 
   @Watch('backdrop')
   backdropValidation(newValue: string) {
-    if (newValue && newValue !== 'inverse' && newValue !== 'backdrop') {
-      throw new Error(`${newValue} is not a valid backdrop for spinner. Valid values are inverse, backdrop, '' or true. `);
+    if (newValue && !['', 'inverse', 'backdrop', 'true'].includes(newValue)) {
+      throw new Error(`${newValue} is not a valid backdrop for spinner. If provided, valid values are: inverse, backdrop or true. `);
     }
   }
 

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-06-28T16:48:20",
+  "timestamp": "2019-07-01T15:08:06",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
@@ -1043,6 +1043,7 @@
           "reflectToAttr": true,
           "docs": "to set size of a spinner { xs, sm, sm--2, sm--3, md, lg, xl, xxl }.",
           "docsTags": [],
+          "default": "'sm'",
           "optional": false,
           "required": false
         }
