@@ -1,0 +1,49 @@
+---
+title: Number input
+scripts:
+  - js/ce/ux-chi-ce
+styles:
+  - assets/styles/number-input-ce
+---
+
+each size in ['default', 'sm', 'md', 'lg', 'xl']
+  div(class=`test-${size}`)
+    span.a-h2= `Text Input / ${size}`
+    table(cellpadding='0', cellspacing='0', width='600px')
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'danger']
+            td
+              .-m--1
+                .m-formGroup.-inline
+                    chi-number-input(disabled=(state==='disabled'), data-cy='test-base' size=size, state=state, inputstyle=style)
+
+each size in ['default', 'sm', 'md', 'lg', 'xl']
+  div(class=`test-expanded-svg-${size}`)
+    span.a-h2= `Text Input Expanded SVG / ${size}`
+    table(cellpadding='0', cellspacing='0', width='600px')
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'danger']
+            td
+              .-m--1
+                .m-formGroup.-inline
+                    chi-number-input(disabled=(state==='disabled'), data-cy='test-expanded', size=size, state=state, inputstyle=style expanded=true)
+
+each size in ['default', 'sm', 'md', 'lg', 'xl']
+  div(class=`test-expanded-pill-svg-${size}`)
+    span.a-h2= `Text Input Expanded Pill mode SVG / ${size}`
+    table(cellpadding='0', cellspacing='0', width='600px')
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'danger']
+            td
+              .-m--1
+                .m-formGroup.-inline
+                    chi-number-input(disabled=(state==='disabled'), data-cy='test-expanded-pill', size=size, state=state, inputstyle=style expanded=true pill=true)
