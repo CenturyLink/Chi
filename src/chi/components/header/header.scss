@@ -19,10 +19,18 @@
     flex-direction: row;
     height: 4rem;
     justify-content: space-between;
-    padding: 0 1.5rem;
+    padding: 0 .5rem;
     position: relative;
     width: 100%;
 
+    @include respond-to(sm) {
+      padding: 0 1rem;
+    }
+
+    @include respond-to(lg) {
+      padding: 0 1.5rem;
+    }
+/*
     .a-btn.-icon.-flat.-dark {
       color: set-color(grey, 60);
 
@@ -35,7 +43,7 @@
         color: set-color(grey, 100);
       }
     }
-
+*/
     ~ .o-header__toolbar {
       height: 3rem;
 
@@ -51,15 +59,16 @@
     justify-content: center;
     order: 2;
 
-    @include respond-to(xl) {
+    @include respond-to(lg) {
       order: 1;
     }
 
     .a-brand {
-      margin-right: 1rem;
-      width: 8rem;
+      margin: 0 .5rem;
+      width: 8.75rem;
 
-      @include respond-to(xl) {
+      @include respond-to(lg) {
+        margin: 0 1rem 0 0;
         width: 10rem;
       }
 
@@ -67,16 +76,19 @@
       & > svg {
         height: 1.75rem;
 
-        @include respond-to(xl) {
+        @include respond-to(lg) {
           height: 2rem;
         }
       }
     }
 
     .o-header__title {
+      color: set-color(grey, 70);
       font-size: 1rem;
+      line-height: 1.25rem;
 
-      @include respond-to(xl) {
+      @include respond-to(lg) {
+        font-size: 1.125rem;
         margin-right: 1rem;
       }
     }
@@ -87,7 +99,7 @@
     flex-wrap: nowrap;
     overflow: hidden;
 
-    @include respond-to(xl) {
+    @include respond-to(lg) {
       flex-grow: 1;
       order: 2;
     }
@@ -113,9 +125,17 @@
     height: 2rem;
     justify-content: space-between;
     margin-top: 0;
-    padding: 0 1.5rem;
+    padding: 0 .5rem;
     position: relative;
     width: 100%;
+
+    @include respond-to(sm) {
+      padding: 0 1rem;
+    }
+
+    @include respond-to(lg) {
+      padding: 0 1.5rem;
+    }
 
     ~ .o-header__content {
       height: auto;
