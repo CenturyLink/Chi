@@ -12,30 +12,23 @@ p.-text To render a picker group, wrap a series of pickers in a div and apply th
   .-p--3
     .m-pickerGroup
       each type in ['Radio1','Radio2','Radio3']
-        .m-picker
-          input(type="radio", class="a-picker", name='box', id=`i-${type}`)
-          label(for=`i-${type}`)
-            = type
+        input.a-picker(type="radio", name='radios', id=`ia-${type}`)
+        label(for=`ia-${type}`)
+          = type
   :code(lang='html')
     <div class="m-pickerGroup">
-      <div class="m-picker">
-        <input class="a-picker" type="checkbox" id="checkbox1">
-        <label for="checkbox1">
-          Checkbox1
-        </label>
-      </div>
-      <div class="m-picker">
-        <input class="a-picker" type="checkbox" id="checkbox2">
-        <label for="checkbox2">
-          Checkbox2
-        </label>
-      </div>
-      <div class="m-picker">
-        <input class="a-picker" type="checkbox" id="checkbox3">
-        <label for="checkbox3">
-          Checkbox3
-        </label>
-      </div>
+      <input class="a-picker" type="radio" name="radios" id="radio1">
+      <label for="radio1">
+        Radio1
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio2">
+      <label for="radio2">
+        Radio2
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio3">
+      <label for="radio3">
+        Radio3
+      </label>
     </div>
 
 h3 Fluid
@@ -45,30 +38,23 @@ h4 Horizontal
   .-p--3
     .m-pickerGroup.-fluid
       each type in ['Radio1','Radio2','Radio3']
-        .m-picker
-          input(type="radio", class="a-picker", name='box', id=`ic-${type}`)
-          label(for=`ic-${type}`)
-            = type
+        input.a-picker(type="radio", name='radios', id=`ib-${type}`)
+        label(for=`ib-${type}`)
+          = type
   :code(lang='html')
     <div class="m-pickerGroup -fluid">
-      <div class="m-picker">
-        <input class="a-picker" type="checkbox" id="checkbox1">
-        <label for="checkbox1">
-          Checkbox1
-        </label>
-      </div>
-      <div class="m-picker">
-        <input class="a-picker" type="checkbox" id="checkbox2">
-        <label for="checkbox2">
-          Checkbox2
-        </label>
-      </div>
-      <div class="m-picker">
-        <input class="a-picker" type="checkbox" id="checkbox3">
-        <label for="checkbox3">
-          Checkbox3
-        </label>
-      </div>
+      <input class="a-picker" type="radio" name="radios" id="radio1">
+      <label for="radio1">
+        Radio1
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio2">
+      <label for="radio2">
+        Radio2
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio3">
+      <label for="radio3">
+        Radio3
+      </label>
     </div>
 
 h4 Alignment
@@ -78,35 +64,26 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-pickerGroup.-fluid
-        .m-picker
-          input(type="radio", class="a-picker", name='box', id='id-Radio1')
-          label(for='id-Radio1', class=`-align--left`) Radio1
-        .m-picker
-          input(type="radio", class="a-picker", name='box', id='id-Radio2')
-          label(for='id-Radio2', class=`-align--center`) Radio2
-        .m-picker
-          input(type="radio", class="a-picker", name='box', id='id-Radio3')
-          label(for='id-Radio3', class=`-align--right`) Radio3
+        input.a-picker(type="radio", name='radios', id='ic-Radio1')
+        label.-align--left(for='ic-Radio1') Radio1
+        input.a-picker(type="radio", name='radios', id='ic-Radio2')
+        label.-align--center(for='ic-Radio2') Radio2
+        input.a-picker(type="radio", name='radios', id='ic-Radio3')
+        label.-align--right(for='ic-Radio3') Radio3
   :code(lang='html')
     <div class="m-pickerGroup -fluid">
-      <div class="m-picker">
-        <input class="a-picker" type="checkbox" id="checkbox1">
-        <label class="-align--left" for="checkbox1">
-          Checkbox1
-        </label>
-      </div>
-      <div class="m-picker">
-        <input class="a-picker" type="checkbox" id="checkbox2">
-        <label class="-align--center" for="checkbox2">
-          Checkbox2
-        </label>
-      </div>
-      <div class="m-picker">
-        <input class="a-picker" type="checkbox" id="checkbox3">
-        <label class="-align--right" for="checkbox3">
-          Checkbox3
-        </label>
-      </div>
+      <input class="a-picker" type="radio" name="radios" id="radio1">
+      <label class="-align--left" for="radio1">
+        Radio1
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio2">
+      <label class="-align--center" for="radio2">
+        Radio2
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio3">
+      <label class="-align--right" for="radio3">
+        Radio3
+      </label>
     </div>
 
 h4 Disable Fluidity
@@ -116,35 +93,26 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-pickerGroup.-fluid
-        .m-picker
-          input(type="radio", class="a-picker", name='box', id='ie-Radio1')
-          label(for='ie-Radio1') Radio1
-        .m-picker.-notFluid
-          input(type="radio", class="a-picker", name='box', id='ie-Radio2')
-          label(for='ie-Radio2') Radio2
-        .m-picker
-          input(type="radio", class="a-picker", name='box', id='ie-Radio3')
-          label(for='ie-Radio3') Radio3
+        input.a-picker(type="radio", name='radios', id='id-Radio1')
+        label(for='id-Radio1') Radio1
+        input.a-picker(type="radio", name='radios', id='id-Radio2')
+        label.-notFluid(for='id-Radio2') Radio2
+        input.a-picker(type="radio", name='radios', id='id-Radio3')
+        label(for='id-Radio3') Radio3
   :code(lang='html')
     <div class="m-pickerGroup -fluid">
-      <div class="m-picker">
-        <input class="a-picker" type="checkbox" id="checkbox1">
-        <label for="checkbox1">
-          Checkbox1
-        </label>
-      </div>
-      <div class="m-picker -notFluid">
-        <input class="a-picker" type="checkbox" id="checkbox2">
-        <label for="checkbox2">
-          Checkbox2
-        </label>
-      </div>
-      <div class="m-picker">
-        <input class="a-picker" type="checkbox" id="checkbox3">
-        <label for="checkbox3">
-          Checkbox3
-        </label>
-      </div>
+      <input class="a-picker" type="radio" name="radios" id="radio1">
+      <label for="radio1">
+        Radio1
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio2">
+      <label class="-notFluid" for="radio2">
+        Radio2
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio3">
+      <label for="radio3">
+        Radio3
+      </label>
     </div>
 
 h3 Sizes
@@ -155,98 +123,73 @@ p.-text
   | The default size is <code>-md</code>.
 
 .example.-mb--3
-    .-px--3.-pt--0.-pb--3
-      each size in ['sm', 'md', 'lg', 'xl']
-        p.-text--bold= '-' + size
-        .-d--flex.-flex--wrap
-          .m-pickerGroup
-            each type in ['Radio1','Radio2','Radio3']
-              .m-picker
-                input(type="radio", class="a-picker", name='box', id=`if-${type}-${size}`)
-                label(for=`if-${type}-${size}`, class=`-${size}`)
-                  = type
-    :code(lang='html')
-      <!-- sm -->
-      <div class="m-pickerGroup">
-        <div class="m-picker">
-          <input class="a-picker" type="checkbox" id="checkbox1">
-          <label class="-sm" for="checkbox1">
-            Checkbox1
-          </label>
-        </div>
-        <div class="m-picker">
-          <input class="a-picker" type="checkbox" id="checkbox2">
-          <label class="-sm" for="checkbox2">
-            Checkbox2
-          </label>
-        </div>
-        <div class="m-picker">
-          <input class="a-picker" type="checkbox" id="checkbox3">
-          <label class="-sm" for="checkbox3">
-            Checkbox3
-          </label>
-        </div>
-      </div>
-      <!-- md -->
-      <div class="m-pickerGroup">
-        <div class="m-picker">
-          <input class="a-picker" type="checkbox" id="checkbox1">
-          <label class="-md" for="checkbox1">
-            Checkbox1
-          </label>
-        </div>
-        <div class="m-picker">
-          <input class="a-picker" type="checkbox" id="checkbox2">
-          <label class="-md" for="checkbox2">
-            Checkbox2
-          </label>
-        </div>
-        <div class="m-picker">
-          <input class="a-picker" type="checkbox" id="checkbox3">
-          <label class="-md" for="checkbox3">
-            Checkbox3
-          </label>
-        </div>
-      </div>
-      <!-- lg -->
-      <div class="m-pickerGroup">
-        <div class="m-picker">
-          <input class="a-picker" type="checkbox" id="checkbox1">
-          <label class="-lg" for="checkbox1">
-            Checkbox1
-          </label>
-        </div>
-        <div class="m-picker">
-          <input class="a-picker" type="checkbox" id="checkbox2">
-          <label class="-lg" for="checkbox2">
-            Checkbox2
-          </label>
-        </div>
-        <div class="m-picker">
-          <input class="a-picker" type="checkbox" id="checkbox3">
-          <label class="-lg" for="checkbox3">
-            Checkbox3
-          </label>
-        </div>
-      </div>
-      <!-- xl -->
-      <div class="m-pickerGroup">
-        <div class="m-picker">
-          <input class="a-picker" type="checkbox" id="checkbox1">
-          <label class="-xl" for="checkbox1">
-            Checkbox1
-          </label>
-        </div>
-        <div class="m-picker">
-          <input class="a-picker" type="checkbox" id="checkbox2">
-          <label class="-xl" for="checkbox2">
-            Checkbox2
-          </label>
-        </div>
-        <div class="m-picker">
-          <input class="a-picker" type="checkbox" id="checkbox3">
-          <label class="-xl" for="checkbox3">
-            Checkbox3
-          </label>
-        </div>
-      </div>
+  .-px--3.-pt--0.-pb--3
+    each size in ['sm', 'md', 'lg', 'xl']
+      p.-text--bold= '-' + size
+      .-d--flex.-flex--wrap
+        .m-pickerGroup
+          each type in ['Radio1','Radio2','Radio3']
+            input.a-picker(type="radio", name='radios', id=`ie-${type}-${size}`)
+            label(for=`ie-${type}-${size}`, class=`-${size}`)
+                = type
+  :code(lang='html')
+    <!-- sm -->
+    <div class="m-pickerGroup">
+      <input class="a-picker" type="radio" name="radios" id="radio1">
+      <label class="-sm" for="radio1">
+        Radio1
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio2">
+      <label class="-sm" for="radio2">
+        Radio2
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio3">
+      <label class="-sm" for="radio3">
+        Radio3
+      </label>
+    </div>
+    <!-- md -->
+    <div class="m-pickerGroup">
+      <input class="a-picker" type="radio" name="radios" id="radio1">
+      <label class="-md" for="radio1">
+        Radio1
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio2">
+      <label class="-md" for="radio2">
+        Radio2
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio3">
+      <label class="-md" for="radio3">
+        Radio3
+      </label>
+    </div>
+    <!-- lg -->
+    <div class="m-pickerGroup">
+      <input class="a-picker" type="radio" name="radios" id="radio1">
+      <label class="-lg" for="radio1">
+        Radio1
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio2">
+      <label class="-lg" for="radio2">
+        Radio2
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio3">
+      <label class="-lg" for="radio3">
+        Radio3
+      </label>
+    </div>
+    <!-- xl -->
+    <div class="m-pickerGroup">
+      <input class="a-picker" type="radio" name="radios" id="radio1">
+      <label class="-xl" for="radio1">
+        Radio1
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio2">
+      <label class="-xl" for="radio2">
+        Radio2
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio3">
+      <label class="-xl" for="radio3">
+        Radio3
+      </label>
+    </div>

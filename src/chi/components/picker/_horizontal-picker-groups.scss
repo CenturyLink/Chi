@@ -4,92 +4,129 @@ $sizes: (
   sm: (
     font-size: 0.75rem,
     line-height: 1rem,
-    padding: (0.25rem - $border) (0.5rem - $border),
-    padding_hover: (0.5rem - $border)
+    padding: (0.25rem - $border) 0.5rem (0.25rem - $border) (0.5rem - $border),
+    padding_hover: (0.5rem - $border),
+    padding_checked: 0.5rem
   ),
   md: (
     font-size: 0.875rem,
     line-height: 1rem,
-    padding: (0.5rem - $border) (1rem - $border),
-    padding_hover: (1rem - $border)
+    padding: (0.5rem - $border) 1rem (0.5rem - $border) (1rem - $border),
+    padding_hover: (1rem - $border),
+    padding_checked: 1rem
   ),
   lg: (
     font-size: 0.875rem,
     line-height: 1.25rem,
-    padding: (0.625rem - $border) (1.5rem - $border),
-    padding_hover: (1.5rem - $border)
+    padding: (0.625rem - $border) 1.5rem (0.625rem - $border) (1.5rem - $border),
+    padding_hover: (1.5rem - $border),
+    padding_checked: 1.5rem
   ),
   xl: (
     font-size: 0.875rem,
     line-height: 1.25rem,
-    padding: (0.875rem - $border) (1.5rem - $border),
-    padding_hover: (1.5rem - $border)
+    padding: (0.875rem - $border) 1.5rem (0.875rem - $border) (1.5rem - $border),
+    padding_hover: (1.5rem - $border),
+    padding_checked: 1.5rem
   )
 );
 
 .m-pickerGroup {
+  align-items: center;
   display: inline-flex;
-  .m-picker {
-    &:first-child {
-      input {
-        &[type='checkbox'],
-        &[type='radio'] {
-          &.a-picker {
-            & + label {
-              border-bottom-left-radius: $border-radius;
-              border-top-left-radius: $border-radius;
+  justify-content: center;
+
+  input {
+    &[type='checkbox'],
+    &[type='radio'] {
+      &.a-picker {
+        left: -9999px;
+        position: absolute;
+        & + label {
+          align-items: center;
+          background-color: $text-white;
+          border: solid 0.0625rem set-color(grey, 30);
+          border-right-width: 0;
+          box-shadow: 0 1px 1px 0 rgba(0,0,0,.04);
+          display: flex;
+          font-size: $text;
+          font-weight: 600;
+          justify-content: space-between;
+          line-height: 1rem;
+          margin-bottom: 0;
+          padding: (0.5rem - $border) 1rem (0.5rem - $border) (1rem - $border);
+          transition: border-color 0.2s, box-shadow 0.2s;
+          width: 100%;
+
+          @each $type in map-keys($sizes) {
+            &.-#{$type} {
+              font-size: map-get(map-get($sizes, $type), font-size);
+              line-height: map-get(map-get($sizes, $type), line-height);
+              padding: map-get(map-get($sizes, $type), padding);
             }
+          }
+
+          &:hover {
+            background-color: set-color(grey, 10);
+            cursor: pointer;
+          }
+
+          &:first-of-type {
+            border-bottom-left-radius: $border-radius;
+            border-top-left-radius: $border-radius;
+          }
+
+          &:last-of-type {
+            border-bottom-right-radius: $border-radius;
+            border-right-width: 0.0625rem;
+            border-top-right-radius: $border-radius;
           }
         }
       }
-    }
 
-    &:last-child {
-      input {
-        &[type='checkbox'],
-        &[type='radio'] {
-          &.a-picker {
-            & + label {
-              border-bottom-right-radius: $border-radius;
-              border-right: 0.0625rem solid set-color(grey, 30);
-              border-top-right-radius: $border-radius;
-            }
-
-            &:checked + label {
-              border-right: 0.0625rem solid $secondary-color;
-            }
-          }
-        }
-      }
-    }
-
-    input {
-      &[type='checkbox'],
-      &[type='radio'] {
+      &:checked {
         &.a-picker {
           & + label {
-            border-radius: 0;
-            border-right: 0.0625rem solid transparent;
+            border: solid 0.0625rem $secondary-color;
+            box-shadow: inset 0 0 0 0.0625rem $secondary-color;
+            color: $text-color;
             font-weight: 600;
-            line-height: 1rem;
-            margin-bottom: 0;
-            padding: (0.5rem - $border) (1rem - $border);
+            padding-right: .9375rem;
 
             @each $type in map-keys($sizes) {
               &.-#{$type} {
-                font-size: map-get(map-get($sizes, $type), font-size);
-                line-height: map-get(map-get($sizes, $type), line-height);
-                padding: map-get(map-get($sizes, $type), padding);
+                padding-right: map-get(map-get($sizes, $type), padding_hover);
               }
             }
 
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus {
-              border: solid 0.0625rem $secondary-color;
-              box-shadow: 0 0 0 0.0625rem $secondary-color;
-              outline: none;
+            & + input + label {
+              border-left-width: 0;
+              padding-left: 1rem;
+
+              @each $type in map-keys($sizes) {
+                &.-#{$type} {
+                  padding-left: map-get(map-get($sizes, $type), padding_checked);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.-fluid {
+    input {
+      &[type='checkbox'],
+      &[type='radio'] {
+        &:last-of-type {
+          &:checked + label {
+            padding-right: 1rem;
+
+            @each $type in map-keys($sizes) {
+              &.-#{$type} {
+                padding-right: map-get(map-get($sizes, $type), padding_checked);
+              }
             }
           }
         }
