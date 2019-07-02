@@ -7,13 +7,15 @@ styles:
 ---
 
 .test-expansion-panel-done.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(eptitle='Expansion panel #1', done=true, data-cy='test-done')
+    chi-expansion-panel(heading='Expansion panel #1', state="done", data-cy='test-done')
         span(slot='done' class='-text') 
             h5 Done
             p.-text content in expansion panel.
+        span(slot='change')
+            button.a-btn.-brand.-flat Change
 
 .test-expansion-panel-active.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(eptitle='Expansion panel #2', active=true, data-cy='test-active')
+    chi-expansion-panel(heading='Expansion panel #2', state="active", data-cy='test-active')
         span(slot='active' class='-text') 
             h5.-mt--0 Active
             p.-text.-mb--0 content in expansion panel.
@@ -22,19 +24,21 @@ styles:
             button.a-btn.-lg.-primary.-ml--2 Continue
 
 .test-expansion-panel-pending.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(eptitle='Expansion panel #3', data-cy='test-pending')
+    chi-expansion-panel(heading='Expansion panel #3', data-cy='test-pending')
 
 .test-expansion-panel-disabled.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(eptitle='Expansion panel #4', disabled=true, data-cy='test-disabled')
+    chi-expansion-panel(heading='Expansion panel #4', state="disabled", data-cy='test-disabled')
 
 .test-expansion-panel-done-bordered.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(eptitle='Expansion panel #5', done=true, bordered=true, data-cy='test-done-bordered')
+    chi-expansion-panel(heading='Expansion panel #5', state="done", bordered=true, data-cy='test-done-bordered')
         span(slot='done' class='-text') 
             h5 Done
             p.-text content in expansion panel.
+        span(slot='change')
+            button.a-btn.-brand.-flat Change
 
 .test-expansion-panel-active-bordered.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(eptitle='Expansion panel #6', active=true, bordered=true, data-cy='test-active-bordered')
+    chi-expansion-panel(heading='Expansion panel #6', state="active", bordered=true, data-cy='test-active-bordered')
         span(slot='active' class='-text') 
             h5.-mt--0 Active
             p.-text.-mb--0 content in expansion panel.
@@ -43,7 +47,7 @@ styles:
             button.a-btn.-lg.-primary.-ml--2 Continue
 
 .test-expansion-panel-pending-bordered.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(eptitle='Expansion panel #7', bordered=true, data-cy='test-pending-bordered')
+    chi-expansion-panel(heading='Expansion panel #7', bordered=true, data-cy='test-pending-bordered')
 
 .test-expansion-panel-disabled-bordered.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(eptitle='Expansion panel #8', disabled=true, bordered=true, data-cy='test-disabled-bordered')
+    chi-expansion-panel(heading='Expansion panel #8', state="disabled", bordered=true, data-cy='test-disabled-bordered')

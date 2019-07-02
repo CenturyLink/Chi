@@ -16,14 +16,13 @@ describe('Expansion panel', function() {
             .should('have.class', 'm-epanel');
     });
 
-    it('Expansion panel custom element should include custom content and a button when in "done" mode. ', function() {
+    it('Expansion panel custom element should include custom content when in "done" mode. ', function() {
       
         cy.get('[data-cy="test-done"]')
             .find('.-done--only')
             .children()
             .should(($elements)=> {
                 expect($elements.first()).to.match('span').to.have.attr('slot', 'done');
-                expect($elements.last()).to.match('button');
             });
     });
 
@@ -39,23 +38,13 @@ describe('Expansion panel', function() {
             });
     });
 
-    it('Expansion panel custom element should raise an event when "change" button in "done" mode is pressed. ', function() {
-
-        const spy = cy.spy();
-
-        cy.get('[data-cy="test-done"]')
-            .find('button')
-            .as('change_button');
+    it('Expansion panel custom element could include custom content in done or active modes. ', function() {
       
         cy.get('[data-cy="test-done"]')
-            .then((el) => {
-            el.on('chiEpChangeClick', spy);
-            });
-
-        cy.get('@change_button')
-            .click()
-            .then(() => {
-            expect(spy).to.be.called;
+            .find('.m-epanel__action')
+            .children()
+            .should(($elements)=> {
+                expect($elements.first()).to.match('span').to.have.attr('slot', 'change');
             });
     });
 });

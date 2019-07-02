@@ -1,89 +1,11 @@
 {
-  "timestamp": "2019-07-01T15:08:06",
+  "timestamp": "2019-07-01T11:56:55",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
     "typescriptVersion": "3.2.2"
   },
   "components": [
-    {
-      "tag": "chi-avatar",
-      "encapsulation": "scoped",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "color",
-          "type": "string",
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": true,
-          "docs": "to set color of an avatar.",
-          "docsTags": [],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "inverse",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "inverse",
-          "reflectToAttr": true,
-          "docs": "to set inverse background for an avatar.",
-          "docsTags": [],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "label",
-          "type": "string",
-          "mutable": false,
-          "attr": "label",
-          "reflectToAttr": true,
-          "docs": "to set a label for an avatar.",
-          "docsTags": [],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "size",
-          "type": "string",
-          "mutable": false,
-          "attr": "size",
-          "reflectToAttr": true,
-          "docs": "to set size of an avatar.",
-          "docsTags": [],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "textTransform",
-          "type": "string",
-          "mutable": false,
-          "attr": "text-transform",
-          "reflectToAttr": true,
-          "docs": "to transform initial avatar { uppercase, lowercase, capitalized }.",
-          "docsTags": [],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "transparent",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "transparent",
-          "reflectToAttr": true,
-          "docs": "to set transparent background for an avatar.",
-          "docsTags": [],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
-      "styles": []
-    },
     {
       "tag": "chi-badge",
       "encapsulation": "scoped",
@@ -692,57 +614,36 @@
       "usage": {},
       "props": [
         {
-          "name": "active",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "active",
-          "reflectToAttr": true,
-          "docs": "",
-          "docsTags": [],
-          "optional": true,
-          "required": false
-        },
-        {
           "name": "bordered",
           "type": "boolean",
           "mutable": false,
           "attr": "bordered",
           "reflectToAttr": true,
-          "docs": "",
+          "docs": "is the panel border-styled?",
           "docsTags": [],
-          "optional": true,
+          "optional": false,
           "required": false
         },
         {
-          "name": "disabled",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "disabled",
-          "reflectToAttr": true,
-          "docs": "",
-          "docsTags": [],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "done",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "done",
-          "reflectToAttr": true,
-          "docs": "",
-          "docsTags": [],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "eptitle",
+          "name": "heading",
           "type": "string",
           "mutable": false,
-          "attr": "eptitle",
+          "attr": "heading",
           "reflectToAttr": true,
-          "docs": "",
+          "docs": "to set the title of the panel",
           "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "mutable": false,
+          "attr": "state",
+          "reflectToAttr": true,
+          "docs": "to set expansion panel state. Possible values are: {'done', 'active', 'pending' (default value), and 'disabled'}",
+          "docsTags": [],
+          "default": "'pending'",
           "optional": false,
           "required": false
         },
@@ -752,24 +653,14 @@
           "mutable": false,
           "attr": "step",
           "reflectToAttr": true,
-          "docs": "",
+          "docs": "to set a step number next to the title of the panel",
           "docsTags": [],
-          "optional": true,
+          "optional": false,
           "required": false
         }
       ],
       "methods": [],
-      "events": [
-        {
-          "event": "chiEpChangeClick",
-          "detail": "void",
-          "bubbles": true,
-          "cancelable": true,
-          "composed": true,
-          "docs": "",
-          "docsTags": []
-        }
-      ],
+      "events": [],
       "styles": []
     },
     {
