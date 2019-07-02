@@ -7,6 +7,7 @@ const CLASS_DRAWER = 'm-drawer';
 const CLOSE_TRIGGER_SELECTOR = `.${CLASS_DRAWER} > .-close, .${CLASS_DRAWER} > .m-drawer__header > .-close`;
 const COMPONENT_SELECTOR = '.m-drawer__trigger';
 const COMPONENT_TYPE = "drawer";
+const DISABLE_SCROLL = '-disableScroll';
 const EVENTS = {
   show: 'chi.drawer.show',
   hide: 'chi.drawer.hide'
@@ -48,9 +49,12 @@ class Drawer extends Component {
       e.preventDefault();
       self.toggle();
     };
+
     this._closeClickEventListener = function() {
       self.hide();
     };
+
+    this._backdrop.addEventListener('click', this._closeClickEventListener);
 
     this._elem.addEventListener('click', this._triggerClickEventListener);
     this._closeButton.addEventListener('click', this._closeClickEventListener);
@@ -63,6 +67,7 @@ class Drawer extends Component {
     }
     return drawerElem;
   }
+
   _locateCloseButton() {
     const closeButtons = this._drawerElem.querySelectorAll(CLOSE_TRIGGER_SELECTOR);
     if (closeButtons) {
@@ -82,6 +87,7 @@ class Drawer extends Component {
   }
 
   show() {
+    Util.addClass(document.body, DISABLE_SCROLL);
     if (!this._shown) {
       if (this._transitioning) {
         Util.stopThreeStepsAnimation(this._currentThreeStepsAnimation, false);
@@ -130,6 +136,7 @@ class Drawer extends Component {
   }
 
   hide() {
+    Util.removeClass(document.body, DISABLE_SCROLL);
     if (this._shown) {
       if (this._transitioning) {
         Util.stopThreeStepsAnimation(this._currentThreeStepsAnimation, false);
@@ -204,7 +211,6 @@ class Drawer extends Component {
   static get componentSelector () {
     return COMPONENT_SELECTOR;
   }
-
 }
 
 const factory = Component.factory.bind(Drawer);

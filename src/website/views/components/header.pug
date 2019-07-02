@@ -1212,6 +1212,23 @@ h4 Header with bottom toolbar
         </div>
       </div>
     </div>
+    <div class="a-backdrop -closed">
+      <div class="m-drawer -bottom -menu -position--absolute" id="drawer-3">
+        <button class="a-btn -icon -close">
+          <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+        </button>
+        <div class="m-drawer__content">
+          <div class="-px--4 -py--2">
+            <ul class="a-tabs -lg">
+              <li class="-active"><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 .a-backdrop.-closed
   div#drawer-0.m-drawer.-right.-menu.-position--absolute
     button(class='a-btn -icon -close')
@@ -1240,6 +1257,22 @@ h4 Header with bottom toolbar
             a(href="#") Link
 .a-backdrop.-closed
   div#drawer-2.m-drawer.-right.-menu.-position--absolute
+    button(class='a-btn -icon -close')
+      .a-btn__content
+        i.a-icon.icon-x
+    .m-drawer__content
+      .-py--2
+        ul.a-tabs.-lg.-vertical.-mt--5
+          li.-active
+            a(href="#") Link
+          li
+            a(href="#") Link
+          li
+            a(href="#") Link
+          li
+            a(href="#") Link
+.a-backdrop.-closed
+  div#drawer-3.m-drawer.-bottom.-menu.-position--absolute
     button(class='a-btn -icon -close')
       .a-btn__content
         i.a-icon.icon-x
