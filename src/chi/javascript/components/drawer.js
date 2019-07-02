@@ -54,7 +54,9 @@ class Drawer extends Component {
       self.hide();
     };
 
-    this._backdrop.addEventListener('click', this._closeClickEventListener);
+    if (this._backdrop) {
+      this._backdrop.addEventListener('click', this._closeClickEventListener);
+    }
 
     this._elem.addEventListener('click', this._triggerClickEventListener);
     this._closeButton.addEventListener('click', this._closeClickEventListener);
