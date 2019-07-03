@@ -75,9 +75,9 @@ $animation-duration: 0.5s;
     }
 
     &.-menu {
-      width: 95vw;
+      width: 85vw;
       &.-animated:not(.-active) {
-        transform: translate(95vw)
+        transform: translate(85vw)
       }
 
       @include respond-to(md) {
@@ -135,9 +135,9 @@ $animation-duration: 0.5s;
     }
 
     &.-menu {
-      width: 95vw;
+      width: 85vw;
       &.-animated:not(.-active) {
-        transform: translate(-95vw)
+        transform: translate(-85vw)
       }
 
       @include respond-to(md) {
