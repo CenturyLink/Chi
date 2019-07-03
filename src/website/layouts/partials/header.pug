@@ -15,7 +15,7 @@ header.o-header.-inverse.docs-header.-z--20
       span.o-header__title.-d--none.-d-sm--flex Chi Documentation
     .o-header__end
       .-d--flex.-d-lg--none
-        button#drawer-trigger-4.a-btn.-icon.-flat.-light.m-drawer__trigger(data-target='#drawer-4')
+        button#drawer-trigger-version.a-btn.-icon.-flat.-light.m-drawer__trigger(data-target='#drawer-version')
           .a-btn__content
             i.a-icon.-sm--2.icon-menu
       .-d--none.-d-lg--flex
@@ -39,7 +39,7 @@ header.o-header.-inverse.docs-header.-z--20
             i.a-icon.icon-logo-github
 
 .a-backdrop.-closed
-  .m-drawer.-right.-menu#drawer-4.-position--absolute
+  .m-drawer.-right.-menu#drawer-version.-position--absolute
     button(class='a-btn -icon -close')
       .a-btn__content
         i.a-icon.icon-x
@@ -73,3 +73,17 @@ header.o-header.-inverse.docs-header.-z--20
             .a-btn__content
               i.a-icon.icon-logo-github
               span Github
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      Array.prototype.forEach.call(
+        document.getElementsByClassName("m-drawer__trigger"),
+        function (el) {
+          chi.drawer(el);
+        }
+      );
+    },
+    false
+  );
