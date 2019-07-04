@@ -15,8 +15,9 @@
 
   &__content {
     align-items: center;
-    display: flex;
+    display: grid;
     flex-direction: row;
+    grid-template-columns: 1fr auto 1fr;
     height: 4rem;
     justify-content: space-between;
     padding: 0 .5rem;
@@ -28,22 +29,10 @@
     }
 
     @include respond-to(lg) {
+      display: flex;
       padding: 0 1.5rem;
     }
-/*
-    .a-btn.-icon.-flat.-dark {
-      color: set-color(grey, 60);
 
-      &:active,
-      &.-active,
-      &:focus,
-      &.-focus,
-      &:hover,
-      &.-hover {
-        color: set-color(grey, 100);
-      }
-    }
-*/
     ~ .o-header__toolbar {
       height: 3rem;
 
@@ -56,6 +45,7 @@
   &__brand {
     align-items: center;
     display: inline-flex;
+    grid-column-start: 2;
     justify-content: center;
     order: 2;
 
@@ -64,6 +54,9 @@
     }
 
     .a-brand {
+      align-items: center;
+      display: flex;
+      justify-content: center;
       margin: 0 .5rem;
       width: 8.75rem;
 
@@ -112,6 +105,7 @@
   &__end {
     display: flex;
     flex-wrap: nowrap;
+    justify-content: flex-end;
     padding-top: .5rem;
     order: 3;
     padding-top: 0;
