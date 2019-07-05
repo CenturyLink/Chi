@@ -15,7 +15,7 @@ p.-text
   .example.-mb3.-mt3
     .-p3
       chi-expansion-panel(step='1', heading='Done panel', state='done')
-        span(slot='done' class='-text') 
+        div(slot='done' class='-text') 
           | CenturyLink
           br
           | 1100 112th Ave NE
@@ -23,15 +23,15 @@ p.-text
           | Suite 400
           br
           | Bellevue, WA 98004
-        span(slot='change')
+        div(slot='change')
           button.a-btn.-brand.-flat Change
       chi-expansion-panel(step='2', heading='Active panel', state='active')
-        span(slot='active') 
-          h5 Active panel title
-          p.-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+        div(slot='active') 
+          h5.-mt--0 Active panel title
+          p.-text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
             |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
             | nihil sed veritatis!
-        span(slot='footer')
+        div(slot='footer')
           button.a-btn.-lg.-primary Continue
       chi-expansion-panel(step='3', heading='Pending panel')
       chi-expansion-panel(step='4', heading='Disabled panel', state='disabled')
@@ -47,34 +47,34 @@ p.-text
     #a-tabs-done.a-tabs-panel.-active
       :code(lang='html')
         <chi-expansion-panel step="1" heading="Done panel" state="done">
-          <span slot="done" class="-text">
+          <div slot="done" class="-text">
             CenturyLink</br>
             1100 112th Ave NE</br>
             Suite 400</br>
             Bellevue, WA 98004</br>
-          </span>
-          <span slot="change">
+          </div>
+          <div slot="change">
             <button class="a-btn -brand -flat">
               Change
             </button>
-          </span>
+          </div>
         </chi-expansion-panel>
     #a-tabs-active.a-tabs-panel
       :code(lang='html')
         <chi-expansion-panel step="2" heading="Active panel" state="active">
-          <span slot="active"> 
-            <h5>
+          <div slot="active"> 
+            <h5 class="-mt--0">
               Active panel title
             </h5>
-            <p class="-text">
+            <p class="-text -mb--0">
               Lorem ipsum dolor sit amet...
             </p>
-          </span>
-          <span slot="footer">
+          </div>
+          <div slot="footer">
             <button class="a-btn -lg -primary">
               Continue
             </button>
-          </span>
+          </div>
         </chi-expansion-panel>
     #a-tabs-pending.a-tabs-panel
       :code(lang='html')
@@ -91,39 +91,39 @@ p.-text
 .example.-mb3
   .-p3.-bg--grey-10
     chi-expansion-panel(heading='Expansion panel', state='active')
-      span(slot='active') 
-        h5 Active panel title
-        p.-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+      div(slot='active') 
+        h5.-mt--0 Active panel title
+        p.-text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
           |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
           | nihil sed veritatis!
-      span(slot='change')
+      div(slot='change')
         button.a-btn.-brand.-flat Change
-      span(slot='footer')
+      div(slot='footer')
         button.a-btn.-lg Previous
         button.a-btn.-lg.-primary.-ml--2 Continue
   :code(lang='html')
     <chi-expansion-panel heading="Expansion panel" state="active">
-      <span slot="active"> 
-        <h5>
+      <div slot="active"> 
+        <h5 class="-mt--0">
           Active panel title
         </h5>
-        <p class="-text">
+        <p class="-text -mb--0">
           Lorem ipsum dolor sit amet...
         </p>
-      </span>
-      <span slot="change">
+      </div>
+      <div slot="change">
         <button class="a-btn -brand -flat">
           Change
         </button>
-      </span>
-      <span slot="footer">
+      </div>
+      <div slot="footer">
         <button class="a-btn -lg">
           Previous
         </button>
         <button class="a-btn -lg -primary -ml--2">
           Continue
         </button>
-      </span>
+      </div>
     </chi-expansion-panel>
 
 h4 Bordered expansion panel
@@ -133,7 +133,7 @@ p.-text
 .example.-mb3
   .-p3
     chi-expansion-panel(step='1', heading='Done panel', state='done', bordered=true)
-      span(slot='done' class='-text') 
+      div(slot='done' class='-text') 
           | CenturyLink
           br
           | 1100 112th Ave NE
@@ -141,15 +141,15 @@ p.-text
           | Suite 400
           br
           | Bellevue, WA 98004
-      span(slot='change')
+      div(slot='change')
         button.a-btn.-brand.-flat Change
     chi-expansion-panel(step='2', heading='Active panel', state='active', bordered=true)
-      span(slot='active') 
-        h5 Active panel title
-        p.-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+      div(slot='active') 
+        h5.-mt--0 Active panel title
+        p.-text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
           |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
           | nihil sed veritatis!
-      span(slot='footer')
+      div(slot='footer')
         button.a-btn.-lg.-primary Continue
     chi-expansion-panel(step='3', heading='Pending panel', bordered=true)
     chi-expansion-panel(step='4', heading='Disabled panel', state='disabled', bordered=true)
@@ -165,34 +165,34 @@ p.-text
   #a-tabs-bordered-done.a-tabs-panel.-active
     :code(lang='html')
       <chi-expansion-panel step="1" heading="Done panel" state="done" bordered>
-        <span slot="done" class="-text">
+        <div slot="done" class="-text">
           CenturyLink</br>
           1100 112th Ave NE</br>
           Suite 400</br>
           Bellevue, WA 98004</br>
-        </span>
-        <span slot="change">
+        </div>
+        <div slot="change">
           <button class="a-btn -brand -flat">
             Change
           </button>
-        </span>
+        </div>
       </chi-expansion-panel>
   #a-tabs-bordered-active.a-tabs-panel
     :code(lang='html')
       <chi-expansion-panel step="2" heading="Active panel" state="active" bordered>
-        <span slot="active"> 
-          <h5>
+        <div slot="active"> 
+          <h5 class="-mt--0">
             Active panel title
           </h5>
-          <p class="-text">
+          <p class="-text -mb--0">
             Lorem ipsum dolor sit amet...
           </p>
-        </span>
-        <span slot="footer">
+        </div>
+        <div slot="footer">
           <button class="a-btn -lg -primary">
             Continue
           </button>
-        </span>
+        </div>
       </chi-expansion-panel>
   #a-tabs-bordered-pending.a-tabs-panel
     :code(lang='html')
@@ -219,7 +219,7 @@ p.-text
 .example.-mb3
   .-p3.-bg--grey-10
     chi-expansion-panel(heading='Expansion panel', state='done')
-      span(slot='done' class='-text') 
+      div(slot='done' class='-text') 
         | CenturyLink
         br
         | 1100 112th Ave NE
@@ -227,15 +227,15 @@ p.-text
         | Suite 400
         br
         | Bellevue, WA 98004
-      span(slot='change')
+      div(slot='change')
         button.a-btn.-brand.-flat Change
     chi-expansion-panel(heading='Expansion panel', state='active')
-      span(slot='active') 
-        h5 Active panel title
-        p.-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+      div(slot='active') 
+        h5.-mt--0 Active panel title
+        p.-text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
           |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
           | nihil sed veritatis!
-      span(slot='footer')
+      div(slot='footer')
         button.a-btn.-lg Previous
         button.a-btn.-lg.-primary.-ml--2 Continue
     chi-expansion-panel(heading='Expansion panel')
@@ -252,34 +252,34 @@ p.-text
   #a-tabs-ex-done.a-tabs-panel.-active
     :code(lang='html')
       <chi-expansion-panel heading="Expansion panel" state="done">
-        <span slot="done" class="-text">
+        <div slot="done" class="-text">
           CenturyLink</br>
           1100 112th Ave NE</br>
           Suite 400</br>
           Bellevue, WA 98004</br>
-        </span>
-        <span slot="change">
+        </div>
+        <div slot="change">
           <button class="a-btn -brand -flat">
             Change
           </button>
-        </span>
+        </div>
       </chi-expansion-panel>
   #a-tabs-ex-active.a-tabs-panel
     :code(lang='html')
       <chi-expansion-panel heading="Expansion panel" state="active">
-        <span slot="active"> 
-          <h5>
+        <div slot="active"> 
+          <h5 class="-mt--0">
             Active panel title
           </h5>
-          <p class="-text">
+          <p class="-text -mb--0">
             Lorem ipsum dolor sit amet...
           </p>
-        </span>
-        <span slot="footer">
+        </div>
+        <div slot="footer">
           <button class="a-btn -lg -primary">
             Continue
           </button>
-        </span>
+        </div>
       </chi-expansion-panel>
   #a-tabs-ex-pending.a-tabs-panel
     :code(lang='html')

@@ -22,7 +22,7 @@ describe('Expansion panel', function() {
             .find('.-done--only')
             .children()
             .should(($elements)=> {
-                expect($elements.first()).to.match('span').to.have.attr('slot', 'done');
+                expect($elements.first()).to.match('div').to.have.attr('slot', 'done');
             });
     });
 
@@ -33,8 +33,8 @@ describe('Expansion panel', function() {
             .find('.m-epanel__body')
             .children()
             .should(($elements)=> {
-                expect($elements.first().children().first()).to.match('span').to.have.attr('slot', 'active');
-                expect($elements.last().children().first()).to.match('span').to.have.attr('slot', 'footer');
+                expect($elements.first().children().first()).to.match('div').to.have.attr('slot', 'active');
+                expect($elements.last().children().first()).to.match('div').to.have.attr('slot', 'footer');
             });
     });
 
@@ -44,7 +44,7 @@ describe('Expansion panel', function() {
             .find('.m-epanel__action')
             .children()
             .should(($elements)=> {
-                expect($elements.first()).to.match('span').to.have.attr('slot', 'change');
+                expect($elements.first()).to.match('div').to.have.attr('slot', 'change');
             });
     });
 });

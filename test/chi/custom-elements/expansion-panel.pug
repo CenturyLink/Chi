@@ -8,18 +8,18 @@ styles:
 
 .test-expansion-panel-done.-mb--3(style="min-width: 20rem")
     chi-expansion-panel(heading='Expansion panel #1', state="done", data-cy='test-done')
-        span(slot='done' class='-text') 
+        div(slot='done' class='-text') 
             h5 Done
             p.-text content in expansion panel.
-        span(slot='change')
+        div(slot='change')
             button.a-btn.-brand.-flat Change
 
 .test-expansion-panel-active.-mb--3(style="min-width: 20rem")
     chi-expansion-panel(heading='Expansion panel #2', state="active", data-cy='test-active')
-        span(slot='active' class='-text') 
+        div(slot='active' class='-text') 
             h5.-mt--0 Active
             p.-text.-mb--0 content in expansion panel.
-        span(slot='footer')
+        div(slot='footer')
             button.a-btn.-lg Previous
             button.a-btn.-lg.-primary.-ml--2 Continue
 
@@ -31,18 +31,18 @@ styles:
 
 .test-expansion-panel-done-bordered.-mb--3(style="min-width: 20rem")
     chi-expansion-panel(heading='Expansion panel #5', state="done", bordered=true, data-cy='test-done-bordered')
-        span(slot='done' class='-text') 
+        div(slot='done' class='-text') 
             h5 Done
             p.-text content in expansion panel.
-        span(slot='change')
+        div(slot='change')
             button.a-btn.-brand.-flat Change
 
 .test-expansion-panel-active-bordered.-mb--3(style="min-width: 20rem")
     chi-expansion-panel(heading='Expansion panel #6', state="active", bordered=true, data-cy='test-active-bordered')
-        span(slot='active' class='-text') 
+        div(slot='active' class='-text') 
             h5.-mt--0 Active
             p.-text.-mb--0 content in expansion panel.
-        span(slot='footer')
+        div(slot='footer')
             button.a-btn.-lg Previous
             button.a-btn.-lg.-primary.-ml--2 Continue
 
