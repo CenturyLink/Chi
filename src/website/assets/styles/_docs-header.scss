@@ -8,5 +8,75 @@
     @include respond-to(lg) {
       position: fixed;
     }
+
+    .o-header__content {
+      flex-direction: column;
+      display: flex;
+      height: auto;
+      padding: .75rem .5rem;
+
+      @include respond-to(sm) {
+        flex-direction: row;
+        height: 4rem;
+        padding: 0 1rem;
+      }
+
+      @include respond-to(md) {
+        padding: 0 1.5rem;
+      }
+
+      .o-header__brand {
+        flex-direction: column;
+
+        @include respond-to(sm) {
+          flex-direction: row;
+        }
+        .a-brand {
+          margin: 0;
+          width: auto;
+
+          @include respond-to(sm) {
+            margin: 0 1rem 0 0;
+          }
+
+          @include respond-to(md) {
+            margin: 0 1.5rem 0 0;
+          }
+
+          & > img,
+          & > svg {
+            height: 1.5rem;
+
+            @include respond-to(sm) {
+              height: 2rem;
+            }
+          }
+        }
+
+        .o-header__title {
+          font-size: $text;
+          line-height: $line-height;
+
+          @include respond-to(sm) {
+            font-size: $text-large;
+            line-height: $line-height-small;
+          }
+
+          @include respond-to(md) {
+            font-size: $text-larger;
+          }
+        }
+      }
+
+      .o-header__end {
+        padding-top: .5rem;
+
+        @include respond-to(sm) {
+          padding-top: 0;
+        }
+      }
+
+    }
+
   }
 }
