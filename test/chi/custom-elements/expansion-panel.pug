@@ -1,0 +1,53 @@
+---
+title: Expansion panel
+scripts:
+  - js/ce/ux-chi-ce
+styles:
+  - assets/styles/expansion-panel-ce
+---
+
+.test-expansion-panel-done.-mb--3(style="min-width: 20rem")
+    chi-expansion-panel(heading='Expansion panel #1', state="done", data-cy='test-done')
+        div(slot='done' class='-text') 
+            h5 Done
+            p.-text content in expansion panel.
+        div(slot='change')
+            button.a-btn.-brand.-flat Change
+
+.test-expansion-panel-active.-mb--3(style="min-width: 20rem")
+    chi-expansion-panel(heading='Expansion panel #2', state="active", data-cy='test-active')
+        div(slot='active' class='-text') 
+            h5.-mt--0 Active
+            p.-text.-mb--0 content in expansion panel.
+        div(slot='footer')
+            button.a-btn.-lg Previous
+            button.a-btn.-lg.-primary.-ml--2 Continue
+
+.test-expansion-panel-pending.-mb--3(style="min-width: 20rem")
+    chi-expansion-panel(heading='Expansion panel #3', data-cy='test-pending')
+
+.test-expansion-panel-disabled.-mb--3(style="min-width: 20rem")
+    chi-expansion-panel(heading='Expansion panel #4', state="disabled", data-cy='test-disabled')
+
+.test-expansion-panel-done-bordered.-mb--3(style="min-width: 20rem")
+    chi-expansion-panel(heading='Expansion panel #5', state="done", bordered=true, data-cy='test-done-bordered')
+        div(slot='done' class='-text') 
+            h5 Done
+            p.-text content in expansion panel.
+        div(slot='change')
+            button.a-btn.-brand.-flat Change
+
+.test-expansion-panel-active-bordered.-mb--3(style="min-width: 20rem")
+    chi-expansion-panel(heading='Expansion panel #6', state="active", bordered=true, data-cy='test-active-bordered')
+        div(slot='active' class='-text') 
+            h5.-mt--0 Active
+            p.-text.-mb--0 content in expansion panel.
+        div(slot='footer')
+            button.a-btn.-lg Previous
+            button.a-btn.-lg.-primary.-ml--2 Continue
+
+.test-expansion-panel-pending-bordered.-mb--3(style="min-width: 20rem")
+    chi-expansion-panel(heading='Expansion panel #7', bordered=true, data-cy='test-pending-bordered')
+
+.test-expansion-panel-disabled-bordered.-mb--3(style="min-width: 20rem")
+    chi-expansion-panel(heading='Expansion panel #8', state="disabled", bordered=true, data-cy='test-disabled-bordered')
