@@ -42,3 +42,7 @@ fieldset {
 html {
   -ms-overflow-style: -ms-autohiding-scrollbar; // sass-lint:disable-line no-vendor-prefixes
 }
+
+.-disableScroll {
+  overflow: hidden;
+}
