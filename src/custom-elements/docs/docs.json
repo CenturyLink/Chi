@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-07-08T15:15:53",
+  "timestamp": "2019-07-08T15:47:48",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
@@ -926,6 +926,52 @@
           "docsTags": []
         }
       ],
+      "styles": []
+    },
+    {
+      "tag": "chi-spinner",
+      "encapsulation": "scoped",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "backdrop",
+          "type": "string",
+          "mutable": false,
+          "attr": "backdrop",
+          "reflectToAttr": true,
+          "docs": "to render spinners on dark or light backgrounds.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "to set color of a spinner { primary, success, warning, danger, muted }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "to set size of a spinner { xs, sm, sm--2, sm--3, md, lg, xl, xxl }.",
+          "docsTags": [],
+          "default": "'sm'",
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
       "styles": []
     }
   ]
