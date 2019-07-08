@@ -1,0 +1,119 @@
+mixin props(props)
+  if props.length
+    h4 Poperties
+    section.a-table.a-table__options.-bordered.-my--3
+      div
+        table.-text(cellpadding='0', cellspacing='0')
+          thead
+            tr
+              th
+                div Property
+              th
+                div Attribute
+              th
+                div Description
+              th
+                div Type
+              th
+                div Default
+          tbody
+            each prop in props
+              if prop.name !== 'extraClass'
+                tr
+                  td
+                    div
+                      code=prop.name
+                      if prop.required
+                        strong (required)
+                  td
+                    div
+                      if prop.attr
+                        code=prop.attr
+                      else
+                        | --
+                  td
+                    div
+                      if prop.deprecation !== undefined
+                        .-text--danger **[DEPRECATED]** #{prop.deprecation}
+                        br
+                        br
+                      =prop.docs
+                  td
+                    div
+                      code=prop.type
+                  td
+                    div
+                      if prop.default
+                        code=prop.default
+                      else
+                        em undefined
+
+mixin events(events)
+  if events.length
+    h4 Events
+    section.a-table.a-table__options.-bordered.-my--3
+      div
+        table.-text(cellpadding='0', cellspacing='0')
+          thead
+            tr
+              th
+                div Event
+              th
+                div Description
+              th
+                div Type
+          tbody
+            each ev in events
+              tr
+                td
+                  div
+                    code=ev.event
+                td
+                  div=ev.docs
+                td
+                  div
+                    code=`CustomEvent<${ev.detail}>`
+
+mixin methods(methods)
+  if methods.length
+    h4 Methods
+
+    each method in methods
+      h5=method.signature
+      if method.docs
+        p.-text=method.docs
+      if method.parameters.length
+        h6 Parameters
+        if method.parameters.length
+          section.a-table.a-table__options.-bordered.-my--3
+            div
+              table.-text(cellpadding='0', cellspacing='0')
+                thead
+                  tr
+                    th
+                      div Name
+                    th
+                      div Type
+                    th
+                      div Description
+                tbody
+                  each parameter in method.parameters
+                    tr
+                      td
+                        div
+                          code=parameter.name
+                      td
+                        div
+                          code=parameter.type
+                      td
+                        div=parameter.docs
+      if method.returns
+        h6 Returns
+        p.-text Type: #{method.returns.type}
+        p.-text= method.returns.docs
+
+each component in data.components
+  if component.tag === name
+      +props(component.props)
+      +events(component.events)
+      +methods(component.methods)

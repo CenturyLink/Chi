@@ -6,6 +6,9 @@ import collectionSorter from './helpers/collection-sorter';
 import * as pugUtils from './helpers/pug-utils';
 import { Folders, Paths } from './constants';
 import metalsmithPug from "metalsmith-pug";
+import path from 'path';
+import pug from 'pug';
+const stencilDoc = require('../src/custom-elements/docs/docs.json')
 
 const metalsmithPlugins = {
   collections: require('metalsmith-collections'),
@@ -101,7 +104,13 @@ function buildWebsiteViews () {
             const lang = getLang(options.lang);
 
             return highlightCode(text, lang);
-          }
+          },
+          stencilDoc: (text, options) => {
+            return pug.renderFile(
+              path.join(Paths.src.LAYOUTS, 'partials', 'stencilDoc.pug'),
+              {name: options.name, data:stencilDoc}
+            );
+         }
         }
       }))
       .use(metalsmithPlugins.headings('h2'))
