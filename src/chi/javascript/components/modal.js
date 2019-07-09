@@ -6,6 +6,7 @@ const ANIMATION_DURATION = 500;
 const CLOSE_TRIGGER_SELECTOR = '[data-dismiss="modal"]';
 const COMPONENT_SELECTOR = '.a-modal__trigger';
 const COMPONENT_TYPE = "modal";
+const DISABLE_SCROLL = '-disableScroll';
 const ESCAPE_KEYCODE = 27;
 const EVENTS = {
   show: 'chi.modal.show',
@@ -111,6 +112,7 @@ class Modal extends Component {
   }
 
   show() {
+    Util.addClass(document.body, DISABLE_SCROLL);
     if (!this._shown) {
       if (this._transitioning) {
         Util.stopThreeStepsAnimation(this._currentThreeStepsAnimation, false);
@@ -159,6 +161,7 @@ class Modal extends Component {
   }
 
   hide() {
+    Util.removeClass(document.body, DISABLE_SCROLL);
     if (this._shown) {
       if (this._transitioning) {
         Util.stopThreeStepsAnimation(this._currentThreeStepsAnimation, false);
