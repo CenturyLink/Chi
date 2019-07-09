@@ -13,11 +13,6 @@ export class Progress {
   @Prop({ reflectToAttr: true }) value: number;
 
   /**
-   *  to set the min value of a progress bar.
-   */
-  @Prop({ reflectToAttr: true }) min = 0;
-
-  /**
    *  to set the max value of a progress bar.
    */
   @Prop({ reflectToAttr: true }) max = 100;
@@ -49,7 +44,7 @@ export class Progress {
         role="progressbar"
         aria-valuenow={this.value || undefined}
         aria-valuemax={this.max || undefined}
-        aria-valuemin={this.min || 0}
+        aria-valuemin={0}
       ></progress>
     );
   }
