@@ -43,24 +43,25 @@
     &:not([data-position^="left"]) {
 
       &:after {
-        background-image: url(icon-chevron-thin-down.svg);
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: .75rem .75rem;
-        content: '';
+        content: '\e91e';
         display: block;
+        font-family: 'chi';
+        font-size: 0.75rem;
+        font-weight: normal;
         height: 1rem;
+        line-height: 1.2rem;
         margin-left: 0.75rem;
         width: 0.75rem;
       }
 
       &.-lg:after, &.-large:after {//Legacy code: -large to be removed.
         height: 1.5rem;
+        line-height: 1.7rem;
         margin-left: 1rem;
       }
 
       &.-sm:after, &.-small:after { //Legacy code: -small to be removed.
-        background-size: .5rem .5rem;
+        font-size: 0.5rem;
         height: 1rem;
         margin-left: 0.5rem;
       }
@@ -97,12 +98,13 @@
     &[data-position^="left"] {
 
       &:before {
-        background-image: url(icon-chevron-thin-down.svg);
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: .75rem .75rem;
-        content: '';
+        content: '\e91e';
+        display: block;
+        font-family: 'chi';
+        font-size: 0.75rem;
+        font-weight: normal;
         height: 1rem;
+        line-height: 1.2rem;
         margin-right: 0.75rem;
         transform: rotate(90deg);
         width: 0.75rem;
@@ -110,11 +112,12 @@
 
       &.-lg:before, &.-large:before { //Legacy code: -large to be removed.
         height: 1.5rem;
+        line-height: 1.7rem;
         margin-right: 1rem;
       }
 
       &.-sm:before, &.-small:before { //Legacy code: -small to be removed.
-        background-size: .5rem .5rem;
+        font-size: 0.5rem;
         height: 1rem;
         margin-right: 0.5rem;
       }
@@ -134,22 +137,6 @@
       left: initial;
       right: 0;
     }
-
-  }
-
-  & .-light,
-  & .-inverse {
-    &:not([data-position^="left"]) {
-      &:after {
-        background-image: url(icon-chevron-thin-down-inverse.svg);
-      }
-    }
-
-    &[data-position^="left"] {
-      &:before {
-        background-image: url(icon-chevron-thin-down-inverse.svg);
-      }
-    }
   }
 
   &__menu {
@@ -167,7 +154,6 @@
     }
 
     &-item {
-
       align-items: center;
       display: flex;
       height: 2rem;
@@ -242,14 +228,6 @@
     input[type='checkbox'].a-input + label, input[type='radio'].a-input + label {
       margin-bottom: 0;
       margin-right: 1rem;
-    }
-  }
-
-  &.-active {
-    .m-dropdown__trigger {
-      &:after {
-        background-image: url(icon-chevron-thin-down-active.svg);
-      }
     }
   }
 }
