@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-07-08T15:47:48",
+  "timestamp": "2019-07-09T13:47:43",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
@@ -983,6 +983,53 @@
           "docsTags": []
         }
       ],
+      "styles": []
+    },
+    {
+      "tag": "chi-progress",
+      "encapsulation": "scoped",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "max",
+          "type": "number",
+          "mutable": false,
+          "attr": "max",
+          "reflectToAttr": true,
+          "docs": "to set the max value of a progress bar.",
+          "docsTags": [],
+          "default": "100",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "mutable": false,
+          "attr": "state",
+          "reflectToAttr": true,
+          "docs": "to indicate a progress bar state { info, warning, danger, success }.",
+          "docsTags": [],
+          "default": "'success'",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "mutable": false,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "to set the value of a progress bar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
       "styles": []
     },
     {
