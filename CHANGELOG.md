@@ -2,8 +2,10 @@
 
 ### 1.2.3 (July 10, 2019)
 
-* Fixed Dropdown component bug which prevented the trigger icon from rendering correctly on different color buttons.
-* Fixed bug which allowed scrolling the underlying body content when a Drawer or Modal was open.
+* Fixed Icon bug which prevented several web font icons from loading.
+* Added new solid and outline Icons for: Cart, Circle Info, Circle Question, Comment, Comments, Database, Home, Mail, Wifi.
+* Fixed Dropdown component bug which prevented the trigger icon from rendering correctly on non-base buttons.
+* Fixed bug which scrolled the underlying body content when a Drawer or Modal was open.
 * Improved Header component responsive behavior.
 * Fixed line-height of base Textarea.
 * Added new background color utilities.
