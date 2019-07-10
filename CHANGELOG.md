@@ -1,5 +1,22 @@
 # CHANGELOG
 
+### 1.2.3 (July 10, 2019)
+
+* Fixed Icon bug which prevented several web font icons from loading.
+* Added new solid and outline Icons for: Cart, Circle Info, Circle Question, Comment, Comments, Database, Home, Mail, Wifi.
+* Fixed Dropdown component bug which prevented the trigger icon from rendering correctly on non-base buttons.
+* Fixed bug which scrolled the underlying body content when a Drawer or Modal was open.
+* Improved Header component responsive behavior.
+* Fixed line-height of base Textarea.
+* Added new background color utilities.
+* Fixed bug which sized Spinner components incorrectly when placed inside Modals.
+* Fixed incorrect documentation example code for Tooltips and Date pickers.
+* Fixed Step component bug which colored non-active inverse step lines mint instead of grey.
+* Added Picker Group component.
+* Removed margin-right from Toggle Switch component.
+* Updated Number Input component widths to support more digits by default.
+* Added !important to utility values to allow overriding component styles.
+
 ### 1.2.2 (June 7, 2019)
 
 * Added text and background utility for CenturyLink's primary grey.
