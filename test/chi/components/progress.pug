@@ -1,11 +1,12 @@
 ---
 title: Progress
 ---
-.test-states
+each max in ['100', '200']
   each state, index in ['default', 'danger', 'info', 'warning', 'success']
-    .example(style='width:1200px')
-      .-p--3
-        h3.-mb--3= `Progress / ${state}`
-        each value, index in [0,25,50,75,100]
-          h5= `${value}%`
-          progress( class=`-${state}` value=`${value}` max='100')
+    div(class=`test-${state}-max-${max}`)
+      .example(style='width:1200px')
+        .-p--3
+          h3.-mb--3= `Progress / ${state} / ${max}`
+          each value, index in [0,25,33.3,50,75,100]
+            h5= `${value}%`
+            progress( class=`-${state}` value=`${value}` max=max)

@@ -21,11 +21,77 @@ i[class^="icon-"], i[class*=" icon-"] {
   }
 }
 
-.icon-activity:before {
-  content: "\e900";
+.icon-home-outline:before {
+  content: "\e9a1";
 }
-.icon-address-book:before {
-  content: "\e901";
+.icon-home:before {
+  content: "\e953";
+}
+.icon-mail-outline:before {
+  content: "\e9a0";
+}
+.icon-mail:before {
+  content: "\e96d";
+}
+.icon-cart-alt:before {
+  content: "\e9ab";
+}
+.icon-cart-outline:before {
+  content: "\e99d";
+}
+.icon-cart:before {
+  content: "\e986";
+}
+.icon-circle-info-outline:before {
+  content: "\e930";
+}
+.icon-circle-info:before {
+  content: "\e931";
+}
+.icon-circle-question-outline:before {
+  content: "\e939";
+}
+.icon-circle-question:before {
+  content: "\e93a";
+}
+.icon-comment-dots-outline:before {
+  content: "\e9a2";
+}
+.icon-comment-dots:before {
+  content: "\e9a3";
+}
+.icon-comment-outline:before {
+  content: "\e9a4";
+}
+.icon-comment:before {
+  content: "\e9a5";
+}
+.icon-comments-dots-outline:before {
+  content: "\e9a6";
+}
+.icon-comments-dots:before {
+  content: "\e9a7";
+}
+.icon-comments-outline:before {
+  content: "\e9a8";
+}
+.icon-comments:before {
+  content: "\e9a9";
+}
+.icon-database-outline:before {
+  content: "\e9aa";
+}
+.icon-database:before {
+  content: "\e945";
+}
+.icon-wifi-outline:before {
+  content: "\e9ac";
+}
+.icon-wifi:before {
+  content: "\e9ad";
+}
+.icon-logo-slack:before {
+  content: "\e968";
 }
 .icon-arrow-down:before {
   content: "\e902";
@@ -36,14 +102,32 @@ i[class^="icon-"], i[class*=" icon-"] {
 .icon-arrow-right:before {
   content: "\e904";
 }
-.icon-arrow-to-bottom:before {
-  content: "\e905";
-}
 .icon-arrow-up:before {
   content: "\e906";
 }
 .icon-arrow-sync:before {
   content: "\e99e";
+}
+.icon-map-marker-alt:before {
+  content: "\e96e";
+}
+.icon-map-marker-outline:before {
+  content: "\e99f";
+}
+.icon-map-marker:before {
+  content: "\e96f";
+}
+.icon-date:before {
+  content: "\e99c";
+}
+.icon-activity:before {
+  content: "\e900";
+}
+.icon-address-book:before {
+  content: "\e901";
+}
+.icon-arrow-to-bottom:before {
+  content: "\e905";
 }
 .icon-arrow-vertical:before {
   content: "\e907";
@@ -103,10 +187,10 @@ i[class^="icon-"], i[class*=" icon-"] {
   content: "\e919";
 }
 .icon-check-alt:before {
-  content: "\e91b";
+  content: "\e91a";
 }
 .icon-check:before {
-  content: "\e91a";
+  content: "\e91b";
 }
 .icon-checkbox-checked:before {
   content: "\e91c";
@@ -168,12 +252,6 @@ i[class^="icon-"], i[class*=" icon-"] {
 .icon-circle-gear:before {
   content: "\e92f";
 }
-.icon-circle-info-outline:before {
-  content: "\e930";
-}
-.icon-circle-info:before {
-  content: "\e931";
-}
 .icon-circle-minus-outline:before {
   content: "\e932";
 }
@@ -194,12 +272,6 @@ i[class^="icon-"], i[class*=" icon-"] {
 }
 .icon-circle-plus:before {
   content: "\e938";
-}
-.icon-circle-question-outline:before {
-  content: "\e939";
-}
-.icon-circle-question:before {
-  content: "\e93a";
 }
 .icon-circle-reload-outline:before {
   content: "\e93b";
@@ -230,12 +302,6 @@ i[class^="icon-"], i[class*=" icon-"] {
 }
 .icon-cost:before {
   content: "\e944";
-}
-.icon-database:before {
-  content: "\e945";
-}
-.icon-date:before {
-  content: "\e99c";
 }
 .icon-delete:before {
   content: "\e946";
@@ -275,9 +341,6 @@ i[class^="icon-"], i[class*=" icon-"] {
 }
 .icon-heart:before {
   content: "\e952";
-}
-.icon-home:before {
-  content: "\e953";
 }
 .icon-key:before {
   content: "\e954";
@@ -339,9 +402,6 @@ i[class^="icon-"], i[class*=" icon-"] {
 .icon-logo-rackspace:before {
   content: "\e967";
 }
-.icon-logo-softlayer:before {
-  content: "\e968";
-}
 .icon-logo-twitter:before {
   content: "\e969";
 }
@@ -353,18 +413,6 @@ i[class^="icon-"], i[class*=" icon-"] {
 }
 .icon-logout:before {
   content: "\e96c";
-}
-.icon-mail:before {
-  content: "\e96d";
-}
-.icon-map-marker-alt:before {
-  content: "\e96e";
-}
-.icon-map-marker:before {
-  content: "\e96f";
-}
-.icon-map-marker-outline:before {
-  content: "\e99f";
 }
 .icon-menu:before {
   content: "\e970";
@@ -431,9 +479,6 @@ i[class^="icon-"], i[class*=" icon-"] {
 }
 .icon-shield:before {
   content: "\e985";
-}
-.icon-shopping-cart:before {
-  content: "\e986";
 }
 .icon-star-outline:before {
   content: "\e987";

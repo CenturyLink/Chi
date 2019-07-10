@@ -1,0 +1,54 @@
+---
+title: Progress
+scripts:
+  - js/ce/ux-chi-ce
+---
+p.-text Use progress to display the status of a task or process.
+
+h3 Examples
+p.-text
+  | To render a progress element, use the tag <code>&lt;chi-progress&gt;</code>.
+  | Set the <code>value</code> attribute to the amount of work completed. The default state is <code>success</code>.
+
+h4 Base
+.example.-mb--3
+  .-p--3
+    h5 0%
+    chi-progress(value='0')
+    h5 50%
+    chi-progress(value='50')
+    h5 100%
+    chi-progress(value='100')
+  :code(lang="html")
+    <h5>0%</h5>
+    <chi-progress value="0" ></chi-progress>
+    <h5>50%</h5>
+    <chi-progress value="50" ></chi-progress>
+    <h5>100%</h5>
+    <chi-progress value="100" ></chi-progress>
+
+h4 States
+p.-text
+  | To indicate a progress state, set the attribute <code>state</code> value to <code>info</code>, <code>warning</code>, <code>danger</code>, or <code>success</code>.
+.example.-mb--3
+  .-p--3
+    h5 Danger
+    chi-progress(value='75', state='danger')
+    h5 Info
+    chi-progress(value='75', state='info')
+    h5 Warning
+    chi-progress(value='75', state='warning')
+    h5 Success
+    chi-progress(value='75', state='success')
+  :code(lang="html")
+    <h5>Danger</h5>
+    <chi-progress value="75" state="danger" ></chi-progress>
+    <h5>Info</h5>
+    <chi-progress value="75" state="info" ></chi-progress>
+    <h5>Warning</h5>
+    <chi-progress value="75" state="warning" ></chi-progress>
+    <h5>Success</h5>
+    <chi-progress value="75" state="success" ></chi-progress>
+
+h3 Additional usage details
+:stencilDoc(name='chi-progress')
