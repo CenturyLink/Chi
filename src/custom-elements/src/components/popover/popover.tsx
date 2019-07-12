@@ -6,7 +6,8 @@ import {
   Method,
   Prop,
   State,
-  Watch
+  Watch,
+  h
 } from '@stencil/core';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
@@ -130,7 +131,7 @@ export class Popover {
    * Toggles active state (show/hide)
    */
   @Method()
-  toggle() {
+  async toggle() {
     if (this.active) {
       this.hide();
     } else {
@@ -142,7 +143,7 @@ export class Popover {
    * Shows the popover.
    */
   @Method()
-  show() {
+  async show() {
     this.active = true;
   }
 
@@ -150,7 +151,7 @@ export class Popover {
    * Hides the popover
    */
   @Method()
-  hide() {
+  async hide() {
     this.active = false;
   }
 
@@ -239,7 +240,6 @@ export class Popover {
     }
 
     const savePopperData = (data: any) => {
-      // this._popperData = data;
       this._preAnimationTransformStyle = null;
       this._postAnimationTransformStyle = data.styles.transform;
       if (data.placement.indexOf('top') === 0) {
@@ -334,6 +334,9 @@ export class Popover {
     while (this._didUpdateCallBackOnceQueue.length) {
       const cb = this._didUpdateCallBackOnceQueue.shift();
       cb();
+    }
+    if (this._animationClasses === '') {
+      this.el.firstElementChild.classList.remove('-active');
     }
   }
 

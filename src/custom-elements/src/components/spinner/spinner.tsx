@@ -1,4 +1,4 @@
-import { Component, Prop, Watch } from '@stencil/core';
+import { Component, Prop, Watch, h } from '@stencil/core';
 import { ICON_SIZES } from '../../constants/size';
 
 const SPINNER_COLORS = ['primary', 'success', 'warning', 'danger', 'muted', 'secondary', 'light'];

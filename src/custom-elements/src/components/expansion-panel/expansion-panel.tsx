@@ -1,4 +1,4 @@
-import { Component, Prop, Watch } from '@stencil/core';
+import { Component, Prop, Watch, h } from '@stencil/core';
 
 const EP_MODES = ['done', 'active', 'pending', 'disabled'];
 

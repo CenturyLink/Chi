@@ -2,7 +2,7 @@
   "name": "ux-chi-custom-elements",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
-  "module": "dist/esm/index.js",
+  "module": "dist/index.mjs",
   "main": "dist/index.js",
   "unpkg": "dist/ionic.js",
   "types": "dist/types/components.d.ts",
@@ -22,8 +22,8 @@
     "popper.js": "^1.15.0"
   },
   "devDependencies": {
-    "@stencil/core": "~0.16.2",
-    "@stencil/sass": "^0.1.1",
+    "@stencil/core": "1.1.6",
+    "@stencil/sass": "^1.0.1",
     "@types/jest": "23.3.14",
     "jest": "23.6.0",
     "jest-cli": "23.6.0",

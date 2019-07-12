@@ -5,7 +5,8 @@ import {
   Method,
   Prop,
   State,
-  Watch
+  Watch,
+  h
 } from '@stencil/core';
 import dayjs, { Dayjs } from 'dayjs';
 import { CLASSES } from '../../constants/constants';
@@ -93,7 +94,7 @@ export class Date {
    * Sets date
    */
   @Method()
-  setDate(date) {
+  async setDate(date) {
     this.value = date;
   }
 

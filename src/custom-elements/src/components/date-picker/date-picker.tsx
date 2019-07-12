@@ -1,4 +1,4 @@
-import { Component, Element, Listen, Method, Prop } from '@stencil/core';
+import { Component, Element, Listen, Method, Prop, h } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
 import { ESCAPE_KEYCODE } from '../../constants/constants';
 import dayjs from 'dayjs';
@@ -105,7 +105,7 @@ export class DatePicker {
    * Sets date
    */
   @Method()
-  setDate(date) {
+  async setDate(date) {
     this.value = date;
   }
 

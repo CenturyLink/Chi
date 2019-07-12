@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
 import { CARDINAL_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
@@ -82,7 +82,7 @@ export class Drawer {
    * Toggles active state (show/hide)
    */
   @Method()
-  toggle() {
+  async toggle() {
     if (this.active) {
       this.hide();
     } else {
@@ -94,7 +94,7 @@ export class Drawer {
    * Shows the drawer.
    */
   @Method()
-  show() {
+  async show() {
     this.active = true;
   }
 
@@ -102,7 +102,7 @@ export class Drawer {
    * Hides the drawer
    */
   @Method()
-  hide() {
+  async hide() {
     this.active = false;
   }
 

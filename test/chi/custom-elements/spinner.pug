@@ -1,8 +1,9 @@
 ---
 title: Spinner
-scripts:
-  - js/ce/ux-chi-ce
 ---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
 h2 Backdrop
 
 h3 Base
@@ -67,7 +68,7 @@ h2 Colors
   .a-grid.-align-items--center
     each type in ['primary', 'success', 'warning', 'danger', 'muted', 'secondary', 'light']
       div.-p--2
-        chi-spinner.-m--3(color=type, size='lg', data-cy=`spinner-${type}`)
+        chi-spinner.-ml--3(color=type, size='lg', data-cy=`spinner-${type}`)
         p.-text(class=`-text--${type}`)
           = `-text--${type}`
 

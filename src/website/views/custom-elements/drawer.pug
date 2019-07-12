@@ -1,11 +1,13 @@
 ---
 title: Drawer
 scripts:
-  - js/ce/ux-chi-ce
   - assets/scripts/drawer-ce
 styles:
   - assets/styles/drawer-ce
 ---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
 p.-text
   | Drawers are flexible containers anchored to the top, right, bottom, or left of the screen.
   | They are used primarily in Chi for displaying menus on small devices.

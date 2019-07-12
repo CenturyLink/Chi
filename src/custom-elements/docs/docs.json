@@ -2,8 +2,8 @@
   "timestamp": "2019-10-29T15:29:27",
   "compiler": {
     "name": "@stencil/core",
-    "version": "0.16.4",
-    "typescriptVersion": "3.2.2"
+    "version": "1.1.6",
+    "typescriptVersion": "3.5.2"
   },
   "components": [
     {
@@ -164,7 +164,8 @@
       ],
       "methods": [],
       "events": [],
-      "styles": []
+      "styles": [],
+      "slots": []
     },
     {
       "tag": "chi-brand",
@@ -198,7 +199,8 @@
       ],
       "methods": [],
       "events": [],
-      "styles": []
+      "styles": [],
+      "slots": []
     },
     {
       "tag": "chi-button",
@@ -323,12 +325,13 @@
           "docsTags": []
         }
       ],
-      "styles": []
+      "styles": [],
+      "slots": []
     },
     {
-      "tag": "chi-date-picker",
+      "tag": "chi-date",
       "encapsulation": "scoped",
-      "readme": "# chi-date-picker\n\n\n",
+      "readme": "# chi-date\n\n\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -432,32 +435,49 @@
         {
           "name": "setDate",
           "returns": {
-            "type": "void",
+            "type": "Promise<void>",
             "docs": ""
           },
-          "signature": "setDate(date: any) => void",
-          "parameters": [
-            {
-              "name": "date",
-              "type": "any",
-              "docs": ""
-            }
-          ],
+          "signature": "setDate(date: any) => Promise<void>",
+          "parameters": [],
           "docs": "Sets date",
           "docsTags": []
         }
       ],
-      "events": [],
-      "styles": []
+      "events": [
+        {
+          "event": "chiDateChange",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Date change value event",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": []
     },
     {
-      "tag": "chi-date",
+      "tag": "chi-date-picker",
       "encapsulation": "scoped",
-      "readme": "# chi-date\n\n\n",
+      "readme": "# chi-date-picker\n\n\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "active",
+          "reflectToAttr": true,
+          "docs": "Indicates whether the dropdown calendar is open or closed",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
         {
           "name": "format",
           "type": "string",
@@ -533,33 +553,18 @@
         {
           "name": "setDate",
           "returns": {
-            "type": "void",
+            "type": "Promise<void>",
             "docs": ""
           },
-          "signature": "setDate(date: any) => void",
-          "parameters": [
-            {
-              "name": "date",
-              "type": "any",
-              "docs": ""
-            }
-          ],
+          "signature": "setDate(date: any) => Promise<void>",
+          "parameters": [],
           "docs": "Sets date",
           "docsTags": []
         }
       ],
-      "events": [
-        {
-          "event": "chiDateChange",
-          "detail": "void",
-          "bubbles": true,
-          "cancelable": true,
-          "composed": true,
-          "docs": "Date change value event",
-          "docsTags": []
-        }
-      ],
-      "styles": []
+      "events": [],
+      "styles": [],
+      "slots": []
     },
     {
       "tag": "chi-drawer",
@@ -640,10 +645,10 @@
         {
           "name": "hide",
           "returns": {
-            "type": "void",
+            "type": "Promise<void>",
             "docs": ""
           },
-          "signature": "hide() => void",
+          "signature": "hide() => Promise<void>",
           "parameters": [],
           "docs": "Hides the drawer",
           "docsTags": []
@@ -651,10 +656,10 @@
         {
           "name": "show",
           "returns": {
-            "type": "void",
+            "type": "Promise<void>",
             "docs": ""
           },
-          "signature": "show() => void",
+          "signature": "show() => Promise<void>",
           "parameters": [],
           "docs": "Shows the drawer.",
           "docsTags": []
@@ -662,10 +667,10 @@
         {
           "name": "toggle",
           "returns": {
-            "type": "void",
+            "type": "Promise<void>",
             "docs": ""
           },
-          "signature": "toggle() => void",
+          "signature": "toggle() => Promise<void>",
           "parameters": [],
           "docs": "Toggles active state (show/hide)",
           "docsTags": []
@@ -674,7 +679,7 @@
       "events": [
         {
           "event": "chiDrawer:hidden",
-          "detail": "void",
+          "detail": "any",
           "bubbles": true,
           "cancelable": true,
           "composed": true,
@@ -683,7 +688,7 @@
         },
         {
           "event": "chiDrawer:hide",
-          "detail": "void",
+          "detail": "any",
           "bubbles": true,
           "cancelable": true,
           "composed": true,
@@ -692,7 +697,7 @@
         },
         {
           "event": "chiDrawer:show",
-          "detail": "void",
+          "detail": "any",
           "bubbles": true,
           "cancelable": true,
           "composed": true,
@@ -701,7 +706,7 @@
         },
         {
           "event": "chiDrawer:shown",
-          "detail": "void",
+          "detail": "any",
           "bubbles": true,
           "cancelable": true,
           "composed": true,
@@ -709,7 +714,8 @@
           "docsTags": []
         }
       ],
-      "styles": []
+      "styles": [],
+      "slots": []
     },
     {
       "tag": "chi-expansion-panel",
@@ -766,7 +772,8 @@
       ],
       "methods": [],
       "events": [],
-      "styles": []
+      "styles": [],
+      "slots": []
     },
     {
       "tag": "chi-icon",
@@ -812,7 +819,8 @@
       ],
       "methods": [],
       "events": [],
-      "styles": []
+      "styles": [],
+      "slots": []
     },
     {
       "tag": "chi-number-input",
@@ -959,7 +967,8 @@
           "docsTags": []
         }
       ],
-      "styles": []
+      "styles": [],
+      "slots": []
     },
     {
       "tag": "chi-popover",
@@ -1030,10 +1039,10 @@
         {
           "name": "hide",
           "returns": {
-            "type": "void",
+            "type": "Promise<void>",
             "docs": ""
           },
-          "signature": "hide() => void",
+          "signature": "hide() => Promise<void>",
           "parameters": [],
           "docs": "Hides the popover",
           "docsTags": []
@@ -1041,10 +1050,10 @@
         {
           "name": "show",
           "returns": {
-            "type": "void",
+            "type": "Promise<void>",
             "docs": ""
           },
-          "signature": "show() => void",
+          "signature": "show() => Promise<void>",
           "parameters": [],
           "docs": "Shows the popover.",
           "docsTags": []
@@ -1052,10 +1061,10 @@
         {
           "name": "toggle",
           "returns": {
-            "type": "void",
+            "type": "Promise<void>",
             "docs": ""
           },
-          "signature": "toggle() => void",
+          "signature": "toggle() => Promise<void>",
           "parameters": [],
           "docs": "Toggles active state (show/hide)",
           "docsTags": []
@@ -1064,7 +1073,7 @@
       "events": [
         {
           "event": "chiPopover:hidden",
-          "detail": "void",
+          "detail": "any",
           "bubbles": true,
           "cancelable": true,
           "composed": true,
@@ -1073,7 +1082,7 @@
         },
         {
           "event": "chiPopover:hide",
-          "detail": "void",
+          "detail": "any",
           "bubbles": true,
           "cancelable": true,
           "composed": true,
@@ -1082,7 +1091,7 @@
         },
         {
           "event": "chiPopover:show",
-          "detail": "void",
+          "detail": "any",
           "bubbles": true,
           "cancelable": true,
           "composed": true,
@@ -1091,7 +1100,7 @@
         },
         {
           "event": "chiPopover:shown",
-          "detail": "void",
+          "detail": "any",
           "bubbles": true,
           "cancelable": true,
           "composed": true,
@@ -1099,7 +1108,8 @@
           "docsTags": []
         }
       ],
-      "styles": []
+      "styles": [],
+      "slots": []
     },
     {
       "tag": "chi-progress",
@@ -1146,7 +1156,8 @@
       ],
       "methods": [],
       "events": [],
-      "styles": []
+      "styles": [],
+      "slots": []
     },
     {
       "tag": "chi-spinner",
