@@ -34,7 +34,12 @@ $sizes: (
 .m-pickerGroup {
   align-items: center;
   display: inline-flex;
+  flex-direction: column;
   justify-content: center;
+
+  @include respond-to(md) {
+      flex-direction: row;
+  }
 
   input {
     &[type='checkbox'],
@@ -46,7 +51,7 @@ $sizes: (
           align-items: center;
           background-color: $text-white;
           border: solid 0.0625rem set-color(grey, 30);
-          border-right-width: 0;
+          border-bottom-width: 0;
           box-shadow: 0 1px 1px 0 rgba(0,0,0,.04);
           display: flex;
           font-size: $text;
@@ -57,6 +62,12 @@ $sizes: (
           padding: (0.5rem - $border) 1rem (0.5rem - $border) (1rem - $border);
           transition: border-color 0.2s, box-shadow 0.2s;
           width: 100%;
+
+          @include respond-to(md) {
+            border-bottom-width: 0.0625rem;
+            border-right-width: 0;
+          }
+
 
           @each $type in map-keys($sizes) {
             &.-#{$type} {
@@ -72,14 +83,27 @@ $sizes: (
           }
 
           &:first-of-type {
-            border-bottom-left-radius: $border-radius;
             border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+
+            @include respond-to(md) {
+              border-bottom-left-radius: $border-radius;
+              border-top-right-radius: 0;
+            }
+
           }
 
           &:last-of-type {
+            border-bottom-left-radius: $border-radius;
             border-bottom-right-radius: $border-radius;
-            border-right-width: 0.0625rem;
-            border-top-right-radius: $border-radius;
+            border-bottom-width: 0.0625rem;
+
+            @include respond-to(md) {
+              border-bottom-left-radius: 0;
+              border-right-width: 0.0625rem;
+              border-top-right-radius: $border-radius;
+            }
+
           }
         }
       }
@@ -91,21 +115,29 @@ $sizes: (
             box-shadow: inset 0 0 0 0.0625rem $secondary-color;
             color: $text-color;
             font-weight: 600;
-            padding-right: .9375rem;
 
-            @each $type in map-keys($sizes) {
-              &.-#{$type} {
-                padding-right: map-get(map-get($sizes, $type), padding_hover);
+            @include respond-to(md) {
+              padding-right: .9375rem;
+
+              @each $type in map-keys($sizes) {
+                &.-#{$type} {
+                  padding-right: map-get(map-get($sizes, $type), padding_hover);
+                }
               }
             }
 
             & + input + label {
-              border-left-width: 0;
-              padding-left: 1rem;
+              border-left-width: 0.0625rem;
+              border-top-width: 0;
+              @include respond-to(md) {
+                border-left-width: 0;
+                border-top-width: 0.0625rem;
+                padding-left: 1rem;
 
-              @each $type in map-keys($sizes) {
-                &.-#{$type} {
-                  padding-left: map-get(map-get($sizes, $type), padding_checked);
+                @each $type in map-keys($sizes) {
+                  &.-#{$type} {
+                    padding-left: map-get(map-get($sizes, $type), padding_checked);
+                  }
                 }
               }
             }
