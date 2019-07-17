@@ -174,9 +174,11 @@ $animation-duration: 0.5s;
   }
 
   .-close {
-    position: absolute;
+    align-self: flex-end;
+    position: sticky;
     right: 0.75rem;
     top: 0.8125rem;
+    z-index: 50;
   }
 }
 
