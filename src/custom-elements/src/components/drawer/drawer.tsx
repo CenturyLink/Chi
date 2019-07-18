@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
 import { CARDINAL_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
@@ -11,34 +11,39 @@ import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
 export class Drawer {
 
   /**
+   * current HTMLElement
+   */
+  @Element() el: HTMLElement;
+
+  /**
    * to set position of the drawer { top, right, bottom or left }
    */
-  @Prop({ reflectToAttr: true }) position: string;
+  @Prop({ reflect: true }) position: string;
 
   /**
    * to add a backdrop behind the drawer, which covers the viewport
    */
-  @Prop({ reflectToAttr: true }) backdrop: string;
+  @Prop({ reflect: true }) backdrop: string;
 
   /**
    * to open or close the drawer
    */
-  @Prop({ reflectToAttr: true, mutable: true }) active: boolean;
+  @Prop({ reflect: true, mutable: true }) active: boolean;
 
   /**
    * adds a close button
    */
-  @Prop({ reflectToAttr: true }) collapsible: boolean;
+  @Prop({ reflect: true }) collapsible: boolean;
 
   /**
    * to remove the space for the header
    */
-  @Prop({ reflectToAttr: true }) headless: boolean;
+  @Prop({ reflect: true }) headless: boolean;
 
   /**
    * header title. Not compatible with headless
    */
-  @Prop({ reflectToAttr: true }) headerTitle: string;
+  @Prop({ reflect: true }) headerTitle: string;
 
   /**
    * Status classes for the show/hide animation
@@ -181,6 +186,12 @@ export class Drawer {
     this.positionValidation(this.position);
     this._animationClasses = this.active ? CLASSES.ACTIVE : '';
     this._backdropAnimationClasses = this.active ? '' : CLASSES.CLOSED;
+  }
+
+  componentDidUpdate() {
+    if (this._backdropAnimationClasses === '') {
+      this.el.firstElementChild.classList.remove('-closed');
+    }
   }
 
   render() {

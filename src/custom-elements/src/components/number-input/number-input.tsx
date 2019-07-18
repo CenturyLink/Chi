@@ -20,42 +20,42 @@ export class NumberInput {
   /**
    * used to hold the value of the number input
    */
-  @Prop({ mutable: true, reflectToAttr: true }) value = '0';
+  @Prop({ mutable: true, reflect: true }) value = '0';
 
   /**
    * used to set a step to indicate the expected granularity
    */
-  @Prop({ reflectToAttr: true }) step = 1;
+  @Prop({ reflect: true }) step = 1;
 
   /**
    * used to set a maximum allowed value
    */
-  @Prop({ reflectToAttr: true }) max: number = Number.MAX_SAFE_INTEGER;
+  @Prop({ reflect: true }) max: number = Number.MAX_SAFE_INTEGER;
 
   /**
    * used to set a minimum allowed value
    */
-  @Prop({ reflectToAttr: true }) min: number = Number.MIN_SAFE_INTEGER;
+  @Prop({ reflect: true }) min: number = Number.MIN_SAFE_INTEGER;
 
   /**
    * used to determine if component is disabled or not
    */
-  @Prop({ reflectToAttr: true }) disabled?: boolean;
+  @Prop({ reflect: true }) disabled?: boolean;
 
   /**
    * used to determine component's size
    */
-  @Prop({ reflectToAttr: true }) size?: string;
+  @Prop({ reflect: true }) size?: string;
 
   /**
    * used to set component's expanded mode
    */
-  @Prop({ reflectToAttr: true }) expanded?: boolean;
+  @Prop({ reflect: true }) expanded?: boolean;
 
   /**
    * used to determine if expanded component has a pill look
    */
-  @Prop({ reflectToAttr: true }) pill?: boolean;
+  @Prop({ reflect: true }) pill?: boolean;
 
   /**
    * used to provide an input style like 'danger'. Mostly used for testing purposes

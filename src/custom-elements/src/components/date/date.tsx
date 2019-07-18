@@ -22,27 +22,27 @@ export class Date {
   /**
    * Selected date in the date picker
    */
-  @Prop({ reflectToAttr: true, mutable: true }) value: string;
+  @Prop({ reflect: true, mutable: true }) value: string;
 
   /**
    * Locale to use in date picker
    */
-  @Prop({ reflectToAttr: true }) locale = 'en';
+  @Prop({ reflect: true }) locale = 'en';
 
   /**
    * Minimum eligible date
    */
-  @Prop({ reflectToAttr: true }) min = '01/01/1900';
+  @Prop({ reflect: true }) min = '01/01/1900';
 
   /**
    * Maximum eligible date
    */
-  @Prop({ reflectToAttr: true }) max = '12/31/2099';
+  @Prop({ reflect: true }) max = '12/31/2099';
 
   /**
    * Date format used in the attributes and how it will be shown to the user.
    */
-  @Prop({ reflectToAttr: true }) format = 'MM/DD/YYYY';
+  @Prop({ reflect: true }) format = 'MM/DD/YYYY';
 
   @State() viewMonth = dayjs();
 

@@ -10,12 +10,12 @@ export class Brand {
   /**
    *  to set brand type { black, white, inverse }.
    */
-  @Prop({ reflectToAttr: true }) type: string;
+  @Prop({ reflect: true }) type: string;
 
   /**
    *  to set size of brand.
    */
-  @Prop({ reflectToAttr: true }) size: string;
+  @Prop({ reflect: true }) size: string;
 
   @Watch('size')
   sizeValidation(newValue: string) {

@@ -12,17 +12,17 @@ export class Spinner {
   /**
    *  to set size of a spinner { xs, sm, sm--2, sm--3, md, lg, xl, xxl }.
    */
-  @Prop({ reflectToAttr: true }) size = 'sm';
+  @Prop({ reflect: true }) size = 'sm';
 
   /**
    *  to set color of a spinner { primary, success, warning, danger, muted }.
    */
-  @Prop({ reflectToAttr: true }) color: string;
+  @Prop({ reflect: true }) color: string;
 
   /**
    *  to render spinners on dark or light backgrounds.
    */
-  @Prop({ reflectToAttr: true }) backdrop: string;
+  @Prop({ reflect: true }) backdrop: string;
 
   @Watch('size')
   sizeValidation(newValue: string) {

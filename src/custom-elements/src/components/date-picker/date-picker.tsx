@@ -11,27 +11,27 @@ export class DatePicker {
   /**
    * Selected date in the date picker
    */
-  @Prop({ reflectToAttr: true, mutable: true }) value: string;
+  @Prop({ reflect: true, mutable: true }) value: string;
 
   /**
    * Locale to use in date picker
    */
-  @Prop({ reflectToAttr: true }) locale = 'en';
+  @Prop({ reflect: true }) locale = 'en';
 
   /**
    * Minimum eligible date
    */
-  @Prop({ reflectToAttr: true }) min = '01/01/1900';
+  @Prop({ reflect: true }) min = '01/01/1900';
 
   /**
    * Maximum eligible date
    */
-  @Prop({ reflectToAttr: true }) max = '12/31/2099';
+  @Prop({ reflect: true }) max = '12/31/2099';
 
   /**
    * Date format used in the attributes and how it will be shown to the user.
    */
-  @Prop({ reflectToAttr: true }) format = 'MM/DD/YYYY';
+  @Prop({ reflect: true }) format = 'MM/DD/YYYY';
 
   /**
    *  to disable chi-date-picker.
@@ -41,7 +41,7 @@ export class DatePicker {
   /**
    * Indicates whether the dropdown calendar is open or closed
    */
-  @Prop({ reflectToAttr: true, mutable: true }) active = false;
+  @Prop({ reflect: true, mutable: true }) active = false;
 
   @Element() el: HTMLElement;
 
