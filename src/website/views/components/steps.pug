@@ -266,7 +266,7 @@ p.-text
 
 .example.-mb--3
   .-p--3
-    ul.a-steps.-lg--labels.-p--5
+    ul.a-steps.-md--labels.-p--5
       each step in steps
         if step == 'Step 1'
           li
@@ -294,7 +294,7 @@ p.-text
             div.a-steps__line
     p.-text--center
      | -md--labels
-    ul.a-steps.-horizontalLabels.-md--labels.-p--4
+    ul.a-steps.-horizontalLabels.-lg--labels.-p--4
       each step in steps
         if step == 'Step 1'
           li.-completed
@@ -323,8 +323,8 @@ p.-text
     p.-text--center
       | -lg--labels
   :code(lang="html")
-    <!-- Labels visible from lg breakpoint -->
-    <ul class="a-steps -lg--labels">
+    <!-- Labels visible from md breakpoint -->
+    <ul class="a-steps -md--labels">
       <li>
         <div class="a-steps__icon">
           <a href="#">Step 1</a>
@@ -355,8 +355,8 @@ p.-text
         </div>
       </li>
     </ul>
-    <!-- Labels visible from md breakpoint -->
-    <ul class="a-steps -horizontalLabels -md--labels">
+    <!-- Labels visible from lg breakpoint -->
+    <ul class="a-steps -horizontalLabels -lg--labels">
       <li class="-completed">
         <div class="a-steps__icon"></div>
         <a href="#">Step 1</a>

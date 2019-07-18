@@ -6,7 +6,7 @@
   src: url('webfont/chi.eot');
 }
 
-$sizes: ('sm', 'md', 'lg', 'xl');
+$breakpoints: ('sm', 'md', 'lg', 'xl');
 
 .a-steps {
   align-items: center;
@@ -199,12 +199,12 @@ $sizes: ('sm', 'md', 'lg', 'xl');
     }
   }
 
-  @each $size in $sizes {
-    &.-#{$size}--labels {
+  @each $breakpoint in $breakpoints {
+    &.-#{$breakpoint}--labels {
       & li > .a-steps__icon a {
         display: none;
 
-        @include respond-to(#{$size}) {
+        @include respond-to(#{$breakpoint}) {
           display: block;
         }
       }
@@ -212,7 +212,7 @@ $sizes: ('sm', 'md', 'lg', 'xl');
       & > li > a {
         display: none;
 
-        @include respond-to(#{$size}) {
+        @include respond-to(#{$breakpoint}) {
           display: block;
         }
       }
