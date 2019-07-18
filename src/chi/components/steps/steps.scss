@@ -6,6 +6,8 @@
   src: url('webfont/chi.eot');
 }
 
+$sizes: ('sm', 'md', 'lg', 'xl');
+
 .a-steps {
   align-items: center;
   display: flex;
@@ -193,6 +195,26 @@
 
       & > .a-steps__line {
         margin: 0.5rem;
+      }
+    }
+  }
+
+  @each $size in $sizes {
+    &.-#{$size}--labels {
+      & li > .a-steps__icon a {
+        display: none;
+
+        @include respond-to(#{$size}) {
+          display: block;
+        }
+      }
+
+      & > li > a {
+        display: none;
+
+        @include respond-to(#{$size}) {
+          display: block;
+        }
       }
     }
   }

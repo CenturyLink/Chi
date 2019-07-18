@@ -258,3 +258,127 @@ p.-text
       </li>
     </ul>
 
+h4 Responsiveness
+p.-text
+  | You can use a modifier class with format <code>-{breakpoint}--labels</code> to make responsive the steps component.
+  | Breakpoints supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
+  | By default, the labels appears on the component
+
+.example.-mb--3
+  .-p--3
+    ul.a-steps.-lg--labels.-p--5
+      each step in steps
+        if step == 'Step 1'
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 2'
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 3'
+          li.-active
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 5'
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+        else
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+    p.-text--center
+     | -md--labels
+    ul.a-steps.-horizontalLabels.-md--labels.-p--4
+      each step in steps
+        if step == 'Step 1'
+          li.-completed
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 2'
+          li.-completed
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 3'
+          li.-active
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 5'
+          li
+            div.a-steps__icon
+            a(href='#')= `${step}`
+        else
+          li
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+    p.-text--center
+      | -lg--labels
+  :code(lang="html")
+    <!-- Labels visible from lg breakpoint -->
+    <ul class="a-steps -lg--labels">
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 1</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 2</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li class="-active">
+        <div class="a-steps__icon">
+          <a href="#">Step 3</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 4</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 5</a>
+        </div>
+      </li>
+    </ul>
+    <!-- Labels visible from md breakpoint -->
+    <ul class="a-steps -horizontalLabels -md--labels">
+      <li class="-completed">
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 1</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li class="-completed">
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 2</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li class="-active">
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 3</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 4</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 5</a>
+      </li>
+    </ul>
