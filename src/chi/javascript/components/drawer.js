@@ -51,8 +51,7 @@ class Drawer extends Component {
       self.toggle();
     };
 
-    this._closeClickEventListener = function(e) {
-      e.preventDefault();
+    this._closeClickEventListener = function() {
       self.hide();
     };
 
