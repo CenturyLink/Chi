@@ -199,8 +199,19 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
   }
 
+  &.-labels--hide {
+
+    & li > .a-steps__icon a {
+      display: none;
+    }
+
+    & > li > a {
+      display: none;
+    }
+  }
+
   @each $breakpoint in $breakpoints {
-    &.-#{$breakpoint}--labels {
+    &.-labels-#{$breakpoint}--hide {
       & li > .a-steps__icon a {
         display: none;
 

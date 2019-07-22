@@ -260,13 +260,13 @@ p.-text
 
 h4 Responsiveness
 p.-text
-  | You can use a modifier class with format <code>-{breakpoint}--labels</code> to make responsive the steps component.
-  | Breakpoints supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
-  | By default, the labels appears on the component
+  | Use <code>-labels-{breakpoint}--hide</code> to hide step component labels on specific breakpoints or
+  | <code>-labels--hide</code> to hide on all breakpoints. Breakpoints supported are <code>sm</code>,
+  | <code>md</code>, <code>lg</code>, and <code>xl</code>. Labels are shown on all breakpoints by default.
 
 .example.-mb--3
   .-p--3
-    ul.a-steps.-md--labels.-p--5
+    ul.a-steps.-labels-md--hide.-p--5
       each step in steps
         if step == 'Step 1'
           li
@@ -293,8 +293,8 @@ p.-text
               a(href='#')= `${step}`
             div.a-steps__line
     p.-text--center
-     | -md--labels
-    ul.a-steps.-horizontalLabels.-lg--labels.-p--4
+     | -labels-md--hide
+    ul.a-steps.-horizontalLabels.-labels-lg--hide.-p--4
       each step in steps
         if step == 'Step 1'
           li.-completed
@@ -321,10 +321,10 @@ p.-text
             a(href='#')= `${step}`
             div.a-steps__line
     p.-text--center
-      | -lg--labels
+      | -labels-lg--hide
   :code(lang="html")
-    <!-- Labels visible from md breakpoint -->
-    <ul class="a-steps -md--labels">
+    <!-- Visible labels from md breakpoint -->
+    <ul class="a-steps -labels-md--hide">
       <li>
         <div class="a-steps__icon">
           <a href="#">Step 1</a>
@@ -355,8 +355,8 @@ p.-text
         </div>
       </li>
     </ul>
-    <!-- Labels visible from lg breakpoint -->
-    <ul class="a-steps -horizontalLabels -lg--labels">
+    <!-- Visible labels from lg breakpoint -->
+    <ul class="a-steps -horizontalLabels -labels-lg--hide">
       <li class="-completed">
         <div class="a-steps__icon"></div>
         <a href="#">Step 1</a>
