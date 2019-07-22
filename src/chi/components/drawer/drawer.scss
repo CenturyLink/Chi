@@ -171,11 +171,11 @@ $animation-duration: 0.5s;
 
   &__content {
     flex-grow: 1;
+    overflow: auto;
   }
 
   .-close {
-    align-self: flex-end;
-    position: sticky;
+    position: fixed;
     right: 0.75rem;
     top: 0.8125rem;
     z-index: 50;
