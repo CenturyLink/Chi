@@ -66,7 +66,7 @@ $animation-duration: 0.5s;
       }
 
       &::before {
-        content: '\e91e';
+        content: '\e91f';
         display: block;
         font-family: 'chi';
         font-size: 1rem;
@@ -74,7 +74,6 @@ $animation-duration: 0.5s;
         height: 1rem;
         line-height: 1.2rem;
         margin-right: 0.5rem;
-        transform: rotate(90deg);
         width: 1rem;
       }
 
