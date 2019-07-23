@@ -58,6 +58,7 @@ $animation-duration: 0.5s;
         cursor: pointer;
         display: flex;
         left: 1rem;
+        opacity: .6;
         outline: none;
         padding: 0;
         position: absolute;
@@ -65,16 +66,18 @@ $animation-duration: 0.5s;
       }
 
       &::before {
-        background-image: url(icon-back.svg);
-        content: '';
+        content: '\e91f';
         display: block;
+        font-family: 'chi';
+        font-size: 1rem;
+        font-weight: normal;
         height: 1rem;
+        line-height: 1.2rem;
         margin-right: 0.5rem;
         width: 1rem;
       }
 
       &::after {
-        color: set-color(grey, 50);
         content: 'Back';
         display: block;
         font-size: $text;
@@ -82,6 +85,10 @@ $animation-duration: 0.5s;
         left: 1.5rem;
         position: absolute;
         top: 0;
+      }
+
+      &:hover {
+        opacity: 1;
       }
     }
   }
