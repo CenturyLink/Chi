@@ -21,7 +21,7 @@
   }
 
   &__line {
-    border-top: 0.125rem solid set-color(grey, 40);
+    border-top: 0.125rem solid set-color(grey, 60);
     width: 100%;
   }
 
@@ -80,7 +80,7 @@
       }
 
       & > .a-steps__line {
-        border-color: set-color(grey, 40);
+        border-color: set-color(grey, 60);
         margin-left: 0.125rem;
       }
 
@@ -94,16 +94,16 @@
 
       & ~ li {
         & > .a-steps__icon {
-          color: set-color(grey, 40);
+          color: set-color(grey, 60);
 
         }
 
         & > .a-steps__line {
-          border-color: set-color(grey, 40);
+          border-color: set-color(grey, 60);
         }
 
         & a {
-          color: set-color(grey, 40);
+          color: set-color(grey, 60);
         }
 
         &:last-child {
@@ -142,7 +142,7 @@
 
       &.-active {
         & > .a-steps__line {
-          border-color: set-color(grey, 40);
+          border-color: set-color(grey, 60);
         }
       }
     }
