@@ -62,7 +62,7 @@ export class Alert {
   @Watch('size')
   sizeValidation(newValue: string) {
     if (newValue && !['md', 'lg'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid size for alert. Alert only supports lg size.`);
+      throw new Error(`${newValue} is not a valid size for alert. Alert only supports lg and md (default) sizes.`);
     }
   }
 
