@@ -35,6 +35,7 @@ $states: (
   box-sizing: border-box;
   color: $text-color;
   display: flex;
+  font-family: $font-family;
   font-size: $text-small;
   line-height: $line-height-small;
   padding: 0.5625rem 1rem;
@@ -43,6 +44,16 @@ $states: (
   & i {
     &:not(.icon-x) {
       margin-right: 1rem;
+    }
+  }
+
+  & .a-icon {
+    margin-right: 1rem;
+  }
+
+  .a-btn {
+    .a-icon {
+      margin-right: auto;
     }
   }
 

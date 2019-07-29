@@ -12,6 +12,68 @@
   "onReadyScript": "chromy/onReady.js",
   "scenarios": [
     {
+      "label": "alert-banner",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/alert-banner.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-default",
+        ".test-large"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "alert-bubble",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/alert-bubble.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-default",
+        ".test-large"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "alert-toast",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/alert-toast.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-toast"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "brand",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/custom-elements/brand.html",

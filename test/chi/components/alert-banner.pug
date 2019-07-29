@@ -1,37 +1,44 @@
 ---
 title: Alert Banners
 ---
-
-each size in ['medium', 'large']
+each size in ['default', 'large']
   div(class=`test-${size} -w--100`)
     h3= `${size}`
     each type in ['success', 'danger', 'warning', 'info', 'muted']
-      .m-alert.-banner.-m2(class=`-${type}`, class={[`-${size}`]: size != 'medium'})
+      .m-alert.-banner.-m2(class=`-${type}`, class=`-${size === 'default' ? '' : 'lg'}`)
         = `This is a ${type} message`
 
     h4 center
     each type in ['success', 'danger', 'warning', 'info', 'muted']
-      .m-alert.-banner.-center.-m2(class=`-${type}`, class={[`-${size}`]: size != 'medium'})
+      .m-alert.-banner.-center.-m2(class=`-${type}`, class=`-${size === 'default' ? '' : 'lg'}`)
         = `This is a ${type} message`
 
     h4 Has icon
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-banner.-m2(class=`-${type}`, class={[`-${size}`]: size != 'medium'})
-        i.a-icon.-sm--2(class =`${val} -text--${type}`)
+      .m-alert.-banner.-m2(class=`-${type}`, class=`-${size === 'default' ? '' : 'lg'}`)
+        div(class=`a-icon -sm--2 -text--${type}`)
+          svg
+            use(xlink:href=`#${val}`)
         = `This is a ${type} message`
 
     h4 Has icon center
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-banner.-center.-m2(class=`-${type}`, class={[`-${size}`]: size != 'medium'})
-        i.a-icon.-sm--2(class =`${val} -text--${type}`)
+      .m-alert.-banner.-center.-m2(class=`-${type}`, class=`-${size === 'default' ? '' : 'lg'}`)
+        div(class=`a-icon -sm--2 -text--${type}`)
+          svg
+            use(xlink:href=`#${val}`)
         = `This is a ${type} message`
 
     h4 Dismiss
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-banner.-dismiss.-m--2(class=`-${type}`, class={[`-${size}`]: size != 'medium'})
+      .m-alert.-banner.-dismiss.-m--2(class=`-${type}`, class=`-${size === 'default' ? '' : 'lg'}`)
         .m-alert__content
-          i.a-icon.-sm--2(class =`${val} -text--${type}`)
+          div(class=`a-icon -sm--2 -text--${type}`)
+            svg
+              use(xlink:href=`#${val}`)
           = `This is a ${type} message`
         button(class='a-btn -icon -close -sm')
           .a-btn__content
-            i.a-icon.icon-x
+            .a-icon
+              svg
+                use(xlink:href='#icon-x')

@@ -1,11 +1,170 @@
 {
-  "timestamp": "2019-07-09T20:18:40",
+  "timestamp": "2019-07-22T15:28:05",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
     "typescriptVersion": "3.2.2"
   },
   "components": [
+    {
+      "tag": "chi-alert",
+      "encapsulation": "scoped",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "center",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "center",
+          "reflectToAttr": true,
+          "docs": "to center the alert content.",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "to set alert state { success, danger, warning, info, muted }.",
+          "docsTags": [],
+          "optional": false,
+          "required": true
+        },
+        {
+          "name": "dismissible",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "dismissible",
+          "reflectToAttr": true,
+          "docs": "to make the alert dismissible.",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "to set size of an alert, lg is the only size available.",
+          "docsTags": [],
+          "default": "'md'",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": true,
+          "docs": "to set alert type { bubble, banner, toast }.",
+          "docsTags": [],
+          "default": "'bubble'",
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "dismissAlert",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "custom event when trying to dismiss an alert.",
+          "docsTags": []
+        }
+      ],
+      "styles": []
+    },
+    {
+      "tag": "chi-avatar",
+      "encapsulation": "scoped",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "to set color of an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "inverse",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "inverse",
+          "reflectToAttr": true,
+          "docs": "to set inverse background for an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": true,
+          "docs": "to set a label for an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "to set size of an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "textTransform",
+          "type": "string",
+          "mutable": false,
+          "attr": "text-transform",
+          "reflectToAttr": true,
+          "docs": "to transform initial avatar { uppercase, lowercase, capitalized }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "transparent",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "transparent",
+          "reflectToAttr": true,
+          "docs": "to set transparent background for an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": []
+    },
     {
       "tag": "chi-badge",
       "encapsulation": "scoped",
