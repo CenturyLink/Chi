@@ -14,7 +14,8 @@ const EVENTS = {
 };
 const DEFAULT_CONFIG = {
   target: null,
-  animated: true
+  animated: true,
+  preventAutoHide: false
 };
 
 class Drawer extends Component {
@@ -54,8 +55,27 @@ class Drawer extends Component {
       self.hide();
     };
 
-    if (this._backdrop) {
-      this._backdrop.addEventListener('click', this._closeClickEventListener);
+    this._mouseClickOnDrawer = function () {
+      self._closeOnClickOnDocument = false;
+    };
+
+    this._addEventHandler(
+      this._drawerElem, 'click', this._mouseClickOnDrawer
+    );
+
+    if (!this._config.preventAutoHide) {
+
+      this._mouseClickOnDocument = function () {
+        if (self._closeOnClickOnDocument) {
+          self.hide();
+        } else {
+          self._closeOnClickOnDocument = true;
+        }
+      };
+
+      this._addEventHandler(
+        document, 'click', this._mouseClickOnDocument
+      );
     }
 
     this._elem.addEventListener('click', this._triggerClickEventListener);
