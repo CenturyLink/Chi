@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-07-22T15:28:05",
+  "timestamp": "2019-08-20T10:36:44",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
@@ -49,6 +49,18 @@
           "required": false
         },
         {
+          "name": "mutable",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "mutable",
+          "reflectToAttr": true,
+          "docs": "to hide the alert when dismissed.",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "size",
           "type": "string",
           "mutable": false,
@@ -85,84 +97,6 @@
           "docsTags": []
         }
       ],
-      "styles": []
-    },
-    {
-      "tag": "chi-avatar",
-      "encapsulation": "scoped",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "color",
-          "type": "string",
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": true,
-          "docs": "to set color of an avatar.",
-          "docsTags": [],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "inverse",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "inverse",
-          "reflectToAttr": true,
-          "docs": "to set inverse background for an avatar.",
-          "docsTags": [],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "label",
-          "type": "string",
-          "mutable": false,
-          "attr": "label",
-          "reflectToAttr": true,
-          "docs": "to set a label for an avatar.",
-          "docsTags": [],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "size",
-          "type": "string",
-          "mutable": false,
-          "attr": "size",
-          "reflectToAttr": true,
-          "docs": "to set size of an avatar.",
-          "docsTags": [],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "textTransform",
-          "type": "string",
-          "mutable": false,
-          "attr": "text-transform",
-          "reflectToAttr": true,
-          "docs": "to transform initial avatar { uppercase, lowercase, capitalized }.",
-          "docsTags": [],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "transparent",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "transparent",
-          "reflectToAttr": true,
-          "docs": "to set transparent background for an avatar.",
-          "docsTags": [],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [],
       "styles": []
     },
     {
