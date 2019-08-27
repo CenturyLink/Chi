@@ -1,0 +1,45 @@
+---
+title: Toggle switch
+scripts:
+  - js/ce/ux-chi-ce
+---
+.test-states
+  .-mb--1
+    h5 Base
+    chi-toggle-switch(toggle-id='toggle1', data-cy='toggle1')
+
+  .-mb--1
+    h5 Hover
+    chi-toggle-switch(toggle-id='toggle2', extra-class='-hover', data-cy='toggle2')
+
+  .-mb--1
+    h5 Focus
+    chi-toggle-switch(toggle-id='toggle3', extra-class='-focus', checked, data-cy='toggle3')
+
+  .-mb--1
+    h5 Disabled
+    chi-toggle-switch(toggle-id='toggle4', disabled, checked, data-cy='toggle4')
+
+h4 No text
+
+.test-no-text-states
+  .-mb--1
+    h5 Base
+    chi-toggle-switch(toggle-id='toggle5', no-text, data-cy='toggle5')
+
+  .-mb--1
+    h5 Hover
+    chi-toggle-switch(toggle-id='toggle6', extra-class='-hover', no-text, data-cy='toggle6')
+
+  .-mb--1
+    h5 Focus
+    chi-toggle-switch(toggle-id='toggle7', extra-class='-focus', checked, no-text, data-cy='toggle7')
+
+  .-mb--1
+    h5 Disabled
+    chi-toggle-switch(toggle-id='toggle8', disabled, checked, no-text, data-cy='toggle8')
+
+style.
+  chi-toggle-switch {
+    display: inline-block !important;
+  }
