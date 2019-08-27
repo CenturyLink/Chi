@@ -31,6 +31,7 @@ export class ToggleSwitch {
    */
   @Prop({ reflectToAttr: true, mutable: true }) checked = false;
 
+   // used to pass additional classes like { -focus, -hover etc .}
   @Prop() extraClass: string;
 
   /**
@@ -39,7 +40,7 @@ export class ToggleSwitch {
   @Event() toggle: EventEmitter;
 
   _toggle() {
-    this.checked ? this.checked = false : this.checked = true;
+    this.checked = !this.checked;
     this.toggle.emit(this.checked);
   }
 
