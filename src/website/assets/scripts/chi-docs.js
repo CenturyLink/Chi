@@ -175,4 +175,5 @@ onLoad(() => {
   });
 
   chi.dropdown(document.getElementById('version-dropdown'));
+  chi.dropdown(document.getElementById('support'));
 });
