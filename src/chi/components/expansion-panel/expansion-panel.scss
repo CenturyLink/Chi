@@ -26,6 +26,7 @@ $transition-duration: 0.2s;
 
     & > .m-epanel__content {
       flex: 1;
+      word-break: break-word;
     }
 
     & > .m-epanel__action {
