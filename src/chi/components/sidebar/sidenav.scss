@@ -123,6 +123,55 @@ $sidenav-lg-width: 12.5rem;
     margin: 0;
   }
 
+  &.-inverse {
+    .m-sidenav {
+      &__content {
+          background-color: set-color(black);
+      }
+
+      &__list, &__drawer-list {
+        > li {
+          border-bottom-color: set-color(black);
+
+          > a {
+            color: $text-white;
+          }
+
+          &:not(.-active) > a:not(.-active):hover {
+            background-color: set-color(black);
+          }
+
+          &.-active {
+            > a {
+              box-shadow: inset .125rem 0 0 $secondary-color;
+              color: $secondary-color;
+            }
+          }
+
+          &.-active > a { // List item -active. The one that has the left 3px navy border.
+            background-color: set-color(mint, 100);
+          }
+
+          & > a.-active { // Drawer shown, will sets active the trigger (this anchor element)
+            background-color: set-color(mint, 100);
+          }
+        }
+      }
+
+      &__drawers {
+        .m-drawer {
+          background-color: set-color(black);
+
+          &__header {
+            .a-btn {
+              color: $text-white;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .m-drawer {
     box-shadow: 0.5rem 0 0.5rem -0.5rem rgba(set-color(black),.2);
     position: absolute;
