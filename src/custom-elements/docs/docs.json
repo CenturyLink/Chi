@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-08-20T10:36:44",
+  "timestamp": "2019-07-30T17:54:24",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
@@ -97,6 +97,84 @@
           "docsTags": []
         }
       ],
+      "styles": []
+    },
+    {
+      "tag": "chi-avatar",
+      "encapsulation": "scoped",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "to set color of an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "inverse",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "inverse",
+          "reflectToAttr": true,
+          "docs": "to set inverse background for an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": true,
+          "docs": "to set a label for an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "to set size of an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "textTransform",
+          "type": "string",
+          "mutable": false,
+          "attr": "text-transform",
+          "reflectToAttr": true,
+          "docs": "to transform initial avatar { uppercase, lowercase, capitalized }.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "transparent",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "transparent",
+          "reflectToAttr": true,
+          "docs": "to set transparent background for an avatar.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
       "styles": []
     },
     {
@@ -1169,6 +1247,97 @@
       ],
       "methods": [],
       "events": [],
+      "styles": []
+    },
+    {
+      "tag": "chi-toggle-switch",
+      "encapsulation": "scoped",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "checked",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "checked",
+          "reflectToAttr": true,
+          "docs": "used to check the toggle switch.",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "used to disable the toggle switch.",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "extraClass",
+          "type": "string",
+          "mutable": false,
+          "attr": "extra-class",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": true,
+          "docs": "to set a label for the toggle switch.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "noText",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "no-text",
+          "reflectToAttr": true,
+          "docs": "used to disable the toggle labels.",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "toggleId",
+          "type": "string",
+          "mutable": false,
+          "attr": "toggle-id",
+          "reflectToAttr": true,
+          "docs": "to set the toggle switch id.",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "toggle",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "emitting a custom event toggle.",
+          "docsTags": []
+        }
+      ],
       "styles": []
     }
   ]
