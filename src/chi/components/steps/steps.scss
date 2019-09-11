@@ -247,12 +247,5 @@
   .a-steps.-horizontalLabels div.a-steps__line {
     padding-bottom: 0;
   }
-
-  .a-steps.-horizontalLabels div.a-steps__icon::after,
-  .a-steps.-horizontalLabels li.-active div.a-steps__icon::after,
-  .a-steps.-horizontalLabels li.-completed div.a-steps__icon::after {
-    position: relative;
-    top: 0.1875rem;
-  }
 }
 // sass-lint:enable-all
