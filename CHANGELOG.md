@@ -2,6 +2,7 @@
 
 ### 1.2.4 (September 12, 2019)
 
+* Added responsive behavior to Picker Group component.
 * Fixed bug in Text Input component which failed to style all available HTML5 input types.
 * Fixed bug in Expansion Panel component that prevented long text strings from wrapping.
 * Updated Divider component Color Bar proportions.
