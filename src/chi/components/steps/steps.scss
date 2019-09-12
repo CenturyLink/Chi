@@ -144,7 +144,22 @@
 
       &.-active {
         & > .a-steps__line {
-          border-color: set-color(grey, 60);
+          border-color: set-color(grey, 40);
+        }
+
+        & ~ li {
+          & > .a-steps__icon {
+            color: set-color(grey, 40);
+
+          }
+
+          & > .a-steps__line {
+            border-color: set-color(grey, 40);
+          }
+
+          & a {
+            color: set-color(grey, 40);
+          }
         }
       }
     }
