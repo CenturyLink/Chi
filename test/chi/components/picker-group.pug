@@ -4,49 +4,50 @@ title: Picker group
 
 - var sizes = ['sm', 'md', 'lg', 'xl'];
 
-h3 Base
-.example.-mb--3(style='width: 700px')
-  .-p--3
+.test-base
+  h3 Base
+  .m-pickerGroup
+    each type in ['Radio1','Radio2','Radio3']
+      input.a-picker(type="radio", name='box', id=`i-${type}`)
+      label(for=`i-${type}`)
+        = type
+.test-base-checked
+  h3 Base checked
+  .m-pickerGroup
+    each type in ['Radio1','Radio2','Radio3']
+      input.a-picker(type="radio", name='box', id=`i-${type}`, checked=(type==='Radio2'))
+      label(for=`i-${type}`)
+        = type
+.test-fluid(style='width: 700px;')
+  h3 Fluid
+  .m-pickerGroup.-fluid
+    each type in ['Radio1','Radio2','Radio3']
+      input.a-picker(type="radio", name='box', id=`ic-${type}`)
+      label(for=`ic-${type}`)
+        = type
+.test-alignment(style='width: 700px;')
+  h3 Alignment
+  .m-pickerGroup.-fluid
+      input.a-picker(type="radio", name='box', id='id-Radio1')
+      label.-align--left(for='id-Radio1') Radio1
+      input.a-picker(type="radio", name='box', id='id-Radio2')
+      label.-align--center(for='id-Radio2') Radio2
+      input.a-picker(type="radio", name='box', id='id-Radio3')
+      label.-align--right(for='id-Radio3') Radio3
+.test-disable-fluidity(style='width: 700px;')
+  h3 Disable Fluidity
+  .m-pickerGroup.-fluid
+      input.a-picker(type="radio", name='box', id='ie-Radio1')
+      label(for='ie-Radio1') Radio1
+      input.a-picker(type="radio", name='box', id='ie-Radio2')
+      label.-notFluid(for='ie-Radio2') Radio2
+      input.a-picker(type="radio", name='box', id='ie-Radio3')
+      label(for='ie-Radio3') Radio3
+each size in sizes
+  div(class=`test-${size}`)
+    div.a-h4= 'Picker group size -' + size
     .m-pickerGroup
       each type in ['Radio1','Radio2','Radio3']
-        input.a-picker(type="radio", name='box', id=`i-${type}`)
-        label(for=`i-${type}`)
+        input.a-picker(type="radio", name='box', id=`if-${type}-${size}`)
+        label(for=`if-${type}-${size}`, class=`-${size}`)
           = type
-h3 Fluid
-.example.-mb--3(style='width: 700px')
-  .-p--3
-    .m-pickerGroup.-fluid
-      each type in ['Radio1','Radio2','Radio3']
-        input.a-picker(type="radio", name='box', id=`ic-${type}`)
-        label(for=`ic-${type}`)
-          = type
-h3 Alignment
-.example.-mb--3(style='width: 700px')
-  .-p--3
-    .m-pickerGroup.-fluid
-        input.a-picker(type="radio", name='box', id='id-Radio1')
-        label.-align--left(for='id-Radio1') Radio1
-        input.a-picker(type="radio", name='box', id='id-Radio2')
-        label.-align--center(for='id-Radio2') Radio2
-        input.a-picker(type="radio", name='box', id='id-Radio3')
-        label.-align--right(for='id-Radio3') Radio3
-h3 Disable Fluidity
-.example.-mb--3(style='width: 700px')
-  .-p--3
-    .m-pickerGroup.-fluid
-        input.a-picker(type="radio", name='box', id='ie-Radio1')
-        label(for='ie-Radio1') Radio1
-        input.a-picker(type="radio", name='box', id='ie-Radio2')
-        label.-notFluid(for='ie-Radio2') Radio2
-        input.a-picker(type="radio", name='box', id='ie-Radio3')
-        label(for='ie-Radio3') Radio3
-h3 Sizes
-.example.-mb--3(style='width: 700px')
-  .-p--3
-    each size in sizes
-      h4= '-' + size
-      .m-pickerGroup
-        each type in ['Radio1','Radio2','Radio3']
-          input.a-picker(type="radio", name='box', id=`if-${type}-${size}`)
-          label(for=`if-${type}-${size}`, class=`-${size}`)
-            = type
