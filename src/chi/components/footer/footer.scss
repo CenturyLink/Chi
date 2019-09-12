@@ -13,12 +13,16 @@
   }
 
   &__top {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     padding: 3rem 1.5rem 3rem 1.5rem;
     width: 100%;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+    }
   }
 
   &__column {
@@ -27,6 +31,15 @@
     flex-direction: column;
     flex: 1 0 0%;
     justify-content: flex-start;
+    margin-bottom: 1rem;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    @include respond-to(sm) {
+      margin-bottom: 0;
+    }
 
     & .-title {
       font-size: $text;
@@ -42,9 +55,22 @@
   &__bottom {
     align-items: center;
     display: flex;
+    flex-direction: column;
     font-size: $text-smaller;
     justify-content: space-between;
     padding: 1.5rem;
+
+    & div:first-of-type {
+      margin-bottom: 0.5rem;
+    }
+
+    @include respond-to(sm) {
+      flex-direction: row;
+
+      & div:first-of-type {
+        margin-bottom: 0;
+      }
+    }
   }
 
   & a {
