@@ -1,5 +1,23 @@
 # CHANGELOG
 
+### 1.2.4 (September 12, 2019)
+
+* Fixed bug in Text Input component which failed to style all available HTML5 input types.
+* Fixed bug in Expansion Panel component that prevented long text strings from wrapping.
+* Updated Divider component Color Bar proportions.
+* Added Color utility for muted backgrounds.
+* Added support for centering bubble alerts with new utility class.
+* Updated base Steps component disabled color.
+* Added !important to shadow utility values.
+* Added default color value to o-header__title in Header component.
+* Fixed Steps component bug in IE which caused step numbers to misalign.
+* Replaced modal back SVG icon with Chi web font icon for easier theming.
+* Fixed Steps component bug which was not reseting default browser padding and margin on ul element.
+* Added 720px max width to Sizing utility.
+* Improved responsive behavior of Footer component.
+* Fixed bug in Drawer component which caused the close icon to scroll with content.
+* Fixed bug in Drawer component which caused the drawer to unexpectedly close.
+
 ### 1.2.3 (July 10, 2019)
 
 * Fixed Icon bug which prevented several web font icons from loading.
