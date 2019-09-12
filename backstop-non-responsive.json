@@ -607,6 +607,34 @@
       "requireSameDimensions": true
     },
     {
+      "label": "picker-group",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/picker-group.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-base",
+        ".test-base-checked",
+        ".test-fluid",
+        ".test-alignment",
+        ".test-disable-fluidity",
+        ".test-sm",
+        ".test-md",
+        ".test-lg",
+        ".test-xl"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "popover",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/popover.html",
