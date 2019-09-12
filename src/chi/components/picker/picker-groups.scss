@@ -3,14 +3,49 @@
 .m-pickerGroup {
   &.-fluid {
     display: flex;
+    flex-direction: column;
+
+    @include respond-to(md) {
+      flex-direction: row;
+    }
+
     input {
       &[type='checkbox'],
       &[type='radio'] {
         &.a-picker {
           & + label {
+            border-bottom-width: 0;
+            border-right-width: 0.0625rem;
             display: flex;
             flex: 1 0 0;
             justify-content: center;
+
+            @include respond-to(md) {
+              border-bottom-width: 0.0625rem;
+              border-right-width: 0;
+            }
+
+            &:first-of-type {
+              border-bottom-left-radius: 0;
+              border-top-right-radius: $border-radius;
+
+              @include respond-to(md) {
+                border-bottom-left-radius: $border-radius;
+                border-top-right-radius: 0;
+              }
+            }
+
+            &:last-of-type {
+              border-bottom-left-radius: $border-radius;
+              border-bottom-width: 0.0625rem;
+              border-top-right-radius: 0;
+
+              @include respond-to(md) {
+                border-bottom-left-radius: 0;
+                border-right-width: 0.0625rem;
+                border-top-right-radius: $border-radius;
+              }
+            }
 
             &.-notFluid {
               flex: 0 1 0;
@@ -26,6 +61,53 @@
 
             &.-align--right {
               justify-content: flex-end;
+            }
+          }
+        }
+
+        &:checked {
+          &.a-picker {
+            & + label {
+              border: solid 0.0625rem $secondary-color;
+              padding-right: 1rem;
+
+              @include respond-to(md) {
+                padding-right: .9375rem;
+              }
+
+              @each $type in map-keys($sizes) {
+                &.-#{$type} {
+                  padding-right: map-get(map-get($sizes, $type), padding_checked);
+                }
+              }
+
+              &:last-of-type {
+                padding-right: 1rem;
+
+                @each $type in map-keys($sizes) {
+                  &.-#{$type} {
+                    padding-right: map-get(map-get($sizes, $type), padding_checked);
+                  }
+                }
+              }
+
+              & + input + label {
+                border-left-width: 0.0625rem;
+                border-top-width: 0;
+                padding-left: .9375rem;
+
+                @each $type in map-keys($sizes) {
+                  &.-#{$type} {
+                    padding-left: map-get(map-get($sizes, $type), padding_hover);
+                  }
+                }
+
+                @include respond-to(md) {
+                  border-left-width: 0;
+                  border-top-width: 0.0625rem;
+                  padding-left: 1rem;
+                }
+              }
             }
           }
         }
