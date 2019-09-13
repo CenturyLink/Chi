@@ -131,14 +131,8 @@ $sidenav-lg-width: 12.5rem;
 
       &__list, &__drawer-list {
         > li {
-          border-bottom-color: set-color(black);
-
           > a {
             color: $text-white;
-          }
-
-          &:not(.-active) > a:not(.-active):hover {
-            background-color: set-color(black);
           }
 
           &.-active {
@@ -158,9 +152,31 @@ $sidenav-lg-width: 12.5rem;
         }
       }
 
+      &__list {
+        > li {
+          border-bottom-color: set-color(black);
+
+          &:not(.-active) > a:not(.-active):hover {
+            background-color: set-color(black);
+          }
+        }
+      }
+
+      &__drawer-list {
+        border-top: 0.0625rem solid map-get(map-get($colorscheme, grey), 70);
+
+        > li {
+          border-bottom-color: set-color(grey, 80);
+
+          &:not(.-active) > a:not(.-active):hover {
+            background-color: set-color(grey, 90);
+          }
+        }
+      }
+
       &__drawers {
         .m-drawer {
-          background-color: set-color(black);
+          background-color: set-color(grey, 100);
 
           &__header {
             .a-btn {
