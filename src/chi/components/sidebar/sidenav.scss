@@ -5,6 +5,8 @@ $sidenav-sm-width: 3rem;
 $sidenav-md-width: 6.5rem;
 $sidenav-xl-width: 12.5rem;
 
+$sidenav-collapsed-width: 6rem;
+
 .m-sidenav {
   width: $sidenav-sm-width;
   position: relative;
@@ -135,7 +137,6 @@ $sidenav-xl-width: 12.5rem;
     &.-left.-animated:not(.-active) {
       left: -$drawer-width + $sidenav-sm-width;
     }
-
   }
 
   .a-sliding-border {
@@ -197,10 +198,56 @@ $sidenav-xl-width: 12.5rem;
       }
     }
   }
+
+  &.-collapsed {
+    width: $sidenav-collapsed-width;
+
+    .m-sidenav__list > li {
+      > a {
+        font-size: .8125rem;
+        font-weight: 400;
+        min-height: 4rem;
+
+        > *:not(.a-icon) {
+          display: block;
+        }
+      }
+
+      &.-active {
+        > a {
+          font-weight: 600;
+        }
+      }
+
+      @include respond-to(lg) {
+        > a {
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          flex-direction: column;
+          padding-left: 0;
+
+          > .a-icon {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+
+    .m-drawer {
+      &.-left {
+        left: $sidenav-collapsed-width;
+      }
+
+      &.-left.-animated:not(.-active) {
+        left: -$drawer-width + $sidenav-collapsed-width;
+      }
+    }
+  }
 }
 
 /* IE11 CSS hack */
-@media only screen and (min-width: $md-breakpoint) and (max-width: $lg-breakpoint -1) and (-ms-high-contrast:none) {
+@media only screen and (max-width: $lg-breakpoint -1) and (-ms-high-contrast:none) {
   .m-sidenav__list li a {
     height: 4rem;
   }
@@ -211,3 +258,8 @@ $sidenav-xl-width: 12.5rem;
   }
 }
 
+@media only screen and (-ms-high-contrast:none) {
+  .m-sidenav.-collapsed .m-sidenav__list li a {
+    height: 4rem;
+  }
+}
