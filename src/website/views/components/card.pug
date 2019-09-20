@@ -35,6 +35,27 @@ p.-text
       </div>
     </div>
 
+h4 Active version
+p.-text
+  | Render an active version state card with the class <code>-active--primary</code>.
+.example.-mb--3
+  .-p--3
+    .a-card.-active--primary(style="width:9.75rem;")
+      .a-card__content.-d--flex.-flex--column.-justify-content--center.-align-items--center.-text--center
+        h6.a-card__title Capacity
+        i.a-icon.-sm--3.-text--grey(class ='icon-atom')
+        p.-text--small.-mb--0.-mt--1 4 Running
+        p.-text--smaller.-m--0.-text--grey 6 Pending
+  :code(lang="html")
+    <div class="a-card -active--primary">
+      <div class="a-card__content -d--flex -flex--column -justify-content--center -align-items--center -text--center">
+        <h6 class="a-card__title">Title</h5>
+        <i class="a-icon icon-atom -sm--3 -text--grey"></i>
+        <p class="-text--small -mb--0 -mt--1">4 Running</p>
+        <p class="-text--smaller -m--0 -text--grey">6 Pending</p>
+      </div>
+    </div>
+
 h4 Empty
 p.-text
   | Render an empty state card with the class <code>-empty</code>.
@@ -86,6 +107,25 @@ h4 Titled with content
         <h5 class="a-card__title">Title</h5>
         <p class="-text -mt--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
         <button class="a-btn -primary">Link</button>
+      </div>
+    </div>
+
+h4 Titled with content and icon
+.example.-mb--3
+  .-p--3
+    .a-card(style="width:9.75rem;")
+      .a-card__content.-d--flex.-flex--column.-justify-content--center.-align-items--center.-text--center
+        h6.a-card__title Capacity
+        i.a-icon.-sm--3.-text--grey(class ='icon-atom')
+        p.-text--small.-mb--0.-mt--1 4 Running
+        p.-text--smaller.-m--0.-text--grey 6 Pending
+  :code(lang="html")
+    <div class="a-card">
+      <div class="a-card__content -d--flex -flex--column -justify-content--center -align-items--center -text--center">
+        <h6 class="a-card__title">Title</h5>
+        <i class="a-icon icon-atom -sm--3 -text--grey"></i>
+        <p class="-text--small -mb--0 -mt--1">4 Running</p>
+        <p class="-text--smaller -m--0 -text--grey">6 Pending</p>
       </div>
     </div>
 

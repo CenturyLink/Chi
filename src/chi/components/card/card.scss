@@ -126,6 +126,16 @@
   &.-active {
     border: 0.0625rem solid $secondary-color;
     box-shadow: 0 0 0 0.0625rem $secondary-color;
+
+    &--primary {
+      border: 0.0625rem solid $primary-color;
+      box-shadow: 0 0 0 0.0625rem $primary-color;
+
+      .a-card__title,
+      .a-icon {
+        color: $primary-color !important;
+      }
+    }
   }
 
   &.-empty {
