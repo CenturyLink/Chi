@@ -15,39 +15,80 @@ title: Picker group
   h3 Base checked
   .m-pickerGroup
     each type in ['Radio1','Radio2','Radio3']
-      input.a-picker(type="radio", name='box', id=`i-${type}`, checked=(type==='Radio2'))
-      label(for=`i-${type}`)
+      input.a-picker(type="radio", name='box', id=`ia-${type}`, checked=(type==='Radio2'))
+      label(for=`ia-${type}`)
         = type
+.test-with-texts-and-icons
+  h3 Texts and icons
+  .m-pickerGroup
+    input.a-picker(type="radio", name='radios', id=`ib-radio1`)
+    label(for=`ib-radio1`)
+      i.a-icon.icon-atom
+      span
+        = `Radio1`
+    input.a-picker(type="radio", name='radios', id=`ib-radio2`)
+    label(for=`ib-radio2`)
+      span
+        = `Radio2`
+      i.a-icon.icon-atom
+    input.a-picker(type="radio", name='radios', id=`ib-radio3`)
+    label(for=`ib-radio3`)
+      i.a-icon.icon-atom
+      span
+        = `Radio3`
+      i.a-icon.icon-atom
+
+.test-with-icons
+  h3 Icons
+  .example
+    .m-pickerGroup
+      each type in ['Radio1','Radio2','Radio3']
+        input.a-picker(type="radio", name='radios', id=`ic-${type}`)
+        label(for=`ic-${type}`)
+          i.a-icon.icon-atom
+            
 .test-fluid(style='width: 700px;')
   h3 Fluid
   .m-pickerGroup.-fluid
     each type in ['Radio1','Radio2','Radio3']
-      input.a-picker(type="radio", name='box', id=`ic-${type}`)
-      label(for=`ic-${type}`)
+      input.a-picker(type="radio", name='box', id=`id-${type}`)
+      label(for=`id-${type}`)
         = type
 .test-alignment(style='width: 700px;')
   h3 Alignment
   .m-pickerGroup.-fluid
-      input.a-picker(type="radio", name='box', id='id-Radio1')
-      label.-align--left(for='id-Radio1') Radio1
-      input.a-picker(type="radio", name='box', id='id-Radio2')
-      label.-align--center(for='id-Radio2') Radio2
-      input.a-picker(type="radio", name='box', id='id-Radio3')
-      label.-align--right(for='id-Radio3') Radio3
+      input.a-picker(type="radio", name='box', id='ie-Radio1')
+      label.-align--left(for='ie-Radio1') Radio1
+      input.a-picker(type="radio", name='box', id='ie-Radio2')
+      label.-align--center(for='ie-Radio2') Radio2
+      input.a-picker(type="radio", name='box', id='ie-Radio3')
+      label.-align--right(for='ie-Radio3') Radio3
 .test-disable-fluidity(style='width: 700px;')
   h3 Disable Fluidity
   .m-pickerGroup.-fluid
-      input.a-picker(type="radio", name='box', id='ie-Radio1')
-      label(for='ie-Radio1') Radio1
-      input.a-picker(type="radio", name='box', id='ie-Radio2')
-      label.-notFluid(for='ie-Radio2') Radio2
-      input.a-picker(type="radio", name='box', id='ie-Radio3')
-      label(for='ie-Radio3') Radio3
-each size in sizes
-  div(class=`test-${size}`)
-    div.a-h4= 'Picker group size -' + size
-    .m-pickerGroup
-      each type in ['Radio1','Radio2','Radio3']
-        input.a-picker(type="radio", name='box', id=`if-${type}-${size}`)
-        label(for=`if-${type}-${size}`, class=`-${size}`)
-          = type
+      input.a-picker(type="radio", name='box', id='if-Radio1')
+      label(for='if-Radio1') Radio1
+      input.a-picker(type="radio", name='box', id='if-Radio2')
+      label.-notFluid(for='if-Radio2') Radio2
+      input.a-picker(type="radio", name='box', id='if-Radio3')
+      label(for='if-Radio3') Radio3
+
+
+.example
+  each size in ['sm', 'md', 'lg', 'xl']
+    div(class=`test-${size}`)
+      div.a-h4= 'Picker group size -' + size
+      .-d--flex.-flex--wrap
+        .m-pickerGroup.-mr--2
+          each type in ['Radio1','Radio2','Radio3']
+            input.a-picker(type="radio", name='radios', id=`ig-${type}-${size}`)
+            label(for=`ig-${type}-${size}`, class=`-${size}`)
+                = type
+        .m-pickerGroup
+          each type in ['Radio1','Radio2','Radio3']
+            input.a-picker(type="radio", name='radios', id=`ig-i-${type}-${size}`)
+            label(for=`ig-i-${type}-${size}`, class=`-${size}`)
+              if size === 'sm'
+                i.a-icon.icon-atom.-xs
+              else
+                i.a-icon.icon-atom.-sm

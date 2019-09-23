@@ -31,6 +31,75 @@ p.-text To render a picker group, wrap a series of pickers in a div and apply th
       </label>
     </div>
 
+h3 Texts and icons
+p.-text Rendering picker group elements with icons <code>&lt;i class="a-icon icon-atom"&gt;&lt;/i&gt;</code>.
+.example.-mb--3
+  .-p--3
+    .m-pickerGroup
+      input.a-picker(type="radio", name='radios', id=`ib-radio1`)
+      label(for=`ib-radio1`)
+        i.a-icon.icon-atom
+        span
+          = `Radio1`
+      input.a-picker(type="radio", name='radios', id=`ib-radio2`)
+      label(for=`ib-radio2`)
+        span
+          = `Radio2`
+        i.a-icon.icon-atom
+      input.a-picker(type="radio", name='radios', id=`ib-radio3`)
+      label(for=`ib-radio3`)
+        i.a-icon.icon-atom
+        span
+          = `Radio3`
+        i.a-icon.icon-atom
+
+  :code(lang='html')
+    <div class="m-pickerGroup">
+      <input class="a-picker" type="radio" name="radios" id="radio1">
+      <label for="radio1">
+        <i class="a-icon icon-atom"></i>
+        <span>Radio1</span>
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio2">
+      <label for="radio2">
+        <span>Radio2</span>
+        <i class="a-icon icon-atom"></i>
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio3">
+      <label for="radio3">
+        <i class="a-icon icon-atom"></i>
+        <span>Radio3</span>
+        <i class="a-icon icon-atom"></i>
+      </label>
+    </div>
+
+
+h3 Icons
+p.-text Rendering picker group elements with icons <code>&lt;i class="a-icon icon-atom">&lt;/i></code>.
+.example.-mb--3
+  .-p--3
+    .m-pickerGroup
+      each type in ['Radio1','Radio2','Radio3']
+        input.a-picker(type="radio", name='radios', id=`ic-${type}`)
+        label(for=`ic-${type}`)
+          i.a-icon.icon-atom
+
+  :code(lang='html')
+    <div class="m-pickerGroup">
+      <input class="a-picker" type="radio" name="radios" id="radio1">
+      <label for="radio1">
+        <i class="a-icon icon-atom"></i>
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio2">
+      <label for="radio2">
+        <i class="a-icon icon-atom"></i>
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio3">
+      <label for="radio3">
+        <i class="a-icon icon-atom"></i>
+      </label>
+    </div>
+
 h3 Fluid and Responsive
 p.-text
   | Picker groups can be expanded to fill the parent space by applying the class <code>-fluid</code>.
@@ -40,8 +109,8 @@ h4 Horizontal
   .-p--3
     .m-pickerGroup.-fluid
       each type in ['Radio1','Radio2','Radio3']
-        input.a-picker(type="radio", name='radios', id=`ib-${type}`)
-        label(for=`ib-${type}`)
+        input.a-picker(type="radio", name='radios', id=`id-${type}`)
+        label(for=`id-${type}`)
           = type
   :code(lang='html')
     <div class="m-pickerGroup -fluid">
@@ -66,12 +135,12 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-pickerGroup.-fluid
-        input.a-picker(type="radio", name='radios', id='ic-Radio1')
-        label.-align--left(for='ic-Radio1') Radio1
-        input.a-picker(type="radio", name='radios', id='ic-Radio2')
-        label(for='ic-Radio2') Radio2
-        input.a-picker(type="radio", name='radios', id='ic-Radio3')
-        label.-align--right(for='ic-Radio3') Radio3
+        input.a-picker(type="radio", name='radios', id='ie-Radio1')
+        label.-align--left(for='ie-Radio1') Radio1
+        input.a-picker(type="radio", name='radios', id='ie-Radio2')
+        label(for='ie-Radio2') Radio2
+        input.a-picker(type="radio", name='radios', id='ie-Radio3')
+        label.-align--right(for='ie-Radio3') Radio3
   :code(lang='html')
     <div class="m-pickerGroup -fluid">
       <input class="a-picker" type="radio" name="radios" id="radio1">
@@ -95,12 +164,12 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-pickerGroup.-fluid
-        input.a-picker(type="radio", name='radios', id='id-Radio1')
-        label(for='id-Radio1') Radio1
-        input.a-picker(type="radio", name='radios', id='id-Radio2')
-        label.-notFluid(for='id-Radio2') Radio2
-        input.a-picker(type="radio", name='radios', id='id-Radio3')
-        label(for='id-Radio3') Radio3
+        input.a-picker(type="radio", name='radios', id='if-Radio1')
+        label(for='if-Radio1') Radio1
+        input.a-picker(type="radio", name='radios', id='if-Radio2')
+        label.-notFluid(for='if-Radio2') Radio2
+        input.a-picker(type="radio", name='radios', id='if-Radio3')
+        label(for='if-Radio3') Radio3
   :code(lang='html')
     <div class="m-pickerGroup -fluid">
       <input class="a-picker" type="radio" name="radios" id="radio1">
@@ -124,16 +193,27 @@ p.-text
   |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
 
-.example.-mb--3
+.example
   .-px--3.-pt--0.-pb--3
     each size in ['sm', 'md', 'lg', 'xl']
       p.-text--bold= '-' + size
       .-d--flex.-flex--wrap
+        .m-pickerGroup.-mr--2
+          each type in ['Radio1','Radio2','Radio3']
+            input.a-picker(type="radio", name='radios', id=`ig-${type}-${size}`)
+            label(for=`ig-${type}-${size}`, class=`-${size}`)
+                = type
         .m-pickerGroup
           each type in ['Radio1','Radio2','Radio3']
-            input.a-picker(type="radio", name='radios', id=`ie-${type}-${size}`)
-            label(for=`ie-${type}-${size}`, class=`-${size}`)
-                = type
+            input.a-picker(type="radio", name='radios', id=`ig-i-${type}-${size}`)
+            label(for=`ig-i-${type}-${size}`, class=`-${size}`)
+              if size === 'sm'
+                i.a-icon.icon-atom.-xs
+              else
+                i.a-icon.icon-atom.-sm
+
+        
+          
   :code(lang='html')
     <!-- sm -->
     <div class="m-pickerGroup">
@@ -148,6 +228,20 @@ p.-text
       <input class="a-picker" type="radio" name="radios" id="radio3">
       <label class="-sm" for="radio3">
         Radio3
+      </label>
+    </div>
+    <div class="m-pickerGroup">
+      <input class="a-picker" type="radio" name="radios" id="radio-i-1">
+      <label class="-sm" for="radio-i-1">
+        <i class="a-icon icon-atom -xs"></i>
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio-i-2">
+      <label class="-sm" for="radio-i-2">
+        <i class="a-icon icon-atom"></i>
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio-i-3">
+      <label class="-sm" for="radio-i-3">
+        <i class="a-icon icon-atom"></i>
       </label>
     </div>
     <!-- md -->
@@ -165,6 +259,20 @@ p.-text
         Radio3
       </label>
     </div>
+    <div class="m-pickerGroup">
+      <input class="a-picker" type="radio" name="radios" id="radio-i-1">
+      <label class="-md" for="radio-i-1">
+        <i class="a-icon icon-atom"></i>
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio-i-2">
+      <label class="-md" for="radio-i-2">
+        <i class="a-icon icon-atom"></i>
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio-i-3">
+      <label class="-md" for="radio-i-3">
+        <i class="a-icon icon-atom"></i>
+      </label>
+    </div>
     <!-- lg -->
     <div class="m-pickerGroup">
       <input class="a-picker" type="radio" name="radios" id="radio1">
@@ -178,6 +286,19 @@ p.-text
       <input class="a-picker" type="radio" name="radios" id="radio3">
       <label class="-lg" for="radio3">
         Radio3
+      </label>
+    <div class="m-pickerGroup">
+      <input class="a-picker" type="radio" name="radios" id="radio-i-1">
+      <label class="-lg" for="radio-i-1">
+        <i class="a-icon icon-atom"></i>
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio-i-2">
+      <label class="-lg" for="radio-i-2">
+        <i class="a-icon icon-atom"></i>
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio-i-3">
+      <label class="-lg" for="radio-i-3">
+        <i class="a-icon icon-atom"></i>
       </label>
     </div>
     <!-- xl -->
@@ -193,5 +314,18 @@ p.-text
       <input class="a-picker" type="radio" name="radios" id="radio3">
       <label class="-xl" for="radio3">
         Radio3
+      </label>
+    <div class="m-pickerGroup">
+      <input class="a-picker" type="radio" name="radios" id="radio-i-1">
+      <label class="-xl" for="radio-i-1">
+        <i class="a-icon icon-atom"></i>
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio-i-2">
+      <label class="-xl" for="radio-i-2">
+        <i class="a-icon icon-atom"></i>
+      </label>
+      <input class="a-picker" type="radio" name="radios" id="radio-i-3">
+      <label class="-xl" for="radio-i-3">
+        <i class="a-icon icon-atom"></i>
       </label>
     </div>
