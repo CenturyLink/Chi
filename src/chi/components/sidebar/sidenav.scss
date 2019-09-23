@@ -157,7 +157,7 @@ $sidenav-lg-width: 12.5rem;
           border-bottom-color: set-color(black);
 
           &:not(.-active) > a:not(.-active):hover {
-            background-color: set-color(black);
+            background-color: set-color(grey, 100);
           }
         }
       }
@@ -166,12 +166,24 @@ $sidenav-lg-width: 12.5rem;
         border-top: 0.0625rem solid map-get(map-get($colorscheme, grey), 70);
 
         > li {
-          border-bottom-color: set-color(grey, 80);
+          border-bottom-color: set-color(grey, 100);
+
+          &.-active {
+            > a {
+              .m-sidenav__description {
+                color: $secondary-color;
+              }
+            }
+          }
 
           &:not(.-active) > a:not(.-active):hover {
             background-color: set-color(grey, 90);
           }
         }
+      }
+
+      &__description {
+        color: set-color(grey, 40);
       }
 
       &__drawers {
