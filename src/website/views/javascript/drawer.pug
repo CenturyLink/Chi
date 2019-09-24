@@ -144,7 +144,31 @@ section.a-table.a-table__options.-bordered.-my--3
               | Lets the developer referer the target programmatically instead of by data-target attribute.
               | It accepts Element object and xpath selector string.
 
-h4 Preventing memory leaks
+h3.mt--2 Methods
+.p.-text.-mb--3
+  .p-text There are three 
+    b drawer methods 
+    | that you can apply to DOM elements.
+  h4 show() =&gt; void
+  p.-ml--2 Triggeres drawer 
+    b show event
+    br
+    | returns 
+    b type void
+  h4 hide() =&gt; void
+  p.-ml--2 Triggeres drawer 
+    b hide event
+    br
+    | returns 
+    b type void
+  h4 toggle() =&gt; void
+  p.-ml--2 Triggeres drawer 
+    b show/hide  events
+    br
+    | returns 
+    b type void
+
+h3 Preventing memory leaks
 p.-text
   | Drawer components have a dispose function to free all resources attached to the element, such as event listeners
   | and object data. You should call this method when you want to remove the component.
