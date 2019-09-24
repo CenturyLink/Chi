@@ -113,41 +113,38 @@ export class DatePicker {
     return [
       // TODO: This input should be chi-input in the future and will pass through
       // some of its configuration attributes. Also will have an icon.
-
-
-
-<div class="a-inputWrapper -icon--right">
-  <input
-    id={`dp-${this._uuid}`}
-    class={`a-input
-      ${this.active ? '-focus' : ''}`}
-    type={`text`}
-    placeholder={`mm/dd/yyyy`}
-    ref={el => (this._input = el as HTMLInputElement)}
-    value={this.value}
-    onChange={() => {
-      this.value = this._input.value;
-    }}
-  />
-  <div class="a-icon sc-chi-icon -text--muted">
-    <svg id="icon-date" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">  <path d="M4.5 9.5h1c.276 0 .5-.224.5-.5V8c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5v1c0 .276.224.5.5.5M7.5 9.5h1c.276 0 .5-.224.5-.5V8c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5v1c0 .276.224.5.5.5M10.5 9.5h1c.276 0 .5-.224.5-.5V8c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5v1c0 .276.224.5.5.5M4.5 12.5h1c.276 0 .5-.224.5-.5v-1c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5v1c0 .276.224.5.5.5M7.5 12.5h1c.276 0 .5-.224.5-.5v-1c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5v1c0 .276.224.5.5.5M10.5 12.5h1c.276 0 .5-.224.5-.5v-1c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5v1c0 .276.224.5.5.5"></path><path d="M2.5 14.5h11v-9h-11v9zM13.5 2H12V.5c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5V2H6V.5c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5V2H2.5C1.672 2 1 2.672 1 3.5v11c0 .828.672 1.5 1.5 1.5h11c.828 0 1.5-.672 1.5-1.5v-11c0-.828-.672-1.5-1.5-1.5z" fill-rule="evenodd"></path></svg>
-  </div>
-  <chi-popover
-    id="example-4-be-popover"
-    position="bottom"
-    reference={`#dp-${this._uuid}`}
-    prevent-auto-hide
-    active={this.active}
-  >
-    <chi-date
-      min={this.min}
-      max={this.max}
-      locale={this.locale}
-      value={this.value}
-      format={this.format}
-    />
-  </chi-popover>
-</div>
+      <div class="a-inputWrapper -icon--right">
+        <input
+          id={`dp-${this._uuid}`}
+          class={`a-input
+            ${this.active ? '-focus' : ''}`}
+          type={`text`}
+          placeholder={`mm/dd/yyyy`}
+          ref={el => (this._input = el as HTMLInputElement)}
+          value={this.value}
+          onChange={() => {
+            this.value = this._input.value;
+          }}
+        />
+        <div class="a-icon sc-chi-icon -text--muted">
+          <svg id="icon-date" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">  <path d="M4.5 9.5h1c.276 0 .5-.224.5-.5V8c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5v1c0 .276.224.5.5.5M7.5 9.5h1c.276 0 .5-.224.5-.5V8c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5v1c0 .276.224.5.5.5M10.5 9.5h1c.276 0 .5-.224.5-.5V8c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5v1c0 .276.224.5.5.5M4.5 12.5h1c.276 0 .5-.224.5-.5v-1c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5v1c0 .276.224.5.5.5M7.5 12.5h1c.276 0 .5-.224.5-.5v-1c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5v1c0 .276.224.5.5.5M10.5 12.5h1c.276 0 .5-.224.5-.5v-1c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5v1c0 .276.224.5.5.5"></path><path d="M2.5 14.5h11v-9h-11v9zM13.5 2H12V.5c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5V2H6V.5c0-.276-.224-.5-.5-.5h-1c-.276 0-.5.224-.5.5V2H2.5C1.672 2 1 2.672 1 3.5v11c0 .828.672 1.5 1.5 1.5h11c.828 0 1.5-.672 1.5-1.5v-11c0-.828-.672-1.5-1.5-1.5z" fill-rule="evenodd"></path></svg>
+        </div>
+        <chi-popover
+          id="example-4-be-popover"
+          position="bottom"
+          reference={`#dp-${this._uuid}`}
+          prevent-auto-hide
+          active={this.active}
+        >
+          <chi-date
+            min={this.min}
+            max={this.max}
+            locale={this.locale}
+            value={this.value}
+            format={this.format}
+          />
+        </chi-popover>
+      </div>
     ];
   }
 }
