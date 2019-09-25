@@ -238,6 +238,29 @@ class DatePicker extends Component {
       }
     }
 
+    if(dayjs(newDateString).isValid()) {
+      if (dayjs(newDateString).isBefore(dayjs(DEFAULT_CONFIG.min))) {
+        console.log('The introduced date is before the minimum date');
+        const newDateObject = dayjs(DEFAULT_CONFIG.min);
+        this.date = newDateObject;
+        changed = true;
+      }
+      else if(dayjs(newDateString).isAfter(dayjs(DEFAULT_CONFIG.max))) {
+        console.log('The introduced date is After the maximum date');
+        const newDateObject = dayjs(DEFAULT_CONFIG.max);
+        this.date = newDateObject;
+        changed = true;
+      }
+    }
+    else if (this.date && !dayjs(newDateString).isValid()) {
+      const d = new Date();
+      const today = `${d.getMonth()+1}/${d.getDate()}/${d.getFullYear()}`;
+      console.log(`Invalid input, date set to ${today}`);
+      const newDateObject = dayjs(today);
+      this.date = newDateObject;
+      changed = true;
+    }
+
     this._updateInputField();
 
     if (changed) {
