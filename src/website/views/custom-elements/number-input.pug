@@ -87,6 +87,20 @@ h4 Base
   :code(lang='html')
     <chi-number-input expanded></chi-number-input>
 
+h4 Base with step
+.example.-mb--3
+  .-p--3
+    chi-number-input(expanded=true, step=5)
+  :code(lang='html')
+    <chi-number-input expanded value="0" step="5"></chi-number-input>
+
+h4 Decimals and step
+.example.-mb--3
+  .-p--3
+    chi-number-input(expanded=true, value=0.1, step=0.5)
+  :code(lang='html')
+    <chi-number-input expanded value="0.1" step="0.5"></chi-number-input>
+
 h4 Pill
 .example.-mb--3
   .-p--3

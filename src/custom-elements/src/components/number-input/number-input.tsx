@@ -63,9 +63,16 @@ export class NumberInput {
   @Prop() inputstyle?: string;
 
   /**
+   * If set, component value won't be updated by itself.
+   */
+  @Prop({ reflectToAttr: true }) preventValueMutation: boolean;
+
+  /**
    * used to provide an input state like 'hover' or 'focus'. Mostly used for testing purposes
    */
   @Prop() state?: string;
+
+  @State() forceRepaint: boolean;
 
   @Event() chiChange: EventEmitter<string>;
 
@@ -77,39 +84,48 @@ export class NumberInput {
     CallbackQueue.queueProcess(this._didUpdateCallBackOnceQueue);
   }
 
-  handleChange(ev: Event) {
-    let stepDifference = 0;
+  static isNumeric (n: string | number) {
+      return ( typeof n === "number" || typeof n === "string" ) &&
+          !isNaN( +n - parseFloat( `${n}` ) );
+  }
 
-    this.value = !!ev.target
-      ? (ev.target as HTMLInputElement).value.toString()
-      : null;
-
-    stepDifference =
-      Math.round(((+this.value % this.step) - this.initialValue) * 10000) /
-      10000;
-
-    if (stepDifference !== 0) {
-      this.value = (
-        Math.round(((+this.value - stepDifference) * 10000) / 10000) + this.step
-      ).toString();
-    }
-
-    if (+this.value > this.max || +this.value < this.min) {
-      stepDifference =
-        Math.round(((+this.value % this.step) - this.initialValue) * 10000) /
-        10000;
-
-      if (stepDifference !== 0) {
-        this.value = (
-          Math.round(((+this.value - stepDifference) * 10000) / 10000) +
-          this.step
-        ).toString();
+  _setNewValue(newValue: string) {
+      if (!this.preventValueMutation) {
+          this.value = newValue;
+          this._didUpdateCallBackOnceQueue.push(() => {
+              this.chiChange.emit(newValue);
+          });
+      } else {
+          this.chiChange.emit(newValue);
       }
+  }
+
+  handleChange(ev: Event) {
+
+    ev.stopPropagation();
+
+    let newValue = !!ev.target
+        ? (ev.target as HTMLInputElement).value.toString()
+        : null;
+    newValue = NumberInput.isNumeric(newValue) ? newValue : null;
+
+    if (newValue !== null) {
+        let steppedValue = Math.round(10000*((+newValue-this.initialValue)/this.step))/10000;
+        const steppedMax =  Math.round(10000*Math.floor((+this.max-this.initialValue)/this.step))/10000;
+        const steppedMin =  Math.round(10000*Math.ceil((+this.min-this.initialValue)/this.step))/10000;
+
+        steppedValue = Math.max(
+            Math.min(steppedValue, steppedMax),
+            steppedMin
+        );
+        newValue = ((Math.round(steppedValue) * this.step) + (+this.initialValue)).toString();
     }
 
-    this._didUpdateCallBackOnceQueue.push(() => {
-      this.chiChange.emit(this.value);
-    });
+    if (newValue !== this.value) {
+        this._setNewValue(newValue);
+    } else if ((ev.target as HTMLInputElement).value.toString() !== this.value){
+        this.forceRepaint = !this.forceRepaint;
+    }
   }
 
   private increment() {
