@@ -1,12 +1,12 @@
 @import '_mixins';
 @import '_variables';
 
-$sidenav-xs-width: 3rem;
-$sidenav-sm-width: 6rem;
-$sidenav-md-width: 12.5rem;
+$sidenav-sm-width: 3rem;
+$sidenav-md-width: 6rem;
+$sidenav-lg-width: 12.5rem;
 
 .m-sidenav {
-  width: $sidenav-xs-width;
+  width: $sidenav-sm-width;
   position: relative;
 
   &__content {
@@ -133,11 +133,11 @@ $sidenav-md-width: 12.5rem;
     }
 
     &.-left {
-      left: $sidenav-xs-width;
+      left: $sidenav-sm-width;
     }
 
     &.-left.-animated:not(.-active) {
-      left: -$drawer-width + $sidenav-xs-width;
+      left: -$drawer-width + $sidenav-sm-width;
     }
   }
 
@@ -156,12 +156,12 @@ $sidenav-md-width: 12.5rem;
   }
 
   @include respond-to(md) {
-    width: $sidenav-sm-width;
+    width: $sidenav-md-width;
     .m-drawer.-left {
-      left: $sidenav-sm-width;
+      left: $sidenav-md-width;
 
       &.-animated:not(.-active) {
-        left: -$drawer-width + $sidenav-sm-width;
+        left: -$drawer-width + $sidenav-md-width;
       }
     }
 
@@ -179,35 +179,8 @@ $sidenav-md-width: 12.5rem;
     }
   }
 
-  @include respond-to(lg) {
-    width: $sidenav-md-width;
-    .m-drawer.-left {
-      left: $sidenav-md-width;
-
-      &.-animated:not(.-active) {
-        left: -$drawer-width + $sidenav-md-width;
-      }
-    }
-
-    &__list > li {
-      > a {
-        align-items: center;
-        flex-direction: row;
-        font-size: 0.875rem;
-        justify-content: flex-start;
-        padding-left: 1.5rem;
-        min-height: 3rem;
-
-        > .a-icon {
-          margin-bottom: 0;
-          margin-right: 1rem;
-        }
-      }
-    }
-  }
-
-  &.-xs {
-    width: $sidenav-xs-width;
+  &.-sm {
+    width: $sidenav-sm-width;
 
     @include respond-to(md) {
       .m-sidenav__list > li {
@@ -232,17 +205,17 @@ $sidenav-md-width: 12.5rem;
 
     .m-drawer {
       &.-left {
-        left: $sidenav-xs-width;
+        left: $sidenav-sm-width;
       }
 
       &.-left.-animated:not(.-active) {
-        left: -$drawer-width + $sidenav-xs-width;
+        left: -$drawer-width + $sidenav-sm-width;
       }
     }
   }
 
-  &.-sm {
-    width: $sidenav-sm-width;
+  &.-md {
+    width: $sidenav-md-width;
 
     .m-sidenav__list > li {
       > a {
@@ -269,17 +242,17 @@ $sidenav-md-width: 12.5rem;
 
     .m-drawer {
       &.-left {
-        left: $sidenav-sm-width;
+        left: $sidenav-md-width;
       }
 
       &.-left.-animated:not(.-active) {
-        left: -$drawer-width + $sidenav-sm-width;
+        left: -$drawer-width + $sidenav-md-width;
       }
     }
   }
 
-  &.-md {
-    width: $sidenav-md-width;
+  &.-lg {
+    width: $sidenav-lg-width;
 
     .m-sidenav__list > li {
       > a {
@@ -302,11 +275,11 @@ $sidenav-md-width: 12.5rem;
 
     .m-drawer {
       &.-left {
-        left: $sidenav-md-width;
+        left: $sidenav-lg-width;
       }
 
       &.-left.-animated:not(.-active) {
-        left: -$drawer-width + $sidenav-md-width;
+        left: -$drawer-width + $sidenav-lg-width;
       }
     }
   }
@@ -325,12 +298,12 @@ $sidenav-md-width: 12.5rem;
 }
 
 @media only screen and (-ms-high-contrast:none) {
-  .m-sidenav.-xs .m-sidenav__list li a,
-  .m-sidenav.-sm .m-sidenav__list li a {
+  .m-sidenav.-sm .m-sidenav__list li a,
+  .m-sidenav.-md .m-sidenav__list li a {
     height: 4rem;
   }
 
-  .m-sidenav.-md .m-sidenav__list li a {
+  .m-sidenav.-lg .m-sidenav__list li a {
     height: 3rem;
   }
 }

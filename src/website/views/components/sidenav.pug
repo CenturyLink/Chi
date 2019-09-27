@@ -31,863 +31,1116 @@ dl
   dd.-text For opening the drawer (<a href="../drawer/">View drawer documentation</a>)
   dt: code ul.m-sidenav__drawer-list &gt; li
   dd.-text For activating the menu items inside the drawer.
-
+ul#a-tabs--expanded.a-tabs
+  li.-active
+    a(href='#a-tabs-panel--expanded-false') Initial
+  li
+    a(href='#a-tabs-panel--expanded-true') Expanded
 .example.-mb--3(id=`example-${example}`)
-  .-d--flex(style='overflow: hidden;')
-    aside.m-sidenav.-flex--shrink0
-      .m-sidenav__content
-        nav
-          ul.m-sidenav__list
-            each val in menuItems
-              li(class=`${val===active.menuItem ? '-active':''}`)
-                a(href=`#drawer-${example}-${val}`)
-                  .a-icon
-                    svg
-                      use(xlink:href='#icon-atom')
-                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .m-sidenav__drawers
-        each val1 in menuItems
-          .m-drawer.-left(id=`drawer-${example}-${val1}`,class=`${val1===active.menuItem ? '-active':''}`)
-            .m-drawer__header
-              button(class='a-btn -icon -close')
-                .a-btn__content
-                  i.a-icon.icon-x
-            .m-drawer__content
-              ul.m-sidenav__drawer-list
-                each val2, index in drawerMenuItems
-                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#example-${example}`)
-                      if index % 4 < 2
-                        h5.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.m-sidenav__description Description for title a in a drawer inside a menu.
-                      else
-                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-    .-flex--grow1.-p--3.-pb--4
-      each val2 in [1,2,3,4,5]
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  #a-tabs-panel--expanded-false.a-tabs-panel.-active
+    .-d--flex(style='overflow: hidden;')
+      aside.m-sidenav.-flex--shrink0
+        .m-sidenav__content
+          nav
+            ul.m-sidenav__list
+              each val in menuItems
+                li(class=`${val===active.menuItem ? '-active':''}`)
+                  a(href=`#drawer-${example}-${val}`)
+                    .a-icon
+                      svg
+                        use(xlink:href='#icon-atom')
+                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+      .-flex--grow1.-p--3.-pb--4
+        each val2 in [1,2,3,4,5]
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-  :code(lang='html')
-    <aside class="m-sidenav">
-      <div class="m-sidenav__content">
-        <nav>
-          <ul class="m-sidenav__list">
-            <li class="-active">
-              <a href="#drawer-0-1">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Active Item</span>
-              </a>
-            </li>
-            <li>
-              <a href="#drawer-0-2">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-            <li>
-              <a href="#drawer-0-3">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-            <li>
-              <a href="#drawer-0-4">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="m-sidenav__drawers">
-        <div class="m-drawer -left -active" id="drawer-0-1">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title A</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
+    :code(lang='html')
+      <aside class="m-sidenav">
+        <div class="m-sidenav__content">
+          <nav>
+            <ul class="m-sidenav__list">
               <li class="-active">
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title B</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                <a href="#drawer-0-1">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Active Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title C</span>
+                <a href="#drawer-0-2">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title D</span>
+                <a href="#drawer-0-3">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
+                </a>
+              </li>
+              <li>
+                <a href="#drawer-0-4">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
-        <div class="m-drawer -left" id="drawer-0-2">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title E</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+      </aside>
+  #a-tabs-panel--expanded-true.a-tabs-panel
+    .-d--flex(style='overflow: hidden;')
+      aside.m-sidenav.-flex--shrink0
+        .m-sidenav__content
+          nav
+            ul.m-sidenav__list
+              each val in menuItems
+                li(class=`${val===active.menuItem ? '-active':''}`)
+                  a(href=`#drawer-${example}-${val}`)
+                    .a-icon
+                      svg
+                        use(xlink:href='#icon-atom')
+                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+        .m-sidenav__drawers
+          each val1 in menuItems
+            .m-drawer.-left(id=`drawer-${example}-${val1}`,class=`${val1===active.menuItem ? '-active':''}`)
+              .m-drawer__header
+                button(class='a-btn -icon -close')
+                  .a-btn__content
+                    i.a-icon.icon-x
+              .m-drawer__content
+                ul.m-sidenav__drawer-list
+                  each val2, index in drawerMenuItems
+                    li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
+                      a(href=`#example-${example}`)
+                        if index % 4 < 2
+                          h5.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                          p.m-sidenav__description Description for title a in a drawer inside a menu.
+                        else
+                          span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+      .-flex--grow1.-p--3.-pb--4
+        each val2 in [1,2,3,4,5]
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+    :code(lang='html')
+      <aside class="m-sidenav">
+        <div class="m-sidenav__content">
+          <nav>
+            <ul class="m-sidenav__list">
+              <li class="-active">
+                <a href="#drawer-0-1">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Active Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title F</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                <a href="#drawer-0-2">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title G</span>
+                <a href="#drawer-0-3">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title H</span>
+                <a href="#drawer-0-4">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
             </ul>
+          </nav>
+        </div>
+        <div class="m-sidenav__drawers">
+          <div class="m-drawer -left -active" id="drawer-0-1">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title A</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li class="-active">
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title B</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title C</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title D</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-drawer -left" id="drawer-0-2">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title E</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title F</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title G</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title H</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-drawer -left" id="drawer-0-3">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title I</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title J</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title K</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title L</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-drawer -left" id="drawer-0-4">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title M</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title N</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title O</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title P</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="m-drawer -left" id="drawer-0-3">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title I</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title J</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title K</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title L</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="m-drawer -left" id="drawer-0-4">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title M</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title N</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title O</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title P</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </aside>
+      </aside>
 
 h3 Sizes
 p.-text
-  | Sidenav supports a full spectrum of sizes: <code>-xs</code>, <code>-sm</code> and <code>-md</code>.
+  | Sidenav supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code> and <code>-lg</code>.
   | The default size is <code>-md</code>.
-
-h4 -xs
-
-- example=1
-
-.example.-mb--3(id=`example-${example}`)
-  .-d--flex(style='overflow: hidden;')
-    aside.m-sidenav.-xs.-flex--shrink0
-      .m-sidenav__content
-        nav
-          ul.m-sidenav__list
-            each val in menuItems
-              li(class=`${val===active.menuItem ? '-active':''}`)
-                a(href=`#drawer-${example}-${val}`)
-                  .a-icon
-                    svg
-                      use(xlink:href='#icon-atom')
-                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .m-sidenav__drawers
-        each val1 in menuItems
-          .m-drawer.-left(id=`drawer-${example}-${val1}`,class=`${val1===active.menuItem ? '-active':''}`)
-            .m-drawer__header
-              button(class='a-btn -icon -close')
-                .a-btn__content
-                  i.a-icon.icon-x
-            .m-drawer__content
-              ul.m-sidenav__drawer-list
-                each val2, index in drawerMenuItems
-                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#example-${example}`)
-                      if index % 4 < 2
-                        h5.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.m-sidenav__description Description for title a in a drawer inside a menu.
-                      else
-                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-    .-flex--grow1.-p--3.-pb--4
-      each val2 in [1,2,3,4,5]
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-  :code(lang='html')
-    <aside class="m-sidenav -xs">
-      <div class="m-sidenav__content">
-        <nav>
-          <ul class="m-sidenav__list">
-            <li class="-active">
-              <a href="#drawer-0-1">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Active Item</span>
-              </a>
-            </li>
-            <li>
-              <a href="#drawer-0-2">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-            <li>
-              <a href="#drawer-0-3">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-            <li>
-              <a href="#drawer-0-4">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="m-sidenav__drawers">
-        <div class="m-drawer -left -active" id="drawer-0-1">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title A</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li class="-active">
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title B</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title C</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title D</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="m-drawer -left" id="drawer-0-2">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title E</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title F</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title G</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title H</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="m-drawer -left" id="drawer-0-3">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title I</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title J</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title K</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title L</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="m-drawer -left" id="drawer-0-4">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title M</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title N</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title O</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title P</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </aside>
 
 h4 -sm
 
-- example=3
-
+- example=1
+ul#a-tabs--expanded-sm.a-tabs
+  li.-active
+    a(href='#a-tabs-panel--expanded-sm-false') Initial
+  li
+    a(href='#a-tabs-panel--expanded-sm-true') Expanded
 .example.-mb--3(id=`example-${example}`)
-  .-d--flex(style='overflow: hidden;')
-    aside.m-sidenav.-sm.-flex--shrink0
-      .m-sidenav__content
-        nav
-          ul.m-sidenav__list
-            each val in menuItems
-              li(class=`${val===active.menuItem ? '-active':''}`)
-                a(href=`#drawer-${example}-${val}`)
-                  .a-icon
-                    svg
-                      use(xlink:href='#icon-atom')
-                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .m-sidenav__drawers
-        each val1 in menuItems
-          .m-drawer.-left(id=`drawer-${example}-${val1}`,class=`${val1===active.menuItem ? '-active':''}`)
-            .m-drawer__header
-              button(class='a-btn -icon -close')
-                .a-btn__content
-                  i.a-icon.icon-x
-            .m-drawer__content
-              ul.m-sidenav__drawer-list
-                each val2, index in drawerMenuItems
-                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#example-${example}`)
-                      if index % 4 < 2
-                        h5.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.m-sidenav__description Description for title a in a drawer inside a menu.
-                      else
-                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-    .-flex--grow1.-p--3.-pb--4
-      each val2 in [1,2,3,4,5]
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  #a-tabs-panel--expanded-sm-false.a-tabs-panel.-active
+    .-d--flex(style='overflow: hidden;')
+      aside.m-sidenav.-sm.-flex--shrink0
+        .m-sidenav__content
+          nav
+            ul.m-sidenav__list
+              each val in menuItems
+                li(class=`${val===active.menuItem ? '-active':''}`)
+                  a(href=`#drawer-${example}-${val}`)
+                    .a-icon
+                      svg
+                        use(xlink:href='#icon-atom')
+                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+      .-flex--grow1.-p--3.-pb--4
+        each val2 in [1,2,3,4,5]
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-  :code(lang='html')
-    <aside class="m-sidenav -sm">
-      <div class="m-sidenav__content">
-        <nav>
-          <ul class="m-sidenav__list">
-            <li class="-active">
-              <a href="#drawer-0-1">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Active Item</span>
-              </a>
-            </li>
-            <li>
-              <a href="#drawer-0-2">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-            <li>
-              <a href="#drawer-0-3">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-            <li>
-              <a href="#drawer-0-4">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="m-sidenav__drawers">
-        <div class="m-drawer -left -active" id="drawer-0-1">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title A</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
+    :code(lang='html')
+      <aside class="m-sidenav -sm">
+        <div class="m-sidenav__content">
+          <nav>
+            <ul class="m-sidenav__list">
               <li class="-active">
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title B</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                <a href="#drawer-0-1">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Active Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title C</span>
+                <a href="#drawer-0-2">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title D</span>
+                <a href="#drawer-0-3">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
+                </a>
+              </li>
+              <li>
+                <a href="#drawer-0-4">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
-        <div class="m-drawer -left" id="drawer-0-2">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title E</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+      </aside>
+  #a-tabs-panel--expanded-sm-true.a-tabs-panel
+    .-d--flex(style='overflow: hidden;')
+      aside.m-sidenav.-sm.-flex--shrink0
+        .m-sidenav__content
+          nav
+            ul.m-sidenav__list
+              each val in menuItems
+                li(class=`${val===active.menuItem ? '-active':''}`)
+                  a(href=`#drawer-${example}-${val}`)
+                    .a-icon
+                      svg
+                        use(xlink:href='#icon-atom')
+                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+        .m-sidenav__drawers
+          each val1 in menuItems
+            .m-drawer.-left(id=`drawer-${example}-${val1}`,class=`${val1===active.menuItem ? '-active':''}`)
+              .m-drawer__header
+                button(class='a-btn -icon -close')
+                  .a-btn__content
+                    i.a-icon.icon-x
+              .m-drawer__content
+                ul.m-sidenav__drawer-list
+                  each val2, index in drawerMenuItems
+                    li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
+                      a(href=`#example-${example}`)
+                        if index % 4 < 2
+                          h5.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                          p.m-sidenav__description Description for title a in a drawer inside a menu.
+                        else
+                          span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+      .-flex--grow1.-p--3.-pb--4
+        each val2 in [1,2,3,4,5]
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+    :code(lang='html')
+      <aside class="m-sidenav -sm">
+        <div class="m-sidenav__content">
+          <nav>
+            <ul class="m-sidenav__list">
+              <li class="-active">
+                <a href="#drawer-0-1">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Active Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title F</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                <a href="#drawer-0-2">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title G</span>
+                <a href="#drawer-0-3">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title H</span>
+                <a href="#drawer-0-4">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
             </ul>
+          </nav>
+        </div>
+        <div class="m-sidenav__drawers">
+          <div class="m-drawer -left -active" id="drawer-0-1">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title A</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li class="-active">
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title B</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title C</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title D</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-drawer -left" id="drawer-0-2">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title E</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title F</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title G</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title H</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-drawer -left" id="drawer-0-3">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title I</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title J</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title K</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title L</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-drawer -left" id="drawer-0-4">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title M</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title N</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title O</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title P</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="m-drawer -left" id="drawer-0-3">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title I</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title J</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title K</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title L</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="m-drawer -left" id="drawer-0-4">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title M</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title N</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title O</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title P</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </aside>
+      </aside>
 
 h4 -md
 
-- example=4
-
+- example=2
+ul#a-tabs--expanded-md.a-tabs
+  li.-active
+    a(href='#a-tabs-panel--expanded-md-false') Initial
+  li
+    a(href='#a-tabs-panel--expanded-md-true') Expanded
 .example.-mb--3(id=`example-${example}`)
-  .-d--flex(style='overflow: hidden;')
-    aside.m-sidenav.-md.-flex--shrink0
-      .m-sidenav__content
-        nav
-          ul.m-sidenav__list
-            each val in menuItems
-              li(class=`${val===active.menuItem ? '-active':''}`)
-                a(href=`#drawer-${example}-${val}`)
-                  .a-icon
-                    svg
-                      use(xlink:href='#icon-atom')
-                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .m-sidenav__drawers
-        each val1 in menuItems
-          .m-drawer.-left(id=`drawer-${example}-${val1}`,class=`${val1===active.menuItem ? '-active':''}`)
-            .m-drawer__header
-              button(class='a-btn -icon -close')
-                .a-btn__content
-                  i.a-icon.icon-x
-            .m-drawer__content
-              ul.m-sidenav__drawer-list
-                each val2, index in drawerMenuItems
-                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#example-${example}`)
-                      if index % 4 < 2
-                        h5.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.m-sidenav__description Description for title a in a drawer inside a menu.
-                      else
-                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-    .-flex--grow1.-p--3.-pb--4
-      each val2 in [1,2,3,4,5]
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  #a-tabs-panel--expanded-md-false.a-tabs-panel.-active
+    .-d--flex(style='overflow: hidden;')
+      aside.m-sidenav.-md.-flex--shrink0
+        .m-sidenav__content
+          nav
+            ul.m-sidenav__list
+              each val in menuItems
+                li(class=`${val===active.menuItem ? '-active':''}`)
+                  a(href=`#drawer-${example}-${val}`)
+                    .a-icon
+                      svg
+                        use(xlink:href='#icon-atom')
+                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+      .-flex--grow1.-p--3.-pb--4
+        each val2 in [1,2,3,4,5]
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-  :code(lang='html')
-    <aside class="m-sidenav -md">
-      <div class="m-sidenav__content">
-        <nav>
-          <ul class="m-sidenav__list">
-            <li class="-active">
-              <a href="#drawer-0-1">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Active Item</span>
-              </a>
-            </li>
-            <li>
-              <a href="#drawer-0-2">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-            <li>
-              <a href="#drawer-0-3">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-            <li>
-              <a href="#drawer-0-4">
-                <div class="a-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="m-sidenav__drawers">
-        <div class="m-drawer -left -active" id="drawer-0-1">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title A</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                </a>
-              </li>
+    :code(lang='html')
+      <aside class="m-sidenav -md">
+        <div class="m-sidenav__content">
+          <nav>
+            <ul class="m-sidenav__list">
               <li class="-active">
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title B</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                <a href="#drawer-0-1">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Active Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title C</span>
+                <a href="#drawer-0-2">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title D</span>
+                <a href="#drawer-0-3">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
+                </a>
+              </li>
+              <li>
+                <a href="#drawer-0-4">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
-        <div class="m-drawer -left" id="drawer-0-2">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title E</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+      </aside>
+  #a-tabs-panel--expanded-md-true.a-tabs-panel
+    .-d--flex(style='overflow: hidden;')
+      aside.m-sidenav.-md.-flex--shrink0
+        .m-sidenav__content
+          nav
+            ul.m-sidenav__list
+              each val in menuItems
+                li(class=`${val===active.menuItem ? '-active':''}`)
+                  a(href=`#drawer-${example}-${val}`)
+                    .a-icon
+                      svg
+                        use(xlink:href='#icon-atom')
+                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+        .m-sidenav__drawers
+          each val1 in menuItems
+            .m-drawer.-left(id=`drawer-${example}-${val1}`,class=`${val1===active.menuItem ? '-active':''}`)
+              .m-drawer__header
+                button(class='a-btn -icon -close')
+                  .a-btn__content
+                    i.a-icon.icon-x
+              .m-drawer__content
+                ul.m-sidenav__drawer-list
+                  each val2, index in drawerMenuItems
+                    li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
+                      a(href=`#example-${example}`)
+                        if index % 4 < 2
+                          h5.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                          p.m-sidenav__description Description for title a in a drawer inside a menu.
+                        else
+                          span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+      .-flex--grow1.-p--3.-pb--4
+        each val2 in [1,2,3,4,5]
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+    :code(lang='html')
+      <aside class="m-sidenav -md">
+        <div class="m-sidenav__content">
+          <nav>
+            <ul class="m-sidenav__list">
+              <li class="-active">
+                <a href="#drawer-0-1">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Active Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title F</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                <a href="#drawer-0-2">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title G</span>
+                <a href="#drawer-0-3">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title H</span>
+                <a href="#drawer-0-4">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
             </ul>
+          </nav>
+        </div>
+        <div class="m-sidenav__drawers">
+          <div class="m-drawer -left -active" id="drawer-0-1">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title A</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li class="-active">
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title B</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title C</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title D</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-drawer -left" id="drawer-0-2">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title E</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title F</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title G</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title H</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-drawer -left" id="drawer-0-3">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title I</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title J</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title K</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title L</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-drawer -left" id="drawer-0-4">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title M</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title N</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title O</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title P</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="m-drawer -left" id="drawer-0-3">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title I</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+      </aside>
+
+h4 -lg
+
+- example=3
+ul#a-tabs--expanded-lg.a-tabs
+  li.-active
+    a(href='#a-tabs-panel--expanded-lg-false') Initial
+  li
+    a(href='#a-tabs-panel--expanded-lg-true') Expanded
+.example.-mb--3(id=`example-${example}`)
+  #a-tabs-panel--expanded-lg-false.a-tabs-panel.-active
+    .-d--flex(style='overflow: hidden;')
+      aside.m-sidenav.-lg.-flex--shrink0
+        .m-sidenav__content
+          nav
+            ul.m-sidenav__list
+              each val in menuItems
+                li(class=`${val===active.menuItem ? '-active':''}`)
+                  a(href=`#drawer-${example}-${val}`)
+                    .a-icon
+                      svg
+                        use(xlink:href='#icon-atom')
+                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+      .-flex--grow1.-p--3.-pb--4
+        each val2 in [1,2,3,4,5]
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+    :code(lang='html')
+      <aside class="m-sidenav -lg">
+        <div class="m-sidenav__content">
+          <nav>
+            <ul class="m-sidenav__list">
+              <li class="-active">
+                <a href="#drawer-0-1">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Active Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title J</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                <a href="#drawer-0-2">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title K</span>
+                <a href="#drawer-0-3">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title L</span>
+                <a href="#drawer-0-4">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
-        <div class="m-drawer -left" id="drawer-0-4">
-          <div class="m-drawer__header">
-            <button class="a-btn -icon -close">
-              <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
-            </button>
-          </div>
-          <div class="m-drawer__content">
-            <ul class="m-sidenav__drawer-list">
-              <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title M</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+      </aside>
+  #a-tabs-panel--expanded-lg-true.a-tabs-panel
+    .-d--flex(style='overflow: hidden;')
+      aside.m-sidenav.-lg.-flex--shrink0
+        .m-sidenav__content
+          nav
+            ul.m-sidenav__list
+              each val in menuItems
+                li(class=`${val===active.menuItem ? '-active':''}`)
+                  a(href=`#drawer-${example}-${val}`)
+                    .a-icon
+                      svg
+                        use(xlink:href='#icon-atom')
+                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+        .m-sidenav__drawers
+          each val1 in menuItems
+            .m-drawer.-left(id=`drawer-${example}-${val1}`,class=`${val1===active.menuItem ? '-active':''}`)
+              .m-drawer__header
+                button(class='a-btn -icon -close')
+                  .a-btn__content
+                    i.a-icon.icon-x
+              .m-drawer__content
+                ul.m-sidenav__drawer-list
+                  each val2, index in drawerMenuItems
+                    li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
+                      a(href=`#example-${example}`)
+                        if index % 4 < 2
+                          h5.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                          p.m-sidenav__description Description for title a in a drawer inside a menu.
+                        else
+                          span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+      .-flex--grow1.-p--3.-pb--4
+        each val2 in [1,2,3,4,5]
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+    :code(lang='html')
+      <aside class="m-sidenav -lg">
+        <div class="m-sidenav__content">
+          <nav>
+            <ul class="m-sidenav__list">
+              <li class="-active">
+                <a href="#drawer-0-1">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Active Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <h5 class="m-sidenav__title">Title N</h5>
-                  <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                <a href="#drawer-0-2">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title O</span>
+                <a href="#drawer-0-3">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="m-sidenav__title">Title P</span>
+                <a href="#drawer-0-4">
+                  <div class="a-icon">
+                    <svg><use xlink:href="#icon-atom"></use></svg>
+                  </div>
+                  <span>Menu Item</span>
                 </a>
               </li>
             </ul>
+          </nav>
+        </div>
+        <div class="m-sidenav__drawers">
+          <div class="m-drawer -left -active" id="drawer-0-1">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title A</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li class="-active">
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title B</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title C</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title D</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-drawer -left" id="drawer-0-2">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title E</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title F</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title G</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title H</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-drawer -left" id="drawer-0-3">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title I</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title J</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title K</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title L</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-drawer -left" id="drawer-0-4">
+            <div class="m-drawer__header">
+              <button class="a-btn -icon -close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title M</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <h5 class="m-sidenav__title">Title N</h5>
+                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title O</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="m-sidenav__title">Title P</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+
 
 h4 Recommended layout
 p.-text
@@ -915,7 +1168,7 @@ p.-text
     span Tip
   | You can use the Flex utility classes to position the elements inside <code>m-sidenav__content</code>.
 
-- example=5
+- example=4
 -
   active = {
     menuItem: -1,
@@ -924,7 +1177,7 @@ p.-text
 
 .example.-mb--3(id=`example-${example}`)
   .-d--flex(style='overflow: hidden;')
-    aside.m-sidenav.-flex--shrink0
+    aside.m-sidenav.-lg.-flex--shrink0
       .m-sidenav__content.-d--flex.-flex--column
         .-d--flex.-flex--column.-flex-lg--row.-align-items--center.-p--2
           .a-avatar.-mr-lg--2
@@ -962,7 +1215,7 @@ p.-text
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
   :code(lang='html')
-    <aside class="m-sidenav">
+    <aside class="m-sidenav -lg">
       <div class="m-sidenav__content -d--flex -flex--column">
         <div class="-d--flex -flex--column -flex-lg--row -align-items--center -p--2">
           <div class="a-avatar -mr-lg--2">
@@ -1002,3 +1255,14 @@ p.-text
         [ ... ]
       </div>
     </aside>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('a-tabs--expanded'));
+      chi.tab(document.getElementById('a-tabs--expanded-sm'));
+      chi.tab(document.getElementById('a-tabs--expanded-md'));
+      chi.tab(document.getElementById('a-tabs--expanded-lg'));
+    }
+  );
