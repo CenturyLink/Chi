@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
 
 const ALERT_COLORS = ['success', 'danger', 'warning', 'info', 'muted'];
 
