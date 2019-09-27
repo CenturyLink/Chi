@@ -23,20 +23,17 @@ title: Picker group
   .m-pickerGroup
     input.a-picker(type="radio", name='radios', id=`ib-radio1`)
     label(for=`ib-radio1`)
-      i.a-icon.icon-atom
-      span
-        = `Radio1`
+      i.a-icon.icon-atom.-sm
+      span Radio1
     input.a-picker(type="radio", name='radios', id=`ib-radio2`)
     label(for=`ib-radio2`)
-      span
-        = `Radio2`
-      i.a-icon.icon-atom
+      span Radio2
+      i.a-icon.icon-atom.-sm
     input.a-picker(type="radio", name='radios', id=`ib-radio3`)
     label(for=`ib-radio3`)
-      i.a-icon.icon-atom
-      span
-        = `Radio3`
-      i.a-icon.icon-atom
+      i.a-icon.icon-atom.-sm
+      span Radio3
+      i.a-icon.icon-atom.-sm
 
 .test-with-icons
   h3 Icons
@@ -45,7 +42,7 @@ title: Picker group
       each type in ['Radio1','Radio2','Radio3']
         input.a-picker(type="radio", name='radios', id=`ic-${type}`)
         label(for=`ic-${type}`)
-          i.a-icon.icon-atom
+          i.a-icon.icon-atom.-sm
             
 .test-fluid(style='width: 700px;')
   h3 Fluid
