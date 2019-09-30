@@ -47,6 +47,7 @@ export class DatePicker {
       this.active = contains(this.el, e.target);
     }
   }
+
   _onClick(e) {
     if (
       e.target !== document.body &&
@@ -56,6 +57,7 @@ export class DatePicker {
       this.active = contains(this.el, e.target);
     }
   }
+
   _onKeyUp(e) {
     if (
       'key' in e &&
@@ -64,6 +66,48 @@ export class DatePicker {
       this.active = false;
       this._input.blur();
     }
+  }
+
+  _checkDateValidity(dateString) {
+    if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)) {
+      return false;
+    }
+
+    const parts = dateString.split("/");
+    const day = parseInt(parts[1], 10);
+    const month = parseInt(parts[0], 10);
+    const year = parseInt(parts[2], 10);
+
+    if(month < 1 || month > 12) {
+      return false;
+    }
+    const monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+    if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)) {
+      monthLength[1] = 29;
+    }
+    return day > 0 && day <= monthLength[month - 1];
+  }
+
+  _checkDate() {
+    const inputDate = new Date(this._input.value);
+    const minDate = new Date(this.min);
+    const maxDate = new Date(this.max);
+
+    if(this._checkDateValidity(this._input.value)) {
+      if(inputDate < minDate){
+        this.value = this.min;
+        this._input.value = this.min;
+      }
+      else if (inputDate > maxDate){
+        this.value = this.max;
+        this._input.value = this.min;
+      }
+    }
+    else {
+      const dateObject = new Date();
+      this.value = '0' + (dateObject.getUTCMonth() + 1) + '/' + dateObject.getUTCDate() + '/' + dateObject.getUTCFullYear();
+    }
+    
   }
 
   /**
@@ -122,7 +166,7 @@ export class DatePicker {
         ref={el => (this._input = el as HTMLInputElement)}
         value={this.value}
         onChange={() => {
-          this.value = this._input.value;
+          this._checkDate();
         }}
       />,
       <chi-popover

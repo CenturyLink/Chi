@@ -238,21 +238,6 @@ class DatePicker extends Component {
       }
     }
 
-    if(dayjs(newDateString).isValid()) {
-      if (dayjs(newDateString).isBefore(dayjs(this._config.min))) {
-        this.date = dayjs(this._config.min);
-        changed = true;
-      }
-      else if(dayjs(newDateString).isAfter(dayjs(this._config.max))) {
-        this.date = dayjs(this._config.max);
-        changed = true;
-      }
-    }
-    else if (this.date) {
-      this.date = dayjs(dayjs(new Date()));
-      changed = true;
-    }
-
     this._updateInputField();
 
     if (changed) {
