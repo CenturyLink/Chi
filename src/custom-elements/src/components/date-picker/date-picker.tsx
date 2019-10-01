@@ -69,22 +69,22 @@ export class DatePicker {
   }
 
   _checkDateValidity(dateString) {
-    if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)) {
-      return false;
-    }
-
     const parts = dateString.split("/");
     const day = parseInt(parts[1], 10);
     const month = parseInt(parts[0], 10);
     const year = parseInt(parts[2], 10);
+    const monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
 
+    if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)) {
+      return false;
+    }
     if(month < 1 || month > 12) {
       return false;
     }
-    const monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
     if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)) {
       monthLength[1] = 29;
     }
+
     return day > 0 && day <= monthLength[month - 1];
   }
 
@@ -97,14 +97,13 @@ export class DatePicker {
       if(inputDate < minDate){
         this.value = this.min;
         this._input.value = this.min;
-      }
-      else if (inputDate > maxDate){
+      } else if (inputDate > maxDate){
         this.value = this.max;
         this._input.value = this.min;
       }
-    }
-    else {
+    } else {
       const dateObject = new Date();
+
       this.value = '0' + (dateObject.getUTCMonth() + 1) + '/' + dateObject.getUTCDate() + '/' + dateObject.getUTCFullYear();
     }
     
