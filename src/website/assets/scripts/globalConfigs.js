@@ -1,0 +1,1 @@
+window.chiCurrentVersion="1.2.4";

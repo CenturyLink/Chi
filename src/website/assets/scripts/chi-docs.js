@@ -174,6 +174,57 @@ onLoad(() => {
     enableCopyToClipboardFeature(codeSnippet);
   });
 
-  chi.dropdown(document.getElementById('version-dropdown'));
+  var dropdownButton = document.getElementById('version-dropdown');
+  var versions;
+  
+  dropdownButton.innerText = window.chiCurrentVersion;
+  chi.dropdown(dropdownButton);
   chi.dropdown(document.getElementById('support'));
+  
+  if(window.location.hostname === 'assets.ctl.io') {
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+            if (xmlhttp.status == 200) {
+              versions = JSON.parse(xmlhttp.responseText);
+              fillDropdown();
+              checkChiCurrentVersion(versions[0]);
+            }
+        }
+    };
+
+
+    xmlhttp.open("GET", "https://assets.ctl.io/chi/versions.json", true);
+    xmlhttp.send();
+  }
+
+  function fillDropdown() {
+    var drop = document.getElementById('versionDropdown');
+
+    drop.innerHTML = "";
+    for (let version in versions) {
+      var versionAnchor = document.createElement('a');
+      
+      versionAnchor.setAttribute("href", "https://assets.ctl.io/chi/"+versions[version]);
+      versionAnchor.setAttribute("class", "m-dropdown__menu-item");
+      versionAnchor.innerText = "v" + versions[version];
+      drop.appendChild(versionAnchor);
+    }
+  }
+
+  // checkChiCurrentVersion("1.2.3");
+  function checkChiCurrentVersion(currentVersion) {
+      if(window.chiCurrentVersion.toString() !== currentVersion.toString()) {
+        var chiVersionCheckSelector = document.getElementById('chiVersionCheck');
+
+        chiVersionCheckSelector.innerHTML = `
+        <div class="m-alert -bubble -info" role="alert">
+          <i class="a-icon -sm--2 icon-circle-info -text--info"></i>
+          <a href="https://assets.ctl.io/chi/">A newer version of Chi is available!</a>
+        </div>
+            `;
+      }
+  }
+
 });
