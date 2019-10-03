@@ -181,7 +181,7 @@ onLoad(() => {
   chi.dropdown(dropdownButton);
   chi.dropdown(document.getElementById('support'));
   
-  if(window.location.hostname === 'assets.ctl.io') {
+  if (window.location.hostname === 'assets.ctl.io') {
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
@@ -193,7 +193,6 @@ onLoad(() => {
             }
         }
     };
-
 
     xmlhttp.open("GET", "https://assets.ctl.io/chi/versions.json", true);
     xmlhttp.send();
@@ -213,17 +212,21 @@ onLoad(() => {
     }
   }
 
-  // checkChiCurrentVersion("1.2.3");
+  checkChiCurrentVersion("1.2.3");
   function checkChiCurrentVersion(currentVersion) {
-      if(window.chiCurrentVersion.toString() !== currentVersion.toString()) {
-        var chiVersionCheckSelector = document.getElementById('chiVersionCheck');
+      if (window.chiCurrentVersion.toString() !== currentVersion.toString()) {
+        var docsContainerSelector = document.querySelector('.docs-container');
+        var chiVersionCheckSelector = document.querySelector('.docs-header');
+        var newVersionMessage = document.createElement('div');
 
-        chiVersionCheckSelector.innerHTML = `
-        <div class="m-alert -bubble -info" role="alert">
-          <i class="a-icon -sm--2 icon-circle-info -text--info"></i>
-          <a href="https://assets.ctl.io/chi/">A newer version of Chi is available!</a>
-        </div>
-            `;
+        newVersionMessage.setAttribute("class", "m-alert -banner -center -info -w--100");
+        newVersionMessage.setAttribute("role", "alert");
+        newVersionMessage.innerHTML = `<i class="a-icon -sm--2 icon-circle-info -text--info"></i> A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/">Learn more &#8250;</a>`;
+
+        chiVersionCheckSelector.insertBefore(newVersionMessage, chiVersionCheckSelector.childNodes[0]);
+
+        docsContainerSelector.classList.add("outdated-version");
+
       }
   }
 
