@@ -113,33 +113,40 @@ export class DatePicker {
     return [
       // TODO: This input should be chi-input in the future and will pass through
       // some of its configuration attributes. Also will have an icon.
-      <input
-        id={`dp-${this._uuid}`}
-        class={`a-input
-          ${this.active ? '-focus' : ''}`}
-        type={`text`}
-        placeholder={`mm/dd/yyyy`}
-        ref={el => (this._input = el as HTMLInputElement)}
-        value={this.value}
-        onChange={() => {
-          this.value = this._input.value;
-        }}
-      />,
-      <chi-popover
-        id="example-4-be-popover"
-        position="bottom"
-        reference={`#dp-${this._uuid}`}
-        prevent-auto-hide
-        active={this.active}
-      >
-        <chi-date
-          min={this.min}
-          max={this.max}
-          locale={this.locale}
+      <div class="a-inputWrapper -icon--right">
+        <input
+          id={`dp-${this._uuid}`}
+          class={`a-input
+            ${this.active ? '-focus' : ''}`}
+          type={`text`}
+          placeholder={`mm/dd/yyyy`}
+          ref={el => (this._input = el as HTMLInputElement)}
           value={this.value}
-          format={this.format}
+          onChange={() => {
+            this.value = this._input.value;
+          }}
         />
-      </chi-popover>
+        <div class="a-icon -text--muted">
+          <svg>
+            <use xlinkHref="#icon-date"></use>
+          </svg>
+        </div>
+        <chi-popover
+          id="example-4-be-popover"
+          position="bottom"
+          reference={`#dp-${this._uuid}`}
+          prevent-auto-hide
+          active={this.active}
+        >
+          <chi-date
+            min={this.min}
+            max={this.max}
+            locale={this.locale}
+            value={this.value}
+            format={this.format}
+          />
+        </chi-popover>
+      </div>
     ];
   }
 }

@@ -195,8 +195,8 @@
       "url": "http://localhost:8000/tests/custom-elements/date-picker.html",
       "referenceUrl": "",
       "readyEvent": "",
-      "readySelector": ".test-input-combined chi-date-picker.hydrated",
-    "delay": 0,
+      "readySelector": ".test-input-combined-icon chi-date-picker.hydrated",
+      "delay": 0,
       "hideSelectors": [],
       "removeSelectors": [],
       "hoverSelector": "",
@@ -205,7 +205,7 @@
       "selectors": [
         ".test-active",
         ".test-combined",
-        ".test-input-combined"
+        ".test-input-combined-icon"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
