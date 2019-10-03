@@ -88,5 +88,16 @@
         }
       }
     }
+
+    &.outdated-version {
+      .docs-body {
+        @include respond-to(lg) {
+          padding-top: 6.5rem;
+        }
+        &__aside {
+          top: 104px;
+        }
+      }
+    }
   }
 }

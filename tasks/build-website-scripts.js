@@ -1,4 +1,7 @@
 import gulp from 'gulp';
+const { src, dest } = require("gulp");
+var fs = require('fs');
+const through = require("through2");
 import vinylNamed from 'vinyl-named';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
@@ -55,7 +58,26 @@ function buildWebsiteScripts() {
 }
 
 buildWebsiteScripts.description = 'Compiles Chi JavaScript library into ES6. ' +
-  'Returns a stream. ';
+'Returns a stream. ';
 
+function createGlobalsConfigsFile() {
+  return src("package.json")
+  .pipe(
+    through.obj((file, enc, cb) => {
+      const rawJSON = file.contents.toString();
+      const currentVersion = `"${JSON.parse(rawJSON).version}"`;
+      const chiLocalVersion = fs.readFileSync("src/website/assets/scripts/globalConfigs.js", "utf8");
+      if(chiLocalVersion !== `window.chiCurrentVersion=${currentVersion};`) {
+        fs.writeFile('src/website/assets/scripts/globalConfigs.js', `window.chiCurrentVersion=${currentVersion}; module exports chiCurrentVersion="${currentVersion}"`, function(err, result) {
+          if(err) console.log('error', err);
+          return;
+        });
+      }
+      cb();
+    })
+  )
+}
 
-gulp.task('build:website:scripts', buildWebsiteScripts);
+createGlobalsConfigsFile.description = 'Creates a JS file with version info.';
+
+gulp.task('build:website:scripts', gulp.parallel(buildWebsiteScripts, createGlobalsConfigsFile));
