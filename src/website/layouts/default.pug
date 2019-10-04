@@ -8,13 +8,15 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href=`${rootPath}chi.css`)
         link(rel="stylesheet", href=`${rootPath}assets/styles/chi-docs.css`)
+        script(src=`${rootPath}assets/scripts/globalConfigs.js`)
+        script(src=`${rootPath}assets/scripts/chiVersionCheck.js`)
 
         if styles
             each style in styles
                 link(rel="stylesheet", media="all", href=`${rootPath}${style}.css`)
 
     body.chi.show-grid
-      .docs-container
+      #docs-container.docs-container
         include partials/header
 
         section.docs-body
@@ -24,9 +26,7 @@ html(lang="en")
               .a-grid__container
                 h2= title
                 != contents
-
       script(src=`${rootPath}js/chi.js`)
-      script(src=`${rootPath}assets/scripts/globalConfigs.js`)
       script(src=`${rootPath}assets/scripts/chi-docs.js`)
       script(src=`${rootPath}chi-icons.js`)
 

@@ -1,4 +1,21 @@
 header.o-header.-inverse.docs-header.-z--20
+  #version-check.-w--100
+  script.
+    if (localStorage.getItem("chiVersions") !== null) {
+      if (JSON.parse(localStorage.getItem("chiVersions"))[0] !== window.chiCurrentVersion) {
+        var chiVersions = JSON.parse(localStorage.getItem("chiVersions"));
+        var docsContainerSelector = document.getElementById('docs-container');
+        var chiVersionCheckSelector = document.getElementById('version-check');
+        var newVersionMessage = document.createElement('div');
+
+        newVersionMessage.setAttribute("class", "m-alert -banner -center -info -w--100");
+        newVersionMessage.setAttribute("role", "alert");
+        newVersionMessage.innerHTML = `<i class="a-icon -sm--2 icon-circle-info -text--info"></i> A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/">Learn more &#8250;</a>`;
+        chiVersionCheckSelector.appendChild(newVersionMessage, chiVersionCheckSelector.childNodes[0]);
+        docsContainerSelector.classList.add("outdated-version");
+      }
+
+    }
   nav.o-header__content
     .o-header__brand
       a.a-brand.docs-header__logo(href=`${rootPath}`, aria-label='CenturyLink')
@@ -6,7 +23,7 @@ header.o-header.-inverse.docs-header.-z--20
       span.o-header__title Chi Documentation
     .o-header__end
       .m-dropdown
-        button.a-btn.-flat.-light.-px--1.m-dropdown__trigger(data-position='bottom-end', id='version-dropdown')
+        button.a-btn.-flat.-light.-px--1.m-dropdown__trigger(data-position='bottom-end', id='version-dropdown') v1.2.4
         .m-dropdown__menu(style='width:10rem;')#versionDropdown
           a.m-dropdown__menu-item.-active(href='https://assets.ctl.io/chi/1.2.4') v1.2.4
           a.m-dropdown__menu-item(href='https://assets.ctl.io/chi/1.2.3') v1.2.3
@@ -20,6 +37,29 @@ header.o-header.-inverse.docs-header.-z--20
           a.m-dropdown__menu-item(href='https://assets.ctl.io/chi/0.9.0') v0.9.0
           a.m-dropdown__menu-item(href='https://assets.ctl.io/chi/0.8.3') v0.8.3
           a.m-dropdown__menu-item(href='https://assets.ctl.io/chi/0.8.2') v0.8.2
+      script.
+        if (localStorage.getItem("chiVersions") !== null) {
+          if (JSON.parse(localStorage.getItem("chiVersions"))[0] !== window.chiCurrentVersion) {
+            var drop = document.getElementById('versionDropdown');
+            var versions = JSON.parse(localStorage.getItem("chiVersions"));
+            var docsContainerSelector = document.getElementById('docs-container');
+
+            while (drop.childNodes.length > 0) {
+                drop.removeChild(drop.firstChild);
+            }
+
+            for (let version in versions) {
+              var versionAnchor = document.createElement('a');
+              
+              versionAnchor.setAttribute("href", "https://assets.ctl.io/chi/"+versions[version]);
+              versionAnchor.setAttribute("class", "m-dropdown__menu-item");
+              versionAnchor.innerText = "v" + versions[version];
+              drop.appendChild(versionAnchor);
+            }
+            
+            docsContainerSelector.classList.add("outdated-version");
+          }
+        }
       .m-dropdown
         button.a-btn.-flat.-light.-px--1.-ml--1.m-dropdown__trigger(data-position='bottom-end', id='support') Support
         .m-dropdown__menu(style='width:14rem;')
