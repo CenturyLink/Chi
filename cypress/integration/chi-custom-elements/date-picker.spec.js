@@ -5,7 +5,9 @@ const clickDate2 = '01/26/2019';
 const thisMonthName = /November\s*2018/;
 const nextMonthName = /December\s*2018/;
 const dateObject = new Date();
-const today = '0' + (dateObject.getUTCMonth() + 1) + '/' + dateObject.getUTCDate() + '/' + dateObject.getUTCFullYear();
+const monthToReturn = (dateObject.getMonth() + 1).toString().length === 2 ? (dateObject.getMonth() + 1).toString() : '0' + (dateObject.getMonth() + 1).toString();
+const dayToReturn = dateObject.getDate().toString().length === 2 ? dateObject.getDate().toString() : '0' + dateObject.getDate().toString();
+const today = monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
 
 describe('Date picker', function() {
 

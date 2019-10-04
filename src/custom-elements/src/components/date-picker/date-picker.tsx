@@ -75,10 +75,8 @@ export class DatePicker {
     const year = parseInt(parts[2], 10);
     const monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
 
-    if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)) {
-      return false;
-    }
-    if(month < 1 || month > 12) {
+    if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString) ||
+      month < 1 || month > 12) {
       return false;
     }
     if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)) {
@@ -99,14 +97,16 @@ export class DatePicker {
         this._input.value = this.min;
       } else if (inputDate > maxDate){
         this.value = this.max;
-        this._input.value = this.min;
+        this._input.value = this.max;
       }
     } else {
       const dateObject = new Date();
+      const monthToReturn = (dateObject.getMonth() + 1).toString().length === 2 ? (dateObject.getMonth() + 1).toString() : '0' + (dateObject.getMonth() + 1).toString();
+      const dayToReturn = dateObject.getDate().toString().length === 2 ? dateObject.getDate().toString() : '0' + dateObject.getDate().toString();
 
-      this.value = '0' + (dateObject.getUTCMonth() + 1) + '/' + dateObject.getUTCDate() + '/' + dateObject.getUTCFullYear();
-    }
-    
+      this.value = monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
+      this._input.value = this.value;
+    } 
   }
 
   /**
