@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
 import { CARDINAL_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
@@ -9,11 +9,6 @@ import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
   scoped: true
 })
 export class Drawer {
-
-  /**
-   * current HTMLElement
-   */
-  @Element() el: HTMLElement;
 
   /**
    * to set position of the drawer { top, right, bottom or left }
@@ -186,12 +181,6 @@ export class Drawer {
     this.positionValidation(this.position);
     this._animationClasses = this.active ? CLASSES.ACTIVE : '';
     this._backdropAnimationClasses = this.active ? '' : CLASSES.CLOSED;
-  }
-
-  componentDidUpdate() {
-    if (this._backdropAnimationClasses === '') {
-      this.el.firstElementChild.classList.remove('-closed');
-    }
   }
 
   render() {

@@ -2,12 +2,13 @@
   "timestamp": "2019-10-29T15:29:27",
   "compiler": {
     "name": "@stencil/core",
-    "version": "1.1.6",
-    "typescriptVersion": "3.5.2"
+    "version": "1.5.2",
+    "typescriptVersion": "3.6.3"
   },
   "components": [
     {
       "tag": "chi-alert",
+      "filePath": "src/components/alert/alert.tsx",
       "encapsulation": "scoped",
       "docs": "",
       "docsTags": [],
@@ -97,10 +98,16 @@
           "docsTags": []
         }
       ],
+<<<<<<< HEAD
       "styles": []
+=======
+      "styles": [],
+      "slots": []
+>>>>>>> [CHI-377] Fixed Drawer, Popover and Spinner CEs
     },
     {
       "tag": "chi-badge",
+      "filePath": "src/components/badge/badge.tsx",
       "encapsulation": "scoped",
       "docs": "",
       "docsTags": [],
@@ -169,6 +176,7 @@
     },
     {
       "tag": "chi-brand",
+      "filePath": "src/components/brand/brand.tsx",
       "encapsulation": "scoped",
       "docs": "",
       "docsTags": [],
@@ -204,6 +212,7 @@
     },
     {
       "tag": "chi-button",
+      "filePath": "src/components/button/button.tsx",
       "encapsulation": "scoped",
       "docs": "",
       "docsTags": [],
@@ -330,6 +339,7 @@
     },
     {
       "tag": "chi-date",
+      "filePath": "src/components/date/date.tsx",
       "encapsulation": "scoped",
       "readme": "# chi-date\n\n\n",
       "docs": "",
@@ -460,6 +470,7 @@
     },
     {
       "tag": "chi-date-picker",
+      "filePath": "src/components/date-picker/date-picker.tsx",
       "encapsulation": "scoped",
       "readme": "# chi-date-picker\n\n\n",
       "docs": "",
@@ -568,6 +579,7 @@
     },
     {
       "tag": "chi-drawer",
+      "filePath": "src/components/drawer/drawer.tsx",
       "encapsulation": "scoped",
       "readme": "# chi-drawer\n\n\n",
       "docs": "",
@@ -719,6 +731,7 @@
     },
     {
       "tag": "chi-expansion-panel",
+      "filePath": "src/components/expansion-panel/expansion-panel.tsx",
       "encapsulation": "scoped",
       "docs": "",
       "docsTags": [],
@@ -777,6 +790,7 @@
     },
     {
       "tag": "chi-icon",
+      "filePath": "src/components/icon/icon.tsx",
       "encapsulation": "scoped",
       "readme": "# chi-icon\n\n\n",
       "docs": "",
@@ -824,6 +838,7 @@
     },
     {
       "tag": "chi-number-input",
+      "filePath": "src/components/number-input/number-input.tsx",
       "encapsulation": "scoped",
       "docs": "",
       "docsTags": [],
@@ -972,6 +987,7 @@
     },
     {
       "tag": "chi-popover",
+      "filePath": "src/components/popover/popover.tsx",
       "encapsulation": "scoped",
       "readme": "# chi-popover\n\n\n",
       "docs": "",
@@ -1113,6 +1129,7 @@
     },
     {
       "tag": "chi-progress",
+      "filePath": "src/components/progress/progress.tsx",
       "encapsulation": "scoped",
       "docs": "",
       "docsTags": [],
@@ -1161,6 +1178,7 @@
     },
     {
       "tag": "chi-spinner",
+      "filePath": "src/components/spinner/spinner.tsx",
       "encapsulation": "scoped",
       "docs": "",
       "docsTags": [],
@@ -1203,10 +1221,12 @@
       ],
       "methods": [],
       "events": [],
-      "styles": []
+      "styles": [],
+      "slots": []
     },
     {
       "tag": "chi-toggle-switch",
+      "filePath": "src/components/toggle-switch/toggle-switch.tsx",
       "encapsulation": "scoped",
       "docs": "",
       "docsTags": [],
@@ -1286,7 +1306,7 @@
       "events": [
         {
           "event": "toggle",
-          "detail": "void",
+          "detail": "any",
           "bubbles": true,
           "cancelable": true,
           "composed": true,
@@ -1294,7 +1314,8 @@
           "docsTags": []
         }
       ],
-      "styles": []
+      "styles": [],
+      "slots": []
     }
   ]
 }
