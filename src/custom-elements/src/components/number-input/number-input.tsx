@@ -123,7 +123,7 @@ export class NumberInput {
 
     if (newValue !== this.value) {
         this._setNewValue(newValue);
-    } else if ((ev.target as HTMLInputElement).value.toString() !== this.value){
+    } else if ((ev.target as HTMLInputElement).value.toString() !== this.value) {
         this.forceRepaint = !this.forceRepaint;
     }
   }
