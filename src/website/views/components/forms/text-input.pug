@@ -25,7 +25,9 @@ h4 Disabled
   :code(lang="html")
     <input type="text" class="a-input" value="Sample Text" disabled>
 
-h4 With Label
+h3 Labels
+
+h4 Base
 .example.-mb--3
   .-p--3
     .m-formGroup.-labeled(style="max-width:20rem")
@@ -35,6 +37,48 @@ h4 With Label
     <div class="m-formGroup -labeled">
       <label class="a-label" for="example">Label</label>
       <input type="text" class="a-input" id="example" placeholder="Placeholder">
+    </div>
+
+h4 Inline
+.example.-mb--3
+  .-p--3
+    .m-formGroup__inline(style="max-width:40rem")
+      label.a-label(for='example') Label
+      input(type="text", class="a-input", id='example', placeholder="Placeholder")
+  :code(lang="html")
+    <div class="m-formGroup__inline">
+      <label class="a-label" for="example">Label</label>
+      <input class="a-input" type="text" id="example" placeholder="Placeholder" />
+    </div>
+
+h4 Inline - width controlled using %
+.example.-mb--3
+  .-p--3
+    .m-formGroup__inline(style="max-width:40rem")
+      label.a-label.-w--50(for='example') Label width 50%
+      .-w--50
+        input(type="text", class="a-input", id='example', placeholder="Placeholder")
+  :code(lang="html")
+    <div class="m-formGroup__inline">
+      <label class="a-label -w--50" for="example">Label</label>
+      <div class="-w--50">
+        <input class="a-input" type="text" id="example" placeholder="Placeholder" />
+      </div>
+    </div>
+
+h4 Inline - width controlled using grid
+.example.-mb--3
+  .-p--3
+    .m-formGroup__inline.a-grid.-noGutter(style="max-width:40rem")
+      label.a-label.a-col.-w--3(for='example') Label width 3 columns
+      .a-col.-w--9
+        input(type="text", class="a-input", id='example', placeholder="Placeholder")
+  :code(lang="html")
+    <div class="m-formGroup__inline a-grid -noGutter">
+      <label class="a-label -w--3" for="example">Label</label>
+      <div class="-w--9">
+        <input class="a-input" type="text" id="example" placeholder="Placeholder" />
+      </div>
     </div>
 
 h3 Icons
