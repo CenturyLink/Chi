@@ -81,6 +81,11 @@ $sizes: (
             border-right-width: 0.0625rem;
             border-top-right-radius: $border-radius;
           }
+
+          & > :not(:last-child) {
+            margin-right: .5rem;
+          }
+
         }
       }
 
