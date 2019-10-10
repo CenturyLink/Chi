@@ -85,8 +85,8 @@ export class NumberInput {
   }
 
   static isNumeric (n: string | number) {
-      return ( typeof n === "number" || typeof n === "string" ) &&
-          !isNaN( +n - parseFloat( `${n}` ) );
+      return (typeof n === "number" || typeof n === "string") &&
+          !isNaN(+n - parseFloat(`${n}`));
   }
 
   _setNewValue(newValue: string) {
@@ -111,8 +111,8 @@ export class NumberInput {
 
     if (newValue !== null) {
         let steppedValue = Math.round(10000*((+newValue-this.initialValue)/this.step))/10000;
-        const steppedMax =  Math.round(10000*Math.floor((+this.max-this.initialValue)/this.step))/10000;
-        const steppedMin =  Math.round(10000*Math.ceil((+this.min-this.initialValue)/this.step))/10000;
+        const steppedMax = Math.round(10000*Math.floor((+this.max-this.initialValue)/this.step))/10000;
+        const steppedMin = Math.round(10000*Math.ceil((+this.min-this.initialValue)/this.step))/10000;
 
         steppedValue = Math.max(
             Math.min(steppedValue, steppedMax),
