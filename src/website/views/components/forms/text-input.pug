@@ -124,6 +124,24 @@ h4 Left + Right Aligned
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
       <i class="a-icon icon-search -text--muted"></i>
       <i class="a-icon icon-check-alt -text--success"></i>
+
+h4 Left + Right Aligned with label
+.example.-mb--3
+  .-p--3
+    .m-formGroup.-labeled
+      label.a-label(for='example') Label
+      .a-inputWrapper.-icon--left.-icon--right(style="max-width:20rem")
+        input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+        i.a-icon.icon-search.-text--muted
+        i.a-icon.icon-check-alt.-text--success
+  :code(lang="html")
+    <div class="m-formGroup -labeled">
+      <label class="a-label">Label</label>
+      <div class="a-inputWrapper -icon--left -icon--right">
+        <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
+        <i class="a-icon icon-search -text--muted"></i>
+        <i class="a-icon icon-check-alt -text--success"></i>
+      </div>
     </div>
 
 h3 States
