@@ -63,6 +63,11 @@ export class NumberInput {
   @Prop() inputstyle?: string;
 
   /**
+   * If set, component value won't be updated by itself.
+   */
+  @Prop({ reflectToAttr: true }) preventValueMutation: boolean;
+
+  /**
    * used to provide an input state like 'hover' or 'focus'. Mostly used for testing purposes
    */
   @Prop() state?: string;
@@ -77,39 +82,55 @@ export class NumberInput {
     CallbackQueue.queueProcess(this._didUpdateCallBackOnceQueue);
   }
 
-  handleChange(ev: Event) {
-    let stepDifference = 0;
+  static isNumeric(n: string | number) {
+    return (
+      (typeof n === 'number' || typeof n === 'string') &&
+      !isNaN(+n - parseFloat(`${n}`))
+    );
+  }
 
-    this.value = !!ev.target
+  _setNewValue(newValue: string) {
+    if (!this.preventValueMutation) {
+      this.value = newValue;
+      this._didUpdateCallBackOnceQueue.push(() => {
+        this.chiChange.emit(newValue);
+      });
+    } else {
+      this.chiChange.emit(newValue);
+    }
+  }
+
+  handleChange(ev: Event) {
+    ev.stopPropagation();
+
+    let newValue = !!ev.target
       ? (ev.target as HTMLInputElement).value.toString()
       : null;
+    newValue = NumberInput.isNumeric(newValue) ? newValue : null;
 
-    stepDifference =
-      Math.round(((+this.value % this.step) - this.initialValue) * 10000) /
-      10000;
+    if (newValue !== null) {
+      let steppedValue =
+        Math.round(10000 * ((+newValue - this.initialValue) / this.step)) /
+        10000;
+      const steppedMax =
+        Math.round(
+          10000 * Math.floor((+this.max - this.initialValue) / this.step)
+        ) / 10000;
+      const steppedMin =
+        Math.round(
+          10000 * Math.ceil((+this.min - this.initialValue) / this.step)
+        ) / 10000;
 
-    if (stepDifference !== 0) {
-      this.value = (
-        Math.round(((+this.value - stepDifference) * 10000) / 10000) + this.step
+      steppedValue = Math.max(Math.min(steppedValue, steppedMax), steppedMin);
+      newValue = (
+        Math.round(steppedValue) * this.step +
+        +this.initialValue
       ).toString();
     }
 
-    if (+this.value > this.max || +this.value < this.min) {
-      stepDifference =
-        Math.round(((+this.value % this.step) - this.initialValue) * 10000) /
-        10000;
-
-      if (stepDifference !== 0) {
-        this.value = (
-          Math.round(((+this.value - stepDifference) * 10000) / 10000) +
-          this.step
-        ).toString();
-      }
+    if (newValue !== this.value) {
+      this._setNewValue(newValue);
     }
-
-    this._didUpdateCallBackOnceQueue.push(() => {
-      this.chiChange.emit(this.value);
-    });
   }
 
   private increment() {
@@ -142,7 +163,7 @@ export class NumberInput {
         type="number"
         class={`a-input ${this.size ? `-${this.size}` : ''} ${
           this.inputstyle ? `-${this.inputstyle}` : ''
-          } ${this.state ? `-${this.state}` : ''}`}
+        } ${this.state ? `-${this.state}` : ''}`}
         disabled={this.disabled}
         value={this.value}
         step={this.step}
@@ -158,13 +179,11 @@ export class NumberInput {
         <button
           disabled={+this.value - this.step < this.min}
           onClick={() => this.decrement()}
-        >
-        </button>
+        ></button>
         <button
           disabled={+this.value + this.step > this.max}
           onClick={() => this.increment()}
-        >
-        </button>
+        ></button>
       </div>
     );
 
@@ -172,7 +191,7 @@ export class NumberInput {
       <div
         class={`m-inputNumber ${this.size ? `-${this.size}` : ''} ${
           this.pill ? '-pill' : ''
-          }`}
+        }`}
       >
         {input}
         <button
@@ -183,7 +202,7 @@ export class NumberInput {
           <div class="a-btn__content">
             <chi-icon icon="minus" />
           </div>
-        </button >
+        </button>
         <button
           class={`a-btn -icon ${this.size ? `-${this.size}` : ''}`}
           disabled={+this.value + this.step > this.max}
