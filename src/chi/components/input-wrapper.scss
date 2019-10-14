@@ -23,17 +23,14 @@ $border: 0.0625rem;
   }
 
   &__inline {
+    align-items: center;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: start;
     margin-bottom: 0.5rem;
-    label {
+    & .a-label {
       margin-bottom: 0;
       padding-right: 0.5rem;
-    }
-    input {
-      box-sizing: border-box;
     }
   }
 
