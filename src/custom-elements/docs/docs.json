@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-10-08T18:10:06",
+  "timestamp": "2019-10-04T16:36:24",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
@@ -875,17 +875,6 @@
           "docs": "used to determine if expanded component has a pill look",
           "docsTags": [],
           "optional": true,
-          "required": false
-        },
-        {
-          "name": "preventValueMutation",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "prevent-value-mutation",
-          "reflectToAttr": true,
-          "docs": "If set, component value won't be updated by itself.",
-          "docsTags": [],
-          "optional": false,
           "required": false
         },
         {
