@@ -4,6 +4,10 @@ const clickDate = '11/14/2018';
 const clickDate2 = '01/26/2019';
 const thisMonthName = /November\s*2018/;
 const nextMonthName = /December\s*2018/;
+const dateObject = new Date();
+const monthToReturn = (dateObject.getMonth() + 1).toString().length === 2 ? (dateObject.getMonth() + 1).toString() : '0' + (dateObject.getMonth() + 1).toString();
+const dayToReturn = dateObject.getDate().toString().length === 2 ? dateObject.getDate().toString() : '0' + dateObject.getDate().toString();
+const today = monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
 
 describe('Date picker', function() {
 
@@ -75,4 +79,35 @@ describe('Date picker', function() {
       .get('[data-cy="test-input-combined"] input')
       .should('have.value', clickDate2);
   });
+
+  it('Date-picker should reset input value to Min if the introduced date is before the min date. ', function() {
+    cy.get('[data-cy="test-input-combined"]')
+      .find('input')
+      .clear()
+      .type('01/01/1899')
+      .trigger('change')
+      .get('[data-cy="test-input-combined"] input')
+      .should('have.value', '01/24/2019');
+  });
+
+  it('Date-picker should reset input value to Max if the introduced date is after the max date. ', function() {
+    cy.get('[data-cy="test-input-combined"]')
+      .find('input')
+      .clear()
+      .type('12/31/2099')
+      .trigger('change')
+      .get('[data-cy="test-input-combined"] input')
+      .should('have.value', '12/31/2099');
+  });
+
+  it('Date-picker should reset input value to Max if the introduced date is after the max date. ', function() {
+    cy.get('[data-cy="test-input-combined"]')
+      .find('input')
+      .clear()
+      .type('22/31/2099')
+      .trigger('change')
+      .get('[data-cy="test-input-combined"] input')
+      .should('have.value', today);
+  });
+
 });

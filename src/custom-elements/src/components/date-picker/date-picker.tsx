@@ -1,6 +1,7 @@
 import { Component, Element, Listen, Method, Prop } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
 import { ESCAPE_KEYCODE } from '../../constants/constants';
+import dayjs from 'dayjs';
 
 @Component({
   tag: 'chi-date-picker',
@@ -47,6 +48,7 @@ export class DatePicker {
       this.active = contains(this.el, e.target);
     }
   }
+
   _onClick(e) {
     if (
       e.target !== document.body &&
@@ -56,6 +58,7 @@ export class DatePicker {
       this.active = contains(this.el, e.target);
     }
   }
+
   _onKeyUp(e) {
     if (
       'key' in e &&
@@ -63,6 +66,33 @@ export class DatePicker {
     ) {
       this.active = false;
       this._input.blur();
+    }
+  }
+
+  _checkDate() {
+    const inputDate = dayjs(this._input.value);
+    const minDate = dayjs(this.min);
+    const maxDate = dayjs(this.max);
+
+    if (dayjs(this._input.value).isValid()) {
+      if (
+        dayjs(inputDate)
+          .startOf('day')
+          .isBefore(dayjs(minDate).startOf('day'))
+      ) {
+        this.value = this.min;
+        this._input.value = this.min;
+      } else if (
+        dayjs(inputDate)
+          .startOf('day')
+          .isAfter(dayjs(maxDate).startOf('day'))
+      ) {
+        this.value = this.max;
+        this._input.value = this.max;
+      }
+    } else {
+      this.value = dayjs().format('MM/DD/YYYY');
+      this._input.value = this.value;
     }
   }
 
@@ -123,7 +153,7 @@ export class DatePicker {
           ref={el => (this._input = el as HTMLInputElement)}
           value={this.value}
           onChange={() => {
-            this.value = this._input.value;
+            this._checkDate();
           }}
         />
         <div class="a-icon -text--muted">
