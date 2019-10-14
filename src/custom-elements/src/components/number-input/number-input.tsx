@@ -72,8 +72,6 @@ export class NumberInput {
    */
   @Prop() state?: string;
 
-  @State() forceRepaint: boolean;
-
   @Event() chiChange: EventEmitter<string>;
 
   componentDidLoad() {
@@ -84,47 +82,54 @@ export class NumberInput {
     CallbackQueue.queueProcess(this._didUpdateCallBackOnceQueue);
   }
 
-  static isNumeric (n: string | number) {
-      return (typeof n === "number" || typeof n === "string") &&
-          !isNaN(+n - parseFloat(`${n}`));
+  static isNumeric(n: string | number) {
+    return (
+      (typeof n === 'number' || typeof n === 'string') &&
+      !isNaN(+n - parseFloat(`${n}`))
+    );
   }
 
   _setNewValue(newValue: string) {
-      if (!this.preventValueMutation) {
-          this.value = newValue;
-          this._didUpdateCallBackOnceQueue.push(() => {
-              this.chiChange.emit(newValue);
-          });
-      } else {
-          this.chiChange.emit(newValue);
-      }
+    if (!this.preventValueMutation) {
+      this.value = newValue;
+      this._didUpdateCallBackOnceQueue.push(() => {
+        this.chiChange.emit(newValue);
+      });
+    } else {
+      this.chiChange.emit(newValue);
+    }
   }
 
   handleChange(ev: Event) {
-
     ev.stopPropagation();
 
     let newValue = !!ev.target
-        ? (ev.target as HTMLInputElement).value.toString()
-        : null;
+      ? (ev.target as HTMLInputElement).value.toString()
+      : null;
     newValue = NumberInput.isNumeric(newValue) ? newValue : null;
 
     if (newValue !== null) {
-        let steppedValue = Math.round(10000*((+newValue-this.initialValue)/this.step))/10000;
-        const steppedMax = Math.round(10000*Math.floor((+this.max-this.initialValue)/this.step))/10000;
-        const steppedMin = Math.round(10000*Math.ceil((+this.min-this.initialValue)/this.step))/10000;
+      let steppedValue =
+        Math.round(10000 * ((+newValue - this.initialValue) / this.step)) /
+        10000;
+      const steppedMax =
+        Math.round(
+          10000 * Math.floor((+this.max - this.initialValue) / this.step)
+        ) / 10000;
+      const steppedMin =
+        Math.round(
+          10000 * Math.ceil((+this.min - this.initialValue) / this.step)
+        ) / 10000;
 
-        steppedValue = Math.max(
-            Math.min(steppedValue, steppedMax),
-            steppedMin
-        );
-        newValue = ((Math.round(steppedValue) * this.step) + (+this.initialValue)).toString();
+      steppedValue = Math.max(Math.min(steppedValue, steppedMax), steppedMin);
+      newValue = (
+        Math.round(steppedValue) * this.step +
+        +this.initialValue
+      ).toString();
     }
 
     if (newValue !== this.value) {
-        this._setNewValue(newValue);
-    } else if ((ev.target as HTMLInputElement).value.toString() !== this.value) {
-        this.forceRepaint = !this.forceRepaint;
+      this._setNewValue(newValue);
     }
   }
 
@@ -158,7 +163,7 @@ export class NumberInput {
         type="number"
         class={`a-input ${this.size ? `-${this.size}` : ''} ${
           this.inputstyle ? `-${this.inputstyle}` : ''
-          } ${this.state ? `-${this.state}` : ''}`}
+        } ${this.state ? `-${this.state}` : ''}`}
         disabled={this.disabled}
         value={this.value}
         step={this.step}
@@ -174,13 +179,11 @@ export class NumberInput {
         <button
           disabled={+this.value - this.step < this.min}
           onClick={() => this.decrement()}
-        >
-        </button>
+        ></button>
         <button
           disabled={+this.value + this.step > this.max}
           onClick={() => this.increment()}
-        >
-        </button>
+        ></button>
       </div>
     );
 
@@ -188,7 +191,7 @@ export class NumberInput {
       <div
         class={`m-inputNumber ${this.size ? `-${this.size}` : ''} ${
           this.pill ? '-pill' : ''
-          }`}
+        }`}
       >
         {input}
         <button
@@ -199,7 +202,7 @@ export class NumberInput {
           <div class="a-btn__content">
             <chi-icon icon="minus" />
           </div>
-        </button >
+        </button>
         <button
           class={`a-btn -icon ${this.size ? `-${this.size}` : ''}`}
           disabled={+this.value + this.step > this.max}
