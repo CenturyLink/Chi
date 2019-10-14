@@ -1,6 +1,7 @@
 import { Component, Element, Listen, Method, Prop } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
 import { ESCAPE_KEYCODE } from '../../constants/constants';
+import dayjs from 'dayjs';
 
 @Component({
   tag: 'chi-date-picker',
@@ -68,45 +69,31 @@ export class DatePicker {
     }
   }
 
-  _checkDateValidity(dateString) {
-    const parts = dateString.split("/");
-    const day = parseInt(parts[1], 10);
-    const month = parseInt(parts[0], 10);
-    const year = parseInt(parts[2], 10);
-    const monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
-
-    if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString) ||
-      month < 1 || month > 12) {
-      return false;
-    }
-    if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)) {
-      monthLength[1] = 29;
-    }
-
-    return day > 0 && day <= monthLength[month - 1];
-  }
-
   _checkDate() {
-    const inputDate = new Date(this._input.value);
-    const minDate = new Date(this.min);
-    const maxDate = new Date(this.max);
+    const inputDate = dayjs(this._input.value);
+    const minDate = dayjs(this.min);
+    const maxDate = dayjs(this.max);
 
-    if(this._checkDateValidity(this._input.value)) {
-      if(inputDate < minDate){
+    if (dayjs(this._input.value).isValid()) {
+      if (
+        dayjs(inputDate)
+          .startOf('day')
+          .isBefore(dayjs(minDate).startOf('day'))
+      ) {
         this.value = this.min;
         this._input.value = this.min;
-      } else if (inputDate > maxDate){
+      } else if (
+        dayjs(inputDate)
+          .startOf('day')
+          .isAfter(dayjs(maxDate).startOf('day'))
+      ) {
         this.value = this.max;
         this._input.value = this.max;
       }
     } else {
-      const dateObject = new Date();
-      const monthToReturn = (dateObject.getMonth() + 1).toString().length === 2 ? (dateObject.getMonth() + 1).toString() : '0' + (dateObject.getMonth() + 1).toString();
-      const dayToReturn = dateObject.getDate().toString().length === 2 ? dateObject.getDate().toString() : '0' + dateObject.getDate().toString();
-
-      this.value = monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
+      this.value = dayjs().format('MM/DD/YYYY');
       this._input.value = this.value;
-    } 
+    }
   }
 
   /**
