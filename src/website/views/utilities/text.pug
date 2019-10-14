@@ -14,6 +14,7 @@ p.-text 14px (0.875rem) font size with 24px (1.5rem) line-height
     | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
   :code(lang="html")
     <p class="-text"></p>
+
 h4 Large
 p.-text 16px (1rem) font size with 24px (1.5rem) line-height
 .example.-mb--3
@@ -140,3 +141,103 @@ p.-text Change text colors with contextual classes.
     <!-- For dark backgrounds -->
     <p class="-text--secondary">.-text--secondary</p>
     <p class="-text--light">.-text--light</p>
+
+h3 Responsiveness
+h4 Sizes
+p.-text Text utility classes can be defined using the format <code>-text[-{breakpoint}]--{size}</code>.
+h5 {breakpoint}
+p.-text
+  | Optionally include -{breakpoint} to apply the utility behaviour to some breakpoints. As a mobile first library,
+  | any applying to smaller breakpoint will modify also larger ones unless other class overrides this behaviour.
+ul.-text
+  li blank - leave blank to apply <code>text</code> to all breakpoints.
+  li <code>sm</code> - use to apply <code>text</code> to sm and larger breakpoints.
+  li <code>md</code> - use to apply <code>text</code> to md and larger breakpoints.
+  li <code>lg</code> - use to apply <code>text</code> to lg and larger breakpoints.
+  li <code>xl</code> - use to apply <code>text</code> to xl breakpoints.
+h5 {size}
+ul.-text
+  li <code>small</code> - use to set <code>small</code> the <code>text</code>
+  li <code>smaller</code> - use to set <code>smaller</code> the <code>text</code>
+  li <code>large</code> - use to set <code>large</code> the <code>text</code>
+  li <code>larger</code> - use to set <code>larger</code> the <code>text</code>
+.example.-mb--3
+  p.-text.-text-md--large.-m--3
+    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
+    | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
+  p.-text.-text-xl--smaller.-m--3
+    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
+    | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
+  p.-text.-text-lg--larger.-m--3
+    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
+    | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
+  :code(lang="html")
+    <p class="-text-md--large"></p>
+    <p class="-text-xl--smaller"></p>
+    <p class="-text-lg--larger"></p>
+
+h4 Line heights
+p.-text Line height sizes can be defined using the format <code>-lh[-{breakpoint}]--{size}</code>.
+h5 {breakpoint}
+p.-text
+  | Optionally include -{breakpoint} to apply the utility behaviour to some breakpoints. As a mobile first library,
+  | any applying to smaller breakpoint will modify also larger ones unless other class overrides this behaviour.
+ul.-text
+  li blank - leave blank to apply <code>text</code> to all breakpoints.
+  li <code>sm</code> - use to apply <code>line-height</code> to sm and larger breakpoints.
+  li <code>md</code> - use to apply <code>line-height</code> to md and larger breakpoints.
+  li <code>lg</code> - use to apply <code>line-height</code> to lg and larger breakpoints.
+  li <code>xl</code> - use to apply <code>line-height</code> to xl breakpoints.
+h5 {size}
+ul.-text
+  li <code>0</code> - use to set <code>line-height</code> and set to <code>0</code>
+  li <code>1</code> - use to set <code>line-height</code> to <code>$base-unit * 1</code>
+  li <code>2</code> - use to set <code>line-height</code> to <code>$base-unit * 2</code>
+  li <code>3</code> - use to set <code>line-height</code> to <code>$base-unit * 3</code>
+  li <code>4</code> - use to set <code>line-height</code> to <code>$base-unit * 4</code>
+  li <code>5</code> - use to set <code>line-height</code> to <code>$base-unit * 5</code>
+  li <code>6</code> - use to set <code>line-height</code> to <code>$base-unit * 6</code>
+  li <code>7</code> - use to set <code>line-height</code> to <code>$base-unit * 7</code>
+  li <code>8</code> - use to set <code>line-height</code> to <code>$base-unit * 8</code>
+  li <code>9</code> - use to set <code>line-height</code> to <code>$base-unit * 9</code>
+.example.-mb--3
+  .-m--3.-show--example
+    p.-text.-pl--1.-lh-md--2 -lh-md--2
+    p.-text.-pl--1.-lh-lg--4 -lh-lg--4
+    p.-text.-pl--1.-lh-sm--5 -lh-sm--5
+    p.-text.-pl--1.-lh-xl--7 -lh-xl--7
+  :code(lang="html")
+    <p class="-text -lh-md--2">-lh-md--2</p>
+    <p class="-text -lh-lg--4">-lh-lg--4</p>
+    <p class="-text -lh-sm--5">-lh-sm--5</p>
+    <p class="-text -lh-xl--7">-lh-xl--7</p>
+
+h4 Text alignment
+p.-text Text utility classes can be align using the format <code>-text[-{breakpoint}]--{alignment}</code>.
+h5 {breakpoint}
+p.-text
+  | Optionally include -{breakpoint} to apply the utility behaviour to some breakpoints. As a mobile first library,
+  | any applying to smaller breakpoint will modify also larger ones unless other class overrides this behaviour.
+ul.-text
+  li blank - leave blank to apply <code>alignment</code> to all breakpoints.
+  li <code>sm</code> - use to apply <code>alignment</code> to sm and larger breakpoints.
+  li <code>md</code> - use to apply <code>alignment</code> to md and larger breakpoints.
+  li <code>lg</code> - use to apply <code>alignment</code> to lg and larger breakpoints.
+  li <code>xl</code> - use to apply <code>alignment</code> to xl breakpoints.
+h5 {alignment}
+ul.-text
+  li <code>justify</code> - use to set <code>justify</code> the <code>text</code>
+  li <code>center</code> - use to set <code>center</code> the <code>text</code>
+  li <code>left</code> - use to set <code>left</code> the <code>text</code>
+  li <code>right</code> - use to set <code>right</code> the <code>text</code>
+.example.-mb--3
+  .-m--3
+    p.-text.-text-md--justify This text will render as justified from md and larger breakpoints
+    p.-text.-text-lg--left This text will render as left aligned from lg and larger breakpoints
+    p.-text.-text-sm--center This text will render as center aligned from sm and larger breakpoints
+    p.-text.-text-xl--right This text will render as right aligned from xl and larger breakpoints
+  :code(lang="html")
+    <p class="-text-md--justify">This text will render as justified from md and larger breakpoints</p>
+    <p class="-text-lg--left">This text will render as left aligned from lg and larger breakpoints</p>
+    <p class="-text-sm--center">This text will render as center aligned from sm and larger breakpoints</p>
+    <p class="-text-xl--right">This text will render as right aligned from xl and larger breakpoints</p>

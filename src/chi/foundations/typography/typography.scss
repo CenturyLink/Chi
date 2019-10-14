@@ -1,6 +1,27 @@
 @import '_variables';
 @import '_mixins';
 
+$sizes: (
+  small: (
+    font-size: $text-small,
+    line-height: $line-height-small,
+  ),
+  smaller: (
+    font-size: $text-smaller,
+    line-height: $line-height-smaller,
+  ),
+  large: (
+    font-size: $text-large,
+    line-height: $line-height-large,
+  ),
+  larger: (
+    font-size: $text-larger,
+    line-height: $line-height-larger,
+  ),
+);
+
+$alignments: ( justify, center, left, right);
+
 button,
 input,
 optgroup,
@@ -286,6 +307,40 @@ small,
 @for $index from 1 through 9 {
   .-lh--#{$index} {
     line-height: ($index / 2) + rem !important;
+  }
+}
+
+// responsive line heights
+@each $screen-size in $screen-sizes {
+  @include respond-to($screen-size) {
+    @for $index from 1 through 9 {
+      .-lh-#{$screen-size}--#{$index} {
+        line-height: ($index / 2) + rem !important;
+      }
+    }
+  }
+}
+
+// responsive text alignments
+@each $screen-size in $screen-sizes {
+  @include respond-to($screen-size) {
+    @each $type in $alignments {
+      .-text-#{$screen-size}--#{$type} {
+        text-align: #{$type} !important;
+      }
+    }
+  }
+}
+
+// responsive text sizes
+@each $screen-size in $screen-sizes {
+  @include respond-to($screen-size) {
+    @each $type in map-keys($sizes) {
+      .-text-#{$screen-size}--#{$type} {
+        font-size: map-get(map-get($sizes, $type), font-size) !important;
+        line-height: map-get(map-get($sizes, $type), line-height) !important;
+      }
+    }
   }
 }
 
