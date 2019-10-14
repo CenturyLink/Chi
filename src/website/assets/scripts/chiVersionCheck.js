@@ -4,8 +4,8 @@ if (window.location.hostname === 'assets.ctl.io') {
   var xmlhttp = new XMLHttpRequest();
 
   xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-      if (xmlhttp.status == 200) {
+    if (xmlhttp.readyState === XMLHttpRequest.DONE) {
+      if (xmlhttp.status === 200) {
         versions = JSON.parse(xmlhttp.responseText);
         if (localStorage.getItem("chiVersions") !== JSON.stringify(versions))  {
           localStorage.setItem("chiVersions", JSON.stringify(versions));
@@ -26,7 +26,7 @@ function fillDropdown() {
     drop.removeChild(drop.firstChild);
   }
 
-  for (let version in versions) {
+  for (var version in versions) {
     var versionAnchor = document.createElement('a');
     
     versionAnchor.setAttribute("href", "https://assets.ctl.io/chi/"+versions[version]);
