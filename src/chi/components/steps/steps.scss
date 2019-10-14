@@ -6,6 +6,8 @@
   src: url('webfont/chi.eot');
 }
 
+$breakpoints: ('sm', 'md', 'lg', 'xl');
+
 .a-steps {
   align-items: center;
   display: flex;
@@ -210,6 +212,37 @@
 
       & > .a-steps__line {
         margin: 0.5rem;
+      }
+    }
+  }
+
+  &.-labels--hide {
+
+    & li > .a-steps__icon a {
+      display: none;
+    }
+
+    & > li > a {
+      display: none;
+    }
+  }
+
+  @each $breakpoint in $breakpoints {
+    &.-labels-#{$breakpoint}--hide {
+      & li > .a-steps__icon a {
+        display: none;
+
+        @include respond-to(#{$breakpoint}) {
+          display: block;
+        }
+      }
+
+      & > li > a {
+        display: none;
+
+        @include respond-to(#{$breakpoint}) {
+          display: block;
+        }
       }
     }
   }
