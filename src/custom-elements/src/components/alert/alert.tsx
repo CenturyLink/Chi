@@ -28,7 +28,7 @@ export class Alert {
   /**
    *  to set size of an alert, lg is the only size available.
    */
-  @Prop({ reflectToAttr: true }) size = 'md';
+  @Prop({ reflectToAttr: true }) size = '';
 
   /**
    *  to center the alert content.
