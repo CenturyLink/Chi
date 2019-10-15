@@ -118,7 +118,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   }
 
   & a {
-    color: $text-color;
+    color: $brand-color;
     text-decoration: none;
 
     &:hover {
