@@ -16,7 +16,7 @@
       @include respond-to(lg) {
         flex-direction: row;
         padding-left: 16rem;
-        padding-top: 4rem;
+        padding-top: 4.5rem;
       }
 
       &__aside {
@@ -29,7 +29,7 @@
         padding-bottom: 1rem;
         padding-top: 0.5rem;
         position: static;
-        top: 64px;
+        top: 72px;
         width: 100%;
         @include respond-to(lg) {
           border-right: 0.0625rem solid set-color(grey, 25);
