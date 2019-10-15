@@ -1,5 +1,20 @@
 # CHANGELOG
 
+### 1.2.5 (October 15, 2019)
+
+* Added Dark version of Sidenav component for Enterprise portals.
+* Added small, medium, and large size support to Sidenav component.
+* Updated Card component documentation with common Dashboard KPI example.
+* Removed unnecessary font-family property from Button component which conflicted with the font-family defined on root.
+* Added icon support to Picker Group component.
+* Updated Drawer component javascript documentation with methods.
+* Updated documentation with a version check to alert users when a new version is available.
+* Fixed Steps component link color inconsistency in base light version.
+* Updated Header component documentation with Enterprise Portal header example.
+* Updated Grid component documentation with base grid guidelines.
+* Updated Dropdown component trigger margin.
+* Updated Progress component bar height.
+
 ### 1.2.4 (September 12, 2019)
 
 * Added responsive behavior to Picker Group component.
