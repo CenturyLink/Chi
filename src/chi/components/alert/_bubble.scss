@@ -22,8 +22,8 @@
     }
 
     &.-large, &.-lg { //Legacy code: -large to be removed.
-      padding-bottom: 0.75rem;
-      padding-top: 0.75rem;
+      padding-bottom: .75rem;
+      padding-top: .75rem;
 
       & .m-alert__content {
         & .a-icon {
@@ -46,7 +46,22 @@
 
       & > .-close {
         align-self: flex-start;
-        top: 0.75rem;
+        top: .75rem;
+        transform: initial;
+      }
+    }
+    
+      &.-md {
+        padding-bottom: .65rem;
+        padding-top: .65rem;
+        & .m-alert__content {
+          & .a-icon {
+            align-self: flex-start;
+          }
+        }
+      & > .-close {
+        align-self: flex-start;
+        top: .65em;
         transform: initial;
       }
     }

@@ -64,6 +64,94 @@ p.-text Use the class <code>-center</code> to center the icons.
       Info alert with centered icon
     </div>
 
+h4 Sizes
+h5 Large
+p.-text
+  | Apply a <code>-lg</code> or <code>-md</code>  classes to increase the size of the alert.
+.example.-mb3
+  .-p1
+    .m-alert.-bubble.-warning.-m--2
+      .m-alert__content
+        i.a-icon.-sm--2.icon-warning.-text--warning
+        | This is a small warning alert
+    .m-alert.-bubble.-md.-warning.-m--2
+      .m-alert__content
+        i.a-icon.-sm--2.icon-warning.-text--warning
+        | This is a medium warning alert
+    .m-alert.-bubble.-lg.-warning.-m--2
+      .m-alert__content
+        i.a-icon.-sm--2.icon-warning.-text--warning
+        div
+          h5.a-h5 Warning
+          | This is a large warning alert
+  :code(lang="html")
+    <div class="m-alert -bubble -warning" role="alert">
+      <div class="m-alert__content">
+        <i class="a-icon -sm--2 icon-warning -text--warning"></i>
+        This is a warning alert
+      </div>
+    </div>
+    <div class="m-alert -bubble -md -warning" role="alert">
+      <div class="m-alert__content">
+        <i class="a-icon -sm--2 icon-warning -text--warning"></i>
+        This is a warning alert
+      </div>
+    </div>
+    <div class="m-alert -bubble -lg -warning" role="alert">
+      <div class="m-alert__content">
+        <i class="a-icon -sm--2 icon-warning -text--warning"></i>
+        <div>
+          <h5 class="a-h5">Warning</h5>
+          This is a warning alert
+        </div>
+      </div>
+    </div>
+h3 Additional alert types
+h4 Banner
+p.-text
+  | For alerts that stretch the full length of the page, apply the class <code>-banner</code>.
+  | This will remove the border-left, border-right, and border-radius from the alert.
+  | Banner alerts are commonly used to remind new users to confirm their email address or notify users
+  | when they are experiencing connectivity issues.
+.example.-mb--3
+  .-p--1
+    .m-alert.-banner.-center.-success.-m--2
+      i.a-icon.-sm--2.icon-circle-check.-text--success
+      | This is a success alert
+    .m-alert.-banner.-center.-warning.-m--2
+      i.a-icon.-sm--2.icon-warning.-text--warning
+      | This is a warning alert
+    .m-alert.-banner.-center.-danger.-m--2
+      i.a-icon.-sm--2.icon-circle-warning.-text--danger
+      | This is a danger alert
+    .m-alert.-banner.-center.-info.-m--2
+      i.a-icon.-sm--2.icon-circle-alert.-text--info
+      | This is an info alert
+    .m-alert.-banner.-center.-muted.-m--2
+      i.a-icon.-sm--2.icon-circle-alert.-text--muted
+      | This is a muted alert
+  :code(lang="html")
+    <div class="m-alert -banner -center -success -m--2">
+      <i class="a-icon -sm--2 icon-circle-check -text--success"></i>
+      This is a success alert
+    </div>
+    <div class="m-alert -banner -center -warning -m--2">
+      <i class="a-icon -sm--2 icon-warning -text--warning"></i>
+      This is a warning alert
+    </div>
+    <div class="m-alert -banner -center -danger -m--2">
+      <i class="a-icon -sm--2 icon-circle-warning -text--danger"></i>
+      This is a danger alert
+    </div>
+    <div class="m-alert -banner -center -info -m--2">
+      <i class="a-icon -sm--2 icon-circle-alert -text--info"></i>
+      This is an info alert
+    </div>
+    <div class="m-alert -banner -center -muted -m--2">
+      <i class="a-icon -sm--2 icon-circle-alert -text--info"></i>
+      This is a muted alert
+    </div>
+
 h4 Dismissible
 p.-text Use the class <code>-dismiss</code> and a button to allow the user to dismiss the alert.
 .example.-mb3
@@ -81,6 +169,18 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
         div
           h5.a-h5 Warning
           | This is a warning alert
+      button(class='a-btn -icon -close -sm')
+        .a-btn__content
+          i.a-icon.icon-x
+    .m-alert.-bubble.-lg.-dismiss.-warning.-m--2
+      .m-alert__content
+        i.a-icon.-sm--2.icon-warning.-text--warning
+        div
+          h5.a-h5 Warning
+          | This is a warning alert
+          div.-py--1
+            button.a-btn Button
+            button.a-btn.-primary.-ml--1 Button
       button(class='a-btn -icon -close -sm')
         .a-btn__content
           i.a-icon.icon-x
@@ -127,46 +227,6 @@ p.-text Use the class <code>-dismiss</code> and a button to allow the user to di
           <i class="a-icon icon-x"></i>
         </div>
       </button>
-    </div>
-
-h4 Sizes
-h5 Large
-p.-text
-  | Apply a <code>-lg</code> class to increase the size of the alert.
-.example.-mb3
-  .-p1
-    .m-alert.-bubble.-lg.-warning.-m--2
-      .m-alert__content
-        i.a-icon.-sm--2.icon-warning.-text--warning
-        div
-          h5.a-h5 Warning
-          | This is a warning alert
-  :code(lang="html")
-    <div class="m-alert -bubble -lg -warning" role="alert">
-      <div class="m-alert__content">
-        <i class="a-icon -sm--2 icon-warning -text--warning"></i>
-        <div>
-          <h5 class="a-h5">Warning</h5>
-          This is a warning alert
-        </div>
-      </div>
-    </div>
-h3 Additional alert types
-h4 Banner
-p.-text
-  | For alerts that stretch the full length of the page, apply the class <code>-banner</code>.
-  | This will remove the border-left, border-right, and border-radius from the alert.
-  | Banner alerts are commonly used to remind new users to confirm their email address or notify users
-  | when they are experiencing connectivity issues.
-.example.-mb--3
-  .-p--1
-    .m-alert.-banner.-center.-success.-m--2
-      i.a-icon.-sm--2(class ='icon-circle-check -text--success')
-      | This is a success alert
-  :code(lang="html")
-    <div class="m-alert -banner -center -success" role="alert">
-      <i class="a-icon -sm--2 icon-circle-check -text--success"></i>
-      This is a success alert
     </div>
 
 h4 Toast

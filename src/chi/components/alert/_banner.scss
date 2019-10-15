@@ -1,7 +1,8 @@
 .m-alert {
   &.-banner {
+    align-items: center;
+    justify-content: flex-start;
     border-radius: 0;
-    border-width: 0.0625rem 0;
     padding-left: 1rem;
     padding-right: 1rem;
 
@@ -27,8 +28,12 @@
 
     &.-large, //Legacy code: -large to be removed.
     &.-lg {
-      padding-bottom: 0.75rem;
-      padding-top: 0.75rem;
+      padding-bottom: .75rem;
+      padding-top: .75rem;
+    }
+    &.-md {
+      padding-bottom: 0.625rem;
+      padding-top: 0.625rem;
     }
   }
 }
