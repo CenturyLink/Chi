@@ -92,14 +92,14 @@
     &.outdated-version {
       .docs-body {
         @include respond-to(lg) {
-          padding-top: 6.5rem;
+          padding-top: 7rem;
         }
         &__aside {
-          top: 104px;
+          top: 112px;
         }
       }
       #versionDropdown {
-        height: 402px;
+        height: 280px;
         overflow-y: auto;
       }
     }
