@@ -17,7 +17,7 @@ scripts:
   each size in sizes
     h4= `a-${size}`
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m2(type='toast', color=type)
+      chi-alert.-titled.-m2(type='toast', color=type)
         chi-icon(size='sm--2', color=type, icon=val)
         div
           div(class=`a-${size}`)= type
@@ -25,32 +25,32 @@ scripts:
 
   h3 With h1 - h6
   each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-    chi-alert.-m2(type='toast', color=type)
+    chi-alert.-titled.-m2(type='toast', color=type)
       chi-icon(size='sm--2', color=type, icon=val)
       div
         h1= type
         = `This is a ${type} alert`
-    chi-alert.-m2(type='toast', color=type)
+    chi-alert.-titled.-m2(type='toast', color=type)
       chi-icon(size='sm--2', color=type, icon=val)
       div
         h2= type
         = `This is a ${type} alert`
-    chi-alert.-m2(type='toast', color=type)
+    chi-alert.-titled.-m2(type='toast', color=type)
       chi-icon(size='sm--2', color=type, icon=val)
       div
         h3= type
         = `This is a ${type} alert`
-    chi-alert.-m2(type='toast', color=type)
+    chi-alert.-titled.-m2(type='toast', color=type)
       chi-icon(size='sm--2', color=type, icon=val)
       div
         h4= type
         = `This is a ${type} alert`
-    chi-alert.-m2(type='toast', color=type)
+    chi-alert.-titled.-m2(type='toast', color=type)
       chi-icon(size='sm--2', color=type, icon=val)
       div
         h5= type
         = `This is a ${type} alert`
-    chi-alert.-m2(type='toast', color=type)
+    chi-alert.-titled.-m2(type='toast', color=type)
       chi-icon(size='sm--2', color=type, icon=val)
       div
         h6= type

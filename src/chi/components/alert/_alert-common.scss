@@ -45,9 +45,9 @@ $states: (
   color: $text-color;
   display: flex;
   font-family: $font-family;
-  font-size: $text-small;
+  font-size: $text;
   line-height: $line-height-small;
-  padding: 0.5625rem 1rem;
+  padding: 0.8133rem 1rem;
   position: relative;
   box-shadow: map-get($shadow, 1);
 
@@ -89,6 +89,7 @@ $states: (
       &.-#{$state}.-banner {
         background-color: map-get(map-get($states, $state), banner-color);
         border: none;
+        border-top: 1px solid transparent;
         border-bottom: 1px solid map-get(map-get($states, $state), banner-border-color);
         box-shadow: none;
       }

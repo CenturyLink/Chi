@@ -15,12 +15,12 @@ div(class=`test-default -w--100`)
 h3 large
 div(class=`test-large -w--100`)
   each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-    chi-alert.-m--2(color=type, size='lg', data-cy=`alert-bubble-large-${type}`)
+    chi-alert.-titled.-m--2(color=type, size='lg', data-cy=`alert-bubble-large-${type}`)
       chi-icon(size='sm--2', color=type, icon=val)
       div
         h5.a-h5= type
         = `this is a ${type} message`
-    chi-alert.-m--2(color=type, size='lg', dismissible, data-cy=`alert-bubble-large-${type}-dismiss`)
+    chi-alert.-titled.-m--2(color=type, size='lg', dismissible, data-cy=`alert-bubble-large-${type}-dismiss`)
       chi-icon(size='sm--2', color=type, icon=val)
       div
         h5.a-h5= type

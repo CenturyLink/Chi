@@ -9,7 +9,10 @@
     & .m-alert__content {
       & .a-icon {
         align-self: flex-start;
-        top: 0.1875rem;
+      }
+
+      & .a-h5 {
+        margin-bottom: 4px!important;
       }
 
       @each $size in $hr-sizes {
@@ -24,5 +27,11 @@
         }
       }
     }
+  }
+}
+
+.-titled {
+  .a-icon {
+    top: .33rem;
   }
 }

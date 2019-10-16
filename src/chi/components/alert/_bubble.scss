@@ -5,16 +5,6 @@
 
     &.-dismiss {
       justify-content: space-between;
-
-      & > .-close {
-        &.-small {
-          padding: 0.25rem;
-        }
-
-        & .a-icon {
-          line-height: 0.75rem;
-        }
-      }
     }
 
     &.-center {
@@ -22,14 +12,17 @@
     }
 
     &.-large, &.-lg { //Legacy code: -large to be removed.
-      padding-bottom: .75rem;
-      padding-top: .75rem;
+      padding: .95rem 1rem;
 
       & .m-alert__content {
         & .a-icon {
           align-self: flex-start;
-          top: 0.1875rem;
         }
+
+        & .a-h5 {
+          margin-bottom: 4px!important;
+        }
+
 
         @each $size in $hr-sizes {
           & .a-#{$size} {
@@ -46,24 +39,23 @@
 
       & > .-close {
         align-self: flex-start;
-        top: .75rem;
         transform: initial;
       }
     }
     
       &.-md {
-        padding-bottom: .65rem;
-        padding-top: .65rem;
-        & .m-alert__content {
-          & .a-icon {
-            align-self: flex-start;
-          }
-        }
+        padding: 1.0635rem 1rem;
+
       & > .-close {
-        align-self: flex-start;
-        top: .65em;
-        transform: initial;
+        padding-top: 0!important;
+        padding-bottom: 0!important;
       }
     }
+  }
+}
+
+.-titled {
+  .a-icon {
+    top: 0.1875rem;
   }
 }

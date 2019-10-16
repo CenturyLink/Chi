@@ -2,37 +2,46 @@
   &.-banner {
     align-items: center;
     border-radius: 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
 
     & .m-alert__content {
       chi-icon {
         align-self: auto;
       }
+      & .a-h5 {
+        margin-bottom: 4px!important;
+      }
     }
 
     &.-dismiss {
       justify-content: space-between;
-
-      & > .-close {
-        &.-small {
-          padding: 0.25rem;
-        }
-
-        & .a-icon {
-          line-height: 0.75rem;
-        }
-      }
     }
 
     &.-large, //Legacy code: -large to be removed.
     &.-lg {
-      padding-bottom: .75rem;
-      padding-top: .75rem;
+      padding: .95rem 1rem;
+      & .a-icon {
+        align-self: flex-start;
+      }
+
+      & .a-h5 {
+        margin-bottom: 4px!important;
+      }
     }
+
+
     &.-md {
-      padding-bottom: 0.625rem;
-      padding-top: 0.625rem;
+      padding: 1.0635rem 1rem;
+      & > .-close {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
     }
+
+  }
+}
+
+.-titled {
+  .a-icon {
+    top: 0.1875rem;
   }
 }
