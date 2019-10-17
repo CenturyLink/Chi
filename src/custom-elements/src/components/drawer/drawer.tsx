@@ -229,11 +229,13 @@ export class Drawer {
 
     if (this.backdrop || this.backdrop === '') {
       return (
-        <div class={`a-backdrop -animated
+        <div class={`m-backdrop -animated
           ${this.backdrop === 'inverse' ? '-inverse' : ''}
           ${this._backdropAnimationClasses}
         `}>
-          {drawer}
+          <div class="m-backdrop__wrapper">
+            {drawer}
+          </div>
         </div>
       );
     } else {

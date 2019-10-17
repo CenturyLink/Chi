@@ -4,7 +4,7 @@
   @import 'components/backdrop/backdrop';
   display: inline-block;
   &[backdrop] {
-    .a-backdrop {
+    .m-backdrop {
       position: absolute;
     }
   }
