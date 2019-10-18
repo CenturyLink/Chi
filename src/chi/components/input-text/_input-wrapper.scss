@@ -55,7 +55,8 @@ $sizes: (
   )
 );
 
-.a-inputWrapper {
+.a-inputWrapper,
+.m-input__wrapper {
   input {
     &[type='email'],
     &[type='text'],

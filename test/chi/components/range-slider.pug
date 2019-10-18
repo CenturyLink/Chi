@@ -23,14 +23,14 @@ h4 States
 
   .-mb--1
     h5.test-lateral-labels With lateral labels
-    .m-formGroup
+    .m-form__wrapper
       label.-text.-mr--2 200GB
       input(type="range", class="a-input")
       label.-text.-ml--2 5TB
 
   .-mb--1
     h5.test-track-lables With labels
-    .a-inputWrapper
+    .m-input__wrapper
       input(class='a-input', type='range', min='0', max='4', step='1')
       .a-input__tick-bar
         div
@@ -51,23 +51,23 @@ h4 States
 
   .-mb--1
     h5.test-interoperability-base Base consistent rendering
-    .a-inputWrapper
+    .m-input__wrapper
       input(class="a-input", type="range")
       .a-input__progress
       .a-input__thumb
 
   .-mb--1
     h5.test-interoperability-disabled Disabled consistent rendering
-    .a-inputWrapper
+    .m-input__wrapper
       input(class="a-input", type="range", disabled)
       .a-input__progress
       .a-input__thumb
 
   .-mb--1
     h5.test-interoperability-lateral-lables With lateral labels consistent rendering
-    .m-formGroup
+    .m-form__wrapper
       label.-text.-mr--2 200GB
-      .a-inputWrapper.-w--100
+      .m-input__wrapper.-w--100
         input(type="range", class="a-input")
         .a-input__progress
         .a-input__thumb
@@ -75,7 +75,7 @@ h4 States
 
   .-mb--1
     h5.test-interoperability-track-labels With track labels
-    .a-inputWrapper
+    .m-input__wrapper
       input(class='a-input', type='range', min='0', max='4', step='1')
       .a-input__tick-bar
         div

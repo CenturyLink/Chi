@@ -143,7 +143,7 @@ export class DatePicker {
     return [
       // TODO: This input should be chi-input in the future and will pass through
       // some of its configuration attributes. Also will have an icon.
-      <div class="a-inputWrapper -icon--right">
+      <div class="m-input__wrapper -icon--right">
         <input
           id={`dp-${this._uuid}`}
           class={`a-input

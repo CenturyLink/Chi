@@ -20,11 +20,11 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             td(style='vertical-align: bottom')
               .-m--1
                 if state == 'disabled'
-                  .m-formGroup.-labeled
+                  .m-form__wrapper.-labeled
                     label.a-label(class=`-${size}` for='example') Label
                     textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
                 else
-                  .m-formGroup.-labeled
+                  .m-form__wrapper.-labeled
                     label.a-label(class=`-${size}` for='example') Label
                     textarea(class=`a-input -${style} -${state} -${size}`) Value
 
@@ -38,7 +38,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td(style='vertical-align: bottom')
               .-m--1
-                .a-inputWrapper.-icon--left
+                .m-input__wrapper.-icon--left
                   if state == 'disabled'
                     textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
                   else
@@ -48,9 +48,9 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                       use(xlink:href='#icon-atom')
             td(style='vertical-align: bottom')
               .-m--1
-                .m-formGroup.-labeled
+                .m-form__wrapper.-labeled
                   label.a-label(class=`-${size}` for='example') Label
-                  .a-inputWrapper.-icon--left
+                  .m-input__wrapper.-icon--left
                     if state == 'disabled'
                       textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
                     else
@@ -69,7 +69,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td(style='vertical-align: bottom')
               .-m--1
-                .a-inputWrapper.-icon--right
+                .m-input__wrapper.-icon--right
                   if state == 'disabled'
                     textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
                   else
@@ -92,9 +92,9 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                         use(xlink:href='#icon-circle-info-outline')
             td(style='vertical-align: bottom')
               .-m--1
-                .m-formGroup.-labeled
+                .m-form__wrapper.-labeled
                   label.a-label(class=`-${size}` for='example') Label
-                  .a-inputWrapper.-icon--right
+                  .m-input__wrapper.-icon--right
                     if state == 'disabled'
                       textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
                     else
@@ -126,7 +126,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td(style='vertical-align: bottom')
               .-m--1
-                .a-inputWrapper.-icon--left.-icon--right
+                .m-input__wrapper.-icon--left.-icon--right
                   if state == 'disabled'
                     textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
                   else
@@ -152,9 +152,9 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                         use(xlink:href='#icon-circle-info-outline')
             td(style='vertical-align: bottom')
               .-m--1
-                .m-formGroup.-labeled
+                .m-form__wrapper.-labeled
                   label.a-label(class=`-${size}` for='example') Label
-                  .a-inputWrapper.-icon--left.-icon--right
+                  .m-input__wrapper.-icon--left.-icon--right
                     if state == 'disabled'
                       textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
                     else

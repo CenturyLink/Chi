@@ -17,7 +17,7 @@ h4 Base
           h5.-m--0.a-card__title Automatic Payments
           p.-text.-mb--3 Each month, an automatic payment for the full amount of your bill will be paid to CenturyLink from the payment method of your choosing.
         div.a-col.-w-md--4
-          .m-formGroup.-labeled.-mb--1
+          .m-form__wrapper.-labeled.-mb--1
             label.a-label(for='Base') Choose a payment method
             .m-dropdown
               button.a-btn.-xl.m-dropdown__trigger(id='Base', onclick='selectPayment(id)') Checking account
@@ -32,11 +32,11 @@ h4 Base
           fieldset
             .a-grid.-noGutter
               div.a-col.-w--12.-w-md--6
-                .m-formGroup.-labeled.-mb--2.-mr-md--1
+                .m-form__wrapper.-labeled.-mb--2.-mr-md--1
                   label.a-label(for='checking-routing-number') Routing number
                   input(type="text", class="a-input -xl", id='checking-routing-number', placeholder="")
               div.a-col.-w--12.-w-md--6
-                .m-formGroup.-labeled.-mb--2
+                .m-form__wrapper.-labeled.-mb--2
                   label.a-label(for='checking-account-number') Account number
                   input(type="text", class="a-input -xl", id='checking-account-number', placeholder="")
               div.a-col.-w--12
@@ -49,11 +49,11 @@ h4 Base
           fieldset
             .a-grid.-noGutter
               div.a-col.-w--12.-w-md--6
-                .m-formGroup.-labeled.-mb--2.-mr-md--1
+                .m-form__wrapper.-labeled.-mb--2.-mr-md--1
                   label.a-label(for='savings-routing-number') Routing number
                   input(type="text", class="a-input -xl", id='savings-routing-number', placeholder="")
               div.a-col.-w--12.-w-md--6
-                .m-formGroup.-labeled.-mb--2
+                .m-form__wrapper.-labeled.-mb--2
                   label.a-label(for='savings-account-number') Account number
                   input(type="text", class="a-input -xl", id='savings-account-number', placeholder="")
               div.a-col.-w--12
@@ -66,17 +66,17 @@ h4 Base
           fieldset
             .a-grid.-noGutter
               div.a-col.-w--12
-                .m-formGroup.-labeled.-mb--2
+                .m-form__wrapper.-labeled.-mb--2
                   label.a-label(for='name') Name on card
                   input(type="text", class="a-input -xl", id='name', placeholder="")
               div.a-col.-w--12
-                .m-formGroup.-labeled.-mb--2
+                .m-form__wrapper.-labeled.-mb--2
                   div.-d--flex.-justify-content--between.-align-items--center
                     label.a-label(for='number') Card number
                     img(src='../../assets/images/autopay-credit-cards.jpg', alt="credit cards")
                   input(type="text", class="a-input -xl", id='number', placeholder="")
               div.a-col.-w-md--4.-w-sm--12
-                .m-formGroup.-labeled.-mb--2
+                .m-form__wrapper.-labeled.-mb--2
                   label.a-label(for='expiration') Expiration
                   .-d--flex
                     select(class="a-input -xl -mr--1", id='expiration')
@@ -86,7 +86,7 @@ h4 Base
                       each year in years
                         option= year
               div.a-col.-w-md--4.-w-sm--12
-                .m-formGroup.-labeled
+                .m-form__wrapper.-labeled
                   label.a-label(for='zip') Billing zip code
                   input(type="text", class="a-input -xl", id='zip', placeholder="")
   :code(lang="html")
@@ -100,7 +100,7 @@ h4 Base
             </p>
           </div>
           <div class="a-col -w-md--4">
-            <div class="m-formGroup -labeled -mb--1">
+            <div class="m-form__wrapper -labeled -mb--1">
               <label class="a-label" for="Base">Choose a payment method</label>
               <div class="m-dropdown">
                 <button class="a-btn -xl m-dropdown__trigger" id="Base">Checking account</button>
@@ -127,7 +127,7 @@ h4 Base
             <fieldset>
               <div class="a-grid -noGutter">
                 <div class="a-col -w--12 -w-md--6">
-                  <div class="m-formGroup -labeled -mb--2 -mr-md--1">
+                  <div class="m-form__wrapper -labeled -mb--2 -mr-md--1">
                     <label class="a-label" for="checking-routing-number">
                       Routing number
                     </label>
@@ -135,7 +135,7 @@ h4 Base
                   </div>
                 </div>
                 <div class="a-col -w--12 -w-md--6">
-                  <div class="m-formGroup -labeled -mb--2">
+                  <div class="m-form__wrapper -labeled -mb--2">
                     <label class="a-label" for="checking-account-number">
                       Account number
                     </label>
@@ -159,7 +159,7 @@ h4 Base
             <fieldset>
               <div class="a-grid -noGutter">
                 <div class="a-col -w--12 -w-md--6">
-                  <div class="m-formGroup -labeled -mb--2 -mr-md--1">
+                  <div class="m-form__wrapper -labeled -mb--2 -mr-md--1">
                     <label class="a-label" for="savings-routing-number">
                       Routing number
                     </label>
@@ -167,7 +167,7 @@ h4 Base
                   </div>
                 </div>
                 <div class="a-col -w--12 -w-md--6">
-                  <div class="m-formGroup -labeled -mb--2">
+                  <div class="m-form__wrapper -labeled -mb--2">
                     <label class="a-label" for="savings-account-number">
                       Account number
                     </label>
@@ -191,13 +191,13 @@ h4 Base
             <fieldset>
               <div class="a-grid -noGutter">
                 <div class="a-col -w--12">
-                  <div class="m-formGroup -labeled -mb--2">
+                  <div class="m-form__wrapper -labeled -mb--2">
                     <label class="a-label" for="name">Name on card</label>
                     <input class="a-input -xl" type="text" id="name" placeholder="">
                   </div>
                 </div>
                 <div class="a-col -w--12">
-                  <div class="m-formGroup -labeled -mb--2">
+                  <div class="m-form__wrapper -labeled -mb--2">
                     <div class="-d--flex -justify-content--between -align-items--center">
                       <label class="a-label" for="number">
                         Card number
@@ -208,7 +208,7 @@ h4 Base
                   </div>
                 </div>
                 <div class="a-col -w-md--4 -w-sm--12">
-                  <div class="m-formGroup -labeled -mb--2">
+                  <div class="m-form__wrapper -labeled -mb--2">
                     <label class="a-label" for="expiration">Expiration</label>
                     <div class="-d--flex"><select class="a-input -xl -mr--1" id="expiration">
                       <option>01</option>
@@ -259,7 +259,7 @@ h4 Base
                   </div>
                 </div>
                 <div class="a-col -w-md--4 -w-sm--12">
-                  <div class="m-formGroup -labeled">
+                  <div class="m-form__wrapper -labeled">
                     <label class="a-label" for="zip">Billing zip code</label>
                     <input class="a-input -xl" type="text" id="zip" placeholder="">
                   </div>
@@ -279,7 +279,7 @@ h4 Optional
         div
           h5.-m--0.a-card__title Automatic Payments
           p.-text Each month, an automatic payment for the full amount of your bill will be paid to CenturyLink from the payment method of your choosing.
-        .m-formGroup
+        .m-form__wrapper
           input(type="checkbox", class="a-input -toggle", id="toggle1", data-chi-epanel-action='toggle')
           label(for="toggle1")
       .m-epanel__collapse
@@ -288,7 +288,7 @@ h4 Optional
             .m-epanel__content.-p--0
               .a-grid.-noGutter
                 div.a-col.-w-md--4
-                  .m-formGroup.-labeled.-mb--1
+                  .m-form__wrapper.-labeled.-mb--1
                     label.a-label(for='Optional') Choose a payment method
                     .m-dropdown
                       button.a-btn.-xl.m-dropdown__trigger(id='Optional', onclick='selectPayment(id)') Checking account
@@ -303,11 +303,11 @@ h4 Optional
                   fieldset
                     .a-grid.-noGutter
                       div.a-col.-w--12.-w-md--6
-                        .m-formGroup.-labeled.-mb--2.-mr-md--1
+                        .m-form__wrapper.-labeled.-mb--2.-mr-md--1
                           label.a-label(for='checking-routing-number') Routing number
                           input(type="text", class="a-input -xl", id='checking-routing-number', placeholder="")
                       div.a-col.-w--12.-w-md--6
-                        .m-formGroup.-labeled.-mb--2
+                        .m-form__wrapper.-labeled.-mb--2
                           label.a-label(for='checking-account-number') Account number
                           input(type="text", class="a-input -xl", id='checking-account-number', placeholder="")
                       div.a-col.-w--12
@@ -320,11 +320,11 @@ h4 Optional
                   fieldset
                     .a-grid.-noGutter
                       div.a-col.-w--12.-w-md--6
-                        .m-formGroup.-labeled.-mb--2.-mr-md--1
+                        .m-form__wrapper.-labeled.-mb--2.-mr-md--1
                           label.a-label(for='savings-routing-number') Routing number
                           input(type="text", class="a-input -xl", id='savings-routing-number', placeholder="")
                       div.a-col.-w--12.-w-md--6
-                        .m-formGroup.-labeled.-mb--2
+                        .m-form__wrapper.-labeled.-mb--2
                           label.a-label(for='savings-account-number') Account number
                           input(type="text", class="a-input -xl", id='savings-account-number', placeholder="")
                       div.a-col.-w--12
@@ -337,17 +337,17 @@ h4 Optional
                   fieldset
                     .a-grid.-noGutter
                       div.a-col.-w--12
-                        .m-formGroup.-labeled.-mb--2
+                        .m-form__wrapper.-labeled.-mb--2
                           label.a-label(for='name') Name on card
                           input(type="text", class="a-input -xl", id='name', placeholder="")
                       div.a-col.-w--12
-                        .m-formGroup.-labeled.-mb--2
+                        .m-form__wrapper.-labeled.-mb--2
                           div.-d--flex.-justify-content--between.-align-items--center
                             label.a-label(for='number') Card number
                             img(src='../../assets/images/autopay-credit-cards.jpg', alt="credit cards")
                           input(type="text", class="a-input -xl", id='number', placeholder="")
                       div.a-col.-w-md--4.-w-sm--12
-                        .m-formGroup.-labeled.-mb--2
+                        .m-form__wrapper.-labeled.-mb--2
                           label.a-label(for='expiration') Expiration
                           .-d--flex
                             select(class="a-input -xl -mr--1", id='expiration')
@@ -357,7 +357,7 @@ h4 Optional
                               each year in years
                                 option= year
                       div.a-col.-w-md--4.-w-sm--12
-                        .m-formGroup.-labeled
+                        .m-form__wrapper.-labeled
                           label.a-label(for='zip') Billing zip code
                           input(type="text", class="a-input -xl", id='zip', placeholder="")
   :code(lang="html")
@@ -369,7 +369,7 @@ h4 Optional
             <p class="-text">Each month, an automatic payment for the full amount of your bill will be paid to CenturyLink
               from the payment method of your choosing.</p>
           </div>
-          <div class="m-formGroup">
+          <div class="m-form__wrapper">
             <input class="a-input -toggle" type="checkbox" id="toggle1" data-chi-epanel-action="toggle">
             <label for="toggle1"></label>
           </div>
@@ -380,7 +380,7 @@ h4 Optional
               <div class="m-epanel__content -p--0">
                 <div class="a-grid -noGutter">
                   <div class="a-col -w-md--4">
-                    <div class="m-formGroup -labeled -mb--1">
+                    <div class="m-form__wrapper -labeled -mb--1">
                       <label class="a-label" for="method">Choose a payment method</label>
                       <div class="m-dropdown">
                         <button class="a-btn -xl m-dropdown__trigger" id="Optional">
@@ -409,7 +409,7 @@ h4 Optional
                     <fieldset>
                       <div class="a-grid -noGutter">
                         <div class="a-col -w--12 -w-md--6">
-                          <div class="m-formGroup -labeled -mb--2 -mr-md--1">
+                          <div class="m-form__wrapper -labeled -mb--2 -mr-md--1">
                             <label class="a-label" for="checking-routing-number">
                               Routing number
                             </label>
@@ -417,7 +417,7 @@ h4 Optional
                           </div>
                         </div>
                         <div class="a-col -w--12 -w-md--6">
-                          <div class="m-formGroup -labeled -mb--2">
+                          <div class="m-form__wrapper -labeled -mb--2">
                             <label class="a-label" for="checking-account-number">
                               Account number
                             </label>
@@ -441,7 +441,7 @@ h4 Optional
                     <fieldset>
                       <div class="a-grid -noGutter">
                         <div class="a-col -w--12 -w-md--6">
-                          <div class="m-formGroup -labeled -mb--2 -mr-md--1">
+                          <div class="m-form__wrapper -labeled -mb--2 -mr-md--1">
                             <label class="a-label" for="savings-routing-number">
                               Routing number
                             </label>
@@ -449,7 +449,7 @@ h4 Optional
                           </div>
                         </div>
                         <div class="a-col -w--12 -w-md--6">
-                          <div class="m-formGroup -labeled -mb--2">
+                          <div class="m-form__wrapper -labeled -mb--2">
                             <label class="a-label" for="savings-account-number">
                               Account number
                             </label>
@@ -473,13 +473,13 @@ h4 Optional
                     <fieldset>
                       <div class="a-grid -noGutter">
                         <div class="a-col -w--12">
-                          <div class="m-formGroup -labeled -mb--2">
+                          <div class="m-form__wrapper -labeled -mb--2">
                             <label class="a-label" for="name">Name on card</label>
                             <input class="a-input -xl" id="name" type="text" placeholder="">
                           </div>
                         </div>
                         <div class="a-col -w--12">
-                          <div class="m-formGroup -labeled -mb--2">
+                          <div class="m-form__wrapper -labeled -mb--2">
                             <div class="-d--flex -justify-content--between -align-items--center">
                               <label class="a-label" for="number">
                                 Card number
@@ -490,7 +490,7 @@ h4 Optional
                           </div>
                         </div>
                         <div class="a-col -w-md--4 -w-sm--12">
-                          <div class="m-formGroup -labeled -mb--2">
+                          <div class="m-form__wrapper -labeled -mb--2">
                             <label class="a-label" for="expiration">Expiration</label>
                             <div class="-d--flex">
                               <select class="a-input -xl -mr--1" id="expiration">
@@ -544,7 +544,7 @@ h4 Optional
                           </div>
                         </div>
                         <div class="a-col -w-md--4 -w-sm--12">
-                          <div class="m-formGroup -labeled">
+                          <div class="m-form__wrapper -labeled">
                             <label class="a-label" for="zip">
                               Billing zip code
                             </label>

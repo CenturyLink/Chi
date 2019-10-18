@@ -8,12 +8,12 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--3
-    .a-inputWrapper
+    .m-input__wrapper
       input(class="a-input", type="range")
       .a-input__progress
       .a-input__thumb
   :code(lang="html")
-    <div class="a-inputWrapper">
+    <div class="m-input__wrapper">
       <input class="a-input" type="range">
       <div class="a-input__progress"></div>
       <div class="a-input__thumb"></div>
@@ -22,12 +22,12 @@ h4 Base
 h4 Disabled
 .example.-mb--3
   .-p--3
-    .a-inputWrapper
+    .m-input__wrapper
       input(class="a-input", type="range", disabled)
       .a-input__progress
       .a-input__thumb
   :code(lang="html")
-    <div class="a-inputWrapper">
+    <div class="m-input__wrapper">
       <input class="a-input" type="range" disabled>
       <div class="a-input__progress"></div>
       <div class="a-input__thumb"></div>
@@ -36,17 +36,17 @@ h4 Disabled
 h4 With Labels
 .example.-mb--3
   .-p--3
-    .m-formGroup
+    .m-form__wrapper
       label.-text.-mr--2 200GB
-      .a-inputWrapper.-w--100
+      .m-input__wrapper.-w--100
         input(type="range", class="a-input")
         .a-input__progress
         .a-input__thumb
       label.-text.-ml--2 5TB
   :code(lang="html")
-    <div class="m-formGroup">
+    <div class="m-form__wrapper">
       <label class="-text -mr--2">200GB</label>
-      <div class="a-inputWrapper -w--100">
+      <div class="m-input__wrapper -w--100">
         <input class="a-input" type="range">
         <div class="a-input__progress"></div>
         <div class="a-input__thumb"></div>
@@ -56,7 +56,7 @@ h4 With Labels
 h4 Radio buttons as range slider
 .example.-mb--3
   .-p--3
-    .a-inputWrapper
+    .m-input__wrapper
       input(class='a-input', type='range', min='0', max='4', step='1')
       .a-input__tick-bar
         div
@@ -78,7 +78,7 @@ h4 Radio buttons as range slider
       .a-input__thumb
 
   :code(lang="html")
-    <div class="a-inputWrapper">
+    <div class="m-input__wrapper">
       <input class="a-input" type="range" min="0" max="4" step="1">
       <div class="a-input__tick-bar">
         <div>
@@ -110,7 +110,7 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.rangeSlider(document.querySelectorAll('.a-inputWrapper > input[type="range"]'));
+      chi.rangeSlider(document.querySelectorAll('.m-input__wrapper > input[type="range"]'));
     }
   );
 

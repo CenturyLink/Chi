@@ -26,7 +26,8 @@ $sizes: (
   )
 );
 
-.a-inputWrapper.-floatingLabel {
+.a-inputWrapper.-floatingLabel,
+.m-input__wrapper.-floatingLabel {
   & > input, & > select {
     @each $type in map-keys($sizes) {
       &.-#{$type} {

@@ -76,7 +76,8 @@ $m-inputNumber: (
   )
 );
 
-.a-inputWrapper {
+.a-inputWrapper,
+.m-input__wrapper {
   input {
     &[type='number'] {
       &.a-input {

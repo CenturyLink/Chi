@@ -3,11 +3,13 @@
 
 $border: 0.0625rem;
 
-.a-inputWrapper {
+.a-inputWrapper,
+.m-input__wrapper {
   position: relative;
 }
 
-.m-formGroup {
+.m-formGroup,
+.m-form__wrapper {
   display: flex;
   position: relative;
 
@@ -22,12 +24,12 @@ $border: 0.0625rem;
     }
   }
 
-  &__inline {
+  &.-label-inline {
     align-items: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: row !important;
     justify-content: start;
-    margin-bottom: 0.5rem;
+
     & .a-label {
       margin-bottom: 0;
       padding-right: 0.5rem;
@@ -58,6 +60,21 @@ $border: 0.0625rem;
       &:last-child {
         border-bottom: 0;
       }
+    }
+  }
+
+  & .m-label__wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: start;
+    margin-bottom: 0.5rem;
+
+    .a-label {
+      margin-bottom: 0;
+    }
+
+    .a-icon {
+      margin-left: 0.5rem;
     }
   }
 }

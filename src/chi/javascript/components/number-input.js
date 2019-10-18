@@ -2,7 +2,7 @@ import {Component} from "../core/component";
 import {Util} from "../core/util.js";
 
 const COMPONENT_SELECTOR =
-  '.a-inputWrapper > input.a-input[type="number"], ' +
+  '.m-input__wrapper > input.a-input[type="number"], ' +
   '.m-inputNumber > input.a-input[type="number"]';
 const COMPONENT_TYPE = "numberInput";
 const DEFAULT_CONFIG = {autofix: true};

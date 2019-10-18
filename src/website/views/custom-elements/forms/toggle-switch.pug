@@ -12,7 +12,7 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--3
-    .m-formGroup
+    .m-form__wrapper
       chi-toggle-switch(toggle-id='toggle1')
   :code(lang="html")
     <chi-toggle-switch toggle-id="toggle1"></chi-toggle-switch>
@@ -20,7 +20,7 @@ h4 Base
 h4 Disabled
 .example.-mb--3
   .-p--3
-    .m-formGroup
+    .m-form__wrapper
       chi-toggle-switch(toggle-id='toggle2', disabled)
   :code(lang="html")
     <chi-toggle-switch toggle-id="toggle2" disabled></chi-toggle-switch>
@@ -30,42 +30,42 @@ p.-text
   | By default, toggle switches are labeled with text <code>ON/OFF</code>. To disable this, use the <code>no-text</code> attribute.
 .example.-mb--3
   .-p--3
-    .m-formGroup
+    .m-form__wrapper
       chi-toggle-switch(toggle-id='toggle3', no-text)
   :code(lang="html")
     <chi-toggle-switch toggle-id="toggle3" no-text></chi-toggle-switch>
 
 h4 Stacked
 p.-text
-  | Group toggle switches in <code>m-formGroup</code> for easy stacking.
+  | Group toggle switches in <code>m-form__wrapper</code> for easy stacking.
 .example.-mb--3
   .-p--3
-    .m-formGroup.-mb--2
+    .m-form__wrapper.-mb--2
       chi-toggle-switch(toggle-id='toggle4', no-text, label='Notifications')
-    .m-formGroup
+    .m-form__wrapper
       chi-toggle-switch(toggle-id='toggle5', no-text, label='Outage Alerts')
   :code(lang="html")
-    <div class="m-formGroup -mb--2">
+    <div class="m-form__wrapper -mb--2">
       <chi-toggle-switch toggle-id="toggle4" no-text label="Notifications"></chi-toggle-switch>
     </div>
-    <div class="m-formGroup">
+    <div class="m-form__wrapper">
       <chi-toggle-switch toggle-id="toggle5" no-text label="Outage Alerts"></chi-toggle-switch>
     </div>
 
 h4 Inline
 p.-text
-  | Apply the <code>-inline</code> class to <code>m-formGroup</code> for displaying toggle switches inline.
+  | Apply the <code>-inline</code> class to <code>m-form__wrapper</code> for displaying toggle switches inline.
 .example.-mb--3
   .-p--3.-d--flex
-    .m-formGroup.-inline.-mr--3
+    .m-form__wrapper.-inline.-mr--3
       chi-toggle-switch(toggle-id='toggle6', no-text, label='Notifications')
-    .m-formGroup.-inline
+    .m-form__wrapper.-inline
       chi-toggle-switch(toggle-id='toggle7', no-text, label='Outage Alerts')
   :code(lang="html")
-    <div class="m-formGroup -inline -mr--3">
+    <div class="m-form__wrapper -inline -mr--3">
       <chi-toggle-switch toggle-id="toggle6" no-text label="Notifications"></chi-toggle-switch>
     </div>
-    <div class="m-formGroup -inline">
+    <div class="m-form__wrapper -inline">
       <chi-toggle-switch toggle-id="toggle7" no-text label="Outage Alerts"></chi-toggle-switch>
     </div>
 

@@ -4,7 +4,7 @@ title: Radio
 .test-states
   each state, index in ['default', 'hover', 'focus', 'checked', 'disabled']
     h5= `Radio / ${state}`
-    .m-formGroup.-mb--1
+    .m-form__wrapper.-mb--1
       input.a-input(
         type="radio"
         id=`radio-${index}`
@@ -26,9 +26,9 @@ h2 Radio Button List
 .test-states
   each state, index in ['default', 'hover', 'focus', 'disabled']
     h5= `Radio / ${state}`
-    ul.m-formGroup.-list(style="max-width:20rem")
+    ul.m-form__wrapper.-list(style="max-width:20rem")
       each element in [1, 2, 3, 4, 5]
-        li.m-formGroup
+        li.m-form__wrapper
           input.a-input(
           type="radio"
           id=`radio--${element}`
