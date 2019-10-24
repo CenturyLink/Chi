@@ -10,6 +10,8 @@ html(lang="en")
         link(rel="stylesheet", href=`${rootPath}assets/styles/chi-docs.css`)
         script(src=`${rootPath}assets/scripts/globalConfigs.js`)
         script(src=`${rootPath}assets/scripts/chiVersionCheck.js`)
+        script(src='https://cdn.jsdelivr.net/npm/algoliasearch@3.35.0/dist/algoliasearchLite.min.js', integrity='', crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/instantsearch.js@3.4.0/dist/instantsearch.production.min.js', integrity='sha256-pM0n88cBFRHpSn0N26ETsQdwpA7WAXJDvkHeCLh3ujI=', crossorigin='anonymous')
 
         if styles
             each style in styles
@@ -19,6 +21,7 @@ html(lang="en")
       #docs-container.docs-container
         include partials/header
 
+        script(src=`${rootPath}assets/scripts/algoliaSearch.js`)
         section.docs-body
             include partials/aside
 
