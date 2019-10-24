@@ -17,7 +17,7 @@ h4 Base
 
 .example.-mb--3
   .-p--3
-    .m-form__wrapper
+    .m-form__item
       .m-input__wrapper
         input.a-input(type="number", value="0")
         button
@@ -32,7 +32,7 @@ h4 Base
 h4 Disabled
 .example.-mb--3
   .-p--3
-    .m-form__wrapper
+    .m-form__item
       .m-input__wrapper
         input.a-input(type="number", value="0", disabled)
         button
@@ -52,7 +52,7 @@ p.-text
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
-      .m-form__wrapper.-inline.-mr--3
+      .m-form__item.-inline.-mr--3
         .m-input__wrapper
           input.a-input(type="number", class=`-${size}`, value="0")
           button

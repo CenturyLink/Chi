@@ -58,7 +58,7 @@ $sizes: (
               }
 
               & .m-formGroup,
-              & .m-form__wrapper {
+              & .m-form__item {
                 font-weight: 600;
                 margin: 0.5rem 0 0 0.5rem;
 
@@ -71,7 +71,7 @@ $sizes: (
                 margin-left: 2.5rem;
                 padding: 0.5rem 0 0.5rem 0;
               }
-              & div:not(.m-form__wrapper) {
+              & div:not(.m-form__item) {
                 margin-left: 2.5rem;
                 padding: 0.5rem 0 0.5rem 0;
               }

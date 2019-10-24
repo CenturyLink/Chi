@@ -15,7 +15,7 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--3
-    .m-form__wrapper
+    .m-form__item
       input.a-input(type="file", id="file01")
       label(for="file01") No file chosen
   :code(lang="html")
@@ -31,7 +31,7 @@ p.-text
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
       div(class=`a-col -w--12 -p--2`)
-        .m-form__wrapper
+        .m-form__item
           input.a-input(type="file", class=`-${size}`, id="file01")
           label(for="file01") No file chosen
   :code(lang='html')
