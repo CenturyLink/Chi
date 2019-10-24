@@ -12,7 +12,7 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--3
-    .m-form__wrapper(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder")
   :code(lang="html")
     <input type="text" class="a-input" placeholder="Placeholder">
@@ -20,7 +20,7 @@ h4 Base
 h4 Disabled
 .example.-mb--3
   .-p--3
-    .m-form__wrapper(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       input(type="text", class="a-input", value="Sample Text", disabled)
   :code(lang="html")
     <input type="text" class="a-input" value="Sample Text" disabled>
@@ -30,11 +30,11 @@ h3 Labels
 h4 Base
 .example.-mb--3
   .-p--3
-    .m-form__wrapper.-labeled(style="max-width:20rem")
+    .m-form__item.-labeled(style="max-width:20rem")
       label.a-label(for='example') Label
       input(type="text", class="a-input", id='example', placeholder="Placeholder")
   :code(lang="html")
-    <div class="m-form__wrapper -labeled">
+    <div class="m-form__item -labeled">
       <label class="a-label" for="example">Label</label>
       <input type="text" class="a-input" id="example" placeholder="Placeholder">
     </div>
@@ -42,11 +42,11 @@ h4 Base
 h4 Inline
 .example.-mb--3
   .-p--3
-    .m-form__wrapper.-label-inline.-labeled(style="max-width:20rem")
+    .m-form__item.-label-inline.-labeled(style="max-width:20rem")
       label.a-label(for='example') Label
       input(type="text", class="a-input", id='example', placeholder="Placeholder")
   :code(lang="html")
-    <div class="m-form__wrapper -label-inline">
+    <div class="m-form__item -label-inline">
       <label class="a-label" for="example">Label</label>
       <input class="a-input" type="text" id="example" placeholder="Placeholder" />
     </div>
@@ -54,12 +54,12 @@ h4 Inline
 h4 Inline - width controlled using %
 .example.-mb--3
   .-p--3
-    .m-form__wrapper.-label-inline.-labeled(style="max-width:40rem")
+    .m-form__item.-label-inline.-labeled(style="max-width:40rem")
       label.a-label.-w--50(for='example') Label width 50%
       .-w--50
         input(type="text", class="a-input", id='example', placeholder="Placeholder")
   :code(lang="html")
-    <div class="m-form__wrapper -label-inline">
+    <div class="m-form__item -label-inline">
       <label class="a-label -w--50" for="example">Label</label>
       <div class="-w--50">
         <input class="a-input" type="text" id="example" placeholder="Placeholder" />
@@ -69,12 +69,12 @@ h4 Inline - width controlled using %
 h4 Inline - width controlled using grid
 .example.-mb--3
   .-p--3
-    .m-form__wrapper.-label-inline.-labeled.a-grid.-noGutter(style="max-width:40rem")
+    .m-form__item.-label-inline.-labeled.a-grid.-noGutter(style="max-width:40rem")
       label.a-label.a-col.-w--3(for='example') Label width 3 columns
       .a-col.-w--9
         input(type="text", class="a-input", id='example', placeholder="Placeholder")
   :code(lang="html")
-    <div class="m-form__wrapper -label-inline a-grid -noGutter">
+    <div class="m-form__item -label-inline a-grid -noGutter">
       <label class="a-label -w--3" for="example">Label</label>
       <div class="-w--9">
         <input class="a-input" type="text" id="example" placeholder="Placeholder" />
@@ -84,13 +84,13 @@ h4 Inline - width controlled using grid
 h4 With Label and icon
 .example.-mb--3
   .-p--3
-    .m-form__wrapper.-labeled(style="max-width:20rem")
+    .m-form__item.-labeled(style="max-width:20rem")
       .m-label__wrapper
         label.a-label(for='example') Label
         i.a-icon.icon-circle-info-outline.-text--muted
       input(type="text", class="a-input", id='example', placeholder="Placeholder")
   :code(lang="html")
-    <div class="m-form__wrapper -labeled">
+    <div class="m-form__item -labeled">
       <div class="m-label__wrapper">
         <label class="a-label" for="example">Label</label>
         <i class="a-icon icon-circle-info-outline -text--muted"></i>
@@ -146,14 +146,14 @@ h4 Left + Right Aligned
 h4 Left + Right Aligned with label
 .example.-mb--3
   .-p--3
-    .m-form__wrapper.-labeled
+    .m-form__item.-labeled
       label.a-label(for='example') Label
       .m-input__wrapper.-icon--left.-icon--right(style="max-width:20rem")
         input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
         i.a-icon.icon-search.-text--muted
         i.a-icon.icon-check-alt.-text--success
   :code(lang="html")
-    <div class="m-form__wrapper -labeled">
+    <div class="m-form__item -labeled">
       <label class="a-label">Label</label>
       <div class="m-input__wrapper -icon--left -icon--right">
         <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
@@ -170,7 +170,7 @@ p.-text
 h4 Success
 .example.-mb--3
   .-p--3
-    .m-form__wrapper(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
   :code(lang="html")
     <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
@@ -189,7 +189,7 @@ h4 Success
 h4 Warning
 .example.-mb--3
   .-p--3
-    .m-form__wrapper(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
   :code(lang="html")
     <input type="text" class="a-input -warning" placeholder="Placeholder" value="Sample Text">
@@ -208,7 +208,7 @@ h4 Warning
 h4 Danger
 .example.-mb--3
   .-p--3
-    .m-form__wrapper(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
   :code(lang="html")
     <input type="text" class="a-input -danger" placeholder="Placeholder" value="Sample Text">
@@ -233,7 +233,7 @@ p.-text
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
       div(class=`-d--flex -flex--row -align-items--end -p--2`)
-        .m-form__wrapper(style="width:20rem")
+        .m-form__item(style="width:20rem")
           input(type="text", class=`a-input -${size} -mr--3`, placeholder="Sample Text")
   :code(lang='html')
     <input type="text" class="a-input -sm" placeholder="Sample Text">
