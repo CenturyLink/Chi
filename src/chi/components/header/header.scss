@@ -147,8 +147,12 @@
         box-sizing: border-box;
       }
       .search_result_a .title {
-        font-size: 12px;
+        font-size: $text;
         font-weight: bold;
+        span.search_result_category {
+          font-weight: normal;
+          color: set-color(grey, 40);
+        }
       }
       .search_result_a .description {
         display: block;
@@ -158,9 +162,8 @@
         text-overflow: ellipsis;
         transition-duration: 0.2s;
       }
-      #no_results_found {
-        display: none;
-        font-size: 12px;
+      .no_results_found {
+        font-size: $text-smaller;
         color: set-color(grey, 50);
       }
     }
