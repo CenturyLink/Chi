@@ -100,7 +100,7 @@ export class Popover {
       }
       if (referenceCandidates.length > 1) {
         throw new Error(
-          `More than one reference candidates were found. Not able to discern which one is the preferred. `
+          `Found ${referenceCandidates.length} reference candidates matching ${newValue}. Not able to discern which one is the preferred.`
         );
       }
     }
