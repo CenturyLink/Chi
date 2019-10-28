@@ -34,6 +34,11 @@ export class DatePicker {
   @Prop({ reflectToAttr: true }) format = 'MM/DD/YYYY';
 
   /**
+   *  to disable chi-date-picker.
+   */
+  @Prop({ reflectToAttr: true }) disabled = false;
+
+  /**
    * Indicates whether the dropdown calendar is open or closed
    */
   @Prop({ reflectToAttr: true, mutable: true }) active = false;
@@ -140,10 +145,32 @@ export class DatePicker {
   }
 
   render() {
+    const chiPopover = (
+      <chi-popover
+        id="example-4-be-popover"
+        position="bottom"
+        reference={`#dp-${this._uuid}`}
+        prevent-auto-hide
+        active={this.active}
+      >
+        <chi-date
+          min={this.min}
+          max={this.max}
+          locale={this.locale}
+          value={this.value}
+          format={this.format}
+        />
+      </chi-popover>
+    );
+
     return [
       // TODO: This input should be chi-input in the future and will pass through
       // some of its configuration attributes. Also will have an icon.
-      <div class="a-inputWrapper -icon--right">
+      <div
+        class={`${
+          this.disabled ? '-disabled' : ''
+          } a-inputWrapper -icon--right`}
+      >
         <input
           id={`dp-${this._uuid}`}
           class={`a-input
@@ -155,27 +182,14 @@ export class DatePicker {
           onChange={() => {
             this._checkDate();
           }}
+          disabled={this.disabled}
         />
         <div class="a-icon -text--muted">
           <svg>
             <use xlinkHref="#icon-date"></use>
           </svg>
         </div>
-        <chi-popover
-          id="example-4-be-popover"
-          position="bottom"
-          reference={`#dp-${this._uuid}`}
-          prevent-auto-hide
-          active={this.active}
-        >
-          <chi-date
-            min={this.min}
-            max={this.max}
-            locale={this.locale}
-            value={this.value}
-            format={this.format}
-          />
-        </chi-popover>
+        {!this.disabled ? chiPopover : ''}
       </div>
     ];
   }

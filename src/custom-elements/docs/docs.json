@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-10-15T01:24:22",
+  "timestamp": "2019-10-28T12:26:57",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
@@ -340,6 +340,18 @@
           "attr": "active",
           "reflectToAttr": true,
           "docs": "Indicates whether the dropdown calendar is open or closed",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "to disable chi-date-picker.",
           "docsTags": [],
           "default": "false",
           "optional": false,
