@@ -22,10 +22,7 @@ $mondayStartingWeek: (
 
 .a-inputWrapper.-disabled {
   pointer-events: none;
-  & .a-input {
-    opacity: 0.65;
-  }
-  & .a-icon {
+  & .a-input, & .a-icon {
     opacity: 0.65;
   }
 }

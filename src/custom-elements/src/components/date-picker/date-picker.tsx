@@ -168,7 +168,7 @@ export class DatePicker {
       // some of its configuration attributes. Also will have an icon.
       <div
         class={`${
-          this.disabled ? '-disabled' : ''
+          this.disabled && '-disabled'
           } a-inputWrapper -icon--right`}
       >
         <input
@@ -189,7 +189,7 @@ export class DatePicker {
             <use xlinkHref="#icon-date"></use>
           </svg>
         </div>
-        {!this.disabled ? chiPopover : ''}
+        {!this.disabled && chiPopover}
       </div>
     ];
   }
