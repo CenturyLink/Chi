@@ -36,11 +36,23 @@ $spinner-sizes: (
   }
 }
 
+// Legacy code start
 .a-backdrop {
   & > .a-spinner {
     transform-origin: center;
     width: 4rem;
     height: 4rem;
+  }
+}
+// Legacy code end
+
+.m-backdrop {
+  &__wrapper {
+    & > .a-spinner {
+      transform-origin: center;
+      width: 4rem;
+      height: 4rem;
+    }
   }
 }
 

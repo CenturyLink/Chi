@@ -31,13 +31,13 @@ describe('Spinner', () => {
 
   it('Base backdrop spinner should have appropriate class', () => {
     cy.get('@base-backdrop-spinner')
-      .should('match', 'div.a-backdrop')
+      .should('match', 'div.m-backdrop')
       .and('not.have.class', '-inverse');
   });
 
   it('Inverse backdrop spinner should have appropriate class', () => {
     cy.get('@inverse-backdrop-spinner')
-      .should('match', 'div.a-backdrop')
+      .should('match', 'div.m-backdrop')
       .and('have.class', '-inverse');
   });
 
