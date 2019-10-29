@@ -22,9 +22,6 @@ $mondayStartingWeek: (
 
 .a-inputWrapper.-disabled {
   pointer-events: none;
-  & .a-input, & .a-icon {
-    opacity: 0.65;
-  }
 }
 
 .m-datepicker {
