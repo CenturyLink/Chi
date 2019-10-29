@@ -61,7 +61,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item.-labeled
+                .m-form__item.-bold-label
                   +label(size)
                   +input(style, state, size, disabled, id='example')
 
@@ -89,7 +89,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item.-labeled
+                .m-form__item.-bold-label
                   +label(size)
                   .m-input__wrapper.-icon--left
                     +input(style, state, size, disabled, id='example')
@@ -134,7 +134,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item.-labeled
+                .m-form__item.-bold-label
                   +label(size)
                   .m-input__wrapper.-icon--right
                     +input(style, state, size, disabled, id='example')
@@ -195,7 +195,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item.-labeled
+                .m-form__item.-bold-label
                   +label(size)
                   .m-input__wrapper.-icon--left.-icon--right
                     +input(style, state, size, disabled, id='example')
@@ -227,10 +227,10 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item.-labeled.-label-inline
-                  +label(size)
-                  .m-input__wrapper
-                    +input(style, state, size, disabled, id='example')
+                .m-form__item.-row.-bold-label
+                  label.a-label.-mr--1(class=`-${size}`)
+                    | Label
+                  +input(style, state, size, disabled, id='example')
 
   div(class=`test-${size}-label-with-icon`)
     span.a-h2= `Text Input + label with icon ${size}`
@@ -242,7 +242,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item.-labeled
+                .m-form__item.-bold-label
                   .m-label__wrapper
                     +label(size)
                     i.a-icon.icon-circle-info-outline.-text--muted

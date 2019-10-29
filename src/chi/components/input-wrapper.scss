@@ -8,35 +8,29 @@ $border: 0.0625rem;
   position: relative;
 }
 
-.m-formGroup,
 .m-form__item {
   display: flex;
+  flex-direction: column;
   position: relative;
 
-  &.-labeled {
-    flex-direction: column;
+  & label {
+    font-weight: normal;
+  }
+  
+  & .a-label {
+    font-weight: 600;
   }
 
-  &:not(.-labeled) {
-    & label {
-      font-weight: normal;
-      margin-bottom: 0;
-    }
-  }
-
-  &.-label-inline {
+  &.-row {
     align-items: center;
-    display: flex;
-    flex-direction: row !important;
+    flex-direction: row;
     justify-content: start;
-
-    & .a-label {
+    & label {
       margin-bottom: 0;
-      padding-right: 0.5rem;
     }
   }
 
-  &.-inline {
+  &.-item-inline {
     align-items: center;
     display: inline-flex;
     margin-right: 0.5rem;
@@ -78,3 +72,48 @@ $border: 0.0625rem;
     }
   }
 }
+
+/// Legacy code starts here
+.m-formGroup {
+  display: flex;
+  position: relative;
+
+  &.-labeled {
+    flex-direction: column;
+  }
+
+  &:not(.-labeled) {
+    & label {
+      font-weight: normal;
+      margin-bottom: 0;
+    }
+  }
+
+  &.-inline {
+    align-items: center;
+    display: inline-flex;
+    margin-right: 0.5rem;
+  }
+
+  &.-list {
+    border: $border solid set-color(grey, 30);
+    border-radius: $border-radius;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+
+    & li {
+      border-bottom: $border solid set-color(grey, 20);
+      flex: 1 0 auto;
+      line-height: 1rem;
+      padding: (0.5rem - $border) (1rem - $border);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+// Legacy code ends here
