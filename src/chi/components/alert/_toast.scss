@@ -1,10 +1,7 @@
 .m-alert {
   &.-toast {
-    align-items: flex-start;
-    justify-content: space-between;
     max-width: 20rem;
-    padding-bottom: 0.75rem;
-    padding-top: 0.75rem;
+    padding-right: 1rem;
 
     & .m-alert__content {
       & .a-icon {
@@ -12,7 +9,7 @@
       }
 
       & .a-h5 {
-        margin-bottom: 4px!important;
+        margin-bottom: 0.25rem !important;
       }
 
       @each $size in $hr-sizes {
@@ -27,11 +24,5 @@
         }
       }
     }
-  }
-}
-
-.-titled {
-  .a-icon {
-    top: .33rem;
   }
 }

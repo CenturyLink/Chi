@@ -1,47 +1,30 @@
 .m-alert {
   &.-banner {
-    align-items: center;
+    background-color: set-color(white);
     border-radius: 0;
+    border: none;
+    border-top: 0.0625rem solid transparent;
+    border-bottom: 0.0625rem solid set-color(grey, 30);
+    box-shadow: none;
 
-    & .m-alert__content {
-      chi-icon {
-        align-self: auto;
-      }
-      & .a-h5 {
-        margin-bottom: 4px!important;
-      }
+    &.-borderless {
+      border-color: transparent;
     }
 
-    &.-dismiss {
-      justify-content: space-between;
+    .m-alert__content {
     }
 
     &.-large, //Legacy code: -large to be removed.
     &.-lg {
-      padding: .95rem 1rem;
-      & .a-icon {
-        align-self: flex-start;
-      }
-
-      & .a-h5 {
-        margin-bottom: 4px!important;
-      }
     }
 
 
     &.-md {
-      padding: 1.0635rem 1rem;
       & > .-close {
         padding-top: 0;
         padding-bottom: 0;
       }
     }
 
-  }
-}
-
-.-titled {
-  .a-icon {
-    top: 0.1875rem;
   }
 }

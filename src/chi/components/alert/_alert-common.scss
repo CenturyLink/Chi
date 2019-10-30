@@ -28,9 +28,9 @@ $states: (
     banner-color: set-color(navy, 20),
     banner-border-color: set-color(navy, 30)
   ),
-  muted: (    
+  muted: (
     color: set-color(grey, 60),
-    banner-color: set-color(white),
+    banner-color: set-color(grey, 20),
     border-left-color: set-color(grey, 60),
     banner-border-color: set-color(grey, 30)
   )
@@ -42,23 +42,32 @@ $states: (
   border-radius: $border-radius;
   border-style: solid;
   border-width: 0.0625rem;
+  box-shadow: map-get($shadow, 1);
   color: $text-color;
-  display: flex;
+  display: grid;
   font-family: $font-family;
   font-size: $text;
+  grid-template-columns: auto 1fr auto;
   line-height: $line-height-small;
-  padding: 0.8133rem 1rem;
+  padding: 0.8125rem 1.5rem;
   position: relative;
-  box-shadow: map-get($shadow, 1);
+  text-align: left;
 
-  & i {
+  & > i.a-icon, .m-alert__icon {
     &:not(.icon-x) {
+      grid-column-start: 1;
       margin-right: 1rem;
+      margin-top: 0.125rem;
+      margin-bottom: 0.125rem;
     }
   }
 
-  & .a-icon {
-    margin-right: 1rem;
+  .m-alert__text,
+  p,
+  .-text {
+    font-size: $text;
+    line-height: 1.25rem;
+    margin: 0;
   }
 
   .a-btn {
@@ -67,45 +76,120 @@ $states: (
     }
   }
 
-  &.-center {
-    align-items: center;
-    justify-content: center;
-  }
-
   @each $state in map-keys($states) {
     &.-#{$state} {
-      border-left: none;
       color: set-color(grey, 100);
-      &.-#{$state}.-bubble::before, &.-#{$state}.-toast::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 4px;
-        height: 100%;
-        border-radius: 4px;
-        background-color: map-get(map-get($states, $state), border-left-color);
+      &:not(.-banner) {
+        &::before {
+          content: "";
+          position: absolute;
+          left: -0.0625rem;
+          top: 0;
+          width: 0.25rem;
+          height: 100%;
+          border-radius: 0.25rem;
+          background-color: map-get(map-get($states, $state), border-left-color);
+        }
       }
-      &.-#{$state}.-banner {
+      &.-banner {
         background-color: map-get(map-get($states, $state), banner-color);
-        border: none;
-        border-top: 1px solid transparent;
-        border-bottom: 1px solid map-get(map-get($states, $state), banner-border-color);
-        box-shadow: none;
+        border-bottom-color: map-get(map-get($states, $state), banner-border-color);
       }
-      &.-#{$state} .a-h5 {
+      &.-center {
+        &::before {
+          left: 0;
+          top: -0.0625rem;
+          height: 0.125rem;
+          width: 100%;
+        }
+      }
+      .m-alert__icon,
+      .a-h5, //Legacy code: to be removed.
+      .m-alert__title {
         color: map-get(map-get($states, $state), color);
       }
     }
   }
 
-  &__content {
-    align-items: center;
+  &.-center {
     display: flex;
     justify-content: center;
+  }
 
-    & .a-h5 {
+  &.-dismiss {
+    padding-right: 1rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    grid-column-start: 2;
+
+    .m-alert__title {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.25rem;
+      margin-bottom: 0.25rem;
+
+      &:first-letter {
+        text-transform: capitalize;
+      }
+    }
+
+    .a-h5, //Legacy code: to be removed.
+    .m-alert__title {
       margin-top: 0;
     }
+
+    .m-alert__actions {
+      padding-top: 0.5rem;
+
+      > .a-btn {
+        margin-right: 1rem;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  & > .a-btn {
+    &.-close,
+    &.m-alert__dismiss-button {
+      align-self: flex-start;
+      transform: initial;
+      grid-column-start: 3;
+      padding: 0;
+    }
+    &.-sm {
+      &.-close,
+      &.m-alert__dismiss-button {
+        padding: 0.1875rem;
+      }
+    }
+  }
+
+  &.-large, //Legacy code: -large to be removed.
+  &.-lg {
+    padding: 1.0625rem 1.5rem;
+
+    .m-alert__content {
+      .m-alert__title {
+        line-height: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .m-alert__actions {
+        padding-top: 1rem;
+      }
+    }
+  }
+
+  &.-md {
+    padding: 1.0625rem 1.5rem;
+  }
+
+  &.-sm {
+    padding: 0.8125rem 1.5rem;
   }
 }

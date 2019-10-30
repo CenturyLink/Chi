@@ -279,20 +279,20 @@ $sizes: (
 
     &.-close {
       background-color: transparent;
-      border: none;
+      border-color: transparent;
       box-shadow: none;
       opacity: 0.6;
 
       &:hover,
       &.-hover {
-        border: none;
+        border-color: transparent;
         box-shadow: none;
         opacity: 1;
       }
 
       &:focus,
       &.-focus {
-        border: none;
+        border-color: transparent;
         box-shadow: none;
       }
 
@@ -302,7 +302,7 @@ $sizes: (
         &:focus,
         &.-focus {
           background-color: transparent;
-          border: none;
+          border-color: transparent;
           box-shadow: none;
         }
       }

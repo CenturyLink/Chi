@@ -1,28 +1,13 @@
 .m-alert {
   &.-bubble {
-    align-items: center;
-    justify-content: flex-start;
-
-    &.-dismiss {
-      justify-content: space-between;
-    }
 
     &.-center {
       justify-content: center;
     }
 
     &.-large, &.-lg { //Legacy code: -large to be removed.
-      padding: .95rem 1rem;
 
       & .m-alert__content {
-        & .a-icon {
-          align-self: flex-start;
-        }
-
-        & .a-h5 {
-          margin-bottom: 4px!important;
-        }
-
 
         @each $size in $hr-sizes {
           & .a-#{$size} {
@@ -36,26 +21,13 @@
           }
         }
       }
-
-      & > .-close {
-        align-self: flex-start;
-        transform: initial;
-      }
     }
-    
-      &.-md {
-        padding: 1.0635rem 1rem;
 
+      &.-md {
       & > .-close {
         padding-top: 0!important;
         padding-bottom: 0!important;
       }
     }
-  }
-}
-
-.-titled {
-  .a-icon {
-    top: 0.1875rem;
   }
 }
