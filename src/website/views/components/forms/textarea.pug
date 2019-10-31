@@ -11,8 +11,7 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:30rem")
-      textarea.a-input(placeholder='Placeholder') Sample text
+    textarea.a-input(placeholder='Placeholder') Sample text
   :code(lang="html")
     <textarea class="a-input">
       Sample text
@@ -21,8 +20,7 @@ h4 Base
 h4 Disabled
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:30rem")
-      textarea.a-input(disabled) Sample text
+    textarea.a-input(disabled) Sample text
   :code(lang="html")
     <textarea class="a-input" disabled>
       Sample text
@@ -31,11 +29,11 @@ h4 Disabled
 h4 With Label
 .example.-mb--3
   .-p--3
-    .m-form__item.-labeled(style="max-width:30rem")
+    .m-form__item(style="max-width:30rem")
       label.a-label(for='example') Label
       textarea.a-input(id='example') Sample text
   :code(lang="html")
-    <div class="m-form__item -labeled">
+    <div class="m-form__item">
       <label class="a-label" for="example">Label</label>
       <textarea class="a-input" id="example">
         Sample text
@@ -101,8 +99,7 @@ p.-text
 h4 Success
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:30rem")
-      textarea.a-input.-success Sample text
+    textarea.a-input.-success Sample text
   :code(lang="html")
     <textarea class="a-input -success">
       Sample text
@@ -124,8 +121,7 @@ h4 Success
 h4 Warning
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:30rem")
-      textarea.a-input.-warning Sample text
+    textarea.a-input.-warning Sample text
   :code(lang="html")
     <textarea class="a-input -warning">
       Sample text
@@ -147,8 +143,7 @@ h4 Warning
 h4 Danger
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:30rem")
-      textarea.a-input.-danger Sample text
+    textarea.a-input.-danger Sample text
   :code(lang="html")
     <textarea class="a-input -danger">
       Sample text
@@ -176,8 +171,7 @@ p.-text
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
       div(class=`a-col -w--12 -p--2`)
-        .m-input__wrapper(style="max-width:30rem")
-          textarea.a-input(class=`-${size}`) Sample text
+        textarea.a-input(class=`-${size}`) Sample text
   :code(lang='html')
     <textarea class="a-input -sm">
       Sample text

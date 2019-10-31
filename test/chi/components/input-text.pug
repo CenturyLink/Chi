@@ -61,7 +61,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item.-bold-label
+                .m-form__item
                   +label(size)
                   +input(style, state, size, disabled, id='example')
 
@@ -89,7 +89,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item.-bold-label
+                .m-form__item
                   +label(size)
                   .m-input__wrapper.-icon--left
                     +input(style, state, size, disabled, id='example')
@@ -134,7 +134,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item.-bold-label
+                .m-form__item
                   +label(size)
                   .m-input__wrapper.-icon--right
                     +input(style, state, size, disabled, id='example')
@@ -195,7 +195,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item.-bold-label
+                .m-form__item
                   +label(size)
                   .m-input__wrapper.-icon--left.-icon--right
                     +input(style, state, size, disabled, id='example')
@@ -227,7 +227,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item.-row.-bold-label
+                .m-form__item.-row
                   label.a-label.-mr--1(class=`-${size}`)
                     | Label
                   +input(style, state, size, disabled, id='example')
@@ -242,7 +242,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item.-bold-label
+                .m-form__item
                   .m-label__wrapper
                     +label(size)
                     i.a-icon.icon-circle-info-outline.-text--muted

@@ -60,6 +60,7 @@ input {
           line-height: $line-height-smaller;
           pointer-events: none;
           position: relative;
+          margin-bottom: 0;
         }
 
         &::before {

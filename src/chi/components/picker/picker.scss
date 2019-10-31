@@ -67,11 +67,7 @@ $sizes: (
                 }
               }
 
-              & div:not(.m-formGroup) {
-                margin-left: 2.5rem;
-                padding: 0.5rem 0 0.5rem 0;
-              }
-              & div:not(.m-form__item) {
+              & div:not(.m-formGroup), & div:not(.m-form__item) {
                 margin-left: 2.5rem;
                 padding: 0.5rem 0 0.5rem 0;
               }

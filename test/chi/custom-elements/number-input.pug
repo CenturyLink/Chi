@@ -17,7 +17,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           each style in ['default', 'danger']
             td
               .-m--1
-                .m-form__item.-row.-item-inline
+                .m-form__item.-row
                     chi-number-input(disabled=(state==='disabled'), data-cy='test-base' size=size, state=state, inputstyle=style)
 
 each size in ['default', 'sm', 'md', 'lg', 'xl']
@@ -31,7 +31,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           each style in ['default', 'danger']
             td
               .-m--1
-                .m-form__item.-row.-item-inline
+                .m-form__item.-row
                     chi-number-input(disabled=(state==='disabled'), data-cy='test-expanded', size=size, state=state, inputstyle=style expanded=true)
 
 each size in ['default', 'sm', 'md', 'lg', 'xl']
@@ -45,5 +45,6 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           each style in ['default', 'danger']
             td
               .-m--1
-                .m-form__item.-row.-item-inline
+                .m-form__item.-row
                     chi-number-input(disabled=(state==='disabled'), data-cy='test-expanded-pill', size=size, state=state, inputstyle=style expanded=true pill=true)
+

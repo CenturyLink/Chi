@@ -30,7 +30,7 @@ h3 Labels
 h4 Base
 .example.-mb--3
   .-p--3
-    .m-form__item.-bold-label(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       label.a-label(for='example') Label
       input(type="text", class="a-input", id='example', placeholder="Placeholder")
   :code(lang="html")
@@ -42,7 +42,7 @@ h4 Base
 h4 Inline
 .example.-mb--3
   .-p--3
-    .m-form__item.-row.-bold-label(style="max-width:20rem")
+    .m-form__item.-row(style="max-width:20rem")
       label.a-label.-mr--1(for='example') Label
       input(type="text", class="a-input", id='example', placeholder="Placeholder")
   :code(lang="html")
@@ -54,7 +54,7 @@ h4 Inline
 h4 Inline - width controlled using %
 .example.-mb--3
   .-p--3
-    .m-form__item.-row.-bold-label(style="max-width:40rem")
+    .m-form__item.-row(style="max-width:40rem")
       label.a-label.-w--50(for='example') Label width 50%
       .-w--50
         input(type="text", class="a-input", id='example', placeholder="Placeholder")
@@ -69,7 +69,7 @@ h4 Inline - width controlled using %
 h4 Inline - width controlled using grid
 .example.-mb--3
   .-p--3
-    .m-form__item.-row.-bold-label.a-grid.-noGutter(style="max-width:40rem")
+    .m-form__item.-row.a-grid.-noGutter(style="max-width:40rem")
       label.a-label.a-col.-w--3(for='example') Label width 3 columns
       .a-col.-w--9
         input(type="text", class="a-input", id='example', placeholder="Placeholder")
@@ -146,7 +146,7 @@ h4 Left + Right Aligned
 h4 Left + Right Aligned with label
 .example.-mb--3
   .-p--3
-    .m-form__item.
+    .m-form__item
       label.a-label(for='example') Label
       .m-input__wrapper.-icon--left.-icon--right(style="max-width:20rem")
         input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
@@ -170,8 +170,7 @@ p.-text
 h4 Success
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
-      input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
   :code(lang="html")
     <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
 
@@ -189,8 +188,7 @@ h4 Success
 h4 Warning
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
-      input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
   :code(lang="html")
     <input type="text" class="a-input -warning" placeholder="Placeholder" value="Sample Text">
 
@@ -233,8 +231,7 @@ p.-text
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
       div(class=`-d--flex -flex--row -align-items--end -p--2`)
-        .m-form__item(style="width:20rem")
-          input(type="text", class=`a-input -${size} -mr--3`, placeholder="Sample Text")
+        input(type="text", class=`a-input -${size} -mr--3`, placeholder="Sample Text")
   :code(lang='html')
     <input type="text" class="a-input -sm" placeholder="Sample Text">
     <input type="text" class="a-input -md" placeholder="Sample Text">
