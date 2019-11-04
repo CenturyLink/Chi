@@ -11,7 +11,7 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--3
-    textarea.a-input(placeholder='Placeholder') Sample text
+    textarea.a-input(placeholder='Placeholder', style="max-width:30rem") Sample text
   :code(lang="html")
     <textarea class="a-input">
       Sample text
@@ -20,7 +20,7 @@ h4 Base
 h4 Disabled
 .example.-mb--3
   .-p--3
-    textarea.a-input(disabled) Sample text
+    textarea.a-input(disabled, style="max-width:30rem") Sample text
   :code(lang="html")
     <textarea class="a-input" disabled>
       Sample text
@@ -99,7 +99,7 @@ p.-text
 h4 Success
 .example.-mb--3
   .-p--3
-    textarea.a-input.-success Sample text
+    textarea.a-input.-success(style="max-width:30rem") Sample text
   :code(lang="html")
     <textarea class="a-input -success">
       Sample text
@@ -121,7 +121,7 @@ h4 Success
 h4 Warning
 .example.-mb--3
   .-p--3
-    textarea.a-input.-warning Sample text
+    textarea.a-input.-warning(style="max-width:30rem") Sample text
   :code(lang="html")
     <textarea class="a-input -warning">
       Sample text
@@ -143,7 +143,7 @@ h4 Warning
 h4 Danger
 .example.-mb--3
   .-p--3
-    textarea.a-input.-danger Sample text
+    textarea.a-input.-danger(style="max-width:30rem") Sample text
   :code(lang="html")
     <textarea class="a-input -danger">
       Sample text
@@ -171,7 +171,7 @@ p.-text
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
       div(class=`a-col -w--12 -p--2`)
-        textarea.a-input(class=`-${size}`) Sample text
+        textarea.a-input(class=`-${size}`, style="max-width:30rem") Sample text
   :code(lang='html')
     <textarea class="a-input -sm">
       Sample text

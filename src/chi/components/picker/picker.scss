@@ -66,8 +66,8 @@ $sizes: (
                   margin-right: 1rem;
                 }
               }
-
-              & div:not(.m-formGroup), & div:not(.m-form__item) {
+              
+              & div:first-of-type + div {
                 margin-left: 2.5rem;
                 padding: 0.5rem 0 0.5rem 0;
               }

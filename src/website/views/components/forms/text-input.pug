@@ -39,7 +39,7 @@ h4 Base
       <input type="text" class="a-input" id="example" placeholder="Placeholder">
     </div>
 
-h4 Inline
+h4 Label inline
 .example.-mb--3
   .-p--3
     .m-form__item.-row(style="max-width:20rem")
@@ -49,6 +49,27 @@ h4 Inline
     <div class="m-form__item -row">
       <label class="a-label" for="example">Label</label>
       <input class="a-input" type="text" id="example" placeholder="Placeholder" />
+    </div>
+
+h4 Multiple inputs inline
+.example.-mb--3
+  .-p--3.-d--flex
+    .m-form__item.-inline.-flex--grow1
+      label.a-label.-mr--1(for='example') Label
+      input(type="text", class="a-input", id='example', placeholder="Placeholder")
+    .m-form__item.-inline.-flex--grow1
+      label.a-label.-mr--1(for='example') Label
+      input(type="text", class="a-input", id='example', placeholder="Placeholder")
+  :code(lang="html")
+    <div class="-d--flex">
+      <div class="m-form__item -inline -flex--grow1">
+        <label class="a-label" for="example">Label</label>
+        <input class="a-input" type="text" id="example" placeholder="Placeholder" />
+      </div>
+      <div class="m-form__item -inline -flex--grow1">
+        <label class="a-label" for="example">Label</label>
+        <input class="a-input" type="text" id="example" placeholder="Placeholder" />
+      </div>
     </div>
 
 h4 Inline - width controlled using %
@@ -153,7 +174,7 @@ h4 Left + Right Aligned with label
         i.a-icon.icon-search.-text--muted
         i.a-icon.icon-check-alt.-text--success
   :code(lang="html")
-    <div class="m-form__item ">
+    <div class="m-form__item">
       <label class="a-label">Label</label>
       <div class="m-input__wrapper -icon--left -icon--right">
         <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
@@ -170,7 +191,7 @@ p.-text
 h4 Success
 .example.-mb--3
   .-p--3
-    input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text", style="max-width:20rem")
   :code(lang="html")
     <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
 
@@ -188,7 +209,7 @@ h4 Success
 h4 Warning
 .example.-mb--3
   .-p--3
-    input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text", style="max-width:20rem")
   :code(lang="html")
     <input type="text" class="a-input -warning" placeholder="Placeholder" value="Sample Text">
 
@@ -206,8 +227,7 @@ h4 Warning
 h4 Danger
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
-      input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text", style="max-width:20rem")
   :code(lang="html")
     <input type="text" class="a-input -danger" placeholder="Placeholder" value="Sample Text">
 
@@ -231,7 +251,7 @@ p.-text
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
       div(class=`-d--flex -flex--row -align-items--end -p--2`)
-        input(type="text", class=`a-input -${size} -mr--3`, placeholder="Sample Text")
+        input(type="text", class=`a-input -${size} -mr--3`, placeholder="Sample Text", style="max-width:20rem")
   :code(lang='html')
     <input type="text" class="a-input -sm" placeholder="Sample Text">
     <input type="text" class="a-input -md" placeholder="Sample Text">
