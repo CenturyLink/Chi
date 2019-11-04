@@ -103,78 +103,66 @@
   }
 
   .-chi-search {
+    width: 100%;
+    display: flex;
     justify-content: center;
-    #search_results {
-      display: none;
-      position: absolute;
-      width: 370px;
-      max-height: 400px;
-      overflow-y: auto;
-      top: 106px;
-      padding: 15px;
-      background-color: set-color(white);
-      border-radius: 3px;
-      border: 1px solid set-color(grey, 20);
-      z-index: 20;
-      transition-duration: 0.2s;
-      @include respond-to(sm) {
-        top: 60px;
-      }
-      h6 {
-        display: none;
-        color: $primary;
-        border-bottom: 1px solid $primary;
-        span {
-          display: inline-block;
-        }
-      }
-      ol {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-      }
-      .search_result_a {
-        display: block;
-        font-size: 10px;
-        overflow: hidden;
-        color: set-color(grey, 70);
-        text-decoration: none;
-        padding: 7px;
-        transition-duration: 0.2s;
-      }
-      .search_result_a:hover {
-        background-color: set-color(grey, 15);
-        box-sizing: border-box;
-      }
-      .search_result_a .title {
-        font-size: $text;
-        font-weight: bold;
-        span.search_result_category {
-          font-weight: normal;
-          color: set-color(grey, 40);
-        }
-      }
-      .search_result_a .description {
-        display: block;
-        max-width: 98%;
-        white-space: nowrap;
-        overflow: hidden !important;
-        text-overflow: ellipsis;
-        transition-duration: 0.2s;
-      }
-      .no_results_found {
-        font-size: $text-smaller;
-        color: set-color(grey, 50);
-      }
-    }
-    #chi-search-input input {
+    overflow: unset;
+
+    .a-input {
       width: 300px;
+      height: 2.5rem!important;
       background-color: set-color(grey, 80);
-      border: none!important;
-      color: set-color(grey, 50)!important;
+      border: none;
+      color: set-color(grey, 50);
+      
+      &:focus {
+        width: 350px;
+        background-color: set-color(white);
+      }
     }
-    #chi-search-input input:focus {
-      background-color: set-color(white)!important;
+
+    .a-icon {
+      position: absolute;
+      right: 0.75rem;
+      top: 0.75rem;
+    }
+
+    .algolia-autocomplete .ds-dropdown-menu {
+      min-width: 350px;
+    }
+
+    @include respond-to(lg) {
+      .a-input {
+        width: 500px;
+      
+        &:focus {
+          width: 600px;
+        }
+      }
+
+      .algolia-autocomplete .ds-dropdown-menu {
+        min-width: 600px;
+      }
+    }
+
+    @include respond-to(xs) {
+      .a-input {
+        margin-top: 0.75rem;
+      }
+
+      .a-icon {
+        top: 1.5rem;
+      }
+
+      .ds-suggestion:not(:first-child) {
+        .algolia-docsearch-suggestion--category-header {
+          margin-top: 20px;
+        }
+      }
+
+      .algolia-docsearch-suggestion--subcategory-column {
+        display: none;
+      }
     }
   }
 
