@@ -83,6 +83,7 @@
       color: set-color(grey, 70);
       font-size: $text-large;
       line-height: $line-height-small;
+      flex: 1 0 auto;
 
       @include respond-to(lg) {
         font-size: $text-larger;
@@ -99,70 +100,6 @@
     @include respond-to(lg) {
       flex-grow: 1;
       order: 2;
-    }
-  }
-
-  .-chi-search {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    overflow: unset;
-
-    .a-input {
-      width: 300px;
-      height: 2.5rem!important;
-      background-color: set-color(grey, 80);
-      border: none;
-      color: set-color(grey, 50);
-      
-      &:focus {
-        width: 350px;
-        background-color: set-color(white);
-      }
-    }
-
-    .a-icon {
-      position: absolute;
-      right: 0.75rem;
-      top: 0.75rem;
-    }
-
-    .algolia-autocomplete .ds-dropdown-menu {
-      min-width: 350px;
-    }
-
-    @include respond-to(lg) {
-      .a-input {
-        width: 500px;
-      
-        &:focus {
-          width: 600px;
-        }
-      }
-
-      .algolia-autocomplete .ds-dropdown-menu {
-        min-width: 600px;
-      }
-    }
-
-    @include respond-to(xs) {
-      .a-input {
-        margin-top: 0.75rem;
-      }
-
-      .a-icon {
-        top: 1.5rem;
-      }
-
-      .ds-suggestion:not(:first-child) {
-        .algolia-docsearch-suggestion--category-header {
-          margin-top: 20px;
-        }
-      }
-
-      .algolia-docsearch-suggestion--subcategory-column {
-        display: none;
-      }
     }
   }
 

@@ -66,6 +66,73 @@
             font-size: $text-larger;
           }
         }
+
+        .-chi-search {
+          .a-input {
+            width: 18.75rem;
+            height: 2.5rem!important;
+            background-color: set-color(grey, 80);
+            border: none;
+            color: set-color(grey, 50);
+            
+            &:focus {
+              width: 21rem;
+              background-color: set-color(white);
+            }
+          }
+      
+          .a-icon {
+            position: absolute;
+            right: 0.75rem;
+            top: 0.75rem;
+          }
+      
+          .algolia-autocomplete .ds-dropdown-menu {
+            min-width: 21rem;
+          }
+      
+          @include respond-to(xs) {
+            .a-input {
+              margin-top: 0.75rem;
+            }
+      
+            .a-icon {
+              top: 1.5rem;
+            }
+      
+            .algolia-docsearch-suggestion--subcategory-column {
+              display: none;
+            }
+          }
+      
+          @include respond-to(sm) {
+            .a-input {
+              width: 12.5rem;
+      
+              &:focus {
+                width: 14rem;
+              }
+      
+              .algolia-autocomplete .ds-dropdown-menu {
+                min-width: 14rem;
+              }
+            }
+          }
+      
+          @include respond-to(lg) {
+            .a-input {
+              width: 19rem;
+            
+              &:focus {
+                width: 22rem;
+              }
+            }
+      
+            .algolia-autocomplete .ds-dropdown-menu {
+              min-width: 22rem;
+            }
+          }
+        }
       }
 
       .o-header__end {
