@@ -4,7 +4,7 @@ title: Hybrid buttons
 
 each size in ['default', 'small', 'large']
   div(class={
-    'test': size == 'default',
+    'test-base': size == 'default',
     [`test-${size}`]: size != 'default'
   })
     span.a-h2= `Hybrid buttons / ${size}`

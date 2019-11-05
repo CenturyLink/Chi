@@ -155,6 +155,28 @@
       "requireSameDimensions": true
     },
     {
+      "label": "breadcrumb",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/breadcrumb.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-base",
+        ".test-alternative-separator",
+        ".test-sizes"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "badges",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/badges.html",
@@ -396,6 +418,31 @@
       "requireSameDimensions": true
     },
     {
+      "label": "divider",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/divider.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-divider",
+        ".test-vertical",
+        ".test-inverse",
+        ".test-labeled",
+        ".test-colorbar",
+        ".test-sizes"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "dropdown",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/dropdown.html",
@@ -504,6 +551,33 @@
       "requireSameDimensions": true
     },
     {
+      "label": "footer",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/footer.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-base",
+        ".test-with-menu",
+        ".test-with-subfooter",
+        ".test-max-980",
+        ".test-inverse",
+        ".test-inverse-with-menu",
+        ".test-inverse-with-subfooter",
+        ".test-inverse-with-subfooter-max-980"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "header",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/header.html",
@@ -566,7 +640,7 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test",
+        ".test-base",
         ".test-fluid",
         ".test-small",
         ".test-small-fluid",
@@ -712,6 +786,55 @@
       "requireSameDimensions": true
     },
     {
+      "label": "pagination",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/pagination.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-base",
+        ".test-pill",
+        ".test-active",
+        ".test-disabled",
+        ".test-sizes",
+        ".test-sizes-pill"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "picker",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/picker.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-base",
+        ".test-with-checkbox",
+        ".test-type-radio",
+        ".test-with-radio",
+        ".test-sizes"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "picker-group",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/picker-group.html",
@@ -772,6 +895,27 @@
         ".test-more-left",
         ".test-more-left-start",
         ".test-more-left-end"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "price",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/price.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-base",
+        ".test-sizes"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -872,8 +1016,32 @@
         ".test-backdrop-base",
         ".test-backdrop-inverse",
         ".test-buttons",
+        ".test-text-input",
         ".test-sizes",
         ".test-colors"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "steps",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/steps.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-base",
+        ".test-inverse",
+        ".test-horizontal-labels",
+        ".test-inverse-horizontal-labels"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
