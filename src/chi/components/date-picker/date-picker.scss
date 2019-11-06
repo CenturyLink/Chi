@@ -20,6 +20,10 @@ $mondayStartingWeek: (
   sun: 6
 );
 
+.a-inputWrapper.-disabled {
+  pointer-events: none;
+}
+
 .m-datepicker {
   font-size: $text;
   width: 14rem;
