@@ -66,9 +66,9 @@
           "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
-          "docs": "to set alert size { sm, lg }.",
+          "docs": "to set alert size { sm, md, lg }.",
           "docsTags": [],
-          "default": "''",
+          "default": "md",
           "optional": false,
           "required": false
         },

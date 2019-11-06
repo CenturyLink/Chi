@@ -26,7 +26,7 @@ export class Alert {
   @Prop({ reflectToAttr: true }) color!: string;
 
   /**
-   *  to set alert size { sm, lg }.
+   *  to set alert size { sm, md, lg }.
    */
   @Prop({ reflectToAttr: true }) size = '';
 
