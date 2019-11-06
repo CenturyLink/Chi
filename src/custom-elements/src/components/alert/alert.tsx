@@ -26,7 +26,7 @@ export class Alert {
   @Prop({ reflectToAttr: true }) color!: string;
 
   /**
-   *  to set size of an alert, lg is the only size available.
+   *  to set alert size { sm, lg }.
    */
   @Prop({ reflectToAttr: true }) size = '';
 
@@ -61,8 +61,8 @@ export class Alert {
 
   @Watch('size')
   sizeValidation(newValue: string) {
-    if (newValue && !['md', 'lg'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid size for alert. Alert only supports lg and md (default) sizes.`);
+    if (newValue && !['sm', 'md', 'lg'].includes(newValue)) {
+      throw new Error(`${newValue} is not a valid size for an alert. Alerts only support sm, md (default), and lg sizes.`);
     }
   }
 
@@ -89,14 +89,8 @@ export class Alert {
         ${this.size ? `-${this.size}` : ''}`}
         role="alert"
       >
-        {(this.dismissible || this.type === 'toast' || this.size === 'lg') ?
-          <div class="m-alert__content">
-            <slot></slot>
-          </div>
-          :
-          <slot></slot>
-        }
-        {(this.dismissible || this.type === 'toast') && <chi-button type="close" onChiClick={() => this._dismissAlert()} size={'sm'} />}
+        {(this.dismissible || this.type === 'toast' || this.size === 'lg') ? <slot></slot> : <slot></slot>}
+        {(this.dismissible || this.type === 'toast') && <chi-button type="close" onChiClick={() => this._dismissAlert()}/>}
       </div>
     );
   }

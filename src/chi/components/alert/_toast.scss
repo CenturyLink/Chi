@@ -1,28 +1,33 @@
 .m-alert {
   &.-toast {
     max-width: 20rem;
+    min-width: 16rem;
     padding-right: 1rem;
+    box-shadow: map-get($shadow, 2);
 
-    & .m-alert__content {
-      & .a-icon {
-        align-self: flex-start;
+    .m-alert__content {
+      .m-alert__title {
+        margin-bottom: 0.25rem;
       }
+    }
 
-      & .a-h5 {
-        margin-bottom: 0.25rem !important;
-      }
-
-      @each $size in $hr-sizes {
-        & .a-#{$size} {
+    &.-sm {
+      .m-alert__content {
+        .m-alert__title {
           margin-bottom: 0;
-          margin-top: 0;
-        }
-
-        & #{$size} {
-          margin-bottom: 0;
-          margin-top: 0;
         }
       }
     }
+
+    &.-large, //Legacy code: -large to be removed.
+    &.-lg {
+      padding-right: 1.5rem;
+      .m-alert__content {
+        .m-alert__title {
+          margin-bottom: 0.375rem;
+        }
+      }
+    }
+
   }
 }

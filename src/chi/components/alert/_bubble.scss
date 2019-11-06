@@ -1,33 +1,7 @@
 .m-alert {
   &.-bubble {
-
     &.-center {
       justify-content: center;
-    }
-
-    &.-large, &.-lg { //Legacy code: -large to be removed.
-
-      & .m-alert__content {
-
-        @each $size in $hr-sizes {
-          & .a-#{$size} {
-            margin-bottom: 0;
-            margin-top: 0;
-          }
-
-          & #{$size} {
-            margin-bottom: 0;
-            margin-top: 0;
-          }
-        }
-      }
-    }
-
-      &.-md {
-      & > .-close {
-        padding-top: 0!important;
-        padding-bottom: 0!important;
-      }
     }
   }
 }

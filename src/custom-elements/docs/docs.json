@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-10-16T17:17:38",
+  "timestamp": "2019-11-06T17:42:34",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
@@ -66,7 +66,7 @@
           "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
-          "docs": "to set size of an alert, lg is the only size available.",
+          "docs": "to set alert size { sm, lg }.",
           "docsTags": [],
           "default": "''",
           "optional": false,

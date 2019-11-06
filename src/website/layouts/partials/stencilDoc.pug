@@ -1,8 +1,8 @@
 mixin props(props)
   if props.length
-    h4 Poperties
+    h4 Properties
     section.a-table.a-table__options.-bordered.-my--3
-      div
+      div(style='overflow-x:auto;')
         table.-text(cellpadding='0', cellspacing='0')
           thead
             tr
@@ -52,7 +52,7 @@ mixin events(events)
   if events.length
     h4 Events
     section.a-table.a-table__options.-bordered.-my--3
-      div
+      div(style='overflow-x:auto;')
         table.-text(cellpadding='0', cellspacing='0')
           thead
             tr
@@ -86,7 +86,7 @@ mixin methods(methods)
         h6 Parameters
         if method.parameters.length
           section.a-table.a-table__options.-bordered.-my--3
-            div
+            div(style='overflow-x:auto;')
               table.-text(cellpadding='0', cellspacing='0')
                 thead
                   tr

@@ -11,20 +11,8 @@
       border-color: transparent;
     }
 
-    .m-alert__content {
+    &.-rounded {
+      border-radius: $border-radius;
     }
-
-    &.-large, //Legacy code: -large to be removed.
-    &.-lg {
-    }
-
-
-    &.-md {
-      & > .-close {
-        padding-top: 0;
-        padding-bottom: 0;
-      }
-    }
-
   }
 }

@@ -114,8 +114,9 @@ h3 App Basic Sign In - Error
             .a-card__content.-text--center.-px--4.-px-sm--6.-pb--4
               h2.-text--normal Sign In
               .m-alert.-danger.-center(role="alert")
-                i.a-icon.icon-circle-warning.-text--danger
-                | Invalid email or password
+                i.m-alert__icon.a-icon.icon-circle-warning
+                .m-alert__content
+                  p.m-alert__text Invalid email or password
               .a-inputWrapper.-floatingLabel.-pt--2#aemail2
                 input(type='email', class='a-input -xl', id='email2')
                 label(for='email2') Email
@@ -151,8 +152,10 @@ h3 App Basic Sign In - Error
             <div class="a-card__content -text--center -px--4 -px-sm--6 -pb--4">
               <h2 class="-text--normal">Sign In</h2>
               <div class="m-alert -danger -center" role="alert">
-              <i class="a-icon icon-circle-warning -text--danger"></i>
-              Invalid email or password
+                <i class="m-alert__icon a-icon icon-circle-warning"></i>
+                <div class="m-alert__content">
+                  <p class="m-alert__text">Invalid email or password</p>
+                </div>
               </div>
               <div class="a-inputWrapper -floatingLabel -pt--2" id="aemail2">
                 <input class="a-input -xl" type="email" id="email2">
