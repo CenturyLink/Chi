@@ -1,15 +1,15 @@
 {
-  "timestamp": "2019-10-29T15:29:27",
+  "timestamp": "2019-11-07T10:08:22",
   "compiler": {
     "name": "@stencil/core",
-    "version": "1.5.2",
+    "version": "1.7.5",
     "typescriptVersion": "3.6.3"
   },
   "components": [
     {
-      "tag": "chi-alert",
       "filePath": "src/components/alert/alert.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-alert",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -23,6 +23,11 @@
           "docs": "to center the alert content.",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -34,6 +39,11 @@
           "reflectToAttr": true,
           "docs": "to set alert state { success, danger, warning, info, muted }.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": true
         },
@@ -46,6 +56,11 @@
           "docs": "to make the alert dismissible.",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -58,6 +73,11 @@
           "docs": "to hide the alert when dismissed.",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -70,6 +90,11 @@
           "docs": "to set size of an alert, lg is the only size available.",
           "docsTags": [],
           "default": "'md'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -82,6 +107,11 @@
           "docs": "to set alert type { bubble, banner, toast }.",
           "docsTags": [],
           "default": "'bubble'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -99,12 +129,24 @@
         }
       ],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-button"
+      ],
+      "dependencyGraph": {
+        "chi-alert": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ]
+      }
     },
     {
-      "tag": "chi-badge",
       "filePath": "src/components/badge/badge.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-badge",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -117,6 +159,11 @@
           "reflectToAttr": true,
           "docs": "to set color of a badge.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -128,6 +175,11 @@
           "reflectToAttr": true,
           "docs": "to render badges with a more pronounced border-radius.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -139,6 +191,11 @@
           "reflectToAttr": true,
           "docs": "to set size of a badge { small or smaller }.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -150,6 +207,11 @@
           "reflectToAttr": true,
           "docs": "to transform the badge text { uppercase, lowercase, capitalize }.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -161,6 +223,11 @@
           "reflectToAttr": true,
           "docs": "to set variant of a badge { outline, flat }.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -168,12 +235,15 @@
       "methods": [],
       "events": [],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
-      "tag": "chi-brand",
       "filePath": "src/components/brand/brand.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-brand",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -186,6 +256,11 @@
           "reflectToAttr": true,
           "docs": "to set size of brand.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -197,6 +272,11 @@
           "reflectToAttr": true,
           "docs": "to set brand type { black, white, inverse }.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -204,12 +284,15 @@
       "methods": [],
       "events": [],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
-      "tag": "chi-button",
       "filePath": "src/components/button/button.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-button",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -223,6 +306,11 @@
           "docs": "to center align the text .",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -234,6 +322,11 @@
           "reflectToAttr": true,
           "docs": "to set button color { primary, secondary, danger, dark, light }.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -246,6 +339,11 @@
           "docs": "to disable chi-button.",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -257,6 +355,11 @@
           "reflectToAttr": false,
           "docs": "",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -269,6 +372,11 @@
           "docs": "to render a button to fill the parent space.",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -281,6 +389,11 @@
           "docs": "to to render buttons with a more pronounced border-radius.",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -292,6 +405,11 @@
           "reflectToAttr": true,
           "docs": "to set button size { sm, md, lg, xl }.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -303,6 +421,11 @@
           "reflectToAttr": true,
           "docs": "to set button type { float, close, icon }.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -314,6 +437,11 @@
           "reflectToAttr": true,
           "docs": "to set variant of a button { outline, flat }.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -331,12 +459,26 @@
         }
       ],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [
+        "chi-alert"
+      ],
+      "dependencies": [
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-alert": [
+          "chi-button"
+        ]
+      }
     },
     {
-      "tag": "chi-date",
       "filePath": "src/components/date/date.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-date",
       "readme": "# chi-date\n\n\n",
       "docs": "",
       "docsTags": [],
@@ -375,6 +517,11 @@
           "docs": "Date format used in the attributes and how it will be shown to the user.",
           "docsTags": [],
           "default": "'MM/DD/YYYY'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -387,6 +534,11 @@
           "docs": "Locale to use in date picker",
           "docsTags": [],
           "default": "'en'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -399,6 +551,11 @@
           "docs": "Maximum eligible date",
           "docsTags": [],
           "default": "'12/31/2099'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -411,6 +568,11 @@
           "docs": "Minimum eligible date",
           "docsTags": [],
           "default": "'01/01/1900'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -422,6 +584,11 @@
           "reflectToAttr": true,
           "docs": "Selected date in the date picker",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -462,12 +629,26 @@
         }
       ],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [
+        "chi-date-picker"
+      ],
+      "dependencies": [
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-date": [
+          "chi-icon"
+        ],
+        "chi-date-picker": [
+          "chi-date"
+        ]
+      }
     },
     {
-      "tag": "chi-date-picker",
       "filePath": "src/components/date-picker/date-picker.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-date-picker",
       "readme": "# chi-date-picker\n\n\n",
       "docs": "",
       "docsTags": [],
@@ -482,6 +663,11 @@
           "docs": "Indicates whether the dropdown calendar is open or closed",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -494,6 +680,11 @@
           "docs": "Date format used in the attributes and how it will be shown to the user.",
           "docsTags": [],
           "default": "'MM/DD/YYYY'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -506,6 +697,11 @@
           "docs": "Locale to use in date picker",
           "docsTags": [],
           "default": "'en'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -518,6 +714,11 @@
           "docs": "Maximum eligible date",
           "docsTags": [],
           "default": "'12/31/2099'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -530,6 +731,11 @@
           "docs": "Minimum eligible date",
           "docsTags": [],
           "default": "'01/01/1900'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -541,6 +747,11 @@
           "reflectToAttr": true,
           "docs": "Selected date in the date picker",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -571,12 +782,26 @@
       ],
       "events": [],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-popover",
+        "chi-date"
+      ],
+      "dependencyGraph": {
+        "chi-date-picker": [
+          "chi-popover",
+          "chi-date"
+        ],
+        "chi-date": [
+          "chi-icon"
+        ]
+      }
     },
     {
-      "tag": "chi-drawer",
       "filePath": "src/components/drawer/drawer.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-drawer",
       "readme": "# chi-drawer\n\n\n",
       "docs": "",
       "docsTags": [],
@@ -590,6 +815,11 @@
           "reflectToAttr": true,
           "docs": "to open or close the drawer",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -601,6 +831,11 @@
           "reflectToAttr": true,
           "docs": "to add a backdrop behind the drawer, which covers the viewport",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -612,6 +847,11 @@
           "reflectToAttr": true,
           "docs": "adds a close button",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -623,6 +863,11 @@
           "reflectToAttr": true,
           "docs": "header title. Not compatible with headless",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -634,6 +879,11 @@
           "reflectToAttr": true,
           "docs": "to remove the space for the header",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -645,6 +895,11 @@
           "reflectToAttr": true,
           "docs": "to set position of the drawer { top, right, bottom or left }",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -723,12 +978,21 @@
         }
       ],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-drawer": [
+          "chi-icon"
+        ]
+      }
     },
     {
-      "tag": "chi-expansion-panel",
       "filePath": "src/components/expansion-panel/expansion-panel.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-expansion-panel",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -741,6 +1005,11 @@
           "reflectToAttr": true,
           "docs": "is the panel border-styled?",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -752,6 +1021,11 @@
           "reflectToAttr": true,
           "docs": "to set the title of the panel",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -764,6 +1038,11 @@
           "docs": "to set expansion panel state. Possible values are: {'done', 'active', 'pending' (default value), and 'disabled'}",
           "docsTags": [],
           "default": "'pending'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -775,6 +1054,11 @@
           "reflectToAttr": true,
           "docs": "to set a step number next to the title of the panel",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -782,12 +1066,15 @@
       "methods": [],
       "events": [],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
-      "tag": "chi-icon",
       "filePath": "src/components/icon/icon.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-icon",
       "readme": "# chi-icon\n\n\n",
       "docs": "",
       "docsTags": [],
@@ -801,6 +1088,11 @@
           "reflectToAttr": true,
           "docs": "OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, inverse, muted}",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -812,6 +1104,11 @@
           "reflectToAttr": true,
           "docs": "Icon to be rendered. View accepted values on text documentation.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -823,6 +1120,11 @@
           "reflectToAttr": true,
           "docs": "OPTIONAL. Size of the Icon. {xs, sm, sm--2, sm--3, md, lg, xl, xxl}",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -830,12 +1132,33 @@
       "methods": [],
       "events": [],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [
+        "chi-button",
+        "chi-date",
+        "chi-drawer",
+        "chi-number-input"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-date": [
+          "chi-icon"
+        ],
+        "chi-drawer": [
+          "chi-icon"
+        ],
+        "chi-number-input": [
+          "chi-icon"
+        ]
+      }
     },
     {
-      "tag": "chi-number-input",
       "filePath": "src/components/number-input/number-input.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-number-input",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -848,6 +1171,11 @@
           "reflectToAttr": true,
           "docs": "used to determine if component is disabled or not",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": true,
           "required": false
         },
@@ -859,6 +1187,11 @@
           "reflectToAttr": true,
           "docs": "used to set component's expanded mode",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": true,
           "required": false
         },
@@ -870,6 +1203,11 @@
           "reflectToAttr": false,
           "docs": "used to provide an input style like 'danger'. Mostly used for testing purposes",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": true,
           "required": false
         },
@@ -882,6 +1220,11 @@
           "docs": "used to set a maximum allowed value",
           "docsTags": [],
           "default": "Number.MAX_SAFE_INTEGER",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -894,6 +1237,11 @@
           "docs": "used to set a minimum allowed value",
           "docsTags": [],
           "default": "Number.MIN_SAFE_INTEGER",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -905,6 +1253,11 @@
           "reflectToAttr": true,
           "docs": "used to determine if expanded component has a pill look",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": true,
           "required": false
         },
@@ -916,6 +1269,11 @@
           "reflectToAttr": true,
           "docs": "If set, component value won't be updated by itself.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -927,6 +1285,11 @@
           "reflectToAttr": true,
           "docs": "used to determine component's size",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": true,
           "required": false
         },
@@ -938,6 +1301,11 @@
           "reflectToAttr": false,
           "docs": "used to provide an input state like 'hover' or 'focus'. Mostly used for testing purposes",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": true,
           "required": false
         },
@@ -950,6 +1318,11 @@
           "docs": "used to set a step to indicate the expected granularity",
           "docsTags": [],
           "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -962,6 +1335,11 @@
           "docs": "used to hold the value of the number input",
           "docsTags": [],
           "default": "'0'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -979,12 +1357,21 @@
         }
       ],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-number-input": [
+          "chi-icon"
+        ]
+      }
     },
     {
-      "tag": "chi-popover",
       "filePath": "src/components/popover/popover.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-popover",
       "readme": "# chi-popover\n\n\n",
       "docs": "",
       "docsTags": [],
@@ -998,6 +1385,11 @@
           "reflectToAttr": true,
           "docs": "to open or close the popover",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1009,6 +1401,11 @@
           "reflectToAttr": true,
           "docs": "to add an arrow between the popover and the reference element",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1021,6 +1418,68 @@
           "docs": "to set position of the popover { top, top-start, top-end, right, right-start, right-end, bottom, bottom-start, bottom-end, left, left-start, left-end }",
           "docsTags": [],
           "default": "'top'",
+          "values": [
+            {
+              "value": "auto",
+              "type": "string"
+            },
+            {
+              "value": "auto-end",
+              "type": "string"
+            },
+            {
+              "value": "auto-start",
+              "type": "string"
+            },
+            {
+              "value": "bottom",
+              "type": "string"
+            },
+            {
+              "value": "bottom-end",
+              "type": "string"
+            },
+            {
+              "value": "bottom-start",
+              "type": "string"
+            },
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "left-end",
+              "type": "string"
+            },
+            {
+              "value": "left-start",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "value": "right-end",
+              "type": "string"
+            },
+            {
+              "value": "right-start",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            },
+            {
+              "value": "top-end",
+              "type": "string"
+            },
+            {
+              "value": "top-start",
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1032,6 +1491,11 @@
           "reflectToAttr": true,
           "docs": "Prevents closing the popover when clicking out of its bounds",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1043,6 +1507,11 @@
           "reflectToAttr": true,
           "docs": "CSS Selector to the reference Element. I.e. #id > p",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -1121,12 +1590,21 @@
         }
       ],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [
+        "chi-date-picker"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "chi-date-picker": [
+          "chi-popover"
+        ]
+      }
     },
     {
-      "tag": "chi-progress",
       "filePath": "src/components/progress/progress.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-progress",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -1140,6 +1618,11 @@
           "docs": "to set the max value of a progress bar.",
           "docsTags": [],
           "default": "100",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1152,6 +1635,11 @@
           "docs": "to indicate a progress bar state { info, warning, danger, success }.",
           "docsTags": [],
           "default": "'success'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1163,6 +1651,11 @@
           "reflectToAttr": true,
           "docs": "to set the value of a progress bar.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -1170,12 +1663,15 @@
       "methods": [],
       "events": [],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
-      "tag": "chi-spinner",
       "filePath": "src/components/spinner/spinner.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-spinner",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -1188,6 +1684,11 @@
           "reflectToAttr": true,
           "docs": "to render spinners on dark or light backgrounds.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1199,6 +1700,11 @@
           "reflectToAttr": true,
           "docs": "to set color of a spinner { primary, success, warning, danger, muted }.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1211,6 +1717,11 @@
           "docs": "to set size of a spinner { xs, sm, sm--2, sm--3, md, lg, xl, xxl }.",
           "docsTags": [],
           "default": "'sm'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -1218,12 +1729,15 @@
       "methods": [],
       "events": [],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
-      "tag": "chi-toggle-switch",
       "filePath": "src/components/toggle-switch/toggle-switch.tsx",
       "encapsulation": "scoped",
+      "tag": "chi-toggle-switch",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -1237,6 +1751,11 @@
           "docs": "used to check the toggle switch.",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1249,6 +1768,11 @@
           "docs": "used to disable the toggle switch.",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1260,6 +1784,11 @@
           "reflectToAttr": false,
           "docs": "",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1271,6 +1800,11 @@
           "reflectToAttr": true,
           "docs": "to set a label for the toggle switch.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1283,6 +1817,11 @@
           "docs": "used to disable the toggle labels.",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1294,6 +1833,11 @@
           "reflectToAttr": true,
           "docs": "to set the toggle switch id.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         }
@@ -1311,7 +1855,10 @@
         }
       ],
       "styles": [],
-      "slots": []
+      "slots": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     }
   ]
 }
