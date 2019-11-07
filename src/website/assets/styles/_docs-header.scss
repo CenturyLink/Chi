@@ -147,6 +147,9 @@
               color: $text-color;
               border-bottom-color: set-color(grey, 30);
               font-size: $text-large;
+              .algolia-docsearch-suggestion--highlight {
+                box-shadow: inset 0 -2px 0 0 $primary-color;
+              }
             }
 
             .algolia-docsearch-suggestion--subcategory-column {
