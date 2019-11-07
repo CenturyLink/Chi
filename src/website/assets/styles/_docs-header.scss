@@ -69,15 +69,15 @@
 
         .-chi-search {
           .a-input {
-            width: 18.75rem;
-            height: 2.5rem!important;
             background-color: set-color(grey, 80);
             border: none;
             color: set-color(grey, 50);
+            height: 2.5rem !important;
+            width: 18.75rem;
             
             &:focus {
-              width: 21rem;
               background-color: set-color(white);
+              width: 21rem;
             }
           }
       
@@ -112,10 +112,10 @@
               &:focus {
                 width: 14rem;
               }
+            }
       
-              .algolia-autocomplete .ds-dropdown-menu {
-                min-width: 14rem;
-              }
+            .algolia-autocomplete .ds-dropdown-menu {
+              min-width: 14rem;
             }
           }
       
@@ -130,6 +130,20 @@
       
             .algolia-autocomplete .ds-dropdown-menu {
               min-width: 22rem;
+            }
+          }
+      
+          @include respond-to(xl) {
+            .a-input {
+              width: 26rem;
+            
+              &:focus {
+                width: 29rem;
+              }
+            }
+      
+            .algolia-autocomplete .ds-dropdown-menu {
+              min-width: 29rem;
             }
           }
         }
