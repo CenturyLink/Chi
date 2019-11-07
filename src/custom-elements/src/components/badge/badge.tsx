@@ -21,12 +21,12 @@ export class Badge {
   @Prop({ reflectToAttr: true }) pill: boolean;
 
   /**
-   *  to set color of a badge.
+   *  to set color of a badge { primary, success, warning, danger, dark, muted, secondary, light }.
    */
   @Prop({ reflectToAttr: true }) color: string;
 
   /**
-   *  to transform the badge text { uppercase, lowercase, capitalize }.
+   *  to transform the badge text { uppercase, lowercase, capitalized }.
    */
   @Prop({ reflectToAttr: true }) textTransform: string;
 
