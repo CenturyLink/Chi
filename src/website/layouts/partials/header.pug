@@ -18,15 +18,16 @@ header.o-header.-inverse.docs-header.-z--20
     }
   div.a-divider.-colorbar
   nav.o-header__content
-    .o-header__brand.-w--100
+    .o-header__brand
       a.a-brand.docs-header__logo(href=`${rootPath}`, aria-label='CenturyLink')
         img(src='https://assets.ctl.io/images/centurylink-logo-white.svg', alt='CenturyLink')
-      span.o-header__title.-d--none.-d-md--flex
+      span.o-header__title.-d--none.-d-lg--flex
         | Chi Documentation
-      .-chi-search.-d--flex.-justify-content--center.-w--100
-        .a-inputWrapper
-          input.a-input.-lg.searchbox(type="text", placeholder="Search...")
-          i.a-icon.icon-search.-text--muted
+    .o-header__start
+      .-chi-search
+        .a-inputWrapper.-icon--right.-flex--grow1
+          input.a-input.searchbox(type="text", placeholder="Search")
+          i.a-icon.icon-search
     .o-header__end
       .m-dropdown
         button.a-btn.-flat.-light.-px--1.m-dropdown__trigger(data-position='bottom-end', id='version-dropdown') v1.2.5
