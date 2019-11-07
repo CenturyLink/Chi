@@ -112,7 +112,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "to set color of a badge.",
+          "docs": "to set color of a badge { primary, success, warning, danger, dark, muted, secondary, light }.",
           "docsTags": [],
           "optional": false,
           "required": false
@@ -145,7 +145,7 @@
           "mutable": false,
           "attr": "text-transform",
           "reflectToAttr": true,
-          "docs": "to transform the badge text { uppercase, lowercase, capitalize }.",
+          "docs": "to transform the badge text { uppercase, lowercase, capitalized }.",
           "docsTags": [],
           "optional": false,
           "required": false
