@@ -176,14 +176,14 @@ script.
     return parseInt(window.getComputedStyle(element, null).getPropertyValue("height").replace("px", ""));
   }
 
-  function checkButtonHeight() {
+  function checkAllButtonsRendered() {
     const buttons = document.querySelectorAll('chi-button');
 
     return Array.from(buttons).every(x => getElementHeight(x) > 20);
   }
   
   const renderCheckInterval = setInterval(function() {
-    if (checkButtonHeight()) {
+    if (checkAllButtonsRendered()) {
       console.log("backstop_ready");
       clearInterval(renderCheckInterval);
     }
