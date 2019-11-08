@@ -185,12 +185,12 @@
           "required": false
         },
         {
-          "name": "type",
+          "name": "color",
           "type": "string",
           "mutable": false,
-          "attr": "type",
+          "attr": "color",
           "reflectToAttr": true,
-          "docs": "to set brand type { black, white, inverse }.",
+          "docs": "to set brand color { black, white, inverse }.",
           "docsTags": [],
           "optional": false,
           "required": false
