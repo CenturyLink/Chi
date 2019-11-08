@@ -2,9 +2,10 @@
 title: Drawer
 styles:
   - assets/styles/drawer-ce
-scripts:
-  - js/ce/ux-chi-ce
 ---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
 - var sides = ['top', 'right', 'bottom', 'left'];
 - var versions = [{"title": "no-backdrop", "backdrop": false, "testClass": "test-"}, {"title": "backdrop", "backdrop": true, "testClass": "test-backdrop-"}, {"title": "inverse backdrop", "backdrop": "inverse", "testClass": "test-backdrop-inverse-"} ];
 

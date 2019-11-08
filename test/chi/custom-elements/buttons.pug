@@ -1,8 +1,9 @@
 ---
 title: Buttons
-scripts:
-  - js/ce/ux-chi-ce
 ---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
 each size in ['default', 'sm', 'md', 'lg', 'xl']
   each type in ['solid', 'outline', 'flat', 'fluid']
     div(class={
@@ -170,3 +171,20 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
         td
           chi-button(type='close', size= size !== 'default' ? size : '')
 
+script.
+  function getElementHeight(element) {
+    return parseInt(window.getComputedStyle(element, null).getPropertyValue("height").replace("px", ""));
+  }
+
+  function checkAllButtonsRendered() {
+    const buttons = document.querySelectorAll('chi-button');
+
+    return Array.from(buttons).every(x => getElementHeight(x) > 20);
+  }
+  
+  const renderCheckInterval = setInterval(function() {
+    if (checkAllButtonsRendered()) {
+      console.log("backstop_ready");
+      clearInterval(renderCheckInterval);
+    }
+  }, 3000);

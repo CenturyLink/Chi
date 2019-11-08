@@ -6,7 +6,8 @@ import {
   Method,
   Prop,
   State,
-  Watch
+  Watch,
+  h
 } from '@stencil/core';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
@@ -26,27 +27,27 @@ export class Popover {
   /**
    * to set position of the popover { top, top-start, top-end, right, right-start, right-end, bottom, bottom-start, bottom-end, left, left-start, left-end }
    */
-  @Prop({ reflectToAttr: true }) position: Placement = 'top';
+  @Prop({ reflect: true }) position: Placement = 'top';
 
   /**
    * to add an arrow between the popover and the reference element
    */
-  @Prop({ reflectToAttr: true }) arrow: boolean;
+  @Prop({ reflect: true }) arrow: boolean;
 
   /**
    * to open or close the popover
    */
-  @Prop({ reflectToAttr: true, mutable: true }) active: boolean;
+  @Prop({ reflect: true, mutable: true }) active: boolean;
 
   /**
    * CSS Selector to the reference Element. I.e. #id > p
    */
-  @Prop({ reflectToAttr: true }) reference: string;
+  @Prop({ reflect: true }) reference: string;
 
   /**
    * Prevents closing the popover when clicking out of its bounds
    */
-  @Prop({ reflectToAttr: true }) preventAutoHide: boolean;
+  @Prop({ reflect: true }) preventAutoHide: boolean;
 
   /**
    * Status classes for the show/hide animation
@@ -130,7 +131,7 @@ export class Popover {
    * Toggles active state (show/hide)
    */
   @Method()
-  toggle() {
+  async toggle() {
     if (this.active) {
       this.hide();
     } else {
@@ -142,7 +143,7 @@ export class Popover {
    * Shows the popover.
    */
   @Method()
-  show() {
+  async show() {
     this.active = true;
   }
 
@@ -150,7 +151,7 @@ export class Popover {
    * Hides the popover
    */
   @Method()
-  hide() {
+  async hide() {
     this.active = false;
   }
 
@@ -239,7 +240,6 @@ export class Popover {
     }
 
     const savePopperData = (data: any) => {
-      // this._popperData = data;
       this._preAnimationTransformStyle = null;
       this._postAnimationTransformStyle = data.styles.transform;
       if (data.placement.indexOf('top') === 0) {

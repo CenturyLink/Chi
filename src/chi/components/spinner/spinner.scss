@@ -19,6 +19,7 @@ $spinner-sizes: (
   position: relative;
   height: 1rem;
   width: 1rem;
+  vertical-align: top;
 
   & .path {
     stroke-dasharray: 150,190;

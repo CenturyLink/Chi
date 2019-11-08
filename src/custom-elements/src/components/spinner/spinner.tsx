@@ -1,4 +1,4 @@
-import { Component, Prop, Watch } from '@stencil/core';
+import { Component, Prop, Watch, h } from '@stencil/core';
 import { ICON_SIZES } from '../../constants/size';
 
 const SPINNER_COLORS = ['primary', 'success', 'warning', 'danger', 'muted', 'secondary', 'light'];
@@ -12,17 +12,17 @@ export class Spinner {
   /**
    *  to set size of a spinner { xs, sm, sm--2, sm--3, md, lg, xl, xxl }.
    */
-  @Prop({ reflectToAttr: true }) size = 'sm';
+  @Prop({ reflect: true }) size = 'sm';
 
   /**
    *  to set color of a spinner { primary, success, warning, danger, muted }.
    */
-  @Prop({ reflectToAttr: true }) color: string;
+  @Prop({ reflect: true }) color: string;
 
   /**
    *  to render spinners on dark or light backgrounds.
    */
-  @Prop({ reflectToAttr: true }) backdrop: string;
+  @Prop({ reflect: true }) backdrop: string;
 
   @Watch('size')
   sizeValidation(newValue: string) {
