@@ -5,21 +5,26 @@ const clickDate2 = '01/26/2019';
 const thisMonthName = /November\s*2018/;
 const nextMonthName = /December\s*2018/;
 const dateObject = new Date();
-const monthToReturn = (dateObject.getMonth() + 1).toString().length === 2 ? (dateObject.getMonth() + 1).toString() : '0' + (dateObject.getMonth() + 1).toString();
-const dayToReturn = dateObject.getDate().toString().length === 2 ? dateObject.getDate().toString() : '0' + dateObject.getDate().toString();
-const today = monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
+const monthToReturn =
+  (dateObject.getMonth() + 1).toString().length === 2
+    ? (dateObject.getMonth() + 1).toString()
+    : '0' + (dateObject.getMonth() + 1).toString();
+const dayToReturn =
+  dateObject.getDate().toString().length === 2
+    ? dateObject.getDate().toString()
+    : '0' + dateObject.getDate().toString();
+const today =
+  monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
 
 describe('Date picker', function() {
-
-  beforeEach(()=>{
+  beforeEach(() => {
     cy.visit('tests/custom-elements/date-picker.html');
   });
 
   it('Clicking on a day emits an event. ', function() {
-
     const spy = cy.spy();
 
-    cy.get('[data-cy="test-active"]').then((el) => {
+    cy.get('[data-cy="test-active"]').then(el => {
       el.on('chiDateChange', spy);
     });
 
@@ -62,9 +67,21 @@ describe('Date picker', function() {
       .should('have.attr', 'active')
       .get('[data-cy="test-input-combined"]')
       .find('chi-popover[active]')
-      .then((popover) => {
+      .then(popover => {
         expect(popover[0].active).to.equal(true);
       });
+  });
+
+  it('Date-picker should not have popover when disabled is set to true.', function() {
+    cy.get('[data-cy="test-disabled"]')
+      .find('chi-popover')
+      .should('not.exist');
+  });
+
+  it('Date-picker input should be disabled', function() {
+    cy.get('[data-cy="test-disabled"]')
+      .find('input')
+      .should('have.disabled');
   });
 
   it('Date-picker should fill the input with the clicked date. ', function() {
@@ -109,5 +126,4 @@ describe('Date picker', function() {
       .get('[data-cy="test-input-combined"] input')
       .should('have.value', today);
   });
-
 });

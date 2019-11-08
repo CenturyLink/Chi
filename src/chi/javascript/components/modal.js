@@ -103,8 +103,8 @@ class Modal extends Component {
   }
 
   _locateBackdrop() {
-    const parent = this._modalElem.parentNode;
-    if (Util.hasClass(parent, 'a-backdrop')) {
+    const parent = this._modalElem.parentNode.parentNode;
+    if (Util.hasClass(parent, 'm-backdrop')) {
       return parent;
     } else {
       return null;

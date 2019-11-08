@@ -1,4 +1,4 @@
-import { Component, Prop, Watch } from '@stencil/core';
+import { Component, Prop, Watch, h } from '@stencil/core';
 
 const EP_MODES = ['done', 'active', 'pending', 'disabled'];
 
@@ -11,22 +11,22 @@ export class ExpansionPanel {
   /**
    * to set expansion panel state. Possible values are: {'done', 'active', 'pending' (default value), and 'disabled'}
    */
-  @Prop({ reflectToAttr: true }) state = 'pending';
+  @Prop({ reflect: true }) state = 'pending';
 
   /**
    * to set a step number next to the title of the panel
    */
-  @Prop({ reflectToAttr: true }) step: string;
+  @Prop({ reflect: true }) step: string;
 
   /**
    * to set the title of the panel
    */
-  @Prop({ reflectToAttr: true }) heading: string;
+  @Prop({ reflect: true }) heading: string;
 
   /**
    * is the panel border-styled?
    */
-  @Prop({ reflectToAttr: true }) bordered: boolean;
+  @Prop({ reflect: true }) bordered: boolean;
 
   @Watch('state')
   stateValidation(newValue: string) {

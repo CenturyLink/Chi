@@ -1,8 +1,9 @@
 ---
 title: Brand
-scripts:
-  - js/ce/ux-chi-ce
 ---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
 - const sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
 
 p.-text Use brand to display the CenturyLink logo in your project.
@@ -20,23 +21,23 @@ h4 Base
 h4 Inverse
 .example.-mb--3
   .-p--3.-bg--black
-    chi-brand(type='inverse')
+    chi-brand(color='inverse')
   :code(lang="html")
-    <chi-brand type='inverse'></chi-brand>
+    <chi-brand color="inverse"></chi-brand>
 
 h4 White
 .example.-mb--3
   .-p--3.-bg--black
-    chi-brand(type='white')
+    chi-brand(color='white')
   :code(lang="html")
-    <chi-brand type='white'></chi-brand>
+    <chi-brand color="white"></chi-brand>
 
 h4 Black
 .example.-mb--3
   .-p--3
-    chi-brand(type='black')
+    chi-brand(color='black')
   :code(lang="html")
-    <chi-brand type='black'></chi-brand>
+    <chi-brand color="black"></chi-brand>
 
 h3 Sizes
 p.-text
@@ -53,14 +54,14 @@ p.-text
         chi-brand(size=size)
   :code(lang="html")
     <chi-brand></chi-brand>
-    <chi-brand size='xs'></chi-brand>
-    <chi-brand size='sm'></chi-brand>
-    <chi-brand size='sm--2'></chi-brand>
-    <chi-brand size='sm--3'></chi-brand>
-    <chi-brand size='md'></chi-brand>
-    <chi-brand size='lg'></chi-brand>
-    <chi-brand size='xl'></chi-brand>
-    <chi-brand size='xxl'></chi-brand>
+    <chi-brand size="xs"></chi-brand>
+    <chi-brand size="sm"></chi-brand>
+    <chi-brand size="sm--2"></chi-brand>
+    <chi-brand size="sm--3"></chi-brand>
+    <chi-brand size="md"></chi-brand>
+    <chi-brand size="lg"></chi-brand>
+    <chi-brand size="xl"></chi-brand>
+    <chi-brand size="xxl"></chi-brand>
 
 h3 Additional usage details
 :stencilDoc(name='chi-brand')
