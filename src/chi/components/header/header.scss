@@ -83,6 +83,7 @@
       color: set-color(grey, 70);
       font-size: $text-large;
       line-height: $line-height-small;
+      flex: 1 0 auto;
 
       @include respond-to(lg) {
         font-size: $text-larger;

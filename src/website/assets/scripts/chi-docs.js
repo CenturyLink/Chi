@@ -171,7 +171,9 @@ onLoad(() => {
 
   var codeSnippets = document.getElementsByTagName('pre');
   Array.prototype.forEach.call(codeSnippets, function(codeSnippet) {
-    enableCopyToClipboardFeature(codeSnippet);
+    if (codeSnippet.hasChildNodes('code')) {
+      enableCopyToClipboardFeature(codeSnippet);
+    }
   });
 
   var dropdownButton = document.getElementById('version-dropdown');  
