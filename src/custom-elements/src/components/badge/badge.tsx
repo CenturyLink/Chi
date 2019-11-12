@@ -1,4 +1,4 @@
-import { Component, Element, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
 
 @Component({
   tag: 'chi-badge',
@@ -13,27 +13,27 @@ export class Badge {
   /**
    *  to set variant of a badge { outline, flat }.
    */
-  @Prop({ reflectToAttr: true }) variant: string;
+  @Prop({ reflect: true }) variant: string;
 
   /**
    *  to render badges with a more pronounced border-radius.
    */
-  @Prop({ reflectToAttr: true }) pill: boolean;
+  @Prop({ reflect: true }) pill: boolean;
 
   /**
-   *  to set color of a badge.
+   *  to set color of a badge { primary, success, warning, danger, dark, muted, secondary, light }.
    */
-  @Prop({ reflectToAttr: true }) color: string;
+  @Prop({ reflect: true }) color: string;
 
   /**
-   *  to transform the badge text { uppercase, lowercase, capitalize }.
+   *  to transform the badge text { uppercase, lowercase, capitalized }.
    */
-  @Prop({ reflectToAttr: true }) textTransform: string;
+  @Prop({ reflect: true }) textTransform: string;
 
   /**
    *  to set size of a badge { small or smaller }.
    */
-  @Prop({ reflectToAttr: true }) size: string;
+  @Prop({ reflect: true }) size: string;
 
   @Watch('size')
   sizeValidation(newValue: string) {

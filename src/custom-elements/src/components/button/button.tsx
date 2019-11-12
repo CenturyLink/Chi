@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
 
 @Component({
   tag: 'chi-button',
@@ -11,42 +11,42 @@ export class Button {
   /**
    *  to set button type { float, close, icon }.
    */
-  @Prop({ reflectToAttr: true }) type: string;
+  @Prop({ reflect: true }) type: string;
 
   /**
    *  to set variant of a button { outline, flat }.
    */
-  @Prop({ reflectToAttr: true }) variant: string;
+  @Prop({ reflect: true }) variant: string;
 
   /**
    *  to disable chi-button.
    */
-  @Prop({ reflectToAttr: true }) disabled = false;
+  @Prop({ reflect: true }) disabled = false;
 
   /**
    *  to set button color { primary, secondary, danger, dark, light }.
    */
-  @Prop({ reflectToAttr: true }) color: string;
+  @Prop({ reflect: true }) color: string;
 
   /**
    *  to set button size { sm, md, lg, xl }.
    */
-  @Prop({ reflectToAttr: true }) size: string;
+  @Prop({ reflect: true }) size: string;
 
   /**
    *  to to render buttons with a more pronounced border-radius.
    */
-  @Prop({ reflectToAttr: true }) pill = false;
+  @Prop({ reflect: true }) pill = false;
 
   /**
    *  to render a button to fill the parent space.
    */
-  @Prop({ reflectToAttr: true }) fluid = false;
+  @Prop({ reflect: true }) fluid = false;
 
   /**
    *  to center align the text .
    */
-  @Prop({ reflectToAttr: true }) center = false;
+  @Prop({ reflect: true }) center = false;
 
   @Prop() extraClass: string;
 

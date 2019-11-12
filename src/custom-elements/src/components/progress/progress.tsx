@@ -1,4 +1,4 @@
-import { Component, Prop, Watch } from '@stencil/core';
+import { Component, Prop, Watch, h } from '@stencil/core';
 import { SEMANTIC_COLORS } from '../../constants/color';
 
 @Component({
@@ -10,17 +10,17 @@ export class Progress {
   /**
    *  to set the value of a progress bar.
    */
-  @Prop({ reflectToAttr: true }) value: number;
+  @Prop({ reflect: true }) value: number;
 
   /**
    *  to set the max value of a progress bar.
    */
-  @Prop({ reflectToAttr: true }) max = 100;
+  @Prop({ reflect: true }) max = 100;
 
   /**
    *  to indicate a progress bar state { info, warning, danger, success }.
    */
-  @Prop({ reflectToAttr: true }) state = 'success';
+  @Prop({ reflect: true }) state = 'success';
 
   @Watch('state')
   stateValidation(newValue: string) {

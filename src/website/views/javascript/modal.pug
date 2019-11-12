@@ -16,18 +16,19 @@ h3 Base
     .-d--flex.-justify-content--start.-align-items--start
       button#modal-trigger-1.a-btn.-primary.a-modal__trigger(data-target='#modal-1')
         | Launch demo modal
-  .a-backdrop.-closed
-    .a-modal#modal-1
-      .a-modal__header
-        h3.a-modal__title Modal Title
-        button(class='a-btn -icon -close', data-dismiss='modal')
-          .a-btn__content
-            i.a-icon.icon-x
-      .a-modal__content
-        p.-text.-m--0 Modal content
-      .a-modal__footer
-        button.a-btn(data-dismiss='modal') Cancel
-        button.a-btn.-primary.-ml--2 Save
+  .m-backdrop.-closed
+    .m-backdrop__wrapper
+      .a-modal#modal-1
+        .a-modal__header
+          h3.a-modal__title Modal Title
+          button(class='a-btn -icon -close', data-dismiss='modal')
+            .a-btn__content
+              i.a-icon.icon-x
+        .a-modal__content
+          p.-text.-m--0 Modal content
+        .a-modal__footer
+          button.a-btn(data-dismiss='modal') Cancel
+          button.a-btn.-primary.-ml--2 Save
   ul#a-tabs-base.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-e2-button') Button
@@ -42,22 +43,24 @@ h3 Base
       </button>
   #a-tabs-e2-modal.a-tabs-panel
     :code(lang="html")
-      <div class="a-backdrop -closed">
-        <div id="modal-1" class="a-modal">
-          <div class="a-modal__header">
-            <h3 class="a-modal__title">Modal Title</h3>
-            <button class="a-btn -icon -close" data-dismiss="modal">
-              <div class="a-btn__content">
-                <i class="a-icon icon-x"></i>
-              </div>
-            </button>
-          </div>
-          <div class="a-modal__content">
-            <p class="-text -m--0">Modal content</p>
-          </div>
-          <div class="a-modal__footer">
-            <button class="a-btn" data-dismiss="modal">Cancel</button>
-            <button class="a-btn -primary -ml--2">Save</button>
+      <div class="m-backdrop -closed">
+        <div class="m-backdrop__wrapper">
+          <div id="modal-1" class="a-modal">
+            <div class="a-modal__header">
+              <h3 class="a-modal__title">Modal Title</h3>
+              <button class="a-btn -icon -close" data-dismiss="modal">
+                <div class="a-btn__content">
+                  <i class="a-icon icon-x"></i>
+                </div>
+              </button>
+            </div>
+            <div class="a-modal__content">
+              <p class="-text -m--0">Modal content</p>
+            </div>
+            <div class="a-modal__footer">
+              <button class="a-btn" data-dismiss="modal">Cancel</button>
+              <button class="a-btn -primary -ml--2">Save</button>
+            </div>
           </div>
         </div>
       </div>

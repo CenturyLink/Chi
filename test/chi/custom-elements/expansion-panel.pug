@@ -1,10 +1,10 @@
 ---
 title: Expansion panel
-scripts:
-  - js/ce/ux-chi-ce
 styles:
   - assets/styles/expansion-panel-ce
 ---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 .test-expansion-panel-done.-mb--3(style="min-width: 20rem")
     chi-expansion-panel(heading='Expansion panel #1', state="done", data-cy='test-done')

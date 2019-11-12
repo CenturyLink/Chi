@@ -19,6 +19,7 @@ $spinner-sizes: (
   position: relative;
   height: 1rem;
   width: 1rem;
+  vertical-align: top;
 
   & .path {
     stroke-dasharray: 150,190;
@@ -36,11 +37,23 @@ $spinner-sizes: (
   }
 }
 
+// Legacy code start
 .a-backdrop {
   & > .a-spinner {
     transform-origin: center;
     width: 4rem;
     height: 4rem;
+  }
+}
+// Legacy code end
+
+.m-backdrop {
+  &__wrapper {
+    & > .a-spinner {
+      transform-origin: center;
+      width: 4rem;
+      height: 4rem;
+    }
   }
 }
 

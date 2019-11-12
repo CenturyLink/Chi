@@ -1,4 +1,4 @@
-import { Component, Prop, Watch } from '@stencil/core';
+import { Component, Prop, Watch, h } from '@stencil/core';
 import { calculateClasses } from '../../utils/utils';
 
 let loadedIcons = 0;
@@ -16,17 +16,17 @@ export class Icon {
   /**
    * OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, inverse, muted}
    */
-  @Prop({ reflectToAttr: true }) color: string;
+  @Prop({ reflect: true }) color: string;
 
   /**
    * Icon to be rendered. View accepted values on text documentation.
    */
-  @Prop({ reflectToAttr: true }) icon: string;
+  @Prop({ reflect: true }) icon: string;
 
   /**
    * OPTIONAL. Size of the Icon. {xs, sm, sm--2, sm--3, md, lg, xl, xxl}
    */
-  @Prop({ reflectToAttr: true }) size: string;
+  @Prop({ reflect: true }) size: string;
 
   /**
    * OPTIONAL classes
