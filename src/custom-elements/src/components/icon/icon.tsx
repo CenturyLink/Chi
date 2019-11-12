@@ -28,6 +28,12 @@ export class Icon {
    */
   @Prop({ reflect: true }) size: string;
 
+  /**
+   * OPTIONAL classes
+   */
+
+  @Prop({ reflectToAttr: true }) extraClass: string;
+
   @Watch('color')
   validateColorAttribute(newValue: string) {
     if (newValue && VALID_COLORS.indexOf(newValue) === -1) {
@@ -82,7 +88,8 @@ export class Icon {
   }
 
   render() {
-    return <div class={'a-icon ' + this.getClass()}>
+    const extraClass = this.extraClass && this.extraClass;
+    return <div class={`a-icon ${this.getClass()} ${extraClass}`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

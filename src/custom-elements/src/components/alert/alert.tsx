@@ -23,12 +23,27 @@ export class Alert {
   /**
    *  to set alert state { success, danger, warning, info, muted }.
    */
-  @Prop({ reflectToAttr: true }) color!: string;
+  @Prop({ reflectToAttr: true }) color: string;
+
+  /**
+   *  to avoid necessity of adding <chi-icon> to alert markup.
+   */
+  @Prop({ reflectToAttr: true }) icon: string;
 
   /**
    *  to set alert size { sm, md, lg }.
    */
   @Prop({ reflectToAttr: true }) size = '';
+
+  /**
+   *  to get rid of the border-bottom of BANNER alerts.
+   */
+  @Prop({ reflectToAttr: true }) borderless = false;
+
+  /**
+   *  to make BANNER alert corners rounded.
+   */
+  @Prop({ reflectToAttr: true }) rounded = false;
 
   /**
    *  to center the alert content.
@@ -45,7 +60,7 @@ export class Alert {
    */
   @Event() dismissAlert: EventEmitter<void>;
 
-  @Watch('color')
+  @Watch('type')
   typeValidation(newValue: string) {
     if (newValue && !['bubble', 'banner', 'toast'].includes(newValue)) {
       throw new Error(`${newValue} is not a valid type for alert. Valid values are bubble, banner or toast.`);
@@ -80,17 +95,21 @@ export class Alert {
   }
 
   render() {
+    const chiIcon = <chi-icon icon={this.icon} color={this.color} extraClass="m-alert__icon"></chi-icon>;
     return (
       <div class={`m-alert
         ${this.type ? `-${this.type}` : ''}
         ${this.color ? `-${this.color}` : ''}
         ${this.center ? '-center' : ''}
         ${this.dismissible ? '-dismiss' : ''}
-        ${this.size ? `-${this.size}` : ''}`}
+        ${this.size ? `-${this.size}` : ''}
+        ${this.type === 'banner' && this.borderless ? `-borderless` : ''}
+        ${this.type === 'banner' && this.rounded ? `-rounded` : ''}`}
         role="alert"
       >
-        {(this.dismissible || this.type === 'toast' || this.size === 'lg') ? <slot></slot> : <slot></slot>}
-        {(this.dismissible || this.type === 'toast') && <chi-button type="close" onChiClick={() => this._dismissAlert()}/>}
+        {this.icon && chiIcon}
+        <slot></slot>
+        {(this.dismissible || this.type === 'toast') && <chi-button extraClass="m-alert__dismiss-button" type="close" onChiClick={() => this._dismissAlert()}/>}
       </div>
     );
   }

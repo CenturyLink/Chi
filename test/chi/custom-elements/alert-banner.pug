@@ -4,32 +4,41 @@ title: Alert Banners
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-each size in ['default', 'large']
-  div(class=`test-${size} -w--100`)
-    h3= `${size}`
-    each type in ['success', 'danger', 'warning', 'info', 'muted']
-      chi-alert.-m2(type='banner', color=type, size=`${size === 'default' ? '' : 'lg'}`, data-cy=`alert-banner-${size}-${type}`)
-        = `This is a ${type} message`
-
-    h4 center
-    each type in ['success', 'danger', 'warning', 'info', 'muted']
-      chi-alert.-m2(type='banner', center, color=type, size=`${size === 'default' ? '' : 'lg'}`, data-cy=`alert-banner-${size}-${type}-center`)
-        = `This is a ${type} message`
-
-    h4 Has icon
+each size in ['default', 'sm', 'lg']
+  h4 Default / #{size}
+  div(class=`test-banner-${size} -w--100`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m2(type='banner', color=type, size=`${size === 'default' ? '' : 'lg'}`, data-cy=`alert-banner-${size}-${type}-icon`)
-        chi-icon(size='sm--2', color=type, icon=val)
-        = `This is a ${type} message`
-
-    h4 Has icon center
+      chi-alert.-m--2(color=type, icon=val, type='banner', size=`${size === 'default' ? '' : size}`)
+        .m-alert__content
+          p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+  h4 Centered / #{size}
+  div(class=`test-banner-center-${size} -w--100`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m2(type='banner', center, color=type, size=`${size === 'default' ? '' : 'lg'}`, data-cy=`alert-banner-${size}-${type}-icon-center`)
-        chi-icon(size='sm--2', color=type, icon=val)
-        = `This is a ${type} message`
-
-    h4 Dismiss
+      chi-alert.-m--2(color=type, icon=val, type='banner', center, size=`${size === 'default' ? '' : size}`)
+        .m-alert__content
+          p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
+  h4 Dismissible / #{size}
+  div(class=`test-banner-dismissible-${size} -w--100`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m2(type='banner', color=type, size=`${size === 'default' ? '' : 'lg'}`, dismissible, data-cy=`alert-banner-${size}-${type}-dismiss`)
-        chi-icon(size='sm--2', color=type, icon=val)
-        = `This is a ${type} message`
+      chi-alert.-m--2(color=type, icon=val, type="banner" dismissible, size=`${size === 'default' ? '' : size}`)
+        .m-alert__content
+          p.m-alert__text= `This is a dismissible ${type} alert`
+  h4 Borderless / #{size}
+  div(class=`test-banner-borderless-${size} -w--100`)
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m--2(color=type, icon=val, type="banner", borderless, size=`${size === 'default' ? '' : size}`)
+        .m-alert__content
+          p.m-alert__text= `This is a borderless ${type} alert`
+  h4 Rounded / #{size}
+  div(class=`test-banner-rounded-${size} -w--100`)
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m--2(color=type, icon=val, type="banner", rounded, size=`${size === 'default' ? '' : size}`)
+        .m-alert__content
+          p.m-alert__text= `This is a rounded ${type} alert`
+  h4 Titled / #{size}
+  div(class=`test-banner-titled-${size} -w--100`)
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m--2(color=type, icon=val, type="banner", size=`${size === 'default' ? '' : size}`)
+        .m-alert__content
+          p.m-alert__title= `${type}`
+          p.m-alert__text= `This is a titled ${type} alert`
