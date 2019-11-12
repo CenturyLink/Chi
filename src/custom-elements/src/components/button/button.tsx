@@ -103,7 +103,7 @@ export class Button {
   render() {
     if (this.type === 'close') {
       return (
-        <button class={`a-btn -icon -close ${this.size ? `-${this.size}` : ''}`} onClick={() => this._buttonClicked()}>
+        <button class={`${this.extraClass ? this.extraClass : ''} a-btn -icon -close ${this.size ? `-${this.size}` : ''}`} onClick={() => this._buttonClicked()}>
           <div class="a-btn__content">
             <chi-icon icon={'x'} />
           </div>

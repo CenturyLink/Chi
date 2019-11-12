@@ -3,55 +3,19 @@ title: Alert Toasts
 scripts:
   - js/ce/ux-chi-ce
 ---
-- const sizes = ['h6', 'h5', 'h4', 'h3', 'h2', 'h1'];
 
-.test-toast.-w100
-  each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-    chi-alert.-m2(type='toast', color=type, data-cy=`alert-toast-${type}`)
-      div
-        h5.a-h5= type
-        = `This is a ${type} alert`
-
-  h2 Has icon
-  h3 With a-h1 - a-h6
-  each size in sizes
-    h4= `a-${size}`
+each size in ['default', 'sm', 'lg']
+  h4 Default / #{size}
+  div(class=`test-toast-${size}`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-titled.-m2(type='toast', color=type)
-        chi-icon(size='sm--2', color=type, icon=val)
-        div
-          div(class=`a-${size}`)= type
-          = `This is a ${type} alert`
+      chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, icon=val, color=type)
+        .m-alert__content
+          p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
 
-  h3 With h1 - h6
-  each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-    chi-alert.-titled.-m2(type='toast', color=type)
-      chi-icon(size='sm--2', color=type, icon=val)
-      div
-        h1= type
-        = `This is a ${type} alert`
-    chi-alert.-titled.-m2(type='toast', color=type)
-      chi-icon(size='sm--2', color=type, icon=val)
-      div
-        h2= type
-        = `This is a ${type} alert`
-    chi-alert.-titled.-m2(type='toast', color=type)
-      chi-icon(size='sm--2', color=type, icon=val)
-      div
-        h3= type
-        = `This is a ${type} alert`
-    chi-alert.-titled.-m2(type='toast', color=type)
-      chi-icon(size='sm--2', color=type, icon=val)
-      div
-        h4= type
-        = `This is a ${type} alert`
-    chi-alert.-titled.-m2(type='toast', color=type)
-      chi-icon(size='sm--2', color=type, icon=val)
-      div
-        h5= type
-        = `This is a ${type} alert`
-    chi-alert.-titled.-m2(type='toast', color=type)
-      chi-icon(size='sm--2', color=type, icon=val)
-      div
-        h6= type
-        = `This is a ${type} alert`
+  h4 Titled /  #{size}
+  div(class=`test-toast-titled-${size}`)
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, color=type, icon=val)
+        .m-alert__content
+          p.m-alert__title= type
+          p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} toast alert`

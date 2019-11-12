@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-11-06T17:42:34",
+  "timestamp": "2019-11-12T16:12:33",
   "compiler": {
     "name": "@stencil/core",
     "version": "0.16.4",
@@ -13,6 +13,18 @@
       "docsTags": [],
       "usage": {},
       "props": [
+        {
+          "name": "borderless",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "borderless",
+          "reflectToAttr": true,
+          "docs": "to get rid of the border-bottom of BANNER alerts.",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
         {
           "name": "center",
           "type": "boolean",
@@ -34,7 +46,7 @@
           "docs": "to set alert state { success, danger, warning, info, muted }.",
           "docsTags": [],
           "optional": false,
-          "required": true
+          "required": false
         },
         {
           "name": "dismissible",
@@ -45,6 +57,17 @@
           "docs": "to make the alert dismissible.",
           "docsTags": [],
           "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "mutable": false,
+          "attr": "icon",
+          "reflectToAttr": true,
+          "docs": "to avoid necessity of adding <chi-icon> to alert markup.",
+          "docsTags": [],
           "optional": false,
           "required": false
         },
@@ -61,6 +84,18 @@
           "required": false
         },
         {
+          "name": "rounded",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "rounded",
+          "reflectToAttr": true,
+          "docs": "to make BANNER alert corners rounded.",
+          "docsTags": [],
+          "default": "false",
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "size",
           "type": "string",
           "mutable": false,
@@ -68,7 +103,7 @@
           "reflectToAttr": true,
           "docs": "to set alert size { sm, md, lg }.",
           "docsTags": [],
-          "default": "md",
+          "default": "''",
           "optional": false,
           "required": false
         },
@@ -771,6 +806,17 @@
           "attr": "color",
           "reflectToAttr": true,
           "docs": "OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, inverse, muted}",
+          "docsTags": [],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "extraClass",
+          "type": "string",
+          "mutable": false,
+          "attr": "extra-class",
+          "reflectToAttr": true,
+          "docs": "OPTIONAL classes",
           "docsTags": [],
           "optional": false,
           "required": false
