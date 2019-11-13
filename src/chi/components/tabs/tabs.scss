@@ -319,6 +319,92 @@
     }
   }
 
+  &.-inverse {
+    & > li {
+      &.-active > a {
+        color: $secondary-color;
+      }
+
+      & > a {
+        color: $text-white;
+
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+
+      &.a-sliding-border {
+        background-color: $secondary-color;
+      }
+    }
+
+    &:not(.-vertical):not(.-responsive):not(.-sliding) > li.-active > a {
+      border-bottom: 0.125rem solid $secondary-color;
+
+      .a-icon {
+        color: $secondary-color;
+      }
+    }
+
+    &:not(.-vertical):not(.-responsive) {
+      &.-border {
+        border-bottom: 0.0625rem solid set-color(grey, 80);
+      }
+    }
+
+    &.-vertical {
+      &:not(.-sliding) > li.-active:not(.-hasActive) > a,
+      &:not(.-sliding).-animated > li.-active:not(.-hasActive) > a,
+      &:not(.-sliding).-animated .a-tabs__subtabs > li.-active:not(.-hasActive) > a {
+        box-shadow: inset 0.125rem 0 0 $secondary-color;
+      }
+
+      & > li {
+        &.-active > a {
+          color: $secondary-color;
+        }
+      }
+
+      &.-icons {
+        & > li {
+          &.-active > a {
+            .a-icon {
+              color: $secondary-color;
+            }
+          }
+        }
+      }
+
+      &.-border {
+        > li {
+          border-bottom: 0.0625rem solid set-color(grey, 80);
+
+          &:first-child {
+            border-top: 0.0625rem solid set-color(grey, 80);
+          }
+        }
+      }
+
+      .a-tabs__subtabs {
+        & > li {
+          &.-active {
+            & > a {
+              color: $secondary-color;
+            }
+          }
+
+          & > a {
+            color: $text-white;
+
+            &:hover {
+              color: $secondary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
   &:not(.-vertical):not(.-responsive) {
     @include tabs-not-vertical;
   }
