@@ -358,22 +358,17 @@ p.-text
   | While <code>m-alert__actions</code> can be added to any Alert, alert actions are best suited for <code>lg</code> default or Titled alerts.
 .example.-mb--3
   .-p--1.-bg--grey-20
-    chi-alert.-m--2(type='banner', icon='circle-info', size='lg', dismissible)
-      .m-alert__content
-        p.m-alert__title Base
-        p.m-alert__text This is a large dismissible alert
-        div.m-alert__actions
-          chi-button(color='dark', variant='outline', size='lg') Secondary action
-          chi-button(color='primary', size='lg') Primary action
+    chi-alert.-m--2(type='banner', icon='circle-info', size='lg', alert-title="Base", dismissible)
+      p.m-alert__text This is a large dismissible alert
+      div.m-alert__actions
+        chi-button(color='dark', variant='outline', size='lg') Secondary action
+        chi-button(color='primary', size='lg') Primary action
   :code(lang="html")
-    <chi-alert type="banner" icon="circle-info" size="lg" dismissible>
-      <div class="m-alert__content">
-        <p class="m-alert__title">Base</p>
-        <p class="m-alert__text">This is a large dismissible alert</p>
-        <div class="m-alert__actions">
-          <chi-button color="dark" variant="outline" size="lg">Secondary action</chi-button>
-          <chi-button color="primary" size="lg">Primary action</chi-button>
-        </div>
+    <chi-alert type="banner" icon="circle-info" size="lg" alert-title="Base" dismissible>
+      <p class="m-alert__text">This is a large dismissible alert</p>
+      <div class="m-alert__actions">
+        <chi-button color="dark" variant="outline" size="lg">Secondary action</chi-button>
+        <chi-button color="primary" size="lg">Primary action</chi-button>
       </div>
     </chi-alert>
 
