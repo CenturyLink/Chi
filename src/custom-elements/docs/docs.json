@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-11-12T16:12:33",
+  "timestamp": "2019-11-13T14:35:12",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.7.5",
@@ -15,14 +15,35 @@
       "usage": {},
       "props": [
         {
+          "name": "alert-title",
+          "type": "string",
+          "mutable": false,
+          "attr": "alert-title",
+          "reflectToAttr": true,
+          "docs": "to define alert title.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "borderless",
           "type": "boolean",
           "mutable": false,
           "attr": "borderless",
           "reflectToAttr": true,
-          "docs": "to get rid of the border-bottom of BANNER alerts.",
+          "docs": "to get rid of the border-bottom of Banner alerts.",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -84,6 +105,11 @@
           "reflectToAttr": true,
           "docs": "to avoid necessity of adding <chi-icon> to alert markup.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -110,9 +136,14 @@
           "mutable": false,
           "attr": "rounded",
           "reflectToAttr": true,
-          "docs": "to make BANNER alert corners rounded.",
+          "docs": "to make Banner alert corners rounded.",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -124,7 +155,7 @@
           "reflectToAttr": true,
           "docs": "to set alert size { sm, md, lg }.",
           "docsTags": [],
-          "default": "'md'",
+          "default": "''",
           "values": [
             {
               "type": "string"
@@ -167,10 +198,12 @@
       "slots": [],
       "dependents": [],
       "dependencies": [
+        "chi-icon",
         "chi-button"
       ],
       "dependencyGraph": {
         "chi-alert": [
+          "chi-icon",
           "chi-button"
         ],
         "chi-button": [
@@ -284,6 +317,22 @@
       "usage": {},
       "props": [
         {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "to set brand color { black, white, inverse }.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "size",
           "type": "string",
           "mutable": false,
@@ -300,12 +349,12 @@
           "required": false
         },
         {
-          "name": "color",
+          "name": "type",
           "type": "string",
           "mutable": false,
-          "attr": "color",
+          "attr": "type",
           "reflectToAttr": true,
-          "docs": "to set brand color { black, white, inverse }.",
+          "docs": "to set brand type { black, white, inverse }.",
           "docsTags": [],
           "values": [
             {
@@ -520,30 +569,6 @@
       "usage": {},
       "props": [
         {
-          "name": "active",
-          "type": "boolean",
-          "mutable": true,
-          "attr": "active",
-          "reflectToAttr": true,
-          "docs": "Indicates whether the dropdown calendar is open or closed",
-          "docsTags": [],
-          "default": "false",
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "disabled",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "disabled",
-          "reflectToAttr": true,
-          "docs": "to disable chi-date-picker.",
-          "docsTags": [],
-          "default": "false",
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "format",
           "type": "string",
           "mutable": false,
@@ -696,6 +721,23 @@
           "attr": "active",
           "reflectToAttr": true,
           "docs": "Indicates whether the dropdown calendar is open or closed",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "to disable chi-date-picker.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -1139,6 +1181,11 @@
           "reflectToAttr": true,
           "docs": "OPTIONAL classes",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
           "optional": false,
           "required": false
         },
@@ -1180,6 +1227,7 @@
       "styles": [],
       "slots": [],
       "dependents": [
+        "chi-alert",
         "chi-button",
         "chi-date",
         "chi-drawer",
@@ -1187,6 +1235,9 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
+        "chi-alert": [
+          "chi-icon"
+        ],
         "chi-button": [
           "chi-icon"
         ],

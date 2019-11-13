@@ -1,23 +1,45 @@
 describe('Alert', () => {
   const alertBannerSelectors = [
-    'alert-banner-default-success',
-    'alert-banner-default-warning',
-    'alert-banner-default-warning-center',
-    'alert-banner-large-success',
-    'alert-banner-large-success-dismiss',
-    'alert-banner-large-muted-icon-center'
+    'alert-banner-success-default',
+    'alert-banner-center-success-default',
+    'alert-banner-dismissible-success-default',
+    'alert-banner-borderless-success-default',
+    'alert-banner-rounded-success-default',
+    'alert-banner-titled-success-default',
+    'alert-banner-success-sm',
+    'alert-banner-center-success-sm',
+    'alert-banner-dismissible-success-sm',
+    'alert-banner-borderless-success-sm',
+    'alert-banner-rounded-success-sm',
+    'alert-banner-titled-success-sm',
+    'alert-banner-success-lg',
+    'alert-banner-center-success-lg',
+    'alert-banner-dismissible-success-lg',
+    'alert-banner-borderless-success-lg',
+    'alert-banner-rounded-success-lg',
+    'alert-banner-titled-success-lg'
   ];
 
   const alertBubbleSelectors = [
-    'alert-bubble-default-success',
-    'alert-bubble-default-warning',
-    'alert-bubble-large-success',
-    'alert-bubble-large-success-dismiss',
+    'alert-bubble-success-default',
+    'alert-bubble-center-success-default',
+    'alert-bubble-dismissible-success-default',
+    'alert-bubble-titled-success-default',
+    'alert-bubble-actionable-success-default',
+    'alert-bubble-success-sm',
+    'alert-bubble-center-success-sm',
+    'alert-bubble-dismissible-success-sm',
+    'alert-bubble-titled-success-sm',
+    'alert-bubble-actionable-success-sm',
+    'alert-bubble-success-lg',
+    'alert-bubble-center-success-lg',
+    'alert-bubble-dismissible-success-lg',
+    'alert-bubble-titled-success-lg',
+    'alert-bubble-actionable-success-lg'
   ];
 
   const alertAssertion = (el, value) => {
-    cy.get(el)
-      .should('have.class', value);
+    cy.get(el).should('have.class', value);
   };
 
   describe('Alert Bubble', () => {
@@ -36,11 +58,11 @@ describe('Alert', () => {
     });
 
     it('Alert bubble should be included in the custom element', () => {
-      cy.get('@alert-bubble-default-success');
+      cy.get('@alert-bubble-success-default');
     });
 
     it('Alert bubble state have appropriate class', () => {
-      alertAssertion('@alert-bubble-default-warning', '-warning');
+      alertAssertion('@alert-bubble-success-default', '-success');
     });
   });
 
@@ -60,19 +82,19 @@ describe('Alert', () => {
     });
 
     it('Alert banner should be included in the custom element', () => {
-      cy.get('@alert-banner-default-success');
+      cy.get('@alert-banner-success-default');
     });
 
     it('Alert banner state have appropriate class', () => {
-      alertAssertion('@alert-banner-default-warning', '-warning');
+      alertAssertion('@alert-banner-success-default', '-success');
     });
 
     it('Alert banner should have appropriate class for size', () => {
-      alertAssertion('@alert-banner-large-success', '-lg');
+      alertAssertion('@alert-banner-success-lg', '-lg');
     });
 
     it('Alert banner is dismissible and renders X button', () => {
-      cy.get('@alert-banner-large-success-dismiss')
+      cy.get('@alert-banner-dismissible-success-lg')
         .should('have.class', '-dismiss')
         .children()
         .last()
@@ -82,14 +104,11 @@ describe('Alert', () => {
     });
 
     it('Alert banner is centered', () => {
-      alertAssertion('@alert-banner-default-warning-center', '-center');
+      alertAssertion('@alert-banner-center-success-default', '-center');
     });
 
     it('Alert banner has icons displayed', () => {
-      cy.get('@alert-banner-large-muted-icon-center')
-        .should('have.class', '-center')
-        .children()
-        .first()
+      cy.get('@alert-banner-success-default')
         .children()
         .first()
         .should('match', 'chi-icon');
@@ -98,11 +117,11 @@ describe('Alert', () => {
     it('Alert banner dismiss button should trigger appropriate event', () => {
       const spy = cy.spy();
 
-      cy.get('body').then((el) => {
+      cy.get('body').then(el => {
         el.on('dismissAlert', spy);
       });
 
-      cy.get('@alert-banner-large-success-dismiss')
+      cy.get('@alert-banner-dismissible-success-default')
         .children()
         .last()
         .should('match', 'chi-button')
@@ -119,11 +138,10 @@ describe('Alert', () => {
     });
 
     it('Alert toast should be included in the custom element', () => {
-      cy.get('[data-cy="alert-toast-success"]', { timeout: 5000 })
+      cy.get('[data-cy="alert-toast-success-default"]', { timeout: 5000 })
         .should('have.class', 'hydrated')
         .children()
         .should('match', 'div.m-alert.-toast');
     });
   });
-
 });

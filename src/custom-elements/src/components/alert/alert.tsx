@@ -36,12 +36,12 @@ export class Alert {
   @Prop({ reflectToAttr: true }) size = '';
 
   /**
-   *  to get rid of the border-bottom of BANNER alerts.
+   *  to get rid of the border-bottom of Banner alerts.
    */
   @Prop({ reflectToAttr: true }) borderless = false;
 
   /**
-   *  to make BANNER alert corners rounded.
+   *  to make Banner alert corners rounded.
    */
   @Prop({ reflectToAttr: true }) rounded = false;
 
@@ -54,6 +54,11 @@ export class Alert {
    *  to make the alert dismissible.
    */
   @Prop({ reflectToAttr: true }) dismissible = false;
+
+  /**
+   *  to define alert title.
+   */
+  @Prop({ reflectToAttr: true }) alertTitle: string;
 
   /**
    *  custom event when trying to dismiss an alert.
@@ -96,6 +101,8 @@ export class Alert {
 
   render() {
     const chiIcon = <chi-icon icon={this.icon} color={this.color} extraClass="m-alert__icon"></chi-icon>;
+    const alertTitle = this.alertTitle ? <p class="m-alert__title">{this.alertTitle}</p> : '';
+
     return (
       <div class={`m-alert
         ${this.type ? `-${this.type}` : ''}
@@ -108,8 +115,11 @@ export class Alert {
         role="alert"
       >
         {this.icon && chiIcon}
-        <slot></slot>
-        {(this.dismissible || this.type === 'toast') && <chi-button extraClass="m-alert__dismiss-button" type="close" onChiClick={() => this._dismissAlert()}/>}
+        <div class="m-alert__content">
+          {this.alertTitle && alertTitle}
+          <slot></slot>
+        </div>
+        {(this.dismissible || this.type === 'toast') && <chi-button extraClass="m-alert__dismiss-button" type="close" onChiClick={() => this._dismissAlert()} />}
       </div>
     );
   }
