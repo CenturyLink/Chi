@@ -22,48 +22,34 @@ h4 Default
 .example.-mb--3
   .-p--1
     chi-alert(icon='circle-info').-m--2
-      .m-alert__content
-        p.m-alert__text This is a base alert
+      p.m-alert__text This is a base alert
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(color=type, icon=val)
-        .m-alert__content
-          p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+        p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   :code(lang="html")
     <!-- Base - No semantic color defined -->
     <chi-alert icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a base alert</p>
-      </div>
+      <p class="m-alert__text">This is a base alert</p>
     </chi-alert>
     <!-- Success -->
     <chi-alert color="success" icon="circle-check">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a success alert</p>
-      </div>
+      <p class="m-alert__text">This is a success alert</p>
     </chi-alert>
     <!-- Danger -->
     <chi-alert color="danger" icon="circle-warning">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a danger alert</p>
-      </div>
+      <p class="m-alert__text">This is a danger alert</p>
     </chi-alert>
     <!-- Warning -->
     <chi-alert color="warning" icon="warning">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a warning alert</p>
-      </div>
+      <p class="m-alert__text">This is a warning alert</p>
     </chi-alert>
     <!-- Info -->
     <chi-alert color="info" icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is an info alert</p>
-      </div>
+      <p class="m-alert__text">This is an info alert</p>
     </chi-alert>
     <!-- Muted -->
     <chi-alert color="muted" icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a muted alert</p>
-      </div>
+      <p class="m-alert__text">This is a muted alert</p>
     </chi-alert>
 
 h4 Centered
@@ -74,69 +60,46 @@ p.-text
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(color='danger', icon='circle-warning', center)
-      .m-alert__content
-        p.m-alert__text= 'This is a centered danger alert'
+      p.m-alert__text= 'This is a centered danger alert'
   :code(lang="html")
     <chi-alert color="danger" icon="circle-warning" center>
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a centered danger alert</p>
-      </div>
+      <p class="m-alert__text">This is a centered danger alert</p>
     </chi-alert>
 
 h4 Titled
+p.-text
+  | Use the attribute <code>alert-title=""</code> to have alert title above the alert text.
 .example.-mb--3
   .-p--1
-    chi-alert(icon='circle-info').-m--2
-      .m-alert__content
-        p.m-alert__title Base
-        p.m-alert__text This is a base alert
+    chi-alert(icon='circle-info', alert-title="Base").-m--2
+      p.m-alert__text This is a base alert asd
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val)
-        .m-alert__content
-          p.m-alert__title= type
-          p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+      chi-alert.-m--2(color=type, icon=val, alert-title=type)
+        p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   :code(lang="html")
     <!-- Base - No semantic color defined -->
-    <chi-alert icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Base</p>
-        <p class="m-alert__text">This is a base alert</p>
-      </div>
+    <chi-alert icon="circle-info" alert-title="Base">
+      <p class="m-alert__text">This is a base alert</p>
     </chi-alert>
     <!-- Success -->
-    <chi-alert color="success" icon="circle-check">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Success</p>
-        <p class="m-alert__text">This is a success alert</p>
-      </div>
+    <chi-alert color="success" icon="circle-check" alert-title="Success">
+      <p class="m-alert__text">This is a success alert</p>
     </chi-alert>
     <!-- Danger -->
-    <chi-alert color="danger" icon="circle-warning">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Danger</p>
-        <p class="m-alert__text">This is a danger alert</p>
-      </div>
+    <chi-alert color="danger" icon="circle-warning" alert-title="Danger">
+      <p class="m-alert__text">This is a danger alert</p>
     </chi-alert>
     <!-- Warning -->
-    <chi-alert color="warning" icon="warning">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Warning</p>
-        <p class="m-alert__text">This is a warning alert</p>
-      </div>
+    <chi-alert color="warning" icon="warning" alert-title="Warning">
+      <p class="m-alert__text">This is a warning alert</p>
     </chi-alert>
     <!-- Info -->
-    <chi-alert color="info" icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Info</p>
-        <p class="m-alert__text">This is an info alert</p>
-      </div>
+    <chi-alert color="info" icon="circle-info" alert-title="Info">
+      <p class="m-alert__text">This is an info alert</p>
     </chi-alert>
     <!-- Muted -->
-    <chi-alert color="muted" icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Muted</p>
-        <p class="m-alert__text">This is a muted alert</p>
-      </div>
+    <chi-alert color="muted" icon="circle-info" alert-title="Muted">
+      <p class="m-alert__text">This is a muted alert</p>
     </chi-alert>
 
 h4 Sizes
@@ -145,67 +108,43 @@ h4 Sizes
   .-p--1
     p.-text--bold.-ml--2 -sm
     chi-alert.-m--2(color='success', icon='circle-check', size='sm')
-      .m-alert__content
-        p.m-alert__text This is a small success alert
-    chi-alert.-m--2(color='success', icon='circle-check', size='sm')
-      .m-alert__content
-        p.m-alert__title Success
-        p.m-alert__text This is a small success alert
+      p.m-alert__text This is a small success alert
+    chi-alert.-m--2(color='success', icon='circle-check', size='sm', alert-title="Success")
+      p.m-alert__text This is a small success alert
     p.-text--bold.-ml--2 -md (default)
     chi-alert.-m--2(color='success', icon='circle-check')
-      .m-alert__content
-        p.m-alert__text This is a success alert
-    chi-alert.-m--2(color='success', icon='circle-check')
-      .m-alert__content
-        p.m-alert__title Success
-        p.m-alert__text This is a success alert
+      p.m-alert__text This is a success alert
+    chi-alert.-m--2(color='success', icon='circle-check', alert-title="Success")
+      p.m-alert__text This is a success alert
     p.-text--bold.-ml--2 -lg
     chi-alert.-m--2(color='success', icon='circle-check', size='lg')
-      .m-alert__content
-        p.m-alert__text This is a large success alert
-    chi-alert.-m--2(color='success', icon='circle-check', size='lg')
-      .m-alert__content
-        p.m-alert__title Success
-        p.m-alert__text This is a large success alert
+      p.m-alert__text This is a large success alert
+    chi-alert.-m--2(color='success', icon='circle-check', size='lg', alert-title="Success")
+      p.m-alert__text This is a large success alert
   :code(lang="html")
     <!-- Small -->
     <chi-alert color="success" icon="circle-check" size="sm">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a small success alert</p>
-      </div>
+      <p class="m-alert__text">This is a small success alert</p>
     </chi-alert>
     <!-- Small Titled -->
-    <chi-alert color="success" icon="circle-check" size="sm">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Success</p>
-        <p class="m-alert__text">This is a small success alert</p>
-      </div>
+    <chi-alert color="success" icon="circle-check" size="sm" alert-title="Success">
+      <p class="m-alert__text">This is a small success alert</p>
     </chi-alert>
     <!-- Medium -->
     <chi-alert color="success" icon="circle-check">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a success alert</p>
-      </div>
+      <p class="m-alert__text">This is a success alert</p>
     </chi-alert>
     <!-- Medium Titled -->
-    <chi-alert color="success" icon="circle-check">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Success</p>
-        <p class="m-alert__text">This is a success alert</p>
-      </div>
+    <chi-alert color="success" icon="circle-check" alert-title="Success">
+      <p class="m-alert__text">This is a success alert</p>
     </chi-alert>
     <!-- Large -->
     <chi-alert color="success" icon="circle-check" size="lg">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a large success alert</p>
-      </div>
+      <p class="m-alert__text">This is a large success alert</p>
     </chi-alert>
     <!-- Large Titled -->
-    <chi-alert color="success" icon="circle-check" size="lg">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Success</p>
-        <p class="m-alert__text">This is a large success alert</p>
-      </div>
+    <chi-alert color="success" icon="circle-check" size="lg" alert-title="Success">
+      <p class="m-alert__text">This is a large success alert</p>
     </chi-alert>
 
 h4 Dismissible
@@ -214,36 +153,23 @@ p.-text
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(color='warning', icon='warning', dismissible)
-      .m-alert__content
-        p.m-alert__text This is a dismissible warning alert
-    chi-alert.-m--2(color='warning', icon='warning', dismissible)
-      .m-alert__content
-        p.m-alert__title Warning
-        p.m-alert__text This is a dismissible warning alert
-    chi-alert.-m--2(color='warning', icon='warning', size='lg', dismissible)
-      .m-alert__content
-        p.m-alert__title Warning
-        p.m-alert__text This is a large dismissible warning alert
+      p.m-alert__text This is a dismissible warning alert
+    chi-alert.-m--2(color='warning', icon='warning', dismissible, alert-title="Warning")
+      p.m-alert__text This is a dismissible warning alert
+    chi-alert.-m--2(color='warning', icon='warning', size='lg', dismissible, alert-title="Warning")
+      p.m-alert__text This is a large dismissible warning alert
   :code(lang="html")
     <!-- Dismissible -->
     <chi-alert color="warning" icon="warning" dismissible>
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a dismissible warning alert</p>
-      </div>
+      <p class="m-alert__text">This is a dismissible warning alert</p>
     </chi-alert>
     <!-- Dismissible Titled -->
-    <chi-alert color="warning" icon="warning" dismissible>
-      <div class="m-alert__content">
-        <p class="m-alert__title">Warning</p>
-        <p class="m-alert__text">This is a dismissible warning alert</p>
-      </div>
+    <chi-alert color="warning" icon="warning" alert-title="Warning" dismissible>
+      <p class="m-alert__text">This is a dismissible warning alert</p>
     </chi-alert>
     <!-- Large Dismissible Titled -->
-    <chi-alert color="warning" icon="warning" size="lg" dismissible>
-      <div class="m-alert__content">
-        <p class="m-alert__title">Warning</p>
-        <p class="m-alert__text">This is a large dismissible warning alert</p>
-      </div>
+    <chi-alert color="warning" icon="warning" size="lg" alert-title="Warning" dismissible>
+      <p class="m-alert__text">This is a large dismissible warning alert</p>
     </chi-alert>
 
 h4 Actionable
@@ -251,22 +177,17 @@ p.-text
   | While <code>m-alert__actions</code> can be added to any Alert, alert actions are best suited for <code>lg</code> default or Titled alerts.
 .example.-mb--3
   .-p--1
-    chi-alert.-m--2(color='success', icon='circle-check', size='lg', dismissible)
-      .m-alert__content
-        p.m-alert__title Success
-        p.m-alert__text This is a large dismissible success alert
-        div.m-alert__actions
-          chi-button(color='dark', variant='outline', size='lg') Secondary action
-          chi-button(color='primary', size='lg') Primary action
+    chi-alert.-m--2(color='success', icon='circle-check', size='lg', alert-title="Success", dismissible)
+      p.m-alert__text This is a large dismissible success alert
+      div.m-alert__actions
+        chi-button(color='dark', variant='outline', size='lg') Secondary action
+        chi-button(color='primary', size='lg') Primary action
   :code(lang="html")
-    <chi-alert color="success" icon="circle-check" size="lg" dismissible>
-      <div class="m-alert__content">
-        <p class="m-alert__title">Success</p>
-        <p class="m-alert__text">This is a large dismissible success alert</p>
-        <div class="m-alert__actions">
-          <chi-button color="dark" variant="outline" size="lg">Secondary action</chi-button>
-          <chi-button color="primary" size="lg">Primary action</chi-button>
-        </div>
+    <chi-alert color="success" icon="circle-check" size="lg" alert-title="Success" dismissible>
+      <p class="m-alert__text">This is a large dismissible success alert</p>
+      <div class="m-alert__actions">
+        <chi-button color="dark" variant="outline" size="lg">Secondary action</chi-button>
+        <chi-button color="primary" size="lg">Primary action</chi-button>
       </div>
     </chi-alert>
 
@@ -284,48 +205,34 @@ h4 Default
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(type='banner', icon='circle-info')
-      .m-alert__content
-        p.m-alert__text This is a base alert
+      p.m-alert__text This is a base alert
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(color=type, icon=val, type='banner')
-        .m-alert__content
-          p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+        p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   :code(lang="html")
     <!-- Base - No semantic color defined -->
     <chi-alert type="banner" icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a base alert</p>
-      </div>
+      <p class="m-alert__text">This is a base alert</p>
     </chi-alert>
     <!-- Success -->
     <chi-alert type="banner" icon="circle-check" color="success">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a success alert</p>
-      </div>
+      <p class="m-alert__text">This is a success alert</p>
     </chi-alert>
     <!-- Danger -->
     <chi-alert type="banner" icon="circle-warning" color="danger">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a danger alert</p>
-      </div>
+      <p class="m-alert__text">This is a danger alert</p>
     </chi-alert>
     <!-- Warning -->
     <chi-alert type="banner" icon="warning" color="warning">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a warning alert</p>
-      </div>
+      <p class="m-alert__text">This is a warning alert</p>
     </chi-alert>
     <!-- Info -->
     <chi-alert type="banner" icon="circle-info" color="info">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is an info alert</p>
-      </div>
+      <p class="m-alert__text">This is an info alert</p>
     </chi-alert>
     <!-- Muted -->
     <chi-alert type="banner" icon="circle-info" color="muted">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a muted alert</p>
-      </div>
+      <p class="m-alert__text">This is a muted alert</p>
     </chi-alert>
 
 h4 Centered
@@ -336,69 +243,44 @@ p.-text
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(type='banner', icon='circle-warning', color='danger', center)
-      .m-alert__content
-        p.m-alert__text= 'This is a centered danger alert'
+      p.m-alert__text= 'This is a centered danger alert'
   :code(lang="html")
     <chi-alert type="banner" icon="circle-warning" color="danger" center>
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a centered danger alert</p>
-      </div>
+      <p class="m-alert__text">This is a centered danger alert</p>
     </chi-alert>
 
 h4 Titled
 .example.-mb--3
   .-p--1
-    chi-alert.-m--2(type='banner', icon='circle-info')
-      .m-alert__content
-        p.m-alert__title Base
-        p.m-alert__text This is a base alert
+    chi-alert.-m--2(type='banner', icon='circle-info', alert-title="Base")
+      p.m-alert__text This is a base alert
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, type='banner', icon=val)
-        .m-alert__content
-          p.m-alert__title= type
-          p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+      chi-alert.-m--2(color=type, type='banner', icon=val, alert-title=type)
+        p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   :code(lang="html")
     <!-- Base - No semantic color defined -->
-    <chi-alert type="banner" icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Base</p>
-        <p class="m-alert__text">This is a base alert</p>
-      </div>
+    <chi-alert type="banner" icon="circle-info" alert-title="Base">
+      <p class="m-alert__text">This is a base alert</p>
     </chi-alert>
     <!-- Success -->
-    <chi-alert type="banner" icon="circle-check" color="success">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Success</p>
-        <p class="m-alert__text">This is a success alert</p>
-      </div>
+    <chi-alert type="banner" icon="circle-check" color="success" alert-title="Success">
+      <p class="m-alert__text">This is a success alert</p>
     </chi-alert>
     <!-- Danger -->
-    <chi-alert type="banner" icon="circle-warning" color="danger">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Danger</p>
-        <p class="m-alert__text">This is a danger alert</p>
-      </div>
+    <chi-alert type="banner" icon="circle-warning" color="danger" alert-title="Danger">
+      <p class="m-alert__text">This is a danger alert</p>
     </chi-alert>
     <!-- Warning -->
-    <chi-alert type="banner" icon="warning" color="warning">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Warning</p>
-        <p class="m-alert__text">This is a warning alert</p>
-      </div>
+    <chi-alert type="banner" icon="warning" color="warning" alert-title="Warning">
+      <p class="m-alert__text">This is a warning alert</p>
     </chi-alert>
     <!-- Info -->
-    <chi-alert type="banner" icon="circle-info" color="info">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Info</p>
-        <p class="m-alert__text">This is an info alert</p>
-      </div>
+    <chi-alert type="banner" icon="circle-info" color="info" alert-title="Info">
+      <p class="m-alert__text">This is an info alert</p>
     </chi-alert>
     <!-- Muted -->
-    <chi-alert type="banner" icon="circle-info" color="muted">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Muted</p>
-        <p class="m-alert__text">This is a muted alert</p>
-      </div>
+    <chi-alert type="banner" icon="circle-info" color="muted" alert-title="Muted">
+      <p class="m-alert__text">This is a muted alert</p>
     </chi-alert>
 
 h4 Sizes
@@ -407,67 +289,43 @@ h4 Sizes
   .-p--1
     p.-text--bold.-ml--2 -sm
     chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='sm')
-      .m-alert__content
-        p.m-alert__text This is a small success alert
-    chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='sm')
-      .m-alert__content
-        p.m-alert__title Success
-        p.m-alert__text This is a small success alert
+      p.m-alert__text This is a small success alert
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='sm', alert-title="Success")
+      p.m-alert__text This is a small success alert
     p.-text--bold.-ml--2 -md (default)
     chi-alert.-m--2(type='banner', icon='circle-check', color='success')
-      .m-alert__content
-        p.m-alert__text This is a success alert
-    chi-alert.-m--2(type='banner', icon='circle-check', color='success')
-      .m-alert__content
-        p.m-alert__title Success
-        p.m-alert__text This is a success alert
+      p.m-alert__text This is a success alert
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success', alert-title="Success")
+      p.m-alert__text This is a success alert
     p.-text--bold.-ml--2 -lg
     chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='lg')
-      .m-alert__content
-        p.m-alert__text This is a large success alert
-    chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='lg')
-      .m-alert__content
-        p.m-alert__title Success
-        p.m-alert__text This is a large success alert
+      p.m-alert__text This is a large success alert
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='lg', alert-title="Success")
+      p.m-alert__text This is a large success alert
   :code(lang="html")
     <!-- Small -->
     <chi-alert type="banner" color="success" icon="circle-check" size="sm">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a small success alert</p>
-      </div>
+      <p class="m-alert__text">This is a small success alert</p>
     </chi-alert>
     <!-- Small Titled -->
-    <chi-alert type="banner" color="success" icon="circle-check" size="sm">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Success</p>
-        <p class="m-alert__text">This is a small success alert</p>
-      </div>
+    <chi-alert type="banner" color="success" icon="circle-check" size="sm" alert-title="Success">
+      <p class="m-alert__text">This is a small success alert</p>
     </chi-alert>
     <!-- Medium -->
     <chi-alert type="banner" color="success" icon="circle-check">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a success alert</p>
-      </div>
+      <p class="m-alert__text">This is a success alert</p>
     </chi-alert>
     <!-- Medium Titled -->
-    <chi-alert type="banner" color="success" icon="circle-check">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Success</p>
-        <p class="m-alert__text">This is a success alert</p>
-      </div>
+    <chi-alert type="banner" color="success" icon="circle-check" alert-title="Success">
+      <p class="m-alert__text">This is a success alert</p>
     </chi-alert>
     <!-- Large -->
     <chi-alert type="banner" color="success" icon="circle-check" size="lg">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a large success alert</p>
-      </div>
+      <p class="m-alert__text">This is a large success alert</p>
     </chi-alert>
     <!-- Large Titled -->
-    <chi-alert type="banner" color="success" icon="circle-check" size="lg">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Success</p>
-        <p class="m-alert__text">This is a large success alert</p>
-      </div>
+    <chi-alert type="banner" color="success" icon="circle-check" size="lg" alert="Success">
+      <p class="m-alert__text">This is a large success alert</p>
     </chi-alert>
 
 h4 Dismissible
@@ -476,36 +334,23 @@ p.-text
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(type='banner', icon='warning', color='warning', dismissible)
-      .m-alert__content
-        p.m-alert__text This is a dismissible warning alert
-    chi-alert.-m--2(type='banner', color='warning', icon='warning', dismissible)
-      .m-alert__content
-        p.m-alert__title Warning
-        p.m-alert__text This is a dismissible warning alert
-    chi-alert.-m--2(type='banner', color='warning', icon='warning', size='lg', dismissible)
-      .m-alert__content
-        p.m-alert__title Warning
-        p.m-alert__text This is a large dismissible warning alert
+      p.m-alert__text This is a dismissible warning alert
+    chi-alert.-m--2(type='banner', color='warning', icon='warning', alert-title="Warning", dismissible)
+      p.m-alert__text This is a dismissible warning alert
+    chi-alert.-m--2(type='banner', color='warning', icon='warning', size='lg', alert-title="Warning", dismissible)
+      p.m-alert__text This is a large dismissible warning alert
   :code(lang="html")
     <!-- Dismissible -->
     <chi-alert type="banner" color="warning" icon="warning" dismissible>
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a dismissible warning alert</p>
-      </div>
+      <p class="m-alert__text">This is a dismissible warning alert</p>
     </chi-alert>
     <!-- Dismissible Titled -->
-    <chi-alert type="banner" color="warning" icon="warning" dismissible>
-      <div class="m-alert__content">
-        <p class="m-alert__title">Warning</p>
-        <p class="m-alert__text">This is a dismissible warning alert</p>
-      </div>
+    <chi-alert type="banner" color="warning" icon="warning" alert-title="Warning" dismissible>
+      <p class="m-alert__text">This is a dismissible warning alert</p>
     </chi-alert>
     <!-- Large Dismissible Titled -->
-    <chi-alert type="banner" color="warning" icon="warning" size="lg" dismissible>
-      <div class="m-alert__content">
-        <p class="m-alert__title">Warning</p>
-        <p class="m-alert__text">This is a large dismissible warning alert</p>
-      </div>
+    <chi-alert type="banner" color="warning" icon="warning" size="lg" alert-title="Warning" dismissible>
+      <p class="m-alert__text">This is a large dismissible warning alert</p>
     </chi-alert>
 
 h4 Actionable
@@ -513,22 +358,17 @@ p.-text
   | While <code>m-alert__actions</code> can be added to any Alert, alert actions are best suited for <code>lg</code> default or Titled alerts.
 .example.-mb--3
   .-p--1.-bg--grey-20
-    chi-alert.-m--2(type='banner', icon='circle-info', size='lg', dismissible)
-      .m-alert__content
-        p.m-alert__title Base
-        p.m-alert__text This is a large dismissible alert
-        div.m-alert__actions
-          chi-button(color='dark', variant='outline', size='lg') Secondary action
-          chi-button(color='primary', size='lg') Primary action
+    chi-alert.-m--2(type='banner', icon='circle-info', size='lg', alert-title="Base", dismissible)
+      p.m-alert__text This is a large dismissible alert
+      div.m-alert__actions
+        chi-button(color='dark', variant='outline', size='lg') Secondary action
+        chi-button(color='primary', size='lg') Primary action
   :code(lang="html")
-    <chi-alert type="banner" icon="circle-info" size="lg" dismissible>
-      <div class="m-alert__content">
-        <p class="m-alert__title">Base</p>
-        <p class="m-alert__text">This is a large dismissible alert</p>
-        <div class="m-alert__actions">
-          <chi-button color="dark" variant="outline" size="lg">Secondary action</chi-button>
-          <chi-button color="primary" size="lg">Primary action</chi-button>
-        </div>
+    <chi-alert type="banner" icon="circle-info" size="lg" alert-title="Base" dismissible>
+      <p class="m-alert__text">This is a large dismissible alert</p>
+      <div class="m-alert__actions">
+        <chi-button color="dark" variant="outline" size="lg">Secondary action</chi-button>
+        <chi-button color="primary" size="lg">Primary action</chi-button>
       </div>
     </chi-alert>
 
@@ -543,104 +383,68 @@ h4 Default
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(type='toast', icon='circle-info')
-      .m-alert__content
-        p.m-alert__text This is a base alert
+      p.m-alert__text This is a base alert
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(type='toast', icon=val, color=type)
-        .m-alert__content
-          p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+        p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   :code(lang="html")
     <!-- Base - No semantic color defined -->
     <chi-alert type="toast" icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a base alert</p>
-      </div>
+      <p class="m-alert__text">This is a base alert</p>
     </chi-alert>
     <!-- Success -->
     <chi-alert type="toast" color="success" icon="circle-check">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a success alert</p>
-      </div>
+      <p class="m-alert__text">This is a success alert</p>
     </chi-alert>
     <!-- Danger -->
     <chi-alert type="toast" color="danger" icon="circle-warning">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a danger alert</p>
-      </div>
+      <p class="m-alert__text">This is a danger alert</p>
     </chi-alert>
     <!-- Warning -->
     <chi-alert type="toast" color="warning" icon="warning">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a warning alert</p>
-      </div>
+      <p class="m-alert__text">This is a warning alert</p>
     </chi-alert>
     <!-- Info -->
     <chi-alert type="toast" color="info" icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is an info alert</p>
-      </div>
+      <p class="m-alert__text">This is an info alert</p>
     </chi-alert>
     <!-- Muted -->
     <chi-alert type="toast" color="muted" icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a muted alert</p>
-      </div>
+      <p class="m-alert__text">This is a muted alert</p>
     </chi-alert>
 
 h4 Titled
 .example.-mb--3
   .-p--1
-    chi-alert.-m--2(type='toast', icon='circle-info')
-      .m-alert__content
-        p.m-alert__title Base
-        p.m-alert__text This is a base alert
+    chi-alert.-m--2(type='toast', icon='circle-info', alert-title="Base")
+      p.m-alert__text This is a base alert
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(type='toast', color=type, icon=val)
-        .m-alert__content
-          p.m-alert__title= type
-          p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+      chi-alert.-m--2(type='toast', color=type, icon=val, alert-title=type)
+        p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   :code(lang="html")
     <!-- Base - No semantic color defined -->
-    <chi-alert type="toast" icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Base</p>
-        <p class="m-alert__text">This is a base alert</p>
-      </div>
+    <chi-alert type="toast" icon="circle-info" alert-title="Base">
+      <p class="m-alert__text">This is a base alert</p>
     </chi-alert>
     <!-- Success -->
-    <chi-alert type="toast" icon="circle-check" color="success">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Success</p>
-        <p class="m-alert__text">This is a success alert</p>
-      </div>
+    <chi-alert type="toast" icon="circle-check" color="success" alert-title="Success">
+      <p class="m-alert__text">This is a success alert</p>
     </chi-alert>
     <!-- Danger -->
-    <chi-alert type="toast" color="danger" icon="circle-warning">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Danger</p>
-        <p class="m-alert__text">This is a danger alert</p>
-      </div>
+    <chi-alert type="toast" color="danger" icon="circle-warning" alert-title="Danger">
+      <p class="m-alert__text">This is a danger alert</p>
     </chi-alert>
     <!-- Warning -->
-    <chi-alert type="toast" color="warning" icon="warning">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Warning</p>
-        <p class="m-alert__text">This is a warning alert</p>
-      </div>
+    <chi-alert type="toast" color="warning" icon="warning" alert-title="Warning">
+      <p class="m-alert__text">This is a warning alert</p>
     </chi-alert>
     <!-- Info -->
-    <chi-alert type="toast" color="info" icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Info</p>
-        <p class="m-alert__text">This is an info alert</p>
-      </div>
+    <chi-alert type="toast" color="info" icon="circle-info" alert-title="Info">
+      <p class="m-alert__text">This is an info alert</p>
     </chi-alert>
     <!-- Muted -->
-    <chi-alert type="toast" color="muted" icon="circle-info">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Muted</p>
-        <p class="m-alert__text">This is a muted alert</p>
-      </div>
+    <chi-alert type="toast" color="muted" icon="circle-info" alert-title="Muted">
+      <p class="m-alert__text">This is a muted alert</p>
     </chi-alert>
 
 h4 Sizes
@@ -648,67 +452,43 @@ h4 Sizes
   .-p--1
     p.-text--bold.-ml--2 -sm
     chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm')
-      .m-alert__content
-        p.m-alert__text This is a small success alert
-    chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm')
-      .m-alert__content
-        p.m-alert__title Success
-        p.m-alert__text This is a small success alert
+      p.m-alert__text This is a small success alert
+    chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', alert-title="Success")
+      p.m-alert__text This is a small success alert
     p.-text--bold.-ml--2 -md (default)
     chi-alert.-m--2(type='toast', color='success', icon='circle-check')
-      .m-alert__content
-        p.m-alert__text This is a success alert
-    chi-alert.-m--2(type='toast', color='success', icon='circle-check')
-      .m-alert__content
-        p.m-alert__title Success
-        p.m-alert__text This is a success alert
+      p.m-alert__text This is a success alert
+    chi-alert.-m--2(type='toast', color='success', icon='circle-check', alert-title="Success")
+      p.m-alert__text This is a success alert
     p.-text--bold.-ml--2 -lg
     chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg')
-      .m-alert__content
-        p.m-alert__text This is a large success alert
-    chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg')
-      .m-alert__content
-        p.m-alert__title Success
-        p.m-alert__text This is a large success alert
+      p.m-alert__text This is a large success alert
+    chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg', alert-title="Success")
+      p.m-alert__text This is a large success alert
   :code(lang="html")
     <!-- Small -->
     <chi-alert type="toast" color="success" icon="circle-check" size="sm">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a small success alert</p>
-      </div>
+      <p class="m-alert__text">This is a small success alert</p>
     </chi-alert>
     <!-- Small Titled -->
-    <chi-alert type="toast" color="success" icon="circle-check" size="sm">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Success</p>
-        <p class="m-alert__text">This is a small success alert</p>
-      </div>
+    <chi-alert type="toast" color="success" icon="circle-check" size="sm" alert-title="Success">
+      <p class="m-alert__text">This is a small success alert</p>
     </chi-alert>
     <!-- Medium -->
     <chi-alert type="toast" color="success" icon="circle-check">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a success alert</p>
-      </div>
+      <p class="m-alert__text">This is a success alert</p>
     </chi-alert>
     <!-- Medium Titled -->
-    <chi-alert type="toast" color="success" icon="circle-check">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Success</p>
-        <p class="m-alert__text">This is a success alert</p>
-      </div>
+    <chi-alert type="toast" color="success" icon="circle-check" alert-title="Success">
+      <p class="m-alert__text">This is a success alert</p>
     </chi-alert>
     <!-- Large -->
     <chi-alert type="toast" color="success" icon="circle-check" size="lg">
-      <div class="m-alert__content">
-        <p class="m-alert__text">This is a large success alert</p>
-      </div>
+      <p class="m-alert__text">This is a large success alert</p>
     </chi-alert>
     <!-- Large Titled -->
-    <chi-alert type="toast" color="success" icon="circle-check" size="lg">
-      <div class="m-alert__content">
-        <p class="m-alert__title">Success</p>
-        <p class="m-alert__text">This is a large success alert</p>
-      </div>
+    <chi-alert type="toast" color="success" icon="circle-check" size="lg" alert-title="Success">
+      <p class="m-alert__text">This is a large success alert</p>
     </chi-alert>
 
 div.a-divider.-my--6.-bt--2
