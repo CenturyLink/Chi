@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-11-07T10:08:22",
+  "timestamp": "2019-11-13T13:52:26",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.7.5",
@@ -249,6 +249,22 @@
       "usage": {},
       "props": [
         {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "to set brand color { black, white, inverse }.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "size",
           "type": "string",
           "mutable": false,
@@ -265,12 +281,12 @@
           "required": false
         },
         {
-          "name": "color",
+          "name": "type",
           "type": "string",
           "mutable": false,
-          "attr": "color",
+          "attr": "type",
           "reflectToAttr": true,
-          "docs": "to set brand color { black, white, inverse }.",
+          "docs": "to set brand type { black, white, inverse }.",
           "docsTags": [],
           "values": [
             {
@@ -485,30 +501,6 @@
       "usage": {},
       "props": [
         {
-          "name": "active",
-          "type": "boolean",
-          "mutable": true,
-          "attr": "active",
-          "reflectToAttr": true,
-          "docs": "Indicates whether the dropdown calendar is open or closed",
-          "docsTags": [],
-          "default": "false",
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "disabled",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "disabled",
-          "reflectToAttr": true,
-          "docs": "to disable chi-date-picker.",
-          "docsTags": [],
-          "default": "false",
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "format",
           "type": "string",
           "mutable": false,
@@ -661,6 +653,23 @@
           "attr": "active",
           "reflectToAttr": true,
           "docs": "Indicates whether the dropdown calendar is open or closed",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "to disable chi-date-picker.",
           "docsTags": [],
           "default": "false",
           "values": [

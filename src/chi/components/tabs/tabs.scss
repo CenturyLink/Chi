@@ -346,6 +346,12 @@
       }
     }
 
+    &:not(.-vertical):not(.-responsive) {
+      &.-border {
+        border-bottom: 0.0625rem solid set-color(grey, 80);
+      }
+    }
+
     &.-vertical {
       &:not(.-sliding) > li.-active:not(.-hasActive) > a,
       &:not(.-sliding).-animated > li.-active:not(.-hasActive) > a,
@@ -365,6 +371,16 @@
             .a-icon {
               color: $secondary-color;
             }
+          }
+        }
+      }
+
+      &.-border {
+        > li {
+          border-bottom: 0.0625rem solid set-color(grey, 80);
+
+          &:first-child {
+            border-top: 0.0625rem solid set-color(grey, 80);
           }
         }
       }

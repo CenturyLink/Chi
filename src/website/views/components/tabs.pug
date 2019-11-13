@@ -456,27 +456,56 @@ ul#a-tabs--menu-subtabs.a-tabs
       </ul>
 
 h3 Bordered
+ul#a-tabs--menu-bordered.a-tabs
+  li.-active
+    a(href='#a-tabs-panel--bordered-base') Base
+  li
+    a(href='#a-tabs-panel--bordered-inverse') Inverse
 .example.-mb--3
-  .-p--3.-pb--4
-    ul.a-tabs.-border(style="max-width:400px")
-      li.-active
-        a(href='#') Active tab
-      li
-        a(href='#') Tab link
-      li
-        a(href='#') Tab link
-  :code(lang='html')
-    <ul class="a-tabs -border">
-      <li class="-active">
-        <a href="#">Active tab</a>
-      </li>
-      <li>
-        <a href="#">Tab link</a>
-      </li>
-      <li>
-        <a href="#">Tab link</a>
-      </li>
-    </ul>
+  #a-tabs-panel--bordered-base.a-tabs-panel.-active
+    .-p--3(style="background-color:#eee;")
+      .-bg--white.-p--3
+        ul.a-tabs.-border(style="max-width:400px")
+          li.-active
+            a(href='#') Active tab
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+    :code(lang='html')
+      <ul class="a-tabs -border">
+        <li class="-active">
+          <a href="#">Active tab</a>
+        </li>
+        <li>
+          <a href="#">Tab link</a>
+        </li>
+        <li>
+          <a href="#">Tab link</a>
+        </li>
+      </ul>
+  #a-tabs-panel--bordered-inverse.a-tabs-panel
+    .-p--3(style="background-color:#eee;")
+      .-bg--black.-p--3
+        ul.a-tabs.-inverse.-border(style="max-width:400px")
+          li.-active
+            a(href='#') Active tab
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+    :code(lang='html')
+      <ul class="a-tabs -inverse -border">
+        <li class="-active">
+          <a href="#">Active tab</a>
+        </li>
+        <li>
+          <a href="#">Tab link</a>
+        </li>
+        <li>
+          <a href="#">Tab link</a>
+        </li>
+      </ul>
 
 h3 Additional Sizes
 
@@ -553,5 +582,6 @@ script.
       chi.tab(document.getElementById('a-tabs--menu-horizontal-icons'));
       chi.tab(document.getElementById('a-tabs--menu-vertical-icons'));
       chi.tab(document.getElementById('a-tabs--menu-subtabs'));
+      chi.tab(document.getElementById('a-tabs--menu-bordered'));
     }
   );
