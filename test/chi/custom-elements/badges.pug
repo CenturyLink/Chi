@@ -1,8 +1,9 @@
 ---
 title: Badges
-scripts:
-  - js/ce/ux-chi-ce
 ---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
 each type in ['solid', 'outline', 'flat']
   div(class=`test-${type}`)
     span.a-h2= `Badge / ${type}`
@@ -28,7 +29,7 @@ each type in ['solid', 'outline']
 h2 Badge Icons
 .test-badge-icons
   .example.-mb--1
-    each size in ['smaller', 'small', 'default']
+    each size in ['xs', 'sm', 'default']
       .p.-text--bold= size
         chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1', id=`badge-${size}`)
           chi-icon(icon='atom')

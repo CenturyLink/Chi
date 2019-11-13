@@ -1,8 +1,9 @@
 ---
 title: Brand
-scripts:
-  - js/ce/ux-chi-ce
 ---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
 - const sizes = ['default', 'xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
 
 h4 Sizes
@@ -21,7 +22,7 @@ h4 Sizes
       h3 Inverse
       each size in sizes
         div(class=`a-col -w--12 -p--3 -bg--black`)
-          chi-brand(size=`${size === 'default' ? '' : size}`, type='inverse', data-cy=`brand-inverse-${size}`)
+          chi-brand(size=`${size === 'default' ? '' : size}`, color='inverse', data-cy=`brand-inverse-${size}`)
           p.-text--bold.-text--white= '-' + size
 
 .test-white
@@ -30,7 +31,7 @@ h4 Sizes
       h3 White
         each size in sizes
           div(class=`a-col -w--12 -p--3 -bg--black`)
-            chi-brand(size=`${size === 'default' ? '' : size}`, type='white', data-cy=`brand-white-${size}`)
+            chi-brand(size=`${size === 'default' ? '' : size}`, color='white', data-cy=`brand-white-${size}`)
             p.-text--bold.-text--white= '-' + size
 
 .test-black
@@ -39,5 +40,5 @@ h4 Sizes
       h3 Black
         each size in sizes
           div(class=`a-col -w--12 -p--3`)
-            chi-brand(size=`${size === 'default' ? '' : size}`, type='black', data-cy=`brand-black-${size}`)
+            chi-brand(size=`${size === 'default' ? '' : size}`, color='black', data-cy=`brand-black-${size}`)
             p.-text--bold= '-' + size

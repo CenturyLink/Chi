@@ -67,8 +67,7 @@ describe('Popover', function() {
         .scrollIntoView()
         .should('have.class', 'hydrated')
         .then(function(popover){
-          popover[0].hide();
-          return new Promise(resolve => resolve(popover));
+          return popover[0].hide();
         })
         .get(getValue)
         .should('match', `[aria-hidden="true"]`)
@@ -81,8 +80,7 @@ describe('Popover', function() {
         .get(getValue)
         .should('have.class', 'hydrated')
         .then(function(popover){
-          popover[0].show();
-          return new Promise(resolve => resolve(popover));
+          return popover[0].show();
         })
         .get(getValue)
         .should('match', `[aria-hidden="false"]`)
@@ -95,8 +93,7 @@ describe('Popover', function() {
         .get(getValue)
         .should('have.class', 'hydrated')
         .then(function(popover){
-          popover[0].toggle();
-          return new Promise(resolve => resolve(popover));
+          return popover[0].toggle();
         })
         .get(getValue)
         .should('match', `[aria-hidden="true"]`)
@@ -109,8 +106,7 @@ describe('Popover', function() {
         .get(getValue)
         .should('have.class', 'hydrated')
         .then(function(popover){
-          popover[0].show();
-          return new Promise(resolve => resolve(popover));
+          return popover[0].show();
         })
         .get(getValue)
         .should('match', `[aria-hidden="false"]`)

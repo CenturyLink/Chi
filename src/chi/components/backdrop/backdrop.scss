@@ -1,6 +1,7 @@
 @import '_mixins';
 @import '_variables';
 
+// Legacy code start
 .a-backdrop {
   align-items: center;
   background-color: rgba(set-color(black), 0.65);
@@ -32,6 +33,56 @@
 
     &.-transitioning {
       display: flex;
+    }
+  }
+}
+// Legacy code end
+
+.m-backdrop {
+  background-color: rgba(set-color(black), 0.65);
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0 0.5rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $zindex-backdrop;
+
+  &__wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin: 1rem auto;
+    max-width: 45rem;
+    min-height: calc(100% - 2rem);
+  }
+
+  &.-center {
+    .m-backdrop__wrapper {
+      justify-content: center;
+    }
+  }
+
+  &.-animated {
+    transition: background-color 0.5s cubic-bezier(0.38, 0.52, 0.37, 1);
+
+    &.-closed {
+      background-color: rgba(set-color(black), 0);
+    }
+  }
+
+  &.-inverse {
+    background-color: rgba(set-color(white), 0.8);
+  }
+
+  &.-closed {
+    display: none;
+
+    &.-transitioning {
+      display: block;
     }
   }
 }

@@ -1,10 +1,11 @@
 :host(chi-spinner) {
+  display: inline-block;
   @import '../../global/styles/common';
   @import 'components/spinner/spinner';
   @import 'components/backdrop/backdrop';
   display: inline-block;
   &[backdrop] {
-    .a-backdrop {
+    .m-backdrop {
       position: absolute;
     }
   }

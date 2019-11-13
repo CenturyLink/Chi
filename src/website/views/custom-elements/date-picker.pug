@@ -1,10 +1,11 @@
 ---
 title: Date Picker
-scripts:
-  - js/ce/ux-chi-ce
 styles:
   - assets/styles/datepicker-ce
 ---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
 p.-text
   | Date pickers are used for inputting dates from the user. They might be toggled when the user focuses
   | an input of type date in a form.
@@ -48,6 +49,14 @@ p.-text
       chi-date-picker
   :code(lang="html",style="height:20rem")
     <chi-date-picker></chi-date-picker>
+
+h4 Disabled
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 14rem;")
+      chi-date-picker(disabled)
+  :code(lang="html",style="height:20rem")
+    <chi-date-picker disabled></chi-date-picker>
 
 h4 Value, min and max options
 .example.-mb--3
