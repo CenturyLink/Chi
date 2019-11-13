@@ -23,14 +23,14 @@ ul#a-tabs--number-input.a-tabs
 #a-tabs--number-input-base.a-tabs-panel.-active
   .example.-mb--3
     .-p--3
-      .m-formGroup
+      .m-form__item
         chi-number-input()
     :code(lang='html')
       <chi-number-input></chi-number-input>
 #a-tabs--number-input-value.a-tabs-panel
   .example.-mb--3
     .-p--3
-      .m-formGroup
+      .m-form__item
         chi-number-input(value='2')
     :code(lang="html")
       <chi-number-input value="2"></chi-number-input>
@@ -44,7 +44,7 @@ p.-text
 
 .example.-mb--3
   .-p--3
-    .m-formGroup
+    .m-form__item
       chi-number-input(min='-4', max='4', step='3')
   :code(lang='html')
     <chi-number-input min="-4" max="4" step="3"></chi-number-input>
@@ -53,7 +53,7 @@ h4 Disabled
 
 .example.-mb--3
   .-p--3
-    .m-formGroup
+    .m-form__item
       chi-number-input(disabled=true)
   :code(lang='html')
     <chi-number-input disabled></chi-number-input>
@@ -67,7 +67,7 @@ p.-text
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
-      .m-formGroup.-inline.-mr--3
+      .m-form__item.-inline.-mr--3
         chi-number-input(size=`${size}`)
   :code(lang='html')
     <chi-number-input size="sm"></chi-number-input>

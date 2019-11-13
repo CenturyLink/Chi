@@ -62,7 +62,7 @@ describe('Number input', function() {
 
     it('Number input custom element should initiate a Chi number-input component. ', function() {
 
-      checkComponent('@base_number_input', 'a-inputWrapper');
+      checkComponent('@base_number_input', 'm-input__wrapper');
     });
 
     it('Clicking arrow-up button sends a value increment event. ', function() {

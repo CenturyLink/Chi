@@ -29,7 +29,7 @@ each type in ['solid', 'outline']
 h2 Badge Icons
 .test-badge-icons
   .example.-mb--1
-    each size in ['smaller', 'small', 'default']
+    each size in ['xs', 'sm', 'default']
       .p.-text--bold= size
         chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1', id=`badge-${size}`)
           chi-icon(icon='atom')

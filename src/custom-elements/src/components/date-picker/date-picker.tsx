@@ -169,7 +169,7 @@ export class DatePicker {
       <div
         class={`${
           this.disabled && '-disabled'
-          } a-inputWrapper -icon--right`}
+          } m-input__wrapper -icon--right`}
       >
         <input
           id={`dp-${this._uuid}`}

@@ -12,7 +12,7 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder")
   :code(lang="html")
     <input type="text" class="a-input" placeholder="Placeholder">
@@ -20,37 +20,119 @@ h4 Base
 h4 Disabled
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       input(type="text", class="a-input", value="Sample Text", disabled)
   :code(lang="html")
     <input type="text" class="a-input" value="Sample Text" disabled>
 
-h4 With Label
+h3 Labels
+
+h4 Base
 .example.-mb--3
   .-p--3
-    .m-formGroup.-labeled(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       label.a-label(for='example') Label
       input(type="text", class="a-input", id='example', placeholder="Placeholder")
   :code(lang="html")
-    <div class="m-formGroup -labeled">
+    <div class="m-form__item">
       <label class="a-label" for="example">Label</label>
       <input type="text" class="a-input" id="example" placeholder="Placeholder">
+    </div>
+
+h4 Label inline
+.example.-mb--3
+  .-p--3
+    .m-form__item.-row(style="max-width:20rem")
+      label.a-label.-mr--1(for='example') Label
+      input(type="text", class="a-input", id='example', placeholder="Placeholder")
+  :code(lang="html")
+    <div class="m-form__item -row">
+      <label class="a-label" for="example">Label</label>
+      <input class="a-input" type="text" id="example" placeholder="Placeholder" />
+    </div>
+
+h4 Multiple inputs inline
+.example.-mb--3
+  .-p--3.-d--flex
+    .m-form__item.-inline.-flex--grow1
+      label.a-label.-mr--1(for='example') Label
+      input(type="text", class="a-input", id='example', placeholder="Placeholder")
+    .m-form__item.-inline.-flex--grow1
+      label.a-label.-mr--1(for='example') Label
+      input(type="text", class="a-input", id='example', placeholder="Placeholder")
+  :code(lang="html")
+    <div class="-d--flex">
+      <div class="m-form__item -inline -flex--grow1">
+        <label class="a-label" for="example">Label</label>
+        <input class="a-input" type="text" id="example" placeholder="Placeholder" />
+      </div>
+      <div class="m-form__item -inline -flex--grow1">
+        <label class="a-label" for="example">Label</label>
+        <input class="a-input" type="text" id="example" placeholder="Placeholder" />
+      </div>
+    </div>
+
+h4 Inline - width controlled using %
+.example.-mb--3
+  .-p--3
+    .m-form__item.-row(style="max-width:40rem")
+      label.a-label.-w--50(for='example') Label width 50%
+      .-w--50
+        input(type="text", class="a-input", id='example', placeholder="Placeholder")
+  :code(lang="html")
+    <div class="m-form__item -row">
+      <label class="a-label -w--50" for="example">Label</label>
+      <div class="-w--50">
+        <input class="a-input" type="text" id="example" placeholder="Placeholder" />
+      </div>
+    </div>
+
+h4 Inline - width controlled using grid
+.example.-mb--3
+  .-p--3
+    .m-form__item.-row.a-grid.-noGutter(style="max-width:40rem")
+      label.a-label.a-col.-w--3(for='example') Label width 3 columns
+      .a-col.-w--9
+        input(type="text", class="a-input", id='example', placeholder="Placeholder")
+  :code(lang="html")
+    <div class="m-form__item -row a-grid -noGutter">
+      <label class="a-label -w--3" for="example">Label</label>
+      <div class="-w--9">
+        <input class="a-input" type="text" id="example" placeholder="Placeholder" />
+      </div>
+    </div>
+
+h4 With Label and icon
+.example.-mb--3
+  .-p--3
+    .m-form__item(style="max-width:20rem")
+      .m-label__wrapper
+        label.a-label(for='example') Label
+        i.a-icon.icon-circle-info-outline.-text--muted
+      input(type="text", class="a-input", id='example', placeholder="Placeholder")
+  :code(lang="html")
+    <div class="m-form__item">
+      <div class="m-label__wrapper">
+        <label class="a-label" for="example">Label</label>
+        <i class="a-icon icon-circle-info-outline -text--muted"></i>
+      </div>
+      <input class="a-input" id="example" type="text" placeholder="Placeholder" />
     </div>
 
 h3 Icons
 p.-text
   | To add icons to a text input, wrap the input in a <code>div</code> using the class
-  | <code>a-inputWrapper</code>. Next, add the icon as a sibling of the <code>input</code> and utilize
+  | <code>m-input__wrapper</code>. Next, add the icon as a sibling of the <code>input</code> and utilize
   | an icon alignment utility class (e.g. <code>-icon--left</code>) to specify where it should be placed.
 
 h4 Left Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--left(style="max-width:20rem")
+    .m-input__wrapper.-icon--left(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
       i.a-icon.icon-search.-text--muted
   :code(lang="html")
-    <div class="a-inputWrapper -icon--left">
+    <div class="m-input__wrapper -icon--left">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
       <i class="a-icon icon-search -text--muted"></i>
       </div>
@@ -59,11 +141,11 @@ h4 Left Aligned
 h4 Right Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--right(style="max-width:20rem")
+    .m-input__wrapper.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
       i.a-icon.icon-search.-text--muted
   :code(lang="html")
-    <div class="a-inputWrapper -icon--right">
+    <div class="m-input__wrapper -icon--right">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
       <i class="a-icon icon-search -text--muted"></i>
     </div>
@@ -71,15 +153,34 @@ h4 Right Aligned
 h4 Left + Right Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--left.-icon--right(style="max-width:20rem")
+    .m-input__wrapper.-icon--left.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
       i.a-icon.icon-search.-text--muted
       i.a-icon.icon-check-alt.-text--success
   :code(lang="html")
-    <div class="a-inputWrapper -icon--left -icon--right">
+    <div class="m-input__wrapper -icon--left -icon--right">
       <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
       <i class="a-icon icon-search -text--muted"></i>
       <i class="a-icon icon-check-alt -text--success"></i>
+    </div>
+
+h4 Left + Right Aligned with label
+.example.-mb--3
+  .-p--3
+    .m-form__item
+      label.a-label(for='example') Label
+      .m-input__wrapper.-icon--left.-icon--right(style="max-width:20rem")
+        input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+        i.a-icon.icon-search.-text--muted
+        i.a-icon.icon-check-alt.-text--success
+  :code(lang="html")
+    <div class="m-form__item">
+      <label class="a-label">Label</label>
+      <div class="m-input__wrapper -icon--left -icon--right">
+        <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
+        <i class="a-icon icon-search -text--muted"></i>
+        <i class="a-icon icon-check-alt -text--success"></i>
+      </div>
     </div>
 
 h3 States
@@ -90,18 +191,17 @@ p.-text
 h4 Success
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:20rem")
-      input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text", style="max-width:20rem")
   :code(lang="html")
     <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
 
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--right(style="max-width:20rem")
+    .m-input__wrapper.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input -success", placeholder="Placeholder", value="Sample Text")
       i.a-icon.icon-check-alt.-text--success
   :code(lang="html")
-    <div class="a-inputWrapper -icon--right">
+    <div class="m-input__wrapper -icon--right">
       <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
       <i class="a-icon icon-check-alt -text--success"></i>
     </div>
@@ -109,18 +209,17 @@ h4 Success
 h4 Warning
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:20rem")
-      input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text", style="max-width:20rem")
   :code(lang="html")
     <input type="text" class="a-input -warning" placeholder="Placeholder" value="Sample Text">
 
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--right(style="max-width:20rem")
+    .m-input__wrapper.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input -warning", placeholder="Placeholder", value="Sample Text")
       i.a-icon.icon-warning.-text--warning
   :code(lang="html")
-    <div class="a-inputWrapper -icon--right">
+    <div class="m-input__wrapper -icon--right">
       <input type="text" class="a-input -success" placeholder="Placeholder" value="Sample Text">
       <i class="a-icon icon-warning -text--warning"></i>
     </div>
@@ -128,18 +227,17 @@ h4 Warning
 h4 Danger
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:20rem")
-      input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
+    input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text", style="max-width:20rem")
   :code(lang="html")
     <input type="text" class="a-input -danger" placeholder="Placeholder" value="Sample Text">
 
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--right(style="max-width:20rem")
+    .m-input__wrapper.-icon--right(style="max-width:20rem")
       input(type="text", class="a-input -danger", placeholder="Placeholder", value="Sample Text")
       i.a-icon.icon-circle-warning.-text--danger
   :code(lang="html")
-    <div class="a-inputWrapper -icon--right">
+    <div class="m-input__wrapper -icon--right">
       <input type="text" class="a-input -danger" placeholder="Placeholder" value="Sample Text">
       <i class="a-icon icon-circle-warning -text--danger"></i>
     </div>
@@ -153,8 +251,7 @@ p.-text
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
       div(class=`-d--flex -flex--row -align-items--end -p--2`)
-        .m-formGroup(style="width:20rem")
-          input(type="text", class=`a-input -${size} -mr--3`, placeholder="Sample Text")
+        input(type="text", class=`a-input -${size} -mr--3`, placeholder="Sample Text", style="max-width:20rem")
   :code(lang='html')
     <input type="text" class="a-input -sm" placeholder="Sample Text">
     <input type="text" class="a-input -md" placeholder="Sample Text">
@@ -180,16 +277,16 @@ ul#a-tabs.a-tabs
     .-p--3
       each size in ['lg', 'xl']
         div(class=`a-col -w--12 -p--2`)
-          .a-inputWrapper.-floatingLabel(style="max-width:20rem")
+          .m-input__wrapper.-floatingLabel(style="max-width:20rem")
             input(type="text", class=`a-input -${size} -mr--3`, id=`floating-label-${size}`)
             label(for=`floating-label-${size}`) Placeholder text
     :code(lang='html')
-      <div class="a-inputWrapper -floatingLabel">
+      <div class="m-input__wrapper -floatingLabel">
         <input class="a-input -lg" type="text" id="floating-label-lg">
         <label for="floating-label-lg">Placeholder text</label>
       </div>
 
-      <div class="a-inputWrapper -floatingLabel">
+      <div class="m-input__wrapper -floatingLabel">
         <input class="a-input -xl" type="text" id="floating-label-xl">
         <label for="floating-label-xl">Placeholder text</label>
       </div>
@@ -197,16 +294,16 @@ ul#a-tabs.a-tabs
     .-p--3
       each size in ['lg', 'xl']
         div(class=`a-col -w--12 -p--2`)
-          .a-inputWrapper.-floatingLabel(style="max-width:20rem")
+          .m-input__wrapper.-floatingLabel(style="max-width:20rem")
             input(type="text", class=`a-input -${size} -mr--3`, id=`floating-label-${size}-2`, value="Sample text")
             label.-active(for=`floating-label-${size}-2`) Placeholder text
     :code(lang='html')
-      <div class="a-inputWrapper -floatingLabel">
+      <div class="m-input__wrapper -floatingLabel">
         <input class="a-input -lg" type="text" id="floating-label-lg">
         <label class="-active" for="floating-label-lg">Placeholder text</label>
       </div>
 
-      <div class="a-inputWrapper -floatingLabel">
+      <div class="m-input__wrapper -floatingLabel">
         <input class="a-input -xl" type="text" id="floating-label-xl">
         <label class="-active" for="floating-label-xl">Placeholder text</label>
       </div>

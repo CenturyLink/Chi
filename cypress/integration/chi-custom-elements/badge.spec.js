@@ -23,12 +23,12 @@ describe('Badges', () => {
   });
 
   it('Sized badge should have appropriate class', () => {
-    cy.get('#badge-smaller')
+    cy.get('#badge-xs')
       .should('have.class', 'hydrated')
       .children()
       .first()
       .should('match', 'div.a-badge')
-      .and('have.class', '-smaller');
+      .and('have.class', '-xs');
   });
 
   it('Pill badge should have appropriate class', () => {

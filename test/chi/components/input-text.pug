@@ -61,7 +61,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-formGroup.-labeled
+                .m-form__item
                   +label(size)
                   +input(style, state, size, disabled, id='example')
 
@@ -75,7 +75,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .a-inputWrapper.-icon--left
+                .m-input__wrapper.-icon--left
                   +input(style, state, size, disabled)
                   +icon('atom')
 
@@ -89,9 +89,9 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-formGroup.-labeled
+                .m-form__item
                   +label(size)
-                  .a-inputWrapper.-icon--left
+                  .m-input__wrapper.-icon--left
                     +input(style, state, size, disabled, id='example')
                     +icon('atom')
 
@@ -105,7 +105,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .a-inputWrapper.-icon--right
+                .m-input__wrapper.-icon--right
                   +input(style, state, size, disabled)
                   if style == 'success'
                     .a-icon.-text--success
@@ -134,9 +134,9 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-formGroup.-labeled
+                .m-form__item
                   +label(size)
-                  .a-inputWrapper.-icon--right
+                  .m-input__wrapper.-icon--right
                     +input(style, state, size, disabled, id='example')
                     if style == 'success'
                       .a-icon.-text--success
@@ -165,7 +165,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .a-inputWrapper.-icon--left.-icon--right
+                .m-input__wrapper.-icon--left.-icon--right
                   +input(style, state, size, disabled)
                   +icon('atom')
                   if style == 'success'
@@ -195,9 +195,9 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-formGroup.-labeled
+                .m-form__item
                   +label(size)
-                  .a-inputWrapper.-icon--left.-icon--right
+                  .m-input__wrapper.-icon--left.-icon--right
                     +input(style, state, size, disabled, id='example')
                     +icon('atom')
                     if style == 'success'
@@ -216,3 +216,35 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                       .a-icon
                         svg
                           use(xlink:href='#icon-circle-info-outline')
+
+  div(class=`test-${size}-label-inline`)
+    span.a-h2= `Text Input + label / ${size} / inline`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m--1
+                .m-form__item.-row
+                  label.a-label.-mr--1(class=`-${size}`)
+                    | Label
+                  +input(style, state, size, disabled, id='example')
+
+  div(class=`test-${size}-label-with-icon`)
+    span.a-h2= `Text Input + label with icon ${size}`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td
+              .-m--1
+                .m-form__item
+                  .m-label__wrapper
+                    +label(size)
+                    i.a-icon.icon-circle-info-outline.-text--muted
+                  .m-input__wrapper
+                    +input(style, state, size, disabled, id='example')

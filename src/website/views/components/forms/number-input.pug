@@ -11,37 +11,41 @@ h3 Examples
 
 p.-text
   | To render a number input, apply the classes <code>a-input</code> to an <code>input type="number"</code>.
-  | For proper styling, number inputs must be wrapped in an <code>a-inputWrapper</code> div with two buttons.
+  | For proper styling, number inputs must be wrapped in an <code>m-input__wrapper</code> div with two buttons.
 
 h4 Base
 
 .example.-mb--3
   .-p--3
-    .m-formGroup
-      .a-inputWrapper
+    .m-form__item.-row
+      .m-input__wrapper
         input.a-input(type="number", value="0")
         button
         button
   :code(lang="html")
-    <div class="a-inputWrapper">
-      <input type="number" class="a-input" value="0">
-      <button></button>
-      <button></button>
+    <div class="m-form__item -row">
+      <div class="m-input__wrapper">
+        <input type="number" class="a-input" value="0">
+        <button></button>
+        <button></button>
+      </div>
     </div>
 
 h4 Disabled
 .example.-mb--3
   .-p--3
-    .m-formGroup
-      .a-inputWrapper
+    .m-form__item.-row
+      .m-input__wrapper
         input.a-input(type="number", value="0", disabled)
         button
         button
   :code(lang="html")
-    <div class="a-inputWrapper">
-      <input type="number" class="a-input" value="0" disabled>
-      <button></button>
-      <button></button>
+    <div class="m-form__item -row">
+      <div class="m-input__wrapper">
+        <input type="number" class="a-input" value="0" disabled>
+        <button></button>
+        <button></button>
+      </div>
     </div>
 
 h4 Sizes
@@ -52,31 +56,39 @@ p.-text
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
-      .m-formGroup.-inline.-mr--3
-        .a-inputWrapper
+      .m-form__item.-row.-inline.-mr--3
+        .m-input__wrapper
           input.a-input(type="number", class=`-${size}`, value="0")
           button
           button
   :code(lang='html')
-    <div class="a-inputWrapper">
-      <input type="number" class="a-input -sm" value="0">
-      <button></button>
-      <button></button>
+    <div class="m-form__item -row -inline">
+      <div class="m-input__wrapper">
+        <input type="number" class="a-input -sm" value="0">
+        <button></button>
+        <button></button>
+      </div>
     </div>
-    <div class="a-inputWrapper">
-      <input type="number" class="a-input -md" value="0">
-      <button></button>
-      <button></button>
+    <div class="m-form__item -row -inline">
+      <div class="m-input__wrapper">
+        <input type="number" class="a-input -md" value="0">
+        <button></button>
+        <button></button>
+      </div>
     </div>
-    <div class="a-inputWrapper">
-      <input type="number" class="a-input -lg" value="0">
-      <button></button>
-      <button></button>
+    <div class="m-form__item -row -inline">
+      <div class="m-input__wrapper">
+        <input type="number" class="a-input -lg" value="0">
+        <button></button>
+        <button></button>
+      </div>
     </div>
-    <div class="a-inputWrapper">
-      <input type="number" class="a-input -xl" value="0">
-      <button></button>
-      <button></button>
+    <div class="m-form__item -row -inline">
+      <div class="m-input__wrapper">
+        <input type="number" class="a-input -xl" value="0">
+        <button></button>
+        <button></button>
+      </div>
     </div>
 
 h3 Expanded version
