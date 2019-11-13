@@ -15,9 +15,8 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--3
-    .m-formGroup
-      input.a-input(type="file", id="file01")
-      label(for="file01") No file chosen
+    input.a-input(type="file", id="file01")
+    label(for="file01") No file chosen
   :code(lang="html")
     <input type="file" class="a-input" id="file01">
     <label for="file01">No file chosen</label>
@@ -31,16 +30,19 @@ p.-text
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
       div(class=`a-col -w--12 -p--2`)
-        .m-formGroup
-          input.a-input(type="file", class=`-${size}`, id="file01")
-          label(for="file01") No file chosen
+        input.a-input(type="file", class=`-${size}`, id="file01")
+        label(for="file01") No file chosen
   :code(lang='html')
+    <!-- -sm -->
     <input type="file" class="a-input -sm" id="file01">
     <label for="file01">No file chosen</label>
+    <!-- -md -->
     <input type="file" class="a-input -md" id="file01">
     <label for="file01">No file chosen</label>
+    <!-- -lg -->
     <input type="file" class="a-input -lg" id="file01">
     <label for="file01">No file chosen</label>
+    <!-- -xl -->
     <input type="file" class="a-input -xl" id="file01">
     <label for="file01">No file chosen</label>
 

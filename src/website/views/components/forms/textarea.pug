@@ -11,8 +11,7 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:30rem")
-      textarea.a-input(placeholder='Placeholder') Sample text
+    textarea.a-input(placeholder='Placeholder', style="max-width:30rem") Sample text
   :code(lang="html")
     <textarea class="a-input">
       Sample text
@@ -21,8 +20,7 @@ h4 Base
 h4 Disabled
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:30rem")
-      textarea.a-input(disabled) Sample text
+    textarea.a-input(disabled, style="max-width:30rem") Sample text
   :code(lang="html")
     <textarea class="a-input" disabled>
       Sample text
@@ -31,11 +29,11 @@ h4 Disabled
 h4 With Label
 .example.-mb--3
   .-p--3
-    .m-formGroup.-labeled(style="max-width:30rem")
+    .m-form__item(style="max-width:30rem")
       label.a-label(for='example') Label
       textarea.a-input(id='example') Sample text
   :code(lang="html")
-    <div class="m-formGroup -labeled">
+    <div class="m-form__item">
       <label class="a-label" for="example">Label</label>
       <textarea class="a-input" id="example">
         Sample text
@@ -44,18 +42,18 @@ h4 With Label
 
 h3 Icons
 p.-text
-  | To add icons to a textarea, wrap the input in a <code>div</code> using the class <code>a-inputWrapper</code>.
+  | To add icons to a textarea, wrap the input in a <code>div</code> using the class <code>m-input__wrapper</code>.
   | Next, add the icon as a sibling of the <code>textarea</code> and use an icon alignment utility class
   | (e.g. <code>-icon--left</code>) to specify where it should be placed.
 
 h4 Left Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--left(style="max-width:30rem")
+    .m-input__wrapper.-icon--left(style="max-width:30rem")
       textarea.a-input Sample text
       i.a-icon.icon-map-marker.-text--muted
   :code(lang="html")
-    <div class="a-inputWrapper -icon--left">
+    <div class="m-input__wrapper -icon--left">
       <textarea class="a-input">
         Sample text
       </textarea>
@@ -65,11 +63,11 @@ h4 Left Aligned
 h4 Right Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--right(style="max-width:30rem")
+    .m-input__wrapper.-icon--right(style="max-width:30rem")
       textarea.a-input Sample text
       i.a-icon.icon-circle-question-outline.-text--muted
   :code(lang="html")
-    <div class="a-inputWrapper -icon--right">
+    <div class="m-input__wrapper -icon--right">
       <textarea class="a-input">
         Sample text
       </textarea>
@@ -79,12 +77,12 @@ h4 Right Aligned
 h4 Left + Right Aligned
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--left.-icon--right(style="max-width:30rem")
+    .m-input__wrapper.-icon--left.-icon--right(style="max-width:30rem")
       textarea.a-input Sample text
       i.a-icon.icon-map-marker.-text--muted
       i.a-icon.icon-check-alt.-text--success
   :code(lang="html")
-    <div class="a-inputWrapper -icon--left -icon--right">
+    <div class="m-input__wrapper -icon--left -icon--right">
       <textarea class="a-input">
         Sample text
       </textarea>
@@ -101,8 +99,7 @@ p.-text
 h4 Success
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:30rem")
-      textarea.a-input.-success Sample text
+    textarea.a-input.-success(style="max-width:30rem") Sample text
   :code(lang="html")
     <textarea class="a-input -success">
       Sample text
@@ -110,11 +107,11 @@ h4 Success
 
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--right(style="max-width:30rem")
+    .m-input__wrapper.-icon--right(style="max-width:30rem")
       textarea.a-input.-success Sample text
       i.a-icon.icon-check-alt.-text--success
   :code(lang="html")
-    <div class="a-inputWrapper -icon--right">
+    <div class="m-input__wrapper -icon--right">
       <textarea class="a-input -success">
         Sample text
       </textarea>
@@ -124,8 +121,7 @@ h4 Success
 h4 Warning
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:30rem")
-      textarea.a-input.-warning Sample text
+    textarea.a-input.-warning(style="max-width:30rem") Sample text
   :code(lang="html")
     <textarea class="a-input -warning">
       Sample text
@@ -133,11 +129,11 @@ h4 Warning
 
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--right(style="max-width:30rem")
+    .m-input__wrapper.-icon--right(style="max-width:30rem")
       textarea.a-input.-warning Sample text
       i.a-icon.icon-warning.-text--warning
   :code(lang="html")
-    <div class="a-inputWrapper -icon--right">
+    <div class="m-input__wrapper -icon--right">
       <textarea class="a-input -warning">
         Sample text
       </textarea>
@@ -147,8 +143,7 @@ h4 Warning
 h4 Danger
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:30rem")
-      textarea.a-input.-danger Sample text
+    textarea.a-input.-danger(style="max-width:30rem") Sample text
   :code(lang="html")
     <textarea class="a-input -danger">
       Sample text
@@ -156,11 +151,11 @@ h4 Danger
 
 .example.-mb--3
   .-p--3
-    .a-inputWrapper.-icon--right(style="max-width:30rem")
+    .m-input__wrapper.-icon--right(style="max-width:30rem")
       textarea.a-input.-danger Sample text
       i.a-icon.icon-circle-warning.-text--danger
   :code(lang="html")
-    <div class="a-inputWrapper -icon--right">
+    <div class="m-input__wrapper -icon--right">
       <textarea class="a-input -danger">
         Sample text
       </textarea>
@@ -176,8 +171,7 @@ p.-text
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
       div(class=`a-col -w--12 -p--2`)
-        .a-inputWrapper(style="max-width:30rem")
-          textarea.a-input(class=`-${size}`) Sample text
+        textarea.a-input(class=`-${size}`, style="max-width:30rem") Sample text
   :code(lang='html')
     <textarea class="a-input -sm">
       Sample text

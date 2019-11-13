@@ -174,7 +174,7 @@ export class NumberInput {
     );
 
     const base = (
-      <div class="a-inputWrapper">
+      <div class="m-input__wrapper">
         {input}
         <button
           disabled={+this.value - this.step < this.min}
