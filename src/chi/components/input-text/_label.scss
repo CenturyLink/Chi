@@ -7,7 +7,7 @@ label,
   font-size: $text;
   font-weight: 600;
   line-height: $line-height-small;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 
   @each $type in map-keys($sizes) {
     &.-#{$type} {

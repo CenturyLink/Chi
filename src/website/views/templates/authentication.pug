@@ -31,14 +31,14 @@ h3 App Basic Sign In
         .-pb--2.-w--100.-mw--480
           .a-card.-b--0.-bg--none
             .a-card__content.-text--center.-px--4.-px-sm--6.-pb--4
-              h2.-text--normal Sign In
-              .a-inputWrapper.-floatingLabel.-pt--2#aemail
+              h3.-text--normal Sign In
+              .m-input__wrapper.-floatingLabel.-pt--2#aemail
                 input(type='email', class='a-input -xl', id='email')
                 label(for='email') Email
-              .a-inputWrapper.-floatingLabel.-pt--1#apassword
+              .m-input__wrapper.-floatingLabel.-pt--1#apassword
                 input(type='password', class='a-input -xl', id='password')
                 label(for='password') Password
-              .m-formGroup.-pt--3.-pt-sm--4.-justify-content--between.-align-items--center.-flex--column.-flex-sm--row
+              .-d--flex.-pt--3.-pt-sm--4.-justify-content--between.-align-items--center.-flex--column.-flex-sm--row
                 a.-text.-mb--2.-mb-sm--0(href="#") Forgot email or password?
                 button.a-btn.-primary.-xl Sign In
           .-text.-text--center.-py--2 Don't have an account? <a href="#">Sign Up</a>
@@ -65,16 +65,16 @@ h3 App Basic Sign In
         <div class="-pb--2 -w--100 -mw--480">
           <div class="a-card -b--0 -bg--none">
             <div class="a-card__content -text--center -px--4 -px-sm--6 -pb--4">
-              <h2 class="-text--normal">Sign In</h2>
-              <div class="a-inputWrapper -floatingLabel -pt--2" id="aemail">
+              <h3 class="-text--normal">Sign In</h3>
+              <div class="m-input__wrapper -floatingLabel -pt--2" id="aemail">
                 <input class="a-input -xl" type="email" id="email">
                 <label for="email">Email</label>
               </div>
-              <div class="a-inputWrapper -floatingLabel -pt--1" id="apassword">
+              <div class="m-input__wrapper -floatingLabel -pt--1" id="apassword">
                 <input class="a-input -xl" type="password" id="password">
                 <label for="password">Password</label>
               </div>
-              <div class="m-formGroup -justify-content--between -align-items--center -flex--column -flex-sm--row -pt--3 -pt-sm--4">
+              <div class="-d--flex -justify-content--between -align-items--center -flex--column -flex-sm--row -pt--3 -pt-sm--4">
                 <a class="-text -mb--2 -mb-sm--0" href="#">Forgot email or password?</a>
                 <button class="a-btn -primary -xl">Sign In</button>
               </div>
@@ -114,16 +114,15 @@ h3 App Basic Sign In - Error
             .a-card__content.-text--center.-px--4.-px-sm--6.-pb--4
               h2.-text--normal Sign In
               .m-alert.-danger.-center(role="alert")
-                i.m-alert__icon.a-icon.icon-circle-warning
-                .m-alert__content
-                  p.m-alert__text Invalid email or password
-              .a-inputWrapper.-floatingLabel.-pt--2#aemail2
+                i.a-icon.-sm--2.icon-circle-warning.-text--danger
+                | Invalid email or password
+              .m-input__wrapper.-floatingLabel.-pt--2#aemail2
                 input(type='email', class='a-input -xl', id='email2')
                 label(for='email2') Email
-              .a-inputWrapper.-floatingLabel.-pt--1#apassword2
+              .m-input__wrapper.-floatingLabel.-pt--1#apassword2
                 input(type='password', class='a-input -xl', id='password2')
                 label(for='password2') Password
-              .m-formGroup.-pt--3.-pt-sm--4.-justify-content--between.-align-items--center.-flex--column.-flex-sm--row
+              .-d--flex.-pt--3.-pt-sm--4.-justify-content--between.-align-items--center.-flex--column.-flex-sm--row
                 a.-text.-mb--2.-mb-sm--0(href="#") Forgot email or password?
                 button.a-btn.-primary.-xl Sign In
           .-text.-text--center.-py--2 Don't have an account? <a href="#">Sign Up</a>
@@ -157,15 +156,15 @@ h3 App Basic Sign In - Error
                   <p class="m-alert__text">Invalid email or password</p>
                 </div>
               </div>
-              <div class="a-inputWrapper -floatingLabel -pt--2" id="aemail2">
+              <div class="m-input__wrapper -floatingLabel -pt--2" id="aemail2">
                 <input class="a-input -xl" type="email" id="email2">
                 <label for="email2">Email</label>
               </div>
-              <div class="a-inputWrapper -floatingLabel -pt--1" id="apassword2">
+              <div class="m-input__wrapper -floatingLabel -pt--1" id="apassword2">
                 <input class="a-input -xl" type="password" id="password2">
                 <label for="password2">Password</label>
               </div>
-              <div class="m-formGroup -justify-content--between -align-items--center -flex--column -flex-sm--row -pt--3 -pt-sm--4">
+              <div class="-d--flex -justify-content--between -align-items--center -flex--column -flex-sm--row -pt--3 -pt-sm--4">
                 <a class="-text -mb--2 -mb-sm--0" href="#">Forgot email or password?</a>
                 <button class="a-btn -primary -xl">Sign In</button>
               </div>

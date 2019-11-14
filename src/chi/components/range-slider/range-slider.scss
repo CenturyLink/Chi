@@ -238,7 +238,8 @@ input {
 }
 
 // sass-lint:enable no-vendor-prefixes
-.a-inputWrapper > input[type='range'].a-input {
+.a-inputWrapper > input[type='range'].a-input,
+.m-input__wrapper > input[type='range'].a-input {
   display: block;
   position: relative;
   z-index: 1;

@@ -10,7 +10,7 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       select(class="a-input")
         option Base Select
   :code(lang="html")
@@ -22,7 +22,7 @@ h4 Pill
 p.-text Use the <code>-pill</code> modifier class to render a select with a more pronounced border-radius.
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       select(class="a-input -pill")
         option Base Select
   :code(lang="html")
@@ -33,7 +33,7 @@ p.-text Use the <code>-pill</code> modifier class to render a select with a more
 h4 Disabled
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       select(class="a-input", disabled)
         option Disabled Select
   :code(lang="html")
@@ -44,12 +44,12 @@ h4 Disabled
 h4 With Label
 .example.-mb--3
   .-p--3
-    .m-formGroup.-labeled(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       label.a-label(for='example') Label
       select(class='a-input', id='example')
         option Base Select
   :code(lang="html")
-    <div class="m-formGroup -labeled">
+    <div class="m-form__item">
       <label class="a-label" for="example">Label</label>
       <select class="a-input" id="example">
         <option>Base Select</option>
@@ -62,7 +62,7 @@ p.-text
   | an invalid selection.
 .example.-mb--3
   .-p--3
-    .m-formGroup(style="max-width:20rem")
+    .m-form__item(style="max-width:20rem")
       select(class="a-input -danger")
         option Danger Select
   :code(lang="html")
@@ -79,7 +79,7 @@ p.-text
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
       div(class=`a-col -w--12 -p--2`)
-        .m-formGroup(style="max-width:20rem")
+        .m-form__item(style="max-width:20rem")
           select(class=`a-input -${size}`)
             option= '-' + size + ' Select'
   :code(lang='html')

@@ -114,3 +114,87 @@ each active in ['', 'active']
                 svg
                   use(xlink:href='#icon-atom')
               span Tab link
+
+.test-horizontal-inverse
+  each size in ['small', 'medium', 'large']
+    h4= `Tabs ${size} inverse`
+    .-bg--black.-px--3
+      ul.a-tabs.-inverse(class=`-${size}`)
+        li.-active
+          a(href='#') Active tab
+        li
+          a(href='#') Tab link
+        li
+          a(href='#') Tab link
+
+.test-horizontal-bordered-inverse
+  each size in ['small', 'medium', 'large']
+    h4= `Tabs ${size} border inverse`
+    .-bg--black.-px--3.-py--1
+      ul.a-tabs.-inverse.-border(class=`-${size}`)
+        li.-active
+          a(href='#') Active tab
+        li
+          a(href='#') Tab link
+        li
+          a(href='#') Tab link
+
+h2 vertical inverse
+
+.test-vertical-inverse
+  each size in ['small', 'medium', 'large']
+    h4= `Tabs vertical inverse ${size}`
+    .-bg--black.-p--3
+      ul.a-tabs.-inverse.-vertical(class=`-${size}`)
+        li.-active
+          a(href='#') Active tab
+          ul.a-tabs__subtabs
+            li.-active
+              a(href='#') Buttons
+            li
+              a(href='#') Button Groups
+            li
+              a(href='#') Cards
+        li
+          a(href='#') Tab link
+        li
+          a(href='#') Tab link
+        li
+          a(href='#') Tab link
+
+.test-vertical-icons-inverse
+  each size in ['small', 'medium', 'large']
+    h4= `Tabs vertical icons ${size} inverse`
+    .-bg--black.-p--3
+      ul.a-tabs.-vertical.-icons.-inverse(class=`-${size}`)
+        li.-active
+          a(href='#')
+            div(class=`a-icon`)
+              svg
+                use(xlink:href='#icon-atom')
+            span Active tab
+          ul.a-tabs__subtabs
+            li.-active
+              a(href='#') Buttons
+            li
+              a(href='#') Button Groups
+            li
+              a(href='#') Cards
+        li
+          a(href='#')
+            div(class=`a-icon -sm`)
+              svg
+                use(xlink:href='#icon-atom')
+            span Tab link
+        li
+          a(href='#')
+            div(class=`a-icon`)
+              svg
+                use(xlink:href='#icon-atom')
+            span Tab link
+        li
+          a(href='#')
+            div(class=`a-icon`)
+              svg
+                use(xlink:href='#icon-atom')
+            span Tab link

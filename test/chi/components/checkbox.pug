@@ -5,7 +5,7 @@ title: Checkbox
 .test-states
   each state, index in ['default', 'hover', 'focus', 'checked', 'disabled']
     h5= `Checkbox / ${state}`
-    .m-formGroup.-mb--1
+    .m-form__item.-row.-mb--1
       input.a-input(
         type="checkbox"
         id=`checkbox-${index}`
@@ -27,9 +27,9 @@ h2 Checkbox List
 .test-states
   each state, index in ['default', 'hover', 'focus', 'checked', 'disabled']
     h5= `Checkbox / ${state}`
-    ul.m-formGroup.-list(style="max-width:20rem")
+    ul.m-form__item.-list(style="max-width:20rem")
       each element in [1, 2, 3, 4, 5]
-        li.m-formGroup
+        li.m-form__item.-row
           input.a-input(
           type="checkbox"
           id=`checkbox--${element}`
