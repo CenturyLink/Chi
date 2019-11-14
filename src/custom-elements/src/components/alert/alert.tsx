@@ -33,7 +33,7 @@ export class Alert {
   /**
    *  to set alert size { sm, md, lg }.
    */
-  @Prop({ reflectToAttr: true }) size = '';
+  @Prop({ reflectToAttr: true }) size = 'md';
 
   /**
    *  to get rid of the border-bottom of Banner alerts.
