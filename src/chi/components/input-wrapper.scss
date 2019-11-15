@@ -20,6 +20,7 @@ $border: 0.0625rem;
     align-items: center;
     flex-direction: row;
     justify-content: start;
+
     & label {
       margin-bottom: 0;
     }
@@ -57,7 +58,8 @@ $border: 0.0625rem;
     justify-content: start;
     margin-bottom: 0.25rem;
 
-    label, .a-label {
+    label,
+    .a-label {
       margin-bottom: 0;
     }
 
