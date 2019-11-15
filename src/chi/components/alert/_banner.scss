@@ -1,34 +1,18 @@
 .m-alert {
   &.-banner {
+    background-color: set-color(white);
     border-radius: 0;
-    border-width: 0.0625rem 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    border: none;
+    border-top: 0.0625rem solid transparent;
+    border-bottom: 0.0625rem solid set-color(grey, 30);
+    box-shadow: none;
 
-    & .m-alert__content {
-      chi-icon {
-        align-self: auto;
-      }
+    &.-borderless {
+      border-color: transparent;
     }
 
-    &.-dismiss {
-      justify-content: space-between;
-
-      & > .-close {
-        &.-small {
-          padding: 0.25rem;
-        }
-
-        & .a-icon {
-          line-height: 0.75rem;
-        }
-      }
-    }
-
-    &.-large, //Legacy code: -large to be removed.
-    &.-lg {
-      padding-bottom: 0.75rem;
-      padding-top: 0.75rem;
+    &.-rounded {
+      border-radius: $border-radius;
     }
   }
 }

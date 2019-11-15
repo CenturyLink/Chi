@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-11-14T16:02:01",
+  "timestamp": "2019-11-15T20:44:59",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.7.5",
@@ -14,6 +14,23 @@
       "docsTags": [],
       "usage": {},
       "props": [
+        {
+          "name": "borderless",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "borderless",
+          "reflectToAttr": true,
+          "docs": "to get rid of the border-bottom of Banner alerts.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
         {
           "name": "center",
           "type": "boolean",
@@ -45,7 +62,7 @@
             }
           ],
           "optional": false,
-          "required": true
+          "required": false
         },
         {
           "name": "dismissible",
@@ -59,6 +76,22 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "mutable": false,
+          "attr": "icon",
+          "reflectToAttr": true,
+          "docs": "to avoid necessity of adding <chi-icon> to alert markup.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,
@@ -82,14 +115,47 @@
           "required": false
         },
         {
+          "name": "rounded",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "rounded",
+          "reflectToAttr": true,
+          "docs": "to make Banner alert corners rounded.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "size",
           "type": "string",
           "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
-          "docs": "to set size of an alert, lg is the only size available.",
+          "docs": "to set alert size { sm, md, lg }.",
           "docsTags": [],
           "default": "'md'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "mutable": false,
+          "attr": "title",
+          "reflectToAttr": true,
+          "docs": "to define alert title.",
+          "docsTags": [],
           "values": [
             {
               "type": "string"
@@ -132,10 +198,12 @@
       "slots": [],
       "dependents": [],
       "dependencies": [
+        "chi-icon",
         "chi-button"
       ],
       "dependencyGraph": {
         "chi-alert": [
+          "chi-icon",
           "chi-button"
         ],
         "chi-button": [
@@ -1106,6 +1174,22 @@
           "required": false
         },
         {
+          "name": "extraClass",
+          "type": "string",
+          "mutable": false,
+          "attr": "extra-class",
+          "reflectToAttr": true,
+          "docs": "OPTIONAL classes",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "icon",
           "type": "string",
           "mutable": false,
@@ -1143,6 +1227,7 @@
       "styles": [],
       "slots": [],
       "dependents": [
+        "chi-alert",
         "chi-button",
         "chi-date",
         "chi-drawer",
@@ -1150,6 +1235,9 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
+        "chi-alert": [
+          "chi-icon"
+        ],
         "chi-button": [
           "chi-icon"
         ],

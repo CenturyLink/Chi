@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Watch, h, State } from '@stencil/core';
 
 const ALERT_COLORS = ['success', 'danger', 'warning', 'info', 'muted'];
 
@@ -13,39 +13,61 @@ export class Alert {
   /**
    *  to set alert type { bubble, banner, toast }.
    */
-  @Prop({ reflectToAttr: true }) type = 'bubble';
+  @Prop({ reflect: true }) type = 'bubble';
 
   /**
    *  to hide the alert when dismissed.
    */
-  @Prop({ reflectToAttr: true }) mutable = false;
+  @Prop({ reflect: true }) mutable = false;
 
   /**
    *  to set alert state { success, danger, warning, info, muted }.
    */
-  @Prop({ reflectToAttr: true }) color!: string;
+  @Prop({ reflect: true }) color: string;
 
   /**
-   *  to set size of an alert, lg is the only size available.
+   *  to avoid necessity of adding <chi-icon> to alert markup.
    */
-  @Prop({ reflectToAttr: true }) size = 'md';
+  @Prop({ reflect: true }) icon: string;
+
+  /**
+   *  to set alert size { sm, md, lg }.
+   */
+  @Prop({ reflect: true }) size = 'md';
+
+  /**
+   *  to get rid of the border-bottom of Banner alerts.
+   */
+  @Prop({ reflect: true }) borderless = false;
+
+  /**
+   *  to make Banner alert corners rounded.
+   */
+  @Prop({ reflect: true }) rounded = false;
 
   /**
    *  to center the alert content.
    */
-  @Prop({ reflectToAttr: true }) center = false;
+  @Prop({ reflect: true }) center = false;
 
   /**
    *  to make the alert dismissible.
    */
-  @Prop({ reflectToAttr: true }) dismissible = false;
+  @Prop({ reflect: true }) dismissible = false;
 
   /**
    *  custom event when trying to dismiss an alert.
    */
   @Event() dismissAlert: EventEmitter<void>;
 
-  @Watch('color')
+  /**
+   *  To define alert title
+   */
+  @State() alertTitle: string;
+
+  @State() alertActions: boolean;
+
+  @Watch('type')
   typeValidation(newValue: string) {
     if (newValue && !['bubble', 'banner', 'toast'].includes(newValue)) {
       throw new Error(`${newValue} is not a valid type for alert. Valid values are bubble, banner or toast.`);
@@ -61,15 +83,39 @@ export class Alert {
 
   @Watch('size')
   sizeValidation(newValue: string) {
-    if (newValue && !['md', 'lg'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid size for alert. Alert only supports lg and md (default) sizes.`);
+    if (newValue && !['sm', 'md', 'lg'].includes(newValue)) {
+      throw new Error(`${newValue} is not a valid size for an alert. Alerts only support sm, md (default), and lg sizes.`);
     }
   }
 
   componentWillLoad() {
+    const target = this.el;
+    const config = {
+      attributes: true,
+      attributeOldValue: true,
+      attributeFilter: ['title']
+    };
+
+    function subscriberCallback(mutations) {
+      mutations.forEach((mutation) => {
+        this.alertTitle = mutation.target.title;
+      });
+    }
+
+    const observer = new MutationObserver(subscriberCallback);
+    observer.observe(target, config);
+
     this.typeValidation(this.type);
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
+
+    if (target.getAttribute('title')) {
+      this.alertTitle = target.getAttribute('title');
+    }
+
+    if (Array.from(target.querySelectorAll("[slot=m-alert__actions]")).length > 0) {
+      this.alertActions = true;
+    }
   }
 
   _dismissAlert() {
@@ -80,23 +126,28 @@ export class Alert {
   }
 
   render() {
+    const chiIcon = <chi-icon icon={this.icon} color={this.color} extraClass="m-alert__icon"></chi-icon>;
+    const alertTitle = this.alertTitle && <p class="m-alert__title">{this.alertTitle}</p>;
+    const chiActions = this.alertActions && <div class="m-alert__actions"><slot name="m-alert__actions"></slot></div>;
+
     return (
       <div class={`m-alert
         ${this.type ? `-${this.type}` : ''}
         ${this.color ? `-${this.color}` : ''}
         ${this.center ? '-center' : ''}
         ${this.dismissible ? '-dismiss' : ''}
-        ${this.size ? `-${this.size}` : ''}`}
+        ${this.size ? `-${this.size}` : ''}
+        ${this.type === 'banner' && this.borderless ? `-borderless` : ''}
+        ${this.type === 'banner' && this.rounded ? `-rounded` : ''}`}
         role="alert"
       >
-        {(this.dismissible || this.type === 'toast' || this.size === 'lg') ?
-          <div class="m-alert__content">
-            <slot></slot>
-          </div>
-          :
-          <slot></slot>
-        }
-        {(this.dismissible || this.type === 'toast') && <chi-button type="close" onChiClick={() => this._dismissAlert()} size={'sm'} />}
+        {this.icon && chiIcon}
+        <div class="m-alert__content">
+          {alertTitle}
+          <p class="m-alert__text"><slot></slot></p>
+          {chiActions}
+        </div>
+        {(this.dismissible || this.type === 'toast') && <chi-button extraClass="m-alert__dismiss-button" type="close" onChiClick={() => this._dismissAlert()} />}
       </div>
     );
   }

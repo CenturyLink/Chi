@@ -1,46 +1,65 @@
 ---
 title: Alert Bubbles
 ---
-h3 default
-div(class=`test-default -w--100`)
-  each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-    .m-alert.-bubble.-m--2(class=`-${type}`)
-      div(class=`a-icon -sm--2 -text--${type}`)
-        svg
-          use(xlink:href=`#${val}`)
-      = `this is a ${type} message`
-    .m-alert.-bubble.-dismiss.-m--2(class=`-${type}`)
-      .m-alert__content
-        div(class=`a-icon -sm--2 -text--${type}`)
-          svg
-            use(xlink:href=`#${val}`)
-        = `This is a ${type} alert`
-      button(class='a-btn -icon -close -sm')
-        .a-btn__content
-          .a-icon
+
+each size in ['default', 'sm', 'lg']
+  h4 Default / #{size}
+  div(class=`test-bubble-${size} -w--100`)
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
+      .-m--2
+        .m-alert(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+          div(class=`m-alert__icon a-icon -text--${type}`)
             svg
-              use(xlink:href='#icon-x')
-h3 large
-div(class=`test-large -w--100`)
-  each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-    .m-alert.-bubble.-lg.-m--2(class=`-${type} -lg`)
-      .m-alert__content
-        div(class=`a-icon -sm--2 -text--${type}`)
-          svg
-            use(xlink:href=`#${val}`)
-        div
-          h5.a-h5= type
-          = `this is a ${type} message`
-    .m-alert.-bubble.-lg.-dismiss.-m--2(class=`-${type} -lg`)
-      .m-alert__content
-        div(class=`a-icon -sm--2 -text--${type}`)
-          svg
-            use(xlink:href=`#${val}`)
-        div
-          h5.a-h5= type
-          = `This is a ${type} alert`
-      button(class='a-btn -icon -close -sm')
-        .a-btn__content
-          .a-icon
+              use(xlink:href=`#${val}`)
+          .m-alert__content
+            p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+  h4 Centered / #{size}
+  div(class=`test-bubble-center-${size} -w--100`)
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
+      .-m--2
+        .m-alert.-center(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+          div(class=`m-alert__icon a-icon -text--${type}`)
             svg
-              use(xlink:href='#icon-x')
+              use(xlink:href=`#${val}`)
+          .m-alert__content
+            p.m-alert__text= `This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
+  h4 Dismissible / #{size}
+  div(class=`test-bubble-dismissible-${size} -w--100`)
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
+      .-m--2
+        .m-alert.-dismiss(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+          div(class=`m-alert__icon a-icon -text--${type}`)
+            svg
+              use(xlink:href=`#${val}`)
+          .m-alert__content
+            p.m-alert__text= `This is a dismissible ${type} alert`
+          button(class='m-alert__dismiss-button a-btn -icon -close')
+            .a-btn__content
+              .a-icon
+                svg
+                  use(xlink:href='#icon-x')
+  h4 Titled / #{size}
+  div(class=`test-bubble-titled-${size} -w--100`)
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
+      .-m--2
+        .m-alert(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+          div(class=`m-alert__icon a-icon -text--${type}`)
+            svg
+              use(xlink:href=`#${val}`)
+          .m-alert__content
+            p.m-alert__title=`${type}`
+            p.m-alert__text=`This is a titled ${type} alert`
+  h4 Actionable / #{size}
+  div(class=`test-bubble-actionable-${size} -w--100`)
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
+      .-m--2
+        .m-alert(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+          div(class=`m-alert__icon a-icon -text--${type}`)
+            svg
+              use(xlink:href=`#${val}`)
+          .m-alert__content
+            p.m-alert__title #{type}
+            p.m-alert__text This is a #{size} #{type} actionable alert
+            div.m-alert__actions
+              button.a-btn.-dark.-outline(class=`-${size}`) Secondary action
+              button.a-btn.-primary(class=`-${size}`) Primary action

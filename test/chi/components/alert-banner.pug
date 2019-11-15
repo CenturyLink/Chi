@@ -1,44 +1,70 @@
 ---
 title: Alert Banners
 ---
-each size in ['default', 'large']
-  div(class=`test-${size} -w--100`)
-    h3= `${size}`
-    each type in ['success', 'danger', 'warning', 'info', 'muted']
-      .m-alert.-banner.-m2(class=`-${type}`, class=`-${size === 'default' ? '' : 'lg'}`)
-        = `This is a ${type} message`
 
-    h4 center
-    each type in ['success', 'danger', 'warning', 'info', 'muted']
-      .m-alert.-banner.-center.-m2(class=`-${type}`, class=`-${size === 'default' ? '' : 'lg'}`)
-        = `This is a ${type} message`
-
-    h4 Has icon
+each size in ['default', 'sm', 'lg']
+  h4 Default / #{size}
+  div(class=`test-banner-${size} -w--100`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-banner.-m2(class=`-${type}`, class=`-${size === 'default' ? '' : 'lg'}`)
-        div(class=`a-icon -sm--2 -text--${type}`)
+      .m-alert.-m--2.-banner(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+        div(class=`m-alert__icon a-icon -text--${type}`)
           svg
             use(xlink:href=`#${val}`)
-        = `This is a ${type} message`
-
-    h4 Has icon center
-    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-banner.-center.-m2(class=`-${type}`, class=`-${size === 'default' ? '' : 'lg'}`)
-        div(class=`a-icon -sm--2 -text--${type}`)
-          svg
-            use(xlink:href=`#${val}`)
-        = `This is a ${type} message`
-
-    h4 Dismiss
-    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-banner.-dismiss.-m--2(class=`-${type}`, class=`-${size === 'default' ? '' : 'lg'}`)
         .m-alert__content
-          div(class=`a-icon -sm--2 -text--${type}`)
-            svg
-              use(xlink:href=`#${val}`)
-          = `This is a ${type} message`
-        button(class='a-btn -icon -close -sm')
+          p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+
+  h4 Centered / #{size}
+  div(class=`test-banner-center-${size} -w--100`)
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
+      .m-alert.-m--2.-banner.-center(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+        div(class=`m-alert__icon a-icon -text--${type}`)
+          svg
+            use(xlink:href=`#${val}`)
+        .m-alert__content
+          p.m-alert__text= `This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
+
+  h4 Dismissible / #{size}
+  div(class=`test-banner-dismissible-${size} -w--100`)
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
+      .m-alert.-banner.-m--2.-dismiss.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+        div(class=`m-alert__icon a-icon -text--${type}`)
+          svg
+            use(xlink:href=`#${val}`)
+        .m-alert__content
+          p.m-alert__text= `This is a dismissible ${type} alert`
+        button(class='m-alert__dismiss-button a-btn -icon -close')
           .a-btn__content
             .a-icon
               svg
                 use(xlink:href='#icon-x')
+            
+  h4 Borderless / #{size}
+  div(class=`test-banner-borderless-${size} -w--100`)
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
+      .m-alert.-m--2.-banner(class=`-${type} -borderless ${size === 'default' ? '' : '-' + size}`)
+        div(class=`m-alert__icon a-icon -text--${type}`)
+          svg
+            use(xlink:href=`#${val}`)
+        .m-alert__content
+          p.m-alert__text=`This is a borderless ${type} alert`
+            
+  h4 Rounded / #{size}
+  div(class=`test-banner-rounded-${size} -w--100`)
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
+      .m-alert.-m--2.-banner(class=`-${type} -rounded ${size === 'default' ? '' : '-' + size}`)
+        div(class=`m-alert__icon a-icon -text--${type}`)
+          svg
+            use(xlink:href=`#${val}`)
+        .m-alert__content
+          p.m-alert__text=`This is a rounded ${type} alert`
+            
+  h4 Titled / #{size}
+  div(class=`test-banner-titled-${size} -w--100`)
+    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
+      .m-alert.-m--2.-banner(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+        div(class=`m-alert__icon a-icon -text--${type}`)
+          svg
+            use(xlink:href=`#${val}`)
+        .m-alert__content
+          p.m-alert__title= `${type}`
+          p.m-alert__text=`This is a titled ${type} alert`
