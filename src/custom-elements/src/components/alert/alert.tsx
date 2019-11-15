@@ -56,11 +56,6 @@ export class Alert {
   @Prop({ reflect: true }) dismissible = false;
 
   /**
-   *  to define alert text.
-   */
-  @Prop({ reflect: true }) text: string;
-
-  /**
    *  custom event when trying to dismiss an alert.
    */
   @Event() dismissAlert: EventEmitter<void>;
