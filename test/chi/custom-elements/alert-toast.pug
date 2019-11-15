@@ -8,11 +8,9 @@ each size in ['default', 'sm', 'lg']
   h4 Default / #{size}
   div(class=`test-toast-${size}`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, icon=val, color=type, data-cy=`alert-toast-${type}-${size}`)
-        p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+      chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, icon=val, color=type, data-cy=`alert-toast-${type}-${size}`, text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`)
 
   h4 Titled /  #{size}
   div(class=`test-toast-titled-${size}`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, color=type, icon=val, alert-title=type)
-        p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} toast alert`
+      chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, color=type, icon=val, title=type, text=`This is ${type === 'info' ? 'an' : 'a'} ${type} toast alert`)

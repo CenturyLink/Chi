@@ -13,52 +13,52 @@ export class Alert {
   /**
    *  to set alert type { bubble, banner, toast }.
    */
-  @Prop({ reflectToAttr: true }) type = 'bubble';
+  @Prop({ reflect: true }) type = 'bubble';
 
   /**
    *  to hide the alert when dismissed.
    */
-  @Prop({ reflectToAttr: true }) mutable = false;
+  @Prop({ reflect: true }) mutable = false;
 
   /**
    *  to set alert state { success, danger, warning, info, muted }.
    */
-  @Prop({ reflectToAttr: true }) color: string;
+  @Prop({ reflect: true }) color: string;
 
   /**
    *  to avoid necessity of adding <chi-icon> to alert markup.
    */
-  @Prop({ reflectToAttr: true }) icon: string;
+  @Prop({ reflect: true }) icon: string;
 
   /**
    *  to set alert size { sm, md, lg }.
    */
-  @Prop({ reflectToAttr: true }) size = 'md';
+  @Prop({ reflect: true }) size = 'md';
 
   /**
    *  to get rid of the border-bottom of Banner alerts.
    */
-  @Prop({ reflectToAttr: true }) borderless = false;
+  @Prop({ reflect: true }) borderless = false;
 
   /**
    *  to make Banner alert corners rounded.
    */
-  @Prop({ reflectToAttr: true }) rounded = false;
+  @Prop({ reflect: true }) rounded = false;
 
   /**
    *  to center the alert content.
    */
-  @Prop({ reflectToAttr: true }) center = false;
+  @Prop({ reflect: true }) center = false;
 
   /**
    *  to make the alert dismissible.
    */
-  @Prop({ reflectToAttr: true }) dismissible = false;
+  @Prop({ reflect: true }) dismissible = false;
 
   /**
-   *  to define alert title.
+   *  to define alert text.
    */
-  @Prop({ reflectToAttr: true }) alertTitle: string;
+  @Prop({ reflect: true }) text: string;
 
   /**
    *  custom event when trying to dismiss an alert.
@@ -87,6 +87,22 @@ export class Alert {
   }
 
   componentWillLoad() {
+    const target = this.el;
+    const config = {
+      attributes: true,
+      attributeOldValue: true,
+      attributeFilter: ['title']
+    };
+
+    function subscriberCallback(mutations) {
+      mutations.forEach((mutation) => {
+        target.querySelector('.m-alert__title').innerText = mutation.target.title;
+      });
+    }
+
+    const observer = new MutationObserver(subscriberCallback);
+    observer.observe(target, config);
+
     this.typeValidation(this.type);
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
@@ -101,7 +117,7 @@ export class Alert {
 
   render() {
     const chiIcon = <chi-icon icon={this.icon} color={this.color} extraClass="m-alert__icon"></chi-icon>;
-    const alertTitle = this.alertTitle ? <p class="m-alert__title">{this.alertTitle}</p> : '';
+    const alertTitle = this.el.getAttribute('title') && <p class="m-alert__title">{this.el.getAttribute('title')}</p>;
 
     return (
       <div class={`m-alert
@@ -116,7 +132,8 @@ export class Alert {
       >
         {this.icon && chiIcon}
         <div class="m-alert__content">
-          {this.alertTitle && alertTitle}
+          {this.el.getAttribute('title') && alertTitle}
+          {this.text && <p class="m-alert__text">{this.text}</p>}
           <slot></slot>
         </div>
         {(this.dismissible || this.type === 'toast') && <chi-button extraClass="m-alert__dismiss-button" type="close" onChiClick={() => this._dismissAlert()} />}

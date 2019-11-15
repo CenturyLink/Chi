@@ -8,30 +8,24 @@ each size in ['default', 'sm', 'lg']
   h4 Default / #{size}
   div(class=`test-banner-${size} -w--100`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val, type='banner', size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-${type}-${size}`)
-        p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+      chi-alert.-m--2(color=type, icon=val, type='banner', size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-${type}-${size}`, text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`)
   h4 Centered / #{size}
   div(class=`test-banner-center-${size} -w--100`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val, type='banner', center, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-center-${type}-${size}`)
-        p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
+      chi-alert.-m--2(color=type, icon=val, type='banner', center, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-center-${type}-${size}`, text=`This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`)
   h4 Dismissible / #{size}
   div(class=`test-banner-dismissible-${size} -w--100`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val, type="banner" dismissible, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-dismissible-${type}-${size}`)
-        p.m-alert__text= `This is a dismissible ${type} alert`
+      chi-alert.-m--2(color=type, icon=val, type="banner" dismissible, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-dismissible-${type}-${size}`, text= `This is a dismissible ${type} alert`)
   h4 Borderless / #{size}
   div(class=`test-banner-borderless-${size} -w--100`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val, type="banner", borderless, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-borderless-${type}-${size}`)
-        p.m-alert__text= `This is a borderless ${type} alert`
+      chi-alert.-m--2(color=type, icon=val, type="banner", borderless, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-borderless-${type}-${size}`, text= `This is a borderless ${type} alert`)
   h4 Rounded / #{size}
   div(class=`test-banner-rounded-${size} -w--100`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val, type="banner", rounded, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-rounded-${type}-${size}`)
-        p.m-alert__text= `This is a rounded ${type} alert`
+      chi-alert.-m--2(color=type, icon=val, type="banner", rounded, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-rounded-${type}-${size}`, text= `This is a rounded ${type} alert`)
   h4 Titled / #{size}
   div(class=`test-banner-titled-${size} -w--100`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val, type="banner", size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-titled-${type}-${size}`, alert-title=type)
-        p.m-alert__text= `This is a titled ${type} alert`
+      chi-alert.-m--2(color=type, icon=val, type="banner", size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-titled-${type}-${size}`, title=type, text= `This is a titled ${type} alert`)

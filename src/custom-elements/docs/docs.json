@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-11-13T14:35:12",
+  "timestamp": "2019-11-15T15:55:30",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.7.5",
@@ -14,22 +14,6 @@
       "docsTags": [],
       "usage": {},
       "props": [
-        {
-          "name": "alert-title",
-          "type": "string",
-          "mutable": false,
-          "attr": "alert-title",
-          "reflectToAttr": true,
-          "docs": "to define alert title.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
         {
           "name": "borderless",
           "type": "boolean",
@@ -156,6 +140,38 @@
           "docs": "to set alert size { sm, md, lg }.",
           "docsTags": [],
           "default": "'md'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "mutable": false,
+          "attr": "text",
+          "reflectToAttr": true,
+          "docs": "to define alert text.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "mutable": false,
+          "attr": "title",
+          "reflectToAttr": true,
+          "docs": "to define alert title.",
+          "docsTags": [],
           "values": [
             {
               "type": "string"
