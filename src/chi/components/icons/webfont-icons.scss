@@ -21,6 +21,33 @@ i[class^="icon-"], i[class*=" icon-"] {
   }
 }
 
+.icon-square-minus-outline:before {
+  content: "\e9ae";
+}
+.icon-square-plus-outline:before {
+  content: "\e9af";
+}
+.icon-edit-cancel:before {
+  content: "\e9b0";
+}
+.icon-logo-facebook:before {
+  content: "\e960";
+}
+.icon-logo-linkedin:before {
+  content: "\e964";
+}
+.icon-logo-twitter:before {
+  content: "\e969";
+}
+.icon-logo-youtube:before {
+  content: "\e9b1";
+}
+.icon-square-minus:before {
+  content: "\e9b2";
+}
+.icon-square-plus:before {
+  content: "\e9b3";
+}
 .icon-home-outline:before {
   content: "\e9a1";
 }
@@ -378,9 +405,6 @@ i[class^="icon-"], i[class*=" icon-"] {
 .icon-logo-dimensiondata:before {
   content: "\e95f";
 }
-.icon-logo-facebook:before {
-  content: "\e960";
-}
 .icon-logo-github:before {
   content: "\e961";
 }
@@ -390,9 +414,6 @@ i[class^="icon-"], i[class*=" icon-"] {
 .icon-logo-hp:before {
   content: "\e963";
 }
-.icon-logo-linkedin:before {
-  content: "\e964";
-}
 .icon-logo-linux:before {
   content: "\e965";
 }
@@ -401,9 +422,6 @@ i[class^="icon-"], i[class*=" icon-"] {
 }
 .icon-logo-rackspace:before {
   content: "\e967";
-}
-.icon-logo-twitter:before {
-  content: "\e969";
 }
 .icon-logo-vcloud:before {
   content: "\e96a";
