@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Watch, h, State } from '@stencil/core';
 
 const ALERT_COLORS = ['success', 'danger', 'warning', 'info', 'muted'];
 
@@ -65,6 +65,13 @@ export class Alert {
    */
   @Event() dismissAlert: EventEmitter<void>;
 
+  /**
+   *  To define alert title
+   */
+  @State() alertTitle: string;
+
+  @State() alertActions: boolean;
+
   @Watch('type')
   typeValidation(newValue: string) {
     if (newValue && !['bubble', 'banner', 'toast'].includes(newValue)) {
@@ -96,7 +103,7 @@ export class Alert {
 
     function subscriberCallback(mutations) {
       mutations.forEach((mutation) => {
-        target.querySelector('.m-alert__title').innerText = mutation.target.title;
+        this.alertTitle = mutation.target.title;
       });
     }
 
@@ -106,6 +113,14 @@ export class Alert {
     this.typeValidation(this.type);
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
+
+    if (target.getAttribute('title')) {
+      this.alertTitle = target.getAttribute('title');
+    }
+
+    if (Array.from(target.querySelectorAll("[slot=m-alert__actions]")).length > 0) {
+      this.alertActions = true;
+    }
   }
 
   _dismissAlert() {
@@ -117,7 +132,8 @@ export class Alert {
 
   render() {
     const chiIcon = <chi-icon icon={this.icon} color={this.color} extraClass="m-alert__icon"></chi-icon>;
-    const alertTitle = this.el.getAttribute('title') && <p class="m-alert__title">{this.el.getAttribute('title')}</p>;
+    const alertTitle = this.alertTitle && <p class="m-alert__title">{this.alertTitle}</p>;
+    const chiActions = this.alertActions && <div class="m-alert__actions"><slot name="m-alert__actions"></slot></div>;
 
     return (
       <div class={`m-alert
@@ -132,9 +148,9 @@ export class Alert {
       >
         {this.icon && chiIcon}
         <div class="m-alert__content">
-          {this.el.getAttribute('title') && alertTitle}
-          {this.text && <p class="m-alert__text">{this.text}</p>}
-          <slot></slot>
+          {alertTitle}
+          <p class="m-alert__text"><slot></slot></p>
+          {chiActions}
         </div>
         {(this.dismissible || this.type === 'toast') && <chi-button extraClass="m-alert__dismiss-button" type="close" onChiClick={() => this._dismissAlert()} />}
       </div>
