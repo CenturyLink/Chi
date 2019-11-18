@@ -3,38 +3,41 @@ title: Breadcrumb
 ---
 
 h4 Base
-.example.-mb--3
-  .-p--3
-    nav.a-breadcrumb.-text(aria-label="Breadcrumb")
-      ol
-        li.a-breadcrumb__item
-          a(href='#') Parent
-        li.a-breadcrumb__item
-          a(href='#') Child 1
-        li.a-breadcrumb__item.-active
-          a(href='#',aria-current="page") Child 2
+.test-base
+  .example
+    .-p--3
+      nav.a-breadcrumb.-text(aria-label="Breadcrumb")
+        ol
+          li.a-breadcrumb__item
+            a(href='#') Parent
+          li.a-breadcrumb__item
+            a(href='#') Child 1
+          li.a-breadcrumb__item.-active
+            a(href='#',aria-current="page") Child 2
+  
 h4 Alternative Separator
-.example.-mb--3
-  .-p--3
-    nav.a-breadcrumb.-alt.-text(aria-label="Breadcrumb")
-      ol
-        li.a-breadcrumb__item
-          a(href='#') Parent
-        li.a-breadcrumb__item
-          a(href='#') Child 1
-        li.a-breadcrumb__item.-active
-          a(href='#',aria-current="page") Child 2
+.test-alternative-separator 
+  .example
+    .-p--3
+      nav.a-breadcrumb.-alt.-text(aria-label="Breadcrumb")
+        ol
+          li.a-breadcrumb__item
+            a(href='#') Parent
+          li.a-breadcrumb__item
+            a(href='#') Child 1
+          li.a-breadcrumb__item.-active
+            a(href='#',aria-current="page") Child 2
 
-h2 Sizes
+h4 Sizes
 .test-sizes
   table(cellpadding="0", cellspacing="0", width="600px")
-    each size in ['Small', 'Smaller', 'Large', 'Larger']
+    each size in ['small', 'smaller', 'large', 'larger']
       tr
         td
-          h5= `-text${size}`
+          h5= `-text--${size}`
           td
             .-m--1
-              nav(class=`a-breadcrumb -text${size}`,aria-label="Breadcrumb")
+              nav(class=`a-breadcrumb -text--${size}`,aria-label="Breadcrumb")
                 ol
                   li.a-breadcrumb__item
                     a(href='#') Parent
@@ -42,13 +45,13 @@ h2 Sizes
                     a(href='#') Child 1
                   li.a-breadcrumb__item.-active
                     a(href='#',aria-current="page") Child 2
-    each size in ['Small', 'Smaller', 'Large', 'Larger']
+    each size in ['small', 'smaller', 'large', 'larger']
       tr
         td
-          h5= `-text${size}`
+          h5= `-text--${size}`
           td
             .-m--1
-              nav(class=`a-breadcrumb -alt -text${size}`,aria-label="Breadcrumb")
+              nav(class=`a-breadcrumb -alt -text--${size}`,aria-label="Breadcrumb")
                 ol
                   li.a-breadcrumb__item
                     a(href='#') Parent

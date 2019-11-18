@@ -4,23 +4,23 @@ title: Spinner
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-h2 Backdrop
+h3 Backdrop
 
-h3 Base
+h4 Base
 .test-backdrop-base(style="height:31rem;width:100%")
   .example.-mb--3(style="height:30rem;width:100%")
     .-p--6(style="position:relative;height:100%;")
       chi-spinner(color='light', backdrop, data-cy='base-backdrop-spinner')
 
-h3 Inverse Backdrop
+h4 Inverse Backdrop
 .test-backdrop-inverse(style="height:31rem;width:100%")
   .example.-mb--3(style="height:30rem;width:100%")
     .-p--6(style="position:relative;height:100%;")
       chi-spinner(color='primary', backdrop='inverse', data-cy='inverse-backdrop-spinner')
 
-h2 Contextual
+h3 Contextual
 
-h3 Spinner Buttons
+h4 Spinner Buttons
 .test-buttons
   .example.-mb--3
     .-p--3
@@ -35,26 +35,27 @@ h3 Spinner Buttons
         chi-spinner(color='muted', size='sm--2')
 
 // TODO: Change after we have input ce
-h3 Spinner Text Input
-.example.-mb--3
-  .-p--3
-    .m-input__wrapper.-pb--2(style="max-width:20rem")
-      input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
-      svg(class='a-spinner -text--muted',viewBox='0 0 66 66')
-        title Loading
-        circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
-    .m-input__wrapper.-pb--2(style="max-width:20rem")
-      input(type="text", class="a-input -sm", placeholder="Placeholder", value="Sample Text")
-      svg(class='a-spinner -text--muted -xs',viewBox='0 0 66 66')
-        title Loading
-        circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
-    .m-input__wrapper.-pb--2(style="max-width:20rem")
-      input(type="text", class="a-input -lg", placeholder="Placeholder", value="Sample Text")
-      svg(class='a-spinner -text--muted -sm--2',viewBox='0 0 66 66')
-        title Loading
-        circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
+h4 Spinner Text Input
+.test-text-input
+  .example.-mb--3
+    .-p--3
+      .m-input__wrapper.-pb--2(style="max-width:20rem")
+        input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
+        svg(class='a-spinner -text--muted',viewBox='0 0 66 66')
+          title Loading
+          circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
+      .m-input__wrapper.-pb--2(style="max-width:20rem")
+        input(type="text", class="a-input -sm", placeholder="Placeholder", value="Sample Text")
+        svg(class='a-spinner -text--muted -xs',viewBox='0 0 66 66')
+          title Loading
+          circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
+      .m-input__wrapper.-pb--2(style="max-width:20rem")
+        input(type="text", class="a-input -lg", placeholder="Placeholder", value="Sample Text")
+        svg(class='a-spinner -text--muted -sm--2',viewBox='0 0 66 66')
+          title Loading
+          circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
 
-h2 Sizes
+h4 Sizes
 .test-sizes
   .a-grid
     each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
@@ -63,7 +64,7 @@ h2 Sizes
       .a-col.-w--2.-middle
         chi-spinner(color='muted', size=size, data-cy=`spinner-${size}`)
 
-h2 Colors
+h4 Colors
 .test-colors
   .a-grid.-align-items--center
     each type in ['primary', 'success', 'warning', 'danger', 'muted', 'secondary', 'light']

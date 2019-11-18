@@ -4,73 +4,77 @@ title: Pagination
 - var steps = ['0', '1', '2', '3', '4', '5', '6'];
 
 h4 Base
-.example.-mb--3
-  .-p--5
-    nav.a-pagination(role='navigation', aria-label='Pagination')
-      .m-btnGroup
-        each step in steps
-          if step == '0'
-            a(class=`a-btn`, href='#', aria-label='Previous')
-              i(class="a-icon icon-chevron-left", aria-hidden='true')
-              span.-sr--only Previous
-          else if step == '6'
-            a(class=`a-btn`, href='#')
-              i(class="a-icon icon-chevron-right", aria-hidden='true')
-              span.-sr--only Next
-          else
-            a(class=`a-btn`, href='#')= `${step}`
+.test-base
+  .example.-mb--3
+    .-p--5
+      nav.a-pagination(role='navigation', aria-label='Pagination')
+        .m-btnGroup
+          each step in steps
+            if step == '0'
+              a(class=`a-btn`, href='#', aria-label='Previous')
+                i(class="a-icon icon-chevron-left", aria-hidden='true')
+                span.-sr--only Previous
+            else if step == '6'
+              a(class=`a-btn`, href='#')
+                i(class="a-icon icon-chevron-right", aria-hidden='true')
+                span.-sr--only Next
+            else
+              a(class=`a-btn`, href='#')= `${step}`
 h4 Pill
-.example.-mb--3
-  .-p--5
-    nav.a-pagination(role='navigation', aria-label='Pagination')
-      .m-btnGroup.-pill
-        each step in steps
-          if step == '0'
-            a(class=`a-btn`, href='#', aria-label='Previous')
-              i(class="a-icon icon-chevron-left", aria-hidden='true')
-              span.-sr--only Previous
-          else if step == '6'
-            a(class=`a-btn`, href='#')
-              i(class="a-icon icon-chevron-right", aria-hidden='true')
-              span.-sr--only Next
-          else
-            a(class=`a-btn`, href='#')= `${step}`
-h5 Active
-.example.-mb--3
-  .-p--5
-    nav.a-pagination(role='navigation', aria-label='Pagination')
-      .m-btnGroup
-        each step in steps
-          if step == '0'
-            a(class=`a-btn`, href='#', aria-label='Previous')
-              i(class="a-icon icon-chevron-left", aria-hidden='true')
-              span.-sr--only Previous
-          else if step == '3'
-            a(class=`a-btn -active`, href='#')= `${step}`
-          else if step == '6'
-            a(class=`a-btn`, href='#')
-              i(class="a-icon icon-chevron-right", aria-hidden='true')
-              span.-sr--only Next
-          else
-            a(class=`a-btn`, href='#')= `${step}`
-h5 Disabled
-.example.-mb--3
-  .-p--5
-    nav.a-pagination(role='navigation', aria-label='Pagination')
-      .m-btnGroup
-        each step in steps
-          if step == '0'
-            a(class=`a-btn -disabled`, href='#', aria-disabled='true' disabled)
-              i(class="a-icon icon-chevron-left", aria-hidden='true')
-              span.-sr--only Previous
-          else if step == '6'
-            a(class=`a-btn`, href='#')
-              i(class="a-icon icon-chevron-right", aria-hidden='true')
-              span.-sr--only Next
-          else
-            a(class=`a-btn`, href='#')= `${step}`
-h2 Sizes
-h3 Base
+.test-pill
+  .example.-mb--3
+    .-p--5
+      nav.a-pagination(role='navigation', aria-label='Pagination')
+        .m-btnGroup.-pill
+          each step in steps
+            if step == '0'
+              a(class=`a-btn`, href='#', aria-label='Previous')
+                i(class="a-icon icon-chevron-left", aria-hidden='true')
+                span.-sr--only Previous
+            else if step == '6'
+              a(class=`a-btn`, href='#')
+                i(class="a-icon icon-chevron-right", aria-hidden='true')
+                span.-sr--only Next
+            else
+              a(class=`a-btn`, href='#')= `${step}`
+h4 Active
+.test-active
+  .example.-mb--3
+    .-p--5
+      nav.a-pagination(role='navigation', aria-label='Pagination')
+        .m-btnGroup
+          each step in steps
+            if step == '0'
+              a(class=`a-btn`, href='#', aria-label='Previous')
+                i(class="a-icon icon-chevron-left", aria-hidden='true')
+                span.-sr--only Previous
+            else if step == '3'
+              a(class=`a-btn -active`, href='#')= `${step}`
+            else if step == '6'
+              a(class=`a-btn`, href='#')
+                i(class="a-icon icon-chevron-right", aria-hidden='true')
+                span.-sr--only Next
+            else
+              a(class=`a-btn`, href='#')= `${step}`
+h4 Disabled
+.test-disabled
+  .example.-mb--3
+    .-p--5
+      nav.a-pagination(role='navigation', aria-label='Pagination')
+        .m-btnGroup
+          each step in steps
+            if step == '0'
+              a(class=`a-btn -disabled`, href='#', aria-disabled='true' disabled)
+                i(class="a-icon icon-chevron-left", aria-hidden='true')
+                span.-sr--only Previous
+            else if step == '6'
+              a(class=`a-btn`, href='#')
+                i(class="a-icon icon-chevron-right", aria-hidden='true')
+                span.-sr--only Next
+            else
+              a(class=`a-btn`, href='#')= `${step}`
+h4 Sizes
+h4 Base
 .test-sizes
   table(cellpadding="0", cellspacing="0", width="600px")
     each size in ['sm', 'md', 'lg', 'xl']
@@ -92,8 +96,8 @@ h3 Base
                         span.-sr--only Next
                     else
                       a(class=`a-btn -${size}`, href='#')= `${step}`
-h3 Pill
-.test-sizes
+h4 Pill
+.test-sizes-pill
   table(cellpadding="0", cellspacing="0", width="600px")
     each size in ['sm', 'md', 'lg', 'xl']
       tr

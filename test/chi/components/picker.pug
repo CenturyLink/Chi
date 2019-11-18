@@ -8,62 +8,95 @@ h3 Base
 
 h4 Type checkbox
 h4 Base
-.example.-mb--3(style='width: 700px')
-  .-p--3
-    each type in ['Checkbox1','Checkbox2']
-      .m-picker
-        input(type="checkbox", class="a-picker", id=`i-${type}`)
-        label(for=`i-${type}`)
-          = type
-h4 With checkbox
-.example.-mb--3(style='width: 700px')
-  .-p--3
-    each type in ['Checkbox1','Checkbox2']
-      .m-picker
-        input(type="checkbox", class="a-picker", id=`ic-${type}`)
-        label(for=`ic-${type}`)
-          .m-form__item.-row
-            input(type="checkbox", class="a-input", id=`ic-${type}`)
-            label(for=`ic-${type}`)
+.test-base
+  .example(style='width: 700px')
+    .-p--3
+      each type in ['Checkbox1','Checkbox2']
+        .m-picker
+          input(type="checkbox", class="a-picker", id=`i-${type}`)
+          label(for=`i-${type}`)
             = type
+
+h4 With checkbox
+.test-with-checkbox
+  .example(style='width: 700px')
+    .-p--3
+      each type in ['Checkbox1','Checkbox2']
+        .m-picker
+          input(type="checkbox", class="a-picker", id=`ic-${type}`)
+          label(for=`ic-${type}`)
+            .m-form__item.-row
+              input(type="checkbox", class="a-input", id=`ic-${type}`)
+              label(for=`ic-${type}`)
+              = type
+
+h4 With description
+.test-with-description
+  each type in ['Checkbox1','Checkbox2']
+    .m-picker
+      input(type="checkbox", class="a-picker", id=`id-${type}`)
+      label(for=`id-${type}`)
+        .m-picker__content--start
+          div.m-formGroup
+            input(type="checkbox", class="a-input", id=`id-${type}`)
+            label(for=`id-${type}`)
+            = type
+          div.-text--normal.-text--body.-text--small
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
+
 h4 Type radio
 h4 Base
-.example.-mb--3(style='width: 700px')
-  .-p--3
-    each type in ['Radio1','Radio2']
-      .m-picker
-        input(type="radio", class="a-picker", name='box', id=`ei-${type}`)
-        label(for=`ei-${type}`)
-          = type
-h4 With radio
-.example.-mb--3(style='width: 700px')
-  .-p--3
-    each type in ['Radio1','Radio2']
-      .m-picker
-        input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
-        label(for=`ri-${type}`)
-          .m-form__item.-row
-            input(type="radio", class="a-input", id=`ri-${type}`)
-            label(for=`ri-${type}`)
-            = type
-h3 Sizes
-.example.-mb--3(style='width: 700px')
-  .-p--3
-    each size in sizes
-      h4= '-' + size
+.test-type-radio
+  .example(style='width: 700px')
+    .-p--3
       each type in ['Radio1','Radio2']
-        .m-picker(class=`-${size}`)
-          input(type="radio", class="a-picker", name='box', id=`ri-${type}-${size}`)
-          label(for=`ri-${type}-${size}`)
+        .m-picker
+          input(type="radio", class="a-picker", name='box', id=`ei-${type}`)
+          label(for=`ei-${type}`)
+            = type
+
+h4 With radio
+.test-with-radio
+  .example.-mb--3(style='width: 700px')
+    .-p--3
+      each type in ['Radio1','Radio2']
+        .m-picker
+          input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
+          label(for=`ri-${type}`)
+            .m-form__item.-row
+              input(type="radio", class="a-input", id=`ri-${type}`)
+              label(for=`ri-${type}`)
+              = type
+
+h3 Sizes
+.test-sizes
+  .example.-mb--3(style='width: 700px')
+    .-p--4
+      h4 -sm
+      each type in ['Radio1 -sm','Radio2 -sm']
+        .m-picker.-sm
+          input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
+          label(for=`ri-${type}`)
+            .m-picker__content--start
+              = type
+            .m-picker__content--end
+              span.-text--bold.-text--body.-text--small.-text--right Data
+              span.-text--normal.-text--muted.-text--small Value
+      h4 -md
+      each type in ['Radio1 -md','Radio2 -md']
+        .m-picker.-md
+          input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
+          label(for=`ri-${type}`)
             .m-picker__content--start
               = type
             .m-picker__content--end
               span.-text--bold.-text--body.-text--right Data
               span.-text--normal.-text--muted.-text--small Value
-      each type in ['Radio1','Radio2']
-        .m-picker(class=`-${size}`)
-          input(type="radio", class="a-picker", name='box', id=`rd-${type}-${size}`)
-          label(for=`rd-${type}-${size}`)
+      h4 -lg
+      each type in ['Radio1 -lg','Radio2 -lg']
+        .m-picker.-lg
+          input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
+          label(for=`ri-${type}`)
             .m-picker__content--start
               label.-text--bold
                 = type
