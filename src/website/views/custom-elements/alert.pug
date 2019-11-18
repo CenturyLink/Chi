@@ -173,7 +173,7 @@ p.-text
 
 h4 Actionable
 p.-text
-  | While <code>m-alert__actions</code> can be added to any Alert, alert actions are best suited for <code>lg</code> default or Titled alerts.
+  | Alert actions are best suited for <code>lg</code> default or Titled alerts.
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", dismissible)
@@ -360,8 +360,8 @@ p.-text
   :code(lang="html")
     <chi-alert type="banner" icon="circle-info" size="lg" title="Base" dismissible>
       This is a large dismissible alert
-      <chi-button color="dark" variant="outline" size="lg">Secondary action</chi-button>
-      <chi-button color="primary" size="lg">Primary action</chi-button>
+      <chi-button slot="m-alert__actions" color="dark" variant="outline" size="lg">Secondary action</chi-button>
+      <chi-button slot="m-alert__actions" color="primary" size="lg">Primary action</chi-button>
     </chi-alert>
 
 div.a-divider.-my--6.-bt--2
