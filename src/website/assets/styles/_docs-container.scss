@@ -23,6 +23,7 @@
         background-color: set-color(white);
         border-bottom: 0.0625rem solid set-color(grey, 25);
         border-right: 0;
+        display: none;
         height: 100%;
         left: 0;
         overflow: auto;
@@ -34,6 +35,7 @@
         @include respond-to(lg) {
           border-right: 0.0625rem solid set-color(grey, 25);
           border-bottom: 0;
+          display: block;
           padding-bottom: 4.5rem;
           position: fixed;
           width: 16rem;
