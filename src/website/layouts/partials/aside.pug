@@ -15,8 +15,17 @@ nav
                     li(class=section.path === path ? "-active" : "")
                       a(href=`${rootPath}${section.path}`) #{section.title}
         else if key !== "Custom Elements"
-          li
+          li.-hasActive
             a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
+            if utils.hasSections(collection)
+              ul.a-tabs__subtabs
+                each section in collection
+                  if section.disabled
+                    //- li
+                    //-   a(href=`${rootPath}${section.path}`, disabled="disabled") #{section.title}
+                  else
+                    li(class=section.path === path ? "-active" : "")
+                      a(href=`${rootPath}${section.path}`) #{section.title}
       else if key !== "Custom Elements"
         li
           a(href=`#`, disabled="disabled") #{key}
