@@ -13,26 +13,35 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
   span.a-h2 Base
   .-position--relative
     .m-popover.m-popover--top.-active.-position--absolute(aria-hidden="false")
-      .-px--2.-py--1
-        h5 Popover!
-        p This is a popover content.
+      .m-popover__content
+        p.m-popover__title Popover!
+        p.m-popover__text This is a popover content.
 
 each side in sides
   div(class=`test-${side}`, style='width: 330px; height: 220px;')
     span.a-h2=`Simple side ${side}`
     .-position--relative
       .m-popover.-active.-position--absolute(aria-hidden="false", class=`m-popover--${side}`)
-        .-px--2.-py--1
-          h5 Popover!
-          p This is a popover content.
-        .a-arrow
+        .m-popover__content
+          p.m-popover__title Popover!
+          p.m-popover__text This is a popover content.
+        .m-popover__arrow
 
 each side in moreSides
   div(class=`test-more-${side}`)
     span.a-h2=`Popper side ${side}`
     .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
-      button(data-position=side, data-popover-content='<div class="-px--2 -py--1"><h5>Popover!</h5><p>This is a popover content.</p></div>').a-btn.autostart Popover
+      button(data-position=side, data-popover-content='<div class="m-popover__content"><p class="m-popover__title">Popover!</p><p class="m-popover__text">This is a popover content.</p></div>').a-btn.autostart Popover
 
+div(class=`test-with-progress`, style='width: 450px; height: 220px;')
+  span.a-h2=`Popover with progress`
+  .-position--relative
+    .m-popover.m-popover--top.-active(aria-hidden="false")
+      .m-popover__content
+        .m-popover__title
+          | Current progress (75%)
+        progress.-success(value='75', max='100', role='progressbar', aria-valuenow='75', aria-valuemin='0', aria-valuemax='100')
+      .m-popover__arrow
 script.
   document.addEventListener(
     'DOMContentLoaded',

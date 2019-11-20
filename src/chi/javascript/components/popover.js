@@ -232,7 +232,7 @@ class Popover extends Component{
     }
     if (this._config.arrow) {
       const arrow = document.createElement('div');
-      arrow.className = 'a-arrow';
+      arrow.className = 'm-popover__arrow';
       this._popoverElem.appendChild(arrow);
     }
   }
@@ -280,7 +280,7 @@ class Popover extends Component{
           order: 875
         },
         arrow: {
-          element: '.a-arrow',
+          element: '.m-popover__arrow',
           enabled: this._config.arrow
         }
       },

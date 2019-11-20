@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-11-26T00:49:31",
+  "timestamp": "2019-11-20T17:39:04",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.7.5",
@@ -1636,6 +1636,38 @@
           "attr": "reference",
           "reflectToAttr": true,
           "docs": "CSS Selector to the reference Element. I.e. #id > p",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "mutable": false,
+          "attr": "title",
+          "reflectToAttr": true,
+          "docs": "to define popover title.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": true,
+          "docs": "To define popover variant { text, custom }",
           "docsTags": [],
           "values": [
             {

@@ -50,9 +50,19 @@ export class Popover {
   @Prop({ reflect: true }) preventAutoHide: boolean;
 
   /**
+   * To define popover variant { text, custom }
+   */
+  @Prop({ reflect: true }) variant: string;
+
+  /**
    * Status classes for the show/hide animation
    */
   @State() _animationClasses = '';
+
+  /**
+   *  To define popover title
+   */
+  @State() popoverTitle: string;
 
   @Element() el: HTMLElement;
 
@@ -273,7 +283,7 @@ export class Popover {
           order: 875
         },
         arrow: {
-          element: '.a-arrow',
+          element: '.m-popover__arrow',
           enabled: this.arrow
         }
       },
@@ -293,10 +303,30 @@ export class Popover {
   }
 
   componentWillLoad(): void {
+    const target = this.el;
+    const config = {
+      attributes: true,
+      attributeOldValue: true,
+      attributeFilter: ['title']
+    };
+
+    const subscriberCallback = (mutations) => {
+      mutations.forEach((mutation) => {
+        this.popoverTitle = mutation.target.title;
+      });
+    }
+
+    const observer = new MutationObserver(subscriberCallback);
+    observer.observe(target, config);
+
     this.positionValidation(this.position);
     this.referenceElementChanged(this.reference);
     if (this.active) {
       this._animationClasses = CLASSES.ACTIVE;
+    }
+
+    if (target.getAttribute('title')) {
+      this.popoverTitle = target.getAttribute('title');
     }
   }
 
@@ -352,6 +382,9 @@ export class Popover {
   }
 
   render() {
+    const popoverTitle = this.popoverTitle && <p class="m-popover__title">{this.popoverTitle}</p>;
+    const slot = this.variant && this.variant === 'text' ? <p class="m-popover__text"><slot /></p> : <slot />;
+
     return (
       <div
         class={`m-popover
@@ -365,8 +398,11 @@ export class Popover {
         aria-hidden={!this.active}
         onClick={() => this.preventAutoClose()}
       >
-        <slot />
-        {this.arrow && <div class="a-arrow" />}
+        <div class="m-popover__content">
+          {popoverTitle}
+          {slot}
+        </div>
+        {this.arrow && <div class="m-popover__arrow" />}
       </div>
     );
   }

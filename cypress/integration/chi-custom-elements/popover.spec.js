@@ -11,11 +11,11 @@ describe('Popover', function() {
     cy.get('[data-cy="test-base"]')
       .find('chi-popover')
       .should('have.class', 'hydrated')
-      .find('.a-arrow')
+      .find('.m-popover__arrow')
       .should('not.exist');
   });
 
-  it('Arrow base popover should be propertly build ', function() {
+  it('Arrow base popover should be properly build ', function() {
 
     this.chidata.positions.forEach((position) => {
       const getValue = `[data-cy="test-${position}"]`;
@@ -32,11 +32,11 @@ describe('Popover', function() {
         .should('have.class', `m-popover--${position}`)
         .should('be.visible')
         .children().last()
-        .should('match', 'div.a-arrow');
+        .should('match', 'div.m-popover__arrow');
     });
   });
 
-  it('Arrow Popper.js popover should be propertly build ', function() {
+  it('Arrow Popper.js popover should be properly build ', function() {
 
     this.chidata.popperPositions.forEach((position) => {
       const getValue = `[data-cy="test-more-${position}"]`;
@@ -53,7 +53,7 @@ describe('Popover', function() {
         .should('have.class', `m-popover--${position}`)
         .should('be.visible')
         .children().last()
-        .should('match', 'div.a-arrow');
+        .should('match', 'div.m-popover__arrow');
     });
   });
 

@@ -22,14 +22,14 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-popover.-active(aria-hidden="false", style="position: relative")
-      .-px--2.-py--1
-        h5 Popover!
-        p This is a popover content.
+      .m-popover__content
+        p.m-popover__title Popover!
+        p.m-popover__text This is a popover content.
   :code(lang="html")
     <div class="m-popover -active">
-      <div class="-px--2 -py--1">
-        <h5>Popover!</h5>
-        <p>This is a popover content.</p>
+      <div class="m-popover__content">
+        <p class="m-popover__title">Popover!</p>
+        <p class="m-popover__text">This is a popover content.</p>
       </div>
     </div>
 
@@ -57,66 +57,86 @@ ul#a-tabs--positioning.a-tabs
   .example.-mb--3
     .-p--3
       .m-popover.m-popover--top.-active(aria-hidden="false", style="position: relative")
-        .-px--2.-py--1
-          h5 Popover!
-          p This is a popover content.
-        .a-arrow
+        .m-popover__content
+          p.m-popover__title Popover!
+          p.m-popover__text This is a popover content.
+        .m-popover__arrow
     :code(lang="html")
       <div class="m-popover m-popover--top -active">
-        <div class="-px--2 -py--1">
-          <h5>Popover!</h5>
-          <p>This is a popover content.</p>
+        <div class="m-popover__content">
+          <p class="m-popover__title">Popover!</p>
+          <p class="m-popover__text">This is a popover content.</p>
         </div>
-        <div class="a-arrow"></div>
+        <div class="m-popover__arrow"></div>
       </div>
 #a-tabs--positioning-right.a-tabs-panel
   .example.-mb--3
     .-p--3
       .m-popover.m-popover--right.-active(aria-hidden="false", style="position: relative")
-        .-px--2.-py--1
-          h5 Popover!
-          p This is a popover content.
-        .a-arrow
+        .m-popover__content
+          p.m-popover__title Popover!
+          p.m-popover__text This is a popover content.
+        .m-popover__arrow
     :code(lang="html")
       <div class="m-popover m-popover--right -active">
-        <div class="-px--2 -py--1">
-          <h5>Popover!</h5>
-          <p>This is a popover content.</p>
+        <div class="m-popover__content">
+          <p class="m-popover__title">Popover!</p>
+          <p class="m-popover__text">This is a popover content.</p>
         </div>
-        <div class="a-arrow"></div>
+        <div class="m-popover__arrow"></div>
       </div>
 #a-tabs--positioning-bottom.a-tabs-panel
   .example.-mb--3
     .-p--3
       .m-popover.m-popover--bottom.-active(aria-hidden="false", style="position: relative")
-        .-px--2.-py--1
-          h5 Popover!
-          p This is a popover content.
-        .a-arrow
+        .m-popover__content
+          p.m-popover__title Popover!
+          p.m-popover__text This is a popover content.
+        .m-popover__arrow
     :code(lang="html")
       <div class="m-popover m-popover--bottom -active">
-        <div class="-px--2 -py--1">
-          <h5>Popover!</h5>
-          <p>This is a popover content.</p>
+        <div class="m-popover__content">
+          <p class="m-popover__title">Popover!</p>
+          <p class="m-popover__text">This is a popover content.</p>
         </div>
-        <div class="a-arrow"></div>
+        <div class="m-popover__arrow"></div>
       </div>
 #a-tabs--positioning-left.a-tabs-panel
   .example.-mb--3
     .-p--3
       .m-popover.m-popover--left.-active(aria-hidden="false", style="position: relative")
-        .-px--2.-py--1
-          h5 Popover!
-          p This is a popover content.
-        .a-arrow
+        .m-popover__content
+          p.m-popover__title Popover!
+          p.m-popover__text This is a popover content.
+        .m-popover__arrow
     :code(lang="html")
       <div class="m-popover m-popover--left -active">
-        <div class="-px--2 -py--1">
-          <h5>Popover!</h5>
-          <p>This is a popover content.</p>
+        <div class="m-popover__content">
+          <p class="m-popover__title">Popover!</p>
+          <p class="m-popover__text">This is a popover content.</p>
         </div>
-        <div class="a-arrow"></div>
+        <div class="m-popover__arrow"></div>
       </div>
+
+h4 Popover with custom content
+.-text.-mb--3
+  | Popover can be used to display any kind of custom content (even other components)
+.example
+  .-p--3
+    .m-popover.m-popover--top.-active(aria-hidden="false", style="position: relative")
+      .m-popover__content
+        .m-popover__title
+          | Current progress (75%)
+        progress.-success(value='75', max='100', role='progressbar', aria-valuenow='75', aria-valuemin='0', aria-valuemax='100')
+      .m-popover__arrow
+  :code(lang="html")
+    <div class="m-popover m-popover--top -active" aria-hidden="false" style="position: relative;">
+      <div class="m-popover__content">
+        <div class="m-popover__title">Current progress (75%)</div>
+        <progress class="-success" value="75" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>
+      </div>
+      <div class="m-popover__arrow"></div>
+    </div>
 
 script.
   document.addEventListener(
