@@ -1,25 +1,33 @@
-aside.docs-body__aside
-  nav
-    ul.a-tabs.-vertical.-lg.-animated
-      each collection, key in collections
-        if utils.hasActiveSections(collection)
-          if utils.isCurrentCollection(collection, path)
-            li.-active.-hasActive
-              a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
-              if utils.hasSections(collection)
-                ul.a-tabs__subtabs
-                  each section in collection
-                    if section.disabled
-                      //- li
-                      //-   a(href=`${rootPath}${section.path}`, disabled="disabled") #{section.title}
-                    else
-                      li(class=section.path === path ? "-active" : "")
-                        a(href=`${rootPath}${section.path}`) #{section.title}
-          else if key !== "Custom Elements"
-            li
-              a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
+nav
+  ul.a-tabs.-vertical.-lg.-animated
+    each collection, key in collections
+      if utils.hasActiveSections(collection)
+        if utils.isCurrentCollection(collection, path)
+          li.-active.-hasActive
+            a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
+            if utils.hasSections(collection)
+              ul.a-tabs__subtabs
+                each section in collection
+                  if section.disabled
+                    //- li
+                    //-   a(href=`${rootPath}${section.path}`, disabled="disabled") #{section.title}
+                  else
+                    li(class=section.path === path ? "-active" : "")
+                      a(href=`${rootPath}${section.path}`) #{section.title}
         else if key !== "Custom Elements"
-          li
-            a(href=`#`, disabled="disabled") #{key}
-  .-m--3
-    a(class="a-btn -outline -primary", href=`https://github.com/CenturyLinkCloud/ux-chi-design`, target="_blank") Design Kit
+          li.-hasActive
+            a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
+            if utils.hasSections(collection)
+              ul.a-tabs__subtabs
+                each section in collection
+                  if section.disabled
+                    //- li
+                    //-   a(href=`${rootPath}${section.path}`, disabled="disabled") #{section.title}
+                  else
+                    li(class=section.path === path ? "-active" : "")
+                      a(href=`${rootPath}${section.path}`) #{section.title}
+      else if key !== "Custom Elements"
+        li
+          a(href=`#`, disabled="disabled") #{key}
+.-m--3
+  a(class="a-btn -outline -primary", href=`https://github.com/CenturyLinkCloud/ux-chi-design`, target="_blank") Design Kit

@@ -19,6 +19,9 @@ header.o-header.-inverse.docs-header.-z--20
   div.a-divider.-colorbar
   nav.o-header__content
     .o-header__brand
+      button#drawer-trigger-1.a-btn.-icon.-flat.-light.-mr-md--2.-d--flex.-d-lg--none.m-drawer__trigger(data-target='#drawer-sidenav')
+        .a-btn__content
+          i.a-icon.-sm--2.icon-menu
       a.a-brand.docs-header__logo(href=`${rootPath}`, aria-label='CenturyLink')
         img(src='https://assets.ctl.io/images/centurylink-logo-white.svg', alt='CenturyLink')
       span.o-header__title.-d--none.-d-lg--flex
@@ -58,13 +61,13 @@ header.o-header.-inverse.docs-header.-z--20
 
             for (let version in versions) {
               var versionAnchor = document.createElement('a');
-              
+
               versionAnchor.setAttribute("href", "https://assets.ctl.io/chi/"+versions[version]);
               versionAnchor.setAttribute("class", "m-dropdown__menu-item");
               versionAnchor.innerText = "v" + versions[version];
               drop.appendChild(versionAnchor);
             }
-            
+
             docsContainerSelector.classList.add("outdated-version");
           }
         }
@@ -77,3 +80,27 @@ header.o-header.-inverse.docs-header.-z--20
       a.a-btn.-icon.-flat.-light.-ml--1(href='https://github.com/CenturyLinkCloud/ux-chi')
         .a-btn__content
           i.a-icon.icon-logo-github
+
+.m-backdrop.-closed
+  .m-backdrop__wrapper
+    div#drawer-sidenav.m-drawer.-left.-menu.-position--absolute
+      button(class='a-btn -icon -close')
+        .a-btn__content
+          i.a-icon.icon-x
+      .m-drawer__content
+        .-py--2
+          include aside
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      Array.prototype.forEach.call(
+        document.getElementsByClassName("m-drawer__trigger"),
+        function (el) {
+          chi.drawer(el);
+        }
+      );
+    },
+    false
+  );

@@ -66,6 +66,18 @@
             font-size: $text-larger;
           }
         }
+
+        .a-btn {
+          &.-icon {
+            left: .5rem;
+            position: absolute;
+
+            @include respond-to(md) {
+              left: 0;
+              position: relative;
+            }
+          }
+        }
       }
 
       .o-header__start {
