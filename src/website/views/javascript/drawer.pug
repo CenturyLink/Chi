@@ -17,7 +17,7 @@ h3 Base
         p.-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
     .m-drawer.-right#drawer-1.-position--absolute
       .m-drawer__header
-        button(class='a-btn -icon -close')
+        button(class='a-btn -icon -close', aria-label='Close')
           .a-btn__content
             i.a-icon.icon-x
       .m-drawer__content
@@ -40,7 +40,7 @@ h3 Base
     :code(lang="html")
       <div id="drawer-1" class="m-drawer -right">
         <div class="m-drawer__header">
-          <button class="a-btn -icon -close">
+          <button class="a-btn -icon -close" aria-label="Close">
             <div class="a-btn__content">
               <i class="a-icon icon-x"></i>
             </div>
@@ -69,7 +69,7 @@ h3 With backdrop
       .m-backdrop__wrapper
         .m-drawer.-right#drawer-2.-position--absolute
           .m-drawer__header
-            button(class='a-btn -icon -close')
+            button(class='a-btn -icon -close', aria-label='Close')
               .a-btn__content
                 i.a-icon.icon-x
           .m-drawer__content
@@ -94,7 +94,7 @@ h3 With backdrop
         <div class="m-backdrop__wrapper">
           <div id="drawer-2" class="m-drawer -right">
             <div class="m-drawer__header">
-              <button class="a-btn -icon -close">
+              <button class="a-btn -icon -close" aria-label="Close">
                 <div class="a-btn__content">
                   <i class="a-icon icon-x"></i>
                 </div>
