@@ -766,6 +766,22 @@
           "required": false
         },
         {
+          "name": "input-id",
+          "type": "string",
+          "mutable": false,
+          "attr": "input-id",
+          "reflectToAttr": false,
+          "docs": "To define date picker input id",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "locale",
           "type": "string",
           "mutable": false,

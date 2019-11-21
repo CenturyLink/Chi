@@ -20,7 +20,8 @@ $mondayStartingWeek: (
   sun: 6
 );
 
-.a-inputWrapper.-disabled {
+.a-inputWrapper.-disabled,
+.m-input__wrapper.-disabled {
   pointer-events: none;
 }
 
