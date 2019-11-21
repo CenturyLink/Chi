@@ -1,5 +1,25 @@
 # CHANGELOG
 
+### 1.3.0 (November 21, 2019)
+
+* Added search functionality to Chi documentation portal.
+* Updated Alert component with new design to support additional use cases.
+* Added inverse theme support to Tab component.
+* Updated Backdrop wrapper used by Modal, Spinner, and Drawer components to improve responsive and scrolling behavior on small viewports.
+* Changed Modal components default vertical placement to top and added -center class for vertical centering.
+* Updated Form components with consistent method for displaying Labels in various positions.
+* Updated Form components with method for displaying Icons and other content inline with Labels.
+* Fixed bug in Tab component which positioned dropdown arrows incorrectly when tab size was set to -lg.
+* Changed Badge component size values from small to sm and smaller to xs for consistency.
+* Changed Brand web component color attribute from type to color for consistency.
+* Added new icons for expanding and collapsing content (icon-square-minus-outline, icon-square-minus, icon-square-plus-outline, icon-square-plus).
+* Added new icon to help indicate when edit capabilities have been disabled/canceled (icon-edit-cancel).
+* Added new social media icons (icon-logo-facebook, icon-logo-linkedin, icon-logo-twitter, icon-logo-youtube).
+* Added disabled support to Date picker component.
+* Improved responsiveness of Chi Documentation nav.
+* Improved Popover web component reference validation error message.
+* Updated backstop tests.
+
 ### 1.2.5 (October 15, 2019)
 
 * Added Dark version of Sidenav component for Enterprise portals.
