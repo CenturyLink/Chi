@@ -56,7 +56,7 @@ h4 Centered
 p.-text
   | Use the attribute <code>center</code> to center the content of a Bubble Alert. <strong>Note:</strong> Use sparingly.
   | Centered Bubble alerts should only be used to render brief messages on centered forms such as those found on Sign In and Sign Up screens.
-  | Centered alerts do not support titles (i.e. <code>m-alert__title</code>).
+  | Centered alerts do not support titles.
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(color='danger', icon='circle-warning', center)
@@ -68,7 +68,7 @@ p.-text
 
 h4 Titled
 p.-text
-  | Use the attribute <code>title=""</code> to display alert title above the alert text.
+  | Use the <code>title=""</code> attribute to display a title above the alert text.
 .example.-mb--3
   .-p--1
     chi-alert(icon='circle-info', title="Base").-m--2
@@ -103,19 +103,21 @@ p.-text
     </chi-alert>
 
 h4 Sizes
+p.-text
+  | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
 .example.-mb--3
   .-p--1
-    p.-text--bold.-ml--2 -sm
+    p.-text--bold.-ml--2 sm
     chi-alert.-m--2(color='success', icon='circle-check', size='sm')
       | This is a small success alert
     chi-alert.-m--2(color='success', icon='circle-check', size='sm', title="Success")
       | This is a small success alert
-    p.-text--bold.-ml--2 -md (default)
+    p.-text--bold.-ml--2 md (default)
     chi-alert.-m--2(color='success', icon='circle-check')
       | This is a success alert
     chi-alert.-m--2(color='success', icon='circle-check', title="Success")
       | This is a success alert
-    p.-text--bold.-ml--2 -lg
+    p.-text--bold.-ml--2 lg
     chi-alert.-m--2(color='success', icon='circle-check', size='lg')
       | This is a large success alert
     chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success")
@@ -173,7 +175,7 @@ p.-text
 
 h4 Actionable
 p.-text
-  | Alert actions are best suited for <code>lg</code> default or Titled alerts.
+  | Add buttons to an alert by defining <code>slot="m-alert__actions"</code> on each <code>chi-button</code>.
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", dismissible)
@@ -235,7 +237,7 @@ h4 Centered
 p.-text
   | Use the attribute <code>center</code> to center the content of a Banner Alert. <strong>Note:</strong> Use sparingly.
   | Centered Banner alerts should only be used to render brief messages on centered forms such as those found on Sign In and Sign Up screens.
-  | Centered alerts do not support titles (i.e. <code>title=""</code>).
+  | Centered alerts do not support titles.
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(type='banner', icon='circle-warning', color='danger', center)
@@ -280,19 +282,21 @@ h4 Titled
     </chi-alert>
 
 h4 Sizes
+p.-text
+  | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
 .example.-mb--3
   .-p--1
-    p.-text--bold.-ml--2 -sm
+    p.-text--bold.-ml--2 sm
     chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='sm')
       | This is a small success alert
     chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='sm', title="Success")
       | This is a small success alert
-    p.-text--bold.-ml--2 -md (default)
+    p.-text--bold.-ml--2 md (default)
     chi-alert.-m--2(type='banner', icon='circle-check', color='success')
       | This is a success alert
     chi-alert.-m--2(type='banner', icon='circle-check', color='success', title="Success")
       | This is a success alert
-    p.-text--bold.-ml--2 -lg
+    p.-text--bold.-ml--2 lg
     chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='lg')
       | This is a large success alert
     chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='lg', title='Success')
@@ -350,7 +354,7 @@ p.-text
 
 h4 Actionable
 p.-text
-  | Alert actions are best suited for <code>lg</code> default or Titled alerts.
+  | Add buttons to an alert by defining <code>slot="m-alert__actions"</code> on each <code>chi-button</code>.
 .example.-mb--3
   .-p--1.-bg--grey-20
     chi-alert.-m--2(type='banner', icon='circle-info', size='lg', title="Base", dismissible)
@@ -440,19 +444,21 @@ h4 Titled
     </chi-alert>
 
 h4 Sizes
+p.-text
+  | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
 .example.-mb--3
   .-p--1
-    p.-text--bold.-ml--2 -sm
+    p.-text--bold.-ml--2 sm
     chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm')
       | This is a small success alert
     chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', title='Success')
       | This is a small success alert
-    p.-text--bold.-ml--2 -md (default)
+    p.-text--bold.-ml--2 md (default)
     chi-alert.-m--2(type='toast', color='success', icon='circle-check')
       | This is a success alert
     chi-alert.-m--2(type='toast', color='success', icon='circle-check', title='Success')
       | This is a success alert
-    p.-text--bold.-ml--2 -lg
+    p.-text--bold.-ml--2 lg
     chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg')
       | This is a large success alert
     chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg', title='Success')
