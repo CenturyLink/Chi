@@ -96,7 +96,7 @@ export class Alert {
       attributeFilter: ['title']
     };
 
-    function subscriberCallback(mutations) {
+    const subscriberCallback = (mutations) => {
       mutations.forEach((mutation) => {
         this.alertTitle = mutation.target.title;
       });
