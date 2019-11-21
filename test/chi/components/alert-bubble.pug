@@ -33,7 +33,7 @@ each size in ['default', 'sm', 'lg']
               use(xlink:href=`#${val}`)
           .m-alert__content
             p.m-alert__text= `This is a dismissible ${type} alert`
-          button(class='m-alert__dismiss-button a-btn -icon -close')
+          button(class='m-alert__dismiss-button a-btn -icon -close', aria-label='Close')
             .a-btn__content
               .a-icon
                 svg

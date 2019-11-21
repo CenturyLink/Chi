@@ -189,14 +189,14 @@ h4 Floating icon buttons
   .a-grid.-noGutter
     .a-col.-w--12.-w-md--6
       .-p--3.-text--center
-        each type in ['base', 'primary', 'dark']
-          button(class=`a-btn -${type} -float -mr--2`)
+        each color in ['base', 'primary', 'dark']
+          button(class=`a-btn -${color} -float -mr--2`)
             .a-btn__content
               i.a-icon.icon-atom
     .a-col.-w--12.-w-md--6
       .-p--3.-bg--black.-text--center
-        each type in ['secondary', 'light']
-          button(class=`a-btn -${type} -float -mr--2`)
+        each color in ['secondary', 'light']
+          button(class=`a-btn -${color} -float -mr--2`)
             .a-btn__content
               i.a-icon.icon-atom
   :code(lang='html')
@@ -232,7 +232,7 @@ h4 Close icon button
 
 .example.-mb--3
   .-p--3
-    button(class='a-btn -icon -close')
+    button(class='a-btn -icon -close', aria-label='Close')
       .a-btn__content
         i.a-icon.icon-x
   ul#a-tabs.a-tabs.-ml--3
@@ -242,14 +242,14 @@ h4 Close icon button
       a(href='#a-tabs-panel-svg') SVG
   #a-tabs-panel-webfont.a-tabs-panel.-active
     :code(lang="html")
-      <button class="a-btn -icon -close">
+      <button class="a-btn -icon -close" aria-label="Close">
         <div class="a-btn__content">
           <i class="a-icon icon-x"></i>
         </div>
       </button>
   #a-tabs-panel-svg.a-tabs-panel
     :code(lang="html")
-      <button class="a-btn -icon -close">
+      <button class="a-btn -icon -close" aria-label="Close">
         <div class="a-btn__content">
           <div class="a-icon">
             <svg>
