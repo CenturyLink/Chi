@@ -43,11 +43,6 @@ export class DatePicker {
    */
   @Prop({ reflect: true, mutable: true }) active = false;
 
-  /**
-   * To define date picker input id
-   */
-  @Prop({ reflect: false}) inputId: string;
-
   @Element() el: HTMLElement;
 
   private _input: HTMLInputElement;
@@ -135,7 +130,7 @@ export class DatePicker {
     this._onFocusIn = this._onFocusIn.bind(this);
     this._onClick = this._onClick.bind(this);
     this._onKeyUp = this._onKeyUp.bind(this);
-    this._uuid = this.inputId ? this.inputId : `dp-${uuid4()}`;
+    this._uuid = this.el.id ? this.el.id : `dp-${uuid4()}`;
   }
 
   componentDidLoad(): void {
@@ -154,7 +149,7 @@ export class DatePicker {
       <chi-popover
         id="example-4-be-popover"
         position="bottom"
-        reference={`#${this._uuid}`}
+        reference={`#${this._uuid}-control`}
         prevent-auto-hide
         active={this.active}
       >
@@ -177,7 +172,7 @@ export class DatePicker {
           } m-input__wrapper -icon--right`}
       >
         <input
-          id={`${this._uuid}`}
+          id={`${this._uuid}-control`}
           class={`a-input
             ${this.active ? '-focus' : ''}`}
           type={`text`}

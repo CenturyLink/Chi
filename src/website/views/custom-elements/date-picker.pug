@@ -50,17 +50,17 @@ p.-text
   :code(lang="html",style="height:20rem")
     <chi-date-picker></chi-date-picker>
 
-h3 Input id
+h3 With label
 p.-text
-  | Use <code>input-id=""</code> attribute to provide id if you need it for the corresponding label.
 .example.-mb--3
   .-p--3
     div(style="max-width: 14rem;")
-      label(for="id-for-input") Label
-      chi-date-picker(input-id="id-for-input")
+      chi-label(for='date')
+        | Date
+      chi-date-picker(id="date")
   :code(lang="html",style="height:20rem")
-    <label for="id-for-input">Label</label>
-    <chi-date-picker input-id="id-for-input"></chi-date-picker>
+    <chi-label for="date">Date</chi-label>
+    <chi-date-picker id="date"></chi-date-picker>
 
 h4 Disabled
 .example.-mb--3
