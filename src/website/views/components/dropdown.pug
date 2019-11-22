@@ -10,14 +10,14 @@ p.-text
   .m-alert__content
     p.m-alert__text This component requires Javascript
 
-h3 Using Dropdowns
+h2 Using Dropdowns
 p.-text
   | A dropdown must be associated to an activator, commonly a button, which, at the time of being clicked, expands
   | the dropdown. Activator and dropdown should be contained in a div with an <code>m-dropdown</code> class, or otherwise, the
   | activator must reference the dropdown with a <code>data-target</code> attribute.
 p.-text
   | Use the <code>m-dropdown__trigger</code> class on your activator button to make the chevron appear.
-h4 Example 1
+h3 Example 1
 p.-text
   | Trigger and dropdown enclosed in the same div.
 ul#a-tabs--expanded.a-tabs
@@ -61,7 +61,7 @@ ul#a-tabs--expanded.a-tabs
         </div>
       </div>
 
-h4 Example 2
+h3 Example 2
 p.-text
   | Dropdown referenced by a <code>data-target</code> attribute in the activator.
 ul#a-tabs--expanded-2.a-tabs
@@ -111,7 +111,7 @@ ul#a-tabs--expanded-2.a-tabs
         </div>
       </div>
 
-h4 Example 3
+h3 Example 3
 p.-text
   | Dropdown on hover is only supported when trigger and dropdown elements are enclosed in the same div. Use the
   | <code>m-dropdown__hover</code> class to achieve this.
@@ -133,10 +133,10 @@ p.-text
       </div>
     </div>
 
-h3 Divider
+h2 Divider
 p.-text
   | Several menu items can be arranged together by using a divider. Use the <code>a-divider</code> component.
-h4 Example
+h3 Example
 .example.-mb--3
   .-p--3
     .a-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
@@ -155,12 +155,12 @@ h4 Example
       <a class="m-dropdown__menu-item" href="#">Element 4</a>
     </div>
 
-h3 Menu item states
+h2 Menu item states
 p.-text
   | Each menu item can be in one of four item states <code>normal</code>, <code>active</code>, <code>disabled</code> and
   | <code>hover</code>.
 
-h4 Example
+h3 Example
 .example.-mb--3
   .-p--3
     .a-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
@@ -177,11 +177,11 @@ h4 Example
       <a class="m-dropdown__menu-item -hover" href="#">Hovered item</a>
     </div>
 
-h3 Icons
+h2 Icons
 p.-text
   | Dropdown component has been developed to support Chi icons in the menu items.
 
-h4 Example
+h3 Example
 .example.-mb--3
   .-p--3
     .a-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
@@ -230,11 +230,11 @@ h4 Example
       </a>
     </div>
 
-h3 Form elements
+h2 Form elements
 p.-text
   | Several kinds of form items can be added inside the dropdown menu.
 
-h4 Search box
+h3 Search box
 p.-text
   | This search box is a special kind of text input prepared to be located on top of the menu-item. It has slightly
   | smaller padding at the sides.
@@ -261,11 +261,11 @@ p.-text
       <a class="m-dropdown__menu-item" href="#">Element 4</a>
     </div>
 
-h4 Checkboxes
+h3 Checkboxes
 p.-text
   | Two versions of checkboxes, with and without icon have been included in the library to be used as menu items.
 
-h5 Base
+h4 Base
 .example.-mb--3
   .-p--3
     .a-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
@@ -310,7 +310,7 @@ h5 Base
       </div>
     </div>
 
-h5 With Icons
+h4 With Icons
 .example.-mb--3
   .-p--3
     .a-col.-w--10.-w-sm--6.-w-md--7.-w-lg--5.-w-xl--3
@@ -375,7 +375,7 @@ h5 With Icons
       </div>
     </div>
 
-h4 Plain Text
+h3 Plain Text
 p.-text Use a <code>span</code> tag to include text without rendering as a link.
 .example.-mb--3
   .-p--3
@@ -393,7 +393,7 @@ p.-text Use a <code>span</code> tag to include text without rendering as a link.
       <span class="m-dropdown__menu-item">Text 4</span>
     </div>
 
-h4 Radio Buttons
+h3 Radio Buttons
 .example.-mb--3
   .-p--3
     .a-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
@@ -438,7 +438,7 @@ h4 Radio Buttons
       </div>
     </div>
 
-h4 Text Input
+h3 Text Input
 .example.-mb--3
   .-p--3
     .a-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
@@ -458,7 +458,7 @@ h4 Text Input
       </div>
     </div>
 
-h4 Range Input
+h3 Range Input
 .example.-mb--3
   .-p--3
     .a-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
@@ -485,7 +485,7 @@ h4 Range Input
       </div>
     </div>
 
-h4 Toggle Switch
+h3 Toggle Switch
 .example.-mb--3
   .-p--3
     .a-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
@@ -522,9 +522,9 @@ h4 Toggle Switch
     </div>
 
 
-h3 Helpers
+h2 Helpers
 
-h4 Truncate long menu-items
+h3 Truncate long menu-items
 p.-text
   | Wrap the menu-item content in a div with the class <code>-flex--ellipsis</code> to truncate long strings.
 .example.-mb--3
@@ -545,7 +545,7 @@ p.-text
       <a class="m-dropdown__menu-item" href="#">Element 4</a>
     </div>
 
-h4 Flexible height
+h3 Flexible height
 p.-text Add the class <code>-h--auto</code> to set menu item height to auto.
 .example.-mb--3
   .-p--3
@@ -560,10 +560,10 @@ p.-text Add the class <code>-h--auto</code> to set menu item height to auto.
       <a class="m-dropdown__menu-item" href="#">Link 2</a>
     </div>
 
-h3 Animation
+h2 Animation
 p.-text
   | Triggers can be animated by applying the <code>-animate</code> class.
-h4 Example
+h3 Example
 ul#a-tabs--animation-expanded.a-tabs
   li.-active
     a(href='#a-tabs-panel--animation-expanded-false') Initial
@@ -604,7 +604,7 @@ ul#a-tabs--animation-expanded.a-tabs
           <a class="m-dropdown__menu-item" href="#">Element 3</a>
         </div>
       </div>
-h3 Positioning
+h2 Positioning
 p.-text
   | Dropdown is prepared to work with positioning libraries like Popper.js. That is why we support the data-position
   | attribute. Chevron orientation will change depending on its value. Valid values are <code>default</code>,

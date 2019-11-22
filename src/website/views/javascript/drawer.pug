@@ -5,7 +5,7 @@ p.-text
   | Use the function <code>chi.drawer(elem)</code> to instantiate a new drawer component in the DOM
   | element passed as a parameter. You must use the trigger element as the parameter.
 
-h3 Base
+h2 Base
 .example.-mb--3(style='overflow:hidden;')
   .-position--relative.-z--0.-bb--1(style="height:20rem;overflow:hidden;")
     .-p--3
@@ -54,7 +54,7 @@ h3 Base
     :code(lang="html")
       <script>chi.drawer(document.getElementById('drawer-trigger-1'));</script>
 
-h3 With backdrop
+h2 With backdrop
 
 .example.-mb--3(style='overflow:hidden;')
   .-position--relative.-z--0.-bb--1(style="height:20rem;overflow:hidden;")
@@ -110,7 +110,7 @@ h3 With backdrop
     :code(lang="html")
       <script>chi.drawer(document.getElementById('drawer-trigger-2'));</script>
 
-h3 Options
+h2 Options
 p.-text This component accepts options to configure its behavior.
 
 section.a-table.a-table__options.-bordered.-my--3
@@ -147,21 +147,21 @@ section.a-table.a-table__options.-bordered.-my--3
               | Lets the developer referer the target programmatically instead of by data-target attribute.
               | It accepts Element object and xpath selector string.
 
-h4.mt--2 Methods
-  h5 hide() =&gt; void
+h3.mt--2 Methods
+  h4 hide() =&gt; void
   p.-text Hides the drawer
-  h6 Returns
+  h5 Returns
   p.-text Type: void
-  h5 show() =&gt; void
+  h4 show() =&gt; void
   p.-text Shows the drawer
-  h6 Returns
+  h5 Returns
   p.-text Type: void
-  h5 toggle() =&gt; void
+  h4 toggle() =&gt; void
   p.-text Toggles active state (show/hide)
-  h6 Returns
+  h5 Returns
   p.-text Type: void
 
-h4 Preventing memory leaks
+h3 Preventing memory leaks
 p.-text
   | Drawer components have a dispose function to free all resources attached to the element, such as event listeners
   | and object data. You should call this method when you want to remove the component.

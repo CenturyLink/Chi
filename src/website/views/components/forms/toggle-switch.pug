@@ -3,12 +3,12 @@ title: Toggle Switch
 ---
 p.-text Toggle switches are used to switch between two possible states.
 
-h3 Examples
+h2 Examples
 p.-text
   | To render a toggle switch, apply the classes <code>a-input</code> and <code>-toggle</code> to an <code>input type="checkbox"</code>.
   | For proper styling, toggle switches require an empty label element defined immediately after their declaration.
 
-h4 Base
+h3 Base
 .example.-mb--3
   .-p--3
     .m-form__item
@@ -18,7 +18,7 @@ h4 Base
     <input type="checkbox" class="a-input -toggle" id="toggle1">
     <label for="toggle1"></label>
 
-h4 Disabled
+h3 Disabled
 .example.-mb--3
   .-p--3
     .m-form__item
@@ -28,7 +28,7 @@ h4 Disabled
     <input type="checkbox" class="a-input -toggle" id="toggle2" disabled>
     <label for="toggle2"></label>
 
-h4 No Label
+h3 No Label
 p.-text
   | By default, toggle switches are labeled with text <code>ON/OFF</code>. To disable this, apply the modifier <code>-noText</code>.
 .example.-mb--3
@@ -40,7 +40,7 @@ p.-text
     <input type="checkbox" class="a-input -toggle -noText" id="toggle3">
     <label for="toggle3"></label>
 
-h4 Stacked
+h3 Stacked
 p.-text
   | Group toggle switches in <code>m-form__item</code> for easy stacking. Apply class <code>-row</code> to display checkbox and label inline.
 .example.-mb--3
@@ -65,7 +65,7 @@ p.-text
       <label class="-text" for="toggle5">Outage Alerts</label>
     </div>
 
-h4 Inline
+h3 Inline
 p.-text
   | Apply the class <code>-inline</code> to <code>m-form__item</code> to display toggle switches inline.
 .example.-mb--3

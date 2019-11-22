@@ -8,13 +8,13 @@ p.-text Modals are windows used for displaying prompts and subtasks without losi
   .m-alert__content
     p.m-alert__text This component requires Javascript
 
-h3 Examples
+h2 Examples
 p.-text
   | Modals are composed of several parts. To render a modal, include a modal backdrop, modal header, modal body,
   | and modal footer (optional).
   | By default modals are positioned on top of the page.
 
-h4 Base
+h3 Base
 .example.-mb--3
   .m-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
     .m-backdrop__wrapper
@@ -52,7 +52,7 @@ h4 Base
       </div>
     </div>
 
-h4 Center
+h3 Center
 p.-text Modals can also be placed in the middle of the page by applying the class <code>-center</code> in the <code>m-backdrop</code>.
 .example.-mb--3
   .m-backdrop.-center.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
@@ -91,10 +91,10 @@ p.-text Modals can also be placed in the middle of the page by applying the clas
       </div>
     </div>
 
-h4 Scrollable
+h3 Scrollable
 p.-text
   | Enable scrolling if the height of the modal's content is larger than the modal's content container.
-h5 Requirements
+h4 Requirements
 p.-text
   | A <code>max-height</code> must be defined on <code>a-modal__content</code>.
   | Use max-height utility classes such as <code>-mh--400</code> or <code>-mh--480</code>, or define your own value.
@@ -166,7 +166,7 @@ p.-text
       </div>
     </div>
 
-h4 Scrolling long content
+h3 Scrolling long content
 p.-text
   | Enable scrolling when modals become too long for the user’s viewport or device, they scroll independent of the page itself.
 
@@ -237,7 +237,7 @@ p.-text
       </div>
     </div>
 
-h4 With Subtitle
+h3 With Subtitle
 .example.-mb--3
   .m-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
     .m-backdrop__wrapper
@@ -277,7 +277,7 @@ h4 With Subtitle
       </div>
     </div>
 
-h4 Inverse Backdrop
+h3 Inverse Backdrop
 p.-text
   | Invert a modals backdrop by applying the class <code>-inverse</code>.
 .example.-mb--3
@@ -317,7 +317,7 @@ p.-text
       </div>
     </div>
 
-h4 Borderless
+h3 Borderless
 p.-text
   | Disable header or footer borders by applying the class <code>-noBorder</code> to
   | <code>a-modal__header</code> or <code>a-modal__footer</code>.
@@ -358,7 +358,7 @@ p.-text
       </div>
     </div>
 
-h4 Multi-step
+h3 Multi-step
 p.-text
   | For multi-step modals, ensure the class <code>-centered</code> is applied
   | to <code>a-modal__title</code>. This will provide sufficient real estate on the
@@ -400,7 +400,7 @@ p.-text
       </div>
     </div>
 
-h4 Simple
+h3 Simple
 p.-text Remove <code>a-modal__header</code> and <code>a-modal__footer</code> for a simple and customizable modal.
 .example.-mb--3
   .m-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")

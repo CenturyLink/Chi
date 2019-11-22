@@ -3,62 +3,62 @@ title: Table
 ---
 p.-text Tables are used to present data sets in a simple and organized way.
 
-h3 Examples
-h4 Base
+h2 Examples
+h3 Base
 :example(lang="html"):html-beautify:pug include ./_default.pug
 
-h4 Bordered
+h3 Bordered
 p.-text Tables can be bordered by applying the modifier class <code>-bordered</code>.
 :example(lang="html"):html-beautify:pug include ./_bordered.pug
 
-h4 Borderless
+h3 Borderless
 p.-text Remove all borders by applying the modifier class <code>-borderless</code>.
 :example(lang="html"):html-beautify:pug include ./_borderless.pug
 
-h4 Striped
+h3 Striped
 p.-text Alternate the table row color by applying the modifier class <code>-striped</code>.
 :example(lang="html"):html-beautify:pug include ./_striped.pug
 
-h4 Hover
+h3 Hover
 p.-text Enable a hover state by applying the modifier class <code>-hover</code>.
 :example(lang="html"):html-beautify:pug include ./_hover.pug
 
-h3 Row States
+h2 Row States
 p.-text
   | Chi offers a wide variety of modifiers to express different row states.
 
-h4 Disabled
+h3 Disabled
 p.-text Disable a row by applying the attribute <code>disabled="disabled"</code>.
 :example(lang="html"):html-beautify:pug include ./_disabled.pug
 
-h4 Success
+h3 Success
 p.-text Render a success state by applying the modifier class <code>-row--success</code>.
 :example(lang="html"):html-beautify:pug include ./_row-success.pug
 
-h4 Warning
+h3 Warning
 p.-text Render a warning state by applying the modifier class <code>-row--warning</code>.
 :example(lang="html"):html-beautify:pug include ./_row-warning.pug
 
-h4 Danger
+h3 Danger
 p.-text Render a danger state by applying the modifier class <code>-row--danger</code>.
 :example(lang="html"):html-beautify:pug include ./_row-danger.pug
 
-h4 Info
+h3 Info
 p.-text Render an info state by applying the modifier class <code>-row--info</code>.
 :example(lang="html"):html-beautify:pug include ./_row-info.pug
 
-h3 Column Sorting
+h2 Column Sorting
 p.-text
   | To express column sorting, apply the class <code>-sorted</code> with one of
   | the following modifiers: <code>-ascending</code> or <code>-descending</code>.
 
-h4 Ascending
+h3 Ascending
 :example(lang="html"):html-beautify:pug include ./_sort-ascending.pug
 
-h4 Descending
+h3 Descending
 :example(lang="html"):html-beautify:pug include ./_sort-descending.pug
 
-h3 Content alignment
+h2 Content alignment
 p.-text
   | Chi also supports additional content alignment with inline text align utilities
   | applying the modifier class <code>-text--left</code> , <code>-text--center</code>
@@ -86,42 +86,42 @@ p.-text
         td.-text--center manuel
         td.-text--right 2017 3:26 PM
 
-h3 Additional Sizes
+h2 Additional Sizes
 p.-text
   | Chi also supports additional table sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
   |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
 
-h4 Size -xs
+h3 Size -xs
 p.-text Render a <strong>-xs</strong> size by applying the modifier class <code>-xs</code>.
 :example(lang="html"):html-beautify:pug include ./_row-xs.pug
 
-h4 Size -sm
+h3 Size -sm
 p.-text Render a <strong>-sm</strong> size by applying the modifier class <code>-sm</code>.
 :example(lang="html"):html-beautify:pug include ./_row-sm.pug
 
-h4 Size -md
+h3 Size -md
 p.-text Render a <strong>-md</strong> size by applying the modifier class <code>-md</code>.
   |  <strong>-md</strong> is the default size.
 :example(lang="html"):html-beautify:pug include ./_row-md.pug
 
-h4 Size -lg
+h3 Size -lg
 p.-text Render a <strong>-lg</strong> size by applying the modifier class <code>-lg</code>.
 :example(lang="html"):html-beautify:pug include ./_row-lg.pug
 
-h4 Size -xl
+h3 Size -xl
 p.-text Render a <strong>-xl</strong> size by applying the modifier class <code>-xl</code>.
 :example(lang="html"):html-beautify:pug include ./_row-xl.pug
 
-h3 Selectable
+h2 Selectable
 :example(lang="html"):html-beautify:pug include ./_selectable.pug
 
-h3 Scrollable
+h2 Scrollable
 p.-text
   | If the <code>section</code> height is smaller than the <code>table</code>
   | height, the <code>table</code> header will be fixed positioned and
   | content will scroll.
-h4 Requirements
+h3 Requirements
 p.-text
   | Tables must be wrapped in a <code>&lt;section class="a-table -fixed--header"&gt;</code>
 :example(lang="html"):html-beautify:pug

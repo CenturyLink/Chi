@@ -4,13 +4,13 @@ title: Spacing
 
 p.-text Use shorthand margin and padding utility classes to control spacing between elements.
 
-h3 Notation
+h2 Notation
 p.-text Spacing utility classes can be defined using the format <code>-{property}{sides}[-{breakpoint}]--{size}</code>.
-h4 {property}
+h3 {property}
 ul.-text
   li <code>m</code> - use to apply <code>margin</code>
   li <code>p</code> - use to apply <code>padding</code>
-h4 {sides}
+h3 {sides}
 ul.-text
   li <code>t</code> - use to apply <code>margin-top</code> or <code>padding-top</code>
   li <code>b</code> - use to apply <code>margin-bottom</code> or <code>padding-bottom</code>
@@ -19,7 +19,7 @@ ul.-text
   li <code>x</code> - use to apply <code>margin-left</code> and <code>margin-right</code> or <code>padding-left</code> and <code>padding-right</code>
   li <code>y</code> - use to apply <code>margin-top</code> and <code>margin-bottom</code> or <code>padding-top</code> and <code>padding-bottom</code>
   li blank - leave blank to apply <code>margin</code> or <code>padding</code> to all 4 sides.
-h4 {breakpoint}
+h3 {breakpoint}
 p.-text
   | Optionally include -{breakpoint} to apply the utility behaviour to some breakpoints. As a mobile first library,
   | any applying to smaller breakpoint will modify also larger ones unless other class overrides this behaviour.
@@ -29,7 +29,7 @@ ul.-text
   li <code>md</code> - use to apply <code>margin</code> or <code>padding</code> to md and larger breakpoints.
   li <code>lg</code> - use to apply <code>margin</code> or <code>padding</code> to lg and larger breakpoints.
   li <code>xl</code> - use to apply <code>margin</code> or <code>padding</code> to xl breakpoints.
-h4 {size}
+h3 {size}
 ul.-text
   li <code>0</code> - use to eliminate existing <code>margin</code> or <code>padding</code> and set to <code>0</code>
   li <code>1</code> - use to set <code>margin</code> or <code>padding</code> to <code>$base-unit</code>
@@ -44,8 +44,8 @@ ul.-text
   li <code>10</code> - use to set <code>margin</code> or <code>padding</code> to <code>$base-unit * 10</code>
   li <code>auto</code> - use to set <code>margin</code> to <code>auto</code> value
 
-h3 Examples
-h4 Margins
+h2 Examples
+h3 Margins
 p.-text
   | In this example, various margin classes have been applied to render margin
   | on all 4 sides of the pink squares. The margin can be visualized in blue.
@@ -62,7 +62,7 @@ p.-text
     <div class="-m--2"></div>
     <div class="-m--4"></div>
     <div class="-m--6"></div>
-h4 Side Margins
+h3 Side Margins
 p.-text
   | Apply margin to specific sides of an element by adding <code>t</code>,
   | <code>b</code>, <code>l</code>, <code>r</code>, <code>x</code> or <code>y</code>
@@ -95,7 +95,7 @@ p.-text
     <div class="-mx--3"></div>
     <!-- margin-top and margin-bottom -->
     <div class="-my--3"></div>
-h4 Padding
+h3 Padding
 p.-text
   | In this example, various padding classes have been applied to render padding
   | on all 4 sides of the pink squares. The padding can be visualized in yellow.
@@ -112,7 +112,7 @@ p.-text
     <div class="-p--2"></div>
     <div class="-p--4"></div>
     <div class="-p--6"></div>
-h4 Side Paddings
+h3 Side Paddings
 p.-text
   | Apply padding to specific sides of an element by adding <code>t</code>,
   | <code>b</code>, <code>l</code>, <code>r</code>, <code>x</code> or <code>y</code>
@@ -145,7 +145,7 @@ p.-text
     <div class="-px--3"></div>
     <!-- padding-top and padding-bottom -->
     <div class="-py--3"></div>
-h4 Margin + Padding
+h3 Margin + Padding
 p.-text
   | Apply both margin and padding to an element by adding both class names.
 .example.-mb--3
@@ -156,7 +156,7 @@ p.-text
           div(style="width:3rem;height:3rem;background:#F74F87;")
   :code(lang="html")
     <div class="-m--3 -p--3"></div>
-h4 Auto margin
+h3 Auto margin
 p.-text
   | Apply margin auto to an element
 .example.-mb--3
@@ -166,7 +166,7 @@ p.-text
           div(style="width:3rem;height:3rem;background:#F74F87;")
   :code(lang="html")
     <div class="-m--auto"></div>
-h4 Breakpoints
+h3 Breakpoints
 p.-text
   | Target specific breakpoints with responsive classes.
 .example.-mb--3

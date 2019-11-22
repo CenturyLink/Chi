@@ -4,17 +4,17 @@ title: Divider
 
 p.-text Dividers are lines that render a break or separation between content.
 
-h3 Examples
+h2 Examples
 p.-text To render a divider, apply the class <code>a-divider</code> to an <code>hr</code> or <code>div</code> tag.
 
-h4 Base
+h3 Base
 .example.-mb--3
   .-p--3
     hr.a-divider
   :code(lang="html")
     <div class="a-divider"></div>
 
-h4 Vertical
+h3 Vertical
 p.-text To render a vertical divider, apply <code>-vertical</code> and ensure the parent container has a height specified.
 .example.-mb--3
   .-p--3.-text.-d--flex.-align-items--center(style="height:72px")
@@ -26,7 +26,7 @@ p.-text To render a vertical divider, apply <code>-vertical</code> and ensure th
   :code(lang="html")
     <div class="a-divider -vertical"></div>
 
-h4 Inverse
+h3 Inverse
 p.-text Use the <code>-inverse</code> class to render dividers on dark backgrounds.
 .example.-mb--3
   .-p--3(style="background-color:#000;border-radius:.15em .15em 0 0;")
@@ -34,7 +34,7 @@ p.-text Use the <code>-inverse</code> class to render dividers on dark backgroun
   :code(lang="html")
     <div class="a-divider -inverse"></div>
 
-h4 Label
+h3 Label
 p.-text
   | Add text to a divider and apply the class <code>-hasLabel</code> to include a label.
   | This method is especially useful for login and sign up forms.
@@ -45,7 +45,7 @@ p.-text
   :code(lang="html")
     <div class="a-divider -hasLabel">or</div>
 
-h4 Color Bar
+h3 Color Bar
 p.-text
   | The CenturyLink Color Bar is a brand element that represents the combined companies that comprise the new
   | CenturyLink. It can be placed on the top or bottom of containers and must be used in the color order shown.
@@ -61,7 +61,7 @@ p.-text
   :code(lang="html")
     <div class="a-divider -colorbar"></div>
 
-h3 Additional Sizes
+h2 Additional Sizes
 p.-text
   | Use border top <a href="../../utilities/border">utilities</a> such as
   | <code>-bt--1</code>, <code>-bt--2</code>, <code>-bt--3</code>, or <code>-bt--4</code> to customize a dividers size.

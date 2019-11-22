@@ -5,7 +5,7 @@ p.-text
   | Floating labels rely on JavaScript to add/remove the <code>-active</code> class whenever the input focuses or has
   | a value.
 
-h3 Input boxes
+h2 Input boxes
 .example.-mb--3
   .-p--3
     div(class=`a-col -w--12 -p--2`)
@@ -20,7 +20,7 @@ h3 Input boxes
 
     <script>chi.floatingLabel(document.getElementById('floating-label-1'));</script>
 
-h3 Select boxes
+h2 Select boxes
 .example.-mb--3
   .-p--3
     div(class=`a-col -w--12 -p--2`)
@@ -44,7 +44,7 @@ h3 Select boxes
 
     <script>chi.floatingLabel(document.getElementById('floating-label-2'));</script>
 
-h4 Preventing memory leaks
+h3 Preventing memory leaks
 p.-text
   | Floating label components have a dispose function to free all resources attached to the element, such as event listeners
   | and object data. You must call this method when you want to remove the component.

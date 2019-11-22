@@ -6,19 +6,19 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 p.-text Spinners are animated circles that let users know when information is being saved or loaded.
 
-h3 Examples
+h2 Examples
 p.-text To render a spinner, use the tag <code>&lt;chi-spinner&gt;</code>.
 
-h3 Backdrop
+h2 Backdrop
 p.-text An optional backdrop can be added to focus the user's attention on a spinner. To set a backdrop, use the <code>backdrop</code> attribute.
-h4 Base
+h3 Base
 .example.-mb--3
   .-p--6(style="position:relative;height:25rem;")
     chi-spinner(color='light', backdrop)
   :code(lang="html")
     <chi-spinner color="light" backdrop></chi-spinner>
 
-h4 Inverse
+h3 Inverse
 p.-text Set the <code>backdrop</code> value to <code>inverse</code> to render spinners on light backgrounds.
 .example.-mb--3
   .-p--6(style="position:relative;height:25rem;")
@@ -26,9 +26,9 @@ p.-text Set the <code>backdrop</code> value to <code>inverse</code> to render sp
   :code(lang="html")
     <chi-spinner color="primary" backdrop="inverse"></chi-spinner>
 
-h3 Contextual
+h2 Contextual
 
-h4 Spinners in Buttons
+h3 Spinners in Buttons
 .example.-mb--3
   .-p--3
     chi-button(class='-mr--3')
@@ -54,7 +54,7 @@ h4 Spinners in Buttons
       <chi-spinner color="muted" size="sm--2"></chi-spinner>
     </chi-button>
 
-h3 Spinner Sizes
+h2 Spinner Sizes
 p.-text
   | By default, spinners are rendered at 16x16px (<code>sm</code>).
 p.-text
@@ -85,7 +85,7 @@ p.-text
     <!-- xxl : 128x128px -->
     <chi-spinner size="xxl"></chi-spinner>
 
-h3 Spinner Colors
+h2 Spinner Colors
 p.-text
   | To change the color of a spinner set the value to <code>color</code> attribute.
 .example.-mb--3
@@ -113,5 +113,5 @@ p.-text
     <chi-spinner color="secondary"></chi-spinner>
     <chi-spinner color="light"></chi-spinner>
 
-h3 Additional usage details
+h2 Additional usage details
 :stencilDoc(name='chi-spinner')

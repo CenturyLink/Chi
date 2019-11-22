@@ -9,7 +9,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 p.-text
   | Number inputs are used to increase or decrease numeric values.
 
-h3 Examples
+h2 Examples
 
 p.-text
   | To render a number input, just place a <code>chi-number-input</code> tag and set an initial value (optional). If
@@ -35,7 +35,7 @@ ul#a-tabs--number-input.a-tabs
     :code(lang="html")
       <chi-number-input value="2"></chi-number-input>
 
-h4 Options
+h3 Options
 
 p.-text
   | Apart from an initial value, number inputs allow to set some other options like <code>max</code>, <code>min</code>,
@@ -49,7 +49,7 @@ p.-text
   :code(lang='html')
     <chi-number-input min="-4" max="4" step="3"></chi-number-input>
 
-h4 Disabled
+h3 Disabled
 
 .example.-mb--3
   .-p--3
@@ -58,7 +58,7 @@ h4 Disabled
   :code(lang='html')
     <chi-number-input disabled></chi-number-input>
 
-h4 Sizes
+h3 Sizes
 
 p.-text
   | Number inputs support a full spectrum of sizes: <code>sm</code>, <code>md</code>,
@@ -75,47 +75,47 @@ p.-text
     <chi-number-input size="lg"></chi-number-input>
     <chi-number-input size="xl"></chi-number-input>
 
-h3 Expanded version
+h2 Expanded version
 
 p.-text
   | There is available an expanded version of the number input component.
 
-h4 Base
+h3 Base
 .example.-mb--3
   .-p--3
     chi-number-input(expanded=true)
   :code(lang='html')
     <chi-number-input expanded></chi-number-input>
 
-h4 Base with step
+h3 Base with step
 .example.-mb--3
   .-p--3
     chi-number-input(expanded=true, step=5)
   :code(lang='html')
     <chi-number-input expanded value="0" step="5"></chi-number-input>
 
-h4 Decimals and step
+h3 Decimals and step
 .example.-mb--3
   .-p--3
     chi-number-input(expanded=true, value=0.1, step=0.5)
   :code(lang='html')
     <chi-number-input expanded value="0.1" step="0.5"></chi-number-input>
 
-h4 Pill
+h3 Pill
 .example.-mb--3
   .-p--3
     chi-number-input(expanded=true, pill=true)
   :code(lang='html')
     <chi-number-input expanded pill></chi-number-input>
 
-h4 Disabled
+h3 Disabled
 .example.-mb--3
   .-p--3
     chi-number-input(expanded=true disabled=true)
   :code(lang='html')
     <chi-number-input expanded disabled></chi-number-input>
 
-h4 Sizes
+h3 Sizes
 p.-text
   | Expanded number inputs support a full spectrum of sizes: <code>sm</code>, <code>md</code>,
   |  <code>lg</code>, <code>xl</code>.
@@ -130,7 +130,7 @@ p.-text
     <chi-number-input expanded size="lg"></chi-number-input>
     <chi-number-input expanded size="xl"></chi-number-input>
 
-h3 Additional usage details
+h2 Additional usage details
 :stencilDoc(name='chi-number-input')
 
 script.

@@ -139,7 +139,7 @@ p.-text
         );
       });
 
-h3 Actions
+h2 Actions
 p.-text
   | You can bind actions to activators inside the expansion panel with the <code>data-chi-epanel-action</code> attribute.
 
@@ -257,7 +257,7 @@ h4 Example
     :code(lang="javascript")
       var ep = chi.expansionPanel(document.getElementById('example2'));
 
-h3 Group of expansion panels
+h2 Group of expansion panels
 p.-text
   | The real power of the component comes when several expansion panels are used together. You can group them using the
   | attribute <code>data-chi-epanel-group="name-of-the-group"</code>. Now they will work together as an stepped form. When
@@ -424,7 +424,7 @@ p.-text
     :code(lang="javascript")
       chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example3"]'));
 
-h3 Accordion mode
+h2 Accordion mode
 p.-text
   | You can configure the expansion panels component to work as an accordion in a way that when an element is activated,
   | any other panel in the same group will be deactivated by putting it in the pending state. To activate this mode, you
@@ -523,7 +523,7 @@ p.-text
         {mode: 'accordion'}
       );
 
-h3 Free mode
+h2 Free mode
 p.-text
   | In this mode, there is no automated action triggered when an element activates. So you have to manage all custom
   | behavior.
@@ -632,7 +632,7 @@ p.-text
         document.querySelectorAll('[data-chi-epanel-group="example5"]'),
         {mode: 'free'}
       );
-h3 Custom mode
+h2 Custom mode
 p.-text
   | Write your custom mode by adding a handler for state changes of the expansion panels in the configuration, and
   | writing your own functions for the <code>active</code>, <code>done</code>, <code>pending</code>,
@@ -755,7 +755,7 @@ p.-text
         }
       );
 
-h4 Preventing memory leaks
+h3 Preventing memory leaks
 p.-text
   | Expansion panel components have a dispose function to free all resources attached to the element, such as event
   | listeners and object data. You should call this method when you want to remove the component.

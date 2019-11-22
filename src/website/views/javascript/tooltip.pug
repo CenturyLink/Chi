@@ -5,7 +5,7 @@ title: Tooltip
 p.-text
   | Tooltips provide text labels that display when users hover or focus on an element.
 
-h3 Base
+h2 Base
 p.-text
   | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then,
   | you can initialize it with the chi.tooltip factory method.
@@ -16,7 +16,7 @@ p.-text
     <button id='tooltip-1' class="a-btn" data-tooltip="Your tooltip text on a button">Tooltip</button>
     <script>chi.tooltip(document.getElementById('tooltip-1'));</script>
 
-h3 Positioning
+h2 Positioning
 p.-text
   | By default, tooltip's position on top of an element. To alter position, use
   | the <code>data-position</code> attribute. Valid values are <code>top</code>,
@@ -35,7 +35,7 @@ p.-text
     <button class="a-btn" data-tooltip="Yourleft tooltip text" data-position="left">Left Tooltip</button>
     <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
-h3 Long Tooltips
+h2 Long Tooltips
 p.-text
   | Long Tooltips will be truncated on the third line.
 .example.-mb--3
@@ -49,7 +49,7 @@ p.-text
     </button>
     <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
-h4 Preventing memory leaks
+h3 Preventing memory leaks
 p.-text
   | Tooltip components have a dispose function to free all resources attached to the element, such as event listeners
   | and object data. You must call this method when you want to remove the component.

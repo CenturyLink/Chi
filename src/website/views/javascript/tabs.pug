@@ -8,7 +8,7 @@ p.-text
   | removes the bottom border of the active element), and it is replaced by a sliding element that emulates the bottom
   | border, that moves from the last active tab to the currently active tab when clicked.
 
-h3 Base
+h2 Base
 .example.-mb--3
   .-p--3.-pb--4
     ul#example-tabs.a-tabs
@@ -43,7 +43,7 @@ h3 Base
 
     <script>chi.tab(document.getElementById('example-tabs'));</script>
 
-h3 Keep default link behavior
+h2 Keep default link behavior
 p.-text
   | By default, Chi JavaScript enabled tabs will ignore default link behavior.
   | To preserve it, specify a target property on the link.
@@ -87,7 +87,7 @@ p.-text
     <script>chi.tab(document.getElementById('example-tabs-2'));</script>
 
 
-h3 Vertical
+h2 Vertical
 p.-text
   | The script also handles vertical tabs.
 
@@ -177,7 +177,7 @@ p.-text
 
     <script>chi.tab(document.getElementById('example-tabs3'));</script>
 
-h4 Preventing memory leaks
+h3 Preventing memory leaks
 p.-text
   | Tab components have a dispose function to free all resources attached to the element, such as event listeners
   | and object data. You should call this method when you want to remove the component.
@@ -201,7 +201,7 @@ p.-text
 
   tabComponent.dispose(); // Only have to do it once.
 
-h3#navigationExample Tabbed navigation bar
+h2#navigationExample Tabbed navigation bar
 
 p.-text
   | The navigation component is a combination of Chi tabs and dropdowns components. You must use
@@ -302,7 +302,7 @@ p.-text
       const navigationElem = document.getElementById('#navigationExample-1');
       chi.navigation(navigationElem);
 
-h4 Options
+h3 Options
 p.-text This component accepts options to configure its behavior.
 
 section.a-table.a-table__options.-bordered.-my--3
@@ -350,7 +350,7 @@ section.a-table.a-table__options.-bordered.-my--3
               | Makes the browser wait for the sliding border to move to the clicked link before following links.
               | It only works with common links.
 
-h4#navigationExampleOverflowMenu Overflow Menu
+h3#navigationExampleOverflowMenu Overflow Menu
 p.-text
   | Overflow menu encloses overflowed tabs into a dropdown menu at the end of the navigation component. Any
   | instantiation of a new horizontal Navigation component will automatically support this Overflow Menu. You can
@@ -545,7 +545,7 @@ ul.a-tabs
           {overflowMenu: false}
         );
 
-h4#navigationExampleWatiForAnimations Wait for animations
+h3#navigationExampleWatiForAnimations Wait for animations
 p.-text
   | Browsers stop any execution of JavaScript as soon as a link is clicked and it starts to fetch the destination URL.
   | For this reason, the sliding border animation will not be perceived by the user when an external link is clicked, as
@@ -658,7 +658,7 @@ ul.a-tabs
           {waitForAnimations: false}
         );
 
-h4#navigationExampleComponentsContained Components contained
+h3#navigationExampleComponentsContained Components contained
 p.-text
   | As navigation component is built from other primitive Chi components, most of these components behavior can be
   | replicated on the navigation component.
@@ -719,7 +719,7 @@ p.-text
       </li>
     </ul>
 
-h4 Preventing memory leaks
+h3 Preventing memory leaks
 p.-text
   | Navigation components have a dispose function to free all resources attached to the element, such as event
   | listeners and object data. You should call this method when you want to remove the component. There is no need to

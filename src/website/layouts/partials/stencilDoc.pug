@@ -1,6 +1,6 @@
 mixin props(props)
   if props.length
-    h4 Properties
+    h3 Properties
     section.a-table.a-table__options.-bordered.-my--3
       div(style='overflow-x:auto;')
         table.-text(cellpadding='0', cellspacing='0')
@@ -50,7 +50,7 @@ mixin props(props)
 
 mixin events(events)
   if events.length
-    h4 Events
+    h3 Events
     section.a-table.a-table__options.-bordered.-my--3
       div(style='overflow-x:auto;')
         table.-text(cellpadding='0', cellspacing='0')
@@ -76,14 +76,14 @@ mixin events(events)
 
 mixin methods(methods)
   if methods.length
-    h4 Methods
+    h3 Methods
 
     each method in methods
-      h5=method.signature
+      h4=method.signature
       if method.docs
         p.-text=method.docs
       if method.parameters.length
-        h6 Parameters
+        h5 Parameters
         if method.parameters.length
           section.a-table.a-table__options.-bordered.-my--3
             div(style='overflow-x:auto;')
@@ -108,7 +108,7 @@ mixin methods(methods)
                       td
                         div=parameter.docs
       if method.returns
-        h6 Returns
+        h5 Returns
         p.-text Type: #{method.returns.type}
         p.-text= method.returns.docs
 

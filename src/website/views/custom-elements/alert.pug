@@ -6,7 +6,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 p.-text Alert messages provide contextual feedback for user actions.
 
-h3 Examples
+h2 Examples
 p.-text
   | To render an alert use the tag <code>chi-alert</code>.
   | Use the color attribute to define a semantic color that corresponds to the meaning
@@ -14,11 +14,11 @@ p.-text
   | <code>info</code>, and <code>muted</code>. If no color is defined, alerts will default to the base style which uses the body
   | text color. This is useful for displaying neutral alerts with no specific value state.
 
-h3 Bubble
+h2 Bubble
 p.-text
   | Bubble alerts are designed for displaying inline messages and notifications within forms, panels, cards, and other content areas.
 
-h4 Default
+h3 Default
 .example.-mb--3
   .-p--1
     chi-alert(icon='circle-info').-m--2
@@ -52,7 +52,7 @@ h4 Default
       This is a muted alert
     </chi-alert>
 
-h4 Centered
+h3 Centered
 p.-text
   | Use the attribute <code>center</code> to center the content of a Bubble Alert. <strong>Note:</strong> Use sparingly.
   | Centered Bubble alerts should only be used to render brief messages on centered forms such as those found on Sign In and Sign Up screens.
@@ -66,7 +66,7 @@ p.-text
       This is a centered danger alert
     </chi-alert>
 
-h4 Titled
+h3 Titled
 p.-text
   | Use the <code>title=""</code> attribute to display a title above the alert text.
 .example.-mb--3
@@ -102,7 +102,7 @@ p.-text
       This is a muted alert
     </chi-alert>
 
-h4 Sizes
+h3 Sizes
 p.-text
   | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
 .example.-mb--3
@@ -148,7 +148,7 @@ p.-text
       This is a large success alert
     </chi-alert>
 
-h4 Dismissible
+h3 Dismissible
 p.-text
   | Use the <code>dismissible</code> attribute to render a close button that allows users to dismiss an alert.
 .example.-mb--3
@@ -173,7 +173,7 @@ p.-text
       This is a large dismissible warning alert
     </chi-alert>
 
-h4 Actionable
+h3 Actionable
 p.-text
   | Add buttons to an alert by defining <code>slot="m-alert__actions"</code> on each <code>chi-button</code>.
 .example.-mb--3
@@ -191,7 +191,7 @@ p.-text
 
 div.a-divider.-my--6.-bt--2
 
-h3 Banner
+h2 Banner
 p.-text
   | To render prominent page level alerts, set the alert <code>type</code> attribute to <code>banner</code>.
   | Banner alerts are commonly presented above or below the Header component and are used for scenarios
@@ -199,7 +199,7 @@ p.-text
   | Banner alerts include a bottom border by default. If the border contrast conflicts with surrounding elements, it can be removed by
   | applying the attribute <code>borderless</code>.
 
-h4 Default
+h3 Default
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(type='banner', icon='circle-info')
@@ -233,7 +233,7 @@ h4 Default
       This is a muted alert
     </chi-alert>
 
-h4 Centered
+h3 Centered
 p.-text
   | Use the attribute <code>center</code> to center the content of a Banner Alert. <strong>Note:</strong> Use sparingly.
   | Centered Banner alerts should only be used to render brief messages on centered forms such as those found on Sign In and Sign Up screens.
@@ -247,7 +247,7 @@ p.-text
       This is a centered danger alert
     </chi-alert>
 
-h4 Titled
+h3 Titled
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(type='banner', icon='circle-info', title="Base")
@@ -281,7 +281,7 @@ h4 Titled
       This is a muted alert
     </chi-alert>
 
-h4 Sizes
+h3 Sizes
 p.-text
   | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
 .example.-mb--3
@@ -327,7 +327,7 @@ p.-text
       This is a large success alert
     </chi-alert>
 
-h4 Dismissible
+h3 Dismissible
 p.-text
   | Use the <code>dismissible</code> attribute to render a close button that allows users to dismiss an alert.
 .example.-mb--3
@@ -352,7 +352,7 @@ p.-text
       This is a large dismissible warning alert
     </chi-alert>
 
-h4 Actionable
+h3 Actionable
 p.-text
   | Add buttons to an alert by defining <code>slot="m-alert__actions"</code> on each <code>chi-button</code>.
 .example.-mb--3
@@ -370,12 +370,12 @@ p.-text
 
 div.a-divider.-my--6.-bt--2
 
-h3 Toast
+h2 Toast
 p.-text
   | Toasts are unobtrusive alerts used to display brief, auto-expiring information.
   | To use a toast alert, set the <code>type</code> attribute to <code>toast</code>.
 
-h4 Default
+h3 Default
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(type='toast', icon='circle-info')
@@ -409,7 +409,7 @@ h4 Default
       This is a muted alert
     </chi-alert>
 
-h4 Titled
+h3 Titled
 .example.-mb--3
   .-p--1
     chi-alert.-m--2(type='toast', icon='circle-info', title="Base")
@@ -443,7 +443,7 @@ h4 Titled
       This is a muted alert
     </chi-alert>
 
-h4 Sizes
+h3 Sizes
 p.-text
   | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
 .example.-mb--3
@@ -491,5 +491,5 @@ p.-text
 
 div.a-divider.-my--6.-bt--2
 
-h3 Additional usage details
+h2 Additional usage details
 :stencilDoc(name='chi-alert')
