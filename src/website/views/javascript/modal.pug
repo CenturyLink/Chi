@@ -10,7 +10,7 @@ p.-text
   | To easily close a modal set <code>data-dismiss="modal"</code> on a controller element, like a button, inside the modal
   | or will also close by pressing the escape key.
 
-h3 Base
+h2 Base
 .example.-mb--3(style='position:static')
   .-p--3
     .-d--flex.-justify-content--start.-align-items--start
@@ -68,7 +68,7 @@ h3 Base
     :code(lang="html")
       <script>chi.modal(document.getElementById('modal-trigger-1'));</script>
 
-h3 Options
+h2 Options
 p.-text This component accepts options to configure its behavior.
 
 section.a-table.a-table__options.-bordered.-my--3
@@ -105,7 +105,7 @@ section.a-table.a-table__options.-bordered.-my--3
               | Lets the developer referer the target programmatically instead of by data-target attribute.
               | It accepts Element object and xpath selector string.
 
-h4 Preventing memory leaks
+h3 Preventing memory leaks
 p.-text
   | Modal components have a dispose function to free all resources attached to the element, such as event listeners
   | and object data. You should call this method when you want to remove the component.

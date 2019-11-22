@@ -5,10 +5,10 @@ styles: [assets/styles/icons]
 
 p.-text Chi has adopted a subset of icons from Cyclops and CenturyLink's Cloud Application Manager.
 
-h3 Using Icons
+h2 Using Icons
 p.-text Icons can be added via SVG or Web Font. Choose the method that best suits your projects needs.
 
-h4 SVG & JS Method
+h3 SVG & JS Method
 p.-text SVG based implementations provide better semantics, accessibility, rendering, and reliability. Place the following script in your projects footer to use this method.
 .-mb--2
   :code(lang='html')
@@ -26,7 +26,7 @@ p.-text Then to render an SVG icon, apply the class <code>a-icon</code> to an el
       </svg>
     </div>
 
-h4 Web Font & CSS Method
+h3 Web Font & CSS Method
 p.-text Web Font based implementations offer the widest browser support, fastest rendering speed, and require no additional script or stylesheet.
 p.-text To render a Web Font icon, apply the class <code>a-icon</code> to an <code>&lt;i&gt;</code> tag and specify the name of the icon you wish to use in the <code>&lt;i&gt;</code>'s class attribute:
 .example.-mb--3
@@ -35,7 +35,7 @@ p.-text To render a Web Font icon, apply the class <code>a-icon</code> to an <co
   :code(lang="html")
     <i class="a-icon icon-logo-centurylink"></i>
 
-h3 Sizes
+h2 Sizes
 p.-text By default, icons render at 16x16px (<code>-sm</code>). Apply size classes to render icons larger or smaller:
   | <code>-xs</code>, <code>-sm</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
 p.-text Two alternate small classes are available for specific app scenarios. Use <code>-sm--2</code>
@@ -92,7 +92,7 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
       <!-- -xxl : 128x128px -->
       <i class="a-icon icon-logo-centurylink -xxl"></i>
 
-h3 Colors
+h2 Colors
 p.-text By default, icons are the same color as text. Use Chi text color utilities to set a specific color.
 .example.-mb--3
   .-d--flex.-w--12.-justify-content--center.-flex--wrap.-p--1
@@ -142,7 +142,7 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
       <i class="a-icon icon-logo-centurylink -md -text--secondary"></i>
       <i class="a-icon icon-logo-centurylink -md -text--light"></i>
 
-h3 UI Icons
+h2 UI Icons
 .a-grid.icon-library.-pt--2.-pb--6
   each name in ['activity', 'address-book', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'arrow-sync','arrow-to-bottom', 'arrow-vertical', 'arrows','asterisk', 'atom', 'ban', 'bank', 'bell-off', 'bell', 'box-application', 'box-cloudformation', 'box-container', 'box-deployment', 'box-fill', 'box-outline', 'box-script', 'box', 'cart-alt', 'cart-outline', 'cart', 'chart-bar', 'chart-pie', 'chat', 'check-alt', 'check', 'checkbox-checked', 'checkbox', 'chevron-down', 'chevron-left', 'chevron-right', 'chevron-up', 'circle-alert-outline', 'circle-alert', 'circle-arrow-down-outline', 'circle-arrow-down', 'circle-arrow-up-outline', 'circle-arrow-up', 'circle-check-outline', 'circle-check', 'circle-clock-outline', 'circle-clock', 'circle-code-outline', 'circle-code', 'circle-gear-outline','circle-gear', 'circle-info-outline', 'circle-info', 'circle-minus-outline', 'circle-minus', 'circle-outline', 'circle-play-outline', 'circle-play', 'circle-plus-outline', 'circle-plus', 'circle-question-outline', 'circle-question', 'circle-reload-outline', 'circle-reload', 'circle-stop-outline', 'circle-stop', 'circle-warning', 'circle-x-outline', 'circle-x', 'circle', 'cloud', 'comment-dots-outline', 'comment-dots', 'comment-outline', 'comment', 'comments-dots-outline', 'comments-dots', 'comments-outline', 'comments', 'cost', 'database-outline', 'database', 'date', 'delete', 'edit', 'edit-cancel', 'file-error-outline', 'file-outline', 'file', 'filter', 'folder-gear', 'folder-open', 'folder', 'globe-network', 'globe-outline', 'grid', 'heart', 'home-outline', 'home', 'key', 'life-ring', 'link', 'list', 'lock-outline', 'lock', 'logo-amazon', 'logo-aws', 'logo-azure', 'logo-centurylink', 'logo-cloudstack', 'logo-dimensiondata', 'logo-facebook', 'logo-github', 'logo-google', 'logo-hp', 'logo-linkedin', 'logo-linux', 'logo-openstack', 'logo-rackspace', 'logo-slack', 'logo-twitter', 'logo-vcloud', 'logo-vsphere', 'logo-youtube', 'logout', 'mail-outline', 'mail', 'map-marker-alt', 'map-marker', 'map-marker-outline','menu', 'microphone-mute', 'microphone', 'minus-alt', 'minus', 'more-vert', 'more', 'nodes', 'number', 'pause', 'phone', 'play', 'plus-alt', 'plus', 'radio-checked', 'radio', 'refresh', 'rocket', 'search', 'settings', 'share', 'shield', 'square-minus-outline', 'square-minus', 'square-plus-outline', 'square-plus', 'star-outline', 'star', 'stop', 'sync', 'tag-outline', 'tag', 'text', 'triangle-down', 'triangle-left', 'triangle-right', 'triangle-up', 'user', 'users', 'verified', 'video-camera-mute', 'video-camera', 'visible-off', 'visible', 'warning', 'wifi-outline', 'wifi', 'x-alt', 'x']
     .a-col.-w--6.-w-xl--2.-w-lg--3.-w-md--6.-mb--2

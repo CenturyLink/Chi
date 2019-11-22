@@ -3,9 +3,9 @@ title: Shadow
 ---
 p.-text Use shadow utility classes to assist in creating a visual hierarchy.
 
-h3 Notation
+h2 Notation
 p.-text Shadow utility classes can be defined using the format <code>-s[-{breakpoint}]--{size}</code>.
-h4 {size}
+h3 {size}
 ul.-text
   li <code>0</code> - use to set <code>box-shadow</code> to <code>none</code>
   li <code>1</code> - use to set <code>box-shadow</code> to <code>1px</code>
@@ -13,7 +13,7 @@ ul.-text
   li <code>3</code> - use to set <code>box-shadow</code> to <code>6px</code>
   li <code>4</code> - use to set <code>box-shadow</code> to <code>8px</code>
   li <code>5</code> - use to set <code>box-shadow</code> to <code>12px</code>
-h4 {breakpoint}
+h3 {breakpoint}
 p.-text
   | Optionally include -{breakpoint} to apply the utility behaviour to some breakpoints. As a mobile first library,
   | any applying to smaller breakpoint will modify also larger ones unless other class overrides this behaviour.
@@ -24,8 +24,8 @@ ul.-text
   li <code>lg</code> - use to apply <code>shadow</code> to lg and larger breakpoints.
   li <code>xl</code> - use to apply <code>shadow</code> to xl breakpoints.
 
-h3 Examples
-h4 Default
+h2 Examples
+h3 Default
 .example.-mb--3
   .-p--2(style="background:#F5F5F5;")
     .a-grid.-text.-noGutter.-text--center
@@ -43,7 +43,7 @@ h4 Default
     <div class="-s--4"></div>
     <div class="-s--5"></div>
 
-h4 Responsive
+h3 Responsive
 p.-text
   | Change viewport size to view the effect. You can do it by resizing your browser window.
 .example.-mb--3
@@ -57,7 +57,7 @@ p.-text
     <div class="-s-md--5 -s-xl--0"></div>
     <div class="-s-xl--5"></div>
 
-h3 SASS
+h2 SASS
 p.-text
   | Chi defines shadows with Saas maps. The following example will render
   | a shadow equivalent to <code>-s--1</code> / <code>1px</code>.

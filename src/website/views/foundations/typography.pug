@@ -4,20 +4,20 @@ title: Typography
 
 p.-text Documentation and examples for Chi typography.
 
-h3 Typeface
+h2 Typeface
 p.-text The sans-serif font stack is used to display all typography within Chi except code. For code, Chi defers to a monospace font stack.
 
-h6 Sans-serif font stack
+h3 Sans-serif font stack
 .-mb--2
   :code(lang='html')
     font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
 
-h6 Monospace font stack
+h3 Monospace font stack
 .-mb--3
    :code(lang='html')
      font-family: Menlo, Consolas, "Liberation Mono", Courier, monospace;
 
-h3 Headings
+h2 Headings
 p.-text Headings are used to illustrate the typographic hierarchy of a page. <code>h1</code> defines the most important heading and h6 the least. Headings in Chi can be defined as tags <code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code> or classes <code>.a-h1</code> - <code>.a-h6</code>.
 
 .example(style='border:none')
@@ -36,9 +36,9 @@ p.-text Headings are used to illustrate the typographic hierarchy of a page. <co
               td(width='20%')
                 code= '<' + type + '>'
               td
-                #{type}= type + ' Chi heading'
+                #{type}(class=`a-${type}`)= type + ' Chi heading'
 
-h3 Body text
+h2 Body text
 p.-text
   | Chi's default font size is 14px (0.875rem) and is intended to maximize screen real estate in dense, app oriented interfaces.
 
@@ -60,7 +60,7 @@ section.a-table.-bordered.-mt--3.-mb--3
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
                 | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
 
-h3 Inline text
+h2 Inline text
 p.-text
   | Styles for common inline text elements. Styles can be defined as tags <code>&lt;code&gt;</code> or classes <code>.a-code</code>.
 
@@ -81,8 +81,8 @@ section.a-table.-bordered.-mt--3.-mb--3
             td
               #{val}= type
 
-h3 Paragraphs
-h4 Base
+h2 Paragraphs
+h3 Base
 p.-text 14px (0.875rem) font size with 24px (1.5rem) line-height
 .example.-mb--3
   p.-text.-m--3
@@ -90,7 +90,7 @@ p.-text 14px (0.875rem) font size with 24px (1.5rem) line-height
     | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
   :code(lang="html")
     <p class="-text"></p>
-h4 Large
+h3 Large
 p.-text 16px (1rem) font size with 24px (1.5rem) line-height
 .example.-mb--3
   p.-text.-text--large.-m--3
@@ -98,7 +98,7 @@ p.-text 16px (1rem) font size with 24px (1.5rem) line-height
     | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
   :code(lang="html")
     <p class="-text--large"></p>
-h4 Larger
+h3 Larger
 p.-text 18px (1.125rem) font size with 28px (1.75rem) line-height
 .example.-mb--3
   p.-text.-text--larger.-m--3
@@ -106,7 +106,7 @@ p.-text 18px (1.125rem) font size with 28px (1.75rem) line-height
     | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
   :code(lang="html")
     <p class="-text--larger"></p>
-h4 Small
+h3 Small
 p.-text 13px (0.8125rem) font size with 20px (1.25rem) line-height
 .example.-mb--3
   p.-text.-text--small.-m--3
@@ -114,7 +114,7 @@ p.-text 13px (0.8125rem) font size with 20px (1.25rem) line-height
     | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
   :code(lang="html")
     <p class="-text--small"></p>
-h4 Smaller
+h3 Smaller
 p.-text 12px (0.75rem) font size with 20px (1.25rem) line-height
 .example.-mb--3
   p.-text.-text--smaller.-m--3
@@ -123,15 +123,15 @@ p.-text 12px (0.75rem) font size with 20px (1.25rem) line-height
   :code(lang="html")
     <p class="-text--smaller"></p>
 
-h3 Code
-h4 Inline code
+h2 Code
+h3 Inline code
 p.-text Code tags are used to wrap inline snippets of code.
 .example.-mb--3
   p.-text.-m--3
     | This <code>&lt;code&gt;</code> will render as inline code.
   :code(lang="html")
     This <code>&lt;code&gt;</code> will render as inline code.
-h4 Code blocks
+h3 Code blocks
 p.-text Pre tags are used to wrap multiple lines of code.
 .example.-mb--3
   .code-block.-m--3
@@ -142,8 +142,8 @@ p.-text Pre tags are used to wrap multiple lines of code.
       <code>&lt;p&gt;This code will render as a code block.&lt;/p&gt;</code>
     </pre>
 
-h3 Lists
-h4 Base
+h2 Lists
+h3 Base
 p.-text Use <code>&lt;ul&gt;</code> tags for unordered lists and <code>&lt;ol&gt;</code> tags for ordered lists.
 .a-grid
   .a-col.-w--6
@@ -174,7 +174,7 @@ p.-text Use <code>&lt;ul&gt;</code> tags for unordered lists and <code>&lt;ol&gt
         <ol class="-text">
           <li></li>
         </ol>
-h4 No style
+h3 No style
 p.-text To remove default list styling, apply the class <code>.-nostyle</code>
 .example.-mb--3
   ul.-text.-nostyle.-m--3
@@ -189,7 +189,7 @@ p.-text To remove default list styling, apply the class <code>.-nostyle</code>
     <ul class="-text -nostyle">
       <li></li>
     </ul>
-h4 Inline
+h3 Inline
 p.-text To display list items inline, apply the class <code>-inline</code>
 .example.-mb--3
   ul.-text.-inline.-m--3
@@ -204,7 +204,7 @@ p.-text To display list items inline, apply the class <code>-inline</code>
     <ul class="-text -inline">
       <li></li>
     </ul>
-h3 Blockquotes
+h2 Blockquotes
 p.-text Blockquotes are used to quote content from another source.
 .example.-mb--3
   blockquote.-m--3

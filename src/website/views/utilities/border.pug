@@ -3,9 +3,9 @@ title: Border
 ---
 p.-text Use shorthand border utility classes to control border, border width and border color on elements.
 
-h3 Notation
+h2 Notation
 p.-text Border utility classes can be defined using the format <code>-b{sides}[-{breakpoint}]--{size}</code>.
-h4 {sides}
+h3 {sides}
 ul.-text
   li <code>t</code> - use to apply <code>border-top</code>
   li <code>b</code> - use to apply <code>border-bottom</code>
@@ -14,7 +14,7 @@ ul.-text
   li <code>x</code> - use to apply <code>border-left</code> and <code>border-right</code>
   li <code>y</code> - use to apply <code>border-top</code> and <code>border-bottom</code>
   li blank - leave blank to apply <code>border</code> to all 4 sides.
-h4 {breakpoint}
+h3 {breakpoint}
 p.-text
   | Optionally include -{breakpoint} to apply the utility behaviour to some breakpoints. As a mobile first library,
   | any applying to smaller breakpoint will modify also larger ones unless other class overrides this behaviour.
@@ -24,7 +24,7 @@ ul.-text
   li <code>md</code> - use to apply <code>border</code> to ms and larger breakpoints.
   li <code>lg</code> - use to apply <code>border</code> to lg and larger breakpoints.
   li <code>xl</code> - use to apply <code>border</code> to xl breakpoints.
-h4 {size}
+h3 {size}
 ul.-text
   li <code>0</code> - use to eliminate existing <code>border</code> and set to <code>0</code>
   li <code>1</code> - use to set <code>border</code> to <code>1px</code>
@@ -32,8 +32,8 @@ ul.-text
   li <code>3</code> - use to set <code>border</code> to <code>3px</code>
   li <code>4</code> - use to set <code>border</code> to <code>4px</code>
 
-h3 Examples
-h4 Border Sides
+h2 Examples
+h3 Border Sides
 p.-text
   | Apply borders to specific sides of an element by adding <code>t</code>,
   | <code>b</code>, <code>l</code>, <code>r</code>, <code>x</code> or <code>y</code>
@@ -54,7 +54,7 @@ p.-text
     <div class="-bl--1"></div>
     <div class="-bx--1"></div>
     <div class="-by--1"></div>
-h4 Breakpoints
+h3 Breakpoints
 p.-text
   | Target specific breakpoints with responsive classes.
 .example.-mb--3
@@ -65,7 +65,7 @@ p.-text
   :code(lang="html")
     <div class="-bx--0 -by--4 -bx-lg--4 -by-lg--0"></div>
     <div class="-b--0 -b-sm--1 -b-md--2 -b-lg--3 -b-xl--4"></div>
-h4 Border Sizes
+h3 Border Sizes
 p.-text
   | Control an elements border size by adjusting the size from <code>0</code> - <code>4</code>.
 .example.-mb--3
@@ -82,7 +82,7 @@ p.-text
     <div class="-b--2"></div>
     <div class="-b--3"></div>
     <div class="-b--4"></div>
-h4 Border Colors
+h3 Border Colors
 p.-text
   | Use contextual color classes to change a borders color.
 .example.-mb--3

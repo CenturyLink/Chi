@@ -65,6 +65,50 @@
             max-width: 960px;
             padding: 0 2rem;
           }
+
+          > {
+            h1 {
+              font-size: 2rem;
+              font-weight: 800;
+              line-height: 3rem;
+              margin: 1rem 0;
+            }
+
+            h2 {
+              font-size: 1.5rem;
+              font-weight: 600;
+              line-height: 2rem;
+              margin: 1rem 0;
+            }
+
+            h3 {
+              font-size: $text-larger;
+              font-weight: 600;
+              line-height: 2rem;
+              margin: 0.5rem 0;
+            }
+
+            h4 {
+              font-size: $text-large;
+              font-weight: 600;
+              line-height: 1.5rem;
+              margin: 0.5rem 0;
+            }
+
+            h5 {
+              font-size: $text;
+              font-weight: 600;
+              line-height: 1.5rem;
+              margin: 0.5rem 0;
+            }
+
+            h6 {
+              font-size: $text-small;
+              font-weight: 600;
+              line-height: 1.25rem;
+              margin: 0.5rem 0;
+            }
+          }
         }
         .example {
           border: 0.0625rem solid set-color(grey, 25);

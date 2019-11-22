@@ -4,19 +4,19 @@ title: Alert
 
 p.-text Alert messages provide contextual feedback for user actions.
 
-h3 Examples
+h2 Examples
 p.-text
   | To render an alert, use the class <code>m-alert</code>. Apply a semantic color class that corresponds to the meaning
   | or value state of your alert. Supported classes include <code>-success</code>, <code>-danger</code>, <code>-warning</code>,
   | <code>-info</code>, and <code>-muted</code>. If no class is defined, alerts will default to the base style which uses the body
   | text color. This is useful for displaying neutral alerts with no specific value state.
 
-h3 Bubble
+h2 Bubble
 p.-text
   | Bubble alerts are designed for displaying inline messages and notifications within forms, panels, cards, and other content areas.
   | They are Chi's default Alert type and will render the same with or without the <code>-bubble</code> type class on <code>m-alert</code>.
 
-h4 Default
+h3 Default
 .example.-mb--3
   .-p--1
     .m-alert.-m--2
@@ -72,7 +72,7 @@ h4 Default
       </div>
     </div>
 
-h4 Centered
+h3 Centered
 p.-text
   | Apply the class <code>-center</code> to center the content of a Bubble Alert. <strong>Note:</strong> Use sparingly.
   | Centered Bubble alerts should only be used to render brief messages on centered forms such as those found on Sign In and Sign Up screens.
@@ -91,7 +91,7 @@ p.-text
       </div>
     </div>
 
-h4 Titled
+h3 Titled
 p.-text
   | Use <code>m-alert__title</code> to add a title to an Alert. The title will automatically get colored based on the alerts semantic color class.
   | To override the title color, apply a text color utility class.
@@ -158,7 +158,7 @@ p.-text
       </div>
     </div>
 
-h4 Sizes
+h3 Sizes
 p.-text
   | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code>, <code>-md</code>, and <code>-lg</code>.
 .example.-mb--3
@@ -240,7 +240,7 @@ p.-text
       </div>
     </div>
 
-h4 Dismissible
+h3 Dismissible
 p.-text
   | To allow users to dismiss an alert, use the class <code>-dismiss</code>
   | and insert a dismiss button <code>m-alert__dismiss-button</code>.
@@ -309,7 +309,7 @@ p.-text
       </button>
     </div>
 
-h4 Actionable
+h3 Actionable
 p.-text
   | While <code>m-alert__actions</code> can be added to any Alert, alert actions are best suited for default or Titled alerts with the size class <code>-lg</code>.
   | Large Alerts have extra <code>m-alert</code> padding, a larger <code>m-alert__icon</code>, and a larger <code>m-alert__dismiss-button</code>.
@@ -346,7 +346,7 @@ p.-text
 
 div.a-divider.-my--6.-bt--2
 
-h3 Banner
+h2 Banner
 p.-text
   | For prominent page level alerts, apply the class <code>-banner</code> to <code>m-alert</code>.
   | Banner alerts are commonly presented above or below the Header component and are used for scenarios
@@ -354,7 +354,7 @@ p.-text
   | Banner alerts include a bottom border by default. If the border contrast conflicts with surrounding elements, it can be removed by
   | applying the class <code>-borderless</code> to <code>m-alert</code>.
 
-h4 Default
+h3 Default
 .example.-mb--3
   .-p--1
     .m-alert.-banner.-m--2
@@ -410,7 +410,7 @@ h4 Default
       </div>
     </div>
 
-h4 Centered
+h3 Centered
 p.-text
   | Apply the class <code>-center</code> to center the content of a Banner Alert. <strong>Note:</strong> Use sparingly.
   | Centered Banner alerts should only be used to render brief messages. Centered alerts do not support
@@ -429,7 +429,7 @@ p.-text
       </div>
     </div>
 
-h4 Titled
+h3 Titled
 p.-text
   | Use <code>m-alert__title</code> to add a title to an Alert. The title will automatically get colored based on the alerts semantic color class.
   | To override the title color, apply a text color utility class.
@@ -496,7 +496,7 @@ p.-text
       </div>
     </div>
 
-h4 Sizes
+h3 Sizes
 p.-text
   | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code>, <code>-md</code>, and <code>-lg</code>.
 .example.-mb--3
@@ -578,7 +578,7 @@ p.-text
       </div>
     </div>
 
-h4 Dismissible
+h3 Dismissible
 p.-text
   | To allow users to dismiss an alert, use the class <code>-dismiss</code>
   | and insert a dismiss button <code>m-alert__dismiss-button</code>.
@@ -647,7 +647,7 @@ p.-text
       </button>
     </div>
 
-h4 Actionable
+h3 Actionable
 p.-text
   | While <code>m-alert__actions</code> can be added to any Alert, alert actions are best suited for default or Titled alerts with the size class <code>-lg</code>.
   | Large Alerts have extra <code>m-alert</code> padding, a larger <code>m-alert__icon</code>, and a larger <code>m-alert__dismiss-button</code>.
@@ -684,12 +684,12 @@ p.-text
 
 div.a-divider.-my--6.-bt--2
 
-h3 Toast
+h2 Toast
 p.-text
   | Toasts are unobtrusive alerts used to display brief, auto-expiring information.
   | To use a toast alert, apply the class <code>-toast</code>.
 
-h4 Default
+h3 Default
 .example.-mb--3
   .-p--1
     .m-alert.-toast.-m--2
@@ -781,7 +781,7 @@ h4 Default
       </button>
     </div>
 
-h4 Titled
+h3 Titled
 .example.-mb--3
   .-p--1
     .m-alert.-toast.-m--2
@@ -881,7 +881,7 @@ h4 Titled
       </button>
     </div>
 
-h4 Sizes
+h3 Sizes
 p.-text
   | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code>, <code>-md</code>, and <code>-lg</code>.
 .example.-mb--3

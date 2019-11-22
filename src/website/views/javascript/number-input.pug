@@ -6,7 +6,7 @@ p.-text
   | decrement the value when the buttons are pressed. This piece of JavaScripts makes the number increase and decrease
   | when the buttons are pressed and enables and disables the buttons when the number exceeds the min and max limits.
 
-h3 Default
+h2 Default
 p.-text
   | Call the function chi.numberInput and pass the input element as parameter.
 .example.-mb--3
@@ -27,7 +27,7 @@ p.-text
 
     <script>chi.numberInput(document.getElementById('input-number-1'));</script>
 
-h3 Expanded version
+h2 Expanded version
 .example.-mb--3
   .-p--3
     .m-inputNumber
@@ -55,7 +55,7 @@ h3 Expanded version
 
     <script>chi.numberInput(document.getElementById('input-number-2'));</script>
 
-h3 Options
+h2 Options
 p.-text This component accepts options to configure its behavior.
 
 section.a-table.a-table__options.-bordered.-my--3
@@ -83,7 +83,7 @@ section.a-table.a-table__options.-bordered.-my--3
               | attributes, and any value that doesn't fit the granularity defined by <code>step</code> and the
               | <code>initial</code> value
 
-h4 Example <code>autofix=true</code>
+h3 Example <code>autofix=true</code>
 p.-text
   | This example only accepts values between <code>0</code> and <code>6</code>, and as the <code>step</code> is
   | <code>2</code> and initial <code>value</code> is <code>1</code>, only even values are valid. If you manually write
@@ -119,7 +119,7 @@ p.-text
       );
     </script>
 
-h4 Preventing memory leaks
+h3 Preventing memory leaks
 p.-text
   | Input number components have a dispose function to free all resources attached to the element, such as event
   | listeners and object data. You should call this method when you want to remove the component.

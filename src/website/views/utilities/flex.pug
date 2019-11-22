@@ -5,16 +5,16 @@ styles: [assets/styles/show-example]
 
 p.-text Use shorthand flex utility classes to manage the layout, alignment, and size of Chi components.
 
-h3 Display
+h2 Display
 p.-text To enable flex, apply a flex display utility class. This will transform
   |  your element into a flexbox container and its direct children into flex items.
-h4 Flexbox container
+h3 Flexbox container
 .example.-mb--3
   .-p--3.-show--example
     .-text.-p--2.-m--1.-d--flex -d--flex
   :code(lang="html")
     <div class="-d--flex"></div>
-h4 Inline Flexbox container
+h3 Inline Flexbox container
 .example.-mb--3
   .-p--3.-show--example
     .-text.-p--2.-m--1.-d--inline-flex -d--inline-flex
@@ -33,9 +33,9 @@ ul.-mb--3
     li
       code= '.-d-' + type + '--inline-flex'
 
-h3 Direction
+h2 Direction
 p.-text Use direction utilities to define how items will be placed in flex containers.
-h4 Row (default)
+h3 Row (default)
 p.-text Use <code>.-flex--row</code> to display items horizontally. In most cases this class
   |  can be omitted as it is the browsers default behavior.
 .example.-mb--3
@@ -49,7 +49,7 @@ p.-text Use <code>.-flex--row</code> to display items horizontally. In most case
       <div>Item 2</div>
       <div>Item 3</div>
     </div>
-h4 Row reverse
+h3 Row reverse
 p.-text Use <code>.-flex--row-reverse</code> to display the items horizontally in reverse.
 .example.-mb--3
   .-p--3.-d--flex.-flex--row-reverse.-show--example
@@ -62,7 +62,7 @@ p.-text Use <code>.-flex--row-reverse</code> to display the items horizontally i
       <div>Item 2</div>
       <div>Item 3</div>
     </div>
-h4 Column
+h3 Column
 p.-text Use <code>.-flex--column</code> to display items vertically.
 .example.-mb--3
   .-p--3.-d--flex.-flex--column.-show--example
@@ -75,7 +75,7 @@ p.-text Use <code>.-flex--column</code> to display items vertically.
       <div>Item 2</div>
       <div>Item 3</div>
     </div>
-h4 Column reverse
+h3 Column reverse
 p.-text Use <code>.-flex--column-reverse</code> to display the items vertically in reverse.
 .example.-mb--3
   .-p--3.-d--flex.-flex--column-reverse.-show--example
@@ -103,7 +103,7 @@ ul.-mb--3
       li
         code= '.-flex-' + size + '--' + type
 
-h3 Justify content
+h2 Justify content
 p.-text Use justify-content utilities to alter the alignment of flex items on the main axis.
 .example.-mb--3
   .-p--3.-pb--1
@@ -128,7 +128,7 @@ ul.-mb--3
       li
         code= '.-justify-content-' + size + '--' + type
 
-h3 Align items
+h2 Align items
 p.-text Use align-items utilities to alter the alignment of flex items on the cross axis.
 .example.-mb--3
   .-p--3.-pb--1
@@ -153,10 +153,10 @@ ul.-mb--3
       li
         code= '.-align-items-' + size + '--' + type
 
-h3 Align self
+h2 Align self
 p.-text Use align-self utilities to alter the alignment of individual flex items on the cross axis.
 
-h4 Start
+h3 Start
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-show--example.-bg--grey-10(style="height:7rem;")
@@ -169,7 +169,7 @@ h4 Start
       <div class="-align-self--start">Aligned Item</div>
       <div>Item</div>
     </div>
-h4 End
+h3 End
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-show--example.-bg--grey-10(style="height:7rem;")
@@ -182,7 +182,7 @@ h4 End
       <div class="-align-self--end">Aligned Item</div>
       <div>Item</div>
     </div>
-h4 Center
+h3 Center
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-show--example.-bg--grey-10(style="height:7rem;")
@@ -195,7 +195,7 @@ h4 Center
       <div class="-align-self--center">Aligned Item</div>
       <div>Item</div>
     </div>
-h4 Baseline
+h3 Baseline
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-show--example.-bg--grey-10(style="height:7rem;")
@@ -208,7 +208,7 @@ h4 Baseline
       <div class="-align-self--baseline">Aligned Item</div>
       <div>Item</div>
     </div>
-h4 Stretch (Browser default)
+h3 Stretch (Browser default)
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-show--example.-bg--grey-10(style="height:7rem;")
@@ -231,9 +231,9 @@ ul.-mb--3
       li
         code= '.-align-self-' + size + '--' + type
 
-h3 Wrap
+h2 Wrap
 p.-text Use wrap utilities to define how flex items wrap in a flex container.
-h4 No Wrap (default)
+h3 No Wrap (default)
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-flex--nowrap.-align-items--start.-show--example.-bg--grey-10(style="height:116px;width:224px;")
@@ -243,7 +243,7 @@ h4 No Wrap (default)
     <div class="-d--flex -align-items--start -flex--nowrap" style="height:116px;width:224px;">
       <div>Item</div>
     </div>
-h4 Wrap
+h3 Wrap
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-flex--wrap.-align-items--start.-show--example.-bg--grey-10(style="width:224px;")
@@ -253,7 +253,7 @@ h4 Wrap
     <div class="-d--flex -align-items--start -flex--wrap" style="width:224px;">
       <div>Item</div>
     </div>
-h4 Wrap Reverse
+h3 Wrap Reverse
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-flex--wrap-reverse.-align-items--start.-show--example.-bg--grey-10(style="width:224px;")
@@ -273,9 +273,9 @@ ul.-mb--3
       li
         code= '.-flex-' + size + '--' + type
 
-h3 Align content
+h2 Align content
 p.-text Use align-content utilities on flexbox containers to alter the alignment of flex items <strong>together</strong> on the cross axis.
-h4 Start (default)
+h3 Start (default)
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-align-content--start.-flex--wrap.-show--example.-bg--grey-10(style="height:12rem;")
@@ -285,7 +285,7 @@ h4 Start (default)
     <div class="-d--flex -align-content--start -flex--wrap">
       <div>Item</div>
     </div>
-h4 End
+h3 End
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-align-content--end.-flex--wrap.-show--example.-bg--grey-10(style="height:12rem;")
@@ -295,7 +295,7 @@ h4 End
     <div class="-d--flex -align-content--end -flex--wrap">
       <div>Item</div>
     </div>
-h4 Center
+h3 Center
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-align-content--center.-flex--wrap.-show--example.-bg--grey-10(style="height:12rem;")
@@ -305,7 +305,7 @@ h4 Center
     <div class="-d--flex -align-content--center -flex--wrap">
       <div>Item</div>
     </div>
-h4 Around
+h3 Around
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-align-content--around.-flex--wrap.-show--example.-bg--grey-10(style="height:12rem;")
@@ -315,7 +315,7 @@ h4 Around
     <div class="-d--flex -align-content--around -flex--wrap">
       <div>Item</div>
     </div>
-h4 Between
+h3 Between
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-align-content--between.-flex--wrap.-show--example.-bg--grey-10(style="height:12rem;")
@@ -325,7 +325,7 @@ h4 Between
     <div class="-d--flex -align-content--between -flex--wrap">
       <div>Item</div>
     </div>
-h4 Stretch
+h3 Stretch
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-align-content--stretch.-flex--wrap.-show--example.-bg--grey-10(style="height:12rem;")
@@ -346,7 +346,7 @@ ul.-mb--3
       li
         code= '.-align-content-' + size + '--' + type
 
-h3 Fill
+h2 Fill
 p.-text Use the <code>.-flex--fill</code> class on flexbox items to display as equal widths while taking up all available horizontal space.
 .example.-mb--3
   .-p--3.-pb--1
@@ -367,7 +367,7 @@ ul.-mb--3
     li
       code= '.-flex-' + size + '--fill'
 
-h3 Grow
+h2 Grow
 p.-text Use the <code>.-flex--grow*</code> class to toggle a flex item's ability to grow and take up all available space.
 .example.-mb--3
   .-p--3.-pb--1
@@ -392,7 +392,7 @@ ul.-mb--3
       code= '.-flex-' + size + '--grow0'
     li
       code= '.-flex-' + size + '--grow1'
-h3 Shrink
+h2 Shrink
 p.-text Use the <code>.-flex--shrink*</code> class to toggle a flex item's ability to shrink when its size is larger than its container.
 .example.-mb--3
   .-p--3.-pb--1

@@ -9,21 +9,21 @@ title: Avatar
 
 p.-text Avatars are used to represent users, groups, and entities.
 
-h3 Examples
+h2 Examples
 
 p.-text
   | To render an avatar, apply the class <code>a-avatar</code> to a div element and place an image inside.
-h4 Base
+h3 Base
 .example.-mb--3
   .-p--3
     .a-avatar
       img(src='../../assets/images/avatar.jpg', alt="avatar")
   :code(lang="html")
     <div class="a-avatar">
-      <img src="path/to/image.jpg">
+      <img src="path/to/image.jpg" alt="avatar">
     </div>
 
-h4 Icon Avatars
+h3 Icon Avatars
 p.-text
   | Icon avatars can be used when an image is not available.
   | To use, wrap any <a href="../icon/">Chi icon</a> with <code>a-avatar</code>.
@@ -52,7 +52,7 @@ p.-text
         </svg>
       </div>
 
-h4 Initial avatars
+h3 Initial avatars
 p.-text
   | Initial avatars can also be used when an image is not available.
   | They are more versatile than icon avatars and support up to two letters.
@@ -69,7 +69,7 @@ p.-text
 
 h3 Customizations
 
-h4 Color
+h3 Color
 p.-text
   | Both icon and initial avatars support <a href="../../foundations/color/">Chi colors</a>.
   | To color an icon, apply any of the following color classes: <code>-grey</code>, <code>-red</code>,
@@ -156,7 +156,7 @@ ul#a-tabs--colors.a-tabs
         <i class="a-icon icon-user"></i>
       </div>
 
-h4 Light and transparent background
+h3 Light and transparent background
 p.-text
   | Both icon and initial avatars support light and transparent versions for dark backgrounds.
 .example.-mb--3
@@ -184,7 +184,7 @@ p.-text
       </div>
     </div>
 
-h4 Size
+h3 Size
 p.-text
   | All three avatar styles support a full spectrum of sizes: <code>-xs</code>, <code>-sm</code>,
   | <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.

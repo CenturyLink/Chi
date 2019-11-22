@@ -6,11 +6,11 @@ script(nomodule='' src='../../../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 p.-text Toggle switches are used to switch between two possible states.
 
-h3 Examples
+h2 Examples
 p.-text
   | To render a toggle switch, use the tag <code>chi-toggle-switch</code>.
 
-h4 Base
+h3 Base
 .example.-mb--3
   .-p--3
     .m-form__item
@@ -18,7 +18,7 @@ h4 Base
   :code(lang="html")
     <chi-toggle-switch toggle-id="toggle1"></chi-toggle-switch>
 
-h4 Disabled
+h3 Disabled
 .example.-mb--3
   .-p--3
     .m-form__item
@@ -26,7 +26,7 @@ h4 Disabled
   :code(lang="html")
     <chi-toggle-switch toggle-id="toggle2" disabled></chi-toggle-switch>
 
-h4 No Label
+h3 No Label
 p.-text
   | By default, toggle switches are labeled with text <code>ON/OFF</code>. To disable this, use the <code>no-text</code> attribute.
 .example.-mb--3
@@ -36,7 +36,7 @@ p.-text
   :code(lang="html")
     <chi-toggle-switch toggle-id="toggle3" no-text></chi-toggle-switch>
 
-h4 Stacked
+h3 Stacked
 p.-text
   | Group toggle switches in <code>m-form__item</code> for easy stacking.
 .example.-mb--3
@@ -53,7 +53,7 @@ p.-text
       <chi-toggle-switch toggle-id="toggle5" no-text label="Outage Alerts"></chi-toggle-switch>
     </div>
 
-h4 Inline
+h3 Inline
 p.-text
   | Apply the <code>-inline</code> class to <code>m-form__item</code> for displaying toggle switches inline.
 .example.-mb--3
@@ -70,5 +70,5 @@ p.-text
       <chi-toggle-switch toggle-id="toggle7" no-text label="Outage Alerts"></chi-toggle-switch>
     </div>
 
-h3 Additional usage details
+h2 Additional usage details
 :stencilDoc(name='chi-toggle-switch')

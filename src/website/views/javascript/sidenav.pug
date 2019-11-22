@@ -15,9 +15,9 @@ p.-text
   | the <a href="../drawer/">drawer component</a> for the second level of the menu. You can initiate this component by
   | calling <code>chi.sidenav(document.querySelector('.m-sidenav'));</code>
 
-h3 Examples
+h2 Examples
 
-h4(id=`example-${example}`) Base
+h3(id=`example-${example}`) Base
 .example.-mb--3
   .-d--flex(style='overflow: hidden;')
     aside.m-sidenav.-flex--shrink0(id=`sidenav-${example}`)
@@ -236,7 +236,7 @@ h4(id=`example-${example}`) Base
     :code(lang="html")
       <script>chi.sidenav(document.getElementById('sidenav-0'));</script>
 
-h3 Options
+h2 Options
 p.-text This component accepts options to configure its behavior.
 
 section.a-table.a-table__options.-bordered.-my--3
@@ -274,7 +274,7 @@ section.a-table.a-table__options.-bordered.-my--3
 
 - example++;
 
-h4(id=`example-${example}`) Autoclose
+h3(id=`example-${example}`) Autoclose
 .example.-mb--3
   .-d--flex(style='overflow: hidden;')
     aside.m-sidenav.-flex--shrink0(id=`sidenav-${example}`)
@@ -500,7 +500,7 @@ h4(id=`example-${example}`) Autoclose
         );
       </script>
 
-h4 Preventing memory leaks
+h3 Preventing memory leaks
 p.-text
   | Drawer components have a dispose function to free all resources attached to the element, such as event listeners
   | and object data. You should call this method when you want to remove the component.

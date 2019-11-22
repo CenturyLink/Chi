@@ -5,7 +5,7 @@ title: Button
 p.-text
   | Buttons are used to trigger actions in forms, modals, and more.
 
-h3 Button tags
+h2 Button tags
 p.-text
   | To render a button, apply the class <code>a-btn</code> to a <code>&lt;button&gt;</code> element.
   | Although buttons were designed for the <code>&lt;button&gt;</code> element, Chi
@@ -26,9 +26,9 @@ p.-text
     <input class="a-btn" type="submit" value="Submit">
     <input class="a-btn" type="reset" value="Reset">
 
-h3 Examples
+h2 Examples
 
-h4 Base
+h3 Base
 p.-text
   | Chi includes a wide variety of predefined button styles. For light backgrounds,
   | please use base, <code>-primary</code>, or <code>-dark</code> buttons. For
@@ -54,7 +54,7 @@ p.-text
     <button class="a-btn -secondary">Secondary</button>
     <button class="a-btn -light">Light</button>
 
-h4 Outline
+h3 Outline
 p.-text
   | To remove a buttons solid background and keep its colored border, apply the class
   | <code>-outline</code>.
@@ -76,7 +76,7 @@ p.-text
     <button class="a-btn -secondary -outline">Secondary</button>
     <button class="a-btn -light -outline">Light</button>
 
-h4 Flat
+h3 Flat
 p.-text
   | To render a button with a transparent background and border, apply the class
   | <code>-flat</code>.
@@ -98,7 +98,7 @@ p.-text
     <button class="a-btn -secondary -flat">Secondary</button>
     <button class="a-btn -light -flat">Light</button>
 
-h3 Pill
+h2 Pill
 p.-text Use the <code>-pill</code> modifier class to render buttons with a more pronounced border-radius.
 .example.-mb--3
   .-p--3
@@ -106,7 +106,7 @@ p.-text Use the <code>-pill</code> modifier class to render buttons with a more 
   :code(lang='html')
     <button class="a-btn -pill">Button</button>
 
-h3 Fluid
+h2 Fluid
 p.-text Buttons can be expanded to fill the parent space by applying the class <code>-fluid</code>.
 .example.-mb--3
   .-p--3
@@ -118,7 +118,7 @@ p.-text Buttons can be expanded to fill the parent space by applying the class <
     <!-- center aligned content -->
     <button class="a-btn -fluid -justify-content--center">Button</button>
 
-h3 Icon buttons
+h2 Icon buttons
 p.-text
   | For interfaces with limited space, an <code>-icon</code> button can
   | be used for common actions such as editing, deleting, closing, etc.
@@ -144,7 +144,7 @@ p.-text
       </div>
     </button>
 
-h4 Labeled icon buttons
+h3 Labeled icon buttons
 .example.-mb--3
   .-p--2
     button(class=`a-btn -m--1`)
@@ -184,7 +184,7 @@ h4 Labeled icon buttons
       </div>
     </button>
 
-h4 Floating icon buttons
+h3 Floating icon buttons
 .example.-mb--3
   .a-grid.-noGutter
     .a-col.-w--12.-w-md--6
@@ -228,7 +228,7 @@ h4 Floating icon buttons
       </div>
     </button>
 
-h4 Close icon button
+h3 Close icon button
 
 .example.-mb--3
   .-p--3
@@ -259,7 +259,7 @@ h4 Close icon button
         </div>
       </button>
 
-h3 Danger
+h2 Danger
 p.-text
   | For special cases, such as styling a destructive action in an
   | application (e.g. Delete Account), a <code>-danger</code> button may be used.
@@ -273,7 +273,7 @@ p.-text
     <button class="a-btn -danger -outline">Danger</button>
     <button class="a-btn -danger -flat">Danger</button>
 
-h3 Sizes
+h2 Sizes
 p.-text
   | Buttons supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
   |  <code>-lg</code>, <code>-xl</code>.

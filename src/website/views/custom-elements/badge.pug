@@ -6,12 +6,12 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 p.-text Badges are inline elements used to label, categorize, or organize a list of items.
 
-h3 Examples
+h2 Examples
 p.-text
   | To display a badge, use the tag <code>&lt;chi-badge&gt;</code>.
   | A contextual color (e.g. <code>dark</code>) can also be set to the <code>color</code> attribute to provide alternate styling.
 
-h4 Base
+h3 Base
 .example.-mb--3
   .a-grid.-noGutter
     .a-col.-w--12
@@ -40,7 +40,7 @@ h4 Base
     <chi-badge color="secondary">Secondary</chi-badge>
     <chi-badge color="light">Light</chi-badge>
 
-h4 Outline
+h3 Outline
 p.-text Set the <code>variant</code> attribute value to <code>outline</code>.
 .example.-mb--3
   .a-grid.-noGutter
@@ -68,7 +68,7 @@ p.-text Set the <code>variant</code> attribute value to <code>outline</code>.
     <chi-badge color="secondary" variant="outline">Secondary</chi-badge>
     <chi-badge color="light" variant="outline">Light</chi-badge>
 
-h4 Flat
+h3 Flat
 p.-text Set the <code>variant</code> attribute value to <code>flat</code>.
 .example.-mb--3
   .a-grid.-noGutter
@@ -96,7 +96,7 @@ p.-text Set the <code>variant</code> attribute value to <code>flat</code>.
     <chi-badge color="secondary" variant="flat">Secondary</chi-badge>
     <chi-badge color="light" variant="flat">Light</chi-badge>
 
-h3 Pills
+h2 Pills
 p.-text Use the <code>pill</code> attribute to render badges with a more pronounced border-radius.
 .example.-mb--3
   .-p--2
@@ -104,7 +104,7 @@ p.-text Use the <code>pill</code> attribute to render badges with a more pronoun
   :code(lang="html")
     <chi-badge pill>Badge</chi-badge>
 
-h3 Icon badges
+h2 Icon badges
 p.-text Icons can be placed before, after, or on both sides of text.
 .example.-mb--3
   .-p--2
@@ -152,8 +152,8 @@ p.-text Icons can be placed before, after, or on both sides of text.
       <span>Offline</Badge>
     </chi-badge>
 
-h3 Additional Sizes
-h4 Small
+h2 Additional Sizes
+h3 Small
 p.-text Set the attribute <code>size</code> to <code>sm</code> to render small badges.
 .example.-mb--3
   .-p--2
@@ -167,7 +167,7 @@ p.-text Set the attribute <code>size</code> to <code>sm</code> to render small b
       <chi-icon icon="atom"></chi-icon>
       <span>Badge</span>
     </chi-badge>
-h4 Extra small
+h3 Extra small
 p.-text Set the attribute <code>size</code> to <code>xs</code> to render even smaller badges.
 .example.-mb--3
   .-p--2
@@ -181,7 +181,7 @@ p.-text Set the attribute <code>size</code> to <code>xs</code> to render even sm
       <chi-icon icon="atom"></chi-icon>
       <span>Badge</span>
     </chi-badge>
-h3 Text Transform
+h2 Text Transform
 p.-text Set the <code>text-transform</code> attribute to <code>uppercase</code> to render badges in uppercase,
   | <code>lowercase</code> to render badges in lowercase and <code>capitalized</code> to render badges as capitalized.
 .example.-mb--3
@@ -194,5 +194,5 @@ p.-text Set the <code>text-transform</code> attribute to <code>uppercase</code> 
     <chi-badge text-transform="lowercase">BADGE</chi-badge>
     <chi-badge text-transform="capitalized">badge</chi-badge>
 
-h3 Additional usage details
+h2 Additional usage details
 :stencilDoc(name='chi-badge')

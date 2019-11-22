@@ -1,7 +1,7 @@
 ---
 title: Popover
 ---
-h3 Base
+h2 Base
 p.-text
   | To render a popover, add your HTML code to a <code>data-popover-content</code> attribute. Then,
   | you can initialize it with the <code>chi.popover</code> factory method.
@@ -22,7 +22,7 @@ p.-text
   span.a-badge.-primary.-mr1
     span Tip
   | If you specify the content via the <code>data-content</code> attribute or the <code>content</code> configuration
-  | parameter, it will override the contents of the target. Use it wisely. 
+  | parameter, it will override the contents of the target. Use it wisely.
 .example.-mb--3
   .-p--3
     button#popover-1b(data-target='#popover-in-html').a-btn Popover
@@ -37,7 +37,7 @@ p.-text
     </div>
     <script>chi.popover(document.getElementById('popover-1b'));</script>
 
-h3 Positioning
+h2 Positioning
 p.-text
   | By default, popover's position on top of an element. To alter position, use
   | the <code>data-position</code> attribute. Valid values are <code>top</code>,
@@ -101,7 +101,7 @@ ul#a-tabs--positioning.a-tabs
       <button data-position='left-end' data-popover-content='<div class="-px--2 -py--1"><h5>Popover positioning</h5><p>This popover is left end positioned.</p></div>'>Left end popover</button>
       <script>chi.popover(document.querySelectorAll('[data-popover-content])');</script>
 
-h3 Options
+h2 Options
 p.-text This component accepts options to configure its behavior.
 
 section.a-table.a-table__options.-bordered.-my--3
@@ -213,8 +213,8 @@ section.a-table.a-table__options.-bordered.-my--3
               | Set <code>preventAutoHide</code> to <code>true</code> to prevent hidding the popover when clicking
               | outside the popover.
 
-h3 Methods
-h4 .setContent()
+h2 Methods
+h3 .setContent()
 p.-text
   | Use this method to change the content of the popover. It discards any previously attached content, so any
   | resources attached to the content should be removed to prevent memory leaks. This method accepts a string or an
@@ -228,8 +228,8 @@ p.-text
       var popover = chi.popover(document.getElementById('popover-2'));
       popover.setContent('<div class="-px--2 -py--1">Bar</div>');
     </script>
-    
-h4 .show(), .hide(), .toggle()
+
+h3 .show(), .hide(), .toggle()
 p.-text
   | Use this methods to control popover visibility.
 .example.-mb--3
@@ -262,17 +262,17 @@ p.-text
       });
     </script>
 
-h3 Events
-h4 chi.popover.show
+h2 Events
+h3 chi.popover.show
 p.-text
   | The element the popover is attached to (usually a button), dispatches this event when the popover is to be
   | <strong>shown</strong>.
-h4 chi.popover.hide
+h3 chi.popover.hide
 p.-text
   | The element the popover is attached to (usually a button), dispatches this event when the popover is to be
   | <strong>hidden</strong>.
 
-h4 Preventing memory leaks
+h3 Preventing memory leaks
 p.-text
   | Popover components have a dispose function to free all resources attached to the element, such as event listeners
   | and object data. You must call this method when you want to remove the component.

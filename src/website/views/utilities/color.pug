@@ -4,12 +4,12 @@ title: Color
 
 p.-text Use shorthand color utility classes to quickly apply or remove a background color.
 
-h3 Notation
+h2 Notation
 p.-text
   | Color utility classes can be defined using the format <code>-bg-{breakpoint}--{value}</code>.
   | Breakpoints supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
 
-h4 Target all breakpoints
+h3 Target all breakpoints
 p.-text Color utility classes with no breakpoint defined apply to all screen sizes.
 section.a-table.-bordered.-mt--3.-mb--3
   div
@@ -38,7 +38,7 @@ section.a-table.-bordered.-mt--3.-mb--3
               else
                 .-text.-b--1(style=`background-color:${val};height:15px;`)
 
-h4 Target specific breakpoints
+h3 Target specific breakpoints
 p.-text To target a specific breakpoint, add the breakpoint abbreviation to the class.
 section.a-table.-bordered.-mt--3.-mb--3
   div
@@ -57,7 +57,7 @@ section.a-table.-bordered.-mt--3.-mb--3
                 code= '-bg-' + size + '--' + type
               td.-text Visible only from <code>#{size}</code>
 
-h3 Examples
+h2 Examples
 .example.-mb--3
   .-p--3
     .-text.-b--1.-p--3.-m--1.-bg--primary(style="color:white;") -bg--primary

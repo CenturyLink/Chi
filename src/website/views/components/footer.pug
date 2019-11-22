@@ -3,14 +3,14 @@ title: Footer
 ---
 
 p.-text Footers are used to render links to important destinations inside and outside CenturyLink applications.
-h3 Basics
+h2 Basics
 p.-text
   | To use footers, apply the class <code>o-footer</code> to the <code>&lt;footer&gt;</code> HTML5 tag and
   | wrap all content inside a container with the <code>o-footer__content</code> class. Use <code>o-footer__top</code>
   | to position elements at the top of the footer and <code>o-footer__bottom</code> to
   | position elements at the bottom of the footer.
-h3 Examples
-h4 Base
+h2 Examples
+h3 Base
 .example.-mb--3
   .-p--3(style="background-color:#eee;border-radius:.15em .15em 0 0;")
     footer.o-footer(style="background-color:#fff")
@@ -45,7 +45,7 @@ h4 Base
       </div>
     </footer>
 
-h4 Inverse
+h3 Inverse
 .example.-mb--3
   .-p--3(style="background-color:#eee;border-radius:.15em .15em 0 0;")
     footer.o-footer.-inverse
@@ -80,7 +80,7 @@ h4 Inverse
       </div>
     </footer>
 
-h4 With menu
+h3 With menu
 ul#a-tabs--menu.a-tabs
   li.-active
     a(href='#a-tabs-panel--menu-base') Base
@@ -142,7 +142,7 @@ ul#a-tabs--menu.a-tabs
         </div>
       </footer>
 
-h4 With subfooter
+h3 With subfooter
 ul#a-tabs--subfooter.a-tabs
   li.-active
     a(href='#a-tabs-panel--subfooter-base') Base
@@ -346,7 +346,7 @@ ul#a-tabs--subfooter.a-tabs
         </div>
       </footer>
 
-h4 Fluid vs Fixed Width
+h2 Fluid vs Fixed Width
 p.-text
   | Footer content displays as fluid by default. To disable fluidity, apply a utility class max-width (e.g. max-width: 980px;) <code>-mw--980</code>
   | to <code>o-footer__top</code> or to <code>o-footer__bottom</code>.

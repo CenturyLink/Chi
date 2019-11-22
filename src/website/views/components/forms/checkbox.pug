@@ -3,12 +3,12 @@ title: Checkbox
 ---
 p.-text Checboxes are used to select one or several options in a list.
 
-h3 Examples
+h2 Examples
 p.-text
   | To render a checkbox, apply the class <code>a-input</code> to an <code>input type="checkbox"</code>.
   | For proper styling, checkboxes require an empty label element defined immediately after their declaration.
 
-h4 Stacked
+h3 Stacked
 p.-text
   | Group checkboxes in <code>m-form__item</code> for easy stacking. Apply class <code>-row</code> to display checkbox and label inline.
 .example.-mb--3
@@ -33,7 +33,7 @@ p.-text
       <label class="-text" for="checkbox2">Disabled Checkbox</label>
     </div>
 
-h4 Inline
+h3 Inline
 p.-text
   | Apply the class <code>-inline</code> to <code>m-form__item</code> to display two or more checkboxes in one row.
 .example.-mb--3
@@ -62,11 +62,11 @@ h2 Checkbox List
 p.-text
   | Checkbox lists are used to wrap a series of checkbox in a list.
 
-h3 Examples
+h2 Examples
 p.-text To render a series of checkboxes in a list, apply the class <code>-list</code> to <code>m-form__item</code>.
 .example.-mb--3
   .-p--3
-    h5 Select an option
+    legend.a-label Select an option
     ul.m-form__item.-list(style="max-width:20rem")
       li.m-form__item.-row
         input(type="checkbox", class="a-input", id="checkbox-1")
@@ -89,7 +89,7 @@ p.-text To render a series of checkboxes in a list, apply the class <code>-list<
         label(for="checkbox-5")
         label.-text(for="checkbox-5") Option 5
   :code(lang='html')
-    <h5>Select an option</h5>
+    <legend class="a-label">Select an option</legend>
     <ul class="m-form__item -list">
       <li class="m-form__item -row">
         <input type="checkbox" class="a-input" id="checkbox1">

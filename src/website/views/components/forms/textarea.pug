@@ -4,11 +4,11 @@ title: Textarea
 
 p.-text Textareas are used to input multi-line text data
 
-h3 Examples
+h2 Examples
 p.-text
   | To render a textarea, apply the class <code>a-input</code> to a <code>textarea</code>.
 
-h4 Base
+h3 Base
 .example.-mb--3
   .-p--3
     textarea.a-input(placeholder='Placeholder', style="max-width:30rem") Sample text
@@ -17,7 +17,7 @@ h4 Base
       Sample text
     </textarea>
 
-h4 Disabled
+h3 Disabled
 .example.-mb--3
   .-p--3
     textarea.a-input(disabled, style="max-width:30rem") Sample text
@@ -26,7 +26,7 @@ h4 Disabled
       Sample text
     </textarea>
 
-h4 With Label
+h3 With Label
 .example.-mb--3
   .-p--3
     .m-form__item(style="max-width:30rem")
@@ -40,13 +40,13 @@ h4 With Label
       </textarea>
     </div>
 
-h3 Icons
+h2 Icons
 p.-text
   | To add icons to a textarea, wrap the input in a <code>div</code> using the class <code>m-input__wrapper</code>.
   | Next, add the icon as a sibling of the <code>textarea</code> and use an icon alignment utility class
   | (e.g. <code>-icon--left</code>) to specify where it should be placed.
 
-h4 Left Aligned
+h3 Left Aligned
 .example.-mb--3
   .-p--3
     .m-input__wrapper.-icon--left(style="max-width:30rem")
@@ -60,7 +60,7 @@ h4 Left Aligned
       <i class="a-icon icon-map-marker -text--muted"></i>
     </div>
 
-h4 Right Aligned
+h3 Right Aligned
 .example.-mb--3
   .-p--3
     .m-input__wrapper.-icon--right(style="max-width:30rem")
@@ -74,7 +74,7 @@ h4 Right Aligned
       <i class="a-icon icon-circle-question-outline -text--muted"></i>
     </div>
 
-h4 Left + Right Aligned
+h3 Left + Right Aligned
 .example.-mb--3
   .-p--3
     .m-input__wrapper.-icon--left.-icon--right(style="max-width:30rem")
@@ -90,13 +90,13 @@ h4 Left + Right Aligned
       <i class="a-icon icon-check-alt -text--success"></i>
     </div>
 
-h3 States
+h2 States
 
 p.-text
   | Textareas offer three validation states: <code>-success</code>,
   | <code>-warning</code>, and <code>-danger</code>.
 
-h4 Success
+h3 Success
 .example.-mb--3
   .-p--3
     textarea.a-input.-success(style="max-width:30rem") Sample text
@@ -118,7 +118,7 @@ h4 Success
       <i class="a-icon icon-check-alt -text--success"></i>
     </div>
 
-h4 Warning
+h3 Warning
 .example.-mb--3
   .-p--3
     textarea.a-input.-warning(style="max-width:30rem") Sample text
@@ -140,7 +140,7 @@ h4 Warning
       <i class="a-icon icon-warning -text--warning"></i>
     </div>
 
-h4 Danger
+h3 Danger
 .example.-mb--3
   .-p--3
     textarea.a-input.-danger(style="max-width:30rem") Sample text
@@ -162,7 +162,7 @@ h4 Danger
       <i class="a-icon icon-circle-warning -text--danger"></i>
     </div>
 
-h3 Sizes
+h2 Sizes
 p.-text
   | Textareas supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
   |  <code>-lg</code>, <code>-xl</code>.
