@@ -63,10 +63,11 @@ $sizes: (
                 margin: 0.5rem 0 0 0.5rem;
 
                 & label {
+                  font-weight: 600;
                   margin-right: 1rem;
                 }
               }
-              
+
               & div:first-of-type + div {
                 margin-left: 2.5rem;
                 padding: 0.5rem 0 0.5rem 0;
@@ -96,17 +97,26 @@ $sizes: (
         &:checked {
           & + label {
             & .a-input {
-              & + label {
-                &::before {
-                  background-color: $brand-color;
-                  border-color: $brand-color;
-                }
+              background-color: $brand-color;
+              border-color: $brand-color;
+              position: relative;
 
-                &::after {
-                  background-image: url(icon-check.svg);
-                  transform: scale(1);
-                }
+              &::after {
+                border: 2px solid $text-white;
+                border-right: none;
+                border-top: none;
+                box-sizing: content-box;
+                content: '';
+                height: 0.2rem;
+                left: 0.0625rem;
+                position: absolute;
+                top: 0.125rem;
+                transform: rotate(-45deg);
+                width: 0.5rem;
               }
+            }
+            & label {
+              font-weight: 600;
             }
           }
         }

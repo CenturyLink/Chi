@@ -78,31 +78,49 @@ div(class=`test-dropdown-searchBox`)
       a.m-dropdown__menu-item(href='#') Element 1
       a.m-dropdown__menu-item(href='#') Element 2
 
-- var inputTypes = ["checkbox", "radio"];
 - var inputStates = ["", "disabled", "checked"]
-each inputType in inputTypes
-  div(class=`test-dropdown-${inputType}`)
-    span.a-h2=inputType
-    .m-dropdown__menu.-active
-      each inputState in inputStates
-        .m-dropdown__menu-item
-          input(type=inputType, class="a-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
-          label(for=`${inputType}${inputState}`)
-          label.-text(for=`${inputType}${inputState}`)="Element " + inputType + " " + inputState
+div(class=`test-dropdown-checkbox`)
+  span.a-h2 Checkbox
+  .m-dropdown__menu.-active
+    each inputState in inputStates
+      .m-dropdown__menu-item
+        input(type="checkbox", class="a-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+        label.-text(for=`checkbox${inputState}`)="Element checkbox " + inputState
 
-each inputType in inputTypes
-  div(class=`test-dropdown-${inputType}-icon`)
-    span.a-h2=inputType + " with icons"
-    .m-dropdown__menu.-active
-      each inputState in inputStates
-        .m-dropdown__menu-item
-          input(type=inputType, class="a-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
-          label(for=`${inputType}${inputState}`)
-          label.-text(for=`${inputType}${inputState}`)
-            .a-icon
-              svg
-                use(xlink:href='#icon-logo-centurylink')
-            ="Element " + inputType + " " + inputState
+div(class=`test-dropdown-checkbox-icon`)
+  span.a-h2 Checkbox with icons
+  .m-dropdown__menu.-active
+    each inputState in inputStates
+      .m-dropdown__menu-item
+        input(type="checkbox", class="a-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+        label.-text(for=`checkbox${inputState}`)
+          .a-icon
+            svg
+              use(xlink:href='#icon-logo-centurylink')
+          ="Element checkbox " + inputState
+
+- var inputStates = ["", "disabled", "checked"]
+div(class=`test-dropdown-radio`)
+  span.a-h2 Radio
+  .m-dropdown__menu.-active
+    each inputState in inputStates
+      .m-dropdown__menu-item
+        input(type="radio", class="a-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+        label(for=`radio${inputState}`)
+        label.-text(for=`radio${inputState}`)="Element radio " + inputState
+
+div(class=`test-dropdown-radio-icon`)
+  span.a-h2 Radio with icons
+  .m-dropdown__menu.-active
+    each inputState in inputStates
+      .m-dropdown__menu-item
+        input(type="radio", class="a-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+        label(for=`radio${inputState}`)
+        label.-text(for=`radio${inputState}`)
+          .a-icon
+            svg
+              use(xlink:href='#icon-logo-centurylink')
+          ="Element radio " + inputState
 
 div(class=`test-dropdown-text`)
   span.a-h2 Plain text

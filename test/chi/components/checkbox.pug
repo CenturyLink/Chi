@@ -15,12 +15,6 @@ title: Checkbox
         checked=state=='checked' ? 'checked' : false
         disabled=state=='disabled' ? 'disabled' : false
       )
-      label(
-        for=`checkbox-${index}`
-        class={
-          [`-${state}`]: state == 'hover'
-        }
-      )
       label(for=`checkbox-${index}`) Checkbox
 
 h2 Checkbox List
@@ -38,11 +32,5 @@ h2 Checkbox List
           }
           checked=state == 'checked' ? 'checked' : false
           disabled=state == 'disabled' ? 'disabled' : false
-          )
-          label(
-          for=`checkbox--${element}`
-          class={
-            [`-${state}`]: state == 'hover'
-          }
           )
           label(for=`checkbox--${element}`)= `Checkbox-${element}`
