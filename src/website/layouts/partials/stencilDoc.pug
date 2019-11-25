@@ -76,41 +76,40 @@ mixin events(events)
 
 mixin methods(methods)
   if methods.length
-    h3 Methods
-
-    each method in methods
-      h4=method.signature
-      if method.docs
-        p.-text=method.docs
-      if method.parameters.length
-        h5 Parameters
-        if method.parameters.length
-          section.a-table.a-table__options.-bordered.-my--3
-            div(style='overflow-x:auto;')
-              table.-text(cellpadding='0', cellspacing='0')
-                thead
-                  tr
-                    th
-                      div Name
-                    th
-                      div Type
-                    th
-                      div Description
-                tbody
-                  each parameter in method.parameters
-                    tr
-                      td
-                        div
-                          code=parameter.name
-                      td
-                        div
-                          code=parameter.type
-                      td
-                        div=parameter.docs
-      if method.returns
-        h5 Returns
-        p.-text Type: #{method.returns.type}
-        p.-text= method.returns.docs
+    h4 Methods
+    section.a-table.a-table__options.-bordered.-my--3
+      div(style='overflow-x:auto;')
+        table.-text(cellpadding='0', cellspacing='0')
+          thead
+            tr
+              th
+                div Method
+              th
+                div Description
+              th
+                div Returns
+              th
+                div Parameters
+          tbody
+            each method in methods
+              tr
+                td
+                  div
+                    code=method.signature
+                td
+                  div=method.docs
+                td
+                  div
+                    if method.returns
+                      p.-text Type: #{method.returns.type}
+                  td
+                    div
+                      each parameter in method.parameters
+                        |#{parameter.name}:#{code=parameter.type}
+                        if parameter.docs
+                          div
+                            | Description:
+                            code=parameter.docs
 
 each component in data.components
   if component.tag === name
