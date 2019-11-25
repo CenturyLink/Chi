@@ -36,7 +36,7 @@ export class DatePicker {
   /**
    *  to disable chi-date-picker.
    */
-  @Prop({ reflectToAttr: true }) disabled = false;
+  @Prop({ reflect: true }) disabled = false;
 
   /**
    * Indicates whether the dropdown calendar is open or closed
@@ -130,7 +130,7 @@ export class DatePicker {
     this._onFocusIn = this._onFocusIn.bind(this);
     this._onClick = this._onClick.bind(this);
     this._onKeyUp = this._onKeyUp.bind(this);
-    this._uuid = uuid4();
+    this._uuid = this.el.id ? this.el.id : `dp-${uuid4()}`;
   }
 
   componentDidLoad(): void {
@@ -149,7 +149,7 @@ export class DatePicker {
       <chi-popover
         id="example-4-be-popover"
         position="bottom"
-        reference={`#dp-${this._uuid}`}
+        reference={`#${this._uuid}-control`}
         prevent-auto-hide
         active={this.active}
       >
@@ -168,11 +168,11 @@ export class DatePicker {
       // some of its configuration attributes. Also will have an icon.
       <div
         class={`${
-          this.disabled && '-disabled'
+          this.disabled ? '-disabled' : ''
           } m-input__wrapper -icon--right`}
       >
         <input
-          id={`dp-${this._uuid}`}
+          id={`${this._uuid}-control`}
           class={`a-input
             ${this.active ? '-focus' : ''}`}
           type={`text`}
