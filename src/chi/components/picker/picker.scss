@@ -65,6 +65,10 @@ $sizes: (
                 & label {
                   font-weight: 600;
                   margin-right: 1rem;
+
+                  &::before {
+                    margin-right: 1rem;
+                  }
                 }
               }
 
@@ -87,6 +91,18 @@ $sizes: (
             box-shadow: inset 0 0 0 0.0625rem $secondary-color;
             color: $text-color;
             font-weight: 600;
+
+            .m-picker__content {
+              &--start {
+                & .a-input {
+                  & + label {
+                    &::after {
+                      top: 0.25rem;
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -97,27 +113,37 @@ $sizes: (
         &:checked {
           & + label {
             & .a-input {
-              background-color: $brand-color;
-              border-color: $brand-color;
-              position: relative;
+              & + label {
+                font-weight: 600;
 
-              &::after {
-                border: 2px solid $text-white;
-                border-right: none;
-                border-top: none;
-                box-sizing: content-box;
-                content: '';
-                height: 0.2rem;
-                left: 0.0625rem;
-                position: absolute;
-                top: 0.125rem;
-                transform: rotate(-45deg);
-                width: 0.5rem;
+                &::before {
+                  background-color: $brand-color;
+                  border-color: $brand-color;
+                  position: relative;
+                }
+
+                &::after {
+                  border: 2px solid $text-white;
+                  border-right: none;
+                  border-top: none;
+                  box-sizing: content-box;
+                  content: '';
+                  display: block;
+                  height: 0.2rem;
+                  left: 0.1875rem;
+                  position: absolute;
+                  top: 0.375rem;
+                  transform: rotate(-45deg);
+                  width: 0.5rem;
+                }
               }
             }
-            & label {
-              font-weight: 600;
-            }
+          }
+        }
+
+        & + label {
+          & label {
+            line-height: 1.25rem;
           }
         }
       }

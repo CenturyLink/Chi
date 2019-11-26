@@ -226,10 +226,19 @@
       margin-bottom: 0;
     }
 
-    input[type='checkbox'].a-input + label,
     input[type='radio'].a-input + label {
       margin-bottom: 0;
       margin-right: 1rem;
+    }
+
+    input[type='checkbox'] {
+      + label {
+        margin-right: 0;
+        
+        &::before {
+          margin-right: 1rem;
+        }
+      }
     }
   }
 }
