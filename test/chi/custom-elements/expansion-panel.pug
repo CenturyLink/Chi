@@ -15,9 +15,9 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 .test-expansion-panel-active.-mb--3(style="min-width: 20rem")
     chi-expansion-panel(heading='Expansion panel #2', state="active", data-cy='test-active')
-        div(slot='active' class='-text')
+        div(slot='active')
             .m-epanel__subtitle Active
-            p.m-epanel__text Active content in expansion panel.
+            p.m-epanel__text.-mb--0 Active content in expansion panel.
         div(slot='footer')
             button.a-btn.-lg Previous
             button.a-btn.-lg.-primary.-ml--2 Continue
@@ -37,9 +37,9 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 .test-expansion-panel-active-bordered.-mb--3(style="min-width: 20rem")
     chi-expansion-panel(heading='Expansion panel #6', state="active", bordered=true, data-cy='test-active-bordered')
-        div(slot='active' class='-text')
+        div(slot='active')
             .m-epanel__subtitle Active
-            p.m-epanel__text content in expansion panel.
+            p.m-epanel__text.-mb--0 Active content in expansion panel.
         div(slot='footer')
             button.a-btn.-lg Previous
             button.a-btn.-lg.-primary.-ml--2 Continue
