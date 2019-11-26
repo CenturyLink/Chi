@@ -114,17 +114,17 @@ p.-text
   | be used for common actions such as editing, deleting, closing, etc.
 .example.-mb--3
   .-p--3.-d--flex
-    chi-button(type='icon')
+    chi-button(type='icon', description="Button action")
       chi-icon(icon='atom')
-    chi-button.-ml--2(variant='flat', type='icon')
+    chi-button.-ml--2(variant='flat', type='icon', description="Button action")
       chi-icon(icon='atom')
   :code(lang='html')
-    <chi-button type="icon" >
+    <chi-button type="icon" description="Button action">
       <chi-icon icon="atom"></chi-icon>
     </chi-button>
 
     <!-- flat -->
-    <chi-button variant="flat" type="icon" >
+    <chi-button variant="flat" type="icon" description="Button action">
       <chi-icon icon="atom"></chi-icon>
     </chi-button>
 
@@ -168,32 +168,32 @@ h3 Floating icon buttons
       .-p--3.-d--flex(style="justify-content: center;")
         each type, val in {Base:'', Primary:'primary', Dark:'dark'}
           div.-pr--2
-            chi-button(color=type, type='float')
+            chi-button(color=type, type='float', description="Button action")
               chi-icon(icon='atom')
     .a-col.-w--12.-w-md--6
       .-p--3.-bg--black.-d--flex(style="justify-content: center;")
         each type, val in {Secondary:'secondary', Light:'light'}
           div.-pr--2
-            chi-button(color=type, type='float')
+            chi-button(color=type, type='float', description="Button action")
               chi-icon(icon='atom')
   :code(lang='html')
-    <chi-button type="float">
+    <chi-button type="float" description="Button action">
       <chi-icon icon="atom"></chi-icon>
     </chi-button>
 
-    <chi-button type="float" color="primary">
+    <chi-button type="float" color="primary" description="Button action">
       <chi-icon icon="atom"></chi-icon>
     </chi-button>
 
-    <chi-button type="float" color="secondary">
+    <chi-button type="float" color="secondary" description="Button action">
       <chi-icon icon="atom"></chi-icon>
     </chi-button>
 
-    <chi-button type="float" color="danger">
+    <chi-button type="float" color="danger" description="Button action">
       <chi-icon icon="atom"></chi-icon>
     </chi-button>
 
-    <chi-button type="float" color="dark">
+    <chi-button type="float" color="dark" description="Button action">
       <chi-icon icon="atom"></chi-icon>
     </chi-button>
 
@@ -232,30 +232,30 @@ p.-text
       p.-text--bold.-pl--2= size
       div(class=`a-col -w--12 -pb--2 -mr--0 -d--flex`)
         chi-button(size=size)= 'Button'
-        chi-button.-ml--2(size=size, type='icon')
+        chi-button.-ml--2(size=size, type='icon', description="Button action")
           chi-icon(icon='atom')
   :code(lang='html')
     <!-- sm -->
     <chi-button size="sm">Button</chi-button>
-    <chi-button type="icon" size="sm">
+    <chi-button type="icon" size="sm" description="Button action">
       <chi-icon icon="atom" />
     </chi-button>
 
     <!-- md -->
     <chi-button size="md">Button</chi-button>
-    <chi-button type="icon" size="md">
+    <chi-button type="icon" size="md" description="Button action">
       <chi-icon icon="atom" />
     </chi-button>
 
     <!-- lg -->
     <chi-button size="lg">Button</chi-button>
-    <chi-button type="icon" size="lg">
+    <chi-button type="icon" size="lg" description="Button action">
       <chi-icon icon="atom" />
     </chi-button>
 
     <!-- xl -->
     <chi-button size="xl">Button</chi-button>
-    <chi-button type="icon" size="xl">
+    <chi-button type="icon" size="xl" description="Button action">
       <chi-icon icon="atom" />
     </chi-button>
 

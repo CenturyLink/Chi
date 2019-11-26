@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-11-22T02:36:25",
+  "timestamp": "2019-11-26T14:15:27",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.7.5",
@@ -405,6 +405,22 @@
           "attr": "color",
           "reflectToAttr": true,
           "docs": "to set button color { primary, secondary, danger, dark, light }.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": true,
+          "docs": "to describe button for screen readers.",
           "docsTags": [],
           "values": [
             {
@@ -1251,6 +1267,39 @@
           "chi-icon"
         ]
       }
+    },
+    {
+      "filePath": "src/components/label/label.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-label",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "for",
+          "type": "string",
+          "mutable": false,
+          "attr": "for",
+          "reflectToAttr": true,
+          "docs": "to set for attribute.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "src/components/number-input/number-input.tsx",
