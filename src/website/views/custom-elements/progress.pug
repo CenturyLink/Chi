@@ -14,49 +14,49 @@ p.-text
 h3 Base
 .example.-mb--3
   .-p--3
-    label.a-label(for='progress-1') 0%
-    chi-progress(id='progress-1', value='0')
-    label.a-label(for='progress-2') 50%
-    chi-progress(id='progress-2', value='50')
-    label.a-label(for='progress-3') 100%
-    chi-progress(id='progress-3', value='100')
+    .a-label 0%
+    chi-progress(value='0')
+    .a-label 50%
+    chi-progress(value='50')
+    .a-label 100%
+    chi-progress(value='100')
   :code(lang="html")
     <!-- 0% -->
-    <label class="a-label" for="progress-1">0%</label>
-    <chi-progress id="progress-1" value="0"></chi-progress>
+    <div class="a-label">0%</div>
+    <chi-progress value="0"></chi-progress>
     <!-- 50% -->
-    <label class="a-label" for="progress-1">50%</label>
-    <chi-progress id="progress-2" value="50"></chi-progress>
+    <div class="a-label">50%</div>
+    <chi-progress value="50"></chi-progress>
     <!-- 100% -->
-    <label class="a-label" for="progress-1">100%</label>
-    <chi-progress id="progress-3" value="100"></chi-progress>
+    <div class="a-label">100%</div>
+    <chi-progress value="100"></chi-progress>
 
 h3 States
 p.-text
   | To indicate a progress state, set the attribute <code>state</code> value to <code>info</code>, <code>warning</code>, <code>danger</code>, or <code>success</code>.
 .example.-mb--3
   .-p--3
-    label.a-label(for='progress-4') Danger
-    chi-progress(id='progress-4', value='75', state='danger')
-    label.a-label(for='progress-5') Info
-    chi-progress(id='progress-5', value='75', state='info')
-    label.a-label(for='progress-6') Warning
-    chi-progress(id='progress-6', value='75', state='warning')
-    label.a-label(for='progress-7') Success
-    chi-progress(id='progress-7', value='75', state='success')
+    .a-label Danger
+    chi-progress(value='75', state='danger')
+    .a-label Info
+    chi-progress(value='75', state='info')
+    .a-label Warning
+    chi-progress(value='75', state='warning')
+    .a-label Success
+    chi-progress(value='75', state='success')
   :code(lang="html")
     <!-- Danger -->
-    <label class="a-label" for="progress-4">Danger</label>
-    <chi-progress id="progress-4" value="75" state="danger"></chi-progress>
+    <div class="a-label">Danger</div>
+    <chi-progress value="75" state="danger"></chi-progress>
     <!-- Info -->
-    <label class="a-label" for="progress-5">Info</label>
-    <chi-progress id="progress-5" value="75" state="info"></chi-progress>
+    <div class="a-label">Info</div>
+    <chi-progress value="75" state="info"></chi-progress>
     <!-- Warning -->
-    <label class="a-label" for="progress-6">Warning</label>
-    <chi-progress id="progress-6" value="75" state="warning"></chi-progress>
+    <div class="a-label">Warning</div>
+    <chi-progress value="75" state="warning"></chi-progress>
     <!-- Success -->
-    <label class="a-label" for="progress-7">Success</label>
-    <chi-progress id="progress-7" value="75" state="success"></chi-progress>
+    <div class="a-label">Success</div>
+    <chi-progress value="75" state="success"></chi-progress>
 
 h3 Additional usage details
 :stencilDoc(name='chi-progress')
