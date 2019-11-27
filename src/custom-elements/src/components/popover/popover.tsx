@@ -382,11 +382,11 @@ export class Popover {
   }
 
   render() {
-    const popoverTitle = this.popoverTitle && <p class="m-popover__title">{this.popoverTitle}</p>;
+    const popoverHeader = this.popoverTitle && <header class="m-popover__header"><h2 class="m-popover__title">{this.popoverTitle}</h2></header>;
     const slot = this.variant && this.variant === 'text' ? <p class="m-popover__text"><slot /></p> : <slot />;
 
     return (
-      <div
+      <section
         class={`m-popover
           ${CLASSES.ANIMATED}
           ${this.position ? `m-popover--${this.position}` : ''}
@@ -397,13 +397,15 @@ export class Popover {
         ref={el => (this._popoverElement = el as HTMLElement)}
         aria-hidden={!this.active}
         onClick={() => this.preventAutoClose()}
+        aria-label={this.popoverTitle}
+        role="dialog"
       >
+        {popoverHeader}
         <div class="m-popover__content">
-          {popoverTitle}
           {slot}
         </div>
         {this.arrow && <div class="m-popover__arrow" />}
-      </div>
+      </section>
     );
   }
 }

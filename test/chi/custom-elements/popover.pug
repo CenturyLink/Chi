@@ -29,7 +29,8 @@ each side in moreSides
       | This is a popover content.
 
 div(class=`test-with-progress -position--relative`, style='width: 450px; height: 220px;', data-cy=`test-with-progress`)
-    span.a-h2=`Popover with progress`
-    .-position--relative
-      chi-popover(title="Current progress (75%)", active, arrow, prevent-auto-hide)
-        chi-progress(value="75")
+  span.a-h2=`Popover with progress`
+  .-position--relative
+    chi-popover(title="Popover title", active, arrow, prevent-auto-hide)
+      | Current progress (75%)
+      chi-progress(value="75")

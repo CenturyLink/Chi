@@ -124,12 +124,14 @@ p.-text
   | Popover can be used to display any kind of custom content (even other custom elements).
 
 .example.-mb--3
-  .-p--3(style='height: 125px')
+  .-p--3(style='height: 155px')
     .-position--relative
-      chi-popover(position="top", title="Current progress (75%)", active, arrow, prevent-auto-hide)
+      chi-popover(position="top", title="Popover title", active, arrow, prevent-auto-hide)
+        | Current progress (75%)
         chi-progress(value="75")
   :code(lang='html')
-    <chi-popover position="top" title="Current progress (75%)" active arrow prevent-auto-hide="prevent-auto-hide">
+    <chi-popover position="top" title="Popover title" active arrow prevent-auto-hide="prevent-auto-hide">
+      Current progress (75%)
       <chi-progress value="75"></chi-progress>
     </chi-popover>
 
