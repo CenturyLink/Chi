@@ -69,18 +69,17 @@ p.-text
 
 h3 Titled
 p.-text
-  | Add a title to a card by applying the class <code>a-card__title</code> to any heading element
-  | <code>h1</code> - <code>h6</code>. The class will override the headings default margin for optimal rendering.
+  | Add a title to a card by applying the class <code>a-card__title</code>.
 .example.-mb--3
   .-p--3
     .a-card(style="width:20rem;")
       .a-card__content
-        h5.a-card__title Title
+        .a-card__title Title
         p.-text.-m--0 This is a titled card
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__content">
-        <h5 class="a-card__title">Title</h5>
+        <div class="a-card__title">Title</div>
         <p class="-text -m--0">This is a titled card</p>
       </div>
     </div>
@@ -90,7 +89,7 @@ h3 Titled with content
   .-p--3
     .a-card(style="width:20rem;")
       .a-card__content
-        h5.a-card__title Title
+        .a-card__title Title
         p.-text.-mt--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
@@ -98,7 +97,7 @@ h3 Titled with content
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__content">
-        <h5 class="a-card__title">Title</h5>
+        <div class="a-card__title">Title</div>
         <p class="-text -mt--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
         <button class="a-btn -primary">Link</button>
       </div>
@@ -110,14 +109,14 @@ h3 Titled with content and icon
     .a-col.-w--6.-w-md--4.-w-lg--3
       .a-card
         .a-card__content.-d--flex.-flex--column.-justify-content--center.-align-items--center.-text--center
-          h6.a-card__title Capacity
+          .a-card__title Title
           i.a-icon.-sm--3.-text--grey(class ='icon-atom')
           p.-text--small.-mb--0.-mt--1 4 Running
           p.-text--smaller.-m--0.-text--grey 6 Pending
     .a-col.-w--6.-w-md--4.-w-lg--3
       .a-card.-active--alt
         .a-card__content.-d--flex.-flex--column.-justify-content--center.-align-items--center.-text--center
-          h6.a-card__title Capacity
+          .a-card__title Title
           i.a-icon.-sm--3.-text--grey(class ='icon-atom')
           p.-text--small.-mb--0.-mt--1 4 Running
           p.-text--smaller.-m--0.-text--grey 6 Pending
@@ -125,7 +124,7 @@ h3 Titled with content and icon
     <!-- Base -->
     <div class="a-card">
       <div class="a-card__content -d--flex -flex--column -justify-content--center -align-items--center -text--center">
-        <h6 class="a-card__title">Title</h5>
+        <div class="a-card__title">Title</div>
         <i class="a-icon icon-atom -sm--3 -text--grey"></i>
         <p class="-text--small -mb--0 -mt--1">4 Running</p>
         <p class="-text--smaller -m--0 -text--grey">6 Pending</p>
@@ -134,7 +133,7 @@ h3 Titled with content and icon
     <!-- Active -->
     <div class="a-card -active--alt">
       <div class="a-card__content -d--flex -flex--column -justify-content--center -align-items--center -text--center">
-        <h6 class="a-card__title">Title</h5>
+        <div class="a-card__title">Title</div>
         <i class="a-icon icon-atom -sm--3 -text--grey"></i>
         <p class="-text--small -mb--0 -mt--1">4 Running</p>
         <p class="-text--smaller -m--0 -text--grey">6 Pending</p>
@@ -275,7 +274,7 @@ h3 Header
   .-p--3
     .a-card(style="width:20rem;")
       .a-card__header
-        h5.a-card__title Title
+        .a-card__title Title
       .a-card__content
         p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
@@ -283,7 +282,7 @@ h3 Header
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__header">
-        <h5 class="a-card__title">Title</h5>
+        <div class="a-card__title">Title</div>
       </div>
       <div class="a-card__content">
         <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
@@ -296,7 +295,7 @@ p.-text Apply the class <code>-align--center</code> on <code>a-card__header</cod
   .-p--3
     .a-card(style="width:20rem;")
       .a-card__header.-align--center
-        h5.a-card__title Title
+        .a-card__title Title
       .a-card__content
         p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
@@ -304,7 +303,7 @@ p.-text Apply the class <code>-align--center</code> on <code>a-card__header</cod
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__header -align--center">
-        <h5 class="a-card__title">Title</h5>
+        <div class="a-card__title">Title</div>
       </div>
       <div class="a-card__content">
         <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
@@ -317,7 +316,7 @@ p.-text Apply the class <code>-noBorder</code> on <code>a-card__header</code> to
   .-p--3
     .a-card(style="width:20rem;")
       .a-card__header.-noBorder
-        h5.a-card__title Title
+        .a-card__title Title
       .a-card__content
         p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
@@ -325,7 +324,7 @@ p.-text Apply the class <code>-noBorder</code> on <code>a-card__header</code> to
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__header -noBorder">
-        <h5 class="a-card__title">Title</h5>
+        <div class="a-card__title">Title</div>
       </div>
       <div class="a-card__content">
         <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
@@ -338,7 +337,7 @@ p.-text Apply the class <code>-sm</code> on <code>a-card__header</code> to reduc
   .-p--3
     .a-card(style="width:20rem;")
       .a-card__header.-sm
-        h5.a-card__title Title
+        .a-card__title Title
       .a-card__content
         p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
@@ -346,7 +345,7 @@ p.-text Apply the class <code>-sm</code> on <code>a-card__header</code> to reduc
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__header -sm">
-        <h5 class="a-card__title">Title</h5>
+        <div class="a-card__title">Title</div>
       </div>
       <div class="a-card__content">
         <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
@@ -359,7 +358,7 @@ p.-text Further customize cards by adding both headers <code>a-card__header</cod
   .-p--3
     .a-card(style="width:20rem;")
       .a-card__header
-        h5.a-card__title Title
+        .a-card__title Title
       .a-card__content
         p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
@@ -369,7 +368,7 @@ p.-text Further customize cards by adding both headers <code>a-card__header</cod
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__header">
-        <h5 class="a-card__title">Title</h5>
+        <div class="a-card__title">Title</div>
       </div>
       <div class="a-card__content">
         <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
@@ -385,7 +384,7 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
   .-p--3
     .a-card(style="width:20rem;")
       .a-card__header.-sm
-        h5.a-card__title Title
+        .a-card__title Title
       .a-card__content
         p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
@@ -395,7 +394,7 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
   :code(lang="html")
     <div class="a-card">
       <div class="a-card__header -sm">
-        <h5 class="a-card__title">Title</h5>
+        <div class="a-card__title">Title</div>
       </div>
       <div class="a-card__content">
         <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>

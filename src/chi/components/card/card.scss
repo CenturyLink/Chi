@@ -23,6 +23,9 @@
     padding: 1rem;
 
     .a-card__title {
+      font-size: $text-large;
+      font-weight: 600;
+      line-height: $line-height-large;
       margin: 0 0 0.5rem 0;
     }
   }

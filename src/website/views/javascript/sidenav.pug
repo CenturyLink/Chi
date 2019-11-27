@@ -44,7 +44,7 @@ h3(id=`example-${example}`) Base
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
                     a(href=`#example-${example}`)
                       if index % 4 < 2
-                        h5.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                         p.m-sidenav__description Description for title a in a drawer inside a menu.
                       else
                         span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
@@ -108,13 +108,13 @@ h3(id=`example-${example}`) Base
               <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title A</h5>
+                    <div class="m-sidenav__title">Title A</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li class="-active">
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title B</h5>
+                    <div class="m-sidenav__title">Title B</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
@@ -141,13 +141,13 @@ h3(id=`example-${example}`) Base
               <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title E</h5>
+                    <div class="m-sidenav__title">Title E</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title F</h5>
+                    <div class="m-sidenav__title">Title F</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
@@ -174,13 +174,13 @@ h3(id=`example-${example}`) Base
               <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title I</h5>
+                    <div class="m-sidenav__title">Title I</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title J</h5>
+                    <div class="m-sidenav__title">Title J</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
@@ -207,13 +207,13 @@ h3(id=`example-${example}`) Base
               <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title M</h5>
+                    <div class="m-sidenav__title">Title M</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title N</h5>
+                    <div class="m-sidenav__title">Title N</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
@@ -301,7 +301,7 @@ h3(id=`example-${example}`) Autoclose
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
                     a(href=`#example-${example}`)
                       if index % 4 < 2
-                        h5.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                         p.m-sidenav__description Description for title a in a drawer inside a menu.
                       else
                         span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
@@ -365,13 +365,13 @@ h3(id=`example-${example}`) Autoclose
               <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title A</h5>
+                    <div class="m-sidenav__title">Title A</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li class="-active">
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title B</h5>
+                    <div class="m-sidenav__title">Title B</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
@@ -398,13 +398,13 @@ h3(id=`example-${example}`) Autoclose
               <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title E</h5>
+                    <div class="m-sidenav__title">Title E</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title F</h5>
+                    <div class="m-sidenav__title">Title F</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
@@ -431,13 +431,13 @@ h3(id=`example-${example}`) Autoclose
               <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title I</h5>
+                    <div class="m-sidenav__title">Title I</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title J</h5>
+                    <div class="m-sidenav__title">Title J</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
@@ -464,13 +464,13 @@ h3(id=`example-${example}`) Autoclose
               <ul class="m-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title M</h5>
+                    <div class="m-sidenav__title">Title M</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <h5 class="m-sidenav__title">Title N</h5>
+                    <div class="m-sidenav__title">Title N</div>
                     <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
