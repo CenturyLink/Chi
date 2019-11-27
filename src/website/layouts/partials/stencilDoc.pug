@@ -102,7 +102,8 @@ mixin methods(methods)
                   div
                     if method.returns
                       p.-text Type: #{method.returns.type}
-                  td
+                td
+                  if method.parameters.length
                     div
                       each parameter in method.parameters
                         |#{parameter.name}:#{code=parameter.type}
@@ -110,6 +111,9 @@ mixin methods(methods)
                           div
                             | Description:
                             code=parameter.docs
+                  else
+                    div.-text--center
+                      | -
 
 each component in data.components
   if component.tag === name
