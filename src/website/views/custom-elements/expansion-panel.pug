@@ -15,7 +15,7 @@ p.-text
   .example.-mb3.-mt3
     .-p3
       chi-expansion-panel(step='1', heading='Done panel', state='done')
-        div(slot='done' class='-text')
+        div(slot='done')
           | CenturyLink
           br
           | 1100 112th Ave NE
@@ -27,8 +27,8 @@ p.-text
           button.a-btn.-brand.-flat Change
       chi-expansion-panel(step='2', heading='Active panel', state='active')
         div(slot='active')
-          h5.-mt--0 Active panel title
-          p.-text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+          .m-epanel__subtitle Active panel title
+          p.m-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
             |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
             | nihil sed veritatis!
         div(slot='footer')
@@ -47,7 +47,7 @@ p.-text
     #a-tabs-done.a-tabs-panel.-active
       :code(lang='html')
         <chi-expansion-panel step="1" heading="Done panel" state="done">
-          <div slot="done" class="-text">
+          <div slot="done">
             CenturyLink</br>
             1100 112th Ave NE</br>
             Suite 400</br>
@@ -63,10 +63,10 @@ p.-text
       :code(lang='html')
         <chi-expansion-panel step="2" heading="Active panel" state="active">
           <div slot="active">
-            <h5 class="-mt--0">
+            <div class="m-epanel__subtitle">
               Active panel title
-            </h5>
-            <p class="-text -mb--0">
+            </div>
+            <p class="m-epanel__text">
               Lorem ipsum dolor sit amet...
             </p>
           </div>
@@ -83,7 +83,7 @@ p.-text
       :code(lang='html')
         <chi-expansion-panel step="4" heading="Disabled panel" state="disabled"></chi-expansion-panel>
 
-h3 Customization
+h2 Customization
 p.-text
   | This component accepts a small number of visual changes. The numbering of the panels is optional, so you can omit
   | the <code>step</code> property if you don't need it. Apart from that, including some custom content like a button
@@ -92,8 +92,8 @@ p.-text
   .-p3.-bg--grey-10
     chi-expansion-panel(heading='Expansion panel', state='active')
       div(slot='active')
-        h5.-mt--0 Active panel title
-        p.-text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+        .m-epanel__subtitle Active panel title
+        p.m-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
           |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
           | nihil sed veritatis!
       div(slot='change')
@@ -104,10 +104,10 @@ p.-text
   :code(lang='html')
     <chi-expansion-panel heading="Expansion panel" state="active">
       <div slot="active">
-        <h5 class="-mt--0">
+        <div class="m-epanel__subtitle">
           Active panel title
-        </h5>
-        <p class="-text -mb--0">
+        </div>
+        <p class="m-epanel__text">
           Lorem ipsum dolor sit amet...
         </p>
       </div>
@@ -126,14 +126,14 @@ p.-text
       </div>
     </chi-expansion-panel>
 
-h3 Bordered expansion panel
+h2 Bordered expansion panel
 p.-text
   | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
 
 .example.-mb3
   .-p3
     chi-expansion-panel(step='1', heading='Done panel', state='done', bordered=true)
-      div(slot='done' class='-text')
+      div(slot='done')
           | CenturyLink
           br
           | 1100 112th Ave NE
@@ -145,8 +145,8 @@ p.-text
         button.a-btn.-brand.-flat Change
     chi-expansion-panel(step='2', heading='Active panel', state='active', bordered=true)
       div(slot='active')
-        h5.-mt--0 Active panel title
-        p.-text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+        .m-epanel__subtitle Active panel title
+        p.m-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
           |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
           | nihil sed veritatis!
       div(slot='footer')
@@ -165,7 +165,7 @@ p.-text
   #a-tabs-bordered-done.a-tabs-panel.-active
     :code(lang='html')
       <chi-expansion-panel step="1" heading="Done panel" state="done" bordered>
-        <div slot="done" class="-text">
+        <div slot="done">
           CenturyLink</br>
           1100 112th Ave NE</br>
           Suite 400</br>
@@ -181,10 +181,10 @@ p.-text
     :code(lang='html')
       <chi-expansion-panel step="2" heading="Active panel" state="active" bordered>
         <div slot="active">
-          <h5 class="-mt--0">
+          <div class="m-epanel__subtitle">
             Active panel title
-          </h5>
-          <p class="-text -mb--0">
+          </div>
+          <p class="m-epanel__text">
             Lorem ipsum dolor sit amet...
           </p>
         </div>
@@ -219,7 +219,7 @@ p.-text
 .example.-mb3
   .-p3.-bg--grey-10
     chi-expansion-panel(heading='Expansion panel', state='done')
-      div(slot='done' class='-text')
+      div(slot='done')
         | CenturyLink
         br
         | 1100 112th Ave NE
@@ -231,8 +231,8 @@ p.-text
         button.a-btn.-brand.-flat Change
     chi-expansion-panel(heading='Expansion panel', state='active')
       div(slot='active')
-        h5.-mt--0 Active panel title
-        p.-text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+        .m-epanel__subtitle Active panel title
+        p.m-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
           |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
           | nihil sed veritatis!
       div(slot='footer')
@@ -252,7 +252,7 @@ p.-text
   #a-tabs-ex-done.a-tabs-panel.-active
     :code(lang='html')
       <chi-expansion-panel heading="Expansion panel" state="done">
-        <div slot="done" class="-text">
+        <div slot="done">
           CenturyLink</br>
           1100 112th Ave NE</br>
           Suite 400</br>
@@ -268,10 +268,10 @@ p.-text
     :code(lang='html')
       <chi-expansion-panel heading="Expansion panel" state="active">
         <div slot="active">
-          <h5 class="-mt--0">
+          <div class="m-epanel__subtitle">
             Active panel title
-          </h5>
-          <p class="-text -mb--0">
+          </div>
+          <p class="m-epanel__text">
             Lorem ipsum dolor sit amet...
           </p>
         </div>
