@@ -36,19 +36,52 @@ $popover-border-width: 0.0625rem;
     display: block;
   }
 
+  & .m-popover__header {
+    padding: 1rem 1rem 0;
+
+    & .m-popover__title {
+      font-size: $text-large;
+      font-weight: 600;
+      line-height: $line-height-large;
+      margin: 0;
+    }
+
+    & + .m-popover__content {
+      padding: 0.625rem 1rem 1rem;
+
+      & p,
+      & .m-popover__text {
+        &:first-child {
+          margin-top: 0;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .a-btn.-close {
+      position: absolute;
+      right: 0.5rem;
+      top: 0.5rem;
+    }
+  }
+
   & .m-popover__content {
     padding: 0.5rem 1rem;
 
     & .m-popover__title {
+      font-size: $text-large;
       font-weight: 600;
-      line-height: 1.5rem;
-      font-size: 1rem;
-      margin: .5rem 0;
+      line-height: $line-height-large;
+      margin: 0.5rem 0;
     }
 
     & p,
     & .m-popover__text {
+      font-size: $text;
       line-height: $line-height-small;
+      margin: 0.5rem 0;
     }
   }
 
