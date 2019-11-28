@@ -253,6 +253,7 @@ class Popover extends Component {
         this._popoverElem.querySelector('.m-popover__title').innerHTML
       );
     }
+    this._popoverElem.setAttribute('aria-modal', 'true');
   }
 
   _configurePopoverPopper() {

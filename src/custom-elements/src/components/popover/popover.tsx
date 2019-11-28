@@ -395,10 +395,11 @@ export class Popover {
           ${this._reference && this._reference.classList.contains('a-input') ? 'm-popover__input' : ''}
         `}
         ref={el => (this._popoverElement = el as HTMLElement)}
-        aria-hidden={!this.active}
         onClick={() => this.preventAutoClose()}
-        aria-label={this.popoverTitle}
         role="dialog"
+        aria-modal="true"
+        aria-label={this.popoverTitle}
+        aria-hidden={!this.active}
       >
         {popoverHeader}
         <div class="m-popover__content">

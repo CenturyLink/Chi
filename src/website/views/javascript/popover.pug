@@ -7,9 +7,9 @@ p.-text
   | you can initialize it with the <code>chi.popover</code> factory method.
 .example.-mb--3
   .-p--3
-    button#popover-1(data-popover-content='<header class="m-popover__header"><h2 class="m-popover__title">Popover!</h2></header><div class="m-popover__content"><p class="m-popover__text">This is a popover content.</p></div>').a-btn Popover
+    button#popover-1(data-popover-content='<header class="m-popover__header"><h2 class="m-popover__title">Popover title</h2></header><div class="m-popover__content"><p class="m-popover__text">Popover content.</p></div>').a-btn Popover
   :code(lang='html')
-    <button id='popover-1' class="a-btn" data-popover-content='<header class="m-popover__header"><h2 class="m-popover__title">Popover!</h2></header><div class="m-popover__content"><p class="m-popover__text">This is a popover content.</p></div>'>Popover</button>
+    <button id='popover-1' class="a-btn" data-popover-content='<header class="m-popover__header"><h2 class="m-popover__title">Popover title</h2></header><div class="m-popover__content"><p class="m-popover__text">Popover content.</p></div>'>Popover</button>
     <script>chi.popover(document.getElementById('popover-1'));</script>
 
 p.-text
@@ -29,12 +29,12 @@ p.-text
   :code(lang='html')
     <button class="a-btn" id="popover-1b" data-target="#popover-in-html">Popover</button>
     <!-- put the following code anywere in the DOM, e.g. at the end of the DOM -->
-    <section class="m-popover" id="popover-in-html" aria-hidden="false" role="dialog" aria-label="Popover title">
+    <section class="m-popover" id="popover-in-html" aria-modal="true" role="dialog" aria-label="Popover title">
       <header class="m-popover__header">
-        <h2 class="m-popover__title">Popover!</h2>
+        <h2 class="m-popover__title">Popover title</h2>
       </header>
       <div class="m-popover__content">
-        <p class="m-popover__text">This is a popover content.</p>
+        <p class="m-popover__text">Popover content.</p>
       </div>
     </section>
     <script>chi.popover(document.getElementById('popover-1b'));</script>
@@ -301,9 +301,9 @@ p.-text
 //From the popover-1b
 section.m-popover#popover-in-html
   header.m-popover__header
-    h2.m-popover__title Popover!
+    h2.m-popover__title Popover title
   .m-popover__content
-    p.m-popover__text This is a popover content at the end of the DOM
+    p.m-popover__text Popover content at the end of the DOM
 
 script.
   document.addEventListener(
