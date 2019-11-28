@@ -64,7 +64,6 @@ $sizes: (
 
                 & label {
                   font-weight: 600;
-                  margin-right: 1rem;
 
                   &::before {
                     margin-right: 1rem;
@@ -94,11 +93,60 @@ $sizes: (
 
             .m-picker__content {
               &--start {
-                & .a-input {
+                & .a-checkbox__input {
                   & + label {
                     &::after {
-                      top: 0.25rem;
+                      top: 0.1875rem;
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        & + label {
+          .m-picker__content {
+            &--start {
+              & .a-checkbox__input {
+                & + label {
+                  padding-left: 2rem;
+
+                  &::before {
+                    top: 0;
+                  }
+
+                  &:after {
+                    top: 0.1875rem;
+                  }
+
+                  &:hover {
+                    &::after {
+                      top: 0.1875rem;
+                    }
+                  }
+                }
+              }
+
+              & .m-formGroup,
+              & .m-form__item {
+                input[type='radio'] {
+                  & + label {
+                    &::before {
+                      margin-right: .5rem;
+                    }
+                  }
+                }
+
+                & .a-checkbox {
+                  line-height: 1rem;
+                }
+              }
+
+              & .m-formGroup {
+                input[type='checkbox'] {
+                  & + label {
+                    margin-right: 0;
                   }
                 }
               }
@@ -112,29 +160,19 @@ $sizes: (
       &.a-picker {
         &:checked {
           & + label {
-            & .a-input {
+            & .a-input,
+            & .a-checkbox__input {
               & + label {
                 font-weight: 600;
 
                 &::before {
                   background-color: $brand-color;
                   border-color: $brand-color;
-                  position: relative;
                 }
 
                 &::after {
-                  border: 2px solid $text-white;
-                  border-right: none;
-                  border-top: none;
-                  box-sizing: content-box;
-                  content: '';
-                  display: block;
-                  height: 0.2rem;
-                  left: 0.1875rem;
-                  position: absolute;
-                  top: 0.375rem;
-                  transform: rotate(-45deg);
-                  width: 0.5rem;
+                  background-image: url(icon-check.svg);
+                  transform: scale(1);
                 }
               }
             }
@@ -142,7 +180,7 @@ $sizes: (
         }
 
         & + label {
-          & label {
+          & .a-checkbox {
             line-height: 1.25rem;
           }
         }

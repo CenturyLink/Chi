@@ -1,49 +1,52 @@
 @import '_variables';
 @import '_mixins';
 
-input {
-  &[type='checkbox'] {
-    height: 0;
-    opacity: 0;
-    width: 0;
+.a-checkbox {
+  line-height: $line-height;
+  position: relative;
 
-    &:focus,
-    &.-focus {
-      &.a-input {
-        & + label {
-          &::before {
-            box-shadow: 0 0 0 0.25rem rgba(set-color(grey, 50), 0.25);
-          }
-        }
-      }
-    }
+  input[type='checkbox'] {
+    &.a-input,
+    &.a-checkbox__input {
+      & + label {
+        &.a-checkbox__label {
+          font-size: $text;
+          font-weight: normal;
+          line-height: $line-height-small;
+          padding-left: 1.5rem;
+          margin-right: 0;
+          margin-bottom: 0;
 
-    &:checked {
-      &.a-input {
-        & + label {
           &::before {
-            background-color: $brand-color;
-            border-color: $brand-color;
+            left: 0;
+            position: absolute;
+            top: 0.125rem;
           }
 
           &::after {
-            content: '';
-          }
-        }
-      }
-      &:focus,
-      &.-focus {
-        &.a-input {
-          & + label {
-            &::before {
-              box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
-            }
+            left: 0.1875rem;
+            position: absolute;
+            top: 0.3125rem;
           }
         }
       }
     }
+  }
+}
 
-    &.a-input {
+input {
+  &[type='checkbox'] {
+    &.a-input,
+    &.a-checkbox__input {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      pointer-events: auto;
+      width: 1px;
+
       & + label {
         & {
           align-items: center;
@@ -52,43 +55,76 @@ input {
           line-height: $line-height-smaller;
           margin-right: 0.5rem;
           position: relative;
+        }
 
-          &::before {
-            border: 2px solid set-color(grey, 50);
-            border-radius: 3px;
-            content: '';
-            height: 1rem;
-            margin-right: 0.5rem;
-            outline: none;
-            transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            width: 1rem;
-          }
+        &::before {
+          background-color: set-color(white);
+          border: 0.125rem solid set-color(grey, 50);
+          border-radius: $border-radius;
+          content: '';
+          display: block;
+          height: 1rem;
+          transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+          width: 1rem;
+        }
 
+        &::after {
+          background-image: url(icon-check--hover.svg);
+          content: '';
+          display: block;
+          height: 0.625rem;
+          left: 0.1875rem;
+          position: absolute;
+          top: calc(50% - 0.3125rem);
+          transform: scale(0);
+          transition: background-image 0.2s ease-in-out, transform 0.2s ease-in-out;
+          width: 0.625rem;
+        }
+
+        &:hover,
+        &.-hover {
           &::after {
-            border: 2px solid $text-white;
-            border-right: none;
-            border-top: none;
-            box-sizing: content-box;
-            content: none;
-            display: block;
-            height: 0.2rem;
-            left: 0.1875rem;
-            position: absolute;
-            top: 0.25rem;
-            transform: rotate(-45deg);
-            width: 0.5rem;
+            transform: scale(1);
           }
         }
       }
-    }
 
-    &[disabled] {
-      & + label {
-        color: set-color(grey, 50);
-        pointer-events: none;
+      &:checked {
+        & + label {
+          &::before {
+            background-color: $brand-color;
+            border-color: $brand-color;
+          }
 
-        &::before {
-          opacity: 0.65;
+          &::after {
+            background-image: url(icon-check.svg);
+            transform: scale(1);
+          }
+        }
+
+        &:focus,
+        &.-focus {
+          & + label::before {
+            box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
+          }
+        }
+      }
+
+      &[disabled] {
+        & ~ label {
+          color: set-color(grey, 70);
+        }
+
+        & + label {
+          opacity: 0.6;
+          pointer-events: none;
+        }
+      }
+
+      &:focus,
+      &.-focus {
+        & + label::before {
+          box-shadow: 0 0 0 0.25rem rgba(set-color(grey, 50), 0.25);
         }
       }
     }

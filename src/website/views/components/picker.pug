@@ -43,16 +43,19 @@ ul#a-tabs--Checkbox.a-tabs
           input(type="checkbox", class="a-picker", id=`ic-${type}`)
           label(for=`ic-${type}`)
             div.m-form__item.-row
-              input(type="checkbox", class="a-input", id=`ic-${type}`)
-              label(for=`ic-${type}`)
-                = type
+              .a-checkbox
+                input(type="checkbox", class="a-checkbox__input", id=`ic-${type}`)
+                label(for=`ic-${type}`, class="a-checkbox__label")
+                  = type
     :code(lang="html")
       <div class="m-picker">
         <input class="a-picker" type="checkbox" id="checkbox1">
         <label for="checkbox1">
           <div class="m-form__item -row">
-            <input class="a-input" type="checkbox" id="checkbox1">
-            <label for="checkbox1">Checkbox1</label>
+            <div class="a-checkbox">
+              <input class="a-checkbox__input" type="checkbox" id="checkbox1">
+              <label class="a-checkbox__label" for="checkbox1">Checkbox1</label>
+            </div>
           </div>
         </label>
       </div>
@@ -60,8 +63,10 @@ ul#a-tabs--Checkbox.a-tabs
         <input class="a-picker" type="checkbox" id="checkbox2">
         <label for="checkbox2">
           <div class="m-form__item -row">
-            <input class="a-input" type="checkbox" id="checkbox2">
-            <label for="checkbox2">Checkbox2</label>
+            <div class="a-checkbox">
+              <input class="a-checkbox__input" type="checkbox" id="checkbox2">
+              <label class="a-checkbox__label" for="checkbox2">Checkbox2</label>
+            </div>
           </div>
         </label>
       </div>
@@ -74,9 +79,10 @@ ul#a-tabs--Checkbox.a-tabs
           label(for=`id-${type}`)
             .m-picker__content--start
               div.m-form__item.-row
-                input(type="checkbox", class="a-input", id=`id-${type}`)
-                label(for=`id-${type}`)
-                  = type
+                .a-checkbox
+                  input(type="checkbox", class="a-checkbox__input", id=`id-${type}`)
+                  label(for=`id-${type}`, class="a-checkbox__label")
+                    = type
               div.-text--normal.-text--body.-text--small
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
     :code(lang="html")
@@ -85,8 +91,10 @@ ul#a-tabs--Checkbox.a-tabs
         <label for="checkbox1">
           <div class="m-picker__content--start">
             <div class="m-form__item -row">
-              <input class="a-input" type="checkbox" id="checkbox1">
-              <label for="checkbox1">Checkbox1</label>
+              <div class="a-checkbox">
+                <input class="a-checkbox__input" type="checkbox" id="checkbox1">
+                <label class="a-checkbox__label" for="checkbox1">Checkbox1</label>
+              </div>
             </div>
             <div class="-text--normal -text--body -text--small">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
@@ -99,8 +107,10 @@ ul#a-tabs--Checkbox.a-tabs
         <label for="checkbox2">
           <div class="m-picker__content--start">
             <div class="m-form__item -row">
-              <input class="a-input" type="checkbox" id="checkbox2">
-              <label for="checkbox2">Checkbox2</label>
+              <div class="a-checkbox">
+                <input class="a-checkbox__input" type="checkbox" id="checkbox2">
+                <label class="a-checkbox__label" for="checkbox2">Checkbox2</label>
+              </div>
             </div>
             <div class="-text--normal -text--body -text--small">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
