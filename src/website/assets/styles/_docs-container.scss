@@ -45,8 +45,24 @@
           color: set-color(grey, 50) !important;
           pointer-events: none;
         }
-      }
 
+        ul.a-tabs {
+          li {
+            .a-collection__title {
+              line-height: 1.5rem;
+              padding: 0.75rem 0 0.75rem 1.5rem;
+              font-size: .875rem;
+              font-weight: 600;
+            }
+
+            &.-active {
+              .a-collection__title {
+                color: $primary;
+              }
+            }
+          }
+        }
+      }
 
       &__content {
         background-color: set-color(white);

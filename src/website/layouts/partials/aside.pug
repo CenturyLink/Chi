@@ -4,7 +4,8 @@ nav
       if utils.hasActiveSections(collection)
         if utils.isCurrentCollection(collection, path)
           li.-active.-hasActive
-            a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
+            .a-collection__title
+              =key
             if utils.hasSections(collection)
               ul.a-tabs__subtabs
                 each section in collection
@@ -16,7 +17,8 @@ nav
                       a(href=`${rootPath}${section.path}`) #{section.title}
         else if key !== "Custom Elements"
           li.-hasActive
-            a(href=`${rootPath}${utils.getFirstClickableSection(collection).path}`) #{key}
+            .a-collection__title 
+              =key
             if utils.hasSections(collection)
               ul.a-tabs__subtabs
                 each section in collection
