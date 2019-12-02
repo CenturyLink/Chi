@@ -44,8 +44,8 @@ ul#a-tabs--Checkbox.a-tabs
           label(for=`ic-${type}`)
             div.m-form__item.-row
               .a-checkbox
-                input(type="checkbox", class="a-checkbox__input", id=`ic-${type}`)
-                label(for=`ic-${type}`, class="a-checkbox__label")
+                input(type="checkbox", class="a-checkbox__input", id=`ic-${type}-inner`)
+                label(for=`ic-${type}-inner`, class="a-checkbox__label")
                   = type
     :code(lang="html")
       <div class="m-picker">
@@ -53,8 +53,8 @@ ul#a-tabs--Checkbox.a-tabs
         <label for="checkbox1">
           <div class="m-form__item -row">
             <div class="a-checkbox">
-              <input class="a-checkbox__input" type="checkbox" id="checkbox1">
-              <label class="a-checkbox__label" for="checkbox1">Checkbox1</label>
+              <input class="a-checkbox__input" type="checkbox" id="checkbox1-inner">
+              <label class="a-checkbox__label" for="checkbox1-inner">Checkbox1</label>
             </div>
           </div>
         </label>
@@ -64,8 +64,8 @@ ul#a-tabs--Checkbox.a-tabs
         <label for="checkbox2">
           <div class="m-form__item -row">
             <div class="a-checkbox">
-              <input class="a-checkbox__input" type="checkbox" id="checkbox2">
-              <label class="a-checkbox__label" for="checkbox2">Checkbox2</label>
+              <input class="a-checkbox__input" type="checkbox" id="checkbox2-inner">
+              <label class="a-checkbox__label" for="checkbox2-inner">Checkbox2</label>
             </div>
           </div>
         </label>
@@ -80,8 +80,8 @@ ul#a-tabs--Checkbox.a-tabs
             .m-picker__content--start
               div.m-form__item.-row
                 .a-checkbox
-                  input(type="checkbox", class="a-checkbox__input", id=`id-${type}`)
-                  label(for=`id-${type}`, class="a-checkbox__label")
+                  input(type="checkbox", class="a-checkbox__input", id=`id-${type}-inner`)
+                  label(for=`id-${type}-inner`, class="a-checkbox__label")
                     = type
               div.-text--normal.-text--body.-text--small
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
@@ -92,8 +92,8 @@ ul#a-tabs--Checkbox.a-tabs
           <div class="m-picker__content--start">
             <div class="m-form__item -row">
               <div class="a-checkbox">
-                <input class="a-checkbox__input" type="checkbox" id="checkbox1">
-                <label class="a-checkbox__label" for="checkbox1">Checkbox1</label>
+                <input class="a-checkbox__input" type="checkbox" id="checkbox1-inner">
+                <label class="a-checkbox__label" for="checkbox1-inner">Checkbox1</label>
               </div>
             </div>
             <div class="-text--normal -text--body -text--small">
@@ -108,8 +108,8 @@ ul#a-tabs--Checkbox.a-tabs
           <div class="m-picker__content--start">
             <div class="m-form__item -row">
               <div class="a-checkbox">
-                <input class="a-checkbox__input" type="checkbox" id="checkbox2">
-                <label class="a-checkbox__label" for="checkbox2">Checkbox2</label>
+                <input class="a-checkbox__input" type="checkbox" id="checkbox2-inner">
+                <label class="a-checkbox__label" for="checkbox2-inner">Checkbox2</label>
               </div>
             </div>
             <div class="-text--normal -text--body -text--small">
