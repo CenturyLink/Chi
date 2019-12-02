@@ -1,11 +1,51 @@
 @import '_variables';
 @import '_mixins';
 
+.a-checkbox {
+  line-height: $line-height;
+  position: relative;
+
+  input[type='checkbox'] {
+    &.a-input,
+    &.a-checkbox__input {
+      & + label {
+        &.a-checkbox__label {
+          font-size: $text;
+          font-weight: normal;
+          line-height: $line-height-small;
+          padding-left: 1.5rem;
+          margin-right: 0;
+          margin-bottom: 0;
+
+          &::before {
+            left: 0;
+            position: absolute;
+            top: 0.125rem;
+          }
+
+          &::after {
+            left: 0.1875rem;
+            position: absolute;
+            top: 0.3125rem;
+          }
+        }
+      }
+    }
+  }
+}
+
 input {
   &[type='checkbox'] {
-    &.a-input {
-      left: -9999px;
+    &.a-input,
+    &.a-checkbox__input {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      overflow: hidden;
+      padding: 0;
       position: absolute;
+      pointer-events: auto;
+      width: 1px;
 
       & + label {
         & {
@@ -72,11 +112,11 @@ input {
 
       &[disabled] {
         & ~ label {
-          color: set-color(grey, 50);
+          color: set-color(grey, 70);
         }
 
         & + label {
-          opacity: 0.65;
+          opacity: 0.6;
           pointer-events: none;
         }
       }

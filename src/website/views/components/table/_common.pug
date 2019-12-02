@@ -3,12 +3,12 @@ mixin str(cid, name, id, date, checked)
     '-row--info': checked
   })
     td.-lh--1
-      input.a-input(
+      input.a-checkbox__input(
         type="checkbox"
         id=cid
         checked=checked
       )
-      label(for=cid)
+      label.a-checkbox__label(for=cid)
     td= name
     td= id
     td= date
@@ -63,8 +63,8 @@ mixin table(row, column, selectable)
             if column == 'ascending'
               th
                 div.-lh--1
-                  input.a-input(type="checkbox", id=`chk-1`)
-                  label(for=`chk-1`)
+                  input.a-checkbox__input(type="checkbox", id=`chk-1`)
+                  label.a-checkbox__label(for=`chk-1`)
               th(class=(`-sorted -${column}`))
                 div Name
               th ID
@@ -72,8 +72,8 @@ mixin table(row, column, selectable)
             else if column == 'descending'
               th
                 div.-lh--1
-                  input.a-input(type="checkbox", id=`chk-1`)
-                  label(for=`chk-1`)
+                  input.a-checkbox__input(type="checkbox", id=`chk-1`)
+                  label.a-checkbox__label(for=`chk-1`)
               th(class=(`-sorted -${column}`))
                 div Name
               th ID
@@ -81,8 +81,8 @@ mixin table(row, column, selectable)
           else
             th
               div.-lh--1
-                input.a-input(type="checkbox", id=`chk-1`)
-                label(for=`chk-1`)
+                input.a-checkbox__input(type="checkbox", id=`chk-1`)
+                label.a-checkbox__label(for=`chk-1`)
             th Name
             th ID
             th Last login

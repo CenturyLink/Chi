@@ -41,6 +41,7 @@ input {
 
           &::after {
             background-image: none;
+            border: none;
             color: set-color(white);
             content: 'OFF';
             display: block;
@@ -88,6 +89,10 @@ input {
         &[disabled] + label {
           opacity: 0.65;
           pointer-events: none;
+        }
+
+        &[disabled] ~ label {
+          color: set-color(grey, 50);
         }
 
         &:focus,

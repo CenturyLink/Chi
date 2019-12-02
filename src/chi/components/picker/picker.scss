@@ -63,10 +63,14 @@ $sizes: (
                 margin: 0.5rem 0 0 0.5rem;
 
                 & label {
-                  margin-right: 1rem;
+                  font-weight: 600;
+
+                  &::before {
+                    margin-right: 1rem;
+                  }
                 }
               }
-              
+
               & div:first-of-type + div {
                 margin-left: 2.5rem;
                 padding: 0.5rem 0 0.5rem 0;
@@ -86,6 +90,67 @@ $sizes: (
             box-shadow: inset 0 0 0 0.0625rem $secondary-color;
             color: $text-color;
             font-weight: 600;
+
+            .m-picker__content {
+              &--start {
+                & .a-checkbox__input {
+                  & + label {
+                    &::after {
+                      top: 0.1875rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        & + label {
+          .m-picker__content {
+            &--start {
+              & .a-checkbox__input {
+                & + label {
+                  padding-left: 2rem;
+
+                  &::before {
+                    top: 0;
+                  }
+
+                  &:after {
+                    top: 0.1875rem;
+                  }
+
+                  &:hover {
+                    &::after {
+                      top: 0.1875rem;
+                    }
+                  }
+                }
+              }
+
+              & .m-formGroup,
+              & .m-form__item {
+                input[type='radio'] {
+                  & + label {
+                    &::before {
+                      margin-right: .5rem;
+                    }
+                  }
+                }
+
+                & .a-checkbox {
+                  line-height: 1rem;
+                }
+              }
+
+              & .m-formGroup {
+                input[type='checkbox'] {
+                  & + label {
+                    margin-right: 0;
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -95,8 +160,11 @@ $sizes: (
       &.a-picker {
         &:checked {
           & + label {
-            & .a-input {
+            & .a-input,
+            & .a-checkbox__input {
               & + label {
+                font-weight: 600;
+
                 &::before {
                   background-color: $brand-color;
                   border-color: $brand-color;
@@ -108,6 +176,12 @@ $sizes: (
                 }
               }
             }
+          }
+        }
+
+        & + label {
+          & .a-checkbox {
+            line-height: 1.25rem;
           }
         }
       }

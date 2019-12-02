@@ -26,9 +26,10 @@ h4 With checkbox
           input(type="checkbox", class="a-picker", id=`ic-${type}`)
           label(for=`ic-${type}`)
             .m-form__item.-row
-              input(type="checkbox", class="a-input", id=`ic-${type}`)
-              label(for=`ic-${type}`)
-              = type
+              .a-checkbox
+                input(type="checkbox", class="a-checkbox__input", id=`ic-${type}`)
+                label(for=`ic-${type}`, class="a-checkbox__label")
+                  = type
 
 h4 With description
 .test-with-description
@@ -37,10 +38,11 @@ h4 With description
       input(type="checkbox", class="a-picker", id=`id-${type}`)
       label(for=`id-${type}`)
         .m-picker__content--start
-          div.m-formGroup
-            input(type="checkbox", class="a-input", id=`id-${type}`)
-            label(for=`id-${type}`)
-            = type
+          .m-form__item.-row
+            .a-checkbox
+              input(type="checkbox", class="a-checkbox__input", id=`id-${type}`)
+              label(for=`id-${type}`, class="a-checkbox__label")
+                = type
           div.-text--normal.-text--body.-text--small
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
 
