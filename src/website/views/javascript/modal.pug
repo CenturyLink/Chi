@@ -18,15 +18,15 @@ h2 Base
         | Launch demo modal
   .m-backdrop.-closed
     .m-backdrop__wrapper
-      .a-modal#modal-1
-        .a-modal__header
-          h3.a-modal__title Modal Title
+      section.a-modal#modal-1(role="dialog", aria-label="Modal description", aria-modal="true")
+        header.a-modal__header
+          h2.a-modal__title Modal Title
           button(class='a-btn -icon -close', data-dismiss='modal', aria-label='Close')
             .a-btn__content
               i.a-icon.icon-x
         .a-modal__content
           p.-text.-m--0 Modal content
-        .a-modal__footer
+        footer.a-modal__footer
           button.a-btn(data-dismiss='modal') Cancel
           button.a-btn.-primary.-ml--2 Save
   ul#a-tabs-base.a-tabs.-ml--3
@@ -45,23 +45,23 @@ h2 Base
     :code(lang="html")
       <div class="m-backdrop -closed">
         <div class="m-backdrop__wrapper">
-          <div id="modal-1" class="a-modal">
-            <div class="a-modal__header">
-              <h3 class="a-modal__title">Modal Title</h3>
+          <section id="modal-1" class="a-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <header class="a-modal__header">
+              <h2 class="a-modal__title">Modal Title</h2>
               <button class="a-btn -icon -close" data-dismiss="modal" aria-label="Close">
                 <div class="a-btn__content">
                   <i class="a-icon icon-x"></i>
                 </div>
               </button>
-            </div>
+            </header>
             <div class="a-modal__content">
               <p class="-text -m--0">Modal content</p>
             </div>
-            <div class="a-modal__footer">
+            <footer class="a-modal__footer">
               <button class="a-btn" data-dismiss="modal">Cancel</button>
               <button class="a-btn -primary -ml--2">Save</button>
-            </div>
-          </div>
+            </footer>
+          </section>
         </div>
       </div>
   #a-tabs-e2-js.a-tabs-panel
