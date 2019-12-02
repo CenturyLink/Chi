@@ -49,9 +49,9 @@ export class Button {
   @Prop({ reflect: true }) center = false;
 
   /**
-   *  to describe button for screen readers.
+   *  to provide alternative text in case of icon buttons.
    */
-  @Prop({ reflect: true }) description: string;
+  @Prop({ reflect: true }) alternativeText: string;
 
   @Prop() extraClass: string;
 
@@ -129,7 +129,7 @@ export class Button {
           ${this.extraClass ? this.extraClass : ''}`}
           onClick={() => this._buttonClicked()}
           disabled={this.disabled}
-          {...(this.description && {'aria-label': this.description})}
+          {...(this.alternativeText && {'aria-label': this.alternativeText})}
         >
           {this.slotBtnContent ?
             <div class={'a-btn__content'}>

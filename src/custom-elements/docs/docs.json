@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-11-26T14:15:27",
+  "timestamp": "2019-12-02T17:08:49",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.7.5",
@@ -382,6 +382,22 @@
       "usage": {},
       "props": [
         {
+          "name": "alternative-text",
+          "type": "string",
+          "mutable": false,
+          "attr": "alternative-text",
+          "reflectToAttr": true,
+          "docs": "to provide alternative text in case of icon buttons.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "center",
           "type": "boolean",
           "mutable": false,
@@ -405,22 +421,6 @@
           "attr": "color",
           "reflectToAttr": true,
           "docs": "to set button color { primary, secondary, danger, dark, light }.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "description",
-          "type": "string",
-          "mutable": false,
-          "attr": "description",
-          "reflectToAttr": true,
-          "docs": "to describe button for screen readers.",
           "docsTags": [],
           "values": [
             {

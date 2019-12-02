@@ -36,7 +36,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       fluid= type === 'fluid'
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
-                      description="Button action"
+                      alternative-text="Button action"
                     )
                       chi-icon(icon='atom')
                     chi-button.-m--1(
@@ -67,7 +67,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       pill
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
-                      description="Button action"
+                      alternative-text="Button action"
                     )
                       chi-icon(icon='atom')
                     chi-button.-m--1(
@@ -101,7 +101,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       fluid= type === 'fluid'
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
-                      description="Button action"
+                      alternative-text="Button action"
                     )
                       chi-icon(icon='atom')
                     chi-button.-m--1(
@@ -132,7 +132,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       pill
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
-                      description="Button action"
+                      alternative-text="Button action"
                     )
                       chi-icon(icon='atom')
                     chi-button.-m--1(
@@ -157,11 +157,11 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
             each style in ['', 'primary', 'secondary', 'danger', 'dark', 'light']
               if style === 'light'
                 td.-bg--black
-                  chi-button(type='float', class=`-mx--2 -m--1`, color=style, disabled= state === 'disabled', extra-class=`-${state}`, description="Button action")
+                  chi-button(type='float', class=`-mx--2 -m--1`, color=style, disabled= state === 'disabled', extra-class=`-${state}`, alternative-text="Button action")
                     chi-icon(icon='atom')
               else
                 td
-                  chi-button(type='float', class=`-mx--2 -m--1`, color=style, disabled= state === 'disabled', extra-class=`-${state}`, description="Button action")
+                  chi-button(type='float', class=`-mx--2 -m--1`, color=style, disabled= state === 'disabled', extra-class=`-${state}`, alternative-text="Button action")
                     chi-icon(icon='atom')
 
 each size in ['default', 'sm', 'md', 'lg', 'xl']
