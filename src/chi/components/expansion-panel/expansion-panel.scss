@@ -42,34 +42,44 @@ $transition-duration: 0.2s;
       & > .m-epanel__number {
         width: 7.5%;
 
-        & ~ .m-epanel__title {
+        & ~ .m-epanel__title,
+        & ~ .m-epanel__name {
           width: 27%;
         }
       }
     }
-  }
 
-  &__title,
-  &__number {
-    font-size: $text-larger;
-    font-weight: 600;
-    line-height: 2rem;
-    margin: 0;
-    transition: color $transition-duration;
+    & > .m-epanel__title,
+    & > .m-epanel__number {
+      font-size: $text-larger;
+      font-weight: 600;
+      line-height: 2rem;
+      margin: 0;
+      transition: color $transition-duration;
 
-    &.-centered {
-      text-align: center;
+      &.-centered {
+        text-align: center;
+      }
     }
   }
 
-  &.-active .m-epanel__number,
-  &.-active .m-epanel__title {
-    color: $brand-color;
+  &.-active {
+    & > .m-epanel__header {
+      & > .m-epanel__title,
+      & > .m-epanel__number {
+        color: $brand-color;
+      }
+    }
   }
 
-  &.-disabled .m-epanel__title,
-  &.-disabled .m-epanel__number {
-    color: $light-color;
+  &.-disabled {
+    & > .m-epanel__header {
+      & > .m-epanel__title,
+      & > .m-epanel__number {
+        color: $grey-color;
+        opacity: 0.4;
+      }
+    }
   }
 
   &:not(.-done):not(.-done--transitioning) .-done--only,
@@ -99,6 +109,8 @@ $transition-duration: 0.2s;
 
   .-done--only,
   .-active--only {
+    font-size: $text;
+    line-height: $line-height-small;
     opacity: 1;
     transition: opacity $transition-duration;
   }
@@ -128,6 +140,18 @@ $transition-duration: 0.2s;
 
         & > :last-child {
           margin-bottom: 0;
+        }
+
+        .m-epanel__subtitle {
+          font-size: $text-large;
+          font-weight: 600;
+          line-height: $line-height-large;
+          margin: 0 0 0.5rem;
+        }
+
+        .m-epanel__text {
+          font-size: $text;
+          line-height: $line-height-small;
         }
       }
     }
@@ -170,6 +194,18 @@ $transition-duration: 0.2s;
 
         & > :last-child {
           margin-bottom: 0;
+        }
+
+        .m-epanel__subtitle {
+          font-size: $text-large;
+          font-weight: 600;
+          line-height: $line-height-large;
+          margin: 0 0 0.5rem;
+        }
+
+        .m-epanel__text {
+          font-size: $text;
+          line-height: $line-height-small;
         }
       }
     }

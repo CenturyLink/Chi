@@ -42,10 +42,9 @@ $states: (
   border-width: 0.0625rem;
   box-shadow: map-get($shadow, 1);
   color: $text-color;
-  display: grid;
+  display: flex;
   font-family: $font-family;
   font-size: $text;
-  grid-template-columns: auto 1fr auto;
   line-height: $line-height-small;
   padding: 0.8125rem 1.5rem;
   position: relative;
@@ -53,14 +52,14 @@ $states: (
 
   &:not(.-banner) {
     &::before {
-      content: "";
-      position: absolute;
+      background-color: $text-color;
+      border-radius: 0.25rem;
+      content: '';
+      height: 100%;
       left: -0.0625rem;
+      position: absolute;
       top: 0;
       width: 0.25rem;
-      height: 100%;
-      border-radius: 0.25rem;
-      background-color: $text-color;
     }
   }
 
@@ -69,10 +68,14 @@ $states: (
     justify-content: center;
 
     &::before {
+      height: 0.125rem;
       left: 0;
       top: -0.0625rem;
-      height: 0.125rem;
       width: 100%;
+    }
+
+    .m-alert__content {
+      flex-grow: 0;
     }
   }
 
@@ -80,12 +83,11 @@ $states: (
   > chi-icon .a-icon,
   .m-alert__icon {
     &:not(.icon-x) {
-      grid-column-start: 1;
-      margin-right: 1rem;
-      margin-top: 0.125rem;
-      margin-bottom: 0.125rem;
       font-size: 1rem;
       height: 1rem;
+      margin-bottom: 0.125rem;
+      margin-right: 1rem;
+      margin-top: 0.125rem;
       width: 1rem;
     }
   }
@@ -107,10 +109,12 @@ $states: (
           background-color: map-get(map-get($states, $state), border-left-color);
         }
       }
+
       &.-banner {
         background-color: map-get(map-get($states, $state), banner-color);
         border-bottom-color: map-get(map-get($states, $state), banner-border-color);
       }
+
       .m-alert__icon,
       > chi-icon .a-icon,
       .a-h5, //Legacy code: to be removed.
@@ -127,7 +131,7 @@ $states: (
   &__content {
     display: flex;
     flex-direction: column;
-    grid-column-start: 2;
+    flex-grow: 1;
 
     .a-h5, //Legacy code: a-h5 to be removed.
     .m-alert__title {
@@ -138,7 +142,7 @@ $states: (
       margin-top: 0;
       word-break: break-word;
 
-      &:first-letter {
+      &::first-letter {
         text-transform: capitalize;
       }
     }
@@ -161,16 +165,15 @@ $states: (
     &.-close,
     &.m-alert__dismiss-button {
       align-self: flex-start;
-      transform: initial;
-      grid-column-start: 3;
-      padding: 0.1875rem;
       margin-left: 1rem;
+      padding: 0.1875rem;
+      transform: initial;
 
       .a-icon {
-        height: 0.75rem;
-        width: 0.75rem;
         font-size: 0.75rem;
+        height: 0.75rem;
         line-height: 0.75rem;
+        width: 0.75rem;
       }
     }
   }
@@ -195,11 +198,12 @@ $states: (
       &.-close,
       &.m-alert__dismiss-button {
         padding: 0;
+
         .a-icon {
-          height: 1rem;
-          width: 1rem;
           font-size: 1rem;
+          height: 1rem;
           line-height: 1rem;
+          width: 1rem;
         }
       }
     }
@@ -211,9 +215,11 @@ $states: (
         line-height: $line-height-large;
         margin-bottom: 0.375rem;
       }
+
       .m-alert__text {
         padding-top: 0.125rem;
       }
+
       .m-alert__actions {
         padding-top: 1rem;
 
@@ -231,11 +237,13 @@ $states: (
 
   &.-sm {
     padding: 0.5625rem 1.5rem;
+
     .m-alert__content {
       .m-alert__text {
         font-size: $text-small;
       }
     }
+
     &.-dismiss {
       padding-right: 1rem;
     }

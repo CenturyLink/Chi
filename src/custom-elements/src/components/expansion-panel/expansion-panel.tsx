@@ -52,7 +52,7 @@ export class ExpansionPanel {
       >
         <div class="m-epanel__header">
           {this.step ? <span class="m-epanel__number">{this.step}.</span> : ''}
-          <h4 class="m-epanel__title">{this.heading}</h4>
+          <div class="m-epanel__title">{this.heading}</div>
           <div class={`m-epanel__content ${this.step ? '' : '-ml--0'}`}>
             <div class="m-epanel__collapse">
               <div class="-done--only">
