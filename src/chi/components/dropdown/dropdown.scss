@@ -200,10 +200,12 @@
       }
 
       &.-disabled {
-        color: set-color(grey, 50);
+        color: set-color(grey, 70);
+        opacity: 0.6;
         pointer-events: none;
         .a-icon {
-          color: set-color(grey, 50);
+          color: set-color(grey, 70);
+          opacity: 0.6;
         }
       }
     }
@@ -296,6 +298,10 @@
   .m-dropdown__menu {
     display: block;
   }
+}
+
+legend.m-dropdown__menu-item {
+  font-weight: 600;
 }
 
 a.m-dropdown__menu-item {

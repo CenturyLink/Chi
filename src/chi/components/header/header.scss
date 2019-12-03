@@ -4,7 +4,7 @@
 .o-header {
   align-items: center;
   background-color: set-color(white);
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,.04), 0 2px 2px 0 rgba(0,0,0,.12);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -20,7 +20,7 @@
     grid-template-columns: 1fr auto 1fr;
     height: 4rem;
     justify-content: space-between;
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
     position: relative;
     width: 100%;
 
@@ -57,7 +57,7 @@
       align-items: center;
       display: flex;
       justify-content: center;
-      margin: 0 .5rem;
+      margin: 0 0.5rem;
       width: 8.75rem;
 
       @include respond-to(md) {
@@ -108,7 +108,6 @@
     flex-wrap: nowrap;
     justify-content: flex-end;
     order: 3;
-    padding-top: .5rem;
     padding-top: 0;
 
     .a-tabs {
@@ -125,7 +124,7 @@
     height: 2rem;
     justify-content: space-between;
     margin-top: 0;
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
     position: relative;
     width: 100%;
 
@@ -154,12 +153,13 @@
         &.m-dropdown {
           &.-active > a {
             border-bottom: 0.0625rem solid $brand-color;
-            padding-bottom: .4375rem;
+            padding-bottom: 0.4375rem;
           }
 
           .m-dropdown__trigger {
             padding-right: 1rem;
-            &:after {
+
+            &::after {
               top: 0.5rem;
             }
           }
@@ -172,7 +172,7 @@
 
       &:not(.-sliding) {
         & > li.-active > a {
-          padding-bottom: .4375rem;
+          padding-bottom: 0.4375rem;
         }
       }
     }
@@ -266,7 +266,8 @@
 
 /* IE11 CSS hack */
 @media all and (-ms-high-contrast: none) {
-  .o-header__content, .o-header__toolbar ~ .o-header__content {
+  .o-header__content,
+  .o-header__toolbar ~ .o-header__content {
     height: 4rem;
   }
 }

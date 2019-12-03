@@ -242,8 +242,8 @@ p.-text
   .-p--3
     .a-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
       .m-dropdown__menu.-active
-        .m-input__wrapper.-icon--left.m-dropdown__menu-item
-          input(type="text", class="a-input", placeholder="Search")
+        .m-input__wrapper.-icon--left.m-dropdown__menu-item(role="search")
+          input(type="text", class="a-input", placeholder="Search", aria-label="Search")
           i.a-icon.icon-search
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
@@ -251,8 +251,8 @@ p.-text
         a.m-dropdown__menu-item(href='#') Element 4
   :code(lang="html")
     <div class="m-dropdown__menu">
-      <div class="m-input__wrapper -icon--left m-dropdown__menu-item">
-        <input class="a-input" type="text" placeholder="Search">
+      <div class="m-input__wrapper -icon--left m-dropdown__menu-item" role="search">
+        <input class="a-input" type="text" placeholder="Search" aria-label="Search">
         <i class="a-icon icon-search"></i>
       </div>
       <a class="m-dropdown__menu-item" href="#">Element 1</a>
@@ -406,48 +406,53 @@ h3 Radio Buttons
   .-p--3
     .a-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
       .m-dropdown__menu.-active
-        .m-dropdown__menu-item
-          .a-radio
-            input(class="a-radio__input", type="radio", name="radios", id="radio1")
-            label.a-radio__label(for="radio1") Radio Button 1
-        .m-dropdown__menu-item
-          .a-radio
-            input(class="a-radio__input", type="radio", name="radios", id="radio2", disabled)
-            label.a-radio__label(for="radio2") Disabled Radio Button 2
-        .m-dropdown__menu-item
-          .a-radio
-            input(class="a-radio__input", type="radio", name="radios", id="radio3")
-            label.a-radio__label(for="radio3") Radio Button 3
-        .m-dropdown__menu-item
-          .a-radio
-            input(class="a-radio__input", type="radio", name="radios", id="radio4")
-            label.a-radio__label(for="radio4") Radio Button 4
+        fieldset
+          legend.m-dropdown__menu-item Select an option
+          .m-dropdown__menu-item
+            .a-radio
+              input(class="a-radio__input", type="radio", name="radios", id="radio1")
+              label.a-radio__label(for="radio1") Radio Button 1
+          .m-dropdown__menu-item
+            .a-radio
+              input(class="a-radio__input", type="radio", name="radios", id="radio2", disabled)
+              label.a-radio__label(for="radio2") Disabled Radio Button 2
+          .m-dropdown__menu-item
+            .a-radio
+              input(class="a-radio__input", type="radio", name="radios", id="radio3")
+              label.a-radio__label(for="radio3") Radio Button 3
+          .m-dropdown__menu-item
+            .a-radio
+              input(class="a-radio__input", type="radio", name="radios", id="radio4")
+              label.a-radio__label(for="radio4") Radio Button 4
   :code(lang="html")
     <div class="m-dropdown__menu">
-      <div class="m-dropdown__menu-item">
-        <div class="a-radio">
-          <input class="a-radio__input" type="radio" name="radios" id="radio1">
-          <label class="a-radio__label" for="radio1">Radio Button 1</label>
+      <fieldset>
+        <legend class="m-dropdown__menu-item">Select an option</legend>
+        <div class="m-dropdown__menu-item">
+          <div class="a-radio">
+            <input class="a-radio__input" type="radio" name="radios" id="radio1">
+            <label class="a-radio__label" for="radio1">Radio Button 1</label>
+          </div>
         </div>
-      </div>
-      <div class="m-dropdown__menu-item">
-        <div class="a-radio">
-          <input class="a-radio__input" type="radio" name="radios" id="radio2" disabled>
-          <label class="a-radio__label" for="radio2">Disabled Radio Button 2</label>
+        <div class="m-dropdown__menu-item">
+          <div class="a-radio">
+            <input class="a-radio__input" type="radio" name="radios" id="radio2" disabled>
+            <label class="a-radio__label" for="radio2">Disabled Radio Button 2</label>
+          </div>
         </div>
-      </div>
-      <div class="m-dropdown__menu-item">
-        <div class="a-radio">
-          <input class="a-radio__input" type="radio" name="radios" id="radio3">
-          <label class="a-radio__label" for="radio3">Radio Button 3</label>
+        <div class="m-dropdown__menu-item">
+          <div class="a-radio">
+            <input class="a-radio__input" type="radio" name="radios" id="radio3">
+            <label class="a-radio__label" for="radio3">Radio Button 3</label>
+          </div>
         </div>
-      </div>
-      <div class="m-dropdown__menu-item">
-        <div class="a-radio">
-          <input class="a-radio__input" type="radio" name="radios" id="radio4">
-          <label class="a-radio__label" for="radio4">Radio Button 4</label>
+        <div class="m-dropdown__menu-item">
+          <div class="a-radio">
+            <input class="a-radio__input" type="radio" name="radios" id="radio4">
+            <label class="a-radio__label" for="radio4">Radio Button 4</label>
+          </div>
         </div>
-      </div>
+      </fieldset>
     </div>
 
 h3 Text Input
@@ -455,18 +460,18 @@ h3 Text Input
   .-p--3
     .a-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
       .m-dropdown__menu.-active
-        a.m-dropdown__menu-item(href='#') Link 1
-        a.m-dropdown__menu-item(href='#') Link 2
+        a.m-dropdown__menu-item(href='#') Option 1
+        a.m-dropdown__menu-item(href='#') Option 2
         .a-divider
         .m-dropdown__menu-item
-          input.a-input(type="text", placeholder="Placeholder")
+          input.a-input(type="text", placeholder="Placeholder", aria-label="Text input description")
   :code(lang="html")
     <div class="m-dropdown__menu">
-      <a class="m-dropdown__menu-item" href="#">Link 1</a>
-      <a class="m-dropdown__menu-item" href="#">Link 2</a>
+      <a class="m-dropdown__menu-item" href="#">Option 1</a>
+      <a class="m-dropdown__menu-item" href="#">Option 2</a>
       <div class="a-divider"></div>
       <div class="m-dropdown__menu-item">
-        <input class="a-input" type="text" placeholder="Placeholder">
+        <input class="a-input" type="text" placeholder="Placeholder" aria-label="Text input description">
       </div>
     </div>
 
@@ -476,24 +481,24 @@ h3 Range Input
     .a-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
       .m-dropdown__menu.-active
         .m-dropdown__menu-item
-          label.-text.-mr--2 200GB
-          input.a-input(type="range")
-          label.-text.-ml--2 5TB
+          span.-text.-mr--2 200GB
+          input.a-input(type="range", aria-label="Range description")
+          span.-text.-ml--2 5TB
         .a-divider
-        span.m-dropdown__menu-item Select range
+        legend.m-dropdown__menu-item Select range
         .m-dropdown__menu-item
-          input.a-input(type="range")
+          input.a-input(type="range", aria-label="Range description")
   :code(lang="html")
     <div class="m-dropdown__menu">
       <div class="m-dropdown__menu-item">
-        <label class="-text -mr--2">200GB</label>
-        <input class="a-input" type="range">
-        <label class="-text -ml--2">5TB</label>
+        <span class="-text -mr--2">200GB</span>
+        <input class="a-input" type="range" aria-label="Range description">
+        <span class="-text -ml--2">5TB</span>
       </div>
       <div class="a-divider"></div>
-      <span class="m-dropdown__menu-item">Select range</span>
+      <legend class="m-dropdown__menu-item">Select range</legend>
       <div class="m-dropdown__menu-item">
-        <input class="a-input" type="range">
+        <input class="a-input" type="range" aria-label="Range description">
       </div>
     </div>
 
@@ -562,14 +567,14 @@ p.-text Add the class <code>-h--auto</code> to set menu item height to auto.
 .example.-mb--3
   .-p--3
     .m-dropdown__menu.-active(style="width:10rem")
-      a.m-dropdown__menu-item(href="#") Link 1
+      a.m-dropdown__menu-item(href="#") Option 1
       .m-dropdown__menu-item.-h--auto.-py--1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      a.m-dropdown__menu-item(href="#") Link 2
+      a.m-dropdown__menu-item(href="#") Option 2
   :code(lang="html")
     <div class="m-dropdown__menu" style="width:10rem">
-      <a class="m-dropdown__menu-item" href="#">Link 1</a>
+      <a class="m-dropdown__menu-item" href="#">Option 1</a>
       <div class="m-dropdown__menu-item -h--auto -py--1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-      <a class="m-dropdown__menu-item" href="#">Link 2</a>
+      <a class="m-dropdown__menu-item" href="#">Option 2</a>
     </div>
 
 h2 Animation

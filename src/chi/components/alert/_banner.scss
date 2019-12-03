@@ -14,5 +14,17 @@
     &.-rounded {
       border-radius: $border-radius;
     }
+
+    &.-warning {
+      .m-alert__title {
+        color: set-color(yellow, 70);
+      }
+    }
+
+    &.-muted {
+      .m-alert__title {
+        color: set-color(grey, 70);
+      }
+    }
   }
 }
