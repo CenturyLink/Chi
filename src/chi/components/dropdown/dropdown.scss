@@ -231,6 +231,10 @@
       margin-bottom: 0;
       margin-right: 1rem;
     }
+
+    .a-radio input[type='radio'].a-radio__input + label.a-radio__label {
+      padding-left: 2rem;
+    }
   }
 }
 

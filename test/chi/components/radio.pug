@@ -5,22 +5,17 @@ title: Radio
   each state, index in ['default', 'hover', 'focus', 'checked', 'disabled']
     h5= `Radio / ${state}`
     .m-form__item.-row.-mb--1
-      input.a-input(
-        type="radio"
-        id=`radio-${index}`
-        class={
-          [`-${state}`]: state == 'focus'
-        }
-        checked=state=='checked' ? 'checked' : false
-        disabled=state=='disabled' ? 'disabled' : false
-      )
-      label(
-        for=`radio-${index}`
-        class={
-          [`-${state}`]: state == 'hover'
-        }
-      )
-      label(for=`radio-${index}`) Radio
+      .a-radio
+        input.a-radio__input(
+          type="radio"
+          id=`radio-${index}`
+          class={
+            [`-${state}`]: state == 'focus'
+          }
+          checked=state=='checked' ? 'checked' : false
+          disabled=state=='disabled' ? 'disabled' : false
+        )
+        label.a-radio__label(for=`radio-${index}`) Radio
 
 h2 Radio Button List
 .test-states
@@ -29,20 +24,15 @@ h2 Radio Button List
     ul.m-form__item.-list(style="max-width:20rem")
       each element in [1, 2, 3, 4, 5]
         li.m-form__item.-row
-          input.a-input(
-          type="radio"
-          id=`radio--${element}`
-          name=`radio`
-          class={
-            [`-${state}`]: state == 'focus'
-          }
-          checked=state=='checked' ? 'checked' : false
-          disabled=state=='disabled' ? 'disabled' : false
-          )
-          label(
-          for=`radio--${element}`
-          class={
-            [`-${state}`]: state == 'hover'
-          }
-          )
-          label(for=`radio--${element}`)= `Radio-${element}`
+          .a-radio
+            input.a-radio__input(
+              type="radio"
+              id=`radio--${element}`
+              name=`radio`
+              class={
+                [`-${state}`]: state == 'focus'
+              }
+              checked=state=='checked' ? 'checked' : false
+              disabled=state=='disabled' ? 'disabled' : false
+            )
+            label.a-radio__label(for=`radio--${element}`)= `Radio-${element}`

@@ -154,17 +154,19 @@ ul#a-tabs--Radio.a-tabs
           input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
           label(for=`ri-${type}`)
             div.m-form__item.-row
-              input(type="radio", class="a-input", id=`ri-${type}`)
-              label(for=`ri-${type}`)
-              = type
+              .a-radio
+                input(type="radio", class="a-radio__input", id=`ri-${type}`)
+                label.a-radio__label(for=`ri-${type}`)
+                  = type
     :code(lang="html")
       <div class="m-picker">
         <input class="a-picker" type="radio" name="box" id="radio1">
         <label for="radio1">
           <div class="m-form__item -row">
-            <input class="a-input" type="radio" id="radio1">
-            <label for="radio1"></label>
-            Radio1
+            <div class="a-radio">
+              <input class="a-radio__input" type="radio" id="radio1">
+              <label class="a-radio__label" for="radio1">Radio1</label>
+            </div>
           </div>
         </label>
       </div>
@@ -172,9 +174,10 @@ ul#a-tabs--Radio.a-tabs
         <input class="a-picker" type="radio" name="box" id="radio2">
         <label for="radio2">
           <div class="m-form__item -row">
-            <input class="a-input" type="radio" id="radio2">
-            <label for="radio2"></label>
-            Radio2
+            <div class="a-radio">
+              <input class="a-radio__input" type="radio" id="radio2">
+              <label class="a-radio__label" for="radio2">Radio2</label>
+            </div>
           </div>
         </label>
       </div>
@@ -186,9 +189,10 @@ ul#a-tabs--Radio.a-tabs
           label(for=`ide-${type}`)
             .m-picker__content--start
               div.m-form__item.-row
-                input(type="radio", class="a-input", id=`ide-${type}`)
-                label(for=`ide-${type}`)
-                = type
+                .a-radio
+                  input(type="radio", class="a-radio__input", id=`ide-${type}`)
+                  label.a-radio__label(for=`ide-${type}`)
+                    = type
               div.-text--normal.-text--body.-text--small
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
     :code(lang="html")
@@ -197,9 +201,10 @@ ul#a-tabs--Radio.a-tabs
         <label for="radio1">
           <div class="m-picker__content--start">
             <div class="m-form__item -row">
-              <input class="a-input" type="radio" id="radio1">
-              <label for="radio1"></label>
-              Radio1
+              <div class="a-radio">
+                <input class="a-radio__input" type="radio" id="radio1">
+                <label class="a-radio__label" for="radio1">Radio1</label>
+              </div>
             </div>
             <div class="-text--normal -text--body -text--small">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
@@ -212,9 +217,10 @@ ul#a-tabs--Radio.a-tabs
         <label for="radio2">
           <div class="m-picker__content--start">
             <div class="m-form__item -row">
-              <input class="a-input" type="radio" id="radio2">
-              <label for="radio2"></label>
-              Radio2
+              <div class="a-radio">
+                <input class="a-radio__input" type="radio" id="radio2">
+                <label class="a-radio__label" for="radio2">Radio2</label>
+              </div>
             </div>
             <div class="-text--normal -text--body -text--small">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.

@@ -64,9 +64,10 @@ h4 With radio
           input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
           label(for=`ri-${type}`)
             .m-form__item.-row
-              input(type="radio", class="a-input", id=`ri-${type}`)
-              label(for=`ri-${type}`)
-              = type
+              .a-radio
+                input(type="radio", class="a-radio__input", id=`ri-${type}`)
+                label.a-radio__label(for=`ri-${type}`)
+                  = type
 
 h3 Sizes
 .test-sizes

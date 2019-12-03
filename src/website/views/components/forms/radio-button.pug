@@ -14,23 +14,25 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-form__item.-row
-      input(class="a-input", type="radio", name="radios", id="radio1")
-      label(for="radio1")
-      label.-text(for="radio1") Radio Button
+      .a-radio
+        input(class="a-radio__input", type="radio", name="radios", id="radio1")
+        label.a-radio__label(for="radio1") Radio Button
     .m-form__item.-row
-      input(class="a-input", type="radio", name="radios", id="radio2", disabled)
-      label(for="radio2")
-      label.-text(for="radio2") Disabled Radio Button
+      .a-radio
+        input(class="a-radio__input", type="radio", name="radios", id="radio2", disabled)
+        label.a-radio__label(for="radio2") Disabled Radio Button
   :code(lang="html")
     <div class="m-form__item -row">
-      <input class="a-input" type="radio" name="radios" id="radio1">
-      <label for="radio1"></label>
-      <label class="-text" for="radio1">Radio Button</label>
+      <div class="a-radio">
+        <input class="a-radio__input" type="radio" name="radios" id="radio1">
+        <label class="a-radio__label" for="radio1">Radio Button</label>
+      </div>
     </div>
     <div class="m-form__item -row">
-      <input class="a-input" type="radio" name="radios" id="radio2" disabled>
-      <label for="radio2"></label>
-      <label class="-text" for="radio2">Disabled Radio Button</label>
+      <div class="a-radio">
+        <input class="a-radio__input" type="radio" name="radios" id="radio2" disabled>
+        <label class="a-radio__label" for="radio2">Disabled Radio Button</label>
+      </div>
     </div>
 
 h3 Inline
@@ -39,23 +41,25 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-form__item.-inline.-row
-      input(class="a-input", type="radio", name="inlineRadios", id="inlineRadio1")
-      label(for="inlineRadio1")
-      label.-text(for="inlineRadio1") Option 1
+      .a-radio
+        input(class="a-radio__input", type="radio", name="inlineRadios", id="inlineRadio1")
+        label.a-radio__label(for="inlineRadio1") Option 1
     .m-form__item.-inline.-row.-ml--1
-      input(class="a-input", type="radio", name="inlineRadios", id="inlineRadio2")
-      label(for="inlineRadio2")
-      label.-text(for="inlineRadio2") Option 2
+      .a-radio
+        input(class="a-input", type="radio", name="inlineRadios", id="inlineRadio2")
+        label.a-radio__label(for="inlineRadio2") Option 2
   :code(lang="html")
     <div class="m-form__item -inline -row">
-      <input class="a-input" type="radio" name="inlineRadios" id="inlineRadio1">
-      <label for="inlineRadio1"></label>
-      <label class="-text" for="inlineRadio1">Option 1</label>
+      <div class="a-radio">
+        <input class="a-radio__input" type="radio" name="inlineRadios" id="inlineRadio1">
+        <label class="a-radio__label" for="inlineRadio1">Option 1</label>
+      </div>
     </div>
     <div class="m-form__item -inline -row">
-      <input class="a-input" type="radio" name="inlineRadios" id="inlineRadio2" disabled>
-      <label for="inlineRadio2"></label>
-      <label class="-text" for="inlineRadio2">Option 2</label>
+      <div class="a-radio">
+        <input class="a-radio__input" type="radio" name="inlineRadios" id="inlineRadio2" disabled>
+        <label class="a-radio__label" for="inlineRadio2">Option 2</label>
+      </div>
     </div>
 
 h2 Radio Button List
@@ -69,51 +73,56 @@ p.-text To render a series of radio buttons in a list, apply the class <code>-li
     legend.a-label Select an option
     ul.m-form__item.-list(style="max-width:20rem")
       li.m-form__item.-row
-        input(type="radio", class="a-input", name="radiobuttonList", id="radio-1")
-        label(for="radio-1")
-        label.-text(for="radio-1") Option 1
+        .a-radio
+          input(type="radio", class="a-radio__input", name="radiobuttonList", id="radio-1")
+          label.a-radio__label(for="radio-1") Option 1
       li.m-form__item.-row
-        input(type="radio", class="a-input", name="radiobuttonList", id="radio-2")
-        label(for="radio-2")
-        label.-text(for="radio-2") Option 2
+        .a-radio
+          input(type="radio", class="a-radio__input", name="radiobuttonList", id="radio-2")
+          label.a-radio__label(for="radio-2") Option 2
       li.m-form__item.-row
-        input(type="radio", class="a-input", name="radiobuttonList", id="radio-3")
-        label(for="radio-3")
-        label.-text(for="radio-3") Option 3
+        .a-radio
+          input(type="radio", class="a-radio__input", name="radiobuttonList", id="radio-3")
+          label.a-radio__label(for="radio-3") Option 3
       li.m-form__item.-row
-        input(type="radio", class="a-input", name="radiobuttonList", id="radio-4")
-        label(for="radio-4")
-        label.-text(for="radio-4") Option 4
+        .a-radio
+          input(type="radio", class="a-radio__input", name="radiobuttonList", id="radio-4")
+          label.a-radio__label(for="radio-4") Option 4
       li.m-form__item.-row
-        input(type="radio", class="a-input", name="radiobuttonList", id="radio-5")
-        label(for="radio-5")
-        label.-text(for="radio-5") Option 5
+        .a-radio
+          input(type="radio", class="a-radio__input", name="radiobuttonList", id="radio-5")
+          label.a-radio__label(for="radio-5") Option 5
   :code(lang='html')
     <legend class="a-label">Select an option</legend>
     <ul class="m-form__item -list">
       <li class="m-form__item -row">
-        <input type="radio" class="a-input" name="radiobuttonList" id="radio1">
-        <label for="radio1"></label>
-        <label class="-text" for="radio1">Option 1</label>
+        <div class="a-radio">
+          <input type="radio" class="a-radio__input" name="radiobuttonList" id="radio1">
+          <label class="a-radio__label" for="radio1">Option 1</label>
+        </div>
       </li>
       <li class="m-form__item -row">
-        <input type="radio" class="a-input" name="radiobuttonList" id="radio2">
-        <label for="radio2"></label>
-        <label class="-text" for="radio2">Option 2</label>
+        <div class="a-radio">
+          <input type="radio" class="a-radio__input" name="radiobuttonList" id="radio2">
+          <label class="a-radio__label" for="radio2">Option 2</label>
+        </div>
       </li>
       <li class="m-form__item -row">
-        <input type="radio" class="a-input" name="radiobuttonList" id="radio3">
-        <label for="radio3"></label>
-        <label class="-text" for="radio3">Option 3</label>
+        <div class="a-radio">
+          <input type="radio" class="a-radio__input" name="radiobuttonList" id="radio3">
+          <label class="a-radio__label" for="radio3">Option 3</label>
+        </div>
       </li>
       <li class="m-form__item -row">
-        <input type="radio" class="a-input" name="radiobuttonList" id="radio4">
-        <label for="radio4"></label>
-        <label class="-text" for="radio4">Option 4</label>
+        <div class="a-radio">
+          <input type="radio" class="a-radio__input" name="radiobuttonList" id="radio4">
+          <label class="a-radio__label" for="radio4">Option 4</label>
+        </div>
       </li>
       <li class="m-form__item -row">
-        <input type="radio" class="a-input" name="radiobuttonList" id="radio5">
-        <label for="radio5"></label>
-        <label class="-text" for="radio5">Option 5</label>
+        <div class="a-radio">
+          <input type="radio" class="a-radio__input" name="radiobuttonList" id="radio5">
+          <label class="a-radio__label" for="radio5">Option 5</label>
+        </div>
       </li>
     </ul>
