@@ -13,9 +13,9 @@
           font-size: $text;
           font-weight: normal;
           line-height: $line-height-small;
-          padding-left: 1.5rem;
-          margin-right: 0;
           margin-bottom: 0;
+          margin-right: 0;
+          padding-left: 1.5rem;
 
           &::before {
             left: 0;
@@ -42,8 +42,8 @@ input {
       height: 1px;
       overflow: hidden;
       padding: 0;
-      position: absolute;
       pointer-events: auto;
+      position: absolute;
       width: 1px;
 
       & + label {

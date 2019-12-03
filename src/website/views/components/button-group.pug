@@ -209,13 +209,13 @@ p.-text
   .-p--3
     .m-btnGroup
       button(class=`a-btn`) Button
-      button(class=`a-btn -icon`)
+      button(class=`a-btn -icon`, aria-label="Button action")
         .a-btn__content
           i.a-icon.icon-atom
   :code(lang='html')
     <div class="m-btnGroup">
       <button class="a-btn">Button</button>
-      <button class="a-btn -icon">
+      <button class="a-btn -icon" aria-label="Button action">
         <div class="a-btn__content">
           <i class="a-icon icon-atom"></i>
         </div>
@@ -229,13 +229,13 @@ p.-text
   .-p--3
     .m-btnGroup.-fluid
       button(class=`a-btn`) Button
-      button(class=`a-btn -icon -notFluid`)
+      button(class=`a-btn -icon -notFluid`, aria-label="Button action")
         .a-btn__content
           i.a-icon.icon-atom
   :code(lang='html')
     <div class="m-btnGroup -fluid">
       <button class="a-btn">Button</button>
-      <button class="a-btn -icon -notFluid">
+      <button class="a-btn -icon -notFluid" aria-label="Button action">
         <div class="a-btn__content">
           <i class="a-icon icon-atom"></i>
         </div>
@@ -253,14 +253,14 @@ p.-text
     each size in ['sm', 'md', 'lg', 'xl']
       .m-btnGroup.-m--1
         button(class=`a-btn -${size}`) Button
-        button(class=`a-btn -${size} -icon`)
+        button(class=`a-btn -${size} -icon`, aria-label="Button action")
           .a-btn__content
             i.a-icon.icon-atom
   :code(lang='html')
     <!-- sm -->
     <div class="m-btnGroup">
       <button class="a-btn -sm">Button</button>
-      <button class="a-btn -sm -icon">
+      <button class="a-btn -sm -icon" aria-label="Button action">
         <div class="a-btn__content">
           <i class="a-icon icon-atom"></i>
         </div>
@@ -269,7 +269,7 @@ p.-text
     <!-- md -->
     <div class="m-btnGroup">
       <button class="a-btn -md">Button</button>
-      <button class="a-btn -md -icon">
+      <button class="a-btn -md -icon" aria-label="Button action">
         <div class="a-btn__content">
           <i class="a-icon icon-atom"></i>
         </div>
@@ -278,7 +278,7 @@ p.-text
     <!-- lg -->
     <div class="m-btnGroup">
       <button class="a-btn -lg">Button</button>
-      <button class="a-btn -lg -icon">
+      <button class="a-btn -lg -icon" aria-label="Button action">
         <div class="a-btn__content">
           <i class="a-icon icon-atom"></i>
         </div>
@@ -287,7 +287,7 @@ p.-text
     <!-- xl -->
     <div class="m-btnGroup">
       <button class="a-btn -xl">Button</button>
-      <button class="a-btn -xl -icon">
+      <button class="a-btn -xl -icon" aria-label="Button action">
         <div class="a-btn__content">
           <i class="a-icon icon-atom"></i>
         </div>

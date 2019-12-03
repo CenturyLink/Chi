@@ -14,7 +14,8 @@ mixin button(icon, type, style, size, modifier)
     [`-${style}`]: style != 'default',
     [`-${modifier}`]: modifier,
     [`-${size}`]: size != 'default'
-  })
+  },
+  aria-label='Button action')
     if block
       block
 
