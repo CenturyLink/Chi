@@ -24,7 +24,6 @@ th {
 }
 
 .a-table {
-  padding-top: 3rem;
   border-spacing: 0;
   font-size: $text;
   line-height: $line-height-smaller;
@@ -82,7 +81,7 @@ th {
         flex-direction: row;
 
         &::after {
-          background-image: url(icon-chevron-thin-up.svg);
+          background-image: url('icon-chevron-thin-up.svg');
           content: '';
           display: block;
           height: 0.75rem;
@@ -242,7 +241,7 @@ th {
           flex-direction: row;
 
           &::after {
-            background-image: url(icon-chevron-thin-up.svg);
+            background-image: url('icon-chevron-thin-up.svg');
             content: '';
             display: block;
             height: 0.75rem;

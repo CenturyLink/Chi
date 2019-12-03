@@ -81,9 +81,9 @@
 
     .o-header__title {
       color: set-color(grey, 70);
+      flex: 1 0 auto;
       font-size: $text-large;
       line-height: $line-height-small;
-      flex: 1 0 auto;
 
       @include respond-to(lg) {
         font-size: $text-larger;
@@ -107,8 +107,8 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: flex-end;
-    padding-top: .5rem;
     order: 3;
+    padding-top: .5rem;
     padding-top: 0;
 
     .a-tabs {
@@ -240,8 +240,8 @@
       }
 
       &:not(.-vertical):not(.-responsive):not(.-sliding) > li.-active > a {
-        color: $secondary-color;
         border-bottom-color: $secondary-color;
+        color: $secondary-color;
       }
     }
 
@@ -265,7 +265,7 @@
 }
 
 /* IE11 CSS hack */
-@media all and (-ms-high-contrast:none) {
+@media all and (-ms-high-contrast: none) {
   .o-header__content, .o-header__toolbar ~ .o-header__content {
     height: 4rem;
   }

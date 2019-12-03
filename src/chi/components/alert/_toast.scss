@@ -1,9 +1,9 @@
 .m-alert {
   &.-toast {
+    box-shadow: map-get($shadow, 2);
     max-width: 20rem;
     min-width: 16rem;
     padding-right: 1rem;
-    box-shadow: map-get($shadow, 2);
 
     .m-alert__content {
       .m-alert__title {

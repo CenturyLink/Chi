@@ -72,8 +72,8 @@ $sizes: (
 
         & ~ .a-spinner {
           position: absolute;
-          top: 0.5rem;
           right: 0.75rem;
+          top: 0.5rem;
         }
 
         @each $type in map-keys($sizes) {

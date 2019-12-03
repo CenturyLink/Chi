@@ -72,7 +72,7 @@ $avatar-default-size: 'md';
         background-color: transparent;
         border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get($colorscheme, white);
         color: map-get($colorscheme, white);
-      } @else if( $color == 'inverse') {
+      } @else if($color == 'inverse') {
         background-color: transparent;
         border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get($colorscheme, white);
         color: map-get($colorscheme, white);

@@ -17,7 +17,8 @@
     "test-ce": "gulp test:custom-elements",
     "test:e2e": "gulp test:e2e",
     "test:e2e:interactive": "gulp test:e2e:interactive",
-    "echo": "gulp --version"
+    "echo": "gulp --version",
+    "lint:fix": "sass-lint-auto-fix"
   },
   "devDependencies": {
     "@babel/core": "7.3.4",
@@ -67,6 +68,7 @@
     "prettier": "1.18.2",
     "prismjs": "1.15.0",
     "pug": "2.0.3",
+    "sass-lint-auto-fix": "0.20.0",
     "uglifyjs-webpack-plugin": "2.1.2",
     "vinyl-named": "1.1.0",
     "webpack": "4.29.6",
@@ -76,6 +78,7 @@
     "@stencil/core": "1.7.5",
     "cypress": "3.3.1",
     "dayjs": "1.8.11",
+    "gulp-run-command": "0.0.10",
     "popper.js": "1.14.7"
   }
 }

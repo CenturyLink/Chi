@@ -7,8 +7,8 @@ $popover-border-width: 0.0625rem;
 
 .m-popover {
   background-color: set-color(white);
-  border-radius: $border-radius;
   border: $popover-border-width solid set-color(grey, 30);
+  border-radius: $border-radius;
   box-shadow: map-get($shadow, 3);
   color: $text-color;
   display: none;
@@ -37,19 +37,19 @@ $popover-border-width: 0.0625rem;
   }
 
   .a-arrow {
-    position: absolute;
     display: block;
-    width: $popover-arrow-width;
     height: $popover-arrow-height;
     margin: 0 $border-radius;
+    position: absolute;
+    width: $popover-arrow-width;
 
     &::before,
     &::after {
-      position: absolute;
-      display: block;
-      content: "";
       border-color: transparent;
       border-style: solid;
+      content: "";
+      display: block;
+      position: absolute;
     }
   }
 
@@ -68,13 +68,13 @@ $popover-border-width: 0.0625rem;
       }
 
       .a-arrow::before {
-        bottom: 0;
         border-top-color: set-color(grey, 30);
+        bottom: 0;
       }
 
       .a-arrow::after {
-        bottom: $popover-border-width;
         border-top-color: white;
+        bottom: $popover-border-width;
       }
     }
 
@@ -95,13 +95,13 @@ $popover-border-width: 0.0625rem;
       }
 
       .a-arrow::before {
-        left: 0;
         border-right-color: set-color(grey, 30);
+        left: 0;
       }
 
       .a-arrow::after {
-        left: $popover-border-width;
         border-right-color: white;
+        left: $popover-border-width;
       }
     }
 
@@ -120,13 +120,13 @@ $popover-border-width: 0.0625rem;
       }
 
       .a-arrow::before {
-        top: 0;
         border-bottom-color: set-color(grey, 30);
+        top: 0;
       }
 
       .a-arrow::after {
-        top: $popover-border-width;
         border-bottom-color: white;
+        top: $popover-border-width;
       }
     }
 
@@ -148,13 +148,13 @@ $popover-border-width: 0.0625rem;
       }
 
       .a-arrow::before {
-        right: 0;
         border-left-color: set-color(grey, 30);
+        right: 0;
       }
 
       .a-arrow::after {
-        right: $popover-border-width;
         border-left-color: white;
+        right: $popover-border-width;
       }
     }
   }

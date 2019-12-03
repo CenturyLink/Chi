@@ -36,8 +36,8 @@ $sizes: (
           font-size: $text;
           font-weight: normal;
           justify-content: space-between;
-          padding: 1rem - $border;
           margin-bottom: 0.5rem;
+          padding: 1rem - $border;
           transition: all 0.2s;
           width: 100%;
 
@@ -103,7 +103,7 @@ $sizes: (
                 }
 
                 &::after {
-                  background-image: url(icon-check.svg);
+                  background-image: url('icon-check.svg');
                   transform: scale(1);
                 }
               }
@@ -137,6 +137,7 @@ $sizes: (
 
   @each $type in map-keys($sizes) {
     &.-#{$type} {
+
       input {
         &[type='checkbox'],
         &[type='radio'] {
@@ -153,8 +154,8 @@ $sizes: (
 }
 
 /* IE11 CSS hack */
-@media all and (-ms-high-contrast:none) {
-  .m-picker:not(.-sm):not(.-md):not(.-lg) input[type=checkbox].a-picker + label, .m-picker:not(.-sm):not(.-md):not(.-lg) input[type=radio].a-picker + label {
+@media all and (-ms-high-contrast: none) {
+  .m-picker:not(.-sm):not(.-md):not(.-lg) input[type="checkbox"].a-picker + label, .m-picker:not(.-sm):not(.-md):not(.-lg) input[type="radio"].a-picker + label {
     display: block;
   }
 }

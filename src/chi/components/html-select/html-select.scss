@@ -56,12 +56,12 @@ select {
   &.a-input {
     appearance: none;
     background-color: set-color(white);
-    background-image: url(icon-chevron-thin-down.svg);
+    background-image: url('icon-chevron-thin-down.svg');
     background-position: map-get(map-get($sizes, md), background-position);
     background-repeat: no-repeat;
     background-size: 0.75rem 0.75rem;
-    border-radius: $border-radius;
     border: 0.0625rem solid set-color(grey, 30);
+    border-radius: $border-radius;
     color: set-color(grey, 90);
     cursor: hand; // sass-lint:disable-line no-duplicate-properties
     cursor: pointer;
@@ -110,10 +110,10 @@ select {
 
     @each $type in map-keys($sizes) {
       &.-#{$type} {
-        height: map-get(map-get($sizes, $type), height);
-        font-size: map-get(map-get($sizes, $type), font-size);
-        line-height: map-get(map-get($sizes, $type), line-height);
         background-position: map-get(map-get($sizes, $type), background-position);
+        font-size: map-get(map-get($sizes, $type), font-size);
+        height: map-get(map-get($sizes, $type), height);
+        line-height: map-get(map-get($sizes, $type), line-height);
         padding-left: map-get(map-get($sizes, $type), padding-left);
       }
     }

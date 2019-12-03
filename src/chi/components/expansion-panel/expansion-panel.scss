@@ -12,7 +12,7 @@ $transition-duration: 0.2s;
     display: flex;
     margin-left: -0.25rem;
     margin-right: -0.25rem;
-    min-height: 0rem;
+    min-height: 0;
 
     & > * {
       display: block;
@@ -121,8 +121,8 @@ $transition-duration: 0.2s;
 
   &.-bordered {
     background-color: white;
-    border-radius: $border-radius;
     border: .0625rem solid $border-color;
+    border-radius: $border-radius;
     box-shadow: map-get($shadow, 1);
     margin-bottom: 0.5rem;
 
@@ -166,8 +166,8 @@ $transition-duration: 0.2s;
   }
 
   &:not(.-bordered) {
-    padding-top: 1.25rem;
     padding-bottom: 1.25rem;
+    padding-top: 1.25rem;
 
     &:not(:last-child) {
       border-bottom: .0625rem solid $border-color;
@@ -178,12 +178,12 @@ $transition-duration: 0.2s;
     }
 
     .m-epanel__body {
-      margin-top: 1.25rem;
       background-color: white;
       border: .0625rem solid $border-color;
       border-radius: $border-radius;
       box-shadow: map-get($shadow, 1);
       margin-bottom: 0.5rem;
+      margin-top: 1.25rem;
 
       .m-epanel__content {
         padding: 1.5rem;

@@ -24,8 +24,8 @@ $animation-duration: 0.5s;
 
   &.-animated {
     transition-duration: $animation-duration;
-    transition-timing-function: cubic-bezier(0.38, 0.52, 0.37, 1);
     transition-property: transform;
+    transition-timing-function: cubic-bezier(0.38, 0.52, 0.37, 1);
 
     &.-transitioning {
       display: flex;

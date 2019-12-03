@@ -6,8 +6,8 @@ $sidenav-md-width: 6rem;
 $sidenav-lg-width: 12.5rem;
 
 .m-sidenav {
-  width: $sidenav-sm-width;
   position: relative;
+  width: $sidenav-sm-width;
 
   &__content {
     background-color: set-color(white);
@@ -23,14 +23,14 @@ $sidenav-lg-width: 12.5rem;
 
   &__list, &__drawer-list {
     list-style: none;
-    padding-left: 0;
-    margin-top: 0;
     margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 0;
 
     > li {
+      border-bottom: 0.0625rem solid map-get(map-get($colorscheme, grey), 20);
       list-style: none;
       padding-left: 0;
-      border-bottom: 0.0625rem solid map-get(map-get($colorscheme, grey), 20);
 
       > a {
         @include remove-anchor-style;
@@ -41,16 +41,16 @@ $sidenav-lg-width: 12.5rem;
   &__list > li {
     > a {
       align-items: center;
-      justify-content: center;
       display: flex;
       flex-direction: column;
       font-size: .8125rem;
       font-weight: 400;
+      justify-content: center;
       min-height: 3rem;
-      padding:.5rem;
+      padding: .5rem;
 
       > *:not(.a-icon) {
-        display:none;
+        display: none;
         line-height: 1rem;
         text-align: center;
       }
@@ -263,8 +263,8 @@ $sidenav-lg-width: 12.5rem;
       .m-sidenav__list > li {
         > a {
           align-items: center;
-          justify-content: center;
           flex-direction: column;
+          justify-content: center;
           min-height: 3rem;
           padding-left: .5rem;
 
@@ -297,8 +297,8 @@ $sidenav-lg-width: 12.5rem;
     .m-sidenav__list > li {
       > a {
         align-items: center;
-        justify-content: center;
         flex-direction: column;
+        justify-content: center;
         min-height: 4rem;
 
         @include respond-to(lg) {
@@ -336,8 +336,8 @@ $sidenav-lg-width: 12.5rem;
         flex-direction: row;
         font-size: 0.875rem;
         justify-content: flex-start;
-        padding-left: 1.5rem;
         min-height: 3rem;
+        padding-left: 1.5rem;
 
         > *:not(.a-icon) {
           display: block;
@@ -363,18 +363,19 @@ $sidenav-lg-width: 12.5rem;
 }
 
 /* IE11 CSS hack */
-@media only screen and (max-width: $lg-breakpoint -1) and (-ms-high-contrast:none) {
+@media only screen and (max-width: $lg-breakpoint -1) and (-ms-high-contrast: none) {
   .m-sidenav__list li a {
     height: 4rem;
   }
 }
-@media only screen and (min-width: $lg-breakpoint) and (-ms-high-contrast:none) {
+
+@media only screen and (min-width: $lg-breakpoint) and (-ms-high-contrast: none) {
   .m-sidenav__list li a {
     height: 3rem;
   }
 }
 
-@media only screen and (-ms-high-contrast:none) {
+@media only screen and (-ms-high-contrast: none) {
   .m-sidenav.-sm .m-sidenav__list li a,
   .m-sidenav.-md .m-sidenav__list li a {
     height: 4rem;

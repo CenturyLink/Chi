@@ -35,7 +35,7 @@
     .a-breadcrumb__item {
       &:not(:first-child) {
         &::before {
-          content: url(icon-chevron-right.svg);
+          content: url('icon-chevron-right.svg');
           display: inline-block;
           height: 1rem;
           position: relative;

@@ -30,10 +30,10 @@ $mondayStartingWeek: (
   width: 14rem;
 
   &__day {
-    text-align: center;
     line-height: 2rem;
-    width: calc(100% / 7);
+    text-align: center;
     transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    width: calc(100% / 7);
 
     &.-active {
       background-color: $brand-color;
@@ -62,8 +62,8 @@ $mondayStartingWeek: (
         height: 4px;
         left: calc(50% - 1px);
         position: absolute;
-        width: 4px;
         transition: background-color 0.1s ease-in-out;
+        width: 4px;
       }
     }
 
@@ -80,28 +80,29 @@ $mondayStartingWeek: (
 
   &__week-day {
     font-weight: 600;
-    text-align: center;
     line-height: 2rem;
+    text-align: center;
     width: calc(100% / 7);
   }
 
   &__month {
     font-weight: 600;
+    margin-left: calc(100% / 7);
     text-align: center;
     width: calc(100% * 5 / 7);
-    margin-left: calc(100% / 7);
 
     &-row {
       .prev, .next {
-        width: calc(100% / 7);
         text-align: center;
+        width: calc(100% / 7);
         &.-disabled {
           color: rgba(set-color(grey, 90), 0.2);
           pointer-events: none;
         }
+
         &:not(.-disabled) {
-          cursor: pointer;
           color: $brand-color;
+          cursor: pointer;
         }
       }
     }
@@ -117,14 +118,15 @@ $mondayStartingWeek: (
   }
 
   &__month-row {
-    display: flex;
     align-items: center;
+    display: flex;
     height: 2.5rem;
   }
 
   &.-week-starts-on-sun {
     @each $weekDay, $columnStart in $sundayStartingWeek {
       &.-month-starts-on-#{$weekDay} {
+
         .m-datepicker__day:first-child {
           margin-left: calc(100% * #{$columnStart} / 7);
         }
@@ -135,6 +137,7 @@ $mondayStartingWeek: (
   &.-week-starts-on-mon {
     @each $weekDay, $columnStart in $mondayStartingWeek {
       &.-month-starts-on-#{$weekDay} {
+
         .m-datepicker__day:first-child {
           margin-left: calc(100% * #{$columnStart} / 7);
         }
