@@ -14,23 +14,25 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-form__item.-row
-      input(type="checkbox", class="a-input", id="checkbox1")
-      label(for="checkbox1")
-      label.-text(for="checkbox1") Checkbox
+      .a-checkbox
+        input(type="checkbox", class="a-checkbox__input", id="checkbox1")
+        label(for="checkbox1", class="a-checkbox__label") Checkbox
     .m-form__item.-row
-      input(type="checkbox", class="a-input", id="checkbox2", disabled)
-      label(for="checkbox2")
-      label.-text(for="checkbox2") Disabled Checkbox
+      .a-checkbox
+        input(type="checkbox", class="a-checkbox__input", id="checkbox2", disabled)
+        label(for="checkbox2", class="a-checkbox__label") Checkbox
   :code(lang="html")
     <div class="m-form__item -row">
-      <input type="checkbox" class="a-input" id="checkbox1">
-      <label for="checkbox1"></label>
-      <label class="-text" for="checkbox1">Checkbox</label>
+      <div class="a-checkbox">
+        <input type="checkbox" class="a-checkbox__input" id="checkbox1">
+        <label class="a-checkbox__label" for="checkbox1">Checkbox</label>
+      </div>
     </div>
     <div class="m-form__item -row">
-      <input type="checkbox" class="a-input" id="checkbox2" disabled>
-      <label for="checkbox2"></label>
-      <label class="-text" for="checkbox2">Disabled Checkbox</label>
+      <div class="a-checkbox">
+        <input type="checkbox" class="a-checkbox__input" id="checkbox2" disabled>
+        <label class="a-checkbox__label" for="checkbox2">Checkbox</label>
+      </div>
     </div>
 
 h3 Inline
@@ -39,23 +41,25 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-form__item.-row.-inline
-      input(type="checkbox", class="a-input", id="inlineCheckbox1")
-      label(for="inlineCheckbox1")
-      label.-text(for="inlineCheckbox1") Option 1
+      .a-checkbox
+        input(type="checkbox", class="a-checkbox__input", id="inlineCheckbox1")
+        label(for="inlineCheckbox1", class="a-checkbox__label") Option 1
     .m-form__item.-row.-inline.-ml--1
-      input(type="checkbox", class="a-input", id="inlineCheckbox2")
-      label(for="inlineCheckbox2")
-      label.-text(for="inlineCheckbox2") Option 2
+      .a-checkbox
+        input(type="checkbox", class="a-checkbox__input", id="inlineCheckbox2")
+        label(for="inlineCheckbox2", class="a-checkbox__label") Option 2
   :code(lang="html")
     <div class="m-form__item -row -inline">
-      <input type="checkbox" class="a-input" id="inlineCheckbox1">
-      <label for="inlineCheckbox1"></label>
-      <label class="-text" for="inlineCheckbox1">Option 1</label>
+      <div class="a-checkbox">
+        <input type="checkbox" class="a-checkbox__input" id="inlineCheckbox1">
+        <label class="a-checkbox__label" for="inlineCheckbox1">Option 1</label>
+      </div>
     </div>
     <div class="m-form__item -row -inline">
-      <input type="checkbox" class="a-input" id="inlineCheckbox2">
-      <label for="inlineCheckbox2"></label>
-      <label class="-text" for="inlineCheckbox2">Option 2</label>
+      <div class="a-checkbox">
+        <input type="checkbox" class="a-checkbox__input" id="inlineCheckbox2">
+        <label class="a-checkbox__label" for="inlineCheckbox2">Option 2</label>
+      </div>
     </div>
 
 h3 Checkbox List
@@ -67,51 +71,56 @@ p.-text
     legend.a-label Select an option
     ul.m-form__item.-list(style="max-width:20rem")
       li.m-form__item.-row
-        input(type="checkbox", class="a-input", id="checkbox-1")
-        label(for="checkbox-1")
-        label.-text(for="checkbox-1") Option 1
+        .a-checkbox
+          input(type="checkbox", class="a-checkbox__input", id="checkbox-1")
+          label(for="checkbox-1", class="a-checkbox__label") Option 1
       li.m-form__item.-row
-        input(type="checkbox", class="a-input", id="checkbox-2")
-        label(for="checkbox-2")
-        label.-text(for="checkbox-2") Option 2
+        .a-checkbox
+          input(type="checkbox", class="a-checkbox__input", id="checkbox-2")
+          label(for="checkbox-2", class="a-checkbox__label") Option 2
       li.m-form__item.-row
-        input(type="checkbox", class="a-input", id="checkbox-3")
-        label(for="checkbox-3")
-        label.-text(for="checkbox-3") Option 3
+        .a-checkbox
+          input(type="checkbox", class="a-checkbox__input", id="checkbox-3")
+          label(for="checkbox-3", class="a-checkbox__label") Option 3
       li.m-form__item.-row
-        input(type="checkbox", class="a-input", id="checkbox-4")
-        label(for="checkbox-4")
-        label.-text(for="checkbox-4") Option 4
+        .a-checkbox
+          input(type="checkbox", class="a-checkbox__input", id="checkbox-4")
+          label(for="checkbox-4", class="a-checkbox__label") Option 4
       li.m-form__item.-row
-        input(type="checkbox", class="a-input", id="checkbox-5")
-        label(for="checkbox-5")
-        label.-text(for="checkbox-5") Option 5
+        .a-checkbox
+          input(type="checkbox", class="a-checkbox__input", id="checkbox-5")
+          label(for="checkbox-5", class="a-checkbox__label") Option 5
   :code(lang='html')
     <legend class="a-label">Select an option</legend>
     <ul class="m-form__item -list">
       <li class="m-form__item -row">
-        <input type="checkbox" class="a-input" id="checkbox1">
-        <label for="checkbox1"></label>
-        <label class="-text" for="checkbox1">Option 1</label>
+        <div class="a-checkbox">
+          <input type="checkbox" class="a-checkbox__input" id="checkbox1">
+          <label class="a-checkbox__label" for="checkbox1">Option 1</label>
+        </div>
       </li>
       <li class="m-form__item -row">
-        <input type="checkbox" class="a-input" id="checkbox2">
-        <label for="checkbox2"></label>
-        <label class="-text" for="checkbox2">Option 2</label>
+        <div class="a-checkbox">
+          <input type="checkbox" class="a-checkbox__input" id="checkbox2">
+          <label class="a-checkbox__label" for="checkbox2">Option 2</label>
+        </div>
       </li>
       <li class="m-form__item -row">
-        <input type="checkbox" class="a-input" id="checkbox3">
-        <label for="checkbox3"></label>
-        <label class="-text" for="checkbox3">Option 3</label>
+        <div class="a-checkbox">
+          <input type="checkbox" class="a-checkbox__input" id="checkbox3">
+          <label class="a-checkbox__label" for="checkbox3">Option 3</label>
+        </div>
       </li>
       <li class="m-form__item -row">
-        <input type="checkbox" class="a-input" id="checkbox4">
-        <label for="checkbox4"></label>
-        <label class="-text" for="checkbox4">Option 4</label>
+        <div class="a-checkbox">
+          <input type="checkbox" class="a-checkbox__input" id="checkbox4">
+          <label class="a-checkbox__label" for="checkbox4">Option 4</label>
+        </div>
       </li>
       <li class="m-form__item -row">
-        <input type="checkbox" class="a-input" id="checkbox5">
-        <label for="checkbox5"></label>
-        <label class="-text" for="checkbox5">Option 5</label>
+        <div class="a-checkbox">
+          <input type="checkbox" class="a-checkbox__input" id="checkbox5">
+          <label class="a-checkbox__label" for="checkbox5">Option 5</label>
+        </div>
       </li>
     </ul>
