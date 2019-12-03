@@ -43,6 +43,7 @@ $animation-duration: 0.5s;
     .a-modal__subtitle {
       font-size: $text;
       font-weight: normal;
+      line-height: $line-height-large;
       margin: 0;
 
       &.-centered {
