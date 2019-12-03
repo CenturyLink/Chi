@@ -41,7 +41,7 @@ input {
 
           &::after {
             background-image: none;
-            border: none;
+            border: 0;
             color: set-color(white);
             content: 'OFF';
             display: block;
