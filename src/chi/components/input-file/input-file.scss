@@ -57,11 +57,11 @@ input {
           align-items: center;
           display: flex;
           font-size: $text;
+          font-weight: 400;
           line-height: $line-height-smaller;
+          margin-bottom: 0;
           pointer-events: none;
           position: relative;
-          margin-bottom: 0;
-          font-weight: 400;
         }
 
         &::before {

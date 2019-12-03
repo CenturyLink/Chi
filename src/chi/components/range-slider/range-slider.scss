@@ -262,14 +262,14 @@ input {
       position: relative;
 
       &:first-child .a-input__tick-label {
-        text-align: left;
         left: -0.625rem;
+        text-align: left;
       }
 
       &:last-child .a-input__tick-label {
-        text-align: right;
         left: initial;
         right: -0.625rem;
+        text-align: right;
       }
     }
   }

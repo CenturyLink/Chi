@@ -57,8 +57,8 @@ input {
 
       @each $type in map-keys($sizes) {
         &.-#{$type} {
-          height: map-get(map-get($sizes, $type), height);
           font-size: map-get(map-get($sizes, $type), font-size);
+          height: map-get(map-get($sizes, $type), height);
           line-height: map-get(map-get($sizes, $type), line-height);
           padding: map-get(map-get($sizes, $type), padding);
 

@@ -17,11 +17,11 @@ body {
   }
 
   code {
-    font-family: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
-    font-size: 0.8125rem;
     background-color: set-color(grey, 15);
     border-radius: $border-radius;
     color: #008040;
+    font-family: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
+    font-size: 0.8125rem;
 
     &:not([class*='language-']) {
       padding: 0.125rem 0.25rem;

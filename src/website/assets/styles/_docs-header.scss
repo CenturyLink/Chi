@@ -31,6 +31,7 @@
         @include respond-to(md) {
           flex-direction: row;
         }
+
         .a-brand {
           margin: 0;
           width: auto;
@@ -103,7 +104,7 @@
 
           .a-input {
             background-color: set-color(grey, 90);
-            border: none;
+            border: 0;
             box-shadow: none;
             color: set-color(grey, 40);
             width: 100%;

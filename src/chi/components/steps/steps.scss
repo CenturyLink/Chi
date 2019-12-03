@@ -51,8 +51,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         display: block;
         font-size: 1.3rem;
         font-style: normal;
-        font-weight: normal;
         font-variant: normal;
+        font-weight: normal;
         position: absolute;
       }
 
@@ -229,6 +229,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
   @each $breakpoint in $breakpoints {
     &.-labels-#{$breakpoint}--hide {
+
       & li > .a-steps__icon a {
         display: none;
 
@@ -255,20 +256,24 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     position: relative;
     right: 1.5625rem;
   }
+
   .a-steps li.-active div.a-steps__icon::after {
     position: relative;
     right: 3.4375rem;
   }
+
   .a-steps div.a-steps__icon::before,
   .a-steps.-horizontalLabels div.a-steps__icon::before  {
-    position: relative;
     left: 0.15rem;
+    position: relative;
   }
+
   .a-steps.-horizontalLabels div.a-steps__icon::after,
   .a-steps.-horizontalLabels li.-active div.a-steps__icon::after {
     position: relative;
     right: 0.75rem;
   }
+
   .a-steps.-horizontalLabels li.-completed div.a-steps__icon::after {
     position: relative;
     right: 0.3125rem;

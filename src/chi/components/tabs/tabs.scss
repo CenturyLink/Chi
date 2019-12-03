@@ -13,8 +13,8 @@
     & > li {
       &.-active {
         & > a {
-          font-weight: 600;
           color: $brand-color;
+          font-weight: 600;
         }
       }
 
@@ -70,8 +70,8 @@
   & > li {
     &.a-sliding-border {
       left: 0;
-      width: 0.125rem;
       position: absolute;
+      width: 0.125rem;
     }
 
     &.-activeAlt {
@@ -205,7 +205,7 @@
         position: relative;
 
         .a-icon {
-          left: 0rem;
+          left: 0;
           position: absolute;
         }
       }
@@ -227,9 +227,9 @@
     }
 
     &.a-sliding-border {
-      margin-left: 0;
-      height: 0.125rem;
       bottom: 0;
+      height: 0.125rem;
+      margin-left: 0;
     }
   }
 
@@ -299,9 +299,9 @@
     }
 
     &.a-sliding-border {
+      background-color: $brand-color;
       display: none;
       position: absolute;
-      background-color: $brand-color;
     }
   }
 
@@ -426,5 +426,5 @@
 }
 
 .a-tabs-panel:not(.-active) {
-  display:none;
+  display: none;
 }

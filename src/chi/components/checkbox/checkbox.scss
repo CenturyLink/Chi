@@ -69,7 +69,7 @@ input {
         }
 
         &::after {
-          background-image: url(icon-check--hover.svg);
+          background-image: url('icon-check--hover.svg');
           content: '';
           display: block;
           height: 0.625rem;
@@ -97,7 +97,7 @@ input {
           }
 
           &::after {
-            background-image: url(icon-check.svg);
+            background-image: url('icon-check.svg');
             transform: scale(1);
           }
         }

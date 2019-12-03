@@ -21,7 +21,7 @@ $sizes: (
   ),
   md: (
     height: 0.6875rem,
-    padding-right: 0rem,
+    padding-right: 0,
     right: 0.25rem,
     width: 1rem,
     top: 0.25rem,
@@ -99,12 +99,12 @@ $m-inputNumber: (
           width: 1rem;
 
           &:first-of-type {
-            background-image: url(icon-triangle-down.svg);
+            background-image: url('icon-triangle-down.svg');
             bottom: 0.25rem;
           }
 
           &:last-of-type {
-            background-image: url(icon-triangle-up.svg);
+            background-image: url('icon-triangle-up.svg');
             top: 0.25rem;
           }
 
@@ -127,10 +127,10 @@ $m-inputNumber: (
             padding-right: map-get(map-get($sizes, $type), padding-right);
 
             & ~ button {
+              background-size: map-get(map-get($sizes, $type), background-size);
               height: map-get(map-get($sizes, $type), height);
               right: map-get(map-get($sizes, $type), right);
               width: map-get(map-get($sizes, $type), width);
-              background-size: map-get(map-get($sizes, $type), background-size);
 
               &:first-of-type {
                 bottom: map-get(map-get($sizes, $type), bottom);
@@ -186,16 +186,16 @@ $m-inputNumber: (
     height: map-get(map-get($m-inputNumber, md), button-height);
 
     &:first-of-type, &:focus:first-of-type {
+      border-bottom-right-radius: 0;
       border-right-width: 0;
       border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
       order: 1;
     }
 
     &:last-of-type, &:focus:last-of-type {
+      border-bottom-left-radius: 0;
       border-left-width: 0;
       border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
       order: 3;
     }
   }

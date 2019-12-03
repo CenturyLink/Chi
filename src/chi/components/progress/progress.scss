@@ -21,11 +21,11 @@ $states: (
 
 progress {
   /* Reset the default appearance */
-  -webkit-appearance: none;
   -moz-appearance: none;
+  -webkit-appearance: none;
   appearance: none;
   /* Get rid of default border in Firefox. */
-  border: none;
+  border: 0;
   border-radius: 0.1875rem;
   /* For IE10 / IE 11 / Edge */
   color:  $success-color;
@@ -37,6 +37,7 @@ progress {
   &::-webkit-progress-bar {
     background-color: set-color(grey, 20);
   }
+
   &::-webkit-progress-value {
     background-color: $success-color;
   }
@@ -53,9 +54,11 @@ progress {
 
   @each $state in map-keys($states) {
     &.-#{$state} {
+
       &::-webkit-progress-value {
         background-color: map-get(map-get($states, $state), background-color);
       }
+
       &::-moz-progress-bar {
         background-color: map-get(map-get($states, $state), background-color);
       }

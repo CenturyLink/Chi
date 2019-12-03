@@ -8,11 +8,11 @@
   .m-dropdown__menu {
     left: 0;
     min-width: 100%;
-    position:absolute;
+    position: absolute;
     z-index: $zindex-dropdown;
 
     .m-dropdown__menu {
-      border: 0px solid transparent;
+      border: 0 solid transparent;
       box-shadow: none;
       padding-bottom: 0;
       padding-top: 0;
@@ -188,7 +188,7 @@
       }
 
       &.-active {
-        background: url(icon-check-alt.svg) no-repeat right 1rem center;
+        background: url('icon-check-alt.svg') no-repeat right 1rem center;
         background-size: 1rem 1rem;
         color: $brand-color;
         font-weight: 600;
@@ -212,8 +212,8 @@
     & > .m-input__wrapper {
       margin-left: 0.5rem;
       margin-right: 0.5rem;
-      padding-left: 0rem;
-      padding-right: 0rem;
+      padding-left: 0;
+      padding-right: 0;
 
       &:not(:first-child) {
         margin-top: 0.5rem;

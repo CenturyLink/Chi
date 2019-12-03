@@ -3,6 +3,7 @@ import gulp from 'gulp';
 const requires = {
   'clean': require('./tasks/clean.js'),
   'serve': require('./tasks/serve.js'),
+  'lint-css-fix': require('./tasks/lint-fix'),
   'build-chi-styles': require('./tasks/build-chi-styles.js'),
   'build-chi-assets': require('./tasks/build-chi-assets.js'),
   'build-chi-sprite': require('./tasks/build-chi-sprite.js'),

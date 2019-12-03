@@ -75,6 +75,7 @@
         flex: 1 0 auto;
         width: 100%;
       }
+
       @for $i from 1 through 12 {
         &.-w-#{$size}--#{$i} {
           flex: 1 0 auto;
@@ -90,6 +91,7 @@
         flex: 1 0 auto;
         width: 100%;
       }
+
       @for $i from 1 through 12 {
         &.-#{$size}--w#{$i} {
           flex: 1 0 auto;
@@ -150,6 +152,7 @@
     &.-o--#{$i} {
       margin-left: (100% / 12 * $i);
     }
+
     @each $size in sm md lg xl {
       @include respond-to($size) {
         @for $i from 1 through 11 {
@@ -166,6 +169,7 @@
     &.-o#{$i} {
       margin-left: (100% / 12 * $i);
     }
+
     @each $size in sm md lg xl {
       @include respond-to($size) {
         @for $i from 1 through 11 {
@@ -209,6 +213,7 @@
 
   @for $i from 1 through 12 {
     &.-n--#{$i} {
+
       order: #{$i};
     }
 
@@ -216,6 +221,7 @@
       @include respond-to-only($size) {
         @for $i from 1 through 12 {
           &.-n-#{$size}--#{$i} {
+
             order: #{$i};
           }
         }
@@ -226,6 +232,7 @@
   // Legacy code start
   @for $i from 1 through 12 {
     &.-n#{$i} {
+
       order: #{$i};
     }
 
@@ -233,6 +240,7 @@
       @include respond-to-only($size) {
         @for $i from 1 through 12 {
           &.-#{$size}--n#{$i} {
+
             order: #{$i};
           }
         }
