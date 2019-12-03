@@ -38,6 +38,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                       [`-${size}`]: size !== 'default'
                     }
                     disabled=state === 'disabled' ? 'disabled' : false
+                    aria-label='Button action'
                     )
                       .a-btn__content
                         .a-icon
@@ -76,6 +77,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                       [`-${size}`]: size !== 'default'
                     }
                     disabled=state === 'disabled' ? 'disabled' : false
+                    aria-label='Button action'
                     )
                       .a-btn__content
                         .a-icon
@@ -118,6 +120,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                       [`-${size}`]: size !== 'default'
                     }
                     disabled=state === 'disabled' ? 'disabled' : false
+                    aria-label='Button action'
                     )
                       .a-btn__content
                         .a-icon
@@ -156,6 +159,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                       [`-${size}`]: size !== 'default'
                     }
                     disabled=state === 'disabled' ? 'disabled' : false
+                    aria-label='Button action'
                     )
                       .a-btn__content
                         .a-icon
@@ -188,14 +192,14 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
               if style === 'light'
                 td.-bg--black
-                  button(type="button", class=`a-btn -float -${style} -${state} -mx--2 -m--1`)
+                  button(type="button", class=`a-btn -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
                     .a-btn__content
                       .a-icon
                         svg
                           use(xlink:href='#icon-atom')
               else
                 td
-                  button(type="button", class=`a-btn -float -${style} -${state} -mx--2 -m--1`)
+                  button(type="button", class=`a-btn -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
                     .a-btn__content
                       .a-icon
                         svg

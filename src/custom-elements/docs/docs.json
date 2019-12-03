@@ -382,6 +382,22 @@
       "usage": {},
       "props": [
         {
+          "name": "alternative-text",
+          "type": "string",
+          "mutable": false,
+          "attr": "alternative-text",
+          "reflectToAttr": true,
+          "docs": "to provide alternative text in case of icon buttons.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "center",
           "type": "boolean",
           "mutable": false,

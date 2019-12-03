@@ -124,21 +124,21 @@ p.-text
   | be used for common actions such as editing, deleting, closing, etc.
 .example.-mb--3
   .-p--3
-    button(class=`a-btn -icon -mr--2`)
+    button(class=`a-btn -icon -mr--2`, aria-label="Button action")
       .a-btn__content
         i.a-icon.icon-atom
-    button(class=`a-btn -icon -flat -mr--2`)
+    button(class=`a-btn -icon -flat -mr--2`, aria-label="Button action")
       .a-btn__content
         i.a-icon.icon-atom
   :code(lang='html')
     <!-- base -->
-    <button class="a-btn -icon">
+    <button class="a-btn -icon" aria-label="Button action">
       <div class="a-btn__content">
         <i class="a-icon icon-atom"></i>
       </div>
     </button>
     <!-- flat -->
-    <button class="a-btn -icon -flat">
+    <button class="a-btn -icon -flat" aria-label="Button action">
       <div class="a-btn__content">
         <i class="a-icon icon-atom"></i>
       </div>
@@ -190,39 +190,39 @@ h3 Floating icon buttons
     .a-col.-w--12.-w-md--6
       .-p--3.-text--center
         each color in ['base', 'primary', 'dark']
-          button(class=`a-btn -${color} -float -mr--2`)
+          button(class=`a-btn -${color} -float -mr--2`, aria-label="Icon")
             .a-btn__content
               i.a-icon.icon-atom
     .a-col.-w--12.-w-md--6
       .-p--3.-bg--black.-text--center
         each color in ['secondary', 'light']
-          button(class=`a-btn -${color} -float -mr--2`)
+          button(class=`a-btn -${color} -float -mr--2`, aria-label="Icon")
             .a-btn__content
               i.a-icon.icon-atom
   :code(lang='html')
     <!-- For light backgrounds -->
-    <button class="a-btn -float">
+    <button class="a-btn -float" aria-label="Button action">
       <div class="a-btn__content">
         <i class="a-icon icon-atom"></i>
       </div>
     </button>
-    <button class="a-btn -primary -float">
+    <button class="a-btn -primary -float" aria-label="Button action">
       <div class="a-btn__content">
         <i class="a-icon icon-atom"></i>
       </div>
     </button>
-    <button class="a-btn -dark -float">
+    <button class="a-btn -dark -float" aria-label="Button action">
       <div class="a-btn__content">
         <i class="a-icon icon-atom"></i>
       </div>
     </button>
     <!-- For dark backgrounds -->
-    <button class="a-btn -secondary -float">
+    <button class="a-btn -secondary -float" aria-label="Button action">
       <div class="a-btn__content">
         <i class="a-icon icon-atom"></i>
       </div>
     </button>
-    <button class="a-btn -light -float">
+    <button class="a-btn -light -float" aria-label="Button action">
       <div class="a-btn__content">
         <i class="a-icon icon-atom"></i>
       </div>
@@ -284,34 +284,34 @@ p.-text
       div(class=`a-col -w--12`)
         p.-text--bold= '-' + size
         button(class=`a-btn -${size} -mr--1`) Button
-        button(class=`a-btn -${size} -icon`)
+        button(class=`a-btn -${size} -icon`, aria-label="Button action")
           .a-btn__content
             i.a-icon.icon-atom
   :code(lang='html')
     <!-- sm -->
     <button class="a-btn -sm">Button</button>
-    <button class="a-btn -sm -icon">
+    <button class="a-btn -sm -icon" aria-label="Button action">
        <div class="a-btn__content">
          <i class="a-icon icon-atom"></i>
        </div>
     </button>
     <!-- md -->
     <button class="a-btn -md">Button</button>
-    <button class="a-btn -md -icon">
+    <button class="a-btn -md -icon" aria-label="Button action">
        <div class="a-btn__content">
          <i class="a-icon icon-atom"></i>
        </div>
     </button>
     <!-- lg -->
     <button class="a-btn -lg">Button</button>
-    <button class="a-btn -lg -icon">
+    <button class="a-btn -lg -icon" aria-label="Button action">
        <div class="a-btn__content">
          <i class="a-icon icon-atom"></i>
        </div>
     </button>
     <!-- xl -->
     <button class="a-btn -xl">Button</button>
-    <button class="a-btn -xl -icon">
+    <button class="a-btn -xl -icon" aria-label="Button action">
        <div class="a-btn__content">
          <i class="a-icon icon-atom"></i>
        </div>
