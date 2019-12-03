@@ -36,21 +36,21 @@ p.-text
       fieldset
         legend.a-label.-d--none Toggle panel state
         .m-form__item.-inline.-row
-          input.a-input(type='radio', name='example1', value='pending', id='example1_radio1', checked='checked')
-          label(for='example1_radio1')
-          label.-text(for='example1_radio1') Pending
+          .a-radio
+            input.a-radio__input(type='radio', name='example1', value='pending', id='example1_radio1', checked='checked')
+            label.a-radio__label(for='example1_radio1') Pending
         .m-form__item.-inline.-row
-          input.a-input(type='radio', name='example1', value='active', id='example1_radio2')
-          label(for='example1_radio2')
-          label.-text(for='example1_radio2') Active
+          .a-radio
+            input.a-radio__input(type='radio', name='example1', value='active', id='example1_radio2')
+            label.a-radio__label(for='example1_radio2') Active
         .m-form__item.-inline.-row
-          input.a-input(type='radio', name='example1', value='done', id='example1_radio3')
-          label(for='example1_radio3')
-          label.-text(for='example1_radio3') Done
+          .a-radio
+            input.a-radio__input(type='radio', name='example1', value='done', id='example1_radio3')
+            label.a-radio__label(for='example1_radio3') Done
         .m-form__item.-inline.-row
-          input.a-input(type='radio', name='example1', value='disabled', id='example1_radio4')
-          label(for='example1_radio4')
-          label.-text(for='example1_radio4') Disabled
+          .a-radio
+            input.a-radio__input(type='radio', name='example1', value='disabled', id='example1_radio4')
+            label.a-radio__label(for='example1_radio4') Disabled
   ul#a-tabs-e1.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-e1-html') HTML
@@ -90,24 +90,28 @@ p.-text
 
       <div class="-d--flex -justify-content--center -mt--3">
         <div class="m-form__item -inline -row">
-          <input class="a-input" type="radio" name="example1" value="pending" id="example1_radio1" checked="checked">
-          <label for="example1_radio1"></label>
-          <label class="-text" for="example1_radio1">Pending</label>
+          <div class="a-radio">
+            <input class="a-radio__input" type="radio" name="example1" value="pending" id="example1_radio1" checked="checked">
+            <label class="a-radio__label" for="example1_radio1">Pending</label>
+          </div>
         </div>
         <div class="m-form__item -inline -row">
-          <input class="a-input" type="radio" name="example1" value="active" id="example1_radio2">
-          <label for="example1_radio2"></label>
-          <label class="-text" for="example1_radio2">Active</label>
+          <div class="a-radio">
+            <input class="a-radio__input" type="radio" name="example1" value="active" id="example1_radio2">
+            <label class="a-radio__label" for="example1_radio2">Active</label>
+          </div>
         </div>
         <div class="m-form__item -inline -row">
-          <input class="a-input" type="radio" name="example1" value="done" id="example1_radio3">
-          <label for="example1_radio3"></label>
-          <label class="-text" for="example1_radio3">Done</label>
+          <div class="a-radio">
+            <input class="a-radio__input" type="radio" name="example1" value="done" id="example1_radio3">
+            <label class="a-radio__label" for="example1_radio3">Done</label>
+          </div>
         </div>
         <div class="m-form__item -inline -row">
-          <input class="a-input" type="radio" name="example1" value="disabled" id="example1_radio4">
-          <label for="example1_radio4"></label>
-          <label class="-text" for="example1_radio4">Disabled</label>
+          <div class="a-radio">
+            <input class="a-radio__input" type="radio" name="example1" value="disabled" id="example1_radio4">
+            <label class="a-radio__label" for="example1_radio4">Disabled</label>
+          </div>
         </div>
       </div>
   #a-tabs-e1-js.a-tabs-panel

@@ -69,6 +69,12 @@ $sizes: (
                     margin-right: 1rem;
                   }
                 }
+
+                & .a-radio {
+                  .a-radio__label {
+                    padding-left: 2rem;
+                  }
+                }
               }
 
               & div:first-of-type + div {
@@ -191,8 +197,11 @@ $sizes: (
       &.a-picker {
         &:checked {
           & + label {
-            & .a-input {
+            & .a-input,
+            & .a-radio__input {
               & + label {
+                font-weight: 600;
+                
                 &::before {
                   border-color: $brand-color;
                 }
@@ -201,6 +210,33 @@ $sizes: (
                   background-color: $brand-color;
                   transform: scale(1);
                 }
+              }
+            }
+          }
+        }
+
+        & + label {
+          & .a-radio {
+            line-height: $line-height-small;
+          }
+        }
+      }
+
+      & + label {
+        & .m-picker__content--start {
+          & .a-radio {
+            line-height: $line-height-smaller;
+
+            & .a-radio__label {
+              font-weight: 600;
+              line-height: $line-height-smaller;
+
+              &::before {
+                top: 0;
+              }
+
+              &::after {
+                top: 0.25rem;
               }
             }
           }
