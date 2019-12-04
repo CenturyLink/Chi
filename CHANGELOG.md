@@ -19,6 +19,17 @@
 * Improved responsiveness of Chi Documentation nav.
 * Improved Popover web component reference validation error message.
 * Updated backstop tests.
+* Fixed SASS linting.
+* Fixed accessibility errors in Button component which rendered Icon buttons without a label.
+* Fixed accessibility warnings in Documentation which rendered pages with skipped heading levels.
+* Fixed accessibility color contrast errors in Avatar, Badge, Divider, Expansion Panel, and Text Input components.
+* Updated Checkbox component markup to fix multiple form label accessibility errors.
+* Updated Radio Button component markup to fix multiple form label accessibility errors.
+* Fixed accessibility errors in Date picker component related to duplicate IDs.
+* Improved Card, Modal, and Popover component markup with more semantic html elements.
+* Fixed missing form label accessibility errors in Documentation form examples.
+* Fixed accessibility warnings in Documentation related to redundant navigation links.
+* Fixed accessibility warnings in Documentation examples related to suspicious link titles.
 
 ### 1.2.5 (October 15, 2019)
 
