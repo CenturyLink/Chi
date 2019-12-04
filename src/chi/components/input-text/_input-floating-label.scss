@@ -4,7 +4,7 @@
 
 $label-font-size: 0.75rem;
 $label-font-size-relaxed: 0.875rem;
-$label-left: 0.6875rem+0.0625rem;
+$label-left: 0.6875rem + 0.0625rem;
 $sizes: (
   lg: (
     label-bottom: 0.9375rem,
@@ -28,7 +28,8 @@ $sizes: (
 
 .a-inputWrapper.-floatingLabel,
 .m-input__wrapper.-floatingLabel {
-  & > input, & > select {
+  & > input,
+  & > select {
     @each $type in map-keys($sizes) {
       &.-#{$type} {
         padding-bottom: map-get(map-get($sizes, $type), padding-bottom);
@@ -50,17 +51,19 @@ $sizes: (
     }
 
     & ~ label {
-      color: set-color(grey, 50);
+      color: set-color(grey, 70);
       font-size: $label-font-size-relaxed;
       font-weight: normal;
       left: $label-left;
       line-height: 1.5rem;
       margin-bottom: unset;
+      opacity: 0.6;
       position: absolute;
       transition: all 0.2s ease-in-out;
 
       &.-active {
         font-size: $label-font-size;
+        opacity: 0.8;
       }
     }
   }

@@ -102,42 +102,60 @@ h3 Spinners in Buttons
 h3 Spinners in Text Inputs
 .example.-mb--3
   .-p--3
-    .m-input__wrapper.-pb--2(style="max-width:20rem")
-      input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text")
-      svg(class=`a-spinner -text--muted`,viewBox=`0 0 66 66`)
-        title Loading
-        circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
-    .m-input__wrapper.-pb--2(style="max-width:20rem")
-      input(type="text", class="a-input -sm", placeholder="Placeholder", value="Sample Text")
-      svg(class=`a-spinner -text--muted -xs`,viewBox=`0 0 66 66`)
-        title Loading
-        circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
-    .m-input__wrapper.-pb--2(style="max-width:20rem")
-      input(type="text", class="a-input -lg", placeholder="Placeholder", value="Sample Text")
-      svg(class=`a-spinner -text--muted -sm--2`,viewBox=`0 0 66 66`)
-        title Loading
-        circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+    .m-form__item.-mb--2(style="max-width:20rem")
+      label.a-label(for="spinner-input-01") Label
+      .m-input__wrapper
+        input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text" id="spinner-input-01")
+        svg(class=`a-spinner -text--muted`,viewBox=`0 0 66 66`)
+          title Loading
+          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+    .m-form__item.-mb--2(style="max-width:20rem")
+      label.a-label(for="spinner-input-02") Label
+      .m-input__wrapper
+        input(type="text", class="a-input -sm", placeholder="Placeholder", value="Sample Text", id="spinner-input-02")
+        svg(class=`a-spinner -text--muted -xs`,viewBox=`0 0 66 66`)
+          title Loading
+          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+    .m-form__item.-mb--2(style="max-width:20rem")
+      label.a-label(for="spinner-input-03") Label
+      .m-input__wrapper
+        input(type="text", class="a-input -lg", placeholder="Placeholder", value="Sample Text", id="spinner-input-03")
+        svg(class=`a-spinner -text--muted -sm--2`,viewBox=`0 0 66 66`)
+          title Loading
+          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
   :code(lang="html")
-    <div class="m-input__wrapper">
-      <input type="text" class="a-input" placeholder="Placeholder" value="Sample text">
-      <svg class="a-spinner -text--muted" viewBox="0 0 66 66">
-        <title>Loading</title>
-        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-      </svg>
+    <!-- Medium (Base) -->
+    <div class="m-form__item">
+      <label class="a-label" for="spinner-input-01">Label</label>
+      <div class="m-input__wrapper">
+        <input type="text" class="a-input" placeholder="Placeholder" value="Sample text" id="spinner-input-01">
+        <svg class="a-spinner -text--muted" viewBox="0 0 66 66">
+          <title>Loading</title>
+          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+        </svg>
+      </div>
     </div>
-    <div class="m-input__wrapper">
-      <input type="text" class="a-input -sm" placeholder="Placeholder" value="Sample text">
-      <svg class="a-spinner -text--muted -xs" viewBox="0 0 66 66">
-        <title>Loading</title>
-        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-      </svg>
+    <!-- Small -->
+    <div class="m-form__item">
+      <label class="a-label" for="spinner-input-02">Label</label>
+      <div class="m-input__wrapper">
+        <input type="text" class="a-input -sm" placeholder="Placeholder" value="Sample text" id="spinner-input-02">
+        <svg class="a-spinner -text--muted -xs" viewBox="0 0 66 66">
+          <title>Loading</title>
+          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+        </svg>
+      </div>
     </div>
-    <div class="m-input__wrapper">
-      <input type="text" class="a-input -lg" placeholder="Placeholder" value="Sample text">
-      <svg class="a-spinner -text--muted -sm--2" viewBox="0 0 66 66">
-        <title>Loading</title>
-        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-      </svg>
+    <!-- Large -->
+    <div class="m-form__item">
+      <label class="a-label" for="spinner-input-03">Label</label>
+      <div class="m-input__wrapper">
+        <input type="text" class="a-input -lg" placeholder="Placeholder" value="Sample text" id="spinner-input-03">
+        <svg class="a-spinner -text--muted -sm--2" viewBox="0 0 66 66">
+          <title>Loading</title>
+          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+        </svg>
+        </div>
       </div>
     </div>
 

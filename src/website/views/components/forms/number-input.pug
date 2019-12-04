@@ -19,13 +19,13 @@ h3 Base
   .-p--3
     .m-form__item.-row
       .m-input__wrapper
-        input.a-input(type="number", value="0")
+        input.a-input(type="number", value="0", aria-label="Input Label")
         button(aria-label='decrease')
         button(aria-label='increase')
   :code(lang="html")
     <div class="m-form__item -row">
       <div class="m-input__wrapper">
-        <input type="number" class="a-input" value="0">
+        <input type="number" class="a-input" value="0" aria-label="Input Label">
         <button aria-label="Decrease"></button>
         <button aria-label="Increase"></button>
       </div>
@@ -36,13 +36,13 @@ h3 Disabled
   .-p--3
     .m-form__item.-row
       .m-input__wrapper
-        input.a-input(type="number", value="0", disabled)
+        input.a-input(type="number", value="0", aria-label="Input Label", disabled)
         button(aria-label='decrease')
         button(aria-label='increase')
   :code(lang="html")
     <div class="m-form__item -row">
       <div class="m-input__wrapper">
-        <input type="number" class="a-input" value="0" disabled>
+        <input type="number" class="a-input" value="0" aria-label="Input Label" disabled>
         <button aria-label="Decrease"></button>
         <button aria-label="Increase"></button>
       </div>
@@ -58,34 +58,34 @@ p.-text
     each size in ['sm', 'md', 'lg', 'xl']
       .m-form__item.-row.-inline.-mr--3
         .m-input__wrapper
-          input.a-input(type="number", class=`-${size}`, value="0")
+          input.a-input(type="number", class=`-${size}`, value="0", aria-label="Input Label")
           button(aria-label='decrease')
           button(aria-label='increase')
   :code(lang='html')
     <div class="m-form__item -row -inline">
       <div class="m-input__wrapper">
-        <input type="number" class="a-input -sm" value="0">
+        <input type="number" class="a-input -sm" value="0" aria-label="Input Label">
         <button aria-label="Decrease"></button>
         <button aria-label="Increase"></button>
       </div>
     </div>
     <div class="m-form__item -row -inline">
       <div class="m-input__wrapper">
-        <input type="number" class="a-input -md" value="0">
+        <input type="number" class="a-input -md" value="0" aria-label="Input Label">
         <button aria-label="Decrease"></button>
         <button aria-label="Increase"></button>
       </div>
     </div>
     <div class="m-form__item -row -inline">
       <div class="m-input__wrapper">
-        <input type="number" class="a-input -lg" value="0">
+        <input type="number" class="a-input -lg" value="0" aria-label="Input Label">
         <button aria-label="Decrease"></button>
         <button aria-label="Increase"></button>
       </div>
     </div>
     <div class="m-form__item -row -inline">
       <div class="m-input__wrapper">
-        <input type="number" class="a-input -xl" value="0">
+        <input type="number" class="a-input -xl" value="0" aria-label="Input Label">
         <button aria-label="Decrease"></button>
         <button aria-label="Increase"></button>
       </div>
@@ -99,7 +99,7 @@ h3 Base
 .example.-mb--3
   .-p--3
     .m-inputNumber
-      input.a-input(type="number", value="0")
+      input.a-input(type="number", value="0", aria-label="Input Label")
       button.a-btn.-icon(aria-label='decrease')
         .a-btn__content
           i.a-icon.icon-minus
@@ -108,7 +108,7 @@ h3 Base
           i.a-icon.icon-plus
   :code(lang="html")
     <div class="m-inputNumber">
-      <input class="a-input" type="number" value="0">
+      <input class="a-input" type="number" value="0" aria-label="Input Label">
       <button class="a-btn -icon" aria-label="Decrease">
         <div class="a-btn__content">
           <i class="a-icon icon-minus"></i>
@@ -125,7 +125,7 @@ h3 Pill
 .example.-mb--3
   .-p--3
     .m-inputNumber.-pill
-      input.a-input(type="number", value="0")
+      input.a-input(type="number", value="0", aria-label="Input Label")
       button.a-btn.-icon(aria-label='decrease')
         .a-btn__content
           i.a-icon.icon-minus
@@ -134,7 +134,7 @@ h3 Pill
           i.a-icon.icon-plus
   :code(lang="html")
     <div class="m-inputNumber -pill">
-      <input class="a-input" type="number" value="0">
+      <input class="a-input" type="number" value="0" aria-label="Input Label">
       <button class="a-btn -icon" aria-label="Decrease">
         <div class="a-btn__content">
           <i class="a-icon icon-minus"></i>
@@ -151,7 +151,7 @@ h3 Disabled
 .example.-mb--3
   .-p--3
     .m-inputNumber
-      input.a-input(type="number", value="0", disabled=true)
+      input.a-input(type="number", value="0", aria-label="Input Label", disabled=true)
       button.a-btn.-icon(aria-label='decrease')
         .a-btn__content
           i.a-icon.icon-minus
@@ -160,7 +160,7 @@ h3 Disabled
           i.a-icon.icon-plus
   :code(lang="html")
     <div class="m-inputNumber">
-      <input class="a-input" type="number" value="0" disabled>
+      <input class="a-input" type="number" value="0" aria-label="Input Label" disabled>
       <button class="a-btn -icon" aria-label="Decrease">
         <div class="a-btn__content">
           <i class="a-icon icon-minus"></i>
@@ -182,7 +182,7 @@ p.-text
   .-p--3.-d--flex.-justify-content--start.-align-items--center
     each size in ['sm', 'md', 'lg', 'xl']
       div(class=`m-inputNumber -mr--2 -${size}`)
-        input(class=`a-input -${size}`, type="number", value="0")
+        input(class=`a-input -${size}`, type="number", value="0", aria-label="Input Label")
         button(class=`a-btn -icon -${size}`, aria-label='decrease')
           .a-btn__content
             i.a-icon.icon-minus
@@ -191,7 +191,7 @@ p.-text
             i.a-icon.icon-plus
   :code(lang="html")
     <div class="m-inputNumber -sm">
-      <input class="a-input -sm" type="number" value="0">
+      <input class="a-input -sm" type="number" value="0" aria-label="Input Label">
       <button class="a-btn -icon -sm" aria-label="Decrease">
         <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
       </button>
@@ -201,7 +201,7 @@ p.-text
       </button>
     </div>
     <div class="m-inputNumber -md">
-      <input class="a-input -md" type="number" value="0">
+      <input class="a-input -md" type="number" value="0" aria-label="Input Label">
       <button class="a-btn -icon -md" aria-label="Decrease">
         <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
       </button>
@@ -210,7 +210,7 @@ p.-text
       </button>
     </div>
     <div class="m-inputNumber -lg">
-      <input class="a-input -lg" type="number" value="0">
+      <input class="a-input -lg" type="number" value="0" aria-label="Input Label">
       <button class="a-btn -icon -lg" aria-label="Decrease">
         <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
       </button>
@@ -219,7 +219,7 @@ p.-text
       </button>
     </div>
     <div class="m-inputNumber -xl">
-      <input class="a-input -xl" type="number" value="0">
+      <input class="a-input -xl" type="number" value="0" aria-label="Input Label">
       <button class="a-btn -icon -xl" aria-label="Decrease">
         <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
       </button>

@@ -11,48 +11,29 @@ h3 Base
 .example.-mb--3
   .-p--3
     .m-form__item(style="max-width:20rem")
-      select(class="a-input")
+      label.a-label(for="select01") Label
+      select(class="a-input", id="select01")
         option Base Select
   :code(lang="html")
-    <select class="a-input">
-      <option>Base Select</option>
-    </select>
-
-h3 Pill
-p.-text Use the <code>-pill</code> modifier class to render a select with a more pronounced border-radius.
-.example.-mb--3
-  .-p--3
-    .m-form__item(style="max-width:20rem")
-      select(class="a-input -pill")
-        option Base Select
-  :code(lang="html")
-    <select class="a-input -pill">
-      <option>Base Select</option>
-    </select>
+    <div class="m-form__item">
+      <label class="a-label" for="select01">Label</label>
+      <select class="a-input" id="select01">
+        <option>Base Select</option>
+      </select>
+    </div>
 
 h3 Disabled
 .example.-mb--3
   .-p--3
     .m-form__item(style="max-width:20rem")
-      select(class="a-input", disabled)
+      label.a-label(for="select02") Label
+      select(class="a-input", id="select02", disabled)
         option Disabled Select
   :code(lang="html")
-    <select class="a-input" disabled>
-      <option>Disabled Select</option>
-    </select>
-
-h3 With Label
-.example.-mb--3
-  .-p--3
-    .m-form__item(style="max-width:20rem")
-      label.a-label(for='example') Label
-      select(class='a-input', id='example')
-        option Base Select
-  :code(lang="html")
     <div class="m-form__item">
-      <label class="a-label" for="example">Label</label>
-      <select class="a-input" id="example">
-        <option>Base Select</option>
+      <label class="a-label" for="select02">Label</label>
+      <select class="a-input" id="select02" disabled>
+        <option>Disabled Select</option>
       </select>
     </div>
 
@@ -63,35 +44,66 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-form__item(style="max-width:20rem")
-      select(class="a-input -danger")
+      label.a-label(for="select03") Label
+      select(class="a-input -danger", id="select03")
         option Danger Select
   :code(lang="html")
-    <select class="a-input -danger">
-      <option>Danger Select</option>
-    </select>
+    <div class="m-form__item">
+      <label class="a-label" for="select03">Label</label>
+      <select class="a-input -danger" id="select03">
+        <option>Danger Select</option>
+      </select>
+    </div>
 
 h2 Sizes
 p.-text
-  | Selects supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  | Selects support the following sizes: <code>-sm</code>, <code>-md</code>,
   |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
 .example.-mb--3
   .-p--3
-    each size in ['sm', 'md', 'lg', 'xl']
-      div(class=`a-col -w--12 -p--2`)
-        .m-form__item(style="max-width:20rem")
-          select(class=`a-input -${size}`)
-            option= '-' + size + ' Select'
+    .-p--2
+      .m-form__item(style="max-width:20rem")
+        label.a-label(for="select04") Label
+        select(class="a-input -sm", id="select04")
+          option -sm Select
+    .-p--2
+      .m-form__item(style="max-width:20rem")
+        label.a-label(for="select05") Label
+        select(class="a-input -md", id="select05")
+          option -md Select
+    .-p--2
+      .m-form__item(style="max-width:20rem")
+        label.a-label(for="select06") Label
+        select(class="a-input -lg", id="select06")
+          option -lg Select
+    .-p--2
+      .m-form__item(style="max-width:20rem")
+        label.a-label(for="select07") Label
+        select(class="a-input -xl", id="select07")
+          option -xl Select
   :code(lang='html')
-    <select class="a-input -sm">
-      <option>-sm Select</option>
-    </select>
-    <select class="a-input -md">
-      <option>-md Select</option>
-    </select>
-    <select class="a-input -lg">
-      <option>-lg Select</option>
-    </select>
-    <select class="a-input -xl">
-      <option>-xl Select</option>
-    </select>
+    <div class="m-form__item">
+      <label class="a-label" for="select04">Label</label>
+      <select class="a-input -sm" id="select04">
+        <option>-sm Select</option>
+      </select>
+    </div>
+    <div class="m-form__item">
+      <label class="a-label" for="select05">Label</label>
+      <select class="a-input -md" id="select05">
+        <option>-md Select</option>
+      </select>
+    </div>
+    <div class="m-form__item">
+      <label class="a-label" for="select06">Label</label>
+      <select class="a-input -lg" id="select06">
+        <option>-lg Select</option>
+      </select>
+    </div>
+    <div class="m-form__item">
+      <label class="a-label" for="select07">Label</label>
+      <select class="a-input -xl" id="select07">
+        <option>-xl Select</option>
+      </select>
+    </div>

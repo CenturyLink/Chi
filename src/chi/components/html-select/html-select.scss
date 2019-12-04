@@ -120,7 +120,7 @@ select {
 
     &:not([disabled]) {
       &.-danger {
-        border-color: set-color(red, 50);
+        border-color: set-color(red, 60);
       }
     }
 
@@ -129,7 +129,7 @@ select {
 
       &:focus,
       &.-focus {
-        box-shadow: 0 0 0 1px rgba(set-color(red, 50), 1);
+        box-shadow: 0 0 0 1px rgba(set-color(red, 60), 1);
       }
     }
   }
