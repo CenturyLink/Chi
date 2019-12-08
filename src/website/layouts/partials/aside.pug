@@ -17,7 +17,7 @@ nav
                       a(href=`${rootPath}${section.path}`) #{section.title}
         else if key !== "Custom Elements"
           li.-hasActive
-            .a-collection__title 
+            .a-collection__title
               =key
             if utils.hasSections(collection)
               ul.a-tabs__subtabs
@@ -32,4 +32,4 @@ nav
         li
           a(href=`#`, disabled="disabled") #{key}
 .-m--3
-  a(class="a-btn -outline -primary", href=`https://github.com/CenturyLinkCloud/ux-chi-design`, target="_blank") Design Kit
+  a(class="a-btn -outline -primary", href="https://github.com/CenturyLinkCloud/ux-chi-design", rel="noopener", target="_blank") Design Kit
