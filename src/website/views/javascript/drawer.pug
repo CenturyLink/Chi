@@ -10,7 +10,7 @@ h2 Base
   .-position--relative.-z--0.-bb--1(style="height:20rem;overflow:hidden;")
     .-p--3
       .-d--flex.-justify-content--end.-align-items--start
-        button#drawer-trigger-1.a-btn.-icon.m-drawer__trigger(data-target='#drawer-1')
+        button#drawer-trigger-1.a-btn.-icon.m-drawer__trigger(data-target="#drawer-1", aria-label="Toggle navigation")
           .a-btn__content
             i.a-icon.-sm--2.icon-menu
       each i in [1, 2]
@@ -31,7 +31,7 @@ h2 Base
       a(href='#a-tabs-e1-js') JS
   #a-tabs-e1-button.a-tabs-panel.-active
     :code(lang="html")
-      <button id="drawer-trigger-1" class="a-btn -icon m-drawer__trigger" data-target="#drawer-1">
+      <button id="drawer-trigger-1" class="a-btn -icon m-drawer__trigger" data-target="#drawer-1" aria-label="Toggle navigation">
         <div class="a-btn__content">
           <i class="a-icon -sm--2 icon-menu"></i>
         </div>
@@ -60,7 +60,7 @@ h2 With backdrop
   .-position--relative.-z--0.-bb--1(style="height:20rem;overflow:hidden;")
     .-p--3
       .-d--flex.-justify-content--end.-align-items--start
-        button#drawer-trigger-2.a-btn.-icon.m-drawer__trigger(data-target='#drawer-2')
+        button#drawer-trigger-2.a-btn.-icon.m-drawer__trigger(data-target='#drawer-2', aria-label="Toggle navigation")
           .a-btn__content
             i.a-icon.-sm--2.icon-menu
       each i in [1, 2]
@@ -83,7 +83,7 @@ h2 With backdrop
       a(href='#a-tabs-e2-js') JS
   #a-tabs-e2-button.a-tabs-panel.-active
     :code(lang="html")
-      <button id="drawer-trigger-2" class="a-btn -icon m-drawer__trigger" data-target="#drawer-2">
+      <button id="drawer-trigger-2" class="a-btn -icon m-drawer__trigger" data-target="#drawer-2" aria-label="Toggle navigation">
         <div class="a-btn__content">
           <i class="a-icon -sm--2 icon-menu"></i>
         </div>

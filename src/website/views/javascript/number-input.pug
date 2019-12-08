@@ -13,13 +13,13 @@ p.-text
   .-p--3
     .m-form__item.-row
       .m-input__wrapper
-        input#input-number-1.a-input(type="number", value="0")
+        input#input-number-1.a-input(type="number", value="0", aria-label="Input label")
         button(aria-label='Decrease')
         button(aria-label='Increase')
   :code(lang="html")
     <div class="m-form__item -row">
       <div class="m-input__wrapper">
-        <input id="input-number-1" type="number" class="a-input" value="0">
+        <input id="input-number-1" type="number" class="a-input" value="0" aria-label="Input label">
         <button aria-label="Decrease"></button>
         <button aria-label="Increase"></button>
       </div>
@@ -31,7 +31,7 @@ h2 Expanded version
 .example.-mb--3
   .-p--3
     .m-inputNumber
-      input#input-number-2.a-input(type="number", value="0", min="0", max="3")
+      input#input-number-2.a-input(type="number", value="0", min="0", max="3", aria-label="Input label")
       button.a-btn.-icon(aria-label='Decrease')
         .a-btn__content
           i.a-icon.icon-minus
@@ -40,7 +40,7 @@ h2 Expanded version
           i.a-icon.icon-plus
   :code(lang="html")
     <div class="m-inputNumber">
-      <input id="input-number-2" class="a-input" type="number" value="0" min="0" max="3">
+      <input id="input-number-2" class="a-input" type="number" value="0" min="0" max="3" aria-label="Input label">
       <button class="a-btn -icon" aria-label="Decrease">
         <div class="a-btn__content">
           <i class="a-icon icon-minus"></i>
@@ -91,7 +91,7 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-inputNumber
-      input#input-number-3.a-input(type="number", value="1", min="0", max="6", step="2")
+      input#input-number-3.a-input(type="number", value="1", min="0", max="6", step="2", aria-label="Input label")
       button.a-btn.-icon(aria-label='Decrease')
         .a-btn__content
           i.a-icon.icon-minus
@@ -100,7 +100,7 @@ p.-text
           i.a-icon.icon-plus
   :code(lang="html")
     <div class="m-inputNumber">
-      <input id="input-number-3" class="a-input" type="number" value="1" min="0" max="6" step="2">
+      <input id="input-number-3" class="a-input" type="number" value="1" min="0" max="6" step="2" aria-label="Input label">
       <button class="a-btn -icon" aria-label="Decrease">
         <div class="a-btn__content">
           <i class="a-icon icon-minus"></i>
