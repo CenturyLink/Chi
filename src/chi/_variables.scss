@@ -166,7 +166,7 @@ $text-white: map-get($colorscheme, white);
 $text-inverse: map-get(map-get($colorscheme, grey), 10);
 
 $link-color: map-get(map-get($colorscheme, navy), 70);
-$focus-color: map-get(map-get($colorscheme, mint), 40);
+$focus-color: map-get(map-get($colorscheme, navy), 70);
 
 $primary: map-get(map-get($colorscheme, navy), 70);
 $secondary: map-get(map-get($colorscheme, mint), 40);

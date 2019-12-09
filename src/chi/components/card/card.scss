@@ -70,7 +70,8 @@
       box-shadow: none;
     }
 
-    &.-sm, &.-small { //Legacy code: -small to be removed.
+    &.-sm,
+    &.-small { //Legacy code: -small to be removed.
       padding: 0.5rem 1rem;
     }
 
@@ -103,6 +104,7 @@
     &.-align--center {
       justify-content: center;
     }
+
     // Legacy code start
     &.-alignLeft {
       justify-content: flex-start;
@@ -117,7 +119,8 @@
     }
     // Legacy code end
 
-    &.-sm, &.-small { //Legacy code: -small to be removed.
+    &.-sm,
+    &.-small { //Legacy code: -small to be removed.
       padding: 0.5rem 1rem;
     }
 
@@ -127,17 +130,17 @@
   }
 
   &.-active {
-    border: 0.0625rem solid $secondary-color;
-    box-shadow: 0 0 0 0.0625rem $secondary-color;
+    border: 0.0625rem solid $focus-color;
+    box-shadow: 0 0 0 0.0625rem $focus-color;
+
+    .a-card__title,
+    .a-icon {
+      color: $focus-color !important;
+    }
 
     &--alt {
-      border: 0.0625rem solid $primary-color;
-      box-shadow: 0 0 0 0.0625rem $primary-color;
-
-      .a-card__title,
-      .a-icon {
-        color: $primary-color !important;
-      }
+      border: 0.0625rem solid $secondary-color;
+      box-shadow: 0 0 0 0.0625rem $secondary-color;
     }
   }
 
