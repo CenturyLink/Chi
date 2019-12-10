@@ -6,6 +6,10 @@ html(lang="en")
         else
             title Chi &middot; Documentation
         meta(name="viewport", content="width=device-width, initial-scale=1")
+        if description
+            meta(name="description", content=description)
+        else
+            meta(name="description", content="Chi (pronounced chee) provides developers with a collection of HTML and CSS patterns to build fast, reusable, and consistent responsive interfaces.")
         link(rel="stylesheet", href=`${rootPath}chi.css`)
         link(rel="stylesheet", href=`${rootPath}assets/styles/chi-docs.css`)
         script(src=`${rootPath}assets/scripts/globalConfigs.js`)
