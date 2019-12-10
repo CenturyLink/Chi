@@ -11,9 +11,14 @@ p.-text
 h3 Base
 .example.-mb--3
   .-p--3
-    .m-form__item
-      input(type="checkbox", class="a-input -toggle", id="toggle1")
-      label(for="toggle1")
+    .m-form__item.-row
+      label.a-switch
+        span.a-switch__label Toggle
+        input(type="checkbox", class="a-switch__input -toggle", name="toggle1-test", value="toggle1-test", aria-describedby="toggle1-test", aria-label="toggle")
+        span(id="toggle1-test", class="a-switch__content", aria-live="assertive")
+          span.a-switch__faux
+          span.a-switch__on Enabled
+          span.a-switch__off Disabled
   :code(lang="html")
     <input type="checkbox" class="a-input -toggle" id="toggle1">
     <label for="toggle1"></label>
