@@ -15,6 +15,124 @@ $sizes: (
 );
 
 .m-picker {
+  input {
+    &[type='checkbox'],
+    &[type='radio'] {
+      &.a-picker {
+        & + label {
+          span.a-picker__checkbox {
+            border: 2px solid set-color(grey, 50);
+            border-radius: 3px;
+            color: set-color(grey, 50);
+            height: 1rem;
+            position: relative;
+            width: 1rem;
+
+            &::before {
+              border: 2px solid set-color(grey, 50);
+              border-left: 0;
+              border-top: 0;
+              content: '';
+              display: block;
+              height: 9px;
+              left: calc(50%-0.156rem);
+              position: absolute;
+              top: calc(50%-0.37rem);
+              transform: rotate(45deg) scale(0);
+              transition-duration: 0.2s;
+              width: 5px;
+            }
+          }
+
+          span.a-picker__radio {
+            border: 2px solid set-color(grey, 50);
+            border-radius: 0.5rem;
+            color: set-color(grey, 50);
+            height: 1rem;
+            position: relative;
+            width: 1rem;
+
+            &::before {
+              background-color: set-color(grey, 50);
+              border-radius: 0.25rem;
+              content: '';
+              height: 0.5rem;
+              left: calc(50%-0.25rem);
+              position: absolute;
+              top: calc(50%-0.25rem);
+              transform: scale(0);
+              transition-duration: 0.2s;
+              width: 0.5rem;
+            }
+          }
+
+          & .a-picker__label {
+            margin-left: 0.5rem;
+          }
+
+          &:hover {
+            span.a-picker__checkbox {
+              &::before {
+                transform: rotate(45deg) scale(1);
+              }
+            }
+            
+            span.a-picker__radio {
+              &::before {
+                transform: scale(1);
+              }
+            }
+          }
+
+          .m-picker__content {
+            &--start {
+              & span.a-picker__label {
+                  padding-left: 0.5rem;
+              }
+
+              & .a-picker__description {
+                color: $text-color;
+                font-size: $text-small;
+                font-weight: 400;
+                line-height: 1.25rem;
+                margin-left: 2.5rem;
+                padding: 0.5rem 0;
+              }
+            }
+          }
+        }
+      }
+
+      &:checked {
+        & + label {
+          span.a-picker__checkbox {
+            background-color: $brand-color;
+            border: 2px solid $brand-color;
+            color: $brand-color;
+  
+            &::before {
+              border: 2px solid solid #ffffff;
+              border-left: 0;
+              border-top: 0;
+              transform: rotate(45deg) scale(1);
+            }
+          }
+  
+          span.a-picker__radio {
+            border: 2px solid $brand-color;
+  
+            &::before {
+              background-color: $brand-color;
+              transform: scale(1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.m-picker {
   align-items: center;
   display: flex;
   justify-content: center;

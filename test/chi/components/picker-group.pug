@@ -42,6 +42,7 @@ title: Picker group
       each type in ['Radio1','Radio2','Radio3']
         input.a-picker(type="radio", name='radios', id=`ic-${type}`)
         label(for=`ic-${type}`)
+          span.-sr--only Button action
           i.a-icon.icon-atom.-sm
             
 .test-fluid(style='width: 700px;')
@@ -85,6 +86,7 @@ title: Picker group
           each type in ['Radio1','Radio2','Radio3']
             input.a-picker(type="radio", name='radios', id=`ig-i-${type}-${size}`)
             label(for=`ig-i-${type}-${size}`, class=`-${size}`)
+              span.-sr--only Button action
               if size === 'sm'
                 i.a-icon.icon-atom.-xs
               else

@@ -10,90 +10,108 @@ h3 Base
 p.-text To render a picker group, wrap a series of pickers in a div and apply the class <code>m-pickerGroup</code>.
 .example.-mb--3
   .-p--3
-    .m-pickerGroup
-      each type in ['Radio1','Radio2','Radio3']
-        input.a-picker(type="radio", name='radios', id=`ia-${type}`)
-        label(for=`ia-${type}`)
-          = type
+    fieldset
+      legend.a-label.-mb--1 Legend
+      .m-pickerGroup
+        each type in ['Radio1','Radio2','Radio3']
+          input.a-picker(type="radio", name='radios', id=`ia-${type}`)
+          label(for=`ia-${type}`)
+            = type
   :code(lang='html')
-    <div class="m-pickerGroup">
-      <input class="a-picker" type="radio" name="radios" id="radio1">
-      <label for="radio1">
-        Radio1
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio2">
-      <label for="radio2">
-        Radio2
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio3">
-      <label for="radio3">
-        Radio3
-      </label>
-    </div>
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup">
+        <input class="a-picker" type="radio" name="radios" id="radio1">
+        <label for="radio1">
+          Radio1
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio2">
+        <label for="radio2">
+          Radio2
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio3">
+        <label for="radio3">
+          Radio3
+        </label>
+      </div>
+    </fieldset>
 
 h3 Texts and icons
 .example.-mb--3
   .-p--3
-    .m-pickerGroup
-      input.a-picker(type="radio", name='radios', id=`ib-radio1`)
-      label(for=`ib-radio1`)
-        i.a-icon.icon-atom.-sm
-        span Radio1
-      input.a-picker(type="radio", name='radios', id=`ib-radio2`)
-      label(for=`ib-radio2`)
-        span Radio2
-        i.a-icon.icon-atom.-sm
-      input.a-picker(type="radio", name='radios', id=`ib-radio3`)
-      label(for=`ib-radio3`)
-        i.a-icon.icon-atom.-sm
-        span Radio3
-        i.a-icon.icon-atom.-sm
+    fieldset
+      legend.a-label.-mb--1 Legend
+      .m-pickerGroup
+        input.a-picker(type="radio", name='radios', id=`ib-radio1`)
+        label(for=`ib-radio1`)
+          i.a-icon.icon-atom.-sm
+          span Radio1
+        input.a-picker(type="radio", name='radios', id=`ib-radio2`)
+        label(for=`ib-radio2`)
+          span Radio2
+          i.a-icon.icon-atom.-sm
+        input.a-picker(type="radio", name='radios', id=`ib-radio3`)
+        label(for=`ib-radio3`)
+          i.a-icon.icon-atom.-sm
+          span Radio3
+          i.a-icon.icon-atom.-sm
 
   :code(lang='html')
-    <div class="m-pickerGroup">
-      <input class="a-picker" type="radio" name="radios" id="radio1">
-      <label for="radio1">
-        <i class="a-icon icon-atom -sm"></i>
-        <span>Radio1</span>
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio2">
-      <label for="radio2">
-        <span>Radio2</span>
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio3">
-      <label for="radio3">
-        <i class="a-icon icon-atom -sm"></i>
-        <span>Radio3</span>
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-    </div>
-
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup">
+        <input class="a-picker" type="radio" name="radios" id="radio1">
+        <label for="radio1">
+          <i class="a-icon icon-atom -sm"></i>
+          <span>Radio1</span>
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio2">
+        <label for="radio2">
+          <span>Radio2</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio3">
+        <label for="radio3">
+          <i class="a-icon icon-atom -sm"></i>
+          <span>Radio3</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+      </div>
+    </fieldset>
 
 h3 Icons
 .example.-mb--3
   .-p--3
-    .m-pickerGroup
-      each type in ['Radio1','Radio2','Radio3']
-        input.a-picker(type="radio", name='radios', id=`ic-${type}`)
-        label(for=`ic-${type}`)
-          i.a-icon.icon-atom.-sm
+    fieldset
+      legend.a-label.-mb--1 Legend
+      .m-pickerGroup
+        each type in ['Radio1','Radio2','Radio3']
+          input.a-picker(type="radio", name='radios', id=`ic-${type}`)
+          label(for=`ic-${type}`)
+            span.-sr--only Button action
+            i.a-icon.icon-atom.-sm
 
   :code(lang='html')
-    <div class="m-pickerGroup">
-      <input class="a-picker" type="radio" name="radios" id="radio1">
-      <label for="radio1">
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio2">
-      <label for="radio2">
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio3">
-      <label for="radio3">
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-    </div>
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup">
+        <input class="a-picker" type="radio" name="radios" id="radio1">
+        <label for="radio1">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio2">
+        <label for="radio2">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio3">
+        <label for="radio3">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+      </div>
+    </fieldset>
 
 h2 Fluid and Responsive
 p.-text
@@ -102,26 +120,31 @@ p.-text
 h3 Horizontal
 .example.-mb--3
   .-p--3
-    .m-pickerGroup.-fluid
-      each type in ['Radio1','Radio2','Radio3']
-        input.a-picker(type="radio", name='radios', id=`id-${type}`)
-        label(for=`id-${type}`)
-          = type
+    fieldset
+      legend.a-label.-mb--1 Legend
+      .m-pickerGroup.-fluid
+        each type in ['Radio1','Radio2','Radio3']
+          input.a-picker(type="radio", name='radios', id=`id-${type}`)
+          label(for=`id-${type}`)
+            = type
   :code(lang='html')
-    <div class="m-pickerGroup -fluid">
-      <input class="a-picker" type="radio" name="radios" id="radio1">
-      <label for="radio1">
-        Radio1
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio2">
-      <label for="radio2">
-        Radio2
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio3">
-      <label for="radio3">
-        Radio3
-      </label>
-    </div>
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup -fluid">
+        <input class="a-picker" type="radio" name="radios" id="radio1">
+        <label for="radio1">
+          Radio1
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio2">
+        <label for="radio2">
+          Radio2
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio3">
+        <label for="radio3">
+          Radio3
+        </label>
+      </div>
+    </fieldset>
 
 h3 Alignment
 p.-text
@@ -129,28 +152,33 @@ p.-text
   | <code>-align--left</code> or <code>-align--right</code>.
 .example.-mb--3
   .-p--3
-    .m-pickerGroup.-fluid
-        input.a-picker(type="radio", name='radios', id='ie-Radio1')
-        label.-align--left(for='ie-Radio1') Radio1
-        input.a-picker(type="radio", name='radios', id='ie-Radio2')
-        label(for='ie-Radio2') Radio2
-        input.a-picker(type="radio", name='radios', id='ie-Radio3')
-        label.-align--right(for='ie-Radio3') Radio3
+    fieldset
+      legend.a-label.-mb--1 Legend
+      .m-pickerGroup.-fluid
+          input.a-picker(type="radio", name='radios', id='ie-Radio1')
+          label.-align--left(for='ie-Radio1') Radio1
+          input.a-picker(type="radio", name='radios', id='ie-Radio2')
+          label(for='ie-Radio2') Radio2
+          input.a-picker(type="radio", name='radios', id='ie-Radio3')
+          label.-align--right(for='ie-Radio3') Radio3
   :code(lang='html')
-    <div class="m-pickerGroup -fluid">
-      <input class="a-picker" type="radio" name="radios" id="radio1">
-      <label class="-align--left" for="radio1">
-        Radio1
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio2">
-      <label for="radio2">
-        Radio2
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio3">
-      <label class="-align--right" for="radio3">
-        Radio3
-      </label>
-    </div>
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup -fluid">
+        <input class="a-picker" type="radio" name="radios" id="radio1">
+        <label class="-align--left" for="radio1">
+          Radio1
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio2">
+        <label for="radio2">
+          Radio2
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio3">
+        <label class="-align--right" for="radio3">
+          Radio3
+        </label>
+      </div>
+    </fieldset>
 
 h3 Disable Fluidity
 p.-text
@@ -158,28 +186,33 @@ p.-text
 
 .example.-mb--3
   .-p--3
-    .m-pickerGroup.-fluid
-        input.a-picker(type="radio", name='radios', id='if-Radio1')
-        label(for='if-Radio1') Radio1
-        input.a-picker(type="radio", name='radios', id='if-Radio2')
-        label.-notFluid(for='if-Radio2') Radio2
-        input.a-picker(type="radio", name='radios', id='if-Radio3')
-        label(for='if-Radio3') Radio3
+    fieldset
+      legend.a-label.-mb--1 Legend
+      .m-pickerGroup.-fluid
+          input.a-picker(type="radio", name='radios', id='if-Radio1')
+          label(for='if-Radio1') Radio1
+          input.a-picker(type="radio", name='radios', id='if-Radio2')
+          label.-notFluid(for='if-Radio2') Radio2
+          input.a-picker(type="radio", name='radios', id='if-Radio3')
+          label(for='if-Radio3') Radio3
   :code(lang='html')
-    <div class="m-pickerGroup -fluid">
-      <input class="a-picker" type="radio" name="radios" id="radio1">
-      <label for="radio1">
-        Radio1
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio2">
-      <label class="-notFluid" for="radio2">
-        Radio2
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio3">
-      <label for="radio3">
-        Radio3
-      </label>
-    </div>
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup -fluid">
+        <input class="a-picker" type="radio" name="radios" id="radio1">
+        <label for="radio1">
+          Radio1
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio2">
+        <label class="-notFluid" for="radio2">
+          Radio2
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio3">
+        <label for="radio3">
+          Radio3
+        </label>
+      </div>
+    </fieldset>
 
 h2 Sizes
 p.-text
@@ -190,135 +223,174 @@ p.-text
 .example.-mb--3
   .-px--3.-pt--0.-pb--3
     each size in ['sm', 'md', 'lg', 'xl']
-      p.-text--bold= '-' + size
-      .-d--flex.-flex--wrap
-        .m-pickerGroup.-mr--2
-          each type in ['Radio1','Radio2','Radio3']
-            input.a-picker(type="radio", name='radios', id=`ig-${type}-${size}`)
-            label(for=`ig-${type}-${size}`, class=`-${size}`)
-                = type
-        .m-pickerGroup
-          each type in ['Radio1','Radio2','Radio3']
-            input.a-picker(type="radio", name='radios', id=`ig-i-${type}-${size}`)
-            label(for=`ig-i-${type}-${size}`, class=`-${size}`)
-              if size === 'sm'
-                i.a-icon.icon-atom.-xs
-              else
-                i.a-icon.icon-atom.-sm
-
+      fieldset
+        legend.-text--bold.-py--2= '-' + size
+        .-d--flex.-flex--wrap
+          .m-pickerGroup.-mr--2
+            each type in ['Radio1','Radio2','Radio3']
+              input.a-picker(type="radio", name='radios', id=`ig-${type}-${size}`)
+              label(for=`ig-${type}-${size}`, class=`-${size}`)
+                  = type
+          .m-pickerGroup
+            each type in ['Radio1','Radio2','Radio3']
+              input.a-picker(type="radio", name='radios', id=`ig-i-${type}-${size}`)
+              label(for=`ig-i-${type}-${size}`, class=`-${size}`)
+                span.-sr--only Button action
+                if size === 'sm'
+                  i.a-icon.icon-atom.-xs
+                else
+                  i.a-icon.icon-atom.-sm
 
   :code(lang='html')
     <!-- sm -->
-    <div class="m-pickerGroup">
-      <input class="a-picker" type="radio" name="radios" id="radio1">
-      <label class="-sm" for="radio1">
-        Radio1
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio2">
-      <label class="-sm" for="radio2">
-        Radio2
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio3">
-      <label class="-sm" for="radio3">
-        Radio3
-      </label>
-    </div>
-    <div class="m-pickerGroup">
-      <input class="a-picker" type="radio" name="radios" id="radio-i-1">
-      <label class="-sm" for="radio-i-1">
-        <i class="a-icon icon-atom -xs"></i>
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio-i-2">
-      <label class="-sm" for="radio-i-2">
-        <i class="a-icon icon-atom -xs"></i>
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio-i-3">
-      <label class="-sm" for="radio-i-3">
-        <i class="a-icon icon-atom -xs"></i>
-      </label>
-    </div>
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup">
+        <input class="a-picker" type="radio" name="radios" id="radio1">
+        <label class="-sm" for="radio1">
+          Radio1
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio2">
+        <label class="-sm" for="radio2">
+          Radio2
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio3">
+        <label class="-sm" for="radio3">
+          Radio3
+        </label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup">
+        <input class="a-picker" type="radio" name="radios" id="radio-i-1">
+        <label class="-sm" for="radio-i-1">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -xs"></i>
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio-i-2">
+        <label class="-sm" for="radio-i-2">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -xs"></i>
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio-i-3">
+        <label class="-sm" for="radio-i-3">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -xs"></i>
+        </label>
+      </div>
+    </fieldset>
     <!-- md -->
-    <div class="m-pickerGroup">
-      <input class="a-picker" type="radio" name="radios" id="radio1">
-      <label class="-md" for="radio1">
-        Radio1
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio2">
-      <label class="-md" for="radio2">
-        Radio2
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio3">
-      <label class="-md" for="radio3">
-        Radio3
-      </label>
-    </div>
-    <div class="m-pickerGroup">
-      <input class="a-picker" type="radio" name="radios" id="radio-i-1">
-      <label class="-md" for="radio-i-1">
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio-i-2">
-      <label class="-md" for="radio-i-2">
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio-i-3">
-      <label class="-md" for="radio-i-3">
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-    </div>
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup">
+        <input class="a-picker" type="radio" name="radios" id="radio1">
+        <label class="-md" for="radio1">
+          Radio1
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio2">
+        <label class="-md" for="radio2">
+          Radio2
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio3">
+        <label class="-md" for="radio3">
+          Radio3
+        </label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup">
+        <input class="a-picker" type="radio" name="radios" id="radio-i-1">
+        <label class="-md" for="radio-i-1">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio-i-2">
+        <label class="-md" for="radio-i-2">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio-i-3">
+        <label class="-md" for="radio-i-3">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+      </div>
+    </fieldset>
     <!-- lg -->
-    <div class="m-pickerGroup">
-      <input class="a-picker" type="radio" name="radios" id="radio1">
-      <label class="-lg" for="radio1">
-        Radio1
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio2">
-      <label class="-lg" for="radio2">
-        Radio2
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio3">
-      <label class="-lg" for="radio3">
-        Radio3
-      </label>
-    <div class="m-pickerGroup">
-      <input class="a-picker" type="radio" name="radios" id="radio-i-1">
-      <label class="-lg" for="radio-i-1">
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio-i-2">
-      <label class="-lg" for="radio-i-2">
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio-i-3">
-      <label class="-lg" for="radio-i-3">
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-    </div>
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup">
+        <input class="a-picker" type="radio" name="radios" id="radio1">
+        <label class="-lg" for="radio1">
+          Radio1
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio2">
+        <label class="-lg" for="radio2">
+          Radio2
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio3">
+        <label class="-lg" for="radio3">
+          Radio3
+        </label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup">
+        <input class="a-picker" type="radio" name="radios" id="radio-i-1">
+        <label class="-lg" for="radio-i-1">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio-i-2">
+        <label class="-lg" for="radio-i-2">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio-i-3">
+        <label class="-lg" for="radio-i-3">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+      </div>
+    </fieldset>
     <!-- xl -->
-    <div class="m-pickerGroup">
-      <input class="a-picker" type="radio" name="radios" id="radio1">
-      <label class="-xl" for="radio1">
-        Radio1
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio2">
-      <label class="-xl" for="radio2">
-        Radio2
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio3">
-      <label class="-xl" for="radio3">
-        Radio3
-      </label>
-    <div class="m-pickerGroup">
-      <input class="a-picker" type="radio" name="radios" id="radio-i-1">
-      <label class="-xl" for="radio-i-1">
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio-i-2">
-      <label class="-xl" for="radio-i-2">
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-      <input class="a-picker" type="radio" name="radios" id="radio-i-3">
-      <label class="-xl" for="radio-i-3">
-        <i class="a-icon icon-atom -sm"></i>
-      </label>
-    </div>
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup">
+        <input class="a-picker" type="radio" name="radios" id="radio1">
+        <label class="-xl" for="radio1">
+          Radio1
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio2">
+        <label class="-xl" for="radio2">
+          Radio2
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio3">
+        <label class="-xl" for="radio3">
+          Radio3
+        </label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend class="a-label -mb--1">Legend</legend>
+      <div class="m-pickerGroup">
+        <input class="a-picker" type="radio" name="radios" id="radio-i-1">
+        <label class="-xl" for="radio-i-1">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio-i-2">
+        <label class="-xl" for="radio-i-2">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+        <input class="a-picker" type="radio" name="radios" id="radio-i-3">
+        <label class="-xl" for="radio-i-3">
+          <span class="-sr--only">Button action</span>
+          <i class="a-icon icon-atom -sm"></i>
+        </label>
+      </div>
+    </fieldset>
