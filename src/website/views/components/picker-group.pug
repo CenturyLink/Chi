@@ -223,9 +223,8 @@ p.-text
 .example.-mb--3
   each size in ['sm', 'md', 'lg', 'xl']
     .-p--3
-      .a-label= '-' + size
       fieldset
-        legend.-sr--only Legend
+        legend.a-label.-mb--1= '-' + size
         .-d--flex.-flex--wrap
           .m-pickerGroup.-mr--2
             each type in ['Radio1','Radio2','Radio3']
