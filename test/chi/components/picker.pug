@@ -4,9 +4,9 @@ title: Picker
 
 - var sizes = ['sm', 'md', 'lg'];
 
-h3 Base
+h2 Base
 
-h4 Type checkbox
+h3 Type checkbox
 h4 Base
 .test-base
   .example(style='width: 700px')
@@ -17,6 +17,19 @@ h4 Base
           label(for=`i-${type}`)
             = type
 
+h4 Base checked
+.test-base-checked
+  .example(style='width: 700px')
+    .-p--3
+      each type in ['Checkbox1','Checkbox2']
+        .m-picker
+          if type == 'Checkbox1'
+            input(type="checkbox", class="a-picker", id=`i-checked-${type}`, checked)
+          else
+            input(type="checkbox", class="a-picker", id=`i-checked-${type}`)
+          label(for=`i-checked-${type}`)
+            = type
+
 h4 With checkbox
 .test-with-checkbox
   .example(style='width: 700px')
@@ -25,11 +38,26 @@ h4 With checkbox
         .m-picker
           input(type="checkbox", class="a-picker", id=`ic-${type}`)
           label(for=`ic-${type}`)
-            .m-form__item.-row
-              .a-checkbox
-                input(type="checkbox", class="a-checkbox__input", id=`ic-${type}`)
-                label(for=`ic-${type}`, class="a-checkbox__label")
-                  = type
+            div.m-form__item.-row
+              span.a-picker__checkbox
+              span.a-picker__label
+                =type
+
+h4 With checkbox checked
+.test-with-checkbox-checked
+  .example(style='width: 700px')
+    .-p--3
+      each type in ['Checkbox1','Checkbox2']
+        .m-picker
+          if type == 'Checkbox1'
+            input(type="checkbox", class="a-picker", id=`ic-checked-${type}`, checked)
+          else
+            input(type="checkbox", class="a-picker", id=`ic-checked-${type}`)
+          label(for=`ic-checked-${type}`)
+            div.m-form__item.-row
+              span.a-picker__checkbox
+              span.a-picker__label
+                =type
 
 h4 With description
 .test-with-description
@@ -39,37 +67,85 @@ h4 With description
       label(for=`id-${type}`)
         .m-picker__content--start
           .m-form__item.-row
-            .a-checkbox
-              input(type="checkbox", class="a-checkbox__input", id=`id-${type}`)
-              label(for=`id-${type}`, class="a-checkbox__label")
-                = type
-          div.-text--normal.-text--body.-text--small
+              span.a-picker__checkbox
+              span.a-picker__label
+                =type
+          div.a-picker__description
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
 
-h4 Type radio
+h4 With description checked
+.test-with-description-checked
+  each type in ['Checkbox1','Checkbox2']
+    .m-picker
+      if type == 'Checkbox1'
+        input(type="checkbox", class="a-picker", id=`id-checked-${type}`, checked)
+      else
+        input(type="checkbox", class="a-picker", id=`id-checked-${type}`)
+      label(for=`id-checked-${type}`)
+        .m-picker__content--start
+          .m-form__item.-row
+              span.a-picker__checkbox
+              span.a-picker__label
+                =type
+          div.a-picker__description
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
+
+h3 Type radio
 h4 Base
 .test-type-radio
   .example(style='width: 700px')
     .-p--3
-      each type in ['Radio1','Radio2']
-        .m-picker
-          input(type="radio", class="a-picker", name='box', id=`ei-${type}`)
-          label(for=`ei-${type}`)
-            = type
+      fieldset(id='type-radio')
+        each type in ['Radio1','Radio2']
+          .m-picker
+            input(type="radio", class="a-picker", name='type-radio', id=`ei-${type}`)
+            label(for=`ei-${type}`)
+              = type
+
+h4 Base checked
+.test-type-radio-checked
+  .example(style='width: 700px')
+    .-p--3
+      fieldset(id='type-radio-checked')
+        each type in ['Radio1','Radio2']
+          .m-picker
+            if type == 'Radio1'
+              input(type="radio", class="a-picker", name='type-radio-checked', id=`ei-checked-${type}`, checked)
+            else
+              input(type="radio", class="a-picker", name='type-radio-checked', id=`ei-checked-${type}`)
+            label(for=`ei-checked-${type}`)
+              = type
 
 h4 With radio
 .test-with-radio
   .example.-mb--3(style='width: 700px')
     .-p--3
-      each type in ['Radio1','Radio2']
-        .m-picker
-          input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
-          label(for=`ri-${type}`)
-            .m-form__item.-row
-              .a-radio
-                input(type="radio", class="a-radio__input", id=`ri-${type}`)
-                label.a-radio__label(for=`ri-${type}`)
-                  = type
+      fieldset(id='with-radio')
+        each type in ['Radio1','Radio2']
+          .m-picker
+            input(type="radio", class="a-picker", name='with-radio', id=`ri-${type}`)
+            label(for=`ri-${type}`)
+              .m-form__item.-row
+                span.a-picker__radio
+                span.a-picker__label
+                  =type
+
+h4 With radio checked
+.test-with-radio-checked
+  .example.-mb--3(style='width: 700px')
+    .-p--3
+      fieldset(id='with-radio-checked')
+        each type in ['Radio1','Radio2']
+          .m-picker
+            if type == 'Radio1'
+              input(type="radio", class="a-picker", name='with-radio-checked', id=`ri-checked-${type}`, checked)
+            else
+              input(type="radio", class="a-picker", name='with-radio-checked', id=`ri-checked-${type}`)
+            label(for=`ri-checked-${type}`)
+              .m-form__item.-row
+                span.a-picker__radio
+                span.a-picker__label
+                  =type
 
 h3 Sizes
 .test-sizes
@@ -101,7 +177,7 @@ h3 Sizes
           input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
           label(for=`ri-${type}`)
             .m-picker__content--start
-              label.-text--bold
+              span.-text--bold
                 = type
               span.-text--normal.-text--body.-text--small Data:
                 strong  Value
