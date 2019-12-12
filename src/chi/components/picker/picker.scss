@@ -14,6 +14,14 @@ $sizes: (
   )
 );
 
+.a-label,
+label,
+legend {
+  & + .m-picker {
+    margin-top: 0.25rem;
+  }
+}
+
 .m-picker {
   input {
     &[type='checkbox'],
@@ -30,17 +38,16 @@ $sizes: (
 
             &::before {
               border: 2px solid set-color(grey, 50);
-              border-left: 0;
+              border-right: 0;
               border-top: 0;
               content: '';
-              display: block;
-              height: 9px;
-              left: calc(50%-0.156rem);
+              height: 0.3125rem;
+              left: 0.0625rem;
               position: absolute;
-              top: calc(50%-0.37rem);
-              transform: rotate(45deg) scale(0);
+              top: 0.125rem;
+              transform: rotate(-45deg) scale(0);
               transition-duration: 0.2s;
-              width: 5px;
+              width: 0.625rem;
             }
           }
 
@@ -73,7 +80,7 @@ $sizes: (
           &:hover {
             span.a-picker__checkbox {
               &::before {
-                transform: rotate(45deg) scale(1);
+                transform: rotate(-45deg) scale(1);
               }
             }
             
@@ -111,10 +118,10 @@ $sizes: (
             color: $brand-color;
   
             &::before {
-              border: 2px solid solid #ffffff;
-              border-left: 0;
+              border: 2px solid set-color(white);
+              border-right: 0;
               border-top: 0;
-              transform: rotate(45deg) scale(1);
+              transform: rotate(-45deg) scale(1);
             }
           }
   

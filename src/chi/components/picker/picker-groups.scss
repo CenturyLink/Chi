@@ -1,5 +1,13 @@
 @import 'horizontal-picker-groups';
 
+.a-label,
+label,
+legend {
+  & + .m-pickerGroup {
+    margin-top: 0.25rem;
+  }
+}
+
 .m-pickerGroup {
   &.-fluid {
     display: flex;

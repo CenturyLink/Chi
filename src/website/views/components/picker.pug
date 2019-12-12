@@ -22,7 +22,7 @@ ul#a-tabs--Checkbox.a-tabs
   #BaseCheckbox.a-tabs-panel.-active
     .-p--4
       fieldset
-        legend.a-label.-mb--1 Legend
+        legend.a-label Legend
         each type in ['Checkbox1','Checkbox2']
           .m-picker
             input(type="checkbox", class="a-picker", id=`i-${type}`)
@@ -30,7 +30,7 @@ ul#a-tabs--Checkbox.a-tabs
               = type
     :code(lang="html")
       <fieldset>
-        <legend class="a-label -mb--1">Legend</legend>
+        <legend class="a-label">Legend</legend>
         <div class="m-picker">
           <input class="a-picker" type="checkbox" id="checkbox1">
           <label for="checkbox1">Checkbox1</label>
@@ -44,7 +44,7 @@ ul#a-tabs--Checkbox.a-tabs
   #WithCheckbox.a-tabs-panel
     .-p--4
       fieldset
-        legend.a-label.-mb--1 Legend
+        legend.a-label Legend
         each type in ['Checkbox1','Checkbox2']
           .m-picker
             input(type="checkbox", class="a-picker", id=`ic-${type}`)
@@ -55,7 +55,7 @@ ul#a-tabs--Checkbox.a-tabs
                   =type
     :code(lang="html")
       <fieldset>
-        <legend class="a-label -mb--1">Legend</legend>
+        <legend class="a-label">Legend</legend>
         <div class="m-picker">
           <input class="a-picker" type="checkbox" id="ic-Checkbox1" />
           <label for="ic-Checkbox1">
@@ -79,7 +79,7 @@ ul#a-tabs--Checkbox.a-tabs
   #WithCheckboxDescription.a-tabs-panel
     .-p--4
       fieldset
-        legend.a-label.-mb--1 Legend
+        legend.a-label Legend
         each type in ['Checkbox1','Checkbox2']
           .m-picker
             input(type="checkbox", class="a-picker", id=`id-${type}`)
@@ -93,7 +93,7 @@ ul#a-tabs--Checkbox.a-tabs
                   | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
     :code(lang="html")
       <fieldset>
-        <legend class="a-label -mb--1">Legend</legend>
+        <legend class="a-label">Legend</legend>
         <div class="m-picker">
           <input class="a-picker" type="checkbox" id="id-Checkbox1" />
           <label for="id-Checkbox1">
@@ -133,7 +133,7 @@ ul#a-tabs--Radio.a-tabs
   #BaseRadio.a-tabs-panel.-active
     .-p--4
         fieldset
-          legend.a-label.-mb--1 Legend
+          legend.a-label Legend
           each type in ['Radio1','Radio2']
             .m-picker
               input(type="radio", class="a-picker", name='box', id=`ei-${type}`)
@@ -141,7 +141,7 @@ ul#a-tabs--Radio.a-tabs
                 = type
     :code(lang="html")
       <fieldset>
-        <legend class="a-label -mb--1">Legend</legend>
+        <legend class="a-label">Legend</legend>
         <div class="m-picker">
           <input class="a-picker" type="radio" name="box" id="ei-Radio1" />
           <label for="ei-Radio1">Radio1</label>
@@ -154,7 +154,7 @@ ul#a-tabs--Radio.a-tabs
   #WithRadio.a-tabs-panel
     .-p--4
         fieldset
-          legend.a-label.-mb--1 Legend
+          legend.a-label Legend
           each type in ['Radio1','Radio2']
             .m-picker
               input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
@@ -165,7 +165,7 @@ ul#a-tabs--Radio.a-tabs
                     = type
     :code(lang="html")
       <fieldset>
-        <legend class="a-label -mb--1">Legend</legend>
+        <legend class="a-label">Legend</legend>
         <div class="m-picker">
           <input class="a-picker" type="radio" name="box" id="ri-Radio1" />
           <label for="ri-Radio1">
@@ -188,7 +188,7 @@ ul#a-tabs--Radio.a-tabs
   #WithRadioDescription.a-tabs-panel
     .-p--4
         fieldset
-          legend.a-label.-mb--1 Legend
+          legend.a-label Legend
           each type in ['Radio1','Radio2']
             .m-picker
               input(type="radio", class="a-picker", name='box', id=`ide-${type}`)
@@ -202,7 +202,7 @@ ul#a-tabs--Radio.a-tabs
                     | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
     :code(lang="html")
       <fieldset>
-        <legend class="a-label -mb--1">Legend</legend>
+        <legend class="a-label">Legend</legend>
         <div class="m-picker">
           <input class="a-picker" type="radio" name="box" id="ide-Radio1" />
           <label for="ide-Radio1">
@@ -245,7 +245,7 @@ ul#a-tabs--Sizes.a-tabs
   #Sm.a-tabs-panel.-active
     .-p--4
       fieldset
-        legend.a-label.-mb--1 Legend
+        legend.a-label Legend
         each type in ['Radio1 -sm','Radio2 -sm']
           .m-picker.-sm
             input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
@@ -257,7 +257,7 @@ ul#a-tabs--Sizes.a-tabs
                 span.-text--normal.-text--muted.-text--small Value
     :code(lang="html")
       <fieldset>
-        <legend class="a-label -mb--1">Legend</legend>
+        <legend class="a-label">Legend</legend>
         <div class="m-picker -sm">
           <input class="a-picker" type="radio" name="box" id="Radio1">
           <label for="Radio1">
@@ -282,7 +282,7 @@ ul#a-tabs--Sizes.a-tabs
   #Md.a-tabs-panel
     .-p--4
       fieldset
-        legend.a-label.-mb--1 Legend
+        legend.a-label Legend
         each type in ['Radio1 -md','Radio2 -md']
           .m-picker.-md
             input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
@@ -294,7 +294,7 @@ ul#a-tabs--Sizes.a-tabs
                 span.-text--normal.-text--muted.-text--small Value
     :code(lang="html")
       <fieldset>
-        <legend class="a-label -mb--1">Legend</legend>
+        <legend class="a-label">Legend</legend>
         <div class="m-picker -md">
           <input class="a-picker" type="radio" name="box" id="Radio1">
           <label for="Radio1">
@@ -319,7 +319,7 @@ ul#a-tabs--Sizes.a-tabs
   #Lg.a-tabs-panel
     .-p--4
       fieldset
-        legend.a-label.-mb--1 Legend
+        legend.a-label Legend
         each type in ['Radio1 -lg','Radio2 -lg']
           .m-picker.-lg
             input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
@@ -333,7 +333,7 @@ ul#a-tabs--Sizes.a-tabs
                 span.-text--bold.-text--body.-text--large Data
     :code(lang="html")
       <fieldset>
-        <legend class="a-label -mb--1">Legend</legend>
+        <legend class="a-label">Legend</legend>
         <div class="m-picker -lg">
           <input class="a-picker" type="radio" name="box" id="Radio1">
           <label for="Radio1">
