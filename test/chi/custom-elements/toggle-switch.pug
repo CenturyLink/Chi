@@ -7,19 +7,23 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 .test-states
   .-mb--1
     h5 Base
-    chi-toggle-switch(toggle-id='toggle1', data-cy='toggle1')
+    .m-form__item
+      chi-toggle-switch(toggle-id='toggle1', data-cy='toggle1', label='Toggle')
 
   .-mb--1
     h5 Hover
-    chi-toggle-switch(toggle-id='toggle2', extra-class='-hover', data-cy='toggle2')
+    .m-form__item
+      chi-toggle-switch(toggle-id='toggle2', extra-class='-hover', data-cy='toggle2', label='Toggle')
 
   .-mb--1
     h5 Focus
-    chi-toggle-switch(toggle-id='toggle3', extra-class='-focus', data-cy='toggle3')
+    .m-form__item
+      chi-toggle-switch(toggle-id='toggle3', extra-class='-focus', data-cy='toggle3', label='Toggle')
 
   .-mb--1
     h5 Disabled
-    chi-toggle-switch(toggle-id='toggle4', disabled, data-cy='toggle4')
+    .m-form__item
+      chi-toggle-switch(toggle-id='toggle4', disabled, data-cy='toggle4', label='Toggle')
 
 style.
   chi-toggle-switch {
