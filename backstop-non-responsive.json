@@ -825,10 +825,15 @@
       "postInteractionWait": "",
       "selectors": [
         ".test-base",
+        ".test-base-checked",
         ".test-with-checkbox",
+        ".test-with-checkbox-checked",
         ".test-with-description",
+        ".test-with-description-checked",
         ".test-type-radio",
+        ".test-type-radio-checked",
         ".test-with-radio",
+        ".test-with-radio-checked",
         ".test-sizes"
       ],
       "selectorExpansion": true,

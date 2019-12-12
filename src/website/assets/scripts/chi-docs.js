@@ -129,7 +129,7 @@ onLoad(() => {
     };
   });
 
-  var anchors = document.querySelectorAll('h3,h4');
+  var anchors = document.querySelectorAll('h2,h3,h4');
 
  // Polyfill element.closest IE9+
   if (!Element.prototype.matches) {
