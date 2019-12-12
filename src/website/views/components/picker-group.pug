@@ -223,22 +223,24 @@ p.-text
 .example.-mb--3
   each size in ['sm', 'md', 'lg', 'xl']
     .-p--3
+      .a-label= '-' + size
       fieldset
-        legend.a-label= '-' + size
-        .m-pickerGroup.-mr--2
-          each type in ['Radio1','Radio2','Radio3']
-            input.a-picker(type="radio", name='radios', id=`ig-${type}-${size}`)
-            label(for=`ig-${type}-${size}`, class=`-${size}`)
-                = type
-        .m-pickerGroup
-          each type in ['Radio1','Radio2','Radio3']
-            input.a-picker(type="radio", name='radios', id=`ig-i-${type}-${size}`)
-            label(for=`ig-i-${type}-${size}`, class=`-${size}`)
-              span.-sr--only Button action
-              if size === 'sm'
-                i.a-icon.icon-atom.-xs
-              else
-                i.a-icon.icon-atom.-sm
+        legend.-sr--only Legend
+        .-d--flex.-flex--wrap
+          .m-pickerGroup.-mr--2
+            each type in ['Radio1','Radio2','Radio3']
+              input.a-picker(type="radio", name='radios', id=`ig-${type}-${size}`)
+              label(for=`ig-${type}-${size}`, class=`-${size}`)
+                  = type
+          .m-pickerGroup
+            each type in ['Radio1','Radio2','Radio3']
+              input.a-picker(type="radio", name='radios', id=`ig-i-${type}-${size}`)
+              label(for=`ig-i-${type}-${size}`, class=`-${size}`)
+                span.-sr--only Button action
+                if size === 'sm'
+                  i.a-icon.icon-atom.-xs
+                else
+                  i.a-icon.icon-atom.-sm
 
   :code(lang='html')
     <!-- sm -->
