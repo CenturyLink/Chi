@@ -1,11 +1,19 @@
+- var defaultMetaDescription = "Chi provides developers with a collection of HTML and CSS patterns to build fast, reusable, and consistent responsive interfaces."
+
 doctype html
 html(lang="en")
     head
         if title
             title Chi &middot; #{title}
+            if !description
+                meta(name="description", content=`${title}. ${defaultMetaDescription}`)
         else
             title Chi &middot; Documentation
+            if !description
+                meta(name="description", content=`${defaultMetaDescription}`)
         meta(name="viewport", content="width=device-width, initial-scale=1")
+        if description
+            meta(name="description", content=description)
         link(rel="stylesheet", href=`${rootPath}chi.css`)
         link(rel="stylesheet", href=`${rootPath}assets/styles/chi-docs.css`)
         script(src=`${rootPath}assets/scripts/globalConfigs.js`)
