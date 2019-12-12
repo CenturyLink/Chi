@@ -76,11 +76,13 @@ legend {
         &:checked {
           &.a-picker {
             & + label {
-              border: solid 0.0625rem $secondary-color;
+              border: solid 0.0625rem $focus-color;
+              color: $focus-color;
               padding-right: 1rem;
 
+
               @include respond-to(md) {
-                padding-right: .9375rem;
+                padding-right: 0.9375rem;
               }
 
               @each $type in map-keys($sizes) {
@@ -102,7 +104,7 @@ legend {
               & + input + label {
                 border-left-width: 0.0625rem;
                 border-top-width: 0;
-                padding-left: .9375rem;
+                padding-left: 0.9375rem;
 
                 @each $type in map-keys($sizes) {
                   &.-#{$type} {

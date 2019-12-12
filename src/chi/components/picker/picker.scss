@@ -204,7 +204,7 @@ legend {
 
               & div:first-of-type + div {
                 margin-left: 2.5rem;
-                padding: 0.5rem 0 0.5rem 0;
+                padding: 0.5rem 0;
               }
             }
           }
@@ -217,9 +217,9 @@ legend {
 
         &:checked {
           & + label {
-            border: solid 0.0625rem $secondary-color;
-            box-shadow: inset 0 0 0 0.0625rem $secondary-color;
-            color: $text-color;
+            border: solid 0.0625rem $focus-color;
+            box-shadow: inset 0 0 0 0.0625rem $focus-color;
+            color: $focus-color;
             font-weight: 600;
 
             .m-picker__content {
@@ -264,7 +264,7 @@ legend {
                 input[type='radio'] {
                   & + label {
                     &::before {
-                      margin-right: .5rem;
+                      margin-right: 0.5rem;
                     }
                   }
                 }
@@ -326,7 +326,7 @@ legend {
             & .a-radio__input {
               & + label {
                 font-weight: 600;
-                
+
                 &::before {
                   border-color: $brand-color;
                 }
@@ -390,7 +390,10 @@ legend {
 
 /* IE11 CSS hack */
 @media all and (-ms-high-contrast: none) {
-  .m-picker:not(.-sm):not(.-md):not(.-lg) input[type="checkbox"].a-picker + label, .m-picker:not(.-sm):not(.-md):not(.-lg) input[type="radio"].a-picker + label {
-    display: block;
+  .m-picker:not(.-sm):not(.-md):not(.-lg) {
+    input[type='checkbox'].a-picker + label
+    input[type='radio'].a-picker + label {
+      display: block;
+    }
   }
 }
