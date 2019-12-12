@@ -4,43 +4,44 @@ title: Toggle switch
 .test-states
   .-mb--1
     h5 Base
-    input(type="checkbox", class="a-input -toggle", id="checkbox01")
-    label(for="checkbox01")
+    .m-form__item
+      label.a-switch
+        span.a-switch__label Toggle
+        input(type="checkbox", class="a-switch__input -toggle", name="toggle1", value="toggle1", aria-describedby="toggle1", aria-label="toggle")
+        span(id="toggle1", class="a-switch__content", aria-live="assertive")
+          span.a-switch__faux
+          span.a-switch__on Enabled
+          span.a-switch__off Disabled
 
   .-mb--1
     h5 Hover
-    input(type="checkbox", class="a-input -toggle", id="checkbox02")
-    label(class="-hover", for="checkbox02")
+    .m-form__item
+      label.a-switch
+        span.a-switch__label Toggle
+        input(type="checkbox", class="a-switch__input -toggle", name="toggle2", value="toggle2", aria-describedby="toggle2", aria-label="toggle")
+        span(id="toggle2", class="a-switch__content", aria-live="assertive")
+          span.a-switch__faux
+          span.a-switch__on Enabled
+          span.a-switch__off Disabled
 
   .-mb--1
     h5 Focus
-    input(type="checkbox", class="a-input -toggle -focus", checked, id="checkbox03")
-    label(for="checkbox03")
+    .m-form__item
+      label.a-switch
+        span.a-switch__label Toggle
+        input(type="checkbox", class="a-switch__input -toggle -focus", name="toggle3", value="toggle3", aria-describedby="toggle3", aria-label="toggle")
+        span(id="toggle3", class="a-switch__content", aria-live="assertive")
+          span.a-switch__faux
+          span.a-switch__on Enabled
+          span.a-switch__off Disabled
 
   .-mb--1
     h5 Disabled
-    input(type="checkbox", class="a-input -toggle", id="checkbox04", checked, disabled)
-    label(for="checkbox04")
-
-h4 No text
-
-.test-no-text-states
-  .-mb--1
-    h5 Base
-    input(type="checkbox", class="a-input -toggle -noText", id="checkbox11")
-    label(for="checkbox11")
-
-  .-mb--1
-    h5 Hover
-    input(type="checkbox", class="a-input -toggle -noText", id="checkbox12")
-    label(class="-hover", for="checkbox12")
-
-  .-mb--1
-    h5 Focus
-    input(type="checkbox", class="a-input -toggle -noText -focus", checked, id="checkbox13")
-    label(for="checkbox13")
-
-  .-mb--1
-    h5 Disabled
-    input(type="checkbox", class="a-input -toggle -noText", id="checkbox14", checked, disabled)
-    label(for="checkbox14")
+    .m-form__item
+      label.a-switch
+        span.a-switch__label Toggle
+        input(type="checkbox", class="a-switch__input -toggle", name="toggle4", value="toggle4", aria-describedby="toggle4", aria-label="toggle", disabled)
+        span(id="toggle4", class="a-switch__content", aria-live="assertive")
+          span.a-switch__faux
+          span.a-switch__on Enabled
+          span.a-switch__off Disabled

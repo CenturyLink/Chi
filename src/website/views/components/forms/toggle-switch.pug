@@ -11,39 +11,50 @@ p.-text
 h3 Base
 .example.-mb--3
   .-p--3
-    .m-form__item.-row
+    .m-form__item
       label.a-switch
         span.a-switch__label Toggle
-        input(type="checkbox", class="a-switch__input -toggle", name="toggle1-test", value="toggle1-test", aria-describedby="toggle1-test", aria-label="toggle")
-        span(id="toggle1-test", class="a-switch__content", aria-live="assertive")
+        input(type="checkbox", class="a-switch__input -toggle", name="toggle1", value="toggle1", aria-describedby="toggle1", aria-label="toggle")
+        span(id="toggle1", class="a-switch__content", aria-live="assertive")
           span.a-switch__faux
           span.a-switch__on Enabled
           span.a-switch__off Disabled
   :code(lang="html")
-    <input type="checkbox" class="a-input -toggle" id="toggle1">
-    <label for="toggle1"></label>
+    <div class="m-form__item">
+      <label class="a-switch">
+        <span class="a-switch__label">Toggle</span>
+        <input type="checkbox" class="a-switch__input -toggle" name="toggle1" value="toggle1" aria-describedby="toggle1" aria-label="toggle">
+        <span id="toggle1" class="a-switch__content" aria-live="assertive">
+          <span class="a-switch__faux"></span>
+          <span class="a-switch__on">Enabled</span>
+          <span class="a-switch__off">Disabled</span>
+        </span>
+      </label>
+    </div>
 
 h3 Disabled
 .example.-mb--3
   .-p--3
     .m-form__item
-      input(type="checkbox", class="a-input -toggle", id="toggle2", disabled)
-      label(for="toggle2")
+      label.a-switch
+        span.a-switch__label Toggle
+        input(type="checkbox", class="a-switch__input -toggle", name="toggle2", value="toggle2", aria-describedby="toggle2", aria-label="toggle", disabled)
+        span(id="toggle2", class="a-switch__content", aria-live="assertive")
+          span.a-switch__faux
+          span.a-switch__on Enabled
+          span.a-switch__off Disabled
   :code(lang="html")
-    <input type="checkbox" class="a-input -toggle" id="toggle2" disabled>
-    <label for="toggle2"></label>
-
-h3 No Label
-p.-text
-  | By default, toggle switches are labeled with text <code>ON/OFF</code>. To disable this, apply the modifier <code>-noText</code>.
-.example.-mb--3
-  .-p--3
-    .m-form__item
-      input(type="checkbox", class="a-input -toggle -noText", id="toggle3")
-      label(for="toggle3")
-  :code(lang="html")
-    <input type="checkbox" class="a-input -toggle -noText" id="toggle3">
-    <label for="toggle3"></label>
+    <div class="m-form__item">
+      <label class="a-switch">
+        <span class="a-switch__label">Toggle</span>
+        <input type="checkbox" class="a-switch__input -toggle" name="toggle2" value="toggle2" aria-describedby="toggle2" aria-label="toggle" disabled>
+        <span id="toggle2" class="a-switch__content" aria-live="assertive">
+          <span class="a-switch__faux"></span>
+          <span class="a-switch__on">Enabled</span>
+          <span class="a-switch__off">Disabled</span>
+        </span>
+      </label>
+    </div>
 
 h3 Stacked
 p.-text
@@ -51,23 +62,43 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-form__item.-row.-mb--2
-      input(type="checkbox", class="a-input -toggle -noText", id="toggle4")
-      label(for="toggle4")
-      label(class="-text", for="toggle4") Notifications
+      label.a-switch
+        span.a-switch__label Toggle
+        input(type="checkbox", class="a-switch__input -toggle", name="toggle3", value="toggle3", aria-describedby="toggle3", aria-label="toggle")
+        span(id="toggle3", class="a-switch__content", aria-live="assertive")
+          span.a-switch__faux
+          span.a-switch__on Enabled
+          span.a-switch__off Disabled
     .m-form__item.-row
-      input(type="checkbox", class="a-input -toggle -noText", id="toggle5")
-      label(for="toggle5")
-      label(class="-text", for="toggle5") Outage Alerts
+      label.a-switch
+        span.a-switch__label Toggle
+        input(type="checkbox", class="a-switch__input -toggle", name="toggle4", value="toggle4", aria-describedby="toggle4", aria-label="toggle")
+        span(id="toggle4", class="a-switch__content", aria-live="assertive")
+          span.a-switch__faux
+          span.a-switch__on Enabled
+          span.a-switch__off Disabled
   :code(lang="html")
     <div class="m-form__item -row -mb--2">
-      <input type="checkbox" class="a-input -toggle -noText" id="toggle4">
-      <label for="toggle4"></label>
-      <label class="-text" for="toggle4">Notifications</label>
+      <label class="a-switch">
+        <span class="a-switch__label">Toggle</span>
+        <input type="checkbox" class="a-switch__input -toggle" name="toggle3" value="toggle3" aria-describedby="toggle3" aria-label="toggle">
+        <span id="toggle3" class="a-switch__content" aria-live="assertive">
+          <span class="a-switch__faux"></span>
+          <span class="a-switch__on">Enabled</span>
+          <span class="a-switch__off">Disabled</span>
+        </span>
+      </label>
     </div>
     <div class="m-form__item -row">
-      <input type="checkbox" class="a-input -toggle -noText" id="toggle5">
-      <label for="toggle5"></label>
-      <label class="-text" for="toggle5">Outage Alerts</label>
+      <label class="a-switch">
+        <span class="a-switch__label">Toggle</span>
+        <input type="checkbox" class="a-switch__input -toggle" name="toggle4" value="toggle4" aria-describedby="toggle4" aria-label="toggle">
+        <span id="toggle4" class="a-switch__content" aria-live="assertive">
+          <span class="a-switch__faux"></span>
+          <span class="a-switch__on">Enabled</span>
+          <span class="a-switch__off">Disabled</span>
+        </span>
+      </label>
     </div>
 
 h3 Inline
@@ -76,21 +107,41 @@ p.-text
 .example.-mb--3
   .-p--3.-d--flex
     .m-form__item.-inline.-row.-mr--3
-      input(type="checkbox", class="a-input -toggle -noText", id="toggle6")
-      label(for="toggle6")
-      label(class="-text", for="toggle6") Notifications
+      label.a-switch
+        span.a-switch__label Toggle
+        input(type="checkbox", class="a-switch__input -toggle", name="toggle5", value="toggle5", aria-describedby="toggle5", aria-label="toggle")
+        span(id="toggle5", class="a-switch__content", aria-live="assertive")
+          span.a-switch__faux
+          span.a-switch__on Enabled
+          span.a-switch__off Disabled
     .m-form__item.-inline.-row
-      input(type="checkbox", class="a-input -toggle -noText", id="toggle7")
-      label(for="toggle7")
-      label(class="-text", for="toggle7") Outage Alerts
+      label.a-switch
+        span.a-switch__label Toggle
+        input(type="checkbox", class="a-switch__input -toggle", name="toggle6", value="toggle6", aria-describedby="toggle6", aria-label="toggle")
+        span(id="toggle6", class="a-switch__content", aria-live="assertive")
+          span.a-switch__faux
+          span.a-switch__on Enabled
+          span.a-switch__off Disabled
   :code(lang="html")
-    <div class="m-form__item -inline -row -mr--3">
-      <input type="checkbox" class="a-input -toggle -noText" id="toggle6">
-      <label for="toggle6"></label>
-      <label class="-text" for="toggle6">Notifications</label>
+    <div class="m-form__item -inline -mr--3">
+      <label class="a-switch">
+        <span class="a-switch__label">Toggle</span>
+        <input type="checkbox" class="a-switch__input -toggle" name="toggle5" value="toggle5" aria-describedby="toggle5" aria-label="toggle">
+        <span id="toggle5" class="a-switch__content" aria-live="assertive">
+          <span class="a-switch__faux"></span>
+          <span class="a-switch__on">Enabled</span>
+          <span class="a-switch__off">Disabled</span>
+        </span>
+      </label>
     </div>
-    <div class="m-form__item -inline -row">
-      <input type="checkbox" class="a-input -toggle -noText" id="toggle7">
-      <label for="toggle7"></label>
-      <label class="-text" for="toggle7">Outage Alerts</label>
+    <div class="m-form__item -inline">
+      <label class="a-switch">
+        <span class="a-switch__label">Toggle</span>
+        <input type="checkbox" class="a-switch__input -toggle" name="toggle6" value="toggle6" aria-describedby="toggle6" aria-label="toggle">
+        <span id="toggle6" class="a-switch__content" aria-live="assertive">
+          <span class="a-switch__faux"></span>
+          <span class="a-switch__on">Enabled</span>
+          <span class="a-switch__off">Disabled</span>
+        </span>
+      </label>
     </div>

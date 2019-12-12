@@ -47,13 +47,24 @@ export class ToggleSwitch {
   render() {
     return (
       [
-        <input type="checkbox"
-               class={`a-input -toggle ${this.noText ? '-noText' : ''} ${this.extraClass ? this.extraClass : ''}`}
-               id={this.toggleId} disabled={this.disabled} checked={this.checked}
-               onClick={() => this._toggle()}
-        ></input>,
-        <label htmlFor={this.toggleId}></label>,
-        (this.label ? <label class="-text" htmlFor={this.toggleId}>{this.label}</label> : null)
+        <label class="a-switch">
+          <span class="a-switch__label">{this.label}</span>
+          <input type="checkbox"
+                 class={`a-switch__input -toggle ${this.extraClass && this.extraClass}`}
+                 name={this.toggleId} disabled={this.disabled} checked={this.checked}
+                 value={this.toggleId}
+                 aria-describedby={this.toggleId}
+                 aria-label="toggle"
+                 onClick={() => this._toggle()}
+          />
+          <span id={this.toggleId}
+                class="a-switch__content"
+                aria-live="assertive">
+            <span class="a-switch__faux"></span>
+            <span class="a-switch__on">Enabled</span>
+            <span class="a-switch__off">Disabled</span>
+          </span>
+        </label>
       ]
     );
   }
