@@ -507,37 +507,80 @@ h3 Toggle Switch
   .-p--3
     .a-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
       .m-dropdown__menu.-active
-        .m-dropdown__menu-item
-          input(type="checkbox", class="a-input -toggle", id="toggle-mail")
-          label(for="toggle-mail")
-          label(class="-text", for="toggle-mail") Email notifications
-        .m-dropdown__menu-item
-          input(type="checkbox", class="a-input -toggle", id="toggle-tlf")
-          label(for="toggle-tlf")
-          label(class="-text", for="toggle-tlf") Phone notifications
-        .m-dropdown__menu-item
-          input(type="checkbox", class="a-input -toggle", id="toggle-app")
-          label(for="toggle-app")
-          label(class="-text", for="toggle-app") App notifications
+        fieldset
+          legend.m-dropdown__menu-item Select
+          .m-dropdown__menu-item.-h--auto
+            .m-form__item
+              label.a-switch
+                span.a-switch__label Toggle
+                input(type="checkbox", class="a-switch__input -toggle", name="toggle1", value="toggle1", aria-describedby="toggle1", aria-label="toggle")
+                span(id="toggle1", class="a-switch__content", aria-live="assertive")
+                  span.a-switch__faux
+                  span.a-switch__on Enabled
+                  span.a-switch__off Disabled
+          .m-dropdown__menu-item.-h--auto
+            .m-form__item
+              label.a-switch
+                span.a-switch__label Toggle
+                input(type="checkbox", class="a-switch__input -toggle", name="toggle2", value="toggle2", aria-describedby="toggle2", aria-label="toggle")
+                span(id="toggle2", class="a-switch__content", aria-live="assertive")
+                  span.a-switch__faux
+                  span.a-switch__on Enabled
+                  span.a-switch__off Disabled
+          .m-dropdown__menu-item.-h--auto
+            .m-form__item
+              label.a-switch
+                span.a-switch__label Toggle
+                input(type="checkbox", class="a-switch__input -toggle", name="toggle3", value="toggle3", aria-describedby="toggle3", aria-label="toggle")
+                span(id="toggle3", class="a-switch__content", aria-live="assertive")
+                  span.a-switch__faux
+                  span.a-switch__on Enabled
+                  span.a-switch__off Disabled
   :code(lang="html")
     <div class="m-dropdown__menu">
-      <div class="m-dropdown__menu-item">
-        <input class="a-input -toggle" type="checkbox" id="toggle-mail">
-        <label for="toggle-mail"></label>
-        <label class="-text" for="toggle-mail">Email notifications</label>
-      </div>
-      <div class="m-dropdown__menu-item">
-        <input class="a-input -toggle" type="checkbox" id="toggle-tlf">
-        <label for="toggle-tlf"></label>
-        <label class="-text" for="toggle-tlf">Phone notifications</label>
-      </div>
-      <div class="m-dropdown__menu-item">
-        <input class="a-input -toggle" type="checkbox" id="toggle-app">
-        <label for="toggle-app"></label>
-        <label class="-text" for="toggle-app">App notifications</label>
-      </div>
+      <fieldset>
+        <legend class="m-dropdown__menu-item">Select an option</legend>
+        <div class="m-dropdown__menu-item -h--auto">
+          <div class="m-form__item">
+            <label class="a-switch">
+              <span class="a-switch__label">Toggle</span>
+              <input type="checkbox" class="a-switch__input -toggle" name="toggle1" value="toggle1" aria-describedby="toggle1" aria-label="toggle">
+              <span id="toggle1" class="a-switch__content" aria-live="assertive">
+                <span class="a-switch__faux"></span>
+                <span class="a-switch__on">Enabled</span>
+                <span class="a-switch__off">Disabled</span>
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="m-dropdown__menu-item -h--auto">
+          <div class="m-form__item">
+            <label class="a-switch">
+              <span class="a-switch__label">Toggle</span>
+              <input type="checkbox" class="a-switch__input -toggle" name="toggle2" value="toggle2" aria-describedby="toggle2" aria-label="toggle">
+              <span id="toggle2" class="a-switch__content" aria-live="assertive">
+                <span class="a-switch__faux"></span>
+                <span class="a-switch__on">Enabled</span>
+                <span class="a-switch__off">Disabled</span>
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="m-dropdown__menu-item -h--auto">
+          <div class="m-form__item">
+            <label class="a-switch">
+              <span class="a-switch__label">Toggle</span>
+              <input type="checkbox" class="a-switch__input -toggle" name="toggle3" value="toggle3" aria-describedby="toggle3" aria-label="toggle">
+              <span id="toggle3" class="a-switch__content" aria-live="assertive">
+                <span class="a-switch__faux"></span>
+                <span class="a-switch__on">Enabled</span>
+                <span class="a-switch__off">Disabled</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </fieldset>
     </div>
-
 
 h2 Helpers
 

@@ -150,18 +150,33 @@ div(class=`test-dropdown-toggle`)
   span.a-h2 Toggle input
   .-d--flex
     .m-dropdown__menu.-active
-      .m-dropdown__menu-item
-        input(type="checkbox", class="a-input -toggle", id="toggle-mail")
-        label(for="toggle-mail")
-        label(class="-text", for="toggle-mail") Email notifications
-      .m-dropdown__menu-item
-        input(type="checkbox", class="a-input -toggle", id="toggle-tlf", checked)
-        label(for="toggle-tlf")
-        label(class="-text", for="toggle-tlf") Phone notifications
-      .m-dropdown__menu-item
-        input(type="checkbox", class="a-input -toggle", id="toggle-app", disabled)
-        label(for="toggle-app")
-        label(class="-text", for="toggle-app") App notifications
+      .m-dropdown__menu-item.-h--auto
+        .m-form__item
+          label.a-switch
+            span.a-switch__label Toggle
+            input(type="checkbox", class="a-switch__input -toggle", name="toggle1", value="toggle1", aria-describedby="toggle1", aria-label="toggle")
+            span(id="toggle1", class="a-switch__content", aria-live="assertive")
+              span.a-switch__faux
+              span.a-switch__on Enabled
+              span.a-switch__off Disabled
+      .m-dropdown__menu-item.-h--auto
+        .m-form__item
+          label.a-switch
+            span.a-switch__label Toggle
+            input(type="checkbox", class="a-switch__input -toggle", name="toggle2", value="toggle2", aria-describedby="toggle2", aria-label="toggle", checked)
+            span(id="toggle2", class="a-switch__content", aria-live="assertive")
+              span.a-switch__faux
+              span.a-switch__on Enabled
+              span.a-switch__off Disabled
+      .m-dropdown__menu-item.-h--auto
+        .m-form__item
+          label.a-switch
+            span.a-switch__label Toggle
+            input(type="checkbox", class="a-switch__input -toggle", name="toggle3", value="toggle3", aria-describedby="toggle3", aria-label="toggle", disabled)
+            span(id="toggle3", class="a-switch__content", aria-live="assertive")
+              span.a-switch__faux
+              span.a-switch__on Enabled
+              span.a-switch__off Disabled
 
 
 div(class=`test-dropdown-ellipsis-helper`)
