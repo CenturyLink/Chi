@@ -1,0 +1,604 @@
+h2 Examples
+p.-text
+  | To display tabs, apply the class <code>a-tabs</code> to a <code>ul</code>. Wrap the tab
+  | links in <code>li</code> tags and signify the active link with class <code>-active</code>.
+
+.m-alert.-info.-my--3
+  i.m-alert__icon.a-icon.icon-circle-info
+  .m-alert__content
+    p.m-alert__text This component requires Javascript
+
+h3 Horizontal
+ul#a-tabs--menu.a-tabs
+  li.-active
+    a(href='#a-tabs-panel--horizontal-base') Base
+  li
+    a(href='#a-tabs-panel--horizontal-inverse') Inverse
+.example.-mb--3
+  #a-tabs-panel--horizontal-base.a-tabs-panel.-active
+    .-p--3(style="background-color:#eee;")
+      .-bg--white.-px--3
+        ul.a-tabs
+          li.-active
+            a(href='#') Active Tab
+          li
+            a(href='#') Tab Link
+          li
+            a(href='#') Tab Link
+    :code(lang='html')
+      <ul class="a-tabs">
+        <li class="-active">
+          <a href="#">Active Tab</a>
+        </li>
+        <li>
+          <a href="#">a Tab Link</a>
+        </li>
+        <li>
+          <a href="#">a Tab Link</a>
+        </li>
+      </ul>
+  #a-tabs-panel--horizontal-inverse.a-tabs-panel
+    .-p--3(style="background-color:#eee;")
+      .-bg--black.-px--3
+        ul.a-tabs.-inverse
+          li.-active
+            a(href='#') Active Tab
+          li
+            a(href='#') Tab Link
+          li
+            a(href='#') Tab Link
+    :code(lang='html')
+      <ul class="a-tabs -inverse">
+        <li class="-active">
+          <a href="#">Active Tab</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+      </ul>
+
+h3 Vertical
+ul#a-tabs--menu-vertical.a-tabs
+  li.-active
+    a(href='#a-tabs-panel--vertical-base') Base
+  li
+    a(href='#a-tabs-panel--vertical-inverse') Inverse
+.example.-mb--3
+  #a-tabs-panel--vertical-base.a-tabs-panel.-active
+    .-p--3(style="background-color:#eee;")
+      .-bg--white.-p--3
+        ul.a-tabs.-vertical
+          li.-active
+            a(href='#') Active Tab
+          li
+            a(href='#') Tab Link
+          li
+            a(href='#') Tab Link
+    :code(lang='html')
+      <ul class="a-tabs -vertical">
+        <li class="-active">
+          <a href="#">Active Tab</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+      </ul>
+  #a-tabs-panel--vertical-inverse.a-tabs-panel
+    .-p--3(style="background-color:#eee;")
+      .-bg--black.-p--3
+        ul.a-tabs.-inverse.-vertical
+          li.-active
+            a(href='#') Active Tab
+          li
+            a(href='#') Tab Link
+          li
+            a(href='#') Tab Link
+    :code(lang='html')
+      <ul class="a-tabs -inverse -vertical">
+        <li class="-active">
+          <a href="#">Active Tab</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+      </ul>
+
+h2 Icons
+ul#a-tabs--menu-horizontal-icons.a-tabs
+  li.-active
+    a(href='#a-tabs-panel--horizontal-icons-base') Base
+  li
+    a(href='#a-tabs-panel--horizontal-icons-inverse') Inverse
+.example.-mb--3
+  #a-tabs-panel--horizontal-icons-base.a-tabs-panel.-active
+    .-p--3(style="background-color:#eee;")
+      .-bg--white.-px--3
+        ul.a-tabs.-icons
+          li.-active
+            a(href='#')
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Active Tab
+          li
+            a(href='#')
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Tab Link
+          li
+            a(href='#')
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Tab Link
+    :code(lang='html')
+      <ul class="a-tabs -icons">
+        <li class="-active">
+          <a href="#">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-atom"></use>
+              </svg>
+            </div>
+            <span>Active Tab</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-atom"></use>
+              </svg>
+            </div>
+            <span>Tab Link</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-atom"></use>
+              </svg>
+            </div>
+            <span>Tab Link</span>
+          </a>
+        </li>
+      </ul>
+  #a-tabs-panel--horizontal-icons-inverse.a-tabs-panel
+    .-p--3(style="background-color:#eee;")
+      .-bg--black.-px--3
+        ul.a-tabs.-inverse.-icons
+          li.-active
+            a(href='#')
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Active Tab
+          li
+            a(href='#')
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Tab Link
+          li
+            a(href='#')
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Tab Link
+    :code(lang='html')
+      <ul class="a-tabs -inverse -icons">
+        <li class="-active">
+          <a href="#">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-atom"></use>
+              </svg>
+            </div>
+            <span>Active Tab</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-atom"></use>
+              </svg>
+            </div>
+            <span>Tab Link</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-atom"></use>
+              </svg>
+            </div>
+            <span>Tab Link</span>
+          </a>
+        </li>
+      </ul>
+
+ul#a-tabs--menu-vertical-icons.a-tabs
+  li.-active
+    a(href='#a-tabs-panel--vertical-icons-base') Base
+  li
+    a(href='#a-tabs-panel--vertical-icons-inverse') Inverse
+.example.-mb--3
+  #a-tabs-panel--vertical-icons-base.a-tabs-panel.-active
+    .-p--3(style="background-color:#eee;")
+      .-bg--white.-p--3
+        ul.a-tabs.-vertical.-icons
+          li.-active
+            a(href='#')
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Active Tab
+            ul.a-tabs__subtabs
+              li.-active
+                a(href='#') Subtab Link
+              li
+                a(href='#') Subtab Link
+              li
+                a(href='#') Subtab Link
+          li
+            a(href='#')
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Tab Link
+          li
+            a(href='#')
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Tab Link
+    :code(lang='html')
+      <ul class="a-tabs -vertical -icons">
+        <li class="-active">
+          <a href="#">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-atom"></use>
+              </svg>
+            </div>
+            <span>Active Tab</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-atom"></use>
+              </svg>
+            </div>
+            <span>Tab link</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-atom"></use>
+              </svg>
+            </div>
+            <span>Tab link</span>
+          </a>
+        </li>
+      </ul>
+  #a-tabs-panel--vertical-icons-inverse.a-tabs-panel
+    .-p--3(style="background-color:#eee;")
+      .-bg--black.-p--3
+        ul.a-tabs.-inverse.-vertical.-icons
+          li.-active
+            a(href='#')
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Active Tab
+            ul.a-tabs__subtabs
+              li.-active
+                a(href='#') Subtab Link
+              li
+                a(href='#') Subtab Link
+              li
+                a(href='#') Subtab Link
+          li
+            a(href='#')
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Tab Link
+          li
+            a(href='#')
+              .a-icon
+                svg
+                  use(xlink:href='#icon-atom')
+              span Tab Link
+    :code(lang='html')
+      <ul class="a-tabs -inverse -vertical -icons">
+        <li class="-active">
+          <a href="#">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-atom"></use>
+              </svg>
+            </div>
+            <span>Active Tab</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-atom"></use>
+              </svg>
+            </div>
+            <span>Tab link</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="a-icon">
+              <svg>
+                <use xlink:href="#icon-atom"></use>
+              </svg>
+            </div>
+            <span>Tab link</span>
+          </a>
+        </li>
+      </ul>
+
+h2 Vertical Subtabs
+ul#a-tabs--menu-subtabs.a-tabs
+  li.-active
+    a(href='#a-tabs-panel--subtabs-base') Base
+  li
+    a(href='#a-tabs-panel--subtabs-inverse') Inverse
+.example.-mb--3
+  #a-tabs-panel--subtabs-base.a-tabs-panel.-active
+    .-p--3(style="background-color:#eee;")
+      .-bg--white.-p--3
+        ul.a-tabs.-vertical
+          li.-active
+            a(href='#') Active tab
+            ul.a-tabs__subtabs
+              li.-active
+                a(href='#') Subtab Link
+              li
+                a(href='#') Subtab Link
+              li
+                a(href='#') Subtab Link
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+    :code(lang='html')
+      <ul class="a-tabs -vertical">
+        <li class="-active">
+          <a href="#">Active tab</a>
+          <ul class="a-tabs__subtabs">
+            <li class="-active">
+              <a href="#">Subtab Link</a>
+            </li>
+            <li>
+              <a href="#">Subtab Link</a>
+            </li>
+            <li>
+              <a href="#">Subtab Link</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Tab link</a>
+        </li>
+        <li>
+          <a href="#">Tab link</a>
+        </li>
+      </ul>
+  #a-tabs-panel--subtabs-inverse.a-tabs-panel
+    .-p--3(style="background-color:#eee;")
+      .-bg--black.-p--3
+        ul.a-tabs.-inverse.-vertical
+          li.-active
+            a(href='#') Active tab
+            ul.a-tabs__subtabs
+              li.-active
+                a(href='#') Subtab Link
+              li
+                a(href='#') Subtab Link
+              li
+                a(href='#') Subtab Link
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+    :code(lang='html')
+      <ul class="a-tabs -inverse -vertical">
+        <li class="-active">
+          <a href="#">Active tab</a>
+          <ul class="a-tabs__subtabs">
+            <li class="-active">
+              <a href="#">Subtab Link</a>
+            </li>
+            <li>
+              <a href="#">Subtab Link</a>
+            </li>
+            <li>
+              <a href="#">Subtab Link</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Tab link</a>
+        </li>
+        <li>
+          <a href="#">Tab link</a>
+        </li>
+      </ul>
+
+h2 Bordered
+ul#a-tabs--menu-bordered.a-tabs
+  li.-active
+    a(href='#a-tabs-panel--bordered-base') Base
+  li
+    a(href='#a-tabs-panel--bordered-inverse') Inverse
+.example.-mb--3
+  #a-tabs-panel--bordered-base.a-tabs-panel.-active
+    .-p--3(style="background-color:#eee;")
+      .-bg--white.-p--3
+        ul.a-tabs.-border(style="max-width:400px")
+          li.-active
+            a(href='#') Active tab
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+    :code(lang='html')
+      <ul class="a-tabs -border">
+        <li class="-active">
+          <a href="#">Active tab</a>
+        </li>
+        <li>
+          <a href="#">Tab link</a>
+        </li>
+        <li>
+          <a href="#">Tab link</a>
+        </li>
+      </ul>
+  #a-tabs-panel--bordered-inverse.a-tabs-panel
+    .-p--3(style="background-color:#eee;")
+      .-bg--black.-p--3
+        ul.a-tabs.-inverse.-border(style="max-width:400px")
+          li.-active
+            a(href='#') Active tab
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+    :code(lang='html')
+      <ul class="a-tabs -inverse -border">
+        <li class="-active">
+          <a href="#">Active tab</a>
+        </li>
+        <li>
+          <a href="#">Tab link</a>
+        </li>
+        <li>
+          <a href="#">Tab link</a>
+        </li>
+      </ul>
+
+h2 Additional Sizes
+
+h3 Extra small
+.example.-mb--3
+  .-p--3.-pb--4
+    ul.a-tabs.-xs
+      li.-active
+        a(href='#') Active Tab
+      li
+        a(href='#') Tab Link
+      li
+        a(href='#') Tab Link
+  :code(lang='html')
+    <ul class="a-tabs -xs">
+      <li class="-active">
+        <a href="#">Active Tab</a>
+      </li>
+      <li>
+        <a href="#">Tab Link</a>
+      </li>
+      <li>
+        <a href="#">Tab Link</a>
+      </li>
+    </ul>
+
+h3 Small
+.example.-mb--3
+  .-p--3.-pb--4
+    ul.a-tabs.-sm
+      li.-active
+        a(href='#') Active Tab
+      li
+        a(href='#') Tab Link
+      li
+        a(href='#') Tab Link
+  :code(lang='html')
+    <ul class="a-tabs -sm">
+      <li class="-active">
+        <a href="#">Active Tab</a>
+      </li>
+      <li>
+        <a href="#">Tab Link</a>
+      </li>
+      <li>
+        <a href="#">Tab Link</a>
+      </li>
+    </ul>
+
+h3 Large
+.example.-mb--3
+  .-p--3.-pb--4
+    ul.a-tabs.-vertical.-lg
+      li.-active
+        a(href='#') Active Tab
+        ul.a-tabs__subtabs
+          li.-active
+            a(href='#') Subtab Link
+          li
+            a(href='#') Subtab Link
+          li
+            a(href='#') Subtab Link
+      li
+        a(href='#') Tab Link
+      li
+        a(href='#') Tab Link
+  :code(lang='html')
+    <ul class="a-tabs -vertical -lg">
+      <li class="-active">
+        <a href="#">Active Tab</a>
+        <ul class="a-tabs__subtabs">
+          <li class="-active">
+            <a href="#">Subtab Link</a>
+          </li>
+          <li>
+            <a href="#">Subtab Link</a>
+          </li>
+          <li>
+            <a href="#">Subtab Link</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Tab Link</a>
+      </li>
+      <li>
+        <a href="#">Tab Link</a>
+      </li>
+    </ul>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('a-tabs--menu'));
+      chi.tab(document.getElementById('a-tabs--menu-vertical'));
+      chi.tab(document.getElementById('a-tabs--menu-horizontal-icons'));
+      chi.tab(document.getElementById('a-tabs--menu-vertical-icons'));
+      chi.tab(document.getElementById('a-tabs--menu-subtabs'));
+      chi.tab(document.getElementById('a-tabs--menu-bordered'));
+    }
+  );

@@ -1,0 +1,189 @@
+h3 Borderless
+p.-text Remove all borders by applying the modifier class <code>-borderless</code>.
+:example(lang="html"):html-beautify:pug include ./_borderless.pug
+
+h3 Striped
+p.-text Alternate the table row color by applying the modifier class <code>-striped</code>.
+:example(lang="html"):html-beautify:pug include ./_striped.pug
+
+h3 Hover
+p.-text Enable a hover state by applying the modifier class <code>-hover</code>.
+:example(lang="html"):html-beautify:pug include ./_hover.pug
+
+h3 Portal styled table
+p.-text Enable portal styling by applying class <code>-portal</code>.
+p.-text To display a row in active / selected state, apply class <code>-active</code> to the <code>tr</code>.
+:example(lang="html"):html-beautify:pug include ./_portal.pug
+
+h2 Row States
+p.-text
+  | Chi offers a wide variety of modifiers to express different row states.
+
+h3 Disabled
+p.-text Disable a row by applying the attribute <code>disabled="disabled"</code>.
+:example(lang="html"):html-beautify:pug include ./_disabled.pug
+
+h3 Success
+p.-text Render a success state by applying the modifier class <code>-row--success</code>.
+:example(lang="html"):html-beautify:pug include ./_row-success.pug
+
+h3 Warning
+p.-text Render a warning state by applying the modifier class <code>-row--warning</code>.
+:example(lang="html"):html-beautify:pug include ./_row-warning.pug
+
+h3 Danger
+p.-text Render a danger state by applying the modifier class <code>-row--danger</code>.
+:example(lang="html"):html-beautify:pug include ./_row-danger.pug
+
+h3 Info
+p.-text Render an info state by applying the modifier class <code>-row--info</code>.
+:example(lang="html"):html-beautify:pug include ./_row-info.pug
+
+h2 Column Sorting
+p.-text
+  | To express column sorting, apply the class <code>-sorted</code> with one of
+  | the following modifiers: <code>-ascending</code> or <code>-descending</code>.
+
+h3 Ascending
+:example(lang="html"):html-beautify:pug include ./_sort-ascending.pug
+
+h3 Descending
+:example(lang="html"):html-beautify:pug include ./_sort-descending.pug
+
+h2 Content alignment
+p.-text
+  | Chi also supports additional content alignment with inline text align utilities
+  | applying the modifier class <code>-text--left</code> , <code>-text--center</code>
+  | or <code>-text--right</code>.
+
+:example(lang="html"):html-beautify:pug
+  include ./_common.pug
+  table.a-table
+    thead
+      tr
+        th.-text--left Name
+        th.-text--center ID
+        th.-text--right Last login
+    tbody
+      tr.-md
+        td.-text--left David Navarro
+        td.-text--center david
+        td.-text--right 2017 3:26 PM
+      tr.-md
+        td.-text--left Diego Sanjuan
+        td.-text--center diego
+        td.-text--right 2017 3:26 PM
+      tr.-md
+        td.-text--left Manuel Martin
+        td.-text--center manuel
+        td.-text--right 2017 3:26 PM
+
+h2 Additional Sizes
+p.-text
+  | Chi also supports additional table sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
+
+h3 Size -xs
+p.-text Render a <strong>-xs</strong> size by applying the modifier class <code>-xs</code>.
+:example(lang="html"):html-beautify:pug include ./_row-xs.pug
+
+h3 Size -sm
+p.-text Render a <strong>-sm</strong> size by applying the modifier class <code>-sm</code>.
+:example(lang="html"):html-beautify:pug include ./_row-sm.pug
+
+h3 Size -md
+p.-text Render a <strong>-md</strong> size by applying the modifier class <code>-md</code>.
+  |  <strong>-md</strong> is the default size.
+:example(lang="html"):html-beautify:pug include ./_row-md.pug
+
+h3 Size -lg
+p.-text Render a <strong>-lg</strong> size by applying the modifier class <code>-lg</code>.
+:example(lang="html"):html-beautify:pug include ./_row-lg.pug
+
+h3 Size -xl
+p.-text Render a <strong>-xl</strong> size by applying the modifier class <code>-xl</code>.
+:example(lang="html"):html-beautify:pug include ./_row-xl.pug
+
+h2 Selectable
+:example(lang="html")
+  <table class="a-table">
+    <thead>
+        <tr>
+            <th>
+              <div class="-lh--1">
+                <input class="a-checkbox__input" type="checkbox" id="chk-1" />
+                <label class="a-checkbox__label" for="chk-1">
+                  <div class="-sr--only">Label</div>
+                </label>
+              </div>
+            </th>
+            <th class="-sorted -ascending">
+                <div>Name</div>
+            </th>
+            <th>ID</th>
+            <th>Last login</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="-row--info">
+            <td class="-lh--1">
+              <input class="a-checkbox__input" type="checkbox" id="chk-1-01" checked="checked" />
+              <label class="a-checkbox__label" for="chk-1-01">
+                <div class="-sr--only">Label</div>
+              </label>
+            </td>
+            <td>David Navarro</td>
+            <td>david</td>
+            <td>Dec 18, 2017 3:26 PM</td>
+        </tr>
+        <tr>
+            <td class="-lh--1">
+              <input class="a-checkbox__input" type="checkbox" id="chk-1-02" />
+              <label class="a-checkbox__label" for="chk-1-02">
+                <div class="-sr--only">Label</div>
+              </label>
+            </td>
+            <td>Diego Sanjuan</td>
+            <td>diego</td>
+            <td>Dec 18, 2017 2:38 AM</td>
+        </tr>
+        <tr>
+            <td class="-lh--1">
+              <input class="a-checkbox__input" type="checkbox" id="chk-1-03" />
+              <label class="a-checkbox__label" for="chk-1-03">
+                  <div class="-sr--only">Label</div>
+              </label>
+            </td>
+            <td>Manuel Martin</td>
+            <td>manuel</td>
+            <td>Nov 5, 2017 10:15 AM</td>
+        </tr>
+    </tbody>
+  </table>
+
+h2 Scrollable
+p.-text
+  | If the <code>section</code> height is smaller than the <code>table</code>
+  | height, the <code>table</code> header will be fixed positioned and
+  | content will scroll.
+h3 Requirements
+p.-text
+  | Tables must be wrapped in a <code>&lt;section class="a-table -fixed--header"&gt;</code>
+:example(lang="html"):html-beautify:pug
+  include ./_common.pug
+  section.a-table.-fixed--header(style="height: 150px")
+    div
+      table
+        thead
+          tr
+            th
+              div Name
+            th
+              div ID
+            th
+              div Last login
+        tbody
+          +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
+          +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
+          +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')

@@ -1,0 +1,18 @@
+.a-grid__container.-w--100
+    h1.-text--normal= title
+    if description
+        .description=description
+    if tabs
+        ul.a-tabs.-inverse#viewtabs
+            - var tabNumber = 0
+            each title, tab in tabs
+                if tabNumber == 0
+                    li.-active
+                        a(href=`#${title}`) #{tab}
+                else
+                    li
+                        a(href=`#${title}`) #{tab}
+                - tabNumber++
+
+script.
+  chi.tab(document.getElementById('viewtabs'));

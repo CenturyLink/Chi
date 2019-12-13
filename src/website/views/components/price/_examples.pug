@@ -1,0 +1,47 @@
+h2 Examples
+p.-text
+  | To render price, use the class <code>a-price</code>.
+
+h3 Base
+.example.-mb--3
+  .-p--3
+    .a-price.-m--3
+      sup
+        | $
+      | 100
+      sup
+        | 00
+  :code(lang="html")
+    <div class="a-price">
+      <sup>$</sup>
+      100
+      <sup>00</sup>
+    </div>
+
+h2 Sizes
+.example.-mb--3
+  .-p--3
+    each size in ['sm', 'md', 'lg']
+      .a-price(class=`-${size}`)
+        sup
+          | $
+        | 100
+        sup
+          | 00
+      p(class=`-text--bold -mb--3`)= '-' + size
+  :code(lang="html")
+    <div class="a-price -sm">
+      <sup>$</sup>
+      100
+      <sup>00</sup>
+    </div>
+    <div class="a-price -md">
+      <sup>$</sup>
+      100
+      <sup>00</sup>
+    </div>
+    <div class="a-price -lg">
+      <sup>$</sup>
+      100
+      <sup>00</sup>
+    </div>

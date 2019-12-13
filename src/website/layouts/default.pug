@@ -18,6 +18,7 @@ html(lang="en")
         link(rel="stylesheet", href=`${rootPath}assets/styles/chi-docs.css`)
         script(src=`${rootPath}assets/scripts/globalConfigs.js`)
         script(src=`${rootPath}assets/scripts/chiVersionCheck.js`)
+        script(src=`${rootPath}js/chi.js`)
         if styles
             each style in styles
                 link(rel="stylesheet", media="all", href=`${rootPath}${style}.css`)
@@ -32,10 +33,10 @@ html(lang="en")
                 include partials/aside
 
             .docs-body__content
-              .a-grid__container
-                h1= title
-                != contents
-      script(src=`${rootPath}js/chi.js`)
+                section.docs-body__heading
+                    include partials/heading
+                .a-grid__container
+                    != contents
       script(type="text/javascript", src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js")
       script(type="text/javascript", src=`${rootPath}assets/scripts/algoliaSearch.js`)
       script(src=`${rootPath}assets/scripts/chi-docs.js`)

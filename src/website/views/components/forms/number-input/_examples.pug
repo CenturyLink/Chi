@@ -1,0 +1,198 @@
+.m-alert.-info.-my--3
+  i.m-alert__icon.a-icon.icon-circle-info
+  .m-alert__content
+    p.m-alert__text This component requires Javascript
+
+h2 Examples
+p.-text
+  | To render a number input, apply the classes <code>a-input</code> to an <code>input type="number"</code>.
+  | For proper styling, number inputs must be wrapped in an <code>m-input__wrapper</code> div with two buttons.
+
+h3 Base
+
+.example.-mb--3
+  .-p--3
+    .m-form__item.-row
+      .m-input__wrapper
+        input.a-input(type="number", value="0", aria-label="Input Label")
+        button(aria-label='decrease')
+        button(aria-label='increase')
+  :code(lang="html")
+    <div class="m-form__item -row">
+      <div class="m-input__wrapper">
+        <input type="number" class="a-input" value="0" aria-label="Input Label">
+        <button aria-label="Decrease"></button>
+        <button aria-label="Increase"></button>
+      </div>
+    </div>
+
+h3 Disabled
+.example.-mb--3
+  .-p--3
+    .m-form__item.-row
+      .m-input__wrapper
+        input.a-input(type="number", value="0", aria-label="Input Label", disabled)
+        button(aria-label='decrease')
+        button(aria-label='increase')
+  :code(lang="html")
+    <div class="m-form__item -row">
+      <div class="m-input__wrapper">
+        <input type="number" class="a-input" value="0" aria-label="Input Label" disabled>
+        <button aria-label="Decrease"></button>
+        <button aria-label="Increase"></button>
+      </div>
+    </div>
+
+h3 Sizes
+p.-text
+  | Number inputs support a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
+.example.-mb--3
+  .-p--3
+    each size in ['sm', 'md', 'lg', 'xl']
+      .m-form__item.-row.-inline.-mr--3
+        .m-input__wrapper
+          input.a-input(type="number", class=`-${size}`, value="0", aria-label="Input Label")
+          button(aria-label='decrease')
+          button(aria-label='increase')
+  :code(lang='html')
+    <div class="m-form__item -row -inline">
+      <div class="m-input__wrapper">
+        <input type="number" class="a-input -sm" value="0" aria-label="Input Label">
+        <button aria-label="Decrease"></button>
+        <button aria-label="Increase"></button>
+      </div>
+    </div>
+    <div class="m-form__item -row -inline">
+      <div class="m-input__wrapper">
+        <input type="number" class="a-input -md" value="0" aria-label="Input Label">
+        <button aria-label="Decrease"></button>
+        <button aria-label="Increase"></button>
+      </div>
+    </div>
+    <div class="m-form__item -row -inline">
+      <div class="m-input__wrapper">
+        <input type="number" class="a-input -lg" value="0" aria-label="Input Label">
+        <button aria-label="Decrease"></button>
+        <button aria-label="Increase"></button>
+      </div>
+    </div>
+    <div class="m-form__item -row -inline">
+      <div class="m-input__wrapper">
+        <input type="number" class="a-input -xl" value="0" aria-label="Input Label">
+        <button aria-label="Decrease"></button>
+        <button aria-label="Increase"></button>
+      </div>
+    </div>
+
+h2 Expanded version
+p.-text
+  | There is available an expanded version of the number input component.
+
+h3 Base
+.example.-mb--3
+  .-p--3
+    .m-inputNumber
+      input.a-input(type="number", value="0", aria-label="Input Label")
+      button.a-btn.-icon(aria-label='decrease')
+        .a-btn__content
+          i.a-icon.icon-minus
+      button.a-btn.-icon(aria-label='increase')
+        .a-btn__content
+          i.a-icon.icon-plus
+  :code(lang="html")
+    <div class="m-inputNumber">
+      <input class="a-input" type="number" value="0" aria-label="Input Label">
+      <button class="a-btn -icon" aria-label="Decrease">
+        <div class="a-btn__content">
+          <i class="a-icon icon-minus"></i>
+        </div>
+      </button>
+      <button class="a-btn -icon" aria-label="Increase">
+        <div class="a-btn__content">
+          <i class="a-icon icon-plus"></i>
+        </div>
+      </button>
+    </div>
+
+h3 Disabled
+.example.-mb--3
+  .-p--3
+    .m-inputNumber
+      input.a-input(type="number", value="0", aria-label="Input Label", disabled=true)
+      button.a-btn.-icon(aria-label='decrease')
+        .a-btn__content
+          i.a-icon.icon-minus
+      button.a-btn.-icon(aria-label='increase')
+        .a-btn__content
+          i.a-icon.icon-plus
+  :code(lang="html")
+    <div class="m-inputNumber">
+      <input class="a-input" type="number" value="0" aria-label="Input Label" disabled>
+      <button class="a-btn -icon" aria-label="Decrease">
+        <div class="a-btn__content">
+          <i class="a-icon icon-minus"></i>
+        </div>
+      </button>
+      <button class="a-btn -icon" aria-label="Increase">
+        <div class="a-btn__content">
+          <i class="a-icon icon-plus"></i>
+        </div>
+      </button>
+    </div>
+
+h3 Sizes
+p.-text
+  | Expanded number inputs support a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
+.example.-mb--3
+  .-p--3.-d--flex.-justify-content--start.-align-items--center
+    each size in ['sm', 'md', 'lg', 'xl']
+      div(class=`m-inputNumber -mr--2 -${size}`)
+        input(class=`a-input -${size}`, type="number", value="0", aria-label="Input Label")
+        button(class=`a-btn -icon -${size}`, aria-label='decrease')
+          .a-btn__content
+            i.a-icon.icon-minus
+        button(class=`a-btn -icon -${size}`, aria-label='decrease')
+          .a-btn__content
+            i.a-icon.icon-plus
+  :code(lang="html")
+    <div class="m-inputNumber -sm">
+      <input class="a-input -sm" type="number" value="0" aria-label="Input Label">
+      <button class="a-btn -icon -sm" aria-label="Decrease">
+        <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
+      </button>
+      <button class="a-btn -icon -sm" aria-label="Increase">
+        <div class="a-btn__content"><i class="a-icon icon-plus"></i>
+      </div>
+      </button>
+    </div>
+    <div class="m-inputNumber -md">
+      <input class="a-input -md" type="number" value="0" aria-label="Input Label">
+      <button class="a-btn -icon -md" aria-label="Decrease">
+        <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
+      </button>
+      <button class="a-btn -icon -md" aria-label="Increase">
+        <div class="a-btn__content"><i class="a-icon icon-plus"></i></div>
+      </button>
+    </div>
+    <div class="m-inputNumber -lg">
+      <input class="a-input -lg" type="number" value="0" aria-label="Input Label">
+      <button class="a-btn -icon -lg" aria-label="Decrease">
+        <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
+      </button>
+      <button class="a-btn -icon -lg" aria-label="Increase">
+        <div class="a-btn__content"><i class="a-icon icon-plus"></i></div>
+      </button>
+    </div>
+    <div class="m-inputNumber -xl">
+      <input class="a-input -xl" type="number" value="0" aria-label="Input Label">
+      <button class="a-btn -icon -xl" aria-label="Decrease">
+        <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
+      </button>
+      <button class="a-btn -icon -xl" aria-label="Increase">
+        <div class="a-btn__content"><i class="a-icon icon-plus"></i></div>
+      </button>
+    </div>

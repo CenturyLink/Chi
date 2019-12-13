@@ -1,0 +1,272 @@
+h2 Examples
+p.-text To render a spinner, use the class <code>a-spinner</code>.
+
+h2 Backdrop
+p.-text Wrap spinners in <code>m-backdrop</code> to overlay content similar to a modal, and add <code>-center</code> class to position it in the middle of the page.
+h3 Base
+.example.-mb--3
+  .m-backdrop.-center.-p--6(style="position:relative;height:25rem;")
+    .m-backdrop__wrapper
+      svg(class=`a-spinner -text--light`,viewBox=`0 0 66 66`)
+        title Loading
+        circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+  :code(lang="html")
+    <div class="m-backdrop -center">
+      <div class="m-backdrop__wrapper">
+        <svg class="a-spinner -text--light" viewBox="0 0 66 66">
+          <title>Loading</title>
+          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+        </svg>
+      </div>
+    </div>
+
+h3 Inverse
+p.-text Apply the class <code>-inverse</code> to render spinners on light backgrounds.
+.example.-mb--3
+  .m-backdrop.-center.-inverse.-p--6(style="position:relative;height:25rem;")
+    .m-backdrop__wrapper
+      svg(class=`a-spinner -text--primary`,viewBox=`0 0 66 66`)
+        title Loading
+        circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+  :code(lang="html")
+    <div class="m-backdrop -center -inverse">
+      <div class="m-backdrop__wrapper">
+        <svg class="a-spinner -text--primary" viewBox="0 0 66 66">
+          <title>Loading</title>
+          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+        </svg>
+      </div>
+    </div>
+
+h2 Contextual
+
+h3 Spinners in Buttons
+.example.-mb--3
+  .-p--3
+    button(class=`a-btn -mr--3`)
+      .a-btn__content
+        span Button
+        svg(class=`a-spinner -text--muted`,viewBox=`0 0 66 66`)
+          title Loading
+          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+    button(class='a-btn -sm -mr--3')
+      .a-btn__content
+        span Small
+        svg(class=`a-spinner -text--muted -xs`,viewBox=`0 0 66 66`)
+          title Loading
+          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+    button(class='a-btn -lg -mr--3')
+      .a-btn__content
+        span Large
+        svg(class=`a-spinner -text--muted -sm--2`,viewBox=`0 0 66 66`)
+          title Loading
+          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+  :code(lang='html')
+    <button class="a-btn">
+      <div class="a-btn__content">
+        <span>Button</span>
+        <svg class="a-spinner -text--muted" viewBox="0 0 66 66">
+          <title>Loading</title>
+          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+        </svg>
+        </div>
+      </div>
+    </button>
+    <button class="a-btn">
+      <div class="a-btn__content">
+        <span>Small</span>
+        <svg class="a-spinner -text--muted -xs" viewBox="0 0 66 66">
+          <title>Loading</title>
+          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+        </svg>
+        </div>
+      </div>
+    </button>
+    <button class="a-btn">
+      <div class="a-btn__content">
+        <span>Large</span>
+        <svg class="a-spinner -text--muted -sm--2" viewBox="0 0 66 66">
+          <title>Loading</title>
+          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+        </svg>
+        </div>
+      </div>
+    </button>
+
+h3 Spinners in Text Inputs
+.example.-mb--3
+  .-p--3
+    .m-form__item.-mb--2(style="max-width:20rem")
+      label.a-label(for="spinner-input-01") Label
+      .m-input__wrapper
+        input(type="text", class="a-input", placeholder="Placeholder", value="Sample Text" id="spinner-input-01")
+        svg(class=`a-spinner -text--muted`,viewBox=`0 0 66 66`)
+          title Loading
+          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+    .m-form__item.-mb--2(style="max-width:20rem")
+      label.a-label(for="spinner-input-02") Label
+      .m-input__wrapper
+        input(type="text", class="a-input -sm", placeholder="Placeholder", value="Sample Text", id="spinner-input-02")
+        svg(class=`a-spinner -text--muted -xs`,viewBox=`0 0 66 66`)
+          title Loading
+          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+    .m-form__item.-mb--2(style="max-width:20rem")
+      label.a-label(for="spinner-input-03") Label
+      .m-input__wrapper
+        input(type="text", class="a-input -lg", placeholder="Placeholder", value="Sample Text", id="spinner-input-03")
+        svg(class=`a-spinner -text--muted -sm--2`,viewBox=`0 0 66 66`)
+          title Loading
+          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+  :code(lang="html")
+    <!-- Medium (Base) -->
+    <div class="m-form__item">
+      <label class="a-label" for="spinner-input-01">Label</label>
+      <div class="m-input__wrapper">
+        <input type="text" class="a-input" placeholder="Placeholder" value="Sample text" id="spinner-input-01">
+        <svg class="a-spinner -text--muted" viewBox="0 0 66 66">
+          <title>Loading</title>
+          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+        </svg>
+      </div>
+    </div>
+    <!-- Small -->
+    <div class="m-form__item">
+      <label class="a-label" for="spinner-input-02">Label</label>
+      <div class="m-input__wrapper">
+        <input type="text" class="a-input -sm" placeholder="Placeholder" value="Sample text" id="spinner-input-02">
+        <svg class="a-spinner -text--muted -xs" viewBox="0 0 66 66">
+          <title>Loading</title>
+          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+        </svg>
+      </div>
+    </div>
+    <!-- Large -->
+    <div class="m-form__item">
+      <label class="a-label" for="spinner-input-03">Label</label>
+      <div class="m-input__wrapper">
+        <input type="text" class="a-input -lg" placeholder="Placeholder" value="Sample text" id="spinner-input-03">
+        <svg class="a-spinner -text--muted -sm--2" viewBox="0 0 66 66">
+          <title>Loading</title>
+          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+        </svg>
+        </div>
+      </div>
+    </div>
+
+h2 Spinner Sizes
+p.-text
+  | By default, spinners render at 16x16px (<code>-sm</code>).
+p.-text
+  | Apply size classes to render spinners larger or smaller: <code>-xs</code>,
+  | <code>-sm</code>, <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
+.example.-mb--3
+  .-p--3
+    .a-grid.-align-items--end
+      each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
+        div.-p--2
+          svg(class=`a-spinner -${size} -m--1`,viewBox=`0 0 66 66`)
+            title Loading
+            circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+          p.-text.-text--center= size
+  :code(lang="html")
+    <!-- -xs : 12x12px -->
+    <svg class="a-spinner -xs" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <!-- -sm : 16x16px -->
+    <svg class="a-spinner -sm" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <!-- -sm--2 : 20x20px -->
+    <svg class="a-spinner -sm--2" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <!-- -sm--3 : 24x24px -->
+    <svg class="a-spinner -sm--3" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <!-- -md : 32x32px -->
+    <svg class="a-spinner -md" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <!-- -lg : 64x64px -->
+    <svg class="a-spinner -lg" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <!-- -xl : 96x96px -->
+    <svg class="a-spinner -xl" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    </div>
+    <!-- -xxl : 128x128px -->
+    <svg class="a-spinner -xxl" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+
+h2 Spinner Colors
+p.-text
+  | Use <a href="../../utilities/text">text utilities</a> such as <code>-text--primary</code>
+  | and <code>-text--muted</code> to change the color of any spinner.
+.example.-mb--3
+  .a-grid.-noGutter
+    .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap
+      each type in ['text--primary', 'text--success', 'text--warning', 'text--danger', 'text--muted']
+        div.-p--2.-text--center
+          svg(class=`a-spinner -${type} -md -m--3`,viewBox=`0 0 66 66`)
+            title Loading
+            circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+            p.-text(class=`-${type} -px--1`)
+              = `-${type}`
+    .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap.-bg--black
+      each type in ['text--secondary', 'text--light']
+        if (type === 'text--secondary')
+          div.-p--2.-text--center
+            svg(class=`a-spinner -text--secondary -md -m--3`,viewBox=`0 0 66 66`)
+              title Loading
+              circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+              p.-text.-text--secondary.-px--1 -text--secondary
+        else if (type === 'text--light')
+          div.-p--2.-text--center
+            svg(class=`a-spinner -text--light -md -m--3`,viewBox=`0 0 66 66`)
+              title Loading
+              circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+              p.-text.-text--light.-px--1 -text--light
+  :code(lang="html")
+    <!-- For light backgrounds -->
+    <svg class="a-spinner -text--primary" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <svg class="a-spinner -text--success" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <svg class="a-spinner -text--warning" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <svg class="a-spinner -text--danger" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <svg class="a-spinner -text--muted" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <!-- For dark backgrounds -->
+    <svg class="a-spinner -text--secondary" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>
+    <svg class="a-spinner -text--light" viewBox="0 0 66 66">
+      <title>Loading</title>
+      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+    </svg>

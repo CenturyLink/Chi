@@ -1,0 +1,51 @@
+h2 Examples
+p.-text
+  | To render a progress element, use the <code>progress</code> HTML5 tag.
+  | Set the value attribute to the amount of work complete. The default color is green.
+
+h3 Base
+.example.-mb--3
+  .-p--3
+    .a-label 0%
+    progress(class='-mb--1', value='0', max='100')
+    .a-label 50%
+    progress(class='-mb--1', value='50', max='100')
+    .a-label 100%
+    progress(class='-mb--1', value='100', max='100')
+  :code(lang="html")
+    <!-- 0% -->
+    <div class="a-label">0%</div>
+    <progress value="0" max="100" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></progress>
+    <!-- 50% -->
+    <div class="a-label">50%</div>
+    <progress value="50" max="100" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></progress>
+    <!-- 100% -->
+    <div class="a-label">100%</div>
+    <progress value="100" max="100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></progress>
+
+h3 States
+p.-text
+  | To indicate a progress state, use the class <code>-info</code>, <code>-warning</code>, <code>-danger</code>, or <code>-success</code>.
+.example.-mb--3
+  .-p--3
+    .a-label Danger
+    progress.-danger(class='-mb--1', value='75', max='100')
+    .a-label Info
+    progress.-info(class='-mb--1', value='75', max='100')
+    .a-label Warning
+    progress.-warning(class='-mb--1', value='75', max='100')
+    .a-label Success
+    progress.-success(class='-mb--1', value='75', max='100')
+  :code(lang="html")
+    <!-- Danger -->
+    <div class="a-label">Danger</div>
+    <progress class="-danger" value="75" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>
+    <!-- Info -->
+    <div class="a-label">Info</div>
+    <progress class="-info" value="75" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>
+    <!-- Warning -->
+    <div class="a-label">Warning</div>
+    <progress class="-warning" value="75" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>
+    <!-- Success -->
+    <div class="a-label">Success</div>
+    <progress class="-success" value="75" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>

@@ -1,0 +1,299 @@
+.m-alert.-info.-my--3
+  i.m-alert__icon.a-icon.icon-circle-info
+  .m-alert__content
+    p.m-alert__text This component requires Javascript to render consistently between browsers.
+
+h2 Examples
+p.-text
+  | To render a range slider, apply the class <code>a-input</code> to an <code>input type="range"</code>.
+  | Range widths are fluid by default.
+
+h3 Base
+.example.-mb--3
+  .-p--3
+    .m-form__item
+      label(class="a-label", for="range01") Range label
+      input(class="a-input", type="range", id="range01")
+  :code(lang="html")
+    <div class="m-form__item">
+      <label class="a-label" for="range01">Range label</label>
+      <input class="a-input" type="range" id="range01">
+    </div>
+
+h3 Disabled
+.example.-mb--3
+  .-p--3
+    .m-form__item
+      label(class="a-label", for="range02") Range label
+      input(class="a-input", type="range", id="range02" disabled)
+  :code(lang="html")
+    <div class="m-form__item">
+      <label class="a-label" for="range02">Range label</label>
+      <input class="a-input" type="range" id="range02" disabled>
+    </div>
+
+h3 Multiple Labels
+.example.-mb--3
+  .-p--3
+    .m-form__item
+      label(class="a-label", for="range03") Range label
+      .m-input__wrapper.-d--flex
+        span.-text.-mr--2 200GB
+        input(type="range", class="a-input", id="range03")
+        span.-text.-ml--2 5TB
+  :code(lang="html")
+    <div class="m-form__item">
+      <label class="a-label" for="range03">Range label</label>
+      <div class="m-input__wrapper -d--flex">
+        <span class="-text">200GB</span>
+        <input class="a-input -mx--2" type="range" id="range03">
+        <span class="-text">5TB</span>
+      </div>
+    </div>
+
+h2 Achieve consistent rendering
+p.-text
+  | As webkit browsers don't support an active track bar, we've created our own.
+  | You will either need a JavaScript solution for moving the <code>a-input__thumb</code>
+  | element and changing the size of <code>a-input__progress</code>, or
+  | you can use Chi's JavaScript library as it provides this functionality out of the box.
+
+h3 Base
+.example.-mb--3
+  .-p--3
+    .m-form__item
+      label(class="a-label", for="range04") Range label
+      .m-input__wrapper
+        input(class="a-input", type="range", id="range04")
+        .a-input__progress
+        .a-input__thumb
+  :code(lang="html")
+    <div class="m-form__item">
+      <label class="a-label" for="range04">Range label</label>
+      <div class="m-input__wrapper">
+        <input class="a-input" type="range" id="range04">
+        <div class="a-input__progress"></div>
+        <div class="a-input__thumb"></div>
+      </div>
+    </div>
+
+h3 Disabled
+.example.-mb--3
+  .-p--3
+    .m-form__item
+      label(class="a-label", for="range05") Range label
+      .m-input__wrapper
+        input(class="a-input", type="range", id="range05", disabled)
+        .a-input__progress
+        .a-input__thumb
+  :code(lang="html")
+    <div class="m-form__item">
+      <label class="a-label" for="range05">Range label</label>
+      <div class="m-input__wrapper">
+        <input class="a-input" type="range" id="range05" disabled>
+        <div class="a-input__progress"></div>
+        <div class="a-input__thumb"></div>
+      </div>
+    </div>
+
+h3 Multiple Labels
+.example.-mb--3
+  .-p--3
+    .m-form__item
+      label(class="a-label", for="range06") Range label
+      .m-input__wrapper.-d--flex
+        span.-text.-mr--2 200GB
+        .m-input__wrapper.-w--100
+          input(type="range", class="a-input", id="range06")
+          .a-input__progress
+          .a-input__thumb
+        span.-text.-ml--2 5TB
+  :code(lang="html")
+    <div class="m-form__item">
+      <label class="a-label" for="range06">Range label</label>
+      <div class="m-input__wrapper -d--flex">
+        <span class="-text -mr--2">200GB</span>
+        <div class="m-input__wrapper -w--100">
+          <input class="a-input" type="range" id="range06">
+          <div class="a-input__progress"></div>
+          <div class="a-input__thumb"></div>
+        </div>
+        <span class="-text -ml--2">5TB</span>
+      </div>
+    </div>
+
+h2 Radio buttons as range slider
+p.-text
+  | Enable range sliders to function like radio buttons.
+
+.example.-mb--3
+  .-p--3
+    .m-form__item
+      label(class="a-label", for="range07") Range label
+      .m-input__wrapper
+        input(class="a-input", type="range", min="0", max="4", step="1", id="range07")
+        .a-input__tick-bar
+          div
+            .a-input__tick
+            .a-input__tick-label Monthly
+          div
+            .a-input__tick
+            .a-input__tick-label 1 year
+          div
+            .a-input__tick
+            .a-input__tick-label 2 years
+          div
+            .a-input__tick
+            .a-input__tick-label 3 years
+          div
+            .a-input__tick
+            .a-input__tick-label > 3 years
+
+  :code(lang="html")
+    <div class="m-form__item">
+      <label class="a-label" for="range07">Range label</label>
+      <div class="m-input__wrapper">
+        <input class="a-input" type="range" min="0" max="4" step="1" id="range07">
+        <div class="a-input__tick-bar">
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">Monthly</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">1 year</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">2 years</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">3 years</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">&gt; 3 years</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+h3 Disabled
+.example.-mb--3
+  .-p--3
+    .m-form__item
+      label(class="a-label", for="range08") Range label
+      .m-input__wrapper
+        input(class="a-input", type="range", min="0", max="4", step="1", id="range08", disabled)
+        .a-input__tick-bar
+          div
+            .a-input__tick
+            .a-input__tick-label Monthly
+          div
+            .a-input__tick
+            .a-input__tick-label 1 year
+          div
+            .a-input__tick
+            .a-input__tick-label 2 years
+          div
+            .a-input__tick
+            .a-input__tick-label 3 years
+          div
+            .a-input__tick
+            .a-input__tick-label > 3 years
+  :code(lang="html")
+    <div class="m-form__item">
+      <label class="a-label" for="range08">Range label</label>
+      <div class="m-input__wrapper">
+        <input class="a-input" type="range" min="0" max="4" step="1" id="range08" disabled>
+        <div class="a-input__tick-bar">
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">Monthly</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">1 year</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">2 years</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">3 years</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">&gt; 3 years</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+h3 Consistent rendering in WebKit browsers
+.example.-mb--3
+  .-p--3
+    .m-form__item
+      label(class="a-label", for="range09") Range label
+      .m-input__wrapper
+        input(class="a-input", type="range", min="0", max="4", step="1", id="range09")
+        .a-input__tick-bar
+          div
+            .a-input__tick
+            .a-input__tick-label Monthly
+          div
+            .a-input__tick
+            .a-input__tick-label 1 year
+          div
+            .a-input__tick
+            .a-input__tick-label 2 years
+          div
+            .a-input__tick
+            .a-input__tick-label 3 years
+          div
+            .a-input__tick
+            .a-input__tick-label > 3 years
+        .a-input__progress
+        .a-input__thumb
+
+  :code(lang="html")
+    <div class="m-form__item">
+      <label class="a-label" for="range09">Range label</label>
+      <div class="m-input__wrapper">
+        <input class="a-input" type="range" min="0" max="4" step="1" id="range09">
+        <div class="a-input__tick-bar">
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">Monthly</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">1 year</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">2 years</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">3 years</div>
+          </div>
+          <div>
+            <div class="a-input__tick"></div>
+            <div class="a-input__tick-label">&gt; 3 years</div>
+          </div>
+        </div>
+        <div class="a-input__progress"></div>
+        <div class="a-input__thumb"></div>
+      </div>
+    </div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.rangeSlider(document.querySelectorAll('.m-input__wrapper > input[type="range"]'));
+    }
+  );
