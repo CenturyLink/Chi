@@ -114,7 +114,61 @@ p.-text Render a <strong>-xl</strong> size by applying the modifier class <code>
 :example(lang="html"):html-beautify:pug include ./_row-xl.pug
 
 h2 Selectable
-:example(lang="html"):html-beautify:pug include ./_selectable.pug
+:example(lang="html")
+  <table class="a-table">
+    <thead>
+        <tr>
+            <th>
+              <div class="-lh--1">
+                <input class="a-checkbox__input" type="checkbox" id="chk-1" />
+                <label class="a-checkbox__label" for="chk-1">
+                  <div class="-sr--only">Label</div>
+                </label>
+              </div>
+            </th>
+            <th class="-sorted -ascending">
+                <div>Name</div>
+            </th>
+            <th>ID</th>
+            <th>Last login</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="-row--info">
+            <td class="-lh--1">
+              <input class="a-checkbox__input" type="checkbox" id="chk-1-01" checked="checked" />
+              <label class="a-checkbox__label" for="chk-1-01">
+                <div class="-sr--only">Label</div>
+              </label>
+            </td>
+            <td>David Navarro</td>
+            <td>david</td>
+            <td>Dec 18, 2017 3:26 PM</td>
+        </tr>
+        <tr>
+            <td class="-lh--1">
+              <input class="a-checkbox__input" type="checkbox" id="chk-1-02" />
+              <label class="a-checkbox__label" for="chk-1-02">
+                <div class="-sr--only">Label</div>
+              </label>
+            </td>
+            <td>Diego Sanjuan</td>
+            <td>diego</td>
+            <td>Dec 18, 2017 2:38 AM</td>
+        </tr>
+        <tr>
+            <td class="-lh--1">
+              <input class="a-checkbox__input" type="checkbox" id="chk-1-03" />
+              <label class="a-checkbox__label" for="chk-1-03">
+                  <div class="-sr--only">Label</div>
+              </label>
+            </td>
+            <td>Manuel Martin</td>
+            <td>manuel</td>
+            <td>Nov 5, 2017 10:15 AM</td>
+        </tr>
+    </tbody>
+  </table>
 
 h2 Scrollable
 p.-text
