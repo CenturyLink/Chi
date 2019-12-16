@@ -9,6 +9,7 @@ mixin str(cid, name, id, date, checked)
         checked=checked
       )
       label.a-checkbox__label(for=cid)
+        .-sr--only Label
     td= name
     td= id
     td= date
@@ -65,6 +66,7 @@ mixin table(row, column, selectable)
                 div.-lh--1
                   input.a-checkbox__input(type="checkbox", id=`chk-1`)
                   label.a-checkbox__label(for=`chk-1`)
+                    .-sr--only Label
               th(class=(`-sorted -${column}`))
                 div Name
               th ID
@@ -74,6 +76,7 @@ mixin table(row, column, selectable)
                 div.-lh--1
                   input.a-checkbox__input(type="checkbox", id=`chk-1`)
                   label.a-checkbox__label(for=`chk-1`)
+                    .-sr--only Label
               th(class=(`-sorted -${column}`))
                 div Name
               th ID
@@ -83,6 +86,7 @@ mixin table(row, column, selectable)
               div.-lh--1
                 input.a-checkbox__input(type="checkbox", id=`chk-1`)
                 label.a-checkbox__label(for=`chk-1`)
+                  .-sr--only Label
             th Name
             th ID
             th Last login
