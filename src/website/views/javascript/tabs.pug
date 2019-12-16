@@ -218,7 +218,7 @@ p.-text
   .-p--3.-pb--4
     ul.a-tabs.a-navigationExample
       li.m-dropdown.-active
-        a.m-dropdown__trigger(href='#') Active tab, click me
+        a.m-dropdown__trigger(href='#') Active tab
         .m-dropdown__menu
           a.m-dropdown__menu-item(href='#navigationExample') Elem 1
           a.m-dropdown__menu-item(href='#navigationExample') Elem 2
@@ -248,6 +248,7 @@ p.-text
           a.m-dropdown__menu-item(href='#navigationExample') Element 1
           a.m-dropdown__menu-item(href='#navigationExample') Element 2
           a.m-dropdown__menu-item(href='#navigationExample') Element 3
+    #navigationExample.-sr--only Example Tab content
   ul.a-tabs.-ml--3
     li.-active
       a(href='#example-1__horizontal-html') HTML
@@ -334,7 +335,7 @@ section.a-table.a-table__options.-bordered.-my--3
               code= 'overflowMenuLabel'
           td
             div
-              code= 'More...'
+              code= 'See more...'
           td
             div
               | Text for the overflow menu dropdown.
@@ -350,7 +351,7 @@ section.a-table.a-table__options.-bordered.-my--3
               | Makes the browser wait for the sliding border to move to the clicked link before following links.
               | It only works with common links.
 
-h3#navigationExampleOverflowMenu Overflow Menu
+h3 Overflow Menu
 p.-text
   | Overflow menu encloses overflowed tabs into a dropdown menu at the end of the navigation component. Any
   | instantiation of a new horizontal Navigation component will automatically support this Overflow Menu. You can
@@ -395,6 +396,7 @@ ul.a-tabs
           a(href='#navigationExampleOverflowMenu') Tab Link
         li
           a(href='#navigationExampleOverflowMenu') Tab Link
+      #navigationExampleOverflowMenu.-sr--only Example Tab content
     ul.a-tabs.-ml--3
       li.-active
         a(href='#example-3__enabled-html') HTML
@@ -562,17 +564,17 @@ ul.a-tabs
     .-p--3.-pb--4
       ul.a-tabs.a-navigationExample.a-customExample
         li.-active
-          a(href='/') Tab Link
+          a(href='/tab=1') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='/tab=2') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='/tab=3') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='/tab=4') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='/tab=5') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='/tab=6') Tab Link
     ul.a-tabs.-ml--3
       li.-active
         a(href='#example-4__enabled-html') HTML
@@ -585,19 +587,19 @@ ul.a-tabs
             <a href="/">Tab Link</a>
           </li>
           <li>
-            <a href="/">Tab Link</a>
+            <a href="/tab=1">Tab Link</a>
           </li>
           <li>
-            <a href="/">Tab Link</a>
+            <a href="/tab=2">Tab Link</a>
           </li>
           <li>
-            <a href="/">Tab Link</a>
+            <a href="/tab=3">Tab Link</a>
           </li>
           <li>
-            <a href="/">Tab Link</a>
+            <a href="/tab=4">Tab Link</a>
           </li>
           <li>
-            <a href="/">Tab Link</a>
+            <a href="/tab=5">Tab Link</a>
           </li>
         </ul>
     #example-4__enabled-script.a-tabs-panel
@@ -612,17 +614,17 @@ ul.a-tabs
     .-p--3.-pb--4
       ul.a-tabs.a-navigationExample.a-customExample
         li.-active
-          a(href='/') Tab Link
+          a(href='/tab=1') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='/tab=2') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='/tab=3') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='/tab=4') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='/tab=5') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='/tab=6') Tab Link
     ul.a-tabs.-ml--3
       li.-active
         a(href='#example-4__disabled-html') HTML
@@ -635,19 +637,19 @@ ul.a-tabs
             <a href="/">Tab Link</a>
           </li>
           <li>
-            <a href="/">Tab Link</a>
+            <a href="/tab=1">Tab Link</a>
           </li>
           <li>
-            <a href="/">Tab Link</a>
+            <a href="/tab=2">Tab Link</a>
           </li>
           <li>
-            <a href="/">Tab Link</a>
+            <a href="/tab=3">Tab Link</a>
           </li>
           <li>
-            <a href="/">Tab Link</a>
+            <a href="/tab=4">Tab Link</a>
           </li>
           <li>
-            <a href="/">Tab Link</a>
+            <a href="/tab=5">Tab Link</a>
           </li>
         </ul>
     #example-4__disabled-script.a-tabs-panel
@@ -658,7 +660,7 @@ ul.a-tabs
           {waitForAnimations: false}
         );
 
-h3#navigationExampleComponentsContained Components contained
+h3 Components contained
 p.-text
   | As navigation component is built from other primitive Chi components, most of these components behavior can be
   | replicated on the navigation component.
@@ -691,6 +693,7 @@ p.-text
           a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Element 1
           a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Element 2
           a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Element 3
+    #navigationExampleComponentsContained.-sr--only Example Tab content
   :code(lang='html')
     <ul class="a-tabs">
       <li class="m-dropdown -active">

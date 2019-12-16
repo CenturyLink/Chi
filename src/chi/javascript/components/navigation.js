@@ -16,7 +16,7 @@ import {Component} from "../core/component";
 const COMPONENT_TYPE = "navigation";
 const DEFAULT_CONFIG = {
   overflowMenu: true,
-  overflowMenuLabel: 'More...',
+  overflowMenuLabel: 'See more...',
   waitForAnimations: false,
 };
 
