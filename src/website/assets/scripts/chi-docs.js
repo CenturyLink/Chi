@@ -54,8 +54,6 @@ function addId(item) {
 
   if (item.nodeName === 'H3') {
     processedAnchors.latestH3 = id;
-  } else if (processedAnchors.latestH3) {
-    id = processedAnchors.latestH3 + '-' + id;
   }
   let counter = 1;
   while (processedAnchors.all.indexOf(id) !== -1) {
