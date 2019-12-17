@@ -2,6 +2,8 @@
 title: Sidenav
 ---
 
+#exampleHashTarget.-position--fixed-top.-sr--only
+
 - var example=0;
 - var menuItems=[1, 2, 3, 4];
 - var drawerMenuItems=['A', 'B', 'C', 'D']
@@ -42,7 +44,7 @@ h3(id=`example-${example}`) Base
               ul.m-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#docs-container`)
+                    a(href=`#exampleHashTarget`)
                       if index % 4 < 2
                         .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                         p.m-sidenav__description Description for title a in a drawer inside a menu.
@@ -299,7 +301,7 @@ h3(id=`example-${example}`) Autoclose
               ul.m-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#docs-container`)
+                    a(href=`#exampleHashTarget`)
                       if index % 4 < 2
                         .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                         p.m-sidenav__description Description for title a in a drawer inside a menu.
