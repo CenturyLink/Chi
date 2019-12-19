@@ -17,7 +17,8 @@ rules:
     - convention: '^(chi|([amo]-[a-z][a-zA-Z0-9]*(__[a-z][a-zA-Z0-9]*)*)|(-[a-z][-a-zA-Z0-9]*))$'
     - convention-explanation: 'class must be a valid A-B__E (A=[a|m|o] atomicIdentifier, B=blockName, E=elementName) or -M (M=modifierName) identifier'
   clean-import-paths:
-    - leading-underscore: false
+    - 1
+    - leading-underscore: true
     - filename-extension: false
   declarations-before-nesting: 2
   empty-args:
@@ -55,7 +56,7 @@ rules:
     - include: true
   max-file-line-count:
     - 2
-    - length: 500
+    - length: 1000
   max-line-length:
     - 2
     - length: 120
