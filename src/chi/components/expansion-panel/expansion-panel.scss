@@ -121,7 +121,7 @@ $transition-duration: 0.2s;
 
   &.-bordered {
     background-color: white;
-    border: .0625rem solid $border-color;
+    border: 0.0625rem solid $border-color;
     border-radius: $border-radius;
     box-shadow: map-get($shadow, 1);
     margin-bottom: 0.5rem;
@@ -170,7 +170,7 @@ $transition-duration: 0.2s;
     padding-top: 1.25rem;
 
     &:not(:last-child) {
-      border-bottom: .0625rem solid $border-color;
+      border-bottom: 0.0625rem solid $border-color;
     }
 
     & > .m-epanel__header+.m-epanel__collapse:not(.-ml--0) {
@@ -179,7 +179,7 @@ $transition-duration: 0.2s;
 
     .m-epanel__body {
       background-color: white;
-      border: .0625rem solid $border-color;
+      border: 0.0625rem solid $border-color;
       border-radius: $border-radius;
       box-shadow: map-get($shadow, 1);
       margin-bottom: 0.5rem;

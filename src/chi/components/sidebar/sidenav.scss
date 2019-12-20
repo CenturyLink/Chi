@@ -43,11 +43,11 @@ $sidenav-lg-width: 12.5rem;
       align-items: center;
       display: flex;
       flex-direction: column;
-      font-size: .8125rem;
+      font-size: 0.8125rem;
       font-weight: 400;
       justify-content: center;
       min-height: 3rem;
-      padding: .5rem;
+      padding: 0.5rem;
 
       > *:not(.a-icon) {
         display: none;
@@ -58,7 +58,7 @@ $sidenav-lg-width: 12.5rem;
 
     &.-active {
       > a {
-        box-shadow: inset .125rem 0 0 $primary-color;
+        box-shadow: inset 0.125rem 0 0 $primary-color;
         color: $primary-color;
         font-weight: 600;
       }
@@ -137,7 +137,7 @@ $sidenav-lg-width: 12.5rem;
 
           &.-active {
             > a {
-              box-shadow: inset .125rem 0 0 $secondary-color;
+              box-shadow: inset 0.125rem 0 0 $secondary-color;
               color: $secondary-color;
             }
           }
@@ -201,7 +201,7 @@ $sidenav-lg-width: 12.5rem;
   }
 
   .m-drawer {
-    box-shadow: 0.5rem 0 0.5rem -0.5rem rgba(set-color(black),.2);
+    box-shadow: 0.5rem 0 0.5rem -0.5rem rgba(set-color(black), 0.2);
     position: absolute;
     z-index: $zindex-fixed;
 
@@ -229,7 +229,7 @@ $sidenav-lg-width: 12.5rem;
 
   &.-sliding .a-sliding-border {
     display: block;
-    transition: .5s cubic-bezier(.35,0,.25,1);
+    transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
   }
 
   @include respond-to(md) {
@@ -250,7 +250,7 @@ $sidenav-lg-width: 12.5rem;
         }
 
         .a-icon {
-          margin-bottom: .25rem;
+          margin-bottom: 0.25rem;
         }
       }
     }
@@ -266,7 +266,7 @@ $sidenav-lg-width: 12.5rem;
           flex-direction: column;
           justify-content: center;
           min-height: 3rem;
-          padding-left: .5rem;
+          padding-left: 0.5rem;
 
           > *:not(.a-icon) {
             display: none;
@@ -302,8 +302,8 @@ $sidenav-lg-width: 12.5rem;
         min-height: 4rem;
 
         @include respond-to(lg) {
-          font-size: .8125rem;
-          padding-left: .5rem;
+          font-size: 0.8125rem;
+          padding-left: 0.5rem;
         }
 
         > *:not(.a-icon) {

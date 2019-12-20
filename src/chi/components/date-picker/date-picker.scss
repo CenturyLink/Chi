@@ -39,7 +39,7 @@ $mondayStartingWeek: (
       background-color: $brand-color;
       border-radius: $border-radius;
       color: white;
-      &.-today:after {
+      &.-today::after {
         background-color: white;
       }
     }
@@ -47,14 +47,14 @@ $mondayStartingWeek: (
     &.-inactive {
       color: rgba(set-color(grey, 90), 0.4);
       pointer-events: none;
-      &.-today:after {
+      &.-today::after {
         background-color: rgba(set-color(grey, 90), 0.4);
       }
     }
 
     &.-today {
       position: relative;
-      &:after {
+      &::after {
         background-color: $brand-color;
         border-radius: 2px;
         bottom: 3px;
@@ -67,7 +67,8 @@ $mondayStartingWeek: (
       }
     }
 
-    &:not(.-inactive):not(.-active):hover, &:not(.-inactive):not(.-active).-hover {
+    &:not(.-inactive):not(.-active):hover,
+    &:not(.-inactive):not(.-active).-hover {
       background-color: (set-color(grey, 20));
       border-radius: 2px;
     }
@@ -92,7 +93,8 @@ $mondayStartingWeek: (
     width: calc(100% * 5 / 7);
 
     &-row {
-      .prev, .next {
+      .prev,
+      .next {
         text-align: center;
         width: calc(100% / 7);
         &.-disabled {
@@ -112,7 +114,8 @@ $mondayStartingWeek: (
     margin-left: 0;
   }
 
-  &__days, &__day-names {
+  &__days,
+  &__day-names {
     display: flex;
     flex-wrap: wrap;
   }
@@ -153,19 +156,23 @@ $mondayStartingWeek: (
   }
 
   &__datepicker.-no-arrow, &__input.-no-arrow {
-    &.m-popover--top, &[x-placement^="top"] {
+    &.m-popover--top,
+    &[x-placement^='top'] {
       margin-bottom: 1px;
     }
 
-    &.m-popover--right, &[x-placement^="right"] {
+    &.m-popover--right,
+    &[x-placement^='right'] {
       margin-left: 1px;
     }
 
-    &.m-popover--bottom, &[x-placement^="bottom"] {
+    &.m-popover--bottom,
+    &[x-placement^='bottom'] {
       margin-top: 1px;
     }
 
-    &.m-popover--left, &[x-placement^="left"] {
+    &.m-popover--left,
+    &[x-placement^='left'] {
       margin-right: 1px;
     }
   }

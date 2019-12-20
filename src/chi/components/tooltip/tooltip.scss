@@ -19,9 +19,9 @@ $paddingVertical: 0.25rem;
   max-width: 20rem;
   opacity: 0;
   overflow: hidden;
-  padding: $paddingVertical .5rem;
+  padding: $paddingVertical 0.5rem;
   pointer-events: none;
-  transition: opacity .2s, transform .2s;
+  transition: opacity 0.2s, transform 0.2s;
 
   &.-active {
     opacity: 1;
