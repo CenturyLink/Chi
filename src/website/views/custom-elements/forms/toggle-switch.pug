@@ -8,39 +8,39 @@ p.-text Toggle switches are used to switch between two possible states.
 
 h2 Examples
 p.-text
-  | To render a toggle switch, use the tag <code>chi-toggle-switch</code>.
+  | To render a toggle switch, use the tag <code>chi-switch</code>.
 
 h3 Base
 .example.-mb--3
   .-p--3
     .m-form__item
-      chi-toggle-switch(toggle-id='toggle1', label='Toggle')
+      chi-switch(switch-id='toggle1', label='Label')
   :code(lang="html")
-    <chi-toggle-switch toggle-id="toggle1" label="Toggle"></chi-toggle-switch>
+    <chi-switch switch-id="toggle1" label="Label"></chi-switch>
 
 h3 Disabled
 .example.-mb--3
   .-p--3
     .m-form__item
-      chi-toggle-switch(toggle-id='toggle2', label='Toggle', disabled)
+      chi-switch(switch-id='toggle2', label='Label', disabled)
   :code(lang="html")
-    <chi-toggle-switch toggle-id="toggle2" label="Toggle" disabled></chi-toggle-switch>
+    <chi-switch switch-id="toggle2" label="Label" disabled></chi-switch>
 
 h3 Stacked
 p.-text
   | Group toggle switches in <code>m-form__item</code> for easy stacking.
 .example.-mb--3
   .-p--3
-    .m-form__item.-mb--2
-      chi-toggle-switch(toggle-id='toggle3', label='Toggle')
     .m-form__item
-      chi-toggle-switch(toggle-id='toggle4', label='Toggle')
+      chi-switch(switch-id='toggle3', label='Label')
+    .m-form__item
+      chi-switch(switch-id='toggle4', label='Label')
   :code(lang="html")
-    <div class="m-form__item -mb--2">
-      <chi-toggle-switch toggle-id="toggle3" label="Toggle"></chi-toggle-switch>
+    <div class="m-form__item">
+      <chi-switch switch-id="toggle3" label="Label"></chi-switch>
     </div>
     <div class="m-form__item">
-      <chi-toggle-switch toggle-id="toggle4" label="Toggle"></chi-toggle-switch>
+      <chi-switch switch-id="toggle4" label="Label"></chi-switch>
     </div>
 
 h3 Inline
@@ -48,17 +48,17 @@ p.-text
   | Apply the <code>-inline</code> class to <code>m-form__item</code> for displaying toggle switches inline.
 .example.-mb--3
   .-p--3.-d--flex
-    .m-form__item.-inline.-mr--3
-      chi-toggle-switch(toggle-id='toggle5', label='Toggle')
     .m-form__item.-inline
-      chi-toggle-switch(toggle-id='toggle6', label='Toggle')
+      chi-switch(switch-id='toggle5', label='Label')
+    .m-form__item.-inline
+      chi-switch(switch-id='toggle6', label='Label')
   :code(lang="html")
-    <div class="m-form__item -inline -mr--3">
-      <chi-toggle-switch toggle-id="toggle5" label="Toggle"></chi-toggle-switch>
+    <div class="m-form__item -inline">
+      <chi-switch switch-id="toggle5" label="Label"></chi-switch>
     </div>
     <div class="m-form__item -inline">
-      <chi-toggle-switch toggle-id="toggle6" label="Toggle"></chi-toggle-switch>
+      <chi-switch switch-id="toggle6" label="Label"></chi-switch>
     </div>
 
 h2 Additional usage details
-:stencilDoc(name='chi-toggle-switch')
+:stencilDoc(name='chi-switch')

@@ -1,27 +1,56 @@
 @import '_variables';
 @import '_mixins';
 
+.m-form__item {
+  &.-row {
+    label {
+      &.a-switch {
+        margin-bottom: 0.25rem;
+      }
+    }
+  }
+
+  &.-list {
+    label {
+      &.a-switch {
+        .a-switch__label {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+}
+
 .a-switch {
   display: flex;
-  line-height: $line-height;
-  margin-bottom: 0;
+  line-height: $line-height-small;
+  margin: 0.25rem 0;
   position: relative;
 
-  & > span {
-    &.a-switch__label {
-      font-size: $text;
-      font-weight: normal;
-      margin-bottom: 0;
-      margin-right: 0.5rem;
-    }
+  .a-switch__label {
+    align-items: flex-start;
+    display: flex;
+    font-size: $text;
+    font-weight: normal;
+    line-height: $line-height-small;
+    margin-bottom: 0;
+    margin-right: 0.5rem;
+    padding: 0.125rem 0;
+  }
+
+  .a-switch__content + .a-switch__label {
+    margin-left: 0.5rem;
+    margin-right: 0;
   }
 
   & > span {
     &.a-switch__content {
+      display: flex;
+      flex-direction: column;
       font-size: $text-smallest;
       line-height: $line-height-small;
 
-      & > .a-switch__faux {
+      & > .a-switch__thumb {
         background-color: set-color(grey, 50);
         border: 0;
         border-radius: 12px;
@@ -47,6 +76,7 @@
           opacity: 1;
           position: absolute;
           top: 0.125rem;
+          transition: left 0.2s cubic-bezier(1, 0.38, 0, 1.19) 0.1s;
           width: 1.25rem;
         }
       }
@@ -61,43 +91,58 @@
     }
   }
 
+  &.-label--hide {
+    .a-switch__label {
+      clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+      clip: rect(1px, 1px, 1px, 1px);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+  }
+
   input {
     &[type='checkbox'] {
       &.a-switch__input {
         &:checked {
           & + span {
             &.a-switch__content {
-              & > .a-switch__faux {
+              & > .a-switch__thumb {
                 background-color: $brand-color;
 
-                &::before {
+                &::after {
                   background-color: set-color(white);
                   border: 0;
                   border-radius: 12px;
                   content: '';
                   display: block;
                   height: 1.25rem;
+                  left: 1.625rem;
                   margin: 0;
                   opacity: 1;
                   position: absolute;
-                  right: 0.125rem;
                   top: 0.125rem;
+                  transition: left 0.2s cubic-bezier(1, 0.38, 0, 1.19) 0.1s;
                   width: 1.25rem;
                 }
-
-                &::after {
+                /*
+                &::before {
                   background-color: transparent;
                   border-bottom: 2px solid set-color(white);
                   border-radius: 0;
                   border-right: 2px solid set-color(white);
-                  content: " ";
+                  content: '';
                   height: 0.75rem;
                   left: 0.625rem;
                   position: absolute;
                   top: 0.25rem;
                   transform: rotate(45deg);
+                  transition: left 0.2s cubic-bezier(1, 0.38, 0, 1.19) 0.1s;
                   width: 0.45rem;
                 }
+                */
               }
 
               & > .a-switch__on {
@@ -114,7 +159,7 @@
           &.-focus {
             & + span {
               &.a-switch__content {
-                & > .a-switch__faux {
+                & > .a-switch__thumb {
                   box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
                 }
               }
@@ -126,7 +171,7 @@
         &.-focus {
           & + span {
             &.a-switch__content {
-              & > .a-switch__faux {
+              & > .a-switch__thumb {
                 box-shadow: 0 0 0 0.25rem rgba(set-color(grey, 50), 0.25);
               }
             }
@@ -136,8 +181,8 @@
         &[disabled] {
           & + span {
             &.a-switch__content {
-              & > .a-switch__faux {
-                opacity: 0.65;
+              & > .a-switch__thumb {
+                opacity: 0.6;
                 pointer-events: none;
               }
             }
@@ -150,130 +195,130 @@
 
 input {
   &[type='checkbox'] {
-    &.a-input,
+    &.-toggle,
     &.a-switch__input {
-      &.-toggle {
-        border: 0;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        overflow: hidden;
-        padding: 0;
-        pointer-events: auto;
-        position: absolute;
-        width: 1px;
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      overflow: hidden;
+      padding: 0;
+      pointer-events: auto;
+      position: absolute;
+      width: 1px;
 
-        & + label {
-          background-color: set-color(grey, 50);
+      & + label {
+        background-color: set-color(grey, 50);
+        border: 0;
+        border-radius: 12px;
+        cursor: pointer;
+        display: inline-block;
+        height: 1.5rem;
+        line-height: $line-height;
+        margin-bottom: 0;
+        margin-right: 0;
+        position: relative;
+        transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        width: 3.5rem;
+
+        &::before {
+          background-color: set-color(white);
+          background-image: none;
           border: 0;
           border-radius: 12px;
-          cursor: pointer;
-          display: inline-block;
+          content: '';
+          display: block;
+          height: 1.25rem;
+          left: 0.125rem;
+          margin: 0;
+          opacity: 1;
+          position: absolute;
+          top: 0.125rem;
+          transition: left 0.2s cubic-bezier(1, 0.38, 0, 1.19) 0.1s;
+          width: 1.25rem;
+        }
+
+        &::after {
+          background-image: none;
+          border: 0;
+          color: set-color(white);
+          content: 'OFF';
+          display: block;
+          font-size: $text-smallest;
+          font-weight: bold;
           height: 1.5rem;
-          line-height: $line-height;
-          margin-bottom: 0;
-          margin-right: 0;
-          position: relative;
-          transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-          width: 3.5rem;
+          left: 1.5625rem;
+          opacity: 1;
+          position: absolute;
+          top: 0;
+          transform: scale(1);
+          transition: left 0.2s ease-in 0.1s;
+          word-wrap: normal;
+        }
+
+        & + label {
+          margin-left: 0.5rem;
+        }
+      }
+
+
+
+      &:checked {
+        & + label {
+          background-color: $brand-color;
 
           &::before {
-            background-color: set-color(white);
-            background-image: none;
-            border: 0;
-            border-radius: 12px;
-            content: '';
-            display: block;
-            height: 1.25rem;
-            left: 0.125rem;
-            margin: 0;
-            opacity: 1;
-            position: absolute;
-            top: 0.125rem;
-            transition: left 0.2s cubic-bezier(1, 0.38, 0, 1.19) 0.1s;
-            width: 1.25rem;
+            left: 2.125rem;
           }
 
           &::after {
-            background-image: none;
-            border: 0;
-            color: set-color(white);
-            content: 'OFF';
-            display: block;
-            font-size: $text-smallest;
-            font-weight: bold;
-            height: 1.5rem;
-            left: 1.5625rem;
-            opacity: 1;
-            position: absolute;
-            top: 0;
-            transform: scale(1);
-            transition: left 0.2s ease-in 0.1s;
-            word-wrap: normal;
+            content: 'ON';
+            left: 0.625rem;
           }
-
-          & + label {
-            margin-left: 0.5rem;
-          }
-        }
-
-
-
-        &:checked {
-          & + label {
-            background-color: $brand-color;
-
-            &::before {
-              left: 2.125rem;
-            }
-
-            &::after {
-              content: 'ON';
-              left: 0.625rem;
-            }
-          }
-
-          &:focus,
-          &.-focus {
-            & + label {
-              box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
-            }
-          }
-        }
-
-        &[disabled] + label {
-          opacity: 0.65;
-          pointer-events: none;
-        }
-
-        &[disabled] ~ label {
-          color: set-color(grey, 50);
         }
 
         &:focus,
         &.-focus {
           & + label {
-            box-shadow: 0 0 0 0.25rem rgba(set-color(grey, 50), 0.25);
+            box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
+          }
+        }
+      }
 
-            &::before {
-              box-shadow: none;
-            }
+      &[disabled] + .a-switch__label {
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      &[disabled] ~ .a-switch__label {
+        color: set-color(grey, 70);
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      &:focus,
+      &.-focus {
+        & + label {
+          box-shadow: 0 0 0 0.25rem rgba(set-color(grey, 50), 0.25);
+
+          &::before {
+            box-shadow: none;
+          }
+        }
+      }
+
+      &.-hideLabel {
+        & + label {
+          width: 2.5rem;
+
+          &::after {
+            display: none;
           }
         }
 
-        &.-noText {
+        &:checked {
           & + label {
-            width: 2.5rem;
-
-            &::after {
-              display: none;
-            }
-          }
-
-          &:checked {
-            & + label {
-              &::before {
-                left: 1.125rem;
-              }
+            &::before {
+              left: 1.125rem;
             }
           }
         }

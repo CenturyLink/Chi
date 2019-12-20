@@ -28,7 +28,11 @@ $border: 0.0625rem;
 
   &.-inline {
     display: inline-flex;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
+    
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   &.-list {
@@ -88,7 +92,7 @@ $border: 0.0625rem;
   &.-inline {
     align-items: center;
     display: inline-flex;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
   }
 
   &.-list {

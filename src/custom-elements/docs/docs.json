@@ -1917,7 +1917,7 @@
     {
       "filePath": "src/components/toggle-switch/toggle-switch.tsx",
       "encapsulation": "scoped",
-      "tag": "chi-toggle-switch",
+      "tag": "chi-switch",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -1973,6 +1973,23 @@
           "required": false
         },
         {
+          "name": "hideLabel",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "hide-label",
+          "reflectToAttr": true,
+          "docs": "used to disable the toggle labels.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "label",
           "type": "string",
           "mutable": false,
@@ -1989,27 +2006,10 @@
           "required": false
         },
         {
-          "name": "noText",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "no-text",
-          "reflectToAttr": true,
-          "docs": "used to disable the toggle labels.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "toggleId",
+          "name": "switchId",
           "type": "string",
           "mutable": false,
-          "attr": "toggle-id",
+          "attr": "switch-id",
           "reflectToAttr": true,
           "docs": "to set the toggle switch id.",
           "docsTags": [],

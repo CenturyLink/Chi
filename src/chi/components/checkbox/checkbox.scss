@@ -92,22 +92,24 @@ input {
       }
 
       &:checked {
-        & + label {
-          &::before {
-            background-color: $brand-color;
-            border-color: $brand-color;
+        &:not(.-toggle) {
+          & + label {
+            &::before {
+              background-color: $brand-color;
+              border-color: $brand-color;
+            }
+
+            &::after {
+              background-image: url('icon-check.svg');
+              transform: scale(1);
+            }
           }
 
-          &::after {
-            background-image: url('icon-check.svg');
-            transform: scale(1);
-          }
-        }
-
-        &:focus,
-        &.-focus {
-          & + label::before {
-            box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
+          &:focus,
+          &.-focus {
+            & + label::before {
+              box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
+            }
           }
         }
       }
