@@ -24,7 +24,7 @@ describe('Toggle Switch', () => {
   });
 
   it('Toggle switch should be included inside the custom element', () => {
-    assertion('@toggle1', 'have.class', 'a-switch__input -toggle');
+    assertion('@toggle1', 'have.class', 'a-switch__input');
   });
 
   it('Disabled toggle switch should be have appropriate attribute', () => {
