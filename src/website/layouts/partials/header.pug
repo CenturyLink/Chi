@@ -1,8 +1,29 @@
 header.o-header.-inverse.docs-header.-z--20
   #version-check.-w--100
   script.
+    function versionCompare(v1, v2) {
+      var v1parts = v1.split('.'),
+          v2parts = v2.split('.');
+
+      for (var i = 0; i < v1parts.length; ++i) {
+          if (v2parts.length == i) {
+              return false;
+          }
+
+          if (v1parts[i] == v2parts[i]) {
+              continue;
+          } else if (v1parts[i] > v2parts[i]) {
+              return false;
+          } else {
+              return true;
+          }
+      }
+
+      return false;
+    }
+
     if (localStorage.getItem("chiVersions") !== null) {
-      if (JSON.parse(localStorage.getItem("chiVersions"))[0] !== window.chiCurrentVersion) {
+      if (versionCompare(window.chiCurrentVersion, JSON.parse(localStorage.getItem("chiVersions"))[0])) {
         var chiVersions = JSON.parse(localStorage.getItem("chiVersions"));
         var docsContainerSelector = document.getElementById('docs-container');
         var chiVersionCheckSelector = document.getElementById('version-check');
@@ -14,7 +35,6 @@ header.o-header.-inverse.docs-header.-z--20
         chiVersionCheckSelector.appendChild(newVersionMessage, chiVersionCheckSelector.childNodes[0]);
         docsContainerSelector.classList.add("outdated-version");
       }
-
     }
   div.a-divider.-colorbar
   nav.o-header__content
@@ -41,7 +61,7 @@ header.o-header.-inverse.docs-header.-z--20
           a.m-dropdown__menu-item(href='https://assets.ctl.io/chi/1.2.4') v1.2.4
       script.
         if (localStorage.getItem("chiVersions") !== null) {
-          if (JSON.parse(localStorage.getItem("chiVersions"))[0] !== window.chiCurrentVersion) {
+          if (versionCompare(window.chiCurrentVersion, JSON.parse(localStorage.getItem("chiVersions"))[0])) {
             var drop = document.getElementById('versionDropdown');
             var versions = JSON.parse(localStorage.getItem("chiVersions"));
             var docsContainerSelector = document.getElementById('docs-container');
