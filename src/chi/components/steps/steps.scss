@@ -40,14 +40,14 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
     & > .a-steps__icon {
       &::before {
-        content: "\e942";
+        content: '\e942';
         font-family: 'chi';
         font-size: 0.75rem;
         position: absolute;
       }
 
       &::after {
-        content: "";
+        content: '';
         display: block;
         font-size: 1.3rem;
         font-style: normal;
@@ -78,7 +78,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       & > .a-steps__icon {
         margin-left: 0.125rem;
         &::after {
-          content: "\e934";
+          content: '\e934';
           font-family: 'chi' !important;
         }
       }
@@ -176,12 +176,12 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
           content: counter(step);
           counter-increment: step;
           font-family: $font-family;
-          font-size: .6875rem;
+          font-size: 0.6875rem;
           font-weight: 600;
         }
 
         &::after {
-          content: "\e928";
+          content: '\e928';
           font-family: 'chi' !important;
         }
       }
@@ -189,7 +189,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       &.-completed {
         & > .a-steps__icon {
           &::before {
-            content: "";
+            content: '';
           }
         }
       }
@@ -197,14 +197,14 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       &.-active {
         & > .a-steps__icon {
           &::after {
-            content: "\e934";
+            content: '\e934';
           }
         }
 
         & ~ li {
           & > .a-steps__icon {
             &::after {
-              content: "\e934";
+              content: '\e934';
             }
           }
         }

@@ -307,7 +307,7 @@
 
   &.-sliding > li.a-sliding-border {
     display: block;
-    transition: .5s cubic-bezier(.35,0,.25,1);
+    transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
   }
 
   &.-lg, &.-large { //Legacy code: -large to be removed.

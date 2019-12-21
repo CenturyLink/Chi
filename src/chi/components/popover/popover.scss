@@ -24,7 +24,7 @@ $popover-border-width: 0.0625rem;
   z-index: $zindex-popover;
 
   &.-animated {
-    transition: opacity .2s, transform .2s;
+    transition: opacity 0.2s, transform 0.2s;
   }
 
   &.-active {
@@ -104,14 +104,15 @@ $popover-border-width: 0.0625rem;
     &::after {
       border-color: transparent;
       border-style: solid;
-      content: "";
+      content: '';
       display: block;
       position: absolute;
     }
   }
 
   &:not(.-no-arrow) {
-    &.m-popover--top, &[x-placement^="top"] {
+    &.m-popover--top,
+    &[x-placement^='top'] {
       margin-bottom: calc(#{$popover-arrow-height} + 0.25rem);
 
       .a-arrow,
@@ -140,7 +141,8 @@ $popover-border-width: 0.0625rem;
       }
     }
 
-    &.m-popover--right, &[x-placement^="right"] {
+    &.m-popover--right,
+    &[x-placement^='right'] {
       margin-left: calc(#{$popover-arrow-height} + 0.25rem);
 
       .a-arrow,
@@ -172,7 +174,8 @@ $popover-border-width: 0.0625rem;
       }
     }
 
-    &.m-popover--bottom, &[x-placement^="bottom"] {
+    &.m-popover--bottom,
+    &[x-placement^='bottom'] {
       margin-top: calc(#{$popover-arrow-height} + 0.25rem);
 
 
@@ -202,7 +205,8 @@ $popover-border-width: 0.0625rem;
       }
     }
 
-    &.m-popover--left, &[x-placement^="left"] {
+    &.m-popover--left,
+    &[x-placement^='left'] {
       margin-right: calc(#{$popover-arrow-height} + 0.25rem);
 
 

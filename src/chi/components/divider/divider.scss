@@ -28,7 +28,7 @@
     &::before {
       background-color: $primary;
       bottom: 0;
-      content: "";
+      content: '';
       height: inherit;
       position: absolute;
       right: 50%;
@@ -38,7 +38,7 @@
     &::after {
       background-color: $secondary;
       bottom: 0;
-      content: "";
+      content: '';
       height: inherit;
       position: absolute;
       right: 0;

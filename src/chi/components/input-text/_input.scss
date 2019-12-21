@@ -66,7 +66,8 @@ input {
             height: map-get(map-get(map-get($sizes, $type), icons), height);
             width: map-get(map-get(map-get($sizes, $type), icons), width);
 
-            &[class^="icon-"], &[class*=" icon-"] {
+            &[class^='icon-'],
+            &[class*=' icon-'] {
               font-size: map-get(map-get($sizes, $type), font-size);
               line-height: map-get(map-get($sizes, $type), line-height);
             }

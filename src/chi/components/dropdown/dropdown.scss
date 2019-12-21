@@ -40,9 +40,9 @@
 
   &__trigger {
 
-    &:not([data-position^="left"]) {
+    &:not([data-position^='left']) {
 
-      &:after {
+      &::after {
         content: '\e91e';
         display: block;
         font-family: 'chi';
@@ -54,50 +54,52 @@
         width: 0.75rem;
       }
 
-      &.-lg:after, &.-large:after {//Legacy code: -large to be removed.
+      &.-lg::after,
+      &.-large::after {//Legacy code: -large to be removed.
         height: 1.5rem;
         line-height: 1.7rem;
         margin-left: 1rem;
       }
 
-      &.-sm:after, &.-small:after { //Legacy code: -small to be removed.
+      &.-sm::after,
+      &.-small::after { //Legacy code: -small to be removed.
         font-size: 0.5rem;
         height: 1rem;
         margin-left: 0.5rem;
       }
 
-      &[data-position^="top"]:after {
+      &[data-position^='top']::after {
         transform: rotate(-180deg);
       }
 
-      &[data-position^="right"]:after {
+      &[data-position^='right']::after {
         transform: rotate(-90deg);
       }
 
       &.-animate {
-        &:after {
+        &::after {
           transition: transform 0.2s ease-in-out;
         }
 
         &.-active {
-          &:after {
+          &::after {
             transform: rotate(180deg);
           }
 
-          &[data-position^="right"]:after {
+          &[data-position^='right']::after {
             transform: rotate(90deg);
           }
 
-          &[data-position^="top"]:after {
+          &[data-position^='top']::after {
             transform: rotate(0deg);
           }
         }
       }
     }
 
-    &[data-position^="left"] {
+    &[data-position^='left'] {
 
-      &:before {
+      &::before {
         content: '\e91e';
         display: block;
         font-family: 'chi';
@@ -110,24 +112,26 @@
         width: 0.75rem;
       }
 
-      &.-lg:before, &.-large:before { //Legacy code: -large to be removed.
+      &.-lg::before,
+      &.-large::before { //Legacy code: -large to be removed.
         height: 1.5rem;
         line-height: 1.7rem;
         margin-right: 1rem;
       }
 
-      &.-sm:before, &.-small:before { //Legacy code: -small to be removed.
+      &.-sm::before,
+      &.-small::before { //Legacy code: -small to be removed.
         font-size: 0.5rem;
         height: 1rem;
         margin-right: 0.5rem;
       }
 
       &.-animate {
-        &:before {
+        &::before {
           transition: transform 0.2s ease-in-out;
         }
 
-        &.-active:before {
+        &.-active::before {
           transform: rotate(270deg);
         }
       }
@@ -270,25 +274,25 @@
 .m-dropdown__hover:active {
 
   .m-dropdown__trigger {
-    &:not([data-position^="left"]) {
+    &:not([data-position^='left']) {
       &.-animate {
-        &:after {
+        &::after {
           transform: rotate(180deg);
         }
 
-        &[data-position^="right"]:after {
+        &[data-position^='right']::after {
           transform: rotate(90deg);
         }
 
-        &[data-position^="top"]:after {
+        &[data-position^='top']::after {
           transform: rotate(0deg);
         }
       }
     }
 
-    &[data-position^="left"] {
+    &[data-position^='left'] {
       &.-animate {
-        &:before {
+        &::before {
           transform: rotate(270deg);
         }
       }
@@ -314,8 +318,7 @@ a.m-dropdown__menu-item {
   &:hover:not(.-disabled):not(.-active),
   &.-hover:not(.-disabled):not(.-active),
   &:focus:not(.-disabled):not(.-active),
-  &.focus:not(.-disabled):not(.-active)
-  {
+  &.focus:not(.-disabled):not(.-active) {
     background-color: set-color(grey, 20);
   }
 }
