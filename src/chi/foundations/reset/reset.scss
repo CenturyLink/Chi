@@ -1,4 +1,4 @@
-@import 'normalize.css/normalize';
+@import 'normalize.css/normalize'; // sass-lint:disable-line clean-import-paths
 
 *, // sass-lint:disable-line no-universal-selectors
 ::after,
@@ -19,7 +19,7 @@ body {
 .-sr--only {
   border: 0;
   clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
+  clip: rect(1px, 1px, 1px, 1px); // sass-lint:disable-line no-duplicate-properties
   height: 1px;
   margin: -1px;
   overflow: hidden;

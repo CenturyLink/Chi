@@ -5,28 +5,30 @@
   line-height: $line-height;
   position: relative;
 
-  input[type='checkbox'] {
-    &.a-input,
-    &.a-checkbox__input {
-      & + label {
-        &.a-checkbox__label {
-          font-size: $text;
-          font-weight: normal;
-          line-height: $line-height-small;
-          margin-bottom: 0;
-          margin-right: 0;
-          padding-left: 1.5rem;
+  input {
+    &[type='checkbox'] {
+      &.a-input,
+      &.a-checkbox__input {
+        & + label {
+          &.a-checkbox__label {
+            font-size: $text;
+            font-weight: normal;
+            line-height: $line-height-small;
+            margin-bottom: 0;
+            margin-right: 0;
+            padding-left: 1.5rem;
 
-          &::before {
-            left: 0;
-            position: absolute;
-            top: 0.125rem;
-          }
+            &::before {
+              left: 0;
+              position: absolute;
+              top: 0.125rem;
+            }
 
-          &::after {
-            left: 0.1875rem;
-            position: absolute;
-            top: 0.3125rem;
+            &::after {
+              left: 0.1875rem;
+              position: absolute;
+              top: 0.3125rem;
+            }
           }
         }
       }

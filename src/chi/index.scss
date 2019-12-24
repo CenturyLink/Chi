@@ -1,6 +1,7 @@
 @import '_variables';
 @import '_mixins';
 
+// sass-lint:disable clean-import-paths
 @import 'foundations/fonts/fonts';
 @import 'components/icons/webfont-font-face';
 @import 'foundations/reset/reset';
@@ -64,3 +65,4 @@
   @import 'utilities/spacing';
   @import 'utilities/zindex';
 }
+// sass-lint:enable clean-import-paths

@@ -21,7 +21,8 @@ $sidenav-lg-width: 12.5rem;
     }
   }
 
-  &__list, &__drawer-list {
+  &__list,
+  &__drawer-list {
     list-style: none;
     margin-bottom: 0;
     margin-top: 0;
@@ -61,19 +62,21 @@ $sidenav-lg-width: 12.5rem;
         box-shadow: inset 0.125rem 0 0 $primary-color;
         color: $primary-color;
         font-weight: 600;
-      }
-    }
 
-    & > a:hover {
-      color: $primary-color
+        &:hover {
+          color: $primary-color;
+        }
+      }
     }
 
     &.-active > a { // List item -active. The one that has the left 3px navy border.
       background-color: set-color(grey, 20);
     }
 
-    & > a.-active { // Drawer shown, will sets active the trigger (this anchor element)
-      background-color: set-color(grey, 20);
+    & > a {
+      &.-active { // Drawer shown, will sets active the trigger (this anchor element)
+        background-color: set-color(grey, 20);
+      }
     }
 
     &:not(.-active) > a:not(.-active):hover {
@@ -81,8 +84,12 @@ $sidenav-lg-width: 12.5rem;
     }
   }
 
-  &.-sliding .m-sidenav__list > li.-active > a {
-    box-shadow: none;
+  &.-sliding {
+    &.m-sidenav__list > li {
+      &.-active > a {
+        box-shadow: none;
+      }
+    }
   }
 
   &__drawer-list {
@@ -126,10 +133,11 @@ $sidenav-lg-width: 12.5rem;
   &.-inverse {
     .m-sidenav {
       &__content {
-          background-color: set-color(black);
+        background-color: set-color(black);
       }
 
-      &__list, &__drawer-list {
+      &__list,
+      &__drawer-list {
         > li {
           > a {
             color: $text-white;
@@ -146,8 +154,10 @@ $sidenav-lg-width: 12.5rem;
             background-color: set-color(mint, 100);
           }
 
-          & > a.-active { // Drawer shown, will sets active the trigger (this anchor element)
-            background-color: set-color(mint, 100);
+          & > a {
+            &.-active { // Drawer shown, will sets active the trigger (this anchor element)
+              background-color: set-color(mint, 100);
+            }
           }
         }
       }
@@ -211,10 +221,10 @@ $sidenav-lg-width: 12.5rem;
 
     &.-left {
       left: $sidenav-sm-width;
-    }
 
-    &.-left.-animated:not(.-active) {
-      left: -$drawer-width + $sidenav-sm-width;
+      &.-animated:not(.-active) {
+        left: -$drawer-width + $sidenav-sm-width;
+      }
     }
   }
 
@@ -227,24 +237,30 @@ $sidenav-lg-width: 12.5rem;
     z-index: $zindex-fixed + 2;
   }
 
-  &.-sliding .a-sliding-border {
-    display: block;
-    transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+  &.-sliding {
+    .a-sliding-border {
+      display: block;
+      transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+    }
   }
 
   @include respond-to(md) {
     width: $sidenav-md-width;
-    .m-drawer.-left {
-      left: $sidenav-md-width;
 
-      &.-animated:not(.-active) {
-        left: -$drawer-width + $sidenav-md-width;
+    .m-drawer {
+      &.-left {
+        left: $sidenav-md-width;
+
+        &.-animated:not(.-active) {
+          left: -$drawer-width + $sidenav-md-width;
+        }
       }
     }
 
     &__list > li {
       > a {
         min-height: 4rem;
+
         > *:not(.a-icon) {
           display: block;
         }
@@ -283,10 +299,10 @@ $sidenav-lg-width: 12.5rem;
     .m-drawer {
       &.-left {
         left: $sidenav-sm-width;
-      }
 
-      &.-left.-animated:not(.-active) {
-        left: -$drawer-width + $sidenav-sm-width;
+        &.-animated:not(.-active) {
+          left: -$drawer-width + $sidenav-sm-width;
+        }
       }
     }
   }
@@ -320,10 +336,10 @@ $sidenav-lg-width: 12.5rem;
     .m-drawer {
       &.-left {
         left: $sidenav-md-width;
-      }
 
-      &.-left.-animated:not(.-active) {
-        left: -$drawer-width + $sidenav-md-width;
+        &.-animated:not(.-active) {
+          left: -$drawer-width + $sidenav-md-width;
+        }
       }
     }
   }
@@ -353,10 +369,10 @@ $sidenav-lg-width: 12.5rem;
     .m-drawer {
       &.-left {
         left: $sidenav-lg-width;
-      }
 
-      &.-left.-animated:not(.-active) {
-        left: -$drawer-width + $sidenav-lg-width;
+        &.-animated:not(.-active) {
+          left: -$drawer-width + $sidenav-lg-width;
+        }
       }
     }
   }
@@ -364,24 +380,46 @@ $sidenav-lg-width: 12.5rem;
 
 /* IE11 CSS hack */
 @media only screen and (max-width: $lg-breakpoint -1) and (-ms-high-contrast: none) {
-  .m-sidenav__list li a {
-    height: 4rem;
+  .m-sidenav__list {
+    li {
+      a {
+        height: 4rem;
+      }
+    }
   }
 }
 
 @media only screen and (min-width: $lg-breakpoint) and (-ms-high-contrast: none) {
-  .m-sidenav__list li a {
-    height: 3rem;
+  .m-sidenav__list {
+    li {
+      a {
+        height: 3rem;
+      }
+    }
   }
 }
 
 @media only screen and (-ms-high-contrast: none) {
-  .m-sidenav.-sm .m-sidenav__list li a,
-  .m-sidenav.-md .m-sidenav__list li a {
-    height: 4rem;
-  }
+  .m-sidenav {
+    &.-sm,
+    &.-md {
+      .m-sidenav__list {
+        li {
+          a {
+            height: 4rem;
+          }
+        }
+      }
+    }
 
-  .m-sidenav.-lg .m-sidenav__list li a {
-    height: 3rem;
+    &.-lg {
+      .m-sidenav__list {
+        li {
+          a {
+            height: 3rem;
+          }
+        }
+      }
+    }
   }
 }

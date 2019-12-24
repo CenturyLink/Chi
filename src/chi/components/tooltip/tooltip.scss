@@ -1,8 +1,8 @@
 @import '_variables';
 @import '_mixins';
 
-$multiLineEllipsisMax: 3;
-$paddingVertical: 0.25rem;
+$multi-line-ellipsis-max: 3;
+$padding-vertical: 0.25rem;
 
 .a-tooltip {
   -moz-osx-font-smoothing: grayscale;
@@ -15,11 +15,11 @@ $paddingVertical: 0.25rem;
   font-size: $text;
   font-weight: normal;
   line-height: $line-height-small;
-  max-height: $line-height-small * $multiLineEllipsisMax + $paddingVertical * 2;
+  max-height: $line-height-small * $multi-line-ellipsis-max + $padding-vertical * 2;
   max-width: 20rem;
   opacity: 0;
   overflow: hidden;
-  padding: $paddingVertical 0.5rem;
+  padding: $padding-vertical 0.5rem;
   pointer-events: none;
   transition: opacity 0.2s, transform 0.2s;
 

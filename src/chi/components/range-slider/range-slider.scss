@@ -238,17 +238,23 @@ input {
 }
 
 // sass-lint:enable no-vendor-prefixes
-.a-inputWrapper > input[type='range'].a-input,
-.m-input__wrapper > input[type='range'].a-input {
-  display: block;
-  position: relative;
-  z-index: 1;
+.a-inputWrapper,
+.m-input__wrapper {
+  & > input {
+    &[type='range'] {
+      .a-input {
+        display: block;
+        position: relative;
+        z-index: 1;
+      }
+    }
+  }
 }
 
 .a-input__tick {
   border-left: 1px solid set-color(grey, 30);
   height: 0.25rem;
-  margin: -($input-range-height - $input-range-track-height)/2 auto 0;
+  margin: -($input-range-height - $input-range-track-height) / 2 auto 0;
 
   &-bar {
     display: flex;
@@ -261,15 +267,19 @@ input {
       font-size: $text;
       position: relative;
 
-      &:first-child .a-input__tick-label {
-        left: -0.625rem;
-        text-align: left;
+      &:first-child {
+        .a-input__tick-label {
+          left: -0.625rem;
+          text-align: left;
+        }
       }
 
-      &:last-child .a-input__tick-label {
-        left: initial;
-        right: -0.625rem;
-        text-align: right;
+      &:last-child {
+        .a-input__tick-label {
+          left: initial;
+          right: -0.625rem;
+          text-align: right;
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 @import '_variables';
 @import '_mixins';
 
-$sundayStartingWeek: (
+$sunday-starting-week: (
   sun: 0,
   mon: 1,
   tue: 2,
@@ -10,7 +10,7 @@ $sundayStartingWeek: (
   fri: 5,
   sat: 6
 );
-$mondayStartingWeek: (
+$monday-starting-week: (
   mon: 0,
   tue: 1,
   wed: 2,
@@ -20,9 +20,11 @@ $mondayStartingWeek: (
   sun: 6
 );
 
-.a-inputWrapper.-disabled,
-.m-input__wrapper.-disabled {
-  pointer-events: none;
+.a-inputWrapper,
+.m-input__wrapper {
+  &.-disabled {
+    pointer-events: none;
+  }
 }
 
 .m-datepicker {
@@ -39,6 +41,7 @@ $mondayStartingWeek: (
       background-color: $brand-color;
       border-radius: $border-radius;
       color: white;
+
       &.-today::after {
         background-color: white;
       }
@@ -47,6 +50,7 @@ $mondayStartingWeek: (
     &.-inactive {
       color: rgba(set-color(grey, 90), 0.4);
       pointer-events: none;
+
       &.-today::after {
         background-color: rgba(set-color(grey, 90), 0.4);
       }
@@ -54,6 +58,7 @@ $mondayStartingWeek: (
 
     &.-today {
       position: relative;
+
       &::after {
         background-color: $brand-color;
         border-radius: 2px;
@@ -68,9 +73,11 @@ $mondayStartingWeek: (
     }
 
     &:not(.-inactive):not(.-active):hover,
-    &:not(.-inactive):not(.-active).-hover {
-      background-color: (set-color(grey, 20));
-      border-radius: 2px;
+    &:not(.-inactive):not(.-active) {
+      &.-hover {
+        background-color: (set-color(grey, 20));
+        border-radius: 2px;
+      }
     }
 
     &:not(.-inactive) {
@@ -97,6 +104,7 @@ $mondayStartingWeek: (
       .next {
         text-align: center;
         width: calc(100% / 7);
+
         &.-disabled {
           color: rgba(set-color(grey, 90), 0.2);
           pointer-events: none;
@@ -127,22 +135,22 @@ $mondayStartingWeek: (
   }
 
   &.-week-starts-on-sun {
-    @each $weekDay, $columnStart in $sundayStartingWeek {
-      &.-month-starts-on-#{$weekDay} {
+    @each $week-day, $column-start in $sunday-starting-week {
+      &.-month-starts-on-#{$week-day} {
 
         .m-datepicker__day:first-child {
-          margin-left: calc(100% * #{$columnStart} / 7);
+          margin-left: calc(100% * #{$column-start} / 7);
         }
       }
     }
   }
 
   &.-week-starts-on-mon {
-    @each $weekDay, $columnStart in $mondayStartingWeek {
-      &.-month-starts-on-#{$weekDay} {
+    @each $week-day, $column-start in $monday-starting-week {
+      &.-month-starts-on-#{$week-day} {
 
         .m-datepicker__day:first-child {
-          margin-left: calc(100% * #{$columnStart} / 7);
+          margin-left: calc(100% * #{$column-start} / 7);
         }
       }
     }
@@ -150,30 +158,32 @@ $mondayStartingWeek: (
 }
 
 .m-popover {
-
   .m-datepicker {
     padding: 0.5rem 1rem;
   }
 
-  &__datepicker.-no-arrow, &__input.-no-arrow {
-    &.m-popover--top,
-    &[x-placement^='top'] {
-      margin-bottom: 1px;
-    }
+  &__datepicker,
+  &__input {
+    &.-no-arrow {
+      &.m-popover--top,
+      &[x-placement^='top'] {
+        margin-bottom: 1px;
+      }
 
-    &.m-popover--right,
-    &[x-placement^='right'] {
-      margin-left: 1px;
-    }
+      &.m-popover--right,
+      &[x-placement^='right'] {
+        margin-left: 1px;
+      }
 
-    &.m-popover--bottom,
-    &[x-placement^='bottom'] {
-      margin-top: 1px;
-    }
+      &.m-popover--bottom,
+      &[x-placement^='bottom'] {
+        margin-top: 1px;
+      }
 
-    &.m-popover--left,
-    &[x-placement^='left'] {
-      margin-right: 1px;
+      &.m-popover--left,
+      &[x-placement^='left'] {
+        margin-right: 1px;
+      }
     }
   }
 }

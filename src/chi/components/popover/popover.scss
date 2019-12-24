@@ -61,10 +61,12 @@ $popover-border-width: 0.0625rem;
       }
     }
 
-    .a-btn.-close {
-      position: absolute;
-      right: 0.5rem;
-      top: 0.5rem;
+    .a-btn {
+      &.-close {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+      }
     }
   }
 

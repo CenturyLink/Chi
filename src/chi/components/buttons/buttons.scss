@@ -61,13 +61,13 @@ $sizes: (
     font-size: 0.75rem,
     line-height: 1rem,
     padding: (0.25rem - $border) (0.5rem - $border),
-    icons: (
-      height: 0.75rem,
-      padding: 0.375rem - $border,
-      width: 0.75rem,
-      line-height: 0.75rem,
-      font-size: 0.75rem,
-    )
+      icons: (
+        height: 0.75rem,
+        padding: 0.375rem - $border,
+        width: 0.75rem,
+        line-height: 0.75rem,
+        font-size: 0.75rem,
+      )
   ),
   // Legacy code start
   small: (
@@ -75,13 +75,13 @@ $sizes: (
     font-size: 0.75rem,
     line-height: 1rem,
     padding: (0.25rem - $border) (0.5rem - $border),
-    icons: (
-      height: 0.75rem,
-      padding: 0.375rem - $border,
-      width: 0.75rem,
-      line-height: 0.75rem,
-      font-size: 0.75rem,
-    )
+      icons: (
+        height: 0.75rem,
+        padding: 0.375rem - $border,
+        width: 0.75rem,
+        line-height: 0.75rem,
+        font-size: 0.75rem,
+      )
   ),
   // Legacy code end
   md: (
@@ -89,26 +89,26 @@ $sizes: (
     font-size: 0.875rem,
     line-height: 1rem,
     padding: (0.5rem - $border) (1rem - $border),
-    icons: (
-      height: 1rem,
-      padding: 0.5rem - $border,
-      width: 1rem,
-      line-height: 1rem,
-      font-size: 1rem,
-    )
+      icons: (
+        height: 1rem,
+        padding: 0.5rem - $border,
+        width: 1rem,
+        line-height: 1rem,
+        font-size: 1rem,
+      )
   ),
   lg: (
     border-radius: 1.25rem,
     font-size: 0.875rem,
     line-height: 1.25rem,
     padding: (0.625rem - $border) (1.5rem - $border),
-    icons: (
-      height: 1rem,
-      padding: 0.75rem - $border,
-      width: 1rem,
-      line-height: 1rem,
-      font-size: 1rem,
-    )
+      icons: (
+        height: 1rem,
+        padding: 0.75rem - $border,
+        width: 1rem,
+        line-height: 1rem,
+        font-size: 1rem,
+      )
   ),
   // Legacy code start
   large: (
@@ -116,13 +116,13 @@ $sizes: (
     font-size: 0.875rem,
     line-height: 1.25rem,
     padding: (0.625rem - $border) (1.5rem - $border),
-    icons: (
-      height: 1rem,
-      padding: 0.75rem - $border,
-      width: 1rem,
-      line-height: 1rem,
-      font-size: 1rem,
-    )
+      icons: (
+        height: 1rem,
+        padding: 0.75rem - $border,
+        width: 1rem,
+        line-height: 1rem,
+        font-size: 1rem,
+      )
   ),
   // Legacy code end
   xl: (
@@ -130,13 +130,13 @@ $sizes: (
     font-size: 0.875rem,
     line-height: 1.25rem,
     padding: (0.875rem - $border) (1.5rem - $border),
-    icons: (
-      height: 1rem,
-      padding: 1rem - $border,
-      width: 1rem,
-      line-height: 1rem,
-      font-size: 1rem,
-    )
+      icons: (
+        height: 1rem,
+        padding: 1rem - $border,
+        width: 1rem,
+        line-height: 1rem,
+        font-size: 1rem,
+      )
   )
 );
 
@@ -322,8 +322,10 @@ $sizes: (
           color: set-color(white);
         }
 
-        .a-spinner__icon .path {
-          stroke: set-color(white);
+        .a-spinner__icon {
+          .path {
+            stroke: set-color(white);
+          }
         }
       }
 
@@ -491,18 +493,18 @@ $sizes: (
   }
 
   @each $color-definition in $state-colors {
-    $button-text-color: map_get(nth($color-definition, 2), button-text-color);
-    $color: map_get(nth($color-definition, 2), color);
-    $tone: map_get(nth($color-definition, 2), tone);
-    $tone-focus: map_get(nth($color-definition, 2), tone-focus);
-    $tone-focus-shadow: map_get(nth($color-definition, 2), tone-hover);
-    $tone-hover: map_get(nth($color-definition, 2), tone-hover);
+    $button-text-color: map-get(nth($color-definition, 2), button-text-color);
+    $color: map-get(nth($color-definition, 2), color);
+    $tone: map-get(nth($color-definition, 2), tone);
+    $tone-focus: map-get(nth($color-definition, 2), tone-focus);
+    $tone-focus-shadow: map-get(nth($color-definition, 2), tone-hover);
+    $tone-hover: map-get(nth($color-definition, 2), tone-hover);
     $type: nth($color-definition, 1);
 
     @if( $type == 'inverse') {
       &.-#{$type} {
         background-color: white;
-        border: $border solid map_get(nth($color-definition, 2), button-text-color);
+        border: $border solid map-get(nth($color-definition, 2), button-text-color);
         box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
         color: $text-color;
 
@@ -732,7 +734,7 @@ $sizes: (
     } @else if($type == 'light') {
       &.-#{$type} {
         background-color: white;
-        border: $border solid map_get(nth($color-definition, 2), button-text-color);
+        border: $border solid map-get(nth($color-definition, 2), button-text-color);
         box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
         color: $text-color;
 
@@ -966,8 +968,10 @@ $sizes: (
           color: inherit;
         }
 
-        .a-spinner__icon .path {
-          stroke: set-color(white);
+        .a-spinner__icon {
+          .path {
+            stroke: set-color(white);
+          }
         }
 
         &:hover,
@@ -998,8 +1002,10 @@ $sizes: (
           border: $border solid set-color($color, $tone);
           color: set-color($color, $tone);
 
-          .a-spinner__icon .path {
-            stroke: set-color($color, $tone);
+          .a-spinner__icon {
+            .path {
+              stroke: set-color($color, $tone);
+            }
           }
 
           &:hover,
@@ -1019,8 +1025,10 @@ $sizes: (
               }
             }
 
-            .a-spinner__icon .path {
-              stroke: set-color(white);
+            .a-spinner__icon {
+              .path {
+                stroke: set-color(white);
+              }
             }
           }
 
@@ -1053,8 +1061,10 @@ $sizes: (
                 }
               }
 
-              .a-spinner__icon .path {
-                stroke: set-color(white);
+              .a-spinner__icon {
+                .path {
+                  stroke: set-color(white);
+                }
               }
             }
           }

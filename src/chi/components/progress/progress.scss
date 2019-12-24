@@ -20,6 +20,7 @@ $states: (
 );
 
 progress {
+  // sass-lint:disable-block no-vendor-prefixes
   /* Reset the default appearance */
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -54,6 +55,7 @@ progress {
 
   @each $state in map-keys($states) {
     &.-#{$state} {
+      color: map-get(map-get($states, $state), background-color);
 
       &::-webkit-progress-value {
         background-color: map-get(map-get($states, $state), background-color);
@@ -62,8 +64,6 @@ progress {
       &::-moz-progress-bar {
         background-color: map-get(map-get($states, $state), background-color);
       }
-      color: map-get(map-get($states, $state), background-color);
     }
   }
 }
-

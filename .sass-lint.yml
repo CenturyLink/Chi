@@ -56,7 +56,7 @@ rules:
     - include: true
   max-file-line-count:
     - 2
-    - length: 1000
+    - length: 1500
   max-line-length:
     - 2
     - length: 120
@@ -64,7 +64,7 @@ rules:
     - 2
     - allow-leading-underscore: fales
     - convention: 'hyphenatedlowercase'
-  mixins-before-declarations: 2
+  mixins-before-declarations: 0
   nesting-depth: 0
   no-attribute-selectors: 0
   no-color-hex: 2
@@ -88,7 +88,9 @@ rules:
   no-invalid-hex: 2
   no-mergeable-selectors: 2
   no-misspelled-properties: 2
-  no-qualifying-elements: 2
+  no-qualifying-elements:
+    - 1
+    - allow-element-with-class: true
   no-trailing-whitespace: 2
   no-trailing-zero: 2
   no-transition-all: 0
