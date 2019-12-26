@@ -1,5 +1,6 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
+import { JsonDocs } from './docs/docs';
 
 export const config: Config = {
   namespace: 'ux-chi-ce',
@@ -24,6 +25,52 @@ export const config: Config = {
   outputTargets: [
     {
       type: 'dist'
+    },
+    {
+      type: 'docs-custom',
+      generator: (docs: JsonDocs) => {
+        const alertTitleProp = {
+          name: 'title',
+          type: 'string',
+          mutable: false,
+          attr: 'title',
+          reflectToAttr: true,
+          docs: 'to define alert title.',
+          docsTags: [],
+          default: 'false',
+          values: [
+            {
+              type: 'string'
+            }
+          ],
+          optional: false,
+          required: false
+        };
+
+        const popoverTitleProp = {
+          name: 'title',
+          type: 'string',
+          mutable: false,
+          attr: 'title',
+          reflectToAttr: true,
+          docs: 'to define popover title.',
+          docsTags: [],
+          default: 'false',
+          values: [
+            {
+              type: 'string'
+            }
+          ],
+          optional: false,
+          required: false
+        };
+
+        docs['components'].find(x => x.tag === 'chi-alert')['props'].push(alertTitleProp);
+        docs['components'].find(x => x.tag === 'chi-alert')['props'].sort((a, b) => (a.name > b.name) ? 1 : -1);
+
+        docs['components'].find(x => x.tag === 'chi-popover')['props'].push(popoverTitleProp);
+        docs['components'].find(x => x.tag === 'chi-popover')['props'].sort((a, b) => (a.name > b.name) ? 1 : -1);
+      }
     },
     {
       type: 'www',
