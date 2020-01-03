@@ -1,5 +1,5 @@
 {
-  "timestamp": "2019-12-26T13:18:36",
+  "timestamp": "2020-01-03T11:02:41",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.7.5",
@@ -156,7 +156,7 @@
           "reflectToAttr": true,
           "docs": "to define alert title.",
           "docsTags": [],
-          "default": "false",
+          "default": false,
           "values": [
             {
               "type": "string"
@@ -1670,7 +1670,7 @@
           "reflectToAttr": true,
           "docs": "to define popover title.",
           "docsTags": [],
-          "default": "false",
+          "default": false,
           "values": [
             {
               "type": "string"
