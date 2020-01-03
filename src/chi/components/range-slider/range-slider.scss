@@ -242,7 +242,7 @@ input {
 .m-input__wrapper {
   & > input {
     &[type='range'] {
-      .a-input {
+      &.a-input {
         display: block;
         position: relative;
         z-index: 1;

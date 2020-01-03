@@ -72,8 +72,12 @@ $monday-starting-week: (
       }
     }
 
-    &:not(.-inactive):not(.-active):hover,
     &:not(.-inactive):not(.-active) {
+      &:hover {
+        background-color: (set-color(grey, 20));
+        border-radius: 2px;
+      }
+
       &.-hover {
         background-color: (set-color(grey, 20));
         border-radius: 2px;
