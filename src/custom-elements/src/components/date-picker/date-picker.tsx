@@ -58,7 +58,8 @@ export class DatePicker {
     if (
       e.target !== document.body &&
       e.target !== null &&
-      !e.target.classList.contains('m-datepicker__day')
+      !(new RegExp('(\\s|^)' + 'm-datepicker__day' + '(\\s|$)').test(e.target.getAttribute('class')))
+      // This hack is necessary because currently IE11 doesn't support .classList on SVG elements
     ) {
       this.active = contains(this.el, e.target);
     }
@@ -138,6 +139,7 @@ export class DatePicker {
     document.body.addEventListener('click', this._onClick);
     document.body.addEventListener('keyup', this._onKeyUp);
   }
+
   componentDidUnload(): void {
     document.body.removeEventListener('focusin', this._onFocusIn);
     document.body.removeEventListener('click', this._onClick);
@@ -176,7 +178,7 @@ export class DatePicker {
           class={`a-input
             ${this.active ? '-focus' : ''}`}
           type={`text`}
-          placeholder={`mm/dd/yyyy`}
+          placeholder={`MM/DD/YYYY`}
           ref={el => (this._input = el as HTMLInputElement)}
           value={this.value}
           onChange={() => {

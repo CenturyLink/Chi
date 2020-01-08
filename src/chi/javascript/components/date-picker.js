@@ -78,6 +78,11 @@ class DatePicker extends Component {
       self.show();
     });
 
+    this._addEventHandler(this._elem.parentNode, 'click', function() {
+      self.show();
+      self._elem.focus();
+    });
+
     this._addEventHandler(this._elem, 'change', function() {
       self.setDate(self._elem.value);
     });
