@@ -1,7 +1,7 @@
 .a-grid__container.-w--100
-    h1.-text--normal= title
+    h1.docs-body__heading-title.-text--normal= title
     if description
-        .description=description
+        .docs-body__heading-description=description
     if tabs
         ul.a-tabs.-inverse#viewtabs
             - var tabNumber = 0

@@ -87,23 +87,6 @@
         flex-grow: 1;
         width: 100%;
 
-        & .docs-body__heading {
-          background-color: set-color(black);
-          border-top: 1px solid set-color(grey, 70);
-          display: flex;
-          padding-top: 4rem;
-
-          & h1 {
-            color: set-color(white);
-          }
-
-          & .description {
-            color: set-color(grey, 30);
-            margin: 1rem 0;
-          }
-        }
-
-
         .a-grid__container {
           @include respond-to(lg) {
             margin: 0 40px;
@@ -112,6 +95,7 @@
           @include respond-to(xl) {
             margin: 0 auto;
             max-width: 960px;
+            padding: 0 20px;
           }
 
           >,
@@ -183,6 +167,22 @@
             border-radius: 0.15em;
             border-top: 0;
           }
+        }
+      }
+
+      &__heading {
+        background-color: set-color(black);
+        border-top: 1px solid set-color(grey, 70);
+        display: flex;
+        padding-top: 4rem;
+
+        &-title {
+          color: set-color(white);
+        }
+
+        &-description {
+          color: set-color(grey, 30);
+          margin: 1rem 0;
         }
       }
     }
