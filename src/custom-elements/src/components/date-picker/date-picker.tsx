@@ -139,6 +139,7 @@ export class DatePicker {
     document.body.addEventListener('click', this._onClick);
     document.body.addEventListener('keyup', this._onKeyUp);
   }
+
   componentDidUnload(): void {
     document.body.removeEventListener('focusin', this._onFocusIn);
     document.body.removeEventListener('click', this._onClick);
@@ -177,7 +178,7 @@ export class DatePicker {
           class={`a-input
             ${this.active ? '-focus' : ''}`}
           type={`text`}
-          placeholder={`mm/dd/yyyy`}
+          placeholder={`MM/DD/YYYY`}
           ref={el => (this._input = el as HTMLInputElement)}
           value={this.value}
           onChange={() => {
