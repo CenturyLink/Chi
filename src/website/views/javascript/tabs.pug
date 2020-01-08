@@ -1,6 +1,9 @@
 ---
 title: Tabs
 ---
+
+#exampleHashTarget.-position--fixed-top.-sr--only
+
 p.-text
   | Tabs are used to navigate between views within the same context. This JavaScript solution is based on showing and
   | hiding panels depending on the active tab. It also takes care of managing tabs classes correctly to show the proper
@@ -218,36 +221,36 @@ p.-text
   .-p--3.-pb--4
     ul.a-tabs.a-navigationExample
       li.m-dropdown.-active
-        a.m-dropdown__trigger(href='#') Active tab, click me
+        a.m-dropdown__trigger(href='#') Active tab
         .m-dropdown__menu
-          a.m-dropdown__menu-item(href='#navigationExample') Elem 1
-          a.m-dropdown__menu-item(href='#navigationExample') Elem 2
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 1
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 2
           div
             a.m-dropdown__menu-item.m-dropdown__trigger(href='#') Elem 3 more
             .m-dropdown__menu
-              a.m-dropdown__menu-item(href='#navigationExample') Elem 3.1
-              a.m-dropdown__menu-item(href='#navigationExample') Elem 3.2
-              a.m-dropdown__menu-item(href='#navigationExample') Elem 3.3
-              a.m-dropdown__menu-item(href='#navigationExample') Elem 3.4
-          a.m-dropdown__menu-item(href='#navigationExample') Elem 4
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 4
       li
-        a(href='#navigationExample') Tab Link
+        a(href='#exampleHashTarget') Tab Link
       li
-        a(href='#navigationExample') Tab Link
+        a(href='#exampleHashTarget') Tab Link
       li
-        a(href='#navigationExample') Tab Link
+        a(href='#exampleHashTarget') Tab Link
       li
-        a(href='#navigationExample') Tab Link
+        a(href='#exampleHashTarget') Tab Link
       li
-        a(href='#navigationExample') Tab Link
+        a(href='#exampleHashTarget') Tab Link
       li
-        a(href='#navigationExample') Tab Link
+        a(href='#exampleHashTarget') Tab Link
       li.m-dropdown
         a.m-dropdown__trigger(href='#') Tab Dropdown
         .m-dropdown__menu
-          a.m-dropdown__menu-item(href='#navigationExample') Element 1
-          a.m-dropdown__menu-item(href='#navigationExample') Element 2
-          a.m-dropdown__menu-item(href='#navigationExample') Element 3
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 1
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 2
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 3
   ul.a-tabs.-ml--3
     li.-active
       a(href='#example-1__horizontal-html') HTML
@@ -257,7 +260,7 @@ p.-text
     :code(lang='html')
       <ul id="navigationExample-1" class="a-tabs">
         <li class="m-dropdown -active">
-          <a class="m-dropdown__trigger" href="#">Active tab, click me</a>
+          <a class="m-dropdown__trigger" href="#">Active tab</a>
           <div class="m-dropdown__menu">
             <a class="m-dropdown__menu-item" href="#">Elem 1</a>
             <a class="m-dropdown__menu-item" href="#">Elem 2</a>
@@ -334,7 +337,7 @@ section.a-table.a-table__options.-bordered.-my--3
               code= 'overflowMenuLabel'
           td
             div
-              code= 'More...'
+              code= 'See More...'
           td
             div
               | Text for the overflow menu dropdown.
@@ -366,35 +369,35 @@ ul.a-tabs
     .-p--3.-pb--4
       ul.a-tabs.a-navigationExample
         li.-active
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li.m-dropdown
           a.m-dropdown__trigger(href='#') Tab Dropdown
           .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#navigationExampleOverflowMenu') Element 1
-            a.m-dropdown__menu-item(href='#navigationExampleOverflowMenu') Element 2
-            a.m-dropdown__menu-item(href='#navigationExampleOverflowMenu') Element 3
+            a.m-dropdown__menu-item(href='#exampleHashTarget') Element 1
+            a.m-dropdown__menu-item(href='#exampleHashTarget') Element 2
+            a.m-dropdown__menu-item(href='#exampleHashTarget') Element 3
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li.m-dropdown
           a.m-dropdown__trigger(href='#') Tab Dropdown
           .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#navigationExampleOverflowMenu') Element 1
-            a.m-dropdown__menu-item(href='#navigationExampleOverflowMenu') Element 2
-            a.m-dropdown__menu-item(href='#navigationExampleOverflowMenu') Element 3
+            a.m-dropdown__menu-item(href='#exampleHashTarget') Element 1
+            a.m-dropdown__menu-item(href='#exampleHashTarget') Element 2
+            a.m-dropdown__menu-item(href='#exampleHashTarget') Element 3
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
     ul.a-tabs.-ml--3
       li.-active
         a(href='#example-3__enabled-html') HTML
@@ -456,35 +459,35 @@ ul.a-tabs
     .-p--3.-pb--4
       ul.a-tabs.a-navigationExample.a-customExample
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li.m-dropdown
           a.m-dropdown__trigger(href='#') Tab Dropdown
           .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#navigationExampleOverflowMenu') Element 1
-            a.m-dropdown__menu-item(href='#navigationExampleOverflowMenu') Element 2
-            a.m-dropdown__menu-item(href='#navigationExampleOverflowMenu') Element 3
+            a.m-dropdown__menu-item(href='#exampleHashTarget') Element 1
+            a.m-dropdown__menu-item(href='#exampleHashTarget') Element 2
+            a.m-dropdown__menu-item(href='#exampleHashTarget') Element 3
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li.m-dropdown
           a.m-dropdown__trigger(href='#') Tab Dropdown
           .m-dropdown__menu
-            a.m-dropdown__menu-item(href='#navigationExampleOverflowMenu') Element 1
-            a.m-dropdown__menu-item(href='#navigationExampleOverflowMenu') Element 2
-            a.m-dropdown__menu-item(href='#navigationExampleOverflowMenu') Element 3
+            a.m-dropdown__menu-item(href='#exampleHashTarget') Element 1
+            a.m-dropdown__menu-item(href='#exampleHashTarget') Element 2
+            a.m-dropdown__menu-item(href='#exampleHashTarget') Element 3
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
         li
-          a(href='#navigationExampleOverflowMenu') Tab Link
+          a(href='#exampleHashTarget') Tab Link
     ul.a-tabs.-ml--3
       li.-active
         a(href='#example-3__disabled-html') HTML
@@ -562,17 +565,17 @@ ul.a-tabs
     .-p--3.-pb--4
       ul.a-tabs.a-navigationExample.a-customExample
         li.-active
-          a(href='/') Tab Link
+          a(href='?tab=1') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='?tab=2') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='?tab=3') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='?tab=4') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='?tab=5') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='?tab=6') Tab Link
     ul.a-tabs.-ml--3
       li.-active
         a(href='#example-4__enabled-html') HTML
@@ -612,17 +615,17 @@ ul.a-tabs
     .-p--3.-pb--4
       ul.a-tabs.a-navigationExample.a-customExample
         li.-active
-          a(href='/') Tab Link
+          a(href='?tab=1') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='?tab=2') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='?tab=3') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='?tab=4') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='?tab=5') Tab Link
         li
-          a(href='/') Tab Link
+          a(href='?tab=6') Tab Link
     ul.a-tabs.-ml--3
       li.-active
         a(href='#example-4__disabled-html') HTML
@@ -671,26 +674,26 @@ p.-text
       li.m-dropdown.-active
         a.m-dropdown__trigger.-animate(href='#') Active Tab
         .m-dropdown__menu
-          a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Elem 1
-          a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Elem 2
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 1
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 2
           div
             a.m-dropdown__menu-item.m-dropdown__trigger.-animate(href='#') Elem 3 more
             .m-dropdown__menu
-              a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Elem 3.1
-              a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Elem 3.2
-              a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Elem 3.3
-              a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Elem 3.4
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
           a.m-dropdown__menu-item(href='#') Elem 4
       li
-        a(href='#navigationExampleComponentsContained') Tab Link
+        a(href='#exampleHashTarget') Tab Link
       li
-        a(href='#navigationExampleComponentsContained') Tab Link
+        a(href='#exampleHashTarget') Tab Link
       li.m-dropdown
         a.m-dropdown__trigger.-animate(href='#') Tab Link
         .m-dropdown__menu
-          a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Element 1
-          a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Element 2
-          a.m-dropdown__menu-item(href='#navigationExampleComponentsContained') Element 3
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 1
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 2
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 3
   :code(lang='html')
     <ul class="a-tabs">
       <li class="m-dropdown -active">
@@ -775,4 +778,3 @@ script.
 
     }
   );
-
