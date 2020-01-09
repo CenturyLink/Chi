@@ -82,14 +82,28 @@ $transition-duration: 0.2s;
     }
   }
 
-  &:not(.-done):not(.-done--transitioning) .-done--only,
-  &:not(.-active):not(.-active--transitioning) .-active--only {
-    display: none;
+  &:not(.-done):not(.-done--transitioning) {
+    .-done--only {
+      display: none;
+    }
   }
 
-  &:not(.-done) .-done--only,
-  &:not(.-active) .-active--only {
-    opacity: 0;
+  &:not(.-active):not(.-active--transitioning) {
+    .-active--only {
+      display: none;
+    }
+  }
+
+  &:not(.-done) {
+    .-done--only {
+      opacity: 0;
+    }
+  }
+
+  &:not(.-active) {
+    .-active--only {
+      opacity: 0;
+    }
   }
 
   &__collapse {

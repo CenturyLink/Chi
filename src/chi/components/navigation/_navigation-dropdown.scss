@@ -1,40 +1,68 @@
 @import '_variables';
 
-@mixin navigation-dropdown-not-vertical() {
+@mixin navigation-dropdown-not-vertical {
   & > li {
-    & > a.m-dropdown__trigger {
-      &:after {
-        position: absolute;
-        right: 0;
-        top: 1.3rem;
+    & > a {
+      &.m-dropdown__trigger {
+        &::after {
+          position: absolute;
+          right: 0;
+          top: 1.3rem;
+        }
       }
     }
   }
 
-// Legacy code start
-  &.-small > li > a.m-dropdown__trigger:after {
-    top: 1.1rem;
+  // Legacy code start
+  &.-small {
+    & > li {
+      & > a {
+        &.m-dropdown__trigger::after {
+          top: 1.1rem;
+        }
+      }
+    }
   }
 
-  &.-large > li > a.m-dropdown__trigger:after {
-    top: 1.55rem;
+  &.-large {
+    & > li {
+      & > a {
+        &.m-dropdown__trigger::after {
+          top: 1.55rem;
+        }
+      }
+    }
   }
-// Legacy code end
+  // Legacy code end
 
-  &.-sm > li > a.m-dropdown__trigger:after {
-    top: 1.1rem;
+  &.-sm {
+    & > li {
+      & > a {
+        &.m-dropdown__trigger::after {
+          top: 1.1rem;
+        }
+      }
+    }
   }
 
-  &.-lg > li > a.m-dropdown__trigger:after {
-    top: 1.55rem;
+  &.-lg {
+    & > li {
+      & > a {
+        &.m-dropdown__trigger::after {
+          top: 1.55rem;
+        }
+      }
+    }
   }
 }
 
 .a-tabs {
-  .m-dropdown__menu-item.-active {
-    background-image: none;
-    background-size: initial;
-    padding-right: 1rem;
+  .m-dropdown__menu-item {
+    &.-active {
+      background-image: none;
+      background-size: initial;
+      padding-right: 1rem;
+    }
   }
 
   &  {

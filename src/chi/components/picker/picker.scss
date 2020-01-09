@@ -28,48 +28,50 @@ legend {
     &[type='radio'] {
       &.a-picker {
         & + label {
-          span.a-picker__checkbox {
-            border: 2px solid set-color(grey, 50);
-            border-radius: 3px;
-            color: set-color(grey, 50);
-            height: 1rem;
-            position: relative;
-            width: 1rem;
-
-            &::before {
+          span {
+            &.a-picker__checkbox {
               border: 2px solid set-color(grey, 50);
-              border-right: 0;
-              border-top: 0;
-              content: '';
-              height: 0.3125rem;
-              left: 0.0625rem;
-              position: absolute;
-              top: 0.125rem;
-              transform: rotate(-45deg) scale(0);
-              transition-duration: 0.2s;
-              width: 0.625rem;
+              border-radius: 3px;
+              color: set-color(grey, 50);
+              height: 1rem;
+              position: relative;
+              width: 1rem;
+
+              &::before {
+                border: 2px solid set-color(grey, 50);
+                border-right: 0;
+                border-top: 0;
+                content: '';
+                height: 0.3125rem;
+                left: 0.0625rem;
+                position: absolute;
+                top: 0.125rem;
+                transform: rotate(-45deg) scale(0);
+                transition-duration: 0.2s;
+                width: 0.625rem;
+              }
             }
-          }
 
-          span.a-picker__radio {
-            border: 2px solid set-color(grey, 50);
-            border-radius: 0.5rem;
-            color: set-color(grey, 50);
-            height: 1rem;
-            position: relative;
-            width: 1rem;
+            &.a-picker__radio {
+              border: 2px solid set-color(grey, 50);
+              border-radius: 0.5rem;
+              color: set-color(grey, 50);
+              height: 1rem;
+              position: relative;
+              width: 1rem;
 
-            &::before {
-              background-color: set-color(grey, 50);
-              border-radius: 0.25rem;
-              content: '';
-              height: 0.5rem;
-              left: calc(50%-0.25rem);
-              position: absolute;
-              top: calc(50%-0.25rem);
-              transform: scale(0);
-              transition-duration: 0.2s;
-              width: 0.5rem;
+              &::before {
+                background-color: set-color(grey, 50);
+                border-radius: 0.25rem;
+                content: '';
+                height: 0.5rem;
+                left: calc(50%-0.25rem);
+                position: absolute;
+                top: calc(50%-0.25rem);
+                transform: scale(0);
+                transition-duration: 0.2s;
+                width: 0.5rem;
+              }
             }
           }
 
@@ -78,23 +80,27 @@ legend {
           }
 
           &:hover {
-            span.a-picker__checkbox {
-              &::before {
-                transform: rotate(-45deg) scale(1);
+            span {
+              &.a-picker__checkbox {
+                &::before {
+                  transform: rotate(-45deg) scale(1);
+                }
               }
-            }
-            
-            span.a-picker__radio {
-              &::before {
-                transform: scale(1);
+
+              &.a-picker__radio {
+                &::before {
+                  transform: scale(1);
+                }
               }
             }
           }
 
           .m-picker__content {
             &--start {
-              & span.a-picker__label {
+              span {
+                &.a-picker__label {
                   padding-left: 0.5rem;
+                }
               }
 
               & .a-picker__description {
@@ -112,25 +118,27 @@ legend {
 
       &:checked {
         & + label {
-          span.a-picker__checkbox {
-            background-color: $brand-color;
-            border: 2px solid $brand-color;
-            color: $brand-color;
-  
-            &::before {
-              border: 2px solid set-color(white);
-              border-right: 0;
-              border-top: 0;
-              transform: rotate(-45deg) scale(1);
-            }
-          }
-  
-          span.a-picker__radio {
-            border: 2px solid $brand-color;
-  
-            &::before {
+          span {
+            &.a-picker__checkbox {
               background-color: $brand-color;
-              transform: scale(1);
+              border: 2px solid $brand-color;
+              color: $brand-color;
+
+              &::before {
+                border: 2px solid set-color(white);
+                border-right: 0;
+                border-top: 0;
+                transform: rotate(-45deg) scale(1);
+              }
+            }
+
+            &.a-picker__radio {
+              border: 2px solid $brand-color;
+
+              &::before {
+                background-color: $brand-color;
+                transform: scale(1);
+              }
             }
           }
         }
@@ -247,7 +255,7 @@ legend {
                     top: 0;
                   }
 
-                  &:after {
+                  &::after {
                     top: 0.1875rem;
                   }
 
@@ -261,10 +269,12 @@ legend {
 
               & .m-formGroup,
               & .m-form__item {
-                input[type='radio'] {
-                  & + label {
-                    &::before {
-                      margin-right: 0.5rem;
+                input {
+                  &[type='radio'] {
+                    & + label {
+                      &::before {
+                        margin-right: 0.5rem;
+                      }
                     }
                   }
                 }
@@ -275,9 +285,11 @@ legend {
               }
 
               & .m-formGroup {
-                input[type='checkbox'] {
-                  & + label {
-                    margin-right: 0;
+                input {
+                  &[type='checkbox'] {
+                    & + label {
+                      margin-right: 0;
+                    }
                   }
                 }
               }
@@ -391,9 +403,13 @@ legend {
 /* IE11 CSS hack */
 @media all and (-ms-high-contrast: none) {
   .m-picker:not(.-sm):not(.-md):not(.-lg) {
-    input[type='checkbox'].a-picker + label
-    input[type='radio'].a-picker + label {
-      display: block;
+    input {
+      &[type='checkbox'],
+      &[type='radio'] {
+        &.a-picker + label {
+          display: block;
+        }
+      }
     }
   }
 }

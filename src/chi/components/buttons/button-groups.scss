@@ -21,6 +21,7 @@
       &.-align--right {
         justify-content: flex-end;
       }
+
       // Legacy code start
       &.-alignLeft {
         justify-content: flex-start;
@@ -30,6 +31,7 @@
         justify-content: flex-end;
       }
       // Legacy code end
+
     }
   }
 }

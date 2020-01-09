@@ -91,13 +91,28 @@
     }
   }
 
-  &:not(.-sliding) > li.-active:not(.-hasActive) > a,
-  &:not(.-sliding).-animated > li.-active:not(.-hasActive) > a,
-  &:not(.-sliding).-animated .a-tabs__subtabs > li.-active:not(.-hasActive) > a{
-    box-shadow: inset 0.125rem 0 0 $primary-color;
+  &:not(.-sliding) {
+    & > li {
+      &.-active:not(.-hasActive) > a {
+        box-shadow: inset 0.125rem 0 0 $primary-color;
+      }
+    }
+
+    &.-animated > li {
+      &.-active:not(.-hasActive) > a {
+        box-shadow: inset 0.125rem 0 0 $primary-color;
+      }
+
+      & .a-tabs__subtabs > li {
+        &.-active:not(.-hasActive) > a {
+          box-shadow: inset 0.125rem 0 0 $primary-color;
+        }
+      }
+    }
   }
 
-  &.-sm, &.-small { //Legacy code: -small to be removed.
+  &.-sm,
+  &.-small { //Legacy code: -small to be removed.
     & > li {
       & > a {
         padding-bottom: 0.25rem;
@@ -114,7 +129,8 @@
     }
   }
 
-  &.-lg, &.-large { //Legacy code: -large to be removed.
+  &.-lg,
+  &.-large { //Legacy code: -large to be removed.
     & > li {
       & > a {
         line-height: $line-height-large;
@@ -155,7 +171,8 @@
       }
     }
 
-    &.-sm, &.-small { //Legacy code: -small to be removed.
+    &.-sm,
+    &.-small { //Legacy code: -small to be removed.
       & > li {
         & > a {
           padding-bottom: 0.25rem;
@@ -171,7 +188,8 @@
       }
     }
 
-    &.-lg, &.-large { //Legacy code: -large to be removed.
+    &.-lg,
+    &.-large { //Legacy code: -large to be removed.
       & > li {
         & > a {
           padding-bottom: 0.75rem;
@@ -189,7 +207,7 @@
   }
 }
 
-@mixin tabs-not-vertical() {
+@mixin tabs-not-vertical {
   height: 3.5rem;
 
   &.-icons {
@@ -233,12 +251,15 @@
     }
   }
 
-  &:not(.-sliding) > li.-active > a {
-    border-bottom: 0.125rem solid $brand-color;
-    padding-bottom: 1.125rem;
+  &:not(.-sliding) > li {
+    &.-active > a {
+      border-bottom: 0.125rem solid $brand-color;
+      padding-bottom: 1.125rem;
+    }
   }
 
-  &.-sm, &.-small { //Legacy code: -small to be removed.
+  &.-sm,
+  &.-small { //Legacy code: -small to be removed.
     height: 3rem;
 
     & > li {
@@ -253,7 +274,8 @@
     }
   }
 
-  &.-lg, &.-large { //Legacy code: -large to be removed.
+  &.-lg,
+  &.-large { //Legacy code: -large to be removed.
     height: 4rem;
 
     & > li:not(.a-sliding-border) {
@@ -305,12 +327,15 @@
     }
   }
 
-  &.-sliding > li.a-sliding-border {
-    display: block;
-    transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+  &.-sliding > li {
+    &.a-sliding-border {
+      display: block;
+      transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+    }
   }
 
-  &.-lg, &.-large { //Legacy code: -large to be removed.
+  &.-lg,
+  &.-large { //Legacy code: -large to be removed.
     & > li {
       & > a {
         font-size: $text;
@@ -337,11 +362,13 @@
       }
     }
 
-    &:not(.-vertical):not(.-responsive):not(.-sliding) > li.-active > a {
-      border-bottom: 0.125rem solid $secondary-color;
+    &:not(.-vertical):not(.-responsive):not(.-sliding) > li {
+      &.-active > a {
+        border-bottom: 0.125rem solid $secondary-color;
 
-      .a-icon {
-        color: $secondary-color;
+        .a-icon {
+          color: $secondary-color;
+        }
       }
     }
 
@@ -352,11 +379,13 @@
     }
 
     &.-vertical {
+      // sass-lint:disable-block force-element-nesting
       &:not(.-sliding) > li.-active:not(.-hasActive) > a,
       &:not(.-sliding).-animated > li.-active:not(.-hasActive) > a,
       &:not(.-sliding).-animated .a-tabs__subtabs > li.-active:not(.-hasActive) > a {
         box-shadow: inset 0.125rem 0 0 $secondary-color;
       }
+      // sass-lint:disable-block force-element-nesting
 
       & > li {
         &.-active > a {

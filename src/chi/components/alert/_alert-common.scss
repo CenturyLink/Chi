@@ -104,6 +104,7 @@ $states: (
   @each $state in map-keys($states) {
     &.-#{$state} {
       color: set-color(grey, 100);
+
       &:not(.-banner) {
         &::before {
           background-color: map-get(map-get($states, $state), border-left-color);

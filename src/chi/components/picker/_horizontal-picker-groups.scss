@@ -5,29 +5,29 @@ $sizes: (
     font-size: 0.75rem,
     line-height: 1rem,
     padding: (0.25rem - $border) 0.5rem (0.25rem - $border) (0.5rem - $border),
-    padding_hover: (0.5rem - $border),
-    padding_checked: 0.5rem
+        padding_hover: (0.5rem - $border),
+        padding_checked: 0.5rem
   ),
   md: (
     font-size: 0.875rem,
     line-height: 1rem,
     padding: (0.5rem - $border) 1rem (0.5rem - $border) (1rem - $border),
-    padding_hover: (1rem - $border),
-    padding_checked: 1rem
+        padding_hover: (1rem - $border),
+        padding_checked: 1rem
   ),
   lg: (
     font-size: 0.875rem,
     line-height: 1.25rem,
     padding: (0.625rem - $border) 1.5rem (0.625rem - $border) (1.5rem - $border),
-    padding_hover: (1.5rem - $border),
-    padding_checked: 1.5rem
+        padding_hover: (1.5rem - $border),
+        padding_checked: 1.5rem
   ),
   xl: (
     font-size: 0.875rem,
     line-height: 1.25rem,
     padding: (0.875rem - $border) 1.5rem (0.875rem - $border) (1.5rem - $border),
-    padding_hover: (1.5rem - $border),
-    padding_checked: 1.5rem
+        padding_hover: (1.5rem - $border),
+        padding_checked: 1.5rem
   )
 );
 

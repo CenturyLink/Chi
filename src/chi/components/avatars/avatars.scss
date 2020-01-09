@@ -12,7 +12,22 @@ $avatar-sizes: (
   lg: 4rem,
   xl: 6rem,
   xxl: 8rem);
-$avatar-colors: (grey, red, pink, purple, indigo, navy, blue, teal, mint, green, yellow, orange, light, inverse, secondary, primary);
+$avatar-colors: (grey,
+  red,
+  pink,
+  purple,
+  indigo,
+  navy,
+  blue,
+  teal,
+  mint,
+  green,
+  yellow,
+  orange,
+  light,
+  inverse,
+  secondary,
+  primary);
 $avatar-default-size: 'md';
 
 .a-avatar {
@@ -76,7 +91,7 @@ $avatar-default-size: 'md';
         background-color: transparent;
         border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get($colorscheme, white);
         color: map-get($colorscheme, white);
-      } @else if ( $color == 'secondary'){
+      } @else if ( $color == 'secondary') {
         background-color: white;
         border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid $secondary-color;
         color: $secondary-color;
@@ -84,7 +99,7 @@ $avatar-default-size: 'md';
         &.-transparent {
           background-color: transparent;
         }
-      } @else if ( $color == 'primary'){
+      } @else if ( $color == 'primary') {
         background-color: white;
         border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid $primary-color;
         color: $primary-color;
@@ -94,7 +109,8 @@ $avatar-default-size: 'md';
         }
       } @else {
         background-color: white;
-        border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get(map-get($colorscheme, $color), 60);
+        border: max(0.0625rem, map-get($avatar-sizes,
+            $avatar-default-size) / 48) solid map-get(map-get($colorscheme, $color), 60);
         color: map-get(map-get($colorscheme, $color), 70);
 
         &.-transparent {

@@ -57,7 +57,7 @@ $sizes: (
   )
 );
 
-$m-inputNumber: (
+$m-inputnumber: (
   sm: (
     width: 6rem,
     button-height: 1.5rem
@@ -152,47 +152,56 @@ $m-inputNumber: (
   display: flex;
   width: 8rem;
 
-  @each $size, $values in $m-inputNumber {
+  @each $size, $values in $m-inputnumber {
     &.-#{$size} {
       width: map-get($values, width);
+
       & > button {
         height: map-get($values, button-height);
       }
     }
   }
 
-  & > input[type='number'].a-input {
-    border-radius: 0;
-    flex: auto;
-    min-width: 1rem;
-    order: 2;
-    text-align: center;
-    z-index: 0;
-  }
+  & > input {
+    &[type='number'] {
+      &.a-input {
+        border-radius: 0;
+        flex: auto;
+        min-width: 1rem;
+        order: 2;
+        text-align: center;
+        z-index: 0;
+      }
 
-  & > input[type='number'][disabled].a-input ~ button {
-    color: rgba($text-color, 0.3);
-    pointer-events: none;
-  }
-
-  & > button[disabled] {
-    color: rgba($text-color, 0.3);
-    pointer-events: none;
+      &[disabled] {
+        &.a-input ~ button {
+          color: rgba($text-color, 0.3);
+          pointer-events: none;
+        }
+      }
+    }
   }
 
   & > button {
     color: $text-color;
     display: block;
-    height: map-get(map-get($m-inputNumber, md), button-height);
+    height: map-get(map-get($m-inputnumber, md), button-height);
 
-    &:first-of-type, &:focus:first-of-type {
+    &[disabled] {
+      color: rgba($text-color, 0.3);
+      pointer-events: none;
+    }
+
+    &:first-of-type,
+    &:focus:first-of-type {
       border-bottom-right-radius: 0;
       border-right-width: 0;
       border-top-right-radius: 0;
       order: 1;
     }
 
-    &:last-of-type, &:focus:last-of-type {
+    &:last-of-type,
+    &:focus:last-of-type {
       border-bottom-left-radius: 0;
       border-left-width: 0;
       border-top-left-radius: 0;

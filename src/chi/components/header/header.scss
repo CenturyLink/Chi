@@ -171,8 +171,10 @@
       }
 
       &:not(.-sliding) {
-        & > li.-active > a {
-          padding-bottom: 0.4375rem;
+        & > li {
+          &.-active > a {
+            padding-bottom: 0.4375rem;
+          }
         }
       }
     }
@@ -232,35 +234,46 @@
         }
       }
 
-      & li.-active {
-        & a {
-          border-bottom: 0.125rem solid $secondary;
-          color: $secondary;
+      & li {
+        &.-active {
+          & a {
+            border-bottom: 0.125rem solid $secondary;
+            color: $secondary;
+          }
         }
       }
 
-      &:not(.-vertical):not(.-responsive):not(.-sliding) > li.-active > a {
-        border-bottom-color: $secondary-color;
-        color: $secondary-color;
-      }
-    }
-
-    .a-btn.-icon.-flat.-light {
-      .a-icon:not(.icon-menu) {
-        color: set-color(grey, 50);
-      }
-
-      &:active,
-      &.-active,
-      &:focus,
-      &.-focus,
-      &:hover,
-      &.-hover {
-        .a-icon {
-          color: $text-white;
+      &:not(.-vertical):not(.-responsive):not(.-sliding) > li {
+        &.-active > a {
+          border-bottom-color: $secondary-color;
+          color: $secondary-color;
         }
       }
     }
+
+    .a-btn {
+      &.-icon {
+        &.-flat {
+          &.-light {
+            .a-icon:not(.icon-menu) {
+              color: set-color(grey, 50);
+            }
+
+            &:active,
+            &.-active,
+            &:focus,
+            &.-focus,
+            &:hover,
+            &.-hover {
+              .a-icon {
+                color: $text-white;
+              }
+            }
+          }
+        }
+      }
+    }
+
   }
 }
 

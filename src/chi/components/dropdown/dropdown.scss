@@ -187,8 +187,10 @@
         margin-right: 1rem;
       }
 
-      &:not(.-active) .a-icon {
-        color: set-color(grey, 50);
+      &:not(.-active) {
+        .a-icon {
+          color: set-color(grey, 50);
+        }
       }
 
       &.-active {
@@ -207,6 +209,7 @@
         color: set-color(grey, 70);
         opacity: 0.6;
         pointer-events: none;
+
         .a-icon {
           color: set-color(grey, 70);
           opacity: 0.6;
@@ -230,32 +233,40 @@
       }
     }
 
-    label.-text {
-      align-items: center;
-      display: flex;
-      font-weight: normal;
-      margin-bottom: 0;
+    label {
+      &.-text {
+        align-items: center;
+        display: flex;
+        font-weight: normal;
+        margin-bottom: 0;
+      }
     }
 
-    input[type='checkbox'].a-input + label,
-    input[type='radio'].a-input + label {
-      margin-bottom: 0;
-      margin-right: 0;
+    input {
+      &[type='checkbox'],
+      &[type='radio'] {
+        &.a-input + label {
+          margin-bottom: 0;
+          margin-right: 0;
 
-      &::before {
-        margin-right: 1rem;
+          &::before {
+            margin-right: 1rem;
+          }
+        }
       }
     }
 
     .a-checkbox {
-      input[type='checkbox'] {
-        &.a-checkbox__input {
-          & + label {
-            &.a-checkbox__label {
-              padding-left: 2rem;
+      input {
+        &[type='checkbox'] {
+          &.a-checkbox__input {
+            & + label {
+              &.a-checkbox__label {
+                padding-left: 2rem;
 
-              &::before {
-                margin-right: 1rem;
+                &::before {
+                  margin-right: 1rem;
+                }
               }
             }
           }
@@ -263,14 +274,24 @@
       }
     }
 
-    .a-radio input[type='radio'].a-radio__input + label.a-radio__label {
-      padding-left: 2rem;
+    .a-radio {
+      input {
+        &[type='radio'] {
+          &.a-radio__input {
+            & + label {
+              &.a-radio__label {
+                padding-left: 2rem;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
 
 .m-dropdown__hover:hover,
-.m-dropdown__hover.-hover,
+.m-dropdown__hover.-hover, // sass-lint:disable-line force-element-nesting
 .m-dropdown__hover:active {
 
   .m-dropdown__trigger {
@@ -304,21 +325,25 @@
   }
 }
 
-legend.m-dropdown__menu-item {
-  font-weight: 600;
+legend {
+  &.m-dropdown__menu-item {
+    font-weight: 600;
+  }
 }
 
-a.m-dropdown__menu-item {
-  color: inherit;
+a {
+  &.m-dropdown__menu-item {
+    color: inherit;
 
-  &:hover {
-    text-decoration: none;
-  }
+    &:hover {
+      text-decoration: none;
+    }
 
-  &:hover:not(.-disabled):not(.-active),
-  &.-hover:not(.-disabled):not(.-active),
-  &:focus:not(.-disabled):not(.-active),
-  &.focus:not(.-disabled):not(.-active) {
-    background-color: set-color(grey, 20);
+    &:hover:not(.-disabled):not(.-active),
+    &.-hover:not(.-disabled):not(.-active),
+    &:focus:not(.-disabled):not(.-active),
+    &.focus:not(.-disabled):not(.-active) {
+      background-color: set-color(grey, 20);
+    }
   }
 }

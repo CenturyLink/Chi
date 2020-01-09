@@ -127,13 +127,13 @@ $animation-duration: 0.5s;
 
   &.-animated {
     display: block;
-    &:not(.-active) {
-      top: -1000px;
-    }
-
     transition-duration: $animation-duration;
     transition-property: top;
     transition-timing-function: ease-in-out;
+
+    &:not(.-active) {
+      top: -1000px;
+    }
 
     &.-transitioning {
       display: block;

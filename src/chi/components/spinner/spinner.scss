@@ -23,7 +23,7 @@ $spinner-sizes: (
 
   & .path {
     animation: dash 1.4s ease-in-out infinite;
-    stroke-dasharray: 150,190;
+    stroke-dasharray: 150, 190;
     stroke-dashoffset: 0;
     stroke-linecap: round;
     transform-origin: center;
