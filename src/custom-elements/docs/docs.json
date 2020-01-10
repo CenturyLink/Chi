@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-01-03T11:02:41",
+  "timestamp": "2020-01-10T13:03:19",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.7.5",
@@ -1978,12 +1978,11 @@
           "mutable": false,
           "attr": "hide-label",
           "reflectToAttr": true,
-          "docs": "used to disable the toggle labels.",
+          "docs": "to set a label for the toggle switch.",
           "docsTags": [],
-          "default": "false",
           "values": [
             {
-              "type": "boolean"
+              "type": "string"
             }
           ],
           "optional": false,
@@ -1996,22 +1995,6 @@
           "attr": "label",
           "reflectToAttr": true,
           "docs": "to set a label for the toggle switch.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "switchId",
-          "type": "string",
-          "mutable": false,
-          "attr": "switch-id",
-          "reflectToAttr": true,
-          "docs": "to set the toggle switch id.",
           "docsTags": [],
           "values": [
             {

@@ -8,22 +8,59 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
   .-mb--1
     h5 Base
     .m-form__item
-      chi-switch(switch-id='toggle1', data-cy='toggle1', label='Label')
+      chi-switch(id='toggle1',data-cy='toggle1', label='Label')
 
   .-mb--1
     h5 Hover
     .m-form__item
-      chi-switch(switch-id='toggle2', extra-class='-hover', data-cy='toggle2', label='Label')
+      chi-switch(id='toggle2', extra-class='-hover', data-cy='toggle2', label='Label')
 
   .-mb--1
     h5 Focus
     .m-form__item
-      chi-switch(switch-id='toggle3', extra-class='-focus', data-cy='toggle3', label='Label')
+      chi-switch(id='toggle3', extra-class='-focus', data-cy='toggle3', label='Label')
 
   .-mb--1
     h5 Disabled
     .m-form__item
-      chi-switch(switch-id='toggle4', disabled, data-cy='toggle4', label='Label')
+      chi-switch(id='toggle4', disabled, data-cy='toggle4', label='Label')
+
+.test-hide-label-states
+  .-mb--1
+    h5 Base
+    .m-form__item
+      label.a-switch.-label--hide(for="toggle5")
+        input(type="checkbox", class="a-switch__input", id="toggle5")
+        span(class="a-switch__content")
+          span.a-switch__thumb
+        span.a-switch__label Label
+
+  .-mb--1
+    h5 Hover
+    .m-form__item
+      label.a-switch.-label--hide(for="toggle6")
+        input(type="checkbox", class="a-switch__input", id="toggle6")
+        span(class="a-switch__content")
+          span.a-switch__thumb
+        span.a-switch__label Label
+
+  .-mb--1
+    h5 Focus
+    .m-form__item
+      label.a-switch.-label--hide(for="toggle7")
+        input(type="checkbox", class="a-switch__input -focus", id="toggle7")
+        span(class="a-switch__content")
+          span.a-switch__thumb
+        span.a-switch__label Label
+
+  .-mb--1
+    h5 Disabled
+    .m-form__item
+      label.a-switch.-label--hide(for="toggle8")
+        input(type="checkbox", class="a-switch__input", id="toggle8", disabled)
+        span(class="a-switch__content")
+          span.a-switch__thumb
+        span.a-switch__label Label
 
 style.
   chi-switch {

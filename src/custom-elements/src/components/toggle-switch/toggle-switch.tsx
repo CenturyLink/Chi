@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'chi-switch',
@@ -7,32 +7,29 @@ import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
 })
 export class ToggleSwitch {
   /**
-   *  to set the toggle switch id.
-   */
-  @Prop({ reflectToAttr: true }) switchId: string;
-
-  /**
    *  to set a label for the toggle switch.
    */
-  @Prop({ reflectToAttr: true }) label: string;
+  @Prop({ reflect: true }) label: string;
 
   /**
    *  used to disable the toggle labels.
    */
-  @Prop({ reflectToAttr: true }) hideLabel = false;
+  @Prop({ reflect: true }) hideLabel = false;
 
   /**
    *  used to disable the toggle switch.
    */
-  @Prop({ reflectToAttr: true }) disabled = false;
+  @Prop({ reflect: true }) disabled = false;
 
   /**
    *  used to check the toggle switch.
    */
-  @Prop({ reflectToAttr: true, mutable: true }) checked = false;
+  @Prop({ reflect: true, mutable: true }) checked = false;
 
    // used to pass additional classes like { -focus, -hover etc .}
   @Prop() extraClass: string;
+
+  @Element() el: HTMLElement;
 
   /**
    *  emitting a custom event toggle.
@@ -47,12 +44,13 @@ export class ToggleSwitch {
   render() {
     return (
       [
-        <label htmlFor={this.switchId}
+        <label htmlFor={`${this.el.id}-control`}
               class="a-switch">
           <input type="checkbox"
                  class={`a-switch__input ${this.extraClass && this.extraClass}`}
-                 id={this.switchId}
-                 disabled={this.disabled} checked={this.checked}
+                 id={`${this.el.id}-control`}
+                 disabled={this.disabled}
+                 checked={this.checked}
                  onClick={() => this._toggle()}
           />
           <span class="a-switch__content">
