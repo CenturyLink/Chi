@@ -151,6 +151,11 @@
           border-radius: 0.15em;
           position: relative;
           z-index: 10;
+          
+          .example-tabs {
+            background-color: set-color(grey, 15);
+            border-top: 0.0625rem solid set-color(grey, 25);
+          }
 
           pre[class*="language-"] {
             border-top: 0.0625rem solid set-color(grey, 25);
