@@ -27,87 +27,334 @@ p.-text
 - var active = 23;
 
 h3 Base
-.example.-mb--3
-  .-p--3
-    .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
-      .m-datepicker__month-row
-        .prev.-disabled
-          i.a-icon.icon-chevron-left.-sm
-        .m-datepicker__month
-          | November 2018
-        .next
-          i.a-icon.icon-chevron-right.-sm.-text--brand
-      .m-datepicker__day-names
-        each weekDay in weekS
-          .m-datepicker__week-day=weekDay
-      .m-datepicker__days
-        while day < 31
-          if day === today
-            .m-datepicker__day.-today=day++
-          else if day === active
-            .m-datepicker__day.-active=day++
-          else if day < today
-            .m-datepicker__day.-inactive=day++
-          else
-            .m-datepicker__day=day++
-  :code(lang="html")
-    <div class="m-datepicker -week-starts-on-sun -month-starts-on-thu">
-      <div class="m-datepicker__month-row">
-        <div class="prev -disabled">
-          <i class="a-icon icon-chevron-left -sm"></i>
-        </div>
-        <div class="m-datepicker__month">
-          November 2018
-        </div>
-        <div class="next">
-          <i class="a-icon icon-chevron-right -sm -text--brand"></i>
-        </div>
-      </div>
-      <div class="m-datepicker__day-names">
-        <div class="m-datepicker__week-day">
-          S
-        </div>
-        <div class="m-datepicker__week-day">
-          M
-        </div>
-        <div class="m-datepicker__week-day">
-          T
-        </div>
-        <div class="m-datepicker__week-day">
-          W
-        </div>
-        <div class="m-datepicker__week-day">
-          T
-        </div>
-        <div class="m-datepicker__week-day">
-          F
-        </div>
-        <div class="m-datepicker__week-day">
-          S
-        </div>
-      </div>
-      <div class="m-datepicker__days">
-        <div class="m-datepicker__day -inactive">
-          1
-        </div>
-        <div class="m-datepicker__day -inactive">
-          2
-        </div>
-        ...
-        <div class="m-datepicker__day -inactive">
-          18
-        </div>
-        <div class="m-datepicker__day -active">
-          19
-        </div>
-        <div class="m-datepicker__day">
-          20
-        </div>
-        ...
-        <div class="m-datepicker__day">
-          30
-        </div>
-      </div>
-    </div>
 
 - day = 1;
+
+ul#a-tabs--dp.a-tabs
+  li.-active
+    a(href='#a-tabs--dp-base') Base
+  li
+    a(href='#a-tabs--dp-active') Active
+  li
+    a(href='#a-tabs--dp-min-max') Min & max
+#a-tabs--dp-base.a-tabs-panel.-active
+  .example.-mb--3
+    .-p--3
+      chi-date
+    .example-tabs.-pl--2
+      ul.a-tabs#examples-default
+        li.-active
+          a(href=`#webcomponent`) Web component
+        li
+          a(href=`#html`) HTML
+    #webcomponent.a-tabs-panel.-active
+      :code(lang="html")
+        <chi-date></chi-date>
+    #html.a-tabs-panel
+      :code(lang="html")
+        <div class="m-datepicker -week-starts-on-sun -month-starts-on-wed">
+          <div class="m-datepicker__month-row">
+            <div class="prev">
+              <i class="a-icon icon-chevron-left -sm"></i>
+            </div>
+            <div class="m-datepicker__month">
+              November 2018
+            </div>
+            <div class="next">
+              <i class="a-icon icon-chevron-right -sm"></i>
+            </div>
+          </div>
+          <div class="m-datepicker__day-names">
+            <div class="m-datepicker__week-day">
+              S
+            </div>
+            <div class="m-datepicker__week-day">
+              M
+            </div>
+            <div class="m-datepicker__week-day">
+              T
+            </div>
+            <div class="m-datepicker__week-day">
+              W
+            </div>
+            <div class="m-datepicker__week-day">
+              T
+            </div>
+            <div class="m-datepicker__week-day">
+              F
+            </div>
+            <div class="m-datepicker__week-day">
+              S
+            </div>
+          </div>
+          <div class="m-datepicker__days">
+            <div class="m-datepicker__day">1</div>
+            <div class="m-datepicker__day">2</div>
+            <div class="m-datepicker__day">3</div>
+            <div class="m-datepicker__day">4</div>
+            <div class="m-datepicker__day">5</div>
+            <div class="m-datepicker__day">6</div>
+            <div class="m-datepicker__day">7</div>
+            <div class="m-datepicker__day">8</div>
+            <div class="m-datepicker__day">9</div>
+            <div class="m-datepicker__day">10</div>
+            <div class="m-datepicker__day">11</div>
+            <div class="m-datepicker__day">12</div>
+            <div class="m-datepicker__day">13</div>
+            <div class="m-datepicker__day">14</div>
+            <div class="m-datepicker__day">15</div>
+            <div class="m-datepicker__day">16</div>
+            <div class="m-datepicker__day">17</div>
+            <div class="m-datepicker__day">18</div>
+            <div class="m-datepicker__day">19</div>
+            <div class="m-datepicker__day">20</div>
+            <div class="m-datepicker__day">21</div>
+            <div class="m-datepicker__day">22</div>
+            <div class="m-datepicker__day">23</div>
+            <div class="m-datepicker__day">24</div>
+            <div class="m-datepicker__day">25</div>
+            <div class="m-datepicker__day">26</div>
+            <div class="m-datepicker__day">27</div>
+            <div class="m-datepicker__day">28</div>
+            <div class="m-datepicker__day">29</div>
+            <div class="m-datepicker__day">30</div>
+          </div>
+        </div>
+#a-tabs--dp-active.a-tabs-panel
+  .example.-mb--3
+    .-p--3
+      chi-date(value="05/15/2019")
+    .example-tabs.-pl--2
+      ul.a-tabs#examples-active
+        li.-active
+          a(href=`#webcomponent-active`) Web component
+        li
+          a(href=`#html-active`) HTML
+    #webcomponent-active.a-tabs-panel.-active
+      :code(lang="html")
+        <chi-date value="05/15/2019"></chi-date>
+    #html-active.a-tabs-panel
+      :code(lang="html")
+        <div class="m-datepicker -week-starts-on-sun -month-starts-on-wed">
+          <div class="m-datepicker__month-row">
+            <div class="prev"><i class="a-icon icon-chevron-left -sm"></i></div>
+            <div class="m-datepicker__month">May 2019</div>
+            <div class="next"><i class="a-icon icon-chevron-right -sm"></i></div>
+          </div>
+          <div class="m-datepicker__day-names">
+            <div class="m-datepicker__week-day">S</div>
+            <div class="m-datepicker__week-day">M</div>
+            <div class="m-datepicker__week-day">T</div>
+            <div class="m-datepicker__week-day">W</div>
+            <div class="m-datepicker__week-day">T</div>
+            <div class="m-datepicker__week-day">F</div>
+            <div class="m-datepicker__week-day">S</div>
+          </div>
+          <div class="m-datepicker__days">
+            <div class="m-datepicker__day">1</div>
+            <div class="m-datepicker__day">2</div>
+            <div class="m-datepicker__day">3</div>
+            <div class="m-datepicker__day">4</div>
+            <div class="m-datepicker__day">5</div>
+            <div class="m-datepicker__day">6</div>
+            <div class="m-datepicker__day">7</div>
+            <div class="m-datepicker__day">8</div>
+            <div class="m-datepicker__day">9</div>
+            <div class="m-datepicker__day">10</div>
+            <div class="m-datepicker__day">11</div>
+            <div class="m-datepicker__day">12</div>
+            <div class="m-datepicker__day">13</div>
+            <div class="m-datepicker__day">14</div>
+            <div class="m-datepicker__day -active">15</div>
+            <div class="m-datepicker__day">16</div>
+            <div class="m-datepicker__day">17</div>
+            <div class="m-datepicker__day">18</div>
+            <div class="m-datepicker__day">19</div>
+            <div class="m-datepicker__day">20</div>
+            <div class="m-datepicker__day">21</div>
+            <div class="m-datepicker__day">22</div>
+            <div class="m-datepicker__day">23</div>
+            <div class="m-datepicker__day">24</div>
+            <div class="m-datepicker__day">25</div>
+            <div class="m-datepicker__day">26</div>
+            <div class="m-datepicker__day">27</div>
+            <div class="m-datepicker__day">28</div>
+            <div class="m-datepicker__day">29</div>
+            <div class="m-datepicker__day">30</div>
+            <div class="m-datepicker__day">31</div>
+          </div>
+        </div>
+#a-tabs--dp-min-max.a-tabs-panel
+  .example.-mb--3
+    .-p--3
+      chi-date(min="06/06/2019", max="06/22/2019")
+    .example-tabs.-pl--2
+      ul.a-tabs#examples-min-max
+        li.-active
+          a(href=`#webcomponent-min-max`) Web component
+        li
+          a(href=`#html-min-max`) HTML
+    #webcomponent-min-max.a-tabs-panel.-active
+      :code(lang="html")
+        <chi-date min="06/06/2019" max="06/22/2019"></chi-date>
+    #html-min-max.a-tabs-panel
+      :code(lang="html")
+        <div class="m-datepicker -week-starts-on-sun -month-starts-on-sat">
+          <div class="m-datepicker__month-row">
+            <div class="prev -disabled"><i class="a-icon icon-chevron-left -sm"></i></div>
+            <div class="m-datepicker__month">June 2019</div>
+            <div class="next -disabled"><i class="a-icon icon-chevron-right -sm"></i></div>
+          </div>
+          <div class="m-datepicker__day-names">
+            <div class="m-datepicker__week-day">S</div>
+            <div class="m-datepicker__week-day">M</div>
+            <div class="m-datepicker__week-day">T</div>
+            <div class="m-datepicker__week-day">W</div>
+            <div class="m-datepicker__week-day">T</div>
+            <div class="m-datepicker__week-day">F</div>
+            <div class="m-datepicker__week-day">S</div>
+          </div>
+          <div class="m-datepicker__days">
+            <div class="m-datepicker__day -inactive">1</div>
+            <div class="m-datepicker__day -inactive">2</div>
+            <div class="m-datepicker__day -inactive">3</div>
+            <div class="m-datepicker__day -inactive">4</div>
+            <div class="m-datepicker__day -inactive">5</div>
+            <div class="m-datepicker__day">6</div>
+            <div class="m-datepicker__day">7</div>
+            <div class="m-datepicker__day">8</div>
+            <div class="m-datepicker__day">9</div>
+            <div class="m-datepicker__day">10</div>
+            <div class="m-datepicker__day">11</div>
+            <div class="m-datepicker__day">12</div>
+            <div class="m-datepicker__day">13</div>
+            <div class="m-datepicker__day">14</div>
+            <div class="m-datepicker__day">15</div>
+            <div class="m-datepicker__day">16</div>
+            <div class="m-datepicker__day">17</div>
+            <div class="m-datepicker__day">18</div>
+            <div class="m-datepicker__day">19</div>
+            <div class="m-datepicker__day">20</div>
+            <div class="m-datepicker__day">21</div>
+            <div class="m-datepicker__day">22</div>
+            <div class="m-datepicker__day -inactive">23</div>
+            <div class="m-datepicker__day -inactive">24</div>
+            <div class="m-datepicker__day -inactive">25</div>
+            <div class="m-datepicker__day -inactive">26</div>
+            <div class="m-datepicker__day -inactive">27</div>
+            <div class="m-datepicker__day -inactive">28</div>
+            <div class="m-datepicker__day -inactive">29</div>
+            <div class="m-datepicker__day -inactive">30</div>
+          </div>
+        </div>
+
+h3 Input field
+p.-text
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 14rem;")
+      chi-label(for='date')
+        | Date
+      chi-date-picker(id="date")
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-with-label
+      li.-active
+        a(href=`#webcomponent-with-label`) Web component
+      li
+        a(href=`#html-with-label`) HTML + JS
+  #webcomponent-with-label.a-tabs-panel.-active
+    :code(lang="html",style="height:20rem")
+      <chi-label for="date">Date</chi-label>
+      <chi-date-picker id="date"></chi-date-picker>
+  #html-with-label.a-tabs-panel
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-label" for="datepicker-1">Date</label>
+        <div class="m-input__wrapper -icon--right">
+          <input id="datepicker-1" type="text" class="a-input" placeholder="MM/DD/YYYY">
+          <div class="a-icon -text--muted">
+            <svg>
+              <use xlink:href="#icon-date"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <script>chi.datePicker(document.getElementById('datepicker-1'));</script>
+
+h4 Disabled
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 14rem;")
+      chi-label(for='date-2')
+        | Date
+      chi-date-picker(id="date-2", disabled)
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-disabled
+      li.-active
+        a(href=`#webcomponent-disabled`) Web component
+      li
+        a(href=`#html-disabled`) HTML
+  #webcomponent-disabled.a-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for='date-2'>Date</chi-label>
+      <chi-date-picker id="date-2" disabled></chi-date-picker>
+  #html-disabled.a-tabs-panel
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-label" for="datepicker-2">Date</label>
+        <div class="m-input__wrapper -disabled -icon--right">
+          <input id="datepicker-2" type="text" class="a-input" placeholder="MM/DD/YYYY" disabled>
+          <div class="a-icon -text--muted">
+            <svg>
+              <use xlink:href="#icon-date"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+h3 Value, min and max options
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 14rem;")
+      chi-label(for='date-3') Date
+      chi-date-picker(id="date-3", value="01/24/2019", min="01/14/2019", max="02/07/2019")
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-min-max-value
+      li.-active
+        a(href=`#webcomponent-min-max-value`) Web component
+      li
+        a(href=`#html-min-max-value`) HTML + JS
+  #webcomponent-min-max-value.a-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for='date-3'>Date</chi-label>
+      <chi-date-picker id="date-3" value="01/24/2019" min="01/14/2019" max="02/07/2019">
+  #html-min-max-value.a-tabs-panel
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-label" for="datepicker-3">Date</label>
+        <div class="m-input__wrapper -icon--right">
+          <input id="datepicker-3" type="text" class="a-input" value="01/24/2019" min="01/14/2019" max="02/07/2019" placeholder="MM/DD/YYYY">
+          <div class="a-icon -text--muted">
+            <svg>
+              <use xlink:href="#icon-date"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <script>chi.datePicker(document.getElementById('datepicker-3'));</script>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function () {
+      chi.tab(document.querySelectorAll('#a-tabs--dp'));
+      chi.tab(document.querySelectorAll('#examples-default'));
+      chi.tab(document.querySelectorAll('#examples-active'));
+      chi.tab(document.querySelectorAll('#examples-min-max'));
+      chi.tab(document.querySelectorAll('#examples-with-label'));
+      chi.tab(document.querySelectorAll('#examples-disabled'));
+      chi.tab(document.querySelectorAll('#examples-min-max-value'));
+    }
+  );
