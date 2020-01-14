@@ -29,38 +29,22 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
   .-mb--1
     h5 Base
     .m-form__item
-      label.a-switch.-label--hide(for="toggle5")
-        input(type="checkbox", class="a-switch__input", id="toggle5")
-        span(class="a-switch__content")
-          span.a-switch__thumb
-        span.a-switch__label Label
+      chi-switch(id='toggle5',data-cy='toggle5', label='Label', hide-label)
 
   .-mb--1
     h5 Hover
     .m-form__item
-      label.a-switch.-label--hide(for="toggle6")
-        input(type="checkbox", class="a-switch__input", id="toggle6")
-        span(class="a-switch__content")
-          span.a-switch__thumb
-        span.a-switch__label Label
+      chi-switch(id='toggle6', extra-class='-hover', data-cy='toggle6', label='Label', hide-label)
 
   .-mb--1
     h5 Focus
     .m-form__item
-      label.a-switch.-label--hide(for="toggle7")
-        input(type="checkbox", class="a-switch__input -focus", id="toggle7")
-        span(class="a-switch__content")
-          span.a-switch__thumb
-        span.a-switch__label Label
+      chi-switch(id='toggle7', extra-class='-focus', data-cy='toggle7', label='Label', hide-label)
 
   .-mb--1
     h5 Disabled
     .m-form__item
-      label.a-switch.-label--hide(for="toggle8")
-        input(type="checkbox", class="a-switch__input", id="toggle8", disabled)
-        span(class="a-switch__content")
-          span.a-switch__thumb
-        span.a-switch__label Label
+      chi-switch(id='toggle8', disabled, data-cy='toggle8', label='Label', hide-label)
 
 style.
   chi-switch {

@@ -43,22 +43,20 @@ export class ToggleSwitch {
 
   render() {
     return (
-      [
-        <label htmlFor={`${this.el.id}-control`}
-              class="a-switch">
-          <input type="checkbox"
-                 class={`a-switch__input ${this.extraClass && this.extraClass}`}
-                 id={`${this.el.id}-control`}
-                 disabled={this.disabled}
-                 checked={this.checked}
-                 onClick={() => this._toggle()}
-          />
-          <span class="a-switch__content">
-            <span class="a-switch__thumb"></span>
-          </span>
-          <span class="a-switch__label">{this.label}</span>
-        </label>
-      ]
+      <label htmlFor={`${this.el.id}-control`}
+            class={`a-switch ${this.hideLabel ? '-label--hide' : ''}`}>
+        <input type="checkbox"
+               class={`a-switch__input ${this.extraClass && this.extraClass}`}
+               id={`${this.el.id}-control`}
+               disabled={this.disabled}
+               checked={this.checked}
+               onClick={() => this._toggle()}
+        />
+        <span class="a-switch__content">
+          <span class="a-switch__thumb"></span>
+        </span>
+        <span class="a-switch__label">{this.label}</span>
+      </label>
     );
   }
 }
