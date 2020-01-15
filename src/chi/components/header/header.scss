@@ -275,6 +275,43 @@
     }
 
   }
+
+  &.bottom-toolbar__navigation {
+    .o-header__content {
+      @include respond-to(md) {
+        grid-template-columns: auto auto 1fr;
+      }
+
+      .o-header__start {
+        padding-right: 0.25rem;
+
+        @include respond-to(sm) {
+          padding-right: 1rem;
+        }
+      }
+
+      .o-header__end {
+        color: set-color(white);
+        font-size: 0.75rem;
+
+        .toolbar__info {
+          border-right: 0;
+          display: inline-flex;
+          padding-right: 0.25rem;
+
+          @include respond-to(md) {
+            border-right: 1px solid set-color(grey, 30);
+            padding-right: 0.5rem;
+          }
+        }
+      }
+    }
+
+    .bottom-navigation {
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+  }
 }
 
 /* IE11 CSS hack */
