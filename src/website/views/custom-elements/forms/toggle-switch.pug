@@ -60,5 +60,18 @@ p.-text
       <chi-switch id="toggle6" label="Label"></chi-switch>
     </div>
 
+h3 Switch with Hidden Label
+p.-text
+  | Apply the <code>hide-label</code> attribute to <code>chi-switch</code> to render a switch without a label. Use this method for rendering switches
+  | in close proximity to other text that clearly describes its purpose.
+.example.-mb--3
+  .-p--3
+    .m-form__item
+      chi-switch(id='toggle7',label='Label', hide-label)
+  :code(lang="html")
+    <div class="m-form__item">
+      <chi-switch id="toggle7" label="Label" hide-label></chi-switch>
+    </div>
+
 h2 Additional usage details
 :stencilDoc(name='chi-switch')
