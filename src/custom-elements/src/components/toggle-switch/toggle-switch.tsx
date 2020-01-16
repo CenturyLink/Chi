@@ -46,7 +46,7 @@ export class ToggleSwitch {
       <label htmlFor={`${this.el.id}-control`}
             class={`a-switch ${this.hideLabel ? '-label--hide' : ''}`}>
         <input type="checkbox"
-               class={`a-switch__input ${this.extraClass && this.extraClass}`}
+               class={`a-switch__input ${this.extraClass ? this.extraClass : ''}`}
                id={`${this.el.id}-control`}
                disabled={this.disabled}
                checked={this.checked}
