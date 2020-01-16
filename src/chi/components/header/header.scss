@@ -277,6 +277,12 @@
   }
 
   &.bottom-toolbar__navigation {
+    .a-divider {
+      &.-colorbar {
+        height: 0.25rem;
+      }
+    }
+
     .o-header__content {
       @include respond-to(md) {
         grid-template-columns: auto auto 1fr;
@@ -300,7 +306,7 @@
           padding-right: 0.25rem;
 
           @include respond-to(md) {
-            border-right: 1px solid set-color(grey, 30);
+            border-right: 1px solid set-color(grey, 80);
             padding-right: 0.5rem;
           }
         }
@@ -310,6 +316,18 @@
     .bottom-navigation {
       padding: 0 1.5rem;
       width: 100%;
+
+      .a-tabs {
+        li {
+          &:not(:first-child) {
+            margin-left: 2rem;
+
+            @include respond-to(xl) {
+              margin-left: 3rem;
+            }
+          }
+        }
+      }
     }
   }
 }
