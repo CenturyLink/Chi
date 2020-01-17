@@ -110,7 +110,9 @@ class Drawer extends Component {
 
   show() {
     if (!this._shown) {
-      Util.addClass(document.body, DISABLE_SCROLL);
+      if (this._backdrop) {
+        Util.addClass(document.body, DISABLE_SCROLL);
+      }
       if (this._transitioning) {
         Util.stopThreeStepsAnimation(this._currentThreeStepsAnimation, false);
       }
