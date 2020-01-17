@@ -250,30 +250,6 @@
         }
       }
     }
-
-    .a-btn {
-      &.-icon {
-        &.-flat {
-          &.-light {
-            .a-icon:not(.icon-menu) {
-              color: set-color(grey, 50);
-            }
-
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus,
-            &:hover,
-            &.-hover {
-              .a-icon {
-                color: $text-white;
-              }
-            }
-          }
-        }
-      }
-    }
-
   }
 
   &.bottom-toolbar__navigation {
@@ -289,9 +265,7 @@
       }
 
       .o-header__start {
-        padding-right: 0.25rem;
-
-        @include respond-to(sm) {
+        @include respond-to(md) {
           padding-right: 1rem;
         }
       }
