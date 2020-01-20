@@ -117,6 +117,24 @@ $sidenav-lg-width: 12.5rem;
         background-color: set-color(grey, 10);
       }
     }
+
+    .m-sidenav__drawer-item-list {
+      background-color: set-color(grey, 20);
+      display: none;
+      max-height: 0;
+      overflow: hidden;
+      padding-left: 1rem;
+      transition: max-height 0.5s linear;
+
+      &.expanded {
+        display: block;
+        max-height: 20rem;
+      }
+
+      &.visible {
+        display: block;
+      }
+    }
   }
 
   &__title {

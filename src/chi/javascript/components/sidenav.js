@@ -1,7 +1,7 @@
-import {Component} from "../core/component";
-import {SlidingBorder, ANIMATION_DURATION as BORDER_ANIMATION_DURATION} from "./auxiliary/sliding-border";
-import {Util} from "../core/util.js";
-import {Drawer, EVENTS as DRAWER_EVENTS} from "./drawer";
+import { Component } from "../core/component";
+import { SlidingBorder, ANIMATION_DURATION as BORDER_ANIMATION_DURATION } from "./auxiliary/sliding-border";
+import { Util } from "../core/util.js";
+import { Drawer, EVENTS as DRAWER_EVENTS } from "./drawer";
 
 const CLASS_ACTIVE = "-active";
 const CLASS_ANIMATED = "-animated";
@@ -12,6 +12,7 @@ const LINKLIST_CLASS = 'm-sidenav__list';
 const SIDENAV_CONTENT_CLASS = 'm-sidenav__content';
 const SIDENAV_DRAWERS_CLASS = 'm-sidenav__drawers';
 const DRAWER_LINKLIST_CLASS = "m-sidenav__drawer-list";
+const DRAWER_ITEM_LIST_CLASS = "m-sidenav__drawer-item-list";
 
 const DEFAULT_CONFIG = {
   animated: true,
@@ -20,7 +21,7 @@ const DEFAULT_CONFIG = {
 
 class Sidenav extends Component {
 
-  constructor (elem, config) {
+  constructor(elem, config) {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     let self = this;
     this._slidingBorder = null;
@@ -32,7 +33,7 @@ class Sidenav extends Component {
     this._addEventHandler(
       this._drawersContainer,
       'click',
-      function(e) {
+      function (e) {
         self._handlerClickOnDrawer(e);
       }
     );
@@ -40,7 +41,7 @@ class Sidenav extends Component {
     this._addEventHandler(
       this._drawersContainer,
       DRAWER_EVENTS.show,
-      function(e){
+      function (e) {
         self._handlerDrawerShown(e);
       }
     );
@@ -64,7 +65,7 @@ class Sidenav extends Component {
 
     Array.prototype.forEach.call(
       this._elem.querySelectorAll('.' + LINKLIST_CLASS + '>li>a'),
-      function(menuItemLink) {
+      function (menuItemLink) {
         const drawerElem = Util.getTarget(menuItemLink);
         if (drawerElem && Util.hasClass(drawerElem, DRAWER_CLASS)) {
           const drawer = Drawer.factory(menuItemLink);
@@ -78,24 +79,24 @@ class Sidenav extends Component {
       }
     );
 
-    previousDrawers.forEach(function(drawer){
+    previousDrawers.forEach(function (drawer) {
       drawer.dispose();
     });
   }
 
-  getActiveMenuItem () {
+  getActiveMenuItem() {
     return this._elem.querySelector(
       'ul.' + LINKLIST_CLASS + '>li.' + CLASS_ACTIVE
     );
   }
 
-  getDrawerActiveMenuItem () {
+  getDrawerActiveMenuItem() {
     return this._elem.querySelector(
       'ul.' + DRAWER_LINKLIST_CLASS + '>li.' + CLASS_ACTIVE
     );
   }
 
-  getAssociatedDrawer (menuItemLink) {
+  getAssociatedDrawer(menuItemLink) {
     const drawerElem = Util.getTarget(menuItemLink);
     if (drawerElem && Util.hasClass(drawerElem, DRAWER_CLASS)) {
       const drawer = this._createDrawer(menuItemLink);
@@ -114,7 +115,7 @@ class Sidenav extends Component {
     }
   }
 
-  _createDrawer (drawerTrigger) {
+  _createDrawer(drawerTrigger) {
     return Drawer.factory(drawerTrigger, {
       animated: this._config.animated
     });
@@ -150,8 +151,9 @@ class Sidenav extends Component {
     }
   }
 
-  activateDrawerMenuItem(menuItem){
+  activateDrawerMenuItem(menuItem) {
     const currentlyActiveMenuItem = this.getDrawerActiveMenuItem();
+
     if (menuItem === currentlyActiveMenuItem) {
       return;
     }
@@ -159,24 +161,32 @@ class Sidenav extends Component {
 
     if (currentlyActiveMenuItem) {
       Util.removeClass(currentlyActiveMenuItem, CLASS_ACTIVE);
+
+      if (currentlyActiveMenuItem.querySelector('.m-sidenav__drawer-item-list')) {
+        Util.removeClass(currentlyActiveMenuItem.querySelector('.m-sidenav__drawer-item-list'), 'expanded');
+      }
     }
   }
 
-  hideAll () {
-    this._drawers.forEach(function(drawer){
+  hideAll() {
+    this._drawers.forEach(function (drawer) {
       drawer.hide();
+    });
+
+    this._elem.querySelectorAll('.m-drawer .m-sidenav__drawer-item-list').forEach(itemList => {
+      itemList.classList.remove('expanded');
     });
   }
 
-  _isLinkAMenuItemActivator (anchorElem) {
+  _isLinkAMenuItemActivator(anchorElem) {
     return Util.getTarget(anchorElem) ? true : false;
   }
 
-  _handlerClickOnDrawer (e) {
+  _handlerClickOnDrawer(e) {
 
     let drawer, activator, menuItem, menuItemLink, drawerMenuItem;
 
-    for (let cur = e.target ; cur && cur !== this._drawersContainer; cur = cur.parentNode) {
+    for (let cur = e.target; cur && cur !== this._drawersContainer; cur = cur.parentNode) {
       if (Util.hasClass(cur, DRAWER_CLASS)) {
         drawer = cur;
       } else if (
@@ -192,9 +202,22 @@ class Sidenav extends Component {
     if (activator && drawer.id) {
       menuItemLink = this._getMenuItemLink(drawer);
       menuItem = menuItemLink.parentNode;
-      this.close(menuItemLink);
+      if (drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) === null) {
+        this.close(menuItemLink);
+      }
 
       if (drawerMenuItem) {
+        const drawerMenuItemList = drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
+
+        if (drawerMenuItemList) {
+          drawerMenuItemList.classList.add('visible');
+          setTimeout(function () {
+            drawerMenuItemList.classList.add('expanded');
+          }, 50);
+          drawerMenuItemList.addEventListener('transitionend', function () {
+            drawerMenuItemList.classList.remove('visible');
+          });
+        }
         this.activateMenuItem(menuItem);
         this.activateDrawerMenuItem(drawerMenuItem);
       }
@@ -205,7 +228,7 @@ class Sidenav extends Component {
     const menuItemLink = this._getMenuItemLink(e.target);
     if (menuItemLink) {
       const drawer = this._createDrawer(menuItemLink);
-      this._drawers.forEach(function(otherDrawer){
+      this._drawers.forEach(function (otherDrawer) {
         if (otherDrawer !== drawer) {
           otherDrawer.hide();
         }
@@ -220,13 +243,13 @@ class Sidenav extends Component {
     return null;
   }
 
-  _getElementToMoveTo (menuItem) {
+  _getElementToMoveTo(menuItem) {
     if (!menuItem) {
       return menuItem;
     }
     let found = false;
     let child = null;
-    for (let i = 0 ; i < menuItem.childNodes.length && !found; i++) {
+    for (let i = 0; i < menuItem.childNodes.length && !found; i++) {
       if (menuItem.childNodes[i].nodeName === 'A') {
         child = menuItem.childNodes[i];
         found = true;
@@ -237,7 +260,7 @@ class Sidenav extends Component {
     return child || menuItem;
   }
 
-  dispose () {
+  dispose() {
     this._config = null;
 
     this._elem = null;
@@ -249,11 +272,11 @@ class Sidenav extends Component {
     }
   }
 
-  static get componentType () {
+  static get componentType() {
     return COMPONENT_TYPE;
   }
 
-  static get componentSelector () {
+  static get componentSelector() {
     return COMPONENT_SELECTOR;
   }
 
@@ -264,7 +287,7 @@ class Sidenav extends Component {
     this._addEventHandler(
       this._elem,
       'click',
-      function(){
+      function () {
         self._clickOnComponent = true;
       }
     );
@@ -272,9 +295,9 @@ class Sidenav extends Component {
     this._addEventHandler(
       document,
       'click',
-      function(){
+      function () {
         if (self._clickOnComponent) {
-          self._clickOnComponent=false;
+          self._clickOnComponent = false;
         } else {
           self.hideAll();
         }
@@ -284,13 +307,13 @@ class Sidenav extends Component {
     this._addEventHandler(
       this._elem,
       'mouseleave',
-      function(e){
+      function (e) {
         if (
           self._config.autoClose !== false &&
           e.target === self._elem &&
           self._config.autoClose >= 0
-        ){
-          self._autocloseTimeoutId = window.setTimeout(function(){
+        ) {
+          self._autocloseTimeoutId = window.setTimeout(function () {
             self.hideAll();
           }, self._config.autoClose);
         }
@@ -300,8 +323,8 @@ class Sidenav extends Component {
     this._addEventHandler(
       this._elem,
       'mouseenter',
-      function(e){
-        if (e.target === self._elem){
+      function (e) {
+        if (e.target === self._elem) {
           window.clearTimeout(self._autocloseTimeoutId);
         }
       }
@@ -310,4 +333,4 @@ class Sidenav extends Component {
 }
 
 const factory = Component.factory.bind(Sidenav);
-export {Sidenav, factory, COMPONENT_TYPE};
+export { Sidenav, factory, COMPONENT_TYPE };
