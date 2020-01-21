@@ -119,11 +119,9 @@ $sidenav-lg-width: 12.5rem;
     }
 
     .m-sidenav__drawer-item-list {
-      background-color: set-color(grey, 20);
       display: none;
       max-height: 0;
       overflow: hidden;
-      padding-left: 1rem;
       transition: max-height 0.5s linear;
 
       &.expanded {
@@ -223,6 +221,18 @@ $sidenav-lg-width: 12.5rem;
               color: $text-white;
             }
           }
+        }
+      }
+    }
+
+    .a-sliding-border {
+      background-color: $secondary-color;
+    }
+
+    &.-sliding {
+      .m-sidenav__list > li {
+        &.-active > a {
+          box-shadow: none;
         }
       }
     }
@@ -390,6 +400,114 @@ $sidenav-lg-width: 12.5rem;
 
         &.-animated:not(.-active) {
           left: -$drawer-width + $sidenav-lg-width;
+        }
+      }
+    }
+  }
+
+  &.-global-nav {
+    &.-inverse {
+      .m-sidenav__content {
+        border-right: 0;
+
+        nav {
+          ul {
+            &.m-sidenav__list {
+              li {
+                border-bottom: 0;
+
+                &.-active {
+                  a {
+                    background-color: rgba(set-color(mint, 40), 0.08);
+                  }
+                }
+
+                &:not(.-active) {
+                  a.-active {
+                    background-color: set-color(grey, 90);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .m-sidenav__drawers {
+        .m-drawer {
+          &.-active {
+            .m-drawer__header {
+              background-color: set-color(grey, 100);
+              color: set-color(grey, 40);
+              font-size: 16px;
+              height: 4rem;
+
+              .a-drawer__title {
+                left: 1.25rem;
+                position: absolute;
+                top: 1.25rem;
+              }
+
+              .a-btn {
+                &.-close {
+                  right: 1rem;
+                  top: 1rem;
+                }
+              }
+            }
+
+            .m-drawer__content {
+              background-color: set-color(grey, 90);
+
+              .m-sidenav__drawer-list {
+                border-top: 0;
+
+                li {
+                  border-bottom: 0;
+
+                  a {
+                    color: set-color(white);
+                    padding-bottom: 0.675rem;
+                    padding-top: 0.675rem;
+
+                    .m-sidenav__title {
+                      font-weight: 400;
+                    }
+                  }
+
+                  &.-active {
+                    & > a {
+                      background-color: set-color(grey, 80);
+                      box-shadow: none;
+                      padding-bottom: 0.375rem;
+
+                      .m-sidenav__title {
+                        font-weight: 600;
+                      }
+                    }
+
+                    .m-sidenav__drawer-item-list {
+                      background-color: set-color(grey, 80);
+
+                      .a-tabs {
+                        &.-sm {
+                          li {
+                            a {
+                              &.a-sidenav__drawer-item-tab {
+                                font-size: 13px;
+                                font-weight: 400;
+                                padding-left: 2rem;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

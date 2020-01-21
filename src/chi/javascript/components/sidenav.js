@@ -172,10 +172,6 @@ class Sidenav extends Component {
     this._drawers.forEach(function (drawer) {
       drawer.hide();
     });
-
-    this._elem.querySelectorAll('.m-drawer .m-sidenav__drawer-item-list').forEach(itemList => {
-      itemList.classList.remove('expanded');
-    });
   }
 
   _isLinkAMenuItemActivator(anchorElem) {
@@ -202,7 +198,8 @@ class Sidenav extends Component {
     if (activator && drawer.id) {
       menuItemLink = this._getMenuItemLink(drawer);
       menuItem = menuItemLink.parentNode;
-      if (drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) === null) {
+      if (drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) === null ||
+        e.target.classList.contains('a-sidenav__drawer-item-tab')) {
         this.close(menuItemLink);
       }
 
@@ -218,7 +215,10 @@ class Sidenav extends Component {
             drawerMenuItemList.classList.remove('visible');
           });
         }
-        this.activateMenuItem(menuItem);
+        if (!drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) ||
+            e.target.classList.contains('a-sidenav__drawer-item-tab')) {
+          this.activateMenuItem(menuItem);
+        }
         this.activateDrawerMenuItem(drawerMenuItem);
       }
     }
