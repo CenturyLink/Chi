@@ -16,11 +16,6 @@ export class Badge {
   @Prop({ reflect: true }) variant: string;
 
   /**
-   *  to render badges with a more pronounced border-radius.
-   */
-  @Prop({ reflect: true }) pill: boolean;
-
-  /**
    *  to set color of a badge { primary, success, warning, danger, dark, muted, secondary, light }.
    */
   @Prop({ reflect: true }) color: string;
@@ -74,7 +69,6 @@ export class Badge {
 	        ${this.size ? `-${this.size}` : ''}
 	        ${this.color ? `-${this.color}` : ''}
 	        ${this.variant ? `-${this.variant}` : ''}
-	        ${this.pill ? '-pill' : ''}
 	        ${this.textTransform ? `-text--${this.textTransform}` : ''}`}
       >
         {this.slotBadgeContent ?

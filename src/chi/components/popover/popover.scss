@@ -8,7 +8,6 @@ $popover-border-width: 0.0625rem;
 .m-popover {
   background-color: set-color(white);
   border: $popover-border-width solid set-color(grey, 30);
-  border-radius: $border-radius;
   box-shadow: map-get($shadow, 3);
   color: $text-color;
   display: none;

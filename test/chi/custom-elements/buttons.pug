@@ -49,38 +49,6 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     )
                       chi-icon(icon='atom')
                       span Button
-                    chi-button.-m--1.-mx--2(
-                      color=style
-                      size= size !== 'default' ? size : ''
-                      variant= type === 'solid' || type === 'fluid' ? '' : type
-                      fluid= type === 'fluid'
-                      pill
-                      disabled= state === 'disabled'
-                      extra-class= `-${state}`
-                    )= 'Button'
-                    chi-button.-m--1(
-                      color=style
-                      size= size !== 'default' ? size : ''
-                      type='icon'
-                      variant= type === 'solid' || type === 'fluid' ? '' : type
-                      fluid= type === 'fluid'
-                      pill
-                      disabled= state === 'disabled'
-                      extra-class= `-${state}`
-                      alternative-text="Button action"
-                    )
-                      chi-icon(icon='atom')
-                    chi-button.-m--1(
-                      color=style
-                      size= size !== 'default' ? size : ''
-                      pill
-                      variant= type === 'solid' || type === 'fluid' ? '' : type
-                      fluid= type === 'fluid'
-                      disabled= state === 'disabled'
-                      extra-class= `-${state}`
-                    )
-                      chi-icon(icon='atom')
-                      span Button
               else
                 td
                   .-mr--2
@@ -107,38 +75,6 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     chi-button.-m--1(
                       color=style
                       size= size !== 'default' ? size : ''
-                      variant= type === 'solid' || type === 'fluid' ? '' : type
-                      fluid= type === 'fluid'
-                      disabled= state === 'disabled'
-                      extra-class= `-${state}`
-                    )
-                      chi-icon(icon='atom')
-                      span Button
-                    chi-button.-m--1.-mx--2(
-                      color=style
-                      size= size !== 'default' ? size : ''
-                      variant= type === 'solid' || type === 'fluid' ? '' : type
-                      fluid= type === 'fluid'
-                      pill
-                      disabled= state === 'disabled'
-                      extra-class= `-${state}`
-                    )= 'Button'
-                    chi-button.-m--1(
-                      color=style
-                      size= size !== 'default' ? size : ''
-                      type='icon'
-                      variant= type === 'solid' || type === 'fluid' ? '' : type
-                      fluid= type === 'fluid'
-                      pill
-                      disabled= state === 'disabled'
-                      extra-class= `-${state}`
-                      alternative-text="Button action"
-                    )
-                      chi-icon(icon='atom')
-                    chi-button.-m--1(
-                      color=style
-                      size= size !== 'default' ? size : ''
-                      pill
                       variant= type === 'solid' || type === 'fluid' ? '' : type
                       fluid= type === 'fluid'
                       disabled= state === 'disabled'
@@ -185,7 +121,7 @@ script.
 
     return Array.from(buttons).every(x => getElementHeight(x) > 20);
   }
-  
+
   const renderCheckInterval = setInterval(function() {
     if (checkAllButtonsRendered()) {
       console.log("backstop_ready");

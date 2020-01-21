@@ -4,7 +4,6 @@
 .a-card {
   background-color: set-color(white);
   border: 0.0625rem solid rgba(set-color(black), 0.12);
-  border-radius: $border-radius;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -12,8 +11,6 @@
   word-wrap: break-word;
 
   &__hero {
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
     width: 100%;
   }
 

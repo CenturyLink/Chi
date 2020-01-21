@@ -14,18 +14,6 @@ each type in ['solid', 'outline', 'flat']
           chi-icon(icon='atom')
           span= style
 
-each type in ['solid', 'outline']
-  div(class=`test-pill-${type}`)
-    span.a-h2= `Badge / Pill / ${type}`
-    table(cellpadding="0", cellspacing="0")
-      tr
-        each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'light']
-          td
-            chi-badge(pill, class='-mr--1', color=`${style === 'base' ? '' : style}`, variant=`${type === 'solid' ? '' : type}`, id=`badge-pill-${type}-${style}`)= '50'
-            chi-badge(pill, class='-mr--1', color=`${style === 'base' ? '' : style}`, variant=`${type === 'solid' ? '' : type}`, id=`badge-pill-icon-${type}-${style}`)
-              chi-icon(icon='atom')
-              span 50
-
 h2 Badge Icons
 .test-badge-icons
   .example.-mb--1

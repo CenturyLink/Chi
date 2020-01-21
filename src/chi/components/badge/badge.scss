@@ -6,7 +6,6 @@ $badge: c-badge;
 .a-badge {
   background-color: set-color(white);
   border: 0.0625rem solid set-color(grey, 30);
-  border-radius: $border-radius;
   box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
   display: inline-block;
   font-size: $text;
@@ -90,10 +89,6 @@ $badge: c-badge;
     span {
       line-height: $line-height-smaller;
     }
-  }
-
-  &.-pill {
-    border-radius: 0.75rem;
   }
 
   &.-outline {

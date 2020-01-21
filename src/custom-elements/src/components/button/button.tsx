@@ -34,11 +34,6 @@ export class Button {
   @Prop({ reflect: true }) size: string;
 
   /**
-   *  to to render buttons with a more pronounced border-radius.
-   */
-  @Prop({ reflect: true }) pill = false;
-
-  /**
    *  to render a button to fill the parent space.
    */
   @Prop({ reflect: true }) fluid = false;
@@ -119,7 +114,6 @@ export class Button {
         <button
           class={`a-btn
           ${this.variant ? `-${this.variant}` : ''}
-          ${this.pill ? '-pill' : ''}
           ${this.color ? `-${this.color}` : ''}
           ${this.type ? `-${this.type}` : ''}
           ${this.size ? `-${this.size}` : ''}

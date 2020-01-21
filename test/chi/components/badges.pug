@@ -28,34 +28,6 @@ each type in ['solid', 'outline', 'flat']
                 use(xlink:href='#icon-atom')
             span= style
 
-each type in ['solid', 'outline']
-  div(class=`test-pill-${type}`)
-    span.a-h2= `Badge / Pill / ${type}`
-    table(cellpadding="0", cellspacing="0")
-      tr
-        each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'light']
-          td
-            div(
-            class="a-badge -pill -mr--1"
-            class={
-              [`-${type}`]: type !== 'solid',
-              [`-${style}`]: style !== 'base'
-            }
-            )
-              span 50
-            div(
-            class="a-badge -pill -mr--1"
-            class={
-              [`-${type}`]: type !== 'solid',
-              [`-${style}`]: style !== 'base'
-            }
-            )
-              .a-badge__content
-                .a-icon
-                  svg
-                    use(xlink:href='#icon-atom')
-                span 50
-
 h2 Badge Icons
 .test-badge-icons
   .example.-mb--1

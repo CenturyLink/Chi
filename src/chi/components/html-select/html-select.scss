@@ -6,7 +6,6 @@ $sizes: (
     height: 1.5rem,
     font-size: 0.75rem,
     line-height: 1rem,
-    border-radius: 0.75rem,
     background-position: right 0.5rem center,
     padding-left: 0.75rem,
   ),
@@ -14,7 +13,6 @@ $sizes: (
     height: 1.5rem,
     font-size: 0.75rem,
     line-height: 1rem,
-    border-radius: 0.75rem,
     background-position: right 0.5rem center,
     padding-left: 0.75rem,
   ),
@@ -22,7 +20,6 @@ $sizes: (
     height: 2rem,
     font-size: 0.875rem,
     line-height: 1rem,
-    border-radius: 1rem,
     background-position: right 0.5rem center,
     padding-left: 0.75rem,
   ),
@@ -30,7 +27,6 @@ $sizes: (
     height: 2.5rem,
     font-size: 0.875rem,
     line-height: 1.25rem,
-    border-radius: 1.25rem,
     background-position: right 1rem center,
     padding-left: 0.75rem,
   ),
@@ -38,7 +34,6 @@ $sizes: (
     height: 2.5rem,
     font-size: 0.875rem,
     line-height: 1.25rem,
-    border-radius: 1.25rem,
     background-position: right 1rem center,
     padding-left: 0.75rem,
   ),
@@ -46,7 +41,6 @@ $sizes: (
     height: 3rem,
     font-size: 0.875rem,
     line-height: 1.25rem,
-    border-radius: 1.5rem,
     background-position: right 1rem center,
     padding-left: 0.75rem,
   )
@@ -61,7 +55,7 @@ select {
     background-repeat: no-repeat;
     background-size: 0.75rem 0.75rem;
     border: 0.0625rem solid set-color(grey, 30);
-    border-radius: $border-radius;
+    border-radius: 0;
     color: set-color(grey, 90);
     cursor: hand;
     cursor: pointer; // sass-lint:disable-line no-duplicate-properties
@@ -130,16 +124,6 @@ select {
       &:focus,
       &.-focus {
         box-shadow: 0 0 0 1px rgba(set-color(red, 60), 1);
-      }
-    }
-  }
-
-  &.-pill {
-    border-radius: 1rem;
-
-    @each $type in map-keys($sizes) {
-      &.-#{$type} {
-        border-radius: map-get(map-get($sizes, $type), border-radius);
       }
     }
   }

@@ -118,45 +118,6 @@ p.-text Apply the class <code>-active</code> to indicate the current page.
       </div>
     </nav>
 
-h2 Pill
-p.-text Use the <code>-pill</code> modifier class to render Pagination with a more pronounced border-radius.
-.example.-mb--3
-  .-p--5
-    nav.a-pagination(role='navigation', aria-label='Pagination')
-      .m-btnGroup.-pill
-        each step in steps
-          if step == '0'
-            a(class=`a-btn`, href='#', aria-label='Previous')
-              i(class="a-icon icon-chevron-left", aria-hidden='true')
-              span.-sr--only Previous
-          else if step == '6'
-            a(class=`a-btn`, href='#' aria-label='Next')
-              i(class="a-icon icon-chevron-right", aria-hidden='true')
-              span.-sr--only Next
-          else
-            a(class=`a-btn`, href='#')= `${step}`
-  :code(lang="html")
-    <nav class="a-pagination" role="navigation" aria-label="Pagination">
-      <div class="m-btnGroup -pill">
-        <a href="#" class="a-btn" aria-label="Previous">
-          <i class="a-icon icon-chevron-left" aria-hidden="true"></i>
-          <span class="-sr--only">Previous</span>
-        </a>
-        <a href="#" class="a-btn">1</a>
-        <a href="#" class="a-btn">2</a>
-        <a href="#" class="a-btn">3</a>
-        <a href="#" class="a-btn">4</a>
-        <a href="#" class="a-btn">5</a>
-        <a href="#" class="a-btn" aria-label="Next">
-          <i class="a-icon icon-chevron-right" aria-hidden="true"></i>
-          <span class="-sr--only">Next</span>
-        </a>
-      </div>
-    </nav>
-
-
-
-
 h2 Additional Sizes
 p.-text Pagination supports three additional sizes: <code>-sm</code>, <code>-lg</code>, and <code>-xl</code>.
 .example.-mb--3

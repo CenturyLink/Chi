@@ -53,11 +53,6 @@ export class NumberInput {
   @Prop({ reflect: true }) expanded?: boolean;
 
   /**
-   * used to determine if expanded component has a pill look
-   */
-  @Prop({ reflect: true }) pill?: boolean;
-
-  /**
    * used to provide an input style like 'danger'. Mostly used for testing purposes
    */
   @Prop() inputstyle?: string;
@@ -191,9 +186,7 @@ export class NumberInput {
 
     const expanded = (
       <div
-        class={`m-inputNumber ${this.size ? `-${this.size}` : ''} ${
-          this.pill ? '-pill' : ''
-        }`}
+        class={`m-inputNumber ${this.size ? `-${this.size}` : ''}`}
       >
         {input}
         <button
