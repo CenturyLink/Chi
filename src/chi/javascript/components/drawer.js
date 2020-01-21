@@ -109,8 +109,10 @@ class Drawer extends Component {
   }
 
   show() {
-    Util.addClass(document.body, DISABLE_SCROLL);
     if (!this._shown) {
+      if (this._backdrop) {
+        Util.addClass(document.body, DISABLE_SCROLL);
+      }
       if (this._transitioning) {
         Util.stopThreeStepsAnimation(this._currentThreeStepsAnimation, false);
       }
@@ -158,8 +160,8 @@ class Drawer extends Component {
   }
 
   hide() {
-    Util.removeClass(document.body, DISABLE_SCROLL);
     if (this._shown) {
+      Util.removeClass(document.body, DISABLE_SCROLL);
       if (this._transitioning) {
         Util.stopThreeStepsAnimation(this._currentThreeStepsAnimation, false);
       }
