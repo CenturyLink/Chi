@@ -1,9 +1,13 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "timestamp": "2020-01-28T19:49:57",
 =======
   "timestamp": "2020-01-21T16:55:49",
 >>>>>>> [PE-4143] Remove border-radius from all components
+=======
+  "timestamp": "2020-01-23T17:57:00",
+>>>>>>> Remove rounded banner alerts
   "compiler": {
     "name": "@stencil/core",
     "version": "1.7.5",
@@ -108,23 +112,6 @@
           "attr": "mutable",
           "reflectToAttr": true,
           "docs": "to hide the alert when dismissed.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "rounded",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "rounded",
-          "reflectToAttr": true,
-          "docs": "to make Banner alert corners rounded.",
           "docsTags": [],
           "default": "false",
           "values": [

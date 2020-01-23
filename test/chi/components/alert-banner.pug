@@ -37,7 +37,7 @@ each size in ['default', 'sm', 'lg']
             .a-icon
               svg
                 use(xlink:href='#icon-x')
-            
+
   h4 Borderless / #{size}
   div(class=`test-banner-borderless-${size} -w--100`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
@@ -47,17 +47,7 @@ each size in ['default', 'sm', 'lg']
             use(xlink:href=`#${val}`)
         .m-alert__content
           p.m-alert__text=`This is a borderless ${type} alert`
-            
-  h4 Rounded / #{size}
-  div(class=`test-banner-rounded-${size} -w--100`)
-    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-m--2.-banner(class=`-${type} -rounded ${size === 'default' ? '' : '-' + size}`)
-        div(class=`m-alert__icon a-icon -text--${type}`)
-          svg
-            use(xlink:href=`#${val}`)
-        .m-alert__content
-          p.m-alert__text=`This is a rounded ${type} alert`
-            
+
   h4 Titled / #{size}
   div(class=`test-banner-titled-${size} -w--100`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}

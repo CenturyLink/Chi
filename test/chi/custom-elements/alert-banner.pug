@@ -25,11 +25,6 @@ each size in ['default', 'sm', 'lg']
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(color=type, icon=val, type="banner", borderless, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-borderless-${type}-${size}`)
         =`This is a borderless ${type} alert`
-  h4 Rounded / #{size}
-  div(class=`test-banner-rounded-${size} -w--100`)
-    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val, type="banner", rounded, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-rounded-${type}-${size}`)
-        =`This is a rounded ${type} alert`
   h4 Titled / #{size}
   div(class=`test-banner-titled-${size} -w--100`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}

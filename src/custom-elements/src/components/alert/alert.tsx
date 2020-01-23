@@ -41,11 +41,6 @@ export class Alert {
   @Prop({ reflect: true }) borderless = false;
 
   /**
-   *  to make Banner alert corners rounded.
-   */
-  @Prop({ reflect: true }) rounded = false;
-
-  /**
    *  to center the alert content.
    */
   @Prop({ reflect: true }) center = false;
@@ -137,8 +132,7 @@ export class Alert {
         ${this.center ? '-center' : ''}
         ${this.dismissible ? '-dismiss' : ''}
         ${this.size ? `-${this.size}` : ''}
-        ${this.type === 'banner' && this.borderless ? `-borderless` : ''}
-        ${this.type === 'banner' && this.rounded ? `-rounded` : ''}`}
+        ${this.type === 'banner' && this.borderless ? `-borderless` : ''}`}
         role="alert"
       >
         {this.icon && chiIcon}
