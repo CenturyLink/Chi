@@ -161,3 +161,29 @@ title: Card
   .a-card.-active--alt(style="width:20rem;")
     .a-card__content.-text
       | This is an active alt card
+
+.test-card-portal-base
+  h3 Portal Base
+  .a-card.-portal(style="width:20rem;")
+    .a-card__header.-noBorder
+      .a-card__title Title
+    .a-card__content
+      p.-text--smaller.-m--0
+        | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+        | Ut felis magna, facilisis ut malesuada nec.
+
+.test-card-portal-base-tabs
+  h3 Portal Base + Tabs
+  .a-card.-portal.-tabs(style="width:20rem;")
+    .a-card__header.-noBorder.-py--0
+      ul.a-tabs
+        li.-active
+          a(href='#') Active Tab
+        li
+          a(href='#') Tab Link
+        li
+          a(href='#') Tab Link
+    .a-card__content
+      p.-text--smaller.-m--0
+        | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+        | Ut felis magna, facilisis ut malesuada nec.

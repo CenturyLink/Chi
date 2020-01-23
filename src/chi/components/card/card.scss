@@ -159,4 +159,39 @@
       }
     }
   }
+
+  &.-portal {
+    background-color: set-color(grey, 20);
+    border: 0;
+    border-radius: 0;
+
+    .a-card__header {
+      background-color: set-color(grey, 30);
+      padding: .5rem 1rem;
+
+      .a-card__title {
+        font-size: 0.75rem;
+        font-weight: 600;
+        line-height: 1rem;
+      }
+
+      .a-tabs {
+        height: 2rem;
+
+        &:not(.-vertical):not(.-responsive) > li {
+          > a {
+            font-size: 0.75rem;
+            padding-bottom: 0.4375rem;
+            padding-top: 0.5625rem;
+          }
+
+          &.-active {
+            > a {
+              padding-bottom: 0.3125rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }
