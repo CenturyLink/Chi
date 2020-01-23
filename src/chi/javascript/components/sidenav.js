@@ -122,8 +122,9 @@ class Sidenav extends Component {
   }
 
   activateMenuItem(menuItem) {
-
     const currentlyActiveMenuItem = this.getActiveMenuItem();
+    const currentlySelectedMenuItem = menuItem.parentNode.querySelector('li a.unselected');
+
     if (menuItem === currentlyActiveMenuItem) {
       return;
     }
@@ -139,6 +140,9 @@ class Sidenav extends Component {
     }
 
     Util.addClass(menuItem, CLASS_ACTIVE);
+    if (currentlySelectedMenuItem) {
+      Util.removeClass(currentlySelectedMenuItem, 'unselected');
+    }
 
     if (currentlyActiveMenuItem) {
       Util.removeClass(currentlyActiveMenuItem, CLASS_ACTIVE);
@@ -163,15 +167,20 @@ class Sidenav extends Component {
       Util.removeClass(currentlyActiveMenuItem, CLASS_ACTIVE);
 
       if (currentlyActiveMenuItem.querySelector('.m-sidenav__drawer-item-list')) {
-        Util.removeClass(currentlyActiveMenuItem.querySelector('.m-sidenav__drawer-item-list'), 'expanded');
+        Util.removeClass(currentlyActiveMenuItem, 'expanded');
       }
     }
   }
 
   hideAll() {
+    const unsetlectedMenuItemLink = this._elem.querySelector('li.-active a.unselected');
+
     this._drawers.forEach(function (drawer) {
       drawer.hide();
     });
+    if (unsetlectedMenuItemLink) {
+      Util.removeClass(unsetlectedMenuItemLink, 'unselected');
+    }
   }
 
   _isLinkAMenuItemActivator(anchorElem) {
@@ -179,7 +188,6 @@ class Sidenav extends Component {
   }
 
   _handlerClickOnDrawer(e) {
-
     let drawer, activator, menuItem, menuItemLink, drawerMenuItem;
 
     for (let cur = e.target; cur && cur !== this._drawersContainer; cur = cur.parentNode) {
@@ -199,7 +207,7 @@ class Sidenav extends Component {
       menuItemLink = this._getMenuItemLink(drawer);
       menuItem = menuItemLink.parentNode;
       if (drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) === null ||
-        e.target.classList.contains('a-sidenav__drawer-item-tab')) {
+      Util.hasClass(e.target, 'a-sidenav__drawer-item-tab')) {
         this.close(menuItemLink);
       }
 
@@ -207,16 +215,24 @@ class Sidenav extends Component {
         const drawerMenuItemList = drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
 
         if (drawerMenuItemList) {
-          drawerMenuItemList.classList.add('visible');
-          setTimeout(function () {
-            drawerMenuItemList.classList.add('expanded');
-          }, 50);
-          drawerMenuItemList.addEventListener('transitionend', function () {
-            drawerMenuItemList.classList.remove('visible');
-          });
+          if (Util.hasClass(drawerMenuItem, 'expanded')) {
+            Util.addClass(drawerMenuItemList, 'visible');
+            Util.removeClass(drawerMenuItem, 'expanded');
+            drawerMenuItemList.addEventListener('transitionend', function () {
+              Util.removeClass(drawerMenuItem, 'visible');
+            }, 0);
+          } else {
+            Util.addClass(drawerMenuItemList, 'visible');
+            setTimeout(function () {
+              Util.addClass(drawerMenuItem, 'expanded');
+            }, 50);
+            drawerMenuItemList.addEventListener('transitionend', function () {
+              Util.removeClass(drawerMenuItemList, 'visible');
+            });
+          }
         }
         if (!drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) ||
-            e.target.classList.contains('a-sidenav__drawer-item-tab')) {
+            Util.hasClass(e.target, 'a-sidenav__drawer-item-tab')) {
           this.activateMenuItem(menuItem);
         }
         this.activateDrawerMenuItem(drawerMenuItem);
@@ -226,6 +242,7 @@ class Sidenav extends Component {
 
   _handlerDrawerShown(e) {
     const menuItemLink = this._getMenuItemLink(e.target);
+
     if (menuItemLink) {
       const drawer = this._createDrawer(menuItemLink);
       this._drawers.forEach(function (otherDrawer) {
@@ -233,6 +250,16 @@ class Sidenav extends Component {
           otherDrawer.hide();
         }
       });
+
+      if (Util.hasClass(this._elem, '-global-nav')) {
+        const activeItemLink = menuItemLink.parentNode.parentNode.querySelector('li.-active a');
+
+        if (!Util.hasClass(menuItemLink.parentNode, '-active')) {
+          Util.addClass(activeItemLink, 'unselected');
+        } else if (Util.hasClass(activeItemLink, 'unselected')) {
+            Util.removeClass(activeItemLink, 'unselected');
+        }
+      }
     }
   }
 

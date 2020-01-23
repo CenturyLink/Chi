@@ -265,14 +265,14 @@ h3(id=`example-${example}`) Enterprise Global Navigation
             .m-drawer__content
               ul.m-sidenav__drawer-list
                 each val2, index in drawerMenuItems
-                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
+                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active expanded':''}`)
                     a(href=`#drawer-item-list-${val1}-${val2}`)
                       if index % 4 < 2
                         .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                       else
                         span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                     if val2 === 'A' ||  val2 === 'B'
-                      .m-sidenav__drawer-item-list(id=`drawer-item-${val1}-${val2}`, class=`${val1===active.menuItem && val2===active.drawerMenuItem ? 'expanded':''}`)
+                      .m-sidenav__drawer-item-list(id=`drawer-item-${val1}-${val2}`)
                         ul.a-tabs.-vertical.-sm
                           li
                             a(class='a-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab A
@@ -347,12 +347,12 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                     </ul>
                   </div>
                 </li>
-                <li class="-active">
+                <li class="-active expanded">
                   <a href="#drawer-item-list-1-B">
                     <div class="m-sidenav__title">Title B</div>
                   </a>
                   <div
-                    class="m-sidenav__drawer-item-list expanded"
+                    class="m-sidenav__drawer-item-list"
                     id="drawer-item-1-B"
                   >
                     <ul class="a-tabs -vertical -sm">
@@ -738,7 +738,10 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.sidenav(document.querySelectorAll('#sidenav-0, #sidenav-global-nav-1'));
+      chi.sidenav(document.querySelectorAll('#sidenav-0'));
+      chi.sidenav(document.querySelectorAll('#sidenav-global-nav-1'), {
+        animated: false
+      });
       chi.sidenav(
         document.querySelectorAll('#sidenav-1'),
         {
