@@ -290,7 +290,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
       a(href='#a-tabs-three-level-js') JS
   #a-tabs-three-level-html.a-tabs-panel.-active
     :code(lang="html")
-      <aside class="m-sidenav -inverse -global-nav -animated" id="sidenav-global-nav-1">
+      <aside class="m-sidenav -inverse -global-nav" id="sidenav-global-nav-1">
         <div class="m-sidenav__content">
           <nav>
             <ul class="m-sidenav__list">
@@ -445,7 +445,11 @@ h3(id=`example-${example}`) Enterprise Global Navigation
       </aside>
   #a-tabs-three-level-js.a-tabs-panel
     :code(lang="html")
-      <script>chi.sidenav(document.getElementById('sidenav-global-nav-1'));</script>
+      <script>
+        chi.sidenav(document.getElementById('sidenav-global-nav-1'), {
+          animated: false
+        });
+      </script>
 
 h2 Options
 p.-text This component accepts options to configure its behavior.

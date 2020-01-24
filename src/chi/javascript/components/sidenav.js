@@ -164,10 +164,14 @@ class Sidenav extends Component {
     Util.addClass(menuItem, CLASS_ACTIVE);
 
     if (currentlyActiveMenuItem) {
+      const currentlyActiveItemList = currentlyActiveMenuItem.querySelector('.m-sidenav__drawer-item-list');
+
       Util.removeClass(currentlyActiveMenuItem, CLASS_ACTIVE);
 
-      if (currentlyActiveMenuItem.querySelector('.m-sidenav__drawer-item-list')) {
+      if (currentlyActiveItemList) {
         Util.removeClass(currentlyActiveMenuItem, 'expanded');
+        Util.removeClass(currentlyActiveItemList, 'visible');
+        currentlyActiveItemList.style.removeProperty('height');
       }
     }
   }
@@ -213,23 +217,45 @@ class Sidenav extends Component {
 
       if (drawerMenuItem) {
         const drawerMenuItemList = drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
-
+        let drawerItemSubtabHeight;
+        
         if (drawerMenuItemList) {
-          if (Util.hasClass(drawerMenuItem, 'expanded')) {
-            Util.addClass(drawerMenuItemList, 'visible');
-            Util.removeClass(drawerMenuItem, 'expanded');
-            drawerMenuItemList.addEventListener('transitionend', function () {
-              Util.removeClass(drawerMenuItem, 'visible');
-            }, 0);
+          if (window.getComputedStyle(drawerMenuItemList).display === 'block') {
+            drawerItemSubtabHeight = window.getComputedStyle(drawerMenuItemList).height;
           } else {
-            Util.addClass(drawerMenuItemList, 'visible');
+            drawerMenuItemList.style.position = 'absolute';
+            drawerMenuItemList.style.visibility = 'hidden';
+            drawerMenuItemList.style.display = 'block';
+            drawerItemSubtabHeight = window.getComputedStyle(drawerMenuItemList).height;
+            drawerMenuItemList.style.removeProperty('display');
+            drawerMenuItemList.style.removeProperty('visibility');
+            drawerMenuItemList.style.removeProperty('position');
+          }
+          Util.addClass(drawerMenuItemList, 'visible');
+          if (!Util.hasClass(drawerMenuItem, 'expanded')) {
+            drawerMenuItemList.style.height = '0px';
             setTimeout(function () {
+              drawerMenuItemList.style.height = drawerItemSubtabHeight;
               Util.addClass(drawerMenuItem, 'expanded');
             }, 50);
-            drawerMenuItemList.addEventListener('transitionend', function () {
-              Util.removeClass(drawerMenuItemList, 'visible');
-            });
+          } else {
+            drawerMenuItemList.style.height = drawerItemSubtabHeight;
+            setTimeout(function () {
+              drawerMenuItemList.style.height = '0px';
+              Util.removeClass(drawerMenuItem, 'expanded');
+            }, 50);
           }
+
+          drawerMenuItemList.addEventListener('transitionend', function () {
+            if (!Util.hasClass(drawerMenuItem, 'expanded')) {
+              Util.removeClass(drawerMenuItem, '-active');
+              Util.removeClass(drawerMenuItem, 'expanded');
+              Util.removeClass(drawerMenuItemList, 'visible');
+              drawerMenuItemList.style.removeProperty('height');
+            } else {
+              return;
+            }
+          }, { once: true });
         }
         if (!drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) ||
             Util.hasClass(e.target, 'a-sidenav__drawer-item-tab')) {
