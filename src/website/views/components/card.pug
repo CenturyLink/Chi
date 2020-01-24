@@ -408,28 +408,28 @@ h3 Portal base
 .example.-mb--3
   .-p--3
     .a-card.-portal(style="width:20rem;")
-      .a-card__header.-noBorder
+      .a-card__header
         .a-card__title Title
       .a-card__content
-        p.-text--smaller.-m--0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
   :code(lang="html")
     <div class="a-card -portal">
-      <div class="a-card__header -noBorder">
+      <div class="a-card__header">
         <div class="a-card__title">Title</div>
       </div>
       <div class="a-card__content">
-        <p class="-text--smaller -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
     </div>
 
 h3 Portal with tabs
 .example.-mb--3
   .-p--3
-    .a-card.-portal.-tabs(style="width:20rem;")
-      .a-card__header.-noBorder.-py--0
-        ul.a-tabs
+    .a-card.-portal(style="width:20rem;")
+      .a-card__header
+        ul.a-tabs.-xs
           li.-active
             a(href='#') Active Tab
           li
@@ -437,13 +437,13 @@ h3 Portal with tabs
           li
             a(href='#') Tab Link
       .a-card__content
-        p.-text--smaller.-m--0
+        p.-text.-m--0
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
   :code(lang="html")
     <div class="a-card -portal">
-      <div class="a-card__header -noBorder -py--0">
-        <ul class="a-tabs">
+      <div class="a-card__header">
+        <ul class="a-tabs -xs">
           <li class="-active">
             <a href="#">Active Tab</a>
           </li>
@@ -456,6 +456,6 @@ h3 Portal with tabs
         </ul>
       </div>
       <div class="a-card__content">
-        <p class="-text--smaller -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
       </div>
     </div>

@@ -258,6 +258,21 @@
     }
   }
 
+  &.-xs {
+    height: 2.5rem;
+
+    & > li {
+      &.-active > a {
+        padding-bottom: 0.5625rem;
+      }
+
+      & > a {
+        font-size: $text-smaller;
+        padding: 0.8125rem 0 0.6875rem 0;
+      }
+    }
+  }
+
   &.-sm,
   &.-small { //Legacy code: -small to be removed.
     height: 3rem;
