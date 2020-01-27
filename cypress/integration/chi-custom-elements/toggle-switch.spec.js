@@ -2,14 +2,12 @@ describe('Toggle Switch', () => {
   const selectors = [
     'toggle1',
     'toggle4',
-    'toggle5',
   ];
 
   const assertion = (el, chainer, value) => {
     cy.get(el)
-      .children()
-      .first()
-      .should('match', 'input')
+      .find('label')
+      .find('input')
       .and(chainer, value);
   };
 
@@ -26,7 +24,7 @@ describe('Toggle Switch', () => {
   });
 
   it('Toggle switch should be included inside the custom element', () => {
-    assertion('@toggle1', 'have.class', 'a-input -toggle');
+    assertion('@toggle1', 'have.class', 'a-switch__input');
   });
 
   it('Disabled toggle switch should be have appropriate attribute', () => {
@@ -44,7 +42,7 @@ describe('Toggle Switch', () => {
       });
     });
 
-    cy.get('@toggle5')
+    cy.get('@toggle1')
       .click()
       .then(() => {
         expect(spy).to.be.called;

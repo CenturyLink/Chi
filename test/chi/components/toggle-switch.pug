@@ -4,43 +4,73 @@ title: Toggle switch
 .test-states
   .-mb--1
     h5 Base
-    input(type="checkbox", class="a-input -toggle", id="checkbox01")
-    label(for="checkbox01")
+    .m-form__item
+      label.a-switch(for="toggle1")
+        input(type="checkbox", class="a-switch__input", id="toggle1")
+        span(class="a-switch__content")
+          span.a-switch__thumb
+        span.a-switch__label Label
 
   .-mb--1
     h5 Hover
-    input(type="checkbox", class="a-input -toggle", id="checkbox02")
-    label(class="-hover", for="checkbox02")
+    .m-form__item
+      label.a-switch(for="toggle2")
+        input(type="checkbox", class="a-switch__input", id="toggle2")
+        span(class="a-switch__content")
+          span.a-switch__thumb
+        span.a-switch__label Label
 
   .-mb--1
     h5 Focus
-    input(type="checkbox", class="a-input -toggle -focus", checked, id="checkbox03")
-    label(for="checkbox03")
+    .m-form__item
+      label.a-switch(for="toggle3")
+        input(type="checkbox", class="a-switch__input -focus", id="toggle3")
+        span(class="a-switch__content")
+          span.a-switch__thumb
+        span.a-switch__label Label
 
   .-mb--1
     h5 Disabled
-    input(type="checkbox", class="a-input -toggle", id="checkbox04", checked, disabled)
-    label(for="checkbox04")
+    .m-form__item
+      label.a-switch(for="toggle4")
+        input(type="checkbox", class="a-switch__input", id="toggle4", disabled)
+        span(class="a-switch__content")
+          span.a-switch__thumb
+        span.a-switch__label Label
 
-h4 No text
-
-.test-no-text-states
+.test-hide-label-states
   .-mb--1
     h5 Base
-    input(type="checkbox", class="a-input -toggle -noText", id="checkbox11")
-    label(for="checkbox11")
+    .m-form__item
+      label.a-switch.-label--hide(for="toggle5")
+        input(type="checkbox", class="a-switch__input", id="toggle5")
+        span(class="a-switch__content")
+          span.a-switch__thumb
+        span.a-switch__label Label
 
   .-mb--1
     h5 Hover
-    input(type="checkbox", class="a-input -toggle -noText", id="checkbox12")
-    label(class="-hover", for="checkbox12")
+    .m-form__item
+      label.a-switch.-label--hide(for="toggle6")
+        input(type="checkbox", class="a-switch__input", id="toggle6")
+        span(class="a-switch__content")
+          span.a-switch__thumb
+        span.a-switch__label Label
 
   .-mb--1
     h5 Focus
-    input(type="checkbox", class="a-input -toggle -noText -focus", checked, id="checkbox13")
-    label(for="checkbox13")
+    .m-form__item
+      label.a-switch.-label--hide(for="toggle7")
+        input(type="checkbox", class="a-switch__input -focus", id="toggle7")
+        span(class="a-switch__content")
+          span.a-switch__thumb
+        span.a-switch__label Label
 
   .-mb--1
     h5 Disabled
-    input(type="checkbox", class="a-input -toggle -noText", id="checkbox14", checked, disabled)
-    label(for="checkbox14")
+    .m-form__item
+      label.a-switch.-label--hide(for="toggle8")
+        input(type="checkbox", class="a-switch__input", id="toggle8", disabled)
+        span(class="a-switch__content")
+          span.a-switch__thumb
+        span.a-switch__label Label

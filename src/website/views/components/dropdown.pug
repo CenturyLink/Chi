@@ -507,35 +507,66 @@ h3 Toggle Switch
   .-p--3
     .a-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
       .m-dropdown__menu.-active
+        legend.m-dropdown__menu-item Configure options
         .m-dropdown__menu-item
-          input(type="checkbox", class="a-input -toggle", id="toggle-mail")
-          label(for="toggle-mail")
-          label(class="-text", for="toggle-mail") Email notifications
+          .m-form__item
+            label.a-switch(for="toggle-mail")
+              input(type="checkbox", class="a-switch__input", id="toggle-mail")
+              span(class="a-switch__content")
+                span.a-switch__thumb
+              span.a-switch__label Email notifications
         .m-dropdown__menu-item
-          input(type="checkbox", class="a-input -toggle", id="toggle-tlf")
-          label(for="toggle-tlf")
-          label(class="-text", for="toggle-tlf") Phone notifications
+          .m-form__item
+            label.a-switch(for="toggle-tlf")
+              input(type="checkbox", class="a-switch__input", id="toggle-tlf")
+              span(class="a-switch__content")
+                span.a-switch__thumb
+              span.a-switch__label Phone notifications
         .m-dropdown__menu-item
-          input(type="checkbox", class="a-input -toggle", id="toggle-app")
-          label(for="toggle-app")
-          label(class="-text", for="toggle-app") App notifications
+          .m-form__item
+            label.a-switch(for="toggle-app")
+              input(type="checkbox", class="a-switch__input", id="toggle-app")
+              span(class="a-switch__content")
+                span.a-switch__thumb
+              span.a-switch__label App notifications
   :code(lang="html")
     <div class="m-dropdown__menu">
-      <div class="m-dropdown__menu-item">
-        <input class="a-input -toggle" type="checkbox" id="toggle-mail">
-        <label for="toggle-mail"></label>
-        <label class="-text" for="toggle-mail">Email notifications</label>
-      </div>
-      <div class="m-dropdown__menu-item">
-        <input class="a-input -toggle" type="checkbox" id="toggle-tlf">
-        <label for="toggle-tlf"></label>
-        <label class="-text" for="toggle-tlf">Phone notifications</label>
-      </div>
-      <div class="m-dropdown__menu-item">
-        <input class="a-input -toggle" type="checkbox" id="toggle-app">
-        <label for="toggle-app"></label>
-        <label class="-text" for="toggle-app">App notifications</label>
-      </div>
+      <fieldset>
+        <legend class="m-dropdown__menu-item">Configure options</legend>
+        <div class="m-dropdown__menu-item">
+          <div class="m-form__item">
+            <label class="a-switch" for="toggle-mail">
+              <input type="checkbox" class="a-switch__input" id="toggle-mail">
+              <span class="a-switch__content">
+                <span class="a-switch__thumb"></span>
+              </span>
+              <span class="a-switch__label">Email notifications</span>
+            </label>
+          </div>
+        </div>
+        <div class="m-dropdown__menu-item">
+          <div class="m-form__item">
+            <label class="a-switch" for="toggle-tlf">
+              <input type="checkbox" class="a-switch__input" id="toggle-tlf">
+              <span class="a-switch__content">
+                <span class="a-switch__thumb"></span>
+              </span>
+              <span class="a-switch__label">Phone notifications</span>
+            </label>
+          </div>
+        </div>
+        <div class="m-dropdown__menu-item">
+          <div class="m-form__item">
+            <label class="a-switch" for="toggle-app">
+              <input type="checkbox" class="a-switch__input" id="toggle-mail">
+              <span class="a-switch__content">
+                <span class="a-switch__thumb"></span>
+              </span>
+              <span class="a-switch__label">Email notifications</span>
+            </label>
+          </div>
+        </div>
+      </fieldset>
     </div>
 
 
