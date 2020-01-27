@@ -43,6 +43,16 @@ export class DatePicker {
    */
   @Prop({ reflect: true, mutable: true }) active = false;
 
+  /**
+   * To specify which days of week to disable
+   */
+  @Prop({ reflect: true }) excludedWeekdays: string;
+
+  /**
+   * To specify which dates to disable
+   */
+  @Prop({ reflect: true }) excludedDates: string;
+
   @Element() el: HTMLElement;
 
   private _input: HTMLInputElement;
@@ -161,6 +171,8 @@ export class DatePicker {
           locale={this.locale}
           value={this.value}
           format={this.format}
+          excluded-weekdays={this.excludedWeekdays}
+          excluded-dates={this.excludedDates}
         />
       </chi-popover>
     );

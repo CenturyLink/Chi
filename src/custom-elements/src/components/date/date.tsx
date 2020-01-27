@@ -44,6 +44,16 @@ export class Date {
    */
   @Prop({ reflect: true }) format = 'MM/DD/YYYY';
 
+  /**
+   * To specify which days of week to disable
+   */
+  @Prop({ reflect: true }) excludedWeekdays: string;
+
+  /**
+   * To specify which dates to disable
+   */
+  @Prop({ reflect: true }) excludedDates: string;
+
   @State() viewMonth = dayjs();
 
   @Watch('value')
@@ -201,6 +211,24 @@ export class Date {
     this.eventChange.emit(formattedDate);
   }
 
+  checkIfExcluded(day: Dayjs) {
+    if (this.excludedDates) {
+      for (let i = 0; i < JSON.parse(this.excludedDates).length; i++) {
+        if (dayjs(JSON.parse(this.excludedDates)[i]).isSame(day)) {
+          return true;
+        }
+      }
+    }
+    if (this.excludedWeekdays) {
+      for (let i = 0; i < JSON.parse(this.excludedWeekdays).length; i++) {
+        if (parseInt(JSON.parse(this.excludedWeekdays)[i]) === day.day()) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   render() {
     const endOfLastMonth = this.viewMonth.subtract(1, 'month').endOf('month');
     const startOfNextMonth = this.viewMonth.add(1, 'month').startOf('month');
@@ -250,7 +278,8 @@ export class Date {
               class={`m-datepicker__day
               ${
                 (this._vm.min && day.isBefore(this._vm.min)) ||
-                (this._vm.max && day.isAfter(this._vm.max))
+                (this._vm.max && day.isAfter(this._vm.max)) ||
+                (this.checkIfExcluded(day))
                   ? CLASSES.INACTIVE
                   : ''
               }

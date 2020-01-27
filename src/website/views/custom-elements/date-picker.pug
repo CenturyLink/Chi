@@ -72,6 +72,38 @@ h3 Value, min and max options
     <chi-label for="date-min-max">Date</chi-label>
     <chi-date-picker id="date-min-max" value="01/24/2019" min="01/14/2019" max="02/07/2019">
 
+h3 Excluded week days
+p.-text Specify which week days to disable by using <code>excluded-weekdays="0, 6"</code> attribute
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 14rem;")
+      chi-label(for='date-excluded-weekdays') Date
+      chi-date-picker(id="date-excluded-weekdays", excluded-weekdays="0, 6")
+  :code(lang="html",style="height:20rem")
+    <chi-label for="date-excluded-weekdays">Date</chi-label>
+    <chi-date-picker id="date-excluded-weekdays" excluded-weekdays="0, 6"></chi-date-picker>
+
+h3 Excluded dates
+p.-text Specify which dates to disable by using <code>excluded-dates="01/24/2020, 05/25/2020"</code> attribute and separate dates with a comma
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 14rem;")
+      chi-label(for='date-excluded-dates') Date
+      chi-date-picker(id="date-excluded-dates", excluded-dates="02/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020")
+  :code(lang="html",style="height:20rem")
+    <chi-label for="date-excluded-dates">Date</chi-label>
+    <chi-date-picker id="date-excluded-dates" excluded-dates="01/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020"></chi-date-picker>
+
+h3 Excluded dates and week days
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 14rem;")
+      chi-label(for='date-excluded-days-dates') Date
+      chi-date-picker(id="date-excluded-days-dates", excluded-dates="02/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020", excluded-weekdays="0, 6")
+  :code(lang="html",style="height:20rem")
+    <chi-label for="date-excluded-days-dates">Date</chi-label>
+    <chi-date-picker id="date-excluded-days-dates" excluded-weekdays="0, 6" excluded-dates="01/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020"></chi-date-picker>
+
 h2 Additional usage details for chi-date
 :stencilDoc(name='chi-date')
 h2 Additional usage details for chi-date-picker
