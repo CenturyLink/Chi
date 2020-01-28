@@ -169,7 +169,10 @@
       align-items: center;
       background-color: set-color(grey, 30);
       box-shadow: none;
-      padding: 0 1rem;
+
+      &.-tabs {
+        padding: 0 1rem;
+      }
     }
   }
 }
