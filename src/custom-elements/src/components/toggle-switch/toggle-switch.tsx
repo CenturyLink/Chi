@@ -1,38 +1,35 @@
-import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
 
 @Component({
-  tag: 'chi-toggle-switch',
+  tag: 'chi-switch',
   styleUrl: 'toggle-switch.scss',
   scoped: true
 })
 export class ToggleSwitch {
   /**
-   *  to set the toggle switch id.
-   */
-  @Prop({ reflectToAttr: true }) toggleId: string;
-
-  /**
    *  to set a label for the toggle switch.
    */
-  @Prop({ reflectToAttr: true }) label: string;
+  @Prop({ reflect: true }) label: string;
 
   /**
    *  used to disable the toggle labels.
    */
-  @Prop({ reflectToAttr: true }) noText = false;
+  @Prop({ reflect: true }) hideLabel = false;
 
   /**
    *  used to disable the toggle switch.
    */
-  @Prop({ reflectToAttr: true }) disabled = false;
+  @Prop({ reflect: true }) disabled = false;
 
   /**
    *  used to check the toggle switch.
    */
-  @Prop({ reflectToAttr: true, mutable: true }) checked = false;
+  @Prop({ reflect: true, mutable: true }) checked = false;
 
    // used to pass additional classes like { -focus, -hover etc .}
   @Prop() extraClass: string;
+
+  @Element() el: HTMLElement;
 
   /**
    *  emitting a custom event toggle.
@@ -46,15 +43,20 @@ export class ToggleSwitch {
 
   render() {
     return (
-      [
+      <label htmlFor={`${this.el.id}-control`}
+            class={`a-switch ${this.hideLabel ? '-label--hide' : ''}`}>
         <input type="checkbox"
-               class={`a-input -toggle ${this.noText ? '-noText' : ''} ${this.extraClass ? this.extraClass : ''}`}
-               id={this.toggleId} disabled={this.disabled} checked={this.checked}
+               class={`a-switch__input ${this.extraClass ? this.extraClass : ''}`}
+               id={`${this.el.id}-control`}
+               disabled={this.disabled}
+               checked={this.checked}
                onClick={() => this._toggle()}
-        ></input>,
-        <label htmlFor={this.toggleId}></label>,
-        (this.label ? <label class="-text" htmlFor={this.toggleId}>{this.label}</label> : null)
-      ]
+        />
+        <span class="a-switch__content">
+          <span class="a-switch__thumb"></span>
+        </span>
+        <span class="a-switch__label">{this.label}</span>
+      </label>
     );
   }
 }

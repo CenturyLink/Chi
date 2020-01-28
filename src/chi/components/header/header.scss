@@ -250,30 +250,59 @@
         }
       }
     }
+  }
 
-    .a-btn {
-      &.-icon {
-        &.-flat {
-          &.-light {
-            .a-icon:not(.icon-menu) {
-              color: set-color(grey, 50);
-            }
+  &.bottom-toolbar__navigation {
+    .a-divider {
+      &.-colorbar {
+        height: 0.25rem;
+      }
+    }
 
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus,
-            &:hover,
-            &.-hover {
-              .a-icon {
-                color: $text-white;
-              }
-            }
+    .o-header__content {
+      @include respond-to(md) {
+        grid-template-columns: auto auto 1fr;
+      }
+
+      .o-header__start {
+        @include respond-to(md) {
+          padding-right: 1rem;
+        }
+      }
+
+      .o-header__end {
+        color: set-color(white);
+        font-size: 0.75rem;
+
+        .toolbar__info {
+          border-right: 0;
+          display: inline-flex;
+          padding-right: 0.25rem;
+
+          @include respond-to(md) {
+            border-right: 1px solid set-color(grey, 80);
+            padding-right: 0.5rem;
           }
         }
       }
     }
 
+    .bottom-navigation {
+      padding: 0 1.5rem;
+      width: 100%;
+
+      .a-tabs {
+        li {
+          &:not(:first-child) {
+            margin-left: 2rem;
+
+            @include respond-to(xl) {
+              margin-left: 3rem;
+            }
+          }
+        }
+      }
+    }
   }
 }
 

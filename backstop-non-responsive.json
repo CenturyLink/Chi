@@ -600,7 +600,9 @@
         ".test-header-title-buttons",
         ".test-header-tabs",
         ".test-header-title-tabs",
-        ".test-header-tabs-buttons"
+        ".test-header-tabs-buttons",
+        ".test-portal-header-horizontal-nav",
+        ".test-header-tabs-icons-buttons"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -1200,7 +1202,7 @@
       "postInteractionWait": "",
       "selectors": [
         ".test-states",
-        ".test-no-text-states"
+        ".test-hide-label-states"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
