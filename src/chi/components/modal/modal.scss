@@ -142,4 +142,28 @@ $animation-duration: 0.5s;
   .-closed {
     display: none;
   }
+
+  &.-portal {
+    background-color: set-color(grey, 20);
+    border-radius: 0;
+    box-shadow: 0 3px 6px rgba(set-color(black), 0.15);
+
+    .a-modal__header {
+      background-color: set-color(grey, 80);
+      box-shadow: none;
+
+      .a-modal__title {
+        color: set-color(white);
+      }
+    }
+
+    .a-modal__footer {
+      box-shadow: none;
+      justify-content: center;
+    }
+
+    .-close {
+      color: set-color(white);
+    }
+  }
 }
