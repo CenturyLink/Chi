@@ -6,14 +6,21 @@ p.-text To render brand, wrap the CenturyLink logo image or svg element in <code
 h3 Base
 .example.-mb--3
   .-p--3
-    a.a-brand(href="#", aria-label="CenturyLink Logo Base")
-      img(src='https://assets.ctl.io/images/centurylink-logo.svg', alt="CenturyLink Logo Base")
+    a(href="#", aria-label="CenturyLink Logo Base")
+      chi-brand
   ul#a-tabs--formats.a-tabs.-ml--3
     li.-active
+      a(href='#a-tabs-panel--formats-webcomponent') Web component
+    li
       a(href='#a-tabs-panel--formats-img') IMG
     li
       a(href='#a-tabs-panel--formats-svg') Inline SVG
-  #a-tabs-panel--formats-img.a-tabs-panel.-active
+  #a-tabs-panel--formats-webcomponent.a-tabs-panel.-active
+    :code(lang="html")
+      <a href="#" aria-label="CenturyLink">
+        <chi-brand></chi-brand>
+      </a>
+  #a-tabs-panel--formats-img.a-tabs-panel
     :code(lang="html")
       <a class="a-brand" href="#" aria-label="CenturyLink">
         <img src="https://assets.ctl.io/images/centurylink-logo.svg" alt="CenturyLink">
@@ -27,14 +34,21 @@ h3 Base
 h3 Inverse
 .example.-mb--3
   .-p--3.-bg--black
-    a.a-brand(href="#", aria-label="CenturyLink Logo Inverse")
-      img(src='https://assets.ctl.io/images/centurylink-logo-inverse.svg', alt="CenturyLink Logo Inverse")
+    a(href="#", aria-label="CenturyLink Logo Base")
+      chi-brand(color='inverse')
   ul#a-tabs--formats-inverse.a-tabs.-ml--3
     li.-active
+      a(href='#a-tabs-panel--formats-inverse-webcomponent') Web component
+    li
       a(href='#a-tabs-panel--formats-inverse-img') IMG
     li
       a(href='#a-tabs-panel--formats-inverse-svg') Inline SVG
-  #a-tabs-panel--formats-inverse-img.a-tabs-panel.-active
+  #a-tabs-panel--formats-inverse-webcomponent.a-tabs-panel.-active
+    :code(lang="html")
+      <a href="#" aria-label="CenturyLink">
+        <chi-brand color="inverse"></chi-brand>
+      </a>
+  #a-tabs-panel--formats-inverse-img.a-tabs-panel
     :code(lang="html")
       <a class="a-brand" href="#" aria-label="CenturyLink">
         <img src="https://assets.ctl.io/images/centurylink-logo-inverse.svg" alt="CenturyLink">
@@ -48,14 +62,21 @@ h3 Inverse
 h3 White
 .example.-mb--3
   .-p--3.-bg--black
-    a.a-brand(href="#", aria-label="CenturyLink Logo White")
-      img(src='https://assets.ctl.io/images/centurylink-logo-white.svg', alt="CenturyLink Logo White")
+    a(href="#", aria-label="CenturyLink Logo White")
+      chi-brand(color='white')
   ul#a-tabs--formats-white.a-tabs.-ml--3
     li.-active
+      a(href='#a-tabs-panel--formats-white-webcomponent') Web component
+    li
       a(href='#a-tabs-panel--formats-white-img') IMG
     li
       a(href='#a-tabs-panel--formats-white-svg') Inline SVG
-  #a-tabs-panel--formats-white-img.a-tabs-panel.-active
+  #a-tabs-panel--formats-white-webcomponent.a-tabs-panel.-active
+    :code(lang="html")
+      <a href="#" aria-label="CenturyLink">
+        <chi-brand color="white"></chi-brand>
+      </a>
+  #a-tabs-panel--formats-white-img.a-tabs-panel
     :code(lang="html")
       <a class="a-brand" href="#" aria-label="CenturyLink">
         <img src="https://assets.ctl.io/images/centurylink-logo-white.svg" alt="CenturyLink">
@@ -69,14 +90,21 @@ h3 White
 h3 Black
 .example.-mb--3
   .-p--3
-    a.a-brand(href="#", aria-label="CenturyLink Logo Black")
-      img(src='https://assets.ctl.io/images/centurylink-logo-black.svg', alt="CenturyLink Logo Black")
+    a(href="#", aria-label="CenturyLink Logo Black")
+      chi-brand(color='black')
   ul#a-tabs--formats-black.a-tabs.-ml--3
     li.-active
+      a(href='#a-tabs-panel--formats-black-webcomponent') Web component
+    li
       a(href='#a-tabs-panel--formats-black-img') IMG
     li
       a(href='#a-tabs-panel--formats-black-svg') Inline SVG
-  #a-tabs-panel--formats-black-img.a-tabs-panel.-active
+  #a-tabs-panel--formats-black-webcomponent.a-tabs-panel.-active
+    :code(lang="html")
+      <a href="#" aria-label="CenturyLink">
+        <chi-brand color="black"></chi-brand>
+      </a>
+  #a-tabs-panel--formats-black-img.a-tabs-panel
     :code(lang="html")
       <a class="a-brand" href="#" aria-label="CenturyLink">
         <img src="https://assets.ctl.io/images/centurylink-logo-black.svg" alt="CenturyLink">
@@ -97,15 +125,43 @@ p.-text
   .-p--3(style='overflow:auto')
     each size in sizes
       div(class=`a-col -w--12 -pb--2`)
-        p.-text--bold= '-' + size
-        a(class=`a-brand -${size}`, href='#', aria-label=`CenturyLink Logo -${size}`)
-          img(src='https://assets.ctl.io/images/centurylink-logo.svg', alt=`CenturyLink Logo -${size}`)
+        p.-text--bold= size
+        a(href="#", aria-label="CenturyLink Logo Black")
+          chi-brand(size=size)
   ul#a-tabs--sizes.a-tabs.-ml--3
     li.-active
+      a(href='#a-tabs-panel--sizes-webcomponent') Web component
+    li
       a(href='#a-tabs-panel--sizes-img') IMG
     li
       a(href='#a-tabs-panel--sizes-svg') Inline SVG
-  #a-tabs-panel--sizes-img.a-tabs-panel.-active
+  #a-tabs-panel--sizes-webcomponent.a-tabs-panel.-active
+    :code(lang="html")
+      <a href="#" aria-label="CenturyLink">
+        <chi-brand size="xs"></chi-brand>
+      </a>
+      <a href="#" aria-label="CenturyLink">
+        <chi-brand size="sm"></chi-brand>
+      </a>
+      <a href="#" aria-label="CenturyLink">
+        <chi-brand size="sm--2"></chi-brand>
+      </a>
+      <a href="#" aria-label="CenturyLink">
+        <chi-brand size="sm--3"></chi-brand>
+      </a>
+      <a href="#" aria-label="CenturyLink">
+        <chi-brand size="md"></chi-brand>
+      </a>
+      <a href="#" aria-label="CenturyLink">
+        <chi-brand size="lg"></chi-brand>
+      </a>
+      <a href="#" aria-label="CenturyLink">
+        <chi-brand size="xl"></chi-brand>
+      </a>
+      <a href="#" aria-label="CenturyLink">
+        <chi-brand size="xxl"></chi-brand>
+      </a>
+  #a-tabs-panel--sizes-img.a-tabs-panel
     :code(lang="html")
       <a class="a-brand -xs" href="#" aria-label="CenturyLink">
         <img src="https://assets.ctl.io/images/centurylink-logo.svg" alt="CenturyLink">
