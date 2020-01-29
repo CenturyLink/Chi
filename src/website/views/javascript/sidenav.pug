@@ -265,13 +265,17 @@ h3(id=`example-${example}`) Enterprise Global Navigation
             .m-drawer__content
               ul.m-sidenav__drawer-list
                 each val2, index in drawerMenuItems
-                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active expanded':''}`)
+                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active -expanded':''}`)
                     a(href=`#drawer-item-list-${val1}-${val2}`)
                       if index % 4 < 2
                         .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                       else
-                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                    if val2 === 'A' ||  val2 === 'B'
+                        span.m-sidenav__title
+                          =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                          .a-icon.-xs
+                            svg
+                              use(xlink:href='#icon-external-link')
+                    if val2 === 'A' || val2 === 'B'
                       .m-sidenav__drawer-item-list(id=`drawer-item-${val1}-${val2}`)
                         ul.a-tabs.-vertical.-sm
                           li
@@ -347,7 +351,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                     </ul>
                   </div>
                 </li>
-                <li class="-active expanded">
+                <li class="-active -expanded">
                   <a href="#drawer-item-list-1-B">
                     <div class="m-sidenav__title">Title B</div>
                   </a>

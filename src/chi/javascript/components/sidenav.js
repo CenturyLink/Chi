@@ -13,6 +13,9 @@ const SIDENAV_CONTENT_CLASS = 'm-sidenav__content';
 const SIDENAV_DRAWERS_CLASS = 'm-sidenav__drawers';
 const DRAWER_LINKLIST_CLASS = "m-sidenav__drawer-list";
 const DRAWER_ITEM_LIST_CLASS = "m-sidenav__drawer-item-list";
+const MENU_ITEM_UNSELECTED_CLASS = "-unselected";
+const DRAWER_ITEM_LIST_VISIBLE = "-visible";
+const DRAWER_ITEM_LIST_EXPANDED = "-expanded";
 
 const DEFAULT_CONFIG = {
   animated: true,
@@ -123,7 +126,7 @@ class Sidenav extends Component {
 
   activateMenuItem(menuItem) {
     const currentlyActiveMenuItem = this.getActiveMenuItem();
-    const currentlySelectedMenuItem = menuItem.parentNode.querySelector('li a.unselected');
+    const currentlySelectedMenuItem = menuItem.parentNode.querySelector(`li a.${MENU_ITEM_UNSELECTED_CLASS}`);
 
     if (menuItem === currentlyActiveMenuItem) {
       return;
@@ -141,7 +144,7 @@ class Sidenav extends Component {
 
     Util.addClass(menuItem, CLASS_ACTIVE);
     if (currentlySelectedMenuItem) {
-      Util.removeClass(currentlySelectedMenuItem, 'unselected');
+      Util.removeClass(currentlySelectedMenuItem, MENU_ITEM_UNSELECTED_CLASS);
     }
 
     if (currentlyActiveMenuItem) {
@@ -169,21 +172,21 @@ class Sidenav extends Component {
       Util.removeClass(currentlyActiveMenuItem, CLASS_ACTIVE);
 
       if (currentlyActiveItemList) {
-        Util.removeClass(currentlyActiveMenuItem, 'expanded');
-        Util.removeClass(currentlyActiveItemList, 'visible');
+        Util.removeClass(currentlyActiveMenuItem, DRAWER_ITEM_LIST_EXPANDED);
+        Util.removeClass(currentlyActiveItemList, DRAWER_ITEM_LIST_VISIBLE);
         currentlyActiveItemList.style.removeProperty('height');
       }
     }
   }
 
   hideAll() {
-    const unsetlectedMenuItemLink = this._elem.querySelector('li.-active a.unselected');
+    const unsetlectedMenuItemLink = this._elem.querySelector(`li.-active a.${MENU_ITEM_UNSELECTED_CLASS}`);
 
     this._drawers.forEach(function (drawer) {
       drawer.hide();
     });
     if (unsetlectedMenuItemLink) {
-      Util.removeClass(unsetlectedMenuItemLink, 'unselected');
+      Util.removeClass(unsetlectedMenuItemLink, MENU_ITEM_UNSELECTED_CLASS);
     }
   }
 
@@ -217,40 +220,40 @@ class Sidenav extends Component {
 
       if (drawerMenuItem) {
         const drawerMenuItemList = drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
-        let drawerItemSubtabHeight;
+        let drawerMenuItemListHeight;
         
         if (drawerMenuItemList) {
           if (window.getComputedStyle(drawerMenuItemList).display === 'block') {
-            drawerItemSubtabHeight = window.getComputedStyle(drawerMenuItemList).height;
+            drawerMenuItemListHeight = window.getComputedStyle(drawerMenuItemList).height;
           } else {
             drawerMenuItemList.style.position = 'absolute';
             drawerMenuItemList.style.visibility = 'hidden';
             drawerMenuItemList.style.display = 'block';
-            drawerItemSubtabHeight = window.getComputedStyle(drawerMenuItemList).height;
+            drawerMenuItemListHeight = window.getComputedStyle(drawerMenuItemList).height;
             drawerMenuItemList.style.removeProperty('display');
             drawerMenuItemList.style.removeProperty('visibility');
             drawerMenuItemList.style.removeProperty('position');
           }
-          Util.addClass(drawerMenuItemList, 'visible');
-          if (!Util.hasClass(drawerMenuItem, 'expanded')) {
+          Util.addClass(drawerMenuItemList, DRAWER_ITEM_LIST_VISIBLE);
+          if (!Util.hasClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED)) {
             drawerMenuItemList.style.height = '0px';
             setTimeout(function () {
-              drawerMenuItemList.style.height = drawerItemSubtabHeight;
-              Util.addClass(drawerMenuItem, 'expanded');
+              drawerMenuItemList.style.height = drawerMenuItemListHeight;
+              Util.addClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED);
             }, 50);
           } else {
-            drawerMenuItemList.style.height = drawerItemSubtabHeight;
+            drawerMenuItemList.style.height = drawerMenuItemListHeight;
             setTimeout(function () {
               drawerMenuItemList.style.height = '0px';
-              Util.removeClass(drawerMenuItem, 'expanded');
+              Util.removeClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED);
             }, 50);
           }
 
           drawerMenuItemList.addEventListener('transitionend', function () {
-            if (!Util.hasClass(drawerMenuItem, 'expanded')) {
-              Util.removeClass(drawerMenuItem, '-active');
-              Util.removeClass(drawerMenuItem, 'expanded');
-              Util.removeClass(drawerMenuItemList, 'visible');
+            if (!Util.hasClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED)) {
+              Util.removeClass(drawerMenuItem, CLASS_ACTIVE);
+              Util.removeClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED);
+              Util.removeClass(drawerMenuItemList, DRAWER_ITEM_LIST_VISIBLE);
               drawerMenuItemList.style.removeProperty('height');
             } else {
               return;
@@ -278,12 +281,12 @@ class Sidenav extends Component {
       });
 
       if (Util.hasClass(this._elem, '-global-nav')) {
-        const activeItemLink = menuItemLink.parentNode.parentNode.querySelector('li.-active a');
+        const activeItemLink = menuItemLink.parentNode.parentNode.querySelector(`li.${CLASS_ACTIVE} a`);
 
-        if (!Util.hasClass(menuItemLink.parentNode, '-active')) {
-          Util.addClass(activeItemLink, 'unselected');
-        } else if (Util.hasClass(activeItemLink, 'unselected')) {
-            Util.removeClass(activeItemLink, 'unselected');
+        if (!Util.hasClass(menuItemLink.parentNode, CLASS_ACTIVE)) {
+          Util.addClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
+        } else if (Util.hasClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS)) {
+            Util.removeClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
         }
       }
     }
