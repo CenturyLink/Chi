@@ -179,15 +179,20 @@ class Sidenav extends Component {
     }
   }
 
-  hideAll() {
-    const unsetlectedMenuItemLink = this._elem.querySelector(`li.-active a.${MENU_ITEM_UNSELECTED_CLASS}`);
+  removeUnselected() {
+    const currentlyActiveMenuItem = this.getActiveMenuItem();
+    const unselectedMenuItem = currentlyActiveMenuItem.querySelector(`a.${MENU_ITEM_UNSELECTED_CLASS}`);
 
+    if (unselectedMenuItem) {
+      Util.removeClass(unselectedMenuItem, MENU_ITEM_UNSELECTED_CLASS);
+    }
+  }
+
+  hideAll() {
     this._drawers.forEach(function (drawer) {
       drawer.hide();
     });
-    if (unsetlectedMenuItemLink) {
-      Util.removeClass(unsetlectedMenuItemLink, MENU_ITEM_UNSELECTED_CLASS);
-    }
+    this.removeUnselected();
   }
 
   _isLinkAMenuItemActivator(anchorElem) {
@@ -196,6 +201,12 @@ class Sidenav extends Component {
 
   _handlerClickOnDrawer(e) {
     let drawer, activator, menuItem, menuItemLink, drawerMenuItem;
+
+    if (Util.hasClass(e.target, '-close') ||
+      Util.hasClass(e.target.parentNode, '-close') ||
+      Util.hasClass(e.target.parentNode.parentNode, '-close')) {
+      this.removeUnselected();
+    }
 
     for (let cur = e.target; cur && cur !== this._drawersContainer; cur = cur.parentNode) {
       if (Util.hasClass(cur, DRAWER_CLASS)) {
@@ -214,14 +225,14 @@ class Sidenav extends Component {
       menuItemLink = this._getMenuItemLink(drawer);
       menuItem = menuItemLink.parentNode;
       if (drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) === null ||
-      Util.hasClass(e.target, 'a-sidenav__drawer-item-tab')) {
+        Util.hasClass(e.target, 'a-sidenav__drawer-item-tab')) {
         this.close(menuItemLink);
       }
 
       if (drawerMenuItem) {
         const drawerMenuItemList = drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
         let drawerMenuItemListHeight;
-        
+
         if (drawerMenuItemList) {
           if (window.getComputedStyle(drawerMenuItemList).display === 'block') {
             drawerMenuItemListHeight = window.getComputedStyle(drawerMenuItemList).height;
@@ -261,7 +272,7 @@ class Sidenav extends Component {
           }, { once: true });
         }
         if (!drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) ||
-            Util.hasClass(e.target, 'a-sidenav__drawer-item-tab')) {
+          Util.hasClass(e.target, 'a-sidenav__drawer-item-tab')) {
           this.activateMenuItem(menuItem);
         }
         this.activateDrawerMenuItem(drawerMenuItem);
@@ -286,7 +297,7 @@ class Sidenav extends Component {
         if (!Util.hasClass(menuItemLink.parentNode, CLASS_ACTIVE)) {
           Util.addClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
         } else if (Util.hasClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS)) {
-            Util.removeClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
+          Util.removeClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
         }
       }
     }
