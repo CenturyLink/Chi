@@ -24,6 +24,10 @@ i {
   }
 }
 
+.icon-external-link::before {
+  content: '\e9b4';
+}
+
 .icon-square-minus-outline::before {
   content: '\e9ae';
 }
