@@ -4,7 +4,7 @@ title: Tabs
 
 .test-horizontal
   each style in ['base', 'border']
-    each size in ['small', 'medium', 'large']
+    each size in ['xs', 'sm', 'medium', 'lg']
       h4= `Tabs ${size} ${style}`
       ul.a-tabs(class=`-${style} -${size}`)
         li.-active
@@ -19,7 +19,7 @@ h2 vertical
 each active in ['', 'activeAlt']
   each style in ['', 'border']
     div(class=`test-vertical-${active}-${style}`)
-      each size in ['small', 'medium', 'large']
+      each size in ['sm', 'medium', 'lg']
         h4= `Tabs vertical ${size} ${style} ${active}`
         ul.a-tabs.-vertical(class=`-${style} -${size}`)
           li(class=`-active -${active}`)
@@ -41,7 +41,7 @@ each active in ['', 'activeAlt']
 each active in ['', 'activeAlt']
   each style in ['', 'border']
     div(class=`test-vertical-icons-${active}-${style}`)
-      each size in ['small', 'medium', 'large']
+      each size in ['sm', 'medium', 'lg']
         h4= `Tabs vertical icons ${size} ${style} ${active}`
         ul.a-tabs.-vertical.-icons(class=`-${alt} -${style} -${size}`)
           li(class=`-active -${active}`)
@@ -79,7 +79,7 @@ each active in ['', 'activeAlt']
 each active in ['', 'active']
   each style in ['', 'border']
     div(class=`test-multi-level-${active}-${style}`)
-      each size in ['small', 'medium', 'large']
+      each size in ['sm', 'medium', 'lg']
         h4= `Tabs vertical multi-level ${size} ${style} ${active}`
         ul.a-tabs.-vertical.-icons(class=`-${alt} -${style} -${size}`)
           li
@@ -116,7 +116,7 @@ each active in ['', 'active']
               span Tab link
 
 .test-horizontal-inverse
-  each size in ['small', 'medium', 'large']
+  each size in ['xs', 'sm', 'medium', 'lg']
     h4= `Tabs ${size} inverse`
     .-bg--black.-px--3
       ul.a-tabs.-inverse(class=`-${size}`)
@@ -128,7 +128,7 @@ each active in ['', 'active']
           a(href='#') Tab link
 
 .test-horizontal-bordered-inverse
-  each size in ['small', 'medium', 'large']
+  each size in ['xs', 'sm', 'medium', 'lg']
     h4= `Tabs ${size} border inverse`
     .-bg--black.-px--3.-py--1
       ul.a-tabs.-inverse.-border(class=`-${size}`)
@@ -142,7 +142,7 @@ each active in ['', 'active']
 h2 vertical inverse
 
 .test-vertical-inverse
-  each size in ['small', 'medium', 'large']
+  each size in ['sm', 'medium', 'lg']
     h4= `Tabs vertical inverse ${size}`
     .-bg--black.-p--3
       ul.a-tabs.-inverse.-vertical(class=`-${size}`)
@@ -163,7 +163,7 @@ h2 vertical inverse
           a(href='#') Tab link
 
 .test-vertical-icons-inverse
-  each size in ['small', 'medium', 'large']
+  each size in ['sm', 'medium', 'lg']
     h4= `Tabs vertical icons ${size} inverse`
     .-bg--black.-p--3
       ul.a-tabs.-vertical.-icons.-inverse(class=`-${size}`)
