@@ -129,6 +129,10 @@
     }
   }
 
+  &__tabs {
+    padding: 0 1rem;
+  }
+
   &.-active {
     border: 0.0625rem solid $focus-color;
     box-shadow: 0 0 0 0.0625rem $focus-color;
@@ -169,10 +173,10 @@
       align-items: center;
       background-color: set-color(grey, 30);
       box-shadow: none;
+    }
 
-      &.-tabs {
-        padding: 0 1rem;
-      }
+    .a-card__tabs {
+      background-color: set-color(grey, 30);
     }
   }
 }
