@@ -46,7 +46,6 @@ input {
       // sass-lint:disable no-vendor-prefixes
       -moz-appearance: textfield;
       border: 0.0625rem solid set-color(grey, 30);
-      border-radius: $border-radius;
       color: set-color(grey, 90);
       display: block;
       font-size: $text;

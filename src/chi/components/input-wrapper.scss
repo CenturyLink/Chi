@@ -37,7 +37,6 @@ $border: 0.0625rem;
 
   &.-list {
     border: $border solid set-color(grey, 30);
-    border-radius: $border-radius;
     flex-direction: column;
     list-style-type: none;
     margin: 0;
@@ -97,7 +96,6 @@ $border: 0.0625rem;
 
   &.-list {
     border: $border solid set-color(grey, 30);
-    border-radius: $border-radius;
     flex-direction: column;
     list-style-type: none;
     margin: 0;

@@ -4,7 +4,6 @@ $border: 0.0625rem;
 
 $sizes: (
   sm: (
-    border-radius: 0.75rem,
     padding: 0.5rem,
     padding_hover: (0.5rem - $border),
     icons: (
@@ -14,7 +13,6 @@ $sizes: (
   ),
   // Legacy code start
   small: (
-    border-radius: 0.75rem,
     padding: 0.5rem,
     padding_hover: (0.5rem - $border),
     icons: (
@@ -24,7 +22,6 @@ $sizes: (
   ),
   // Legacy code end
   md: (
-    border-radius: 1rem,
     padding: 1rem,
     padding_hover: (1rem - $border),
     icons: (
@@ -33,7 +30,6 @@ $sizes: (
     )
   ),
   lg: (
-    border-radius: 1.25rem,
     padding: 1.5rem,
     padding_hover: (1.5rem - $border),
     icons: (
@@ -43,7 +39,6 @@ $sizes: (
   ),
   // Legacy code start
   large: (
-    border-radius: 1.25rem,
     padding: 1.5rem,
     padding_hover: (1.5rem - $border),
     icons: (
@@ -53,7 +48,6 @@ $sizes: (
   ),
   // Legacy code end
   xl: (
-    border-radius: 1.5rem,
     padding: 1.5rem,
     padding_hover: (1.5rem - $border),
     icons: (
@@ -78,7 +72,6 @@ $sizes: (
 
         &,
         &.-outline {
-          border-radius: 0;
           border-right-width: 0;
           padding-right: 1rem;
 
@@ -96,15 +89,8 @@ $sizes: (
             }
           }
 
-          &:first-child {
-            border-bottom-left-radius: $border-radius;
-            border-top-left-radius: $border-radius;
-          }
-
           &:last-child {
-            border-bottom-right-radius: $border-radius;
             border-right-width: 0.0625rem;
-            border-top-right-radius: $border-radius;
             padding-right: 0.9375rem;
 
             &.-icon {
@@ -191,7 +177,6 @@ $sizes: (
 
         &.-flat {
           border: 0.0625rem solid transparent;
-          border-radius: $border-radius;
           padding-left: 0.9375rem;
           padding-right: 0.9375rem;
 
@@ -237,49 +222,6 @@ $sizes: (
                   padding-right: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
                 }
               }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &.-pill {
-    &:not(.-vertical) {
-      .a-btn {
-        &,
-        &.-outline {
-          &:first-child {
-            border-bottom-left-radius: 1rem;
-            border-top-left-radius: 1rem;
-          }
-
-          &:last-child {
-            border-bottom-right-radius: 1rem;
-            border-top-right-radius: 1rem;
-          }
-
-          &.-small {
-            &:first-child {
-              border-bottom-left-radius: 0.75rem;
-              border-top-left-radius: 0.75rem;
-            }
-
-            &:last-child {
-              border-bottom-right-radius: 0.75rem;
-              border-top-right-radius: 0.75rem;
-            }
-          }
-
-          &.-large {
-            &:first-child {
-              border-bottom-left-radius: 1.25rem;
-              border-top-left-radius: 1.25rem;
-            }
-
-            &:last-child {
-              border-bottom-right-radius: 1.25rem;
-              border-top-right-radius: 1.25rem;
             }
           }
         }

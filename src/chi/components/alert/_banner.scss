@@ -3,16 +3,11 @@
     background-color: set-color(white);
     border: 0;
     border-bottom: 0.0625rem solid set-color(grey, 30);
-    border-radius: 0;
     border-top: 0.0625rem solid transparent;
     box-shadow: none;
 
     &.-borderless {
       border-color: transparent;
-    }
-
-    &.-rounded {
-      border-radius: $border-radius;
     }
 
     &.-warning {

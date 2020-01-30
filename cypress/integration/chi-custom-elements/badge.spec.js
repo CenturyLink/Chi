@@ -31,15 +31,6 @@ describe('Badges', () => {
       .and('have.class', '-xs');
   });
 
-  it('Pill badge should have appropriate class', () => {
-    cy.get('#badge-pill-solid-base')
-      .should('have.class', 'hydrated')
-      .children()
-      .first()
-      .should('match', 'div.a-badge')
-      .and('have.class', '-pill');
-  });
-
   it('Flat badge should have appropriate class', () => {
     cy.get('#badge-flat-base')
       .should('have.class', 'hydrated')

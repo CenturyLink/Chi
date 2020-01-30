@@ -8,7 +8,6 @@ $popover-border-width: 0.0625rem;
 .m-popover {
   background-color: set-color(white);
   border: $popover-border-width solid set-color(grey, 30);
-  border-radius: $border-radius;
   box-shadow: map-get($shadow, 3);
   color: $text-color;
   display: none;
@@ -98,7 +97,7 @@ $popover-border-width: 0.0625rem;
   & .m-popover__arrow {
     display: block;
     height: $popover-arrow-height;
-    margin: 0 $border-radius;
+    margin: 0 0.1875rem;
     position: absolute;
     width: $popover-arrow-width;
 
@@ -151,7 +150,7 @@ $popover-border-width: 0.0625rem;
       .m-popover__arrow {
         height: $popover-arrow-width;
         left: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
-        margin: $border-radius 0; // make sure the arrow does not touch the popover's rounded corners
+        margin: 0.1875rem 0; // make sure the arrow does not touch the popover's rounded corners
         top: calc(50% - 8px);
         width: $popover-arrow-height;
       }
@@ -215,7 +214,7 @@ $popover-border-width: 0.0625rem;
       .a-arrow,
       .m-popover__arrow {
         height: $popover-arrow-width;
-        margin: $border-radius 0; // make sure the arrow does not touch the popover's rounded corners
+        margin: 0.1875rem 0; // make sure the arrow does not touch the popover's rounded corners
         right: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
         top: calc(50% - 8px);
         width: $popover-arrow-height;

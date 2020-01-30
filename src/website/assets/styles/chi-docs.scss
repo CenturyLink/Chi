@@ -11,14 +11,14 @@ body {
   min-width: 100%;
 
   pre {
-    border-radius: $border-radius;
+    border-radius: 0.1875rem;
     max-height: 360px;
     overflow-y: auto;
   }
 
   code {
     background-color: set-color(grey, 15);
-    border-radius: $border-radius;
+    border-radius: 0.1875rem;
     color: #008040;
     font-family: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
     font-size: 0.8125rem;

@@ -62,7 +62,6 @@ input {
         &::before {
           background-color: set-color(white);
           border: 0.125rem solid set-color(grey, 50);
-          border-radius: $border-radius;
           content: '';
           display: block;
           height: 1rem;

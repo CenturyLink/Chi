@@ -17,7 +17,6 @@ input {
   &[type='week'] {
     &.a-input {
       border: 0.0625rem solid set-color(grey, 30);
-      border-radius: $border-radius;
       color: $text-color;
       display: block;
       font-size: map-get(map-get($sizes, md), font-size);

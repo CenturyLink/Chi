@@ -29,19 +29,16 @@
         ".test-banner-center-default",
         ".test-banner-dismissible-default",
         ".test-banner-borderless-default",
-        ".test-banner-rounded-default",
         ".test-banner-titled-default",
         ".test-banner-sm",
         ".test-banner-center-sm",
         ".test-banner-dismissible-sm",
         ".test-banner-borderless-sm",
-        ".test-banner-rounded-sm",
         ".test-banner-titled-sm",
         ".test-banner-lg",
         ".test-banner-center-lg",
         ".test-banner-dismissible-lg",
         ".test-banner-borderless-lg",
-        ".test-banner-rounded-lg",
         ".test-banner-titled-lg"
       ],
       "selectorExpansion": true,
@@ -193,8 +190,6 @@
         ".test-solid",
         ".test-outline",
         ".test-flat",
-        ".test-pill-solid",
-        ".test-pill-outline",
         ".test-badge-icons"
       ],
       "selectorExpansion": true,
@@ -721,12 +716,7 @@
         ".test-expanded-svg-sm",
         ".test-expanded-svg-md",
         ".test-expanded-svg-lg",
-        ".test-expanded-svg-xl",
-        ".test-expanded-pill-svg-default",
-        ".test-expanded-pill-svg-sm",
-        ".test-expanded-pill-svg-md",
-        ".test-expanded-pill-svg-lg",
-        ".test-expanded-pill-svg-xl"
+        ".test-expanded-svg-xl"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -802,11 +792,9 @@
       "postInteractionWait": "",
       "selectors": [
         ".test-base",
-        ".test-pill",
         ".test-active",
         ".test-disabled",
-        ".test-sizes",
-        ".test-sizes-pill"
+        ".test-sizes"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
