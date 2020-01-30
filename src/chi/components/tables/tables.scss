@@ -140,13 +140,6 @@ th {
         th {
           background-color: set-color(grey, 25);
           border-bottom: 0;
-          font-weight: 700;
-          padding-bottom: 0.75rem;
-          padding-top: 0.75rem;
-
-          &:nth-child(2) {
-            text-align: right;
-          }
         }
       }
     }
@@ -170,19 +163,6 @@ th {
 
         td {
           border-bottom: 0;
-
-          a {
-            color: set-color(navy, 70);
-            font-weight: 700;
-
-            &:visited {
-              color: set-color(navy, 70);
-            }
-          }
-
-          &:nth-child(2) {
-            text-align: right;
-          }
         }
       }
     }
