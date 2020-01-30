@@ -135,15 +135,6 @@ th {
   }
 
   &.-portal {
-    caption {
-      background-color: set-color(grey, 30);
-      font-weight: 700;
-      padding-bottom: 0.75rem;
-      padding-left: 1rem;
-      padding-top: 0.75rem;
-      text-align: left;
-    }
-
     thead {
       tr {
         th {
@@ -166,9 +157,9 @@ th {
           background-color: set-color(grey, 20);
         }
 
-        &:hover {
+        &.-active {
           & > td {
-            background-color: rgb(205, 219, 240);
+            background-color: rgb(206, 218, 241);
 
             &:first-child {
               border-left: 0.25rem solid $primary-color;
@@ -179,8 +170,6 @@ th {
 
         td {
           border-bottom: 0;
-          padding-bottom: 0.75rem;
-          padding-top: 0.75rem;
 
           a {
             color: set-color(navy, 70);
