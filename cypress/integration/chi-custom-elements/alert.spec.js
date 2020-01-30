@@ -4,19 +4,16 @@ describe('Alert', () => {
     'alert-banner-center-success-default',
     'alert-banner-dismissible-success-default',
     'alert-banner-borderless-success-default',
-    'alert-banner-rounded-success-default',
     'alert-banner-titled-success-default',
     'alert-banner-success-sm',
     'alert-banner-center-success-sm',
     'alert-banner-dismissible-success-sm',
     'alert-banner-borderless-success-sm',
-    'alert-banner-rounded-success-sm',
     'alert-banner-titled-success-sm',
     'alert-banner-success-lg',
     'alert-banner-center-success-lg',
     'alert-banner-dismissible-success-lg',
     'alert-banner-borderless-success-lg',
-    'alert-banner-rounded-success-lg',
     'alert-banner-titled-success-lg'
   ];
 

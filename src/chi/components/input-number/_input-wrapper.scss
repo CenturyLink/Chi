@@ -89,7 +89,6 @@ $m-inputnumber: (
           background-repeat: no-repeat;
           background-size: 0.5rem;
           border: 0.0625rem solid set-color(grey, 30);
-          border-radius: $border-radius;
           cursor: pointer;
           height: 0.6875rem;
           outline: none;
@@ -165,7 +164,6 @@ $m-inputnumber: (
   & > input {
     &[type='number'] {
       &.a-input {
-        border-radius: 0;
         flex: auto;
         min-width: 1rem;
         order: 2;
@@ -194,29 +192,14 @@ $m-inputnumber: (
 
     &:first-of-type,
     &:focus:first-of-type {
-      border-bottom-right-radius: 0;
       border-right-width: 0;
-      border-top-right-radius: 0;
       order: 1;
     }
 
     &:last-of-type,
     &:focus:last-of-type {
-      border-bottom-left-radius: 0;
       border-left-width: 0;
-      border-top-left-radius: 0;
       order: 3;
-    }
-  }
-
-  &.-pill > button {
-
-    &:first-of-type {
-      border-radius: 50% 0 0 50%;
-    }
-
-    &:last-of-type {
-      border-radius: 0 50% 50% 0;
     }
   }
 }

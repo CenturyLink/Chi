@@ -7,42 +7,36 @@ $sizes: (
     width: 4.8125rem,
     font-size: 0.75rem,
     line-height: 1rem,
-    border-radius: 0.75rem,
   ),
   small: (
     height: 1.5rem,
     width: 4.8125rem,
     font-size: 0.75rem,
     line-height: 1rem,
-    border-radius: 0.75rem,
   ),
   md: (
     height: 2rem,
     width: 6.5rem,
     font-size: 0.875rem,
     line-height: 1rem,
-    border-radius: 1rem,
   ),
   lg: (
     height: 2.5rem,
     width: 8.5rem,
     font-size: 0.875rem,
     line-height: 1.25rem,
-    border-radius: 1.25rem,
   ),
   large: (
     height: 2.5rem,
     width: 8.5rem,
     font-size: 0.875rem,
     line-height: 1.25rem,
-    border-radius: 1.25rem,
   ),
   xl: (
     height: 3rem,
     width: 10rem,
     font-size: 0.875rem,
     line-height: 1.25rem,
-    border-radius: 1.5rem,
   )
 );
 
@@ -68,7 +62,6 @@ input {
           align-items: center;
           background-color: set-color(white);
           border: 0.0625rem solid set-color(grey, 30);
-          border-radius: $border-radius;
           content: 'Choose File';
           cursor: pointer;
           display: flex;
@@ -121,24 +114,6 @@ input {
               height: map-get(map-get($sizes, $type), height);
               line-height: map-get(map-get($sizes, $type), line-height);
               width: map-get(map-get($sizes, $type), width);
-            }
-          }
-        }
-      }
-    }
-
-    &.-pill {
-      @each $type in map-keys($sizes) {
-        & + label {
-          &::before {
-            border-radius: 1rem;
-          }
-        }
-
-        &.-#{$type} {
-          & + label {
-            &::before {
-              border-radius: map-get(map-get($sizes, $type), border-radius);
             }
           }
         }

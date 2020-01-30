@@ -136,7 +136,6 @@ $transition-duration: 0.2s;
   &.-bordered {
     background-color: white;
     border: 0.0625rem solid $border-color;
-    border-radius: $border-radius;
     box-shadow: map-get($shadow, 1);
     margin-bottom: 0.5rem;
 
@@ -194,7 +193,6 @@ $transition-duration: 0.2s;
     .m-epanel__body {
       background-color: white;
       border: 0.0625rem solid $border-color;
-      border-radius: $border-radius;
       box-shadow: map-get($shadow, 1);
       margin-bottom: 0.5rem;
       margin-top: 1.25rem;

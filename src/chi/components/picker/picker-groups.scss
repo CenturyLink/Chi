@@ -33,25 +33,11 @@ legend {
               border-right-width: 0;
             }
 
-            &:first-of-type {
-              border-bottom-left-radius: 0;
-              border-top-right-radius: $border-radius;
-
-              @include respond-to(md) {
-                border-bottom-left-radius: $border-radius;
-                border-top-right-radius: 0;
-              }
-            }
-
             &:last-of-type {
-              border-bottom-left-radius: $border-radius;
               border-bottom-width: 0.0625rem;
-              border-top-right-radius: 0;
 
               @include respond-to(md) {
-                border-bottom-left-radius: 0;
                 border-right-width: 0.0625rem;
-                border-top-right-radius: $border-radius;
               }
             }
 

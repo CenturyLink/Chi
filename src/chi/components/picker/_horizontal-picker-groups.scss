@@ -72,15 +72,8 @@ $sizes: (
             cursor: pointer;
           }
 
-          &:first-of-type {
-            border-bottom-left-radius: $border-radius;
-            border-top-left-radius: $border-radius;
-          }
-
           &:last-of-type {
-            border-bottom-right-radius: $border-radius;
             border-right-width: 0.0625rem;
-            border-top-right-radius: $border-radius;
           }
 
           & > :not(:last-child) {

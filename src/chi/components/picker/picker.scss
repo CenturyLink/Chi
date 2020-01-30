@@ -31,7 +31,6 @@ legend {
           span {
             &.a-picker__checkbox {
               border: 2px solid set-color(grey, 50);
-              border-radius: 3px;
               color: set-color(grey, 50);
               height: 1rem;
               position: relative;
@@ -163,7 +162,6 @@ legend {
           align-items: center;
           background-color: $text-white;
           border: solid 0.0625rem set-color(grey, 30);
-          border-radius: 0.1875rem;
           box-shadow: map-get($shadow, 1);
           display: flex;
           font-size: $text;

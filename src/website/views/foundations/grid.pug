@@ -10,11 +10,56 @@ p.-text All Chi components, with the exception of icons and typography, follow a
 h2 Layout Grid
 p.-text In addition to the baseline grid, Chi includes a fully responsive 12-column layout grid. Built on the flexbox standards, the Chi layout grid allows for complex layouts with minimal markup and styles.
 
-p.-text Grid layouts are defined as a grid container that is composed of one or more rows of columns.
+h3 Breakpoints
+div(style="overflow-x:auto;").-mb--3
+  table.a-table.-bordered
+    thead
+      tr
+        th Device
+        th Breakpoint range (px)
+        th Breakpoint size
+        th Columns
+        th Gutters (px)
+    tbody
+      tr
+        td Phone (portrait)
+        td 0 - 575
+        td
+          code xs
+        td 4
+        td 16
+      tr
+        td Tablet (portrait)
+        td 575 - 767
+        td
+          code sm
+        td 8
+        td 16
+      tr
+        td Tablet (landscape)
+        td 768 - 991
+        td
+          code md
+        td 12
+        td 24
+      tr
+        td Laptop/Desktop (small)
+        td 992 - 1200
+        td
+          code lg
+        td 12
+        td 24
+      tr
+        td Laptop/Desktop
+        td 1200+
+        td
+          code xl
+        td 12
+        td 24
 
 h3 Automatic Layout
 
-p.-text By default, columns within a grid container will occupy an equal amount of horizontal space. Content within those columns is constrained to the width of the column (i.e. the column will not widen to accommodate its contents).
+p.-text Grid layouts are defined as a grid container that is composed of one or more rows of columns. By default, columns within a grid container will occupy an equal amount of horizontal space. Content within those columns is constrained to the width of the column (i.e. the column will not widen to accommodate its contents).
 
 .a-grid.-mb--3.-show--example
   .a-col

@@ -20,23 +20,6 @@ h4 Base
                 span.-sr--only Next
             else
               a(class=`a-btn`, href='#')= `${step}`
-h4 Pill
-.test-pill
-  .example.-mb--3
-    .-p--5
-      nav.a-pagination(role='navigation', aria-label='Pagination')
-        .m-btnGroup.-pill
-          each step in steps
-            if step == '0'
-              a(class=`a-btn`, href='#', aria-label='Previous')
-                i(class="a-icon icon-chevron-left", aria-hidden='true')
-                span.-sr--only Previous
-            else if step == '6'
-              a(class=`a-btn`, href='#')
-                i(class="a-icon icon-chevron-right", aria-hidden='true')
-                span.-sr--only Next
-            else
-              a(class=`a-btn`, href='#')= `${step}`
 h4 Active
 .test-active
   .example.-mb--3
@@ -85,28 +68,6 @@ h4 Base
             .-m--2
               nav.a-pagination(role='navigation', aria-label='Pagination').-mb--2
                 .m-btnGroup
-                  each step in steps
-                    if step == '0'
-                      a(class=`a-btn -${size}`, href='#', aria-label='Previous')
-                        i(class="a-icon icon-chevron-left", aria-hidden='true')
-                        span.-sr--only Previous
-                    else if step == '6'
-                      a(class=`a-btn -${size}`, href='#')
-                        i(class="a-icon icon-chevron-right", aria-hidden='true')
-                        span.-sr--only Next
-                    else
-                      a(class=`a-btn -${size}`, href='#')= `${step}`
-h4 Pill
-.test-sizes-pill
-  table(cellpadding="0", cellspacing="0", width="600px")
-    each size in ['sm', 'md', 'lg', 'xl']
-      tr
-        td
-          h5= `-${size}`
-          td
-            .-m--2
-              nav.a-pagination(role='navigation', aria-label='Pagination').-mb--2
-                .m-btnGroup.-pill
                   each step in steps
                     if step == '0'
                       a(class=`a-btn -${size}`, href='#', aria-label='Previous')

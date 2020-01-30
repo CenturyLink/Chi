@@ -4,7 +4,6 @@ $border: 0.0625rem;
 
 $sizes: (
   sm: (
-    border-radius: 0.75rem,
     padding: 0.25rem,
     padding_hover: (0.25rem - $border),
     icons: (
@@ -14,7 +13,6 @@ $sizes: (
   ),
   // Legacy code start
   small: (
-    border-radius: 0.75rem,
     padding: 0.25rem,
     padding_hover: (0.25rem - $border),
     icons: (
@@ -24,7 +22,6 @@ $sizes: (
   ),
   // Legacy code end
   md: (
-    border-radius: 1rem,
     padding: 0.5rem,
     padding_hover: (0.5rem - $border),
     icons: (
@@ -33,7 +30,6 @@ $sizes: (
     )
   ),
   lg: (
-    border-radius: 1.25rem,
     padding: 0.625rem,
     padding_hover: (0.625rem - $border),
     icons: (
@@ -43,7 +39,6 @@ $sizes: (
   ),
   // Legacy code start
   large: (
-    border-radius: 1.25rem,
     padding: 0.625rem,
     padding_hover: (0.625rem - $border),
     icons: (
@@ -53,7 +48,6 @@ $sizes: (
   ),
   // Legacy code end
   xl: (
-    border-radius: 1.5rem,
     padding: 0.875rem,
     padding_hover: (0.875rem - $border),
     icons: (
@@ -78,7 +72,6 @@ $sizes: (
         &,
         &.-outline {
           border-bottom-width: 0;
-          border-radius: 0;
           padding-bottom: 0.5rem;
 
           &.-icon {
@@ -95,14 +88,7 @@ $sizes: (
             }
           }
 
-          &:first-child {
-            border-top-left-radius: $border-radius;
-            border-top-right-radius: $border-radius;
-          }
-
           &:last-child {
-            border-bottom-left-radius: $border-radius;
-            border-bottom-right-radius: $border-radius;
             border-bottom-width: 0.0625rem;
             padding-bottom: 0.4375rem;
 
@@ -190,8 +176,6 @@ $sizes: (
         }
 
         &.-flat {
-          border-radius: $border-radius;
-
           &:active,
           &.-active,
           &:hover,
