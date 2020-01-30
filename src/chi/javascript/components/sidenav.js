@@ -32,6 +32,7 @@ class Sidenav extends Component {
     this._drawers = [];
     this._clickOnComponent = false;
     this._autocloseTimeoutId = null;
+    this._menuItemAnimation = null;
 
     this._addEventHandler(
       this._drawersContainer,
@@ -46,6 +47,14 @@ class Sidenav extends Component {
       DRAWER_EVENTS.show,
       function (e) {
         self._handlerDrawerShown(e);
+      }
+    );
+
+    this._addEventHandler(
+      this._drawersContainer,
+      DRAWER_EVENTS.hide,
+      function (e) {
+        self._handlerDrawerHide(e);
       }
     );
 
@@ -167,7 +176,7 @@ class Sidenav extends Component {
     Util.addClass(menuItem, CLASS_ACTIVE);
 
     if (currentlyActiveMenuItem) {
-      const currentlyActiveItemList = currentlyActiveMenuItem.querySelector('.m-sidenav__drawer-item-list');
+      const currentlyActiveItemList = currentlyActiveMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
 
       Util.removeClass(currentlyActiveMenuItem, CLASS_ACTIVE);
 
@@ -185,6 +194,61 @@ class Sidenav extends Component {
 
     if (unselectedMenuItem) {
       Util.removeClass(unselectedMenuItem, MENU_ITEM_UNSELECTED_CLASS);
+    }
+  }
+
+  toggleDrawerItemList(drawerMenuItem) {
+    const drawerMenuItemList = drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
+    const expandedItem = drawerMenuItem.parentNode.querySelector(`.${DRAWER_ITEM_LIST_EXPANDED}`);
+    let drawerMenuItemListHeight;
+
+    if (this._menuItemAnimation) {
+      Util.stopThreeStepsAnimation(this._menuItemAnimation, false);
+    }
+
+    if (expandedItem && expandedItem !== drawerMenuItem) {
+      Util.removeClass(expandedItem, DRAWER_ITEM_LIST_EXPANDED);
+      expandedItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`).style.removeProperty('height');
+    }
+
+    function calculateHeight() {
+      drawerMenuItemList.style.position = 'absolute';
+      drawerMenuItemList.style.visibility = 'hidden';
+      drawerMenuItemList.style.display = 'block';
+      drawerMenuItemListHeight = window.getComputedStyle(drawerMenuItemList).height;
+      drawerMenuItemList.style.removeProperty('display');
+      drawerMenuItemList.style.removeProperty('visibility');
+      drawerMenuItemList.style.removeProperty('position');
+    }
+
+    if (!Util.hasClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED)) {
+      this._menuItemAnimation = Util.threeStepsAnimation(
+        function() {
+          calculateHeight();
+          Util.addClass(drawerMenuItemList, DRAWER_ITEM_LIST_VISIBLE);
+          drawerMenuItemList.style.height = '0px';
+        }, function() {
+          drawerMenuItemList.style.height = drawerMenuItemListHeight;
+          Util.addClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED);
+        }, function() {
+          Util.removeClass(drawerMenuItemList, DRAWER_ITEM_LIST_VISIBLE);
+        }, 75
+      );
+    } else {
+      this._menuItemAnimation = Util.threeStepsAnimation(
+        function() {
+          calculateHeight();
+          Util.addClass(drawerMenuItemList, DRAWER_ITEM_LIST_VISIBLE);
+          drawerMenuItemList.style.height = drawerMenuItemListHeight;
+        }, function() {
+          drawerMenuItemList.style.height = '0px';
+          Util.removeClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED);
+        }, function() {
+          Util.removeClass(drawerMenuItem, CLASS_ACTIVE);
+          Util.removeClass(drawerMenuItemList, DRAWER_ITEM_LIST_VISIBLE);
+          drawerMenuItemList.style.removeProperty('height');
+        }, 75
+      );
     }
   }
 
@@ -231,46 +295,12 @@ class Sidenav extends Component {
 
       if (drawerMenuItem) {
         const drawerMenuItemList = drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
-        let drawerMenuItemListHeight;
 
         if (drawerMenuItemList) {
-          if (window.getComputedStyle(drawerMenuItemList).display === 'block') {
-            drawerMenuItemListHeight = window.getComputedStyle(drawerMenuItemList).height;
-          } else {
-            drawerMenuItemList.style.position = 'absolute';
-            drawerMenuItemList.style.visibility = 'hidden';
-            drawerMenuItemList.style.display = 'block';
-            drawerMenuItemListHeight = window.getComputedStyle(drawerMenuItemList).height;
-            drawerMenuItemList.style.removeProperty('display');
-            drawerMenuItemList.style.removeProperty('visibility');
-            drawerMenuItemList.style.removeProperty('position');
-          }
-          Util.addClass(drawerMenuItemList, DRAWER_ITEM_LIST_VISIBLE);
-          if (!Util.hasClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED)) {
-            drawerMenuItemList.style.height = '0px';
-            setTimeout(function () {
-              drawerMenuItemList.style.height = drawerMenuItemListHeight;
-              Util.addClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED);
-            }, 50);
-          } else {
-            drawerMenuItemList.style.height = drawerMenuItemListHeight;
-            setTimeout(function () {
-              drawerMenuItemList.style.height = '0px';
-              Util.removeClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED);
-            }, 50);
-          }
-
-          drawerMenuItemList.addEventListener('transitionend', function () {
-            if (!Util.hasClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED)) {
-              Util.removeClass(drawerMenuItem, CLASS_ACTIVE);
-              Util.removeClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED);
-              Util.removeClass(drawerMenuItemList, DRAWER_ITEM_LIST_VISIBLE);
-              drawerMenuItemList.style.removeProperty('height');
-            } else {
-              return;
-            }
-          }, { once: true });
+          e.preventDefault();
+          this.toggleDrawerItemList(drawerMenuItem);
         }
+
         if (!drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) ||
           Util.hasClass(e.target, 'a-sidenav__drawer-item-tab')) {
           this.activateMenuItem(menuItem);
@@ -300,6 +330,14 @@ class Sidenav extends Component {
           Util.removeClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
         }
       }
+    }
+  }
+
+  _handlerDrawerHide() {
+    const allDrawersClosed = this._drawers.every(drawer => !Util.hasClass(drawer._elem, CLASS_ACTIVE));
+
+    if (allDrawersClosed) {
+      this.removeUnselected();
     }
   }
 
