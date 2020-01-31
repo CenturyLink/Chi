@@ -265,18 +265,11 @@ h3(id=`example-${example}`) Enterprise Global Navigation
             .m-drawer__content
               ul.m-sidenav__drawer-list
                 each val2, index in drawerMenuItems
-                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active -expanded':''}`)
-                    a(href=`#drawer-item-list-${val1}-${val2}`)
-                      if index % 4 < 2
+                  if val2 === 'A' || val2 === 'B'
+                    li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active -expanded':''}`)
+                      a(href=`#drawer-item-list-${val1}-${val2}`)
                         .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                      else
-                        span.m-sidenav__title
-                          =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                          .a-icon.-xs
-                            svg
-                              use(xlink:href='#icon-external-link')
-                    if val2 === 'A' || val2 === 'B'
-                      .m-sidenav__drawer-item-list(id=`drawer-item-${val1}-${val2}`)
+                      .m-sidenav__drawer-item-list(id=`drawer-item-list-${val1}-${val2}`)
                         ul.a-tabs.-vertical.-sm
                           li
                             a(class='a-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab A
@@ -284,6 +277,14 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                             a(class='a-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
                           li
                             a(class='a-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab C
+                  else
+                    li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active -expanded':''}`)
+                      a(href=`#exampleHashTarget`)
+                        span.m-sidenav__title
+                          =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                          .a-icon.-xs
+                            svg
+                              use(xlink:href='#icon-external-link')
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -324,11 +325,9 @@ h3(id=`example-${example}`) Enterprise Global Navigation
         <div class="m-sidenav__drawers">
           <div class="m-drawer -animated -left" id="drawer-global-nav-1-1">
             <div class="m-drawer__header">
-              Reports
+              <div class="a-drawer__title">Menu item 1</div>
               <button class="a-btn -icon -close" aria-label="Close">
-                <div class="a-btn__content">
-                  <i class="a-icon icon-x"></i>
-                </div>
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
               </button>
             </div>
             <div class="m-drawer__content">
@@ -337,16 +336,22 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   <a href="#drawer-item-list-1-A">
                     <div class="m-sidenav__title">Title A</div>
                   </a>
-                  <div class="m-sidenav__drawer-item-list" id="drawer-item-1-A">
+                  <div class="m-sidenav__drawer-item-list" id="drawer-item-list-1-A">
                     <ul class="a-tabs -vertical -sm">
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#">A</a>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#">B</a>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#">C</a>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -355,31 +360,48 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   <a href="#drawer-item-list-1-B">
                     <div class="m-sidenav__title">Title B</div>
                   </a>
-                  <div
-                    class="m-sidenav__drawer-item-list"
-                    id="drawer-item-1-B"
-                  >
+                  <div class="m-sidenav__drawer-item-list" id="drawer-item-list-1-B">
                     <ul class="a-tabs -vertical -sm">
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#">A</a>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#">B</a>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#">C</a>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
                       </li>
                     </ul>
                   </div>
                 </li>
                 <li>
-                  <a href="#drawer-item-list-1-C">
-                    <span class="m-sidenav__title">Title C</span>
+                  <a href="#exampleHashTarget">
+                    <span class="m-sidenav__title">
+                      Title C
+                      <div class="a-icon -xs">
+                        <svg>
+                          <use xlink:href="#icon-external-link"></use>
+                        </svg>
+                      </div>
+                    </span>
                   </a>
                 </li>
                 <li>
-                  <a href="#drawer-item-list-1-D">
-                    <span class="m-sidenav__title">Title D</span>
+                  <a href="#exampleHashTarget">
+                    <span class="m-sidenav__title">
+                      Title D
+                      <div class="a-icon -xs">
+                        <svg>
+                          <use xlink:href="#icon-external-link"></use>
+                        </svg>
+                      </div>
+                    </span>
                   </a>
                 </li>
               </ul>
@@ -387,11 +409,9 @@ h3(id=`example-${example}`) Enterprise Global Navigation
           </div>
           <div class="m-drawer -animated -left" id="drawer-global-nav-1-2">
             <div class="m-drawer__header">
-              Reports
+              <div class="a-drawer__title">Menu item 2</div>
               <button class="a-btn -icon -close" aria-label="Close">
-                <div class="a-btn__content">
-                  <i class="a-icon icon-x"></i>
-                </div>
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
               </button>
             </div>
             <div class="m-drawer__content">
@@ -400,16 +420,22 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   <a href="#drawer-item-list-2-A">
                     <div class="m-sidenav__title">Title E</div>
                   </a>
-                  <div class="m-sidenav__drawer-item-list" id="drawer-item-2-A">
+                  <div class="m-sidenav__drawer-item-list" id="drawer-item-list-2-A">
                     <ul class="a-tabs -vertical -sm">
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#">A</a>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#">B</a>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#">C</a>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -418,28 +444,48 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   <a href="#drawer-item-list-2-B">
                     <div class="m-sidenav__title">Title F</div>
                   </a>
-                  <div class="m-sidenav__drawer-item-list" id="drawer-item-2-B">
+                  <div class="m-sidenav__drawer-item-list" id="drawer-item-list-2-B">
                     <ul class="a-tabs -vertical -sm">
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#">A</a>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#">B</a>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#">C</a>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
                       </li>
                     </ul>
                   </div>
                 </li>
                 <li>
-                  <a href="#drawer-item-list-2-C">
-                    <span class="m-sidenav__title">Title G</span>
+                  <a href="#exampleHashTarget">
+                    <span class="m-sidenav__title">
+                      Title G
+                      <div class="a-icon -xs">
+                        <svg>
+                          <use xlink:href="#icon-external-link"></use>
+                        </svg>
+                      </div>
+                    </span>
                   </a>
                 </li>
                 <li>
-                  <a href="#drawer-item-list-2-D">
-                    <span class="m-sidenav__title">Title H</span>
+                  <a href="#exampleHashTarget">
+                    <span class="m-sidenav__title">
+                      Title H
+                      <div class="a-icon -xs">
+                        <svg>
+                          <use xlink:href="#icon-external-link"></use>
+                        </svg>
+                      </div>
+                    </span>
                   </a>
                 </li>
               </ul>

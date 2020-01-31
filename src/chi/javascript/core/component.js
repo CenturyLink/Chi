@@ -72,25 +72,6 @@ class Component {
       }
     );
   }
-
-  _addEventHandler (elem, type, handler, useCapture) {
-    elem.addEventListener(type, handler, useCapture || false);
-    const eventHandler = {
-      elem: elem,
-      type: type,
-      handler: handler,
-      useCapture: useCapture
-    };
-    this._eventHandlers.push(eventHandler);
-  }
-
-  _removeEventHandlers () {
-    this._eventHandlers.forEach(function (eh) {
-      eh.elem.removeEventListener(eh.type, eh.handler);
-    });
-    this._eventHandlers.length = 0;
-  }
-
 }
 
 export {Component};

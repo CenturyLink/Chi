@@ -1,20 +1,20 @@
 import { Component } from "../core/component";
 import { SlidingBorder, ANIMATION_DURATION as BORDER_ANIMATION_DURATION } from "./auxiliary/sliding-border";
 import { Util } from "../core/util.js";
+import { chi } from "../core/chi";
 import { Drawer, EVENTS as DRAWER_EVENTS } from "./drawer";
 
-const CLASS_ACTIVE = "-active";
-const CLASS_ANIMATED = "-animated";
 const COMPONENT_SELECTOR = '.m-sidenav';
 const COMPONENT_TYPE = "sidenav";
 const DRAWER_CLASS = "m-drawer";
 const LINKLIST_CLASS = 'm-sidenav__list';
 const SIDENAV_CONTENT_CLASS = 'm-sidenav__content';
 const SIDENAV_DRAWERS_CLASS = 'm-sidenav__drawers';
+const SIDENAV_TITLE_CLASS = 'm-sidenav__title';
 const DRAWER_LINKLIST_CLASS = "m-sidenav__drawer-list";
 const DRAWER_ITEM_LIST_CLASS = "m-sidenav__drawer-item-list";
+const DRAWER_ITEM_TAB_CLASS = "a-sidenav__drawer-item-tab";
 const MENU_ITEM_UNSELECTED_CLASS = "-unselected";
-const DRAWER_ITEM_LIST_VISIBLE = "-visible";
 const DRAWER_ITEM_LIST_EXPANDED = "-expanded";
 
 const DEFAULT_CONFIG = {
@@ -59,7 +59,7 @@ class Sidenav extends Component {
     );
 
     if (this._config.animated) {
-      Util.addClass(this._elem, CLASS_ANIMATED);
+      Util.addClass(this._elem, chi.classes.ANIMATED);
 
       this._slidingBorder = new SlidingBorder(
         this._elem,
@@ -98,13 +98,13 @@ class Sidenav extends Component {
 
   getActiveMenuItem() {
     return this._elem.querySelector(
-      'ul.' + LINKLIST_CLASS + '>li.' + CLASS_ACTIVE
+      'ul.' + LINKLIST_CLASS + '>li.' + chi.classes.ACTIVE
     );
   }
 
   getDrawerActiveMenuItem() {
     return this._elem.querySelector(
-      'ul.' + DRAWER_LINKLIST_CLASS + '>li.' + CLASS_ACTIVE
+      'ul.' + DRAWER_LINKLIST_CLASS + '>li.' + chi.classes.ACTIVE
     );
   }
 
@@ -151,13 +151,13 @@ class Sidenav extends Component {
       this._slidingBorder.show();
     }
 
-    Util.addClass(menuItem, CLASS_ACTIVE);
+    Util.addClass(menuItem, chi.classes.ACTIVE);
     if (currentlySelectedMenuItem) {
       Util.removeClass(currentlySelectedMenuItem, MENU_ITEM_UNSELECTED_CLASS);
     }
 
     if (currentlyActiveMenuItem) {
-      Util.removeClass(currentlyActiveMenuItem, CLASS_ACTIVE);
+      Util.removeClass(currentlyActiveMenuItem, chi.classes.ACTIVE);
     }
 
     if (this._config.animated) {
@@ -173,16 +173,16 @@ class Sidenav extends Component {
     if (menuItem === currentlyActiveMenuItem) {
       return;
     }
-    Util.addClass(menuItem, CLASS_ACTIVE);
+    Util.addClass(menuItem, chi.classes.ACTIVE);
 
     if (currentlyActiveMenuItem) {
       const currentlyActiveItemList = currentlyActiveMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
 
-      Util.removeClass(currentlyActiveMenuItem, CLASS_ACTIVE);
+      Util.removeClass(currentlyActiveMenuItem, chi.classes.ACTIVE);
 
       if (currentlyActiveItemList) {
         Util.removeClass(currentlyActiveMenuItem, DRAWER_ITEM_LIST_EXPANDED);
-        Util.removeClass(currentlyActiveItemList, DRAWER_ITEM_LIST_VISIBLE);
+        Util.removeClass(currentlyActiveItemList, chi.classes.TRANSITIONING);
         currentlyActiveItemList.style.removeProperty('height');
       }
     }
@@ -225,27 +225,27 @@ class Sidenav extends Component {
       this._menuItemAnimation = Util.threeStepsAnimation(
         function() {
           calculateHeight();
-          Util.addClass(drawerMenuItemList, DRAWER_ITEM_LIST_VISIBLE);
+          Util.addClass(drawerMenuItemList, chi.classes.TRANSITIONING);
           drawerMenuItemList.style.height = '0px';
         }, function() {
           drawerMenuItemList.style.height = drawerMenuItemListHeight;
           Util.addClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED);
         }, function() {
-          Util.removeClass(drawerMenuItemList, DRAWER_ITEM_LIST_VISIBLE);
+          Util.removeClass(drawerMenuItemList, chi.classes.TRANSITIONING);
         }, 75
       );
     } else {
       this._menuItemAnimation = Util.threeStepsAnimation(
         function() {
           calculateHeight();
-          Util.addClass(drawerMenuItemList, DRAWER_ITEM_LIST_VISIBLE);
+          Util.addClass(drawerMenuItemList, chi.classes.TRANSITIONING);
           drawerMenuItemList.style.height = drawerMenuItemListHeight;
         }, function() {
           drawerMenuItemList.style.height = '0px';
           Util.removeClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED);
         }, function() {
-          Util.removeClass(drawerMenuItem, CLASS_ACTIVE);
-          Util.removeClass(drawerMenuItemList, DRAWER_ITEM_LIST_VISIBLE);
+          Util.removeClass(drawerMenuItem, chi.classes.ACTIVE);
+          Util.removeClass(drawerMenuItemList, chi.classes.TRANSITIONING);
           drawerMenuItemList.style.removeProperty('height');
         }, 75
       );
@@ -289,7 +289,7 @@ class Sidenav extends Component {
       menuItemLink = this._getMenuItemLink(drawer);
       menuItem = menuItemLink.parentNode;
       if (drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) === null ||
-        Util.hasClass(e.target, 'a-sidenav__drawer-item-tab')) {
+        Util.hasClass(e.target, DRAWER_ITEM_TAB_CLASS)) {
         this.close(menuItemLink);
       }
 
@@ -297,12 +297,15 @@ class Sidenav extends Component {
         const drawerMenuItemList = drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
 
         if (drawerMenuItemList) {
-          e.preventDefault();
+          if (Util.hasClass(e.target, SIDENAV_TITLE_CLASS) ||
+            e.target.parentNode.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`)) {
+            e.preventDefault();
+          }
           this.toggleDrawerItemList(drawerMenuItem);
         }
 
         if (!drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) ||
-          Util.hasClass(e.target, 'a-sidenav__drawer-item-tab')) {
+          Util.hasClass(e.target, DRAWER_ITEM_TAB_CLASS)) {
           this.activateMenuItem(menuItem);
         }
         this.activateDrawerMenuItem(drawerMenuItem);
@@ -322,9 +325,9 @@ class Sidenav extends Component {
       });
 
       if (Util.hasClass(this._elem, '-global-nav')) {
-        const activeItemLink = menuItemLink.parentNode.parentNode.querySelector(`li.${CLASS_ACTIVE} a`);
+        const activeItemLink = menuItemLink.parentNode.parentNode.querySelector(`li.${chi.classes.ACTIVE} a`);
 
-        if (!Util.hasClass(menuItemLink.parentNode, CLASS_ACTIVE)) {
+        if (!Util.hasClass(menuItemLink.parentNode, chi.classes.ACTIVE)) {
           Util.addClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
         } else if (Util.hasClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS)) {
           Util.removeClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
@@ -334,7 +337,7 @@ class Sidenav extends Component {
   }
 
   _handlerDrawerHide() {
-    const allDrawersClosed = this._drawers.every(drawer => !Util.hasClass(drawer._elem, CLASS_ACTIVE));
+    const allDrawersClosed = this._drawers.every(drawer => !Util.hasClass(drawer._elem, chi.classes.ACTIVE));
 
     if (allDrawersClosed) {
       this.removeUnselected();
