@@ -85,4 +85,8 @@
       display: block;
     }
   }
+
+  &.-portal {
+    background-color: rgba(set-color(grey, 70), 0.7);
+  }
 }

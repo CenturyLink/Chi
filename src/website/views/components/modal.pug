@@ -433,3 +433,39 @@ p.-text Remove <code>a-modal__header</code> and <code>a-modal__footer</code> for
         </section>
       </div>
     </div>
+
+h3 Portal
+.example.-mb--3
+  .m-backdrop.-portal.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+    .m-backdrop__wrapper
+      section.a-modal.-portal(role="dialog", aria-label="Modal description", aria-modal="true")
+        header.a-modal__header
+          h2.a-modal__title Modal Title
+          button(class='a-btn -icon -close', aria-label='Close')
+            .a-btn__content
+              i.a-icon.icon-x
+        .a-modal__content
+          p.-text.-m--0 Modal content
+        footer.a-modal__footer
+          button.a-btn.-primary.-lg Save
+  :code(lang="html")
+    <div class="m-backdrop -portal">
+      <div class="m-backdrop__wrapper">
+        <section class="a-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <header class="a-modal__header">
+            <h2 class="a-modal__title">Modal Title</h2>
+            <button class="a-btn -icon -close" aria-label="Close">
+              <div class="a-btn__content">
+                <i class="a-icon icon-x"></i>
+              </div>
+            </button>
+          </header>
+          <div class="a-modal__content">
+            <p class="-text -m--0">Modal content</p>
+          </div>
+          <footer class="a-modal__footer">
+            <button class="a-btn -primary -lg">Save</button>
+          </footer>
+        </section>
+      </div>
+    </div>
