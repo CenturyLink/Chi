@@ -150,8 +150,9 @@ $animation-duration: 0.5s;
     .a-modal__header {
       background-color: set-color(grey, 80);
       box-shadow: none;
+      color: set-color(white);
 
-      .a-modal__title {
+      .a-modal__back {
         color: set-color(white);
       }
     }
