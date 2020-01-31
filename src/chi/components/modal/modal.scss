@@ -145,7 +145,6 @@ $animation-duration: 0.5s;
 
   &.-portal {
     background-color: set-color(grey, 20);
-    border-radius: 0;
     box-shadow: 0 3px 6px rgba(set-color(black), 0.15);
 
     .a-modal__header {
