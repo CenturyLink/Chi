@@ -227,6 +227,35 @@ mixin table(row, column, selectable)
               +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
               +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
               +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+    div(class=`test-portal`)
+      span.a-h2
+        | table
+        = ' / Portal styled'
+      table.a-table.-portal
+        thead
+          tr
+            th
+              div name
+            th
+              div ID
+            th
+              div last login
+        tbody
+          tr
+            td
+              a(href="#") David Navarro
+            td david
+            td Dec 18, 2017 3:26 PM
+          tr
+            td
+              a(href="#") Diego Sanjuan
+            td diego
+            td Dec 18, 2017 2:38 AM
+          tr.-active
+            td
+              a(href="#") Manuel Martin	
+            td manuel
+            td Nov 5, 2017 10:15 AM
 
   .a-col.-w--6
     h2 With section container

@@ -113,23 +113,80 @@ th {
   & tbody {
     tr {
       &.-row--success {
-        background-color: set-color(mint, 10);
+        background-color: set-color(mint, 10) !important;
       }
 
       &.-row--warning {
-        background-color: set-color(yellow, 10);
+        background-color: set-color(yellow, 10) !important;
       }
 
       &.-row--danger {
-        background-color: set-color(red, 10);
+        background-color: set-color(red, 10) !important;
       }
 
       &.-row--info {
-        background-color: set-color(navy, 10);
+        background-color: set-color(navy, 10) !important;
       }
 
       &[disabled] {
-        color: rgba(set-color(grey, 90), 0.4);
+        color: rgba(set-color(grey, 90), 0.4) !important;
+      }
+    }
+  }
+
+  &.-portal {
+    thead {
+      tr {
+        th {
+          background-color: set-color(grey, 25);
+          border-bottom: 0;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(odd) {
+          background-color: set-color(grey, 20);
+        }
+
+        &.-active {
+          td {
+            background-color: rgb(206, 218, 241);
+
+            &:first-child {
+              border-left: 0.25rem solid $primary-color;
+              padding-left: 0.75rem;
+            }
+          }
+        }
+
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    &.-hover {
+      tbody {
+        tr {
+          &:hover,
+          &.-hover {
+            td {
+              background-color: set-color(navy, 20);
+            }
+          }
+        }
+      }
+    }
+
+    &.-striped {
+      tbody {
+        tr {
+          &:nth-child(odd) {
+            background-color: set-color(grey, 20);
+          }
+        }
       }
     }
   }
@@ -170,29 +227,32 @@ th {
   }
 
   &.-bordered {
-    &::before {
-      border: 0.0625rem solid set-color(grey, 30);
-      border-bottom-width: 0;
-      border-left-width: 0;
-    }
-
-    tr {
-      & th {
+    &,
+    &.-portal {
+      &::before {
         border: 0.0625rem solid set-color(grey, 30);
-        border-right-width: 0;
-
-        &:last-of-type {
-          border-right-width: 0.0625rem;
-        }
+        border-bottom-width: 0;
+        border-left-width: 0;
       }
 
-      & td {
-        border: 0.0625rem solid set-color(grey, 30);
-        border-right-width: 0;
-        border-top-width: 0;
+      tr {
+        & th {
+          border: 0.0625rem solid set-color(grey, 30);
+          border-right-width: 0;
 
-        &:last-of-type {
-          border-right-width: 0.0625rem;
+          &:last-of-type {
+            border-right-width: 0.0625rem;
+          }
+        }
+
+        & td {
+          border: 0.0625rem solid set-color(grey, 30);
+          border-right-width: 0;
+          border-top-width: 0;
+
+          &:last-of-type {
+            border-right-width: 0.0625rem;
+          }
         }
       }
     }
