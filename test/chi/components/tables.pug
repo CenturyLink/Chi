@@ -4,7 +4,7 @@ title: Tables
 
 mixin str(cid, name, id, date, checked)
   tr(class={
-    '-row--warning': checked
+    '-row--info': checked
   })
     td.-lh--1
       input.a-checkbox__input(
@@ -39,23 +39,23 @@ mixin table-fix-header(row, column)
               div last login
         tbody
           if column == 'ascending'
-            +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
-            +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')(
+            +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
+            +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')(
               class={
                 [`-${row}`]: row != undefined && row != 'disabled'
               }
               disabled= row=='disabled' ? 'disabled' : false
             )
-            +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
+            +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')
           else
-            +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
-            +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')(
+            +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')
+            +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')(
               class={
                 [`-${row}`]: row != undefined && row != 'disabled'
               }
               disabled= row=='disabled' ? 'disabled' : false
             )
-            +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+            +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
 
 mixin table(row, column, selectable)
   table.a-table&attributes(attributes)
@@ -126,26 +126,26 @@ mixin table(row, column, selectable)
             th last login
     tbody
       if !selectable
-        +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')(
+        +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')(
         class={
           [`-${row}`]: row == 'xs' || row == 'sm' || row == 'md' || row == 'lg' || row == 'xl'
         }
         )
-        +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')(
+        +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')(
         class={
           [`-${row}`]: row != undefined && row != 'disabled'
         }
         disabled= row=='disabled' ? 'disabled' : false
         )
-        +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')(
+        +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')(
         class={
           [`-${row}`]: row == 'xs' || row == 'sm' || row == 'md' || row == 'lg' || row == 'xl'
         }
         )
       else if selectable
-        +str(`chk-1-01`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
-        +str(`chk-1-02`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
-        +str(`chk-1-03`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+        +str(`chk-1-01`, 'Name 1', 'name-1', 'Dec 18, 2020 3:26 PM', true)
+        +str(`chk-1-02`, 'Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
+        +str(`chk-1-03`, 'Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
 
 .a-grid
   .a-col.-w--6
@@ -205,9 +205,9 @@ mixin table(row, column, selectable)
                 th
                   div last login
             tbody
-              +str(`chk-${index}-01`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
-              +str(`chk-${index}-02`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
-              +str(`chk-${index}-03`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+              +str(`chk-${index}-01`, 'Name 1', 'name-1', 'Dec 18, 2020 3:26 PM', true)
+              +str(`chk-${index}-02`, 'Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
+              +str(`chk-${index}-03`, 'Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
     div(class=`test-scrollable`)
       span.a-h2
         | table
@@ -224,9 +224,9 @@ mixin table(row, column, selectable)
                 th
                   div last login
             tbody
-              +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
-              +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
-              +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+              +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')
+              +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
+              +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
     div(class=`test-portal`)
       span.a-h2
         | table
@@ -243,19 +243,19 @@ mixin table(row, column, selectable)
         tbody
           tr
             td
-              a(href="#") David Navarro
-            td david
-            td Dec 18, 2017 3:26 PM
+              a(href="#") Name 1
+            td name-1
+            td Dec 18, 2020 3:26 PM
           tr
             td
-              a(href="#") Diego Sanjuan
-            td diego
-            td Dec 18, 2017 2:38 AM
+              a(href="#") Name 2
+            td name-2
+            td Dec 18, 2020 2:38 AM
           tr.-active
             td
-              a(href="#") Manuel Martin	
-            td manuel
-            td Nov 5, 2017 10:15 AM
+              a(href="#") Name 3
+            td name-3
+            td Nov 5, 2020 10:15 AM
 
   .a-col.-w--6
     h2 With section container
@@ -316,9 +316,9 @@ mixin table(row, column, selectable)
                 th
                   div last login
             tbody
-              +str(`chk-${index}-01-1`, 'David Navarro', 'david', 'Dec 18, 2017 3:26 PM', true)
-              +str(`chk-${index}-02-2`, 'Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
-              +str(`chk-${index}-03-3`, 'Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+              +str(`chk-${index}-01-1`, 'Name 1', 'name-1', 'Dec 18, 2020 3:26 PM', true)
+              +str(`chk-${index}-02-2`, 'Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
+              +str(`chk-${index}-03-3`, 'Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
 
     div(class=`test-section-scrollable`)
       span.a-h2
@@ -336,6 +336,6 @@ mixin table(row, column, selectable)
                 th
                   div last login
             tbody
-              +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
-              +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
-              +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+              +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')
+              +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
+              +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
