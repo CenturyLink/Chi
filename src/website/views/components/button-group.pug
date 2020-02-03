@@ -107,14 +107,14 @@ p.-text
   |  <code>-lg</code>, <code>-xl</code>.
   | The default size is <code>-md</code>.
 
-ul#a-tabs.a-tabs
+ul.a-tabs#sizes-horizontal-vertical
   li.-active
-    a(href='#horizontal') Horizontal
+    a(href="#sizes-horizontal") Horizontal
   li
-    a(href='#vertical') Vertical
+    a(href="#sizes-vertical") Vertical
 
 .example.-mb--3
-  #horizontal.a-tabs-panel.-active
+  .a-tabs-panel.-active#sizes-horizontal
     .-px--3.-pt--0.-pb--3
       each size in ['sm', 'md', 'lg', 'xl']
         p.-text--bold= '-' + size
@@ -149,7 +149,7 @@ ul#a-tabs.a-tabs
         <button class="a-btn -xl">Button</button>
       </div>
 
-  #vertical.a-tabs-panel
+  .a-tabs-panel#sizes-vertical
     .-px--3.-pt--0.-pb--3
       each size in ['sm', 'md', 'lg', 'xl']
         p.-text--bold= '-' + size
@@ -283,6 +283,6 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('a-tabs'));
+      chi.tab(document.getElementById('sizes-horizontal-vertical'));
     }
   );
