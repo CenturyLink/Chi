@@ -31,6 +31,18 @@ th {
   padding: 0;
   width: 100%;
 
+  @each $type in map-keys($sizes) {
+    &.-#{$type} {
+      & th {
+        padding: map-get(map-get($sizes, $type), padding);
+      }
+
+      & td {
+        padding: map-get(map-get($sizes, $type), padding);
+      }
+    }
+  }
+
   table {
     border-spacing: 0;
     font-size: $text;
@@ -60,11 +72,11 @@ th {
     @each $type in map-keys($sizes) {
       &.-#{$type} {
         & th {
-          padding: map-get(map-get($sizes, $type), padding);
+          padding: map-get(map-get($sizes, $type), padding) !important;
         }
 
         & td {
-          padding: map-get(map-get($sizes, $type), padding);
+          padding: map-get(map-get($sizes, $type), padding) !important;
         }
       }
     }
