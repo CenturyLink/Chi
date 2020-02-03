@@ -289,7 +289,7 @@ class Sidenav extends Component {
       menuItemLink = this._getMenuItemLink(drawer);
       menuItem = menuItemLink.parentNode;
       if (drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) === null ||
-        Util.hasClass(e.target, DRAWER_ITEM_TAB_CLASS)) {
+        Util.hasClass(activator, DRAWER_ITEM_TAB_CLASS)) {
         this.close(menuItemLink);
       }
 
@@ -297,15 +297,15 @@ class Sidenav extends Component {
         const drawerMenuItemList = drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
 
         if (drawerMenuItemList) {
-          if (Util.hasClass(e.target, SIDENAV_TITLE_CLASS) ||
-            e.target.parentNode.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`)) {
+          if (Util.hasClass(activator, SIDENAV_TITLE_CLASS) ||
+            activator.parentNode.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`)) {
             e.preventDefault();
           }
           this.toggleDrawerItemList(drawerMenuItem);
         }
 
         if (!drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) ||
-          Util.hasClass(e.target, DRAWER_ITEM_TAB_CLASS)) {
+          Util.hasClass(activator, DRAWER_ITEM_TAB_CLASS)) {
           this.activateMenuItem(menuItem);
         }
         this.activateDrawerMenuItem(drawerMenuItem);
