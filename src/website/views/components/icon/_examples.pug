@@ -1,3 +1,6 @@
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
 h2 Using Icons
 p.-text Icons can be added via SVG or Web Font. Choose the method that best suits your projects needs.
 
@@ -9,24 +12,31 @@ p.-text SVG based implementations provide better semantics, accessibility, rende
 p.-text Then to render an SVG icon, apply the class <code>a-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
 .example.-mb--3
   .-p--3
-    .a-icon
-      svg
-        use(xlink:href='#icon-atom')
-  :code(lang="html")
-    <div class="a-icon">
-      <svg aria-hidden="true">
-        <use xlink:href='#icon-atom'/>
-      </svg>
-    </div>
-
-h3 Web Font & CSS Method
-p.-text Web Font based implementations offer the widest browser support, fastest rendering speed, and require no additional script or stylesheet.
-p.-text To render a Web Font icon, apply the class <code>a-icon</code> to an <code>&lt;i&gt;</code> tag and specify the name of the icon you wish to use in the <code>&lt;i&gt;</code>'s class attribute:
-.example.-mb--3
-  .-p--3
-    i(class='a-icon icon-atom')
-  :code(lang="html")
-    <i class="a-icon icon-atom"></i>
+    chi-icon(icon="atom")
+  ul#example-default.a-tabs.-ml--3
+    li.-active
+      a(href='#webcomponent-default') Web component
+    li
+      a(href='#svg-default') SVG
+    li
+      a(href='#webfont-default') Web font
+  #webcomponent-default.a-tabs-panel.-active
+    :code(lang="html")
+      <chi-icon icon="atom"></chi-icon>
+  #svg-default.a-tabs-panel
+    :code(lang="html")
+      <div class="a-icon">
+        <svg aria-hidden="true">
+          <use xlink:href='#icon-atom'/>
+        </svg>
+      </div>
+  #webfont-default.a-tabs-panel
+    :code(lang="html")
+      <!--
+        Web Font based implementations offer the widest browser support,
+        fastest rendering speed, and require no additional script or stylesheet.
+      -->
+      <i class="a-icon icon-logo-centurylink"></i>
 
 h2 Sizes
 p.-text By default, icons render at 16x16px (<code>-sm</code>). Apply size classes to render icons larger or smaller:
@@ -39,16 +49,34 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
     .a-grid.-align-items--end
       each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
         div.-p--2.-m--1
-          div(class=`a-icon -${size}`)
-            svg
-              use(xlink:href='#icon-atom')
+          chi-icon(icon="atom", size=size)
           p.-text.-text--center= size
-  ul#a-tabs--sizes.a-tabs.-ml--3
+  ul#example-sizes.a-tabs.-ml--3
     li.-active
-      a(href='#a-tabs-panel--sizes-svg') SVG
+      a(href='#webcomponent-sizes') Web component
     li
-      a(href='#a-tabs-panel--sizes-webfont') Web Font
-  #a-tabs-panel--sizes-svg.a-tabs-panel.-active
+      a(href='#svg-sizes') SVG
+    li
+      a(href='#webfont-sizes') Web Font
+  #webcomponent-sizes.a-tabs-panel.-active
+    :code(lang="html")
+      <!-- -xs : 12x12px -->
+      <chi-icon icon="logo-centurylink" size="xs"></chi-icon>
+      <!-- -sm : 16x16px -->
+      <chi-icon icon="logo-centurylink" size="sm"></chi-icon>
+      <!-- -sm--2 : 20x20px -->
+      <chi-icon icon="logo-centurylink" size="sm--2"></chi-icon>
+      <!-- -sm--3 : 24x24px -->
+      <chi-icon icon="logo-centurylink" size="sm--3"></chi-icon>
+      <!-- -md : 32x32px -->
+      <chi-icon icon="logo-centurylink" size="md"></chi-icon>
+      <!-- -lg : 64x64px -->
+      <chi-icon icon="logo-centurylink" size="lg"></chi-icon>
+      <!-- -xl : 96x96px -->
+      <chi-icon icon="logo-centurylink" size="xl"></chi-icon>
+      <!-- -xxl : 128x128px -->
+      <chi-icon icon="logo-centurylink" size="xxl"></chi-icon>
+  #svg-sizes.a-tabs-panel
     :code(lang="html")
       <!-- -xs : 12x12px -->
       <div class="a-icon -xs"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
@@ -66,7 +94,7 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
       <div class="a-icon -xl"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -xxl : 128x128px -->
       <div class="a-icon -xxl"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-  #a-tabs-panel--sizes-webfont.a-tabs-panel
+  #webfont-sizes.a-tabs-panel
     :code(lang="html")
       <!-- -xs : 12x12px -->
       <i class="a-icon icon-atom -xs"></i>
@@ -89,13 +117,13 @@ h2 Colors
 p.-text By default, icons are the same color as text. Use Chi text color utilities to set a specific color.
 .example.-mb--3
   .-d--flex.-w--12.-justify-content--center.-flex--wrap.-p--1
-    each type in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--grey', 'text--muted']
-      div(class=`a-icon -md -${type} -m--1`)
+    each color in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--grey', 'text--muted']
+      div(class=`a-icon -md -${color} -m--1`)
         svg
           use(xlink:href='#icon-atom')
   .-d--flex.-w--12.-justify-content--center.-flex--wrap.-bg--black.-p--1
-    each type in ['text--secondary', 'text--light']
-      if (type === 'text--secondary')
+    each color in ['text--secondary', 'text--light']
+      if (color === 'text--secondary')
         div(class=`a-icon -md -text--secondary -m--1`)
           svg
             use(xlink:href='#icon-atom')
@@ -103,12 +131,23 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
         div(class=`a-icon -md -text--light -m--1`)
           svg
             use(xlink:href='#icon-atom')
-  ul#a-tabs--colors.a-tabs.-ml--3
+  ul#example-colors.a-tabs.-ml--3
     li.-active
-      a(href='#a-tabs-panel--colors-svg') SVG
+      a(href='#webcomponent-colors') Web components
     li
-      a(href='#a-tabs-panel--colors-webfont') Web Font
-  #a-tabs-panel--colors-svg.a-tabs-panel.-active
+      a(href='#svg-colors') SVG
+    li
+      a(href='#webfont-color') Web Font
+  #webcomponent-colors.a-tabs-panel.-active
+    :code(lang="html")
+      <chi-icon icon="logo-centurylink" size="md"></chi-icon>
+      <chi-icon icon="logo-centurylink" size="md" color="primary"></chi-icon>
+      <chi-icon icon="logo-centurylink" size="md" color="success"></chi-icon>
+      <chi-icon icon="logo-centurylink" size="md" color="warning"></chi-icon>
+      <chi-icon icon="logo-centurylink" size="md" color="danger"></chi-icon>
+      <chi-icon icon="logo-centurylink" size="md" color="inverse"></chi-icon>
+      <chi-icon icon="logo-centurylink" size="md" color="muted"></chi-icon>
+  #svg-colors.a-tabs-panel
     :code(lang="html")
       <!-- For light backgrounds -->
       <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
@@ -121,7 +160,7 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
       <!-- For dark backgrounds -->
       <div class="a-icon -md -text--secondary"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <div class="a-icon -md -text--light"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-  #a-tabs-panel--colors-webfont.a-tabs-panel
+  #webfont-color.a-tabs-panel
     :code(lang="html")
       <!-- For light backgrounds -->
       <i class="a-icon icon-atom -md"></i>
@@ -150,7 +189,8 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('a-tabs--sizes'));
-      chi.tab(document.getElementById('a-tabs--colors'));
+      chi.tab(document.getElementById('example-default'));
+      chi.tab(document.getElementById('example-sizes'));
+      chi.tab(document.getElementById('example-colors'));
     }
   );
