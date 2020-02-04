@@ -68,7 +68,7 @@ function createGlobalsConfigsFile() {
       const currentVersion = `"${JSON.parse(rawJSON).version}"`;
       const chiLocalVersion = fs.readFileSync("src/website/assets/scripts/globalConfigs.js", "utf8");
       if(chiLocalVersion !== `window.chiCurrentVersion=${currentVersion};`) {
-        fs.writeFile('src/website/assets/scripts/globalConfigs.js', `window.chiCurrentVersion=${currentVersion}; module exports chiCurrentVersion="${currentVersion}"`, function(err, result) {
+        fs.writeFile('src/website/assets/scripts/globalConfigs.js', `window.chiCurrentVersion=${currentVersion};`, function(err, result) {
           if(err) console.log('error', err);
           return;
         });
