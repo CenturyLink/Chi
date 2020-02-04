@@ -46,37 +46,31 @@ p.-text
 .example.-mb--3
   .-p--3
     div(style="max-width: 14rem;")
-      chi-date-picker
-  :code(lang="html",style="height:20rem")
-    <chi-date-picker></chi-date-picker>
-
-h3 With label
-p.-text
-.example.-mb--3
-  .-p--3
-    div(style="max-width: 14rem;")
-      chi-label(for='date')
-        | Date
+      chi-label(for='date') Date
       chi-date-picker(id="date")
   :code(lang="html",style="height:20rem")
     <chi-label for="date">Date</chi-label>
     <chi-date-picker id="date"></chi-date-picker>
 
-h4 Disabled
+h3 Disabled
 .example.-mb--3
   .-p--3
     div(style="max-width: 14rem;")
-      chi-date-picker(disabled)
+      chi-label(for='date-disabled') Date
+      chi-date-picker(disabled, id="date-disabled")
   :code(lang="html",style="height:20rem")
-    <chi-date-picker disabled></chi-date-picker>
+    <chi-label for="date-disabled">Date</chi-label>
+    <chi-date-picker id="date-disabled" disabled></chi-date-picker>
 
 h3 Value, min and max options
 .example.-mb--3
   .-p--3
     div(style="max-width: 14rem;")
-      chi-date-picker(value="01/24/2019", min="01/14/2019", max="02/07/2019")
+      chi-label(for='date-min-max') Date
+      chi-date-picker(id="date-min-max", value="01/24/2019", min="01/14/2019", max="02/07/2019")
   :code(lang="html",style="height:20rem")
-      <chi-date-picker value="01/24/2019" min="01/14/2019" max="02/07/2019">
+    <chi-label for="date-min-max">Date</chi-label>
+    <chi-date-picker id="date-min-max" value="01/24/2019" min="01/14/2019" max="02/07/2019">
 
 h2 Additional usage details for chi-date
 :stencilDoc(name='chi-date')
