@@ -195,3 +195,12 @@ $animation-duration: 0.5s;
 .m-backdrop__wrapper > .m-drawer {
   z-index: $zindex-fixed-with-backdrop;
 }
+
+/* IE11 CSS hack */
+@media all and (-ms-high-contrast: none) {
+  .m-drawer {
+    .-close {
+      position: absolute;
+    }
+  }
+}
