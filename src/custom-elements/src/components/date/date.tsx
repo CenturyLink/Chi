@@ -59,6 +59,30 @@ export class Date {
   excludedWeekdaysArray = [];
   excludedDatesArray = [];
 
+  @Watch('excludedDates')
+  updateExcludedDates() {
+    if (this.excludedDates) {
+      this.excludedDatesArray = [];
+      this.excludedDates.split(',').map(date => {
+        this.excludedDatesArray.push(date.trim());
+      });
+    } else {
+      this.excludedDatesArray = [];
+    }
+  }
+
+  @Watch('excludedWeekdays')
+  updateExcludedWeekdays() {
+    if (this.excludedWeekdays) {
+      this.excludedWeekdaysArray = [];
+      this.excludedWeekdays.split(',').map(weekDay => {
+        this.excludedWeekdaysArray.push(parseInt(weekDay));
+      });
+    } else {
+      this.excludedWeekdaysArray = [];
+    }
+  }
+
   @Watch('value')
   dateChanged(newValue: string, oldValue: string) {
     if (newValue !== oldValue) {
@@ -203,17 +227,8 @@ export class Date {
   }
 
   componentWillLoad(): void {
-    if (this.excludedDates) {
-      this.excludedDates.split(',').map(date => {
-        this.excludedDatesArray.push(date);
-      });
-    }
-    if (this.excludedWeekdays) {
-      this.excludedWeekdays.split(',').map(weekDay => {
-        this.excludedWeekdaysArray.push(parseInt(weekDay));
-      });
-    }
-
+    this.updateExcludedDates();
+    this.updateExcludedWeekdays();
     this._initCalendarViewModel();
     this.viewMonth = this.value ? this.fromString(this.value) : dayjs();
     this._updateViewMonth();
@@ -228,7 +243,7 @@ export class Date {
   checkIfExcluded(day: Dayjs) {
     if (this.excludedDates) {
       for (let i = 0; i < this.excludedDatesArray.length; i++) {
-        if (dayjs(this.excludedDatesArray[i]).isSame(day)) {
+        if (dayjs(this.excludedDatesArray[i]).startOf('day').isSame(day.startOf('day'))) {
           return true;
         }
       }
