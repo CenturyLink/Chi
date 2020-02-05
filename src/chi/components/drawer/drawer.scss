@@ -180,11 +180,6 @@ $animation-duration: 0.5s;
 
   .-close {
     position: fixed;
-    /* IE11 CSS hack */
-    @media all and (-ms-high-contrast: none) {
-      position: absolute;
-    }
-
     right: 0.75rem;
     top: 0.8125rem;
     z-index: 50;
@@ -199,4 +194,13 @@ $animation-duration: 0.5s;
 
 .m-backdrop__wrapper > .m-drawer {
   z-index: $zindex-fixed-with-backdrop;
+}
+
+/* IE11 CSS hack */
+@media all and (-ms-high-contrast: none) {
+  .m-drawer {
+    .-close {
+      position: absolute;
+    }
+  }
 }
