@@ -92,16 +92,16 @@ $colorscheme: (
     10: #f2f9fc,
   ),
   teal: (
-    100: #082e2b,
-    90: #06403b,
-    80: #07524b,
-    70: #056960,
-    60: #038277,
-    50: #0aa396,
-    40: #1ec7b9,
-    30: #abe0dc,
-    20: #d7f5f2,
-    10: #edfaf9,
+    100: #082b2e,
+    90: #063b40,
+    80: #074c52,
+    70: #026169,
+    60: #03808c,
+    50: #0a96a3,
+    40: #1eb9c7,
+    30: #abdce0,
+    20: #d7f2f5,
+    10: #edf9fa,
   ),
   mint: (
     100: #0a2e1e,
@@ -166,7 +166,7 @@ $text-white: map-get($colorscheme, white);
 $text-inverse: map-get(map-get($colorscheme, grey), 10);
 
 $link-color: map-get(map-get($colorscheme, navy), 70);
-$focus-color: map-get(map-get($colorscheme, navy), 50);
+$focus-color: map-get(map-get($colorscheme, navy), 60);
 
 $primary: map-get(map-get($colorscheme, navy), 70);
 $secondary: map-get(map-get($colorscheme, mint), 40);
