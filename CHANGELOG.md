@@ -1,5 +1,32 @@
 # CHANGELOG
 
+### 1.4.0 (February 5, 2020)
+
+* Added Enterprise Global Navigation example to Sidenav component.
+* Added Enterprise Global Header example to Header component.
+* Added Portal theme to Table component.
+* Added Portal theme to Modal component.
+* Added Portal theme to Card component.
+* Added -xs size modifier to Tab component.
+* Added breakpoint spec to Grid documentation.
+* Removed border-radius from all components for consistency with Brand guidelines.
+* Improved Table component by enabling size classes on both the table and the tr.
+* Added new icon for indicating external links (icon-external-link).
+* Fixed bug in Date picker component which failed to launch the picker when clicking the calendar icon.
+* Fixed missing form label accessibility error in Date picker documentation example.
+* Fixed module export parsing error in build process.
+* Fixed non-functional tabs in Button Group size documentation example.
+* Changed drop down item hover color in Dropdown component for consistency with Brand guidelines.
+* Fixed SASS lint errors.
+* Fixed title attribute removal bug in build process.
+* Fixed bug in documentation which was caching Chi's versions.json data.
+* Fixed accessibility warnings in Sidenav and Tab documentation examples.
+* Fixed disable scroll behavior in Modal and Drawer component.
+* Changed form focus color for consistency with Brand guidelines.
+* Updated all color values in Chi's Teal color ramp for consistency with Brand guidelines.
+* Updated Toggle Switch component markup to fix empty form label accessibility error.
+* Fixed accessibility warnings and errors in Picker and Picker Group component.
+
 ### 1.3.0 (November 21, 2019)
 
 * Added search functionality to Chi documentation portal.
