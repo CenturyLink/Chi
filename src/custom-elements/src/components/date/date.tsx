@@ -61,26 +61,16 @@ export class Date {
 
   @Watch('excludedDates')
   updateExcludedDates() {
-    if (this.excludedDates) {
-      this.excludedDatesArray = [];
-      this.excludedDates.split(',').map(date => {
-        this.excludedDatesArray.push(date.trim());
-      });
-    } else {
-      this.excludedDatesArray = [];
-    }
+    this.excludedDatesArray = this.excludedDates
+    ? this.excludedDates.split(',').map(date => date.trim())
+    : [];
   }
 
   @Watch('excludedWeekdays')
   updateExcludedWeekdays() {
-    if (this.excludedWeekdays) {
-      this.excludedWeekdaysArray = [];
-      this.excludedWeekdays.split(',').map(weekDay => {
-        this.excludedWeekdaysArray.push(parseInt(weekDay));
-      });
-    } else {
-      this.excludedWeekdaysArray = [];
-    }
+    this.excludedWeekdaysArray = this.excludedWeekdays
+    ? this.excludedWeekdays.split(',').map(weekDay => parseInt(weekDay))
+    : [];
   }
 
   @Watch('value')

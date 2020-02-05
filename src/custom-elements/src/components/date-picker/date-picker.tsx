@@ -1,7 +1,7 @@
-import { Component, Element, Listen, Method, Prop, h } from '@stencil/core';
+import { Component, Element, Listen, Method, Prop, Watch, h } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
 import { ESCAPE_KEYCODE } from '../../constants/constants';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 
 @Component({
   tag: 'chi-date-picker',
@@ -58,6 +58,23 @@ export class DatePicker {
   private _input: HTMLInputElement;
   private _uuid: string;
 
+  excludedWeekdaysArray = [];
+  excludedDatesArray = [];
+
+  @Watch('excludedDates')
+  updateExcludedDates() {
+    this.excludedDatesArray = this.excludedDates
+    ? this.excludedDates.split(',').map(date => date.trim())
+    : [];
+  }
+
+  @Watch('excludedWeekdays')
+  updateExcludedWeekdays() {
+    this.excludedWeekdaysArray = this.excludedWeekdays
+    ? this.excludedWeekdays.split(',').map(weekDay => parseInt(weekDay))
+    : [];
+  }
+
   _onFocusIn(e) {
     if (e.target !== document.body && e.target !== null) {
       this.active = contains(this.el, e.target);
@@ -85,12 +102,28 @@ export class DatePicker {
     }
   }
 
+  checkIfExcluded(day: Dayjs) {
+    if (this.excludedDates) {
+      for (let i = 0; i < this.excludedDatesArray.length; i++) {
+        if (dayjs(this.excludedDatesArray[i]).startOf('day').isSame(day.startOf('day'))) {
+          return true;
+        }
+      }
+    }
+    if (this.excludedWeekdays) {
+      if (this.excludedWeekdaysArray.includes(day.day())) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   _checkDate() {
     const inputDate = dayjs(this._input.value);
     const minDate = dayjs(this.min);
     const maxDate = dayjs(this.max);
 
-    if (dayjs(this._input.value).isValid()) {
+    if (dayjs(this._input.value).isValid() && !this.checkIfExcluded(inputDate)) {
       if (
         dayjs(inputDate)
           .startOf('day')
@@ -105,6 +138,8 @@ export class DatePicker {
       ) {
         this.value = this.max;
         this._input.value = this.max;
+      } else {
+        this.value = this._input.value;
       }
     } else {
       this.value = dayjs().format('MM/DD/YYYY');
@@ -138,6 +173,8 @@ export class DatePicker {
   }
 
   componentWillLoad(): void {
+    this.updateExcludedDates();
+    this.updateExcludedWeekdays();
     this._onFocusIn = this._onFocusIn.bind(this);
     this._onClick = this._onClick.bind(this);
     this._onKeyUp = this._onKeyUp.bind(this);
