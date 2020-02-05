@@ -180,6 +180,11 @@ $animation-duration: 0.5s;
 
   .-close {
     position: fixed;
+    /* IE11 CSS hack */
+    @media all and (-ms-high-contrast: none) {
+      position: absolute;
+    }
+
     right: 0.75rem;
     top: 0.8125rem;
     z-index: 50;
