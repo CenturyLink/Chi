@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-02-05T07:07:10",
+  "timestamp": "2020-02-05T13:43:23",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.7.5",
@@ -536,6 +536,38 @@
       "usage": {},
       "props": [
         {
+          "name": "excludedDates",
+          "type": "string",
+          "mutable": false,
+          "attr": "excluded-dates",
+          "reflectToAttr": true,
+          "docs": "To specify which dates to disable",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "excludedWeekdays",
+          "type": "string",
+          "mutable": false,
+          "attr": "excluded-weekdays",
+          "reflectToAttr": true,
+          "docs": "To specify which days of week to disable",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "format",
           "type": "string",
           "mutable": false,
@@ -710,6 +742,38 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "excludedDates",
+          "type": "string",
+          "mutable": false,
+          "attr": "excluded-dates",
+          "reflectToAttr": true,
+          "docs": "To specify which dates to disable",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "excludedWeekdays",
+          "type": "string",
+          "mutable": false,
+          "attr": "excluded-weekdays",
+          "reflectToAttr": true,
+          "docs": "To specify which days of week to disable",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,

@@ -44,7 +44,34 @@ export class Date {
    */
   @Prop({ reflect: true }) format = 'MM/DD/YYYY';
 
+  /**
+   * To specify which days of week to disable
+   */
+  @Prop({ reflect: true }) excludedWeekdays: string;
+
+  /**
+   * To specify which dates to disable
+   */
+  @Prop({ reflect: true }) excludedDates: string;
+
   @State() viewMonth = dayjs();
+
+  excludedWeekdaysArray = [];
+  excludedDatesArray = [];
+
+  @Watch('excludedDates')
+  updateExcludedDates() {
+    this.excludedDatesArray = this.excludedDates
+    ? this.excludedDates.split(',').map(date => date.trim())
+    : [];
+  }
+
+  @Watch('excludedWeekdays')
+  updateExcludedWeekdays() {
+    this.excludedWeekdaysArray = this.excludedWeekdays
+    ? this.excludedWeekdays.split(',').map(weekDay => parseInt(weekDay))
+    : [];
+  }
 
   @Watch('value')
   dateChanged(newValue: string, oldValue: string) {
@@ -190,6 +217,8 @@ export class Date {
   }
 
   componentWillLoad(): void {
+    this.updateExcludedDates();
+    this.updateExcludedWeekdays();
     this._initCalendarViewModel();
     this.viewMonth = this.value ? this.fromString(this.value) : dayjs();
     this._updateViewMonth();
@@ -199,6 +228,22 @@ export class Date {
     const formattedDate = this.toDayString(day);
     this.setDate(formattedDate);
     this.eventChange.emit(formattedDate);
+  }
+
+  checkIfExcluded(day: Dayjs) {
+    if (this.excludedDates) {
+      for (let i = 0; i < this.excludedDatesArray.length; i++) {
+        if (dayjs(this.excludedDatesArray[i]).startOf('day').isSame(day.startOf('day'))) {
+          return true;
+        }
+      }
+    }
+    if (this.excludedWeekdays) {
+      if (this.excludedWeekdaysArray.includes(day.day())) {
+        return true;
+      }
+    }
+    return false;
   }
 
   render() {
@@ -250,7 +295,8 @@ export class Date {
               class={`m-datepicker__day
               ${
                 (this._vm.min && day.isBefore(this._vm.min)) ||
-                (this._vm.max && day.isAfter(this._vm.max))
+                (this._vm.max && day.isAfter(this._vm.max)) ||
+                (this.checkIfExcluded(day))
                   ? CLASSES.INACTIVE
                   : ''
               }
