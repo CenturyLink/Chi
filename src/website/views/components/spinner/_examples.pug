@@ -1,3 +1,6 @@
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
 h2 Examples
 p.-text To render a spinner, use the class <code>a-spinner</code>.
 
@@ -5,93 +8,119 @@ h2 Backdrop
 p.-text Wrap spinners in <code>m-backdrop</code> to overlay content similar to a modal, and add <code>-center</code> class to position it in the middle of the page.
 h3 Base
 .example.-mb--3
-  .m-backdrop.-center.-p--6(style="position:relative;height:25rem;")
-    .m-backdrop__wrapper
-      svg(class=`a-spinner -text--light`,viewBox=`0 0 66 66`)
-        title Loading
-        circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
-  :code(lang="html")
-    <div class="m-backdrop -center">
-      <div class="m-backdrop__wrapper">
-        <svg class="a-spinner -text--light" viewBox="0 0 66 66">
-          <title>Loading</title>
-          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-        </svg>
+  .-p--6(style="position:relative;height:25rem;")
+    chi-spinner(color='light', backdrop)
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-default
+      li.-active
+        a(href=`#webcomponent`) Web component
+      li
+        a(href=`#html`) HTML
+  .a-tabs-panel.-active#webcomponent
+    :code(lang="html")
+      <chi-spinner color="light" backdrop></chi-spinner>
+  .a-tabs-panel#html
+    :code(lang="html")
+      <div class="m-backdrop -center">
+        <div class="m-backdrop__wrapper">
+          <svg class="a-spinner -text--light" viewBox="0 0 66 66">
+            <title>Loading</title>
+            <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+          </svg>
+        </div>
       </div>
-    </div>
 
 h3 Inverse
 p.-text Apply the class <code>-inverse</code> to render spinners on light backgrounds.
 .example.-mb--3
-  .m-backdrop.-center.-inverse.-p--6(style="position:relative;height:25rem;")
-    .m-backdrop__wrapper
-      svg(class=`a-spinner -text--primary`,viewBox=`0 0 66 66`)
-        title Loading
-        circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
-  :code(lang="html")
-    <div class="m-backdrop -center -inverse">
-      <div class="m-backdrop__wrapper">
-        <svg class="a-spinner -text--primary" viewBox="0 0 66 66">
-          <title>Loading</title>
-          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-        </svg>
+  .-p--6(style="position:relative;height:25rem;")
+    chi-spinner(color='primary', backdrop='inverse')
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-inverse
+      li.-active
+        a(href=`#webcomponent-inverse`) Web component
+      li
+        a(href=`#html-inverse`) HTML
+  .a-tabs-panel.-active#webcomponent-inverse
+    :code(lang="html")
+      <chi-spinner color="primary" backdrop="inverse"></chi-spinner>
+  .a-tabs-panel#html-inverse
+    :code(lang="html")
+      <div class="m-backdrop -center -inverse">
+        <div class="m-backdrop__wrapper">
+          <svg class="a-spinner -text--primary" viewBox="0 0 66 66">
+            <title>Loading</title>
+            <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+          </svg>
+        </div>
       </div>
-    </div>
 
 h2 Contextual
 
 h3 Spinners in Buttons
 .example.-mb--3
   .-p--3
-    button(class=`a-btn -mr--3`)
-      .a-btn__content
-        span Button
-        svg(class=`a-spinner -text--muted`,viewBox=`0 0 66 66`)
-          title Loading
-          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
-    button(class='a-btn -sm -mr--3')
-      .a-btn__content
-        span Small
-        svg(class=`a-spinner -text--muted -xs`,viewBox=`0 0 66 66`)
-          title Loading
-          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
-    button(class='a-btn -lg -mr--3')
-      .a-btn__content
-        span Large
-        svg(class=`a-spinner -text--muted -sm--2`,viewBox=`0 0 66 66`)
-          title Loading
-          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
-  :code(lang='html')
-    <button class="a-btn">
-      <div class="a-btn__content">
+    chi-button(class='-mr--3')
+      span= 'Button'
+      chi-spinner(color='muted')
+    chi-button(class='-mr--3', size='sm')
+      span= 'Small'
+      chi-spinner(color='muted', size='xs')
+    chi-button(class='-mr--3', size='lg')
+      span= 'Large'
+      chi-spinner(color='muted', size='sm--2')
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-contextual
+      li.-active
+        a(href=`#webcomponent-contextual`) Web component
+      li
+        a(href=`#html-contextual`) HTML
+  .a-tabs-panel.-active#webcomponent-contextual
+    :code(lang="html")
+      <chi-button>
         <span>Button</span>
-        <svg class="a-spinner -text--muted" viewBox="0 0 66 66">
-          <title>Loading</title>
-          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-        </svg>
-        </div>
-      </div>
-    </button>
-    <button class="a-btn">
-      <div class="a-btn__content">
+        <chi-spinner color="muted"></chi-spinner>
+      </chi-button>
+      <chi-button size="sm">
         <span>Small</span>
-        <svg class="a-spinner -text--muted -xs" viewBox="0 0 66 66">
-          <title>Loading</title>
-          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-        </svg>
-        </div>
-      </div>
-    </button>
-    <button class="a-btn">
-      <div class="a-btn__content">
+        <chi-spinner color="muted" size="xs"></chi-spinner>
+      </chi-button>
+      <chi-button siz="lg">
         <span>Large</span>
-        <svg class="a-spinner -text--muted -sm--2" viewBox="0 0 66 66">
-          <title>Loading</title>
-          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-        </svg>
+        <chi-spinner color="muted" size="sm--2"></chi-spinner>
+      </chi-button>
+  .a-tabs-panel#html-contextual
+    :code(lang="html")
+      <button class="a-btn">
+        <div class="a-btn__content">
+          <span>Button</span>
+          <svg class="a-spinner -text--muted" viewBox="0 0 66 66">
+            <title>Loading</title>
+            <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+          </svg>
+          </div>
         </div>
-      </div>
-    </button>
+      </button>
+      <button class="a-btn">
+        <div class="a-btn__content">
+          <span>Small</span>
+          <svg class="a-spinner -text--muted -xs" viewBox="0 0 66 66">
+            <title>Loading</title>
+            <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+          </svg>
+          </div>
+        </div>
+      </button>
+      <button class="a-btn">
+        <div class="a-btn__content">
+          <span>Large</span>
+          <svg class="a-spinner -text--muted -sm--2" viewBox="0 0 66 66">
+            <title>Loading</title>
+            <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+          </svg>
+          </div>
+        </div>
+      </button>
 
 h3 Spinners in Text Inputs
 .example.-mb--3
@@ -164,52 +193,75 @@ p.-text
     .a-grid.-align-items--end
       each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
         div.-p--2
-          svg(class=`a-spinner -${size} -m--1`,viewBox=`0 0 66 66`)
-            title Loading
-            circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+          chi-spinner(size=size, class='-m--1')
           p.-text.-text--center= size
-  :code(lang="html")
-    <!-- -xs : 12x12px -->
-    <svg class="a-spinner -xs" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    <!-- -sm : 16x16px -->
-    <svg class="a-spinner -sm" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    <!-- -sm--2 : 20x20px -->
-    <svg class="a-spinner -sm--2" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    <!-- -sm--3 : 24x24px -->
-    <svg class="a-spinner -sm--3" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    <!-- -md : 32x32px -->
-    <svg class="a-spinner -md" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    <!-- -lg : 64x64px -->
-    <svg class="a-spinner -lg" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    <!-- -xl : 96x96px -->
-    <svg class="a-spinner -xl" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    </div>
-    <!-- -xxl : 128x128px -->
-    <svg class="a-spinner -xxl" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-sizes
+      li.-active
+        a(href=`#webcomponent-sizes`) Web component
+      li
+        a(href=`#html-sizes`) HTML
+  .a-tabs-panel.-active#webcomponent-sizes
+    :code(lang="html")
+      <!-- xs : 12x12px -->
+      <chi-spinner size="xs"></chi-spinner>
+      <!-- sm : 16x16px -->
+      <chi-spinner size="sm"></chi-spinner>
+      <!-- sm--2 : 20x20px -->
+      <chi-spinner size="sm--2"></chi-spinner>
+      <!-- sm--3 : 24x24px -->
+      <chi-spinner size="sm--3"></chi-spinner>
+      <!-- md : 32x32px -->
+      <chi-spinner size="md"></chi-spinner>
+      <!-- lg : 64x64px -->
+      <chi-spinner size="lg"></chi-spinner>
+      <!-- xl : 96x96px -->
+      <chi-spinner size="xl"></chi-spinner>
+      <!-- xxl : 128x128px -->
+      <chi-spinner size="xxl"></chi-spinner>
+  .a-tabs-panel#html-sizes
+    :code(lang="html")
+      <!-- -xs : 12x12px -->
+      <svg class="a-spinner -xs" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <!-- -sm : 16x16px -->
+      <svg class="a-spinner -sm" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <!-- -sm--2 : 20x20px -->
+      <svg class="a-spinner -sm--2" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <!-- -sm--3 : 24x24px -->
+      <svg class="a-spinner -sm--3" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <!-- -md : 32x32px -->
+      <svg class="a-spinner -md" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <!-- -lg : 64x64px -->
+      <svg class="a-spinner -lg" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <!-- -xl : 96x96px -->
+      <svg class="a-spinner -xl" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      </div>
+      <!-- -xxl : 128x128px -->
+      <svg class="a-spinner -xxl" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
 
 h2 Spinner Colors
 p.-text
@@ -218,55 +270,75 @@ p.-text
 .example.-mb--3
   .a-grid.-noGutter
     .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap
-      each type in ['text--primary', 'text--success', 'text--warning', 'text--danger', 'text--muted']
+      each color in ['primary', 'success', 'warning', 'danger', 'muted']
         div.-p--2.-text--center
-          svg(class=`a-spinner -${type} -md -m--3`,viewBox=`0 0 66 66`)
-            title Loading
-            circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
-            p.-text(class=`-${type} -px--1`)
-              = `-${type}`
+          chi-spinner(color=color, class='-m--3', size='md')
+          p.-text(class=`-text--${color} -px--1`)
+            = color
     .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap.-bg--black
-      each type in ['text--secondary', 'text--light']
-        if (type === 'text--secondary')
-          div.-p--2.-text--center
-            svg(class=`a-spinner -text--secondary -md -m--3`,viewBox=`0 0 66 66`)
-              title Loading
-              circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
-              p.-text.-text--secondary.-px--1 -text--secondary
-        else if (type === 'text--light')
-          div.-p--2.-text--center
-            svg(class=`a-spinner -text--light -md -m--3`,viewBox=`0 0 66 66`)
-              title Loading
-              circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
-              p.-text.-text--light.-px--1 -text--light
-  :code(lang="html")
-    <!-- For light backgrounds -->
-    <svg class="a-spinner -text--primary" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    <svg class="a-spinner -text--success" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    <svg class="a-spinner -text--warning" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    <svg class="a-spinner -text--danger" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    <svg class="a-spinner -text--muted" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    <!-- For dark backgrounds -->
-    <svg class="a-spinner -text--secondary" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
-    <svg class="a-spinner -text--light" viewBox="0 0 66 66">
-      <title>Loading</title>
-      <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-    </svg>
+      each color in ['secondary', 'light']
+        div.-p--2.-text--center
+          chi-spinner(color=color, class='-m--3', size='md')
+          p.-text(class=`-text--${color} -px--1`)
+            = color
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-colors
+      li.-active
+        a(href=`#webcomponent-colors`) Web component
+      li
+        a(href=`#html-colors`) HTML
+  .a-tabs-panel.-active#webcomponent-colors
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <chi-spinner color="primary"></chi-spinner>
+      <chi-spinner color="success"></chi-spinner>
+      <chi-spinner color="warning"></chi-spinner>
+      <chi-spinner color="danger"></chi-spinner>
+      <chi-spinner color="muted"></chi-spinner>
+      <!-- For dark backgrounds -->
+      <chi-spinner color="secondary"></chi-spinner>
+      <chi-spinner color="light"></chi-spinner>
+  .a-tabs-panel#html-colors
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <svg class="a-spinner -text--primary" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <svg class="a-spinner -text--success" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <svg class="a-spinner -text--warning" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <svg class="a-spinner -text--danger" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <svg class="a-spinner -text--muted" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <!-- For dark backgrounds -->
+      <svg class="a-spinner -text--secondary" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <svg class="a-spinner -text--light" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+
+script.
+    document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('examples-default'));
+      chi.tab(document.getElementById('examples-inverse'));
+      chi.tab(document.getElementById('examples-contextual'));
+      chi.tab(document.getElementById('examples-sizes'));
+      chi.tab(document.getElementById('examples-colors'));
+    }
+  );
