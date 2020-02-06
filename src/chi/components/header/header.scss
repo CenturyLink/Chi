@@ -252,8 +252,13 @@
     }
   }
 
-  &.bottom-toolbar__navigation {
+  &.-navbar {
     .a-divider {
+      &:not(.-vertical) {
+        margin: 0;
+        width: 100%;
+      }
+
       &.-colorbar {
         height: 0.25rem;
       }
@@ -287,7 +292,7 @@
       }
     }
 
-    .bottom-navigation {
+    .o-header__navbar {
       padding: 0 1.5rem;
       width: 100%;
 
