@@ -8,6 +8,10 @@ import { Folders, WEBPACK_MODE } from './constants';
 
 const sources = path.join(Folders.SRC, 'chi/javascript/index.js');
 const destination = path.join(Folders.DIST, 'js');
+const copyright = `Chi and its documentation are released under the terms of the MIT license.
+In addition, Chi uses several 3rd-party libraries,
+a list of which can be viewed in the package.json file.
+Please review each of their license and user agreements, as well.`;
 
 
 const webpackConfig = {
@@ -55,7 +59,8 @@ if (process.env.PRODUCTION) {
     lineToLine: false,
     noSources: false,
     namespace: ''
-  })];
+  }),
+  new webpack.BannerPlugin(copyright)];
 }
 
 function buildChiScripts () {
