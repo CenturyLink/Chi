@@ -827,10 +827,10 @@ h3 Header with Tabs, Icon Buttons, and Avatars
     <script>chi.drawer(document.getElementById('drawer-trigger-1'));</script>
     <script>chi.drawer(document.getElementById('drawer-trigger-4'));</script>
 
-h3 Enterprise Portal Header with Horizontal Navigation
+h3 Header with Horizontal Navbar
 .example.-mb--3
   .-p--3(style='background-color:#eee;border-radius:.15em .15em 0 0;')
-    header.o-header.bottom-toolbar__navigation.-inverse
+    header.o-header.-navbar.-inverse
       .a-divider.-colorbar.-d--flex.-d-lg--none
       nav.o-header__content
         .o-header__brand
@@ -869,7 +869,7 @@ h3 Enterprise Portal Header with Horizontal Navigation
               | 123456789
               i.a-icon.icon-chevron-down.-ml--1
       .a-divider.-colorbar.-d--none.-d-lg--flex
-      nav.bottom-navigation
+      nav.o-header__navbar
         .o-header__start
           .-d--none.-d-lg--flex
             ul.a-tabs.-sm
@@ -888,7 +888,7 @@ h3 Enterprise Portal Header with Horizontal Navigation
               li
                 a(href='#') Billing
   :code(lang="html")
-    <header class="o-header bottom-toolbar__navigation -inverse">
+    <header class="o-header -navbar -inverse">
       <div class="a-divider -colorbar -d--flex -d-lg--none"></div>
       <nav class="o-header__content">
         <div class="o-header__brand">
@@ -935,7 +935,7 @@ h3 Enterprise Portal Header with Horizontal Navigation
         </div>
       </nav>
       <div class="a-divider -colorbar -d--none -d-lg--flex"></div>
-      <nav class="bottom-navigation">
+      <nav class="o-header__navbar">
         <div class="o-header__start">
           <div class="-d--none -d-lg--flex">
             <ul class="a-tabs -sm">
@@ -1178,7 +1178,7 @@ h3 Header with top toolbar
     <!-- Javascript -->
     <script>chi.drawer(document.getElementById('drawer-trigger-0'));</script>
 
-h3 Header with bottom toolbar
+h3 Header with mobile secondary menu
 .example.-mb--3
   .-px--3.-pt--3.-pb--1(style='background-color:#eee;')
     header.o-header

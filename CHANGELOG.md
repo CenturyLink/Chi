@@ -11,6 +11,7 @@
 * Added breakpoint spec to Grid documentation.
 * Removed border-radius from all components for consistency with Brand guidelines.
 * Improved Table component by enabling size classes on both the table and the tr.
+* Added ability to exclude dates in Date picker component.
 * Added new icon for indicating external links (icon-external-link).
 * Fixed bug in Date picker component which failed to launch the picker when clicking the calendar icon.
 * Fixed missing form label accessibility error in Date picker documentation example.
@@ -26,6 +27,7 @@
 * Updated all color values in Chi's Teal color ramp for consistency with Brand guidelines.
 * Updated Toggle Switch component markup to fix empty form label accessibility error.
 * Fixed accessibility warnings and errors in Picker and Picker Group component.
+* Fixed bug in IE11 which caused the Drawer component close button to render incorrectly.
 
 ### 1.3.0 (November 21, 2019)
 
