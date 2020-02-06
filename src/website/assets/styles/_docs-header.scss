@@ -134,7 +134,7 @@
             .ds-cursor {
               .algolia-docsearch-suggestion:not(.suggestion-layout-simple) {
                 .algolia-docsearch-suggestion--content {
-                  background-color: set-color(navy, 20);
+                  background-color: set-color(blue, 20);
                 }
               }
             }
@@ -183,7 +183,7 @@
               }
 
               .algolia-docsearch-suggestion--highlight {
-                background-color: set-color(navy, 20);
+                background-color: set-color(blue, 20);
               }
             }
 
@@ -192,7 +192,7 @@
               font-weight: bold;
 
               .algolia-docsearch-suggestion--highlight {
-                background-color: set-color(navy, 20);
+                background-color: set-color(blue, 20);
               }
             }
 
