@@ -342,7 +342,7 @@ a {
     &.-hover:not(.-disabled):not(.-active),
     &:focus:not(.-disabled):not(.-active),
     &.focus:not(.-disabled):not(.-active) {
-      background-color: set-color(navy, 20);
+      background-color: set-color(blue, 20);
     }
   }
 }
