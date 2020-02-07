@@ -1,126 +1,152 @@
+script(type='module' src='../../../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
 h2 Examples
 
 h3 Base
 .example.-mb--3
   .-p--3
     .m-form__item
-      label.a-switch(for="toggle1")
-        input(type="checkbox", class="a-switch__input", id="toggle1")
-        span(class="a-switch__content")
-          span.a-switch__thumb
-        span.a-switch__label Label
-  :code(lang="html")
-    <div class="m-form__item">
-      <label class="a-switch" for="toggle1">
-        <input type="checkbox" class="a-switch__input" id="toggle1">
-        <span class="a-switch__content">
-          <span class="a-switch__thumb"></span>
-        </span>
-        <span class="a-switch__label">Label</span>
-      </label>
-    </div>
+      chi-switch(id='toggle1',label='Label')
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-default
+      li.-active
+        a(href=`#webcomponent`) Web component
+      li
+        a(href=`#html`) HTML
+  .a-tabs-panel.-active#webcomponent
+    :code(lang="html")
+      <chi-switch id="toggle1" label="Label"></chi-switch>
+  .a-tabs-panel#html
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-switch" for="toggle1">
+          <input type="checkbox" class="a-switch__input" id="toggle1">
+          <span class="a-switch__content">
+            <span class="a-switch__thumb"></span>
+          </span>
+          <span class="a-switch__label">Label</span>
+        </label>
+      </div>
 
 h3 Disabled
 .example.-mb--3
   .-p--3
     .m-form__item
-      label.a-switch(for="toggle2")
-        input(type="checkbox", class="a-switch__input", id="toggle2", disabled)
-        span(class="a-switch__content")
-          span.a-switch__thumb
-        span.a-switch__label Label
-  :code(lang="html")
-    <div class="m-form__item">
-      <label class="a-switch" for="toggle2">
-        <input type="checkbox" class="a-switch__input" name="toggle2" value="toggle2" disabled>
-        <span id="toggle2" class="a-switch__content">
-          <span class="a-switch__thumb"></span>
-        </span>
-        <span class="a-switch__label">Label</span>
-      </label>
-    </div>
+      chi-switch(id='toggle2', label='Label', disabled)
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-disabled
+      li.-active
+        a(href=`#webcomponent-disabled`) Web component
+      li
+        a(href=`#html-disabled`) HTML
+  .a-tabs-panel.-active#webcomponent-disabled
+    :code(lang="html")
+      <chi-switch id="toggle2" label="Label" disabled></chi-switch>
+  .a-tabs-panel#html-disabled
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-switch" for="toggle2">
+          <input type="checkbox" class="a-switch__input" name="toggle2" value="toggle2" disabled>
+          <span id="toggle2" class="a-switch__content">
+            <span class="a-switch__thumb"></span>
+          </span>
+          <span class="a-switch__label">Label</span>
+        </label>
+      </div>
 
 h3 Stacked
-p.-text
-  | Group switches in <code>m-form__item</code> for easy stacking.
+
 .example.-mb--3
   .-p--3
-    legend.a-label Configure options
     .m-form__item
-      label.a-switch(for="toggle3")
-        input(type="checkbox", class="a-switch__input", id="toggle3")
-        span(class="a-switch__content")
-          span.a-switch__thumb
-        span.a-switch__label Label
+      chi-switch(id='toggle3', label='Label')
     .m-form__item
-      label.a-switch(for="toggle4")
-        input(type="checkbox", class="a-switch__input", id="toggle4")
-        span(class="a-switch__content")
-          span.a-switch__thumb
-        span.a-switch__label Label
-  :code(lang="html")
-    <fieldset>
-      <legend class="a-label">Configure options</legend>
+      chi-switch(id='toggle4', label='Label')
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-stacked
+      li.-active
+        a(href=`#webcomponent-stacked`) Web component
+      li
+        a(href=`#html-stacked`) HTML
+  .a-tabs-panel.-active#webcomponent-stacked
+    :code(lang="html")
       <div class="m-form__item">
-        <label class="a-switch" for="toggle3">
-          <input type="checkbox" class="a-switch__input" id="toggle3">
-          <span class="a-switch__content">
-            <span class="a-switch__thumb"></span>
-          </span>
-          <span class="a-switch__label">Label</span>
-        </label>
+        <chi-switch id="toggle3" label="Label"></chi-switch>
       </div>
       <div class="m-form__item">
-        <label class="a-switch" for="toggle4">
-          <input type="checkbox" class="a-switch__input" id="toggle4">
-          <span class="a-switch__content">
-            <span class="a-switch__thumb"></span>
-          </span>
-          <span class="a-switch__label">Label</span>
-        </label>
+        <chi-switch id="toggle4" label="Label"></chi-switch>
       </div>
-    </fieldset>
+  .a-tabs-panel#html-stacked
+    :code(lang="html")
+      <fieldset>
+        <legend class="a-label">Configure options</legend>
+        <div class="m-form__item">
+          <label class="a-switch" for="toggle3">
+            <input type="checkbox" class="a-switch__input" id="toggle3">
+            <span class="a-switch__content">
+              <span class="a-switch__thumb"></span>
+            </span>
+            <span class="a-switch__label">Label</span>
+          </label>
+        </div>
+        <div class="m-form__item">
+          <label class="a-switch" for="toggle4">
+            <input type="checkbox" class="a-switch__input" id="toggle4">
+            <span class="a-switch__content">
+              <span class="a-switch__thumb"></span>
+            </span>
+            <span class="a-switch__label">Label</span>
+          </label>
+        </div>
+      </fieldset>
 
 h3 Inline
 p.-text
   | Apply the class <code>-inline</code> to <code>m-form__item</code> to display switches inline.
 .example.-mb--3
-  .-p--3
-    legend.a-label Configure options
+  .-p--3.-d--flex
     .m-form__item.-inline
-      label.a-switch(for="toggle5")
-        input(type="checkbox", class="a-switch__input", id="toggle5")
-        span(class="a-switch__content")
-          span.a-switch__thumb
-        span.a-switch__label Label
+      chi-switch(id='toggle5', label='Label')
     .m-form__item.-inline
-      label.a-switch(for="toggle6")
-        input(type="checkbox", class="a-switch__input", id="toggle6")
-        span(class="a-switch__content")
-          span.a-switch__thumb
-        span.a-switch__label Label
-  :code(lang="html")
-    <fieldset>
-      <legend class="a-label">Configure options</legend>
+      chi-switch(id='toggle6', label='Label')
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-inline
+      li.-active
+        a(href=`#webcomponent-inline`) Web component
+      li
+        a(href=`#html-inline`) HTML
+  .a-tabs-panel.-active#webcomponent-inline
+    :code(lang="html")
       <div class="m-form__item -inline">
-        <label class="a-switch" for="toggle5">
-          <input type="checkbox" class="a-switch__input" id="toggle5">
-          <span class="a-switch__content">
-            <span class="a-switch__thumb"></span>
-          </span>
-          <span class="a-switch__label">Label</span>
-        </label>
+        <chi-switch id="toggle5" label="Label"></chi-switch>
       </div>
       <div class="m-form__item -inline">
-        <label class="a-switch" for="toggle6">
-          <input type="checkbox" class="a-switch__input" id="toggle6">
-          <span class="a-switch__content">
-            <span class="a-switch__thumb"></span>
-          </span>
-          <span class="a-switch__label">Label</span>
-        </label>
+        <chi-switch id="toggle6" label="Label"></chi-switch>
       </div>
-    </fieldset>
+  .a-tabs-panel#html-inline
+    :code(lang="html")
+      <fieldset>
+        <legend class="a-label">Configure options</legend>
+        <div class="m-form__item -inline">
+          <label class="a-switch" for="toggle5">
+            <input type="checkbox" class="a-switch__input" id="toggle5">
+            <span class="a-switch__content">
+              <span class="a-switch__thumb"></span>
+            </span>
+            <span class="a-switch__label">Label</span>
+          </label>
+        </div>
+        <div class="m-form__item -inline">
+          <label class="a-switch" for="toggle6">
+            <input type="checkbox" class="a-switch__input" id="toggle6">
+            <span class="a-switch__content">
+              <span class="a-switch__thumb"></span>
+            </span>
+            <span class="a-switch__label">Label</span>
+          </label>
+        </div>
+      </fieldset>
 
 h3 Switch list
 p.-text
@@ -233,24 +259,47 @@ h3 Switch with Left Label
     </div>
 
 h3 Switch with Hidden Label
-p.-text
-  | Apply the class <code>-label--hide</code> to <code>a-switch</code> to render a switch without a label. Use this method for rendering switches
-  | in close proximity to other text that clearly describes its purpose.
 .example.-mb--3
   .-p--3
     .m-form__item
-      label.a-switch.-label--hide(for="toggle8")
-        input(type="checkbox", class="a-switch__input", id="toggle8")
-        span(class="a-switch__content")
-          span.a-switch__thumb
-        span.a-switch__label Label
-  :code(lang="html")
-    <div class="m-form__item">
-      <label class="a-switch -label--hide" for="toggle8">
-        <input type="checkbox" class="a-switch__input" id="toggle8">
-        <span class="a-switch__content">
-          <span class="a-switch__thumb"></span>
-        </span>
-        <span class="a-switch__label">Label</span>
-      </label>
-    </div>
+      chi-switch(id='toggle7',label='Label', hide-label)
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-hidden-label
+      li.-active
+        a(href=`#webcomponent-hidden-label`) Web component
+      li
+        a(href=`#html-hidden-label`) HTML
+  .a-tabs-panel.-active#webcomponent-hidden-label
+    .a-tab__description
+      | Apply the <code>hide-label</code> attribute to <code>chi-switch</code> to render a switch without a label. Use this method for rendering switches
+      | in close proximity to other text that clearly describes its purpose.
+    :code(lang="html")
+      <div class="m-form__item">
+        <chi-switch id="toggle7" label="Label" hide-label></chi-switch>
+      </div>
+  .a-tabs-panel#html-hidden-label
+    .a-tab__description
+      | Apply the class <code>-label--hide</code> to <code>a-switch</code> to render a switch without a label. Use this method for rendering switches
+      | in close proximity to other text that clearly describes its purpose.
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-switch -label--hide" for="toggle8">
+          <input type="checkbox" class="a-switch__input" id="toggle8">
+          <span class="a-switch__content">
+            <span class="a-switch__thumb"></span>
+          </span>
+          <span class="a-switch__label">Label</span>
+        </label>
+      </div>
+
+script.
+    document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('examples-default'));
+      chi.tab(document.getElementById('examples-disabled'));
+      chi.tab(document.getElementById('examples-stacked'));
+      chi.tab(document.getElementById('examples-inline'));
+      chi.tab(document.getElementById('examples-hidden-label'));
+    }
+  );

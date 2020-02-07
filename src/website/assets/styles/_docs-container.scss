@@ -151,9 +151,10 @@
           border-radius: 0.15em;
           position: relative;
           z-index: 10;
-          
+
           .example-tabs {
             background-color: set-color(grey, 15);
+            border-bottom: 0.0625rem solid set-color(grey, 25);
             border-top: 0.0625rem solid set-color(grey, 25);
           }
 
@@ -164,6 +165,18 @@
             margin: 0;
           }
 
+          .a-tabs-panel {
+            .a-tab__description {
+              background-color: set-color(grey, 15);
+              font-size: 0.875rem;
+              padding: 1rem 0 0 1rem;
+            }
+
+            pre[class*="language-"] {
+              border-top: 0;
+            }
+          }
+  
           & > .clipboard:first-child + pre[class*="language-"] {
             border-top: 0;
           }
