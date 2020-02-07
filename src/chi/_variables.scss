@@ -80,16 +80,16 @@ $colorscheme: (
     10: #f5f8fc,
   ),
   blue: (
-    100: #0c2b3b,
-    90: #093d57,
-    80: #064e73,
-    70: #066594,
-    60: #0d7db5,
-    50: #239cd9,
-    40: #53bff5,
-    30: #b0def5,
-    20: #e1f2fa,
-    10: #f2f9fc,
+    100: #001238,
+    90: #001e60,
+    80: #00308a,
+    70: #0047bb,
+    60: #005bed,
+    50: #468af1,
+    40: #8cb6f5,
+    30: #c0d7fa,
+    20: #e6f0ff,
+    10: #f5f8fc,
   ),
   teal: (
     100: #082b2e,
@@ -165,20 +165,20 @@ $text-color: map-get(map-get($colorscheme, grey), 100);
 $text-white: map-get($colorscheme, white);
 $text-inverse: map-get(map-get($colorscheme, grey), 10);
 
-$link-color: map-get(map-get($colorscheme, navy), 70);
-$focus-color: map-get(map-get($colorscheme, navy), 60);
+$link-color: map-get(map-get($colorscheme, blue), 70);
+$focus-color: map-get(map-get($colorscheme, blue), 60);
 
-$primary: map-get(map-get($colorscheme, navy), 70);
+$primary: map-get(map-get($colorscheme, blue), 70);
 $secondary: map-get(map-get($colorscheme, mint), 40);
 $secondary-alt: map-get(map-get($colorscheme, mint), 50);
 
-$primary-color: map-get(map-get($colorscheme, navy), 70);
+$primary-color: map-get(map-get($colorscheme, blue), 70);
 $secondary-color: map-get(map-get($colorscheme, mint), 40);
 $secondary-color-alt: map-get(map-get($colorscheme, mint), 50);
-$brand-color: map-get(map-get($colorscheme, navy), 70);
+$brand-color: map-get(map-get($colorscheme, blue), 70);
 $success-color: map-get(map-get($colorscheme, mint), 70);
 $danger-color: map-get(map-get($colorscheme, red), 70);
-$info-color: map-get(map-get($colorscheme, navy), 70);
+$info-color: map-get(map-get($colorscheme, blue), 70);
 $warning-color: map-get(map-get($colorscheme, yellow), 60);
 $dark-color: map-get(map-get($colorscheme, grey), 90);
 $light-color: map-get(map-get($colorscheme, grey), 30);

@@ -137,7 +137,7 @@ th {
       }
 
       &.-row--info {
-        background-color: set-color(navy, 10) !important;
+        background-color: set-color(blue, 10) !important;
       }
 
       &[disabled] {
@@ -185,7 +185,7 @@ th {
           &:hover,
           &.-hover {
             td {
-              background-color: set-color(navy, 20);
+              background-color: set-color(blue, 20);
             }
           }
         }

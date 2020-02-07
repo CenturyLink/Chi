@@ -69,7 +69,7 @@ $sidenav-lg-width: 12.5rem;
       }
     }
 
-    &.-active > a { // List item -active. The one that has the left 3px navy border.
+    &.-active > a { // List item -active. The one that has the left 3px blue border.
       background-color: set-color(grey, 20);
     }
 
@@ -160,7 +160,7 @@ $sidenav-lg-width: 12.5rem;
             }
           }
 
-          &.-active > a { // List item -active. The one that has the left 3px navy border.
+          &.-active > a { // List item -active. The one that has the left 3px blue border.
             background-color: set-color(mint, 100);
           }
 
