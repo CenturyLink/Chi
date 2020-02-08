@@ -87,6 +87,53 @@
         flex-grow: 1;
         width: 100%;
 
+
+        .docs-body__heading {
+          background-color: set-color(black);
+          flex-direction: column;
+          display: flex;
+          padding: 1rem 0 0;
+          @include respond-to(lg) {
+            padding: 3rem 0 0;
+          }
+
+          .a-grid__container {
+            width: calc(100% - 2rem);
+
+            + .a-grid__container {
+              @include respond-to(lg) {
+                margin-top: -1rem;
+              }
+            }
+
+            &:first-child {
+              padding-bottom: 1rem;
+              @include respond-to(lg) {
+                padding-bottom: 2rem;
+              }
+            }
+
+            .docs-body__heading-title {
+              color: set-color(white);
+              font-size: 2rem;
+              margin-bottom: 0.5rem;
+              @include respond-to(lg) {
+                font-size: 3rem;
+                margin-bottom: 1.5rem;
+              }
+            }
+
+            .docs-body__heading-description {
+              color: set-color(grey, 50);
+              font-size: 0.875rem;
+              @include respond-to(lg) {
+                font-size: 1rem;
+                margin: 0 0 1rem;
+              }
+            }
+          }
+        }
+
         .a-grid__container {
           @include respond-to(lg) {
             margin: 0 40px;
@@ -100,6 +147,7 @@
 
           >,
           .changelog__version >,
+          .a-tabs-panel >,
           > .a-grid .a-col,
           > .m-epanel {
             h1 {
@@ -176,7 +224,7 @@
               border-top: 0;
             }
           }
-  
+
           & > .clipboard:first-child + pre[class*="language-"] {
             border-top: 0;
           }
@@ -185,22 +233,6 @@
             border-radius: 0.15em;
             border-top: 0;
           }
-        }
-      }
-
-      &__heading {
-        background-color: set-color(black);
-        border-top: 1px solid set-color(grey, 70);
-        display: flex;
-        padding-top: 4rem;
-
-        &-title {
-          color: set-color(white);
-        }
-
-        &-description {
-          color: set-color(grey, 30);
-          margin: 1rem 0;
         }
       }
     }
