@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-02-06T21:52:52",
+  "timestamp": "2020-02-10T11:35:03",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.7.5",
@@ -1194,7 +1194,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, inverse, muted}",
+          "docs": "OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, inverse, muted, grey, secondary}",
           "docsTags": [],
           "values": [
             {

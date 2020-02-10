@@ -2,9 +2,8 @@ import { Component, Prop, Watch, h } from '@stencil/core';
 import { calculateClasses } from '../../utils/utils';
 
 let loadedIcons = 0;
-const VALID_COLORS = ['', 'primary', 'success', 'warning', 'danger', 'inverse', 'muted', 'info'];
+const VALID_COLORS = ['', 'primary', 'success', 'warning', 'danger', 'inverse', 'muted', 'info', 'grey', 'secondary'];
 const VALID_SIZES = ['', 'xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
-
 
 @Component({
   tag: 'chi-icon',
@@ -14,7 +13,7 @@ const VALID_SIZES = ['', 'xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
 export class Icon {
 
   /**
-   * OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, inverse, muted}
+   * OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, inverse, muted, grey, secondary}
    */
   @Prop({ reflect: true }) color: string;
 
@@ -32,12 +31,12 @@ export class Icon {
    * OPTIONAL classes
    */
 
-  @Prop({ reflectToAttr: true }) extraClass: string;
+  @Prop({ reflect: true }) extraClass: string;
 
   @Watch('color')
   validateColorAttribute(newValue: string) {
     if (newValue && VALID_COLORS.indexOf(newValue) === -1) {
-      throw new Error('Not valid color (' + newValue + ') for icon ' + this.icon + '. Valid values are primary, success, warning, danger, inverse, muted or empty. ');
+      throw new Error('Not valid color (' + newValue + ') for icon ' + this.icon + '. Valid values are primary, success, warning, danger, inverse, muted, grey, secondary or empty. ');
     }
   }
 

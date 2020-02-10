@@ -60,7 +60,7 @@ export class NumberInput {
   /**
    * If set, component value won't be updated by itself.
    */
-  @Prop({ reflectToAttr: true }) preventValueMutation: boolean;
+  @Prop({ reflect: true }) preventValueMutation: boolean;
 
   /**
    * used to provide an input state like 'hover' or 'focus'. Mostly used for testing purposes
