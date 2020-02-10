@@ -10,7 +10,7 @@ export class Brand {
   /**
    *  to set brand color { black, white, inverse }.
    */
-  @Prop({ reflectToAttr: true }) color: string;
+  @Prop({ reflect: true }) color: string;
 
   /**
    *  to set brand type { black, white, inverse }.
