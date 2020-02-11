@@ -1,3 +1,6 @@
+script(type='module' src='../../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
 .m-alert.-info.-my--3
   i.m-alert__icon.a-icon.icon-circle-info
   .m-alert__content
@@ -12,36 +15,52 @@ h3 Base
 
 .example.-mb--3
   .-p--3
-    .m-form__item.-row
-      .m-input__wrapper
-        input.a-input(type="number", value="0", aria-label="Input Label")
-        button(aria-label='decrease')
-        button(aria-label='increase')
-  :code(lang="html")
-    <div class="m-form__item -row">
-      <div class="m-input__wrapper">
-        <input type="number" class="a-input" value="0" aria-label="Input Label">
-        <button aria-label="Decrease"></button>
-        <button aria-label="Increase"></button>
+    .m-form__item
+      chi-number-input
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-default
+      li.-active
+        a(href=`#webcomponent`) Web component
+      li
+        a(href=`#html`) HTML + JS
+  .a-tabs-panel.-active#webcomponent
+    :code(lang="html")
+      <chi-number-input></chi-number-input>
+  .a-tabs-panel#html
+    :code(lang="html")
+      <div class="m-form__item -row">
+        <div class="m-input__wrapper">
+          <input id="input-number-1" type="number" class="a-input" value="0" aria-label="Input Label">
+          <button aria-label="Decrease"></button>
+          <button aria-label="Increase"></button>
+        </div>
       </div>
-    </div>
+
+      <script>chi.numberInput(document.getElementById('input-number-1'));</script>
 
 h3 Disabled
 .example.-mb--3
   .-p--3
-    .m-form__item.-row
-      .m-input__wrapper
-        input.a-input(type="number", value="0", aria-label="Input Label", disabled)
-        button(aria-label='decrease')
-        button(aria-label='increase')
-  :code(lang="html")
-    <div class="m-form__item -row">
-      <div class="m-input__wrapper">
-        <input type="number" class="a-input" value="0" aria-label="Input Label" disabled>
-        <button aria-label="Decrease"></button>
-        <button aria-label="Increase"></button>
+    .m-form__item
+      chi-number-input(disabled=true)
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-disabled
+      li.-active
+        a(href=`#webcomponent-disabled`) Web component
+      li
+        a(href=`#html-disabled`) HTML
+  .a-tabs-panel.-active#webcomponent-disabled
+    :code(lang="html")
+      <chi-number-input disabled></chi-number-input>
+  .a-tabs-panel#html-disabled
+    :code(lang="html")
+      <div class="m-form__item -row">
+        <div class="m-input__wrapper">
+          <input type="number" class="a-input" value="0" aria-label="Input Label" disabled>
+          <button aria-label="Decrease"></button>
+          <button aria-label="Increase"></button>
+        </div>
       </div>
-    </div>
 
 h3 Sizes
 p.-text
@@ -51,40 +70,50 @@ p.-text
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
-      .m-form__item.-row.-inline.-mr--3
-        .m-input__wrapper
-          input.a-input(type="number", class=`-${size}`, value="0", aria-label="Input Label")
-          button(aria-label='decrease')
-          button(aria-label='increase')
-  :code(lang='html')
-    <div class="m-form__item -row -inline">
-      <div class="m-input__wrapper">
-        <input type="number" class="a-input -sm" value="0" aria-label="Input Label">
-        <button aria-label="Decrease"></button>
-        <button aria-label="Increase"></button>
+      .m-form__item.-inline.-mr--3
+        chi-number-input(size=`${size}`)
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-sizes
+      li.-active
+        a(href=`#webcomponent-sizes`) Web component
+      li
+        a(href=`#html-sizes`) HTML
+  .a-tabs-panel.-active#webcomponent-sizes
+    :code(lang="html")
+      <chi-number-input size="sm"></chi-number-input>
+      <chi-number-input></chi-number-input>
+      <chi-number-input size="lg"></chi-number-input>
+      <chi-number-input size="xl"></chi-number-input>
+  .a-tabs-panel#html-sizes
+    :code(lang="html")
+      <div class="m-form__item -row">
+        <div class="m-input__wrapper">
+          <input type="number" class="a-input -sm" value="0" aria-label="Input Label">
+          <button aria-label="Decrease"></button>
+          <button aria-label="Increase"></button>
+        </div>
       </div>
-    </div>
-    <div class="m-form__item -row -inline">
-      <div class="m-input__wrapper">
-        <input type="number" class="a-input -md" value="0" aria-label="Input Label">
-        <button aria-label="Decrease"></button>
-        <button aria-label="Increase"></button>
+      <div class="m-form__item -row">
+        <div class="m-input__wrapper">
+          <input type="number" class="a-input -md" value="0" aria-label="Input Label">
+          <button aria-label="Decrease"></button>
+          <button aria-label="Increase"></button>
+        </div>
       </div>
-    </div>
-    <div class="m-form__item -row -inline">
-      <div class="m-input__wrapper">
-        <input type="number" class="a-input -lg" value="0" aria-label="Input Label">
-        <button aria-label="Decrease"></button>
-        <button aria-label="Increase"></button>
+      <div class="m-form__item -row">
+        <div class="m-input__wrapper">
+          <input type="number" class="a-input -lg" value="0" aria-label="Input Label">
+          <button aria-label="Decrease"></button>
+          <button aria-label="Increase"></button>
+        </div>
       </div>
-    </div>
-    <div class="m-form__item -row -inline">
-      <div class="m-input__wrapper">
-        <input type="number" class="a-input -xl" value="0" aria-label="Input Label">
-        <button aria-label="Decrease"></button>
-        <button aria-label="Increase"></button>
+      <div class="m-form__item -row">
+        <div class="m-input__wrapper">
+          <input type="number" class="a-input -xl" value="0" aria-label="Input Label">
+          <button aria-label="Decrease"></button>
+          <button aria-label="Increase"></button>
+        </div>
       </div>
-    </div>
 
 h2 Expanded version
 p.-text
@@ -93,54 +122,60 @@ p.-text
 h3 Base
 .example.-mb--3
   .-p--3
-    .m-inputNumber
-      input.a-input(type="number", value="0", aria-label="Input Label")
-      button.a-btn.-icon(aria-label='decrease')
-        .a-btn__content
-          i.a-icon.icon-minus
-      button.a-btn.-icon(aria-label='increase')
-        .a-btn__content
-          i.a-icon.icon-plus
-  :code(lang="html")
-    <div class="m-inputNumber">
-      <input class="a-input" type="number" value="0" aria-label="Input Label">
-      <button class="a-btn -icon" aria-label="Decrease">
-        <div class="a-btn__content">
-          <i class="a-icon icon-minus"></i>
-        </div>
-      </button>
-      <button class="a-btn -icon" aria-label="Increase">
-        <div class="a-btn__content">
-          <i class="a-icon icon-plus"></i>
-        </div>
-      </button>
-    </div>
+    chi-number-input(expanded=true)
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-expanded
+      li.-active
+        a(href=`#webcomponent-expanded`) Web component
+      li
+        a(href=`#html-expanded`) HTML
+  .a-tabs-panel.-active#webcomponent-expanded
+    :code(lang="html")
+      <chi-number-input expanded></chi-number-input>
+  .a-tabs-panel#html-expanded
+    :code(lang="html")
+      <div class="m-inputNumber">
+        <input class="a-input" type="number" value="0" aria-label="Input Label">
+        <button class="a-btn -icon" aria-label="Decrease">
+          <div class="a-btn__content">
+            <i class="a-icon icon-minus"></i>
+          </div>
+        </button>
+        <button class="a-btn -icon" aria-label="Increase">
+          <div class="a-btn__content">
+            <i class="a-icon icon-plus"></i>
+          </div>
+        </button>
+      </div>
 
 h3 Disabled
 .example.-mb--3
   .-p--3
-    .m-inputNumber
-      input.a-input(type="number", value="0", aria-label="Input Label", disabled=true)
-      button.a-btn.-icon(aria-label='decrease')
-        .a-btn__content
-          i.a-icon.icon-minus
-      button.a-btn.-icon(aria-label='increase')
-        .a-btn__content
-          i.a-icon.icon-plus
-  :code(lang="html")
-    <div class="m-inputNumber">
-      <input class="a-input" type="number" value="0" aria-label="Input Label" disabled>
-      <button class="a-btn -icon" aria-label="Decrease">
-        <div class="a-btn__content">
-          <i class="a-icon icon-minus"></i>
-        </div>
-      </button>
-      <button class="a-btn -icon" aria-label="Increase">
-        <div class="a-btn__content">
-          <i class="a-icon icon-plus"></i>
-        </div>
-      </button>
-    </div>
+    chi-number-input(expanded=true disabled=true)
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-expanded-disabled
+      li.-active
+        a(href=`#webcomponent-expanded-disabled`) Web component
+      li
+        a(href=`#html-expanded-disabled`) HTML
+  .a-tabs-panel.-active#webcomponent-expanded-disabled
+    :code(lang="html")
+      <chi-number-input expanded disabled></chi-number-input>
+  .a-tabs-panel#html-expanded-disabled
+    :code(lang="html")
+      <div class="m-inputNumber">
+        <input class="a-input" type="number" value="0" aria-label="Input Label" disabled>
+        <button class="a-btn -icon" aria-label="Decrease">
+          <div class="a-btn__content">
+            <i class="a-icon icon-minus"></i>
+          </div>
+        </button>
+        <button class="a-btn -icon" aria-label="Increase">
+          <div class="a-btn__content">
+            <i class="a-icon icon-plus"></i>
+          </div>
+        </button>
+      </div>
 
 h3 Sizes
 p.-text
@@ -150,49 +185,68 @@ p.-text
 .example.-mb--3
   .-p--3.-d--flex.-justify-content--start.-align-items--center
     each size in ['sm', 'md', 'lg', 'xl']
-      div(class=`m-inputNumber -mr--2 -${size}`)
-        input(class=`a-input -${size}`, type="number", value="0", aria-label="Input Label")
-        button(class=`a-btn -icon -${size}`, aria-label='decrease')
-          .a-btn__content
-            i.a-icon.icon-minus
-        button(class=`a-btn -icon -${size}`, aria-label='decrease')
-          .a-btn__content
-            i.a-icon.icon-plus
-  :code(lang="html")
-    <div class="m-inputNumber -sm">
-      <input class="a-input -sm" type="number" value="0" aria-label="Input Label">
-      <button class="a-btn -icon -sm" aria-label="Decrease">
-        <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
-      </button>
-      <button class="a-btn -icon -sm" aria-label="Increase">
-        <div class="a-btn__content"><i class="a-icon icon-plus"></i>
+      chi-number-input(expanded=true size=`${size}` class='-mr--2')
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-expanded-sizes
+      li.-active
+        a(href=`#webcomponent-expanded-sizes`) Web component
+      li
+        a(href=`#html-expanded-sizes`) HTML
+  .a-tabs-panel.-active#webcomponent-expanded-sizes
+    :code(lang="html")
+      <chi-number-input expanded size="sm"></chi-number-input>
+      <chi-number-input expanded></chi-number-input>
+      <chi-number-input expanded size="lg"></chi-number-input>
+      <chi-number-input expanded size="xl"></chi-number-input>
+  .a-tabs-panel#html-expanded-sizes
+    :code(lang="html")
+      <div class="m-inputNumber -sm">
+        <input class="a-input -sm" type="number" value="0" aria-label="Input Label">
+        <button class="a-btn -icon -sm" aria-label="Decrease">
+          <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
+        </button>
+        <button class="a-btn -icon -sm" aria-label="Increase">
+          <div class="a-btn__content"><i class="a-icon icon-plus"></i>
+        </div>
+        </button>
       </div>
-      </button>
-    </div>
-    <div class="m-inputNumber -md">
-      <input class="a-input -md" type="number" value="0" aria-label="Input Label">
-      <button class="a-btn -icon -md" aria-label="Decrease">
-        <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
-      </button>
-      <button class="a-btn -icon -md" aria-label="Increase">
-        <div class="a-btn__content"><i class="a-icon icon-plus"></i></div>
-      </button>
-    </div>
-    <div class="m-inputNumber -lg">
-      <input class="a-input -lg" type="number" value="0" aria-label="Input Label">
-      <button class="a-btn -icon -lg" aria-label="Decrease">
-        <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
-      </button>
-      <button class="a-btn -icon -lg" aria-label="Increase">
-        <div class="a-btn__content"><i class="a-icon icon-plus"></i></div>
-      </button>
-    </div>
-    <div class="m-inputNumber -xl">
-      <input class="a-input -xl" type="number" value="0" aria-label="Input Label">
-      <button class="a-btn -icon -xl" aria-label="Decrease">
-        <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
-      </button>
-      <button class="a-btn -icon -xl" aria-label="Increase">
-        <div class="a-btn__content"><i class="a-icon icon-plus"></i></div>
-      </button>
-    </div>
+      <div class="m-inputNumber -md">
+        <input class="a-input -md" type="number" value="0" aria-label="Input Label">
+        <button class="a-btn -icon -md" aria-label="Decrease">
+          <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
+        </button>
+        <button class="a-btn -icon -md" aria-label="Increase">
+          <div class="a-btn__content"><i class="a-icon icon-plus"></i></div>
+        </button>
+      </div>
+      <div class="m-inputNumber -lg">
+        <input class="a-input -lg" type="number" value="0" aria-label="Input Label">
+        <button class="a-btn -icon -lg" aria-label="Decrease">
+          <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
+        </button>
+        <button class="a-btn -icon -lg" aria-label="Increase">
+          <div class="a-btn__content"><i class="a-icon icon-plus"></i></div>
+        </button>
+      </div>
+      <div class="m-inputNumber -xl">
+        <input class="a-input -xl" type="number" value="0" aria-label="Input Label">
+        <button class="a-btn -icon -xl" aria-label="Decrease">
+          <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
+        </button>
+        <button class="a-btn -icon -xl" aria-label="Increase">
+          <div class="a-btn__content"><i class="a-icon icon-plus"></i></div>
+        </button>
+      </div>
+
+script.
+    document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('examples-default'));
+      chi.tab(document.getElementById('examples-disabled'));
+      chi.tab(document.getElementById('examples-sizes'));
+      chi.tab(document.getElementById('examples-expanded'));
+      chi.tab(document.getElementById('examples-expanded-disabled'));
+      chi.tab(document.getElementById('examples-expanded-sizes'));
+    }
+  );
