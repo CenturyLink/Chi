@@ -19,132 +19,240 @@ ul#a-tabs--drawer.a-tabs
       .-p--3
         each i in [1, 2, 3]
           .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-      .m-drawer.-left.-active(style="position:absolute;")
-        .m-drawer__header
-          button(class='a-btn -icon -close', aria-label='Close')
-            .a-btn__content
-              i.a-icon.icon-x
-        .m-drawer__content
-          .-px--2.-text Drawer content here
-    :code(lang="html")
-      <div class="m-drawer -left -active">
-        <div class="m-drawer__header">
-          <button class="a-btn -icon -close" aria-label="Close">
-            <div class="a-btn__content">
-              <i class="a-icon icon-x"></i>
-            </div>
-          </button>
-        </div>
-        <div class="m-drawer__content">
+      chi-drawer(position='left', active, collapsible)
+        .-px--2.-text Drawer content here
+    .example-tabs.-pl--2
+      ul.a-tabs#examples-default
+        li.-active
+          a(href=`#webcomponent`) Web component
+        li
+          a(href=`#html`) HTML
+    .a-tabs-panel.-active#webcomponent
+      :code(lang="html")
+        <chi-drawer position="left" active collapsible>
           <div class="-px--2 -text">Drawer content here</div>
+        </chi-drawer>
+    .a-tabs-panel#html
+      :code(lang="html")
+        <div class="m-drawer -left -active">
+          <div class="m-drawer__header">
+            <button class="a-btn -icon -close" aria-label="Close">
+              <div class="a-btn__content">
+                <i class="a-icon icon-x"></i>
+              </div>
+            </button>
+          </div>
+          <div class="m-drawer__content">
+            <div class="-px--2 -text">Drawer content here</div>
+          </div>
         </div>
-      </div>
+
 #a-tabs--drawer-right.a-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
       .-p--3
         each i in [1, 2, 3]
           .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-      .m-drawer.-right.-active(style="position:absolute;")
-        .m-drawer__header
-          button(class='a-btn -icon -close', aria-label='Close')
-            .a-btn__content
-              i.a-icon.icon-x
-        .m-drawer__content
-          .-px--2.-text Drawer content here
-    :code(lang="html")
-      <div class="m-drawer -right -active">
-        <div class="m-drawer__header">
-          <button class="a-btn -icon -close" aria-label="Close">
-            <div class="a-btn__content">
-              <i class="a-icon icon-x"></i>
-            </div>
-          </button>
-        </div>
-        <div class="m-drawer__content">
+      chi-drawer(position='right', active, collapsible)
+        .-px--2.-text Drawer content here
+    .example-tabs.-pl--2
+      ul.a-tabs#examples-default-right
+        li.-active
+          a(href=`#webcomponent-right`) Web component
+        li
+          a(href=`#html-right`) HTML
+    .a-tabs-panel.-active#webcomponent-right
+      :code(lang="html")
+        <chi-drawer position="right" active collapsible>
           <div class="-px--2 -text">Drawer content here</div>
+        </chi-drawer>
+    .a-tabs-panel#html-right
+      :code(lang="html")
+        <div class="m-drawer -right -active">
+          <div class="m-drawer__header">
+            <button class="a-btn -icon -close" aria-label="Close">
+              <div class="a-btn__content">
+                <i class="a-icon icon-x"></i>
+              </div>
+            </button>
+          </div>
+          <div class="m-drawer__content">
+            <div class="-px--2 -text">Drawer content here</div>
+          </div>
         </div>
-      </div>
+
 #a-tabs--drawer-top.a-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
       .-p--3
         each i in [1, 2, 3]
           .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-      .m-drawer.-top.-active(style="position:absolute;")
-        .m-drawer__header
-          button(class='a-btn -icon -close', aria-label='Close')
-            .a-btn__content
-              i.a-icon.icon-x
-        .m-drawer__content
-          .-px--2.-text Drawer content here
-    :code(lang="html")
-      <div class="m-drawer -top -active">
-        <div class="m-drawer__header">
-          <button class="a-btn -icon -close" aria-label="Close">
-            <div class="a-btn__content">
-              <i class="a-icon icon-x"></i>
-            </div>
-          </button>
-        </div>
-        <div class="m-drawer__content">
+      chi-drawer(position='top', active, collapsible)
+        .-px--2.-text Drawer content here
+    .example-tabs.-pl--2
+      ul.a-tabs#examples-default-top
+        li.-active
+          a(href=`#webcomponent-top`) Web component
+        li
+          a(href=`#html-top`) HTML
+    .a-tabs-panel.-active#webcomponent-top
+      :code(lang="html")
+        <chi-drawer position="top" active collapsible>
           <div class="-px--2 -text">Drawer content here</div>
+        </chi-drawer>
+    .a-tabs-panel#html-top
+      :code(lang="html")
+        <div class="m-drawer -top -active">
+          <div class="m-drawer__header">
+            <button class="a-btn -icon -close" aria-label="Close">
+              <div class="a-btn__content">
+                <i class="a-icon icon-x"></i>
+              </div>
+            </button>
+          </div>
+          <div class="m-drawer__content">
+            <div class="-px--2 -text">Drawer content here</div>
+          </div>
         </div>
-      </div>
+
 #a-tabs--drawer-bottom.a-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
       .-p--3
         each i in [1, 2, 3]
           .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-      .m-drawer.-bottom.-active(style="position:absolute;")
-        .m-drawer__header
-          button(class='a-btn -icon -close', aria-label='Close')
-            .a-btn__content
-              i.a-icon.icon-x
-        .m-drawer__content
-          .-px--2.-text Drawer content here
-    :code(lang="html")
-      <div class="m-drawer -bottom -active">
-        <div class="m-drawer__header">
-          <button class="a-btn -icon -close" aria-label="Close">
-            <div class="a-btn__content">
-              <i class="a-icon icon-x"></i>
-            </div>
-          </button>
-        </div>
-        <div class="m-drawer__content">
+      chi-drawer(position='bottom', active, collapsible)
+        .-px--2.-text Drawer content here
+    .example-tabs.-pl--2
+      ul.a-tabs#examples-default-bottom
+        li.-active
+          a(href=`#webcomponent-bottom`) Web component
+        li
+          a(href=`#html-bottom`) HTML
+    .a-tabs-panel.-active#webcomponent-bottom
+      :code(lang="html")
+        <chi-drawer position="bottom" active collapsible>
           <div class="-px--2 -text">Drawer content here</div>
+        </chi-drawer>
+    .a-tabs-panel#html-bottom
+      :code(lang="html")
+        <div class="m-drawer -bottom -active">
+          <div class="m-drawer__header">
+            <button class="a-btn -icon -close" aria-label="Close">
+              <div class="a-btn__content">
+                <i class="a-icon icon-x"></i>
+              </div>
+            </button>
+          </div>
+          <div class="m-drawer__content">
+            <div class="-px--2 -text">Drawer content here</div>
+          </div>
         </div>
-      </div>
 
 h3 Backdrop
 p.-text
   | An optional backdrop can be added to focus the users attention on drawer content.
 .example.-mb--3(style='overflow:hidden;')
-  .m-backdrop.-position--relative.-z--0(style="height:30rem;")
-    .m-backdrop__wrapper
-      .m-drawer.-bottom.-active.-position--absolute
-        button(class='a-btn -icon -close', aria-label='Close')
-          .a-btn__content
-            i.a-icon.icon-x
-        .m-drawer__content.-d--flex.-align-items--center.-justify-content--center
-          .-px--2.-text Drawer content here
-  :code(lang="html")
-    <div class="m-backdrop">
-      <div class="m-backdrop__wrapper">
-        <div class="m-drawer -bottom -active">
-          <button class="a-btn -icon -close" aria-label="Close">
-            <div class="a-btn__content">
-              <i class="a-icon icon-x"></i>
+  .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
+    chi-drawer(position='bottom', backdrop, active, collapsible)
+      .-px--2.-text Drawer content here
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-backdrop
+      li.-active
+        a(href=`#webcomponent-backdrop`) Web component
+      li
+        a(href=`#html-backdrop`) HTML
+  .a-tabs-panel.-active#webcomponent-backdrop
+    :code(lang="html")
+      <chi-drawer position="bottom" backdrop active collapsible>
+        <div class="-px--2 -text">Drawer content here</div>
+      </chi-drawer>
+  .a-tabs-panel#html-backdrop
+    :code(lang="html")
+      <div class="m-backdrop">
+        <div class="m-backdrop__wrapper">
+          <div class="m-drawer -bottom -active">
+            <button class="a-btn -icon -close" aria-label="Close">
+              <div class="a-btn__content">
+                <i class="a-icon icon-x"></i>
+              </div>
+            </button>
+            <div class="m-drawer__content -d--flex -align-items--center -justify-content--center">
+              <div class="-px--2 -text">Drawer content here</div>
             </div>
-          </button>
-          <div class="m-drawer__content -d--flex -align-items--center -justify-content--center">
-            <div class="-px--2 -text">Drawer content here</div>
           </div>
         </div>
       </div>
-    </div>
+
+h3 Close button
+p.-text
+
+ul#a-tabs--collapsible.a-tabs
+  li.-active
+    a(href='#a-tabs--collapsible-with') Collapsible
+  li
+    a(href='#a-tabs--collapsible-without') No collapsible
+#a-tabs--collapsible-with.a-tabs-panel.-active
+  .example.-mb--3(style='overflow:hidden;')
+    .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
+      chi-drawer(position='left' active backdrop collapsible)
+        .-px--2.-text Drawer content here
+    .example-tabs.-pl--2
+      ul.a-tabs#examples-collapsible
+        li.-active
+          a(href=`#webcomponent-collapsible`) Web component
+        li
+          a(href=`#html-collapsible`) HTML
+    .a-tabs-panel.-active#webcomponent-collapsible
+      .a-tab__description
+        | Use the <code>collapsible</code> attribute to include a close button
+      :code(lang="html")
+        <chi-drawer position="left" active backdrop collapsible>
+          <div class="-px--2 -text">Drawer content here</div>
+        </chi-drawer>
+    .a-tabs-panel#html-collapsible
+      :code(lang="html")
+        <div class="m-backdrop">
+          <div class="m-backdrop__wrapper">
+            <div class="m-drawer -bottom -active">
+              <button class="a-btn -icon -close" aria-label="Close">
+                <div class="a-btn__content">
+                  <i class="a-icon icon-x"></i>
+                </div>
+              </button>
+              <div class="m-drawer__content -d--flex -align-items--center -justify-content--center">
+                <div class="-px--2 -text">Drawer content here</div>
+              </div>
+            </div>
+          </div>
+        </div>
+#a-tabs--collapsible-without.a-tabs-panel
+  .example.-mb--3(style='overflow:hidden;')
+    .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
+      chi-drawer(position='left' active backdrop)
+        .-px--2.-text Drawer content here
+    .example-tabs.-pl--2
+      ul.a-tabs#examples-noncollapsible
+        li.-active
+          a(href=`#webcomponent-noncollapsible`) Web component
+        li
+          a(href=`#html-noncollapsible`) HTML
+    .a-tabs-panel.-active#webcomponent-noncollapsible
+      :code(lang="html")
+        <chi-drawer position="left" active backdrop>
+          <div class="-px--2 -text">Drawer content here</div>
+        </chi-drawer>
+    .a-tabs-panel#html-noncollapsible
+      :code(lang="html")
+        <div class="m-backdrop">
+          <div class="m-backdrop__wrapper">
+            <div class="m-drawer -bottom -active">
+              <div class="m-drawer__content -d--flex -align-items--center -justify-content--center">
+                <div class="-px--2 -text">Drawer content here</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
 h3 Header
 p.-text
@@ -158,19 +266,135 @@ ul#a-tabs--header.a-tabs
 #a-tabs--header-with.a-tabs-panel.-active
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
-      .m-backdrop(style="position:relative;height:30rem")
-        .m-backdrop__wrapper
-          .m-drawer.-left.-active(style="position:absolute;")
-            .m-drawer__header
-              button(class='a-btn -icon -close', aria-label='Close')
-                .a-btn__content
-                  i.a-icon.icon-x
-            .m-drawer__content
-              .-px--2.-text Drawer content here
+      chi-drawer(position='left' active collapsible backdrop)
+          .-px--2.-text Drawer content here
+    .example-tabs.-pl--2
+      ul.a-tabs#examples-header
+        li.-active
+          a(href=`#webcomponent-header`) Web component
+        li
+          a(href=`#html-header`) HTML
+    .a-tabs-panel.-active#webcomponent-header
+      :code(lang="html")
+        <chi-drawer position="left" active collapsible backdrop>
+          <div class="-px--2 -text">Drawer content here</div>
+        </chi-drawer>
+    .a-tabs-panel#html-header
+      :code(lang="html")
+        <div class="m-backdrop">
+          <div class="m-backdrop__wrapper">
+            <div class="m-drawer -left -active">
+              <div class="m-drawer__header">
+                <button class="a-btn -icon -close" aria-label="Close">
+                  <div class="a-btn__content">
+                    <i class="a-icon icon-x"></i>
+                  </div>
+                </button>
+              </div>
+              <div class="m-drawer__content">
+                <div class="-px--2 -text">Drawer content here</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+#a-tabs--header-without.a-tabs-panel
+  .example.-mb--3(style='overflow:hidden;')
+    .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
+      chi-drawer(position='left' active collapsible backdrop headless)
+        .-px--2.-text Drawer content here
+    .example-tabs.-pl--2
+      ul.a-tabs#examples-headerless
+        li.-active
+          a(href=`#webcomponent-headerless`) Web component
+        li
+          a(href=`#html-headerless`) HTML
+    .a-tabs-panel.-active#webcomponent-headerless
+      :code(lang="html")
+        <chi-drawer position="left" active collapsible backdrop headless>
+          <div class="-px--2 -text">Drawer content here</div>
+        </chi-drawer>
+    .a-tabs-panel#html-headerless
+      :code(lang="html")
+        <div class="m-backdrop">
+          <div class="m-backdrop__wrapper">
+            <div class="m-drawer -left -active">
+              <button class="a-btn -icon -close" aria-label="Close">
+                <div class="a-btn__content">
+                  <i class="a-icon icon-x"></i>
+                </div>
+              </button>
+              <div class="m-drawer__content">
+                <div class="-px--2 -text">Drawer content here</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+h2 Interaction
+p.-text
+  span.a-badge.-dark.-sm.-mr1
+    span Tip
+  | Read this handy introduction to
+  |
+  a(href=`../overview/#regarding-html-attributes-and-dom-properties`) HTML attributes and DOM properties
+
+.example.-mb--3(style='overflow:hidden;')
+  .-position--relative.-z--0.-bb--1(style='height:20rem;overflow:hidden;')
+    .-p--3
+      .-d--flex.-justify-content--end.-align-items--start
+        // Migrate this to chi-button
+        button#drawer-trigger.a-btn.-icon
+          .a-btn__content
+            chi-icon(icon='menu',size='sm--2')
+      each i in [1, 2]
+        p.-text.-mb--3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
+    chi-drawer#interactive-drawer(position="right", backdrop, collapsible)
+      .-px--2.-text Drawer content here
+  .example-tabs.-pl--2
+    ul#examples-interaction.a-tabs
+      li.-active
+        a(href='#webcomponent-interaction') Web component
+      li
+        a(href='#html-interaction') HTML + JS
+  #webcomponent-interaction.a-tabs-panel.-active
+    .a-tab__description
+      | Modify the <code>active</code> attribute or property to make the drawer show or hide. The <code>chi-drawer</code>
+      | element also has three public methods to interact with it: <code>show()</code>, <code>hide()</code>,
+      | <code>toggle()</code>.
     :code(lang="html")
-      <div class="m-backdrop">
+      <button id="drawer-trigger" class="a-btn -icon">
+        <div class="a-btn__content">
+          <chi-icon icon="menu"></chi-icon>
+        </div>
+      </button>
+
+      <chi-drawer id="interactive-drawer" position="right" backdrop collapsible>
+        <div class="-px--2 -text">Drawer content here</div>
+      </div>
+
+      <script>
+        var drawer = document.getElementById('interactive-drawer');
+        var drawerTrigger = document.getElementById('drawer-trigger');
+        drawerTrigger.addEventListener('click', function(){
+          drawer.toggle();
+          // or drawer.active = !drawer.active;
+        });
+      </script>
+  #html-interaction.a-tabs-panel
+    .a-tab__description
+      | Use the function <code>chi.drawer(elem)</code> to instantiate a new drawer component in the DOM
+      | element passed as a parameter. You must use the trigger element as the parameter.
+    :code(lang="html")
+      <button id="drawer-trigger-1" class="a-btn -icon m-drawer__trigger" data-target="#drawer-1" aria-label="Toggle navigation">
+        <div class="a-btn__content">
+          <i class="a-icon -sm--2 icon-menu"></i>
+        </div>
+      </button>
+
+      <div class="m-backdrop -closed">
         <div class="m-backdrop__wrapper">
-          <div class="m-drawer -left -active">
+          <div id="drawer-1" class="m-drawer -right">
             <div class="m-drawer__header">
               <button class="a-btn -icon -close" aria-label="Close">
                 <div class="a-btn__content">
@@ -184,32 +408,8 @@ ul#a-tabs--header.a-tabs
           </div>
         </div>
       </div>
-#a-tabs--header-without.a-tabs-panel
-  .example.-mb--3(style='overflow:hidden;')
-    .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
-      .m-backdrop(style="position:relative;height:30rem")
-        .m-backdrop__wrapper
-          .m-drawer.-left.-active(style="position:absolute;")
-            button(class='a-btn -icon -close', aria-label='Close')
-              .a-btn__content
-                i.a-icon.icon-x
-            .m-drawer__content
-              .-px--2.-text Drawer content here
-    :code(lang="html")
-      <div class="m-backdrop">
-        <div class="m-backdrop__wrapper">
-          <div class="m-drawer -left -active">
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
-                <i class="a-icon icon-x"></i>
-              </div>
-            </button>
-            <div class="m-drawer__content">
-              <div class="-px--2 -text">Drawer content here</div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+      <script>chi.drawer(document.getElementById('drawer-trigger-1'));</script>
 
 script.
   document.addEventListener(
@@ -217,5 +417,22 @@ script.
     function() {
       chi.tab(document.getElementById('a-tabs--drawer'));
       chi.tab(document.getElementById('a-tabs--header'));
+      chi.tab(document.getElementById('examples-default'));
+      chi.tab(document.getElementById('examples-default-right'));
+      chi.tab(document.getElementById('examples-default-top'));
+      chi.tab(document.getElementById('examples-default-bottom'));
+      chi.tab(document.getElementById('examples-backdrop'));
+      chi.tab(document.getElementById('a-tabs--collapsible'));
+      chi.tab(document.getElementById('examples-collapsible'));
+      chi.tab(document.getElementById('examples-noncollapsible'));
+      chi.tab(document.getElementById('examples-header'));
+      chi.tab(document.getElementById('examples-headerless'));
+      chi.tab(document.getElementById('examples-interaction'));
+
+      var drawer = document.getElementById('interactive-drawer');
+      var drawerTrigger = document.getElementById('drawer-trigger');
+      drawerTrigger.addEventListener('click', function(){
+        drawer.toggle();
+      });
     }
   );

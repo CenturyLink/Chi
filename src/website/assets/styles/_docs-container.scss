@@ -87,11 +87,10 @@
         flex-grow: 1;
         width: 100%;
 
-
         .docs-body__heading {
           background-color: set-color(black);
-          flex-direction: column;
           display: flex;
+          flex-direction: column;
           padding: 1rem 0 0;
           @include respond-to(lg) {
             padding: 3rem 0 0;
