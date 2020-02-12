@@ -4,21 +4,6 @@
     p.m-alert__text This component requires Javascript
 
 h2 Examples
-p.-text
-  | Here is an example of a date picker not attached to any element.
-p.-text
-  | Use the classes <code>-month-starts-on-sun</code>,
-  | <code>-month-starts-on-mon</code>, <code>-month-starts-on-tue</code>, <code>-month-starts-on-wed</code>,
-  | <code>-month-starts-on-thu</code>, <code>-month-starts-on-fri</code> and <code>-month-starts-on-sat</code> to
-  | locate the first day in the correct cell.
-
-p.-text
-  | Use the classes <code>-week-starts-on-sun</code> or <code>-week-starts-on-mon</code> to fit the week definition
-  | of the desired locale.
-
-p.-text
-  | Additional classes are <code>-active</code> for the selected date, <code>-today</code> for the current date and
-  | <code>-inactive</code> for deactivated dates.
 
 - var day = 1;
 - var weekS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -27,6 +12,8 @@ p.-text
 - var active = 23;
 
 h3 Base
+p.-text
+  | Here is an example of a date picker not attached to any element.
 
 - day = 1;
 
@@ -51,6 +38,16 @@ ul#a-tabs--dp.a-tabs
       :code(lang="html")
         <chi-date></chi-date>
     #html.a-tabs-panel
+      .a-tab__description
+        | Use the classes <code>-month-starts-on-sun</code>,
+        | <code>-month-starts-on-mon</code>, <code>-month-starts-on-tue</code>, <code>-month-starts-on-wed</code>,
+        | <code>-month-starts-on-thu</code>, <code>-month-starts-on-fri</code> and <code>-month-starts-on-sat</code> to
+        | locate the first day in the correct cell.
+        br
+        | Use the classes <code>-week-starts-on-sun</code> or <code>-week-starts-on-mon</code> to fit the week definition
+        | of the desired locale.
+        br
+        | Use the class <code>-today</code> for the current date
       :code(lang="html")
         <div class="m-datepicker -week-starts-on-sun -month-starts-on-wed">
           <div class="m-datepicker__month-row">
@@ -134,6 +131,8 @@ ul#a-tabs--dp.a-tabs
       :code(lang="html")
         <chi-date value="05/15/2019"></chi-date>
     #html-active.a-tabs-panel
+      .a-tab__description
+        | Use class <code>-active</code> for the selected date
       :code(lang="html")
         <div class="m-datepicker -week-starts-on-sun -month-starts-on-wed">
           <div class="m-datepicker__month-row">
@@ -198,6 +197,8 @@ ul#a-tabs--dp.a-tabs
       :code(lang="html")
         <chi-date min="06/06/2019" max="06/22/2019"></chi-date>
     #html-min-max.a-tabs-panel
+      .a-tab__description
+        | Use class <code>-inactive</code> for deactivated dates.
       :code(lang="html")
         <div class="m-datepicker -week-starts-on-sun -month-starts-on-sat">
           <div class="m-datepicker__month-row">
