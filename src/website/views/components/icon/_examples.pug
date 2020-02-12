@@ -2,7 +2,7 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 h2 Using Icons
-p.-text Icons can be added via SVG or Web Font. Choose the method that best suits your projects needs.
+p.-text Icons can be added via Web component, SVG or Web Font. Choose the method that best suits your projects needs.
 
 h3 SVG & JS Method
 p.-text SVG based implementations provide better semantics, accessibility, rendering, and reliability. Place the following script in your projects footer to use this method.
@@ -24,6 +24,8 @@ p.-text Then to render an SVG icon, apply the class <code>a-icon</code> to an el
     :code(lang="html")
       <chi-icon icon="atom"></chi-icon>
   #svg-default.a-tabs-panel
+    .a-tab__description
+      | To render an SVG icon, apply the class <code>a-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
     :code(lang="html")
       <div class="a-icon">
         <svg aria-hidden="true">
@@ -31,19 +33,14 @@ p.-text Then to render an SVG icon, apply the class <code>a-icon</code> to an el
         </svg>
       </div>
   #webfont-default.a-tabs-panel
+    .a-tab__description
+      | Web Font based implementations offer the widest browser support,
+      | fastest rendering speed, and require no additional script or stylesheet.
     :code(lang="html")
-      <!--
-        Web Font based implementations offer the widest browser support,
-        fastest rendering speed, and require no additional script or stylesheet.
-      -->
       <i class="a-icon icon-logo-centurylink"></i>
 
 h2 Sizes
-p.-text By default, icons render at 16x16px (<code>-sm</code>). Apply size classes to render icons larger or smaller:
-  | <code>-xs</code>, <code>-sm</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
-p.-text Two alternate small classes are available for specific app scenarios. Use <code>-sm--2</code>
-  |  for displaying 20px icons within a 40px container (e.g. large button), and <code>-sm--3</code> for displaying
-  | 24px icons within a 48px container.
+p.-text By default, icons render at 16x16px (<code>sm</code>).
 .example.-mb--3
   .-p--3
     .a-grid.-align-items--end
@@ -51,14 +48,21 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
         div.-p--2.-m--1
           chi-icon(icon="atom", size=size)
           p.-text.-text--center= size
-  ul#example-sizes.a-tabs.-ml--3
-    li.-active
-      a(href='#webcomponent-sizes') Web component
-    li
-      a(href='#svg-sizes') SVG
-    li
-      a(href='#webfont-sizes') Web Font
+  .example-tabs.-pl--2
+    ul#example-sizes.a-tabs
+      li.-active
+        a(href='#webcomponent-sizes') Web component
+      li
+        a(href='#svg-sizes') SVG
+      li
+        a(href='#webfont-sizes') Web Font
   #webcomponent-sizes.a-tabs-panel.-active
+    .a-tab__description
+      | Use the size attribute to render icons larger or smaller:
+      | <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
+      | Two alternate small values are available for specific app scenarios. Use <code>sm--2</code>
+      |  for displaying 20px icons within a 40px container (e.g. large button), and <code>sm--3</code> for displaying
+      | 24px icons within a 48px container.
     :code(lang="html")
       <!-- -xs : 12x12px -->
       <chi-icon icon="logo-centurylink" size="xs"></chi-icon>
@@ -77,6 +81,12 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
       <!-- -xxl : 128x128px -->
       <chi-icon icon="logo-centurylink" size="xxl"></chi-icon>
   #svg-sizes.a-tabs-panel
+    .a-tab__description
+      | Apply size classes to render icons larger or smaller:
+      | <code>-xs</code>, <code>-sm</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
+      | Two alternate small classes are available for specific app scenarios. Use <code>-sm--2</code>
+      |  for displaying 20px icons within a 40px container (e.g. large button), and <code>-sm--3</code> for displaying
+      | 24px icons within a 48px container.
     :code(lang="html")
       <!-- -xs : 12x12px -->
       <div class="a-icon -xs"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
@@ -95,6 +105,12 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
       <!-- -xxl : 128x128px -->
       <div class="a-icon -xxl"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
   #webfont-sizes.a-tabs-panel
+    .a-tab__description
+      | Apply size classes to render icons larger or smaller:
+      | <code>-xs</code>, <code>-sm</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
+      | Two alternate small classes are available for specific app scenarios. Use <code>-sm--2</code>
+      |  for displaying 20px icons within a 40px container (e.g. large button), and <code>-sm--3</code> for displaying
+      | 24px icons within a 48px container.
     :code(lang="html")
       <!-- -xs : 12x12px -->
       <i class="a-icon icon-atom -xs"></i>
