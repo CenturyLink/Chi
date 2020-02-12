@@ -165,10 +165,6 @@ ul#a-tabs.a-tabs
         </div>
 
 h2 Customization
-p.-text
-  | This component accepts a small number of visual changes. The numbering of the panels is optional, so you can omit
-  | the <code>m-epanel__number</code> class elements. In this case, the active content will render with a not desired
-  | margin, that can be removed with the <code>-ml--0</code> class.
 .example.-mb3
   .-p3.-bg--grey-10
     chi-expansion-panel(heading='Expansion panel', state='active')
@@ -189,6 +185,10 @@ p.-text
       li
         a(href=`#html-customization`) HTML
   .a-tabs-panel.-active#webcomponent-customization
+    .a-tab__description
+      | This component accepts a small number of visual changes. The numbering of the panels is optional, so you can omit
+      | the <code>step</code> property if you don't need it. Apart from that, including some custom content like a button
+      | is also possible for done and active states.
     :code(lang="html")
       <chi-expansion-panel heading="Expansion panel" state="active">
         <div slot="active">
@@ -214,6 +214,10 @@ p.-text
         </div>
       </chi-expansion-panel>
   .a-tabs-panel#html-customization
+    .a-tab__description
+      | This component accepts a small number of visual changes. The numbering of the panels is optional, so you can omit
+      | the <code>m-epanel__number</code> class elements. In this case, the active content will render with a not desired
+      | margin, that can be removed with the <code>-ml--0</code> class.
     :code(lang="html")
       <div class="m-epanel -active">
         <div class="m-epanel__header">
@@ -239,8 +243,6 @@ p.-text
       </div>
 
 h2 Bordered expansion panel
-p.-text
-  | Expansion panel components also support a bordered version. Apply the <code>-bordered</code> class where desired.
 
 ul#a-tabs-bordered.a-tabs
   li.-active
@@ -282,6 +284,8 @@ ul#a-tabs-bordered.a-tabs
         li
           a(href=`#html-bordered`) HTML
     .a-tabs-panel.-active#webcomponent-bordered
+      .a-tab__description
+        | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
       :code(lang="html")
         <chi-expansion-panel step="1" heading="Done panel" state="done" bordered>
           <div slot="done">
@@ -297,6 +301,8 @@ ul#a-tabs-bordered.a-tabs
           </div>
         </chi-expansion-panel>
     .a-tabs-panel#html-bordered
+      .a-tab__description
+        | Expansion panel components also support a bordered version. Apply the <code>-bordered</code> class where desired.
       :code(lang="html")
         <div class="m-epanel -bordered -done">
           <div class="m-epanel__header">
@@ -321,6 +327,8 @@ ul#a-tabs-bordered.a-tabs
         li
           a(href=`#html-bordered-active`) HTML
     .a-tabs-panel.-active#webcomponent-bordered-active
+      .a-tab__description
+        | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
       :code(lang="html")
         <chi-expansion-panel step="2" heading="Active panel" state="active" bordered>
           <div slot="active">
@@ -338,6 +346,8 @@ ul#a-tabs-bordered.a-tabs
           </div>
         </chi-expansion-panel>
     .a-tabs-panel#html-bordered-active
+      .a-tab__description
+        | Expansion panel components also support a bordered version. Apply the <code>-bordered</code> class where desired.
       :code(lang="html")
         <div class="m-epanel -bordered -active">
           <div class="m-epanel__header">
@@ -367,9 +377,13 @@ ul#a-tabs-bordered.a-tabs
         li
           a(href=`#html-bordered-pending`) HTML
     .a-tabs-panel.-active#webcomponent-bordered-pending
+      .a-tab__description
+        | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
       :code(lang="html")
         <chi-expansion-panel step="3" heading="Pending panel" bordered></chi-expansion-panel>
     .a-tabs-panel#html-bordered-pending
+      .a-tab__description
+        | Expansion panel components also support a bordered version. Apply the <code>-bordered</code> class where desired.
       :code(lang="html")
         <div class="m-epanel -bordered">
           <div class="m-epanel__header">
@@ -386,9 +400,13 @@ ul#a-tabs-bordered.a-tabs
         li
           a(href=`#html-bordered-disabled`) HTML
     .a-tabs-panel.-active#webcomponent-bordered-disabled
+      .a-tab__description
+        | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
       :code(lang="html")
         <chi-expansion-panel step="4" heading="Disabled panel" state="disabled" bordered></chi-expansion-panel>
     .a-tabs-panel#html-bordered-disabled
+      .a-tab__description
+        | Expansion panel components also support a bordered version. Apply the <code>-bordered</code> class where desired.
       :code(lang="html")
         <div class="m-epanel -bordered -disabled">
           <div class="m-epanel__header">
@@ -399,27 +417,18 @@ ul#a-tabs-bordered.a-tabs
 
 h2 State custom behavior
 p.-text
-  | The four expansion panel states behave very similar one from each other. For example, you shouldn't, but you may
-  | use an <code>m-epanel__footer</code> element in a <code>pending</code> panel, or an
-  | <code>m-epanel__action</code> button in an <code>active</code> panel.
-p.-text
-  | There are two main differences between them.
+  | The four expansion panel states behave similarly to each other, although there are two main differences
+  | between them.
 ol.-text
   li
     | The title will render in the brand color for the active panel, in soft gray for the disabled panel and black for
     | the other panel states.
-  li Two hiding utility classes will hide content depending on the state.
+  li Two internal hiding utility classes will hide content depending on the state.
 
 h3 Hiding by state
 p.-text
-  | The four examples below differ only on the state. Thanks to the state support and the <code>-active--only</code> and
-  | <code>-done--only</code> utility classes, we can represent the three states of the same content changing only the
-  | state class.
-p.-text
-  span.a-badge.-dark.-sm.-mr1
-    span Tip
-  | It is not a best practice to use this utility classes in frontend frameworks such as Angular, React or Vue as they
-  | have their own solutions to accomplish this goal.
+  | The four examples below differ only on the state. Thanks to the state support and internal utility classes we can
+  | represent the different states of the same content changing only that property.
 
 ul#a-tabs-ex.a-tabs
   li.-active
