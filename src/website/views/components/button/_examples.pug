@@ -26,9 +26,7 @@ h2 Examples
 
 h3 Base
 p.-text
-  | Chi includes a wide variety of predefined button styles. For light backgrounds,
-  | please use base, <code>-primary</code>, or <code>-dark</code> buttons. For
-  | dark backgrounds, please limit usage to <code>-secondary</code> or <code>-light</code>.
+  | Chi includes a wide variety of predefined button styles.
 
 .example.-mb--3
   .a-grid.-noGutter
@@ -49,6 +47,9 @@ p.-text
       li
         a(href=`#html`) HTML
   .a-tabs-panel.-active#webcomponent
+    .a-tab__description
+      | For light backgrounds set <code>color</code> attribute value to <code>primary</code> or <code>dark</code>.
+      | For dark backgrounds, please limit usage to <code>secondary</code> or <code>light</code>
     :code(lang="html")
       <!-- For light backgrounds -->
       <chi-button>Base</chi-button>
@@ -59,6 +60,10 @@ p.-text
       <chi-button color="secondary">Secondary</chi-button>
       <chi-button color="light">Light</chi-button>
   .a-tabs-panel#html
+    .a-tab__description
+      | For light backgrounds,
+      | please use base, <code>-primary</code>, or <code>-dark</code> buttons. For
+      | dark backgrounds, please limit usage to <code>-secondary</code> or <code>-light</code>.
     :code(lang="html")
       <!-- For light backgrounds -->
       <button class="a-btn">Base</button>
@@ -70,9 +75,6 @@ p.-text
       <button class="a-btn -light">Light</button>
 
 h3 Outline
-p.-text
-  | To remove a buttons solid background and keep its colored border, apply the class
-  | <code>-outline</code>.
 .example.-mb--3
   .a-grid.-noGutter
     .a-col.-w--12.-w-md--6
@@ -92,6 +94,9 @@ p.-text
       li
         a(href=`#html-outline`) HTML
   .a-tabs-panel.-active#webcomponent-outline
+    .a-tab__description
+      | To remove a buttons solid background and keep it's colored border, set the attribute
+      | <code>variant</code> value to <code>outline</code>.
     :code(lang="html")
       <!-- For light backgrounds -->
       <chi-button color="primary" variant="outline">Primary</chi-button>
@@ -101,6 +106,9 @@ p.-text
       <chi-button color="secondary" variant="outline">Secondary</chi-button>
       <chi-button color="light" variant="outline">Light</chi-button>
   .a-tabs-panel#html-outline
+    .a-tab__description
+      | To remove a buttons solid background and keep its colored border, apply the class
+      | <code>-outline</code>.
     :code(lang="html")
       <!-- For light backgrounds -->
       <button class="a-btn -primary -outline">Primary</button>
@@ -111,9 +119,6 @@ p.-text
       <button class="a-btn -light -outline">Light</button>
 
 h3 Flat
-p.-text
-  | To render a button with a transparent background and border, apply the class
-  | <code>-flat</code>.
 .example.-mb--3
   .a-grid.-noGutter
     .a-col.-w--12.-w-md--6
@@ -133,6 +138,9 @@ p.-text
       li
         a(href=`#html-flat`) HTML
   .a-tabs-panel.-active#webcomponent-flat
+    .a-tab__description
+      | To render a button with a transparent background and border, set the attribute <code>variant</code> value to
+      | <code>flat</code>.
     :code(lang="html")
       <!-- For light backgrounds -->
       <chi-button color="primary" variant="flat">Primary</chi-button>
@@ -142,6 +150,9 @@ p.-text
       <chi-button color="secondary" variant="flat">Secondary</chi-button>
       <chi-button color="light" variant="flat">Light</chi-button>
   .a-tabs-panel#html-flat
+    .a-tab__description
+      | To render a button with a transparent background and border, apply the class
+      | <code>-flat</code>.
     :code(lang="html")
       <!-- For light backgrounds -->
       <button class="a-btn -primary -flat">Primary</button>
@@ -152,7 +163,6 @@ p.-text
       <button class="a-btn -light -flat">Light</button>
 
 h2 Fluid
-p.-text Buttons can be expanded to fill the parent space by applying the class <code>-fluid</code>.
 .example.-mb--3
   .-p--3
     button(class=`a-btn -fluid -mb--2`) Button
@@ -164,6 +174,9 @@ p.-text Buttons can be expanded to fill the parent space by applying the class <
       li
         a(href=`#html-fluid`) HTML
   .a-tabs-panel.-active#webcomponent-fluid
+    .a-tab__description
+      | Buttons can be expanded to fill the parent space by applying the attribute
+      | <code>fluid</code> on the <code>&lt;chi-button&gt;</code> tag.
     :code(lang="html")
       <!-- left aligned content -->
       <chi-button fluid>Button</chi-button>
@@ -171,6 +184,8 @@ p.-text Buttons can be expanded to fill the parent space by applying the class <
       <!-- center aligned content -->
       <chi-button fluid center>Button</chi-button>
   .a-tabs-panel#html-fluid
+    .a-tab__description
+      | Buttons can be expanded to fill the parent space by applying the class <code>-fluid</code>.
     :code(lang="html")
       <!-- left aligned content -->
       <button class="a-btn -fluid">Button</button>
@@ -179,9 +194,6 @@ p.-text Buttons can be expanded to fill the parent space by applying the class <
       <button class="a-btn -fluid -justify-content--center">Button</button>
 
 h2 Icon buttons
-p.-text
-  | For interfaces with limited space, an <code>-icon</code> button can
-  | be used for common actions such as editing, deleting, closing, etc.
 .example.-mb--3
   .-p--3
     chi-button(type='icon', alternative-text="Button action")
@@ -195,6 +207,9 @@ p.-text
       li
         a(href=`#html-icon`) HTML
   .a-tabs-panel.-active#webcomponent-icon
+    .a-tab__description
+      | For interfaces with limited space, an <code>icon</code> button can
+      | be used for common actions such as editing, deleting, closing, etc.
     :code(lang="html")
       <!-- base -->
       <chi-button type="icon" alternative-text="Button action">
@@ -206,6 +221,9 @@ p.-text
         <chi-icon icon="atom"></chi-icon>
       </chi-button>
   .a-tabs-panel#html-icon
+    .a-tab__description
+      | For interfaces with limited space, an <code>-icon</code> button can
+      | be used for common actions such as editing, deleting, closing, etc.
     :code(lang="html")
       <!-- base -->
       <button class="a-btn -icon" aria-label="Button action">
@@ -395,9 +413,7 @@ h3 Close icon button
       </button>
 
 h2 Danger
-p.-text
-  | For special cases, such as styling a destructive action in an
-  | application (e.g. Delete Account), a <code>-danger</code> button may be used.
+  
 .example.-mb--3
   .-p--2
       chi-button.-mr--2(color='danger')= 'Danger'
@@ -410,21 +426,23 @@ p.-text
       li
         a(href='#webfont-danger') HTML
   .a-tabs-panel.-active#webcomponent-danger
+    .a-tab__description
+      | For special cases, such as a button used for a destructive action in an application we might have to set <code>color</code>
+      | attribute to <code>danger</code>.
     :code(lang="html")
       <chi-button color="danger">Danger</chi-button>
       <chi-button color="danger" variant="outline">Danger</chi-button>
       <chi-button color="danger" variant="flat">Danger</chi-button>
   .a-tabs-panel#webfont-danger
+    .a-tab__description
+      | For special cases, such as styling a destructive action in an
+      | application (e.g. Delete Account), a <code>-danger</code> button may be used.
     :code(lang="html")
       <button class="a-btn -danger">Danger</button>
       <button class="a-btn -danger -outline">Danger</button>
       <button class="a-btn -danger -flat">Danger</button>
 
 h2 Sizes
-p.-text
-  | Buttons supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
-  |  <code>-lg</code>, <code>-xl</code>.
-  | The default size is <code>-md</code>.
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
@@ -440,6 +458,10 @@ p.-text
       li
         a(href='#webfont-sizes') HTML
   .a-tabs-panel.-active#webcomponent-sizes
+    .a-tab__description
+      | Buttons supports a full spectrum of sizes: <code>sm</code>, <code>md</code>,
+      |  <code>lg</code>, <code>xl</code>.
+      | The default size is <code>md</code>.
     :code(lang="html")
       <!-- sm -->
       <chi-button size="sm">Button</chi-button>
@@ -465,6 +487,10 @@ p.-text
         <chi-icon icon="atom" />
       </chi-button>
   .a-tabs-panel#webfont-sizes
+    .a-tab__description
+      | Buttons supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+      |  <code>-lg</code>, <code>-xl</code>.
+      | The default size is <code>-md</code>.
     :code(lang="html")
       <!-- sm -->
       <button class="a-btn -sm">Button</button>
@@ -505,7 +531,6 @@ script.
       chi.tab(document.getElementById('examples-default'));
       chi.tab(document.getElementById('examples-outline'));
       chi.tab(document.getElementById('examples-flat'));
-      chi.tab(document.getElementById('examples-pill'));
       chi.tab(document.getElementById('examples-fluid'));
       chi.tab(document.getElementById('examples-icon'));
       chi.tab(document.getElementById('examples-labeled'));
