@@ -1,8 +1,4 @@
 h2 Examples
-p.-text
-  | To display a badge, use the class <code>a-badge</code>.
-  | A contextual class (e.g. <code>-dark</code>) can also be applied to provide alternate styling.
-
 h3 Base
 .example.-mb--3
   .a-grid.-noGutter
@@ -26,6 +22,9 @@ h3 Base
       li
         a(href=`#html-base`) HTML
   .a-tabs-panel.-active#webcomponent-base
+    .a-tab__description
+      | To display a badge, use the tag <code>&lt;chi-badge&gt;</code>.
+      | A contextual color (e.g. <code>dark</code>) can also be set to the <code>color</code> attribute to provide alternate styling.
     :code(lang="html")
       <!-- For light backgrounds -->
       <chi-badge>Base</chi-badge>
@@ -39,6 +38,9 @@ h3 Base
       <chi-badge color="secondary">Secondary</chi-badge>
       <chi-badge color="light">Light</chi-badge>
   .a-tabs-panel#html-base
+    .a-tab__description
+      | To display a badge, use the class <code>a-badge</code>.
+      | A contextual class (e.g. <code>-dark</code>) can also be applied to provide alternate styling.
     :code(lang="html")
       <!-- For light backgrounds -->
       <div class="a-badge">
@@ -92,6 +94,8 @@ h3 Outline
       li
         a(href=`#html-outline`) HTML
   .a-tabs-panel.-active#webcomponent-outline
+    .a-tab__description
+      | To remove solid background and keep its colored border, set the <code>variant</code> attribute value to <code>outline</code>.
     :code(lang="html")
       <!-- For light backgrounds -->
       <chi-badge color="primary" variant="outline">Primary</chi-badge>
@@ -104,6 +108,8 @@ h3 Outline
       <chi-badge color="secondary" variant="outline">Secondary</chi-badge>
       <chi-badge color="light" variant="outline">Light</chi-badge>
   .a-tabs-panel#html-outline
+    .a-tab__description
+      | To remove solid background and keep its colored border, apply the class <code>-outline</code>.
     :code(lang="html")
       <!-- For light backgrounds -->
       <div class="a-badge -primary -outline">
@@ -154,6 +160,8 @@ h3 Flat
       li
         a(href=`#html-flat`) HTML
   .a-tabs-panel.-active#webcomponent-flat
+    .a-tab__description
+      | To render a badge without background and border, set the <code>variant</code> attribute value to <code>flat</code>.
     :code(lang="html")
       <!-- For light backgrounds -->
       <chi-badge color="primary" variant="flat">Primary</chi-badge>
@@ -166,6 +174,8 @@ h3 Flat
       <chi-badge color="secondary" variant="flat">Secondary</chi-badge>
       <chi-badge color="light" variant="flat">Light</chi-badge>
   .a-tabs-panel#html-flat
+    .a-tab__description
+      | To render a badge without background and border, apply the class <code>-flat</code>.
     :code(lang="html")
       <!-- For light backgrounds -->
       <div class="a-badge -primary -flat">
@@ -289,7 +299,6 @@ p.-text Icons can be placed before, after, or on both sides of text.
 
 h2 Additional Sizes
 h3 Small
-p.-text Use the <code>-sm</code> modifier class to render small badges.
 .example.-mb--3
   .-p--2
     chi-badge(size='sm', class='-m--1')= 'Badge'
@@ -303,6 +312,8 @@ p.-text Use the <code>-sm</code> modifier class to render small badges.
       li
         a(href=`#html-sizes-small`) HTML
   .a-tabs-panel.-active#webcomponent-sizes-small
+    .a-tab__description
+      | Set the attribute <code>size</code> to <code>sm</code> to render small badges.
     :code(lang="html")
       <chi-badge size="sm">Badge</chi-badge>
       <chi-badge size="sm" variant="flat">
@@ -310,6 +321,8 @@ p.-text Use the <code>-sm</code> modifier class to render small badges.
         <span>Badge</span>
       </chi-badge>
   .a-tabs-panel#html-sizes-small
+    .a-tab__description
+      | Use the <code>-sm</code> modifier class to render small badges.
     :code(lang="html")
       <div class="a-badge -sm">
         <span>Badge</span>
@@ -322,7 +335,6 @@ p.-text Use the <code>-sm</code> modifier class to render small badges.
       </div>
 
 h3 Extra small
-p.-text Use the <code>-xs</code> modifier class to render even smaller badges.
 .example.-mb--3
   .-p--2
     chi-badge(size='xs', class='-m--1')= 'Badge'
@@ -336,6 +348,8 @@ p.-text Use the <code>-xs</code> modifier class to render even smaller badges.
       li
         a(href=`#html-sizes-extra-small`) HTML
   .a-tabs-panel.-active#webcomponent-sizes-extra-small
+    .a-tab__description
+      | Set the attribute <code>size</code> to <code>xs</code> to render even smaller badges.
     :code(lang="html")
       <chi-badge size="xs">Badge</chi-badge>
       <chi-badge size="xs" variant="flat">
@@ -343,6 +357,8 @@ p.-text Use the <code>-xs</code> modifier class to render even smaller badges.
         <span>Badge</span>
       </chi-badge>
   .a-tabs-panel#html-sizes-extra-small
+    .a-tab__description
+      | Use the <code>-xs</code> modifier class to render even smaller badges.
     :code(lang="html")
       <div class="a-badge -xs">
         <span>Badge</span>
@@ -355,8 +371,6 @@ p.-text Use the <code>-xs</code> modifier class to render even smaller badges.
       </div>
 
 h2 Text Transform
-h3 Uppercase
-p.-text Use the <code>-text--uppercase</code> text utility class to render badges in all uppercase. <code>-text--lowercase</code> and <code>-text--capitalized</code> are also supported.
 .example.-mb--3
   .-p--2
     chi-badge(text-transform='uppercase', class='-m--1')= 'Badge'
@@ -369,11 +383,16 @@ p.-text Use the <code>-text--uppercase</code> text utility class to render badge
       li
         a(href=`#html-text-transformation`) HTML
   .a-tabs-panel.-active#webcomponent-text-transformation
+    .a-tab__description
+      | Set the <code>text-transform</code> attribute to <code>uppercase</code> to render badges in uppercase,
+      | <code>lowercase</code> to render badges in lowercase and <code>capitalized</code> to render badges as capitalized.
     :code(lang="html")
       <chi-badge text-transform="uppercase">Badge</chi-badge>
       <chi-badge text-transform="lowercase">BADGE</chi-badge>
       <chi-badge text-transform="capitalized">badge</chi-badge>
   .a-tabs-panel#html-text-transformation
+    .a-tab__description
+      | Use the <code>-text--uppercase</code> text utility class to render badges in all uppercase. <code>-text--lowercase</code> and <code>-text--capitalized</code> are also supported.
     :code(lang="html")
       <div class="a-badge -text--uppercase">
         <span>Badge</span>
@@ -392,7 +411,6 @@ script.
       chi.tab(document.getElementById('examples-base'));
       chi.tab(document.getElementById('examples-outline'));
       chi.tab(document.getElementById('examples-flat'));
-      chi.tab(document.getElementById('examples-pill'));
       chi.tab(document.getElementById('examples-icon-badges'));
       chi.tab(document.getElementById('examples-sizes-small'));
       chi.tab(document.getElementById('examples-sizes-extra-small'));
