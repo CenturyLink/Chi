@@ -11,10 +11,6 @@ h2 Examples
 h3 Base
 p.-text
   | Popover components are absolutely positioned. For this example we have forced a relative position.
-p.-text
-  span.a-badge.-dark.-sm.-mr1
-    span Tip
-  | Remove the <code>-active</code> class to hide the popover.
 .example.-mb--3
   .-p--3(style="height: 135px;")
     .-position--relative
@@ -27,11 +23,21 @@ p.-text
       li
         a(href=`#html`) HTML
   .a-tabs-panel.-active#webcomponent
+    .a-tab__description
+      span.a-badge.-dark.-sm.-mr1
+        span Tip
+      | Remove the <code>active</code> attribute to hide the popover.
+      br
+      | Use <code>variant="text"</code> attribute to display text content in a <code>&lt;p&gt;</code>
     :code(lang="html")
       <chi-popover title="Popover title" variant="text" active>
         Popover content.
       </chi-popover>
   .a-tabs-panel#html
+    .a-tab__description
+      span.a-badge.-dark.-sm.-mr1
+        span Tip
+      | Remove the <code>-active</code> class to hide the popover.
     :code(lang="html")
       <section class="m-popover -active" aria-label="Popover Title" aria-modal="true" role="dialog">
         <header class="m-popover__header">
@@ -45,14 +51,6 @@ p.-text
 h3 Arrow
 p.-text
   | Popovers support arrows to show the origin where they come from. Arrows can be located anywhere around the Popover.
-  | Use the classes <code>m-popover--top</code>, <code>m-popover--right</code>, <code>m-popover--bottom</code> and
-  | <code>m-popover--left</code> to position the arrow in the proper place.
-p.-text
-  span.a-badge.-dark.-sm.-mr1
-    span Tip
-  | If you use a position engine as Popper.js (as our <a href="../../javascript/popover/">JavaScript solution</a>),
-  | the attribute <code>x-placement</code> should be used instead of these classes. It accepts all the values Popper.js
-  | does. Popper.js sets this attribute automatically, so there is no need to include it on the code.
 ul#a-tabs--positioning.a-tabs
   li.-active
     a(href='#a-tabs--positioning-top') Top
@@ -75,11 +73,23 @@ ul#a-tabs--positioning.a-tabs
         li
           a(href=`#html-position-top`) HTML
     .a-tabs-panel.-active#webcomponent-position-top
+      .a-tab__description
+        | Use the attribute <code>position</code> with the values: <code>top</code>, <code>right</code>, <code>bottom</code> and
+        | <code>left</code> to position the arrow in the proper place.
       :code(lang="html")
         <chi-popover position="top" title="Popover title" variant="text" active arrow>
           Popover content.
         </chi-popover>
     .a-tabs-panel#html-position-top
+      .a-tab__description
+        | Use the classes <code>m-popover--top</code>, <code>m-popover--right</code>, <code>m-popover--bottom</code> and
+        | <code>m-popover--left</code> to position the arrow in the proper place.
+        br 
+        span.a-badge.-dark.-sm.-mr1
+          span Tip
+        | If you use a position engine as Popper.js (as our <a href="../../javascript/popover/">JavaScript solution</a>),
+        | the attribute <code>x-placement</code> should be used instead of these classes. It accepts all the values Popper.js
+        | does. Popper.js sets this attribute automatically, so there is no need to include it on the code.
       :code(lang="html")
         <section class="m-popover m-popover--top -active" aria-label="Popover Title" aria-modal="true" role="dialog">
           <header class="m-popover__header">
@@ -103,11 +113,23 @@ ul#a-tabs--positioning.a-tabs
         li
           a(href=`#html-position-right`) HTML
     .a-tabs-panel.-active#webcomponent-position-right
+      .a-tab__description
+        | Use the attribute <code>position</code> with the values: <code>top</code>, <code>right</code>, <code>bottom</code> and
+        | <code>left</code> to position the arrow in the proper place.
       :code(lang="html")
         <chi-popover position="right" title="Popover title" variant="text" active arrow>
           Popover content.
         </chi-popover>
     .a-tabs-panel#html-position-right
+      .a-tab__description
+        | Use the classes <code>m-popover--top</code>, <code>m-popover--right</code>, <code>m-popover--bottom</code> and
+        | <code>m-popover--left</code> to position the arrow in the proper place.
+        br 
+        span.a-badge.-dark.-sm.-mr1
+          span Tip
+        | If you use a position engine as Popper.js (as our <a href="../../javascript/popover/">JavaScript solution</a>),
+        | the attribute <code>x-placement</code> should be used instead of these classes. It accepts all the values Popper.js
+        | does. Popper.js sets this attribute automatically, so there is no need to include it on the code.
       :code(lang="html")
         <section class="m-popover m-popover--right -active" aria-label="Popover Title" aria-modal="true" role="dialog">
           <header class="m-popover__header">
@@ -131,11 +153,23 @@ ul#a-tabs--positioning.a-tabs
         li
           a(href=`#html-position-bottom`) HTML
     .a-tabs-panel.-active#webcomponent-position-bottom
+      .a-tab__description
+        | Use the attribute <code>position</code> with the values: <code>top</code>, <code>right</code>, <code>bottom</code> and
+        | <code>left</code> to position the arrow in the proper place.
       :code(lang="html")
         <chi-popover position="bottom" title="Popover title" variant="text" active arrow>
           Popover content.
         </chi-popover>
     .a-tabs-panel#html-position-bottom
+      .a-tab__description
+        | Use the classes <code>m-popover--top</code>, <code>m-popover--right</code>, <code>m-popover--bottom</code> and
+        | <code>m-popover--left</code> to position the arrow in the proper place.
+        br 
+        span.a-badge.-dark.-sm.-mr1
+          span Tip
+        | If you use a position engine as Popper.js (as our <a href="../../javascript/popover/">JavaScript solution</a>),
+        | the attribute <code>x-placement</code> should be used instead of these classes. It accepts all the values Popper.js
+        | does. Popper.js sets this attribute automatically, so there is no need to include it on the code.
       :code(lang="html")
         <section class="m-popover m-popover--bottom -active" aria-label="Popover Title" aria-modal="true" role="dialog">
           <header class="m-popover__header">
@@ -159,11 +193,23 @@ ul#a-tabs--positioning.a-tabs
         li
           a(href=`#html-position-left`) HTML
     .a-tabs-panel.-active#webcomponent-position-left
+      .a-tab__description
+        | Use the attribute <code>position</code> with the values: <code>top</code>, <code>right</code>, <code>bottom</code> and
+        | <code>left</code> to position the arrow in the proper place.
       :code(lang="html")
         <chi-popover position="left" title="Popover title" variant="text" active arrow>
           Popover content.
         </chi-popover>
     .a-tabs-panel#html-position-left
+      .a-tab__description
+        | Use the classes <code>m-popover--top</code>, <code>m-popover--right</code>, <code>m-popover--bottom</code> and
+        | <code>m-popover--left</code> to position the arrow in the proper place.
+        br 
+        span.a-badge.-dark.-sm.-mr1
+          span Tip
+        | If you use a position engine as Popper.js (as our <a href="../../javascript/popover/">JavaScript solution</a>),
+        | the attribute <code>x-placement</code> should be used instead of these classes. It accepts all the values Popper.js
+        | does. Popper.js sets this attribute automatically, so there is no need to include it on the code.
       :code(lang="html")
         <section class="m-popover m-popover--left -active" aria-label="Popover Title" aria-modal="true" role="dialog">
           <header class="m-popover__header">
@@ -178,18 +224,7 @@ ul#a-tabs--positioning.a-tabs
 h3 Reference element
 p.-text
   | A reference element can be setup for advanced positioning.
-  | The popover will be positioned relative to this
-  | element. Use the <code>reference</code> attribute with a
-  | CSS selector to the reference element.
-p.-text
-  span.a-badge.-dark.-sm.-mr1
-    span Tip 1
-  | This feature makes use of the Popper.js position engine.
-p.-text
-  span.a-badge.-dark.-sm.-mr1
-    span Tip 2
-  | This example uses extra JavaScript. See <a href="#show-hide-toggle">Show, hide & toggle section</a>.
-
+  | The popover will be positioned relative to this element.
 .example.-mb--3
   .-p--3
     button#example-3-button.a-btn Click me!
@@ -204,6 +239,13 @@ p.-text
       li
         a(href=`#js-reference-data-content`) JS + data-popover-content
   .a-tabs-panel.-active#webcomponent-reference
+    .a-tab__description
+      | Use the <code>reference</code> attribute with a
+      | CSS selector to the reference element.
+      br
+      span.a-badge.-dark.-sm.-mr1
+        span Tip 1
+      | This feature makes use of the Popper.js position engine.
     :code(lang="html")
       <button class="a-btn" id="example-3-button">Click me!</button>
 
@@ -431,10 +473,6 @@ p.-text
   |
   a(href=`../overview/#regarding-html-attributes-and-dom-properties`) HTML attributes and DOM properties
   | .
-p.-text
-  | Modify the <code>active</code> attribute or property to make the popover show or hide. The <code>chi-popover</code>
-  | element also has three public methods to interact with it: <code>show()</code>, <code>hide()</code>,
-  | <code>toggle()</code>.
 
 .example.-mb--3
   .-p--3
@@ -453,6 +491,10 @@ p.-text
       li
         a(href=`#html-interaction`) HTML + JS
   .a-tabs-panel.-active#webcomponent-interaction
+    .a-tab__description
+      | Modify the <code>active</code> attribute or property to make the popover show or hide. The <code>chi-popover</code>
+      | element also has three public methods to interact with it: <code>show()</code>, <code>hide()</code>,
+      | <code>toggle()</code>.
     :code(lang="html")
       <button class="a-btn" id="example-5-button-show">Show</button>
       <button class="a-btn" id="example-5-button-hide">Hide</button>
@@ -485,6 +527,9 @@ p.-text
         });
       </script>
   .a-tabs-panel#html-interaction
+    .a-tab__description
+      <code>.show(), .hide(), .toggle()</code>
+      | Use this methods to control popover visibility.
     :code(lang="html")
       <button id='show-popover-3' class="a-btn">Show</button>
       <button id='hide-popover-3' class="a-btn">Hide</button>
@@ -511,8 +556,7 @@ p.-text
 
 h3 Auto hide
 p.-text
-  | Popovers automatically hide when clicking outside of it or when pressing the ESC key. You can prevent this behavior
-  | with the <code>prevent-auto-hide</code> attribute.
+  | Popovers automatically hide when clicking outside of it or when pressing the ESC key.
 
 ul#a-tabs-e6.a-tabs
   li.-active
@@ -556,11 +600,17 @@ ul#a-tabs-e6.a-tabs
         li
           a(href=`#html-autohide-false`) HTML + JS
     .a-tabs-panel.-active#webcomponent-autohide-false
+      .a-tab__description
+        | You can prevent automatic hiding behavior
+        | with the <code>prevent-auto-hide</code> attribute.
       :code(lang="html")
         <chi-popover id="example-6-popover-no-auto-hide-popover" position="top" title="Popover title" variant="text" arrow prevent-auto-hide reference="#example-6-no-auto-hide-button">
           Click outside. I will stay!
         </chi-popover>
     .a-tabs-panel#html-autohide-false
+      .a-tab__description
+        | You can prevent automatic hiding behavior by
+        | Setting <code>preventAutoHide</code> to <code>true</code>
       :code(lang="html")
         <button id='popover-6' class="a-btn" data-popover-content='<header class="m-popover__header"><h2 class="m-popover__title">Popover title</h2></header><div class="m-popover__content"><p class="m-popover__text">Click outside. I will stay!</p></div>'>No auto hide</button>
         <script>chi.popover(document.getElementById('popover-6'),
