@@ -1,1 +1,175 @@
-h2 Properties
+h2 Web component
+:stencilDoc(name='chi-popover')
+
+h2 JavaScript options
+p.-text This component accepts options to configure its behavior.
+
+section.a-table.a-table__options.-bordered.-my--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Option
+          th
+            div Default
+          th
+            div Description
+      tbody
+        tr
+          td
+            div
+              code= 'animate'
+          td
+            div
+              code= 'true'
+          td
+            div
+              | Enables animation on popover display and hide.
+        tr
+          td
+            div
+              code= 'content'
+          td
+            div
+              code= 'null'
+          td
+            div
+              | Lets the developer include the popover content programmatically on the creation phase.
+        tr
+          td
+            div
+              code= 'position'
+          td
+            div
+              code 'top'
+          td
+            div
+              | Where the popover will be located by default. If there is no free space in that position, the popover will try
+              | to flip the position to the opposite side. <code>data-position</code> takes precedence over this configuration
+              | option.
+        tr
+          td
+            div
+              code= 'arrow'
+          td
+            div
+              code= 'true'
+          td
+            div
+              | If set to true, an arrow will appear between the popover and the trigger element.
+        tr
+          td
+            div
+              code= 'parent'
+          td
+            div
+              code= 'null'
+          td
+            div
+              | If an element is provided as parent, the popover will be attached visually to that element. If not, the
+              | popover will be attached to the trigger used in instantiation.
+        tr
+          td
+            div
+              code= 'classes'
+          td
+            div
+              code= '[]'
+          td
+            div
+              | Lets the developer add any classes to the popover element in the creation phase.
+        tr
+          td
+            div
+              code= 'trigger'
+          td
+            div
+              code 'click'
+          td
+            div
+              | Available options are <code>click</code> or <code>manual</code>. Use click to attach the toggle action
+              | to the trigger element, and manual for develop a custom solution.
+        tr
+          td
+            div
+              code= 'target'
+          td
+            div
+              code 'null'
+          td
+            div
+              | If you specify a target, the Popover will be build over that Element. You can specify the xpath selector
+              | of the element or the element itself.
+        tr
+          td
+            div
+              code= 'preventAutoHide'
+          td
+            div
+              code= 'false'
+          td
+            div
+              | Set <code>preventAutoHide</code> to <code>true</code> to prevent hidding the popover when clicking
+              | outside the popover.
+
+h2 Methods
+h3 .setContent()
+p.-text
+  | Use this method to change the content of the popover. It discards any previously attached content, so any
+  | resources attached to the content should be removed to prevent memory leaks. This method accepts a string or an
+  | HTML DOM Element as a parameter.
+.example.-mb--3
+  .-p--3
+    button#popover-2(data-popover-content='<div class="m-popover__content">Foo</div>').a-btn.-mr--2 Popover
+  :code(lang='html')
+    <button id='popover-2' class="a-btn" data-popover-content='<div class="m-popover__content">Foo</div>'>Popover</button>
+    <script>
+      var popover = chi.popover(document.getElementById('popover-2'));
+      popover.setContent('<div class="m-popover__content">Bar</div>');
+    </script>
+
+h2 Events
+h3 chi.popover.show
+p.-text
+  | The element the popover is attached to (usually a button), dispatches this event when the popover is to be
+  | <strong>shown</strong>.
+h3 chi.popover.hide
+p.-text
+  | The element the popover is attached to (usually a button), dispatches this event when the popover is to be
+  | <strong>hidden</strong>.
+
+h3 Preventing memory leaks
+p.-text
+  | Popover components have a dispose function to free all resources attached to the element, such as event listeners
+  | and object data. You must call this method when you want to remove the component.
+:code(lang="javascript")
+  var elem = document.getElementById('popover');
+  var popover = chi.popover(elem);
+  // do stuff
+  popover.dispose();
+
+p.-text
+  span.a-badge.-dark.-sm.-mr1
+    span Tip
+  | It is safe to call the <code>popover</code> method more than once, as it will return any previously created popover component
+  | associated to the trigger.
+:code(lang="javascript")
+  var elem = document.getElementById('popover-1');
+  var popover = chi.popover(elem);
+  var elem2 = document.getElementById('popover-1');
+  var popover2 = chi.popover(elem2);
+  popover === popover2; // returns true
+
+  popover.dispose(); // Only have to do it once.
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+
+      var popover2 = chi.popover(document.getElementById('popover-2'));
+      popover2.setContent('<div class="-px--2 -py--1">Bar</div>');
+
+    }
+  );
