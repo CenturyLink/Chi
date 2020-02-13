@@ -7,9 +7,6 @@ script(nomodule='' src='../../../js/ce/ux-chi-ce/ux-chi-ce.js')
     p.m-alert__text This component requires Javascript
 
 h2 Examples
-p.-text
-  | To render a number input, apply the classes <code>a-input</code> to an <code>input type="number"</code>.
-  | For proper styling, number inputs must be wrapped in an <code>m-input__wrapper</code> div with two buttons.
 
 h3 Base
 
@@ -24,9 +21,15 @@ h3 Base
       li
         a(href=`#html`) HTML + JS
   .a-tabs-panel.-active#webcomponent
+    .a-tab__description
+      | To render a number input, just place a <code>chi-number-input</code> tag and set an initial value (optional). If
+      | an initial value is not provided, <code>0</code> will be taken as default.
     :code(lang="html")
       <chi-number-input></chi-number-input>
   .a-tabs-panel#html
+    .a-tab__description
+      | To render a number input, apply the classes <code>a-input</code> to an <code>input type="number"</code>.
+      | For proper styling, number inputs must be wrapped in an <code>m-input__wrapper</code> div with two buttons.
     :code(lang="html")
       <div class="m-form__item -row">
         <div class="m-input__wrapper">
@@ -63,10 +66,6 @@ h3 Disabled
       </div>
 
 h3 Sizes
-p.-text
-  | Number inputs support a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
-  |  <code>-lg</code>, <code>-xl</code>.
-  | The default size is <code>-md</code>.
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
@@ -79,12 +78,20 @@ p.-text
       li
         a(href=`#html-sizes`) HTML
   .a-tabs-panel.-active#webcomponent-sizes
+    .a-tab__description
+      | Number inputs support a full spectrum of sizes: <code>sm</code>, <code>md</code>,
+      |  <code>lg</code>, <code>xl</code>.
+      | The default size is <code>md</code>.
     :code(lang="html")
       <chi-number-input size="sm"></chi-number-input>
       <chi-number-input></chi-number-input>
       <chi-number-input size="lg"></chi-number-input>
       <chi-number-input size="xl"></chi-number-input>
   .a-tabs-panel#html-sizes
+    .a-tab__description
+      | Number inputs support a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+      |  <code>-lg</code>, <code>-xl</code>.
+      | The default size is <code>-md</code>.
     :code(lang="html")
       <div class="m-form__item -row">
         <div class="m-input__wrapper">
@@ -178,10 +185,6 @@ h3 Disabled
       </div>
 
 h3 Sizes
-p.-text
-  | Expanded number inputs support a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
-  |  <code>-lg</code>, <code>-xl</code>.
-  | The default size is <code>-md</code>.
 .example.-mb--3
   .-p--3.-d--flex.-justify-content--start.-align-items--center
     each size in ['sm', 'md', 'lg', 'xl']
@@ -193,12 +196,20 @@ p.-text
       li
         a(href=`#html-expanded-sizes`) HTML
   .a-tabs-panel.-active#webcomponent-expanded-sizes
+    .a-tab__description
+      | Expanded number inputs support a full spectrum of sizes: <code>sm</code>, <code>md</code>,
+      |  <code>lg</code>, <code>xl</code>.
+      | The default size is <code>md</code>.
     :code(lang="html")
       <chi-number-input expanded size="sm"></chi-number-input>
       <chi-number-input expanded></chi-number-input>
       <chi-number-input expanded size="lg"></chi-number-input>
       <chi-number-input expanded size="xl"></chi-number-input>
   .a-tabs-panel#html-expanded-sizes
+    .a-tab__description
+      | Expanded number inputs support a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+      |  <code>-lg</code>, <code>-xl</code>.
+      | The default size is <code>-md</code>.
     :code(lang="html")
       <div class="m-inputNumber -sm">
         <input class="a-input -sm" type="number" value="0" aria-label="Input Label">
