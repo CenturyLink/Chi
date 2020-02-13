@@ -2,10 +2,8 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 h2 Examples
-p.-text To render a spinner, use the class <code>a-spinner</code>.
 
 h2 Backdrop
-p.-text Wrap spinners in <code>m-backdrop</code> to overlay content similar to a modal, and add <code>-center</code> class to position it in the middle of the page.
 h3 Base
 .example.-mb--3
   .-p--6(style="position:relative;height:25rem;")
@@ -17,9 +15,17 @@ h3 Base
       li
         a(href=`#html`) HTML
   .a-tabs-panel.-active#webcomponent
+    .a-tab__description
+      | To render a spinner, use the tag <code>&lt;chi-spinner&gt;</code>.
+      br
+      | An optional backdrop can be added to focus the user's attention on a spinner. To set a backdrop, use the <code>backdrop</code> attribute.
     :code(lang="html")
       <chi-spinner color="light" backdrop></chi-spinner>
   .a-tabs-panel#html
+    .a-tab__description
+      | To render a spinner, use the class <code>a-spinner</code>.
+      br
+      | Wrap spinners in <code>m-backdrop</code> to overlay content similar to a modal, and add <code>-center</code> class to position it in the middle of the page.
     :code(lang="html")
       <div class="m-backdrop -center">
         <div class="m-backdrop__wrapper">
@@ -31,7 +37,6 @@ h3 Base
       </div>
 
 h3 Inverse
-p.-text Apply the class <code>-inverse</code> to render spinners on light backgrounds.
 .example.-mb--3
   .-p--6(style="position:relative;height:25rem;")
     chi-spinner(color='primary', backdrop='inverse')
@@ -42,9 +47,13 @@ p.-text Apply the class <code>-inverse</code> to render spinners on light backgr
       li
         a(href=`#html-inverse`) HTML
   .a-tabs-panel.-active#webcomponent-inverse
+    .a-tab__description
+      | Set the <code>backdrop</code> value to <code>inverse</code> to render spinners on light backgrounds.
     :code(lang="html")
       <chi-spinner color="primary" backdrop="inverse"></chi-spinner>
   .a-tabs-panel#html-inverse
+    .a-tab__description
+      | Apply the class <code>-inverse</code> to render spinners on light backgrounds.
     :code(lang="html")
       <div class="m-backdrop -center -inverse">
         <div class="m-backdrop__wrapper">
@@ -183,11 +192,6 @@ h3 Spinners in Text Inputs
     </div>
 
 h2 Spinner Sizes
-p.-text
-  | By default, spinners render at 16x16px (<code>-sm</code>).
-p.-text
-  | Apply size classes to render spinners larger or smaller: <code>-xs</code>,
-  | <code>-sm</code>, <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
 .example.-mb--3
   .-p--3
     .a-grid.-align-items--end
@@ -202,6 +206,10 @@ p.-text
       li
         a(href=`#html-sizes`) HTML
   .a-tabs-panel.-active#webcomponent-sizes
+    .a-tab__description
+      | By default, spinners are rendered at 16x16px (<code>sm</code>).
+      | Set <code>size</code> attribute to render spinners larger or smaller: <code>xs</code>,
+      | <code>sm</code>, <code>sm--2</code>, <code>sm--3</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
     :code(lang="html")
       <!-- xs : 12x12px -->
       <chi-spinner size="xs"></chi-spinner>
@@ -220,6 +228,10 @@ p.-text
       <!-- xxl : 128x128px -->
       <chi-spinner size="xxl"></chi-spinner>
   .a-tabs-panel#html-sizes
+    .a-tab__description
+      | By default, spinners render at 16x16px (<code>-sm</code>).
+      | Apply size classes to render spinners larger or smaller: <code>-xs</code>,
+      | <code>-sm</code>, <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
     :code(lang="html")
       <!-- -xs : 12x12px -->
       <svg class="a-spinner -xs" viewBox="0 0 66 66">
@@ -264,9 +276,6 @@ p.-text
       </svg>
 
 h2 Spinner Colors
-p.-text
-  | Use <a href="../../utilities/text">text utilities</a> such as <code>-text--primary</code>
-  | and <code>-text--muted</code> to change the color of any spinner.
 .example.-mb--3
   .a-grid.-noGutter
     .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap
@@ -288,6 +297,8 @@ p.-text
       li
         a(href=`#html-colors`) HTML
   .a-tabs-panel.-active#webcomponent-colors
+    .a-tab__description
+      | To change the color of a spinner set the value to <code>color</code> attribute.
     :code(lang="html")
       <!-- For light backgrounds -->
       <chi-spinner color="primary"></chi-spinner>
@@ -299,6 +310,9 @@ p.-text
       <chi-spinner color="secondary"></chi-spinner>
       <chi-spinner color="light"></chi-spinner>
   .a-tabs-panel#html-colors
+    .a-tab__description
+      | Use <a href="../../utilities/text">text utilities</a> such as <code>-text--primary</code>
+      | and <code>-text--muted</code> to change the color of any spinner.
     :code(lang="html")
       <!-- For light backgrounds -->
       <svg class="a-spinner -text--primary" viewBox="0 0 66 66">
