@@ -102,8 +102,6 @@ h3 Stacked
       </fieldset>
 
 h3 Inline
-p.-text
-  | Apply the class <code>-inline</code> to <code>m-form__item</code> to display switches inline.
 .example.-mb--3
   .-p--3.-d--flex
     .m-form__item.-inline
@@ -117,6 +115,8 @@ p.-text
       li
         a(href=`#html-inline`) HTML
   .a-tabs-panel.-active#webcomponent-inline
+    .a-tab__description
+      | Apply the <code>-inline</code> class to <code>m-form__item</code> for displaying toggle switches inline.
     :code(lang="html")
       <div class="m-form__item -inline">
         <chi-switch id="toggle5" label="Label"></chi-switch>
@@ -125,6 +125,8 @@ p.-text
         <chi-switch id="toggle6" label="Label"></chi-switch>
       </div>
   .a-tabs-panel#html-inline
+    .a-tab__description
+      | Apply the class <code>-inline</code> to <code>m-form__item</code> to display switches inline.
     :code(lang="html")
       <fieldset>
         <legend class="a-label">Configure options</legend>
