@@ -57,12 +57,12 @@ p.-text
   .-p--3
     .a-card.-empty(style="width:20rem;")
       .a-card__content
-        i.a-icon.-md.-text--muted(class ='icon-circle-plus-outline')
+        i.a-icon.-md.a-card__icon(class ='icon-circle-plus-outline')
         p.-text.-m--0 Add Product
   :code(lang="html")
     <div class="a-card -empty">
       <div class="a-card__content">
-        <i class="a-icon icon-circle-plus-outline -md -text--muted"></i>
+        <i class="a-icon a-card__icon icon-circle-plus-outline -md"></i>
         <p class="-text -m--0">Add Product</p>
       </div>
     </div>
@@ -110,14 +110,14 @@ h3 Titled with content and icon
       .a-card
         .a-card__content.-d--flex.-flex--column.-justify-content--center.-align-items--center.-text--center
           .a-card__title Title
-          i.a-icon.-sm--3.-text--grey(class="icon-atom")
+          i.a-icon.a-card__icon.-sm--3(class="icon-atom")
           p.-text--small.-mb--0.-mt--1 4 Running
           p.-text--smaller.-m--0.-text--grey 6 Pending
     .a-col.-w--6.-w-md--4.-w-lg--3
       .a-card.-active
         .a-card__content.-d--flex.-flex--column.-justify-content--center.-align-items--center.-text--center
           .a-card__title Title
-          i.a-icon.-sm--3.-text--grey(class="icon-atom")
+          i.a-icon.a-card__icon.-sm--3.a-card__icon(class="icon-atom")
           p.-text--small.-mb--0.-mt--1 4 Running
           p.-text--smaller.-m--0.-text--grey 6 Pending
   :code(lang="html")
@@ -125,7 +125,7 @@ h3 Titled with content and icon
     <div class="a-card">
       <div class="a-card__content -d--flex -flex--column -justify-content--center -align-items--center -text--center">
         <div class="a-card__title">Title</div>
-        <i class="a-icon icon-atom -sm--3 -text--grey"></i>
+        <i class="a-icon a-card__icon icon-atom -sm--3"></i>
         <p class="-text--small -mb--0 -mt--1">4 Running</p>
         <p class="-text--smaller -m--0 -text--grey">6 Pending</p>
       </div>
@@ -134,7 +134,7 @@ h3 Titled with content and icon
     <div class="a-card -active">
       <div class="a-card__content -d--flex -flex--column -justify-content--center -align-items--center -text--center">
         <div class="a-card__title">Title</div>
-        <i class="a-icon icon-atom -sm--3 -text--grey"></i>
+        <i class="a-icon a-card__icon icon-atom -sm--3"></i>
         <p class="-text--small -mb--0 -mt--1">4 Running</p>
         <p class="-text--smaller -m--0 -text--grey">6 Pending</p>
       </div>
