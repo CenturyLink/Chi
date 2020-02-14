@@ -48,7 +48,8 @@ if (process.env.PRODUCTION) {
     exclude: [
       /node_modules\//
     ]
-  })];
+  }),
+  new webpack.BannerPlugin(copyright)];
 } else {
 //  webpackConfig.devtool = 'eval';
   webpackConfig.plugins = [new webpack.SourceMapDevToolPlugin({

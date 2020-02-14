@@ -6,11 +6,15 @@ import concat from 'gulp-concat';
 import plumber from 'gulp-plumber';
 import postcss from 'gulp-postcss';
 import svgSprite from 'gulp-svg-sprite';
-
+import header from 'gulp-header';
 
 const componentsFolder = path.join(__dirname, '..', 'src', 'chi', 'components');
 const utilitiesFolder = path.join(__dirname, '..', 'src', 'chi', 'utilities');
 const iconsFolder = path.join(__dirname, '..', 'src', 'chi', 'assets', 'icons');
+const copyright = `/* Chi and its documentation are released under the terms of the MIT license.
+In addition, Chi uses several 3rd-party libraries,
+a list of which can be viewed in the package.json file.
+Please review each of their license and user agreements, as well. */`;
 
 const foundationFolders = [
   'fonts',
@@ -64,6 +68,7 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
         zindex: false
       })
     ]))
+    .pipe(header(`${copyright} \n`))
     .pipe(concat('chi.css'))
     .pipe(gulp.dest(dest));
 }
@@ -104,6 +109,7 @@ export function copyAssets({ names = ['all'], dest = 'dist' }) {
       .concat(utilitiesFolder)
       .map(folder => `${path.join(folder, '**', '!(*.scss)')}`)
   )
+    .pipe(header(`${copyright} \n`))
     .pipe(gulp.dest(dest));
 }
 
