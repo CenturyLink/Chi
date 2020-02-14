@@ -55,7 +55,7 @@ export const serveAndWatch = gulp.parallel(
     )
   ),
   () => gulp.watch(
-    'src/website/views/**/*',
+    ['src/website/views/**/*', 'src/website/layouts/**/*'],
     watchOptions,
     gulp.series(
       'serve:notify:start',
