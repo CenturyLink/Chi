@@ -27,7 +27,7 @@ function fillDropdown() {
     drop.removeChild(drop.firstChild);
   }
 
-  for (var version in versions) {
+  for (var version in versions.slice(0, 4)) {
     var versionAnchor = document.createElement('a');
     
     versionAnchor.setAttribute("href", "https://assets.ctl.io/chi/"+versions[version]);
@@ -67,7 +67,7 @@ function checkChiCurrentVersion(currentVersion) {
     fillDropdown();
     newVersionMessage.setAttribute("class", "m-alert -banner -center -info -w--100");
     newVersionMessage.setAttribute("role", "alert");
-    newVersionMessage.innerHTML = `<i class="a-icon m-alert__icon icon-circle-info -text--info"></i><div class="m-alert__content"><p class="m-alert__text">A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/">Learn more &#8250;</a></p>`;
+    newVersionMessage.innerHTML = `<i class="a-icon m-alert__icon icon-circle-info -text--info"></i><div class="m-alert__content"><p class="m-alert__text">A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/${currentVersion}">Learn more &#8250;</a></p>`;
     while (chiVersionCheckSelector.childNodes.length > 0) {
       chiVersionCheckSelector.removeChild(chiVersionCheckSelector.firstChild);
     }
