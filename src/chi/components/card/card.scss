@@ -25,6 +25,10 @@
       line-height: $line-height-large;
       margin: 0 0 0.5rem 0;
     }
+
+    .a-card__icon {
+      color: $grey-color;
+    }
   }
 
   &__header {
@@ -134,9 +138,14 @@
     border: 0.0625rem solid $focus-color;
     box-shadow: 0 0 0 0.0625rem $focus-color;
 
-    .a-card__title,
-    .a-icon {
+    .a-card__title {
       color: $primary-color !important;
+    }
+
+    .a-icon {
+      &.a-card__icon {
+        color: $primary-color;
+      }
     }
 
     &--alt {
@@ -156,6 +165,7 @@
       justify-content: center;
 
       & .a-icon {
+        color: $muted-color;
         margin: 0.5rem 0;
       }
     }
