@@ -190,10 +190,45 @@ class Sidenav extends Component {
 
   removeUnselected() {
     const currentlyActiveMenuItem = this.getActiveMenuItem();
-    const unselectedMenuItem = currentlyActiveMenuItem.querySelector(`a.${MENU_ITEM_UNSELECTED_CLASS}`);
 
-    if (unselectedMenuItem) {
-      Util.removeClass(unselectedMenuItem, MENU_ITEM_UNSELECTED_CLASS);
+    if (currentlyActiveMenuItem) {
+      const unselectedMenuItem = currentlyActiveMenuItem.querySelector(`a.${MENU_ITEM_UNSELECTED_CLASS}`);
+
+      if (unselectedMenuItem) {
+        Util.removeClass(unselectedMenuItem, MENU_ITEM_UNSELECTED_CLASS);
+      }
+    }
+  }
+
+  resetActiveDrawerMenuItem() {
+    const drawerActiveMenuItem = this.getDrawerActiveMenuItem();
+    const currentlyActiveDrawerItemSubtab = this._elem
+      .querySelector(`.m-drawer .${DRAWER_ITEM_LIST_CLASS} ul li a.${chi.classes.ACTIVE}`);
+
+    if (drawerActiveMenuItem) {
+      const drawerActiveMenuItemList = drawerActiveMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
+
+      if (drawerActiveMenuItemList &&
+        !drawerActiveMenuItemList.querySelector(`ul li a.${chi.classes.ACTIVE}`)) {
+        Util.removeClass(drawerActiveMenuItem, chi.classes.ACTIVE);
+        drawerActiveMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`).style.removeProperty('height');
+
+        if (Util.hasClass(drawerActiveMenuItem, DRAWER_ITEM_LIST_EXPANDED)) {
+          Util.removeClass(drawerActiveMenuItem, DRAWER_ITEM_LIST_EXPANDED);
+        }
+      }
+    }
+
+    if (currentlyActiveDrawerItemSubtab) {
+      let drawerMenuItemToActivate;
+
+      for (let cur = currentlyActiveDrawerItemSubtab;
+        cur && !Util.hasClass(cur, DRAWER_LINKLIST_CLASS);
+        cur = cur.parentNode) {
+        drawerMenuItemToActivate = cur;
+      }
+      Util.addClass(drawerMenuItemToActivate, chi.classes.ACTIVE);
+      Util.addClass(drawerMenuItemToActivate, DRAWER_ITEM_LIST_EXPANDED);
     }
   }
 
@@ -257,6 +292,7 @@ class Sidenav extends Component {
       drawer.hide();
     });
     this.removeUnselected();
+    this.resetActiveDrawerMenuItem();
   }
 
   _isLinkAMenuItemActivator(anchorElem) {
@@ -301,7 +337,19 @@ class Sidenav extends Component {
             activator.parentNode.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`)) {
             e.preventDefault();
           }
-          this.toggleDrawerItemList(drawerMenuItem);
+
+          if (Util.hasClass(activator, DRAWER_ITEM_TAB_CLASS)) {
+            const currentlyActiveDrawerItemSubtab = this._elem
+              .querySelector(`.m-drawer .${DRAWER_ITEM_LIST_CLASS} ul li a.${chi.classes.ACTIVE}`);
+
+            Util.addClass(activator, chi.classes.ACTIVE);
+
+            if (currentlyActiveDrawerItemSubtab) {
+              Util.removeClass(currentlyActiveDrawerItemSubtab, chi.classes.ACTIVE);
+            }
+          } else {
+            this.toggleDrawerItemList(drawerMenuItem);
+          }
         }
 
         if (!drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) ||
@@ -327,10 +375,12 @@ class Sidenav extends Component {
       if (Util.hasClass(this._elem, '-global-nav')) {
         const activeItemLink = menuItemLink.parentNode.parentNode.querySelector(`li.${chi.classes.ACTIVE} a`);
 
-        if (!Util.hasClass(menuItemLink.parentNode, chi.classes.ACTIVE)) {
-          Util.addClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
-        } else if (Util.hasClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS)) {
-          Util.removeClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
+        if (activeItemLink) {
+          if (!Util.hasClass(menuItemLink.parentNode, chi.classes.ACTIVE)) {
+            Util.addClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
+          } else if (Util.hasClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS)) {
+            Util.removeClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
+          }
         }
       }
     }
@@ -342,6 +392,7 @@ class Sidenav extends Component {
     if (allDrawersClosed) {
       this.removeUnselected();
     }
+    this.resetActiveDrawerMenuItem();
   }
 
   _getMenuItemLink(drawerElem) {

@@ -272,7 +272,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                       .m-sidenav__drawer-item-list(id=`drawer-item-list-${val1}-${val2}`)
                         ul.a-tabs.-vertical.-sm
                           li
-                            a(class='a-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab A
+                            a(class=`a-sidenav__drawer-item-tab ${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`, href='#exampleHashTarget') Sub tab A
                           li
                             a(class='a-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
                           li
@@ -363,7 +363,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   <div class="m-sidenav__drawer-item-list" id="drawer-item-list-1-B">
                     <ul class="a-tabs -vertical -sm">
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                        <a class="a-sidenav__drawer-item-tab -active" href="#exampleHashTarget">
                           Sub tab A
                         </a>
                       </li>
