@@ -33,6 +33,9 @@ function fillDropdown() {
     versionAnchor.setAttribute("href", "https://assets.ctl.io/chi/"+versions[version]);
     versionAnchor.setAttribute("class", "m-dropdown__menu-item");
     versionAnchor.innerText = "v" + versions[version];
+    if (window.chiCurrentVersion === versions[version]) {
+      versionAnchor.classList.add('-active');
+    }
     drop.appendChild(versionAnchor);
   }
 }
