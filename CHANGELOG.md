@@ -1,5 +1,16 @@
 # CHANGELOG
 
+### 1.4.1 (February 19, 2020)
+
+* Added background color utility for CenturyLink Dark Blue color swatch.
+* Added a-card__icon for main icon in Cards.
+* Added supported colors to icon web component.
+* Added copyright text to compiled chi.js file.
+* Added copyright text to compiled chi-icons.js and chi.css files.
+* Added Gulp watch for website layouts.
+* Fixed versioning banner redirection and reduced number of versions available in dropdown.
+
+
 ### 1.4.0 (February 5, 2020)
 
 * Added Enterprise Global Navigation example to Sidenav component.
