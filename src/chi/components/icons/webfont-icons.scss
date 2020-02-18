@@ -24,6 +24,26 @@ i {
   }
 }
 
+.icon-chart-line::before {
+  content: '\e9b5';
+}
+
+.icon-circle-user::before {
+  content: '\e9b6';
+}
+
+.icon-file-invoice::before {
+  content: '\e9b7';
+}
+
+.icon-inbox::before {
+  content: '\e9b8';
+}
+
+.icon-wrench::before {
+  content: '\e9b9';
+}
+
 .icon-external-link::before {
   content: '\e9b4';
 }
