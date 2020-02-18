@@ -102,6 +102,11 @@ class Sidenav extends Component {
     );
   }
 
+  getActiveDrawerItemSubtab() {
+    return this._elem
+    .querySelector(`.m-drawer .${DRAWER_ITEM_LIST_CLASS} ul li a.${chi.classes.ACTIVE}`);
+  }
+
   getDrawerActiveMenuItem() {
     return this._elem.querySelector(
       'ul.' + DRAWER_LINKLIST_CLASS + '>li.' + chi.classes.ACTIVE
@@ -177,8 +182,14 @@ class Sidenav extends Component {
 
     if (currentlyActiveMenuItem) {
       const currentlyActiveItemList = currentlyActiveMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
+      const currentlyActiveDrawerItemSubtab = this.getActiveDrawerItemSubtab();
 
       Util.removeClass(currentlyActiveMenuItem, chi.classes.ACTIVE);
+      if (!menuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`)) {
+        if (currentlyActiveDrawerItemSubtab) {
+          Util.removeClass(currentlyActiveDrawerItemSubtab, chi.classes.ACTIVE);
+        }
+      }
 
       if (currentlyActiveItemList) {
         Util.removeClass(currentlyActiveMenuItem, DRAWER_ITEM_LIST_EXPANDED);
@@ -202,8 +213,7 @@ class Sidenav extends Component {
 
   resetActiveDrawerMenuItem() {
     const drawerActiveMenuItem = this.getDrawerActiveMenuItem();
-    const currentlyActiveDrawerItemSubtab = this._elem
-      .querySelector(`.m-drawer .${DRAWER_ITEM_LIST_CLASS} ul li a.${chi.classes.ACTIVE}`);
+    const currentlyActiveDrawerItemSubtab = this.getActiveDrawerItemSubtab();
 
     if (drawerActiveMenuItem) {
       const drawerActiveMenuItemList = drawerActiveMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
@@ -339,8 +349,7 @@ class Sidenav extends Component {
           }
 
           if (Util.hasClass(activator, DRAWER_ITEM_TAB_CLASS)) {
-            const currentlyActiveDrawerItemSubtab = this._elem
-              .querySelector(`.m-drawer .${DRAWER_ITEM_LIST_CLASS} ul li a.${chi.classes.ACTIVE}`);
+            const currentlyActiveDrawerItemSubtab = this.getActiveDrawerItemSubtab();
 
             Util.addClass(activator, chi.classes.ACTIVE);
 
