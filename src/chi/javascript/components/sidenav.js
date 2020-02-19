@@ -383,7 +383,7 @@ class Sidenav extends Component {
             Util.removeClass(this.getDrawerActiveMenuItem(), chi.classes.ACTIVE);
             Util.addClass(activator, chi.classes.ACTIVE);
 
-            if (currentlyActiveDrawerItemSubtab) {
+            if (currentlyActiveDrawerItemSubtab && currentlyActiveDrawerItemSubtab !== activator) {
               Util.removeClass(currentlyActiveDrawerItemSubtab, chi.classes.ACTIVE);
             }
           } else {
