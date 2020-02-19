@@ -2,14 +2,13 @@
 
 ### 1.4.1 (February 19, 2020)
 
+* Added new icons for enterprise navigation (icon-chart-line, icon-circle-user, icon-file-invoice, icon-inbox, icon-wrench).
 * Added background color utility for CenturyLink Dark Blue color swatch.
-* Added a-card__icon for main icon in Cards.
-* Added supported colors to icon web component.
-* Added copyright text to compiled chi.js file.
-* Added copyright text to compiled chi-icons.js and chi.css files.
-* Added Gulp watch for website layouts.
-* Fixed versioning banner redirection and reduced number of versions available in dropdown.
-
+* Improved Card component markup for better customization of icons.
+* Fixed bug in Icon web component which was missing color support for grey and secondary colors.
+* Added license comment to Chi scripts and CSS.
+* Added Gulp watch to Chi's documentation website/layouts folder.
+* Fixed bug in documentation to improve navigating to the latest Chi version from older Chi versions.
 
 ### 1.4.0 (February 5, 2020)
 

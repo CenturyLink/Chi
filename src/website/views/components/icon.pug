@@ -18,11 +18,11 @@ p.-text Then to render an SVG icon, apply the class <code>a-icon</code> to an el
   .-p--3
     .a-icon
       svg
-        use(xlink:href='#icon-logo-centurylink')
+        use(xlink:href='#icon-atom')
   :code(lang="html")
     <div class="a-icon">
       <svg aria-hidden="true">
-        <use xlink:href='#icon-logo-centurylink'/>
+        <use xlink:href='#icon-atom'/>
       </svg>
     </div>
 
@@ -31,9 +31,9 @@ p.-text Web Font based implementations offer the widest browser support, fastest
 p.-text To render a Web Font icon, apply the class <code>a-icon</code> to an <code>&lt;i&gt;</code> tag and specify the name of the icon you wish to use in the <code>&lt;i&gt;</code>'s class attribute:
 .example.-mb--3
   .-p--3
-    i(class='a-icon icon-logo-centurylink')
+    i(class='a-icon icon-atom')
   :code(lang="html")
-    <i class="a-icon icon-logo-centurylink"></i>
+    <i class="a-icon icon-atom"></i>
 
 h2 Sizes
 p.-text By default, icons render at 16x16px (<code>-sm</code>). Apply size classes to render icons larger or smaller:
@@ -48,7 +48,7 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
         div.-p--2.-m--1
           div(class=`a-icon -${size}`)
             svg
-              use(xlink:href='#icon-logo-centurylink')
+              use(xlink:href='#icon-atom')
           p.-text.-text--center= size
   ul#a-tabs--sizes.a-tabs.-ml--3
     li.-active
@@ -58,39 +58,39 @@ p.-text Two alternate small classes are available for specific app scenarios. Us
   #a-tabs-panel--sizes-svg.a-tabs-panel.-active
     :code(lang="html")
       <!-- -xs : 12x12px -->
-      <div class="a-icon -xs"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -xs"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -sm : 16x16px -->
-      <div class="a-icon -sm"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -sm"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -sm--2 : 20x20px -->
-      <div class="a-icon -sm--2"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -sm--2"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -sm--3 : 24x24px -->
-      <div class="a-icon -sm--3"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -sm--3"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -md : 32x32px -->
-      <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -lg : 64x64px -->
-      <div class="a-icon -lg"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -lg"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -xl : 96x96px -->
-      <div class="a-icon -xl"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -xl"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -xxl : 128x128px -->
-      <div class="a-icon -xxl"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -xxl"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
   #a-tabs-panel--sizes-webfont.a-tabs-panel
     :code(lang="html")
       <!-- -xs : 12x12px -->
-      <i class="a-icon icon-logo-centurylink -xs"></i>
+      <i class="a-icon icon-atom -xs"></i>
       <!-- -sm : 16x16px -->
-      <i class="a-icon icon-logo-centurylink -sm"></i>
+      <i class="a-icon icon-atom -sm"></i>
       <!-- -sm--2 : 20x20px -->
-      <i class="a-icon icon-logo-centurylink -sm--2"></i>
+      <i class="a-icon icon-atom -sm--2"></i>
       <!-- -sm--3 : 24x24px -->
-      <i class="a-icon icon-logo-centurylink -sm--3"></i>
+      <i class="a-icon icon-atom -sm--3"></i>
       <!-- -md : 32x32px -->
-      <i class="a-icon icon-logo-centurylink -md"></i>
+      <i class="a-icon icon-atom -md"></i>
       <!-- -lg : 64x64px -->
-      <i class="a-icon icon-logo-centurylink -lg"></i>
+      <i class="a-icon icon-atom -lg"></i>
       <!-- -xl : 96x96px -->
-      <i class="a-icon icon-logo-centurylink -xl"></i>
+      <i class="a-icon icon-atom -xl"></i>
       <!-- -xxl : 128x128px -->
-      <i class="a-icon icon-logo-centurylink -xxl"></i>
+      <i class="a-icon icon-atom -xxl"></i>
 
 h2 Colors
 p.-text By default, icons are the same color as text. Use Chi text color utilities to set a specific color.
@@ -99,17 +99,17 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
     each type in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--grey', 'text--muted']
       div(class=`a-icon -md -${type} -m--1`)
         svg
-          use(xlink:href='#icon-logo-centurylink')
+          use(xlink:href='#icon-atom')
   .-d--flex.-w--12.-justify-content--center.-flex--wrap.-bg--black.-p--1
     each type in ['text--secondary', 'text--light']
       if (type === 'text--secondary')
         div(class=`a-icon -md -text--secondary -m--1`)
           svg
-            use(xlink:href='#icon-logo-centurylink')
+            use(xlink:href='#icon-atom')
       else if (type === 'text--light')
         div(class=`a-icon -md -text--light -m--1`)
           svg
-            use(xlink:href='#icon-logo-centurylink')
+            use(xlink:href='#icon-atom')
   ul#a-tabs--colors.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-panel--colors-svg') SVG
@@ -118,29 +118,29 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
   #a-tabs-panel--colors-svg.a-tabs-panel.-active
     :code(lang="html")
       <!-- For light backgrounds -->
-      <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -text--primary"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -text--success"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -text--warning"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -text--danger"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -text--grey"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -text--muted"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="a-icon -md -text--primary"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="a-icon -md -text--success"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="a-icon -md -text--warning"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="a-icon -md -text--danger"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="a-icon -md -text--grey"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="a-icon -md -text--muted"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- For dark backgrounds -->
-      <div class="a-icon -md -text--secondary"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
-      <div class="a-icon -md -text--light"><svg aria-hidden="true"><use xlink:href='#icon-logo-centurylink'/></svg></div>
+      <div class="a-icon -md -text--secondary"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="a-icon -md -text--light"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
   #a-tabs-panel--colors-webfont.a-tabs-panel
     :code(lang="html")
       <!-- For light backgrounds -->
-      <i class="a-icon icon-logo-centurylink -md"></i>
-      <i class="a-icon icon-logo-centurylink -md -text--primary"></i>
-      <i class="a-icon icon-logo-centurylink -md -text--success"></i>
-      <i class="a-icon icon-logo-centurylink -md -text--warning"></i>
-      <i class="a-icon icon-logo-centurylink -md -text--danger"></i>
-      <i class="a-icon icon-logo-centurylink -md -text--grey"></i>
-      <i class="a-icon icon-logo-centurylink -md -text--muted"></i>
+      <i class="a-icon icon-atom -md"></i>
+      <i class="a-icon icon-atom -md -text--primary"></i>
+      <i class="a-icon icon-atom -md -text--success"></i>
+      <i class="a-icon icon-atom -md -text--warning"></i>
+      <i class="a-icon icon-atom -md -text--danger"></i>
+      <i class="a-icon icon-atom -md -text--grey"></i>
+      <i class="a-icon icon-atom -md -text--muted"></i>
       <!-- For dark backgrounds -->
-      <i class="a-icon icon-logo-centurylink -md -text--secondary"></i>
-      <i class="a-icon icon-logo-centurylink -md -text--light"></i>
+      <i class="a-icon icon-atom -md -text--secondary"></i>
+      <i class="a-icon icon-atom -md -text--light"></i>
 
 h2 UI Icons
 .a-grid.icon-library.-pt--2.-pb--6
