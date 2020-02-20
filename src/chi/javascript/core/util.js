@@ -18,6 +18,26 @@ export class Util {
     return new RegExp('(\\s|^)' + className + '(\\s|$)').test(elem.className);
   }
 
+  static checkRemoveClass (elem, className) {
+    if (elem) {
+      elem.className = elem.className.split(' ').filter(function (v) {
+        return v !== className;
+      }).join(' ');
+    }
+  }
+
+  static checkAddClass (elem, className) {
+    if (elem && !Util.hasClass(elem, className)) {
+      elem.className += ' ' + className;
+    }
+  }
+
+  static checkHasClass (elem, className) {
+    if (elem) {
+      return new RegExp('(\\s|^)' + className + '(\\s|$)').test(elem.className);
+    }
+  }
+
   static toggleClass (elem, className) {
     if (Util.hasClass(elem, className)) {
       Util.removeClass(elem, className);
