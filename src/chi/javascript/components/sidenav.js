@@ -221,7 +221,6 @@ class Sidenav extends Component {
   }
 
   resetActiveDrawerMenuItem() {
-    const drawerActiveMenuItem = this.getDrawerActiveMenuItem();
     const drawerExpandedMenuItem = this.getDrawerExpandedMenuItem();
     const currentlyActiveDrawerItemSubtab = this.getActiveDrawerItemSubtab();
 
@@ -322,7 +321,7 @@ class Sidenav extends Component {
   }
 
   _isLinkAMenuItemActivator(anchorElem) {
-    return Util.getTarget(anchorElem) ? true : false;
+    return !!Util.getTarget(anchorElem);
   }
 
   _handlerClickOnDrawer(e) {

@@ -19,23 +19,19 @@ export class Util {
   }
 
   static checkRemoveClass (elem, className) {
-    if (elem) {
-      elem.className = elem.className.split(' ').filter(function (v) {
-        return v !== className;
-      }).join(' ');
+    if (!!elem) {
+      Util.removeClass(elem, className);
     }
   }
 
   static checkAddClass (elem, className) {
-    if (elem && !Util.hasClass(elem, className)) {
-      elem.className += ' ' + className;
+    if (!!elem) {
+      Util.addClass(elem, className);
     }
   }
 
   static checkHasClass (elem, className) {
-    if (elem) {
-      return new RegExp('(\\s|^)' + className + '(\\s|$)').test(elem.className);
-    }
+    return !!elem && Util.hasClass(elem, className);
   }
 
   static toggleClass (elem, className) {
