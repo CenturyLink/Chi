@@ -18,6 +18,22 @@ export class Util {
     return new RegExp('(\\s|^)' + className + '(\\s|$)').test(elem.className);
   }
 
+  static checkRemoveClass (elem, className) {
+    if (!!elem) {
+      Util.removeClass(elem, className);
+    }
+  }
+
+  static checkAddClass (elem, className) {
+    if (!!elem) {
+      Util.addClass(elem, className);
+    }
+  }
+
+  static checkHasClass (elem, className) {
+    return !!elem && Util.hasClass(elem, className);
+  }
+
   static toggleClass (elem, className) {
     if (Util.hasClass(elem, className)) {
       Util.removeClass(elem, className);
