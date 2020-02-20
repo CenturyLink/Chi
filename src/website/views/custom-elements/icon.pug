@@ -11,9 +11,9 @@ p.-text Chi has adopted a subset of icons from Cyclops and CenturyLink's Cloud A
 h2 Using Icons
 .example.-mb--3
   .-p--3
-    chi-icon(icon="logo-centurylink")
+    chi-icon(icon="atom")
   :code(lang="html")
-    <chi-icon icon="logo-centurylink"></chi-icon>
+    <chi-icon icon="atom"></chi-icon>
 
 h2 Sizes
 p.-text By default, icons render at 16x16px (<code>sm</code>). Use the size attribute to render icons larger or smaller:
@@ -26,43 +26,51 @@ p.-text Two alternate small values are available for specific app scenarios. Use
     .a-grid.-align-items--end
       each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
         div.-p--2.-m--1
-          chi-icon(icon="logo-centurylink", size=size)
+          chi-icon(icon="atom", size=size)
           p.-text.-text--center= size
 
   :code(lang="html")
     <!-- -xs : 12x12px -->
-    <chi-icon icon="logo-centurylink" size="xs"></chi-icon>
+    <chi-icon icon="atom" size="xs"></chi-icon>
     <!-- -sm : 16x16px -->
-    <chi-icon icon="logo-centurylink" size="sm"></chi-icon>
+    <chi-icon icon="atom" size="sm"></chi-icon>
     <!-- -sm--2 : 20x20px -->
-    <chi-icon icon="logo-centurylink" size="sm--2"></chi-icon>
+    <chi-icon icon="atom" size="sm--2"></chi-icon>
     <!-- -sm--3 : 24x24px -->
-    <chi-icon icon="logo-centurylink" size="sm--3"></chi-icon>
+    <chi-icon icon="atom" size="sm--3"></chi-icon>
     <!-- -md : 32x32px -->
-    <chi-icon icon="logo-centurylink" size="md"></chi-icon>
+    <chi-icon icon="atom" size="md"></chi-icon>
     <!-- -lg : 64x64px -->
-    <chi-icon icon="logo-centurylink" size="lg"></chi-icon>
+    <chi-icon icon="atom" size="lg"></chi-icon>
     <!-- -xl : 96x96px -->
-    <chi-icon icon="logo-centurylink" size="xl"></chi-icon>
+    <chi-icon icon="atom" size="xl"></chi-icon>
     <!-- -xxl : 128x128px -->
-    <chi-icon icon="logo-centurylink" size="xxl"></chi-icon>
+    <chi-icon icon="atom" size="xxl"></chi-icon>
 
 h2 Colors
-p.-text By default, icons are the same color as text. Use Chi the color attribute to set a specific color.
+p.-text By default, icons are the same color as text. Use Chi's color attribute to set a specific color.
 .example.-mb--3
-  .-p--3
-    .a-grid.-align-items--end
-      each color in ['', 'primary', 'success', 'warning', 'danger', 'inverse', 'muted']
-        div.-p--2
-          chi-icon(icon="logo-centurylink", color=color, size="md")
+  .-d--flex.-w--12.-justify-content--center.-flex--wrap.-p--1
+    each color in ['', 'primary', 'success', 'warning', 'danger', 'grey', 'muted']
+      div.-p--2
+        chi-icon(icon="atom", color=color, size="md")
+  .-d--flex.-w--12.-justify-content--center.-flex--wrap.-bg--black.-p--1
+    each color in ['secondary', 'light']
+      div.-p--2
+        chi-icon(icon="atom", color=color, size="md")
+
   :code(lang="html")
-    <chi-icon icon="logo-centurylink" size="md"></chi-icon>
-    <chi-icon icon="logo-centurylink" size="md" color="primary"></chi-icon>
-    <chi-icon icon="logo-centurylink" size="md" color="success"></chi-icon>
-    <chi-icon icon="logo-centurylink" size="md" color="warning"></chi-icon>
-    <chi-icon icon="logo-centurylink" size="md" color="danger"></chi-icon>
-    <chi-icon icon="logo-centurylink" size="md" color="inverse"></chi-icon>
-    <chi-icon icon="logo-centurylink" size="md" color="muted"></chi-icon>
+    <!-- For light backgrounds -->
+    <chi-icon icon="atom" size="md"></chi-icon>
+    <chi-icon icon="atom" size="md" color="primary"></chi-icon>
+    <chi-icon icon="atom" size="md" color="success"></chi-icon>
+    <chi-icon icon="atom" size="md" color="warning"></chi-icon>
+    <chi-icon icon="atom" size="md" color="danger"></chi-icon>
+    <chi-icon icon="atom" size="md" color="grey"></chi-icon>
+    <chi-icon icon="atom" size="md" color="muted"></chi-icon>
+    <!-- For dark backgrounds -->
+    <chi-icon icon="atom" size="md" color="secondary"></chi-icon>
+    <chi-icon icon="atom" size="md" color="light"></chi-icon>
 
 h2 Additional usage details
 :stencilDoc(name='chi-icon')
