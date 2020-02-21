@@ -37,7 +37,7 @@ p.-text Then to render an SVG icon, apply the class <code>a-icon</code> to an el
       | Web Font based implementations offer the widest browser support,
       | fastest rendering speed, and require no additional script or stylesheet.
     :code(lang="html")
-      <i class="a-icon icon-logo-centurylink"></i>
+      <i class="a-icon icon-atom"></i>
 
 h2 Sizes
 p.-text By default, icons render at 16x16px (<code>sm</code>).
@@ -65,21 +65,21 @@ p.-text By default, icons render at 16x16px (<code>sm</code>).
       | 24px icons within a 48px container.
     :code(lang="html")
       <!-- -xs : 12x12px -->
-      <chi-icon icon="logo-centurylink" size="xs"></chi-icon>
+      <chi-icon icon="atom" size="xs"></chi-icon>
       <!-- -sm : 16x16px -->
-      <chi-icon icon="logo-centurylink" size="sm"></chi-icon>
+      <chi-icon icon="atom" size="sm"></chi-icon>
       <!-- -sm--2 : 20x20px -->
-      <chi-icon icon="logo-centurylink" size="sm--2"></chi-icon>
+      <chi-icon icon="atom" size="sm--2"></chi-icon>
       <!-- -sm--3 : 24x24px -->
-      <chi-icon icon="logo-centurylink" size="sm--3"></chi-icon>
+      <chi-icon icon="atom" size="sm--3"></chi-icon>
       <!-- -md : 32x32px -->
-      <chi-icon icon="logo-centurylink" size="md"></chi-icon>
+      <chi-icon icon="atom" size="md"></chi-icon>
       <!-- -lg : 64x64px -->
-      <chi-icon icon="logo-centurylink" size="lg"></chi-icon>
+      <chi-icon icon="atom" size="lg"></chi-icon>
       <!-- -xl : 96x96px -->
-      <chi-icon icon="logo-centurylink" size="xl"></chi-icon>
+      <chi-icon icon="atom" size="xl"></chi-icon>
       <!-- -xxl : 128x128px -->
-      <chi-icon icon="logo-centurylink" size="xxl"></chi-icon>
+      <chi-icon icon="atom" size="xxl"></chi-icon>
   #svg-sizes.a-tabs-panel
     .a-tab__description
       | Apply size classes to render icons larger or smaller:
@@ -143,7 +143,7 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
         div(class=`a-icon -md -text--secondary -m--1`)
           svg
             use(xlink:href='#icon-atom')
-      else if (type === 'text--light')
+      else if (color === 'text--light')
         div(class=`a-icon -md -text--light -m--1`)
           svg
             use(xlink:href='#icon-atom')
@@ -156,13 +156,17 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
       a(href='#webfont-color') Web Font
   #webcomponent-colors.a-tabs-panel.-active
     :code(lang="html")
-      <chi-icon icon="logo-centurylink" size="md"></chi-icon>
-      <chi-icon icon="logo-centurylink" size="md" color="primary"></chi-icon>
-      <chi-icon icon="logo-centurylink" size="md" color="success"></chi-icon>
-      <chi-icon icon="logo-centurylink" size="md" color="warning"></chi-icon>
-      <chi-icon icon="logo-centurylink" size="md" color="danger"></chi-icon>
-      <chi-icon icon="logo-centurylink" size="md" color="inverse"></chi-icon>
-      <chi-icon icon="logo-centurylink" size="md" color="muted"></chi-icon>
+      <!-- For light backgrounds -->
+      <chi-icon icon="atom" size="md"></chi-icon>
+      <chi-icon icon="atom" size="md" color="primary"></chi-icon>
+      <chi-icon icon="atom" size="md" color="success"></chi-icon>
+      <chi-icon icon="atom" size="md" color="warning"></chi-icon>
+      <chi-icon icon="atom" size="md" color="danger"></chi-icon>
+      <chi-icon icon="atom" size="md" color="grey"></chi-icon>
+      <chi-icon icon="atom" size="md" color="muted"></chi-icon>
+      <!-- For dark backgrounds -->
+      <chi-icon icon="atom" size="md" color="secondary"></chi-icon>
+      <chi-icon icon="atom" size="md" color="light"></chi-icon>
   #svg-colors.a-tabs-panel
     :code(lang="html")
       <!-- For light backgrounds -->
