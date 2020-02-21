@@ -1,9 +1,10 @@
 # CHANGELOG
 
-### 1.4.1 (February 19, 2020)
+### 1.4.1 (February 21, 2020)
 
 * Added new icons for enterprise navigation (icon-chart-line, icon-circle-user, icon-file-invoice, icon-inbox, icon-wrench).
 * Added background color utility for CenturyLink Dark Blue color swatch.
+* Improved selection behavior at all navigation levels in Enterprise Global Nav.
 * Improved Card component markup for better customization of icons.
 * Fixed bug in Icon web component which was missing color support for grey and secondary colors.
 * Added license comment to Chi scripts and CSS.
