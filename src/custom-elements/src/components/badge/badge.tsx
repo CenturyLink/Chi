@@ -50,17 +50,14 @@ export class Badge {
       throw new Error(`${newValue} is not a valid variant value for badge. Valid values are outline, flat or ''. `);
     }
   }
-
-  componentDidLoad() {
-    if (!this.el.children[0].innerHTML.includes('<chi-icon')) {
-      this.slotBadgeContent = false;
-    }
-  }
-
+  
   componentWillLoad() {
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
     this.variantValidation(this.variant);
+    if (!this.el.querySelector('chi-icon')) {
+      this.slotBadgeContent = false;
+    }
   }
 
   render() {
