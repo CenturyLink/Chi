@@ -88,10 +88,7 @@ export class Button {
     this.sizeValidation(this.size);
     this.buttonTypeValidation(this.type);
     this.variantValidation(this.variant);
-  }
-
-  componentDidLoad() {
-    if (!this.el.children[0].innerHTML.includes('<chi-icon') && !this.el.children[0].innerHTML.includes('<chi-spinner')) {
+    if (!this.el.innerHTML.includes('<chi-icon') && !this.el.innerHTML.includes('<chi-spinner')) {
       this.slotBtnContent = false;
     }
   }
