@@ -168,19 +168,19 @@ export class Popover {
   /**
    * Popover show method has executed, but the showing animation has not started yet
    */
-  @Event({ eventName: 'chiPopover:show' }) eventShow: EventEmitter;
+  @Event({ eventName: 'chiPopoverShow' }) eventShow: EventEmitter;
   /**
    * Popover hide method has executed, but the closing animation has not started yet
    */
-  @Event({ eventName: 'chiPopover:hide' }) eventHide: EventEmitter;
+  @Event({ eventName: 'chiPopoverHide' }) eventHide: EventEmitter;
   /**
    * Popover has been shown to the user and is fully visible. The animation has completed.
    */
-  @Event({ eventName: 'chiPopover:shown' }) eventShown: EventEmitter;
+  @Event({ eventName: 'chiPopoverShown' }) eventShown: EventEmitter;
   /**
    * Popover has been hidden to the user. The animation has completed.
    */
-  @Event({ eventName: 'chiPopover:hidden' }) eventHidden: EventEmitter;
+  @Event({ eventName: 'chiPopoverHidden' }) eventHidden: EventEmitter;
 
   private _resetPopperPosition(): void {
     this._popper.update();
