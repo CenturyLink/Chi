@@ -55,7 +55,7 @@ export class Badge {
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
     this.variantValidation(this.variant);
-    if (!this.el.innerHTML.includes('<chi-icon')) {
+    if (!this.el.querySelector('chi-icon')) {
       this.slotBadgeContent = false;
     }
   }
