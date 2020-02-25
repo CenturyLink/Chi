@@ -13,96 +13,54 @@ p.-text
 h3 Example 1
 p.-text
   | Trigger and dropdown enclosed in the same div.
-ul#a-tabs--expanded.a-tabs
-  li.-active
-    a(href='#a-tabs-panel--expanded-false') Initial
-  li
-    a(href='#a-tabs-panel--expanded-true') Expanded
 .example.-mb--3
-  #a-tabs-panel--expanded-false.a-tabs-panel.-active
-    .-p--3
-      .m-dropdown(style='margin-bottom: 7rem')
-        button.a-btn.m-dropdown__trigger Dropdown component
-        .m-dropdown__menu
-          a.m-dropdown__menu-item(href='#') Element 1
-          a.m-dropdown__menu-item(href='#') Element 2
-          a.m-dropdown__menu-item(href='#') Element 3
-    :code(lang="html")
-      <div class="m-dropdown">
-        <button class="a-btn m-dropdown__trigger">Dropdown component</button>
-        <div class="m-dropdown__menu">
-          <a class="m-dropdown__menu-item" href="#">Element 1</a>
-          <a class="m-dropdown__menu-item" href="#">Element 2</a>
-          <a class="m-dropdown__menu-item" href="#">Element 3</a>
-        </div>
+  .-p--3
+    .m-dropdown
+      button.a-btn.m-dropdown__trigger#dropdown-1 Dropdown, click me
+      .m-dropdown__menu
+        a.m-dropdown__menu-item(href='#') Element 1
+        a.m-dropdown__menu-item(href='#') Element 2
+        a.m-dropdown__menu-item(href='#') Element 3
+        a.m-dropdown__menu-item(href='#') Element 4
+  :code(lang="html")
+    <div class="m-dropdown">
+      <button id="dropdown-1" class="a-btn m-dropdown__trigger">Dropdown component</button>
+      <div class="m-dropdown__menu">
+        <a class="m-dropdown__menu-item" href="#">Element 1</a>
+        <a class="m-dropdown__menu-item" href="#">Element 2</a>
+        <a class="m-dropdown__menu-item" href="#">Element 3</a>
       </div>
-  #a-tabs-panel--expanded-true.a-tabs-panel
-    .-p--3
-      .m-dropdown(style='margin-bottom: 7rem')
-        button.a-btn.m-dropdown__trigger.-active Dropdown component
-        .m-dropdown__menu.-active
-          a.m-dropdown__menu-item(href='#') Element 1
-          a.m-dropdown__menu-item(href='#') Element 2
-          a.m-dropdown__menu-item(href='#') Element 3
-    :code(lang="html")
-      <div class="m-dropdown">
-        <button class="a-btn m-dropdown__trigger -active">Dropdown component</button>
-        <div class="m-dropdown__menu -active">
-          <a class="m-dropdown__menu-item" href="#">Element 1</a>
-          <a class="m-dropdown__menu-item" href="#">Element 2</a>
-          <a class="m-dropdown__menu-item" href="#">Element 3</a>
-        </div>
-      </div>
+    </div>
+
+    <script>chi.dropdown(document.getElementById('dropdown-1'));</script>
 
 h3 Example 2
 p.-text
   | Dropdown referenced by a <code>data-target</code> attribute in the activator.
-ul#a-tabs--expanded-2.a-tabs
-  li.-active
-    a(href='#a-tabs-panel--expanded-2-false') Initial
-  li
-    a(href='#a-tabs-panel--expanded-2-true') Expanded
+
 .example.-mb--3
-  #a-tabs-panel--expanded-2-false.a-tabs-panel.-active
-    .-p--3
-      button.a-btn.m-dropdown__trigger(data-target="#dropdown-1") Dropdown component
+  .-p--3
+    .m-dropdown
+      button.a-btn.m-dropdown__trigger#dropdown-2(data-target="#dropdown-2-menu") Dropdown component
       p.-text There is no need for proximity between elements.
-      #dropdown-1.m-dropdown__menu
+      #dropdown-2-menu.m-dropdown__menu
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
         a.m-dropdown__menu-item(href='#') Element 4
-    :code(lang="html")
-      <div class="-p--3">
-        <button class="a-btn m-dropdown__trigger" data-target="#dropdown-1">Dropdown component</button>
-        <p class="-text">There is no need for proximity between elements.</p>
-        <div class="m-dropdown__menu" id="dropdown-1">
-          <a class="m-dropdown__menu-item" href="#">Element 1</a>
-          <a class="m-dropdown__menu-item" href="#">Element 2</a>
-          <a class="m-dropdown__menu-item" href="#">Element 3</a>
-          <a class="m-dropdown__menu-item" href="#">Element 4</a>
-        </div>
+  :code(lang="html")
+    <div class="m-dropdown">
+      <button id="dropdown-2" class="a-btn m-dropdown__trigger" data-target="#dropdown-2-menu">Dropdown component</button>
+      <p class="-text">There is no need for proximity between elements.</p>
+      <div class="m-dropdown__menu" id="dropdown-2-menu">
+        <a class="m-dropdown__menu-item" href="#">Element 1</a>
+        <a class="m-dropdown__menu-item" href="#">Element 2</a>
+        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+        <a class="m-dropdown__menu-item" href="#">Element 4</a>
       </div>
-  #a-tabs-panel--expanded-2-true.a-tabs-panel
-    .-p--3
-      button.a-btn.m-dropdown__trigger.-active(data-target="#dropdown-1") Dropdown component
-      p.-text There is no need for proximity between elements.
-      #dropdown-1b.m-dropdown__menu.-active
-        a.m-dropdown__menu-item(href='#') Element 1
-        a.m-dropdown__menu-item(href='#') Element 2
-        a.m-dropdown__menu-item(href='#') Element 3
-        a.m-dropdown__menu-item(href='#') Element 4
-    :code(lang="html")
-      <div class="-p--3">
-        <button class="a-btn m-dropdown__trigger -active" data-target="#dropdown-1">Dropdown component</button>
-        <p class="-text">There is no need for proximity between elements.</p>
-        <div class="m-dropdown__menu -active" id="dropdown-1">
-          <a class="m-dropdown__menu-item" href="#">Element 1</a>
-          <a class="m-dropdown__menu-item" href="#">Element 2</a>
-          <a class="m-dropdown__menu-item" href="#">Element 3</a>
-          <a class="m-dropdown__menu-item" href="#">Element 4</a>
-        </div>
-      </div>
+    </div>
+
+    <script>chi.dropdown(document.getElementById('dropdown-2'));</script>
 
 h3 Example 3
 p.-text
@@ -605,46 +563,24 @@ h2 Animation
 p.-text
   | Triggers can be animated by applying the <code>-animate</code> class.
 h3 Example
-ul#a-tabs--animation-expanded.a-tabs
-  li.-active
-    a(href='#a-tabs-panel--animation-expanded-false') Initial
-  li
-    a(href='#a-tabs-panel--animation-expanded-true') Expanded
 .example.-mb--3
-  #a-tabs-panel--animation-expanded-false.a-tabs-panel.-active
-    .-p--3
-      .m-dropdown(style='margin-bottom:7rem')
-        button.a-btn.m-dropdown__trigger.-animate Animated dropdown trigger
-        .m-dropdown__menu
-          a.m-dropdown__menu-item(href='#') Element 1
-          a.m-dropdown__menu-item(href='#') Element 2
-          a.m-dropdown__menu-item(href='#') Element 3
-    :code(lang="html")
-      <div class="m-dropdown">
-        <button class="a-btn m-dropdown__trigger -animate">Animated dropdown trigger</button>
-        <div class="m-dropdown__menu">
-          <a class="m-dropdown__menu-item" href="#">Element 1</a>
-          <a class="m-dropdown__menu-item" href="#">Element 2</a>
-          <a class="m-dropdown__menu-item" href="#">Element 3</a>
-        </div>
+  .-p--3
+    .m-dropdown(style='margin-bottom:7rem')
+      button#dropdown-animate.a-btn.m-dropdown__trigger.-animate Animated dropdown trigger
+      .m-dropdown__menu
+        a.m-dropdown__menu-item(href='#') Element 1
+        a.m-dropdown__menu-item(href='#') Element 2
+        a.m-dropdown__menu-item(href='#') Element 3
+  :code(lang="html")
+    <div class="m-dropdown">
+      <button class="a-btn m-dropdown__trigger -animate">Animated dropdown trigger</button>
+      <div class="m-dropdown__menu">
+        <a class="m-dropdown__menu-item" href="#">Element 1</a>
+        <a class="m-dropdown__menu-item" href="#">Element 2</a>
+        <a class="m-dropdown__menu-item" href="#">Element 3</a>
       </div>
-  #a-tabs-panel--animation-expanded-true.a-tabs-panel
-    .-p--3
-      .m-dropdown(style='margin-bottom:7rem')
-        button.a-btn.m-dropdown__trigger.-animate.-active Animated dropdown trigger
-        .m-dropdown__menu.-active
-          a.m-dropdown__menu-item(href='#') Element 1
-          a.m-dropdown__menu-item(href='#') Element 2
-          a.m-dropdown__menu-item(href='#') Element 3
-    :code(lang="html")
-      <div class="m-dropdown">
-        <button class="a-btn m-dropdown__trigger -animate -active">Animated dropdown trigger</button>
-        <div class="m-dropdown__menu -active">
-          <a class="m-dropdown__menu-item" href="#">Element 1</a>
-          <a class="m-dropdown__menu-item" href="#">Element 2</a>
-          <a class="m-dropdown__menu-item" href="#">Element 3</a>
-        </div>
-      </div>
+    </div>
+
 h2 Positioning
 p.-text
   | Dropdown is prepared to work with positioning libraries like Popper.js. That is why we support the data-position
@@ -656,32 +592,56 @@ p.-text
 .example.-mb--3
   .-p--3.-d--flex.-flex--wrap
     .m-dropdown.-mr--3.-mb--2.-mb-md--0
-      button.a-btn.m-dropdown__trigger(data-position="bottom") Drop-down
+      button#dropdown-3.a-btn.m-dropdown__trigger(data-position="bottom") Drop-down
       .m-dropdown__menu
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
     .m-dropdown.-mr--3.-mb--2.-mb-md--0
-      button.a-btn.m-dropdown__trigger(data-position="top") Drop-top
+      button#droptop.a-btn.m-dropdown__trigger(data-position="top") Drop-top
       .m-dropdown__menu
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
     .m-dropdown.-mr--3.-mb--2.-mb-md--0
-      button.a-btn.m-dropdown__trigger(data-position="left") Drop-left
+      button#dropleft.a-btn.m-dropdown__trigger(data-position="left") Drop-left
       .m-dropdown__menu
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
     .m-dropdown.-mr--3.-mb--2.-mb-md--0
-      button.a-btn.m-dropdown__trigger(data-position="right") Drop-right
+      button#dropright.a-btn.m-dropdown__trigger(data-position="right") Drop-right
       .m-dropdown__menu
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
   :code(lang="html")
     <div class="m-dropdown">
-      <button class="a-btn m-dropdown__trigger" data-position="bottom">Drop-down</button>
+      <button class="a-btn m-dropdown__trigger" id="dropdown-3" data-position="bottom">Drop-down</button>
+      <div class="m-dropdown__menu">
+        <a class="m-dropdown__menu-item" href="#">Element 1</a>
+        <a class="m-dropdown__menu-item" href="#">Element 2</a>
+        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+      </div>
+    </div>
+    <div class="m-dropdown">
+      <button class="a-btn m-dropdown__trigger" id="droptop" data-position="top">Drop-top</button>
+      <div class="m-dropdown__menu">
+        <a class="m-dropdown__menu-item" href="#">Element 1</a>
+        <a class="m-dropdown__menu-item" href="#">Element 2</a>
+        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+      </div>
+    </div>
+    <div class="m-dropdown">
+      <button class="a-btn m-dropdown__trigger" id="dropleft" data-position="left">Drop-left</button>
+      <div class="m-dropdown__menu">
+        <a class="m-dropdown__menu-item" href="#">Element 1</a>
+        <a class="m-dropdown__menu-item" href="#">Element 2</a>
+        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+      </div>
+    </div>
+    <div class="m-dropdown">
+      <button class="a-btn m-dropdown__trigger" id="dropright" data-position="right">Drop-right</button>
       <div class="m-dropdown__menu">
         <a class="m-dropdown__menu-item" href="#">Element 1</a>
         <a class="m-dropdown__menu-item" href="#">Element 2</a>
@@ -689,12 +649,24 @@ p.-text
       </div>
     </div>
 
+    <script>
+      chi.dropdown(document.getElementById('dropdown-3'));
+      chi.dropdown(document.getElementById('droptop'));
+      chi.dropdown(document.getElementById('dropleft'));
+      chi.dropdown(document.getElementById('dropright'));
+    </script>
+
 script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('a-tabs--animation-expanded'));
-      chi.tab(document.getElementById('a-tabs--expanded'));
-      chi.tab(document.getElementById('a-tabs--expanded-2'));
+      chi.dropdown(document.getElementById('dropdown-1'));
+      chi.dropdown(document.getElementById('dropdown-2'));
+      chi.dropdown(document.getElementById('dropdown-animate'));
+      chi.dropdown(document.getElementById('dropdown-animate'));
+      chi.dropdown(document.getElementById('dropdown-3'));
+      chi.dropdown(document.getElementById('droptop'));
+      chi.dropdown(document.getElementById('dropleft'));
+      chi.dropdown(document.getElementById('dropright'));
     }
   );

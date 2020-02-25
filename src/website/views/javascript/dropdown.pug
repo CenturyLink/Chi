@@ -49,16 +49,15 @@ p.-text
   dropdown === dropdown2; // returns true
 
   dropdown.dispose(); // Only have to do it once.
-
 script.
   document.addEventListener(
-    'DOMContentLoaded',
-    function() {
-      Array.prototype.forEach.call(
-        document.getElementsByClassName("m-dropdown__trigger"),
-        function(el){
-          chi.dropdown(el);
-        }
-      );
-    }
+          'DOMContentLoaded',
+          function() {
+            Array.prototype.forEach.call(
+                    document.getElementsByClassName("m-dropdown__trigger"),
+                    function(el) {
+                      chi.dropdown(el);
+                    }
+            );
+          }
   );
