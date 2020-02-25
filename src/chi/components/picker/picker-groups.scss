@@ -9,6 +9,34 @@ legend {
 }
 
 .m-pickerGroup {
+  input {
+    &.a-picker {
+      &:first-of-type {
+        &:focus {
+          &:not(:checked) {
+            & ~ label {
+              &:first-of-type {
+                background-color: set-color(grey, 10);
+              }
+            }
+          }
+        }
+      }
+
+      &:last-of-type {
+        &:focus {
+          &:not(:checked) {
+            & ~ label {
+              &:last-of-type {
+                background-color: set-color(grey, 10);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   &.-fluid {
     display: flex;
     flex-direction: column;
