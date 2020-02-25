@@ -266,3 +266,61 @@
     }
   }
 }
+
+/* IE11 CSS hack */
+@media all and (-ms-high-contrast: none) {
+  .a-col {
+    // Sizing
+
+    @for $i from 1 through 12 {
+      &.-w--#{$i} {
+        flex: 0 0 auto;
+        width: (100% / 12 * $i);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $sm-breakpoint) and (-ms-high-contrast: none) {
+  .a-col {
+    @for $i from 1 through 12 {
+      &.-w-sm--#{$i} {
+        flex: 0 0 auto;
+        width: (100% / 12 * $i);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $md-breakpoint) and (-ms-high-contrast: none) {
+  .a-col {
+    @for $i from 1 through 12 {
+      &.-w-md--#{$i} {
+        flex: 0 0 auto;
+        width: (100% / 12 * $i);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $lg-breakpoint) and (-ms-high-contrast: none) {
+  .a-col {
+    @for $i from 1 through 12 {
+      &.-w-lg--#{$i} {
+        flex: 0 0 auto;
+        width: (100% / 12 * $i);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $xl-breakpoint) and (-ms-high-contrast: none) {
+  .a-col {
+    @for $i from 1 through 12 {
+      &.-w-xl--#{$i} {
+        flex: 0 0 auto;
+        width: (100% / 12 * $i);
+      }
+    }
+  }
+}
