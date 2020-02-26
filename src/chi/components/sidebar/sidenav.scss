@@ -573,29 +573,16 @@ $sidenav-lg-width: 12.5rem;
 }
 
 /* IE11 CSS hack */
-@media only screen and (max-width: $lg-breakpoint -1) and (-ms-high-contrast: none) {
-  .m-sidenav__list {
-    li {
-      a {
-        height: 4rem;
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: $lg-breakpoint) and (-ms-high-contrast: none) {
-  .m-sidenav__list {
-    li {
-      a {
-        height: 3rem;
-      }
-    }
-  }
-}
-
 @media only screen and (-ms-high-contrast: none) {
   .m-sidenav {
-    &.-sm,
+    .m-sidenav__list {
+      li {
+        a {
+          height: 3rem;
+        }
+      }
+    }
+
     &.-md {
       .m-sidenav__list {
         li {
