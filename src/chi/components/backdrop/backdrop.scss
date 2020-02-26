@@ -90,3 +90,12 @@
     background-color: rgba(set-color(grey, 70), 0.7);
   }
 }
+
+/* IE11 CSS hack */
+@media all and (-ms-high-contrast: none) {
+  .m-backdrop {
+    &__wrapper {
+      height: calc(100% - 2rem);
+    }
+  }
+}
