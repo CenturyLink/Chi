@@ -1,5 +1,11 @@
 # CHANGELOG
 
+### 1.4.2 (February 27, 2020)
+
+* Fixed bug in Grid component which caused grid columns to render incorrectly in IE11.
+* Fixed bug in Picker and Picker Group component which prevented users from navigating the components with tab and arrow keys.
+* Fixed rendering bug in Badge custom element.
+
 ### 1.4.1 (February 21, 2020)
 
 * Added new icons for enterprise navigation (icon-chart-line, icon-circle-user, icon-file-invoice, icon-inbox, icon-wrench).
