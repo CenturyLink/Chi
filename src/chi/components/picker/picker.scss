@@ -419,4 +419,24 @@ legend {
       }
     }
   }
+
+  .m-picker {
+    input {
+      &[type='checkbox'],
+      &[type='radio'] {
+        &.a-picker {
+          & + label {
+            span {
+              &.a-picker__checkbox {
+                &::before {
+                  left: 0.09rem;
+                  top: 0.15rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
