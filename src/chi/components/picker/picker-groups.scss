@@ -53,12 +53,14 @@ legend {
             border-bottom-width: 0;
             border-right-width: 0.0625rem;
             display: flex;
-            flex: 1 0 0;
+            flex: 1 0 auto;
             justify-content: center;
+            width: 100%;
 
             @include respond-to(md) {
               border-bottom-width: 0.0625rem;
               border-right-width: 0;
+              flex: 1 0 0;
             }
 
             &:last-of-type {
@@ -70,7 +72,11 @@ legend {
             }
 
             &.-notFluid {
-              flex: 0 1 0;
+              flex: 0 1 auto;
+
+              @include respond-to(md) {
+                width: auto;
+              }
             }
 
             &.-align--left {

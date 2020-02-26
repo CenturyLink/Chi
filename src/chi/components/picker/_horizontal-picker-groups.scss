@@ -57,7 +57,6 @@ $sizes: (
           margin-bottom: 0;
           padding: (0.5rem - $border) 1rem (0.5rem - $border) (1rem - $border);
           transition: border-color 0.2s, box-shadow 0.2s;
-          width: 100%;
 
           @each $type in map-keys($sizes) {
             &.-#{$type} {
