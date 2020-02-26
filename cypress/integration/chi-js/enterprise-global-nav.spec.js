@@ -311,4 +311,85 @@ describe('enterprise-nav-menu', function() {
       });
     });
   });
+
+  describe('Check that Menu recovers active state of second and third level items', () => {
+    it('Should recover active state when toggling between different lists on 2nd level', () => {
+
+      let menuText = /^NoChanges$/;
+
+      cy.get('.enterprise-nav-menu').within(() => {
+        cy.get('.m-sidenav')
+          .click(500, 0);
+
+        cy.get('.m-sidenav__list li')
+          .contains(menuText)
+          .as('firstLevelElement')
+        ;
+
+        cy.get('@firstLevelElement')
+          .should('have.attr', 'href')
+          .then(href => {
+            cy.get('' + href)
+              .as('drawer')
+            ;
+
+            cy.get('@firstLevelElement')
+              .click()
+              .wait(550)
+            ;
+          });
+
+        cy.get('@drawer')
+          .contains('Home')
+          .as('secondLevelElement')
+          .click()
+          .parents('li')
+          .should('have.class', '-expanded')
+          .find('.m-sidenav__drawer-item-list ul li a span')
+          .contains('Reports')
+          .click()
+          .parents('a')
+          .should('have.class', '-active')
+        ;
+
+        cy.get('.m-sidenav__list li')
+          .contains('DeepLink')
+          .as('switchElement')
+        ;
+
+        cy.get('@switchElement')
+          .should('have.attr', 'href')
+          .then(href => {
+            cy.get('' + href)
+              .as('drawer2')
+            ;
+
+            cy.get('@switchElement')
+              .click()
+              .wait(550)
+            ;
+          });
+
+        cy.get('@drawer2')
+          .contains('Option')
+          .click()
+          .parents('li')
+          .should('have.class', '-expanded')
+        ;
+
+        cy.get('@firstLevelElement')
+          .click()
+        ;
+
+        cy.get('@drawer')
+          .find('ul.m-sidenav__drawer-list li a span')
+          .contains('Home')
+          .parents('a')
+          .parents('li')
+          .should('have.class', '-active')
+          .should('have.class', '-expanded')
+        ;
+      });
+    });
+  });
 });
