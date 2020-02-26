@@ -5,6 +5,7 @@
 * Fixed bug in Grid component which caused grid columns to render incorrectly in IE11.
 * Fixed bug in Picker and Picker Group component which prevented users from navigating the components with tab and arrow keys.
 * Fixed rendering bug in Badge custom element.
+* Fixed bug in Footer component which caused the brand element to misalign in IE11.
 
 ### 1.4.1 (February 21, 2020)
 

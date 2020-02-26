@@ -71,6 +71,20 @@
         margin-bottom: 0;
       }
     }
+
+    .o-footer__brand {
+      display: flex;
+
+      .a-brand {
+        &.-sm--3 {
+          width: 7.5rem;
+        }
+      }
+    }
+
+    .o-footer__copyright {
+      display: flex;
+    }
   }
 
   & a {
