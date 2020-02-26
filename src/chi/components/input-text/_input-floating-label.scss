@@ -70,3 +70,34 @@ $sizes: (
     }
   }
 }
+
+/* IE11 CSS hack */
+@media all and (-ms-high-contrast: none) {
+  .a-inputWrapper,
+  .m-input__wrapper {
+    &.-floatingLabel {
+      & > input,
+      & > select {
+        &.-lg {
+          & ~ label {
+            bottom: 0.25rem;
+
+            &.-active {
+              bottom: 0.75rem;
+            }
+          }
+        }
+
+        &.-xl {
+          & ~ label {
+            bottom: 0.5rem;
+
+            &.-active {
+              bottom: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
