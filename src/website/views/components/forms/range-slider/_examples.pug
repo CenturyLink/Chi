@@ -14,11 +14,21 @@ h3 Base
     .m-form__item
       label(class="a-label", for="range01") Range label
       input(class="a-input", type="range", id="range01")
-  :code(lang="html")
-    <div class="m-form__item">
-      <label class="a-label" for="range01">Range label</label>
-      <input class="a-input" type="range" id="range01">
-    </div>
+  .example-tabs.-pl--2
+    ul#a-tabs-base.a-tabs
+      li.-active
+        a(href='#a-tabs-base-html') HTML
+      li
+        a(href='#a-tabs-base-js') JS
+  #a-tabs-base-html.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-label" for="range01">Range label</label>
+        <input class="a-input" type="range" id="range01">
+      </div>
+  #a-tabs-base-js.a-tabs-panel
+    :code(lang="html")
+      <script>chi.rangeSlider(document.getElementById('range01'));</script>
 
 h3 Disabled
 .example.-mb--3
@@ -26,11 +36,21 @@ h3 Disabled
     .m-form__item
       label(class="a-label", for="range02") Range label
       input(class="a-input", type="range", id="range02" disabled)
-  :code(lang="html")
-    <div class="m-form__item">
-      <label class="a-label" for="range02">Range label</label>
-      <input class="a-input" type="range" id="range02" disabled>
-    </div>
+  .example-tabs.-pl--2
+    ul#a-tabs-disabled.a-tabs
+      li.-active
+        a(href='#a-tabs-disabled-html') HTML
+      li
+        a(href='#a-tabs-disabled-js') JS
+  #a-tabs-disabled-html.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-label" for="range02">Range label</label>
+        <input class="a-input" type="range" id="range02" disabled>
+      </div>
+  #a-tabs-disabled-js.a-tabs-panel
+    :code(lang="html")
+      <script>chi.rangeSlider(document.getElementById('range02'));</script>
 
 h3 Multiple Labels
 .example.-mb--3
@@ -41,15 +61,25 @@ h3 Multiple Labels
         span.-text.-mr--2 200GB
         input(type="range", class="a-input", id="range03")
         span.-text.-ml--2 5TB
-  :code(lang="html")
-    <div class="m-form__item">
-      <label class="a-label" for="range03">Range label</label>
-      <div class="m-input__wrapper -d--flex">
-        <span class="-text">200GB</span>
-        <input class="a-input -mx--2" type="range" id="range03">
-        <span class="-text">5TB</span>
+  .example-tabs.-pl--2
+    ul#a-tabs-multiple-labels.a-tabs
+      li.-active
+        a(href='#a-tabs-multiple-labels-html') HTML
+      li
+        a(href='#a-tabs-multiple-labels-js') JS
+  #a-tabs-multiple-labels-html.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-label" for="range03">Range label</label>
+        <div class="m-input__wrapper -d--flex">
+          <span class="-text">200GB</span>
+          <input class="a-input -mx--2" type="range" id="range03">
+          <span class="-text">5TB</span>
+        </div>
       </div>
-    </div>
+  #a-tabs-multiple-labels-js.a-tabs-panel
+    :code(lang="html")
+      <script>chi.rangeSlider(document.getElementById('range03'));</script>
 
 h2 Achieve consistent rendering
 p.-text
@@ -67,15 +97,25 @@ h3 Base
         input(class="a-input", type="range", id="range04")
         .a-input__progress
         .a-input__thumb
-  :code(lang="html")
-    <div class="m-form__item">
-      <label class="a-label" for="range04">Range label</label>
-      <div class="m-input__wrapper">
-        <input class="a-input" type="range" id="range04">
-        <div class="a-input__progress"></div>
-        <div class="a-input__thumb"></div>
+  .example-tabs.-pl--2
+    ul#a-tabs-with-progress.a-tabs
+      li.-active
+        a(href='#a-tabs-with-progress-html') HTML
+      li
+        a(href='#a-tabs-with-progress-js') JS
+  #a-tabs-with-progress-html.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-label" for="range04">Range label</label>
+        <div class="m-input__wrapper">
+          <input class="a-input" type="range" id="range04">
+          <div class="a-input__progress"></div>
+          <div class="a-input__thumb"></div>
+        </div>
       </div>
-    </div>
+  #a-tabs-with-progress-js.a-tabs-panel
+    :code(lang="html")
+      <script>chi.rangeSlider(document.getElementById('range04'));</script>
 
 h3 Disabled
 .example.-mb--3
@@ -86,15 +126,25 @@ h3 Disabled
         input(class="a-input", type="range", id="range05", disabled)
         .a-input__progress
         .a-input__thumb
-  :code(lang="html")
-    <div class="m-form__item">
-      <label class="a-label" for="range05">Range label</label>
-      <div class="m-input__wrapper">
-        <input class="a-input" type="range" id="range05" disabled>
-        <div class="a-input__progress"></div>
-        <div class="a-input__thumb"></div>
+  .example-tabs.-pl--2
+    ul#a-tabs-with-progress-disabled.a-tabs
+      li.-active
+        a(href='#a-tabs-with-progress-disabled-html') HTML
+      li
+        a(href='#a-tabs-with-progress-disabled-js') JS
+  #a-tabs-with-progress-disabled-html.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-label" for="range05">Range label</label>
+        <div class="m-input__wrapper">
+          <input class="a-input" type="range" id="range05" disabled>
+          <div class="a-input__progress"></div>
+          <div class="a-input__thumb"></div>
+        </div>
       </div>
-    </div>
+  #a-tabs-with-progress-disabled-js.a-tabs-panel
+    :code(lang="html")
+      <script>chi.rangeSlider(document.getElementById('range05'));</script>
 
 h3 Multiple Labels
 .example.-mb--3
@@ -108,19 +158,29 @@ h3 Multiple Labels
           .a-input__progress
           .a-input__thumb
         span.-text.-ml--2 5TB
-  :code(lang="html")
-    <div class="m-form__item">
-      <label class="a-label" for="range06">Range label</label>
-      <div class="m-input__wrapper -d--flex">
-        <span class="-text -mr--2">200GB</span>
-        <div class="m-input__wrapper -w--100">
-          <input class="a-input" type="range" id="range06">
-          <div class="a-input__progress"></div>
-          <div class="a-input__thumb"></div>
+  .example-tabs.-pl--2
+    ul#a-tabs-with-progress-multiple-labels.a-tabs
+      li.-active
+        a(href='#a-tabs-with-progress-multiple-labels-html') HTML
+      li
+        a(href='#a-tabs-with-progress-multiple-labels-js') JS
+  #a-tabs-with-progress-multiple-labels-html.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-label" for="range06">Range label</label>
+        <div class="m-input__wrapper -d--flex">
+          <span class="-text -mr--2">200GB</span>
+          <div class="m-input__wrapper -w--100">
+            <input class="a-input" type="range" id="range06">
+            <div class="a-input__progress"></div>
+            <div class="a-input__thumb"></div>
+          </div>
+          <span class="-text -ml--2">5TB</span>
         </div>
-        <span class="-text -ml--2">5TB</span>
       </div>
-    </div>
+  #a-tabs-with-progress-multiple-labels-js.a-tabs-panel
+    :code(lang="html")
+      <script>chi.rangeSlider(document.getElementById('range06'));</script>
 
 h2 Radio buttons as range slider
 p.-text
@@ -148,36 +208,45 @@ p.-text
           div
             .a-input__tick
             .a-input__tick-label > 3 years
-
-  :code(lang="html")
-    <div class="m-form__item">
-      <label class="a-label" for="range07">Range label</label>
-      <div class="m-input__wrapper">
-        <input class="a-input" type="range" min="0" max="4" step="1" id="range07">
-        <div class="a-input__tick-bar">
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">Monthly</div>
-          </div>
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">1 year</div>
-          </div>
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">2 years</div>
-          </div>
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">3 years</div>
-          </div>
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">&gt; 3 years</div>
+  .example-tabs.-pl--2
+    ul#a-tabs-radio-buttons.a-tabs
+      li.-active
+        a(href='#a-tabs-radio-buttons-html') HTML
+      li
+        a(href='#a-tabs-radio-buttons-js') JS
+  #a-tabs-radio-buttons-html.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-label" for="range07">Range label</label>
+        <div class="m-input__wrapper">
+          <input class="a-input" type="range" min="0" max="4" step="1" id="range07">
+          <div class="a-input__tick-bar">
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">Monthly</div>
+            </div>
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">1 year</div>
+            </div>
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">2 years</div>
+            </div>
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">3 years</div>
+            </div>
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">&gt; 3 years</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+  #a-tabs-radio-buttons-js.a-tabs-panel
+    :code(lang="html")
+      <script>chi.rangeSlider(document.getElementById('range07'));</script>
 
 h3 Disabled
 .example.-mb--3
@@ -202,35 +271,45 @@ h3 Disabled
           div
             .a-input__tick
             .a-input__tick-label > 3 years
-  :code(lang="html")
-    <div class="m-form__item">
-      <label class="a-label" for="range08">Range label</label>
-      <div class="m-input__wrapper">
-        <input class="a-input" type="range" min="0" max="4" step="1" id="range08" disabled>
-        <div class="a-input__tick-bar">
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">Monthly</div>
-          </div>
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">1 year</div>
-          </div>
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">2 years</div>
-          </div>
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">3 years</div>
-          </div>
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">&gt; 3 years</div>
+  .example-tabs.-pl--2
+    ul#a-tabs-radio-buttons-disabled.a-tabs
+      li.-active
+        a(href='#a-tabs-radio-buttons-disabled-html') HTML
+      li
+        a(href='#a-tabs-radio-buttons-disabled-js') JS
+  #a-tabs-radio-buttons-disabled-html.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-label" for="range08">Range label</label>
+        <div class="m-input__wrapper">
+          <input class="a-input" type="range" min="0" max="4" step="1" id="range08" disabled>
+          <div class="a-input__tick-bar">
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">Monthly</div>
+            </div>
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">1 year</div>
+            </div>
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">2 years</div>
+            </div>
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">3 years</div>
+            </div>
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">&gt; 3 years</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+  #a-tabs-radio-buttons-disabled-js.a-tabs-panel
+    :code(lang="html")
+      <script>chi.rangeSlider(document.getElementById('range08'));</script>
 
 h3 Consistent rendering in WebKit browsers
 .example.-mb--3
@@ -257,43 +336,61 @@ h3 Consistent rendering in WebKit browsers
             .a-input__tick-label > 3 years
         .a-input__progress
         .a-input__thumb
-
-  :code(lang="html")
-    <div class="m-form__item">
-      <label class="a-label" for="range09">Range label</label>
-      <div class="m-input__wrapper">
-        <input class="a-input" type="range" min="0" max="4" step="1" id="range09">
-        <div class="a-input__tick-bar">
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">Monthly</div>
+  .example-tabs.-pl--2
+    ul#a-tabs-with-progress-and-radio-buttons.a-tabs
+      li.-active
+        a(href='#a-tabs-with-progress-and-radio-buttons-html') HTML
+      li
+        a(href='#a-tabs-with-progress-and-radio-buttons-js') JS
+  #a-tabs-with-progress-and-radio-buttons-html.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="m-form__item">
+        <label class="a-label" for="range09">Range label</label>
+        <div class="m-input__wrapper">
+          <input class="a-input" type="range" min="0" max="4" step="1" id="range09">
+          <div class="a-input__tick-bar">
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">Monthly</div>
+            </div>
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">1 year</div>
+            </div>
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">2 years</div>
+            </div>
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">3 years</div>
+            </div>
+            <div>
+              <div class="a-input__tick"></div>
+              <div class="a-input__tick-label">&gt; 3 years</div>
+            </div>
           </div>
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">1 year</div>
-          </div>
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">2 years</div>
-          </div>
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">3 years</div>
-          </div>
-          <div>
-            <div class="a-input__tick"></div>
-            <div class="a-input__tick-label">&gt; 3 years</div>
-          </div>
+          <div class="a-input__progress"></div>
+          <div class="a-input__thumb"></div>
         </div>
-        <div class="a-input__progress"></div>
-        <div class="a-input__thumb"></div>
       </div>
-    </div>
+  #a-tabs-with-progress-and-radio-buttons-js.a-tabs-panel
+    :code(lang="html")
+      <script>chi.rangeSlider(document.getElementById('range09'));</script>
 
 script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
+      chi.tab(document.getElementById('a-tabs-base'));
+      chi.tab(document.getElementById('a-tabs-disabled'));
+      chi.tab(document.getElementById('a-tabs-multiple-labels'));
+      chi.tab(document.getElementById('a-tabs-with-progress'));
+      chi.tab(document.getElementById('a-tabs-with-progress-disabled'));
+      chi.tab(document.getElementById('a-tabs-with-progress-multiple-labels'));
+      chi.tab(document.getElementById('a-tabs-radio-buttons'));
+      chi.tab(document.getElementById('a-tabs-radio-buttons-disabled'));
+      chi.tab(document.getElementById('a-tabs-with-progress-and-radio-buttons'));
       chi.rangeSlider(document.querySelectorAll('.m-input__wrapper > input[type="range"]'));
     }
   );

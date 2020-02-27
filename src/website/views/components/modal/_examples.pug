@@ -10,27 +10,34 @@ p.-text
   | By default modals are positioned on top of the page.
 
 h3 Base
-.example.-mb--3
-  .m-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+.example.-mb--3(style='position:static')
+  .-p--3
+    .-d--flex.-justify-content--start.-align-items--start
+      button#modal-trigger-1.a-btn.-primary.a-modal__trigger(data-target='#modal-1')
+        | Click me to open the modal
+  .m-backdrop.-closed
     .m-backdrop__wrapper
-      section.a-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+      section.a-modal#modal-1(role="dialog", aria-label="Modal description", aria-modal="true")
         header.a-modal__header
           h2.a-modal__title Modal Title
-          button(class='a-btn -icon -close', aria-label='Close')
+          button(class='a-btn -icon -close', data-dismiss='modal', aria-label='Close')
             .a-btn__content
               i.a-icon.icon-x
         .a-modal__content
           p.-text.-m--0 Modal content
         footer.a-modal__footer
-          button.a-btn Cancel
+          button.a-btn(data-dismiss='modal') Cancel
           button.a-btn.-primary.-ml--2 Save
   :code(lang="html")
-    <div class="m-backdrop">
+    <button id="modal-trigger-1" class="a-btn a-modal__trigger" data-target="#modal-1">
+      Launch demo modal
+    </button>
+    <div class="m-backdrop -closed">
       <div class="m-backdrop__wrapper">
-        <section class="a-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+        <section id="modal-1" class="a-modal" role="dialog" aria-label="Modal description" aria-modal="true">
           <header class="a-modal__header">
             <h2 class="a-modal__title">Modal Title</h2>
-            <button class="a-btn -icon -close" aria-label="Close">
+            <button class="a-btn -icon -close" data-dismiss="modal" aria-label="Close">
               <div class="a-btn__content">
                 <i class="a-icon icon-x"></i>
               </div>
@@ -40,12 +47,14 @@ h3 Base
             <p class="-text -m--0">Modal content</p>
           </div>
           <footer class="a-modal__footer">
-            <button class="a-btn">Cancel</button>
+            <button class="a-btn" data-dismiss="modal">Cancel</button>
             <button class="a-btn -primary -ml--2">Save</button>
           </footer>
         </section>
       </div>
     </div>
+
+    <script>chi.modal(document.getElementById('modal-trigger-1'));</script>
 
 h3 Center
 p.-text Modals can also be placed in the middle of the page by applying the class <code>-center</code> in the <code>m-backdrop</code>.
@@ -464,3 +473,10 @@ h3 Portal
         </section>
       </div>
     </div>
+script.
+  document.addEventListener(
+          'DOMContentLoaded',
+          function() {
+            chi.modal(document.querySelectorAll('#modal-trigger-1'));
+          }
+  );

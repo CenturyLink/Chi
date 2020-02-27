@@ -1,1 +1,61 @@
-h2 Properties
+h2 JavaScript properties
+
+p.-text This component accepts options to configure its behavior.
+
+section.a-table.a-table__options.-bordered.-my--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Option
+          th
+            div Default
+          th
+            div Description
+      tbody
+        tr
+          td
+            div
+              code= 'animated'
+          td
+            div
+              code= 'true'
+          td
+            div
+              | Enables animation on modal display and hide, and fade effect in the backdrop.
+        tr
+          td
+            div
+              code= 'target'
+          td
+            div
+              code= 'null'
+          td
+            div
+              | Lets the developer referer the target programmatically instead of by data-target attribute.
+              | It accepts Element object and xpath selector string.
+
+h3 Preventing memory leaks
+p.-text
+  | Modal components have a dispose function to free all resources attached to the element, such as event listeners
+  | and object data. You should call this method when you want to remove the component.
+:code(lang="javascript")
+  var elem = document.getElementById('modal-1');
+  var modal = chi.modal(elem);
+  // do stuff
+  modal.dispose();
+
+p.-text
+  span.a-badge.-dark.-sm.-mr1
+    span Tip
+  | It is safe to call the <code>modal</code> method more than once, as it will return any previously created modal component
+  | associated to the trigger.
+:code(lang="javascript")
+  var elem = document.getElementById('modal-1');
+  var modal = chi.modal(elem);
+  var elem2 = document.getElementById('modal-1');
+  var modal2 = chi.modal(elem2);
+  modal === modal2; // returns true
+
+  modal.dispose(); // Only have to do it once.
