@@ -6,6 +6,9 @@
 * Fixed bug in Picker and Picker Group component which prevented users from navigating the components with tab and arrow keys.
 * Fixed rendering bug in Badge custom element.
 * Fixed bug in Footer component which caused the brand element to misalign in IE11.
+* Fixed bug in Picker Group component which caused some icons to render without sufficient margin in IE11.
+* Fixed bug in Spinner component which caused spinners to render slightly vertically misaligned in IE11.
+* Fixed bug in Floating Label component which caused placeholder text to render slightly vertically misaligned in IE11.
 
 ### 1.4.1 (February 21, 2020)
 
