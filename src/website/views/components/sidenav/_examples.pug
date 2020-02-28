@@ -23,106 +23,48 @@ dl
   dd.-text For opening the drawer (<a href="../drawer/">View drawer documentation</a>)
   dt: code ul.m-sidenav__drawer-list &gt; li
   dd.-text For activating the menu items inside the drawer.
-ul#a-tabs--expanded.a-tabs
-  li.-active
-    a(href='#a-tabs-panel--expanded-false') Initial
-  li
-    a(href='#a-tabs-panel--expanded-true') Expanded
-.example.-mb--3(id=`example-${example}`)
-  #a-tabs-panel--expanded-false.a-tabs-panel.-active
-    .-d--flex(style='overflow: hidden;')
-      aside.m-sidenav.-flex--shrink0
-        .m-sidenav__content
-          nav
-            ul.m-sidenav__list
-              each val in menuItems
-                li(class=`${val===active.menuItem ? '-active':''}`)
-                  a(href=`#drawer-${example}-${val}`)
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .-flex--grow1.-p--3.-pb--4
-        each val2 in [1,2,3,4,5]
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+.example.-mb--3
+  .-d--flex(style='overflow: hidden;')
+    aside.m-sidenav.-flex--shrink0#example-base
+      .m-sidenav__content
+        nav
+          ul.m-sidenav__list
+            each val in menuItems
+              li(class=`${val===active.menuItem ? '-active':''}`)
+                a(href=`#drawer-${example}-${val}`)
+                  .a-icon
+                    svg
+                      use(xlink:href='#icon-atom')
+                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+      .m-sidenav__drawers
+        each val1 in menuItems
+          .m-drawer.-left(id=`drawer-${example}-${val1}`)
+            .m-drawer__header
+              button(class='a-btn -icon -close', aria-label='Close')
+                .a-btn__content
+                  i.a-icon.icon-x
+            .m-drawer__content
+              ul.m-sidenav__drawer-list
+                each val2, index in drawerMenuItems
+                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
+                    a(href=`#example-${example}`)
+                      if index % 4 < 2
+                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        p.m-sidenav__description Description for title a in a drawer inside a menu.
+                      else
+                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+    .-flex--grow1.-p--3.-pb--4
+      each val2 in [1,2,3,4,5]
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  .-pl--2
+    ul.a-tabs#examples-default
+      li.-active
+        a(href=`#example-base-html`) HTML
+      li
+        a(href=`#example-base-js`) JS
+  .a-tabs-panel.-active#example-base-html
     :code(lang='html')
-      <aside class="m-sidenav">
-        <div class="m-sidenav__content">
-          <nav>
-            <ul class="m-sidenav__list">
-              <li class="-active">
-                <a href="#drawer-0-1">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Active Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-2">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-3">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-4">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </aside>
-  #a-tabs-panel--expanded-true.a-tabs-panel
-    .-d--flex(style='overflow: hidden;')
-      aside.m-sidenav.-flex--shrink0
-        .m-sidenav__content
-          nav
-            ul.m-sidenav__list
-              each val in menuItems
-                li(class=`${val===active.menuItem ? '-active':''}`)
-                  a(href=`#drawer-${example}-${val}`)
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-        .m-sidenav__drawers
-          each val1 in menuItems
-            .m-drawer.-left(id=`drawer-${example}-${val1}`,class=`${val1===active.menuItem ? '-active':''}`)
-              .m-drawer__header
-                button(class='a-btn -icon -close', aria-label='Close')
-                  .a-btn__content
-                    i.a-icon.icon-x
-              .m-drawer__content
-                ul.m-sidenav__drawer-list
-                  each val2, index in drawerMenuItems
-                    li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                      a(href=`#example-${example}`)
-                        if index % 4 < 2
-                          .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                          p.m-sidenav__description Description for title a in a drawer inside a menu.
-                        else
-                          span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-      .-flex--grow1.-p--3.-pb--4
-        each val2 in [1,2,3,4,5]
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-    :code(lang='html')
-      <aside class="m-sidenav">
+      <aside class="m-sidenav" id="sidenav-0">
         <div class="m-sidenav__content">
           <nav>
             <ul class="m-sidenav__list">
@@ -296,111 +238,55 @@ ul#a-tabs--expanded.a-tabs
           </div>
         </div>
       </aside>
-
+  .a-tabs-panel#example-base-js
+    :code(lang='html')
+      <script>chi.sidenav(document.getElementById('sidenav-0'));</script>
 
 h3 Inverse
 
 - example=1
-ul#a-tabs--expanded-inverse.a-tabs
-  li.-active
-    a(href='#a-tabs-panel--expanded-inverse-false') Initial
-  li
-    a(href='#a-tabs-panel--expanded-inverse-true') Expanded
-.example.-mb--3(id=`example-${example}`)
-  #a-tabs-panel--expanded-inverse-false.a-tabs-panel.-active
-    .-d--flex(style='overflow: hidden;')
-      aside.m-sidenav.-inverse.-flex--shrink0
-        .m-sidenav__content
-          nav
-            ul.m-sidenav__list
-              each val in menuItems
-                li(class=`${val===active.menuItem ? '-active':''}`)
-                  a(href=`#drawer-${example}-${val}`)
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .-flex--grow1.-p--3.-pb--4
-        each val2 in [1,2,3,4,5]
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+.example.-mb--3
+  .-d--flex(style='overflow: hidden;')
+    aside.m-sidenav.-inverse.-flex--shrink0#example-base-inverse
+      .m-sidenav__content
+        nav
+          ul.m-sidenav__list
+            each val in menuItems
+              li(class=`${val===active.menuItem ? '-active':''}`)
+                a(href=`#drawer-${example}-${val}`)
+                  .a-icon
+                    svg
+                      use(xlink:href='#icon-atom')
+                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+      .m-sidenav__drawers
+        each val1 in menuItems
+          .m-drawer.-left(id=`drawer-${example}-${val1}`)
+            .m-drawer__header
+              button(class='a-btn -icon -close', aria-label='Close')
+                .a-btn__content
+                  i.a-icon.icon-x
+            .m-drawer__content
+              ul.m-sidenav__drawer-list
+                each val2, index in drawerMenuItems
+                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
+                    a(href=`#example-${example}`)
+                      if index % 4 < 2
+                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        p.m-sidenav__description Description for title a in a drawer inside a menu.
+                      else
+                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+    .-flex--grow1.-p--3.-pb--4
+      each val2 in [1,2,3,4,5]
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  .-pl--2
+    ul.a-tabs#examples-inverse
+      li.-active
+        a(href=`#example-inverse-html`) HTML
+      li
+        a(href=`#example-inverse-js`) JS
+  .a-tabs-panel.-active#example-inverse-html
     :code(lang='html')
-      <aside class="m-sidenav -inverse">
-        <div class="m-sidenav__content">
-          <nav>
-            <ul class="m-sidenav__list">
-              <li class="-active">
-                <a href="#drawer-1-1">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Active Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-1-2">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-1-3">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-1-4">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </aside>
-  #a-tabs-panel--expanded-inverse-true.a-tabs-panel
-    .-d--flex(style='overflow: hidden;')
-      aside.m-sidenav.-inverse.-flex--shrink0
-        .m-sidenav__content
-          nav
-            ul.m-sidenav__list
-              each val in menuItems
-                li(class=`${val===active.menuItem ? '-active':''}`)
-                  a(href=`#drawer-${example}-${val}`)
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-        .m-sidenav__drawers
-          each val1 in menuItems
-            .m-drawer.-left(id=`drawer-${example}-${val1}`,class=`${val1===active.menuItem ? '-active':''}`)
-              .m-drawer__header
-                button(class='a-btn -icon -close', aria-label='Close')
-                  .a-btn__content
-                    i.a-icon.icon-x
-              .m-drawer__content
-                ul.m-sidenav__drawer-list
-                  each val2, index in drawerMenuItems
-                    li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                      a(href=`#example-${example}`)
-                        if index % 4 < 2
-                          .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                          p.m-sidenav__description Description for title a in a drawer inside a menu.
-                        else
-                          span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-      .-flex--grow1.-p--3.-pb--4
-        each val2 in [1,2,3,4,5]
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-    :code(lang='html')
-      <aside class="m-sidenav -inverse">
+      <aside class="m-sidenav -inverse" id="sidenav-1">
         <div class="m-sidenav__content">
           <nav>
             <ul class="m-sidenav__list">
@@ -574,6 +460,272 @@ ul#a-tabs--expanded-inverse.a-tabs
           </div>
         </div>
       </aside>
+  .a-tabs-panel#example-inverse-js
+    :code(lang='html')
+      <script>chi.sidenav(document.getElementById('sidenav-1'));</script>
+
+- example = 2
+h3(id=`example-${example}`) Enterprise Global Navigation
+.example.-mb--3
+  .-d--flex(style='overflow: hidden;')
+    aside.m-sidenav.-inverse.-global-nav.-flex--shrink0(id=`sidenav-global-nav-${example}`)
+      .m-sidenav__content
+        nav
+          ul.m-sidenav__list
+            each val in menuItems
+              li(class=`${val === active.menuItem ? '-active' : ''}`)
+                a(href=`#drawer-global-nav-${example}-${val}`)
+                  .a-icon
+                    svg
+                      use(xlink:href='#icon-atom')
+                  span=val === active.menuItem ? 'Active Item' : 'Menu Item'
+      .m-sidenav__drawers
+        each val1 in menuItems
+          .m-drawer.-animated.-left(id=`drawer-global-nav-${example}-${val1}`)
+            .m-drawer__header
+              .a-drawer__title= 'Menu item ' + val1
+              button(class='a-btn -icon -close', aria-label='Close')
+                .a-btn__content
+                  i.a-icon.icon-x
+            .m-drawer__content
+              ul.m-sidenav__drawer-list
+                each val2, index in drawerMenuItems
+                  if val2 === 'A' || val2 === 'B'
+                    li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                      a(href=`#drawer-item-list-${val1}-${val2}`)
+                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                      .m-sidenav__drawer-item-list(id=`drawer-item-list-${val1}-${val2}`)
+                        ul.a-tabs.-vertical.-sm
+                          li
+                            a(class=`a-sidenav__drawer-item-tab ${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
+                          li
+                            a(class='a-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
+                          li
+                            a(class='a-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab C
+                  else
+                    li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                      a(href=`#exampleHashTarget`)
+                        span.m-sidenav__title
+                          =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                          .a-icon.-xs
+                            svg
+                              use(xlink:href='#icon-external-link')
+    .-flex--grow1.-p--3.-pb--4
+      each val2 in [1,2,3,4]
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  .-pl--2
+    ul#a-tabs-three-level.a-tabs
+      li.-active
+        a(href='#a-tabs-three-level-html') HTML
+      li
+        a(href='#a-tabs-three-level-js') JS
+  #a-tabs-three-level-html.a-tabs-panel.-active
+    :code(lang="html")
+      <aside class="m-sidenav -inverse -global-nav" id="sidenav-global-nav-1">
+        <div class="m-sidenav__content">
+          <nav>
+            <ul class="m-sidenav__list">
+              <li class="-active">
+                <a href="#drawer-global-nav-1-1">
+                  <div class="a-icon">
+                    <svg>
+                      <use xlink:href="#icon-atom"></use>
+                    </svg>
+                  </div>
+                  <span>Active Item</span>
+                </a>
+              </li>
+              <li>
+                <a href="#drawer-global-nav-1-2">
+                  <div class="a-icon">
+                    <svg>
+                      <use xlink:href="#icon-atom"></use>
+                    </svg>
+                  </div>
+                  <span>Menu Item</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="m-sidenav__drawers">
+          <div class="m-drawer -animated -left" id="drawer-global-nav-1-1">
+            <div class="m-drawer__header">
+              <div class="a-drawer__title">Menu item 1</div>
+              <button class="a-btn -icon -close" aria-label="Close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#drawer-item-list-1-A">
+                    <div class="m-sidenav__title">Title A</div>
+                  </a>
+                  <div class="m-sidenav__drawer-item-list" id="drawer-item-list-1-A">
+                    <ul class="a-tabs -vertical -sm">
+                      <li>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="-active -expanded">
+                  <a href="#drawer-item-list-1-B">
+                    <div class="m-sidenav__title">Title B</div>
+                  </a>
+                  <div class="m-sidenav__drawer-item-list" id="drawer-item-list-1-B">
+                    <ul class="a-tabs -vertical -sm">
+                      <li>
+                        <a class="a-sidenav__drawer-item-tab -active" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="m-sidenav__title">
+                      Title C
+                      <div class="a-icon -xs">
+                        <svg>
+                          <use xlink:href="#icon-external-link"></use>
+                        </svg>
+                      </div>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="m-sidenav__title">
+                      Title D
+                      <div class="a-icon -xs">
+                        <svg>
+                          <use xlink:href="#icon-external-link"></use>
+                        </svg>
+                      </div>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-drawer -animated -left" id="drawer-global-nav-1-2">
+            <div class="m-drawer__header">
+              <div class="a-drawer__title">Menu item 2</div>
+              <button class="a-btn -icon -close" aria-label="Close">
+                <div class="a-btn__content"><i class="a-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <ul class="m-sidenav__drawer-list">
+                <li>
+                  <a href="#drawer-item-list-2-A">
+                    <div class="m-sidenav__title">Title E</div>
+                  </a>
+                  <div class="m-sidenav__drawer-item-list" id="drawer-item-list-2-A">
+                    <ul class="a-tabs -vertical -sm">
+                      <li>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a href="#drawer-item-list-2-B">
+                    <div class="m-sidenav__title">Title F</div>
+                  </a>
+                  <div class="m-sidenav__drawer-item-list" id="drawer-item-list-2-B">
+                    <ul class="a-tabs -vertical -sm">
+                      <li>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="m-sidenav__title">
+                      Title G
+                      <div class="a-icon -xs">
+                        <svg>
+                          <use xlink:href="#icon-external-link"></use>
+                        </svg>
+                      </div>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="m-sidenav__title">
+                      Title H
+                      <div class="a-icon -xs">
+                        <svg>
+                          <use xlink:href="#icon-external-link"></use>
+                        </svg>
+                      </div>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </aside>
+  #a-tabs-three-level-js.a-tabs-panel
+    :code(lang="html")
+      <script>
+        chi.sidenav(document.getElementById('sidenav-global-nav-1'), {
+          animated: false
+        });
+      </script>
 
 h2 Sizes
 p.-text
@@ -583,106 +735,48 @@ p.-text
 h3 -sm
 
 - example=2
-ul#a-tabs--expanded-sm.a-tabs
-  li.-active
-    a(href='#a-tabs-panel--expanded-sm-false') Initial
-  li
-    a(href='#a-tabs-panel--expanded-sm-true') Expanded
-.example.-mb--3(id=`example-${example}`)
-  #a-tabs-panel--expanded-sm-false.a-tabs-panel.-active
-    .-d--flex(style='overflow: hidden;')
-      aside.m-sidenav.-sm.-flex--shrink0
-        .m-sidenav__content
-          nav
-            ul.m-sidenav__list
-              each val in menuItems
-                li(class=`${val===active.menuItem ? '-active':''}`)
-                  a(href=`#drawer-${example}-${val}`)
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .-flex--grow1.-p--3.-pb--4
-        each val2 in [1,2,3,4,5]
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+.example.-mb--3
+  .-d--flex(style='overflow: hidden;')
+    aside.m-sidenav.-sm.-flex--shrink0#example-sizes-sm
+      .m-sidenav__content
+        nav
+          ul.m-sidenav__list
+            each val in menuItems
+              li(class=`${val===active.menuItem ? '-active':''}`)
+                a(href=`#drawer-${example}-${val}`)
+                  .a-icon
+                    svg
+                      use(xlink:href='#icon-atom')
+                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+      .m-sidenav__drawers
+        each val1 in menuItems
+          .m-drawer.-left(id=`drawer-${example}-${val1}`)
+            .m-drawer__header
+              button(class='a-btn -icon -close', aria-label='Close')
+                .a-btn__content
+                  i.a-icon.icon-x
+            .m-drawer__content
+              ul.m-sidenav__drawer-list
+                each val2, index in drawerMenuItems
+                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
+                    a(href=`#example-${example}`)
+                      if index % 4 < 2
+                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        p.m-sidenav__description Description for title a in a drawer inside a menu.
+                      else
+                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+    .-flex--grow1.-p--3.-pb--4
+      each val2 in [1,2,3,4,5]
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  .-pl--2
+    ul#examples-sizes-sm.a-tabs
+      li.-active
+        a(href='#examples-sizes-sm-html') HTML
+      li
+        a(href='#examples-sizes-sm-js') JS
+  #examples-sizes-sm-html.a-tabs-panel.-active
     :code(lang='html')
-      <aside class="m-sidenav -sm">
-        <div class="m-sidenav__content">
-          <nav>
-            <ul class="m-sidenav__list">
-              <li class="-active">
-                <a href="#drawer-0-1">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Active Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-2">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-3">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-4">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </aside>
-  #a-tabs-panel--expanded-sm-true.a-tabs-panel
-    .-d--flex(style='overflow: hidden;')
-      aside.m-sidenav.-sm.-flex--shrink0
-        .m-sidenav__content
-          nav
-            ul.m-sidenav__list
-              each val in menuItems
-                li(class=`${val===active.menuItem ? '-active':''}`)
-                  a(href=`#drawer-${example}-${val}`)
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-        .m-sidenav__drawers
-          each val1 in menuItems
-            .m-drawer.-left(id=`drawer-${example}-${val1}`,class=`${val1===active.menuItem ? '-active':''}`)
-              .m-drawer__header
-                button(class='a-btn -icon -close', aria-label='Close')
-                  .a-btn__content
-                    i.a-icon.icon-x
-              .m-drawer__content
-                ul.m-sidenav__drawer-list
-                  each val2, index in drawerMenuItems
-                    li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                      a(href=`#example-${example}`)
-                        if index % 4 < 2
-                          .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                          p.m-sidenav__description Description for title a in a drawer inside a menu.
-                        else
-                          span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-      .-flex--grow1.-p--3.-pb--4
-        each val2 in [1,2,3,4,5]
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-    :code(lang='html')
-      <aside class="m-sidenav -sm">
+      <aside class="m-sidenav -sm" id="sidenav-3">
         <div class="m-sidenav__content">
           <nav>
             <ul class="m-sidenav__list">
@@ -856,110 +950,55 @@ ul#a-tabs--expanded-sm.a-tabs
           </div>
         </div>
       </aside>
+  #examples-sizes-sm-js.a-tabs-panel
+    :code(lang='html')
+      <script>chi.sidenav(document.getElementById('sidenav-3'));</script>
 
 h3 -md
 
 - example=3
-ul#a-tabs--expanded-md.a-tabs
-  li.-active
-    a(href='#a-tabs-panel--expanded-md-false') Initial
-  li
-    a(href='#a-tabs-panel--expanded-md-true') Expanded
-.example.-mb--3(id=`example-${example}`)
-  #a-tabs-panel--expanded-md-false.a-tabs-panel.-active
-    .-d--flex(style='overflow: hidden;')
-      aside.m-sidenav.-md.-flex--shrink0
-        .m-sidenav__content
-          nav
-            ul.m-sidenav__list
-              each val in menuItems
-                li(class=`${val===active.menuItem ? '-active':''}`)
-                  a(href=`#drawer-${example}-${val}`)
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .-flex--grow1.-p--3.-pb--4
-        each val2 in [1,2,3,4,5]
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+.example.-mb--3
+  .-d--flex(style='overflow: hidden;')
+    aside.m-sidenav.-md.-flex--shrink0#example-sizes-md
+      .m-sidenav__content
+        nav
+          ul.m-sidenav__list
+            each val in menuItems
+              li(class=`${val===active.menuItem ? '-active':''}`)
+                a(href=`#drawer-${example}-${val}`)
+                  .a-icon
+                    svg
+                      use(xlink:href='#icon-atom')
+                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+      .m-sidenav__drawers
+        each val1 in menuItems
+          .m-drawer.-left(id=`drawer-${example}-${val1}`)
+            .m-drawer__header
+              button(class='a-btn -icon -close', aria-label='Close')
+                .a-btn__content
+                  i.a-icon.icon-x
+            .m-drawer__content
+              ul.m-sidenav__drawer-list
+                each val2, index in drawerMenuItems
+                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
+                    a(href=`#example-${example}`)
+                      if index % 4 < 2
+                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        p.m-sidenav__description Description for title a in a drawer inside a menu.
+                      else
+                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+    .-flex--grow1.-p--3.-pb--4
+      each val2 in [1,2,3,4,5]
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  .-pl--2
+    ul#examples-sizes-md.a-tabs
+      li.-active
+        a(href='#examples-sizes-md-html') HTML
+      li
+        a(href='#examples-sizes-md-js') JS
+  #examples-sizes-md-html.a-tabs-panel.-active
     :code(lang='html')
-      <aside class="m-sidenav -md">
-        <div class="m-sidenav__content">
-          <nav>
-            <ul class="m-sidenav__list">
-              <li class="-active">
-                <a href="#drawer-0-1">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Active Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-2">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-3">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-4">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </aside>
-  #a-tabs-panel--expanded-md-true.a-tabs-panel
-    .-d--flex(style='overflow: hidden;')
-      aside.m-sidenav.-md.-flex--shrink0
-        .m-sidenav__content
-          nav
-            ul.m-sidenav__list
-              each val in menuItems
-                li(class=`${val===active.menuItem ? '-active':''}`)
-                  a(href=`#drawer-${example}-${val}`)
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-        .m-sidenav__drawers
-          each val1 in menuItems
-            .m-drawer.-left(id=`drawer-${example}-${val1}`,class=`${val1===active.menuItem ? '-active':''}`)
-              .m-drawer__header
-                button(class='a-btn -icon -close', aria-label='Close')
-                  .a-btn__content
-                    i.a-icon.icon-x
-              .m-drawer__content
-                ul.m-sidenav__drawer-list
-                  each val2, index in drawerMenuItems
-                    li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                      a(href=`#example-${example}`)
-                        if index % 4 < 2
-                          .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                          p.m-sidenav__description Description for title a in a drawer inside a menu.
-                        else
-                          span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-      .-flex--grow1.-p--3.-pb--4
-        each val2 in [1,2,3,4,5]
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-    :code(lang='html')
-      <aside class="m-sidenav -md">
+      <aside class="m-sidenav -md" id="sidenav-4">
         <div class="m-sidenav__content">
           <nav>
             <ul class="m-sidenav__list">
@@ -1133,110 +1172,55 @@ ul#a-tabs--expanded-md.a-tabs
           </div>
         </div>
       </aside>
+  #examples-sizes-md-js.a-tabs-panel
+    :code(lang='html')
+      <script>chi.sidenav(document.getElementById('sidenav-4'));</script>
 
 h3 -lg
 
 - example=4
-ul#a-tabs--expanded-lg.a-tabs
-  li.-active
-    a(href='#a-tabs-panel--expanded-lg-false') Initial
-  li
-    a(href='#a-tabs-panel--expanded-lg-true') Expanded
-.example.-mb--3(id=`example-${example}`)
-  #a-tabs-panel--expanded-lg-false.a-tabs-panel.-active
-    .-d--flex(style='overflow: hidden;')
-      aside.m-sidenav.-lg.-flex--shrink0
-        .m-sidenav__content
-          nav
-            ul.m-sidenav__list
-              each val in menuItems
-                li(class=`${val===active.menuItem ? '-active':''}`)
-                  a(href=`#drawer-${example}-${val}`)
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .-flex--grow1.-p--3.-pb--4
-        each val2 in [1,2,3,4,5]
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+.example.-mb--3
+  .-d--flex(style='overflow: hidden;')
+    aside.m-sidenav.-lg.-flex--shrink0#example-sizes-lg
+      .m-sidenav__content
+        nav
+          ul.m-sidenav__list
+            each val in menuItems
+              li(class=`${val===active.menuItem ? '-active':''}`)
+                a(href=`#drawer-${example}-${val}`)
+                  .a-icon
+                    svg
+                      use(xlink:href='#icon-atom')
+                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
+      .m-sidenav__drawers
+        each val1 in menuItems
+          .m-drawer.-left(id=`drawer-${example}-${val1}`)
+            .m-drawer__header
+              button(class='a-btn -icon -close', aria-label='Close')
+                .a-btn__content
+                  i.a-icon.icon-x
+            .m-drawer__content
+              ul.m-sidenav__drawer-list
+                each val2, index in drawerMenuItems
+                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
+                    a(href=`#example-${example}`)
+                      if index % 4 < 2
+                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        p.m-sidenav__description Description for title a in a drawer inside a menu.
+                      else
+                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+    .-flex--grow1.-p--3.-pb--4
+      each val2 in [1,2,3,4,5]
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  .-pl--2
+    ul#examples-sizes-lg.a-tabs
+      li.-active
+        a(href='#examples-sizes-lg-html') HTML
+      li
+        a(href='#examples-sizes-lg-js') JS
+  #examples-sizes-lg-html.a-tabs-panel.-active
     :code(lang='html')
-      <aside class="m-sidenav -lg">
-        <div class="m-sidenav__content">
-          <nav>
-            <ul class="m-sidenav__list">
-              <li class="-active">
-                <a href="#drawer-0-1">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Active Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-2">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-3">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-4">
-                  <div class="a-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </aside>
-  #a-tabs-panel--expanded-lg-true.a-tabs-panel
-    .-d--flex(style='overflow: hidden;')
-      aside.m-sidenav.-lg.-flex--shrink0
-        .m-sidenav__content
-          nav
-            ul.m-sidenav__list
-              each val in menuItems
-                li(class=`${val===active.menuItem ? '-active':''}`)
-                  a(href=`#drawer-${example}-${val}`)
-                    .a-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-        .m-sidenav__drawers
-          each val1 in menuItems
-            .m-drawer.-left(id=`drawer-${example}-${val1}`,class=`${val1===active.menuItem ? '-active':''}`)
-              .m-drawer__header
-                button(class='a-btn -icon -close', aria-label='Close')
-                  .a-btn__content
-                    i.a-icon.icon-x
-              .m-drawer__content
-                ul.m-sidenav__drawer-list
-                  each val2, index in drawerMenuItems
-                    li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                      a(href=`#example-${example}`)
-                        if index % 4 < 2
-                          .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                          p.m-sidenav__description Description for title a in a drawer inside a menu.
-                        else
-                          span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-      .-flex--grow1.-p--3.-pb--4
-        each val2 in [1,2,3,4,5]
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-    :code(lang='html')
-      <aside class="m-sidenav -lg">
+      <aside class="m-sidenav -lg" id="sidenav-5">
         <div class="m-sidenav__content">
           <nav>
             <ul class="m-sidenav__list">
@@ -1410,6 +1394,9 @@ ul#a-tabs--expanded-lg.a-tabs
           </div>
         </div>
       </aside>
+  #examples-sizes-lg-js.a-tabs-panel
+    :code(lang='html')
+      <script>chi.sidenav(document.getElementById('sidenav-5'));</script>
 
 h3 Recommended layout
 p.-text
@@ -1504,10 +1491,18 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('a-tabs--expanded'));
-      chi.tab(document.getElementById('a-tabs--expanded-inverse'));
-      chi.tab(document.getElementById('a-tabs--expanded-sm'));
-      chi.tab(document.getElementById('a-tabs--expanded-md'));
-      chi.tab(document.getElementById('a-tabs--expanded-lg'));
+      chi.sidenav(document.getElementById('example-base'));
+      chi.sidenav(document.getElementById('example-base-inverse'));
+      chi.sidenav(document.getElementById('sidenav-global-nav-2'));
+      chi.sidenav(document.getElementById('example-sizes-sm'));
+      chi.sidenav(document.getElementById('example-sizes-md'));
+      chi.sidenav(document.getElementById('example-sizes-lg'));
+
+      chi.tab(document.getElementById('examples-default'));
+      chi.tab(document.getElementById('examples-inverse'));
+      chi.tab(document.getElementById('a-tabs-three-level'));
+      chi.tab(document.getElementById('examples-sizes-sm'));
+      chi.tab(document.getElementById('examples-sizes-md'));
+      chi.tab(document.getElementById('examples-sizes-lg'));
     }
   );
