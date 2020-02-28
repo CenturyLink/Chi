@@ -18,47 +18,62 @@ ul#a-tabs--menu.a-tabs
   #a-tabs-panel--horizontal-base.a-tabs-panel.-active
     .-p--3(style="background-color:#eee;")
       .-bg--white.-px--3
-        ul.a-tabs
+        ul.a-tabs#example-horizontal-base
           li.-active
-            a(href='#') Active Tab
+            a(href='#horizontal-base-1') Active Tab
           li
-            a(href='#') Tab Link
+            a(href='#horizontal-base-2') Tab Link
           li
-            a(href='#') Tab Link
+            a(href='#horizontal-base-3') Tab Link
+        .-py--3
+          .a-tabs-panel.-active#horizontal-base-1
+            | Tab 1 content
+          .a-tabs-panel#horizontal-base-2
+            | Tab 2 content
+          .a-tabs-panel#horizontal-base-3
+            | Tab 3 content
     :code(lang='html')
-      <ul class="a-tabs">
-        <li class="-active">
-          <a href="#">Active Tab</a>
-        </li>
-        <li>
-          <a href="#">a Tab Link</a>
-        </li>
-        <li>
-          <a href="#">a Tab Link</a>
-        </li>
+      <ul class="a-tabs" id="example-horizontal-base">
+        <li class="-active"><a href="#horizontal-base-1">Active Tab</a></li>
+        <li><a href="#horizontal-base-2">Tab Link</a></li>
+        <li><a href="#horizontal-base-3">Tab Link</a></li>
       </ul>
+
+      <div class="a-tabs-panel -active" id="horizontal-base-1">Tab 1 content</div>
+      <div class="a-tabs-panel" id="horizontal-base-2">Tab 2 content</div>
+      <div class="a-tabs-panel" id="horizontal-base-3">Tab 3 content</div>
+
+      <script>chi.tab(document.getElementById('example-horizontal-base'));</script>
+
   #a-tabs-panel--horizontal-inverse.a-tabs-panel
     .-p--3(style="background-color:#eee;")
       .-bg--black.-px--3
-        ul.a-tabs.-inverse
+        ul.a-tabs.-inverse#example-horizontal-inverse
           li.-active
-            a(href='#') Active Tab
+            a(href='#horizontal-inverse-1') Active Tab
           li
-            a(href='#') Tab Link
+            a(href='#horizontal-inverse-2') Tab Link
           li
-            a(href='#') Tab Link
+            a(href='#horizontal-inverse-3') Tab Link
+      .-bg--white.-p--3
+        .a-tabs-panel.-active#horizontal-inverse-1
+          | Tab 1 content
+        .a-tabs-panel#horizontal-inverse-2
+          | Tab 2 content
+        .a-tabs-panel#horizontal-inverse-3
+          | Tab 3 content
     :code(lang='html')
-      <ul class="a-tabs -inverse">
-        <li class="-active">
-          <a href="#">Active Tab</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
+      <ul class="a-tabs -inverse" id="example-horizontal-inverse">
+        <li class="-active"><a href="#horizontal-inverse-1">Active Tab</a></li>
+        <li><a href="#horizontal-inverse-2">Tab Link</a></li>
+        <li><a href="#horizontal-inverse-3">Tab Link</a></li>
       </ul>
+
+      <div class="a-tabs-panel -active" id="horizontal-inverse-1">Tab 1 content</div>
+      <div class="a-tabs-panel" id="horizontal-inverse-2">Tab 2 content</div>
+      <div class="a-tabs-panel" id="horizontal-inverse-3">Tab 3 content</div>
+
+      <script>chi.tab(document.getElementById('example-horizontal-inverse'));</script>
 
 h3 Vertical
 ul#a-tabs--menu-vertical.a-tabs
@@ -70,47 +85,381 @@ ul#a-tabs--menu-vertical.a-tabs
   #a-tabs-panel--vertical-base.a-tabs-panel.-active
     .-p--3(style="background-color:#eee;")
       .-bg--white.-p--3
-        ul.a-tabs.-vertical
+        ul.a-tabs.-vertical#example-vertical-base
           li.-active
-            a(href='#') Active Tab
+            a(href='#vertical-base-1') Active Tab
           li
-            a(href='#') Tab Link
+            a(href='#vertical-base-2') Tab Link
           li
-            a(href='#') Tab Link
+            a(href='#vertical-base-3') Tab Link
+        .-pt--3
+          .a-tabs-panel.-active#vertical-base-1
+            | Tab 1 content
+          .a-tabs-panel#vertical-base-2
+            | Tab 2 content
+          .a-tabs-panel#vertical-base-3
+            | Tab 3 content
     :code(lang='html')
-      <ul class="a-tabs -vertical">
-        <li class="-active">
-          <a href="#">Active Tab</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
+      <ul class="a-tabs -vertical" id="example-vertical-base">
+        <li class="-active"><a href="#vertical-base-1">Active Tab</a></li>
+        <li><a href="#vertical-base-2">Tab Link</a></li>
+        <li><a href="#vertical-base-3">Tab Link</a></li>
       </ul>
+
+      <div class="a-tabs-panel -active" id="vertical-base-1">Tab 1 content</div>
+      <div class="a-tabs-panel" id="vertical-base-2">Tab 2 content</div>
+      <div class="a-tabs-panel" id="vertical-base-3">Tab 3 content</div>
+
+      <script>chi.tab(document.getElementById('example-vertical-base'));</script>
   #a-tabs-panel--vertical-inverse.a-tabs-panel
     .-p--3(style="background-color:#eee;")
       .-bg--black.-p--3
-        ul.a-tabs.-inverse.-vertical
+        ul.a-tabs.-inverse.-vertical#example-vertical-inverse
           li.-active
-            a(href='#') Active Tab
+            a(href='#vertical-inverse-1') Active Tab
           li
-            a(href='#') Tab Link
+            a(href='#vertical-inverse-2') Tab Link
           li
-            a(href='#') Tab Link
+            a(href='#vertical-inverse-3') Tab Link
+      .-p--3.-bg--white
+        .a-tabs-panel.-active#vertical-inverse-1
+          | Tab 1 content
+        .a-tabs-panel#vertical-inverse-2
+          | Tab 2 content
+        .a-tabs-panel#vertical-inverse-3
+          | Tab 3 content
     :code(lang='html')
       <ul class="a-tabs -inverse -vertical">
-        <li class="-active">
-          <a href="#">Active Tab</a>
+        <li class="-active"><a href="#vertical-inverse-1">Active Tab</a></li>
+        <li><a href="#vertical-inverse-2">Tab Link</a></li>
+        <li><a href="#vertical-inverse-3">Tab Link</a></li>
+      </ul>
+
+      <div class="a-tabs-panel -active" id="vertical-inverse-1">Tab 1 content</div>
+      <div class="a-tabs-panel" id="vertical-inverse-2">Tab 2 content</div>
+      <div class="a-tabs-panel" id="vertical-inverse-3">Tab 3 content</div>
+
+      <script>chi.tab(document.getElementById('example-vertical-inverse'));</script>
+
+h2 Keep default link behavior
+p.-text
+  | By default, Chi JavaScript enabled tabs will ignore default link behavior.
+  | To preserve it, specify a target property on the link.
+
+.example.-mb--3
+  .-p--3.-pb--4
+    ul#example-default-link-behavior.a-tabs
+      li.-active
+        a(href='#a2') Tab a
+      li
+        a(href='#b2') Tab b
+      li
+        a(href='#c2') Tab c
+      li
+        a(href='https://assets.ctl.io/chi/', target='_self') External Link
+
+    #a2.a-tabs-panel.-active
+      p.-text Content for tab a
+    #b2.a-tabs-panel
+      p.-text Content for tab b
+    #c2.a-tabs-panel
+      p.-text Content for tab c
+  :code(lang='html')
+    <ul class="a-tabs" id="example-tabs-2">
+      <li class="-active"><a href="#a">Tab a</a></li>
+      <li><a href="#b">Tab b</a></li>
+      <li><a href="#c">Tab c</a></li>
+      <li><a href="https://assets.ctl.io/chi/" target="_self">External Link</a></li>
+    </ul>
+
+    <div class="a-tabs-panel -active" id="a">
+      <p class="-text">Content for tab a</p>
+    </div>
+    <div class="a-tabs-panel" id="b">
+      <p class="-text">Content for tab b</p>
+    </div>
+    <div class="a-tabs-panel" id="c">
+      <p class="-text">Content for tab c</p>
+    </div>
+
+    <script>chi.tab(document.getElementById('example-tabs-2'));</script>
+
+h2#navigationExample Tabbed navigation bar
+
+p.-text
+  | The navigation component is a combination of Chi tabs and dropdowns components. You must use
+  | <code>chi.navigation</code> function to instantiate the whole group of components, and there is no need for
+  | instantiating the tabs nor the dropdowns independently. The navigation components will manage the lifecycle of the
+  | descendants' tabs and dropdowns.
+
+p.-text
+  | Although navigation reproduces all the functionality that tabs and dropdowns have, like the sliding border or the
+  | animated chevron in the dropdowns, it also adds some other new functionalities like the automatic overflow menu,
+  | or a wait-for-animation option.
+
+.example.-mb--3
+  .-p--3.-pb--4
+    ul.a-tabs.a-navigationExample#example-tabbed-navigation
+      li.m-dropdown.-active
+        a.m-dropdown__trigger(href='#') Active tab
+        .m-dropdown__menu
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 1
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 2
+          div
+            a.m-dropdown__menu-item.m-dropdown__trigger(href='#') Elem 3 more
+            .m-dropdown__menu
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 4
+      li
+        a(href='#exampleHashTarget') Tab Link
+      li
+        a(href='#exampleHashTarget') Tab Link
+      li
+        a(href='#exampleHashTarget') Tab Link
+      li
+        a(href='#exampleHashTarget') Tab Link
+      li
+        a(href='#exampleHashTarget') Tab Link
+      li
+        a(href='#exampleHashTarget') Tab Link
+      li.m-dropdown
+        a.m-dropdown__trigger(href='#') Tab Dropdown
+        .m-dropdown__menu
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 1
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 2
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 3
+  ul.a-tabs.-ml--3#tabbed-navigation-switch
+    li.-active
+      a(href='#example-1__horizontal-html') HTML
+    li
+      a(href='#example-1__horizontal-script') JavaScript
+  #example-1__horizontal-html.a-tabs-panel.-active
+    :code(lang='html')
+      <ul id="navigationExample-1" class="a-tabs">
+        <li class="m-dropdown -active">
+          <a class="m-dropdown__trigger" href="#">Active tab</a>
+          <div class="m-dropdown__menu">
+            <a class="m-dropdown__menu-item" href="#">Elem 1</a>
+            <a class="m-dropdown__menu-item" href="#">Elem 2</a>
+            <div>
+              <a class="m-dropdown__menu-item m-dropdown__trigger" href="#">Elem 3 more</a>
+              <div class="m-dropdown__menu">
+                <a class="m-dropdown__menu-item" href="#">Elem 3.1</a><a class="m-dropdown__menu-item" href="#">Elem 3.2</a><a class="m-dropdown__menu-item" href="#">Elem 3.3</a><a class="m-dropdown__menu-item" href="#">Elem 3.4</a>
+              </div>
+            </div>
+            <a class="m-dropdown__menu-item" href="#">Elem 4</a>
+          </div>
         </li>
         <li>
           <a href="#">Tab Link</a>
         </li>
         <li>
           <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li class="m-dropdown">
+          <a class="m-dropdown__trigger" href="#">Tab Dropdown</a>
+          <div class="m-dropdown__menu">
+            <a class="m-dropdown__menu-item" href="#">Element 1</a>
+            <a class="m-dropdown__menu-item" href="#">Element 2</a>
+            <a class="m-dropdown__menu-item" href="#">Element 3</a>
+          </div>
         </li>
       </ul>
+  #example-1__horizontal-script.a-tabs-panel
+    :code(lang="javascript")
+      const navigationElem = document.getElementById('#navigationExample-1');
+      chi.navigation(navigationElem);
+
+h3#navigationExampleComponentsContained Components contained
+p.-text
+  | As navigation component is built from other primitive Chi components, most of these components behavior can be
+  | replicated on the navigation component.
+.example.-mb--3
+  .-p--3.-pb--4
+    p.-text
+      | I.e. Use the <code>-animate</code> class on the dropdowns to make the chevron rotate when activated.
+    .a-divider
+    ul.a-tabs.a-navigationExample#example-components-contained
+      li.m-dropdown.-active
+        a.m-dropdown__trigger.-animate(href='#') Active Tab
+        .m-dropdown__menu
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 1
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 2
+          div
+            a.m-dropdown__menu-item.m-dropdown__trigger.-animate(href='#') Elem 3 more
+            .m-dropdown__menu
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
+              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
+          a.m-dropdown__menu-item(href='#') Elem 4
+      li
+        a(href='#exampleHashTarget') Tab Link
+      li
+        a(href='#exampleHashTarget') Tab Link
+      li.m-dropdown
+        a.m-dropdown__trigger.-animate(href='#') Tab Link
+        .m-dropdown__menu
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 1
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 2
+          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 3
+  :code(lang='html')
+    <ul class="a-tabs" id="navigation-components-contained">
+      <li class="m-dropdown -active">
+        <a class="m-dropdown__trigger -animate" href="#">Active Tab</a>
+        <div class="m-dropdown__menu" x-placement="bottom-start">
+          <a class="m-dropdown__menu-item" href="#">Elem 1</a><a class="m-dropdown__menu-item" href="#">Elem 2</a>
+          <div>
+            <a class="m-dropdown__menu-item m-dropdown__trigger" href="#">Elem 3 more</a>
+            <div class="m-dropdown__menu">
+              <a class="m-dropdown__menu-item" href="#">Elem 3.1</a><a class="m-dropdown__menu-item" href="#">Elem 3.2</a><a class="m-dropdown__menu-item" href="#">Elem 3.3</a><a class="m-dropdown__menu-item" href="#">Elem 3.4</a>
+            </div>
+          </div><a class="m-dropdown__menu-item" href="#">Elem 4</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Tab Link</a>
+      </li>
+      <li>
+        <a href="#">Tab Link</a>
+      </li>
+      <li class="m-dropdown">
+        <a class="m-dropdown__trigger" href="#">Tab Link</a>
+        <div class="m-dropdown__menu">
+          <a class="m-dropdown__menu-item" href="#">Element 1</a><a class="m-dropdown__menu-item" href="#">Element 2</a><a class="m-dropdown__menu-item" href="#">Element 3</a>
+        </div>
+      </li>
+    </ul>
+
+    <script>chi.navigation(document.getElementById('navigation-components-contained'));</script>
+
+h3#navigationExampleWatiForAnimations Wait for animations
+p.-text
+  | Browsers stop any execution of JavaScript as soon as a link is clicked and it starts to fetch the destination URL.
+  | For this reason, the sliding border animation will not be perceived by the user when an external link is clicked, as
+  | the animation will not be done, an this can be confusing for the user. To prevent this possible confusion, this
+  | component has the option to wait for the animation to finish and, then, it will redirect the user to the destination
+  | URL. You can enable this behavior by setting the <code>waitForAnimations</code> option to <code>true</code>.
+ul.a-tabs#example-4-switch
+  li.-active
+    a(href='#example-4__enabled') Enabled
+  li
+    a(href='#example-4__disabled') Disabled
+#example-4__enabled.a-tabs-panel.-active
+  .example.-mb--3
+    .-p--3.-pb--4
+      ul.a-tabs.a-navigationExample.a-customExample
+        li.-active
+          a(href='?tab=1') Tab Link
+        li
+          a(href='?tab=2') Tab Link
+        li
+          a(href='?tab=3') Tab Link
+        li
+          a(href='?tab=4') Tab Link
+        li
+          a(href='?tab=5') Tab Link
+        li
+          a(href='?tab=6') Tab Link
+    ul.a-tabs.-ml--3#example-4-enabled-switch
+      li.-active
+        a(href='#example-4__enabled-html') HTML
+      li
+        a(href='#example-4__enabled-script') JavaScript
+    #example-4__enabled-html.a-tabs-panel.-active
+      :code(lang='html')
+        <ul id="navigationexample-4-enabled" class="a-tabs">
+          <li class="-active">
+            <a href="/">Tab Link</a>
+          </li>
+          <li>
+            <a href="/">Tab Link</a>
+          </li>
+          <li>
+            <a href="/">Tab Link</a>
+          </li>
+          <li>
+            <a href="/">Tab Link</a>
+          </li>
+          <li>
+            <a href="/">Tab Link</a>
+          </li>
+          <li>
+            <a href="/">Tab Link</a>
+          </li>
+        </ul>
+    #example-4__enabled-script.a-tabs-panel
+      :code(lang="javascript")
+        const navigationElem = document.getElementById('#navigationexample-4-enabled');
+        chi.navigation(
+          navigationElem,
+          {waitForAnimations: true}
+        );
+#example-4__disabled.a-tabs-panel
+  .example.-mb--3
+    .-p--3.-pb--4
+      ul.a-tabs.a-navigationExample.a-customExample
+        li.-active
+          a(href='?tab=1') Tab Link
+        li
+          a(href='?tab=2') Tab Link
+        li
+          a(href='?tab=3') Tab Link
+        li
+          a(href='?tab=4') Tab Link
+        li
+          a(href='?tab=5') Tab Link
+        li
+          a(href='?tab=6') Tab Link
+    ul.a-tabs.-ml--3#example-4-disabled-switch
+      li.-active
+        a(href='#example-4__disabled-html') HTML
+      li
+        a(href='#example-4__disabled-script') JavaScript
+    #example-4__disabled-html.a-tabs-panel.-active
+      :code(lang='html')
+        <ul id="navigationexample-4-disabled" class="a-tabs">
+          <li class="-active">
+            <a href="/">Tab Link</a>
+          </li>
+          <li>
+            <a href="/">Tab Link</a>
+          </li>
+          <li>
+            <a href="/">Tab Link</a>
+          </li>
+          <li>
+            <a href="/">Tab Link</a>
+          </li>
+          <li>
+            <a href="/">Tab Link</a>
+          </li>
+          <li>
+            <a href="/">Tab Link</a>
+          </li>
+        </ul>
+    #example-4__disabled-script.a-tabs-panel
+      :code(lang="javascript")
+        const navigationElem = document.getElementById('#navigationexample-4-disabled');
+        chi.navigation(
+          navigationElem,
+          {waitForAnimations: false}
+        );
 
 h2 Icons
 ul#a-tabs--menu-horizontal-icons.a-tabs
@@ -600,5 +949,25 @@ script.
       chi.tab(document.getElementById('a-tabs--menu-vertical-icons'));
       chi.tab(document.getElementById('a-tabs--menu-subtabs'));
       chi.tab(document.getElementById('a-tabs--menu-bordered'));
+
+      chi.tab(document.getElementById('example-horizontal-base'));
+      chi.tab(document.getElementById('example-horizontal-inverse'));
+      chi.tab(document.getElementById('example-vertical-base'));
+      chi.tab(document.getElementById('example-vertical-inverse'));
+      chi.tab(document.getElementById('example-default-link-behavior'));
+      chi.navigation(document.getElementById('example-tabbed-navigation'));
+      chi.tab(document.getElementById('tabbed-navigation-switch'));
+      chi.tab(document.getElementById('example-4-switch'));
+      chi.tab(document.getElementById('example-4-enabled-switch'));
+      chi.tab(document.getElementById('example-4-disabled-switch'));
+      chi.navigation(document.getElementById('example-components-contained'));
+      chi.navigation(
+              document.querySelectorAll('#example-4__enabled .a-tabs.a-navigationExample'),
+              { waitForAnimations: true }
+      );
+      chi.navigation(
+              document.querySelectorAll('#example-4__disabled .a-tabs.a-navigationExample'),
+              { waitForAnimations: false }
+      );
     }
   );
