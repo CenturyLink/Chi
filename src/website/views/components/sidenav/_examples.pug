@@ -7,6 +7,8 @@
   drawerMenuItem: 'B'
   };
 
+#exampleHashTarget.-position--fixed-top.-sr--only
+
 .m-alert.-info.-my--3
   i.m-alert__icon.a-icon.icon-circle-info
   .m-alert__content
@@ -47,7 +49,7 @@ dl
               ul.m-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#example-${example}`)
+                    a(href=`#exampleHashTarget`)
                       if index % 4 < 2
                         .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                         p.m-sidenav__description Description for title a in a drawer inside a menu.
@@ -269,7 +271,7 @@ h3 Inverse
               ul.m-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#example-${example}`)
+                    a(href=`#exampleHashTarget`)
                       if index % 4 < 2
                         .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                         p.m-sidenav__description Description for title a in a drawer inside a menu.
@@ -759,7 +761,7 @@ h3 -sm
               ul.m-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#example-${example}`)
+                    a(href=`#exampleHashTarget`)
                       if index % 4 < 2
                         .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                         p.m-sidenav__description Description for title a in a drawer inside a menu.
@@ -981,7 +983,7 @@ h3 -md
               ul.m-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#example-${example}`)
+                    a(href=`#exampleHashTarget`)
                       if index % 4 < 2
                         .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                         p.m-sidenav__description Description for title a in a drawer inside a menu.
@@ -1203,7 +1205,7 @@ h3 -lg
               ul.m-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#example-${example}`)
+                    a(href=`#exampleHashTarget`)
                       if index % 4 < 2
                         .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                         p.m-sidenav__description Description for title a in a drawer inside a menu.
