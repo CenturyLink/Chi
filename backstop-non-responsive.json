@@ -999,6 +999,34 @@
       "requireSameDimensions": true
     },
     {
+      "label": "sidenav",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/sidenav.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-base",
+        ".test-inverse",
+        ".test-base-sm",
+        ".test-base-md",
+        ".test-base-lg",
+        ".test-inverse-sm",
+        ".test-inverse-md",
+        ".test-inverse-lg",
+        ".test-global-nav"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "spinner",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/spinner.html",
