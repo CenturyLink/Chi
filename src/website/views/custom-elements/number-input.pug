@@ -24,16 +24,20 @@ ul#a-tabs--number-input.a-tabs
   .example.-mb--3
     .-p--3
       .m-form__item
-        chi-number-input()
+        chi-label(for="number-input-base") Label
+        chi-number-input#number-input-base
     :code(lang='html')
-      <chi-number-input></chi-number-input>
+      <chi-label for="number-input-base">Label</chi-label>
+      <chi-number-input id="number-input-base"></chi-number-input>
 #a-tabs--number-input-value.a-tabs-panel
   .example.-mb--3
     .-p--3
       .m-form__item
-        chi-number-input(value='2')
+        chi-label(for="number-input-initial-value") Label
+        chi-number-input#number-input-initial-value(value='2')
     :code(lang="html")
-      <chi-number-input value="2"></chi-number-input>
+      <chi-label for="number-input-initial-value">Label</chi-label>
+      <chi-number-input id="number-input-initial-value" value="2"></chi-number-input>
 
 h3 Options
 
@@ -45,18 +49,22 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-form__item
-      chi-number-input(min='-4', max='4', step='3')
+      chi-label(for="number-input-min-max") Label
+      chi-number-input#number-input-min-max(min='-4', max='4', step='3')
   :code(lang='html')
-    <chi-number-input min="-4" max="4" step="3"></chi-number-input>
+    <chi-label for="number-input-min-max">Label</chi-label>
+    <chi-number-input id="number-input-min-max" min="-4" max="4" step="3"></chi-number-input>
 
 h3 Disabled
 
 .example.-mb--3
   .-p--3
     .m-form__item
-      chi-number-input(disabled=true)
+      chi-label(for="number-input-disabled") Label
+      chi-number-input#number-input-disabled(disabled=true)
   :code(lang='html')
-    <chi-number-input disabled></chi-number-input>
+    <chi-label for="number-input-disabled">Label</chi-label>
+    <chi-number-input id="number-input-disabled" disabled="disabled"></chi-number-input>
 
 h3 Sizes
 
@@ -68,12 +76,24 @@ p.-text
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
       .m-form__item.-inline.-mr--3
-        chi-number-input(size=`${size}`)
+        chi-label(for=`number-input-${size}`) Label
+        chi-number-input(id=`number-input-${size}`, size=`${size}`)
   :code(lang='html')
-    <chi-number-input size="sm"></chi-number-input>
-    <chi-number-input></chi-number-input>
-    <chi-number-input size="lg"></chi-number-input>
-    <chi-number-input size="xl"></chi-number-input>
+    <!-- -sm -->
+    <chi-label for="number-input-sm">Label</chi-label>
+    <chi-number-input id="number-input-sm" size="sm"></chi-number-input>
+
+    <!-- -md -->
+    <chi-label for="number-input-md">Label</chi-label>
+    <chi-number-input id="number-input-md" size="md"></chi-number-input>
+
+    <!-- -lg -->
+    <chi-label for="number-input-lg">Label</chi-label>
+    <chi-number-input id="number-input-lg" size="lg"></chi-number-input>
+
+    <!-- -xl -->
+    <chi-label for="number-input-xl">Label</chi-label>
+    <chi-number-input id="number-input-xl" size="xl"></chi-number-input>
 
 h2 Expanded version
 
@@ -83,30 +103,38 @@ p.-text
 h3 Base
 .example.-mb--3
   .-p--3
-    chi-number-input(expanded=true)
+    chi-label(for=`number-input-expanded`) Label
+    chi-number-input#number-input-expanded(expanded=true)
   :code(lang='html')
-    <chi-number-input expanded></chi-number-input>
+    <chi-label for="number-input-expanded">Label</chi-label>
+    <chi-number-input id="number-input-expanded" expanded="expanded"></chi-number-input>
 
 h3 Base with step
 .example.-mb--3
   .-p--3
-    chi-number-input(expanded=true, step=5)
+    chi-label(for="number-input-step") Label
+    chi-number-input#number-input-step(expanded=true, step=5)
   :code(lang='html')
-    <chi-number-input expanded value="0" step="5"></chi-number-input>
+    <chi-label for="number-input-step">Label</chi-label>
+    <chi-number-input id="number-input-step" expanded="expanded" step="5"></chi-number-input>
 
 h3 Decimals and step
 .example.-mb--3
   .-p--3
-    chi-number-input(expanded=true, value=0.1, step=0.5)
+    chi-label(for="number-input-decimal-step") Label
+    chi-number-input#number-input-decimal-step(expanded=true, value=0.1, step=0.5)
   :code(lang='html')
-    <chi-number-input expanded value="0.1" step="0.5"></chi-number-input>
+    <chi-label for="number-input-decimal-step">Label</chi-label>
+    <chi-number-input id="number-input-decimal-step" expanded="expanded" value="0.1" step="0.5"></chi-number-input>
 
 h3 Disabled
 .example.-mb--3
   .-p--3
-    chi-number-input(expanded=true disabled=true)
+    chi-label(for="number-input-expanded-disabled") Label
+    chi-number-input#number-input-expanded-disabled(expanded=true disabled=true)
   :code(lang='html')
-    <chi-number-input expanded disabled></chi-number-input>
+    <chi-label for="number-input-expanded-disabled">Label</chi-label>
+    <chi-number-input id="number-input-expanded-disabled" expanded="expanded" disabled="disabled"></chi-number-input>
 
 h3 Sizes
 p.-text
@@ -116,12 +144,25 @@ p.-text
 .example.-mb--3
   .-p--3.-d--flex.-justify-content--start.-align-items--center
     each size in ['sm', 'md', 'lg', 'xl']
-      chi-number-input(expanded=true size=`${size}` class='-mr--2')
+      .m-form__item
+        chi-label(for=`number-input-expanded-${size}`) Label
+        chi-number-input(id=`number-input-expanded-${size}`, expanded=true, size=`${size}`, class='-mr--2')
   :code(lang='html')
-    <chi-number-input expanded size="sm"></chi-number-input>
-    <chi-number-input expanded></chi-number-input>
-    <chi-number-input expanded size="lg"></chi-number-input>
-    <chi-number-input expanded size="xl"></chi-number-input>
+    <!-- -sm -->
+    <chi-label for="number-input-expanded-sm">Label</chi-label>
+    <chi-number-input class="-mr--2" id="number-input-expanded-sm" expanded="expanded" size="sm"></chi-number-input>
+
+    <!-- -md -->
+    <chi-label for="number-input-expanded-md">Label</chi-label>
+    <chi-number-input class="-mr--2" id="number-input-expanded-md" expanded="expanded" size="md"></chi-number-input>
+
+    <!-- -lg -->
+    <chi-label for="number-input-expanded-lg">Label</chi-label>
+    <chi-number-input class="-mr--2" id="number-input-expanded-lg" expanded="expanded" size="lg"></chi-number-input>
+
+    <!-- -xl -->
+    <chi-label for="number-input-expanded-xl">Label</chi-label>
+    <chi-number-input class="-mr--2" id="number-input-expanded-xl" expanded="expanded" size="xl"></chi-number-input>
 
 h2 Additional usage details
 :stencilDoc(name='chi-number-input')

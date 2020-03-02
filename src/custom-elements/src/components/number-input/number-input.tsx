@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Prop, State, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Prop, State, h, Element } from '@stencil/core';
 import { CallbackQueue } from '../../utils/CallbackQueue';
 
 @Component({
@@ -66,6 +66,8 @@ export class NumberInput {
    * used to provide an input state like 'hover' or 'focus'. Mostly used for testing purposes
    */
   @Prop() state?: string;
+
+  @Element() el: HTMLElement;
 
   @Event() chiChange: EventEmitter<string>;
 
@@ -165,6 +167,7 @@ export class NumberInput {
         max={this.max}
         min={this.min}
         onChange={ev => this.handleChange(ev)}
+        id={this.el.id ? `${this.el.id}-control` : null}
       />
     );
 
