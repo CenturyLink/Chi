@@ -49,7 +49,7 @@ function buildWebsiteViews () {
 
       .use(metalsmithPlugins.collections({
         'Getting Started': {
-          pattern: [ 'getting-started/**/*.pug', '!getting-started/introduction/_*.pug' ],
+          pattern: [ 'getting-started/**/*.pug', '!getting-started/introduction/_*.pug', '!getting-started/installation/_*.pug' ],
           sortBy: 'order'
         },
         'Foundations': {
