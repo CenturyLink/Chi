@@ -208,7 +208,7 @@ export class Drawer {
           : this.collapsible
             ? [
               <div class="m-drawer__header">
-                <h5>{this.headerTitle}</h5>
+                <span class="m-drawer__title">{this.headerTitle}</span>
                 {closeButton}
               </div>,
               <div class="m-drawer__content">
@@ -217,7 +217,7 @@ export class Drawer {
             ]
             : [
               <div class="m-drawer__header">
-                <h5>{this.headerTitle}</h5>
+                <span class="m-drawer__title">{this.headerTitle}</span>
               </div>,
               <div class="m-drawer__content">
                 <slot></slot>
