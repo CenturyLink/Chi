@@ -11,7 +11,7 @@
       ul.a-tabs {
         li {
           .a-collection__title {
-            font-size: .875rem;
+            font-size: 0.875rem;
             font-weight: 600;
             line-height: $line-height;
             padding: 0.75rem 0 0.75rem 1.5rem;
@@ -30,7 +30,6 @@
       display: flex;
       flex: 1 0 auto;
       flex-direction: column;
-      padding: 0.5rem 0 0 0;
       position: relative;
       @include respond-to(lg) {
         flex-direction: row;
@@ -68,7 +67,7 @@
         ul.a-tabs {
           li {
             .a-collection__title {
-              font-size: .875rem;
+              font-size: 0.875rem;
               font-weight: 600;
               line-height: $line-height;
               padding: 0.75rem 0 0.75rem 1.5rem;
@@ -86,13 +85,55 @@
       &__content {
         background-color: set-color(white);
         flex-grow: 1;
-        padding-top: 0.5rem;
         width: 100%;
-        @include respond-to(lg) {
-          padding-top: 1rem;
+
+        .docs-body__heading {
+          background-color: set-color(black);
+          display: flex;
+          flex-direction: column;
+          padding: 1rem 0 0;
+          @include respond-to(lg) {
+            padding: 3rem 0 0;
+          }
+
+          .a-grid__container {
+            width: calc(100% - 2rem);
+
+            + .a-grid__container {
+              @include respond-to(lg) {
+                margin-top: -1rem;
+              }
+            }
+
+            &:first-child {
+              padding-bottom: 1rem;
+              @include respond-to(lg) {
+                padding-bottom: 2rem;
+              }
+            }
+
+            .docs-body__heading-title {
+              color: set-color(white);
+              font-size: 2rem;
+              margin-bottom: 0.5rem;
+              @include respond-to(lg) {
+                font-size: 3rem;
+                margin-bottom: 1.5rem;
+              }
+            }
+
+            .docs-body__heading-description {
+              color: set-color(grey, 50);
+              font-size: 0.875rem;
+              @include respond-to(lg) {
+                font-size: 1rem;
+                margin: 0 0 1rem;
+              }
+            }
+          }
         }
 
-        >.a-grid__container {
+        .a-grid__container {
           @include respond-to(lg) {
             margin: 0 40px;
           }
@@ -100,11 +141,12 @@
           @include respond-to(xl) {
             margin: 0 auto;
             max-width: 960px;
-            padding: 0 2rem;
+            padding: 0 20px;
           }
 
           >,
           .changelog__version >,
+          .a-tabs-panel >,
           > .a-grid .a-col,
           > .m-epanel {
             h1 {
@@ -157,11 +199,29 @@
           position: relative;
           z-index: 10;
 
+          .example-tabs {
+            background-color: set-color(grey, 15);
+            border-bottom: 0.0625rem solid set-color(grey, 25);
+            border-top: 0.0625rem solid set-color(grey, 25);
+          }
+
           pre[class*="language-"] {
             border-top: 0.0625rem solid set-color(grey, 25);
             border-top-left-radius: 0;
             border-top-right-radius: 0;
             margin: 0;
+          }
+
+          .a-tabs-panel {
+            .a-tab__description {
+              background-color: set-color(grey, 15);
+              font-size: 0.875rem;
+              padding: 1rem 1rem 0 1rem;
+            }
+
+            pre[class*="language-"] {
+              border-top: 0;
+            }
           }
 
           & > .clipboard:first-child + pre[class*="language-"] {

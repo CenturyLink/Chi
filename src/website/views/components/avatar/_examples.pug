@@ -1,0 +1,306 @@
+- var sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
+- var columnWidths = {'xs':[ '4', '3', '1'], 'sm':[ '4', '3', '1'], 'sm--2':[ '4', '3', '1'], 'sm--3':[ '4', '3', '1'], 'md':[ '4', '2', '1'], 'lg':[ '4', '3', '2'], 'xl':[ '6', '3', '2'], 'xxl':[ '6', '4', '3']};
+- var colors = ["grey", "red", "pink", "purple", "indigo", "blue", "light-blue", "teal", "mint", "green", "yellow", "orange", "secondary", "primary"];
+- var iconExamples = ['user', 'users', 'atom'];
+
+h2 Examples
+
+p.-text
+  | To render an avatar, apply the class <code>a-avatar</code> to a div element and place an image inside.
+h3 Base
+.example.-mb--3
+  .-p--3
+    .a-avatar
+      img(src='../../assets/images/avatar.jpg', alt="avatar")
+  :code(lang="html")
+    <div class="a-avatar">
+      <img src="path/to/image.jpg" alt="avatar">
+    </div>
+
+h3 Icon Avatars
+p.-text
+  | Icon avatars can be used when an image is not available.
+  | To use, wrap any <a href="../icon/">Chi icon</a> with <code>a-avatar</code>.
+.example.-mb--3
+  .-p--3
+    .a-grid
+      each icon in iconExamples
+        .a-col.-w--2.-w-sm--1
+          .a-avatar
+            i(class=`a-icon icon-${icon}`)
+  ul#a-tabs--icons.a-tabs.-ml--3
+    li.-active
+      a(href="#iconsWebFont") Web Font
+    li
+      a(href="#iconsSVG") SVG
+  #iconsWebFont.a-tabs-panel.-active
+    :code(lang="html")
+      <div class="a-avatar">
+        <i class="a-icon icon-user"></i>
+      </div>
+  #iconsSVG.a-tabs-panel
+    :code(lang="html")
+      <div class="a-avatar a-icon">
+        <svg>
+          <use xlink:href="#icon-user"></use>
+        </svg>
+      </div>
+
+h3 Initial avatars
+p.-text
+  | Initial avatars can also be used when an image is not available.
+  | They are more versatile than icon avatars and support up to two letters.
+  | Text utility classes such as <code>-text--uppercase</code>, <code>-text--lowercase</code>,
+  | and <code>-text--capitalized</code> can be applied to force specific casing.
+.example.-mb--3
+  .-p--3.a-grid
+    .a-col.-w--2.-w-sm--1
+      .a-avatar AA
+    .a-col.-w--2.-w-sm--1
+      .a-avatar M
+  :code(lang="html")
+    <div class="a-avatar">AA</div>
+
+h3 Customizations
+
+h3 Color
+p.-text
+  | Both icon and initial avatars support <a href="../../foundations/color/">Chi colors</a>.
+  | To color an icon, apply any of the following color classes: <code>-grey</code>, <code>-red</code>,
+  | <code>-pink</code>, <code>-purple</code>, <code>-indigo</code>, <code>-blue</code>,
+  | <code>-teal</code>, <code>-mint</code>, <code>-green</code>, <code>-yellow</code>, <code>-orange</code>,
+  | <code>-secondary</code>, <code>-primary</code>
+
+ul#a-tabs--colors.a-tabs
+  li.-active
+   a(href="#coloredInitials") Initial
+  li
+    a(href="#coloredIcons") Icon
+.example.-mb--3
+  #coloredInitials.a-tabs-panel.-active
+    .-p--3
+      .a-grid.-align-items--end
+        each color in colors
+          if (color !== 'secondary')
+            .a-col.-w--2.-text--center
+              div(class=`a-avatar -${color}`) AA
+              p.-text= color
+    :code(lang="html")
+      <div class="a-avatar -grey">AA</div>
+      <div class="a-avatar -red">AA</div>
+      <div class="a-avatar -pink">AA</div>
+      <div class="a-avatar -purple">AA</div>
+      <div class="a-avatar -indigo">AA</div>
+      <div class="a-avatar -blue">AA</div>
+      <div class="a-avatar -light-blue">AA</div>
+      <div class="a-avatar -teal">AA</div>
+      <div class="a-avatar -mint">AA</div>
+      <div class="a-avatar -green">AA</div>
+      <div class="a-avatar -yellow">AA</div>
+      <div class="a-avatar -orange">AA</div>
+      <div class="a-avatar -primary">AA</div>
+
+  #coloredIcons.a-tabs-panel
+    .-p--3
+      .a-grid.-align-items--end
+        each color in colors
+          if (color !== 'secondary')
+            .a-col.-w--2.-text--center
+              div(class=`a-avatar -${color}`)
+                i.a-icon.icon-user
+              p.-text= color
+    :code(lang="html")
+      <div class="a-avatar -grey">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -red">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -pink">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -purple">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -indigo">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -blue">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -light-blue">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -teal">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -mint">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -green">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -yellow">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -orange">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -primary">
+        <i class="a-icon icon-user"></i>
+      </div>
+
+h3 Light and transparent background
+p.-text
+  | Both icon and initial avatars support light and transparent versions for dark backgrounds.
+.example.-mb--3
+  .-p--3.-bg--black
+    .a-grid.-align-items--end
+      .a-col.-w--3.-text--center
+        div.a-avatar.-light AA
+      .a-col.-w--3.-text--center
+        div.a-avatar.-secondary.-transparent AA
+      .a-col.-w--3.-text--center
+        div.a-avatar.-light
+          i.a-icon.icon-user
+      .a-col.-w--3.-text--center
+        div.a-avatar.-secondary.-transparent
+          i.a-icon.icon-user
+  :code(lang="html")
+    <div class="-bg--black">
+      <div class="a-avatar -light">AA</div>
+      <div class="a-avatar -secondary -transparent">AA</div>
+      <div class="a-avatar -light">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -secondary -transparent">
+        <i class="a-icon icon-user"></i>
+      </div>
+    </div>
+
+h3 Size
+p.-text
+  | All three avatar styles support a full spectrum of sizes: <code>-xs</code>, <code>-sm</code>,
+  | <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
+  | <code>-md</code> is the default size.
+ul#a-tabs--sizes.a-tabs
+  li.-active
+    a(href="#sizedInitials") Initial
+  li
+    a(href="#sizedIcons") Icon
+  li
+    a(href="#sizedImages") Image
+
+.example.-mb--3
+  #sizedInitials.a-tabs-panel.-active
+    .-p--3
+      .a-grid.-align-items--end
+        each size in sizes
+          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
+            div(class=`a-avatar -${size}`) AA
+            p.-text= size
+    :code(lang="html")
+      <div class="a-avatar -xs">AA</div>
+      <div class="a-avatar -sm">AA</div>
+      <div class="a-avatar -sm--2">AA</div>
+      <div class="a-avatar -sm--3">AA</div>
+      <div class="a-avatar -md">AA</div>
+      <div class="a-avatar -lg">AA</div>
+      <div class="a-avatar -xl">AA</div>
+      <div class="a-avatar -xxl">AA</div>
+
+  #sizedIcons.a-tabs-panel
+    .-p--3
+      .a-grid.-align-items--end
+        each size in sizes
+          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
+            div(class=`a-avatar -${size}`)
+              i.a-icon.icon-user
+            p.-text= size
+
+    :code(lang="html")
+      <div class="a-avatar -xs">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -sm">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -sm--2">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -sm--3">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -md">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -lg">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -xl">
+        <i class="a-icon icon-user"></i>
+      </div>
+      <div class="a-avatar -xxl">
+        <i class="a-icon icon-user"></i>
+      </div>
+  #sizedImages.a-tabs-panel
+    .-p--3
+      .a-grid.-align-items--end
+        each size in sizes
+          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
+            div(class=`a-avatar -${size}`)
+              img(src='../../assets/images/avatar.jpg', alt="avatar")
+            p.-text= size
+    :code(lang="html")
+      <div class="a-avatar -xs">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar -sm">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar -sm--2">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar -sm--3">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar -md">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar -lg">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar -xl">
+        <img src="path/to/image.jpg">
+      </div>
+      <div class="a-avatar -xxl">
+        <img src="path/to/image.jpg">
+      </div>
+
+h3 Avatar Groups
+
+p.-text
+  | Use avatar groups to group multiple avatars or add descriptive text such as a users name.
+  | Render an avatar group by wrapping an avatar in the class <code>m-avatarGroup</code>.
+.example.-mb--3
+  .-p--3.a-grid
+    each color in colors
+      if (color !== 'secondary')
+        .-mb--1.a-col.-w--6.-w-sm--4.-w-md--6.-w-lg--4.-w-xl--3
+          .m-avatarGroup
+            div(class=`a-avatar -${color}`) L
+            = `Label ${color}`
+  :code(lang="html")
+    <div class="m-avatarGroup">
+      <div class="a-avatar">L</div>Label text
+    </div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('a-tabs--sizes'));
+      chi.tab(document.getElementById('a-tabs--colors'));
+      chi.tab(document.getElementById('a-tabs--icons'));
+    }
+  );

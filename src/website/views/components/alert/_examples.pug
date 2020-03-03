@@ -1,0 +1,1302 @@
+h2 Examples
+
+h2 Bubble
+p.-text
+  | Bubble alerts are designed for displaying inline messages and notifications within forms, panels, cards, and other content areas.
+  | They are Chi's default Alert type.
+
+h3 Default
+.example.-mb--3
+  .-p--1
+    chi-alert(icon='circle-info').-m--2
+      | This is a base alert
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m--2(color=type, icon=val)
+        =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-default
+      li.-active
+        a(href=`#webcomponent`) Web component
+      li
+        a(href=`#html`) HTML
+  .a-tabs-panel.-active#webcomponent
+    .a-tab__description
+      | To render an alert use the tag <code>chi-alert</code>.
+      | Use the color attribute to define a semantic color that corresponds to the meaning
+      | or value state of your alert. Supported colors include <code>success</code>, <code>danger</code>, <code>warning</code>,
+      | <code>info</code>, and <code>muted</code>. If no color is defined, alerts will default to the base style which uses the body
+      | text color. This is useful for displaying neutral alerts with no specific value state.
+    :code(lang="html")
+      <!-- Base - No semantic color defined -->
+      <chi-alert icon="circle-info">
+        This is a base alert
+      </chi-alert>
+      <!-- Success -->
+      <chi-alert color="success" icon="circle-check">
+        This is a success alert
+      </chi-alert>
+      <!-- Danger -->
+      <chi-alert color="danger" icon="circle-warning">
+        This is a danger alert
+      </chi-alert>
+      <!-- Warning -->
+      <chi-alert color="warning" icon="warning">
+        This is a warning alert
+      </chi-alert>
+      <!-- Info -->
+      <chi-alert color="info" icon="circle-info">
+        This is an info alert
+      </chi-alert>
+      <!-- Muted -->
+      <chi-alert color="muted" icon="circle-info">
+        This is a muted alert
+      </chi-alert>
+  .a-tabs-panel#html
+    .a-tab__description
+      | To render an alert, use the class <code>m-alert</code>.
+      | To render an alert, use the class <code>m-alert</code>. Apply a semantic color class that corresponds to the meaning
+      | or value state of your alert. Supported classes include <code>-success</code>, <code>-danger</code>, <code>-warning</code>,
+      | <code>-info</code>, and <code>-muted</code>. If no class is defined, alerts will default to the base style which uses the body
+      | text color. This is useful for displaying neutral alerts with no specific value state.
+    :code(lang="html")
+      <!-- Base - No semantic color class defined -->
+      <div class="m-alert" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a base alert</p>
+        </div>
+      </div>
+      <!-- Success -->
+      <div class="m-alert -success" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a success alert</p>
+        </div>
+      </div>
+      <!-- Danger -->
+      <div class="m-alert -danger" role="alert">
+        <i class="m-alert__icon a-icon -icon-circle-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a danger alert</p>
+        </div>
+      </div>
+      <!-- Warning -->
+      <div class="m-alert -warning" role="alert">
+        <i class="m-alert__icon a-icon icon-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a warning alert</p>
+        </div>
+      </div>
+      <!-- Info -->
+      <div class="m-alert -info" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is an info alert</p>
+        </div>
+      </div>
+      <!-- Muted -->
+      <div class="m-alert -muted" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a muted alert</p>
+        </div>
+      </div>
+
+h3 Centered
+p.-text
+  | <strong>Note:</strong> Use sparingly.
+  | Centered Bubble alerts should only be used to render brief messages on centered forms such as those found on Sign In and Sign Up screens.
+  | Centered alerts do not support titles.
+.example.-mb--3
+  .-p--1
+    chi-alert.-m--2(color='danger', icon='circle-warning', center)
+      | This is a centered danger alert
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-centered
+      li.-active
+        a(href=`#webcomponent-centered`) Web component
+      li
+        a(href=`#html-centered`) HTML
+  .a-tabs-panel.-active#webcomponent-centered
+    .a-tab__description
+      | Use the attribute <code>center</code> to center the content of a Bubble Alert.
+    :code(lang="html")
+      <chi-alert color="danger" icon="circle-warning" center>
+        This is a centered danger alert
+      </chi-alert>
+  .a-tabs-panel#html-centered
+    .a-tab__description
+      | Apply the class <code>-center</code> to center the content of a Bubble Alert.
+    :code(lang="html")
+      <div class="m-alert -danger -center" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a centered danger alert</p>
+        </div>
+      </div>
+
+h3 Titled
+p.-text
+  | The title will automatically get colored based on the alerts semantic color class.
+  | To override the title color, apply a text color utility class.
+.example.-mb--3
+  .-p--1
+    chi-alert(icon='circle-info', title="Base").-m--2
+      | This is a base alert
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m--2(color=type, icon=val, title=type)
+        =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-titled
+      li.-active
+        a(href=`#webcomponent-titled`) Web component
+      li
+        a(href=`#html-titled`) HTML
+  .a-tabs-panel.-active#webcomponent-titled
+    .a-tab__description
+      | Use the <code>title=""</code> attribute to display a title above the alert text.
+    :code(lang="html")
+      <!-- Base - No semantic color defined -->
+      <chi-alert icon="circle-info" title="Base">
+        This is a base alert
+      </chi-alert>
+      <!-- Success -->
+      <chi-alert color="success" icon="circle-check" title="Success">
+        This is a success alert
+      </chi-alert>
+      <!-- Danger -->
+      <chi-alert color="danger" icon="circle-warning" title="Danger">
+        This is a danger alert
+      </chi-alert>
+      <!-- Warning -->
+      <chi-alert color="warning" icon="warning" title="Warning">
+        This is a warning alert
+      </chi-alert>
+      <!-- Info -->
+      <chi-alert color="info" icon="circle-info" title="Info">
+        This is an info alert
+      </chi-alert>
+      <!-- Muted -->
+      <chi-alert color="muted" icon="circle-info" title="Muted">
+        This is a muted alert
+      </chi-alert>
+  .a-tabs-panel#html-titled
+    .a-tab__description
+      | Use <code>m-alert__title</code> to add a title to an Alert.
+    :code(lang="html")
+      <!-- Base - No semantic color class defined -->
+      <div class="m-alert" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Base</p>
+          <p class="m-alert__text">This is a base alert</p>
+        </div>
+      </div>
+      <!-- Success -->
+      <div class="m-alert -success" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Success</p>
+          <p class="m-alert__text">This is a success alert</p>
+        </div>
+      </div>
+      <!-- Danger -->
+      <div class="m-alert -danger" role="alert">
+        <i class="m-alert__icon a-icon -icon-circle-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Danger</p>
+          <p class="m-alert__text">This is a danger alert</p>
+        </div>
+      </div>
+      <!-- Warning -->
+      <div class="m-alert -warning" role="alert">
+        <i class="m-alert__icon a-icon icon-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Warning</p>
+          <p class="m-alert__text">This is a warning alert</p>
+        </div>
+      </div>
+      <!-- Info -->
+      <div class="m-alert -info" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Info</p>
+          <p class="m-alert__text">This is an info alert</p>
+        </div>
+      </div>
+      <!-- Muted -->
+      <div class="m-alert -muted" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Muted</p>
+          <p class="m-alert__text">This is a muted alert</p>
+        </div>
+      </div>
+
+h3 Sizes
+
+.example.-mb--3
+  .-p--1
+    p.-text--bold.-ml--2 sm
+    chi-alert.-m--2(color='success', icon='circle-check', size='sm')
+      | This is a small success alert
+    chi-alert.-m--2(color='success', icon='circle-check', size='sm', title="Success")
+      | This is a small success alert
+    p.-text--bold.-ml--2 md (default)
+    chi-alert.-m--2(color='success', icon='circle-check')
+      | This is a success alert
+    chi-alert.-m--2(color='success', icon='circle-check', title="Success")
+      | This is a success alert
+    p.-text--bold.-ml--2 lg
+    chi-alert.-m--2(color='success', icon='circle-check', size='lg')
+      | This is a large success alert
+    chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success")
+      | This is a large success alert
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-sizes
+      li.-active
+        a(href=`#webcomponent-sizes`) Web component
+      li
+        a(href=`#html-sizes`) HTML
+  .a-tabs-panel.-active#webcomponent-sizes
+    .a-tab__description
+      | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
+    :code(lang="html")
+      <!-- Small -->
+      <chi-alert color="success" icon="circle-check" size="sm">
+        This is a small success alert
+      </chi-alert>
+      <!-- Small Titled -->
+      <chi-alert color="success" icon="circle-check" size="sm" title="Success">
+        This is a small success alert
+      </chi-alert>
+      <!-- Medium -->
+      <chi-alert color="success" icon="circle-check">
+        This is a success alert
+      </chi-alert>
+      <!-- Medium Titled -->
+      <chi-alert color="success" icon="circle-check" title="Success">
+        This is a success alert
+      </chi-alert>
+      <!-- Large -->
+      <chi-alert color="success" icon="circle-check" size="lg">
+        This is a large success alert
+      </chi-alert>
+      <!-- Large Titled -->
+      <chi-alert color="success" icon="circle-check" size="lg" title="Success">
+        This is a large success alert
+      </chi-alert>
+  .a-tabs-panel#html-sizes
+    .a-tab__description
+      | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code>, <code>-md</code>, and <code>-lg</code>.
+    :code(lang="html")
+      <!-- Small -->
+      <div class="m-alert -success -sm" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a small success alert</p>
+        </div>
+      </div>
+      <!-- Small Titled -->
+      <div class="m-alert -success -sm" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Success</p>
+          <p class="m-alert__text">This is a small success alert</p>
+        </div>
+      </div>
+      <!-- Medium -->
+      <div class="m-alert -success" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a success alert</p>
+        </div>
+      </div>
+      <!-- Medium Titled -->
+      <div class="m-alert -success" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Success</p>
+          <p class="m-alert__text">This is a success alert</p>
+        </div>
+      </div>
+      <!-- Large -->
+      <div class="m-alert -success -lg" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a large success alert</p>
+        </div>
+      </div>
+      <!-- Large Titled -->
+      <div class="m-alert -success -lg" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Success</p>
+          <p class="m-alert__text">This is a large success alert</p>
+        </div>
+      </div>
+
+h3 Dismissible
+p.-text
+  | To allow users to dismiss an alert.
+.example.-mb--3
+  .-p--1
+    chi-alert.-m--2(color='warning', icon='warning', dismissible)
+      | This is a dismissible warning alert
+    chi-alert.-m--2(color='warning', icon='warning', title="Warning", dismissible)
+      | This is a dismissible warning alert
+    chi-alert.-m--2(color='warning', icon='warning', size='lg', title="Warning", dismissible)
+      | This is a large dismissible warning alert
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-dismissible
+      li.-active
+        a(href=`#webcomponent-dismissible`) Web component
+      li
+        a(href=`#html-dismissible`) HTML
+  .a-tabs-panel.-active#webcomponent-dismissible
+    .a-tab__description
+      | Use the <code>dismissible</code> attribute to render a close button that allows users to dismiss an alert.
+    :code(lang="html")
+      <!-- Dismissible -->
+      <chi-alert color="warning" icon="warning" dismissible>
+        This is a dismissible warning alert
+      </chi-alert>
+      <!-- Dismissible Titled -->
+      <chi-alert color="warning" icon="warning" title="Warning" dismissible>
+        This is a dismissible warning alert
+      </chi-alert>
+      <!-- Large Dismissible Titled -->
+      <chi-alert color="warning" icon="warning" size="lg" title="Warning" dismissible>
+        This is a large dismissible warning alert
+      </chi-alert>
+  .a-tabs-panel#html-dismissible
+    .a-tab__description
+      | Use the class <code>-dismiss</code>
+      | and insert a dismiss button <code>m-alert__dismiss-button</code>.
+    :code(lang="html")
+      <!-- Dismissible -->
+      <div class="m-alert -warning -dismiss" role="alert">
+        <i class="m-alert__icon a-icon icon-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a dismissible warning alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Dismissible Titled -->
+      <div class="m-alert -warning -dismiss" role="alert">
+        <i class="m-alert__icon a-icon icon-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Warning</p>
+          <p class="m-alert__text">This is a dismissible warning alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Large Dismissible Titled -->
+      <div class="m-alert -warning -dismiss -lg" role="alert">
+        <i class="m-alert__icon a-icon icon-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Warning</p>
+          <p class="m-alert__text">This is a large dismissible warning alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+
+h3 Actionable
+.example.-mb--3
+  .-p--1
+    chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", dismissible)
+      | This is a large dismissible success alert
+      chi-button(slot="m-alert__actions", color='dark', variant='outline', size='lg') Secondary action
+      chi-button(slot="m-alert__actions", color='primary', size='lg') Primary action
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-actionable
+      li.-active
+        a(href=`#webcomponent-actionable`) Web component
+      li
+        a(href=`#html-actionable`) HTML
+  .a-tabs-panel.-active#webcomponent-actionable
+    .a-tab__description
+      | Add buttons to an alert by defining <code>slot="m-alert__actions"</code> on each <code>chi-button</code>.
+    :code(lang="html")
+      <chi-alert color="success" icon="circle-check" size="lg" title="Success" dismissible>
+        This is a large dismissible success alert
+        <chi-button slot="m-alert__actions" color="dark" variant="outline" size="lg">Secondary action</chi-button>
+        <chi-button slot="m-alert__actions" color="primary" size="lg">Primary action</chi-button>
+      </chi-alert>
+  .a-tabs-panel#html-actionable
+    .a-tab__description
+      | While <code>m-alert__actions</code> can be added to any Alert, alert actions are best suited for default or Titled alerts with the size class <code>-lg</code>.
+      br
+      | Large Alerts have extra <code>m-alert</code> padding, a larger <code>m-alert__icon</code>, and a larger <code>m-alert__dismiss-button</code>.
+    :code(lang="html")
+      <div class="m-alert -success -lg" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Success</p>
+          <p class="m-alert__text">This is a large dismissible success alert</p>
+          <div class="m-alert__actions">
+            <button class="a-btn -lg -dark -outline">Secondary action</button>
+            <button class="a-btn -lg -primary">Primary action</button>
+          </div>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+
+div.a-divider.-my--6.-bt--2
+
+h2 Banner
+p.-text
+  | Banner alerts are commonly presented above or below the Header component and are used for scenarios
+  | such as reminding new users to confirm their email address or notifying users when they are experiencing connectivity issues.
+
+h3 Default
+.example.-mb--3
+  .-p--1
+    chi-alert.-m--2(type='banner', icon='circle-info')
+      | This is a base alert
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m--2(color=type, icon=val, type='banner')
+        =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-banner-default
+      li.-active
+        a(href=`#webcomponent-banner-default`) Web component
+      li
+        a(href=`#html-banner-default`) HTML
+  .a-tabs-panel.-active#webcomponent-banner-default
+    .a-tab__description
+      | Banner alerts include a bottom border by default. If the border contrast conflicts with surrounding elements, it can be removed by
+      | applying the class <code>-borderless</code> to <code>m-alert</code>.
+    :code(lang="html")
+      <!-- Base - No semantic color defined -->
+      <chi-alert type="banner" icon="circle-info">
+        This is a base alert
+      </chi-alert>
+      <!-- Success -->
+      <chi-alert type="banner" icon="circle-check" color="success">
+        This is a success alert
+      </chi-alert>
+      <!-- Danger -->
+      <chi-alert type="banner" icon="circle-warning" color="danger">
+        This is a danger alert
+      </chi-alert>
+      <!-- Warning -->
+      <chi-alert type="banner" icon="warning" color="warning">
+        This is a warning alert
+      </chi-alert>
+      <!-- Info -->
+      <chi-alert type="banner" icon="circle-info" color="info">
+        This is an info alert
+      </chi-alert>
+      <!-- Muted -->
+      <chi-alert type="banner" icon="circle-info" color="muted">
+        This is a muted alert
+      </chi-alert>
+  .a-tabs-panel#html-banner-default
+    .a-tab__description
+      | Banner alerts include a bottom border by default. If the border contrast conflicts with surrounding elements, it can be removed by
+      | applying the attribute <code>borderless</code>.
+    :code(lang="html")
+      <!-- Base - No semantic color class defined -->
+      <div class="m-alert -banner" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a base alert</p>
+        </div>
+      </div>
+      <!-- Success -->
+      <div class="m-alert -banner -success" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a success alert</p>
+        </div>
+      </div>
+      <!-- Danger -->
+      <div class="m-alert -banner -danger" role="alert">
+        <i class="m-alert__icon a-icon -icon-circle-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a danger alert</p>
+        </div>
+      </div>
+      <!-- Warning -->
+      <div class="m-alert -banner -warning" role="alert">
+        <i class="m-alert__icon a-icon icon-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a warning alert</p>
+        </div>
+      </div>
+      <!-- Info -->
+      <div class="m-alert -banner -info" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is an info alert</p>
+        </div>
+      </div>
+      <!-- Muted -->
+      <div class="m-alert -banner -muted" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a muted alert</p>
+        </div>
+      </div>
+
+h3 Centered
+p.-text
+  | <strong>Note:</strong> Use sparingly.
+  | Centered Banner alerts should only be used to render brief messages. Centered alerts do not support titles.
+.example.-mb--3
+  .-p--1
+    chi-alert.-m--2(type='banner', icon='circle-warning', color='danger', center)
+      | This is a centered danger alert
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-banner-centered
+      li.-active
+        a(href=`#webcomponent-banner-centered`) Web component
+      li
+        a(href=`#html-banner-centered`) HTML
+  .a-tabs-panel.-active#webcomponent-banner-centered
+    .a-tab__description
+      | Use the attribute <code>center</code> to center the content of a Banner Alert.
+    :code(lang="html")
+      <chi-alert type="banner" icon="circle-warning" color="danger" center>
+        This is a centered danger alert
+      </chi-alert>
+  .a-tabs-panel#html-banner-centered
+    .a-tab__description
+      | Apply the class <code>-center</code> to center the content of a Banner Alert.
+    :code(lang="html")
+      <div class="m-alert -banner -danger -center" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a centered danger alert</p>
+        </div>
+      </div>
+
+h3 Titled
+p.-text
+  | The title will automatically get colored based on the alerts semantic color class.
+  | To override the title color, apply a text color utility class.
+.example.-mb--3
+  .-p--1
+    chi-alert.-m--2(type='banner', icon='circle-info', title="Base")
+      | This is a base alert
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m--2(color=type, type='banner', icon=val, title=type)
+        =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-banner-titled
+      li.-active
+        a(href=`#webcomponent-banner-titled`) Web component
+      li
+        a(href=`#html-banner-titled`) HTML
+  .a-tabs-panel.-active#webcomponent-banner-titled
+    .a-tab__description
+      | Use <code>title=""</code> attribute to add a title to an Alert.
+    :code(lang="html")
+      <!-- Base - No semantic color defined -->
+      <chi-alert type="banner" icon="circle-info" title="Base">
+        This is a base alert
+      </chi-alert>
+      <!-- Success -->
+      <chi-alert type="banner" icon="circle-check" color="success" title="Success">
+        This is a success alert
+      </chi-alert>
+      <!-- Danger -->
+      <chi-alert type="banner" icon="circle-warning" color="danger" title="Danger">
+        This is a danger alert
+      </chi-alert>
+      <!-- Warning -->
+      <chi-alert type="banner" icon="warning" color="warning" title="Warning">
+        This is a warning alert
+      </chi-alert>
+      <!-- Info -->
+      <chi-alert type="banner" icon="circle-info" color="info" title="Info">
+        This is an info alert
+      </chi-alert>
+      <!-- Muted -->
+      <chi-alert type="banner" icon="circle-info" color="muted" title="Muted">
+        This is a muted alert
+      </chi-alert>
+  .a-tabs-panel#html-banner-titled
+    .a-tab__description
+      | Use <code>m-alert__title</code> class to add a title to an Alert.
+    :code(lang="html")
+      <!-- Base - No semantic color class defined -->
+      <div class="m-alert -banner" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Base</p>
+          <p class="m-alert__text">This is a base alert</p>
+        </div>
+      </div>
+      <!-- Success -->
+      <div class="m-alert -banner -success" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Success</p>
+          <p class="m-alert__text">This is a success alert</p>
+        </div>
+      </div>
+      <!-- Danger -->
+      <div class="m-alert -banner -danger" role="alert">
+        <i class="m-alert__icon a-icon -icon-circle-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Danger</p>
+          <p class="m-alert__text">This is a danger alert</p>
+        </div>
+      </div>
+      <!-- Warning -->
+      <div class="m-alert -banner -warning" role="alert">
+        <i class="m-alert__icon a-icon icon-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Warning</p>
+          <p class="m-alert__text">This is a warning alert</p>
+        </div>
+      </div>
+      <!-- Info -->
+      <div class="m-alert -banner -info" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Info</p>
+          <p class="m-alert__text">This is an info alert</p>
+        </div>
+      </div>
+      <!-- Muted -->
+      <div class="m-alert -banner -muted" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Muted</p>
+          <p class="m-alert__text">This is a muted alert</p>
+        </div>
+      </div>
+
+h3 Sizes
+.example.-mb--3
+  .-p--1
+    p.-text--bold.-ml--2 sm
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='sm')
+      | This is a small success alert
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='sm', title="Success")
+      | This is a small success alert
+    p.-text--bold.-ml--2 md (default)
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success')
+      | This is a success alert
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success', title="Success")
+      | This is a success alert
+    p.-text--bold.-ml--2 lg
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='lg')
+      | This is a large success alert
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='lg', title='Success')
+      | This is a large success alert
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-banner-sizes
+      li.-active
+        a(href=`#webcomponent-banner-sizes`) Web component
+      li
+        a(href=`#html-banner-sizes`) HTML
+  .a-tabs-panel.-active#webcomponent-banner-sizes
+    .a-tab__description
+      | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
+    :code(lang="html")
+      <!-- Small -->
+      <chi-alert type="banner" color="success" icon="circle-check" size="sm">
+        This is a small success alert
+      </chi-alert>
+      <!-- Small Titled -->
+      <chi-alert type="banner" color="success" icon="circle-check" size="sm" title="Success">
+        This is a small success alert
+      </chi-alert>
+      <!-- Medium -->
+      <chi-alert type="banner" color="success" icon="circle-check">
+        This is a success alert
+      </chi-alert>
+      <!-- Medium Titled -->
+      <chi-alert type="banner" color="success" icon="circle-check" title="Success">
+        This is a success alert
+      </chi-alert>
+      <!-- Large -->
+      <chi-alert type="banner" color="success" icon="circle-check" size="lg">
+        This is a large success alert
+      </chi-alert>
+      <!-- Large Titled -->
+      <chi-alert type="banner" color="success" icon="circle-check" size="lg" title="Success">
+        This is a large success alert
+      </chi-alert>
+  .a-tabs-panel#html-banner-sizes
+    .a-tab__description
+      | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code>, <code>-md</code>, and <code>-lg</code>.
+    :code(lang="html")
+      <!-- Small -->
+      <div class="m-alert -banner -success -sm" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a small success alert</p>
+        </div>
+      </div>
+      <!-- Small Titled -->
+      <div class="m-alert -banner -success -sm" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Success</p>
+          <p class="m-alert__text">This is a small success alert</p>
+        </div>
+      </div>
+      <!-- Medium -->
+      <div class="m-alert -banner -success" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a success alert</p>
+        </div>
+      </div>
+      <!-- Medium Titled -->
+      <div class="m-alert -banner -success" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Success</p>
+          <p class="m-alert__text">This is a success alert</p>
+        </div>
+      </div>
+      <!-- Large -->
+      <div class="m-alert -banner -success -lg" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a large success alert</p>
+        </div>
+      </div>
+      <!-- Large Titled -->
+      <div class="m-alert -banner -success -lg" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Success</p>
+          <p class="m-alert__text">This is a large success alert</p>
+        </div>
+      </div>
+
+h3 Dismissible
+.example.-mb--3
+  .-p--1
+    chi-alert.-m--2(type='banner', icon='warning', color='warning', dismissible)
+      | This is a dismissible warning alert
+    chi-alert.-m--2(type='banner', color='warning', icon='warning', title="Warning", dismissible)
+      | This is a dismissible warning alert
+    chi-alert.-m--2(type='banner', color='warning', icon='warning', size='lg', title="Warning", dismissible)
+      | This is a large dismissible warning alert
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-banner-dismissible
+      li.-active
+        a(href=`#webcomponent-banner-dismissible`) Web component
+      li
+        a(href=`#html-banner-dismissible`) HTML
+  .a-tabs-panel.-active#webcomponent-banner-dismissible
+    .a-tab__description
+      | Use the <code>dismissible</code> attribute to render a close button that allows users to dismiss an alert.
+    :code(lang="html")
+      <!-- Dismissible -->
+      <chi-alert type="banner" color="warning" icon="warning" dismissible>
+        This is a dismissible warning alert
+      </chi-alert>
+      <!-- Dismissible Titled -->
+      <chi-alert type="banner" color="warning" icon="warning" title="Warning" dismissible>
+        This is a dismissible warning alert
+      </chi-alert>
+      <!-- Large Dismissible Titled -->
+      <chi-alert type="banner" color="warning" icon="warning" size="lg" title="Warning" dismissible>
+        This is a large dismissible warning alert
+      </chi-alert>
+  .a-tabs-panel#html-banner-dismissible
+    .a-tab__description
+      | To allow users to dismiss an alert, use the class <code>-dismiss</code>
+      | and insert a dismiss button <code>m-alert__dismiss-button</code>.
+    :code(lang="html")
+      <!-- Dismissible Base -->
+      <div class="m-alert -banner -warning -dismiss" role="alert">
+        <i class="m-alert__icon a-icon icon-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a base dismissible warning alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Dismissible Titled -->
+      <div class="m-alert -banner -warning -dismiss" role="alert">
+        <i class="m-alert__icon a-icon icon-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Warning</p>
+          <p class="m-alert__text">This is a dismissible warning alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Large Dismissible Titled -->
+      <div class="m-alert -banner -warning -dismiss -lg" role="alert">
+        <i class="m-alert__icon a-icon icon-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Warning</p>
+          <p class="m-alert__text">This is a dismissible warning alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+
+h3 Actionable
+.example.-mb--3
+  .-p--1.-bg--grey-20
+    chi-alert.-m--2(type='banner', icon='circle-info', size='lg', title="Base", dismissible)
+      | This is a large dismissible alert
+      chi-button(slot="m-alert__actions", color='dark', variant='outline', size='lg') Secondary action
+      chi-button(slot="m-alert__actions", color='primary', size='lg') Primary action
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-banner-actionable
+      li.-active
+        a(href=`#webcomponent-banner-actionable`) Web component
+      li
+        a(href=`#html-banner-actionable`) HTML
+  .a-tabs-panel.-active#webcomponent-banner-actionable
+    .a-tab__description
+      | Add buttons to an alert by defining <code>slot="m-alert__actions"</code> on each <code>chi-button</code>.
+    :code(lang="html")
+      <chi-alert type="banner" icon="circle-info" size="lg" title="Base" dismissible>
+        This is a large dismissible alert
+        <chi-button slot="m-alert__actions" color="dark" variant="outline" size="lg">Secondary action</chi-button>
+        <chi-button slot="m-alert__actions" color="primary" size="lg">Primary action</chi-button>
+      </chi-alert>
+  .a-tabs-panel#html-banner-actionable
+    .a-tab__description
+      | While <code>m-alert__actions</code> can be added to any Alert, alert actions are best suited for default or Titled alerts with the size class <code>-lg</code>.
+      br
+      | Large Alerts have extra <code>m-alert</code> padding, a larger <code>m-alert__icon</code>, and a larger <code>m-alert__dismiss-button</code>.
+    :code(lang="html")
+      <div class="m-alert -banner -lg" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Base</p>
+          <p class="m-alert__text">This is a large dismissible alert</p>
+          <div class="m-alert__actions">
+            <button class="a-btn -lg -dark -outline">Secondary action</button>
+            <button class="a-btn -lg -primary">Primary action</button>
+          </div>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+
+div.a-divider.-my--6.-bt--2
+
+h2 Toast
+p.-text
+  | Toasts are unobtrusive alerts used to display brief, auto-expiring information.
+h3 Default
+.example.-mb--3
+  .-p--1
+    chi-alert.-m--2(type='toast', icon='circle-info')
+      | This is a base alert
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m--2(type='toast', icon=val, color=type)
+        =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-toast-default
+      li.-active
+        a(href=`#webcomponent-toast-default`) Web component
+      li
+        a(href=`#html-toast-default`) HTML
+  .a-tabs-panel.-active#webcomponent-toast-default
+    .a-tab__description
+      | To use a toast alert, set the <code>type</code> attribute to <code>toast</code>.
+    :code(lang="html")
+      <!-- Base - No semantic color defined -->
+      <chi-alert type="toast" icon="circle-info">
+        This is a base alert
+      </chi-alert>
+      <!-- Success -->
+      <chi-alert type="toast" color="success" icon="circle-check">
+        This is a success alert
+      </chi-alert>
+      <!-- Danger -->
+      <chi-alert type="toast" color="danger" icon="circle-warning">
+        This is a danger alert
+      </chi-alert>
+      <!-- Warning -->
+      <chi-alert type="toast" color="warning" icon="warning">
+        This is a warning alert
+      </chi-alert>
+      <!-- Info -->
+      <chi-alert type="toast" color="info" icon="circle-info">
+        This is an info alert
+      </chi-alert>
+      <!-- Muted -->
+      <chi-alert type="toast" color="muted" icon="circle-info">
+        This is a muted alert
+      </chi-alert>
+  .a-tabs-panel#html-toast-default
+    .a-tab__description
+      | To use a toast alert, apply the class <code>-toast</code>.
+    :code(lang="html")
+      <!-- Base - No semantic color class defined -->
+      <div class="m-alert -toast" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a base alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Success -->
+      <div class="m-alert -toast -success" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a success alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Danger -->
+      <div class="m-alert -toast -danger" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a danger alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Warning -->
+      <div class="m-alert -toast -warning" role="alert">
+        <i class="m-alert__icon a-icon icon-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a warning alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Info -->
+      <div class="m-alert -toast -info" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is an info alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Muted -->
+      <div class="m-alert -toast -muted" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a muted alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+
+h3 Titled
+.example.-mb--3
+  .-p--1
+    chi-alert.-m--2(type='toast', icon='circle-info', title="Base")
+      | This is a base alert
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m--2(type='toast', color=type, icon=val, title=type)
+        =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-toast-titled
+      li.-active
+        a(href=`#webcomponent-toast-titled`) Web component
+      li
+        a(href=`#html-toast-titled`) HTML
+  .a-tabs-panel.-active#webcomponent-toast-titled
+    :code(lang="html")
+      <!-- Base - No semantic color defined -->
+      <chi-alert type="toast" icon="circle-info" title="Base">
+        This is a base alert
+      </chi-alert>
+      <!-- Success -->
+      <chi-alert type="toast" icon="circle-check" color="success" title="Success">
+        This is a success alert
+      </chi-alert>
+      <!-- Danger -->
+      <chi-alert type="toast" color="danger" icon="circle-warning" title="Danger">
+        This is a danger alert
+      </chi-alert>
+      <!-- Warning -->
+      <chi-alert type="toast" color="warning" icon="warning" title="Warning">
+        This is a warning alert
+      </chi-alert>
+      <!-- Info -->
+      <chi-alert type="toast" color="info" icon="circle-info" title="Info">
+        This is an info alert
+      </chi-alert>
+      <!-- Muted -->
+      <chi-alert type="toast" color="muted" icon="circle-info" title="Muted">
+        This is a muted alert
+      </chi-alert>
+  .a-tabs-panel#html-toast-titled
+    :code(lang="html")
+      <!-- Base - No semantic color class defined -->
+      <div class="m-alert -toast" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Base</p>
+          <p class="m-alert__text">This is a base alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Success -->
+      <div class="m-alert -toast -success" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Success</p>
+          <p class="m-alert__text">This is a success alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Danger -->
+      <div class="m-alert -toast -danger" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Danger</p>
+          <p class="m-alert__text">This is a danger alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Warning -->
+      <div class="m-alert -toast -warning" role="alert">
+        <i class="m-alert__icon a-icon icon-warning"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Warning</p>
+          <p class="m-alert__text">This is a warning alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Info -->
+      <div class="m-alert -toast -info" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Info</p>
+          <p class="m-alert__text">This is an info alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <!-- Muted -->
+      <div class="m-alert -toast -muted" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-info"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Muted</p>
+          <p class="m-alert__text">This is a muted alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+
+h3 Sizes
+.example.-mb--3
+  .-p--1
+    p.-text--bold.-ml--2 sm
+    chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm')
+      | This is a small success alert
+    chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', title='Success')
+      | This is a small success alert
+    p.-text--bold.-ml--2 md (default)
+    chi-alert.-m--2(type='toast', color='success', icon='circle-check')
+      | This is a success alert
+    chi-alert.-m--2(type='toast', color='success', icon='circle-check', title='Success')
+      | This is a success alert
+    p.-text--bold.-ml--2 lg
+    chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg')
+      | This is a large success alert
+    chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg', title='Success')
+      | This is a large success alert
+  .example-tabs.-pl--2
+    ul.a-tabs#examples-toast-sizes
+      li.-active
+        a(href=`#webcomponent-toast-sizes`) Web component
+      li
+        a(href=`#html-toast-sizes`) HTML
+  .a-tabs-panel.-active#webcomponent-toast-sizes
+    .a-tab__description
+      | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
+    :code(lang="html")
+      <!-- Small -->
+      <chi-alert type="toast" color="success" icon="circle-check" size="sm">
+        This is a small success alert
+      </chi-alert>
+      <!-- Small Titled -->
+      <chi-alert type="toast" color="success" icon="circle-check" size="sm" title="Success">
+        This is a small success alert
+      </chi-alert>
+      <!-- Medium -->
+      <chi-alert type="toast" color="success" icon="circle-check">
+        This is a success alert
+      </chi-alert>
+      <!-- Medium Titled -->
+      <chi-alert type="toast" color="success" icon="circle-check" title="Success">
+        This is a success alert
+      </chi-alert>
+      <!-- Large -->
+      <chi-alert type="toast" color="success" icon="circle-check" size="lg">
+        This is a large success alert
+      </chi-alert>
+      <!-- Large Titled -->
+      <chi-alert type="toast" color="success" icon="circle-check" size="lg" title="Success">
+        This is a large success alert
+      </chi-alert>
+  .a-tabs-panel#html-toast-sizes
+    .a-tab__description
+      | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code>, <code>-md</code>, and <code>-lg</code>.
+    :code(lang="html")
+      <div class="m-alert -toast -success -sm" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a small success alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <div class="m-alert -toast -success -sm" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Success</p>
+          <p class="m-alert__text">This is a small success alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <div class="m-alert -toast -success" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a success alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <div class="m-alert -toast -success" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Success</p>
+          <p class="m-alert__text">This is a success alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <div class="m-alert -toast -success -lg" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__text">This is a large success alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+      <div class="m-alert -toast -success -lg" role="alert">
+        <i class="m-alert__icon a-icon icon-circle-check"></i>
+        <div class="m-alert__content">
+          <p class="m-alert__title">Success</p>
+          <p class="m-alert__text">This is a large success alert</p>
+        </div>
+        <button class="m-alert__dismiss-button a-btn -icon -close" aria-label="Close">
+          <div class="a-btn__content">
+            <i class="a-icon icon-x"></i>
+          </div>
+        </button>
+      </div>
+
+script.
+    document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('examples-default'));
+      chi.tab(document.getElementById('examples-centered'));
+      chi.tab(document.getElementById('examples-titled'));
+      chi.tab(document.getElementById('examples-sizes'));
+      chi.tab(document.getElementById('examples-dismissible'));
+      chi.tab(document.getElementById('examples-actionable'));
+      chi.tab(document.getElementById('examples-banner-default'));
+      chi.tab(document.getElementById('examples-banner-centered'));
+      chi.tab(document.getElementById('examples-banner-titled'));
+      chi.tab(document.getElementById('examples-banner-sizes'));
+      chi.tab(document.getElementById('examples-banner-dismissible'));
+      chi.tab(document.getElementById('examples-banner-actionable'));
+      chi.tab(document.getElementById('examples-toast-default'));
+      chi.tab(document.getElementById('examples-toast-titled'));
+      chi.tab(document.getElementById('examples-toast-sizes'));
+    }
+  );

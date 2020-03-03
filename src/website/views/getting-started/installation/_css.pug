@@ -1,0 +1,22 @@
+h2 Adding Chi
+p.-text
+  | Adding Chi to your project is as simple as loading the Chi stylesheet from the <a href="https://assets.ctl.io">CenturyLink Assets Server</a>.
+  | Not only is this a great way to get started with Chi, it is also a highly available and performant option for loading the required
+  | assets into your project.
+
+.-mb--2
+  :code(lang='html')
+    <link rel="stylesheet" href="https://assets.ctl.io/chi/1.4.2/chi.css">
+
+p.-text
+  | Next, add the <code>chi</code> CSS class to the <code>&lt;html&gt;</code> tag of your document to properly scope the styles.
+  | This allows Chi to override any existing styles that have been defined by legacy markup.
+
+  .-mb--2
+  :code(lang='html')
+    <html class="chi">
+      ...
+    </html>
+
+p.-text.-mb--3
+  | At this point you will be able to target the styles available in Chi by referencing documentation.

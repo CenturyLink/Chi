@@ -1,0 +1,379 @@
+- var steps = ['Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5'];
+
+h2 Examples
+
+p.-text
+  | To display steps, apply the class <code>a-steps</code> to a unordered list <code>ul</code>
+  | and indicate the active link with the class <code>-active</code> in the corresponding li tag.
+
+h3 Base
+.example.-mb--3
+  .-p--3
+    ul.a-steps.-p--6
+      each step in steps
+        if step == 'Step 1'
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 2'
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 3'
+          li.-active
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 5'
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+        else
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+  :code(lang="html")
+    <ul class="a-steps">
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 1</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 2</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li class="-active">
+        <div class="a-steps__icon">
+          <a href="#">Step 3</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 4</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 5</a>
+        </div>
+      </li>
+    </ul>
+
+h3 Inverse
+.example.-mb--3
+  .-p--3
+    ul.a-steps.-inverse.-p--6
+      each step in steps
+        if step == 'Step 1'
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 2'
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 3'
+          li.-active
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 5'
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+        else
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+  :code(lang="html")
+    <ul class="a-steps -inverse">
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 1</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 2</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li class="-active">
+        <div class="a-steps__icon">
+          <a href="#">Step 3</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 4</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 5</a>
+        </div>
+      </li>
+    </ul>
+
+
+
+h3 Horizontal Labels Base
+p.-text
+  | To display steps with horizontal labels, apply the class <code>-horizontalLabels</code> to the steps container and
+  |  indicate the active link with the class <code>-active</code> and the class <code>-completed</code> in the corresponding div tag.
+
+.example.-mb--3
+  .-p--3
+    ul.a-steps.-horizontalLabels.-p--5
+      each step in steps
+        if step == 'Step 1'
+          li.-completed
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 2'
+          li.-completed
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 3'
+          li.-active
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 5'
+          li
+            div.a-steps__icon
+            a(href='#')= `${step}`
+        else
+          li
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+  :code(lang="html")
+    <ul class="a-steps -horizontalLabels">
+      <li class="-completed">
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 1</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li class="-completed">
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 2</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li class="-active">
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 3</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 4</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 5</a>
+      </li>
+    </ul>
+
+h3 Horizontal Labels Inverse
+p.-text
+  | To display an inverse version of horizontal labels, apply the class <code>-inverse</code>.
+
+.example.-mb--3
+  .-p--3
+    ul.a-steps.-horizontalLabels.-inverse.-p--5
+      each step in steps
+        if step == 'Step 1'
+          li.-completed
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 2'
+          li.-completed
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 3'
+          li.-active
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 5'
+          li
+            div.a-steps__icon
+            a(href='#')= `${step}`
+        else
+          li
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+  :code(lang="html")
+    <ul class="a-steps -horizontalLabels -inverse">
+      <li class="-completed">
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 1</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li class="-completed">
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 2</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li class="-active">
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 3</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 4</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 5</a>
+      </li>
+    </ul>
+
+h3 Responsiveness
+p.-text
+  | Use <code>-labels-{breakpoint}--hide</code> to hide step component labels on specific breakpoints or
+  | <code>-labels--hide</code> to hide on all breakpoints. Breakpoints supported are <code>sm</code>,
+  | <code>md</code>, <code>lg</code>, and <code>xl</code>. Labels are shown on all breakpoints by default.
+
+.example.-mb--3
+  .-p--3
+    ul.a-steps.-labels-md--hide.-p--5
+      each step in steps
+        if step == 'Step 1'
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 2'
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 3'
+          li.-active
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 5'
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+        else
+          li
+            div.a-steps__icon
+              a(href='#')= `${step}`
+            div.a-steps__line
+    p.-text--center
+     | -labels-md--hide
+    ul.a-steps.-horizontalLabels.-labels-lg--hide.-p--4
+      each step in steps
+        if step == 'Step 1'
+          li.-completed
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 2'
+          li.-completed
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 3'
+          li.-active
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+        else if step == 'Step 5'
+          li
+            div.a-steps__icon
+            a(href='#')= `${step}`
+        else
+          li
+            div.a-steps__icon
+            a(href='#')= `${step}`
+            div.a-steps__line
+    p.-text--center
+      | -labels-lg--hide
+  :code(lang="html")
+    <!-- Visible labels from md breakpoint -->
+    <ul class="a-steps -labels-md--hide">
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 1</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 2</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li class="-active">
+        <div class="a-steps__icon">
+          <a href="#">Step 3</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 4</a>
+        </div>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon">
+          <a href="#">Step 5</a>
+        </div>
+      </li>
+    </ul>
+    <!-- Visible labels from lg breakpoint -->
+    <ul class="a-steps -horizontalLabels -labels-lg--hide">
+      <li class="-completed">
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 1</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li class="-completed">
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 2</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li class="-active">
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 3</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 4</a>
+        <div class="a-steps__line"></div>
+      </li>
+      <li>
+        <div class="a-steps__icon"></div>
+        <a href="#">Step 5</a>
+      </li>
+    </ul>

@@ -1,0 +1,131 @@
+h2 Examples
+
+h3 Stacked
+p.-text
+  | Group radio buttons in <code>m-form__item</code> for easy stacking.
+.example.-mb--3
+  .-p--3
+    fieldset
+      legend.a-label Select an option
+      .m-form__item
+        .a-radio
+          input(class="a-radio__input", type="radio", name="radios", id="radio1")
+          label.a-radio__label(for="radio1") Radio Button
+      .m-form__item
+        .a-radio
+          input(class="a-radio__input", type="radio", name="radios", id="radio2", disabled)
+          label.a-radio__label(for="radio2") Disabled Radio Button
+  :code(lang="html")
+    <fieldset>
+      <legend class="a-label">Select an option</legend>
+      <div class="m-form__item">
+        <div class="a-radio">
+          <input class="a-radio__input" type="radio" name="radios" id="radio1">
+          <label class="a-radio__label" for="radio1">Radio Button</label>
+        </div>
+      </div>
+      <div class="m-form__item">
+        <div class="a-radio">
+          <input class="a-radio__input" type="radio" name="radios" id="radio2" disabled>
+          <label class="a-radio__label" for="radio2">Disabled Radio Button</label>
+        </div>
+      </div>
+    </fieldset>
+
+h3 Inline
+p.-text
+  | Apply <code>-inline</code> to display inline two or more radio buttons.
+.example.-mb--3
+  .-p--3
+    fieldset
+      legend.a-label Select an option
+      .m-form__item.-inline
+        .a-radio
+          input(class="a-radio__input", type="radio", name="inlineRadios", id="inlineRadio1")
+          label.a-radio__label(for="inlineRadio1") Option 1
+      .m-form__item.-inline
+        .a-radio
+          input(class="a-input", type="radio", name="inlineRadios", id="inlineRadio2")
+          label.a-radio__label(for="inlineRadio2") Option 2
+  :code(lang="html")
+    <fieldset>
+      <legend class="a-label">Select an option</legend>
+      <div class="m-form__item -inline">
+        <div class="a-radio">
+          <input class="a-radio__input" type="radio" name="inlineRadios" id="inlineRadio1">
+          <label class="a-radio__label" for="inlineRadio1">Option 1</label>
+        </div>
+      </div>
+      <div class="m-form__item -inline">
+        <div class="a-radio">
+          <input class="a-radio__input" type="radio" name="inlineRadios" id="inlineRadio2" disabled>
+          <label class="a-radio__label" for="inlineRadio2">Option 2</label>
+        </div>
+      </div>
+    </fieldset>
+
+h2 Radio Button List
+p.-text
+  | Radio button lists are used to wrap a series of radio buttons in a list.
+  | To render a series of radio buttons in a list, apply the class <code>-list</code> to <code>m-form__item</code>.
+.example.-mb--3
+  .-p--3
+    fieldset
+      legend.a-label Select an option
+      ul.m-form__item.-list(style="max-width:20rem")
+        li.m-form__item
+          .a-radio
+            input(type="radio", class="a-radio__input", name="radiobuttonList", id="radio-1")
+            label.a-radio__label(for="radio-1") Option 1
+        li.m-form__item
+          .a-radio
+            input(type="radio", class="a-radio__input", name="radiobuttonList", id="radio-2")
+            label.a-radio__label(for="radio-2") Option 2
+        li.m-form__item
+          .a-radio
+            input(type="radio", class="a-radio__input", name="radiobuttonList", id="radio-3")
+            label.a-radio__label(for="radio-3") Option 3
+        li.m-form__item
+          .a-radio
+            input(type="radio", class="a-radio__input", name="radiobuttonList", id="radio-4")
+            label.a-radio__label(for="radio-4") Option 4
+        li.m-form__item
+          .a-radio
+            input(type="radio", class="a-radio__input", name="radiobuttonList", id="radio-5")
+            label.a-radio__label(for="radio-5") Option 5
+  :code(lang='html')
+    <fieldset>
+      <legend class="a-label">Select an option</legend>
+      <ul class="m-form__item -list">
+        <li class="m-form__item">
+          <div class="a-radio">
+            <input type="radio" class="a-radio__input" name="radiobuttonList" id="radio1">
+            <label class="a-radio__label" for="radio1">Option 1</label>
+          </div>
+        </li>
+        <li class="m-form__item">
+          <div class="a-radio">
+            <input type="radio" class="a-radio__input" name="radiobuttonList" id="radio2">
+            <label class="a-radio__label" for="radio2">Option 2</label>
+          </div>
+        </li>
+        <li class="m-form__item">
+          <div class="a-radio">
+            <input type="radio" class="a-radio__input" name="radiobuttonList" id="radio3">
+            <label class="a-radio__label" for="radio3">Option 3</label>
+          </div>
+        </li>
+        <li class="m-form__item">
+          <div class="a-radio">
+            <input type="radio" class="a-radio__input" name="radiobuttonList" id="radio4">
+            <label class="a-radio__label" for="radio4">Option 4</label>
+          </div>
+        </li>
+        <li class="m-form__item">
+          <div class="a-radio">
+            <input type="radio" class="a-radio__input" name="radiobuttonList" id="radio5">
+            <label class="a-radio__label" for="radio5">Option 5</label>
+          </div>
+        </li>
+      </ul>
+    </fieldset>

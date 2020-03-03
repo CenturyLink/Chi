@@ -1,0 +1,91 @@
+p.-text.-mb--3
+  | Chi Web Components are <a target="_blank" href="https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements" rel="noopener">Custom Elements</a>
+  | build according the HTML Living Standard.
+
+h2 Adding Chi Custom Elements
+p.-text
+  | Adding Chi Custom Elements to your project is as simple as loading the Chi Custom Elements JavaScript files in the
+  | header of your web application, from the <a href="https://assets.ctl.io">CenturyLink Assets Server</a>. Not only is
+  | this a great way to get started with Chi, but it is also a highly available and performant option for loading the
+  | required assets into your project.
+
+.-mb--2
+  :code(lang='html')
+    <script type="module" src="https://assets.ctl.io/chi/1.4.2/js/ce/ux-chi-ce/ux-chi-ce.esm.js"></script>
+    <script nomodule="" src="https://assets.ctl.io/chi/1.4.2/js/ce/ux-chi-ce/ux-chi-ce.js"></script>
+
+p.-text
+  span.a-badge.-dark.-sm.-mr1
+    span Tip
+  | It is important to place them in the header of your document to let them load any Polyfill in the case the browser
+  | doesn't support Custom Elements.
+
+p.-text: em An NPM package will be available shortly.
+
+p.-text.-mb--3
+  | At this point, you can use the components described in this documentation.
+
+h2 Regarding HTML attributes and DOM properties
+p.-text
+  | Chi custom elements have different ways to operate with them. The most common ones are the HTML attributes
+  | and the DOM properties. In most cases, we keep them synchronized. For example, the chi-button element has
+  | a <code>size</code> attribute that can be accessed and modified in two ways.
+p.-text Modifying the HTML attribute:
+.-mb--2
+  :code(lang='html')
+    <chi-button id="close-btn" size="md">Close</chi-button>
+    <script>
+      document.getElementById("close-btn").setAttribute("size", "xl");
+    </script>
+p.-text Setting the DOM property:
+.-mb--2
+  :code(lang='html')
+    <chi-button id="close-btn" size="md">Close</chi-button>
+    <script>
+      document.getElementById("close-btn").size="xl";
+    </script>
+p.-text
+  span.a-badge.-dark.-sm.-mr1
+    span Tip
+  | DOM properties are camel case (headerTitle) while HTML attributes are kebab case (header-title).
+
+
+h3 Boolean attributes and properties
+p.-text
+  | Some of our components have boolean attributes which work in the same way the well known <code>disabled</code>
+  | attribute. Boolean attributes are <code>true</code> when the HTML element has the attribute and <code>false</code> when
+  | not. You cannot set them to <code>false</code> like this:
+.-mb--2
+  :code(lang='html')
+    <input type="text" disabled="false" />
+    <chi-drawer active="false" />
+p.-text
+  | Boolean attributes can set to true this way:
+.-mb--2
+  :code(lang='html')
+    <input type="text" disabled />
+    <chi-drawer id="drawer" active />
+    <script>
+      document.getElementById("drawer").active = true;
+      document.getElementById("drawer").setAttribute("active", "active");
+    </script>
+p.-text
+  | And can set to false:
+.-mb--2
+  :code(lang='html')
+    <input type="text"  />
+    <chi-drawer id="drawer" />
+    <script>
+      document.getElementById("drawer").active = false;
+      document.getElementById("drawer").removeAttribute("active");
+    </script>
+p.-text
+  | Some components, like chi-drawer, have helper methods in order to change the state of commonly modified attributes:
+.-mb--2
+  :code(lang='html')
+    <chi-drawer id="drawer" />
+    <script>
+      document.getElementById("drawer").show();   // This sets the active property to true
+      document.getElementById("drawer").hide();   // This sets the active property to false
+      document.getElementById("drawer").toggle(); // This toggles the state of the active property
+    </script>

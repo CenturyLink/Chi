@@ -1,0 +1,61 @@
+.m-alert.-info.-my--3
+  i.m-alert__icon.a-icon.icon-circle-info
+  .m-alert__content
+    p.m-alert__text This component requires Javascript
+
+h2 Examples
+p.-text
+  | To render a file input, apply the class <code>a-input</code> to an <code>input type="file"</code> and
+  | add a label next to it.
+
+h3 Base
+.example.-mb--3
+  .-p--3
+    input.a-input(type="file", id="file01", aria-label="Choose file")
+    label(for="file01") No file chosen
+  :code(lang="html")
+    <input type="file" class="a-input" id="file01" aria-label="Choose file">
+    <label for="file01">No file chosen</label>
+
+h2 Sizes
+p.-text
+  | File inputs supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
+.example.-mb--3
+  .-p--3
+    .-p--2
+      input.a-input(type="file", class="-sm", id="file02", aria-label="Choose file")
+      label(for="file02") No file chosen
+    .-p--2
+      input.a-input(type="file", class="-md", id="file03", aria-label="Choose file")
+      label(for="file03") No file chosen
+    .-p--2
+      input.a-input(type="file", class="-lg", id="file04", aria-label="Choose file")
+      label(for="file04") No file chosen
+    .-p--2
+      input.a-input(type="file", class="-xl", id="file05", aria-label="Choose file")
+      label(for="file05") No file chosen
+  :code(lang='html')
+    <!-- -sm -->
+    <input type="file" class="a-input -sm" id="file02" aria-label="Choose file">
+    <label for="file02">No file chosen</label>
+    <!-- -md -->
+    <input type="file" class="a-input -md" id="file03" aria-label="Choose file">
+    <label for="file03">No file chosen</label>
+    <!-- -lg -->
+    <input type="file" class="a-input -lg" id="file04" aria-label="Choose file">
+    <label for="file04">No file chosen</label>
+    <!-- -xl -->
+    <input type="file" class="a-input -xl" id="file05" aria-label="Choose file">
+    <label for="file05">No file chosen</label>
+
+h2 JavaScript
+p.-text This component requires JavaScript to update the label content once a file or files have been selected.
+
+h3 Example
+.-mb--4
+  include:code(lang="js") ../../../../../chi/components/input-file/input-file.js
+
+script
+  include ../../../../../chi/components/input-file/input-file.js

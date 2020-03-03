@@ -1,0 +1,104 @@
+h2 Web component
+
+:stencilDoc(name='chi-number-input')
+
+.a-divider
+
+h2 JavaScript options
+p.-text This component accepts options to configure its behavior.
+
+section.a-table.a-table__options.-bordered.-my--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th(style='width: 10em')
+            div Option
+          th(style='width: 10em')
+            div Default
+          th
+            div Description
+      tbody
+        tr
+          td
+            div
+              code= 'autofix'
+          td
+            div
+              code= 'false'
+          td
+            div
+              | Fixes automatically values that are out of range of defined by <code>max</code> and <code>min</code>
+              | attributes, and any value that doesn't fit the granularity defined by <code>step</code> and the
+              | <code>initial</code> value
+
+h3 Example <code>autofix=true</code>
+p.-text
+  | This example only accepts values between <code>0</code> and <code>6</code>, and as the <code>step</code> is
+  | <code>2</code> and initial <code>value</code> is <code>1</code>, only even values are valid. If you manually write
+  | any pair value, or a value greater than 5 or lesser than 1, the component will automatically correct the value.
+.example.-mb--3
+  .-p--3
+    .m-inputNumber
+      input#input-number-3.a-input(type="number", value="1", min="0", max="6", step="2", aria-label="Input label")
+      button.a-btn.-icon(aria-label='Decrease')
+        .a-btn__content
+          i.a-icon.icon-minus
+      button.a-btn.-icon(aria-label='Increase')
+        .a-btn__content
+          i.a-icon.icon-plus
+  :code(lang="html")
+    <div class="m-inputNumber">
+      <input id="input-number-3" class="a-input" type="number" value="1" min="0" max="6" step="2" aria-label="Input label">
+      <button class="a-btn -icon" aria-label="Decrease">
+        <div class="a-btn__content">
+          <i class="a-icon icon-minus"></i>
+        </div>
+      </button>
+      <button class="a-btn -icon" aria-label="Increase">
+        <div class="a-btn__content">
+          <i class="a-icon icon-plus"></i>
+        </div>
+      </button>
+    </div>
+    <script>
+      chi.numberInput(
+        document.getElementById('input-number-2'),
+        {autofix: true}
+      );
+    </script>
+
+h3 Preventing memory leaks
+p.-text
+  | Input number components have a dispose function to free all resources attached to the element, such as event
+  | listeners and object data. You should call this method when you want to remove the component.
+:code(lang="javascript")
+  var elem = document.getElementById('input-number-1');
+  var inputNumberComponent = chi.numberInput(elem);
+  // do stuff
+  inputNumberComponent.dispose();
+
+p.-text
+  span.a-badge.-dark.-sm.-mr1
+    span Tip
+  | It is safe to call the <code>numberInput</code> method more than once, as it will return any previously created
+  | number input component associated to the input.
+:code(lang="javascript")
+  var elem = document.getElementById('input-number-1');
+  var inputNumberComponent = chi.numberInput(elem);
+  var elem2 = document.getElementById('input-number-1');
+  var inputNumberComponent2 = chi.numberInput(elem2);
+  inputNumberComponent === inputNumberComponent2; // returns true
+
+  inputNumberComponent.dispose(); // Only have to do it once.
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.numberInput(
+        document.getElementById('input-number-3'),
+        {autofix:true}
+      );
+    }
+  );

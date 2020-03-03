@@ -54,8 +54,6 @@ function addId(item) {
 
   if (item.nodeName === 'H3') {
     processedAnchors.latestH3 = id;
-  } else if (processedAnchors.latestH3) {
-    id = processedAnchors.latestH3 + '-' + id;
   }
   let counter = 1;
   while (processedAnchors.all.indexOf(id) !== -1) {
@@ -179,5 +177,22 @@ onLoad(() => {
   var dropdownButton = document.getElementById('version-dropdown');  
   chi.dropdown(dropdownButton);
   chi.dropdown(document.getElementById('support'));
+
+  var urlHash = window.location.hash;
+  var tabContentId;
+
+  if (urlHash) {
+    document.querySelector('#viewtabs li.-active').classList.remove('-active');
+  
+    Array.prototype.forEach.call(document.querySelectorAll('.a-tabs-panel'), function(tabContent) {
+      tabContent.classList.remove('-active');
+  
+      if (tabContent.contains(document.querySelector(`${urlHash}`))) {
+        tabContent.classList.add('-active');
+        tabContentId = tabContent.id;
+        document.querySelector(`[href*=${tabContentId}]`).parentNode.classList.add('-active');
+      }
+    });
+  }
 
 });

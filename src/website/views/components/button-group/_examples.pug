@@ -1,0 +1,281 @@
+h2 Examples
+h3 Base
+p.-text To render a button group, wrap a series of buttons in a div and apply the class <code>m-btnGroup</code>.
+.example.-mb--3
+  .-p--3
+    .m-btnGroup
+      button(class=`a-btn`) Button
+      button(class=`a-btn`) Button
+      button(class=`a-btn`) Button
+  :code(lang='html')
+    <div class="m-btnGroup">
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+    </div>
+
+h3 Vertical
+p.-text To render a series of buttons vertically, apply the class modifier <code>-vertical</code>.
+.example.-mb--3
+  .-p--3
+    .m-btnGroup.-vertical
+      button(class=`a-btn`) Button
+      button(class=`a-btn`) Button
+      button(class=`a-btn`) Button
+  :code(lang='html')
+    <div class="m-btnGroup -vertical">
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+    </div>
+
+h2 Fluid buttons
+p.-text Button groups can be expanded to fill the parent space by applying the class <code>-fluid</code>.
+h3 Horizontal
+.example.-mb--3
+  .-p--3
+    .m-btnGroup.-fluid(style="width:100%")
+      button(class=`a-btn`) Button
+      button(class=`a-btn`) Button
+      button(class=`a-btn`) Button
+  :code(lang='html')
+    <div class="m-btnGroup -fluid">
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+    </div>
+
+h3 Vertical
+.example.-mb--3
+  .-p--3
+    .m-btnGroup.-vertical.-fluid(style="width:12rem")
+      button(class=`a-btn`) Button
+      button(class=`a-btn`) Button
+      button(class=`a-btn`) Button
+  :code(lang='html')
+    <div class="m-btnGroup -vertical -fluid">
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+      <button class="a-btn">Button</button>
+    </div>
+
+h3 Alignment
+p.-text
+  | Button text is centered by default. However, this behavior can change by applying the modifiers
+  | <code>-align--left</code> or <code>-align--right</code>.
+.example.-mb--3
+  .-p--3
+    .m-btnGroup.-fluid(style="width:100%")
+      button(class=`a-btn -align--left`) Button
+      button(class=`a-btn`) Button
+      button(class=`a-btn -align--right`) Button
+  :code(lang='html')
+    <div class="m-btnGroup -fluid">
+      <button class="a-btn -align--left">Button</button>
+      <button class="a-btn">Button</button>
+      <button class="a-btn -align--right">Button</button>
+    </div>
+
+h3 Disable Fluidity
+p.-text
+  | To disable the fluidity of a specific button in a fluid button group, apply the class <code>-notFluid</code> to the button.
+
+.example.-mb--3
+  .-p--3
+    .m-btnGroup.-fluid(style="width:100%")
+      button(class=`a-btn`) Button
+      button(class=`a-btn -notFluid`) Button
+      button(class=`a-btn`) Button
+  :code(lang='html')
+    <div class="m-btnGroup -fluid">
+      <button class="a-btn">Button</button>
+      <button class="a-btn -notFluid">Button</button>
+      <button class="a-btn">Button</button>
+    </div>
+
+h2 Sizes
+
+p.-text
+  | Button groups supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
+
+ul.a-tabs#sizes-horizontal-vertical
+  li.-active
+    a(href="#sizes-horizontal") Horizontal
+  li
+    a(href="#sizes-vertical") Vertical
+
+.example.-mb--3
+  .a-tabs-panel.-active#sizes-horizontal
+    .-px--3.-pt--0.-pb--3
+      each size in ['sm', 'md', 'lg', 'xl']
+        p.-text--bold= '-' + size
+        .-d--flex.-flex--wrap
+          .m-btnGroup
+            button(class=`a-btn -${size}`) Button
+            button(class=`a-btn -${size}`) Button
+            button(class=`a-btn -${size}`) Button
+    :code(lang='html')
+      <!-- sm -->
+      <div class="m-btnGroup">
+        <button class="a-btn -sm">Button</button>
+        <button class="a-btn -sm">Button</button>
+        <button class="a-btn -sm">Button</button>
+      </div>
+      <!-- md -->
+      <div class="m-btnGroup">
+        <button class="a-btn -md">Button</button>
+        <button class="a-btn -md">Button</button>
+        <button class="a-btn -md">Button</button>
+      </div>
+      <!-- lg -->
+      <div class="m-btnGroup">
+        <button class="a-btn -lg">Button</button>
+        <button class="a-btn -lg">Button</button>
+        <button class="a-btn -lg">Button</button>
+      </div>
+      <!-- xl -->
+      <div class="m-btnGroup">
+        <button class="a-btn -xl">Button</button>
+        <button class="a-btn -xl">Button</button>
+        <button class="a-btn -xl">Button</button>
+      </div>
+
+  .a-tabs-panel#sizes-vertical
+    .-px--3.-pt--0.-pb--3
+      each size in ['sm', 'md', 'lg', 'xl']
+        p.-text--bold= '-' + size
+        .-d--flex.-flex--wrap
+          .m-btnGroup.-vertical.-fluid(style="width:12rem")
+            button(class=`a-btn -${size}`) Button
+            button(class=`a-btn -${size}`) Button
+            button(class=`a-btn -${size}`) Button
+    :code(lang="html")
+      <!-- sm -->
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -sm">Button</button>
+        <button class="a-btn -sm">Button</button>
+        <button class="a-btn -sm">Button</button>
+      </div>
+      <!-- md -->
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -md">Button</button>
+        <button class="a-btn -md">Button</button>
+        <button class="a-btn -md">Button</button>
+      </div>
+      <!-- lg -->
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -lg">Button</button>
+        <button class="a-btn -lg">Button</button>
+        <button class="a-btn -lg">Button</button>
+      </div>
+      <!-- xl -->
+      <div class="m-btnGroup -vertical -fluid">
+        <button class="a-btn -xl">Button</button>
+        <button class="a-btn -xl">Button</button>
+        <button class="a-btn -xl">Button</button>
+      </div>
+
+h2 Hybrid buttons
+
+p.-text
+  | Button groups support all button types and styles, including icons.
+  | Mix and match text and icons to form a hybrid button group.
+
+.example.-mb--3
+  .-p--3
+    .m-btnGroup
+      button(class=`a-btn`) Button
+      button(class=`a-btn -icon`, aria-label="Button action")
+        .a-btn__content
+          i.a-icon.icon-atom
+  :code(lang='html')
+    <div class="m-btnGroup">
+      <button class="a-btn">Button</button>
+      <button class="a-btn -icon" aria-label="Button action">
+        <div class="a-btn__content">
+          <i class="a-icon icon-atom"></i>
+        </div>
+      </button>
+    </div>
+
+p.-text
+  | Hybrid buttons also support fluid rendering.
+
+.example.-mb--3
+  .-p--3
+    .m-btnGroup.-fluid
+      button(class=`a-btn`) Button
+      button(class=`a-btn -icon -notFluid`, aria-label="Button action")
+        .a-btn__content
+          i.a-icon.icon-atom
+  :code(lang='html')
+    <div class="m-btnGroup -fluid">
+      <button class="a-btn">Button</button>
+      <button class="a-btn -icon -notFluid" aria-label="Button action">
+        <div class="a-btn__content">
+          <i class="a-icon icon-atom"></i>
+        </div>
+      </button>
+    </div>
+
+h3 Hybrid buttons sizes
+
+p.-text
+  | Hybrid buttons supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
+.example.-mb--3
+  .-p--2
+    each size in ['sm', 'md', 'lg', 'xl']
+      .m-btnGroup.-m--1
+        button(class=`a-btn -${size}`) Button
+        button(class=`a-btn -${size} -icon`, aria-label="Button action")
+          .a-btn__content
+            i.a-icon.icon-atom
+  :code(lang='html')
+    <!-- sm -->
+    <div class="m-btnGroup">
+      <button class="a-btn -sm">Button</button>
+      <button class="a-btn -sm -icon" aria-label="Button action">
+        <div class="a-btn__content">
+          <i class="a-icon icon-atom"></i>
+        </div>
+      </button>
+    </div>
+    <!-- md -->
+    <div class="m-btnGroup">
+      <button class="a-btn -md">Button</button>
+      <button class="a-btn -md -icon" aria-label="Button action">
+        <div class="a-btn__content">
+          <i class="a-icon icon-atom"></i>
+        </div>
+      </button>
+    </div>
+    <!-- lg -->
+    <div class="m-btnGroup">
+      <button class="a-btn -lg">Button</button>
+      <button class="a-btn -lg -icon" aria-label="Button action">
+        <div class="a-btn__content">
+          <i class="a-icon icon-atom"></i>
+        </div>
+      </button>
+    </div>
+    <!-- xl -->
+    <div class="m-btnGroup">
+      <button class="a-btn -xl">Button</button>
+      <button class="a-btn -xl -icon" aria-label="Button action">
+        <div class="a-btn__content">
+          <i class="a-icon icon-atom"></i>
+        </div>
+      </button>
+    </div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('sizes-horizontal-vertical'));
+    }
+  );
