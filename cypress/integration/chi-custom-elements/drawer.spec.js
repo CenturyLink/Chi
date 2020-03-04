@@ -40,7 +40,6 @@ describe('Drawer', function() {
       .should('match', 'div.m-drawer.-top.-active');
   });
 
-
   it('Should close when clicking the close button. ', function() {
 
     cy.get('[data-cy="test-top-headed"]')
@@ -52,6 +51,19 @@ describe('Drawer', function() {
       .get('[data-cy="test-top-headed"]')
       .should('not.match', '[active]')
       .should('not.be.visible');
+
+  });
+
+  it('Should have a title if attribute header-title="" is provided ', function() {
+
+    cy.get('[data-cy="test-top-with-title"]')
+      .scrollIntoView()
+      .children()
+      .first()
+      .find('.m-drawer__header')
+      .find('.m-drawer__title')
+      .contains('Drawer title here')
+      .should('exist');
 
   });
 
