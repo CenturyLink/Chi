@@ -53,10 +53,10 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     )
                     button.chi-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Decrease')
                       .chi-btn__content
-                        i.a-icon.icon-minus
+                        i.chi-icon.icon-minus
                     button.chi-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Increase')
                       .chi-btn__content
-                        i.a-icon.icon-plus
+                        i.chi-icon.icon-plus
 
 each size in ['default', 'sm', 'md', 'lg', 'xl']
   div(class=`test-expanded-svg-${size}`)
@@ -83,11 +83,11 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     )
                     button.chi-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Decrease')
                       .chi-btn__content
-                        .a-icon(class={[`-${size}`]: size != 'default'})
+                        .chi-icon(class={[`-${size}`]: size != 'default'})
                           svg(aria-hidden="true")
                             use(xlink:href='#icon-minus')
                     button.chi-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Increase')
                       .chi-btn__content
-                        .a-icon(class={[`-${size}`]: size != 'default'})
+                        .chi-icon(class={[`-${size}`]: size != 'default'})
                           svg(aria-hidden="true")
                             use(xlink:href='#icon-plus')

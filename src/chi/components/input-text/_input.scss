@@ -61,7 +61,7 @@ input {
           line-height: map-get(map-get($sizes, $type), line-height);
           padding: map-get(map-get($sizes, $type), padding);
 
-          .a-icon {
+          .chi-icon {
             height: map-get(map-get(map-get($sizes, $type), icons), height);
             width: map-get(map-get(map-get($sizes, $type), icons), width);
 

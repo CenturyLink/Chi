@@ -269,11 +269,11 @@ class DatePicker extends Component {
     calendar.innerHTML = `
     <div class="m-datepicker__month-row">
       <div class="prev">
-        <i class="a-icon icon-chevron-left -sm"></i>
+        <i class="chi-icon icon-chevron-left -sm"></i>
       </div>
       <div class="m-datepicker__month"></div>
       <div class="next">
-        <i class="a-icon icon-chevron-right -sm"></i>
+        <i class="chi-icon icon-chevron-right -sm"></i>
       </div>
     </div>
     <div class="m-datepicker__day-names">
@@ -412,4 +412,3 @@ class DatePicker extends Component {
 
 const factory = Component.factory.bind(DatePicker);
 export {DatePicker, factory};
-

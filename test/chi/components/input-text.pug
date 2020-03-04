@@ -22,7 +22,7 @@ mixin label(size)
   ) Label
 
 mixin icon(name)
-  .a-icon(class={
+  .chi-icon(class={
     [`-text${name}`]: ['success', 'warning', 'danger'].indexOf(name) != -1
   })
     svg
@@ -108,19 +108,19 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                 .m-input__wrapper.-icon--right
                   +input(style, state, size, disabled)
                   if style == 'success'
-                    .a-icon.-text--success
+                    .chi-icon.-text--success
                       svg
                         use(xlink:href='#icon-check')
                   else if style == 'warning'
-                    .a-icon.-text--warning
+                    .chi-icon.-text--warning
                       svg
                         use(xlink:href='#icon-warning')
                   else if style == 'danger'
-                    .a-icon.-text--danger
+                    .chi-icon.-text--danger
                       svg
                         use(xlink:href='#icon-circle-warning')
                   else
-                    .a-icon
+                    .chi-icon
                       svg
                         use(xlink:href='#icon-circle-info-outline')
 
@@ -139,19 +139,19 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                   .m-input__wrapper.-icon--right
                     +input(style, state, size, disabled, id='example')
                     if style == 'success'
-                      .a-icon.-text--success
+                      .chi-icon.-text--success
                         svg
                           use(xlink:href='#icon-check')
                     else if style == 'warning'
-                      .a-icon.-text--warning
+                      .chi-icon.-text--warning
                         svg
                           use(xlink:href='#icon-warning')
                     else if style == 'danger'
-                      .a-icon.-text--danger
+                      .chi-icon.-text--danger
                         svg
                           use(xlink:href='#icon-circle-warning')
                     else
-                      .a-icon
+                      .chi-icon
                         svg
                           use(xlink:href='#icon-circle-info-outline')
 
@@ -169,19 +169,19 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                   +input(style, state, size, disabled)
                   +icon('atom')
                   if style == 'success'
-                    .a-icon.-text--success
+                    .chi-icon.-text--success
                       svg
                         use(xlink:href='#icon-check')
                   else if style == 'warning'
-                    .a-icon.-text--warning
+                    .chi-icon.-text--warning
                       svg
                         use(xlink:href='#icon-warning')
                   else if style == 'danger'
-                    .a-icon.-text--danger
+                    .chi-icon.-text--danger
                       svg
                         use(xlink:href='#icon-circle-warning')
                   else
-                    .a-icon
+                    .chi-icon
                       svg
                         use(xlink:href='#icon-circle-info-outline')
 
@@ -201,19 +201,19 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     +input(style, state, size, disabled, id='example')
                     +icon('atom')
                     if style == 'success'
-                      .a-icon.-text--success
+                      .chi-icon.-text--success
                         svg
                           use(xlink:href='#icon-check')
                     else if style == 'warning'
-                      .a-icon.-text--warning
+                      .chi-icon.-text--warning
                         svg
                           use(xlink:href='#icon-warning')
                     else if style == 'danger'
-                      .a-icon.-text--danger
+                      .chi-icon.-text--danger
                         svg
                           use(xlink:href='#icon-circle-warning')
                     else
-                      .a-icon
+                      .chi-icon
                         svg
                           use(xlink:href='#icon-circle-info-outline')
 
@@ -245,6 +245,6 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                 .m-form__item
                   .m-label__wrapper
                     +label(size)
-                    i.a-icon.icon-circle-info-outline.-text--muted
+                    i.chi-icon.icon-circle-info-outline.-text--muted
                   .m-input__wrapper
                     +input(style, state, size, disabled, id='example')

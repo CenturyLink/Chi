@@ -9,7 +9,7 @@ h2 Single icon
 .test-single
   .a-grid
     .a-col.-w--2.-middle
-      div(class=`a-icon`, data-cy='icon-single')
+      div(class=`chi-icon`, data-cy='icon-single')
         svg
           use(xlink:href='#icon-atom')
 
@@ -20,7 +20,7 @@ h2 Sizes
       .a-col.-w--1.-o--1.-middle
         h4= size
       .a-col.-w--2.-middle
-        div(class=`a-icon -${size}`, data-cy=size==='xl'?'icon-size':false)
+        div(class=`chi-icon -${size}`, data-cy=size==='xl'?'icon-size':false)
           svg
             use(xlink:href='#icon-atom')
 
@@ -31,7 +31,7 @@ h2 Colors
       .a-col.-w--1.-o--1.-middle
         h4= color
       .a-col.-w--2.-middle
-        div(class=`a-icon -lg -text--${color}`, data-cy=color==='primary'?'icon-color':false)
+        div(class=`chi-icon -lg -text--${color}`, data-cy=color==='primary'?'icon-color':false)
           svg
             use(xlink:href='#icon-atom')
 
@@ -40,7 +40,7 @@ h2 Icons
   .a-grid(data-cy='icon-list')
     each name in icons
       .a-col.-w--2.-o--1.-middle
-        .a-icon.-sm
+        .chi-icon.-sm
           svg
             use(xlink:href=`#icon-${name}`)
         h4= 'icon-' + name

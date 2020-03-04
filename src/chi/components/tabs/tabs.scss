@@ -40,7 +40,7 @@
         & > a {
           position: relative;
 
-          & > .a-icon {
+          & > .chi-icon {
             color: $brand-color;
             left: 1.5rem;
           }
@@ -51,7 +51,7 @@
         padding-left: 3.5rem;
         position: relative;
 
-        & > .a-icon {
+        & > .chi-icon {
           left: 1.5rem;
           position: absolute;
         }
@@ -79,7 +79,7 @@
         background-color: set-color(grey, 20);
         color: $text-color;
 
-        & > .a-icon {
+        & > .chi-icon {
           color: $text-color;
         }
       }
@@ -137,7 +137,7 @@
         padding-bottom: 0.75rem;
         padding-top: 0.75rem;
 
-        & > .a-icon {
+        & > .chi-icon {
           margin-top: 0.25rem;
         }
       }
@@ -213,7 +213,7 @@
   &.-icons {
     & > li {
       &.-active {
-        .a-icon {
+        .chi-icon {
           color: $brand-color;
         }
       }
@@ -222,7 +222,7 @@
         padding-left: 1.5rem;
         position: relative;
 
-        .a-icon {
+        .chi-icon {
           left: 0;
           position: absolute;
         }
@@ -381,7 +381,7 @@
       &.-active > a {
         border-bottom: 0.125rem solid $secondary-color;
 
-        .a-icon {
+        .chi-icon {
           color: $secondary-color;
         }
       }
@@ -411,7 +411,7 @@
       &.-icons {
         & > li {
           &.-active > a {
-            .a-icon {
+            .chi-icon {
               color: $secondary-color;
             }
           }

@@ -11,7 +11,7 @@ $icon-sizes: (
 .a-pagination {
 
   .chi-btn {
-    & .a-icon {
+    & .chi-icon {
       font-size: 0.75rem;
       height: 0.75rem;
       line-height: 0.75rem;
@@ -22,7 +22,7 @@ $icon-sizes: (
   @each $type in map-keys($icon-sizes) {
     .chi-btn {
       &.-#{$type} {
-        & .a-icon {
+        & .chi-icon {
           font-size: map-get($icon-sizes, $type);
           height: map-get($icon-sizes, $type);
           line-height: map-get($icon-sizes, $type);

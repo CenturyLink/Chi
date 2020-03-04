@@ -9,7 +9,7 @@ p.-text SVG based implementations provide better semantics, accessibility, rende
 .-mb--2
   :code(lang='html')
     <script src="https://assets.ctl.io/chi/1.4.2/chi-icons.js"></script>
-p.-text Then to render an SVG icon, apply the class <code>a-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
+p.-text Then to render an SVG icon, apply the class <code>chi-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
 .example.-mb--3
   .-p--3
     chi-icon(icon="atom")
@@ -25,9 +25,9 @@ p.-text Then to render an SVG icon, apply the class <code>a-icon</code> to an el
       <chi-icon icon="atom"></chi-icon>
   #svg-default.a-tabs-panel
     .a-tab__description
-      | To render an SVG icon, apply the class <code>a-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
+      | To render an SVG icon, apply the class <code>chi-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
     :code(lang="html")
-      <div class="a-icon">
+      <div class="chi-icon">
         <svg aria-hidden="true">
           <use xlink:href='#icon-atom'/>
         </svg>
@@ -37,7 +37,7 @@ p.-text Then to render an SVG icon, apply the class <code>a-icon</code> to an el
       | Web Font based implementations offer the widest browser support,
       | fastest rendering speed, and require no additional script or stylesheet.
     :code(lang="html")
-      <i class="a-icon icon-atom"></i>
+      <i class="chi-icon icon-atom"></i>
 
 h2 Sizes
 p.-text By default, icons render at 16x16px (<code>sm</code>).
@@ -89,21 +89,21 @@ p.-text By default, icons render at 16x16px (<code>sm</code>).
       | 24px icons within a 48px container.
     :code(lang="html")
       <!-- -xs : 12x12px -->
-      <div class="a-icon -xs"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -xs"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -sm : 16x16px -->
-      <div class="a-icon -sm"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -sm"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -sm--2 : 20x20px -->
-      <div class="a-icon -sm--2"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -sm--2"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -sm--3 : 24x24px -->
-      <div class="a-icon -sm--3"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -sm--3"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -md : 32x32px -->
-      <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -lg : 64x64px -->
-      <div class="a-icon -lg"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -lg"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -xl : 96x96px -->
-      <div class="a-icon -xl"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -xl"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- -xxl : 128x128px -->
-      <div class="a-icon -xxl"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -xxl"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
   #webfont-sizes.a-tabs-panel
     .a-tab__description
       | Apply size classes to render icons larger or smaller:
@@ -113,38 +113,38 @@ p.-text By default, icons render at 16x16px (<code>sm</code>).
       | 24px icons within a 48px container.
     :code(lang="html")
       <!-- -xs : 12x12px -->
-      <i class="a-icon icon-atom -xs"></i>
+      <i class="chi-icon icon-atom -xs"></i>
       <!-- -sm : 16x16px -->
-      <i class="a-icon icon-atom -sm"></i>
+      <i class="chi-icon icon-atom -sm"></i>
       <!-- -sm--2 : 20x20px -->
-      <i class="a-icon icon-atom -sm--2"></i>
+      <i class="chi-icon icon-atom -sm--2"></i>
       <!-- -sm--3 : 24x24px -->
-      <i class="a-icon icon-atom -sm--3"></i>
+      <i class="chi-icon icon-atom -sm--3"></i>
       <!-- -md : 32x32px -->
-      <i class="a-icon icon-atom -md"></i>
+      <i class="chi-icon icon-atom -md"></i>
       <!-- -lg : 64x64px -->
-      <i class="a-icon icon-atom -lg"></i>
+      <i class="chi-icon icon-atom -lg"></i>
       <!-- -xl : 96x96px -->
-      <i class="a-icon icon-atom -xl"></i>
+      <i class="chi-icon icon-atom -xl"></i>
       <!-- -xxl : 128x128px -->
-      <i class="a-icon icon-atom -xxl"></i>
+      <i class="chi-icon icon-atom -xxl"></i>
 
 h2 Colors
 p.-text By default, icons are the same color as text. Use Chi text color utilities to set a specific color.
 .example.-mb--3
   .-d--flex.-w--12.-justify-content--center.-flex--wrap.-p--1
     each color in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--grey', 'text--muted']
-      div(class=`a-icon -md -${color} -m--1`)
+      div(class=`chi-icon -md -${color} -m--1`)
         svg
           use(xlink:href='#icon-atom')
   .-d--flex.-w--12.-justify-content--center.-flex--wrap.-bg--black.-p--1
     each color in ['text--secondary', 'text--light']
       if (color === 'text--secondary')
-        div(class=`a-icon -md -text--secondary -m--1`)
+        div(class=`chi-icon -md -text--secondary -m--1`)
           svg
             use(xlink:href='#icon-atom')
       else if (color === 'text--light')
-        div(class=`a-icon -md -text--light -m--1`)
+        div(class=`chi-icon -md -text--light -m--1`)
           svg
             use(xlink:href='#icon-atom')
   ul#example-colors.a-tabs.-ml--3
@@ -170,29 +170,29 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
   #svg-colors.a-tabs-panel
     :code(lang="html")
       <!-- For light backgrounds -->
-      <div class="a-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="a-icon -md -text--primary"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="a-icon -md -text--success"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="a-icon -md -text--warning"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="a-icon -md -text--danger"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="a-icon -md -text--grey"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="a-icon -md -text--muted"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -md -text--primary"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -md -text--success"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -md -text--warning"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -md -text--danger"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -md -text--grey"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -md -text--muted"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
       <!-- For dark backgrounds -->
-      <div class="a-icon -md -text--secondary"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="a-icon -md -text--light"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -md -text--secondary"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
+      <div class="chi-icon -md -text--light"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
   #webfont-color.a-tabs-panel
     :code(lang="html")
       <!-- For light backgrounds -->
-      <i class="a-icon icon-atom -md"></i>
-      <i class="a-icon icon-atom -md -text--primary"></i>
-      <i class="a-icon icon-atom -md -text--success"></i>
-      <i class="a-icon icon-atom -md -text--warning"></i>
-      <i class="a-icon icon-atom -md -text--danger"></i>
-      <i class="a-icon icon-atom -md -text--grey"></i>
-      <i class="a-icon icon-atom -md -text--muted"></i>
+      <i class="chi-icon icon-atom -md"></i>
+      <i class="chi-icon icon-atom -md -text--primary"></i>
+      <i class="chi-icon icon-atom -md -text--success"></i>
+      <i class="chi-icon icon-atom -md -text--warning"></i>
+      <i class="chi-icon icon-atom -md -text--danger"></i>
+      <i class="chi-icon icon-atom -md -text--grey"></i>
+      <i class="chi-icon icon-atom -md -text--muted"></i>
       <!-- For dark backgrounds -->
-      <i class="a-icon icon-atom -md -text--secondary"></i>
-      <i class="a-icon icon-atom -md -text--light"></i>
+      <i class="chi-icon icon-atom -md -text--secondary"></i>
+      <i class="chi-icon icon-atom -md -text--light"></i>
 
 h2 UI Icons
 .a-grid.icon-library.-pt--2.-pb--6
@@ -200,7 +200,7 @@ h2 UI Icons
     .a-col.-w--6.-w-xl--2.-w-lg--3.-w-md--6.-mb--2
       .a-card.-py--4.-bg--grey-10
         .a-card__content
-          .a-icon.-sm--3
+          .chi-icon.-sm--3
             svg
               use(xlink:href=`#icon-${name}`)
       p.-text--center= 'icon-' + name

@@ -18,7 +18,7 @@ each sidenavType in sidenavTypes
             each val in menuItems
               li(class=`${val === active.menuItem ? '-active' : ''}`)
                 a
-                  .a-icon
+                  .chi-icon
                     svg
                       use(xlink:href='#icon-atom')
                   span=val === active.menuItem ? 'Active Item' : 'Menu Item'
@@ -27,7 +27,7 @@ each sidenavType in sidenavTypes
           .m-drawer__header
             button(class='chi-btn -icon -close', aria-label='Close')
               .chi-btn__content
-                i.a-icon.icon-x
+                i.chi-icon.icon-x
           .m-drawer__content
             ul.m-sidenav__drawer-list
               each val2, index in drawerMenuItems
@@ -48,7 +48,7 @@ h2 Enterprise Global Nav
           each val in menuItems
             li(class=`${val === active.menuItem ? '-active' : ''}`)
               a
-                .a-icon
+                .chi-icon
                   svg
                     use(xlink:href='#icon-atom')
                 span=val === active.menuItem ? 'Active Item' : 'Menu Item'
@@ -58,7 +58,7 @@ h2 Enterprise Global Nav
           .a-drawer__title= 'Menu item 1'
           button(class='chi-btn -icon -close', aria-label='Close')
             .chi-btn__content
-              i.a-icon.icon-x
+              i.chi-icon.icon-x
         .m-drawer__content
           ul.m-sidenav__drawer-list
             each val2, index in drawerMenuItems
@@ -79,7 +79,7 @@ h2 Enterprise Global Nav
                   a(href=`#exampleHashTarget`)
                     span.m-sidenav__title
                       =`Title 1`
-                      .a-icon.-xs
+                      .chi-icon.-xs
                         svg
                           use(xlink:href='#icon-external-link')
 
@@ -96,7 +96,7 @@ each size in sizes
               each val in menuItems
                 li(class=`${val===active.menuItem ? '-active':''}`)
                   a
-                    .a-icon
+                    .chi-icon
                       svg
                         use(xlink:href='#icon-atom')
                     span=val===active.menuItem ? 'Active Item' : 'Menu Item'
@@ -105,7 +105,7 @@ each size in sizes
             .m-drawer__header
               button(class='chi-btn -icon -close', aria-label='Close')
                 .chi-btn__content
-                  i.a-icon.icon-x
+                  i.chi-icon.icon-x
             .m-drawer__content
               ul.m-sidenav__drawer-list
                 each val2, index in drawerMenuItems

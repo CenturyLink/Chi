@@ -182,12 +182,12 @@
         white-space: nowrap;
       }
 
-      .a-icon {
+      .chi-icon {
         margin-right: 1rem;
       }
 
       &:not(.-active) {
-        .a-icon {
+        .chi-icon {
           color: set-color(grey, 50);
         }
       }
@@ -209,7 +209,7 @@
         opacity: 0.6;
         pointer-events: none;
 
-        .a-icon {
+        .chi-icon {
           color: set-color(grey, 70);
           opacity: 0.6;
         }

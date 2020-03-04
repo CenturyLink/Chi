@@ -235,7 +235,7 @@ export class DatePicker {
           }}
           disabled={this.disabled}
         />
-        <div class="a-icon -text--muted">
+        <div class="chi-icon -text--muted">
           <svg>
             <use xlinkHref="#icon-date"></use>
           </svg>

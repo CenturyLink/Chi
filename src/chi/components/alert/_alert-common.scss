@@ -77,8 +77,8 @@ $states: (
     }
   }
 
-  > .a-icon,
-  > chi-icon .a-icon,
+  > .chi-icon,
+  > chi-icon .chi-icon,
   .m-alert__icon {
     &:not(.icon-x) {
       font-size: 1rem;
@@ -115,7 +115,7 @@ $states: (
       }
 
       .m-alert__icon,
-      > chi-icon .a-icon,
+      > chi-icon .chi-icon,
       .a-h5, //Legacy code: to be removed.
       .m-alert__title {
         color: map-get(map-get($states, $state), color);
@@ -168,7 +168,7 @@ $states: (
       padding: 0.1875rem;
       transform: initial;
 
-      .a-icon {
+      .chi-icon {
         font-size: 0.75rem;
         height: 0.75rem;
         line-height: 0.75rem;
@@ -181,8 +181,8 @@ $states: (
   &.-lg {
     padding: 1.0625rem 1.5rem;
 
-    > i.a-icon,
-    > chi-icon .a-icon,
+    > i.chi-icon,
+    > chi-icon .chi-icon,
     .m-alert__icon {
       &:not(.icon-x) {
         font-size: 1.25rem;
@@ -198,7 +198,7 @@ $states: (
       &.m-alert__dismiss-button {
         padding: 0;
 
-        .a-icon {
+        .chi-icon {
           font-size: 1rem;
           height: 1rem;
           line-height: 1rem;

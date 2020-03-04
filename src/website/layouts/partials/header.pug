@@ -31,7 +31,7 @@ header.o-header.-inverse.docs-header.-z--20
 
         newVersionMessage.setAttribute("class", "m-alert -banner -center -info -w--100");
         newVersionMessage.setAttribute("role", "alert");
-        newVersionMessage.innerHTML = `<i class="a-icon m-alert__icon icon-circle-info -text--info"></i><div class="m-alert__content"><p class="m-alert__text">A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/${chiVersions[0]}">Learn more &#8250;</a></p>`;
+        newVersionMessage.innerHTML = `<i class="chi-icon m-alert__icon icon-circle-info -text--info"></i><div class="m-alert__content"><p class="m-alert__text">A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/${chiVersions[0]}">Learn more &#8250;</a></p>`;
         chiVersionCheckSelector.appendChild(newVersionMessage, chiVersionCheckSelector.childNodes[0]);
         docsContainerSelector.classList.add("outdated-version");
       }
@@ -41,7 +41,7 @@ header.o-header.-inverse.docs-header.-z--20
     .o-header__brand
       button#drawer-trigger-1.chi-btn.-icon.-flat.-light.-mr-md--2.-d--flex.-d-lg--none.m-drawer__trigger(data-target='#drawer-sidenav', aria-label="Toggle documentation navigation")
         .chi-btn__content
-          i.a-icon.-sm--2.icon-menu
+          i.chi-icon.-sm--2.icon-menu
       a.a-brand.docs-header__logo(href=`${rootPath}`, aria-label='CenturyLink')
         img(src='https://assets.ctl.io/images/centurylink-logo-white.svg', alt='CenturyLink')
       span.o-header__title.-d--none.-d-lg--flex
@@ -51,7 +51,7 @@ header.o-header.-inverse.docs-header.-z--20
         .m-input__wrapper.-icon--right.-flex--grow1
           label.a-label.-d--none(for="chi-docs-search") Search Chi documentation
           input.a-input.searchbox(id="chi-docs-search", type="text", placeholder="Search")
-          i.a-icon.icon-search
+          i.chi-icon.icon-search
     .o-header__end
       .m-dropdown
         button.chi-btn.-flat.-light.-px--1.m-dropdown__trigger(data-position='bottom-end', id='version-dropdown', aria-label="Toggle Chi version") v1.4.2
@@ -94,14 +94,14 @@ header.o-header.-inverse.docs-header.-z--20
             | Talk #Chi on Microsoft Teams
       a.chi-btn.-icon.-flat.-light.-ml--1(href='https://github.com/CenturyLinkCloud/ux-chi', rel="noopener", aria-label="GitHub")
         .chi-btn__content
-          i.a-icon.icon-logo-github
+          i.chi-icon.icon-logo-github
 
 .m-backdrop.-closed
   .m-backdrop__wrapper
     div#drawer-sidenav.m-drawer.-left.-menu.-position--absolute
       button(class='chi-btn -icon -close', aria-label='Close')
         .chi-btn__content
-          i.a-icon.icon-x
+          i.chi-icon.icon-x
       .m-drawer__content
         .-py--2
           include aside

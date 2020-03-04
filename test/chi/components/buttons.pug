@@ -41,7 +41,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     aria-label='Button action'
                     )
                       .chi-btn__content
-                        .a-icon
+                        .chi-icon
                           svg
                             use(xlink:href='#icon-atom')
                     button.chi-btn.-m--1(
@@ -54,7 +54,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
                       .chi-btn__content
-                        .a-icon
+                        .chi-icon
                           svg
                             use(xlink:href='#icon-atom')
                         span Button
@@ -84,7 +84,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     aria-label='Button action'
                     )
                       .chi-btn__content
-                        .a-icon
+                        .chi-icon
                           svg
                             use(xlink:href='#icon-atom')
                     button.chi-btn.-m--1(
@@ -97,7 +97,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
                       .chi-btn__content
-                        .a-icon
+                        .chi-icon
                           svg
                             use(xlink:href='#icon-atom')
                         span Button
@@ -115,14 +115,14 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                 td.-bg--black
                   button(type="button", class=`chi-btn -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
                     .chi-btn__content
-                      .a-icon
+                      .chi-icon
                         svg
                           use(xlink:href='#icon-atom')
               else
                 td
                   button(type="button", class=`chi-btn -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
                     .chi-btn__content
-                      .a-icon
+                      .chi-icon
                         svg
                           use(xlink:href='#icon-atom')
 
@@ -137,6 +137,6 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
         td
           button(class=`chi-btn -icon -close -${size}`, aria-label='Close')
             .chi-btn__content
-              .a-icon
+              .chi-icon
                 svg
                   use(xlink:href='#icon-x')

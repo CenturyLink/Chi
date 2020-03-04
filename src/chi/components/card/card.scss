@@ -142,7 +142,7 @@
       color: $primary-color !important;
     }
 
-    .a-icon {
+    .chi-icon {
       &.a-card__icon {
         color: $primary-color;
       }
@@ -164,7 +164,7 @@
       flex-direction: column;
       justify-content: center;
 
-      & .a-icon {
+      & .chi-icon {
         color: $muted-color;
         margin: 0.5rem 0;
       }

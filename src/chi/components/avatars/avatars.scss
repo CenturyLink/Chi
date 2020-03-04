@@ -52,13 +52,13 @@ $avatar-default-size: 'md';
   }
 
   & > i,
-  &.a-icon > svg {
+  &.chi-icon > svg {
     height: 50%;
     margin: 25%;
     width: 50%;
   }
 
-  &.a-icon {
+  &.chi-icon {
     font-size: map-get($avatar-sizes, $avatar-default-size) / 2;
     height: map-get($avatar-sizes, $avatar-default-size);
     line-height: map-get($avatar-sizes, $avatar-default-size);
@@ -73,7 +73,7 @@ $avatar-default-size: 'md';
       width: map-get($avatar-sizes, $type);
 
       & > i {
-        &.a-icon {
+        &.chi-icon {
           font-size: map-get($avatar-sizes, $type) / 2;
         }
       }

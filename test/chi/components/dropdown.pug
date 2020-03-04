@@ -34,34 +34,34 @@ div(class=`test-dropdown-icons`)
   .-d--flex
     .m-dropdown__menu.-active
       a.m-dropdown__menu-item(href='#')
-        .a-icon
+        .chi-icon
           svg
             use(xlink:href='#icon-file-outline')
         = "New"
       a.m-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
-        .a-icon
+        .chi-icon
           svg
             use(xlink:href='#icon-arrow-to-bottom')
         = "Save"
       .a-divider
       a.m-dropdown__menu-item(href='#')
-        .a-icon
+        .chi-icon
           svg
             use(xlink:href='#icon-mail')
         = "Send"
       a.m-dropdown__menu-item.-active(href='#')
-        .a-icon
+        .chi-icon
           svg
             use(xlink:href='#icon-cart')
         = "Buy"
       a.m-dropdown__menu-item.-hover(href='#')
-        .a-icon
+        .chi-icon
           svg
             use(xlink:href='#icon-users')
         = "Share"
       .a-divider
       a.m-dropdown__menu-item(href='#')
-        .a-icon
+        .chi-icon
           svg
             use(xlink:href='#icon-logout')
         = "Logout"
@@ -72,7 +72,7 @@ div(class=`test-dropdown-searchBox`)
     .m-dropdown__menu.-active
       .m-input__wrapper.-icon--left.m-dropdown__menu-item
         input(type="text", class="a-input", placeholder="Search")
-        .a-icon
+        .chi-icon
           svg
             use(xlink:href='#icon-search')
       a.m-dropdown__menu-item(href='#') Element 1
@@ -96,7 +96,7 @@ div(class=`test-dropdown-checkbox-icon`)
         .a-checkbox
           input(type="checkbox", class="a-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
           label.a-checkbox__label(for=`checkbox${inputState}`)
-            .a-icon
+            .chi-icon
               svg
                 use(xlink:href='#icon-logo-centurylink')
             ="Element checkbox " + inputState
@@ -119,7 +119,7 @@ div(class=`test-dropdown-radio-icon`)
         input(type="radio", class="a-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
         label(for=`radio${inputState}`)
         label.-text(for=`radio${inputState}`)
-          .a-icon
+          .chi-icon
             svg
               use(xlink:href='#icon-logo-centurylink')
           ="Element radio " + inputState
