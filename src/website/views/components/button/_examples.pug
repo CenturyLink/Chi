@@ -1,27 +1,3 @@
-h2 Button tags
-p.-text
-  | To render a button, use the tag <code>&lt;chi-button&gt;</code> or apply the class <code>a-btn</code> to a <code>&lt;button&gt;</code> element.
-  | Although buttons were designed for the <code>&lt;button&gt;</code> element, Chi
-  | also supports button classes on <code>&lt;a&gt;</code> and <code>&lt;input&gt;</code> elements.
-.example.-mb--3
-  .-p--2
-    chi-button Chi button
-    button.a-btn.-m--1 Button
-    a.a-btn.-m--1 Link
-    input(class='a-btn -m--1', type='button', value='Input')
-    input(class='a-btn -m--1', type='submit', value='Submit')
-    input(class='a-btn -m--1', type='reset', value='Reset')
-  :code(lang='html')
-    <!-- Web component -->
-    <chi-button>Chi button</chi-button>
-    <!-- default HTML tag -->
-    <button class="a-btn">Button</button>
-    <!-- tags also supported -->
-    <a class="a-btn" role="button">Link</a>
-    <input class="a-btn" type="button" value="Input">
-    <input class="a-btn" type="submit" value="Submit">
-    <input class="a-btn" type="reset" value="Reset">
-
 h2 Examples
 
 h3 Base
