@@ -6,33 +6,33 @@ each size in ['default', 'sm', 'lg']
   h4 Default / #{size}
   div(class=`test-banner-${size} -w--100`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-m--2.-banner(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        div(class=`m-alert__icon chi-icon -text--${type}`)
+      .chi-alert.-m--2.-banner(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+        div(class=`chi-alert__icon chi-icon -text--${type}`)
           svg
             use(xlink:href=`#${val}`)
-        .m-alert__content
-          p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+        .chi-alert__content
+          p.chi-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
 
   h4 Centered / #{size}
   div(class=`test-banner-center-${size} -w--100`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-m--2.-banner.-center(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        div(class=`m-alert__icon chi-icon -text--${type}`)
+      .chi-alert.-m--2.-banner.-center(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+        div(class=`chi-alert__icon chi-icon -text--${type}`)
           svg
             use(xlink:href=`#${val}`)
-        .m-alert__content
-          p.m-alert__text= `This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
+        .chi-alert__content
+          p.chi-alert__text= `This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
 
   h4 Dismissible / #{size}
   div(class=`test-banner-dismissible-${size} -w--100`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-banner.-m--2.-dismiss.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        div(class=`m-alert__icon chi-icon -text--${type}`)
+      .chi-alert.-banner.-m--2.-dismiss.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+        div(class=`chi-alert__icon chi-icon -text--${type}`)
           svg
             use(xlink:href=`#${val}`)
-        .m-alert__content
-          p.m-alert__text= `This is a dismissible ${type} alert`
-        button(class='m-alert__dismiss-button chi-btn -icon -close', aria-label='Close')
+        .chi-alert__content
+          p.chi-alert__text= `This is a dismissible ${type} alert`
+        button(class='chi-alert__dismiss-button chi-btn -icon -close', aria-label='Close')
           .chi-btn__content
             .chi-icon
               svg
@@ -41,20 +41,20 @@ each size in ['default', 'sm', 'lg']
   h4 Borderless / #{size}
   div(class=`test-banner-borderless-${size} -w--100`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-m--2.-banner(class=`-${type} -borderless ${size === 'default' ? '' : '-' + size}`)
-        div(class=`m-alert__icon chi-icon -text--${type}`)
+      .chi-alert.-m--2.-banner(class=`-${type} -borderless ${size === 'default' ? '' : '-' + size}`)
+        div(class=`chi-alert__icon chi-icon -text--${type}`)
           svg
             use(xlink:href=`#${val}`)
-        .m-alert__content
-          p.m-alert__text=`This is a borderless ${type} alert`
+        .chi-alert__content
+          p.chi-alert__text=`This is a borderless ${type} alert`
 
   h4 Titled / #{size}
   div(class=`test-banner-titled-${size} -w--100`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-m--2.-banner(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        div(class=`m-alert__icon chi-icon -text--${type}`)
+      .chi-alert.-m--2.-banner(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+        div(class=`chi-alert__icon chi-icon -text--${type}`)
           svg
             use(xlink:href=`#${val}`)
-        .m-alert__content
-          p.m-alert__title= `${type}`
-          p.m-alert__text=`This is a titled ${type} alert`
+        .chi-alert__content
+          p.chi-alert__title= `${type}`
+          p.chi-alert__text=`This is a titled ${type} alert`

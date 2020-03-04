@@ -119,7 +119,7 @@ export class Alert {
       this.alertTitle = this.el.getAttribute('title');
     }
 
-    if (Array.from(this.el.querySelectorAll("[slot=m-alert__actions]")).length > 0) {
+    if (Array.from(this.el.querySelectorAll("[slot=chi-alert__actions]")).length > 0) {
       this.alertActions = true;
     }
   }
@@ -132,12 +132,12 @@ export class Alert {
   }
 
   render() {
-    const chiIcon = <chi-icon icon={this.icon} color={this.color} extraClass="m-alert__icon"></chi-icon>;
-    const alertTitle = this.alertTitle && <p class="m-alert__title">{this.alertTitle}</p>;
-    const chiActions = this.alertActions && <div class="m-alert__actions"><slot name="m-alert__actions"></slot></div>;
+    const chiIcon = <chi-icon icon={this.icon} color={this.color} extraClass="chi-alert__icon"></chi-icon>;
+    const alertTitle = this.alertTitle && <p class="chi-alert__title">{this.alertTitle}</p>;
+    const chiActions = this.alertActions && <div class="chi-alert__actions"><slot name="chi-alert__actions"></slot></div>;
 
     return (
-      <div class={`m-alert
+      <div class={`chi-alert
         ${this.type ? `-${this.type}` : ''}
         ${this.color ? `-${this.color}` : ''}
         ${this.center ? '-center' : ''}
@@ -147,12 +147,12 @@ export class Alert {
         role="alert"
       >
         {this.icon && chiIcon}
-        <div class="m-alert__content">
+        <div class="chi-alert__content">
           {alertTitle}
-          <p class="m-alert__text"><slot></slot></p>
+          <p class="chi-alert__text"><slot></slot></p>
           {chiActions}
         </div>
-        {(this.dismissible || this.type === 'toast') && <chi-button extraClass="m-alert__dismiss-button" type="close" onChiClick={() => this._dismissAlert()} />}
+        {(this.dismissible || this.type === 'toast') && <chi-button extraClass="chi-alert__dismiss-button" type="close" onChiClick={() => this._dismissAlert()} />}
       </div>
     );
   }

@@ -68,9 +68,9 @@ function checkChiCurrentVersion(currentVersion) {
     var newVersionMessage = document.createElement('div');
 
     fillDropdown();
-    newVersionMessage.setAttribute("class", "m-alert -banner -center -info -w--100");
+    newVersionMessage.setAttribute("class", "chi-alert -banner -center -info -w--100");
     newVersionMessage.setAttribute("role", "alert");
-    newVersionMessage.innerHTML = `<i class="chi-icon m-alert__icon icon-circle-info -text--info"></i><div class="m-alert__content"><p class="m-alert__text">A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/${currentVersion}">Learn more &#8250;</a></p>`;
+    newVersionMessage.innerHTML = `<i class="chi-icon chi-alert__icon icon-circle-info -text--info"></i><div class="chi-alert__content"><p class="chi-alert__text">A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/${currentVersion}">Learn more &#8250;</a></p>`;
     while (chiVersionCheckSelector.childNodes.length > 0) {
       chiVersionCheckSelector.removeChild(chiVersionCheckSelector.firstChild);
     }

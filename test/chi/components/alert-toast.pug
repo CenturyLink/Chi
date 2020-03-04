@@ -7,13 +7,13 @@ each size in ['default', 'sm', 'lg']
   h4 Default / #{size}
   div(class=`test-toast-${size}`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-toast.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        div(class=`m-alert__icon chi-icon -text--${type}`)
+      .chi-alert.-toast.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+        div(class=`chi-alert__icon chi-icon -text--${type}`)
           svg
             use(xlink:href=`#${val}`)
-        .m-alert__content
-            p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
-        button(class='m-alert__dismiss-button chi-btn -icon -close', aria-label='Close')
+        .chi-alert__content
+            p.chi-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+        button(class='chi-alert__dismiss-button chi-btn -icon -close', aria-label='Close')
           .chi-btn__content
             .chi-icon
               svg
@@ -21,14 +21,14 @@ each size in ['default', 'sm', 'lg']
   h4 Titled / #{size}
   div(class=`test-toast-titled-${size}`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .m-alert.-toast.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        div(class=`m-alert__icon chi-icon -text--${type}`)
+      .chi-alert.-toast.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+        div(class=`chi-alert__icon chi-icon -text--${type}`)
           svg
             use(xlink:href=`#${val}`)
-        .m-alert__content
-            p.m-alert__title= type
-            p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} toast alert`
-        button(class='m-alert__dismiss-button chi-btn -icon -close', aria-label='Close')
+        .chi-alert__content
+            p.chi-alert__title= type
+            p.chi-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} toast alert`
+        button(class='chi-alert__dismiss-button chi-btn -icon -close', aria-label='Close')
           .chi-btn__content
             .chi-icon
               svg
