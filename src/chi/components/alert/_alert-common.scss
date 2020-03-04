@@ -149,7 +149,7 @@ $states: (
     .m-alert__actions {
       padding-top: 0.5rem;
 
-      > .a-btn {
+      > .chi-btn {
         margin-right: 0.5rem;
 
         &:last-child {
@@ -159,8 +159,8 @@ $states: (
     }
   }
 
-  > .a-btn,
-  > chi-button .a-btn {
+  > .chi-btn,
+  > chi-button .chi-btn {
     &.-close,
     &.m-alert__dismiss-button {
       align-self: flex-start;
@@ -192,8 +192,8 @@ $states: (
       }
     }
 
-    > .a-btn,
-    > chi-button .a-btn {
+    > .chi-btn,
+    > chi-button .chi-btn {
       &.-close,
       &.m-alert__dismiss-button {
         padding: 0;
@@ -222,7 +222,7 @@ $states: (
       .m-alert__actions {
         padding-top: 1rem;
 
-        > .a-btn,
+        > .chi-btn,
         > chi-button {
           margin-right: 1rem;
 

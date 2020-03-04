@@ -9,18 +9,18 @@ each size in ['default', 'small', 'large']
   })
     span.a-h2= `Hybrid buttons / ${size}`
     .m-btnGroup
-      button.a-btn(class={
+      button.chi-btn(class={
         [`-${size}`]: size != 'default'
       })
-        .a-btn__content
+        .chi-btn__content
           .a-icon
             svg
               use(xlink:href='#icon-atom')
           span Reinstall
-      button.a-btn.-icon(class={
+      button.chi-btn.-icon(class={
         [`-${size}`]: size != 'default'
       })
-        .a-btn__content
+        .chi-btn__content
           .a-icon
             svg
               use(xlink:href='#icon-atom')
@@ -32,14 +32,14 @@ each size in ['default', 'small', 'large']
     span.a-h2= `Hybrid buttons / ${size} / fluid`
     each modifier in ['align--left', '', 'align--right']
       .m-btnGroup.-fluid.-m--1(style="width:200px")
-        button.a-btn(class={
+        button.chi-btn(class={
           [`-${size}`]: size != 'default',
           [`-${modifier}`]: modifier != ''
         }) Button
-        button.a-btn.-icon.-notFluid(class={
+        button.chi-btn.-icon.-notFluid(class={
           [`-${size}`]: size != 'default'
         })
-          .a-btn__content
+          .chi-btn__content
             .a-icon
               svg
                 use(xlink:href='#icon-atom')

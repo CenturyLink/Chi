@@ -11,15 +11,15 @@ h4 Base
         .m-btnGroup
           each step in steps
             if step == '0'
-              a(class=`a-btn`, href='#', aria-label='Previous')
+              a(class=`chi-btn`, href='#', aria-label='Previous')
                 i(class="a-icon icon-chevron-left", aria-hidden='true')
                 span.-sr--only Previous
             else if step == '6'
-              a(class=`a-btn`, href='#')
+              a(class=`chi-btn`, href='#')
                 i(class="a-icon icon-chevron-right", aria-hidden='true')
                 span.-sr--only Next
             else
-              a(class=`a-btn`, href='#')= `${step}`
+              a(class=`chi-btn`, href='#')= `${step}`
 h4 Active
 .test-active
   .example.-mb--3
@@ -28,17 +28,17 @@ h4 Active
         .m-btnGroup
           each step in steps
             if step == '0'
-              a(class=`a-btn`, href='#', aria-label='Previous')
+              a(class=`chi-btn`, href='#', aria-label='Previous')
                 i(class="a-icon icon-chevron-left", aria-hidden='true')
                 span.-sr--only Previous
             else if step == '3'
-              a(class=`a-btn -active`, href='#')= `${step}`
+              a(class=`chi-btn -active`, href='#')= `${step}`
             else if step == '6'
-              a(class=`a-btn`, href='#')
+              a(class=`chi-btn`, href='#')
                 i(class="a-icon icon-chevron-right", aria-hidden='true')
                 span.-sr--only Next
             else
-              a(class=`a-btn`, href='#')= `${step}`
+              a(class=`chi-btn`, href='#')= `${step}`
 h4 Disabled
 .test-disabled
   .example.-mb--3
@@ -47,15 +47,15 @@ h4 Disabled
         .m-btnGroup
           each step in steps
             if step == '0'
-              a(class=`a-btn -disabled`, href='#', aria-disabled='true' disabled)
+              a(class=`chi-btn -disabled`, href='#', aria-disabled='true' disabled)
                 i(class="a-icon icon-chevron-left", aria-hidden='true')
                 span.-sr--only Previous
             else if step == '6'
-              a(class=`a-btn`, href='#')
+              a(class=`chi-btn`, href='#')
                 i(class="a-icon icon-chevron-right", aria-hidden='true')
                 span.-sr--only Next
             else
-              a(class=`a-btn`, href='#')= `${step}`
+              a(class=`chi-btn`, href='#')= `${step}`
 h4 Sizes
 h4 Base
 .test-sizes
@@ -70,12 +70,12 @@ h4 Base
                 .m-btnGroup
                   each step in steps
                     if step == '0'
-                      a(class=`a-btn -${size}`, href='#', aria-label='Previous')
+                      a(class=`chi-btn -${size}`, href='#', aria-label='Previous')
                         i(class="a-icon icon-chevron-left", aria-hidden='true')
                         span.-sr--only Previous
                     else if step == '6'
-                      a(class=`a-btn -${size}`, href='#')
+                      a(class=`chi-btn -${size}`, href='#')
                         i(class="a-icon icon-chevron-right", aria-hidden='true')
                         span.-sr--only Next
                     else
-                      a(class=`a-btn -${size}`, href='#')= `${step}`
+                      a(class=`chi-btn -${size}`, href='#')= `${step}`

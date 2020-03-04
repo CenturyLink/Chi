@@ -36,8 +36,8 @@ ul#a-tabs--drawer.a-tabs
       :code(lang="html")
         <div class="m-drawer -left -active">
           <div class="m-drawer__header">
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
                 <i class="a-icon icon-x"></i>
               </div>
             </button>
@@ -70,8 +70,8 @@ ul#a-tabs--drawer.a-tabs
       :code(lang="html")
         <div class="m-drawer -right -active">
           <div class="m-drawer__header">
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
                 <i class="a-icon icon-x"></i>
               </div>
             </button>
@@ -104,8 +104,8 @@ ul#a-tabs--drawer.a-tabs
       :code(lang="html")
         <div class="m-drawer -top -active">
           <div class="m-drawer__header">
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
                 <i class="a-icon icon-x"></i>
               </div>
             </button>
@@ -138,8 +138,8 @@ ul#a-tabs--drawer.a-tabs
       :code(lang="html")
         <div class="m-drawer -bottom -active">
           <div class="m-drawer__header">
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
                 <i class="a-icon icon-x"></i>
               </div>
             </button>
@@ -172,8 +172,8 @@ p.-text
       <div class="m-backdrop">
         <div class="m-backdrop__wrapper">
           <div class="m-drawer -bottom -active">
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
                 <i class="a-icon icon-x"></i>
               </div>
             </button>
@@ -251,8 +251,8 @@ ul#a-tabs--collapsible.a-tabs
         <div class="m-backdrop">
           <div class="m-backdrop__wrapper">
             <div class="m-drawer -bottom -active">
-              <button class="a-btn -icon -close" aria-label="Close">
-                <div class="a-btn__content">
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content">
                   <i class="a-icon icon-x"></i>
                 </div>
               </button>
@@ -321,8 +321,8 @@ ul#a-tabs--header.a-tabs
           <div class="m-backdrop__wrapper">
             <div class="m-drawer -left -active">
               <div class="m-drawer__header">
-                <button class="a-btn -icon -close" aria-label="Close">
-                  <div class="a-btn__content">
+                <button class="chi-btn -icon -close" aria-label="Close">
+                  <div class="chi-btn__content">
                     <i class="a-icon icon-x"></i>
                   </div>
                 </button>
@@ -355,8 +355,8 @@ ul#a-tabs--header.a-tabs
         <div class="m-backdrop">
           <div class="m-backdrop__wrapper">
             <div class="m-drawer -left -active">
-              <button class="a-btn -icon -close" aria-label="Close">
-                <div class="a-btn__content">
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content">
                   <i class="a-icon icon-x"></i>
                 </div>
               </button>
@@ -380,8 +380,8 @@ p.-text
     .-p--3
       .-d--flex.-justify-content--end.-align-items--start
         // Migrate this to chi-button
-        button#drawer-trigger.a-btn.-icon
-          .a-btn__content
+        button#drawer-trigger.chi-btn.-icon
+          .chi-btn__content
             chi-icon(icon='menu',size='sm--2')
       each i in [1, 2]
         p.-text.-mb--3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
@@ -399,8 +399,8 @@ p.-text
       | element also has three public methods to interact with it: <code>show()</code>, <code>hide()</code>,
       | <code>toggle()</code>.
     :code(lang="html")
-      <button id="drawer-trigger" class="a-btn -icon">
-        <div class="a-btn__content">
+      <button id="drawer-trigger" class="chi-btn -icon">
+        <div class="chi-btn__content">
           <chi-icon icon="menu"></chi-icon>
         </div>
       </button>
@@ -422,8 +422,8 @@ p.-text
       | Use the function <code>chi.drawer(elem)</code> to instantiate a new drawer component in the DOM
       | element passed as a parameter. You must use the trigger element as the parameter.
     :code(lang="html")
-      <button id="drawer-trigger-1" class="a-btn -icon m-drawer__trigger" data-target="#drawer-1" aria-label="Toggle navigation">
-        <div class="a-btn__content">
+      <button id="drawer-trigger-1" class="chi-btn -icon m-drawer__trigger" data-target="#drawer-1" aria-label="Toggle navigation">
+        <div class="chi-btn__content">
           <i class="a-icon -sm--2 icon-menu"></i>
         </div>
       </button>
@@ -432,8 +432,8 @@ p.-text
         <div class="m-backdrop__wrapper">
           <div id="drawer-1" class="m-drawer -right">
             <div class="m-drawer__header">
-              <button class="a-btn -icon -close" aria-label="Close">
-                <div class="a-btn__content">
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content">
                   <i class="a-icon icon-x"></i>
                 </div>
               </button>

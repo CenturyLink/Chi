@@ -13,7 +13,7 @@ each menuItemState in menuItemStates
       each textCombination in textCombinations
         each dropdownState in dropdownStates
           .m-dropdown(style="margin-bottom: 8em")
-            button(class=`a-btn m-dropdown__trigger ${dropdownState}`)=textCombination.t_text
+            button(class=`chi-btn m-dropdown__trigger ${dropdownState}`)=textCombination.t_text
             div(class=`m-dropdown__menu ${dropdownState}`)
               each i in [1, 2, 3]
                 a(class=`m-dropdown__menu-item ${menuItemState.class}`, href='#')=textCombination.d_text + " " + i
@@ -202,4 +202,4 @@ each triggerSize in triggerSizes
       span.a-h3=`State ${triggerState}`
       each position in dropdownPositions
         .-d--flex
-          button(class=`a-btn m-dropdown__trigger ${triggerSize} ${triggerState}`, data-position=position)=`Button ${triggerState} ${position}`
+          button(class=`chi-btn m-dropdown__trigger ${triggerSize} ${triggerState}`, data-position=position)=`Button ${triggerState} ${position}`

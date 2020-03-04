@@ -17,7 +17,7 @@ each size in ['default', 'sm', 'small', 'lg', 'large', 'xl']
                 .m-btnGroup.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
                   while val > 0
                     - val--
-                    button.a-btn(class={
+                    button.chi-btn(class={
                         [`-${type}`]: type != 'solid',
                         [`-${style}`]: style != 'default',
                         [`-${size}`]: size != 'default'
@@ -32,13 +32,13 @@ each size in ['default', 'sm', 'small', 'lg', 'large', 'xl']
                 .m-btnGroup.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
                   while val > 0
                     - val--
-                    button.a-btn.-icon(class={
+                    button.chi-btn.-icon(class={
                         [`-${type}`]: type != 'solid',
                         [`-${style}`]: style != 'default',
                         [`-${size}`]: size != 'default'
                       },
                       aria-label='Button action')
-                        .a-btn__content
+                        .chi-btn__content
                           .a-icon
                             svg
                               use(xlink:href='#icon-atom')
@@ -51,13 +51,13 @@ each size in ['default', 'sm', 'small', 'lg', 'large', 'xl']
                 .m-btnGroup.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
                   while val > 0
                     - val--
-                    button.a-btn(class={
+                    button.chi-btn(class={
                         [`-${type}`]: type != 'solid',
                         [`-${style}`]: style != 'default',
                         [`-${size}`]: size != 'default'
                       },
                       aria-label='Button action')
-                        .a-btn__content
+                        .chi-btn__content
                           .a-icon
                             svg
                               use(xlink:href='#icon-atom')
@@ -74,7 +74,7 @@ each size in ['default', 'sm', 'small', 'lg', 'large', 'xl']
               td(style="width:120px")
                 .m-btnGroup.-vertical.-fluid.-m--1
                   each modifier in ['align--left', '', 'align--right']
-                    button.a-btn(class={
+                    button.chi-btn(class={
                       [`-${type}`]: type != 'solid',
                       [`-${style}`]: style != 'default',
                       [`-${modifier}`]: modifier != '',
@@ -88,14 +88,14 @@ each size in ['default', 'sm', 'small', 'lg', 'large', 'xl']
               td(style="width:70px")
                 .m-btnGroup.-vertical.-fluid.-m--1
                   each modifier in ['align--left', '', 'align--right']
-                    button.a-btn.-icon(class={
+                    button.chi-btn.-icon(class={
                       [`-${type}`]: type != 'solid',
                       [`-${style}`]: style != 'default',
                       [`-${modifier}`]: modifier != '',
                       [`-${size}`]: size != 'default'
                     },
                       aria-label='Button action')
-                      .a-btn__content
+                      .chi-btn__content
                         .a-icon
                           svg
                             use(xlink:href='#icon-atom')
@@ -106,14 +106,14 @@ each size in ['default', 'sm', 'small', 'lg', 'large', 'xl']
               td(style="width:140px")
                 .m-btnGroup.-vertical.-fluid.-m--1
                   each modifier in ['align--left', '', 'align--right']
-                    button.a-btn(class={
+                    button.chi-btn(class={
                       [`-${type}`]: type != 'solid',
                       [`-${style}`]: style != 'default',
                       [`-${modifier}`]: modifier != '',
                       [`-${size}`]: size != 'default'
                     },
                       aria-label='Button action')
-                      .a-btn__content
+                      .chi-btn__content
                         .a-icon
                           svg
                             use(xlink:href='#icon-atom')

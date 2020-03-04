@@ -13,8 +13,8 @@ each size in ['default', 'sm', 'lg']
             use(xlink:href=`#${val}`)
         .m-alert__content
             p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
-        button(class='m-alert__dismiss-button a-btn -icon -close', aria-label='Close')
-          .a-btn__content
+        button(class='m-alert__dismiss-button chi-btn -icon -close', aria-label='Close')
+          .chi-btn__content
             .a-icon
               svg
                 use(xlink:href='#icon-x')
@@ -28,8 +28,8 @@ each size in ['default', 'sm', 'lg']
         .m-alert__content
             p.m-alert__title= type
             p.m-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} toast alert`
-        button(class='m-alert__dismiss-button a-btn -icon -close', aria-label='Close')
-          .a-btn__content
+        button(class='m-alert__dismiss-button chi-btn -icon -close', aria-label='Close')
+          .chi-btn__content
             .a-icon
               svg
                 use(xlink:href='#icon-x')

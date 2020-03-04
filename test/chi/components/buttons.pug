@@ -18,7 +18,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
               if style === 'light'
                 td.-bg--black
                   .-mr--2
-                    input.a-btn.-m--1.-mx--2(
+                    input.chi-btn.-m--1.-mx--2(
                     type="button"
                     class={
                       [`-${type}`]: type !== 'solid',
@@ -29,7 +29,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     value="Button"
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
-                    a.a-btn.-icon.-m--1(
+                    a.chi-btn.-icon.-m--1(
                     href="#"
                     class={
                       [`-${type}`]: type !== 'solid',
@@ -40,11 +40,11 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     disabled=state === 'disabled' ? 'disabled' : false
                     aria-label='Button action'
                     )
-                      .a-btn__content
+                      .chi-btn__content
                         .a-icon
                           svg
                             use(xlink:href='#icon-atom')
-                    button.a-btn.-m--1(
+                    button.chi-btn.-m--1(
                     class={
                       [`-${type}`]: type !== 'solid',
                       [`-${style}`]: style !== 'default',
@@ -53,7 +53,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     }
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
-                      .a-btn__content
+                      .chi-btn__content
                         .a-icon
                           svg
                             use(xlink:href='#icon-atom')
@@ -61,7 +61,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
               else
                 td
                   .-mr--2
-                    input.a-btn.-m--1.-mx--2(
+                    input.chi-btn.-m--1.-mx--2(
                     type="button"
                     class={
                       [`-${type}`]: type !== 'solid',
@@ -72,7 +72,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     value="Button"
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
-                    a.a-btn.-icon.-m--1(
+                    a.chi-btn.-icon.-m--1(
                     href="#"
                     class={
                       [`-${type}`]: type !== 'solid',
@@ -83,11 +83,11 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     disabled=state === 'disabled' ? 'disabled' : false
                     aria-label='Button action'
                     )
-                      .a-btn__content
+                      .chi-btn__content
                         .a-icon
                           svg
                             use(xlink:href='#icon-atom')
-                    button.a-btn.-m--1(
+                    button.chi-btn.-m--1(
                     class={
                       [`-${type}`]: type !== 'solid',
                       [`-${style}`]: style !== 'default',
@@ -96,7 +96,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     }
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
-                      .a-btn__content
+                      .chi-btn__content
                         .a-icon
                           svg
                             use(xlink:href='#icon-atom')
@@ -113,15 +113,15 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
               if style === 'light'
                 td.-bg--black
-                  button(type="button", class=`a-btn -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
-                    .a-btn__content
+                  button(type="button", class=`chi-btn -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
+                    .chi-btn__content
                       .a-icon
                         svg
                           use(xlink:href='#icon-atom')
               else
                 td
-                  button(type="button", class=`a-btn -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
-                    .a-btn__content
+                  button(type="button", class=`chi-btn -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
+                    .chi-btn__content
                       .a-icon
                         svg
                           use(xlink:href='#icon-atom')
@@ -135,8 +135,8 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
     table(cellpadding="0", cellspacing="0")
       tr
         td
-          button(class=`a-btn -icon -close -${size}`, aria-label='Close')
-            .a-btn__content
+          button(class=`chi-btn -icon -close -${size}`, aria-label='Close')
+            .chi-btn__content
               .a-icon
                 svg
                   use(xlink:href='#icon-x')

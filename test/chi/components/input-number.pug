@@ -51,11 +51,11 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       value='0'
                       disabled=state=='disabled'?'disabled': false
                     )
-                    button.a-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Decrease')
-                      .a-btn__content
+                    button.chi-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Decrease')
+                      .chi-btn__content
                         i.a-icon.icon-minus
-                    button.a-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Increase')
-                      .a-btn__content
+                    button.chi-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Increase')
+                      .chi-btn__content
                         i.a-icon.icon-plus
 
 each size in ['default', 'sm', 'md', 'lg', 'xl']
@@ -81,13 +81,13 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       value='0'
                       disabled=state=='disabled'?'disabled': false
                     )
-                    button.a-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Decrease')
-                      .a-btn__content
+                    button.chi-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Decrease')
+                      .chi-btn__content
                         .a-icon(class={[`-${size}`]: size != 'default'})
                           svg(aria-hidden="true")
                             use(xlink:href='#icon-minus')
-                    button.a-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Increase')
-                      .a-btn__content
+                    button.chi-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Increase')
+                      .chi-btn__content
                         .a-icon(class={[`-${size}`]: size != 'default'})
                           svg(aria-hidden="true")
                             use(xlink:href='#icon-plus')
