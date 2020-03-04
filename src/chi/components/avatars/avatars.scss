@@ -30,7 +30,7 @@ $avatar-colors: (grey,
   primary);
 $avatar-default-size: 'md';
 
-.a-avatar {
+.chi-avatar {
 
   background-color: set-color(grey, 20);
   border-radius: 50%;
@@ -131,7 +131,7 @@ $avatar-default-size: 'md';
   align-items: center;
   display: flex;
 
-  .a-avatar {
+  .chi-avatar {
     margin-right: 0.75rem;
   }
 }
