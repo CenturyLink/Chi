@@ -17,7 +17,7 @@ nav
                       a(href=`${rootPath}${section.path}`) #{section.title}
                         if section.title == 'Button'
                           .-sr--only component
-        else if key !== "Custom Elements"
+        else
           li.-hasActive
             .a-collection__title
               =key
@@ -32,7 +32,7 @@ nav
                       a(href=`${rootPath}${section.path}`) #{section.title}
                         if section.title == 'Button'
                           .-sr--only component
-      else if key !== "Custom Elements"
+      else
         li
           a(href=`#`, disabled="disabled") #{key}
 .-m--3
