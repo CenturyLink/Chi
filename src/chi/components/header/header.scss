@@ -1,7 +1,7 @@
 @import '_mixins';
 @import '_variables';
 
-.o-header {
+.chi-header {
   align-items: center;
   background-color: set-color(white);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
@@ -33,7 +33,7 @@
       padding: 0 1.5rem;
     }
 
-    ~ .o-header__toolbar {
+    ~ .chi-header__toolbar {
       height: 3rem;
 
       &:hover {
@@ -79,7 +79,7 @@
       }
     }
 
-    .o-header__title {
+    .chi-header__title {
       color: set-color(grey, 70);
       flex: 1 0 auto;
       font-size: $text-large;
@@ -136,7 +136,7 @@
       padding: 0 1.5rem;
     }
 
-    ~ .o-header__content {
+    ~ .chi-header__content {
       height: auto;
       min-height: 4rem;
     }
@@ -179,11 +179,11 @@
       }
     }
 
-    .o-header__start {
+    .chi-header__start {
       align-items: center;
     }
 
-    .o-header__end {
+    .chi-header__end {
       margin-left: 1rem;
       padding-top: 0;
 
@@ -203,12 +203,12 @@
   &.-inverse {
     background-color: set-color(black);
 
-    .o-header__title {
+    .chi-header__title {
       color: set-color(grey, 50);
     }
 
-    .o-header__toolbar {
-      .o-header__end {
+    .chi-header__toolbar {
+      .chi-header__end {
         & > a {
           color: set-color(white);
 
@@ -264,18 +264,18 @@
       }
     }
 
-    .o-header__content {
+    .chi-header__content {
       @include respond-to(md) {
         grid-template-columns: auto auto 1fr;
       }
 
-      .o-header__start {
+      .chi-header__start {
         @include respond-to(md) {
           padding-right: 1rem;
         }
       }
 
-      .o-header__end {
+      .chi-header__end {
         color: set-color(white);
         font-size: 0.75rem;
 
@@ -292,7 +292,7 @@
       }
     }
 
-    .o-header__navbar {
+    .chi-header__navbar {
       padding: 0 1.5rem;
       width: 100%;
 
@@ -313,8 +313,8 @@
 
 /* IE11 CSS hack */
 @media all and (-ms-high-contrast: none) {
-  .o-header__content,
-  .o-header__toolbar ~ .o-header__content {
+  .chi-header__content,
+  .chi-header__toolbar ~ .chi-header__content {
     height: 4rem;
   }
 }

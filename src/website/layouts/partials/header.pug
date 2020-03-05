@@ -1,4 +1,4 @@
-header.o-header.-inverse.docs-header.-z--20
+header.chi-header.-inverse.docs-header.-z--20
   #version-check.-w--100
   script.
     function versionCompare(v1, v2) {
@@ -37,22 +37,22 @@ header.o-header.-inverse.docs-header.-z--20
       }
     }
   div.chi-divider.-colorbar
-  nav.o-header__content
-    .o-header__brand
+  nav.chi-header__content
+    .chi-header__brand
       button#drawer-trigger-1.chi-btn.-icon.-flat.-light.-mr-md--2.-d--flex.-d-lg--none.chi-drawer__trigger(data-target='#drawer-sidenav', aria-label="Toggle documentation navigation")
         .chi-btn__content
           i.chi-icon.-sm--2.icon-menu
       a.chi-brand.docs-header__logo(href=`${rootPath}`, aria-label='CenturyLink')
         img(src='https://assets.ctl.io/images/centurylink-logo-white.svg', alt='CenturyLink')
-      span.o-header__title.-d--none.-d-lg--flex
+      span.chi-header__title.-d--none.-d-lg--flex
         | Chi Documentation
-    .o-header__start
+    .chi-header__start
       form.-chi-search
         .m-input__wrapper.-icon--right.-flex--grow1
           label.a-label.-d--none(for="chi-docs-search") Search Chi documentation
           input.a-input.searchbox(id="chi-docs-search", type="text", placeholder="Search")
           i.chi-icon.icon-search
-    .o-header__end
+    .chi-header__end
       .chi-dropdown
         button.chi-btn.-flat.-light.-px--1.chi-dropdown__trigger(data-position='bottom-end', id='version-dropdown', aria-label="Toggle Chi version") v1.4.2
         .chi-dropdown__menu(style='width:10rem;')#versionDropdown

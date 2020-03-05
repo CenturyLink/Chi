@@ -10,7 +10,7 @@
       position: fixed;
     }
 
-    .o-header__content {
+    .chi-header__content {
       display: flex;
       flex-direction: column;
       height: auto;
@@ -26,7 +26,7 @@
         padding: 0 1.5rem;
       }
 
-      .o-header__brand {
+      .chi-header__brand {
         flex-direction: column;
 
         @include respond-to(md) {
@@ -55,7 +55,7 @@
           }
         }
 
-        .o-header__title {
+        .chi-header__title {
           font-size: $text;
           line-height: $line-height;
 
@@ -82,7 +82,7 @@
         }
       }
 
-      .o-header__start {
+      .chi-header__start {
         justify-content: center;
         order: 2 !important;
         overflow: visible;
@@ -218,7 +218,7 @@
         }
       }
 
-      .o-header__end {
+      .chi-header__end {
         padding-top: .5rem;
 
         @include respond-to(md) {
