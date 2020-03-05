@@ -14,105 +14,105 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 .test-base
   span.a-h2 Base
   .-position--relative
-    .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
-      .m-datepicker__month-row
+    .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
+      .chi-datepicker__month-row
         .prev
           .chi-icon.-sm.-text--brand
             svg
               use(xlink:href='#icon-chevron-left')
-        .m-datepicker__month
+        .chi-datepicker__month
           | November 2018
         .next
           .chi-icon.-sm.-text--brand
             svg
               use(xlink:href='#icon-chevron-right')
-      .m-datepicker__day-names
+      .chi-datepicker__day-names
         each weekDay in weekS
-          .m-datepicker__week-day=weekDay
-      .m-datepicker__days
+          .chi-datepicker__week-day=weekDay
+      .chi-datepicker__days
         while day < 31
-          .m-datepicker__day=day++
+          .chi-datepicker__day=day++
 
 - day = 1;
 
 .test-today
   span.a-h2 Today
   .-position--relative
-    .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
-      .m-datepicker__month-row
+    .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
+      .chi-datepicker__month-row
         .prev
           .chi-icon.-sm.-text--brand
             svg
               use(xlink:href='#icon-chevron-left')
-        .m-datepicker__month
+        .chi-datepicker__month
           | November 2018
         .next
           .chi-icon.-sm.-text--brand
             svg
               use(xlink:href='#icon-chevron-right')
-      .m-datepicker__day-names
+      .chi-datepicker__day-names
         each weekDay in weekS
-          .m-datepicker__week-day=weekDay
-      .m-datepicker__days
+          .chi-datepicker__week-day=weekDay
+      .chi-datepicker__days
         while day < 31
           if day === today
-            .m-datepicker__day.-today=day++
+            .chi-datepicker__day.-today=day++
           else
-            .m-datepicker__day=day++
+            .chi-datepicker__day=day++
 
 - day = 1;
 
 .test-active
   span.a-h2 Active
   .-position--relative
-    .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
-      .m-datepicker__month-row
+    .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
+      .chi-datepicker__month-row
         .prev
           .chi-icon.-sm.-text--brand
             svg
               use(xlink:href='#icon-chevron-left')
-        .m-datepicker__month
+        .chi-datepicker__month
           | November 2018
         .next
           .chi-icon.-sm.-text--brand
             svg
               use(xlink:href='#icon-chevron-right')
-      .m-datepicker__day-names
+      .chi-datepicker__day-names
         each weekDay in weekS
-          .m-datepicker__week-day=weekDay
-      .m-datepicker__days
+          .chi-datepicker__week-day=weekDay
+      .chi-datepicker__days
         while day < 31
           if day === active
-            .m-datepicker__day.-active=day++
+            .chi-datepicker__day.-active=day++
           else
-            .m-datepicker__day=day++
+            .chi-datepicker__day=day++
 
 - day = 1;
 
 .test-hover
   span.a-h2 Hover
   .-position--relative
-    .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
-      .m-datepicker__month-row
+    .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
+      .chi-datepicker__month-row
         .prev
           .chi-icon.-sm.-text--brand
             svg
               use(xlink:href='#icon-chevron-left')
-        .m-datepicker__month
+        .chi-datepicker__month
           | November 2018
         .next
           .chi-icon.-sm.-text--brand
             svg
               use(xlink:href='#icon-chevron-right')
-      .m-datepicker__day-names
+      .chi-datepicker__day-names
         each weekDay in weekS
-          .m-datepicker__week-day=weekDay
-      .m-datepicker__days
+          .chi-datepicker__week-day=weekDay
+      .chi-datepicker__days
         while day < 31
           if day === active
-            .m-datepicker__day.-hover=day++
+            .chi-datepicker__day.-hover=day++
           else
-            .m-datepicker__day=day++
+            .chi-datepicker__day=day++
 
 
 - day = 1;
@@ -120,56 +120,56 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 .test-inactive
   span.a-h2 Inactive
   .-position--relative
-    .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
-      .m-datepicker__month-row
+    .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
+      .chi-datepicker__month-row
         .prev.-disabled
           .chi-icon.-sm
             svg
               use(xlink:href='#icon-chevron-left')
-        .m-datepicker__month
+        .chi-datepicker__month
           | November 2018
         .next.-disabled
           .chi-icon.-sm
             svg
               use(xlink:href='#icon-chevron-right')
-      .m-datepicker__day-names
+      .chi-datepicker__day-names
         each weekDay in weekS
-          .m-datepicker__week-day=weekDay
-      .m-datepicker__days
+          .chi-datepicker__week-day=weekDay
+      .chi-datepicker__days
         while day < 31
           if day < today || day > today
-            .m-datepicker__day.-inactive=day++
+            .chi-datepicker__day.-inactive=day++
           else
-            .m-datepicker__day=day++
+            .chi-datepicker__day=day++
 
 - day = 1;
 
 .test-combined
   span.a-h2 Combined
   .-position--relative
-    .m-datepicker.-week-starts-on-sun.-month-starts-on-thu
-      .m-datepicker__month-row
+    .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
+      .chi-datepicker__month-row
         .prev.-disabled
           .chi-icon.-sm
             svg
               use(xlink:href='#icon-chevron-left')
-        .m-datepicker__month
+        .chi-datepicker__month
           | November 2018
         .next
           .chi-icon.-sm.-text--brand
             svg
               use(xlink:href='#icon-chevron-right')
-      .m-datepicker__day-names
+      .chi-datepicker__day-names
         each weekDay in weekS
-          .m-datepicker__week-day=weekDay
-      .m-datepicker__days
+          .chi-datepicker__week-day=weekDay
+      .chi-datepicker__days
         while day < 31
           if day === active
-            .m-datepicker__day.-active=day++
+            .chi-datepicker__day.-active=day++
           else if day < today
-            .m-datepicker__day.-inactive=day++
+            .chi-datepicker__day.-inactive=day++
           else
-            .m-datepicker__day=day++
+            .chi-datepicker__day=day++
 
 .test-input-combined
   span.a-h2 Input Popover Combined

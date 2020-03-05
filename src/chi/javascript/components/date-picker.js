@@ -125,7 +125,7 @@ class DatePicker extends Component {
     }
 
     if (
-      Util.hasClass(target, 'm-datepicker__day') &&
+      Util.hasClass(target, 'chi-datepicker__day') &&
       !Util.hasClass(target, chi.classes.INACTIVE)
     ) {
       this.setDate(target.dataset.date);
@@ -263,26 +263,26 @@ class DatePicker extends Component {
 
     calendar = document.createElement('div');
     calendar.setAttribute(
-      'class', 'm-datepicker ' + this._weekStartClass
+      'class', 'chi-datepicker ' + this._weekStartClass
     );
 
     calendar.innerHTML = `
-    <div class="m-datepicker__month-row">
+    <div class="chi-datepicker__month-row">
       <div class="prev">
         <i class="chi-icon icon-chevron-left -sm"></i>
       </div>
-      <div class="m-datepicker__month"></div>
+      <div class="chi-datepicker__month"></div>
       <div class="next">
         <i class="chi-icon icon-chevron-right -sm"></i>
       </div>
     </div>
-    <div class="m-datepicker__day-names">
+    <div class="chi-datepicker__day-names">
       ${this._renderWeekDays()}
     </div>
-    <div class="m-datepicker__days"></div>`;
+    <div class="chi-datepicker__days"></div>`;
 
-    this.elems.dayList = calendar.getElementsByClassName('m-datepicker__days')[0];
-    this.elems.monthTitle = calendar.getElementsByClassName('m-datepicker__month')[0];
+    this.elems.dayList = calendar.getElementsByClassName('chi-datepicker__days')[0];
+    this.elems.monthTitle = calendar.getElementsByClassName('chi-datepicker__month')[0];
     this.elems.prevButton = calendar.getElementsByClassName('prev')[0];
     this.elems.nextButton = calendar.getElementsByClassName('next')[0];
     this.elems.calendar = calendar;
@@ -350,7 +350,7 @@ class DatePicker extends Component {
   }
 
   _classesForDay(day) {
-    const classes = ['m-datepicker__day'];
+    const classes = ['chi-datepicker__day'];
     if (
       day.isBefore(dayjs(this._config.min)) ||
       day.isAfter(dayjs(this._config.max))
@@ -383,7 +383,7 @@ class DatePicker extends Component {
         day = day.add(1, 'day')
       ) {
         this.weekDaysHtml +=
-          '<div class="m-datepicker__week-day">' +
+          '<div class="chi-datepicker__week-day">' +
           day.format('dddd').substr(0,1) +
           '</div>';
       }
