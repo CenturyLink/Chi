@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, h } from '@stencil/core';
+import { Component, Prop, Watch, h, Element, State } from '@stencil/core';
 
 const EP_MODES = ['done', 'active', 'pending', 'disabled'];
 
@@ -8,6 +8,7 @@ const EP_MODES = ['done', 'active', 'pending', 'disabled'];
   scoped: true
 })
 export class ExpansionPanel {
+  @Element() el;
   /**
    * to set expansion panel state. Possible values are: {'done', 'active', 'pending' (default value), and 'disabled'}
    */
@@ -19,14 +20,14 @@ export class ExpansionPanel {
   @Prop({ reflect: true }) step: string;
 
   /**
-   * to set the title of the panel
-   */
-  @Prop({ reflect: true }) heading: string;
-
-  /**
    * is the panel border-styled?
    */
   @Prop({ reflect: true }) bordered: boolean;
+
+  /**
+   * to set the title of the panel
+   */
+  @State() epanelTitle: string;
 
   @Watch('state')
   stateValidation(newValue: string) {
@@ -38,6 +39,26 @@ export class ExpansionPanel {
   }
 
   componentWillLoad() {
+    const target = this.el;
+    const config = {
+      attributes: true,
+      attributeOldValue: true,
+      attributeFilter: ['title']
+    };
+
+    const subscriberCallback = (mutations) => {
+      mutations.forEach((mutation) => {
+        this.epanelTitle = mutation.target.title;
+      });
+    }
+
+    const observer = new MutationObserver(subscriberCallback);
+    observer.observe(target, config);
+
+    if (target.getAttribute('title')) {
+      this.epanelTitle = target.getAttribute('title');
+    }
+
     this.stateValidation(this.state);
   }
 
@@ -52,7 +73,7 @@ export class ExpansionPanel {
       >
         <div class="chi-epanel__header">
           {this.step ? <span class="chi-epanel__number">{this.step}.</span> : ''}
-          <div class="chi-epanel__title">{this.heading}</div>
+          <div class="chi-epanel__title">{this.epanelTitle}</div>
           <div class={`chi-epanel__content ${this.step ? '' : '-ml--0'}`}>
             <div class="chi-epanel__collapse">
               <div class="-done--only">
