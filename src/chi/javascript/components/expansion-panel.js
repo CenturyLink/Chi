@@ -2,8 +2,8 @@ import {Component} from "../core/component";
 import {Util} from "../core/util.js";
 
 const ANIMATION_DURATION = 200;
-const CLASS_COLLAPSE_WRAPPER = 'm-epanel__collapse';
-const COMPONENT_SELECTOR = '.-m-epanel';
+const CLASS_COLLAPSE_WRAPPER = 'chi-epanel__collapse';
+const COMPONENT_SELECTOR = '.-chi-epanel';
 const COMPONENT_TYPE = "expansionPanel";
 const DEFAULT_CONFIG = {
   animated: true,

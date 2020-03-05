@@ -52,31 +52,31 @@ p.-text
   span.chi-badge.-dark.-sm.-mr1
     span Tip
   | You can freely add, remove or change the <code>data-chi-epanel-action</code> attribute on the fly, as is the main
-  | element with the <code>m-epanel</code> class, the one which listens for the events.
+  | element with the <code>chi-epanel</code> class, the one which listens for the events.
 
 h3 Example
 .example.-mb3
   .-p3.-bg--grey-10
-    .m-epanel#example2
-      .m-epanel__header
-        .m-epanel__title(data-chi-epanel-action='toggle') Click me to toggle
-        .m-epanel__content
-          .m-epanel__collapse
+    .chi-epanel#example2
+      .chi-epanel__header
+        .chi-epanel__title(data-chi-epanel-action='toggle') Click me to toggle
+        .chi-epanel__content
+          .chi-epanel__collapse
             .-done--only
               | CenturyLink<br />
               | 1100 112th Ave NE<br />
               | Suite 400<br />
               | Bellevue, WA 98004
-        .m-epanel__action.-done--only
+        .chi-epanel__action.-done--only
           button.chi-btn.-primary.-flat(data-chi-epanel-action="active") Change
-      .m-epanel__collapse.-ml--0
+      .chi-epanel__collapse.-ml--0
         .-active--only
-          .m-epanel__body
-            .m-epanel__content
-              .m-epanel__subtitle Active panel title
-              p.m-epanel__text
+          .chi-epanel__body
+            .chi-epanel__content
+              .chi-epanel__subtitle Active panel title
+              p.chi-epanel__text
                 | Content in expansion panel
-            .m-epanel__footer.-justify-content--end
+            .chi-epanel__footer.-justify-content--end
               button.chi-btn.-lg(data-chi-epanel-action='pending') Pending
               button.chi-btn.-lg(data-chi-epanel-action='done').-primary.-ml--2 Done
   ul#a-tabs-e2.a-tabs.-ml--3
@@ -86,26 +86,26 @@ h3 Example
       a(href='#a-tabs-e2-js') JS
   #a-tabs-e2-html.a-tabs-panel.-active
     :code(lang="html")
-      <div class="m-epanel" id="example2" data-chi-epanel-group="example2">
-        <div class="m-epanel__header">
-          <div class="m-epanel__title" data-chi-epanel-action="toggle">Click me to toggle</div>
-          <div class="m-epanel__content">
-            <div class="m-epanel__collapse">
+      <div class="chi-epanel" id="example2" data-chi-epanel-group="example2">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title" data-chi-epanel-action="toggle">Click me to toggle</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
               <div class="-done--only">CenturyLink...</div>
             </div>
           </div>
-          <div class="m-epanel__action -done--only">
+          <div class="chi-epanel__action -done--only">
             <button class="chi-btn -primary -flat" data-chi-epanel-action="active">Change</button>
           </div>
         </div>
-        <div class="m-epanel__collapse -ml--0">
+        <div class="chi-epanel__collapse -ml--0">
           <div class="-active--only">
-            <div class="m-epanel__body">
-              <div class="m-epanel__content">
-                <div class="m-epanel__subtitle">Active panel title</div>
-                <p class="m-epanel__text">Content in expansion panel</p>
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Active panel title</div>
+                <p class="chi-epanel__text">Content in expansion panel</p>
               </div>
-              <div class="m-epanel__footer -justify-content--end">
+              <div class="chi-epanel__footer -justify-content--end">
                 <button class="chi-btn -lg" data-chi-epanel-action="pending">Pending</button>
                 <button class="chi-btn -lg -primary -ml--2" data-chi-epanel-action="done">Done</button>
               </div>
@@ -126,94 +126,94 @@ p.-text
 
 .example.-mb3#example3
   .-p3.-bg--grey-10
-    .m-epanel.-active(data-chi-epanel-group='example3')
-      .m-epanel__header
-        .m-epanel__title Expansion panel #1
-        .m-epanel__content
-          .m-epanel__collapse
+    .chi-epanel.-active(data-chi-epanel-group='example3')
+      .chi-epanel__header
+        .chi-epanel__title Expansion panel #1
+        .chi-epanel__content
+          .chi-epanel__collapse
             .-done--only
               | Done<br />
               | CenturyLink<br />
               | 1100 112th Ave NE<br />
               | Suite 400<br />
               | Bellevue, WA 98004
-        .m-epanel__action.-done--only
+        .chi-epanel__action.-done--only
           button.chi-btn.-primary.-flat(data-chi-epanel-action="active") Change
-      .m-epanel__collapse.-ml--0
+      .chi-epanel__collapse.-ml--0
         .-active--only
-          .m-epanel__body
-            .m-epanel__content
-              .m-epanel__subtitle Active panel title
-              p.m-epanel__text Content in expansion panel
-            .m-epanel__footer.-justify-content--end
+          .chi-epanel__body
+            .chi-epanel__content
+              .chi-epanel__subtitle Active panel title
+              p.chi-epanel__text Content in expansion panel
+            .chi-epanel__footer.-justify-content--end
               button.chi-btn.-lg(data-chi-epanel-action='next').-primary.-ml--2 Continue
 
-    .m-epanel(data-chi-epanel-group='example3')
-      .m-epanel__header
-        .m-epanel__title Expansion panel #2
-        .m-epanel__content
-          .m-epanel__collapse
+    .chi-epanel(data-chi-epanel-group='example3')
+      .chi-epanel__header
+        .chi-epanel__title Expansion panel #2
+        .chi-epanel__content
+          .chi-epanel__collapse
             .-done--only
               | Done<br />
               | CenturyLink<br />
               | 1100 112th Ave NE<br />
               | Suite 400<br />
               | Bellevue, WA 98004
-        .m-epanel__action.-done--only
+        .chi-epanel__action.-done--only
           button.chi-btn.-primary.-flat(data-chi-epanel-action="active") Change
-      .m-epanel__collapse.-ml--0
+      .chi-epanel__collapse.-ml--0
         .-active--only
-          .m-epanel__body
-            .m-epanel__content
-              .m-epanel__subtitle Active panel title
-              p.m-epanel__text Content in expansion panel
-            .m-epanel__footer.-justify-content--end
+          .chi-epanel__body
+            .chi-epanel__content
+              .chi-epanel__subtitle Active panel title
+              p.chi-epanel__text Content in expansion panel
+            .chi-epanel__footer.-justify-content--end
               button.chi-btn.-lg(data-chi-epanel-action='previous') Previous
               button.chi-btn.-lg(data-chi-epanel-action='next').-primary.-ml--2 Continue
 
-    .m-epanel(data-chi-epanel-group='example3')
-      .m-epanel__header
-        .m-epanel__title Expansion panel #3
-        .m-epanel__content
-          .m-epanel__collapse
+    .chi-epanel(data-chi-epanel-group='example3')
+      .chi-epanel__header
+        .chi-epanel__title Expansion panel #3
+        .chi-epanel__content
+          .chi-epanel__collapse
             .-done--only
               | Done<br />
               | CenturyLink<br />
               | 1100 112th Ave NE<br />
               | Suite 400<br />
               | Bellevue, WA 98004
-        .m-epanel__action.-done--only
+        .chi-epanel__action.-done--only
           button.chi-btn.-primary.-flat(data-chi-epanel-action="active") Change
-      .m-epanel__collapse.-ml--0
+      .chi-epanel__collapse.-ml--0
         .-active--only
-          .m-epanel__body
-            .m-epanel__content
-              .m-epanel__subtitle Active panel title
-              p.m-epanel__text Content in expansion panel
-            .m-epanel__footer.-justify-content--end
+          .chi-epanel__body
+            .chi-epanel__content
+              .chi-epanel__subtitle Active panel title
+              p.chi-epanel__text Content in expansion panel
+            .chi-epanel__footer.-justify-content--end
               button.chi-btn.-lg(data-chi-epanel-action='previous') Previous
               button.chi-btn.-lg(data-chi-epanel-action='next').-primary.-ml--2 Continue
 
-    .m-epanel(data-chi-epanel-group='example3')
-      .m-epanel__header
-        .m-epanel__title Expansion panel #4
-        .m-epanel__content
-          .m-epanel__collapse
+    .chi-epanel(data-chi-epanel-group='example3')
+      .chi-epanel__header
+        .chi-epanel__title Expansion panel #4
+        .chi-epanel__content
+          .chi-epanel__collapse
             .-done--only
               | Done<br />
               | CenturyLink<br />
               | 1100 112th Ave NE<br />
               | Suite 400<br />
               | Bellevue, WA 98004
-        .m-epanel__action.-done--only
+        .chi-epanel__action.-done--only
           button.chi-btn.-primary.-flat(data-chi-epanel-action="active") Change
-      .m-epanel__collapse.-ml--0
+      .chi-epanel__collapse.-ml--0
         .-active--only
-          .m-epanel__body
-            .m-epanel__content
-              .m-epanel__subtitle Active panel title
-              p.m-epanel__text Content in expansion panel
-            .m-epanel__footer.-justify-content--end
+          .chi-epanel__body
+            .chi-epanel__content
+              .chi-epanel__subtitle Active panel title
+              p.chi-epanel__text Content in expansion panel
+            .chi-epanel__footer.-justify-content--end
               button.chi-btn.-lg(data-chi-epanel-action='previous') Previous
               button.chi-btn.-lg(data-chi-epanel-action='done').-primary.-ml--2 Finish
 
@@ -224,26 +224,26 @@ p.-text
       a(href='#a-tabs-e3-js') JS
   #a-tabs-e3-html.a-tabs-panel.-active
     :code(lang="html")
-      <div class="m-epanel -active" data-chi-epanel-group="example3">
-        <div class="m-epanel__header">
-          <div class="m-epanel__title">Expansion panel #1</div>
-          <div class="m-epanel__content">
-            <div class="m-epanel__collapse">
+      <div class="chi-epanel -active" data-chi-epanel-group="example3">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title">Expansion panel #1</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
               <div class="-done--only">Done<br>CenturyLink...</div>
             </div>
           </div>
-          <div class="m-epanel__action -done--only">
+          <div class="chi-epanel__action -done--only">
             <button class="chi-btn -primary -flat" data-chi-epanel-action="active">Change</button>
           </div>
         </div>
-        <div class="m-epanel__collapse -ml--0">
+        <div class="chi-epanel__collapse -ml--0">
           <div class="-active--only">
-            <div class="m-epanel__body">
-              <div class="m-epanel__content">
-                <div class="m-epanel__subtitle">Active panel title</div>
-                <p class="m-epanel__text">Content in expansion panel</p>
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Active panel title</div>
+                <p class="chi-epanel__text">Content in expansion panel</p>
               </div>
-              <div class="m-epanel__footer -justify-content--end">
+              <div class="chi-epanel__footer -justify-content--end">
                 <button class="chi-btn -lg -primary -ml--2" data-chi-epanel-action="next">Continue</button>
               </div>
             </div>
@@ -251,26 +251,26 @@ p.-text
         </div>
       </div>
 
-      <div class="m-epanel" data-chi-epanel-group="example3">
-        <div class="m-epanel__header">
-          <div class="m-epanel__title">Expansion panel #2</div>
-          <div class="m-epanel__content">
-            <div class="m-epanel__collapse">
+      <div class="chi-epanel" data-chi-epanel-group="example3">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title">Expansion panel #2</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
               <div class="-done--only">Done<br>CenturyLink...</div>
             </div>
           </div>
-          <div class="m-epanel__action -done--only">
+          <div class="chi-epanel__action -done--only">
             <button class="chi-btn -primary -flat" data-chi-epanel-action="active">Change</button>
           </div>
         </div>
-        <div class="m-epanel__collapse -ml--0">
+        <div class="chi-epanel__collapse -ml--0">
           <div class="-active--only">
-            <div class="m-epanel__body">
-              <div class="m-epanel__content">
-                <div class="m-epanel__subtitle">Active panel title</div>
-                <p class="m-epanel__text">Content in expansion panel</p>
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Active panel title</div>
+                <p class="chi-epanel__text">Content in expansion panel</p>
               </div>
-              <div class="m-epanel__footer -justify-content--end">
+              <div class="chi-epanel__footer -justify-content--end">
                 <button class="chi-btn -lg" data-chi-epanel-action="previous">Previous</button>
                 <button class="chi-btn -lg -primary -ml--2" data-chi-epanel-action="next">Continue</button>
               </div>
@@ -293,48 +293,48 @@ p.-text
   | and the expansion panel #3 also have next and previous buttons that fulfills the accordion behavior.
 .example.-mb3#example4
   .-p3.-bg--grey-10
-    .m-epanel.-bordered.-active(data-chi-epanel-group='example4')
-      .m-epanel__header
-        .m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #1
-      .m-epanel__collapse
+    .chi-epanel.-bordered.-active(data-chi-epanel-group='example4')
+      .chi-epanel__header
+        .chi-epanel__title(data-chi-epanel-action='toggle') Expansion panel #1
+      .chi-epanel__collapse
         .-active--only
-          .m-epanel__body
-            .m-epanel__content
-              .m-epanel__subtitle Active panel title
-              p.m-epanel__text Content in expansion panel
+          .chi-epanel__body
+            .chi-epanel__content
+              .chi-epanel__subtitle Active panel title
+              p.chi-epanel__text Content in expansion panel
 
-    .m-epanel.-bordered(data-chi-epanel-group='example4')
-      .m-epanel__header
-        .m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #2
-      .m-epanel__collapse
+    .chi-epanel.-bordered(data-chi-epanel-group='example4')
+      .chi-epanel__header
+        .chi-epanel__title(data-chi-epanel-action='toggle') Expansion panel #2
+      .chi-epanel__collapse
         .-active--only
-          .m-epanel__body
-            .m-epanel__content
-              .m-epanel__subtitle Active panel title
-              p.m-epanel__text Content in expansion panel
+          .chi-epanel__body
+            .chi-epanel__content
+              .chi-epanel__subtitle Active panel title
+              p.chi-epanel__text Content in expansion panel
 
-    .m-epanel.-bordered(data-chi-epanel-group='example4')
-      .m-epanel__header
-        .m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #3
-      .m-epanel__collapse
+    .chi-epanel.-bordered(data-chi-epanel-group='example4')
+      .chi-epanel__header
+        .chi-epanel__title(data-chi-epanel-action='toggle') Expansion panel #3
+      .chi-epanel__collapse
         .-active--only
-          .m-epanel__body
-            .m-epanel__content
-              .m-epanel__subtitle Active panel title
-              p.m-epanel__text Content in expansion panel
-            .m-epanel__footer.-justify-content--end
+          .chi-epanel__body
+            .chi-epanel__content
+              .chi-epanel__subtitle Active panel title
+              p.chi-epanel__text Content in expansion panel
+            .chi-epanel__footer.-justify-content--end
               button.chi-btn.-lg(data-chi-epanel-action='previous') Previous
               button.chi-btn.-lg(data-chi-epanel-action='next').-primary.-ml--2 Continue
 
-    .m-epanel.-bordered(data-chi-epanel-group='example4')
-      .m-epanel__header
-        .m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #4
-      .m-epanel__collapse
+    .chi-epanel.-bordered(data-chi-epanel-group='example4')
+      .chi-epanel__header
+        .chi-epanel__title(data-chi-epanel-action='toggle') Expansion panel #4
+      .chi-epanel__collapse
         .-active--only
-          .m-epanel__body
-            .m-epanel__content
-              .m-epanel__subtitle Active panel title
-              p.m-epanel__text Content in expansion panel
+          .chi-epanel__body
+            .chi-epanel__content
+              .chi-epanel__subtitle Active panel title
+              p.chi-epanel__text Content in expansion panel
   ul#a-tabs-e4.a-tabs.-ml--3
     li.-active
       a(href='#a-tabs-e4-html') HTML
@@ -342,32 +342,32 @@ p.-text
       a(href='#a-tabs-e4-js') JS
   #a-tabs-e4-html.a-tabs-panel.-active
     :code(lang="html")
-      <div class="m-epanel -bordered -active" data-chi-epanel-group="example4">
-        <div class="m-epanel__header">
-          <div class="m-epanel__title" data-chi-epanel-action="toggle">Expansion panel #1</div>
+      <div class="chi-epanel -bordered -active" data-chi-epanel-group="example4">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title" data-chi-epanel-action="toggle">Expansion panel #1</div>
         </div>
-        <div class="m-epanel__collapse">
+        <div class="chi-epanel__collapse">
           <div class="-active--only">
-            <div class="m-epanel__body">
-              <div class="m-epanel__content">
-                <div class="m-epanel__subtitle">Active panel title</div>
-                <p class="m-epanel__text">Content in expansion panel</p>
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Active panel title</div>
+                <p class="chi-epanel__text">Content in expansion panel</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="m-epanel -bordered" data-chi-epanel-group="example4">
-        <div class="m-epanel__header">
-          <div class="m-epanel__title" data-chi-epanel-action="toggle">Expansion panel #2</div>
+      <div class="chi-epanel -bordered" data-chi-epanel-group="example4">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title" data-chi-epanel-action="toggle">Expansion panel #2</div>
         </div>
-        <div class="m-epanel__collapse">
+        <div class="chi-epanel__collapse">
           <div class="-active--only">
-            <div class="m-epanel__body">
-              <div class="m-epanel__content">
-                <div class="m-epanel__subtitle">Active panel title</div>
-                <p class="m-epanel__text">Content in expansion panel</p>
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Active panel title</div>
+                <p class="chi-epanel__text">Content in expansion panel</p>
               </div>
             </div>
           </div>
@@ -390,59 +390,59 @@ p.-text
 
 .example.-mb3#example5
   .-p3.-bg--grey-10
-    .m-epanel.-active(data-chi-epanel-group='example5')
-      .m-epanel__header
-        .m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #1
-        .m-epanel__action.-done--only
+    .chi-epanel.-active(data-chi-epanel-group='example5')
+      .chi-epanel__header
+        .chi-epanel__title(data-chi-epanel-action='toggle') Expansion panel #1
+        .chi-epanel__action.-done--only
           button.chi-btn.-primary.-flat(data-chi-epanel-action='active') Change
-      .m-epanel__collapse.-ml--0
+      .chi-epanel__collapse.-ml--0
         .-active--only
-          .m-epanel__body
-            .m-epanel__content
-              .m-epanel__subtitle Active panel title
-              p.m-epanel__text Content in expansion panel
-            .m-epanel__footer.-justify-content--end
+          .chi-epanel__body
+            .chi-epanel__content
+              .chi-epanel__subtitle Active panel title
+              p.chi-epanel__text Content in expansion panel
+            .chi-epanel__footer.-justify-content--end
               button.chi-btn.-lg(data-chi-epanel-action='next').-primary.-ml--2 Continue
-    .m-epanel(data-chi-epanel-group='example5')
-      .m-epanel__header
-        .m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #2
-        .m-epanel__action.-done--only
+    .chi-epanel(data-chi-epanel-group='example5')
+      .chi-epanel__header
+        .chi-epanel__title(data-chi-epanel-action='toggle') Expansion panel #2
+        .chi-epanel__action.-done--only
           button.chi-btn.-primary.-flat(data-chi-epanel-action='active') Change
-      .m-epanel__collapse.-ml--0
+      .chi-epanel__collapse.-ml--0
         .-active--only
-          .m-epanel__body
-            .m-epanel__content
-              .m-epanel__subtitle Active panel title
-              p.m-epanel__text Content in expansion panel
-            .m-epanel__footer.-justify-content--end
+          .chi-epanel__body
+            .chi-epanel__content
+              .chi-epanel__subtitle Active panel title
+              p.chi-epanel__text Content in expansion panel
+            .chi-epanel__footer.-justify-content--end
               button.chi-btn.-lg(data-chi-epanel-action='previous') Previous
               button.chi-btn.-lg(data-chi-epanel-action='next').-primary.-ml--2 Continue
-    .m-epanel(data-chi-epanel-group='example5')
-      .m-epanel__header
-        .m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #3
-        .m-epanel__action.-done--only
+    .chi-epanel(data-chi-epanel-group='example5')
+      .chi-epanel__header
+        .chi-epanel__title(data-chi-epanel-action='toggle') Expansion panel #3
+        .chi-epanel__action.-done--only
           button.chi-btn.-primary.-flat(data-chi-epanel-action='active') Change
-      .m-epanel__collapse.-ml--0
+      .chi-epanel__collapse.-ml--0
         .-active--only
-          .m-epanel__body
-            .m-epanel__content
-              .m-epanel__subtitle Active panel title
-              p.m-epanel__text Content in expansion panel
-            .m-epanel__footer.-justify-content--end
+          .chi-epanel__body
+            .chi-epanel__content
+              .chi-epanel__subtitle Active panel title
+              p.chi-epanel__text Content in expansion panel
+            .chi-epanel__footer.-justify-content--end
               button.chi-btn.-lg(data-chi-epanel-action='previous') Previous
               button.chi-btn.-lg(data-chi-epanel-action='next').-primary.-ml--2 Continue
-    .m-epanel(data-chi-epanel-group='example5')
-      .m-epanel__header
-        .m-epanel__title(data-chi-epanel-action='toggle') Expansion panel #4
-        .m-epanel__action.-done--only
+    .chi-epanel(data-chi-epanel-group='example5')
+      .chi-epanel__header
+        .chi-epanel__title(data-chi-epanel-action='toggle') Expansion panel #4
+        .chi-epanel__action.-done--only
           button.chi-btn.-primary.-flat(data-chi-epanel-action='active') Change
-      .m-epanel__collapse.-ml--0
+      .chi-epanel__collapse.-ml--0
         .-active--only
-          .m-epanel__body
-            .m-epanel__content
-              .m-epanel__subtitle Active panel title
-              p.m-epanel__text Content in expansion panel
-            .m-epanel__footer.-justify-content--end
+          .chi-epanel__body
+            .chi-epanel__content
+              .chi-epanel__subtitle Active panel title
+              p.chi-epanel__text Content in expansion panel
+            .chi-epanel__footer.-justify-content--end
               button.chi-btn.-lg(data-chi-epanel-action='previous') Previous
 
   ul#a-tabs-e5.a-tabs.-ml--3
@@ -452,32 +452,32 @@ p.-text
       a(href='#a-tabs-e5-js') JS
   #a-tabs-e5-html.a-tabs-panel.-active
     :code(lang="html")
-      <div class="m-epanel -bordered -active" data-chi-epanel-group="example5">
-        <div class="m-epanel__header">
-          <div class="m-epanel__title" data-chi-epanel-action="toggle">Expansion panel #1</div>
+      <div class="chi-epanel -bordered -active" data-chi-epanel-group="example5">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title" data-chi-epanel-action="toggle">Expansion panel #1</div>
         </div>
-        <div class="m-epanel__collapse">
+        <div class="chi-epanel__collapse">
           <div class="-active--only">
-            <div class="m-epanel__body">
-              <div class="m-epanel__content">
-                <div class="m-epanel__subtitle">Active panel title</div>
-                <p class="m-epanel__text">Content in expansion panel</p>
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Active panel title</div>
+                <p class="chi-epanel__text">Content in expansion panel</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="m-epanel -bordered" data-chi-epanel-group="example4">
-        <div class="m-epanel__header">
-          <div class="m-epanel__title" data-chi-epanel-action="toggle">Expansion panel #2</div>
+      <div class="chi-epanel -bordered" data-chi-epanel-group="example4">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title" data-chi-epanel-action="toggle">Expansion panel #2</div>
         </div>
-        <div class="m-epanel__collapse">
+        <div class="chi-epanel__collapse">
           <div class="-active--only">
-            <div class="m-epanel__body">
-              <div class="m-epanel__content">
-                <div class="m-epanel__subtitle">Active panel title</div>
-                <p class="m-epanel__text">Content in expansion panel</p>
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Active panel title</div>
+                <p class="chi-epanel__text">Content in expansion panel</p>
               </div>
             </div>
           </div>
@@ -503,41 +503,41 @@ p.-text
 
 .example.-mb3#example6
   .-p3.-bg--grey-10
-    .m-epanel.-done(data-chi-epanel-group='example6')
-      .m-epanel__header
-        .m-epanel__title(data-chi-epanel-action='done') Expansion panel #1
-        .m-epanel__content
-          .m-epanel__collapse
+    .chi-epanel.-done(data-chi-epanel-group='example6')
+      .chi-epanel__header
+        .chi-epanel__title(data-chi-epanel-action='done') Expansion panel #1
+        .chi-epanel__content
+          .chi-epanel__collapse
             .-done--only
               | CenturyLink<br />
               | 1100 112th Ave NE<br />
               | Suite 400<br />
               | Bellevue, WA 98004
-    .m-epanel(data-chi-epanel-group='example6')
-      .m-epanel__header
-        .m-epanel__title(data-chi-epanel-action='done') Expansion panel #2
-        .m-epanel__content
-          .m-epanel__collapse
+    .chi-epanel(data-chi-epanel-group='example6')
+      .chi-epanel__header
+        .chi-epanel__title(data-chi-epanel-action='done') Expansion panel #2
+        .chi-epanel__content
+          .chi-epanel__collapse
             .-done--only
               | CenturyLink<br />
               | 1100 112th Ave NE<br />
               | Suite 400<br />
               | Bellevue, WA 98004
-    .m-epanel(data-chi-epanel-group='example6')
-      .m-epanel__header
-        .m-epanel__title(data-chi-epanel-action='done') Expansion panel #3
-        .m-epanel__content
-          .m-epanel__collapse
+    .chi-epanel(data-chi-epanel-group='example6')
+      .chi-epanel__header
+        .chi-epanel__title(data-chi-epanel-action='done') Expansion panel #3
+        .chi-epanel__content
+          .chi-epanel__collapse
             .-done--only
               | CenturyLink<br />
               | 1100 112th Ave NE<br />
               | Suite 400<br />
               | Bellevue, WA 98004
-    .m-epanel(data-chi-epanel-group='example6')
-      .m-epanel__header
-        .m-epanel__title(data-chi-epanel-action='done') Expansion panel #4
-        .m-epanel__content
-          .m-epanel__collapse
+    .chi-epanel(data-chi-epanel-group='example6')
+      .chi-epanel__header
+        .chi-epanel__title(data-chi-epanel-action='done') Expansion panel #4
+        .chi-epanel__content
+          .chi-epanel__collapse
             .-done--only
               | CenturyLink<br />
               | 1100 112th Ave NE<br />
@@ -550,22 +550,22 @@ p.-text
       a(href='#a-tabs-e6-js') JS
   #a-tabs-e6-html.a-tabs-panel.-active
     :code(lang="html")
-      <div class="m-epanel -done" data-chi-epanel-group="example6">
-        <div class="m-epanel__header">
-          <div class="m-epanel__title" data-chi-epanel-action="done">Expansion panel #1</div>
-          <div class="m-epanel__content">
-            <div class="m-epanel__collapse">
+      <div class="chi-epanel -done" data-chi-epanel-group="example6">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title" data-chi-epanel-action="done">Expansion panel #1</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
               <div class="-done--only">CenturyLink...</div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="m-epanel" data-chi-epanel-group="example6">
-        <div class="m-epanel__header">
-          <div class="m-epanel__title" data-chi-epanel-action="done">Expansion panel #2</div>
-          <div class="m-epanel__content">
-            <div class="m-epanel__collapse">
+      <div class="chi-epanel" data-chi-epanel-group="example6">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title" data-chi-epanel-action="done">Expansion panel #2</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
               <div class="-done--only">CenturyLink...</div>
             </div>
           </div>

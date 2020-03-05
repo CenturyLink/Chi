@@ -13,11 +13,11 @@ describe('Expansion panel', function() {
             .should('have.class', 'hydrated')
             .children()
             .first()
-            .should('have.class', 'm-epanel');
+            .should('have.class', 'chi-epanel');
     });
 
     it('Expansion panel custom element should include custom content when in "done" mode. ', function() {
-      
+
         cy.get('[data-cy="test-done"]')
             .find('.-done--only')
             .children()
@@ -27,10 +27,10 @@ describe('Expansion panel', function() {
     });
 
     it('Expansion panel custom element should include custom content with a footer when in "active" mode. ', function() {
-      
+
         cy.get('[data-cy="test-active"]')
             .find('.-active--only')
-            .find('.m-epanel__body')
+            .find('.chi-epanel__body')
             .children()
             .should(($elements)=> {
                 expect($elements.first().children().first()).to.match('div').to.have.attr('slot', 'active');
@@ -39,9 +39,9 @@ describe('Expansion panel', function() {
     });
 
     it('Expansion panel custom element could include custom content in done or active modes. ', function() {
-      
+
         cy.get('[data-cy="test-done"]')
-            .find('.m-epanel__action')
+            .find('.chi-epanel__action')
             .children()
             .should(($elements)=> {
                 expect($elements.first()).to.match('div').to.have.attr('slot', 'change');

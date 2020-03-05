@@ -274,18 +274,18 @@ h2 Base
 h2 Optional
 .example.-mb--3.-bg--grey-10
   .chi-app.-p3
-    .m-epanel.-bordered.-p--1#autopayOptional
-      .m-epanel__header.-d--flex.-justify-content--between
+    .chi-epanel.-bordered.-p--1#autopayOptional
+      .chi-epanel__header.-d--flex.-justify-content--between
         div
           .chi-card__title.-m--0 Automatic Payments
           p.-text Each month, an automatic payment for the full amount of your bill will be paid to CenturyLink from the payment method of your choosing.
         .m-form__item
           input(type="checkbox", class="a-input -toggle", id="toggle1", data-chi-epanel-action='toggle')
           label(for="toggle1")
-      .m-epanel__collapse
+      .chi-epanel__collapse
         .-active--only
-          .m-epanel__body
-            .m-epanel__content.-p--0
+          .chi-epanel__body
+            .chi-epanel__content.-p--0
               .a-grid.-noGutter
                 div.a-col.-w-md--4
                   .m-form__item.-mb--1
@@ -362,8 +362,8 @@ h2 Optional
                           input(type="text", class="a-input -xl", id='zip', placeholder="")
   :code(lang="html")
     <div class="chi-app">
-      <div class="m-epanel -bordered -p--1" id="autopay">
-        <div class="m-epanel__header -d--flex -justify-content--between">
+      <div class="chi-epanel -bordered -p--1" id="autopay">
+        <div class="chi-epanel__header -d--flex -justify-content--between">
           <div>
             <div class="chi-card__title -m--0 ">Automatic Payments</div>
             <p class="-text">Each month, an automatic payment for the full amount of your bill will be paid to CenturyLink
@@ -374,10 +374,10 @@ h2 Optional
             <label for="toggle1"></label>
           </div>
         </div>
-        <div class="m-epanel__collapse">
+        <div class="chi-epanel__collapse">
           <div class="-active--only">
-            <div class="m-epanel__body">
-              <div class="m-epanel__content -p--0">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content -p--0">
                 <div class="a-grid -noGutter">
                   <div class="a-col -w-md--4">
                     <div class="m-form__item -mb--1">
