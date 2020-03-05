@@ -23,12 +23,12 @@ each sidenavType in sidenavTypes
                       use(xlink:href='#icon-atom')
                   span=val === active.menuItem ? 'Active Item' : 'Menu Item'
       .m-sidenav__drawers
-        .m-drawer.-active.-animated.-left
-          .m-drawer__header
+        .chi-drawer.-active.-animated.-left
+          .chi-drawer__header
             button(class='chi-btn -icon -close', aria-label='Close')
               .chi-btn__content
                 i.chi-icon.icon-x
-          .m-drawer__content
+          .chi-drawer__content
             ul.m-sidenav__drawer-list
               each val2, index in drawerMenuItems
                 li(class=`${val2 === 'A' ? '-active' : ''}`)
@@ -53,13 +53,13 @@ h2 Enterprise Global Nav
                     use(xlink:href='#icon-atom')
                 span=val === active.menuItem ? 'Active Item' : 'Menu Item'
     .m-sidenav__drawers
-      .m-drawer.-active.-animated.-left
-        .m-drawer__header
+      .chi-drawer.-active.-animated.-left
+        .chi-drawer__header
           .a-drawer__title= 'Menu item 1'
           button(class='chi-btn -icon -close', aria-label='Close')
             .chi-btn__content
               i.chi-icon.icon-x
-        .m-drawer__content
+        .chi-drawer__content
           ul.m-sidenav__drawer-list
             each val2, index in drawerMenuItems
               if val2 === 'A' || val2 === 'B'
@@ -101,12 +101,12 @@ each size in sizes
                         use(xlink:href='#icon-atom')
                     span=val===active.menuItem ? 'Active Item' : 'Menu Item'
         .m-sidenav__drawers
-          .m-drawer.-active.-animated.-left
-            .m-drawer__header
+          .chi-drawer.-active.-animated.-left
+            .chi-drawer__header
               button(class='chi-btn -icon -close', aria-label='Close')
                 .chi-btn__content
                   i.chi-icon.icon-x
-            .m-drawer__content
+            .chi-drawer__content
               ul.m-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val2 === 'A' ? '-active' : ''}`)

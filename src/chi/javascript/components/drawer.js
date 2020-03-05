@@ -3,9 +3,9 @@ import {Util} from "../core/util.js";
 import {chi} from "../core/chi";
 
 const ANIMATION_DURATION = 500;
-const CLASS_DRAWER = 'm-drawer';
-const CLOSE_TRIGGER_SELECTOR = `.${CLASS_DRAWER} > .-close, .${CLASS_DRAWER} > .m-drawer__header > .-close`;
-const COMPONENT_SELECTOR = '.m-drawer__trigger';
+const CLASS_DRAWER = 'chi-drawer';
+const CLOSE_TRIGGER_SELECTOR = `.${CLASS_DRAWER} > .-close, .${CLASS_DRAWER} > .chi-drawer__header > .-close`;
+const COMPONENT_SELECTOR = '.chi-drawer__trigger';
 const COMPONENT_TYPE = "drawer";
 const DISABLE_SCROLL = '-disableScroll';
 const EVENTS = {

@@ -39,7 +39,7 @@ header.o-header.-inverse.docs-header.-z--20
   div.chi-divider.-colorbar
   nav.o-header__content
     .o-header__brand
-      button#drawer-trigger-1.chi-btn.-icon.-flat.-light.-mr-md--2.-d--flex.-d-lg--none.m-drawer__trigger(data-target='#drawer-sidenav', aria-label="Toggle documentation navigation")
+      button#drawer-trigger-1.chi-btn.-icon.-flat.-light.-mr-md--2.-d--flex.-d-lg--none.chi-drawer__trigger(data-target='#drawer-sidenav', aria-label="Toggle documentation navigation")
         .chi-btn__content
           i.chi-icon.-sm--2.icon-menu
       a.chi-brand.docs-header__logo(href=`${rootPath}`, aria-label='CenturyLink')
@@ -98,11 +98,11 @@ header.o-header.-inverse.docs-header.-z--20
 
 .m-backdrop.-closed
   .m-backdrop__wrapper
-    div#drawer-sidenav.m-drawer.-left.-menu.-position--absolute
+    div#drawer-sidenav.chi-drawer.-left.-menu.-position--absolute
       button(class='chi-btn -icon -close', aria-label='Close')
         .chi-btn__content
           i.chi-icon.icon-x
-      .m-drawer__content
+      .chi-drawer__content
         .-py--2
           include aside
 
@@ -111,7 +111,7 @@ script.
     'DOMContentLoaded',
     function() {
       Array.prototype.forEach.call(
-        document.getElementsByClassName("m-drawer__trigger"),
+        document.getElementsByClassName("chi-drawer__trigger"),
         function (el) {
           chi.drawer(el);
         }

@@ -207,7 +207,7 @@ $sidenav-lg-width: 12.5rem;
       }
 
       &__drawers {
-        .m-drawer {
+        .chi-drawer {
           background-color: set-color(grey, 100);
 
           &__header {
@@ -232,7 +232,7 @@ $sidenav-lg-width: 12.5rem;
     }
   }
 
-  .m-drawer {
+  .chi-drawer {
     box-shadow: 0.5rem 0 0.5rem -0.5rem rgba(set-color(black), 0.2);
     position: absolute;
     z-index: $zindex-fixed;
@@ -269,7 +269,7 @@ $sidenav-lg-width: 12.5rem;
   @include respond-to(md) {
     width: $sidenav-md-width;
 
-    .m-drawer {
+    .chi-drawer {
       &.-left {
         left: $sidenav-md-width;
 
@@ -318,7 +318,7 @@ $sidenav-lg-width: 12.5rem;
       }
     }
 
-    .m-drawer {
+    .chi-drawer {
       &.-left {
         left: $sidenav-sm-width;
 
@@ -355,7 +355,7 @@ $sidenav-lg-width: 12.5rem;
       }
     }
 
-    .m-drawer {
+    .chi-drawer {
       &.-left {
         left: $sidenav-md-width;
 
@@ -388,7 +388,7 @@ $sidenav-lg-width: 12.5rem;
       }
     }
 
-    .m-drawer {
+    .chi-drawer {
       &.-left {
         left: $sidenav-lg-width;
 
@@ -435,11 +435,11 @@ $sidenav-lg-width: 12.5rem;
       }
 
       .m-sidenav__drawers {
-        .m-drawer {
+        .chi-drawer {
           background-color: set-color(grey, 90);
 
           &.-active {
-            .m-drawer__header {
+            .chi-drawer__header {
               align-items: center;
               background-color: rgba(set-color(grey, 100), 0.5);
               color: set-color(grey, 40);
@@ -460,7 +460,7 @@ $sidenav-lg-width: 12.5rem;
               }
             }
 
-            .m-drawer__content {
+            .chi-drawer__content {
               background-color: set-color(grey, 90);
 
               .m-sidenav__drawer-list {

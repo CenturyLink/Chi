@@ -9,8 +9,8 @@ describe('Drawer', function() {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'div.m-drawer.-top.-active')
-      .find('.m-drawer__header')
+      .should('match', 'div.chi-drawer.-top.-active')
+      .find('.chi-drawer__header')
       .should('not.exist');
   });
 
@@ -20,8 +20,8 @@ describe('Drawer', function() {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'div.m-drawer.-top.-active')
-      .find('.m-drawer__header')
+      .should('match', 'div.chi-drawer.-top.-active')
+      .find('.chi-drawer__header')
       .should('have.length', 1)
       .find('button.chi-btn chi-icon[icon="x"]')
       .should('exist');
@@ -37,7 +37,7 @@ describe('Drawer', function() {
       .children().first()
       .should('match', 'div.m-backdrop__wrapper')
       .children().first()
-      .should('match', 'div.m-drawer.-top.-active');
+      .should('match', 'div.chi-drawer.-top.-active');
   });
 
   it('Should close when clicking the close button. ', function() {
@@ -45,7 +45,7 @@ describe('Drawer', function() {
     cy.get('[data-cy="test-top-headed"]')
       .children()
       .first()
-      .find('.m-drawer__header button.chi-btn')
+      .find('.chi-drawer__header button.chi-btn')
       .click()
       .get('[data-cy="test-top-headed"]')
       .should('not.match', '[active]')
@@ -74,7 +74,7 @@ describe('Drawer', function() {
       })
       .get('[data-cy="test-backdrop-top-headed"]')
       .should('not.match', '[active]')
-      .find('.m-drawer')
+      .find('.chi-drawer')
       .should('not.be.visible');
   });
 
@@ -87,7 +87,7 @@ describe('Drawer', function() {
       })
       .get('[data-cy="test-backdrop-top-headed"]')
       .should('match', '[active]')
-      .find('.m-drawer')
+      .find('.chi-drawer')
       .should('be.visible');
 
   });
@@ -101,7 +101,7 @@ describe('Drawer', function() {
       })
       .get('[data-cy="test-backdrop-right-headed"]')
       .should('not.match', '[active]')
-      .find('.m-drawer')
+      .find('.chi-drawer')
       .should('not.be.visible')
       .get('[data-cy="test-backdrop-right-headed"]')
       .then(function(drawer){
@@ -110,7 +110,7 @@ describe('Drawer', function() {
       })
       .get('[data-cy="test-backdrop-right-headed"')
       .should('match', '[active]')
-      .find('.m-drawer')
+      .find('.chi-drawer')
       .should('be.visible');
 
   });

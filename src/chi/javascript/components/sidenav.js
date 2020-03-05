@@ -6,7 +6,7 @@ import { Drawer, EVENTS as DRAWER_EVENTS } from "./drawer";
 
 const COMPONENT_SELECTOR = '.m-sidenav';
 const COMPONENT_TYPE = "sidenav";
-const DRAWER_CLASS = "m-drawer";
+const DRAWER_CLASS = "chi-drawer";
 const LINKLIST_CLASS = 'm-sidenav__list';
 const SIDENAV_CONTENT_CLASS = 'm-sidenav__content';
 const SIDENAV_DRAWERS_CLASS = 'm-sidenav__drawers';
@@ -104,7 +104,7 @@ class Sidenav extends Component {
 
   getActiveDrawerItemSubtab() {
     return this._elem
-    .querySelector(`.m-drawer .${DRAWER_ITEM_LIST_CLASS} ul li a.${chi.classes.ACTIVE}`);
+    .querySelector(`.chi-drawer .${DRAWER_ITEM_LIST_CLASS} ul li a.${chi.classes.ACTIVE}`);
   }
 
   getDrawerActiveMenuItem() {
