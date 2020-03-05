@@ -1,7 +1,7 @@
 @import '_variables';
 @import '_mixins';
 
-.a-breadcrumb {
+.chi-breadcrumb {
   > ol {
     display: flex;
     font-weight: 600;
@@ -32,7 +32,7 @@
   }
 
   &.-alt {
-    .a-breadcrumb__item {
+    .chi-breadcrumb__item {
       &:not(:first-child) {
         &::before {
           content: url('icon-chevron-right.svg');

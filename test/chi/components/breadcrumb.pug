@@ -6,26 +6,26 @@ h4 Base
 .test-base
   .example
     .-p--3
-      nav.a-breadcrumb.-text(aria-label="Breadcrumb")
+      nav.chi-breadcrumb.-text(aria-label="Breadcrumb")
         ol
-          li.a-breadcrumb__item
+          li.chi-breadcrumb__item
             a(href='#') Parent
-          li.a-breadcrumb__item
+          li.chi-breadcrumb__item
             a(href='#') Child 1
-          li.a-breadcrumb__item.-active
+          li.chi-breadcrumb__item.-active
             a(href='#',aria-current="page") Child 2
-  
+
 h4 Alternative Separator
-.test-alternative-separator 
+.test-alternative-separator
   .example
     .-p--3
-      nav.a-breadcrumb.-alt.-text(aria-label="Breadcrumb")
+      nav.chi-breadcrumb.-alt.-text(aria-label="Breadcrumb")
         ol
-          li.a-breadcrumb__item
+          li.chi-breadcrumb__item
             a(href='#') Parent
-          li.a-breadcrumb__item
+          li.chi-breadcrumb__item
             a(href='#') Child 1
-          li.a-breadcrumb__item.-active
+          li.chi-breadcrumb__item.-active
             a(href='#',aria-current="page") Child 2
 
 h4 Sizes
@@ -37,13 +37,13 @@ h4 Sizes
           h5= `-text--${size}`
           td
             .-m--1
-              nav(class=`a-breadcrumb -text--${size}`,aria-label="Breadcrumb")
+              nav(class=`chi-breadcrumb -text--${size}`,aria-label="Breadcrumb")
                 ol
-                  li.a-breadcrumb__item
+                  li.chi-breadcrumb__item
                     a(href='#') Parent
-                  li.a-breadcrumb__item
+                  li.chi-breadcrumb__item
                     a(href='#') Child 1
-                  li.a-breadcrumb__item.-active
+                  li.chi-breadcrumb__item.-active
                     a(href='#',aria-current="page") Child 2
     each size in ['small', 'smaller', 'large', 'larger']
       tr
@@ -51,11 +51,11 @@ h4 Sizes
           h5= `-text--${size}`
           td
             .-m--1
-              nav(class=`a-breadcrumb -alt -text--${size}`,aria-label="Breadcrumb")
+              nav(class=`chi-breadcrumb -alt -text--${size}`,aria-label="Breadcrumb")
                 ol
-                  li.a-breadcrumb__item
+                  li.chi-breadcrumb__item
                     a(href='#') Parent
-                  li.a-breadcrumb__item
+                  li.chi-breadcrumb__item
                     a(href='#') Child 1
-                  li.a-breadcrumb__item.-active
+                  li.chi-breadcrumb__item.-active
                     a(href='#',aria-current="page") Child 2
