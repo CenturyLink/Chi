@@ -53,13 +53,13 @@ header.o-header.-inverse.docs-header.-z--20
           input.a-input.searchbox(id="chi-docs-search", type="text", placeholder="Search")
           i.chi-icon.icon-search
     .o-header__end
-      .m-dropdown
-        button.chi-btn.-flat.-light.-px--1.m-dropdown__trigger(data-position='bottom-end', id='version-dropdown', aria-label="Toggle Chi version") v1.4.2
-        .m-dropdown__menu(style='width:10rem;')#versionDropdown
-          a.m-dropdown__menu-item.-active(href='https://assets.ctl.io/chi/1.4.2') v1.4.2
-          a.m-dropdown__menu-item(href='https://assets.ctl.io/chi/1.4.0') v1.4.0
-          a.m-dropdown__menu-item(href='https://assets.ctl.io/chi/1.3.0') v1.3.0
-          a.m-dropdown__menu-item(href='https://assets.ctl.io/chi/1.2.5') v1.2.5
+      .chi-dropdown
+        button.chi-btn.-flat.-light.-px--1.chi-dropdown__trigger(data-position='bottom-end', id='version-dropdown', aria-label="Toggle Chi version") v1.4.2
+        .chi-dropdown__menu(style='width:10rem;')#versionDropdown
+          a.chi-dropdown__menu-item.-active(href='https://assets.ctl.io/chi/1.4.2') v1.4.2
+          a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/1.4.0') v1.4.0
+          a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/1.3.0') v1.3.0
+          a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/1.2.5') v1.2.5
       script.
         if (localStorage.getItem("chiVersions") !== null) {
           if (versionCompare(window.chiCurrentVersion, JSON.parse(localStorage.getItem("chiVersions"))[0])) {
@@ -75,7 +75,7 @@ header.o-header.-inverse.docs-header.-z--20
               var versionAnchor = document.createElement('a');
 
               versionAnchor.setAttribute("href", "https://assets.ctl.io/chi/"+versions[version]);
-              versionAnchor.setAttribute("class", "m-dropdown__menu-item");
+              versionAnchor.setAttribute("class", "chi-dropdown__menu-item");
               versionAnchor.innerText = "v" + versions[version];
               if (window.chiCurrentVersion === versions[version]) {
                 versionAnchor.classList.add('-active');
@@ -86,11 +86,11 @@ header.o-header.-inverse.docs-header.-z--20
             docsContainerSelector.classList.add("outdated-version");
           }
         }
-      .m-dropdown
-        button.chi-btn.-flat.-light.-px--1.-ml--1.m-dropdown__trigger(data-position='bottom-end', id='support') Support
-        .m-dropdown__menu(style='width:14rem;')
-          a.m-dropdown__menu-item(id='contact', href='mailto:chi.support@centurylink.com') Email Support
-          a.m-dropdown__menu-item(id='teams', href='https://teams.microsoft.com/l/channel/19%253aa08fdfde482543ea80f81ce484cea21b%2540thread.skype/CHI?groupId=8631295d-43fc-4e40-93e5-dc8c9ab4d127&tenantId=72b17115-9915-42c0-9f1b-4f98e5a4bcd2', target='_blank', rel="noopener")
+      .chi-dropdown
+        button.chi-btn.-flat.-light.-px--1.-ml--1.chi-dropdown__trigger(data-position='bottom-end', id='support') Support
+        .chi-dropdown__menu(style='width:14rem;')
+          a.chi-dropdown__menu-item(id='contact', href='mailto:chi.support@centurylink.com') Email Support
+          a.chi-dropdown__menu-item(id='teams', href='https://teams.microsoft.com/l/channel/19%253aa08fdfde482543ea80f81ce484cea21b%2540thread.skype/CHI?groupId=8631295d-43fc-4e40-93e5-dc8c9ab4d127&tenantId=72b17115-9915-42c0-9f1b-4f98e5a4bcd2', target='_blank', rel="noopener")
             | Talk #Chi on Microsoft Teams
       a.chi-btn.-icon.-flat.-light.-ml--1(href='https://github.com/CenturyLinkCloud/ux-chi', rel="noopener", aria-label="GitHub")
         .chi-btn__content

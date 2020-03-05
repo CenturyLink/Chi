@@ -18,12 +18,12 @@ h2 Base
         div.a-col.-w-md--4
           .m-form__item.-mb--1
             label.a-label(for='Base') Choose a payment method
-            .m-dropdown
-              button.chi-btn.-xl.m-dropdown__trigger(id='Base', onclick='selectPayment(id)') Checking account
-              .m-dropdown__menu
-                a.m-dropdown__menu-item(href='#checkingAccountBase', name='Checking') Checking account
-                a.m-dropdown__menu-item(href='#savingsAccountBase', name='Savings') Savings account
-                a.m-dropdown__menu-item(href='#creditDebitCardBase', name='Credit') Credit or debit card
+            .chi-dropdown
+              button.chi-btn.-xl.chi-dropdown__trigger(id='Base', onclick='selectPayment(id)') Checking account
+              .chi-dropdown__menu
+                a.chi-dropdown__menu-item(href='#checkingAccountBase', name='Checking') Checking account
+                a.chi-dropdown__menu-item(href='#savingsAccountBase', name='Savings') Savings account
+                a.chi-dropdown__menu-item(href='#creditDebitCardBase', name='Credit') Credit or debit card
       .chi-card#checkingAccountBase.-mt--1
         .chi-card__header.-py--0.-bg--grey-10
           h6 Add a checking account
@@ -102,16 +102,16 @@ h2 Base
           <div class="a-col -w-md--4">
             <div class="m-form__item -mb--1">
               <label class="a-label" for="Base">Choose a payment method</label>
-              <div class="m-dropdown">
-                <button class="chi-btn -xl m-dropdown__trigger" id="Base">Checking account</button>
-                <div class="m-dropdown__menu">
-                  <a class="m-dropdown__menu-item" href="#checkingAccountBase" name="Checking">
+              <div class="chi-dropdown">
+                <button class="chi-btn -xl chi-dropdown__trigger" id="Base">Checking account</button>
+                <div class="chi-dropdown__menu">
+                  <a class="chi-dropdown__menu-item" href="#checkingAccountBase" name="Checking">
                     Checking account
                   </a>
-                  <a class="m-dropdown__menu-item" href="#savingsAccountBase" name="Savings">
+                  <a class="chi-dropdown__menu-item" href="#savingsAccountBase" name="Savings">
                     Savings account
                   </a>
-                  <a class="m-dropdown__menu-item" href="#creditDebitCardBase" name="Credit">
+                  <a class="chi-dropdown__menu-item" href="#creditDebitCardBase" name="Credit">
                     Credit or debit card
                   </a>
                 </div>
@@ -290,12 +290,12 @@ h2 Optional
                 div.a-col.-w-md--4
                   .m-form__item.-mb--1
                     label.a-label(for='Optional') Choose a payment method
-                    .m-dropdown
-                      button.chi-btn.-xl.m-dropdown__trigger(id='Optional', onclick='selectPayment(id)') Checking account
-                      .m-dropdown__menu
-                        a.m-dropdown__menu-item(href='#checkingAccountOptional', name='Checking') Checking account
-                          a.m-dropdown__menu-item(href='#savingsAccountOptional', name='Savings') Savings account
-                          a.m-dropdown__menu-item(href='#creditDebitCardOptional', name='Credit') Credit or debit card
+                    .chi-dropdown
+                      button.chi-btn.-xl.chi-dropdown__trigger(id='Optional', onclick='selectPayment(id)') Checking account
+                      .chi-dropdown__menu
+                        a.chi-dropdown__menu-item(href='#checkingAccountOptional', name='Checking') Checking account
+                          a.chi-dropdown__menu-item(href='#savingsAccountOptional', name='Savings') Savings account
+                          a.chi-dropdown__menu-item(href='#creditDebitCardOptional', name='Credit') Credit or debit card
               .chi-card#checkingAccountOptional.-mt--1
                 .chi-card__header.-py--0.-bg--grey-10
                   h6 Add a checking account
@@ -382,18 +382,18 @@ h2 Optional
                   <div class="a-col -w-md--4">
                     <div class="m-form__item -mb--1">
                       <label class="a-label" for="method">Choose a payment method</label>
-                      <div class="m-dropdown">
-                        <button class="chi-btn -xl m-dropdown__trigger" id="Optional">
+                      <div class="chi-dropdown">
+                        <button class="chi-btn -xl chi-dropdown__trigger" id="Optional">
                           Checking account
                         </button>
-                        <div class="m-dropdown__menu">
-                          <a class="m-dropdown__menu-item" href="#checkingAccountOptional" name="Checking">
+                        <div class="chi-dropdown__menu">
+                          <a class="chi-dropdown__menu-item" href="#checkingAccountOptional" name="Checking">
                             Checking account
                           </a>
-                          <a class="m-dropdown__menu-item" href="#savingsAccountOptional" name="Savings">
+                          <a class="chi-dropdown__menu-item" href="#savingsAccountOptional" name="Savings">
                             Savings account
                           </a>
-                          <a class="m-dropdown__menu-item" href="#creditDebitCardOptional" name="Credit">
+                          <a class="chi-dropdown__menu-item" href="#creditDebitCardOptional" name="Credit">
                             Credit or debit card
                           </a>
                         </div>
@@ -575,7 +575,7 @@ script.
 script.
   function selectPayment (id) {
     var elem = document.getElementById(id);
-    Array.prototype.forEach.call(elem.parentElement.querySelectorAll('.m-dropdown__menu-item'), function (button) {
+    Array.prototype.forEach.call(elem.parentElement.querySelectorAll('.chi-dropdown__menu-item'), function (button) {
       button.addEventListener('click', function (e) {
         e.preventDefault();
         var elems = document.querySelectorAll('a.-active');

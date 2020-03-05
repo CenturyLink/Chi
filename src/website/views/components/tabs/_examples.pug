@@ -202,19 +202,19 @@ p.-text
 .example.-mb--3
   .-p--3.-pb--4
     ul.a-tabs.a-navigationExample#example-tabbed-navigation
-      li.m-dropdown.-active
-        a.m-dropdown__trigger(href='#') Active tab
-        .m-dropdown__menu
-          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 1
-          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 2
+      li.chi-dropdown.-active
+        a.chi-dropdown__trigger(href='#') Active tab
+        .chi-dropdown__menu
+          a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 1
+          a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 2
           div
-            a.m-dropdown__menu-item.m-dropdown__trigger(href='#') Elem 3 more
-            .m-dropdown__menu
-              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
-              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
-              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
-              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
-          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 4
+            a.chi-dropdown__menu-item.chi-dropdown__trigger(href='#') Elem 3 more
+            .chi-dropdown__menu
+              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
+              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
+              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
+              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
+          a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 4
       li
         a(href='#exampleHashTarget') Tab Link
       li
@@ -227,12 +227,12 @@ p.-text
         a(href='#exampleHashTarget') Tab Link
       li
         a(href='#exampleHashTarget') Tab Link
-      li.m-dropdown
-        a.m-dropdown__trigger(href='#') Tab Dropdown
-        .m-dropdown__menu
-          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 1
-          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 2
-          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 3
+      li.chi-dropdown
+        a.chi-dropdown__trigger(href='#') Tab Dropdown
+        .chi-dropdown__menu
+          a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 1
+          a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 2
+          a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 3
   ul.a-tabs.-ml--3#tabbed-navigation-switch
     li.-active
       a(href='#example-1__horizontal-html') HTML
@@ -241,18 +241,18 @@ p.-text
   #example-1__horizontal-html.a-tabs-panel.-active
     :code(lang='html')
       <ul id="navigationExample-1" class="a-tabs">
-        <li class="m-dropdown -active">
-          <a class="m-dropdown__trigger" href="#">Active tab</a>
-          <div class="m-dropdown__menu">
-            <a class="m-dropdown__menu-item" href="#">Elem 1</a>
-            <a class="m-dropdown__menu-item" href="#">Elem 2</a>
+        <li class="chi-dropdown -active">
+          <a class="chi-dropdown__trigger" href="#">Active tab</a>
+          <div class="chi-dropdown__menu">
+            <a class="chi-dropdown__menu-item" href="#">Elem 1</a>
+            <a class="chi-dropdown__menu-item" href="#">Elem 2</a>
             <div>
-              <a class="m-dropdown__menu-item m-dropdown__trigger" href="#">Elem 3 more</a>
-              <div class="m-dropdown__menu">
-                <a class="m-dropdown__menu-item" href="#">Elem 3.1</a><a class="m-dropdown__menu-item" href="#">Elem 3.2</a><a class="m-dropdown__menu-item" href="#">Elem 3.3</a><a class="m-dropdown__menu-item" href="#">Elem 3.4</a>
+              <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
+              <div class="chi-dropdown__menu">
+                <a class="chi-dropdown__menu-item" href="#">Elem 3.1</a><a class="chi-dropdown__menu-item" href="#">Elem 3.2</a><a class="chi-dropdown__menu-item" href="#">Elem 3.3</a><a class="chi-dropdown__menu-item" href="#">Elem 3.4</a>
               </div>
             </div>
-            <a class="m-dropdown__menu-item" href="#">Elem 4</a>
+            <a class="chi-dropdown__menu-item" href="#">Elem 4</a>
           </div>
         </li>
         <li>
@@ -273,12 +273,12 @@ p.-text
         <li>
           <a href="#">Tab Link</a>
         </li>
-        <li class="m-dropdown">
-          <a class="m-dropdown__trigger" href="#">Tab Dropdown</a>
-          <div class="m-dropdown__menu">
-            <a class="m-dropdown__menu-item" href="#">Element 1</a>
-            <a class="m-dropdown__menu-item" href="#">Element 2</a>
-            <a class="m-dropdown__menu-item" href="#">Element 3</a>
+        <li class="chi-dropdown">
+          <a class="chi-dropdown__trigger" href="#">Tab Dropdown</a>
+          <div class="chi-dropdown__menu">
+            <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+            <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+            <a class="chi-dropdown__menu-item" href="#">Element 3</a>
           </div>
         </li>
       </ul>
@@ -297,41 +297,41 @@ p.-text
       | I.e. Use the <code>-animate</code> class on the dropdowns to make the chevron rotate when activated.
     .chi-divider
     ul.a-tabs.a-navigationExample#example-components-contained
-      li.m-dropdown.-active
-        a.m-dropdown__trigger.-animate(href='#') Active Tab
-        .m-dropdown__menu
-          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 1
-          a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 2
+      li.chi-dropdown.-active
+        a.chi-dropdown__trigger.-animate(href='#') Active Tab
+        .chi-dropdown__menu
+          a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 1
+          a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 2
           div
-            a.m-dropdown__menu-item.m-dropdown__trigger.-animate(href='#') Elem 3 more
-            .m-dropdown__menu
-              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
-              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
-              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
-              a.m-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
-          a.m-dropdown__menu-item(href='#') Elem 4
+            a.chi-dropdown__menu-item.chi-dropdown__trigger.-animate(href='#') Elem 3 more
+            .chi-dropdown__menu
+              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
+              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
+              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
+              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
+          a.chi-dropdown__menu-item(href='#') Elem 4
       li
         a(href='#exampleHashTarget') Tab Link
       li
         a(href='#exampleHashTarget') Tab Link
-      li.m-dropdown
-        a.m-dropdown__trigger.-animate(href='#') Tab Link
-        .m-dropdown__menu
-          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 1
-          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 2
-          a.m-dropdown__menu-item(href='#exampleHashTarget') Element 3
+      li.chi-dropdown
+        a.chi-dropdown__trigger.-animate(href='#') Tab Link
+        .chi-dropdown__menu
+          a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 1
+          a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 2
+          a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 3
   :code(lang='html')
     <ul class="a-tabs" id="navigation-components-contained">
-      <li class="m-dropdown -active">
-        <a class="m-dropdown__trigger -animate" href="#">Active Tab</a>
-        <div class="m-dropdown__menu" x-placement="bottom-start">
-          <a class="m-dropdown__menu-item" href="#">Elem 1</a><a class="m-dropdown__menu-item" href="#">Elem 2</a>
+      <li class="chi-dropdown -active">
+        <a class="chi-dropdown__trigger -animate" href="#">Active Tab</a>
+        <div class="chi-dropdown__menu" x-placement="bottom-start">
+          <a class="chi-dropdown__menu-item" href="#">Elem 1</a><a class="chi-dropdown__menu-item" href="#">Elem 2</a>
           <div>
-            <a class="m-dropdown__menu-item m-dropdown__trigger" href="#">Elem 3 more</a>
-            <div class="m-dropdown__menu">
-              <a class="m-dropdown__menu-item" href="#">Elem 3.1</a><a class="m-dropdown__menu-item" href="#">Elem 3.2</a><a class="m-dropdown__menu-item" href="#">Elem 3.3</a><a class="m-dropdown__menu-item" href="#">Elem 3.4</a>
+            <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
+            <div class="chi-dropdown__menu">
+              <a class="chi-dropdown__menu-item" href="#">Elem 3.1</a><a class="chi-dropdown__menu-item" href="#">Elem 3.2</a><a class="chi-dropdown__menu-item" href="#">Elem 3.3</a><a class="chi-dropdown__menu-item" href="#">Elem 3.4</a>
             </div>
-          </div><a class="m-dropdown__menu-item" href="#">Elem 4</a>
+          </div><a class="chi-dropdown__menu-item" href="#">Elem 4</a>
         </div>
       </li>
       <li>
@@ -340,10 +340,10 @@ p.-text
       <li>
         <a href="#">Tab Link</a>
       </li>
-      <li class="m-dropdown">
-        <a class="m-dropdown__trigger" href="#">Tab Link</a>
-        <div class="m-dropdown__menu">
-          <a class="m-dropdown__menu-item" href="#">Element 1</a><a class="m-dropdown__menu-item" href="#">Element 2</a><a class="m-dropdown__menu-item" href="#">Element 3</a>
+      <li class="chi-dropdown">
+        <a class="chi-dropdown__trigger" href="#">Tab Link</a>
+        <div class="chi-dropdown__menu">
+          <a class="chi-dropdown__menu-item" href="#">Element 1</a><a class="chi-dropdown__menu-item" href="#">Element 2</a><a class="chi-dropdown__menu-item" href="#">Element 3</a>
         </div>
       </li>
     </ul>

@@ -6,29 +6,29 @@
 h2 Using Dropdowns
 p.-text
   | A dropdown must be associated to an activator, commonly a button, which, at the time of being clicked, expands
-  | the dropdown. Activator and dropdown should be contained in a div with an <code>m-dropdown</code> class, or otherwise, the
+  | the dropdown. Activator and dropdown should be contained in a div with an <code>chi-dropdown</code> class, or otherwise, the
   | activator must reference the dropdown with a <code>data-target</code> attribute.
 p.-text
-  | Use the <code>m-dropdown__trigger</code> class on your activator button to make the chevron appear.
+  | Use the <code>chi-dropdown__trigger</code> class on your activator button to make the chevron appear.
 h3 Example 1
 p.-text
   | Trigger and dropdown enclosed in the same div.
 .example.-mb--3
   .-p--3
-    .m-dropdown
-      button.chi-btn.m-dropdown__trigger#dropdown-1 Dropdown, click me
-      .m-dropdown__menu
-        a.m-dropdown__menu-item(href='#') Element 1
-        a.m-dropdown__menu-item(href='#') Element 2
-        a.m-dropdown__menu-item(href='#') Element 3
-        a.m-dropdown__menu-item(href='#') Element 4
+    .chi-dropdown
+      button.chi-btn.chi-dropdown__trigger#dropdown-1 Dropdown, click me
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#') Element 1
+        a.chi-dropdown__menu-item(href='#') Element 2
+        a.chi-dropdown__menu-item(href='#') Element 3
+        a.chi-dropdown__menu-item(href='#') Element 4
   :code(lang="html")
-    <div class="m-dropdown">
-      <button id="dropdown-1" class="chi-btn m-dropdown__trigger">Dropdown component</button>
-      <div class="m-dropdown__menu">
-        <a class="m-dropdown__menu-item" href="#">Element 1</a>
-        <a class="m-dropdown__menu-item" href="#">Element 2</a>
-        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+    <div class="chi-dropdown">
+      <button id="dropdown-1" class="chi-btn chi-dropdown__trigger">Dropdown component</button>
+      <div class="chi-dropdown__menu">
+        <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 3</a>
       </div>
     </div>
 
@@ -40,23 +40,23 @@ p.-text
 
 .example.-mb--3
   .-p--3
-    .m-dropdown
-      button.chi-btn.m-dropdown__trigger#dropdown-2(data-target="#dropdown-2-menu") Dropdown component
+    .chi-dropdown
+      button.chi-btn.chi-dropdown__trigger#dropdown-2(data-target="#dropdown-2-menu") Dropdown component
       p.-text There is no need for proximity between elements.
-      #dropdown-2-menu.m-dropdown__menu
-        a.m-dropdown__menu-item(href='#') Element 1
-        a.m-dropdown__menu-item(href='#') Element 2
-        a.m-dropdown__menu-item(href='#') Element 3
-        a.m-dropdown__menu-item(href='#') Element 4
+      #dropdown-2-menu.chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#') Element 1
+        a.chi-dropdown__menu-item(href='#') Element 2
+        a.chi-dropdown__menu-item(href='#') Element 3
+        a.chi-dropdown__menu-item(href='#') Element 4
   :code(lang="html")
-    <div class="m-dropdown">
-      <button id="dropdown-2" class="chi-btn m-dropdown__trigger" data-target="#dropdown-2-menu">Dropdown component</button>
+    <div class="chi-dropdown">
+      <button id="dropdown-2" class="chi-btn chi-dropdown__trigger" data-target="#dropdown-2-menu">Dropdown component</button>
       <p class="-text">There is no need for proximity between elements.</p>
-      <div class="m-dropdown__menu" id="dropdown-2-menu">
-        <a class="m-dropdown__menu-item" href="#">Element 1</a>
-        <a class="m-dropdown__menu-item" href="#">Element 2</a>
-        <a class="m-dropdown__menu-item" href="#">Element 3</a>
-        <a class="m-dropdown__menu-item" href="#">Element 4</a>
+      <div class="chi-dropdown__menu" id="dropdown-2-menu">
+        <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 3</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 4</a>
       </div>
     </div>
 
@@ -65,22 +65,22 @@ p.-text
 h3 Example 3
 p.-text
   | Dropdown on hover is only supported when trigger and dropdown elements are enclosed in the same div. Use the
-  | <code>m-dropdown__hover</code> class to achieve this.
+  | <code>chi-dropdown__hover</code> class to achieve this.
 .example.-mb--3
   .-p--3
-    .m-dropdown.m-dropdown__hover(style='margin-bottom: 7rem')
-      button.chi-btn.m-dropdown__trigger Dropdown component
-      .m-dropdown__menu
-        a.m-dropdown__menu-item(href='#') Element 1
-        a.m-dropdown__menu-item(href='#') Element 2
-        a.m-dropdown__menu-item(href='#') Element 3
+    .chi-dropdown.chi-dropdown__hover(style='margin-bottom: 7rem')
+      button.chi-btn.chi-dropdown__trigger Dropdown component
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#') Element 1
+        a.chi-dropdown__menu-item(href='#') Element 2
+        a.chi-dropdown__menu-item(href='#') Element 3
   :code(lang="html")
-    <div class="m-dropdown m-dropdown__hover">
-      <button class="chi-btn m-dropdown__trigger">Dropdown component</button>
-      <div class="m-dropdown__menu">
-        <a class="m-dropdown__menu-item" href="#">Element 1</a>
-        <a class="m-dropdown__menu-item" href="#">Element 2</a>
-        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+    <div class="chi-dropdown chi-dropdown__hover">
+      <button class="chi-btn chi-dropdown__trigger">Dropdown component</button>
+      <div class="chi-dropdown__menu">
+        <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 3</a>
       </div>
     </div>
 
@@ -91,19 +91,19 @@ h3 Example
 .example.-mb--3
   .-p--3
     .a-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
-      .m-dropdown__menu.-active
-        a.m-dropdown__menu-item(href='#') Element 1
-        a.m-dropdown__menu-item(href='#') Element 2
-        a.m-dropdown__menu-item(href='#') Element 3
+      .chi-dropdown__menu.-active
+        a.chi-dropdown__menu-item(href='#') Element 1
+        a.chi-dropdown__menu-item(href='#') Element 2
+        a.chi-dropdown__menu-item(href='#') Element 3
         .chi-divider
-        a.m-dropdown__menu-item(href='#') Element 4
+        a.chi-dropdown__menu-item(href='#') Element 4
   :code(lang="html")
-    <div class="m-dropdown__menu">
-      <a class="m-dropdown__menu-item" href="#">Element 1</a>
-      <a class="m-dropdown__menu-item" href="#">Element 2</a>
-      <a class="m-dropdown__menu-item" href="#">Element 3</a>
+    <div class="chi-dropdown__menu">
+      <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+      <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+      <a class="chi-dropdown__menu-item" href="#">Element 3</a>
       <div class="chi-divider"></div>
-      <a class="m-dropdown__menu-item" href="#">Element 4</a>
+      <a class="chi-dropdown__menu-item" href="#">Element 4</a>
     </div>
 
 h2 Menu item states
@@ -115,17 +115,17 @@ h3 Example
 .example.-mb--3
   .-p--3
     .a-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
-      .m-dropdown__menu.-active
-        a.m-dropdown__menu-item(href='#') Normal element
-        a.m-dropdown__menu-item.-active(href='#') Active element
-        a.m-dropdown__menu-item.-disabled(href='#') Disabled element
-        a.m-dropdown__menu-item.-hover(href='#') Hovered item
+      .chi-dropdown__menu.-active
+        a.chi-dropdown__menu-item(href='#') Normal element
+        a.chi-dropdown__menu-item.-active(href='#') Active element
+        a.chi-dropdown__menu-item.-disabled(href='#') Disabled element
+        a.chi-dropdown__menu-item.-hover(href='#') Hovered item
   :code(lang="html")
-    <div class="m-dropdown__menu">
-      <a class="m-dropdown__menu-item" href="#">Normal element</a>
-      <a class="m-dropdown__menu-item -active" href="#">Active element</a>
-      <a class="m-dropdown__menu-item -disabled" href="#">Disabled element</a>
-      <a class="m-dropdown__menu-item -hover" href="#">Hovered item</a>
+    <div class="chi-dropdown__menu">
+      <a class="chi-dropdown__menu-item" href="#">Normal element</a>
+      <a class="chi-dropdown__menu-item -active" href="#">Active element</a>
+      <a class="chi-dropdown__menu-item -disabled" href="#">Disabled element</a>
+      <a class="chi-dropdown__menu-item -hover" href="#">Hovered item</a>
     </div>
 
 h2 Icons
@@ -136,47 +136,47 @@ h3 Example
 .example.-mb--3
   .-p--3
     .a-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
-      .m-dropdown__menu.-active
-        a.m-dropdown__menu-item(href='#')
+      .chi-dropdown__menu.-active
+        a.chi-dropdown__menu-item(href='#')
           i.chi-icon.icon-file-outline
           = "New"
-        a.m-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
+        a.chi-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
           i.chi-icon.icon-arrow-to-bottom
           = "Save"
         .chi-divider
-        a.m-dropdown__menu-item(href='#')
+        a.chi-dropdown__menu-item(href='#')
           i.chi-icon.icon-mail
           = "Send"
-        a.m-dropdown__menu-item.-active(href='#')
+        a.chi-dropdown__menu-item.-active(href='#')
           i.chi-icon.icon-cart
           = "Buy"
-        a.m-dropdown__menu-item(href='#')
+        a.chi-dropdown__menu-item(href='#')
           i.chi-icon.icon-users
           = "Share"
         .chi-divider
-        a.m-dropdown__menu-item(href='#')
+        a.chi-dropdown__menu-item(href='#')
           i.chi-icon.icon-logout
           = "Logout"
   :code(lang="html")
-    <div class="m-dropdown__menu">
-      <a class="m-dropdown__menu-item" href="#">
+    <div class="chi-dropdown__menu">
+      <a class="chi-dropdown__menu-item" href="#">
         <i class="chi-icon icon-file-outline"></i>New
       </a>
-      <a class="m-dropdown__menu-item -disabled" href="#">
+      <a class="chi-dropdown__menu-item -disabled" href="#">
         <i class="chi-icon icon-arrow-to-bottom"></i>Save
       </a>
       <div class="chi-divider"></div>
-      <a class="m-dropdown__menu-item" href="#">
+      <a class="chi-dropdown__menu-item" href="#">
         <i class="chi-icon icon-mail"></i>Send
       </a>
-      <a class="m-dropdown__menu-item -active" href="#">
+      <a class="chi-dropdown__menu-item -active" href="#">
         <i class="chi-icon icon-cart"></i>Buy
       </a>
-      <a class="m-dropdown__menu-item" href="#">
+      <a class="chi-dropdown__menu-item" href="#">
         <i class="chi-icon icon-users"></i>Share
       </a>
       <div class="chi-divider"></div>
-      <a class="m-dropdown__menu-item" href="#">
+      <a class="chi-dropdown__menu-item" href="#">
         <i class="chi-icon icon-logout"></i>Logout
       </a>
     </div>
@@ -192,24 +192,24 @@ p.-text
 .example.-mb--3
   .-p--3
     .a-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
-      .m-dropdown__menu.-active
-        .m-input__wrapper.-icon--left.m-dropdown__menu-item(role="search")
+      .chi-dropdown__menu.-active
+        .m-input__wrapper.-icon--left.chi-dropdown__menu-item(role="search")
           input(type="text", class="a-input", placeholder="Search", aria-label="Search")
           i.chi-icon.icon-search
-        a.m-dropdown__menu-item(href='#') Element 1
-        a.m-dropdown__menu-item(href='#') Element 2
-        a.m-dropdown__menu-item(href='#') Element 3
-        a.m-dropdown__menu-item(href='#') Element 4
+        a.chi-dropdown__menu-item(href='#') Element 1
+        a.chi-dropdown__menu-item(href='#') Element 2
+        a.chi-dropdown__menu-item(href='#') Element 3
+        a.chi-dropdown__menu-item(href='#') Element 4
   :code(lang="html")
-    <div class="m-dropdown__menu">
-      <div class="m-input__wrapper -icon--left m-dropdown__menu-item" role="search">
+    <div class="chi-dropdown__menu">
+      <div class="m-input__wrapper -icon--left chi-dropdown__menu-item" role="search">
         <input class="a-input" type="text" placeholder="Search" aria-label="Search">
         <i class="chi-icon icon-search"></i>
       </div>
-      <a class="m-dropdown__menu-item" href="#">Element 1</a>
-      <a class="m-dropdown__menu-item" href="#">Element 2</a>
-      <a class="m-dropdown__menu-item" href="#">Element 3</a>
-      <a class="m-dropdown__menu-item" href="#">Element 4</a>
+      <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+      <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+      <a class="chi-dropdown__menu-item" href="#">Element 3</a>
+      <a class="chi-dropdown__menu-item" href="#">Element 4</a>
     </div>
 
 h3 Checkboxes
@@ -220,44 +220,44 @@ h4 Base
 .example.-mb--3
   .-p--3
     .a-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
-      .m-dropdown__menu.-active
-        .m-dropdown__menu-item
+      .chi-dropdown__menu.-active
+        .chi-dropdown__menu-item
           .chi-checkbox
             input(type="checkbox", class="chi-checkbox__input", id="checkbox1")
             label(for="checkbox1", class="chi-checkbox__label") Element 1
-        .m-dropdown__menu-item
+        .chi-dropdown__menu-item
           .chi-checkbox
             input(type="checkbox", class="chi-checkbox__input", id="checkbox2", disabled)
             label(for="checkbox2", class="chi-checkbox__label") Element 2
-        .m-dropdown__menu-item
+        .chi-dropdown__menu-item
           .chi-checkbox
             input(type="checkbox", class="chi-checkbox__input", id="checkbox3", checked)
             label(for="checkbox3", class="chi-checkbox__label") Element 3
-        .m-dropdown__menu-item
+        .chi-dropdown__menu-item
           .chi-checkbox
             input(type="checkbox", class="chi-checkbox__input", id="checkbox4")
             label(for="checkbox4", class="chi-checkbox__label") Element 4
   :code(lang="html")
-    <div class="m-dropdown__menu">
-      <div class="m-dropdown__menu-item">
+    <div class="chi-dropdown__menu">
+      <div class="chi-dropdown__menu-item">
         <div class="chi-checkbox">
           <input class="chi-checkbox__input" type="checkbox" id="checkbox1">
           <label class="chi-checkbox__label" for="checkbox1">Element 1</label>
         </div>
       </div>
-      <div class="m-dropdown__menu-item">
+      <div class="chi-dropdown__menu-item">
         <div class="chi-checkbox">
           <input class="chi-checkbox__input" type="checkbox" id="checkbox2" disabled>
           <label class="chi-checkbox__label" for="checkbox2">Element 2</label>
         </div>
       </div>
-      <div class="m-dropdown__menu-item">
+      <div class="chi-dropdown__menu-item">
         <div class="chi-checkbox">
           <input class="chi-checkbox__input" type="checkbox" id="checkbox3" checked>
           <label class="chi-checkbox__label" for="checkbox3">Element 3</label>
         </div>
       </div>
-      <div class="m-dropdown__menu-item">
+      <div class="chi-dropdown__menu-item">
         <div class="chi-checkbox">
           <input class="chi-checkbox__input" type="checkbox" id="checkbox4">
           <label class="chi-checkbox__label" for="checkbox4">Element 4</label>
@@ -269,34 +269,34 @@ h4 With Icons
 .example.-mb--3
   .-p--3
     .a-col.-w--10.-w-sm--6.-w-md--7.-w-lg--5.-w-xl--3
-      .m-dropdown__menu.-active
-        .m-dropdown__menu-item
+      .chi-dropdown__menu.-active
+        .chi-dropdown__menu-item
           .chi-checkbox
             input(type="checkbox", class="chi-checkbox__input", id="checkbox1b")
             label(for="checkbox1b", class="chi-checkbox__label")
               i.chi-icon.icon-logo-centurylink
               | Element 1
-        .m-dropdown__menu-item
+        .chi-dropdown__menu-item
           .chi-checkbox
             input(type="checkbox", class="chi-checkbox__input", id="checkbox2b", disabled)
             label(for="checkbox2b", class="chi-checkbox__label")
               i.chi-icon.icon-logo-centurylink
               | Element 2
-        .m-dropdown__menu-item
+        .chi-dropdown__menu-item
           .chi-checkbox
             input(type="checkbox", class="chi-checkbox__input", id="checkbox3b", checked)
             label(for="checkbox3b", class="chi-checkbox__label")
               i.chi-icon.icon-logo-centurylink
               | Element 3
-        .m-dropdown__menu-item
+        .chi-dropdown__menu-item
           .chi-checkbox
             input(type="checkbox", class="chi-checkbox__input", id="checkbox4b")
             label(for="checkbox4b", class="chi-checkbox__label")
               i.chi-icon.icon-logo-centurylink
               | Element 4
   :code(lang="html")
-    <div class="m-dropdown__menu">
-      <div class="m-dropdown__menu-item">
+    <div class="chi-dropdown__menu">
+      <div class="chi-dropdown__menu-item">
         <div class="chi-checkbox">
           <input class="chi-checkbox__input" type="checkbox" id="checkbox1">
           <label class="chi-checkbox__label" for="checkbox1">
@@ -305,7 +305,7 @@ h4 With Icons
           </label>
         </div>
       </div>
-      <div class="m-dropdown__menu-item">
+      <div class="chi-dropdown__menu-item">
         <div class="chi-checkbox">
           <input class="chi-checkbox__input" type="checkbox" id="checkbox2" disabled>
           <label class="chi-checkbox__label" for="checkbox2">
@@ -314,7 +314,7 @@ h4 With Icons
           </label>
         </div>
       </div>
-      <div class="m-dropdown__menu-item">
+      <div class="chi-dropdown__menu-item">
         <div class="chi-checkbox">
           <input class="chi-checkbox__input" type="checkbox" id="checkbox3" checked>
           <label class="chi-checkbox__label" for="checkbox3">
@@ -323,7 +323,7 @@ h4 With Icons
           </label>
         </div>
       </div>
-      <div class="m-dropdown__menu-item">
+      <div class="chi-dropdown__menu-item">
         <div class="chi-checkbox">
           <input class="chi-checkbox__input" type="checkbox" id="checkbox4">
           <label class="chi-checkbox__label" for="checkbox4">
@@ -339,65 +339,65 @@ p.-text Use a <code>span</code> tag to include text without rendering as a link.
 .example.-mb--3
   .-p--3
     .a-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
-      .m-dropdown__menu.-active
-        span.m-dropdown__menu-item Text 1
-        span.m-dropdown__menu-item Text 2
-        span.m-dropdown__menu-item Text 3
-        span.m-dropdown__menu-item Text 4
+      .chi-dropdown__menu.-active
+        span.chi-dropdown__menu-item Text 1
+        span.chi-dropdown__menu-item Text 2
+        span.chi-dropdown__menu-item Text 3
+        span.chi-dropdown__menu-item Text 4
   :code(lang="html")
-    <div class="m-dropdown__menu">
-      <span class="m-dropdown__menu-item">Text 1</span>
-      <span class="m-dropdown__menu-item">Text 2</span>
-      <span class="m-dropdown__menu-item">Text 3</span>
-      <span class="m-dropdown__menu-item">Text 4</span>
+    <div class="chi-dropdown__menu">
+      <span class="chi-dropdown__menu-item">Text 1</span>
+      <span class="chi-dropdown__menu-item">Text 2</span>
+      <span class="chi-dropdown__menu-item">Text 3</span>
+      <span class="chi-dropdown__menu-item">Text 4</span>
     </div>
 
 h3 Radio Buttons
 .example.-mb--3
   .-p--3
     .a-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
-      .m-dropdown__menu.-active
+      .chi-dropdown__menu.-active
         fieldset
-          legend.m-dropdown__menu-item Select an option
-          .m-dropdown__menu-item
+          legend.chi-dropdown__menu-item Select an option
+          .chi-dropdown__menu-item
             .a-radio
               input(class="a-radio__input", type="radio", name="radios", id="radio1")
               label.a-radio__label(for="radio1") Radio Button 1
-          .m-dropdown__menu-item
+          .chi-dropdown__menu-item
             .a-radio
               input(class="a-radio__input", type="radio", name="radios", id="radio2", disabled)
               label.a-radio__label(for="radio2") Disabled Radio Button 2
-          .m-dropdown__menu-item
+          .chi-dropdown__menu-item
             .a-radio
               input(class="a-radio__input", type="radio", name="radios", id="radio3")
               label.a-radio__label(for="radio3") Radio Button 3
-          .m-dropdown__menu-item
+          .chi-dropdown__menu-item
             .a-radio
               input(class="a-radio__input", type="radio", name="radios", id="radio4")
               label.a-radio__label(for="radio4") Radio Button 4
   :code(lang="html")
-    <div class="m-dropdown__menu">
+    <div class="chi-dropdown__menu">
       <fieldset>
-        <legend class="m-dropdown__menu-item">Select an option</legend>
-        <div class="m-dropdown__menu-item">
+        <legend class="chi-dropdown__menu-item">Select an option</legend>
+        <div class="chi-dropdown__menu-item">
           <div class="a-radio">
             <input class="a-radio__input" type="radio" name="radios" id="radio1">
             <label class="a-radio__label" for="radio1">Radio Button 1</label>
           </div>
         </div>
-        <div class="m-dropdown__menu-item">
+        <div class="chi-dropdown__menu-item">
           <div class="a-radio">
             <input class="a-radio__input" type="radio" name="radios" id="radio2" disabled>
             <label class="a-radio__label" for="radio2">Disabled Radio Button 2</label>
           </div>
         </div>
-        <div class="m-dropdown__menu-item">
+        <div class="chi-dropdown__menu-item">
           <div class="a-radio">
             <input class="a-radio__input" type="radio" name="radios" id="radio3">
             <label class="a-radio__label" for="radio3">Radio Button 3</label>
           </div>
         </div>
-        <div class="m-dropdown__menu-item">
+        <div class="chi-dropdown__menu-item">
           <div class="a-radio">
             <input class="a-radio__input" type="radio" name="radios" id="radio4">
             <label class="a-radio__label" for="radio4">Radio Button 4</label>
@@ -410,18 +410,18 @@ h3 Text Input
 .example.-mb--3
   .-p--3
     .a-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
-      .m-dropdown__menu.-active
-        a.m-dropdown__menu-item(href='#') Option 1
-        a.m-dropdown__menu-item(href='#') Option 2
+      .chi-dropdown__menu.-active
+        a.chi-dropdown__menu-item(href='#') Option 1
+        a.chi-dropdown__menu-item(href='#') Option 2
         .chi-divider
-        .m-dropdown__menu-item
+        .chi-dropdown__menu-item
           input.a-input(type="text", placeholder="Placeholder", aria-label="Text input description")
   :code(lang="html")
-    <div class="m-dropdown__menu">
-      <a class="m-dropdown__menu-item" href="#">Option 1</a>
-      <a class="m-dropdown__menu-item" href="#">Option 2</a>
+    <div class="chi-dropdown__menu">
+      <a class="chi-dropdown__menu-item" href="#">Option 1</a>
+      <a class="chi-dropdown__menu-item" href="#">Option 2</a>
       <div class="chi-divider"></div>
-      <div class="m-dropdown__menu-item">
+      <div class="chi-dropdown__menu-item">
         <input class="a-input" type="text" placeholder="Placeholder" aria-label="Text input description">
       </div>
     </div>
@@ -430,25 +430,25 @@ h3 Range Input
 .example.-mb--3
   .-p--3
     .a-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
-      .m-dropdown__menu.-active
-        .m-dropdown__menu-item
+      .chi-dropdown__menu.-active
+        .chi-dropdown__menu-item
           span.-text.-mr--2 200GB
           input.a-input(type="range", aria-label="Range description")
           span.-text.-ml--2 5TB
         .chi-divider
-        legend.m-dropdown__menu-item Select range
-        .m-dropdown__menu-item
+        legend.chi-dropdown__menu-item Select range
+        .chi-dropdown__menu-item
           input.a-input(type="range", aria-label="Range description")
   :code(lang="html")
-    <div class="m-dropdown__menu">
-      <div class="m-dropdown__menu-item">
+    <div class="chi-dropdown__menu">
+      <div class="chi-dropdown__menu-item">
         <span class="-text -mr--2">200GB</span>
         <input class="a-input" type="range" aria-label="Range description">
         <span class="-text -ml--2">5TB</span>
       </div>
       <div class="chi-divider"></div>
-      <legend class="m-dropdown__menu-item">Select range</legend>
-      <div class="m-dropdown__menu-item">
+      <legend class="chi-dropdown__menu-item">Select range</legend>
+      <div class="chi-dropdown__menu-item">
         <input class="a-input" type="range" aria-label="Range description">
       </div>
     </div>
@@ -457,23 +457,23 @@ h3 Toggle Switch
 .example.-mb--3
   .-p--3
     .a-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
-      .m-dropdown__menu.-active
-        legend.m-dropdown__menu-item Configure options
-        .m-dropdown__menu-item
+      .chi-dropdown__menu.-active
+        legend.chi-dropdown__menu-item Configure options
+        .chi-dropdown__menu-item
           .m-form__item
             label.a-switch(for="toggle-mail")
               input(type="checkbox", class="a-switch__input", id="toggle-mail")
               span(class="a-switch__content")
                 span.a-switch__thumb
               span.a-switch__label Email notifications
-        .m-dropdown__menu-item
+        .chi-dropdown__menu-item
           .m-form__item
             label.a-switch(for="toggle-tlf")
               input(type="checkbox", class="a-switch__input", id="toggle-tlf")
               span(class="a-switch__content")
                 span.a-switch__thumb
               span.a-switch__label Phone notifications
-        .m-dropdown__menu-item
+        .chi-dropdown__menu-item
           .m-form__item
             label.a-switch(for="toggle-app")
               input(type="checkbox", class="a-switch__input", id="toggle-app")
@@ -481,10 +481,10 @@ h3 Toggle Switch
                 span.a-switch__thumb
               span.a-switch__label App notifications
   :code(lang="html")
-    <div class="m-dropdown__menu">
+    <div class="chi-dropdown__menu">
       <fieldset>
-        <legend class="m-dropdown__menu-item">Configure options</legend>
-        <div class="m-dropdown__menu-item">
+        <legend class="chi-dropdown__menu-item">Configure options</legend>
+        <div class="chi-dropdown__menu-item">
           <div class="m-form__item">
             <label class="a-switch" for="toggle-mail">
               <input type="checkbox" class="a-switch__input" id="toggle-mail">
@@ -495,7 +495,7 @@ h3 Toggle Switch
             </label>
           </div>
         </div>
-        <div class="m-dropdown__menu-item">
+        <div class="chi-dropdown__menu-item">
           <div class="m-form__item">
             <label class="a-switch" for="toggle-tlf">
               <input type="checkbox" class="a-switch__input" id="toggle-tlf">
@@ -506,7 +506,7 @@ h3 Toggle Switch
             </label>
           </div>
         </div>
-        <div class="m-dropdown__menu-item">
+        <div class="chi-dropdown__menu-item">
           <div class="m-form__item">
             <label class="a-switch" for="toggle-app">
               <input type="checkbox" class="a-switch__input" id="toggle-mail">
@@ -528,35 +528,35 @@ p.-text
   | Wrap the menu-item content in a div with the class <code>-flex--ellipsis</code> to truncate long strings.
 .example.-mb--3
   .-p--3
-    .m-dropdown__menu.-active(style="width:10rem")
-      a.m-dropdown__menu-item(href='#') Element 1
-      a.m-dropdown__menu-item(href='#') Element 2
-      a.m-dropdown__menu-item(href='#')
+    .chi-dropdown__menu.-active(style="width:10rem")
+      a.chi-dropdown__menu-item(href='#') Element 1
+      a.chi-dropdown__menu-item(href='#') Element 2
+      a.chi-dropdown__menu-item(href='#')
         .-flex--ellipsis Longer text element 3
-      a.m-dropdown__menu-item(href='#') Element 4
+      a.chi-dropdown__menu-item(href='#') Element 4
   :code(lang="html")
-    <div class="m-dropdown__menu" style="width:10rem">
-      <a class="m-dropdown__menu-item" href="#">Element 1</a>
-      <a class="m-dropdown__menu-item" href="#">Element 2</a>
-      <a class="m-dropdown__menu-item" href="#">
+    <div class="chi-dropdown__menu" style="width:10rem">
+      <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+      <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+      <a class="chi-dropdown__menu-item" href="#">
         <div class="-flex--ellipsis">Long text element 3</div>
       </a>
-      <a class="m-dropdown__menu-item" href="#">Element 4</a>
+      <a class="chi-dropdown__menu-item" href="#">Element 4</a>
     </div>
 
 h3 Flexible height
 p.-text Add the class <code>-h--auto</code> to set menu item height to auto.
 .example.-mb--3
   .-p--3
-    .m-dropdown__menu.-active(style="width:10rem")
-      a.m-dropdown__menu-item(href="#") Option 1
-      .m-dropdown__menu-item.-h--auto.-py--1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      a.m-dropdown__menu-item(href="#") Option 2
+    .chi-dropdown__menu.-active(style="width:10rem")
+      a.chi-dropdown__menu-item(href="#") Option 1
+      .chi-dropdown__menu-item.-h--auto.-py--1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      a.chi-dropdown__menu-item(href="#") Option 2
   :code(lang="html")
-    <div class="m-dropdown__menu" style="width:10rem">
-      <a class="m-dropdown__menu-item" href="#">Option 1</a>
-      <div class="m-dropdown__menu-item -h--auto -py--1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-      <a class="m-dropdown__menu-item" href="#">Option 2</a>
+    <div class="chi-dropdown__menu" style="width:10rem">
+      <a class="chi-dropdown__menu-item" href="#">Option 1</a>
+      <div class="chi-dropdown__menu-item -h--auto -py--1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+      <a class="chi-dropdown__menu-item" href="#">Option 2</a>
     </div>
 
 h2 Animation
@@ -565,19 +565,19 @@ p.-text
 h3 Example
 .example.-mb--3
   .-p--3
-    .m-dropdown(style='margin-bottom:7rem')
-      button#dropdown-animate.chi-btn.m-dropdown__trigger.-animate Animated dropdown trigger
-      .m-dropdown__menu
-        a.m-dropdown__menu-item(href='#') Element 1
-        a.m-dropdown__menu-item(href='#') Element 2
-        a.m-dropdown__menu-item(href='#') Element 3
+    .chi-dropdown(style='margin-bottom:7rem')
+      button#dropdown-animate.chi-btn.chi-dropdown__trigger.-animate Animated dropdown trigger
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#') Element 1
+        a.chi-dropdown__menu-item(href='#') Element 2
+        a.chi-dropdown__menu-item(href='#') Element 3
   :code(lang="html")
-    <div class="m-dropdown">
-      <button class="chi-btn m-dropdown__trigger -animate">Animated dropdown trigger</button>
-      <div class="m-dropdown__menu">
-        <a class="m-dropdown__menu-item" href="#">Element 1</a>
-        <a class="m-dropdown__menu-item" href="#">Element 2</a>
-        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+    <div class="chi-dropdown">
+      <button class="chi-btn chi-dropdown__trigger -animate">Animated dropdown trigger</button>
+      <div class="chi-dropdown__menu">
+        <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 3</a>
       </div>
     </div>
 
@@ -591,61 +591,61 @@ p.-text
 
 .example.-mb--3
   .-p--3.-d--flex.-flex--wrap
-    .m-dropdown.-mr--3.-mb--2.-mb-md--0
-      button#dropdown-3.chi-btn.m-dropdown__trigger(data-position="bottom") Drop-down
-      .m-dropdown__menu
-        a.m-dropdown__menu-item(href='#') Element 1
-        a.m-dropdown__menu-item(href='#') Element 2
-        a.m-dropdown__menu-item(href='#') Element 3
-    .m-dropdown.-mr--3.-mb--2.-mb-md--0
-      button#droptop.chi-btn.m-dropdown__trigger(data-position="top") Drop-top
-      .m-dropdown__menu
-        a.m-dropdown__menu-item(href='#') Element 1
-        a.m-dropdown__menu-item(href='#') Element 2
-        a.m-dropdown__menu-item(href='#') Element 3
-    .m-dropdown.-mr--3.-mb--2.-mb-md--0
-      button#dropleft.chi-btn.m-dropdown__trigger(data-position="left") Drop-left
-      .m-dropdown__menu
-        a.m-dropdown__menu-item(href='#') Element 1
-        a.m-dropdown__menu-item(href='#') Element 2
-        a.m-dropdown__menu-item(href='#') Element 3
-    .m-dropdown.-mr--3.-mb--2.-mb-md--0
-      button#dropright.chi-btn.m-dropdown__trigger(data-position="right") Drop-right
-      .m-dropdown__menu
-        a.m-dropdown__menu-item(href='#') Element 1
-        a.m-dropdown__menu-item(href='#') Element 2
-        a.m-dropdown__menu-item(href='#') Element 3
+    .chi-dropdown.-mr--3.-mb--2.-mb-md--0
+      button#dropdown-3.chi-btn.chi-dropdown__trigger(data-position="bottom") Drop-down
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#') Element 1
+        a.chi-dropdown__menu-item(href='#') Element 2
+        a.chi-dropdown__menu-item(href='#') Element 3
+    .chi-dropdown.-mr--3.-mb--2.-mb-md--0
+      button#droptop.chi-btn.chi-dropdown__trigger(data-position="top") Drop-top
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#') Element 1
+        a.chi-dropdown__menu-item(href='#') Element 2
+        a.chi-dropdown__menu-item(href='#') Element 3
+    .chi-dropdown.-mr--3.-mb--2.-mb-md--0
+      button#dropleft.chi-btn.chi-dropdown__trigger(data-position="left") Drop-left
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#') Element 1
+        a.chi-dropdown__menu-item(href='#') Element 2
+        a.chi-dropdown__menu-item(href='#') Element 3
+    .chi-dropdown.-mr--3.-mb--2.-mb-md--0
+      button#dropright.chi-btn.chi-dropdown__trigger(data-position="right") Drop-right
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#') Element 1
+        a.chi-dropdown__menu-item(href='#') Element 2
+        a.chi-dropdown__menu-item(href='#') Element 3
   :code(lang="html")
-    <div class="m-dropdown">
-      <button class="chi-btn m-dropdown__trigger" id="dropdown-3" data-position="bottom">Drop-down</button>
-      <div class="m-dropdown__menu">
-        <a class="m-dropdown__menu-item" href="#">Element 1</a>
-        <a class="m-dropdown__menu-item" href="#">Element 2</a>
-        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+    <div class="chi-dropdown">
+      <button class="chi-btn chi-dropdown__trigger" id="dropdown-3" data-position="bottom">Drop-down</button>
+      <div class="chi-dropdown__menu">
+        <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 3</a>
       </div>
     </div>
-    <div class="m-dropdown">
-      <button class="chi-btn m-dropdown__trigger" id="droptop" data-position="top">Drop-top</button>
-      <div class="m-dropdown__menu">
-        <a class="m-dropdown__menu-item" href="#">Element 1</a>
-        <a class="m-dropdown__menu-item" href="#">Element 2</a>
-        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+    <div class="chi-dropdown">
+      <button class="chi-btn chi-dropdown__trigger" id="droptop" data-position="top">Drop-top</button>
+      <div class="chi-dropdown__menu">
+        <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 3</a>
       </div>
     </div>
-    <div class="m-dropdown">
-      <button class="chi-btn m-dropdown__trigger" id="dropleft" data-position="left">Drop-left</button>
-      <div class="m-dropdown__menu">
-        <a class="m-dropdown__menu-item" href="#">Element 1</a>
-        <a class="m-dropdown__menu-item" href="#">Element 2</a>
-        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+    <div class="chi-dropdown">
+      <button class="chi-btn chi-dropdown__trigger" id="dropleft" data-position="left">Drop-left</button>
+      <div class="chi-dropdown__menu">
+        <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 3</a>
       </div>
     </div>
-    <div class="m-dropdown">
-      <button class="chi-btn m-dropdown__trigger" id="dropright" data-position="right">Drop-right</button>
-      <div class="m-dropdown__menu">
-        <a class="m-dropdown__menu-item" href="#">Element 1</a>
-        <a class="m-dropdown__menu-item" href="#">Element 2</a>
-        <a class="m-dropdown__menu-item" href="#">Element 3</a>
+    <div class="chi-dropdown">
+      <button class="chi-btn chi-dropdown__trigger" id="dropright" data-position="right">Drop-right</button>
+      <div class="chi-dropdown__menu">
+        <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+        <a class="chi-dropdown__menu-item" href="#">Element 3</a>
       </div>
     </div>
 
