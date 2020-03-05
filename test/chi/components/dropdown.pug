@@ -84,18 +84,18 @@ div(class=`test-dropdown-checkbox`)
   .m-dropdown__menu.-active
     each inputState in inputStates
       .m-dropdown__menu-item
-        .a-checkbox
-          input(type="checkbox", class="a-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
-          label.a-checkbox__label(for=`checkbox${inputState}`)="Element checkbox " + inputState
+        .chi-checkbox
+          input(type="checkbox", class="chi-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+          label.chi-checkbox__label(for=`checkbox${inputState}`)="Element checkbox " + inputState
 
 div(class=`test-dropdown-checkbox-icon`)
   span.a-h2 checkbox with icons
   .m-dropdown__menu.-active
     each inputState in inputStates
       .m-dropdown__menu-item
-        .a-checkbox
-          input(type="checkbox", class="a-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
-          label.a-checkbox__label(for=`checkbox${inputState}`)
+        .chi-checkbox
+          input(type="checkbox", class="chi-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+          label.chi-checkbox__label(for=`checkbox${inputState}`)
             .chi-icon
               svg
                 use(xlink:href='#icon-logo-centurylink')

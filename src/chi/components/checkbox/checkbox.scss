@@ -1,16 +1,16 @@
 @import '_variables';
 @import '_mixins';
 
-.a-checkbox {
+.chi-checkbox {
   line-height: $line-height;
   position: relative;
 
   input {
     &[type='checkbox'] {
       &.a-input,
-      &.a-checkbox__input {
+      &.chi-checkbox__input {
         & + label {
-          &.a-checkbox__label {
+          &.chi-checkbox__label {
             font-size: $text;
             font-weight: normal;
             line-height: $line-height-small;
@@ -39,7 +39,7 @@
 input {
   &[type='checkbox'] {
     &.a-input,
-    &.a-checkbox__input {
+    &.chi-checkbox__input {
       border: 0;
       clip: rect(0 0 0 0);
       height: 1px;

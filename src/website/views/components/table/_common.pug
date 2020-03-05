@@ -3,12 +3,12 @@ mixin str(cid, name, id, date, checked)
     '-row--info': checked
   })
     td.-lh--1
-      input.a-checkbox__input(
+      input.chi-checkbox__input(
         type="checkbox"
         id=cid
         checked=checked
       )
-      label.a-checkbox__label(for=cid)
+      label.chi-checkbox__label(for=cid)
         .-sr--only Label
     td= name
     td= id
@@ -64,8 +64,8 @@ mixin table(row, column, selectable)
             if column == 'ascending'
               th
                 div.-lh--1
-                  input.a-checkbox__input(type="checkbox", id=`chk-1`)
-                  label.a-checkbox__label(for=`chk-1`)
+                  input.chi-checkbox__input(type="checkbox", id=`chk-1`)
+                  label.chi-checkbox__label(for=`chk-1`)
                     .-sr--only Label
               th(class=(`-sorted -${column}`))
                 div Name
@@ -74,8 +74,8 @@ mixin table(row, column, selectable)
             else if column == 'descending'
               th
                 div.-lh--1
-                  input.a-checkbox__input(type="checkbox", id=`chk-1`)
-                  label.a-checkbox__label(for=`chk-1`)
+                  input.chi-checkbox__input(type="checkbox", id=`chk-1`)
+                  label.chi-checkbox__label(for=`chk-1`)
                     .-sr--only Label
               th(class=(`-sorted -${column}`))
                 div Name
@@ -84,8 +84,8 @@ mixin table(row, column, selectable)
           else
             th
               div.-lh--1
-                input.a-checkbox__input(type="checkbox", id=`chk-1`)
-                label.a-checkbox__label(for=`chk-1`)
+                input.chi-checkbox__input(type="checkbox", id=`chk-1`)
+                label.chi-checkbox__label(for=`chk-1`)
                   .-sr--only Label
             th Name
             th ID

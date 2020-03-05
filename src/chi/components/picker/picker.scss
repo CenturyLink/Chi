@@ -239,7 +239,7 @@ legend {
 
             .m-picker__content {
               &--start {
-                & .a-checkbox__input {
+                & .chi-checkbox__input {
                   & + label {
                     &::after {
                       top: 0.1875rem;
@@ -254,7 +254,7 @@ legend {
         & + label {
           .m-picker__content {
             &--start {
-              & .a-checkbox__input {
+              & .chi-checkbox__input {
                 & + label {
                   padding-left: 2rem;
 
@@ -286,7 +286,7 @@ legend {
                   }
                 }
 
-                & .a-checkbox {
+                & .chi-checkbox {
                   line-height: 1rem;
                 }
               }
@@ -311,7 +311,7 @@ legend {
         &:checked {
           & + label {
             & .a-input,
-            & .a-checkbox__input {
+            & .chi-checkbox__input {
               & + label {
                 font-weight: 600;
 
@@ -330,7 +330,7 @@ legend {
         }
 
         & + label {
-          & .a-checkbox {
+          & .chi-checkbox {
             line-height: 1.25rem;
           }
         }

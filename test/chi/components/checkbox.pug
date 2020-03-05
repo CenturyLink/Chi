@@ -6,8 +6,8 @@ title: Checkbox
   each state, index in ['default', 'hover', 'focus', 'checked', 'disabled']
     h5= `Checkbox / ${state}`
     .m-form__item.-row.-mb--1
-      .a-checkbox
-        input.a-checkbox__input(
+      .chi-checkbox
+        input.chi-checkbox__input(
           type="checkbox"
           id=`checkbox-${index}`
           class={
@@ -16,7 +16,7 @@ title: Checkbox
           checked=state=='checked' ? 'checked' : false
           disabled=state=='disabled' ? 'disabled' : false
         )
-        label.a-checkbox__label(for=`checkbox-${index}`) Checkbox
+        label.chi-checkbox__label(for=`checkbox-${index}`) Checkbox
 
 h2 Checkbox List
 .test-states
@@ -25,8 +25,8 @@ h2 Checkbox List
     ul.m-form__item.-list(style="max-width:20rem")
       each element in [1, 2, 3, 4, 5]
         li.m-form__item.-row
-          .a-checkbox
-            input.a-checkbox__input(
+          .chi-checkbox
+            input.chi-checkbox__input(
             type="checkbox"
             id=`checkbox--${element}`
             class={
@@ -35,4 +35,4 @@ h2 Checkbox List
             checked=state == 'checked' ? 'checked' : false
             disabled=state == 'disabled' ? 'disabled' : false
             )
-            label.a-checkbox__label(for=`checkbox--${element}`)= `Checkbox-${element}`
+            label.chi-checkbox__label(for=`checkbox--${element}`)= `Checkbox-${element}`

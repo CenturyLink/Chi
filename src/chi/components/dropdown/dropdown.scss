@@ -164,7 +164,7 @@
       padding-right: 1rem;
       white-space: nowrap;
 
-      & > .a-checkbox {
+      & > .chi-checkbox {
         align-items: center;
         display: flex;
       }
@@ -255,12 +255,12 @@
       }
     }
 
-    .a-checkbox {
+    .chi-checkbox {
       input {
         &[type='checkbox'] {
-          &.a-checkbox__input {
+          &.chi-checkbox__input {
             & + label {
-              &.a-checkbox__label {
+              &.chi-checkbox__label {
                 padding-left: 2rem;
 
                 &::before {
