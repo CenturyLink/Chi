@@ -86,7 +86,7 @@ p.-text
 
 h2 Divider
 p.-text
-  | Several menu items can be arranged together by using a divider. Use the <code>a-divider</code> component.
+  | Several menu items can be arranged together by using a divider. Use the <code>chi-divider</code> component.
 h3 Example
 .example.-mb--3
   .-p--3
@@ -95,14 +95,14 @@ h3 Example
         a.m-dropdown__menu-item(href='#') Element 1
         a.m-dropdown__menu-item(href='#') Element 2
         a.m-dropdown__menu-item(href='#') Element 3
-        .a-divider
+        .chi-divider
         a.m-dropdown__menu-item(href='#') Element 4
   :code(lang="html")
     <div class="m-dropdown__menu">
       <a class="m-dropdown__menu-item" href="#">Element 1</a>
       <a class="m-dropdown__menu-item" href="#">Element 2</a>
       <a class="m-dropdown__menu-item" href="#">Element 3</a>
-      <div class="a-divider"></div>
+      <div class="chi-divider"></div>
       <a class="m-dropdown__menu-item" href="#">Element 4</a>
     </div>
 
@@ -143,7 +143,7 @@ h3 Example
         a.m-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
           i.chi-icon.icon-arrow-to-bottom
           = "Save"
-        .a-divider
+        .chi-divider
         a.m-dropdown__menu-item(href='#')
           i.chi-icon.icon-mail
           = "Send"
@@ -153,7 +153,7 @@ h3 Example
         a.m-dropdown__menu-item(href='#')
           i.chi-icon.icon-users
           = "Share"
-        .a-divider
+        .chi-divider
         a.m-dropdown__menu-item(href='#')
           i.chi-icon.icon-logout
           = "Logout"
@@ -165,7 +165,7 @@ h3 Example
       <a class="m-dropdown__menu-item -disabled" href="#">
         <i class="chi-icon icon-arrow-to-bottom"></i>Save
       </a>
-      <div class="a-divider"></div>
+      <div class="chi-divider"></div>
       <a class="m-dropdown__menu-item" href="#">
         <i class="chi-icon icon-mail"></i>Send
       </a>
@@ -175,7 +175,7 @@ h3 Example
       <a class="m-dropdown__menu-item" href="#">
         <i class="chi-icon icon-users"></i>Share
       </a>
-      <div class="a-divider"></div>
+      <div class="chi-divider"></div>
       <a class="m-dropdown__menu-item" href="#">
         <i class="chi-icon icon-logout"></i>Logout
       </a>
@@ -413,14 +413,14 @@ h3 Text Input
       .m-dropdown__menu.-active
         a.m-dropdown__menu-item(href='#') Option 1
         a.m-dropdown__menu-item(href='#') Option 2
-        .a-divider
+        .chi-divider
         .m-dropdown__menu-item
           input.a-input(type="text", placeholder="Placeholder", aria-label="Text input description")
   :code(lang="html")
     <div class="m-dropdown__menu">
       <a class="m-dropdown__menu-item" href="#">Option 1</a>
       <a class="m-dropdown__menu-item" href="#">Option 2</a>
-      <div class="a-divider"></div>
+      <div class="chi-divider"></div>
       <div class="m-dropdown__menu-item">
         <input class="a-input" type="text" placeholder="Placeholder" aria-label="Text input description">
       </div>
@@ -435,7 +435,7 @@ h3 Range Input
           span.-text.-mr--2 200GB
           input.a-input(type="range", aria-label="Range description")
           span.-text.-ml--2 5TB
-        .a-divider
+        .chi-divider
         legend.m-dropdown__menu-item Select range
         .m-dropdown__menu-item
           input.a-input(type="range", aria-label="Range description")
@@ -446,7 +446,7 @@ h3 Range Input
         <input class="a-input" type="range" aria-label="Range description">
         <span class="-text -ml--2">5TB</span>
       </div>
-      <div class="a-divider"></div>
+      <div class="chi-divider"></div>
       <legend class="m-dropdown__menu-item">Select range</legend>
       <div class="m-dropdown__menu-item">
         <input class="a-input" type="range" aria-label="Range description">
