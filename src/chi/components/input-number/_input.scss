@@ -42,7 +42,7 @@ $sizes: (
 
 input {
   &[type='number'] {
-    &.a-input {
+    &.chi-input {
       // sass-lint:disable no-vendor-prefixes
       -moz-appearance: textfield;
       border: 0.0625rem solid set-color(grey, 30);

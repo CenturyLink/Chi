@@ -71,7 +71,7 @@ div(class=`test-dropdown-searchBox`)
   .-d--flex
     .chi-dropdown__menu.-active
       .m-input__wrapper.-icon--left.chi-dropdown__menu-item
-        input(type="text", class="a-input", placeholder="Search")
+        input(type="text", class="chi-input", placeholder="Search")
         .chi-icon
           svg
             use(xlink:href='#icon-search')
@@ -107,7 +107,7 @@ div(class=`test-dropdown-radio`)
   .chi-dropdown__menu.-active
     each inputState in inputStates
       .chi-dropdown__menu-item
-        input(type="radio", class="a-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+        input(type="radio", class="chi-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
         label(for=`radio${inputState}`)
         label.-text(for=`radio${inputState}`)="Element radio " + inputState
 
@@ -116,7 +116,7 @@ div(class=`test-dropdown-radio-icon`)
   .chi-dropdown__menu.-active
     each inputState in inputStates
       .chi-dropdown__menu-item
-        input(type="radio", class="a-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+        input(type="radio", class="chi-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
         label(for=`radio${inputState}`)
         label.-text(for=`radio${inputState}`)
           .chi-icon
@@ -139,12 +139,12 @@ div(class=`test-dropdown-range`)
     .chi-dropdown__menu.-active
       .chi-dropdown__menu-item
         label.-text.-mr--2 200GB
-        input.a-input(type="range")
+        input.chi-input(type="range")
         label.-text.-ml--2 5TB
       .chi-divider
       span.chi-dropdown__menu-item Select range
       .chi-dropdown__menu-item
-        input.a-input(type="range")
+        input.chi-input(type="range")
 
 div(class=`test-dropdown-toggle`)
   span.a-h2 Toggle input

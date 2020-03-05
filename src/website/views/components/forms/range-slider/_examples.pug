@@ -5,7 +5,7 @@
 
 h2 Examples
 p.-text
-  | To render a range slider, apply the class <code>a-input</code> to an <code>input type="range"</code>.
+  | To render a range slider, apply the class <code>chi-input</code> to an <code>input type="range"</code>.
   | Range widths are fluid by default.
 
 h3 Base
@@ -13,7 +13,7 @@ h3 Base
   .-p--3
     .m-form__item
       label(class="a-label", for="range01") Range label
-      input(class="a-input", type="range", id="range01")
+      input(class="chi-input", type="range", id="range01")
   .example-tabs.-pl--2
     ul#a-tabs-base.a-tabs
       li.-active
@@ -24,7 +24,7 @@ h3 Base
     :code(lang="html")
       <div class="m-form__item">
         <label class="a-label" for="range01">Range label</label>
-        <input class="a-input" type="range" id="range01">
+        <input class="chi-input" type="range" id="range01">
       </div>
   #a-tabs-base-js.a-tabs-panel
     :code(lang="html")
@@ -35,7 +35,7 @@ h3 Disabled
   .-p--3
     .m-form__item
       label(class="a-label", for="range02") Range label
-      input(class="a-input", type="range", id="range02" disabled)
+      input(class="chi-input", type="range", id="range02" disabled)
   .example-tabs.-pl--2
     ul#a-tabs-disabled.a-tabs
       li.-active
@@ -46,7 +46,7 @@ h3 Disabled
     :code(lang="html")
       <div class="m-form__item">
         <label class="a-label" for="range02">Range label</label>
-        <input class="a-input" type="range" id="range02" disabled>
+        <input class="chi-input" type="range" id="range02" disabled>
       </div>
   #a-tabs-disabled-js.a-tabs-panel
     :code(lang="html")
@@ -59,7 +59,7 @@ h3 Multiple Labels
       label(class="a-label", for="range03") Range label
       .m-input__wrapper.-d--flex
         span.-text.-mr--2 200GB
-        input(type="range", class="a-input", id="range03")
+        input(type="range", class="chi-input", id="range03")
         span.-text.-ml--2 5TB
   .example-tabs.-pl--2
     ul#a-tabs-multiple-labels.a-tabs
@@ -73,7 +73,7 @@ h3 Multiple Labels
         <label class="a-label" for="range03">Range label</label>
         <div class="m-input__wrapper -d--flex">
           <span class="-text">200GB</span>
-          <input class="a-input -mx--2" type="range" id="range03">
+          <input class="chi-input -mx--2" type="range" id="range03">
           <span class="-text">5TB</span>
         </div>
       </div>
@@ -84,8 +84,8 @@ h3 Multiple Labels
 h2 Achieve consistent rendering
 p.-text
   | As webkit browsers don't support an active track bar, we've created our own.
-  | You will either need a JavaScript solution for moving the <code>a-input__thumb</code>
-  | element and changing the size of <code>a-input__progress</code>, or
+  | You will either need a JavaScript solution for moving the <code>chi-input__thumb</code>
+  | element and changing the size of <code>chi-input__progress</code>, or
   | you can use Chi's JavaScript library as it provides this functionality out of the box.
 
 h3 Base
@@ -94,9 +94,9 @@ h3 Base
     .m-form__item
       label(class="a-label", for="range04") Range label
       .m-input__wrapper
-        input(class="a-input", type="range", id="range04")
-        .a-input__progress
-        .a-input__thumb
+        input(class="chi-input", type="range", id="range04")
+        .chi-input__progress
+        .chi-input__thumb
   .example-tabs.-pl--2
     ul#a-tabs-with-progress.a-tabs
       li.-active
@@ -108,9 +108,9 @@ h3 Base
       <div class="m-form__item">
         <label class="a-label" for="range04">Range label</label>
         <div class="m-input__wrapper">
-          <input class="a-input" type="range" id="range04">
-          <div class="a-input__progress"></div>
-          <div class="a-input__thumb"></div>
+          <input class="chi-input" type="range" id="range04">
+          <div class="chi-input__progress"></div>
+          <div class="chi-input__thumb"></div>
         </div>
       </div>
   #a-tabs-with-progress-js.a-tabs-panel
@@ -123,9 +123,9 @@ h3 Disabled
     .m-form__item
       label(class="a-label", for="range05") Range label
       .m-input__wrapper
-        input(class="a-input", type="range", id="range05", disabled)
-        .a-input__progress
-        .a-input__thumb
+        input(class="chi-input", type="range", id="range05", disabled)
+        .chi-input__progress
+        .chi-input__thumb
   .example-tabs.-pl--2
     ul#a-tabs-with-progress-disabled.a-tabs
       li.-active
@@ -137,9 +137,9 @@ h3 Disabled
       <div class="m-form__item">
         <label class="a-label" for="range05">Range label</label>
         <div class="m-input__wrapper">
-          <input class="a-input" type="range" id="range05" disabled>
-          <div class="a-input__progress"></div>
-          <div class="a-input__thumb"></div>
+          <input class="chi-input" type="range" id="range05" disabled>
+          <div class="chi-input__progress"></div>
+          <div class="chi-input__thumb"></div>
         </div>
       </div>
   #a-tabs-with-progress-disabled-js.a-tabs-panel
@@ -154,9 +154,9 @@ h3 Multiple Labels
       .m-input__wrapper.-d--flex
         span.-text.-mr--2 200GB
         .m-input__wrapper.-w--100
-          input(type="range", class="a-input", id="range06")
-          .a-input__progress
-          .a-input__thumb
+          input(type="range", class="chi-input", id="range06")
+          .chi-input__progress
+          .chi-input__thumb
         span.-text.-ml--2 5TB
   .example-tabs.-pl--2
     ul#a-tabs-with-progress-multiple-labels.a-tabs
@@ -171,9 +171,9 @@ h3 Multiple Labels
         <div class="m-input__wrapper -d--flex">
           <span class="-text -mr--2">200GB</span>
           <div class="m-input__wrapper -w--100">
-            <input class="a-input" type="range" id="range06">
-            <div class="a-input__progress"></div>
-            <div class="a-input__thumb"></div>
+            <input class="chi-input" type="range" id="range06">
+            <div class="chi-input__progress"></div>
+            <div class="chi-input__thumb"></div>
           </div>
           <span class="-text -ml--2">5TB</span>
         </div>
@@ -191,23 +191,23 @@ p.-text
     .m-form__item
       label(class="a-label", for="range07") Range label
       .m-input__wrapper
-        input(class="a-input", type="range", min="0", max="4", step="1", id="range07")
-        .a-input__tick-bar
+        input(class="chi-input", type="range", min="0", max="4", step="1", id="range07")
+        .chi-input__tick-bar
           div
-            .a-input__tick
-            .a-input__tick-label Monthly
+            .chi-input__tick
+            .chi-input__tick-label Monthly
           div
-            .a-input__tick
-            .a-input__tick-label 1 year
+            .chi-input__tick
+            .chi-input__tick-label 1 year
           div
-            .a-input__tick
-            .a-input__tick-label 2 years
+            .chi-input__tick
+            .chi-input__tick-label 2 years
           div
-            .a-input__tick
-            .a-input__tick-label 3 years
+            .chi-input__tick
+            .chi-input__tick-label 3 years
           div
-            .a-input__tick
-            .a-input__tick-label > 3 years
+            .chi-input__tick
+            .chi-input__tick-label > 3 years
   .example-tabs.-pl--2
     ul#a-tabs-radio-buttons.a-tabs
       li.-active
@@ -219,27 +219,27 @@ p.-text
       <div class="m-form__item">
         <label class="a-label" for="range07">Range label</label>
         <div class="m-input__wrapper">
-          <input class="a-input" type="range" min="0" max="4" step="1" id="range07">
-          <div class="a-input__tick-bar">
+          <input class="chi-input" type="range" min="0" max="4" step="1" id="range07">
+          <div class="chi-input__tick-bar">
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">Monthly</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">Monthly</div>
             </div>
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">1 year</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">1 year</div>
             </div>
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">2 years</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">2 years</div>
             </div>
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">3 years</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">3 years</div>
             </div>
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">&gt; 3 years</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">&gt; 3 years</div>
             </div>
           </div>
         </div>
@@ -254,23 +254,23 @@ h3 Disabled
     .m-form__item
       label(class="a-label", for="range08") Range label
       .m-input__wrapper
-        input(class="a-input", type="range", min="0", max="4", step="1", id="range08", disabled)
-        .a-input__tick-bar
+        input(class="chi-input", type="range", min="0", max="4", step="1", id="range08", disabled)
+        .chi-input__tick-bar
           div
-            .a-input__tick
-            .a-input__tick-label Monthly
+            .chi-input__tick
+            .chi-input__tick-label Monthly
           div
-            .a-input__tick
-            .a-input__tick-label 1 year
+            .chi-input__tick
+            .chi-input__tick-label 1 year
           div
-            .a-input__tick
-            .a-input__tick-label 2 years
+            .chi-input__tick
+            .chi-input__tick-label 2 years
           div
-            .a-input__tick
-            .a-input__tick-label 3 years
+            .chi-input__tick
+            .chi-input__tick-label 3 years
           div
-            .a-input__tick
-            .a-input__tick-label > 3 years
+            .chi-input__tick
+            .chi-input__tick-label > 3 years
   .example-tabs.-pl--2
     ul#a-tabs-radio-buttons-disabled.a-tabs
       li.-active
@@ -282,27 +282,27 @@ h3 Disabled
       <div class="m-form__item">
         <label class="a-label" for="range08">Range label</label>
         <div class="m-input__wrapper">
-          <input class="a-input" type="range" min="0" max="4" step="1" id="range08" disabled>
-          <div class="a-input__tick-bar">
+          <input class="chi-input" type="range" min="0" max="4" step="1" id="range08" disabled>
+          <div class="chi-input__tick-bar">
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">Monthly</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">Monthly</div>
             </div>
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">1 year</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">1 year</div>
             </div>
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">2 years</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">2 years</div>
             </div>
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">3 years</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">3 years</div>
             </div>
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">&gt; 3 years</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">&gt; 3 years</div>
             </div>
           </div>
         </div>
@@ -317,25 +317,25 @@ h3 Consistent rendering in WebKit browsers
     .m-form__item
       label(class="a-label", for="range09") Range label
       .m-input__wrapper
-        input(class="a-input", type="range", min="0", max="4", step="1", id="range09")
-        .a-input__tick-bar
+        input(class="chi-input", type="range", min="0", max="4", step="1", id="range09")
+        .chi-input__tick-bar
           div
-            .a-input__tick
-            .a-input__tick-label Monthly
+            .chi-input__tick
+            .chi-input__tick-label Monthly
           div
-            .a-input__tick
-            .a-input__tick-label 1 year
+            .chi-input__tick
+            .chi-input__tick-label 1 year
           div
-            .a-input__tick
-            .a-input__tick-label 2 years
+            .chi-input__tick
+            .chi-input__tick-label 2 years
           div
-            .a-input__tick
-            .a-input__tick-label 3 years
+            .chi-input__tick
+            .chi-input__tick-label 3 years
           div
-            .a-input__tick
-            .a-input__tick-label > 3 years
-        .a-input__progress
-        .a-input__thumb
+            .chi-input__tick
+            .chi-input__tick-label > 3 years
+        .chi-input__progress
+        .chi-input__thumb
   .example-tabs.-pl--2
     ul#a-tabs-with-progress-and-radio-buttons.a-tabs
       li.-active
@@ -347,31 +347,31 @@ h3 Consistent rendering in WebKit browsers
       <div class="m-form__item">
         <label class="a-label" for="range09">Range label</label>
         <div class="m-input__wrapper">
-          <input class="a-input" type="range" min="0" max="4" step="1" id="range09">
-          <div class="a-input__tick-bar">
+          <input class="chi-input" type="range" min="0" max="4" step="1" id="range09">
+          <div class="chi-input__tick-bar">
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">Monthly</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">Monthly</div>
             </div>
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">1 year</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">1 year</div>
             </div>
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">2 years</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">2 years</div>
             </div>
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">3 years</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">3 years</div>
             </div>
             <div>
-              <div class="a-input__tick"></div>
-              <div class="a-input__tick-label">&gt; 3 years</div>
+              <div class="chi-input__tick"></div>
+              <div class="chi-input__tick-label">&gt; 3 years</div>
             </div>
           </div>
-          <div class="a-input__progress"></div>
-          <div class="a-input__thumb"></div>
+          <div class="chi-input__progress"></div>
+          <div class="chi-input__thumb"></div>
         </div>
       </div>
   #a-tabs-with-progress-and-radio-buttons-js.a-tabs-panel

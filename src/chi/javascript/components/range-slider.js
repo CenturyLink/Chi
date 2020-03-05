@@ -23,7 +23,7 @@ class RangeSlider extends Component {
       Util.addClass(this._elem, COMPONENT_OWN_THUMB_CLASS);
     } else {
       const thumbs = this._elem.parentElement.getElementsByClassName(
-        'a-input__thumb'
+        'chi-input__thumb'
       );
       if (thumbs.length) {
         this._thumbElem = thumbs[0];
@@ -35,7 +35,7 @@ class RangeSlider extends Component {
       this._progressElem = this._config.progress;
     } else {
       const progress = this._elem.parentElement.getElementsByClassName(
-        'a-input__progress'
+        'chi-input__progress'
       );
       if (progress.length) {
         this._progressElem = progress[0];

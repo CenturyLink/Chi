@@ -194,7 +194,7 @@ p.-text
     .a-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
       .chi-dropdown__menu.-active
         .m-input__wrapper.-icon--left.chi-dropdown__menu-item(role="search")
-          input(type="text", class="a-input", placeholder="Search", aria-label="Search")
+          input(type="text", class="chi-input", placeholder="Search", aria-label="Search")
           i.chi-icon.icon-search
         a.chi-dropdown__menu-item(href='#') Element 1
         a.chi-dropdown__menu-item(href='#') Element 2
@@ -203,7 +203,7 @@ p.-text
   :code(lang="html")
     <div class="chi-dropdown__menu">
       <div class="m-input__wrapper -icon--left chi-dropdown__menu-item" role="search">
-        <input class="a-input" type="text" placeholder="Search" aria-label="Search">
+        <input class="chi-input" type="text" placeholder="Search" aria-label="Search">
         <i class="chi-icon icon-search"></i>
       </div>
       <a class="chi-dropdown__menu-item" href="#">Element 1</a>
@@ -415,14 +415,14 @@ h3 Text Input
         a.chi-dropdown__menu-item(href='#') Option 2
         .chi-divider
         .chi-dropdown__menu-item
-          input.a-input(type="text", placeholder="Placeholder", aria-label="Text input description")
+          input.chi-input(type="text", placeholder="Placeholder", aria-label="Text input description")
   :code(lang="html")
     <div class="chi-dropdown__menu">
       <a class="chi-dropdown__menu-item" href="#">Option 1</a>
       <a class="chi-dropdown__menu-item" href="#">Option 2</a>
       <div class="chi-divider"></div>
       <div class="chi-dropdown__menu-item">
-        <input class="a-input" type="text" placeholder="Placeholder" aria-label="Text input description">
+        <input class="chi-input" type="text" placeholder="Placeholder" aria-label="Text input description">
       </div>
     </div>
 
@@ -433,23 +433,23 @@ h3 Range Input
       .chi-dropdown__menu.-active
         .chi-dropdown__menu-item
           span.-text.-mr--2 200GB
-          input.a-input(type="range", aria-label="Range description")
+          input.chi-input(type="range", aria-label="Range description")
           span.-text.-ml--2 5TB
         .chi-divider
         legend.chi-dropdown__menu-item Select range
         .chi-dropdown__menu-item
-          input.a-input(type="range", aria-label="Range description")
+          input.chi-input(type="range", aria-label="Range description")
   :code(lang="html")
     <div class="chi-dropdown__menu">
       <div class="chi-dropdown__menu-item">
         <span class="-text -mr--2">200GB</span>
-        <input class="a-input" type="range" aria-label="Range description">
+        <input class="chi-input" type="range" aria-label="Range description">
         <span class="-text -ml--2">5TB</span>
       </div>
       <div class="chi-divider"></div>
       <legend class="chi-dropdown__menu-item">Select range</legend>
       <div class="chi-dropdown__menu-item">
-        <input class="a-input" type="range" aria-label="Range description">
+        <input class="chi-input" type="range" aria-label="Range description">
       </div>
     </div>
 

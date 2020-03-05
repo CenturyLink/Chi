@@ -310,7 +310,7 @@ legend {
       &.a-picker {
         &:checked {
           & + label {
-            & .a-input,
+            & .chi-input,
             & .chi-checkbox__input {
               & + label {
                 font-weight: 600;
@@ -341,7 +341,7 @@ legend {
       &.a-picker {
         &:checked {
           & + label {
-            & .a-input,
+            & .chi-input,
             & .a-radio__input {
               & + label {
                 font-weight: 600;

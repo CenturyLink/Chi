@@ -7,7 +7,7 @@
 
   input {
     &[type='checkbox'] {
-      &.a-input,
+      &.chi-input,
       &.chi-checkbox__input {
         & + label {
           &.chi-checkbox__label {
@@ -38,7 +38,7 @@
 
 input {
   &[type='checkbox'] {
-    &.a-input,
+    &.chi-input,
     &.chi-checkbox__input {
       border: 0;
       clip: rect(0 0 0 0);

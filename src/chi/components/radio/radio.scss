@@ -7,7 +7,7 @@
 
   input {
     &[type='radio'] {
-      &.a-input,
+      &.chi-input,
       &.a-radio__input {
         & + label {
           &.a-radio__label {
@@ -37,7 +37,7 @@
 
 input {
   &[type='radio'] {
-    &.a-input,
+    &.chi-input,
     &.a-radio__input {
       border: 0;
       clip: rect(0 0 0 0);

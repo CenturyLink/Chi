@@ -224,7 +224,7 @@ export class DatePicker {
       >
         <input
           id={`${this._uuid}-control`}
-          class={`a-input
+          class={`chi-input
             ${this.active ? '-focus' : ''}`}
           type={`text`}
           placeholder={`MM/DD/YYYY`}

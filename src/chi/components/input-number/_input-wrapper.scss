@@ -80,7 +80,7 @@ $m-inputnumber: (
 .m-input__wrapper {
   input {
     &[type='number'] {
-      &.a-input {
+      &.chi-input {
         padding-right: 1.375rem;
 
         & ~ button {
@@ -163,7 +163,7 @@ $m-inputnumber: (
 
   & > input {
     &[type='number'] {
-      &.a-input {
+      &.chi-input {
         flex: auto;
         min-width: 1rem;
         order: 2;
@@ -172,7 +172,7 @@ $m-inputnumber: (
       }
 
       &[disabled] {
-        &.a-input ~ button {
+        &.chi-input ~ button {
           color: rgba($text-color, 0.3);
           pointer-events: none;
         }

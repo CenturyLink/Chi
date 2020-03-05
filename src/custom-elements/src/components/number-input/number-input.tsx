@@ -158,7 +158,7 @@ export class NumberInput {
     const input = (
       <input
         type="number"
-        class={`a-input ${this.size ? `-${this.size}` : ''} ${
+        class={`chi-input ${this.size ? `-${this.size}` : ''} ${
           this.inputstyle ? `-${this.inputstyle}` : ''
         } ${this.state ? `-${this.state}` : ''}`}
         disabled={this.disabled}

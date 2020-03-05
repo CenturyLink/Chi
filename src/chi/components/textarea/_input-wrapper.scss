@@ -58,7 +58,7 @@ $sizes: (
 .a-inputWrapper,
 .m-input__wrapper {
   textarea {
-    &.a-input {
+    &.chi-input {
       & ~ .chi-icon {
         height: 1rem;
         position: absolute;
@@ -80,7 +80,7 @@ $sizes: (
 
   &.-icon--left {
     textarea {
-      &.a-input {
+      &.chi-input {
         padding-left: 1.9375rem;
 
         & ~ .chi-icon {
@@ -106,7 +106,7 @@ $sizes: (
 
   &.-icon--right {
     textarea {
-      &.a-input {
+      &.chi-input {
         padding-right: 1.9375rem;
 
         & ~ .chi-icon {

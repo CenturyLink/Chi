@@ -34,7 +34,7 @@ $input-range-track-height: 0.5rem;
 // sass-lint:disable no-vendor-prefixes
 input {
   &[type='range'] {
-    &.a-input {
+    &.chi-input {
       -webkit-appearance: none;
       background-color: transparent;
       height: $input-range-height;
@@ -46,11 +46,11 @@ input {
         pointer-events: none;
 
         // Chi cross browser
-        & ~ .a-input__thumb {
+        & ~ .chi-input__thumb {
           border-color: mix(white, $brand-color, 35%);
         }
 
-        & ~ .a-input__progress {
+        & ~ .chi-input__progress {
           background-color: mix(white, $brand-color, 35%);
         }
       }
@@ -103,11 +103,11 @@ input {
         }
 
         // Chi cross browser
-        & ~ .a-input__thumb {
+        & ~ .chi-input__thumb {
           border-color: set-color(grey, 50);
         }
 
-        & ~ .a-input__progress {
+        & ~ .chi-input__progress {
           background-color: set-color(grey, 30);
         }
       }
@@ -133,7 +133,7 @@ input {
         }
 
         // Chi cross browser
-        & ~ .a-input__thumb {
+        & ~ .chi-input__thumb {
           @include green-thumb-shadow;
         }
       }
@@ -212,7 +212,7 @@ input {
       }
 
       // Chi cross browser
-      & ~ .a-input__thumb {
+      & ~ .chi-input__thumb {
         @include thumb-style;
         content: '';
         left: 50%;
@@ -223,7 +223,7 @@ input {
         z-index: 1;
       }
 
-      & ~ .a-input__progress {
+      & ~ .chi-input__progress {
         @include track-style;
         background-color: $brand-color;
         content: '';
@@ -242,7 +242,7 @@ input {
 .m-input__wrapper {
   & > input {
     &[type='range'] {
-      &.a-input {
+      &.chi-input {
         display: block;
         position: relative;
         z-index: 1;
@@ -251,7 +251,7 @@ input {
   }
 }
 
-.a-input__tick {
+.chi-input__tick {
   border-left: 1px solid set-color(grey, 30);
   height: 0.25rem;
   margin: -($input-range-height - $input-range-track-height) / 2 auto 0;
@@ -268,14 +268,14 @@ input {
       position: relative;
 
       &:first-child {
-        .a-input__tick-label {
+        .chi-input__tick-label {
           left: -0.625rem;
           text-align: left;
         }
       }
 
       &:last-child {
-        .a-input__tick-label {
+        .chi-input__tick-label {
           left: initial;
           right: -0.625rem;
           text-align: right;
