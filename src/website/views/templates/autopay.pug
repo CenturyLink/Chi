@@ -10,10 +10,10 @@ disabled: true
 h2 Base
 .example.-mb--3.-bg--grey-10
   .chi-app.-p3#autopayBase
-    .a-card.-p3
+    .chi-card.-p3
       .a-grid.-noGutter
         div
-          .a-card__title.-m--0 Automatic Payments
+          .chi-card__title.-m--0 Automatic Payments
           p.-text.-mb--3 Each month, an automatic payment for the full amount of your bill will be paid to CenturyLink from the payment method of your choosing.
         div.a-col.-w-md--4
           .m-form__item.-mb--1
@@ -24,10 +24,10 @@ h2 Base
                 a.m-dropdown__menu-item(href='#checkingAccountBase', name='Checking') Checking account
                 a.m-dropdown__menu-item(href='#savingsAccountBase', name='Savings') Savings account
                 a.m-dropdown__menu-item(href='#creditDebitCardBase', name='Credit') Credit or debit card
-      .a-card#checkingAccountBase.-mt--1
-        .a-card__header.-py--0.-bg--grey-10
+      .chi-card#checkingAccountBase.-mt--1
+        .chi-card__header.-py--0.-bg--grey-10
           h6 Add a checking account
-        .a-card__content.-p--3
+        .chi-card__content.-p--3
           fieldset
             .a-grid.-noGutter
               div.a-col.-w--12.-w-md--6
@@ -41,10 +41,10 @@ h2 Base
               div.a-col.-w--12
                 .-d--flex.-justify-content--center.-mt--2
                   img.-mw--100.-h--auto(src='../../assets/images/autopay-check-hint.png', alt="savings account")
-      .a-card#savingsAccountBase.-mt--1.-d--none
-        .a-card__header.-py--0.-bg--grey-10
+      .chi-card#savingsAccountBase.-mt--1.-d--none
+        .chi-card__header.-py--0.-bg--grey-10
           h6 Add a savings account
-        .a-card__content.-p--3
+        .chi-card__content.-p--3
           fieldset
             .a-grid.-noGutter
               div.a-col.-w--12.-w-md--6
@@ -58,10 +58,10 @@ h2 Base
               div.a-col.-w--12
                 .-d--flex.-justify-content--center.-mt--2
                   img.-mw--100.-h--auto(src='../../assets/images/autopay-check-hint.png', alt="savings account")
-      .a-card#creditDebitCardBase.-mt--1.-d--none
-        .a-card__header.-py--0.-bg--grey-10
+      .chi-card#creditDebitCardBase.-mt--1.-d--none
+        .chi-card__header.-py--0.-bg--grey-10
           h6 Add a credit or debit card
-        .a-card__content.-p--3
+        .chi-card__content.-p--3
           fieldset
             .a-grid.-noGutter
               div.a-col.-w--12
@@ -90,10 +90,10 @@ h2 Base
                   input(type="text", class="a-input -xl", id='zip', placeholder="")
   :code(lang="html")
     <div class="chi-app">
-      <div class="a-card -p3">
+      <div class="chi-card -p3">
         <div class="a-grid -noGutter">
           <div>
-            <div class="a-card__title -m--0">Automatic Payments</div>
+            <div class="chi-card__title -m--0">Automatic Payments</div>
             <p class="-text -mb--3">
               Each month, an automatic payment for the full amount of your bill will be paid to
               CenturyLink from the payment method of your choosing.
@@ -119,11 +119,11 @@ h2 Base
             </div>
           </div>
         </div>
-        <div class="a-card -mt--1" id="checkingAccountBase">
-          <div class="a-card__header -py--0 -bg--grey-10">
+        <div class="chi-card -mt--1" id="checkingAccountBase">
+          <div class="chi-card__header -py--0 -bg--grey-10">
             <h6>Add a checking account</h6>
           </div>
-          <div class="a-card__content -p--3">
+          <div class="chi-card__content -p--3">
             <fieldset>
               <div class="a-grid -noGutter">
                 <div class="a-col -w--12 -w-md--6">
@@ -151,11 +151,11 @@ h2 Base
             </fieldset>
           </div>
         </div>
-        <div class="a-card -mt--1 -d--none" id="savingsAccountBase">
-          <div class="a-card__header -py--0 -bg--grey-10">
+        <div class="chi-card -mt--1 -d--none" id="savingsAccountBase">
+          <div class="chi-card__header -py--0 -bg--grey-10">
             <h6>Add a savings account</h6>
           </div>
-          <div class="a-card__content -p--3">
+          <div class="chi-card__content -p--3">
             <fieldset>
               <div class="a-grid -noGutter">
                 <div class="a-col -w--12 -w-md--6">
@@ -183,11 +183,11 @@ h2 Base
             </fieldset>
           </div>
         </div>
-        <div class="a-card -mt--1 -d--none" id="creditDebitCardBase">
-          <div class="a-card__header -py--0 -bg--grey-10">
+        <div class="chi-card -mt--1 -d--none" id="creditDebitCardBase">
+          <div class="chi-card__header -py--0 -bg--grey-10">
             <h6>Add a credit or debit card</h6>
           </div>
-          <div class="a-card__content -p--3">
+          <div class="chi-card__content -p--3">
             <fieldset>
               <div class="a-grid -noGutter">
                 <div class="a-col -w--12">
@@ -277,7 +277,7 @@ h2 Optional
     .m-epanel.-bordered.-p--1#autopayOptional
       .m-epanel__header.-d--flex.-justify-content--between
         div
-          .a-card__title.-m--0 Automatic Payments
+          .chi-card__title.-m--0 Automatic Payments
           p.-text Each month, an automatic payment for the full amount of your bill will be paid to CenturyLink from the payment method of your choosing.
         .m-form__item
           input(type="checkbox", class="a-input -toggle", id="toggle1", data-chi-epanel-action='toggle')
@@ -296,10 +296,10 @@ h2 Optional
                         a.m-dropdown__menu-item(href='#checkingAccountOptional', name='Checking') Checking account
                           a.m-dropdown__menu-item(href='#savingsAccountOptional', name='Savings') Savings account
                           a.m-dropdown__menu-item(href='#creditDebitCardOptional', name='Credit') Credit or debit card
-              .a-card#checkingAccountOptional.-mt--1
-                .a-card__header.-py--0.-bg--grey-10
+              .chi-card#checkingAccountOptional.-mt--1
+                .chi-card__header.-py--0.-bg--grey-10
                   h6 Add a checking account
-                .a-card__content.-p--3
+                .chi-card__content.-p--3
                   fieldset
                     .a-grid.-noGutter
                       div.a-col.-w--12.-w-md--6
@@ -313,10 +313,10 @@ h2 Optional
                       div.a-col.-w--12
                         .-d--flex.-justify-content--center.-mt--2
                           img.-mw--100.-h--auto(src='../../assets/images/autopay-check-hint.png', alt="savings account")
-              .a-card#savingsAccountOptional.-mt--1.-d--none
-                .a-card__header.-py--0.-bg--grey-10
+              .chi-card#savingsAccountOptional.-mt--1.-d--none
+                .chi-card__header.-py--0.-bg--grey-10
                   h6 Add a savings account
-                .a-card__content.-p--3
+                .chi-card__content.-p--3
                   fieldset
                     .a-grid.-noGutter
                       div.a-col.-w--12.-w-md--6
@@ -330,10 +330,10 @@ h2 Optional
                       div.a-col.-w--12
                         .-d--flex.-justify-content--center.-mt--2
                           img.-mw--100.-h--auto(src='../../assets/images/autopay-check-hint.png', alt="savings account")
-              .a-card#creditDebitCardOptional.-mt--1.-d--none
-                .a-card__header.-py--0.-bg--grey-10
+              .chi-card#creditDebitCardOptional.-mt--1.-d--none
+                .chi-card__header.-py--0.-bg--grey-10
                   h6 Add a credit or debit card
-                .a-card__content.-p--3
+                .chi-card__content.-p--3
                   fieldset
                     .a-grid.-noGutter
                       div.a-col.-w--12
@@ -365,7 +365,7 @@ h2 Optional
       <div class="m-epanel -bordered -p--1" id="autopay">
         <div class="m-epanel__header -d--flex -justify-content--between">
           <div>
-            <div class="a-card__title -m--0 ">Automatic Payments</div>
+            <div class="chi-card__title -m--0 ">Automatic Payments</div>
             <p class="-text">Each month, an automatic payment for the full amount of your bill will be paid to CenturyLink
               from the payment method of your choosing.</p>
           </div>
@@ -401,11 +401,11 @@ h2 Optional
                     </div>
                   </div>
                 </div>
-                <div class="a-card -mt--1" id="checkingAccount">
-                  <div class="a-card__header -py--0 -bg--grey-10">
+                <div class="chi-card -mt--1" id="checkingAccount">
+                  <div class="chi-card__header -py--0 -bg--grey-10">
                     <h6>Add a checking account</h6>
                   </div>
-                  <div class="a-card__content -p--3">
+                  <div class="chi-card__content -p--3">
                     <fieldset>
                       <div class="a-grid -noGutter">
                         <div class="a-col -w--12 -w-md--6">
@@ -433,11 +433,11 @@ h2 Optional
                     </fieldset>
                   </div>
                 </div>
-                <div class="a-card -mt--1 -d--none" id="savingsAccount">
-                  <div class="a-card__header -py--0 -bg--grey-10">
+                <div class="chi-card -mt--1 -d--none" id="savingsAccount">
+                  <div class="chi-card__header -py--0 -bg--grey-10">
                     <h6>Add a savings account</h6>
                   </div>
-                  <div class="a-card__content -p--3">
+                  <div class="chi-card__content -p--3">
                     <fieldset>
                       <div class="a-grid -noGutter">
                         <div class="a-col -w--12 -w-md--6">
@@ -465,11 +465,11 @@ h2 Optional
                     </fieldset>
                   </div>
                 </div>
-                <div class="a-card -mt--1 -d--none" id="creditDebitCard">
-                  <div class="a-card__header -py--0 -bg--grey-10">
+                <div class="chi-card -mt--1 -d--none" id="creditDebitCard">
+                  <div class="chi-card__header -py--0 -bg--grey-10">
                     <h6>Add a credit or debit card</h6>
                   </div>
-                  <div class="a-card__content -p--3">
+                  <div class="chi-card__content -p--3">
                     <fieldset>
                       <div class="a-grid -noGutter">
                         <div class="a-col -w--12">
@@ -585,7 +585,7 @@ script.
         chi.Util.addClass(button, '-active');
         var target = chi.Util.getTarget(e.target);
         Array.prototype.forEach.call(target.parentElement.childNodes, function (card) {
-          if (card !== target && chi.Util.hasClass(card, 'a-card')) {
+          if (card !== target && chi.Util.hasClass(card, 'chi-card')) {
             card.style.display = 'none';
           }
         });
