@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Method, Prop, State, Watch, h, Element } from '@stencil/core';
 import { CARDINAL_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
@@ -9,6 +9,8 @@ import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
   scoped: true
 })
 export class Drawer {
+
+  @Element() el;
 
   /**
    * to set position of the drawer { top, right, bottom or left }
@@ -36,11 +38,6 @@ export class Drawer {
   @Prop({ reflect: true }) headless: boolean;
 
   /**
-   * header title. Not compatible with headless
-   */
-  @Prop({ reflect: true }) headerTitle: string;
-
-  /**
    * Status classes for the show/hide animation
    */
   @State() _animationClasses: string;
@@ -49,6 +46,11 @@ export class Drawer {
    * Status classes for the show/hide animation
    */
   @State() _backdropAnimationClasses: string;
+
+  /**
+   *  To define drawer title. Not compatible with headless
+   */
+  @State() drawerTitle: string;
 
   private animation: ThreeStepsAnimation;
 
@@ -178,13 +180,32 @@ export class Drawer {
   }
 
   componentWillLoad(): void {
+    const target = this.el;
+    const config = {
+      attributes: true,
+      attributeOldValue: true,
+      attributeFilter: ['title']
+    };
+
+    const subscriberCallback = (mutations) => {
+      mutations.forEach((mutation) => {
+        this.drawerTitle = mutation.target.title;
+      });
+    };
+
+    const observer = new MutationObserver(subscriberCallback);
+    observer.observe(target, config);
+
+    if (target.getAttribute('title')) {
+      this.drawerTitle = target.getAttribute('title');
+    }
+
     this.positionValidation(this.position);
     this._animationClasses = this.active ? CLASSES.ACTIVE : '';
     this._backdropAnimationClasses = this.active ? '' : CLASSES.CLOSED;
   }
 
   render() {
-
     // TODO: change this into <chi-button/> element.
     const closeButton = <button class="a-btn -icon -close" onClick={() => this.hide()} aria-label="Close">
       <div class="a-btn__content">
@@ -208,7 +229,7 @@ export class Drawer {
           : this.collapsible
             ? [
               <div class="m-drawer__header">
-                <span class="m-drawer__title">{this.headerTitle}</span>
+                <span class="m-drawer__title">{this.drawerTitle}</span>
                 {closeButton}
               </div>,
               <div class="m-drawer__content">
@@ -217,7 +238,7 @@ export class Drawer {
             ]
             : [
               <div class="m-drawer__header">
-                <span class="m-drawer__title">{this.headerTitle}</span>
+                <span class="m-drawer__title">{this.drawerTitle}</span>
               </div>,
               <div class="m-drawer__content">
                 <slot></slot>

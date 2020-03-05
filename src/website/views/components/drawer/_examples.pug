@@ -187,7 +187,7 @@ p.-text
 h3 Titled
 .example.-mb--3(style='overflow:hidden;')
   .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
-    chi-drawer(position='left', header-title='Drawer title here', backdrop, active, collapsible)
+    chi-drawer(position='left', title='Drawer title here', backdrop, active, collapsible)
       .-px--2.-text Drawer content here
   .example-tabs.-pl--2
     ul#examples-titled.a-tabs
@@ -197,7 +197,7 @@ h3 Titled
         a(href='#html-titled') HTML
   .a-tabs-panel.-active#webcomponent-titled
     :code(lang="html")
-      <chi-drawer position="left" header-title="Drawer title here" backdrop active collapsible>
+      <chi-drawer position="left" title="Drawer title here" backdrop active collapsible>
         <div class="-px--2 -text">Drawer content here</div>
       </chi-drawer>
   .a-tabs-panel#html-titled

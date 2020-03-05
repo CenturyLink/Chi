@@ -54,7 +54,7 @@ describe('Drawer', function() {
 
   });
 
-  it('Should have a title if attribute header-title="" is provided ', function() {
+  it('Should have a title if attribute title="" is provided ', function() {
 
     cy.get('[data-cy="test-top-with-title"]')
       .scrollIntoView()
