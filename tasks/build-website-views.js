@@ -19,7 +19,8 @@ const metalsmithPlugins = {
   permalinks: require('metalsmith-permalinks'),
   redirect: require('metalsmith-redirect'),
   rename: require('metalsmith-rename'),
-  rootPath: require('metalsmith-rootpath')
+  rootPath: require('metalsmith-rootpath'),
+  ignore: require('metalsmith-ignore'),
 };
 
 const renderer = new marked.Renderer();
@@ -44,6 +45,7 @@ function buildWebsiteViews () {
   const promise = new Promise((resolve, reject) => {
     metalsmith(Folders.ROOT)
       .source(Paths.src.PAGES)
+      .use(metalsmithPlugins.ignore('components/**/_*.pug'))
       .destination(Folders.DIST)
       .clean(false)
 
