@@ -5,7 +5,7 @@ $sidenav-sm-width: 3rem;
 $sidenav-md-width: 6rem;
 $sidenav-lg-width: 12.5rem;
 
-.m-sidenav {
+.chi-sidenav {
   position: relative;
   width: $sidenav-sm-width;
 
@@ -85,7 +85,7 @@ $sidenav-lg-width: 12.5rem;
   }
 
   &.-sliding {
-    .m-sidenav__list > li {
+    .chi-sidenav__list > li {
       &.-active > a {
         box-shadow: none;
       }
@@ -117,7 +117,7 @@ $sidenav-lg-width: 12.5rem;
         background-color: set-color(grey, 10);
       }
 
-      .m-sidenav__drawer-item-list {
+      .chi-sidenav__drawer-item-list {
         display: none;
         overflow: hidden;
         transition: height 0.075s ease-out;
@@ -141,7 +141,7 @@ $sidenav-lg-width: 12.5rem;
   }
 
   &.-inverse {
-    .m-sidenav {
+    .chi-sidenav {
       &__content {
         background-color: set-color(black);
       }
@@ -190,7 +190,7 @@ $sidenav-lg-width: 12.5rem;
 
           &.-active {
             > a {
-              .m-sidenav__description {
+              .chi-sidenav__description {
                 color: $secondary-color;
               }
             }
@@ -224,7 +224,7 @@ $sidenav-lg-width: 12.5rem;
     }
 
     &.-sliding {
-      .m-sidenav__list > li {
+      .chi-sidenav__list > li {
         &.-active > a {
           box-shadow: none;
         }
@@ -298,7 +298,7 @@ $sidenav-lg-width: 12.5rem;
     width: $sidenav-sm-width;
 
     @include respond-to(md) {
-      .m-sidenav__list > li {
+      .chi-sidenav__list > li {
         > a {
           align-items: center;
           flex-direction: column;
@@ -332,7 +332,7 @@ $sidenav-lg-width: 12.5rem;
   &.-md {
     width: $sidenav-md-width;
 
-    .m-sidenav__list > li {
+    .chi-sidenav__list > li {
       > a {
         align-items: center;
         flex-direction: column;
@@ -369,7 +369,7 @@ $sidenav-lg-width: 12.5rem;
   &.-lg {
     width: $sidenav-lg-width;
 
-    .m-sidenav__list > li {
+    .chi-sidenav__list > li {
       > a {
         flex-direction: row;
         font-size: 0.875rem;
@@ -401,13 +401,13 @@ $sidenav-lg-width: 12.5rem;
 
   &.-global-nav {
     &.-inverse {
-      .m-sidenav__content {
+      .chi-sidenav__content {
         background-color: set-color(grey, 100);
         border-right: 0;
 
         nav {
           ul {
-            &.m-sidenav__list {
+            &.chi-sidenav__list {
               li {
                 border-bottom: 0;
 
@@ -434,7 +434,7 @@ $sidenav-lg-width: 12.5rem;
         }
       }
 
-      .m-sidenav__drawers {
+      .chi-sidenav__drawers {
         .chi-drawer {
           background-color: set-color(grey, 90);
 
@@ -463,7 +463,7 @@ $sidenav-lg-width: 12.5rem;
             .chi-drawer__content {
               background-color: set-color(grey, 90);
 
-              .m-sidenav__drawer-list {
+              .chi-sidenav__drawer-list {
                 border-top: 0;
 
                 li {
@@ -476,7 +476,7 @@ $sidenav-lg-width: 12.5rem;
                     padding-left: 1.5rem;
                     padding-top: 0.625rem;
 
-                    .m-sidenav__title {
+                    .chi-sidenav__title {
                       align-items: center;
                       display: flex;
                       font-weight: 400;
@@ -493,7 +493,7 @@ $sidenav-lg-width: 12.5rem;
                       box-shadow: inset 0.125rem 0 0 $secondary-color;
                       color: $secondary-color;
 
-                      .m-sidenav__title {
+                      .chi-sidenav__title {
                         font-weight: 600;
                       }
                     }
@@ -517,17 +517,17 @@ $sidenav-lg-width: 12.5rem;
                       background-color: set-color(grey, 80);
                       color: white;
 
-                      .m-sidenav__title {
+                      .chi-sidenav__title {
                         font-weight: 600;
                       }
                     }
 
-                    .m-sidenav__drawer-item-list {
+                    .chi-sidenav__drawer-item-list {
                       display: block;
                     }
                   }
 
-                  .m-sidenav__drawer-item-list {
+                  .chi-sidenav__drawer-item-list {
                     background-color: set-color(grey, 80);
 
                     .chi-tabs {
@@ -574,8 +574,8 @@ $sidenav-lg-width: 12.5rem;
 
 /* IE11 CSS hack */
 @media only screen and (-ms-high-contrast: none) {
-  .m-sidenav {
-    .m-sidenav__list {
+  .chi-sidenav {
+    .chi-sidenav__list {
       li {
         a {
           height: 3rem;
@@ -584,7 +584,7 @@ $sidenav-lg-width: 12.5rem;
     }
 
     &.-md {
-      .m-sidenav__list {
+      .chi-sidenav__list {
         li {
           a {
             height: 4rem;
@@ -594,7 +594,7 @@ $sidenav-lg-width: 12.5rem;
     }
 
     &.-lg {
-      .m-sidenav__list {
+      .chi-sidenav__list {
         li {
           a {
             height: 3rem;

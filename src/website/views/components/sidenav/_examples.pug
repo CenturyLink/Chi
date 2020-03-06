@@ -19,18 +19,18 @@ h2 Examples
 h3 Base
 p.-text You can use the <code>-active</code> class in the following elements:
 dl
-  dt: code ul.m-sidenav__list &gt; li
+  dt: code ul.chi-sidenav__list &gt; li
   dd.-text For activating the elements in the sidenav menu.
   dt: code .drawer
   dd.-text For opening the drawer (<a href="../drawer/">View drawer documentation</a>)
-  dt: code ul.m-sidenav__drawer-list &gt; li
+  dt: code ul.chi-sidenav__drawer-list &gt; li
   dd.-text For activating the menu items inside the drawer.
 .example.-mb--3
   .-d--flex(style='overflow: hidden;')
-    aside.m-sidenav.-flex--shrink0#example-base
-      .m-sidenav__content
+    aside.chi-sidenav.-flex--shrink0#example-base
+      .chi-sidenav__content
         nav
-          ul.m-sidenav__list
+          ul.chi-sidenav__list
             each val in menuItems
               li(class=`${val===active.menuItem ? '-active':''}`)
                 a(href=`#drawer-${example}-${val}`)
@@ -38,7 +38,7 @@ dl
                     svg
                       use(xlink:href='#icon-atom')
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .m-sidenav__drawers
+      .chi-sidenav__drawers
         each val1 in menuItems
           .chi-drawer.-left(id=`drawer-${example}-${val1}`)
             .chi-drawer__header
@@ -46,15 +46,15 @@ dl
                 .chi-btn__content
                   i.chi-icon.icon-x
             .chi-drawer__content
-              ul.m-sidenav__drawer-list
+              ul.chi-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
                     a(href=`#exampleHashTarget`)
                       if index % 4 < 2
-                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.m-sidenav__description Description for title a in a drawer inside a menu.
+                        .chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        p.chi-sidenav__description Description for title a in a drawer inside a menu.
                       else
-                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4,5]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -66,10 +66,10 @@ dl
         a(href=`#example-base-js`) JS
   .chi-tabs-panel.-active#example-base-html
     :code(lang='html')
-      <aside class="m-sidenav" id="sidenav-0">
-        <div class="m-sidenav__content">
+      <aside class="chi-sidenav" id="sidenav-0">
+        <div class="chi-sidenav__content">
           <nav>
-            <ul class="m-sidenav__list">
+            <ul class="chi-sidenav__list">
               <li class="-active">
                 <a href="#drawer-0-1">
                   <div class="chi-icon">
@@ -105,7 +105,7 @@ dl
             </ul>
           </nav>
         </div>
-        <div class="m-sidenav__drawers">
+        <div class="chi-sidenav__drawers">
           <div class="chi-drawer -left -active" id="drawer-0-1">
             <div class="chi-drawer__header">
               <button class="chi-btn -icon -close" aria-label="Close">
@@ -113,27 +113,27 @@ dl
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title A</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title A</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li class="-active">
                   <a href="#">
-                    <div class="m-sidenav__title">Title B</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title B</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title C</span>
+                    <span class="chi-sidenav__title">Title C</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title D</span>
+                    <span class="chi-sidenav__title">Title D</span>
                   </a>
                 </li>
               </ul>
@@ -146,27 +146,27 @@ dl
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title E</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title E</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title F</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title F</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title G</span>
+                    <span class="chi-sidenav__title">Title G</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title H</span>
+                    <span class="chi-sidenav__title">Title H</span>
                   </a>
                 </li>
               </ul>
@@ -179,27 +179,27 @@ dl
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title I</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title I</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title J</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title J</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title K</span>
+                    <span class="chi-sidenav__title">Title K</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title L</span>
+                    <span class="chi-sidenav__title">Title L</span>
                   </a>
                 </li>
               </ul>
@@ -212,27 +212,27 @@ dl
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title M</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title M</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title N</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title N</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title O</span>
+                    <span class="chi-sidenav__title">Title O</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title P</span>
+                    <span class="chi-sidenav__title">Title P</span>
                   </a>
                 </li>
               </ul>
@@ -249,10 +249,10 @@ h3 Inverse
 - example=1
 .example.-mb--3
   .-d--flex(style='overflow: hidden;')
-    aside.m-sidenav.-inverse.-flex--shrink0#example-base-inverse
-      .m-sidenav__content
+    aside.chi-sidenav.-inverse.-flex--shrink0#example-base-inverse
+      .chi-sidenav__content
         nav
-          ul.m-sidenav__list
+          ul.chi-sidenav__list
             each val in menuItems
               li(class=`${val===active.menuItem ? '-active':''}`)
                 a(href=`#drawer-${example}-${val}`)
@@ -260,7 +260,7 @@ h3 Inverse
                     svg
                       use(xlink:href='#icon-atom')
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .m-sidenav__drawers
+      .chi-sidenav__drawers
         each val1 in menuItems
           .chi-drawer.-left(id=`drawer-${example}-${val1}`)
             .chi-drawer__header
@@ -268,15 +268,15 @@ h3 Inverse
                 .chi-btn__content
                   i.chi-icon.icon-x
             .chi-drawer__content
-              ul.m-sidenav__drawer-list
+              ul.chi-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
                     a(href=`#exampleHashTarget`)
                       if index % 4 < 2
-                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.m-sidenav__description Description for title a in a drawer inside a menu.
+                        .chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        p.chi-sidenav__description Description for title a in a drawer inside a menu.
                       else
-                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4,5]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -288,10 +288,10 @@ h3 Inverse
         a(href=`#example-inverse-js`) JS
   .chi-tabs-panel.-active#example-inverse-html
     :code(lang='html')
-      <aside class="m-sidenav -inverse" id="sidenav-1">
-        <div class="m-sidenav__content">
+      <aside class="chi-sidenav -inverse" id="sidenav-1">
+        <div class="chi-sidenav__content">
           <nav>
-            <ul class="m-sidenav__list">
+            <ul class="chi-sidenav__list">
               <li class="-active">
                 <a href="#drawer-1-1">
                   <div class="chi-icon">
@@ -327,7 +327,7 @@ h3 Inverse
             </ul>
           </nav>
         </div>
-        <div class="m-sidenav__drawers">
+        <div class="chi-sidenav__drawers">
           <div class="chi-drawer -left -active" id="drawer-1-1">
             <div class="chi-drawer__header">
               <button class="chi-btn -icon -close" aria-label="Close">
@@ -335,27 +335,27 @@ h3 Inverse
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title A</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title A</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li class="-active">
                   <a href="#">
-                    <div class="m-sidenav__title">Title B</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title B</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title C</span>
+                    <span class="chi-sidenav__title">Title C</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title D</span>
+                    <span class="chi-sidenav__title">Title D</span>
                   </a>
                 </li>
               </ul>
@@ -368,27 +368,27 @@ h3 Inverse
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title E</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title E</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title F</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title F</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title G</span>
+                    <span class="chi-sidenav__title">Title G</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title H</span>
+                    <span class="chi-sidenav__title">Title H</span>
                   </a>
                 </li>
               </ul>
@@ -401,27 +401,27 @@ h3 Inverse
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title I</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title I</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title J</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title J</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title K</span>
+                    <span class="chi-sidenav__title">Title K</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title L</span>
+                    <span class="chi-sidenav__title">Title L</span>
                   </a>
                 </li>
               </ul>
@@ -434,27 +434,27 @@ h3 Inverse
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title M</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title M</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title N</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title N</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title O</span>
+                    <span class="chi-sidenav__title">Title O</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title P</span>
+                    <span class="chi-sidenav__title">Title P</span>
                   </a>
                 </li>
               </ul>
@@ -470,10 +470,10 @@ h3 Inverse
 h3(id=`example-${example}`) Enterprise Global Navigation
 .example.-mb--3
   .-d--flex(style='overflow: hidden;')
-    aside.m-sidenav.-inverse.-global-nav.-flex--shrink0(id=`sidenav-global-nav-${example}`)
-      .m-sidenav__content
+    aside.chi-sidenav.-inverse.-global-nav.-flex--shrink0(id=`sidenav-global-nav-${example}`)
+      .chi-sidenav__content
         nav
-          ul.m-sidenav__list
+          ul.chi-sidenav__list
             each val in menuItems
               li(class=`${val === active.menuItem ? '-active' : ''}`)
                 a(href=`#drawer-global-nav-${example}-${val}`)
@@ -481,7 +481,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                     svg
                       use(xlink:href='#icon-atom')
                   span=val === active.menuItem ? 'Active Item' : 'Menu Item'
-      .m-sidenav__drawers
+      .chi-sidenav__drawers
         each val1 in menuItems
           .chi-drawer.-animated.-left(id=`drawer-global-nav-${example}-${val1}`)
             .chi-drawer__header
@@ -490,13 +490,13 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                 .chi-btn__content
                   i.chi-icon.icon-x
             .chi-drawer__content
-              ul.m-sidenav__drawer-list
+              ul.chi-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   if val2 === 'A' || val2 === 'B'
                     li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
                       a(href=`#drawer-item-list-${val1}-${val2}`)
-                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                      .m-sidenav__drawer-item-list(id=`drawer-item-list-${val1}-${val2}`)
+                        .chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                      .chi-sidenav__drawer-item-list(id=`drawer-item-list-${val1}-${val2}`)
                         ul.chi-tabs.-vertical.-sm
                           li
                             a(class=`a-sidenav__drawer-item-tab ${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
@@ -507,7 +507,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   else
                     li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
                       a(href=`#exampleHashTarget`)
-                        span.m-sidenav__title
+                        span.chi-sidenav__title
                           =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                           .chi-icon.-xs
                             svg
@@ -523,10 +523,10 @@ h3(id=`example-${example}`) Enterprise Global Navigation
         a(href='#chi-tabs-three-level-js') JS
   #chi-tabs-three-level-html.chi-tabs-panel.-active
     :code(lang="html")
-      <aside class="m-sidenav -inverse -global-nav" id="sidenav-global-nav-1">
-        <div class="m-sidenav__content">
+      <aside class="chi-sidenav -inverse -global-nav" id="sidenav-global-nav-1">
+        <div class="chi-sidenav__content">
           <nav>
-            <ul class="m-sidenav__list">
+            <ul class="chi-sidenav__list">
               <li class="-active">
                 <a href="#drawer-global-nav-1-1">
                   <div class="chi-icon">
@@ -550,7 +550,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
             </ul>
           </nav>
         </div>
-        <div class="m-sidenav__drawers">
+        <div class="chi-sidenav__drawers">
           <div class="chi-drawer -animated -left" id="drawer-global-nav-1-1">
             <div class="chi-drawer__header">
               <div class="a-drawer__title">Menu item 1</div>
@@ -559,12 +559,12 @@ h3(id=`example-${example}`) Enterprise Global Navigation
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#drawer-item-list-1-A">
-                    <div class="m-sidenav__title">Title A</div>
+                    <div class="chi-sidenav__title">Title A</div>
                   </a>
-                  <div class="m-sidenav__drawer-item-list" id="drawer-item-list-1-A">
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-1-A">
                     <ul class="chi-tabs -vertical -sm">
                       <li>
                         <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
@@ -586,9 +586,9 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                 </li>
                 <li class="-active -expanded">
                   <a href="#drawer-item-list-1-B">
-                    <div class="m-sidenav__title">Title B</div>
+                    <div class="chi-sidenav__title">Title B</div>
                   </a>
-                  <div class="m-sidenav__drawer-item-list" id="drawer-item-list-1-B">
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-1-B">
                     <ul class="chi-tabs -vertical -sm">
                       <li>
                         <a class="a-sidenav__drawer-item-tab -active" href="#exampleHashTarget">
@@ -610,7 +610,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                 </li>
                 <li>
                   <a href="#exampleHashTarget">
-                    <span class="m-sidenav__title">
+                    <span class="chi-sidenav__title">
                       Title C
                       <div class="chi-icon -xs">
                         <svg>
@@ -622,7 +622,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                 </li>
                 <li>
                   <a href="#exampleHashTarget">
-                    <span class="m-sidenav__title">
+                    <span class="chi-sidenav__title">
                       Title D
                       <div class="chi-icon -xs">
                         <svg>
@@ -643,12 +643,12 @@ h3(id=`example-${example}`) Enterprise Global Navigation
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#drawer-item-list-2-A">
-                    <div class="m-sidenav__title">Title E</div>
+                    <div class="chi-sidenav__title">Title E</div>
                   </a>
-                  <div class="m-sidenav__drawer-item-list" id="drawer-item-list-2-A">
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-2-A">
                     <ul class="chi-tabs -vertical -sm">
                       <li>
                         <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
@@ -670,9 +670,9 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                 </li>
                 <li>
                   <a href="#drawer-item-list-2-B">
-                    <div class="m-sidenav__title">Title F</div>
+                    <div class="chi-sidenav__title">Title F</div>
                   </a>
-                  <div class="m-sidenav__drawer-item-list" id="drawer-item-list-2-B">
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-2-B">
                     <ul class="chi-tabs -vertical -sm">
                       <li>
                         <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
@@ -694,7 +694,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                 </li>
                 <li>
                   <a href="#exampleHashTarget">
-                    <span class="m-sidenav__title">
+                    <span class="chi-sidenav__title">
                       Title G
                       <div class="chi-icon -xs">
                         <svg>
@@ -706,7 +706,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                 </li>
                 <li>
                   <a href="#exampleHashTarget">
-                    <span class="m-sidenav__title">
+                    <span class="chi-sidenav__title">
                       Title H
                       <div class="chi-icon -xs">
                         <svg>
@@ -739,10 +739,10 @@ h3 -sm
 - example=2
 .example.-mb--3
   .-d--flex(style='overflow: hidden;')
-    aside.m-sidenav.-sm.-flex--shrink0#example-sizes-sm
-      .m-sidenav__content
+    aside.chi-sidenav.-sm.-flex--shrink0#example-sizes-sm
+      .chi-sidenav__content
         nav
-          ul.m-sidenav__list
+          ul.chi-sidenav__list
             each val in menuItems
               li(class=`${val===active.menuItem ? '-active':''}`)
                 a(href=`#drawer-${example}-${val}`)
@@ -750,7 +750,7 @@ h3 -sm
                     svg
                       use(xlink:href='#icon-atom')
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .m-sidenav__drawers
+      .chi-sidenav__drawers
         each val1 in menuItems
           .chi-drawer.-left(id=`drawer-${example}-${val1}`)
             .chi-drawer__header
@@ -758,15 +758,15 @@ h3 -sm
                 .chi-btn__content
                   i.chi-icon.icon-x
             .chi-drawer__content
-              ul.m-sidenav__drawer-list
+              ul.chi-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
                     a(href=`#exampleHashTarget`)
                       if index % 4 < 2
-                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.m-sidenav__description Description for title a in a drawer inside a menu.
+                        .chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        p.chi-sidenav__description Description for title a in a drawer inside a menu.
                       else
-                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4,5]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -778,10 +778,10 @@ h3 -sm
         a(href='#examples-sizes-sm-js') JS
   #examples-sizes-sm-html.chi-tabs-panel.-active
     :code(lang='html')
-      <aside class="m-sidenav -sm" id="sidenav-3">
-        <div class="m-sidenav__content">
+      <aside class="chi-sidenav -sm" id="sidenav-3">
+        <div class="chi-sidenav__content">
           <nav>
-            <ul class="m-sidenav__list">
+            <ul class="chi-sidenav__list">
               <li class="-active">
                 <a href="#drawer-0-1">
                   <div class="chi-icon">
@@ -817,7 +817,7 @@ h3 -sm
             </ul>
           </nav>
         </div>
-        <div class="m-sidenav__drawers">
+        <div class="chi-sidenav__drawers">
           <div class="chi-drawer -left -active" id="drawer-0-1">
             <div class="chi-drawer__header">
               <button class="chi-btn -icon -close" aria-label="Close">
@@ -825,27 +825,27 @@ h3 -sm
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title A</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title A</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li class="-active">
                   <a href="#">
-                    <div class="m-sidenav__title">Title B</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title B</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title C</span>
+                    <span class="chi-sidenav__title">Title C</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title D</span>
+                    <span class="chi-sidenav__title">Title D</span>
                   </a>
                 </li>
               </ul>
@@ -858,27 +858,27 @@ h3 -sm
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title E</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title E</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title F</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title F</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title G</span>
+                    <span class="chi-sidenav__title">Title G</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title H</span>
+                    <span class="chi-sidenav__title">Title H</span>
                   </a>
                 </li>
               </ul>
@@ -891,27 +891,27 @@ h3 -sm
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title I</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title I</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title J</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title J</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title K</span>
+                    <span class="chi-sidenav__title">Title K</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title L</span>
+                    <span class="chi-sidenav__title">Title L</span>
                   </a>
                 </li>
               </ul>
@@ -924,27 +924,27 @@ h3 -sm
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title M</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title M</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title N</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title N</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title O</span>
+                    <span class="chi-sidenav__title">Title O</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title P</span>
+                    <span class="chi-sidenav__title">Title P</span>
                   </a>
                 </li>
               </ul>
@@ -961,10 +961,10 @@ h3 -md
 - example=3
 .example.-mb--3
   .-d--flex(style='overflow: hidden;')
-    aside.m-sidenav.-md.-flex--shrink0#example-sizes-md
-      .m-sidenav__content
+    aside.chi-sidenav.-md.-flex--shrink0#example-sizes-md
+      .chi-sidenav__content
         nav
-          ul.m-sidenav__list
+          ul.chi-sidenav__list
             each val in menuItems
               li(class=`${val===active.menuItem ? '-active':''}`)
                 a(href=`#drawer-${example}-${val}`)
@@ -972,7 +972,7 @@ h3 -md
                     svg
                       use(xlink:href='#icon-atom')
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .m-sidenav__drawers
+      .chi-sidenav__drawers
         each val1 in menuItems
           .chi-drawer.-left(id=`drawer-${example}-${val1}`)
             .chi-drawer__header
@@ -980,15 +980,15 @@ h3 -md
                 .chi-btn__content
                   i.chi-icon.icon-x
             .chi-drawer__content
-              ul.m-sidenav__drawer-list
+              ul.chi-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
                     a(href=`#exampleHashTarget`)
                       if index % 4 < 2
-                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.m-sidenav__description Description for title a in a drawer inside a menu.
+                        .chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        p.chi-sidenav__description Description for title a in a drawer inside a menu.
                       else
-                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4,5]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1000,10 +1000,10 @@ h3 -md
         a(href='#examples-sizes-md-js') JS
   #examples-sizes-md-html.chi-tabs-panel.-active
     :code(lang='html')
-      <aside class="m-sidenav -md" id="sidenav-4">
-        <div class="m-sidenav__content">
+      <aside class="chi-sidenav -md" id="sidenav-4">
+        <div class="chi-sidenav__content">
           <nav>
-            <ul class="m-sidenav__list">
+            <ul class="chi-sidenav__list">
               <li class="-active">
                 <a href="#drawer-0-1">
                   <div class="chi-icon">
@@ -1039,7 +1039,7 @@ h3 -md
             </ul>
           </nav>
         </div>
-        <div class="m-sidenav__drawers">
+        <div class="chi-sidenav__drawers">
           <div class="chi-drawer -left -active" id="drawer-0-1">
             <div class="chi-drawer__header">
               <button class="chi-btn -icon -close" aria-label="Close">
@@ -1047,27 +1047,27 @@ h3 -md
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title A</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title A</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li class="-active">
                   <a href="#">
-                    <div class="m-sidenav__title">Title B</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title B</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title C</span>
+                    <span class="chi-sidenav__title">Title C</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title D</span>
+                    <span class="chi-sidenav__title">Title D</span>
                   </a>
                 </li>
               </ul>
@@ -1080,27 +1080,27 @@ h3 -md
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title E</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title E</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title F</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title F</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title G</span>
+                    <span class="chi-sidenav__title">Title G</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title H</span>
+                    <span class="chi-sidenav__title">Title H</span>
                   </a>
                 </li>
               </ul>
@@ -1113,27 +1113,27 @@ h3 -md
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title I</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title I</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title J</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title J</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title K</span>
+                    <span class="chi-sidenav__title">Title K</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title L</span>
+                    <span class="chi-sidenav__title">Title L</span>
                   </a>
                 </li>
               </ul>
@@ -1146,27 +1146,27 @@ h3 -md
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title M</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title M</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title N</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title N</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title O</span>
+                    <span class="chi-sidenav__title">Title O</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title P</span>
+                    <span class="chi-sidenav__title">Title P</span>
                   </a>
                 </li>
               </ul>
@@ -1183,10 +1183,10 @@ h3 -lg
 - example=4
 .example.-mb--3
   .-d--flex(style='overflow: hidden;')
-    aside.m-sidenav.-lg.-flex--shrink0#example-sizes-lg
-      .m-sidenav__content
+    aside.chi-sidenav.-lg.-flex--shrink0#example-sizes-lg
+      .chi-sidenav__content
         nav
-          ul.m-sidenav__list
+          ul.chi-sidenav__list
             each val in menuItems
               li(class=`${val===active.menuItem ? '-active':''}`)
                 a(href=`#drawer-${example}-${val}`)
@@ -1194,7 +1194,7 @@ h3 -lg
                     svg
                       use(xlink:href='#icon-atom')
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .m-sidenav__drawers
+      .chi-sidenav__drawers
         each val1 in menuItems
           .chi-drawer.-left(id=`drawer-${example}-${val1}`)
             .chi-drawer__header
@@ -1202,15 +1202,15 @@ h3 -lg
                 .chi-btn__content
                   i.chi-icon.icon-x
             .chi-drawer__content
-              ul.m-sidenav__drawer-list
+              ul.chi-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
                     a(href=`#exampleHashTarget`)
                       if index % 4 < 2
-                        .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.m-sidenav__description Description for title a in a drawer inside a menu.
+                        .chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        p.chi-sidenav__description Description for title a in a drawer inside a menu.
                       else
-                        span.m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4,5]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1222,10 +1222,10 @@ h3 -lg
         a(href='#examples-sizes-lg-js') JS
   #examples-sizes-lg-html.chi-tabs-panel.-active
     :code(lang='html')
-      <aside class="m-sidenav -lg" id="sidenav-5">
-        <div class="m-sidenav__content">
+      <aside class="chi-sidenav -lg" id="sidenav-5">
+        <div class="chi-sidenav__content">
           <nav>
-            <ul class="m-sidenav__list">
+            <ul class="chi-sidenav__list">
               <li class="-active">
                 <a href="#drawer-0-1">
                   <div class="chi-icon">
@@ -1261,7 +1261,7 @@ h3 -lg
             </ul>
           </nav>
         </div>
-        <div class="m-sidenav__drawers">
+        <div class="chi-sidenav__drawers">
           <div class="chi-drawer -left -active" id="drawer-0-1">
             <div class="chi-drawer__header">
               <button class="chi-btn -icon -close" aria-label="Close">
@@ -1269,27 +1269,27 @@ h3 -lg
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title A</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title A</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li class="-active">
                   <a href="#">
-                    <div class="m-sidenav__title">Title B</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title B</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title C</span>
+                    <span class="chi-sidenav__title">Title C</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title D</span>
+                    <span class="chi-sidenav__title">Title D</span>
                   </a>
                 </li>
               </ul>
@@ -1302,27 +1302,27 @@ h3 -lg
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title E</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title E</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title F</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title F</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title G</span>
+                    <span class="chi-sidenav__title">Title G</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title H</span>
+                    <span class="chi-sidenav__title">Title H</span>
                   </a>
                 </li>
               </ul>
@@ -1335,27 +1335,27 @@ h3 -lg
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title I</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title I</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title J</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title J</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title K</span>
+                    <span class="chi-sidenav__title">Title K</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title L</span>
+                    <span class="chi-sidenav__title">Title L</span>
                   </a>
                 </li>
               </ul>
@@ -1368,27 +1368,27 @@ h3 -lg
               </button>
             </div>
             <div class="chi-drawer__content">
-              <ul class="m-sidenav__drawer-list">
+              <ul class="chi-sidenav__drawer-list">
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title M</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title M</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <div class="m-sidenav__title">Title N</div>
-                    <p class="m-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                    <div class="chi-sidenav__title">Title N</div>
+                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title O</span>
+                    <span class="chi-sidenav__title">Title O</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <span class="m-sidenav__title">Title P</span>
+                    <span class="chi-sidenav__title">Title P</span>
                   </a>
                 </li>
               </ul>
@@ -1406,7 +1406,7 @@ p.-text
 .example.-mb--3
   :code(lang='html')
     <div class="-d--flex">
-      <aside class="m-sidenav -flex--shrink0">
+      <aside class="chi-sidenav -flex--shrink0">
         [ Sidenav content ]
       </aside>
       <div class="-flex--grow1">
@@ -1418,23 +1418,23 @@ h2 Aditional sidenav content
 
 p.-text
   | It is possible to include additional content above and below the menu in the side bar. You will have to develop
-  | the responsive behavior of any added content. Put your content inside <code>m-sidenav__content</code>, above and/or
+  | the responsive behavior of any added content. Put your content inside <code>chi-sidenav__content</code>, above and/or
   | below the <code>nav</code> element.
 p.-text
   span.chi-badge.-dark.-sm.-mr1
     span Tip
-  | You can use the Flex utility classes to position the elements inside <code>m-sidenav__content</code>.
+  | You can use the Flex utility classes to position the elements inside <code>chi-sidenav__content</code>.
 
 .example.-mb--3(id=`example-${example}`)
   .-d--flex(style='overflow: hidden;')
-    aside.m-sidenav.-lg.-flex--shrink0
-      .m-sidenav__content.-d--flex.-flex--column
+    aside.chi-sidenav.-lg.-flex--shrink0
+      .chi-sidenav__content.-d--flex.-flex--column
         .-d--flex.-flex--column.-flex-lg--row.-align-items--center.-p--2
           .chi-avatar.-mr-lg--2
             img(src='../../assets/images/avatar.jpg', alt="User name's Avatar")
           span.-text.-d--none.-d-md--block(style="white-space:nowrap;text-overflow:ellipsis;overflow:hidden;") User name
         nav.-flex--grow1
-          ul.m-sidenav__list
+          ul.chi-sidenav__list
             each val in menuItems
               li(class=`${val===active.menuItem ? '-active':''}`)
                 a(href=`#drawer-${example}-${val}`)
@@ -1451,8 +1451,8 @@ p.-text
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
   :code(lang='html')
-    <aside class="m-sidenav -lg">
-      <div class="m-sidenav__content -d--flex -flex--column">
+    <aside class="chi-sidenav -lg">
+      <div class="chi-sidenav__content -d--flex -flex--column">
         <div class="-d--flex -flex--column -flex-lg--row -align-items--center -p--2">
           <div class="chi-avatar -mr-lg--2">
             <img src="../../assets/images/avatar.jpg" alt="User name">
@@ -1460,7 +1460,7 @@ p.-text
           <span class="-text -d--none -d-md--block" style="white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">User name</span>
         </div>
         <nav class="-flex--grow1">
-          <ul class="m-sidenav__list">
+          <ul class="chi-sidenav__list">
             <li>
               <a href="#drawer-2-1">
                 <div class="chi-icon">

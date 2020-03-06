@@ -11,10 +11,10 @@ each sidenavType in sidenavTypes
   h2.-text--capitalized
     = `${sidenavType === '' ? 'base' : sidenavType} `
   div(class=`test-${sidenavType === '' ? 'base' : sidenavType}`, style='width: 40rem;')
-    aside.m-sidenav.-flex--shrink0(class=`${sidenavType !== '' ? '-' + sidenavType : ''}`, style='height: 35rem;')
-      .m-sidenav__content
+    aside.chi-sidenav.-flex--shrink0(class=`${sidenavType !== '' ? '-' + sidenavType : ''}`, style='height: 35rem;')
+      .chi-sidenav__content
         nav
-          ul.m-sidenav__list
+          ul.chi-sidenav__list
             each val in menuItems
               li(class=`${val === active.menuItem ? '-active' : ''}`)
                 a
@@ -22,29 +22,29 @@ each sidenavType in sidenavTypes
                     svg
                       use(xlink:href='#icon-atom')
                   span=val === active.menuItem ? 'Active Item' : 'Menu Item'
-      .m-sidenav__drawers
+      .chi-sidenav__drawers
         .chi-drawer.-active.-animated.-left
           .chi-drawer__header
             button(class='chi-btn -icon -close', aria-label='Close')
               .chi-btn__content
                 i.chi-icon.icon-x
           .chi-drawer__content
-            ul.m-sidenav__drawer-list
+            ul.chi-sidenav__drawer-list
               each val2, index in drawerMenuItems
                 li(class=`${val2 === 'A' ? '-active' : ''}`)
                   a(href=`#exampleHashTarget`)
                     if index % 4 < 2
-                      .m-sidenav__title=`Title ${val2}`
-                      p.m-sidenav__description Description for title a in a drawer inside a menu.
+                      .chi-sidenav__title=`Title ${val2}`
+                      p.chi-sidenav__description Description for title a in a drawer inside a menu.
                     else
-                      span.m-sidenav__title=`Title ${val2}`
+                      span.chi-sidenav__title=`Title ${val2}`
 
 h2 Enterprise Global Nav
 .test-global-nav(style='width: 40rem;')
-  aside.m-sidenav.-inverse.-global-nav.-flex--shrink0(style='height: 35rem;')
-    .m-sidenav__content
+  aside.chi-sidenav.-inverse.-global-nav.-flex--shrink0(style='height: 35rem;')
+    .chi-sidenav__content
       nav
-        ul.m-sidenav__list
+        ul.chi-sidenav__list
           each val in menuItems
             li(class=`${val === active.menuItem ? '-active' : ''}`)
               a
@@ -52,7 +52,7 @@ h2 Enterprise Global Nav
                   svg
                     use(xlink:href='#icon-atom')
                 span=val === active.menuItem ? 'Active Item' : 'Menu Item'
-    .m-sidenav__drawers
+    .chi-sidenav__drawers
       .chi-drawer.-active.-animated.-left
         .chi-drawer__header
           .a-drawer__title= 'Menu item 1'
@@ -60,13 +60,13 @@ h2 Enterprise Global Nav
             .chi-btn__content
               i.chi-icon.icon-x
         .chi-drawer__content
-          ul.m-sidenav__drawer-list
+          ul.chi-sidenav__drawer-list
             each val2, index in drawerMenuItems
               if val2 === 'A' || val2 === 'B'
                 li(class=`${val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
                   a(href=`#drawer-item-list-${val1}-${val2}`)
-                    .m-sidenav__title=`Title 1`
-                  .m-sidenav__drawer-item-list
+                    .chi-sidenav__title=`Title 1`
+                  .chi-sidenav__drawer-item-list
                     ul.chi-tabs.-vertical.-sm
                       li
                         a(class=`a-sidenav__drawer-item-tab ${val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
@@ -77,7 +77,7 @@ h2 Enterprise Global Nav
               else
                 li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
                   a(href=`#exampleHashTarget`)
-                    span.m-sidenav__title
+                    span.chi-sidenav__title
                       =`Title 1`
                       .chi-icon.-xs
                         svg
@@ -89,10 +89,10 @@ each size in sizes
       = `${sidenavType === '' ? 'base' : sidenavType } `
       span.-text--lowercase= size
     div(class=`test-${sidenavType === '' ? 'base' : sidenavType }${size}`, style='width: 40rem;')
-      aside.m-sidenav.-flex--shrink0(class=`${size} ${sidenavType !== '' ? '-' + sidenavType : '' }`, style='height: 35rem;')
-        .m-sidenav__content
+      aside.chi-sidenav.-flex--shrink0(class=`${size} ${sidenavType !== '' ? '-' + sidenavType : '' }`, style='height: 35rem;')
+        .chi-sidenav__content
           nav
-            ul.m-sidenav__list
+            ul.chi-sidenav__list
               each val in menuItems
                 li(class=`${val===active.menuItem ? '-active':''}`)
                   a
@@ -100,19 +100,19 @@ each size in sizes
                       svg
                         use(xlink:href='#icon-atom')
                     span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-        .m-sidenav__drawers
+        .chi-sidenav__drawers
           .chi-drawer.-active.-animated.-left
             .chi-drawer__header
               button(class='chi-btn -icon -close', aria-label='Close')
                 .chi-btn__content
                   i.chi-icon.icon-x
             .chi-drawer__content
-              ul.m-sidenav__drawer-list
+              ul.chi-sidenav__drawer-list
                 each val2, index in drawerMenuItems
                   li(class=`${val2 === 'A' ? '-active' : ''}`)
                     a(href=`#exampleHashTarget`)
                       if index % 4 < 2
-                        .m-sidenav__title=`Title ${val2}`
-                        p.m-sidenav__description Description for title a in a drawer inside a menu.
+                        .chi-sidenav__title=`Title ${val2}`
+                        p.chi-sidenav__description Description for title a in a drawer inside a menu.
                       else
-                        span.m-sidenav__title=`Title ${val2}`
+                        span.chi-sidenav__title=`Title ${val2}`
