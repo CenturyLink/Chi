@@ -4,7 +4,7 @@ import {chi} from "../core/chi";
 
 const ANIMATION_DURATION = 500;
 const CLOSE_TRIGGER_SELECTOR = '[data-dismiss="modal"]';
-const COMPONENT_SELECTOR = '.a-modal__trigger';
+const COMPONENT_SELECTOR = '.chi-modal__trigger';
 const COMPONENT_TYPE = "modal";
 const DISABLE_SCROLL = '-disableScroll';
 const ESCAPE_KEYCODE = 27;
