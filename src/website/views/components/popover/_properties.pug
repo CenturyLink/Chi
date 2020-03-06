@@ -121,12 +121,12 @@ p.-text
   | HTML DOM Element as a parameter.
 .example.-mb--3
   .-p--3
-    button#popover-2(data-popover-content='<div class="m-popover__content">Foo</div>').chi-btn.-mr--2 Popover
+    button#popover-2(data-popover-content='<div class="chi-popover__content">Foo</div>').chi-btn.-mr--2 Popover
   :code(lang='html')
-    <button id='popover-2' class="chi-btn" data-popover-content='<div class="m-popover__content">Foo</div>'>Popover</button>
+    <button id='popover-2' class="chi-btn" data-popover-content='<div class="chi-popover__content">Foo</div>'>Popover</button>
     <script>
       var popover = chi.popover(document.getElementById('popover-2'));
-      popover.setContent('<div class="m-popover__content">Bar</div>');
+      popover.setContent('<div class="chi-popover__content">Bar</div>');
     </script>
 
 h2 Events

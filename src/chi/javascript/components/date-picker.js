@@ -193,7 +193,7 @@ class DatePicker extends Component {
 
     this._popover = Popover.factory(parent, {
       arrow: false,
-      classes: ['m-popover__datepicker'],
+      classes: ['chi-popover__datepicker'],
       content: this.elems.container,
       position: 'bottom',
       preventAutoHide: true,

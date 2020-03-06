@@ -12,39 +12,39 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 .test-base(style='width: 220px; height: 220px;')
   span.a-h2 Base
   .-position--relative
-    section.m-popover.m-popover--top.-active.-position--absolute(aria-modal="true", aria-label="Popover Title", role="dialog")
-      header.m-popover__header
-        h2.m-popover__title Popover Title
-      .m-popover__content
-        p.m-popover__text Popover content.
+    section.chi-popover.chi-popover--top.-active.-position--absolute(aria-modal="true", aria-label="Popover Title", role="dialog")
+      header.chi-popover__header
+        h2.chi-popover__title Popover Title
+      .chi-popover__content
+        p.chi-popover__text Popover content.
 
 each side in sides
   div(class=`test-${side}`, style='width: 330px; height: 220px;')
     span.a-h2=`Simple side ${side}`
     .-position--relative
-      section.m-popover.-active.-position--absolute(class=`m-popover--${side}`, aria-modal="true", aria-label="Popover Title", role="dialog")
-        header.m-popover__header
-          h2.m-popover__title Popover Title
-        .m-popover__content
-          p.m-popover__text Popover content.
-        .m-popover__arrow
+      section.chi-popover.-active.-position--absolute(class=`chi-popover--${side}`, aria-modal="true", aria-label="Popover Title", role="dialog")
+        header.chi-popover__header
+          h2.chi-popover__title Popover Title
+        .chi-popover__content
+          p.chi-popover__text Popover content.
+        .chi-popover__arrow
 
 each side in moreSides
   div(class=`test-more-${side}`)
     span.a-h2=`Popper side ${side}`
     .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
-      button(data-position=side, data-popover-content='<header class="m-popover__header"><h2 class="m-popover__title">Popover Title</h2></header><div class="m-popover__content"><p class="m-popover__text">Popover content.</p></div>').chi-btn.autostart Popover
+      button(data-position=side, data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover Title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover content.</p></div>').chi-btn.autostart Popover
 
 div(class=`test-with-progress`, style='width: 450px; height: 220px;')
   span.a-h2=`Popover with progress`
   .-position--relative
-    section.m-popover.m-popover--top.-active(aria-modal="true", aria-label="Popover Title", role="dialog")
-      header.m-popover__header
-        h2.m-popover__title Popover Title
-      .m-popover__content
+    section.chi-popover.chi-popover--top.-active(aria-modal="true", aria-label="Popover Title", role="dialog")
+      header.chi-popover__header
+        h2.chi-popover__title Popover Title
+      .chi-popover__content
         | Current progress (75%)
         progress.-success(value='75', max='100', role='progressbar', aria-valuenow='75', aria-valuemin='0', aria-valuemax='100')
-      .m-popover__arrow
+      .chi-popover__arrow
 script.
   document.addEventListener(
     'DOMContentLoaded',

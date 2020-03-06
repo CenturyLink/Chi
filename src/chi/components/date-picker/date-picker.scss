@@ -157,7 +157,7 @@ $monday-starting-week: (
   }
 }
 
-.m-popover {
+.chi-popover {
   .chi-datepicker {
     padding: 0.5rem 1rem;
   }
@@ -165,22 +165,22 @@ $monday-starting-week: (
   &__datepicker,
   &__input {
     &.-no-arrow {
-      &.m-popover--top,
+      &.chi-popover--top,
       &[x-placement^='top'] {
         margin-bottom: 1px;
       }
 
-      &.m-popover--right,
+      &.chi-popover--right,
       &[x-placement^='right'] {
         margin-left: 1px;
       }
 
-      &.m-popover--bottom,
+      &.chi-popover--bottom,
       &[x-placement^='bottom'] {
         margin-top: 1px;
       }
 
-      &.m-popover--left,
+      &.chi-popover--left,
       &[x-placement^='left'] {
         margin-right: 1px;
       }
