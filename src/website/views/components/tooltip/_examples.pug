@@ -1,0 +1,51 @@
+h2 Base
+p.-text
+  | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then,
+  | you can initialize it with the chi.tooltip factory method.
+.example.-mb--3
+  .-p--3
+    button(data-tooltip='Your tooltip text on a button').a-btn.-mr--2 Tooltip
+  :code(lang='html')
+    <button id="tooltip-1" class="a-btn" data-tooltip="Your tooltip text on a button">Tooltip</button>
+    <script>chi.tooltip(document.getElementById('tooltip-1'));</script>
+
+h2 Positioning
+p.-text
+  | By default, tooltip's position on top of an element. To alter position, use
+  | the <code>data-position</code> attribute. Valid values are <code>top</code>,
+  | <code>right</code>, <code>bottom</code>, <code>left</code>. You can pass an array
+  | of Elements and initialize all at once.
+.example.-mb--3
+  .-p--3
+    button(data-tooltip='Your top tooltip text').a-btn.-mr--2.-mb--2.-mb-md--0 Top Tooltip
+    button(data-tooltip='Your right tooltip text', data-position='right').a-btn.-mr--2.-mb--2.-mb-md--0 Right Tooltip
+    button(data-tooltip='Your bottom tooltip text', data-position='bottom').a-btn.-mr--2.-mb--2.-mb-md--0 Bottom Tooltip
+    button(data-tooltip='Your left tooltip text', data-position='left').a-btn.-mr--2.-mb--2.-mb-md--0 Left Tooltip
+  :code(lang='html')
+    <button class="a-btn" data-tooltip="Your top tooltip text">Top Tooltip</button>
+    <button class="a-btn" data-tooltip="Your right tooltip text" data-position="right">Right Tooltip</button>
+    <button class="a-btn" data-tooltip="Your bottom tooltip text" data-position="bottom">Bottom Tooltip</button>
+    <button class="a-btn" data-tooltip="Yourleft tooltip text" data-position="left">Left Tooltip</button>
+    <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+
+h2 Long Tooltips
+p.-text
+  | Long Tooltips will be truncated on the third line.
+.example.-mb--3
+  .-p--3
+    button(data-tooltip='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et interdum purus. ' +
+    'Curabitur faucibus varius libero, vel hendrerit enim tincidunt sit amet. Ut eros purus, semper nec ipsum et, ' +
+    'maximus suscipit nibh.').a-btn.-mr--2.-mb--2.-mb-md--0 Top Tooltip
+  :code(lang='html')
+    <button class="a-btn" data-tooltip="Lorem ipsum...">
+      Top Tooltip
+    </button>
+    <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+
+script.
+  document.addEventListener(
+          'DOMContentLoaded',
+          function() {
+            chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+          }
+  );
