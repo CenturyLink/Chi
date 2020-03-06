@@ -273,12 +273,12 @@
       }
     }
 
-    .a-radio {
+    .chi-radio {
       input {
         &[type='radio'] {
-          &.a-radio__input {
+          &.chi-radio__input {
             & + label {
-              &.a-radio__label {
+              &.chi-radio__label {
                 padding-left: 2rem;
               }
             }
