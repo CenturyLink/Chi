@@ -1,12 +1,12 @@
 - var steps = ['0', '1', '2', '3', '4', '5', '6'];
 
 h2 Examples
-p.-text Use the class <code>a-pagination</code> to render a pagination component.
+p.-text Use the class <code>chi-pagination</code> to render a pagination component.
 
 h3 Base
 .example.-mb--3
   .-p--5
-    nav.a-pagination(role='navigation', aria-label='Pagination')
+    nav.chi-pagination(role='navigation', aria-label='Pagination')
       .m-btnGroup
         each step in steps
           if step == '0'
@@ -20,7 +20,7 @@ h3 Base
           else
             a(class=`chi-btn`, href='#')= `${step}`
   :code(lang="html")
-    <nav class="a-pagination" role="navigation" aria-label="Pagination">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
       <div class="m-btnGroup">
         <a href="#" class="chi-btn" aria-label="Previous">
           <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
@@ -42,7 +42,7 @@ h3 Disabled
 p.-text Apply the class <code>-disabled</code> to any link to render in a disabled state.
 .example.-mb--3
   .-p--5
-    nav.a-pagination(role='navigation', aria-label='Pagination')
+    nav.chi-pagination(role='navigation', aria-label='Pagination')
       .m-btnGroup
         each step in steps
           if step == '0'
@@ -56,7 +56,7 @@ p.-text Apply the class <code>-disabled</code> to any link to render in a disabl
           else
             a(class=`chi-btn`, href='#')= `${step}`
   :code(lang="html")
-    <nav class="a-pagination" role="navigation" aria-label="Pagination">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
       <div class="m-btnGroup">
         <a href="#" class="chi-btn -disabled" aria-disabled="true">
           <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
@@ -78,7 +78,7 @@ h3 Active
 p.-text Apply the class <code>-active</code> to indicate the current page.
 .example.-mb--3
   .-p--5
-    nav.a-pagination(role='navigation', aria-label='Pagination')
+    nav.chi-pagination(role='navigation', aria-label='Pagination')
       .m-btnGroup
         each step in steps
           if step == '0'
@@ -94,7 +94,7 @@ p.-text Apply the class <code>-active</code> to indicate the current page.
           else
             a(class=`chi-btn`, href='#')= `${step}`
   :code(lang="html")
-    <nav class="a-pagination" role="navigation" aria-label="Pagination">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
       <div class="m-btnGroup">
         <a href="#" class="chi-btn" aria-label="Previous">
           <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
@@ -118,7 +118,7 @@ p.-text Pagination supports three additional sizes: <code>-sm</code>, <code>-lg<
   .-p--5
     each size in ['sm', 'lg', 'xl']
       p.-text--bold=`-${size}`
-      nav.a-pagination(role='navigation', aria-label='Pagination').-mb--2
+      nav.chi-pagination(role='navigation', aria-label='Pagination').-mb--2
         .m-btnGroup
           each step in steps
             if step == '0'
@@ -133,7 +133,7 @@ p.-text Pagination supports three additional sizes: <code>-sm</code>, <code>-lg<
               a(class=`chi-btn -${size}`, href='#')= `${step}`
   :code(lang="html")
     <!-- sm -->
-    <nav class="a-pagination" role="navigation" aria-label="Pagination">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
       <div class="m-btnGroup">
         <a href="#" class="chi-btn -sm" aria-label="Previous">
           <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
@@ -151,7 +151,7 @@ p.-text Pagination supports three additional sizes: <code>-sm</code>, <code>-lg<
       </div>
     </nav>
     <!-- lg -->
-    <nav class="a-pagination" role="navigation" aria-label="Pagination">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
       <div class="m-btnGroup">
         <a href="#" class="chi-btn -lg" aria-label="Previous">
           <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
@@ -169,7 +169,7 @@ p.-text Pagination supports three additional sizes: <code>-sm</code>, <code>-lg<
       </div>
     </nav>
     <!-- xl -->
-    <nav class="a-pagination" role="navigation" aria-label="Pagination">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
       <div class="m-btnGroup">
         <a href="#" class="chi-btn -xl" aria-label="Previous">
           <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
