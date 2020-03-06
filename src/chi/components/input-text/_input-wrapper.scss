@@ -79,7 +79,7 @@ $sizes: (
           width: 1rem;
         }
 
-        & ~ .a-spinner {
+        & ~ .chi-spinner {
           position: absolute;
           right: 0.75rem;
           top: 0.5rem;
@@ -93,7 +93,7 @@ $sizes: (
               width: map-get(map-get($sizes, $type), width);
             }
 
-            & ~ .a-spinner {
+            & ~ .chi-spinner {
               right: map-get(map-get(map-get($sizes, $type), spinner), right);
               top: map-get(map-get(map-get($sizes, $type), spinner), top);
             }

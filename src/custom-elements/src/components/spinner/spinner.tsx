@@ -53,7 +53,7 @@ export class Spinner {
 
   render() {
     const spinner = (
-      <svg class={`a-spinner
+      <svg class={`chi-spinner
         ${this.color ? `-text--${this.color}` : ''}
         ${this.size ? `-${this.size}` : ''}`} viewBox="0 0 66 66"
       >

@@ -26,7 +26,7 @@ describe('Spinner', () => {
   });
 
   it('Base spinner should be included inside the custom element', () => {
-    assertion('@spinner-md', 'svg.a-spinner');
+    assertion('@spinner-md', 'svg.chi-spinner');
   });
 
   it('Base backdrop spinner should have appropriate class', () => {
@@ -42,10 +42,10 @@ describe('Spinner', () => {
   });
 
   it('Colored spinner should have appropriate class', () => {
-    assertion('@spinner-secondary', 'svg.a-spinner.-text--secondary');
+    assertion('@spinner-secondary', 'svg.chi-spinner.-text--secondary');
   });
 
   it('Sized spinner should have appropriate class', () => {
-    assertion('@spinner-xxl', 'svg.a-spinner.-xxl');
+    assertion('@spinner-xxl', 'svg.chi-spinner.-xxl');
   });
 });

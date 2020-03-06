@@ -167,7 +167,7 @@ $sizes: (
       width: 1rem;
     }
 
-    .a-spinner {
+    .chi-spinner {
       height: 1rem;
       width: 1rem;
     }
@@ -199,7 +199,7 @@ $sizes: (
           }
         }
 
-        .a-spinner {
+        .chi-spinner {
           height: map-get(map-get(map-get($sizes, $type), icons), height);
           width: map-get(map-get(map-get($sizes, $type), icons), width);
         }
@@ -307,7 +307,7 @@ $sizes: (
           color: set-color(white);
         }
 
-        .a-spinner__icon {
+        .chi-spinner__icon {
           .path {
             stroke: set-color(white);
           }
@@ -359,7 +359,7 @@ $sizes: (
             }
           }
 
-          .a-spinner {
+          .chi-spinner {
             height: map-get(map-get(map-get($sizes, $type), icons), height);
             width: map-get(map-get(map-get($sizes, $type), icons), width);
           }
@@ -387,7 +387,7 @@ $sizes: (
               }
             }
 
-            .a-spinner {
+            .chi-spinner {
               height: map-get(map-get(map-get($sizes, $type), icons), height);
               width: map-get(map-get(map-get($sizes, $type), icons), width);
             }
@@ -421,7 +421,7 @@ $sizes: (
               }
             }
 
-            .a-spinner {
+            .chi-spinner {
               height: map-get(map-get(map-get($sizes, $type), icons), height);
               width: map-get(map-get(map-get($sizes, $type), icons), width);
             }
@@ -463,7 +463,7 @@ $sizes: (
               }
             }
 
-            .a-spinner {
+            .chi-spinner {
               height: map-get(map-get(map-get($sizes, $type), icons), height);
               width: map-get(map-get(map-get($sizes, $type), icons), width);
             }
@@ -953,7 +953,7 @@ $sizes: (
           color: inherit;
         }
 
-        .a-spinner__icon {
+        .chi-spinner__icon {
           .path {
             stroke: set-color(white);
           }
@@ -987,7 +987,7 @@ $sizes: (
           border: $border solid set-color($color, $tone);
           color: set-color($color, $tone);
 
-          .a-spinner__icon {
+          .chi-spinner__icon {
             .path {
               stroke: set-color($color, $tone);
             }
@@ -1010,7 +1010,7 @@ $sizes: (
               }
             }
 
-            .a-spinner__icon {
+            .chi-spinner__icon {
               .path {
                 stroke: set-color(white);
               }
@@ -1046,7 +1046,7 @@ $sizes: (
                 }
               }
 
-              .a-spinner__icon {
+              .chi-spinner__icon {
                 .path {
                   stroke: set-color(white);
                 }
