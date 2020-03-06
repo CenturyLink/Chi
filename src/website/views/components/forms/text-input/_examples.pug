@@ -319,13 +319,13 @@ p.-text
   | floating labels for <code>-lg</code> and <code>-xl</code> inputs. This component requires JavaScript to add/remove
   | the <code>-active</code> class whenever the input focuses or is not empty.
 
-ul#a-tabs.a-tabs
+ul#chi-tabs.chi-tabs
   li.-active
     a(href="#floatingInitial") Initial
   li
     a(href="#floatingActive") Active
 .example.-mb--3
-  #floatingInitial.a-tabs-panel.-active
+  #floatingInitial.chi-tabs-panel.-active
     .-p--3
       each size in ['lg', 'xl']
         div(class=`a-col -w--12 -p--2`)
@@ -342,7 +342,7 @@ ul#a-tabs.a-tabs
         <input class="chi-input -xl" type="text" id="floating-label-xl">
         <label for="floating-label-xl">Placeholder text</label>
       </div>
-  #floatingActive.a-tabs-panel
+  #floatingActive.chi-tabs-panel
     .-p--3
       each size in ['lg', 'xl']
         div(class=`a-col -w--12 -p--2`)
@@ -364,6 +364,6 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('a-tabs'));
+      chi.tab(document.getElementById('chi-tabs'));
     }
   );

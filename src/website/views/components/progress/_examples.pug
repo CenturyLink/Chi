@@ -8,13 +8,13 @@ h3 Base
     .a-label 100%
     chi-progress(value='100')
   .example-tabs.-pl--2
-    ul.a-tabs#examples-base
+    ul.chi-tabs#examples-base
       li.-active
         a(href=`#webcomponent-base`) Web component
       li
         a(href=`#html-base`) HTML
-  .a-tabs-panel.-active#webcomponent-base
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-base
+    .chi-tab__description
       | To render a progress element, use the tag <code>&lt;chi-progress&gt;</code>.
       | Set the <code>value</code> attribute to the amount of work completed. The default state is <code>success</code>.
     :code(lang="html")
@@ -27,8 +27,8 @@ h3 Base
       <!-- 100% -->
       <div class="a-label">100%</div>
       <chi-progress value="100"></chi-progress>
-  .a-tabs-panel#html-base
-    .a-tab__description
+  .chi-tabs-panel#html-base
+    .chi-tab__description
       | To render a progress element, use the <code>progress</code> HTML5 tag.
       | Set the value attribute to the amount of work complete. The default color is green.
     :code(lang="html")
@@ -54,13 +54,13 @@ h3 States
     .a-label Success
     chi-progress(value='75', state='success')
   .example-tabs.-pl--2
-    ul.a-tabs#examples-states
+    ul.chi-tabs#examples-states
       li.-active
         a(href=`#webcomponent-states`) Web component
       li
         a(href=`#html-states`) HTML
-  .a-tabs-panel.-active#webcomponent-states
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-states
+    .chi-tab__description
       | To indicate a progress state, set the attribute <code>state</code> value to <code>info</code>, <code>warning</code>, <code>danger</code>, or <code>success</code>.
     :code(lang="html")
       <!-- Danger -->
@@ -75,8 +75,8 @@ h3 States
       <!-- Success -->
       <div class="a-label">Success</div>
       <chi-progress value="75" state="success"></chi-progress>
-  .a-tabs-panel#html-states
-    .a-tab__description
+  .chi-tabs-panel#html-states
+    .chi-tab__description
       | To indicate a progress state, use the class <code>-info</code>, <code>-warning</code>, <code>-danger</code>, or <code>-success</code>.
     :code(lang="html")
       <!-- Danger -->

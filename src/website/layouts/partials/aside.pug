@@ -1,5 +1,5 @@
 nav
-  ul.a-tabs.-vertical.-lg.-animated
+  ul.chi-tabs.-vertical.-lg.-animated
     each collection, key in collections
       if utils.hasActiveSections(collection)
         if utils.isCurrentCollection(collection, path)
@@ -7,7 +7,7 @@ nav
             .a-collection__title
               =key
             if utils.hasSections(collection)
-              ul.a-tabs__subtabs
+              ul.chi-tabs__subtabs
                 each section in collection
                   if section.disabled
                     //- li
@@ -22,7 +22,7 @@ nav
             .a-collection__title
               =key
             if utils.hasSections(collection)
-              ul.a-tabs__subtabs
+              ul.chi-tabs__subtabs
                 each section in collection
                   if section.disabled
                     //- li

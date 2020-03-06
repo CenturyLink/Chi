@@ -17,28 +17,28 @@ p.-text
 
 - day = 1;
 
-ul#a-tabs--dp.a-tabs
+ul#chi-tabs--dp.chi-tabs
   li.-active
-    a(href='#a-tabs--dp-base') Base
+    a(href='#chi-tabs--dp-base') Base
   li
-    a(href='#a-tabs--dp-active') Active
+    a(href='#chi-tabs--dp-active') Active
   li
-    a(href='#a-tabs--dp-min-max') Min & max
-#a-tabs--dp-base.a-tabs-panel.-active
+    a(href='#chi-tabs--dp-min-max') Min & max
+#chi-tabs--dp-base.chi-tabs-panel.-active
   .example.-mb--3
     .-p--3
       chi-date
     .example-tabs.-pl--2
-      ul.a-tabs#examples-default
+      ul.chi-tabs#examples-default
         li.-active
           a(href=`#webcomponent`) Web component
         li
           a(href=`#html`) HTML
-    #webcomponent.a-tabs-panel.-active
+    #webcomponent.chi-tabs-panel.-active
       :code(lang="html")
         <chi-date></chi-date>
-    #html.a-tabs-panel
-      .a-tab__description
+    #html.chi-tabs-panel
+      .chi-tab__description
         | Use the classes <code>-month-starts-on-sun</code>,
         | <code>-month-starts-on-mon</code>, <code>-month-starts-on-tue</code>, <code>-month-starts-on-wed</code>,
         | <code>-month-starts-on-thu</code>, <code>-month-starts-on-fri</code> and <code>-month-starts-on-sat</code> to
@@ -117,21 +117,21 @@ ul#a-tabs--dp.a-tabs
             <div class="chi-datepicker__day">30</div>
           </div>
         </div>
-#a-tabs--dp-active.a-tabs-panel
+#chi-tabs--dp-active.chi-tabs-panel
   .example.-mb--3
     .-p--3
       chi-date(value="05/15/2019")
     .example-tabs.-pl--2
-      ul.a-tabs#examples-active
+      ul.chi-tabs#examples-active
         li.-active
           a(href=`#webcomponent-active`) Web component
         li
           a(href=`#html-active`) HTML
-    #webcomponent-active.a-tabs-panel.-active
+    #webcomponent-active.chi-tabs-panel.-active
       :code(lang="html")
         <chi-date value="05/15/2019"></chi-date>
-    #html-active.a-tabs-panel
-      .a-tab__description
+    #html-active.chi-tabs-panel
+      .chi-tab__description
         | Use class <code>-active</code> for the selected date
       :code(lang="html")
         <div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
@@ -183,21 +183,21 @@ ul#a-tabs--dp.a-tabs
             <div class="chi-datepicker__day">31</div>
           </div>
         </div>
-#a-tabs--dp-min-max.a-tabs-panel
+#chi-tabs--dp-min-max.chi-tabs-panel
   .example.-mb--3
     .-p--3
       chi-date(min="06/06/2019", max="06/22/2019")
     .example-tabs.-pl--2
-      ul.a-tabs#examples-min-max
+      ul.chi-tabs#examples-min-max
         li.-active
           a(href=`#webcomponent-min-max`) Web component
         li
           a(href=`#html-min-max`) HTML
-    #webcomponent-min-max.a-tabs-panel.-active
+    #webcomponent-min-max.chi-tabs-panel.-active
       :code(lang="html")
         <chi-date min="06/06/2019" max="06/22/2019"></chi-date>
-    #html-min-max.a-tabs-panel
-      .a-tab__description
+    #html-min-max.chi-tabs-panel
+      .chi-tab__description
         | Use class <code>-inactive</code> for deactivated dates.
       :code(lang="html")
         <div class="chi-datepicker -week-starts-on-sun -month-starts-on-sat">
@@ -258,16 +258,16 @@ p.-text
         | Date
       chi-date-picker(id="date")
   .example-tabs.-pl--2
-    ul.a-tabs#examples-with-label
+    ul.chi-tabs#examples-with-label
       li.-active
         a(href=`#webcomponent-with-label`) Web component
       li
         a(href=`#html-with-label`) HTML + JS
-  #webcomponent-with-label.a-tabs-panel.-active
+  #webcomponent-with-label.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
       <chi-label for="date">Date</chi-label>
       <chi-date-picker id="date"></chi-date-picker>
-  #html-with-label.a-tabs-panel
+  #html-with-label.chi-tabs-panel
     :code(lang="html")
       <div class="m-form__item">
         <label class="a-label" for="datepicker-1">Date</label>
@@ -291,16 +291,16 @@ h4 Disabled
         | Date
       chi-date-picker(id="date-2", disabled)
   .example-tabs.-pl--2
-    ul.a-tabs#examples-disabled
+    ul.chi-tabs#examples-disabled
       li.-active
         a(href=`#webcomponent-disabled`) Web component
       li
         a(href=`#html-disabled`) HTML
-  #webcomponent-disabled.a-tabs-panel.-active
+  #webcomponent-disabled.chi-tabs-panel.-active
     :code(lang="html")
       <chi-label for='date-2'>Date</chi-label>
       <chi-date-picker id="date-2" disabled></chi-date-picker>
-  #html-disabled.a-tabs-panel
+  #html-disabled.chi-tabs-panel
     :code(lang="html")
       <div class="m-form__item">
         <label class="a-label" for="datepicker-2">Date</label>
@@ -321,16 +321,16 @@ h3 Value, min and max options
       chi-label(for='date-3') Date
       chi-date-picker(id="date-3", value="01/24/2019", min="01/14/2019", max="02/07/2019")
   .example-tabs.-pl--2
-    ul.a-tabs#examples-min-max-value
+    ul.chi-tabs#examples-min-max-value
       li.-active
         a(href=`#webcomponent-min-max-value`) Web component
       li
         a(href=`#html-min-max-value`) HTML + JS
-  #webcomponent-min-max-value.a-tabs-panel.-active
+  #webcomponent-min-max-value.chi-tabs-panel.-active
     :code(lang="html")
       <chi-label for='date-3'>Date</chi-label>
       <chi-date-picker id="date-3" value="01/24/2019" min="01/14/2019" max="02/07/2019">
-  #html-min-max-value.a-tabs-panel
+  #html-min-max-value.chi-tabs-panel
     :code(lang="html")
       <div class="m-form__item">
         <label class="a-label" for="datepicker-3">Date</label>
@@ -382,7 +382,7 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function () {
-      chi.tab(document.querySelectorAll('#a-tabs--dp'));
+      chi.tab(document.querySelectorAll('#chi-tabs--dp'));
       chi.tab(document.querySelectorAll('#examples-default'));
       chi.tab(document.querySelectorAll('#examples-active'));
       chi.tab(document.querySelectorAll('#examples-min-max'));

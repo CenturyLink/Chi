@@ -16,13 +16,13 @@ h3 Base
         chi-badge(class='-m--1', color='secondary')= 'Secondary'
         chi-badge(class='-m--1', color='light')= 'Light'
   .example-tabs.-pl--2
-    ul.a-tabs#examples-base
+    ul.chi-tabs#examples-base
       li.-active
         a(href=`#webcomponent-base`) Web component
       li
         a(href=`#html-base`) HTML
-  .a-tabs-panel.-active#webcomponent-base
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-base
+    .chi-tab__description
       | To display a badge, use the tag <code>&lt;chi-badge&gt;</code>.
       | A contextual color (e.g. <code>dark</code>) can also be set to the <code>color</code> attribute to provide alternate styling.
     :code(lang="html")
@@ -37,8 +37,8 @@ h3 Base
       <!-- For dark backgrounds -->
       <chi-badge color="secondary">Secondary</chi-badge>
       <chi-badge color="light">Light</chi-badge>
-  .a-tabs-panel#html-base
-    .a-tab__description
+  .chi-tabs-panel#html-base
+    .chi-tab__description
       | To display a badge, use the class <code>chi-badge</code>.
       | A contextual class (e.g. <code>-dark</code>) can also be applied to provide alternate styling.
     :code(lang="html")
@@ -88,13 +88,13 @@ h3 Outline
         chi-badge(class='-m--1', color='secondary', variant='outline')= 'Secondary'
         chi-badge(class='-m--1', color='light', variant='outline')= 'Light'
   .example-tabs.-pl--2
-    ul.a-tabs#examples-outline
+    ul.chi-tabs#examples-outline
       li.-active
         a(href=`#webcomponent-outline`) Web component
       li
         a(href=`#html-outline`) HTML
-  .a-tabs-panel.-active#webcomponent-outline
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-outline
+    .chi-tab__description
       | To remove solid background and keep its colored border, set the <code>variant</code> attribute value to <code>outline</code>.
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -107,8 +107,8 @@ h3 Outline
       <!-- For dark backgrounds -->
       <chi-badge color="secondary" variant="outline">Secondary</chi-badge>
       <chi-badge color="light" variant="outline">Light</chi-badge>
-  .a-tabs-panel#html-outline
-    .a-tab__description
+  .chi-tabs-panel#html-outline
+    .chi-tab__description
       | To remove solid background and keep its colored border, apply the class <code>-outline</code>.
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -154,13 +154,13 @@ h3 Flat
         chi-badge(class='-m--1', color='secondary', variant='flat')= 'Secondary'
         chi-badge(class='-m--1', color='light', variant='flat')= 'Light'
   .example-tabs.-pl--2
-    ul.a-tabs#examples-flat
+    ul.chi-tabs#examples-flat
       li.-active
         a(href=`#webcomponent-flat`) Web component
       li
         a(href=`#html-flat`) HTML
-  .a-tabs-panel.-active#webcomponent-flat
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-flat
+    .chi-tab__description
       | To render a badge without background and border, set the <code>variant</code> attribute value to <code>flat</code>.
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -173,8 +173,8 @@ h3 Flat
       <!-- For dark backgrounds -->
       <chi-badge color="secondary" variant="flat">Secondary</chi-badge>
       <chi-badge color="light" variant="flat">Light</chi-badge>
-  .a-tabs-panel#html-flat
-    .a-tab__description
+  .chi-tabs-panel#html-flat
+    .chi-tab__description
       | To render a badge without background and border, apply the class <code>-flat</code>.
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -227,12 +227,12 @@ p.-text Icons can be placed before, after, or on both sides of text.
       chi-icon(icon='circle')
       span Offline
   .example-tabs.-pl--2
-    ul.a-tabs#examples-icon-badges
+    ul.chi-tabs#examples-icon-badges
       li.-active
         a(href=`#webcomponent-icon-badges`) Web component
       li
         a(href=`#html-icon-badges`) HTML
-  .a-tabs-panel.-active#webcomponent-icon-badges
+  .chi-tabs-panel.-active#webcomponent-icon-badges
     :code(lang="html")
       <chi-badge>
         <chi-icon icon="plus" size="xs"></chi-icon>
@@ -258,7 +258,7 @@ p.-text Icons can be placed before, after, or on both sides of text.
         <chi-icon icon="circle"></chi-icon>
         <span>Offline</Badge>
       </chi-badge>
-  .a-tabs-panel#html-icon-badges
+  .chi-tabs-panel#html-icon-badges
     :code(lang="html")
       <div class="chi-badge">
         <div class="chi-badge__content">
@@ -306,13 +306,13 @@ h3 Small
       chi-icon(icon='atom')
       span Badge
   .example-tabs.-pl--2
-    ul.a-tabs#examples-sizes-small
+    ul.chi-tabs#examples-sizes-small
       li.-active
         a(href=`#webcomponent-sizes-small`) Web component
       li
         a(href=`#html-sizes-small`) HTML
-  .a-tabs-panel.-active#webcomponent-sizes-small
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-sizes-small
+    .chi-tab__description
       | Set the attribute <code>size</code> to <code>sm</code> to render small badges.
     :code(lang="html")
       <chi-badge size="sm">Badge</chi-badge>
@@ -320,8 +320,8 @@ h3 Small
         <chi-icon icon="atom"></chi-icon>
         <span>Badge</span>
       </chi-badge>
-  .a-tabs-panel#html-sizes-small
-    .a-tab__description
+  .chi-tabs-panel#html-sizes-small
+    .chi-tab__description
       | Use the <code>-sm</code> modifier class to render small badges.
     :code(lang="html")
       <div class="chi-badge -sm">
@@ -342,13 +342,13 @@ h3 Extra small
       chi-icon(icon='atom')
       span Badge
   .example-tabs.-pl--2
-    ul.a-tabs#examples-sizes-extra-small
+    ul.chi-tabs#examples-sizes-extra-small
       li.-active
         a(href=`#webcomponent-sizes-extra-small`) Web component
       li
         a(href=`#html-sizes-extra-small`) HTML
-  .a-tabs-panel.-active#webcomponent-sizes-extra-small
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-sizes-extra-small
+    .chi-tab__description
       | Set the attribute <code>size</code> to <code>xs</code> to render even smaller badges.
     :code(lang="html")
       <chi-badge size="xs">Badge</chi-badge>
@@ -356,8 +356,8 @@ h3 Extra small
         <chi-icon icon="atom"></chi-icon>
         <span>Badge</span>
       </chi-badge>
-  .a-tabs-panel#html-sizes-extra-small
-    .a-tab__description
+  .chi-tabs-panel#html-sizes-extra-small
+    .chi-tab__description
       | Use the <code>-xs</code> modifier class to render even smaller badges.
     :code(lang="html")
       <div class="chi-badge -xs">
@@ -377,21 +377,21 @@ h2 Text Transform
     chi-badge(text-transform='lowercase', class='-m--1')= 'BADGE'
     chi-badge(text-transform='capitalized', class='-m--1')= 'badge'
   .example-tabs.-pl--2
-    ul.a-tabs#examples-text-transformation
+    ul.chi-tabs#examples-text-transformation
       li.-active
         a(href=`#webcomponent-text-transformation`) Web component
       li
         a(href=`#html-text-transformation`) HTML
-  .a-tabs-panel.-active#webcomponent-text-transformation
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-text-transformation
+    .chi-tab__description
       | Set the <code>text-transform</code> attribute to <code>uppercase</code> to render badges in uppercase,
       | <code>lowercase</code> to render badges in lowercase and <code>capitalized</code> to render badges as capitalized.
     :code(lang="html")
       <chi-badge text-transform="uppercase">Badge</chi-badge>
       <chi-badge text-transform="lowercase">BADGE</chi-badge>
       <chi-badge text-transform="capitalized">badge</chi-badge>
-  .a-tabs-panel#html-text-transformation
-    .a-tab__description
+  .chi-tabs-panel#html-text-transformation
+    .chi-tab__description
       | Use the <code>-text--uppercase</code> text utility class to render badges in all uppercase. <code>-text--lowercase</code> and <code>-text--capitalized</code> are also supported.
     :code(lang="html")
       <div class="chi-badge -text--uppercase">

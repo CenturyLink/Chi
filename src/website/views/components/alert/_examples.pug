@@ -14,13 +14,13 @@ h3 Default
       chi-alert.-m--2(color=type, icon=val)
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
-    ul.a-tabs#examples-default
+    ul.chi-tabs#examples-default
       li.-active
         a(href=`#webcomponent`) Web component
       li
         a(href=`#html`) HTML
-  .a-tabs-panel.-active#webcomponent
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent
+    .chi-tab__description
       | To render an alert use the tag <code>chi-alert</code>.
       | Use the color attribute to define a semantic color that corresponds to the meaning
       | or value state of your alert. Supported colors include <code>success</code>, <code>danger</code>, <code>warning</code>,
@@ -51,8 +51,8 @@ h3 Default
       <chi-alert color="muted" icon="circle-info">
         This is a muted alert
       </chi-alert>
-  .a-tabs-panel#html
-    .a-tab__description
+  .chi-tabs-panel#html
+    .chi-tab__description
       | To render an alert, use the class <code>chi-alert</code>.
       | To render an alert, use the class <code>chi-alert</code>. Apply a semantic color class that corresponds to the meaning
       | or value state of your alert. Supported classes include <code>-success</code>, <code>-danger</code>, <code>-warning</code>,
@@ -112,20 +112,20 @@ p.-text
     chi-alert.-m--2(color='danger', icon='circle-warning', center)
       | This is a centered danger alert
   .example-tabs.-pl--2
-    ul.a-tabs#examples-centered
+    ul.chi-tabs#examples-centered
       li.-active
         a(href=`#webcomponent-centered`) Web component
       li
         a(href=`#html-centered`) HTML
-  .a-tabs-panel.-active#webcomponent-centered
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-centered
+    .chi-tab__description
       | Use the attribute <code>center</code> to center the content of a Bubble Alert.
     :code(lang="html")
       <chi-alert color="danger" icon="circle-warning" center>
         This is a centered danger alert
       </chi-alert>
-  .a-tabs-panel#html-centered
-    .a-tab__description
+  .chi-tabs-panel#html-centered
+    .chi-tab__description
       | Apply the class <code>-center</code> to center the content of a Bubble Alert.
     :code(lang="html")
       <div class="chi-alert -danger -center" role="alert">
@@ -147,13 +147,13 @@ p.-text
       chi-alert.-m--2(color=type, icon=val, title=type)
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
-    ul.a-tabs#examples-titled
+    ul.chi-tabs#examples-titled
       li.-active
         a(href=`#webcomponent-titled`) Web component
       li
         a(href=`#html-titled`) HTML
-  .a-tabs-panel.-active#webcomponent-titled
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-titled
+    .chi-tab__description
       | Use the <code>title=""</code> attribute to display a title above the alert text.
     :code(lang="html")
       <!-- Base - No semantic color defined -->
@@ -180,8 +180,8 @@ p.-text
       <chi-alert color="muted" icon="circle-info" title="Muted">
         This is a muted alert
       </chi-alert>
-  .a-tabs-panel#html-titled
-    .a-tab__description
+  .chi-tabs-panel#html-titled
+    .chi-tab__description
       | Use <code>chi-alert__title</code> to add a title to an Alert.
     :code(lang="html")
       <!-- Base - No semantic color class defined -->
@@ -253,13 +253,13 @@ h3 Sizes
     chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success")
       | This is a large success alert
   .example-tabs.-pl--2
-    ul.a-tabs#examples-sizes
+    ul.chi-tabs#examples-sizes
       li.-active
         a(href=`#webcomponent-sizes`) Web component
       li
         a(href=`#html-sizes`) HTML
-  .a-tabs-panel.-active#webcomponent-sizes
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-sizes
+    .chi-tab__description
       | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
     :code(lang="html")
       <!-- Small -->
@@ -286,8 +286,8 @@ h3 Sizes
       <chi-alert color="success" icon="circle-check" size="lg" title="Success">
         This is a large success alert
       </chi-alert>
-  .a-tabs-panel#html-sizes
-    .a-tab__description
+  .chi-tabs-panel#html-sizes
+    .chi-tab__description
       | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code>, <code>-md</code>, and <code>-lg</code>.
     :code(lang="html")
       <!-- Small -->
@@ -348,13 +348,13 @@ p.-text
     chi-alert.-m--2(color='warning', icon='warning', size='lg', title="Warning", dismissible)
       | This is a large dismissible warning alert
   .example-tabs.-pl--2
-    ul.a-tabs#examples-dismissible
+    ul.chi-tabs#examples-dismissible
       li.-active
         a(href=`#webcomponent-dismissible`) Web component
       li
         a(href=`#html-dismissible`) HTML
-  .a-tabs-panel.-active#webcomponent-dismissible
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-dismissible
+    .chi-tab__description
       | Use the <code>dismissible</code> attribute to render a close button that allows users to dismiss an alert.
     :code(lang="html")
       <!-- Dismissible -->
@@ -369,8 +369,8 @@ p.-text
       <chi-alert color="warning" icon="warning" size="lg" title="Warning" dismissible>
         This is a large dismissible warning alert
       </chi-alert>
-  .a-tabs-panel#html-dismissible
-    .a-tab__description
+  .chi-tabs-panel#html-dismissible
+    .chi-tab__description
       | Use the class <code>-dismiss</code>
       | and insert a dismiss button <code>chi-alert__dismiss-button</code>.
     :code(lang="html")
@@ -421,13 +421,13 @@ h3 Actionable
       chi-button(slot="chi-alert__actions", color='dark', variant='outline', size='lg') Secondary action
       chi-button(slot="chi-alert__actions", color='primary', size='lg') Primary action
   .example-tabs.-pl--2
-    ul.a-tabs#examples-actionable
+    ul.chi-tabs#examples-actionable
       li.-active
         a(href=`#webcomponent-actionable`) Web component
       li
         a(href=`#html-actionable`) HTML
-  .a-tabs-panel.-active#webcomponent-actionable
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-actionable
+    .chi-tab__description
       | Add buttons to an alert by defining <code>slot="chi-alert__actions"</code> on each <code>chi-button</code>.
     :code(lang="html")
       <chi-alert color="success" icon="circle-check" size="lg" title="Success" dismissible>
@@ -435,8 +435,8 @@ h3 Actionable
         <chi-button slot="chi-alert__actions" color="dark" variant="outline" size="lg">Secondary action</chi-button>
         <chi-button slot="chi-alert__actions" color="primary" size="lg">Primary action</chi-button>
       </chi-alert>
-  .a-tabs-panel#html-actionable
-    .a-tab__description
+  .chi-tabs-panel#html-actionable
+    .chi-tab__description
       | While <code>chi-alert__actions</code> can be added to any Alert, alert actions are best suited for default or Titled alerts with the size class <code>-lg</code>.
       br
       | Large Alerts have extra <code>chi-alert</code> padding, a larger <code>chi-alert__icon</code>, and a larger <code>chi-alert__dismiss-button</code>.
@@ -474,13 +474,13 @@ h3 Default
       chi-alert.-m--2(color=type, icon=val, type='banner')
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
-    ul.a-tabs#examples-banner-default
+    ul.chi-tabs#examples-banner-default
       li.-active
         a(href=`#webcomponent-banner-default`) Web component
       li
         a(href=`#html-banner-default`) HTML
-  .a-tabs-panel.-active#webcomponent-banner-default
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-banner-default
+    .chi-tab__description
       | Banner alerts include a bottom border by default. If the border contrast conflicts with surrounding elements, it can be removed by
       | applying the class <code>-borderless</code> to <code>chi-alert</code>.
     :code(lang="html")
@@ -508,8 +508,8 @@ h3 Default
       <chi-alert type="banner" icon="circle-info" color="muted">
         This is a muted alert
       </chi-alert>
-  .a-tabs-panel#html-banner-default
-    .a-tab__description
+  .chi-tabs-panel#html-banner-default
+    .chi-tab__description
       | Banner alerts include a bottom border by default. If the border contrast conflicts with surrounding elements, it can be removed by
       | applying the attribute <code>borderless</code>.
     :code(lang="html")
@@ -565,20 +565,20 @@ p.-text
     chi-alert.-m--2(type='banner', icon='circle-warning', color='danger', center)
       | This is a centered danger alert
   .example-tabs.-pl--2
-    ul.a-tabs#examples-banner-centered
+    ul.chi-tabs#examples-banner-centered
       li.-active
         a(href=`#webcomponent-banner-centered`) Web component
       li
         a(href=`#html-banner-centered`) HTML
-  .a-tabs-panel.-active#webcomponent-banner-centered
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-banner-centered
+    .chi-tab__description
       | Use the attribute <code>center</code> to center the content of a Banner Alert.
     :code(lang="html")
       <chi-alert type="banner" icon="circle-warning" color="danger" center>
         This is a centered danger alert
       </chi-alert>
-  .a-tabs-panel#html-banner-centered
-    .a-tab__description
+  .chi-tabs-panel#html-banner-centered
+    .chi-tab__description
       | Apply the class <code>-center</code> to center the content of a Banner Alert.
     :code(lang="html")
       <div class="chi-alert -banner -danger -center" role="alert">
@@ -600,13 +600,13 @@ p.-text
       chi-alert.-m--2(color=type, type='banner', icon=val, title=type)
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
-    ul.a-tabs#examples-banner-titled
+    ul.chi-tabs#examples-banner-titled
       li.-active
         a(href=`#webcomponent-banner-titled`) Web component
       li
         a(href=`#html-banner-titled`) HTML
-  .a-tabs-panel.-active#webcomponent-banner-titled
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-banner-titled
+    .chi-tab__description
       | Use <code>title=""</code> attribute to add a title to an Alert.
     :code(lang="html")
       <!-- Base - No semantic color defined -->
@@ -633,8 +633,8 @@ p.-text
       <chi-alert type="banner" icon="circle-info" color="muted" title="Muted">
         This is a muted alert
       </chi-alert>
-  .a-tabs-panel#html-banner-titled
-    .a-tab__description
+  .chi-tabs-panel#html-banner-titled
+    .chi-tab__description
       | Use <code>chi-alert__title</code> class to add a title to an Alert.
     :code(lang="html")
       <!-- Base - No semantic color class defined -->
@@ -705,13 +705,13 @@ h3 Sizes
     chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='lg', title='Success')
       | This is a large success alert
   .example-tabs.-pl--2
-    ul.a-tabs#examples-banner-sizes
+    ul.chi-tabs#examples-banner-sizes
       li.-active
         a(href=`#webcomponent-banner-sizes`) Web component
       li
         a(href=`#html-banner-sizes`) HTML
-  .a-tabs-panel.-active#webcomponent-banner-sizes
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-banner-sizes
+    .chi-tab__description
       | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
     :code(lang="html")
       <!-- Small -->
@@ -738,8 +738,8 @@ h3 Sizes
       <chi-alert type="banner" color="success" icon="circle-check" size="lg" title="Success">
         This is a large success alert
       </chi-alert>
-  .a-tabs-panel#html-banner-sizes
-    .a-tab__description
+  .chi-tabs-panel#html-banner-sizes
+    .chi-tab__description
       | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code>, <code>-md</code>, and <code>-lg</code>.
     :code(lang="html")
       <!-- Small -->
@@ -798,13 +798,13 @@ h3 Dismissible
     chi-alert.-m--2(type='banner', color='warning', icon='warning', size='lg', title="Warning", dismissible)
       | This is a large dismissible warning alert
   .example-tabs.-pl--2
-    ul.a-tabs#examples-banner-dismissible
+    ul.chi-tabs#examples-banner-dismissible
       li.-active
         a(href=`#webcomponent-banner-dismissible`) Web component
       li
         a(href=`#html-banner-dismissible`) HTML
-  .a-tabs-panel.-active#webcomponent-banner-dismissible
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-banner-dismissible
+    .chi-tab__description
       | Use the <code>dismissible</code> attribute to render a close button that allows users to dismiss an alert.
     :code(lang="html")
       <!-- Dismissible -->
@@ -819,8 +819,8 @@ h3 Dismissible
       <chi-alert type="banner" color="warning" icon="warning" size="lg" title="Warning" dismissible>
         This is a large dismissible warning alert
       </chi-alert>
-  .a-tabs-panel#html-banner-dismissible
-    .a-tab__description
+  .chi-tabs-panel#html-banner-dismissible
+    .chi-tab__description
       | To allow users to dismiss an alert, use the class <code>-dismiss</code>
       | and insert a dismiss button <code>chi-alert__dismiss-button</code>.
     :code(lang="html")
@@ -871,13 +871,13 @@ h3 Actionable
       chi-button(slot="chi-alert__actions", color='dark', variant='outline', size='lg') Secondary action
       chi-button(slot="chi-alert__actions", color='primary', size='lg') Primary action
   .example-tabs.-pl--2
-    ul.a-tabs#examples-banner-actionable
+    ul.chi-tabs#examples-banner-actionable
       li.-active
         a(href=`#webcomponent-banner-actionable`) Web component
       li
         a(href=`#html-banner-actionable`) HTML
-  .a-tabs-panel.-active#webcomponent-banner-actionable
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-banner-actionable
+    .chi-tab__description
       | Add buttons to an alert by defining <code>slot="chi-alert__actions"</code> on each <code>chi-button</code>.
     :code(lang="html")
       <chi-alert type="banner" icon="circle-info" size="lg" title="Base" dismissible>
@@ -885,8 +885,8 @@ h3 Actionable
         <chi-button slot="chi-alert__actions" color="dark" variant="outline" size="lg">Secondary action</chi-button>
         <chi-button slot="chi-alert__actions" color="primary" size="lg">Primary action</chi-button>
       </chi-alert>
-  .a-tabs-panel#html-banner-actionable
-    .a-tab__description
+  .chi-tabs-panel#html-banner-actionable
+    .chi-tab__description
       | While <code>chi-alert__actions</code> can be added to any Alert, alert actions are best suited for default or Titled alerts with the size class <code>-lg</code>.
       br
       | Large Alerts have extra <code>chi-alert</code> padding, a larger <code>chi-alert__icon</code>, and a larger <code>chi-alert__dismiss-button</code>.
@@ -922,13 +922,13 @@ h3 Default
       chi-alert.-m--2(type='toast', icon=val, color=type)
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
-    ul.a-tabs#examples-toast-default
+    ul.chi-tabs#examples-toast-default
       li.-active
         a(href=`#webcomponent-toast-default`) Web component
       li
         a(href=`#html-toast-default`) HTML
-  .a-tabs-panel.-active#webcomponent-toast-default
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-toast-default
+    .chi-tab__description
       | To use a toast alert, set the <code>type</code> attribute to <code>toast</code>.
     :code(lang="html")
       <!-- Base - No semantic color defined -->
@@ -955,8 +955,8 @@ h3 Default
       <chi-alert type="toast" color="muted" icon="circle-info">
         This is a muted alert
       </chi-alert>
-  .a-tabs-panel#html-toast-default
-    .a-tab__description
+  .chi-tabs-panel#html-toast-default
+    .chi-tab__description
       | To use a toast alert, apply the class <code>-toast</code>.
     :code(lang="html")
       <!-- Base - No semantic color class defined -->
@@ -1041,12 +1041,12 @@ h3 Titled
       chi-alert.-m--2(type='toast', color=type, icon=val, title=type)
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
-    ul.a-tabs#examples-toast-titled
+    ul.chi-tabs#examples-toast-titled
       li.-active
         a(href=`#webcomponent-toast-titled`) Web component
       li
         a(href=`#html-toast-titled`) HTML
-  .a-tabs-panel.-active#webcomponent-toast-titled
+  .chi-tabs-panel.-active#webcomponent-toast-titled
     :code(lang="html")
       <!-- Base - No semantic color defined -->
       <chi-alert type="toast" icon="circle-info" title="Base">
@@ -1072,7 +1072,7 @@ h3 Titled
       <chi-alert type="toast" color="muted" icon="circle-info" title="Muted">
         This is a muted alert
       </chi-alert>
-  .a-tabs-panel#html-toast-titled
+  .chi-tabs-panel#html-toast-titled
     :code(lang="html")
       <!-- Base - No semantic color class defined -->
       <div class="chi-alert -toast" role="alert">
@@ -1172,13 +1172,13 @@ h3 Sizes
     chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg', title='Success')
       | This is a large success alert
   .example-tabs.-pl--2
-    ul.a-tabs#examples-toast-sizes
+    ul.chi-tabs#examples-toast-sizes
       li.-active
         a(href=`#webcomponent-toast-sizes`) Web component
       li
         a(href=`#html-toast-sizes`) HTML
-  .a-tabs-panel.-active#webcomponent-toast-sizes
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-toast-sizes
+    .chi-tab__description
       | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
     :code(lang="html")
       <!-- Small -->
@@ -1205,8 +1205,8 @@ h3 Sizes
       <chi-alert type="toast" color="success" icon="circle-check" size="lg" title="Success">
         This is a large success alert
       </chi-alert>
-  .a-tabs-panel#html-toast-sizes
-    .a-tab__description
+  .chi-tabs-panel#html-toast-sizes
+    .chi-tab__description
       | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code>, <code>-md</code>, and <code>-lg</code>.
     :code(lang="html")
       <div class="chi-alert -toast -success -sm" role="alert">

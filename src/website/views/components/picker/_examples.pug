@@ -4,7 +4,7 @@ h3 Type checkbox
 p.-text
   | To render a checkbox picker, apply the class <code>a-picker</code> to an <code>input type="checkbox"</code>
   |  inside a container with the class <code>m-picker</code>.
-ul#a-tabs--Checkbox.a-tabs
+ul#chi-tabs--Checkbox.chi-tabs
   li.-active
     a(href="#BaseCheckbox") Base
   li
@@ -13,7 +13,7 @@ ul#a-tabs--Checkbox.a-tabs
     a(href="#WithCheckboxDescription") With Description
 
 .example.-mb--3
-  #BaseCheckbox.a-tabs-panel.-active
+  #BaseCheckbox.chi-tabs-panel.-active
     .-p--4
       fieldset
         legend.a-label Legend
@@ -35,7 +35,7 @@ ul#a-tabs--Checkbox.a-tabs
         </div>
       </fieldset>
 
-  #WithCheckbox.a-tabs-panel
+  #WithCheckbox.chi-tabs-panel
     .-p--4
       fieldset
         legend.a-label Legend
@@ -70,7 +70,7 @@ ul#a-tabs--Checkbox.a-tabs
         </div>
       </fieldset>
 
-  #WithCheckboxDescription.a-tabs-panel
+  #WithCheckboxDescription.chi-tabs-panel
     .-p--4
       fieldset
         legend.a-label Legend
@@ -115,7 +115,7 @@ ul#a-tabs--Checkbox.a-tabs
       </fieldset>
 
 h3 Type radio
-ul#a-tabs--Radio.a-tabs
+ul#chi-tabs--Radio.chi-tabs
   li.-active
     a(href="#BaseRadio") Base
   li
@@ -124,7 +124,7 @@ ul#a-tabs--Radio.a-tabs
     a(href="#WithRadioDescription") With Description
 
 .example.-mb--3
-  #BaseRadio.a-tabs-panel.-active
+  #BaseRadio.chi-tabs-panel.-active
     .-p--4
         fieldset
           legend.a-label Legend
@@ -145,7 +145,7 @@ ul#a-tabs--Radio.a-tabs
           <label for="ei-Radio2">Radio2</label>
         </div>
       </fieldset>
-  #WithRadio.a-tabs-panel
+  #WithRadio.chi-tabs-panel
     .-p--4
         fieldset
           legend.a-label Legend
@@ -179,7 +179,7 @@ ul#a-tabs--Radio.a-tabs
           </label>
         </div>
       </fieldset>
-  #WithRadioDescription.a-tabs-panel
+  #WithRadioDescription.chi-tabs-panel
     .-p--4
         fieldset
           legend.a-label Legend
@@ -227,7 +227,7 @@ h2 Sizes
 p.-text
   | Apply size classes to render pickers larger or smaller: <code>-sm</code>, <code>-md</code>, <code>-lg</code>.
   | The default size is <code>-md</code>.
-ul#a-tabs--Sizes.a-tabs
+ul#chi-tabs--Sizes.chi-tabs
   li.-active
     a(href="#Sm") Size -sm
   li
@@ -236,7 +236,7 @@ ul#a-tabs--Sizes.a-tabs
     a(href="#Lg") Size -lg
 
 .example.-mb--3
-  #Sm.a-tabs-panel.-active
+  #Sm.chi-tabs-panel.-active
     .-p--4
       fieldset
         legend.a-label Legend
@@ -273,7 +273,7 @@ ul#a-tabs--Sizes.a-tabs
           </label>
         </div>
       </fieldset>
-  #Md.a-tabs-panel
+  #Md.chi-tabs-panel
     .-p--4
       fieldset
         legend.a-label Legend
@@ -310,7 +310,7 @@ ul#a-tabs--Sizes.a-tabs
           </label>
         </div>
       </fieldset>
-  #Lg.a-tabs-panel
+  #Lg.chi-tabs-panel
     .-p--4
       fieldset
         legend.a-label Legend
@@ -358,8 +358,8 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('a-tabs--Checkbox'));
-      chi.tab(document.getElementById('a-tabs--Radio'));
-      chi.tab(document.getElementById('a-tabs--Sizes'));
+      chi.tab(document.getElementById('chi-tabs--Checkbox'));
+      chi.tab(document.getElementById('chi-tabs--Radio'));
+      chi.tab(document.getElementById('chi-tabs--Sizes'));
     }
   );

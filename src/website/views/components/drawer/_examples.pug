@@ -4,16 +4,16 @@
     p.chi-alert__text This component requires Javascript
 
 h2 Examples
-ul#a-tabs--drawer.a-tabs
+ul#chi-tabs--drawer.chi-tabs
   li.-active
-    a(href='#a-tabs--drawer-left') Left
+    a(href='#chi-tabs--drawer-left') Left
   li
-    a(href='#a-tabs--drawer-right') Right
+    a(href='#chi-tabs--drawer-right') Right
   li
-    a(href='#a-tabs--drawer-top') Top
+    a(href='#chi-tabs--drawer-top') Top
   li
-    a(href='#a-tabs--drawer-bottom') Bottom
-#a-tabs--drawer-left.a-tabs-panel.-active
+    a(href='#chi-tabs--drawer-bottom') Bottom
+#chi-tabs--drawer-left.chi-tabs-panel.-active
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
       .-p--3
@@ -22,17 +22,17 @@ ul#a-tabs--drawer.a-tabs
       chi-drawer(position='left', active, collapsible)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
-      ul.a-tabs#examples-default
+      ul.chi-tabs#examples-default
         li.-active
           a(href=`#webcomponent`) Web component
         li
           a(href=`#html`) HTML
-    .a-tabs-panel.-active#webcomponent
+    .chi-tabs-panel.-active#webcomponent
       :code(lang="html")
         <chi-drawer position="left" active collapsible>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
-    .a-tabs-panel#html
+    .chi-tabs-panel#html
       :code(lang="html")
         <div class="chi-drawer -left -active">
           <div class="chi-drawer__header">
@@ -47,7 +47,7 @@ ul#a-tabs--drawer.a-tabs
           </div>
         </div>
 
-#a-tabs--drawer-right.a-tabs-panel
+#chi-tabs--drawer-right.chi-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
       .-p--3
@@ -56,17 +56,17 @@ ul#a-tabs--drawer.a-tabs
       chi-drawer(position='right', active, collapsible)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
-      ul.a-tabs#examples-default-right
+      ul.chi-tabs#examples-default-right
         li.-active
           a(href=`#webcomponent-right`) Web component
         li
           a(href=`#html-right`) HTML
-    .a-tabs-panel.-active#webcomponent-right
+    .chi-tabs-panel.-active#webcomponent-right
       :code(lang="html")
         <chi-drawer position="right" active collapsible>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
-    .a-tabs-panel#html-right
+    .chi-tabs-panel#html-right
       :code(lang="html")
         <div class="chi-drawer -right -active">
           <div class="chi-drawer__header">
@@ -81,7 +81,7 @@ ul#a-tabs--drawer.a-tabs
           </div>
         </div>
 
-#a-tabs--drawer-top.a-tabs-panel
+#chi-tabs--drawer-top.chi-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
       .-p--3
@@ -90,17 +90,17 @@ ul#a-tabs--drawer.a-tabs
       chi-drawer(position='top', active, collapsible)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
-      ul.a-tabs#examples-default-top
+      ul.chi-tabs#examples-default-top
         li.-active
           a(href=`#webcomponent-top`) Web component
         li
           a(href=`#html-top`) HTML
-    .a-tabs-panel.-active#webcomponent-top
+    .chi-tabs-panel.-active#webcomponent-top
       :code(lang="html")
         <chi-drawer position="top" active collapsible>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
-    .a-tabs-panel#html-top
+    .chi-tabs-panel#html-top
       :code(lang="html")
         <div class="chi-drawer -top -active">
           <div class="chi-drawer__header">
@@ -115,7 +115,7 @@ ul#a-tabs--drawer.a-tabs
           </div>
         </div>
 
-#a-tabs--drawer-bottom.a-tabs-panel
+#chi-tabs--drawer-bottom.chi-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
       .-p--3
@@ -124,17 +124,17 @@ ul#a-tabs--drawer.a-tabs
       chi-drawer(position='bottom', active, collapsible)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
-      ul.a-tabs#examples-default-bottom
+      ul.chi-tabs#examples-default-bottom
         li.-active
           a(href=`#webcomponent-bottom`) Web component
         li
           a(href=`#html-bottom`) HTML
-    .a-tabs-panel.-active#webcomponent-bottom
+    .chi-tabs-panel.-active#webcomponent-bottom
       :code(lang="html")
         <chi-drawer position="bottom" active collapsible>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
-    .a-tabs-panel#html-bottom
+    .chi-tabs-panel#html-bottom
       :code(lang="html")
         <div class="chi-drawer -bottom -active">
           <div class="chi-drawer__header">
@@ -157,20 +157,20 @@ p.-text
     chi-drawer(position='bottom', backdrop, active, collapsible)
       .-px--2.-text Drawer content here
   .example-tabs.-pl--2
-    ul.a-tabs#examples-backdrop
+    ul.chi-tabs#examples-backdrop
       li.-active
         a(href=`#webcomponent-backdrop`) Web component
       li
         a(href=`#html-backdrop`) HTML
-  .a-tabs-panel.-active#webcomponent-backdrop
+  .chi-tabs-panel.-active#webcomponent-backdrop
     :code(lang="html")
       <chi-drawer position="bottom" backdrop active collapsible>
         <div class="-px--2 -text">Drawer content here</div>
       </chi-drawer>
-  .a-tabs-panel#html-backdrop
+  .chi-tabs-panel#html-backdrop
     :code(lang="html")
-      <div class="m-backdrop">
-        <div class="m-backdrop__wrapper">
+      <div class="chi-backdrop">
+        <div class="chi-backdrop__wrapper">
           <div class="chi-drawer -bottom -active">
             <button class="chi-btn -icon -close" aria-label="Close">
               <div class="chi-btn__content">
@@ -202,11 +202,11 @@ h3 Titled
       </chi-drawer>
   .a-tabs-panel#html-titled
     :code(lang="html")
-      <div class="m-backdrop">
-        <div class="m-backdrop__wrapper">
-          <div class="m-drawer -left -active">
-            <div class="m-drawer__header">
-              <span class="m-drawer__title">
+      <div class="chi-backdrop">
+        <div class="chi-backdrop__wrapper">
+          <div class="chi-drawer -left -active">
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">
                 Drawer title here
               </span>
               <button class="a-btn -icon -close" aria-label="Close">
@@ -215,7 +215,7 @@ h3 Titled
                 </div>
               </button>
             </div>
-            <div class="m-drawer__content">
+            <div class="chi-drawer__content">
               <div class="-px--2 -text">Drawer content here</div>
             </div>
           </div>
@@ -223,33 +223,33 @@ h3 Titled
       </div>
 
 h3 Close button
-ul#a-tabs--collapsible.a-tabs
+ul#chi-tabs--collapsible.chi-tabs
   li.-active
-    a(href='#a-tabs--collapsible-with') Collapsible
+    a(href='#chi-tabs--collapsible-with') Collapsible
   li
-    a(href='#a-tabs--collapsible-without') No collapsible
-#a-tabs--collapsible-with.a-tabs-panel.-active
+    a(href='#chi-tabs--collapsible-without') No collapsible
+#chi-tabs--collapsible-with.chi-tabs-panel.-active
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
       chi-drawer(position='left' active backdrop collapsible)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
-      ul.a-tabs#examples-collapsible
+      ul.chi-tabs#examples-collapsible
         li.-active
           a(href=`#webcomponent-collapsible`) Web component
         li
           a(href=`#html-collapsible`) HTML
-    .a-tabs-panel.-active#webcomponent-collapsible
-      .a-tab__description
+    .chi-tabs-panel.-active#webcomponent-collapsible
+      .chi-tab__description
         | Use the <code>collapsible</code> attribute to include a close button
       :code(lang="html")
         <chi-drawer position="left" active backdrop collapsible>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
-    .a-tabs-panel#html-collapsible
+    .chi-tabs-panel#html-collapsible
       :code(lang="html")
-        <div class="m-backdrop">
-          <div class="m-backdrop__wrapper">
+        <div class="chi-backdrop">
+          <div class="chi-backdrop__wrapper">
             <div class="chi-drawer -bottom -active">
               <button class="chi-btn -icon -close" aria-label="Close">
                 <div class="chi-btn__content">
@@ -262,26 +262,26 @@ ul#a-tabs--collapsible.a-tabs
             </div>
           </div>
         </div>
-#a-tabs--collapsible-without.a-tabs-panel
+#chi-tabs--collapsible-without.chi-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
       chi-drawer(position='left' active backdrop)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
-      ul.a-tabs#examples-noncollapsible
+      ul.chi-tabs#examples-noncollapsible
         li.-active
           a(href=`#webcomponent-noncollapsible`) Web component
         li
           a(href=`#html-noncollapsible`) HTML
-    .a-tabs-panel.-active#webcomponent-noncollapsible
+    .chi-tabs-panel.-active#webcomponent-noncollapsible
       :code(lang="html")
         <chi-drawer position="left" active backdrop>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
-    .a-tabs-panel#html-noncollapsible
+    .chi-tabs-panel#html-noncollapsible
       :code(lang="html")
-        <div class="m-backdrop">
-          <div class="m-backdrop__wrapper">
+        <div class="chi-backdrop">
+          <div class="chi-backdrop__wrapper">
             <div class="chi-drawer -bottom -active">
               <div class="chi-drawer__content -d--flex -align-items--center -justify-content--center">
                 <div class="-px--2 -text">Drawer content here</div>
@@ -294,31 +294,31 @@ h3 Header
 p.-text
   | Header markup is optional. Remove it to make the content fill the drawer.
 
-ul#a-tabs--header.a-tabs
+ul#chi-tabs--header.chi-tabs
   li.-active
-    a(href='#a-tabs--header-with') Header
+    a(href='#chi-tabs--header-with') Header
   li
-    a(href='#a-tabs--header-without') No header
-#a-tabs--header-with.a-tabs-panel.-active
+    a(href='#chi-tabs--header-without') No header
+#chi-tabs--header-with.chi-tabs-panel.-active
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
       chi-drawer(position='left' active collapsible backdrop)
           .-px--2.-text Drawer content here
     .example-tabs.-pl--2
-      ul.a-tabs#examples-header
+      ul.chi-tabs#examples-header
         li.-active
           a(href=`#webcomponent-header`) Web component
         li
           a(href=`#html-header`) HTML
-    .a-tabs-panel.-active#webcomponent-header
+    .chi-tabs-panel.-active#webcomponent-header
       :code(lang="html")
         <chi-drawer position="left" active collapsible backdrop>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
-    .a-tabs-panel#html-header
+    .chi-tabs-panel#html-header
       :code(lang="html")
-        <div class="m-backdrop">
-          <div class="m-backdrop__wrapper">
+        <div class="chi-backdrop">
+          <div class="chi-backdrop__wrapper">
             <div class="chi-drawer -left -active">
               <div class="chi-drawer__header">
                 <button class="chi-btn -icon -close" aria-label="Close">
@@ -334,26 +334,26 @@ ul#a-tabs--header.a-tabs
           </div>
         </div>
 
-#a-tabs--header-without.a-tabs-panel
+#chi-tabs--header-without.chi-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
       chi-drawer(position='left' active collapsible backdrop headless)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
-      ul.a-tabs#examples-headerless
+      ul.chi-tabs#examples-headerless
         li.-active
           a(href=`#webcomponent-headerless`) Web component
         li
           a(href=`#html-headerless`) HTML
-    .a-tabs-panel.-active#webcomponent-headerless
+    .chi-tabs-panel.-active#webcomponent-headerless
       :code(lang="html")
         <chi-drawer position="left" active collapsible backdrop headless>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
-    .a-tabs-panel#html-headerless
+    .chi-tabs-panel#html-headerless
       :code(lang="html")
-        <div class="m-backdrop">
-          <div class="m-backdrop__wrapper">
+        <div class="chi-backdrop">
+          <div class="chi-backdrop__wrapper">
             <div class="chi-drawer -left -active">
               <button class="chi-btn -icon -close" aria-label="Close">
                 <div class="chi-btn__content">
@@ -388,13 +388,13 @@ p.-text
     chi-drawer#interactive-drawer(position="right", backdrop, collapsible)
       .-px--2.-text Drawer content here
   .example-tabs.-pl--2
-    ul#examples-interaction.a-tabs
+    ul#examples-interaction.chi-tabs
       li.-active
         a(href='#webcomponent-interaction') Web component
       li
         a(href='#html-interaction') HTML + JS
-  #webcomponent-interaction.a-tabs-panel.-active
-    .a-tab__description
+  #webcomponent-interaction.chi-tabs-panel.-active
+    .chi-tab__description
       | Modify the <code>active</code> attribute or property to make the drawer show or hide. The <code>chi-drawer</code>
       | element also has three public methods to interact with it: <code>show()</code>, <code>hide()</code>,
       | <code>toggle()</code>.
@@ -417,8 +417,8 @@ p.-text
           // or drawer.active = !drawer.active;
         });
       </script>
-  #html-interaction.a-tabs-panel
-    .a-tab__description
+  #html-interaction.chi-tabs-panel
+    .chi-tab__description
       | Use the function <code>chi.drawer(elem)</code> to instantiate a new drawer component in the DOM
       | element passed as a parameter. You must use the trigger element as the parameter.
     :code(lang="html")
@@ -428,8 +428,8 @@ p.-text
         </div>
       </button>
 
-      <div class="m-backdrop -closed">
-        <div class="m-backdrop__wrapper">
+      <div class="chi-backdrop -closed">
+        <div class="chi-backdrop__wrapper">
           <div id="drawer-1" class="chi-drawer -right">
             <div class="chi-drawer__header">
               <button class="chi-btn -icon -close" aria-label="Close">
@@ -451,15 +451,15 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('a-tabs--drawer'));
-      chi.tab(document.getElementById('a-tabs--header'));
+      chi.tab(document.getElementById('chi-tabs--drawer'));
+      chi.tab(document.getElementById('chi-tabs--header'));
       chi.tab(document.getElementById('examples-default'));
       chi.tab(document.getElementById('examples-default-right'));
       chi.tab(document.getElementById('examples-default-top'));
       chi.tab(document.getElementById('examples-default-bottom'));
       chi.tab(document.getElementById('examples-backdrop'));
       chi.tab(document.getElementById('examples-titled'));
-      chi.tab(document.getElementById('a-tabs--collapsible'));
+      chi.tab(document.getElementById('chi-tabs--collapsible'));
       chi.tab(document.getElementById('examples-collapsible'));
       chi.tab(document.getElementById('examples-noncollapsible'));
       chi.tab(document.getElementById('examples-header'));

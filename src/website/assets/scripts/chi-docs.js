@@ -184,7 +184,7 @@ onLoad(() => {
   if (urlHash) {
     document.querySelector('#viewtabs li.-active').classList.remove('-active');
 
-    Array.prototype.forEach.call(document.querySelectorAll('.a-tabs-panel'), function(tabContent) {
+    Array.prototype.forEach.call(document.querySelectorAll('.chi-tabs-panel'), function(tabContent) {
       tabContent.classList.remove('-active');
 
       if (tabContent.contains(document.querySelector(`${urlHash}`))) {

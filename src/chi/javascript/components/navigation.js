@@ -140,7 +140,7 @@ class Navigation extends Component {
       elem.getAttribute('href') &&
       (
         !Util.getTarget(elem) ||
-        !Util.hasClass(Util.getTarget(elem), 'a-tabs-panel')
+        !Util.hasClass(Util.getTarget(elem), 'chi-tabs-panel')
       );
   }
 

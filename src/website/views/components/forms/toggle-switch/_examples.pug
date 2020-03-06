@@ -9,15 +9,15 @@ h3 Base
     .m-form__item
       chi-switch(id='toggle1',label='Label')
   .example-tabs.-pl--2
-    ul.a-tabs#examples-default
+    ul.chi-tabs#examples-default
       li.-active
         a(href=`#webcomponent`) Web component
       li
         a(href=`#html`) HTML
-  .a-tabs-panel.-active#webcomponent
+  .chi-tabs-panel.-active#webcomponent
     :code(lang="html")
       <chi-switch id="toggle1" label="Label"></chi-switch>
-  .a-tabs-panel#html
+  .chi-tabs-panel#html
     :code(lang="html")
       <div class="m-form__item">
         <label class="a-switch" for="toggle1">
@@ -35,15 +35,15 @@ h3 Disabled
     .m-form__item
       chi-switch(id='toggle2', label='Label', disabled)
   .example-tabs.-pl--2
-    ul.a-tabs#examples-disabled
+    ul.chi-tabs#examples-disabled
       li.-active
         a(href=`#webcomponent-disabled`) Web component
       li
         a(href=`#html-disabled`) HTML
-  .a-tabs-panel.-active#webcomponent-disabled
+  .chi-tabs-panel.-active#webcomponent-disabled
     :code(lang="html")
       <chi-switch id="toggle2" label="Label" disabled></chi-switch>
-  .a-tabs-panel#html-disabled
+  .chi-tabs-panel#html-disabled
     :code(lang="html")
       <div class="m-form__item">
         <label class="a-switch" for="toggle2">
@@ -64,12 +64,12 @@ h3 Stacked
     .m-form__item
       chi-switch(id='toggle4', label='Label')
   .example-tabs.-pl--2
-    ul.a-tabs#examples-stacked
+    ul.chi-tabs#examples-stacked
       li.-active
         a(href=`#webcomponent-stacked`) Web component
       li
         a(href=`#html-stacked`) HTML
-  .a-tabs-panel.-active#webcomponent-stacked
+  .chi-tabs-panel.-active#webcomponent-stacked
     :code(lang="html")
       <div class="m-form__item">
         <chi-switch id="toggle3" label="Label"></chi-switch>
@@ -77,7 +77,7 @@ h3 Stacked
       <div class="m-form__item">
         <chi-switch id="toggle4" label="Label"></chi-switch>
       </div>
-  .a-tabs-panel#html-stacked
+  .chi-tabs-panel#html-stacked
     :code(lang="html")
       <fieldset>
         <legend class="a-label">Configure options</legend>
@@ -109,13 +109,13 @@ h3 Inline
     .m-form__item.-inline
       chi-switch(id='toggle6', label='Label')
   .example-tabs.-pl--2
-    ul.a-tabs#examples-inline
+    ul.chi-tabs#examples-inline
       li.-active
         a(href=`#webcomponent-inline`) Web component
       li
         a(href=`#html-inline`) HTML
-  .a-tabs-panel.-active#webcomponent-inline
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-inline
+    .chi-tab__description
       | Apply the <code>-inline</code> class to <code>m-form__item</code> for displaying toggle switches inline.
     :code(lang="html")
       <div class="m-form__item -inline">
@@ -124,8 +124,8 @@ h3 Inline
       <div class="m-form__item -inline">
         <chi-switch id="toggle6" label="Label"></chi-switch>
       </div>
-  .a-tabs-panel#html-inline
-    .a-tab__description
+  .chi-tabs-panel#html-inline
+    .chi-tab__description
       | Apply the class <code>-inline</code> to <code>m-form__item</code> to display switches inline.
     :code(lang="html")
       <fieldset>
@@ -266,21 +266,21 @@ h3 Switch with Hidden Label
     .m-form__item
       chi-switch(id='toggle7',label='Label', hide-label)
   .example-tabs.-pl--2
-    ul.a-tabs#examples-hidden-label
+    ul.chi-tabs#examples-hidden-label
       li.-active
         a(href=`#webcomponent-hidden-label`) Web component
       li
         a(href=`#html-hidden-label`) HTML
-  .a-tabs-panel.-active#webcomponent-hidden-label
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-hidden-label
+    .chi-tab__description
       | Apply the <code>hide-label</code> attribute to <code>chi-switch</code> to render a switch without a label. Use this method for rendering switches
       | in close proximity to other text that clearly describes its purpose.
     :code(lang="html")
       <div class="m-form__item">
         <chi-switch id="toggle7" label="Label" hide-label></chi-switch>
       </div>
-  .a-tabs-panel#html-hidden-label
-    .a-tab__description
+  .chi-tabs-panel#html-hidden-label
+    .chi-tab__description
       | Apply the class <code>-label--hide</code> to <code>a-switch</code> to render a switch without a label. Use this method for rendering switches
       | in close proximity to other text that clearly describes its purpose.
     :code(lang="html")

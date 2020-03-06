@@ -59,12 +59,12 @@ dl
       each val2 in [1,2,3,4,5]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   .-pl--2
-    ul.a-tabs#examples-default
+    ul.chi-tabs#examples-default
       li.-active
         a(href=`#example-base-html`) HTML
       li
         a(href=`#example-base-js`) JS
-  .a-tabs-panel.-active#example-base-html
+  .chi-tabs-panel.-active#example-base-html
     :code(lang='html')
       <aside class="m-sidenav" id="sidenav-0">
         <div class="m-sidenav__content">
@@ -240,7 +240,7 @@ dl
           </div>
         </div>
       </aside>
-  .a-tabs-panel#example-base-js
+  .chi-tabs-panel#example-base-js
     :code(lang='html')
       <script>chi.sidenav(document.getElementById('sidenav-0'));</script>
 
@@ -281,12 +281,12 @@ h3 Inverse
       each val2 in [1,2,3,4,5]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   .-pl--2
-    ul.a-tabs#examples-inverse
+    ul.chi-tabs#examples-inverse
       li.-active
         a(href=`#example-inverse-html`) HTML
       li
         a(href=`#example-inverse-js`) JS
-  .a-tabs-panel.-active#example-inverse-html
+  .chi-tabs-panel.-active#example-inverse-html
     :code(lang='html')
       <aside class="m-sidenav -inverse" id="sidenav-1">
         <div class="m-sidenav__content">
@@ -462,7 +462,7 @@ h3 Inverse
           </div>
         </div>
       </aside>
-  .a-tabs-panel#example-inverse-js
+  .chi-tabs-panel#example-inverse-js
     :code(lang='html')
       <script>chi.sidenav(document.getElementById('sidenav-1'));</script>
 
@@ -497,7 +497,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                       a(href=`#drawer-item-list-${val1}-${val2}`)
                         .m-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
                       .m-sidenav__drawer-item-list(id=`drawer-item-list-${val1}-${val2}`)
-                        ul.a-tabs.-vertical.-sm
+                        ul.chi-tabs.-vertical.-sm
                           li
                             a(class=`a-sidenav__drawer-item-tab ${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
                           li
@@ -516,12 +516,12 @@ h3(id=`example-${example}`) Enterprise Global Navigation
       each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   .-pl--2
-    ul#a-tabs-three-level.a-tabs
+    ul#chi-tabs-three-level.chi-tabs
       li.-active
-        a(href='#a-tabs-three-level-html') HTML
+        a(href='#chi-tabs-three-level-html') HTML
       li
-        a(href='#a-tabs-three-level-js') JS
-  #a-tabs-three-level-html.a-tabs-panel.-active
+        a(href='#chi-tabs-three-level-js') JS
+  #chi-tabs-three-level-html.chi-tabs-panel.-active
     :code(lang="html")
       <aside class="m-sidenav -inverse -global-nav" id="sidenav-global-nav-1">
         <div class="m-sidenav__content">
@@ -565,7 +565,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                     <div class="m-sidenav__title">Title A</div>
                   </a>
                   <div class="m-sidenav__drawer-item-list" id="drawer-item-list-1-A">
-                    <ul class="a-tabs -vertical -sm">
+                    <ul class="chi-tabs -vertical -sm">
                       <li>
                         <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab A
@@ -589,7 +589,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                     <div class="m-sidenav__title">Title B</div>
                   </a>
                   <div class="m-sidenav__drawer-item-list" id="drawer-item-list-1-B">
-                    <ul class="a-tabs -vertical -sm">
+                    <ul class="chi-tabs -vertical -sm">
                       <li>
                         <a class="a-sidenav__drawer-item-tab -active" href="#exampleHashTarget">
                           Sub tab A
@@ -649,7 +649,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                     <div class="m-sidenav__title">Title E</div>
                   </a>
                   <div class="m-sidenav__drawer-item-list" id="drawer-item-list-2-A">
-                    <ul class="a-tabs -vertical -sm">
+                    <ul class="chi-tabs -vertical -sm">
                       <li>
                         <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab A
@@ -673,7 +673,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                     <div class="m-sidenav__title">Title F</div>
                   </a>
                   <div class="m-sidenav__drawer-item-list" id="drawer-item-list-2-B">
-                    <ul class="a-tabs -vertical -sm">
+                    <ul class="chi-tabs -vertical -sm">
                       <li>
                         <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab A
@@ -721,7 +721,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
           </div>
         </div>
       </aside>
-  #a-tabs-three-level-js.a-tabs-panel
+  #chi-tabs-three-level-js.chi-tabs-panel
     :code(lang="html")
       <script>
         chi.sidenav(document.getElementById('sidenav-global-nav-1'), {
@@ -771,12 +771,12 @@ h3 -sm
       each val2 in [1,2,3,4,5]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   .-pl--2
-    ul#examples-sizes-sm.a-tabs
+    ul#examples-sizes-sm.chi-tabs
       li.-active
         a(href='#examples-sizes-sm-html') HTML
       li
         a(href='#examples-sizes-sm-js') JS
-  #examples-sizes-sm-html.a-tabs-panel.-active
+  #examples-sizes-sm-html.chi-tabs-panel.-active
     :code(lang='html')
       <aside class="m-sidenav -sm" id="sidenav-3">
         <div class="m-sidenav__content">
@@ -952,7 +952,7 @@ h3 -sm
           </div>
         </div>
       </aside>
-  #examples-sizes-sm-js.a-tabs-panel
+  #examples-sizes-sm-js.chi-tabs-panel
     :code(lang='html')
       <script>chi.sidenav(document.getElementById('sidenav-3'));</script>
 
@@ -993,12 +993,12 @@ h3 -md
       each val2 in [1,2,3,4,5]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   .-pl--2
-    ul#examples-sizes-md.a-tabs
+    ul#examples-sizes-md.chi-tabs
       li.-active
         a(href='#examples-sizes-md-html') HTML
       li
         a(href='#examples-sizes-md-js') JS
-  #examples-sizes-md-html.a-tabs-panel.-active
+  #examples-sizes-md-html.chi-tabs-panel.-active
     :code(lang='html')
       <aside class="m-sidenav -md" id="sidenav-4">
         <div class="m-sidenav__content">
@@ -1174,7 +1174,7 @@ h3 -md
           </div>
         </div>
       </aside>
-  #examples-sizes-md-js.a-tabs-panel
+  #examples-sizes-md-js.chi-tabs-panel
     :code(lang='html')
       <script>chi.sidenav(document.getElementById('sidenav-4'));</script>
 
@@ -1215,12 +1215,12 @@ h3 -lg
       each val2 in [1,2,3,4,5]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   .-pl--2
-    ul#examples-sizes-lg.a-tabs
+    ul#examples-sizes-lg.chi-tabs
       li.-active
         a(href='#examples-sizes-lg-html') HTML
       li
         a(href='#examples-sizes-lg-js') JS
-  #examples-sizes-lg-html.a-tabs-panel.-active
+  #examples-sizes-lg-html.chi-tabs-panel.-active
     :code(lang='html')
       <aside class="m-sidenav -lg" id="sidenav-5">
         <div class="m-sidenav__content">
@@ -1396,7 +1396,7 @@ h3 -lg
           </div>
         </div>
       </aside>
-  #examples-sizes-lg-js.a-tabs-panel
+  #examples-sizes-lg-js.chi-tabs-panel
     :code(lang='html')
       <script>chi.sidenav(document.getElementById('sidenav-5'));</script>
 
@@ -1502,7 +1502,7 @@ script.
 
       chi.tab(document.getElementById('examples-default'));
       chi.tab(document.getElementById('examples-inverse'));
-      chi.tab(document.getElementById('a-tabs-three-level'));
+      chi.tab(document.getElementById('chi-tabs-three-level'));
       chi.tab(document.getElementById('examples-sizes-sm'));
       chi.tab(document.getElementById('examples-sizes-md'));
       chi.tab(document.getElementById('examples-sizes-lg'));

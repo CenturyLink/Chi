@@ -8,7 +8,7 @@
     height: 100%;
 
     .chi-drawer {
-      ul.a-tabs {
+      ul.chi-tabs {
         li {
           .a-collection__title {
             font-size: 0.875rem;
@@ -64,7 +64,7 @@
           pointer-events: none;
         }
 
-        ul.a-tabs {
+        ul.chi-tabs {
           li {
             .a-collection__title {
               font-size: 0.875rem;
@@ -146,7 +146,7 @@
 
           >,
           .changelog__version >,
-          .a-tabs-panel >,
+          .chi-tabs-panel >,
           > .a-grid .a-col,
           > .chi-epanel {
             h1 {
@@ -212,8 +212,8 @@
             margin: 0;
           }
 
-          .a-tabs-panel {
-            .a-tab__description {
+          .chi-tabs-panel {
+            .chi-tab__description {
               background-color: set-color(grey, 15);
               font-size: 0.875rem;
               padding: 1rem 1rem 0 1rem;

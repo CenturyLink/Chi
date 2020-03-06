@@ -28,17 +28,17 @@ p.-text
         .a-col.-w--2.-w-sm--1
           .chi-avatar
             i(class=`chi-icon icon-${icon}`)
-  ul#a-tabs--icons.a-tabs.-ml--3
+  ul#chi-tabs--icons.chi-tabs.-ml--3
     li.-active
       a(href="#iconsWebFont") Web Font
     li
       a(href="#iconsSVG") SVG
-  #iconsWebFont.a-tabs-panel.-active
+  #iconsWebFont.chi-tabs-panel.-active
     :code(lang="html")
       <div class="chi-avatar">
         <i class="chi-icon icon-user"></i>
       </div>
-  #iconsSVG.a-tabs-panel
+  #iconsSVG.chi-tabs-panel
     :code(lang="html")
       <div class="chi-avatar chi-icon">
         <svg>
@@ -71,13 +71,13 @@ p.-text
   | <code>-teal</code>, <code>-mint</code>, <code>-green</code>, <code>-yellow</code>, <code>-orange</code>,
   | <code>-secondary</code>, <code>-primary</code>
 
-ul#a-tabs--colors.a-tabs
+ul#chi-tabs--colors.chi-tabs
   li.-active
    a(href="#coloredInitials") Initial
   li
     a(href="#coloredIcons") Icon
 .example.-mb--3
-  #coloredInitials.a-tabs-panel.-active
+  #coloredInitials.chi-tabs-panel.-active
     .-p--3
       .a-grid.-align-items--end
         each color in colors
@@ -100,7 +100,7 @@ ul#a-tabs--colors.a-tabs
       <div class="chi-avatar -orange">AA</div>
       <div class="chi-avatar -primary">AA</div>
 
-  #coloredIcons.a-tabs-panel
+  #coloredIcons.chi-tabs-panel
     .-p--3
       .a-grid.-align-items--end
         each color in colors
@@ -183,7 +183,7 @@ p.-text
   | All three avatar styles support a full spectrum of sizes: <code>-xs</code>, <code>-sm</code>,
   | <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
   | <code>-md</code> is the default size.
-ul#a-tabs--sizes.a-tabs
+ul#chi-tabs--sizes.chi-tabs
   li.-active
     a(href="#sizedInitials") Initial
   li
@@ -192,7 +192,7 @@ ul#a-tabs--sizes.a-tabs
     a(href="#sizedImages") Image
 
 .example.-mb--3
-  #sizedInitials.a-tabs-panel.-active
+  #sizedInitials.chi-tabs-panel.-active
     .-p--3
       .a-grid.-align-items--end
         each size in sizes
@@ -209,7 +209,7 @@ ul#a-tabs--sizes.a-tabs
       <div class="chi-avatar -xl">AA</div>
       <div class="chi-avatar -xxl">AA</div>
 
-  #sizedIcons.a-tabs-panel
+  #sizedIcons.chi-tabs-panel
     .-p--3
       .a-grid.-align-items--end
         each size in sizes
@@ -243,7 +243,7 @@ ul#a-tabs--sizes.a-tabs
       <div class="chi-avatar -xxl">
         <i class="chi-icon icon-user"></i>
       </div>
-  #sizedImages.a-tabs-panel
+  #sizedImages.chi-tabs-panel
     .-p--3
       .a-grid.-align-items--end
         each size in sizes
@@ -299,8 +299,8 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('a-tabs--sizes'));
-      chi.tab(document.getElementById('a-tabs--colors'));
-      chi.tab(document.getElementById('a-tabs--icons'));
+      chi.tab(document.getElementById('chi-tabs--sizes'));
+      chi.tab(document.getElementById('chi-tabs--colors'));
+      chi.tab(document.getElementById('chi-tabs--icons'));
     }
   );

@@ -6,7 +6,7 @@ title: Tabs
   each style in ['base', 'border']
     each size in ['xs', 'sm', 'medium', 'lg']
       h4= `Tabs ${size} ${style}`
-      ul.a-tabs(class=`-${style} -${size}`)
+      ul.chi-tabs(class=`-${style} -${size}`)
         li.-active
           a(href='#') Active tab
         li
@@ -21,10 +21,10 @@ each active in ['', 'activeAlt']
     div(class=`test-vertical-${active}-${style}`)
       each size in ['sm', 'medium', 'lg']
         h4= `Tabs vertical ${size} ${style} ${active}`
-        ul.a-tabs.-vertical(class=`-${style} -${size}`)
+        ul.chi-tabs.-vertical(class=`-${style} -${size}`)
           li(class=`-active -${active}`)
             a(href='#') Active tab
-            ul.a-tabs__subtabs
+            ul.chi-tabs__subtabs
               li.-active
                 a(href='#') Buttons
               li
@@ -43,14 +43,14 @@ each active in ['', 'activeAlt']
     div(class=`test-vertical-icons-${active}-${style}`)
       each size in ['sm', 'medium', 'lg']
         h4= `Tabs vertical icons ${size} ${style} ${active}`
-        ul.a-tabs.-vertical.-icons(class=`-${alt} -${style} -${size}`)
+        ul.chi-tabs.-vertical.-icons(class=`-${alt} -${style} -${size}`)
           li(class=`-active -${active}`)
             a(href='#')
               div(class=`chi-icon`)
                 svg
                   use(xlink:href='#icon-atom')
               span Active tab
-            ul.a-tabs__subtabs
+            ul.chi-tabs__subtabs
               li.-active
                 a(href='#') Buttons
               li
@@ -81,7 +81,7 @@ each active in ['', 'active']
     div(class=`test-multi-level-${active}-${style}`)
       each size in ['sm', 'medium', 'lg']
         h4= `Tabs vertical multi-level ${size} ${style} ${active}`
-        ul.a-tabs.-vertical.-icons(class=`-${alt} -${style} -${size}`)
+        ul.chi-tabs.-vertical.-icons(class=`-${alt} -${style} -${size}`)
           li
             a(href='#')
               div(class=`chi-icon`)
@@ -94,7 +94,7 @@ each active in ['', 'active']
                 svg
                   use(xlink:href='#icon-atom')
               span Active tab
-            ul.a-tabs__subtabs
+            ul.chi-tabs__subtabs
               li.-active
                 a(href='#') Buttons
               li
@@ -119,7 +119,7 @@ each active in ['', 'active']
   each size in ['xs', 'sm', 'medium', 'lg']
     h4= `Tabs ${size} inverse`
     .-bg--black.-px--3
-      ul.a-tabs.-inverse(class=`-${size}`)
+      ul.chi-tabs.-inverse(class=`-${size}`)
         li.-active
           a(href='#') Active tab
         li
@@ -131,7 +131,7 @@ each active in ['', 'active']
   each size in ['xs', 'sm', 'medium', 'lg']
     h4= `Tabs ${size} border inverse`
     .-bg--black.-px--3.-py--1
-      ul.a-tabs.-inverse.-border(class=`-${size}`)
+      ul.chi-tabs.-inverse.-border(class=`-${size}`)
         li.-active
           a(href='#') Active tab
         li
@@ -145,10 +145,10 @@ h2 vertical inverse
   each size in ['sm', 'medium', 'lg']
     h4= `Tabs vertical inverse ${size}`
     .-bg--black.-p--3
-      ul.a-tabs.-inverse.-vertical(class=`-${size}`)
+      ul.chi-tabs.-inverse.-vertical(class=`-${size}`)
         li.-active
           a(href='#') Active tab
-          ul.a-tabs__subtabs
+          ul.chi-tabs__subtabs
             li.-active
               a(href='#') Buttons
             li
@@ -166,14 +166,14 @@ h2 vertical inverse
   each size in ['sm', 'medium', 'lg']
     h4= `Tabs vertical icons ${size} inverse`
     .-bg--black.-p--3
-      ul.a-tabs.-vertical.-icons.-inverse(class=`-${size}`)
+      ul.chi-tabs.-vertical.-icons.-inverse(class=`-${size}`)
         li.-active
           a(href='#')
             div(class=`chi-icon`)
               svg
                 use(xlink:href='#icon-atom')
             span Active tab
-          ul.a-tabs__subtabs
+          ul.chi-tabs__subtabs
             li.-active
               a(href='#') Buttons
             li

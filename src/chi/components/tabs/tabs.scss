@@ -6,7 +6,7 @@
   flex-direction: column;
   line-height: $line-height-smaller;
 
-  .a-tabs__subtabs {
+  .chi-tabs__subtabs {
     list-style: none;
     padding: 0;
 
@@ -57,7 +57,7 @@
         }
       }
 
-      .a-tabs__subtabs {
+      .chi-tabs__subtabs {
         & > li {
           & > a {
             padding-left: 4.5rem;
@@ -103,7 +103,7 @@
         box-shadow: inset 0.125rem 0 0 $primary-color;
       }
 
-      & .a-tabs__subtabs > li {
+      & .chi-tabs__subtabs > li {
         &.-active:not(.-hasActive) > a {
           box-shadow: inset 0.125rem 0 0 $primary-color;
         }
@@ -120,7 +120,7 @@
       }
     }
 
-    .a-tabs__subtabs {
+    .chi-tabs__subtabs {
       & > li {
         & > a {
           padding: 0.25rem 0 0.25rem 2.5rem;
@@ -309,7 +309,7 @@
   }
 }
 
-.a-tabs {
+.chi-tabs {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -397,7 +397,7 @@
       // sass-lint:disable-block force-element-nesting
       &:not(.-sliding) > li.-active:not(.-hasActive) > a,
       &:not(.-sliding).-animated > li.-active:not(.-hasActive) > a,
-      &:not(.-sliding).-animated .a-tabs__subtabs > li.-active:not(.-hasActive) > a {
+      &:not(.-sliding).-animated .chi-tabs__subtabs > li.-active:not(.-hasActive) > a {
         box-shadow: inset 0.125rem 0 0 $secondary-color;
       }
       // sass-lint:disable-block force-element-nesting
@@ -428,7 +428,7 @@
         }
       }
 
-      .a-tabs__subtabs {
+      .chi-tabs__subtabs {
         & > li {
           &.-active {
             & > a {
@@ -469,6 +469,6 @@
   }
 }
 
-.a-tabs-panel:not(.-active) {
+.chi-tabs-panel:not(.-active) {
   display: none;
 }

@@ -15,19 +15,19 @@ h3 Base
     .m-form__item
       chi-number-input
   .example-tabs.-pl--2
-    ul.a-tabs#examples-default
+    ul.chi-tabs#examples-default
       li.-active
         a(href=`#webcomponent`) Web component
       li
         a(href=`#html`) HTML + JS
-  .a-tabs-panel.-active#webcomponent
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent
+    .chi-tab__description
       | To render a number input, just place a <code>chi-number-input</code> tag and set an initial value (optional). If
       | an initial value is not provided, <code>0</code> will be taken as default.
     :code(lang="html")
       <chi-number-input></chi-number-input>
-  .a-tabs-panel#html
-    .a-tab__description
+  .chi-tabs-panel#html
+    .chi-tab__description
       | To render a number input, apply the classes <code>chi-input</code> to an <code>input type="number"</code>.
       | For proper styling, number inputs must be wrapped in an <code>m-input__wrapper</code> div with two buttons.
     :code(lang="html")
@@ -47,15 +47,15 @@ h3 Disabled
     .m-form__item
       chi-number-input(disabled=true)
   .example-tabs.-pl--2
-    ul.a-tabs#examples-disabled
+    ul.chi-tabs#examples-disabled
       li.-active
         a(href=`#webcomponent-disabled`) Web component
       li
         a(href=`#html-disabled`) HTML
-  .a-tabs-panel.-active#webcomponent-disabled
+  .chi-tabs-panel.-active#webcomponent-disabled
     :code(lang="html")
       <chi-number-input disabled></chi-number-input>
-  .a-tabs-panel#html-disabled
+  .chi-tabs-panel#html-disabled
     :code(lang="html")
       <div class="m-form__item -row">
         <div class="m-input__wrapper">
@@ -72,13 +72,13 @@ h3 Sizes
       .m-form__item.-inline.-mr--3
         chi-number-input(size=`${size}`)
   .example-tabs.-pl--2
-    ul.a-tabs#examples-sizes
+    ul.chi-tabs#examples-sizes
       li.-active
         a(href=`#webcomponent-sizes`) Web component
       li
         a(href=`#html-sizes`) HTML
-  .a-tabs-panel.-active#webcomponent-sizes
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-sizes
+    .chi-tab__description
       | Number inputs support a full spectrum of sizes: <code>sm</code>, <code>md</code>,
       |  <code>lg</code>, <code>xl</code>.
       | The default size is <code>md</code>.
@@ -87,8 +87,8 @@ h3 Sizes
       <chi-number-input></chi-number-input>
       <chi-number-input size="lg"></chi-number-input>
       <chi-number-input size="xl"></chi-number-input>
-  .a-tabs-panel#html-sizes
-    .a-tab__description
+  .chi-tabs-panel#html-sizes
+    .chi-tab__description
       | Number inputs support a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
       |  <code>-lg</code>, <code>-xl</code>.
       | The default size is <code>-md</code>.
@@ -131,15 +131,15 @@ h3 Base
   .-p--3
     chi-number-input(expanded=true)
   .example-tabs.-pl--2
-    ul.a-tabs#examples-expanded
+    ul.chi-tabs#examples-expanded
       li.-active
         a(href=`#webcomponent-expanded`) Web component
       li
         a(href=`#html-expanded`) HTML
-  .a-tabs-panel.-active#webcomponent-expanded
+  .chi-tabs-panel.-active#webcomponent-expanded
     :code(lang="html")
       <chi-number-input expanded></chi-number-input>
-  .a-tabs-panel#html-expanded
+  .chi-tabs-panel#html-expanded
     :code(lang="html")
       <div class="m-inputNumber">
         <input class="chi-input" type="number" value="0" aria-label="Input Label">
@@ -160,15 +160,15 @@ h3 Disabled
   .-p--3
     chi-number-input(expanded=true disabled=true)
   .example-tabs.-pl--2
-    ul.a-tabs#examples-expanded-disabled
+    ul.chi-tabs#examples-expanded-disabled
       li.-active
         a(href=`#webcomponent-expanded-disabled`) Web component
       li
         a(href=`#html-expanded-disabled`) HTML
-  .a-tabs-panel.-active#webcomponent-expanded-disabled
+  .chi-tabs-panel.-active#webcomponent-expanded-disabled
     :code(lang="html")
       <chi-number-input expanded disabled></chi-number-input>
-  .a-tabs-panel#html-expanded-disabled
+  .chi-tabs-panel#html-expanded-disabled
     :code(lang="html")
       <div class="m-inputNumber">
         <input class="chi-input" type="number" value="0" aria-label="Input Label" disabled>
@@ -190,13 +190,13 @@ h3 Sizes
     each size in ['sm', 'md', 'lg', 'xl']
       chi-number-input(expanded=true size=`${size}` class='-mr--2')
   .example-tabs.-pl--2
-    ul.a-tabs#examples-expanded-sizes
+    ul.chi-tabs#examples-expanded-sizes
       li.-active
         a(href=`#webcomponent-expanded-sizes`) Web component
       li
         a(href=`#html-expanded-sizes`) HTML
-  .a-tabs-panel.-active#webcomponent-expanded-sizes
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-expanded-sizes
+    .chi-tab__description
       | Expanded number inputs support a full spectrum of sizes: <code>sm</code>, <code>md</code>,
       |  <code>lg</code>, <code>xl</code>.
       | The default size is <code>md</code>.
@@ -205,8 +205,8 @@ h3 Sizes
       <chi-number-input expanded></chi-number-input>
       <chi-number-input expanded size="lg"></chi-number-input>
       <chi-number-input expanded size="xl"></chi-number-input>
-  .a-tabs-panel#html-expanded-sizes
-    .a-tab__description
+  .chi-tabs-panel#html-expanded-sizes
+    .chi-tab__description
       | Expanded number inputs support a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
       |  <code>-lg</code>, <code>-xl</code>.
       | The default size is <code>-md</code>.
