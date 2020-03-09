@@ -33,9 +33,9 @@ describe('Drawer', function() {
     cy.get('[data-cy="test-backdrop-top"]')
       .should('have.class', 'hydrated')
       .children().first()
-      .should('match', 'div.m-backdrop.-animated')
+      .should('match', 'div.chi-backdrop.-animated')
       .children().first()
-      .should('match', 'div.m-backdrop__wrapper')
+      .should('match', 'div.chi-backdrop__wrapper')
       .children().first()
       .should('match', 'div.chi-drawer.-top.-active');
   });

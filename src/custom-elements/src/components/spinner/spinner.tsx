@@ -64,8 +64,8 @@ export class Spinner {
 
     if (this.backdrop || this.backdrop === '') {
       return (
-        <div class={`m-backdrop -center ${this.backdrop === 'inverse' && '-inverse'}`}>
-          <div class="m-backdrop__wrapper">
+        <div class={`chi-backdrop -center ${this.backdrop === 'inverse' && '-inverse'}`}>
+          <div class="chi-backdrop__wrapper">
             {spinner}
           </div>
         </div>

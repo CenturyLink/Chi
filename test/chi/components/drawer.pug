@@ -2,7 +2,7 @@
 title: Drawer
 ---
 - var sides = ['top', 'right', 'bottom', 'left'];
-- var versions = [{"title": "no-backdrop", "classes": "", "testClass": "test-"}, {"title": "backdrop", "classes": "m-backdrop", "testClass": "test-backdrop-"}, {"title": "inverse backdrop", "classes": "m-backdrop -inverse", "testClass": "test-backdrop-inverse-"} ];
+- var versions = [{"title": "no-backdrop", "classes": "", "testClass": "test-"}, {"title": "backdrop", "classes": "chi-backdrop", "testClass": "test-backdrop-"}, {"title": "inverse backdrop", "classes": "chi-backdrop -inverse", "testClass": "test-backdrop-inverse-"} ];
 - var legacyVersions = [{"title": "no-backdrop", "classes": "", "testClass": "test-"}, {"title": "backdrop", "classes": "a-backdrop", "testClass": "test-backdrop-"}, {"title": "inverse backdrop", "classes": "a-backdrop -inverse", "testClass": "test-backdrop-inverse-"} ];
 
 each side in sides
@@ -12,7 +12,7 @@ each side in sides
       div(style='width: 320px')
         .a-h2= `Drawer / ${version.title} / ${side}`
         div(class=`${version.classes}` style="position:relative;height:20rem")
-          .m-backdrop__wrapper
+          .chi-backdrop__wrapper
             div(class=`chi-drawer -${side} -active`, style='position:absolute;')
               button(class='chi-btn -icon -close', aria-label='Close')
                 .chi-btn__content
@@ -24,7 +24,7 @@ each side in sides
       div(style='width: 320px')
         .a-h2= `Drawer / with head / ${version.title} / ${side}`
         div(class=`${version.classes}` style="position:relative;height:20rem")
-          .m-backdrop__wrapper
+          .chi-backdrop__wrapper
             div(class=`chi-drawer -${side} -active`, style='position:absolute;')
               .chi-drawer__header
                 button(class='chi-btn -icon -close', aria-label='Close')

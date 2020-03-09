@@ -25,10 +25,10 @@ h3 Base
     .chi-tab__description
       | To render a spinner, use the class <code>chi-spinner</code>.
       br
-      | Wrap spinners in <code>m-backdrop</code> to overlay content similar to a modal, and add <code>-center</code> class to position it in the middle of the page.
+      | Wrap spinners in <code>chi-backdrop</code> to overlay content similar to a modal, and add <code>-center</code> class to position it in the middle of the page.
     :code(lang="html")
-      <div class="m-backdrop -center">
-        <div class="m-backdrop__wrapper">
+      <div class="chi-backdrop -center">
+        <div class="chi-backdrop__wrapper">
           <svg class="chi-spinner -text--light" viewBox="0 0 66 66">
             <title>Loading</title>
             <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
@@ -55,8 +55,8 @@ h3 Inverse
     .chi-tab__description
       | Apply the class <code>-inverse</code> to render spinners on light backgrounds.
     :code(lang="html")
-      <div class="m-backdrop -center -inverse">
-        <div class="m-backdrop__wrapper">
+      <div class="chi-backdrop -center -inverse">
+        <div class="chi-backdrop__wrapper">
           <svg class="chi-spinner -text--primary" viewBox="0 0 66 66">
             <title>Loading</title>
             <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>

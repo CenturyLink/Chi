@@ -38,7 +38,7 @@
 }
 // Legacy code end
 
-.m-backdrop {
+.chi-backdrop {
   background-color: rgba(set-color(black), 0.65);
   bottom: 0;
   left: 0;
@@ -61,7 +61,7 @@
   }
 
   &.-center {
-    .m-backdrop__wrapper {
+    .chi-backdrop__wrapper {
       justify-content: center;
     }
   }
@@ -93,7 +93,7 @@
 
 /* IE11 CSS hack */
 @media all and (-ms-high-contrast: none) {
-  .m-backdrop {
+  .chi-backdrop {
     &__wrapper {
       height: calc(100% - 2rem);
     }
