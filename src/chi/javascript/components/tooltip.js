@@ -91,7 +91,7 @@ class Tooltip extends Component {
 
   _createTooltip () {
     this._tooltipElem = document.createElement('div');
-    this._tooltipElem.setAttribute('class', 'a-tooltip');
+    this._tooltipElem.setAttribute('class', 'chi-tooltip');
     this._tooltipElem.id = COMPONENT_TYPE +
       Util.getData(this._elem, COMPONENT_TYPE);
     this._tooltipContent = document.createElement('span');
