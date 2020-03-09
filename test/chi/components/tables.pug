@@ -24,7 +24,7 @@ mixin tr(name, id, date)
     td= date
 
 mixin table-fix-header(row, column)
-  section.a-table(style="width: 640px")&attributes(attributes)
+  section.chi-table(style="width: 640px")&attributes(attributes)
     div
       table(cellpadding="0", cellspacing="0")
         thead
@@ -58,7 +58,7 @@ mixin table-fix-header(row, column)
             +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
 
 mixin table(row, column, selectable)
-  table.a-table&attributes(attributes)
+  table.chi-table&attributes(attributes)
     thead
       if !selectable
         if row != undefined
@@ -187,7 +187,7 @@ mixin table(row, column, selectable)
       span.a-h2
         | table
         = ' / selectable'
-      section.a-table(
+      section.chi-table(
         style="width: 640px"
       )
         div
@@ -212,7 +212,7 @@ mixin table(row, column, selectable)
       span.a-h2
         | table
         = ' / scrollable'
-      section.a-table.-fixed--header(style="height: 150px")
+      section.chi-table.-fixed--header(style="height: 150px")
         div
           table
             thead
@@ -231,7 +231,7 @@ mixin table(row, column, selectable)
       span.a-h2
         | table
         = ' / Portal styled'
-      table.a-table.-portal
+      table.chi-table.-portal
         thead
           tr
             th
@@ -297,7 +297,7 @@ mixin table(row, column, selectable)
       span.a-h2
         | table
         = ' / selectable'
-      section.a-table(
+      section.chi-table(
       class=
       style="width: 640px"
       )
@@ -324,7 +324,7 @@ mixin table(row, column, selectable)
       span.a-h2
         | table
         = ' / scrollable'
-      section.a-table.-fixed--header(style="height: 150px")
+      section.chi-table.-fixed--header(style="height: 150px")
         div
           table
             thead

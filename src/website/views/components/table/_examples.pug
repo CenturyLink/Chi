@@ -60,7 +60,7 @@ p.-text
 
 :example(lang="html"):html-beautify:pug
   include ./_common.pug
-  table.a-table
+  table.chi-table
     thead
       tr
         th.-text--left Name
@@ -109,7 +109,7 @@ p.-text Render a <strong>-xl</strong> size by applying the modifier class <code>
 
 h2 Selectable
 :example(lang="html")
-  <table class="a-table">
+  <table class="chi-table">
     <thead>
         <tr>
             <th>
@@ -171,10 +171,10 @@ p.-text
   | content will scroll.
 h3 Requirements
 p.-text
-  | Tables must be wrapped in a <code>&lt;section class="a-table -fixed--header"&gt;</code>
+  | Tables must be wrapped in a <code>&lt;section class="chi-table -fixed--header"&gt;</code>
 :example(lang="html"):html-beautify:pug
   include ./_common.pug
-  section.a-table.-fixed--header(style="height: 150px")
+  section.chi-table.-fixed--header(style="height: 150px")
     div
       table
         thead
