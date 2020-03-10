@@ -54,6 +54,8 @@ export class Drawer {
 
   private animation: ThreeStepsAnimation;
 
+  private mutationObserver;
+
   @Watch('position')
   positionValidation(newValue: string) {
     if (newValue && !CARDINAL_POSITIONS.includes(newValue)) {
@@ -111,19 +113,19 @@ export class Drawer {
   /**
    * Drawer show method has executed, but the showing animation has not started yet
    */
-  @Event({eventName: 'chiDrawerShow'}) eventShow: EventEmitter;
+  @Event({ eventName: 'chiDrawerShow' }) eventShow: EventEmitter;
   /**
    * Drawer hide method has executed, but the closing animation has not started yet
    */
-  @Event({eventName: 'chiDrawerHide'}) eventHide: EventEmitter;
+  @Event({ eventName: 'chiDrawerHide' }) eventHide: EventEmitter;
   /**
    * Drawer has been shown to the user and is fully visible. The animation has completed.
    */
-  @Event({eventName: 'chiDrawerShown'}) eventShown: EventEmitter;
+  @Event({ eventName: 'chiDrawerShown' }) eventShown: EventEmitter;
   /**
    * Drawer has been hidden to the user. The animation has completed.
    */
-  @Event({eventName: 'chiDrawerHidden'}) eventHidden: EventEmitter;
+  @Event({ eventName: 'chiDrawerHidden' }) eventHidden: EventEmitter;
 
   private _show() {
     if (this.animation && !this.animation.isStopped()) {
@@ -179,25 +181,34 @@ export class Drawer {
     this.eventHide.emit();
   }
 
-  componentWillLoad(): void {
-    const target = this.el;
-    const config = {
+  connectedCallback() {
+    const observerTarget = this.el;
+    const mutationObserverConfig = {
       attributes: true,
       attributeOldValue: true,
       attributeFilter: ['title']
     };
 
-    const subscriberCallback = (mutations) => {
-      mutations.forEach((mutation) => {
-        this.drawerTitle = mutation.target.title;
-      });
-    };
+    if (!this.mutationObserver) {
+      const subscriberCallback = (mutations) => {
+        mutations.forEach((mutation) => {
+          this.drawerTitle = mutation.target.title;
+        });
+      };
 
-    const observer = new MutationObserver(subscriberCallback);
-    observer.observe(target, config);
+      this.mutationObserver = new MutationObserver(subscriberCallback);
+    }
 
-    if (target.getAttribute('title')) {
-      this.drawerTitle = target.getAttribute('title');
+    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
+  }
+
+  disconnectedCallback() {
+    this.mutationObserver.disconnect();
+  }
+
+  componentWillLoad(): void {
+    if (this.el.getAttribute('title')) {
+      this.drawerTitle = this.el.getAttribute('title');
     }
 
     this.positionValidation(this.position);
