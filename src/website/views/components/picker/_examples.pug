@@ -16,7 +16,7 @@ ul#chi-tabs--Checkbox.chi-tabs
   #BaseCheckbox.chi-tabs-panel.-active
     .-p--4
       fieldset
-        legend.a-label Legend
+        legend.chi-label Legend
         each type in ['Checkbox1','Checkbox2']
           .m-picker
             input(type="checkbox", class="a-picker", name=`checkbox-base`, id=`i-${type}`)
@@ -24,7 +24,7 @@ ul#chi-tabs--Checkbox.chi-tabs
               = type
     :code(lang="html")
       <fieldset>
-        <legend class="a-label">Legend</legend>
+        <legend class="chi-label">Legend</legend>
         <div class="m-picker">
           <input class="a-picker" name="checkbox-base" type="checkbox" id="checkbox1">
           <label for="checkbox1">Checkbox1</label>
@@ -38,7 +38,7 @@ ul#chi-tabs--Checkbox.chi-tabs
   #WithCheckbox.chi-tabs-panel
     .-p--4
       fieldset
-        legend.a-label Legend
+        legend.chi-label Legend
         each type in ['Checkbox1','Checkbox2']
           .m-picker
             input(type="checkbox", class="a-picker", name=`checkbox-with-checkbox`, id=`ic-${type}`)
@@ -49,7 +49,7 @@ ul#chi-tabs--Checkbox.chi-tabs
                   =type
     :code(lang="html")
       <fieldset>
-        <legend class="a-label">Legend</legend>
+        <legend class="chi-label">Legend</legend>
         <div class="m-picker">
           <input class="a-picker" name="checkbox-with-checkbox" type="checkbox" id="ic-Checkbox1" />
           <label for="ic-Checkbox1">
@@ -73,7 +73,7 @@ ul#chi-tabs--Checkbox.chi-tabs
   #WithCheckboxDescription.chi-tabs-panel
     .-p--4
       fieldset
-        legend.a-label Legend
+        legend.chi-label Legend
         each type in ['Checkbox1','Checkbox2']
           .m-picker
             input(type="checkbox", class="a-picker", name=`checkbox-with-checkbox-description`, id=`id-${type}`)
@@ -87,7 +87,7 @@ ul#chi-tabs--Checkbox.chi-tabs
                   | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
     :code(lang="html")
       <fieldset>
-        <legend class="a-label">Legend</legend>
+        <legend class="chi-label">Legend</legend>
         <div class="m-picker">
           <input class="a-picker" name="checkbox-with-checkbox-description" type="checkbox" id="id-Checkbox1" />
           <label for="id-Checkbox1">
@@ -127,7 +127,7 @@ ul#chi-tabs--Radio.chi-tabs
   #BaseRadio.chi-tabs-panel.-active
     .-p--4
         fieldset
-          legend.a-label Legend
+          legend.chi-label Legend
           each type in ['Radio1','Radio2']
             .m-picker
               input(type="radio", class="a-picker", name='radio-base', id=`ei-${type}`)
@@ -135,7 +135,7 @@ ul#chi-tabs--Radio.chi-tabs
                 = type
     :code(lang="html")
       <fieldset>
-        <legend class="a-label">Legend</legend>
+        <legend class="chi-label">Legend</legend>
         <div class="m-picker">
           <input class="a-picker" name="radio-base" type="radio" id="ei-Radio1" />
           <label for="ei-Radio1">Radio1</label>
@@ -148,7 +148,7 @@ ul#chi-tabs--Radio.chi-tabs
   #WithRadio.chi-tabs-panel
     .-p--4
         fieldset
-          legend.a-label Legend
+          legend.chi-label Legend
           each type in ['Radio1','Radio2']
             .m-picker
               input(type="radio", class="a-picker", name='with-radio', id=`ri-${type}`)
@@ -159,7 +159,7 @@ ul#chi-tabs--Radio.chi-tabs
                     = type
     :code(lang="html")
       <fieldset>
-        <legend class="a-label">Legend</legend>
+        <legend class="chi-label">Legend</legend>
         <div class="m-picker">
           <input class="a-picker" name="with-radio" type="radio" id="ri-Radio1" />
           <label for="ri-Radio1">
@@ -182,7 +182,7 @@ ul#chi-tabs--Radio.chi-tabs
   #WithRadioDescription.chi-tabs-panel
     .-p--4
         fieldset
-          legend.a-label Legend
+          legend.chi-label Legend
           each type in ['Radio1','Radio2']
             .m-picker
               input(type="radio", class="a-picker", name='with-radio-description', id=`ide-${type}`)
@@ -196,7 +196,7 @@ ul#chi-tabs--Radio.chi-tabs
                     | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
     :code(lang="html")
       <fieldset>
-        <legend class="a-label">Legend</legend>
+        <legend class="chi-label">Legend</legend>
         <div class="m-picker">
           <input class="a-picker" name="with-radio-description" type="radio" id="ide-Radio1" />
           <label for="ide-Radio1">
@@ -239,7 +239,7 @@ ul#chi-tabs--Sizes.chi-tabs
   #Sm.chi-tabs-panel.-active
     .-p--4
       fieldset
-        legend.a-label Legend
+        legend.chi-label Legend
         each type in ['Radio1 -sm','Radio2 -sm']
           .m-picker.-sm
             input(type="radio", class="a-picker", name=`sizes-sm`, id=`ri-${type}`)
@@ -251,7 +251,7 @@ ul#chi-tabs--Sizes.chi-tabs
                 span.-text--normal.-text--muted.-text--small Value
     :code(lang="html")
       <fieldset>
-        <legend class="a-label">Legend</legend>
+        <legend class="chi-label">Legend</legend>
         <div class="m-picker -sm">
           <input class="a-picker" type="radio" name="sizes-sm" id="Radio1">
           <label for="Radio1">
@@ -276,7 +276,7 @@ ul#chi-tabs--Sizes.chi-tabs
   #Md.chi-tabs-panel
     .-p--4
       fieldset
-        legend.a-label Legend
+        legend.chi-label Legend
         each type in ['Radio1 -md','Radio2 -md']
           .m-picker.-md
             input(type="radio", class="a-picker", name='sizes-md', id=`ri-${type}`)
@@ -288,7 +288,7 @@ ul#chi-tabs--Sizes.chi-tabs
                 span.-text--normal.-text--muted.-text--small Value
     :code(lang="html")
       <fieldset>
-        <legend class="a-label">Legend</legend>
+        <legend class="chi-label">Legend</legend>
         <div class="m-picker -md">
           <input class="a-picker" type="radio" name="sizes-md" id="Radio1">
           <label for="Radio1">
@@ -313,7 +313,7 @@ ul#chi-tabs--Sizes.chi-tabs
   #Lg.chi-tabs-panel
     .-p--4
       fieldset
-        legend.a-label Legend
+        legend.chi-label Legend
         each type in ['Radio1 -lg','Radio2 -lg']
           .m-picker.-lg
             input(type="radio", class="a-picker", name='sizes-lg', id=`ri-${type}`)
@@ -327,7 +327,7 @@ ul#chi-tabs--Sizes.chi-tabs
                 span.-text--bold.-text--body.-text--large Data
     :code(lang="html")
       <fieldset>
-        <legend class="a-label">Legend</legend>
+        <legend class="chi-label">Legend</legend>
         <div class="m-picker -lg">
           <input class="a-picker" type="radio" name="sizes-lg" id="Radio1">
           <label for="Radio1">

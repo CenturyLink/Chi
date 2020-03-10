@@ -4,7 +4,7 @@ p.-text To render a picker group, wrap a series of pickers in a div and apply th
 .example.-mb--3
   .-p--3
     fieldset
-      legend.a-label Legend
+      legend.chi-label Legend
       .m-pickerGroup
         each type in ['Radio1','Radio2','Radio3']
           input.a-picker(type="radio", name='radio-base', id=`ia-${type}`)
@@ -12,7 +12,7 @@ p.-text To render a picker group, wrap a series of pickers in a div and apply th
             = type
   :code(lang='html')
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup">
         <input class="a-picker" type="radio" name="radio-base" id="radio1">
         <label for="radio1">
@@ -33,7 +33,7 @@ h3 Texts and icons
 .example.-mb--3
   .-p--3
     fieldset
-      legend.a-label Legend
+      legend.chi-label Legend
       .m-pickerGroup
         input.a-picker(type="radio", name='radio-with-icon', id=`ib-radio1`)
         label(for=`ib-radio1`)
@@ -51,7 +51,7 @@ h3 Texts and icons
 
   :code(lang='html')
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup">
         <input class="a-picker" type="radio" name="radio-with-icon" id="radio1">
         <label for="radio1">
@@ -76,7 +76,7 @@ h3 Icons
 .example.-mb--3
   .-p--3
     fieldset
-      legend.a-label Legend
+      legend.chi-label Legend
       .m-pickerGroup
         each type in ['Radio1','Radio2','Radio3']
           input.a-picker(type="radio", name='radio-icon', id=`ic-${type}`)
@@ -86,7 +86,7 @@ h3 Icons
 
   :code(lang='html')
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup">
         <input class="a-picker" type="radio" name="radio-icon" id="radio1">
         <label for="radio1">
@@ -114,7 +114,7 @@ h3 Horizontal
 .example.-mb--3
   .-p--3
     fieldset
-      legend.a-label Legend
+      legend.chi-label Legend
       .m-pickerGroup.-fluid
         each type in ['Radio1','Radio2','Radio3']
           input.a-picker(type="radio", name='radio-fluid', id=`id-${type}`)
@@ -122,7 +122,7 @@ h3 Horizontal
             = type
   :code(lang='html')
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup -fluid">
         <input class="a-picker" type="radio" name="radio-fluid" id="radio1">
         <label for="radio1">
@@ -146,7 +146,7 @@ p.-text
 .example.-mb--3
   .-p--3
     fieldset
-      legend.a-label Legend
+      legend.chi-label Legend
       .m-pickerGroup.-fluid
           input.a-picker(type="radio", name='radio-alignment', id='ie-Radio1')
           label.-align--left(for='ie-Radio1') Radio1
@@ -156,7 +156,7 @@ p.-text
           label.-align--right(for='ie-Radio3') Radio3
   :code(lang='html')
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup -fluid">
         <input class="a-picker" type="radio" name="radio-alignment" id="radio1">
         <label class="-align--left" for="radio1">
@@ -180,7 +180,7 @@ p.-text
 .example.-mb--3
   .-p--3
     fieldset
-      legend.a-label Legend
+      legend.chi-label Legend
       .m-pickerGroup.-fluid
           input.a-picker(type="radio", name='radio-nofluid', id='if-Radio1')
           label(for='if-Radio1') Radio1
@@ -190,7 +190,7 @@ p.-text
           label(for='if-Radio3') Radio3
   :code(lang='html')
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup -fluid">
         <input class="a-picker" type="radio" name="radio-nofluid" id="radio1">
         <label for="radio1">
@@ -217,7 +217,7 @@ p.-text
   each size in ['sm', 'md', 'lg', 'xl']
     .-p--3
       fieldset
-        legend.a-label.-mb--1= '-' + size
+        legend.chi-label.-mb--1= '-' + size
         .-d--flex.-flex--wrap
           .m-pickerGroup.-mr--2
             each type in ['Radio1','Radio2','Radio3']
@@ -237,7 +237,7 @@ p.-text
   :code(lang='html')
     <!-- sm -->
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup">
         <input class="a-picker" type="radio" name="radio-sm-text" id="radio1">
         <label class="-sm" for="radio1">
@@ -254,7 +254,7 @@ p.-text
       </div>
     </fieldset>
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup">
         <input class="a-picker" type="radio" name="radio-sm-icon" id="radio-i-1">
         <label class="-sm" for="radio-i-1">
@@ -275,7 +275,7 @@ p.-text
     </fieldset>
     <!-- md -->
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup">
         <input class="a-picker" type="radio" name="radio-md-text" id="radio1">
         <label class="-md" for="radio1">
@@ -292,7 +292,7 @@ p.-text
       </div>
     </fieldset>
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup">
         <input class="a-picker" type="radio" name="radio-md-icon" id="radio-i-1">
         <label class="-md" for="radio-i-1">
@@ -313,7 +313,7 @@ p.-text
     </fieldset>
     <!-- lg -->
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup">
         <input class="a-picker" type="radio" name="radio-lg-text" id="radio1">
         <label class="-lg" for="radio1">
@@ -330,7 +330,7 @@ p.-text
       </div>
     </fieldset>
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup">
         <input class="a-picker" type="radio" name="radio-lg-icon" id="radio-i-1">
         <label class="-lg" for="radio-i-1">
@@ -351,7 +351,7 @@ p.-text
     </fieldset>
     <!-- xl -->
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup">
         <input class="a-picker" type="radio" name="radio-xl-text" id="radio1">
         <label class="-xl" for="radio1">
@@ -368,7 +368,7 @@ p.-text
       </div>
     </fieldset>
     <fieldset>
-      <legend class="a-label">Legend</legend>
+      <legend class="chi-label">Legend</legend>
       <div class="m-pickerGroup">
         <input class="a-picker" type="radio" name="radio-xl-icon" id="radio-i-1">
         <label class="-xl" for="radio-i-1">

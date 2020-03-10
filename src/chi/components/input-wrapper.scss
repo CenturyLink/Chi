@@ -12,7 +12,7 @@ $border: 0.0625rem;
   display: flex;
   flex-direction: column;
 
-  & label:not(.a-label) {
+  & label:not(.chi-label) {
     font-weight: normal;
   }
 
@@ -62,7 +62,7 @@ $border: 0.0625rem;
     margin-bottom: 0.25rem;
 
     label,
-    .a-label {
+    .chi-label {
       margin-bottom: 0;
     }
 

@@ -21,11 +21,11 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
               .-m--1
                 if state == 'disabled'
                   .m-form__item
-                    label.a-label(class=`-${size}` for='example') Label
+                    label.chi-label(class=`-${size}` for='example') Label
                     textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                 else
                   .m-form__item
-                    label.a-label(class=`-${size}` for='example') Label
+                    label.chi-label(class=`-${size}` for='example') Label
                     textarea(class=`chi-input -${style} -${state} -${size}`) Value
 
   div(class=`test-${size}-icon-left`)
@@ -49,7 +49,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             td(style='vertical-align: bottom')
               .-m--1
                 .m-form__item
-                  label.a-label(class=`-${size}` for='example') Label
+                  label.chi-label(class=`-${size}` for='example') Label
                   .m-input__wrapper.-icon--left
                     if state == 'disabled'
                       textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
@@ -93,7 +93,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             td(style='vertical-align: bottom')
               .-m--1
                 .m-form__item
-                  label.a-label(class=`-${size}` for='example') Label
+                  label.chi-label(class=`-${size}` for='example') Label
                   .m-input__wrapper.-icon--right
                     if state == 'disabled'
                       textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
@@ -153,7 +153,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             td(style='vertical-align: bottom')
               .-m--1
                 .m-form__item
-                  label.a-label(class=`-${size}` for='example') Label
+                  label.chi-label(class=`-${size}` for='example') Label
                   .m-input__wrapper.-icon--left.-icon--right
                     if state == 'disabled'
                       textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value

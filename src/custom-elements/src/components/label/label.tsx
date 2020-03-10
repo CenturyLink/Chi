@@ -15,7 +15,7 @@ export class Label {
   render() {
     return (
       <label
-        class="a-label"
+        class="chi-label"
         htmlFor={`${this.for}-control`}
       >
           <slot></slot>

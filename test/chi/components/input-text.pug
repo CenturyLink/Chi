@@ -15,7 +15,7 @@ mixin input(style, state, size, disabled)
   )
 
 mixin label(size)
-  label.a-label(
+  label.chi-label(
   class={
     [`-${size}`]:size != 'default'
   }
@@ -228,7 +228,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             td
               .-m--1
                 .m-form__item.-row
-                  label.a-label.-mr--1(class=`-${size}`)
+                  label.chi-label.-mr--1(class=`-${size}`)
                     | Label
                   +input(style, state, size, disabled, id='example')
 
