@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-03-06T11:16:00",
+  "timestamp": "2020-03-09T19:09:44",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -964,22 +964,6 @@
           "required": false
         },
         {
-          "name": "headerTitle",
-          "type": "string",
-          "mutable": false,
-          "attr": "header-title",
-          "reflectToAttr": true,
-          "docs": "header title. Not compatible with headless",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "headless",
           "type": "boolean",
           "mutable": false,
@@ -1003,6 +987,23 @@
           "reflectToAttr": true,
           "docs": "to set position of the drawer { top, right, bottom or left }",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "mutable": false,
+          "attr": "title",
+          "reflectToAttr": true,
+          "docs": "to define drawer title. Not compatible with headless",
+          "docsTags": [],
+          "default": false,
           "values": [
             {
               "type": "string"

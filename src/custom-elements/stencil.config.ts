@@ -65,6 +65,24 @@ export const config: Config = {
           required: false
         };
 
+        const drawerTitleProp = {
+          name: 'title',
+          type: 'string',
+          mutable: false,
+          attr: 'title',
+          reflectToAttr: true,
+          docs: 'to define drawer title. Not compatible with headless',
+          docsTags: [],
+          default: false,
+          values: [
+            {
+              type: 'string'
+            }
+          ],
+          optional: false,
+          required: false
+        };
+
         docs['components'].find(x => x.tag === 'chi-alert')['props'].push(alertTitleProp);
         docs['components'].find(x => x.tag === 'chi-alert')['props'].sort((a, b) => {
           if (a.name > b.name) return 1
@@ -74,6 +92,13 @@ export const config: Config = {
 
         docs['components'].find(x => x.tag === 'chi-popover')['props'].push(popoverTitleProp);
         docs['components'].find(x => x.tag === 'chi-popover')['props'].sort((a, b) => {
+          if (a.name > b.name) return 1
+          else if (a.name < b.name) return -1
+          return 0
+        });
+
+        docs['components'].find(x => x.tag === 'chi-drawer')['props'].push(drawerTitleProp);
+        docs['components'].find(x => x.tag === 'chi-drawer')['props'].sort((a, b) => {
           if (a.name > b.name) return 1
           else if (a.name < b.name) return -1
           return 0

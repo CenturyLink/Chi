@@ -40,11 +40,9 @@ describe('Drawer', function() {
       .should('match', 'div.m-drawer.-top.-active');
   });
 
-
   it('Should close when clicking the close button. ', function() {
 
     cy.get('[data-cy="test-top-headed"]')
-      .scrollIntoView()
       .children()
       .first()
       .find('.m-drawer__header button.a-btn')
@@ -55,10 +53,21 @@ describe('Drawer', function() {
 
   });
 
+  it('Should have a title if attribute title="" is provided ', function() {
+
+    cy.get('[data-cy="test-top-with-title"]')
+      .children()
+      .first()
+      .find('.m-drawer__header')
+      .find('.m-drawer__title')
+      .contains('Drawer title here')
+      .should('exist');
+
+  });
+
   it('Should close when calling the hide method. ', function() {
 
     cy.get('[data-cy="test-backdrop-top-headed"]')
-      .scrollIntoView()
       .then(function(drawer){
         drawer[0].hide();
         return new Promise(resolve => resolve(drawer));
