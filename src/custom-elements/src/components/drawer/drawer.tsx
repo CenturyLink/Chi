@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Method, Prop, State, Watch, h, Element } from '@stencil/core';
 import { CARDINAL_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
@@ -9,6 +9,8 @@ import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
   scoped: true
 })
 export class Drawer {
+
+  @Element() el;
 
   /**
    * to set position of the drawer { top, right, bottom or left }
@@ -36,11 +38,6 @@ export class Drawer {
   @Prop({ reflect: true }) headless: boolean;
 
   /**
-   * header title. Not compatible with headless
-   */
-  @Prop({ reflect: true }) headerTitle: string;
-
-  /**
    * Status classes for the show/hide animation
    */
   @State() _animationClasses: string;
@@ -50,7 +47,14 @@ export class Drawer {
    */
   @State() _backdropAnimationClasses: string;
 
+  /**
+   *  To define drawer title. Not compatible with headless
+   */
+  @State() drawerTitle: string;
+
   private animation: ThreeStepsAnimation;
+
+  private mutationObserver;
 
   @Watch('position')
   positionValidation(newValue: string) {
@@ -109,19 +113,19 @@ export class Drawer {
   /**
    * Drawer show method has executed, but the showing animation has not started yet
    */
-  @Event({eventName: 'chiDrawer:show'}) eventShow: EventEmitter;
+  @Event({ eventName: 'chiDrawerShow' }) eventShow: EventEmitter;
   /**
    * Drawer hide method has executed, but the closing animation has not started yet
    */
-  @Event({eventName: 'chiDrawer:hide'}) eventHide: EventEmitter;
+  @Event({ eventName: 'chiDrawerHide' }) eventHide: EventEmitter;
   /**
    * Drawer has been shown to the user and is fully visible. The animation has completed.
    */
-  @Event({eventName: 'chiDrawer:shown'}) eventShown: EventEmitter;
+  @Event({ eventName: 'chiDrawerShown' }) eventShown: EventEmitter;
   /**
    * Drawer has been hidden to the user. The animation has completed.
    */
-  @Event({eventName: 'chiDrawer:hidden'}) eventHidden: EventEmitter;
+  @Event({ eventName: 'chiDrawerHidden' }) eventHidden: EventEmitter;
 
   private _show() {
     if (this.animation && !this.animation.isStopped()) {
@@ -177,14 +181,42 @@ export class Drawer {
     this.eventHide.emit();
   }
 
+  connectedCallback() {
+    const observerTarget = this.el;
+    const mutationObserverConfig = {
+      attributes: true,
+      attributeOldValue: true,
+      attributeFilter: ['title']
+    };
+
+    if (!this.mutationObserver) {
+      const subscriberCallback = (mutations) => {
+        mutations.forEach((mutation) => {
+          this.drawerTitle = mutation.target.title;
+        });
+      };
+
+      this.mutationObserver = new MutationObserver(subscriberCallback);
+    }
+
+    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
+  }
+
+  disconnectedCallback() {
+    this.mutationObserver.disconnect();
+  }
+
   componentWillLoad(): void {
+    if (this.el.getAttribute('title')) {
+      this.drawerTitle = this.el.getAttribute('title');
+    }
+
     this.positionValidation(this.position);
     this._animationClasses = this.active ? CLASSES.ACTIVE : '';
     this._backdropAnimationClasses = this.active ? '' : CLASSES.CLOSED;
   }
 
   render() {
-
     // TODO: change this into <chi-button/> element.
     const closeButton = <button class="a-btn -icon -close" onClick={() => this.hide()} aria-label="Close">
       <div class="a-btn__content">
@@ -208,7 +240,7 @@ export class Drawer {
           : this.collapsible
             ? [
               <div class="m-drawer__header">
-                <span class="m-drawer__title">{this.headerTitle}</span>
+                <span class="m-drawer__title">{this.drawerTitle}</span>
                 {closeButton}
               </div>,
               <div class="m-drawer__content">
@@ -217,7 +249,7 @@ export class Drawer {
             ]
             : [
               <div class="m-drawer__header">
-                <span class="m-drawer__title">{this.headerTitle}</span>
+                <span class="m-drawer__title">{this.drawerTitle}</span>
               </div>,
               <div class="m-drawer__content">
                 <slot></slot>

@@ -33,6 +33,20 @@ each side in sides
               .m-drawer__content
                 .-px--2.-text Drawer content here
 
+    div(class=`${version.testClass}${side}-with-title -mb--3`)
+      div(style='width: 320px')
+        .a-h2= `Drawer / with title / ${version.title} / ${side}`
+        div(class=`${version.classes}` style="position:relative;height:20rem")
+          .m-backdrop__wrapper
+            div(class=`m-drawer -${side} -active`, style='position:absolute;')
+              .m-drawer__header
+                span.m-drawer__title Drawer title here
+                button(class='a-btn -icon -close', aria-label='Close')
+                  .a-btn__content
+                    i.a-icon.icon-x
+              .m-drawer__content
+                .-px--2.-text Drawer content here
+
   each version in legacyVersions
 
     div(class=`${version.testClass}${side}-legacy -mb--3`)

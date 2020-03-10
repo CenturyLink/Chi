@@ -62,10 +62,6 @@ function buildWebsiteViews () {
           pattern: [ 'components/**/*.pug', '!components/**/_*.pug' ],
           sortBy: collectionSorter(['Overview'])
         },
-        'JavaScript': {
-          pattern: [ 'javascript/**/*.pug', '!javascript/**/_*.pug' ],
-          sortBy: collectionSorter(['Overview'])
-        },
         'Utilities': {
           pattern: 'utilities/**/*.pug',
           sortBy: collectionSorter(['Overview'])

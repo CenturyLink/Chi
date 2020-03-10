@@ -184,9 +184,45 @@ p.-text
         </div>
       </div>
 
-h3 Close button
-p.-text
+h3 Titled
+.example.-mb--3(style='overflow:hidden;')
+  .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
+    chi-drawer(position='left', title='Drawer title here', backdrop, active, collapsible)
+      .-px--2.-text Drawer content here
+  .example-tabs.-pl--2
+    ul#examples-titled.a-tabs
+      li.-active
+        a(href='#webcomponent-titled') Web component
+      li
+        a(href='#html-titled') HTML
+  .a-tabs-panel.-active#webcomponent-titled
+    :code(lang="html")
+      <chi-drawer position="left" title="Drawer title here" backdrop active collapsible>
+        <div class="-px--2 -text">Drawer content here</div>
+      </chi-drawer>
+  .a-tabs-panel#html-titled
+    :code(lang="html")
+      <div class="m-backdrop">
+        <div class="m-backdrop__wrapper">
+          <div class="m-drawer -left -active">
+            <div class="m-drawer__header">
+              <span class="m-drawer__title">
+                Drawer title here
+              </span>
+              <button class="a-btn -icon -close" aria-label="Close">
+                <div class="a-btn__content">
+                  <i class="a-icon icon-x"></i>
+                </div>
+              </button>
+            </div>
+            <div class="m-drawer__content">
+              <div class="-px--2 -text">Drawer content here</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
+h3 Close button
 ul#a-tabs--collapsible.a-tabs
   li.-active
     a(href='#a-tabs--collapsible-with') Collapsible
@@ -422,6 +458,7 @@ script.
       chi.tab(document.getElementById('examples-default-top'));
       chi.tab(document.getElementById('examples-default-bottom'));
       chi.tab(document.getElementById('examples-backdrop'));
+      chi.tab(document.getElementById('examples-titled'));
       chi.tab(document.getElementById('a-tabs--collapsible'));
       chi.tab(document.getElementById('examples-collapsible'));
       chi.tab(document.getElementById('examples-noncollapsible'));

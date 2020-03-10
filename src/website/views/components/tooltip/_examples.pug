@@ -1,10 +1,3 @@
----
-title: Tooltip
----
-
-p.-text
-  | Tooltips provide text labels that display when users hover or focus on an element.
-
 h2 Base
 p.-text
   | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then,
@@ -13,7 +6,7 @@ p.-text
   .-p--3
     button(data-tooltip='Your tooltip text on a button').a-btn.-mr--2 Tooltip
   :code(lang='html')
-    <button id='tooltip-1' class="a-btn" data-tooltip="Your tooltip text on a button">Tooltip</button>
+    <button id="tooltip-1" class="a-btn" data-tooltip="Your tooltip text on a button">Tooltip</button>
     <script>chi.tooltip(document.getElementById('tooltip-1'));</script>
 
 h2 Positioning
@@ -49,34 +42,10 @@ p.-text
     </button>
     <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
-h3 Preventing memory leaks
-p.-text
-  | Tooltip components have a dispose function to free all resources attached to the element, such as event listeners
-  | and object data. You must call this method when you want to remove the component.
-:code(lang="javascript")
-  var elem = document.getElementById('tooltip');
-  var tooltip = chi.tooltip(elem);
-  // do stuff
-  tooltip.dispose();
-
-p.-text
-  span.a-badge.-dark.-sm.-mr1
-    span Tip
-  | It is safe to call the <code>tooltip</code> method more than once, as it will return any previously created tooltip component
-  | associated to the element.
-:code(lang="javascript")
-  var elem = document.getElementById('tooltip-1');
-  var tooltip = chi.tooltip(elem);
-  var elem2 = document.getElementById('tooltip-1');
-  var tooltip2 = chi.tooltip(elem2);
-  tooltip === tooltip2; // returns true
-
-  tooltip.dispose(); // Only have to do it once.
-
 script.
   document.addEventListener(
-    'DOMContentLoaded',
-    function() {
-      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
-    }
+          'DOMContentLoaded',
+          function() {
+            chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+          }
   );
