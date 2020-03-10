@@ -1049,7 +1049,7 @@
       ],
       "events": [
         {
-          "event": "chiDrawer:hidden",
+          "event": "chiDrawerHidden",
           "detail": "any",
           "bubbles": true,
           "cancelable": true,
@@ -1058,7 +1058,7 @@
           "docsTags": []
         },
         {
-          "event": "chiDrawer:hide",
+          "event": "chiDrawerHide",
           "detail": "any",
           "bubbles": true,
           "cancelable": true,
@@ -1067,7 +1067,7 @@
           "docsTags": []
         },
         {
-          "event": "chiDrawer:show",
+          "event": "chiDrawerShow",
           "detail": "any",
           "bubbles": true,
           "cancelable": true,
@@ -1076,7 +1076,7 @@
           "docsTags": []
         },
         {
-          "event": "chiDrawer:shown",
+          "event": "chiDrawerShown",
           "detail": "any",
           "bubbles": true,
           "cancelable": true,
@@ -1731,7 +1731,7 @@
       ],
       "events": [
         {
-          "event": "chiPopover:hidden",
+          "event": "chiPopoverHidden",
           "detail": "any",
           "bubbles": true,
           "cancelable": true,
@@ -1740,7 +1740,7 @@
           "docsTags": []
         },
         {
-          "event": "chiPopover:hide",
+          "event": "chiPopoverHide",
           "detail": "any",
           "bubbles": true,
           "cancelable": true,
@@ -1749,7 +1749,7 @@
           "docsTags": []
         },
         {
-          "event": "chiPopover:show",
+          "event": "chiPopoverShow",
           "detail": "any",
           "bubbles": true,
           "cancelable": true,
@@ -1758,7 +1758,7 @@
           "docsTags": []
         },
         {
-          "event": "chiPopover:shown",
+          "event": "chiPopoverShown",
           "detail": "any",
           "bubbles": true,
           "cancelable": true,
