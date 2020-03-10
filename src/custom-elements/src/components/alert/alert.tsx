@@ -62,6 +62,8 @@ export class Alert {
 
   @State() alertActions: boolean;
 
+  private mutationObserver;
+
   @Watch('type')
   typeValidation(newValue: string) {
     if (newValue && !['bubble', 'banner', 'toast'].includes(newValue)) {
@@ -83,32 +85,41 @@ export class Alert {
     }
   }
 
-  componentWillLoad() {
-    const target = this.el;
-    const config = {
+  connectedCallback() {
+    const observerTarget = this.el;
+    const mutationObserverConfig = {
       attributes: true,
       attributeOldValue: true,
       attributeFilter: ['title']
     };
 
-    const subscriberCallback = (mutations) => {
-      mutations.forEach((mutation) => {
-        this.alertTitle = mutation.target.title;
-      });
+    if (!this.mutationObserver) {
+      const subscriberCallback = (mutations) => {
+        mutations.forEach((mutation) => {
+          this.alertTitle = mutation.target.title;
+        });
+      };
+
+      this.mutationObserver = new MutationObserver(subscriberCallback);
     }
 
-    const observer = new MutationObserver(subscriberCallback);
-    observer.observe(target, config);
+    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
+  }
 
+  disconnectedCallback() {
+    this.mutationObserver.disconnect();
+  }
+
+  componentWillLoad() {
     this.typeValidation(this.type);
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
 
-    if (target.getAttribute('title')) {
-      this.alertTitle = target.getAttribute('title');
+    if (this.el.getAttribute('title')) {
+      this.alertTitle = this.el.getAttribute('title');
     }
 
-    if (Array.from(target.querySelectorAll("[slot=m-alert__actions]")).length > 0) {
+    if (Array.from(this.el.querySelectorAll("[slot=m-alert__actions]")).length > 0) {
       this.alertActions = true;
     }
   }
