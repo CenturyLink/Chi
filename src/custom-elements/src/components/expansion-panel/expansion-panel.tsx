@@ -29,6 +29,8 @@ export class ExpansionPanel {
    */
   @State() epanelTitle: string;
 
+  private mutationObserver;
+
   @Watch('state')
   stateValidation(newValue: string) {
     if (newValue && !EP_MODES.includes(newValue)) {
@@ -38,25 +40,34 @@ export class ExpansionPanel {
     }
   }
 
-  componentWillLoad() {
-    const target = this.el;
-    const config = {
+  connectedCallback() {
+    const observerTarget = this.el;
+    const mutationObserverConfig = {
       attributes: true,
       attributeOldValue: true,
       attributeFilter: ['title']
     };
 
-    const subscriberCallback = (mutations) => {
-      mutations.forEach((mutation) => {
-        this.epanelTitle = mutation.target.title;
-      });
+    if (!this.mutationObserver) {
+      const subscriberCallback = (mutations) => {
+        mutations.forEach((mutation) => {
+          this.epanelTitle = mutation.target.title;
+        });
+      };
+
+      this.mutationObserver = new MutationObserver(subscriberCallback);
     }
 
-    const observer = new MutationObserver(subscriberCallback);
-    observer.observe(target, config);
+    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
+  }
 
-    if (target.getAttribute('title')) {
-      this.epanelTitle = target.getAttribute('title');
+  disconnectedCallback() {
+    this.mutationObserver.disconnect();
+  }
+
+  componentWillLoad() {
+    if (this.el.getAttribute('title')) {
+      this.epanelTitle = this.el.getAttribute('title');
     }
 
     this.stateValidation(this.state);
@@ -67,9 +78,9 @@ export class ExpansionPanel {
       <div
         class={`chi-epanel ${this.state === 'disabled' ? `-disabled` : ''} ${
           this.state === 'active' ? `-active` : ''
-        } ${this.state === 'done' ? `-done` : ''} ${
+          } ${this.state === 'done' ? `-done` : ''} ${
           this.bordered ? `-bordered` : ''
-        }`}
+          }`}
       >
         <div class="chi-epanel__header">
           {this.step ? <span class="chi-epanel__number">{this.step}.</span> : ''}
@@ -86,8 +97,8 @@ export class ExpansionPanel {
               <slot name="change" />
             </div>
           ) : (
-            ''
-          )}
+              ''
+            )}
         </div>
         <div class={`chi-epanel__collapse ${this.step ? '' : '-ml--0'}`}>
           <div class="-active--only">
