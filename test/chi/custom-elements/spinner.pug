@@ -57,16 +57,16 @@ h4 Spinner Text Input
 
 h4 Sizes
 .test-sizes
-  .a-grid
+  .chi-grid
     each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
-      .a-col.-w--1.-o--1.-middle
+      .chi-col.-w--1.-o--1.-middle
         h4= `-${size}`
-      .a-col.-w--2.-middle
+      .chi-col.-w--2.-middle
         chi-spinner(color='muted', size=size, data-cy=`spinner-${size}`)
 
 h4 Colors
 .test-colors
-  .a-grid.-align-items--center
+  .chi-grid.-align-items--center
     each type in ['primary', 'success', 'warning', 'danger', 'muted', 'secondary', 'light']
       div.-p--2
         chi-spinner(color=type, size='lg', data-cy=`spinner-${type}`)

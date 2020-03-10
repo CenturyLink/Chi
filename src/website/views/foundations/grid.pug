@@ -61,54 +61,54 @@ h3 Automatic Layout
 
 p.-text Grid layouts are defined as a grid container that is composed of one or more rows of columns. By default, columns within a grid container will occupy an equal amount of horizontal space. Content within those columns is constrained to the width of the column (i.e. the column will not widen to accommodate its contents).
 
-.a-grid.-mb--3.-show--example
-  .a-col
-  .a-col
-  .a-col
+.chi-grid.-mb--3.-show--example
+  .chi-col
+  .chi-col
+  .chi-col
 
 .-mb--4.-mt--2
   :code(lang="html")
     <!-- three columns of equal width -->
-    <div class="a-grid">
-      <div class="a-col"></div>
-      <div class="a-col"></div>
-      <div class="a-col"></div>
+    <div class="chi-grid">
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
     </div>
 
-.a-grid.-show--example
-  .a-col
-  .a-col
-  .a-col
-  .a-col
-  .a-col
+.chi-grid.-show--example
+  .chi-col
+  .chi-col
+  .chi-col
+  .chi-col
+  .chi-col
 
 .-mb--4.-mt--2
   :code(lang="html")
     <!-- five columns of equal width -->
-    <div class="a-grid">
-      <div class="a-col"></div>
-      <div class="a-col"></div>
-      <div class="a-col"></div>
-      <div class="a-col"></div>
-      <div class="a-col"></div>
+    <div class="chi-grid">
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
     </div>
 
 h3 Removing Gutters
 
 p.-text Columns are rendered with a consistent amount of spacing between them. To collapse these margins, you may use the <code>-noGutter</code> modifier class on the grid container.
 
-.a-grid.-noGutter.-show--example
-  .a-col
-  .a-col
-  .a-col
+.chi-grid.-noGutter.-show--example
+  .chi-col
+  .chi-col
+  .chi-col
 
 .-mb--4.-mt--2
   :code(lang="html")
     <!-- grid container with collapsed margins -->
-    <div class="a-grid -noGutter">
-      <div class="a-col"></div>
-      <div class="a-col"></div>
-      <div class="a-col"></div>
+    <div class="chi-grid -noGutter">
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
     </div>
 
 h2 Customizing Grid Layouts
@@ -119,15 +119,15 @@ h3 Column Sizing
 
 p.-text You can specify the amount of horizontal space that a column may consume by adding size classes to your column markup. For example, to create a layout with one column taking up 25% of the available space and the second other column taking up 75% of the space, you can add <code>-w--3</code> and <code>-w--9</code> to your each column, respectively:
 
-.a-grid.-show--example
-  .a-col.-w--3
-  .a-col.-w--9
+.chi-grid.-show--example
+  .chi-col.-w--3
+  .chi-col.-w--9
 
 .-mb--4.-mt--2
   :code(lang="html")
-    <div class="a-grid">
-      <div class="a-col -w--3"></div>
-      <div class="a-col -w--9"></div>
+    <div class="chi-grid">
+      <div class="chi-col -w--3"></div>
+      <div class="chi-col -w--9"></div>
     </div>
 
 p.-text Remember that the grid system consists of 12 columns, so each column unit is approximately 8.3% in width. So, to achieve this layout we are using 3 grid column units (1 unit * 3, or 8.3% * 3) to claim 25% of the width for the first column.
@@ -137,17 +137,17 @@ h3 Mixing Column Sizes w/Automatic Layout
 p.-text When specifying a column size, it is often not necessary to assign an explicit size to each column. In the case above, we could have easily omitted the <code>-w--9</code> size class from the second column and the layout would remain the same.
 p.-text For example, if we wanted to create a layout with 3 columns where the left and right columns are fixed in width and the middle column is flexible based on the amount of available space, we would end up with the following:
 
-.a-grid.-show--example
-  .a-col.-w--2
-  .a-col
-  .a-col.-w--2
+.chi-grid.-show--example
+  .chi-col.-w--2
+  .chi-col
+  .chi-col.-w--2
 
 .-mb--4.-mt--2
   :code(lang="html")
-    <div class="a-grid">
-      <div class="a-col -w--2"></div>
-      <div class="a-col"></div>
-      <div class="a-col -w--2"></div>
+    <div class="chi-grid">
+      <div class="chi-col -w--2"></div>
+      <div class="chi-col"></div>
+      <div class="chi-col -w--2"></div>
     </div>
 
 p.-text Any columns that do not have an explicit size class associated with them will simply consume an equal amount of the leftover avaible space.
@@ -155,95 +155,56 @@ p.-text Any columns that do not have an explicit size class associated with them
 h3 Available Column Sizes
 
 p.-text The size classes are defined from <code>-w--1</code>, which takes up ~8.3% of the width to <code>-w--12</code>, which consumes the entire row.
-.a-grid.-show--example.-mb--3
-  .a-col.-w--12
-.a-grid.-show--example.-mb--3
-  .a-col.-w--11
-.a-grid.-show--example.-mb--3
-  .a-col.-w--10
-.a-grid.-show--example.-mb--3
-  .a-col.-w--9
-.a-grid.-show--example.-mb--3
-  .a-col.-w--8
-.a-grid.-show--example.-mb--3
-  .a-col.-w--7
-.a-grid.-show--example.-mb--3
-  .a-col.-w--6
-.a-grid.-show--example.-mb--3
-  .a-col.-w--5
-.a-grid.-show--example.-mb--3
-  .a-col.-w--4
-.a-grid.-show--example.-mb--3
-  .a-col.-w--3
-.a-grid.-show--example.-mb--3
-  .a-col.-w--2
-.a-grid.-show--example.-mb--3
-  .a-col.-w--1
-
-//- .-mb--4.-mt--2
-//-   :code(lang="html")
-//-     <div class="a-grid">
-//-       <div class="a-col -w--12"></div>
-//-     </div>
-//-     <div class="a-grid">
-//-       <div class="a-col -w--11"></div>
-//-     </div>
-//-     <div class="a-grid">
-//-       <div class="a-col -w--10"></div>
-//-     </div>
-//-     <div class="a-grid">
-//-       <div class="a-col -w--9"></div>
-//-     </div>
-//-     <div class="a-grid">
-//-       <div class="a-col -w--8"></div>
-//-     </div>
-//-     <div class="a-grid">
-//-       <div class="a-col -w--7"></div>
-//-     </div>
-//-     <div class="a-grid">
-//-       <div class="a-col -w--6"></div>
-//-     </div>
-//-     <div class="a-grid">
-//-       <div class="a-col -w--5"></div>
-//-     </div>
-//-     <div class="a-grid">
-//-       <div class="a-col -w--4"></div>
-//-     </div>
-//-     <div class="a-grid">
-//-       <div class="a-col -w--3"></div>
-//-     </div>
-//-     <div class="a-grid">
-//-       <div class="a-col -w--2"></div>
-//-     </div>
-//-     <div class="a-grid">
-//-       <div class="a-col -w--1"></div>
-//-     </div>
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--12
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--11
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--10
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--9
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--8
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--7
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--6
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--5
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--4
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--3
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--2
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--1
 
 h3 Column Wrapping
 
 p.-text Grid containers can accommodate any number of columns, however, the grid system is restricted to a maximum of 12 column units per row. Overflowing the 12 column units will automatically wrap additional columns onto a new row. For example, the following layout is the result of having 24 column units in a single container:
 
-.a-grid.-show--example
-  .a-col.-w--3
-  .a-col.-w--3
-  .a-col.-w--3
-  .a-col.-w--3
-  .a-col.-w--6
-  .a-col.-w--6
+.chi-grid.-show--example
+  .chi-col.-w--3
+  .chi-col.-w--3
+  .chi-col.-w--3
+  .chi-col.-w--3
+  .chi-col.-w--6
+  .chi-col.-w--6
 
 .-mb--4.-mt--2
   :code(lang="html")
-    <div class="a-grid">
+    <div class="chi-grid">
 
       <!-- first 12 column units -->
-      <div class="a-col -w--3"></div>
-      <div class="a-col -w--3"></div>
-      <div class="a-col -w--3"></div>
-      <div class="a-col -w--3"></div>
+      <div class="chi-col -w--3"></div>
+      <div class="chi-col -w--3"></div>
+      <div class="chi-col -w--3"></div>
+      <div class="chi-col -w--3"></div>
 
       <!-- ... and another row consisting of 12 more units -->
-      <div class="a-col -w--6"></div>
-      <div class="a-col -w--6"></div>
+      <div class="chi-col -w--6"></div>
+      <div class="chi-col -w--6"></div>
 
     </div>
 
@@ -251,61 +212,60 @@ h3 Offset Positioning of Columns
 
 p.-text You may position columns with an offset of one or more column units by specifying an offset size class on your column.
 
-.a-grid.-show--example.-mb--3
-  .a-col.-w--5.-o--1
-  .a-col.-w--3.-o--3
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--5.-o--1
+  .chi-col.-w--3.-o--3
 
 .-mb--4.-mt--2
   :code(lang="html")
-    <div class="a-grid">
-      <div class="a-col -w--5 -o--1"></div>
-      <div class="a-col -w--3 -o--3"></div>
+    <div class="chi-grid">
+      <div class="chi-col -w--5 -o--1"></div>
+      <div class="chi-col -w--3 -o--3"></div>
     </div>
 
 h4 Available Offset Sizes
 
 p.-text Offset sizes, like column sizes, range from <code>-o--1</code>, which takes up ~8.3% of the width to <code>-o--11</code>, which consumes ~91.6% of the row.
 
-.a-grid.-show--example.-mb--3
-  .a-col.-o--1
-.a-grid.-show--example.-mb--3
-  .a-col.-o--2
-.a-grid.-show--example.-mb--3
-  .a-col.-o--3
-.a-grid.-show--example.-mb--3
-  .a-col.-o--4
-.a-grid.-show--example.-mb--3
-  .a-col.-o--5
-.a-grid.-show--example.-mb--3
-  .a-col.-o--6
-.a-grid.-show--example.-mb--3
-  .a-col.-o--7
-.a-grid.-show--example.-mb--3
-  .a-col.-o--8
-.a-grid.-show--example.-mb--3
-  .a-col.-o--9
-.a-grid.-show--example.-mb--3
-  .a-col.-o--10
-.a-grid.-show--example.-mb--3
-  .a-col.-o--11
+.chi-grid.-show--example.-mb--3
+  .chi-col.-o--1
+.chi-grid.-show--example.-mb--3
+  .chi-col.-o--2
+.chi-grid.-show--example.-mb--3
+  .chi-col.-o--3
+.chi-grid.-show--example.-mb--3
+  .chi-col.-o--4
+.chi-grid.-show--example.-mb--3
+  .chi-col.-o--5
+.chi-grid.-show--example.-mb--3
+  .chi-col.-o--6
+.chi-grid.-show--example.-mb--3
+  .chi-col.-o--7
+.chi-grid.-show--example.-mb--3
+  .chi-col.-o--8
+.chi-grid.-show--example.-mb--3
+  .chi-col.-o--9
+.chi-grid.-show--example.-mb--3
+  .chi-col.-o--10
+.chi-grid.-show--example.-mb--3
+  .chi-col.-o--11
 
 h3 Reordering Columns
 
 p.-text To display a column or columns in an order that is different than that which they appear in the markup, you may apply a reordering modifier class.
-// This is useful when you wish to display the contents of a grid differently based on different screen sizes or when iterating a list of items without knowing explicit layout order beforehand.
 
 .test-reordering.-w--100
-  .a-grid.-show--example
-    .a-col.-n--3
-    .a-col.-n--1
-    .a-col.-n--2
+  .chi-grid.-show--example
+    .chi-col.-n--3
+    .chi-col.-n--1
+    .chi-col.-n--2
 
 .-mb--4.-mt--2
   :code(lang="html")
-    <div class="a-grid">
-      <div class="a-col -n--3"></div> <!-- displayed last -->
-      <div class="a-col -n--1"></div> <!-- displayed first -->
-      <div class="a-col -n--2"></div> <!-- displayed between -->
+    <div class="chi-grid">
+      <div class="chi-col -n--3"></div> <!-- displayed last -->
+      <div class="chi-col -n--1"></div> <!-- displayed first -->
+      <div class="chi-col -n--2"></div> <!-- displayed between -->
     </div>
 
 h2 Responsive Layout
@@ -323,72 +283,72 @@ h3 Viewport-Specific Column Sizing
 
 p.-text The columns in the following rows will be 50% wide until they are in the configured viewport, at which point they will become 12 column units wide.
 
-.a-grid.-show--example.-mb--3
-  .a-col.-w--6.-w-sm--12
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--6.-w-sm--12
 
-.a-grid.-show--example.-mb--3
-  .a-col.-w--6.-w-md--12
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--6.-w-md--12
 
-.a-grid.-show--example.-mb--3
-  .a-col.-w--6.-w-lg--12
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--6.-w-lg--12
 
-.a-grid.-show--example.-mb--3
-  .a-col.-w--6.-w-xl--12
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w--6.-w-xl--12
 
 .-mb--4.-mt--2
   :code(lang="html")
     <!-- 50% on xs viewports; 100% on sm, md, lg and xl viewports -->
-    <div class="a-grid">
-      <div class="a-col -w--6 -w-sm--12"></div>
+    <div class="chi-grid">
+      <div class="chi-col -w--6 -w-sm--12"></div>
     </div>
 
     <!-- 50% on xs and sm viewports; 100% on md, lg and xl viewports -->
-    <div class="a-grid">
-      <div class="a-col -w--6 -w-md--12"></div>
+    <div class="chi-grid">
+      <div class="chi-col -w--6 -w-md--12"></div>
     </div>
 
     <!-- 50% on xs, sm and md viewports; 100% on lg and xl viewports -->
-    <div class="a-grid">
-      <div class="a-col -w--6 -w-lg--12"></div>
+    <div class="chi-grid">
+      <div class="chi-col -w--6 -w-lg--12"></div>
     </div>
 
     <!-- 50% on xs, sm, md and lg viewports; 100% on xl viewports -->
-    <div class="a-grid">
-      <div class="a-col -w--6 -w-xl--12"></div>
+    <div class="chi-grid">
+      <div class="chi-col -w--6 -w-xl--12"></div>
     </div>
 
 h3 Column Stacking
 
 p.-text On extra small (xs) viewports you can make columns stack by specifying the column with the <code>-w-sm</code> or any <code>-w-sm--*</code> size modifier classes. Columns will start out stacked until viewed in the small viewport, at which point they will display horizontally in the row according to automatic layout or its assigned viewport size class.
 
-.a-grid.-show--example.-mb--3
-  .a-col.-w-sm--2
-  .a-col.-w-sm--4
-  .a-col.-w-sm
-.a-grid.-show--example.-mb--3
-  .a-col.-w-sm
-  .a-col.-w-sm
-  .a-col.-w-sm
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w-sm--2
+  .chi-col.-w-sm--4
+  .chi-col.-w-sm
+.chi-grid.-show--example.-mb--3
+  .chi-col.-w-sm
+  .chi-col.-w-sm
+  .chi-col.-w-sm
 
 .-mb--4.-mt--2
   :code(lang="html")
-    <div class="a-grid">
-      <div class="a-col -w-sm--2"></div>
-      <div class="a-col -w-sm--4"></div>
-      <div class="a-col -w-sm"></div>
+    <div class="chi-grid">
+      <div class="chi-col -w-sm--2"></div>
+      <div class="chi-col -w-sm--4"></div>
+      <div class="chi-col -w-sm"></div>
     </div>
 
 h3 Viewport-Specific Column Offsets
 
 p.-text You may also use offsets on a per-viewport basis. For example, it may make sense to offset content on a desktop, but where space is limited on a mobile device you may want to have the content occupy more space. In the following example, the column will be offset by 50% when on medium viewports, but will not be offset on extra small or small viewports.
 
-.a-grid.-show--example.-mb--3
-  .a-col.-o-md--6
+.chi-grid.-show--example.-mb--3
+  .chi-col.-o-md--6
 
 .-mb--4.-mt--2
   :code(lang="html")
-    <div class="a-grid">
-      <div class="a-col -o-md--6"></div>
+    <div class="chi-grid">
+      <div class="chi-col -o-md--6"></div>
     </div>
 
 h2 Alignment
@@ -399,62 +359,62 @@ p.-text Setting alignment on the grid container will apply to all columns within
 
 h4 -align--top
 
-.a-grid.-align--top.-show--example.-mb--3(style="height: 160px")
-  .a-col
-  .a-col
-  .a-col
+.chi-grid.-align--top.-show--example.-mb--3(style="height: 160px")
+  .chi-col
+  .chi-col
+  .chi-col
 
 .-mb--4.-mt--2
   :code(lang="html")
-    <div class="a-grid -align--top" style="height: 160px;">
-      <div class="a-col"></div>
-      <div class="a-col"></div>
-      <div class="a-col"></div>
+    <div class="chi-grid -align--top" style="height: 160px;">
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
     </div>
 
 h4 -align--center
 
-.a-grid.-align--center.-show--example.-mb--3(style="height: 160px")
-  .a-col
-  .a-col
-  .a-col
+.chi-grid.-align--center.-show--example.-mb--3(style="height: 160px")
+  .chi-col
+  .chi-col
+  .chi-col
 
 .-mb--4.-mt--2
   :code(lang="html")
-    <div class="a-grid -align--center" style="height: 160px;">
-      <div class="a-col"></div>
-      <div class="a-col"></div>
-      <div class="a-col"></div>
+    <div class="chi-grid -align--center" style="height: 160px;">
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
     </div>
 
 h4 -align--bottom
 
-.a-grid.-align--bottom.-show--example.-mb--3(style="height: 128px")
-  .a-col
-  .a-col
-  .a-col
+.chi-grid.-align--bottom.-show--example.-mb--3(style="height: 128px")
+  .chi-col
+  .chi-col
+  .chi-col
 
 .-mb--4.-mt--2
   :code(lang="html")
-    <div class="a-grid -align--bottom" style="height: 160px">
-      <div class="a-col"></div>
-      <div class="a-col"></div>
-      <div class="a-col"></div>
+    <div class="chi-grid -align--bottom" style="height: 160px">
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
+      <div class="chi-col"></div>
     </div>
 
 h3 Column-Specific Vertical Alignment
 
 p.-text Changing the alignment of an individual column is as easy as applying an alignment modifier to the column in question.
 
-.a-grid.-show--example.-mb--3(style="height: 160px")
-  .a-col.-align--top
-  .a-col.-align--center
-  .a-col.-align--bottom
+.chi-grid.-show--example.-mb--3(style="height: 160px")
+  .chi-col.-align--top
+  .chi-col.-align--center
+  .chi-col.-align--bottom
 
 .-mb--4.-mt--2
   :code(lang="html")
-    <div class="a-grid" style="height: 160px">
-      <div class="a-col -align--top"></div>
-      <div class="a-col -align--center"></div>
-      <div class="a-col -align--bottom"></div>
+    <div class="chi-grid" style="height: 160px">
+      <div class="chi-col -align--top"></div>
+      <div class="chi-col -align--center"></div>
+      <div class="chi-col -align--bottom"></div>
     </div>

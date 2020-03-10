@@ -194,7 +194,7 @@ h3 Spinners in Text Inputs
 h2 Spinner Sizes
 .example.-mb--3
   .-p--3
-    .a-grid.-align-items--end
+    .chi-grid.-align-items--end
       each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
         div.-p--2
           chi-spinner(size=size, class='-m--1')
@@ -277,14 +277,14 @@ h2 Spinner Sizes
 
 h2 Spinner Colors
 .example.-mb--3
-  .a-grid.-noGutter
-    .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap
+  .chi-grid.-noGutter
+    .chi-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap
       each color in ['primary', 'success', 'warning', 'danger', 'muted']
         div.-p--2.-text--center
           chi-spinner(color=color, class='-m--3', size='md')
           p.-text(class=`-text--${color} -px--1`)
             = color
-    .a-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap.-bg--black
+    .chi-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap.-bg--black
       each color in ['secondary', 'light']
         div.-p--2.-text--center
           chi-spinner(color=color, class='-m--3', size='md')

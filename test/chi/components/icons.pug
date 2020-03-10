@@ -7,39 +7,39 @@ title: Icons
 
 h2 Single icon
 .test-single
-  .a-grid
-    .a-col.-w--2.-middle
+  .chi-grid
+    .chi-col.-w--2.-middle
       div(class=`chi-icon`, data-cy='icon-single')
         svg
           use(xlink:href='#icon-atom')
 
 h2 Sizes
 .test-sizes
-  .a-grid
+  .chi-grid
     each size in sizes
-      .a-col.-w--1.-o--1.-middle
+      .chi-col.-w--1.-o--1.-middle
         h4= size
-      .a-col.-w--2.-middle
+      .chi-col.-w--2.-middle
         div(class=`chi-icon -${size}`, data-cy=size==='xl'?'icon-size':false)
           svg
             use(xlink:href='#icon-atom')
 
 h2 Colors
 .test-colors
-  .a-grid
+  .chi-grid
     each color in colors
-      .a-col.-w--1.-o--1.-middle
+      .chi-col.-w--1.-o--1.-middle
         h4= color
-      .a-col.-w--2.-middle
+      .chi-col.-w--2.-middle
         div(class=`chi-icon -lg -text--${color}`, data-cy=color==='primary'?'icon-color':false)
           svg
             use(xlink:href='#icon-atom')
 
 h2 Icons
 .test-icons
-  .a-grid(data-cy='icon-list')
+  .chi-grid(data-cy='icon-list')
     each name in icons
-      .a-col.-w--2.-o--1.-middle
+      .chi-col.-w--2.-o--1.-middle
         .chi-icon.-sm
           svg
             use(xlink:href=`#icon-${name}`)

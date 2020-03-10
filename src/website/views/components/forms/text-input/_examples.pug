@@ -87,12 +87,12 @@ h3 Inline Label - width controlled using percent
 h3 Inline Label - width controlled using grid
 .example.-mb--3
   .-p--3
-    .m-form__item.-row.a-grid.-noGutter
-      label.a-label.a-col.-w--3(for='example__inline-label-grid') Label width 3 columns
-      .a-col.-w--9
+    .m-form__item.-row.chi-grid.-noGutter
+      label.a-label.chi-col.-w--3(for='example__inline-label-grid') Label width 3 columns
+      .chi-col.-w--9
         input(type="text", class="chi-input", id='example__inline-label-grid', placeholder="Placeholder")
   :code(lang="html")
-    <div class="m-form__item -row a-grid -noGutter">
+    <div class="m-form__item -row chi-grid -noGutter">
       <label class="a-label -w--3" for="example__inline-label-grid">Label</label>
       <div class="-w--9">
         <input class="chi-input" type="text" id="example__inline-label-grid" placeholder="Placeholder">
@@ -328,7 +328,7 @@ ul#chi-tabs.chi-tabs
   #floatingInitial.chi-tabs-panel.-active
     .-p--3
       each size in ['lg', 'xl']
-        div(class=`a-col -w--12 -p--2`)
+        div(class=`chi-col -w--12 -p--2`)
           .m-input__wrapper.-floatingLabel(style="max-width:20rem")
             input(type="text", class=`chi-input -${size} -mr--3`, id=`floating-label-${size}`)
             label(for=`floating-label-${size}`) Placeholder text
@@ -345,7 +345,7 @@ ul#chi-tabs.chi-tabs
   #floatingActive.chi-tabs-panel
     .-p--3
       each size in ['lg', 'xl']
-        div(class=`a-col -w--12 -p--2`)
+        div(class=`chi-col -w--12 -p--2`)
           .m-input__wrapper.-floatingLabel(style="max-width:20rem")
             input(type="text", class=`chi-input -${size} -mr--3`, id=`floating-label-${size}-2`, value="Sample text")
             label.-active(for=`floating-label-${size}-2`) Placeholder text

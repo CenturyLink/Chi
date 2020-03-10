@@ -23,9 +23,9 @@ p.-text
   | To use, wrap any <a href="../icon/">Chi icon</a> with <code>chi-avatar</code>.
 .example.-mb--3
   .-p--3
-    .a-grid
+    .chi-grid
       each icon in iconExamples
-        .a-col.-w--2.-w-sm--1
+        .chi-col.-w--2.-w-sm--1
           .chi-avatar
             i(class=`chi-icon icon-${icon}`)
   ul#chi-tabs--icons.chi-tabs.-ml--3
@@ -53,10 +53,10 @@ p.-text
   | Text utility classes such as <code>-text--uppercase</code>, <code>-text--lowercase</code>,
   | and <code>-text--capitalized</code> can be applied to force specific casing.
 .example.-mb--3
-  .-p--3.a-grid
-    .a-col.-w--2.-w-sm--1
+  .-p--3.chi-grid
+    .chi-col.-w--2.-w-sm--1
       .chi-avatar AA
-    .a-col.-w--2.-w-sm--1
+    .chi-col.-w--2.-w-sm--1
       .chi-avatar M
   :code(lang="html")
     <div class="chi-avatar">AA</div>
@@ -79,10 +79,10 @@ ul#chi-tabs--colors.chi-tabs
 .example.-mb--3
   #coloredInitials.chi-tabs-panel.-active
     .-p--3
-      .a-grid.-align-items--end
+      .chi-grid.-align-items--end
         each color in colors
           if (color !== 'secondary')
-            .a-col.-w--2.-text--center
+            .chi-col.-w--2.-text--center
               div(class=`chi-avatar -${color}`) AA
               p.-text= color
     :code(lang="html")
@@ -102,10 +102,10 @@ ul#chi-tabs--colors.chi-tabs
 
   #coloredIcons.chi-tabs-panel
     .-p--3
-      .a-grid.-align-items--end
+      .chi-grid.-align-items--end
         each color in colors
           if (color !== 'secondary')
-            .a-col.-w--2.-text--center
+            .chi-col.-w--2.-text--center
               div(class=`chi-avatar -${color}`)
                 i.chi-icon.icon-user
               p.-text= color
@@ -155,15 +155,15 @@ p.-text
   | Both icon and initial avatars support light and transparent versions for dark backgrounds.
 .example.-mb--3
   .-p--3.-bg--black
-    .a-grid.-align-items--end
-      .a-col.-w--3.-text--center
+    .chi-grid.-align-items--end
+      .chi-col.-w--3.-text--center
         div.chi-avatar.-light AA
-      .a-col.-w--3.-text--center
+      .chi-col.-w--3.-text--center
         div.chi-avatar.-secondary.-transparent AA
-      .a-col.-w--3.-text--center
+      .chi-col.-w--3.-text--center
         div.chi-avatar.-light
           i.chi-icon.icon-user
-      .a-col.-w--3.-text--center
+      .chi-col.-w--3.-text--center
         div.chi-avatar.-secondary.-transparent
           i.chi-icon.icon-user
   :code(lang="html")
@@ -194,9 +194,9 @@ ul#chi-tabs--sizes.chi-tabs
 .example.-mb--3
   #sizedInitials.chi-tabs-panel.-active
     .-p--3
-      .a-grid.-align-items--end
+      .chi-grid.-align-items--end
         each size in sizes
-          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
+          div(class=`chi-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
             div(class=`chi-avatar -${size}`) AA
             p.-text= size
     :code(lang="html")
@@ -211,9 +211,9 @@ ul#chi-tabs--sizes.chi-tabs
 
   #sizedIcons.chi-tabs-panel
     .-p--3
-      .a-grid.-align-items--end
+      .chi-grid.-align-items--end
         each size in sizes
-          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
+          div(class=`chi-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
             div(class=`chi-avatar -${size}`)
               i.chi-icon.icon-user
             p.-text= size
@@ -245,9 +245,9 @@ ul#chi-tabs--sizes.chi-tabs
       </div>
   #sizedImages.chi-tabs-panel
     .-p--3
-      .a-grid.-align-items--end
+      .chi-grid.-align-items--end
         each size in sizes
-          div(class=`a-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
+          div(class=`chi-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
             div(class=`chi-avatar -${size}`)
               img(src='../../assets/images/avatar.jpg', alt="avatar")
             p.-text= size
@@ -283,10 +283,10 @@ p.-text
   | Use avatar groups to group multiple avatars or add descriptive text such as a users name.
   | Render an avatar group by wrapping an avatar in the class <code>m-avatarGroup</code>.
 .example.-mb--3
-  .-p--3.a-grid
+  .-p--3.chi-grid
     each color in colors
       if (color !== 'secondary')
-        .-mb--1.a-col.-w--6.-w-sm--4.-w-md--6.-w-lg--4.-w-xl--3
+        .-mb--1.chi-col.-w--6.-w-sm--4.-w-md--6.-w-lg--4.-w-xl--3
           .m-avatarGroup
             div(class=`chi-avatar -${color}`) L
             = `Label ${color}`

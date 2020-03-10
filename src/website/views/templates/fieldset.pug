@@ -9,31 +9,31 @@ description: Basic example of several types of form elements in one fieldset.
       .chi-card
         .chi-card__content.-p--3
           fieldset
-            .a-grid.-noGutter
-              div.a-col.-w--12
+            .chi-grid.-noGutter
+              div.chi-col.-w--12
                 legend.a-h5.-mb--3.-mt--0 Business Information
                 .m-input__wrapper.-floatingLabel.-mb--1#bname
                   input(type='text', class='chi-input -xl', id='name')
                   label(for='name') Business name
-              div.a-col.-w--12
+              div.chi-col.-w--12
                 .m-input__wrapper.-floatingLabel#bphone
                   input(type='text', class='chi-input -xl', id='phone')
                   label(for='phone') Business phone
-              div.a-col.-w--12
+              div.chi-col.-w--12
                 legend.a-h6.-mt--2 Business address
-              div.a-col.-w--12
+              div.chi-col.-w--12
                 .m-input__wrapper.-floatingLabel.-mb--1#baddress1
                   input(type='text', class='chi-input -xl', id='address1')
                   label(for='address1') Address line 1
-              div.a-col.-w--12
+              div.chi-col.-w--12
                 .m-input__wrapper.-floatingLabel.-mb--1#baddress2
                   input(type='text', class='chi-input -xl', id='address2')
                   label(for='address2') Address line 2
-              div.a-col.-mr-sm--1
+              div.chi-col.-mr-sm--1
                 .m-input__wrapper.-floatingLabel.-mb--1.-mb-sm--0#bcity
                   input(type='text', class='chi-input -xl', id='city')
                   label(for='city') City
-              div.a-col.-w-md--4.-mr-sm--1
+              div.chi-col.-w-md--4.-mr-sm--1
                 .m-input__wrapper.-floatingLabel.-mb--1.-mb-sm--0#bstate
                   select#floating-label-select.chi-input.-xl
                     option
@@ -41,48 +41,48 @@ description: Basic example of several types of form elements in one fieldset.
                     option Option 2
                     option Option 3
                   label(for='floating-label-select') State
-              div.a-col.-w-md--2
+              div.chi-col.-w-md--2
                 .m-input__wrapper.-floatingLabel.-mb--1.-mb-sm--0#bzip
                   input(type='text', class='chi-input -xl', id='zip')
                   label(for='zip') Zip
-              div.a-col.-w--12
+              div.chi-col.-w--12
                 .m-form__item.-row.-my--1.-mt-sm--2
                   .chi-checkbox
                     input(type='checkbox', class='chi-checkbox__input', id='checkbox1' checked)
                     label.chi-checkbox__label(for='checkbox1') This has been my business's address for more than one year
-              div.a-col.-w--12
+              div.chi-col.-w--12
                 legend.a-h6.-mt--2 Business contact
-              div.a-col.-mr-sm--1
+              div.chi-col.-mr-sm--1
                 .m-input__wrapper.-floatingLabel.-mb--1#bcname
                   input(type='text', class='chi-input -xl', id='contact_name')
                   label(for='contact_name') Name
-              div.a-col.-w-md--6
+              div.chi-col.-w-md--6
                 .m-input__wrapper.-floatingLabel.-mb--1#bctitle
                   input(type='text', class='chi-input -xl', id='contact_title')
                   label(for='contact_title') Title
-              div.a-col.-w--12
+              div.chi-col.-w--12
                 .m-input__wrapper.-floatingLabel#bcemail
                   input(type='text', class='chi-input -xl', id='email')
                   label(for='email') Email
-              div.a-col.-w--12
+              div.chi-col.-w--12
                 legend.a-h6.-mt--2 Executive contact
-              div.a-col.-w--12
+              div.chi-col.-w--12
                 .m-form__item.-row.-mb--1
                   .chi-checkbox
                     input(type='checkbox', class='chi-checkbox__input', id='checkbox2' checked)
                     label.chi-checkbox__label(for='checkbox2') Same as business contact
-              div.a-col.-w--12
+              div.chi-col.-w--12
                 legend.a-h6.-mt--2 Additional business information
                   i.-text.-text--normal  (optional)
-              div.a-col.-w--12
+              div.chi-col.-w--12
                 .m-input__wrapper.-floatingLabel.-mb--1#bwebsite
                   input(type='text', class='chi-input -xl', id='website')
                   label(for='website') Website
-              div.a-col.-mr-sm--1
+              div.chi-col.-mr-sm--1
                 .m-input__wrapper.-floatingLabel.-mb--1.-mb-sm--0#bdunns_number
                   input(type='text', class='chi-input -xl', id='dunns_number')
                   label(for='dunns_number') Dunns number
-              div.a-col.-w-md--6
+              div.chi-col.-w-md--6
                 .m-input__wrapper.-floatingLabel.-mb--1.-mb-sm--0#btax_id
                   input(type='text', class='chi-input -xl', id='tax_id')
                   label(for='tax_id') Tax ID
@@ -91,43 +91,43 @@ description: Basic example of several types of form elements in one fieldset.
       <div class="chi-card">
         <div class="chi-card__content -p--3">
           <fieldset>
-            <div class="a-grid -noGutter">
-              <div class="a-col -w--12">
+            <div class="chi-grid -noGutter">
+              <div class="chi-col -w--12">
                 <legend class="a-h5 -mb--3 -mt--0">Business Information</legend>
                 <div class="m-input__wrapper -floatingLabel -mb--1" id="bname">
                   <input class="chi-input -xl" type="text" id="name">
                   <label for="name" class="">Business name</label>
                 </div>
               </div>
-              <div class="a-col -w--12">
+              <div class="chi-col -w--12">
                 <div class="m-input__wrapper -floatingLabel" id="bphone">
                   <input class="chi-input -xl" type="text" id="phone">
                   <label for="phone" class="">Business phone</label>
                 </div>
               </div>
-              <div class="a-col -w--12">
+              <div class="chi-col -w--12">
                 <legend class="a-h6 -mt--2">Business address</legend>
               </div>
-              <div class="a-col -w--12">
+              <div class="chi-col -w--12">
                 <div class="m-input__wrapper -floatingLabel -mb--1" id="baddress1">
                   <input class="chi-input -xl" type="text" id="address1">
                   <label for="address1" class="">Address line 1</label>
                 </div>
               </div>
-              <div class="a-col -w--12">
+              <div class="chi-col -w--12">
                 <div class="m-input__wrapper -floatingLabel -mb--1" id="baddress2">
                   <input class="chi-input -xl" type="text" id="address2">
                   <label for="address2" class="">
                     Address line 2</label>
                 </div>
               </div>
-              <div class="a-col -mr-sm--1">
+              <div class="chi-col -mr-sm--1">
                 <div class="m-input__wrapper -floatingLabel -mb--1 -mb-sm--0" id="bcity">
                   <input class="chi-input -xl" type="text" id="city">
                   <label for="city" class="">City</label>
                 </div>
               </div>
-              <div class="a-col -w-md--4 -mr-sm--1">
+              <div class="chi-col -w-md--4 -mr-sm--1">
                 <div class="m-input__wrapper -floatingLabel -mb--1 -mb-sm--0" id="bstate">
                   <select class="chi-input -xl" id="floating-label-select">
                     <option></option>
@@ -138,13 +138,13 @@ description: Basic example of several types of form elements in one fieldset.
                   <label for="floating-label-select" class="">State</label>
                 </div>
               </div>
-              <div class="a-col -w-md--2">
+              <div class="chi-col -w-md--2">
                 <div class="m-input__wrapper -floatingLabel -mb--1 -mb-sm--0" id="bzip">
                   <input class="chi-input -xl" type="text" id="zip">
                   <label for="zip" class="">Zip</label>
                 </div>
               </div>
-              <div class="a-col -w--12">
+              <div class="chi-col -w--12">
                 <div class="m-form__item -row -my--1 -mt-sm--2">
                   <div class="chi-checkbox">
                     <input class="chi-checkbox__input" type="checkbox" id="checkbox1" checked="">
@@ -152,31 +152,31 @@ description: Basic example of several types of form elements in one fieldset.
                   </div>
                 </div>
               </div>
-              <div class="a-col -w--12">
+              <div class="chi-col -w--12">
                 <legend class="a-h6 -mt--2">Business contact</legend>
               </div>
-              <div class="a-col -mr-sm--1">
+              <div class="chi-col -mr-sm--1">
                 <div class="m-input__wrapper -floatingLabel -mb--1" id="bcname">
                   <input class="chi-input -xl" type="text" d="contact_name">
                   <label for="contact_name" class="">Name</label>
                 </div>
               </div>
-              <div class="a-col -w-md--6">
+              <div class="chi-col -w-md--6">
                 <div class="m-input__wrapper -floatingLabel -mb--1" id="bctitle">
                   <input class="chi-input -xl" type="text" id="contact_title">
                   <label for="contact_title" class="">Title</label>
                 </div>
               </div>
-              <div class="a-col -w--12">
+              <div class="chi-col -w--12">
                 <div class="m-input__wrapper -floatingLabel" id="bcemail">
                   <input class="chi-input -xl" type="text" id="email">
                   <label for="email" class="">Email</label>
                 </div>
               </div>
-              <div class="a-col -w--12">
+              <div class="chi-col -w--12">
                 <legend class="a-h6 -mt--2">Executive contact</legend>
               </div>
-              <div class="a-col -w--12">
+              <div class="chi-col -w--12">
                 <div class="m-form__item -row -mb--1">
                   <div class="chi-checkbox">
                     <input class="chi-checkbox__input" type="checkbox" id="checkbox2" checked="">
@@ -184,25 +184,25 @@ description: Basic example of several types of form elements in one fieldset.
                   </div>
                 </div>
               </div>
-              <div class="a-col -w--12">
+              <div class="chi-col -w--12">
                 <legend class="a-h6 -mt--2">
                   Additional business information
                   <i class="-text -text--normal">(optional)</i>
                 </legend>
               </div>
-              <div class="a-col -w--12">
+              <div class="chi-col -w--12">
                 <div class="m-input__wrapper -floatingLabel -mb--1" id="bwebsite">
                   <input class="chi-input -xl" type="text" id="website">
                   <label for="website" class="">Website</label>
                 </div>
               </div>
-              <div class="a-col -mr-sm--1">
+              <div class="chi-col -mr-sm--1">
                 <div class="m-input__wrapper -floatingLabel -mb--1 -mb-sm--0" id="bdunns_number">
                   <input class="chi-input -xl" type="text" id="dunns_number">
                   <label for="dunns_number" class="">Dunns number</label>
                 </div>
               </div>
-              <div class="a-col -w-md--6">
+              <div class="chi-col -w-md--6">
                 <div class="m-input__wrapper -floatingLabel -mb--1 -mb-sm--0" id="btax_id">
                   <input class="chi-input -xl" type="text" id="tax_id">
                   <label for="tax_id" class="">Tax ID</label>

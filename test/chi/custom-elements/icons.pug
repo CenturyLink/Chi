@@ -10,32 +10,32 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 h2 Single icon
 .test-single
-  .a-grid
-    .a-col.-w--2.-middle
+  .chi-grid
+    .chi-col.-w--2.-middle
       chi-icon(icon="atom", data-cy='icon-single')
 
 h2 Sizes
 .test-sizes
-  .a-grid
+  .chi-grid
     each size in sizes
-      .a-col.-w--1.-o--1.-middle
+      .chi-col.-w--1.-o--1.-middle
         h4= size
-      .a-col.-w--2.-middle
+      .chi-col.-w--2.-middle
         chi-icon(icon="atom", size=size, data-cy=size==='xl'?'icon-size':false)
 
 h2 Colors
 .test-colors
-  .a-grid
+  .chi-grid
     each color in colors
-      .a-col.-w--1.-o--1.-middle
+      .chi-col.-w--1.-o--1.-middle
         h4= color
-      .a-col.-w--2.-middle
+      .chi-col.-w--2.-middle
         chi-icon(icon="atom", size='lg', color=color, data-cy=color==='primary'?'icon-color':false)
 
 h2 Icons
 .test-icons
-  .a-grid(data-cy='icon-list')
+  .chi-grid(data-cy='icon-list')
     each name in icons
-      .a-col.-w--2.-o--1.-middle
+      .chi-col.-w--2.-o--1.-middle
         chi-icon(icon=name, size="sm")
         h4= 'icon-' + name

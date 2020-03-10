@@ -12,7 +12,7 @@ h4 Sizes
     .-p--3(style='overflow:auto')
       h3 Base
       each size in sizes
-        div(class=`a-col -w--12 -p--3`)
+        div(class=`chi-col -w--12 -p--3`)
           chi-brand(size=`${size === 'default' ? '' : size}`, data-cy=`brand-base-${size}`)
           p.-text--bold= '-' + size
 
@@ -21,7 +21,7 @@ h4 Sizes
     .-p--3(style='overflow:auto')
       h3 Inverse
       each size in sizes
-        div(class=`a-col -w--12 -p--3 -bg--black`)
+        div(class=`chi-col -w--12 -p--3 -bg--black`)
           chi-brand(size=`${size === 'default' ? '' : size}`, color='inverse', data-cy=`brand-inverse-${size}`)
           p.-text--bold.-text--white= '-' + size
 
@@ -30,7 +30,7 @@ h4 Sizes
     .-p--3(style='overflow:auto')
       h3 White
         each size in sizes
-          div(class=`a-col -w--12 -p--3 -bg--black`)
+          div(class=`chi-col -w--12 -p--3 -bg--black`)
             chi-brand(size=`${size === 'default' ? '' : size}`, color='white', data-cy=`brand-white-${size}`)
             p.-text--bold.-text--white= '-' + size
 
@@ -39,6 +39,6 @@ h4 Sizes
     .-p--3(style='overflow:auto')
       h3 Black
         each size in sizes
-          div(class=`a-col -w--12 -p--3`)
+          div(class=`chi-col -w--12 -p--3`)
             chi-brand(size=`${size === 'default' ? '' : size}`, color='black', data-cy=`brand-black-${size}`)
             p.-text--bold= '-' + size

@@ -1,7 +1,7 @@
 @import '_variables';
 @import '_mixins';
 
-.a-grid {
+.chi-grid {
   &__container {
     @include respond-to(md) {
       margin: 0 ($base-unit * 3);
@@ -22,7 +22,7 @@
   &.-noGutter {
     margin: 0;
 
-    & > .a-col {
+    & > .chi-col {
       padding: 0;
     }
   }
@@ -56,7 +56,7 @@
   // Legacy code end
 }
 
-.a-col {
+.chi-col {
   & {
     @include respond-to(md) {
       padding: 0 ($base-unit * 1.5);
@@ -269,7 +269,7 @@
 
 /* IE11 CSS hack */
 @media all and (-ms-high-contrast: none) {
-  .a-col {
+  .chi-col {
     // Sizing
 
     @for $i from 1 through 12 {
@@ -282,7 +282,7 @@
 }
 
 @media only screen and (min-width: $sm-breakpoint) and (-ms-high-contrast: none) {
-  .a-col {
+  .chi-col {
     @for $i from 1 through 12 {
       &.-w-sm--#{$i} {
         flex: 0 0 auto;
@@ -293,7 +293,7 @@
 }
 
 @media only screen and (min-width: $md-breakpoint) and (-ms-high-contrast: none) {
-  .a-col {
+  .chi-col {
     @for $i from 1 through 12 {
       &.-w-md--#{$i} {
         flex: 0 0 auto;
@@ -304,7 +304,7 @@
 }
 
 @media only screen and (min-width: $lg-breakpoint) and (-ms-high-contrast: none) {
-  .a-col {
+  .chi-col {
     @for $i from 1 through 12 {
       &.-w-lg--#{$i} {
         flex: 0 0 auto;
@@ -315,7 +315,7 @@
 }
 
 @media only screen and (min-width: $xl-breakpoint) and (-ms-high-contrast: none) {
-  .a-col {
+  .chi-col {
     @for $i from 1 through 12 {
       &.-w-xl--#{$i} {
         flex: 0 0 auto;
