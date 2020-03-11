@@ -78,6 +78,7 @@ export class Popover {
   private _closePreventedTimeout: number;
   private _documentClickHandler: () => void;
   private _documentKeyHandler: (event: KeyboardEvent) => void;
+  private mutationObserver;
 
   @Watch('position')
   positionValidation(newValue: string) {
@@ -302,22 +303,32 @@ export class Popover {
     }
   }
 
-  componentWillLoad(): void {
-    const target = this.el;
-    const config = {
+  connectedCallback() {
+    const observerTarget = this.el;
+    const mutationObserverConfig = {
       attributes: true,
       attributeOldValue: true,
       attributeFilter: ['title']
     };
 
-    const subscriberCallback = (mutations) => {
-      mutations.forEach((mutation) => {
-        this.popoverTitle = mutation.target.title;
-      });
+    if (!this.mutationObserver) {
+      const subscriberCallback = (mutations) => {
+        mutations.forEach((mutation) => {
+          this.popoverTitle = mutation.target.title;
+        });
+      };
+
+      this.mutationObserver = new MutationObserver(subscriberCallback);
     }
 
-    const observer = new MutationObserver(subscriberCallback);
-    observer.observe(target, config);
+    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
+  }
+
+  disconnectedCallback() {
+    this.mutationObserver.disconnect();
+  }
+
+  componentWillLoad(): void {
 
     this.positionValidation(this.position);
     this.referenceElementChanged(this.reference);
@@ -325,8 +336,8 @@ export class Popover {
       this._animationClasses = CLASSES.ACTIVE;
     }
 
-    if (target.getAttribute('title')) {
-      this.popoverTitle = target.getAttribute('title');
+    if (this.el.getAttribute('title')) {
+      this.popoverTitle = this.el.getAttribute('title');
     }
   }
 
