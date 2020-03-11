@@ -29,7 +29,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
       div(class=`${version.testClass}${side}-with-title -mb--3 example`)
         div(style='width: 320px;')
-          .a-h2= `Drawer / with title / ${version.title} / ${side}`
+          .chi-h2= `Drawer / with title / ${version.title} / ${side}`
           div.-position--relative.-z--0(style='height: 20rem;')
             chi-drawer(position=side, title="Drawer title here", backdrop=version.backdrop, active, collapsible, data-cy=`${version.testClass}${side}-with-title`)
               .-px--2.-text Drawer content here

@@ -58,8 +58,8 @@ describe('Drawer', function() {
     cy.get('[data-cy="test-top-with-title"]')
       .children()
       .first()
-      .find('.m-drawer__header')
-      .find('.m-drawer__title')
+      .find('.chi-drawer__header')
+      .find('.chi-drawer__title')
       .contains('Drawer title here')
       .should('exist');
 

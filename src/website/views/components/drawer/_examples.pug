@@ -190,17 +190,17 @@ h3 Titled
     chi-drawer(position='left', title='Drawer title here', backdrop, active, collapsible)
       .-px--2.-text Drawer content here
   .example-tabs.-pl--2
-    ul#examples-titled.a-tabs
+    ul#examples-titled.chi-tabs
       li.-active
         a(href='#webcomponent-titled') Web component
       li
         a(href='#html-titled') HTML
-  .a-tabs-panel.-active#webcomponent-titled
+  .chi-tabs-panel.-active#webcomponent-titled
     :code(lang="html")
       <chi-drawer position="left" title="Drawer title here" backdrop active collapsible>
         <div class="-px--2 -text">Drawer content here</div>
       </chi-drawer>
-  .a-tabs-panel#html-titled
+  .chi-tabs-panel#html-titled
     :code(lang="html")
       <div class="chi-backdrop">
         <div class="chi-backdrop__wrapper">
@@ -209,9 +209,9 @@ h3 Titled
               <span class="chi-drawer__title">
                 Drawer title here
               </span>
-              <button class="a-btn -icon -close" aria-label="Close">
-                <div class="a-btn__content">
-                  <i class="a-icon icon-x"></i>
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content">
+                  <i class="chi-icon icon-x"></i>
                 </div>
               </button>
             </div>
