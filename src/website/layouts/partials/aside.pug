@@ -4,7 +4,7 @@ nav
       if utils.hasActiveSections(collection)
         if utils.isCurrentCollection(collection, path)
           li.-active.-hasActive
-            .a-collection__title
+            .chi-collection__title
               =key
             if utils.hasSections(collection)
               ul.chi-tabs__subtabs
@@ -19,7 +19,7 @@ nav
                           .-sr--only component
         else
           li.-hasActive
-            .a-collection__title
+            .chi-collection__title
               =key
             if utils.hasSections(collection)
               ul.chi-tabs__subtabs

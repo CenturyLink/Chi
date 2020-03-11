@@ -68,7 +68,7 @@
   }
 
   & > li {
-    &.a-sliding-border {
+    &.chi-sliding-border {
       left: 0;
       position: absolute;
       width: 0.125rem;
@@ -244,7 +244,7 @@
       padding: 1.25rem 0;
     }
 
-    &.a-sliding-border {
+    &.chi-sliding-border {
       bottom: 0;
       height: 0.125rem;
       margin-left: 0;
@@ -293,7 +293,7 @@
   &.-large { //Legacy code: -large to be removed.
     height: 4rem;
 
-    & > li:not(.a-sliding-border) {
+    & > li:not(.chi-sliding-border) {
       &:not(:first-child) {
         margin-left: 2rem;
       }
@@ -335,7 +335,7 @@
       }
     }
 
-    &.a-sliding-border {
+    &.chi-sliding-border {
       background-color: $brand-color;
       display: none;
       position: absolute;
@@ -343,7 +343,7 @@
   }
 
   &.-sliding > li {
-    &.a-sliding-border {
+    &.chi-sliding-border {
       display: block;
       transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
     }
@@ -372,7 +372,7 @@
         }
       }
 
-      &.a-sliding-border {
+      &.chi-sliding-border {
         background-color: $secondary-color;
       }
     }

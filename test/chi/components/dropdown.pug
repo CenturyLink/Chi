@@ -8,7 +8,7 @@ title: Dropdown
 
 each menuItemState in menuItemStates
   div(class=`test-basicDropdown${menuItemState.class}`)
-    span.a-h2=menuItemState.title
+    span.chi-h2=menuItemState.title
     .-d--flex
       each textCombination in textCombinations
         each dropdownState in dropdownStates
@@ -19,7 +19,7 @@ each menuItemState in menuItemStates
                 a(class=`chi-dropdown__menu-item ${menuItemState.class}`, href='#')=textCombination.d_text + " " + i
 
 div(class=`test-dropdown-divider`)
-  span.a-h2 Divider
+  span.chi-h2 Divider
   .-d--flex
     div(class=`chi-dropdown__menu -active`)
       each i in [1, 2]
@@ -30,7 +30,7 @@ div(class=`test-dropdown-divider`)
 
 
 div(class=`test-dropdown-icons`)
-  span.a-h2 Icons
+  span.chi-h2 Icons
   .-d--flex
     .chi-dropdown__menu.-active
       a.chi-dropdown__menu-item(href='#')
@@ -67,7 +67,7 @@ div(class=`test-dropdown-icons`)
         = "Logout"
 
 div(class=`test-dropdown-searchBox`)
-  span.a-h2 Search box
+  span.chi-h2 Search box
   .-d--flex
     .chi-dropdown__menu.-active
       .m-input__wrapper.-icon--left.chi-dropdown__menu-item
@@ -80,7 +80,7 @@ div(class=`test-dropdown-searchBox`)
 
 - var inputStates = ["", "disabled", "checked"]
 div(class=`test-dropdown-checkbox`)
-  span.a-h2 checkbox
+  span.chi-h2 checkbox
   .chi-dropdown__menu.-active
     each inputState in inputStates
       .chi-dropdown__menu-item
@@ -89,7 +89,7 @@ div(class=`test-dropdown-checkbox`)
           label.chi-checkbox__label(for=`checkbox${inputState}`)="Element checkbox " + inputState
 
 div(class=`test-dropdown-checkbox-icon`)
-  span.a-h2 checkbox with icons
+  span.chi-h2 checkbox with icons
   .chi-dropdown__menu.-active
     each inputState in inputStates
       .chi-dropdown__menu-item
@@ -103,7 +103,7 @@ div(class=`test-dropdown-checkbox-icon`)
 
 - var inputStates = ["", "disabled", "checked"]
 div(class=`test-dropdown-radio`)
-  span.a-h2 radio
+  span.chi-h2 radio
   .chi-dropdown__menu.-active
     each inputState in inputStates
       .chi-dropdown__menu-item
@@ -112,7 +112,7 @@ div(class=`test-dropdown-radio`)
         label.-text(for=`radio${inputState}`)="Element radio " + inputState
 
 div(class=`test-dropdown-radio-icon`)
-  span.a-h2 radio with icons
+  span.chi-h2 radio with icons
   .chi-dropdown__menu.-active
     each inputState in inputStates
       .chi-dropdown__menu-item
@@ -125,7 +125,7 @@ div(class=`test-dropdown-radio-icon`)
           ="Element radio " + inputState
 
 div(class=`test-dropdown-text`)
-  span.a-h2 Plain text
+  span.chi-h2 Plain text
   .-d--flex
     .chi-dropdown__menu.-active
       span.chi-dropdown__menu-item Text 1
@@ -134,7 +134,7 @@ div(class=`test-dropdown-text`)
       span.chi-dropdown__menu-item Text 4
 
 div(class=`test-dropdown-range`)
-  span.a-h2 Range
+  span.chi-h2 Range
   .-d--flex
     .chi-dropdown__menu.-active
       .chi-dropdown__menu-item
@@ -147,7 +147,7 @@ div(class=`test-dropdown-range`)
         input.chi-input(type="range")
 
 div(class=`test-dropdown-toggle`)
-  span.a-h2 Toggle input
+  span.chi-h2 Toggle input
   .-d--flex
     .chi-dropdown__menu.-active
       .chi-dropdown__menu-item.-h--auto
@@ -174,7 +174,7 @@ div(class=`test-dropdown-toggle`)
 
 
 div(class=`test-dropdown-ellipsis-helper`)
-  span.a-h2 Ellipsis helper
+  span.chi-h2 Ellipsis helper
   .-d--flex
     .chi-dropdown__menu.-active(style="width:10rem")
       a.chi-dropdown__menu-item(href='#') Element 1
@@ -184,7 +184,7 @@ div(class=`test-dropdown-ellipsis-helper`)
       a.chi-dropdown__menu-item(href='#') Element 4
 
 div(class=`test-dropdown-higher-helper`)
-  span.a-h2 Higher menu items helper
+  span.chi-h2 Higher menu items helper
   .-d--flex
     .chi-dropdown__menu.-active(style="width:10rem")
       a.chi-dropdown__menu-item(href="#") Link 1
@@ -197,9 +197,9 @@ div(class=`test-dropdown-higher-helper`)
 
 each triggerSize in triggerSizes
   div(class=`test-dropdown-button${triggerSize}`)
-    span.a-h2=`Button${triggerSize}`
+    span.chi-h2=`Button${triggerSize}`
     each triggerState in triggerStates
-      span.a-h3=`State ${triggerState}`
+      span.chi-h3=`State ${triggerState}`
       each position in dropdownPositions
         .-d--flex
           button(class=`chi-btn chi-dropdown__trigger ${triggerSize} ${triggerState}`, data-position=position)=`Button ${triggerState} ${position}`

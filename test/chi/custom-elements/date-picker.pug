@@ -13,21 +13,21 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 - const date2 = '01/24/2019';
 
 .test-active(data-cy="test-active")
-  span.a-h2 Active
+  span.chi-h2 Active
   .-position--relative
     chi-date(value=date1)
 
 .test-combined(data-cy="test-combined")
-  span.a-h2 Combined
+  span.chi-h2 Combined
   .-position--relative
     chi-date(value=date1, min=dateMin)
 
 .test-input-combined-icon(data-cy="test-input-combined")
-  span.a-h2 Input Popover Combined w/ icon
+  span.chi-h2 Input Popover Combined w/ icon
   .-position--relative(style="height: 18rem; width:14rem;")
     chi-date-picker(value=date2, min=date2, active)
 
 .test-disabled(data-cy="test-disabled")
-  span.a-h2 Disabled date picker
+  span.chi-h2 Disabled date picker
   .-position--relative(style="width:14rem;")
     chi-date-picker(disabled)

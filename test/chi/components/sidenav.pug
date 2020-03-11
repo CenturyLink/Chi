@@ -55,7 +55,7 @@ h2 Enterprise Global Nav
     .chi-sidenav__drawers
       .chi-drawer.-active.-animated.-left
         .chi-drawer__header
-          .a-drawer__title= 'Menu item 1'
+          .chi-drawer__title= 'Menu item 1'
           button(class='chi-btn -icon -close', aria-label='Close')
             .chi-btn__content
               i.chi-icon.icon-x
@@ -69,11 +69,11 @@ h2 Enterprise Global Nav
                   .chi-sidenav__drawer-item-list
                     ul.chi-tabs.-vertical.-sm
                       li
-                        a(class=`a-sidenav__drawer-item-tab ${val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
+                        a(class=`chi-sidenav__drawer-item-tab ${val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
                       li
-                        a(class='a-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
+                        a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
                       li
-                        a(class='a-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab C
+                        a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab C
               else
                 li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
                   a(href=`#exampleHashTarget`)

@@ -13,7 +13,7 @@ const SIDENAV_DRAWERS_CLASS = 'chi-sidenav__drawers';
 const SIDENAV_TITLE_CLASS = 'chi-sidenav__title';
 const DRAWER_LINKLIST_CLASS = "chi-sidenav__drawer-list";
 const DRAWER_ITEM_LIST_CLASS = "chi-sidenav__drawer-item-list";
-const DRAWER_ITEM_TAB_CLASS = "a-sidenav__drawer-item-tab";
+const DRAWER_ITEM_TAB_CLASS = "chi-sidenav__drawer-item-tab";
 const MENU_ITEM_UNSELECTED_CLASS = "-unselected";
 const DRAWER_ITEM_LIST_EXPANDED = "-expanded";
 

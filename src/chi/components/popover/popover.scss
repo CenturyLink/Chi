@@ -93,7 +93,7 @@ $popover-border-width: 0.0625rem;
     }
   }
 
-  & .a-arrow,
+  & .chi-arrow,
   & .chi-popover__arrow {
     display: block;
     height: $popover-arrow-height;
@@ -116,26 +116,26 @@ $popover-border-width: 0.0625rem;
     &[x-placement^='top'] {
       margin-bottom: calc(#{$popover-arrow-height} + 0.25rem);
 
-      .a-arrow,
+      .chi-arrow,
       .chi-popover__arrow {
         bottom: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
         left: calc(50% - 4px);
       }
 
-      .a-arrow::before,
-      .a-arrow::after,
+      .chi-arrow::before,
+      .chi-arrow::after,
       .chi-popover__arrow::before,
       .chi-popover__arrow::after {
         border-width: $popover-arrow-height ($popover-arrow-width / 2) 0;
       }
 
-      .a-arrow::before,
+      .chi-arrow::before,
       .chi-popover__arrow::before {
         border-top-color: set-color(grey, 30);
         bottom: 0;
       }
 
-      .a-arrow::after,
+      .chi-arrow::after,
       .chi-popover__arrow::after {
         border-top-color: white;
         bottom: $popover-border-width;
@@ -146,7 +146,7 @@ $popover-border-width: 0.0625rem;
     &[x-placement^='right'] {
       margin-left: calc(#{$popover-arrow-height} + 0.25rem);
 
-      .a-arrow,
+      .chi-arrow,
       .chi-popover__arrow {
         height: $popover-arrow-width;
         left: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
@@ -155,20 +155,20 @@ $popover-border-width: 0.0625rem;
         width: $popover-arrow-height;
       }
 
-      .a-arrow::before,
-      .a-arrow::after,
+      .chi-arrow::before,
+      .chi-arrow::after,
       .chi-popover__arrow::before,
       .chi-popover__arrow::after {
         border-width: ($popover-arrow-width / 2) $popover-arrow-height ($popover-arrow-width / 2) 0;
       }
 
-      .a-arrow::before,
+      .chi-arrow::before,
       .chi-popover__arrow::before {
         border-right-color: set-color(grey, 30);
         left: 0;
       }
 
-      .a-arrow::after,
+      .chi-arrow::after,
       .chi-popover__arrow::after {
         border-right-color: white;
         left: $popover-border-width;
@@ -180,26 +180,26 @@ $popover-border-width: 0.0625rem;
       margin-top: calc(#{$popover-arrow-height} + 0.25rem);
 
 
-      .a-arrow,
+      .chi-arrow,
       .chi-popover__arrow {
         left: calc(50% - 4px);
         top: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
       }
 
-      .a-arrow::before,
-      .a-arrow::after,
+      .chi-arrow::before,
+      .chi-arrow::after,
       .chi-popover__arrow::before,
       .chi-popover__arrow::after {
         border-width: 0 ($popover-arrow-width / 2) $popover-arrow-height ($popover-arrow-width / 2);
       }
 
-      .a-arrow::before,
+      .chi-arrow::before,
       .chi-popover__arrow::before {
         border-bottom-color: set-color(grey, 30);
         top: 0;
       }
 
-      .a-arrow::after,
+      .chi-arrow::after,
       .chi-popover__arrow::after {
         border-bottom-color: white;
         top: $popover-border-width;
@@ -211,7 +211,7 @@ $popover-border-width: 0.0625rem;
       margin-right: calc(#{$popover-arrow-height} + 0.25rem);
 
 
-      .a-arrow,
+      .chi-arrow,
       .chi-popover__arrow {
         height: $popover-arrow-width;
         margin: 0.1875rem 0; // make sure the arrow does not touch the popover's rounded corners
@@ -220,20 +220,20 @@ $popover-border-width: 0.0625rem;
         width: $popover-arrow-height;
       }
 
-      .a-arrow::before,
-      .a-arrow::after,
+      .chi-arrow::before,
+      .chi-arrow::after,
       .chi-popover__arrow::before,
       .chi-popover__arrow::after {
         border-width: ($popover-arrow-width / 2) 0 ($popover-arrow-width / 2) $popover-arrow-height;
       }
 
-      .a-arrow::before,
+      .chi-arrow::before,
       .chi-popover__arrow::before {
         border-left-color: set-color(grey, 30);
         right: 0;
       }
 
-      .a-arrow::after,
+      .chi-arrow::after,
       .chi-popover__arrow::after {
         border-left-color: white;
         right: $popover-border-width;

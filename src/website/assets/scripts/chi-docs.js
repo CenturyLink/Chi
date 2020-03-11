@@ -100,13 +100,13 @@ function enableCopyToClipboardFeature (preElem) {
 
 onLoad(() => {
 
-  var examples = document.querySelectorAll('.m-example');
+  var examples = document.querySelectorAll('.chi-example');
 
   Array.prototype.forEach.call(examples, function(example) {
     const firstChild = example.querySelector('li:first-child');
     const lastChild = example.querySelector('li:last-child');
-    const htmlItem = example.querySelector('.m-example__html');
-    const codeItem = example.querySelector('.m-example__code');
+    const htmlItem = example.querySelector('.chi-example__html');
+    const codeItem = example.querySelector('.chi-example__code');
 
     firstChild.onclick = function(evt) {
       evt.preventDefault();

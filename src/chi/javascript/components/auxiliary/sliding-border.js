@@ -1,6 +1,6 @@
 import {Util} from "../../core/util.js";
 
-const CLASS_SLIDING_BORDER='a-sliding-border';
+const CLASS_SLIDING_BORDER='chi-sliding-border';
 const CLASS_SLIDING='-sliding';
 const ANIMATION_DURATION=500;
 

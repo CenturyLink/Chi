@@ -35,7 +35,7 @@ a {
 }
 
 h1,
-.a-h1 {
+.chi-h1 {
   font-size: 3rem;
   font-weight: 700;
   line-height: 4rem;
@@ -43,7 +43,7 @@ h1,
 }
 
 h2,
-.a-h2 {
+.chi-h2 {
   font-size: 2rem;
   font-weight: 700;
   line-height: 3rem;
@@ -51,7 +51,7 @@ h2,
 }
 
 h3,
-.a-h3 {
+.chi-h3 {
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 2rem;
@@ -59,7 +59,7 @@ h3,
 }
 
 h4,
-.a-h4 {
+.chi-h4 {
   font-size: $text-larger;
   font-weight: 600;
   line-height: 2rem;
@@ -67,7 +67,7 @@ h4,
 }
 
 h5,
-.a-h5 {
+.chi-h5 {
   font-size: $text-large;
   font-weight: 600;
   line-height: $line-height-large;
@@ -75,7 +75,7 @@ h5,
 }
 
 h6,
-.a-h6 {
+.chi-h6 {
   font-size: $text;
   font-weight: 600;
   line-height: $line-height;
@@ -83,20 +83,20 @@ h6,
 }
 
 blockquote,
-.a-blockquote {
+.chi-blockquote {
   border-left: 0.25rem solid set-color(grey, 30);
   padding-left: 1rem;
 }
 
 abbr,
-.a-abbr {
+.chi-abbr {
   border-bottom: 0;
   cursor: help;
   text-decoration: underline dotted;
 }
 
 code,
-.a-code,
+.chi-code,
 pre {
   font-family: $font-family-monospace;
   font-size: $text-small;

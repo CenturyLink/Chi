@@ -3,7 +3,7 @@ import {Util} from "../core/util.js";
 
 const COMPONENT_TYPE = 'rangeSlider';
 const COMPONENT_SELECTOR = '.m-input__wrapper > input[type="range"]';
-const COMPONENT_OWN_THUMB_CLASS = 'a-rangeSlider__thumbOverwritten';
+const COMPONENT_OWN_THUMB_CLASS = 'chi-rangeSlider__thumbOverwritten';
 
 const DEFAULT_CONFIG = {};
 

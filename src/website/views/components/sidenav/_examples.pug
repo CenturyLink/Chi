@@ -485,7 +485,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
         each val1 in menuItems
           .chi-drawer.-animated.-left(id=`drawer-global-nav-${example}-${val1}`)
             .chi-drawer__header
-              .a-drawer__title= 'Menu item ' + val1
+              .chi-drawer__title= 'Menu item ' + val1
               button(class='chi-btn -icon -close', aria-label='Close')
                 .chi-btn__content
                   i.chi-icon.icon-x
@@ -499,11 +499,11 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                       .chi-sidenav__drawer-item-list(id=`drawer-item-list-${val1}-${val2}`)
                         ul.chi-tabs.-vertical.-sm
                           li
-                            a(class=`a-sidenav__drawer-item-tab ${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
+                            a(class=`chi-sidenav__drawer-item-tab ${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
                           li
-                            a(class='a-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
+                            a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
                           li
-                            a(class='a-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab C
+                            a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab C
                   else
                     li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
                       a(href=`#exampleHashTarget`)
@@ -553,7 +553,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
         <div class="chi-sidenav__drawers">
           <div class="chi-drawer -animated -left" id="drawer-global-nav-1-1">
             <div class="chi-drawer__header">
-              <div class="a-drawer__title">Menu item 1</div>
+              <div class="chi-drawer__title">Menu item 1</div>
               <button class="chi-btn -icon -close" aria-label="Close">
                 <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
               </button>
@@ -567,17 +567,17 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-1-A">
                     <ul class="chi-tabs -vertical -sm">
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab A
                         </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab B
                         </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab C
                         </a>
                       </li>
@@ -591,17 +591,17 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-1-B">
                     <ul class="chi-tabs -vertical -sm">
                       <li>
-                        <a class="a-sidenav__drawer-item-tab -active" href="#exampleHashTarget">
+                        <a class="chi-sidenav__drawer-item-tab -active" href="#exampleHashTarget">
                           Sub tab A
                         </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab B
                         </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab C
                         </a>
                       </li>
@@ -637,7 +637,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
           </div>
           <div class="chi-drawer -animated -left" id="drawer-global-nav-1-2">
             <div class="chi-drawer__header">
-              <div class="a-drawer__title">Menu item 2</div>
+              <div class="chi-drawer__title">Menu item 2</div>
               <button class="chi-btn -icon -close" aria-label="Close">
                 <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
               </button>
@@ -651,17 +651,17 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-2-A">
                     <ul class="chi-tabs -vertical -sm">
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab A
                         </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab B
                         </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab C
                         </a>
                       </li>
@@ -675,17 +675,17 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-2-B">
                     <ul class="chi-tabs -vertical -sm">
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab A
                         </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab B
                         </a>
                       </li>
                       <li>
-                        <a class="a-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
                           Sub tab C
                         </a>
                       </li>

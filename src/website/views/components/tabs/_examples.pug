@@ -201,7 +201,7 @@ p.-text
 
 .example.-mb--3
   .-p--3.-pb--4
-    ul.chi-tabs.a-navigationExample#example-tabbed-navigation
+    ul.chi-tabs.chi-navigationExample#example-tabbed-navigation
       li.chi-dropdown.-active
         a.chi-dropdown__trigger(href='#') Active tab
         .chi-dropdown__menu
@@ -296,7 +296,7 @@ p.-text
     p.-text
       | I.e. Use the <code>-animate</code> class on the dropdowns to make the chevron rotate when activated.
     .chi-divider
-    ul.chi-tabs.a-navigationExample#example-components-contained
+    ul.chi-tabs.chi-navigationExample#example-components-contained
       li.chi-dropdown.-active
         a.chi-dropdown__trigger.-animate(href='#') Active Tab
         .chi-dropdown__menu
@@ -365,7 +365,7 @@ ul.chi-tabs#example-4-switch
 #example-4__enabled.chi-tabs-panel.-active
   .example.-mb--3
     .-p--3.-pb--4
-      ul.chi-tabs.a-navigationExample.a-customExample
+      ul.chi-tabs.chi-navigationExample.chi-customExample
         li.-active
           a(href='?tab=1') Tab Link
         li
@@ -415,7 +415,7 @@ ul.chi-tabs#example-4-switch
 #example-4__disabled.chi-tabs-panel
   .example.-mb--3
     .-p--3.-pb--4
-      ul.chi-tabs.a-navigationExample.a-customExample
+      ul.chi-tabs.chi-navigationExample.chi-customExample
         li.-active
           a(href='?tab=1') Tab Link
         li
@@ -964,11 +964,11 @@ script.
       chi.tab(document.getElementById('example-4-disabled-switch'));
       chi.navigation(document.getElementById('example-components-contained'));
       chi.navigation(
-              document.querySelectorAll('#example-4__enabled .chi-tabs.a-navigationExample'),
+              document.querySelectorAll('#example-4__enabled .chi-tabs.chi-navigationExample'),
               { waitForAnimations: true }
       );
       chi.navigation(
-              document.querySelectorAll('#example-4__disabled .chi-tabs.a-navigationExample'),
+              document.querySelectorAll('#example-4__disabled .chi-tabs.chi-navigationExample'),
               { waitForAnimations: false }
       );
     }
