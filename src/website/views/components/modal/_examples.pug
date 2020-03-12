@@ -1,7 +1,7 @@
-.m-alert.-info.-my--3
-  i.m-alert__icon.a-icon.icon-circle-info
-  .m-alert__content
-    p.m-alert__text This component requires Javascript
+.chi-alert.-info.-my--3
+  i.chi-alert__icon.chi-icon.icon-circle-info
+  .chi-alert__content
+    p.chi-alert__text This component requires Javascript
 
 h2 Examples
 p.-text
@@ -13,42 +13,42 @@ h3 Base
 .example.-mb--3(style='position:static')
   .-p--3
     .-d--flex.-justify-content--start.-align-items--start
-      button#modal-trigger-1.a-btn.-primary.a-modal__trigger(data-target='#modal-1')
+      button#modal-trigger-1.chi-btn.-primary.chi-modal__trigger(data-target='#modal-1')
         | Click me to open the modal
-  .m-backdrop.-closed
-    .m-backdrop__wrapper
-      section.a-modal#modal-1(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.a-modal__header
-          h2.a-modal__title Modal Title
-          button(class='a-btn -icon -close', data-dismiss='modal', aria-label='Close')
-            .a-btn__content
-              i.a-icon.icon-x
-        .a-modal__content
+  .chi-backdrop.-closed
+    .chi-backdrop__wrapper
+      section.chi-modal#modal-1(role="dialog", aria-label="Modal description", aria-modal="true")
+        header.chi-modal__header
+          h2.chi-modal__title Modal Title
+          button(class='chi-btn -icon -close', data-dismiss='modal', aria-label='Close')
+            .chi-btn__content
+              i.chi-icon.icon-x
+        .chi-modal__content
           p.-text.-m--0 Modal content
-        footer.a-modal__footer
-          button.a-btn(data-dismiss='modal') Cancel
-          button.a-btn.-primary.-ml--2 Save
+        footer.chi-modal__footer
+          button.chi-btn(data-dismiss='modal') Cancel
+          button.chi-btn.-primary.-ml--2 Save
   :code(lang="html")
-    <button id="modal-trigger-1" class="a-btn a-modal__trigger" data-target="#modal-1">
+    <button id="modal-trigger-1" class="chi-btn chi-modal__trigger" data-target="#modal-1">
       Launch demo modal
     </button>
-    <div class="m-backdrop -closed">
-      <div class="m-backdrop__wrapper">
-        <section id="modal-1" class="a-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="a-modal__header">
-            <h2 class="a-modal__title">Modal Title</h2>
-            <button class="a-btn -icon -close" data-dismiss="modal" aria-label="Close">
-              <div class="a-btn__content">
-                <i class="a-icon icon-x"></i>
+    <div class="chi-backdrop -closed">
+      <div class="chi-backdrop__wrapper">
+        <section id="modal-1" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <header class="chi-modal__header">
+            <h2 class="chi-modal__title">Modal Title</h2>
+            <button class="chi-btn -icon -close" data-dismiss="modal" aria-label="Close">
+              <div class="chi-btn__content">
+                <i class="chi-icon icon-x"></i>
               </div>
             </button>
           </header>
-          <div class="a-modal__content">
+          <div class="chi-modal__content">
             <p class="-text -m--0">Modal content</p>
           </div>
-          <footer class="a-modal__footer">
-            <button class="a-btn" data-dismiss="modal">Cancel</button>
-            <button class="a-btn -primary -ml--2">Save</button>
+          <footer class="chi-modal__footer">
+            <button class="chi-btn" data-dismiss="modal">Cancel</button>
+            <button class="chi-btn -primary -ml--2">Save</button>
           </footer>
         </section>
       </div>
@@ -57,39 +57,39 @@ h3 Base
     <script>chi.modal(document.getElementById('modal-trigger-1'));</script>
 
 h3 Center
-p.-text Modals can also be placed in the middle of the page by applying the class <code>-center</code> in the <code>m-backdrop</code>.
+p.-text Modals can also be placed in the middle of the page by applying the class <code>-center</code> in the <code>chi-backdrop</code>.
 .example.-mb--3
-  .m-backdrop.-center.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
-    .m-backdrop__wrapper
-      section.a-modal(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.a-modal__header
-          h2.a-modal__title Modal Title
-          button(class='a-btn -icon -close', aria-label='Close')
-            .a-btn__content
-              i.a-icon.icon-x
-        .a-modal__content
+  .chi-backdrop.-center.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+    .chi-backdrop__wrapper
+      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+        header.chi-modal__header
+          h2.chi-modal__title Modal Title
+          button(class='chi-btn -icon -close', aria-label='Close')
+            .chi-btn__content
+              i.chi-icon.icon-x
+        .chi-modal__content
           p.-text.-m--0 Modal content
-        footer.a-modal__footer
-          button.a-btn Cancel
-          button.a-btn.-primary.-ml--2 Save
+        footer.chi-modal__footer
+          button.chi-btn Cancel
+          button.chi-btn.-primary.-ml--2 Save
   :code(lang="html")
-    <div class="m-backdrop -center">
-      <div class="m-backdrop__wrapper">
-        <section class="a-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="a-modal__header">
-            <h2 class="a-modal__title">Modal Title</h2>
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
-                <i class="a-icon icon-x"></i>
+    <div class="chi-backdrop -center">
+      <div class="chi-backdrop__wrapper">
+        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <header class="chi-modal__header">
+            <h2 class="chi-modal__title">Modal Title</h2>
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
+                <i class="chi-icon icon-x"></i>
               </div>
             </button>
           </header>
-          <div class="a-modal__content">
+          <div class="chi-modal__content">
             <p class="-text -m--0">Modal content</p>
           </div>
-          <footer class="a-modal__footer">
-            <button class="a-btn">Cancel</button>
-            <button class="a-btn -primary -ml--2">Save</button>
+          <footer class="chi-modal__footer">
+            <button class="chi-btn">Cancel</button>
+            <button class="chi-btn -primary -ml--2">Save</button>
           </footer>
         </section>
       </div>
@@ -100,19 +100,19 @@ p.-text
   | Enable scrolling if the height of the modal's content is larger than the modal's content container.
 h4 Requirements
 p.-text
-  | A <code>max-height</code> must be defined on <code>a-modal__content</code>.
+  | A <code>max-height</code> must be defined on <code>chi-modal__content</code>.
   | Use max-height utility classes such as <code>-mh--400</code> or <code>-mh--480</code>, or define your own value.
 
 .example.-mb--3
-  .m-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
-    .m-backdrop__wrapper
-      section.a-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
-        header.a-modal__header
-          h2.a-modal__title Modal Title
-          button(class='a-btn -icon -close', aria-label='Close')
-            .a-btn__content
-              i.a-icon.icon-x
-        .a-modal__content.-mh--400
+  .chi-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+    .chi-backdrop__wrapper
+      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
+        header.chi-modal__header
+          h2.chi-modal__title Modal Title
+          button(class='chi-btn -icon -close', aria-label='Close')
+            .chi-btn__content
+              i.chi-icon.icon-x
+        .chi-modal__content.-mh--400
           p.-text.-mt--0
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
           p.-text
@@ -127,22 +127,22 @@ p.-text
             | Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
             | Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
             | cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
-        footer.a-modal__footer
-          button.a-btn Cancel
-          button.a-btn.-primary.-ml--2 Save
+        footer.chi-modal__footer
+          button.chi-btn Cancel
+          button.chi-btn.-primary.-ml--2 Save
   :code(lang="html")
-    <div class="m-backdrop">
-      <div class="m-backdrop__wrapper">
-        <section class="a-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="a-modal__header">
-            <h2 class="a-modal__title">Modal Title</h2>
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
-                <i class="a-icon icon-x"></i>
+    <div class="chi-backdrop">
+      <div class="chi-backdrop__wrapper">
+        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <header class="chi-modal__header">
+            <h2 class="chi-modal__title">Modal Title</h2>
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
+                <i class="chi-icon icon-x"></i>
               </div>
             </button>
           </header>
-          <div class="a-modal__content -mh--400">
+          <div class="chi-modal__content -mh--400">
             <p class="-text -mt--0">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
             </p>
@@ -162,9 +162,9 @@ p.-text
               cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
             </p>
           </div>
-          <footer class="a-modal__footer">
-            <button class="a-btn">Cancel</button>
-            <button class="a-btn -primary -ml--2">Save</button>
+          <footer class="chi-modal__footer">
+            <button class="chi-btn">Cancel</button>
+            <button class="chi-btn -primary -ml--2">Save</button>
           </footer>
         </section>
       </div>
@@ -175,15 +175,15 @@ p.-text
   | Enable scrolling when modals become too long for the user’s viewport or device, they scroll independent of the page itself.
 
 .example.-mb--3
-  .m-backdrop.-p--6.-position--relative.-z--0.-mh--480(style="border-top-left-radius:3px;border-top-right-radius:3px;")
-    .m-backdrop__wrapper
-      section.a-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
-        header.a-modal__header
-          h2.a-modal__title Modal Title
-          button(class='a-btn -icon -close', aria-label='Close')
-            .a-btn__content
-              i.a-icon.icon-x
-        .a-modal__content
+  .chi-backdrop.-p--6.-position--relative.-z--0.-mh--480(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+    .chi-backdrop__wrapper
+      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
+        header.chi-modal__header
+          h2.chi-modal__title Modal Title
+          button(class='chi-btn -icon -close', aria-label='Close')
+            .chi-btn__content
+              i.chi-icon.icon-x
+        .chi-modal__content
           p.-text.-mt--0
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
           p.-text
@@ -198,22 +198,22 @@ p.-text
             | Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
             | Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
             | cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
-        footer.a-modal__footer
-          button.a-btn Cancel
-          button.a-btn.-primary.-ml--2 Save
+        footer.chi-modal__footer
+          button.chi-btn Cancel
+          button.chi-btn.-primary.-ml--2 Save
   :code(lang="html")
-    <div class="m-backdrop -mh--480">
-      <div class="m-backdrop__wrapper">
-        <section class="a-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="a-modal__header">
-            <h2 class="a-modal__title">Modal Title</h2>
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
-                <i class="a-icon icon-x"></i>
+    <div class="chi-backdrop -mh--480">
+      <div class="chi-backdrop__wrapper">
+        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <header class="chi-modal__header">
+            <h2 class="chi-modal__title">Modal Title</h2>
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
+                <i class="chi-icon icon-x"></i>
               </div>
             </button>
           </header>
-          <div class="a-modal__content">
+          <div class="chi-modal__content">
             <p class="-text -mt--0">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
             </p>
@@ -233,9 +233,9 @@ p.-text
               cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
             </p>
           </div>
-          <footer class="a-modal__footer">
-            <button class="a-btn">Cancel</button>
-            <button class="a-btn -primary -ml--2">Save</button>
+          <footer class="chi-modal__footer">
+            <button class="chi-btn">Cancel</button>
+            <button class="chi-btn -primary -ml--2">Save</button>
           </footer>
         </section>
       </div>
@@ -243,39 +243,39 @@ p.-text
 
 h3 With Subtitle
 .example.-mb--3
-  .m-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
-    .m-backdrop__wrapper
-      section.a-modal(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.a-modal__header
-          h2.a-modal__title Modal Title
-          h3.a-modal__subtitle Modal subtitle
-          button(class='a-btn -icon -close', aria-label='Close')
-            .a-btn__content
-              i.a-icon.icon-x
-        .a-modal__content
+  .chi-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+    .chi-backdrop__wrapper
+      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+        header.chi-modal__header
+          h2.chi-modal__title Modal Title
+          h3.chi-modal__subtitle Modal subtitle
+          button(class='chi-btn -icon -close', aria-label='Close')
+            .chi-btn__content
+              i.chi-icon.icon-x
+        .chi-modal__content
           p.-text.-m--0 Modal content
-        footer.a-modal__footer
-          button.a-btn Cancel
-          button.a-btn.-primary.-ml--2 Save
+        footer.chi-modal__footer
+          button.chi-btn Cancel
+          button.chi-btn.-primary.-ml--2 Save
   :code(lang="html")
-    <div class="m-backdrop">
-      <div class="m-backdrop__wrapper">
-        <section class="a-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="a-modal__header">
-            <h2 class="a-modal__title">Modal Title</h2>
-            <h3 class="a-modal__subtitle">Modal subtitle</h3>
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
-                <i class="a-icon icon-x"></i>
+    <div class="chi-backdrop">
+      <div class="chi-backdrop__wrapper">
+        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <header class="chi-modal__header">
+            <h2 class="chi-modal__title">Modal Title</h2>
+            <h3 class="chi-modal__subtitle">Modal subtitle</h3>
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
+                <i class="chi-icon icon-x"></i>
               </div>
             </button>
           </header>
-          <div class="a-modal__content">
+          <div class="chi-modal__content">
             <p class="-text -m--0">Modal content</p>
           </div>
-          <footer class="a-modal__footer">
-            <button class="a-btn">Cancel</button>
-            <button class="a-btn -primary -ml--2">Save</button>
+          <footer class="chi-modal__footer">
+            <button class="chi-btn">Cancel</button>
+            <button class="chi-btn -primary -ml--2">Save</button>
           </footer>
         </section>
       </div>
@@ -285,37 +285,37 @@ h3 Inverse Backdrop
 p.-text
   | Invert a modals backdrop by applying the class <code>-inverse</code>.
 .example.-mb--3
-  .m-backdrop.-inverse.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
-    .m-backdrop__wrapper
-      section.a-modal(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.a-modal__header
-          h2.a-modal__title Modal Title
-          button(class='a-btn -icon -close', aria-label='Close')
-            .a-btn__content
-              i.a-icon.icon-x
-        .a-modal__content
+  .chi-backdrop.-inverse.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+    .chi-backdrop__wrapper
+      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+        header.chi-modal__header
+          h2.chi-modal__title Modal Title
+          button(class='chi-btn -icon -close', aria-label='Close')
+            .chi-btn__content
+              i.chi-icon.icon-x
+        .chi-modal__content
           p.-text.-m--0 Modal content
-        footer.a-modal__footer
-          button.a-btn Cancel
-          button.a-btn.-primary.-ml--2 Save
+        footer.chi-modal__footer
+          button.chi-btn Cancel
+          button.chi-btn.-primary.-ml--2 Save
   :code(lang="html")
-    <div class="m-backdrop -inverse">
-      <div class="m-backdrop__wrapper">
-        <section class="a-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="a-modal__header">
-            <h2 class="a-modal__title">Modal Title</h2>
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
-                <i class="a-icon icon-x"></i>
+    <div class="chi-backdrop -inverse">
+      <div class="chi-backdrop__wrapper">
+        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <header class="chi-modal__header">
+            <h2 class="chi-modal__title">Modal Title</h2>
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
+                <i class="chi-icon icon-x"></i>
               </div>
             </button>
           </header>
-          <div class="a-modal__content">
+          <div class="chi-modal__content">
             <p class="-text -m--0">Modal content</p>
           </div>
-          <footer class="a-modal__footer">
-            <button class="a-btn">Cancel</button>
-            <button class="a-btn -primary -ml--2">Save</button>
+          <footer class="chi-modal__footer">
+            <button class="chi-btn">Cancel</button>
+            <button class="chi-btn -primary -ml--2">Save</button>
           </footer>
         </section>
       </div>
@@ -324,39 +324,39 @@ p.-text
 h3 Borderless
 p.-text
   | Disable header or footer borders by applying the class <code>-noBorder</code> to
-  | <code>a-modal__header</code> or <code>a-modal__footer</code>.
+  | <code>chi-modal__header</code> or <code>chi-modal__footer</code>.
 .example.-mb--3
-  .m-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
-    .m-backdrop__wrapper
-      section.a-modal(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.a-modal__header.-noBorder
-          h2.a-modal__title Modal Title
-          button(class='a-btn -icon -close', aria-label='Close')
-            .a-btn__content
-              i.a-icon.icon-x
-        .a-modal__content
+  .chi-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+    .chi-backdrop__wrapper
+      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+        header.chi-modal__header.-noBorder
+          h2.chi-modal__title Modal Title
+          button(class='chi-btn -icon -close', aria-label='Close')
+            .chi-btn__content
+              i.chi-icon.icon-x
+        .chi-modal__content
           p.-text.-m--0 Modal content
-        footer.a-modal__footer.-noBorder
-          button.a-btn Cancel
-          button.a-btn.-primary.-ml--2 Save
+        footer.chi-modal__footer.-noBorder
+          button.chi-btn Cancel
+          button.chi-btn.-primary.-ml--2 Save
   :code(lang="html")
-    <div class="m-backdrop">
-      <div class="m-backdrop__wrapper">
-        <section class="a-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="a-modal__header -noBorder">
-            <h2 class="a-modal__title">Modal Title</h2>
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
-                <i class="a-icon icon-x"></i>
+    <div class="chi-backdrop">
+      <div class="chi-backdrop__wrapper">
+        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <header class="chi-modal__header -noBorder">
+            <h2 class="chi-modal__title">Modal Title</h2>
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
+                <i class="chi-icon icon-x"></i>
               </div>
             </button>
           </header>
-          <div class="a-modal__content">
+          <div class="chi-modal__content">
             <p class="-text -m--0">Modal content</p>
           </div>
-          <footer class="a-modal__footer -noBorder">
-            <button class="a-btn">Cancel</button>
-            <button class="a-btn -primary -ml--2">Save</button>
+          <footer class="chi-modal__footer -noBorder">
+            <button class="chi-btn">Cancel</button>
+            <button class="chi-btn -primary -ml--2">Save</button>
           </footer>
         </section>
       </div>
@@ -365,74 +365,74 @@ p.-text
 h3 Multi-step
 p.-text
   | For multi-step modals, ensure the class <code>-centered</code> is applied
-  | to <code>a-modal__title</code>. This will provide sufficient real estate on the
-  | left side to store a back button <code>a-modal__back</code>.
+  | to <code>chi-modal__title</code>. This will provide sufficient real estate on the
+  | left side to store a back button <code>chi-modal__back</code>.
 .example.-mb--3
-  .m-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
-    .m-backdrop__wrapper
-      section.a-modal(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.a-modal__header
-          h2.a-modal__title.-centered Modal Title
-          button.a-modal__back(aria-label='Back')
-          button(class='a-btn -icon -close', aria-label='Close')
-            .a-btn__content
-              i.a-icon.icon-x
-        .a-modal__content
+  .chi-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+    .chi-backdrop__wrapper
+      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+        header.chi-modal__header
+          h2.chi-modal__title.-centered Modal Title
+          button.chi-modal__back(aria-label='Back')
+          button(class='chi-btn -icon -close', aria-label='Close')
+            .chi-btn__content
+              i.chi-icon.icon-x
+        .chi-modal__content
           p.-text.-m--0 Modal content
-        footer.a-modal__footer
-          button.a-btn.-primary.-ml--2 Next
+        footer.chi-modal__footer
+          button.chi-btn.-primary.-ml--2 Next
   :code(lang="html")
-    <div class="m-backdrop">
-      <div class="m-backdrop__wrapper">
-        <section class="a-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="a-modal__header">
-            <h2 class="a-modal__title -centered">Modal Title</h2>
-            <button class="a-modal__back" aria-label="Back"></button>
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
-                <i class="a-icon icon-x"></i>
+    <div class="chi-backdrop">
+      <div class="chi-backdrop__wrapper">
+        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <header class="chi-modal__header">
+            <h2 class="chi-modal__title -centered">Modal Title</h2>
+            <button class="chi-modal__back" aria-label="Back"></button>
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
+                <i class="chi-icon icon-x"></i>
               </div>
             </button>
           </header>
-          <div class="a-modal__content">
+          <div class="chi-modal__content">
             <p class="-text -m--0">Modal content</p>
           </div>
-          <footer class="a-modal__footer">
-            <button class="a-btn -primary -ml--2">Next</button>
+          <footer class="chi-modal__footer">
+            <button class="chi-btn -primary -ml--2">Next</button>
           </footer>
         </section>
       </div>
     </div>
 
 h3 Simple
-p.-text Remove <code>a-modal__header</code> and <code>a-modal__footer</code> for a simple and customizable modal.
+p.-text Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code> for a simple and customizable modal.
 .example.-mb--3
-  .m-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
-    .m-backdrop__wrapper
-      section.a-modal(role="dialog", aria-label="Modal description", aria-modal="true")
-        button(class='a-btn -icon -close', aria-label='Close')
-          .a-btn__content
-            i.a-icon.icon-x
-        .a-modal__content.-text--center.-p--6
-          h2.a-h3.-m--0.-text--bolder Modal Title
+  .chi-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+    .chi-backdrop__wrapper
+      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+        button(class='chi-btn -icon -close', aria-label='Close')
+          .chi-btn__content
+            i.chi-icon.icon-x
+        .chi-modal__content.-text--center.-p--6
+          h2.chi-h3.-m--0.-text--bolder Modal Title
           p.-text.-py--1.-px--3
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis
             | mollis nulla, eget ornare tellus. Lorem ipsum dolor sit amet,
             | consectetur adipiscing elit. Donec laoreet rutrum eros laoreet.
-          button.a-btn.-primary.-lg.-mt--1 Action
+          button.chi-btn.-primary.-lg.-mt--1 Action
   :code(lang="html")
-    <div class="m-backdrop">
-      <div class="m-backdrop__wrapper">
-        <section class="a-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <button class="a-btn -icon -close" aria-label="Close">
-            <div class="a-btn__content">
-              <i class="a-icon icon-x"></i>
+    <div class="chi-backdrop">
+      <div class="chi-backdrop__wrapper">
+        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <button class="chi-btn -icon -close" aria-label="Close">
+            <div class="chi-btn__content">
+              <i class="chi-icon icon-x"></i>
             </div>
           </button>
-          <div class="a-modal__content -text--center -p--6">
-            <h2 class="a-h3 -text--bolder -m--0">Modal Title</h2>
+          <div class="chi-modal__content -text--center -p--6">
+            <h2 class="chi-h3 -text--bolder -m--0">Modal Title</h2>
             <p class="-text -py--1 -px--3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis mollis nulla, eget ornare tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet rutrum eros laoreet.</p>
-            <button class="a-btn -primary -lg -mt--1">Action</button>
+            <button class="chi-btn -primary -lg -mt--1">Action</button>
           </div>
         </section>
       </div>
@@ -440,35 +440,35 @@ p.-text Remove <code>a-modal__header</code> and <code>a-modal__footer</code> for
 
 h3 Portal
 .example.-mb--3
-  .m-backdrop.-portal.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
-    .m-backdrop__wrapper
-      section.a-modal.-portal(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.a-modal__header
-          h2.a-modal__title Modal Title
-          button(class='a-btn -icon -close', aria-label='Close')
-            .a-btn__content
-              i.a-icon.icon-x
-        .a-modal__content
+  .chi-backdrop.-portal.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+    .chi-backdrop__wrapper
+      section.chi-modal.-portal(role="dialog", aria-label="Modal description", aria-modal="true")
+        header.chi-modal__header
+          h2.chi-modal__title Modal Title
+          button(class='chi-btn -icon -close', aria-label='Close')
+            .chi-btn__content
+              i.chi-icon.icon-x
+        .chi-modal__content
           p.-text.-m--0 Modal content
-        footer.a-modal__footer
-          button.a-btn.-primary.-lg Save
+        footer.chi-modal__footer
+          button.chi-btn.-primary.-lg Save
   :code(lang="html")
-    <div class="m-backdrop -portal">
-      <div class="m-backdrop__wrapper">
-        <section class="a-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="a-modal__header">
-            <h2 class="a-modal__title">Modal Title</h2>
-            <button class="a-btn -icon -close" aria-label="Close">
-              <div class="a-btn__content">
-                <i class="a-icon icon-x"></i>
+    <div class="chi-backdrop -portal">
+      <div class="chi-backdrop__wrapper">
+        <section class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <header class="chi-modal__header">
+            <h2 class="chi-modal__title">Modal Title</h2>
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
+                <i class="chi-icon icon-x"></i>
               </div>
             </button>
           </header>
-          <div class="a-modal__content">
+          <div class="chi-modal__content">
             <p class="-text -m--0">Modal content</p>
           </div>
-          <footer class="a-modal__footer">
-            <button class="a-btn -primary -lg">Save</button>
+          <footer class="chi-modal__footer">
+            <button class="chi-btn -primary -lg">Save</button>
           </footer>
         </section>
       </div>

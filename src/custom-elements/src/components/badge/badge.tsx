@@ -50,7 +50,7 @@ export class Badge {
       throw new Error(`${newValue} is not a valid variant value for badge. Valid values are outline, flat or ''. `);
     }
   }
-  
+
   componentWillLoad() {
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
@@ -62,14 +62,14 @@ export class Badge {
 
   render() {
     return (
-      <div class={`a-badge
+      <div class={`chi-badge
 	        ${this.size ? `-${this.size}` : ''}
 	        ${this.color ? `-${this.color}` : ''}
 	        ${this.variant ? `-${this.variant}` : ''}
 	        ${this.textTransform ? `-text--${this.textTransform}` : ''}`}
       >
         {this.slotBadgeContent ?
-          <div class="a-badge__content">
+          <div class="chi-badge__content">
             <slot></slot>
           </div> :
           <span>

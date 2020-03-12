@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded',
       }
     );
 
-    chi.tab(document.querySelectorAll('.docs-body__content .a-tabs'));
+    chi.tab(document.querySelectorAll('.docs-body__content .chi-tabs'));
 
   }
 );

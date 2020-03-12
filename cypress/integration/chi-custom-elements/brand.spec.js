@@ -19,7 +19,7 @@ describe('Brand', () => {
         .should('have.class', 'hydrated')
         .children()
         .first()
-        .should('match', 'span.a-brand')
+        .should('match', 'span.chi-brand')
         .as(s);
     });
   });

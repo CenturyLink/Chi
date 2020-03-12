@@ -283,7 +283,7 @@ export class Popover {
           order: 875
         },
         arrow: {
-          element: '.m-popover__arrow',
+          element: '.chi-popover__arrow',
           enabled: this.arrow
         }
       },
@@ -382,17 +382,17 @@ export class Popover {
   }
 
   render() {
-    const popoverHeader = this.popoverTitle && <header class="m-popover__header"><h2 class="m-popover__title">{this.popoverTitle}</h2></header>;
-    const slot = this.variant && this.variant === 'text' ? <p class="m-popover__text"><slot /></p> : <slot />;
+    const popoverHeader = this.popoverTitle && <header class="chi-popover__header"><h2 class="chi-popover__title">{this.popoverTitle}</h2></header>;
+    const slot = this.variant && this.variant === 'text' ? <p class="chi-popover__text"><slot /></p> : <slot />;
 
     return (
       <section
-        class={`m-popover
+        class={`chi-popover
           ${CLASSES.ANIMATED}
-          ${this.position ? `m-popover--${this.position}` : ''}
+          ${this.position ? `chi-popover--${this.position}` : ''}
           ${this.arrow ? '' : '-no-arrow'}
           ${this._animationClasses}
-          ${this._reference && this._reference.classList.contains('a-input') ? 'm-popover__input' : ''}
+          ${this._reference && this._reference.classList.contains('chi-input') ? 'chi-popover__input' : ''}
         `}
         ref={el => (this._popoverElement = el as HTMLElement)}
         onClick={() => this.preventAutoClose()}
@@ -402,10 +402,10 @@ export class Popover {
         aria-hidden={!this.active}
       >
         {popoverHeader}
-        <div class="m-popover__content">
+        <div class="chi-popover__content">
           {slot}
         </div>
-        {this.arrow && <div class="m-popover__arrow" />}
+        {this.arrow && <div class="chi-popover__arrow" />}
       </section>
     );
   }

@@ -85,7 +85,7 @@ export class DatePicker {
     if (
       e.target !== document.body &&
       e.target !== null &&
-      !(new RegExp('(\\s|^)' + 'm-datepicker__day' + '(\\s|$)').test(e.target.getAttribute('class')))
+      !(new RegExp('(\\s|^)' + 'chi-datepicker__day' + '(\\s|$)').test(e.target.getAttribute('class')))
       // This hack is necessary because currently IE11 doesn't support .classList on SVG elements
     ) {
       this.active = contains(this.el, e.target);
@@ -224,7 +224,7 @@ export class DatePicker {
       >
         <input
           id={`${this._uuid}-control`}
-          class={`a-input
+          class={`chi-input
             ${this.active ? '-focus' : ''}`}
           type={`text`}
           placeholder={`MM/DD/YYYY`}
@@ -235,7 +235,7 @@ export class DatePicker {
           }}
           disabled={this.disabled}
         />
-        <div class="a-icon -text--muted">
+        <div class="chi-icon -text--muted">
           <svg>
             <use xlinkHref="#icon-date"></use>
           </svg>

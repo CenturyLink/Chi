@@ -34,7 +34,7 @@ $states: (
   )
 );
 
-.m-alert {
+.chi-alert {
   background-color: set-color(white);
   border-color: set-color(grey, 30);
   border-style: solid;
@@ -72,14 +72,14 @@ $states: (
       width: 100%;
     }
 
-    .m-alert__content {
+    .chi-alert__content {
       flex-grow: 0;
     }
   }
 
-  > .a-icon,
-  > chi-icon .a-icon,
-  .m-alert__icon {
+  > .chi-icon,
+  > chi-icon .chi-icon,
+  .chi-alert__icon {
     &:not(.icon-x) {
       font-size: 1rem;
       height: 1rem;
@@ -90,7 +90,7 @@ $states: (
     }
   }
 
-  .m-alert__text,
+  .chi-alert__text,
   p,
   .-text {
     font-size: $text;
@@ -114,10 +114,10 @@ $states: (
         border-bottom-color: map-get(map-get($states, $state), banner-border-color);
       }
 
-      .m-alert__icon,
-      > chi-icon .a-icon,
+      .chi-alert__icon,
+      > chi-icon .chi-icon,
       .a-h5, //Legacy code: to be removed.
-      .m-alert__title {
+      .chi-alert__title {
         color: map-get(map-get($states, $state), color);
       }
     }
@@ -133,7 +133,7 @@ $states: (
     flex-grow: 1;
 
     .a-h5, //Legacy code: a-h5 to be removed.
-    .m-alert__title {
+    .chi-alert__title {
       font-size: $text;
       font-weight: 600;
       line-height: $line-height-small;
@@ -146,10 +146,10 @@ $states: (
       }
     }
 
-    .m-alert__actions {
+    .chi-alert__actions {
       padding-top: 0.5rem;
 
-      > .a-btn {
+      > .chi-btn {
         margin-right: 0.5rem;
 
         &:last-child {
@@ -159,16 +159,16 @@ $states: (
     }
   }
 
-  > .a-btn,
-  > chi-button .a-btn {
+  > .chi-btn,
+  > chi-button .chi-btn {
     &.-close,
-    &.m-alert__dismiss-button {
+    &.chi-alert__dismiss-button {
       align-self: flex-start;
       margin-left: 1rem;
       padding: 0.1875rem;
       transform: initial;
 
-      .a-icon {
+      .chi-icon {
         font-size: 0.75rem;
         height: 0.75rem;
         line-height: 0.75rem;
@@ -181,9 +181,9 @@ $states: (
   &.-lg {
     padding: 1.0625rem 1.5rem;
 
-    > i.a-icon,
-    > chi-icon .a-icon,
-    .m-alert__icon {
+    > i.chi-icon,
+    > chi-icon .chi-icon,
+    .chi-alert__icon {
       &:not(.icon-x) {
         font-size: 1.25rem;
         height: 1.25rem;
@@ -192,13 +192,13 @@ $states: (
       }
     }
 
-    > .a-btn,
-    > chi-button .a-btn {
+    > .chi-btn,
+    > chi-button .chi-btn {
       &.-close,
-      &.m-alert__dismiss-button {
+      &.chi-alert__dismiss-button {
         padding: 0;
 
-        .a-icon {
+        .chi-icon {
           font-size: 1rem;
           height: 1rem;
           line-height: 1rem;
@@ -207,22 +207,22 @@ $states: (
       }
     }
 
-    .m-alert__content {
-      .m-alert__title {
+    .chi-alert__content {
+      .chi-alert__title {
         font-size: $text-large;
         font-weight: 600;
         line-height: $line-height-large;
         margin-bottom: 0.375rem;
       }
 
-      .m-alert__text {
+      .chi-alert__text {
         padding-top: 0.125rem;
       }
 
-      .m-alert__actions {
+      .chi-alert__actions {
         padding-top: 1rem;
 
-        > .a-btn,
+        > .chi-btn,
         > chi-button {
           margin-right: 1rem;
 
@@ -237,8 +237,8 @@ $states: (
   &.-sm {
     padding: 0.5625rem 1.5rem;
 
-    .m-alert__content {
-      .m-alert__text {
+    .chi-alert__content {
+      .chi-alert__text {
         font-size: $text-small;
       }
     }

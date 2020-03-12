@@ -2,72 +2,72 @@
 title: Drawer
 ---
 - var sides = ['top', 'right', 'bottom', 'left'];
-- var versions = [{"title": "no-backdrop", "classes": "", "testClass": "test-"}, {"title": "backdrop", "classes": "m-backdrop", "testClass": "test-backdrop-"}, {"title": "inverse backdrop", "classes": "m-backdrop -inverse", "testClass": "test-backdrop-inverse-"} ];
-- var legacyVersions = [{"title": "no-backdrop", "classes": "", "testClass": "test-"}, {"title": "backdrop", "classes": "a-backdrop", "testClass": "test-backdrop-"}, {"title": "inverse backdrop", "classes": "a-backdrop -inverse", "testClass": "test-backdrop-inverse-"} ];
+- var versions = [{"title": "no-backdrop", "classes": "", "testClass": "test-"}, {"title": "backdrop", "classes": "chi-backdrop", "testClass": "test-backdrop-"}, {"title": "inverse backdrop", "classes": "chi-backdrop -inverse", "testClass": "test-backdrop-inverse-"} ];
+- var legacyVersions = [{"title": "no-backdrop", "classes": "", "testClass": "test-"}, {"title": "backdrop", "classes": "chi-backdrop", "testClass": "test-backdrop-"}, {"title": "inverse backdrop", "classes": "chi-backdrop -inverse", "testClass": "test-backdrop-inverse-"} ];
 
 each side in sides
   each version in versions
 
     div(class=`${version.testClass}${side} -mb--3`)
       div(style='width: 320px')
-        .a-h2= `Drawer / ${version.title} / ${side}`
+        .chi-h2= `Drawer / ${version.title} / ${side}`
         div(class=`${version.classes}` style="position:relative;height:20rem")
-          .m-backdrop__wrapper
-            div(class=`m-drawer -${side} -active`, style='position:absolute;')
-              button(class='a-btn -icon -close', aria-label='Close')
-                .a-btn__content
-                  i.a-icon.icon-x
-              .m-drawer__content
+          .chi-backdrop__wrapper
+            div(class=`chi-drawer -${side} -active`, style='position:absolute;')
+              button(class='chi-btn -icon -close', aria-label='Close')
+                .chi-btn__content
+                  i.chi-icon.icon-x
+              .chi-drawer__content
                 .-px--2.-text Drawer content here
 
     div(class=`${version.testClass}${side}-headed -mb--3`)
       div(style='width: 320px')
-        .a-h2= `Drawer / with head / ${version.title} / ${side}`
+        .chi-h2= `Drawer / with head / ${version.title} / ${side}`
         div(class=`${version.classes}` style="position:relative;height:20rem")
-          .m-backdrop__wrapper
-            div(class=`m-drawer -${side} -active`, style='position:absolute;')
-              .m-drawer__header
-                button(class='a-btn -icon -close', aria-label='Close')
-                  .a-btn__content
-                    i.a-icon.icon-x
-              .m-drawer__content
+          .chi-backdrop__wrapper
+            div(class=`chi-drawer -${side} -active`, style='position:absolute;')
+              .chi-drawer__header
+                button(class='chi-btn -icon -close', aria-label='Close')
+                  .chi-btn__content
+                    i.chi-icon.icon-x
+              .chi-drawer__content
                 .-px--2.-text Drawer content here
 
     div(class=`${version.testClass}${side}-with-title -mb--3`)
       div(style='width: 320px')
-        .a-h2= `Drawer / with title / ${version.title} / ${side}`
+        .chi-h2= `Drawer / with title / ${version.title} / ${side}`
         div(class=`${version.classes}` style="position:relative;height:20rem")
-          .m-backdrop__wrapper
-            div(class=`m-drawer -${side} -active`, style='position:absolute;')
-              .m-drawer__header
-                span.m-drawer__title Drawer title here
-                button(class='a-btn -icon -close', aria-label='Close')
-                  .a-btn__content
-                    i.a-icon.icon-x
-              .m-drawer__content
+          .chi-backdrop__wrapper
+            div(class=`chi-drawer -${side} -active`, style='position:absolute;')
+              .chi-drawer__header
+                span.chi-drawer__title Drawer title here
+                button(class='chi-btn -icon -close', aria-label='Close')
+                  .chi-btn__content
+                    i.chi-icon.icon-x
+              .chi-drawer__content
                 .-px--2.-text Drawer content here
 
   each version in legacyVersions
 
     div(class=`${version.testClass}${side}-legacy -mb--3`)
       div(style='width: 320px')
-        .a-h2= `Drawer / ${version.title} / ${side}`
+        .chi-h2= `Drawer / ${version.title} / ${side}`
         div(class=`${version.classes}` style="position:relative;height:20rem")
-          div(class=`m-drawer -${side} -active`, style='position:absolute;')
-            button(class='a-btn -icon -close', aria-label='Close')
-              .a-btn__content
-                i.a-icon.icon-x
-            .m-drawer__content
+          div(class=`chi-drawer -${side} -active`, style='position:absolute;')
+            button(class='chi-btn -icon -close', aria-label='Close')
+              .chi-btn__content
+                i.chi-icon.icon-x
+            .chi-drawer__content
               .-px--2.-text Drawer content here
 
     div(class=`${version.testClass}${side}-headed-legacy -mb--3`)
       div(style='width: 320px')
-        .a-h2= `Drawer / with head / ${version.title} / ${side}`
+        .chi-h2= `Drawer / with head / ${version.title} / ${side}`
         div(class=`${version.classes}` style="position:relative;height:20rem")
-          div(class=`m-drawer -${side} -active`, style='position:absolute;')
-            .m-drawer__header
-              button(class='a-btn -icon -close', aria-label='Close')
-                .a-btn__content
-                  i.a-icon.icon-x
-            .m-drawer__content
+          div(class=`chi-drawer -${side} -active`, style='position:absolute;')
+            .chi-drawer__header
+              button(class='chi-btn -icon -close', aria-label='Close')
+                .chi-btn__content
+                  i.chi-icon.icon-x
+            .chi-drawer__content
               .-px--2.-text Drawer content here

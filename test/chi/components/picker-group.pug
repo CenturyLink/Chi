@@ -23,17 +23,17 @@ title: Picker group
   .m-pickerGroup
     input.a-picker(type="radio", name='radios', id=`ib-radio1`)
     label(for=`ib-radio1`)
-      i.a-icon.icon-atom.-sm
+      i.chi-icon.icon-atom.-sm
       span Radio1
     input.a-picker(type="radio", name='radios', id=`ib-radio2`)
     label(for=`ib-radio2`)
       span Radio2
-      i.a-icon.icon-atom.-sm
+      i.chi-icon.icon-atom.-sm
     input.a-picker(type="radio", name='radios', id=`ib-radio3`)
     label(for=`ib-radio3`)
-      i.a-icon.icon-atom.-sm
+      i.chi-icon.icon-atom.-sm
       span Radio3
-      i.a-icon.icon-atom.-sm
+      i.chi-icon.icon-atom.-sm
 
 .test-with-icons
   h3 Icons
@@ -43,8 +43,8 @@ title: Picker group
         input.a-picker(type="radio", name='radios', id=`ic-${type}`)
         label(for=`ic-${type}`)
           span.-sr--only Button action
-          i.a-icon.icon-atom.-sm
-            
+          i.chi-icon.icon-atom.-sm
+
 .test-fluid(style='width: 700px;')
   h3 Fluid
   .m-pickerGroup.-fluid
@@ -75,7 +75,7 @@ title: Picker group
 .example
   each size in ['sm', 'md', 'lg', 'xl']
     div(class=`test-${size}`)
-      div.a-h4= 'Picker group size -' + size
+      div.chi-h4= 'Picker group size -' + size
       .-d--flex.-flex--wrap
         .m-pickerGroup.-mr--2
           each type in ['Radio1','Radio2','Radio3']
@@ -88,6 +88,6 @@ title: Picker group
             label(for=`ig-i-${type}-${size}`, class=`-${size}`)
               span.-sr--only Button action
               if size === 'sm'
-                i.a-icon.icon-atom.-xs
+                i.chi-icon.icon-atom.-xs
               else
-                i.a-icon.icon-atom.-sm
+                i.chi-icon.icon-atom.-sm

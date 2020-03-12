@@ -9,7 +9,7 @@
   &.-sm > li,
   &.-lg > li {
     & > a {
-      &.m-dropdown__trigger {
+      &.chi-dropdown__trigger {
         padding-right: 1.5rem;
         position: relative;
       }
@@ -17,7 +17,7 @@
   }
 }
 
-.a-tabs {
+.chi-tabs {
   &:not(.-vertical):not(.-responsive) {
     @include navigation-tabs-not-vertical
   }

@@ -134,7 +134,7 @@ $sizes: (
   )
 );
 
-.a-btn {
+.chi-btn {
   & {
     align-items: center;
     background-color: set-color(white);
@@ -157,17 +157,17 @@ $sizes: (
       opacity: 0.65;
       pointer-events: none;
 
-      & .a-icon {
+      & .chi-icon {
         opacity: 0.65;
       }
     }
 
-    .a-icon {
+    .chi-icon {
       height: 1rem;
       width: 1rem;
     }
 
-    .a-spinner {
+    .chi-spinner {
       height: 1rem;
       width: 1rem;
     }
@@ -188,7 +188,7 @@ $sizes: (
         line-height: map-get(map-get($sizes, $type), line-height);
         padding: map-get(map-get($sizes, $type), padding);
 
-        .a-icon {
+        .chi-icon {
           height: map-get(map-get(map-get($sizes, $type), icons), height);
           width: map-get(map-get(map-get($sizes, $type), icons), width);
 
@@ -199,7 +199,7 @@ $sizes: (
           }
         }
 
-        .a-spinner {
+        .chi-spinner {
           height: map-get(map-get(map-get($sizes, $type), icons), height);
           width: map-get(map-get(map-get($sizes, $type), icons), width);
         }
@@ -244,7 +244,7 @@ $sizes: (
       padding: 0.6875rem;
       transition: transform 0.2s cubic-bezier(0.95, -0.18, 0.65, 2.46);
 
-      .a-icon {
+      .chi-icon {
         height: 1rem;
         width: 1rem;
       }
@@ -303,11 +303,11 @@ $sizes: (
         background-color: set-color(grey, 50);
         color: set-color(white);
 
-        .a-icon {
+        .chi-icon {
           color: set-color(white);
         }
 
-        .a-spinner__icon {
+        .chi-spinner__icon {
           .path {
             stroke: set-color(white);
           }
@@ -331,7 +331,7 @@ $sizes: (
           color: set-color(white);
         }
 
-        .a-icon {
+        .chi-icon {
           color: set-color(white);
         }
       }
@@ -348,7 +348,7 @@ $sizes: (
           font-size: map-get(map-get($sizes, $type), font-size);
           line-height: map-get(map-get($sizes, $type), line-height);
 
-          .a-icon {
+          .chi-icon {
             height: map-get(map-get(map-get($sizes, $type), icons), height);
             width: map-get(map-get(map-get($sizes, $type), icons), width);
 
@@ -359,7 +359,7 @@ $sizes: (
             }
           }
 
-          .a-spinner {
+          .chi-spinner {
             height: map-get(map-get(map-get($sizes, $type), icons), height);
             width: map-get(map-get(map-get($sizes, $type), icons), width);
           }
@@ -376,7 +376,7 @@ $sizes: (
             font-size: map-get(map-get($sizes, $type), font-size);
             line-height: map-get(map-get($sizes, $type), line-height);
 
-            .a-icon {
+            .chi-icon {
               height: map-get(map-get(map-get($sizes, $type), icons), height);
               width: map-get(map-get(map-get($sizes, $type), icons), width);
 
@@ -387,7 +387,7 @@ $sizes: (
               }
             }
 
-            .a-spinner {
+            .chi-spinner {
               height: map-get(map-get(map-get($sizes, $type), icons), height);
               width: map-get(map-get(map-get($sizes, $type), icons), width);
             }
@@ -410,7 +410,7 @@ $sizes: (
             line-height: map-get(map-get($sizes, $type), line-height);
             padding: map-get(map-get($sizes, $type), padding);
 
-            .a-icon {
+            .chi-icon {
               height: map-get(map-get(map-get($sizes, $type), icons), height);
               width: map-get(map-get(map-get($sizes, $type), icons), width);
 
@@ -421,7 +421,7 @@ $sizes: (
               }
             }
 
-            .a-spinner {
+            .chi-spinner {
               height: map-get(map-get(map-get($sizes, $type), icons), height);
               width: map-get(map-get(map-get($sizes, $type), icons), width);
             }
@@ -452,7 +452,7 @@ $sizes: (
             font-size: map-get(map-get($sizes, $type), font-size);
             line-height: map-get(map-get($sizes, $type), line-height);
 
-            .a-icon {
+            .chi-icon {
               height: map-get(map-get(map-get($sizes, $type), icons), height);
               width: map-get(map-get(map-get($sizes, $type), icons), width);
 
@@ -463,7 +463,7 @@ $sizes: (
               }
             }
 
-            .a-spinner {
+            .chi-spinner {
               height: map-get(map-get(map-get($sizes, $type), icons), height);
               width: map-get(map-get(map-get($sizes, $type), icons), width);
             }
@@ -516,12 +516,12 @@ $sizes: (
           }
         }
 
-        .a-icon {
+        .chi-icon {
           color: $text-color;
         }
 
         &.-icon {
-          & .a-icon {
+          & .chi-icon {
             color: $text-color;
           }
 
@@ -531,7 +531,7 @@ $sizes: (
             border: $border solid rgba(set-color(black), 0.2);
             color: $text-color;
 
-            .a-icon {
+            .chi-icon {
               color: $text-color;
             }
           }
@@ -540,7 +540,7 @@ $sizes: (
           &.-focus {
             box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
 
-            .a-icon {
+            .chi-icon {
               color: $text-color;
             }
           }
@@ -587,12 +587,12 @@ $sizes: (
             }
           }
 
-          .a-icon {
+          .chi-icon {
             color: $text-white;
           }
 
           &.-icon {
-            & .a-icon {
+            & .chi-icon {
               color: set-color(grey, 50);
             }
 
@@ -602,7 +602,7 @@ $sizes: (
               border: $border solid set-color($color);
               color: $text-white;
 
-              .a-icon {
+              .chi-icon {
                 color: $text-white;
               }
             }
@@ -611,7 +611,7 @@ $sizes: (
             &.-focus {
               box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
 
-              .a-icon {
+              .chi-icon {
                 color: $text-white;
               }
             }
@@ -623,7 +623,7 @@ $sizes: (
               &.-focus {
                 box-shadow: none;
 
-                .a-icon {
+                .chi-icon {
                   color: $text-white;
                 }
               }
@@ -642,7 +642,7 @@ $sizes: (
             background-color: white;
             color: $text-color;
 
-            .a-icon {
+            .chi-icon {
               color: $text-color;
             }
           }
@@ -663,18 +663,18 @@ $sizes: (
               border: $border solid white;
               color: $text-color;
 
-              .a-icon {
+              .chi-icon {
                 color: $text-color;
               }
             }
           }
 
-          .a-icon {
+          .chi-icon {
             color: $text-white;
           }
 
           &.-icon {
-            & .a-icon {
+            & .chi-icon {
               color: $text-white;
             }
 
@@ -684,7 +684,7 @@ $sizes: (
               border: $border solid white;
               color: $text-color;
 
-              .a-icon {
+              .chi-icon {
                 color: $text-color;
               }
             }
@@ -693,7 +693,7 @@ $sizes: (
             &.-focus {
               box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
 
-              .a-icon {
+              .chi-icon {
                 color: $text-white;
               }
             }
@@ -708,7 +708,7 @@ $sizes: (
                 box-shadow: none;
                 color: $text-color;
 
-                .a-icon {
+                .chi-icon {
                   color: $text-color;
                 }
               }
@@ -746,12 +746,12 @@ $sizes: (
           }
         }
 
-        .a-icon {
+        .chi-icon {
           color: $text-color;
         }
 
         &.-icon {
-          & .a-icon {
+          & .chi-icon {
             color: $text-color;
           }
 
@@ -761,7 +761,7 @@ $sizes: (
             border: $border solid rgba(set-color(black), 0.2);
             color: $text-color;
 
-            .a-icon {
+            .chi-icon {
               color: $text-color;
             }
           }
@@ -770,7 +770,7 @@ $sizes: (
           &.-focus {
             box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
 
-            .a-icon {
+            .chi-icon {
               color: $text-color;
             }
           }
@@ -817,7 +817,7 @@ $sizes: (
             }
           }
 
-          .a-icon {
+          .chi-icon {
             color: $text-white;
           }
 
@@ -828,7 +828,7 @@ $sizes: (
               border: $border solid set-color($color);
               color: $text-white;
 
-              .a-icon {
+              .chi-icon {
                 color: $text-white;
               }
             }
@@ -837,7 +837,7 @@ $sizes: (
             &.-focus {
               box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
 
-              .a-icon {
+              .chi-icon {
                 color: $text-white;
               }
             }
@@ -849,7 +849,7 @@ $sizes: (
               &.-focus {
                 box-shadow: none;
 
-                .a-icon {
+                .chi-icon {
                   color: $text-white;
                 }
               }
@@ -868,7 +868,7 @@ $sizes: (
             background-color: white;
             color: $text-color;
 
-            .a-icon {
+            .chi-icon {
               color: $text-color;
             }
           }
@@ -889,18 +889,18 @@ $sizes: (
               border: $border solid white;
               color: $text-color;
 
-              .a-icon {
+              .chi-icon {
                 color: $text-color;
               }
             }
           }
 
-          .a-icon {
+          .chi-icon {
             color: $text-white;
           }
 
           &.-icon {
-            & .a-icon {
+            & .chi-icon {
               color: $text-white;
             }
 
@@ -910,7 +910,7 @@ $sizes: (
               border: $border solid white;
               color: $text-color;
 
-              .a-icon {
+              .chi-icon {
                 color: $text-color;
               }
             }
@@ -919,7 +919,7 @@ $sizes: (
             &.-focus {
               box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
 
-              .a-icon {
+              .chi-icon {
                 color: $text-white;
               }
             }
@@ -934,7 +934,7 @@ $sizes: (
                 box-shadow: none;
                 color: $text-color;
 
-                .a-icon {
+                .chi-icon {
                   color: $text-color;
                 }
               }
@@ -949,11 +949,11 @@ $sizes: (
         box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
         color: set-color($button-text-color);
 
-        .a-icon {
+        .chi-icon {
           color: inherit;
         }
 
-        .a-spinner__icon {
+        .chi-spinner__icon {
           .path {
             stroke: set-color(white);
           }
@@ -987,7 +987,7 @@ $sizes: (
           border: $border solid set-color($color, $tone);
           color: set-color($color, $tone);
 
-          .a-spinner__icon {
+          .chi-spinner__icon {
             .path {
               stroke: set-color($color, $tone);
             }
@@ -1002,7 +1002,7 @@ $sizes: (
               color: $text-color;
             }
 
-            .a-icon {
+            .chi-icon {
               @if ($type == 'secondary') {
                 color: $text-color;
               } @else {
@@ -1010,7 +1010,7 @@ $sizes: (
               }
             }
 
-            .a-spinner__icon {
+            .chi-spinner__icon {
               .path {
                 stroke: set-color(white);
               }
@@ -1038,7 +1038,7 @@ $sizes: (
                 color: set-color(white);
               }
 
-              .a-icon {
+              .chi-icon {
                 @if ($type == 'secondary') {
                   color: $text-color;
                 } @else {
@@ -1046,7 +1046,7 @@ $sizes: (
                 }
               }
 
-              .a-spinner__icon {
+              .chi-spinner__icon {
                 .path {
                   stroke: set-color(white);
                 }

@@ -1,4 +1,4 @@
-.m-alert {
+.chi-alert {
   &.-banner {
     background-color: set-color(white);
     border: 0;
@@ -11,13 +11,13 @@
     }
 
     &.-warning {
-      .m-alert__title {
+      .chi-alert__title {
         color: set-color(yellow, 70);
       }
     }
 
     &.-muted {
-      .m-alert__title {
+      .chi-alert__title {
         color: set-color(grey, 70);
       }
     }

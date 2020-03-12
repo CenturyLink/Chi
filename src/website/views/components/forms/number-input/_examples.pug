@@ -1,10 +1,10 @@
 script(type='module' src='../../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-.m-alert.-info.-my--3
-  i.m-alert__icon.a-icon.icon-circle-info
-  .m-alert__content
-    p.m-alert__text This component requires Javascript
+.chi-alert.-info.-my--3
+  i.chi-alert__icon.chi-icon.icon-circle-info
+  .chi-alert__content
+    p.chi-alert__text This component requires Javascript
 
 h2 Examples
 
@@ -15,25 +15,25 @@ h3 Base
     .m-form__item
       chi-number-input
   .example-tabs.-pl--2
-    ul.a-tabs#examples-default
+    ul.chi-tabs#examples-default
       li.-active
         a(href=`#webcomponent`) Web component
       li
         a(href=`#html`) HTML + JS
-  .a-tabs-panel.-active#webcomponent
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent
+    .chi-tab__description
       | To render a number input, just place a <code>chi-number-input</code> tag and set an initial value (optional). If
       | an initial value is not provided, <code>0</code> will be taken as default.
     :code(lang="html")
       <chi-number-input></chi-number-input>
-  .a-tabs-panel#html
-    .a-tab__description
-      | To render a number input, apply the classes <code>a-input</code> to an <code>input type="number"</code>.
+  .chi-tabs-panel#html
+    .chi-tab__description
+      | To render a number input, apply the classes <code>chi-input</code> to an <code>input type="number"</code>.
       | For proper styling, number inputs must be wrapped in an <code>m-input__wrapper</code> div with two buttons.
     :code(lang="html")
       <div class="m-form__item -row">
         <div class="m-input__wrapper">
-          <input id="input-number-1" type="number" class="a-input" value="0" aria-label="Input Label">
+          <input id="input-number-1" type="number" class="chi-input" value="0" aria-label="Input Label">
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>
         </div>
@@ -47,19 +47,19 @@ h3 Disabled
     .m-form__item
       chi-number-input(disabled=true)
   .example-tabs.-pl--2
-    ul.a-tabs#examples-disabled
+    ul.chi-tabs#examples-disabled
       li.-active
         a(href=`#webcomponent-disabled`) Web component
       li
         a(href=`#html-disabled`) HTML
-  .a-tabs-panel.-active#webcomponent-disabled
+  .chi-tabs-panel.-active#webcomponent-disabled
     :code(lang="html")
       <chi-number-input disabled></chi-number-input>
-  .a-tabs-panel#html-disabled
+  .chi-tabs-panel#html-disabled
     :code(lang="html")
       <div class="m-form__item -row">
         <div class="m-input__wrapper">
-          <input type="number" class="a-input" value="0" aria-label="Input Label" disabled>
+          <input type="number" class="chi-input" value="0" aria-label="Input Label" disabled>
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>
         </div>
@@ -72,13 +72,13 @@ h3 Sizes
       .m-form__item.-inline.-mr--3
         chi-number-input(size=`${size}`)
   .example-tabs.-pl--2
-    ul.a-tabs#examples-sizes
+    ul.chi-tabs#examples-sizes
       li.-active
         a(href=`#webcomponent-sizes`) Web component
       li
         a(href=`#html-sizes`) HTML
-  .a-tabs-panel.-active#webcomponent-sizes
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-sizes
+    .chi-tab__description
       | Number inputs support a full spectrum of sizes: <code>sm</code>, <code>md</code>,
       |  <code>lg</code>, <code>xl</code>.
       | The default size is <code>md</code>.
@@ -87,36 +87,36 @@ h3 Sizes
       <chi-number-input></chi-number-input>
       <chi-number-input size="lg"></chi-number-input>
       <chi-number-input size="xl"></chi-number-input>
-  .a-tabs-panel#html-sizes
-    .a-tab__description
+  .chi-tabs-panel#html-sizes
+    .chi-tab__description
       | Number inputs support a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
       |  <code>-lg</code>, <code>-xl</code>.
       | The default size is <code>-md</code>.
     :code(lang="html")
       <div class="m-form__item -row">
         <div class="m-input__wrapper">
-          <input type="number" class="a-input -sm" value="0" aria-label="Input Label">
+          <input type="number" class="chi-input -sm" value="0" aria-label="Input Label">
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>
         </div>
       </div>
       <div class="m-form__item -row">
         <div class="m-input__wrapper">
-          <input type="number" class="a-input -md" value="0" aria-label="Input Label">
+          <input type="number" class="chi-input -md" value="0" aria-label="Input Label">
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>
         </div>
       </div>
       <div class="m-form__item -row">
         <div class="m-input__wrapper">
-          <input type="number" class="a-input -lg" value="0" aria-label="Input Label">
+          <input type="number" class="chi-input -lg" value="0" aria-label="Input Label">
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>
         </div>
       </div>
       <div class="m-form__item -row">
         <div class="m-input__wrapper">
-          <input type="number" class="a-input -xl" value="0" aria-label="Input Label">
+          <input type="number" class="chi-input -xl" value="0" aria-label="Input Label">
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>
         </div>
@@ -131,26 +131,26 @@ h3 Base
   .-p--3
     chi-number-input(expanded=true)
   .example-tabs.-pl--2
-    ul.a-tabs#examples-expanded
+    ul.chi-tabs#examples-expanded
       li.-active
         a(href=`#webcomponent-expanded`) Web component
       li
         a(href=`#html-expanded`) HTML
-  .a-tabs-panel.-active#webcomponent-expanded
+  .chi-tabs-panel.-active#webcomponent-expanded
     :code(lang="html")
       <chi-number-input expanded></chi-number-input>
-  .a-tabs-panel#html-expanded
+  .chi-tabs-panel#html-expanded
     :code(lang="html")
       <div class="m-inputNumber">
-        <input class="a-input" type="number" value="0" aria-label="Input Label">
-        <button class="a-btn -icon" aria-label="Decrease">
-          <div class="a-btn__content">
-            <i class="a-icon icon-minus"></i>
+        <input class="chi-input" type="number" value="0" aria-label="Input Label">
+        <button class="chi-btn -icon" aria-label="Decrease">
+          <div class="chi-btn__content">
+            <i class="chi-icon icon-minus"></i>
           </div>
         </button>
-        <button class="a-btn -icon" aria-label="Increase">
-          <div class="a-btn__content">
-            <i class="a-icon icon-plus"></i>
+        <button class="chi-btn -icon" aria-label="Increase">
+          <div class="chi-btn__content">
+            <i class="chi-icon icon-plus"></i>
           </div>
         </button>
       </div>
@@ -160,26 +160,26 @@ h3 Disabled
   .-p--3
     chi-number-input(expanded=true disabled=true)
   .example-tabs.-pl--2
-    ul.a-tabs#examples-expanded-disabled
+    ul.chi-tabs#examples-expanded-disabled
       li.-active
         a(href=`#webcomponent-expanded-disabled`) Web component
       li
         a(href=`#html-expanded-disabled`) HTML
-  .a-tabs-panel.-active#webcomponent-expanded-disabled
+  .chi-tabs-panel.-active#webcomponent-expanded-disabled
     :code(lang="html")
       <chi-number-input expanded disabled></chi-number-input>
-  .a-tabs-panel#html-expanded-disabled
+  .chi-tabs-panel#html-expanded-disabled
     :code(lang="html")
       <div class="m-inputNumber">
-        <input class="a-input" type="number" value="0" aria-label="Input Label" disabled>
-        <button class="a-btn -icon" aria-label="Decrease">
-          <div class="a-btn__content">
-            <i class="a-icon icon-minus"></i>
+        <input class="chi-input" type="number" value="0" aria-label="Input Label" disabled>
+        <button class="chi-btn -icon" aria-label="Decrease">
+          <div class="chi-btn__content">
+            <i class="chi-icon icon-minus"></i>
           </div>
         </button>
-        <button class="a-btn -icon" aria-label="Increase">
-          <div class="a-btn__content">
-            <i class="a-icon icon-plus"></i>
+        <button class="chi-btn -icon" aria-label="Increase">
+          <div class="chi-btn__content">
+            <i class="chi-icon icon-plus"></i>
           </div>
         </button>
       </div>
@@ -190,13 +190,13 @@ h3 Sizes
     each size in ['sm', 'md', 'lg', 'xl']
       chi-number-input(expanded=true size=`${size}` class='-mr--2')
   .example-tabs.-pl--2
-    ul.a-tabs#examples-expanded-sizes
+    ul.chi-tabs#examples-expanded-sizes
       li.-active
         a(href=`#webcomponent-expanded-sizes`) Web component
       li
         a(href=`#html-expanded-sizes`) HTML
-  .a-tabs-panel.-active#webcomponent-expanded-sizes
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-expanded-sizes
+    .chi-tab__description
       | Expanded number inputs support a full spectrum of sizes: <code>sm</code>, <code>md</code>,
       |  <code>lg</code>, <code>xl</code>.
       | The default size is <code>md</code>.
@@ -205,47 +205,47 @@ h3 Sizes
       <chi-number-input expanded></chi-number-input>
       <chi-number-input expanded size="lg"></chi-number-input>
       <chi-number-input expanded size="xl"></chi-number-input>
-  .a-tabs-panel#html-expanded-sizes
-    .a-tab__description
+  .chi-tabs-panel#html-expanded-sizes
+    .chi-tab__description
       | Expanded number inputs support a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
       |  <code>-lg</code>, <code>-xl</code>.
       | The default size is <code>-md</code>.
     :code(lang="html")
       <div class="m-inputNumber -sm">
-        <input class="a-input -sm" type="number" value="0" aria-label="Input Label">
-        <button class="a-btn -icon -sm" aria-label="Decrease">
-          <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
+        <input class="chi-input -sm" type="number" value="0" aria-label="Input Label">
+        <button class="chi-btn -icon -sm" aria-label="Decrease">
+          <div class="chi-btn__content"><i class="chi-icon icon-minus"></i></div>
         </button>
-        <button class="a-btn -icon -sm" aria-label="Increase">
-          <div class="a-btn__content"><i class="a-icon icon-plus"></i>
+        <button class="chi-btn -icon -sm" aria-label="Increase">
+          <div class="chi-btn__content"><i class="chi-icon icon-plus"></i>
         </div>
         </button>
       </div>
       <div class="m-inputNumber -md">
-        <input class="a-input -md" type="number" value="0" aria-label="Input Label">
-        <button class="a-btn -icon -md" aria-label="Decrease">
-          <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
+        <input class="chi-input -md" type="number" value="0" aria-label="Input Label">
+        <button class="chi-btn -icon -md" aria-label="Decrease">
+          <div class="chi-btn__content"><i class="chi-icon icon-minus"></i></div>
         </button>
-        <button class="a-btn -icon -md" aria-label="Increase">
-          <div class="a-btn__content"><i class="a-icon icon-plus"></i></div>
+        <button class="chi-btn -icon -md" aria-label="Increase">
+          <div class="chi-btn__content"><i class="chi-icon icon-plus"></i></div>
         </button>
       </div>
       <div class="m-inputNumber -lg">
-        <input class="a-input -lg" type="number" value="0" aria-label="Input Label">
-        <button class="a-btn -icon -lg" aria-label="Decrease">
-          <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
+        <input class="chi-input -lg" type="number" value="0" aria-label="Input Label">
+        <button class="chi-btn -icon -lg" aria-label="Decrease">
+          <div class="chi-btn__content"><i class="chi-icon icon-minus"></i></div>
         </button>
-        <button class="a-btn -icon -lg" aria-label="Increase">
-          <div class="a-btn__content"><i class="a-icon icon-plus"></i></div>
+        <button class="chi-btn -icon -lg" aria-label="Increase">
+          <div class="chi-btn__content"><i class="chi-icon icon-plus"></i></div>
         </button>
       </div>
       <div class="m-inputNumber -xl">
-        <input class="a-input -xl" type="number" value="0" aria-label="Input Label">
-        <button class="a-btn -icon -xl" aria-label="Decrease">
-          <div class="a-btn__content"><i class="a-icon icon-minus"></i></div>
+        <input class="chi-input -xl" type="number" value="0" aria-label="Input Label">
+        <button class="chi-btn -icon -xl" aria-label="Decrease">
+          <div class="chi-btn__content"><i class="chi-icon icon-minus"></i></div>
         </button>
-        <button class="a-btn -icon -xl" aria-label="Increase">
-          <div class="a-btn__content"><i class="a-icon icon-plus"></i></div>
+        <button class="chi-btn -icon -xl" aria-label="Increase">
+          <div class="chi-btn__content"><i class="chi-icon icon-plus"></i></div>
         </button>
       </div>
 

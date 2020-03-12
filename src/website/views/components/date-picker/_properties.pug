@@ -3,12 +3,12 @@ h2 Additional usage details for chi-date-picker
 h2 Additional usage details for chi-date
 :stencilDoc(name='chi-date')
 
-.a-divider
+.chi-divider
 
 h2 JavaScript
 p.-text This component accepts options to configure its behavior.
 
-section.a-table.a-table__options.-bordered.-my--3
+section.chi-table.chi-table__options.-bordered.-my--3
   div
     table.-text(cellpadding='0', cellspacing='0')
       thead
@@ -77,18 +77,18 @@ h3 Value and min options programmatically
 .example.-mb--3
   .-p--3
     .m-form__item
-      label(class="a-label", for="datepicker-4") Date
+      label(class="chi-label", for="datepicker-4") Date
       .m-input__wrapper.-icon--right(style="width:14rem;")
-        input#datepicker-4.a-input(type="text", placeholder="MM/DD/YYYY", value="")
-        .a-icon.-text--muted
+        input#datepicker-4.chi-input(type="text", placeholder="MM/DD/YYYY", value="")
+        .chi-icon.-text--muted
           svg
             use(xlink:href='#icon-date')
   :code(lang="html",style="height:20rem")
     <div class="m-form__item">
-      <label class="a-label" for="datepicker-4">Date</label>
+      <label class="chi-label" for="datepicker-4">Date</label>
       <div class="m-input__wrapper -icon--right">
-        <input id="datepicker-4" type="text" class="a-input" placeholder="MM/DD/YYYY" value="">
-        <div class="a-icon -text--muted">
+        <input id="datepicker-4" type="text" class="chi-input" placeholder="MM/DD/YYYY" value="">
+        <div class="chi-icon -text--muted">
           <svg>
             <use xlink:href="#icon-date"></use>
           </svg>

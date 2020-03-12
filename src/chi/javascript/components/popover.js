@@ -5,7 +5,7 @@ import { chi } from '../core/chi';
 
 const COMPONENT_SELECTOR = '[data-popover-content]';
 const COMPONENT_TYPE = 'popover';
-const CLASS_POPOVER = 'm-popover';
+const CLASS_POPOVER = 'chi-popover';
 const TRANSITION_DURATION = 200;
 const EVENTS = {
   SHOW: 'chi.popover.show',
@@ -235,7 +235,7 @@ class Popover extends Component {
     }
     if (this._config.arrow) {
       const arrow = document.createElement('div');
-      arrow.className = 'm-popover__arrow';
+      arrow.className = 'chi-popover__arrow';
       this._popoverElem.appendChild(arrow);
     }
   }
@@ -247,10 +247,10 @@ class Popover extends Component {
     this._config.parent.setAttribute('aria-describedby', this._popoverElem.id);
     this._popoverElem.setAttribute('aria-hidden', 'true');
     this._popoverElem.setAttribute('role', 'dialog');
-    if (this._popoverElem.querySelector('.m-popover__title')) {
+    if (this._popoverElem.querySelector('.chi-popover__title')) {
       this._popoverElem.setAttribute(
         'aria-label',
-        this._popoverElem.querySelector('.m-popover__title').innerHTML
+        this._popoverElem.querySelector('.chi-popover__title').innerHTML
       );
     }
     this._popoverElem.setAttribute('aria-modal', 'true');
@@ -293,7 +293,7 @@ class Popover extends Component {
           order: 875
         },
         arrow: {
-          element: '.m-popover__arrow',
+          element: '.chi-popover__arrow',
           enabled: this._config.arrow
         }
       },

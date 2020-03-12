@@ -4,7 +4,7 @@
 .m-form__item {
   &.-row {
     label {
-      &.a-switch {
+      &.chi-switch {
         margin-bottom: 0.25rem;
       }
     }
@@ -12,8 +12,8 @@
 
   &.-list {
     label {
-      &.a-switch {
-        .a-switch__label {
+      &.chi-switch {
+        .chi-switch__label {
           flex-grow: 1;
         }
       }
@@ -21,13 +21,13 @@
   }
 }
 
-.a-switch {
+.chi-switch {
   display: flex;
   line-height: $line-height-small;
   margin: 0.25rem 0;
   position: relative;
 
-  .a-switch__label {
+  .chi-switch__label {
     align-items: flex-start;
     display: flex;
     font-size: $text;
@@ -38,19 +38,19 @@
     padding: 0.125rem 0;
   }
 
-  .a-switch__content + .a-switch__label {
+  .chi-switch__content + .chi-switch__label {
     margin-left: 0.5rem;
     margin-right: 0;
   }
 
   & > span {
-    &.a-switch__content {
+    &.chi-switch__content {
       display: flex;
       flex-direction: column;
       font-size: $text-smallest;
       line-height: $line-height-small;
 
-      & > .a-switch__thumb {
+      & > .chi-switch__thumb {
         background-color: set-color(grey, 50);
         border: 0;
         border-radius: 12px;
@@ -81,18 +81,18 @@
         }
       }
 
-      & > .a-switch__on {
+      & > .chi-switch__on {
         display: none;
       }
 
-      & > .a-switch__off {
+      & > .chi-switch__off {
         display: block;
       }
     }
   }
 
   &.-label--hide {
-    .a-switch__label {
+    .chi-switch__label {
       clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
       clip: rect(1px, 1px, 1px, 1px);
       height: 1px;
@@ -105,11 +105,11 @@
 
   input {
     &[type='checkbox'] {
-      &.a-switch__input {
+      &.chi-switch__input {
         &:checked {
           & + span {
-            &.a-switch__content {
-              & > .a-switch__thumb {
+            &.chi-switch__content {
+              & > .chi-switch__thumb {
                 background-color: $brand-color;
 
                 &::after {
@@ -129,11 +129,11 @@
                 }
               }
 
-              & > .a-switch__on {
+              & > .chi-switch__on {
                 display: block;
               }
 
-              & > .a-switch__off {
+              & > .chi-switch__off {
                 display: none;
               }
             }
@@ -142,8 +142,8 @@
           &:focus,
           &.-focus {
             & + span {
-              &.a-switch__content {
-                & > .a-switch__thumb {
+              &.chi-switch__content {
+                & > .chi-switch__thumb {
                   box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
                 }
               }
@@ -154,8 +154,8 @@
         &:focus,
         &.-focus {
           & + span {
-            &.a-switch__content {
-              & > .a-switch__thumb {
+            &.chi-switch__content {
+              & > .chi-switch__thumb {
                 box-shadow: 0 0 0 0.25rem rgba(set-color(grey, 50), 0.25);
               }
             }
@@ -164,8 +164,8 @@
 
         &[disabled] {
           & + span {
-            &.a-switch__content {
-              & > .a-switch__thumb {
+            &.chi-switch__content {
+              & > .chi-switch__thumb {
                 opacity: 0.6;
                 pointer-events: none;
               }
@@ -180,7 +180,7 @@
 input {
   &[type='checkbox'] {
     &.-toggle,
-    &.a-switch__input {
+    &.chi-switch__input {
       border: 0;
       clip: rect(0 0 0 0);
       height: 1px;
@@ -268,12 +268,12 @@ input {
         }
       }
 
-      &[disabled] + .a-switch__label {
+      &[disabled] + .chi-switch__label {
         opacity: 0.6;
         pointer-events: none;
       }
 
-      &[disabled] ~ .a-switch__label {
+      &[disabled] ~ .chi-switch__label {
         color: set-color(grey, 70);
         opacity: 0.6;
         pointer-events: none;

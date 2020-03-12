@@ -61,7 +61,7 @@ $sizes: (
   display: inline-flex;
 
   &:not(.-vertical) {
-    .a-btn {
+    .chi-btn {
       &,
       &.-primary,
       &.-secondary,
@@ -131,7 +131,7 @@ $sizes: (
               }
             }
 
-            & + .a-btn:not(.-flat) {
+            & + .chi-btn:not(.-flat) {
               border-left-width: 0;
               padding-left: 1rem;
 
@@ -153,7 +153,7 @@ $sizes: (
 
           &:hover,
           &.-hover {
-            & + .a-btn:focus,
+            & + .chi-btn:focus,
             & + .-focus {
               border-left-width: 0.0625rem;
               padding-left: 0.9375rem;

@@ -3,7 +3,7 @@
 
 $animation-duration: 0.5s;
 
-.m-drawer {
+.chi-drawer {
 
   & {
     background-color: set-color(white);
@@ -183,18 +183,18 @@ $animation-duration: 0.5s;
 }
 
 // Legacy code start
-.a-backdrop > .m-drawer {
+.a-backdrop > .chi-drawer {
   z-index: $zindex-fixed-with-backdrop;
 }
 // Legacy code end
 
-.m-backdrop__wrapper > .m-drawer {
+.chi-backdrop__wrapper > .chi-drawer {
   z-index: $zindex-fixed-with-backdrop;
 }
 
 /* IE11 CSS hack */
 @media all and (-ms-high-contrast: none) {
-  .m-drawer {
+  .chi-drawer {
     .-close {
       position: absolute;
     }

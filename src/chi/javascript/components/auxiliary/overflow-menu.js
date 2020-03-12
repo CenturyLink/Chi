@@ -111,15 +111,15 @@ class OverflowMenu {
 
   _createOverflowTab () {
     this._overflowTab = document.createElement('LI');
-    Util.addClass(this._overflowTab, 'm-dropdown');
+    Util.addClass(this._overflowTab, 'chi-dropdown');
     this._overflowTab.innerHTML =
-      '<a href="#" class="m-dropdown__trigger" data-position="bottom-end"> ' +
+      '<a href="#" class="chi-dropdown__trigger" data-position="bottom-end"> ' +
       this._config.overflowMenuLabel + '</a>' +
-      '<div class="m-dropdown__menu"></div>';
+      '<div class="chi-dropdown__menu"></div>';
     this._overflowTabMenu =
-      this._overflowTab.getElementsByClassName('m-dropdown__menu')[0];
+      this._overflowTab.getElementsByClassName('chi-dropdown__menu')[0];
     this._overflowTabTrigger =
-      this._overflowTab.getElementsByClassName('m-dropdown__trigger')[0];
+      this._overflowTab.getElementsByClassName('chi-dropdown__trigger')[0];
     this._overflowTabDropdown = NavigationDropdown.factory(
       this._overflowTabTrigger,
       {
@@ -157,9 +157,9 @@ class OverflowMenu {
     while (tab.childNodes.length) {
       const child = tab.childNodes[0];
       if (child.nodeName === 'A') {
-        Util.addClass(child, 'm-dropdown__menu-item');
+        Util.addClass(child, 'chi-dropdown__menu-item');
       }
-      if (Util.hasClass(child,'m-dropdown__trigger')) {
+      if (Util.hasClass(child,'chi-dropdown__trigger')) {
         NavigationDropdown.factory(child).disablePopper();
       }
       newElem.appendChild(child);
@@ -180,9 +180,9 @@ class OverflowMenu {
     while (tab.childNodes.length) {
       const child = tab.childNodes[0];
       if (child.nodeName === 'A') {
-        Util.removeClass(child, 'm-dropdown__menu-item');
+        Util.removeClass(child, 'chi-dropdown__menu-item');
       }
-      if (Util.hasClass(child,'m-dropdown__trigger')) {
+      if (Util.hasClass(child,'chi-dropdown__trigger')) {
         NavigationDropdown.factory(child).enablePopper();
         if (Util.hasClass(child, CLASS_HAS_ACTIVE)) {
           Util.addClass(oldTab, CLASS_ACTIVE);

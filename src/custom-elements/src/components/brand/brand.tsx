@@ -56,7 +56,7 @@ export class Brand {
 
   render() {
     return (
-      <span class={`a-brand ${this.size ? `-${this.size}` : ''}`} aria-label="CenturyLink">
+      <span class={`chi-brand ${this.size ? `-${this.size}` : ''}`} aria-label="CenturyLink">
         {this._brandSVG()}
       </span>
     );

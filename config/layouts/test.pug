@@ -18,7 +18,7 @@ html(lang="en")
   body.chi(
     style= background ? `background-color: #${background}`: false
   )
-    .a-grid__container
+    .chi-grid__container
       h1= title
       .tests!= contents
 
@@ -26,4 +26,3 @@ html(lang="en")
     if scripts
       each script in scripts
         script(type="text/javascript", src=`/${script}.js`)
-

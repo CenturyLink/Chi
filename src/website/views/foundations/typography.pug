@@ -17,10 +17,10 @@ h3 Monospace font stack
      font-family: Menlo, Consolas, "Liberation Mono", Courier, monospace;
 
 h2 Headings
-p.-text Headings are used to illustrate the typographic hierarchy of a page. <code>h1</code> defines the most important heading and h6 the least. Headings in Chi can be defined as tags <code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code> or classes <code>.a-h1</code> - <code>.a-h6</code>.
+p.-text Headings are used to illustrate the typographic hierarchy of a page. <code>h1</code> defines the most important heading and h6 the least. Headings in Chi can be defined as tags <code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code> or classes <code>.chi-h1</code> - <code>.chi-h6</code>.
 
 .example(style='border:none')
-  section.a-table.-bordered.-mt--3.-mb--3
+  section.chi-table.-bordered.-mt--3.-mb--3
     div
       table(cellpadding='0', cellspacing='0')
         thead
@@ -41,7 +41,7 @@ h2 Body text
 p.-text
   | Chi's default font size is 14px (0.875rem) and is intended to maximize screen real estate in dense, app oriented interfaces.
 
-section.a-table.-bordered.-mt--3.-mb--3
+section.chi-table.-bordered.-mt--3.-mb--3
   div
     table(cellpadding='0', cellspacing='0')
       thead
@@ -61,9 +61,9 @@ section.a-table.-bordered.-mt--3.-mb--3
 
 h2 Inline text
 p.-text
-  | Styles for common inline text elements. Styles can be defined as tags <code>&lt;code&gt;</code> or classes <code>.a-code</code>.
+  | Styles for common inline text elements. Styles can be defined as tags <code>&lt;code&gt;</code> or classes <code>.chi-code</code>.
 
-section.a-table.-bordered.-mt--3.-mb--3
+section.chi-table.-bordered.-mt--3.-mb--3
   div
     table(cellpadding='0', cellspacing='0')
       thead
@@ -144,8 +144,8 @@ p.-text Pre tags are used to wrap multiple lines of code.
 h2 Lists
 h3 Base
 p.-text Use <code>&lt;ul&gt;</code> tags for unordered lists and <code>&lt;ol&gt;</code> tags for ordered lists.
-.a-grid
-  .a-col.-w--6
+.chi-grid
+  .chi-col.-w--6
     .example.-mb--3
       ul.-text
         li List item 1
@@ -159,7 +159,7 @@ p.-text Use <code>&lt;ul&gt;</code> tags for unordered lists and <code>&lt;ol&gt
         <ul class="-text">
           <li></li>
         </ul>
-  .a-col.-w--6
+  .chi-col.-w--6
     .example.-mb--3
       ol.-text
         li List item 1

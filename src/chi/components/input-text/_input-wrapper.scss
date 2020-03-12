@@ -70,16 +70,16 @@ $sizes: (
     &[type='time'],
     &[type='url'],
     &[type='week'] {
-      &.a-input {
+      &.chi-input {
 
-        & ~ .a-icon {
+        & ~ .chi-icon {
           height: 1rem;
           position: absolute;
           top: 0.5rem;
           width: 1rem;
         }
 
-        & ~ .a-spinner {
+        & ~ .chi-spinner {
           position: absolute;
           right: 0.75rem;
           top: 0.5rem;
@@ -87,13 +87,13 @@ $sizes: (
 
         @each $type in map-keys($sizes) {
           &.-#{$type} {
-            & ~ .a-icon {
+            & ~ .chi-icon {
               height: map-get(map-get($sizes, $type), height);
               top: map-get(map-get($sizes, $type), top);
               width: map-get(map-get($sizes, $type), width);
             }
 
-            & ~ .a-spinner {
+            & ~ .chi-spinner {
               right: map-get(map-get(map-get($sizes, $type), spinner), right);
               top: map-get(map-get(map-get($sizes, $type), spinner), top);
             }
@@ -117,7 +117,7 @@ $sizes: (
       &[type='time'],
       &[type='url'],
       &[type='week'] {
-        &.a-input {
+        &.chi-input {
           padding-left: 1.9375rem;
 
           &.-small,
@@ -134,14 +134,14 @@ $sizes: (
           &.-xl {
             padding-left: 2.4375rem;
 
-            & ~ .a-icon {
+            & ~ .chi-icon {
               &:first-of-type {
                 left: 0.75rem;
               }
             }
           }
 
-          & ~ .a-icon {
+          & ~ .chi-icon {
             &:first-of-type {
               left: 0.5rem;
             }
@@ -165,7 +165,7 @@ $sizes: (
       &[type='time'],
       &[type='url'],
       &[type='week'] {
-        &.a-input {
+        &.chi-input {
           padding-right: 1.9375rem;
 
           &.-small,
@@ -182,14 +182,14 @@ $sizes: (
           &.-xl {
             padding-right: 2.4375rem;
 
-            & ~ .a-icon {
+            & ~ .chi-icon {
               &:last-of-type {
                 right: 0.75rem;
               }
             }
           }
 
-          & ~ .a-icon {
+          & ~ .chi-icon {
             &:last-of-type {
               right: 0.5rem;
             }

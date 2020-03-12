@@ -1,16 +1,16 @@
 @import '_variables';
 @import '_mixins';
 
-.a-radio {
+.chi-radio {
   line-height: $line-height;
   position: relative;
 
   input {
     &[type='radio'] {
-      &.a-input,
-      &.a-radio__input {
+      &.chi-input,
+      &.chi-radio__input {
         & + label {
-          &.a-radio__label {
+          &.chi-radio__label {
             font-size: $text;
             font-weight: normal;
             line-height: $line-height-small;
@@ -37,8 +37,8 @@
 
 input {
   &[type='radio'] {
-    &.a-input,
-    &.a-radio__input {
+    &.chi-input,
+    &.chi-radio__input {
       border: 0;
       clip: rect(0 0 0 0);
       height: 1px;

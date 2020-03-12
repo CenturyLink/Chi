@@ -8,188 +8,188 @@ title: Dropdown
 
 each menuItemState in menuItemStates
   div(class=`test-basicDropdown${menuItemState.class}`)
-    span.a-h2=menuItemState.title
+    span.chi-h2=menuItemState.title
     .-d--flex
       each textCombination in textCombinations
         each dropdownState in dropdownStates
-          .m-dropdown(style="margin-bottom: 8em")
-            button(class=`a-btn m-dropdown__trigger ${dropdownState}`)=textCombination.t_text
-            div(class=`m-dropdown__menu ${dropdownState}`)
+          .chi-dropdown(style="margin-bottom: 8em")
+            button(class=`chi-btn chi-dropdown__trigger ${dropdownState}`)=textCombination.t_text
+            div(class=`chi-dropdown__menu ${dropdownState}`)
               each i in [1, 2, 3]
-                a(class=`m-dropdown__menu-item ${menuItemState.class}`, href='#')=textCombination.d_text + " " + i
+                a(class=`chi-dropdown__menu-item ${menuItemState.class}`, href='#')=textCombination.d_text + " " + i
 
 div(class=`test-dropdown-divider`)
-  span.a-h2 Divider
+  span.chi-h2 Divider
   .-d--flex
-    div(class=`m-dropdown__menu -active`)
+    div(class=`chi-dropdown__menu -active`)
       each i in [1, 2]
-        a(class=`m-dropdown__menu-item`, href='#')="Text " + i
-      .a-divider
+        a(class=`chi-dropdown__menu-item`, href='#')="Text " + i
+      .chi-divider
       each i in [3, 4]
-        a(class=`m-dropdown__menu-item`, href='#')="Text " + i
+        a(class=`chi-dropdown__menu-item`, href='#')="Text " + i
 
 
 div(class=`test-dropdown-icons`)
-  span.a-h2 Icons
+  span.chi-h2 Icons
   .-d--flex
-    .m-dropdown__menu.-active
-      a.m-dropdown__menu-item(href='#')
-        .a-icon
+    .chi-dropdown__menu.-active
+      a.chi-dropdown__menu-item(href='#')
+        .chi-icon
           svg
             use(xlink:href='#icon-file-outline')
         = "New"
-      a.m-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
-        .a-icon
+      a.chi-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
+        .chi-icon
           svg
             use(xlink:href='#icon-arrow-to-bottom')
         = "Save"
-      .a-divider
-      a.m-dropdown__menu-item(href='#')
-        .a-icon
+      .chi-divider
+      a.chi-dropdown__menu-item(href='#')
+        .chi-icon
           svg
             use(xlink:href='#icon-mail')
         = "Send"
-      a.m-dropdown__menu-item.-active(href='#')
-        .a-icon
+      a.chi-dropdown__menu-item.-active(href='#')
+        .chi-icon
           svg
             use(xlink:href='#icon-cart')
         = "Buy"
-      a.m-dropdown__menu-item.-hover(href='#')
-        .a-icon
+      a.chi-dropdown__menu-item.-hover(href='#')
+        .chi-icon
           svg
             use(xlink:href='#icon-users')
         = "Share"
-      .a-divider
-      a.m-dropdown__menu-item(href='#')
-        .a-icon
+      .chi-divider
+      a.chi-dropdown__menu-item(href='#')
+        .chi-icon
           svg
             use(xlink:href='#icon-logout')
         = "Logout"
 
 div(class=`test-dropdown-searchBox`)
-  span.a-h2 Search box
+  span.chi-h2 Search box
   .-d--flex
-    .m-dropdown__menu.-active
-      .m-input__wrapper.-icon--left.m-dropdown__menu-item
-        input(type="text", class="a-input", placeholder="Search")
-        .a-icon
+    .chi-dropdown__menu.-active
+      .m-input__wrapper.-icon--left.chi-dropdown__menu-item
+        input(type="text", class="chi-input", placeholder="Search")
+        .chi-icon
           svg
             use(xlink:href='#icon-search')
-      a.m-dropdown__menu-item(href='#') Element 1
-      a.m-dropdown__menu-item(href='#') Element 2
+      a.chi-dropdown__menu-item(href='#') Element 1
+      a.chi-dropdown__menu-item(href='#') Element 2
 
 - var inputStates = ["", "disabled", "checked"]
 div(class=`test-dropdown-checkbox`)
-  span.a-h2 checkbox
-  .m-dropdown__menu.-active
+  span.chi-h2 checkbox
+  .chi-dropdown__menu.-active
     each inputState in inputStates
-      .m-dropdown__menu-item
-        .a-checkbox
-          input(type="checkbox", class="a-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
-          label.a-checkbox__label(for=`checkbox${inputState}`)="Element checkbox " + inputState
+      .chi-dropdown__menu-item
+        .chi-checkbox
+          input(type="checkbox", class="chi-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+          label.chi-checkbox__label(for=`checkbox${inputState}`)="Element checkbox " + inputState
 
 div(class=`test-dropdown-checkbox-icon`)
-  span.a-h2 checkbox with icons
-  .m-dropdown__menu.-active
+  span.chi-h2 checkbox with icons
+  .chi-dropdown__menu.-active
     each inputState in inputStates
-      .m-dropdown__menu-item
-        .a-checkbox
-          input(type="checkbox", class="a-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
-          label.a-checkbox__label(for=`checkbox${inputState}`)
-            .a-icon
+      .chi-dropdown__menu-item
+        .chi-checkbox
+          input(type="checkbox", class="chi-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+          label.chi-checkbox__label(for=`checkbox${inputState}`)
+            .chi-icon
               svg
                 use(xlink:href='#icon-logo-centurylink')
             ="Element checkbox " + inputState
 
 - var inputStates = ["", "disabled", "checked"]
 div(class=`test-dropdown-radio`)
-  span.a-h2 radio
-  .m-dropdown__menu.-active
+  span.chi-h2 radio
+  .chi-dropdown__menu.-active
     each inputState in inputStates
-      .m-dropdown__menu-item
-        input(type="radio", class="a-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+      .chi-dropdown__menu-item
+        input(type="radio", class="chi-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
         label(for=`radio${inputState}`)
         label.-text(for=`radio${inputState}`)="Element radio " + inputState
 
 div(class=`test-dropdown-radio-icon`)
-  span.a-h2 radio with icons
-  .m-dropdown__menu.-active
+  span.chi-h2 radio with icons
+  .chi-dropdown__menu.-active
     each inputState in inputStates
-      .m-dropdown__menu-item
-        input(type="radio", class="a-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+      .chi-dropdown__menu-item
+        input(type="radio", class="chi-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
         label(for=`radio${inputState}`)
         label.-text(for=`radio${inputState}`)
-          .a-icon
+          .chi-icon
             svg
               use(xlink:href='#icon-logo-centurylink')
           ="Element radio " + inputState
 
 div(class=`test-dropdown-text`)
-  span.a-h2 Plain text
+  span.chi-h2 Plain text
   .-d--flex
-    .m-dropdown__menu.-active
-      span.m-dropdown__menu-item Text 1
-      span.m-dropdown__menu-item Text 2
-      span.m-dropdown__menu-item Text 3
-      span.m-dropdown__menu-item Text 4
+    .chi-dropdown__menu.-active
+      span.chi-dropdown__menu-item Text 1
+      span.chi-dropdown__menu-item Text 2
+      span.chi-dropdown__menu-item Text 3
+      span.chi-dropdown__menu-item Text 4
 
 div(class=`test-dropdown-range`)
-  span.a-h2 Range
+  span.chi-h2 Range
   .-d--flex
-    .m-dropdown__menu.-active
-      .m-dropdown__menu-item
+    .chi-dropdown__menu.-active
+      .chi-dropdown__menu-item
         label.-text.-mr--2 200GB
-        input.a-input(type="range")
+        input.chi-input(type="range")
         label.-text.-ml--2 5TB
-      .a-divider
-      span.m-dropdown__menu-item Select range
-      .m-dropdown__menu-item
-        input.a-input(type="range")
+      .chi-divider
+      span.chi-dropdown__menu-item Select range
+      .chi-dropdown__menu-item
+        input.chi-input(type="range")
 
 div(class=`test-dropdown-toggle`)
-  span.a-h2 Toggle input
+  span.chi-h2 Toggle input
   .-d--flex
-    .m-dropdown__menu.-active
-      .m-dropdown__menu-item.-h--auto
+    .chi-dropdown__menu.-active
+      .chi-dropdown__menu-item.-h--auto
         .m-form__item
-          label.a-switch(for="toggle1")
-            input(type="checkbox", class="a-switch__input", id="toggle1")
-            span(class="a-switch__content")
-              span.a-switch__thumb
-            span.a-switch__label Label
-      .m-dropdown__menu-item.-h--auto
+          label.chi-switch(for="toggle1")
+            input(type="checkbox", class="chi-switch__input", id="toggle1")
+            span(class="chi-switch__content")
+              span.chi-switch__thumb
+            span.chi-switch__label Label
+      .chi-dropdown__menu-item.-h--auto
         .m-form__item
-          label.a-switch(for="toggle2")
-            input(type="checkbox", class="a-switch__input", id="toggle2", checked)
-            span(class="a-switch__content")
-              span.a-switch__thumb
-            span.a-switch__label Label
-      .m-dropdown__menu-item.-h--auto
+          label.chi-switch(for="toggle2")
+            input(type="checkbox", class="chi-switch__input", id="toggle2", checked)
+            span(class="chi-switch__content")
+              span.chi-switch__thumb
+            span.chi-switch__label Label
+      .chi-dropdown__menu-item.-h--auto
         .m-form__item
-          label.a-switch(for="toggle3")
-            input(type="checkbox", class="a-switch__input", id="toggle3", disabled)
-            span(class="a-switch__content")
-              span.a-switch__thumb
-            span.a-switch__label Label
+          label.chi-switch(for="toggle3")
+            input(type="checkbox", class="chi-switch__input", id="toggle3", disabled)
+            span(class="chi-switch__content")
+              span.chi-switch__thumb
+            span.chi-switch__label Label
 
 
 div(class=`test-dropdown-ellipsis-helper`)
-  span.a-h2 Ellipsis helper
+  span.chi-h2 Ellipsis helper
   .-d--flex
-    .m-dropdown__menu.-active(style="width:10rem")
-      a.m-dropdown__menu-item(href='#') Element 1
-      a.m-dropdown__menu-item(href='#') Element 2
-      a.m-dropdown__menu-item(href='#')
+    .chi-dropdown__menu.-active(style="width:10rem")
+      a.chi-dropdown__menu-item(href='#') Element 1
+      a.chi-dropdown__menu-item(href='#') Element 2
+      a.chi-dropdown__menu-item(href='#')
         .-flex--ellipsis Longer text element 3
-      a.m-dropdown__menu-item(href='#') Element 4
+      a.chi-dropdown__menu-item(href='#') Element 4
 
 div(class=`test-dropdown-higher-helper`)
-  span.a-h2 Higher menu items helper
+  span.chi-h2 Higher menu items helper
   .-d--flex
-    .m-dropdown__menu.-active(style="width:10rem")
-      a.m-dropdown__menu-item(href="#") Link 1
-      .m-dropdown__menu-item.-h--auto.-py--1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      a.m-dropdown__menu-item(href="#") Link 2
+    .chi-dropdown__menu.-active(style="width:10rem")
+      a.chi-dropdown__menu-item(href="#") Link 1
+      .chi-dropdown__menu-item.-h--auto.-py--1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      a.chi-dropdown__menu-item(href="#") Link 2
 
 - var triggerSizes = ["-lg", "", "-sm"];
 - var triggerStates = dropdownStates;
@@ -197,9 +197,9 @@ div(class=`test-dropdown-higher-helper`)
 
 each triggerSize in triggerSizes
   div(class=`test-dropdown-button${triggerSize}`)
-    span.a-h2=`Button${triggerSize}`
+    span.chi-h2=`Button${triggerSize}`
     each triggerState in triggerStates
-      span.a-h3=`State ${triggerState}`
+      span.chi-h3=`State ${triggerState}`
       each position in dropdownPositions
         .-d--flex
-          button(class=`a-btn m-dropdown__trigger ${triggerSize} ${triggerState}`, data-position=position)=`Button ${triggerState} ${position}`
+          button(class=`chi-btn chi-dropdown__trigger ${triggerSize} ${triggerState}`, data-position=position)=`Button ${triggerState} ${position}`

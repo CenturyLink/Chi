@@ -4,20 +4,20 @@ p.-text
   | content or forms. When done, content or form data is presented in a read only state. When disabled, a muted title
   | is shown in a non-clickable state.
 
-.m-alert.-info.-my--3
-  i.m-alert__icon.a-icon.icon-circle-info
-  .m-alert__content
-    p.m-alert__text This component requires Javascript
+.chi-alert.-info.-my--3
+  i.chi-alert__icon.chi-icon.icon-circle-info
+  .chi-alert__content
+    p.chi-alert__text This component requires Javascript
 
-ul#a-tabs.a-tabs
+ul#chi-tabs.chi-tabs
   li.-active
-    a(href='#a-tabs-done') Done
+    a(href='#chi-tabs-done') Done
   li
-    a(href='#a-tabs-active') Active
+    a(href='#chi-tabs-active') Active
   li
-    a(href='#a-tabs-pending') Pending
+    a(href='#chi-tabs-pending') Pending
   li
-    a(href='#a-tabs-disabled') Disabled
+    a(href='#chi-tabs-disabled') Disabled
 .example.-mb3
   .-p3
     chi-expansion-panel(step='1', heading='Done panel', state='done')
@@ -30,25 +30,25 @@ ul#a-tabs.a-tabs
         br
         | Bellevue, WA 98004
       div(slot='change')
-        button.a-btn.-brand.-flat Change
+        button.chi-btn.-brand.-flat Change
     chi-expansion-panel(step='2', heading='Active panel', state='active')
       div(slot='active')
-        .m-epanel__subtitle Active panel title
-        p.m-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+        .chi-epanel__subtitle Active panel title
+        p.chi-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
           |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
           | nihil sed veritatis!
       div(slot='footer')
-        button.a-btn.-lg.-primary Continue
+        button.chi-btn.-lg.-primary Continue
     chi-expansion-panel(step='3', heading='Pending panel')
     chi-expansion-panel(step='4', heading='Disabled panel', state='disabled')
-  #a-tabs-done.a-tabs-panel.-active
+  #chi-tabs-done.chi-tabs-panel.-active
     .example-tabs.-pl--2
-      ul.a-tabs#examples-default-done
+      ul.chi-tabs#examples-default-done
         li.-active
           a(href=`#webcomponent-done`) Web component
         li
           a(href=`#html-done`) HTML
-    .a-tabs-panel.-active#webcomponent-done
+    .chi-tabs-panel.-active#webcomponent-done
       :code(lang="html")
         <chi-expansion-panel step="1" heading="Done panel" state="done">
           <div slot="done">
@@ -58,109 +58,109 @@ ul#a-tabs.a-tabs
             Bellevue, WA 98004</br>
           </div>
           <div slot="change">
-            <button class="a-btn -brand -flat">
+            <button class="chi-btn -brand -flat">
               Change
             </button>
           </div>
         </chi-expansion-panel>
-    .a-tabs-panel#html-done
+    .chi-tabs-panel#html-done
       :code(lang="html")
-        <div class="m-epanel -done">
-          <div class="m-epanel__header">
-            <div class="m-epanel__number">1.</div>
-            <div class="m-epanel__title">Expansion panel</div>
-            <div class="m-epanel__content">
-              <div class="m-epanel__collapse">
+        <div class="chi-epanel -done">
+          <div class="chi-epanel__header">
+            <div class="chi-epanel__number">1.</div>
+            <div class="chi-epanel__title">Expansion panel</div>
+            <div class="chi-epanel__content">
+              <div class="chi-epanel__collapse">
                 <div class="-done--only">CenturyLink...</div>
               </div>
             </div>
-            <div class="m-epanel__action -done--only">
-              <button class="a-btn -primary -flat">Change</button>
+            <div class="chi-epanel__action -done--only">
+              <button class="chi-btn -primary -flat">Change</button>
             </div>
           </div>
         </div>
 
-  #a-tabs-active.a-tabs-panel
+  #chi-tabs-active.chi-tabs-panel
     .example-tabs.-pl--2
-      ul.a-tabs#examples-default-active
+      ul.chi-tabs#examples-default-active
         li.-active
           a(href=`#webcomponent-active`) Web component
         li
           a(href=`#html-active`) HTML
-    .a-tabs-panel.-active#webcomponent-active
+    .chi-tabs-panel.-active#webcomponent-active
       :code(lang="html")
         <chi-expansion-panel step="2" heading="Active panel" state="active">
           <div slot="active">
-            <div class="m-epanel__subtitle">
+            <div class="chi-epanel__subtitle">
               Active panel title
             </div>
-            <p class="m-epanel__text">
+            <p class="chi-epanel__text">
               Lorem ipsum dolor sit amet...
             </p>
           </div>
           <div slot="footer">
-            <button class="a-btn -lg -primary">
+            <button class="chi-btn -lg -primary">
               Continue
             </button>
           </div>
         </chi-expansion-panel>
-    .a-tabs-panel#html-active
+    .chi-tabs-panel#html-active
       :code(lang="html")
-        <div class="m-epanel -active">
-          <div class="m-epanel__header">
-            <div class="m-epanel__number">2.</div>
-            <div class="m-epanel__title">Active panel</div>
+        <div class="chi-epanel -active">
+          <div class="chi-epanel__header">
+            <div class="chi-epanel__number">2.</div>
+            <div class="chi-epanel__title">Active panel</div>
           </div>
-          <div class="m-epanel__collapse">
+          <div class="chi-epanel__collapse">
             <div class="-active--only">
-              <div class="m-epanel__body">
-                <div class="m-epanel__content">
-                  <div class="m-epanel__subtitle">Active panel title</div>
-                  <p class="m-epanel__text">Lorem ipsum</p>
+              <div class="chi-epanel__body">
+                <div class="chi-epanel__content">
+                  <div class="chi-epanel__subtitle">Active panel title</div>
+                  <p class="chi-epanel__text">Lorem ipsum</p>
                 </div>
-                <div class="m-epanel__footer -justify-content--end">
-                  <button class="a-btn -lg -primary -ml--2">Continue</button>
+                <div class="chi-epanel__footer -justify-content--end">
+                  <button class="chi-btn -lg -primary -ml--2">Continue</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-  #a-tabs-pending.a-tabs-panel
+  #chi-tabs-pending.chi-tabs-panel
     .example-tabs.-pl--2
-      ul.a-tabs#examples-default-pending
+      ul.chi-tabs#examples-default-pending
         li.-active
           a(href=`#webcomponent-pending`) Web component
         li
           a(href=`#html-pending`) HTML
-    .a-tabs-panel.-active#webcomponent-pending
+    .chi-tabs-panel.-active#webcomponent-pending
       :code(lang="html")
         <chi-expansion-panel step="3" heading="Pending panel"></chi-expansion-panel>
-    .a-tabs-panel#html-pending
+    .chi-tabs-panel#html-pending
       :code(lang="html")
-        <div class="m-epanel">
-          <div class="m-epanel__header">
-            <div class="m-epanel__number">3.</div>
-            <div class="m-epanel__title">Pending panel</div>
+        <div class="chi-epanel">
+          <div class="chi-epanel__header">
+            <div class="chi-epanel__number">3.</div>
+            <div class="chi-epanel__title">Pending panel</div>
           </div>
         </div>
 
-  #a-tabs-disabled.a-tabs-panel
+  #chi-tabs-disabled.chi-tabs-panel
     .example-tabs.-pl--2
-      ul.a-tabs#examples-default-disabled
+      ul.chi-tabs#examples-default-disabled
         li.-active
           a(href=`#webcomponent-disabled`) Web component
         li
           a(href=`#html-disabled`) HTML
-    .a-tabs-panel.-active#webcomponent-disabled
+    .chi-tabs-panel.-active#webcomponent-disabled
       :code(lang="html")
         <chi-expansion-panel step="4" heading="Disabled panel" state="disabled"></chi-expansion-panel>
-    .a-tabs-panel#html-disabled
+    .chi-tabs-panel#html-disabled
       :code(lang="html")
-        <div class="m-epanel -disabled">
-          <div class="m-epanel__header">
-            <div class="m-epanel__number">4.</div>
-            <div class="m-epanel__title">Disabled panel</div>
+        <div class="chi-epanel -disabled">
+          <div class="chi-epanel__header">
+            <div class="chi-epanel__number">4.</div>
+            <div class="chi-epanel__title">Disabled panel</div>
           </div>
         </div>
 
@@ -169,73 +169,73 @@ h2 Customization
   .-p3.-bg--grey-10
     chi-expansion-panel(heading='Expansion panel', state='active')
       div(slot='active')
-        .m-epanel__subtitle Active panel title
-        p.m-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+        .chi-epanel__subtitle Active panel title
+        p.chi-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
           |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
           | nihil sed veritatis!
       div(slot='change')
-        button.a-btn.-brand.-flat Change
+        button.chi-btn.-brand.-flat Change
       div(slot='footer')
-        button.a-btn.-lg Previous
-        button.a-btn.-lg.-primary.-ml--2 Continue
+        button.chi-btn.-lg Previous
+        button.chi-btn.-lg.-primary.-ml--2 Continue
   .example-tabs.-pl--2
-    ul.a-tabs#examples-customization
+    ul.chi-tabs#examples-customization
       li.-active
         a(href=`#webcomponent-customization`) Web component
       li
         a(href=`#html-customization`) HTML
-  .a-tabs-panel.-active#webcomponent-customization
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-customization
+    .chi-tab__description
       | This component accepts a small number of visual changes. The numbering of the panels is optional, so you can omit
       | the <code>step</code> property if you don't need it. Apart from that, including some custom content like a button
       | is also possible for done and active states.
     :code(lang="html")
       <chi-expansion-panel heading="Expansion panel" state="active">
         <div slot="active">
-          <div class="m-epanel__subtitle">
+          <div class="chi-epanel__subtitle">
             Active panel title
           </div>
-          <p class="m-epanel__text">
+          <p class="chi-epanel__text">
             Lorem ipsum dolor sit amet...
           </p>
         </div>
         <div slot="change">
-          <button class="a-btn -brand -flat">
+          <button class="chi-btn -brand -flat">
             Change
           </button>
         </div>
         <div slot="footer">
-          <button class="a-btn -lg">
+          <button class="chi-btn -lg">
             Previous
           </button>
-          <button class="a-btn -lg -primary -ml--2">
+          <button class="chi-btn -lg -primary -ml--2">
             Continue
           </button>
         </div>
       </chi-expansion-panel>
-  .a-tabs-panel#html-customization
-    .a-tab__description
+  .chi-tabs-panel#html-customization
+    .chi-tab__description
       | This component accepts a small number of visual changes. The numbering of the panels is optional, so you can omit
-      | the <code>m-epanel__number</code> class elements. In this case, the active content will render with a not desired
+      | the <code>chi-epanel__number</code> class elements. In this case, the active content will render with a not desired
       | margin, that can be removed with the <code>-ml--0</code> class.
     :code(lang="html")
-      <div class="m-epanel -active">
-        <div class="m-epanel__header">
-          <div class="m-epanel__title">Expansion panel</div>
-          <div class="m-epanel__action -done--only">
-            <button class="a-btn -primary -flat">Change</button>
+      <div class="chi-epanel -active">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title">Expansion panel</div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-btn -primary -flat">Change</button>
           </div>
         </div>
-        <div class="m-epanel__collapse -ml--0">
+        <div class="chi-epanel__collapse -ml--0">
           <div class="-active--only">
-            <div class="m-epanel__body">
-              <div class="m-epanel__content">
-                <div class="m-epanel__subtitle">Active panel title</div>
-                <p class="m-epanel__text">Lorem ipsum...</p>
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Active panel title</div>
+                <p class="chi-epanel__text">Lorem ipsum...</p>
               </div>
-              <div class="m-epanel__footer -justify-content--start">
-                <button class="a-btn -lg">Previous</button>
-                <button class="a-btn -lg -primary -ml--2">Continue</button>
+              <div class="chi-epanel__footer -justify-content--start">
+                <button class="chi-btn -lg">Previous</button>
+                <button class="chi-btn -lg -primary -ml--2">Continue</button>
               </div>
             </div>
           </div>
@@ -244,15 +244,15 @@ h2 Customization
 
 h2 Bordered expansion panel
 
-ul#a-tabs-bordered.a-tabs
+ul#chi-tabs-bordered.chi-tabs
   li.-active
-    a(href='#a-tabs-bordered-done') Done
+    a(href='#chi-tabs-bordered-done') Done
   li
-    a(href='#a-tabs-bordered-active') Active
+    a(href='#chi-tabs-bordered-active') Active
   li
-    a(href='#a-tabs-bordered-pending') Pending
+    a(href='#chi-tabs-bordered-pending') Pending
   li
-    a(href='#a-tabs-bordered-disabled') Disabled
+    a(href='#chi-tabs-bordered-disabled') Disabled
 .example.-mb3
   .-p3
     chi-expansion-panel(step='1', heading='Done panel', state='done', bordered=true)
@@ -265,26 +265,26 @@ ul#a-tabs-bordered.a-tabs
           br
           | Bellevue, WA 98004
       div(slot='change')
-        button.a-btn.-brand.-flat Change
+        button.chi-btn.-brand.-flat Change
     chi-expansion-panel(step='2', heading='Active panel', state='active', bordered=true)
       div(slot='active')
-        .m-epanel__subtitle Active panel title
-        p.m-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+        .chi-epanel__subtitle Active panel title
+        p.chi-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
           |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
           | nihil sed veritatis!
       div(slot='footer')
-        button.a-btn.-lg.-primary Continue
+        button.chi-btn.-lg.-primary Continue
     chi-expansion-panel(step='3', heading='Pending panel', bordered=true)
     chi-expansion-panel(step='4', heading='Disabled panel', state='disabled', bordered=true)
-  #a-tabs-bordered-done.a-tabs-panel.-active
+  #chi-tabs-bordered-done.chi-tabs-panel.-active
     .example-tabs.-pl--2
-      ul.a-tabs#examples-bordered
+      ul.chi-tabs#examples-bordered
         li.-active
           a(href=`#webcomponent-bordered`) Web component
         li
           a(href=`#html-bordered`) HTML
-    .a-tabs-panel.-active#webcomponent-bordered
-      .a-tab__description
+    .chi-tabs-panel.-active#webcomponent-bordered
+      .chi-tab__description
         | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
       :code(lang="html")
         <chi-expansion-panel step="1" heading="Done panel" state="done" bordered>
@@ -295,123 +295,123 @@ ul#a-tabs-bordered.a-tabs
             Bellevue, WA 98004</br>
           </div>
           <div slot="change">
-            <button class="a-btn -brand -flat">
+            <button class="chi-btn -brand -flat">
               Change
             </button>
           </div>
         </chi-expansion-panel>
-    .a-tabs-panel#html-bordered
-      .a-tab__description
+    .chi-tabs-panel#html-bordered
+      .chi-tab__description
         | Expansion panel components also support a bordered version. Apply the <code>-bordered</code> class where desired.
       :code(lang="html")
-        <div class="m-epanel -bordered -done">
-          <div class="m-epanel__header">
-            <div class="m-epanel__number">1.</div>
-            <div class="m-epanel__title">Expansion panel</div>
-            <div class="m-epanel__content">
-              <div class="m-epanel__collapse">
+        <div class="chi-epanel -bordered -done">
+          <div class="chi-epanel__header">
+            <div class="chi-epanel__number">1.</div>
+            <div class="chi-epanel__title">Expansion panel</div>
+            <div class="chi-epanel__content">
+              <div class="chi-epanel__collapse">
                 <div class="-done--only">CenturyLink...</div>
               </div>
             </div>
-            <div class="m-epanel__action -done--only">
-              <button class="a-btn -primary -flat">Change</button>
+            <div class="chi-epanel__action -done--only">
+              <button class="chi-btn -primary -flat">Change</button>
             </div>
           </div>
         </div>
 
-  #a-tabs-bordered-active.a-tabs-panel
+  #chi-tabs-bordered-active.chi-tabs-panel
     .example-tabs.-pl--2
-      ul.a-tabs#examples-bordered-active
+      ul.chi-tabs#examples-bordered-active
         li.-active
           a(href=`#webcomponent-bordered-active`) Web component
         li
           a(href=`#html-bordered-active`) HTML
-    .a-tabs-panel.-active#webcomponent-bordered-active
-      .a-tab__description
+    .chi-tabs-panel.-active#webcomponent-bordered-active
+      .chi-tab__description
         | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
       :code(lang="html")
         <chi-expansion-panel step="2" heading="Active panel" state="active" bordered>
           <div slot="active">
-            <div class="m-epanel__subtitle">
+            <div class="chi-epanel__subtitle">
               Active panel title
             </div>
-            <p class="m-epanel__text">
+            <p class="chi-epanel__text">
               Lorem ipsum dolor sit amet...
             </p>
           </div>
           <div slot="footer">
-            <button class="a-btn -lg -primary">
+            <button class="chi-btn -lg -primary">
               Continue
             </button>
           </div>
         </chi-expansion-panel>
-    .a-tabs-panel#html-bordered-active
-      .a-tab__description
+    .chi-tabs-panel#html-bordered-active
+      .chi-tab__description
         | Expansion panel components also support a bordered version. Apply the <code>-bordered</code> class where desired.
       :code(lang="html")
-        <div class="m-epanel -bordered -active">
-          <div class="m-epanel__header">
-            <div class="m-epanel__number">2.</div>
-            <div class="m-epanel__title">Active panel</div>
+        <div class="chi-epanel -bordered -active">
+          <div class="chi-epanel__header">
+            <div class="chi-epanel__number">2.</div>
+            <div class="chi-epanel__title">Active panel</div>
           </div>
-          <div class="m-epanel__collapse">
+          <div class="chi-epanel__collapse">
             <div class="-active--only">
-              <div class="m-epanel__body">
-                <div class="m-epanel__content">
-                  <div class="m-epanel__subtitle">Active panel title</div>
-                  <p class="m-epanel__text">Lorem ipsum</p>
+              <div class="chi-epanel__body">
+                <div class="chi-epanel__content">
+                  <div class="chi-epanel__subtitle">Active panel title</div>
+                  <p class="chi-epanel__text">Lorem ipsum</p>
                 </div>
-                <div class="m-epanel__footer -justify-content--end">
-                  <button class="a-btn -lg -primary -ml--2">Continue</button>
+                <div class="chi-epanel__footer -justify-content--end">
+                  <button class="chi-btn -lg -primary -ml--2">Continue</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-  #a-tabs-bordered-pending.a-tabs-panel
+  #chi-tabs-bordered-pending.chi-tabs-panel
     .example-tabs.-pl--2
-      ul.a-tabs#examples-bordered-pending
+      ul.chi-tabs#examples-bordered-pending
         li.-active
           a(href=`#webcomponent-bordered-pending`) Web component
         li
           a(href=`#html-bordered-pending`) HTML
-    .a-tabs-panel.-active#webcomponent-bordered-pending
-      .a-tab__description
+    .chi-tabs-panel.-active#webcomponent-bordered-pending
+      .chi-tab__description
         | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
       :code(lang="html")
         <chi-expansion-panel step="3" heading="Pending panel" bordered></chi-expansion-panel>
-    .a-tabs-panel#html-bordered-pending
-      .a-tab__description
+    .chi-tabs-panel#html-bordered-pending
+      .chi-tab__description
         | Expansion panel components also support a bordered version. Apply the <code>-bordered</code> class where desired.
       :code(lang="html")
-        <div class="m-epanel -bordered">
-          <div class="m-epanel__header">
-            <div class="m-epanel__number">3.</div>
-            <div class="m-epanel__title">Pending panel</div>
+        <div class="chi-epanel -bordered">
+          <div class="chi-epanel__header">
+            <div class="chi-epanel__number">3.</div>
+            <div class="chi-epanel__title">Pending panel</div>
           </div>
         </div>
 
-  #a-tabs-bordered-disabled.a-tabs-panel
+  #chi-tabs-bordered-disabled.chi-tabs-panel
     .example-tabs.-pl--2
-      ul.a-tabs#examples-bordered-disabled
+      ul.chi-tabs#examples-bordered-disabled
         li.-active
           a(href=`#webcomponent-bordered-disabled`) Web component
         li
           a(href=`#html-bordered-disabled`) HTML
-    .a-tabs-panel.-active#webcomponent-bordered-disabled
-      .a-tab__description
+    .chi-tabs-panel.-active#webcomponent-bordered-disabled
+      .chi-tab__description
         | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
       :code(lang="html")
         <chi-expansion-panel step="4" heading="Disabled panel" state="disabled" bordered></chi-expansion-panel>
-    .a-tabs-panel#html-bordered-disabled
-      .a-tab__description
+    .chi-tabs-panel#html-bordered-disabled
+      .chi-tab__description
         | Expansion panel components also support a bordered version. Apply the <code>-bordered</code> class where desired.
       :code(lang="html")
-        <div class="m-epanel -bordered -disabled">
-          <div class="m-epanel__header">
-            <div class="m-epanel__number">4.</div>
-            <div class="m-epanel__title">Disabled panel</div>
+        <div class="chi-epanel -bordered -disabled">
+          <div class="chi-epanel__header">
+            <div class="chi-epanel__number">4.</div>
+            <div class="chi-epanel__title">Disabled panel</div>
           </div>
         </div>
 
@@ -430,15 +430,15 @@ p.-text
   | The four examples below differ only on the state. Thanks to the state support and internal utility classes we can
   | represent the different states of the same content changing only that property.
 
-ul#a-tabs-ex.a-tabs
+ul#chi-tabs-ex.chi-tabs
   li.-active
-    a(href='#a-tabs-ex-done') Done
+    a(href='#chi-tabs-ex-done') Done
   li
-    a(href='#a-tabs-ex-active') Active
+    a(href='#chi-tabs-ex-active') Active
   li
-    a(href='#a-tabs-ex-pending') Pending
+    a(href='#chi-tabs-ex-pending') Pending
   li
-    a(href='#a-tabs-ex-disabled') Disabled
+    a(href='#chi-tabs-ex-disabled') Disabled
 .example.-mb3
   .-p3.-bg--grey-10
     chi-expansion-panel(heading='Expansion panel', state='done')
@@ -451,26 +451,26 @@ ul#a-tabs-ex.a-tabs
         br
         | Bellevue, WA 98004
       div(slot='change')
-        button.a-btn.-brand.-flat Change
+        button.chi-btn.-brand.-flat Change
     chi-expansion-panel(heading='Expansion panel', state='active')
       div(slot='active')
-        .m-epanel__subtitle Active panel title
-        p.m-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
+        .chi-epanel__subtitle Active panel title
+        p.chi-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
           |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
           | nihil sed veritatis!
       div(slot='footer')
-        button.a-btn.-lg Previous
-        button.a-btn.-lg.-primary.-ml--2 Continue
+        button.chi-btn.-lg Previous
+        button.chi-btn.-lg.-primary.-ml--2 Continue
     chi-expansion-panel(heading='Expansion panel')
     chi-expansion-panel(heading='Expansion panel', state='disabled')
-  #a-tabs-ex-done.a-tabs-panel.-active
+  #chi-tabs-ex-done.chi-tabs-panel.-active
     .example-tabs.-pl--2
-      ul.a-tabs#examples-custom-done
+      ul.chi-tabs#examples-custom-done
         li.-active
           a(href=`#webcomponent-custom-done`) Web component
         li
           a(href=`#html-custom-done`) HTML
-    .a-tabs-panel.-active#webcomponent-custom-done
+    .chi-tabs-panel.-active#webcomponent-custom-done
       :code(lang="html")
         <chi-expansion-panel heading="Expansion panel" state="done">
           <div slot="done">
@@ -480,169 +480,169 @@ ul#a-tabs-ex.a-tabs
             Bellevue, WA 98004</br>
           </div>
           <div slot="change">
-            <button class="a-btn -brand -flat">
+            <button class="chi-btn -brand -flat">
               Change
             </button>
           </div>
         </chi-expansion-panel>
-    .a-tabs-panel#html-custom-done
+    .chi-tabs-panel#html-custom-done
       :code(lang="html")
-        <div class="m-epanel -done">
-          <div class="m-epanel__header">
-            <div class="m-epanel__title">Expansion panel</div>
-            <div class="m-epanel__content">
-              <div class="m-epanel__collapse">
+        <div class="chi-epanel -done">
+          <div class="chi-epanel__header">
+            <div class="chi-epanel__title">Expansion panel</div>
+            <div class="chi-epanel__content">
+              <div class="chi-epanel__collapse">
                 <div class="-done--only">CenturyLink...</div>
               </div>
             </div>
-            <div class="m-epanel__action -done--only">
-              <button class="a-btn -primary -flat">Change</button>
+            <div class="chi-epanel__action -done--only">
+              <button class="chi-btn -primary -flat">Change</button>
             </div>
           </div>
-          <div class="m-epanel__collapse -ml--0">
+          <div class="chi-epanel__collapse -ml--0">
             <div class="-active--only">
-              <div class="m-epanel__body">
-                <div class="m-epanel__content">
-                  <div class="m-epanel__subtitle">Active panel title</div>
-                  <p class="m-epanel__text">Lorem ipsum...</p>
+              <div class="chi-epanel__body">
+                <div class="chi-epanel__content">
+                  <div class="chi-epanel__subtitle">Active panel title</div>
+                  <p class="chi-epanel__text">Lorem ipsum...</p>
                 </div>
-                <div class="m-epanel__footer -justify-content--end">
-                  <button class="a-btn -lg">Previous</button>
-                  <button class="a-btn -lg -primary -ml--2">Continue</button>
+                <div class="chi-epanel__footer -justify-content--end">
+                  <button class="chi-btn -lg">Previous</button>
+                  <button class="chi-btn -lg -primary -ml--2">Continue</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-  #a-tabs-ex-active.a-tabs-panel
+  #chi-tabs-ex-active.chi-tabs-panel
     .example-tabs.-pl--2
-      ul.a-tabs#examples-custom-active
+      ul.chi-tabs#examples-custom-active
         li.-active
           a(href=`#webcomponent-custom-active`) Web component
         li
           a(href=`#html-custom-active`) HTML
-    .a-tabs-panel.-active#webcomponent-custom-active
+    .chi-tabs-panel.-active#webcomponent-custom-active
       :code(lang="html")
         <chi-expansion-panel heading="Expansion panel" state="active">
           <div slot="active">
-            <div class="m-epanel__subtitle">
+            <div class="chi-epanel__subtitle">
               Active panel title
             </div>
-            <p class="m-epanel__text">
+            <p class="chi-epanel__text">
               Lorem ipsum dolor sit amet...
             </p>
           </div>
           <div slot="footer">
-            <button class="a-btn -lg -primary">
+            <button class="chi-btn -lg -primary">
               Continue
             </button>
           </div>
         </chi-expansion-panel>
-    .a-tabs-panel#html-custom-active
+    .chi-tabs-panel#html-custom-active
       :code(lang="html")
-        <div class="m-epanel -active">
-          <div class="m-epanel__header">
-            <div class="m-epanel__title">Expansion panel</div>
-            <div class="m-epanel__content">
-              <div class="m-epanel__collapse">
+        <div class="chi-epanel -active">
+          <div class="chi-epanel__header">
+            <div class="chi-epanel__title">Expansion panel</div>
+            <div class="chi-epanel__content">
+              <div class="chi-epanel__collapse">
                 <div class="-done--only">CenturyLink...</div>
               </div>
             </div>
-            <div class="m-epanel__action -done--only">
-              <button class="a-btn -primary -flat">Change</button>
+            <div class="chi-epanel__action -done--only">
+              <button class="chi-btn -primary -flat">Change</button>
             </div>
           </div>
-          <div class="m-epanel__collapse -ml--0">
+          <div class="chi-epanel__collapse -ml--0">
             <div class="-active--only">
-              <div class="m-epanel__body">
-                <div class="m-epanel__content">
-                  <div class="m-epanel__subtitle">Active panel title</div>
-                  <p class="m-epanel__text">Lorem ipsum...</p>
+              <div class="chi-epanel__body">
+                <div class="chi-epanel__content">
+                  <div class="chi-epanel__subtitle">Active panel title</div>
+                  <p class="chi-epanel__text">Lorem ipsum...</p>
                 </div>
-                <div class="m-epanel__footer -justify-content--end">
-                  <button class="a-btn -lg">Previous</button>
-                  <button class="a-btn -lg -primary -ml--2">Continue</button>
+                <div class="chi-epanel__footer -justify-content--end">
+                  <button class="chi-btn -lg">Previous</button>
+                  <button class="chi-btn -lg -primary -ml--2">Continue</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-  #a-tabs-ex-pending.a-tabs-panel
+  #chi-tabs-ex-pending.chi-tabs-panel
     .example-tabs.-pl--2
-      ul.a-tabs#examples-custom-pending
+      ul.chi-tabs#examples-custom-pending
         li.-active
           a(href=`#webcomponent-custom-pending`) Web component
         li
           a(href=`#html-custom-pending`) HTML
-    .a-tabs-panel.-active#webcomponent-custom-pending
+    .chi-tabs-panel.-active#webcomponent-custom-pending
       :code(lang="html")
         <chi-expansion-panel heading="Expansion panel"></chi-expansion-panel>
-    .a-tabs-panel#html-custom-pending
+    .chi-tabs-panel#html-custom-pending
       :code(lang="html")
-        <div class="m-epanel">
-          <div class="m-epanel__header">
-            <div class="m-epanel__title">Expansion panel</div>
-            <div class="m-epanel__content">
-              <div class="m-epanel__collapse">
+        <div class="chi-epanel">
+          <div class="chi-epanel__header">
+            <div class="chi-epanel__title">Expansion panel</div>
+            <div class="chi-epanel__content">
+              <div class="chi-epanel__collapse">
                 <div class="-done--only">CenturyLink...</div>
               </div>
             </div>
-            <div class="m-epanel__action -done--only">
-              <button class="a-btn -primary -flat">Change</button>
+            <div class="chi-epanel__action -done--only">
+              <button class="chi-btn -primary -flat">Change</button>
             </div>
           </div>
-          <div class="m-epanel__collapse -ml--0">
+          <div class="chi-epanel__collapse -ml--0">
             <div class="-active--only">
-              <div class="m-epanel__body">
-                <div class="m-epanel__content">
-                  <div class="m-epanel__subtitle">Active panel title</div>
-                  <p class="m-epanel__text">Lorem ipsum...</p>
+              <div class="chi-epanel__body">
+                <div class="chi-epanel__content">
+                  <div class="chi-epanel__subtitle">Active panel title</div>
+                  <p class="chi-epanel__text">Lorem ipsum...</p>
                 </div>
-                <div class="m-epanel__footer -justify-content--end">
-                  <button class="a-btn -lg">Previous</button>
-                  <button class="a-btn -lg -primary -ml--2">Continue</button>
+                <div class="chi-epanel__footer -justify-content--end">
+                  <button class="chi-btn -lg">Previous</button>
+                  <button class="chi-btn -lg -primary -ml--2">Continue</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-  #a-tabs-ex-disabled.a-tabs-panel
+  #chi-tabs-ex-disabled.chi-tabs-panel
     .example-tabs.-pl--2
-      ul.a-tabs#examples-custom-disabled
+      ul.chi-tabs#examples-custom-disabled
         li.-active
           a(href=`#webcomponent-custom-disabled`) Web component
         li
           a(href=`#html-custom-disabled`) HTML
-    .a-tabs-panel.-active#webcomponent-custom-disabled
+    .chi-tabs-panel.-active#webcomponent-custom-disabled
       :code(lang="html")
         <chi-expansion-panel heading="Expansion panel" state="disabled"></chi-expansion-panel>
-    .a-tabs-panel#html-custom-disabled
+    .chi-tabs-panel#html-custom-disabled
       :code(lang="html")
-        <div class="m-epanel -disabled">
-          <div class="m-epanel__header">
-            <div class="m-epanel__title">Expansion panel</div>
-            <div class="m-epanel__content">
-              <div class="m-epanel__collapse">
+        <div class="chi-epanel -disabled">
+          <div class="chi-epanel__header">
+            <div class="chi-epanel__title">Expansion panel</div>
+            <div class="chi-epanel__content">
+              <div class="chi-epanel__collapse">
                 <div class="-done--only">CenturyLink...</div>
               </div>
             </div>
-            <div class="m-epanel__action -done--only">
-              <button class="a-btn -primary -flat">Change</button>
+            <div class="chi-epanel__action -done--only">
+              <button class="chi-btn -primary -flat">Change</button>
             </div>
           </div>
-          <div class="m-epanel__collapse -ml--0">
+          <div class="chi-epanel__collapse -ml--0">
             <div class="-active--only">
-              <div class="m-epanel__body">
-                <div class="m-epanel__content">
-                  <div class="m-epanel__subtitle">Active panel title</div>
-                  <p class="m-epanel__text">Lorem ipsum...</p>
+              <div class="chi-epanel__body">
+                <div class="chi-epanel__content">
+                  <div class="chi-epanel__subtitle">Active panel title</div>
+                  <p class="chi-epanel__text">Lorem ipsum...</p>
                 </div>
-                <div class="m-epanel__footer -justify-content--end">
-                  <button class="a-btn -lg">Previous</button>
-                  <button class="a-btn -lg -primary -ml--2">Continue</button>
+                <div class="chi-epanel__footer -justify-content--end">
+                  <button class="chi-btn -lg">Previous</button>
+                  <button class="chi-btn -lg -primary -ml--2">Continue</button>
                 </div>
               </div>
             </div>
@@ -653,7 +653,7 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.querySelectorAll('.docs-body__content .a-tabs'));
+      chi.tab(document.querySelectorAll('.docs-body__content .chi-tabs'));
       chi.tab(document.getElementById('examples-default-done'));
       chi.tab(document.getElementById('examples-default-active'));
       chi.tab(document.getElementById('examples-default-pending'));

@@ -31,7 +31,7 @@ $sizes: (
   )
 );
 
-.a-price {
+.chi-price {
   font-size: 2rem;
   font-weight: 600;
 
@@ -57,7 +57,7 @@ $sizes: (
 }
 
 // sass-lint:disable-all
-_:-ms-lang(x), .a-price sup, .a-price.-sm sup, .a-price.-md sup, .a-price.-lg sup {
+_:-ms-lang(x), .chi-price sup, .chi-price.-sm sup, .chi-price.-md sup, .chi-price.-lg sup {
   top: 0.25rem;
 }
 // sass-lint:enable-all

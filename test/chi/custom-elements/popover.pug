@@ -8,28 +8,28 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 - var moreSides = ['top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'];
 
 .test-base(style='width: 220px; height: 220px;', data-cy="test-base")
-  span.a-h2 Base
+  span.chi-h2 Base
   div.-position--relative
     chi-popover(active, title="Popover Title", variant="text")
       | Popover content.
 
 each side in sides
   div(class=`test-${side}`, style='width: 330px; height: 220px;', data-cy=`test-${side}`)
-    span.a-h2=`Simple side ${side}`
+    span.chi-h2=`Simple side ${side}`
     .-position--relative
       chi-popover(position=side, title="Popover Title", variant="text", active, arrow)
         | Popover content.
 
 each side in moreSides
   div(class=`test-more-${side} -position--relative`, data-cy=`test-more-${side}`)
-    span.a-h2=`Popper side ${side}`
+    span.chi-h2=`Popper side ${side}`
     .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
-      button(id=side).a-btn Popover
+      button(id=side).chi-btn Popover
     chi-popover(position=side, title="Popover Title", variant="text", arrow, reference=`#${side}`, active)
       | Popover content.
 
 div(class=`test-with-progress -position--relative`, style='width: 450px; height: 220px;', data-cy=`test-with-progress`)
-  span.a-h2=`Popover with progress`
+  span.chi-h2=`Popover with progress`
   .-position--relative
     chi-popover(title="Popover Title", active, arrow, prevent-auto-hide)
       | Current progress (75%)

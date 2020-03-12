@@ -1,4 +1,4 @@
-var inputFiles = document.querySelectorAll('input[type="file"].a-input');
+var inputFiles = document.querySelectorAll('input[type="file"].chi-input');
 
 Array.prototype.forEach.call(inputFiles, function(input) {
   var label = input.nextElementSibling;

@@ -1,4 +1,4 @@
-header.o-header.-inverse.docs-header.-z--20
+header.chi-header.-inverse.docs-header.-z--20
   #version-check.-w--100
   script.
     function versionCompare(v1, v2) {
@@ -29,37 +29,37 @@ header.o-header.-inverse.docs-header.-z--20
         var chiVersionCheckSelector = document.getElementById('version-check');
         var newVersionMessage = document.createElement('div');
 
-        newVersionMessage.setAttribute("class", "m-alert -banner -center -info -w--100");
+        newVersionMessage.setAttribute("class", "chi-alert -banner -center -info -w--100");
         newVersionMessage.setAttribute("role", "alert");
-        newVersionMessage.innerHTML = `<i class="a-icon m-alert__icon icon-circle-info -text--info"></i><div class="m-alert__content"><p class="m-alert__text">A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/${chiVersions[0]}">Learn more &#8250;</a></p>`;
+        newVersionMessage.innerHTML = `<i class="chi-icon chi-alert__icon icon-circle-info -text--info"></i><div class="chi-alert__content"><p class="chi-alert__text">A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/${chiVersions[0]}">Learn more &#8250;</a></p>`;
         chiVersionCheckSelector.appendChild(newVersionMessage, chiVersionCheckSelector.childNodes[0]);
         docsContainerSelector.classList.add("outdated-version");
       }
     }
-  div.a-divider.-colorbar
-  nav.o-header__content
-    .o-header__brand
-      button#drawer-trigger-1.a-btn.-icon.-flat.-light.-mr-md--2.-d--flex.-d-lg--none.m-drawer__trigger(data-target='#drawer-sidenav', aria-label="Toggle documentation navigation")
-        .a-btn__content
-          i.a-icon.-sm--2.icon-menu
-      a.a-brand.docs-header__logo(href=`${rootPath}`, aria-label='CenturyLink')
+  div.chi-divider.-colorbar
+  nav.chi-header__content
+    .chi-header__brand
+      button#drawer-trigger-1.chi-btn.-icon.-flat.-light.-mr-md--2.-d--flex.-d-lg--none.chi-drawer__trigger(data-target='#drawer-sidenav', aria-label="Toggle documentation navigation")
+        .chi-btn__content
+          i.chi-icon.-sm--2.icon-menu
+      a.chi-brand.docs-header__logo(href=`${rootPath}`, aria-label='CenturyLink')
         img(src='https://assets.ctl.io/images/centurylink-logo-white.svg', alt='CenturyLink')
-      span.o-header__title.-d--none.-d-lg--flex
+      span.chi-header__title.-d--none.-d-lg--flex
         | Chi Documentation
-    .o-header__start
+    .chi-header__start
       form.-chi-search
         .m-input__wrapper.-icon--right.-flex--grow1
-          label.a-label.-d--none(for="chi-docs-search") Search Chi documentation
-          input.a-input.searchbox(id="chi-docs-search", type="text", placeholder="Search")
-          i.a-icon.icon-search
-    .o-header__end
-      .m-dropdown
-        button.a-btn.-flat.-light.-px--1.m-dropdown__trigger(data-position='bottom-end', id='version-dropdown', aria-label="Toggle Chi version") v1.4.2
-        .m-dropdown__menu(style='width:10rem;')#versionDropdown
-          a.m-dropdown__menu-item.-active(href='https://assets.ctl.io/chi/1.4.2') v1.4.2
-          a.m-dropdown__menu-item(href='https://assets.ctl.io/chi/1.4.0') v1.4.0
-          a.m-dropdown__menu-item(href='https://assets.ctl.io/chi/1.3.0') v1.3.0
-          a.m-dropdown__menu-item(href='https://assets.ctl.io/chi/1.2.5') v1.2.5
+          label.chi-label.-d--none(for="chi-docs-search") Search Chi documentation
+          input.chi-input.searchbox(id="chi-docs-search", type="text", placeholder="Search")
+          i.chi-icon.icon-search
+    .chi-header__end
+      .chi-dropdown
+        button.chi-btn.-flat.-light.-px--1.chi-dropdown__trigger(data-position='bottom-end', id='version-dropdown', aria-label="Toggle Chi version") v1.4.2
+        .chi-dropdown__menu(style='width:10rem;')#versionDropdown
+          a.chi-dropdown__menu-item.-active(href='https://assets.ctl.io/chi/1.4.2') v1.4.2
+          a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/1.4.0') v1.4.0
+          a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/1.3.0') v1.3.0
+          a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/1.2.5') v1.2.5
       script.
         if (localStorage.getItem("chiVersions") !== null) {
           if (versionCompare(window.chiCurrentVersion, JSON.parse(localStorage.getItem("chiVersions"))[0])) {
@@ -75,7 +75,7 @@ header.o-header.-inverse.docs-header.-z--20
               var versionAnchor = document.createElement('a');
 
               versionAnchor.setAttribute("href", "https://assets.ctl.io/chi/"+versions[version]);
-              versionAnchor.setAttribute("class", "m-dropdown__menu-item");
+              versionAnchor.setAttribute("class", "chi-dropdown__menu-item");
               versionAnchor.innerText = "v" + versions[version];
               if (window.chiCurrentVersion === versions[version]) {
                 versionAnchor.classList.add('-active');
@@ -86,23 +86,23 @@ header.o-header.-inverse.docs-header.-z--20
             docsContainerSelector.classList.add("outdated-version");
           }
         }
-      .m-dropdown
-        button.a-btn.-flat.-light.-px--1.-ml--1.m-dropdown__trigger(data-position='bottom-end', id='support') Support
-        .m-dropdown__menu(style='width:14rem;')
-          a.m-dropdown__menu-item(id='contact', href='mailto:chi.support@centurylink.com') Email Support
-          a.m-dropdown__menu-item(id='teams', href='https://teams.microsoft.com/l/channel/19%253aa08fdfde482543ea80f81ce484cea21b%2540thread.skype/CHI?groupId=8631295d-43fc-4e40-93e5-dc8c9ab4d127&tenantId=72b17115-9915-42c0-9f1b-4f98e5a4bcd2', target='_blank', rel="noopener")
+      .chi-dropdown
+        button.chi-btn.-flat.-light.-px--1.-ml--1.chi-dropdown__trigger(data-position='bottom-end', id='support') Support
+        .chi-dropdown__menu(style='width:14rem;')
+          a.chi-dropdown__menu-item(id='contact', href='mailto:chi.support@centurylink.com') Email Support
+          a.chi-dropdown__menu-item(id='teams', href='https://teams.microsoft.com/l/channel/19%253aa08fdfde482543ea80f81ce484cea21b%2540thread.skype/CHI?groupId=8631295d-43fc-4e40-93e5-dc8c9ab4d127&tenantId=72b17115-9915-42c0-9f1b-4f98e5a4bcd2', target='_blank', rel="noopener")
             | Talk #Chi on Microsoft Teams
-      a.a-btn.-icon.-flat.-light.-ml--1(href='https://github.com/CenturyLinkCloud/ux-chi', rel="noopener", aria-label="GitHub")
-        .a-btn__content
-          i.a-icon.icon-logo-github
+      a.chi-btn.-icon.-flat.-light.-ml--1(href='https://github.com/CenturyLinkCloud/ux-chi', rel="noopener", aria-label="GitHub")
+        .chi-btn__content
+          i.chi-icon.icon-logo-github
 
-.m-backdrop.-closed
-  .m-backdrop__wrapper
-    div#drawer-sidenav.m-drawer.-left.-menu.-position--absolute
-      button(class='a-btn -icon -close', aria-label='Close')
-        .a-btn__content
-          i.a-icon.icon-x
-      .m-drawer__content
+.chi-backdrop.-closed
+  .chi-backdrop__wrapper
+    div#drawer-sidenav.chi-drawer.-left.-menu.-position--absolute
+      button(class='chi-btn -icon -close', aria-label='Close')
+        .chi-btn__content
+          i.chi-icon.icon-x
+      .chi-drawer__content
         .-py--2
           include aside
 
@@ -111,7 +111,7 @@ script.
     'DOMContentLoaded',
     function() {
       Array.prototype.forEach.call(
-        document.getElementsByClassName("m-drawer__trigger"),
+        document.getElementsByClassName("chi-drawer__trigger"),
         function (el) {
           chi.drawer(el);
         }

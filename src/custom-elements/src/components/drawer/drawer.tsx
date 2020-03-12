@@ -218,15 +218,15 @@ export class Drawer {
 
   render() {
     // TODO: change this into <chi-button/> element.
-    const closeButton = <button class="a-btn -icon -close" onClick={() => this.hide()} aria-label="Close">
-      <div class="a-btn__content">
+    const closeButton = <button class="chi-btn -icon -close" onClick={() => this.hide()} aria-label="Close">
+      <div class="chi-btn__content">
         <chi-icon icon="x"></chi-icon>
       </div>
     </button>;
 
     const drawer = (
       <div
-        class={`m-drawer -animated
+        class={`chi-drawer -animated
         ${this.position ? `-${this.position}` : ''}
         ${this._animationClasses}
       `}>
@@ -239,19 +239,19 @@ export class Drawer {
             : <slot></slot>
           : this.collapsible
             ? [
-              <div class="m-drawer__header">
-                <span class="m-drawer__title">{this.drawerTitle}</span>
+              <div class="chi-drawer__header">
+                <span class="chi-drawer__title">{this.drawerTitle}</span>
                 {closeButton}
               </div>,
-              <div class="m-drawer__content">
+              <div class="chi-drawer__content">
                 <slot></slot>
               </div>
             ]
             : [
-              <div class="m-drawer__header">
-                <span class="m-drawer__title">{this.drawerTitle}</span>
+              <div class="chi-drawer__header">
+                <span class="chi-drawer__title">{this.drawerTitle}</span>
               </div>,
-              <div class="m-drawer__content">
+              <div class="chi-drawer__content">
                 <slot></slot>
               </div>
             ]
@@ -261,11 +261,11 @@ export class Drawer {
 
     if (this.backdrop || this.backdrop === '') {
       return (
-        <div class={`m-backdrop -animated
+        <div class={`chi-backdrop -animated
           ${this.backdrop === 'inverse' ? '-inverse' : ''}
           ${this._backdropAnimationClasses}
         `}>
-          <div class="m-backdrop__wrapper">
+          <div class="chi-backdrop__wrapper">
             {drawer}
           </div>
         </div>

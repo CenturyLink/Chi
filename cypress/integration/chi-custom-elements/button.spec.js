@@ -10,7 +10,7 @@ describe('Buttons', () => {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'button.a-btn');
+      .should('match', 'button.chi-btn');
 
   });
 
@@ -20,7 +20,7 @@ describe('Buttons', () => {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'button.a-btn.-primary')
+      .should('match', 'button.chi-btn.-primary')
       .and('not.have.class', 'primary');
 
   });
@@ -31,7 +31,7 @@ describe('Buttons', () => {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'button.a-btn.-xl')
+      .should('match', 'button.chi-btn.-xl')
       .and('not.have.class', 'xl');
   });
 
@@ -41,11 +41,11 @@ describe('Buttons', () => {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'button.a-btn.-icon')
+      .should('match', 'button.chi-btn.-icon')
       .and('not.have.class', 'icon')
       .children()
       .first()
-      .should('match', 'div.a-btn__content');
+      .should('match', 'div.chi-btn__content');
   });
 
   it('Close button should have appropriate class', () => {
@@ -54,7 +54,7 @@ describe('Buttons', () => {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'button.a-btn.-icon.-close')
+      .should('match', 'button.chi-btn.-icon.-close')
       .and('not.have.class', 'close');
   });
 

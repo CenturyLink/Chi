@@ -8,7 +8,7 @@
 
 $breakpoints: ('sm', 'md', 'lg', 'xl');
 
-.a-steps {
+.chi-steps {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -38,7 +38,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     justify-content: center;
     line-height: 1rem;
 
-    & > .a-steps__icon {
+    & > .chi-steps__icon {
       &::before {
         content: '\e942';
         font-family: 'chi';
@@ -70,12 +70,12 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       white-space: nowrap;
     }
 
-    & > .a-steps__line {
+    & > .chi-steps__line {
       border-color: $brand-color;
     }
 
     &.-active {
-      & > .a-steps__icon {
+      & > .chi-steps__icon {
         margin-left: 0.125rem;
 
         &::after {
@@ -84,7 +84,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         }
       }
 
-      & > .a-steps__line {
+      & > .chi-steps__line {
         border-color: set-color(grey, 60);
         margin-left: 0.125rem;
       }
@@ -98,12 +98,12 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       }
 
       & ~ li {
-        & > .a-steps__icon {
+        & > .chi-steps__icon {
           color: set-color(grey, 60);
 
         }
 
-        & > .a-steps__line {
+        & > .chi-steps__line {
           border-color: set-color(grey, 60);
         }
 
@@ -141,22 +141,22 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         color: $secondary-color;
       }
 
-      & > .a-steps__line {
+      & > .chi-steps__line {
         border-color: $secondary-color;
       }
 
       &.-active {
-        & > .a-steps__line {
+        & > .chi-steps__line {
           border-color: set-color(grey, 40);
         }
 
         & ~ li {
-          & > .a-steps__icon {
+          & > .chi-steps__icon {
             color: set-color(grey, 40);
 
           }
 
-          & > .a-steps__line {
+          & > .chi-steps__line {
             border-color: set-color(grey, 40);
           }
 
@@ -172,7 +172,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     counter-reset: step;
 
     & > li {
-      & > .a-steps__icon {
+      & > .chi-steps__icon {
         &::before {
           content: counter(step);
           counter-increment: step;
@@ -188,7 +188,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       }
 
       &.-completed {
-        & > .a-steps__icon {
+        & > .chi-steps__icon {
           &::before {
             content: '';
           }
@@ -196,14 +196,14 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       }
 
       &.-active {
-        & > .a-steps__icon {
+        & > .chi-steps__icon {
           &::after {
             content: '\e934';
           }
         }
 
         & ~ li {
-          & > .a-steps__icon {
+          & > .chi-steps__icon {
             &::after {
               content: '\e934';
             }
@@ -211,7 +211,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         }
       }
 
-      & > .a-steps__line {
+      & > .chi-steps__line {
         margin: 0.5rem;
       }
     }
@@ -219,7 +219,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
   &.-labels--hide {
 
-    & li > .a-steps__icon {
+    & li > .chi-steps__icon {
       a {
         display: none;
       }
@@ -233,7 +233,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   @each $breakpoint in $breakpoints {
     &.-labels-#{$breakpoint}--hide {
 
-      & li > .a-steps__icon {
+      & li > .chi-steps__icon {
         a {
           display: none;
 
@@ -257,29 +257,29 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 // sass-lint:disable-all
 /* IE10+ CSS hack */
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .a-steps div.a-steps__icon a {
+  .chi-steps div.chi-steps__icon a {
     position: relative;
     right: 1.5625rem;
   }
 
-  .a-steps li.-active div.a-steps__icon::after {
+  .chi-steps li.-active div.chi-steps__icon::after {
     position: relative;
     right: 3.4375rem;
   }
 
-  .a-steps div.a-steps__icon::before,
-  .a-steps.-horizontalLabels div.a-steps__icon::before  {
+  .chi-steps div.chi-steps__icon::before,
+  .chi-steps.-horizontalLabels div.chi-steps__icon::before  {
     left: 0.15rem;
     position: relative;
   }
 
-  .a-steps.-horizontalLabels div.a-steps__icon::after,
-  .a-steps.-horizontalLabels li.-active div.a-steps__icon::after {
+  .chi-steps.-horizontalLabels div.chi-steps__icon::after,
+  .chi-steps.-horizontalLabels li.-active div.chi-steps__icon::after {
     position: relative;
     right: 0.75rem;
   }
 
-  .a-steps.-horizontalLabels li.-completed div.a-steps__icon::after {
+  .chi-steps.-horizontalLabels li.-completed div.chi-steps__icon::after {
     position: relative;
     right: 0.3125rem;
   }
@@ -287,22 +287,22 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
 /* EDGE CSS hack */
 @supports (-ms-ime-align: auto) {
-  .a-steps div.a-steps__line {
+  .chi-steps div.chi-steps__line {
     padding-bottom: 0.1875rem;
   }
 
-  .a-steps li.-active div.a-steps__icon::after,
-  .a-steps.-inverse li.-active div.a-steps__icon::after{
+  .chi-steps li.-active div.chi-steps__icon::after,
+  .chi-steps.-inverse li.-active div.chi-steps__icon::after{
     font-size: 1.4rem;
   }
 
-  .a-steps.-horizontalLabels div.a-steps__icon::before,
-  .a-steps.-horizontalLabels li.-active div.a-steps__icon::before,
-  .a-steps.-horizontalLabels div.a-steps__icon::before {
+  .chi-steps.-horizontalLabels div.chi-steps__icon::before,
+  .chi-steps.-horizontalLabels li.-active div.chi-steps__icon::before,
+  .chi-steps.-horizontalLabels div.chi-steps__icon::before {
     position: absolute;
   }
 
-  .a-steps.-horizontalLabels div.a-steps__line {
+  .chi-steps.-horizontalLabels div.chi-steps__line {
     padding-bottom: 0;
   }
 }

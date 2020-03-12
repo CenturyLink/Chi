@@ -44,37 +44,37 @@ export class ExpansionPanel {
   render() {
     return (
       <div
-        class={`m-epanel ${this.state === 'disabled' ? `-disabled` : ''} ${
+        class={`chi-epanel ${this.state === 'disabled' ? `-disabled` : ''} ${
           this.state === 'active' ? `-active` : ''
         } ${this.state === 'done' ? `-done` : ''} ${
           this.bordered ? `-bordered` : ''
         }`}
       >
-        <div class="m-epanel__header">
-          {this.step ? <span class="m-epanel__number">{this.step}.</span> : ''}
-          <div class="m-epanel__title">{this.heading}</div>
-          <div class={`m-epanel__content ${this.step ? '' : '-ml--0'}`}>
-            <div class="m-epanel__collapse">
+        <div class="chi-epanel__header">
+          {this.step ? <span class="chi-epanel__number">{this.step}.</span> : ''}
+          <div class="chi-epanel__title">{this.heading}</div>
+          <div class={`chi-epanel__content ${this.step ? '' : '-ml--0'}`}>
+            <div class="chi-epanel__collapse">
               <div class="-done--only">
                 <slot name="done" />
               </div>
             </div>
           </div>
           {this.state === 'done' || this.state === 'active' ? (
-            <div class="m-epanel__action">
+            <div class="chi-epanel__action">
               <slot name="change" />
             </div>
           ) : (
             ''
           )}
         </div>
-        <div class={`m-epanel__collapse ${this.step ? '' : '-ml--0'}`}>
+        <div class={`chi-epanel__collapse ${this.step ? '' : '-ml--0'}`}>
           <div class="-active--only">
-            <div class="m-epanel__body">
-              <div class="m-epanel__content">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
                 <slot name="active" />
               </div>
-              <div class="m-epanel__footer">
+              <div class="chi-epanel__footer">
                 <slot name="footer" />
               </div>
             </div>

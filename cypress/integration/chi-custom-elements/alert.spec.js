@@ -49,7 +49,7 @@ describe('Alert', () => {
         cy.get(`[data-cy=${s}]`, { timeout: 5000 })
           .should('have.class', 'hydrated')
           .children()
-          .should('match', 'div.m-alert.-bubble')
+          .should('match', 'div.chi-alert.-bubble')
           .as(s);
       });
     });
@@ -73,7 +73,7 @@ describe('Alert', () => {
         cy.get(`[data-cy=${s}]`, { timeout: 5000 })
           .should('have.class', 'hydrated')
           .children()
-          .should('match', 'div.m-alert.-banner')
+          .should('match', 'div.chi-alert.-banner')
           .as(s);
       });
     });
@@ -138,7 +138,7 @@ describe('Alert', () => {
       cy.get('[data-cy="alert-toast-success-default"]', { timeout: 5000 })
         .should('have.class', 'hydrated')
         .children()
-        .should('match', 'div.m-alert.-toast');
+        .should('match', 'div.chi-alert.-toast');
     });
   });
 });

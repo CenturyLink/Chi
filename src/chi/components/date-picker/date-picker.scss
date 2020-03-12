@@ -27,7 +27,7 @@ $monday-starting-week: (
   }
 }
 
-.m-datepicker {
+.chi-datepicker {
   font-size: $text;
   width: 14rem;
 
@@ -118,7 +118,7 @@ $monday-starting-week: (
     }
   }
 
-  .prev + .m-datepicker__month {
+  .prev + .chi-datepicker__month {
     margin-left: 0;
   }
 
@@ -138,7 +138,7 @@ $monday-starting-week: (
     @each $week-day, $column-start in $sunday-starting-week {
       &.-month-starts-on-#{$week-day} {
 
-        .m-datepicker__day:first-child {
+        .chi-datepicker__day:first-child {
           margin-left: calc(100% * #{$column-start} / 7);
         }
       }
@@ -149,7 +149,7 @@ $monday-starting-week: (
     @each $week-day, $column-start in $monday-starting-week {
       &.-month-starts-on-#{$week-day} {
 
-        .m-datepicker__day:first-child {
+        .chi-datepicker__day:first-child {
           margin-left: calc(100% * #{$column-start} / 7);
         }
       }
@@ -157,30 +157,30 @@ $monday-starting-week: (
   }
 }
 
-.m-popover {
-  .m-datepicker {
+.chi-popover {
+  .chi-datepicker {
     padding: 0.5rem 1rem;
   }
 
   &__datepicker,
   &__input {
     &.-no-arrow {
-      &.m-popover--top,
+      &.chi-popover--top,
       &[x-placement^='top'] {
         margin-bottom: 1px;
       }
 
-      &.m-popover--right,
+      &.chi-popover--right,
       &[x-placement^='right'] {
         margin-left: 1px;
       }
 
-      &.m-popover--bottom,
+      &.chi-popover--bottom,
       &[x-placement^='bottom'] {
         margin-top: 1px;
       }
 
-      &.m-popover--left,
+      &.chi-popover--left,
       &[x-placement^='left'] {
         margin-right: 1px;
       }

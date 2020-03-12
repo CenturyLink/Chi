@@ -21,20 +21,20 @@ title: Typography
 
 .test-colors
   h3 Colors
-  .a-grid
-    .a-col
+  .chi-grid
+    .chi-col
       .-text Default text color
-    .a-col
+    .chi-col
       .-text.-bgInverse Default text color
-    .a-col
+    .chi-col
       .-text .-text
   each modifier in ['Inverse', 'Brand', 'Success', 'Danger', 'Info', 'Warning']
-    .a-grid
-      .a-col
+    .chi-grid
+      .chi-col
         .-text(class=`-$text{modifier}`)= `${modifier} text color`
-      .a-col
+      .chi-col
         .-text.-bgInverse(class=`-text${modifier}`)= `${modifier} text color`
-      .a-col
+      .chi-col
         .-text= `.-text${modifier}`
 
 .test-paragraph

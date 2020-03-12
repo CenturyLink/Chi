@@ -10,7 +10,7 @@ describe('Badges', () => {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'div.a-badge');
+      .should('match', 'div.chi-badge');
   });
 
   it('Colored badge should have appropriate class', () => {
@@ -18,7 +18,7 @@ describe('Badges', () => {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'div.a-badge')
+      .should('match', 'div.chi-badge')
       .and('have.class', '-secondary');
   });
 
@@ -27,7 +27,7 @@ describe('Badges', () => {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'div.a-badge')
+      .should('match', 'div.chi-badge')
       .and('have.class', '-xs');
   });
 
@@ -36,7 +36,7 @@ describe('Badges', () => {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'div.a-badge')
+      .should('match', 'div.chi-badge')
       .and('have.class', '-flat');
   });
 
@@ -45,7 +45,7 @@ describe('Badges', () => {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'div.a-badge')
+      .should('match', 'div.chi-badge')
       .and('have.class', '-outline');
   });
 
@@ -54,10 +54,10 @@ describe('Badges', () => {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'div.a-badge')
+      .should('match', 'div.chi-badge')
       .children()
       .first()
-      .should('match', 'div.a-badge__content');
+      .should('match', 'div.chi-badge__content');
   });
 
   it('Text transformed badge should have appropriate class', () => {
@@ -65,7 +65,7 @@ describe('Badges', () => {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'div.a-badge')
+      .should('match', 'div.chi-badge')
       .and('have.class', '-text--lowercase');
   });
 });

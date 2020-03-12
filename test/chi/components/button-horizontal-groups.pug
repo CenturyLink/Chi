@@ -3,12 +3,12 @@ title: Horizontal button groups
 ---
 
 mixin icon(name)
-  .a-icon
+  .chi-icon
     svg
       use(xlink:href=`#icon-${name}`)
 
 mixin button(icon, type, style, size, modifier)
-  button.a-btn(class={
+  button.chi-btn(class={
     '-icon': icon,
     [`-${type}`]: type != 'solid',
     [`-${style}`]: style != 'default',
@@ -25,7 +25,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
       [`test-${type}`]: size == 'default',
       [`test-${type}-${size}`]: size != 'default'
     })
-      span.a-h2= `Horizontal button groups / ${type} / ${size}`
+      span.chi-h2= `Horizontal button groups / ${type} / ${size}`
       table(cellpadding="0", cellspacing="0")
         each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
@@ -45,7 +45,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                   while val > 0
                     - val--
                     +button(true, type, style, size)
-                      .a-btn__content
+                      .chi-btn__content
                         +icon('atom')
       table(cellpadding="0", cellspacing="0")
         each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
@@ -56,14 +56,14 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                   while val > 0
                     - val--
                     +button(false, type, style, size)
-                      .a-btn__content
+                      .chi-btn__content
                         +icon('atom')
                         span Button
     div(class={
       [`test-${type}-fluid`]: size == 'default',
       [`test-${type}-${size}-fluid`]: size != 'default'
     })
-      span.a-h2= `Horizontal Button groups / ${type} / ${size} / fluid`
+      span.chi-h2= `Horizontal Button groups / ${type} / ${size} / fluid`
       table(cellpadding="0", cellspacing="0", width="600")
         each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
@@ -80,7 +80,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
               .m-btnGroup.-fluid.-m--1
                 each modifier in ['notFluid', 'align--left', false, 'align--right']
                   +button(true, type, style, size, modifier)
-                    .a-btn__content
+                    .chi-btn__content
                       +icon('atom')
 
       table(cellpadding="0", cellspacing="0", width="600")
@@ -90,6 +90,6 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
               .m-btnGroup.-fluid.-m--1
                 each modifier in ['notFluid', 'align--left', false, 'align--right']
                   +button(false, type, style, size, modifier)
-                    .a-btn__content
+                    .chi-btn__content
                       +icon('atom')
                       span Button

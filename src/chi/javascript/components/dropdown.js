@@ -4,11 +4,11 @@ import Popper from 'popper.js';
 import {CLASS_HAS_ACTIVE} from "./tab";
 
 const CLASS_ACTIVE = "-active";
-const CLASS_DROPDOWN = 'm-dropdown__menu';
-const CLASS_DROPDOWN_ITEM = 'm-dropdown__menu-item';
-const CLASS_MOLECULE = "m-dropdown";
-const CLASS_COMPONENT = 'm-dropdown__trigger';
-const COMPONENT_SELECTOR = '.m-dropdown__trigger';
+const CLASS_DROPDOWN = 'chi-dropdown__menu';
+const CLASS_DROPDOWN_ITEM = 'chi-dropdown__menu-item';
+const CLASS_MOLECULE = "chi-dropdown";
+const CLASS_COMPONENT = 'chi-dropdown__trigger';
+const COMPONENT_SELECTOR = '.chi-dropdown__trigger';
 const COMPONENT_TYPE = "dropdown";
 const DEFAULT_CONFIG = {
   popper: true,

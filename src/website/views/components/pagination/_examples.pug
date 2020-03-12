@@ -1,38 +1,38 @@
 - var steps = ['0', '1', '2', '3', '4', '5', '6'];
 
 h2 Examples
-p.-text Use the class <code>a-pagination</code> to render a pagination component.
+p.-text Use the class <code>chi-pagination</code> to render a pagination component.
 
 h3 Base
 .example.-mb--3
   .-p--5
-    nav.a-pagination(role='navigation', aria-label='Pagination')
+    nav.chi-pagination(role='navigation', aria-label='Pagination')
       .m-btnGroup
         each step in steps
           if step == '0'
-            a(class=`a-btn`, href='#', aria-label='Previous')
-              i(class="a-icon icon-chevron-left", aria-hidden='true')
+            a(class=`chi-btn`, href='#', aria-label='Previous')
+              i(class="chi-icon icon-chevron-left", aria-hidden='true')
               span.-sr--only Previous
           else if step == '6'
-            a(class=`a-btn`, href='#', aria-label='Next')
-              i(class="a-icon icon-chevron-right", aria-hidden='true')
+            a(class=`chi-btn`, href='#', aria-label='Next')
+              i(class="chi-icon icon-chevron-right", aria-hidden='true')
               span.-sr--only Next
           else
-            a(class=`a-btn`, href='#')= `${step}`
+            a(class=`chi-btn`, href='#')= `${step}`
   :code(lang="html")
-    <nav class="a-pagination" role="navigation" aria-label="Pagination">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
       <div class="m-btnGroup">
-        <a href="#" class="a-btn" aria-label="Previous">
-          <i class="a-icon icon-chevron-left" aria-hidden="true"></i>
+        <a href="#" class="chi-btn" aria-label="Previous">
+          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
           <span class="-sr--only">Previous</span>
         </a href="#">
-        <a href="#" class="a-btn">1</a>
-        <a href="#" class="a-btn">2</a>
-        <a href="#" class="a-btn">3</a>
-        <a href="#" class="a-btn">4</a>
-        <a href="#" class="a-btn">5</a>
-        <a href="#" class="a-btn" aria-label="Next">
-          <i class="a-icon icon-chevron-right" aria-hidden="true"></i>
+        <a href="#" class="chi-btn">1</a>
+        <a href="#" class="chi-btn">2</a>
+        <a href="#" class="chi-btn">3</a>
+        <a href="#" class="chi-btn">4</a>
+        <a href="#" class="chi-btn">5</a>
+        <a href="#" class="chi-btn" aria-label="Next">
+          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
           <span class="-sr--only">Next</span>
         </a>
       </div>
@@ -42,33 +42,33 @@ h3 Disabled
 p.-text Apply the class <code>-disabled</code> to any link to render in a disabled state.
 .example.-mb--3
   .-p--5
-    nav.a-pagination(role='navigation', aria-label='Pagination')
+    nav.chi-pagination(role='navigation', aria-label='Pagination')
       .m-btnGroup
         each step in steps
           if step == '0'
-            a(class=`a-btn -disabled`, href='#', aria-disabled='true' disabled)
-              i(class="a-icon icon-chevron-left", aria-hidden='true')
+            a(class=`chi-btn -disabled`, href='#', aria-disabled='true' disabled)
+              i(class="chi-icon icon-chevron-left", aria-hidden='true')
               span.-sr--only Previous
           else if step == '6'
-            a(class=`a-btn`, href='#', aria-label='Next')
-              i(class="a-icon icon-chevron-right", aria-hidden='true')
+            a(class=`chi-btn`, href='#', aria-label='Next')
+              i(class="chi-icon icon-chevron-right", aria-hidden='true')
               span.-sr--only Next
           else
-            a(class=`a-btn`, href='#')= `${step}`
+            a(class=`chi-btn`, href='#')= `${step}`
   :code(lang="html")
-    <nav class="a-pagination" role="navigation" aria-label="Pagination">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
       <div class="m-btnGroup">
-        <a href="#" class="a-btn -disabled" aria-disabled="true">
-          <i class="a-icon icon-chevron-left" aria-hidden="true"></i>
+        <a href="#" class="chi-btn -disabled" aria-disabled="true">
+          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
           <span class="-sr--only">Previous</span>
         </a>
-        <a href="#" class="a-btn">1</a>
-        <a href="#" class="a-btn">2</a>
-        <a href="#" class="a-btn">3</a>
-        <a href="#" class="a-btn">4</a>
-        <a href="#" class="a-btn">5</a>
-        <a href="#" class="a-btn" aria-label="Next">
-          <i class="a-icon icon-chevron-right" aria-hidden="true"></i>
+        <a href="#" class="chi-btn">1</a>
+        <a href="#" class="chi-btn">2</a>
+        <a href="#" class="chi-btn">3</a>
+        <a href="#" class="chi-btn">4</a>
+        <a href="#" class="chi-btn">5</a>
+        <a href="#" class="chi-btn" aria-label="Next">
+          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
           <span class="-sr--only">Next</span>
         </a>
       </div>
@@ -78,35 +78,35 @@ h3 Active
 p.-text Apply the class <code>-active</code> to indicate the current page.
 .example.-mb--3
   .-p--5
-    nav.a-pagination(role='navigation', aria-label='Pagination')
+    nav.chi-pagination(role='navigation', aria-label='Pagination')
       .m-btnGroup
         each step in steps
           if step == '0'
-            a(class=`a-btn`, href='#', aria-label='Previous')
-              i(class="a-icon icon-chevron-left", aria-hidden='true')
+            a(class=`chi-btn`, href='#', aria-label='Previous')
+              i(class="chi-icon icon-chevron-left", aria-hidden='true')
               span.-sr--only Previous
           else if step == '3'
-            a(class=`a-btn -active`, href='#')= `${step}`
+            a(class=`chi-btn -active`, href='#')= `${step}`
           else if step == '6'
-            a(class=`a-btn`, href='#', aria-label='Next')
-              i(class="a-icon icon-chevron-right", aria-hidden='true')
+            a(class=`chi-btn`, href='#', aria-label='Next')
+              i(class="chi-icon icon-chevron-right", aria-hidden='true')
               span.-sr--only Next
           else
-            a(class=`a-btn`, href='#')= `${step}`
+            a(class=`chi-btn`, href='#')= `${step}`
   :code(lang="html")
-    <nav class="a-pagination" role="navigation" aria-label="Pagination">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
       <div class="m-btnGroup">
-        <a href="#" class="a-btn" aria-label="Previous">
-          <i class="a-icon icon-chevron-left" aria-hidden="true"></i>
+        <a href="#" class="chi-btn" aria-label="Previous">
+          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
           <span class="-sr--only">Previous</span>
         </a>
-        <a href="#" class="a-btn">1</a>
-        <a href="#" class="a-btn">2</a>
-        <a href="#" class="a-btn -active">3</a>
-        <a href="#" class="a-btn">4</a>
-        <a href="#" class="a-btn">5</a>
-        <a href="#" class="a-btn" aria-label="Next">
-          <i class="a-icon icon-chevron-right" aria-hidden="true"></i>
+        <a href="#" class="chi-btn">1</a>
+        <a href="#" class="chi-btn">2</a>
+        <a href="#" class="chi-btn -active">3</a>
+        <a href="#" class="chi-btn">4</a>
+        <a href="#" class="chi-btn">5</a>
+        <a href="#" class="chi-btn" aria-label="Next">
+          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
           <span class="-sr--only">Next</span>
         </a>
       </div>
@@ -118,70 +118,70 @@ p.-text Pagination supports three additional sizes: <code>-sm</code>, <code>-lg<
   .-p--5
     each size in ['sm', 'lg', 'xl']
       p.-text--bold=`-${size}`
-      nav.a-pagination(role='navigation', aria-label='Pagination').-mb--2
+      nav.chi-pagination(role='navigation', aria-label='Pagination').-mb--2
         .m-btnGroup
           each step in steps
             if step == '0'
-              a(class=`a-btn -${size}`, href='#', aria-label='Previous')
-                i(class="a-icon icon-chevron-left", aria-hidden='true')
+              a(class=`chi-btn -${size}`, href='#', aria-label='Previous')
+                i(class="chi-icon icon-chevron-left", aria-hidden='true')
                 span.-sr--only Previous
             else if step == '6'
-              a(class=`a-btn -${size}`, href='#', aria-label='Next')
-                i(class="a-icon icon-chevron-right", aria-hidden='true')
+              a(class=`chi-btn -${size}`, href='#', aria-label='Next')
+                i(class="chi-icon icon-chevron-right", aria-hidden='true')
                 span.-sr--only Next
             else
-              a(class=`a-btn -${size}`, href='#')= `${step}`
+              a(class=`chi-btn -${size}`, href='#')= `${step}`
   :code(lang="html")
     <!-- sm -->
-    <nav class="a-pagination" role="navigation" aria-label="Pagination">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
       <div class="m-btnGroup">
-        <a href="#" class="a-btn -sm" aria-label="Previous">
-          <i class="a-icon icon-chevron-left" aria-hidden="true"></i>
+        <a href="#" class="chi-btn -sm" aria-label="Previous">
+          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
           <span class="-sr--only">Previous</span>
         </a>
-        <a href="#" class="a-btn -sm">1</a>
-        <a href="#" class="a-btn -sm">2</a>
-        <a href="#" class="a-btn -sm">3</a>
-        <a href="#" class="a-btn -sm">4</a>
-        <a href="#" class="a-btn -sm">5</a>
-        <a href="#" class="a-btn -sm" aria-label="Next">
-          <i class="a-icon icon-chevron-right" aria-hidden="true"></i>
+        <a href="#" class="chi-btn -sm">1</a>
+        <a href="#" class="chi-btn -sm">2</a>
+        <a href="#" class="chi-btn -sm">3</a>
+        <a href="#" class="chi-btn -sm">4</a>
+        <a href="#" class="chi-btn -sm">5</a>
+        <a href="#" class="chi-btn -sm" aria-label="Next">
+          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
           <span class="-sr--only">Next</span>
         </a>
       </div>
     </nav>
     <!-- lg -->
-    <nav class="a-pagination" role="navigation" aria-label="Pagination">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
       <div class="m-btnGroup">
-        <a href="#" class="a-btn -lg" aria-label="Previous">
-          <i class="a-icon icon-chevron-left" aria-hidden="true"></i>
+        <a href="#" class="chi-btn -lg" aria-label="Previous">
+          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
           <span class="-sr--only">Previous</span>
         </a>
-        <a href="#" class="a-btn -lg">1</a>
-        <a href="#" class="a-btn -lg">2</a>
-        <a href="#" class="a-btn -lg">3</a>
-        <a href="#" class="a-btn -lg">4</a>
-        <a href="#" class="a-btn -lg">5</a>
-        <a href="#" class="a-btn -lg" aria-label="Next">
-          <i class="a-icon icon-chevron-right" aria-hidden="true"></i>
+        <a href="#" class="chi-btn -lg">1</a>
+        <a href="#" class="chi-btn -lg">2</a>
+        <a href="#" class="chi-btn -lg">3</a>
+        <a href="#" class="chi-btn -lg">4</a>
+        <a href="#" class="chi-btn -lg">5</a>
+        <a href="#" class="chi-btn -lg" aria-label="Next">
+          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
           <span class="-sr--only">Next</span>
         </a>
       </div>
     </nav>
     <!-- xl -->
-    <nav class="a-pagination" role="navigation" aria-label="Pagination">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
       <div class="m-btnGroup">
-        <a href="#" class="a-btn -xl" aria-label="Previous">
-          <i class="a-icon icon-chevron-left" aria-hidden="true"></i>
+        <a href="#" class="chi-btn -xl" aria-label="Previous">
+          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
           <span class="-sr--only">Previous</span>
         </a>
-        <a href="#" class="a-btn -xl">1</a>
-        <a href="#" class="a-btn -xl">2</a>
-        <a href="#" class="a-btn -xl">3</a>
-        <a href="#" class="a-btn -xl">4</a>
-        <a href="#" class="a-btn -xl">5</a>
-        <a href="#" class="a-btn -xl" aria-label="Next">
-          <i class="a-icon icon-chevron-right" aria-hidden="true"></i>
+        <a href="#" class="chi-btn -xl">1</a>
+        <a href="#" class="chi-btn -xl">2</a>
+        <a href="#" class="chi-btn -xl">3</a>
+        <a href="#" class="chi-btn -xl">4</a>
+        <a href="#" class="chi-btn -xl">5</a>
+        <a href="#" class="chi-btn -xl" aria-label="Next">
+          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
           <span class="-sr--only">Next</span>
         </a>
       </div>

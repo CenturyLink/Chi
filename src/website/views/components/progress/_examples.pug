@@ -1,95 +1,95 @@
 h3 Base
 .example.-mb--3
   .-p--3
-    .a-label 0%
+    .chi-label 0%
     chi-progress(value='0')
-    .a-label 50%
+    .chi-label 50%
     chi-progress(value='50')
-    .a-label 100%
+    .chi-label 100%
     chi-progress(value='100')
   .example-tabs.-pl--2
-    ul.a-tabs#examples-base
+    ul.chi-tabs#examples-base
       li.-active
         a(href=`#webcomponent-base`) Web component
       li
         a(href=`#html-base`) HTML
-  .a-tabs-panel.-active#webcomponent-base
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-base
+    .chi-tab__description
       | To render a progress element, use the tag <code>&lt;chi-progress&gt;</code>.
       | Set the <code>value</code> attribute to the amount of work completed. The default state is <code>success</code>.
     :code(lang="html")
       <!-- 0% -->
-      <div class="a-label">0%</div>
+      <div class="chi-label">0%</div>
       <chi-progress value="0"></chi-progress>
       <!-- 50% -->
-      <div class="a-label">50%</div>
+      <div class="chi-label">50%</div>
       <chi-progress value="50"></chi-progress>
       <!-- 100% -->
-      <div class="a-label">100%</div>
+      <div class="chi-label">100%</div>
       <chi-progress value="100"></chi-progress>
-  .a-tabs-panel#html-base
-    .a-tab__description
+  .chi-tabs-panel#html-base
+    .chi-tab__description
       | To render a progress element, use the <code>progress</code> HTML5 tag.
       | Set the value attribute to the amount of work complete. The default color is green.
     :code(lang="html")
       <!-- 0% -->
-      <div class="a-label">0%</div>
+      <div class="chi-label">0%</div>
       <progress value="0" max="100" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></progress>
       <!-- 50% -->
-      <div class="a-label">50%</div>
+      <div class="chi-label">50%</div>
       <progress value="50" max="100" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></progress>
       <!-- 100% -->
-      <div class="a-label">100%</div>
+      <div class="chi-label">100%</div>
       <progress value="100" max="100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></progress>
 
 h3 States
 .example.-mb--3
   .-p--3
-    .a-label Danger
+    .chi-label Danger
     chi-progress(value='75', state='danger')
-    .a-label Info
+    .chi-label Info
     chi-progress(value='75', state='info')
-    .a-label Warning
+    .chi-label Warning
     chi-progress(value='75', state='warning')
-    .a-label Success
+    .chi-label Success
     chi-progress(value='75', state='success')
   .example-tabs.-pl--2
-    ul.a-tabs#examples-states
+    ul.chi-tabs#examples-states
       li.-active
         a(href=`#webcomponent-states`) Web component
       li
         a(href=`#html-states`) HTML
-  .a-tabs-panel.-active#webcomponent-states
-    .a-tab__description
+  .chi-tabs-panel.-active#webcomponent-states
+    .chi-tab__description
       | To indicate a progress state, set the attribute <code>state</code> value to <code>info</code>, <code>warning</code>, <code>danger</code>, or <code>success</code>.
     :code(lang="html")
       <!-- Danger -->
-      <div class="a-label">Danger</div>
+      <div class="chi-label">Danger</div>
       <chi-progress value="75" state="danger"></chi-progress>
       <!-- Info -->
-      <div class="a-label">Info</div>
+      <div class="chi-label">Info</div>
       <chi-progress value="75" state="info"></chi-progress>
       <!-- Warning -->
-      <div class="a-label">Warning</div>
+      <div class="chi-label">Warning</div>
       <chi-progress value="75" state="warning"></chi-progress>
       <!-- Success -->
-      <div class="a-label">Success</div>
+      <div class="chi-label">Success</div>
       <chi-progress value="75" state="success"></chi-progress>
-  .a-tabs-panel#html-states
-    .a-tab__description
+  .chi-tabs-panel#html-states
+    .chi-tab__description
       | To indicate a progress state, use the class <code>-info</code>, <code>-warning</code>, <code>-danger</code>, or <code>-success</code>.
     :code(lang="html")
       <!-- Danger -->
-      <div class="a-label">Danger</div>
+      <div class="chi-label">Danger</div>
       <progress class="-danger" value="75" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>
       <!-- Info -->
-      <div class="a-label">Info</div>
+      <div class="chi-label">Info</div>
       <progress class="-info" value="75" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>
       <!-- Warning -->
-      <div class="a-label">Warning</div>
+      <div class="chi-label">Warning</div>
       <progress class="-warning" value="75" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>
       <!-- Success -->
-      <div class="a-label">Success</div>
+      <div class="chi-label">Success</div>
       <progress class="-success" value="75" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>
 
 script.

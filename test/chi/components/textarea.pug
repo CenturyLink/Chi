@@ -4,7 +4,7 @@ title: Textarea
 
 each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
   div(class=`test-${size}`)
-    span.a-h2= `Textarea / ${size}`
+    span.chi-h2= `Textarea / ${size}`
     table(cellpadding="0", cellspacing="0", width="1200px")
       each state in ['initial', 'hover', 'focus', 'disabled']
         tr
@@ -14,22 +14,22 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             td(style='vertical-align: bottom')
               .-m--1
                 if state == 'disabled'
-                  textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                  textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                 else
-                  textarea(class=`a-input -${style} -${state} -${size}`) Value
+                  textarea(class=`chi-input -${style} -${state} -${size}`) Value
             td(style='vertical-align: bottom')
               .-m--1
                 if state == 'disabled'
                   .m-form__item
-                    label.a-label(class=`-${size}` for='example') Label
-                    textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                    label.chi-label(class=`-${size}` for='example') Label
+                    textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                 else
                   .m-form__item
-                    label.a-label(class=`-${size}` for='example') Label
-                    textarea(class=`a-input -${style} -${state} -${size}`) Value
+                    label.chi-label(class=`-${size}` for='example') Label
+                    textarea(class=`chi-input -${style} -${state} -${size}`) Value
 
   div(class=`test-${size}-icon-left`)
-    span.a-h2= `Textarea / ${size} / icon left`
+    span.chi-h2= `Textarea / ${size} / icon left`
     table(cellpadding="0", cellspacing="0", width="1200px")
       each state in ['initial', 'hover', 'focus', 'disabled']
         tr
@@ -40,27 +40,27 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
               .-m--1
                 .m-input__wrapper.-icon--left
                   if state == 'disabled'
-                    textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                    textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                   else
-                    textarea(class=`a-input -${style} -${state} -${size}`) Value
-                  .a-icon
+                    textarea(class=`chi-input -${style} -${state} -${size}`) Value
+                  .chi-icon
                     svg
                       use(xlink:href='#icon-atom')
             td(style='vertical-align: bottom')
               .-m--1
                 .m-form__item
-                  label.a-label(class=`-${size}` for='example') Label
+                  label.chi-label(class=`-${size}` for='example') Label
                   .m-input__wrapper.-icon--left
                     if state == 'disabled'
-                      textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                      textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                     else
-                      textarea(class=`a-input -${style} -${state} -${size}`) Value
-                    .a-icon
+                      textarea(class=`chi-input -${style} -${state} -${size}`) Value
+                    .chi-icon
                       svg
                         use(xlink:href='#icon-atom')
 
   div(class=`test-${size}-icon-right`)
-    span.a-h2= `Textarea / ${size} / icon right`
+    span.chi-h2= `Textarea / ${size} / icon right`
     table(cellpadding="0", cellspacing="0", width="1200px")
       each state in ['initial', 'hover', 'focus', 'disabled']
         tr
@@ -71,53 +71,53 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
               .-m--1
                 .m-input__wrapper.-icon--right
                   if state == 'disabled'
-                    textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                    textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                   else
-                    textarea(class=`a-input -${style} -${state} -${size}`) Value
+                    textarea(class=`chi-input -${style} -${state} -${size}`) Value
                   if style == 'success'
-                    .a-icon.-text--success
+                    .chi-icon.-text--success
                       svg
                         use(xlink:href='#icon-check')
                   else if style == 'warning'
-                    .a-icon.-text--warning
+                    .chi-icon.-text--warning
                       svg
                         use(xlink:href='#icon-warning')
                   else if style == 'danger'
-                    .a-icon.-text--danger
+                    .chi-icon.-text--danger
                       svg
                         use(xlink:href='#icon-circle-warning')
                   else
-                    .a-icon
+                    .chi-icon
                       svg
                         use(xlink:href='#icon-circle-info-outline')
             td(style='vertical-align: bottom')
               .-m--1
                 .m-form__item
-                  label.a-label(class=`-${size}` for='example') Label
+                  label.chi-label(class=`-${size}` for='example') Label
                   .m-input__wrapper.-icon--right
                     if state == 'disabled'
-                      textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                      textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                     else
-                      textarea(class=`a-input -${style} -${state} -${size}`) Value
+                      textarea(class=`chi-input -${style} -${state} -${size}`) Value
                     if style == 'success'
-                      .a-icon.-text--success
+                      .chi-icon.-text--success
                         svg
                           use(xlink:href='#icon-check')
                     else if style == 'warning'
-                      .a-icon.-text--warning
+                      .chi-icon.-text--warning
                         svg
                           use(xlink:href='#icon-warning')
                     else if style == 'danger'
-                      .a-icon.-text--danger
+                      .chi-icon.-text--danger
                         svg
                           use(xlink:href='#icon-circle-warning')
                     else
-                      .a-icon
+                      .chi-icon
                         svg
                           use(xlink:href='#icon-circle-info-outline')
 
   div(class=`test-${size}-icon-left-right`)
-    span.a-h2= `Textarea / ${size} / icon left / icon right`
+    span.chi-h2= `Textarea / ${size} / icon left / icon right`
     table(cellpadding="0", cellspacing="0", width="1200px")
       each state in ['initial', 'hover', 'focus', 'disabled']
         tr
@@ -128,53 +128,53 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
               .-m--1
                 .m-input__wrapper.-icon--left.-icon--right
                   if state == 'disabled'
-                    textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                    textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                   else
-                    textarea(class=`a-input -${style} -${state} -${size}`) Value
-                  .a-icon
+                    textarea(class=`chi-input -${style} -${state} -${size}`) Value
+                  .chi-icon
                     svg
                       use(xlink:href='#icon-atom')
                   if style == 'success'
-                    .a-icon.-text--success
+                    .chi-icon.-text--success
                       svg
                         use(xlink:href='#icon-check')
                   else if style == 'warning'
-                    .a-icon.-text--warning
+                    .chi-icon.-text--warning
                       svg
                         use(xlink:href='#icon-warning')
                   else if style == 'danger'
-                    .a-icon.-text--danger
+                    .chi-icon.-text--danger
                       svg
                         use(xlink:href='#icon-circle-warning')
                   else
-                    .a-icon
+                    .chi-icon
                       svg
                         use(xlink:href='#icon-circle-info-outline')
             td(style='vertical-align: bottom')
               .-m--1
                 .m-form__item
-                  label.a-label(class=`-${size}` for='example') Label
+                  label.chi-label(class=`-${size}` for='example') Label
                   .m-input__wrapper.-icon--left.-icon--right
                     if state == 'disabled'
-                      textarea(class=`a-input -${style} -${state} -${size}`, disabled) Value
+                      textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                     else
-                      textarea(class=`a-input -${style} -${state} -${size}`) Value
-                    .a-icon
+                      textarea(class=`chi-input -${style} -${state} -${size}`) Value
+                    .chi-icon
                       svg
                         use(xlink:href='#icon-atom')
                     if style == 'success'
-                      .a-icon.-text--success
+                      .chi-icon.-text--success
                         svg
                           use(xlink:href='#icon-check')
                     else if style == 'warning'
-                      .a-icon.-text--warning
+                      .chi-icon.-text--warning
                         svg
                           use(xlink:href='#icon-warning')
                     else if style == 'danger'
-                      .a-icon.-text--danger
+                      .chi-icon.-text--danger
                         svg
                           use(xlink:href='#icon-circle-warning')
                     else
-                      .a-icon
+                      .chi-icon
                         svg
                           use(xlink:href='#icon-circle-info-outline')

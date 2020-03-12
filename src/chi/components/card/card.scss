@@ -1,7 +1,7 @@
 @import '_mixins';
 @import '_variables';
 
-.a-card {
+.chi-card {
   background-color: set-color(white);
   border: 0.0625rem solid rgba(set-color(black), 0.12);
   display: flex;
@@ -19,14 +19,14 @@
     line-height: $line-height-small;
     padding: 1rem;
 
-    .a-card__title {
+    .chi-card__title {
       font-size: $text-large;
       font-weight: 600;
       line-height: $line-height-large;
       margin: 0 0 0.5rem 0;
     }
 
-    .a-card__icon {
+    .chi-card__icon {
       color: $grey-color;
     }
   }
@@ -76,7 +76,7 @@
       padding: 0.5rem 1rem;
     }
 
-    .a-card__title {
+    .chi-card__title {
       font-size: $text-large;
       font-weight: 600;
       line-height: $line-height-large;
@@ -138,12 +138,12 @@
     border: 0.0625rem solid $focus-color;
     box-shadow: 0 0 0 0.0625rem $focus-color;
 
-    .a-card__title {
+    .chi-card__title {
       color: $primary-color !important;
     }
 
-    .a-icon {
-      &.a-card__icon {
+    .chi-icon {
+      &.chi-card__icon {
         color: $primary-color;
       }
     }
@@ -158,13 +158,13 @@
     background-color: transparent;
     border: dashed rgba(set-color(black), 0.12);
 
-    & .a-card__content {
+    & .chi-card__content {
       align-items: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
 
-      & .a-icon {
+      & .chi-icon {
         color: $muted-color;
         margin: 0.5rem 0;
       }
@@ -176,13 +176,13 @@
     border: 0;
     border-radius: 0;
 
-    .a-card__header {
+    .chi-card__header {
       align-items: center;
       background-color: set-color(grey, 30);
       box-shadow: none;
     }
 
-    .a-card__tabs {
+    .chi-card__tabs {
       background-color: set-color(grey, 30);
     }
   }

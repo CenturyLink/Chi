@@ -7,12 +7,12 @@ mixin str(cid, name, id, date, checked)
     '-row--info': checked
   })
     td.-lh--1
-      input.a-checkbox__input(
+      input.chi-checkbox__input(
         type="checkbox"
         id=cid
         checked=checked
       )
-      label.a-checkbox__label(for=cid, style="margin-right: 0")
+      label.chi-checkbox__label(for=cid, style="margin-right: 0")
     td= name
     td= id
     td= date
@@ -24,7 +24,7 @@ mixin tr(name, id, date)
     td= date
 
 mixin table-fix-header(row, column)
-  section.a-table(style="width: 640px")&attributes(attributes)
+  section.chi-table(style="width: 640px")&attributes(attributes)
     div
       table(cellpadding="0", cellspacing="0")
         thead
@@ -58,7 +58,7 @@ mixin table-fix-header(row, column)
             +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
 
 mixin table(row, column, selectable)
-  table.a-table&attributes(attributes)
+  table.chi-table&attributes(attributes)
     thead
       if !selectable
         if row != undefined
@@ -101,8 +101,8 @@ mixin table(row, column, selectable)
             if column == 'ascending'
               th
                 div.-lh--1
-                  input.a-checkbox__input(type="checkbox", id=`chk-1`)
-                  label.a-checkbox__label(for=`chk-1`, style="margin-right: 0")
+                  input.chi-checkbox__input(type="checkbox", id=`chk-1`)
+                  label.chi-checkbox__label(for=`chk-1`, style="margin-right: 0")
               th(class=(`-sorted -${column}`))
                 div name
               th ID
@@ -110,8 +110,8 @@ mixin table(row, column, selectable)
             else if column == 'descending'
               th
                 div.-lh--1
-                  input.a-checkbox__input(type="checkbox", id=`chk-1`)
-                  label.a-checkbox__label(for=`chk-1`, style="margin-right: 0")
+                  input.chi-checkbox__input(type="checkbox", id=`chk-1`)
+                  label.chi-checkbox__label(for=`chk-1`, style="margin-right: 0")
               th(class=(`-sorted -${column}`))
                 div name
               th ID
@@ -119,8 +119,8 @@ mixin table(row, column, selectable)
           else
             th
               div.-lh--1
-                input.a-checkbox__input(type="checkbox", id=`chk-1`)
-                label.a-checkbox__label(for=`chk-1`, style="margin-right: 0")
+                input.chi-checkbox__input(type="checkbox", id=`chk-1`)
+                label.chi-checkbox__label(for=`chk-1`, style="margin-right: 0")
             th name
             th ID
             th last login
@@ -147,13 +147,13 @@ mixin table(row, column, selectable)
         +str(`chk-1-02`, 'Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
         +str(`chk-1-03`, 'Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
 
-.a-grid
-  .a-col.-w--6
+.chi-grid
+  .chi-col.-w--6
     h2 Without section container
     each tablestyle in ['default', 'striped']
       each borderstyle in ['default', 'bordered', 'borderless']
         div(class=`test-${tablestyle}-${borderstyle}`)
-          span.a-h2
+          span.chi-h2
             | table
             if tablestyle != 'default'
               = ` / ${tablestyle}`
@@ -166,28 +166,28 @@ mixin table(row, column, selectable)
 
     each rowstyle in ['disabled', 'row--success', 'row--warning', 'row--danger', 'row--info']
       div(class=`test-${rowstyle}`)
-        span.a-h2= `table / ${rowstyle}`
+        span.chi-h2= `table / ${rowstyle}`
         +table(rowstyle)
 
     each rowsize in ['xs', 'sm', 'md', 'lg', 'xl']
       div(class=`test-${rowsize}`)
-        span.a-h2= `table / ${rowsize}`
+        span.chi-h2= `table / ${rowsize}`
         +table(rowsize)
 
     div(class=`test-hover`)
-        span.a-h2= `table / hover`
+        span.chi-h2= `table / hover`
         +table('hover').-hover
 
     each columnstyle in ['ascending', 'descending']
       div(class=`test-${columnstyle}`)
-        span.a-h2= `table / column sort / ${columnstyle}`
+        span.chi-h2= `table / column sort / ${columnstyle}`
         +table(undefined, columnstyle)
 
     div(class=`test-selectable`)
-      span.a-h2
+      span.chi-h2
         | table
         = ' / selectable'
-      section.a-table(
+      section.chi-table(
         style="width: 640px"
       )
         div
@@ -196,8 +196,8 @@ mixin table(row, column, selectable)
               tr
                 th(width="48px")
                   div.-lh--1
-                    input.a-checkbox__input(type="checkbox", id=`chk-${index}`, style="margin-right: 0")
-                    label.a-checkbox__label(for=`chk-${index}`)
+                    input.chi-checkbox__input(type="checkbox", id=`chk-${index}`, style="margin-right: 0")
+                    label.chi-checkbox__label(for=`chk-${index}`)
                 th.-sorted.-descending
                   div name
                 th
@@ -209,10 +209,10 @@ mixin table(row, column, selectable)
               +str(`chk-${index}-02`, 'Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
               +str(`chk-${index}-03`, 'Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
     div(class=`test-scrollable`)
-      span.a-h2
+      span.chi-h2
         | table
         = ' / scrollable'
-      section.a-table.-fixed--header(style="height: 150px")
+      section.chi-table.-fixed--header(style="height: 150px")
         div
           table
             thead
@@ -228,10 +228,10 @@ mixin table(row, column, selectable)
               +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
               +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
     div(class=`test-portal`)
-      span.a-h2
+      span.chi-h2
         | table
         = ' / Portal styled'
-      table.a-table.-portal
+      table.chi-table.-portal
         thead
           tr
             th
@@ -257,12 +257,12 @@ mixin table(row, column, selectable)
             td name-3
             td Nov 5, 2020 10:15 AM
 
-  .a-col.-w--6
+  .chi-col.-w--6
     h2 With section container
     each tablestyle in ['default', 'striped']
       each borderstyle in ['default', 'bordered', 'borderless']
         div(class=`test-section-${tablestyle}-${borderstyle}`)
-          span.a-h2
+          span.chi-h2
             | table
             if tablestyle != 'default'
               = ` / ${tablestyle}`
@@ -276,28 +276,28 @@ mixin table(row, column, selectable)
 
     each rowstyle in ['disabled', 'row--success', 'row--warning', 'row--danger', 'row--info']
       div(class=`test-section-${rowstyle}`)
-        span.a-h2= `table / ${rowstyle}`
+        span.chi-h2= `table / ${rowstyle}`
         +table-fix-header(rowstyle)
 
     each rowsize in ['xs', 'sm', 'md', 'lg', 'xl']
       div(class=`test-section-${rowsize}`)
-        span.a-h2= `table / ${rowsize}`
+        span.chi-h2= `table / ${rowsize}`
         +table(rowsize)
 
     div(class=`test-section-hover`)
-      span.a-h2= `table / hover`
+      span.chi-h2= `table / hover`
       +table-fix-header('hover').-hover
 
     each columnstyle in ['ascending', 'descending']
       div(class=`test-section-${columnstyle}`)
-        span.a-h2= `table / column sort / ${columnstyle}`
+        span.chi-h2= `table / column sort / ${columnstyle}`
         +table-fix-header(undefined, columnstyle)
 
     div(class=`test-section-selectable`)
-      span.a-h2
+      span.chi-h2
         | table
         = ' / selectable'
-      section.a-table(
+      section.chi-table(
       class=
       style="width: 640px"
       )
@@ -307,8 +307,8 @@ mixin table(row, column, selectable)
               tr
                 th(width="48px")
                   div.-lh--1
-                    input.a-checkbox__input(type="checkbox", id=`chk-${index}-a`)
-                    label.a-checkbox__label(for=`chk-${index}-a`, style="margin-right: 0")
+                    input.chi-checkbox__input(type="checkbox", id=`chk-${index}-a`)
+                    label.chi-checkbox__label(for=`chk-${index}-a`, style="margin-right: 0")
                 th.-sorted.-descending
                   div name
                 th
@@ -321,10 +321,10 @@ mixin table(row, column, selectable)
               +str(`chk-${index}-03-3`, 'Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
 
     div(class=`test-section-scrollable`)
-      span.a-h2
+      span.chi-h2
         | table
         = ' / scrollable'
-      section.a-table.-fixed--header(style="height: 150px")
+      section.chi-table.-fixed--header(style="height: 150px")
         div
           table
             thead

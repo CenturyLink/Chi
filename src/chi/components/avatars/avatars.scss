@@ -30,7 +30,7 @@ $avatar-colors: (grey,
   primary);
 $avatar-default-size: 'md';
 
-.a-avatar {
+.chi-avatar {
 
   background-color: set-color(grey, 20);
   border-radius: 50%;
@@ -52,13 +52,13 @@ $avatar-default-size: 'md';
   }
 
   & > i,
-  &.a-icon > svg {
+  &.chi-icon > svg {
     height: 50%;
     margin: 25%;
     width: 50%;
   }
 
-  &.a-icon {
+  &.chi-icon {
     font-size: map-get($avatar-sizes, $avatar-default-size) / 2;
     height: map-get($avatar-sizes, $avatar-default-size);
     line-height: map-get($avatar-sizes, $avatar-default-size);
@@ -73,7 +73,7 @@ $avatar-default-size: 'md';
       width: map-get($avatar-sizes, $type);
 
       & > i {
-        &.a-icon {
+        &.chi-icon {
           font-size: map-get($avatar-sizes, $type) / 2;
         }
       }
@@ -131,7 +131,7 @@ $avatar-default-size: 'md';
   align-items: center;
   display: flex;
 
-  .a-avatar {
+  .chi-avatar {
     margin-right: 0.75rem;
   }
 }

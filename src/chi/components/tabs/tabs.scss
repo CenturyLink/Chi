@@ -6,7 +6,7 @@
   flex-direction: column;
   line-height: $line-height-smaller;
 
-  .a-tabs__subtabs {
+  .chi-tabs__subtabs {
     list-style: none;
     padding: 0;
 
@@ -40,7 +40,7 @@
         & > a {
           position: relative;
 
-          & > .a-icon {
+          & > .chi-icon {
             color: $brand-color;
             left: 1.5rem;
           }
@@ -51,13 +51,13 @@
         padding-left: 3.5rem;
         position: relative;
 
-        & > .a-icon {
+        & > .chi-icon {
           left: 1.5rem;
           position: absolute;
         }
       }
 
-      .a-tabs__subtabs {
+      .chi-tabs__subtabs {
         & > li {
           & > a {
             padding-left: 4.5rem;
@@ -68,7 +68,7 @@
   }
 
   & > li {
-    &.a-sliding-border {
+    &.chi-sliding-border {
       left: 0;
       position: absolute;
       width: 0.125rem;
@@ -79,7 +79,7 @@
         background-color: set-color(grey, 20);
         color: $text-color;
 
-        & > .a-icon {
+        & > .chi-icon {
           color: $text-color;
         }
       }
@@ -103,7 +103,7 @@
         box-shadow: inset 0.125rem 0 0 $primary-color;
       }
 
-      & .a-tabs__subtabs > li {
+      & .chi-tabs__subtabs > li {
         &.-active:not(.-hasActive) > a {
           box-shadow: inset 0.125rem 0 0 $primary-color;
         }
@@ -120,7 +120,7 @@
       }
     }
 
-    .a-tabs__subtabs {
+    .chi-tabs__subtabs {
       & > li {
         & > a {
           padding: 0.25rem 0 0.25rem 2.5rem;
@@ -137,7 +137,7 @@
         padding-bottom: 0.75rem;
         padding-top: 0.75rem;
 
-        & > .a-icon {
+        & > .chi-icon {
           margin-top: 0.25rem;
         }
       }
@@ -213,7 +213,7 @@
   &.-icons {
     & > li {
       &.-active {
-        .a-icon {
+        .chi-icon {
           color: $brand-color;
         }
       }
@@ -222,7 +222,7 @@
         padding-left: 1.5rem;
         position: relative;
 
-        .a-icon {
+        .chi-icon {
           left: 0;
           position: absolute;
         }
@@ -244,7 +244,7 @@
       padding: 1.25rem 0;
     }
 
-    &.a-sliding-border {
+    &.chi-sliding-border {
       bottom: 0;
       height: 0.125rem;
       margin-left: 0;
@@ -293,7 +293,7 @@
   &.-large { //Legacy code: -large to be removed.
     height: 4rem;
 
-    & > li:not(.a-sliding-border) {
+    & > li:not(.chi-sliding-border) {
       &:not(:first-child) {
         margin-left: 2rem;
       }
@@ -309,7 +309,7 @@
   }
 }
 
-.a-tabs {
+.chi-tabs {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -335,7 +335,7 @@
       }
     }
 
-    &.a-sliding-border {
+    &.chi-sliding-border {
       background-color: $brand-color;
       display: none;
       position: absolute;
@@ -343,7 +343,7 @@
   }
 
   &.-sliding > li {
-    &.a-sliding-border {
+    &.chi-sliding-border {
       display: block;
       transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
     }
@@ -372,7 +372,7 @@
         }
       }
 
-      &.a-sliding-border {
+      &.chi-sliding-border {
         background-color: $secondary-color;
       }
     }
@@ -381,7 +381,7 @@
       &.-active > a {
         border-bottom: 0.125rem solid $secondary-color;
 
-        .a-icon {
+        .chi-icon {
           color: $secondary-color;
         }
       }
@@ -397,7 +397,7 @@
       // sass-lint:disable-block force-element-nesting
       &:not(.-sliding) > li.-active:not(.-hasActive) > a,
       &:not(.-sliding).-animated > li.-active:not(.-hasActive) > a,
-      &:not(.-sliding).-animated .a-tabs__subtabs > li.-active:not(.-hasActive) > a {
+      &:not(.-sliding).-animated .chi-tabs__subtabs > li.-active:not(.-hasActive) > a {
         box-shadow: inset 0.125rem 0 0 $secondary-color;
       }
       // sass-lint:disable-block force-element-nesting
@@ -411,7 +411,7 @@
       &.-icons {
         & > li {
           &.-active > a {
-            .a-icon {
+            .chi-icon {
               color: $secondary-color;
             }
           }
@@ -428,7 +428,7 @@
         }
       }
 
-      .a-tabs__subtabs {
+      .chi-tabs__subtabs {
         & > li {
           &.-active {
             & > a {
@@ -469,6 +469,6 @@
   }
 }
 
-.a-tabs-panel:not(.-active) {
+.chi-tabs-panel:not(.-active) {
   display: none;
 }

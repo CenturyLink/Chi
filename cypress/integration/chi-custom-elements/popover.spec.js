@@ -11,7 +11,7 @@ describe('Popover', function() {
     cy.get('[data-cy="test-base"]')
       .find('chi-popover')
       .should('have.class', 'hydrated')
-      .find('.m-popover__arrow')
+      .find('.chi-popover__arrow')
       .should('not.exist');
   });
 
@@ -28,11 +28,11 @@ describe('Popover', function() {
         .should('match', `[aria-hidden="false"]`)
         .should('have.class', 'hydrated')
         .children().first()
-        .should('match', '.m-popover.-animated.-active')
-        .should('have.class', `m-popover--${position}`)
+        .should('match', '.chi-popover.-animated.-active')
+        .should('have.class', `chi-popover--${position}`)
         .should('be.visible')
         .children().last()
-        .should('match', 'div.m-popover__arrow');
+        .should('match', 'div.chi-popover__arrow');
     });
   });
 
@@ -49,11 +49,11 @@ describe('Popover', function() {
         .should('match', `[aria-hidden="false"]`)
         .should('have.class', 'hydrated')
         .children().first()
-        .should('match', '.m-popover.-animated.-active')
-        .should('have.class', `m-popover--${position}`)
+        .should('match', '.chi-popover.-animated.-active')
+        .should('have.class', `chi-popover--${position}`)
         .should('be.visible')
         .children().last()
-        .should('match', 'div.m-popover__arrow');
+        .should('match', 'div.chi-popover__arrow');
     });
   });
 

@@ -252,11 +252,11 @@ export class Date {
 
     return (
       <div
-        class={`m-datepicker ${this._vm.weekStartClass} ${
+        class={`chi-datepicker ${this._vm.weekStartClass} ${
           this._vm.monthStartClass
         }`}
       >
-        <div class="m-datepicker__month-row">
+        <div class="chi-datepicker__month-row">
           <div
             class={`prev ${
               this._vm.min && endOfLastMonth.isBefore(this._vm.min)
@@ -267,7 +267,7 @@ export class Date {
           >
             <chi-icon icon="chevron-left" size="sm" />
           </div>
-          <div class="m-datepicker__month">
+          <div class="chi-datepicker__month">
             {`${this.viewMonth.format('MMMM')}
               ${this.viewMonth.format('YYYY')}`}
           </div>
@@ -282,17 +282,17 @@ export class Date {
             <chi-icon icon="chevron-right" size="sm" />
           </div>
         </div>
-        <div class="m-datepicker__day-names">
+        <div class="chi-datepicker__day-names">
           {this._vm.weekDays.map(weekDay => (
-            <div class="m-datepicker__week-day">
+            <div class="chi-datepicker__week-day">
               {weekDay.format('dddd').substr(0, 1)}
             </div>
           ))}
         </div>
-        <div class="m-datepicker__days">
+        <div class="chi-datepicker__days">
           {this._vm.monthDays.map(day => (
             <div
-              class={`m-datepicker__day
+              class={`chi-datepicker__day
               ${
                 (this._vm.min && day.isBefore(this._vm.min)) ||
                 (this._vm.max && day.isAfter(this._vm.max)) ||

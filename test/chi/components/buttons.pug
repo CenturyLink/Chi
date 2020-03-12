@@ -8,7 +8,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
       [`test-${type}`]: size === 'default',
       [`test-${type}-${size}`]: size !== 'default'
     })
-      span.a-h2= `Button / ${type} / ${size}`
+      span.chi-h2= `Button / ${type} / ${size}`
       table(cellpadding="0", cellspacing="0")
         each state in ['initial', 'hover', 'active', 'focus', 'disabled']
           tr
@@ -18,7 +18,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
               if style === 'light'
                 td.-bg--black
                   .-mr--2
-                    input.a-btn.-m--1.-mx--2(
+                    input.chi-btn.-m--1.-mx--2(
                     type="button"
                     class={
                       [`-${type}`]: type !== 'solid',
@@ -29,7 +29,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     value="Button"
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
-                    a.a-btn.-icon.-m--1(
+                    a.chi-btn.-icon.-m--1(
                     href="#"
                     class={
                       [`-${type}`]: type !== 'solid',
@@ -40,11 +40,11 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     disabled=state === 'disabled' ? 'disabled' : false
                     aria-label='Button action'
                     )
-                      .a-btn__content
-                        .a-icon
+                      .chi-btn__content
+                        .chi-icon
                           svg
                             use(xlink:href='#icon-atom')
-                    button.a-btn.-m--1(
+                    button.chi-btn.-m--1(
                     class={
                       [`-${type}`]: type !== 'solid',
                       [`-${style}`]: style !== 'default',
@@ -53,15 +53,15 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     }
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
-                      .a-btn__content
-                        .a-icon
+                      .chi-btn__content
+                        .chi-icon
                           svg
                             use(xlink:href='#icon-atom')
                         span Button
               else
                 td
                   .-mr--2
-                    input.a-btn.-m--1.-mx--2(
+                    input.chi-btn.-m--1.-mx--2(
                     type="button"
                     class={
                       [`-${type}`]: type !== 'solid',
@@ -72,7 +72,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     value="Button"
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
-                    a.a-btn.-icon.-m--1(
+                    a.chi-btn.-icon.-m--1(
                     href="#"
                     class={
                       [`-${type}`]: type !== 'solid',
@@ -83,11 +83,11 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     disabled=state === 'disabled' ? 'disabled' : false
                     aria-label='Button action'
                     )
-                      .a-btn__content
-                        .a-icon
+                      .chi-btn__content
+                        .chi-icon
                           svg
                             use(xlink:href='#icon-atom')
-                    button.a-btn.-m--1(
+                    button.chi-btn.-m--1(
                     class={
                       [`-${type}`]: type !== 'solid',
                       [`-${style}`]: style !== 'default',
@@ -96,8 +96,8 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                     }
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
-                      .a-btn__content
-                        .a-icon
+                      .chi-btn__content
+                        .chi-icon
                           svg
                             use(xlink:href='#icon-atom')
                         span Button
@@ -113,16 +113,16 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
               if style === 'light'
                 td.-bg--black
-                  button(type="button", class=`a-btn -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
-                    .a-btn__content
-                      .a-icon
+                  button(type="button", class=`chi-btn -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
+                    .chi-btn__content
+                      .chi-icon
                         svg
                           use(xlink:href='#icon-atom')
               else
                 td
-                  button(type="button", class=`a-btn -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
-                    .a-btn__content
-                      .a-icon
+                  button(type="button", class=`chi-btn -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
+                    .chi-btn__content
+                      .chi-icon
                         svg
                           use(xlink:href='#icon-atom')
 
@@ -131,12 +131,12 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
     [`test-${type}`]: size === 'default',
     [`test-${type}-${size}`]: size !== 'default'
   })
-    span.a-h2= `Button Close Icon / ${size}`
+    span.chi-h2= `Button Close Icon / ${size}`
     table(cellpadding="0", cellspacing="0")
       tr
         td
-          button(class=`a-btn -icon -close -${size}`, aria-label='Close')
-            .a-btn__content
-              .a-icon
+          button(class=`chi-btn -icon -close -${size}`, aria-label='Close')
+            .chi-btn__content
+              .chi-icon
                 svg
                   use(xlink:href='#icon-x')

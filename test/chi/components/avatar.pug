@@ -8,7 +8,7 @@ title: Avatar
 
 each type in types
   div(class=`test-${type}`)
-    span.a-h2= `Avatar / ${type}`
+    span.chi-h2= `Avatar / ${type}`
     table(cellpadding="0", cellspacing="0")
       thead
         tr
@@ -26,7 +26,7 @@ each type in types
                     if type === 'img'
                       div(
                         class={
-                          "a-avatar": true,
+                          "chi-avatar": true,
                           [`-${color}`]: type !== 'default',
                           [`-${size}`]: style !== 'default',
                           [`-transparent`]: transparent
@@ -36,7 +36,7 @@ each type in types
                     else if type === 'icon'
                       div(
                         class={
-                          "a-avatar a-icon": true,
+                          "chi-avatar chi-icon": true,
                           [`-${color}`]: type !== 'default',
                           [`-${size}`]: style !== 'default',
                           [`-transparent`]: transparent
@@ -47,17 +47,17 @@ each type in types
                     else if type === 'icon-web-font'
                       div(
                         class={
-                          "a-avatar": true,
+                          "chi-avatar": true,
                           [`-${color}`]: type !== 'default',
                           [`-${size}`]: style !== 'default',
                           [`-transparent`]: transparent
                         }
                       )
-                        i(class="a-icon icon-user")
+                        i(class="chi-icon icon-user")
                     else if type === 'letter'
                       div(
                         class={
-                          "a-avatar": true,
+                          "chi-avatar": true,
                           [`-${color}`]: type !== 'default',
                           [`-${size}`]: style !== 'default',
                           [`-transparent`]: transparent
@@ -67,7 +67,7 @@ each type in types
                     else if type === 'double-letter'
                       div(
                         class={
-                          "a-avatar": true,
+                          "chi-avatar": true,
                           [`-${color}`]: type !== 'default',
                           [`-${size}`]: style !== 'default',
                           [`-transparent`]: transparent

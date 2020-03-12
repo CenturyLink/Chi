@@ -43,17 +43,17 @@ describe('Date picker', function() {
     cy.get('[data-cy="test-active"]')
       .find('chi-date')
       .should('have.class', 'hydrated')
-      .find('.m-datepicker')
+      .find('.chi-datepicker')
       .should('have.class', '-month-starts-on-thu')
-      .find('.m-datepicker__month')
+      .find('.chi-datepicker__month')
       .contains(thisMonthName)
       .get('[data-cy="test-active"]')
       .find(`div.next`)
       .click()
       .get('[data-cy="test-active"]')
-      .find('.m-datepicker')
+      .find('.chi-datepicker')
       .should('have.class', '-month-starts-on-sat')
-      .find('.m-datepicker__month')
+      .find('.chi-datepicker__month')
       .contains(nextMonthName);
   });
 

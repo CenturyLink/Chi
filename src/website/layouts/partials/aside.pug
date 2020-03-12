@@ -1,13 +1,13 @@
 nav
-  ul.a-tabs.-vertical.-lg.-animated
+  ul.chi-tabs.-vertical.-lg.-animated
     each collection, key in collections
       if utils.hasActiveSections(collection)
         if utils.isCurrentCollection(collection, path)
           li.-active.-hasActive
-            .a-collection__title
+            .chi-collection__title
               =key
             if utils.hasSections(collection)
-              ul.a-tabs__subtabs
+              ul.chi-tabs__subtabs
                 each section in collection
                   if section.disabled
                     //- li
@@ -19,10 +19,10 @@ nav
                           .-sr--only component
         else
           li.-hasActive
-            .a-collection__title
+            .chi-collection__title
               =key
             if utils.hasSections(collection)
-              ul.a-tabs__subtabs
+              ul.chi-tabs__subtabs
                 each section in collection
                   if section.disabled
                     //- li
@@ -36,4 +36,4 @@ nav
         li
           a(href=`#`, disabled="disabled") #{key}
 .-m--3
-  a(class="a-btn -outline -primary", href="https://github.com/CenturyLinkCloud/ux-chi-design", rel="noopener", target="_blank") Design Kit
+  a(class="chi-btn -outline -primary", href="https://github.com/CenturyLinkCloud/ux-chi-design", rel="noopener", target="_blank") Design Kit

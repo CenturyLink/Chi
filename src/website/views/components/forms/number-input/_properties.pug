@@ -2,12 +2,12 @@ h2 Web component
 
 :stencilDoc(name='chi-number-input')
 
-.a-divider
+.chi-divider
 
 h2 JavaScript options
 p.-text This component accepts options to configure its behavior.
 
-section.a-table.a-table__options.-bordered.-my--3
+section.chi-table.chi-table__options.-bordered.-my--3
   div
     table.-text(cellpadding='0', cellspacing='0')
       thead
@@ -40,24 +40,24 @@ p.-text
 .example.-mb--3
   .-p--3
     .m-inputNumber
-      input#input-number-3.a-input(type="number", value="1", min="0", max="6", step="2", aria-label="Input label")
-      button.a-btn.-icon(aria-label='Decrease')
-        .a-btn__content
-          i.a-icon.icon-minus
-      button.a-btn.-icon(aria-label='Increase')
-        .a-btn__content
-          i.a-icon.icon-plus
+      input#input-number-3.chi-input(type="number", value="1", min="0", max="6", step="2", aria-label="Input label")
+      button.chi-btn.-icon(aria-label='Decrease')
+        .chi-btn__content
+          i.chi-icon.icon-minus
+      button.chi-btn.-icon(aria-label='Increase')
+        .chi-btn__content
+          i.chi-icon.icon-plus
   :code(lang="html")
     <div class="m-inputNumber">
-      <input id="input-number-3" class="a-input" type="number" value="1" min="0" max="6" step="2" aria-label="Input label">
-      <button class="a-btn -icon" aria-label="Decrease">
-        <div class="a-btn__content">
-          <i class="a-icon icon-minus"></i>
+      <input id="input-number-3" class="chi-input" type="number" value="1" min="0" max="6" step="2" aria-label="Input label">
+      <button class="chi-btn -icon" aria-label="Decrease">
+        <div class="chi-btn__content">
+          <i class="chi-icon icon-minus"></i>
         </div>
       </button>
-      <button class="a-btn -icon" aria-label="Increase">
-        <div class="a-btn__content">
-          <i class="a-icon icon-plus"></i>
+      <button class="chi-btn -icon" aria-label="Increase">
+        <div class="chi-btn__content">
+          <i class="chi-icon icon-plus"></i>
         </div>
       </button>
     </div>
@@ -79,7 +79,7 @@ p.-text
   inputNumberComponent.dispose();
 
 p.-text
-  span.a-badge.-dark.-sm.-mr1
+  span.chi-badge.-dark.-sm.-mr1
     span Tip
   | It is safe to call the <code>numberInput</code> method more than once, as it will return any previously created
   | number input component associated to the input.

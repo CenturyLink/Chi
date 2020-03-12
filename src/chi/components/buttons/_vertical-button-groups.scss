@@ -61,7 +61,7 @@ $sizes: (
   &.-vertical {
     flex-direction: column;
 
-    .a-btn {
+    .chi-btn {
       &,
       &.-primary,
       &.-secondary,
@@ -129,7 +129,7 @@ $sizes: (
               }
             }
 
-            & + .a-btn {
+            & + .chi-btn {
               border-top-width: 0;
               padding-top: 0.5rem;
 
@@ -152,7 +152,7 @@ $sizes: (
 
           &:hover,
           &.-hover {
-            & + .a-btn:focus,
+            & + .chi-btn:focus,
             & + .-focus {
               border-top-width: 0.0625rem;
               padding-top: 0.4375rem;
@@ -182,7 +182,7 @@ $sizes: (
           &.-hover,
           &:focus,
           &.-focus {
-            & + .a-btn {
+            & + .chi-btn {
               &:hover,
               &.-hover {
                 border-top-width: 0.0625rem;

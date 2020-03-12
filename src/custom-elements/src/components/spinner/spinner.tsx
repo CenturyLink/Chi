@@ -53,7 +53,7 @@ export class Spinner {
 
   render() {
     const spinner = (
-      <svg class={`a-spinner
+      <svg class={`chi-spinner
         ${this.color ? `-text--${this.color}` : ''}
         ${this.size ? `-${this.size}` : ''}`} viewBox="0 0 66 66"
       >
@@ -64,8 +64,8 @@ export class Spinner {
 
     if (this.backdrop || this.backdrop === '') {
       return (
-        <div class={`m-backdrop -center ${this.backdrop === 'inverse' && '-inverse'}`}>
-          <div class="m-backdrop__wrapper">
+        <div class={`chi-backdrop -center ${this.backdrop === 'inverse' && '-inverse'}`}>
+          <div class="chi-backdrop__wrapper">
             {spinner}
           </div>
         </div>

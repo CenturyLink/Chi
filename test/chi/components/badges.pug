@@ -4,11 +4,11 @@ title: Badges
 ---
 each type in ['solid', 'outline', 'flat']
   div(class=`test-${type}`)
-    span.a-h2= `Badge / ${type}`
+    span.chi-h2= `Badge / ${type}`
     div
       each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'light']
         div(
-        class="a-badge -mr--1"
+        class="chi-badge -mr--1"
         class={
           [`-${type}`]: type !== 'solid',
           [`-${style}`]: style !== 'base'
@@ -16,14 +16,14 @@ each type in ['solid', 'outline', 'flat']
         )
           span= style
         div(
-        class="a-badge -mr--1"
+        class="chi-badge -mr--1"
         class={
           [`-${type}`]: type !== 'solid',
           [`-${style}`]: style !== 'base'
         }
         )
-          .a-badge__content
-            .a-icon
+          .chi-badge__content
+            .chi-icon
               svg
                 use(xlink:href='#icon-atom')
             span= style
@@ -33,24 +33,24 @@ h2 Badge Icons
   .example.-mb--1
     each size in ['xs', 'sm', 'default']
       .p.-text--bold= size
-        .a-badge(class=`-${size} -m--1`)
-          .a-badge__content
-            .a-icon
+        .chi-badge(class=`-${size} -m--1`)
+          .chi-badge__content
+            .chi-icon
               svg
                 use(xlink:href='#icon-atom')
             span Badge
-        .a-badge(class=`-${size} -m--1`)
-          .a-badge__content
+        .chi-badge(class=`-${size} -m--1`)
+          .chi-badge__content
             span Badge
-            .a-icon
+            .chi-icon
               svg
                 use(xlink:href='#icon-atom')
-        .a-badge(class=`-${size} -m--1`)
-          .a-badge__content
-            .a-icon
+        .chi-badge(class=`-${size} -m--1`)
+          .chi-badge__content
+            .chi-icon
               svg
                 use(xlink:href='#icon-atom')
             span Badge
-            .a-icon
+            .chi-icon
               svg
                 use(xlink:href='#icon-atom')

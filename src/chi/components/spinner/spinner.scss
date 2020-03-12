@@ -13,7 +13,7 @@ $spinner-sizes: (
   xl: 6rem,
   xxl: 8rem);
 
-.a-spinner {
+.chi-spinner {
   animation: rotator 1.4s linear infinite;
   height: 1rem;
   position: relative;
@@ -39,7 +39,7 @@ $spinner-sizes: (
 
 // Legacy code start
 .a-backdrop {
-  & > .a-spinner {
+  & > .chi-spinner {
     height: 4rem;
     transform-origin: center;
     width: 4rem;
@@ -47,9 +47,9 @@ $spinner-sizes: (
 }
 // Legacy code end
 
-.m-backdrop {
+.chi-backdrop {
   &__wrapper {
-    & > .a-spinner {
+    & > .chi-spinner {
       height: 4rem;
       transform-origin: center;
       width: 4rem;

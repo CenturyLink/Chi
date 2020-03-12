@@ -6,7 +6,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 each type in ['solid', 'outline', 'flat']
   div(class=`test-${type}`)
-    span.a-h2= `Badge / ${type}`
+    span.chi-h2= `Badge / ${type}`
     div
       each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'light']
         chi-badge(class='-mr--1', variant=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-${type}-${style}` )= `${style}`

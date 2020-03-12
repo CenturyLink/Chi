@@ -7,7 +7,7 @@ $animation-duration: 0.5s;
   overflow: hidden;
 }
 
-.a-modal {
+.chi-modal {
   background-color: set-color(white);
   box-shadow: 0 0 25px 10px rgba(set-color(black), 0.15);
   max-width: 600px;
@@ -28,7 +28,7 @@ $animation-duration: 0.5s;
       box-shadow: none;
     }
 
-    .a-modal__title {
+    .chi-modal__title {
       font-size: $text-large;
       font-weight: bold;
       line-height: $line-height-large;
@@ -39,7 +39,7 @@ $animation-duration: 0.5s;
       }
     }
 
-    .a-modal__subtitle {
+    .chi-modal__subtitle {
       font-size: $text;
       font-weight: normal;
       line-height: $line-height-large;
@@ -50,7 +50,7 @@ $animation-duration: 0.5s;
       }
     }
 
-    .a-modal__back {
+    .chi-modal__back {
       & {
         align-items: center;
         background-color: transparent;
@@ -147,17 +147,17 @@ $animation-duration: 0.5s;
     background-color: set-color(grey, 20);
     box-shadow: 0 3px 6px rgba(set-color(black), 0.15);
 
-    .a-modal__header {
+    .chi-modal__header {
       background-color: set-color(grey, 80);
       box-shadow: none;
       color: set-color(white);
 
-      .a-modal__back {
+      .chi-modal__back {
         color: set-color(white);
       }
     }
 
-    .a-modal__footer {
+    .chi-modal__footer {
       box-shadow: none;
       justify-content: center;
     }

@@ -8,10 +8,10 @@ const CLASS_HAS_ACTIVE = "-hasActive";
 const CLASS_ANIMATED = "-animated";
 const CLASS_RESPONSIVE = "-responsive";
 const CLASS_VERTICAL = "-vertical";
-const COMPONENT_SELECTOR = '.a-tabs';
+const COMPONENT_SELECTOR = '.chi-tabs';
 const COMPONENT_TYPE = "tab";
-const SUBTAB_SELECTORS = 'ul.a-tabs__subtabs';
-const TABS_PANEL_CLASS = "a-tabs-panel";
+const SUBTAB_SELECTORS = 'ul.chi-tabs__subtabs';
+const TABS_PANEL_CLASS = "chi-tabs-panel";
 
 const DEFAULT_CONFIG = {
   animated: true,

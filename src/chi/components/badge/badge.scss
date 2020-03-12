@@ -3,7 +3,7 @@
 
 $badge: c-badge;
 
-.a-badge {
+.chi-badge {
   background-color: set-color(white);
   border: 0.0625rem solid set-color(grey, 30);
   box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
@@ -16,7 +16,7 @@ $badge: c-badge;
   text-align: center;
   vertical-align: middle;
 
-  .a-icon {
+  .chi-icon {
     height: 1rem;
     top: -0.07rem;
     width: 1rem;
@@ -44,7 +44,7 @@ $badge: c-badge;
     height: 1.25rem;
     line-height: $line-height-small;
 
-    .a-icon {
+    .chi-icon {
       height: 0.75rem;
       width: 0.75rem;
 
@@ -71,7 +71,7 @@ $badge: c-badge;
     line-height: $line-height-smaller;
     padding: 0 0.25rem;
 
-    .a-icon {
+    .chi-icon {
       height: 0.75rem;
       width: 0.75rem;
 
