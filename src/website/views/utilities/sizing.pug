@@ -23,7 +23,7 @@ section.chi-table.-bordered.-mt--3.-mb--3
           th
             div Value
       tbody
-        each type in ['auto', '25', '50', '75', '100']
+        each type in ['auto', '*']
           tr
             td(width='40%')
               code= '-w--' + type
@@ -31,7 +31,7 @@ section.chi-table.-bordered.-mt--3.-mb--3
               if (type == 'auto')
                 code= 'width: ' + type + ';'
               else
-                code= 'width: ' + type + '%;'
+                = 'can be incremented by 5%'
 
 h3 Target specific breakpoints
 p.-text To target a specific breakpoint, add the breakpoint abbreviation to the class.
@@ -45,12 +45,16 @@ section.chi-table.-bordered.-mt--3.-mb--3
           th
             div Value
       tbody
-        each type in ['sm', 'md', 'lg', 'xl']
-          each size in ['auto', '25', '50', '75', '100']
+        each size in ['sm', 'md', 'lg', 'xl']
+          each type in ['auto', '*']
             tr
               td.-text(width='40%')
-                code= '-w-' + type + '--' + size
-              td.-text Visible only from <code>#{type}</code>
+                code= '-w-' + size + '--' + type
+              td
+                if (type == 'auto')
+                  | Visible only from <code>#{size}</code>
+                else
+                  | Visible only from <code>#{size}</code>, can be incremented by 5%
 
 h2 Examples
 .example.-mb--3

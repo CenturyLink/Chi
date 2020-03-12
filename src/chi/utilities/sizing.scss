@@ -24,11 +24,16 @@ $max-height-dimensions: (
   400: 400px,
 );
 
-@each $dimension-key, $dimension-value in $dimensions  {
-  .-w--#{$dimension-key} {
-    width: $dimension-value;
-  }
+$width-a: 5;
 
+@while $width-a <= 100 {
+  .-w--#{$width-a} {
+    width: 1% * $width-a;
+  }
+  $width-a: $width-a + 5;
+}
+
+@each $dimension-key, $dimension-value in $dimensions  {
   .-h--#{$dimension-key} {
     height: $dimension-value;
   }
@@ -36,11 +41,16 @@ $max-height-dimensions: (
 
 @each $size in sm md lg xl {
   @include respond-to($size) {
-    @each $dimension-key, $dimension-value in $dimensions {
-      .-w-#{$size}--#{$dimension-key} {
-        width: $dimension-value;
-      }
+    $width-b: 5;
 
+    @while $width-b <= 100 {
+      .-w-#{$size}--#{$width-b} {
+        width: 1% * $width-b;
+      }
+      $width-b: $width-b + 5;
+    }
+
+    @each $dimension-key, $dimension-value in $dimensions {
       .-h-#{$size}--#{$dimension-key} {
         height: $dimension-value;
       }
