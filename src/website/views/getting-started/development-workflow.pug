@@ -1,17 +1,18 @@
+---
+title: Development workflow
+order: 3
+description: Use these guidelines to set up development environment
+---
 p.-text
   | Set up your Chi development environment with Docker. First make sure you have Docker installed, then run
   | the command:
 
 .-mb--2
   :code(lang='bash')
-    scripts/docker.sh alias
-    source ~/.bash_profile
+    $ scripts/docker.sh alias
+    $ source ~/.bash_profile
 
 p.-text Now your environment is set up. To start development run:
-
-.-mb--2
-  :code(lang='bash')
-    chi start
 
 .-mb--2
   :code(lang='bash')
@@ -25,7 +26,7 @@ p.-text
 
 h2 Testing
 
-h2 End-to-end tests
+h3 End-to-end tests
 p.-text
   | <a target="_blank" href="https://www.cypress.io" rel="noopener">Cypress</a> is used for end-to-end testing. Tests are located in the
   | <code>cypress/integration</code> folder. To make them run:
@@ -35,10 +36,8 @@ p.-text
 p.-text
   | You can run end-to-end tests interactively by launching the <code>start</code> command and opening a local version of
   | the Cypress application. Then select the ux-chi root folder as the project folder.
-:code(lang='bash')
-  $ chi start
 
-h2 Visual regression tests
+h3 Visual regression tests
 p.-text
   | Chi has visual regression tests build for each component that are implemented in
   | <a target="_blank" href="https://github.com/garris/BackstopJS" rel="noopener">BackstopJS</a>. Each Custom Element
