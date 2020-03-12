@@ -48,7 +48,7 @@ export class Alert {
   /**
    *  to make the alert dismissible.
    */
-  @Prop({ reflect: true }) dismissible = false;
+  @Prop({ reflect: true }) closable = false;
 
   /**
    *  custom event when trying to dismiss an alert.
@@ -141,7 +141,7 @@ export class Alert {
         ${this.type ? `-${this.type}` : ''}
         ${this.color ? `-${this.color}` : ''}
         ${this.center ? '-center' : ''}
-        ${this.dismissible ? '-dismiss' : ''}
+        ${this.closable ? '-close' : ''}
         ${this.size ? `-${this.size}` : ''}
         ${this.type === 'banner' && this.borderless ? `-borderless` : ''}`}
         role="alert"
@@ -152,7 +152,7 @@ export class Alert {
           <p class="chi-alert__text"><slot></slot></p>
           {chiActions}
         </div>
-        {(this.dismissible || this.type === 'toast') && <chi-button extraClass="chi-alert__dismiss-button" type="close" onChiClick={() => this._dismissAlert()} />}
+        {(this.closable || this.type === 'toast') && <chi-button extraClass="chi-alert__close-button" type="close" onChiClick={() => this._dismissAlert()} />}
       </div>
     );
   }

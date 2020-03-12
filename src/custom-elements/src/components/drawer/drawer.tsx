@@ -28,9 +28,9 @@ export class Drawer {
   @Prop({ reflect: true, mutable: true }) active: boolean;
 
   /**
-   * adds a close button
+   * To render Drawer without a close button
    */
-  @Prop({ reflect: true }) collapsible: boolean;
+  @Prop({ reflect: true }) nonClosable = false;
 
   /**
    * to remove the space for the header
@@ -231,13 +231,13 @@ export class Drawer {
         ${this._animationClasses}
       `}>
         {this.headless
-          ? this.collapsible
+          ? !this.nonClosable
             ? [
               closeButton,
               <slot></slot>
             ]
             : <slot></slot>
-          : this.collapsible
+          : !this.nonClosable
             ? [
               <div class="chi-drawer__header">
                 <span class="chi-drawer__title">{this.drawerTitle}</span>

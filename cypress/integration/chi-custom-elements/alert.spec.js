@@ -92,7 +92,7 @@ describe('Alert', () => {
 
     it('Alert banner is dismissible and renders X button', () => {
       cy.get('@alert-banner-dismissible-success-lg')
-        .should('have.class', '-dismiss')
+        .should('have.class', '-close')
         .children()
         .last()
         .should('match', 'chi-button')

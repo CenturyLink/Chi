@@ -123,7 +123,7 @@ $states: (
     }
   }
 
-  &.-dismiss {
+  &.-close {
     padding-right: 1rem;
   }
 
@@ -162,7 +162,7 @@ $states: (
   > .chi-btn,
   > chi-button .chi-btn {
     &.-close,
-    &.chi-alert__dismiss-button {
+    &.chi-alert__close-button {
       align-self: flex-start;
       margin-left: 1rem;
       padding: 0.1875rem;
@@ -195,7 +195,7 @@ $states: (
     > .chi-btn,
     > chi-button .chi-btn {
       &.-close,
-      &.chi-alert__dismiss-button {
+      &.chi-alert__close-button {
         padding: 0;
 
         .chi-icon {
@@ -243,7 +243,7 @@ $states: (
       }
     }
 
-    &.-dismiss {
+    &.-close {
       padding-right: 1rem;
     }
   }
