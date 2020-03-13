@@ -22,13 +22,13 @@ h2 Sizes
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg']
+      p.-text--bold.-mb--3= '-' + size
       .chi-price(class=`-${size}`)
         sup
           | $
         | 100
         sup
           | 00
-      p(class=`-text--bold -mb--3`)= '-' + size
   :code(lang="html")
     <div class="chi-price -sm">
       <sup>$</sup>
