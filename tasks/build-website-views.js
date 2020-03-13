@@ -84,7 +84,7 @@ function buildWebsiteViews () {
 
             return `
               <div class="chi-example -mb--4">
-                <ul class="chi-tabs -base -small -border -mb--2">
+                <ul class="chi-tabs -base -sm -border -mb--2">
                   <li class="-active"><a href="#">HTML</a></li>
                   <li><a href="#">Code</a></li>
                 </ul>

@@ -13,28 +13,6 @@
     }
   }
 
-  // Legacy code start
-  &.-small {
-    & > li {
-      & > a {
-        &.chi-dropdown__trigger::after {
-          top: 1.1rem;
-        }
-      }
-    }
-  }
-
-  &.-large {
-    & > li {
-      & > a {
-        &.chi-dropdown__trigger::after {
-          top: 1.55rem;
-        }
-      }
-    }
-  }
-  // Legacy code end
-
   &.-sm {
     & > li {
       & > a {

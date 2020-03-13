@@ -38,7 +38,6 @@ $badge: c-badge;
     top: -0.07rem;
   }
 
-  &.-small,
   &.-sm {
     font-size: $text-smaller;
     height: 1.25rem;
@@ -64,7 +63,6 @@ $badge: c-badge;
     }
   }
 
-  &.-smaller,
   &.-xs {
     font-size: $text-smallest;
     height: 1rem;

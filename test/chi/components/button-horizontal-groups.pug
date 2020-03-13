@@ -19,7 +19,7 @@ mixin button(icon, type, style, size, modifier)
     if block
       block
 
-each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
+each size in ['default', 'sm', 'md', 'lg', 'xl']
   each type in ['solid', 'outline', 'flat']
     div(class={
       [`test-${type}`]: size == 'default',

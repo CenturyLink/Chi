@@ -116,7 +116,6 @@ $states: (
 
       .chi-alert__icon,
       > chi-icon .chi-icon,
-      .a-h5, //Legacy code: to be removed.
       .chi-alert__title {
         color: map-get(map-get($states, $state), color);
       }
@@ -132,7 +131,6 @@ $states: (
     flex-direction: column;
     flex-grow: 1;
 
-    .a-h5, //Legacy code: a-h5 to be removed.
     .chi-alert__title {
       font-size: $text;
       font-weight: 600;
@@ -177,7 +175,6 @@ $states: (
     }
   }
 
-  &.-large, //Legacy code: -large to be removed.
   &.-lg {
     padding: 1.0625rem 1.5rem;
 

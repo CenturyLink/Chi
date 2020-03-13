@@ -54,15 +54,13 @@
         width: 0.75rem;
       }
 
-      &.-lg::after,
-      &.-large::after {//Legacy code: -large to be removed.
+      &.-lg::after {
         height: 1.5rem;
         line-height: 1.7rem;
         margin-left: 1rem;
       }
 
-      &.-sm::after,
-      &.-small::after { //Legacy code: -small to be removed.
+      &.-sm::after {
         font-size: 0.5rem;
         height: 1rem;
         margin-left: 0.5rem;
@@ -112,15 +110,13 @@
         width: 0.75rem;
       }
 
-      &.-lg::before,
-      &.-large::before { //Legacy code: -large to be removed.
+      &.-lg::before {
         height: 1.5rem;
         line-height: 1.7rem;
         margin-right: 1rem;
       }
 
-      &.-sm::before,
-      &.-small::before { //Legacy code: -small to be removed.
+      &.-sm::before {
         font-size: 0.5rem;
         height: 1rem;
         margin-right: 0.5rem;
@@ -216,7 +212,6 @@
       }
     }
 
-    & > .a-inputWrapper,
     & > .m-input__wrapper {
       margin-left: 0.5rem;
       margin-right: 0.5rem;

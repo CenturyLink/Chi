@@ -2,7 +2,7 @@
 title: Buttons
 
 ---
-each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
+each size in ['default', 'sm', 'md', 'lg', 'xl']
   each type in ['solid', 'outline', 'flat', 'fluid']
     div(class={
       [`test-${type}`]: size === 'default',
@@ -126,7 +126,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                         svg
                           use(xlink:href='#icon-atom')
 
-each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
+each size in ['default', 'sm', 'md', 'lg', 'xl']
   div(class={
     [`test-${type}`]: size === 'default',
     [`test-${type}-${size}`]: size !== 'default'

@@ -4,9 +4,7 @@
 $spinner-sizes: (
   xs: 0.75rem,
   sm: 1rem,
-  sm2: 1.25rem,  // Legacy size code
   sm--2: 1.25rem,
-  sm3: 1.5rem,  // Legacy size code
   sm--3: 1.5rem,
   md: 2rem,
   lg: 4rem,
@@ -36,16 +34,6 @@ $spinner-sizes: (
     }
   }
 }
-
-// Legacy code start
-.a-backdrop {
-  & > .chi-spinner {
-    height: 4rem;
-    transform-origin: center;
-    width: 4rem;
-  }
-}
-// Legacy code end
 
 .chi-backdrop {
   &__wrapper {
