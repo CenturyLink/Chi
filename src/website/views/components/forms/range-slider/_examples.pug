@@ -57,7 +57,7 @@ h3 Multiple Labels
   .-p--3
     .m-form__item
       label(class="chi-label", for="range03") Range label
-      .m-input__wrapper.-d--flex
+      .chi-input__wrapper.-d--flex
         span.-text.-mr--2 200GB
         input(type="range", class="chi-input", id="range03")
         span.-text.-ml--2 5TB
@@ -71,7 +71,7 @@ h3 Multiple Labels
     :code(lang="html")
       <div class="m-form__item">
         <label class="chi-label" for="range03">Range label</label>
-        <div class="m-input__wrapper -d--flex">
+        <div class="chi-input__wrapper -d--flex">
           <span class="-text">200GB</span>
           <input class="chi-input -mx--2" type="range" id="range03">
           <span class="-text">5TB</span>
@@ -93,7 +93,7 @@ h3 Base
   .-p--3
     .m-form__item
       label(class="chi-label", for="range04") Range label
-      .m-input__wrapper
+      .chi-input__wrapper
         input(class="chi-input", type="range", id="range04")
         .chi-input__progress
         .chi-input__thumb
@@ -107,7 +107,7 @@ h3 Base
     :code(lang="html")
       <div class="m-form__item">
         <label class="chi-label" for="range04">Range label</label>
-        <div class="m-input__wrapper">
+        <div class="chi-input__wrapper">
           <input class="chi-input" type="range" id="range04">
           <div class="chi-input__progress"></div>
           <div class="chi-input__thumb"></div>
@@ -122,7 +122,7 @@ h3 Disabled
   .-p--3
     .m-form__item
       label(class="chi-label", for="range05") Range label
-      .m-input__wrapper
+      .chi-input__wrapper
         input(class="chi-input", type="range", id="range05", disabled)
         .chi-input__progress
         .chi-input__thumb
@@ -136,7 +136,7 @@ h3 Disabled
     :code(lang="html")
       <div class="m-form__item">
         <label class="chi-label" for="range05">Range label</label>
-        <div class="m-input__wrapper">
+        <div class="chi-input__wrapper">
           <input class="chi-input" type="range" id="range05" disabled>
           <div class="chi-input__progress"></div>
           <div class="chi-input__thumb"></div>
@@ -151,9 +151,9 @@ h3 Multiple Labels
   .-p--3
     .m-form__item
       label(class="chi-label", for="range06") Range label
-      .m-input__wrapper.-d--flex
+      .chi-input__wrapper.-d--flex
         span.-text.-mr--2 200GB
-        .m-input__wrapper.-w--100
+        .chi-input__wrapper.-w--100
           input(type="range", class="chi-input", id="range06")
           .chi-input__progress
           .chi-input__thumb
@@ -168,9 +168,9 @@ h3 Multiple Labels
     :code(lang="html")
       <div class="m-form__item">
         <label class="chi-label" for="range06">Range label</label>
-        <div class="m-input__wrapper -d--flex">
+        <div class="chi-input__wrapper -d--flex">
           <span class="-text -mr--2">200GB</span>
-          <div class="m-input__wrapper -w--100">
+          <div class="chi-input__wrapper -w--100">
             <input class="chi-input" type="range" id="range06">
             <div class="chi-input__progress"></div>
             <div class="chi-input__thumb"></div>
@@ -190,7 +190,7 @@ p.-text
   .-p--3
     .m-form__item
       label(class="chi-label", for="range07") Range label
-      .m-input__wrapper
+      .chi-input__wrapper
         input(class="chi-input", type="range", min="0", max="4", step="1", id="range07")
         .chi-input__tick-bar
           div
@@ -218,7 +218,7 @@ p.-text
     :code(lang="html")
       <div class="m-form__item">
         <label class="chi-label" for="range07">Range label</label>
-        <div class="m-input__wrapper">
+        <div class="chi-input__wrapper">
           <input class="chi-input" type="range" min="0" max="4" step="1" id="range07">
           <div class="chi-input__tick-bar">
             <div>
@@ -253,7 +253,7 @@ h3 Disabled
   .-p--3
     .m-form__item
       label(class="chi-label", for="range08") Range label
-      .m-input__wrapper
+      .chi-input__wrapper
         input(class="chi-input", type="range", min="0", max="4", step="1", id="range08", disabled)
         .chi-input__tick-bar
           div
@@ -281,7 +281,7 @@ h3 Disabled
     :code(lang="html")
       <div class="m-form__item">
         <label class="chi-label" for="range08">Range label</label>
-        <div class="m-input__wrapper">
+        <div class="chi-input__wrapper">
           <input class="chi-input" type="range" min="0" max="4" step="1" id="range08" disabled>
           <div class="chi-input__tick-bar">
             <div>
@@ -316,7 +316,7 @@ h3 Consistent rendering in WebKit browsers
   .-p--3
     .m-form__item
       label(class="chi-label", for="range09") Range label
-      .m-input__wrapper
+      .chi-input__wrapper
         input(class="chi-input", type="range", min="0", max="4", step="1", id="range09")
         .chi-input__tick-bar
           div
@@ -346,7 +346,7 @@ h3 Consistent rendering in WebKit browsers
     :code(lang="html")
       <div class="m-form__item">
         <label class="chi-label" for="range09">Range label</label>
-        <div class="m-input__wrapper">
+        <div class="chi-input__wrapper">
           <input class="chi-input" type="range" min="0" max="4" step="1" id="range09">
           <div class="chi-input__tick-bar">
             <div>
@@ -391,6 +391,6 @@ script.
       chi.tab(document.getElementById('chi-tabs-radio-buttons'));
       chi.tab(document.getElementById('chi-tabs-radio-buttons-disabled'));
       chi.tab(document.getElementById('chi-tabs-with-progress-and-radio-buttons'));
-      chi.rangeSlider(document.querySelectorAll('.m-input__wrapper > input[type="range"]'));
+      chi.rangeSlider(document.querySelectorAll('.chi-input__wrapper > input[type="range"]'));
     }
   );
