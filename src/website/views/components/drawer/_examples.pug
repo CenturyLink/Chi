@@ -19,7 +19,7 @@ ul#chi-tabs--drawer.chi-tabs
       .-p--3
         each i in [1, 2, 3]
           .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-      chi-drawer(position='left', active, collapsible)
+      chi-drawer(position='left', active)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-default
@@ -29,7 +29,7 @@ ul#chi-tabs--drawer.chi-tabs
           a(href=`#html`) HTML
     .chi-tabs-panel.-active#webcomponent
       :code(lang="html")
-        <chi-drawer position="left" active collapsible>
+        <chi-drawer position="left" active>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html
@@ -53,7 +53,7 @@ ul#chi-tabs--drawer.chi-tabs
       .-p--3
         each i in [1, 2, 3]
           .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-      chi-drawer(position='right', active, collapsible)
+      chi-drawer(position='right', active)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-default-right
@@ -63,7 +63,7 @@ ul#chi-tabs--drawer.chi-tabs
           a(href=`#html-right`) HTML
     .chi-tabs-panel.-active#webcomponent-right
       :code(lang="html")
-        <chi-drawer position="right" active collapsible>
+        <chi-drawer position="right" active>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html-right
@@ -87,7 +87,7 @@ ul#chi-tabs--drawer.chi-tabs
       .-p--3
         each i in [1, 2, 3]
           .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-      chi-drawer(position='top', active, collapsible)
+      chi-drawer(position='top', active)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-default-top
@@ -97,7 +97,7 @@ ul#chi-tabs--drawer.chi-tabs
           a(href=`#html-top`) HTML
     .chi-tabs-panel.-active#webcomponent-top
       :code(lang="html")
-        <chi-drawer position="top" active collapsible>
+        <chi-drawer position="top" active>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html-top
@@ -121,7 +121,7 @@ ul#chi-tabs--drawer.chi-tabs
       .-p--3
         each i in [1, 2, 3]
           .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-      chi-drawer(position='bottom', active, collapsible)
+      chi-drawer(position='bottom', active)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-default-bottom
@@ -131,7 +131,7 @@ ul#chi-tabs--drawer.chi-tabs
           a(href=`#html-bottom`) HTML
     .chi-tabs-panel.-active#webcomponent-bottom
       :code(lang="html")
-        <chi-drawer position="bottom" active collapsible>
+        <chi-drawer position="bottom" active>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html-bottom
@@ -154,7 +154,7 @@ p.-text
   | An optional backdrop can be added to focus the users attention on drawer content.
 .example.-mb--3(style='overflow:hidden;')
   .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
-    chi-drawer(position='bottom', backdrop, active, collapsible)
+    chi-drawer(position='bottom', backdrop, active)
       .-px--2.-text Drawer content here
   .example-tabs.-pl--2
     ul.chi-tabs#examples-backdrop
@@ -164,7 +164,7 @@ p.-text
         a(href=`#html-backdrop`) HTML
   .chi-tabs-panel.-active#webcomponent-backdrop
     :code(lang="html")
-      <chi-drawer position="bottom" backdrop active collapsible>
+      <chi-drawer position="bottom" backdrop active>
         <div class="-px--2 -text">Drawer content here</div>
       </chi-drawer>
   .chi-tabs-panel#html-backdrop
@@ -187,7 +187,7 @@ p.-text
 h3 Titled
 .example.-mb--3(style='overflow:hidden;')
   .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
-    chi-drawer(position='left', title='Drawer title here', backdrop, active, collapsible)
+    chi-drawer(position='left', title='Drawer title here', backdrop, active)
       .-px--2.-text Drawer content here
   .example-tabs.-pl--2
     ul#examples-titled.chi-tabs
@@ -197,7 +197,7 @@ h3 Titled
         a(href='#html-titled') HTML
   .chi-tabs-panel.-active#webcomponent-titled
     :code(lang="html")
-      <chi-drawer position="left" title="Drawer title here" backdrop active collapsible>
+      <chi-drawer position="left" title="Drawer title here" backdrop active>
         <div class="-px--2 -text">Drawer content here</div>
       </chi-drawer>
   .chi-tabs-panel#html-titled
@@ -223,30 +223,30 @@ h3 Titled
       </div>
 
 h3 Close button
-ul#chi-tabs--collapsible.chi-tabs
+ul#chi-tabs--closable.chi-tabs
   li.-active
-    a(href='#chi-tabs--collapsible-with') Collapsible
+    a(href='#chi-tabs--closable-with') Closable
   li
-    a(href='#chi-tabs--collapsible-without') No collapsible
-#chi-tabs--collapsible-with.chi-tabs-panel.-active
+    a(href='#chi-tabs--closable-without') Non closable
+#chi-tabs--closable-with.chi-tabs-panel.-active
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
-      chi-drawer(position='left' active backdrop collapsible)
+      chi-drawer(position='left' active backdrop)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-collapsible
+      ul.chi-tabs#examples-closable
         li.-active
-          a(href=`#webcomponent-collapsible`) Web component
+          a(href=`#webcomponent-closable`) Web component
         li
-          a(href=`#html-collapsible`) HTML
-    .chi-tabs-panel.-active#webcomponent-collapsible
+          a(href=`#html-closable`) HTML
+    .chi-tabs-panel.-active#webcomponent-closable
       .chi-tab__description
-        | Use the <code>collapsible</code> attribute to include a close button
+        | By default Drawer includes a close button
       :code(lang="html")
-        <chi-drawer position="left" active backdrop collapsible>
+        <chi-drawer position="left" active backdrop>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
-    .chi-tabs-panel#html-collapsible
+    .chi-tabs-panel#html-closable
       :code(lang="html")
         <div class="chi-backdrop">
           <div class="chi-backdrop__wrapper">
@@ -262,23 +262,26 @@ ul#chi-tabs--collapsible.chi-tabs
             </div>
           </div>
         </div>
-#chi-tabs--collapsible-without.chi-tabs-panel
+#chi-tabs--closable-without.chi-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
-      chi-drawer(position='left' active backdrop)
+      chi-drawer(position='left', active, backdrop, non-closable)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-noncollapsible
+      ul.chi-tabs#examples-nonclosable
         li.-active
-          a(href=`#webcomponent-noncollapsible`) Web component
+          a(href=`#webcomponent-nonclosable`) Web component
         li
-          a(href=`#html-noncollapsible`) HTML
-    .chi-tabs-panel.-active#webcomponent-noncollapsible
+          a(href=`#html-nonclosable`) HTML
+    .chi-tabs-panel.-active#webcomponent-nonclosable
+      .chi-tab__description
+        | Use the <code>non-closable</code> attribute to render Drawer without a close button
+
       :code(lang="html")
-        <chi-drawer position="left" active backdrop>
+        <chi-drawer position="left" active backdrop non-closable>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
-    .chi-tabs-panel#html-noncollapsible
+    .chi-tabs-panel#html-nonclosable
       :code(lang="html")
         <div class="chi-backdrop">
           <div class="chi-backdrop__wrapper">
@@ -302,7 +305,7 @@ ul#chi-tabs--header.chi-tabs
 #chi-tabs--header-with.chi-tabs-panel.-active
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
-      chi-drawer(position='left' active collapsible backdrop)
+      chi-drawer(position='left' active backdrop)
           .-px--2.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-header
@@ -312,7 +315,7 @@ ul#chi-tabs--header.chi-tabs
           a(href=`#html-header`) HTML
     .chi-tabs-panel.-active#webcomponent-header
       :code(lang="html")
-        <chi-drawer position="left" active collapsible backdrop>
+        <chi-drawer position="left" active backdrop>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html-header
@@ -337,7 +340,7 @@ ul#chi-tabs--header.chi-tabs
 #chi-tabs--header-without.chi-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
-      chi-drawer(position='left' active collapsible backdrop headless)
+      chi-drawer(position='left' active backdrop headless)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-headerless
@@ -347,7 +350,7 @@ ul#chi-tabs--header.chi-tabs
           a(href=`#html-headerless`) HTML
     .chi-tabs-panel.-active#webcomponent-headerless
       :code(lang="html")
-        <chi-drawer position="left" active collapsible backdrop headless>
+        <chi-drawer position="left" active backdrop headless>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html-headerless
@@ -385,7 +388,7 @@ p.-text
             chi-icon(icon='menu',size='sm--2')
       each i in [1, 2]
         p.-text.-mb--3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-    chi-drawer#interactive-drawer(position="right", backdrop, collapsible)
+    chi-drawer#interactive-drawer(position="right", backdrop)
       .-px--2.-text Drawer content here
   .example-tabs.-pl--2
     ul#examples-interaction.chi-tabs
@@ -405,7 +408,7 @@ p.-text
         </div>
       </button>
 
-      <chi-drawer id="interactive-drawer" position="right" backdrop collapsible>
+      <chi-drawer id="interactive-drawer" position="right" backdrop>
         <div class="-px--2 -text">Drawer content here</div>
       </div>
 
@@ -459,9 +462,9 @@ script.
       chi.tab(document.getElementById('examples-default-bottom'));
       chi.tab(document.getElementById('examples-backdrop'));
       chi.tab(document.getElementById('examples-titled'));
-      chi.tab(document.getElementById('chi-tabs--collapsible'));
-      chi.tab(document.getElementById('examples-collapsible'));
-      chi.tab(document.getElementById('examples-noncollapsible'));
+      chi.tab(document.getElementById('chi-tabs--closable'));
+      chi.tab(document.getElementById('examples-closable'));
+      chi.tab(document.getElementById('examples-nonclosable'));
       chi.tab(document.getElementById('examples-header'));
       chi.tab(document.getElementById('examples-headerless'));
       chi.tab(document.getElementById('examples-interaction'));

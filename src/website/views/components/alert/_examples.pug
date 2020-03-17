@@ -336,77 +336,79 @@ h3 Sizes
         </div>
       </div>
 
-h3 Dismissible
+h3 Closable
 p.-text
   | To allow users to dismiss an alert.
 .example.-mb--3
   .-p--1
-    chi-alert.-m--2(color='warning', icon='warning', dismissible)
-      | This is a dismissible warning alert
-    chi-alert.-m--2(color='warning', icon='warning', title="Warning", dismissible)
-      | This is a dismissible warning alert
-    chi-alert.-m--2(color='warning', icon='warning', size='lg', title="Warning", dismissible)
-      | This is a large dismissible warning alert
+    chi-alert.-m--2(color='warning', icon='warning', closable)
+      | This is a closable warning alert
+    chi-alert.-m--2(color='warning', icon='warning', title="Warning", closable)
+      | This is a closable warning alert
+    chi-alert.-m--2(color='warning', icon='warning', size='lg', title="Warning", closable)
+      | This is a large closable warning alert
   .example-tabs.-pl--2
-    ul.chi-tabs#examples-dismissible
+    ul.chi-tabs#examples-closable
       li.-active
-        a(href=`#webcomponent-dismissible`) Web component
+        a(href=`#webcomponent-closable`) Web component
       li
-        a(href=`#html-dismissible`) HTML
-  .chi-tabs-panel.-active#webcomponent-dismissible
+        a(href=`#html-closable`) HTML
+  .chi-tabs-panel.-active#webcomponent-closable
     .chi-tab__description
-      | Use the <code>dismissible</code> attribute to render a close button that allows users to dismiss an alert.
+      | Use attribute <code>closable</code> to render a close button that allows users to dismiss an alert.
+      br
+      | Use attribute <code>mutable</code> to remove alert once close buttons is clicked.
     :code(lang="html")
-      <!-- Dismissible -->
-      <chi-alert color="warning" icon="warning" dismissible>
-        This is a dismissible warning alert
+      <!-- closable -->
+      <chi-alert color="warning" icon="warning" closable>
+        This is a closable warning alert
       </chi-alert>
-      <!-- Dismissible Titled -->
-      <chi-alert color="warning" icon="warning" title="Warning" dismissible>
-        This is a dismissible warning alert
+      <!-- closable Titled -->
+      <chi-alert color="warning" icon="warning" title="Warning" closable>
+        This is a closable warning alert
       </chi-alert>
-      <!-- Large Dismissible Titled -->
-      <chi-alert color="warning" icon="warning" size="lg" title="Warning" dismissible>
-        This is a large dismissible warning alert
+      <!-- Large closable Titled -->
+      <chi-alert color="warning" icon="warning" size="lg" title="Warning" closable>
+        This is a large closable warning alert
       </chi-alert>
-  .chi-tabs-panel#html-dismissible
+  .chi-tabs-panel#html-closable
     .chi-tab__description
-      | Use the class <code>-dismiss</code>
-      | and insert a dismiss button <code>chi-alert__dismiss-button</code>.
+      | Use the class <code>-close</code>
+      | and insert a close button <code>chi-alert__close-button</code>.
     :code(lang="html")
-      <!-- Dismissible -->
-      <div class="chi-alert -warning -dismiss" role="alert">
+      <!-- Closable -->
+      <div class="chi-alert -warning -close" role="alert">
         <i class="chi-alert__icon chi-icon icon-warning"></i>
         <div class="chi-alert__content">
-          <p class="chi-alert__text">This is a dismissible warning alert</p>
+          <p class="chi-alert__text">This is a closable warning alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
         </button>
       </div>
-      <!-- Dismissible Titled -->
-      <div class="chi-alert -warning -dismiss" role="alert">
+      <!-- closable Titled -->
+      <div class="chi-alert -warning -close" role="alert">
         <i class="chi-alert__icon chi-icon icon-warning"></i>
         <div class="chi-alert__content">
           <p class="chi-alert__title">Warning</p>
-          <p class="chi-alert__text">This is a dismissible warning alert</p>
+          <p class="chi-alert__text">This is a closable warning alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
         </button>
       </div>
-      <!-- Large Dismissible Titled -->
-      <div class="chi-alert -warning -dismiss -lg" role="alert">
+      <!-- Large closable Titled -->
+      <div class="chi-alert -warning -close -lg" role="alert">
         <i class="chi-alert__icon chi-icon icon-warning"></i>
         <div class="chi-alert__content">
           <p class="chi-alert__title">Warning</p>
-          <p class="chi-alert__text">This is a large dismissible warning alert</p>
+          <p class="chi-alert__text">This is a large closable warning alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -416,8 +418,8 @@ p.-text
 h3 Actionable
 .example.-mb--3
   .-p--1
-    chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", dismissible)
-      | This is a large dismissible success alert
+    chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", closable)
+      | This is a large closable success alert
       chi-button(slot="chi-alert__actions", color='dark', variant='outline', size='lg') Secondary action
       chi-button(slot="chi-alert__actions", color='primary', size='lg') Primary action
   .example-tabs.-pl--2
@@ -430,8 +432,8 @@ h3 Actionable
     .chi-tab__description
       | Add buttons to an alert by defining <code>slot="chi-alert__actions"</code> on each <code>chi-button</code>.
     :code(lang="html")
-      <chi-alert color="success" icon="circle-check" size="lg" title="Success" dismissible>
-        This is a large dismissible success alert
+      <chi-alert color="success" icon="circle-check" size="lg" title="Success" closable>
+        This is a large closable success alert
         <chi-button slot="chi-alert__actions" color="dark" variant="outline" size="lg">Secondary action</chi-button>
         <chi-button slot="chi-alert__actions" color="primary" size="lg">Primary action</chi-button>
       </chi-alert>
@@ -439,19 +441,19 @@ h3 Actionable
     .chi-tab__description
       | While <code>chi-alert__actions</code> can be added to any Alert, alert actions are best suited for default or Titled alerts with the size class <code>-lg</code>.
       br
-      | Large Alerts have extra <code>chi-alert</code> padding, a larger <code>chi-alert__icon</code>, and a larger <code>chi-alert__dismiss-button</code>.
+      | Large Alerts have extra <code>chi-alert</code> padding, a larger <code>chi-alert__icon</code>, and a larger <code>chi-alert__close-button</code>.
     :code(lang="html")
       <div class="chi-alert -success -lg" role="alert">
         <i class="chi-alert__icon chi-icon icon-circle-check"></i>
         <div class="chi-alert__content">
           <p class="chi-alert__title">Success</p>
-          <p class="chi-alert__text">This is a large dismissible success alert</p>
+          <p class="chi-alert__text">This is a large closable success alert</p>
           <div class="chi-alert__actions">
             <button class="chi-btn -lg -dark -outline">Secondary action</button>
             <button class="chi-btn -lg -primary">Primary action</button>
           </div>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -788,75 +790,75 @@ h3 Sizes
         </div>
       </div>
 
-h3 Dismissible
+h3 Closable
 .example.-mb--3
   .-p--1
-    chi-alert.-m--2(type='banner', icon='warning', color='warning', dismissible)
-      | This is a dismissible warning alert
-    chi-alert.-m--2(type='banner', color='warning', icon='warning', title="Warning", dismissible)
-      | This is a dismissible warning alert
-    chi-alert.-m--2(type='banner', color='warning', icon='warning', size='lg', title="Warning", dismissible)
-      | This is a large dismissible warning alert
+    chi-alert.-m--2(type='banner', icon='warning', color='warning', closable)
+      | This is a closable warning alert
+    chi-alert.-m--2(type='banner', color='warning', icon='warning', title="Warning", closable)
+      | This is a closable warning alert
+    chi-alert.-m--2(type='banner', color='warning', icon='warning', size='lg', title="Warning", closable)
+      | This is a large closable warning alert
   .example-tabs.-pl--2
-    ul.chi-tabs#examples-banner-dismissible
+    ul.chi-tabs#examples-banner-closable
       li.-active
-        a(href=`#webcomponent-banner-dismissible`) Web component
+        a(href=`#webcomponent-banner-closable`) Web component
       li
-        a(href=`#html-banner-dismissible`) HTML
-  .chi-tabs-panel.-active#webcomponent-banner-dismissible
+        a(href=`#html-banner-closable`) HTML
+  .chi-tabs-panel.-active#webcomponent-banner-closable
     .chi-tab__description
-      | Use the <code>dismissible</code> attribute to render a close button that allows users to dismiss an alert.
+      | Use the <code>closable</code> attribute to render a close button that allows users to dismiss an alert.
     :code(lang="html")
-      <!-- Dismissible -->
-      <chi-alert type="banner" color="warning" icon="warning" dismissible>
-        This is a dismissible warning alert
+      <!-- closable -->
+      <chi-alert type="banner" color="warning" icon="warning" closable>
+        This is a closable warning alert
       </chi-alert>
-      <!-- Dismissible Titled -->
-      <chi-alert type="banner" color="warning" icon="warning" title="Warning" dismissible>
-        This is a dismissible warning alert
+      <!-- closable Titled -->
+      <chi-alert type="banner" color="warning" icon="warning" title="Warning" closable>
+        This is a closable warning alert
       </chi-alert>
-      <!-- Large Dismissible Titled -->
-      <chi-alert type="banner" color="warning" icon="warning" size="lg" title="Warning" dismissible>
-        This is a large dismissible warning alert
+      <!-- Large closable Titled -->
+      <chi-alert type="banner" color="warning" icon="warning" size="lg" title="Warning" closable>
+        This is a large closable warning alert
       </chi-alert>
-  .chi-tabs-panel#html-banner-dismissible
+  .chi-tabs-panel#html-banner-closable
     .chi-tab__description
-      | To allow users to dismiss an alert, use the class <code>-dismiss</code>
-      | and insert a dismiss button <code>chi-alert__dismiss-button</code>.
+      | To allow users to dismiss an alert, use the class <code>-close</code>
+      | and insert a dismiss button <code>chi-alert__close-button</code>.
     :code(lang="html")
-      <!-- Dismissible Base -->
-      <div class="chi-alert -banner -warning -dismiss" role="alert">
+      <!-- Closable Base -->
+      <div class="chi-alert -banner -warning -close" role="alert">
         <i class="chi-alert__icon chi-icon icon-warning"></i>
         <div class="chi-alert__content">
-          <p class="chi-alert__text">This is a base dismissible warning alert</p>
+          <p class="chi-alert__text">This is a base closable warning alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
         </button>
       </div>
-      <!-- Dismissible Titled -->
-      <div class="chi-alert -banner -warning -dismiss" role="alert">
+      <!-- Closable Titled -->
+      <div class="chi-alert -banner -warning -close" role="alert">
         <i class="chi-alert__icon chi-icon icon-warning"></i>
         <div class="chi-alert__content">
           <p class="chi-alert__title">Warning</p>
-          <p class="chi-alert__text">This is a dismissible warning alert</p>
+          <p class="chi-alert__text">This is a closable warning alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
         </button>
       </div>
-      <!-- Large Dismissible Titled -->
-      <div class="chi-alert -banner -warning -dismiss -lg" role="alert">
+      <!-- Large Closable Titled -->
+      <div class="chi-alert -banner -warning -close -lg" role="alert">
         <i class="chi-alert__icon chi-icon icon-warning"></i>
         <div class="chi-alert__content">
           <p class="chi-alert__title">Warning</p>
-          <p class="chi-alert__text">This is a dismissible warning alert</p>
+          <p class="chi-alert__text">This is a closable warning alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -866,8 +868,8 @@ h3 Dismissible
 h3 Actionable
 .example.-mb--3
   .-p--1.-bg--grey-20
-    chi-alert.-m--2(type='banner', icon='circle-info', size='lg', title="Base", dismissible)
-      | This is a large dismissible alert
+    chi-alert.-m--2(type='banner', icon='circle-info', size='lg', title="Base", closable)
+      | This is a large closable alert
       chi-button(slot="chi-alert__actions", color='dark', variant='outline', size='lg') Secondary action
       chi-button(slot="chi-alert__actions", color='primary', size='lg') Primary action
   .example-tabs.-pl--2
@@ -880,8 +882,8 @@ h3 Actionable
     .chi-tab__description
       | Add buttons to an alert by defining <code>slot="chi-alert__actions"</code> on each <code>chi-button</code>.
     :code(lang="html")
-      <chi-alert type="banner" icon="circle-info" size="lg" title="Base" dismissible>
-        This is a large dismissible alert
+      <chi-alert type="banner" icon="circle-info" size="lg" title="Base" closable>
+        This is a large closable alert
         <chi-button slot="chi-alert__actions" color="dark" variant="outline" size="lg">Secondary action</chi-button>
         <chi-button slot="chi-alert__actions" color="primary" size="lg">Primary action</chi-button>
       </chi-alert>
@@ -889,19 +891,19 @@ h3 Actionable
     .chi-tab__description
       | While <code>chi-alert__actions</code> can be added to any Alert, alert actions are best suited for default or Titled alerts with the size class <code>-lg</code>.
       br
-      | Large Alerts have extra <code>chi-alert</code> padding, a larger <code>chi-alert__icon</code>, and a larger <code>chi-alert__dismiss-button</code>.
+      | Large Alerts have extra <code>chi-alert</code> padding, a larger <code>chi-alert__icon</code>, and a larger <code>chi-alert__close-button</code>.
     :code(lang="html")
       <div class="chi-alert -banner -lg" role="alert">
         <i class="chi-alert__icon chi-icon icon-circle-info"></i>
         <div class="chi-alert__content">
           <p class="chi-alert__title">Base</p>
-          <p class="chi-alert__text">This is a large dismissible alert</p>
+          <p class="chi-alert__text">This is a large closable alert</p>
           <div class="chi-alert__actions">
             <button class="chi-btn -lg -dark -outline">Secondary action</button>
             <button class="chi-btn -lg -primary">Primary action</button>
           </div>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -965,7 +967,7 @@ h3 Default
         <div class="chi-alert__content">
           <p class="chi-alert__text">This is a base alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -977,7 +979,7 @@ h3 Default
         <div class="chi-alert__content">
           <p class="chi-alert__text">This is a success alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -989,7 +991,7 @@ h3 Default
         <div class="chi-alert__content">
           <p class="chi-alert__text">This is a danger alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1001,7 +1003,7 @@ h3 Default
         <div class="chi-alert__content">
           <p class="chi-alert__text">This is a warning alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1013,7 +1015,7 @@ h3 Default
         <div class="chi-alert__content">
           <p class="chi-alert__text">This is an info alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1025,7 +1027,7 @@ h3 Default
         <div class="chi-alert__content">
           <p class="chi-alert__text">This is a muted alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1081,7 +1083,7 @@ h3 Titled
           <p class="chi-alert__title">Base</p>
           <p class="chi-alert__text">This is a base alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1094,7 +1096,7 @@ h3 Titled
           <p class="chi-alert__title">Success</p>
           <p class="chi-alert__text">This is a success alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1107,7 +1109,7 @@ h3 Titled
           <p class="chi-alert__title">Danger</p>
           <p class="chi-alert__text">This is a danger alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1120,7 +1122,7 @@ h3 Titled
           <p class="chi-alert__title">Warning</p>
           <p class="chi-alert__text">This is a warning alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1133,7 +1135,7 @@ h3 Titled
           <p class="chi-alert__title">Info</p>
           <p class="chi-alert__text">This is an info alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1146,7 +1148,7 @@ h3 Titled
           <p class="chi-alert__title">Muted</p>
           <p class="chi-alert__text">This is a muted alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1214,7 +1216,7 @@ h3 Sizes
         <div class="chi-alert__content">
           <p class="chi-alert__text">This is a small success alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1226,7 +1228,7 @@ h3 Sizes
           <p class="chi-alert__title">Success</p>
           <p class="chi-alert__text">This is a small success alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1237,7 +1239,7 @@ h3 Sizes
         <div class="chi-alert__content">
           <p class="chi-alert__text">This is a success alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1249,7 +1251,7 @@ h3 Sizes
           <p class="chi-alert__title">Success</p>
           <p class="chi-alert__text">This is a success alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1260,7 +1262,7 @@ h3 Sizes
         <div class="chi-alert__content">
           <p class="chi-alert__text">This is a large success alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1272,7 +1274,7 @@ h3 Sizes
           <p class="chi-alert__title">Success</p>
           <p class="chi-alert__text">This is a large success alert</p>
         </div>
-        <button class="chi-alert__dismiss-button chi-btn -icon -close" aria-label="Close">
+        <button class="chi-alert__close-button chi-btn -icon -close" aria-label="Close">
           <div class="chi-btn__content">
             <i class="chi-icon icon-x"></i>
           </div>
@@ -1287,16 +1289,15 @@ script.
       chi.tab(document.getElementById('examples-centered'));
       chi.tab(document.getElementById('examples-titled'));
       chi.tab(document.getElementById('examples-sizes'));
-      chi.tab(document.getElementById('examples-dismissible'));
+      chi.tab(document.getElementById('examples-closable'));
       chi.tab(document.getElementById('examples-actionable'));
       chi.tab(document.getElementById('examples-banner-default'));
       chi.tab(document.getElementById('examples-banner-centered'));
       chi.tab(document.getElementById('examples-banner-titled'));
       chi.tab(document.getElementById('examples-banner-sizes'));
-      chi.tab(document.getElementById('examples-banner-dismissible'));
+      chi.tab(document.getElementById('examples-banner-closable'));
       chi.tab(document.getElementById('examples-banner-actionable'));
       chi.tab(document.getElementById('examples-toast-default'));
       chi.tab(document.getElementById('examples-toast-titled'));
       chi.tab(document.getElementById('examples-toast-sizes'));
-    }
-  );
+    });

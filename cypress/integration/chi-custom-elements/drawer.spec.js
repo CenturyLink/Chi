@@ -14,7 +14,7 @@ describe('Drawer', function() {
       .should('not.exist');
   });
 
-  it('Collapsible Headed drawer custom element should include a header and a close button. ', function() {
+  it('By default drawer custom element should include a close button. ', function() {
 
     cy.get('[data-cy="test-top-headed"]')
       .should('have.class', 'hydrated')
@@ -25,6 +25,18 @@ describe('Drawer', function() {
       .should('have.length', 1)
       .find('button.chi-btn chi-icon[icon="x"]')
       .should('exist');
+
+  });
+
+  it('Should not include a close button when non-closable="" attribute is present ', function() {
+
+    cy.get('[data-cy="test-non-closable"]')
+      .should('have.class', 'hydrated')
+      .children()
+      .first()
+      .should('match', 'div.chi-drawer.-active')
+      .find('button.chi-btn chi-icon[icon="x"]')
+      .should('not.exist');
 
   });
 
@@ -114,7 +126,4 @@ describe('Drawer', function() {
       .should('be.visible');
 
   });
-
-
-
 });
