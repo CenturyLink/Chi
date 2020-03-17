@@ -20,11 +20,11 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
             td(style='vertical-align: bottom')
               .-m--1
                 if state == 'disabled'
-                  .m-form__item
+                  .chi-form__item
                     label.chi-label(class=`-${size}` for='example') Label
                     textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                 else
-                  .m-form__item
+                  .chi-form__item
                     label.chi-label(class=`-${size}` for='example') Label
                     textarea(class=`chi-input -${style} -${state} -${size}`) Value
 
@@ -48,7 +48,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                       use(xlink:href='#icon-atom')
             td(style='vertical-align: bottom')
               .-m--1
-                .m-form__item
+                .chi-form__item
                   label.chi-label(class=`-${size}` for='example') Label
                   .chi-input__wrapper.-icon--left
                     if state == 'disabled'
@@ -92,7 +92,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                         use(xlink:href='#icon-circle-info-outline')
             td(style='vertical-align: bottom')
               .-m--1
-                .m-form__item
+                .chi-form__item
                   label.chi-label(class=`-${size}` for='example') Label
                   .chi-input__wrapper.-icon--right
                     if state == 'disabled'
@@ -152,7 +152,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
                         use(xlink:href='#icon-circle-info-outline')
             td(style='vertical-align: bottom')
               .-m--1
-                .m-form__item
+                .chi-form__item
                   label.chi-label(class=`-${size}` for='example') Label
                   .chi-input__wrapper.-icon--left.-icon--right
                     if state == 'disabled'

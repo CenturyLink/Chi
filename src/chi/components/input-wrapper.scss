@@ -8,7 +8,7 @@ $border: 0.0625rem;
   position: relative;
 }
 
-.m-form__item {
+.chi-form__item {
   display: flex;
   flex-direction: column;
 
@@ -55,7 +55,7 @@ $border: 0.0625rem;
     }
   }
 
-  & .m-label__wrapper {
+  & .chi-label__wrapper {
     align-items: center;
     display: flex;
     justify-content: start;
