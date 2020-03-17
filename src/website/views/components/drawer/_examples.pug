@@ -187,7 +187,7 @@ p.-text
 h3 Titled
 .example.-mb--3(style='overflow:hidden;')
   .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
-    chi-drawer(position='left', title='Drawer title here', backdrop, active, closable)
+    chi-drawer(position='left', title='Drawer title here', backdrop, active)
       .-px--2.-text Drawer content here
   .example-tabs.-pl--2
     ul#examples-titled.chi-tabs
@@ -197,7 +197,7 @@ h3 Titled
         a(href='#html-titled') HTML
   .chi-tabs-panel.-active#webcomponent-titled
     :code(lang="html")
-      <chi-drawer position="left" title="Drawer title here" backdrop active closable>
+      <chi-drawer position="left" title="Drawer title here" backdrop active>
         <div class="-px--2 -text">Drawer content here</div>
       </chi-drawer>
   .chi-tabs-panel#html-titled
@@ -225,7 +225,7 @@ h3 Titled
 h3 Close button
 ul#chi-tabs--closable.chi-tabs
   li.-active
-    a(href='#chi-tabs--closable-with') closable
+    a(href='#chi-tabs--closable-with') Closable
   li
     a(href='#chi-tabs--closable-without') Non closable
 #chi-tabs--closable-with.chi-tabs-panel.-active
