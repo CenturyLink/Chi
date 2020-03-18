@@ -14,7 +14,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           each style in ['default', 'primary', 'secondary', 'danger', 'dark']
             each val, index2 in [2,3,4]
               td(style="vertical-align:top")
-                .m-btnGroup.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
+                .chi-btn__group.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
                   while val > 0
                     - val--
                     button.chi-btn(class={
@@ -29,7 +29,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           each style in ['default', 'primary', 'secondary', 'danger', 'dark']
             each val, index2 in [2,3,4]
               td(style="vertical-align:top")
-                .m-btnGroup.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
+                .chi-btn__group.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
                   while val > 0
                     - val--
                     button.chi-btn.-icon(class={
@@ -48,7 +48,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           each style in ['default', 'primary', 'secondary', 'danger', 'dark']
             each val, index2 in [2,3,4]
               td(style="vertical-align:top")
-                .m-btnGroup.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
+                .chi-btn__group.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
                   while val > 0
                     - val--
                     button.chi-btn(class={
@@ -72,7 +72,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           tr
             each style in ['default', 'primary', 'secondary', 'danger', 'dark']
               td(style="width:120px")
-                .m-btnGroup.-vertical.-fluid.-m--1
+                .chi-btn__group.-vertical.-fluid.-m--1
                   each modifier in ['align--left', '', 'align--right']
                     button.chi-btn(class={
                       [`-${type}`]: type != 'solid',
@@ -86,7 +86,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           tr
             each style in ['default', 'primary', 'secondary', 'danger', 'dark']
               td(style="width:70px")
-                .m-btnGroup.-vertical.-fluid.-m--1
+                .chi-btn__group.-vertical.-fluid.-m--1
                   each modifier in ['align--left', '', 'align--right']
                     button.chi-btn.-icon(class={
                       [`-${type}`]: type != 'solid',
@@ -104,7 +104,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           tr
             each style in ['default', 'primary', 'secondary', 'danger', 'dark']
               td(style="width:140px")
-                .m-btnGroup.-vertical.-fluid.-m--1
+                .chi-btn__group.-vertical.-fluid.-m--1
                   each modifier in ['align--left', '', 'align--right']
                     button.chi-btn(class={
                       [`-${type}`]: type != 'solid',

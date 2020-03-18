@@ -31,7 +31,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           tr
             each val, index in [2,3,4]
               td
-                .m-btnGroup.-m--1(class={'-ml--3': index != 0})
+                .chi-btn__group.-m--1(class={'-ml--3': index != 0})
                   while val > 0
                     - val--
                     +button(false, type, style, size)
@@ -41,7 +41,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           tr
             each val, index in [2,3,4]
               td
-                .m-btnGroup.-m--1(class={'-ml--3': index != 0})
+                .chi-btn__group.-m--1(class={'-ml--3': index != 0})
                   while val > 0
                     - val--
                     +button(true, type, style, size)
@@ -52,7 +52,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           tr
             each val, index in [2,3,4]
               td
-                .m-btnGroup.-m--1(class={'-ml--3': index != 0})
+                .chi-btn__group.-m--1(class={'-ml--3': index != 0})
                   while val > 0
                     - val--
                     +button(false, type, style, size)
@@ -68,7 +68,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
         each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             td
-              .m-btnGroup.-fluid.-m--1
+              .chi-btn__group.-fluid.-m--1
                 each modifier in ['notFluid', 'align--left', false, 'align--right']
                   +button(false, type, style, size, modifier)
                     | Button
@@ -77,7 +77,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
         each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             td
-              .m-btnGroup.-fluid.-m--1
+              .chi-btn__group.-fluid.-m--1
                 each modifier in ['notFluid', 'align--left', false, 'align--right']
                   +button(true, type, style, size, modifier)
                     .chi-btn__content
@@ -87,7 +87,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
         each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             td
-              .m-btnGroup.-fluid.-m--1
+              .chi-btn__group.-fluid.-m--1
                 each modifier in ['notFluid', 'align--left', false, 'align--right']
                   +button(false, type, style, size, modifier)
                     .chi-btn__content
