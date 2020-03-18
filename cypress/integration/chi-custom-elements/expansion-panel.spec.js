@@ -55,7 +55,7 @@ describe('Expansion panel', function() {
 
           cy.get($testCase)
             .within(() => {
-              cy.get('.m-epanel__title')
+              cy.get('.chi-epanel__title')
                 .contains(ePanelTitle);
             });
       });
