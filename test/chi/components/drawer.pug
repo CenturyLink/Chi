@@ -45,4 +45,11 @@ each side in sides
                     i.chi-icon.icon-x
               .chi-drawer__content
                 .-px--2.-text Drawer content here
-                
+
+div(class=`test-non-closable -mb--3 example -mb--3`)
+  div(style='width: 320px')
+    .chi-h2= `Drawer / Non closable`
+    div(style="position:relative;height:20rem")
+      div(class=`chi-drawer -left -active`, style='position:absolute;')
+        .chi-drawer__content
+          .-px--2.-text Drawer content here
