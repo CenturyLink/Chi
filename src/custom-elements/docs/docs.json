@@ -1124,22 +1124,6 @@
           "required": false
         },
         {
-          "name": "heading",
-          "type": "string",
-          "mutable": false,
-          "attr": "heading",
-          "reflectToAttr": true,
-          "docs": "to set the title of the panel",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "state",
           "type": "string",
           "mutable": false,
@@ -1164,6 +1148,23 @@
           "reflectToAttr": true,
           "docs": "to set a step number next to the title of the panel",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "mutable": false,
+          "attr": "title",
+          "reflectToAttr": true,
+          "docs": "to define expansion panel title.",
+          "docsTags": [],
+          "default": false,
           "values": [
             {
               "type": "string"

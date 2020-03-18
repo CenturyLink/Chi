@@ -20,7 +20,7 @@ ul#chi-tabs.chi-tabs
     a(href='#chi-tabs-disabled') Disabled
 .example.-mb3
   .-p3
-    chi-expansion-panel(step='1', heading='Done panel', state='done')
+    chi-expansion-panel(step='1', title='Done panel', state='done')
       div(slot='done')
         | CenturyLink
         br
@@ -31,7 +31,7 @@ ul#chi-tabs.chi-tabs
         | Bellevue, WA 98004
       div(slot='change')
         button.chi-btn.-brand.-flat Change
-    chi-expansion-panel(step='2', heading='Active panel', state='active')
+    chi-expansion-panel(step='2', title='Active panel', state='active')
       div(slot='active')
         .chi-epanel__subtitle Active panel title
         p.chi-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
@@ -39,8 +39,8 @@ ul#chi-tabs.chi-tabs
           | nihil sed veritatis!
       div(slot='footer')
         button.chi-btn.-lg.-primary Continue
-    chi-expansion-panel(step='3', heading='Pending panel')
-    chi-expansion-panel(step='4', heading='Disabled panel', state='disabled')
+    chi-expansion-panel(step='3', title='Pending panel')
+    chi-expansion-panel(step='4', title='Disabled panel', state='disabled')
   #chi-tabs-done.chi-tabs-panel.-active
     .example-tabs.-pl--2
       ul.chi-tabs#examples-default-done
@@ -50,7 +50,7 @@ ul#chi-tabs.chi-tabs
           a(href=`#html-done`) HTML
     .chi-tabs-panel.-active#webcomponent-done
       :code(lang="html")
-        <chi-expansion-panel step="1" heading="Done panel" state="done">
+        <chi-expansion-panel step="1" title="Done panel" state="done">
           <div slot="done">
             CenturyLink</br>
             1100 112th Ave NE</br>
@@ -89,7 +89,7 @@ ul#chi-tabs.chi-tabs
           a(href=`#html-active`) HTML
     .chi-tabs-panel.-active#webcomponent-active
       :code(lang="html")
-        <chi-expansion-panel step="2" heading="Active panel" state="active">
+        <chi-expansion-panel step="2" title="Active panel" state="active">
           <div slot="active">
             <div class="chi-epanel__subtitle">
               Active panel title
@@ -135,7 +135,7 @@ ul#chi-tabs.chi-tabs
           a(href=`#html-pending`) HTML
     .chi-tabs-panel.-active#webcomponent-pending
       :code(lang="html")
-        <chi-expansion-panel step="3" heading="Pending panel"></chi-expansion-panel>
+        <chi-expansion-panel step="3" title="Pending panel"></chi-expansion-panel>
     .chi-tabs-panel#html-pending
       :code(lang="html")
         <div class="chi-epanel">
@@ -154,7 +154,7 @@ ul#chi-tabs.chi-tabs
           a(href=`#html-disabled`) HTML
     .chi-tabs-panel.-active#webcomponent-disabled
       :code(lang="html")
-        <chi-expansion-panel step="4" heading="Disabled panel" state="disabled"></chi-expansion-panel>
+        <chi-expansion-panel step="4" title="Disabled panel" state="disabled"></chi-expansion-panel>
     .chi-tabs-panel#html-disabled
       :code(lang="html")
         <div class="chi-epanel -disabled">
@@ -167,7 +167,7 @@ ul#chi-tabs.chi-tabs
 h2 Customization
 .example.-mb3
   .-p3.-bg--grey-10
-    chi-expansion-panel(heading='Expansion panel', state='active')
+    chi-expansion-panel(title='Expansion panel', state='active')
       div(slot='active')
         .chi-epanel__subtitle Active panel title
         p.chi-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
@@ -190,7 +190,7 @@ h2 Customization
       | the <code>step</code> property if you don't need it. Apart from that, including some custom content like a button
       | is also possible for done and active states.
     :code(lang="html")
-      <chi-expansion-panel heading="Expansion panel" state="active">
+      <chi-expansion-panel title="Expansion panel" state="active">
         <div slot="active">
           <div class="chi-epanel__subtitle">
             Active panel title
@@ -255,7 +255,7 @@ ul#chi-tabs-bordered.chi-tabs
     a(href='#chi-tabs-bordered-disabled') Disabled
 .example.-mb3
   .-p3
-    chi-expansion-panel(step='1', heading='Done panel', state='done', bordered=true)
+    chi-expansion-panel(step='1', title='Done panel', state='done', bordered=true)
       div(slot='done')
           | CenturyLink
           br
@@ -266,7 +266,7 @@ ul#chi-tabs-bordered.chi-tabs
           | Bellevue, WA 98004
       div(slot='change')
         button.chi-btn.-brand.-flat Change
-    chi-expansion-panel(step='2', heading='Active panel', state='active', bordered=true)
+    chi-expansion-panel(step='2', title='Active panel', state='active', bordered=true)
       div(slot='active')
         .chi-epanel__subtitle Active panel title
         p.chi-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
@@ -274,8 +274,8 @@ ul#chi-tabs-bordered.chi-tabs
           | nihil sed veritatis!
       div(slot='footer')
         button.chi-btn.-lg.-primary Continue
-    chi-expansion-panel(step='3', heading='Pending panel', bordered=true)
-    chi-expansion-panel(step='4', heading='Disabled panel', state='disabled', bordered=true)
+    chi-expansion-panel(step='3', title='Pending panel', bordered=true)
+    chi-expansion-panel(step='4', title='Disabled panel', state='disabled', bordered=true)
   #chi-tabs-bordered-done.chi-tabs-panel.-active
     .example-tabs.-pl--2
       ul.chi-tabs#examples-bordered
@@ -287,7 +287,7 @@ ul#chi-tabs-bordered.chi-tabs
       .chi-tab__description
         | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
       :code(lang="html")
-        <chi-expansion-panel step="1" heading="Done panel" state="done" bordered>
+        <chi-expansion-panel step="1" title="Done panel" state="done" bordered>
           <div slot="done">
             CenturyLink</br>
             1100 112th Ave NE</br>
@@ -330,7 +330,7 @@ ul#chi-tabs-bordered.chi-tabs
       .chi-tab__description
         | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
       :code(lang="html")
-        <chi-expansion-panel step="2" heading="Active panel" state="active" bordered>
+        <chi-expansion-panel step="2" title="Active panel" state="active" bordered>
           <div slot="active">
             <div class="chi-epanel__subtitle">
               Active panel title
@@ -380,7 +380,7 @@ ul#chi-tabs-bordered.chi-tabs
       .chi-tab__description
         | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
       :code(lang="html")
-        <chi-expansion-panel step="3" heading="Pending panel" bordered></chi-expansion-panel>
+        <chi-expansion-panel step="3" title="Pending panel" bordered></chi-expansion-panel>
     .chi-tabs-panel#html-bordered-pending
       .chi-tab__description
         | Expansion panel components also support a bordered version. Apply the <code>-bordered</code> class where desired.
@@ -403,7 +403,7 @@ ul#chi-tabs-bordered.chi-tabs
       .chi-tab__description
         | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
       :code(lang="html")
-        <chi-expansion-panel step="4" heading="Disabled panel" state="disabled" bordered></chi-expansion-panel>
+        <chi-expansion-panel step="4" title="Disabled panel" state="disabled" bordered></chi-expansion-panel>
     .chi-tabs-panel#html-bordered-disabled
       .chi-tab__description
         | Expansion panel components also support a bordered version. Apply the <code>-bordered</code> class where desired.
@@ -441,7 +441,7 @@ ul#chi-tabs-ex.chi-tabs
     a(href='#chi-tabs-ex-disabled') Disabled
 .example.-mb3
   .-p3.-bg--grey-10
-    chi-expansion-panel(heading='Expansion panel', state='done')
+    chi-expansion-panel(title='Expansion panel', state='done')
       div(slot='done')
         | CenturyLink
         br
@@ -452,7 +452,7 @@ ul#chi-tabs-ex.chi-tabs
         | Bellevue, WA 98004
       div(slot='change')
         button.chi-btn.-brand.-flat Change
-    chi-expansion-panel(heading='Expansion panel', state='active')
+    chi-expansion-panel(title='Expansion panel', state='active')
       div(slot='active')
         .chi-epanel__subtitle Active panel title
         p.chi-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
@@ -461,8 +461,8 @@ ul#chi-tabs-ex.chi-tabs
       div(slot='footer')
         button.chi-btn.-lg Previous
         button.chi-btn.-lg.-primary.-ml--2 Continue
-    chi-expansion-panel(heading='Expansion panel')
-    chi-expansion-panel(heading='Expansion panel', state='disabled')
+    chi-expansion-panel(title='Expansion panel')
+    chi-expansion-panel(title='Expansion panel', state='disabled')
   #chi-tabs-ex-done.chi-tabs-panel.-active
     .example-tabs.-pl--2
       ul.chi-tabs#examples-custom-done
@@ -472,7 +472,7 @@ ul#chi-tabs-ex.chi-tabs
           a(href=`#html-custom-done`) HTML
     .chi-tabs-panel.-active#webcomponent-custom-done
       :code(lang="html")
-        <chi-expansion-panel heading="Expansion panel" state="done">
+        <chi-expansion-panel title="Expansion panel" state="done">
           <div slot="done">
             CenturyLink</br>
             1100 112th Ave NE</br>
@@ -524,7 +524,7 @@ ul#chi-tabs-ex.chi-tabs
           a(href=`#html-custom-active`) HTML
     .chi-tabs-panel.-active#webcomponent-custom-active
       :code(lang="html")
-        <chi-expansion-panel heading="Expansion panel" state="active">
+        <chi-expansion-panel title="Expansion panel" state="active">
           <div slot="active">
             <div class="chi-epanel__subtitle">
               Active panel title
@@ -578,7 +578,7 @@ ul#chi-tabs-ex.chi-tabs
           a(href=`#html-custom-pending`) HTML
     .chi-tabs-panel.-active#webcomponent-custom-pending
       :code(lang="html")
-        <chi-expansion-panel heading="Expansion panel"></chi-expansion-panel>
+        <chi-expansion-panel title="Expansion panel"></chi-expansion-panel>
     .chi-tabs-panel#html-custom-pending
       :code(lang="html")
         <div class="chi-epanel">
@@ -618,7 +618,7 @@ ul#chi-tabs-ex.chi-tabs
           a(href=`#html-custom-disabled`) HTML
     .chi-tabs-panel.-active#webcomponent-custom-disabled
       :code(lang="html")
-        <chi-expansion-panel heading="Expansion panel" state="disabled"></chi-expansion-panel>
+        <chi-expansion-panel title="Expansion panel" state="disabled"></chi-expansion-panel>
     .chi-tabs-panel#html-custom-disabled
       :code(lang="html")
         <div class="chi-epanel -disabled">
