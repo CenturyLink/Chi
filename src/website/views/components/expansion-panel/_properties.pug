@@ -49,14 +49,14 @@ table.chi-table.chi-table__options.-hover
       td Sets the previous panel in <code>active</code> status.
 
 p.-text
-  span.chi-badge.-dark.-sm.-mr1
+  span.chi-badge.-dark.-sm.-mr--1
     span Tip
   | You can freely add, remove or change the <code>data-chi-epanel-action</code> attribute on the fly, as is the main
   | element with the <code>chi-epanel</code> class, the one which listens for the events.
 
 h3 Example
-.example.-mb3
-  .-p3.-bg--grey-10
+.example.-mb--3
+  .-p--3.-bg--grey-10
     .chi-epanel#example2
       .chi-epanel__header
         .chi-epanel__title(data-chi-epanel-action='toggle') Click me to toggle
@@ -124,8 +124,8 @@ p.-text
   | an element is activated, the previous expanding panels will get the done state and the next will get the pending
   | state.
 
-.example.-mb3#example3
-  .-p3.-bg--grey-10
+.example.-mb--3#example3
+  .-p--3.-bg--grey-10
     .chi-epanel.-active(data-chi-epanel-group='example3')
       .chi-epanel__header
         .chi-epanel__title Expansion panel #1
@@ -291,8 +291,8 @@ p.-text
   | have to add the <code>mode: "accordion"</code> configuration parameter at the moment of creation. Done states should
   | not be used in this mode. In this example, titles have been configured to trigger the action <code>toggle</code>,
   | and the expansion panel #3 also have next and previous buttons that fulfills the accordion behavior.
-.example.-mb3#example4
-  .-p3.-bg--grey-10
+.example.-mb--3#example4
+  .-p--3.-bg--grey-10
     .chi-epanel.-bordered.-active(data-chi-epanel-group='example4')
       .chi-epanel__header
         .chi-epanel__title(data-chi-epanel-action='toggle') Expansion panel #1
@@ -388,8 +388,8 @@ p.-text
   | In this mode, there is no automated action triggered when an element activates. So you have to manage all custom
   | behavior.
 
-.example.-mb3#example5
-  .-p3.-bg--grey-10
+.example.-mb--3#example5
+  .-p--3.-bg--grey-10
     .chi-epanel.-active(data-chi-epanel-group='example5')
       .chi-epanel__header
         .chi-epanel__title(data-chi-epanel-action='toggle') Expansion panel #1
@@ -501,8 +501,8 @@ p.-text
   | <code>pending</code> states instead of <code>active</code> and <code>pending</code> states. The overridden action
   | functions are for documenting purposes only because they clone the functionality of the default ones.
 
-.example.-mb3#example6
-  .-p3.-bg--grey-10
+.example.-mb--3#example6
+  .-p--3.-bg--grey-10
     .chi-epanel.-done(data-chi-epanel-group='example6')
       .chi-epanel__header
         .chi-epanel__title(data-chi-epanel-action='done') Expansion panel #1
@@ -628,7 +628,7 @@ p.-text
   });
 
 p.-text
-  span.chi-badge.-dark.-sm.-mr1
+  span.chi-badge.-dark.-sm.-mr--1
     span Tip
   | It is safe to call the <code>expansionPanel</code> method more than once, as it will return any previously created
   | expansion panel component associated to the element.
