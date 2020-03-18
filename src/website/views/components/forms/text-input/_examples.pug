@@ -319,51 +319,32 @@ p.-text
   | floating labels for <code>-lg</code> and <code>-xl</code> inputs. This component requires JavaScript to add/remove
   | the <code>-active</code> class whenever the input focuses or is not empty.
 
-ul#chi-tabs.chi-tabs
-  li.-active
-    a(href="#floatingInitial") Initial
-  li
-    a(href="#floatingActive") Active
 .example.-mb--3
-  #floatingInitial.chi-tabs-panel.-active
-    .-p--3
-      each size in ['lg', 'xl']
-        div(class=`chi-col -w--12 -p--2`)
-          .m-input__wrapper.-floatingLabel(style="max-width:20rem")
-            input(type="text", class=`chi-input -${size} -mr--3`, id=`floating-label-${size}`)
-            label(for=`floating-label-${size}`) Placeholder text
-    :code(lang='html')
-      <div class="m-input__wrapper -floatingLabel">
-        <input class="chi-input -lg" type="text" id="floating-label-lg">
-        <label for="floating-label-lg">Placeholder text</label>
-      </div>
+  .-p--3
+    each size in ['lg', 'xl']
+      div(class=`chi-col -w--12 -p--2`)
+        .m-input__wrapper.-floatingLabel(style="max-width:20rem")
+          input(type="text", class=`chi-input -${size} -mr--3`, id=`floating-label-${size}`)
+          label(for=`floating-label-${size}`) Placeholder text
+  :code(lang='html')
+    <div class="m-input__wrapper -floatingLabel">
+      <input class="chi-input -lg" type="text" id="floating-label-lg">
+      <label for="floating-label-lg">Placeholder text</label>
+    </div>
 
-      <div class="m-input__wrapper -floatingLabel">
-        <input class="chi-input -xl" type="text" id="floating-label-xl">
-        <label for="floating-label-xl">Placeholder text</label>
-      </div>
-  #floatingActive.chi-tabs-panel
-    .-p--3
-      each size in ['lg', 'xl']
-        div(class=`chi-col -w--12 -p--2`)
-          .m-input__wrapper.-floatingLabel(style="max-width:20rem")
-            input(type="text", class=`chi-input -${size} -mr--3`, id=`floating-label-${size}-2`, value="Sample text")
-            label.-active(for=`floating-label-${size}-2`) Placeholder text
-    :code(lang='html')
-      <div class="m-input__wrapper -floatingLabel">
-        <input class="chi-input -lg" type="text" id="floating-label-lg">
-        <label class="-active" for="floating-label-lg">Placeholder text</label>
-      </div>
+    <div class="m-input__wrapper -floatingLabel">
+      <input class="chi-input -xl" type="text" id="floating-label-xl">
+      <label for="floating-label-xl">Placeholder text</label>
+    </div>
 
-      <div class="m-input__wrapper -floatingLabel">
-        <input class="chi-input -xl" type="text" id="floating-label-xl">
-        <label class="-active" for="floating-label-xl">Placeholder text</label>
-      </div>
+    <script>
+      chi.floatingLabel(document.querySelectorAll('.-floatingLabel'));
+    </script>
 
 script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('chi-tabs'));
+      chi.floatingLabel(document.querySelectorAll('.-floatingLabel'));
     }
   );
