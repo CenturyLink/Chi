@@ -15,10 +15,10 @@ each size in ['default', 'sm', 'lg']
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(color=type, icon=val, type='banner', center, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-center-${type}-${size}`)
         =`This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
-  h4 Dismissible / #{size}
+  h4 Closable / #{size}
   div(class=`test-banner-dismissible-${size} -w--100`)
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val, type="banner" dismissible, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-dismissible-${type}-${size}`)
+      chi-alert.-m--2(color=type, icon=val, type="banner" closable, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-dismissible-${type}-${size}`)
         =`This is a dismissible ${type} alert`
   h4 Borderless / #{size}
   div(class=`test-banner-borderless-${size} -w--100`)

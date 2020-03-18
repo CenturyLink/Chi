@@ -49,6 +49,23 @@
           "required": false
         },
         {
+          "name": "closable",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "closable",
+          "reflectToAttr": true,
+          "docs": "to make the alert dismissible.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "color",
           "type": "string",
           "mutable": false,
@@ -59,23 +76,6 @@
           "values": [
             {
               "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "dismissible",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "dismissible",
-          "reflectToAttr": true,
-          "docs": "to make the alert dismissible.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
             }
           ],
           "optional": false,
@@ -948,12 +948,12 @@
           "required": false
         },
         {
-          "name": "collapsible",
+          "name": "headless",
           "type": "boolean",
           "mutable": false,
-          "attr": "collapsible",
+          "attr": "headless",
           "reflectToAttr": true,
-          "docs": "adds a close button",
+          "docs": "to remove the space for the header",
           "docsTags": [],
           "values": [
             {
@@ -964,13 +964,14 @@
           "required": false
         },
         {
-          "name": "headless",
+          "name": "nonClosable",
           "type": "boolean",
           "mutable": false,
-          "attr": "headless",
+          "attr": "non-closable",
           "reflectToAttr": true,
-          "docs": "to remove the space for the header",
+          "docs": "To render Drawer without a close button",
           "docsTags": [],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
