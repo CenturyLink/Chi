@@ -61,7 +61,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item
+                .chi-form__item
                   +label(size)
                   +input(style, state, size, disabled, id='example')
 
@@ -75,7 +75,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-input__wrapper.-icon--left
+                .chi-input__wrapper.-icon--left
                   +input(style, state, size, disabled)
                   +icon('atom')
 
@@ -89,9 +89,9 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item
+                .chi-form__item
                   +label(size)
-                  .m-input__wrapper.-icon--left
+                  .chi-input__wrapper.-icon--left
                     +input(style, state, size, disabled, id='example')
                     +icon('atom')
 
@@ -105,7 +105,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-input__wrapper.-icon--right
+                .chi-input__wrapper.-icon--right
                   +input(style, state, size, disabled)
                   if style == 'success'
                     .chi-icon.-text--success
@@ -134,9 +134,9 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item
+                .chi-form__item
                   +label(size)
-                  .m-input__wrapper.-icon--right
+                  .chi-input__wrapper.-icon--right
                     +input(style, state, size, disabled, id='example')
                     if style == 'success'
                       .chi-icon.-text--success
@@ -165,7 +165,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-input__wrapper.-icon--left.-icon--right
+                .chi-input__wrapper.-icon--left.-icon--right
                   +input(style, state, size, disabled)
                   +icon('atom')
                   if style == 'success'
@@ -195,9 +195,9 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item
+                .chi-form__item
                   +label(size)
-                  .m-input__wrapper.-icon--left.-icon--right
+                  .chi-input__wrapper.-icon--left.-icon--right
                     +input(style, state, size, disabled, id='example')
                     +icon('atom')
                     if style == 'success'
@@ -227,7 +227,7 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item.-row
+                .chi-form__item.-row
                   label.chi-label.-mr--1(class=`-${size}`)
                     | Label
                   +input(style, state, size, disabled, id='example')
@@ -242,9 +242,9 @@ each size in ['default', 'sm', 'small', 'md', 'lg', 'large', 'xl']
           each style in ['default', 'success', 'warning', 'danger']
             td
               .-m--1
-                .m-form__item
-                  .m-label__wrapper
+                .chi-form__item
+                  .chi-label__wrapper
                     +label(size)
                     i.chi-icon.icon-circle-info-outline.-text--muted
-                  .m-input__wrapper
+                  .chi-input__wrapper
                     +input(style, state, size, disabled, id='example')

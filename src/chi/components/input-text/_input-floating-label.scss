@@ -27,7 +27,7 @@ $sizes: (
 );
 
 .a-inputWrapper,
-.m-input__wrapper {
+.chi-input__wrapper {
   &.-floatingLabel {
     & > input,
     & > select {
@@ -74,7 +74,7 @@ $sizes: (
 /* IE11 CSS hack */
 @media all and (-ms-high-contrast: none) {
   .a-inputWrapper,
-  .m-input__wrapper {
+  .chi-input__wrapper {
     &.-floatingLabel {
       & > input,
       & > select {

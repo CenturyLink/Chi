@@ -6,11 +6,11 @@ p.-text
 h3 Base
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
+    .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example__base") Label
       input(type="text", class="chi-input", placeholder="Placeholder" id="example__base")
   :code(lang="html")
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__base">Label</label>
       <input type="text" class="chi-input" placeholder="Placeholder" id="example__base">
     </div>
@@ -18,11 +18,11 @@ h3 Base
 h3 Disabled
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
+    .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example__disabled") Label
       input(type="text", class="chi-input", value="Sample Text", id="example__disabled", disabled)
   :code(lang="html")
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__disabled">Label</label>
       <input type="text" class="chi-input" value="Sample Text" id="example__disabled" disabled>
     </div>
@@ -31,11 +31,11 @@ h3 Danger
 p.-text Text inputs support the validation class modifier <code>-danger</code> for indicating an invalid input.
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
+    .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example__danger") Label
       input(type="text", class="chi-input -danger", value="Sample Text", id="example__danger")
   :code(lang="html")
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__danger">Label</label>
       <input type="text" class="chi-input -danger" value="Sample Text" id="example__danger">
     </div>
@@ -43,14 +43,14 @@ p.-text Text inputs support the validation class modifier <code>-danger</code> f
 h3 Label with icon
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
-      .m-label__wrapper
+    .chi-form__item(style="max-width:20rem")
+      .chi-label__wrapper
         label.chi-label(for='example__label-with-icon') Label
         i.chi-icon.icon-circle-info-outline.-text--muted
       input(type="text", class="chi-input", id='example__label-with-icon', placeholder="Placeholder")
   :code(lang="html")
-    <div class="m-form__item">
-      <div class="m-label__wrapper">
+    <div class="chi-form__item">
+      <div class="chi-label__wrapper">
         <label class="chi-label" for="example__label-with-icon">Label</label>
         <i class="chi-icon icon-circle-info-outline -text--muted"></i>
       </div>
@@ -60,11 +60,11 @@ h3 Label with icon
 h3 Inline Label
 .example.-mb--3
   .-p--3
-    .m-form__item.-row(style="max-width:20rem")
+    .chi-form__item.-row(style="max-width:20rem")
       label.chi-label.-mr--1(for='example__inline-label') Label
       input(type="text", class="chi-input", id='example__inline-label', placeholder="Placeholder")
   :code(lang="html")
-    <div class="m-form__item -row">
+    <div class="chi-form__item -row">
       <label class="chi-label" for="example__inline-label">Label</label>
       <input class="chi-input" type="text" id="example__inline-label" placeholder="Placeholder">
     </div>
@@ -72,12 +72,12 @@ h3 Inline Label
 h3 Inline Label - width controlled using percent
 .example.-mb--3
   .-p--3
-    .m-form__item.-row
+    .chi-form__item.-row
       label.chi-label.-w--50(for='example__inline-label-percent') Label width 50%
       .-w--50
         input(type="text", class="chi-input", id='example__inline-label-percent', placeholder="Placeholder")
   :code(lang="html")
-    <div class="m-form__item -row">
+    <div class="chi-form__item -row">
       <label class="chi-label -w--50" for="example__inline-label-percent">Label</label>
       <div class="-w--50">
         <input class="chi-input" type="text" id="example__inline-label-percent" placeholder="Placeholder">
@@ -87,12 +87,12 @@ h3 Inline Label - width controlled using percent
 h3 Inline Label - width controlled using grid
 .example.-mb--3
   .-p--3
-    .m-form__item.-row.chi-grid.-noGutter
+    .chi-form__item.-row.chi-grid.-noGutter
       label.chi-label.chi-col.-w--3(for='example__inline-label-grid') Label width 3 columns
       .chi-col.-w--9
         input(type="text", class="chi-input", id='example__inline-label-grid', placeholder="Placeholder")
   :code(lang="html")
-    <div class="m-form__item -row chi-grid -noGutter">
+    <div class="chi-form__item -row chi-grid -noGutter">
       <label class="chi-label -w--3" for="example__inline-label-grid">Label</label>
       <div class="-w--9">
         <input class="chi-input" type="text" id="example__inline-label-grid" placeholder="Placeholder">
@@ -102,19 +102,19 @@ h3 Inline Label - width controlled using grid
 h3 Inline Inputs
 .example.-mb--3
   .-p--3.-d--flex
-    .m-form__item.-inline.-flex--grow1
+    .chi-form__item.-inline.-flex--grow1
       label.chi-label.-mr--1(for='example__inline-input01') Label
       input(type="text", class="chi-input", id='example__inline-input01', placeholder="Placeholder")
-    .m-form__item.-inline.-flex--grow1
+    .chi-form__item.-inline.-flex--grow1
       label.chi-label.-mr--1(for='example__inline-input02') Label
       input(type="text", class="chi-input", id='example__inline-input02', placeholder="Placeholder")
   :code(lang="html")
     <div class="-d--flex">
-      <div class="m-form__item -inline -flex--grow1">
+      <div class="chi-form__item -inline -flex--grow1">
         <label class="chi-label" for="example__inline-input01">Label</label>
         <input class="chi-input" type="text" id="example__inline-input01" placeholder="Placeholder">
       </div>
-      <div class="m-form__item -inline -flex--grow1">
+      <div class="chi-form__item -inline -flex--grow1">
         <label class="chi-label" for="example__inline-input02">Label</label>
         <input class="chi-input" type="text" id="example__inline-input02" placeholder="Placeholder">
       </div>
@@ -123,21 +123,21 @@ h3 Inline Inputs
 h2 Icons
 p.-text
   | To add icons to a text input, wrap the input in a <code>div</code> using the class
-  | <code>m-input__wrapper</code>. Next, add the icon as a sibling of the <code>input</code> and utilize
+  | <code>chi-input__wrapper</code>. Next, add the icon as a sibling of the <code>input</code> and utilize
   | an icon alignment utility class (e.g. <code>-icon--left</code>) to specify where it should be placed.
 
 h3 Left Aligned
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
+    .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example__icon-left-aligned") Label
-      .m-input__wrapper.-icon--left
+      .chi-input__wrapper.-icon--left
         input(type="text", class="chi-input", placeholder="Placeholder", value="Sample Text", id="example__icon-left-aligned")
         i.chi-icon.icon-search.-text--muted
   :code(lang="html")
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__icon-left-aligned">Label</label>
-      <div class="m-input__wrapper -icon--left">
+      <div class="chi-input__wrapper -icon--left">
         <input type="text" class="chi-input" placeholder="Placeholder" value="Sample text" id="example__icon-left-aligned">
         <i class="chi-icon icon-search -text--muted"></i>
         </div>
@@ -147,15 +147,15 @@ h3 Left Aligned
 h3 Right Aligned
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
+    .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example__icon-right-aligned") Label
-      .m-input__wrapper.-icon--right
+      .chi-input__wrapper.-icon--right
         input(type="text", class="chi-input", placeholder="Placeholder", value="Sample Text", id="example__icon-right-aligned")
         i.chi-icon.icon-search.-text--muted
   :code(lang="html")
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__icon-right-aligned">Label</label>
-      <div class="m-input__wrapper -icon--right">
+      <div class="chi-input__wrapper -icon--right">
         <input type="text" class="chi-input" placeholder="Placeholder" value="Sample text" id="example__icon-right-aligned">
         <i class="chi-icon icon-search -text--muted"></i>
       </div>
@@ -164,16 +164,16 @@ h3 Right Aligned
 h3 Left + Right Aligned
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
+    .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example__icon-left-right-aligned") Label
-      .m-input__wrapper.-icon--left.-icon--right
+      .chi-input__wrapper.-icon--left.-icon--right
         input(type="text", class="chi-input", placeholder="Placeholder", value="Sample Text", id="example__icon-left-right-aligned")
         i.chi-icon.icon-search.-text--muted
         i.chi-icon.icon-check.-text--success
   :code(lang="html")
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__icon-left-right-aligned">Label</label>
-      <div class="m-input__wrapper -icon--left -icon--right">
+      <div class="chi-input__wrapper -icon--left -icon--right">
         <input type="text" class="chi-input" placeholder="Placeholder" value="Sample text" id="example__icon-left-right-aligned">
         <i class="chi-icon icon-search -text--muted"></i>
         <i class="chi-icon icon-check -text--success"></i>
@@ -187,26 +187,26 @@ p.-text
 h3 Success
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
+    .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example__state-success") Label
       input(type="text", class="chi-input -success", placeholder="Placeholder", value="Sample Text", id="example__state-success")
   :code(lang="html")
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__state-success">Label</label>
       <input type="text" class="chi-input -success" placeholder="Placeholder" value="Sample Text" id="example__state-success">
     </div>
 
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
+    .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example__state-success-with-icon") Label
-      .m-input__wrapper.-icon--right
+      .chi-input__wrapper.-icon--right
         input(type="text", class="chi-input -success", placeholder="Placeholder", value="Sample Text", id="example__state-success-with-icon")
         i.chi-icon.icon-check.-text--success
   :code(lang="html")
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__state-success-with-icon">Label</label>
-      <div class="m-input__wrapper -icon--right">
+      <div class="chi-input__wrapper -icon--right">
         <input type="text" class="chi-input -success" placeholder="Placeholder" value="Sample Text" id="example__state-success-with-icon">
         <i class="chi-icon icon-check -text--success"></i>
       </div>
@@ -215,26 +215,26 @@ h3 Success
 h3 Warning
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
+    .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example__state-warning") Label
       input(type="text", class="chi-input -warning", placeholder="Placeholder", value="Sample Text", id="example__state-warning")
   :code(lang="html")
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__state-warning">Label</label>
       <input type="text" class="chi-input -warning" placeholder="Placeholder" value="Sample Text" id="example__state-warning">
     </div>
 
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
+    .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example__state-warning-with-icon") Label
-      .m-input__wrapper.-icon--right
+      .chi-input__wrapper.-icon--right
         input(type="text", class="chi-input -warning", placeholder="Placeholder", value="Sample Text", id="example__state-warning-with-icon")
         i.chi-icon.icon-warning.-text--warning
   :code(lang="html")
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__state-warning-with-icon">Label</label>
-      <div class="m-input__wrapper -icon--right">
+      <div class="chi-input__wrapper -icon--right">
         <input type="text" class="chi-input -success" placeholder="Placeholder" value="Sample Text" id="example__state-warning-with-icon">
         <i class="chi-icon icon-warning -text--warning"></i>
       </div>
@@ -243,26 +243,26 @@ h3 Warning
 h3 Danger
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
+    .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example__state-danger") Label
       input(type="text", class="chi-input -danger", placeholder="Placeholder", value="Sample Text", id="example__state-danger")
   :code(lang="html")
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__state-danger">Label</label>
       <input type="text" class="chi-input -danger" placeholder="Placeholder" value="Sample Text" id="example__state-danger">
     </div>
 
 .example.-mb--3
   .-p--3
-    .m-form__item(style="max-width:20rem")
+    .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example__state-danger-with-icon") Label
-      .m-input__wrapper.-icon--right
+      .chi-input__wrapper.-icon--right
         input(type="text", class="chi-input -danger", placeholder="Placeholder", value="Sample Text", id="example__state-danger-with-icon")
         i.chi-icon.icon-circle-warning.-text--danger
   :code(lang="html")
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__state-danger-with-icon">Label</label>
-      <div class="m-input__wrapper -icon--right">
+      <div class="chi-input__wrapper -icon--right">
         <input type="text" class="chi-input -danger" placeholder="Placeholder" value="Sample Text" id="example__state-danger-with-icon">
         <i class="chi-icon icon-circle-warning -text--danger"></i>
       </div>
@@ -276,35 +276,35 @@ p.-text
 .example.-mb--3
   .-p--3
     .-p--2
-      .m-form__item(style="max-width:20rem")
+      .chi-form__item(style="max-width:20rem")
         label.chi-label(for="example__size-sm") Label
         input(type="text", class="chi-input -sm -mr--3", placeholder="Sample Text", id="example__size-sm")
     .-p--2
-      .m-form__item(style="max-width:20rem")
+      .chi-form__item(style="max-width:20rem")
         label.chi-label(for="example__size-md") Label
         input(type="text", class="chi-input -md -mr--3", placeholder="Sample Text", id="example__size-md")
     .-p--2
-      .m-form__item(style="max-width:20rem")
+      .chi-form__item(style="max-width:20rem")
         label.chi-label(for="example__size-lg") Label
         input(type="text", class="chi-input -lg -mr--3", placeholder="Sample Text", id="example__size-lg")
     .-p--2
-      .m-form__item(style="max-width:20rem")
+      .chi-form__item(style="max-width:20rem")
         label.chi-label(for="example__size-xl") Label
         input(type="text", class="chi-input -xl -mr--3", placeholder="Sample Text", id="example__size-xl")
   :code(lang='html')
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__size-sm">Label</label>
       <input type="text" class="chi-input -sm" placeholder="Sample Text" id="example__size-sm">
     </div>
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__size-md">Label</label>
       <input type="text" class="chi-input -md" placeholder="Sample Text" id="example__size-md">
     </div>
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__size-lg">Label</label>
       <input type="text" class="chi-input -lg" placeholder="Sample Text" id="example__size-lg">
     </div>
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-label" for="example__size-xl">Label</label>
       <input type="text" class="chi-input -xl" placeholder="Sample Text" id="example__size-xl">
     </div>
@@ -323,16 +323,16 @@ p.-text
   .-p--3
     each size in ['lg', 'xl']
       div(class=`chi-col -w--12 -p--2`)
-        .m-input__wrapper.-floatingLabel(style="max-width:20rem")
+        .chi-input__wrapper.-floatingLabel(style="max-width:20rem")
           input(type="text", class=`chi-input -${size} -mr--3`, id=`floating-label-${size}`)
           label(for=`floating-label-${size}`) Placeholder text
   :code(lang='html')
-    <div class="m-input__wrapper -floatingLabel">
+    <div class="chi-input__wrapper -floatingLabel">
       <input class="chi-input -lg" type="text" id="floating-label-lg">
       <label for="floating-label-lg">Placeholder text</label>
     </div>
 
-    <div class="m-input__wrapper -floatingLabel">
+    <div class="chi-input__wrapper -floatingLabel">
       <input class="chi-input -xl" type="text" id="floating-label-xl">
       <label for="floating-label-xl">Placeholder text</label>
     </div>

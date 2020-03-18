@@ -12,7 +12,7 @@ h3 Base
 
 .example.-mb--3
   .-p--3
-    .m-form__item
+    .chi-form__item
       chi-number-input
   .example-tabs.-pl--2
     ul.chi-tabs#examples-default
@@ -29,10 +29,10 @@ h3 Base
   .chi-tabs-panel#html
     .chi-tab__description
       | To render a number input, apply the classes <code>chi-input</code> to an <code>input type="number"</code>.
-      | For proper styling, number inputs must be wrapped in an <code>m-input__wrapper</code> div with two buttons.
+      | For proper styling, number inputs must be wrapped in an <code>chi-input__wrapper</code> div with two buttons.
     :code(lang="html")
-      <div class="m-form__item -row">
-        <div class="m-input__wrapper">
+      <div class="chi-form__item -row">
+        <div class="chi-input__wrapper">
           <input id="input-number-1" type="number" class="chi-input" value="0" aria-label="Input Label">
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>
@@ -44,7 +44,7 @@ h3 Base
 h3 Disabled
 .example.-mb--3
   .-p--3
-    .m-form__item
+    .chi-form__item
       chi-number-input(disabled=true)
   .example-tabs.-pl--2
     ul.chi-tabs#examples-disabled
@@ -57,8 +57,8 @@ h3 Disabled
       <chi-number-input disabled></chi-number-input>
   .chi-tabs-panel#html-disabled
     :code(lang="html")
-      <div class="m-form__item -row">
-        <div class="m-input__wrapper">
+      <div class="chi-form__item -row">
+        <div class="chi-input__wrapper">
           <input type="number" class="chi-input" value="0" aria-label="Input Label" disabled>
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>
@@ -69,7 +69,7 @@ h3 Sizes
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
-      .m-form__item.-inline.-mr--3
+      .chi-form__item.-inline.-mr--3
         chi-number-input(size=`${size}`)
   .example-tabs.-pl--2
     ul.chi-tabs#examples-sizes
@@ -93,29 +93,29 @@ h3 Sizes
       |  <code>-lg</code>, <code>-xl</code>.
       | The default size is <code>-md</code>.
     :code(lang="html")
-      <div class="m-form__item -row">
-        <div class="m-input__wrapper">
+      <div class="chi-form__item -row">
+        <div class="chi-input__wrapper">
           <input type="number" class="chi-input -sm" value="0" aria-label="Input Label">
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>
         </div>
       </div>
-      <div class="m-form__item -row">
-        <div class="m-input__wrapper">
+      <div class="chi-form__item -row">
+        <div class="chi-input__wrapper">
           <input type="number" class="chi-input -md" value="0" aria-label="Input Label">
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>
         </div>
       </div>
-      <div class="m-form__item -row">
-        <div class="m-input__wrapper">
+      <div class="chi-form__item -row">
+        <div class="chi-input__wrapper">
           <input type="number" class="chi-input -lg" value="0" aria-label="Input Label">
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>
         </div>
       </div>
-      <div class="m-form__item -row">
-        <div class="m-input__wrapper">
+      <div class="chi-form__item -row">
+        <div class="chi-input__wrapper">
           <input type="number" class="chi-input -xl" value="0" aria-label="Input Label">
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>

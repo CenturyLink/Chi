@@ -6,7 +6,7 @@ h2 Examples
 h3 Base
 .example.-mb--3
   .-p--3
-    .m-form__item
+    .chi-form__item
       chi-switch(id='toggle1',label='Label')
   .example-tabs.-pl--2
     ul.chi-tabs#examples-default
@@ -19,7 +19,7 @@ h3 Base
       <chi-switch id="toggle1" label="Label"></chi-switch>
   .chi-tabs-panel#html
     :code(lang="html")
-      <div class="m-form__item">
+      <div class="chi-form__item">
         <label class="chi-switch" for="toggle1">
           <input type="checkbox" class="chi-switch__input" id="toggle1">
           <span class="chi-switch__content">
@@ -32,7 +32,7 @@ h3 Base
 h3 Disabled
 .example.-mb--3
   .-p--3
-    .m-form__item
+    .chi-form__item
       chi-switch(id='toggle2', label='Label', disabled)
   .example-tabs.-pl--2
     ul.chi-tabs#examples-disabled
@@ -45,7 +45,7 @@ h3 Disabled
       <chi-switch id="toggle2" label="Label" disabled></chi-switch>
   .chi-tabs-panel#html-disabled
     :code(lang="html")
-      <div class="m-form__item">
+      <div class="chi-form__item">
         <label class="chi-switch" for="toggle2">
           <input type="checkbox" class="chi-switch__input" name="toggle2" value="toggle2" disabled>
           <span id="toggle2" class="chi-switch__content">
@@ -59,9 +59,9 @@ h3 Stacked
 
 .example.-mb--3
   .-p--3
-    .m-form__item
+    .chi-form__item
       chi-switch(id='toggle3', label='Label')
-    .m-form__item
+    .chi-form__item
       chi-switch(id='toggle4', label='Label')
   .example-tabs.-pl--2
     ul.chi-tabs#examples-stacked
@@ -71,17 +71,17 @@ h3 Stacked
         a(href=`#html-stacked`) HTML
   .chi-tabs-panel.-active#webcomponent-stacked
     :code(lang="html")
-      <div class="m-form__item">
+      <div class="chi-form__item">
         <chi-switch id="toggle3" label="Label"></chi-switch>
       </div>
-      <div class="m-form__item">
+      <div class="chi-form__item">
         <chi-switch id="toggle4" label="Label"></chi-switch>
       </div>
   .chi-tabs-panel#html-stacked
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Configure options</legend>
-        <div class="m-form__item">
+        <div class="chi-form__item">
           <label class="chi-switch" for="toggle3">
             <input type="checkbox" class="chi-switch__input" id="toggle3">
             <span class="chi-switch__content">
@@ -90,7 +90,7 @@ h3 Stacked
             <span class="chi-switch__label">Label</span>
           </label>
         </div>
-        <div class="m-form__item">
+        <div class="chi-form__item">
           <label class="chi-switch" for="toggle4">
             <input type="checkbox" class="chi-switch__input" id="toggle4">
             <span class="chi-switch__content">
@@ -104,9 +104,9 @@ h3 Stacked
 h3 Inline
 .example.-mb--3
   .-p--3.-d--flex
-    .m-form__item.-inline
+    .chi-form__item.-inline
       chi-switch(id='toggle5', label='Label')
-    .m-form__item.-inline
+    .chi-form__item.-inline
       chi-switch(id='toggle6', label='Label')
   .example-tabs.-pl--2
     ul.chi-tabs#examples-inline
@@ -116,21 +116,21 @@ h3 Inline
         a(href=`#html-inline`) HTML
   .chi-tabs-panel.-active#webcomponent-inline
     .chi-tab__description
-      | Apply the <code>-inline</code> class to <code>m-form__item</code> for displaying toggle switches inline.
+      | Apply the <code>-inline</code> class to <code>chi-form__item</code> for displaying toggle switches inline.
     :code(lang="html")
-      <div class="m-form__item -inline">
+      <div class="chi-form__item -inline">
         <chi-switch id="toggle5" label="Label"></chi-switch>
       </div>
-      <div class="m-form__item -inline">
+      <div class="chi-form__item -inline">
         <chi-switch id="toggle6" label="Label"></chi-switch>
       </div>
   .chi-tabs-panel#html-inline
     .chi-tab__description
-      | Apply the class <code>-inline</code> to <code>m-form__item</code> to display switches inline.
+      | Apply the class <code>-inline</code> to <code>chi-form__item</code> to display switches inline.
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Configure options</legend>
-        <div class="m-form__item -inline">
+        <div class="chi-form__item -inline">
           <label class="chi-switch" for="toggle5">
             <input type="checkbox" class="chi-switch__input" id="toggle5">
             <span class="chi-switch__content">
@@ -139,7 +139,7 @@ h3 Inline
             <span class="chi-switch__label">Label</span>
           </label>
         </div>
-        <div class="m-form__item -inline">
+        <div class="chi-form__item -inline">
           <label class="chi-switch" for="toggle6">
             <input type="checkbox" class="chi-switch__input" id="toggle6">
             <span class="chi-switch__content">
@@ -153,36 +153,36 @@ h3 Inline
 h3 Switch list
 p.-text
   | Switch lists are used to wrap a series of switches in a list.
-  | To render, apply the class <code>-list</code> to <code>m-form__item</code>.
+  | To render, apply the class <code>-list</code> to <code>chi-form__item</code>.
 .example.-mb--3
   .-p--3
     legend.chi-label Select options
-    ul.m-form__item.-list(style="max-width:20rem")
-      li.m-form__item
+    ul.chi-form__item.-list(style="max-width:20rem")
+      li.chi-form__item
         label.chi-switch(for="toggle10")
           span.chi-switch__label Label
           input(type="checkbox", class="chi-switch__input", id="toggle10")
           span(class="chi-switch__content")
             span.chi-switch__thumb
-      li.m-form__item
+      li.chi-form__item
         label.chi-switch(for="toggle11")
           span.chi-switch__label Label
           input(type="checkbox", class="chi-switch__input", id="toggle11")
           span(class="chi-switch__content")
             span.chi-switch__thumb
-      li.m-form__item
+      li.chi-form__item
         label.chi-switch(for="toggle12")
           span.chi-switch__label Label
           input(type="checkbox", class="chi-switch__input", id="toggle12")
           span(class="chi-switch__content")
             span.chi-switch__thumb
-      li.m-form__item
+      li.chi-form__item
         label.chi-switch(for="toggle13")
           span.chi-switch__label Label
           input(type="checkbox", class="chi-switch__input", id="toggle13")
           span(class="chi-switch__content")
             span.chi-switch__thumb
-      li.m-form__item
+      li.chi-form__item
         label.chi-switch(for="toggle14")
           span.chi-switch__label Label
           input(type="checkbox", class="chi-switch__input", id="toggle14")
@@ -191,8 +191,8 @@ p.-text
   :code(lang='html')
     <fieldset>
       <legend class="chi-label">Select options</legend>
-      <ul class="m-form__item -list">
-        <li class="m-form__item">
+      <ul class="chi-form__item -list">
+        <li class="chi-form__item">
           <label class="chi-switch" for="toggle10">
             <span class="chi-switch__label">Label</span>
             <input type="checkbox" class="chi-switch__input" id="toggle10">
@@ -201,7 +201,7 @@ p.-text
             </span>
           </label>
         </li>
-        <li class="m-form__item">
+        <li class="chi-form__item">
           <label class="chi-switch" for="toggle11">
             <span class="chi-switch__label">Label</span>
             <input type="checkbox" class="chi-switch__input" id="toggle11">
@@ -210,7 +210,7 @@ p.-text
             </span>
           </label>
         </li>
-        <li class="m-form__item">
+        <li class="chi-form__item">
           <label class="chi-switch" for="toggle12">
             <span class="chi-switch__label">Label</span>
             <input type="checkbox" class="chi-switch__input" id="toggle12">
@@ -219,7 +219,7 @@ p.-text
             </span>
           </label>
         </li>
-        <li class="m-form__item">
+        <li class="chi-form__item">
           <label class="chi-switch" for="toggle13">
             <span class="chi-switch__label">Label</span>
             <input type="checkbox" class="chi-switch__input" id="toggle13">
@@ -228,7 +228,7 @@ p.-text
             </span>
           </label>
         </li>
-        <li class="m-form__item" for="toggle14">
+        <li class="chi-form__item" for="toggle14">
           <label class="chi-switch">
             <span class="chi-switch__label">Label</span>
             <input type="checkbox" class="chi-switch__input" id="toggle14">
@@ -243,14 +243,14 @@ p.-text
 h3 Switch with Left Label
 .example.-mb--3
   .-p--3
-    .m-form__item
+    .chi-form__item
       label.chi-switch(for="toggle7")
         span.chi-switch__label Label
         input(type="checkbox", class="chi-switch__input", id="toggle7")
         span(id="toggle7", class="chi-switch__content")
           span.chi-switch__thumb
   :code(lang="html")
-    <div class="m-form__item">
+    <div class="chi-form__item">
       <label class="chi-switch" for="toggle7">
         <span class="chi-switch__label">Label</span>
         <input type="checkbox" class="chi-switch__input" id="toggle7">
@@ -263,7 +263,7 @@ h3 Switch with Left Label
 h3 Switch with Hidden Label
 .example.-mb--3
   .-p--3
-    .m-form__item
+    .chi-form__item
       chi-switch(id='toggle7',label='Label', hide-label)
   .example-tabs.-pl--2
     ul.chi-tabs#examples-hidden-label
@@ -276,7 +276,7 @@ h3 Switch with Hidden Label
       | Apply the <code>hide-label</code> attribute to <code>chi-switch</code> to render a switch without a label. Use this method for rendering switches
       | in close proximity to other text that clearly describes its purpose.
     :code(lang="html")
-      <div class="m-form__item">
+      <div class="chi-form__item">
         <chi-switch id="toggle7" label="Label" hide-label></chi-switch>
       </div>
   .chi-tabs-panel#html-hidden-label
@@ -284,7 +284,7 @@ h3 Switch with Hidden Label
       | Apply the class <code>-label--hide</code> to <code>chi-switch</code> to render a switch without a label. Use this method for rendering switches
       | in close proximity to other text that clearly describes its purpose.
     :code(lang="html")
-      <div class="m-form__item">
+      <div class="chi-form__item">
         <label class="chi-switch -label--hide" for="toggle8">
           <input type="checkbox" class="chi-switch__input" id="toggle8">
           <span class="chi-switch__content">
