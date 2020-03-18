@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, h } from '@stencil/core';
+import { Component, Prop, Watch, h, Element, State } from '@stencil/core';
 
 const EP_MODES = ['done', 'active', 'pending', 'disabled'];
 
@@ -8,6 +8,7 @@ const EP_MODES = ['done', 'active', 'pending', 'disabled'];
   scoped: true
 })
 export class ExpansionPanel {
+  @Element() el;
   /**
    * to set expansion panel state. Possible values are: {'done', 'active', 'pending' (default value), and 'disabled'}
    */
@@ -19,14 +20,16 @@ export class ExpansionPanel {
   @Prop({ reflect: true }) step: string;
 
   /**
-   * to set the title of the panel
-   */
-  @Prop({ reflect: true }) heading: string;
-
-  /**
    * is the panel border-styled?
    */
   @Prop({ reflect: true }) bordered: boolean;
+
+  /**
+   * to set the title of the panel
+   */
+  @State() epanelTitle: string;
+
+  private mutationObserver;
 
   @Watch('state')
   stateValidation(newValue: string) {
@@ -37,7 +40,36 @@ export class ExpansionPanel {
     }
   }
 
+  connectedCallback() {
+    const observerTarget = this.el;
+    const mutationObserverConfig = {
+      attributes: true,
+      attributeOldValue: true,
+      attributeFilter: ['title']
+    };
+
+    if (!this.mutationObserver) {
+      const subscriberCallback = (mutations) => {
+        mutations.forEach((mutation) => {
+          this.epanelTitle = mutation.target.title;
+        });
+      };
+
+      this.mutationObserver = new MutationObserver(subscriberCallback);
+    }
+
+    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
+  }
+
+  disconnectedCallback() {
+    this.mutationObserver.disconnect();
+  }
+
   componentWillLoad() {
+    if (this.el.getAttribute('title')) {
+      this.epanelTitle = this.el.getAttribute('title');
+    }
+
     this.stateValidation(this.state);
   }
 
@@ -46,13 +78,13 @@ export class ExpansionPanel {
       <div
         class={`chi-epanel ${this.state === 'disabled' ? `-disabled` : ''} ${
           this.state === 'active' ? `-active` : ''
-        } ${this.state === 'done' ? `-done` : ''} ${
+          } ${this.state === 'done' ? `-done` : ''} ${
           this.bordered ? `-bordered` : ''
-        }`}
+          }`}
       >
         <div class="chi-epanel__header">
           {this.step ? <span class="chi-epanel__number">{this.step}.</span> : ''}
-          <div class="chi-epanel__title">{this.heading}</div>
+          <div class="chi-epanel__title">{this.epanelTitle}</div>
           <div class={`chi-epanel__content ${this.step ? '' : '-ml--0'}`}>
             <div class="chi-epanel__collapse">
               <div class="-done--only">
@@ -65,8 +97,8 @@ export class ExpansionPanel {
               <slot name="change" />
             </div>
           ) : (
-            ''
-          )}
+              ''
+            )}
         </div>
         <div class={`chi-epanel__collapse ${this.step ? '' : '-ml--0'}`}>
           <div class="-active--only">

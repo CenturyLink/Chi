@@ -172,7 +172,7 @@ export class NumberInput {
     );
 
     const base = (
-      <div class="m-input__wrapper">
+      <div class="chi-input__wrapper">
         {input}
         <button
           disabled={+this.value - this.step < this.min}

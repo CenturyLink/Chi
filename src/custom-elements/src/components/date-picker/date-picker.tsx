@@ -220,7 +220,7 @@ export class DatePicker {
       <div
         class={`${
           this.disabled ? '-disabled' : ''
-          } m-input__wrapper -icon--right`}
+          } chi-input__wrapper -icon--right`}
       >
         <input
           id={`${this._uuid}-control`}

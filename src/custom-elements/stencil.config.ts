@@ -83,6 +83,24 @@ export const config: Config = {
           required: false
         };
 
+        const epanelTitleProp = {
+          name: 'title',
+          type: 'string',
+          mutable: false,
+          attr: 'title',
+          reflectToAttr: true,
+          docs: 'to define expansion panel title.',
+          docsTags: [],
+          default: false,
+          values: [
+            {
+              type: 'string'
+            }
+          ],
+          optional: false,
+          required: false
+        };
+
         docs['components'].find(x => x.tag === 'chi-alert')['props'].push(alertTitleProp);
         docs['components'].find(x => x.tag === 'chi-alert')['props'].sort((a, b) => {
           if (a.name > b.name) return 1
@@ -99,6 +117,13 @@ export const config: Config = {
 
         docs['components'].find(x => x.tag === 'chi-drawer')['props'].push(drawerTitleProp);
         docs['components'].find(x => x.tag === 'chi-drawer')['props'].sort((a, b) => {
+          if (a.name > b.name) return 1
+          else if (a.name < b.name) return -1
+          return 0
+        });
+
+        docs['components'].find(x => x.tag === 'chi-expansion-panel')['props'].push(epanelTitleProp);
+        docs['components'].find(x => x.tag === 'chi-expansion-panel')['props'].sort((a, b) => {
           if (a.name > b.name) return 1
           else if (a.name < b.name) return -1
           return 0

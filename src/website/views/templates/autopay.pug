@@ -16,7 +16,7 @@ h2 Base
           .chi-card__title.-m--0 Automatic Payments
           p.-text.-mb--3 Each month, an automatic payment for the full amount of your bill will be paid to CenturyLink from the payment method of your choosing.
         div.chi-col.-w-md--4
-          .m-form__item.-mb--1
+          .chi-form__item.-mb--1
             label.chi-label(for='Base') Choose a payment method
             .chi-dropdown
               button.chi-btn.-xl.chi-dropdown__trigger(id='Base', onclick='selectPayment(id)') Checking account
@@ -31,11 +31,11 @@ h2 Base
           fieldset
             .chi-grid.-noGutter
               div.chi-col.-w--12.-w-md--6
-                .m-form__item.-mb--2.-mr-md--1
+                .chi-form__item.-mb--2.-mr-md--1
                   label.chi-label(for='checking-routing-number') Routing number
                   input(type="text", class="chi-input -xl", id='checking-routing-number', placeholder="")
               div.chi-col.-w--12.-w-md--6
-                .m-form__item.-mb--2
+                .chi-form__item.-mb--2
                   label.chi-label(for='checking-account-number') Account number
                   input(type="text", class="chi-input -xl", id='checking-account-number', placeholder="")
               div.chi-col.-w--12
@@ -48,11 +48,11 @@ h2 Base
           fieldset
             .chi-grid.-noGutter
               div.chi-col.-w--12.-w-md--6
-                .m-form__item.-mb--2.-mr-md--1
+                .chi-form__item.-mb--2.-mr-md--1
                   label.chi-label(for='savings-routing-number') Routing number
                   input(type="text", class="chi-input -xl", id='savings-routing-number', placeholder="")
               div.chi-col.-w--12.-w-md--6
-                .m-form__item.-mb--2
+                .chi-form__item.-mb--2
                   label.chi-label(for='savings-account-number') Account number
                   input(type="text", class="chi-input -xl", id='savings-account-number', placeholder="")
               div.chi-col.-w--12
@@ -65,17 +65,17 @@ h2 Base
           fieldset
             .chi-grid.-noGutter
               div.chi-col.-w--12
-                .m-form__item.-mb--2
+                .chi-form__item.-mb--2
                   label.chi-label(for='name') Name on card
                   input(type="text", class="chi-input -xl", id='name', placeholder="")
               div.chi-col.-w--12
-                .m-form__item.-mb--2
+                .chi-form__item.-mb--2
                   div.-d--flex.-justify-content--between.-align-items--center
                     label.chi-label(for='number') Card number
                     img(src='../../assets/images/autopay-credit-cards.jpg', alt="credit cards")
                   input(type="text", class="chi-input -xl", id='number', placeholder="")
               div.chi-col.-w-md--4.-w-sm--12
-                .m-form__item.-mb--2
+                .chi-form__item.-mb--2
                   label.chi-label(for='expiration') Expiration
                   .-d--flex
                     select(class="chi-input -xl -mr--1", id='expiration')
@@ -85,7 +85,7 @@ h2 Base
                       each year in years
                         option= year
               div.chi-col.-w-md--4.-w-sm--12
-                .m-form__item
+                .chi-form__item
                   label.chi-label(for='zip') Billing zip code
                   input(type="text", class="chi-input -xl", id='zip', placeholder="")
   :code(lang="html")
@@ -100,7 +100,7 @@ h2 Base
             </p>
           </div>
           <div class="chi-col -w-md--4">
-            <div class="m-form__item -mb--1">
+            <div class="chi-form__item -mb--1">
               <label class="chi-label" for="Base">Choose a payment method</label>
               <div class="chi-dropdown">
                 <button class="chi-btn -xl chi-dropdown__trigger" id="Base">Checking account</button>
@@ -127,7 +127,7 @@ h2 Base
             <fieldset>
               <div class="chi-grid -noGutter">
                 <div class="chi-col -w--12 -w-md--6">
-                  <div class="m-form__item -mb--2 -mr-md--1">
+                  <div class="chi-form__item -mb--2 -mr-md--1">
                     <label class="chi-label" for="checking-routing-number">
                       Routing number
                     </label>
@@ -135,7 +135,7 @@ h2 Base
                   </div>
                 </div>
                 <div class="chi-col -w--12 -w-md--6">
-                  <div class="m-form__item -mb--2">
+                  <div class="chi-form__item -mb--2">
                     <label class="chi-label" for="checking-account-number">
                       Account number
                     </label>
@@ -159,7 +159,7 @@ h2 Base
             <fieldset>
               <div class="chi-grid -noGutter">
                 <div class="chi-col -w--12 -w-md--6">
-                  <div class="m-form__item -mb--2 -mr-md--1">
+                  <div class="chi-form__item -mb--2 -mr-md--1">
                     <label class="chi-label" for="savings-routing-number">
                       Routing number
                     </label>
@@ -167,7 +167,7 @@ h2 Base
                   </div>
                 </div>
                 <div class="chi-col -w--12 -w-md--6">
-                  <div class="m-form__item -mb--2">
+                  <div class="chi-form__item -mb--2">
                     <label class="chi-label" for="savings-account-number">
                       Account number
                     </label>
@@ -191,13 +191,13 @@ h2 Base
             <fieldset>
               <div class="chi-grid -noGutter">
                 <div class="chi-col -w--12">
-                  <div class="m-form__item -mb--2">
+                  <div class="chi-form__item -mb--2">
                     <label class="chi-label" for="name">Name on card</label>
                     <input class="chi-input -xl" type="text" id="name" placeholder="">
                   </div>
                 </div>
                 <div class="chi-col -w--12">
-                  <div class="m-form__item -mb--2">
+                  <div class="chi-form__item -mb--2">
                     <div class="-d--flex -justify-content--between -align-items--center">
                       <label class="chi-label" for="number">
                         Card number
@@ -208,7 +208,7 @@ h2 Base
                   </div>
                 </div>
                 <div class="chi-col -w-md--4 -w-sm--12">
-                  <div class="m-form__item -mb--2">
+                  <div class="chi-form__item -mb--2">
                     <label class="chi-label" for="expiration">Expiration</label>
                     <div class="-d--flex"><select class="chi-input -xl -mr--1" id="expiration">
                       <option>01</option>
@@ -259,7 +259,7 @@ h2 Base
                   </div>
                 </div>
                 <div class="chi-col -w-md--4 -w-sm--12">
-                  <div class="m-form__item">
+                  <div class="chi-form__item">
                     <label class="chi-label" for="zip">Billing zip code</label>
                     <input class="chi-input -xl" type="text" id="zip" placeholder="">
                   </div>
@@ -279,7 +279,7 @@ h2 Optional
         div
           .chi-card__title.-m--0 Automatic Payments
           p.-text Each month, an automatic payment for the full amount of your bill will be paid to CenturyLink from the payment method of your choosing.
-        .m-form__item
+        .chi-form__item
           input(type="checkbox", class="chi-input -toggle", id="toggle1", data-chi-epanel-action='toggle')
           label(for="toggle1")
       .chi-epanel__collapse
@@ -288,7 +288,7 @@ h2 Optional
             .chi-epanel__content.-p--0
               .chi-grid.-noGutter
                 div.chi-col.-w-md--4
-                  .m-form__item.-mb--1
+                  .chi-form__item.-mb--1
                     label.chi-label(for='Optional') Choose a payment method
                     .chi-dropdown
                       button.chi-btn.-xl.chi-dropdown__trigger(id='Optional', onclick='selectPayment(id)') Checking account
@@ -303,11 +303,11 @@ h2 Optional
                   fieldset
                     .chi-grid.-noGutter
                       div.chi-col.-w--12.-w-md--6
-                        .m-form__item.-mb--2.-mr-md--1
+                        .chi-form__item.-mb--2.-mr-md--1
                           label.chi-label(for='checking-routing-number') Routing number
                           input(type="text", class="chi-input -xl", id='checking-routing-number', placeholder="")
                       div.chi-col.-w--12.-w-md--6
-                        .m-form__item.-mb--2
+                        .chi-form__item.-mb--2
                           label.chi-label(for='checking-account-number') Account number
                           input(type="text", class="chi-input -xl", id='checking-account-number', placeholder="")
                       div.chi-col.-w--12
@@ -320,11 +320,11 @@ h2 Optional
                   fieldset
                     .chi-grid.-noGutter
                       div.chi-col.-w--12.-w-md--6
-                        .m-form__item.-mb--2.-mr-md--1
+                        .chi-form__item.-mb--2.-mr-md--1
                           label.chi-label(for='savings-routing-number') Routing number
                           input(type="text", class="chi-input -xl", id='savings-routing-number', placeholder="")
                       div.chi-col.-w--12.-w-md--6
-                        .m-form__item.-mb--2
+                        .chi-form__item.-mb--2
                           label.chi-label(for='savings-account-number') Account number
                           input(type="text", class="chi-input -xl", id='savings-account-number', placeholder="")
                       div.chi-col.-w--12
@@ -337,17 +337,17 @@ h2 Optional
                   fieldset
                     .chi-grid.-noGutter
                       div.chi-col.-w--12
-                        .m-form__item.-mb--2
+                        .chi-form__item.-mb--2
                           label.chi-label(for='name') Name on card
                           input(type="text", class="chi-input -xl", id='name', placeholder="")
                       div.chi-col.-w--12
-                        .m-form__item.-mb--2
+                        .chi-form__item.-mb--2
                           div.-d--flex.-justify-content--between.-align-items--center
                             label.chi-label(for='number') Card number
                             img(src='../../assets/images/autopay-credit-cards.jpg', alt="credit cards")
                           input(type="text", class="chi-input -xl", id='number', placeholder="")
                       div.chi-col.-w-md--4.-w-sm--12
-                        .m-form__item.-mb--2
+                        .chi-form__item.-mb--2
                           label.chi-label(for='expiration') Expiration
                           .-d--flex
                             select(class="chi-input -xl -mr--1", id='expiration')
@@ -357,7 +357,7 @@ h2 Optional
                               each year in years
                                 option= year
                       div.chi-col.-w-md--4.-w-sm--12
-                        .m-form__item
+                        .chi-form__item
                           label.chi-label(for='zip') Billing zip code
                           input(type="text", class="chi-input -xl", id='zip', placeholder="")
   :code(lang="html")
@@ -369,7 +369,7 @@ h2 Optional
             <p class="-text">Each month, an automatic payment for the full amount of your bill will be paid to CenturyLink
               from the payment method of your choosing.</p>
           </div>
-          <div class="m-form__item">
+          <div class="chi-form__item">
             <input class="chi-input -toggle" type="checkbox" id="toggle1" data-chi-epanel-action="toggle">
             <label for="toggle1"></label>
           </div>
@@ -380,7 +380,7 @@ h2 Optional
               <div class="chi-epanel__content -p--0">
                 <div class="chi-grid -noGutter">
                   <div class="chi-col -w-md--4">
-                    <div class="m-form__item -mb--1">
+                    <div class="chi-form__item -mb--1">
                       <label class="chi-label" for="method">Choose a payment method</label>
                       <div class="chi-dropdown">
                         <button class="chi-btn -xl chi-dropdown__trigger" id="Optional">
@@ -409,7 +409,7 @@ h2 Optional
                     <fieldset>
                       <div class="chi-grid -noGutter">
                         <div class="chi-col -w--12 -w-md--6">
-                          <div class="m-form__item -mb--2 -mr-md--1">
+                          <div class="chi-form__item -mb--2 -mr-md--1">
                             <label class="chi-label" for="checking-routing-number">
                               Routing number
                             </label>
@@ -417,7 +417,7 @@ h2 Optional
                           </div>
                         </div>
                         <div class="chi-col -w--12 -w-md--6">
-                          <div class="m-form__item -mb--2">
+                          <div class="chi-form__item -mb--2">
                             <label class="chi-label" for="checking-account-number">
                               Account number
                             </label>
@@ -441,7 +441,7 @@ h2 Optional
                     <fieldset>
                       <div class="chi-grid -noGutter">
                         <div class="chi-col -w--12 -w-md--6">
-                          <div class="m-form__item -mb--2 -mr-md--1">
+                          <div class="chi-form__item -mb--2 -mr-md--1">
                             <label class="chi-label" for="savings-routing-number">
                               Routing number
                             </label>
@@ -449,7 +449,7 @@ h2 Optional
                           </div>
                         </div>
                         <div class="chi-col -w--12 -w-md--6">
-                          <div class="m-form__item -mb--2">
+                          <div class="chi-form__item -mb--2">
                             <label class="chi-label" for="savings-account-number">
                               Account number
                             </label>
@@ -473,13 +473,13 @@ h2 Optional
                     <fieldset>
                       <div class="chi-grid -noGutter">
                         <div class="chi-col -w--12">
-                          <div class="m-form__item -mb--2">
+                          <div class="chi-form__item -mb--2">
                             <label class="chi-label" for="name">Name on card</label>
                             <input class="chi-input -xl" id="name" type="text" placeholder="">
                           </div>
                         </div>
                         <div class="chi-col -w--12">
-                          <div class="m-form__item -mb--2">
+                          <div class="chi-form__item -mb--2">
                             <div class="-d--flex -justify-content--between -align-items--center">
                               <label class="chi-label" for="number">
                                 Card number
@@ -490,7 +490,7 @@ h2 Optional
                           </div>
                         </div>
                         <div class="chi-col -w-md--4 -w-sm--12">
-                          <div class="m-form__item -mb--2">
+                          <div class="chi-form__item -mb--2">
                             <label class="chi-label" for="expiration">Expiration</label>
                             <div class="-d--flex">
                               <select class="chi-input -xl -mr--1" id="expiration">
@@ -544,7 +544,7 @@ h2 Optional
                           </div>
                         </div>
                         <div class="chi-col -w-md--4 -w-sm--12">
-                          <div class="m-form__item">
+                          <div class="chi-form__item">
                             <label class="chi-label" for="zip">
                               Billing zip code
                             </label>

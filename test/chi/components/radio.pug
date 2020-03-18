@@ -4,7 +4,7 @@ title: Radio
 .test-states
   each state, index in ['default', 'hover', 'focus', 'checked', 'disabled']
     h5= `Radio / ${state}`
-    .m-form__item.-row.-mb--1
+    .chi-form__item.-row.-mb--1
       .chi-radio
         input.chi-radio__input(
           type="radio"
@@ -21,9 +21,9 @@ h2 Radio Button List
 .test-states
   each state, index in ['default', 'hover', 'focus', 'disabled']
     h5= `Radio / ${state}`
-    ul.m-form__item.-list(style="max-width:20rem")
+    ul.chi-form__item.-list(style="max-width:20rem")
       each element in [1, 2, 3, 4, 5]
-        li.m-form__item.-row
+        li.chi-form__item.-row
           .chi-radio
             input.chi-radio__input(
               type="radio"

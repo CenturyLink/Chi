@@ -186,7 +186,7 @@ class DatePicker extends Component {
     let parent = this._elem;
     if (
       this._elem.parentElement &&
-      Util.hasClass(this._elem.parentElement, 'm-input__wrapper')
+      Util.hasClass(this._elem.parentElement, 'chi-input__wrapper')
     ) {
       parent = this._elem.parentElement;
     }
