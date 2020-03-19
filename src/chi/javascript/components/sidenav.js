@@ -518,4 +518,4 @@ class Sidenav extends Component {
 }
 
 const factory = Component.factory.bind(Sidenav);
-export { Sidenav, factory, COMPONENT_TYPE };
+export { Sidenav, factory, COMPONENT_TYPE, COMPONENT_SELECTOR as SIDENAV_COMPONENT_SELECTOR };

@@ -1,3 +1,5 @@
+import { SIDENAV_COMPONENT_SELECTOR } from '../../../src/chi/javascript/components/sidenav';
+
 describe('enterprise-nav-menu', function() {
   before(() => {
     cy.visit('http://localhost:8000/tests/js/enterprise-global-nav.html');
@@ -5,10 +7,9 @@ describe('enterprise-nav-menu', function() {
 
   describe('check that click on 1st level opens 2nd-level menu drawer', () => {
     [/^NoChanges$/, /^Changes$/, /^DeepLink$/].forEach((menuText) => {
-      it('check "' + menuText + '" opens 2nd-level menu drawer', () => {
-
-        cy.get('.enterprise-nav-menu').within(() => {
-          cy.get('.m-sidenav__list li')
+      it(`check "${menuText}" opens 2nd-level menu drawer`, () => {
+        cy.get(SIDENAV_COMPONENT_SELECTOR).within(() => {
+          cy.get('.chi-sidenav__list li')
             .contains(menuText)
             .as('firstLevelElement')
           ;
@@ -25,7 +26,7 @@ describe('enterprise-nav-menu', function() {
                 .wait(550)
               ;
 
-              cy.get(href + '.-active')
+              cy.get(`${href}.-active`)
                 .should('be.visible')
               ;
             });
@@ -36,11 +37,9 @@ describe('enterprise-nav-menu', function() {
 
   describe('check that click on "X" in menu drawer closes drawer', () => {
     [/^NoChanges$/, /^Changes$/, /^DeepLink$/].forEach((menuText) => {
-      it('check "' + menuText + '" drawer closes on "X"', () => {
-
-
-        cy.get('.enterprise-nav-menu').within(() => {
-          cy.get('.m-sidenav__list li')
+      it(`check "${menuText}" drawer closes on "X"`, () => {
+        cy.get(SIDENAV_COMPONENT_SELECTOR).within(() => {
+          cy.get('.chi-sidenav__list li')
             .contains(menuText)
             .as('firstLevelElement')
           ;
@@ -57,12 +56,12 @@ describe('enterprise-nav-menu', function() {
                 .wait(550)
               ;
 
-              cy.get(href + '.-active')
+              cy.get(`${href}.-active`)
                 .should('be.visible')
                 .within(() => {
                   cy.get('.-icon.-close')
                     .click()
-                    .parent('.m-drawer')
+                    .parent('.chi-drawer')
                     .should('not.have.class', '-active')
                   ;
                 });
@@ -74,11 +73,9 @@ describe('enterprise-nav-menu', function() {
 
   describe('check that click on 1st level of menu two-times, opens and closes the drawer', () => {
     [/^NoChanges$/, /^Changes$/, /^DeepLink$/].forEach((menuText) => {
-      it('check "' + menuText + '" clicked twice opens and closes the drawer', () => {
-
-
-        cy.get('.enterprise-nav-menu').within(() => {
-          cy.get('.m-sidenav__list li')
+      it(`check "${menuText}" clicked twice opens and closes the drawer`, () => {
+        cy.get(SIDENAV_COMPONENT_SELECTOR).within(() => {
+          cy.get('.chi-sidenav__list li')
             .contains(menuText)
             .as('firstLevelElement')
           ;
@@ -95,7 +92,7 @@ describe('enterprise-nav-menu', function() {
                 .wait(550)
               ;
 
-              cy.get(href + '.-active')
+              cy.get(`${href}.-active`)
                 .should('be.visible')
               ;
 
@@ -115,11 +112,9 @@ describe('enterprise-nav-menu', function() {
 
   describe('check that click on 1st level opens the drawer and click on empty space in menu container closes it', () => {
     [/^NoChanges$/, /^Changes$/, /^DeepLink$/].forEach((menuText) => {
-      it('check "' + menuText + '" clicked outside drawer closes it', () => {
-
-
-        cy.get('.enterprise-nav-menu').within(() => {
-          cy.get('.m-sidenav__list li')
+      it(`check "${menuText}" clicked outside drawer closes it`, () => {
+        cy.get(SIDENAV_COMPONENT_SELECTOR).within(() => {
+          cy.get('.chi-sidenav__list li')
             .contains(menuText)
             .as('firstLevelElement')
           ;
@@ -136,11 +131,11 @@ describe('enterprise-nav-menu', function() {
                 .wait(550)
               ;
 
-              cy.get(href + '.-active')
+              cy.get(`${href}.-active`)
                 .should('be.visible')
               ;
 
-              cy.get('.m-sidenav__content')
+              cy.get('.chi-sidenav__content')
                 .click()
                 .wait(250)
               ;
@@ -157,11 +152,10 @@ describe('enterprise-nav-menu', function() {
 
   describe('Click on 2nd level menus should open 3rd level drop-downs', () => {
     it('Menu "NoChanges" > "Home" should open dropdown', () => {
-
       let menuText = /^NoChanges$/;
 
-      cy.get('.enterprise-nav-menu').within(() => {
-        cy.get('.m-sidenav__list li')
+      cy.get(SIDENAV_COMPONENT_SELECTOR).within(() => {
+        cy.get('.chi-sidenav__list li')
           .contains(menuText)
           .as('firstLevelElement')
         ;
@@ -178,11 +172,11 @@ describe('enterprise-nav-menu', function() {
               .wait(550)
             ;
 
-            cy.get(href + '.-active')
+            cy.get(`${href}.-active`)
               .should('be.visible')
             ;
 
-            cy.get(href + ' .m-sidenav__drawer-list li span.m-sidenav__title')
+            cy.get(href + ' .chi-sidenav__drawer-list li span.chi-sidenav__title')
               .contains(/^Home$/)
               .click()
               .parents('li')
@@ -196,11 +190,10 @@ describe('enterprise-nav-menu', function() {
     });
 
     it('Menu "DeepLink" > "Option" should open dropdown', () => {
-
       let menuText = /^DeepLink$/;
 
-      cy.get('.enterprise-nav-menu').within(() => {
-        cy.get('.m-sidenav__list li')
+      cy.get(SIDENAV_COMPONENT_SELECTOR).within(() => {
+        cy.get('.chi-sidenav__list li')
           .contains(menuText)
           .as('firstLevelElement')
         ;
@@ -217,11 +210,11 @@ describe('enterprise-nav-menu', function() {
               .wait(550)
             ;
 
-            cy.get(href + '.-active')
+            cy.get(`${href}.-active`)
               .should('be.visible')
             ;
 
-            cy.get(href + ' .m-sidenav__drawer-list li span.m-sidenav__title')
+            cy.get(href + ' .chi-sidenav__drawer-list li span.chi-sidenav__title')
               .contains(/^Option$/)
               .click()
               .parents('li')
@@ -247,8 +240,9 @@ describe('enterprise-nav-menu', function() {
       '- verify that "NoChanges" > "Locations" has classes "-active" and "-unselected"', () => {
 
       let menuText = /^NoChanges$/;
-      cy.get('.enterprise-nav-menu').within(() => {
-        cy.get('.m-sidenav__list li')
+
+      cy.get(SIDENAV_COMPONENT_SELECTOR).within(() => {
+        cy.get('.chi-sidenav__list li')
           .contains(menuText)
           .as('firstLevelElement')
         ;
@@ -266,7 +260,7 @@ describe('enterprise-nav-menu', function() {
             ;
 
             // 2nd level
-            cy.get(href + ' .m-sidenav__drawer-list li span.m-sidenav__title')
+            cy.get(href + ' .chi-sidenav__drawer-list li span.chi-sidenav__title')
               .contains(/^Locations$/)
               .as('secondLevelLocation')
               .click({force: true})
@@ -289,7 +283,7 @@ describe('enterprise-nav-menu', function() {
               .should('have.class', '-active')
             ;
 
-            cy.get(href + ' .m-sidenav__drawer-list li span.m-sidenav__title')
+            cy.get(href + ' .chi-sidenav__drawer-list li span.chi-sidenav__title')
               .contains(/^Home$/)
               .as('secondLevelHome')
               .click()
@@ -314,82 +308,79 @@ describe('enterprise-nav-menu', function() {
 
   describe('Check that Menu recovers active state of second and third level items', () => {
     it('Should recover active state when toggling between different lists on 2nd level', () => {
-
       let menuText = /^NoChanges$/;
 
-      cy.get('.enterprise-nav-menu').within(() => {
-        cy.get('.m-sidenav')
-          .click(500, 0);
+      cy.get(SIDENAV_COMPONENT_SELECTOR)
+        .click(500, 0);
 
-        cy.get('.m-sidenav__list li')
-          .contains(menuText)
-          .as('firstLevelElement')
-        ;
+      cy.get('.chi-sidenav__list li')
+        .contains(menuText)
+        .as('firstLevelElement')
+      ;
 
-        cy.get('@firstLevelElement')
-          .should('have.attr', 'href')
-          .then(href => {
-            cy.get('' + href)
-              .as('drawer')
-            ;
+      cy.get('@firstLevelElement')
+        .should('have.attr', 'href')
+        .then(href => {
+          cy.get('' + href)
+            .as('drawer')
+          ;
 
-            cy.get('@firstLevelElement')
-              .click()
-              .wait(550)
-            ;
-          });
+          cy.get('@firstLevelElement')
+            .click()
+            .wait(550)
+          ;
+        });
 
-        cy.get('@drawer')
-          .contains('Home')
-          .as('secondLevelElement')
-          .click()
-          .parents('li')
-          .should('have.class', '-expanded')
-          .find('.m-sidenav__drawer-item-list ul li a span')
-          .contains('Reports')
-          .click()
-          .parents('a')
-          .should('have.class', '-active')
-        ;
+      cy.get('@drawer')
+        .contains('Home')
+        .as('secondLevelElement')
+        .click()
+        .parents('li')
+        .should('have.class', '-expanded')
+        .find('.chi-sidenav__drawer-item-list ul li a span')
+        .contains('Reports')
+        .click()
+        .parents('a')
+        .should('have.class', '-active')
+      ;
 
-        cy.get('.m-sidenav__list li')
-          .contains('DeepLink')
-          .as('switchElement')
-        ;
+      cy.get('.chi-sidenav__list li')
+        .contains('DeepLink')
+        .as('switchElement')
+      ;
 
-        cy.get('@switchElement')
-          .should('have.attr', 'href')
-          .then(href => {
-            cy.get('' + href)
-              .as('drawer2')
-            ;
+      cy.get('@switchElement')
+        .should('have.attr', 'href')
+        .then(href => {
+          cy.get('' + href)
+            .as('drawer2')
+          ;
 
-            cy.get('@switchElement')
-              .click()
-              .wait(550)
-            ;
-          });
+          cy.get('@switchElement')
+            .click()
+            .wait(550)
+          ;
+        });
 
-        cy.get('@drawer2')
-          .contains('Option')
-          .click()
-          .parents('li')
-          .should('have.class', '-expanded')
-        ;
+      cy.get('@drawer2')
+        .contains('Option')
+        .click()
+        .parents('li')
+        .should('have.class', '-expanded')
+      ;
 
-        cy.get('@firstLevelElement')
-          .click()
-        ;
+      cy.get('@firstLevelElement')
+        .click()
+      ;
 
-        cy.get('@drawer')
-          .find('ul.m-sidenav__drawer-list li a span')
-          .contains('Home')
-          .parents('a')
-          .parents('li')
-          .should('have.class', '-active')
-          .should('have.class', '-expanded')
-        ;
-      });
+      cy.get('@drawer')
+        .find('ul.chi-sidenav__drawer-list li a span')
+        .contains('Home')
+        .parents('a')
+        .parents('li')
+        .should('have.class', '-active')
+        .should('have.class', '-expanded')
+      ;
     });
   });
 });
