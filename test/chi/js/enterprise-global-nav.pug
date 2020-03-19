@@ -1,0 +1,114 @@
+---
+title: Enterprise Global Navigation - sidenav component example
+---
+script(src='/js/chi.js')
+
+.enterprise-nav-menu.chi(style=`height: 35rem;`)
+  aside#enterprise-sidenav.-h--100.chi-sidenav.-inverse.-global-nav.-flex--shrink0
+    .chi-sidenav__content
+      nav
+        ul.chi-sidenav__list
+          li.-active
+            a(href='#enterprise-drawer-0')
+              .chi-icon
+                svg
+                  svg
+                    use(xlink:href='#icon-user')
+              span NoChanges
+          li
+            a(href='#enterprise-drawer-1')
+              .chi-icon
+                svg
+                  svg
+                    use(xlink:href='#icon-user')
+              span Changes
+          li
+            a(href='#enterprise-drawer-2')
+              .chi-icon
+                svg
+                  svg
+                    use(xlink:href='#icon-logo-centurylink')
+              span DeepLink
+    .chi-sidenav__drawers
+      .enterprise-nav-menu-drawer
+        #enterprise-drawer-0.chi-drawer.-animated.-left
+          .chi-drawer__header
+            span.chi-drawer__title NoChanges
+            button.chi-btn.-icon.-close(aria-label='Close')
+              .chi-btn__content
+                i.chi-icon.icon-x
+          .chi-drawer__content
+            ul.chi-sidenav__drawer-list
+              li
+                a(href='#enterprise-drawer-list-0')
+                  span.chi-sidenav__title Home
+                .enterprise-nav-menu-drawer-list
+                  .chi-sidenav__drawer-item-list
+                    ul.chi-tabs.-vertical.-sm
+                      li
+                        a.chi-sidenav__drawer-item-tab(href='javascript:void(0)')
+                          span Reports
+                      li
+                        a.chi-sidenav__drawer-item-tab(href='javascript:void(0)')
+                          span Locations
+              li
+                a(href='javascript:void(0)')
+                  span.chi-sidenav__title Locations
+      .enterprise-nav-menu-drawer
+        #enterprise-drawer-1.chi-drawer.-animated.-left
+          .chi-drawer__header
+            span.chi-drawer__title Changes
+            button.chi-btn.-icon.-close(aria-label='Close')
+              .chi-btn__content
+                i.chi-icon.icon-x
+          .chi-drawer__content
+            ul.chi-sidenav__drawer-list
+              li
+                a(href='javascript:void(0)')
+                  span.chi-sidenav__title Same Option
+              li
+                a(href='javascript:void(0)')
+                  span.chi-sidenav__title Old Option
+              li
+                a(href='javascript:void(0)')
+                  span.chi-sidenav__title Change Url
+              li
+                a(href='javascript:void(0)')
+                  span.chi-sidenav__title New Option
+      .enterprise-nav-menu-drawer
+        #enterprise-drawer-2.chi-drawer.-animated.-left
+          .chi-drawer__header
+            span.chi-drawer__title DeepLink
+            button.chi-btn.-icon.-close(aria-label='Close')
+              .chi-btn__content
+                i.chi-icon.icon-x
+          .chi-drawer__content
+            ul.chi-sidenav__drawer-list
+              li
+                a(href='#enterprise-drawer-list-0')
+                  span.chi-sidenav__title Option
+                .enterprise-nav-menu-drawer-list
+                  .chi-sidenav__drawer-item-list
+                    ul.chi-tabs.-vertical.-sm
+                      li
+                        a.chi-sidenav__drawer-item-tab(href='javascript:void(0)')
+                          span Same Option
+                      li
+                        a.chi-sidenav__drawer-item-tab(href='javascript:void(0)')
+                          span Old Option
+                      li
+                        a.chi-sidenav__drawer-item-tab(href='javascript:void(0)')
+                          span Change Url
+                      li
+                        a.chi-sidenav__drawer-item-tab(href='javascript:void(0)')
+                          span New Option
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.sidenav(document.getElementById('enterprise-sidenav'), {
+        animated: false
+      });
+    }
+  );
