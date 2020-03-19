@@ -134,12 +134,12 @@ h3 Inverse
 
 h3 Horizontal Labels Base
 p.-text
-  | To display steps with horizontal labels, apply the class <code>-horizontalLabels</code> to the steps container and
+  | To display steps with horizontal labels, apply the class <code>-horizontal-label</code> to the steps container and
   |  indicate the active link with the class <code>-active</code> and the class <code>-completed</code> in the corresponding div tag.
 
 .example.-mb--3
   .-p--3
-    ul.chi-steps.-horizontalLabels.-p--5
+    ul.chi-steps.-horizontal-label.-p--5
       each step in steps
         if step == 'Step 1'
           li.-completed
@@ -166,7 +166,7 @@ p.-text
             a(href='#')= `${step}`
             div.chi-steps__line
   :code(lang="html")
-    <ul class="chi-steps -horizontalLabels">
+    <ul class="chi-steps -horizontal-label">
       <li class="-completed">
         <div class="chi-steps__icon"></div>
         <a href="#">Step 1</a>
@@ -199,7 +199,7 @@ p.-text
 
 .example.-mb--3
   .-p--3
-    ul.chi-steps.-horizontalLabels.-inverse.-p--5
+    ul.chi-steps.-horizontal-label.-inverse.-p--5
       each step in steps
         if step == 'Step 1'
           li.-completed
@@ -226,7 +226,7 @@ p.-text
             a(href='#')= `${step}`
             div.chi-steps__line
   :code(lang="html")
-    <ul class="chi-steps -horizontalLabels -inverse">
+    <ul class="chi-steps -horizontal-label -inverse">
       <li class="-completed">
         <div class="chi-steps__icon"></div>
         <a href="#">Step 1</a>
@@ -289,7 +289,7 @@ p.-text
             div.chi-steps__line
     p.-text--center
      | -labels-md--hide
-    ul.chi-steps.-horizontalLabels.-labels-lg--hide.-p--4
+    ul.chi-steps.-horizontal-label.-labels-lg--hide.-p--4
       each step in steps
         if step == 'Step 1'
           li.-completed
@@ -351,7 +351,7 @@ p.-text
       </li>
     </ul>
     <!-- Visible labels from lg breakpoint -->
-    <ul class="chi-steps -horizontalLabels -labels-lg--hide">
+    <ul class="chi-steps -horizontal-label -labels-lg--hide">
       <li class="-completed">
         <div class="chi-steps__icon"></div>
         <a href="#">Step 1</a>

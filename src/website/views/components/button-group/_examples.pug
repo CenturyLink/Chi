@@ -78,18 +78,18 @@ p.-text
 
 h3 Disable Fluidity
 p.-text
-  | To disable the fluidity of a specific button in a fluid button group, apply the class <code>-notFluid</code> to the button.
+  | To disable the fluidity of a specific button in a fluid button group, apply the class <code>-no-fluid</code> to the button.
 
 .example.-mb--3
   .-p--3
     .chi-btn__group.-fluid(style="width:100%")
       button(class=`chi-btn`) Button
-      button(class=`chi-btn -notFluid`) Button
+      button(class=`chi-btn -no-fluid`) Button
       button(class=`chi-btn`) Button
   :code(lang='html')
     <div class="chi-btn__group -fluid">
       <button class="chi-btn">Button</button>
-      <button class="chi-btn -notFluid">Button</button>
+      <button class="chi-btn -no-fluid">Button</button>
       <button class="chi-btn">Button</button>
     </div>
 
@@ -207,13 +207,13 @@ p.-text
   .-p--3
     .chi-btn__group.-fluid
       button(class=`chi-btn`) Button
-      button(class=`chi-btn -icon -notFluid`, aria-label="Button action")
+      button(class=`chi-btn -icon -no-fluid`, aria-label="Button action")
         .chi-btn__content
           i.chi-icon.icon-atom
   :code(lang='html')
     <div class="chi-btn__group -fluid">
       <button class="chi-btn">Button</button>
-      <button class="chi-btn -icon -notFluid" aria-label="Button action">
+      <button class="chi-btn -icon -no-fluid" aria-label="Button action">
         <div class="chi-btn__content">
           <i class="chi-icon icon-atom"></i>
         </div>

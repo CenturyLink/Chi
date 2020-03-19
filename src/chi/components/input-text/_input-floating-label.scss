@@ -27,7 +27,7 @@ $sizes: (
 );
 
 .chi-input__wrapper {
-  &.-floatingLabel {
+  &.-floating-label {
     & > input,
     & > select {
       @each $type in map-keys($sizes) {
@@ -73,7 +73,7 @@ $sizes: (
 /* IE11 CSS hack */
 @media all and (-ms-high-contrast: none) {
   .chi-input__wrapper {
-    &.-floatingLabel {
+    &.-floating-label {
       & > input,
       & > select {
         &.-lg {
