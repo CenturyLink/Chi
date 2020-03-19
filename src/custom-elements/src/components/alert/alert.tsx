@@ -143,7 +143,7 @@ export class Alert {
         ${this.center ? '-center' : ''}
         ${this.closable ? '-close' : ''}
         ${this.size ? `-${this.size}` : ''}
-        ${this.type === 'banner' && this.borderless ? `-borderless` : ''}`}
+        ${this.type === 'banner' && this.borderless ? `-no-border` : ''}`}
         role="alert"
       >
         {this.icon && chiIcon}

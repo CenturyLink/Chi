@@ -222,7 +222,7 @@ th {
     }
   }
 
-  &.-borderless {
+  &.-no-border {
     &::before {
       border: 0;
     }
@@ -365,7 +365,7 @@ th {
       }
     }
 
-    &.-borderless {
+    &.-no-border {
       &::before {
         border: 0;
       }

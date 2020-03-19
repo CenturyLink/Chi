@@ -321,29 +321,29 @@ p.-text
       </div>
     </div>
 
-h3 Borderless
+h3 No Border
 p.-text
-  | Disable header or footer borders by applying the class <code>-noBorder</code> to
+  | Disable header or footer borders by applying the class <code>-no-border</code> to
   | <code>chi-modal__header</code> or <code>chi-modal__footer</code>.
 .example.-mb--3
   .chi-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
     .chi-backdrop__wrapper
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.chi-modal__header.-noBorder
+        header.chi-modal__header.-no-border
           h2.chi-modal__title Modal Title
           button(class='chi-btn -icon -close', aria-label='Close')
             .chi-btn__content
               i.chi-icon.icon-x
         .chi-modal__content
           p.-text.-m--0 Modal content
-        footer.chi-modal__footer.-noBorder
+        footer.chi-modal__footer.-no-border
           button.chi-btn Cancel
           button.chi-btn.-primary.-ml--2 Save
   :code(lang="html")
     <div class="chi-backdrop">
       <div class="chi-backdrop__wrapper">
         <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="chi-modal__header -noBorder">
+          <header class="chi-modal__header -no-border">
             <h2 class="chi-modal__title">Modal Title</h2>
             <button class="chi-btn -icon -close" aria-label="Close">
               <div class="chi-btn__content">
@@ -354,7 +354,7 @@ p.-text
           <div class="chi-modal__content">
             <p class="-text -m--0">Modal content</p>
           </div>
-          <footer class="chi-modal__footer -noBorder">
+          <footer class="chi-modal__footer -no-border">
             <button class="chi-btn">Cancel</button>
             <button class="chi-btn -primary -ml--2">Save</button>
           </footer>
