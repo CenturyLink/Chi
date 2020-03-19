@@ -102,3 +102,51 @@ p.-text
         <option>-xl Select</option>
       </select>
     </div>
+
+h2 Floating label
+.chi-alert.-info.-mb--3
+  i.chi-alert__icon.chi-icon.icon-circle-info
+  .chi-alert__content
+    p.chi-alert__text This component requires Javascript
+
+.example.-mb--3
+  .-p--3
+    each size in ['-lg', '-xl']
+      div(class=`chi-col -w--12 -p--2`)
+        .chi-input__wrapper.-floatingLabel(style="max-width:20rem")
+          select#floating-label-select.chi-input(class=`${size}`)
+            option
+            option Option 1
+            option Option 2
+            option Option 3
+          label(for="floating-label-select") Placeholder text
+  :code(lang='html')
+    <div id="floating-label-lg" class="chi-input__wrapper -floatingLabel">
+      <select class="chi-input -lg" id="floating-label-select-lg">
+        <option></option>
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </select>
+      <label for="floating-label-select-lg">Placeholder text</label>
+    </div>
+
+    <div id="floating-label-xl" class="chi-input__wrapper -floatingLabel">
+      <select class="chi-input -xl" id="floating-label-select-xl">
+        <option></option>
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </select>
+      <label for="floating-label-select-xl">Placeholder text</label>
+    </div>
+
+    <script>chi.floatingLabel(document.querySelectorAll('.-floatingLabel'));</script>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.floatingLabel(document.querySelectorAll('.-floatingLabel'));
+    }
+  );
