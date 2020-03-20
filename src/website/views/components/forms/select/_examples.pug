@@ -113,7 +113,7 @@ h2 Floating label
   .-p--3
     each size in ['-lg', '-xl']
       div(class=`chi-col -w--12 -p--2`)
-        .chi-input__wrapper.-floatingLabel(style="max-width:20rem")
+        .chi-input__wrapper.-floating-label(style="max-width:20rem")
           select#floating-label-select.chi-input(class=`${size}`)
             option
             option Option 1
@@ -121,7 +121,7 @@ h2 Floating label
             option Option 3
           label(for="floating-label-select") Placeholder text
   :code(lang='html')
-    <div id="floating-label-lg" class="chi-input__wrapper -floatingLabel">
+    <div id="floating-label-lg" class="chi-input__wrapper -floating-label">
       <select class="chi-input -lg" id="floating-label-select-lg">
         <option></option>
         <option>Option 1</option>
@@ -131,7 +131,7 @@ h2 Floating label
       <label for="floating-label-select-lg">Placeholder text</label>
     </div>
 
-    <div id="floating-label-xl" class="chi-input__wrapper -floatingLabel">
+    <div id="floating-label-xl" class="chi-input__wrapper -floating-label">
       <select class="chi-input -xl" id="floating-label-select-xl">
         <option></option>
         <option>Option 1</option>
@@ -141,12 +141,12 @@ h2 Floating label
       <label for="floating-label-select-xl">Placeholder text</label>
     </div>
 
-    <script>chi.floatingLabel(document.querySelectorAll('.-floatingLabel'));</script>
+    <script>chi.floatingLabel(document.querySelectorAll('.-floating-label'));</script>
 
 script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.floatingLabel(document.querySelectorAll('.-floatingLabel'));
+      chi.floatingLabel(document.querySelectorAll('.-floating-label'));
     }
   );
