@@ -11,6 +11,7 @@ const LINKLIST_CLASS = 'chi-sidenav__list';
 const SIDENAV_CONTENT_CLASS = 'chi-sidenav__content';
 const SIDENAV_DRAWERS_CLASS = 'chi-sidenav__drawers';
 const SIDENAV_TITLE_CLASS = 'chi-sidenav__title';
+const CHI_DRAWER_CONTENT = 'chi-drawer__content';
 const DRAWER_LINKLIST_CLASS = "chi-sidenav__drawer-list";
 const DRAWER_ITEM_LIST_CLASS = "chi-sidenav__drawer-item-list";
 const DRAWER_ITEM_TAB_CLASS = "chi-sidenav__drawer-item-tab";
@@ -67,6 +68,7 @@ class Sidenav extends Component {
         'div');
     }
 
+    this.singleLevelMenuItems();
     this.syncDrawers();
     this._configureAutoClose();
   }
@@ -93,6 +95,46 @@ class Sidenav extends Component {
 
     previousDrawers.forEach(function (drawer) {
       drawer.dispose();
+    });
+  }
+
+  singleLevelMenuItems() {
+    this._elem
+    .querySelectorAll(`nav ul.${LINKLIST_CLASS} li`)
+    .forEach(singleLevelMenuItem => {
+      const menuElementLink = singleLevelMenuItem.querySelector('a').getAttribute('href');
+
+      if (!this._elem.querySelector(`.chi-drawer${menuElementLink}`)) {
+        let menuItemToActivate;
+
+        singleLevelMenuItem.addEventListener("click", (e) => {
+          const activeMenuItem = this.getActiveMenuItem();
+
+          for (
+            let cur = e.target;
+            cur && !cur.classList.contains(LINKLIST_CLASS);
+            cur = cur.parentNode
+          ) {
+            menuItemToActivate = cur;
+          }
+
+          if (activeMenuItem) {
+            Util.removeClass(activeMenuItem, chi.classes.ACTIVE);
+            this._elem
+              .querySelectorAll(
+                `.chi-drawer .${CHI_DRAWER_CONTENT} .${DRAWER_LINKLIST_CLASS} li.${chi.classes.ACTIVE},
+                .chi-drawer .${CHI_DRAWER_CONTENT} .${DRAWER_LINKLIST_CLASS} li a.${DRAWER_ITEM_TAB_CLASS}.${chi.classes.ACTIVE}`
+              )
+              .forEach(activeDrawerElement => {
+                Util.removeClass(activeDrawerElement, chi.classes.ACTIVE);
+                if (Util.hasClass(activeDrawerElement, DRAWER_ITEM_LIST_EXPANDED)) {
+                  Util.removeClass(activeDrawerElement, DRAWER_ITEM_LIST_EXPANDED);
+                }
+              });
+          }
+          Util.addClass(menuItemToActivate, chi.classes.ACTIVE);
+        });
+      }
     });
   }
 
