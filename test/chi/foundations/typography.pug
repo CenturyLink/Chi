@@ -25,17 +25,17 @@ title: Typography
     .chi-col
       .-text Default text color
     .chi-col
-      .-text.-bgInverse Default text color
+      .-text.-bg--inverse Default text color
     .chi-col
       .-text .-text
-  each modifier in ['Inverse', 'Brand', 'Success', 'Danger', 'Info', 'Warning']
+  each modifier in ['inverse', 'brand', 'success', 'danger', 'info', 'warning']
     .chi-grid
       .chi-col
-        .-text(class=`-$text{modifier}`)= `${modifier} text color`
+        .-text(class=`-$text--{modifier}`)= `${modifier} text color`
       .chi-col
-        .-text.-bgInverse(class=`-text${modifier}`)= `${modifier} text color`
+        .-text.-bg--inverse(class=`-text--${modifier}`)= `${modifier} text color`
       .chi-col
-        .-text= `.-text${modifier}`
+        .-text= `.-text--${modifier}`
 
 .test-paragraph
   h3 Fancy header title

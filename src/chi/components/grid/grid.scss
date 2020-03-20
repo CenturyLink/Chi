@@ -40,20 +40,6 @@
   &.-align--bottom {
     align-items: flex-end;
   }
-
-  // Legacy code start
-  &.-alignTop {
-    align-items: flex-start;
-  }
-
-  &.-alignCenter {
-    align-items: center;
-  }
-
-  &.-alignBottom {
-    align-items: flex-end;
-  }
-  // Legacy code end
 }
 
 .chi-col {
@@ -84,23 +70,6 @@
       }
     }
   }
-  // Legacy code start
-  @each $size in sm md lg xl {
-    @include respond-to-only(xs) {
-      &.-#{$size} {
-        flex: 1 0 auto;
-        width: 100%;
-      }
-
-      @for $i from 1 through 12 {
-        &.-#{$size}--w#{$i} {
-          flex: 1 0 auto;
-          width: 100%;
-        }
-      }
-    }
-  }
-  // Legacy code end
 
   // Sizing
 
@@ -124,28 +93,6 @@
     }
   }
 
-  // Legacy code start
-  @for $i from 1 through 12 {
-    &.-w#{$i} {
-      flex: 0 1 (100% / 12 * $i);
-      width: (100% / 12 * $i);
-    }
-  }
-
-  // Sizing by Viewport
-
-  @each $size in sm md lg xl {
-    @include respond-to($size) {
-      @for $i from 1 through 12 {
-        &.-#{$size}--w#{$i} {
-          flex: 0 1 (100% / 12 * $i);
-          max-width: (100% / 12 * $i);
-        }
-      }
-    }
-  }
-  // Legacy code end
-
   // Offsets
 
   @for $i from 1 through 11 {
@@ -164,24 +111,6 @@
     }
   }
 
-  // Legacy code start
-  @for $i from 1 through 11 {
-    &.-o#{$i} {
-      margin-left: (100% / 12 * $i);
-    }
-
-    @each $size in sm md lg xl {
-      @include respond-to($size) {
-        @for $i from 1 through 11 {
-          &.-#{$size}--o#{$i} {
-            margin-left: (100% / 12 * $i);
-          }
-        }
-      }
-    }
-  }
-  // Legacy code end
-
   // Vertical Alignment (Column-Specifics)
 
   &.-align--top {
@@ -195,20 +124,6 @@
   &.-align--bottom {
     align-self: flex-end;
   }
-
-  // Legacy code start
-  &.-alignTop {
-    align-self: flex-start;
-  }
-
-  &.-alignCenter {
-    align-self: center;
-  }
-
-  &.-alignBottom {
-    align-self: flex-end;
-  }
-  // Legacy code end
 
   // Reordering
 
@@ -229,26 +144,6 @@
       }
     }
   }
-
-  // Legacy code start
-  @for $i from 1 through 12 {
-    &.-n#{$i} {
-
-      order: #{$i};
-    }
-
-    @each $size in xs sm md lg xl {
-      @include respond-to-only($size) {
-        @for $i from 1 through 12 {
-          &.-#{$size}--n#{$i} {
-
-            order: #{$i};
-          }
-        }
-      }
-    }
-  }
-  // Legacy code end
 
   @each $size in xs sm md lg xl {
     @include respond-to-only($size) {

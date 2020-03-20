@@ -182,12 +182,6 @@ $animation-duration: 0.5s;
   }
 }
 
-// Legacy code start
-.a-backdrop > .chi-drawer {
-  z-index: $zindex-fixed-with-backdrop;
-}
-// Legacy code end
-
 .chi-backdrop__wrapper > .chi-drawer {
   z-index: $zindex-fixed-with-backdrop;
 }

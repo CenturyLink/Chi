@@ -3,7 +3,6 @@ title: Drawer
 ---
 - var sides = ['top', 'right', 'bottom', 'left'];
 - var versions = [{"title": "no-backdrop", "classes": "", "testClass": "test-"}, {"title": "backdrop", "classes": "chi-backdrop", "testClass": "test-backdrop-"}, {"title": "inverse backdrop", "classes": "chi-backdrop -inverse", "testClass": "test-backdrop-inverse-"} ];
-- var legacyVersions = [{"title": "no-backdrop", "classes": "", "testClass": "test-"}, {"title": "backdrop", "classes": "chi-backdrop", "testClass": "test-backdrop-"}, {"title": "inverse backdrop", "classes": "chi-backdrop -inverse", "testClass": "test-backdrop-inverse-"} ];
 
 each side in sides
   each version in versions
@@ -46,31 +45,6 @@ each side in sides
                     i.chi-icon.icon-x
               .chi-drawer__content
                 .-px--2.-text Drawer content here
-
-  each version in legacyVersions
-
-    div(class=`${version.testClass}${side}-legacy -mb--3`)
-      div(style='width: 320px')
-        .chi-h2= `Drawer / ${version.title} / ${side}`
-        div(class=`${version.classes}` style="position:relative;height:20rem")
-          div(class=`chi-drawer -${side} -active`, style='position:absolute;')
-            button(class='chi-btn -icon -close', aria-label='Close')
-              .chi-btn__content
-                i.chi-icon.icon-x
-            .chi-drawer__content
-              .-px--2.-text Drawer content here
-
-    div(class=`${version.testClass}${side}-headed-legacy -mb--3`)
-      div(style='width: 320px')
-        .chi-h2= `Drawer / with head / ${version.title} / ${side}`
-        div(class=`${version.classes}` style="position:relative;height:20rem")
-          div(class=`chi-drawer -${side} -active`, style='position:absolute;')
-            .chi-drawer__header
-              button(class='chi-btn -icon -close', aria-label='Close')
-                .chi-btn__content
-                  i.chi-icon.icon-x
-            .chi-drawer__content
-              .-px--2.-text Drawer content here
 
 div(class=`test-non-closable -mb--3 example -mb--3`)
   div(style='width: 320px')

@@ -2,10 +2,6 @@
 
 @mixin navigation-tabs-not-vertical {
   & > li,
-  //legacy code start
-  &.-small > li,
-  &.-large > li,
-  //legacy code end
   &.-sm > li,
   &.-lg > li {
     & > a {

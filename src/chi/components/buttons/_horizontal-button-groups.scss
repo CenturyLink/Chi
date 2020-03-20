@@ -11,16 +11,6 @@ $sizes: (
       padding_hover: (0.375rem - $border),
     )
   ),
-  // Legacy code start
-  small: (
-    padding: 0.5rem,
-    padding_hover: (0.5rem - $border),
-    icons: (
-      padding: 0.375rem,
-      padding_hover: (0.375rem - $border),
-    )
-  ),
-  // Legacy code end
   md: (
     padding: 1rem,
     padding_hover: (1rem - $border),
@@ -37,16 +27,6 @@ $sizes: (
       padding_hover: (0.75rem - $border),
     )
   ),
-  // Legacy code start
-  large: (
-    padding: 1.5rem,
-    padding_hover: (1.5rem - $border),
-    icons: (
-      padding: 0.75rem,
-      padding_hover: (0.75rem - $border),
-    )
-  ),
-  // Legacy code end
   xl: (
     padding: 1.5rem,
     padding_hover: (1.5rem - $border),

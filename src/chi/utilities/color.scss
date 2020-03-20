@@ -1,11 +1,9 @@
 @import '_mixins';
 @import '_variables';
 
-// Legacy code start
-.-bgInverse {
+.-bg--inverse {
   background-color: $bg-inverse;
 }
-// Legacy code end
 
 $colors: (
   primary: $primary-color,

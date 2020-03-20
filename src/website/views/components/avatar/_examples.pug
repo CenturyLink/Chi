@@ -196,7 +196,7 @@ ul#chi-tabs--sizes.chi-tabs
     .-p--3
       .chi-grid.-align-items--end
         each size in sizes
-          div(class=`chi-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
+          div(class=`chi-col -w--${columnWidths[size][0]} -w-lg--${columnWidths[size][1]} -w-xl--${columnWidths[size][2]} -text--center`)
             div(class=`chi-avatar -${size}`) AA
             p.-text= size
     :code(lang="html")
@@ -213,7 +213,7 @@ ul#chi-tabs--sizes.chi-tabs
     .-p--3
       .chi-grid.-align-items--end
         each size in sizes
-          div(class=`chi-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
+          div(class=`chi-col -w--${columnWidths[size][0]} -w-lg--${columnWidths[size][1]} -w-xl--${columnWidths[size][2]} -text--center`)
             div(class=`chi-avatar -${size}`)
               i.chi-icon.icon-user
             p.-text= size
@@ -247,7 +247,7 @@ ul#chi-tabs--sizes.chi-tabs
     .-p--3
       .chi-grid.-align-items--end
         each size in sizes
-          div(class=`chi-col -w${columnWidths[size][0]} -lg--w${columnWidths[size][1]} -xl--w${columnWidths[size][2]} -text--center`)
+          div(class=`chi-col -w--${columnWidths[size][0]} -w-lg--${columnWidths[size][1]} -w-xl--${columnWidths[size][2]} -text--center`)
             div(class=`chi-avatar -${size}`)
               img(src='../../assets/images/avatar.jpg', alt="avatar")
             p.-text= size

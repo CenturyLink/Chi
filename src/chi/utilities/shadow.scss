@@ -3,13 +3,6 @@
 
 /* Shadows */
 
-@for $index from 0 through 5 {
-  .-s#{$index} {
-    box-shadow: map-get($shadow, $index) !important;
-  }
-}
-
-/* New class naming */
 @each $screen-size in $screen-sizes {
   @if $screen-size == xs {
     @each $index, $value in $shadow {
