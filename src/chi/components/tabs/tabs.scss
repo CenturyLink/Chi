@@ -74,7 +74,7 @@
       width: 0.125rem;
     }
 
-    &.-activeAlt {
+    &.-active-alt {
       & > a {
         background-color: set-color(grey, 20);
         color: $text-color;

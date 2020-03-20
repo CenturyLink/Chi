@@ -16,7 +16,7 @@ title: Tabs
 
 h2 vertical
 
-each active in ['', 'activeAlt']
+each active in ['', 'active-alt']
   each style in ['', 'border']
     div(class=`test-vertical-${active}-${style}`)
       each size in ['sm', 'medium', 'lg']
@@ -38,7 +38,7 @@ each active in ['', 'activeAlt']
           li
             a(href='#') Tab link
 
-each active in ['', 'activeAlt']
+each active in ['', 'active-alt']
   each style in ['', 'border']
     div(class=`test-vertical-icons-${active}-${style}`)
       each size in ['sm', 'medium', 'lg']
@@ -88,7 +88,7 @@ each active in ['', 'active']
                 svg
                   use(xlink:href='#icon-atom')
               span Tab link
-          li(class=`-activeAlt -${active}`)
+          li(class=`-active-alt -${active}`)
             a(href='#')
               div(class=`chi-icon`)
                 svg
