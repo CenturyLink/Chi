@@ -6,7 +6,7 @@ const ANIMATION_DURATION = 500;
 const CLOSE_TRIGGER_SELECTOR = '[data-dismiss="modal"]';
 const COMPONENT_SELECTOR = '.chi-modal__trigger';
 const COMPONENT_TYPE = "modal";
-const DISABLE_SCROLL = '-disableScroll';
+const DISABLE_SCROLL = '-disable-scroll';
 const ESCAPE_KEYCODE = 27;
 const EVENTS = {
   show: 'chi.modal.show',

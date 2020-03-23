@@ -93,18 +93,18 @@
 
   &:not(.-sliding) {
     & > li {
-      &.-active:not(.-hasActive) > a {
+      &.-active:not(.-has-active) > a {
         box-shadow: inset 0.125rem 0 0 $primary-color;
       }
     }
 
     &.-animated > li {
-      &.-active:not(.-hasActive) > a {
+      &.-active:not(.-has-active) > a {
         box-shadow: inset 0.125rem 0 0 $primary-color;
       }
 
       & .chi-tabs__subtabs > li {
-        &.-active:not(.-hasActive) > a {
+        &.-active:not(.-has-active) > a {
           box-shadow: inset 0.125rem 0 0 $primary-color;
         }
       }
@@ -388,9 +388,9 @@
 
     &.-vertical {
       // sass-lint:disable-block force-element-nesting
-      &:not(.-sliding) > li.-active:not(.-hasActive) > a,
-      &:not(.-sliding).-animated > li.-active:not(.-hasActive) > a,
-      &:not(.-sliding).-animated .chi-tabs__subtabs > li.-active:not(.-hasActive) > a {
+      &:not(.-sliding) > li.-active:not(.-has-active) > a,
+      &:not(.-sliding).-animated > li.-active:not(.-has-active) > a,
+      &:not(.-sliding).-animated .chi-tabs__subtabs > li.-active:not(.-has-active) > a {
         box-shadow: inset 0.125rem 0 0 $secondary-color;
       }
       // sass-lint:disable-block force-element-nesting

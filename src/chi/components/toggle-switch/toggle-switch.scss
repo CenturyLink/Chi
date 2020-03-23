@@ -289,24 +289,6 @@ input {
           }
         }
       }
-
-      &.-hideLabel {
-        & + label {
-          width: 2.5rem;
-
-          &::after {
-            display: none;
-          }
-        }
-
-        &:checked {
-          & + label {
-            &::before {
-              left: 1.125rem;
-            }
-          }
-        }
-      }
     }
   }
 }

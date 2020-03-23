@@ -4,7 +4,7 @@ import {SlidingBorder, ANIMATION_DURATION as BORDER_ANIMATION_DURATION} from "./
 import {Util} from "../core/util.js";
 
 const CLASS_ACTIVE = "-active";
-const CLASS_HAS_ACTIVE = "-hasActive";
+const CLASS_HAS_ACTIVE = "-has-active";
 const CLASS_ANIMATED = "-animated";
 const CLASS_RESPONSIVE = "-responsive";
 const CLASS_VERTICAL = "-vertical";
