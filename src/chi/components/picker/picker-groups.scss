@@ -71,7 +71,7 @@ legend {
               }
             }
 
-            &.-notFluid {
+            &.-no-fluid {
               flex: 0 1 auto;
 
               @include respond-to(md) {

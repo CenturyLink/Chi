@@ -281,17 +281,17 @@ h3 Avatar Groups
 
 p.-text
   | Use avatar groups to group multiple avatars or add descriptive text such as a users name.
-  | Render an avatar group by wrapping an avatar in the class <code>m-avatarGroup</code>.
+  | Render an avatar group by wrapping an avatar in the class <code>chi-avatar__group</code>.
 .example.-mb--3
   .-p--3.chi-grid
     each color in colors
       if (color !== 'secondary')
         .-mb--1.chi-col.-w--6.-w-sm--4.-w-md--6.-w-lg--4.-w-xl--3
-          .m-avatarGroup
+          .chi-avatar__group
             div(class=`chi-avatar -${color}`) L
             = `Label ${color}`
   :code(lang="html")
-    <div class="m-avatarGroup">
+    <div class="chi-avatar__group">
       <div class="chi-avatar">L</div>Label text
     </div>
 

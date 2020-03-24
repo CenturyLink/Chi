@@ -168,7 +168,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
   }
 
-  &.-horizontalLabels {
+  &.-horizontal-label {
     counter-reset: step;
 
     & > li {
@@ -268,18 +268,18 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   }
 
   .chi-steps div.chi-steps__icon::before,
-  .chi-steps.-horizontalLabels div.chi-steps__icon::before  {
+  .chi-steps.-horizontal-label div.chi-steps__icon::before  {
     left: 0.15rem;
     position: relative;
   }
 
-  .chi-steps.-horizontalLabels div.chi-steps__icon::after,
-  .chi-steps.-horizontalLabels li.-active div.chi-steps__icon::after {
+  .chi-steps.-horizontal-label div.chi-steps__icon::after,
+  .chi-steps.-horizontal-label li.-active div.chi-steps__icon::after {
     position: relative;
     right: 0.75rem;
   }
 
-  .chi-steps.-horizontalLabels li.-completed div.chi-steps__icon::after {
+  .chi-steps.-horizontal-label li.-completed div.chi-steps__icon::after {
     position: relative;
     right: 0.3125rem;
   }
@@ -296,13 +296,13 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     font-size: 1.4rem;
   }
 
-  .chi-steps.-horizontalLabels div.chi-steps__icon::before,
-  .chi-steps.-horizontalLabels li.-active div.chi-steps__icon::before,
-  .chi-steps.-horizontalLabels div.chi-steps__icon::before {
+  .chi-steps.-horizontal-label div.chi-steps__icon::before,
+  .chi-steps.-horizontal-label li.-active div.chi-steps__icon::before,
+  .chi-steps.-horizontal-label div.chi-steps__icon::before {
     position: absolute;
   }
 
-  .chi-steps.-horizontalLabels div.chi-steps__line {
+  .chi-steps.-horizontal-label div.chi-steps__line {
     padding-bottom: 0;
   }
 }

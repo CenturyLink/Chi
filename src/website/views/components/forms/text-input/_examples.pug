@@ -87,12 +87,12 @@ h3 Inline Label - width controlled using percent
 h3 Inline Label - width controlled using grid
 .example.-mb--3
   .-p--3
-    .chi-form__item.-row.chi-grid.-noGutter
+    .chi-form__item.-row.chi-grid.-no-gutter
       label.chi-label.chi-col.-w--3(for='example__inline-label-grid') Label width 3 columns
       .chi-col.-w--9
         input(type="text", class="chi-input", id='example__inline-label-grid', placeholder="Placeholder")
   :code(lang="html")
-    <div class="chi-form__item -row chi-grid -noGutter">
+    <div class="chi-form__item -row chi-grid -no-gutter">
       <label class="chi-label -w--3" for="example__inline-label-grid">Label</label>
       <div class="-w--9">
         <input class="chi-input" type="text" id="example__inline-label-grid" placeholder="Placeholder">
@@ -323,28 +323,28 @@ p.-text
   .-p--3
     each size in ['lg', 'xl']
       div(class=`chi-col -w--12 -p--2`)
-        .chi-input__wrapper.-floatingLabel(style="max-width:20rem")
+        .chi-input__wrapper.-floating-label(style="max-width:20rem")
           input(type="text", class=`chi-input -${size} -mr--3`, id=`floating-label-${size}`)
           label(for=`floating-label-${size}`) Placeholder text
   :code(lang='html')
-    <div class="chi-input__wrapper -floatingLabel">
+    <div class="chi-input__wrapper -floating-label">
       <input class="chi-input -lg" type="text" id="floating-label-lg">
       <label for="floating-label-lg">Placeholder text</label>
     </div>
 
-    <div class="chi-input__wrapper -floatingLabel">
+    <div class="chi-input__wrapper -floating-label">
       <input class="chi-input -xl" type="text" id="floating-label-xl">
       <label for="floating-label-xl">Placeholder text</label>
     </div>
 
     <script>
-      chi.floatingLabel(document.querySelectorAll('.-floatingLabel'));
+      chi.floatingLabel(document.querySelectorAll('.-floating-label'));
     </script>
 
 script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.floatingLabel(document.querySelectorAll('.-floatingLabel'));
+      chi.floatingLabel(document.querySelectorAll('.-floating-label'));
     }
   );

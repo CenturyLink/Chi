@@ -2,7 +2,7 @@ import {Component} from "../core/component";
 import {Util} from "../core/util.js";
 
 const CLASS_ACTIVE = "-active";
-const COMPONENT_SELECTOR = '.-floatingLabel';
+const COMPONENT_SELECTOR = '.-floating-label';
 const COMPONENT_TYPE = "floatingLabel";
 const DEFAULT_CONFIG = {};
 
@@ -93,4 +93,3 @@ class FloatingLabel extends Component {
 
 const factory = Component.factory.bind(FloatingLabel);
 export {FloatingLabel, factory};
-

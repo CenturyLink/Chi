@@ -8,7 +8,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
     [`test-${size}`]: size != 'default'
   })
     span.chi-h2= `Hybrid buttons / ${size}`
-    .m-btnGroup
+    .chi-btn__group
       button.chi-btn(class={
         [`-${size}`]: size != 'default'
       })
@@ -31,12 +31,12 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
   })
     span.chi-h2= `Hybrid buttons / ${size} / fluid`
     each modifier in ['align--left', '', 'align--right']
-      .m-btnGroup.-fluid.-m--1(style="width:200px")
+      .chi-btn__group.-fluid.-m--1(style="width:200px")
         button.chi-btn(class={
           [`-${size}`]: size != 'default',
           [`-${modifier}`]: modifier != ''
         }) Button
-        button.chi-btn.-icon.-notFluid(class={
+        button.chi-btn.-icon.-no-fluid(class={
           [`-${size}`]: size != 'default'
         })
           .chi-btn__content

@@ -1,7 +1,7 @@
 @import '_horizontal-button-groups';
 @import '_vertical-button-groups';
 
-.m-btnGroup {
+.chi-btn__group {
   &.-fluid {
     display: flex;
 
@@ -10,7 +10,7 @@
       flex: 1 0 auto;
       justify-content: center;
 
-      &.-notFluid {
+      &.-no-fluid {
         flex: 0 0 auto;
       }
 

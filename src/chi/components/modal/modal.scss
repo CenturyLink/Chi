@@ -3,7 +3,7 @@
 
 $animation-duration: 0.5s;
 
-.-disableScroll {
+.-disable-scroll {
   overflow: hidden;
 }
 
@@ -24,7 +24,7 @@ $animation-duration: 0.5s;
     padding: 1rem;
     position: relative;
 
-    &.-noBorder {
+    &.-no-border {
       box-shadow: none;
     }
 
@@ -109,7 +109,7 @@ $animation-duration: 0.5s;
     padding: 1rem;
     position: relative;
 
-    &.-noBorder {
+    &.-no-border {
       box-shadow: none;
     }
   }

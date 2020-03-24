@@ -151,7 +151,7 @@ mixin table(row, column, selectable)
   .chi-col.-w--6
     h2 Without section container
     each tablestyle in ['default', 'striped']
-      each borderstyle in ['default', 'bordered', 'borderless']
+      each borderstyle in ['default', 'bordered', 'no-border']
         div(class=`test-${tablestyle}-${borderstyle}`)
           span.chi-h2
             | table
@@ -260,7 +260,7 @@ mixin table(row, column, selectable)
   .chi-col.-w--6
     h2 With section container
     each tablestyle in ['default', 'striped']
-      each borderstyle in ['default', 'bordered', 'borderless']
+      each borderstyle in ['default', 'bordered', 'no-border']
         div(class=`test-section-${tablestyle}-${borderstyle}`)
           span.chi-h2
             | table
