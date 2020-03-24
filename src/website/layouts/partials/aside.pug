@@ -3,7 +3,7 @@ nav
     each collection, key in collections
       if utils.hasActiveSections(collection)
         if utils.isCurrentCollection(collection, path)
-          li.-active.-has-active
+          li.-active
             .chi-collection__title
               =key
             if utils.hasSections(collection)
@@ -18,7 +18,7 @@ nav
                         if section.title == 'Button'
                           .-sr--only component
         else
-          li.-has-active
+          li
             .chi-collection__title
               =key
             if utils.hasSections(collection)
