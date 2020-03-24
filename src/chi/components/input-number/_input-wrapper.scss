@@ -12,7 +12,7 @@ $sizes: (
   ),
   md: (
     height: 0.6875rem,
-    padding-right: 0,
+    padding-right: 1.375rem,
     right: 0.25rem,
     width: 1rem,
     top: 0.25rem,
@@ -39,26 +39,44 @@ $sizes: (
   )
 );
 
-$m-inputnumber: (
+$expanded-sizes: (
   sm: (
     width: 6rem,
-    button-height: 1.5rem
+    button-height: 1.5rem,
+    padding: 0.3125rem,
+    icon-height: 0.75rem,
+    icon-width: 0.75rem,
+    input-padding: 0.1875rem 0.4375rem
   ),
   md: (
     width: 8rem,
-    button-height: 2rem
+    button-height: 2rem,
+    padding: 0.4375rem,
+    icon-height: 1rem,
+    icon-width: 1rem,
+    input-padding: 0.4375rem
   ),
   lg: (
     width: 10rem,
-    button-height: 2.5rem
+    button-height: 2.5rem,
+    padding: 0.6875rem,
+    icon-height: 1rem,
+    icon-width: 1rem,
+    input-padding: .5625rem .4375rem
   ),
   xl: (
     width: 12rem,
-    button-height: 3rem
+    button-height: 3rem,
+    padding: 0.9375rem,
+    icon-height: 1rem,
+    icon-width: 1rem,
+    input-padding: .6875rem .4375rem
   )
 );
 
-.chi-input__wrapper {
+.chi-number-input {
+  position: relative;
+
   input {
     &[type='number'] {
       &.chi-input {
@@ -125,68 +143,111 @@ $m-inputnumber: (
       }
     }
   }
-}
 
-.m-inputNumber {
-  align-items: center;
-  display: flex;
-  width: 8rem;
+  &.-expanded {
+    align-items: center;
+    display: flex;
+    width: 8rem;
 
-  @each $size, $values in $m-inputnumber {
-    &.-#{$size} {
-      width: map-get($values, width);
+    & > input {
+      &[type='number'] {
+        &.chi-input {
+          border-radius: 0;
+          flex: auto;
+          min-width: 1rem;
+          order: 2;
+          padding: .4375rem;
+          text-align: center;
+          z-index: 1;
 
-      & > button {
-        height: map-get($values, button-height);
-      }
-    }
-  }
+          & ~ button {
+            &.chi-btn {
+              background-image: none;
+              color: $text-color;
+              display: block;
+              height: map-get(map-get($expanded-sizes, md), button-height);
+              padding: .4375rem;
+              position: relative;
 
-  & > input {
-    &[type='number'] {
-      &.chi-input {
-        flex: auto;
-        min-width: 1rem;
-        order: 2;
-        text-align: center;
-        z-index: 0;
-      }
+              &:first-of-type,
+              &:focus:first-of-type {
+                border-bottom-right-radius: 0;
+                border-right-width: 0;
+                border-top-right-radius: 0;
+                bottom: 0;
+                order: 1;
+                right: 0;
+                width: auto;
+              }
 
-      &[disabled] {
-        &.chi-input ~ button {
-          color: rgba($text-color, 0.3);
-          pointer-events: none;
+              &:last-of-type,
+              &:focus:last-of-type {
+                border-bottom-left-radius: 0;
+                border-left-width: 0;
+                border-top-left-radius: 0;
+                order: 3;
+                right: 0;
+                top: 0;
+                width: auto;
+              }
+
+              & .chi-icon {
+                height: 1rem;
+                width: 1rem;
+              }
+            }
+          }
+        }
+
+        &[disabled] {
+          &.chi-input {
+            & ~ button {
+              color: rgba($text-color, 0.3);
+              opacity: 1;
+              pointer-events: none;
+            }
+          }
         }
       }
     }
-  }
 
-  & > button {
-    color: $text-color;
-    display: block;
-    height: map-get(map-get($m-inputnumber, md), button-height);
-
-    &[disabled] {
+    & > button[disabled] {
       color: rgba($text-color, 0.3);
       pointer-events: none;
     }
 
-    &:first-of-type,
-    &:focus:first-of-type {
-      border-right-width: 0;
-      order: 1;
-    }
+    @each $size, $values in $expanded-sizes {
+      &.-#{$size} {
+        width: map-get($values, width);
 
-    &:last-of-type,
-    &:focus:last-of-type {
-      border-left-width: 0;
-      order: 3;
+        & > input[type='number'].chi-input {
+          padding: map-get($values, input-padding);
+
+          & ~ button {
+            height: map-get($values, button-height);
+            padding: map-get($values, padding);
+
+            &:first-of-type {
+              bottom: 0;
+            }
+
+            &:last-of-type {
+              top: 0;
+            }
+
+            & .chi-icon {
+              height: map-get($values, icon-height);
+              width: map-get($values, icon-width);
+            }
+          }
+        }
+      }
     }
   }
 }
 
 // sass-lint:disable-all
-_:-ms-lang(x), .m-inputNumber button .chi-btn__content, .m-inputNumber button .chi-icon {
+_:-ms-lang(x), .chi-number-input.-expanded button .chi-btn__content, .chi-number-input.-expanded button .chi-icon {
   display: block;
 }
 // sass-lint:enable-all

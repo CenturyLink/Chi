@@ -14,7 +14,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
             td
               .-m--1
                 .chi-form__item.-row
-                  .chi-input__wrapper
+                  .chi-number-input
                     input.chi-input(
                       type='number'
                       class={
@@ -40,7 +40,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
             td
               .-m--1
                 .chi-form__item.-row
-                  .m-inputNumber(class={[`-${size}`]: size != 'default'})
+                  .chi-number-input.-expanded(class={[`-${size}`]: size != 'default'})
                     input.chi-input(
                       type='number'
                       class={
@@ -70,7 +70,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
             td
               .-m--1
                 .chi-form__item.-row
-                  .m-inputNumber(class={[`-${size}`]: size != 'default'})
+                  .chi-number-input.-expanded(class={[`-${size}`]: size != 'default'})
                     input.chi-input(
                       type='number'
                       class={
