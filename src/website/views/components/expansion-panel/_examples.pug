@@ -20,7 +20,7 @@ ul#chi-tabs.chi-tabs
     a(href='#chi-tabs-disabled') Disabled
 .example.-mb--3
   .-p--3
-    chi-expansion-panel(step='1', heading='Done panel', state='done')
+    chi-expansion-panel(step='1', title='Done panel', state='done')
       div(slot='done')
         | CenturyLink
         br
@@ -167,7 +167,7 @@ ul#chi-tabs.chi-tabs
 h2 Customization
 .example.-mb--3
   .-p--3.-bg--grey-10
-    chi-expansion-panel(heading='Expansion panel', state='active')
+    chi-expansion-panel(title='Expansion panel', state='active')
       div(slot='active')
         .chi-epanel__subtitle Active panel title
         p.chi-epanel__text.-mb--0 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque consequatur consequuntur excepturi
@@ -255,7 +255,7 @@ ul#chi-tabs-bordered.chi-tabs
     a(href='#chi-tabs-bordered-disabled') Disabled
 .example.-mb--3
   .-p--3
-    chi-expansion-panel(step='1', heading='Done panel', state='done', bordered=true)
+    chi-expansion-panel(step='1', title='Done panel', state='done', bordered=true)
       div(slot='done')
           | CenturyLink
           br
@@ -441,7 +441,7 @@ ul#chi-tabs-ex.chi-tabs
     a(href='#chi-tabs-ex-disabled') Disabled
 .example.-mb--3
   .-p--3.-bg--grey-10
-    chi-expansion-panel(heading='Expansion panel', state='done')
+    chi-expansion-panel(title='Expansion panel', state='done')
       div(slot='done')
         | CenturyLink
         br
