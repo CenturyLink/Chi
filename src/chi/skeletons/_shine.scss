@@ -1,0 +1,13 @@
+$base-color: set-color(grey, 15);
+$shine-color: set-color(grey, 10);
+$animation-duration: 2s;
+
+@keyframes shine {
+  0% {
+    background-position: -12rem;
+  }
+
+  40%, 100% {
+    background-position: 60rem;
+  }
+}
