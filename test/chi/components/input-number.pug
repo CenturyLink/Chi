@@ -14,13 +14,12 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
             td
               .-m--1
                 .chi-form__item.-row
-                  .chi-number-input
+                  .chi-number-input(class={[`-${size}`]: size != 'default'})
                     input.chi-input(
                       type='number'
                       class={
                         [`-${style}`]: style != 'default',
-                        [`-${state}`]: state != 'disabled',
-                        [`-${size}`]: size != 'default'
+                        [`-${state}`]: state != 'disabled'
                       }
                       value='0'
                       disabled=state=='disabled'?'disabled': false
@@ -45,16 +44,15 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       type='number'
                       class={
                         [`-${style}`]: style != 'default',
-                        [`-${state}`]: state != 'disabled',
-                        [`-${size}`]: size != 'default'
+                        [`-${state}`]: state != 'disabled'
                       }
                       value='0'
                       disabled=state=='disabled'?'disabled': false
                     )
-                    button.chi-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Decrease')
+                    button.chi-btn.-icon(tabindex='-1', aria-label='Decrease')
                       .chi-btn__content
                         i.chi-icon.icon-minus
-                    button.chi-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Increase')
+                    button.chi-btn.-icon(tabindex='-1', aria-label='Increase')
                       .chi-btn__content
                         i.chi-icon.icon-plus
 
@@ -75,18 +73,17 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       type='number'
                       class={
                         [`-${style}`]: style != 'default',
-                        [`-${state}`]: state != 'disabled',
-                        [`-${size}`]: size != 'default'
+                        [`-${state}`]: state != 'disabled'
                       }
                       value='0'
                       disabled=state=='disabled'?'disabled': false
                     )
-                    button.chi-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Decrease')
+                    button.chi-btn.-icon(tabindex='-1', aria-label='Decrease')
                       .chi-btn__content
                         .chi-icon(class={[`-${size}`]: size != 'default'})
                           svg(aria-hidden="true")
                             use(xlink:href='#icon-minus')
-                    button.chi-btn.-icon(tabindex='-1', class={[`-${size}`]: size != 'default'}, aria-label='Increase')
+                    button.chi-btn.-icon(tabindex='-1', aria-label='Increase')
                       .chi-btn__content
                         .chi-icon(class={[`-${size}`]: size != 'default'})
                           svg(aria-hidden="true")
