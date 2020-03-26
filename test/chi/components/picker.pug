@@ -12,8 +12,8 @@ h4 Base
   .example(style='width: 700px')
     .-p--3
       each type in ['Checkbox1','Checkbox2']
-        .m-picker
-          input(type="checkbox", class="a-picker", id=`i-${type}`)
+        .chi-picker__item
+          input(type="checkbox", class="chi-picker", id=`i-${type}`)
           label(for=`i-${type}`)
             = type
 
@@ -22,11 +22,11 @@ h4 Base checked
   .example(style='width: 700px')
     .-p--3
       each type in ['Checkbox1','Checkbox2']
-        .m-picker
+        .chi-picker__item
           if type == 'Checkbox1'
-            input(type="checkbox", class="a-picker", id=`i-checked-${type}`, checked)
+            input(type="checkbox", class="chi-picker", id=`i-checked-${type}`, checked)
           else
-            input(type="checkbox", class="a-picker", id=`i-checked-${type}`)
+            input(type="checkbox", class="chi-picker", id=`i-checked-${type}`)
           label(for=`i-checked-${type}`)
             = type
 
@@ -35,12 +35,12 @@ h4 With checkbox
   .example(style='width: 700px')
     .-p--3
       each type in ['Checkbox1','Checkbox2']
-        .m-picker
-          input(type="checkbox", class="a-picker", id=`ic-${type}`)
+        .chi-picker__item
+          input(type="checkbox", class="chi-picker", id=`ic-${type}`)
           label(for=`ic-${type}`)
             div.chi-form__item.-row
-              span.a-picker__checkbox
-              span.a-picker__label
+              span.chi-picker__checkbox
+              span.chi-picker__label
                 =type
 
 h4 With checkbox checked
@@ -48,46 +48,46 @@ h4 With checkbox checked
   .example(style='width: 700px')
     .-p--3
       each type in ['Checkbox1','Checkbox2']
-        .m-picker
+        .chi-picker__item
           if type == 'Checkbox1'
-            input(type="checkbox", class="a-picker", id=`ic-checked-${type}`, checked)
+            input(type="checkbox", class="chi-picker", id=`ic-checked-${type}`, checked)
           else
-            input(type="checkbox", class="a-picker", id=`ic-checked-${type}`)
+            input(type="checkbox", class="chi-picker", id=`ic-checked-${type}`)
           label(for=`ic-checked-${type}`)
             div.chi-form__item.-row
-              span.a-picker__checkbox
-              span.a-picker__label
+              span.chi-picker__checkbox
+              span.chi-picker__label
                 =type
 
 h4 With description
 .test-with-description
   each type in ['Checkbox1','Checkbox2']
-    .m-picker
-      input(type="checkbox", class="a-picker", id=`id-${type}`)
+    .chi-picker__item
+      input(type="checkbox", class="chi-picker", id=`id-${type}`)
       label(for=`id-${type}`)
-        .m-picker__content--start
+        .chi-picker__content--start
           .chi-form__item.-row
-              span.a-picker__checkbox
-              span.a-picker__label
+              span.chi-picker__checkbox
+              span.chi-picker__label
                 =type
-          div.a-picker__description
+          div.chi-picker__description
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
 
 h4 With description checked
 .test-with-description-checked
   each type in ['Checkbox1','Checkbox2']
-    .m-picker
+    .chi-picker__item
       if type == 'Checkbox1'
-        input(type="checkbox", class="a-picker", id=`id-checked-${type}`, checked)
+        input(type="checkbox", class="chi-picker", id=`id-checked-${type}`, checked)
       else
-        input(type="checkbox", class="a-picker", id=`id-checked-${type}`)
+        input(type="checkbox", class="chi-picker", id=`id-checked-${type}`)
       label(for=`id-checked-${type}`)
-        .m-picker__content--start
+        .chi-picker__content--start
           .chi-form__item.-row
-              span.a-picker__checkbox
-              span.a-picker__label
+              span.chi-picker__checkbox
+              span.chi-picker__label
                 =type
-          div.a-picker__description
+          div.chi-picker__description
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
 
 h3 Type radio
@@ -97,8 +97,8 @@ h4 Base
     .-p--3
       fieldset(id='type-radio')
         each type in ['Radio1','Radio2']
-          .m-picker
-            input(type="radio", class="a-picker", name='type-radio', id=`ei-${type}`)
+          .chi-picker__item
+            input(type="radio", class="chi-picker", name='type-radio', id=`ei-${type}`)
             label(for=`ei-${type}`)
               = type
 
@@ -108,11 +108,11 @@ h4 Base checked
     .-p--3
       fieldset(id='type-radio-checked')
         each type in ['Radio1','Radio2']
-          .m-picker
+          .chi-picker__item
             if type == 'Radio1'
-              input(type="radio", class="a-picker", name='type-radio-checked', id=`ei-checked-${type}`, checked)
+              input(type="radio", class="chi-picker", name='type-radio-checked', id=`ei-checked-${type}`, checked)
             else
-              input(type="radio", class="a-picker", name='type-radio-checked', id=`ei-checked-${type}`)
+              input(type="radio", class="chi-picker", name='type-radio-checked', id=`ei-checked-${type}`)
             label(for=`ei-checked-${type}`)
               = type
 
@@ -122,12 +122,12 @@ h4 With radio
     .-p--3
       fieldset(id='with-radio')
         each type in ['Radio1','Radio2']
-          .m-picker
-            input(type="radio", class="a-picker", name='with-radio', id=`ri-${type}`)
+          .chi-picker__item
+            input(type="radio", class="chi-picker", name='with-radio', id=`ri-${type}`)
             label(for=`ri-${type}`)
               .chi-form__item.-row
-                span.a-picker__radio
-                span.a-picker__label
+                span.chi-picker__radio
+                span.chi-picker__label
                   =type
 
 h4 With radio checked
@@ -136,15 +136,15 @@ h4 With radio checked
     .-p--3
       fieldset(id='with-radio-checked')
         each type in ['Radio1','Radio2']
-          .m-picker
+          .chi-picker__item
             if type == 'Radio1'
-              input(type="radio", class="a-picker", name='with-radio-checked', id=`ri-checked-${type}`, checked)
+              input(type="radio", class="chi-picker", name='with-radio-checked', id=`ri-checked-${type}`, checked)
             else
-              input(type="radio", class="a-picker", name='with-radio-checked', id=`ri-checked-${type}`)
+              input(type="radio", class="chi-picker", name='with-radio-checked', id=`ri-checked-${type}`)
             label(for=`ri-checked-${type}`)
               .chi-form__item.-row
-                span.a-picker__radio
-                span.a-picker__label
+                span.chi-picker__radio
+                span.chi-picker__label
                   =type
 
 h3 Sizes
@@ -153,33 +153,33 @@ h3 Sizes
     .-p--4
       h4 -sm
       each type in ['Radio1 -sm','Radio2 -sm']
-        .m-picker.-sm
-          input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
+        .chi-picker__item.-sm
+          input(type="radio", class="chi-picker", name='box', id=`ri-${type}`)
           label(for=`ri-${type}`)
-            .m-picker__content--start
+            .chi-picker__content--start
               = type
-            .m-picker__content--end
+            .chi-picker__content--end
               span.-text--bold.-text--body.-text--small.-text--right Data
               span.-text--normal.-text--muted.-text--small Value
       h4 -md
       each type in ['Radio1 -md','Radio2 -md']
-        .m-picker.-md
-          input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
+        .chi-picker__item.-md
+          input(type="radio", class="chi-picker", name='box', id=`ri-${type}`)
           label(for=`ri-${type}`)
-            .m-picker__content--start
+            .chi-picker__content--start
               = type
-            .m-picker__content--end
+            .chi-picker__content--end
               span.-text--bold.-text--body.-text--right Data
               span.-text--normal.-text--muted.-text--small Value
       h4 -lg
       each type in ['Radio1 -lg','Radio2 -lg']
-        .m-picker.-lg
-          input(type="radio", class="a-picker", name='box', id=`ri-${type}`)
+        .chi-picker__item.-lg
+          input(type="radio", class="chi-picker", name='box', id=`ri-${type}`)
           label(for=`ri-${type}`)
-            .m-picker__content--start
+            .chi-picker__content--start
               span.-text--bold
                 = type
               span.-text--normal.-text--body.-text--small Data:
                 strong  Value
-            .m-picker__content--end
+            .chi-picker__content--end
               span.-text--bold.-text--body.-text--large Data

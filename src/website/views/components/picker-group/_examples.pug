@@ -1,28 +1,28 @@
 h2 Examples
 h3 Base
-p.-text To render a picker group, wrap a series of pickers in a div and apply the class <code>m-pickerGroup</code>.
+p.-text To render a picker group, wrap a series of pickers in a div and apply the class <code>chi-picker-group</code>.
 .example.-mb--3
   .-p--3
     fieldset
       legend.chi-label Legend
-      .m-pickerGroup
+      .chi-picker-group
         each type in ['Radio1','Radio2','Radio3']
-          input.a-picker(type="radio", name='radio-base', id=`ia-${type}`)
+          input.chi-picker(type="radio", name='radio-base', id=`ia-${type}`)
           label(for=`ia-${type}`)
             = type
   :code(lang='html')
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup">
-        <input class="a-picker" type="radio" name="radio-base" id="radio1">
+      <div class="chi-picker-group">
+        <input class="chi-picker" type="radio" name="radio-base" id="radio1">
         <label for="radio1">
           Radio1
         </label>
-        <input class="a-picker" type="radio" name="radio-base" id="radio2">
+        <input class="chi-picker" type="radio" name="radio-base" id="radio2">
         <label for="radio2">
           Radio2
         </label>
-        <input class="a-picker" type="radio" name="radio-base" id="radio3">
+        <input class="chi-picker" type="radio" name="radio-base" id="radio3">
         <label for="radio3">
           Radio3
         </label>
@@ -34,16 +34,16 @@ h3 Texts and icons
   .-p--3
     fieldset
       legend.chi-label Legend
-      .m-pickerGroup
-        input.a-picker(type="radio", name='radio-with-icon', id=`ib-radio1`)
+      .chi-picker-group
+        input.chi-picker(type="radio", name='radio-with-icon', id=`ib-radio1`)
         label(for=`ib-radio1`)
           i.chi-icon.icon-atom.-sm
           span Radio1
-        input.a-picker(type="radio", name='radio-with-icon', id=`ib-radio2`)
+        input.chi-picker(type="radio", name='radio-with-icon', id=`ib-radio2`)
         label(for=`ib-radio2`)
           span Radio2
           i.chi-icon.icon-atom.-sm
-        input.a-picker(type="radio", name='radio-with-icon', id=`ib-radio3`)
+        input.chi-picker(type="radio", name='radio-with-icon', id=`ib-radio3`)
         label(for=`ib-radio3`)
           i.chi-icon.icon-atom.-sm
           span Radio3
@@ -52,18 +52,18 @@ h3 Texts and icons
   :code(lang='html')
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup">
-        <input class="a-picker" type="radio" name="radio-with-icon" id="radio1">
+      <div class="chi-picker-group">
+        <input class="chi-picker" type="radio" name="radio-with-icon" id="radio1">
         <label for="radio1">
           <i class="chi-icon icon-atom -sm"></i>
           <span>Radio1</span>
         </label>
-        <input class="a-picker" type="radio" name="radio-with-icon" id="radio2">
+        <input class="chi-picker" type="radio" name="radio-with-icon" id="radio2">
         <label for="radio2">
           <span>Radio2</span>
           <i class="chi-icon icon-atom -sm"></i>
         </label>
-        <input class="a-picker" type="radio" name="radio-with-icon" id="radio3">
+        <input class="chi-picker" type="radio" name="radio-with-icon" id="radio3">
         <label for="radio3">
           <i class="chi-icon icon-atom -sm"></i>
           <span>Radio3</span>
@@ -77,9 +77,9 @@ h3 Icons
   .-p--3
     fieldset
       legend.chi-label Legend
-      .m-pickerGroup
+      .chi-picker-group
         each type in ['Radio1','Radio2','Radio3']
-          input.a-picker(type="radio", name='radio-icon', id=`ic-${type}`)
+          input.chi-picker(type="radio", name='radio-icon', id=`ic-${type}`)
           label(for=`ic-${type}`)
             span.-sr--only Button action
             i.chi-icon.icon-atom.-sm
@@ -87,18 +87,18 @@ h3 Icons
   :code(lang='html')
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup">
-        <input class="a-picker" type="radio" name="radio-icon" id="radio1">
+      <div class="chi-picker-group">
+        <input class="chi-picker" type="radio" name="radio-icon" id="radio1">
         <label for="radio1">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -sm"></i>
         </label>
-        <input class="a-picker" type="radio" name="radio-icon" id="radio2">
+        <input class="chi-picker" type="radio" name="radio-icon" id="radio2">
         <label for="radio2">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -sm"></i>
         </label>
-        <input class="a-picker" type="radio" name="radio-icon" id="radio3">
+        <input class="chi-picker" type="radio" name="radio-icon" id="radio3">
         <label for="radio3">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -sm"></i>
@@ -115,24 +115,24 @@ h3 Horizontal
   .-p--3
     fieldset
       legend.chi-label Legend
-      .m-pickerGroup.-fluid
+      .chi-picker-group.-fluid
         each type in ['Radio1','Radio2','Radio3']
-          input.a-picker(type="radio", name='radio-fluid', id=`id-${type}`)
+          input.chi-picker(type="radio", name='radio-fluid', id=`id-${type}`)
           label(for=`id-${type}`)
             = type
   :code(lang='html')
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup -fluid">
-        <input class="a-picker" type="radio" name="radio-fluid" id="radio1">
+      <div class="chi-picker-group -fluid">
+        <input class="chi-picker" type="radio" name="radio-fluid" id="radio1">
         <label for="radio1">
           Radio1
         </label>
-        <input class="a-picker" type="radio" name="radio-fluid" id="radio2">
+        <input class="chi-picker" type="radio" name="radio-fluid" id="radio2">
         <label for="radio2">
           Radio2
         </label>
-        <input class="a-picker" type="radio" name="radio-fluid" id="radio3">
+        <input class="chi-picker" type="radio" name="radio-fluid" id="radio3">
         <label for="radio3">
           Radio3
         </label>
@@ -147,26 +147,26 @@ p.-text
   .-p--3
     fieldset
       legend.chi-label Legend
-      .m-pickerGroup.-fluid
-          input.a-picker(type="radio", name='radio-alignment', id='ie-Radio1')
+      .chi-picker-group.-fluid
+          input.chi-picker(type="radio", name='radio-alignment', id='ie-Radio1')
           label.-align--left(for='ie-Radio1') Radio1
-          input.a-picker(type="radio", name='radio-alignment', id='ie-Radio2')
+          input.chi-picker(type="radio", name='radio-alignment', id='ie-Radio2')
           label(for='ie-Radio2') Radio2
-          input.a-picker(type="radio", name='radio-alignment', id='ie-Radio3')
+          input.chi-picker(type="radio", name='radio-alignment', id='ie-Radio3')
           label.-align--right(for='ie-Radio3') Radio3
   :code(lang='html')
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup -fluid">
-        <input class="a-picker" type="radio" name="radio-alignment" id="radio1">
+      <div class="chi-picker-group -fluid">
+        <input class="chi-picker" type="radio" name="radio-alignment" id="radio1">
         <label class="-align--left" for="radio1">
           Radio1
         </label>
-        <input class="a-picker" type="radio" name="radio-alignment" id="radio2">
+        <input class="chi-picker" type="radio" name="radio-alignment" id="radio2">
         <label for="radio2">
           Radio2
         </label>
-        <input class="a-picker" type="radio" name="radio-alignment" id="radio3">
+        <input class="chi-picker" type="radio" name="radio-alignment" id="radio3">
         <label class="-align--right" for="radio3">
           Radio3
         </label>
@@ -181,26 +181,26 @@ p.-text
   .-p--3
     fieldset
       legend.chi-label Legend
-      .m-pickerGroup.-fluid
-          input.a-picker(type="radio", name='radio-nofluid', id='if-Radio1')
+      .chi-picker-group.-fluid
+          input.chi-picker(type="radio", name='radio-nofluid', id='if-Radio1')
           label(for='if-Radio1') Radio1
-          input.a-picker(type="radio", name='radio-nofluid', id='if-Radio2')
+          input.chi-picker(type="radio", name='radio-nofluid', id='if-Radio2')
           label.-no-fluid(for='if-Radio2') Radio2
-          input.a-picker(type="radio", name='radio-nofluid', id='if-Radio3')
+          input.chi-picker(type="radio", name='radio-nofluid', id='if-Radio3')
           label(for='if-Radio3') Radio3
   :code(lang='html')
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup -fluid">
-        <input class="a-picker" type="radio" name="radio-nofluid" id="radio1">
+      <div class="chi-picker-group -fluid">
+        <input class="chi-picker" type="radio" name="radio-nofluid" id="radio1">
         <label for="radio1">
           Radio1
         </label>
-        <input class="a-picker" type="radio" name="radio-nofluid" id="radio2">
+        <input class="chi-picker" type="radio" name="radio-nofluid" id="radio2">
         <label class="-no-fluid" for="radio2">
           Radio2
         </label>
-        <input class="a-picker" type="radio" name="radio-nofluid" id="radio3">
+        <input class="chi-picker" type="radio" name="radio-nofluid" id="radio3">
         <label for="radio3">
           Radio3
         </label>
@@ -219,14 +219,14 @@ p.-text
       fieldset
         legend.chi-label.-mb--1= '-' + size
         .-d--flex.-flex--wrap
-          .m-pickerGroup.-mr--2
+          .chi-picker-group.-mr--2
             each type in ['Radio1','Radio2','Radio3']
-              input.a-picker(type="radio", name=`radio-${size}-text`, id=`ig-${type}-${size}`)
+              input.chi-picker(type="radio", name=`radio-${size}-text`, id=`ig-${type}-${size}`)
               label(for=`ig-${type}-${size}`, class=`-${size}`)
                   = type
-          .m-pickerGroup
+          .chi-picker-group
             each type in ['Radio1','Radio2','Radio3']
-              input.a-picker(type="radio", name=`radio-${size}-icon`, id=`ig-i-${type}-${size}`)
+              input.chi-picker(type="radio", name=`radio-${size}-icon`, id=`ig-i-${type}-${size}`)
               label(for=`ig-i-${type}-${size}`, class=`-${size}`)
                 span.-sr--only Button action
                 if size === 'sm'
@@ -238,16 +238,16 @@ p.-text
     <!-- sm -->
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup">
-        <input class="a-picker" type="radio" name="radio-sm-text" id="radio1">
+      <div class="chi-picker-group">
+        <input class="chi-picker" type="radio" name="radio-sm-text" id="radio1">
         <label class="-sm" for="radio1">
           Radio1
         </label>
-        <input class="a-picker" type="radio" name="radio-sm-text" id="radio2">
+        <input class="chi-picker" type="radio" name="radio-sm-text" id="radio2">
         <label class="-sm" for="radio2">
           Radio2
         </label>
-        <input class="a-picker" type="radio" name="radio-sm-text" id="radio3">
+        <input class="chi-picker" type="radio" name="radio-sm-text" id="radio3">
         <label class="-sm" for="radio3">
           Radio3
         </label>
@@ -255,18 +255,18 @@ p.-text
     </fieldset>
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup">
-        <input class="a-picker" type="radio" name="radio-sm-icon" id="radio-i-1">
+      <div class="chi-picker-group">
+        <input class="chi-picker" type="radio" name="radio-sm-icon" id="radio-i-1">
         <label class="-sm" for="radio-i-1">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -xs"></i>
         </label>
-        <input class="a-picker" type="radio" name="radio-sm-icon" id="radio-i-2">
+        <input class="chi-picker" type="radio" name="radio-sm-icon" id="radio-i-2">
         <label class="-sm" for="radio-i-2">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -xs"></i>
         </label>
-        <input class="a-picker" type="radio" name="radio-sm-icon" id="radio-i-3">
+        <input class="chi-picker" type="radio" name="radio-sm-icon" id="radio-i-3">
         <label class="-sm" for="radio-i-3">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -xs"></i>
@@ -276,16 +276,16 @@ p.-text
     <!-- md -->
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup">
-        <input class="a-picker" type="radio" name="radio-md-text" id="radio1">
+      <div class="chi-picker-group">
+        <input class="chi-picker" type="radio" name="radio-md-text" id="radio1">
         <label class="-md" for="radio1">
           Radio1
         </label>
-        <input class="a-picker" type="radio" name="radio-md-text" id="radio2">
+        <input class="chi-picker" type="radio" name="radio-md-text" id="radio2">
         <label class="-md" for="radio2">
           Radio2
         </label>
-        <input class="a-picker" type="radio" name="radio-md-text" id="radio3">
+        <input class="chi-picker" type="radio" name="radio-md-text" id="radio3">
         <label class="-md" for="radio3">
           Radio3
         </label>
@@ -293,18 +293,18 @@ p.-text
     </fieldset>
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup">
-        <input class="a-picker" type="radio" name="radio-md-icon" id="radio-i-1">
+      <div class="chi-picker-group">
+        <input class="chi-picker" type="radio" name="radio-md-icon" id="radio-i-1">
         <label class="-md" for="radio-i-1">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -sm"></i>
         </label>
-        <input class="a-picker" type="radio" name="radio-md-icon" id="radio-i-2">
+        <input class="chi-picker" type="radio" name="radio-md-icon" id="radio-i-2">
         <label class="-md" for="radio-i-2">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -sm"></i>
         </label>
-        <input class="a-picker" type="radio" name="radio-md-icon" id="radio-i-3">
+        <input class="chi-picker" type="radio" name="radio-md-icon" id="radio-i-3">
         <label class="-md" for="radio-i-3">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -sm"></i>
@@ -314,16 +314,16 @@ p.-text
     <!-- lg -->
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup">
-        <input class="a-picker" type="radio" name="radio-lg-text" id="radio1">
+      <div class="chi-picker-group">
+        <input class="chi-picker" type="radio" name="radio-lg-text" id="radio1">
         <label class="-lg" for="radio1">
           Radio1
         </label>
-        <input class="a-picker" type="radio" name="radio-lg-text" id="radio2">
+        <input class="chi-picker" type="radio" name="radio-lg-text" id="radio2">
         <label class="-lg" for="radio2">
           Radio2
         </label>
-        <input class="a-picker" type="radio" name="radio-lg-text" id="radio3">
+        <input class="chi-picker" type="radio" name="radio-lg-text" id="radio3">
         <label class="-lg" for="radio3">
           Radio3
         </label>
@@ -331,18 +331,18 @@ p.-text
     </fieldset>
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup">
-        <input class="a-picker" type="radio" name="radio-lg-icon" id="radio-i-1">
+      <div class="chi-picker-group">
+        <input class="chi-picker" type="radio" name="radio-lg-icon" id="radio-i-1">
         <label class="-lg" for="radio-i-1">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -sm"></i>
         </label>
-        <input class="a-picker" type="radio" name="radio-lg-icon" id="radio-i-2">
+        <input class="chi-picker" type="radio" name="radio-lg-icon" id="radio-i-2">
         <label class="-lg" for="radio-i-2">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -sm"></i>
         </label>
-        <input class="a-picker" type="radio" name="radio-lg-icon" id="radio-i-3">
+        <input class="chi-picker" type="radio" name="radio-lg-icon" id="radio-i-3">
         <label class="-lg" for="radio-i-3">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -sm"></i>
@@ -352,16 +352,16 @@ p.-text
     <!-- xl -->
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup">
-        <input class="a-picker" type="radio" name="radio-xl-text" id="radio1">
+      <div class="chi-picker-group">
+        <input class="chi-picker" type="radio" name="radio-xl-text" id="radio1">
         <label class="-xl" for="radio1">
           Radio1
         </label>
-        <input class="a-picker" type="radio" name="radio-xl-text" id="radio2">
+        <input class="chi-picker" type="radio" name="radio-xl-text" id="radio2">
         <label class="-xl" for="radio2">
           Radio2
         </label>
-        <input class="a-picker" type="radio" name="radio-xl-text" id="radio3">
+        <input class="chi-picker" type="radio" name="radio-xl-text" id="radio3">
         <label class="-xl" for="radio3">
           Radio3
         </label>
@@ -369,18 +369,18 @@ p.-text
     </fieldset>
     <fieldset>
       <legend class="chi-label">Legend</legend>
-      <div class="m-pickerGroup">
-        <input class="a-picker" type="radio" name="radio-xl-icon" id="radio-i-1">
+      <div class="chi-picker-group">
+        <input class="chi-picker" type="radio" name="radio-xl-icon" id="radio-i-1">
         <label class="-xl" for="radio-i-1">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -sm"></i>
         </label>
-        <input class="a-picker" type="radio" name="radio-xl-icon" id="radio-i-2">
+        <input class="chi-picker" type="radio" name="radio-xl-icon" id="radio-i-2">
         <label class="-xl" for="radio-i-2">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -sm"></i>
         </label>
-        <input class="a-picker" type="radio" name="radio-xl-icon" id="radio-i-3">
+        <input class="chi-picker" type="radio" name="radio-xl-icon" id="radio-i-3">
         <label class="-xl" for="radio-i-3">
           <span class="-sr--only">Button action</span>
           <i class="chi-icon icon-atom -sm"></i>
