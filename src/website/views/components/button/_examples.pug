@@ -376,19 +376,21 @@ p.-text
       li.-active
         a(href=`#webcomponent-danger`) Web component
       li
-        a(href='#webfont-danger') HTML
+        a(href='#html-danger') HTML
   .chi-tabs-panel.-active#webcomponent-danger
     :code(lang="html")
       <chi-button color="danger">Danger</chi-button>
       <chi-button color="danger" variant="outline">Danger</chi-button>
       <chi-button color="danger" variant="flat">Danger</chi-button>
-  .chi-tabs-panel#webfont-danger
+  .chi-tabs-panel#html-danger
     :code(lang="html")
       <button class="chi-btn -danger">Danger</button>
       <button class="chi-btn -danger -outline">Danger</button>
       <button class="chi-btn -danger -flat">Danger</button>
 
 h2 Sizes
+p.-text
+  | Buttons support the following sizes: Small (sm), Medium (md), Large (lg), and Extra Large (xl).
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
@@ -402,12 +404,8 @@ h2 Sizes
       li.-active
         a(href=`#webcomponent-sizes`) Web component
       li
-        a(href='#webfont-sizes') HTML
+        a(href='#html-sizes') HTML
   .chi-tabs-panel.-active#webcomponent-sizes
-    .chi-tab__description
-      | Buttons supports a full spectrum of sizes: <code>sm</code>, <code>md</code>,
-      |  <code>lg</code>, <code>xl</code>.
-      | The default size is <code>md</code>.
     :code(lang="html")
       <!-- sm -->
       <chi-button size="sm">Button</chi-button>
@@ -432,11 +430,7 @@ h2 Sizes
       <chi-button type="icon" size="xl" alternative-text="Button action">
         <chi-icon icon="atom" />
       </chi-button>
-  .chi-tabs-panel#webfont-sizes
-    .chi-tab__description
-      | Buttons supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
-      |  <code>-lg</code>, <code>-xl</code>.
-      | The default size is <code>-md</code>.
+  .chi-tabs-panel#html-sizes
     :code(lang="html")
       <!-- sm -->
       <button class="chi-btn -sm">Button</button>

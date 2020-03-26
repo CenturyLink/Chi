@@ -42,9 +42,9 @@ legend {
                 border-top: 0;
                 content: '';
                 height: 0.3125rem;
-                left: 0.125rem;
+                left: calc(50% - 0.3125rem);
                 position: absolute;
-                top: 0.1875rem;
+                top: calc(50% - 0.25rem);
                 transform: rotate(-45deg) scale(0);
                 transition-duration: 0.2s;
                 width: 0.625rem;
@@ -52,7 +52,7 @@ legend {
             }
 
             &.a-picker__radio {
-              border: 2px solid set-color(grey, 50);
+              border: 0.0625rem solid set-color(grey, 50);
               border-radius: 0.5rem;
               color: set-color(grey, 50);
               height: 1rem;
@@ -63,13 +63,13 @@ legend {
                 background-color: set-color(grey, 50);
                 border-radius: 0.25rem;
                 content: '';
-                height: 0.5rem;
-                left: calc(50%-0.25rem);
+                height: 0.375rem;
+                left: calc(50% - 0.1875rem);
                 position: absolute;
-                top: calc(50%-0.25rem);
+                top: calc(50% - 0.1875rem);
                 transform: scale(0);
                 transition-duration: 0.2s;
-                width: 0.5rem;
+                width: 0.375rem;
               }
             }
           }
@@ -132,10 +132,11 @@ legend {
             }
 
             &.a-picker__radio {
-              border: 2px solid $brand-color;
+              background-color: $brand-color;
+              border: 1px solid $brand-color;
 
               &::before {
-                background-color: $brand-color;
+                background-color: set-color(white);
                 transform: scale(1);
               }
             }
@@ -421,26 +422,6 @@ legend {
       &[type='radio'] {
         &.a-picker + label {
           display: block;
-        }
-      }
-    }
-  }
-
-  .m-picker {
-    input {
-      &[type='checkbox'],
-      &[type='radio'] {
-        &.a-picker {
-          & + label {
-            span {
-              &.a-picker__checkbox {
-                &::before {
-                  left: 0.09rem;
-                  top: 0.15rem;
-                }
-              }
-            }
-          }
         }
       }
     }

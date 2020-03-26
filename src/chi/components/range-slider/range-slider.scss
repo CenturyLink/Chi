@@ -56,11 +56,6 @@ input {
       }
 
       &.-zero {
-        &:focus,
-        &.-focus {
-
-        }
-
         // Safari, Chrome and Opera
         &::-webkit-slider-thumb {
           background-color: set-color(grey, 50);
