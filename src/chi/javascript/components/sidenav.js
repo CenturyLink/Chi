@@ -100,14 +100,17 @@ class Sidenav extends Component {
 
   singleLevelMenuItems() {
     this._elem
-    .querySelectorAll(`nav ul.${LINKLIST_CLASS} li`)
+    .querySelectorAll(`nav > ul.${LINKLIST_CLASS} > li`)
     .forEach(singleLevelMenuItem => {
       const menuElementLink = singleLevelMenuItem.querySelector('a').getAttribute('href');
 
       if (!this._elem.querySelector(`.chi-drawer${menuElementLink}`)) {
         let menuItemToActivate;
-
-        singleLevelMenuItem.addEventListener("click", (e) => {
+        
+        this._addEventHandler(
+          singleLevelMenuItem,
+          'click',
+          (e) => {
           const activeMenuItem = this.getActiveMenuItem();
 
           for (
@@ -497,6 +500,7 @@ class Sidenav extends Component {
     if (this._slidingBorder) {
       this._slidingBorder.dispose();
     }
+    this._removeEventHandlers();
   }
 
   static get componentType() {
