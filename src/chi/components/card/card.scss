@@ -105,8 +105,8 @@
   }
 
   &.-active {
-    border: 0.0625rem solid $focus-color;
-    box-shadow: 0 0 0 0.0625rem $focus-color;
+    border: 0.0625rem solid $primary-color;
+    box-shadow: 0 0 0 0.0625rem $primary-color;
 
     .chi-card__title {
       color: $primary-color !important;

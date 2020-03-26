@@ -144,7 +144,8 @@
             & + span {
               &.chi-switch__content {
                 & > .chi-switch__thumb {
-                  box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
+                  outline: 0.125rem solid $focus-color;
+                  outline-offset: 0.0625rem;
                 }
               }
             }
@@ -156,7 +157,8 @@
           & + span {
             &.chi-switch__content {
               & > .chi-switch__thumb {
-                box-shadow: 0 0 0 0.25rem rgba(set-color(grey, 50), 0.25);
+                outline: 0.125rem solid $focus-color;
+                outline-offset: 0.0625rem;
               }
             }
           }

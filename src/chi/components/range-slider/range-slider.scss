@@ -15,10 +15,6 @@ $input-range-track-height: 0.5rem;
   width: 1.25rem;
 }
 
-@mixin green-thumb-shadow {
-  box-shadow: 0 0 1px 4px rgba($brand-color, 0.3);
-}
-
 @mixin grey-thumb-shadow {
   box-shadow: 0 0 1px 4px rgba(set-color(grey, 50), 0.3);
 }
@@ -27,7 +23,7 @@ $input-range-track-height: 0.5rem;
   background-color: set-color(grey, 30);
   border-radius: 0.25rem;
   box-sizing: border-box;
-  height: 0.5rem;
+  height: 0.25rem;
   width: 100%;
 }
 
@@ -62,20 +58,7 @@ input {
       &.-zero {
         &:focus,
         &.-focus {
-          // Safari, Chrome and Opera
-          &::-webkit-slider-thumb {
-            @include grey-thumb-shadow;
-          }
 
-          // Firefox
-          &::-moz-range-thumb {
-            @include grey-thumb-shadow;
-          }
-
-          // Internet Explorer
-          &::-ms-thumb {
-            @include grey-thumb-shadow;
-          }
         }
 
         // Safari, Chrome and Opera
@@ -113,29 +96,9 @@ input {
       }
 
       &:focus,
-      &.-focus,
-      &:active {
-        outline: none;
-
-        // Safari, Chrome and Opera
-        &::-webkit-slider-thumb {
-          @include green-thumb-shadow;
-        }
-
-        // Firefox
-        &::-moz-range-thumb {
-          @include green-thumb-shadow;
-        }
-
-        // Internet Explorer
-        &::-ms-thumb {
-          @include green-thumb-shadow;
-        }
-
-        // Chi cross browser
-        & ~ .chi-input__thumb {
-          @include green-thumb-shadow;
-        }
+      &.-focus {
+        outline: 0.125rem solid $focus-color;
+        outline-offset: 0.0625rem;
       }
 
 
@@ -160,7 +123,7 @@ input {
       &::-webkit-slider-thumb {
         @include thumb-style;
         -webkit-appearance: none;
-        margin-top: -6px;
+        margin-top: -8px;
       }
 
       &::-webkit-slider-runnable-track {
@@ -229,7 +192,7 @@ input {
         content: '';
         pointer-events: none;
         position: absolute;
-        top: 0.5rem;
+        top: 0.625rem;
         width: 50%;
         z-index: 1;
       }

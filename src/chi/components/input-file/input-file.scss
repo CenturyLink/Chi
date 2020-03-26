@@ -88,7 +88,8 @@ input {
       &.-focus {
         & + label::before {
           border: 0.0625rem solid set-color(grey, 40);
-          box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
+          outline: 0.125rem solid $focus-color;
+          outline-offset: 0.0625rem;
           z-index: $zindex-prominent;
         }
       }
