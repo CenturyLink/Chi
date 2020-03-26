@@ -7,21 +7,33 @@
 
 chi-alert:not(.hydrated) {
   animation: shine $animation-duration infinite linear;
-  display: flex;
+  box-sizing: border-box;
+  display: block;
   font-size: 0;
   height: 3rem;
-  width: 100%;
+  
+  &[type='toast'] {
+    width: 20rem;
+  }
+
+  &[title] {
+    height: 4.25rem;
+  }
 
   &[size='sm'] {
     height: 2.5rem;
+
+    &[title] {
+      height: 3.75rem;
+    }
   }
 
   &[size='lg'] {
     height: 3.75rem;
-  }
 
-  .chi-alert {
-    display: none;
+    &[title] {
+      height: 5.5rem;
+    }
   }
 
   @include background-gradient;
