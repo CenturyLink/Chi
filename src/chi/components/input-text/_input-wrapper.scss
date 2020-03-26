@@ -76,6 +76,13 @@ $sizes: (
               width: map-get(map-get($sizes, $type), width);
             }
 
+            & ~ chi-icon {
+              .chi-icon {
+                height: map-get(map-get($sizes, $type), height);
+                top: 0;
+              }
+            }
+
             & ~ .chi-spinner {
               right: map-get(map-get(map-get($sizes, $type), spinner), right);
               top: map-get(map-get(map-get($sizes, $type), spinner), top);

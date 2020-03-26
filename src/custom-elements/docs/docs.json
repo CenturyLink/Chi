@@ -1268,7 +1268,8 @@
         "chi-date",
         "chi-date-picker",
         "chi-drawer",
-        "chi-number-input"
+        "chi-number-input",
+        "chi-text-input"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -1288,6 +1289,9 @@
           "chi-icon"
         ],
         "chi-number-input": [
+          "chi-icon"
+        ],
+        "chi-text-input": [
           "chi-icon"
         ]
       }
@@ -2081,6 +2085,189 @@
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/text-input/text-input.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-text-input",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "To disable Text input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "leftIcon",
+          "type": "string",
+          "mutable": false,
+          "attr": "left-icon",
+          "reflectToAttr": false,
+          "docs": "To add a left positioned icon",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "leftIconColor",
+          "type": "string",
+          "mutable": false,
+          "attr": "left-icon-color",
+          "reflectToAttr": false,
+          "docs": "To define color of left icon",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "mutable": false,
+          "attr": "placeholder",
+          "reflectToAttr": false,
+          "docs": "To define palceholder of Text input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "rightIcon",
+          "type": "string",
+          "mutable": false,
+          "attr": "right-icon",
+          "reflectToAttr": false,
+          "docs": "To add a right positioned icon",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "rightIconColor",
+          "type": "string",
+          "mutable": false,
+          "attr": "right-icon-color",
+          "reflectToAttr": false,
+          "docs": "To define color of right icon",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "To define size of Text input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "mutable": false,
+          "attr": "state",
+          "reflectToAttr": false,
+          "docs": "To define state color of Text input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "mutable": false,
+          "attr": "status",
+          "reflectToAttr": false,
+          "docs": "To define -active, -hover, -focus statuses",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "mutable": false,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "To define value of Text input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-text-input": [
+          "chi-icon"
+        ]
+      }
     }
   ]
 }

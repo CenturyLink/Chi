@@ -1,0 +1,7 @@
+:host(chi-text-input) {
+    @import '../../global/styles/common';
+    @import 'components/input-text/input-text';
+
+    display: block;
+    width: 100%;
+  }
