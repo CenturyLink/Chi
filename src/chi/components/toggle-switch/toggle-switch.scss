@@ -91,6 +91,7 @@
     }
   }
 
+  // sass-lint:disable no-duplicate-properties
   &.-label--hide {
     .chi-switch__label {
       clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
@@ -102,6 +103,7 @@
       width: 1px;
     }
   }
+  // sass-lint:enable no-duplicate-properties
 
   input {
     &[type='checkbox'] {

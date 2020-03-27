@@ -482,20 +482,6 @@ $sizes: (
           color: $text-black;
         }
 
-        &.-icon {
-          .chi-icon {
-            color: $text-black;
-          }
-
-          &:active,
-          &.-active,
-          &:hover,
-          &.-hover, {
-            background-color: white;
-            color: $text-black;
-          }
-        }
-
         &.-flat {
           background-color: transparent;
           border: $border solid transparent;
@@ -513,7 +499,7 @@ $sizes: (
             color: set-color($color);
 
             .chi-icon {
-              color: $text-white;
+              color: set-color($color);
             }
           }
 
@@ -535,7 +521,7 @@ $sizes: (
             &,
             &:focus,
             &.-focus {
-              background-color: white;
+              background-color: set-color($color);
               color: $text-black;
 
               .chi-icon {
