@@ -2,8 +2,8 @@ h2 Base
 
 h3 Type checkbox
 p.-text
-  | To render a checkbox picker, apply the class <code>a-picker</code> to an <code>input type="checkbox"</code>
-  |  inside a container with the class <code>m-picker</code>.
+  | To render a checkbox picker, apply the class <code>chi-picker</code> to an <code>input type="checkbox"</code>
+  |  inside a container with the class <code>chi-picker__item</code>.
 ul#chi-tabs--Checkbox.chi-tabs
   li.-active
     a(href="#BaseCheckbox") Base
@@ -18,19 +18,19 @@ ul#chi-tabs--Checkbox.chi-tabs
       fieldset
         legend.chi-label Legend
         each type in ['Checkbox1','Checkbox2']
-          .m-picker
-            input(type="checkbox", class="a-picker", name=`checkbox-base`, id=`i-${type}`)
+          .chi-picker__item
+            input(type="checkbox", class="chi-picker", name=`checkbox-base`, id=`i-${type}`)
             label(for=`i-${type}`)
               = type
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Legend</legend>
-        <div class="m-picker">
-          <input class="a-picker" name="checkbox-base" type="checkbox" id="checkbox1">
+        <div class="chi-picker__item">
+          <input class="chi-picker" name="checkbox-base" type="checkbox" id="checkbox1">
           <label for="checkbox1">Checkbox1</label>
         </div>
-        <div class="m-picker">
-          <input class="a-picker" name="checkbox-base" type="checkbox" id="checkbox2">
+        <div class="chi-picker__item">
+          <input class="chi-picker" name="checkbox-base" type="checkbox" id="checkbox2">
           <label for="checkbox2">Checkbox2</label>
         </div>
       </fieldset>
@@ -40,31 +40,31 @@ ul#chi-tabs--Checkbox.chi-tabs
       fieldset
         legend.chi-label Legend
         each type in ['Checkbox1','Checkbox2']
-          .m-picker
-            input(type="checkbox", class="a-picker", name=`checkbox-with-checkbox`, id=`ic-${type}`)
+          .chi-picker__item
+            input(type="checkbox", class="chi-picker", name=`checkbox-with-checkbox`, id=`ic-${type}`)
             label(for=`ic-${type}`)
               div.chi-form__item.-row
-                span.a-picker__checkbox
-                span.a-picker__label
+                span.chi-picker__checkbox
+                span.chi-picker__label
                   =type
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Legend</legend>
-        <div class="m-picker">
-          <input class="a-picker" name="checkbox-with-checkbox" type="checkbox" id="ic-Checkbox1" />
+        <div class="chi-picker__item">
+          <input class="chi-picker" name="checkbox-with-checkbox" type="checkbox" id="ic-Checkbox1" />
           <label for="ic-Checkbox1">
             <div class="chi-form__item -row">
-              <span class="a-picker__checkbox"></span>
-              <span class="a-picker__label">Checkbox1</span>
+              <span class="chi-picker__checkbox"></span>
+              <span class="chi-picker__label">Checkbox1</span>
             </div>
           </label>
         </div>
-        <div class="m-picker">
-          <input class="a-picker" name="checkbox-with-checkbox" type="checkbox" id="ic-Checkbox2" />
+        <div class="chi-picker__item">
+          <input class="chi-picker" name="checkbox-with-checkbox" type="checkbox" id="ic-Checkbox2" />
           <label for="ic-Checkbox2">
             <div class="chi-form__item -row">
-              <span class="a-picker__checkbox"></span>
-              <span class="a-picker__label">Checkbox2</span>
+              <span class="chi-picker__checkbox"></span>
+              <span class="chi-picker__label">Checkbox2</span>
             </div>
           </label>
         </div>
@@ -75,40 +75,40 @@ ul#chi-tabs--Checkbox.chi-tabs
       fieldset
         legend.chi-label Legend
         each type in ['Checkbox1','Checkbox2']
-          .m-picker
-            input(type="checkbox", class="a-picker", name=`checkbox-with-checkbox-description`, id=`id-${type}`)
+          .chi-picker__item
+            input(type="checkbox", class="chi-picker", name=`checkbox-with-checkbox-description`, id=`id-${type}`)
             label(for=`id-${type}`)
-              .m-picker__content--start
+              .chi-picker__content--start
                 div.chi-form__item.-row
-                  span.a-picker__checkbox
-                  span.a-picker__label
+                  span.chi-picker__checkbox
+                  span.chi-picker__label
                     =type
-                div.a-picker__description
+                div.chi-picker__description
                   | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Legend</legend>
-        <div class="m-picker">
-          <input class="a-picker" name="checkbox-with-checkbox-description" type="checkbox" id="id-Checkbox1" />
+        <div class="chi-picker__item">
+          <input class="chi-picker" name="checkbox-with-checkbox-description" type="checkbox" id="id-Checkbox1" />
           <label for="id-Checkbox1">
-            <div class="m-picker__content--start">
+            <div class="chi-picker__content--start">
               <div class="chi-form__item -row">
-                <span class="a-picker__checkbox"></span>
-                <span class="a-picker__label">Checkbox1</span>
+                <span class="chi-picker__checkbox"></span>
+                <span class="chi-picker__label">Checkbox1</span>
               </div>
-              <div class="a-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
+              <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
             </div>
           </label>
         </div>
-        <div class="m-picker">
-          <input class="a-picker" name="checkbox-with-checkbox-description" type="checkbox" id="id-Checkbox2" />
+        <div class="chi-picker__item">
+          <input class="chi-picker" name="checkbox-with-checkbox-description" type="checkbox" id="id-Checkbox2" />
           <label for="id-Checkbox2">
-            <div class="m-picker__content--start">
+            <div class="chi-picker__content--start">
               <div class="chi-form__item -row">
-                <span class="a-picker__checkbox"></span>
-                <span class="a-picker__label">Checkbox2</span>
+                <span class="chi-picker__checkbox"></span>
+                <span class="chi-picker__label">Checkbox2</span>
               </div>
-              <div class="a-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
+              <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
             </div>
           </label>
         </div>
@@ -129,19 +129,19 @@ ul#chi-tabs--Radio.chi-tabs
         fieldset
           legend.chi-label Legend
           each type in ['Radio1','Radio2']
-            .m-picker
-              input(type="radio", class="a-picker", name='radio-base', id=`ei-${type}`)
+            .chi-picker__item
+              input(type="radio", class="chi-picker", name='radio-base', id=`ei-${type}`)
               label(for=`ei-${type}`)
                 = type
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Legend</legend>
-        <div class="m-picker">
-          <input class="a-picker" name="radio-base" type="radio" id="ei-Radio1" />
+        <div class="chi-picker__item">
+          <input class="chi-picker" name="radio-base" type="radio" id="ei-Radio1" />
           <label for="ei-Radio1">Radio1</label>
         </div>
-        <div class="m-picker">
-          <input class="a-picker" name="radio-base" type="radio" id="ei-Radio2" />
+        <div class="chi-picker__item">
+          <input class="chi-picker" name="radio-base" type="radio" id="ei-Radio2" />
           <label for="ei-Radio2">Radio2</label>
         </div>
       </fieldset>
@@ -150,31 +150,31 @@ ul#chi-tabs--Radio.chi-tabs
         fieldset
           legend.chi-label Legend
           each type in ['Radio1','Radio2']
-            .m-picker
-              input(type="radio", class="a-picker", name='with-radio', id=`ri-${type}`)
+            .chi-picker__item
+              input(type="radio", class="chi-picker", name='with-radio', id=`ri-${type}`)
               label(for=`ri-${type}`)
                 div.chi-form__item.-row
-                  span.a-picker__radio
-                  span.a-picker__label(for=`ri-${type}`)
+                  span.chi-picker__radio
+                  span.chi-picker__label(for=`ri-${type}`)
                     = type
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Legend</legend>
-        <div class="m-picker">
-          <input class="a-picker" name="with-radio" type="radio" id="ri-Radio1" />
+        <div class="chi-picker__item">
+          <input class="chi-picker" name="with-radio" type="radio" id="ri-Radio1" />
           <label for="ri-Radio1">
             <div class="chi-form__item -row">
-              <span class="a-picker__radio"></span>
-              <span class="a-picker__label" for="ri-Radio1">Radio1</span>
+              <span class="chi-picker__radio"></span>
+              <span class="chi-picker__label" for="ri-Radio1">Radio1</span>
             </div>
           </label>
         </div>
-        <div class="m-picker">
-          <input class="a-picker" name="with-radio" type="radio" id="ri-Radio2" />
+        <div class="chi-picker__item">
+          <input class="chi-picker" name="with-radio" type="radio" id="ri-Radio2" />
           <label for="ri-Radio2">
             <div class="chi-form__item -row">
-              <span class="a-picker__radio"></span>
-              <span class="a-picker__label" for="ri-Radio2">Radio2</span>
+              <span class="chi-picker__radio"></span>
+              <span class="chi-picker__label" for="ri-Radio2">Radio2</span>
             </div>
           </label>
         </div>
@@ -184,40 +184,40 @@ ul#chi-tabs--Radio.chi-tabs
         fieldset
           legend.chi-label Legend
           each type in ['Radio1','Radio2']
-            .m-picker
-              input(type="radio", class="a-picker", name='with-radio-description', id=`ide-${type}`)
+            .chi-picker__item
+              input(type="radio", class="chi-picker", name='with-radio-description', id=`ide-${type}`)
               label(for=`ide-${type}`)
-                .m-picker__content--start
+                .chi-picker__content--start
                   div.chi-form__item.-row
-                    span.a-picker__radio
-                    span.a-picker__label(for=`ri-${type}`)
+                    span.chi-picker__radio
+                    span.chi-picker__label(for=`ri-${type}`)
                       = type
-                  div.a-picker__description
+                  div.chi-picker__description
                     | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Legend</legend>
-        <div class="m-picker">
-          <input class="a-picker" name="with-radio-description" type="radio" id="ide-Radio1" />
+        <div class="chi-picker__item">
+          <input class="chi-picker" name="with-radio-description" type="radio" id="ide-Radio1" />
           <label for="ide-Radio1">
-              <div class="m-picker__content--start">
+              <div class="chi-picker__content--start">
                 <div class="chi-form__item -row">
-                  <span class="a-picker__radio"></span>
-                  <span class="a-picker__label" for="ri-Radio1">Radio1</span>
+                  <span class="chi-picker__radio"></span>
+                  <span class="chi-picker__label" for="ri-Radio1">Radio1</span>
                 </div>
-                <div class="a-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
+                <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
               </div>
           </label>
         </div>
-        <div class="m-picker">
-          <input class="a-picker"with-radio-description type="radio" id="ide-Radio2" />
+        <div class="chi-picker__item">
+          <input class="chi-picker"with-radio-description type="radio" id="ide-Radio2" />
           <label for="ide-Radio2">
-            <div class="m-picker__content--start">
+            <div class="chi-picker__content--start">
               <div class="chi-form__item -row">
-                <span class="a-picker__radio"></span>
-                <span class="a-picker__label" for="ri-Radio2">Radio2</span>
+                <span class="chi-picker__radio"></span>
+                <span class="chi-picker__label" for="ri-Radio2">Radio2</span>
               </div>
-              <div class="a-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
+              <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
             </div>
           </label>
         </div>
@@ -241,32 +241,32 @@ ul#chi-tabs--Sizes.chi-tabs
       fieldset
         legend.chi-label Legend
         each type in ['Radio1 -sm','Radio2 -sm']
-          .m-picker.-sm
-            input(type="radio", class="a-picker", name=`sizes-sm`, id=`ri-${type}`)
+          .chi-picker__item.-sm
+            input(type="radio", class="chi-picker", name=`sizes-sm`, id=`ri-${type}`)
             label(for=`ri-${type}`)
-              .m-picker__content--start
+              .chi-picker__content--start
                 = type
-              .m-picker__content--end
+              .chi-picker__content--end
                 span.-text--bold.-text--body.-text--small.-text--right Data
                 span.-text--normal.-text--muted.-text--small Value
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Legend</legend>
-        <div class="m-picker -sm">
-          <input class="a-picker" type="radio" name="sizes-sm" id="Radio1">
+        <div class="chi-picker__item -sm">
+          <input class="chi-picker" type="radio" name="sizes-sm" id="Radio1">
           <label for="Radio1">
-            <div class="m-picker__content--start">Radio1 -sm</div>
-            <div class="m-picker__content--end">
+            <div class="chi-picker__content--start">Radio1 -sm</div>
+            <div class="chi-picker__content--end">
               <span class="-text--bold -text--body -text--small -text--right">Data</span>
               <span class="-text--normal -text--muted -text--small">Value</span>
             </div>
           </label>
         </div>
-        <div class="m-picker -sm">
-          <input class="a-picker" type="radio" name="sizes-sm" id="Radio2">
+        <div class="chi-picker__item -sm">
+          <input class="chi-picker" type="radio" name="sizes-sm" id="Radio2">
           <label for="Radio2">
-            <div class="m-picker__content--start">Radio2 -sm</div>
-            <div class="m-picker__content--end">
+            <div class="chi-picker__content--start">Radio2 -sm</div>
+            <div class="chi-picker__content--end">
               <span class="-text--bold -text--body -text--small -text--right">Data</span>
               <span class="-text--normal -text--muted -text--small">Value</span>
             </div>
@@ -278,32 +278,32 @@ ul#chi-tabs--Sizes.chi-tabs
       fieldset
         legend.chi-label Legend
         each type in ['Radio1 -md','Radio2 -md']
-          .m-picker.-md
-            input(type="radio", class="a-picker", name='sizes-md', id=`ri-${type}`)
+          .chi-picker__item.-md
+            input(type="radio", class="chi-picker", name='sizes-md', id=`ri-${type}`)
             label(for=`ri-${type}`)
-              .m-picker__content--start
+              .chi-picker__content--start
                 = type
-              .m-picker__content--end
+              .chi-picker__content--end
                 span.-text--bold.-text--body.-text--right Data
                 span.-text--normal.-text--muted.-text--small Value
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Legend</legend>
-        <div class="m-picker -md">
-          <input class="a-picker" type="radio" name="sizes-md" id="Radio1">
+        <div class="chi-picker__item -md">
+          <input class="chi-picker" type="radio" name="sizes-md" id="Radio1">
           <label for="Radio1">
-            <div class="m-picker__content--start">Radio1 -md</div>
-            <div class="m-picker__content--end">
+            <div class="chi-picker__content--start">Radio1 -md</div>
+            <div class="chi-picker__content--end">
               <span class="-text--bold -text--body -text--right">Data</span>
               <span class="-text--normal -text--muted -text--small">Value</span>
             </div>
           </label>
         </div>
-        <div class="m-picker -md">
-          <input class="a-picker" type="radio" name="sizes-md" id="Radio2">
+        <div class="chi-picker__item -md">
+          <input class="chi-picker" type="radio" name="sizes-md" id="Radio2">
           <label for="Radio2">
-            <div class=m-picker__content--start>Radio2 -md</div>
-            <div class="m-picker__content--end">
+            <div class=chi-picker__content--start>Radio2 -md</div>
+            <div class="chi-picker__content--end">
               <span class="-text--bold -text--body -text--right">Data</span>
               <span class="-text--normal -text--muted -text--small">Value</span>
             </div>
@@ -315,39 +315,39 @@ ul#chi-tabs--Sizes.chi-tabs
       fieldset
         legend.chi-label Legend
         each type in ['Radio1 -lg','Radio2 -lg']
-          .m-picker.-lg
-            input(type="radio", class="a-picker", name='sizes-lg', id=`ri-${type}`)
+          .chi-picker__item.-lg
+            input(type="radio", class="chi-picker", name='sizes-lg', id=`ri-${type}`)
             label(for=`ri-${type}`)
-              .m-picker__content--start
+              .chi-picker__content--start
                 span.-text--bold
                   = type
                 span.-text--normal.-text--body.-text--small Data:
                   strong  Value
-              .m-picker__content--end
+              .chi-picker__content--end
                 span.-text--bold.-text--body.-text--large Data
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Legend</legend>
-        <div class="m-picker -lg">
-          <input class="a-picker" type="radio" name="sizes-lg" id="Radio1">
+        <div class="chi-picker__item -lg">
+          <input class="chi-picker" type="radio" name="sizes-lg" id="Radio1">
           <label for="Radio1">
-            <div class="m-picker__content--start">
+            <div class="chi-picker__content--start">
               <span class="-text--bold">Radio1 -lg</span>
               <span class="-text--normal -text--body -text--small">Data:<strong> Value</strong></span>
             </div>
-            <div class="m-picker__content-end">
+            <div class="chi-picker__content-end">
               <span class="-text--bold -text--body -text--large">Data</span>
             </div>
           </label>
         </div>
-        <div class="m-picker -lg">
-          <input class="a-picker" type="radio" name="sizes-lg" id="Radio2">
+        <div class="chi-picker__item -lg">
+          <input class="chi-picker" type="radio" name="sizes-lg" id="Radio2">
           <label for="Radio2">
-            <div class="m-picker__content--start">
+            <div class="chi-picker__content--start">
               <span class="-text--bold">Radio2 -lg</span>
               <span class="-text--normal -text--muted -text--small">Data:<strong> Value</strong></span>
             </div>
-            <div class="m-picker__content--end">
+            <div class="chi-picker__content--end">
               <span class="-text--bold -text--body -text--large">Data</span>
             </div>
           </label>

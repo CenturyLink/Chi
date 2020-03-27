@@ -17,19 +17,39 @@ $sizes: (
 .chi-label,
 label,
 legend {
-  & + .m-picker {
+  & + .chi-picker__item {
     margin-top: 0.25rem;
   }
 }
 
-.m-picker {
+.chi-picker__item {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
   input {
     &[type='checkbox'],
     &[type='radio'] {
-      &.a-picker {
+      &.chi-picker {
+        left: -9999px;
+        position: absolute;
+
         & + label {
+          align-items: center;
+          background-color: $text-white;
+          border: solid 0.0625rem set-color(grey, 30);
+          box-shadow: map-get($shadow, 1);
+          display: flex;
+          font-size: $text;
+          font-weight: normal;
+          justify-content: space-between;
+          margin-bottom: 0.5rem;
+          padding: 1rem - $border;
+          transition: all 0.2s;
+          width: 100%;
+
           span {
-            &.a-picker__checkbox {
+            &.chi-picker__checkbox {
               border: 2px solid set-color(grey, 50);
               color: set-color(grey, 50);
               height: 1rem;
@@ -51,7 +71,7 @@ legend {
               }
             }
 
-            &.a-picker__radio {
+            &.chi-picker__radio {
               border: 2px solid set-color(grey, 50);
               border-radius: 0.5rem;
               color: set-color(grey, 50);
@@ -74,19 +94,22 @@ legend {
             }
           }
 
-          & .a-picker__label {
+          & .chi-picker__label {
             margin-left: 0.5rem;
           }
 
           &:hover {
+            background-color: set-color(grey, 10);
+            cursor: pointer;
+
             span {
-              &.a-picker__checkbox {
+              &.chi-picker__checkbox {
                 &::before {
                   transform: rotate(-45deg) scale(1);
                 }
               }
 
-              &.a-picker__radio {
+              &.chi-picker__radio {
                 &::before {
                   transform: scale(1);
                 }
@@ -94,19 +117,39 @@ legend {
             }
           }
 
-          .m-picker__content {
+          .chi-picker__content {
+            &--start,
+            &--end {
+              display: flex;
+              flex-direction: column;
+
+              & * {
+                line-height: 1rem;
+              }
+            }
+
             &--start {
-              span {
-                &.a-picker__label {
-                  padding-left: 0.5rem;
+              & .chi-form__item {
+                font-weight: 600;
+                margin: 0.5rem 0 0 0.5rem;
+
+                span {
+                  &.chi-picker__label {
+                    padding-left: 0.5rem;
+                  }
                 }
               }
 
-              & .a-picker__description {
+              & .chi-picker__description {
                 color: $text-color;
                 font-size: $text-small;
                 font-weight: 400;
                 line-height: 1.25rem;
+                margin-left: 2.5rem;
+                padding: 0.5rem 0;
+              }
+
+              & div:first-of-type + div {
                 margin-left: 2.5rem;
                 padding: 0.5rem 0;
               }
@@ -115,10 +158,24 @@ legend {
         }
       }
 
+      &:focus {
+        &:not(:checked) {
+          & + label {
+            background-color: set-color(grey, 10);
+            cursor: pointer;
+          }
+        }
+      }
+
       &:checked {
         & + label {
+          border: solid 0.0625rem $focus-color;
+          box-shadow: inset 0 0 0 0.0625rem $focus-color;
+          color: $primary-color;
+          font-weight: 600;
+
           span {
-            &.a-picker__checkbox {
+            &.chi-picker__checkbox {
               background-color: $brand-color;
               border: 2px solid $brand-color;
               color: $brand-color;
@@ -131,7 +188,7 @@ legend {
               }
             }
 
-            &.a-picker__radio {
+            &.chi-picker__radio {
               border: 2px solid $brand-color;
 
               &::before {
@@ -144,258 +201,13 @@ legend {
       }
     }
   }
-}
-
-.m-picker {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-
-  input {
-    &[type='checkbox'],
-    &[type='radio'] {
-      &.a-picker {
-        left: -9999px;
-        position: absolute;
-
-        & + label {
-          align-items: center;
-          background-color: $text-white;
-          border: solid 0.0625rem set-color(grey, 30);
-          box-shadow: map-get($shadow, 1);
-          display: flex;
-          font-size: $text;
-          font-weight: normal;
-          justify-content: space-between;
-          margin-bottom: 0.5rem;
-          padding: 1rem - $border;
-          transition: all 0.2s;
-          width: 100%;
-
-          .m-picker__content {
-            &--start,
-            &--end {
-              display: flex;
-              flex-direction: column;
-
-              & * {
-                line-height: 1rem;
-              }
-            }
-
-            &--start {
-              & label {
-                margin-bottom: 0;
-              }
-
-              & .m-formGroup,
-              & .chi-form__item {
-                font-weight: 600;
-                margin: 0.5rem 0 0 0.5rem;
-
-                & label {
-                  font-weight: 600;
-
-                  &::before {
-                    margin-right: 1rem;
-                  }
-                }
-
-                & .chi-radio {
-                  .chi-radio__label {
-                    padding-left: 2rem;
-                  }
-                }
-              }
-
-              & div:first-of-type + div {
-                margin-left: 2.5rem;
-                padding: 0.5rem 0;
-              }
-            }
-          }
-
-          &:hover {
-            background-color: set-color(grey, 10);
-            cursor: pointer;
-          }
-        }
-
-        &:focus {
-          &:not(:checked) {
-            & + label {
-              background-color: set-color(grey, 10);
-              cursor: pointer;
-            }
-          }
-        }
-
-        &:checked {
-          & + label {
-            border: solid 0.0625rem $focus-color;
-            box-shadow: inset 0 0 0 0.0625rem $focus-color;
-            color: $primary-color;
-            font-weight: 600;
-
-            .m-picker__content {
-              &--start {
-                & .chi-checkbox__input {
-                  & + label {
-                    &::after {
-                      top: 0.1875rem;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-
-        & + label {
-          .m-picker__content {
-            &--start {
-              & .chi-checkbox__input {
-                & + label {
-                  padding-left: 2rem;
-
-                  &::before {
-                    top: 0;
-                  }
-
-                  &::after {
-                    top: 0.1875rem;
-                  }
-
-                  &:hover {
-                    &::after {
-                      top: 0.1875rem;
-                    }
-                  }
-                }
-              }
-
-              & .m-formGroup,
-              & .chi-form__item {
-                input {
-                  &[type='radio'] {
-                    & + label {
-                      &::before {
-                        margin-right: 0.5rem;
-                      }
-                    }
-                  }
-                }
-
-                & .chi-checkbox {
-                  line-height: 1rem;
-                }
-              }
-
-              & .m-formGroup {
-                input {
-                  &[type='checkbox'] {
-                    & + label {
-                      margin-right: 0;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    &[type='checkbox'] {
-      &.a-picker {
-        &:checked {
-          & + label {
-            & .chi-input,
-            & .chi-checkbox__input {
-              & + label {
-                font-weight: 600;
-
-                &::before {
-                  background-color: $brand-color;
-                  border-color: $brand-color;
-                }
-
-                &::after {
-                  background-image: url('icon-check.svg');
-                  transform: scale(1);
-                }
-              }
-            }
-          }
-        }
-
-        & + label {
-          & .chi-checkbox {
-            line-height: 1.25rem;
-          }
-        }
-      }
-    }
-
-    &[type='radio'] {
-      &.a-picker {
-        &:checked {
-          & + label {
-            & .chi-input,
-            & .chi-radio__input {
-              & + label {
-                font-weight: 600;
-
-                &::before {
-                  border-color: $brand-color;
-                }
-
-                &::after {
-                  background-color: $brand-color;
-                  transform: scale(1);
-                }
-              }
-            }
-          }
-        }
-
-        & + label {
-          & .chi-radio {
-            line-height: $line-height-small;
-          }
-        }
-      }
-
-      & + label {
-        & .m-picker__content--start {
-          & .chi-radio {
-            line-height: $line-height-smaller;
-
-            & .chi-radio__label {
-              font-weight: 600;
-              line-height: $line-height-smaller;
-
-              &::before {
-                top: 0;
-              }
-
-              &::after {
-                top: 0.25rem;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
 
   @each $type in map-keys($sizes) {
     &.-#{$type} {
-
       input {
         &[type='checkbox'],
         &[type='radio'] {
-          &.a-picker {
+          &.chi-picker {
             & + label {
               min-height: map-get(map-get($sizes, $type), min-height);
               padding: (0.5rem - $border) (1rem - $border) (0.5rem - $border) (1.5rem - $border);
@@ -409,25 +221,25 @@ legend {
 
 /* IE11 CSS hack */
 @media all and (-ms-high-contrast: none) {
-  .m-picker:not(.-sm):not(.-md):not(.-lg) {
+  .chi-picker__item:not(.-sm):not(.-md):not(.-lg) {
     input {
       &[type='checkbox'],
       &[type='radio'] {
-        &.a-picker + label {
+        &.chi-picker + label {
           display: block;
         }
       }
     }
   }
 
-  .m-picker {
+  .chi-picker__item {
     input {
       &[type='checkbox'],
       &[type='radio'] {
-        &.a-picker {
+        &.chi-picker {
           & + label {
             span {
-              &.a-picker__checkbox {
+              &.chi-picker__checkbox {
                 &::before {
                   left: 0.09rem;
                   top: 0.15rem;
