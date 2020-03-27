@@ -23,11 +23,31 @@ legend {
 }
 
 .chi-picker__item {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
   input {
     &[type='checkbox'],
     &[type='radio'] {
       &.chi-picker {
+        left: -9999px;
+        position: absolute;
+
         & + label {
+          align-items: center;
+          background-color: $text-white;
+          border: solid 0.0625rem set-color(grey, 30);
+          box-shadow: map-get($shadow, 1);
+          display: flex;
+          font-size: $text;
+          font-weight: normal;
+          justify-content: space-between;
+          margin-bottom: 0.5rem;
+          padding: 1rem - $border;
+          transition: all 0.2s;
+          width: 100%;
+
           span {
             &.chi-picker__checkbox {
               border: 2px solid set-color(grey, 50);
@@ -79,6 +99,9 @@ legend {
           }
 
           &:hover {
+            background-color: set-color(grey, 10);
+            cursor: pointer;
+
             span {
               &.chi-picker__checkbox {
                 &::before {
@@ -95,10 +118,25 @@ legend {
           }
 
           .chi-picker__content {
+            &--start,
+            &--end {
+              display: flex;
+              flex-direction: column;
+
+              & * {
+                line-height: 1rem;
+              }
+            }
+
             &--start {
-              span {
-                &.chi-picker__label {
-                  padding-left: 0.5rem;
+              & .chi-form__item {
+                font-weight: 600;
+                margin: 0.5rem 0 0 0.5rem;
+
+                span {
+                  &.chi-picker__label {
+                    padding-left: 0.5rem;
+                  }
                 }
               }
 
@@ -110,13 +148,32 @@ legend {
                 margin-left: 2.5rem;
                 padding: 0.5rem 0;
               }
+
+              & div:first-of-type + div {
+                margin-left: 2.5rem;
+                padding: 0.5rem 0;
+              }
             }
+          }
+        }
+      }
+
+      &:focus {
+        &:not(:checked) {
+          & + label {
+            background-color: set-color(grey, 10);
+            cursor: pointer;
           }
         }
       }
 
       &:checked {
         & + label {
+          border: solid 0.0625rem $focus-color;
+          box-shadow: inset 0 0 0 0.0625rem $focus-color;
+          color: $primary-color;
+          font-weight: 600;
+
           span {
             &.chi-picker__checkbox {
               background-color: $brand-color;
@@ -139,84 +196,6 @@ legend {
                 transform: scale(1);
               }
             }
-          }
-        }
-      }
-    }
-  }
-}
-
-.chi-picker__item {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-
-  input {
-    &[type='checkbox'],
-    &[type='radio'] {
-      &.chi-picker {
-        left: -9999px;
-        position: absolute;
-
-        & + label {
-          align-items: center;
-          background-color: $text-white;
-          border: solid 0.0625rem set-color(grey, 30);
-          box-shadow: map-get($shadow, 1);
-          display: flex;
-          font-size: $text;
-          font-weight: normal;
-          justify-content: space-between;
-          margin-bottom: 0.5rem;
-          padding: 1rem - $border;
-          transition: all 0.2s;
-          width: 100%;
-
-          .chi-picker__content {
-            &--start,
-            &--end {
-              display: flex;
-              flex-direction: column;
-
-              & * {
-                line-height: 1rem;
-              }
-            }
-
-            &--start {
-              & .chi-form__item {
-                font-weight: 600;
-                margin: 0.5rem 0 0 0.5rem;
-              }
-
-              & div:first-of-type + div {
-                margin-left: 2.5rem;
-                padding: 0.5rem 0;
-              }
-            }
-          }
-
-          &:hover {
-            background-color: set-color(grey, 10);
-            cursor: pointer;
-          }
-        }
-
-        &:focus {
-          &:not(:checked) {
-            & + label {
-              background-color: set-color(grey, 10);
-              cursor: pointer;
-            }
-          }
-        }
-
-        &:checked {
-          & + label {
-            border: solid 0.0625rem $focus-color;
-            box-shadow: inset 0 0 0 0.0625rem $focus-color;
-            color: $primary-color;
-            font-weight: 600;
           }
         }
       }
