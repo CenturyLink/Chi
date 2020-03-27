@@ -95,7 +95,7 @@ legend {
         &:checked {
           &.chi-picker {
             & + label {
-              border: solid 0.0625rem $focus-color;
+              border: solid 0.0625rem $primary-color;
               color: $primary-color;
               padding-right: 1rem;
 
