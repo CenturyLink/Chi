@@ -3,14 +3,14 @@
 .chi-label,
 label,
 legend {
-  & + .m-pickerGroup {
+  & + .chi-picker-group {
     margin-top: 0.25rem;
   }
 }
 
-.m-pickerGroup {
+.chi-picker-group {
   input {
-    &.a-picker {
+    &.chi-picker {
       &:first-of-type {
         &:focus {
           &:not(:checked) {
@@ -46,9 +46,8 @@ legend {
     }
 
     input {
-      &[type='checkbox'],
       &[type='radio'] {
-        &.a-picker {
+        &.chi-picker {
           & + label {
             border-bottom-width: 0;
             border-right-width: 0.0625rem;
@@ -94,7 +93,7 @@ legend {
         }
 
         &:checked {
-          &.a-picker {
+          &.chi-picker {
             & + label {
               border: solid 0.0625rem $primary-color;
               color: $primary-color;
