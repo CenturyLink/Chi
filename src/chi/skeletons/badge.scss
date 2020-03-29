@@ -1,0 +1,19 @@
+@import '_shine';
+
+chi-badge:not(.hydrated) {
+  animation: shine $animation-duration infinite linear;
+  display: inline-block;
+  font-size: 0;
+  height: 1.5rem;
+  width: 4rem;
+
+  &[size='sm'] {
+    height: 1.25rem;
+  }
+
+  &[size='xs'] {
+    height: 1rem;
+  }
+
+  @include background-gradient;
+}
