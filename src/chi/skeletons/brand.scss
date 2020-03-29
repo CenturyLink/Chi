@@ -1,0 +1,28 @@
+@import '_shine';
+
+$sizes: (
+  'xs': 0.75rem,
+  'sm': 1rem,
+  'sm--2': 1.25rem,
+  'sm--3': 1.5rem,
+  'md': 2rem,
+  'lg': 4rem,
+  'xl': 6rem,
+  'xxl': 8rem);
+
+chi-brand:not(.hydrated) {
+  animation: shine $animation-duration infinite linear;
+  display: block;
+  font-size: 0;
+  height: 2rem;
+  width: 10rem;
+
+  @each $name, $height in $sizes {
+    &[size=#{$name}] {
+      height: $height;
+      width: $height * 5;
+    }
+  }
+
+  @include background-gradient;
+}
