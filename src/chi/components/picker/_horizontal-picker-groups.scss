@@ -31,15 +31,14 @@ $sizes: (
   )
 );
 
-.m-pickerGroup {
+.chi-picker-group {
   align-items: center;
   display: inline-flex;
   justify-content: center;
 
   input {
-    &[type='checkbox'],
     &[type='radio'] {
-      &.a-picker {
+      &.chi-picker {
         left: -9999px;
         position: absolute;
 
@@ -83,10 +82,10 @@ $sizes: (
       }
 
       &:checked {
-        &.a-picker {
+        &.chi-picker {
           & + label {
-            border: solid 0.0625rem $focus-color;
-            box-shadow: inset 0 0 0 0.0625rem $focus-color;
+            border: solid 0.0625rem $primary-color;
+            box-shadow: inset 0 0 0 0.0625rem $primary-color;
             color: $primary-color;
             font-weight: 600;
             padding-right: 0.9375rem;
@@ -115,7 +114,6 @@ $sizes: (
 
   &.-fluid {
     input {
-      &[type='checkbox'],
       &[type='radio'] {
         &:last-of-type {
           &:checked + label {

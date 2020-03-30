@@ -107,22 +107,22 @@ div(class=`test-dropdown-radio`)
   .chi-dropdown__menu.-active
     each inputState in inputStates
       .chi-dropdown__menu-item
-        input(type="radio", class="chi-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
-        label(for=`radio${inputState}`)
-        label.-text(for=`radio${inputState}`)="Element radio " + inputState
+        .chi-radio
+          input(type="radio", class="chi-radio__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+          label.chi-radio__label(for=`radio${inputState}`)="Element radio " + inputState
 
 div(class=`test-dropdown-radio-icon`)
   span.chi-h2 radio with icons
   .chi-dropdown__menu.-active
     each inputState in inputStates
       .chi-dropdown__menu-item
-        input(type="radio", class="chi-input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
-        label(for=`radio${inputState}`)
-        label.-text(for=`radio${inputState}`)
-          .chi-icon
-            svg
-              use(xlink:href='#icon-logo-centurylink')
-          ="Element radio " + inputState
+        .chi-radio
+          input(type="radio", class="chi-radio__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+          label.chi-radio__label(for=`radio${inputState}`)
+            .chi-icon
+              svg
+                use(xlink:href='#icon-logo-centurylink')
+            ="Element radio " + inputState
 
 div(class=`test-dropdown-text`)
   span.chi-h2 Plain text

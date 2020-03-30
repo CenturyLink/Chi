@@ -18,7 +18,7 @@ $state-colors: (
   ),
   secondary: (
     color: mint,
-    button-text-color: $text-color,
+    button-text-color: $text-black,
     tone: 40,
     tone-hover: 50,
     tone-focus: 60
@@ -31,25 +31,25 @@ $state-colors: (
     tone-focus: 90
   ),
   dark: (
-    color: grey,
+    color: black,
     button-text-color: $text-white,
-    tone: 100,
-    tone-hover: 100,
-    tone-focus: 100
+    tone: null,
+    tone-hover: null,
+    tone-focus: null
   ),
   inverse: (
     color: white,
-    button-text-color: $text-white,
+    button-text-color: $text-black,
     tone:  null,
     tone-hover: null,
-    tone-focus: null,
+    tone-focus: null
   ),
   light: (
     color: white,
-    button-text-color: $text-white,
+    button-text-color: $text-black,
     tone:  null,
     tone-hover: null,
-    tone-focus: null,
+    tone-focus: null
   )
 );
 
@@ -192,18 +192,20 @@ $sizes: (
     &:focus,
     &.-focus {
       border: $border solid set-color(grey, 40);
-      box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
+      outline: 0.125rem solid $focus-color;
+      outline-offset: 0.0625rem;
       z-index: $zindex-prominent;
     }
 
     &:active,
     &.-active {
-      &,
+      background-color: set-color(grey, 10);
+      border: $border solid set-color(grey, 40);
+      box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+
       &:focus,
       &.-focus {
-        background-color: set-color(grey, 20);
-        border: $border solid set-color(grey, 40);
-        box-shadow: inset 0 1px 2px 0 rgba(set-color(black), 0.2);
+        box-shadow: none;
       }
     }
 
@@ -239,13 +241,11 @@ $sizes: (
       background-color: transparent;
       border-color: transparent;
       box-shadow: none;
-      opacity: 0.6;
 
       &:hover,
       &.-hover {
         border-color: transparent;
         box-shadow: none;
-        opacity: 1;
       }
 
       &:focus,
@@ -272,7 +272,8 @@ $sizes: (
 
       &:hover,
       &.-hover {
-        background-color: set-color(grey, 50);
+        background-color: set-color(grey, 70);
+        border-color: set-color(grey, 70);
         color: set-color(white);
 
         .chi-icon {
@@ -288,23 +289,20 @@ $sizes: (
 
       &:focus,
       &.-focus {
-        border: $border solid set-color(grey, 50);
-        box-shadow: 0 0 0 3px rgba(set-color(grey, 50), 0.3);
+        border: $border solid set-color(grey, 70);
+        outline: 0.125rem solid $focus-color;
+        outline-offset: 0.0625rem;
       }
 
       &:active,
       &.-active {
-        &,
+        background-color: set-color(grey, 80);
+        border-color: set-color(grey, 80);
+        color: set-color(white);
+
         &:focus,
         &.-focus {
-          background-color: set-color(grey, 60);
-          border: $border solid rgba(set-color(black), 0.2);
-          box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
-          color: set-color(white);
-        }
-
-        .chi-icon {
-          color: set-color(white);
+          box-shadow: none;
         }
       }
     }
@@ -313,7 +311,7 @@ $sizes: (
       background-color: transparent;
       border: $border solid transparent;
       box-shadow: none;
-      color: set-color(grey, 90);
+      color: $text-color;
 
       @each $type in map-keys($sizes) {
         &.-#{$type} {
@@ -370,7 +368,8 @@ $sizes: (
       &:focus,
       &.-focus {
         border: $border solid set-color(grey, 40);
-        box-shadow: 0 0 0 3px rgba(set-color(grey, 30), 0.6);
+        outline: 0.125rem solid $focus-color;
+        outline-offset: 0.0625rem;
 
         &.-icon {
           padding: (0.5rem - $border);
@@ -407,12 +406,12 @@ $sizes: (
 
       &:active,
       &.-active {
-        &,
+        border: $border solid set-color(grey, 40);
+        box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+
         &:focus,
         &.-focus {
-          background-color: set-color(grey, 20);
-          border: $border solid rgba(set-color(black), 0.2);
-          box-shadow: inset 0 1px 2px 0 rgba(set-color(black), 0.2);
+          box-shadow: none;
         }
 
         &.-icon {
@@ -454,27 +453,19 @@ $sizes: (
     $color: map-get(nth($color-definition, 2), color);
     $tone: map-get(nth($color-definition, 2), tone);
     $tone-focus: map-get(nth($color-definition, 2), tone-focus);
-    $tone-focus-shadow: map-get(nth($color-definition, 2), tone-hover);
     $tone-hover: map-get(nth($color-definition, 2), tone-hover);
     $type: nth($color-definition, 1);
 
-    @if( $type == 'inverse') {
+    @if(($type == 'inverse') or ($type == 'light')) {
       &.-#{$type} {
         background-color: white;
-        border: $border solid map-get(nth($color-definition, 2), button-text-color);
-        box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
-        color: $text-color;
+        border: $border solid white;
+        color: $text-black;
 
         &:hover,
         &.-hover {
           background-color: white;
           border: $border solid white;
-          box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
-        }
-
-        &:focus,
-        &.-focus {
-          box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
         }
 
         &:active,
@@ -484,47 +475,11 @@ $sizes: (
           &.-focus {
             background-color: white;
             border: $border solid rgba(set-color(black), 0.2);
-            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
           }
         }
 
         .chi-icon {
-          color: $text-color;
-        }
-
-        &.-icon {
-          & .chi-icon {
-            color: $text-color;
-          }
-
-          &:hover,
-          &.-hover {
-            background-color: white;
-            border: $border solid rgba(set-color(black), 0.2);
-            color: $text-color;
-
-            .chi-icon {
-              color: $text-color;
-            }
-          }
-
-          &:focus,
-          &.-focus {
-            box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
-
-            .chi-icon {
-              color: $text-color;
-            }
-          }
-
-          &:active,
-          &.-active {
-            &,
-            &:focus,
-            &.-focus {
-              box-shadow: none;
-            }
-          }
+          color: $text-black;
         }
 
         &.-flat {
@@ -533,384 +488,56 @@ $sizes: (
           box-shadow: none;
           color: set-color($color);
 
-          &:hover:not(.-icon),
-          &.-hover:not(.-icon) {
-            background-color: set-color(transparent);
-            border: $border solid set-color($color);
-            color: set-color($color);
-          }
-
+          &:hover,
+          &.-hover,
           &:focus,
-          &.-focus {
-            background-color: set-color(transparent);
-            border: $border solid set-color($color);
-            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
-          }
-
+          &.-focus,
           &:active,
           &.-active {
-            &,
-            &:focus,
-            &.-focus {
-              background-color: transparent;
-              border: $border solid set-color($color);
-              box-shadow: none;
+            background-color: transparent;
+            border: $border solid set-color($color);
+            color: set-color($color);
+
+            .chi-icon {
               color: set-color($color);
             }
           }
 
           .chi-icon {
-            color: $text-white;
-          }
-
-          &.-icon {
-            & .chi-icon {
-              color: set-color(grey, 50);
-            }
-
-            &:hover,
-            &.-hover {
-              background-color: transparent;
-              border: $border solid set-color($color);
-              color: $text-white;
-
-              .chi-icon {
-                color: $text-white;
-              }
-            }
-
-            &:focus,
-            &.-focus {
-              box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
-
-              .chi-icon {
-                color: $text-white;
-              }
-            }
-
-            &:active,
-            &.-active {
-              &,
-              &:focus,
-              &.-focus {
-                box-shadow: none;
-
-                .chi-icon {
-                  color: $text-white;
-                }
-              }
-            }
+            color: set-color($color);
           }
         }
 
         &.-outline {
           background-color: transparent;
-          border: $border solid $text-white;
-          box-shadow: none;
-          color: $text-white;
-
-          &:hover,
-          &.-hover {
-            background-color: white;
-            color: $text-color;
-
-            .chi-icon {
-              color: $text-color;
-            }
-          }
-
-          &:focus,
-          &.-focus {
-            background-color: set-color(transparent);
-            border: $border solid set-color($color);
-            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
-          }
-
-          &:active,
-          &.-active {
-            &,
-            &:focus,
-            &.-focus {
-              background-color: white;
-              border: $border solid white;
-              color: $text-color;
-
-              .chi-icon {
-                color: $text-color;
-              }
-            }
-          }
-
-          .chi-icon {
-            color: $text-white;
-          }
-
-          &.-icon {
-            & .chi-icon {
-              color: $text-white;
-            }
-
-            &:hover,
-            &.-hover {
-              background-color: white;
-              border: $border solid white;
-              color: $text-color;
-
-              .chi-icon {
-                color: $text-color;
-              }
-            }
-
-            &:focus,
-            &.-focus {
-              box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
-
-              .chi-icon {
-                color: $text-white;
-              }
-            }
-
-            &:active,
-            &.-active {
-              &,
-              &:focus,
-              &.-focus {
-                background-color: white;
-                border: $border solid white;
-                box-shadow: none;
-                color: $text-color;
-
-                .chi-icon {
-                  color: $text-color;
-                }
-              }
-            }
-          }
-        }
-      }
-    } @else if($type == 'light') {
-      &.-#{$type} {
-        background-color: white;
-        border: $border solid map-get(nth($color-definition, 2), button-text-color);
-        box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
-        color: $text-color;
-
-        &:hover,
-        &.-hover {
-          background-color: white;
-          border: $border solid white;
-          box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
-        }
-
-        &:focus,
-        &.-focus {
-          box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
-        }
-
-        &:active,
-        &.-active {
-          &,
-          &:focus,
-          &.-focus {
-            background-color: white;
-            border: $border solid rgba(set-color(black), 0.2);
-            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
-          }
-        }
-
-        .chi-icon {
-          color: $text-color;
-        }
-
-        &.-icon {
-          & .chi-icon {
-            color: $text-color;
-          }
-
-          &:hover,
-          &.-hover {
-            background-color: white;
-            border: $border solid rgba(set-color(black), 0.2);
-            color: $text-color;
-
-            .chi-icon {
-              color: $text-color;
-            }
-          }
-
-          &:focus,
-          &.-focus {
-            box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
-
-            .chi-icon {
-              color: $text-color;
-            }
-          }
-
-          &:active,
-          &.-active {
-            &,
-            &:focus,
-            &.-focus {
-              box-shadow: none;
-            }
-          }
-        }
-
-        &.-flat {
-          background-color: transparent;
-          border: $border solid transparent;
+          border: $border solid set-color($color);
           box-shadow: none;
           color: set-color($color);
 
-          &:hover:not(.-icon),
-          &.-hover:not(.-icon) {
-            background-color: set-color(transparent);
-            border: $border solid set-color($color);
-            color: set-color($color);
-          }
-
-          &:focus,
-          &.-focus {
-            background-color: set-color(transparent);
-            border: $border solid set-color($color);
-            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
-          }
-
-          &:active,
-          &.-active {
-            &,
-            &:focus,
-            &.-focus {
-              background-color: transparent;
-              border: $border solid set-color($color);
-              box-shadow: none;
-              color: set-color($color);
-            }
-          }
-
-          .chi-icon {
-            color: $text-white;
-          }
-
-          &.-icon {
-            &:hover,
-            &.-hover {
-              background-color: transparent;
-              border: $border solid set-color($color);
-              color: $text-white;
-
-              .chi-icon {
-                color: $text-white;
-              }
-            }
-
-            &:focus,
-            &.-focus {
-              box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
-
-              .chi-icon {
-                color: $text-white;
-              }
-            }
-
-            &:active,
-            &.-active {
-              &,
-              &:focus,
-              &.-focus {
-                box-shadow: none;
-
-                .chi-icon {
-                  color: $text-white;
-                }
-              }
-            }
-          }
-        }
-
-        &.-outline {
-          background-color: transparent;
-          border: $border solid $text-white;
-          box-shadow: none;
-          color: $text-white;
-
           &:hover,
-          &.-hover {
-            background-color: white;
-            color: $text-color;
-
-            .chi-icon {
-              color: $text-color;
-            }
-          }
-
-          &:focus,
-          &.-focus {
-            background-color: set-color(transparent);
-            border: $border solid set-color($color);
-            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
-          }
-
+          &.-hover,
           &:active,
           &.-active {
             &,
             &:focus,
             &.-focus {
-              background-color: white;
-              border: $border solid white;
-              color: $text-color;
+              background-color: set-color($color);
+              color: $text-black;
 
               .chi-icon {
-                color: $text-color;
+                color: $text-black;
               }
             }
+          }
+
+          &:focus,
+          &.-focus {
+            background-color: transparent;
+            border: $border solid set-color($color);
           }
 
           .chi-icon {
-            color: $text-white;
-          }
-
-          &.-icon {
-            & .chi-icon {
-              color: $text-white;
-            }
-
-            &:hover,
-            &.-hover {
-              background-color: white;
-              border: $border solid white;
-              color: $text-color;
-
-              .chi-icon {
-                color: $text-color;
-              }
-            }
-
-            &:focus,
-            &.-focus {
-              box-shadow: 0 0 0 3px rgba(set-color($color), 0.4);
-
-              .chi-icon {
-                color: $text-white;
-              }
-            }
-
-            &:active,
-            &.-active {
-              &,
-              &:focus,
-              &.-focus {
-                background-color: white;
-                border: $border solid white;
-                box-shadow: none;
-                color: $text-color;
-
-                .chi-icon {
-                  color: $text-color;
-                }
-              }
-            }
+            color: set-color($color);
           }
         }
       }
@@ -940,7 +567,7 @@ $sizes: (
 
         &:focus,
         &.-focus {
-          box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
+          box-shadow: none;
         }
 
         &:active,
@@ -950,13 +577,14 @@ $sizes: (
           &.-focus {
             background-color: set-color($color, $tone-focus);
             border: $border solid rgba(set-color(black), 0.2);
-            box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
+            box-shadow: none;
           }
         }
 
         &.-outline {
           background-color: transparent;
           border: $border solid set-color($color, $tone);
+          box-shadow: none;
           color: set-color($color, $tone);
 
           .chi-spinner__icon {
@@ -971,12 +599,12 @@ $sizes: (
             color: set-color(white);
 
             @if ($type == 'secondary') {
-              color: $text-color;
+              color: $text-black;
             }
 
             .chi-icon {
               @if ($type == 'secondary') {
-                color: $text-color;
+                color: $text-black;
               } @else {
                 color: inherit;
               }
@@ -992,7 +620,6 @@ $sizes: (
           &:focus,
           &.-focus {
             border: $border solid set-color($color, $tone);
-            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
           }
 
           &:active,
@@ -1002,17 +629,16 @@ $sizes: (
             &.-focus {
               background-color: set-color($color, $tone-focus);
               border: $border solid rgba(set-color(black), 0.2);
-              box-shadow: inset 0 1px 1px 0 rgba(set-color(black), 0.2);
 
               @if ($type == 'secondary') {
-                color: $text-color;
+                color: $text-black;
               } @else {
                 color: set-color(white);
               }
 
               .chi-icon {
                 @if ($type == 'secondary') {
-                  color: $text-color;
+                  color: $text-black;
                 } @else {
                   color: inherit;
                 }
@@ -1041,7 +667,7 @@ $sizes: (
           &:focus,
           &.-focus {
             border: $border solid set-color($color, $tone);
-            box-shadow: 0 0 0 3px rgba(set-color($color, $tone-focus-shadow), 0.4);
+            box-shadow: none;
           }
 
           &:active,

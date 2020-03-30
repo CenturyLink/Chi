@@ -1,0 +1,35 @@
+@import '_shine';
+
+chi-alert:not(.hydrated) {
+  animation: shine $animation-duration infinite linear;
+  box-sizing: border-box;
+  display: block;
+  font-size: 0;
+  height: 3rem;
+
+  &[type='toast'] {
+    width: 20rem;
+  }
+
+  &[title] {
+    height: 4.25rem;
+  }
+
+  &[size='sm'] {
+    height: 2.5rem;
+
+    &[title] {
+      height: 3.75rem;
+    }
+  }
+
+  &[size='lg'] {
+    height: 3.75rem;
+
+    &[title] {
+      height: 5.5rem;
+    }
+  }
+
+  @include background-gradient;
+}

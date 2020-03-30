@@ -1,0 +1,19 @@
+@import '_shine';
+
+chi-date:not(.hydrated),
+chi-date-picker:not(.hydrated) {
+  animation: shine $animation-duration infinite linear;
+  display: block;
+  font-size: 0;
+  width: 14rem;
+
+  @include background-gradient;
+}
+
+chi-date:not(.hydrated) {
+  height: 14.5rem;
+}
+
+chi-date-picker:not(.hydrated) {
+  height: 2rem;
+}

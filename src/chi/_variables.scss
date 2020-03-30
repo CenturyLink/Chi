@@ -162,11 +162,12 @@ $state-colors: (success: mint, warning: yellow, danger: red);
 $bg-inverse: map-get(map-get($colorscheme, grey), 90);
 
 $text-color: map-get(map-get($colorscheme, grey), 100);
+$text-black: map-get($colorscheme, black);
 $text-white: map-get($colorscheme, white);
 $text-inverse: map-get(map-get($colorscheme, grey), 10);
 
 $link-color: map-get(map-get($colorscheme, blue), 70);
-$focus-color: map-get(map-get($colorscheme, blue), 60);
+$focus-color: map-get(map-get($colorscheme, blue), 50);
 
 $primary: map-get(map-get($colorscheme, blue), 70);
 $secondary: map-get(map-get($colorscheme, mint), 40);

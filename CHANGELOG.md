@@ -1,5 +1,30 @@
 # CHANGELOG
 
+### 2.0.0 (March 31, 2020)
+
+* Replaced all atomic class prefixes with chi for consistency with web component names (e.g. a-button is now chi-button).
+* Removed legacy CSS.
+* Changed all legacy camel case utility classes to dash case (e.g. -floatingLabel is now -floating-label).
+* Updated design of Chi Documentation component pages.
+* Consolidated all Chi documentation web component, javascript, and html examples into single component pages.
+* Improved width Sizing utility. Widths can now be defined in increments of 5% instead of 25%.
+* Renamed Expansion Panel web component title attribute from heading to title.
+* Changed all class instances of dismiss to close (e.g. chi-alert__dismiss-button is now chi-alert__close-button).
+* Renamed Alert web component close attribute from dismissible to closable.
+* Changed Drawer web component behavior to closable by default and added support for a non-closable attribute to render without a close button.
+* Updated Drawer web component documentation with new Title example.
+* Fixed behavior of Sidenav component when menu items have no association to a Drawer.
+* Fixed heading level accessibility warning in Drawer web component.
+* Fixed missing label accessibility error in Number Input web component.
+* Improved Alert and Popover web component mutation observer.
+* Changed form focus color value from Chi Blue 60 to Chi Blue 50.
+* Updated all Button and Form components with consistent focus states.
+* Updated Checkbox and Radio Button border width for better consistency with consumer and enterprise portal guidelines.
+* Updated styles of Pagination component for better consistency with consumer and enterprise portal guidelines.
+* Added new icons for enterprise portal (icon-filter, icon-flag, icon-paste).
+* Added skeleton loaders to web components.
+* Added favicon to Documentation website.
+
 ### 1.4.2 (February 27, 2020)
 
 * Fixed bug in Grid component which caused grid columns to render incorrectly in IE11.
