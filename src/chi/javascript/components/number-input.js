@@ -2,8 +2,8 @@ import {Component} from "../core/component";
 import {Util} from "../core/util.js";
 
 const COMPONENT_SELECTOR =
-  '.chi-input__wrapper > input.chi-input[type="number"], ' +
-  '.m-inputNumber > input.chi-input[type="number"]';
+  '.chi-number-input > input.chi-input[type="number"], ' +
+  '.chi-number-input.-expanded > input.chi-input[type="number"]';
 const COMPONENT_TYPE = "numberInput";
 const DEFAULT_CONFIG = {autofix: true};
 

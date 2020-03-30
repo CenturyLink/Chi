@@ -65,8 +65,13 @@
   @import 'utilities/spacing';
   @import 'utilities/zindex';
   @import 'skeletons/alert';
-  @import 'skeletons/icon';
   @import 'skeletons/badge';
+  @import 'skeletons/brand';
+  @import 'skeletons/button';
+  @import 'skeletons/date-picker';
+  @import 'skeletons/icon';
+  @import 'skeletons/popover';
+  @import 'skeletons/progress';
   @import 'skeletons/toggle-switch';
 }
 // sass-lint:enable clean-import-paths

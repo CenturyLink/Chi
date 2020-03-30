@@ -1,0 +1,14 @@
+@import '_shine';
+
+chi-popover:not(.hydrated) {
+  font-size: 0;
+
+  &[active] {
+    animation: shine $animation-duration infinite linear;
+    display: block;
+    height: 5.5rem;
+    width: 9rem;
+
+    @include background-gradient;
+  }
+}
