@@ -24,6 +24,14 @@ i {
   }
 }
 
+.icon-flag::before {
+  content: "\e9ba";
+}
+
+.icon-paste::before {
+  content: "\e9bb";
+}
+
 .icon-chart-line::before {
   content: '\e9b5';
 }
