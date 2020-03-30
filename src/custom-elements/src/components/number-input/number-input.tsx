@@ -158,9 +158,8 @@ export class NumberInput {
     const input = (
       <input
         type="number"
-        class={`chi-input ${this.size ? `-${this.size}` : ''} ${
-          this.inputstyle ? `-${this.inputstyle}` : ''
-        } ${this.state ? `-${this.state}` : ''}`}
+        class={`chi-input ${this.inputstyle ? `-${this.inputstyle}` : ''} ${
+          this.state ? `-${this.state}` : ''}`}
         disabled={this.disabled}
         value={this.value}
         step={this.step}
@@ -172,7 +171,9 @@ export class NumberInput {
     );
 
     const base = (
-      <div class="chi-input__wrapper">
+      <div
+        class={`chi-number-input ${this.size ? `-${this.size}` : ''}`}
+      >
         {input}
         <button
           disabled={+this.value - this.step < this.min}
@@ -189,11 +190,11 @@ export class NumberInput {
 
     const expanded = (
       <div
-        class={`m-inputNumber ${this.size ? `-${this.size}` : ''}`}
+        class={`chi-number-input -expanded ${this.size ? `-${this.size}` : ''}`}
       >
         {input}
         <button
-          class={`chi-btn -icon ${this.size ? `-${this.size}` : ''}`}
+          class="chi-btn -icon"
           disabled={+this.value - this.step < this.min}
           onClick={() => this.decrement()}
           aria-label="Decrease"
@@ -203,7 +204,7 @@ export class NumberInput {
           </div>
         </button>
         <button
-          class={`chi-btn -icon ${this.size ? `-${this.size}` : ''}`}
+          class="chi-btn -icon"
           disabled={+this.value + this.step > this.max}
           onClick={() => this.increment()}
           aria-label="Increase"
