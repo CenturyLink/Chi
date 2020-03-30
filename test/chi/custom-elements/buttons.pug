@@ -112,14 +112,10 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           chi-button(type='close', size= size !== 'default' ? size : '')
 
 script.
-  function getElementHeight(element) {
-    return parseInt(window.getComputedStyle(element, null).getPropertyValue("height").replace("px", ""));
-  }
-
   function checkAllButtonsRendered() {
     const buttons = document.querySelectorAll('chi-button');
 
-    return Array.from(buttons).every(x => getElementHeight(x) > 20);
+    return Array.from(buttons).every(x => x.classList.contains('hydrated'));
   }
 
   const renderCheckInterval = setInterval(function() {

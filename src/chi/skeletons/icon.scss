@@ -1,0 +1,30 @@
+@import '_shine';
+
+$sizes: (
+  'xs': 0.75rem,
+  'sm': 1rem,
+  'sm--2': 1.25rem,
+  'sm--3': 1.5rem,
+  'md': 2rem,
+  'lg': 4rem,
+  'xl': 6rem,
+  'xxl': 8rem);
+
+chi-icon:not(.hydrated) {
+  animation: shine $animation-duration infinite linear;
+  border-radius: 0.5rem;
+  display: block;
+  font-size: 0;
+  height: 1rem;
+  width: 1rem;
+
+  @each $size, $width in $sizes {
+    &[size=#{$size}] {
+      border-radius: $width / 2;
+      height: $width;
+      width: $width;
+    }
+  }
+
+  @include background-gradient;
+}
