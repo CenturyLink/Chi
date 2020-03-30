@@ -1,0 +1,13 @@
+@import '_shine';
+
+chi-switch:not(.hydrated) {
+  animation: shine $animation-duration infinite linear;
+  border-radius: 0.75rem;
+  display: block;
+  font-size: 0;
+  height: 1.5rem;
+  margin: 0.25rem 0;
+  width: 3rem;
+
+  @include background-gradient;
+}
