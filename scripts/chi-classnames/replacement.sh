@@ -73,6 +73,10 @@ ARRAY=(
     # Pagination
     "a-pagination:chi-pagination"
 
+    # Picker
+    "m-pickerGroup:chi-picker-group"
+    "m-picker:chi-picker"
+
     # Popover
     "m-popover:chi-popover"
 
@@ -83,7 +87,7 @@ ARRAY=(
     "a-radio:chi-radio"
 
     # Range slider
-    "a-rangeSlider:chi-rangeSlider"
+    "a-rangeSlider:chi-range-slider"
 
     # Sidenav
     "m-sidenav:chi-sidenav"
@@ -121,6 +125,8 @@ ARRAY=(
     "a-backdrop:chi-backdrop"
     "m-backdrop:chi-backdrop"
 
+    "a-arrow:chi-arrow"
+    "-bgInverse:-bg--inverse" # Docu only
     "m-input__wrapper:chi-input__wrapper"
     "m-form__item:chi-form__item"
     "m-label__wrapper:chi-label__wrapper"
@@ -141,7 +147,6 @@ ARRAY=(
     "m-example:chi-example"
     "a-collection__title:chi-collection__title" # Docu only
     "a-tab__description:chi-tab__description" # Docu only
-    
 )
 
 for className in "${ARRAY[@]}" ; do
@@ -153,3 +158,17 @@ for className in "${ARRAY[@]}" ; do
     find ${PROJECT_SRC} -type f -exec sed -i '' "${CHANGE};${CHANGENL}" '{}' +
     echo $'\e[1;31m' ${className%%:*} $'\e[1;32m' ${className##*:}
 done
+
+# Replace m-picker
+REGEX='\([^a-zA-Z0-9]\)chi-picker\([^a-zA-Z0-9_-]\)'
+CHANGE="s/${REGEX}/\1chi-picker__item\2/g"
+REGEXNL='\([^a-zA-Z0-9]\)chi-picker$'
+CHANGENL="s/${REGEXNL}/\1chi-picker__item/g"
+find ${PROJECT_SRC} -type f -exec sed -i '' "${CHANGE};${CHANGENL}" '{}' +
+echo $'\e[1;31m' chi-picker $'\e[1;32m' chi-picker__item
+
+REGEX='\([^a-zA-Z0-9]\)[m|a]-picker\([^a-zA-Z0-9]\)'
+CHANGE="s/${REGEX}/\1chi-picker\2/g"
+REGEXNL='\([^a-zA-Z0-9]\)[m|a]-picker$'
+CHANGENL="s/${REGEXNL}/\1chi-picker/g"
+find ${PROJECT_SRC} -type f -exec sed -i '' "${CHANGE};${CHANGENL}" '{}' +
