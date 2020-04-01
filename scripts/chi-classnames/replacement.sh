@@ -128,6 +128,7 @@ ARRAY=(
     "a-arrow:chi-arrow"
     "-bgInverse:-bg--inverse" # Docu only
     "m-input__wrapper:chi-input__wrapper"
+    "m-inputNumber:chi-number-input -expanded"
     "m-form__item:chi-form__item"
     "m-label__wrapper:chi-label__wrapper"
     "m-avatarGroup:chi-avatar__group"
