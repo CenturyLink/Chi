@@ -71,8 +71,10 @@ body {
   }
 
   .changelog__version {
-    li {
-      padding: 0.25rem 0;
+    ul:not(.chi-tabs) {
+      li {
+        padding: 0.25rem 0;
+      }
     }
   }
 
