@@ -153,7 +153,7 @@ mixin table(row, column, selectable)
     each tablestyle in ['default', 'striped']
       each borderstyle in ['default', 'bordered', 'no-border']
         div(class=`test-${tablestyle}-${borderstyle}`)
-          span.chi-h2
+          span.-text--h2
             | table
             if tablestyle != 'default'
               = ` / ${tablestyle}`
@@ -166,25 +166,25 @@ mixin table(row, column, selectable)
 
     each rowstyle in ['disabled', 'row--success', 'row--warning', 'row--danger', 'row--info']
       div(class=`test-${rowstyle}`)
-        span.chi-h2= `table / ${rowstyle}`
+        span.-text--h2= `table / ${rowstyle}`
         +table(rowstyle)
 
     each rowsize in ['xs', 'sm', 'md', 'lg', 'xl']
       div(class=`test-${rowsize}`)
-        span.chi-h2= `table / ${rowsize}`
+        span.-text--h2= `table / ${rowsize}`
         +table(rowsize)
 
     div(class=`test-hover`)
-        span.chi-h2= `table / hover`
+        span.-text--h2= `table / hover`
         +table('hover').-hover
 
     each columnstyle in ['ascending', 'descending']
       div(class=`test-${columnstyle}`)
-        span.chi-h2= `table / column sort / ${columnstyle}`
+        span.-text--h2= `table / column sort / ${columnstyle}`
         +table(undefined, columnstyle)
 
     div(class=`test-selectable`)
-      span.chi-h2
+      span.-text--h2
         | table
         = ' / selectable'
       section.chi-table(
@@ -209,7 +209,7 @@ mixin table(row, column, selectable)
               +str(`chk-${index}-02`, 'Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
               +str(`chk-${index}-03`, 'Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
     div(class=`test-scrollable`)
-      span.chi-h2
+      span.-text--h2
         | table
         = ' / scrollable'
       section.chi-table.-fixed--header(style="height: 150px")
@@ -228,7 +228,7 @@ mixin table(row, column, selectable)
               +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
               +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
     div(class=`test-portal`)
-      span.chi-h2
+      span.-text--h2
         | table
         = ' / Portal styled'
       table.chi-table.-portal
@@ -262,7 +262,7 @@ mixin table(row, column, selectable)
     each tablestyle in ['default', 'striped']
       each borderstyle in ['default', 'bordered', 'no-border']
         div(class=`test-section-${tablestyle}-${borderstyle}`)
-          span.chi-h2
+          span.-text--h2
             | table
             if tablestyle != 'default'
               = ` / ${tablestyle}`
@@ -276,25 +276,25 @@ mixin table(row, column, selectable)
 
     each rowstyle in ['disabled', 'row--success', 'row--warning', 'row--danger', 'row--info']
       div(class=`test-section-${rowstyle}`)
-        span.chi-h2= `table / ${rowstyle}`
+        span.-text--h2= `table / ${rowstyle}`
         +table-fix-header(rowstyle)
 
     each rowsize in ['xs', 'sm', 'md', 'lg', 'xl']
       div(class=`test-section-${rowsize}`)
-        span.chi-h2= `table / ${rowsize}`
+        span.-text--h2= `table / ${rowsize}`
         +table(rowsize)
 
     div(class=`test-section-hover`)
-      span.chi-h2= `table / hover`
+      span.-text--h2= `table / hover`
       +table-fix-header('hover').-hover
 
     each columnstyle in ['ascending', 'descending']
       div(class=`test-section-${columnstyle}`)
-        span.chi-h2= `table / column sort / ${columnstyle}`
+        span.-text--h2= `table / column sort / ${columnstyle}`
         +table-fix-header(undefined, columnstyle)
 
     div(class=`test-section-selectable`)
-      span.chi-h2
+      span.-text--h2
         | table
         = ' / selectable'
       section.chi-table(
@@ -321,7 +321,7 @@ mixin table(row, column, selectable)
               +str(`chk-${index}-03-3`, 'Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
 
     div(class=`test-section-scrollable`)
-      span.chi-h2
+      span.-text--h2
         | table
         = ' / scrollable'
       section.chi-table.-fixed--header(style="height: 150px")

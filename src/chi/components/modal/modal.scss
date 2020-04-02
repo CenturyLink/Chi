@@ -29,10 +29,10 @@ $animation-duration: 0.5s;
     }
 
     .chi-modal__title {
-      font-size: $text-large;
-      font-weight: bold;
-      line-height: $line-height-large;
-      margin: 0;
+      font-size: $text-large !important;
+      font-weight: bold !important;
+      line-height: $line-height-large !important;
+      margin: 0 !important;
 
       &.-centered {
         text-align: center;
@@ -40,10 +40,10 @@ $animation-duration: 0.5s;
     }
 
     .chi-modal__subtitle {
-      font-size: $text;
-      font-weight: normal;
-      line-height: $line-height-large;
-      margin: 0;
+      font-size: $text !important;
+      font-weight: normal !important;
+      line-height: $line-height-large !important;
+      margin: 0 !important;
 
       &.-centered {
         text-align: center;

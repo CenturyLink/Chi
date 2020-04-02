@@ -114,11 +114,12 @@
 
             .docs-body__heading-title {
               color: set-color(white);
-              font-size: 2rem;
-              margin-bottom: 0.5rem;
+              font-size: 2rem !important;
+              font-weight: 400 !important;
+              margin-bottom: 0.5rem !important;
               @include respond-to(lg) {
-                font-size: 3rem;
-                margin-bottom: 1.5rem;
+                font-size: 3rem !important;
+                margin-bottom: 1.5rem !important;
               }
             }
 
@@ -150,45 +151,45 @@
           > .chi-grid .chi-col,
           > .chi-epanel {
             h1 {
-              font-size: 2rem;
-              font-weight: 800;
-              line-height: 3rem;
-              margin: 1rem 0;
+              font-size: 2rem !important;
+              font-weight: 800 !important;
+              line-height: 3rem !important;
+              margin: 1rem 0 !important;
             }
 
             h2 {
-              font-size: 1.5rem;
-              font-weight: 600;
-              line-height: 2rem;
-              margin: 1rem 0;
+              font-size: 1.5rem !important;
+              font-weight: 600 !important;
+              line-height: 2rem !important;
+              margin: 1rem 0 !important;
             }
 
             h3 {
-              font-size: $text-larger;
-              font-weight: 600;
-              line-height: 2rem;
-              margin: 0.5rem 0;
+              font-size: $text-larger !important;
+              font-weight: 600 !important;
+              line-height: 2rem !important;
+              margin: 0.5rem 0 !important;
             }
 
             h4 {
-              font-size: $text-large;
-              font-weight: 600;
-              line-height: 1.5rem;
-              margin: 0.5rem 0;
+              font-size: $text-large !important;
+              font-weight: 600 !important;
+              line-height: 1.5rem !important;
+              margin: 0.5rem 0 !important;
             }
 
             h5 {
-              font-size: $text;
-              font-weight: 600;
-              line-height: 1.5rem;
-              margin: 0.5rem 0;
+              font-size: $text !important;
+              font-weight: 600 !important;
+              line-height: 1.5rem !important;
+              margin: 0.5rem 0 !important;
             }
 
             h6 {
-              font-size: $text-small;
-              font-weight: 600;
-              line-height: 1.25rem;
-              margin: 0.5rem 0;
+              font-size: $text-small !important;
+              font-weight: 600 !important;
+              line-height: 1.25rem !important;
+              margin: 0.5rem 0 !important;
             }
           }
         }

@@ -39,10 +39,10 @@ $popover-border-width: 0.0625rem;
     padding: 1rem 1rem 0;
 
     & .chi-popover__title {
-      font-size: $text-large;
-      font-weight: 600;
-      line-height: $line-height-large;
-      margin: 0;
+      font-size: $text-large !important;
+      font-weight: 600 !important;
+      line-height: $line-height-large !important;
+      margin: 0 !important;
     }
 
     & + .chi-popover__content {
