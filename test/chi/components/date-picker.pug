@@ -12,7 +12,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 -  const active = 23;
 
 .test-base
-  span.chi-h2 Base
+  span.-text--h2 Base
   .-position--relative
     .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
       .chi-datepicker__month-row
@@ -36,7 +36,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 - day = 1;
 
 .test-today
-  span.chi-h2 Today
+  span.-text--h2 Today
   .-position--relative
     .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
       .chi-datepicker__month-row
@@ -63,7 +63,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 - day = 1;
 
 .test-active
-  span.chi-h2 Active
+  span.-text--h2 Active
   .-position--relative
     .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
       .chi-datepicker__month-row
@@ -90,7 +90,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 - day = 1;
 
 .test-hover
-  span.chi-h2 Hover
+  span.-text--h2 Hover
   .-position--relative
     .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
       .chi-datepicker__month-row
@@ -118,7 +118,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 - day = 1;
 
 .test-inactive
-  span.chi-h2 Inactive
+  span.-text--h2 Inactive
   .-position--relative
     .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
       .chi-datepicker__month-row
@@ -145,7 +145,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 - day = 1;
 
 .test-combined
-  span.chi-h2 Combined
+  span.-text--h2 Combined
   .-position--relative
     .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
       .chi-datepicker__month-row
@@ -172,12 +172,12 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
             .chi-datepicker__day=day++
 
 .test-input-combined
-  span.chi-h2 Input Popover Combined
+  span.-text--h2 Input Popover Combined
   .-position--relative(style="height: 18rem; width:14rem;")
     input#datepicker-1.chi-input.-load__datepicker(type="text", placeholder="MM/DD/YYYY")
 
 .test-input-combined-icon
-  span.chi-h2 Input Popover Combined w/ icon
+  span.-text--h2 Input Popover Combined w/ icon
   .-position--relative(style="height: 18rem; width:14rem;")
     .chi-input__wrapper.-icon--right
       input#datepicker-2.chi-input.-load__datepicker(type="text", placeholder="MM/DD/YYYY")
@@ -186,7 +186,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
           use(xlink:href="#icon-date")
 
 .test-disabled
-  span.chi-h2 Disabled date picker
+  span.-text--h2 Disabled date picker
   .-position--relative(style="width:14rem;")
     .chi-input__wrapper.-icon--right.-disabled
       input.chi-input.-load__datepicker(type="text", placeholder="MM/DD/YYYY", disabled)

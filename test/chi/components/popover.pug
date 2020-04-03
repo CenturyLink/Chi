@@ -10,7 +10,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 - var moreSides = ['top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'];
 
 .test-base(style='width: 220px; height: 220px;')
-  span.chi-h2 Base
+  span.-text--h2 Base
   .-position--relative
     section.chi-popover.chi-popover--top.-active.-position--absolute(aria-modal="true", aria-label="Popover Title", role="dialog")
       header.chi-popover__header
@@ -20,7 +20,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 each side in sides
   div(class=`test-${side}`, style='width: 330px; height: 220px;')
-    span.chi-h2=`Simple side ${side}`
+    span.-text--h2=`Simple side ${side}`
     .-position--relative
       section.chi-popover.-active.-position--absolute(class=`chi-popover--${side}`, aria-modal="true", aria-label="Popover Title", role="dialog")
         header.chi-popover__header
@@ -31,12 +31,12 @@ each side in sides
 
 each side in moreSides
   div(class=`test-more-${side}`)
-    span.chi-h2=`Popper side ${side}`
+    span.-text--h2=`Popper side ${side}`
     .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
       button(data-position=side, data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover Title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover content.</p></div>').chi-btn.autostart Popover
 
 div(class=`test-with-progress`, style='width: 450px; height: 220px;')
-  span.chi-h2=`Popover with progress`
+  span.-text--h2=`Popover with progress`
   .-position--relative
     section.chi-popover.chi-popover--top.-active(aria-modal="true", aria-label="Popover Title", role="dialog")
       header.chi-popover__header

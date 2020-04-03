@@ -15,28 +15,28 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
       div(class=`${version.testClass}${side} -mb--3 example`)
         div(style='width: 320px;')
-          .chi-h2= `Drawer / ${version.title} / ${side}`
+          .-text--h2= `Drawer / ${version.title} / ${side}`
           div.-position--relative.-z--0(style='height: 20rem;')
             chi-drawer(position=side, backdrop=version.backdrop, active, headless, data-cy=`${version.testClass}${side}`)
               .-px--2.-text Drawer content here
 
       div(class=`${version.testClass}${side}-headed -mb--3 example`)
         div(style='width: 320px;')
-          .chi-h2= `Drawer / with head / ${version.title} / ${side}`
+          .-text--h2= `Drawer / with head / ${version.title} / ${side}`
           div.-position--relative.-z--0(style='height: 20rem;')
             chi-drawer(position=side, backdrop=version.backdrop, active, data-cy=`${version.testClass}${side}-headed`)
               .-px--2.-text Drawer content here
 
       div(class=`${version.testClass}${side}-with-title -mb--3 example`)
         div(style='width: 320px;')
-          .chi-h2= `Drawer / with title / ${version.title} / ${side}`
+          .-text--h2= `Drawer / with title / ${version.title} / ${side}`
           div.-position--relative.-z--0(style='height: 20rem;')
             chi-drawer(position=side, title="Drawer title here", backdrop=version.backdrop, active, collapsible, data-cy=`${version.testClass}${side}-with-title`)
               .-px--2.-text Drawer content here
 
   div(class=`test-non-closable -mb--3 example`)
     div(style='width: 320px;')
-      .chi-h2= `Drawer / Non closable`
+      .-text--h2= `Drawer / Non closable`
       div.-position--relative.-z--0(style='height: 20rem;')
         chi-drawer(position='left', data-cy=`test-non-closable`, headless, non-closable, active)
           .-px--2.-text Drawer content here

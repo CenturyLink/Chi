@@ -4,7 +4,7 @@ title: Textarea
 
 each size in ['default', 'sm', 'md', 'lg', 'xl']
   div(class=`test-${size}`)
-    span.chi-h2= `Textarea / ${size}`
+    span.-text--h2= `Textarea / ${size}`
     table(cellpadding="0", cellspacing="0", width="1200px")
       each state in ['initial', 'hover', 'focus', 'disabled']
         tr
@@ -29,7 +29,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     textarea(class=`chi-input -${style} -${state} -${size}`) Value
 
   div(class=`test-${size}-icon-left`)
-    span.chi-h2= `Textarea / ${size} / icon left`
+    span.-text--h2= `Textarea / ${size} / icon left`
     table(cellpadding="0", cellspacing="0", width="1200px")
       each state in ['initial', 'hover', 'focus', 'disabled']
         tr
@@ -60,7 +60,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                         use(xlink:href='#icon-atom')
 
   div(class=`test-${size}-icon-right`)
-    span.chi-h2= `Textarea / ${size} / icon right`
+    span.-text--h2= `Textarea / ${size} / icon right`
     table(cellpadding="0", cellspacing="0", width="1200px")
       each state in ['initial', 'hover', 'focus', 'disabled']
         tr
@@ -117,7 +117,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                           use(xlink:href='#icon-circle-info-outline')
 
   div(class=`test-${size}-icon-left-right`)
-    span.chi-h2= `Textarea / ${size} / icon left / icon right`
+    span.-text--h2= `Textarea / ${size} / icon left / icon right`
     table(cellpadding="0", cellspacing="0", width="1200px")
       each state in ['initial', 'hover', 'focus', 'disabled']
         tr
