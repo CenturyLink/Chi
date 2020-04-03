@@ -34,52 +34,46 @@ a {
   @include anchor-style;
 }
 
-h1,
-.-text--h1 {
-  font-size: 3rem !important;
-  font-weight: 700 !important;
-  line-height: 4rem !important;
-  margin: 2rem 0 !important;
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 4rem;
+  margin: 2rem 0;
 }
 
-h2,
-.-text--h2 {
-  font-size: 2rem !important;
-  font-weight: 700 !important;
-  line-height: 3rem !important;
-  margin: 1rem 0 !important;
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3rem;
+  margin: 1rem 0;
 }
 
-h3,
-.-text--h3 {
-  font-size: 1.5rem !important;
-  font-weight: 600 !important;
-  line-height: 2rem !important;
-  margin: 1rem 0 !important;
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 2rem;
+  margin: 1rem 0;
 }
 
-h4,
-.-text--h4 {
-  font-size: $text-larger !important;
-  font-weight: 600 !important;
-  line-height: 2rem !important;
-  margin: 0.5rem 0 !important;
+h4 {
+  font-size: $text-larger;
+  font-weight: 600;
+  line-height: 2rem;
+  margin: 0.5rem 0;
 }
 
-h5,
-.-text--h5 {
-  font-size: $text-large !important;
-  font-weight: 600 !important;
-  line-height: $line-height-large !important;
-  margin: 0.5rem 0 !important;
+h5 {
+  font-size: $text-large;
+  font-weight: 600;
+  line-height: $line-height-large;
+  margin: 0.5rem 0;
 }
 
-h6,
-.-text--h6 {
-  font-size: $text !important;
-  font-weight: 600 !important;
-  line-height: $line-height !important;
-  margin: 0.5rem 0 !important;
+h6 {
+  font-size: $text;
+  font-weight: 600;
+  line-height: $line-height;
+  margin: 0.5rem 0;
 }
 
 blockquote,
@@ -156,6 +150,49 @@ ol {
       padding-left: 0;
     }
   }
+}
+
+// text headings
+.-text--h1 {
+  font-size: 3rem !important;
+  font-weight: 700 !important;
+  line-height: 4rem !important;
+  margin: 2rem 0 !important;
+}
+
+.-text--h2 {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  line-height: 3rem !important;
+  margin: 1rem 0 !important;
+}
+
+.-text--h3 {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  line-height: 2rem !important;
+  margin: 1rem 0 !important;
+}
+
+.-text--h4 {
+  font-size: $text-larger !important;
+  font-weight: 600 !important;
+  line-height: 2rem !important;
+  margin: 0.5rem 0 !important;
+}
+
+.-text--h5 {
+  font-size: $text-large !important;
+  font-weight: 600 !important;
+  line-height: $line-height-large !important;
+  margin: 0.5rem 0 !important;
+}
+
+.-text--h6 {
+  font-size: $text !important;
+  font-weight: 600 !important;
+  line-height: $line-height !important;
+  margin: 0.5rem 0 !important;
 }
 
 p,
