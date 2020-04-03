@@ -1,7 +1,30 @@
-.chi-grid__container
-    h1.docs-body__heading-title.-text--normal= title
-    if description
-        .docs-body__heading-description=description
+if homepage
+    .chi-grid__container.-hero
+        .chi-grid.-no-gutter
+            .chi-col.-w--12.-w-lg--6.-n-lg--2
+                .hero-graphic
+                    .shape--1
+                    .shape--2
+                    .shape--3
+                        svg(viewBox='0 0 100 110', xmlns='http://www.w3.org/2000/svg')
+                            polygon(points='50 15, 100 100, 0 100')
+                    .shape--4
+                    .shape--5
+                        svg(viewBox='0 0 100 110', xmlns='http://www.w3.org/2000/svg')
+                            polygon(points='50 15, 100 100, 0 100')
+                    .shape--6
+            .chi-col.-w--12.-w-lg--6.-n-lg--1
+                h1.docs-body__heading-title=heroTitle
+                if heroSubtitle
+                    h2.docs-body__heading-description=heroSubtitle
+                .hero-btn__group
+                    a.chi-btn.-secondary.-xl.-px--4.-mb--2.-mb-sm--0(href='../../getting-started/installation') Install Chi
+                    a.chi-btn.-light.-outline.-xl.-px--4.-ml--2.-mb--2.-mb-sm--0(href='../../getting-started/whats-new') See What's New
+else
+    .chi-grid__container
+        h1.docs-body__heading-title.-text--normal=title
+        if description
+            .docs-body__heading-description=description
 if tabs
     .chi-grid__container
         ul.chi-tabs.-inverse#viewtabs

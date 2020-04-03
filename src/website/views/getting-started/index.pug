@@ -1,12 +1,87 @@
 ---
 title: Introduction
 order: 1
-description: Chi provides developers with a collection of HTML and CSS patterns to build fast, reusable, and consistent responsive interfaces.
-tabs: {"Chi Web Components" : "webcomponentstab", "Chi CSS" : "csstab"}
+homepage: true
+heroTitle: Build products customers love
+heroSubtitle: Chi is CenturyLink's design system for building consistent digital products and experiences.
 ---
 
-.chi-tabs-panel.-active#webcomponentstab
-  include ./introduction/_web-components
+.chi-grid.-py-lg--2.-py-xl--4
+    .chi-col.-w--12.-w-md--6.-w-lg--5.-mb--1.-mb-lg--6
+        .chi-grid.-no-gutter
+            .chi-col.-w--12.-p--2.-p-lg--0
+                .chi-h3.-mt--0.-mb--1.-mb-sm--2 Accessible
+                .-text--large.-text--grey
+                    | Chi components follow Section 508 and WCAG AA standards which ensure the best experience
+                    | is provided for all customers, including those with disabilities.
+    .chi-col.-w--12.-w-md--6.-w-lg--5.-o-lg--2.-mb--1.-mb-lg--6
+        .chi-grid.-no-gutter
+            .chi-col.-w--12.-p--2.-p-lg--0
+                .chi-h3.-mt--0.-mb--1.-mb-sm--2 Composable
+                .-text--large.-text--grey
+                    | Chi components are flexible, scalable building blocks that can be implemented as is or
+                    | assembled in various combinations to satisfy a diverse set of requirements.
+    .chi-col.-w--12.-w-md--6.-w-lg--5.-mb--1.-mb-lg--6
+        .chi-grid.-no-gutter
+            .chi-col.-w--12.-p--2.-p-lg--0
+                .chi-h3.-mt--0.-mb--1.-mb-sm--2 Reusable
+                .-text--large.-text--grey
+                    | Chi components provide tried-and-tested patterns that enable teams to ship faster, accrue
+                    | less technical debt, and deliver more predictable and seamless experiences to customers.
+    .chi-col.-w--12.-w-md--6.-w-lg--5.-o-lg--2.-mb--1.-mb-lg--6
+        .chi-grid.-no-gutter
+            .chi-col.-w--12.-p--2.-p-lg--0
+                .chi-h3.-mt--0.-mb--1.-mb-sm--2 Extensible
+                .-text--large.-text--grey
+                    | Chi’s framework agnostic web components and independent CSS layer are compatible with any
+                    | major framework (AngularJS, ReactJS, VueJS) or no framework at all.
 
-.chi-tabs-panel#csstab
-  include ./introduction/_css
+.chi-h3.-mt--3.-d--none Getting Started
+.docs-body__picker-links.chi-grid.-pt-lg--1.-d--none
+    .chi-col.-w--12.-w-lg--6
+        a.chi-card.-s--1.-mb--2.-mb-lg--3(href='')
+            .chi-card__content
+                .chi-grid.-no-gutter
+                    .chi-col.-w--10
+                        .-text--small.-text--grey
+                            | Getting Started
+                        .-text--large.-text--bold
+                            | Installation Guide
+                    .chi-col.-w--2.-d--flex.-align-items--center.-justify-content--end
+                        i.chi-icon.icon-chevron-right
+
+    .chi-col.-w--12.-w-lg--6
+        a.chi-card.-s--1.-mb--2.-mb-lg--3(href='')
+            .chi-card__content
+                .chi-grid.-no-gutter
+                    .chi-col.-w--10
+                        .-text--small.-text--grey
+                            | Getting Started
+                        .-text--large.-text--bold
+                            | Development Workflow
+                    .chi-col.-w--2.-d--flex.-align-items--center.-justify-content--end
+                        i.chi-icon.icon-chevron-right
+
+    .chi-col.-w--12.-w-lg--6
+        a.chi-card.-s--1.-mb--2.-mb-lg--3(href='')
+            .chi-card__content
+                .chi-grid.-no-gutter
+                    .chi-col.-w--10
+                        .-text--small.-text--grey
+                            | Getting Started
+                        .-text--large.-text--bold
+                            | What's New In This Release
+                    .chi-col.-w--2.-d--flex.-align-items--center.-justify-content--end
+                        i.chi-icon.icon-chevron-right
+
+    .chi-col.-w--12.-w-lg--6
+        a.chi-card.-s--1.-mb--2.-mb-lg--3(href='')
+            .chi-card__content
+                .chi-grid.-no-gutter
+                    .chi-col.-w--10
+                        .-text--small.-text--grey
+                            | Getting Started
+                        .-text--large.-text--bold
+                            | Browser Support
+                    .chi-col.-w--2.-d--flex.-align-items--center.-justify-content--end
+                        i.chi-icon.icon-chevron-right
