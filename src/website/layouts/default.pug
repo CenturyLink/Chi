@@ -4,11 +4,11 @@ doctype html
 html(lang="en")
     head
         if title
-            title Chi &middot; #{title}
+            title Chi - #{title}
             if !description
                 meta(name="description", content=`${title}. ${defaultMetaDescription}`)
         else
-            title Chi &middot; Documentation
+            title Chi - Documentation
             if !description
                 meta(name="description", content=`${defaultMetaDescription}`)
         meta(name="viewport", content="width=device-width, initial-scale=1")
