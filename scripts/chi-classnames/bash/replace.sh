@@ -111,12 +111,12 @@ ARRAY=(
     "a-tooltip:chi-tooltip"
 
     # Typography
-    "a-h1:chi-h1"
-    "a-h2:chi-h2"
-    "a-h3:chi-h3"
-    "a-h4:chi-h4"
-    "a-h5:chi-h5"
-    "a-h6:chi-h6"
+    "a-h1:-text--h1"
+    "a-h2:-text--h2"
+    "a-h3:-text--h3"
+    "a-h4:-text--h4"
+    "a-h5:-text--h5"
+    "a-h6:-text--h6"
     "a-blockquote:chi-blockquote"
     "a-abbr:chi-abbr"
     "a-code:chi-code"
