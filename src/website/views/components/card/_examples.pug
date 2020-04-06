@@ -6,12 +6,13 @@ h3 Base
 .example.-mb--3
   .-p--3
     .chi-card(style="width:20rem;")
-      .chi-card__content.-text
-        | This is a card
+      .chi-card__content
+        .chi-card__caption
+          | This is a card
   :code(lang="html")
     <div class="chi-card">
       <div class="chi-card__content">
-        This is a card
+        <div class="chi-card__caption">This is a card</div>
       </div>
     </div>
 
@@ -21,12 +22,13 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-card.-active(style="width:20rem;")
-      .chi-card__content.-text
-        | This is an active card
+      .chi-card__content
+        .chi-card__caption
+          | This is an active card
   :code(lang="html")
     <div class="chi-card -active">
       <div class="chi-card__content">
-        This is an active card
+        <div class="chi-card__caption">This is an active card</div>
       </div>
     </div>
 
@@ -36,12 +38,29 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-card.-active--alt(style="width:20rem;")
-      .chi-card__content.-text
-        | This is an active alt card
+      .chi-card__content
+        .chi-card__caption
+          | This is an active alt card
   :code(lang="html")
     <div class="chi-card -active--alt">
       <div class="chi-card__content">
-        This is an active alt card
+        <div class="chi-card__caption">This is an active alt card</div>
+      </div>
+    </div>
+
+h3 No Border
+p.-text
+  | Render a card without a border using the class <code>-no-border</code>.
+.example.-mb--3
+  .-p--3
+    .chi-card.-no-border(style="width:20rem;")
+      .chi-card__content
+        .chi-card__caption
+          | This is a card with no border
+  :code(lang="html")
+    <div class="chi-card -no-border">
+      <div class="chi-card__content">
+        <div class="chi-card__caption">This is a card with no border</div>
       </div>
     </div>
 
@@ -52,13 +71,14 @@ p.-text
   .-p--3
     .chi-card.-empty(style="width:20rem;")
       .chi-card__content
-        i.chi-icon.-md.chi-card__icon(class ='icon-circle-plus-outline')
-        p.-text.-m--0 Add Product
+        i.chi-icon.-md.chi-card__icon.icon-circle-plus-outline
+        .chi-card__caption
+          | Add Product
   :code(lang="html")
     <div class="chi-card -empty">
       <div class="chi-card__content">
-        <i class="chi-icon chi-card__icon icon-circle-plus-outline -md"></i>
-        <p class="-text -m--0">Add Product</p>
+        <i class="chi-card__icon chi-icon icon-circle-plus-outline -md"></i>
+        <div class="chi-card__caption">Add Product</div>
       </div>
     </div>
 
@@ -70,31 +90,35 @@ p.-text
     .chi-card(style="width:20rem;")
       .chi-card__content
         .chi-card__title Title
-        p.-text.-m--0 This is a titled card
+        .chi-card__caption This is a titled card
   :code(lang="html")
     <div class="chi-card">
       <div class="chi-card__content">
         <div class="chi-card__title">Title</div>
-        <p class="-text -m--0">This is a titled card</p>
+        <div class="chi-card__caption">This is a titled card</div>
       </div>
     </div>
 
-h3 Titled with content
+h3 Center Aligned
+p.-text
+  | Center align a card by applying the class <code>-align--center</code>.
 .example.-mb--3
   .-p--3
-    .chi-card(style="width:20rem;")
+    .chi-card.-align--center(style="width:20rem;")
       .chi-card__content
         .chi-card__title Title
-        p.-text.-mt--0
-          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
-          | Ut felis magna, facilisis ut malesuada nec.
-        button.chi-btn.-primary Action
+        .chi-card__caption
+          | This is a center aligned card
+        .chi-card__actions
+          button.chi-btn.-primary Action
   :code(lang="html")
-    <div class="chi-card">
+    <div class="chi-card -align--center">
       <div class="chi-card__content">
         <div class="chi-card__title">Title</div>
-        <p class="-text -mt--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
-        <button class="chi-btn -primary">Action</button>
+        <div class="chi-card__caption">This is a center aligned card</div>
+        <div class="chi-card__actions">
+          <button class="chi-btn -primary">Action</button>
+        </div>
       </div>
     </div>
 
@@ -102,36 +126,103 @@ h3 Titled with content and icon
 .example.-mb--3
   .-p--3.chi-grid
     .chi-col.-w--6.-w-md--4.-w-lg--3
-      .chi-card
-        .chi-card__content.-d--flex.-flex--column.-justify-content--center.-align-items--center.-text--center
+      .chi-card.-align--center
+        .chi-card__content
           .chi-card__title Title
           i.chi-icon.chi-card__icon.-sm--3(class="icon-atom")
-          p.-text--small.-mb--0.-mt--1 4 Running
-          p.-text--smaller.-m--0.-text--grey 6 Pending
+          .chi-card__caption
+            span.-text--small Meta Label
+            span.-text--smaller.-text--grey Sublabel
     .chi-col.-w--6.-w-md--4.-w-lg--3
-      .chi-card.-active
-        .chi-card__content.-d--flex.-flex--column.-justify-content--center.-align-items--center.-text--center
+      .chi-card.-active.-align--center
+        .chi-card__content
           .chi-card__title Title
           i.chi-icon.chi-card__icon.-sm--3.chi-card__icon(class="icon-atom")
-          p.-text--small.-mb--0.-mt--1 4 Running
-          p.-text--smaller.-m--0.-text--grey 6 Pending
+          .chi-card__caption
+            span.-text--small Meta Label
+            span.-text--smaller.-text--grey Sublabel
   :code(lang="html")
     <!-- Base -->
-    <div class="chi-card">
-      <div class="chi-card__content -d--flex -flex--column -justify-content--center -align-items--center -text--center">
+    <div class="chi-card -align--center">
+      <div class="chi-card__content">
         <div class="chi-card__title">Title</div>
-        <i class="chi-icon chi-card__icon icon-atom -sm--3"></i>
-        <p class="-text--small -mb--0 -mt--1">4 Running</p>
-        <p class="-text--smaller -m--0 -text--grey">6 Pending</p>
+        <i class="chi-card__icon chi-icon icon-atom -sm--3"></i>
+        <div class="chi-card__caption">
+          <span class="-text--small">Meta Label</span>
+          <span class="-text--smaller -text--grey">Sublabel</span>
+        </div>
       </div>
     </div>
     <!-- Active -->
-    <div class="chi-card -active">
-      <div class="chi-card__content -d--flex -flex--column -justify-content--center -align-items--center -text--center">
+    <div class="chi-card -active -align--center">
+      <div class="chi-card__content">
         <div class="chi-card__title">Title</div>
-        <i class="chi-icon chi-card__icon icon-atom -sm--3"></i>
-        <p class="-text--small -mb--0 -mt--1">4 Running</p>
-        <p class="-text--smaller -m--0 -text--grey">6 Pending</p>
+        <i class="chi-card__icon chi-icon icon-atom -sm--3"></i>
+        <div class="chi-card__caption">
+          <span class="-text--small">Meta Label</span>
+          <span class="-text--smaller -text--grey">Sublabel</span>
+        </div>
+      </div>
+    </div>
+
+h3 Animate on Hover
+p.-text
+  | Animate a card on hover by applying the class <code>-hover--animate</code>.
+.example.-mb--3
+  .-p--3.chi-grid
+    .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
+      .chi-card.-align--center.-hover--animate
+        .chi-card__content
+          .chi-card__title Title
+          i.chi-icon.chi-card__icon.-sm--3(class="icon-atom")
+          .chi-card__caption
+            span.-text--small Meta Label
+            span.-text--smaller.-text--grey Sublabel
+    .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
+      .chi-card.-align--center.-hover--animate
+        .chi-card__content
+          .chi-card__title Title
+          i.chi-icon.chi-card__icon.-sm--3(class="icon-atom")
+          .chi-card__caption
+            span.-text--small Meta Label
+            span.-text--smaller.-text--grey Sublabel
+    .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
+      .chi-card.-align--center.-hover--animate
+        .chi-card__content
+          .chi-card__title Title
+          i.chi-icon.chi-card__icon.-sm--3(class="icon-atom")
+          .chi-card__caption
+            span.-text--small Meta Label
+            span.-text--smaller.-text--grey Sublabel
+    .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
+      .chi-card.-active.-align--center.-hover--animate
+        .chi-card__content
+          .chi-card__title Title
+          i.chi-icon.chi-card__icon.-sm--3.chi-card__icon(class="icon-atom")
+          .chi-card__caption
+            span.-text--small Meta Label
+            span.-text--smaller.-text--grey Sublabel
+  :code(lang="html")
+    <!-- Base -->
+    <div class="chi-card -align--center -hover--animate">
+      <div class="chi-card__content">
+        <div class="chi-card__title">Title</div>
+        <i class="chi-card__icon chi-icon icon-atom -sm--3"></i>
+        <div class="chi-card__caption">
+          <span class="-text--small">Meta Label</span>
+          <span class="-text--smaller -text--grey">Sublabel</span>
+        </div>
+      </div>
+    </div>
+    <!-- Active -->
+    <div class="chi-card -active -align--center -hover--animate">
+      <div class="chi-card__content">
+        <div class="chi-card__title">Title</div>
+        <i class="chi-card__icon chi-icon icon-atom -sm--3"></i>
+        <div class="chi-card__caption">
+          <span class="-text--small">Meta Label</span>
+          <span class="-text--smaller -text--grey">Sublabel</span>
+        </div>
       </div>
     </div>
 
@@ -144,15 +235,13 @@ p.-text
       .chi-card__hero.-text--inverse(style="width:100%;background:rgba(0,0,0,0.8);")
         p.-text.-p--6.-text--center Hero Image
       .chi-card__content
-        p.-text.-m--0
-          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
-          | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
-          | Donec sit amet consectetur elit.
+        .chi-card__caption
+          | This is a hero card
   :code(lang="html")
     <div class="chi-card">
       <img class="chi-card__hero" src="..." alt="Card Image">
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec, ultrices in turpis. Donec sit amet consectetur elit.</p>
+        <div class="chi-card__caption">This is a hero card</div>
       </div>
     </div>
 
@@ -161,20 +250,20 @@ h3 Footer
   .-p--3
     .chi-card(style="width:20rem;")
       .chi-card__content
-        p.-text.-m--0
+        .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .chi-card__footer
         button.chi-btn.-primary Action 1
-        button.chi-btn.-ml--1 Action 2
+        button.chi-btn Action 2
   :code(lang="html")
     <div class="chi-card">
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
       </div>
       <div class="chi-card__footer">
         <button class="chi-btn -primary">Action 1</button>
-        <button class="chi-btn -ml--1">Action 2</button>
+        <button class="chi-btn">Action 2</button>
       </div>
     </div>
 
@@ -184,20 +273,20 @@ p.-text Apply the class <code>-align--right</code> on <code>chi-card__footer</co
   .-p--3
     .chi-card(style="width:20rem;")
       .chi-card__content
-        p.-text.-m--0
+        .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .chi-card__footer.-align--right
         button.chi-btn Action 2
-        button.chi-btn.-primary.-ml--1 Action 1
+        button.chi-btn.-primary Action 1
   :code(lang="html")
     <div class="chi-card">
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
       </div>
       <div class="chi-card__footer -align--right">
         <button class="chi-btn">Action 2</button>
-        <button class="chi-btn -primary -ml--1">Action 1</button>
+        <button class="chi-btn -primary">Action 1</button>
       </div>
     </div>
 
@@ -207,7 +296,7 @@ p.-text Apply the class <code>-align--center</code> on <code>chi-card__footer</c
   .-p--3
     .chi-card(style="width:20rem;")
       .chi-card__content
-        p.-text.-m--0
+        .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .chi-card__footer.-align--center
@@ -215,7 +304,7 @@ p.-text Apply the class <code>-align--center</code> on <code>chi-card__footer</c
   :code(lang="html")
     <div class="chi-card">
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
       </div>
       <div class="chi-card__footer -align--center">
         <button class="chi-btn -primary">Action</button>
@@ -228,7 +317,7 @@ p.-text Apply the class <code>-no-border</code> on <code>chi-card__footer</code>
   .-p--3
     .chi-card(style="width:20rem;")
       .chi-card__content
-        p.-text.-m--0
+        .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .chi-card__footer.-no-border
@@ -236,7 +325,7 @@ p.-text Apply the class <code>-no-border</code> on <code>chi-card__footer</code>
   :code(lang="html")
     <div class="chi-card">
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
       </div>
       <div class="chi-card__footer -no-border">
         <button class="chi-btn -primary">Action</button>
@@ -249,7 +338,7 @@ p.-text Apply the class <code>-sm</code> on <code>chi-card__footer</code> to red
   .-p--3
     .chi-card(style="width:20rem;")
       .chi-card__content
-        p.-text.-m--0
+        .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .chi-card__footer.-sm
@@ -257,7 +346,7 @@ p.-text Apply the class <code>-sm</code> on <code>chi-card__footer</code> to red
   :code(lang="html")
     <div class="chi-card">
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
       </div>
       <div class="chi-card__footer -sm">
         <a class="-text" href="#">Action</a>
@@ -271,7 +360,7 @@ h3 Header
       .chi-card__header
         .chi-card__title Title
       .chi-card__content
-        p.-text.-m--0
+        .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
   :code(lang="html")
@@ -280,7 +369,7 @@ h3 Header
         <div class="chi-card__title">Title</div>
       </div>
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
       </div>
     </div>
 
@@ -292,7 +381,7 @@ p.-text Apply the class <code>-align--center</code> on <code>chi-card__header</c
       .chi-card__header.-align--center
         .chi-card__title Title
       .chi-card__content
-        p.-text.-m--0
+        .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
   :code(lang="html")
@@ -301,7 +390,7 @@ p.-text Apply the class <code>-align--center</code> on <code>chi-card__header</c
         <div class="chi-card__title">Title</div>
       </div>
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
       </div>
     </div>
 
@@ -313,7 +402,7 @@ p.-text Apply the class <code>-no-border</code> on <code>chi-card__header</code>
       .chi-card__header.-no-border
         .chi-card__title Title
       .chi-card__content
-        p.-text.-m--0
+        .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
   :code(lang="html")
@@ -322,7 +411,7 @@ p.-text Apply the class <code>-no-border</code> on <code>chi-card__header</code>
         <div class="chi-card__title">Title</div>
       </div>
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
       </div>
     </div>
 
@@ -334,7 +423,7 @@ p.-text Apply the class <code>-sm</code> on <code>chi-card__header</code> to red
       .chi-card__header.-sm
         .chi-card__title Title
       .chi-card__content
-        p.-text.-m--0
+        .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
   :code(lang="html")
@@ -343,7 +432,7 @@ p.-text Apply the class <code>-sm</code> on <code>chi-card__header</code> to red
         <div class="chi-card__title">Title</div>
       </div>
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
       </div>
     </div>
 
@@ -355,7 +444,7 @@ p.-text Further customize cards by adding both headers <code>chi-card__header</c
       .chi-card__header
         .chi-card__title Title
       .chi-card__content
-        p.-text.-m--0
+        .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .chi-card__footer
@@ -366,7 +455,7 @@ p.-text Further customize cards by adding both headers <code>chi-card__header</c
         <div class="chi-card__title">Title</div>
       </div>
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
       </div>
       <div class="chi-card__footer">
         <button class="chi-btn -primary">Action</button>
@@ -381,7 +470,7 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
       .chi-card__header.-sm
         .chi-card__title Title
       .chi-card__content
-        p.-text.-m--0
+        .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .chi-card__footer.-sm
@@ -392,7 +481,7 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
         <div class="chi-card__title">Title</div>
       </div>
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
       </div>
       <div class="chi-card__footer -sm">
         <a class="-text" href="#">Action</a>
@@ -406,7 +495,7 @@ h3 Portal base
       .chi-card__header.-sm
         .chi-card__title Title
       .chi-card__content
-        p.-text.-m--0
+        .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
   :code(lang="html")
@@ -415,7 +504,7 @@ h3 Portal base
         <div class="chi-card__title">Title</div>
       </div>
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
       </div>
     </div>
 
@@ -432,7 +521,7 @@ h3 Portal with tabs
           li
             a(href='#') Tab Link
       .chi-card__content
-        p.-text.-m--0
+        .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
   :code(lang="html")
@@ -451,6 +540,6 @@ h3 Portal with tabs
         </ul>
       </div>
       <div class="chi-card__content">
-        <p class="-text -m--0">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</p>
+        <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
       </div>
     </div>
