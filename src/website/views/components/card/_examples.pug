@@ -131,16 +131,16 @@ h3 Titled with content and icon
           .chi-card__title Title
           i.chi-icon.chi-card__icon.-sm--3(class="icon-atom")
           .chi-card__caption
-            span.-text--small 4 Running
-            span.-text--smaller.-text--grey 6 Pending
+            span.-text--small Meta Label
+            span.-text--smaller.-text--grey Sublabel
     .chi-col.-w--6.-w-md--4.-w-lg--3
       .chi-card.-active.-align--center
         .chi-card__content
           .chi-card__title Title
           i.chi-icon.chi-card__icon.-sm--3.chi-card__icon(class="icon-atom")
           .chi-card__caption
-            span.-text--small 4 Running
-            span.-text--smaller.-text--grey 6 Pending
+            span.-text--small Meta Label
+            span.-text--smaller.-text--grey Sublabel
   :code(lang="html")
     <!-- Base -->
     <div class="chi-card -align--center">
@@ -148,8 +148,8 @@ h3 Titled with content and icon
         <div class="chi-card__title">Title</div>
         <i class="chi-card__icon chi-icon icon-atom -sm--3"></i>
         <div class="chi-card__caption">
-          <span class="-text--small">4 Running</span>
-          <span class="-text--smaller -text--grey">6 Pending</span>
+          <span class="-text--small">Meta Label</span>
+          <span class="-text--smaller -text--grey">Sublabel</span>
         </div>
       </div>
     </div>
@@ -159,8 +159,69 @@ h3 Titled with content and icon
         <div class="chi-card__title">Title</div>
         <i class="chi-card__icon chi-icon icon-atom -sm--3"></i>
         <div class="chi-card__caption">
-          <span class="-text--small">4 Running</span>
-          <span class="-text--smaller -text--grey">6 Pending</span>
+          <span class="-text--small">Meta Label</span>
+          <span class="-text--smaller -text--grey">Sublabel</span>
+        </div>
+      </div>
+    </div>
+
+h3 Animate on Hover
+p.-text
+  | Animate a card on hover by applying the class <code>-hover--animate</code>.
+.example.-mb--3
+  .-p--3.chi-grid
+    .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
+      .chi-card.-align--center.-hover--animate
+        .chi-card__content
+          .chi-card__title Title
+          i.chi-icon.chi-card__icon.-sm--3(class="icon-atom")
+          .chi-card__caption
+            span.-text--small Meta Label
+            span.-text--smaller.-text--grey Sublabel
+    .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
+      .chi-card.-align--center.-hover--animate
+        .chi-card__content
+          .chi-card__title Title
+          i.chi-icon.chi-card__icon.-sm--3(class="icon-atom")
+          .chi-card__caption
+            span.-text--small Meta Label
+            span.-text--smaller.-text--grey Sublabel
+    .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
+      .chi-card.-align--center.-hover--animate
+        .chi-card__content
+          .chi-card__title Title
+          i.chi-icon.chi-card__icon.-sm--3(class="icon-atom")
+          .chi-card__caption
+            span.-text--small Meta Label
+            span.-text--smaller.-text--grey Sublabel
+    .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
+      .chi-card.-active.-align--center.-hover--animate
+        .chi-card__content
+          .chi-card__title Title
+          i.chi-icon.chi-card__icon.-sm--3.chi-card__icon(class="icon-atom")
+          .chi-card__caption
+            span.-text--small Meta Label
+            span.-text--smaller.-text--grey Sublabel
+  :code(lang="html")
+    <!-- Base -->
+    <div class="chi-card -align--center -hover--animate">
+      <div class="chi-card__content">
+        <div class="chi-card__title">Title</div>
+        <i class="chi-card__icon chi-icon icon-atom -sm--3"></i>
+        <div class="chi-card__caption">
+          <span class="-text--small">Meta Label</span>
+          <span class="-text--smaller -text--grey">Sublabel</span>
+        </div>
+      </div>
+    </div>
+    <!-- Active -->
+    <div class="chi-card -active -align--center -hover--animate">
+      <div class="chi-card__content">
+        <div class="chi-card__title">Title</div>
+        <i class="chi-card__icon chi-icon icon-atom -sm--3"></i>
+        <div class="chi-card__caption">
+          <span class="-text--small">Meta Label</span>
+          <span class="-text--smaller -text--grey">Sublabel</span>
         </div>
       </div>
     </div>
