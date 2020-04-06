@@ -73,7 +73,7 @@ div.chi-grid
 h2 Neutral
 p.-text.-mb--3
   | Neutral palette is an extension of CenturyLink Brand's Dark
-  | Grey swatch (Grey 70). Each shade is based off the original hue.
+  | Grey swatch (Grey 70).
 div.chi-grid
   .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
     .palette-container
@@ -324,43 +324,3 @@ div.chi-grid
           code.hexa #FFF8ED
         .chi-col.-w--6.-text--right.-text--small
           .a11y AAA
-.chi-divider.-mt--3.-mb--5
-h2 SASS
-
-p.-text Chi defines colors with Sass language variables.
-
-.-mb--4
-  :code(lang='sass')
-    $colorscheme: (
-      grey: (
-        100: #242526,
-        90: #313336,
-        80: #3f4145,
-        70: #53565a,
-        60: #72767a,
-        50: #8e9399,
-        40: #acb0b5,
-        30: #d0d4d9,
-        20: #edf0f2,
-        10: #f8f9f9,
-      )
-    );
-
-p.-text A utility function has been created to reference them.
-
-.-mb--4
-  :code(lang='sass')
-    set-color($scheme, $tone)
-
-p.-text
-  | To use it, add chi through npm and import the variables and
-  | mixins sass files.
-
-.-mb--4
-  :code(lang='sass')
-    @import '@centurylink/chi/src/chi/_variables';
-    @import '@centurylink/chi/src/chi/_mixins';
-
-    .example {
-      color: set-color(grey, 60);
-    }
