@@ -164,9 +164,9 @@
                 color: set-color(white);
                 display: flex;
                 font-size: 0.875rem;
-                line-height: 1.25rem;
                 font-weight: normal;
                 justify-content: center;
+                line-height: 1.25rem;
                 padding-left: 2rem;
                 padding-right: 2rem;
                 @include respond-to(lg) {
@@ -199,7 +199,7 @@
                 }
 
                 .shape--1 {
-                  border: 0.25rem solid #02BCB2;
+                  border: 0.25rem solid #02bcb2;
                   height: 9rem;
                   left: 18rem;
                   position: absolute;
@@ -232,7 +232,7 @@
                 }
 
                 .shape--4 {
-                  border: 0.25rem solid #3A8DDD;
+                  border: 0.25rem solid #3a8ddd;
                   border-radius: 4.5rem;
                   height: 7rem;
                   left: 16rem;
@@ -250,14 +250,14 @@
 
                   svg {
                     height: 100%;
-                    stroke: #0080BB;
+                    stroke: #0080bb;
                     stroke-width: 0.125rem;
                     width: 100%;
                   }
                 }
 
                 .shape--6 {
-                  border: 0.25rem solid #02BCB2;
+                  border: 0.25rem solid #02bcb2;
                   border-radius: 4.5rem;
                   height: 9rem;
                   left: 30rem;
@@ -326,32 +326,6 @@
               font-weight: 600;
               line-height: 1.25rem;
               margin: 0.5rem 0;
-            }
-          }
-        }
-
-        .docs-body__picker-links {
-          .chi-card {
-            color: $text-color;
-            text-decoration: none;
-            transition: all 0.2s ease;
-
-            .icon-chevron-right {
-              transform: translateX(-0.25rem);
-              transition: transform 0.2s ease;
-            }
-
-            &:hover {
-              box-shadow: map-get($shadow, 2) !important;
-              border-color: set-color(grey, 30) !important;
-
-              .-text--large {
-                color: $primary-color;
-              }
-
-              .icon-chevron-right {
-                transform: none;
-              }
             }
           }
         }
