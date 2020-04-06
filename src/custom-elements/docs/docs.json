@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-03-29T19:30:32",
+  "timestamp": "2020-04-06T16:02:43",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -14,23 +14,6 @@
       "docsTags": [],
       "usage": {},
       "props": [
-        {
-          "name": "borderless",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "borderless",
-          "reflectToAttr": true,
-          "docs": "to get rid of the border-bottom of Banner alerts.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
         {
           "name": "center",
           "type": "boolean",
@@ -104,6 +87,23 @@
           "attr": "mutable",
           "reflectToAttr": true,
           "docs": "to hide the alert when dismissed.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "noBorder",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "no-border",
+          "reflectToAttr": true,
+          "docs": "to get rid of the border-bottom of Banner alerts.",
           "docsTags": [],
           "default": "false",
           "values": [
