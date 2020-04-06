@@ -51,6 +51,12 @@
         display: flex;
         justify-content: center;
       }
+
+      .chi-btn {
+        + .chi-btn {
+          margin-left: 0.5rem;
+        }
+      }
     }
 
     &.-align--center {
