@@ -1,9 +1,10 @@
-h2 Additional usage details for chi-date-picker
+h2 chi-date-picker
 :stencilDoc(name='chi-date-picker')
-h2 Additional usage details for chi-date
+.chi-divider.-my--5
+h2 chi-date
 :stencilDoc(name='chi-date')
 
-.chi-divider
+.chi-divider.-my--5
 
 h2 JavaScript
 p.-text This component accepts options to configure its behavior.
@@ -73,26 +74,20 @@ section.chi-table.chi-table__options.-bordered.-my--3
             div
               | Format of the date used in the input.
 
-h3 Value and min options programmatically
+h3.-text--h4 Value and min options programmatically
 .example.-mb--3
   .-p--3
     .chi-form__item
       label(class="chi-label", for="datepicker-4") Date
       .chi-input__wrapper.-icon--right(style="width:14rem;")
         input#datepicker-4.chi-input(type="text", placeholder="MM/DD/YYYY", value="")
-        .chi-icon.-text--muted
-          svg
-            use(xlink:href='#icon-date')
+        i.chi-icon.icon-date.-text--muted
   :code(lang="html",style="height:20rem")
     <div class="chi-form__item">
       <label class="chi-label" for="datepicker-4">Date</label>
       <div class="chi-input__wrapper -icon--right">
         <input id="datepicker-4" type="text" class="chi-input" placeholder="MM/DD/YYYY" value="">
-        <div class="chi-icon -text--muted">
-          <svg>
-            <use xlink:href="#icon-date"></use>
-          </svg>
-        </div>
+        <i class="chi-icon icon-date -text--muted"></i>
       </div>
     </div>
 

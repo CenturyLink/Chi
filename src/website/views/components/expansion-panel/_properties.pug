@@ -1,9 +1,9 @@
-h2 JavaScript options
-h2 Actions
+h2 JavaScript
+h3 Actions
 p.-text
   | You can bind actions to activators inside the expansion panel with the <code>data-chi-epanel-action</code> attribute.
 
-table.chi-table.chi-table__options.-hover
+table.chi-table.chi-table__options.-bordered
   thead
     tr
       th Action
@@ -49,8 +49,6 @@ table.chi-table.chi-table__options.-hover
       td Sets the previous panel in <code>active</code> status.
 
 p.-text
-  span.chi-badge.-dark.-sm.-mr--1
-    span Tip
   | You can freely add, remove or change the <code>data-chi-epanel-action</code> attribute on the fly, as is the main
   | element with the <code>chi-epanel</code> class, the one which listens for the events.
 
@@ -67,8 +65,6 @@ p.-text
   });
 
 p.-text
-  span.chi-badge.-dark.-sm.-mr--1
-    span Tip
   | It is safe to call the <code>expansionPanel</code> method more than once, as it will return any previously created
   | expansion panel component associated to the element.
 :code(lang="javascript")

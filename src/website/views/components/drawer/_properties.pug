@@ -1,9 +1,9 @@
-h2 Web component
+h2 Web Component
 :stencilDoc(name='chi-drawer')
 
-.chi-divider
+.chi-divider.-my--5
 
-h2 JavaScript options
+h2 JavaScript
 p.-text This component accepts options to configure its behavior.
 
 section.chi-table.chi-table__options.-bordered.-my--3
@@ -41,18 +41,48 @@ section.chi-table.chi-table__options.-bordered.-my--3
               | It accepts Element object and xpath selector string.
 
 h3.mt--2 Methods
-  h4 hide() =&gt; void
-  p.-text Hides the drawer
-  h5 Returns
-  p.-text Type: void
-  h4 show() =&gt; void
-  p.-text Shows the drawer
-  h5 Returns
-  p.-text Type: void
-  h4 toggle() =&gt; void
-  p.-text Toggles active state (show/hide)
-  h5 Returns
-  p.-text Type: void
+section.chi-table.chi-table__methods.-bordered.-my--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Method
+          th
+            div Description
+          th
+            div Returns
+      tbody
+        tr
+          td
+            div
+              code= 'hide() => void'
+          td
+            div
+              | Hides the drawer
+          td
+            div
+              | Type: void
+        tr
+          td
+            div
+              code= 'show() => void'
+          td
+            div
+              | Shows the drawer
+          td
+            div
+              | Type: void
+        tr
+          td
+            div
+              code= 'toggle() => void'
+          td
+            div
+              | Toggles active state (show/hide)
+          td
+            div
+              | Type: void
 
 h3 Preventing memory leaks
 p.-text
@@ -65,8 +95,6 @@ p.-text
   drawer.dispose();
 
 p.-text
-  span.chi-badge.-dark.-sm.-mr--1
-    span Tip
   | It is safe to call the <code>drawer</code> method more than once, as it will return any previously created drawer component
   | associated to the trigger.
 :code(lang="javascript")

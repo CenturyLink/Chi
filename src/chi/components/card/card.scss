@@ -167,7 +167,7 @@
 
   &.-empty {
     background-color: transparent;
-    border: dashed rgba(set-color(black), 0.12);
+    border: 0.125rem dashed rgba(set-color(black), 0.12);
 
     & .chi-card__content {
       align-items: center;
