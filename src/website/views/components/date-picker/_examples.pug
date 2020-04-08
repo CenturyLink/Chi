@@ -1,8 +1,3 @@
-.chi-alert.-info.-my--3
-  i.chi-alert__icon.chi-icon.icon-circle-info
-  .chi-alert__content
-    p.chi-alert__text This component requires Javascript
-
 h2 Examples
 
 - var day = 1;
@@ -273,11 +268,7 @@ p.-text
         <label class="chi-label" for="datepicker-1">Date</label>
         <div class="chi-input__wrapper -icon--right">
           <input id="datepicker-1" type="text" class="chi-input" placeholder="MM/DD/YYYY">
-          <div class="chi-icon -text--muted">
-            <svg>
-              <use xlink:href="#icon-date"></use>
-            </svg>
-          </div>
+          <i class="chi-icon icon-date -text--muted"></i>
         </div>
       </div>
 
@@ -298,7 +289,7 @@ h4 Disabled
         a(href=`#html-disabled`) HTML
   #webcomponent-disabled.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-label for='date-2'>Date</chi-label>
+      <chi-label for="date-2">Date</chi-label>
       <chi-date-picker id="date-2" disabled></chi-date-picker>
   #html-disabled.chi-tabs-panel
     :code(lang="html")
@@ -306,11 +297,7 @@ h4 Disabled
         <label class="chi-label" for="datepicker-2">Date</label>
         <div class="chi-input__wrapper -disabled -icon--right">
           <input id="datepicker-2" type="text" class="chi-input" placeholder="MM/DD/YYYY" disabled>
-          <div class="chi-icon -text--muted">
-            <svg>
-              <use xlink:href="#icon-date"></use>
-            </svg>
-          </div>
+          <i class="chi-icon icon-date -text--muted"></i>
         </div>
       </div>
 
@@ -328,7 +315,7 @@ h3 Value, min and max options
         a(href=`#html-min-max-value`) HTML + JS
   #webcomponent-min-max-value.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-label for='date-3'>Date</chi-label>
+      <chi-label for="date-3">Date</chi-label>
       <chi-date-picker id="date-3" value="01/24/2019" min="01/14/2019" max="02/07/2019">
   #html-min-max-value.chi-tabs-panel
     :code(lang="html")
@@ -336,11 +323,7 @@ h3 Value, min and max options
         <label class="chi-label" for="datepicker-3">Date</label>
         <div class="chi-input__wrapper -icon--right">
           <input id="datepicker-3" type="text" class="chi-input" value="01/24/2019" min="01/14/2019" max="02/07/2019" placeholder="MM/DD/YYYY">
-          <div class="chi-icon -text--muted">
-            <svg>
-              <use xlink:href="#icon-date"></use>
-            </svg>
-          </div>
+          <i class="chi-icon icon-date -text--muted"></i>
         </div>
       </div>
 

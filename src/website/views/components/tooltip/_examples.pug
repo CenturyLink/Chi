@@ -1,9 +1,5 @@
-.chi-alert.-info.-my--3
-  i.chi-alert__icon.chi-icon.icon-circle-info
-  .chi-alert__content
-    p.chi-alert__text This component requires Javascript
-    
-h2 Base
+h2 Examples
+h3 Base
 p.-text
   | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then,
   | you can initialize it with the chi.tooltip factory method.
@@ -14,7 +10,7 @@ p.-text
     <button id="tooltip-1" class="chi-btn" data-tooltip="Your tooltip text on a button">Tooltip</button>
     <script>chi.tooltip(document.getElementById('tooltip-1'));</script>
 
-h2 Positioning
+h3 Positioning
 p.-text
   | By default, tooltip's position on top of an element. To alter position, use
   | the <code>data-position</code> attribute. Valid values are <code>top</code>,
@@ -33,7 +29,7 @@ p.-text
     <button class="chi-btn" data-tooltip="Yourleft tooltip text" data-position="left">Left Tooltip</button>
     <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
-h2 Long Tooltips
+h3 Long Tooltips
 p.-text
   | Long Tooltips will be truncated on the third line.
 .example.-mb--3

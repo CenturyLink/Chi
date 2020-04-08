@@ -1,6 +1,6 @@
-h2 Properties
-
-h3 Preventing memory leaks
+h2 JavaScript
+h3 Properties
+h4 Preventing memory leaks
 p.-text
   | Dropdown components have a dispose function to free all resources attached to the element, such as event listeners
   | and object data. You must call this method when you want to remove the component.
@@ -11,8 +11,6 @@ p.-text
   dropdown.dispose();
 
 p.-text
-  span.chi-badge.-dark.-sm.-mr--1
-    span Tip
   | It is safe to call the <code>dropdown</code> method more than once, as it will return any previously created dropdown component
   | associated to the trigger.
 :code(lang="javascript")

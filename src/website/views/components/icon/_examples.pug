@@ -1,15 +1,10 @@
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-h2 Using Icons
-p.-text Icons can be added via Web component, SVG or Web Font. Choose the method that best suits your projects needs.
-
-h3 SVG & JS Method
-p.-text SVG based implementations provide better semantics, accessibility, rendering, and reliability. Place the following script in your projects footer to use this method.
-.-mb--2
-  :code(lang='html')
-    <script src="https://assets.ctl.io/chi/2.0.0/chi-icons.js"></script>
-p.-text Then to render an SVG icon, apply the class <code>chi-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
+h2 Examples
+p.-text
+  | Icons can be added via Web Component or Web Font. Web Font icons require no additional script or stylesheet.
+  | Choose the method that best suits your projects needs.
 .example.-mb--3
   .-p--3
     chi-icon(icon="atom")
@@ -17,30 +12,21 @@ p.-text Then to render an SVG icon, apply the class <code>chi-icon</code> to an 
     li.-active
       a(href='#webcomponent-default') Web component
     li
-      a(href='#svg-default') SVG
-    li
       a(href='#webfont-default') Web font
   #webcomponent-default.chi-tabs-panel.-active
     :code(lang="html")
       <chi-icon icon="atom"></chi-icon>
-  #svg-default.chi-tabs-panel
-    .chi-tab__description
-      | To render an SVG icon, apply the class <code>chi-icon</code> to an element. Next, add an <code>&lt;svg&gt;</code> tag and specify the id of the icon you wish to use in the <code>&lt;svg&gt;</code>'s href:
-    :code(lang="html")
-      <div class="chi-icon">
-        <svg aria-hidden="true">
-          <use xlink:href='#icon-atom'/>
-        </svg>
-      </div>
   #webfont-default.chi-tabs-panel
-    .chi-tab__description
-      | Web Font based implementations offer the widest browser support,
-      | fastest rendering speed, and require no additional script or stylesheet.
     :code(lang="html")
       <i class="chi-icon icon-atom"></i>
 
-h2 Sizes
-p.-text By default, icons render at 16x16px (<code>sm</code>).
+h3 Sizes
+p.-text
+  | Icons support the following sizes:
+  | <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
+  | By default, icons render at 16x16px (<code>sm</code>). Two alternate small values are available for
+  | specific app scenarios. Use <code>sm--2</code> for displaying 20px icons within a 40px container
+  | (e.g. large button), and <code>sm--3</code> for displaying 24px icons within a 48px container.
 .example.-mb--3
   .-p--3
     .chi-grid.-align-items--end
@@ -53,16 +39,8 @@ p.-text By default, icons render at 16x16px (<code>sm</code>).
       li.-active
         a(href='#webcomponent-sizes') Web component
       li
-        a(href='#svg-sizes') SVG
-      li
-        a(href='#webfont-sizes') Web Font
+        a(href='#webfont-sizes') Web font
   #webcomponent-sizes.chi-tabs-panel.-active
-    .chi-tab__description
-      | Use the size attribute to render icons larger or smaller:
-      | <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
-      | Two alternate small values are available for specific app scenarios. Use <code>sm--2</code>
-      |  for displaying 20px icons within a 40px container (e.g. large button), and <code>sm--3</code> for displaying
-      | 24px icons within a 48px container.
     :code(lang="html")
       <!-- -xs : 12x12px -->
       <chi-icon icon="atom" size="xs"></chi-icon>
@@ -80,37 +58,7 @@ p.-text By default, icons render at 16x16px (<code>sm</code>).
       <chi-icon icon="atom" size="xl"></chi-icon>
       <!-- -xxl : 128x128px -->
       <chi-icon icon="atom" size="xxl"></chi-icon>
-  #svg-sizes.chi-tabs-panel
-    .chi-tab__description
-      | Apply size classes to render icons larger or smaller:
-      | <code>-xs</code>, <code>-sm</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
-      | Two alternate small classes are available for specific app scenarios. Use <code>-sm--2</code>
-      |  for displaying 20px icons within a 40px container (e.g. large button), and <code>-sm--3</code> for displaying
-      | 24px icons within a 48px container.
-    :code(lang="html")
-      <!-- -xs : 12x12px -->
-      <div class="chi-icon -xs"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <!-- -sm : 16x16px -->
-      <div class="chi-icon -sm"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <!-- -sm--2 : 20x20px -->
-      <div class="chi-icon -sm--2"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <!-- -sm--3 : 24x24px -->
-      <div class="chi-icon -sm--3"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <!-- -md : 32x32px -->
-      <div class="chi-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <!-- -lg : 64x64px -->
-      <div class="chi-icon -lg"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <!-- -xl : 96x96px -->
-      <div class="chi-icon -xl"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <!-- -xxl : 128x128px -->
-      <div class="chi-icon -xxl"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
   #webfont-sizes.chi-tabs-panel
-    .chi-tab__description
-      | Apply size classes to render icons larger or smaller:
-      | <code>-xs</code>, <code>-sm</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
-      | Two alternate small classes are available for specific app scenarios. Use <code>-sm--2</code>
-      |  for displaying 20px icons within a 40px container (e.g. large button), and <code>-sm--3</code> for displaying
-      | 24px icons within a 48px container.
     :code(lang="html")
       <!-- -xs : 12x12px -->
       <i class="chi-icon icon-atom -xs"></i>
@@ -129,7 +77,7 @@ p.-text By default, icons render at 16x16px (<code>sm</code>).
       <!-- -xxl : 128x128px -->
       <i class="chi-icon icon-atom -xxl"></i>
 
-h2 Colors
+h3 Colors
 p.-text By default, icons are the same color as text. Use Chi text color utilities to set a specific color.
 .example.-mb--3
   .-d--flex.-w--12.-justify-content--center.-flex--wrap.-p--1
@@ -151,9 +99,7 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
     li.-active
       a(href='#webcomponent-colors') Web components
     li
-      a(href='#svg-colors') SVG
-    li
-      a(href='#webfont-color') Web Font
+      a(href='#webfont-color') Web font
   #webcomponent-colors.chi-tabs-panel.-active
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -167,19 +113,6 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
       <!-- For dark backgrounds -->
       <chi-icon icon="atom" size="md" color="secondary"></chi-icon>
       <chi-icon icon="atom" size="md" color="light"></chi-icon>
-  #svg-colors.chi-tabs-panel
-    :code(lang="html")
-      <!-- For light backgrounds -->
-      <div class="chi-icon -md"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="chi-icon -md -text--primary"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="chi-icon -md -text--success"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="chi-icon -md -text--warning"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="chi-icon -md -text--danger"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="chi-icon -md -text--grey"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="chi-icon -md -text--muted"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <!-- For dark backgrounds -->
-      <div class="chi-icon -md -text--secondary"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
-      <div class="chi-icon -md -text--light"><svg aria-hidden="true"><use xlink:href='#icon-atom'/></svg></div>
   #webfont-color.chi-tabs-panel
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -194,7 +127,7 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
       <i class="chi-icon icon-atom -md -text--secondary"></i>
       <i class="chi-icon icon-atom -md -text--light"></i>
 
-h2 UI Icons
+h3 Icons
 .chi-grid.icon-library.-pt--2.-pb--6
   each name in ['activity', 'address-book', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'arrow-sync', 'arrow-to-bottom', 'arrow-vertical', 'arrows', 'asterisk', 'atom', 'ban', 'bank', 'bell-off', 'bell', 'box-application', 'box-cloudformation', 'box-container', 'box-deployment', 'box-fill', 'box-outline', 'box-script', 'box', 'cart-alt', 'cart-outline', 'cart', 'chart-bar', 'chart-line', 'chart-pie', 'chat', 'check-alt', 'check', 'checkbox-checked', 'checkbox', 'chevron-down', 'chevron-left', 'chevron-right', 'chevron-up', 'circle-alert-outline', 'circle-alert', 'circle-arrow-down-outline', 'circle-arrow-down', 'circle-arrow-up-outline', 'circle-arrow-up', 'circle-check-outline', 'circle-check', 'circle-clock-outline', 'circle-clock', 'circle-code-outline', 'circle-code', 'circle-gear-outline', 'circle-gear', 'circle-info-outline', 'circle-info', 'circle-minus-outline', 'circle-minus', 'circle-outline', 'circle-play-outline', 'circle-play', 'circle-plus-outline', 'circle-plus', 'circle-question-outline', 'circle-question', 'circle-reload-outline', 'circle-reload', 'circle-stop-outline', 'circle-stop', 'circle-user', 'circle-warning', 'circle-x-outline', 'circle-x', 'circle', 'cloud', 'comment-dots-outline', 'comment-dots', 'comment-outline', 'comment', 'comments-dots-outline', 'comments-dots', 'comments-outline', 'comments', 'cost', 'database-outline', 'database', 'date', 'delete', 'edit', 'edit-cancel', 'external-link', 'file-error-outline', 'file-invoice', 'file-outline', 'file', 'filter', 'flag', 'folder-gear', 'folder-open', 'folder', 'globe-network', 'globe-outline', 'grid', 'heart', 'home-outline', 'home', 'inbox', 'key', 'life-ring', 'link', 'list', 'lock-outline', 'lock', 'logo-amazon', 'logo-aws', 'logo-azure', 'logo-centurylink', 'logo-cloudstack', 'logo-dimensiondata', 'logo-facebook', 'logo-github', 'logo-google', 'logo-hp', 'logo-linkedin', 'logo-linux', 'logo-openstack', 'logo-rackspace', 'logo-slack', 'logo-twitter', 'logo-vcloud', 'logo-vsphere', 'logo-youtube', 'logout', 'mail-outline', 'mail', 'map-marker-alt', 'map-marker', 'map-marker-outline', 'menu', 'microphone-mute', 'microphone', 'minus-alt', 'minus', 'more-vert', 'more', 'nodes', 'number', 'paste', 'pause', 'phone', 'play', 'plus-alt', 'plus', 'radio-checked', 'radio', 'refresh', 'rocket', 'search', 'settings', 'share', 'shield', 'square-minus-outline', 'square-minus', 'square-plus-outline', 'square-plus', 'star-outline', 'star', 'stop', 'sync', 'tag-outline', 'tag', 'text', 'triangle-down', 'triangle-left', 'triangle-right', 'triangle-up', 'user', 'users', 'verified', 'video-camera-mute', 'video-camera', 'visible-off', 'visible', 'warning', 'wifi-outline', 'wifi', 'wrench', 'x-alt', 'x']
     .chi-col.-w--6.-w-xl--2.-w-lg--3.-w-md--6.-mb--2

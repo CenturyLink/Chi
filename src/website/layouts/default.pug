@@ -28,16 +28,26 @@ html(lang="en")
     body.chi.show-grid
       #docs-container.docs-container
         include partials/header
+        if nondoc
+            section.docs-body.-non-doc
+                aside.docs-body__aside
+                    include partials/aside
 
-        section.docs-body
-            aside.docs-body__aside
-                include partials/aside
+                .docs-body__content
+                    section.docs-body__heading
+                        include partials/heading
+                    .chi-grid__container.-pt--3
+                        != contents
+        else
+            section.docs-body
+                aside.docs-body__aside
+                    include partials/aside
 
-            .docs-body__content
-                section.docs-body__heading
-                    include partials/heading
-                .chi-grid__container.-py--3
-                    != contents
+                .docs-body__content
+                    section.docs-body__heading
+                        include partials/heading
+                    .chi-grid__container.-pt--3
+                        != contents
       script(type="text/javascript", src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js")
       script(type="text/javascript", src=`${rootPath}assets/scripts/algoliaSearch.js`)
       script(src=`${rootPath}assets/scripts/chi-docs.js`)

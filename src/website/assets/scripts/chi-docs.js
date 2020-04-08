@@ -127,7 +127,8 @@ onLoad(() => {
     };
   });
 
-  var anchors = document.querySelectorAll('h2,h3,h4');
+  var anchors = [...document.querySelectorAll('h2,h3,h4')]
+  .filter( (elem) => elem.matches('.docs-body:not(.-non-doc) .chi-grid__container *') );
 
  // Polyfill element.closest IE9+
   if (!Element.prototype.matches) {
@@ -182,7 +183,11 @@ onLoad(() => {
   var tabContentId;
 
   if (urlHash) {
-    document.querySelector('#viewtabs li.-active').classList.remove('-active');
+    const activeTab = document.querySelector('#viewtabs li.-active');
+
+    if (activeTab) {
+      activeTab.classList.remove('-active')
+    }
 
     Array.prototype.forEach.call(document.querySelectorAll('.chi-tabs-panel'), function(tabContent) {
       tabContent.classList.remove('-active');

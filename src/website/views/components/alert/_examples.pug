@@ -53,7 +53,6 @@ h3 Default
       </chi-alert>
   .chi-tabs-panel#html
     .chi-tab__description
-      | To render an alert, use the class <code>chi-alert</code>.
       | To render an alert, use the class <code>chi-alert</code>. Apply a semantic color class that corresponds to the meaning
       | or value state of your alert. Supported classes include <code>-success</code>, <code>-danger</code>, <code>-warning</code>,
       | <code>-info</code>, and <code>-muted</code>. If no class is defined, alerts will default to the base style which uses the body
@@ -138,7 +137,6 @@ p.-text
 h3 Titled
 p.-text
   | The title will automatically get colored based on the alerts semantic color class.
-  | To override the title color, apply a text color utility class.
 .example.-mb--3
   .-p--1
     chi-alert(icon='circle-info', title="Base").-m--2
@@ -183,6 +181,7 @@ p.-text
   .chi-tabs-panel#html-titled
     .chi-tab__description
       | Use <code>chi-alert__title</code> to add a title to an Alert.
+      | To override the title color, apply a text color utility class.
     :code(lang="html")
       <!-- Base - No semantic color class defined -->
       <div class="chi-alert" role="alert">
@@ -484,7 +483,7 @@ h3 Default
   .chi-tabs-panel.-active#webcomponent-banner-default
     .chi-tab__description
       | Banner alerts include a bottom border by default. If the border contrast conflicts with surrounding elements, it can be removed by
-      | applying the class <code>-no-border</code> to <code>chi-alert</code>.
+      | applying the attribute <code>no-border</code>.
     :code(lang="html")
       <!-- Base - No semantic color defined -->
       <chi-alert type="banner" icon="circle-info">
@@ -513,7 +512,7 @@ h3 Default
   .chi-tabs-panel#html-banner-default
     .chi-tab__description
       | Banner alerts include a bottom border by default. If the border contrast conflicts with surrounding elements, it can be removed by
-      | applying the attribute <code>no-border</code>.
+      | applying the class <code>-no-border</code> to <code>chi-alert</code>.
     :code(lang="html")
       <!-- Base - No semantic color class defined -->
       <div class="chi-alert -banner" role="alert">
