@@ -1,13 +1,7 @@
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-.chi-alert.-info.-my--3
-  i.chi-alert__icon.chi-icon.icon-circle-info
-  .chi-alert__content
-    p.chi-alert__text This component requires Javascript
-
 h2 Examples
-
 h3 Base
 p.-text
   | Popover components are absolutely positioned. For this example we have forced a relative position.
@@ -24,10 +18,7 @@ p.-text
         a(href=`#html`) HTML
   .chi-tabs-panel.-active#webcomponent
     .chi-tab__description
-      span.chi-badge.-dark.-sm.-mr--1
-        span Tip
       | Remove the <code>active</code> attribute to hide the popover.
-      br
       | Use <code>variant="text"</code> attribute to display text content in a <code>&lt;p&gt;</code>
     :code(lang="html")
       <chi-popover title="Popover title" variant="text" active>
@@ -35,8 +26,6 @@ p.-text
       </chi-popover>
   .chi-tabs-panel#html
     .chi-tab__description
-      span.chi-badge.-dark.-sm.-mr--1
-        span Tip
       | Remove the <code>-active</code> class to hide the popover.
     :code(lang="html")
       <section class="chi-popover -active" aria-label="Popover Title" aria-modal="true" role="dialog">
@@ -50,7 +39,7 @@ p.-text
 
 h3 Arrow
 p.-text
-  | Popovers support arrows to show the origin where they come from. Arrows can be located anywhere around the Popover.
+  | Popovers support arrows to indicate the element they originate from. Arrows can be located anywhere around the Popover.
 ul#chi-tabs--positioning.chi-tabs
   li.-active
     a(href='#chi-tabs--positioning-top') Top
@@ -84,12 +73,9 @@ ul#chi-tabs--positioning.chi-tabs
       .chi-tab__description
         | Use the classes <code>chi-popover--top</code>, <code>chi-popover--right</code>, <code>chi-popover--bottom</code> and
         | <code>chi-popover--left</code> to position the arrow in the proper place.
-        br
-        span.chi-badge.-dark.-sm.-mr--1
-          span Tip
-        | If you use a position engine as Popper.js (as our <a href="../../javascript/popover/">JavaScript solution</a>),
-        | the attribute <code>x-placement</code> should be used instead of these classes. It accepts all the values Popper.js
-        | does. Popper.js sets this attribute automatically, so there is no need to include it on the code.
+        | If you use a position engine such as Popper.js (used by Chi), the attribute <code>x-placement</code> should be used instead of
+        | these classes. It accepts all the values Popper.js does. Popper.js sets this attribute automatically, so there is
+        | no need to include it on the code.
       :code(lang="html")
         <section class="chi-popover chi-popover--top -active" aria-label="Popover Title" aria-modal="true" role="dialog">
           <header class="chi-popover__header">
@@ -241,11 +227,7 @@ p.-text
   .chi-tabs-panel.-active#webcomponent-reference
     .chi-tab__description
       | Use the <code>reference</code> attribute with a
-      | CSS selector to the reference element.
-      br
-      span.chi-badge.-dark.-sm.-mr--1
-        span Tip 1
-      | This feature makes use of the Popper.js position engine.
+      | CSS selector to properly reference an element.
     :code(lang="html")
       <button class="chi-btn" id="example-3-button">Click me!</button>
 
@@ -467,11 +449,9 @@ ul#chi-tabsb--positioning.chi-tabs
 
 h2 Interaction
 p.-text
-  span.chi-badge.-dark.-sm.-mr--1
-    span Tip
   | Read this handy introduction to
   |
-  a(href=`../overview/#regarding-html-attributes-and-dom-properties`) HTML attributes and DOM properties
+  a(href=`../../getting-started/installation/#html-attributes-and-dom-properties`) HTML attributes and DOM properties
   | .
 
 .example.-mb--3

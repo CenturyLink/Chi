@@ -1,15 +1,9 @@
 script(type='module' src='../../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-.chi-alert.-info.-my--3
-  i.chi-alert__icon.chi-icon.icon-circle-info
-  .chi-alert__content
-    p.chi-alert__text This component requires Javascript
-
 h2 Examples
-
 h3 Base
-
+p.-text An initial value is optional. If an initial value is not provided, <code>0</code> will be taken as default.
 .example.-mb--3
   .-p--3
     .chi-form__item
@@ -21,15 +15,9 @@ h3 Base
       li
         a(href=`#html`) HTML + JS
   .chi-tabs-panel.-active#webcomponent
-    .chi-tab__description
-      | To render a number input, just place a <code>chi-number-input</code> tag and set an initial value (optional). If
-      | an initial value is not provided, <code>0</code> will be taken as default.
     :code(lang="html")
       <chi-number-input></chi-number-input>
   .chi-tabs-panel#html
-    .chi-tab__description
-      | To render a number input, apply the classes <code>chi-input</code> to an <code>input type="number"</code>.
-      | For proper styling, number inputs must be wrapped in an <code>chi-number-input</code> div with two buttons.
     :code(lang="html")
       <div class="chi-form__item -row">
         <div class="chi-number-input">
@@ -66,6 +54,9 @@ h3 Disabled
       </div>
 
 h3 Sizes
+p.-text
+  | Number inputs support the following sizes: <code>sm</code>, <code>md</code>,
+  |  <code>lg</code>, <code>xl</code>. The default size is <code>md</code>.
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
@@ -78,20 +69,12 @@ h3 Sizes
       li
         a(href=`#html-sizes`) HTML
   .chi-tabs-panel.-active#webcomponent-sizes
-    .chi-tab__description
-      | Number inputs support a full spectrum of sizes: <code>sm</code>, <code>md</code>,
-      |  <code>lg</code>, <code>xl</code>.
-      | The default size is <code>md</code>.
     :code(lang="html")
       <chi-number-input size="sm"></chi-number-input>
       <chi-number-input></chi-number-input>
       <chi-number-input size="lg"></chi-number-input>
       <chi-number-input size="xl"></chi-number-input>
   .chi-tabs-panel#html-sizes
-    .chi-tab__description
-      | Number inputs support a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
-      |  <code>-lg</code>, <code>-xl</code>.
-      | The default size is <code>-md</code>.
     :code(lang="html")
       <div class="chi-form__item -row">
         <div class="chi-number-input -sm">
@@ -123,9 +106,6 @@ h3 Sizes
       </div>
 
 h2 Expanded version
-p.-text
-  | There is available an expanded version of the number input component.
-
 h3 Base
 .example.-mb--3
   .-p--3
@@ -189,6 +169,9 @@ h3 Disabled
       </div>
 
 h3 Sizes
+p.-text
+  | Expanded number inputs support the following sizes: <code>sm</code>, <code>md</code>,
+  |  <code>lg</code>, <code>xl</code>. The default size is <code>md</code>.
 .example.-mb--3
   .-p--3.-d--flex.-justify-content--start.-align-items--center
     each size in ['sm', 'md', 'lg', 'xl']
@@ -200,20 +183,12 @@ h3 Sizes
       li
         a(href=`#html-expanded-sizes`) HTML
   .chi-tabs-panel.-active#webcomponent-expanded-sizes
-    .chi-tab__description
-      | Expanded number inputs support a full spectrum of sizes: <code>sm</code>, <code>md</code>,
-      |  <code>lg</code>, <code>xl</code>.
-      | The default size is <code>md</code>.
     :code(lang="html")
       <chi-number-input expanded size="sm"></chi-number-input>
       <chi-number-input expanded></chi-number-input>
       <chi-number-input expanded size="lg"></chi-number-input>
       <chi-number-input expanded size="xl"></chi-number-input>
   .chi-tabs-panel#html-expanded-sizes
-    .chi-tab__description
-      | Expanded number inputs support a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
-      |  <code>-lg</code>, <code>-xl</code>.
-      | The default size is <code>-md</code>.
     :code(lang="html")
       <div class="chi-form__item -row">
         <div class="chi-number-input -expanded -sm">
