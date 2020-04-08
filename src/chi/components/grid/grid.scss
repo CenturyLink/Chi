@@ -134,7 +134,7 @@
     }
 
     @each $size in xs sm md lg xl {
-      @include respond-to-only($size) {
+      @include respond-to($size) {
         @for $i from 1 through 12 {
           &.-n-#{$size}--#{$i} {
 
