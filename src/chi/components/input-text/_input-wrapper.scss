@@ -53,7 +53,8 @@ $sizes: (
     &[type='week'] {
       &.chi-input {
 
-        & ~ .chi-icon {
+        & ~ .chi-icon,
+        & ~ chi-icon {
           height: 1rem;
           position: absolute;
           top: 0.5rem;
@@ -68,7 +69,8 @@ $sizes: (
 
         @each $type in map-keys($sizes) {
           &.-#{$type} {
-            & ~ .chi-icon {
+            & ~ .chi-icon,
+            & ~ chi-icon {
               height: map-get(map-get($sizes, $type), height);
               top: map-get(map-get($sizes, $type), top);
               width: map-get(map-get($sizes, $type), width);
@@ -113,14 +115,16 @@ $sizes: (
           &.-xl {
             padding-left: 2.4375rem;
 
-            & ~ .chi-icon {
+            & ~ .chi-icon,
+            & ~ chi-icon {
               &:first-of-type {
                 left: 0.75rem;
               }
             }
           }
 
-          & ~ .chi-icon {
+          & ~ .chi-icon,
+          & ~ chi-icon {
             &:first-of-type {
               left: 0.5rem;
             }
@@ -159,14 +163,16 @@ $sizes: (
           &.-xl {
             padding-right: 2.4375rem;
 
-            & ~ .chi-icon {
+            & ~ .chi-icon,
+            & ~ chi-icon {
               &:last-of-type {
                 right: 0.75rem;
               }
             }
           }
 
-          & ~ .chi-icon {
+          & ~ .chi-icon,
+          & ~ chi-icon {
             &:last-of-type {
               right: 0.5rem;
             }
