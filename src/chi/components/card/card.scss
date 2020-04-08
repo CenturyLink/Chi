@@ -15,6 +15,8 @@
   }
 
   &__content {
+    display: flex;
+    flex-direction: column;
     font-size: $text;
     line-height: $line-height-small;
     padding: 1rem;
@@ -27,7 +29,40 @@
     }
 
     .chi-card__icon {
-      color: $grey-color;
+      + .chi-card__caption,
+      + .chi-card__title {
+        margin-top: 0.5rem;
+      }
+    }
+
+    .chi-card__caption {
+      display: flex;
+      flex-direction: column;
+      font-size: $text;
+      line-height: $line-height-small;
+      margin: 0;
+      padding: 0;
+    }
+
+    .chi-card__actions {
+      margin-top: 1rem;
+
+      &.-align--center {
+        display: flex;
+        justify-content: center;
+      }
+
+      .chi-btn {
+        + .chi-btn {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
+    &.-align--center {
+      align-items: center;
+      display: flex;
+      justify-content: center;
     }
   }
 
@@ -78,6 +113,12 @@
     min-height: 2rem;
     padding: 1rem;
     position: relative;
+
+    .chi-btn {
+      + .chi-btn {
+        margin-left: 0.5rem;
+      }
+    }
 
     &.-align--left {
       justify-content: flex-start;
@@ -138,6 +179,54 @@
         color: $muted-color;
         margin: 0.5rem 0;
       }
+    }
+  }
+
+  &.-no-border {
+    border-color: transparent;
+  }
+
+  &.-align--center {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .chi-card__caption {
+      text-align: center;
+    }
+
+    .chi-card__content {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .chi-card__footer,
+    .chi-card__header,
+    .chi-card__tabs {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+
+  &.-hover--animate {
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    &:hover {
+      box-shadow: map-get($shadow, 2) !important;
+      transform: translateY(-0.125rem);
+    }
+
+    &.-active {
+      box-shadow: map-get($shadow, 2), 0 0 0 0.0625rem $primary-color !important;
+    }
+
+    &.-active--alt {
+      box-shadow: map-get($shadow, 2), 0 0 0 0.0625rem $secondary-color !important;
     }
   }
 

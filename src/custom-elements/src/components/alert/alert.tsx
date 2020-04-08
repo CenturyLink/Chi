@@ -38,7 +38,7 @@ export class Alert {
   /**
    *  to get rid of the border-bottom of Banner alerts.
    */
-  @Prop({ reflect: true }) borderless = false;
+  @Prop({ reflect: true }) noBorder = false;
 
   /**
    *  to center the alert content.
@@ -143,7 +143,7 @@ export class Alert {
         ${this.center ? '-center' : ''}
         ${this.closable ? '-close' : ''}
         ${this.size ? `-${this.size}` : ''}
-        ${this.type === 'banner' && this.borderless ? `-no-border` : ''}`}
+        ${this.type === 'banner' && this.noBorder ? `-no-border` : ''}`}
         role="alert"
       >
         {this.icon && chiIcon}

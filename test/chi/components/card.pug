@@ -6,37 +6,48 @@ title: Card
   h3 Base
   .chi-card(style="width: 20rem")
     .chi-card__content
-      p.-text.-m--0 This is a card
+      .chi-card__caption This is a card
 .test-card-titled
   h3 Titled
   .chi-card(style="width: 20rem")
     .chi-card__content
       .chi-card__title Title
-      p.-text.-m--0 This is a card
+      .chi-card__caption This is a card
 .test-card-content
   h3 Titled with content
   .chi-card(style="width: 20rem")
     .chi-card__content
       .chi-card__title Title
-      p.-text.-mt--0
+      .chi-card__caption
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec.
-      button.chi-btn.-primary Link
+      .chi-card__actions
+        button.chi-btn.-primary Link
+.test-card-align-center
+  h3 Center Aligned
+  .chi-card.-align--center(style="width: 20rem")
+    .chi-card__content
+      .chi-card__title Title
+      .chi-card__caption
+        | This is a center aligned card
+      .chi-card__actions
+        button.chi-btn.-primary Link
 .test-card-content-with-icon
   h3 Titled with content and icon
-  .chi-card(style="width:10rem;")
-    .chi-card__content.-d--flex.-flex--column.-justify-content--center.-align-items--center.-text--center
+  .chi-card.-align--center(style="width:10rem;")
+    .chi-card__content
       .chi-card__title Title
-      i.chi-icon.-sm--3.-text--grey(class ='icon-atom')
-      p.-text--small.-mb--0.-mt--1 4 Running
-      p.-text--smaller.-m--0.-text--grey 6 Pending
+      i.chi-card__icon.chi-icon.-sm--3(class ='icon-atom')
+      .chi-card__caption
+        span.-text--small Meta Label
+        span.-text--smaller.-text--grey Sublabel
 .test-card-hero
   h3 Hero
   .chi-card(style="width: 20rem")
     .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8);")
       p.-text.-p--6.-text--center Hero Image
     .chi-card__content
-      p.-text.-m--0
+      .chi-card__caption
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
         | Donec sit amet consectetur elit.
@@ -44,27 +55,27 @@ title: Card
   h3 Footer
   .chi-card(style="width: 20rem")
     .chi-card__content
-      p.-text.-m--0
+      .chi-card__caption
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec.
     .chi-card__footer
       button.chi-btn.-primary Link
-      button.chi-btn.-ml--1 Link
+      button.chi-btn Link
 .test-card-footer-right
   h3 Footer Right Aligned
   .chi-card(style="width: 20rem")
     .chi-card__content
-      p.-text.-m--0
+      .chi-card__caption
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec.
     .chi-card__footer.-align--right
       button.chi-btn Link
-      button.chi-btn.-primary.-ml--1 Link
+      button.chi-btn.-primary Link
 .test-card-footer-center
   h3 Footer Center Aligned
   .chi-card(style="width: 20rem")
     .chi-card__content
-      p.-text.-m--0
+      .chi-card__caption
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec.
     .chi-card__footer.-align--center
@@ -73,7 +84,7 @@ title: Card
   h3 Footer No Border
   .chi-card(style="width: 20rem")
     .chi-card__content
-      p.-text.-m--0
+      .chi-card__caption
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec.
     .chi-card__footer.-no-border
@@ -82,7 +93,7 @@ title: Card
   h3 Footer Small
   .chi-card(style="width: 20rem")
     .chi-card__content
-      p.-text.-m--0
+      .chi-card__caption
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec.
     .chi-card__footer.-sm
@@ -93,42 +104,42 @@ title: Card
     .chi-card__header
       .chi-card__title Title
     .chi-card__content
-      p.-text.-m--0 This is a card with a header
+      .chi-card__caption This is a card with a header
 .test-card-header-right
   h3 Header Right Aligned
   .chi-card(style="width: 20rem")
     .chi-card__header.-align--right
       .chi-card__title Title
     .chi-card__content
-      p.-text.-m--0 This is a card with a header
+      .chi-card__caption This is a card with a header
 .test-card-header-center
   h3 Header Center Aligned
   .chi-card(style="width: 20rem")
     .chi-card__header.-align--center
       .chi-card__title Title
     .chi-card__content
-      p.-text.-m--0 This is a card with a header
+      .chi-card__caption This is a card with a header
 .test-card-header-no-border
   h3 Header No Border
   .chi-card(style="width: 20rem")
     .chi-card__header.-no-border
       .chi-card__title Title
     .chi-card__content
-      p.-text.-m--0 This is a card with a header
+      .chi-card__caption This is a card with a header
 .test-card-header-small
   h3 Header Small
   .chi-card(style="width: 20rem")
     .chi-card__header.-sm
       .chi-card__title Title
     .chi-card__content
-      p.-text.-m--0 This is a card with a header
+      .chi-card__caption This is a card with a header
 .test-card-header-footer
   h3 Header + Footer
   .chi-card(style="width: 20rem")
     .chi-card__header
       .chi-card__title Title
     .chi-card__content
-      p.-text.-m--0
+      .chi-card__caption
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec.
     .chi-card__footer
@@ -139,7 +150,7 @@ title: Card
     .chi-card__header.-sm
       .chi-card__title Title
     .chi-card__content
-      p.-text.-m--0
+      .chi-card__caption
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec.
     .chi-card__footer.-sm
@@ -149,29 +160,32 @@ title: Card
   .chi-card.-empty(style="width:20rem;")
     .chi-card__content
       i.chi-icon.-md.-text--muted(class ='icon-circle-plus-outline')
-      p.-text.-m--0 Add Product
+      .chi-card__caption Add Product
 .test-card-active
   h3 Active
   .chi-card.-active(style="width:20rem;")
     .chi-card__content
       .chi-card__title Title
-      p.-text.-m--0 This is an active card
+      .chi-card__caption This is an active card
 .test-card-active-alt
-  h3 Active Version
+  h3 Active Alt
   .chi-card.-active--alt(style="width:20rem;")
     .chi-card__content.-text
       | This is an active alt card
-
+.test-card-no-border
+  h3 No Border
+  .chi-card.-no-border(style="width:20rem;")
+    .chi-card__content.-text
+      | This is a card with no border
 .test-card-portal-base
   h3 Portal Base
   .chi-card.-portal(style="width:20rem;")
     .chi-card__header.-sm
       .chi-card__title Title
     .chi-card__content
-      p.-text.-m--0
+      .chi-card__caption
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec.
-
 .test-card-portal-base-tabs
   h3 Portal Base + Tabs
   .chi-card.-portal(style="width:20rem;")
@@ -184,6 +198,6 @@ title: Card
         li
           a(href='#') Tab Link
     .chi-card__content
-      p.-text.-m--0
+      .chi-card__caption
         | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
         | Ut felis magna, facilisis ut malesuada nec.
