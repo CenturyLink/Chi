@@ -17,6 +17,13 @@
             padding: 0.75rem 0 0.75rem 1.5rem;
           }
 
+          a {
+            &:focus {
+              outline: 0.125rem solid $focus-color;
+              outline-offset: -0.125rem;
+            }
+          }
+
           &.-active {
             .chi-collection__title {
               color: $primary;
@@ -37,7 +44,7 @@
         padding-top: 4.5rem;
       }
 
-      &__aside {
+      .docs-sidenav {
         background-color: set-color(white);
         border-bottom: 0.0625rem solid set-color(grey, 25);
         border-right: 0;
@@ -52,7 +59,8 @@
         width: 100%;
         @include respond-to(lg) {
           border-bottom: 0;
-          border-right: 0.0625rem solid set-color(grey, 25);
+          border-right: 0;
+          box-shadow: inset -0.0625rem 0 0 0 set-color(grey, 25);
           display: block;
           padding-bottom: 4.5rem;
           position: fixed;
@@ -73,6 +81,13 @@
               padding: 0.75rem 0 0.75rem 1.5rem;
             }
 
+            a {
+              &:focus {
+                outline: 0.125rem solid $focus-color;
+                outline-offset: -0.125rem;
+              }
+            }
+
             &.-active {
               .chi-collection__title {
                 color: $primary;
@@ -82,12 +97,12 @@
         }
       }
 
-      &__content {
+      .docs-article {
         background-color: set-color(white);
         flex-grow: 1;
         width: 100%;
 
-        .docs-body__heading {
+        .docs-titlebar {
           background-color: set-color(black);
           display: flex;
           flex-direction: column;
@@ -113,9 +128,10 @@
               }
             }
 
-            .docs-body__heading-title {
+            .docs-titlebar__title {
               color: set-color(white);
               font-size: 2rem;
+              font-weight: normal;
               margin-bottom: 0.5rem;
               @include respond-to(lg) {
                 font-size: 3rem;
@@ -123,7 +139,7 @@
               }
             }
 
-            .docs-body__heading-description {
+            .docs-titlebar__description {
               color: set-color(grey, 50);
               font-size: 0.875rem;
               @include respond-to(lg) {
@@ -132,7 +148,7 @@
               }
             }
 
-            &.-hero {
+            &.-introduction {
               padding-top: 14rem;
               text-align: center;
               @include respond-to(lg) {
@@ -140,7 +156,7 @@
                 text-align: left;
               }
 
-              .docs-body__heading-title {
+              .docs-titlebar__title {
                 color: set-color(white);
                 display: flex;
                 font-size: 2rem;
@@ -160,7 +176,7 @@
                 }
               }
 
-              .docs-body__heading-description {
+              .docs-titlebar__description {
                 color: set-color(white);
                 display: flex;
                 font-size: 0.875rem;
@@ -179,14 +195,14 @@
                 }
               }
 
-              .hero-btn__group {
+              .docs-titlebar__buttons {
                 margin: 2rem 0 2rem;
                 @include respond-to(lg) {
                   margin: 3rem 0 3rem;
                 }
               }
 
-              .hero-graphic {
+              .introduction-graphic {
                 left: calc(50% - 8rem);
                 position: absolute;
                 top: -13rem;
@@ -223,11 +239,13 @@
                   top: 5rem;
                   width: 8rem;
 
-                  svg {
-                    height: 100%;
-                    stroke: set-color(teal, 60);
-                    stroke-width: 0.25rem;
-                    width: 100%;
+                  &:before {
+                    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='128' width='128'><polygon stroke='%2303808C' stroke-width='4' points='50 15, 100 100, 0 100'/></svg>");
+                    background-repeat: no-repeat;
+                    content: "";
+                    display: block;
+                    height: 8rem;
+                    width: 8rem;
                   }
                 }
 
@@ -248,11 +266,13 @@
                   top: 16rem;
                   width: 14rem;
 
-                  svg {
-                    height: 100%;
-                    stroke: #0080bb;
-                    stroke-width: 0.125rem;
-                    width: 100%;
+                  &:before {
+                    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='224' width='224'><polygon stroke='%230080BB' stroke-width='2' points='50 15, 100 100, 0 100'/></svg>");
+                    background-repeat: no-repeat;
+                    content: "";
+                    display: block;
+                    height: 14rem;
+                    width: 14rem;
                   }
                 }
 
@@ -286,6 +306,16 @@
           .chi-tabs-panel >,
           > .chi-grid .chi-col,
           > .chi-epanel {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+              display: flex;
+              font-weight: 600;
+            }
+
             h1 {
               font-size: 2rem;
               font-weight: 800;
@@ -295,37 +325,43 @@
 
             h2 {
               font-size: 1.5rem;
-              font-weight: 600;
               line-height: 2rem;
               margin: 1rem 0;
             }
 
             h3 {
               font-size: $text-larger;
-              font-weight: 600;
               line-height: 2rem;
               margin: 0.5rem 0;
             }
 
             h4 {
               font-size: $text-large;
-              font-weight: 600;
               line-height: 1.5rem;
               margin: 0.5rem 0;
             }
 
             h5 {
               font-size: $text;
-              font-weight: 600;
               line-height: 1.5rem;
               margin: 0.5rem 0;
             }
 
             h6 {
               font-size: $text-small;
-              font-weight: 600;
               line-height: 1.25rem;
               margin: 0.5rem 0;
+            }
+          }
+
+          .-anchor,
+          .-text,
+          p {
+            a {
+              &:focus {
+                outline: 0.125rem solid $focus-color;
+                outline-offset: 0.0625rem;
+              }
             }
           }
         }
@@ -380,7 +416,7 @@
           padding-top: 7rem;
         }
 
-        &__aside {
+        .docs-sidenav {
           top: 112px;
         }
       }

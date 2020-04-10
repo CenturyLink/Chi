@@ -29,24 +29,24 @@ html(lang="en")
       #docs-container.docs-container
         include partials/header
         if nondoc
-            section.docs-body.-non-doc
-                aside.docs-body__aside
-                    include partials/aside
+            main.docs-body.-non-doc
+                nav.docs-sidenav
+                    include partials/sidenav
 
-                .docs-body__content
-                    section.docs-body__heading
-                        include partials/heading
-                    .chi-grid__container.-pt--3
+                .docs-article
+                    header.docs-titlebar
+                        include partials/titlebar
+                    section.chi-grid__container.-pt--3
                         != contents
         else
-            section.docs-body
-                aside.docs-body__aside
-                    include partials/aside
+            main.docs-body
+                nav.docs-sidenav
+                    include partials/sidenav
 
-                .docs-body__content
-                    section.docs-body__heading
-                        include partials/heading
-                    .chi-grid__container.-pt--3
+                article.docs-article
+                    header.docs-titlebar
+                        include partials/titlebar
+                    section.chi-grid__container.-pt--3
                         != contents
       script(type="text/javascript", src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js")
       script(type="text/javascript", src=`${rootPath}assets/scripts/algoliaSearch.js`)

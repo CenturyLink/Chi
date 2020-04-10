@@ -30,10 +30,10 @@ body {
   a {
     color: set-color(blue, 60);
     text-decoration: none;
-  }
 
-  a:hover {
-    text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .chi-example {

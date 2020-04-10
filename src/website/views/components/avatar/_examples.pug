@@ -28,23 +28,10 @@ p.-text
         .chi-col.-w--2.-w-sm--1
           .chi-avatar
             i(class=`chi-icon icon-${icon}`)
-  ul#chi-tabs--icons.chi-tabs.-ml--3
-    li.-active
-      a(href="#iconsWebFont") Web Font
-    li
-      a(href="#iconsSVG") SVG
-  #iconsWebFont.chi-tabs-panel.-active
-    :code(lang="html")
-      <div class="chi-avatar">
-        <i class="chi-icon icon-user"></i>
-      </div>
-  #iconsSVG.chi-tabs-panel
-    :code(lang="html")
-      <div class="chi-avatar chi-icon">
-        <svg>
-          <use xlink:href="#icon-user"></use>
-        </svg>
-      </div>
+  :code(lang="html")
+    <div class="chi-avatar">
+      <i class="chi-icon icon-user"></i>
+    </div>
 
 h3 Initial avatars
 p.-text
