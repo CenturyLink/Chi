@@ -375,10 +375,8 @@ p.-text
   .-position--relative.-z--0(style='height:20rem;overflow:hidden;')
     .-p--3
       .-d--flex.-justify-content--end.-align-items--start
-        // Migrate this to chi-button
-        button#drawer-trigger.chi-btn.-icon
-          .chi-btn__content
-            chi-icon(icon='menu',size='sm--2')
+        chi-button#drawer-trigger(type="icon")
+          chi-icon(icon='menu')
       each i in [1, 2]
         p.-text.-mb--3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
     chi-drawer#interactive-drawer(position="right", backdrop)
@@ -395,11 +393,9 @@ p.-text
       | element also has three public methods to interact with it: <code>show()</code>, <code>hide()</code>,
       | <code>toggle()</code>.
     :code(lang="html")
-      <button id="drawer-trigger" class="chi-btn -icon">
-        <div class="chi-btn__content">
-          <chi-icon icon="menu"></chi-icon>
-        </div>
-      </button>
+      <chi-button id="drawer-trigger" type="icon">
+        <chi-icon icon="menu"></chi-icon>
+      </chi-button>
 
       <chi-drawer id="interactive-drawer" position="right" backdrop>
         <div class="-px--2 -text">Drawer content here</div>

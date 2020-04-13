@@ -28,7 +28,7 @@ ul.chi-tabs#example-states
           br
           | Bellevue, WA 98004
         div(slot='change')
-          button.chi-btn.-brand.-flat Change
+          chi-button(color='primary', variant='flat') Change
     .example-tabs.-pl--2
       ul.chi-tabs#example-default-done
         li.-active
@@ -45,9 +45,9 @@ ul.chi-tabs#example-states
             Bellevue, WA 98004</br>
           </div>
           <div slot="change">
-            <button class="chi-btn -brand -flat">
+            <chi-button color="primary" variant="flat">
               Change
-            </button>
+            </chi-button>
           </div>
         </chi-expansion-panel>
     .chi-tabs-panel#html-done
@@ -76,7 +76,7 @@ ul.chi-tabs#example-states
             |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
             | nihil sed veritatis!
         div(slot='footer')
-          button.chi-btn.-lg.-primary Continue
+          chi-button(size='lg', color='primary') Continue
     .example-tabs.-pl--2
       ul.chi-tabs#example-default-active
         li.-active
@@ -95,9 +95,9 @@ ul.chi-tabs#example-states
             </p>
           </div>
           <div slot="footer">
-            <button class="chi-btn -lg -primary">
+            <chi-button size="lg" color="primary">
               Continue
-            </button>
+            </chi-button>
           </div>
         </chi-expansion-panel>
     .chi-tabs-panel#html-active
@@ -174,10 +174,10 @@ h2 Customization
           |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
           | nihil sed veritatis!
       div(slot='change')
-        button.chi-btn.-brand.-flat Change
+        chi-button(color='primary', variant='flat') Change
       div(slot='footer')
-        button.chi-btn.-lg Previous
-        button.chi-btn.-lg.-primary.-ml--2 Continue
+        chi-button(size='lg') Previous
+        chi-button(color='primary', size='lg').-ml--2 Continue
   .example-tabs.-pl--2
     ul.chi-tabs#example-customization
       li.-active
@@ -200,17 +200,17 @@ h2 Customization
           </p>
         </div>
         <div slot="change">
-          <button class="chi-btn -brand -flat">
+          <chi-button color="primary" variant="flat">
             Change
-          </button>
+          </chi-button>
         </div>
         <div slot="footer">
-          <button class="chi-btn -lg">
+          <chi-button size="lg">
             Previous
-          </button>
-          <button class="chi-btn -lg -primary -ml--2">
+          </chi-button>
+          <chi-button class="-ml--2" color="primary" size="lg">
             Continue
-          </button>
+          </chi-button>
         </div>
       </chi-expansion-panel>
   .chi-tabs-panel#html-customization
@@ -266,7 +266,7 @@ ul.chi-tabs#example-bordered-states
             br
             | Bellevue, WA 98004
         div(slot='change')
-          button.chi-btn.-brand.-flat Change
+          chi-button(color='primary', variant='flat') Change
     .example-tabs.-pl--2
       ul.chi-tabs#example-bordered
         li.-active
@@ -285,9 +285,9 @@ ul.chi-tabs#example-bordered-states
             Bellevue, WA 98004</br>
           </div>
           <div slot="change">
-            <button class="chi-btn -brand -flat">
+            <chi-button color="primary" variant="flat">
               Change
-            </button>
+            </chi-button>
           </div>
         </chi-expansion-panel>
     .chi-tabs-panel#html-bordered
@@ -318,7 +318,7 @@ ul.chi-tabs#example-bordered-states
             |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
             | nihil sed veritatis!
         div(slot='footer')
-          button.chi-btn.-lg.-primary Continue
+          chi-button(color='primary', size='lg') Continue
     .example-tabs.-pl--2
       ul.chi-tabs#example-bordered-active
         li.-active
@@ -339,9 +339,9 @@ ul.chi-tabs#example-bordered-states
             </p>
           </div>
           <div slot="footer">
-            <button class="chi-btn -lg -primary">
+            <chi-button color="primary" size="lg">
               Continue
-            </button>
+            </chi-button>
           </div>
         </chi-expansion-panel>
     .chi-tabs-panel#html-bordered-active
@@ -417,7 +417,6 @@ ul.chi-tabs#example-bordered-states
             <div class="chi-epanel__title">Disabled panel</div>
           </div>
         </div>
-
 
 h2 Interaction
 .example.-mb--3
@@ -1018,7 +1017,7 @@ ul#chi-tabs-ex.chi-tabs
           br
           | Bellevue, WA 98004
         div(slot='change')
-          button.chi-btn.-brand.-flat Change
+          chi-button(color='primary', variant='flat') Change
     .example-tabs.-pl--2
       ul.chi-tabs#example-custom-done
         li.-active
@@ -1035,9 +1034,9 @@ ul#chi-tabs-ex.chi-tabs
             Bellevue, WA 98004</br>
           </div>
           <div slot="change">
-            <button class="chi-btn -brand -flat">
+            <chi-button color="primary" variant="flat">
               Change
-            </button>
+            </chi-button>
           </div>
         </chi-expansion-panel>
     .chi-tabs-panel#html-custom-done
@@ -1079,8 +1078,8 @@ ul#chi-tabs-ex.chi-tabs
             |  illo maiores, nobis placeat recusandae rem! Accusantium ad in minus molestiae? Commodi cupiditate labore
             | nihil sed veritatis!
         div(slot='footer')
-          button.chi-btn.-lg Previous
-          button.chi-btn.-lg.-primary.-ml--2 Continue
+          chi-button(size='lg') Previous
+          chi-button(size='lg', color='primary').-ml--2 Continue
     .example-tabs.-pl--2
       ul.chi-tabs#example-custom-active
         li.-active
@@ -1099,9 +1098,12 @@ ul#chi-tabs-ex.chi-tabs
             </p>
           </div>
           <div slot="footer">
-            <button class="chi-btn -lg -primary">
+            <chi-button size="lg">
+              Previous
+            </chi-button>
+            <chi-button class="-ml--2" size="lg" color="primary">
               Continue
-            </button>
+            </chi-button>
           </div>
         </chi-expansion-panel>
     .chi-tabs-panel#html-custom-active
