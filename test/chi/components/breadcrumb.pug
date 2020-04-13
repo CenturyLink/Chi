@@ -6,7 +6,7 @@ h4 Base
 .test-base
   .example
     .-p--3
-      nav.chi-breadcrumb.-text(aria-label="Breadcrumb")
+      nav.chi-breadcrumb(aria-label="Breadcrumb")
         ol
           li.chi-breadcrumb__item
             a(href='#') Parent
@@ -19,7 +19,7 @@ h4 Alternative Separator
 .test-alternative-separator
   .example
     .-p--3
-      nav.chi-breadcrumb.-alt.-text(aria-label="Breadcrumb")
+      nav.chi-breadcrumb.-alt(aria-label="Breadcrumb")
         ol
           li.chi-breadcrumb__item
             a(href='#') Parent
@@ -31,13 +31,13 @@ h4 Alternative Separator
 h4 Sizes
 .test-sizes
   table(cellpadding="0", cellspacing="0", width="600px")
-    each size in ['small', 'smaller', 'large', 'larger']
+    each size in ['xs', 'sm', 'md', 'lg', 'xl']
       tr
         td
-          h5= `-text--${size}`
+          h5= `${size}`
           td
             .-m--1
-              nav(class=`chi-breadcrumb -text--${size}`,aria-label="Breadcrumb")
+              nav(class=`chi-breadcrumb -${size}`, aria-label='Breadcrumb')
                 ol
                   li.chi-breadcrumb__item
                     a(href='#') Parent
@@ -45,13 +45,13 @@ h4 Sizes
                     a(href='#') Child 1
                   li.chi-breadcrumb__item.-active
                     a(href='#',aria-current="page") Child 2
-    each size in ['small', 'smaller', 'large', 'larger']
+    each size in ['xs', 'sm', 'md', 'lg', 'xl']
       tr
         td
-          h5= `-text--${size}`
+          h5= `${size}`
           td
             .-m--1
-              nav(class=`chi-breadcrumb -alt -text--${size}`,aria-label="Breadcrumb")
+              nav(class=`chi-breadcrumb -alt -${size}`, aria-label='Breadcrumb')
                 ol
                   li.chi-breadcrumb__item
                     a(href='#') Parent

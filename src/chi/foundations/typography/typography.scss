@@ -120,6 +120,11 @@ pre {
   }
 }
 
+b,
+strong {
+  font-weight: 600;
+}
+
 ul,
 ol {
   &.-inline {

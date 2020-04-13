@@ -19,9 +19,9 @@ h3 Solid
   .example-tabs.-pl--2
     ul.chi-tabs#examples-default
       li.-active
-        a(href=`#webcomponent`) Web component
+        a(href=`#webcomponent`) Web Component
       li
-        a(href=`#html`) HTML
+        a(href=`#html`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -59,9 +59,9 @@ h3 Outline
   .example-tabs.-pl--2
     ul.chi-tabs#examples-outline
       li.-active
-        a(href=`#webcomponent-outline`) Web component
+        a(href=`#webcomponent-outline`) Web Component
       li
-        a(href=`#html-outline`) HTML
+        a(href=`#html-outline`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-outline
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -97,9 +97,9 @@ h3 Flat
   .example-tabs.-pl--2
     ul.chi-tabs#examples-flat
       li.-active
-        a(href=`#webcomponent-flat`) Web component
+        a(href=`#webcomponent-flat`) Web Component
       li
-        a(href=`#html-flat`) HTML
+        a(href=`#html-flat`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-flat
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -129,9 +129,9 @@ p.-text
   .example-tabs.-pl--2
     ul.chi-tabs#examples-fluid
       li.-active
-        a(href=`#webcomponent-fluid`) Web component
+        a(href=`#webcomponent-fluid`) Web Component
       li
-        a(href=`#html-fluid`) HTML
+        a(href=`#html-fluid`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-fluid
     :code(lang="html")
       <!-- left aligned content -->
@@ -160,9 +160,9 @@ p.-text
   .example-tabs.-pl--2
     ul.chi-tabs#examples-icon
       li.-active
-        a(href=`#webcomponent-icon`) Web component
+        a(href=`#webcomponent-icon`) Web Component
       li
-        a(href=`#html-icon`) HTML
+        a(href=`#html-icon`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-icon
     :code(lang="html")
       <!-- base -->
@@ -206,9 +206,9 @@ h3 Labeled icon buttons
   .example-tabs.-pl--2
     ul.chi-tabs#examples-labeled
       li.-active
-        a(href=`#webcomponent-labeled`) Web component
+        a(href=`#webcomponent-labeled`) Web Component
       li
-        a(href=`#html-labeled`) HTML
+        a(href=`#html-labeled`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-labeled
     :code(lang="html")
       <!-- left aligned -->
@@ -274,9 +274,9 @@ h3 Floating icon buttons
   .example-tabs.-pl--2
     ul.chi-tabs#examples-floating-icon
       li.-active
-        a(href=`#webcomponent-floating-icon`) Web component
+        a(href=`#webcomponent-floating-icon`) Web Component
       li
-        a(href=`#html-floating-icon`) HTML
+        a(href=`#html-floating-icon`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-floating-icon
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -335,30 +335,17 @@ h3 Close icon button
   .example-tabs.-pl--2
     ul.chi-tabs#examples-close-button
       li.-active
-        a(href=`#webcomponent-close-button`) Web component
+        a(href=`#webcomponent-close-button`) Web Component
       li
-        a(href='#webfont-close-button') Web Font
-      li
-        a(href='#svg-close-button') SVG
+        a(href='#html-close-button') HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-close-button
     :code(lang="html")
       <chi-button type="close"></chi-button>
-  .chi-tabs-panel#webfont-close-button
+  .chi-tabs-panel#html-close-button
     :code(lang="html")
       <button class="chi-btn -icon -close" aria-label="Close">
         <div class="chi-btn__content">
           <i class="chi-icon icon-x"></i>
-        </div>
-      </button>
-  .chi-tabs-panel#svg-close-button
-    :code(lang="html")
-      <button class="chi-btn -icon -close" aria-label="Close">
-        <div class="chi-btn__content">
-          <div class="chi-icon">
-            <svg>
-              <use xlink:href="#icon-x"></use>
-            </svg>
-          </div>
         </div>
       </button>
 
@@ -374,9 +361,9 @@ p.-text
   .example-tabs.-pl--2
     ul.chi-tabs#examples-danger
       li.-active
-        a(href=`#webcomponent-danger`) Web component
+        a(href=`#webcomponent-danger`) Web Component
       li
-        a(href='#html-danger') HTML
+        a(href='#html-danger') HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-danger
     :code(lang="html")
       <chi-button color="danger">Danger</chi-button>
@@ -402,9 +389,9 @@ p.-text
   .example-tabs.-pl--2
     ul.chi-tabs#examples-sizes
       li.-active
-        a(href=`#webcomponent-sizes`) Web component
+        a(href=`#webcomponent-sizes`) Web Component
       li
-        a(href='#html-sizes') HTML
+        a(href='#html-sizes') HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-sizes
     :code(lang="html")
       <!-- sm -->
@@ -468,15 +455,6 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('examples-default'));
-      chi.tab(document.getElementById('examples-outline'));
-      chi.tab(document.getElementById('examples-flat'));
-      chi.tab(document.getElementById('examples-fluid'));
-      chi.tab(document.getElementById('examples-icon'));
-      chi.tab(document.getElementById('examples-labeled'));
-      chi.tab(document.getElementById('examples-floating-icon'));
-      chi.tab(document.getElementById('examples-close-button'));
-      chi.tab(document.getElementById('examples-danger'));
-      chi.tab(document.getElementById('examples-sizes'));
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
     }
   );

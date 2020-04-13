@@ -4,7 +4,7 @@ p.-text To render a breadcrumb, use the class <code>chi-breadcrumb</code>.
 h3 Base
 .example.-mb--3
   .-p--3
-    nav.chi-breadcrumb.-text(aria-label="Breadcrumb")
+    nav.chi-breadcrumb(aria-label="Breadcrumb")
       ol
         li.chi-breadcrumb__item
           a(href='#') Parent
@@ -12,26 +12,34 @@ h3 Base
           a(href='#') Child 1
         li.chi-breadcrumb__item.-active
           a(href='#',aria-current="page") Child 2
-  :code(lang="html")
-    <nav class="chi-breadcrumb -text" aria-label="Breadcrumb">
-      <ol>
-          <li class="chi-breadcrumb__item">
-            <a href="#">Parent</a>
-          </li>
-          <li class="chi-breadcrumb__item">
-            <a href="#">Child 1</a>
-          </li>
-          <li class="chi-breadcrumb__item -active">
-            <a href="#" aria-current="page">Child 2</a>
-          </li>
-      </ol>
-    </nav>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href=`#webcomponent-base`) Web Component
+      li.-active
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
+    :code(lang="html")
+      <nav class="chi-breadcrumb" aria-label="Breadcrumb">
+        <ol>
+            <li class="chi-breadcrumb__item">
+              <a href="#">Parent</a>
+            </li>
+            <li class="chi-breadcrumb__item">
+              <a href="#">Child 1</a>
+            </li>
+            <li class="chi-breadcrumb__item -active">
+              <a href="#" aria-current="page">Child 2</a>
+            </li>
+        </ol>
+      </nav>
 
 h3 Alternate Separator
 p.-text Apply the <code>-alt</code> class to render breadcrumbs with an alternate separator.
 .example.-mb--3
   .-p--3
-    nav.chi-breadcrumb.-alt.-text(aria-label="Breadcrumb")
+    nav.chi-breadcrumb.-alt(aria-label="Breadcrumb")
       ol
         li.chi-breadcrumb__item
           a(href='#') Parent
@@ -39,102 +47,119 @@ p.-text Apply the <code>-alt</code> class to render breadcrumbs with an alternat
           a(href='#') Child 1
         li.chi-breadcrumb__item.-active
           a(href='#',aria-current="page") Child 2
-  :code(lang="html")
-    <nav class="chi-breadcrumb -alt -text" aria-label="Breadcrumb">
-      <ol>
-          <li class="chi-breadcrumb__item">
-            <a href="#">Parent</a>
-          </li>
-          <li class="chi-breadcrumb__item">
-            <a href="#">Child 1</a>
-          </li>
-          <li class="chi-breadcrumb__item -active">
-            <a href="#" aria-current="page">Child 2</a>
-          </li>
-      </ol>
-    </nav>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-alt
+      li.-disabled
+        a(href=`#webcomponent-alt`) Web Component
+      li.-active
+        a(href=`#html-alt`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-alt
+  .chi-tabs-panel.-active#html-alt
+    :code(lang="html")
+      <nav class="chi-breadcrumb -alt" aria-label="Breadcrumb">
+        <ol>
+            <li class="chi-breadcrumb__item">
+              <a href="#">Parent</a>
+            </li>
+            <li class="chi-breadcrumb__item">
+              <a href="#">Child 1</a>
+            </li>
+            <li class="chi-breadcrumb__item -active">
+              <a href="#" aria-current="page">Child 2</a>
+            </li>
+        </ol>
+      </nav>
 
 h2 Additional Sizes
 p.-text
-  | Use <a href="../../utilities/text">text utilities</a> such as <code>-text--small</code> or
-  |  <code>-text--large</code> to change the size of breadcrumb text.
-h3 Large
+  | Breadcrumbs support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
+  | <code>-lg</code>, and <code>-xl</code>. The default size is <code>-md</code>.
 .example.-mb--3
   .-p--3
-    nav.chi-breadcrumb.-text--large(aria-label="Breadcrumb")
-      ol
-        li.chi-breadcrumb__item
-          a(href='#') Parent
-        li.chi-breadcrumb__item.-active
-          a(href='#',aria-current="page") Child
-  :code(lang="html")
-    <nav class="chi-breadcrumb -text--large" aria-label="Breadcrumb">
-      <ol>
-        <li class="chi-breadcrumb__item">
-          <a href="#">Parent</a>
-        </li>
-        <li class="chi-breadcrumb__item -active">
-          <a href="#" aria-current="page">Child</a>
-        </li>
-      </ol>
-    </nav>
-h3 Larger
-.example.-mb--3
-  .-p--3
-    nav.chi-breadcrumb.-text--larger(aria-label="Breadcrumb")
-      ol
-        li.chi-breadcrumb__item
-          a(href='#') Parent
-        li.chi-breadcrumb__item.-active
-          a(href='#',aria-current="page") Child
-  :code(lang="html")
-    <nav class="chi-breadcrumb -text--larger" aria-label="Breadcrumb">
-      <ol>
-        <li class="chi-breadcrumb__item">
-          <a href="#">Parent</a>
-        </li>
-        <li class="chi-breadcrumb__item -active">
-          <a href="#" aria-current="page">Child</a>
-        </li>
-      </ol>
-    </nav>
-h3 Small
-.example.-mb--3
-  .-p--3
-    nav.chi-breadcrumb.-text--small(aria-label="Breadcrumb")
-      ol
-        li.chi-breadcrumb__item
-          a(href='#') Parent
-        li.chi-breadcrumb__item.-active
-          a(href='#',aria-current="page") Child
-  :code(lang="html")
-    <nav class="chi-breadcrumb -text--small" aria-label="Breadcrumb">
-      <ol>
-        <li class="chi-breadcrumb__item">
-          <a href="#">Parent</a>
-        </li>
-        <li class="chi-breadcrumb__item -active">
-          <a href="#" aria-current="page">Child</a>
-        </li>
-      </ol>
-    </nav>
-h3 Smaller
-.example.-mb--3
-  .-p--3
-    nav.chi-breadcrumb.-text--smaller(aria-label="Breadcrumb")
-      ol
-        li.chi-breadcrumb__item
-          a(href='#') Parent
-        li.chi-breadcrumb__item.-active
-          a(href='#',aria-current="page") Child
-  :code(lang="html")
-    <nav class="chi-breadcrumb -text--smaller" aria-label="Breadcrumb">
-      <ol>
-        <li class="chi-breadcrumb__item">
-          <a href="#">Parent</a>
-        </li>
-        <li class="chi-breadcrumb__item -active">
-          <a href="#" aria-current="page">Child</a>
-        </li>
-      </ol>
-    </nav>
+    each size in ['xs', 'sm', 'md', 'lg', 'xl']
+      p.-text--bold=`-${size}`
+      nav.chi-breadcrumb.-mb--2(class=`-${size}`, aria-label='Breadcrumb')
+        ol
+          li.chi-breadcrumb__item
+            a(href='#') Parent
+          li.chi-breadcrumb__item
+            a(href='#') Child 1
+          li.chi-breadcrumb__item.-active
+            a(href='#',aria-current="page") Child 2
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-sizes
+      li.-disabled
+        a(href=`#webcomponent-sizes`) Web Component
+      li.-active
+        a(href=`#html-sizes`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-sizes
+  .chi-tabs-panel.-active#html-sizes
+    :code(lang="html")
+      <!-- xs -->
+      <nav class="chi-breadcrumb -xs" aria-label="Breadcrumb">
+        <ol>
+          <li class="chi-breadcrumb__item">
+            <a href="#">Parent</a>
+          </li>
+          <li class="chi-breadcrumb__item -active">
+            <a href="#" aria-current="page">Child</a>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- sm -->
+      <nav class="chi-breadcrumb -sm" aria-label="Breadcrumb">
+        <ol>
+          <li class="chi-breadcrumb__item">
+            <a href="#">Parent</a>
+          </li>
+          <li class="chi-breadcrumb__item -active">
+            <a href="#" aria-current="page">Child</a>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- md -->
+      <nav class="chi-breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li class="chi-breadcrumb__item">
+            <a href="#">Parent</a>
+          </li>
+          <li class="chi-breadcrumb__item -active">
+            <a href="#" aria-current="page">Child</a>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- lg -->
+      <nav class="chi-breadcrumb -lg" aria-label="Breadcrumb">
+        <ol>
+          <li class="chi-breadcrumb__item">
+            <a href="#">Parent</a>
+          </li>
+          <li class="chi-breadcrumb__item -active">
+            <a href="#" aria-current="page">Child</a>
+          </li>
+        </ol>
+      </nav>
+      
+      <!-- xl -->
+      <nav class="chi-breadcrumb -xl" aria-label="Breadcrumb">
+        <ol>
+          <li class="chi-breadcrumb__item">
+            <a href="#">Parent</a>
+          </li>
+          <li class="chi-breadcrumb__item -active">
+            <a href="#" aria-current="page">Child</a>
+          </li>
+        </ol>
+      </nav>
+
+script.
+    document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('example-base'));
+      chi.tab(document.getElementById('example-alt'));
+      chi.tab(document.getElementById('example-sizes'));
+    });

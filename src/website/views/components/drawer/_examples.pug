@@ -19,9 +19,9 @@ ul#chi-tabs--drawer.chi-tabs
     .example-tabs.-pl--2
       ul.chi-tabs#examples-default
         li.-active
-          a(href=`#webcomponent`) Web component
+          a(href=`#webcomponent`) Web Component
         li
-          a(href=`#html`) HTML
+          a(href=`#html`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent
       :code(lang="html")
         <chi-drawer position="left" active>
@@ -53,9 +53,9 @@ ul#chi-tabs--drawer.chi-tabs
     .example-tabs.-pl--2
       ul.chi-tabs#examples-default-right
         li.-active
-          a(href=`#webcomponent-right`) Web component
+          a(href=`#webcomponent-right`) Web Component
         li
-          a(href=`#html-right`) HTML
+          a(href=`#html-right`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-right
       :code(lang="html")
         <chi-drawer position="right" active>
@@ -87,9 +87,9 @@ ul#chi-tabs--drawer.chi-tabs
     .example-tabs.-pl--2
       ul.chi-tabs#examples-default-top
         li.-active
-          a(href=`#webcomponent-top`) Web component
+          a(href=`#webcomponent-top`) Web Component
         li
-          a(href=`#html-top`) HTML
+          a(href=`#html-top`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-top
       :code(lang="html")
         <chi-drawer position="top" active>
@@ -121,9 +121,9 @@ ul#chi-tabs--drawer.chi-tabs
     .example-tabs.-pl--2
       ul.chi-tabs#examples-default-bottom
         li.-active
-          a(href=`#webcomponent-bottom`) Web component
+          a(href=`#webcomponent-bottom`) Web Component
         li
-          a(href=`#html-bottom`) HTML
+          a(href=`#html-bottom`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-bottom
       :code(lang="html")
         <chi-drawer position="bottom" active>
@@ -154,9 +154,9 @@ p.-text
   .example-tabs.-pl--2
     ul.chi-tabs#examples-backdrop
       li.-active
-        a(href=`#webcomponent-backdrop`) Web component
+        a(href=`#webcomponent-backdrop`) Web Component
       li
-        a(href=`#html-backdrop`) HTML
+        a(href=`#html-backdrop`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-backdrop
     :code(lang="html")
       <chi-drawer position="bottom" backdrop active>
@@ -187,9 +187,9 @@ h3 Titled
   .example-tabs.-pl--2
     ul#examples-titled.chi-tabs
       li.-active
-        a(href='#webcomponent-titled') Web component
+        a(href='#webcomponent-titled') Web Component
       li
-        a(href='#html-titled') HTML
+        a(href='#html-titled') HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-titled
     :code(lang="html")
       <chi-drawer position="left" title="Drawer title here" backdrop active>
@@ -231,9 +231,9 @@ ul#chi-tabs--closable.chi-tabs
     .example-tabs.-pl--2
       ul.chi-tabs#examples-closable
         li.-active
-          a(href=`#webcomponent-closable`) Web component
+          a(href=`#webcomponent-closable`) Web Component
         li
-          a(href=`#html-closable`) HTML
+          a(href=`#html-closable`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-closable
       .chi-tab__description
         | By default Drawer includes a close button
@@ -265,9 +265,9 @@ ul#chi-tabs--closable.chi-tabs
     .example-tabs.-pl--2
       ul.chi-tabs#examples-nonclosable
         li.-active
-          a(href=`#webcomponent-nonclosable`) Web component
+          a(href=`#webcomponent-nonclosable`) Web Component
         li
-          a(href=`#html-nonclosable`) HTML
+          a(href=`#html-nonclosable`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-nonclosable
       .chi-tab__description
         | Use the <code>non-closable</code> attribute to render Drawer without a close button
@@ -305,9 +305,9 @@ ul#chi-tabs--header.chi-tabs
     .example-tabs.-pl--2
       ul.chi-tabs#examples-header
         li.-active
-          a(href=`#webcomponent-header`) Web component
+          a(href=`#webcomponent-header`) Web Component
         li
-          a(href=`#html-header`) HTML
+          a(href=`#html-header`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-header
       :code(lang="html")
         <chi-drawer position="left" active backdrop>
@@ -340,9 +340,9 @@ ul#chi-tabs--header.chi-tabs
     .example-tabs.-pl--2
       ul.chi-tabs#examples-headerless
         li.-active
-          a(href=`#webcomponent-headerless`) Web component
+          a(href=`#webcomponent-headerless`) Web Component
         li
-          a(href=`#html-headerless`) HTML
+          a(href=`#html-headerless`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-headerless
       :code(lang="html")
         <chi-drawer position="left" active backdrop headless>
@@ -386,9 +386,9 @@ p.-text
   .example-tabs.-pl--2
     ul#examples-interaction.chi-tabs
       li.-active
-        a(href='#webcomponent-interaction') Web component
+        a(href='#webcomponent-interaction') Web Component
       li
-        a(href='#html-interaction') HTML + JS
+        a(href='#html-interaction') HTML Blueprint
   #webcomponent-interaction.chi-tabs-panel.-active
     .chi-tab__description
       | Modify the <code>active</code> attribute or property to make the drawer show or hide. The <code>chi-drawer</code>
@@ -415,8 +415,13 @@ p.-text
       </script>
   #html-interaction.chi-tabs-panel
     .chi-tab__description
-      | Use the function <code>chi.drawer(elem)</code> to instantiate a new drawer component in the DOM
-      | element passed as a parameter. You must use the trigger element as the parameter.
+      chi-alert(icon="circle-info")
+        | This HTML Blueprint requires JavaScript to render properly.
+        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
+        | a vanilla javascript solution which includes support for this Drawer component.
+      p.-text.-mb--0
+        | Use the function <code>chi.drawer(elem)</code> to instantiate a new drawer component in the DOM
+        | element passed as a parameter. You must use the trigger element as the parameter.
     :code(lang="html")
       <button id="drawer-trigger-1" class="chi-btn -icon chi-drawer__trigger" data-target="#drawer-1" aria-label="Toggle navigation">
         <div class="chi-btn__content">
@@ -447,20 +452,7 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('chi-tabs--drawer'));
-      chi.tab(document.getElementById('chi-tabs--header'));
-      chi.tab(document.getElementById('examples-default'));
-      chi.tab(document.getElementById('examples-default-right'));
-      chi.tab(document.getElementById('examples-default-top'));
-      chi.tab(document.getElementById('examples-default-bottom'));
-      chi.tab(document.getElementById('examples-backdrop'));
-      chi.tab(document.getElementById('examples-titled'));
-      chi.tab(document.getElementById('chi-tabs--closable'));
-      chi.tab(document.getElementById('examples-closable'));
-      chi.tab(document.getElementById('examples-nonclosable'));
-      chi.tab(document.getElementById('examples-header'));
-      chi.tab(document.getElementById('examples-headerless'));
-      chi.tab(document.getElementById('examples-interaction'));
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
 
       var drawer = document.getElementById('interactive-drawer');
       var drawerTrigger = document.getElementById('drawer-trigger');

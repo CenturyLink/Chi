@@ -81,6 +81,7 @@ $states: (
   > chi-icon .chi-icon,
   .chi-alert__icon {
     &:not(.icon-x) {
+      flex-shrink: 0;
       font-size: 1rem;
       height: 1rem;
       margin-bottom: 0.125rem;
@@ -135,7 +136,7 @@ $states: (
       font-size: $text;
       font-weight: 600;
       line-height: $line-height-small;
-      margin-bottom: 0;
+      margin-bottom: 0.25rem;
       margin-top: 0;
       word-break: break-word;
 
@@ -145,7 +146,7 @@ $states: (
     }
 
     .chi-alert__actions {
-      padding-top: 0.5rem;
+      padding-top: 0.75rem;
 
       > .chi-btn {
         margin-right: 0.5rem;
@@ -235,8 +236,18 @@ $states: (
     padding: 0.5625rem 1.5rem;
 
     .chi-alert__content {
+      .chi-alert__title {
+        margin-bottom: 0;
+      }
+
       .chi-alert__text {
         font-size: $text-small;
+        line-height: $line-height-smaller;
+        padding-top: 0.125rem;
+      }
+
+      .chi-alert__actions {
+        padding-top: 0.5rem;
       }
     }
 

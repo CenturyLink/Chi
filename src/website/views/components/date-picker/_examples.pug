@@ -8,244 +8,6 @@ h2 Examples
 
 h3 Base
 p.-text
-  | Here is an example of a date picker not attached to any element.
-
-- day = 1;
-
-ul#chi-tabs--dp.chi-tabs
-  li.-active
-    a(href='#chi-tabs--dp-base') Base
-  li
-    a(href='#chi-tabs--dp-active') Active
-  li
-    a(href='#chi-tabs--dp-min-max') Min & max
-#chi-tabs--dp-base.chi-tabs-panel.-active
-  .example.-mb--3
-    .-p--3
-      chi-date
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-default
-        li.-active
-          a(href=`#webcomponent`) Web component
-        li
-          a(href=`#html`) HTML
-    #webcomponent.chi-tabs-panel.-active
-      :code(lang="html")
-        <chi-date></chi-date>
-    #html.chi-tabs-panel
-      .chi-tab__description
-        | Use the classes <code>-month-starts-on-sun</code>,
-        | <code>-month-starts-on-mon</code>, <code>-month-starts-on-tue</code>, <code>-month-starts-on-wed</code>,
-        | <code>-month-starts-on-thu</code>, <code>-month-starts-on-fri</code> and <code>-month-starts-on-sat</code> to
-        | locate the first day in the correct cell.
-        br
-        | Use the classes <code>-week-starts-on-sun</code> or <code>-week-starts-on-mon</code> to fit the week definition
-        | of the desired locale.
-        br
-        | Use the class <code>-today</code> for the current date
-      :code(lang="html")
-        <div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
-          <div class="chi-datepicker__month-row">
-            <div class="prev">
-              <i class="chi-icon icon-chevron-left -sm"></i>
-            </div>
-            <div class="chi-datepicker__month">
-              November 2018
-            </div>
-            <div class="next">
-              <i class="chi-icon icon-chevron-right -sm"></i>
-            </div>
-          </div>
-          <div class="chi-datepicker__day-names">
-            <div class="chi-datepicker__week-day">
-              S
-            </div>
-            <div class="chi-datepicker__week-day">
-              M
-            </div>
-            <div class="chi-datepicker__week-day">
-              T
-            </div>
-            <div class="chi-datepicker__week-day">
-              W
-            </div>
-            <div class="chi-datepicker__week-day">
-              T
-            </div>
-            <div class="chi-datepicker__week-day">
-              F
-            </div>
-            <div class="chi-datepicker__week-day">
-              S
-            </div>
-          </div>
-          <div class="chi-datepicker__days">
-            <div class="chi-datepicker__day">1</div>
-            <div class="chi-datepicker__day">2</div>
-            <div class="chi-datepicker__day">3</div>
-            <div class="chi-datepicker__day">4</div>
-            <div class="chi-datepicker__day">5</div>
-            <div class="chi-datepicker__day">6</div>
-            <div class="chi-datepicker__day">7</div>
-            <div class="chi-datepicker__day">8</div>
-            <div class="chi-datepicker__day">9</div>
-            <div class="chi-datepicker__day">10</div>
-            <div class="chi-datepicker__day">11</div>
-            <div class="chi-datepicker__day">12</div>
-            <div class="chi-datepicker__day">13</div>
-            <div class="chi-datepicker__day">14</div>
-            <div class="chi-datepicker__day">15</div>
-            <div class="chi-datepicker__day">16</div>
-            <div class="chi-datepicker__day">17</div>
-            <div class="chi-datepicker__day">18</div>
-            <div class="chi-datepicker__day">19</div>
-            <div class="chi-datepicker__day">20</div>
-            <div class="chi-datepicker__day">21</div>
-            <div class="chi-datepicker__day">22</div>
-            <div class="chi-datepicker__day">23</div>
-            <div class="chi-datepicker__day">24</div>
-            <div class="chi-datepicker__day">25</div>
-            <div class="chi-datepicker__day">26</div>
-            <div class="chi-datepicker__day">27</div>
-            <div class="chi-datepicker__day">28</div>
-            <div class="chi-datepicker__day">29</div>
-            <div class="chi-datepicker__day">30</div>
-          </div>
-        </div>
-#chi-tabs--dp-active.chi-tabs-panel
-  .example.-mb--3
-    .-p--3
-      chi-date(value="05/15/2019")
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-active
-        li.-active
-          a(href=`#webcomponent-active`) Web component
-        li
-          a(href=`#html-active`) HTML
-    #webcomponent-active.chi-tabs-panel.-active
-      :code(lang="html")
-        <chi-date value="05/15/2019"></chi-date>
-    #html-active.chi-tabs-panel
-      .chi-tab__description
-        | Use class <code>-active</code> for the selected date
-      :code(lang="html")
-        <div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
-          <div class="chi-datepicker__month-row">
-            <div class="prev"><i class="chi-icon icon-chevron-left -sm"></i></div>
-            <div class="chi-datepicker__month">May 2019</div>
-            <div class="next"><i class="chi-icon icon-chevron-right -sm"></i></div>
-          </div>
-          <div class="chi-datepicker__day-names">
-            <div class="chi-datepicker__week-day">S</div>
-            <div class="chi-datepicker__week-day">M</div>
-            <div class="chi-datepicker__week-day">T</div>
-            <div class="chi-datepicker__week-day">W</div>
-            <div class="chi-datepicker__week-day">T</div>
-            <div class="chi-datepicker__week-day">F</div>
-            <div class="chi-datepicker__week-day">S</div>
-          </div>
-          <div class="chi-datepicker__days">
-            <div class="chi-datepicker__day">1</div>
-            <div class="chi-datepicker__day">2</div>
-            <div class="chi-datepicker__day">3</div>
-            <div class="chi-datepicker__day">4</div>
-            <div class="chi-datepicker__day">5</div>
-            <div class="chi-datepicker__day">6</div>
-            <div class="chi-datepicker__day">7</div>
-            <div class="chi-datepicker__day">8</div>
-            <div class="chi-datepicker__day">9</div>
-            <div class="chi-datepicker__day">10</div>
-            <div class="chi-datepicker__day">11</div>
-            <div class="chi-datepicker__day">12</div>
-            <div class="chi-datepicker__day">13</div>
-            <div class="chi-datepicker__day">14</div>
-            <div class="chi-datepicker__day -active">15</div>
-            <div class="chi-datepicker__day">16</div>
-            <div class="chi-datepicker__day">17</div>
-            <div class="chi-datepicker__day">18</div>
-            <div class="chi-datepicker__day">19</div>
-            <div class="chi-datepicker__day">20</div>
-            <div class="chi-datepicker__day">21</div>
-            <div class="chi-datepicker__day">22</div>
-            <div class="chi-datepicker__day">23</div>
-            <div class="chi-datepicker__day">24</div>
-            <div class="chi-datepicker__day">25</div>
-            <div class="chi-datepicker__day">26</div>
-            <div class="chi-datepicker__day">27</div>
-            <div class="chi-datepicker__day">28</div>
-            <div class="chi-datepicker__day">29</div>
-            <div class="chi-datepicker__day">30</div>
-            <div class="chi-datepicker__day">31</div>
-          </div>
-        </div>
-#chi-tabs--dp-min-max.chi-tabs-panel
-  .example.-mb--3
-    .-p--3
-      chi-date(min="06/06/2019", max="06/22/2019")
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-min-max
-        li.-active
-          a(href=`#webcomponent-min-max`) Web component
-        li
-          a(href=`#html-min-max`) HTML
-    #webcomponent-min-max.chi-tabs-panel.-active
-      :code(lang="html")
-        <chi-date min="06/06/2019" max="06/22/2019"></chi-date>
-    #html-min-max.chi-tabs-panel
-      .chi-tab__description
-        | Use class <code>-inactive</code> for deactivated dates.
-      :code(lang="html")
-        <div class="chi-datepicker -week-starts-on-sun -month-starts-on-sat">
-          <div class="chi-datepicker__month-row">
-            <div class="prev -disabled"><i class="chi-icon icon-chevron-left -sm"></i></div>
-            <div class="chi-datepicker__month">June 2019</div>
-            <div class="next -disabled"><i class="chi-icon icon-chevron-right -sm"></i></div>
-          </div>
-          <div class="chi-datepicker__day-names">
-            <div class="chi-datepicker__week-day">S</div>
-            <div class="chi-datepicker__week-day">M</div>
-            <div class="chi-datepicker__week-day">T</div>
-            <div class="chi-datepicker__week-day">W</div>
-            <div class="chi-datepicker__week-day">T</div>
-            <div class="chi-datepicker__week-day">F</div>
-            <div class="chi-datepicker__week-day">S</div>
-          </div>
-          <div class="chi-datepicker__days">
-            <div class="chi-datepicker__day -inactive">1</div>
-            <div class="chi-datepicker__day -inactive">2</div>
-            <div class="chi-datepicker__day -inactive">3</div>
-            <div class="chi-datepicker__day -inactive">4</div>
-            <div class="chi-datepicker__day -inactive">5</div>
-            <div class="chi-datepicker__day">6</div>
-            <div class="chi-datepicker__day">7</div>
-            <div class="chi-datepicker__day">8</div>
-            <div class="chi-datepicker__day">9</div>
-            <div class="chi-datepicker__day">10</div>
-            <div class="chi-datepicker__day">11</div>
-            <div class="chi-datepicker__day">12</div>
-            <div class="chi-datepicker__day">13</div>
-            <div class="chi-datepicker__day">14</div>
-            <div class="chi-datepicker__day">15</div>
-            <div class="chi-datepicker__day">16</div>
-            <div class="chi-datepicker__day">17</div>
-            <div class="chi-datepicker__day">18</div>
-            <div class="chi-datepicker__day">19</div>
-            <div class="chi-datepicker__day">20</div>
-            <div class="chi-datepicker__day">21</div>
-            <div class="chi-datepicker__day">22</div>
-            <div class="chi-datepicker__day -inactive">23</div>
-            <div class="chi-datepicker__day -inactive">24</div>
-            <div class="chi-datepicker__day -inactive">25</div>
-            <div class="chi-datepicker__day -inactive">26</div>
-            <div class="chi-datepicker__day -inactive">27</div>
-            <div class="chi-datepicker__day -inactive">28</div>
-            <div class="chi-datepicker__day -inactive">29</div>
-            <div class="chi-datepicker__day -inactive">30</div>
-          </div>
-        </div>
-
-h3 Input field
-p.-text
 .example.-mb--3
   .-p--3
     div(style="max-width: 14rem;")
@@ -253,16 +15,21 @@ p.-text
         | Date
       chi-date-picker(id="date")
   .example-tabs.-pl--2
-    ul.chi-tabs#examples-with-label
+    ul.chi-tabs#example-with-label
       li.-active
-        a(href=`#webcomponent-with-label`) Web component
+        a(href=`#webcomponent-with-label`) Web Component
       li
-        a(href=`#html-with-label`) HTML + JS
+        a(href=`#html-with-label`) HTML Blueprint
   #webcomponent-with-label.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
       <chi-label for="date">Date</chi-label>
       <chi-date-picker id="date"></chi-date-picker>
   #html-with-label.chi-tabs-panel
+    .chi-tab__description
+      chi-alert(icon="circle-info")
+        | This HTML Blueprint requires JavaScript to render properly.
+        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
+        | a vanilla javascript solution which includes support for this Date Picker component.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="datepicker-1">Date</label>
@@ -274,7 +41,7 @@ p.-text
 
       <script>chi.datePicker(document.getElementById('datepicker-1'));</script>
 
-h4 Disabled
+h3 Disabled
 .example.-mb--3
   .-p--3
     div(style="max-width: 14rem;")
@@ -282,16 +49,21 @@ h4 Disabled
         | Date
       chi-date-picker(id="date-2", disabled)
   .example-tabs.-pl--2
-    ul.chi-tabs#examples-disabled
+    ul.chi-tabs#example-disabled
       li.-active
-        a(href=`#webcomponent-disabled`) Web component
+        a(href=`#webcomponent-disabled`) Web Component
       li
-        a(href=`#html-disabled`) HTML
+        a(href=`#html-disabled`) HTML Blueprint
   #webcomponent-disabled.chi-tabs-panel.-active
     :code(lang="html")
       <chi-label for="date-2">Date</chi-label>
       <chi-date-picker id="date-2" disabled></chi-date-picker>
   #html-disabled.chi-tabs-panel
+    .chi-tab__description
+      chi-alert(icon="circle-info")
+        | This HTML Blueprint requires JavaScript to render properly.
+        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
+        | a vanilla javascript solution which includes support for this Date Picker component.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="datepicker-2">Date</label>
@@ -301,6 +73,8 @@ h4 Disabled
         </div>
       </div>
 
+      <script>chi.datePicker(document.getElementById('datepicker-2'));</script>
+
 h3 Value, min and max options
 .example.-mb--3
   .-p--3
@@ -308,16 +82,21 @@ h3 Value, min and max options
       chi-label(for='date-3') Date
       chi-date-picker(id="date-3", value="01/24/2019", min="01/14/2019", max="02/07/2019")
   .example-tabs.-pl--2
-    ul.chi-tabs#examples-min-max-value
+    ul.chi-tabs#example-min-max-value
       li.-active
-        a(href=`#webcomponent-min-max-value`) Web component
+        a(href=`#webcomponent-min-max-value`) Web Component
       li
-        a(href=`#html-min-max-value`) HTML + JS
+        a(href=`#html-min-max-value`) HTML Blueprint
   #webcomponent-min-max-value.chi-tabs-panel.-active
     :code(lang="html")
       <chi-label for="date-3">Date</chi-label>
       <chi-date-picker id="date-3" value="01/24/2019" min="01/14/2019" max="02/07/2019">
   #html-min-max-value.chi-tabs-panel
+    .chi-tab__description
+      chi-alert(icon="circle-info")
+        | This HTML Blueprint requires JavaScript to render properly.
+        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
+        | a vanilla javascript solution which includes support for this Date Picker component.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="datepicker-3">Date</label>
@@ -329,6 +108,17 @@ h3 Value, min and max options
 
       <script>chi.datePicker(document.getElementById('datepicker-3'));</script>
 
+      <!-- Or configure programmatically -->
+      <script>
+        chi.datePicker(
+          document.getElementById('datepicker-3'),
+          {
+            date: '01/24/2019',
+            min: '01/24/2019'
+          }
+      );
+      </script>
+
 h3 Excluded week days
 p.-text Specify which week days to disable by using <code>excluded-weekdays="0, 6"</code> attribute
 .example.-mb--3
@@ -336,9 +126,17 @@ p.-text Specify which week days to disable by using <code>excluded-weekdays="0, 
     div(style="max-width: 14rem;")
       chi-label(for='date-excluded-weekdays') Date
       chi-date-picker(id="date-excluded-weekdays", excluded-weekdays="0, 6")
-  :code(lang="html",style="height:20rem")
-    <chi-label for="date-excluded-weekdays">Date</chi-label>
-    <chi-date-picker id="date-excluded-weekdays" excluded-weekdays="0, 6"></chi-date-picker>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-excluded-weekdays
+      li.-active
+        a(href=`#webcomponent-excluded-weekdays`) Web Component
+      li.-disabled
+        a(href=`#html-excluded-weekdays`) HTML Blueprint
+  #webcomponent-excluded-weekdays.chi-tabs-panel.-active
+    :code(lang="html",style="height:20rem")
+      <chi-label for="date-excluded-weekdays">Date</chi-label>
+      <chi-date-picker id="date-excluded-weekdays" excluded-weekdays="0, 6"></chi-date-picker>
+  #html-excluded-weekdays.chi-tabs-panel
 
 h3 Excluded dates
 p.-text
@@ -350,9 +148,17 @@ p.-text
     div(style="max-width: 14rem;")
       chi-label(for='date-excluded-dates') Date
       chi-date-picker(id="date-excluded-dates", excluded-dates="02/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020")
-  :code(lang="html",style="height:20rem")
-    <chi-label for="date-excluded-dates">Date</chi-label>
-    <chi-date-picker id="date-excluded-dates" excluded-dates="02/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020"></chi-date-picker>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-excluded-dates
+      li.-active
+        a(href=`#webcomponent-excluded-dates`) Web Component
+      li.-disabled
+        a(href=`#html-excluded-dates`) HTML Blueprint
+  #webcomponent-excluded-dates.chi-tabs-panel.-active
+    :code(lang="html",style="height:20rem")
+      <chi-label for="date-excluded-dates">Date</chi-label>
+      <chi-date-picker id="date-excluded-dates" excluded-dates="02/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020"></chi-date-picker>
+  #html-excluded-dates.chi-tabs-panel
 
 h3 Excluded dates and week days
 p.-text
@@ -364,20 +170,253 @@ p.-text
     div(style="max-width: 14rem;")
       chi-label(for='date-excluded-days-dates') Date
       chi-date-picker(id="date-excluded-days-dates", excluded-dates="02/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020", excluded-weekdays="0, 6")
-  :code(lang="html",style="height:20rem")
-    <chi-label for="date-excluded-days-dates">Date</chi-label>
-    <chi-date-picker id="date-excluded-days-dates" excluded-weekdays="0, 6" excluded-dates="01/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020"></chi-date-picker>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-excluded-days-dates
+      li.-active
+        a(href=`#webcomponent-excluded-days-dates`) Web Component
+      li.-disabled
+        a(href=`#html-excluded-days-dates`) HTML Blueprint
+  #webcomponent-excluded-days-dates.chi-tabs-panel.-active
+    :code(lang="html",style="height:20rem")
+      <chi-label for="date-excluded-days-dates">Date</chi-label>
+      <chi-date-picker id="date-excluded-days-dates" excluded-weekdays="0, 6" excluded-dates="01/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020"></chi-date-picker>
+  #html-excluded-days-dates.chi-tabs-panel
+
+h3 Calendar
+p.-text
+  | An example of a date picker calendar not attached to any element.
+
+- day = 1;
+
+h4 Base
+.example.-mb--3
+  .-p--3
+    chi-date
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-default
+      li.-active
+        a(href=`#webcomponent`) Web Component
+      li
+        a(href=`#html`) HTML Blueprint
+  #webcomponent.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-date></chi-date>
+  #html.chi-tabs-panel
+    .chi-tab__description
+      | Use the classes <code>-month-starts-on-sun</code>,
+      | <code>-month-starts-on-mon</code>, <code>-month-starts-on-tue</code>, <code>-month-starts-on-wed</code>,
+      | <code>-month-starts-on-thu</code>, <code>-month-starts-on-fri</code> and <code>-month-starts-on-sat</code> to
+      | locate the first day in the correct cell.
+      br
+      | Use the classes <code>-week-starts-on-sun</code> or <code>-week-starts-on-mon</code> to fit the week definition
+      | of the desired locale.
+      br
+      | Use the class <code>-today</code> for the current date
+    :code(lang="html")
+      <div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
+        <div class="chi-datepicker__month-row">
+          <div class="prev">
+            <i class="chi-icon icon-chevron-left -sm"></i>
+          </div>
+          <div class="chi-datepicker__month">
+            November 2018
+          </div>
+          <div class="next">
+            <i class="chi-icon icon-chevron-right -sm"></i>
+          </div>
+        </div>
+        <div class="chi-datepicker__day-names">
+          <div class="chi-datepicker__week-day">
+            S
+          </div>
+          <div class="chi-datepicker__week-day">
+            M
+          </div>
+          <div class="chi-datepicker__week-day">
+            T
+          </div>
+          <div class="chi-datepicker__week-day">
+            W
+          </div>
+          <div class="chi-datepicker__week-day">
+            T
+          </div>
+          <div class="chi-datepicker__week-day">
+            F
+          </div>
+          <div class="chi-datepicker__week-day">
+            S
+          </div>
+        </div>
+        <div class="chi-datepicker__days">
+          <div class="chi-datepicker__day">1</div>
+          <div class="chi-datepicker__day">2</div>
+          <div class="chi-datepicker__day">3</div>
+          <div class="chi-datepicker__day">4</div>
+          <div class="chi-datepicker__day">5</div>
+          <div class="chi-datepicker__day">6</div>
+          <div class="chi-datepicker__day">7</div>
+          <div class="chi-datepicker__day">8</div>
+          <div class="chi-datepicker__day">9</div>
+          <div class="chi-datepicker__day">10</div>
+          <div class="chi-datepicker__day">11</div>
+          <div class="chi-datepicker__day">12</div>
+          <div class="chi-datepicker__day">13</div>
+          <div class="chi-datepicker__day">14</div>
+          <div class="chi-datepicker__day">15</div>
+          <div class="chi-datepicker__day">16</div>
+          <div class="chi-datepicker__day">17</div>
+          <div class="chi-datepicker__day">18</div>
+          <div class="chi-datepicker__day">19</div>
+          <div class="chi-datepicker__day">20</div>
+          <div class="chi-datepicker__day">21</div>
+          <div class="chi-datepicker__day">22</div>
+          <div class="chi-datepicker__day">23</div>
+          <div class="chi-datepicker__day">24</div>
+          <div class="chi-datepicker__day">25</div>
+          <div class="chi-datepicker__day">26</div>
+          <div class="chi-datepicker__day">27</div>
+          <div class="chi-datepicker__day">28</div>
+          <div class="chi-datepicker__day">29</div>
+          <div class="chi-datepicker__day">30</div>
+        </div>
+      </div>
+h4 Active
+.example.-mb--3
+  .-p--3
+    chi-date(value="05/15/2019")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-active
+      li.-active
+        a(href=`#webcomponent-active`) Web Component
+      li
+        a(href=`#html-active`) HTML Blueprint
+  #webcomponent-active.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-date value="05/15/2019"></chi-date>
+  #html-active.chi-tabs-panel
+    .chi-tab__description
+      | Use class <code>-active</code> for the selected date
+    :code(lang="html")
+      <div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
+        <div class="chi-datepicker__month-row">
+          <div class="prev"><i class="chi-icon icon-chevron-left -sm"></i></div>
+          <div class="chi-datepicker__month">May 2019</div>
+          <div class="next"><i class="chi-icon icon-chevron-right -sm"></i></div>
+        </div>
+        <div class="chi-datepicker__day-names">
+          <div class="chi-datepicker__week-day">S</div>
+          <div class="chi-datepicker__week-day">M</div>
+          <div class="chi-datepicker__week-day">T</div>
+          <div class="chi-datepicker__week-day">W</div>
+          <div class="chi-datepicker__week-day">T</div>
+          <div class="chi-datepicker__week-day">F</div>
+          <div class="chi-datepicker__week-day">S</div>
+        </div>
+        <div class="chi-datepicker__days">
+          <div class="chi-datepicker__day">1</div>
+          <div class="chi-datepicker__day">2</div>
+          <div class="chi-datepicker__day">3</div>
+          <div class="chi-datepicker__day">4</div>
+          <div class="chi-datepicker__day">5</div>
+          <div class="chi-datepicker__day">6</div>
+          <div class="chi-datepicker__day">7</div>
+          <div class="chi-datepicker__day">8</div>
+          <div class="chi-datepicker__day">9</div>
+          <div class="chi-datepicker__day">10</div>
+          <div class="chi-datepicker__day">11</div>
+          <div class="chi-datepicker__day">12</div>
+          <div class="chi-datepicker__day">13</div>
+          <div class="chi-datepicker__day">14</div>
+          <div class="chi-datepicker__day -active">15</div>
+          <div class="chi-datepicker__day">16</div>
+          <div class="chi-datepicker__day">17</div>
+          <div class="chi-datepicker__day">18</div>
+          <div class="chi-datepicker__day">19</div>
+          <div class="chi-datepicker__day">20</div>
+          <div class="chi-datepicker__day">21</div>
+          <div class="chi-datepicker__day">22</div>
+          <div class="chi-datepicker__day">23</div>
+          <div class="chi-datepicker__day">24</div>
+          <div class="chi-datepicker__day">25</div>
+          <div class="chi-datepicker__day">26</div>
+          <div class="chi-datepicker__day">27</div>
+          <div class="chi-datepicker__day">28</div>
+          <div class="chi-datepicker__day">29</div>
+          <div class="chi-datepicker__day">30</div>
+          <div class="chi-datepicker__day">31</div>
+        </div>
+      </div>
+h4 Min and Max
+.example.-mb--3
+  .-p--3
+    chi-date(min="06/06/2019", max="06/22/2019")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-min-max
+      li.-active
+        a(href=`#webcomponent-min-max`) Web Component
+      li
+        a(href=`#html-min-max`) HTML Blueprint
+  #webcomponent-min-max.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-date min="06/06/2019" max="06/22/2019"></chi-date>
+  #html-min-max.chi-tabs-panel
+    .chi-tab__description
+      | Use class <code>-inactive</code> for deactivated dates.
+    :code(lang="html")
+      <div class="chi-datepicker -week-starts-on-sun -month-starts-on-sat">
+        <div class="chi-datepicker__month-row">
+          <div class="prev -disabled"><i class="chi-icon icon-chevron-left -sm"></i></div>
+          <div class="chi-datepicker__month">June 2019</div>
+          <div class="next -disabled"><i class="chi-icon icon-chevron-right -sm"></i></div>
+        </div>
+        <div class="chi-datepicker__day-names">
+          <div class="chi-datepicker__week-day">S</div>
+          <div class="chi-datepicker__week-day">M</div>
+          <div class="chi-datepicker__week-day">T</div>
+          <div class="chi-datepicker__week-day">W</div>
+          <div class="chi-datepicker__week-day">T</div>
+          <div class="chi-datepicker__week-day">F</div>
+          <div class="chi-datepicker__week-day">S</div>
+        </div>
+        <div class="chi-datepicker__days">
+          <div class="chi-datepicker__day -inactive">1</div>
+          <div class="chi-datepicker__day -inactive">2</div>
+          <div class="chi-datepicker__day -inactive">3</div>
+          <div class="chi-datepicker__day -inactive">4</div>
+          <div class="chi-datepicker__day -inactive">5</div>
+          <div class="chi-datepicker__day">6</div>
+          <div class="chi-datepicker__day">7</div>
+          <div class="chi-datepicker__day">8</div>
+          <div class="chi-datepicker__day">9</div>
+          <div class="chi-datepicker__day">10</div>
+          <div class="chi-datepicker__day">11</div>
+          <div class="chi-datepicker__day">12</div>
+          <div class="chi-datepicker__day">13</div>
+          <div class="chi-datepicker__day">14</div>
+          <div class="chi-datepicker__day">15</div>
+          <div class="chi-datepicker__day">16</div>
+          <div class="chi-datepicker__day">17</div>
+          <div class="chi-datepicker__day">18</div>
+          <div class="chi-datepicker__day">19</div>
+          <div class="chi-datepicker__day">20</div>
+          <div class="chi-datepicker__day">21</div>
+          <div class="chi-datepicker__day">22</div>
+          <div class="chi-datepicker__day -inactive">23</div>
+          <div class="chi-datepicker__day -inactive">24</div>
+          <div class="chi-datepicker__day -inactive">25</div>
+          <div class="chi-datepicker__day -inactive">26</div>
+          <div class="chi-datepicker__day -inactive">27</div>
+          <div class="chi-datepicker__day -inactive">28</div>
+          <div class="chi-datepicker__day -inactive">29</div>
+          <div class="chi-datepicker__day -inactive">30</div>
+        </div>
+      </div>
 
 script.
   document.addEventListener(
     'DOMContentLoaded',
     function () {
-      chi.tab(document.querySelectorAll('#chi-tabs--dp'));
-      chi.tab(document.querySelectorAll('#examples-default'));
-      chi.tab(document.querySelectorAll('#examples-active'));
-      chi.tab(document.querySelectorAll('#examples-min-max'));
-      chi.tab(document.querySelectorAll('#examples-with-label'));
-      chi.tab(document.querySelectorAll('#examples-disabled'));
-      chi.tab(document.querySelectorAll('#examples-min-max-value'));
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
     }
   );

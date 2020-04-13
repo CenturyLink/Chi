@@ -37,6 +37,11 @@
           margin: 0;
           width: auto;
 
+          &:focus {
+            outline: 0.125rem solid $focus-color;
+            outline-offset: 0.0625rem;
+          }
+
           @include respond-to(md) {
             margin: 0 1rem 0 0;
           }

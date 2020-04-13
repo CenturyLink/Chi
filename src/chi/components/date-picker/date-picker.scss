@@ -31,6 +31,7 @@ $monday-starting-week: (
   width: 14rem;
 
   &__day {
+    font-weight: normal;
     line-height: 2rem;
     text-align: center;
     transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
@@ -39,6 +40,7 @@ $monday-starting-week: (
     &.-active {
       background-color: $brand-color;
       color: white;
+      font-weight: 600;
 
       &.-today::after {
         background-color: white;
@@ -81,7 +83,6 @@ $monday-starting-week: (
 
     &:not(.-inactive) {
       cursor: pointer;
-      font-weight: 600;
     }
   }
 

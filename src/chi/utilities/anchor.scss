@@ -2,10 +2,6 @@
 @import '_variables';
 
 .-anchor {
-  &::before {
-    content: '';
-    display: block;
-  }
 
   &:hover {
     & span {
@@ -27,8 +23,9 @@
       font-weight: 600;
       opacity: 0;
       transition: opacity 0.15s ease-in-out;
-
-      &:hover {
+      
+      &:hover,
+      &:focus {
         opacity: 1;
         text-decoration: none;
       }

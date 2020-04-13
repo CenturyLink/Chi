@@ -67,73 +67,81 @@ h3 Base
                 |  Password change for user trent.anderson
               .chi-activity__end-footer
                 | Admin
-  :code(lang='html')
-    <div class="chi-activity">
-      <div class="chi-activity__day">
-        <div class="chi-activity__header">Monday, Apr 22 2019</div>
-        <div class="chi-activity__content">
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>2:50 PM</div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href=`#webcomponent-base`) Web Component
+      li.-active
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
+    :code(lang='html')
+      <div class="chi-activity">
+        <div class="chi-activity__day">
+          <div class="chi-activity__header">Monday, Apr 22 2019</div>
+          <div class="chi-activity__content">
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>2:50 PM</div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header">Password change for user trent.anderson</div>
+                <div class="chi-activity__end-footer">Admin</div>
+              </div>
             </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header">Password change for user trent.anderson</div>
-              <div class="chi-activity__end-footer">Admin</div>
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>2:38 PM</div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header">Password change for user trent.anderson</div>
+                <div class="chi-activity__end-footer">Admin</div>
+              </div>
+            </div>
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>11:37 PM</div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header">Password change for user trent.anderson</div>
+                <div class="chi-activity__end-footer">Admin</div>
+              </div>
             </div>
           </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>2:38 PM</div>
+        </div>
+        <div class="chi-activity__day">
+          <div class="chi-activity__header">Monday, Apr 21 2019</div>
+          <div class="chi-activity__content">
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>5:00 PM</div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header">Password change for user trent.anderson</div>
+                <div class="chi-activity__end-footer">Admin</div>
+              </div>
             </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header">Password change for user trent.anderson</div>
-              <div class="chi-activity__end-footer">Admin</div>
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>5:00 PM</div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header">Password change for user trent.anderson</div>
+                <div class="chi-activity__end-footer">Admin</div>
+              </div>
             </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>11:37 PM</div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header">Password change for user trent.anderson</div>
-              <div class="chi-activity__end-footer">Admin</div>
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>11:20 AM</div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header">Password change for user trent.anderson</div>
+                <div class="chi-activity__end-footer">Admin</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="chi-activity__day">
-        <div class="chi-activity__header">Monday, Apr 21 2019</div>
-        <div class="chi-activity__content">
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>5:00 PM</div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header">Password change for user trent.anderson</div>
-              <div class="chi-activity__end-footer">Admin</div>
-            </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>5:00 PM</div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header">Password change for user trent.anderson</div>
-              <div class="chi-activity__end-footer">Admin</div>
-            </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>11:20 AM</div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header">Password change for user trent.anderson</div>
-              <div class="chi-activity__end-footer">Admin</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
 h3 With Avatar
 .example.-mb--3
@@ -219,103 +227,111 @@ h3 With Avatar
                 |  Password change for user trent.anderson
               .chi-activity__end-footer
                 | Admin
-  :code(lang='html')
-    <div class="chi-activity">
-      <div class="chi-activity__day">
-        <div class="chi-activity__header">Monday, Apr 22 2019</div>
-        <div class="chi-activity__content">
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>2:50 PM</div>
-            </div>
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar">
-                <img src="../../assets/images/avatar.jpg" alt="avatar">
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-avatar
+      li.-disabled
+        a(href=`#webcomponent-avatar`) Web Component
+      li.-active
+        a(href=`#html-avatar`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-avatar
+  .chi-tabs-panel.-active#html-avatar
+    :code(lang='html')
+      <div class="chi-activity">
+        <div class="chi-activity__day">
+          <div class="chi-activity__header">Monday, Apr 22 2019</div>
+          <div class="chi-activity__content">
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>2:50 PM</div>
+              </div>
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header">Password change for user trent.anderson</div>
+                <div class="chi-activity__end-footer">Admin</div>
               </div>
             </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header">Password change for user trent.anderson</div>
-              <div class="chi-activity__end-footer">Admin</div>
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>2:38 PM</div>
+              </div>
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header">Password change for user trent.anderson</div>
+                <div class="chi-activity__end-footer">Admin</div>
+              </div>
+            </div>
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>11:37 PM</div>
+              </div>
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header">Password change for user trent.anderson</div>
+                <div class="chi-activity__end-footer">Admin</div>
+              </div>
             </div>
           </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>2:38 PM</div>
-            </div>
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar">
-                <img src="../../assets/images/avatar.jpg" alt="avatar">
+        </div>
+        <div class="chi-activity__day">
+          <div class="chi-activity__header">Monday, Apr 21 2019</div>
+          <div class="chi-activity__content">
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>5:00 PM</div>
+              </div>
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header">Password change for user trent.anderson</div>
+                <div class="chi-activity__end-footer">Admin</div>
               </div>
             </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header">Password change for user trent.anderson</div>
-              <div class="chi-activity__end-footer">Admin</div>
-            </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>11:37 PM</div>
-            </div>
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar">
-                <img src="../../assets/images/avatar.jpg" alt="avatar">
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>5:00 PM</div>
+              </div>
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header">Password change for user trent.anderson</div>
+                <div class="chi-activity__end-footer">Admin</div>
               </div>
             </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header">Password change for user trent.anderson</div>
-              <div class="chi-activity__end-footer">Admin</div>
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>11:20 AM</div>
+              </div>
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header">Password change for user trent.anderson</div>
+                <div class="chi-activity__end-footer">Admin</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="chi-activity__day">
-        <div class="chi-activity__header">Monday, Apr 21 2019</div>
-        <div class="chi-activity__content">
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>5:00 PM</div>
-            </div>
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar">
-                <img src="../../assets/images/avatar.jpg" alt="avatar">
-              </div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header">Password change for user trent.anderson</div>
-              <div class="chi-activity__end-footer">Admin</div>
-            </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>5:00 PM</div>
-            </div>
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar">
-                <img src="../../assets/images/avatar.jpg" alt="avatar">
-              </div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header">Password change for user trent.anderson</div>
-              <div class="chi-activity__end-footer">Admin</div>
-            </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>11:20 AM</div>
-            </div>
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar">
-                <img src="../../assets/images/avatar.jpg" alt="avatar">
-              </div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header">Password change for user trent.anderson</div>
-              <div class="chi-activity__end-footer">Admin</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
 h3 Feed
 p.-text Apply the modifier class <code>-feed</code> to render with feed style
@@ -390,73 +406,81 @@ p.-text Apply the modifier class <code>-feed</code> to render with feed style
                 strong  Active Directory
               .chi-activity__end-footer
                 | 04/16/2019 &#183; 11:20 AM
-  :code(lang='html')
-    <div class="chi-activity -feed">
-      <div class="chi-activity__day">
-        <div class="chi-activity__content">
-          <div class="chi-activity__item">
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-feed
+      li.-disabled
+        a(href=`#webcomponent-feed`) Web Component
+      li.-active
+        a(href=`#html-feed`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-feed
+  .chi-tabs-panel.-active#html-feed
+    :code(lang='html')
+      <div class="chi-activity -feed">
+        <div class="chi-activity__day">
+          <div class="chi-activity__content">
+            <div class="chi-activity__item">
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
               </div>
-              <div class="chi-activity__end-footer">04/22/2019 &#183; 2:50 PM</div>
-            </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-footer">04/22/2019 &#183; 2:50 PM</div>
               </div>
-              <div class="chi-activity__end-footer">04/22/2019 &#183; 2:38 PM</div>
             </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+            <div class="chi-activity__item">
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
               </div>
-              <div class="chi-activity__end-footer">04/22/2019 &#183; 2:37 PM</div>
-            </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-footer">04/22/2019 &#183; 2:38 PM</div>
               </div>
-              <div class="chi-activity__end-footer">04/16/2019 &#183; 5:00 PM</div>
             </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+            <div class="chi-activity__item">
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
               </div>
-              <div class="chi-activity__end-footer">04/16/2019 &#183; 5:00 PM</div>
-            </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-footer">04/22/2019 &#183; 2:37 PM</div>
               </div>
-              <div class="chi-activity__end-footer">04/16/2019 &#183; 11:20 AM</div>
+            </div>
+            <div class="chi-activity__item">
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-footer">04/16/2019 &#183; 5:00 PM</div>
+              </div>
+            </div>
+            <div class="chi-activity__item">
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-footer">04/16/2019 &#183; 5:00 PM</div>
+              </div>
+            </div>
+            <div class="chi-activity__item">
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-footer">04/16/2019 &#183; 11:20 AM</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
 h3 Compact Feed
 p.-text Apply the modifier class <code>-feed</code> and the modifier class <code>-compact</code> to render with compact feed style
@@ -531,85 +555,93 @@ p.-text Apply the modifier class <code>-feed</code> and the modifier class <code
                 strong  Active Directory
               .chi-activity__end-footer
                 | 04/16/2019 &#183; 11:20 AM
-  :code(lang='html')
-    <div class="chi-activity -feed -compact">
-      <div class="chi-activity__day">
-        <div class="chi-activity__content">
-          <div class="chi-activity__item">
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar">
-                <img src="../../assets/images/avatar.jpg" alt="avatar">
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-compact
+      li.-disabled
+        a(href=`#webcomponent-compact`) Web Component
+      li.-active
+        a(href=`#html-compact`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-compact
+  .chi-tabs-panel.-active#html-compact
+    :code(lang='html')
+      <div class="chi-activity -feed -compact">
+        <div class="chi-activity__day">
+          <div class="chi-activity__content">
+            <div class="chi-activity__item">
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-footer">04/22/2019 &#183; 2:50 PM</div>
               </div>
             </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+            <div class="chi-activity__item">
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
               </div>
-              <div class="chi-activity__end-footer">04/22/2019 &#183; 2:50 PM</div>
-            </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar">
-                <img src="../../assets/images/avatar.jpg" alt="avatar">
-              </div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
-              </div>
-              <div class="chi-activity__end-footer">04/22/2019 &#183; 2:38 PM</div>
-            </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar">
-                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-footer">04/22/2019 &#183; 2:38 PM</div>
               </div>
             </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+            <div class="chi-activity__item">
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
               </div>
-              <div class="chi-activity__end-footer">04/22/2019 &#183; 2:37 PM</div>
-            </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar">
-                <img src="../../assets/images/avatar.jpg" alt="avatar">
-              </div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
-              </div>
-              <div class="chi-activity__end-footer">04/16/2019 &#183; 5:00 PM</div>
-            </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar">
-                <img src="../../assets/images/avatar.jpg" alt="avatar">
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-footer">04/22/2019 &#183; 2:37 PM</div>
               </div>
             </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+            <div class="chi-activity__item">
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
               </div>
-              <div class="chi-activity__end-footer">04/16/2019 &#183; 5:00 PM</div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-footer">04/16/2019 &#183; 5:00 PM</div>
+              </div>
             </div>
-          </div>
-          <div class="chi-activity__item">
-            <div class="chi-activity__item-avatar">
-              <div class="chi-avatar">
-                <img src="../../assets/images/avatar.jpg" alt="avatar">
+            <div class="chi-activity__item">
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
+              </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-footer">04/16/2019 &#183; 5:00 PM</div>
               </div>
             </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+            <div class="chi-activity__item">
+              <div class="chi-activity__item-avatar">
+                <div class="chi-avatar">
+                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+                </div>
               </div>
-              <div class="chi-activity__end-footer">04/16/2019 &#183; 11:20 AM</div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-footer">04/16/2019 &#183; 11:20 AM</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
 h3 Feed with stories
 .example.-mb--3
@@ -687,109 +719,117 @@ h3 Feed with stories
                       .-time 3 minutes ago
               .chi-activity__end-footer
                 | 04/21/2019
-  :code(lang='html')
-    <div class="chi-activity -feed -stories">
-      <div class="chi-activity__day">
-        <div class="chi-activity__content">
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>
-                <div class="chi-avatar">
-                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-stories
+      li.-disabled
+        a(href=`#webcomponent-stories`) Web Component
+      li.-active
+        a(href=`#html-stories`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-stories
+  .chi-tabs-panel.-active#html-stories
+    :code(lang='html')
+      <div class="chi-activity -feed -stories">
+        <div class="chi-activity__day">
+          <div class="chi-activity__content">
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>
+                  <div class="chi-avatar">
+                    <img src="../../assets/images/avatar.jpg" alt="avatar">
+                  </div>
                 </div>
               </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-content">
+                  <ul>
+                    <li>
+                      <i class="chi-icon -text--success icon-check-alt"></i>
+                      <div>
+                        <div>Instance successfully deployed</div>
+                        <div class="-time">1 minute ago</div>
+                      </div>
+                    </li>
+                    <li>
+                      <i class="chi-icon -text--success icon-check-alt"></i>
+                      <div>
+                        <div>Machine active-directory-vbo8o-1 successfully deployed</div>
+                        <div class="-time">2 minutes ago</div>
+                      </div>
+                    </li>
+                    <li>
+                      <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
+                      <div>
+                        <div>Executing install:Active Directory in machine active-directory-vbo8o-1</div>
+                        <div class="-time">2 minutes ago</div>
+                      </div>
+                    </li>
+                    <li>
+                      <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
+                      <div>
+                        <div>Updating machine IPs</div>
+                        <div class="-time">3 minutes ago</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="chi-activity__end-footer">04/22/2019</div>
+              </div>
             </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+          </div>
+        </div>
+        <div class="chi-activity__day">
+          <div class="chi-activity__content">
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>
+                  <div class="chi-avatar">
+                    <img src="../../assets/images/avatar.jpg" alt="avatar">
+                  </div>
+                </div>
               </div>
-              <div class="chi-activity__end-content">
-                <ul>
-                  <li>
-                    <i class="chi-icon -text--success icon-check-alt"></i>
-                    <div>
-                      <div>Instance successfully deployed</div>
-                      <div class="-time">1 minute ago</div>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="chi-icon -text--success icon-check-alt"></i>
-                    <div>
-                      <div>Machine active-directory-vbo8o-1 successfully deployed</div>
-                      <div class="-time">2 minutes ago</div>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
-                    <div>
-                      <div>Executing install:Active Directory in machine active-directory-vbo8o-1</div>
-                      <div class="-time">2 minutes ago</div>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
-                    <div>
-                      <div>Updating machine IPs</div>
-                      <div class="-time">3 minutes ago</div>
-                    </div>
-                  </li>
-                </ul>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-content">
+                  <ul>
+                    <li>
+                      <i class="chi-icon -text--success icon-check-alt"></i>
+                      <div>
+                        <div>Instance successfully deployed</div>
+                        <div class="-time">1 minute ago</div>
+                      </div>
+                    </li>
+                    <li>
+                      <i class="chi-icon -text--success icon-check-alt"></i>
+                      <div>
+                        <div>Machine active-directory-vbo8o-1 successfully deployed</div>
+                        <div class="-time">2 minutes ago</div>
+                      </div>
+                    </li>
+                    <li>
+                      <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
+                      <div>
+                        <div>Executing install:Active Directory in machine active-directory-vbo8o-1</div>
+                        <div class="-time">2 minutes ago</div>
+                      </div>
+                    </li>
+                    <li>
+                      <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
+                      <div>
+                        <div>Updating machine IPs</div>
+                        <div class="-time">3 minutes ago</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="chi-activity__end-footer">04/21/2019</div>
               </div>
-              <div class="chi-activity__end-footer">04/22/2019</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="chi-activity__day">
-        <div class="chi-activity__content">
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>
-                <div class="chi-avatar">
-                  <img src="../../assets/images/avatar.jpg" alt="avatar">
-                </div>
-              </div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
-              </div>
-              <div class="chi-activity__end-content">
-                <ul>
-                  <li>
-                    <i class="chi-icon -text--success icon-check-alt"></i>
-                    <div>
-                      <div>Instance successfully deployed</div>
-                      <div class="-time">1 minute ago</div>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="chi-icon -text--success icon-check-alt"></i>
-                    <div>
-                      <div>Machine active-directory-vbo8o-1 successfully deployed</div>
-                      <div class="-time">2 minutes ago</div>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
-                    <div>
-                      <div>Executing install:Active Directory in machine active-directory-vbo8o-1</div>
-                      <div class="-time">2 minutes ago</div>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
-                    <div>
-                      <div>Updating machine IPs</div>
-                      <div class="-time">3 minutes ago</div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="chi-activity__end-footer">04/21/2019</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
 h3 Feed with stories and operation icons
 .example.-mb--3
@@ -869,106 +909,121 @@ h3 Feed with stories and operation icons
                       .-time 3 minutes ago
               .chi-activity__end-footer
                 | 04/21/2019
-  :code(lang='html')
-    <div class="chi-activity -feed -stories">
-      <div class="chi-activity__day">
-        <div class="chi-activity__content">
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>
-                <i class="chi-icon -text--muted icon-circle-play-outline"></i>
-                <div class="chi-avatar">
-                  <img src="../../assets/images/avatar.jpg" alt="avatar">
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-stories-icons
+      li.-disabled
+        a(href=`#webcomponent-stories-icons`) Web Component
+      li.-active
+        a(href=`#html-stories-icons`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-stories-icons
+  .chi-tabs-panel.-active#html-stories-icons
+    :code(lang='html')
+      <div class="chi-activity -feed -stories">
+        <div class="chi-activity__day">
+          <div class="chi-activity__content">
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>
+                  <i class="chi-icon -text--muted icon-circle-play-outline"></i>
+                  <div class="chi-avatar">
+                    <img src="../../assets/images/avatar.jpg" alt="avatar">
+                  </div>
                 </div>
               </div>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-content">
+                  <ul>
+                    <li>
+                      <i class="chi-icon -text--success icon-check-alt"></i>
+                      <div>
+                        <div>Instance successfully deployed</div>
+                        <div class="-time">1 minute ago</div>
+                      </div>
+                    </li>
+                    <li>
+                      <i class="chi-icon -text--success icon-check-alt"></i>
+                      <div>
+                        <div>Machine active-directory-vbo8o-1 successfully deployed</div>
+                        <div class="-time">2 minutes ago</div>
+                      </div>
+                    </li>
+                    <li>
+                      <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
+                      <div>
+                        <div>Executing install:Active Directory in machine active-directory-vbo8o-1</div>
+                        <div class="-time">2 minutes ago</div>
+                      </div>
+                    </li>
+                    <li>
+                      <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
+                      <div>
+                        <div>Updating machine IPs</div>
+                        <div class="-time">3 minutes ago</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="chi-activity__end-footer">04/22/2019</div>
+              </div>
             </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+          </div>
+        </div>
+        <div class="chi-activity__day">
+          <div class="chi-activity__content">
+            <div class="chi-activity__item">
+              <div class="chi-activity__start">
+                <div>
+                  <i class="chi-icon -text--muted icon-circle-play-outline"></i>
+                  <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
+                </div>
               </div>
-              <div class="chi-activity__end-content">
-                <ul>
-                  <li>
-                    <i class="chi-icon -text--success icon-check-alt"></i>
-                    <div>
-                      <div>Instance successfully deployed</div>
-                      <div class="-time">1 minute ago</div>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="chi-icon -text--success icon-check-alt"></i>
-                    <div>
-                      <div>Machine active-directory-vbo8o-1 successfully deployed</div>
-                      <div class="-time">2 minutes ago</div>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
-                    <div>
-                      <div>Executing install:Active Directory in machine active-directory-vbo8o-1</div>
-                      <div class="-time">2 minutes ago</div>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
-                    <div>
-                      <div>Updating machine IPs</div>
-                      <div class="-time">3 minutes ago</div>
-                    </div>
-                  </li>
-                </ul>
+              <div class="chi-activity__end">
+                <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
+                </div>
+                <div class="chi-activity__end-content">
+                  <ul>
+                    <li>
+                      <i class="chi-icon -text--success icon-check-alt"></i>
+                      <div>
+                        <div>Instance successfully deployed</div>
+                        <div class="-time">1 minute ago</div>
+                      </div>
+                    </li>
+                    <li>
+                      <i class="chi-icon -text--success icon-check-alt"></i>
+                      <div>
+                        <div>Machine active-directory-vbo8o-1 successfully deployed</div>
+                        <div class="-time">2 minutes ago</div>
+                      </div>
+                    </li>
+                    <li>
+                      <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
+                      <div>
+                        <div>Executing install:Active Directory in machine active-directory-vbo8o-1</div>
+                        <div class="-time">2 minutes ago</div>
+                      </div>
+                    </li>
+                    <li>
+                      <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
+                      <div>
+                        <div>Updating machine IPs</div>
+                        <div class="-time">3 minutes ago</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="chi-activity__end-footer">04/21/2019</div>
               </div>
-              <div class="chi-activity__end-footer">04/22/2019</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="chi-activity__day">
-        <div class="chi-activity__content">
-          <div class="chi-activity__item">
-            <div class="chi-activity__start">
-              <div>
-                <i class="chi-icon -text--muted icon-circle-play-outline"></i>
-                <div class="chi-avatar"><img src="../../assets/images/avatar.jpg" alt="avatar"></div>
-              </div>
-            </div>
-            <div class="chi-activity__end">
-              <div class="chi-activity__end-header"><strong>trent.anderson</strong> deployed<strong> Active Directory</strong>
-              </div>
-              <div class="chi-activity__end-content">
-                <ul>
-                  <li>
-                    <i class="chi-icon -text--success icon-check-alt"></i>
-                    <div>
-                      <div>Instance successfully deployed</div>
-                      <div class="-time">1 minute ago</div>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="chi-icon -text--success icon-check-alt"></i>
-                    <div>
-                      <div>Machine active-directory-vbo8o-1 successfully deployed</div>
-                      <div class="-time">2 minutes ago</div>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
-                    <div>
-                      <div>Executing install:Active Directory in machine active-directory-vbo8o-1</div>
-                      <div class="-time">2 minutes ago</div>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="chi-icon -text--muted icon-circle-plus-outline"></i>
-                    <div>
-                      <div>Updating machine IPs</div>
-                      <div class="-time">3 minutes ago</div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="chi-activity__end-footer">04/21/2019</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+script.
+    document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+    });

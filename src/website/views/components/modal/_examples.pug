@@ -2,7 +2,7 @@ h2 Examples
 p.-text
   | Modals are composed of several parts. To render a modal, include a modal backdrop, modal header, modal body,
   | and modal footer (optional).
-  | By default modals are positioned on top of the page.
+  | By default modals are aligned to the top of the page.
 
 h3 Base
 .example.-mb--3(style='position:static')
@@ -23,36 +23,50 @@ h3 Base
         footer.chi-modal__footer
           button.chi-btn(data-dismiss='modal') Cancel
           button.chi-btn.-primary.-ml--2 Save
-  :code(lang="html")
-    <button id="modal-trigger-1" class="chi-btn chi-modal__trigger" data-target="#modal-1">
-      Launch demo modal
-    </button>
-    <div class="chi-backdrop -closed">
-      <div class="chi-backdrop__wrapper">
-        <section id="modal-1" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="chi-modal__header">
-            <h2 class="chi-modal__title">Modal Title</h2>
-            <button class="chi-btn -icon -close" data-dismiss="modal" aria-label="Close">
-              <div class="chi-btn__content">
-                <i class="chi-icon icon-x"></i>
-              </div>
-            </button>
-          </header>
-          <div class="chi-modal__content">
-            <p class="-text -m--0">Modal content</p>
-          </div>
-          <footer class="chi-modal__footer">
-            <button class="chi-btn" data-dismiss="modal">Cancel</button>
-            <button class="chi-btn -primary -ml--2">Save</button>
-          </footer>
-        </section>
-      </div>
-    </div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href=`#webcomponent-base`) Web Component
+      li.-active
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
+    .chi-tab__description
+      chi-alert(icon="circle-info")
+        | This HTML Blueprint requires JavaScript to render properly.
+        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
+        | a vanilla javascript solution which includes support for this Modal component.
+    :code(lang="html")
+      <button id="modal-trigger-1" class="chi-btn chi-modal__trigger" data-target="#modal-1">
+        Launch demo modal
+      </button>
 
-    <script>chi.modal(document.getElementById('modal-trigger-1'));</script>
+      <div class="chi-backdrop -closed">
+        <div class="chi-backdrop__wrapper">
+          <section id="modal-1" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <header class="chi-modal__header">
+              <h2 class="chi-modal__title">Modal Title</h2>
+              <button class="chi-btn -icon -close" data-dismiss="modal" aria-label="Close">
+                <div class="chi-btn__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </header>
+            <div class="chi-modal__content">
+              <p class="-text -m--0">Modal content</p>
+            </div>
+            <footer class="chi-modal__footer">
+              <button class="chi-btn" data-dismiss="modal">Cancel</button>
+              <button class="chi-btn -primary -ml--2">Save</button>
+            </footer>
+          </section>
+        </div>
+      </div>
+
+      <script>chi.modal(document.getElementById('modal-trigger-1'));</script>
 
 h3 Center
-p.-text Modals can also be placed in the middle of the page by applying the class <code>-center</code> in the <code>chi-backdrop</code>.
+p.-text Modals can also be placed in the middle of the page by applying the class <code>-center</code> to <code>chi-backdrop</code>.
 .example.-mb--3
   .chi-backdrop.-center.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
     .chi-backdrop__wrapper
@@ -67,28 +81,36 @@ p.-text Modals can also be placed in the middle of the page by applying the clas
         footer.chi-modal__footer
           button.chi-btn Cancel
           button.chi-btn.-primary.-ml--2 Save
-  :code(lang="html")
-    <div class="chi-backdrop -center">
-      <div class="chi-backdrop__wrapper">
-        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="chi-modal__header">
-            <h2 class="chi-modal__title">Modal Title</h2>
-            <button class="chi-btn -icon -close" aria-label="Close">
-              <div class="chi-btn__content">
-                <i class="chi-icon icon-x"></i>
-              </div>
-            </button>
-          </header>
-          <div class="chi-modal__content">
-            <p class="-text -m--0">Modal content</p>
-          </div>
-          <footer class="chi-modal__footer">
-            <button class="chi-btn">Cancel</button>
-            <button class="chi-btn -primary -ml--2">Save</button>
-          </footer>
-        </section>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-center-align
+      li.-disabled
+        a(href=`#webcomponent-center-align`) Web Component
+      li.-active
+        a(href=`#html-center-align`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-center-align
+  .chi-tabs-panel.-active#html-center-align
+    :code(lang="html")
+      <div class="chi-backdrop -center">
+        <div class="chi-backdrop__wrapper">
+          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <header class="chi-modal__header">
+              <h2 class="chi-modal__title">Modal Title</h2>
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </header>
+            <div class="chi-modal__content">
+              <p class="-text -m--0">Modal content</p>
+            </div>
+            <footer class="chi-modal__footer">
+              <button class="chi-btn">Cancel</button>
+              <button class="chi-btn -primary -ml--2">Save</button>
+            </footer>
+          </section>
+        </div>
       </div>
-    </div>
 
 h3 Scrollable
 p.-text
@@ -125,45 +147,53 @@ p.-text
         footer.chi-modal__footer
           button.chi-btn Cancel
           button.chi-btn.-primary.-ml--2 Save
-  :code(lang="html")
-    <div class="chi-backdrop">
-      <div class="chi-backdrop__wrapper">
-        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="chi-modal__header">
-            <h2 class="chi-modal__title">Modal Title</h2>
-            <button class="chi-btn -icon -close" aria-label="Close">
-              <div class="chi-btn__content">
-                <i class="chi-icon icon-x"></i>
-              </div>
-            </button>
-          </header>
-          <div class="chi-modal__content -mh--400">
-            <p class="-text -mt--0">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-            </p>
-            <p class="-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-            </p>
-            <p class="-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-            </p>
-            <p class="-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-            </p>
-            <p class="-text">
-              Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
-              Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
-              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
-              cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
-            </p>
-          </div>
-          <footer class="chi-modal__footer">
-            <button class="chi-btn">Cancel</button>
-            <button class="chi-btn -primary -ml--2">Save</button>
-          </footer>
-        </section>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-scrollable
+      li.-disabled
+        a(href=`#webcomponent-scrollable`) Web Component
+      li.-active
+        a(href=`#html-scrollable`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-scrollable
+  .chi-tabs-panel.-active#html-scrollable
+    :code(lang="html")
+      <div class="chi-backdrop">
+        <div class="chi-backdrop__wrapper">
+          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <header class="chi-modal__header">
+              <h2 class="chi-modal__title">Modal Title</h2>
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </header>
+            <div class="chi-modal__content -mh--400">
+              <p class="-text -mt--0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+              </p>
+              <p class="-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+              </p>
+              <p class="-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+              </p>
+              <p class="-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+              </p>
+              <p class="-text">
+                Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+                Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+                cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+              </p>
+            </div>
+            <footer class="chi-modal__footer">
+              <button class="chi-btn">Cancel</button>
+              <button class="chi-btn -primary -ml--2">Save</button>
+            </footer>
+          </section>
+        </div>
       </div>
-    </div>
 
 h3 Scrolling long content
 p.-text
@@ -196,45 +226,53 @@ p.-text
         footer.chi-modal__footer
           button.chi-btn Cancel
           button.chi-btn.-primary.-ml--2 Save
-  :code(lang="html")
-    <div class="chi-backdrop -mh--480">
-      <div class="chi-backdrop__wrapper">
-        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="chi-modal__header">
-            <h2 class="chi-modal__title">Modal Title</h2>
-            <button class="chi-btn -icon -close" aria-label="Close">
-              <div class="chi-btn__content">
-                <i class="chi-icon icon-x"></i>
-              </div>
-            </button>
-          </header>
-          <div class="chi-modal__content">
-            <p class="-text -mt--0">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-            </p>
-            <p class="-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-            </p>
-            <p class="-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-            </p>
-            <p class="-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-            </p>
-            <p class="-text">
-              Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
-              Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
-              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
-              cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
-            </p>
-          </div>
-          <footer class="chi-modal__footer">
-            <button class="chi-btn">Cancel</button>
-            <button class="chi-btn -primary -ml--2">Save</button>
-          </footer>
-        </section>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-scrollable-long
+      li.-disabled
+        a(href=`#webcomponent-scrollable-long`) Web Component
+      li.-active
+        a(href=`#html-scrollable-long`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-scrollable-long
+  .chi-tabs-panel.-active#html-scrollable-long
+    :code(lang="html")
+      <div class="chi-backdrop -mh--480">
+        <div class="chi-backdrop__wrapper">
+          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <header class="chi-modal__header">
+              <h2 class="chi-modal__title">Modal Title</h2>
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </header>
+            <div class="chi-modal__content">
+              <p class="-text -mt--0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+              </p>
+              <p class="-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+              </p>
+              <p class="-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+              </p>
+              <p class="-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+              </p>
+              <p class="-text">
+                Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+                Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+                cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+              </p>
+            </div>
+            <footer class="chi-modal__footer">
+              <button class="chi-btn">Cancel</button>
+              <button class="chi-btn -primary -ml--2">Save</button>
+            </footer>
+          </section>
+        </div>
       </div>
-    </div>
 
 h3 With Subtitle
 .example.-mb--3
@@ -252,29 +290,37 @@ h3 With Subtitle
         footer.chi-modal__footer
           button.chi-btn Cancel
           button.chi-btn.-primary.-ml--2 Save
-  :code(lang="html")
-    <div class="chi-backdrop">
-      <div class="chi-backdrop__wrapper">
-        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="chi-modal__header">
-            <h2 class="chi-modal__title">Modal Title</h2>
-            <h3 class="chi-modal__subtitle">Modal subtitle</h3>
-            <button class="chi-btn -icon -close" aria-label="Close">
-              <div class="chi-btn__content">
-                <i class="chi-icon icon-x"></i>
-              </div>
-            </button>
-          </header>
-          <div class="chi-modal__content">
-            <p class="-text -m--0">Modal content</p>
-          </div>
-          <footer class="chi-modal__footer">
-            <button class="chi-btn">Cancel</button>
-            <button class="chi-btn -primary -ml--2">Save</button>
-          </footer>
-        </section>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-subtitle
+      li.-disabled
+        a(href=`#webcomponent-subtitle`) Web Component
+      li.-active
+        a(href=`#html-subtitle`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-subtitle
+  .chi-tabs-panel.-active#html-subtitle
+    :code(lang="html")
+      <div class="chi-backdrop">
+        <div class="chi-backdrop__wrapper">
+          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <header class="chi-modal__header">
+              <h2 class="chi-modal__title">Modal Title</h2>
+              <h3 class="chi-modal__subtitle">Modal subtitle</h3>
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </header>
+            <div class="chi-modal__content">
+              <p class="-text -m--0">Modal content</p>
+            </div>
+            <footer class="chi-modal__footer">
+              <button class="chi-btn">Cancel</button>
+              <button class="chi-btn -primary -ml--2">Save</button>
+            </footer>
+          </section>
+        </div>
       </div>
-    </div>
 
 h3 Inverse Backdrop
 p.-text
@@ -293,28 +339,36 @@ p.-text
         footer.chi-modal__footer
           button.chi-btn Cancel
           button.chi-btn.-primary.-ml--2 Save
-  :code(lang="html")
-    <div class="chi-backdrop -inverse">
-      <div class="chi-backdrop__wrapper">
-        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="chi-modal__header">
-            <h2 class="chi-modal__title">Modal Title</h2>
-            <button class="chi-btn -icon -close" aria-label="Close">
-              <div class="chi-btn__content">
-                <i class="chi-icon icon-x"></i>
-              </div>
-            </button>
-          </header>
-          <div class="chi-modal__content">
-            <p class="-text -m--0">Modal content</p>
-          </div>
-          <footer class="chi-modal__footer">
-            <button class="chi-btn">Cancel</button>
-            <button class="chi-btn -primary -ml--2">Save</button>
-          </footer>
-        </section>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-backdrop-inverse
+      li.-disabled
+        a(href=`#webcomponent-backdrop-inverse`) Web Component
+      li.-active
+        a(href=`#html-backdrop-inverse`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-backdrop-inverse
+  .chi-tabs-panel.-active#html-backdrop-inverse
+    :code(lang="html")
+      <div class="chi-backdrop -inverse">
+        <div class="chi-backdrop__wrapper">
+          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <header class="chi-modal__header">
+              <h2 class="chi-modal__title">Modal Title</h2>
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </header>
+            <div class="chi-modal__content">
+              <p class="-text -m--0">Modal content</p>
+            </div>
+            <footer class="chi-modal__footer">
+              <button class="chi-btn">Cancel</button>
+              <button class="chi-btn -primary -ml--2">Save</button>
+            </footer>
+          </section>
+        </div>
       </div>
-    </div>
 
 h3 No Border
 p.-text
@@ -334,28 +388,36 @@ p.-text
         footer.chi-modal__footer.-no-border
           button.chi-btn Cancel
           button.chi-btn.-primary.-ml--2 Save
-  :code(lang="html")
-    <div class="chi-backdrop">
-      <div class="chi-backdrop__wrapper">
-        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="chi-modal__header -no-border">
-            <h2 class="chi-modal__title">Modal Title</h2>
-            <button class="chi-btn -icon -close" aria-label="Close">
-              <div class="chi-btn__content">
-                <i class="chi-icon icon-x"></i>
-              </div>
-            </button>
-          </header>
-          <div class="chi-modal__content">
-            <p class="-text -m--0">Modal content</p>
-          </div>
-          <footer class="chi-modal__footer -no-border">
-            <button class="chi-btn">Cancel</button>
-            <button class="chi-btn -primary -ml--2">Save</button>
-          </footer>
-        </section>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-no-border
+      li.-disabled
+        a(href=`#webcomponent-no-border`) Web Component
+      li.-active
+        a(href=`#html-no-border`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-no-border
+  .chi-tabs-panel.-active#html-no-border
+    :code(lang="html")
+      <div class="chi-backdrop">
+        <div class="chi-backdrop__wrapper">
+          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <header class="chi-modal__header -no-border">
+              <h2 class="chi-modal__title">Modal Title</h2>
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </header>
+            <div class="chi-modal__content">
+              <p class="-text -m--0">Modal content</p>
+            </div>
+            <footer class="chi-modal__footer -no-border">
+              <button class="chi-btn">Cancel</button>
+              <button class="chi-btn -primary -ml--2">Save</button>
+            </footer>
+          </section>
+        </div>
       </div>
-    </div>
 
 h3 Multi-step
 p.-text
@@ -376,28 +438,36 @@ p.-text
           p.-text.-m--0 Modal content
         footer.chi-modal__footer
           button.chi-btn.-primary.-ml--2 Next
-  :code(lang="html")
-    <div class="chi-backdrop">
-      <div class="chi-backdrop__wrapper">
-        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="chi-modal__header">
-            <h2 class="chi-modal__title -centered">Modal Title</h2>
-            <button class="chi-modal__back" aria-label="Back"></button>
-            <button class="chi-btn -icon -close" aria-label="Close">
-              <div class="chi-btn__content">
-                <i class="chi-icon icon-x"></i>
-              </div>
-            </button>
-          </header>
-          <div class="chi-modal__content">
-            <p class="-text -m--0">Modal content</p>
-          </div>
-          <footer class="chi-modal__footer">
-            <button class="chi-btn -primary -ml--2">Next</button>
-          </footer>
-        </section>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-multistep
+      li.-disabled
+        a(href=`#webcomponent-multistep`) Web Component
+      li.-active
+        a(href=`#html-multistep`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-multistep
+  .chi-tabs-panel.-active#html-multistep
+    :code(lang="html")
+      <div class="chi-backdrop">
+        <div class="chi-backdrop__wrapper">
+          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <header class="chi-modal__header">
+              <h2 class="chi-modal__title -centered">Modal Title</h2>
+              <button class="chi-modal__back" aria-label="Back"></button>
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </header>
+            <div class="chi-modal__content">
+              <p class="-text -m--0">Modal content</p>
+            </div>
+            <footer class="chi-modal__footer">
+              <button class="chi-btn -primary -ml--2">Next</button>
+            </footer>
+          </section>
+        </div>
       </div>
-    </div>
 
 h3 Simple
 p.-text Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code> for a simple and customizable modal.
@@ -415,23 +485,31 @@ p.-text Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code>
             | mollis nulla, eget ornare tellus. Lorem ipsum dolor sit amet,
             | consectetur adipiscing elit. Donec laoreet rutrum eros laoreet.
           button.chi-btn.-primary.-lg.-mt--1 Action
-  :code(lang="html")
-    <div class="chi-backdrop">
-      <div class="chi-backdrop__wrapper">
-        <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <button class="chi-btn -icon -close" aria-label="Close">
-            <div class="chi-btn__content">
-              <i class="chi-icon icon-x"></i>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-simple
+      li.-disabled
+        a(href=`#webcomponent-simple`) Web Component
+      li.-active
+        a(href=`#html-simple`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-simple
+  .chi-tabs-panel.-active#html-simple
+    :code(lang="html")
+      <div class="chi-backdrop">
+        <div class="chi-backdrop__wrapper">
+          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <button class="chi-btn -icon -close" aria-label="Close">
+              <div class="chi-btn__content">
+                <i class="chi-icon icon-x"></i>
+              </div>
+            </button>
+            <div class="chi-modal__content -text--center -p--6">
+              <h2 class="-text--h3 -text--bolder -m--0">Modal Title</h2>
+              <p class="-text -py--1 -px--3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis mollis nulla, eget ornare tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet rutrum eros laoreet.</p>
+              <button class="chi-btn -primary -lg -mt--1">Action</button>
             </div>
-          </button>
-          <div class="chi-modal__content -text--center -p--6">
-            <h2 class="-text--h3 -text--bolder -m--0">Modal Title</h2>
-            <p class="-text -py--1 -px--3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis mollis nulla, eget ornare tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet rutrum eros laoreet.</p>
-            <button class="chi-btn -primary -lg -mt--1">Action</button>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
-    </div>
 
 h3 Portal
 .example.-mb--3
@@ -447,31 +525,41 @@ h3 Portal
           p.-text.-m--0 Modal content
         footer.chi-modal__footer
           button.chi-btn.-primary.-lg Save
-  :code(lang="html")
-    <div class="chi-backdrop -portal">
-      <div class="chi-backdrop__wrapper">
-        <section class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
-          <header class="chi-modal__header">
-            <h2 class="chi-modal__title">Modal Title</h2>
-            <button class="chi-btn -icon -close" aria-label="Close">
-              <div class="chi-btn__content">
-                <i class="chi-icon icon-x"></i>
-              </div>
-            </button>
-          </header>
-          <div class="chi-modal__content">
-            <p class="-text -m--0">Modal content</p>
-          </div>
-          <footer class="chi-modal__footer">
-            <button class="chi-btn -primary -lg">Save</button>
-          </footer>
-        </section>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal
+      li.-disabled
+        a(href=`#webcomponent-portal`) Web Component
+      li.-active
+        a(href=`#html-portal`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal
+  .chi-tabs-panel.-active#html-portal
+    :code(lang="html")
+      <div class="chi-backdrop -portal">
+        <div class="chi-backdrop__wrapper">
+          <section class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <header class="chi-modal__header">
+              <h2 class="chi-modal__title">Modal Title</h2>
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </header>
+            <div class="chi-modal__content">
+              <p class="-text -m--0">Modal content</p>
+            </div>
+            <footer class="chi-modal__footer">
+              <button class="chi-btn -primary -lg">Save</button>
+            </footer>
+          </section>
+        </div>
       </div>
-    </div>
+
 script.
-  document.addEventListener(
-          'DOMContentLoaded',
-          function() {
-            chi.modal(document.querySelectorAll('#modal-trigger-1'));
-          }
+    document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+      chi.modal(document.querySelectorAll('#modal-trigger-1'));
+    }
   );
