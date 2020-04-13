@@ -12,10 +12,18 @@ h3 Base
   .-p--3
     .chi-avatar
       img(src='../../assets/images/avatar.jpg', alt="avatar")
-  :code(lang="html")
-    <div class="chi-avatar">
-      <img src="path/to/image.jpg" alt="avatar">
-    </div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href=`#webcomponent-base`) Web Component
+      li.-active
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
+    :code(lang="html")
+      <div class="chi-avatar">
+        <img src="path/to/image.jpg" alt="avatar">
+      </div>
 
 h3 Icon Avatars
 p.-text
@@ -28,10 +36,18 @@ p.-text
         .chi-col.-w--2.-w-sm--1
           .chi-avatar
             i(class=`chi-icon icon-${icon}`)
-  :code(lang="html")
-    <div class="chi-avatar">
-      <i class="chi-icon icon-user"></i>
-    </div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-icon
+      li.-disabled
+        a(href=`#webcomponent-icon`) Web Component
+      li.-active
+        a(href=`#html-icon`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-icon
+  .chi-tabs-panel.-active#html-icon
+    :code(lang="html")
+      <div class="chi-avatar">
+        <i class="chi-icon icon-user"></i>
+      </div>
 
 h3 Initial avatars
 p.-text
@@ -45,10 +61,18 @@ p.-text
       .chi-avatar AA
     .chi-col.-w--2.-w-sm--1
       .chi-avatar M
-  :code(lang="html")
-    <div class="chi-avatar">AA</div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-initial
+      li.-disabled
+        a(href=`#webcomponent-initial`) Web Component
+      li.-active
+        a(href=`#html-initial`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-initial
+  .chi-tabs-panel.-active#html-initial
+    :code(lang="html")
+      <div class="chi-avatar">AA</div>
 
-h3 Customizations
+h2 Customizations
 
 h3 Color
 p.-text
@@ -72,20 +96,28 @@ ul#chi-tabs--colors.chi-tabs
             .chi-col.-w--2.-text--center
               div(class=`chi-avatar -${color}`) AA
               p.-text= color
-    :code(lang="html")
-      <div class="chi-avatar -grey">AA</div>
-      <div class="chi-avatar -red">AA</div>
-      <div class="chi-avatar -pink">AA</div>
-      <div class="chi-avatar -purple">AA</div>
-      <div class="chi-avatar -indigo">AA</div>
-      <div class="chi-avatar -blue">AA</div>
-      <div class="chi-avatar -light-blue">AA</div>
-      <div class="chi-avatar -teal">AA</div>
-      <div class="chi-avatar -mint">AA</div>
-      <div class="chi-avatar -green">AA</div>
-      <div class="chi-avatar -yellow">AA</div>
-      <div class="chi-avatar -orange">AA</div>
-      <div class="chi-avatar -primary">AA</div>
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-color-initial
+        li.-disabled
+          a(href=`#webcomponent-color-initial`) Web Component
+        li.-active
+          a(href=`#html-color-initial`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-color-initial
+    .chi-tabs-panel.-active#html-color-initial
+      :code(lang="html")
+        <div class="chi-avatar -grey">AA</div>
+        <div class="chi-avatar -red">AA</div>
+        <div class="chi-avatar -pink">AA</div>
+        <div class="chi-avatar -purple">AA</div>
+        <div class="chi-avatar -indigo">AA</div>
+        <div class="chi-avatar -blue">AA</div>
+        <div class="chi-avatar -light-blue">AA</div>
+        <div class="chi-avatar -teal">AA</div>
+        <div class="chi-avatar -mint">AA</div>
+        <div class="chi-avatar -green">AA</div>
+        <div class="chi-avatar -yellow">AA</div>
+        <div class="chi-avatar -orange">AA</div>
+        <div class="chi-avatar -primary">AA</div>
 
   #coloredIcons.chi-tabs-panel
     .-p--3
@@ -96,46 +128,54 @@ ul#chi-tabs--colors.chi-tabs
               div(class=`chi-avatar -${color}`)
                 i.chi-icon.icon-user
               p.-text= color
-    :code(lang="html")
-      <div class="chi-avatar -grey">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -red">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -pink">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -purple">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -indigo">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -blue">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -light-blue">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -teal">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -mint">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -green">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -yellow">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -orange">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -primary">
-        <i class="chi-icon icon-user"></i>
-      </div>
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-color-icon
+        li.-disabled
+          a(href=`#webcomponent-color-icon`) Web Component
+        li.-active
+          a(href=`#html-color-icon`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-color-icon
+    .chi-tabs-panel.-active#html-color-icon
+      :code(lang="html")
+        <div class="chi-avatar -grey">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -red">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -pink">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -purple">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -indigo">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -blue">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -light-blue">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -teal">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -mint">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -green">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -yellow">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -orange">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -primary">
+          <i class="chi-icon icon-user"></i>
+        </div>
 
 h3 Light and transparent background
 p.-text
@@ -153,17 +193,25 @@ p.-text
       .chi-col.-w--3.-text--center
         div.chi-avatar.-secondary.-transparent
           i.chi-icon.icon-user
-  :code(lang="html")
-    <div class="-bg--black">
-      <div class="chi-avatar -light">AA</div>
-      <div class="chi-avatar -secondary -transparent">AA</div>
-      <div class="chi-avatar -light">
-        <i class="chi-icon icon-user"></i>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-transparent
+      li.-disabled
+        a(href=`#webcomponent-transparent`) Web Component
+      li.-active
+        a(href=`#html-transparent`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-transparent
+  .chi-tabs-panel.-active#html-transparent
+    :code(lang="html")
+      <div class="-bg--black">
+        <div class="chi-avatar -light">AA</div>
+        <div class="chi-avatar -secondary -transparent">AA</div>
+        <div class="chi-avatar -light">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -secondary -transparent">
+          <i class="chi-icon icon-user"></i>
+        </div>
       </div>
-      <div class="chi-avatar -secondary -transparent">
-        <i class="chi-icon icon-user"></i>
-      </div>
-    </div>
 
 h3 Size
 p.-text
@@ -186,15 +234,23 @@ ul#chi-tabs--sizes.chi-tabs
           div(class=`chi-col -w--${columnWidths[size][0]} -w-lg--${columnWidths[size][1]} -w-xl--${columnWidths[size][2]} -text--center`)
             div(class=`chi-avatar -${size}`) AA
             p.-text= size
-    :code(lang="html")
-      <div class="chi-avatar -xs">AA</div>
-      <div class="chi-avatar -sm">AA</div>
-      <div class="chi-avatar -sm--2">AA</div>
-      <div class="chi-avatar -sm--3">AA</div>
-      <div class="chi-avatar -md">AA</div>
-      <div class="chi-avatar -lg">AA</div>
-      <div class="chi-avatar -xl">AA</div>
-      <div class="chi-avatar -xxl">AA</div>
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-size-initial
+        li.-disabled
+          a(href=`#webcomponent-size-initial`) Web Component
+        li.-active
+          a(href=`#html-size-initial`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-size-initial
+    .chi-tabs-panel.-active#html-size-initial
+      :code(lang="html")
+        <div class="chi-avatar -xs">AA</div>
+        <div class="chi-avatar -sm">AA</div>
+        <div class="chi-avatar -sm--2">AA</div>
+        <div class="chi-avatar -sm--3">AA</div>
+        <div class="chi-avatar -md">AA</div>
+        <div class="chi-avatar -lg">AA</div>
+        <div class="chi-avatar -xl">AA</div>
+        <div class="chi-avatar -xxl">AA</div>
 
   #sizedIcons.chi-tabs-panel
     .-p--3
@@ -204,32 +260,39 @@ ul#chi-tabs--sizes.chi-tabs
             div(class=`chi-avatar -${size}`)
               i.chi-icon.icon-user
             p.-text= size
-
-    :code(lang="html")
-      <div class="chi-avatar -xs">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -sm">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -sm--2">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -sm--3">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -md">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -lg">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -xl">
-        <i class="chi-icon icon-user"></i>
-      </div>
-      <div class="chi-avatar -xxl">
-        <i class="chi-icon icon-user"></i>
-      </div>
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-size-icon
+        li.-disabled
+          a(href=`#webcomponent-size-icon`) Web Component
+        li.-active
+          a(href=`#html-size-icon`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-size-icon
+    .chi-tabs-panel.-active#html-size-icon
+      :code(lang="html")
+        <div class="chi-avatar -xs">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -sm">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -sm--2">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -sm--3">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -md">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -lg">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -xl">
+          <i class="chi-icon icon-user"></i>
+        </div>
+        <div class="chi-avatar -xxl">
+          <i class="chi-icon icon-user"></i>
+        </div>
   #sizedImages.chi-tabs-panel
     .-p--3
       .chi-grid.-align-items--end
@@ -238,34 +301,41 @@ ul#chi-tabs--sizes.chi-tabs
             div(class=`chi-avatar -${size}`)
               img(src='../../assets/images/avatar.jpg', alt="avatar")
             p.-text= size
-    :code(lang="html")
-      <div class="chi-avatar -xs">
-        <img src="path/to/image.jpg">
-      </div>
-      <div class="chi-avatar -sm">
-        <img src="path/to/image.jpg">
-      </div>
-      <div class="chi-avatar -sm--2">
-        <img src="path/to/image.jpg">
-      </div>
-      <div class="chi-avatar -sm--3">
-        <img src="path/to/image.jpg">
-      </div>
-      <div class="chi-avatar -md">
-        <img src="path/to/image.jpg">
-      </div>
-      <div class="chi-avatar -lg">
-        <img src="path/to/image.jpg">
-      </div>
-      <div class="chi-avatar -xl">
-        <img src="path/to/image.jpg">
-      </div>
-      <div class="chi-avatar -xxl">
-        <img src="path/to/image.jpg">
-      </div>
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-size-image
+        li.-disabled
+          a(href=`#webcomponent-size-image`) Web Component
+        li.-active
+          a(href=`#html-size-image`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-size-image
+    .chi-tabs-panel.-active#html-size-image
+      :code(lang="html")
+        <div class="chi-avatar -xs">
+          <img src="path/to/image.jpg">
+        </div>
+        <div class="chi-avatar -sm">
+          <img src="path/to/image.jpg">
+        </div>
+        <div class="chi-avatar -sm--2">
+          <img src="path/to/image.jpg">
+        </div>
+        <div class="chi-avatar -sm--3">
+          <img src="path/to/image.jpg">
+        </div>
+        <div class="chi-avatar -md">
+          <img src="path/to/image.jpg">
+        </div>
+        <div class="chi-avatar -lg">
+          <img src="path/to/image.jpg">
+        </div>
+        <div class="chi-avatar -xl">
+          <img src="path/to/image.jpg">
+        </div>
+        <div class="chi-avatar -xxl">
+          <img src="path/to/image.jpg">
+        </div>
 
 h3 Avatar Groups
-
 p.-text
   | Use avatar groups to group multiple avatars or add descriptive text such as a users name.
   | Render an avatar group by wrapping an avatar in the class <code>chi-avatar__group</code>.
@@ -277,17 +347,23 @@ p.-text
           .chi-avatar__group
             div(class=`chi-avatar -${color}`) L
             = `Label ${color}`
-  :code(lang="html")
-    <div class="chi-avatar__group">
-      <div class="chi-avatar">L</div>Label text
-    </div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-avatar-groups
+      li.-disabled
+        a(href=`#webcomponent-avatar-groups`) Web Component
+      li.-active
+        a(href=`#html-avatar-groups`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-avatar-groups
+  .chi-tabs-panel.-active#html-avatar-groups
+    :code(lang="html")
+      <div class="chi-avatar__group">
+        <div class="chi-avatar">L</div>Label text
+      </div>
 
 script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('chi-tabs--sizes'));
-      chi.tab(document.getElementById('chi-tabs--colors'));
-      chi.tab(document.getElementById('chi-tabs--icons'));
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
     }
   );

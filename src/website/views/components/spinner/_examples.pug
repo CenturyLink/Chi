@@ -3,17 +3,17 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 h2 Examples
 
-h2 Backdrop
-h3 Base
+h3 Backdrop
+h4 Base
 .example.-mb--3
   .-p--6(style="position:relative;height:25rem;")
     chi-spinner(color='light', backdrop)
   .example-tabs.-pl--2
     ul.chi-tabs#examples-default
       li.-active
-        a(href=`#webcomponent`) Web component
+        a(href=`#webcomponent`) Web Component
       li
-        a(href=`#html`) HTML
+        a(href=`#html`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent
     .chi-tab__description
       | To render a spinner, use the tag <code>&lt;chi-spinner&gt;</code>.
@@ -36,16 +36,16 @@ h3 Base
         </div>
       </div>
 
-h3 Inverse
+h4 Inverse
 .example.-mb--3
   .-p--6(style="position:relative;height:25rem;")
     chi-spinner(color='primary', backdrop='inverse')
   .example-tabs.-pl--2
     ul.chi-tabs#examples-inverse
       li.-active
-        a(href=`#webcomponent-inverse`) Web component
+        a(href=`#webcomponent-inverse`) Web Component
       li
-        a(href=`#html-inverse`) HTML
+        a(href=`#html-inverse`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-inverse
     .chi-tab__description
       | Set the <code>backdrop</code> value to <code>inverse</code> to render spinners on light backgrounds.
@@ -64,9 +64,9 @@ h3 Inverse
         </div>
       </div>
 
-h2 Contextual
+h3 Contextual
 
-h3 Spinners in Buttons
+h4 Spinners in Buttons
 .example.-mb--3
   .-p--3
     chi-button(class='-mr--3')
@@ -81,9 +81,9 @@ h3 Spinners in Buttons
   .example-tabs.-pl--2
     ul.chi-tabs#examples-contextual
       li.-active
-        a(href=`#webcomponent-contextual`) Web component
+        a(href=`#webcomponent-contextual`) Web Component
       li
-        a(href=`#html-contextual`) HTML
+        a(href=`#html-contextual`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-contextual
     :code(lang="html")
       <chi-button>
@@ -131,7 +131,7 @@ h3 Spinners in Buttons
         </div>
       </button>
 
-h3 Spinners in Text Inputs
+h4 Spinners in Text Inputs
 .example.-mb--3
   .-p--3
     .chi-form__item.-mb--2(style="max-width:20rem")
@@ -155,41 +155,49 @@ h3 Spinners in Text Inputs
         svg(class=`chi-spinner -text--muted -sm--2`,viewBox=`0 0 66 66`)
           title Loading
           circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
-  :code(lang="html")
-    <!-- Medium (Base) -->
-    <div class="chi-form__item">
-      <label class="chi-label" for="spinner-input-01">Label</label>
-      <div class="chi-input__wrapper">
-        <input type="text" class="chi-input" placeholder="Placeholder" value="Sample text" id="spinner-input-01">
-        <svg class="chi-spinner -text--muted" viewBox="0 0 66 66">
-          <title>Loading</title>
-          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-        </svg>
-      </div>
-    </div>
-    <!-- Small -->
-    <div class="chi-form__item">
-      <label class="chi-label" for="spinner-input-02">Label</label>
-      <div class="chi-input__wrapper">
-        <input type="text" class="chi-input -sm" placeholder="Placeholder" value="Sample text" id="spinner-input-02">
-        <svg class="chi-spinner -text--muted -xs" viewBox="0 0 66 66">
-          <title>Loading</title>
-          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-        </svg>
-      </div>
-    </div>
-    <!-- Large -->
-    <div class="chi-form__item">
-      <label class="chi-label" for="spinner-input-03">Label</label>
-      <div class="chi-input__wrapper">
-        <input type="text" class="chi-input -lg" placeholder="Placeholder" value="Sample text" id="spinner-input-03">
-        <svg class="chi-spinner -text--muted -sm--2" viewBox="0 0 66 66">
-          <title>Loading</title>
-          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-        </svg>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-spinner-text
+      li.-disabled
+        a(href=`#webcomponent-spinner-text`) Web Component
+      li.-active
+        a(href=`#html-spinner-text`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-spinner-text
+  .chi-tabs-panel.-active#html-spinner-text
+    :code(lang="html")
+      <!-- Medium (Base) -->
+      <div class="chi-form__item">
+        <label class="chi-label" for="spinner-input-01">Label</label>
+        <div class="chi-input__wrapper">
+          <input type="text" class="chi-input" placeholder="Placeholder" value="Sample text" id="spinner-input-01">
+          <svg class="chi-spinner -text--muted" viewBox="0 0 66 66">
+            <title>Loading</title>
+            <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+          </svg>
         </div>
       </div>
-    </div>
+      <!-- Small -->
+      <div class="chi-form__item">
+        <label class="chi-label" for="spinner-input-02">Label</label>
+        <div class="chi-input__wrapper">
+          <input type="text" class="chi-input -sm" placeholder="Placeholder" value="Sample text" id="spinner-input-02">
+          <svg class="chi-spinner -text--muted -xs" viewBox="0 0 66 66">
+            <title>Loading</title>
+            <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+          </svg>
+        </div>
+      </div>
+      <!-- Large -->
+      <div class="chi-form__item">
+        <label class="chi-label" for="spinner-input-03">Label</label>
+        <div class="chi-input__wrapper">
+          <input type="text" class="chi-input -lg" placeholder="Placeholder" value="Sample text" id="spinner-input-03">
+          <svg class="chi-spinner -text--muted -sm--2" viewBox="0 0 66 66">
+            <title>Loading</title>
+            <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+          </svg>
+          </div>
+        </div>
+      </div>
 
 h2 Spinner Sizes
 .example.-mb--3
@@ -202,9 +210,9 @@ h2 Spinner Sizes
   .example-tabs.-pl--2
     ul.chi-tabs#examples-sizes
       li.-active
-        a(href=`#webcomponent-sizes`) Web component
+        a(href=`#webcomponent-sizes`) Web Component
       li
-        a(href=`#html-sizes`) HTML
+        a(href=`#html-sizes`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-sizes
     .chi-tab__description
       | By default, spinners are rendered at 16x16px (<code>sm</code>).
@@ -293,9 +301,9 @@ h2 Spinner Colors
   .example-tabs.-pl--2
     ul.chi-tabs#examples-colors
       li.-active
-        a(href=`#webcomponent-colors`) Web component
+        a(href=`#webcomponent-colors`) Web Component
       li
-        a(href=`#html-colors`) HTML
+        a(href=`#html-colors`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-colors
     .chi-tab__description
       | To change the color of a spinner set the value to <code>color</code> attribute.
@@ -349,10 +357,6 @@ script.
     document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('examples-default'));
-      chi.tab(document.getElementById('examples-inverse'));
-      chi.tab(document.getElementById('examples-contextual'));
-      chi.tab(document.getElementById('examples-sizes'));
-      chi.tab(document.getElementById('examples-colors'));
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
     }
   );

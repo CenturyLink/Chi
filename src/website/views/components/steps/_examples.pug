@@ -34,42 +34,50 @@ h3 Base
             div.chi-steps__icon
               a(href='#')= `${step}`
             div.chi-steps__line
-  :code(lang="html")
-    <ul class="chi-steps">
-      <li>
-        <div class="chi-steps__icon">
-          <a href="#">Step 1</a>
-        </div>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon">
-          <a href="#">Step 2</a>
-        </div>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li class="-active">
-        <div class="chi-steps__icon">
-          <a href="#">Step 3</a>
-        </div>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon">
-          <a href="#">Step 4</a>
-        </div>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon">
-          <a href="#">Step 5</a>
-        </div>
-      </li>
-    </ul>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href=`#webcomponent-base`) Web Component
+      li.-active
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
+    :code(lang="html")
+      <ul class="chi-steps">
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 1</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 2</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-active">
+          <div class="chi-steps__icon">
+            <a href="#">Step 3</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 4</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 5</a>
+          </div>
+        </li>
+      </ul>
 
 h3 Inverse
 .example.-mb--3
-  .-p--3
+  .-p--3.-bg--black
     ul.chi-steps.-inverse.-p--6
       each step in steps
         if step == 'Step 1'
@@ -96,38 +104,46 @@ h3 Inverse
             div.chi-steps__icon
               a(href='#')= `${step}`
             div.chi-steps__line
-  :code(lang="html")
-    <ul class="chi-steps -inverse">
-      <li>
-        <div class="chi-steps__icon">
-          <a href="#">Step 1</a>
-        </div>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon">
-          <a href="#">Step 2</a>
-        </div>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li class="-active">
-        <div class="chi-steps__icon">
-          <a href="#">Step 3</a>
-        </div>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon">
-          <a href="#">Step 4</a>
-        </div>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon">
-          <a href="#">Step 5</a>
-        </div>
-      </li>
-    </ul>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-inverse
+      li.-disabled
+        a(href=`#webcomponent-inverse`) Web Component
+      li.-active
+        a(href=`#html-inverse`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-inverse
+  .chi-tabs-panel.-active#html-inverse
+    :code(lang="html")
+      <ul class="chi-steps -inverse">
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 1</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 2</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-active">
+          <div class="chi-steps__icon">
+            <a href="#">Step 3</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 4</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 5</a>
+          </div>
+        </li>
+      </ul>
 
 
 
@@ -164,40 +180,48 @@ p.-text
             div.chi-steps__icon
             a(href='#')= `${step}`
             div.chi-steps__line
-  :code(lang="html")
-    <ul class="chi-steps -horizontal-label">
-      <li class="-completed">
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 1</a>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li class="-completed">
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 2</a>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li class="-active">
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 3</a>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 4</a>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 5</a>
-      </li>
-    </ul>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-horizontal-labels
+      li.-disabled
+        a(href=`#webcomponent-horizontal-labels`) Web Component
+      li.-active
+        a(href=`#html-horizontal-labels`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-horizontal-labels
+  .chi-tabs-panel.-active#html-horizontal-labels
+    :code(lang="html")
+      <ul class="chi-steps -horizontal-label">
+        <li class="-completed">
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 1</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-completed">
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 2</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-active">
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 3</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 4</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 5</a>
+        </li>
+      </ul>
 
 h3 Horizontal Labels Inverse
 p.-text
   | To display an inverse version of horizontal labels, apply the class <code>-inverse</code>.
 
 .example.-mb--3
-  .-p--3
+  .-p--3.-bg--black
     ul.chi-steps.-horizontal-label.-inverse.-p--5
       each step in steps
         if step == 'Step 1'
@@ -224,33 +248,41 @@ p.-text
             div.chi-steps__icon
             a(href='#')= `${step}`
             div.chi-steps__line
-  :code(lang="html")
-    <ul class="chi-steps -horizontal-label -inverse">
-      <li class="-completed">
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 1</a>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li class="-completed">
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 2</a>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li class="-active">
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 3</a>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 4</a>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 5</a>
-      </li>
-    </ul>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-horizontal-labels-inverse
+      li.-disabled
+        a(href=`#webcomponent-horizontal-labels-inverse`) Web Component
+      li.-active
+        a(href=`#html-horizontal-labels-inverse`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-horizontal-labels-inverse
+  .chi-tabs-panel.-active#html-horizontal-labels-inverse
+    :code(lang="html")
+      <ul class="chi-steps -horizontal-label -inverse">
+        <li class="-completed">
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 1</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-completed">
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 2</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-active">
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 3</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 4</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 5</a>
+        </li>
+      </ul>
 
 h3 Responsiveness
 p.-text
@@ -316,63 +348,79 @@ p.-text
             div.chi-steps__line
     p.-text--center
       | -labels-lg--hide
-  :code(lang="html")
-    <!-- Visible labels from md breakpoint -->
-    <ul class="chi-steps -labels-md--hide">
-      <li>
-        <div class="chi-steps__icon">
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-responsive
+      li.-disabled
+        a(href=`#webcomponent-responsive`) Web Component
+      li.-active
+        a(href=`#html-responsive`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-responsive
+  .chi-tabs-panel.-active#html-responsive
+    :code(lang="html")
+      <!-- Visible labels from md breakpoint -->
+      <ul class="chi-steps -labels-md--hide">
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 1</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 2</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-active">
+          <div class="chi-steps__icon">
+            <a href="#">Step 3</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 4</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 5</a>
+          </div>
+        </li>
+      </ul>
+      <!-- Visible labels from lg breakpoint -->
+      <ul class="chi-steps -horizontal-label -labels-lg--hide">
+        <li class="-completed">
+          <div class="chi-steps__icon"></div>
           <a href="#">Step 1</a>
-        </div>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon">
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-completed">
+          <div class="chi-steps__icon"></div>
           <a href="#">Step 2</a>
-        </div>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li class="-active">
-        <div class="chi-steps__icon">
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-active">
+          <div class="chi-steps__icon"></div>
           <a href="#">Step 3</a>
-        </div>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon">
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon"></div>
           <a href="#">Step 4</a>
-        </div>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon">
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon"></div>
           <a href="#">Step 5</a>
-        </div>
-      </li>
-    </ul>
-    <!-- Visible labels from lg breakpoint -->
-    <ul class="chi-steps -horizontal-label -labels-lg--hide">
-      <li class="-completed">
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 1</a>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li class="-completed">
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 2</a>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li class="-active">
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 3</a>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 4</a>
-        <div class="chi-steps__line"></div>
-      </li>
-      <li>
-        <div class="chi-steps__icon"></div>
-        <a href="#">Step 5</a>
-      </li>
-    </ul>
+        </li>
+      </ul>
+
+script.
+    document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+    }
+  );

@@ -5,8 +5,16 @@ h3 Base
 .example.-mb--3
   .-p--3
     hr.chi-divider
-  :code(lang="html")
-    <div class="chi-divider"></div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href=`#webcomponent-base`) Web Component
+      li.-active
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
+    :code(lang="html")
+      <div class="chi-divider"></div>
 
 h3 Vertical
 p.-text To render a vertical divider, apply <code>-vertical</code> and ensure the parent container has a height specified.
@@ -17,16 +25,32 @@ p.-text To render a vertical divider, apply <code>-vertical</code> and ensure th
     | Option
     .chi-divider.-vertical
     | Option
-  :code(lang="html")
-    <div class="chi-divider -vertical"></div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-vertical
+      li.-disabled
+        a(href=`#webcomponent-vertical`) Web Component
+      li.-active
+        a(href=`#html-vertical`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-vertical
+  .chi-tabs-panel.-active#html-vertical
+    :code(lang="html")
+      <div class="chi-divider -vertical"></div>
 
 h3 Inverse
 p.-text Use the <code>-inverse</code> class to render dividers on dark backgrounds.
 .example.-mb--3
   .-p--3(style="background-color:#000;border-radius:.15em .15em 0 0;")
     .chi-divider.-inverse
-  :code(lang="html")
-    <div class="chi-divider -inverse"></div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-inverse
+      li.-disabled
+        a(href=`#webcomponent-inverse`) Web Component
+      li.-active
+        a(href=`#html-inverse`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-inverse
+  .chi-tabs-panel.-active#html-inverse
+    :code(lang="html")
+      <div class="chi-divider -inverse"></div>
 
 h3 Label
 p.-text
@@ -36,8 +60,16 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-divider.-text.-label or
-  :code(lang="html")
-    <div class="chi-divider -label">or</div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-label
+      li.-disabled
+        a(href=`#webcomponent-label`) Web Component
+      li.-active
+        a(href=`#html-label`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-label
+  .chi-tabs-panel.-active#html-label
+    :code(lang="html")
+      <div class="chi-divider -label">or</div>
 
 h3 Color Bar
 p.-text
@@ -45,15 +77,21 @@ p.-text
   | CenturyLink. It can be placed on the top or bottom of containers and must be used in the color order shown.
   | The length can fluctuate to accent the design, as long as the dark blue is the shortest color, vibrant blue
   | is larger than dark blue, and mint green is the longest color.
-
 p.-text
   | To render a colored divider apply the class <code>-colorbar</code> to a divider.
-
 .example.-mb--3
   .-p--3
     .chi-divider.-colorbar
-  :code(lang="html")
-    <div class="chi-divider -colorbar"></div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-colorbar
+      li.-disabled
+        a(href=`#webcomponent-colorbar`) Web Component
+      li.-active
+        a(href=`#html-colorbar`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-colorbar
+  .chi-tabs-panel.-active#html-colorbar
+    :code(lang="html")
+      <div class="chi-divider -colorbar"></div>
 
 h2 Additional Sizes
 p.-text
@@ -76,8 +114,24 @@ p.-text
     p.-text.-m--0
       | -bt--4
     .chi-divider.-bt--4
-  :code(lang="html")
-    <div class="chi-divider -bt--1"></div>
-    <div class="chi-divider -bt--2"></div>
-    <div class="chi-divider -bt--3"></div>
-    <div class="chi-divider -bt--4"></div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-sizes
+      li.-disabled
+        a(href=`#webcomponent-sizes`) Web Component
+      li.-active
+        a(href=`#html-sizes`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-sizes
+  .chi-tabs-panel.-active#html-sizes
+    :code(lang="html")
+      <div class="chi-divider -bt--1"></div>
+      <div class="chi-divider -bt--2"></div>
+      <div class="chi-divider -bt--3"></div>
+      <div class="chi-divider -bt--4"></div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+    }
+  );

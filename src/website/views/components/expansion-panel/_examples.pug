@@ -5,7 +5,8 @@ p.-text
   | content or forms. When done, content or form data is presented in a read only state. When disabled, a muted title
   | is shown in a non-clickable state.
 
-ul#chi-tabs.chi-tabs
+h3 States
+ul.chi-tabs#example-states
   li.-active
     a(href='#chi-tabs-done') Done
   li
@@ -29,11 +30,11 @@ ul#chi-tabs.chi-tabs
         div(slot='change')
           button.chi-btn.-brand.-flat Change
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-default-done
+      ul.chi-tabs#example-default-done
         li.-active
-          a(href=`#webcomponent-done`) Web component
+          a(href=`#webcomponent-done`) Web Component
         li
-          a(href=`#html-done`) HTML
+          a(href=`#html-done`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-done
       :code(lang="html")
         <chi-expansion-panel step="1" title="Done panel" state="done">
@@ -77,11 +78,11 @@ ul#chi-tabs.chi-tabs
         div(slot='footer')
           button.chi-btn.-lg.-primary Continue
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-default-active
+      ul.chi-tabs#example-default-active
         li.-active
-          a(href=`#webcomponent-active`) Web component
+          a(href=`#webcomponent-active`) Web Component
         li
-          a(href=`#html-active`) HTML
+          a(href=`#html-active`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-active
       :code(lang="html")
         <chi-expansion-panel step="2" title="Active panel" state="active">
@@ -125,11 +126,11 @@ ul#chi-tabs.chi-tabs
     .-px--3
       chi-expansion-panel(step='3', title='Pending panel')
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-default-pending
+      ul.chi-tabs#example-default-pending
         li.-active
-          a(href=`#webcomponent-pending`) Web component
+          a(href=`#webcomponent-pending`) Web Component
         li
-          a(href=`#html-pending`) HTML
+          a(href=`#html-pending`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-pending
       :code(lang="html")
         <chi-expansion-panel step="3" title="Pending panel"></chi-expansion-panel>
@@ -146,11 +147,11 @@ ul#chi-tabs.chi-tabs
     .-px--3
       chi-expansion-panel(step='4', title='Disabled panel', state='disabled')
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-default-disabled
+      ul.chi-tabs#example-default-disabled
         li.-active
-          a(href=`#webcomponent-disabled`) Web component
+          a(href=`#webcomponent-disabled`) Web Component
         li
-          a(href=`#html-disabled`) HTML
+          a(href=`#html-disabled`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-disabled
       :code(lang="html")
         <chi-expansion-panel step="4" title="Disabled panel" state="disabled"></chi-expansion-panel>
@@ -178,11 +179,11 @@ h2 Customization
         button.chi-btn.-lg Previous
         button.chi-btn.-lg.-primary.-ml--2 Continue
   .example-tabs.-pl--2
-    ul.chi-tabs#examples-customization
+    ul.chi-tabs#example-customization
       li.-active
-        a(href=`#webcomponent-customization`) Web component
+        a(href=`#webcomponent-customization`) Web Component
       li
-        a(href=`#html-customization`) HTML
+        a(href=`#html-customization`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-customization
     .chi-tab__description
       | This component accepts a small number of visual changes. The numbering of the panels is optional, so you can omit
@@ -243,7 +244,7 @@ h2 Customization
 
 h2 Bordered expansion panel
 
-ul#chi-tabs-bordered.chi-tabs
+ul.chi-tabs#example-bordered-states
   li.-active
     a(href='#chi-tabs-bordered-done') Done
   li
@@ -267,11 +268,11 @@ ul#chi-tabs-bordered.chi-tabs
         div(slot='change')
           button.chi-btn.-brand.-flat Change
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-bordered
+      ul.chi-tabs#example-bordered
         li.-active
-          a(href=`#webcomponent-bordered`) Web component
+          a(href=`#webcomponent-bordered`) Web Component
         li
-          a(href=`#html-bordered`) HTML
+          a(href=`#html-bordered`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-bordered
       .chi-tab__description
         | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
@@ -319,11 +320,11 @@ ul#chi-tabs-bordered.chi-tabs
         div(slot='footer')
           button.chi-btn.-lg.-primary Continue
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-bordered-active
+      ul.chi-tabs#example-bordered-active
         li.-active
-          a(href=`#webcomponent-bordered-active`) Web component
+          a(href=`#webcomponent-bordered-active`) Web Component
         li
-          a(href=`#html-bordered-active`) HTML
+          a(href=`#html-bordered-active`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-bordered-active
       .chi-tab__description
         | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
@@ -371,11 +372,11 @@ ul#chi-tabs-bordered.chi-tabs
     .-p--3
       chi-expansion-panel(step='3', title='Pending panel', bordered=true)
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-bordered-pending
+      ul.chi-tabs#example-bordered-pending
         li.-active
-          a(href=`#webcomponent-bordered-pending`) Web component
+          a(href=`#webcomponent-bordered-pending`) Web Component
         li
-          a(href=`#html-bordered-pending`) HTML
+          a(href=`#html-bordered-pending`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-bordered-pending
       .chi-tab__description
         | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
@@ -396,11 +397,11 @@ ul#chi-tabs-bordered.chi-tabs
     .-p--3
       chi-expansion-panel(step='4', title='Disabled panel', state='disabled', bordered=true)
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-bordered-disabled
+      ul.chi-tabs#example-bordered-disabled
         li.-active
-          a(href=`#webcomponent-bordered-disabled`) Web component
+          a(href=`#webcomponent-bordered-disabled`) Web Component
         li
-          a(href=`#html-bordered-disabled`) HTML
+          a(href=`#html-bordered-disabled`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-bordered-disabled
       .chi-tab__description
         | Expansion panel component also supports a bordered version. Apply the <code>bordered</code> property where desired.
@@ -443,12 +444,13 @@ h2 Interaction
             .chi-epanel__footer.-justify-content--end
               button.chi-btn.-lg(data-chi-epanel-action='pending') Pending
               button.chi-btn.-lg(data-chi-epanel-action='done').-primary.-ml--2 Done
-  ul#chi-tabs-e2.chi-tabs.-ml--3
-    li.-active
-      a(href='#chi-tabs-e2-html') HTML
-    li
-      a(href='#chi-tabs-e2-js') JS
-  #chi-tabs-e2-html.chi-tabs-panel.-active
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-interaction
+      li.-active
+        a(href='#webcomponent-interaction') HTML Blueprint
+      li
+        a(href='#html-interaction') JS
+  #webcomponent-interaction.chi-tabs-panel.-active
     :code(lang="html")
       <div class="chi-epanel" id="example2" data-chi-epanel-group="example2">
         <div class="chi-epanel__header">
@@ -477,7 +479,7 @@ h2 Interaction
           </div>
         </div>
       </div>
-  #chi-tabs-e2-js.chi-tabs-panel
+  #html-interaction.chi-tabs-panel
     :code(lang="javascript")
       var ep = chi.expansionPanel(document.getElementById('example2'));
 
@@ -581,12 +583,12 @@ p.-text
               button.chi-btn.-lg(data-chi-epanel-action='previous') Previous
               button.chi-btn.-lg(data-chi-epanel-action='done').-primary.-ml--2 Finish
 
-  ul#chi-tabs-e3.chi-tabs.-ml--3
+  ul.chi-tabs.-ml--3#example-group-panel
     li.-active
-      a(href='#chi-tabs-e3-html') HTML
+      a(href='#html-group-panel') HTML Blueprint
     li
-      a(href='#chi-tabs-e3-js') JS
-  #chi-tabs-e3-html.chi-tabs-panel.-active
+      a(href='#js-group-panel') JS
+  #html-group-panel.chi-tabs-panel.-active
     :code(lang="html")
       <div class="chi-epanel -active" data-chi-epanel-group="example3">
         <div class="chi-epanel__header">
@@ -644,7 +646,7 @@ p.-text
       </div>
 
       <!-- last div x3 -->
-  #chi-tabs-e3-js.chi-tabs-panel
+  #js-group-panel.chi-tabs-panel
     :code(lang="javascript")
       chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example3"]'));
 
@@ -701,7 +703,7 @@ p.-text
               p.chi-epanel__text Content in expansion panel
   ul#chi-tabs-e4.chi-tabs.-ml--3
     li.-active
-      a(href='#chi-tabs-e4-html') HTML
+      a(href='#chi-tabs-e4-html') HTML Blueprint
     li
       a(href='#chi-tabs-e4-js') JS
   #chi-tabs-e4-html.chi-tabs-panel.-active
@@ -811,7 +813,7 @@ p.-text
 
   ul#chi-tabs-e5.chi-tabs.-ml--3
     li.-active
-      a(href='#chi-tabs-e5-html') HTML
+      a(href='#chi-tabs-e5-html') HTML Blueprint
     li
       a(href='#chi-tabs-e5-js') JS
   #chi-tabs-e5-html.chi-tabs-panel.-active
@@ -909,7 +911,7 @@ p.-text
               | Bellevue, WA 98004
   ul#chi-tabs-e6.chi-tabs.-ml--3
     li.-active
-      a(href='#chi-tabs-e6-html') HTML
+      a(href='#chi-tabs-e6-html') HTML Blueprint
     li
       a(href='#chi-tabs-e6-js') JS
   #chi-tabs-e6-html.chi-tabs-panel.-active
@@ -1018,11 +1020,11 @@ ul#chi-tabs-ex.chi-tabs
         div(slot='change')
           button.chi-btn.-brand.-flat Change
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-custom-done
+      ul.chi-tabs#example-custom-done
         li.-active
-          a(href=`#webcomponent-custom-done`) Web component
+          a(href=`#webcomponent-custom-done`) Web Component
         li
-          a(href=`#html-custom-done`) HTML
+          a(href=`#html-custom-done`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-custom-done
       :code(lang="html")
         <chi-expansion-panel title="Expansion panel" state="done">
@@ -1080,11 +1082,11 @@ ul#chi-tabs-ex.chi-tabs
           button.chi-btn.-lg Previous
           button.chi-btn.-lg.-primary.-ml--2 Continue
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-custom-active
+      ul.chi-tabs#example-custom-active
         li.-active
-          a(href=`#webcomponent-custom-active`) Web component
+          a(href=`#webcomponent-custom-active`) Web Component
         li
-          a(href=`#html-custom-active`) HTML
+          a(href=`#html-custom-active`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-custom-active
       :code(lang="html")
         <chi-expansion-panel title="Expansion panel" state="active">
@@ -1136,11 +1138,11 @@ ul#chi-tabs-ex.chi-tabs
     .-p--3
       chi-expansion-panel(title='Expansion panel')
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-custom-pending
+      ul.chi-tabs#example-custom-pending
         li.-active
-          a(href=`#webcomponent-custom-pending`) Web component
+          a(href=`#webcomponent-custom-pending`) Web Component
         li
-          a(href=`#html-custom-pending`) HTML
+          a(href=`#html-custom-pending`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-custom-pending
       :code(lang="html")
         <chi-expansion-panel title="Expansion panel"></chi-expansion-panel>
@@ -1178,11 +1180,11 @@ ul#chi-tabs-ex.chi-tabs
     .-p--3
       chi-expansion-panel(title='Expansion panel', state='disabled')
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-custom-disabled
+      ul.chi-tabs#example-custom-disabled
         li.-active
-          a(href=`#webcomponent-custom-disabled`) Web component
+          a(href=`#webcomponent-custom-disabled`) Web Component
         li
-          a(href=`#html-custom-disabled`) HTML
+          a(href=`#html-custom-disabled`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-custom-disabled
       :code(lang="html")
         <chi-expansion-panel title="Expansion panel" state="disabled"></chi-expansion-panel>
@@ -1221,19 +1223,7 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.querySelectorAll('.docs-body__content .chi-tabs'));
-      chi.tab(document.getElementById('examples-default-done'));
-      chi.tab(document.getElementById('examples-default-active'));
-      chi.tab(document.getElementById('examples-default-pending'));
-      chi.tab(document.getElementById('examples-default-disabled'));
-      chi.tab(document.getElementById('examples-customization'));
-      chi.tab(document.getElementById('examples-bordered'));
-      chi.tab(document.getElementById('examples-bordered-active'));
-      chi.tab(document.getElementById('examples-bordered-pending'));
-      chi.tab(document.getElementById('examples-bordered-disabled'));
-      chi.tab(document.getElementById('examples-custom-done'));
-      chi.tab(document.getElementById('examples-custom-active'));
-      chi.tab(document.getElementById('examples-custom-disabled'));
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
 
       chi.expansionPanel(document.getElementById('example2'));
       chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example3"]'));

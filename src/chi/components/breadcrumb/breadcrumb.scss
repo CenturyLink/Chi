@@ -4,7 +4,9 @@
 .chi-breadcrumb {
   > ol {
     display: flex;
+    font-size: $text;
     font-weight: 600;
+    line-height: $line-height-small;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -43,6 +45,61 @@
           width: 1rem;
         }
       }
+    }
+
+    &.-lg {
+      .chi-breadcrumb__item {
+        &:not(:first-child) {
+          &::before {
+            top: 0.05rem;
+          }
+        }
+      }
+    }
+
+    &.-xl {
+      .chi-breadcrumb__item {
+        &:not(:first-child) {
+          &::before {
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &.-xs {
+    > ol {
+      font-size: $text-smaller;
+      line-height: $line-height-smaller;
+    }
+  }
+
+  &.-sm {
+    > ol {
+      font-size: $text-small;
+      line-height: $line-height-small;
+    }
+  }
+
+  &.-md {
+    > ol {
+      font-size: $text;
+      line-height: $line-height-small;
+    }
+  }
+
+  &.-lg {
+    > ol {
+      font-size: $text-large;
+      line-height: $line-height-large;
+    }
+  }
+
+  &.-xl {
+    > ol {
+      font-size: $text-larger;
+      line-height: $line-height-larger;
     }
   }
 }

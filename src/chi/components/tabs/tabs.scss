@@ -316,6 +316,16 @@
       color: $brand-color;
     }
 
+    &.-disabled {
+      &,
+      & > a {
+        color: $grey-color;
+        font-weight: 600;
+        opacity: 0.75;
+        pointer-events: none;
+      }
+    }
+
     & > a {
       color: $text-color;
       cursor: pointer;
@@ -362,6 +372,16 @@
 
         &:hover {
           color: $secondary-color;
+        }
+      }
+
+      &.-disabled {
+        &,
+        & > a {
+          color: $text-white;
+          font-weight: 600;
+          opacity: 0.75;
+          pointer-events: none;
         }
       }
 

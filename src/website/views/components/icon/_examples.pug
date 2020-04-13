@@ -3,16 +3,16 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 h2 Examples
 p.-text
-  | Icons can be added via Web Component or Web Font. Web Font icons require no additional script or stylesheet.
-  | Choose the method that best suits your projects needs.
+  | Chi's Web Component icons are rendered using SVGs, while HTML Blueprints support both SVG and Web Font.
 .example.-mb--3
   .-p--3
     chi-icon(icon="atom")
-  ul#example-default.chi-tabs.-ml--3
-    li.-active
-      a(href='#webcomponent-default') Web component
-    li
-      a(href='#webfont-default') Web font
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-default
+      li.-active
+        a(href='#webcomponent-default') Web Component
+      li
+        a(href='#webfont-default') HTML Blueprint
   #webcomponent-default.chi-tabs-panel.-active
     :code(lang="html")
       <chi-icon icon="atom"></chi-icon>
@@ -35,11 +35,11 @@ p.-text
           chi-icon(icon="atom", size=size)
           p.-text.-text--center= size
   .example-tabs.-pl--2
-    ul#example-sizes.chi-tabs
+    ul.chi-tabs#example-sizes
       li.-active
-        a(href='#webcomponent-sizes') Web component
+        a(href='#webcomponent-sizes') Web Component
       li
-        a(href='#webfont-sizes') Web font
+        a(href='#webfont-sizes') HTML Blueprint
   #webcomponent-sizes.chi-tabs-panel.-active
     :code(lang="html")
       <!-- -xs : 12x12px -->
@@ -95,11 +95,12 @@ p.-text By default, icons are the same color as text. Use Chi text color utiliti
         div(class=`chi-icon -md -text--light -m--1`)
           svg
             use(xlink:href='#icon-atom')
-  ul#example-colors.chi-tabs.-ml--3
-    li.-active
-      a(href='#webcomponent-colors') Web components
-    li
-      a(href='#webfont-color') Web font
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-colors
+      li.-active
+        a(href='#webcomponent-colors') Web Component
+      li
+        a(href='#webfont-color') HTML Blueprint
   #webcomponent-colors.chi-tabs-panel.-active
     :code(lang="html")
       <!-- For light backgrounds -->

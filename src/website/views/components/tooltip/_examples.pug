@@ -1,14 +1,28 @@
 h2 Examples
 h3 Base
 p.-text
-  | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then,
-  | you can initialize it with the chi.tooltip factory method.
+  | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then
+  | initialize it with the chi.tooltip factory method.
 .example.-mb--3
   .-p--3
     button(data-tooltip='Your tooltip text on a button').chi-btn.-mr--2 Tooltip
-  :code(lang='html')
-    <button id="tooltip-1" class="chi-btn" data-tooltip="Your tooltip text on a button">Tooltip</button>
-    <script>chi.tooltip(document.getElementById('tooltip-1'));</script>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href=`#webcomponent-base`) Web Component
+      li.-active
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
+    .chi-tab__description
+      chi-alert(icon="circle-info")
+        | This HTML Blueprint requires JavaScript to render properly.
+        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
+        | a vanilla javascript solution which includes support for this Tooltip component.
+    :code(lang='html')
+      <button id="tooltip-1" class="chi-btn" data-tooltip="Your tooltip text on a button">Tooltip</button>
+
+      <script>chi.tooltip(document.getElementById('tooltip-1'));</script>
 
 h3 Positioning
 p.-text
@@ -22,12 +36,26 @@ p.-text
     button(data-tooltip='Your right tooltip text', data-position='right').chi-btn.-mr--2.-mb--2.-mb-md--0 Right Tooltip
     button(data-tooltip='Your bottom tooltip text', data-position='bottom').chi-btn.-mr--2.-mb--2.-mb-md--0 Bottom Tooltip
     button(data-tooltip='Your left tooltip text', data-position='left').chi-btn.-mr--2.-mb--2.-mb-md--0 Left Tooltip
-  :code(lang='html')
-    <button class="chi-btn" data-tooltip="Your top tooltip text">Top Tooltip</button>
-    <button class="chi-btn" data-tooltip="Your right tooltip text" data-position="right">Right Tooltip</button>
-    <button class="chi-btn" data-tooltip="Your bottom tooltip text" data-position="bottom">Bottom Tooltip</button>
-    <button class="chi-btn" data-tooltip="Yourleft tooltip text" data-position="left">Left Tooltip</button>
-    <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-positioning
+      li.-disabled
+        a(href=`#webcomponent-positioning`) Web Component
+      li.-active
+        a(href=`#html-positioning`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-positioning
+  .chi-tabs-panel.-active#html-positioning
+    .chi-tab__description
+      chi-alert(icon="circle-info")
+        | This HTML Blueprint requires JavaScript to render properly.
+        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
+        | a vanilla javascript solution which includes support for this Tooltip component.
+    :code(lang='html')
+      <button class="chi-btn" data-tooltip="Your top tooltip text">Top Tooltip</button>
+      <button class="chi-btn" data-tooltip="Your right tooltip text" data-position="right">Right Tooltip</button>
+      <button class="chi-btn" data-tooltip="Your bottom tooltip text" data-position="bottom">Bottom Tooltip</button>
+      <button class="chi-btn" data-tooltip="Yourleft tooltip text" data-position="left">Left Tooltip</button>
+
+      <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
 h3 Long Tooltips
 p.-text
@@ -37,16 +65,31 @@ p.-text
     button(data-tooltip='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et interdum purus. ' +
     'Curabitur faucibus varius libero, vel hendrerit enim tincidunt sit amet. Ut eros purus, semper nec ipsum et, ' +
     'maximus suscipit nibh.').chi-btn.-mr--2.-mb--2.-mb-md--0 Top Tooltip
-  :code(lang='html')
-    <button class="chi-btn" data-tooltip="Lorem ipsum...">
-      Top Tooltip
-    </button>
-    <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-long
+      li.-disabled
+        a(href=`#webcomponent-long`) Web Component
+      li.-active
+        a(href=`#html-long`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-long
+  .chi-tabs-panel.-active#html-long
+    .chi-tab__description
+      chi-alert(icon="circle-info")
+        | This HTML Blueprint requires JavaScript to render properly.
+        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
+        | a vanilla javascript solution which includes support for this Tooltip component.
+    :code(lang='html')
+      <button class="chi-btn" data-tooltip="Lorem ipsum...">
+        Top Tooltip
+      </button>
+
+      <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
 script.
   document.addEventListener(
           'DOMContentLoaded',
           function() {
+            chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
             chi.tooltip(document.querySelectorAll('[data-tooltip]'));
           }
   );

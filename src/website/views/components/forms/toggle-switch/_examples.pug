@@ -1,6 +1,3 @@
-script(type='module' src='../../../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
-script(nomodule='' src='../../../../js/ce/ux-chi-ce/ux-chi-ce.js')
-
 h2 Examples
 
 h3 Base
@@ -9,15 +6,15 @@ h3 Base
     .chi-form__item
       chi-switch(id='toggle1',label='Label')
   .example-tabs.-pl--2
-    ul.chi-tabs#examples-default
+    ul.chi-tabs#example-default
       li.-active
-        a(href=`#webcomponent`) Web component
+        a(href=`#webcomponent-base`) Web Component
       li
-        a(href=`#html`) HTML
-  .chi-tabs-panel.-active#webcomponent
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-base
     :code(lang="html")
       <chi-switch id="toggle1" label="Label"></chi-switch>
-  .chi-tabs-panel#html
+  .chi-tabs-panel#html-base
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-switch" for="toggle1">
@@ -35,11 +32,11 @@ h3 Disabled
     .chi-form__item
       chi-switch(id='toggle2', label='Label', disabled)
   .example-tabs.-pl--2
-    ul.chi-tabs#examples-disabled
+    ul.chi-tabs#example-disabled
       li.-active
-        a(href=`#webcomponent-disabled`) Web component
+        a(href=`#webcomponent-disabled`) Web Component
       li
-        a(href=`#html-disabled`) HTML
+        a(href=`#html-disabled`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-disabled
     :code(lang="html")
       <chi-switch id="toggle2" label="Label" disabled></chi-switch>
@@ -56,7 +53,6 @@ h3 Disabled
       </div>
 
 h3 Stacked
-
 .example.-mb--3
   .-p--3
     .chi-form__item
@@ -64,11 +60,11 @@ h3 Stacked
     .chi-form__item
       chi-switch(id='toggle4', label='Label')
   .example-tabs.-pl--2
-    ul.chi-tabs#examples-stacked
+    ul.chi-tabs#example-stacked
       li.-active
-        a(href=`#webcomponent-stacked`) Web component
+        a(href=`#webcomponent-stacked`) Web Component
       li
-        a(href=`#html-stacked`) HTML
+        a(href=`#html-stacked`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-stacked
     :code(lang="html")
       <div class="chi-form__item">
@@ -109,11 +105,11 @@ h3 Inline
     .chi-form__item.-inline
       chi-switch(id='toggle6', label='Label')
   .example-tabs.-pl--2
-    ul.chi-tabs#examples-inline
+    ul.chi-tabs#example-inline
       li.-active
-        a(href=`#webcomponent-inline`) Web component
+        a(href=`#webcomponent-inline`) Web Component
       li
-        a(href=`#html-inline`) HTML
+        a(href=`#html-inline`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-inline
     .chi-tab__description
       | Apply the <code>-inline</code> class to <code>chi-form__item</code> for displaying toggle switches inline.
@@ -188,57 +184,65 @@ p.-text
           input(type="checkbox", class="chi-switch__input", id="toggle14")
           span(class="chi-switch__content")
             span.chi-switch__thumb
-  :code(lang='html')
-    <fieldset>
-      <legend class="chi-label">Select options</legend>
-      <ul class="chi-form__item -list">
-        <li class="chi-form__item">
-          <label class="chi-switch" for="toggle10">
-            <span class="chi-switch__label">Label</span>
-            <input type="checkbox" class="chi-switch__input" id="toggle10">
-            <span class="chi-switch__content">
-              <span class="chi-switch__thumb"></span>
-            </span>
-          </label>
-        </li>
-        <li class="chi-form__item">
-          <label class="chi-switch" for="toggle11">
-            <span class="chi-switch__label">Label</span>
-            <input type="checkbox" class="chi-switch__input" id="toggle11">
-            <span class="chi-switch__content">
-              <span class="chi-switch__thumb"></span>
-            </span>
-          </label>
-        </li>
-        <li class="chi-form__item">
-          <label class="chi-switch" for="toggle12">
-            <span class="chi-switch__label">Label</span>
-            <input type="checkbox" class="chi-switch__input" id="toggle12">
-            <span class="chi-switch__content">
-              <span class="chi-switch__thumb"></span>
-            </span>
-          </label>
-        </li>
-        <li class="chi-form__item">
-          <label class="chi-switch" for="toggle13">
-            <span class="chi-switch__label">Label</span>
-            <input type="checkbox" class="chi-switch__input" id="toggle13">
-            <span class="chi-switch__content">
-              <span class="chi-switch__thumb"></span>
-            </span>
-          </label>
-        </li>
-        <li class="chi-form__item" for="toggle14">
-          <label class="chi-switch">
-            <span class="chi-switch__label">Label</span>
-            <input type="checkbox" class="chi-switch__input" id="toggle14">
-            <span class="chi-switch__content">
-              <span class="chi-switch__thumb"></span>
-            </span>
-          </label>
-        </li>
-      </ul>
-    </fieldset>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-switchlist
+      li.-disabled
+        a(href=`#webcomponent-switchlist`) Web Component
+      li.-active
+        a(href=`#html-switchlist`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-switchlist
+  .chi-tabs-panel.-active#html-switchlist
+    :code(lang='html')
+      <fieldset>
+        <legend class="chi-label">Select options</legend>
+        <ul class="chi-form__item -list">
+          <li class="chi-form__item">
+            <label class="chi-switch" for="toggle10">
+              <span class="chi-switch__label">Label</span>
+              <input type="checkbox" class="chi-switch__input" id="toggle10">
+              <span class="chi-switch__content">
+                <span class="chi-switch__thumb"></span>
+              </span>
+            </label>
+          </li>
+          <li class="chi-form__item">
+            <label class="chi-switch" for="toggle11">
+              <span class="chi-switch__label">Label</span>
+              <input type="checkbox" class="chi-switch__input" id="toggle11">
+              <span class="chi-switch__content">
+                <span class="chi-switch__thumb"></span>
+              </span>
+            </label>
+          </li>
+          <li class="chi-form__item">
+            <label class="chi-switch" for="toggle12">
+              <span class="chi-switch__label">Label</span>
+              <input type="checkbox" class="chi-switch__input" id="toggle12">
+              <span class="chi-switch__content">
+                <span class="chi-switch__thumb"></span>
+              </span>
+            </label>
+          </li>
+          <li class="chi-form__item">
+            <label class="chi-switch" for="toggle13">
+              <span class="chi-switch__label">Label</span>
+              <input type="checkbox" class="chi-switch__input" id="toggle13">
+              <span class="chi-switch__content">
+                <span class="chi-switch__thumb"></span>
+              </span>
+            </label>
+          </li>
+          <li class="chi-form__item" for="toggle14">
+            <label class="chi-switch">
+              <span class="chi-switch__label">Label</span>
+              <input type="checkbox" class="chi-switch__input" id="toggle14">
+              <span class="chi-switch__content">
+                <span class="chi-switch__thumb"></span>
+              </span>
+            </label>
+          </li>
+        </ul>
+      </fieldset>
 
 h3 Switch with Left Label
 .example.-mb--3
@@ -249,16 +253,24 @@ h3 Switch with Left Label
         input(type="checkbox", class="chi-switch__input", id="toggle7")
         span(id="toggle7", class="chi-switch__content")
           span.chi-switch__thumb
-  :code(lang="html")
-    <div class="chi-form__item">
-      <label class="chi-switch" for="toggle7">
-        <span class="chi-switch__label">Label</span>
-        <input type="checkbox" class="chi-switch__input" id="toggle7">
-        <span class="chi-switch__content">
-          <span class="chi-switch__thumb"></span>
-        </span>
-      </label>
-    </div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-switch-label-left
+      li.-disabled
+        a(href=`#webcomponent-switch-label-left`) Web Component
+      li.-active
+        a(href=`#html-switch-label-left`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-switch-label-left
+  .chi-tabs-panel.-active#html-switch-label-left
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-switch" for="toggle7">
+          <span class="chi-switch__label">Label</span>
+          <input type="checkbox" class="chi-switch__input" id="toggle7">
+          <span class="chi-switch__content">
+            <span class="chi-switch__thumb"></span>
+          </span>
+        </label>
+      </div>
 
 h3 Switch with Hidden Label
 .example.-mb--3
@@ -266,11 +278,11 @@ h3 Switch with Hidden Label
     .chi-form__item
       chi-switch(id='toggle7',label='Label', hide-label)
   .example-tabs.-pl--2
-    ul.chi-tabs#examples-hidden-label
+    ul.chi-tabs#example-hidden-label
       li.-active
-        a(href=`#webcomponent-hidden-label`) Web component
+        a(href=`#webcomponent-hidden-label`) Web Component
       li
-        a(href=`#html-hidden-label`) HTML
+        a(href=`#html-hidden-label`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-hidden-label
     .chi-tab__description
       | Apply the <code>hide-label</code> attribute to <code>chi-switch</code> to render a switch without a label. Use this method for rendering switches
@@ -298,10 +310,6 @@ script.
     document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('examples-default'));
-      chi.tab(document.getElementById('examples-disabled'));
-      chi.tab(document.getElementById('examples-stacked'));
-      chi.tab(document.getElementById('examples-inline'));
-      chi.tab(document.getElementById('examples-hidden-label'));
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
     }
   );
