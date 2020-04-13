@@ -213,7 +213,7 @@ p.-text
   | The popover will be positioned relative to this element.
 .example.-mb--3
   .-p--3
-    button#example-3-button.chi-btn Click me!
+    chi-button#example-3-button Click me!
     chi-popover#example-3-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-3-button")
       | Popover content.
   .example-tabs.-pl--2
@@ -229,7 +229,7 @@ p.-text
       | Use the <code>reference</code> attribute with a
       | CSS selector to properly reference an element.
     :code(lang="html")
-      <button class="chi-btn" id="example-3-button">Click me!</button>
+      <chi-button id="example-3-button">Click me!</chi-button>
 
       <!-- put the following code anywere in the DOM, e.g. at the end of the DOM -->
       <chi-popover id="example-3-popover" position="top" title="Popover title" variant="text" arrow reference="#example-3-button" position="top" active></chi-popover>
@@ -260,7 +260,6 @@ p.-text
       <button id='popover-1' class="chi-btn" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover content.</p></div>'>Popover</button>
       <script>chi.popover(document.getElementById('popover-1'));</script>
 
-
 h3 Positioning
 p.-text
   | Further positions can be used in this mode: <code>top</code>,
@@ -281,15 +280,15 @@ ul#chi-tabsb--positioning.chi-tabs
 #chi-tabsb--positioning-top.chi-tabs-panel.-active
   .example.-mb--3
     .-p--3
-      button#example-4-t-button.chi-btn.-mr--2.-mb--2.-mb-md--0 Top popover
+      chi-button#example-4-t-button.-mr--2.-mb--2.-mb-md--0 Top popover
       chi-popover#example-4-t-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-4-t-button")
         | This popover is top positioned.
 
-      button#example-4-ts-button.chi-btn.-mr--2.-mb--2.-mb-md--0 Top start popover
+      chi-button#example-4-ts-button.-mr--2.-mb--2.-mb-md--0 Top start popover
       chi-popover#example-4-ts-popover(position="top-start", title="Popover title", variant="text", arrow, reference="#example-4-ts-button")
         | This popover is top-start positioned.
 
-      button#example-4-te-button.chi-btn.-mr--2.-mb--2.-mb-md--0 Top end popover
+      chi-button#example-4-te-button.-mr--2.-mb--2.-mb-md--0 Top end popover
       chi-popover#example-4-te-popover(position="top-end", title="Popover title", variant="text", arrow, reference="#example-4-te-button")
         | This popover is top-end positioned.
     .example-tabs.-pl--2
@@ -300,17 +299,17 @@ ul#chi-tabsb--positioning.chi-tabs
           a(href=`#html-positioning-top`) HTML + JS
     .chi-tabs-panel.-active#webcomponent-positioning-top
       :code(lang="html")
-        <button class="chi-btn" id="example-4-t-button">Top popover</button>
+        <chi-button id="example-4-t-button">Top popover</chi-button>
         <chi-popover id="example-4-t-popover" position="top" title="Popover title" variant="text" arrow reference="#example-4-t-button">
           This popover is top positioned.
         </chi-popover>
 
-        <button class="chi-btn" id="example-4-ts-button">Top start popover</button>
+        <chi-button id="example-4-ts-button">Top start popover</chi-button>
         <chi-popover id="example-4-ts-popover" position="top-start" title="Popover title" variant="text" arrow reference="#example-4-ts-button">
           This popover is top-start positioned.
         </chi-popover>
 
-        <button class="chi-btn" id="example-4-te-button">Top end popover</button>
+        <chi-button id="example-4-te-button">Top end popover</chi-button>
         <chi-popover id="example-4-te-popover" position="top-end" title="Popover title" variant="text" arrow reference="#example-4-te-button">
           This popover is top-end positioned.
         </chi-popover>
@@ -323,15 +322,15 @@ ul#chi-tabsb--positioning.chi-tabs
 #chi-tabsb--positioning-right.chi-tabs-panel
   .example.-mb--3
     .-p--3
-      button#example-4-r-button.chi-btn.-mr--2.-mb--2.-mb-md--0 Right popover
+      chi-button#example-4-r-button.-mr--2.-mb--2.-mb-md--0 Right popover
       chi-popover#example-4-r-popover(position="right", title="Popover title", variant="text", arrow, reference="#example-4-r-button")
         | This popover is right positioned.
 
-      button#example-4-rs-button.chi-btn.-mr--2.-mb--2.-mb-md--0 Right start popover
+      chi-button#example-4-rs-button.-mr--2.-mb--2.-mb-md--0 Right start popover
       chi-popover#example-4-rs-popover(position="right-start", title="Popover title", variant="text", arrow, reference="#example-4-rs-button")
         | This popover is right-start positioned.
 
-      button#example-4-re-button.chi-btn.-mr--2.-mb--2.-mb-md--0 Right end popover
+      chi-button#example-4-re-button.-mr--2.-mb--2.-mb-md--0 Right end popover
       chi-popover#example-4-re-popover(position="right-end", title="Popover title", variant="text", arrow, reference="#example-4-re-button")
         | This popover is right-end positioned.
     .example-tabs.-pl--2
@@ -342,17 +341,17 @@ ul#chi-tabsb--positioning.chi-tabs
           a(href=`#html-positioning-right`) HTML + JS
     .chi-tabs-panel.-active#webcomponent-positioning-right
       :code(lang="html")
-        <button class="chi-btn" id="example-4-r-button">Right popover</button>
+        <chi-button id="example-4-r-button">Right popover</chi-button>
         <chi-popover id="example-4-r-popover" position="right" title="Popover title" variant="text" arrow reference="#example-4-r-button">
           This popover is right positioned.
         </chi-popover>
 
-        <button class="chi-btn" id="example-4-rs-button">Right start popover</button>
+        <chi-button id="example-4-rs-button">Right start popover</chi-button>
         <chi-popover id="example-4-rs-popover" position="right-start" title="Popover title" variant="text" arrow reference="#example-4-rs-button">
           This popover is right-start positioned.
         </chi-popover>
 
-        <button class="chi-btn" id="example-4-re-button">Right end popover</button>
+        <chi-button id="example-4-re-button">Right end popover</chi-button>
         <chi-popover id="example-4-re-popover" position="right-end" title="Popover title" variant="text" arrow reference="#example-4-re-button">
           This popover is right-end positioned.
         </chi-popover>
@@ -365,15 +364,15 @@ ul#chi-tabsb--positioning.chi-tabs
 #chi-tabsb--positioning-bottom.chi-tabs-panel
   .example.-mb--3
     .-p--3
-      button#example-4-b-button.chi-btn.-mr--2.-mb--2.-mb-md--0 Bottom popover
+      chi-button#example-4-b-button.-mr--2.-mb--2.-mb-md--0 Bottom popover
       chi-popover#example-4-b-popover(position="bottom", title="Popover title", variant="text", arrow, reference="#example-4-b-button")
         | This popover is bottom positioned.
 
-      button#example-4-bs-button.chi-btn.-mr--2.-mb--2.-mb-md--0 Bottom start popover
+      chi-button#example-4-bs-button.-mr--2.-mb--2.-mb-md--0 Bottom start popover
       chi-popover#example-4-bs-popover(position="bottom-start", title="Popover title", variant="text", arrow, reference="#example-4-bs-button")
         | This popover is bottom-start positioned.
 
-      button#example-4-be-button.chi-btn.-mr--2.-mb--2.-mb-md--0 Bottom end popover
+      chi-button#example-4-be-button.-mr--2.-mb--2.-mb-md--0 Bottom end popover
       chi-popover#example-4-be-popover(position="bottom-end", title="Popover title", variant="text", arrow, reference="#example-4-be-button")
         | This popover is bottom-end positioned.
     .example-tabs.-pl--2
@@ -384,17 +383,17 @@ ul#chi-tabsb--positioning.chi-tabs
           a(href=`#html-positioning-bottom`) HTML + JS
     .chi-tabs-panel.-active#webcomponent-positioning-bottom
       :code(lang="html")
-        <button class="chi-btn" id="example-4-b-button">Bottom popover</button>
+        <chi-button id="example-4-b-button">Bottom popover</chi-button>
         <chi-popover id="example-4-b-popover" position="bottom" title="Popover title" variant="text" arrow reference="#example-4-b-button">
           This popover is bottom positioned.
         </chi-popover>
 
-        <button class="chi-btn" id="example-4-bs-button">Bottom start popover</button>
+        <chi-button id="example-4-bs-button">Bottom start popover</chi-button>
         <chi-popover id="example-4-bs-popover" position="bottom-start" title="Popover title" variant="text" arrow reference="#example-4-bs-button">
           This popover is bottom-start positioned.
         </chi-popover>
 
-        <button class="chi-btn" id="example-4-be-button">Bottom end popover</button>
+        <chi-button id="example-4-be-button">Bottom end popover</chi-button>
         <chi-popover id="example-4-be-popover" position="bottom-end" title="Popover title" variant="text" arrow reference="#example-4-be-button">
           This popover is bottom-end positioned.
         </chi-popover>
@@ -407,15 +406,15 @@ ul#chi-tabsb--positioning.chi-tabs
 #chi-tabsb--positioning-left.chi-tabs-panel
   .example.-mb--3
     .-p--3
-      button#example-4-l-button.chi-btn.-mr--2.-mb--2.-mb-md--0 Left popover
+      chi-button#example-4-l-button.-mr--2.-mb--2.-mb-md--0 Left popover
       chi-popover#example-4-l-popover(position="left", title="Popover title", variant="text", arrow, reference="#example-4-l-button")
         | This popover is left positioned.
 
-      button#example-4-ls-button.chi-btn.-mr--2.-mb--2.-mb-md--0 Left start popover
+      chi-button#example-4-ls-button.-mr--2.-mb--2.-mb-md--0 Left start popover
       chi-popover#example-4-ls-popover(position="left-start", title="Popover title", variant="text", arrow, reference="#example-4-ls-button")
         | This popover is left-start positioned.
 
-      button#example-4-le-button.chi-btn.-mr--2.-mb--2.-mb-md--0 Left end popover
+      chi-button#example-4-le-button.-mr--2.-mb--2.-mb-md--0 Left end popover
       chi-popover#example-4-le-popover(position="left-end", title="Popover title", variant="text", arrow, reference="#example-4-le-button")
         | This popover is left-end positioned.
     .example-tabs.-pl--2
@@ -426,17 +425,17 @@ ul#chi-tabsb--positioning.chi-tabs
           a(href=`#html-positioning-left`) HTML + JS
     .chi-tabs-panel.-active#webcomponent-positioning-left
       :code(lang="html")
-        <button class="chi-btn" id="example-4-l-button">Left popover</button>
+        <chi-button id="example-4-l-button">Left popover</chi-button>
         <chi-popover id="example-4-l-popover" position="left" title="Popover title" variant="text" arrow reference="#example-4-l-button">
           This popover is left positioned.
         </chi-popover>
 
-        <button class="chi-btn" id="example-4-ls-button">Left start popover</button>
+        <chi-button id="example-4-ls-button">Left start popover</chi-button>
         <chi-popover id="example-4-ls-popover" position="left-start" title="Popover title" variant="text" arrow reference="#example-4-ls-button">
           This popover is left-start positioned.
         </chi-popover>
 
-        <button class="chi-btn" id="example-4-le-button">Left end popover</button>
+        <chi-button id="example-4-le-button">Left end popover</chi-button>
         <chi-popover id="example-4-le-popover" position="left-end" title="Popover title" variant="text" arrow reference="#example-4-le-button">
           This popover is left-end positioned.
         </chi-popover>
@@ -456,10 +455,10 @@ p.-text
 
 .example.-mb--3
   .-p--3
-    button#example-5-button-show.chi-btn.-mr--2.-mb--2.-mb-md--0 Show
-    button#example-5-button-hide.chi-btn.-mr--2.-mb--2.-mb-md--0 Hide
-    button#example-5-button-toggle.chi-btn.-mr--2.-mb--2.-mb-md--0 Toggle
-    button#example-5-button-reference.chi-btn.-mr--2.-mb--2.-mb-md--0 Reference
+    chi-button#example-5-button-show.-mr--2.-mb--2.-mb-md--0 Show
+    chi-button#example-5-button-hide.-mr--2.-mb--2.-mb-md--0 Hide
+    chi-button#example-5-button-toggle.-mr--2.-mb--2.-mb-md--0 Toggle
+    chi-button#example-5-button-reference.-mr--2.-mb--2.-mb-md--0 Reference
 
     chi-popover#example-5-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-5-button-reference")
       | Popover content.
@@ -476,10 +475,10 @@ p.-text
       | element also has three public methods to interact with it: <code>show()</code>, <code>hide()</code>,
       | <code>toggle()</code>.
     :code(lang="html")
-      <button class="chi-btn" id="example-5-button-show">Show</button>
-      <button class="chi-btn" id="example-5-button-hide">Hide</button>
-      <button class="chi-btn" id="example-5-button-toggle">Toggle</button>
-      <button class="chi-btn" id="example-5-button-reference">Reference</button>
+      <chi-button id="example-5-button-show">Show</chi-button>
+      <chi-button id="example-5-button-hide">Hide</chi-button>
+      <chi-button id="example-5-button-toggle">Toggle</chi-button>
+      <chi-button id="example-5-button-reference">Reference</chi-button>
 
       <chi-popover id="example-5-popover" position="top" title="Popover title" variant="text" arrow reference="#example-5-button-reference">
         Popover content.
@@ -546,7 +545,7 @@ ul#chi-tabs-e6.chi-tabs
 .example.-mb--3
   #chi-tabs-e6-auto-hide.chi-tabs-panel.-active
     .-p--3
-      button#example-6-auto-hide-button.chi-btn.-mr--2.-mb--2.-mb-md--0 Auto hide
+      chi-button#example-6-auto-hide-button.-mr--2.-mb--2.-mb-md--0 Auto hide
       chi-popover#example-6-auto-hide-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-6-auto-hide-button")
         | Click outside. I will disappear!
     .example-tabs.-pl--2
@@ -570,7 +569,7 @@ ul#chi-tabs-e6.chi-tabs
         </script>
   #chi-tabs-e6-no-auto-hide.chi-tabs-panel
     .-p--3
-      button#example-6-no-auto-hide-button.chi-btn.-mr--2.-mb--2.-mb-md--0 No auto hide
+      chi-button#example-6-no-auto-hide-button.-mr--2.-mb--2.-mb-md--0 No auto hide
       chi-popover#example-6-no-auto-hide-popover(position="top", title="Popover title", variant="text", arrow, prevent-auto-hide, reference="#example-6-no-auto-hide-button")
         | Click outside. I will stay!
     .example-tabs.-pl--2
