@@ -99,46 +99,48 @@ class Sidenav extends Component {
   }
 
   singleLevelMenuItems() {
-    this._elem
-    .querySelectorAll(`nav > ul.${LINKLIST_CLASS} > li`)
-    .forEach(singleLevelMenuItem => {
-      const menuElementLink = singleLevelMenuItem.querySelector('a').getAttribute('href');
+    Array.prototype.forEach.call(
+      this._elem.querySelectorAll(`nav > ul.${LINKLIST_CLASS} > li`),
+      (singleLevelMenuItem) => {
+        const menuElementLink = singleLevelMenuItem.querySelector('a').getAttribute('href');
 
-      if (!this._elem.querySelector(`.chi-drawer${menuElementLink}`)) {
-        let menuItemToActivate;
-        
-        this._addEventHandler(
-          singleLevelMenuItem,
-          'click',
-          (e) => {
-          const activeMenuItem = this.getActiveMenuItem();
+        if (!this._elem.querySelector(`.chi-drawer${menuElementLink}`)) {
+          let menuItemToActivate;
+          
+          this._addEventHandler(
+            singleLevelMenuItem,
+            'click',
+            (e) => {
+            const activeMenuItem = this.getActiveMenuItem();
 
-          for (
-            let cur = e.target;
-            cur && !cur.classList.contains(LINKLIST_CLASS);
-            cur = cur.parentNode
-          ) {
-            menuItemToActivate = cur;
-          }
+            for (
+              let cur = e.target;
+              cur && !Util.hasClass(cur, LINKLIST_CLASS);
+              cur = cur.parentNode
+            ) {
+              menuItemToActivate = cur;
+            }
 
-          if (activeMenuItem) {
-            Util.removeClass(activeMenuItem, chi.classes.ACTIVE);
-            this._elem
-              .querySelectorAll(
-                `.chi-drawer .${CHI_DRAWER_CONTENT} .${DRAWER_LINKLIST_CLASS} li.${chi.classes.ACTIVE},
-                .chi-drawer .${CHI_DRAWER_CONTENT} .${DRAWER_LINKLIST_CLASS} li a.${DRAWER_ITEM_TAB_CLASS}.${chi.classes.ACTIVE}`
-              )
-              .forEach(activeDrawerElement => {
-                Util.removeClass(activeDrawerElement, chi.classes.ACTIVE);
-                if (Util.hasClass(activeDrawerElement, DRAWER_ITEM_LIST_EXPANDED)) {
-                  Util.removeClass(activeDrawerElement, DRAWER_ITEM_LIST_EXPANDED);
-                }
-              });
-          }
-          Util.addClass(menuItemToActivate, chi.classes.ACTIVE);
-        });
+            if (activeMenuItem) {
+              Util.removeClass(activeMenuItem, chi.classes.ACTIVE);
+              Array.prototype.forEach.call(
+                this._elem
+                .querySelectorAll(
+                  `.chi-drawer .${CHI_DRAWER_CONTENT} .${DRAWER_LINKLIST_CLASS} li.${chi.classes.ACTIVE},
+                  .chi-drawer .${CHI_DRAWER_CONTENT} .${DRAWER_LINKLIST_CLASS} li a.${DRAWER_ITEM_TAB_CLASS}.${chi.classes.ACTIVE}`
+                ),
+                (activeDrawerElement) => {
+                  Util.removeClass(activeDrawerElement, chi.classes.ACTIVE);
+                  if (Util.hasClass(activeDrawerElement, DRAWER_ITEM_LIST_EXPANDED)) {
+                    Util.removeClass(activeDrawerElement, DRAWER_ITEM_LIST_EXPANDED);
+                  }
+                });
+            }
+            Util.addClass(menuItemToActivate, chi.classes.ACTIVE);
+          });
+        }
       }
-    });
+    );
   }
 
   getActiveMenuItem() {
