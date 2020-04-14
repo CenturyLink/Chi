@@ -335,7 +335,7 @@ ul#chi-tabs--header.chi-tabs
 #chi-tabs--header-without.chi-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
-      chi-drawer(position='left' active backdrop headless)
+      chi-drawer(position='left' active backdrop no-header)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-headerless
@@ -345,7 +345,7 @@ ul#chi-tabs--header.chi-tabs
           a(href=`#html-headerless`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-headerless
       :code(lang="html")
-        <chi-drawer position="left" active backdrop headless>
+        <chi-drawer position="left" active backdrop no-header>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html-headerless
