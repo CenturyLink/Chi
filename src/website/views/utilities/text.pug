@@ -8,31 +8,30 @@ styles: [assets/styles/show-example]
 
 h2 Text size
 p.-text
-  | Text support the following sizes: Extra Small (xs), Small (sm), Medium (md), Large (lg), and Extra Large (xl).
-.example.-mb--3
-  .-p--3
-    each text, size in tabs
-      div.chi-col.-w--12.-pb--2
-        p.-text--bold= size
-        p= text
-        p(class=`-text--${size}`)
-          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
-          | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
-    :code(lang="html")
-      <!-- xs -->
-      <p class="-text--xs"></p>
-
-      <!-- sm -->
-      <p class="-text--sm"></p>
-
-      <!-- md -->
-      <p class="-text--md"></p>
-
-      <!-- lg -->
-      <p class="-text--lg"></p>
-
-      <!-- xl -->
-      <p class="-text--xl"></p>
+  | Text support the following sizes: <code>-text--xs</code>, <code>-text--sm</code>, <code>-text--md</code>,
+  | <code>-text--lg</code>, and <code>-text--xl</code>. The default size is <code>-text--md</code>.
+.example(style='border:none')
+  section.chi-table.-bordered.-mt--3.-mb--3
+    div
+      table(cellpadding='0', cellspacing='0')
+        thead
+          tr
+            th
+              div Class
+            th
+              div Sizes
+            th
+              div Example
+        tbody
+          each text, size in tabs
+            tr
+              td(width='20%')
+                code= '-text--' + size
+              td(width='50%')
+                p.-text= text
+              td
+                p(class=`-text--${size}`)
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 h2 Text headings
 p.-text In order to match the font styling of a heading, <code>.-text--h1</code> through <code>.-text--h6</code> classes are also available.
