@@ -32,10 +32,10 @@ h3 Base
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#html-base
     .chi-tab__description
-      chi-alert(icon="circle-info")
-        | This HTML Blueprint requires JavaScript to render properly.
-        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
-        | a vanilla javascript solution which includes support for this Modal component.
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <button id="modal-trigger-1" class="chi-btn chi-modal__trigger" data-target="#modal-1">
         Launch demo modal

@@ -15,26 +15,34 @@ p.-text
         .chi-radio
           input(class="chi-radio__input", type="radio", name="radios", id="radio2", disabled)
           label.chi-radio__label(for="radio2") Disabled Radio Button
-  :code(lang="html")
-    <fieldset>
-      <legend class="chi-label">Select an option</legend>
-      <div class="chi-form__item">
-        <div class="chi-radio">
-          <input class="chi-radio__input" type="radio" name="radios" id="radio1">
-          <label class="chi-radio__label" for="radio1">Radio Button</label>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-stacked
+      li.-disabled
+        a(href=`#webcomponent-stacked`) Web Component
+      li.-active
+        a(href=`#html-stacked`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-stacked
+  .chi-tabs-panel.-active#html-stacked
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="radios" id="radio1">
+            <label class="chi-radio__label" for="radio1">Radio Button</label>
+          </div>
         </div>
-      </div>
-      <div class="chi-form__item">
-        <div class="chi-radio">
-          <input class="chi-radio__input" type="radio" name="radios" id="radio2" disabled>
-          <label class="chi-radio__label" for="radio2">Disabled Radio Button</label>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="radios" id="radio2" disabled>
+            <label class="chi-radio__label" for="radio2">Disabled Radio Button</label>
+          </div>
         </div>
-      </div>
-    </fieldset>
+      </fieldset>
 
 h3 Inline
 p.-text
-  | Apply <code>-inline</code> to display inline two or more radio buttons.
+  | Apply <code>-inline</code> to display two or more radio buttons inline.
 .example.-mb--3
   .-p--3
     fieldset
@@ -47,22 +55,30 @@ p.-text
         .chi-radio
           input(class="chi-radio__input", type="radio", name="inlineRadios", id="inlineRadio2")
           label.chi-radio__label(for="inlineRadio2") Option 2
-  :code(lang="html")
-    <fieldset>
-      <legend class="chi-label">Select an option</legend>
-      <div class="chi-form__item -inline">
-        <div class="chi-radio">
-          <input class="chi-radio__input" type="radio" name="inlineRadios" id="inlineRadio1">
-          <label class="chi-radio__label" for="inlineRadio1">Option 1</label>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-inline
+      li.-disabled
+        a(href=`#webcomponent-inline`) Web Component
+      li.-active
+        a(href=`#html-inline`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-inline
+  .chi-tabs-panel.-active#html-inline
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-form__item -inline">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="inlineRadios" id="inlineRadio1">
+            <label class="chi-radio__label" for="inlineRadio1">Option 1</label>
+          </div>
         </div>
-      </div>
-      <div class="chi-form__item -inline">
-        <div class="chi-radio">
-          <input class="chi-radio__input" type="radio" name="inlineRadios" id="inlineRadio2" disabled>
-          <label class="chi-radio__label" for="inlineRadio2">Option 2</label>
+        <div class="chi-form__item -inline">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="inlineRadios" id="inlineRadio2" disabled>
+            <label class="chi-radio__label" for="inlineRadio2">Option 2</label>
+          </div>
         </div>
-      </div>
-    </fieldset>
+      </fieldset>
 
 h2 Radio Button List
 p.-text
@@ -93,39 +109,57 @@ p.-text
           .chi-radio
             input(type="radio", class="chi-radio__input", name="radiobuttonList", id="radio-5")
             label.chi-radio__label(for="radio-5") Option 5
-  :code(lang='html')
-    <fieldset>
-      <legend class="chi-label">Select an option</legend>
-      <ul class="chi-form__item -list">
-        <li class="chi-form__item">
-          <div class="chi-radio">
-            <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio1">
-            <label class="chi-radio__label" for="radio1">Option 1</label>
-          </div>
-        </li>
-        <li class="chi-form__item">
-          <div class="chi-radio">
-            <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio2">
-            <label class="chi-radio__label" for="radio2">Option 2</label>
-          </div>
-        </li>
-        <li class="chi-form__item">
-          <div class="chi-radio">
-            <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio3">
-            <label class="chi-radio__label" for="radio3">Option 3</label>
-          </div>
-        </li>
-        <li class="chi-form__item">
-          <div class="chi-radio">
-            <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio4">
-            <label class="chi-radio__label" for="radio4">Option 4</label>
-          </div>
-        </li>
-        <li class="chi-form__item">
-          <div class="chi-radio">
-            <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio5">
-            <label class="chi-radio__label" for="radio5">Option 5</label>
-          </div>
-        </li>
-      </ul>
-    </fieldset>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-list
+      li.-disabled
+        a(href=`#webcomponent-list`) Web Component
+      li.-active
+        a(href=`#html-list`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-list
+  .chi-tabs-panel.-active#html-list
+    :code(lang='html')
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <ul class="chi-form__item -list">
+          <li class="chi-form__item">
+            <div class="chi-radio">
+              <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio1">
+              <label class="chi-radio__label" for="radio1">Option 1</label>
+            </div>
+          </li>
+          <li class="chi-form__item">
+            <div class="chi-radio">
+              <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio2">
+              <label class="chi-radio__label" for="radio2">Option 2</label>
+            </div>
+          </li>
+          <li class="chi-form__item">
+            <div class="chi-radio">
+              <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio3">
+              <label class="chi-radio__label" for="radio3">Option 3</label>
+            </div>
+          </li>
+          <li class="chi-form__item">
+            <div class="chi-radio">
+              <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio4">
+              <label class="chi-radio__label" for="radio4">Option 4</label>
+            </div>
+          </li>
+          <li class="chi-form__item">
+            <div class="chi-radio">
+              <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio5">
+              <label class="chi-radio__label" for="radio5">Option 5</label>
+            </div>
+          </li>
+        </ul>
+      </fieldset>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('example-stacked'));
+      chi.tab(document.getElementById('example-inline'));
+      chi.tab(document.getElementById('example-list'));
+    }
+  );

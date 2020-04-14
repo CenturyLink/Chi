@@ -17,13 +17,14 @@ h3 Base
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#html-base
     .chi-tab__description
-      chi-alert(icon="circle-info")
-        | This HTML Blueprint requires JavaScript to update the label content once a file or files have been selected.
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript to update the label
+        | content once a file or files have been selected.
+        | You may use your own JavaScript solution, or use Chi's example below.
     :code(lang="html")
       <input type="file" class="chi-input" id="file01" aria-label="Choose file">
       <label for="file01">No file chosen</label>
 
-      <!-- JavaScript Example -->
       <script>
       var inputFiles = document.querySelectorAll('input[type="file"].chi-input');
 

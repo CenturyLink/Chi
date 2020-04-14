@@ -11,14 +11,22 @@ h3 Base
       | 100
       sup
         | 00
-  :code(lang="html")
-    <div class="chi-price">
-      <sup>$</sup>
-      100
-      <sup>00</sup>
-    </div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href=`#webcomponent-base`) Web Component
+      li.-active
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
+    :code(lang="html")
+      <div class="chi-price">
+        <sup>$</sup>
+        100
+        <sup>00</sup>
+      </div>
 
-h2 Sizes
+h3 Sizes
 .example.-mb--3
   .-p--3
     each size in ['sm', 'md', 'lg']
@@ -29,19 +37,36 @@ h2 Sizes
         | 100
         sup
           | 00
-  :code(lang="html")
-    <div class="chi-price -sm">
-      <sup>$</sup>
-      100
-      <sup>00</sup>
-    </div>
-    <div class="chi-price -md">
-      <sup>$</sup>
-      100
-      <sup>00</sup>
-    </div>
-    <div class="chi-price -lg">
-      <sup>$</sup>
-      100
-      <sup>00</sup>
-    </div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-sizes
+      li.-disabled
+        a(href=`#webcomponent-sizes`) Web Component
+      li.-active
+        a(href=`#html-sizes`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-sizes
+  .chi-tabs-panel.-active#html-sizes
+    :code(lang="html")
+      <div class="chi-price -sm">
+        <sup>$</sup>
+        100
+        <sup>00</sup>
+      </div>
+      <div class="chi-price -md">
+        <sup>$</sup>
+        100
+        <sup>00</sup>
+      </div>
+      <div class="chi-price -lg">
+        <sup>$</sup>
+        100
+        <sup>00</sup>
+      </div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('example-base'));
+      chi.tab(document.getElementById('example-sizes'));
+    }
+  );

@@ -15,10 +15,10 @@ p.-text
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#html-base
     .chi-tab__description
-      chi-alert(icon="circle-info")
-        | This HTML Blueprint requires JavaScript to render properly.
-        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
-        | a vanilla javascript solution which includes support for this Tooltip component.
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang='html')
       <button id="tooltip-1" class="chi-btn" data-tooltip="Your tooltip text on a button">Tooltip</button>
 
@@ -45,10 +45,10 @@ p.-text
   .chi-tabs-panel#webcomponent-positioning
   .chi-tabs-panel.-active#html-positioning
     .chi-tab__description
-      chi-alert(icon="circle-info")
-        | This HTML Blueprint requires JavaScript to render properly.
-        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
-        | a vanilla javascript solution which includes support for this Tooltip component.
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang='html')
       <button class="chi-btn" data-tooltip="Your top tooltip text">Top Tooltip</button>
       <button class="chi-btn" data-tooltip="Your right tooltip text" data-position="right">Right Tooltip</button>
@@ -59,7 +59,8 @@ p.-text
 
 h3 Long Tooltips
 p.-text
-  | Long Tooltips will be truncated on the third line.
+  | Long Tooltips will be truncated on the third line. To display text beyond three lines,
+  | use the <a href="../../components/popover">Popover</a> component.
 .example.-mb--3
   .-p--3
     button(data-tooltip='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et interdum purus. ' +
@@ -74,14 +75,12 @@ p.-text
   .chi-tabs-panel#webcomponent-long
   .chi-tabs-panel.-active#html-long
     .chi-tab__description
-      chi-alert(icon="circle-info")
-        | This HTML Blueprint requires JavaScript to render properly.
-        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
-        | a vanilla javascript solution which includes support for this Tooltip component.
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang='html')
-      <button class="chi-btn" data-tooltip="Lorem ipsum...">
-        Top Tooltip
-      </button>
+      <button class="chi-btn" data-tooltip="Lorem ipsum...">Top Tooltip</button>
 
       <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
