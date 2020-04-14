@@ -216,7 +216,7 @@ export class DatePicker {
 
     return [
       // TODO: This input should be chi-input in the future and will pass through
-      // some of its configuration attributes. Also will have an icon.
+      // some of its configuration attributes.
       <div
         class={`${
           this.disabled ? '-disabled' : ''
