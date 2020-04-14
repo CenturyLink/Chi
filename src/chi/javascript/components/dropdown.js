@@ -235,7 +235,7 @@ class Dropdown extends Component {
       Util.addClass(this._elem, CLASS_ACTIVE);
       Util.addClass(this._elem, CLASS_HAS_ACTIVE);
       Util.addClass(this._dropdownElem, CLASS_ACTIVE);
-      if (this._popper) {
+      if (this._popper && typeof this._popper.update === "function") {
         this._popper.update();
       }
       if (this._parentDropdown) {
