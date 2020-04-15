@@ -28,6 +28,11 @@ ul#chi-tabs--drawer.chi-tabs
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
       :code(lang="html")
         <div class="chi-drawer -left -active">
           <div class="chi-drawer__header">
@@ -62,6 +67,11 @@ ul#chi-tabs--drawer.chi-tabs
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html-right
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
       :code(lang="html")
         <div class="chi-drawer -right -active">
           <div class="chi-drawer__header">
@@ -96,6 +106,11 @@ ul#chi-tabs--drawer.chi-tabs
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html-top
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
       :code(lang="html")
         <div class="chi-drawer -top -active">
           <div class="chi-drawer__header">
@@ -130,6 +145,11 @@ ul#chi-tabs--drawer.chi-tabs
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html-bottom
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
       :code(lang="html")
         <div class="chi-drawer -bottom -active">
           <div class="chi-drawer__header">
@@ -163,6 +183,11 @@ p.-text
         <div class="-px--2 -text">Drawer content here</div>
       </chi-drawer>
   .chi-tabs-panel#html-backdrop
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-backdrop">
         <div class="chi-backdrop__wrapper">
@@ -196,6 +221,11 @@ h3 Titled
         <div class="-px--2 -text">Drawer content here</div>
       </chi-drawer>
   .chi-tabs-panel#html-titled
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-backdrop">
         <div class="chi-backdrop__wrapper">
@@ -242,6 +272,11 @@ ul#chi-tabs--closable.chi-tabs
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html-closable
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
       :code(lang="html")
         <div class="chi-backdrop">
           <div class="chi-backdrop__wrapper">
@@ -277,6 +312,11 @@ ul#chi-tabs--closable.chi-tabs
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html-nonclosable
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
       :code(lang="html")
         <div class="chi-backdrop">
           <div class="chi-backdrop__wrapper">
@@ -314,6 +354,11 @@ ul#chi-tabs--header.chi-tabs
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html-header
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
       :code(lang="html")
         <div class="chi-backdrop">
           <div class="chi-backdrop__wrapper">
@@ -335,7 +380,7 @@ ul#chi-tabs--header.chi-tabs
 #chi-tabs--header-without.chi-tabs-panel
   .example.-mb--3(style='overflow:hidden;')
     .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
-      chi-drawer(position='left' active backdrop headless)
+      chi-drawer(position='left' active backdrop no-header)
         .-px--2.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-headerless
@@ -345,10 +390,15 @@ ul#chi-tabs--header.chi-tabs
           a(href=`#html-headerless`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-headerless
       :code(lang="html")
-        <chi-drawer position="left" active backdrop headless>
+        <chi-drawer position="left" active backdrop no-header>
           <div class="-px--2 -text">Drawer content here</div>
         </chi-drawer>
     .chi-tabs-panel#html-headerless
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
       :code(lang="html")
         <div class="chi-backdrop">
           <div class="chi-backdrop__wrapper">
@@ -411,13 +461,14 @@ p.-text
       </script>
   #html-interaction.chi-tabs-panel
     .chi-tab__description
-      chi-alert(icon="circle-info")
-        | This HTML Blueprint requires JavaScript to render properly.
-        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
-        | a vanilla javascript solution which includes support for this Drawer component.
-      p.-text.-mb--0
-        | Use the function <code>chi.drawer(elem)</code> to instantiate a new drawer component in the DOM
-        | element passed as a parameter. You must use the trigger element as the parameter.
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
+      br
+      br
+      | Use the function <code>chi.drawer(elem)</code> to instantiate a new drawer component in the DOM
+      | element passed as a parameter. You must use the trigger element as the parameter.
     :code(lang="html")
       <button id="drawer-trigger-1" class="chi-btn -icon chi-drawer__trigger" data-target="#drawer-1" aria-label="Toggle navigation">
         <div class="chi-btn__content">

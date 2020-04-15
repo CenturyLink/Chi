@@ -20,13 +20,13 @@ export class Progress {
   /**
    *  to indicate a progress bar state { info, warning, danger, success }.
    */
-  @Prop({ reflect: true }) state = 'success';
+  @Prop({ reflect: true }) state = 'info';
 
   @Watch('state')
   stateValidation(newValue: string) {
     if (newValue && !SEMANTIC_COLORS.includes(newValue)) {
       throw new Error(
-        `${newValue} is not a valid state for progress. If provided, valid values are: info, warning, danger or success. If not, success will be set. `
+        `${newValue} is not a valid state for progress. If provided, valid values are: info, warning, danger or success. If not, info will be set. `
       );
     }
   }

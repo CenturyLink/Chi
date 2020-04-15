@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-04-14T15:26:05",
+  "timestamp": "2020-04-15T01:22:13",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -950,10 +950,10 @@
           "required": false
         },
         {
-          "name": "headless",
+          "name": "noHeader",
           "type": "boolean",
           "mutable": false,
-          "attr": "headless",
+          "attr": "no-header",
           "reflectToAttr": true,
           "docs": "to remove the space for the header",
           "docsTags": [],
@@ -1004,7 +1004,7 @@
           "mutable": false,
           "attr": "title",
           "reflectToAttr": true,
-          "docs": "to define drawer title. Not compatible with headless",
+          "docs": "to define drawer title. Not compatible with no-header",
           "docsTags": [],
           "default": false,
           "values": [
@@ -1821,7 +1821,7 @@
           "reflectToAttr": true,
           "docs": "to indicate a progress bar state { info, warning, danger, success }.",
           "docsTags": [],
-          "default": "'success'",
+          "default": "'info'",
           "values": [
             {
               "type": "string"
