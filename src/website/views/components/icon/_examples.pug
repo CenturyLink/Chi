@@ -1,9 +1,17 @@
-script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
-script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+h2 Overview
+p.-text
+  | Chi icons are a collection of high-quality vector icons designed by CenturyLink for use in consumer, enterprise, and internal applications.
+  | All icons have been manually optimized to achieve the fastest load time without compromising visual path and shape quality. For icon requests or
+  | feedback, please email <a href="mailto:chi.support@centurylink.com">Chi Support</a>.
+
+h2 Using Icons
+p.-text
+  | Chi icons can be added to projects in one of two ways: Web Component (SVG) or HTML Blueprint (Web Font).
+  | The Web Component approach is dependent on your project using Chi's <a href="../../getting-started/installation/#webcomponentstab">Web Components</a>.
+  | The HTML Blueprint approach has no dependencies and all icons come pre-packaged in <a href="../../getting-started/installation/#csstab">Chi CSS</a>.
 
 h2 Examples
-p.-text
-  | Chi's Web Component icons are rendered using SVGs, while HTML Blueprints support both SVG and Web Font.
+h3 Base
 .example.-mb--3
   .-p--3
     chi-icon(icon="atom")
@@ -78,7 +86,9 @@ p.-text
       <i class="chi-icon icon-atom -xxl"></i>
 
 h3 Colors
-p.-text By default, icons are the same color as text. Use Chi text color utilities to set a specific color.
+p.-text
+  | By default, icons are rendered in the same color as the text color defined on their parent container.
+  | Easily change an icons color using the examples below.
 .example.-mb--3
   .-d--flex.-w--12.-justify-content--center.-flex--wrap.-p--1
     each color in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--grey', 'text--muted']
@@ -134,9 +144,7 @@ h3 Icons
     .chi-col.-w--6.-w-xl--2.-w-lg--3.-w-md--6.-mb--2
       .chi-card.-py--4.-bg--grey-10
         .chi-card__content
-          .chi-icon.-sm--3
-            svg
-              use(xlink:href=`#icon-${name}`)
+          chi-icon(icon=`${name}` size='sm--3')
       p.-text--center= 'icon-' + name
 
 script.

@@ -6,147 +6,194 @@ h3 Base
 .example.-mb--3
   .-p--3
     .chi-form__item(style="max-width:20rem")
-      label.chi-label(for="select01") Label
-      select(class="chi-input", id="select01")
-        option Base Select
-  :code(lang="html")
-    <div class="chi-form__item">
-      <label class="chi-label" for="select01">Label</label>
-      <select class="chi-input" id="select01">
-        <option>Base Select</option>
-      </select>
-    </div>
+      label.chi-label(for="example-base") Label
+      select(class="chi-input", id="example-base")
+        option(selected disabled hidden) Base Select
+        option Option 1
+        option Option 2
+        option Option 3
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-select-base
+      li.-disabled
+        a(href=`#webcomponent-select-base`) Web Component
+      li.-active
+        a(href=`#html-select-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-select-base
+  .chi-tabs-panel.-active#html-select-base
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example-base">Label</label>
+        <select class="chi-input" id="example-base">
+          <option>Base Select</option>
+        </select>
+      </div>
 
 h3 Disabled
 .example.-mb--3
   .-p--3
     .chi-form__item(style="max-width:20rem")
-      label.chi-label(for="select02") Label
-      select(class="chi-input", id="select02", disabled)
+      label.chi-label(for="example-disabled") Label
+      select(class="chi-input", id="example-disabled", disabled)
         option Disabled Select
-  :code(lang="html")
-    <div class="chi-form__item">
-      <label class="chi-label" for="select02">Label</label>
-      <select class="chi-input" id="select02" disabled>
-        <option>Disabled Select</option>
-      </select>
-    </div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-select-disabled
+      li.-disabled
+        a(href=`#webcomponent-select-disabled`) Web Component
+      li.-active
+        a(href=`#html-select-disabled`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-select-disabled
+  .chi-tabs-panel.-active#html-select-disabled
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example-disabled">Label</label>
+        <select class="chi-input" id="example-disabled" disabled>
+          <option>Disabled Select</option>
+        </select>
+      </div>
 
-h3 Danger
+h3 Invalid
 p.-text
-  | Selects support the validation class modifier <code>-danger</code> for indicating
+  | Selects support the semantic class modifier <code>-danger</code> for indicating
   | an invalid selection.
 .example.-mb--3
   .-p--3
     .chi-form__item(style="max-width:20rem")
-      label.chi-label(for="select03") Label
-      select(class="chi-input -danger", id="select03")
+      label.chi-label(for="example-invalid") Label
+      select(class="chi-input -danger", id="example-invalid")
         option Danger Select
-  :code(lang="html")
-    <div class="chi-form__item">
-      <label class="chi-label" for="select03">Label</label>
-      <select class="chi-input -danger" id="select03">
-        <option>Danger Select</option>
-      </select>
-    </div>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-select-invalid
+      li.-disabled
+        a(href=`#webcomponent-select-invalid`) Web Component
+      li.-active
+        a(href=`#html-select-invalid`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-select-invalid
+  .chi-tabs-panel.-active#html-select-invalid
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example-invalid">Label</label>
+        <select class="chi-input -danger" id="example-invalid">
+          <option>Invalid Select</option>
+        </select>
+      </div>
 
-h2 Sizes
+h3 Sizes
 p.-text
   | Selects support the following sizes: <code>-sm</code>, <code>-md</code>,
-  |  <code>-lg</code>, <code>-xl</code>.
-  | The default size is <code>-md</code>.
+  |  <code>-lg</code>, <code>-xl</code>. The default size is <code>-md</code>.
 .example.-mb--3
   .-p--3
-    .-p--2
-      .chi-form__item(style="max-width:20rem")
-        label.chi-label(for="select04") Label
-        select(class="chi-input -sm", id="select04")
-          option -sm Select
-    .-p--2
-      .chi-form__item(style="max-width:20rem")
-        label.chi-label(for="select05") Label
-        select(class="chi-input -md", id="select05")
-          option -md Select
-    .-p--2
-      .chi-form__item(style="max-width:20rem")
-        label.chi-label(for="select06") Label
-        select(class="chi-input -lg", id="select06")
-          option -lg Select
-    .-p--2
-      .chi-form__item(style="max-width:20rem")
-        label.chi-label(for="select07") Label
-        select(class="chi-input -xl", id="select07")
-          option -xl Select
-  :code(lang='html')
-    <div class="chi-form__item">
-      <label class="chi-label" for="select04">Label</label>
-      <select class="chi-input -sm" id="select04">
-        <option>-sm Select</option>
-      </select>
-    </div>
-    <div class="chi-form__item">
-      <label class="chi-label" for="select05">Label</label>
-      <select class="chi-input -md" id="select05">
-        <option>-md Select</option>
-      </select>
-    </div>
-    <div class="chi-form__item">
-      <label class="chi-label" for="select06">Label</label>
-      <select class="chi-input -lg" id="select06">
-        <option>-lg Select</option>
-      </select>
-    </div>
-    <div class="chi-form__item">
-      <label class="chi-label" for="select07">Label</label>
-      <select class="chi-input -xl" id="select07">
-        <option>-xl Select</option>
-      </select>
-    </div>
+    each size in ['-sm', '-md', '-lg', '-xl']
+      div(class=`-p--2`)
+        .chi-form__item(style="max-width:20rem")
+          label.chi-label(for=`example-size${size}`) Label
+          select(class=`chi-input ${size}`, id=`#example-size${size}`)
+            option(selected disabled hidden)=`${size} Select`
+            option Option 1
+            option Option 2
+            option Option 3
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-sizes
+      li.-disabled
+        a(href=`#webcomponent-sizes`) Web Component
+      li.-active
+        a(href=`#html-sizes`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-sizes
+  .chi-tabs-panel.-active#html-sizes
+    :code(lang='html')
+      <!-- sm -->
+      <div class="chi-form__item">
+        <label class="chi-label" for="example-size-sm">Label</label>
+        <select class="chi-input -sm" id="example-size-sm">
+          <option>-sm Select</option>
+        </select>
+      </div>
 
-h2 Floating label
-.chi-alert.-info.-mb--3
-  i.chi-alert__icon.chi-icon.icon-circle-info
-  .chi-alert__content
-    p.chi-alert__text This component requires Javascript
+      <!-- md -->
+      <div class="chi-form__item">
+        <label class="chi-label" for="example-size-md">Label</label>
+        <select class="chi-input -md" id="example-size-md">
+          <option>-md Select</option>
+        </select>
+      </div>
+
+      <!-- lg -->
+      <div class="chi-form__item">
+        <label class="chi-label" for="example-size-lg">Label</label>
+        <select class="chi-input -lg" id="example-size-lg">
+          <option>-lg Select</option>
+        </select>
+      </div>
+
+      <!-- xl -->
+      <div class="chi-form__item">
+        <label class="chi-label" for="example-size-xl">Label</label>
+        <select class="chi-input -xl" id="example-size-xl">
+          <option>-xl Select</option>
+        </select>
+      </div>
+
+h3 Floating labels
+p.-text
+  | Floating labels are a solution to keep the placeholder visible when no label is attached to the select.
+  | Chi only supports floating labels on <code>-lg</code> and <code>-xl</code> selects.
 
 .example.-mb--3
   .-p--3
     each size in ['-lg', '-xl']
       div(class=`chi-col -w--12 -p--2`)
         .chi-input__wrapper.-floating-label(style="max-width:20rem")
-          select#floating-label-select.chi-input(class=`${size}`)
+          select.chi-input(class=`${size}`, id=`#floating-label-select${size}`)
             option
             option Option 1
             option Option 2
             option Option 3
-          label(for="floating-label-select") Placeholder text
-  :code(lang='html')
-    <div id="floating-label-lg" class="chi-input__wrapper -floating-label">
-      <select class="chi-input -lg" id="floating-label-select-lg">
-        <option></option>
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-      </select>
-      <label for="floating-label-select-lg">Placeholder text</label>
-    </div>
+          label(for=`#floating-label-select${size}`) Placeholder text
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-label-floating
+      li.-disabled
+        a(href=`#webcomponent-label-floating`) Web Component
+      li.-active
+        a(href=`#html-label-floating`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-label-floating
+  .chi-tabs-panel.-active#html-label-floating
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation/#jstab">Chi.js</a>.
+    :code(lang='html')
+      <div id="floating-label-lg" class="chi-input__wrapper -floating-label">
+        <select class="chi-input -lg" id="floating-label-select-lg">
+          <option></option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+        <label for="floating-label-select-lg">Placeholder text</label>
+      </div>
 
-    <div id="floating-label-xl" class="chi-input__wrapper -floating-label">
-      <select class="chi-input -xl" id="floating-label-select-xl">
-        <option></option>
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-      </select>
-      <label for="floating-label-select-xl">Placeholder text</label>
-    </div>
+      <div id="floating-label-xl" class="chi-input__wrapper -floating-label">
+        <select class="chi-input -xl" id="floating-label-select-xl">
+          <option></option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+        <label for="floating-label-select-xl">Placeholder text</label>
+      </div>
 
-    <script>chi.floatingLabel(document.querySelectorAll('.-floating-label'));</script>
+      <script>chi.floatingLabel(document.querySelectorAll('.-floating-label'));</script>
 
 script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
+      chi.tab(document.getElementById('example-select-base'));
+      chi.tab(document.getElementById('example-select-disabled'));
+      chi.tab(document.getElementById('example-select-invalid'));
+      chi.tab(document.getElementById('example-sizes'));
+      chi.tab(document.getElementById('example-label-floating'));
       chi.floatingLabel(document.querySelectorAll('.-floating-label'));
     }
   );

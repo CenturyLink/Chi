@@ -1,8 +1,3 @@
-.chi-alert.-info.-my--3
-  i.chi-alert__icon.chi-icon.icon-circle-info
-  .chi-alert__content
-    p.chi-alert__text This component requires Javascript to render consistently between browsers.
-
 h2 Examples
 p.-text
   | To render a range slider, apply the class <code>chi-input</code> to an <code>input type="range"</code>.
@@ -16,18 +11,23 @@ h3 Base
       input(class="chi-input", type="range", id="range01")
   .example-tabs.-pl--2
     ul#chi-tabs-base.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-base-web') Web Component
       li.-active
-        a(href='#chi-tabs-base-html') HTML
-      li
-        a(href='#chi-tabs-base-js') JS
+        a(href='#chi-tabs-base-html') HTML Blueprint
+  #chi-tabs-base-web.chi-tabs-panel
   #chi-tabs-base-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="range01">Range label</label>
         <input class="chi-input" type="range" id="range01">
       </div>
-  #chi-tabs-base-js.chi-tabs-panel
-    :code(lang="html")
+
       <script>chi.rangeSlider(document.getElementById('range01'));</script>
 
 h3 Disabled
@@ -38,18 +38,23 @@ h3 Disabled
       input(class="chi-input", type="range", id="range02" disabled)
   .example-tabs.-pl--2
     ul#chi-tabs-disabled.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-disabled-web') Web Component
       li.-active
-        a(href='#chi-tabs-disabled-html') HTML
-      li
-        a(href='#chi-tabs-disabled-js') JS
+        a(href='#chi-tabs-disabled-html') HTML Blueprint
+  #chi-tabs-disabled-web.chi-tabs-panel
   #chi-tabs-disabled-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="range02">Range label</label>
         <input class="chi-input" type="range" id="range02" disabled>
       </div>
-  #chi-tabs-disabled-js.chi-tabs-panel
-    :code(lang="html")
+
       <script>chi.rangeSlider(document.getElementById('range02'));</script>
 
 h3 Multiple Labels
@@ -63,11 +68,17 @@ h3 Multiple Labels
         span.-text.-ml--2 5TB
   .example-tabs.-pl--2
     ul#chi-tabs-multiple-labels.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-multiple-labels-web') Web Component
       li.-active
-        a(href='#chi-tabs-multiple-labels-html') HTML
-      li
-        a(href='#chi-tabs-multiple-labels-js') JS
+        a(href='#chi-tabs-multiple-labels-html') HTML Blueprint
+  #chi-tabs-multiple-labels-web.chi-tabs-panel
   #chi-tabs-multiple-labels-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="range03">Range label</label>
@@ -77,8 +88,7 @@ h3 Multiple Labels
           <span class="-text">5TB</span>
         </div>
       </div>
-  #chi-tabs-multiple-labels-js.chi-tabs-panel
-    :code(lang="html")
+
       <script>chi.rangeSlider(document.getElementById('range03'));</script>
 
 h2 Achieve consistent rendering
@@ -99,11 +109,17 @@ h3 Base
         .chi-input__thumb
   .example-tabs.-pl--2
     ul#chi-tabs-with-progress.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-with-progress-web') Web Component
       li.-active
-        a(href='#chi-tabs-with-progress-html') HTML
-      li
-        a(href='#chi-tabs-with-progress-js') JS
+        a(href='#chi-tabs-with-progress-html') HTML Blueprint
+  #chi-tabs-with-progress-web.chi-tabs-panel
   #chi-tabs-with-progress-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="range04">Range label</label>
@@ -113,8 +129,7 @@ h3 Base
           <div class="chi-input__thumb"></div>
         </div>
       </div>
-  #chi-tabs-with-progress-js.chi-tabs-panel
-    :code(lang="html")
+
       <script>chi.rangeSlider(document.getElementById('range04'));</script>
 
 h3 Disabled
@@ -128,11 +143,17 @@ h3 Disabled
         .chi-input__thumb
   .example-tabs.-pl--2
     ul#chi-tabs-with-progress-disabled.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-with-progress-disabled-web') Web Component
       li.-active
-        a(href='#chi-tabs-with-progress-disabled-html') HTML
-      li
-        a(href='#chi-tabs-with-progress-disabled-js') JS
+        a(href='#chi-tabs-with-progress-disabled-html') HTML Blueprint
+  #chi-tabs-with-progress-disabled-web.chi-tabs-panel
   #chi-tabs-with-progress-disabled-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="range05">Range label</label>
@@ -142,8 +163,7 @@ h3 Disabled
           <div class="chi-input__thumb"></div>
         </div>
       </div>
-  #chi-tabs-with-progress-disabled-js.chi-tabs-panel
-    :code(lang="html")
+
       <script>chi.rangeSlider(document.getElementById('range05'));</script>
 
 h3 Multiple Labels
@@ -160,11 +180,17 @@ h3 Multiple Labels
         span.-text.-ml--2 5TB
   .example-tabs.-pl--2
     ul#chi-tabs-with-progress-multiple-labels.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-with-progress-multiple-labels-web') Web Component
       li.-active
-        a(href='#chi-tabs-with-progress-multiple-labels-html') HTML
-      li
-        a(href='#chi-tabs-with-progress-multiple-labels-js') JS
+        a(href='#chi-tabs-with-progress-multiple-labels-html') HTML Blueprint
+  #chi-tabs-with-progress-multiple-labels-web.chi-tabs-panel
   #chi-tabs-with-progress-multiple-labels-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="range06">Range label</label>
@@ -178,8 +204,7 @@ h3 Multiple Labels
           <span class="-text -ml--2">5TB</span>
         </div>
       </div>
-  #chi-tabs-with-progress-multiple-labels-js.chi-tabs-panel
-    :code(lang="html")
+
       <script>chi.rangeSlider(document.getElementById('range06'));</script>
 
 h2 Radio buttons as range slider
@@ -210,11 +235,17 @@ p.-text
             .chi-input__tick-label > 3 years
   .example-tabs.-pl--2
     ul#chi-tabs-radio-buttons.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-radio-buttons-web') Web Component
       li.-active
-        a(href='#chi-tabs-radio-buttons-html') HTML
-      li
-        a(href='#chi-tabs-radio-buttons-js') JS
+        a(href='#chi-tabs-radio-buttons-html') HTML Blueprint
+  #chi-tabs-radio-buttons-web.chi-tabs-panel
   #chi-tabs-radio-buttons-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="range07">Range label</label>
@@ -244,8 +275,7 @@ p.-text
           </div>
         </div>
       </div>
-  #chi-tabs-radio-buttons-js.chi-tabs-panel
-    :code(lang="html")
+
       <script>chi.rangeSlider(document.getElementById('range07'));</script>
 
 h3 Disabled
@@ -273,11 +303,17 @@ h3 Disabled
             .chi-input__tick-label > 3 years
   .example-tabs.-pl--2
     ul#chi-tabs-radio-buttons-disabled.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-radio-buttons-disabled-web') Web Component
       li.-active
-        a(href='#chi-tabs-radio-buttons-disabled-html') HTML
-      li
-        a(href='#chi-tabs-radio-buttons-disabled-js') JS
+        a(href='#chi-tabs-radio-buttons-disabled-html') HTML Blueprint
+  #chi-tabs-radio-buttons-disabled-web.chi-tabs-panel
   #chi-tabs-radio-buttons-disabled-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="range08">Range label</label>
@@ -307,8 +343,7 @@ h3 Disabled
           </div>
         </div>
       </div>
-  #chi-tabs-radio-buttons-disabled-js.chi-tabs-panel
-    :code(lang="html")
+
       <script>chi.rangeSlider(document.getElementById('range08'));</script>
 
 h3 Consistent rendering in WebKit browsers
@@ -338,11 +373,17 @@ h3 Consistent rendering in WebKit browsers
         .chi-input__thumb
   .example-tabs.-pl--2
     ul#chi-tabs-with-progress-and-radio-buttons.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-with-progress-and-radio-buttons-web') Web Component
       li.-active
-        a(href='#chi-tabs-with-progress-and-radio-buttons-html') HTML
-      li
-        a(href='#chi-tabs-with-progress-and-radio-buttons-js') JS
+        a(href='#chi-tabs-with-progress-and-radio-buttons-html') HTML Blueprint
+  #chi-tabs-with-progress-and-radio-buttons-web.chi-tabs-panel
   #chi-tabs-with-progress-and-radio-buttons-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="range09">Range label</label>
@@ -374,8 +415,7 @@ h3 Consistent rendering in WebKit browsers
           <div class="chi-input__thumb"></div>
         </div>
       </div>
-  #chi-tabs-with-progress-and-radio-buttons-js.chi-tabs-panel
-    :code(lang="html")
+      
       <script>chi.rangeSlider(document.getElementById('range09'));</script>
 
 script.

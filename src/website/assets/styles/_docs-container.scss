@@ -59,8 +59,7 @@
         width: 100%;
         @include respond-to(lg) {
           border-bottom: 0;
-          border-right: 0;
-          box-shadow: inset -0.0625rem 0 0 0 set-color(grey, 25);
+          border-right: 0.0625rem solid set-color(grey, 25);
           display: block;
           padding-bottom: 4.5rem;
           position: fixed;

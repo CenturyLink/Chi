@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-04-14T14:19:42",
+  "timestamp": "2020-04-15T01:22:13",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1821,7 +1821,7 @@
           "reflectToAttr": true,
           "docs": "to indicate a progress bar state { info, warning, danger, success }.",
           "docsTags": [],
-          "default": "'success'",
+          "default": "'info'",
           "values": [
             {
               "type": "string"

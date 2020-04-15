@@ -28,7 +28,8 @@ progress {
   /* Get rid of default border in Firefox. */
   border: 0;
   /* For IE10 / IE 11 / Edge */
-  color:  $success-color;
+  color:  $primary-color;
+  display: block;
   height: 0.5rem;
   overflow: hidden;
   width: 100%;
@@ -39,12 +40,12 @@ progress {
   }
 
   &::-webkit-progress-value {
-    background-color: $success-color;
+    background-color: $primary-color;
   }
 
   //Firefox
   &::-moz-progress-bar {
-    background-color: $success-color;
+    background-color: $primary-color;
   }
 
   //Fix for 1 px border-right on progress bar in IE10 / IE 11 / Edge

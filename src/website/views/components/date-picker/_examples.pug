@@ -26,10 +26,10 @@ p.-text
       <chi-date-picker id="date"></chi-date-picker>
   #html-with-label.chi-tabs-panel
     .chi-tab__description
-      chi-alert(icon="circle-info")
-        | This HTML Blueprint requires JavaScript to render properly.
-        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
-        | a vanilla javascript solution which includes support for this Date Picker component.
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="datepicker-1">Date</label>
@@ -60,10 +60,10 @@ h3 Disabled
       <chi-date-picker id="date-2" disabled></chi-date-picker>
   #html-disabled.chi-tabs-panel
     .chi-tab__description
-      chi-alert(icon="circle-info")
-        | This HTML Blueprint requires JavaScript to render properly.
-        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
-        | a vanilla javascript solution which includes support for this Date Picker component.
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="datepicker-2">Date</label>
@@ -93,10 +93,10 @@ h3 Value, min and max options
       <chi-date-picker id="date-3" value="01/24/2019" min="01/14/2019" max="02/07/2019">
   #html-min-max-value.chi-tabs-panel
     .chi-tab__description
-      chi-alert(icon="circle-info")
-        | This HTML Blueprint requires JavaScript to render properly.
-        | You may write your own, or use <a href="../../getting-started/installation/#jstab">Chi.js</a>,
-        | a vanilla javascript solution which includes support for this Date Picker component.
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="datepicker-3">Date</label>
@@ -203,6 +203,12 @@ h4 Base
       <chi-date></chi-date>
   #html.chi-tabs-panel
     .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
+      br
+      br
       | Use the classes <code>-month-starts-on-sun</code>,
       | <code>-month-starts-on-mon</code>, <code>-month-starts-on-tue</code>, <code>-month-starts-on-wed</code>,
       | <code>-month-starts-on-thu</code>, <code>-month-starts-on-fri</code> and <code>-month-starts-on-sat</code> to
@@ -296,6 +302,12 @@ h4 Active
       <chi-date value="05/15/2019"></chi-date>
   #html-active.chi-tabs-panel
     .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
+      br
+      br
       | Use class <code>-active</code> for the selected date
     :code(lang="html")
       <div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
@@ -362,6 +374,12 @@ h4 Min and Max
       <chi-date min="06/06/2019" max="06/22/2019"></chi-date>
   #html-min-max.chi-tabs-panel
     .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
+      br
+      br
       | Use class <code>-inactive</code> for deactivated dates.
     :code(lang="html")
       <div class="chi-datepicker -week-starts-on-sun -month-starts-on-sat">

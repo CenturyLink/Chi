@@ -11,14 +11,6 @@
 
 h2 Examples
 h3 Base
-p.-text You can use the <code>-active</code> class in the following elements:
-dl
-  dt: code ul.chi-sidenav__list &gt; li
-  dd.-text For activating the elements in the sidenav menu.
-  dt: code .drawer
-  dd.-text For opening the drawer (<a href="../drawer/">View drawer documentation</a>)
-  dt: code ul.chi-sidenav__drawer-list &gt; li
-  dd.-text For activating the menu items inside the drawer.
 .example.-mb--3
   .-d--flex(style='overflow: hidden;')
     aside.chi-sidenav.-flex--shrink0#example-base
@@ -28,9 +20,7 @@ dl
             each val in menuItems
               li(class=`${val===active.menuItem ? '-active':''}`)
                 a(href=`#drawer-${example}-${val}`)
-                  .chi-icon
-                    svg
-                      use(xlink:href='#icon-atom')
+                  i.chi-icon.icon-atom
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
       .chi-sidenav__drawers
         each val1 in menuItems
@@ -50,15 +40,22 @@ dl
                       else
                         span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
     .-flex--grow1.-p--3.-pb--4
-      each val2 in [1,2,3,4,5]
+      each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  .-pl--2
+
+  .example-tabs.-pl--2
     ul.chi-tabs#examples-default
+      li.-disabled
+        a(href=`#example-base-web`) Web Component
       li.-active
-        a(href=`#example-base-html`) HTML
-      li
-        a(href=`#example-base-js`) JS
+        a(href=`#example-base-html`) HTML Blueprint
+  .chi-tabs-panel#example-base-web
   .chi-tabs-panel.-active#example-base-html
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang='html')
       <aside class="chi-sidenav" id="sidenav-0">
         <div class="chi-sidenav__content">
@@ -66,33 +63,25 @@ dl
             <ul class="chi-sidenav__list">
               <li class="-active">
                 <a href="#drawer-0-1">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Active Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-0-2">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-0-3">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-0-4">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
@@ -234,8 +223,7 @@ dl
           </div>
         </div>
       </aside>
-  .chi-tabs-panel#example-base-js
-    :code(lang='html')
+
       <script>chi.sidenav(document.getElementById('sidenav-0'));</script>
 
 h3 Inverse
@@ -250,9 +238,7 @@ h3 Inverse
             each val in menuItems
               li(class=`${val===active.menuItem ? '-active':''}`)
                 a(href=`#drawer-${example}-${val}`)
-                  .chi-icon
-                    svg
-                      use(xlink:href='#icon-atom')
+                  i.chi-icon.icon-atom
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
       .chi-sidenav__drawers
         each val1 in menuItems
@@ -272,15 +258,21 @@ h3 Inverse
                       else
                         span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
     .-flex--grow1.-p--3.-pb--4
-      each val2 in [1,2,3,4,5]
+      each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  .-pl--2
+  .example-tabs.-pl--2
     ul.chi-tabs#examples-inverse
+      li.-disabled
+        a(href=`#example-inverse-web`) Web Component
       li.-active
-        a(href=`#example-inverse-html`) HTML
-      li
-        a(href=`#example-inverse-js`) JS
+        a(href=`#example-inverse-html`) HTML Blueprint
+  .chi-tabs-panel#example-inverse-web
   .chi-tabs-panel.-active#example-inverse-html
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang='html')
       <aside class="chi-sidenav -inverse" id="sidenav-1">
         <div class="chi-sidenav__content">
@@ -288,33 +280,25 @@ h3 Inverse
             <ul class="chi-sidenav__list">
               <li class="-active">
                 <a href="#drawer-1-1">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Active Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-1-2">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-1-3">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-1-4">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
@@ -456,8 +440,7 @@ h3 Inverse
           </div>
         </div>
       </aside>
-  .chi-tabs-panel#example-inverse-js
-    :code(lang='html')
+
       <script>chi.sidenav(document.getElementById('sidenav-1'));</script>
 
 - example = 2
@@ -471,9 +454,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
             each val in menuItems
               li(class=`${val === active.menuItem ? '-active' : ''}`)
                 a(href=`#drawer-global-nav-${example}-${val}`)
-                  .chi-icon
-                    svg
-                      use(xlink:href='#icon-atom')
+                  i.chi-icon.icon-atom
                   span=val === active.menuItem ? 'Active Item' : 'Menu Item'
       .chi-sidenav__drawers
         each val1 in menuItems
@@ -503,19 +484,23 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                       a(href=`#exampleHashTarget`)
                         span.chi-sidenav__title
                           =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                          .chi-icon.-xs
-                            svg
-                              use(xlink:href='#icon-external-link')
+                          i.chi-icon.icon-external-link.-xs
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  .-pl--2
+  .example-tabs.-pl--2
     ul#chi-tabs-three-level.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-three-level-web') Web Component
       li.-active
-        a(href='#chi-tabs-three-level-html') HTML
-      li
-        a(href='#chi-tabs-three-level-js') JS
+        a(href='#chi-tabs-three-level-js') HTML Blueprint
+  #chi-tabs-three-level-web.chi-tabs-panel.-active
   #chi-tabs-three-level-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <aside class="chi-sidenav -inverse -global-nav" id="sidenav-global-nav-1">
         <div class="chi-sidenav__content">
@@ -523,21 +508,13 @@ h3(id=`example-${example}`) Enterprise Global Navigation
             <ul class="chi-sidenav__list">
               <li class="-active">
                 <a href="#drawer-global-nav-1-1">
-                  <div class="chi-icon">
-                    <svg>
-                      <use xlink:href="#icon-atom"></use>
-                    </svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Active Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-global-nav-1-2">
-                  <div class="chi-icon">
-                    <svg>
-                      <use xlink:href="#icon-atom"></use>
-                    </svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
@@ -606,11 +583,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   <a href="#exampleHashTarget">
                     <span class="chi-sidenav__title">
                       Title C
-                      <div class="chi-icon -xs">
-                        <svg>
-                          <use xlink:href="#icon-external-link"></use>
-                        </svg>
-                      </div>
+                      <i class="chi-icon icon-external-link -xs"></i>
                     </span>
                   </a>
                 </li>
@@ -618,11 +591,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   <a href="#exampleHashTarget">
                     <span class="chi-sidenav__title">
                       Title D
-                      <div class="chi-icon -xs">
-                        <svg>
-                          <use xlink:href="#icon-external-link"></use>
-                        </svg>
-                      </div>
+                      <i class="chi-icon icon-external-link -xs"></i>
                     </span>
                   </a>
                 </li>
@@ -690,11 +659,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   <a href="#exampleHashTarget">
                     <span class="chi-sidenav__title">
                       Title G
-                      <div class="chi-icon -xs">
-                        <svg>
-                          <use xlink:href="#icon-external-link"></use>
-                        </svg>
-                      </div>
+                      <i class="chi-icon icon-external-link -xs"></i>
                     </span>
                   </a>
                 </li>
@@ -702,11 +667,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
                   <a href="#exampleHashTarget">
                     <span class="chi-sidenav__title">
                       Title H
-                      <div class="chi-icon -xs">
-                        <svg>
-                          <use xlink:href="#icon-external-link"></use>
-                        </svg>
-                      </div>
+                      <i class="chi-icon icon-external-link -xs"></i>
                     </span>
                   </a>
                 </li>
@@ -715,17 +676,22 @@ h3(id=`example-${example}`) Enterprise Global Navigation
           </div>
         </div>
       </aside>
-  #chi-tabs-three-level-js.chi-tabs-panel
-    :code(lang="html")
+
       <script>
         chi.sidenav(document.getElementById('sidenav-global-nav-1'), {
           animated: false
         });
       </script>
 
+h2 Active Usage
+p.-text
+  | The <code>-active</code> class can be applied to <code>ul.chi-sidenav__list &gt; li</code>
+  | for activating the elements in the sidenav menu, <code>.drawer</code> for opening the <a href="../drawer/">drawer</a>,
+  | and <code>ul.chi-sidenav__drawer-list &gt; li</code> for activating the menu items inside the drawer.
+
 h2 Sizes
 p.-text
-  | Sidenav supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code> and <code>-lg</code>.
+  | Sidenav supports the following sizes: <code>-sm</code>, <code>-md</code> and <code>-lg</code>.
   | The default size is <code>-md</code>.
 
 h3 -sm
@@ -740,9 +706,7 @@ h3 -sm
             each val in menuItems
               li(class=`${val===active.menuItem ? '-active':''}`)
                 a(href=`#drawer-${example}-${val}`)
-                  .chi-icon
-                    svg
-                      use(xlink:href='#icon-atom')
+                  i.chi-icon.icon-atom
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
       .chi-sidenav__drawers
         each val1 in menuItems
@@ -762,15 +726,21 @@ h3 -sm
                       else
                         span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
     .-flex--grow1.-p--3.-pb--4
-      each val2 in [1,2,3,4,5]
+      each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  .-pl--2
+  .example-tabs.-pl--2
     ul#examples-sizes-sm.chi-tabs
+      li.-disabled
+        a(href='#examples-sizes-sm-web') Web Component
       li.-active
-        a(href='#examples-sizes-sm-html') HTML
-      li
-        a(href='#examples-sizes-sm-js') JS
+        a(href='#examples-sizes-sm-html') HTML Blueprint
+  #examples-sizes-sm-web.chi-tabs-panel
   #examples-sizes-sm-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang='html')
       <aside class="chi-sidenav -sm" id="sidenav-3">
         <div class="chi-sidenav__content">
@@ -778,33 +748,25 @@ h3 -sm
             <ul class="chi-sidenav__list">
               <li class="-active">
                 <a href="#drawer-0-1">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Active Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-0-2">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-0-3">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-0-4">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
@@ -946,8 +908,7 @@ h3 -sm
           </div>
         </div>
       </aside>
-  #examples-sizes-sm-js.chi-tabs-panel
-    :code(lang='html')
+
       <script>chi.sidenav(document.getElementById('sidenav-3'));</script>
 
 h3 -md
@@ -962,9 +923,7 @@ h3 -md
             each val in menuItems
               li(class=`${val===active.menuItem ? '-active':''}`)
                 a(href=`#drawer-${example}-${val}`)
-                  .chi-icon
-                    svg
-                      use(xlink:href='#icon-atom')
+                  i.chi-icon.icon-atom
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
       .chi-sidenav__drawers
         each val1 in menuItems
@@ -984,15 +943,21 @@ h3 -md
                       else
                         span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
     .-flex--grow1.-p--3.-pb--4
-      each val2 in [1,2,3,4,5]
+      each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  .-pl--2
+  .example-tabs.-pl--2
     ul#examples-sizes-md.chi-tabs
+      li.-disabled
+        a(href='#examples-sizes-md-web') Web Component
       li.-active
-        a(href='#examples-sizes-md-html') HTML
-      li
-        a(href='#examples-sizes-md-js') JS
+        a(href='#examples-sizes-md-html') HTML Blueprint
+  #examples-sizes-md-web.chi-tabs-panel
   #examples-sizes-md-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang='html')
       <aside class="chi-sidenav -md" id="sidenav-4">
         <div class="chi-sidenav__content">
@@ -1000,33 +965,25 @@ h3 -md
             <ul class="chi-sidenav__list">
               <li class="-active">
                 <a href="#drawer-0-1">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Active Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-0-2">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-0-3">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-0-4">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
@@ -1168,8 +1125,7 @@ h3 -md
           </div>
         </div>
       </aside>
-  #examples-sizes-md-js.chi-tabs-panel
-    :code(lang='html')
+
       <script>chi.sidenav(document.getElementById('sidenav-4'));</script>
 
 h3 -lg
@@ -1184,9 +1140,7 @@ h3 -lg
             each val in menuItems
               li(class=`${val===active.menuItem ? '-active':''}`)
                 a(href=`#drawer-${example}-${val}`)
-                  .chi-icon
-                    svg
-                      use(xlink:href='#icon-atom')
+                  i.chi-icon.icon-atom
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
       .chi-sidenav__drawers
         each val1 in menuItems
@@ -1206,15 +1160,20 @@ h3 -lg
                       else
                         span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
     .-flex--grow1.-p--3.-pb--4
-      each val2 in [1,2,3,4,5]
+      each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  .-pl--2
+  .example-tabs.-pl--2
     ul#examples-sizes-lg.chi-tabs
+      li.-disabled
+        a(href='#examples-sizes-lg-web') Web Component
       li.-active
-        a(href='#examples-sizes-lg-html') HTML
-      li
-        a(href='#examples-sizes-lg-js') JS
+        a(href='#examples-sizes-lg-html') HTML Blueprint
   #examples-sizes-lg-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang='html')
       <aside class="chi-sidenav -lg" id="sidenav-5">
         <div class="chi-sidenav__content">
@@ -1222,33 +1181,25 @@ h3 -lg
             <ul class="chi-sidenav__list">
               <li class="-active">
                 <a href="#drawer-0-1">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Active Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-0-2">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-0-3">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-0-4">
-                  <div class="chi-icon">
-                    <svg><use xlink:href="#icon-atom"></use></svg>
-                  </div>
+                  <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
@@ -1390,98 +1341,22 @@ h3 -lg
           </div>
         </div>
       </aside>
-  #examples-sizes-lg-js.chi-tabs-panel
-    :code(lang='html')
+
       <script>chi.sidenav(document.getElementById('sidenav-5'));</script>
 
-h3 Recommended layout
+h2 Recommended layout
 p.-text
-  | You can use this layout to ensure the sidenav works correctly.
+  | Use this layout to ensure the sidenav renders correctly in your project.
 .example.-mb--3
   :code(lang='html')
     <div class="-d--flex">
       <aside class="chi-sidenav -flex--shrink0">
-        [ Sidenav content ]
+        <!-- Sidenav content goes here -->
       </aside>
       <div class="-flex--grow1">
-        [ Page content ]
+        <!-- Page content goes here -->
       </div>
     </div>
-
-h2 Aditional sidenav content
-
-p.-text
-  | It is possible to include additional content above and below the menu in the side bar. You will have to develop
-  | the responsive behavior of any added content. Put your content inside <code>chi-sidenav__content</code>, above and/or
-  | below the <code>nav</code> element.
-p.-text
-  span.chi-badge.-dark.-sm.-mr--1
-    span Tip
-  | You can use the Flex utility classes to position the elements inside <code>chi-sidenav__content</code>.
-
-.example.-mb--3(id=`example-${example}`)
-  .-d--flex(style='overflow: hidden;')
-    aside.chi-sidenav.-lg.-flex--shrink0
-      .chi-sidenav__content.-d--flex.-flex--column
-        .-d--flex.-flex--column.-flex-lg--row.-align-items--center.-p--2
-          .chi-avatar.-mr-lg--2
-            img(src='../../assets/images/avatar.jpg', alt="User name's Avatar")
-          span.-text.-d--none.-d-md--block(style="white-space:nowrap;text-overflow:ellipsis;overflow:hidden;") User name
-        nav.-flex--grow1
-          ul.chi-sidenav__list
-            each val in menuItems
-              li(class=`${val===active.menuItem ? '-active':''}`)
-                a(href=`#drawer-${example}-${val}`)
-                  .chi-icon
-                    svg
-                      use(xlink:href='#icon-atom')
-                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-        .-d--flex.-flex--column.-flex-lg--row.-align-items--center.-p--2.-bt--1
-          .chi-avatar.-mr-lg--2
-            img(src='../../assets/images/avatar.jpg', alt="User name's Avatar")
-          span.-text.-d--none.-d-md--block(style="white-space:nowrap;text-overflow:ellipsis;overflow:hidden;") User name
-    .-flex--grow1.-p--3.-pb--4
-      each val2 in [1,2,3,4,5]
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-  :code(lang='html')
-    <aside class="chi-sidenav -lg">
-      <div class="chi-sidenav__content -d--flex -flex--column">
-        <div class="-d--flex -flex--column -flex-lg--row -align-items--center -p--2">
-          <div class="chi-avatar -mr-lg--2">
-            <img src="../../assets/images/avatar.jpg" alt="User name">
-          </div>
-          <span class="-text -d--none -d-md--block" style="white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">User name</span>
-        </div>
-        <nav class="-flex--grow1">
-          <ul class="chi-sidenav__list">
-            <li>
-              <a href="#drawer-2-1">
-                <div class="chi-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-            [ ... ]
-            <li>
-              <a href="#drawer-2-4">
-                <div class="chi-icon">
-                  <svg><use xlink:href="#icon-atom"></use></svg>
-                </div>
-                <span>Menu Item</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div class="-d--flex -flex--column -flex-lg--row -align-items--center -p--2 -bt--1">
-          <div class="chi-avatar -mr-lg--2">
-            <img src="../../assets/images/avatar.jpg" alt="User name">
-          </div>
-          <span class="-text -d--none -d-md--block" style="white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">User name</span>
-        </div>
-      </div>
-    </aside>
 
 script.
   document.addEventListener(
