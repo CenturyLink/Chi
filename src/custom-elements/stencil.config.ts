@@ -71,7 +71,7 @@ export const config: Config = {
           mutable: false,
           attr: 'title',
           reflectToAttr: true,
-          docs: 'to define drawer title. Not compatible with headless',
+          docs: 'to define drawer title. Not compatible with no-header',
           docsTags: [],
           default: false,
           values: [

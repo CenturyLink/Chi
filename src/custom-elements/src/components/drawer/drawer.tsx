@@ -35,7 +35,7 @@ export class Drawer {
   /**
    * to remove the space for the header
    */
-  @Prop({ reflect: true }) headless: boolean;
+  @Prop({ reflect: true }) noHeader: boolean;
 
   /**
    * Status classes for the show/hide animation
@@ -48,7 +48,7 @@ export class Drawer {
   @State() _backdropAnimationClasses: string;
 
   /**
-   *  To define drawer title. Not compatible with headless
+   *  To define drawer title. Not compatible with noHeader
    */
   @State() drawerTitle: string;
 
@@ -230,7 +230,7 @@ export class Drawer {
         ${this.position ? `-${this.position}` : ''}
         ${this._animationClasses}
       `}>
-        {this.headless
+        {this.noHeader
           ? !this.nonClosable
             ? [
               closeButton,

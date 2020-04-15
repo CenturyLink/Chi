@@ -17,7 +17,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
         div(style='width: 320px;')
           .-text--h2= `Drawer / ${version.title} / ${side}`
           div.-position--relative.-z--0(style='height: 20rem;')
-            chi-drawer(position=side, backdrop=version.backdrop, active, headless, data-cy=`${version.testClass}${side}`)
+            chi-drawer(position=side, backdrop=version.backdrop, active, no-header, data-cy=`${version.testClass}${side}`)
               .-px--2.-text Drawer content here
 
       div(class=`${version.testClass}${side}-headed -mb--3 example`)
@@ -38,5 +38,5 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
     div(style='width: 320px;')
       .-text--h2= `Drawer / Non closable`
       div.-position--relative.-z--0(style='height: 20rem;')
-        chi-drawer(position='left', data-cy=`test-non-closable`, headless, non-closable, active)
+        chi-drawer(position='left', data-cy=`test-non-closable`, no-header, non-closable, active)
           .-px--2.-text Drawer content here
