@@ -404,7 +404,7 @@ h3 Danger
         </div>
       </div>
 
-h2 Sizes
+h3 Sizes
 p.-text
   | Text inputs supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
   |  <code>-lg</code>, <code>-xl</code>.
@@ -453,10 +453,10 @@ p.-text
         <input type="text" class="chi-input -xl" placeholder="Sample Text" id="example__size-xl">
       </div>
 
-h2 Floating labels
+h3 Floating labels
 p.-text
-  | Floating labels are a solution to keep the placeholder visible when no label is attached to the input. Chi supports
-  | floating labels for <code>-lg</code> and <code>-xl</code> inputs.
+  | Floating labels are a solution to keep the placeholder visible when no label is attached to the input.
+  | Chi only supports floating labels on <code>-lg</code> and <code>-xl</code> inputs.
 
 .example.-mb--3
   .-p--3
@@ -474,10 +474,10 @@ p.-text
   .chi-tabs-panel#webcomponent-input-floating-label
   .chi-tabs-panel.-active#html-input-floating-label
     .chi-tab__description
-      chi-alert(icon="circle-info")
-        | This HTML Blueprint requires JavaScript to add/remove the -active class.
-        | You may write your own, or use <a href="../../../getting-started/installation/#jstab">Chi.js</a>,
-        | a vanilla javascript solution which includes support for Floating Labels.
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang='html')
       <div class="chi-input__wrapper -floating-label">
         <input class="chi-input -lg" type="text" id="floating-label-lg">
