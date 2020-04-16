@@ -28,9 +28,10 @@ each side in moreSides
     chi-popover(position=side, title="Popover Title", variant="text", arrow, reference=`#${side}`, active)
       | Popover content.
 
-div(class=`test-with-progress -position--relative`, style='width: 450px; height: 220px;', data-cy=`test-with-progress`)
-  span.-text--h2=`Popover with progress`
+div(class=`test-with-custom-content -position--relative`, style='width: 450px; height: 320px;', data-cy=`test-with-custom-content`)
+  span.-text--h2=`Popover with custom content`
   .-position--relative
-    chi-popover(title="Popover Title", active, arrow, prevent-auto-hide)
-      | Current progress (75%)
-      chi-progress(value="75")
+    chi-popover(position="top", title="Are you sure?", variant="text", active, arrow, prevent-auto-hide)
+      | Are you sure you want to delete this?
+      chi-button(slot="chi-popover__footer" color="danger") Delete
+      chi-button(slot="chi-popover__footer") Cancel

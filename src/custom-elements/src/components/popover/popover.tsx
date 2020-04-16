@@ -64,6 +64,11 @@ export class Popover {
    */
   @State() popoverTitle: string;
 
+  /**
+   *  To define popover footer
+   */
+  @State() popoverFooter: boolean;
+
   @Element() el: HTMLElement;
 
   private currentAnimation: ThreeStepsAnimation;
@@ -339,6 +344,10 @@ export class Popover {
     if (this.el.getAttribute('title')) {
       this.popoverTitle = this.el.getAttribute('title');
     }
+
+    if (Array.from(this.el.querySelectorAll("[slot=chi-popover__footer]")).length > 0) {
+      this.popoverFooter = true;
+    }
   }
 
   componentDidLoad(): void {
@@ -395,6 +404,7 @@ export class Popover {
   render() {
     const popoverHeader = this.popoverTitle && <header class="chi-popover__header"><h2 class="chi-popover__title">{this.popoverTitle}</h2></header>;
     const slot = this.variant && this.variant === 'text' ? <p class="chi-popover__text"><slot /></p> : <slot />;
+    const chiFooter = this.popoverFooter && <div class="chi-popover__footer"><slot name="chi-popover__footer"></slot></div>;
 
     return (
       <section
@@ -416,6 +426,7 @@ export class Popover {
         <div class="chi-popover__content">
           {slot}
         </div>
+        {chiFooter}
         {this.arrow && <div class="chi-popover__arrow" />}
       </section>
     );
