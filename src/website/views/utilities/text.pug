@@ -4,48 +4,35 @@ description: Use text utility classes to control sizing, color, alignment and mo
 styles: [assets/styles/show-example]
 ---
 
-h2 Text size
-h3 Base
-p.-text 14px (0.875rem) font size with 24px (1.5rem) line-height
-.example.-mb--3
-  p.-text.-m--3
-    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
-    | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
-  :code(lang="html")
-    <p class="-text"></p>
+- var tabs = {'xs' : '12px (0.75rem) font size with 20px (1.25rem) line-height','sm' : '13px (0.8125rem) font size with 20px (1.25rem) line-height','md' : '14px (0.875rem) font size with 24px (1.5rem) line-height', 'lg' : '16px (1rem) font size with 24px (1.5rem) line-height', 'xl' : '18px (1.125rem) font size with 28px (1.75rem) line-height'};
 
-h3 Large
-p.-text 16px (1rem) font size with 24px (1.5rem) line-height
-.example.-mb--3
-  p.-text.-text--large.-m--3
-    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
-    | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
-  :code(lang="html")
-    <p class="-text--large"></p>
-h3 Larger
-p.-text 18px (1.125rem) font size with 28px (1.75rem) line-height
-.example.-mb--3
-  p.-text.-text--larger.-m--3
-    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
-    | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
-  :code(lang="html")
-    <p class="-text--larger"></p>
-h3 Small
-p.-text 13px (0.8125rem) font size with 20px (1.25rem) line-height
-.example.-mb--3
-  p.-text.-text--small.-m--3
-    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
-    | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
-  :code(lang="html")
-    <p class="-text--small"></p>
-h3 Smaller
-p.-text 12px (0.75rem) font size with 20px (1.25rem) line-height
-.example.-mb--3
-  p.-text.-text--smaller.-m--3
-    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
-    | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
-  :code(lang="html")
-    <p class="-text--smaller"></p>
+h2 Text size
+p.-text
+  | Text support the following sizes: <code>-text--xs</code>, <code>-text--sm</code>, <code>-text--md</code>,
+  | <code>-text--lg</code>, and <code>-text--xl</code>. The default size is <code>-text--md</code>.
+.example(style='border:none')
+  section.chi-table.-bordered.-mt--3.-mb--3
+    div
+      table(cellpadding='0', cellspacing='0')
+        thead
+          tr
+            th
+              div Class
+            th
+              div Sizes
+            th
+              div Example
+        tbody
+          each text, size in tabs
+            tr
+              td(width='20%')
+                code= '-text--' + size
+              td(width='50%')
+                p.-text= text
+              td
+                p(class=`-text--${size}`)
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
 h2 Text headings
 p.-text In order to match the font styling of a heading, <code>.-text--h1</code> through <code>.-text--h6</code> classes are also available.
 .example.-mb--3
@@ -172,24 +159,25 @@ ul.-text
   li <code>xl</code> - use to apply <code>text</code> to xl breakpoints.
 h4 {size}
 ul.-text
-  li <code>small</code> - use to set <code>small</code> the <code>text</code>
-  li <code>smaller</code> - use to set <code>smaller</code> the <code>text</code>
-  li <code>large</code> - use to set <code>large</code> the <code>text</code>
-  li <code>larger</code> - use to set <code>larger</code> the <code>text</code>
+  li <code>xs</code> - use to set <code>smaller</code> the <code>text</code>
+  li <code>sm</code> - use to set <code>small</code> the <code>text</code>
+  li <code>md</code> - use to set <code>medium</code> the <code>text</code>
+  li <code>lg</code> - use to set <code>large</code> the <code>text</code>
+  li <code>xl</code> - use to set <code>larger</code> the <code>text</code>
 .example.-mb--3
-  p.-text.-text-md--large.-m--3
+  p.-text.-text-md--lg.-m--3
     | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
     | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
-  p.-text.-text-xl--smaller.-m--3
+  p.-text.-text-xl--xs.-m--3
     | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
     | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
-  p.-text.-text-lg--larger.-m--3
+  p.-text.-text-lg--xl.-m--3
     | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
     | commodo condimentum odio. Praesent lacus metus, vehicula at orci ac, fringilla mollis mauris.
   :code(lang="html")
-    <p class="-text-md--large"></p>
-    <p class="-text-xl--smaller"></p>
-    <p class="-text-lg--larger"></p>
+    <p class="-text-md--lg"></p>
+    <p class="-text-xl--xs"></p>
+    <p class="-text-lg--xl"></p>
 
 h3 Line heights
 p.-text Line height sizes can be defined using the format <code>-lh[-{breakpoint}]--{size}</code>.

@@ -2,19 +2,23 @@
 @import '_mixins';
 
 $sizes: (
-  small: (
-    font-size: $text-small,
-    line-height: $line-height-small,
-  ),
-  smaller: (
+  xs: (
     font-size: $text-smaller,
     line-height: $line-height-smaller,
   ),
-  large: (
+  sm: (
+    font-size: $text-small,
+    line-height: $line-height-small,
+  ),
+  md: (
+    font-size: $text,
+    line-height: $line-height,
+  ),
+  lg: (
     font-size: $text-large,
     line-height: $line-height-large,
   ),
-  larger: (
+  xl: (
     font-size: $text-larger,
     line-height: $line-height-larger,
   ),
@@ -206,25 +210,30 @@ p,
   line-height: $line-height;
 }
 
-.-text--large {
-  font-size: $text-large !important;
-  line-height: $line-height-large !important;
-}
-
-.-text--larger {
-  font-size: $text-larger !important;
-  line-height: $line-height-larger !important;
+.-text--xs {
+  font-size: $text-smaller !important;
+  line-height: $line-height-smaller !important;
 }
 
 small,
-.-text--small {
+.-text--sm {
   font-size: $text-small !important;
   line-height: $line-height-small !important;
 }
 
-.-text--smaller {
-  font-size: $text-smaller !important;
-  line-height: $line-height-smaller !important;
+.-text--md {
+  font-size: $text !important;
+  line-height: $line-height !important;
+}
+
+.-text--lg {
+  font-size: $text-large !important;
+  line-height: $line-height-large !important;
+}
+
+.-text--xl {
+  font-size: $text-larger !important;
+  line-height: $line-height-larger !important;
 }
 
 .-text--justify {
