@@ -8,25 +8,54 @@ p.-text
 .example.-mb--3
   .-p--3(style="height: 135px;")
     .-position--relative
-      chi-popover(active, title="Popover title", variant="text", prevent-auto-hide)
-        | Popover content.
+      chi-popover(active, variant="text", prevent-auto-hide)
+        | Popover content
   .example-tabs.-pl--2
     ul.chi-tabs#examples-default
       li.-active
-        a(href=`#webcomponent`) Web component
+        a(href=`#webcomponent`) Web Component
       li
-        a(href=`#html`) HTML
+        a(href=`#html`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent
     .chi-tab__description
       | Remove the <code>active</code> attribute to hide the popover.
-      | Use <code>variant="text"</code> attribute to display text content in a <code>&lt;p&gt;</code>
+      | Use the <code>variant="text"</code> attribute to display text content in a <code>&lt;p&gt;</code>.
     :code(lang="html")
-      <chi-popover title="Popover title" variant="text" active>
-        Popover content.
+      <chi-popover variant="text" active>
+        Popover content
       </chi-popover>
   .chi-tabs-panel#html
     .chi-tab__description
       | Remove the <code>-active</code> class to hide the popover.
+    :code(lang="html")
+      <section class="chi-popover -active" aria-label="Popover Title" aria-modal="true" role="dialog">
+        <div class="chi-popover__content">
+          <p class="chi-popover__text">Popover content</p>
+        </div>
+      </section>
+
+h3 Titled
+.example.-mb--3
+  .-p--3(style="height: 135px;")
+    .-position--relative
+      chi-popover(active, title="Popover title", variant="text", prevent-auto-hide)
+        | Popover content
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-titled
+      li.-active
+        a(href=`#webcomponent-titled`) Web Component
+      li
+        a(href=`#html-titled`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-titled
+    .chi-tab__description
+      | Use the <code>title</code> attribute to display a title.
+    :code(lang="html")
+      <chi-popover title="Popover title" variant="text" active>
+        Popover content
+      </chi-popover>
+  .chi-tabs-panel#html-titled
+    .chi-tab__description
+      | Add <code>chi-popover__header</code> and <code>chi-popover__title</code> to display a title.
     :code(lang="html")
       <section class="chi-popover -active" aria-label="Popover Title" aria-modal="true" role="dialog">
         <header class="chi-popover__header">
@@ -40,172 +69,100 @@ p.-text
 h3 Arrow
 p.-text
   | Popovers support arrows to indicate the element they originate from. Arrows can be located anywhere around the Popover.
-ul#chi-tabs--positioning.chi-tabs
-  li.-active
-    a(href='#chi-tabs--positioning-top') Top
-  li
-    a(href='#chi-tabs--positioning-right') Right
-  li
-    a(href='#chi-tabs--positioning-bottom') Bottom
-  li
-    a(href='#chi-tabs--positioning-left') Left
-#chi-tabs--positioning-top.chi-tabs-panel.-active
-  .example.-mb--3
-    .-p--3(style='height: 135px')
-      .-position--relative
-        chi-popover(position="top", title="Popover title", variant="text", active, arrow, prevent-auto-hide)
-          | Popover content.
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-position-top
-        li.-active
-          a(href=`#webcomponent-position-top`) Web component
-        li
-          a(href=`#html-position-top`) HTML
-    .chi-tabs-panel.-active#webcomponent-position-top
-      .chi-tab__description
-        | Use the attribute <code>position</code> with the values: <code>top</code>, <code>right</code>, <code>bottom</code> and
-        | <code>left</code> to position the arrow in the proper place.
-      :code(lang="html")
-        <chi-popover position="top" title="Popover title" variant="text" active arrow>
-          Popover content.
-        </chi-popover>
-    .chi-tabs-panel#html-position-top
-      .chi-tab__description
-        | Use the classes <code>chi-popover--top</code>, <code>chi-popover--right</code>, <code>chi-popover--bottom</code> and
-        | <code>chi-popover--left</code> to position the arrow in the proper place.
-        | If you use a position engine such as Popper.js (used by Chi), the attribute <code>x-placement</code> should be used instead of
-        | these classes. It accepts all the values Popper.js does. Popper.js sets this attribute automatically, so there is
-        | no need to include it on the code.
-      :code(lang="html")
-        <section class="chi-popover chi-popover--top -active" aria-label="Popover Title" aria-modal="true" role="dialog">
-          <header class="chi-popover__header">
-            <h2 class="chi-popover__title">Popover Title</h2>
-          </header>
-          <div class="chi-popover__content">
-            <p class="chi-popover__text">Popover content</p>
-          </div>
-          <div class="chi-popover__arrow"></div>
-        </section>
-#chi-tabs--positioning-right.chi-tabs-panel
-  .example.-mb--3
-    .-p--3(style='height: 135px')
-      .-position--relative
-        chi-popover(position="right", title="Popover title", variant="text", active, arrow, prevent-auto-hide)
-          | Popover content.
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-position-right
-        li.-active
-          a(href=`#webcomponent-position-right`) Web component
-        li
-          a(href=`#html-position-right`) HTML
-    .chi-tabs-panel.-active#webcomponent-position-right
-      .chi-tab__description
-        | Use the attribute <code>position</code> with the values: <code>top</code>, <code>right</code>, <code>bottom</code> and
-        | <code>left</code> to position the arrow in the proper place.
-      :code(lang="html")
-        <chi-popover position="right" title="Popover title" variant="text" active arrow>
-          Popover content.
-        </chi-popover>
-    .chi-tabs-panel#html-position-right
-      .chi-tab__description
-        | Use the classes <code>chi-popover--top</code>, <code>chi-popover--right</code>, <code>chi-popover--bottom</code> and
-        | <code>chi-popover--left</code> to position the arrow in the proper place.
-        br
-        span.chi-badge.-dark.-sm.-mr--1
-          span Tip
-        | If you use a position engine as Popper.js (as our <a href="../../javascript/popover/">JavaScript solution</a>),
-        | the attribute <code>x-placement</code> should be used instead of these classes. It accepts all the values Popper.js
-        | does. Popper.js sets this attribute automatically, so there is no need to include it on the code.
-      :code(lang="html")
-        <section class="chi-popover chi-popover--right -active" aria-label="Popover Title" aria-modal="true" role="dialog">
-          <header class="chi-popover__header">
-            <h2 class="chi-popover__title">Popover Title</h2>
-          </header>
-          <div class="chi-popover__content">
-            <p class="chi-popover__text">Popover content</p>
-          </div>
-          <div class="chi-popover__arrow"></div>
-        </section>
-#chi-tabs--positioning-bottom.chi-tabs-panel
-  .example.-mb--3
-    .-p--3(style='height: 150px')
-      .-position--relative
-        chi-popover(position="bottom", title="Popover title", variant="text", active, arrow, prevent-auto-hide)
-          | Popover content.
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-position-bottom
-        li.-active
-          a(href=`#webcomponent-position-bottom`) Web component
-        li
-          a(href=`#html-position-bottom`) HTML
-    .chi-tabs-panel.-active#webcomponent-position-bottom
-      .chi-tab__description
-        | Use the attribute <code>position</code> with the values: <code>top</code>, <code>right</code>, <code>bottom</code> and
-        | <code>left</code> to position the arrow in the proper place.
-      :code(lang="html")
-        <chi-popover position="bottom" title="Popover title" variant="text" active arrow>
-          Popover content.
-        </chi-popover>
-    .chi-tabs-panel#html-position-bottom
-      .chi-tab__description
-        | Use the classes <code>chi-popover--top</code>, <code>chi-popover--right</code>, <code>chi-popover--bottom</code> and
-        | <code>chi-popover--left</code> to position the arrow in the proper place.
-        br
-        span.chi-badge.-dark.-sm.-mr--1
-          span Tip
-        | If you use a position engine as Popper.js (as our <a href="../../javascript/popover/">JavaScript solution</a>),
-        | the attribute <code>x-placement</code> should be used instead of these classes. It accepts all the values Popper.js
-        | does. Popper.js sets this attribute automatically, so there is no need to include it on the code.
-      :code(lang="html")
-        <section class="chi-popover chi-popover--bottom -active" aria-label="Popover Title" aria-modal="true" role="dialog">
-          <header class="chi-popover__header">
-            <h2 class="chi-popover__title">Popover Title</h2>
-          </header>
-          <div class="chi-popover__content">
-            <p class="chi-popover__text">Popover content</p>
-          </div>
-          <div class="chi-popover__arrow"></div>
-        </section>
-#chi-tabs--positioning-left.chi-tabs-panel
-  .example.-mb--3
-    .-p--3(style='height: 135px')
-      .-position--relative
-        chi-popover(position="left", title="Popover title", variant="text", active, arrow, prevent-auto-hide)
-          | Popover content.
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-position-left
-        li.-active
-          a(href=`#webcomponent-position-left`) Web component
-        li
-          a(href=`#html-position-left`) HTML
-    .chi-tabs-panel.-active#webcomponent-position-left
-      .chi-tab__description
-        | Use the attribute <code>position</code> with the values: <code>top</code>, <code>right</code>, <code>bottom</code> and
-        | <code>left</code> to position the arrow in the proper place.
-      :code(lang="html")
-        <chi-popover position="left" title="Popover title" variant="text" active arrow>
-          Popover content.
-        </chi-popover>
-    .chi-tabs-panel#html-position-left
-      .chi-tab__description
-        | Use the classes <code>chi-popover--top</code>, <code>chi-popover--right</code>, <code>chi-popover--bottom</code> and
-        | <code>chi-popover--left</code> to position the arrow in the proper place.
-        br
-        span.chi-badge.-dark.-sm.-mr--1
-          span Tip
-        | If you use a position engine as Popper.js (as our <a href="../../javascript/popover/">JavaScript solution</a>),
-        | the attribute <code>x-placement</code> should be used instead of these classes. It accepts all the values Popper.js
-        | does. Popper.js sets this attribute automatically, so there is no need to include it on the code.
-      :code(lang="html")
-        <section class="chi-popover chi-popover--left -active" aria-label="Popover Title" aria-modal="true" role="dialog">
-          <header class="chi-popover__header">
-            <h2 class="chi-popover__title">Popover Title</h2>
-          </header>
-          <div class="chi-popover__content">
-            <p class="chi-popover__text">Popover content</p>
-          </div>
-          <div class="chi-popover__arrow"></div>
-        </section>
+.example.-mb--3
+  .-p--3
+    .chi-grid.-no-gutter
+      .chi-col.-w--6.-w-md--4.-w-xl--3
+        h4.-text--h5.-mb--3 Top
+        .-position--relative(style='height: 100px')
+          chi-popover(position="top", variant="text", active, arrow, prevent-auto-hide)
+            | Popover content
+      .chi-col.-w--6.-w-md--4.-w-xl--3
+        h4.-text--h5.-mb--3 Right
+        .-position--relative(style='height: 100px')
+          chi-popover(position="right", variant="text", active, arrow, prevent-auto-hide)
+            | Popover content
+      .chi-col.-w--6.-w-md--4.-w-xl--3
+        h4.-text--h5.-mb--3 Bottom
+        .-position--relative(style='height: 100px; top: -12px')
+          chi-popover(position="bottom", variant="text", active, arrow, prevent-auto-hide)
+            | Popover content
+      .chi-col.-w--6.-w-md--4.-w-xl--3
+        h4.-text--h5.-mb--3 Left
+        .-position--relative(style='height: 100px')
+          chi-popover(position="left", variant="text", active, arrow, prevent-auto-hide)
+            | Popover content
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-position
+      li.-active
+        a(href=`#webcomponent-position`) Web Component
+      li
+        a(href=`#html-position`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-position
+    .chi-tab__description
+      | Add the attribute <code>arrow</code> and use the attribute <code>position</code>
+      | with the values: <code>top</code>, <code>right</code>, <code>bottom</code> and
+      | <code>left</code> to position the arrow in the proper place.
+    :code(lang="html")
+      <!-- Top -->
+      <chi-popover position="top" variant="text" active arrow>
+        Popover content
+      </chi-popover>
+
+      <!-- Right -->
+      <chi-popover position="right" variant="text" active arrow>
+        Popover content
+      </chi-popover>
+
+      <!-- Bottom -->
+      <chi-popover position="bottom" variant="text" active arrow>
+        Popover content
+      </chi-popover>
+
+      <!-- Left -->
+      <chi-popover position="left" variant="text" active arrow>
+        Popover content
+      </chi-popover>
+
+  .chi-tabs-panel#html-position
+    .chi-tab__description
+      | Use the classes <code>chi-popover--top</code>, <code>chi-popover--right</code>, <code>chi-popover--bottom</code> and
+      | <code>chi-popover--left</code> to position the arrow in the proper place.
+      | If you use a position engine such as Popper.js (used by Chi), the attribute <code>x-placement</code> should be used instead of
+      | these classes. It accepts all the values Popper.js does. Popper.js sets this attribute automatically, so there is
+      | no need to include it on the code.
+    :code(lang="html")
+      <!-- Top -->
+      <section class="chi-popover chi-popover--top -active" aria-label="Popover Title" aria-modal="true" role="dialog">
+        <div class="chi-popover__content">
+          <p class="chi-popover__text">Popover content</p>
+        </div>
+        <div class="chi-popover__arrow"></div>
+      </section>
+
+      <!-- Right -->
+      <section class="chi-popover chi-popover--right -active" aria-label="Popover Title" aria-modal="true" role="dialog">
+        <div class="chi-popover__content">
+          <p class="chi-popover__text">Popover content</p>
+        </div>
+        <div class="chi-popover__arrow"></div>
+      </section>
+
+      <!-- Bottom -->
+      <section class="chi-popover chi-popover--bottom -active" aria-label="Popover Title" aria-modal="true" role="dialog">
+        <div class="chi-popover__content">
+          <p class="chi-popover__text">Popover content</p>
+        </div>
+        <div class="chi-popover__arrow"></div>
+      </section>
+
+      <!-- Left -->
+      <section class="chi-popover chi-popover--left -active" aria-label="Popover Title" aria-modal="true" role="dialog">
+        <div class="chi-popover__content">
+          <p class="chi-popover__text">Popover content</p>
+        </div>
+        <div class="chi-popover__arrow"></div>
+      </section>
 
 h3 Reference element
 p.-text
@@ -215,15 +172,13 @@ p.-text
   .-p--3
     chi-button#example-3-button Click me!
     chi-popover#example-3-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-3-button")
-      | Popover content.
+      | Popover content
   .example-tabs.-pl--2
     ul.chi-tabs#examples-reference
       li.-active
-        a(href=`#webcomponent-reference`) Web component
+        a(href=`#webcomponent-reference`) Web Component
       li
-        a(href=`#js-reference-data-target`) JS + data-target
-      li
-        a(href=`#js-reference-data-content`) JS + data-popover-content
+        a(href=`#html-reference`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-reference
     .chi-tab__description
       | Use the <code>reference</code> attribute with a
@@ -241,23 +196,28 @@ p.-text
             popoverElem.toggle();
           });
       </script>
-  .chi-tabs-panel#js-reference-data-target
+  .chi-tabs-panel#html-reference
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
+      <!-- Method 1 - Data Target -->
       <button class="chi-btn" id="popover-1b" data-target="#popover-in-html">Popover</button>
-
-      <!-- put the following code anywere in the DOM, e.g. at the end of the DOM -->
+      <!-- Put the following code anywere in the DOM, e.g. at the end of the DOM -->
       <section class="chi-popover" id="popover-in-html" aria-modal="true" role="dialog" aria-label="Popover title">
         <header class="chi-popover__header">
           <h2 class="chi-popover__title">Popover title</h2>
         </header>
         <div class="chi-popover__content">
-          <p class="chi-popover__text">Popover content.</p>
+          <p class="chi-popover__text">Popover content</p>
         </div>
       </section>
       <script>chi.popover(document.getElementById('popover-1b'));</script>
-  .chi-tabs-panel#js-reference-data-content
-    :code(lang='html')
-      <button id='popover-1' class="chi-btn" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover content.</p></div>'>Popover</button>
+
+      <!-- Method 2 - Data Content -->
+      <button id='popover-1' class="chi-btn" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover content</p></div>'>Popover</button>
       <script>chi.popover(document.getElementById('popover-1'));</script>
 
 h3 Positioning
@@ -268,183 +228,184 @@ p.-text
   | <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>,
   | <code>left-end</code>.
 
-ul#chi-tabsb--positioning.chi-tabs
-  li.-active
-    a(href='#chi-tabsb--positioning-top') Top
-  li
-    a(href='#chi-tabsb--positioning-right') Right
-  li
-    a(href='#chi-tabsb--positioning-bottom') Bottom
-  li
-    a(href='#chi-tabsb--positioning-left') Left
-#chi-tabsb--positioning-top.chi-tabs-panel.-active
-  .example.-mb--3
-    .-p--3
-      chi-button#example-4-t-button.-mr--2.-mb--2.-mb-md--0 Top popover
-      chi-popover#example-4-t-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-4-t-button")
-        | This popover is top positioned.
+.example.-mb--3
+  .-px--3.-pt--3.-pb--4
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-xl--10.-o-xl--1
+        .chi-grid.-no-gutter
+          .chi-col.-d--flex.-justify-content--end
+            chi-button#example-4-ts-button.-m--2 Top start
+            chi-popover#example-4-ts-popover(position="top-start", title="Popover title", variant="text", arrow, reference="#example-4-ts-button")
+              | This popover is top-start positioned.
+          .chi-col.-d--flex.-justify-content--center
+            chi-button#example-4-t-button.-m--2 Top
+            chi-popover#example-4-t-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-4-t-button")
+              | This popover is top positioned.
+          .chi-col.-d--flex.-justify-content--start
+            chi-button#example-4-te-button.-m--2 Top end
+            chi-popover#example-4-te-popover(position="top-end", title="Popover title", variant="text", arrow, reference="#example-4-te-button")
+              | This popover is top-end positioned.
+        .chi-grid.-no-gutter
+          .chi-col.-d--flex.-flex--column
+            chi-button#example-4-ls-button.-m--2 Left start
+            chi-popover#example-4-ls-popover(position="left-start", title="Popover title", variant="text", arrow, reference="#example-4-ls-button")
+              | This popover is left-start positioned.
+            chi-button#example-4-l-button.-mx--2.-my--4 Left
+            chi-popover#example-4-l-popover(position="left", title="Popover title", variant="text", arrow, reference="#example-4-l-button")
+              | This popover is left positioned.
+            chi-button#example-4-le-button.-m--2 Left end
+            chi-popover#example-4-le-popover(position="left-end", title="Popover title", variant="text", arrow, reference="#example-4-le-button")
+              | This popover is left-end positioned.
+          .chi-col.-d--flex.-flex--column.-justify-content--center.-align-items--center
+            div.-w--75.-text.-text--muted.-text--center.-lh--2 Click buttons to see popover positions
+          .chi-col.-d--flex.-flex--column.-align-items--end
+            chi-button#example-4-rs-button.-m--2 Right start
+            chi-popover#example-4-rs-popover(position="right-start", title="Popover title", variant="text", arrow, reference="#example-4-rs-button")
+              | This popover is right-start positioned.
+            chi-button#example-4-r-button.-mx--2.-my--4 Right
+            chi-popover#example-4-r-popover(position="right", title="Popover title", variant="text", arrow, reference="#example-4-r-button")
+              | This popover is right positioned.
+            chi-button#example-4-re-button.-m--2 Right end
+            chi-popover#example-4-re-popover(position="right-end", title="Popover title", variant="text", arrow, reference="#example-4-re-button")
+              | This popover is right-end positioned.
+        .chi-grid.-no-gutter
+          .chi-col.-d--flex.-justify-content--end
+            chi-button#example-4-bs-button.-m--2 Bottom start
+            chi-popover#example-4-bs-popover(position="bottom-start", title="Popover title", variant="text", arrow, reference="#example-4-bs-button")
+              | This popover is bottom-start positioned.
+          .chi-col.-d--flex.-justify-content--center
+            chi-button#example-4-b-button.-m--2 Bottom
+            chi-popover#example-4-b-popover(position="bottom", title="Popover title", variant="text", arrow, reference="#example-4-b-button")
+              | This popover is bottom positioned.
+          .chi-col.-d--flex.-justify-content--start
+            chi-button#example-4-be-button.-m--2 Bottom end
+            chi-popover#example-4-be-popover(position="bottom-end", title="Popover title", variant="text", arrow, reference="#example-4-be-button")
+              | This popover is bottom-end positioned.
 
-      chi-button#example-4-ts-button.-mr--2.-mb--2.-mb-md--0 Top start popover
-      chi-popover#example-4-ts-popover(position="top-start", title="Popover title", variant="text", arrow, reference="#example-4-ts-button")
-        | This popover is top-start positioned.
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-positioning
+      li.-active
+        a(href=`#webcomponent-positioning`) Web Component
+      li
+        a(href=`#html-positioning`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-positioning
+    :code(lang="html")
+      <!-- Top -->
+      <chi-button id="example-4-t-button">Top popover</chi-button>
+      <chi-popover id="example-4-t-popover" position="top" title="Popover title" variant="text" arrow reference="#example-4-t-button">
+        This popover is top positioned.
+      </chi-popover>
 
-      chi-button#example-4-te-button.-mr--2.-mb--2.-mb-md--0 Top end popover
-      chi-popover#example-4-te-popover(position="top-end", title="Popover title", variant="text", arrow, reference="#example-4-te-button")
-        | This popover is top-end positioned.
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-positioning-top
-        li.-active
-          a(href=`#webcomponent-positioning-top`) Web component
-        li
-          a(href=`#html-positioning-top`) HTML + JS
-    .chi-tabs-panel.-active#webcomponent-positioning-top
-      :code(lang="html")
-        <chi-button id="example-4-t-button">Top popover</chi-button>
-        <chi-popover id="example-4-t-popover" position="top" title="Popover title" variant="text" arrow reference="#example-4-t-button">
-          This popover is top positioned.
-        </chi-popover>
+      <!-- Top Start -->
+      <chi-button id="example-4-ts-button">Top start popover</chi-button>
+      <chi-popover id="example-4-ts-popover" position="top-start" title="Popover title" variant="text" arrow reference="#example-4-ts-button">
+        This popover is top-start positioned.
+      </chi-popover>
 
-        <chi-button id="example-4-ts-button">Top start popover</chi-button>
-        <chi-popover id="example-4-ts-popover" position="top-start" title="Popover title" variant="text" arrow reference="#example-4-ts-button">
-          This popover is top-start positioned.
-        </chi-popover>
+      <!-- Top End -->
+      <chi-button id="example-4-te-button">Top end popover</chi-button>
+      <chi-popover id="example-4-te-popover" position="top-end" title="Popover title" variant="text" arrow reference="#example-4-te-button">
+        This popover is top-end positioned.
+      </chi-popover>
 
-        <chi-button id="example-4-te-button">Top end popover</chi-button>
-        <chi-popover id="example-4-te-popover" position="top-end" title="Popover title" variant="text" arrow reference="#example-4-te-button">
-          This popover is top-end positioned.
-        </chi-popover>
-    .chi-tabs-panel#html-positioning-top
-      :code(lang="html")
-        <button data-position='top' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is top positioned.</p></div>' class="chi-btn">Top popover</button>
-        <button data-position='top-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is top start positioned.</p></div>' class="chi-btn">Top start popover</button>
-        <button data-position='top-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is top end positioned.</p></div>' class="chi-btn">Top end popover</button>
-        <script>chi.popover(document.querySelectorAll('[data-popover-content]'));</script>
-#chi-tabsb--positioning-right.chi-tabs-panel
-  .example.-mb--3
-    .-p--3
-      chi-button#example-4-r-button.-mr--2.-mb--2.-mb-md--0 Right popover
-      chi-popover#example-4-r-popover(position="right", title="Popover title", variant="text", arrow, reference="#example-4-r-button")
-        | This popover is right positioned.
+      <!-- Right -->
+      <chi-button id="example-4-r-button">Right popover</chi-button>
+      <chi-popover id="example-4-r-popover" position="right" title="Popover title" variant="text" arrow reference="#example-4-r-button">
+        This popover is right positioned.
+      </chi-popover>
 
-      chi-button#example-4-rs-button.-mr--2.-mb--2.-mb-md--0 Right start popover
-      chi-popover#example-4-rs-popover(position="right-start", title="Popover title", variant="text", arrow, reference="#example-4-rs-button")
-        | This popover is right-start positioned.
+      <!-- Right Start -->
+      <chi-button id="example-4-rs-button">Right start popover</chi-button>
+      <chi-popover id="example-4-rs-popover" position="right-start" title="Popover title" variant="text" arrow reference="#example-4-rs-button">
+        This popover is right-start positioned.
+      </chi-popover>
 
-      chi-button#example-4-re-button.-mr--2.-mb--2.-mb-md--0 Right end popover
-      chi-popover#example-4-re-popover(position="right-end", title="Popover title", variant="text", arrow, reference="#example-4-re-button")
-        | This popover is right-end positioned.
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-positioning-right
-        li.-active
-          a(href=`#webcomponent-positioning-right`) Web component
-        li
-          a(href=`#html-positioning-right`) HTML + JS
-    .chi-tabs-panel.-active#webcomponent-positioning-right
-      :code(lang="html")
-        <chi-button id="example-4-r-button">Right popover</chi-button>
-        <chi-popover id="example-4-r-popover" position="right" title="Popover title" variant="text" arrow reference="#example-4-r-button">
-          This popover is right positioned.
-        </chi-popover>
+      <!-- Right End -->
+      <chi-button id="example-4-re-button">Right end popover</chi-button>
+      <chi-popover id="example-4-re-popover" position="right-end" title="Popover title" variant="text" arrow reference="#example-4-re-button">
+        This popover is right-end positioned.
+      </chi-popover>
 
-        <chi-button id="example-4-rs-button">Right start popover</chi-button>
-        <chi-popover id="example-4-rs-popover" position="right-start" title="Popover title" variant="text" arrow reference="#example-4-rs-button">
-          This popover is right-start positioned.
-        </chi-popover>
+      <!-- Bottom -->
+      <chi-button id="example-4-b-button">Bottom popover</chi-button>
+      <chi-popover id="example-4-b-popover" position="bottom" title="Popover title" variant="text" arrow reference="#example-4-b-button">
+        This popover is bottom positioned.
+      </chi-popover>
 
-        <chi-button id="example-4-re-button">Right end popover</chi-button>
-        <chi-popover id="example-4-re-popover" position="right-end" title="Popover title" variant="text" arrow reference="#example-4-re-button">
-          This popover is right-end positioned.
-        </chi-popover>
-    .chi-tabs-panel#html-positioning-right
-      :code(lang="html")
-        <button class="chi-btn" data-position='right' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is right positioned.</p></div>'>Right popover</button>
-        <button class="chi-btn" data-position='right-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is right start positioned.</p></div>'>Right start popover</button class="chi-btn">
-        <button class="chi-btn" data-position='right-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is right end positioned.</p></div>'>Right end popover</button class="chi-btn">
-        <script>chi.popover(document.querySelectorAll('[data-popover-content]'));</script>
-#chi-tabsb--positioning-bottom.chi-tabs-panel
-  .example.-mb--3
-    .-p--3
-      chi-button#example-4-b-button.-mr--2.-mb--2.-mb-md--0 Bottom popover
-      chi-popover#example-4-b-popover(position="bottom", title="Popover title", variant="text", arrow, reference="#example-4-b-button")
-        | This popover is bottom positioned.
+      <!-- Bottom Start -->
+      <chi-button id="example-4-bs-button">Bottom start popover</chi-button>
+      <chi-popover id="example-4-bs-popover" position="bottom-start" title="Popover title" variant="text" arrow reference="#example-4-bs-button">
+        This popover is bottom-start positioned.
+      </chi-popover>
 
-      chi-button#example-4-bs-button.-mr--2.-mb--2.-mb-md--0 Bottom start popover
-      chi-popover#example-4-bs-popover(position="bottom-start", title="Popover title", variant="text", arrow, reference="#example-4-bs-button")
-        | This popover is bottom-start positioned.
+      <!-- Bottom End -->
+      <chi-button id="example-4-be-button">Bottom end popover</chi-button>
+      <chi-popover id="example-4-be-popover" position="bottom-end" title="Popover title" variant="text" arrow reference="#example-4-be-button">
+        This popover is bottom-end positioned.
+      </chi-popover>
 
-      chi-button#example-4-be-button.-mr--2.-mb--2.-mb-md--0 Bottom end popover
-      chi-popover#example-4-be-popover(position="bottom-end", title="Popover title", variant="text", arrow, reference="#example-4-be-button")
-        | This popover is bottom-end positioned.
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-positioning-bottom
-        li.-active
-          a(href=`#webcomponent-positioning-bottom`) Web component
-        li
-          a(href=`#html-positioning-bottom`) HTML + JS
-    .chi-tabs-panel.-active#webcomponent-positioning-bottom
-      :code(lang="html")
-        <chi-button id="example-4-b-button">Bottom popover</chi-button>
-        <chi-popover id="example-4-b-popover" position="bottom" title="Popover title" variant="text" arrow reference="#example-4-b-button">
-          This popover is bottom positioned.
-        </chi-popover>
+      <!-- Left -->
+      <chi-button id="example-4-l-button">Left popover</chi-button>
+      <chi-popover id="example-4-l-popover" position="left" title="Popover title" variant="text" arrow reference="#example-4-l-button">
+        This popover is left positioned.
+      </chi-popover>
 
-        <chi-button id="example-4-bs-button">Bottom start popover</chi-button>
-        <chi-popover id="example-4-bs-popover" position="bottom-start" title="Popover title" variant="text" arrow reference="#example-4-bs-button">
-          This popover is bottom-start positioned.
-        </chi-popover>
+      <!-- Left Start -->
+      <chi-button id="example-4-ls-button">Left start popover</chi-button>
+      <chi-popover id="example-4-ls-popover" position="left-start" title="Popover title" variant="text" arrow reference="#example-4-ls-button">
+        This popover is left-start positioned.
+      </chi-popover>
 
-        <chi-button id="example-4-be-button">Bottom end popover</chi-button>
-        <chi-popover id="example-4-be-popover" position="bottom-end" title="Popover title" variant="text" arrow reference="#example-4-be-button">
-          This popover is bottom-end positioned.
-        </chi-popover>
-    .chi-tabs-panel#html-positioning-bottom
-      :code(lang="html")
-        <button class="chi-btn" data-position='bottom' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is bottom positioned.</p></div>'>Bottom popover</button>
-        <button class="chi-btn" data-position='bottom-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is bottom start positioned.</p></div>'>Bottom start popover</button class="chi-btn">
-        <button class="chi-btn" data-position='bottom-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is bottom end positioned.</p></div>'>Bottom end popover</button class="chi-btn">
-        <script>chi.popover(document.querySelectorAll('[data-popover-content]'));</script>
-#chi-tabsb--positioning-left.chi-tabs-panel
-  .example.-mb--3
-    .-p--3
-      chi-button#example-4-l-button.-mr--2.-mb--2.-mb-md--0 Left popover
-      chi-popover#example-4-l-popover(position="left", title="Popover title", variant="text", arrow, reference="#example-4-l-button")
-        | This popover is left positioned.
+      <!-- Left End -->
+      <chi-button id="example-4-le-button">Left end popover</chi-button>
+      <chi-popover id="example-4-le-popover" position="left-end" title="Popover title" variant="text" arrow reference="#example-4-le-button">
+        This popover is left-end positioned.
+      </chi-popover>
+  .chi-tabs-panel#html-positioning
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
+    :code(lang="html")
+      <!-- Top -->
+      <button data-position='top' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is top positioned.</p></div>' class="chi-btn">Top popover</button>
 
-      chi-button#example-4-ls-button.-mr--2.-mb--2.-mb-md--0 Left start popover
-      chi-popover#example-4-ls-popover(position="left-start", title="Popover title", variant="text", arrow, reference="#example-4-ls-button")
-        | This popover is left-start positioned.
+      <!-- Top Start -->
+      <button data-position='top-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is top start positioned.</p></div>' class="chi-btn">Top start popover</button>
 
-      chi-button#example-4-le-button.-mr--2.-mb--2.-mb-md--0 Left end popover
-      chi-popover#example-4-le-popover(position="left-end", title="Popover title", variant="text", arrow, reference="#example-4-le-button")
-        | This popover is left-end positioned.
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-positioning-left
-        li.-active
-          a(href=`#webcomponent-positioning-left`) Web component
-        li
-          a(href=`#html-positioning-left`) HTML + JS
-    .chi-tabs-panel.-active#webcomponent-positioning-left
-      :code(lang="html")
-        <chi-button id="example-4-l-button">Left popover</chi-button>
-        <chi-popover id="example-4-l-popover" position="left" title="Popover title" variant="text" arrow reference="#example-4-l-button">
-          This popover is left positioned.
-        </chi-popover>
+      <!-- Top End -->
+      <button data-position='top-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is top end positioned.</p></div>' class="chi-btn">Top end popover</button>
 
-        <chi-button id="example-4-ls-button">Left start popover</chi-button>
-        <chi-popover id="example-4-ls-popover" position="left-start" title="Popover title" variant="text" arrow reference="#example-4-ls-button">
-          This popover is left-start positioned.
-        </chi-popover>
+      <!-- Right -->
+      <button class="chi-btn" data-position='right' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is right positioned.</p></div>'>Right popover</button>
 
-        <chi-button id="example-4-le-button">Left end popover</chi-button>
-        <chi-popover id="example-4-le-popover" position="left-end" title="Popover title" variant="text" arrow reference="#example-4-le-button">
-          This popover is left-end positioned.
-        </chi-popover>
-    .chi-tabs-panel#html-positioning-left
-      :code(lang="html")
-        <button class="chi-btn" data-position='left' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is left positioned.</p></div>'>Left popover</button>
-        <button class="chi-btn" data-position='left-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is left start positioned.</p></div>'>Left start popover</button>
-        <button class="chi-btn" data-position='left-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is left end positioned.</p></div>'>Left end popover</button>
-        <script>chi.popover(document.querySelectorAll('[data-popover-content]'));</script>
+      <!-- Right Start -->
+      <button class="chi-btn" data-position='right-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is right start positioned.</p></div>'>Right start popover</button class="chi-btn">
+
+      <!-- Right End -->
+      <button class="chi-btn" data-position='right-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is right end positioned.</p></div>'>Right end popover</button class="chi-btn">
+
+      <!-- Bottom -->
+      <button class="chi-btn" data-position='bottom' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is bottom positioned.</p></div>'>Bottom popover</button>
+
+      <!-- Bottom Start -->
+      <button class="chi-btn" data-position='bottom-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is bottom start positioned.</p></div>'>Bottom start popover</button class="chi-btn">
+
+      <!-- Bottom End -->
+      <button class="chi-btn" data-position='bottom-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is bottom end positioned.</p></div>'>Bottom end popover</button class="chi-btn">
+
+      <!-- Left -->
+      <button class="chi-btn" data-position='left' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is left positioned.</p></div>'>Left popover</button>
+
+      <!-- Left Start -->
+      <button class="chi-btn" data-position='left-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is left start positioned.</p></div>'>Left start popover</button>
+
+      <!-- Left End -->
+      <button class="chi-btn" data-position='left-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is left end positioned.</p></div>'>Left end popover</button>
+
+      <!-- JavaScript -->
+      <script>chi.popover(document.querySelectorAll('[data-popover-content]'));</script>
 
 h2 Interaction
 p.-text
@@ -461,14 +422,14 @@ p.-text
     chi-button#example-5-button-reference.-mr--2.-mb--2.-mb-md--0 Reference
 
     chi-popover#example-5-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-5-button-reference")
-      | Popover content.
+      | Popover content
 
   .example-tabs.-pl--2
     ul.chi-tabs#examples-interaction
       li.-active
-        a(href=`#webcomponent-interaction`) Web component
+        a(href=`#webcomponent-interaction`) Web Component
       li
-        a(href=`#html-interaction`) HTML + JS
+        a(href=`#html-interaction`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-interaction
     .chi-tab__description
       | Modify the <code>active</code> attribute or property to make the popover show or hide. The <code>chi-popover</code>
@@ -481,7 +442,7 @@ p.-text
       <chi-button id="example-5-button-reference">Reference</chi-button>
 
       <chi-popover id="example-5-popover" position="top" title="Popover title" variant="text" arrow reference="#example-5-button-reference">
-        Popover content.
+        Popover content
       </chi-popover>
 
       <script>
@@ -507,8 +468,14 @@ p.-text
       </script>
   .chi-tabs-panel#html-interaction
     .chi-tab__description
-      <code>.show(), .hide(), .toggle()</code>
-      | Use this methods to control popover visibility.
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
+      br
+      br
+      | Use methods <code>.show()</code>, <code>.hide()</code>, and <code>.toggle()</code>
+      | to control popover visibility.
     :code(lang="html")
       <button id='show-popover-3' class="chi-btn">Show</button>
       <button id='hide-popover-3' class="chi-btn">Hide</button>
@@ -537,97 +504,101 @@ h3 Auto hide
 p.-text
   | Popovers automatically hide when clicking outside of it or when pressing the ESC key.
 
-ul#chi-tabs-e6.chi-tabs
-  li.-active
-    a(href='#chi-tabs-e6-auto-hide') Auto hide
-  li
-    a(href='#chi-tabs-e6-no-auto-hide') No auto hide
 .example.-mb--3
-  #chi-tabs-e6-auto-hide.chi-tabs-panel.-active
-    .-p--3
-      chi-button#example-6-auto-hide-button.-mr--2.-mb--2.-mb-md--0 Auto hide
-      chi-popover#example-6-auto-hide-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-6-auto-hide-button")
-        | Click outside. I will disappear!
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-autohide-true
-        li.-active
-          a(href=`#webcomponent-autohide`) Web component
-        li
-          a(href=`#html-autohide`) HTML + JS
-    .chi-tabs-panel.-active#webcomponent-autohide
-      :code(lang="html")
-        <chi-popover id="example-6-popover-auto-hide-popover" position="top" title="Popover title" variant="text" arrow reference="#example-6-auto-hide-button">
-          Click outside. I will disappear!
-        </chi-popover>
-    .chi-tabs-panel#html-autohide
-      :code(lang="html")
-        <button id='popover-6' class="chi-btn" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Click outside. I will disappear!</p></div>'>Auto hide</button>
-        <script>chi.popover(document.getElementById('popover-6'),
-          {
-            preventAutoHide: false
-          });
-        </script>
-  #chi-tabs-e6-no-auto-hide.chi-tabs-panel
-    .-p--3
-      chi-button#example-6-no-auto-hide-button.-mr--2.-mb--2.-mb-md--0 No auto hide
-      chi-popover#example-6-no-auto-hide-popover(position="top", title="Popover title", variant="text", arrow, prevent-auto-hide, reference="#example-6-no-auto-hide-button")
-        | Click outside. I will stay!
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-autohide-false
-        li.-active
-          a(href=`#webcomponent-autohide-false`) Web component
-        li
-          a(href=`#html-autohide-false`) HTML + JS
-    .chi-tabs-panel.-active#webcomponent-autohide-false
-      .chi-tab__description
-        | You can prevent automatic hiding behavior
-        | with the <code>prevent-auto-hide</code> attribute.
-      :code(lang="html")
-        <chi-popover id="example-6-popover-no-auto-hide-popover" position="top" title="Popover title" variant="text" arrow prevent-auto-hide reference="#example-6-no-auto-hide-button">
-          Click outside. I will stay!
-        </chi-popover>
-    .chi-tabs-panel#html-autohide-false
-      .chi-tab__description
-        | You can prevent automatic hiding behavior by
-        | Setting <code>preventAutoHide</code> to <code>true</code>
-      :code(lang="html")
-        <button id='popover-6' class="chi-btn" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Click outside. I will stay!</p></div>'>No auto hide</button>
-        <script>chi.popover(document.getElementById('popover-6'),
-          {
-            preventAutoHide: true
-          });
-        </script>
+  .-p--3
+    chi-button#example-6-auto-hide-button.-mr--2.-mb--2.-mb-md--0 Auto hide
+    chi-popover#example-6-auto-hide-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-6-auto-hide-button")
+      | Click outside. I will disappear!
+    chi-button#example-6-no-auto-hide-button.-mr--2.-mb--2.-mb-md--0 No auto hide
+    chi-popover#example-6-no-auto-hide-popover(position="top", title="Popover title", variant="text", arrow, prevent-auto-hide, reference="#example-6-no-auto-hide-button")
+      | Click outside. I will stay!
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-autohide-true
+      li.-active
+        a(href=`#webcomponent-autohide`) Web Component
+      li
+        a(href=`#html-autohide`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-autohide
+    .chi-tab__description
+      | You can prevent automatic hiding behavior
+      | with the <code>prevent-auto-hide</code> attribute.
+    :code(lang="html")
+      <!-- Auto hide -->
+      <chi-popover id="example-6-popover-auto-hide-popover" position="top" title="Popover title" variant="text" arrow reference="#example-6-auto-hide-button">
+        Click outside. I will disappear!
+      </chi-popover>
+
+      <!-- No auto hide -->
+      <chi-popover id="example-6-popover-no-auto-hide-popover" position="top" title="Popover title" variant="text" arrow prevent-auto-hide reference="#example-6-no-auto-hide-button">
+        Click outside. I will stay!
+      </chi-popover>
+
+  .chi-tabs-panel#html-autohide
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
+      br
+      br
+      | You can prevent automatic hiding behavior by
+      | setting <code>preventAutoHide</code> to <code>true</code>
+    :code(lang="html")
+      <!-- Auto hide -->
+      <button id='popover-6' class="chi-btn" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Click outside. I will disappear!</p></div>'>Auto hide</button>
+      <script>chi.popover(document.getElementById('popover-6'),
+        {
+          preventAutoHide: false
+        });
+      </script>
+
+      <!-- No auto hide -->
+      <button id='popover-6' class="chi-btn" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Click outside. I will stay!</p></div>'>No auto hide</button>
+      <script>chi.popover(document.getElementById('popover-6'),
+        {
+          preventAutoHide: true
+        });
+      </script>
 
 h3 Popover with custom content
 .-text.-mb--3
-  | Popover can be used to display any kind of custom content (even other components)
+  | Popovers can be used to display any kind of custom content (even other components).
 .example.-mb--3
-  .-p--3(style='height: 155px')
+  .-p--3(style='height: 185px')
     .-position--relative
-      chi-popover(position="top", title="Popover title", active, arrow, prevent-auto-hide)
-        | Current progress (75%)
-        chi-progress(value="75")
+      chi-popover(position="top", title="Are you sure?", variant="text", active, arrow, prevent-auto-hide)
+        | Are you sure you want to delete this?
+        chi-button(slot="chi-popover__footer" color="danger") Delete
+        chi-button(slot="chi-popover__footer") Cancel
   .example-tabs.-pl--2
     ul.chi-tabs#examples-custom-content
       li.-active
-        a(href=`#webcomponent-custom-content`) Web component
+        a(href=`#webcomponent-custom-content`) Web Component
       li
-        a(href=`#html-custom-content`) HTML
+        a(href=`#html-custom-content`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-custom-content
+    .chi-tab__description
+      | Add buttons to Popovers by setting slot attribute to <code>slot="chi-popover__footer"</code>.
     :code(lang="html")
-      <chi-popover position="top" title="Popover title" active arrow prevent-auto-hide="prevent-auto-hide">
-        Current progress (75%)
-        <chi-progress value="75"></chi-progress>
+      <chi-popover position="top" title="Are you sure?" variant="text" active arrow>
+        Are you sure you want to delete this?
+        <chi-button slot="chi-popover__footer" color="danger">Delete</chi-button>
+        <chi-button slot="chi-popover__footer">Cancel</chi-button>
       </chi-popover>
   .chi-tabs-panel#html-custom-content
+    .chi-tab__description
+      | Add buttons to Popovers by placing them in <code>chi-popover__footer</code>.
     :code(lang="html")
-      <section class="chi-popover chi-popover--top -active" aria-label="Popover Title" aria-modal="true" role="dialog">
+      <section class="chi-popover chi-popover--top -active" aria-label="Are you sure?" aria-modal="true" role="dialog">
         <header class="chi-popover__header">
-          <h2 class="chi-popover__title">Popover Title</h2>
+          <h2 class="chi-popover__title">Are you sure?</h2>
         </header>
         <div class="chi-popover__content">
-          <div class="chi-label">Current progress (75%)</div>
-          <progress class="-success" value="75" max="100" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></progress>
+          <p class="chi-popover__text">Are you sure you want to delete this?</p>
+        </div>
+        <div class="chi-popover__footer">
+          <button class="chi-btn -danger">Delete</button>
+          <button class="chi-btn">Cancel</button>
         </div>
         <div class="chi-popover__arrow"></div>
       </section>
@@ -636,22 +607,14 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function () {
-      chi.tab(document.getElementById('chi-tabs--positioning'));
       chi.tab(document.getElementById('examples-default'));
-      chi.tab(document.getElementById('examples-position-top'));
-      chi.tab(document.getElementById('examples-position-right'));
-      chi.tab(document.getElementById('examples-position-bottom'));
-      chi.tab(document.getElementById('examples-position-left'));
+      chi.tab(document.getElementById('examples-titled'));
+      chi.tab(document.getElementById('examples-position'));
       chi.tab(document.getElementById('examples-reference'));
       chi.tab(document.getElementById('examples-custom-content'));
-      chi.tab(document.getElementById('chi-tabsb--positioning'));
-      chi.tab(document.getElementById('examples-positioning-top'));
-      chi.tab(document.getElementById('examples-positioning-right'));
-      chi.tab(document.getElementById('examples-positioning-bottom'));
+      chi.tab(document.getElementById('examples-positioning'));
       chi.tab(document.getElementById('examples-interaction'));
-      chi.tab(document.getElementById('chi-tabs-e6'));
       chi.tab(document.getElementById('examples-autohide-true'));
-      chi.tab(document.getElementById('examples-autohide-false'));
 
       var popovers = [
         {button: '#example-3-button',               popover: '#example-3-popover',              action: "toggle"},
