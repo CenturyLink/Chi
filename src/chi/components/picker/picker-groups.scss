@@ -10,7 +10,7 @@ legend {
 
 .chi-picker-group {
   input {
-    &.chi-picker {
+    &.chi-picker__input {
       &:first-of-type {
         &:focus {
           &:not(:checked) {
@@ -47,7 +47,7 @@ legend {
 
     input {
       &[type='radio'] {
-        &.chi-picker {
+        &.chi-picker__input {
           & + label {
             border-bottom-width: 0;
             border-right-width: 0.0625rem;
@@ -93,7 +93,7 @@ legend {
         }
 
         &:checked {
-          &.chi-picker {
+          &.chi-picker__input {
             & + label {
               border: solid 0.0625rem $primary-color;
               color: $primary-color;
