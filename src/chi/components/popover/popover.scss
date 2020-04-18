@@ -85,11 +85,27 @@ $popover-border-width: 0.0625rem;
       line-height: $line-height-small;
       margin: 0.5rem 0;
     }
+
+    & + .chi-popover__footer {
+      padding-top: 0;
+    }
   }
 
   &__input {
     > .chi-popover__content {
       padding: 0;
+    }
+  }
+
+  & .chi-popover__footer {
+    padding: 1rem;
+
+    & chi-button,
+    & .chi-btn {
+      & + chi-button,
+      & + .chi-btn {
+        margin-left: 0.5rem;
+      }
     }
   }
 

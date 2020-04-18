@@ -115,8 +115,8 @@ section.chi-table.chi-table__options.-bordered.-my--3
               | Set <code>preventAutoHide</code> to <code>true</code> to prevent hidding the popover when clicking
               | outside the popover.
 
-h2 Methods
-h3 .setContent()
+h3 Methods
+h4 .setContent()
 p.-text
   | Use this method to change the content of the popover. It discards any previously attached content, so any
   | resources attached to the content should be removed to prevent memory leaks. This method accepts a string or an
@@ -131,15 +131,31 @@ p.-text
       popover.setContent('<div class="chi-popover__content">Bar</div>');
     </script>
 
-h2 Events
-h3 chi.popover.show
-p.-text
-  | The element the popover is attached to (usually a button), dispatches this event when the popover is to be
-  | <strong>shown</strong>.
-h3 chi.popover.hide
-p.-text
-  | The element the popover is attached to (usually a button), dispatches this event when the popover is to be
-  | <strong>hidden</strong>.
+h3 Events
+section.chi-table.chi-table__options.-bordered.-my--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Event
+          th
+            div Description
+      tbody
+        tr
+          td
+            div
+              code= 'chi.popover.show'
+          td
+            div
+              | The element the popover is attached to (usually a button), dispatches this event when the popover is to be shown.
+        tr
+          td
+            div
+              code= 'chi.popover.hide'
+          td
+            div
+              | The element the popover is attached to (usually a button), dispatches this event when the popover is to be hidden.
 
 h3 Preventing memory leaks
 p.-text
@@ -152,8 +168,6 @@ p.-text
   popover.dispose();
 
 p.-text
-  span.chi-badge.-dark.-sm.-mr--1
-    span Tip
   | It is safe to call the <code>popover</code> method more than once, as it will return any previously created popover component
   | associated to the trigger.
 :code(lang="javascript")
