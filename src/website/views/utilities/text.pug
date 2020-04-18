@@ -25,7 +25,7 @@ h2 Text size
 p.-text
   | Text size supports the following sizes: <code>-text--xs</code>, <code>-text--sm</code>, <code>-text--md</code>,
   | <code>-text--lg</code>, and <code>-text--xl</code>. The default size is <code>-text--md</code>.
-.example(style='border:none')
+.example.-b--0
   section.chi-table.-bordered.-mt--3
     div
       table(cellpadding='0', cellspacing='0')
@@ -58,7 +58,7 @@ p.-text
 
 h2 Text headings
 p.-text Use classes <code>-text--h1</code> through <code>-text--h6</code> to match Chi's default heading sizes.
-.example(style='border:none')
+.example.-b--0
   section.chi-table.-bordered.-mt--3
     div
       table(cellpadding='0', cellspacing='0')
@@ -164,7 +164,7 @@ p.-text Change text colors with contextual classes.
         div.-p--1.-p-sm--2.-text--center
           p.-text(class=`-${type}`)
             = `-${type}`
-    .chi-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap(style="background:#000;")
+    .chi-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap.-bg--black
       each type in ['text--secondary', 'text--light']
         if (type === 'text--secondary')
           div.-p--1.-p-sm--2.-text--center
