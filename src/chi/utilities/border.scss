@@ -25,21 +25,21 @@ $border-colors: (
 @mixin create-border($position, $position-suffix, $breakpoint-infix, $thickness-index) {
   @if ($position == 'a') {
     .-b#{$breakpoint-infix}--#{$thickness-index} {
-      border#{$position-suffix}: ($thickness-index / 16) + rem solid $border-color;
+      border#{$position-suffix}: ($thickness-index / 16) + rem solid $border-color !important;
     }
   } @else if ($position == 'x') {
     .-b#{$position}#{$breakpoint-infix}--#{$thickness-index} {
-      border-left: ($thickness-index / 16) + rem solid $border-color;
-      border-right: ($thickness-index / 16) + rem solid $border-color;
+      border-left: ($thickness-index / 16) + rem solid $border-color !important;
+      border-right: ($thickness-index / 16) + rem solid $border-color !important;
     }
   } @else if ($position == 'y') {
     .-b#{$position}#{$breakpoint-infix}--#{$thickness-index} {
-      border-bottom: ($thickness-index / 16) + rem solid $border-color;
-      border-top: ($thickness-index / 16) + rem solid $border-color;
+      border-bottom: ($thickness-index / 16) + rem solid $border-color !important;
+      border-top: ($thickness-index / 16) + rem solid $border-color !important;
     }
   } @else {
     .-b#{$position}#{$breakpoint-infix}--#{$thickness-index} {
-      border#{$position-suffix}: ($thickness-index / 16) + rem solid $border-color;
+      border#{$position-suffix}: ($thickness-index / 16) + rem solid $border-color !important;
     }
   }
 }
@@ -66,14 +66,14 @@ $border-colors: (
   @if ($screen-size == 'xs') {
     @each $color-name, $color-value in $border-colors {
       .-b--#{$color-name} {
-        border-color: $color-value;
+        border-color: $color-value !important;
       }
     }
   } @else {
     @include respond-to($screen-size) {
       @each $color-name, $color-value in $border-colors {
         .-b-#{$screen-size}--#{$color-name} {
-          border-color: $color-value;
+          border-color: $color-value !important;
         }
       }
     }

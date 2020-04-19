@@ -38,7 +38,7 @@ $sizes: (
 
   input {
     &[type='radio'] {
-      &.chi-picker {
+      &.chi-picker__input {
         left: -9999px;
         position: absolute;
 
@@ -78,11 +78,29 @@ $sizes: (
             margin-right: 0.5rem;
           }
 
+          &.-sm,
+          &.-lg,
+          &.-xl {
+            .chi-icon {
+              margin-bottom: 0.125rem;
+              margin-top: 0.125rem;
+            }
+          }
+
+          &.-sm {
+            & > :not(:last-child) {
+              &,
+              &.chi-icon {
+                margin-right: 0.25rem;
+              }
+            }
+          }
+
         }
       }
 
       &:checked {
-        &.chi-picker {
+        &.chi-picker__input {
           & + label {
             border: solid 0.0625rem $primary-color;
             box-shadow: inset 0 0 0 0.0625rem $primary-color;

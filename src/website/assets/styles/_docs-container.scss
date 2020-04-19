@@ -8,25 +8,27 @@
     height: 100%;
 
     .chi-drawer {
-      ul.chi-tabs {
-        li {
-          .chi-collection__title {
-            font-size: 0.875rem;
-            font-weight: 600;
-            line-height: $line-height;
-            padding: 0.75rem 0 0.75rem 1.5rem;
-          }
-
-          a {
-            &:focus {
-              outline: 0.125rem solid $focus-color;
-              outline-offset: -0.125rem;
-            }
-          }
-
-          &.-active {
+      ul {
+        &.chi-tabs {
+          li {
             .chi-collection__title {
-              color: $primary;
+              font-size: 0.875rem;
+              font-weight: 600;
+              line-height: $line-height;
+              padding: 0.75rem 0 0.75rem 1.5rem;
+            }
+
+            a {
+              &:focus {
+                outline: 0.125rem solid $focus-color;
+                outline-offset: -0.125rem;
+              }
+            }
+
+            &.-active {
+              .chi-collection__title {
+                color: $primary;
+              }
             }
           }
         }
@@ -66,30 +68,34 @@
           width: 16rem;
         }
 
-        a[disabled] {
-          color: set-color(grey, 50) !important;
-          pointer-events: none;
+        a {
+          &[disabled] {
+            color: set-color(grey, 50) !important;
+            pointer-events: none;
+          }
         }
 
-        ul.chi-tabs {
-          li {
-            .chi-collection__title {
-              font-size: 0.875rem;
-              font-weight: 600;
-              line-height: $line-height;
-              padding: 0.75rem 0 0.75rem 1.5rem;
-            }
-
-            a {
-              &:focus {
-                outline: 0.125rem solid $focus-color;
-                outline-offset: -0.125rem;
-              }
-            }
-
-            &.-active {
+        ul {
+          &.chi-tabs {
+            li {
               .chi-collection__title {
-                color: $primary;
+                font-size: 0.875rem;
+                font-weight: 600;
+                line-height: $line-height;
+                padding: 0.75rem 0 0.75rem 1.5rem;
+              }
+
+              a {
+                &:focus {
+                  outline: 0.125rem solid $focus-color;
+                  outline-offset: -0.125rem;
+                }
+              }
+
+              &.-active {
+                .chi-collection__title {
+                  color: $primary;
+                }
               }
             }
           }
@@ -195,9 +201,27 @@
               }
 
               .docs-titlebar__buttons {
-                margin: 2rem 0 2rem;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                margin: 2rem 0;
+                @include respond-to(sm) {
+                  flex-direction: row;
+                  justify-content: center;
+                }
                 @include respond-to(lg) {
-                  margin: 3rem 0 3rem;
+                  justify-content: flex-start;
+                  margin: 3rem 0;
+                }
+
+                .chi-btn {
+                  display: flex;
+                  justify-content: center;
+                  width: 80%;
+                  @include respond-to(sm) {
+                    display: inline-flex;
+                    width: auto;
+                  }
                 }
               }
 
@@ -210,7 +234,7 @@
                   left: 0;
                   position: relative;
                   top: 0;
-                  transform: scale(1)
+                  transform: scale(1);
                 }
 
                 .shape--1 {
@@ -238,10 +262,10 @@
                   top: 5rem;
                   width: 8rem;
 
-                  &:before {
+                  &::before {
                     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='128' width='128'><polygon stroke='%2303808C' stroke-width='4' points='50 15, 100 100, 0 100'/></svg>");
                     background-repeat: no-repeat;
-                    content: "";
+                    content: '';
                     display: block;
                     height: 8rem;
                     width: 8rem;
@@ -265,10 +289,10 @@
                   top: 16rem;
                   width: 14rem;
 
-                  &:before {
+                  &::before {
                     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='224' width='224'><polygon stroke='%230080BB' stroke-width='2' points='50 15, 100 100, 0 100'/></svg>");
                     background-repeat: no-repeat;
-                    content: "";
+                    content: '';
                     display: block;
                     height: 14rem;
                     width: 14rem;
@@ -367,7 +391,6 @@
 
         .example {
           border: 0.0625rem solid set-color(grey, 25);
-          border-radius: 0.15em;
           position: relative;
           z-index: 10;
 
@@ -402,7 +425,6 @@
           }
 
           .code-block>pre {
-            border-radius: 0.15em;
             border-top: 0;
           }
         }
