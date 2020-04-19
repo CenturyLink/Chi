@@ -38,6 +38,7 @@ $transition-duration: 0.2s;
         display: none;
       }
     }
+
     @include respond-to(sm) {
       & > .chi-epanel__number {
         width: 7.5%;
@@ -77,7 +78,7 @@ $transition-duration: 0.2s;
       & > .chi-epanel__title,
       & > .chi-epanel__number {
         color: $grey-color;
-        opacity: 0.4;
+        opacity: 0.5;
       }
     }
   }
@@ -145,7 +146,7 @@ $transition-duration: 0.2s;
 
     .chi-epanel__body {
       .chi-epanel__content {
-        padding: 1.25rem;
+        padding: 0 1.25rem 1.25rem;
 
         & > :first-child {
           margin-top: 0;
@@ -177,7 +178,7 @@ $transition-duration: 0.2s;
       margin-bottom: 0;
     }
   }
-
+  
   &:not(.-bordered) {
     padding-bottom: 1.25rem;
     padding-top: 1.25rem;
@@ -186,8 +187,13 @@ $transition-duration: 0.2s;
       border-bottom: 0.0625rem solid $border-color;
     }
 
-    & > .chi-epanel__header+.chi-epanel__collapse:not(.-ml--0) {
-      margin-left: 7.5%;
+    & > .chi-epanel__header {
+      & + .chi-epanel__collapse {
+        margin-left: 0;
+        @include respond-to(sm) {
+          margin-left: 7.5%;
+        }
+      }
     }
 
     .chi-epanel__body {
@@ -219,6 +225,21 @@ $transition-duration: 0.2s;
           font-size: $text;
           line-height: $line-height-small;
         }
+      }
+    }
+  }
+
+  &.-no-step {
+    & > .chi-epanel__header {
+      & + .chi-epanel__collapse {
+        margin-left: 0;
+        @include respond-to(sm) {
+          margin-left: 0;
+        }
+      }
+
+      .chi-epanel__number {
+        display: none;
       }
     }
   }

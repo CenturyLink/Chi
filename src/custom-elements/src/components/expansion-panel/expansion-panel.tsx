@@ -20,7 +20,7 @@ export class ExpansionPanel {
   @Prop({ reflect: true }) step: string;
 
   /**
-   * is the panel border-styled?
+   * to set the panel style to bordered
    */
   @Prop({ reflect: true }) bordered: boolean;
 
