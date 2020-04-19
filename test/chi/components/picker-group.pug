@@ -8,28 +8,28 @@ title: Picker group
   h3 Base
   .chi-picker-group
     each type in ['Radio1','Radio2','Radio3']
-      input.chi-picker(type="radio", name='box', id=`i-${type}`)
+      input.chi-picker__input(type="radio", name='box', id=`i-${type}`)
       label(for=`i-${type}`)
         = type
 .test-base-checked
   h3 Base checked
   .chi-picker-group
     each type in ['Radio1','Radio2','Radio3']
-      input.chi-picker(type="radio", name='box', id=`ia-${type}`, checked=(type==='Radio2'))
+      input.chi-picker__input(type="radio", name='box', id=`ia-${type}`, checked=(type==='Radio2'))
       label(for=`ia-${type}`)
         = type
 .test-with-texts-and-icons
   h3 Texts and icons
   .chi-picker-group
-    input.chi-picker(type="radio", name='radios', id=`ib-radio1`)
+    input.chi-picker__input(type="radio", name='radios', id=`ib-radio1`)
     label(for=`ib-radio1`)
       i.chi-icon.icon-atom.-sm
       span Radio1
-    input.chi-picker(type="radio", name='radios', id=`ib-radio2`)
+    input.chi-picker__input(type="radio", name='radios', id=`ib-radio2`)
     label(for=`ib-radio2`)
       span Radio2
       i.chi-icon.icon-atom.-sm
-    input.chi-picker(type="radio", name='radios', id=`ib-radio3`)
+    input.chi-picker__input(type="radio", name='radios', id=`ib-radio3`)
     label(for=`ib-radio3`)
       i.chi-icon.icon-atom.-sm
       span Radio3
@@ -40,7 +40,7 @@ title: Picker group
   .example
     .chi-picker-group
       each type in ['Radio1','Radio2','Radio3']
-        input.chi-picker(type="radio", name='radios', id=`ic-${type}`)
+        input.chi-picker__input(type="radio", name='radios', id=`ic-${type}`)
         label(for=`ic-${type}`)
           span.-sr--only Button action
           i.chi-icon.icon-atom.-sm
@@ -49,26 +49,26 @@ title: Picker group
   h3 Fluid
   .chi-picker-group.-fluid
     each type in ['Radio1','Radio2','Radio3']
-      input.chi-picker(type="radio", name='box', id=`id-${type}`)
+      input.chi-picker__input(type="radio", name='box', id=`id-${type}`)
       label(for=`id-${type}`)
         = type
 .test-alignment(style='width: 700px;')
   h3 Alignment
   .chi-picker-group.-fluid
-      input.chi-picker(type="radio", name='box', id='ie-Radio1')
+      input.chi-picker__input(type="radio", name='box', id='ie-Radio1')
       label.-align--left(for='ie-Radio1') Radio1
-      input.chi-picker(type="radio", name='box', id='ie-Radio2')
+      input.chi-picker__input(type="radio", name='box', id='ie-Radio2')
       label.-align--center(for='ie-Radio2') Radio2
-      input.chi-picker(type="radio", name='box', id='ie-Radio3')
+      input.chi-picker__input(type="radio", name='box', id='ie-Radio3')
       label.-align--right(for='ie-Radio3') Radio3
 .test-disable-fluidity(style='width: 700px;')
   h3 Disable Fluidity
   .chi-picker-group.-fluid
-      input.chi-picker(type="radio", name='box', id='if-Radio1')
+      input.chi-picker__input(type="radio", name='box', id='if-Radio1')
       label(for='if-Radio1') Radio1
-      input.chi-picker(type="radio", name='box', id='if-Radio2')
+      input.chi-picker__input(type="radio", name='box', id='if-Radio2')
       label.-no-fluid(for='if-Radio2') Radio2
-      input.chi-picker(type="radio", name='box', id='if-Radio3')
+      input.chi-picker__input(type="radio", name='box', id='if-Radio3')
       label(for='if-Radio3') Radio3
 
 
@@ -79,12 +79,12 @@ title: Picker group
       .-d--flex.-flex--wrap
         .chi-picker-group.-mr--2
           each type in ['Radio1','Radio2','Radio3']
-            input.chi-picker(type="radio", name='radios', id=`ig-${type}-${size}`)
+            input.chi-picker__input(type="radio", name='radios', id=`ig-${type}-${size}`)
             label(for=`ig-${type}-${size}`, class=`-${size}`)
                 = type
         .chi-picker-group
           each type in ['Radio1','Radio2','Radio3']
-            input.chi-picker(type="radio", name='radios', id=`ig-i-${type}-${size}`)
+            input.chi-picker__input(type="radio", name='radios', id=`ig-i-${type}-${size}`)
             label(for=`ig-i-${type}-${size}`, class=`-${size}`)
               span.-sr--only Button action
               if size === 'sm'

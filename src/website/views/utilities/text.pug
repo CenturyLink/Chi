@@ -3,52 +3,93 @@ title: Text
 description: Use text utility classes to control sizing, color, alignment and more.
 styles: [assets/styles/show-example]
 ---
+-
+  var sizes = {
+    'xl': {font:'18px (1.125rem)',  line:'28px (1.75rem)'},
+    'lg': {font:'16px (1rem)',      line:'24px (1.5rem)'},
+    'md': {font:'14px (0.875rem)',  line:'24px (1.5rem)'},
+    'sm': {font:'13px (0.8125rem)', line:'20px (1.25rem)'},
+    'xs': {font:'12px (0.75rem)',   line:'16px (1rem)'}
+  }
 
-- var tabs = {'xs' : '12px (0.75rem) font size with 20px (1.25rem) line-height','sm' : '13px (0.8125rem) font size with 20px (1.25rem) line-height','md' : '14px (0.875rem) font size with 24px (1.5rem) line-height', 'lg' : '16px (1rem) font size with 24px (1.5rem) line-height', 'xl' : '18px (1.125rem) font size with 28px (1.75rem) line-height'};
+  var headings = {
+    'h1': {font:'48px (3rem)',      line:'64px (4rem)'},
+    'h2': {font:'32px (2rem)',      line:'48px (3rem)'},
+    'h3': {font:'24px (1.5rem)',    line:'32px (2rem)'},
+    'h4': {font:'18px (1.125rem)',  line:'32px (2rem)'},
+    'h5': {font:'16px (1rem)',      line:'24px (1.5rem)'},
+    'h6': {font:'14px (0.875rem)',  line:'24px (1.5rem)'}
+  }
 
 h2 Text size
 p.-text
-  | Text support the following sizes: <code>-text--xs</code>, <code>-text--sm</code>, <code>-text--md</code>,
+  | Text size supports the following sizes: <code>-text--xs</code>, <code>-text--sm</code>, <code>-text--md</code>,
   | <code>-text--lg</code>, and <code>-text--xl</code>. The default size is <code>-text--md</code>.
-.example(style='border:none')
-  section.chi-table.-bordered.-mt--3.-mb--3
+.example.-b--0
+  section.chi-table.-bordered.-mt--3
     div
       table(cellpadding='0', cellspacing='0')
         thead
           tr
             th
-              div Class
-            th
-              div Sizes
+              div Size
             th
               div Example
         tbody
-          each text, size in tabs
+          each value, index in sizes
             tr
-              td(width='20%')
-                code= '-text--' + size
-              td(width='50%')
-                p.-text= text
+              td.-w--30.-w-md--20
+                code=`-text--${index}`
+                dl.-text.-text--xs.-mt--2
+                  dt.-text--bold Font-size:
+                  dd=value.font
+                  dt.-text--bold.-mt--1 Line-height:
+                  dt=value.line
               td
-                p(class=`-text--${size}`)
-                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                p(class=`-text--${index}`)
+                  | The quick brown fox jumps over the lazy dog.
+.example.-bt--0.-mb--3
+  :code(lang="html")
+    <p class="-text--xl">The quick brown fox jumps over the lazy dog.</p>
+    <p class="-text--lg">The quick brown fox jumps over the lazy dog.</p>
+    <p class="-text--md">The quick brown fox jumps over the lazy dog.</p>
+    <p class="-text--sm">The quick brown fox jumps over the lazy dog.</p>
+    <p class="-text--xs">The quick brown fox jumps over the lazy dog.</p>
 
 h2 Text headings
-p.-text In order to match the font styling of a heading, <code>.-text--h1</code> through <code>.-text--h6</code> classes are also available.
-.example.-mb--3
-  p.-text--h1.-mx--3 h1 Chi heading
-  p.-text--h2.-mx--3 h2 Chi heading
-  p.-text--h3.-mx--3 h3 Chi heading
-  p.-text--h4.-mx--3 h4 Chi heading
-  p.-text--h5.-mx--3 h5 Chi heading
-  p.-text--h6.-mx--3 h6 Chi heading
+p.-text Use classes <code>-text--h1</code> through <code>-text--h6</code> to match Chi's default heading sizes.
+.example.-b--0
+  section.chi-table.-bordered.-mt--3
+    div
+      table(cellpadding='0', cellspacing='0')
+        thead
+          tr
+            th
+              div Size
+            th
+              div Example
+        tbody
+          each value, index in headings
+            tr
+              td.-w--30.-w-md--20
+                code=`-text--${index}`
+                dl.-text.-text--xs.-mt--2
+                  dt.-text--bold Font-size:
+                  dd=value.font
+                  dt.-text--bold.-mt--1 Line-height:
+                  dt=value.line
+              td
+                p(class=`-text--${index} -px--2`)
+                  | The quick brown fox jumps over the lazy dog.
+.example.-bt--0.-mb--3
   :code(lang="html")
-    <p class="-text--h1">h1 Chi heading</p>
-    <p class="-text--h2">h2 Chi heading</p>
-    <p class="-text--h3">h3 Chi heading</p>
-    <p class="-text--h4">h4 Chi heading</p>
-    <p class="-text--h5">h5 Chi heading</p>
-    <p class="-text--h6">h6 Chi heading</p>
+    <p class="-text--h1">The quick brown fox jumps over the lazy dog.</p>
+    <p class="-text--h2">The quick brown fox jumps over the lazy dog.</p>
+    <p class="-text--h3">The quick brown fox jumps over the lazy dog.</p>
+    <p class="-text--h4">The quick brown fox jumps over the lazy dog.</p>
+    <p class="-text--h5">The quick brown fox jumps over the lazy dog.</p>
+    <p class="-text--h6">The quick brown fox jumps over the lazy dog.</p>
+
 h2 Text line height
 p.-text
   | Use shorthand utility classes to control an elements line-height. Line height sizes are equal to <code>$base-unit * {size}</code>
@@ -122,27 +163,27 @@ p.-text Change text colors with contextual classes.
       each type in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--grey', 'text--muted']
         div.-p--1.-p-sm--2.-text--center
           p.-text(class=`-${type}`)
-            = `.-${type}`
-    .chi-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap(style="background:#000;")
+            = `-${type}`
+    .chi-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap.-bg--black
       each type in ['text--secondary', 'text--light']
         if (type === 'text--secondary')
           div.-p--1.-p-sm--2.-text--center
-            p.-text.-text--secondary .-text--secondary
+            p.-text.-text--secondary -text--secondary
         else if (type === 'text--light')
           div.-p--1.-p-sm--2.-text--center
-            p.-text.-text--light .-text--light
+            p.-text.-text--light -text--light
   :code(lang="html")
     <!-- For light backgrounds -->
-    <p class="-text--body">.-text--body</p>
-    <p class="-text--primary">.-text--primary</p>
-    <p class="-text--success">.-text--success</p>
-    <p class="-text--warning">.-text--warning</p>
-    <p class="-text--danger">.-text--danger</p>
-    <p class="-text--grey">.-text--grey</p>
-    <p class="-text--muted">.-text--muted</p>
+    <p class="-text--body">-text--body</p>
+    <p class="-text--primary">-text--primary</p>
+    <p class="-text--success">-text--success</p>
+    <p class="-text--warning">-text--warning</p>
+    <p class="-text--danger">-text--danger</p>
+    <p class="-text--grey">-text--grey</p>
+    <p class="-text--muted">-text--muted</p>
     <!-- For dark backgrounds -->
-    <p class="-text--secondary">.-text--secondary</p>
-    <p class="-text--light">.-text--light</p>
+    <p class="-text--secondary">-text--secondary</p>
+    <p class="-text--light">-text--light</p>
 
 h2 Responsiveness
 h3 Sizes

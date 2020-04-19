@@ -19,7 +19,7 @@ const MENU_ITEM_UNSELECTED_CLASS = "-unselected";
 const DRAWER_ITEM_LIST_EXPANDED = "-expanded";
 
 const DEFAULT_CONFIG = {
-  animated: true,
+  animated: false,
   autoClose: false
 };
 
@@ -106,7 +106,7 @@ class Sidenav extends Component {
 
         if (!this._elem.querySelector(`.chi-drawer${menuElementLink}`)) {
           let menuItemToActivate;
-          
+
           this._addEventHandler(
             singleLevelMenuItem,
             'click',
@@ -445,15 +445,13 @@ class Sidenav extends Component {
         }
       });
 
-      if (Util.checkHasClass(this._elem, '-global-nav')) {
-        const activeItemLink = menuItemLink.parentNode.parentNode.querySelector(`li.${chi.classes.ACTIVE} a`);
+      const activeItemLink = menuItemLink.parentNode.parentNode.querySelector(`li.${chi.classes.ACTIVE} a`);
 
-        if (activeItemLink) {
-          if (!Util.checkHasClass(menuItemLink.parentNode, chi.classes.ACTIVE)) {
-            Util.checkAddClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
-          } else if (Util.checkHasClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS)) {
-            Util.checkRemoveClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
-          }
+      if (activeItemLink) {
+        if (!Util.checkHasClass(menuItemLink.parentNode, chi.classes.ACTIVE)) {
+          Util.checkAddClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
+        } else if (Util.checkHasClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS)) {
+          Util.checkRemoveClass(activeItemLink, MENU_ITEM_UNSELECTED_CLASS);
         }
       }
     }

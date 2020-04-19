@@ -29,7 +29,6 @@ $sidenav-lg-width: 12.5rem;
     padding-left: 0;
 
     > li {
-      border-bottom: 0.0625rem solid map-get(map-get($colorscheme, grey), 20);
       list-style: none;
       padding-left: 0;
 
@@ -55,39 +54,155 @@ $sidenav-lg-width: 12.5rem;
         line-height: 1rem;
         text-align: center;
       }
-
-      &:hover {
-        color: $primary-color;
-      }
     }
 
     &.-active {
       > a {
+        background-color: rgba(set-color(blue, 70), 0.08);
         box-shadow: inset 0.125rem 0 0 $primary-color;
         color: $primary-color;
         font-weight: 600;
+
+        &.-unselected {
+          background-color: transparent;
+          box-shadow: none;
+        }
       }
     }
 
-    &.-active > a { // List item -active. The one that has the left 3px blue border.
-      background-color: set-color(grey, 20);
-    }
-
-    & > a {
-      &.-active { // Drawer shown, will sets active the trigger (this anchor element)
-        background-color: set-color(grey, 20);
+    &:not(.-active) {
+      a.-active {
+        background-color: set-color(grey, 10);
+        box-shadow: inset 0.125rem 0 0 set-color(grey, 100);
       }
-    }
-
-    &:not(.-active) > a:not(.-active):hover {
-      background-color: set-color(grey, 10);
     }
   }
 
-  &.-sliding {
-    .chi-sidenav__list > li {
-      &.-active > a {
-        box-shadow: none;
+  // &.-sliding {
+  //   .chi-sidenav__list > li {
+  //     &.-active > a {
+  //       box-shadow: none;
+  //     }
+  //   }
+  // }
+
+  .chi-drawer {
+    &__header {
+      align-items: center;
+      color: set-color(grey, 70);
+      display: flex;
+      height: 4rem;
+      padding-left: 1.5rem;
+
+      .chi-btn {
+        &.-close {
+          right: 1rem;
+          top: 1rem;
+        }
+      }
+    }
+
+    &__content {
+      background: set-color(grey, 10);
+    }
+
+    &.-active {
+      .chi-drawer__content {
+        .chi-sidenav__drawer-list {
+          li {
+            a {
+              .chi-sidenav__title {
+                .chi-icon {
+                  margin-left: 0.5rem;
+                }
+              }
+            }
+
+            &.-active {
+              & > a {
+                background: none;
+                box-shadow: inset 0.125rem 0 0 $primary-color;
+                color: $primary-color;
+              }
+
+              &.-expanded {
+                & > a {
+                  background-color: set-color(grey, 20);
+                  color: $primary-color;
+                }
+
+                &:hover {
+                  & > a {
+                    background-color: set-color(grey, 20);
+                  }
+                }
+              }
+
+              &.-unselected {
+                & > a {
+                  box-shadow: none;
+                }
+              }
+
+              &:hover {
+                & > a {
+                  background-color: set-color(grey, 10);
+                }
+              }
+            }
+
+            &.-expanded {
+              & > a {
+                background-color: set-color(grey, 20);
+
+                .chi-sidenav__title {
+                  font-weight: 600;
+                }
+              }
+
+              .chi-sidenav__drawer-item-list {
+                display: block;
+              }
+            }
+
+            .chi-sidenav__drawer-item-list {
+              background-color: set-color(grey, 20);
+
+              .chi-tabs {
+                &.-sm {
+                  li {
+                    a {
+                      &.chi-sidenav__drawer-item-tab {
+                        font-size: 0.8125rem;
+                        font-weight: 400;
+                        line-height: 1.25rem;
+                        padding-bottom: 0.375rem;
+                        padding-left: 3rem;
+                        padding-top: 0.375rem;
+
+                        &:hover {
+                          background-color: set-color(grey, 30);
+                          color: set-color(grey, 100);
+                        }
+
+                        &.-active {
+                          color: $primary-color;
+                          font-weight: 600;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            &:hover {
+              & > a {
+                background-color: set-color(grey, 20);
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -98,7 +213,9 @@ $sidenav-lg-width: 12.5rem;
     & > li {
       & > a {
         display: block;
-        padding: 1rem;
+        padding-bottom: 0.625rem;
+        padding-left: 1.5rem;
+        padding-top: 0.625rem;
 
         & > *:first-child {
           margin-top: 0;
@@ -111,10 +228,14 @@ $sidenav-lg-width: 12.5rem;
 
       &.-active > a {
         background-color: set-color(grey, 20);
+
+        .chi-sidenav__title {
+          font-weight: 600;
+        }
       }
 
       &:not(.-active) > a:hover {
-        background-color: set-color(grey, 10);
+        background-color: set-color(grey, 30);
       }
 
       .chi-sidenav__drawer-item-list {
@@ -130,8 +251,10 @@ $sidenav-lg-width: 12.5rem;
   }
 
   &__title {
+    align-items: center;
+    display: flex;
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 400;
   }
 
   &__description {
@@ -143,7 +266,8 @@ $sidenav-lg-width: 12.5rem;
   &.-inverse {
     .chi-sidenav {
       &__content {
-        background-color: set-color(black);
+        background-color: set-color(grey, 100);
+        border-right: 0;
       }
 
       &__list,
@@ -159,34 +283,41 @@ $sidenav-lg-width: 12.5rem;
               color: $secondary-color;
             }
           }
-
-          &.-active > a { // List item -active. The one that has the left 3px blue border.
-            background-color: set-color(mint, 100);
-          }
-
-          & > a {
-            &.-active { // Drawer shown, will sets active the trigger (this anchor element)
-              background-color: set-color(mint, 100);
-            }
-          }
         }
       }
 
       &__list {
         > li {
-          border-bottom-color: set-color(black);
+          border-bottom: 0;
 
-          &:not(.-active) > a:not(.-active):hover {
-            background-color: set-color(grey, 100);
+          &.-active {
+            a {
+              background-color: rgba(set-color(mint, 40), 0.08);
+              box-shadow: inset 0.125rem 0 0 $secondary-color;
+              color: $secondary-color;
+
+              &.-unselected {
+                background-color: transparent;
+                box-shadow: none;
+              }
+            }
+          }
+
+          &:not(.-active) {
+            a.-active {
+              background-color: set-color(grey, 90);
+              box-shadow: inset 0.125rem 0 0 set-color(white);
+            }
           }
         }
       }
 
       &__drawer-list {
-        border-top: 0.0625rem solid map-get(map-get($colorscheme, grey), 70);
+        border-top: 0;
 
         > li {
-          border-bottom-color: set-color(grey, 100);
+          border-bottom: 0;
+          line-height: 1.25rem;
 
           &.-active {
             > a {
@@ -208,28 +339,138 @@ $sidenav-lg-width: 12.5rem;
 
       &__drawers {
         .chi-drawer {
-          background-color: set-color(grey, 100);
+          background-color: set-color(grey, 90);
 
           &__header {
+            background-color: rgba(set-color(grey, 100), 0.5);
+            color: set-color(grey, 40);
+
             .chi-btn {
               color: $text-white;
+            }
+          }
+
+          &__content {
+            background-color: set-color(grey, 90);
+          }
+
+          &.-active {
+            .chi-drawer__content {
+              .chi-sidenav__drawer-list {
+                li {
+                  a {
+                    color: set-color(white);
+
+                    .chi-sidenav__title {
+                      .chi-icon {
+                        margin-left: 0.5rem;
+                      }
+                    }
+                  }
+
+                  &.-active {
+                    & > a {
+                      background-color: set-color(grey, 90);
+                      box-shadow: inset 0.125rem 0 0 $secondary-color;
+                      color: $secondary-color;
+                    }
+
+                    &.-expanded {
+                      & > a {
+                        background-color: set-color(grey, 80);
+                        color: $secondary-color;
+                      }
+
+                      &:hover {
+                        & > a {
+                          background-color: set-color(grey, 80);
+                        }
+                      }
+                    }
+
+                    &.-unselected {
+                      & > a {
+                        box-shadow: none;
+                      }
+                    }
+
+                    &:hover {
+                      & > a {
+                        background-color: set-color(grey, 90);
+                      }
+                    }
+                  }
+
+                  &.-expanded {
+                    & > a {
+                      background-color: set-color(grey, 80);
+                      color: white;
+
+                      .chi-sidenav__title {
+                        font-weight: 600;
+                      }
+                    }
+
+                    .chi-sidenav__drawer-item-list {
+                      display: block;
+                    }
+                  }
+
+                  .chi-sidenav__drawer-item-list {
+                    background-color: set-color(grey, 80);
+
+                    .chi-tabs {
+                      &.-sm {
+                        li {
+                          a {
+                            &.chi-sidenav__drawer-item-tab {
+                              font-size: 0.8125rem;
+                              font-weight: 400;
+                              line-height: 1.25rem;
+                              padding-bottom: 0.375rem;
+                              padding-left: 3rem;
+                              padding-top: 0.375rem;
+
+                              &:hover {
+                                background-color: set-color(grey, 70);
+                                color: $text-white;
+                              }
+
+                              &.-active {
+                                color: $secondary-color;
+                                font-weight: 600;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  &:hover {
+                    & > a {
+                      background-color: set-color(grey, 80);
+                    }
+                  }
+                }
+              }
             }
           }
         }
       }
     }
 
-    .chi-sliding-border {
-      background-color: $secondary-color;
-    }
+    // .chi-sliding-border {
+    //   background-color: $secondary-color;
+    // }
 
-    &.-sliding {
-      .chi-sidenav__list > li {
-        &.-active > a {
-          box-shadow: none;
-        }
-      }
-    }
+    // &.-sliding {
+    //   .chi-sidenav__list > li {
+    //     &.-active > a {
+    //       box-shadow: none;
+    //     }
+    //   }
+    // }
   }
 
   .chi-drawer {
@@ -250,21 +491,21 @@ $sidenav-lg-width: 12.5rem;
     }
   }
 
-  .chi-sliding-border {
-    background-color: $brand-color;
-    display: none;
-    left: 0;
-    position: absolute;
-    width: 0.125rem;
-    z-index: $zindex-fixed + 2;
-  }
-
-  &.-sliding {
-    .chi-sliding-border {
-      display: block;
-      transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
-    }
-  }
+  // .chi-sliding-border {
+  //   background-color: $brand-color;
+  //   display: none;
+  //   left: 0;
+  //   position: absolute;
+  //   width: 0.125rem;
+  //   z-index: $zindex-fixed + 2;
+  // }
+  //
+  // &.-sliding {
+  //   .chi-sliding-border {
+  //     display: block;
+  //     transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+  //   }
+  // }
 
   @include respond-to(md) {
     width: $sidenav-md-width;
@@ -394,178 +635,6 @@ $sidenav-lg-width: 12.5rem;
 
         &.-animated:not(.-active) {
           left: -$drawer-width + $sidenav-lg-width;
-        }
-      }
-    }
-  }
-
-  &.-global-nav {
-    &.-inverse {
-      .chi-sidenav__content {
-        background-color: set-color(grey, 100);
-        border-right: 0;
-
-        nav {
-          ul {
-            &.chi-sidenav__list {
-              li {
-                border-bottom: 0;
-
-                &.-active {
-                  a {
-                    background-color: rgba(set-color(mint, 40), 0.08);
-
-                    &.-unselected {
-                      background-color: transparent;
-                      box-shadow: none;
-                    }
-                  }
-                }
-
-                &:not(.-active) {
-                  a.-active {
-                    background-color: set-color(grey, 90);
-                    box-shadow: inset 0.125rem 0 0 set-color(white);
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .chi-sidenav__drawers {
-        .chi-drawer {
-          background-color: set-color(grey, 90);
-
-          &.-active {
-            .chi-drawer__header {
-              align-items: center;
-              background-color: rgba(set-color(grey, 100), 0.5);
-              color: set-color(grey, 40);
-              display: flex;
-              height: 4rem;
-              padding-left: 1.5rem;
-
-              .chi-drawer__title {
-                font-size: 1rem;
-                font-weight: 600;
-              }
-
-              .chi-btn {
-                &.-close {
-                  right: 1rem;
-                  top: 1rem;
-                }
-              }
-            }
-
-            .chi-drawer__content {
-              background-color: set-color(grey, 90);
-
-              .chi-sidenav__drawer-list {
-                border-top: 0;
-
-                li {
-                  border-bottom: 0;
-                  line-height: 1.25rem;
-
-                  a {
-                    color: set-color(white);
-                    padding-bottom: 0.625rem;
-                    padding-left: 1.5rem;
-                    padding-top: 0.625rem;
-
-                    .chi-sidenav__title {
-                      align-items: center;
-                      display: flex;
-                      font-weight: 400;
-
-                      .chi-icon {
-                        margin-left: 0.5rem;
-                      }
-                    }
-                  }
-
-                  &.-active {
-                    & > a {
-                      background-color: set-color(grey, 90);
-                      box-shadow: inset 0.125rem 0 0 $secondary-color;
-                      color: $secondary-color;
-
-                      .chi-sidenav__title {
-                        font-weight: 600;
-                      }
-                    }
-
-                    &.-expanded {
-                      & > a {
-                        background-color: set-color(grey, 80);
-                        color: $secondary-color;
-                      }
-                    }
-
-                    &.-unselected {
-                      & > a {
-                        box-shadow: none;
-                      }
-                    }
-                  }
-
-                  &.-expanded {
-                    & > a {
-                      background-color: set-color(grey, 80);
-                      color: white;
-
-                      .chi-sidenav__title {
-                        font-weight: 600;
-                      }
-                    }
-
-                    .chi-sidenav__drawer-item-list {
-                      display: block;
-                    }
-                  }
-
-                  .chi-sidenav__drawer-item-list {
-                    background-color: set-color(grey, 80);
-
-                    .chi-tabs {
-                      &.-sm {
-                        li {
-                          a {
-                            &.chi-sidenav__drawer-item-tab {
-                              font-size: 0.8125rem;
-                              font-weight: 400;
-                              line-height: 1.25rem;
-                              padding-bottom: 0.375rem;
-                              padding-left: 3rem;
-                              padding-top: 0.375rem;
-
-                              &:hover {
-                                background-color: set-color(grey, 70);
-                              }
-
-                              &.-active {
-                                color: $secondary-color;
-                                font-weight: 600;
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-
-                  &:hover {
-                    & > a {
-                      background-color: set-color(grey, 80);
-                    }
-                  }
-                }
-              }
-            }
-          }
         }
       }
     }

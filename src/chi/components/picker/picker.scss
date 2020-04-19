@@ -17,12 +17,12 @@ $sizes: (
 .chi-label,
 label,
 legend {
-  & + .chi-picker__item {
+  & + .chi-picker {
     margin-top: 0.25rem;
   }
 }
 
-.chi-picker__item {
+.chi-picker {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -30,7 +30,7 @@ legend {
   input {
     &[type='checkbox'],
     &[type='radio'] {
-      &.chi-picker {
+      &.chi-picker__input {
         left: -9999px;
         position: absolute;
 
@@ -45,6 +45,7 @@ legend {
           font-weight: normal;
           justify-content: space-between;
           margin-bottom: 0.5rem;
+          min-height: 3.5rem;
           padding: 1rem - $border;
           transition: all 0.2s;
           width: 100%;
@@ -218,7 +219,7 @@ legend {
       input {
         &[type='checkbox'],
         &[type='radio'] {
-          &.chi-picker {
+          &.chi-picker__input {
             & + label {
               min-height: map-get(map-get($sizes, $type), min-height);
               padding: (0.5rem - $border) (1rem - $border) (0.5rem - $border) (1.5rem - $border);
@@ -232,22 +233,22 @@ legend {
 
 /* IE11 CSS hack */
 @media all and (-ms-high-contrast: none) {
-  .chi-picker__item:not(.-sm):not(.-md):not(.-lg) {
+  .chi-picker:not(.-sm):not(.-md):not(.-lg) {
     input {
       &[type='checkbox'],
       &[type='radio'] {
-        &.chi-picker + label {
+        &.chi-picker__input + label {
           display: block;
         }
       }
     }
   }
 
-  .chi-picker__item {
+  .chi-picker {
     input {
       &[type='checkbox'],
       &[type='radio'] {
-        &.chi-picker {
+        &.chi-picker__input {
           & + label {
             span {
               &.chi-picker__checkbox {
