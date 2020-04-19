@@ -77,6 +77,12 @@ ARRAY=(
     "m-pickerGroup:chi-picker-group"
     "m-picker:chi-picker"
 
+    "a-picker__checkbox:chi-picker__checkbox"
+    "a-picker__radio:chi-picker__radio"
+    "a-picker__label:chi-picker__label"
+    "a-picker__description:chi-picker__description"
+    "a-picker:chi-picker__input"
+
     # Popover
     "m-popover:chi-popover"
 
@@ -117,6 +123,13 @@ ARRAY=(
     "a-h4:-text--h4"
     "a-h5:-text--h5"
     "a-h6:-text--h6"
+    "-text--smaller:-text--xs"
+    "-text--small:-text--sm"
+    "-text--large:-text--lg"
+    "-text--larger:-text--xl"
+    "a-blockquote:chi-blockquote"
+    "a-abbr:chi-abbr"
+    "a-code:chi-code"
     "a-blockquote:chi-blockquote"
     "a-abbr:chi-abbr"
     "a-code:chi-code"
@@ -160,16 +173,3 @@ for className in "${ARRAY[@]}" ; do
     echo $'\e[1;31m' ${className%%:*} $'\e[1;32m' ${className##*:}
 done
 
-# Replace m-picker
-REGEX='\([^a-zA-Z0-9]\)chi-picker\([^a-zA-Z0-9_-]\)'
-CHANGE="s/${REGEX}/\1chi-picker__item\2/g"
-REGEXNL='\([^a-zA-Z0-9]\)chi-picker$'
-CHANGENL="s/${REGEXNL}/\1chi-picker__item/g"
-find ${PROJECT_SRC} -type f -exec sed -i '' "${CHANGE};${CHANGENL}" '{}' +
-echo $'\e[1;31m' chi-picker $'\e[1;32m' chi-picker__item
-
-REGEX='\([^a-zA-Z0-9]\)[m|a]-picker\([^a-zA-Z0-9]\)'
-CHANGE="s/${REGEX}/\1chi-picker\2/g"
-REGEXNL='\([^a-zA-Z0-9]\)[m|a]-picker$'
-CHANGENL="s/${REGEXNL}/\1chi-picker/g"
-find ${PROJECT_SRC} -type f -exec sed -i '' "${CHANGE};${CHANGENL}" '{}' +
