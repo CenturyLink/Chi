@@ -18,447 +18,13 @@ h3 Base
         nav
           ul.chi-sidenav__list
             each val in menuItems
-              li(class=`${val===active.menuItem ? '-active':''}`)
-                a(href=`#drawer-${example}-${val}`)
-                  i.chi-icon.icon-atom
-                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .chi-sidenav__drawers
-        each val1 in menuItems
-          .chi-drawer.-left(id=`drawer-${example}-${val1}`)
-            .chi-drawer__header
-              button(class='chi-btn -icon -close', aria-label='Close')
-                .chi-btn__content
-                  i.chi-icon.icon-x
-            .chi-drawer__content
-              ul.chi-sidenav__drawer-list
-                each val2, index in drawerMenuItems
-                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#exampleHashTarget`)
-                      if index % 4 < 2
-                        .chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.chi-sidenav__description Description for title a in a drawer inside a menu.
-                      else
-                        span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-    .-flex--grow1.-p--3.-pb--4
-      each val2 in [1,2,3,4]
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-default
-      li.-disabled
-        a(href=`#example-base-web`) Web Component
-      li.-active
-        a(href=`#example-base-html`) HTML Blueprint
-  .chi-tabs-panel#example-base-web
-  .chi-tabs-panel.-active#example-base-html
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
-    :code(lang='html')
-      <aside class="chi-sidenav" id="sidenav-0">
-        <div class="chi-sidenav__content">
-          <nav>
-            <ul class="chi-sidenav__list">
-              <li class="-active">
-                <a href="#drawer-0-1">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Active Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-2">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-3">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-4">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="chi-sidenav__drawers">
-          <div class="chi-drawer -left -active" id="drawer-0-1">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title A</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li class="-active">
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title B</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title C</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title D</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="chi-drawer -left" id="drawer-0-2">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title E</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title F</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title G</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title H</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="chi-drawer -left" id="drawer-0-3">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title I</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title J</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title K</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title L</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="chi-drawer -left" id="drawer-0-4">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title M</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title N</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title O</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title P</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      <script>chi.sidenav(document.getElementById('sidenav-0'));</script>
-
-h3 Inverse
-
-- example=1
-.example.-mb--3
-  .-d--flex(style='overflow: hidden;')
-    aside.chi-sidenav.-inverse.-flex--shrink0#example-base-inverse
-      .chi-sidenav__content
-        nav
-          ul.chi-sidenav__list
-            each val in menuItems
-              li(class=`${val===active.menuItem ? '-active':''}`)
-                a(href=`#drawer-${example}-${val}`)
-                  i.chi-icon.icon-atom
-                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-      .chi-sidenav__drawers
-        each val1 in menuItems
-          .chi-drawer.-left(id=`drawer-${example}-${val1}`)
-            .chi-drawer__header
-              button(class='chi-btn -icon -close', aria-label='Close')
-                .chi-btn__content
-                  i.chi-icon.icon-x
-            .chi-drawer__content
-              ul.chi-sidenav__drawer-list
-                each val2, index in drawerMenuItems
-                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#exampleHashTarget`)
-                      if index % 4 < 2
-                        .chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.chi-sidenav__description Description for title a in a drawer inside a menu.
-                      else
-                        span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-    .-flex--grow1.-p--3.-pb--4
-      each val2 in [1,2,3,4]
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-inverse
-      li.-disabled
-        a(href=`#example-inverse-web`) Web Component
-      li.-active
-        a(href=`#example-inverse-html`) HTML Blueprint
-  .chi-tabs-panel#example-inverse-web
-  .chi-tabs-panel.-active#example-inverse-html
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
-    :code(lang='html')
-      <aside class="chi-sidenav -inverse" id="sidenav-1">
-        <div class="chi-sidenav__content">
-          <nav>
-            <ul class="chi-sidenav__list">
-              <li class="-active">
-                <a href="#drawer-1-1">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Active Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-1-2">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-1-3">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-1-4">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="chi-sidenav__drawers">
-          <div class="chi-drawer -left -active" id="drawer-1-1">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title A</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li class="-active">
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title B</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title C</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title D</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="chi-drawer -left" id="drawer-1-2">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title E</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title F</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title G</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title H</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="chi-drawer -left" id="drawer-1-3">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title I</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title J</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title K</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title L</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="chi-drawer -left" id="drawer-1-4">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title M</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title N</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title O</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title P</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      <script>chi.sidenav(document.getElementById('sidenav-1'));</script>
-
-- example = 2
-h3(id=`example-${example}`) Enterprise Global Navigation
-.example.-mb--3
-  .-d--flex(style='overflow: hidden;')
-    aside.chi-sidenav.-inverse.-global-nav.-flex--shrink0(id=`sidenav-global-nav-${example}`)
-      .chi-sidenav__content
-        nav
-          ul.chi-sidenav__list
-            each val in menuItems
               li(class=`${val === active.menuItem ? '-active' : ''}`)
-                a(href=`#drawer-global-nav-${example}-${val}`)
+                a(href=`#drawer-${example}-${val}`)
                   i.chi-icon.icon-atom
                   span=val === active.menuItem ? 'Active Item' : 'Menu Item'
       .chi-sidenav__drawers
         each val1 in menuItems
-          .chi-drawer.-animated.-left(id=`drawer-global-nav-${example}-${val1}`)
+          .chi-drawer.-animated.-left(id=`drawer-${example}-${val1}`)
             .chi-drawer__header
               .chi-drawer__title= 'Menu item ' + val1
               button(class='chi-btn -icon -close', aria-label='Close')
@@ -489,31 +55,31 @@ h3(id=`example-${example}`) Enterprise Global Navigation
       each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   .example-tabs.-pl--2
-    ul#chi-tabs-three-level.chi-tabs
+    ul#examples-default.chi-tabs
       li.-disabled
-        a(href='#chi-tabs-three-level-web') Web Component
+        a(href='#example-base-web') Web Component
       li.-active
-        a(href='#chi-tabs-three-level-js') HTML Blueprint
-  #chi-tabs-three-level-web.chi-tabs-panel.-active
-  #chi-tabs-three-level-html.chi-tabs-panel.-active
+        a(href='#example-base-html') HTML Blueprint
+  .chi-tabs-panel#example-base-web
+  .chi-tabs-panel.-active#example-base-html
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
-      <aside class="chi-sidenav -inverse -global-nav" id="sidenav-global-nav-1">
+      <aside class="chi-sidenav" id="sidenav-0">
         <div class="chi-sidenav__content">
           <nav>
             <ul class="chi-sidenav__list">
               <li class="-active">
-                <a href="#drawer-global-nav-1-1">
+                <a href="#drawer-0-1">
                   <i class="chi-icon icon-atom"></i>
                   <span>Active Item</span>
                 </a>
               </li>
               <li>
-                <a href="#drawer-global-nav-1-2">
+                <a href="#drawer-0-2">
                   <i class="chi-icon icon-atom"></i>
                   <span>Menu Item</span>
                 </a>
@@ -522,7 +88,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
           </nav>
         </div>
         <div class="chi-sidenav__drawers">
-          <div class="chi-drawer -animated -left" id="drawer-global-nav-1-1">
+          <div class="chi-drawer -animated -left" id="drawer-0-1">
             <div class="chi-drawer__header">
               <div class="chi-drawer__title">Menu item 1</div>
               <button class="chi-btn -icon -close" aria-label="Close">
@@ -598,7 +164,7 @@ h3(id=`example-${example}`) Enterprise Global Navigation
               </ul>
             </div>
           </div>
-          <div class="chi-drawer -animated -left" id="drawer-global-nav-1-2">
+          <div class="chi-drawer -animated -left" id="drawer-0-2">
             <div class="chi-drawer__header">
               <div class="chi-drawer__title">Menu item 2</div>
               <button class="chi-btn -icon -close" aria-label="Close">
@@ -678,10 +244,244 @@ h3(id=`example-${example}`) Enterprise Global Navigation
       </aside>
 
       <script>
-        chi.sidenav(document.getElementById('sidenav-global-nav-1'), {
-          animated: false
-        });
+        chi.sidenav(document.getElementById('sidenav-0'));
       </script>
+
+h3 Inverse
+- example=1
+.example.-mb--3
+  .-d--flex(style='overflow: hidden;')
+    aside.chi-sidenav.-inverse.-flex--shrink0#example-base-inverse
+      .chi-sidenav__content
+        nav
+          ul.chi-sidenav__list
+            each val in menuItems
+              li(class=`${val === active.menuItem ? '-active' : ''}`)
+                a(href=`#drawer-${example}-${val}`)
+                  i.chi-icon.icon-atom
+                  span=val === active.menuItem ? 'Active Item' : 'Menu Item'
+      .chi-sidenav__drawers
+        each val1 in menuItems
+          .chi-drawer.-animated.-left(id=`drawer-${example}-${val1}`)
+            .chi-drawer__header
+              .chi-drawer__title= 'Menu item ' + val1
+              button(class='chi-btn -icon -close', aria-label='Close')
+                .chi-btn__content
+                  i.chi-icon.icon-x
+            .chi-drawer__content
+              ul.chi-sidenav__drawer-list
+                each val2, index in drawerMenuItems
+                  if val2 === 'A' || val2 === 'B'
+                    li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                      a(href=`#drawer-item-list-${val1}-${val2}`)
+                        .chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                      .chi-sidenav__drawer-item-list(id=`drawer-item-list-${val1}-${val2}`)
+                        ul.chi-tabs.-vertical.-sm
+                          li
+                            a(class=`chi-sidenav__drawer-item-tab ${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
+                          li
+                            a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
+                          li
+                            a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab C
+                  else
+                    li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                      a(href=`#exampleHashTarget`)
+                        span.chi-sidenav__title
+                          =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                          i.chi-icon.icon-external-link.-xs
+    .-flex--grow1.-p--3.-pb--4
+      each val2 in [1,2,3,4]
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-inverse
+      li.-disabled
+        a(href='#example-inverse-web') Web Component
+      li.-active
+        a(href='#example-inverse-html') HTML Blueprint
+  .chi-tabs-panel#example-inverse-web
+  .chi-tabs-panel.-active#example-inverse-html
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
+    :code(lang="html")
+      <aside class="chi-sidenav -inverse" id="sidenav-1">
+        <div class="chi-sidenav__content">
+          <nav>
+            <ul class="chi-sidenav__list">
+              <li class="-active">
+                <a href="#drawer-1-1">
+                  <i class="chi-icon icon-atom"></i>
+                  <span>Active Item</span>
+                </a>
+              </li>
+              <li>
+                <a href="#drawer-1-2">
+                  <i class="chi-icon icon-atom"></i>
+                  <span>Menu Item</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="chi-sidenav__drawers">
+          <div class="chi-drawer -animated -left" id="drawer-1-1">
+            <div class="chi-drawer__header">
+              <div class="chi-drawer__title">Menu item 1</div>
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="chi-drawer__content">
+              <ul class="chi-sidenav__drawer-list">
+                <li>
+                  <a href="#drawer-item-list-1-A">
+                    <div class="chi-sidenav__title">Title A</div>
+                  </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-1-A">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="-active -expanded">
+                  <a href="#drawer-item-list-1-B">
+                    <div class="chi-sidenav__title">Title B</div>
+                  </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-1-B">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab -active" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title C
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title D
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="chi-drawer -animated -left" id="drawer-1-2">
+            <div class="chi-drawer__header">
+              <div class="chi-drawer__title">Menu item 2</div>
+              <button class="chi-btn -icon -close" aria-label="Close">
+                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
+              </button>
+            </div>
+            <div class="chi-drawer__content">
+              <ul class="chi-sidenav__drawer-list">
+                <li>
+                  <a href="#drawer-item-list-2-A">
+                    <div class="chi-sidenav__title">Title E</div>
+                  </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-2-A">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a href="#drawer-item-list-2-B">
+                    <div class="chi-sidenav__title">Title F</div>
+                  </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-2-B">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title G
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title H
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <script>chi.sidenav(document.getElementById('sidenav-1'));</script>
 
 h2 Active Usage
 p.-text
@@ -710,21 +510,33 @@ h3 -sm
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
       .chi-sidenav__drawers
         each val1 in menuItems
-          .chi-drawer.-left(id=`drawer-${example}-${val1}`)
+          .chi-drawer.-animated.-left(id=`drawer-${example}-${val1}`)
             .chi-drawer__header
+              .chi-drawer__title= 'Menu item ' + val1
               button(class='chi-btn -icon -close', aria-label='Close')
                 .chi-btn__content
                   i.chi-icon.icon-x
             .chi-drawer__content
               ul.chi-sidenav__drawer-list
                 each val2, index in drawerMenuItems
-                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#exampleHashTarget`)
-                      if index % 4 < 2
+                  if val2 === 'A' || val2 === 'B'
+                    li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                      a(href=`#drawer-item-list-${val1}-${val2}`)
                         .chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.chi-sidenav__description Description for title a in a drawer inside a menu.
-                      else
-                        span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                      .chi-sidenav__drawer-item-list(id=`drawer-item-list-${val1}-${val2}`)
+                        ul.chi-tabs.-vertical.-sm
+                          li
+                            a(class=`chi-sidenav__drawer-item-tab ${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
+                          li
+                            a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
+                          li
+                            a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab C
+                  else
+                    li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                      a(href=`#exampleHashTarget`)
+                        span.chi-sidenav__title
+                          =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                          i.chi-icon.icon-external-link.-xs
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -758,24 +570,13 @@ h3 -sm
                   <span>Menu Item</span>
                 </a>
               </li>
-              <li>
-                <a href="#drawer-0-3">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-4">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Menu Item</span>
-                </a>
-              </li>
             </ul>
           </nav>
         </div>
         <div class="chi-sidenav__drawers">
-          <div class="chi-drawer -left -active" id="drawer-0-1">
+          <div class="chi-drawer -animated -left" id="drawer-0-1">
             <div class="chi-drawer__header">
+              <div class="chi-drawer__title">Menu item 1</div>
               <button class="chi-btn -icon -close" aria-label="Close">
                 <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
               </button>
@@ -783,32 +584,75 @@ h3 -sm
             <div class="chi-drawer__content">
               <ul class="chi-sidenav__drawer-list">
                 <li>
-                  <a href="#">
+                  <a href="#drawer-item-list-1-A">
                     <div class="chi-sidenav__title">Title A</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-1-A">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
-                <li class="-active">
-                  <a href="#">
+                <li class="-active -expanded">
+                  <a href="#drawer-item-list-1-B">
                     <div class="chi-sidenav__title">Title B</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-1-B">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab -active" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title C
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title C</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title D</span>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title D
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="chi-drawer -left" id="drawer-0-2">
+          <div class="chi-drawer -animated -left" id="drawer-0-2">
             <div class="chi-drawer__header">
+              <div class="chi-drawer__title">Menu item 2</div>
               <button class="chi-btn -icon -close" aria-label="Close">
                 <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
               </button>
@@ -816,91 +660,67 @@ h3 -sm
             <div class="chi-drawer__content">
               <ul class="chi-sidenav__drawer-list">
                 <li>
-                  <a href="#">
+                  <a href="#drawer-item-list-2-A">
                     <div class="chi-sidenav__title">Title E</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-2-A">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="#drawer-item-list-2-B">
                     <div class="chi-sidenav__title">Title F</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-2-B">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title G
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title G</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title H</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="chi-drawer -left" id="drawer-0-3">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title I</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title J</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title K</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title L</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="chi-drawer -left" id="drawer-0-4">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title M</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title N</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title O</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title P</span>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title H
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
                   </a>
                 </li>
               </ul>
@@ -927,21 +747,33 @@ h3 -md
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
       .chi-sidenav__drawers
         each val1 in menuItems
-          .chi-drawer.-left(id=`drawer-${example}-${val1}`)
+          .chi-drawer.-animated.-left(id=`drawer-${example}-${val1}`)
             .chi-drawer__header
+              .chi-drawer__title= 'Menu item ' + val1
               button(class='chi-btn -icon -close', aria-label='Close')
                 .chi-btn__content
                   i.chi-icon.icon-x
             .chi-drawer__content
               ul.chi-sidenav__drawer-list
                 each val2, index in drawerMenuItems
-                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#exampleHashTarget`)
-                      if index % 4 < 2
+                  if val2 === 'A' || val2 === 'B'
+                    li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                      a(href=`#drawer-item-list-${val1}-${val2}`)
                         .chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.chi-sidenav__description Description for title a in a drawer inside a menu.
-                      else
-                        span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                      .chi-sidenav__drawer-item-list(id=`drawer-item-list-${val1}-${val2}`)
+                        ul.chi-tabs.-vertical.-sm
+                          li
+                            a(class=`chi-sidenav__drawer-item-tab ${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
+                          li
+                            a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
+                          li
+                            a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab C
+                  else
+                    li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                      a(href=`#exampleHashTarget`)
+                        span.chi-sidenav__title
+                          =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                          i.chi-icon.icon-external-link.-xs
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -975,24 +807,13 @@ h3 -md
                   <span>Menu Item</span>
                 </a>
               </li>
-              <li>
-                <a href="#drawer-0-3">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-4">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Menu Item</span>
-                </a>
-              </li>
             </ul>
           </nav>
         </div>
         <div class="chi-sidenav__drawers">
-          <div class="chi-drawer -left -active" id="drawer-0-1">
+          <div class="chi-drawer -animated -left" id="drawer-0-1">
             <div class="chi-drawer__header">
+              <div class="chi-drawer__title">Menu item 1</div>
               <button class="chi-btn -icon -close" aria-label="Close">
                 <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
               </button>
@@ -1000,32 +821,75 @@ h3 -md
             <div class="chi-drawer__content">
               <ul class="chi-sidenav__drawer-list">
                 <li>
-                  <a href="#">
+                  <a href="#drawer-item-list-1-A">
                     <div class="chi-sidenav__title">Title A</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-1-A">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
-                <li class="-active">
-                  <a href="#">
+                <li class="-active -expanded">
+                  <a href="#drawer-item-list-1-B">
                     <div class="chi-sidenav__title">Title B</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-1-B">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab -active" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title C
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title C</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title D</span>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title D
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="chi-drawer -left" id="drawer-0-2">
+          <div class="chi-drawer -animated -left" id="drawer-0-2">
             <div class="chi-drawer__header">
+              <div class="chi-drawer__title">Menu item 2</div>
               <button class="chi-btn -icon -close" aria-label="Close">
                 <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
               </button>
@@ -1033,91 +897,67 @@ h3 -md
             <div class="chi-drawer__content">
               <ul class="chi-sidenav__drawer-list">
                 <li>
-                  <a href="#">
+                  <a href="#drawer-item-list-2-A">
                     <div class="chi-sidenav__title">Title E</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-2-A">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="#drawer-item-list-2-B">
                     <div class="chi-sidenav__title">Title F</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-2-B">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title G
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title G</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title H</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="chi-drawer -left" id="drawer-0-3">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title I</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title J</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title K</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title L</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="chi-drawer -left" id="drawer-0-4">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title M</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title N</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title O</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title P</span>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title H
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
                   </a>
                 </li>
               </ul>
@@ -1144,21 +984,33 @@ h3 -lg
                   span=val===active.menuItem ? 'Active Item' : 'Menu Item'
       .chi-sidenav__drawers
         each val1 in menuItems
-          .chi-drawer.-left(id=`drawer-${example}-${val1}`)
+          .chi-drawer.-animated.-left(id=`drawer-${example}-${val1}`)
             .chi-drawer__header
+              .chi-drawer__title= 'Menu item ' + val1
               button(class='chi-btn -icon -close', aria-label='Close')
                 .chi-btn__content
                   i.chi-icon.icon-x
             .chi-drawer__content
               ul.chi-sidenav__drawer-list
                 each val2, index in drawerMenuItems
-                  li(class=`${val1===active.menuItem && val2===active.drawerMenuItem ? '-active':''}`)
-                    a(href=`#exampleHashTarget`)
-                      if index % 4 < 2
+                  if val2 === 'A' || val2 === 'B'
+                    li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                      a(href=`#drawer-item-list-${val1}-${val2}`)
                         .chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                        p.chi-sidenav__description Description for title a in a drawer inside a menu.
-                      else
-                        span.chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                      .chi-sidenav__drawer-item-list(id=`drawer-item-list-${val1}-${val2}`)
+                        ul.chi-tabs.-vertical.-sm
+                          li
+                            a(class=`chi-sidenav__drawer-item-tab ${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
+                          li
+                            a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
+                          li
+                            a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab C
+                  else
+                    li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                      a(href=`#exampleHashTarget`)
+                        span.chi-sidenav__title
+                          =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                          i.chi-icon.icon-external-link.-xs
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1191,24 +1043,13 @@ h3 -lg
                   <span>Menu Item</span>
                 </a>
               </li>
-              <li>
-                <a href="#drawer-0-3">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Menu Item</span>
-                </a>
-              </li>
-              <li>
-                <a href="#drawer-0-4">
-                  <i class="chi-icon icon-atom"></i>
-                  <span>Menu Item</span>
-                </a>
-              </li>
             </ul>
           </nav>
         </div>
         <div class="chi-sidenav__drawers">
-          <div class="chi-drawer -left -active" id="drawer-0-1">
+          <div class="chi-drawer -animated -left" id="drawer-0-1">
             <div class="chi-drawer__header">
+              <div class="chi-drawer__title">Menu item 1</div>
               <button class="chi-btn -icon -close" aria-label="Close">
                 <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
               </button>
@@ -1216,32 +1057,75 @@ h3 -lg
             <div class="chi-drawer__content">
               <ul class="chi-sidenav__drawer-list">
                 <li>
-                  <a href="#">
+                  <a href="#drawer-item-list-1-A">
                     <div class="chi-sidenav__title">Title A</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-1-A">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
-                <li class="-active">
-                  <a href="#">
+                <li class="-active -expanded">
+                  <a href="#drawer-item-list-1-B">
                     <div class="chi-sidenav__title">Title B</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-1-B">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab -active" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title C
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title C</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title D</span>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title D
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="chi-drawer -left" id="drawer-0-2">
+          <div class="chi-drawer -animated -left" id="drawer-0-2">
             <div class="chi-drawer__header">
+              <div class="chi-drawer__title">Menu item 2</div>
               <button class="chi-btn -icon -close" aria-label="Close">
                 <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
               </button>
@@ -1249,91 +1133,67 @@ h3 -lg
             <div class="chi-drawer__content">
               <ul class="chi-sidenav__drawer-list">
                 <li>
-                  <a href="#">
+                  <a href="#drawer-item-list-2-A">
                     <div class="chi-sidenav__title">Title E</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
                   </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-2-A">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="#drawer-item-list-2-B">
                     <div class="chi-sidenav__title">Title F</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
+                  </a>
+                  <div class="chi-sidenav__drawer-item-list" id="drawer-item-list-2-B">
+                    <ul class="chi-tabs -vertical -sm">
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab A
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab B
+                        </a>
+                      </li>
+                      <li>
+                        <a class="chi-sidenav__drawer-item-tab" href="#exampleHashTarget">
+                          Sub tab C
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title G
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title G</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title H</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="chi-drawer -left" id="drawer-0-3">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title I</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title J</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title K</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title L</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="chi-drawer -left" id="drawer-0-4">
-            <div class="chi-drawer__header">
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content"><i class="chi-icon icon-x"></i></div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <ul class="chi-sidenav__drawer-list">
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title M</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="chi-sidenav__title">Title N</div>
-                    <p class="chi-sidenav__description">Description for title a in a drawer inside a menu.</p>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title O</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="chi-sidenav__title">Title P</span>
+                  <a href="#exampleHashTarget">
+                    <span class="chi-sidenav__title">
+                      Title H
+                      <i class="chi-icon icon-external-link -xs"></i>
+                    </span>
                   </a>
                 </li>
               </ul>
@@ -1364,14 +1224,12 @@ script.
     function() {
       chi.sidenav(document.getElementById('example-base'));
       chi.sidenav(document.getElementById('example-base-inverse'));
-      chi.sidenav(document.getElementById('sidenav-global-nav-2'));
       chi.sidenav(document.getElementById('example-sizes-sm'));
       chi.sidenav(document.getElementById('example-sizes-md'));
       chi.sidenav(document.getElementById('example-sizes-lg'));
 
       chi.tab(document.getElementById('examples-default'));
       chi.tab(document.getElementById('examples-inverse'));
-      chi.tab(document.getElementById('chi-tabs-three-level'));
       chi.tab(document.getElementById('examples-sizes-sm'));
       chi.tab(document.getElementById('examples-sizes-md'));
       chi.tab(document.getElementById('examples-sizes-lg'));
