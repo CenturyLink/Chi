@@ -8,21 +8,21 @@ h3 Base
 .example.-mb--3(style='position:static')
   .-p--3
     .-d--flex.-justify-content--start.-align-items--start
-      button#modal-trigger-1.chi-btn.-primary.chi-modal__trigger(data-target='#modal-1')
+      button#modal-trigger-1.chi-button.-primary.chi-modal__trigger(data-target='#modal-1')
         | Click me to open the modal
   .chi-backdrop.-closed
     .chi-backdrop__wrapper
       section.chi-modal#modal-1(role="dialog", aria-label="Modal description", aria-modal="true")
         header.chi-modal__header
           h2.chi-modal__title Modal Title
-          button(class='chi-btn -icon -close', data-dismiss='modal', aria-label='Close')
-            .chi-btn__content
+          button(class='chi-button -icon -close', data-dismiss='modal', aria-label='Close')
+            .chi-button__content
               i.chi-icon.icon-x
         .chi-modal__content
           p.-text.-m--0 Modal content
         footer.chi-modal__footer
-          button.chi-btn(data-dismiss='modal') Cancel
-          button.chi-btn.-primary.-ml--2 Save
+          button.chi-button(data-dismiss='modal') Cancel
+          button.chi-button.-primary.-ml--2 Save
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
       li.-disabled
@@ -37,7 +37,7 @@ h3 Base
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
-      <button id="modal-trigger-1" class="chi-btn chi-modal__trigger" data-target="#modal-1">
+      <button id="modal-trigger-1" class="chi-button chi-modal__trigger" data-target="#modal-1">
         Launch demo modal
       </button>
 
@@ -46,8 +46,8 @@ h3 Base
           <section id="modal-1" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-btn -icon -close" data-dismiss="modal" aria-label="Close">
-                <div class="chi-btn__content">
+              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
+                <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
               </button>
@@ -56,8 +56,8 @@ h3 Base
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-btn" data-dismiss="modal">Cancel</button>
-              <button class="chi-btn -primary -ml--2">Save</button>
+              <button class="chi-button" data-dismiss="modal">Cancel</button>
+              <button class="chi-button -primary -ml--2">Save</button>
             </footer>
           </section>
         </div>
@@ -73,14 +73,14 @@ p.-text Modals can also be placed in the middle of the page by applying the clas
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
         header.chi-modal__header
           h2.chi-modal__title Modal Title
-          button(class='chi-btn -icon -close', aria-label='Close')
-            .chi-btn__content
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
               i.chi-icon.icon-x
         .chi-modal__content
           p.-text.-m--0 Modal content
         footer.chi-modal__footer
-          button.chi-btn Cancel
-          button.chi-btn.-primary.-ml--2 Save
+          button.chi-button Cancel
+          button.chi-button.-primary.-ml--2 Save
   .example-tabs.-pl--2
     ul.chi-tabs#example-center-align
       li.-disabled
@@ -95,8 +95,8 @@ p.-text Modals can also be placed in the middle of the page by applying the clas
           <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content">
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
               </button>
@@ -105,8 +105,8 @@ p.-text Modals can also be placed in the middle of the page by applying the clas
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-btn">Cancel</button>
-              <button class="chi-btn -primary -ml--2">Save</button>
+              <button class="chi-button">Cancel</button>
+              <button class="chi-button -primary -ml--2">Save</button>
             </footer>
           </section>
         </div>
@@ -126,8 +126,8 @@ p.-text
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
         header.chi-modal__header
           h2.chi-modal__title Modal Title
-          button(class='chi-btn -icon -close', aria-label='Close')
-            .chi-btn__content
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
               i.chi-icon.icon-x
         .chi-modal__content.-mh--400
           p.-text.-mt--0
@@ -145,8 +145,8 @@ p.-text
             | Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
             | cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
         footer.chi-modal__footer
-          button.chi-btn Cancel
-          button.chi-btn.-primary.-ml--2 Save
+          button.chi-button Cancel
+          button.chi-button.-primary.-ml--2 Save
   .example-tabs.-pl--2
     ul.chi-tabs#example-scrollable
       li.-disabled
@@ -161,8 +161,8 @@ p.-text
           <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content">
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
               </button>
@@ -188,8 +188,8 @@ p.-text
               </p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-btn">Cancel</button>
-              <button class="chi-btn -primary -ml--2">Save</button>
+              <button class="chi-button">Cancel</button>
+              <button class="chi-button -primary -ml--2">Save</button>
             </footer>
           </section>
         </div>
@@ -205,8 +205,8 @@ p.-text
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
         header.chi-modal__header
           h2.chi-modal__title Modal Title
-          button(class='chi-btn -icon -close', aria-label='Close')
-            .chi-btn__content
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
               i.chi-icon.icon-x
         .chi-modal__content
           p.-text.-mt--0
@@ -224,8 +224,8 @@ p.-text
             | Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
             | cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
         footer.chi-modal__footer
-          button.chi-btn Cancel
-          button.chi-btn.-primary.-ml--2 Save
+          button.chi-button Cancel
+          button.chi-button.-primary.-ml--2 Save
   .example-tabs.-pl--2
     ul.chi-tabs#example-scrollable-long
       li.-disabled
@@ -240,8 +240,8 @@ p.-text
           <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content">
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
               </button>
@@ -267,8 +267,8 @@ p.-text
               </p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-btn">Cancel</button>
-              <button class="chi-btn -primary -ml--2">Save</button>
+              <button class="chi-button">Cancel</button>
+              <button class="chi-button -primary -ml--2">Save</button>
             </footer>
           </section>
         </div>
@@ -282,14 +282,14 @@ h3 With Subtitle
         header.chi-modal__header
           h2.chi-modal__title Modal Title
           h3.chi-modal__subtitle Modal subtitle
-          button(class='chi-btn -icon -close', aria-label='Close')
-            .chi-btn__content
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
               i.chi-icon.icon-x
         .chi-modal__content
           p.-text.-m--0 Modal content
         footer.chi-modal__footer
-          button.chi-btn Cancel
-          button.chi-btn.-primary.-ml--2 Save
+          button.chi-button Cancel
+          button.chi-button.-primary.-ml--2 Save
   .example-tabs.-pl--2
     ul.chi-tabs#example-subtitle
       li.-disabled
@@ -305,8 +305,8 @@ h3 With Subtitle
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
               <h3 class="chi-modal__subtitle">Modal subtitle</h3>
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content">
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
               </button>
@@ -315,8 +315,8 @@ h3 With Subtitle
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-btn">Cancel</button>
-              <button class="chi-btn -primary -ml--2">Save</button>
+              <button class="chi-button">Cancel</button>
+              <button class="chi-button -primary -ml--2">Save</button>
             </footer>
           </section>
         </div>
@@ -331,14 +331,14 @@ p.-text
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
         header.chi-modal__header
           h2.chi-modal__title Modal Title
-          button(class='chi-btn -icon -close', aria-label='Close')
-            .chi-btn__content
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
               i.chi-icon.icon-x
         .chi-modal__content
           p.-text.-m--0 Modal content
         footer.chi-modal__footer
-          button.chi-btn Cancel
-          button.chi-btn.-primary.-ml--2 Save
+          button.chi-button Cancel
+          button.chi-button.-primary.-ml--2 Save
   .example-tabs.-pl--2
     ul.chi-tabs#example-backdrop-inverse
       li.-disabled
@@ -353,8 +353,8 @@ p.-text
           <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content">
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
               </button>
@@ -363,8 +363,8 @@ p.-text
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-btn">Cancel</button>
-              <button class="chi-btn -primary -ml--2">Save</button>
+              <button class="chi-button">Cancel</button>
+              <button class="chi-button -primary -ml--2">Save</button>
             </footer>
           </section>
         </div>
@@ -380,14 +380,14 @@ p.-text
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
         header.chi-modal__header.-no-border
           h2.chi-modal__title Modal Title
-          button(class='chi-btn -icon -close', aria-label='Close')
-            .chi-btn__content
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
               i.chi-icon.icon-x
         .chi-modal__content
           p.-text.-m--0 Modal content
         footer.chi-modal__footer.-no-border
-          button.chi-btn Cancel
-          button.chi-btn.-primary.-ml--2 Save
+          button.chi-button Cancel
+          button.chi-button.-primary.-ml--2 Save
   .example-tabs.-pl--2
     ul.chi-tabs#example-no-border
       li.-disabled
@@ -402,8 +402,8 @@ p.-text
           <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header -no-border">
               <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content">
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
               </button>
@@ -412,8 +412,8 @@ p.-text
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer -no-border">
-              <button class="chi-btn">Cancel</button>
-              <button class="chi-btn -primary -ml--2">Save</button>
+              <button class="chi-button">Cancel</button>
+              <button class="chi-button -primary -ml--2">Save</button>
             </footer>
           </section>
         </div>
@@ -431,13 +431,13 @@ p.-text
         header.chi-modal__header
           h2.chi-modal__title.-centered Modal Title
           button.chi-modal__back(aria-label='Back')
-          button(class='chi-btn -icon -close', aria-label='Close')
-            .chi-btn__content
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
               i.chi-icon.icon-x
         .chi-modal__content
           p.-text.-m--0 Modal content
         footer.chi-modal__footer
-          button.chi-btn.-primary.-ml--2 Next
+          button.chi-button.-primary.-ml--2 Next
   .example-tabs.-pl--2
     ul.chi-tabs#example-multistep
       li.-disabled
@@ -453,8 +453,8 @@ p.-text
             <header class="chi-modal__header">
               <h2 class="chi-modal__title -centered">Modal Title</h2>
               <button class="chi-modal__back" aria-label="Back"></button>
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content">
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
               </button>
@@ -463,7 +463,7 @@ p.-text
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-btn -primary -ml--2">Next</button>
+              <button class="chi-button -primary -ml--2">Next</button>
             </footer>
           </section>
         </div>
@@ -475,8 +475,8 @@ p.-text Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code>
   .chi-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
     .chi-backdrop__wrapper
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
-        button(class='chi-btn -icon -close', aria-label='Close')
-          .chi-btn__content
+        button(class='chi-button -icon -close', aria-label='Close')
+          .chi-button__content
             i.chi-icon.icon-x
         .chi-modal__content.-text--center.-p--6
           h2.-text--h3.-m--0.-text--bolder Modal Title
@@ -484,7 +484,7 @@ p.-text Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code>
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis
             | mollis nulla, eget ornare tellus. Lorem ipsum dolor sit amet,
             | consectetur adipiscing elit. Donec laoreet rutrum eros laoreet.
-          button.chi-btn.-primary.-lg.-mt--1 Action
+          button.chi-button.-primary.-lg.-mt--1 Action
   .example-tabs.-pl--2
     ul.chi-tabs#example-simple
       li.-disabled
@@ -497,15 +497,15 @@ p.-text Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code>
       <div class="chi-backdrop">
         <div class="chi-backdrop__wrapper">
           <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-            <button class="chi-btn -icon -close" aria-label="Close">
-              <div class="chi-btn__content">
+            <button class="chi-button -icon -close" aria-label="Close">
+              <div class="chi-button__content">
                 <i class="chi-icon icon-x"></i>
               </div>
             </button>
             <div class="chi-modal__content -text--center -p--6">
               <h2 class="-text--h3 -text--bolder -m--0">Modal Title</h2>
               <p class="-text -py--1 -px--3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis mollis nulla, eget ornare tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet rutrum eros laoreet.</p>
-              <button class="chi-btn -primary -lg -mt--1">Action</button>
+              <button class="chi-button -primary -lg -mt--1">Action</button>
             </div>
           </section>
         </div>
@@ -518,13 +518,13 @@ h3 Portal
       section.chi-modal.-portal(role="dialog", aria-label="Modal description", aria-modal="true")
         header.chi-modal__header
           h2.chi-modal__title Modal Title
-          button(class='chi-btn -icon -close', aria-label='Close')
-            .chi-btn__content
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
               i.chi-icon.icon-x
         .chi-modal__content
           p.-text.-m--0 Modal content
         footer.chi-modal__footer
-          button.chi-btn.-primary.-lg Save
+          button.chi-button.-primary.-lg Save
   .example-tabs.-pl--2
     ul.chi-tabs#example-portal
       li.-disabled
@@ -539,8 +539,8 @@ h3 Portal
           <section class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-btn -icon -close" aria-label="Close">
-                <div class="chi-btn__content">
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
               </button>
@@ -549,7 +549,7 @@ h3 Portal
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-btn -primary -lg">Save</button>
+              <button class="chi-button -primary -lg">Save</button>
             </footer>
           </section>
         </div>

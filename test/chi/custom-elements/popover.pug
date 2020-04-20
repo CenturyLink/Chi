@@ -24,7 +24,7 @@ each side in moreSides
   div(class=`test-more-${side} -position--relative`, data-cy=`test-more-${side}`)
     span.-text--h2=`Popper side ${side}`
     .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
-      button(id=side).chi-btn Popover
+      button(id=side).chi-button Popover
     chi-popover(position=side, title="Popover Title", variant="text", arrow, reference=`#${side}`, active)
       | Popover content.
 

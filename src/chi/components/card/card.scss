@@ -52,8 +52,8 @@
         justify-content: center;
       }
 
-      .chi-btn {
-        + .chi-btn {
+      .chi-button {
+        + .chi-button {
           margin-left: 0.5rem;
         }
       }
@@ -114,8 +114,8 @@
     padding: 1rem;
     position: relative;
 
-    .chi-btn {
-      + .chi-btn {
+    .chi-button {
+      + .chi-button {
         margin-left: 0.5rem;
       }
     }

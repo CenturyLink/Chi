@@ -10,7 +10,7 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-dropdown
-      button.chi-btn.chi-dropdown__trigger#dropdown-1 Dropdown, click me
+      button.chi-button.chi-dropdown__trigger#dropdown-1 Dropdown, click me
       .chi-dropdown__menu
         a.chi-dropdown__menu-item(href='#') Element 1
         a.chi-dropdown__menu-item(href='#') Element 2
@@ -31,7 +31,7 @@ p.-text
         | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-dropdown">
-        <button id="dropdown-1" class="chi-btn chi-dropdown__trigger">Dropdown component</button>
+        <button id="dropdown-1" class="chi-button chi-dropdown__trigger">Dropdown component</button>
         <div class="chi-dropdown__menu">
           <a class="chi-dropdown__menu-item" href="#">Element 1</a>
           <a class="chi-dropdown__menu-item" href="#">Element 2</a>
@@ -46,7 +46,7 @@ p.-text
   | Dropdown referenced by a <code>data-target</code> attribute in the activator.
 .example.-mb--3
   .-p--3
-    button.chi-btn.chi-dropdown__trigger(id="dropdown-2" data-target="#dropdown-2-menu") Dropdown component
+    button.chi-button.chi-dropdown__trigger(id="dropdown-2" data-target="#dropdown-2-menu") Dropdown component
     p.-text There is no need for proximity between elements.
     #dropdown-2-menu.chi-dropdown__menu
       a.chi-dropdown__menu-item(href='#') Element 1
@@ -67,7 +67,7 @@ p.-text
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
-      <button id="dropdown-2" class="chi-btn chi-dropdown__trigger" data-target="#dropdown-2-menu">Dropdown component</button>
+      <button id="dropdown-2" class="chi-button chi-dropdown__trigger" data-target="#dropdown-2-menu">Dropdown component</button>
       <p class="-text">There is no need for proximity between elements.</p>
       <div class="chi-dropdown__menu" id="dropdown-2-menu">
         <a class="chi-dropdown__menu-item" href="#">Element 1</a>
@@ -85,7 +85,7 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-dropdown.chi-dropdown__hover
-      button.chi-btn.chi-dropdown__trigger Dropdown component
+      button.chi-button.chi-dropdown__trigger Dropdown component
       .chi-dropdown__menu
         a.chi-dropdown__menu-item(href='#') Element 1
         a.chi-dropdown__menu-item(href='#') Element 2
@@ -100,7 +100,7 @@ p.-text
   .chi-tabs-panel.-active#html-hover
     :code(lang="html")
       <div class="chi-dropdown chi-dropdown__hover">
-        <button class="chi-btn chi-dropdown__trigger">Dropdown component</button>
+        <button class="chi-button chi-dropdown__trigger">Dropdown component</button>
         <div class="chi-dropdown__menu">
           <a class="chi-dropdown__menu-item" href="#">Element 1</a>
           <a class="chi-dropdown__menu-item" href="#">Element 2</a>
@@ -114,7 +114,7 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-dropdown
-      button#dropdown-animate.chi-btn.chi-dropdown__trigger.-animate Animated dropdown trigger
+      button#dropdown-animate.chi-button.chi-dropdown__trigger.-animate Animated dropdown trigger
       .chi-dropdown__menu
         a.chi-dropdown__menu-item(href='#') Element 1
         a.chi-dropdown__menu-item(href='#') Element 2
@@ -134,7 +134,7 @@ p.-text
         | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-dropdown">
-        <button id="dropdown-animate" class="chi-btn chi-dropdown__trigger -animate">Animated dropdown trigger</button>
+        <button id="dropdown-animate" class="chi-button chi-dropdown__trigger -animate">Animated dropdown trigger</button>
         <div class="chi-dropdown__menu">
           <a class="chi-dropdown__menu-item" href="#">Element 1</a>
           <a class="chi-dropdown__menu-item" href="#">Element 2</a>
@@ -155,25 +155,25 @@ p.-text
 .example.-mb--3
   .-p--3.-d--flex.-flex--wrap
     .chi-dropdown.-mr--3.-mb--2.-mb-md--0
-      button#dropdown-3.chi-btn.chi-dropdown__trigger(data-position="bottom") Drop-down
+      button#dropdown-3.chi-button.chi-dropdown__trigger(data-position="bottom") Drop-down
       .chi-dropdown__menu
         a.chi-dropdown__menu-item(href='#') Element 1
         a.chi-dropdown__menu-item(href='#') Element 2
         a.chi-dropdown__menu-item(href='#') Element 3
     .chi-dropdown.-mr--3.-mb--2.-mb-md--0
-      button#droptop.chi-btn.chi-dropdown__trigger(data-position="top") Drop-top
+      button#droptop.chi-button.chi-dropdown__trigger(data-position="top") Drop-top
       .chi-dropdown__menu
         a.chi-dropdown__menu-item(href='#') Element 1
         a.chi-dropdown__menu-item(href='#') Element 2
         a.chi-dropdown__menu-item(href='#') Element 3
     .chi-dropdown.-mr--3.-mb--2.-mb-md--0
-      button#dropleft.chi-btn.chi-dropdown__trigger(data-position="left") Drop-left
+      button#dropleft.chi-button.chi-dropdown__trigger(data-position="left") Drop-left
       .chi-dropdown__menu
         a.chi-dropdown__menu-item(href='#') Element 1
         a.chi-dropdown__menu-item(href='#') Element 2
         a.chi-dropdown__menu-item(href='#') Element 3
     .chi-dropdown.-mr--3.-mb--2.-mb-md--0
-      button#dropright.chi-btn.chi-dropdown__trigger(data-position="right") Drop-right
+      button#dropright.chi-button.chi-dropdown__trigger(data-position="right") Drop-right
       .chi-dropdown__menu
         a.chi-dropdown__menu-item(href='#') Element 1
         a.chi-dropdown__menu-item(href='#') Element 2
@@ -193,7 +193,7 @@ p.-text
         | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <div class="chi-dropdown">
-        <button class="chi-btn chi-dropdown__trigger" id="dropdown-3" data-position="bottom">Drop-down</button>
+        <button class="chi-button chi-dropdown__trigger" id="dropdown-3" data-position="bottom">Drop-down</button>
         <div class="chi-dropdown__menu">
           <a class="chi-dropdown__menu-item" href="#">Element 1</a>
           <a class="chi-dropdown__menu-item" href="#">Element 2</a>
@@ -201,7 +201,7 @@ p.-text
         </div>
       </div>
       <div class="chi-dropdown">
-        <button class="chi-btn chi-dropdown__trigger" id="droptop" data-position="top">Drop-top</button>
+        <button class="chi-button chi-dropdown__trigger" id="droptop" data-position="top">Drop-top</button>
         <div class="chi-dropdown__menu">
           <a class="chi-dropdown__menu-item" href="#">Element 1</a>
           <a class="chi-dropdown__menu-item" href="#">Element 2</a>
@@ -209,7 +209,7 @@ p.-text
         </div>
       </div>
       <div class="chi-dropdown">
-        <button class="chi-btn chi-dropdown__trigger" id="dropleft" data-position="left">Drop-left</button>
+        <button class="chi-button chi-dropdown__trigger" id="dropleft" data-position="left">Drop-left</button>
         <div class="chi-dropdown__menu">
           <a class="chi-dropdown__menu-item" href="#">Element 1</a>
           <a class="chi-dropdown__menu-item" href="#">Element 2</a>
@@ -217,7 +217,7 @@ p.-text
         </div>
       </div>
       <div class="chi-dropdown">
-        <button class="chi-btn chi-dropdown__trigger" id="dropright" data-position="right">Drop-right</button>
+        <button class="chi-button chi-dropdown__trigger" id="dropright" data-position="right">Drop-right</button>
         <div class="chi-dropdown__menu">
           <a class="chi-dropdown__menu-item" href="#">Element 1</a>
           <a class="chi-dropdown__menu-item" href="#">Element 2</a>

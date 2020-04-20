@@ -101,8 +101,8 @@ export class Button {
   render() {
     if (this.type === 'close') {
       return (
-        <button class={`${this.extraClass ? this.extraClass : ''} chi-btn -icon -close ${this.size ? `-${this.size}` : ''}`} onClick={() => this._buttonClicked()} aria-label="Close">
-          <div class="chi-btn__content">
+        <button class={`${this.extraClass ? this.extraClass : ''} chi-button -icon -close ${this.size ? `-${this.size}` : ''}`} onClick={() => this._buttonClicked()} aria-label="Close">
+          <div class="chi-button__content">
             <chi-icon icon={'x'} />
           </div>
         </button>
@@ -110,7 +110,7 @@ export class Button {
     } else {
       return (
         <button
-          class={`chi-btn
+          class={`chi-button
           ${this.variant ? `-${this.variant}` : ''}
           ${this.color ? `-${this.color}` : ''}
           ${this.type ? `-${this.type}` : ''}
@@ -124,7 +124,7 @@ export class Button {
           {...(this.alternativeText && {'aria-label': this.alternativeText})}
         >
           {this.slotBtnContent ?
-            <div class={'chi-btn__content'}>
+            <div class={'chi-button__content'}>
               <slot />
             </div>
             : <slot />

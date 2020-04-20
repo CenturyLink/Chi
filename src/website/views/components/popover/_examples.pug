@@ -204,7 +204,7 @@ p.-text
         | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <!-- Method 1 - Data Target -->
-      <button class="chi-btn" id="popover-1b" data-target="#popover-in-html">Popover</button>
+      <button class="chi-button" id="popover-1b" data-target="#popover-in-html">Popover</button>
       <!-- Put the following code anywere in the DOM, e.g. at the end of the DOM -->
       <section class="chi-popover" id="popover-in-html" aria-modal="true" role="dialog" aria-label="Popover title">
         <header class="chi-popover__header">
@@ -217,7 +217,7 @@ p.-text
       <script>chi.popover(document.getElementById('popover-1b'));</script>
 
       <!-- Method 2 - Data Content -->
-      <button id='popover-1' class="chi-btn" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover content</p></div>'>Popover</button>
+      <button id='popover-1' class="chi-button" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover content</p></div>'>Popover</button>
       <script>chi.popover(document.getElementById('popover-1'));</script>
 
 h3 Positioning
@@ -369,40 +369,40 @@ p.-text
         | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang="html")
       <!-- Top -->
-      <button data-position='top' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is top positioned.</p></div>' class="chi-btn">Top popover</button>
+      <button data-position='top' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is top positioned.</p></div>' class="chi-button">Top popover</button>
 
       <!-- Top Start -->
-      <button data-position='top-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is top start positioned.</p></div>' class="chi-btn">Top start popover</button>
+      <button data-position='top-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is top start positioned.</p></div>' class="chi-button">Top start popover</button>
 
       <!-- Top End -->
-      <button data-position='top-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is top end positioned.</p></div>' class="chi-btn">Top end popover</button>
+      <button data-position='top-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is top end positioned.</p></div>' class="chi-button">Top end popover</button>
 
       <!-- Right -->
-      <button class="chi-btn" data-position='right' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is right positioned.</p></div>'>Right popover</button>
+      <button class="chi-button" data-position='right' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is right positioned.</p></div>'>Right popover</button>
 
       <!-- Right Start -->
-      <button class="chi-btn" data-position='right-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is right start positioned.</p></div>'>Right start popover</button class="chi-btn">
+      <button class="chi-button" data-position='right-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is right start positioned.</p></div>'>Right start popover</button class="chi-button">
 
       <!-- Right End -->
-      <button class="chi-btn" data-position='right-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is right end positioned.</p></div>'>Right end popover</button class="chi-btn">
+      <button class="chi-button" data-position='right-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is right end positioned.</p></div>'>Right end popover</button class="chi-button">
 
       <!-- Bottom -->
-      <button class="chi-btn" data-position='bottom' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is bottom positioned.</p></div>'>Bottom popover</button>
+      <button class="chi-button" data-position='bottom' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is bottom positioned.</p></div>'>Bottom popover</button>
 
       <!-- Bottom Start -->
-      <button class="chi-btn" data-position='bottom-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is bottom start positioned.</p></div>'>Bottom start popover</button class="chi-btn">
+      <button class="chi-button" data-position='bottom-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is bottom start positioned.</p></div>'>Bottom start popover</button class="chi-button">
 
       <!-- Bottom End -->
-      <button class="chi-btn" data-position='bottom-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is bottom end positioned.</p></div>'>Bottom end popover</button class="chi-btn">
+      <button class="chi-button" data-position='bottom-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is bottom end positioned.</p></div>'>Bottom end popover</button class="chi-button">
 
       <!-- Left -->
-      <button class="chi-btn" data-position='left' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is left positioned.</p></div>'>Left popover</button>
+      <button class="chi-button" data-position='left' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is left positioned.</p></div>'>Left popover</button>
 
       <!-- Left Start -->
-      <button class="chi-btn" data-position='left-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is left start positioned.</p></div>'>Left start popover</button>
+      <button class="chi-button" data-position='left-start' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is left start positioned.</p></div>'>Left start popover</button>
 
       <!-- Left End -->
-      <button class="chi-btn" data-position='left-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is left end positioned.</p></div>'>Left end popover</button>
+      <button class="chi-button" data-position='left-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is left end positioned.</p></div>'>Left end popover</button>
 
       <!-- JavaScript -->
       <script>chi.popover(document.querySelectorAll('[data-popover-content]'));</script>
@@ -477,10 +477,10 @@ p.-text
       | Use methods <code>.show()</code>, <code>.hide()</code>, and <code>.toggle()</code>
       | to control popover visibility.
     :code(lang="html")
-      <button id='show-popover-3' class="chi-btn">Show</button>
-      <button id='hide-popover-3' class="chi-btn">Hide</button>
-      <button id='toggle-popover-3' class="chi-btn">Toggle</button>
-      <button id='popover-3' class="chi-btn" data-popover-content='<div class="chi-popover__content">Foo</div>'>Popover</button>
+      <button id='show-popover-3' class="chi-button">Show</button>
+      <button id='hide-popover-3' class="chi-button">Hide</button>
+      <button id='toggle-popover-3' class="chi-button">Toggle</button>
+      <button id='popover-3' class="chi-button" data-popover-content='<div class="chi-popover__content">Foo</div>'>Popover</button>
       <script>
         var popover = chi.popover(
           document.getElementById('popover-3'),
@@ -545,7 +545,7 @@ p.-text
       | setting <code>preventAutoHide</code> to <code>true</code>
     :code(lang="html")
       <!-- Auto hide -->
-      <button id='popover-6' class="chi-btn" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Click outside. I will disappear!</p></div>'>Auto hide</button>
+      <button id='popover-6' class="chi-button" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Click outside. I will disappear!</p></div>'>Auto hide</button>
       <script>chi.popover(document.getElementById('popover-6'),
         {
           preventAutoHide: false
@@ -553,7 +553,7 @@ p.-text
       </script>
 
       <!-- No auto hide -->
-      <button id='popover-6' class="chi-btn" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Click outside. I will stay!</p></div>'>No auto hide</button>
+      <button id='popover-6' class="chi-button" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Click outside. I will stay!</p></div>'>No auto hide</button>
       <script>chi.popover(document.getElementById('popover-6'),
         {
           preventAutoHide: true
@@ -597,8 +597,8 @@ h3 Popover with custom content
           <p class="chi-popover__text">Are you sure you want to delete this?</p>
         </div>
         <div class="chi-popover__footer">
-          <button class="chi-btn -danger">Delete</button>
-          <button class="chi-btn">Cancel</button>
+          <button class="chi-button -danger">Delete</button>
+          <button class="chi-button">Cancel</button>
         </div>
         <div class="chi-popover__arrow"></div>
       </section>

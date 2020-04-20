@@ -94,7 +94,7 @@ $sidenav-lg-width: 12.5rem;
       height: 4rem;
       padding-left: 1.5rem;
 
-      .chi-btn {
+      .chi-button {
         &.-close {
           right: 1rem;
           top: 1rem;
@@ -345,7 +345,7 @@ $sidenav-lg-width: 12.5rem;
             background-color: rgba(set-color(grey, 100), 0.5);
             color: set-color(grey, 40);
 
-            .chi-btn {
+            .chi-button {
               color: $text-white;
             }
           }

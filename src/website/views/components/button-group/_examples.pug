@@ -1,12 +1,12 @@
 h2 Examples
 h3 Base
-p.-text To render a button group, wrap a series of buttons in a div and apply the class <code>chi-btn__group</code>.
+p.-text To render a button group, wrap a series of buttons in a div and apply the class <code>chi-button-group</code>.
 .example.-mb--3
   .-p--3
-    .chi-btn__group
-      button(class=`chi-btn`) Button
-      button(class=`chi-btn`) Button
-      button(class=`chi-btn`) Button
+    .chi-button-group
+      button(class=`chi-button`) Button
+      button(class=`chi-button`) Button
+      button(class=`chi-button`) Button
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
       li.-disabled
@@ -16,20 +16,20 @@ p.-text To render a button group, wrap a series of buttons in a div and apply th
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
-      <div class="chi-btn__group">
-        <button class="chi-btn">Button</button>
-        <button class="chi-btn">Button</button>
-        <button class="chi-btn">Button</button>
+      <div class="chi-button-group">
+        <button class="chi-button">Button</button>
+        <button class="chi-button">Button</button>
+        <button class="chi-button">Button</button>
       </div>
 
 h3 Vertical
 p.-text To render a series of buttons vertically, apply the class modifier <code>-vertical</code>.
 .example.-mb--3
   .-p--3
-    .chi-btn__group.-vertical
-      button(class=`chi-btn`) Button
-      button(class=`chi-btn`) Button
-      button(class=`chi-btn`) Button
+    .chi-button-group.-vertical
+      button(class=`chi-button`) Button
+      button(class=`chi-button`) Button
+      button(class=`chi-button`) Button
   .example-tabs.-pl--2
     ul.chi-tabs#example-vertical
       li.-disabled
@@ -39,10 +39,10 @@ p.-text To render a series of buttons vertically, apply the class modifier <code
   .chi-tabs-panel#webcomponent-vertical
   .chi-tabs-panel.-active#html-vertical
     :code(lang='html')
-      <div class="chi-btn__group -vertical">
-        <button class="chi-btn">Button</button>
-        <button class="chi-btn">Button</button>
-        <button class="chi-btn">Button</button>
+      <div class="chi-button-group -vertical">
+        <button class="chi-button">Button</button>
+        <button class="chi-button">Button</button>
+        <button class="chi-button">Button</button>
       </div>
 
 h2 Fluid buttons
@@ -50,10 +50,10 @@ p.-text Button groups can be expanded to fill the parent space by applying the c
 h3 Horizontal
 .example.-mb--3
   .-p--3
-    .chi-btn__group.-fluid(style="width:100%")
-      button(class=`chi-btn`) Button
-      button(class=`chi-btn`) Button
-      button(class=`chi-btn`) Button
+    .chi-button-group.-fluid(style="width:100%")
+      button(class=`chi-button`) Button
+      button(class=`chi-button`) Button
+      button(class=`chi-button`) Button
   .example-tabs.-pl--2
     ul.chi-tabs#example-fluid
       li.-disabled
@@ -63,19 +63,19 @@ h3 Horizontal
   .chi-tabs-panel#webcomponent-fluid
   .chi-tabs-panel.-active#html-fluid
     :code(lang='html')
-      <div class="chi-btn__group -fluid">
-        <button class="chi-btn">Button</button>
-        <button class="chi-btn">Button</button>
-        <button class="chi-btn">Button</button>
+      <div class="chi-button-group -fluid">
+        <button class="chi-button">Button</button>
+        <button class="chi-button">Button</button>
+        <button class="chi-button">Button</button>
       </div>
 
 h3 Vertical
 .example.-mb--3
   .-p--3
-    .chi-btn__group.-vertical.-fluid(style="width:12rem")
-      button(class=`chi-btn`) Button
-      button(class=`chi-btn`) Button
-      button(class=`chi-btn`) Button
+    .chi-button-group.-vertical.-fluid(style="width:12rem")
+      button(class=`chi-button`) Button
+      button(class=`chi-button`) Button
+      button(class=`chi-button`) Button
   .example-tabs.-pl--2
     ul.chi-tabs#example-fluid-vertical
       li.-disabled
@@ -85,10 +85,10 @@ h3 Vertical
   .chi-tabs-panel#webcomponent-fluid-vertical
   .chi-tabs-panel.-active#html-fluid-vertical
     :code(lang='html')
-      <div class="chi-btn__group -vertical -fluid">
-        <button class="chi-btn">Button</button>
-        <button class="chi-btn">Button</button>
-        <button class="chi-btn">Button</button>
+      <div class="chi-button-group -vertical -fluid">
+        <button class="chi-button">Button</button>
+        <button class="chi-button">Button</button>
+        <button class="chi-button">Button</button>
       </div>
 
 h3 Alignment
@@ -97,10 +97,10 @@ p.-text
   | <code>-align--left</code> or <code>-align--right</code>.
 .example.-mb--3
   .-p--3
-    .chi-btn__group.-fluid(style="width:100%")
-      button(class=`chi-btn -align--left`) Button
-      button(class=`chi-btn`) Button
-      button(class=`chi-btn -align--right`) Button
+    .chi-button-group.-fluid(style="width:100%")
+      button(class=`chi-button -align--left`) Button
+      button(class=`chi-button`) Button
+      button(class=`chi-button -align--right`) Button
   .example-tabs.-pl--2
     ul.chi-tabs#example-alignment
       li.-disabled
@@ -110,10 +110,10 @@ p.-text
   .chi-tabs-panel#webcomponent-alignment
   .chi-tabs-panel.-active#html-alignment
     :code(lang='html')
-      <div class="chi-btn__group -fluid">
-        <button class="chi-btn -align--left">Button</button>
-        <button class="chi-btn">Button</button>
-        <button class="chi-btn -align--right">Button</button>
+      <div class="chi-button-group -fluid">
+        <button class="chi-button -align--left">Button</button>
+        <button class="chi-button">Button</button>
+        <button class="chi-button -align--right">Button</button>
       </div>
 
 h3 Disable Fluidity
@@ -121,10 +121,10 @@ p.-text
   | To disable the fluidity of a specific button in a fluid button group, apply the class <code>-no-fluid</code> to the button.
 .example.-mb--3
   .-p--3
-    .chi-btn__group.-fluid(style="width:100%")
-      button(class=`chi-btn`) Button
-      button(class=`chi-btn -no-fluid`) Button
-      button(class=`chi-btn`) Button
+    .chi-button-group.-fluid(style="width:100%")
+      button(class=`chi-button`) Button
+      button(class=`chi-button -no-fluid`) Button
+      button(class=`chi-button`) Button
   .example-tabs.-pl--2
     ul.chi-tabs#example-no-fluid
       li.-disabled
@@ -134,10 +134,10 @@ p.-text
   .chi-tabs-panel#webcomponent-no-fluid
   .chi-tabs-panel.-active#html-no-fluid
     :code(lang='html')
-      <div class="chi-btn__group -fluid">
-        <button class="chi-btn">Button</button>
-        <button class="chi-btn -no-fluid">Button</button>
-        <button class="chi-btn">Button</button>
+      <div class="chi-button-group -fluid">
+        <button class="chi-button">Button</button>
+        <button class="chi-button -no-fluid">Button</button>
+        <button class="chi-button">Button</button>
       </div>
 
 h2 Sizes
@@ -152,10 +152,10 @@ h3 Horizontal
     each size in ['sm', 'md', 'lg', 'xl']
       p.-text--bold= '-' + size
       .-d--flex.-flex--wrap
-        .chi-btn__group
-          button(class=`chi-btn -${size}`) Button
-          button(class=`chi-btn -${size}`) Button
-          button(class=`chi-btn -${size}`) Button
+        .chi-button-group
+          button(class=`chi-button -${size}`) Button
+          button(class=`chi-button -${size}`) Button
+          button(class=`chi-button -${size}`) Button
   .example-tabs.-pl--2
     ul.chi-tabs#example-size-horizontal
       li.-disabled
@@ -166,28 +166,28 @@ h3 Horizontal
   .chi-tabs-panel.-active#html-size-horizontal
     :code(lang='html')
       <!-- sm -->
-      <div class="chi-btn__group">
-        <button class="chi-btn -sm">Button</button>
-        <button class="chi-btn -sm">Button</button>
-        <button class="chi-btn -sm">Button</button>
+      <div class="chi-button-group">
+        <button class="chi-button -sm">Button</button>
+        <button class="chi-button -sm">Button</button>
+        <button class="chi-button -sm">Button</button>
       </div>
       <!-- md -->
-      <div class="chi-btn__group">
-        <button class="chi-btn -md">Button</button>
-        <button class="chi-btn -md">Button</button>
-        <button class="chi-btn -md">Button</button>
+      <div class="chi-button-group">
+        <button class="chi-button -md">Button</button>
+        <button class="chi-button -md">Button</button>
+        <button class="chi-button -md">Button</button>
       </div>
       <!-- lg -->
-      <div class="chi-btn__group">
-        <button class="chi-btn -lg">Button</button>
-        <button class="chi-btn -lg">Button</button>
-        <button class="chi-btn -lg">Button</button>
+      <div class="chi-button-group">
+        <button class="chi-button -lg">Button</button>
+        <button class="chi-button -lg">Button</button>
+        <button class="chi-button -lg">Button</button>
       </div>
       <!-- xl -->
-      <div class="chi-btn__group">
-        <button class="chi-btn -xl">Button</button>
-        <button class="chi-btn -xl">Button</button>
-        <button class="chi-btn -xl">Button</button>
+      <div class="chi-button-group">
+        <button class="chi-button -xl">Button</button>
+        <button class="chi-button -xl">Button</button>
+        <button class="chi-button -xl">Button</button>
       </div>
 
 h3 Vertical
@@ -196,10 +196,10 @@ h3 Vertical
     each size in ['sm', 'md', 'lg', 'xl']
       p.-text--bold= '-' + size
       .-d--flex.-flex--wrap
-        .chi-btn__group.-vertical.-fluid(style="width:12rem")
-          button(class=`chi-btn -${size}`) Button
-          button(class=`chi-btn -${size}`) Button
-          button(class=`chi-btn -${size}`) Button
+        .chi-button-group.-vertical.-fluid(style="width:12rem")
+          button(class=`chi-button -${size}`) Button
+          button(class=`chi-button -${size}`) Button
+          button(class=`chi-button -${size}`) Button
   .example-tabs.-pl--2
     ul.chi-tabs#example-size-vertical
       li.-disabled
@@ -210,28 +210,28 @@ h3 Vertical
   .chi-tabs-panel.-active#html-size-vertical
     :code(lang="html")
       <!-- sm -->
-      <div class="chi-btn__group -vertical -fluid">
-        <button class="chi-btn -sm">Button</button>
-        <button class="chi-btn -sm">Button</button>
-        <button class="chi-btn -sm">Button</button>
+      <div class="chi-button-group -vertical -fluid">
+        <button class="chi-button -sm">Button</button>
+        <button class="chi-button -sm">Button</button>
+        <button class="chi-button -sm">Button</button>
       </div>
       <!-- md -->
-      <div class="chi-btn__group -vertical -fluid">
-        <button class="chi-btn -md">Button</button>
-        <button class="chi-btn -md">Button</button>
-        <button class="chi-btn -md">Button</button>
+      <div class="chi-button-group -vertical -fluid">
+        <button class="chi-button -md">Button</button>
+        <button class="chi-button -md">Button</button>
+        <button class="chi-button -md">Button</button>
       </div>
       <!-- lg -->
-      <div class="chi-btn__group -vertical -fluid">
-        <button class="chi-btn -lg">Button</button>
-        <button class="chi-btn -lg">Button</button>
-        <button class="chi-btn -lg">Button</button>
+      <div class="chi-button-group -vertical -fluid">
+        <button class="chi-button -lg">Button</button>
+        <button class="chi-button -lg">Button</button>
+        <button class="chi-button -lg">Button</button>
       </div>
       <!-- xl -->
-      <div class="chi-btn__group -vertical -fluid">
-        <button class="chi-btn -xl">Button</button>
-        <button class="chi-btn -xl">Button</button>
-        <button class="chi-btn -xl">Button</button>
+      <div class="chi-button-group -vertical -fluid">
+        <button class="chi-button -xl">Button</button>
+        <button class="chi-button -xl">Button</button>
+        <button class="chi-button -xl">Button</button>
       </div>
 
 h2 Hybrid buttons
@@ -240,10 +240,10 @@ p.-text
   | Mix and match text and icons to form a hybrid button group.
 .example.-mb--3
   .-p--3
-    .chi-btn__group
-      button(class=`chi-btn`) Button
-      button(class=`chi-btn -icon`, aria-label="Button action")
-        .chi-btn__content
+    .chi-button-group
+      button(class=`chi-button`) Button
+      button(class=`chi-button -icon`, aria-label="Button action")
+        .chi-button__content
           i.chi-icon.icon-atom
   .example-tabs.-pl--2
     ul.chi-tabs#example-hybrid
@@ -254,10 +254,10 @@ p.-text
   .chi-tabs-panel#webcomponent-hybrid
   .chi-tabs-panel.-active#html-hybrid
     :code(lang='html')
-      <div class="chi-btn__group">
-        <button class="chi-btn">Button</button>
-        <button class="chi-btn -icon" aria-label="Button action">
-          <div class="chi-btn__content">
+      <div class="chi-button-group">
+        <button class="chi-button">Button</button>
+        <button class="chi-button -icon" aria-label="Button action">
+          <div class="chi-button__content">
             <i class="chi-icon icon-atom"></i>
           </div>
         </button>
@@ -268,10 +268,10 @@ p.-text
 
 .example.-mb--3
   .-p--3
-    .chi-btn__group.-fluid
-      button(class=`chi-btn`) Button
-      button(class=`chi-btn -icon -no-fluid`, aria-label="Button action")
-        .chi-btn__content
+    .chi-button-group.-fluid
+      button(class=`chi-button`) Button
+      button(class=`chi-button -icon -no-fluid`, aria-label="Button action")
+        .chi-button__content
           i.chi-icon.icon-atom
   .example-tabs.-pl--2
     ul.chi-tabs#example-hybrid-fluid
@@ -282,10 +282,10 @@ p.-text
   .chi-tabs-panel#webcomponent-hybrid-fluid
   .chi-tabs-panel.-active#html-hybrid-fluid
     :code(lang='html')
-      <div class="chi-btn__group -fluid">
-        <button class="chi-btn">Button</button>
-        <button class="chi-btn -icon -no-fluid" aria-label="Button action">
-          <div class="chi-btn__content">
+      <div class="chi-button-group -fluid">
+        <button class="chi-button">Button</button>
+        <button class="chi-button -icon -no-fluid" aria-label="Button action">
+          <div class="chi-button__content">
             <i class="chi-icon icon-atom"></i>
           </div>
         </button>
@@ -299,10 +299,10 @@ p.-text
 .example.-mb--3
   .-p--2
     each size in ['sm', 'md', 'lg', 'xl']
-      .chi-btn__group.-m--1
-        button(class=`chi-btn -${size}`) Button
-        button(class=`chi-btn -${size} -icon`, aria-label="Button action")
-          .chi-btn__content
+      .chi-button-group.-m--1
+        button(class=`chi-button -${size}`) Button
+        button(class=`chi-button -${size} -icon`, aria-label="Button action")
+          .chi-button__content
             i.chi-icon.icon-atom
   .example-tabs.-pl--2
     ul.chi-tabs#example-hybrid-sizes
@@ -314,37 +314,37 @@ p.-text
   .chi-tabs-panel.-active#html-hybrid-sizes
     :code(lang='html')
       <!-- sm -->
-      <div class="chi-btn__group">
-        <button class="chi-btn -sm">Button</button>
-        <button class="chi-btn -sm -icon" aria-label="Button action">
-          <div class="chi-btn__content">
+      <div class="chi-button-group">
+        <button class="chi-button -sm">Button</button>
+        <button class="chi-button -sm -icon" aria-label="Button action">
+          <div class="chi-button__content">
             <i class="chi-icon icon-atom"></i>
           </div>
         </button>
       </div>
       <!-- md -->
-      <div class="chi-btn__group">
-        <button class="chi-btn -md">Button</button>
-        <button class="chi-btn -md -icon" aria-label="Button action">
-          <div class="chi-btn__content">
+      <div class="chi-button-group">
+        <button class="chi-button -md">Button</button>
+        <button class="chi-button -md -icon" aria-label="Button action">
+          <div class="chi-button__content">
             <i class="chi-icon icon-atom"></i>
           </div>
         </button>
       </div>
       <!-- lg -->
-      <div class="chi-btn__group">
-        <button class="chi-btn -lg">Button</button>
-        <button class="chi-btn -lg -icon" aria-label="Button action">
-          <div class="chi-btn__content">
+      <div class="chi-button-group">
+        <button class="chi-button -lg">Button</button>
+        <button class="chi-button -lg -icon" aria-label="Button action">
+          <div class="chi-button__content">
             <i class="chi-icon icon-atom"></i>
           </div>
         </button>
       </div>
       <!-- xl -->
-      <div class="chi-btn__group">
-        <button class="chi-btn -xl">Button</button>
-        <button class="chi-btn -xl -icon" aria-label="Button action">
-          <div class="chi-btn__content">
+      <div class="chi-button-group">
+        <button class="chi-button -xl">Button</button>
+        <button class="chi-button -xl -icon" aria-label="Button action">
+          <div class="chi-button__content">
             <i class="chi-icon icon-atom"></i>
           </div>
         </button>
