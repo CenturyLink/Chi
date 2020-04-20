@@ -37,11 +37,11 @@ $sizes: (
   )
 );
 
-.chi-btn__group {
+.chi-button-group {
   display: inline-flex;
 
   &:not(.-vertical) {
-    .chi-btn {
+    .chi-button {
       &,
       &.-primary,
       &.-secondary,
@@ -111,7 +111,7 @@ $sizes: (
               }
             }
 
-            & + .chi-btn:not(.-flat) {
+            & + .chi-button:not(.-flat) {
               border-left-width: 0;
               padding-left: 1rem;
 
@@ -133,7 +133,7 @@ $sizes: (
 
           &:hover,
           &.-hover {
-            & + .chi-btn:focus,
+            & + .chi-button:focus,
             & + .-focus {
               border-left-width: 0.0625rem;
               padding-left: 0.9375rem;

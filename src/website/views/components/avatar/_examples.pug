@@ -338,13 +338,13 @@ ul#chi-tabs--sizes.chi-tabs
 h3 Avatar Groups
 p.-text
   | Use avatar groups to group multiple avatars or add descriptive text such as a users name.
-  | Render an avatar group by wrapping an avatar in the class <code>chi-avatar__group</code>.
+  | Render an avatar group by wrapping an avatar in the class <code>chi-avatar-group</code>.
 .example.-mb--3
   .-p--3.chi-grid
     each color in colors
       if (color !== 'secondary')
         .-mb--1.chi-col.-w--6.-w-sm--4.-w-md--6.-w-lg--4.-w-xl--3
-          .chi-avatar__group
+          .chi-avatar-group
             div(class=`chi-avatar -${color}`) L
             = `Label ${color}`
   .example-tabs.-pl--2
@@ -356,7 +356,7 @@ p.-text
   .chi-tabs-panel#webcomponent-avatar-groups
   .chi-tabs-panel.-active#html-avatar-groups
     :code(lang="html")
-      <div class="chi-avatar__group">
+      <div class="chi-avatar-group">
         <div class="chi-avatar">L</div>Label text
       </div>
 

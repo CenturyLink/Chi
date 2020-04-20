@@ -23,7 +23,7 @@ describe('Drawer', function() {
       .should('match', 'div.chi-drawer.-top.-active')
       .find('.chi-drawer__header')
       .should('have.length', 1)
-      .find('button.chi-btn chi-icon[icon="x"]')
+      .find('button.chi-button chi-icon[icon="x"]')
       .should('exist');
 
   });
@@ -35,7 +35,7 @@ describe('Drawer', function() {
       .children()
       .first()
       .should('match', 'div.chi-drawer.-active')
-      .find('button.chi-btn chi-icon[icon="x"]')
+      .find('button.chi-button chi-icon[icon="x"]')
       .should('not.exist');
 
   });
@@ -57,7 +57,7 @@ describe('Drawer', function() {
     cy.get('[data-cy="test-top-headed"]')
       .children()
       .first()
-      .find('.chi-drawer__header button.chi-btn')
+      .find('.chi-drawer__header button.chi-button')
       .click()
       .get('[data-cy="test-top-headed"]')
       .should('not.match', '[active]')

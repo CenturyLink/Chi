@@ -13,8 +13,8 @@ each size in ['default', 'sm', 'lg']
             use(xlink:href=`#${val}`)
         .chi-alert__content
             p.chi-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
-        button(class='chi-alert__close-button chi-btn -icon -close', aria-label='Close')
-          .chi-btn__content
+        button(class='chi-alert__close-button chi-button -icon -close', aria-label='Close')
+          .chi-button__content
             .chi-icon
               svg
                 use(xlink:href='#icon-x')
@@ -28,8 +28,8 @@ each size in ['default', 'sm', 'lg']
         .chi-alert__content
             p.chi-alert__title= type
             p.chi-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} toast alert`
-        button(class='chi-alert__close-button chi-btn -icon -close', aria-label='Close')
-          .chi-btn__content
+        button(class='chi-alert__close-button chi-button -icon -close', aria-label='Close')
+          .chi-button__content
             .chi-icon
               svg
                 use(xlink:href='#icon-x')

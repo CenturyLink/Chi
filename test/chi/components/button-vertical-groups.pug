@@ -14,10 +14,10 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           each style in ['default', 'primary', 'secondary', 'danger', 'dark']
             each val, index2 in [2,3,4]
               td(style="vertical-align:top")
-                .chi-btn__group.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
+                .chi-button-group.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
                   while val > 0
                     - val--
-                    button.chi-btn(class={
+                    button.chi-button(class={
                         [`-${type}`]: type != 'solid',
                         [`-${style}`]: style != 'default',
                         [`-${size}`]: size != 'default'
@@ -29,16 +29,16 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           each style in ['default', 'primary', 'secondary', 'danger', 'dark']
             each val, index2 in [2,3,4]
               td(style="vertical-align:top")
-                .chi-btn__group.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
+                .chi-button-group.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
                   while val > 0
                     - val--
-                    button.chi-btn.-icon(class={
+                    button.chi-button.-icon(class={
                         [`-${type}`]: type != 'solid',
                         [`-${style}`]: style != 'default',
                         [`-${size}`]: size != 'default'
                       },
                       aria-label='Button action')
-                        .chi-btn__content
+                        .chi-button__content
                           .chi-icon
                             svg
                               use(xlink:href='#icon-atom')
@@ -48,16 +48,16 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           each style in ['default', 'primary', 'secondary', 'danger', 'dark']
             each val, index2 in [2,3,4]
               td(style="vertical-align:top")
-                .chi-btn__group.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
+                .chi-button-group.-vertical.-m--1(class={'-ml--1': index1 != 0 && index2 != 0})
                   while val > 0
                     - val--
-                    button.chi-btn(class={
+                    button.chi-button(class={
                         [`-${type}`]: type != 'solid',
                         [`-${style}`]: style != 'default',
                         [`-${size}`]: size != 'default'
                       },
                       aria-label='Button action')
-                        .chi-btn__content
+                        .chi-button__content
                           .chi-icon
                             svg
                               use(xlink:href='#icon-atom')
@@ -72,9 +72,9 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           tr
             each style in ['default', 'primary', 'secondary', 'danger', 'dark']
               td(style="width:120px")
-                .chi-btn__group.-vertical.-fluid.-m--1
+                .chi-button-group.-vertical.-fluid.-m--1
                   each modifier in ['align--left', '', 'align--right']
-                    button.chi-btn(class={
+                    button.chi-button(class={
                       [`-${type}`]: type != 'solid',
                       [`-${style}`]: style != 'default',
                       [`-${modifier}`]: modifier != '',
@@ -86,16 +86,16 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           tr
             each style in ['default', 'primary', 'secondary', 'danger', 'dark']
               td(style="width:70px")
-                .chi-btn__group.-vertical.-fluid.-m--1
+                .chi-button-group.-vertical.-fluid.-m--1
                   each modifier in ['align--left', '', 'align--right']
-                    button.chi-btn.-icon(class={
+                    button.chi-button.-icon(class={
                       [`-${type}`]: type != 'solid',
                       [`-${style}`]: style != 'default',
                       [`-${modifier}`]: modifier != '',
                       [`-${size}`]: size != 'default'
                     },
                       aria-label='Button action')
-                      .chi-btn__content
+                      .chi-button__content
                         .chi-icon
                           svg
                             use(xlink:href='#icon-atom')
@@ -104,16 +104,16 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           tr
             each style in ['default', 'primary', 'secondary', 'danger', 'dark']
               td(style="width:140px")
-                .chi-btn__group.-vertical.-fluid.-m--1
+                .chi-button-group.-vertical.-fluid.-m--1
                   each modifier in ['align--left', '', 'align--right']
-                    button.chi-btn(class={
+                    button.chi-button(class={
                       [`-${type}`]: type != 'solid',
                       [`-${style}`]: style != 'default',
                       [`-${modifier}`]: modifier != '',
                       [`-${size}`]: size != 'default'
                     },
                       aria-label='Button action')
-                      .chi-btn__content
+                      .chi-button__content
                         .chi-icon
                           svg
                             use(xlink:href='#icon-atom')

@@ -8,7 +8,7 @@ mixin icon(name)
       use(xlink:href=`#icon-${name}`)
 
 mixin button(icon, type, style, size, modifier)
-  button.chi-btn(class={
+  button.chi-button(class={
     '-icon': icon,
     [`-${type}`]: type != 'solid',
     [`-${style}`]: style != 'default',
@@ -31,7 +31,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           tr
             each val, index in [2,3,4]
               td
-                .chi-btn__group.-m--1(class={'-ml--3': index != 0})
+                .chi-button-group.-m--1(class={'-ml--3': index != 0})
                   while val > 0
                     - val--
                     +button(false, type, style, size)
@@ -41,22 +41,22 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           tr
             each val, index in [2,3,4]
               td
-                .chi-btn__group.-m--1(class={'-ml--3': index != 0})
+                .chi-button-group.-m--1(class={'-ml--3': index != 0})
                   while val > 0
                     - val--
                     +button(true, type, style, size)
-                      .chi-btn__content
+                      .chi-button__content
                         +icon('atom')
       table(cellpadding="0", cellspacing="0")
         each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             each val, index in [2,3,4]
               td
-                .chi-btn__group.-m--1(class={'-ml--3': index != 0})
+                .chi-button-group.-m--1(class={'-ml--3': index != 0})
                   while val > 0
                     - val--
                     +button(false, type, style, size)
-                      .chi-btn__content
+                      .chi-button__content
                         +icon('atom')
                         span Button
     div(class={
@@ -68,7 +68,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
         each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             td
-              .chi-btn__group.-fluid.-m--1
+              .chi-button-group.-fluid.-m--1
                 each modifier in ['no-fluid', 'align--left', false, 'align--right']
                   +button(false, type, style, size, modifier)
                     | Button
@@ -77,19 +77,19 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
         each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             td
-              .chi-btn__group.-fluid.-m--1
+              .chi-button-group.-fluid.-m--1
                 each modifier in ['no-fluid', 'align--left', false, 'align--right']
                   +button(true, type, style, size, modifier)
-                    .chi-btn__content
+                    .chi-button__content
                       +icon('atom')
 
       table(cellpadding="0", cellspacing="0", width="600")
         each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
           tr
             td
-              .chi-btn__group.-fluid.-m--1
+              .chi-button-group.-fluid.-m--1
                 each modifier in ['no-fluid', 'align--left', false, 'align--right']
                   +button(false, type, style, size, modifier)
-                    .chi-btn__content
+                    .chi-button__content
                       +icon('atom')
                       span Button

@@ -39,8 +39,8 @@ header.chi-header.-inverse.docs-header.-z--20
   div.chi-divider.-colorbar
   nav.chi-header__content
     .chi-header__brand
-      button#drawer-trigger-1.chi-btn.-icon.-flat.-light.-mr-md--2.-d--flex.-d-lg--none.chi-drawer__trigger(data-target='#drawer-sidenav', aria-label="Toggle documentation navigation")
-        .chi-btn__content
+      button#drawer-trigger-1.chi-button.-icon.-flat.-light.-mr-md--2.-d--flex.-d-lg--none.chi-drawer__trigger(data-target='#drawer-sidenav', aria-label="Toggle documentation navigation")
+        .chi-button__content
           i.chi-icon.-sm--2.icon-menu
       a.chi-brand.docs-header__logo(href=`${rootPath}`, aria-label='CenturyLink')
         svg(viewBox='0 0 204 41', xmlns='http://www.w3.org/2000/svg', aria-hidden='true')
@@ -63,7 +63,7 @@ header.chi-header.-inverse.docs-header.-z--20
           i.chi-icon.icon-search
     .chi-header__end
       .chi-dropdown
-        button.chi-btn.-flat.-light.-px--1.chi-dropdown__trigger.-animate(data-position='bottom-end', id='version-dropdown', aria-label="Toggle Chi version") v2.0.0
+        button.chi-button.-flat.-light.-px--1.chi-dropdown__trigger.-animate(data-position='bottom-end', id='version-dropdown', aria-label="Toggle Chi version") v2.0.0
         .chi-dropdown__menu(style='width:10rem;')#versionDropdown
           a.chi-dropdown__menu-item.-active(href='https://assets.ctl.io/chi/2.0.0') v2.0.0
           a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/1.4.2') v1.4.2
@@ -96,20 +96,20 @@ header.chi-header.-inverse.docs-header.-z--20
           }
         }
       .chi-dropdown
-        button.chi-btn.-flat.-light.-px--1.-ml--1.chi-dropdown__trigger.-animate(data-position='bottom-end', id='support') Support
+        button.chi-button.-flat.-light.-px--1.-ml--1.chi-dropdown__trigger.-animate(data-position='bottom-end', id='support') Support
         .chi-dropdown__menu(style='width:14rem;')
           a.chi-dropdown__menu-item(id='contact', href='mailto:chi.support@centurylink.com') Email Support
           a.chi-dropdown__menu-item(id='teams', href='https://teams.microsoft.com/l/channel/19%253aa08fdfde482543ea80f81ce484cea21b%2540thread.skype/CHI?groupId=8631295d-43fc-4e40-93e5-dc8c9ab4d127&tenantId=72b17115-9915-42c0-9f1b-4f98e5a4bcd2', target='_blank', rel="noopener")
             | Talk #Chi on Microsoft Teams
-      a.chi-btn.-icon.-flat.-light.-ml--1(href='https://github.com/CenturyLinkCloud/ux-chi', rel="noopener", aria-label="GitHub")
-        .chi-btn__content
+      a.chi-button.-icon.-flat.-light.-ml--1(href='https://github.com/CenturyLinkCloud/ux-chi', rel="noopener", aria-label="GitHub")
+        .chi-button__content
           i.chi-icon.icon-logo-github
 
 .chi-backdrop.-closed
   .chi-backdrop__wrapper
     div#drawer-sidenav.chi-drawer.-left.-menu.-position--absolute
-      button(class='chi-btn -icon -close', aria-label='Close')
-        .chi-btn__content
+      button(class='chi-button -icon -close', aria-label='Close')
+        .chi-button__content
           i.chi-icon.icon-x
       .chi-drawer__content
         .-py--2

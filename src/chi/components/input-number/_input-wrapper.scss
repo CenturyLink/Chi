@@ -195,7 +195,7 @@ $expanded-sizes: (
           z-index: 1;
 
           & ~ button {
-            &.chi-btn {
+            &.chi-button {
               background-image: none;
               background-size: auto;
               color: $text-color;
@@ -274,7 +274,7 @@ $expanded-sizes: (
 }
 
 // sass-lint:disable-all
-_:-ms-lang(x), .chi-number-input.-expanded button .chi-btn__content, .chi-number-input.-expanded button .chi-icon {
+_:-ms-lang(x), .chi-number-input.-expanded button .chi-button__content, .chi-number-input.-expanded button .chi-icon {
   display: block;
 }
 // sass-lint:enable-all

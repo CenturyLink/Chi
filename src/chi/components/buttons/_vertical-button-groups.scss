@@ -37,11 +37,11 @@ $sizes: (
   )
 );
 
-.chi-btn__group {
+.chi-button-group {
   &.-vertical {
     flex-direction: column;
 
-    .chi-btn {
+    .chi-button {
       &,
       &.-primary,
       &.-secondary,
@@ -109,7 +109,7 @@ $sizes: (
               }
             }
 
-            & + .chi-btn {
+            & + .chi-button {
               border-top-width: 0;
               padding-top: 0.5rem;
 
@@ -132,7 +132,7 @@ $sizes: (
 
           &:hover,
           &.-hover {
-            & + .chi-btn:focus,
+            & + .chi-button:focus,
             & + .-focus {
               border-top-width: 0.0625rem;
               padding-top: 0.4375rem;
@@ -162,7 +162,7 @@ $sizes: (
           &.-hover,
           &:focus,
           &.-focus {
-            & + .chi-btn {
+            & + .chi-button {
               &:hover,
               &.-hover {
                 border-top-width: 0.0625rem;

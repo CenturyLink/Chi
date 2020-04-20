@@ -35,5 +35,5 @@ each size in ['default', 'sm', 'lg']
       .-m--2
         chi-alert(color=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-actionable-${type}-${size}`, title=type)
           =`This is a ${size} ${type} actionable alert`
-          button(slot="chi-alert__actions", class=`-${size}`).chi-btn.-dark.-outline Secondary action
-          button(slot="chi-alert__actions", class=`-${size}`).chi-btn.-primary Primary action
+          button(slot="chi-alert__actions", class=`-${size}`).chi-button.-dark.-outline Secondary action
+          button(slot="chi-alert__actions", class=`-${size}`).chi-button.-primary Primary action

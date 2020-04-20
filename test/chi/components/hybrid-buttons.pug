@@ -8,19 +8,19 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
     [`test-${size}`]: size != 'default'
   })
     span.-text--h2= `Hybrid buttons / ${size}`
-    .chi-btn__group
-      button.chi-btn(class={
+    .chi-button-group
+      button.chi-button(class={
         [`-${size}`]: size != 'default'
       })
-        .chi-btn__content
+        .chi-button__content
           .chi-icon
             svg
               use(xlink:href='#icon-atom')
           span Reinstall
-      button.chi-btn.-icon(class={
+      button.chi-button.-icon(class={
         [`-${size}`]: size != 'default'
       })
-        .chi-btn__content
+        .chi-button__content
           .chi-icon
             svg
               use(xlink:href='#icon-atom')
@@ -31,15 +31,15 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
   })
     span.-text--h2= `Hybrid buttons / ${size} / fluid`
     each modifier in ['align--left', '', 'align--right']
-      .chi-btn__group.-fluid.-m--1(style="width:200px")
-        button.chi-btn(class={
+      .chi-button-group.-fluid.-m--1(style="width:200px")
+        button.chi-button(class={
           [`-${size}`]: size != 'default',
           [`-${modifier}`]: modifier != ''
         }) Button
-        button.chi-btn.-icon.-no-fluid(class={
+        button.chi-button.-icon.-no-fluid(class={
           [`-${size}`]: size != 'default'
         })
-          .chi-btn__content
+          .chi-button__content
             .chi-icon
               svg
                 use(xlink:href='#icon-atom')

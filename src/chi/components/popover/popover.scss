@@ -60,7 +60,7 @@ $popover-border-width: 0.0625rem;
       }
     }
 
-    .chi-btn {
+    .chi-button {
       &.-close {
         position: absolute;
         right: 0.5rem;
@@ -101,9 +101,9 @@ $popover-border-width: 0.0625rem;
     padding: 1rem;
 
     & chi-button,
-    & .chi-btn {
+    & .chi-button {
       & + chi-button,
-      & + .chi-btn {
+      & + .chi-button {
         margin-left: 0.5rem;
       }
     }

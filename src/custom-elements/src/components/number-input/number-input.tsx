@@ -194,22 +194,22 @@ export class NumberInput {
       >
         {input}
         <button
-          class="chi-btn -icon"
+          class="chi-button -icon"
           disabled={+this.value - this.step < this.min}
           onClick={() => this.decrement()}
           aria-label="Decrease"
         >
-          <div class="chi-btn__content">
+          <div class="chi-button__content">
             <chi-icon icon="minus" />
           </div>
         </button>
         <button
-          class="chi-btn -icon"
+          class="chi-button -icon"
           disabled={+this.value + this.step > this.max}
           onClick={() => this.increment()}
           aria-label="Increase"
         >
-          <div class="chi-btn__content">
+          <div class="chi-button__content">
             <chi-icon icon="plus" />
           </div>
         </button>

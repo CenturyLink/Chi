@@ -218,8 +218,8 @@ export class Drawer {
 
   render() {
     // TODO: change this into <chi-button/> element.
-    const closeButton = <button class="chi-btn -icon -close" onClick={() => this.hide()} aria-label="Close">
-      <div class="chi-btn__content">
+    const closeButton = <button class="chi-button -icon -close" onClick={() => this.hide()} aria-label="Close">
+      <div class="chi-button__content">
         <chi-icon icon="x"></chi-icon>
       </div>
     </button>;

@@ -10,33 +10,33 @@ h4 Base
       .chi-col.-w--12.-w-md--6
         .-p--3.-text--center
           nav.chi-pagination(role='navigation', aria-label='Pagination')
-            .chi-btn__group
+            .chi-button-group
               each step in steps
                 if step == '0'
-                  a(class=`chi-btn -flat`, href='#', aria-label='Previous')
+                  a(class=`chi-button -flat`, href='#', aria-label='Previous')
                     i(class="chi-icon icon-chevron-left", aria-hidden='true')
                     span.-sr--only Previous
                 else if step == '6'
-                  a(class=`chi-btn -flat`, href='#')
+                  a(class=`chi-button -flat`, href='#')
                     i(class="chi-icon icon-chevron-right", aria-hidden='true')
                     span.-sr--only Next
                 else
-                  a(class=`chi-btn -flat`, href='#')= `${step}`
+                  a(class=`chi-button -flat`, href='#')= `${step}`
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black.-text--center
           nav.chi-pagination(role='navigation', aria-label='Pagination')
-            .chi-btn__group
+            .chi-button-group
               each step in steps
                 if step == '0'
-                  a(class=`chi-btn -flat -light`, href='#', aria-label='Previous')
+                  a(class=`chi-button -flat -light`, href='#', aria-label='Previous')
                     i(class="chi-icon icon-chevron-left", aria-hidden='true')
                     span.-sr--only Previous
                 else if step == '6'
-                  a(class=`chi-btn -flat -light`, href='#')
+                  a(class=`chi-button -flat -light`, href='#')
                     i(class="chi-icon icon-chevron-right", aria-hidden='true')
                     span.-sr--only Next
                 else
-                  a(class=`chi-btn -flat -light`, href='#')= `${step}`
+                  a(class=`chi-button -flat -light`, href='#')= `${step}`
 h4 Active
 .test-active
   .example
@@ -44,37 +44,37 @@ h4 Active
       .chi-col.-w--12.-w-md--6
         .-p--3.-text--center
           nav.chi-pagination(role='navigation', aria-label='Pagination')
-            .chi-btn__group
+            .chi-button-group
               each step in steps
                 if step == '0'
-                  a(class=`chi-btn -flat`, href='#', aria-label='Previous')
+                  a(class=`chi-button -flat`, href='#', aria-label='Previous')
                     i(class="chi-icon icon-chevron-left", aria-hidden='true')
                     span.-sr--only Previous
                 else if step == '3'
-                  a(class=`chi-btn -flat -active`, href='#')= `${step}`
+                  a(class=`chi-button -flat -active`, href='#')= `${step}`
                 else if step == '6'
-                  a(class=`chi-btn -flat`, href='#')
+                  a(class=`chi-button -flat`, href='#')
                     i(class="chi-icon icon-chevron-right", aria-hidden='true')
                     span.-sr--only Next
                 else
-                  a(class=`chi-btn -flat`, href='#')= `${step}`
+                  a(class=`chi-button -flat`, href='#')= `${step}`
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black.-text--center
           nav.chi-pagination(role='navigation', aria-label='Pagination')
-            .chi-btn__group
+            .chi-button-group
               each step in steps
                 if step == '0'
-                  a(class=`chi-btn -flat -light`, href='#', aria-label='Previous')
+                  a(class=`chi-button -flat -light`, href='#', aria-label='Previous')
                     i(class="chi-icon icon-chevron-left", aria-hidden='true')
                     span.-sr--only Previous
                 else if step == '3'
-                  a(class=`chi-btn -flat -light -active`, href='#')= `${step}`
+                  a(class=`chi-button -flat -light -active`, href='#')= `${step}`
                 else if step == '6'
-                  a(class=`chi-btn -flat -light`, href='#')
+                  a(class=`chi-button -flat -light`, href='#')
                     i(class="chi-icon icon-chevron-right", aria-hidden='true')
                     span.-sr--only Next
                 else
-                  a(class=`chi-btn -flat -light`, href='#')= `${step}`
+                  a(class=`chi-button -flat -light`, href='#')= `${step}`
 
 h4 Disabled
 .test-disabled
@@ -83,33 +83,33 @@ h4 Disabled
       .chi-col.-w--12.-w-md--6
         .-p--3.-text--center
           nav.chi-pagination(role='navigation', aria-label='Pagination')
-            .chi-btn__group
+            .chi-button-group
               each step in steps
                 if step == '0'
-                  a(class=`chi-btn -flat -disabled`, href='#', aria-label='Previous', aria-disabled='true' disabled)
+                  a(class=`chi-button -flat -disabled`, href='#', aria-label='Previous', aria-disabled='true' disabled)
                     i(class="chi-icon icon-chevron-left", aria-hidden='true')
                     span.-sr--only Previous
                 else if step == '6'
-                  a(class=`chi-btn -flat`, href='#')
+                  a(class=`chi-button -flat`, href='#')
                     i(class="chi-icon icon-chevron-right", aria-hidden='true')
                     span.-sr--only Next
                 else
-                  a(class=`chi-btn -flat`, href='#')= `${step}`
+                  a(class=`chi-button -flat`, href='#')= `${step}`
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black.-text--center
           nav.chi-pagination(role='navigation', aria-label='Pagination')
-            .chi-btn__group
+            .chi-button-group
               each step in steps
                 if step == '0'
-                  a(class=`chi-btn -flat -light -disabled`, href='#', aria-label='Previous', aria-disabled='true' disabled)
+                  a(class=`chi-button -flat -light -disabled`, href='#', aria-label='Previous', aria-disabled='true' disabled)
                     i(class="chi-icon icon-chevron-left", aria-hidden='true')
                     span.-sr--only Previous
                 else if step == '6'
-                  a(class=`chi-btn -flat -light`, href='#')
+                  a(class=`chi-button -flat -light`, href='#')
                     i(class="chi-icon icon-chevron-right", aria-hidden='true')
                     span.-sr--only Next
                 else
-                  a(class=`chi-btn -flat -light`, href='#')= `${step}`
+                  a(class=`chi-button -flat -light`, href='#')= `${step}`
 
 h4 Sizes
 .test-sizes
@@ -120,36 +120,36 @@ h4 Sizes
           each size in ['sm', 'md', 'lg', 'xl']
             p.-text--bold=`-${size}`
             nav.chi-pagination(role='navigation', aria-label='Pagination').-mb--2
-              .chi-btn__group
+              .chi-button-group
                 each step in steps
                   if step == '0'
-                    a(class=`chi-btn -flat -${size}`, href='#', aria-label='Previous')
+                    a(class=`chi-button -flat -${size}`, href='#', aria-label='Previous')
                       i(class="chi-icon icon-chevron-left", aria-hidden='true')
                       span.-sr--only Previous
                   else if step == '3'
-                    a(class=`chi-btn -flat -active -${size}`, href='#')= `${step}`
+                    a(class=`chi-button -flat -active -${size}`, href='#')= `${step}`
                   else if step == '6'
-                    a(class=`chi-btn -flat -${size}`, href='#', aria-label='Next')
+                    a(class=`chi-button -flat -${size}`, href='#', aria-label='Next')
                       i(class="chi-icon icon-chevron-right", aria-hidden='true')
                       span.-sr--only Next
                   else
-                    a(class=`chi-btn -flat -${size}`, href='#')= `${step}`
+                    a(class=`chi-button -flat -${size}`, href='#')= `${step}`
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
           each size in ['sm', 'md', 'lg', 'xl']
             p.-text--bold.-text--white=`-${size}`
             nav.chi-pagination(role='navigation', aria-label='Pagination').-mb--2
-              .chi-btn__group
+              .chi-button-group
                 each step in steps
                   if step == '0'
-                    a(class=`chi-btn -flat -light -${size}`, href='#', aria-label='Previous')
+                    a(class=`chi-button -flat -light -${size}`, href='#', aria-label='Previous')
                       i(class="chi-icon icon-chevron-left", aria-hidden='true')
                       span.-sr--only Previous
                   else if step == '3'
-                    a(class=`chi-btn -flat -active -light -${size}`, href='#')= `${step}`
+                    a(class=`chi-button -flat -active -light -${size}`, href='#')= `${step}`
                   else if step == '6'
-                    a(class=`chi-btn -flat -light -${size}`, href='#', aria-label='Next')
+                    a(class=`chi-button -flat -light -${size}`, href='#', aria-label='Next')
                       i(class="chi-icon icon-chevron-right", aria-hidden='true')
                       span.-sr--only Next
                   else
-                    a(class=`chi-btn -flat -light -${size}`, href='#')= `${step}`
+                    a(class=`chi-button -flat -light -${size}`, href='#')= `${step}`

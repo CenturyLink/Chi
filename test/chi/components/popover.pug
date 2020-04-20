@@ -33,7 +33,7 @@ each side in moreSides
   div(class=`test-more-${side}`)
     span.-text--h2=`Popper side ${side}`
     .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
-      button(data-position=side, data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover Title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover content.</p></div>').chi-btn.autostart Popover
+      button(data-position=side, data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover Title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover content.</p></div>').chi-button.autostart Popover
 
 div(class=`test-with-custom-content`, style='width: 450px; height: 320px;')
   span.-text--h2=`Popover with custom content`
@@ -44,8 +44,8 @@ div(class=`test-with-custom-content`, style='width: 450px; height: 320px;')
       .chi-popover__content
         p.chi-popover__text Are you sure you want to delete this?
       .chi-popover__footer
-        button.chi-btn.-danger Delete
-        button.chi-btn Cancel
+        button.chi-button.-danger Delete
+        button.chi-button Cancel
       .chi-popover__arrow
 script.
   document.addEventListener(

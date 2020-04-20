@@ -5,7 +5,7 @@ p.-text
   | initialize it with the chi.tooltip factory method.
 .example.-mb--3
   .-p--3
-    button(data-tooltip='Your tooltip text on a button').chi-btn.-mr--2 Tooltip
+    button(data-tooltip='Your tooltip text on a button').chi-button.-mr--2 Tooltip
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
       li.-disabled
@@ -20,7 +20,7 @@ p.-text
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang='html')
-      <button id="tooltip-1" class="chi-btn" data-tooltip="Your tooltip text on a button">Tooltip</button>
+      <button id="tooltip-1" class="chi-button" data-tooltip="Your tooltip text on a button">Tooltip</button>
 
       <script>chi.tooltip(document.getElementById('tooltip-1'));</script>
 
@@ -32,10 +32,10 @@ p.-text
   | of Elements and initialize all at once.
 .example.-mb--3
   .-p--3
-    button(data-tooltip='Your top tooltip text').chi-btn.-mr--2.-mb--2.-mb-md--0 Top Tooltip
-    button(data-tooltip='Your right tooltip text', data-position='right').chi-btn.-mr--2.-mb--2.-mb-md--0 Right Tooltip
-    button(data-tooltip='Your bottom tooltip text', data-position='bottom').chi-btn.-mr--2.-mb--2.-mb-md--0 Bottom Tooltip
-    button(data-tooltip='Your left tooltip text', data-position='left').chi-btn.-mr--2.-mb--2.-mb-md--0 Left Tooltip
+    button(data-tooltip='Your top tooltip text').chi-button.-mr--2.-mb--2.-mb-md--0 Top Tooltip
+    button(data-tooltip='Your right tooltip text', data-position='right').chi-button.-mr--2.-mb--2.-mb-md--0 Right Tooltip
+    button(data-tooltip='Your bottom tooltip text', data-position='bottom').chi-button.-mr--2.-mb--2.-mb-md--0 Bottom Tooltip
+    button(data-tooltip='Your left tooltip text', data-position='left').chi-button.-mr--2.-mb--2.-mb-md--0 Left Tooltip
   .example-tabs.-pl--2
     ul.chi-tabs#example-positioning
       li.-disabled
@@ -50,10 +50,10 @@ p.-text
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang='html')
-      <button class="chi-btn" data-tooltip="Your top tooltip text">Top Tooltip</button>
-      <button class="chi-btn" data-tooltip="Your right tooltip text" data-position="right">Right Tooltip</button>
-      <button class="chi-btn" data-tooltip="Your bottom tooltip text" data-position="bottom">Bottom Tooltip</button>
-      <button class="chi-btn" data-tooltip="Yourleft tooltip text" data-position="left">Left Tooltip</button>
+      <button class="chi-button" data-tooltip="Your top tooltip text">Top Tooltip</button>
+      <button class="chi-button" data-tooltip="Your right tooltip text" data-position="right">Right Tooltip</button>
+      <button class="chi-button" data-tooltip="Your bottom tooltip text" data-position="bottom">Bottom Tooltip</button>
+      <button class="chi-button" data-tooltip="Yourleft tooltip text" data-position="left">Left Tooltip</button>
 
       <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
@@ -65,7 +65,7 @@ p.-text
   .-p--3
     button(data-tooltip='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et interdum purus. ' +
     'Curabitur faucibus varius libero, vel hendrerit enim tincidunt sit amet. Ut eros purus, semper nec ipsum et, ' +
-    'maximus suscipit nibh.').chi-btn.-mr--2.-mb--2.-mb-md--0 Top Tooltip
+    'maximus suscipit nibh.').chi-button.-mr--2.-mb--2.-mb-md--0 Top Tooltip
   .example-tabs.-pl--2
     ul.chi-tabs#example-long
       li.-disabled
@@ -80,7 +80,7 @@ p.-text
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation/#jstab">Chi.js</a>.
     :code(lang='html')
-      <button class="chi-btn" data-tooltip="Lorem ipsum...">Top Tooltip</button>
+      <button class="chi-button" data-tooltip="Lorem ipsum...">Top Tooltip</button>
 
       <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 

@@ -35,13 +35,13 @@ h3 Solid
   .chi-tabs-panel#html
     :code(lang="html")
       <!-- For light backgrounds -->
-      <button class="chi-btn">Base</button>
-      <button class="chi-btn -primary">Primary</button>
-      <button class="chi-btn -dark">Dark</button>
+      <button class="chi-button">Base</button>
+      <button class="chi-button -primary">Primary</button>
+      <button class="chi-button -dark">Dark</button>
 
       <!-- For dark backgrounds -->
-      <button class="chi-btn -secondary">Secondary</button>
-      <button class="chi-btn -light">Light</button>
+      <button class="chi-button -secondary">Secondary</button>
+      <button class="chi-button -light">Light</button>
 
 h3 Outline
 .example.-mb--3
@@ -74,12 +74,12 @@ h3 Outline
   .chi-tabs-panel#html-outline
     :code(lang="html")
       <!-- For light backgrounds -->
-      <button class="chi-btn -primary -outline">Primary</button>
-      <button class="chi-btn -dark -outline">Dark</button>
+      <button class="chi-button -primary -outline">Primary</button>
+      <button class="chi-button -dark -outline">Dark</button>
 
       <!-- For dark backgrounds -->
-      <button class="chi-btn -secondary -outline">Secondary</button>
-      <button class="chi-btn -light -outline">Light</button>
+      <button class="chi-button -secondary -outline">Secondary</button>
+      <button class="chi-button -light -outline">Light</button>
 
 h3 Flat
 .example.-mb--3
@@ -112,20 +112,20 @@ h3 Flat
   .chi-tabs-panel#html-flat
     :code(lang="html")
       <!-- For light backgrounds -->
-      <button class="chi-btn -primary -flat">Primary</button>
-      <button class="chi-btn -dark -flat">Dark</button>
+      <button class="chi-button -primary -flat">Primary</button>
+      <button class="chi-button -dark -flat">Dark</button>
 
       <!-- For dark backgrounds -->
-      <button class="chi-btn -secondary -flat">Secondary</button>
-      <button class="chi-btn -light -flat">Light</button>
+      <button class="chi-button -secondary -flat">Secondary</button>
+      <button class="chi-button -light -flat">Light</button>
 
 h2 Fluid
 p.-text
   | Use Fluid buttons to stretch the full width of the parent container.
 .example.-mb--3
   .-p--3
-    button(class=`chi-btn -fluid -mb--2`) Button
-    button(class=`chi-btn -fluid -justify-content--center`) Button
+    button(class=`chi-button -fluid -mb--2`) Button
+    button(class=`chi-button -fluid -justify-content--center`) Button
   .example-tabs.-pl--2
     ul.chi-tabs#examples-fluid
       li.-active
@@ -142,10 +142,10 @@ p.-text
   .chi-tabs-panel#html-fluid
     :code(lang="html")
       <!-- left aligned content -->
-      <button class="chi-btn -fluid">Button</button>
+      <button class="chi-button -fluid">Button</button>
 
       <!-- center aligned content -->
-      <button class="chi-btn -fluid -justify-content--center">Button</button>
+      <button class="chi-button -fluid -justify-content--center">Button</button>
 
 h2 Icon buttons
 p.-text
@@ -177,15 +177,15 @@ p.-text
   .chi-tabs-panel#html-icon
     :code(lang="html")
       <!-- base -->
-      <button class="chi-btn -icon" aria-label="Button action">
-        <div class="chi-btn__content">
+      <button class="chi-button -icon" aria-label="Button action">
+        <div class="chi-button__content">
           <i class="chi-icon icon-atom"></i>
         </div>
       </button>
 
       <!-- flat -->
-      <button class="chi-btn -icon -flat" aria-label="Button action">
-        <div class="chi-btn__content">
+      <button class="chi-button -icon -flat" aria-label="Button action">
+        <div class="chi-button__content">
           <i class="chi-icon icon-atom"></i>
         </div>
       </button>
@@ -232,24 +232,24 @@ h3 Labeled icon buttons
   .chi-tabs-panel#html-labeled
     :code(lang="html")
       <!-- left aligned -->
-      <button class="chi-btn">
-        <div class="chi-btn__content">
+      <button class="chi-button">
+        <div class="chi-button__content">
           <i class="chi-icon icon-atom"></i>
           <span>Button</span>
         </div>
       </button>
 
       <!-- right aligned -->
-      <button class="chi-btn">
-        <div class="chi-btn__content">
+      <button class="chi-button">
+        <div class="chi-button__content">
           <span>Button</span>
           <i class="chi-icon icon-atom"></i>
         </div>
       </button>
 
       <!-- both sides -->
-      <button class="chi-btn">
-        <div class="chi-btn__content">
+      <button class="chi-button">
+        <div class="chi-button__content">
           <i class="chi-icon icon-atom"></i>
           <span>Button</span>
           <i class="chi-icon icon-atom"></i>
@@ -300,30 +300,30 @@ h3 Floating icon buttons
   .chi-tabs-panel#html-floating-icon
     :code(lang="html")
       <!-- For light backgrounds -->
-      <button class="chi-btn -float" aria-label="Button action">
-        <div class="chi-btn__content">
+      <button class="chi-button -float" aria-label="Button action">
+        <div class="chi-button__content">
           <i class="chi-icon icon-atom"></i>
         </div>
       </button>
-      <button class="chi-btn -primary -float" aria-label="Button action">
-        <div class="chi-btn__content">
+      <button class="chi-button -primary -float" aria-label="Button action">
+        <div class="chi-button__content">
           <i class="chi-icon icon-atom"></i>
         </div>
       </button>
-      <button class="chi-btn -dark -float" aria-label="Button action">
-        <div class="chi-btn__content">
+      <button class="chi-button -dark -float" aria-label="Button action">
+        <div class="chi-button__content">
           <i class="chi-icon icon-atom"></i>
         </div>
       </button>
 
       <!-- For dark backgrounds -->
-      <button class="chi-btn -secondary -float" aria-label="Button action">
-        <div class="chi-btn__content">
+      <button class="chi-button -secondary -float" aria-label="Button action">
+        <div class="chi-button__content">
           <i class="chi-icon icon-atom"></i>
         </div>
       </button>
-      <button class="chi-btn -light -float" aria-label="Button action">
-        <div class="chi-btn__content">
+      <button class="chi-button -light -float" aria-label="Button action">
+        <div class="chi-button__content">
           <i class="chi-icon icon-atom"></i>
         </div>
       </button>
@@ -343,8 +343,8 @@ h3 Close icon button
       <chi-button type="close"></chi-button>
   .chi-tabs-panel#html-close-button
     :code(lang="html")
-      <button class="chi-btn -icon -close" aria-label="Close">
-        <div class="chi-btn__content">
+      <button class="chi-button -icon -close" aria-label="Close">
+        <div class="chi-button__content">
           <i class="chi-icon icon-x"></i>
         </div>
       </button>
@@ -371,9 +371,9 @@ p.-text
       <chi-button color="danger" variant="flat">Danger</chi-button>
   .chi-tabs-panel#html-danger
     :code(lang="html")
-      <button class="chi-btn -danger">Danger</button>
-      <button class="chi-btn -danger -outline">Danger</button>
-      <button class="chi-btn -danger -flat">Danger</button>
+      <button class="chi-button -danger">Danger</button>
+      <button class="chi-button -danger -outline">Danger</button>
+      <button class="chi-button -danger -flat">Danger</button>
 
 h2 Sizes
 p.-text
@@ -420,33 +420,33 @@ p.-text
   .chi-tabs-panel#html-sizes
     :code(lang="html")
       <!-- sm -->
-      <button class="chi-btn -sm">Button</button>
-      <button class="chi-btn -sm -icon" aria-label="Button action">
-        <div class="chi-btn__content">
+      <button class="chi-button -sm">Button</button>
+      <button class="chi-button -sm -icon" aria-label="Button action">
+        <div class="chi-button__content">
           <i class="chi-icon icon-atom"></i>
         </div>
       </button>
 
       <!-- md -->
-      <button class="chi-btn -md">Button</button>
-      <button class="chi-btn -md -icon" aria-label="Button action">
-        <div class="chi-btn__content">
+      <button class="chi-button -md">Button</button>
+      <button class="chi-button -md -icon" aria-label="Button action">
+        <div class="chi-button__content">
           <i class="chi-icon icon-atom"></i>
         </div>
       </button>
 
       <!-- lg -->
-      <button class="chi-btn -lg">Button</button>
-      <button class="chi-btn -lg -icon" aria-label="Button action">
-        <div class="chi-btn__content">
+      <button class="chi-button -lg">Button</button>
+      <button class="chi-button -lg -icon" aria-label="Button action">
+        <div class="chi-button__content">
           <i class="chi-icon icon-atom"></i>
         </div>
       </button>
 
       <!-- xl -->
-      <button class="chi-btn -xl">Button</button>
-      <button class="chi-btn -xl -icon" aria-label="Button action">
-        <div class="chi-btn__content">
+      <button class="chi-button -xl">Button</button>
+      <button class="chi-button -xl -icon" aria-label="Button action">
+        <div class="chi-button__content">
           <i class="chi-icon icon-atom"></i>
         </div>
       </button>
