@@ -72,7 +72,8 @@ body {
   .changelog__version {
     ul:not(.chi-tabs) {
       li {
-        padding: 0.25rem 0;
+        line-height: $line-height-small;
+        padding: 0.125rem 0;
       }
     }
   }
