@@ -2,8 +2,8 @@
 title: What's new
 order: 5
 ---
-script(type='module' src='../../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
-script(nomodule='' src='../../../js/ce/ux-chi-ce/ux-chi-ce.js')
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 .changelog__version.-pb--1
   chi-alert(color='warning', icon='warning')
@@ -39,9 +39,9 @@ script(nomodule='' src='../../../js/ce/ux-chi-ce/ux-chi-ce.js')
         li Added: Sizing utility now supports width increments of 5% for more control over Enterprise Portal table columns (e.g. <code>-w--45</code>).
         li Added: Skeleton loaders to web components which provide users with an indication that content is loading.
         li Added: Popover now supports footers to store actions such as links and buttons.
-        li Added: Breadcrumb now supports size classes to render the component larger or smaller.
+        li Added: Breadcrumb now supports five size classes (e.g. <code>-xs</code>, <code>-sm</code>) to render the component larger or smaller.
         li Added: Tabs now support the ability to mark specific tab links as disabled with class <code>-disabled</code>.
-        li Added: Text utility heading size classes <code>-text--h1</code> - <code>-text--h6</code> to render plain text with h1-h6 heading tag styles.
+        li Added: Text utility heading size classes <code>-text--h1</code> - <code>-text--h6</code> to render text with h1-h6 heading tag styles.
         li Added: Card content now supports the child element <code>chi-card__caption</code> as a more consistent way of storing card captions.
         li Added: Card now supports the class <code>-align--center</code> to flex center align all child elements for Enterprise Portal KPI style cards.
         li Added: Card now supports the class <code>-hover--animate</code> to animate a KPI style card on hover.
@@ -62,7 +62,7 @@ script(nomodule='' src='../../../js/ce/ux-chi-ce/ux-chi-ce.js')
         li Fixed: Dropdown bug which failed to toggle some dropdowns using the data-target method.
         li Fixed: Date picker web component bug which caused 24px of whitespace to render below the input.
         li Fixed: Sidenav behavior when menu items have no association to a Drawer.
-        li Fixed: Sidenav compatibility issue in IE11.
+        li Fixed: Sidenav IE11 compatibility issues.
         li Fixed: Accessibility warning in Drawer web component due to skipped heading level.
         li Fixed: Accessibility error in Number Input web component due to missing label.
         li Fixed: Expansion Panel step numbers did not hide all step number related margins on xs viewports.

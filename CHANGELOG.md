@@ -22,9 +22,9 @@
 * Added: Sizing utility now supports width increments of 5% for more control over Enterprise Portal table columns (e.g. `-w--45`).
 * Added: Skeleton loaders to web components which provide users with an indication that content is loading.
 * Added: Popover now supports footers to store actions such as links and buttons.
-* Added: Breadcrumb now supports size classes to render the component larger or smaller.
+* Added: Breadcrumb now supports five size classes (e.g. `-xs`, `-sm`) to render the component larger or smaller.
 * Added: Tabs now support the ability to mark specific tab links as disabled with class `-disabled`.
-* Added: Text utility heading size classes `-text--h1` - `-text--h6` to render plain text with h1-h6 heading tag styles.
+* Added: Text utility heading size classes `-text--h1` - `-text--h6` to render text with h1-h6 heading tag styles.
 * Added: Card content now supports the child element `chi-card__caption` as a more consistent way of storing card captions.
 * Added: Card now supports the class `-align--center` to flex center align all child elements for Enterprise Portal KPI style cards.
 * Added: Card now supports the class `-hover--animate` to animate a KPI style card on hover.
@@ -43,7 +43,7 @@
 * Fixed: Dropdown bug which failed to toggle some dropdowns using the data-target method.
 * Fixed: Date picker web component bug which caused 24px of whitespace to render below the input.
 * Fixed: Sidenav behavior when menu items have no association to a Drawer.
-* Fixed: Sidenav compatibility issue in IE11.
+* Fixed: Sidenav IE11 compatibility issues.
 * Fixed: Accessibility warning in Drawer web component due to skipped heading level.
 * Fixed: Accessibility error in Number Input web component due to missing label.
 * Fixed: Expansion Panel step numbers did not hide all step number related margins on xs viewports.
