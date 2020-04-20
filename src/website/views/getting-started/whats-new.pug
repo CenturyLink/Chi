@@ -22,12 +22,8 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
       ul.-text.-pl--2
         li Renamed: All component class prefixes for consistency with Chi's web component names. (e.g. <code>a-icon</code> is now <code>chi-icon</code>).
         li Renamed: All legacy camel case utility classes to kebab case (e.g. <code>-floatingLabel</code> is now <code>-floating-label</code>).
-        li Renamed: Alert web component close property from <code>dismissible</code> to <code>closable</code> for consistency.
-        li Renamed: Alert close CSS classes from dismiss to close (e.g. <code>m-alert__dismiss-button</code> is now <code>chi-alert__close-button</code>).
-        li Renamed: Alert web component no border property from <code>borderless</code> to <code>no-border</code> for consistency.
-        li Renamed: Drawer web component no header property from <code>headless</code> to <code>no-header</code> for consistency.
-        li Renamed: Expansion Panel web component title property from <code>heading</code> to <code>title</code> for consistency.
         li Renamed: Text utility size classes for consistency (e.g. <code>-text--smaller</code> is now <code>-text--xs</code>).
+        li Renamed: Alert close CSS classes from dismiss to close (e.g. <code>m-alert__dismiss-button</code> is now <code>chi-alert__close-button</code>).
         li Renamed: Number Input component container from <code>m-input__wrapper</code> to <code>chi-number-input</code>.
         li Renamed: Number Input Expanded component container from <code>m-inputNumber</code> to <code>chi-number-input -expanded</code>.
         li Changed: Number Input sizes (e.g. <code>-sm</code>) are now declared on the component container <code>chi-number-input</code> instead of the input.
@@ -51,12 +47,16 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
         li Changed: Checkbox and Radio Button border width for better consistency with Consumer and Enterprise Portal use cases.
         li Changed: Sidenav has adopted Enterprise Portal's design as the base design for the component. Specifying the class <code>-global-nav</code> is no longer necessary.
         li Changed: Pagination styles have been updated for better consistency with Enterprise Portal use cases.
-        li Changed: Drawer web component is now closable by default (primary use case). Added support for <code>non-closable</code> property to render without a close button.
         li Changed: Progress component base color from semantic green to primary blue for brand consistency.
-        li Changed: Improved Alert and Popover web component mutation observer.
         li Changed: Date picker dates in calendar now render with a normal font-weight when unselected, and a semi-bold font-weight when selected.
         li Changed: Date picker web component now renders icons using Chi's Icon web component.
         li Changed: Card footers now space buttons automatically using a CSS adjacent sibling combinator.
+        li Changed: Alert and Popover web component (beta) mutation observer.
+        li Changed: Drawer web component (beta) is now closable by default (primary use case). Added support for <code>non-closable</code> property to render without a close button.
+        li Renamed: Alert web component (beta) close property from <code>dismissible</code> to <code>closable</code> for consistency.
+        li Renamed: Alert web component (beta) no border property from <code>borderless</code> to <code>no-border</code> for consistency.
+        li Renamed: Drawer web component (beta) no header property from <code>headless</code> to <code>no-header</code> for consistency.
+        li Renamed: Expansion Panel web component (beta) title property from <code>heading</code> to <code>title</code> for consistency.
       h4.-text--h4.-text--bold Fixed
       ul.-text.-pl--2
         li Fixed: Dropdown bug which failed to toggle some dropdowns using the data-target method.
