@@ -6,12 +6,8 @@
 #### Breaking changes
 * Renamed: All component class prefixes for consistency with Chi's web component names. (e.g. `a-icon` is now `chi-icon`).
 * Renamed: All legacy camel case utility classes to kebab case (e.g. `-floatingLabel` is now `-floating-label`).
-* Renamed: Alert web component close property from `dismissible` to `closable` for consistency.
-* Renamed: Alert close CSS classes from `dismiss` to `close` (e.g. `m-alert__dismiss-button` is now `chi-alert__close-button`).
-* Renamed: Alert web component no border property from `borderless` to `no-border` for consistency.
-* Renamed: Drawer web component no header property from `headless` to `no-header` for consistency.
-* Renamed: Expansion Panel web component title property from `heading` to `title` for consistency.
 * Renamed: Text utility size classes for consistency (e.g. `-text--smaller` is now `-text--xs`).
+* Renamed: Alert close CSS classes from `dismiss` to `close` (e.g. `m-alert__dismiss-button` is now `chi-alert__close-button`).
 * Renamed: Number Input component container from `m-input__wrapper` to `chi-number-input`.
 * Renamed: Number Input Expanded component container from `m-inputNumber` to `chi-number-input -expanded`.
 * Changed: Number Input sizes (e.g. `-sm`) are now declared on the component container `chi-number-input` instead of the input.
@@ -22,9 +18,9 @@
 * Added: Sizing utility now supports width increments of 5% for more control over Enterprise Portal table columns (e.g. `-w--45`).
 * Added: Skeleton loaders to web components which provide users with an indication that content is loading.
 * Added: Popover now supports footers to store actions such as links and buttons.
-* Added: Breadcrumb now supports size classes to render the component larger or smaller.
+* Added: Breadcrumb now supports five size classes (e.g. `-xs`, `-sm`) to render the component larger or smaller.
 * Added: Tabs now support the ability to mark specific tab links as disabled with class `-disabled`.
-* Added: Text utility heading size classes `-text--h1` - `-text--h6` to render plain text with h1-h6 heading tag styles.
+* Added: Text utility heading size classes `-text--h1` - `-text--h6` to render text with h1-h6 heading tag styles.
 * Added: Card content now supports the child element `chi-card__caption` as a more consistent way of storing card captions.
 * Added: Card now supports the class `-align--center` to flex center align all child elements for Enterprise Portal KPI style cards.
 * Added: Card now supports the class `-hover--animate` to animate a KPI style card on hover.
@@ -33,17 +29,21 @@
 * Changed: Checkbox and Radio Button border width for better consistency with Consumer and Enterprise Portal use cases.
 * Changed: Sidenav has adopted Enterprise Portal's design as the base design for the component. Specifying the class `-global-nav` is no longer necessary.
 * Changed: Pagination styles have been updated for better consistency with Enterprise Portal use cases.
-* Changed: Drawer web component is now closable by default (primary use case). Added support for `non-closable` property to render without a close button.
 * Changed: Progress component base color from semantic green to primary blue for brand consistency.
-* Changed: Improved Alert and Popover web component mutation observer.
 * Changed: Date picker dates in calendar now render with a normal font-weight when unselected, and a semi-bold font-weight when selected.
 * Changed: Date picker web component now renders icons using Chi's Icon web component.
 * Changed: Card footers now space buttons automatically using a CSS adjacent sibling combinator.
+* Changed: Alert and Popover web component (beta) mutation observer.
+* Changed: Drawer web component (beta) is now closable by default (primary use case). Added support for `non-closable` property to render without a close button.
+* Renamed: Alert web component (beta) close property from `dismissible` to `closable` for consistency.
+* Renamed: Alert web component (beta) no border property from `borderless` to `no-border` for consistency.
+* Renamed: Drawer web component (beta) no header property from `headless` to `no-header` for consistency.
+* Renamed: Expansion Panel web component (beta) title property from `heading` to `title` for consistency.
 #### Fixed
 * Fixed: Dropdown bug which failed to toggle some dropdowns using the data-target method.
 * Fixed: Date picker web component bug which caused 24px of whitespace to render below the input.
 * Fixed: Sidenav behavior when menu items have no association to a Drawer.
-* Fixed: Sidenav compatibility issue in IE11.
+* Fixed: Sidenav IE11 compatibility issues.
 * Fixed: Accessibility warning in Drawer web component due to skipped heading level.
 * Fixed: Accessibility error in Number Input web component due to missing label.
 * Fixed: Expansion Panel step numbers did not hide all step number related margins on xs viewports.
