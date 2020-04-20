@@ -1,31 +1,85 @@
 # CHANGELOG
 
-### 2.0.0 (March 31, 2020)
+## 2.0.0 (April 21, 2020)
 
-* Replaced all atomic class prefixes with chi for consistency with web component names (e.g. a-button is now chi-button).
-* Removed legacy CSS.
-* Changed all legacy camel case utility classes to dash case (e.g. -floatingLabel is now -floating-label).
-* Updated design of Chi Documentation component pages.
-* Consolidated all Chi documentation web component, javascript, and html examples into single component pages.
-* Improved width Sizing utility. Widths can now be defined in increments of 5% instead of 25%.
-* Renamed Expansion Panel web component title attribute from heading to title.
-* Changed all class instances of dismiss to close (e.g. chi-alert__dismiss-button is now chi-alert__close-button).
-* Renamed Alert web component close attribute from dismissible to closable.
-* Changed Drawer web component behavior to closable by default and added support for a non-closable attribute to render without a close button.
-* Updated Drawer web component documentation with new Title example.
-* Fixed behavior of Sidenav component when menu items have no association to a Drawer.
-* Fixed heading level accessibility warning in Drawer web component.
-* Fixed missing label accessibility error in Number Input web component.
-* Improved Alert and Popover web component mutation observer.
-* Changed form focus color value from Chi Blue 60 to Chi Blue 50.
-* Updated all Button and Form components with consistent focus states.
-* Updated Checkbox and Radio Button border width for better consistency with consumer and enterprise portal guidelines.
-* Updated styles of Pagination component for better consistency with consumer and enterprise portal guidelines.
-* Added new icons for enterprise portal (icon-filter, icon-flag, icon-paste).
-* Added skeleton loaders to web components.
-* Added favicon to Documentation website.
+### Components
+#### Breaking changes
+* Renamed: All component class prefixes for consistency with Chi's web component names. (e.g. `a-icon` is now `chi-icon`).
+* Renamed: All legacy camel case utility classes to kebab case (e.g. `-floatingLabel` is now `-floating-label`).
+* Renamed: Alert web component close property from `dismissible` to `closable` for consistency.
+* Renamed: Alert close CSS classes from `dismiss` to `close` (e.g. `m-alert__dismiss-button` is now `chi-alert__close-button`).
+* Renamed: Alert web component no border property from `borderless` to `no-border` for consistency.
+* Renamed: Drawer web component no header property from `headless` to `no-header` for consistency.
+* Renamed: Expansion Panel web component title property from `heading` to `title` for consistency.
+* Renamed: Text utility size classes for consistency (e.g. `-text--smaller` is now `-text--xs`).
+* Renamed: Number Input component container from `m-input__wrapper` to `chi-number-input`.
+* Renamed: Number Input Expanded component container from `m-inputNumber` to `chi-number-input -expanded`.
+* Changed: Number Input sizes (e.g. `-sm`) are now declared on the component container `chi-number-input` instead of the input.
+* Changed: Card content `chi-card__content` now displays as flex column by default for consistency with primary use cases. Flex column utility classes no longer need to be applied.
+#### Added
+* Added: Icons to support Enterprise ticketing portal use cases (`icon-filter`, `icon-flag`, `icon-paste`).
+* Added: Consistent 508/WCAG compliant focus state to all Button and Form components.
+* Added: Sizing utility now supports width increments of 5% for more control over Enterprise Portal table columns (e.g. `-w--45`).
+* Added: Skeleton loaders to web components which provide users with an indication that content is loading.
+* Added: Popover now supports footers to store actions such as links and buttons.
+* Added: Breadcrumb now supports size classes to render the component larger or smaller.
+* Added: Tabs now support the ability to mark specific tab links as disabled with class `-disabled`.
+* Added: Text utility heading size classes `-text--h1` - `-text--h6` to render plain text with h1-h6 heading tag styles.
+* Added: Card content now supports the child element `chi-card__caption` as a more consistent way of storing card captions.
+* Added: Card now supports the class `-align--center` to flex center align all child elements for Enterprise Portal KPI style cards.
+* Added: Card now supports the class `-hover--animate` to animate a KPI style card on hover.
+* Added: Card now supports the class `-no-border` to render cards without a border.
+#### Changed
+* Changed: Checkbox and Radio Button border width for better consistency with Consumer and Enterprise Portal use cases.
+* Changed: Sidenav has adopted Enterprise Portal's design as the base design for the component. Specifying the class `-global-nav` is no longer necessary.
+* Changed: Pagination styles have been updated for better consistency with Enterprise Portal use cases.
+* Changed: Drawer web component is now closable by default (primary use case). Added support for `non-closable` property to render without a close button.
+* Changed: Progress component base color from semantic green to primary blue for brand consistency.
+* Changed: Improved Alert and Popover web component mutation observer.
+* Changed: Date picker dates in calendar now render with a normal font-weight when unselected, and a semi-bold font-weight when selected.
+* Changed: Date picker web component now renders icons using Chi's Icon web component.
+* Changed: Card footers now space buttons automatically using a CSS adjacent sibling combinator.
+#### Fixed
+* Fixed: Dropdown bug which failed to toggle some dropdowns using the data-target method.
+* Fixed: Date picker web component bug which caused 24px of whitespace to render below the input.
+* Fixed: Sidenav behavior when menu items have no association to a Drawer.
+* Fixed: Sidenav compatibility issue in IE11.
+* Fixed: Accessibility warning in Drawer web component due to skipped heading level.
+* Fixed: Accessibility error in Number Input web component due to missing label.
+* Fixed: Expansion Panel step numbers did not hide all step number related margins on xs viewports.
+* Fixed: Expansion Panel step numbers could not be turned off on all viewports without the use of margin utilities.
+* Fixed: Expansion Panel -bordered panels rendered large gap of whitespace between header and content.
+* Fixed: Picker Groups with icons were rendered with a 4px smaller height than those without icons.
+* Fixed: Picker height was inconsistent with height of size class -md (base size).
+* Fixed: Alert icons rendering squished on small viewports.
+* Fixed: File Input button padding was not consistent with button component.
 
-### 1.4.2 (February 27, 2020)
+### Documentation
+#### Breaking changes
+* Changed: Consolidated all documentation from components, javascript, and custom-elements into one section to improve usability.
+#### Added
+* Added: Designed new introduction page to better explain Chi and what it provides.
+* Added: Tabs to all documentation code samples that allow toggling between blueprint code and framework code.
+* Added: Property tab to each component page to store properties, events, methods, and more.
+* Added: Accessibility tab to each component page to store accessibility guidelines and best practices.
+* Added: CenturyLink favicon to Documentation website.
+* Added: Drawer documentation example to illustrate the use of the title property.
+* Added: Text Utilities have been updated with new documentation for text sizes and headings.
+* Added: Card examples that illustrate new behavior: No border, Align center, Animate on hover.
+#### Changed
+* Changed: Removed Icon SVG sprite method (chi-icons.js) from Icon page in favor of Web Component and Web Font methods.
+* Changed: Unified icons in all documentation examples with web fonts for HTML Blueprints and web component icons for Web Components.
+* Changed: Popover documentation has been updated with new examples.
+* Changed: Moved Development Workflow information to dedicated page within Getting Started.
+* Changed: Documentation content containers from divs to more semantic tags (`main`, `nav`, `header`, `article`).
+* Changed: Improved component descriptions for Date picker, Expansion panel, Icon, Popover, and Grid.
+#### Fixed
+* Fixed: Styles and logic for anchoring headings within documentation pages.
+* Fixed: Bug related to -active class management when navigating to an anchor element within documentation tabs.
+* Fixed: Some Expansion Panel documentation code samples did not match examples.
+* Fixed: Corrected several classes on the Text Utilities page which included a period.
+
+## 1.4.2 (February 27, 2020)
 
 * Fixed bug in Grid component which caused grid columns to render incorrectly in IE11.
 * Fixed bug in Picker and Picker Group component which prevented users from navigating the components with tab and arrow keys.
@@ -35,7 +89,7 @@
 * Fixed bug in Spinner component which caused spinners to render slightly vertically misaligned in IE11.
 * Fixed bug in Floating Label component which caused placeholder text to render slightly vertically misaligned in IE11.
 
-### 1.4.1 (February 21, 2020)
+## 1.4.1 (February 21, 2020)
 
 * Added new icons for enterprise navigation (icon-chart-line, icon-circle-user, icon-file-invoice, icon-inbox, icon-wrench).
 * Added background color utility for CenturyLink Dark Blue color swatch.
@@ -46,7 +100,7 @@
 * Added Gulp watch to Chi's documentation website/layouts folder.
 * Fixed bug in documentation to improve navigating to the latest Chi version from older Chi versions.
 
-### 1.4.0 (February 5, 2020)
+## 1.4.0 (February 5, 2020)
 
 * Added Enterprise Global Navigation example to Sidenav component.
 * Added Enterprise Global Header example to Header component.
@@ -75,7 +129,7 @@
 * Fixed accessibility warnings and errors in Picker and Picker Group component.
 * Fixed bug in IE11 which caused the Drawer component close button to render incorrectly.
 
-### 1.3.0 (November 21, 2019)
+## 1.3.0 (November 21, 2019)
 
 * Added search functionality to Chi documentation portal.
 * Updated Alert component with new design to support additional use cases.
@@ -106,7 +160,7 @@
 * Fixed accessibility warnings in Documentation related to redundant navigation links.
 * Fixed accessibility warnings in Documentation examples related to suspicious link titles.
 
-### 1.2.5 (October 15, 2019)
+## 1.2.5 (October 15, 2019)
 
 * Added Dark version of Sidenav component for Enterprise portals.
 * Added small, medium, and large size support to Sidenav component.
@@ -121,7 +175,7 @@
 * Updated Dropdown component trigger margin.
 * Updated Progress component bar height.
 
-### 1.2.4 (September 12, 2019)
+## 1.2.4 (September 12, 2019)
 
 * Added responsive behavior to Picker Group component.
 * Fixed bug in Text Input component which failed to style all available HTML5 input types.
@@ -140,7 +194,7 @@
 * Fixed bug in Drawer component which caused the close icon to scroll with content.
 * Fixed bug in Drawer component which caused the drawer to unexpectedly close.
 
-### 1.2.3 (July 10, 2019)
+## 1.2.3 (July 10, 2019)
 
 * Fixed Icon bug which prevented several web font icons from loading.
 * Added new solid and outline Icons for: Cart, Circle Info, Circle Question, Comment, Comments, Database, Home, Mail, Wifi.
@@ -157,7 +211,7 @@
 * Updated Number Input component widths to support more digits by default.
 * Added !important to utility values to allow overriding component styles.
 
-### 1.2.2 (June 7, 2019)
+## 1.2.2 (June 7, 2019)
 
 * Added text and background utility for CenturyLink's primary grey.
 * Added support for -muted to Alert component.
@@ -176,12 +230,12 @@
 * Updated Authentication templates with Floating Label Input component.
 * Improved design of disabled icon buttons to look more disabled.
 
-### 1.2.1 (May 17, 2019)
+## 1.2.1 (May 17, 2019)
 
 * Fixed Sidenav animation.
 * Fixed Activity lint warnings.
 
-### 1.2.0 (May 16, 2019)
+## 1.2.0 (May 16, 2019)
 
 * Added Javascript Modal component.
 * Added ability to close Modal component via escape key.
@@ -202,12 +256,12 @@
 * Added anchor link support to all sections within Documentation.
 * Added State template to illustrate common user and application states.
 
-### 1.1.1 (March 29, 2019)
+## 1.1.1 (March 29, 2019)
 
 * Fixed vertical nav tab active state.
 * Fixed padding on header mobile.
 
-### 1.1.0 (March 28, 2019)
+## 1.1.0 (March 28, 2019)
 
 * Added support for solid white and solid black logos to brand component.
 * Added label examples to text input and textarea documentation.
@@ -228,11 +282,11 @@
 * Fixed text input and select input padding inconsistency.
 * Added floating label support to Select component.
 
-### 1.0.0 (February 22, 2019)
+## 1.0.0 (February 22, 2019)
 
 * Updated colors to comply with new guidelines from brand team.
 
-### 0.9.1 (January 23, 2019)
+## 0.9.1 (January 23, 2019)
 
 * Added progress component.
 * Fixed bug in Range Slider component which prevented tooltips from rendering in IE.
@@ -252,7 +306,7 @@
 * Added Price component.
 * Fixed bug in Drawer component which prevented some drawers from animating.
 
-### 0.9.0 (December 4, 2018)
+## 0.9.0 (December 4, 2018)
 
 * Updated Header component to support black backgrounds.
 * Updated Brand component to support rendering on black backgrounds.
@@ -279,7 +333,7 @@
 * Added javascript Dropdown component.
 * Updated Alert component to enable more flexibility with icons, header sizes, and alignment.
 
-### 0.8.3 (October 26, 2018)
+## 0.8.3 (October 26, 2018)
 
 * Updated grid utility notation.
 * Updated text utilities notation.
@@ -303,7 +357,7 @@
 * Added Spinner component.
 * Added Avatar component.
 
-### 0.8.2 (October 2, 2018)
+## 0.8.2 (October 2, 2018)
 
 * Extended tab functionality by creating tabbable panes of content and animating active tab borders.
 * Updated Badge component to include icon support.
@@ -313,7 +367,7 @@
 * Added flex utility classes.
 * Merged ux-chi-docs into ux-chi.
 
-### 0.8.1 (July 13, 2018)
+## 0.8.1 (July 13, 2018)
 
 * Updated select form arrow icon and focus color.
 * Added display utility classes.
@@ -321,7 +375,7 @@
 * Renamed -primary button class to -brand.
 * Added border utility classes.
 
-### 0.8.0 (May 24, 2018)
+## 0.8.0 (May 24, 2018)
 
 * Added depth utility classes.
 * Enabled spacing utility classes to be combined (i.e. .-p--4 .-pb--0).
