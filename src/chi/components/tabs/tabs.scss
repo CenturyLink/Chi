@@ -228,6 +228,12 @@
 
   &.-border {
     border-bottom: 0.0625rem solid set-color(grey, 30);
+
+    & > li {
+      &.chi-sliding-border {
+        bottom: -0.0625rem;
+      }
+    }
   }
 
   & > li {

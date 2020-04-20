@@ -2,44 +2,107 @@
 title: What's new
 order: 5
 ---
-script(type='module' src='../../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
-script(nomodule='' src='../../../js/ce/ux-chi-ce/ux-chi-ce.js')
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-.changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v2.0.0" target="_blank">v2.0.0</a>
-  chi-alert(color='info', icon='circle-info')
+.changelog__version.-pb--1
+  chi-alert(color='warning', icon='warning')
     | Chi 2.0 is a major release. Please follow the upgrade guide before updating chi assets.
-  ul#chi-2-tabs.chi-tabs
+  h2.-text--h2.-text--bold.-mb--1.-mt--3 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v2.0.0" target="_blank">Chi v2.0.0</a>
+  .-text--grey.-text--md.-mb--1 April 21, 2020
+  ul#chi-v200-tabs.chi-tabs.-border.-sm
     li.-active
-      a(href='#chi-tabs-whats-new') Changelog
+      a(href='#chi-v200-tabs--release-notes') Release Notes
     li
-      a(href='#chi-tabs-upgrade-guide') Upgrade Guide
-  #chi-tabs-whats-new.chi-tabs-panel.-active
-    .-pt--2
+      a(href='#chi-v200-tabs--upgrade-guide') Upgrade Guide
+  #chi-v200-tabs--release-notes.chi-tabs-panel.-active
+    .-pt--1
+      h3.-text--h3.-text--bold Components
+      h4.-text--h4.-text--bold Breaking changes
       ul.-text.-pl--2
-        li Replaced all atomic class prefixes with chi for consistency with web component names (e.g. a-button is now chi-button).
-        li Removed legacy CSS.
-        li Changed all legacy camel case utility classes to dash case (e.g. -floatingLabel is now -floating-label).
-        li Updated design of Chi Documentation component pages.
-        li Consolidated all Chi documentation web component, javascript, and html examples into single component pages.
-        li Improved width Sizing utility. Widths can now be defined in increments of 5% instead of 25%.
-        li Renamed Expansion Panel web component title attribute from heading to title.
-        li Changed all class instances of dismiss to close (e.g. chi-alert__dismiss-button is now chi-alert__close-button).
-        li Renamed Alert web component close attribute from dismissible to closable.
-        li Changed Drawer web component behavior to closable by default and added support for a non-closable attribute to render without a close button.
-        li Updated Drawer web component documentation with new Title example.
-        li Fixed behavior of Sidenav component when menu items have no association to a Drawer.
-        li Fixed heading level accessibility warning in Drawer web component.
-        li Fixed missing label accessibility error in Number Input web component.
-        li Improved Alert and Popover web component mutation observer.
-        li Changed form focus color value from Chi Blue 60 to Chi Blue 50.
-        li Updated all Button and Form components with consistent focus states.
-        li Updated Checkbox and Radio Button border width for better consistency with consumer and enterprise portal guidelines.
-        li Updated styles of Pagination component for better consistency with consumer and enterprise portal guidelines.
-        li Added new icons for enterprise portal (icon-filter, icon-flag, icon-paste).
-        li Added skeleton loaders to web components.
-        li Added favicon to Documentation website.
-  #chi-tabs-upgrade-guide.chi-tabs-panel
+        li Renamed: All component class prefixes for consistency with Chi's web component names. (e.g. <code>a-icon</code> is now <code>chi-icon</code>).
+        li Renamed: All legacy camel case utility classes to kebab case (e.g. <code>-floatingLabel</code> is now <code>-floating-label</code>).
+        li Renamed: Text utility size classes for consistency (e.g. <code>-text--smaller</code> is now <code>-text--xs</code>).
+        li Renamed: Alert close CSS classes from dismiss to close (e.g. <code>m-alert__dismiss-button</code> is now <code>chi-alert__close-button</code>).
+        li Renamed: Number Input component container from <code>m-input__wrapper</code> to <code>chi-number-input</code>.
+        li Renamed: Number Input Expanded component container from <code>m-inputNumber</code> to <code>chi-number-input -expanded</code>.
+        li Changed: Number Input sizes (e.g. <code>-sm</code>) are now declared on the component container <code>chi-number-input</code> instead of the input.
+        li Changed: Card content <code>chi-card__content</code> now displays as flex column by default for consistency with primary use cases. Flex column utility classes no longer need to be applied.
+      h4.-text--h4.-text--bold Added
+      ul.-text.-pl--2
+        li Added: Icons to support Enterprise ticketing portal use cases (<code>icon-filter</code>, <code>icon-flag</code>, <code>icon-paste</code>).
+        li Added: Consistent 508/WCAG compliant focus state to all Button and Form components.
+        li Added: Sizing utility now supports width increments of 5% for more control over Enterprise Portal table columns (e.g. <code>-w--45</code>).
+        li Added: Skeleton loaders to web components which provide users with an indication that content is loading.
+        li Added: Popover now supports footers to store actions such as links and buttons.
+        li Added: Breadcrumb now supports five size classes (e.g. <code>-xs</code>, <code>-sm</code>) to render the component larger or smaller.
+        li Added: Tabs now support the ability to mark specific tab links as disabled with class <code>-disabled</code>.
+        li Added: Text utility heading size classes <code>-text--h1</code> - <code>-text--h6</code> to render text with h1-h6 heading tag styles.
+        li Added: Card content now supports the child element <code>chi-card__caption</code> as a more consistent way of storing card captions.
+        li Added: Card now supports the class <code>-align--center</code> to flex center align all child elements for Enterprise Portal KPI style cards.
+        li Added: Card now supports the class <code>-hover--animate</code> to animate a KPI style card on hover.
+        li Added: Card now supports the class <code>-no-border</code> to render cards without a border.
+      h4.-text--h4.-text--bold Changed
+      ul.-text.-pl--2
+        li Changed: Checkbox and Radio Button border width for better consistency with Consumer and Enterprise Portal use cases.
+        li Changed: Sidenav has adopted Enterprise Portal's design as the base design for the component. Specifying the class <code>-global-nav</code> is no longer necessary.
+        li Changed: Pagination styles have been updated for better consistency with Enterprise Portal use cases.
+        li Changed: Progress component base color from semantic green to primary blue for brand consistency.
+        li Changed: Date picker dates in calendar now render with a normal font-weight when unselected, and a semi-bold font-weight when selected.
+        li Changed: Date picker web component now renders icons using Chi's Icon web component.
+        li Changed: Card footers now space buttons automatically using a CSS adjacent sibling combinator.
+        li Changed: Alert and Popover web component (beta) mutation observer.
+        li Changed: Drawer web component (beta) is now closable by default (primary use case). Added support for <code>non-closable</code> property to render without a close button.
+        li Renamed: Alert web component (beta) close property from <code>dismissible</code> to <code>closable</code> for consistency.
+        li Renamed: Alert web component (beta) no border property from <code>borderless</code> to <code>no-border</code> for consistency.
+        li Renamed: Drawer web component (beta) no header property from <code>headless</code> to <code>no-header</code> for consistency.
+        li Renamed: Expansion Panel web component (beta) title property from <code>heading</code> to <code>title</code> for consistency.
+      h4.-text--h4.-text--bold Fixed
+      ul.-text.-pl--2
+        li Fixed: Dropdown bug which failed to toggle some dropdowns using the data-target method.
+        li Fixed: Date picker web component bug which caused 24px of whitespace to render below the input.
+        li Fixed: Sidenav behavior when menu items have no association to a Drawer.
+        li Fixed: Sidenav IE11 compatibility issues.
+        li Fixed: Accessibility warning in Drawer web component due to skipped heading level.
+        li Fixed: Accessibility error in Number Input web component due to missing label.
+        li Fixed: Expansion Panel step numbers did not hide all step number related margins on xs viewports.
+        li Fixed: Expansion Panel step numbers could not be turned off on all viewports without the use of margin utilities.
+        li Fixed: Expansion Panel -bordered panels rendered large gap of whitespace between header and content.
+        li Fixed: Picker Groups with icons were rendered with a 4px smaller height than those without icons.
+        li Fixed: Picker height was inconsistent with height of size class -md (base size).
+        li Fixed: Alert icons rendering squished on small viewports.
+        li Fixed: File Input button padding was not consistent with button component.
+
+      h3.-text--h3.-text--bold Documentation
+      h4.-text--h4.-text--bold Breaking changes
+      ul.-text.-pl--2
+        li Changed: Consolidated all documentation from components, javascript, and custom-elements into one section to improve usability.
+      h4.-text--h4.-text--bold Added
+      ul.-text.-pl--2
+        li Added: Designed new introduction page to better explain Chi and what it provides.
+        li Added: Tabs to all documentation code samples that allow toggling between blueprint code and framework code.
+        li Added: Property tab to each component page to store properties, events, methods, and more.
+        li Added: Accessibility tab to each component page to store accessibility guidelines and best practices.
+        li Added: CenturyLink favicon to Documentation website.
+        li Added: Drawer documentation example to illustrate the use of the title property.
+        li Added: Text Utilities have been updated with new documentation for text sizes and headings.
+        li Added: Card examples that illustrate new behavior: No border, Align center, Animate on hover.
+      h4.-text--h4.-text--bold Changed
+      ul.-text.-pl--2
+        li Changed: Removed Icon SVG sprite method (chi-icons.js) from Icon page in favor of Web Component and Web Font methods.
+        li Changed: Unified icons in all documentation examples with web fonts for HTML Blueprints and web component icons for Web Components.
+        li Changed: Popover documentation has been updated with new examples.
+        li Changed: Moved Development Workflow information to dedicated page within Getting Started.
+        li Changed: Documentation content containers from divs to more semantic tags (<code>main</code>, <code>nav</code>, <code>header</code>, <code>article</code>).
+        li Changed: Improved component descriptions for Date picker, Expansion panel, Icon, Popover, and Grid.
+      h4.-text--h4.-text--bold Fixed
+      ul.-text.-pl--2
+        li Fixed: Styles and logic for anchoring headings within documentation pages.
+        li Fixed: Bug related to -active class management when navigating to an anchor element within documentation tabs.
+        li Fixed: Some Expansion Panel documentation code samples did not match examples.
+        li Fixed: Corrected several classes on the Text Utilities page which included a period.
+
+  #chi-v200-tabs--upgrade-guide.chi-tabs-panel
     .-text.-pt--2
       h4 1. Update CSS classnames
     .-text
@@ -146,11 +209,12 @@ script(nomodule='' src='../../../js/ce/ux-chi-ce/ux-chi-ce.js')
           | 6. Make sure that Atomic prefixes are correctly replaced
 
 script.
-  chi.tab(document.getElementById('chi-2-tabs'));
+  chi.tab(document.getElementById('chi-v200-tabs'));
   chi.tab(document.getElementById('chi-2-tabs-classname-replacement'));
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.4.2" target="_blank">v1.4.2</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.4.2" target="_blank">Chi v1.4.2</a>
+  .-text--grey.-text--md.-mb--1 February 27, 2020
   ul.-text.-pl--2
     li Fixed bug in Grid component which caused grid columns to render incorrectly in IE11.
     li Fixed bug in Picker and Picker Group component which prevented users from navigating the components with tab and arrow keys.
@@ -161,7 +225,8 @@ script.
     li Fixed bug in Floating Label component which caused placeholder text to render slightly vertically misaligned in IE11.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.4.1" target="_blank">v1.4.1</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.4.1" target="_blank">Chi v1.4.1</a>
+  .-text--grey.-text--md.-mb--1 February 21, 2020
   ul.-text.-pl--2
     li Added new icons for enterprise navigation (icon-chart-line, icon-circle-user, icon-file-invoice, icon-inbox, icon-wrench).
     li Added background color utility for CenturyLink Dark Blue color swatch.
@@ -173,7 +238,8 @@ script.
     li Fixed bug in documentation to improve navigating to the latest Chi version from older Chi versions.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.4.0" target="_blank">v1.4.0</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.4.0" target="_blank">Chi v1.4.0</a>
+  .-text--grey.-text--md.-mb--1 February 5, 2020
   ul.-text.-pl--2
     li Added Enterprise Global Navigation example to Sidenav component.
     li Added Enterprise Global Header example to Header component.
@@ -203,7 +269,8 @@ script.
     li Fixed bug in IE11 which caused the Drawer component close button to render incorrectly.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.3.0" target="_blank">v1.3.0</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.3.0" target="_blank">Chi v1.3.0</a>
+  .-text--grey.-text--md.-mb--1 November 21, 2019
   ul.-text.-pl--2
     li Added search functionality to Chi documentation portal.
     li Updated Alert component with new design to support additional use cases.
@@ -235,7 +302,8 @@ script.
     li Fixed accessibility warnings in Documentation examples related to suspicious link titles.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.2.5" target="_blank">v1.2.5</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.2.5" target="_blank">Chi v1.2.5</a>
+  .-text--grey.-text--md.-mb--1 October 15, 2019
   ul.-text.-pl--2
     li Added Dark version of Sidenav component for Enterprise portals.
     li Added small, medium, and large size support to Sidenav component.
@@ -251,7 +319,8 @@ script.
     li Updated Progress component bar height.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.2.4" target="_blank">v1.2.4</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.2.4" target="_blank">Chi v1.2.4</a>
+  .-text--grey.-text--md.-mb--1 September 12, 2019
   ul.-text.-pl--2
     li Added responsive behavior to Picker Group component.
     li Fixed bug in Text Input component which failed to style all available HTML5 input types.
@@ -271,7 +340,8 @@ script.
     li Fixed bug in Drawer component which caused the drawer to unexpectedly close.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.2.3" target="_blank">v1.2.3</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.2.3" target="_blank">Chi v1.2.3</a>
+  .-text--grey.-text--md.-mb--1 July 10, 2019
   ul.-text.-pl--2
     li Fixed Icon bug which prevented several web font icons from loading.
     li Added new solid and outline Icons for: Cart, Circle Info, Circle Question, Comment, Comments, Database, Home, Mail, Wifi.
@@ -289,7 +359,8 @@ script.
     li Added !important to utility values to allow overriding component styles.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.2.2" target="_blank">v1.2.2</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.2.2" target="_blank">Chi v1.2.2</a>
+  .-text--grey.-text--md.-mb--1 June 7, 2019
   ul.-text.-pl--2
     li Added text and background utility for CenturyLink's primary grey.
     li Added support for -muted to Alert component.
@@ -309,13 +380,15 @@ script.
     li Improved design of disabled icon buttons to look more disabled.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.2.1" target="_blank">v1.2.1</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.2.1" target="_blank">Chi v1.2.1</a>
+  .-text--grey.-text--md.-mb--1 May 17, 2019
   ul.-text.-pl--2
     li Fixed Sidenav animation.
     li Fixed Activity lint warnings.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.2.0" target="_blank">v1.2.0</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.2.0" target="_blank">Chi v1.2.0</a>
+  .-text--grey.-text--md.-mb--1 May 16, 2019
   ul.-text.-pl--2
     li Added Javascript Modal component.
     li Added ability to close Modal component via escape key.
@@ -337,13 +410,15 @@ script.
     li Added State template to illustrate common user and application states.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.1.1" target="_blank">v1.1.1</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.1.1" target="_blank">Chi v1.1.1</a>
+  .-text--grey.-text--md.-mb--1 March 29, 2019
   ul.-text.-pl--2
     li Fixed vertical nav tab active state.
     li Fixed padding on header mobile.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.1.0" target="_blank">v1.1.0</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.1.0" target="_blank">Chi v1.1.0</a>
+  .-text--grey.-text--md.-mb--1 March 28, 2019
   ul.-text.-pl--2
     li Added support for solid white and solid black logos to brand component.
     li Added label examples to text input and textarea documentation.
@@ -365,12 +440,14 @@ script.
     li Added floating label support to Select component.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.0.0" target="_blank">v1.0.0</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.0.0" target="_blank">Chi v1.0.0</a>
+  .-text--grey.-text--md.-mb--1 February 22, 2019
   ul.-text.-pl--2
     li Updated colors to comply with new guidelines from brand team.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v0.9.1" target="_blank">v0.9.1</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v0.9.1" target="_blank">Chi v0.9.1</a>
+  .-text--grey.-text--md.-mb--1 January 23, 2019
   ul.-text.-pl--2
     li Added progress component.
     li Fixed bug in Range Slider component which prevented tooltips from rendering in IE.
@@ -391,7 +468,8 @@ script.
     li Fixed bug in Drawer component which prevented some drawers from animating.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v0.9.0" target="_blank">v0.9.0</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v0.9.0" target="_blank">Chi v0.9.0</a>
+  .-text--grey.-text--md.-mb--1 December 4, 2018
   ul.-text.-pl--2
     li Updated Header component to support black backgrounds.
     li Updated Brand component to support rendering on black backgrounds.
@@ -419,7 +497,8 @@ script.
     li Updated Alert component to enable more flexibility with icons, header sizes, and alignment.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v0.8.3" target="_blank">v0.8.3</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v0.8.3" target="_blank">Chi v0.8.3</a>
+  .-text--grey.-text--md.-mb--1 October 26, 2018
   ul.-text.-pl--2
     li Updated grid utility notation.
     li Updated text utilities notation.
@@ -444,7 +523,8 @@ script.
     li Added Avatar component.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v0.8.2" target="_blank">v0.8.2</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v0.8.2" target="_blank">Chi v0.8.2</a>
+  .-text--grey.-text--md.-mb--1 October 2, 2018
   ul.-text.-pl--2
     li Extended tab functionality by creating tabbable panes of content and animating active tab borders.
     li Updated Badge component to include icon support.
@@ -455,7 +535,8 @@ script.
     li Merged ux-chi-docs into ux-chi.
 
 .changelog__version.-py--1
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v0.8.1" target="_blank">v0.8.1</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v0.8.1" target="_blank">Chi v0.8.1</a>
+  .-text--grey.-text--md.-mb--1 July 13, 2018
   ul.-text.-pl--2
     li Updated select form arrow icon and focus color.
     li Added display utility classes.
@@ -464,7 +545,8 @@ script.
     li Added border utility classes.
 
 .changelog__version.-pt--1.-pb--4
-  h2 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v0.8.0" target="_blank">v0.8.0</a>
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v0.8.0" target="_blank">Chi v0.8.0</a>
+  .-text--grey.-text--md.-mb--1 May 24, 2018
   ul.-text.-pl--2
     li Added depth utility classes.
     li Enabled spacing utility classes to be combined (i.e. .-p--4 .-pb--0).
