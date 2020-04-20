@@ -1,6 +1,8 @@
 #!/bin/bash
 
 PROJECT_SRC='path/to/project/folder'
+# Please make sure that you provide correct path to your project folder.
+# Wrong path might affect other folders / projects
 
 export LC_ALL=C
 
@@ -28,7 +30,8 @@ ARRAY=(
     "a-breadcrumb:chi-breadcrumb"
 
     # Button
-    "a-btn:chi-btn"
+    "m-btnGroup:chi-button-group"
+    "a-btn:chi-button"
 
     # Card
     "a-card:chi-card"
@@ -144,8 +147,7 @@ ARRAY=(
     "m-inputNumber:chi-number-input -expanded"
     "m-form__item:chi-form__item"
     "m-label__wrapper:chi-label__wrapper"
-    "m-avatarGroup:chi-avatar__group"
-    "m-btnGroup:chi-btn__group"
+    "m-avatarGroup:chi-avatar-group"
     "-noGutter:-no-gutter"
     "-borderless:-no-border"
     "-noBorder:-no-border"
