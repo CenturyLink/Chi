@@ -22,14 +22,14 @@ if (window.attachEvent) {
   window.attachEvent('onload', executeOnLoadCallbacks);
 } else {
   if (window.onload) {
-    const currentOnLoad = window.onload;
-    const newOnLoad = function (evt) {
-      currentOnLoad(evt);
-      executeOnLoadCallbacks(evt);
-    };
-    window.onload = newOnLoad;
+      const currentOnLoad = window.onload;
+      const newOnLoad = function(evt) {
+        currentOnLoad(evt);
+        executeOnLoadCallbacks(evt);
+      };
+      window.onload = newOnLoad;
   } else {
-    window.onload = executeOnLoadCallbacks;
+      window.onload = executeOnLoadCallbacks;
   }
 }
 
@@ -64,11 +64,11 @@ function addId(item) {
   processedAnchors.all.push(id);
 }
 
-function enableCopyToClipboardFeature(preElem) {
+function enableCopyToClipboardFeature (preElem) {
 
   const code = preElem.childNodes && preElem.childNodes[0];
 
-  if (code.nodeName !== 'CODE' || !code.textContent) {
+  if ( code.nodeName !== 'CODE' || !code.textContent ) {
     return;
   }
 
@@ -84,7 +84,7 @@ function enableCopyToClipboardFeature(preElem) {
 
   preElem.parentNode.insertBefore(copyButtonWrapper, preElem);
 
-  const copy = function () {
+  const copy = function() {
     const textArea = document.createElement("textarea");
     textArea.textContent = code.textContent;
     textArea.style.opacity = "0.01";
@@ -102,13 +102,13 @@ onLoad(() => {
 
   var examples = document.querySelectorAll('.chi-example');
 
-  Array.prototype.forEach.call(examples, function (example) {
+  Array.prototype.forEach.call(examples, function(example) {
     const firstChild = example.querySelector('li:first-child');
     const lastChild = example.querySelector('li:last-child');
     const htmlItem = example.querySelector('.chi-example__html');
     const codeItem = example.querySelector('.chi-example__code');
 
-    firstChild.onclick = function (evt) {
+    firstChild.onclick = function(evt) {
       evt.preventDefault();
 
       addClass(firstChild, '-active');
@@ -117,7 +117,7 @@ onLoad(() => {
       addClass(codeItem, '-hidden');
     };
 
-    lastChild.onclick = function (evt) {
+    lastChild.onclick = function(evt) {
       evt.preventDefault();
 
       removeClass(firstChild, '-active');
@@ -127,17 +127,24 @@ onLoad(() => {
     };
   });
 
-  var anchors = [...document.querySelectorAll('h2,h3,h4')]
-    .filter((elem) => elem.matches('.docs-body:not(.-non-doc) .chi-grid__container *'));
+  var anchors = [];
 
-  // Polyfill element.closest IE9+
+  Array.prototype.forEach.call(
+    document.querySelectorAll('h2,h3,h4'),
+    function(heading) {
+      if (document.querySelector('.docs-body:not(.-non-doc)').contains(heading)) {
+        anchors.push(heading);
+      }
+  });
+
+ // Polyfill element.closest IE9+
   if (!Element.prototype.matches) {
     Element.prototype.matches = Element.prototype.msMatchesSelector ||
       Element.prototype.webkitMatchesSelector;
   }
 
   if (!Element.prototype.closest) {
-    Element.prototype.closest = function (s) {
+    Element.prototype.closest = function(s) {
       var el = this;
 
       do {
@@ -148,7 +155,7 @@ onLoad(() => {
     };
   }
 
-  Array.prototype.forEach.call(anchors, function (anchor) {
+  Array.prototype.forEach.call(anchors, function(anchor) {
     const spanContainer = document.createElement('span');
     const anchorLink = document.createElement('a');
     if (anchor.closest(".example")) {
@@ -159,17 +166,17 @@ onLoad(() => {
       spanContainer.appendChild(anchorLink);
       anchorLink.textContent = '#';
       anchorLink.setAttribute('class', '-ml--1');
-      anchorLink.setAttribute('href', '#' + anchor.id);
+      anchorLink.setAttribute('href', '#'+anchor.id);
       anchor.appendChild(spanContainer);
-      if (window.location.hash === '#' + anchor.id) {
+      if (window.location.hash === '#'+anchor.id) {
         window.location.hash = '#';
-        window.location.hash = '#' + anchor.id;
+        window.location.hash = '#'+anchor.id;
       }
     }
   });
 
   var codeSnippets = document.getElementsByTagName('pre');
-  Array.prototype.forEach.call(codeSnippets, function (codeSnippet) {
+  Array.prototype.forEach.call(codeSnippets, function(codeSnippet) {
     if (codeSnippet.hasChildNodes('code')) {
       enableCopyToClipboardFeature(codeSnippet);
     }
