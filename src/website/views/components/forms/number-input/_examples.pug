@@ -7,7 +7,8 @@ p.-text An initial value is optional. If an initial value is not provided, <code
 .example.-mb--3
   .-p--3
     .chi-form__item
-      chi-number-input
+      chi-label(for="example-1") Label
+      chi-number-input#example-1
   .example-tabs.-pl--2
     ul.chi-tabs#examples-default
       li.-active
@@ -38,7 +39,8 @@ h3 Disabled
 .example.-mb--3
   .-p--3
     .chi-form__item
-      chi-number-input(disabled=true)
+      chi-label(for="example-2") Label
+      chi-number-input(disabled=true)#example-2
   .example-tabs.-pl--2
     ul.chi-tabs#examples-disabled
       li.-active
@@ -73,7 +75,8 @@ p.-text
   .-p--3
     each size in ['sm', 'md', 'lg', 'xl']
       .chi-form__item.-inline.-mr--3
-        chi-number-input(size=`${size}`)
+        chi-label(for=`example-3-${size}`) Label
+        chi-number-input(size=`${size}`, id=`example-3-${size}`)
   .example-tabs.-pl--2
     ul.chi-tabs#examples-sizes
       li.-active
@@ -137,7 +140,9 @@ h2 Expanded version
 h3 Base
 .example.-mb--3
   .-p--3
-    chi-number-input(expanded=true)
+    .chi-form__item
+      chi-label(for="example-4") Label
+      chi-number-input(expanded=true)#example-4
   .example-tabs.-pl--2
     ul.chi-tabs#examples-expanded
       li.-active
@@ -175,7 +180,9 @@ h3 Base
 h3 Disabled
 .example.-mb--3
   .-p--3
-    chi-number-input(expanded=true disabled=true)
+    .chi-form__item
+      chi-label(for="example-5") Label
+      chi-number-input(expanded=true disabled=true)#example-5
   .example-tabs.-pl--2
     ul.chi-tabs#examples-expanded-disabled
       li.-active
@@ -217,7 +224,9 @@ p.-text
 .example.-mb--3
   .-p--3.-d--flex.-justify-content--start.-align-items--center
     each size in ['sm', 'md', 'lg', 'xl']
-      chi-number-input(expanded=true size=`${size}` class='-mr--2')
+      .chi-form__item
+        chi-label(for=`example-5-${size}`) Label
+        chi-number-input(expanded=true, size=`${size}`, class='-mr--2', id=`example-5-${size}`)
   .example-tabs.-pl--2
     ul.chi-tabs#examples-expanded-sizes
       li.-active
