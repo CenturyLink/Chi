@@ -2,28 +2,54 @@
 @import '_variables';
 
 $brand-sizes: (
-  xs: 0.75rem,
-  sm: 1rem,
-  sm--2: 1.25rem,
-  sm--3: 1.5rem,
-  md: 2rem,
-  lg: 4rem,
-  xl: 6rem,
-  xxl: 8rem);
+  xs: (
+    height: 0.75rem,
+    width: 3.731rem,
+  ),
+  sm: (
+    height: 1rem,
+    width: 4.975rem,
+  ),
+  sm--2: (
+    height: 1.25rem,
+    width: 6.219rem,
+  ),
+  sm--3: (
+    height: 1.5rem,
+    width: 7.463rem,
+  ),
+  md: (
+    height: 2rem,
+    width: 9.951rem,
+  ),
+  lg: (
+    height: 4rem,
+    width: 19.902rem,
+  ),
+  xl: (
+    height: 6rem,
+    width: 29.853rem,
+  ),
+  xxl: (
+    height: 8rem,
+    width: 39.805rem,
+  ),
+);
 
 .chi-brand {
   & > img,
   & > svg {
     display: block;
     height: 2rem;
-    width: auto;
+    width: 9.951rem;
   }
 
   @each $type in map-keys($brand-sizes) {
     &.-#{$type} {
       & > img,
       & > svg {
-        height: map-get($brand-sizes, $type);
+        height: map-get(map-get($brand-sizes, $type), height);
+        width: map-get(map-get($brand-sizes, $type), width);
       }
     }
   }
