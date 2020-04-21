@@ -52,7 +52,10 @@ p.-text Textarea supports Chi's semantic class modifier <code>-danger</code> for
   .-p--3
     .chi-form__item(style="max-width:30rem")
       label.chi-label(for="example__danger") Label
-      textarea.chi-input.-danger(id="example__danger") Sample text
+      .chi-input__wrapper.-icon--right
+        textarea.chi-input.-danger(id="example__danger") Sample text
+        i.chi-icon.icon-circle-warning.-text--danger
+      div.chi-label.-status.-danger This is an invalid label
   .example-tabs.-pl--2
     ul.chi-tabs#example-state-invalid
       li.-disabled
@@ -64,9 +67,12 @@ p.-text Textarea supports Chi's semantic class modifier <code>-danger</code> for
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="example__danger-icon">Label</label>
-        <textarea class="chi-input -danger" id="example__danger">
-          Sample text
-        </textarea>
+        <div class="chi-input__wrapper -icon--right">
+          <textarea class="chi-input -danger" id="example__danger">
+            Sample text
+          </textarea>
+        </div>
+        <div class="chi-label -status -danger">This is an invalid label</div>
       </div>
 
 h2 Icons

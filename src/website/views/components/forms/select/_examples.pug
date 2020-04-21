@@ -61,6 +61,7 @@ p.-text
       label.chi-label(for="example-invalid") Label
       select(class="chi-input -danger", id="example-invalid")
         option Danger Select
+      .chi-label.-status.-danger This is an invalid label
   .example-tabs.-pl--2
     ul.chi-tabs#example-select-invalid
       li.-disabled
@@ -75,6 +76,7 @@ p.-text
         <select class="chi-input -danger" id="example-invalid">
           <option>Invalid Select</option>
         </select>
+        <div class="chi-label -status -danger">This is an invalid label</div>
       </div>
 
 h3 Sizes
@@ -161,7 +163,7 @@ p.-text
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../../getting-started/installation/#jstab">Chi.js</a>.
+        | <a href="../../../getting-started/installation">Chi.js</a>.
     :code(lang='html')
       <div id="floating-label-lg" class="chi-input__wrapper -floating-label">
         <select class="chi-input -lg" id="floating-label-select-lg">

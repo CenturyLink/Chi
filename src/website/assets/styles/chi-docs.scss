@@ -78,6 +78,21 @@ body {
     }
   }
 
+  .chi-expansion-panel {
+    &.-web-components {
+      .chi-epanel {
+        &.-active {
+          .chi-epanel__title {
+            .icon-chevron-right {
+              transform: rotate(90deg);
+              transition: transform 0.2s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .chi-table__options code {
     word-break: normal;
   }

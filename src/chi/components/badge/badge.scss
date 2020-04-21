@@ -121,9 +121,10 @@ $badge: c-badge;
   &.-secondary {
     background-color: $secondary-color;
     border: 0.0625rem solid $secondary-color;
+    color: $text-black;
 
     &.-outline {
-      background-color:  transparent;
+      background-color: transparent;
       color: $secondary-color;
     }
 
@@ -203,19 +204,19 @@ $badge: c-badge;
   }
 
   &.-dark {
-    background-color: $dark-color;
-    border: 0.0625rem solid $dark-color;
+    background-color: set-color(black);
+    border: 0.0625rem solid set-color(black);
     color: set-color(white);
 
     &.-outline {
       background-color: transparent;
-      color: $dark-color;
+      color: $text-black;
     }
 
     &.-flat {
       background-color: transparent;
       border-color: transparent;
-      color: $dark-color;
+      color: $text-black;
     }
   }
 
@@ -255,6 +256,7 @@ $badge: c-badge;
   &.-light {
     background-color: set-color(white);
     border: 0.0625rem solid set-color(white);
+    color: $text-black;
 
     &.-outline {
       background-color: transparent;
