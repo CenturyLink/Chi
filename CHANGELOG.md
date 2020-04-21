@@ -5,7 +5,7 @@
 ### Components
 #### Breaking changes
 * Renamed: All component class prefixes for consistency with Chi's web component names. (e.g. `a-icon` is now `chi-icon`).
-* Renamed: All legacy camel case utility classes to kebab case (e.g. `-floatingLabel` is now `-floating-label`).
+* Renamed: All legacy camel case classes to kebab case (e.g. `-floatingLabel` is now `-floating-label`).
 * Renamed: Text utility size classes for consistency (e.g. `-text--smaller` is now `-text--xs`).
 * Renamed: Alert close CSS classes from `dismiss` to `close` (e.g. `m-alert__dismiss-button` is now `chi-alert__close-button`).
 * Renamed: Number Input component container from `m-input__wrapper` to `chi-number-input`.
@@ -25,6 +25,7 @@
 * Added: Card now supports the class `-align--center` to flex center align all child elements for Enterprise Portal KPI style cards.
 * Added: Card now supports the class `-hover--animate` to animate a KPI style card on hover.
 * Added: Card now supports the class `-no-border` to render cards without a border.
+* Added: Button now supports turning off `-flat` button hover states with the class `-no-hover`.
 #### Changed
 * Changed: Checkbox and Radio Button border width for better consistency with Consumer and Enterprise Portal use cases.
 * Changed: Sidenav has adopted Enterprise Portal's design as the base design for the component. Specifying the class `-global-nav` is no longer necessary.
@@ -56,7 +57,7 @@
 
 ### Documentation
 #### Breaking changes
-* Changed: Consolidated all documentation from components, javascript, and custom-elements into one section to improve usability.
+* Changed: Consolidated all documentation from /javascript and /custom-elements sections into /components to improve usability.
 #### Added
 * Added: Designed new introduction page to better explain Chi and what it provides.
 * Added: Tabs to all documentation code samples that allow toggling between blueprint code and framework code.
@@ -73,6 +74,7 @@
 * Changed: Moved Development Workflow information to dedicated page within Getting Started.
 * Changed: Documentation content containers from divs to more semantic tags (`main`, `nav`, `header`, `article`).
 * Changed: Improved component descriptions for Date picker, Expansion panel, Icon, Popover, and Grid.
+* Changed: Improved invalid form examples for Text Input, Textarea, and Select.
 #### Fixed
 * Fixed: Styles and logic for anchoring headings within documentation pages.
 * Fixed: Bug related to -active class management when navigating to an anchor element within documentation tabs.

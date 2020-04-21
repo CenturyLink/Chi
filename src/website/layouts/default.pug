@@ -3,15 +3,17 @@
 doctype html
 html(lang="en")
     head
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
         if title
             title Chi - #{title}
             if !description
-                meta(name="description", content=`${title}. ${defaultMetaDescription}`)
+                meta(name="description", content=`${defaultMetaDescription}`)
         else
             title Chi - Documentation
             if !description
                 meta(name="description", content=`${defaultMetaDescription}`)
-        meta(name="viewport", content="width=device-width, initial-scale=1")
         if description
             meta(name="description", content=description)
         link(rel="stylesheet", href=`${rootPath}chi.css`)

@@ -49,7 +49,10 @@ p.-text Text inputs support Chi's semantic class modifier <code>-danger</code> f
   .-p--3
     .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example__danger") Label
-      input(type="text", class="chi-input -danger", value="Sample Text", id="example__danger")
+      .chi-input__wrapper.-icon--right
+        input(type="text", class="chi-input -danger", value="Sample Text", id="example__danger")
+        i.chi-icon.icon-circle-warning.-text--danger
+      .chi-label.-status.-danger This is an invalid label
   .example-tabs.-pl--2
     ul.chi-tabs#example-invalid
       li.-disabled
@@ -61,7 +64,11 @@ p.-text Text inputs support Chi's semantic class modifier <code>-danger</code> f
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="example__danger">Label</label>
-        <input type="text" class="chi-input -danger" value="Sample Text" id="example__danger">
+        <div class="chi-input__wrapper -icon--right">
+          <input type="text" class="chi-input -danger" value="Sample Text" id="example__danger">
+          <i class="chi-icon icon-circle-warning -text--danger"></i>
+        </div>
+        <div class="chi-label -status -danger">This is an invalid label</div>
       </div>
 
 h3 Label with icon
@@ -477,7 +484,7 @@ p.-text
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../../getting-started/installation/#jstab">Chi.js</a>.
+        | <a href="../../../getting-started/installation">Chi.js</a>.
     :code(lang='html')
       <div class="chi-input__wrapper -floating-label">
         <input class="chi-input -lg" type="text" id="floating-label-lg">

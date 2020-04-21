@@ -445,6 +445,20 @@ $sizes: (
           }
         }
       }
+
+      &.-no-hover {
+        &:hover,
+        &.-hover {
+          border-color: transparent;
+          box-shadow: none;
+        }
+
+        &:focus,
+        &.-focus {
+          border-color: set-color(grey, 40);
+          outline: none;
+        }
+      }
     }
   }
 
@@ -505,6 +519,19 @@ $sizes: (
 
           .chi-icon {
             color: set-color($color);
+          }
+
+          &.-no-hover {
+            &:hover,
+            &.-hover {
+              border-color: transparent;
+            }
+
+            &:focus,
+            &.-focus {
+              border-color: set-color($color);
+              outline: none;
+            }
           }
         }
 
@@ -678,6 +705,19 @@ $sizes: (
               background-color: transparent;
               border: $border solid set-color($color, $tone);
               box-shadow: none;
+            }
+          }
+
+          &.-no-hover {
+            &:hover,
+            &.-hover {
+              border-color: transparent;
+            }
+
+            &:focus,
+            &.-focus {
+              border-color: set-color($color, $tone);
+              outline: none;
             }
           }
         }

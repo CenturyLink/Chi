@@ -21,7 +21,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
       h4.-text--h4.-text--bold Breaking changes
       ul.-text.-pl--2
         li Renamed: All component class prefixes for consistency with Chi's web component names. (e.g. <code>a-icon</code> is now <code>chi-icon</code>).
-        li Renamed: All legacy camel case utility classes to kebab case (e.g. <code>-floatingLabel</code> is now <code>-floating-label</code>).
+        li Renamed: All legacy camel case classes to kebab case (e.g. <code>-floatingLabel</code> is now <code>-floating-label</code>).
         li Renamed: Text utility size classes for consistency (e.g. <code>-text--smaller</code> is now <code>-text--xs</code>).
         li Renamed: Alert close CSS classes from dismiss to close (e.g. <code>m-alert__dismiss-button</code> is now <code>chi-alert__close-button</code>).
         li Renamed: Number Input component container from <code>m-input__wrapper</code> to <code>chi-number-input</code>.
@@ -31,7 +31,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
       h4.-text--h4.-text--bold Added
       ul.-text.-pl--2
         li Added: Icons to support Enterprise ticketing portal use cases (<code>icon-filter</code>, <code>icon-flag</code>, <code>icon-paste</code>).
-        li Added: Consistent 508/WCAG compliant focus state to all Button and Form components.
+        li Added: Consistent 508/WCAG compliant focus state to all Form components and Buttons.
         li Added: Sizing utility now supports width increments of 5% for more control over Enterprise Portal table columns (e.g. <code>-w--45</code>).
         li Added: Skeleton loaders to web components which provide users with an indication that content is loading.
         li Added: Popover now supports footers to store actions such as links and buttons.
@@ -42,6 +42,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
         li Added: Card now supports the class <code>-align--center</code> to flex center align all child elements for Enterprise Portal KPI style cards.
         li Added: Card now supports the class <code>-hover--animate</code> to animate a KPI style card on hover.
         li Added: Card now supports the class <code>-no-border</code> to render cards without a border.
+        li Added: Button now supports turning off <code>-flat</code> button hover states with the class <code>-no-hover</code>.
       h4.-text--h4.-text--bold Changed
       ul.-text.-pl--2
         li Changed: Checkbox and Radio Button border width for better consistency with Consumer and Enterprise Portal use cases.
@@ -76,7 +77,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
       h3.-text--h3.-text--bold Documentation
       h4.-text--h4.-text--bold Breaking changes
       ul.-text.-pl--2
-        li Changed: Consolidated all documentation from components, javascript, and custom-elements into one section to improve usability.
+        li Changed: Consolidated all documentation from /javascript and /custom-elements sections into /components to improve usability.
       h4.-text--h4.-text--bold Added
       ul.-text.-pl--2
         li Added: Designed new introduction page to better explain Chi and what it provides.
@@ -95,6 +96,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
         li Changed: Moved Development Workflow information to dedicated page within Getting Started.
         li Changed: Documentation content containers from divs to more semantic tags (<code>main</code>, <code>nav</code>, <code>header</code>, <code>article</code>).
         li Changed: Improved component descriptions for Date picker, Expansion panel, Icon, Popover, and Grid.
+        li Changed: Improved invalid form examples for Text Input, Textarea, and Select.
       h4.-text--h4.-text--bold Fixed
       ul.-text.-pl--2
         li Fixed: Styles and logic for anchoring headings within documentation pages.
@@ -103,110 +105,113 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
         li Fixed: Corrected several classes on the Text Utilities page which included a period.
 
   #chi-v200-tabs--upgrade-guide.chi-tabs-panel
-    .-text.-pt--2
-      h4 1. Update CSS classnames
-    .-text
-      | Up to version 1.4.2 Chi CSS classes were based on Atomic Design methodology.
-      br
-      | Version 2.0 uses Chi specific classname prefixes instead of Atomic ones.
-      .example(style='border:none')
-        table.chi-table.-mt--3.-mb--3(cellpadding='0', cellspacing='0')
-          thead
-            tr
-              th.-text--center Level
-              th Change
-          tbody
-            tr
-              td.-text--center Atom
-              td
-                b a
-                | -classname__extension
-                i.-ml--1.chi-icon.-xs.icon-chevron-right.-text--muted
-                code.-ml--1 chi-classname__extension
-            tr
-              td.-text--center Molecule
-              td
-                b m
-                | -classname__extension
-                i.-ml--1.chi-icon.-xs.icon-chevron-right.-text--muted
-                code.-ml--1 chi-classname__extension
-            tr
-              td.-text--center Organism
-              td
-                b o
-                | -classname__extension
-                i.-ml--1.chi-icon.-xs.icon-chevron-right.-text--muted
-                code.-ml--1 chi-classname__extension
-            tr
-              td.-text--center Template
-              td
-                b t
-                | -classname__extension
-                i.-ml--1.chi-icon.-xs.icon-chevron-right.-text--muted
-                code.-ml--1 chi-classname__extension
-            tr
-              td.-text--center Page
-              td
-                b p
-                | -classname__extension
-                i.-ml--1.chi-icon.-xs.icon-chevron-right.-text--muted
-                code.-ml--1 chi-classname__extension
-
-    .-text.-mt--3
+    .-pt--1
+      h3.-text--h3.-text--bold Update CSS classnames
+    p.-text
+      | Up until version 1.4.2 of Chi, CSS classnames were based on Atomic Design methodology.
+      | Version 2.0 uses Chi specific classname prefixes instead of Atomic ones for consistency with Chi's web component names (e.g. <code>a-icon</code> is now <code>chi-icon</code>).
+    .example(style='border:none')
+      table.chi-table.-bordered.-mt--3.-mb--3
+        thead
+          tr
+            th Level
+            th Change
+        tbody
+          tr
+            td Atom
+            td
+              b a
+              | -classname__extension
+              i.-ml--1.chi-icon.-xs.icon-chevron-right.-text--muted
+              code.-ml--1 chi-classname__extension
+          tr
+            td Molecule
+            td
+              b m
+              | -classname__extension
+              i.-ml--1.chi-icon.-xs.icon-chevron-right.-text--muted
+              code.-ml--1 chi-classname__extension
+          tr
+            td Organism
+            td
+              b o
+              | -classname__extension
+              i.-ml--1.chi-icon.-xs.icon-chevron-right.-text--muted
+              code.-ml--1 chi-classname__extension
+          tr
+            td Template
+            td
+              b t
+              | -classname__extension
+              i.-ml--1.chi-icon.-xs.icon-chevron-right.-text--muted
+              code.-ml--1 chi-classname__extension
+          tr
+            td Page
+            td
+              b p
+              | -classname__extension
+              i.-ml--1.chi-icon.-xs.icon-chevron-right.-text--muted
+              code.-ml--1 chi-classname__extension
+    p.-text
       | In order to use Chi 2.0 it is necessary to update classnames that are currently in use in your project.
-    ul#chi-2-tabs-classname-replacement.chi-tabs
+    ul#chi-2-tabs-classname-replacement.chi-tabs.-border.-sm
       li.-active
         a(href='#replacement-unix') For Unix users
       li
         a(href='#replacement-windows') For Windows users
     #replacement-unix.chi-tabs-panel.-active
-      .-pt--3
-        .-text
-          | 1. Download <code>replace.sh</code> script from Chi repository:
+      .-pt--1
+        p.-text
+          | 1. Download the <code>replace.sh</code> script from Chi's repository:
         :code(lang='html')
-          https://github.com/CenturyLinkCloud/ux-chi/scripts/chi-classnames/bash/
-        .-text
+          https://github.com/CenturyLinkCloud/ux-chi/tree/master/scripts/chi-classnames/bash
+        p.-text
           | 2. Place the Bash script in a folder together with your project to achieve this file structure:
         :code(lang='html')
           /replacement_folder
               |── /project_folder
               |── replace.sh
-        .-text
+        p.-text
           | 3. Open <code>replace.sh</code> with IDE and change variable <code>PROJECT_SRC</code> with the path corresponding to your project folder:
         :code(lang='html')
           PROJECT_SRC='project_folder'
-        .-text
-          | 4. Open terminal, go to directory with <code>replace.sh</code> and assign necessary permissions to it:
+        p.-text
+          | 4. Open terminal, go to the directory with <code>replace.sh</code> and assign necessary permissions to it:
         :code(lang='html')
           $ chmod +x replace.sh
-        .-text
+        p.-text
           | 5. Launch <code>replace.sh</code> script:
         :code(lang='html')
           $ ./replace.sh
-        .-text
-          | 6. Make sure that Atomic prefixes are correctly replaced
- 
+        p.-text
+          | 6. Verify Atomic prefixes are correctly replaced.
+
     #replacement-windows.chi-tabs-panel
-      .-pt--3
-        .-text
+      .-py--1
+        p.-text
           | 1. Download <code>replace.bat</code> and <code>classes.txt</code> script from Chi repository:
         :code(lang='html')
-          https://github.com/CenturyLinkCloud/ux-chi/scripts/chi-classnames/batch/
-        .-text
+          https://github.com/CenturyLinkCloud/ux-chi/tree/master/scripts/chi-classnames/batch
+        p.-text
           | 2. Place both files in a folder together with your project to achieve this file structure:
         :code(lang='html')
           /replacement_folder
               |── /project_folder
               |── classes.txt
               |── replace.bat
-        .-text
+        p.-text
           | 3. Open <code>replace.bat</code> with IDE and change variable <code>PROJECT_SRC</code> with the path corresponding to your project folder:
         :code(lang='html')
           set "PROJECT_SRC=project_folder"
-        .-text
+        p.-text
           | 5. Launch <code>replace.bat</code> script ( doubleclick on the file )
-        .-text
+        p.-text
           | 6. Make sure that Atomic prefixes are correctly replaced
+    br
+    p.-text
+      | If you have any issues please contact <a href="mailto:chi.support@centurylink.com">Chi Support</a> by email or
+      | chat with us in <a href="https://teams.microsoft.com/l/channel/19%253aa08fdfde482543ea80f81ce484cea21b%2540thread.skype/CHI?groupId=8631295d-43fc-4e40-93e5-dc8c9ab4d127&tenantId=72b17115-9915-42c0-9f1b-4f98e5a4bcd2">Microsoft Teams</a>.
+.chi-divider.-my--4
 
 script.
   chi.tab(document.getElementById('chi-v200-tabs'));

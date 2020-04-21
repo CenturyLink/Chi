@@ -1,6 +1,28 @@
 @import '_variables';
 @import '_mixins';
-@import '_input-text-variables';
+
+$sizes: (
+  xs: (
+    font-size: $text-smaller,
+    line-height: $line-height-smaller,
+  ),
+  sm: (
+    font-size: $text-small,
+    line-height: $line-height-small,
+  ),
+  md: (
+    font-size: $text,
+    line-height: $line-height-small,
+  ),
+  lg: (
+    font-size: $text-large,
+    line-height: $line-height-large,
+  ),
+  xl: (
+    font-size: $text-larger,
+    line-height: $line-height-larger,
+  ),
+);
 
 label,
 .chi-label {
@@ -14,5 +36,18 @@ label,
       font-size: map-get(map-get($sizes, $type), font-size);
       line-height: map-get(map-get($sizes, $type), line-height);
     }
+  }
+
+  &.-status {
+    font-weight: normal;
+    margin-top: 0.25rem;
+  }
+
+  &.-danger {
+    color: $danger-color;
+  }
+
+  &.-success {
+    color: $success-color;
   }
 }
