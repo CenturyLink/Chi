@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 2.0.0 (April 21, 2020)
+## 2.0.0 (April 23, 2020)
 
 ### Components
 #### Breaking changes
