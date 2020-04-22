@@ -10,7 +10,7 @@ export class Progress {
   /**
    *  to set the value of a progress bar.
    */
-  @Prop({ reflect: true }) value: number;
+  @Prop({ reflect: true }) value: string;
 
   /**
    *  to set the max value of a progress bar.
