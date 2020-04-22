@@ -24,7 +24,9 @@ $monday-starting-week: (
   &.-disabled {
     pointer-events: none;
   }
+}
 
+.sc-chi-date-picker {
   chi-popover {
     display: flex;
   }
