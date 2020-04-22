@@ -50,6 +50,7 @@ input {
           align-items: center;
           background-color: set-color(white);
           border: 0.0625rem solid set-color(grey, 30);
+          box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
           content: 'Choose File';
           cursor: pointer;
           display: flex;
@@ -65,8 +66,16 @@ input {
         &:hover,
         &.-hover {
           &::before {
-            border: 0.0625rem solid set-color(grey, 40);
-            box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+            background-color: set-color(grey, 20);
+            border-color: set-color(grey, 30);
+          }
+        }
+
+        &:active,
+        &.-active {
+          &::before {
+            background-color: set-color(grey, 25);
+            border-color: rgba(set-color(grey, 70), 0.2);
           }
         }
       }
@@ -87,7 +96,7 @@ input {
       &:focus,
       &.-focus {
         & + label::before {
-          border: 0.0625rem solid set-color(grey, 40);
+          border-color: set-color(grey, 30);
           outline: 0.125rem solid $focus-color;
           outline-offset: 0.0625rem;
           z-index: $zindex-prominent;

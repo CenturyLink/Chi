@@ -7,7 +7,7 @@ $sizes: (
     min-height: 3rem
   ),
   md: (
-    min-height: 3.5rem
+    min-height: 3rem
   ),
   lg: (
     min-height: 4rem
@@ -45,7 +45,7 @@ legend {
           font-weight: normal;
           justify-content: space-between;
           margin-bottom: 0.5rem;
-          min-height: 3.5rem;
+          min-height: 3rem;
           padding: 1rem - $border;
           transition: all 0.2s;
           width: 100%;
