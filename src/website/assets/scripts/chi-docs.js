@@ -132,7 +132,9 @@ onLoad(() => {
   Array.prototype.forEach.call(
     document.querySelectorAll('h2,h3,h4'),
     function(heading) {
-      if (document.querySelector('.docs-body:not(.-non-doc)').contains(heading)) {
+      const docs = document.querySelector('.docs-body:not(.-non-doc)');
+
+      if (docs && docs.contains(heading)) {
         anchors.push(heading);
       }
   });
@@ -199,7 +201,7 @@ onLoad(() => {
     Array.prototype.forEach.call(document.querySelectorAll('article.docs-article > section.chi-grid__container > .chi-tabs-panel'), function (tabContent) {
       tabContent.classList.remove('-active');
 
-      if (tabContent.contains(document.querySelector(`${urlHash}`))) {
+      if (tabContent && tabContent.contains(document.querySelector(`${urlHash}`))) {
         tabContent.classList.add('-active');
         tabContentId = tabContent.id;
         document.querySelector(`[href*=${tabContentId}]`).parentNode.classList.add('-active');
