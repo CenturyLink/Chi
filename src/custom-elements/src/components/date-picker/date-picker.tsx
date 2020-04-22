@@ -217,25 +217,27 @@ export class DatePicker {
     return [
       // TODO: This input should be chi-input in the future and will pass through
       // some of its configuration attributes.
-      <div
-        class={`${
-          this.disabled ? '-disabled' : ''
-          } chi-input__wrapper -icon--right`}
-      >
-        <input
-          id={`${this._uuid}-control`}
-          class={`chi-input
-            ${this.active ? '-focus' : ''}`}
-          type={`text`}
-          placeholder={`MM/DD/YYYY`}
-          ref={el => (this._input = el as HTMLInputElement)}
-          value={this.value}
-          onChange={() => {
-            this._checkDate();
-          }}
-          disabled={this.disabled}
-        />
-        <chi-icon icon="date" color="muted"></chi-icon>
+      <div>
+        <div
+          class={`${
+            this.disabled ? '-disabled' : ''
+            } chi-input__wrapper -icon--right`}
+        >
+          <input
+            id={`${this._uuid}-control`}
+            class={`chi-input
+              ${this.active ? '-focus' : ''}`}
+            type={`text`}
+            placeholder={`MM/DD/YYYY`}
+            ref={el => (this._input = el as HTMLInputElement)}
+            value={this.value}
+            onChange={() => {
+              this._checkDate();
+            }}
+            disabled={this.disabled}
+          />
+          <chi-icon icon="date" color="muted"></chi-icon>
+        </div>
         {!this.disabled && chiPopover}
       </div>
     ];
