@@ -41,7 +41,9 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     aria-label='Button action'
                     )
                       .chi-button__content
-                        i.chi-icon.icon-atom
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-atom')
                     button.chi-button.-m--1(
                     class={
                       [`-${type}`]: type !== 'solid',
@@ -52,7 +54,9 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
                       .chi-button__content
-                        i.chi-icon.icon-atom
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-atom')
                         span Button
               else
                 td
@@ -80,7 +84,9 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     aria-label='Button action'
                     )
                       .chi-button__content
-                        i.chi-icon.icon-atom
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-atom')
                     button.chi-button.-m--1(
                     class={
                       [`-${type}`]: type !== 'solid',
@@ -91,8 +97,10 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
                       .chi-button__content
-                        i.chi-icon.icon-atom
-                        span Button
+                          .chi-icon
+                            svg
+                              use(xlink:href='#icon-atom')
+                          span Button
 
   if size === 'default'
     .test-float
@@ -107,12 +115,16 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                 td.-bg--black
                   button(type="button", class=`chi-button -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
                     .chi-button__content
-                      i.chi-icon.icon-atom
+                      .chi-icon
+                        svg
+                          use(xlink:href='#icon-atom')
               else
                 td
                   button(type="button", class=`chi-button -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
                     .chi-button__content
-                      i.chi-icon.icon-atom
+                      .chi-icon
+                        svg
+                          use(xlink:href='#icon-atom')
 
 each size in ['default', 'sm', 'md', 'lg', 'xl']
   div(class={
@@ -125,4 +137,6 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
         td
           button(class=`chi-button -icon -close -${size}`, aria-label='Close')
             .chi-button__content
-              i.chi-icon.icon-x
+              .chi-icon
+                svg
+                  use(xlink:href='#icon-x')
