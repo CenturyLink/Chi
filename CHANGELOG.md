@@ -28,6 +28,7 @@
 * Added: Button now supports turning off `-flat` button hover states with the class `-no-hover`.
 #### Changed
 * Changed: Checkbox and Radio Button border width for better consistency with Consumer and Enterprise Portal use cases.
+* Changed: Button base hover and active state color for better consistency with Consumer and Enterprise Portal use cases.
 * Changed: Sidenav has adopted Enterprise Portal's design as the base design for the component. Specifying the class `-global-nav` is no longer necessary.
 * Changed: Pagination styles have been updated for better consistency with Enterprise Portal use cases.
 * Changed: Progress component base color from semantic green to primary blue for brand consistency.

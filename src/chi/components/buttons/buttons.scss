@@ -121,6 +121,7 @@ $sizes: (
     outline: 0;
     padding: (0.5rem - $border) (1rem - $border);
     text-align: center;
+    transition: background-color 0.12s ease-in, border-color 0.1s ease-in;
     vertical-align: middle;
     white-space: nowrap;
 
@@ -184,14 +185,14 @@ $sizes: (
 
     &:hover,
     &.-hover {
-      border: $border solid set-color(grey, 40);
-      box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+      background-color: set-color(grey, 20);
+      border: $border solid set-color(grey, 30);
       text-decoration: none;
     }
 
     &:focus,
     &.-focus {
-      border: $border solid set-color(grey, 40);
+      border: $border solid set-color(grey, 30);
       outline: 0.125rem solid $focus-color;
       outline-offset: 0.0625rem;
       z-index: $zindex-prominent;
@@ -199,14 +200,9 @@ $sizes: (
 
     &:active,
     &.-active {
-      background-color: set-color(grey, 10);
-      border: $border solid set-color(grey, 40);
-      box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
-
-      &:focus,
-      &.-focus {
-        box-shadow: none;
-      }
+      background-color: set-color(grey, 25);
+      border: $border solid rgba(set-color(grey, 70), 0.2);
+      outline: none;
     }
 
     &.-icon {
@@ -214,22 +210,21 @@ $sizes: (
     }
 
     &.-float {
+      border-color: set-color(grey, 40);
       border-radius: 50%;
+      box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 16px 0 rgba(0, 0, 0, 0.12);
       padding: 0.6875rem;
-      transition: transform 0.2s cubic-bezier(0.95, -0.18, 0.65, 2.46);
+      transition: box-shadow 0.15s ease-in, background-color 0.15s ease-in;
+
+      &:active,
+      &.-active {
+        box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 14px 1px rgba(0, 0, 0, 0.12);
+        outline: none;
+      }
 
       .chi-icon {
         height: 1rem;
         width: 1rem;
-      }
-
-      &:active,
-      &.-active,
-      &:focus,
-      &.-focus,
-      &:hover,
-      &.-hover {
-        transform: scale(1.2);
       }
     }
 
@@ -238,31 +233,16 @@ $sizes: (
     }
 
     &.-close {
-      background-color: transparent;
-      border-color: transparent;
-      box-shadow: none;
-
+      &,
       &:hover,
-      &.-hover {
-        border-color: transparent;
-        box-shadow: none;
-      }
-
+      &.-hover,
       &:focus,
-      &.-focus {
-        border-color: transparent;
-        box-shadow: none;
-      }
-
+      &.-focus,
       &:active,
       &.-active {
-        &,
-        &:focus,
-        &.-focus {
-          background-color: transparent;
-          border-color: transparent;
-          box-shadow: none;
-        }
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
       }
     }
 
@@ -299,11 +279,7 @@ $sizes: (
         background-color: set-color(grey, 80);
         border-color: set-color(grey, 80);
         color: set-color(white);
-
-        &:focus,
-        &.-focus {
-          box-shadow: none;
-        }
+        outline: none;
       }
     }
 
@@ -338,8 +314,9 @@ $sizes: (
 
       &:hover,
       &.-hover {
-        border: $border solid set-color(grey, 40);
-        box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+        background-color: set-color(white);
+        border: $border solid set-color(grey, 30);
+        box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
 
         @each $type in map-keys($sizes) {
           &.-#{$type} {
@@ -367,7 +344,7 @@ $sizes: (
 
       &:focus,
       &.-focus {
-        border: $border solid set-color(grey, 40);
+        border: $border solid set-color(grey, 30);
         outline: 0.125rem solid $focus-color;
         outline-offset: 0.0625rem;
 
@@ -406,8 +383,9 @@ $sizes: (
 
       &:active,
       &.-active {
-        border: $border solid set-color(grey, 40);
-        box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.15);
+        background-color: set-color(grey, 25);
+        border: $border solid rgba(set-color(grey, 70), 0.2);
+        outline: none;
 
         &:focus,
         &.-focus {
@@ -488,7 +466,7 @@ $sizes: (
           &:focus,
           &.-focus {
             background-color: white;
-            border: $border solid rgba(set-color(black), 0.2);
+            border: $border solid transparent;
           }
         }
 
@@ -568,7 +546,9 @@ $sizes: (
           }
         }
       }
+
     } @else {
+
       &.-#{$type} {
         background-color: set-color($color, $tone);
         border: $border solid set-color($color, $tone);
@@ -603,7 +583,7 @@ $sizes: (
           &:focus,
           &.-focus {
             background-color: set-color($color, $tone-focus);
-            border: $border solid rgba(set-color(black), 0.2);
+            border: $border solid transparent;
             box-shadow: none;
           }
         }
@@ -719,6 +699,15 @@ $sizes: (
               border-color: set-color($color, $tone);
               outline: none;
             }
+          }
+        }
+
+        &.-float {
+          box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 16px 0 rgba(0, 0, 0, 0.12);
+
+          &:active,
+          &.-active {
+            box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 14px 1px rgba(0, 0, 0, 0.12);
           }
         }
       }

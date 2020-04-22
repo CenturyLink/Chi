@@ -419,7 +419,7 @@ h4 Actionable
   .-p--1
     chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", closable)
       | This is a large closable success alert
-      chi-button(slot="chi-alert__actions", color='dark', variant='outline', size='lg') Secondary action
+      chi-button(slot="chi-alert__actions", size='lg') Secondary action
       chi-button(slot="chi-alert__actions", color='primary', size='lg') Primary action
   .example-tabs.-pl--2
     ul.chi-tabs#example-actionable
@@ -433,7 +433,7 @@ h4 Actionable
     :code(lang="html")
       <chi-alert color="success" icon="circle-check" size="lg" title="Success" closable>
         This is a large closable success alert
-        <chi-button slot="chi-alert__actions" color="dark" variant="outline" size="lg">Secondary action</chi-button>
+        <chi-button slot="chi-alert__actions" size="lg">Secondary action</chi-button>
         <chi-button slot="chi-alert__actions" color="primary" size="lg">Primary action</chi-button>
       </chi-alert>
   .chi-tabs-panel#html-actionable
@@ -448,7 +448,7 @@ h4 Actionable
           <p class="chi-alert__title">Success</p>
           <p class="chi-alert__text">This is a large closable success alert</p>
           <div class="chi-alert__actions">
-            <button class="chi-button -lg -dark -outline">Secondary action</button>
+            <button class="chi-button -lg">Secondary action</button>
             <button class="chi-button -lg -primary">Primary action</button>
           </div>
         </div>
@@ -869,7 +869,7 @@ h4 Actionable
   .-p--1.-bg--grey-20
     chi-alert.-m--2(type='banner', icon='circle-info', size='lg', title="Base", closable)
       | This is a large closable alert
-      chi-button(slot="chi-alert__actions", color='dark', variant='outline', size='lg') Secondary action
+      chi-button(slot="chi-alert__actions", size='lg') Secondary action
       chi-button(slot="chi-alert__actions", color='primary', size='lg') Primary action
   .example-tabs.-pl--2
     ul.chi-tabs#example-banner-actionable
@@ -883,7 +883,7 @@ h4 Actionable
     :code(lang="html")
       <chi-alert type="banner" icon="circle-info" size="lg" title="Base" closable>
         This is a large closable alert
-        <chi-button slot="chi-alert__actions" color="dark" variant="outline" size="lg">Secondary action</chi-button>
+        <chi-button slot="chi-alert__actions" size="lg">Secondary action</chi-button>
         <chi-button slot="chi-alert__actions" color="primary" size="lg">Primary action</chi-button>
       </chi-alert>
   .chi-tabs-panel#html-banner-actionable

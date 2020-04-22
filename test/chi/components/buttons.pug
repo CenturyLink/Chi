@@ -14,8 +14,8 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           tr
             td
               small= `${state}`
-            each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
-              if style === 'light'
+            each style in ['default', 'primary', 'dark', 'danger', 'secondary', 'light']
+              if (style === 'secondary' || style === 'light')
                 td.-bg--black
                   .-mr--2
                     input.chi-button.-m--1.-mx--2(
@@ -41,9 +41,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     aria-label='Button action'
                     )
                       .chi-button__content
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-atom')
+                        i.chi-icon.icon-atom
                     button.chi-button.-m--1(
                     class={
                       [`-${type}`]: type !== 'solid',
@@ -54,9 +52,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
                       .chi-button__content
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-atom')
+                        i.chi-icon.icon-atom
                         span Button
               else
                 td
@@ -84,9 +80,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     aria-label='Button action'
                     )
                       .chi-button__content
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-atom')
+                        i.chi-icon.icon-atom
                     button.chi-button.-m--1(
                     class={
                       [`-${type}`]: type !== 'solid',
@@ -97,9 +91,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     disabled=state === 'disabled' ? 'disabled' : false
                     )
                       .chi-button__content
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-atom')
+                        i.chi-icon.icon-atom
                         span Button
 
   if size === 'default'
@@ -110,21 +102,17 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
           tr
             td
               small= `${state}`
-            each style in ['default', 'primary', 'secondary', 'danger', 'dark', 'light']
-              if style === 'light'
+            each style in ['default', 'primary', 'dark', 'danger', 'secondary', 'light']
+              if (style === 'secondary' || style === 'light')
                 td.-bg--black
                   button(type="button", class=`chi-button -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
                     .chi-button__content
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-atom')
+                      i.chi-icon.icon-atom
               else
                 td
                   button(type="button", class=`chi-button -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
                     .chi-button__content
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-atom')
+                      i.chi-icon.icon-atom
 
 each size in ['default', 'sm', 'md', 'lg', 'xl']
   div(class={
@@ -137,6 +125,4 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
         td
           button(class=`chi-button -icon -close -${size}`, aria-label='Close')
             .chi-button__content
-              .chi-icon
-                svg
-                  use(xlink:href='#icon-x')
+              i.chi-icon.icon-x
