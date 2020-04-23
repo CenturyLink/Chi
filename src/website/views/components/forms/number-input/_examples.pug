@@ -17,7 +17,8 @@ p.-text An initial value is optional. If an initial value is not provided, <code
         a(href=`#html`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent
     :code(lang="html")
-      <chi-number-input></chi-number-input>
+      <chi-label for="example-1">Label</chi-label>
+      <chi-number-input id="example-1"></chi-number-input>
   .chi-tabs-panel#html
     .chi-tab__description
       span.-text--grey
@@ -49,7 +50,8 @@ h3 Disabled
         a(href=`#html-disabled`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-disabled
     :code(lang="html")
-      <chi-number-input disabled></chi-number-input>
+      <chi-label for="example-2">Label</chi-label>
+      <chi-number-input disabled id="example-2"></chi-number-input>
   .chi-tabs-panel#html-disabled
     .chi-tab__description
       span.-text--grey
@@ -87,10 +89,21 @@ p.-text
         a(href=`#html-sizes`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-sizes
     :code(lang="html")
-      <chi-number-input size="sm"></chi-number-input>
-      <chi-number-input></chi-number-input>
-      <chi-number-input size="lg"></chi-number-input>
-      <chi-number-input size="xl"></chi-number-input>
+      <!-- sm -->
+      <chi-label for="example-3-sm">Label</chi-label>
+      <chi-number-input size="sm" id="example-3-sm"></chi-number-input>
+
+      <!-- md -->
+      <chi-label for="example-3-md">Label</chi-label>
+      <chi-number-input size="md" id="example-3-md"></chi-number-input>
+
+      <!-- lg -->
+      <chi-label for="example-3-lg">Label</chi-label>
+      <chi-number-input size="lg" id="example-3-lg"></chi-number-input>
+
+      <!-- xl -->
+      <chi-label for="example-3-xl">Label</chi-label>
+      <chi-number-input size="xl" id="example-3-xl"></chi-number-input>
   .chi-tabs-panel#html-sizes
     .chi-tab__description
       span.-text--grey
@@ -153,7 +166,8 @@ h3 Base
         a(href=`#html-expanded`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-expanded
     :code(lang="html")
-      <chi-number-input expanded></chi-number-input>
+      <chi-label for="example-4">Label</chi-label>
+      <chi-number-input expanded id="example-4"></chi-number-input>
   .chi-tabs-panel#html-expanded
     .chi-tab__description
       span.-text--grey
@@ -193,7 +207,8 @@ h3 Disabled
         a(href=`#html-expanded-disabled`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-expanded-disabled
     :code(lang="html")
-      <chi-number-input expanded disabled></chi-number-input>
+      <chi-label for="example-5">Label</chi-label>
+      <chi-number-input expanded disabled id="example-5"></chi-number-input>
   .chi-tabs-panel#html-expanded-disabled
     .chi-tab__description
       span.-text--grey
@@ -239,10 +254,21 @@ p.-text
         a(href=`#html-expanded-sizes`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-expanded-sizes
     :code(lang="html")
-      <chi-number-input expanded size="sm"></chi-number-input>
-      <chi-number-input expanded></chi-number-input>
-      <chi-number-input expanded size="lg"></chi-number-input>
-      <chi-number-input expanded size="xl"></chi-number-input>
+      <!-- sm -->
+      <chi-label for="example-6-sm">Label</chi-label>
+      <chi-number-input expanded size="sm" id="example-6-sm"></chi-number-input>
+
+      <!-- md -->
+      <chi-label for="example-6-md">Label</chi-label>
+      <chi-number-input expanded size="md" id="example-6-md"></chi-number-input>
+
+      <!-- lg -->
+      <chi-label for="example-6-lg">Label</chi-label>
+      <chi-number-input expanded size="lg" id="example-6-lg"></chi-number-input>
+
+      <!-- xl -->
+      <chi-label for="example-6-xl">Label</chi-label>
+      <chi-number-input expanded size="xl" id="example-6-xl"></chi-number-input>
   .chi-tabs-panel#html-expanded-sizes
     .chi-tab__description
       span.-text--grey
