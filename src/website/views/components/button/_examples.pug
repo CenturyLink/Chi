@@ -33,6 +33,9 @@ h3 Solid
       <chi-button color="secondary">Secondary</chi-button>
       <chi-button color="light">Light</chi-button>
   .chi-tabs-panel#html
+    .chi-tab__description
+      | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
+      | <code>&lt;input&gt;</code> elements.
     :code(lang="html")
       <!-- For light backgrounds -->
       <button class="chi-button">Base</button>
@@ -42,6 +45,11 @@ h3 Solid
       <!-- For dark backgrounds -->
       <button class="chi-button -secondary">Secondary</button>
       <button class="chi-button -light">Light</button>
+
+      <!-- Button classes can be used on other elements -->
+      <a class="chi-button -primary" href="#" role="button">Link button</a>
+      <input class="chi-button -primary" type="button" value="Input button">
+      <input class="chi-button -primary" type="submit" value="Submit button">
 
 h3 Outline
 .example.-mb--3
@@ -72,6 +80,9 @@ h3 Outline
       <chi-button color="secondary" variant="outline">Secondary</chi-button>
       <chi-button color="light" variant="outline">Light</chi-button>
   .chi-tabs-panel#html-outline
+    .chi-tab__description
+      | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
+      | <code>&lt;input&gt;</code> elements.
     :code(lang="html")
       <!-- For light backgrounds -->
       <button class="chi-button -primary -outline">Primary</button>
@@ -81,12 +92,17 @@ h3 Outline
       <button class="chi-button -secondary -outline">Secondary</button>
       <button class="chi-button -light -outline">Light</button>
 
+      <!-- Button classes can be used on other elements -->
+      <a class="chi-button -primary -outline" href="#" role="button">Link button</a>
+      <input class="chi-button -primary -outline" type="button" value="Input button">
+      <input class="chi-button -primary -outline" type="submit" value="Submit button">
+
 h3 Flat
 .example.-mb--3
   .chi-grid.-no-gutter
     .chi-col.-w--12.-w-md--6
       .-p--3.-d--flex(style="justify-content: center;")
-        each type, val in {Primary:'primary', Dark:'dark'}
+        each type, val in {Base: '', Primary:'primary', Dark:'dark'}
           div.-pr--2
             chi-button(color=type, variant='flat')= val
     .chi-col.-w--12.-w-md--6
@@ -103,6 +119,7 @@ h3 Flat
   .chi-tabs-panel.-active#webcomponent-flat
     :code(lang="html")
       <!-- For light backgrounds -->
+      <chi-button variant="flat">Base</chi-button>
       <chi-button color="primary" variant="flat">Primary</chi-button>
       <chi-button color="dark" variant="flat">Dark</chi-button>
 
@@ -110,14 +127,23 @@ h3 Flat
       <chi-button color="secondary" variant="flat">Secondary</chi-button>
       <chi-button color="light" variant="flat">Light</chi-button>
   .chi-tabs-panel#html-flat
+    .chi-tab__description
+      | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
+      | <code>&lt;input&gt;</code> elements.
     :code(lang="html")
       <!-- For light backgrounds -->
+      <button class="chi-button -flat">Base</button>
       <button class="chi-button -primary -flat">Primary</button>
       <button class="chi-button -dark -flat">Dark</button>
 
       <!-- For dark backgrounds -->
       <button class="chi-button -secondary -flat">Secondary</button>
       <button class="chi-button -light -flat">Light</button>
+
+      <!-- Button classes can be used on other elements -->
+      <a class="chi-button -primary -flat" href="#" role="button">Link button</a>
+      <input class="chi-button -primary -flat" type="button" value="Input button">
+      <input class="chi-button -primary -flat" type="submit" value="Submit button">
 
 h2 Fluid
 p.-text

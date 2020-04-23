@@ -229,58 +229,62 @@ p.-text
   | <code>left-end</code>.
 
 .example.-mb--3
-  .-px--3.-pt--3.-pb--4
-    .chi-grid.-no-gutter
-      .chi-col.-w--12.-w-xl--10.-o-xl--1
-        .chi-grid.-no-gutter
-          .chi-col.-d--flex.-justify-content--end
-            chi-button#example-4-ts-button.-m--2 Top start
-            chi-popover#example-4-ts-popover(position="top-start", title="Popover title", variant="text", arrow, reference="#example-4-ts-button")
-              | This popover is top-start positioned.
-          .chi-col.-d--flex.-justify-content--center
-            chi-button#example-4-t-button.-m--2 Top
-            chi-popover#example-4-t-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-4-t-button")
-              | This popover is top positioned.
-          .chi-col.-d--flex.-justify-content--start
-            chi-button#example-4-te-button.-m--2 Top end
-            chi-popover#example-4-te-popover(position="top-end", title="Popover title", variant="text", arrow, reference="#example-4-te-button")
-              | This popover is top-end positioned.
-        .chi-grid.-no-gutter
-          .chi-col.-d--flex.-flex--column
-            chi-button#example-4-ls-button.-m--2 Left start
-            chi-popover#example-4-ls-popover(position="left-start", title="Popover title", variant="text", arrow, reference="#example-4-ls-button")
-              | This popover is left-start positioned.
-            chi-button#example-4-l-button.-mx--2.-my--4 Left
-            chi-popover#example-4-l-popover(position="left", title="Popover title", variant="text", arrow, reference="#example-4-l-button")
-              | This popover is left positioned.
-            chi-button#example-4-le-button.-m--2 Left end
-            chi-popover#example-4-le-popover(position="left-end", title="Popover title", variant="text", arrow, reference="#example-4-le-button")
-              | This popover is left-end positioned.
-          .chi-col.-d--flex.-flex--column.-justify-content--center.-align-items--center
-            div.-w--75.-text.-text--muted.-text--center.-lh--2 Click buttons to see popover positions
-          .chi-col.-d--flex.-flex--column.-align-items--end
-            chi-button#example-4-rs-button.-m--2 Right start
-            chi-popover#example-4-rs-popover(position="right-start", title="Popover title", variant="text", arrow, reference="#example-4-rs-button")
-              | This popover is right-start positioned.
-            chi-button#example-4-r-button.-mx--2.-my--4 Right
-            chi-popover#example-4-r-popover(position="right", title="Popover title", variant="text", arrow, reference="#example-4-r-button")
-              | This popover is right positioned.
-            chi-button#example-4-re-button.-m--2 Right end
-            chi-popover#example-4-re-popover(position="right-end", title="Popover title", variant="text", arrow, reference="#example-4-re-button")
-              | This popover is right-end positioned.
-        .chi-grid.-no-gutter
-          .chi-col.-d--flex.-justify-content--end
-            chi-button#example-4-bs-button.-m--2 Bottom start
-            chi-popover#example-4-bs-popover(position="bottom-start", title="Popover title", variant="text", arrow, reference="#example-4-bs-button")
-              | This popover is bottom-start positioned.
-          .chi-col.-d--flex.-justify-content--center
-            chi-button#example-4-b-button.-m--2 Bottom
-            chi-popover#example-4-b-popover(position="bottom", title="Popover title", variant="text", arrow, reference="#example-4-b-button")
-              | This popover is bottom positioned.
-          .chi-col.-d--flex.-justify-content--start
-            chi-button#example-4-be-button.-m--2 Bottom end
-            chi-popover#example-4-be-popover(position="bottom-end", title="Popover title", variant="text", arrow, reference="#example-4-be-button")
-              | This popover is bottom-end positioned.
+  .-p--3.-px-xl--10
+    .chi-grid.-no-gutter.-px-xl--3
+      .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
+        div.-p--1
+          chi-button#example-4-ts-button Top start
+          chi-popover#example-4-ts-popover(position="top-start", title="Popover title", variant="text", arrow, reference="#example-4-ts-button")
+            | This popover is top-start positioned.
+        div.-p--1
+          chi-button#example-4-t-button Top
+          chi-popover#example-4-t-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-4-t-button")
+            | This popover is top positioned.
+        div.-p--1
+          chi-button#example-4-te-button Top end
+          chi-popover#example-4-te-popover(position="top-end", title="Popover title", variant="text", arrow, reference="#example-4-te-button")
+            | This popover is top-end positioned.
+      .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-flex--wrap
+        div.-p--1.-py-sm--3
+          chi-button#example-4-ls-button Left start
+          chi-popover#example-4-ls-popover(position="left-start", title="Popover title", variant="text", arrow, reference="#example-4-ls-button")
+            | This popover is left-start positioned.
+        div.-p--1.-py-sm--3
+          chi-button#example-4-l-button Left
+          chi-popover#example-4-l-popover(position="left", title="Popover title", variant="text", arrow, reference="#example-4-l-button")
+            | This popover is left positioned.
+        div.-p--1.-py-sm--3
+          chi-button#example-4-le-button Left end
+          chi-popover#example-4-le-popover(position="left-end", title="Popover title", variant="text", arrow, reference="#example-4-le-button")
+            | This popover is left-end positioned.
+      .chi-col.-d--none.-w--12.-w-sm--4.-d-sm--flex.-flex-sm--column.-justify-content-sm--center.-align-items-sm--center
+        div.-w--75.-text.-text--muted.-text--center.-lh--2 Click buttons to see popover positions
+      .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-align-items-sm--end.-flex--wrap
+        div.-p--1.-py-sm--3
+          chi-button#example-4-rs-button Right start
+          chi-popover#example-4-rs-popover(position="right-start", title="Popover title", variant="text", arrow, reference="#example-4-rs-button")
+            | This popover is right-start positioned.
+        div.-p--1.-py-sm--3
+          chi-button#example-4-r-button Right
+          chi-popover#example-4-r-popover(position="right", title="Popover title", variant="text", arrow, reference="#example-4-r-button")
+            | This popover is right positioned.
+        div.-p--1.-py-sm--3
+          chi-button#example-4-re-button Right end
+          chi-popover#example-4-re-popover(position="right-end", title="Popover title", variant="text", arrow, reference="#example-4-re-button")
+            | This popover is right-end positioned.
+      .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
+        div.-p--1
+          chi-button#example-4-bs-button Bottom start
+          chi-popover#example-4-bs-popover(position="bottom-start", title="Popover title", variant="text", arrow, reference="#example-4-bs-button")
+            | This popover is bottom-start positioned.
+        div.-p--1
+          chi-button#example-4-b-button Bottom
+          chi-popover#example-4-b-popover(position="bottom", title="Popover title", variant="text", arrow, reference="#example-4-b-button")
+            | This popover is bottom positioned.
+        div.-p--1
+          chi-button#example-4-be-button Bottom end
+          chi-popover#example-4-be-popover(position="bottom-end", title="Popover title", variant="text", arrow, reference="#example-4-be-button")
+            | This popover is bottom-end positioned.
 
   .example-tabs.-pl--2
     ul.chi-tabs#examples-positioning

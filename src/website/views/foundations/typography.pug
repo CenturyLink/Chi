@@ -21,7 +21,7 @@ p.-text Headings are used to illustrate the typographic hierarchy of a page. <co
 .example(style='border:none')
   section.chi-table.-bordered.-mt--3.-mb--3
     div
-      table(cellpadding='0', cellspacing='0')
+      table
         thead
           tr
             th
@@ -31,7 +31,7 @@ p.-text Headings are used to illustrate the typographic hierarchy of a page. <co
         tbody
           each type in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
             tr
-              td(width='20%')
+              td.-w--30.-w-md--20
                 code= '<' + type + '>'
               td
                 #{type}(class=`a-${type}`)= type + ' Chi heading'
@@ -42,7 +42,7 @@ p.-text
 
 section.chi-table.-bordered.-mt--3.-mb--3
   div
-    table(cellpadding='0', cellspacing='0')
+    table
       thead
         tr
           th
@@ -51,7 +51,7 @@ section.chi-table.-bordered.-mt--3.-mb--3
             div Example
       tbody
           tr
-            td(width='20%')
+            td.-w--30.-w-md--20
               p.-text 14px (0.875rem)
             td
               p.-text
@@ -64,7 +64,7 @@ p.-text
 
 section.chi-table.-bordered.-mt--3.-mb--3
   div
-    table(cellpadding='0', cellspacing='0')
+    table
       thead
         tr
           th
@@ -74,7 +74,7 @@ section.chi-table.-bordered.-mt--3.-mb--3
       tbody
         each val, type in {Abbreviated:'abbr', Bold:'b', Code:'code', Delete:'del', Emphasis:'em', Italic:'i', Mark:'mark', Small:'small', Strong:'strong'}
           tr
-            td(width='20%')
+            td.-w--30.-w-md--20
               code= '<' + val + '>'
             td
               #{val}= type
@@ -102,7 +102,7 @@ h2 Lists
 h3 Base
 p.-text Use <code>&lt;ul&gt;</code> tags for unordered lists and <code>&lt;ol&gt;</code> tags for ordered lists.
 .chi-grid
-  .chi-col.-w--6
+  .chi-col.-w--12.-w-md--6
     .example.-mb--3
       ul.-text
         li List item 1
@@ -116,7 +116,7 @@ p.-text Use <code>&lt;ul&gt;</code> tags for unordered lists and <code>&lt;ol&gt
         <ul class="-text">
           <li></li>
         </ul>
-  .chi-col.-w--6
+  .chi-col.-w--12.-w-md--6
     .example.-mb--3
       ol.-text
         li List item 1

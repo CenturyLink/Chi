@@ -73,10 +73,12 @@ p.-text
   |  <code>lg</code>, <code>xl</code>. The default size is <code>md</code>.
 .example.-mb--3
   .-p--3
-    each size in ['sm', 'md', 'lg', 'xl']
-      .chi-form__item.-inline.-mr--3
-        chi-label(for=`example-3-${size}`) Label
-        chi-number-input(size=`${size}`, id=`example-3-${size}`)
+    .chi-grid.-no-gutter
+      each size in ['sm', 'md', 'lg', 'xl']
+        .chi-col.-w--12.-w-sm--6.-w-lg--3.-my--2.-align--bottom
+          .chi-form__item.-inline.-mr--3
+            chi-label(for=`example-3-${size}`) Label
+            chi-number-input(size=`${size}`, id=`example-3-${size}`)
   .example-tabs.-pl--2
     ul.chi-tabs#examples-sizes
       li.-active
@@ -222,11 +224,13 @@ p.-text
   | Expanded number inputs support the following sizes: <code>sm</code>, <code>md</code>,
   |  <code>lg</code>, <code>xl</code>. The default size is <code>md</code>.
 .example.-mb--3
-  .-p--3.-d--flex.-justify-content--start.-align-items--center
-    each size in ['sm', 'md', 'lg', 'xl']
-      .chi-form__item
-        chi-label(for=`example-5-${size}`) Label
-        chi-number-input(expanded=true, size=`${size}`, class='-mr--2', id=`example-5-${size}`)
+  .-p--3
+    .chi-grid.-no-gutter
+      each size in ['sm', 'md', 'lg', 'xl']
+        .chi-col.-w--12.-w-sm--6.-w-lg--4.-w-xl--3.-my--2.-align--bottom
+          .chi-form__item.-inline.-mr--3
+            chi-label(for=`example-5-${size}`) Label
+            chi-number-input(expanded=true, size=`${size}`, class='-mr--2', id=`example-5-${size}`)
   .example-tabs.-pl--2
     ul.chi-tabs#examples-expanded-sizes
       li.-active
