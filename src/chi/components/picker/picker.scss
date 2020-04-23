@@ -243,24 +243,4 @@ legend {
       }
     }
   }
-
-  .chi-picker {
-    input {
-      &[type='checkbox'],
-      &[type='radio'] {
-        &.chi-picker__input {
-          & + label {
-            span {
-              &.chi-picker__checkbox {
-                &::before {
-                  left: 0.09rem;
-                  top: 0.15rem;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
 }

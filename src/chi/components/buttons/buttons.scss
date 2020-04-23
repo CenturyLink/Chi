@@ -121,7 +121,7 @@ $sizes: (
     outline: 0;
     padding: (0.5rem - $border) (1rem - $border);
     text-align: center;
-    transition: background-color 0.12s ease-in, border-color 0.1s ease-in;
+    transition: background-color 0.12s ease-in, border-color 0.1s ease-in, color 0.12s ease-in;
     vertical-align: middle;
     white-space: nowrap;
 
@@ -209,6 +209,7 @@ $sizes: (
       padding: (0.5rem - $border);
     }
 
+    // sass-lint:disable max-line-length
     &.-float {
       border-color: set-color(grey, 40);
       border-radius: 50%;
@@ -227,6 +228,7 @@ $sizes: (
         width: 1rem;
       }
     }
+    // sass-lint:enable max-line-length
 
     &.-fluid:not(.-float) {
       width: 100%;
@@ -635,7 +637,7 @@ $sizes: (
             &:focus,
             &.-focus {
               background-color: set-color($color, $tone-focus);
-              border: $border solid rgba(set-color(black), 0.2);
+              border: $border solid transparent;
 
               @if ($type == 'secondary') {
                 color: $text-black;
@@ -702,6 +704,7 @@ $sizes: (
           }
         }
 
+        // sass-lint:disable max-line-length
         &.-float {
           box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 16px 0 rgba(0, 0, 0, 0.12);
 
@@ -710,6 +713,7 @@ $sizes: (
             box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 14px 1px rgba(0, 0, 0, 0.12);
           }
         }
+        // sass-lint:enable max-line-length
       }
     }
   }
