@@ -8,5 +8,6 @@ each max in ['100', '200']
         .-p--3
           h3.-mb--3= `Progress / ${state} / ${max}`
           each value, index in [0,25,33.3,50,75,100]
-            h5= `${value}%`
-            progress( class=`-${state}` value=`${value}` max=max)
+            .-p--1
+              .chi-label= `${value}%`
+              progress( class=`-${state}` value=`${value}` max=max)
