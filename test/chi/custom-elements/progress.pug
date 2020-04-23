@@ -11,5 +11,6 @@ each max in ['100', '200']
         .-p--3
           h3.-mb--3= `Progress / ${state} / ${max}`
           each value, index in [0,25,33.3,50,75,100]
-            h5= `${value}%`
-            chi-progress(state=`${state === 'default' ? '' : state}`, max=max, value=value, data-cy=`progress-${value}-${state}-max-${max}`)
+            .-p--1
+              .chi-label= `${value}%`
+              chi-progress(state=`${state === 'default' ? '' : state}`, max=max, value=value, data-cy=`progress-${value}-${state}-max-${max}`)
