@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Prop, State, h, Element } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, State, h } from '@stencil/core';
 import { CallbackQueue } from '../../utils/CallbackQueue';
 
 @Component({
@@ -71,7 +71,7 @@ export class NumberInput {
 
   @Event() chiChange: EventEmitter<string>;
 
-  componentDidLoad() {
+  connectedCallback() {
     this.initialValue = this.value;
   }
 
@@ -161,10 +161,10 @@ export class NumberInput {
         class={`chi-input ${this.inputstyle ? `-${this.inputstyle}` : ''} ${
           this.state ? `-${this.state}` : ''}`}
         disabled={this.disabled}
-        value={this.value}
         step={this.step}
         max={this.max}
         min={this.min}
+        value={this.value}
         onChange={ev => this.handleChange(ev)}
         id={this.el.id ? `${this.el.id}-control` : null}
       />
