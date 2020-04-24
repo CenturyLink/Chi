@@ -4,10 +4,11 @@
 ### Components
 #### Fixed
 * Fixed: Sizing utility values did not have enough specificity to override default component sizes.
+* Fixed: Sizing utility for width auto was not working.
 
 ### Documentation
 #### Changed
-* Changed: Removed Design Kit button from docs sidenav as GitHub renders prviate repos as 404 pages and most do not have permissions to view.
+* Changed: Removed Design Kit button from docs sidenav as GitHub renders private repos as 404 pages and most do not have permissions to view.
 
 ## 2.0.0 (April 23, 2020)
 
