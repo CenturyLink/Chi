@@ -26,15 +26,17 @@ $max-height-dimensions: (
 
 $width-a: 5;
 
-@while $width-a <= 100 {
-  .-w--#{$width-a} {
-    width: 1% * $width-a !important;
+:not(.chi-col) {
+  @while $width-a <= 100 {
+    &.-w--#{$width-a} {
+      width: 1% * $width-a !important;
+    }
+    $width-a: $width-a + 5;
   }
-  $width-a: $width-a + 5;
-}
 
-.-w--auto {
-  width: auto !important;
+  &.-w--auto {
+    width: auto !important;
+  }
 }
 
 @each $dimension-key, $dimension-value in $dimensions  {
@@ -47,15 +49,17 @@ $width-a: 5;
   @include respond-to($size) {
     $width-b: 5;
 
-    @while $width-b <= 100 {
-      .-w-#{$size}--#{$width-b} {
-        width: 1% * $width-b !important;
+    :not(.chi-col) {
+      @while $width-b <= 100 {
+        .-w-#{$size}--#{$width-b} {
+          width: 1% * $width-b !important;
+        }
+        $width-b: $width-b + 5;
       }
-      $width-b: $width-b + 5;
-    }
 
-    .-w-#{$size}--auto {
-      width: auto !important;
+      .-w-#{$size}--auto {
+        width: auto !important;
+      }
     }
 
     @each $dimension-key, $dimension-value in $dimensions {
