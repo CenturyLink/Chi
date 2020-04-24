@@ -28,14 +28,18 @@ $width-a: 5;
 
 @while $width-a <= 100 {
   .-w--#{$width-a} {
-    width: 1% * $width-a;
+    width: 1% * $width-a !important;
   }
   $width-a: $width-a + 5;
 }
 
+.-w--auto {
+  width: auto !important;
+}
+
 @each $dimension-key, $dimension-value in $dimensions  {
   .-h--#{$dimension-key} {
-    height: $dimension-value;
+    height: $dimension-value !important;
   }
 }
 
@@ -45,14 +49,18 @@ $width-a: 5;
 
     @while $width-b <= 100 {
       .-w-#{$size}--#{$width-b} {
-        width: 1% * $width-b;
+        width: 1% * $width-b !important;
       }
       $width-b: $width-b + 5;
     }
 
+    .-w-#{$size}--auto {
+      width: auto !important;
+    }
+
     @each $dimension-key, $dimension-value in $dimensions {
       .-h-#{$size}--#{$dimension-key} {
-        height: $dimension-value;
+        height: $dimension-value !important;
       }
     }
   }
@@ -60,12 +68,12 @@ $width-a: 5;
 
 @each $dimension-key, $dimension-value in $max-width-dimensions {
   .-mw--#{$dimension-key} {
-    max-width: $dimension-value;
+    max-width: $dimension-value !important;
   }
 }
 
 @each $dimension-key, $dimension-value in $max-height-dimensions {
   .-mh--#{$dimension-key} {
-    max-height: $dimension-value;
+    max-height: $dimension-value !important;
   }
 }
