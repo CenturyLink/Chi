@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-04-23T08:18:26",
+  "timestamp": "2020-04-26T17:35:36",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1268,6 +1268,7 @@
         "chi-date",
         "chi-date-picker",
         "chi-drawer",
+        "chi-label",
         "chi-number-input"
       ],
       "dependencies": [],
@@ -1285,6 +1286,9 @@
           "chi-icon"
         ],
         "chi-drawer": [
+          "chi-icon"
+        ],
+        "chi-label": [
           "chi-icon"
         ],
         "chi-number-input": [
@@ -1306,8 +1310,42 @@
           "mutable": false,
           "attr": "for",
           "reflectToAttr": true,
-          "docs": "to set for attribute.",
+          "docs": "To indicate ID of target form control web component.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": true,
+          "docs": "To indicate which form field is required.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "OPTIONAL. Size of the label. {xs,sm, md, lg, xl}.",
+          "docsTags": [],
+          "default": "'md'",
           "values": [
             {
               "type": "string"
@@ -1322,8 +1360,14 @@
       "styles": [],
       "slots": [],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-label": [
+          "chi-icon"
+        ]
+      }
     },
     {
       "filePath": "src/components/number-input/number-input.tsx",
