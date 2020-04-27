@@ -51,19 +51,18 @@
         border-bottom: 0.0625rem solid set-color(grey, 25);
         border-right: 0;
         display: none;
-        height: 100%;
+        height: calc(100% - 4.5rem);
         left: 0;
         overflow: auto;
         padding-bottom: 1rem;
         padding-top: 0.5rem;
         position: static;
-        top: 72px;
+        top: 4.5rem;
         width: 100%;
         @include respond-to(lg) {
           border-bottom: 0;
           border-right: 0.0625rem solid set-color(grey, 25);
           display: block;
-          padding-bottom: 4.5rem;
           position: fixed;
           width: 16rem;
         }
@@ -77,6 +76,8 @@
 
         ul {
           &.chi-tabs {
+            margin-bottom: 1rem;
+
             li {
               .chi-collection__title {
                 font-size: 0.875rem;
