@@ -238,117 +238,332 @@ h3 Menu item states
 p.-text
   | Each menu item can be in one of four item states <code>normal</code>, <code>active</code>, <code>disabled</code> and
   | <code>hover</code>.
+ul#chi-tabs--menu.chi-tabs
+  li.-active
+    a(href='#chi-tabs-panel--menu-base') Base
+  li
+    a(href='#chi-tabs-panel--menu-inverse') Inverse
 .example.-mb--3
-  .-p--3
-    .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
-      .chi-dropdown__menu.-active
-        a.chi-dropdown__menu-item(href='#') Normal element
-        a.chi-dropdown__menu-item.-active(href='#') Active element
-        a.chi-dropdown__menu-item.-disabled(href='#') Disabled element
-        a.chi-dropdown__menu-item.-hover(href='#') Hovered item
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-states
-      li.-disabled
-        a(href=`#webcomponent-states`) Web Component
-      li.-active
-        a(href=`#html-states`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-states
-  .chi-tabs-panel.-active#html-states
-    :code(lang="html")
-      <div class="chi-dropdown__menu">
-        <a class="chi-dropdown__menu-item" href="#">Normal element</a>
-        <a class="chi-dropdown__menu-item -active" href="#">Active element</a>
-        <a class="chi-dropdown__menu-item -disabled" href="#">Disabled element</a>
-        <a class="chi-dropdown__menu-item -hover" href="#">Hovered item</a>
-      </div>
+  #chi-tabs-panel--menu-base.chi-tabs-panel.-active
+    .-p--3(style="background-color:#eee;")
+      .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
+        .chi-dropdown__menu.-active
+          a.chi-dropdown__menu-item(href='#') Normal element
+          a.chi-dropdown__menu-item.-active(href='#') Active element
+          a.chi-dropdown__menu-item.-disabled(href='#') Disabled element
+          a.chi-dropdown__menu-item.-hover(href='#') Hovered item
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-states
+        li.-disabled
+          a(href=`#webcomponent-states`) Web Component
+        li.-active
+          a(href=`#html-states`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-states
+    .chi-tabs-panel.-active#html-states
+      :code(lang="html")
+        <div class="chi-dropdown__menu">
+          <a class="chi-dropdown__menu-item" href="#">Normal element</a>
+          <a class="chi-dropdown__menu-item -active" href="#">Active element</a>
+          <a class="chi-dropdown__menu-item -disabled" href="#">Disabled element</a>
+          <a class="chi-dropdown__menu-item -hover" href="#">Hovered item</a>
+        </div>
+  #chi-tabs-panel--menu-inverse.chi-tabs-panel
+    .-p--3(style="background-color:#eee;")
+      .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
+        .chi-dropdown__menu.-active.-inverse
+          a.chi-dropdown__menu-item(href='#') Normal element
+          a.chi-dropdown__menu-item.-active(href='#') Active element
+          a.chi-dropdown__menu-item.-disabled(href='#') Disabled element
+          a.chi-dropdown__menu-item.-hover(href='#') Hovered item
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-menu-inverse
+        li.-disabled
+          a(href=`#webcomponent-menu-inverse`) Web Component
+        li.-active
+          a(href=`#html-menu-inverse`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-menu-inverse
+    .chi-tabs-panel.-active#html-menu-inverse
+      :code(lang="html")
+        <div class="chi-dropdown__menu -inverse">
+          <a class="chi-dropdown__menu-item" href="#">Normal element</a>
+          <a class="chi-dropdown__menu-item -active" href="#">Active element</a>
+          <a class="chi-dropdown__menu-item -disabled" href="#">Disabled element</a>
+          <a class="chi-dropdown__menu-item -hover" href="#">Hovered item</a>
+        </div>
+
+h3 Description
+ul#chi-tabs--description.chi-tabs
+  li.-active
+    a(href='#chi-tabs-panel--description-base') Base
+  li
+    a(href='#chi-tabs-panel--description-inverse') Inverse
+.example.-mb--3
+  #chi-tabs-panel--description-base.chi-tabs-panel.-active
+    .-p--3(style="background-color:#eee;")
+      .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
+        .chi-dropdown__menu.-active.-list
+          a.chi-dropdown__menu-item(href='#')
+            p.chi-dropdown__menu-item_title Normal element
+            p.chi-dropdown__menu-item_text Normal element
+          a.chi-dropdown__menu-item.-active(href='#')
+            p.chi-dropdown__menu-item_title Normal element
+            p.chi-dropdown__menu-item_text Active element
+          a.chi-dropdown__menu-item.-disabled(href='#')
+            p.chi-dropdown__menu-item_title Normal element
+            p.chi-dropdown__menu-item_text Disabled element
+          a.chi-dropdown__menu-item.-hover(href='#')
+            p.chi-dropdown__menu-item_title Normal element
+            p.chi-dropdown__menu-item_text Hovered item
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-states
+        li.-disabled
+          a(href=`#webcomponent-states`) Web Component
+        li.-active
+          a(href=`#html-states`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-states
+    .chi-tabs-panel.-active#html-states
+      :code(lang="html")
+        <div class="chi-dropdown__menu -list">
+          <a class="chi-dropdown__menu-item" href="#">
+            <p class="chi-dropdown__menu-item_title">Normal element</p>
+            <p class="chi-dropdown__menu-item_text">Normal element</p>
+          </a>
+          <a class="chi-dropdown__menu-item -active" href="#">
+            <p class="chi-dropdown__menu-item_title">Active element</p>
+            <p class="chi-dropdown__menu-item_text">Active element</p>
+          </a>
+          <a class="chi-dropdown__menu-item -disabled" href="#">
+            <p class="chi-dropdown__menu-item_title">Disabled element</p>
+            <p class="chi-dropdown__menu-item_text">Disabled element</p>
+          </a>
+          <a class="chi-dropdown__menu-item -hover" href="#">
+            <p class="chi-dropdown__menu-item_title">Hovered item</p>
+            <p class="chi-dropdown__menu-item_text">Hovered item</p>
+          </a>
+        </div>
+  #chi-tabs-panel--description-inverse.chi-tabs-panel
+    .-p--3(style="background-color:#eee;")
+      .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
+        .chi-dropdown__menu.-inverse.-active.-list
+          a.chi-dropdown__menu-item(href='#')
+            p.chi-dropdown__menu-item_title Normal element
+            p.chi-dropdown__menu-item_text Normal element
+          a.chi-dropdown__menu-item.-active(href='#')
+            p.chi-dropdown__menu-item_title Normal element
+            p.chi-dropdown__menu-item_text Active element
+          a.chi-dropdown__menu-item.-disabled(href='#')
+            p.chi-dropdown__menu-item_title Normal element
+            p.chi-dropdown__menu-item_text Disabled element
+          a.chi-dropdown__menu-item.-hover(href='#')
+            p.chi-dropdown__menu-item_title Normal element
+            p.chi-dropdown__menu-item_text Hovered item
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-menu-inverse
+        li.-disabled
+          a(href=`#webcomponent-menu-inverse`) Web Component
+        li.-active
+          a(href=`#html-menu-inverse`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-menu-inverse
+    .chi-tabs-panel.-active#html-menu-inverse
+      :code(lang="html")
+        <div class="chi-dropdown__menu -inverse -list">
+          <a class="chi-dropdown__menu-item" href="#">
+            <p class="chi-dropdown__menu-item_title">Normal element</p>
+            <p class="chi-dropdown__menu-item_text">Normal element</p>
+          </a>
+          <a class="chi-dropdown__menu-item -active" href="#">
+            <p class="chi-dropdown__menu-item_title">Active element</p>
+            <p class="chi-dropdown__menu-item_text">Active element</p>
+          </a>
+          <a class="chi-dropdown__menu-item -disabled" href="#">
+            <p class="chi-dropdown__menu-item_title">Disabled element</p>
+            <p class="chi-dropdown__menu-item_text">Disabled element</p>
+          </a>
+          <a class="chi-dropdown__menu-item -hover" href="#">
+            <p class="chi-dropdown__menu-item_title">Hovered item</p>
+            <p class="chi-dropdown__menu-item_text">Hovered item</p>
+          </a>
+        </div>
 
 h3 Divider
 p.-text
   | Several menu items can be arranged together by using a divider. Use the <code>chi-divider</code> component.
+ul#chi-tabs--divider.chi-tabs
+  li.-active
+    a(href='#chi-tabs-panel--divider-base') Base
+  li
+    a(href='#chi-tabs-panel--divider-inverse') Inverse
 .example.-mb--3
-  .-p--3
-    .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
-      .chi-dropdown__menu.-active
-        a.chi-dropdown__menu-item(href='#') Element 1
-        a.chi-dropdown__menu-item(href='#') Element 2
-        a.chi-dropdown__menu-item(href='#') Element 3
-        .chi-divider
-        a.chi-dropdown__menu-item(href='#') Element 4
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-divider
-      li.-disabled
-        a(href=`#webcomponent-divider`) Web Component
-      li.-active
-        a(href=`#html-divider`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-divider
-  .chi-tabs-panel.-active#html-divider
-    :code(lang="html")
-      <div class="chi-dropdown__menu">
-        <a class="chi-dropdown__menu-item" href="#">Element 1</a>
-        <a class="chi-dropdown__menu-item" href="#">Element 2</a>
-        <a class="chi-dropdown__menu-item" href="#">Element 3</a>
-        <div class="chi-divider"></div>
-        <a class="chi-dropdown__menu-item" href="#">Element 4</a>
-      </div>
+  #chi-tabs-panel--divider-base.chi-tabs-panel.-active
+    .-p--3(style="background-color:#eee;")
+      .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
+        .chi-dropdown__menu.-active
+          a.chi-dropdown__menu-item(href='#') Element 1
+          a.chi-dropdown__menu-item(href='#') Element 2
+          a.chi-dropdown__menu-item(href='#') Element 3
+          .chi-divider
+          a.chi-dropdown__menu-item(href='#') Element 4
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-states
+        li.-disabled
+          a(href=`#webcomponent-states`) Web Component
+        li.-active
+          a(href=`#html-states`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-states
+    .chi-tabs-panel.-active#html-states
+      :code(lang="html")
+        <div class="chi-dropdown__menu">
+          <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+          <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+          <a class="chi-dropdown__menu-item" href="#">Element 3</a>
+          <div class="chi-divider"></div>
+          <a class="chi-dropdown__menu-item" href="#">Element 4</a>
+        </div>
+  #chi-tabs-panel--divider-inverse.chi-tabs-panel
+    .-p--3(style="background-color:#eee;")
+      .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
+        .chi-dropdown__menu.-inverse.-active
+          a.chi-dropdown__menu-item(href='#') Element 1
+          a.chi-dropdown__menu-item(href='#') Element 2
+          a.chi-dropdown__menu-item(href='#') Element 3
+          .chi-divider.-inverse
+          a.chi-dropdown__menu-item(href='#') Element 4
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-menu-inverse
+        li.-disabled
+          a(href=`#webcomponent-menu-inverse`) Web Component
+        li.-active
+          a(href=`#html-menu-inverse`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-menu-inverse
+    .chi-tabs-panel.-active#html-menu-inverse
+      :code(lang="html")
+        <div class="chi-dropdown__menu -inverse">
+          <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+          <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+          <a class="chi-dropdown__menu-item" href="#">Element 3</a>
+          <div class="chi-divider -inverse"></div>
+          <a class="chi-dropdown__menu-item" href="#">Element 4</a>
+        </div>
 
 h3 Icons
 p.-text
   | Dropdown component has been developed to support Chi icons in the menu items.
-.example.-mb--3
-  .-p--3
-    .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
-      .chi-dropdown__menu.-active
-        a.chi-dropdown__menu-item(href='#')
-          i.chi-icon.icon-file-outline
-          = "New"
-        a.chi-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
-          i.chi-icon.icon-arrow-to-bottom
-          = "Save"
-        .chi-divider
-        a.chi-dropdown__menu-item(href='#')
-          i.chi-icon.icon-mail
-          = "Send"
-        a.chi-dropdown__menu-item.-active(href='#')
-          i.chi-icon.icon-cart
-          = "Buy"
-        a.chi-dropdown__menu-item(href='#')
-          i.chi-icon.icon-users
-          = "Share"
-        .chi-divider
-        a.chi-dropdown__menu-item(href='#')
-          i.chi-icon.icon-logout
-          = "Logout"
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-icons
-      li.-disabled
-        a(href=`#webcomponent-icons`) Web Component
-      li.-active
-        a(href=`#html-icons`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-icons
-  .chi-tabs-panel.-active#html-icons
-    :code(lang="html")
-      <div class="chi-dropdown__menu">
-        <a class="chi-dropdown__menu-item" href="#">
-          <i class="chi-icon icon-file-outline"></i>New
-        </a>
-        <a class="chi-dropdown__menu-item -disabled" href="#">
-          <i class="chi-icon icon-arrow-to-bottom"></i>Save
-        </a>
-        <div class="chi-divider"></div>
-        <a class="chi-dropdown__menu-item" href="#">
-          <i class="chi-icon icon-mail"></i>Send
-        </a>
-        <a class="chi-dropdown__menu-item -active" href="#">
-          <i class="chi-icon icon-cart"></i>Buy
-        </a>
-        <a class="chi-dropdown__menu-item" href="#">
-          <i class="chi-icon icon-users"></i>Share
-        </a>
-        <div class="chi-divider"></div>
-        <a class="chi-dropdown__menu-item" href="#">
-          <i class="chi-icon icon-logout"></i>Logout
-        </a>
-      </div>
+  ul#chi-tabs--icons.chi-tabs
+    li.-active
+      a(href='#chi-tabs-panel--icons-base') Base
+    li
+      a(href='#chi-tabs-panel--icons-inverse') Inverse
+  .example.-mb--3
+    #chi-tabs-panel--icons-base.chi-tabs-panel.-active
+      .-p--3(style="background-color:#eee;")
+        .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
+          .chi-dropdown__menu.-active
+            a.chi-dropdown__menu-item(href='#')
+              i.chi-icon.icon-file-outline
+              = "New"
+            a.chi-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
+              i.chi-icon.icon-arrow-to-bottom
+              = "Save"
+            .chi-divider
+            a.chi-dropdown__menu-item(href='#')
+              i.chi-icon.icon-mail
+              = "Send"
+            a.chi-dropdown__menu-item.-active(href='#')
+              i.chi-icon.icon-cart
+              = "Buy"
+            a.chi-dropdown__menu-item(href='#')
+              i.chi-icon.icon-users
+              = "Share"
+            .chi-divider
+            a.chi-dropdown__menu-item(href='#')
+              i.chi-icon.icon-logout
+              = "Logout"
+      .example-tabs.-pl--2
+        ul.chi-tabs#example-states
+          li.-disabled
+            a(href=`#webcomponent-states`) Web Component
+          li.-active
+            a(href=`#html-states`) HTML Blueprint
+      .chi-tabs-panel#webcomponent-states
+      .chi-tabs-panel.-active#html-states
+        :code(lang="html")
+          <div class="chi-dropdown__menu">
+            <a class="chi-dropdown__menu-item" href="#">
+              <i class="chi-icon icon-file-outline"></i>New
+            </a>
+            <a class="chi-dropdown__menu-item -disabled" href="#">
+              <i class="chi-icon icon-arrow-to-bottom"></i>Save
+            </a>
+            <div class="chi-divider"></div>
+            <a class="chi-dropdown__menu-item" href="#">
+              <i class="chi-icon icon-mail"></i>Send
+            </a>
+            <a class="chi-dropdown__menu-item -active" href="#">
+              <i class="chi-icon icon-cart"></i>Buy
+            </a>
+            <a class="chi-dropdown__menu-item" href="#">
+              <i class="chi-icon icon-users"></i>Share
+            </a>
+            <div class="chi-divider"></div>
+            <a class="chi-dropdown__menu-item" href="#">
+              <i class="chi-icon icon-logout"></i>Logout
+            </a>
+          </div>
+    #chi-tabs-panel--icons-inverse.chi-tabs-panel
+      .-p--3(style="background-color:#eee;")
+        .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
+          .chi-dropdown__menu.-inverse.-active
+            a.chi-dropdown__menu-item(href='#')
+              i.chi-icon.icon-file-outline
+              = "New"
+            a.chi-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
+              i.chi-icon.icon-arrow-to-bottom
+              = "Save"
+            .chi-divider.-inverse
+            a.chi-dropdown__menu-item(href='#')
+              i.chi-icon.icon-mail
+              = "Send"
+            a.chi-dropdown__menu-item.-active(href='#')
+              i.chi-icon.icon-cart
+              = "Buy"
+            a.chi-dropdown__menu-item(href='#')
+              i.chi-icon.icon-users
+              = "Share"
+            .chi-divider.-inverse
+            a.chi-dropdown__menu-item(href='#')
+              i.chi-icon.icon-logout
+              = "Logout"
+      .example-tabs.-pl--2
+        ul.chi-tabs#example-menu-inverse
+          li.-disabled
+            a(href=`#webcomponent-menu-inverse`) Web Component
+          li.-active
+            a(href=`#html-menu-inverse`) HTML Blueprint
+      .chi-tabs-panel#webcomponent-menu-inverse
+      .chi-tabs-panel.-active#html-menu-inverse
+        :code(lang="html")
+          <div class="chi-dropdown__menu -inverse">
+            <a class="chi-dropdown__menu-item" href="#">
+              <i class="chi-icon icon-file-outline"></i>New
+            </a>
+            <a class="chi-dropdown__menu-item -disabled" href="#">
+              <i class="chi-icon icon-arrow-to-bottom"></i>Save
+            </a>
+            <div class="chi-divider -inverse"></div>
+            <a class="chi-dropdown__menu-item" href="#">
+              <i class="chi-icon icon-mail"></i>Send
+            </a>
+            <a class="chi-dropdown__menu-item -active" href="#">
+              <i class="chi-icon icon-cart"></i>Buy
+            </a>
+            <a class="chi-dropdown__menu-item" href="#">
+              <i class="chi-icon icon-users"></i>Share
+            </a>
+            <div class="chi-divider -inverse"></div>
+            <a class="chi-dropdown__menu-item" href="#">
+              <i class="chi-icon icon-logout"></i>Logout
+            </a>
+          </div>
 
 h3 Search box
 p.-text
