@@ -17,8 +17,6 @@ h3 Base
       <label class="chi-label">Label</label>
 
 h3 Required
-.-text
-  | Add attribute <code>required</code> to indicate required fields.
 .example.-mb--3
   .-p--3
     chi-label(required) Label
@@ -29,13 +27,15 @@ h3 Required
       li
         a(href='#html-required') HTML Blueprint
   #webcomponent-required.chi-tabs-panel.-active
+    .chi-tab__description
+      | Use attribute <code>required</code> to indicate required fields.
     :code(lang="html")
       <chi-label required>Label</chi-label>
   #html-required.chi-tabs-panel
     :code(lang="html")
       <label class="chi-label">
         Label
-        <i class="chi-icon icon-asterisk -text--danger -xs -ml--1"></i>
+        <abbr class="chi-label__required" title="required">*</abbr>
       </label>
 
 h2 Sizes
@@ -68,95 +68,21 @@ h2 Sizes
       <label class="a-label -xl">Label</label>
 
 h2 Associate label with form elements
-.-text Label is important for accessibility of form elements.
+p.-text Label is important for accessibility of form elements.
 
 .example.-mb--3
-  .-p--3(style="max-width: 20rem;")
-    .chi-form__item
-      label.chi-label(for='text-input') Label
-      input(type='text')#text-input
-    .chi-form__item.-mt--2
-      label.chi-label(for='select') Label
-      select.chi-input#select
-        option Option 1
-        option Option 2
-        option Option 3
-    .chi-form__item.-mt--2
-      label.chi-switch(for='toggle1')
-        input#toggle1.chi-switch__input(type='checkbox')
-        span.chi-switch__content
-          span.chi-switch__thumb
-        span.chi-switch__label Label
-    .chi-form__item.-mt--2
-      .chi-checkbox
-        input#checkbox1.chi-checkbox__input(type='checkbox')
-        label.chi-checkbox__label(for='checkbox1') Checkbox
-    fieldset.-mt--2
-      legend.chi-label Select an option
-      .chi-form__item
-        .chi-radio
-          input#radio1.chi-radio__input(type='radio', name='radios')
-          label.chi-radio__label(for='radio1') Radio Button
-      .chi-form__item
-        .chi-radio
-          input#radio2.chi-radio__input(type='radio', name='radios')
-          label.chi-radio__label(for='radio2') Radio Button
-
+  .-p--3(style="max-width: 17rem;")
+    chi-label(for='number-input') Label
+    chi-number-input#number-input
+    chi-label.-mt--1(for='chi-date-picker') Label
+    chi-date-picker#chi-date-picker
   .example-tabs.-pl--2
     ul.chi-tabs#example-associating
       li.-active
-        a(href='#html-associating') HTML Blueprint
-      li
         a(href='#webcomponent-associating') Web Component
-  #html-associating.chi-tabs-panel.-active
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="text-input">Label</label>
-        <input type="text" id="text-input" />
-      </div>
-
-      <div class="chi-form__item">
-        <label class="chi-label" for="select">Label</label>
-        <select class="chi-input" id="select">
-          <option>Option 1</option>
-          <option>Option 2</option>
-          <option>Option 3</option>
-        </select>
-      </div>
-
-      <div class="chi-form__item">
-        <label class="chi-switch" for="toggle1">
-          <input class="chi-switch__input" id="toggle1" type="checkbox"/>
-          <span class="chi-switch__content">
-            <span class="chi-switch__thumb"></span>
-          </span>
-          <span class="chi-switch__label">Label</span>
-        </label>
-      </div>
-
-      <div class="chi-form__item">
-          <div class="chi-checkbox">
-            <input class="chi-checkbox__input" id="checkbox1" type="checkbox" />
-            <label class="chi-checkbox__label" for="checkbox1">Checkbox</label>
-          </div>
-      </div>
-
-      <fieldset>
-          <legend class="chi-label">Select an option</legend>
-          <div class="chi-form__item">
-            <div class="chi-radio">
-              <input class="chi-radio__input" id="radio1" type="radio" name="radios" />
-              <label class="chi-radio__label" for="radio1">Radio Button</label>
-            </div>
-          </div>
-          <div class="chi-form__item">
-            <div class="chi-radio">
-              <input class="chi-radio__input" id="radio2" type="radio" name="radios" />
-              <label class="chi-radio__label" for="radio2">Radio Button</label>
-            </div>
-          </div>
-      </fieldset>
-  #webcomponent-associating.chi-tabs-panel
+      li
+        a(href='#html-associating') HTML Blueprint
+  #webcomponent-associating.chi-tabs-panel.-active
     .chi-tab__description
       | Associate <code>chi-label</code> with supported form-control web components
     :code(lang="html")
@@ -164,7 +90,25 @@ h2 Associate label with form elements
       <chi-number-input id="number-input"></chi-number-input>
 
       <chi-label for="chi-date-picker">Label</chi-label>
-      <chi-number-input id="chi-date-picker"></chi-number-input>
+      <chi-date-picker id="chi-date-picker"></chi-date-picker>
+  #html-associating.chi-tabs-panel
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label for="number-input" class="chi-label">Label</label>
+        <div class="chi-number-input">
+          <input id="number-input" type="number" class="chi-input" value="0" aria-label="Input Label">
+          <button aria-label="Decrease"></button>
+          <button aria-label="Increase"></button>
+        </div>
+      </div>
+
+      <div class="chi-form__item">
+        <label class="chi-label" for="datepicker-1">Date</label>
+        <div class="chi-input__wrapper -icon--right">
+          <input id="datepicker-1" type="text" class="chi-input" placeholder="MM/DD/YYYY">
+          <i class="chi-icon icon-date -text--muted"></i>
+        </div>
+      </div>
 
 script.
   document.addEventListener(

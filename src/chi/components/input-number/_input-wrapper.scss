@@ -99,6 +99,7 @@ $expanded-sizes: (
 
 .chi-number-input {
   position: relative;
+  width: 5.5rem;
 
   input {
     &[type='number'] {

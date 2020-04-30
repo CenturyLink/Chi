@@ -31,7 +31,7 @@ export class Label {
   }
 
   render() {
-    const requiredAsterisk = <chi-icon class="-ml--1" color="danger" icon="asterisk" size="xs"></chi-icon>;
+    const requiredAsterisk = <abbr class="chi-label__required" title="required">*</abbr>;
 
     return (
       <label

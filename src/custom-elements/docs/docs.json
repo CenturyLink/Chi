@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-04-26T17:35:36",
+  "timestamp": "2020-04-30T12:33:55",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1268,7 +1268,6 @@
         "chi-date",
         "chi-date-picker",
         "chi-drawer",
-        "chi-label",
         "chi-number-input"
       ],
       "dependencies": [],
@@ -1286,9 +1285,6 @@
           "chi-icon"
         ],
         "chi-drawer": [
-          "chi-icon"
-        ],
-        "chi-label": [
           "chi-icon"
         ],
         "chi-number-input": [
@@ -1360,14 +1356,8 @@
       "styles": [],
       "slots": [],
       "dependents": [],
-      "dependencies": [
-        "chi-icon"
-      ],
-      "dependencyGraph": {
-        "chi-label": [
-          "chi-icon"
-        ]
-      }
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "src/components/number-input/number-input.tsx",
