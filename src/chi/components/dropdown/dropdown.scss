@@ -141,8 +141,9 @@
 
   &__menu {
     background-color: set-color(white);
-    border: 0.0625rem solid set-color(grey, 30);
-    box-shadow: 0 1px 4px 0 rgba(set-color(black), 0.1);
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12),
+    0 5px 5px -3px rgba(0, 0, 0, 0.2);
     display: none;
     font-size: $text;
     margin: 0;
@@ -156,6 +157,7 @@
       align-items: center;
       display: flex;
       height: 2rem;
+      line-height: $line-height-small;
       padding-left: 1rem;
       padding-right: 1rem;
       white-space: nowrap;
@@ -184,7 +186,7 @@
 
       &:not(.-active) {
         .chi-icon {
-          color: set-color(grey, 50);
+          color: set-color(grey, 60);
         }
       }
 
@@ -213,7 +215,7 @@
         font-size: $text-large;
         font-weight: 600;
         line-height: $line-height-small;
-        margin-bottom: .25rem;
+        margin-bottom: 0.25rem;
         margin-top: 0;
         word-break: break-word;
       }
@@ -298,7 +300,6 @@
 
     &.-inverse {
       background-color: set-color(grey, 90);
-      border: 0.0625rem solid set-color(grey, 30);
 
       .chi-dropdown__menu-item {
         color: set-color(white);
@@ -343,8 +344,8 @@
         align-items: flex-start;
         flex-direction: column;
         height: auto;
-        padding-bottom: .5rem;
-        padding-top: .5rem;
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
 
         &.-active {
           .chi-dropdown__menu-item_text {
