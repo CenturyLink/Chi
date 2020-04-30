@@ -68,7 +68,7 @@ h3 Base
 h3 Center
 p.-text Modals can also be placed in the middle of the page by applying the class <code>-center</code> to <code>chi-backdrop</code>.
 .example.-mb--3
-  .chi-backdrop.-center.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+  .chi-backdrop.-center.-p--6.-position--relative.-z--0
     .chi-backdrop__wrapper
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
         header.chi-modal__header
@@ -121,7 +121,7 @@ p.-text
   | Use max-height utility classes such as <code>-mh--400</code> or <code>-mh--480</code>, or define your own value.
 
 .example.-mb--3
-  .chi-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+  .chi-backdrop.-p--6.-position--relative.-z--0
     .chi-backdrop__wrapper
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
         header.chi-modal__header
@@ -200,7 +200,7 @@ p.-text
   | Enable scrolling when modals become too long for the user’s viewport or device, they scroll independent of the page itself.
 
 .example.-mb--3
-  .chi-backdrop.-p--6.-position--relative.-z--0.-mh--480(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+  .chi-backdrop.-p--6.-position--relative.-z--0.-mh--480
     .chi-backdrop__wrapper
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
         header.chi-modal__header
@@ -276,7 +276,7 @@ p.-text
 
 h3 With Subtitle
 .example.-mb--3
-  .chi-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+  .chi-backdrop.-p--6.-position--relative.-z--0
     .chi-backdrop__wrapper
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
         header.chi-modal__header
@@ -326,7 +326,7 @@ h3 Inverse Backdrop
 p.-text
   | Invert a modals backdrop by applying the class <code>-inverse</code>.
 .example.-mb--3
-  .chi-backdrop.-inverse.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+  .chi-backdrop.-inverse.-p--6.-position--relative.-z--0
     .chi-backdrop__wrapper
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
         header.chi-modal__header
@@ -375,7 +375,7 @@ p.-text
   | Disable header or footer borders by applying the class <code>-no-border</code> to
   | <code>chi-modal__header</code> or <code>chi-modal__footer</code>.
 .example.-mb--3
-  .chi-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+  .chi-backdrop.-p--6.-position--relative.-z--0
     .chi-backdrop__wrapper
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
         header.chi-modal__header.-no-border
@@ -425,7 +425,7 @@ p.-text
   | to <code>chi-modal__title</code>. This will provide sufficient real estate on the
   | left side to store a back button <code>chi-modal__back</code>.
 .example.-mb--3
-  .chi-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+  .chi-backdrop.-p--6.-position--relative.-z--0
     .chi-backdrop__wrapper
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
         header.chi-modal__header
@@ -472,7 +472,7 @@ p.-text
 h3 Simple
 p.-text Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code> for a simple and customizable modal.
 .example.-mb--3
-  .chi-backdrop.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+  .chi-backdrop.-p--6.-position--relative.-z--0
     .chi-backdrop__wrapper
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
         button(class='chi-button -icon -close', aria-label='Close')
@@ -513,7 +513,7 @@ p.-text Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code>
 
 h3 Portal
 .example.-mb--3
-  .chi-backdrop.-portal.-p--6.-position--relative.-z--0(style="border-top-left-radius:3px;border-top-right-radius:3px;")
+  .chi-backdrop.-portal.-p--6.-position--relative.-z--0
     .chi-backdrop__wrapper
       section.chi-modal.-portal(role="dialog", aria-label="Modal description", aria-modal="true")
         header.chi-modal__header
@@ -524,7 +524,7 @@ h3 Portal
         .chi-modal__content
           p.-text.-m--0 Modal content
         footer.chi-modal__footer
-          button.chi-button.-primary.-lg Save
+          button.chi-button.-primary Save
   .example-tabs.-pl--2
     ul.chi-tabs#example-portal
       li.-disabled
@@ -549,7 +549,7 @@ h3 Portal
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-button -primary -lg">Save</button>
+              <button class="chi-button -primary">Save</button>
             </footer>
           </section>
         </div>
