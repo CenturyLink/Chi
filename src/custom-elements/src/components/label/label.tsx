@@ -31,7 +31,7 @@ export class Label {
   }
 
   render() {
-    const requiredAsterisk = <abbr class="chi-label__required" title="required">*</abbr>;
+    const requiredAsterisk = <abbr class="chi-label__required" title="Required">*</abbr>;
 
     return (
       <label
@@ -41,8 +41,8 @@ export class Label {
           `}
         htmlFor={`${this.for}-control`}
       >
-        <slot></slot>
         {this.required ? requiredAsterisk : ''}
+        <slot></slot>
       </label>
     );
   }
