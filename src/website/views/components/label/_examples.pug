@@ -2,7 +2,8 @@ h2 Examples
 h3 Base
 .example.-mb--3
   .-p--3
-    chi-label Label
+    chi-label(for="input-1") Label
+    input#input-1-control.-sr--only
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
       li.-active
@@ -19,7 +20,8 @@ h3 Base
 h3 Required
 .example.-mb--3
   .-p--3
-    chi-label(required) Label
+    chi-label(for="input-2", required) Label
+    input#input-2-control.-sr--only
   .example-tabs.-pl--2
     ul.chi-tabs#example-required
       li.-active
@@ -39,13 +41,19 @@ h3 Required
       </label>
 
 h2 Sizes
+p.-text Label supports the following sizes: <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>. The default size is <code>md</code>.
 .example.-mb--3
   .-p--3
-    chi-label(size='xs') Label
-    chi-label(size='sm') Label
-    chi-label(size='md') Label
-    chi-label(size='lg') Label
-    chi-label(size='xl') Label
+    chi-label(for="input-3", size='xs') Label
+    input#input-3-control.-sr--only
+    chi-label(for="input-4", size='sm') Label
+    input#input-4-control.-sr--only
+    chi-label(for="input-5", size='md') Label
+    input#input-5-control.-sr--only
+    chi-label(for="input-6", size='lg') Label
+    input#input-6-control.-sr--only
+    chi-label(for="input-7", size='xl') Label
+    input#input-7-control.-sr--only
   .example-tabs.-pl--2
     ul.chi-tabs#example-sizes
       li.-active
@@ -54,17 +62,35 @@ h2 Sizes
         a(href='#html-sizes') HTML Blueprint
   #webcomponent-sizes.chi-tabs-panel.-active
     :code(lang="html")
+      <!-- xs -->
       <chi-label size="xs">Label</chi-label>
+
+      <!-- sm -->
       <chi-label size="sm">Label</chi-label>
+
+      <!-- md -->
       <chi-label size="md">Label</chi-label>
+
+      <!-- lg -->
       <chi-label size="lg">Label</chi-label>
+
+      <!-- xl -->
       <chi-label size="xl">Label</chi-label>
   #html-sizes.chi-tabs-panel
     :code(lang="html")
+      <!-- xs -->
       <label class="a-label -xs">Label</label>
+
+      <!-- sm -->
       <label class="a-label -sm">Label</label>
+
+      <!-- md -->
       <label class="a-label -md">Label</label>
+
+      <!-- lg -->
       <label class="a-label -lg">Label</label>
+
+      <!-- xl -->
       <label class="a-label -xl">Label</label>
 
 h2 Associate label with form elements
