@@ -19,6 +19,29 @@ $sizes: (
   )
 );
 
+$inverse-sizes: (
+  xs: (
+    padding-left: 0.75rem,
+    active-padding-left: 0.5rem
+  ),
+  sm: (
+    padding-left: 0.75rem,
+    active-padding-left: 0.5rem
+  ),
+  md: (
+    padding-left: 1rem,
+    active-padding-left: 0.75rem
+  ),
+  lg: (
+    padding-left: 1.25rem,
+    active-padding-left: 1rem
+  ),
+  xl: (
+    padding-left: 1.5rem,
+    active-padding-left: 1.25rem
+  )
+);
+
 th {
   text-align: left;
 }
@@ -158,7 +181,7 @@ th {
             div {
               &::after {
                 background-image: none;
-                content: '\e91e';
+                content: '\e921';
                 font-family: 'chi';
                 font-size: 0.75rem;
                 font-weight: normal;
@@ -186,8 +209,8 @@ th {
         }
 
         td {
-          color: set-color(white);
           border-bottom: 0;
+          color: set-color(white);
         }
       }
     }
@@ -207,6 +230,32 @@ th {
             &.-hover {
               td {
                 background-color: set-color(grey, 90);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @each $type in map-keys($inverse-sizes) {
+      &.-#{$type} {
+        tr {
+          & th {
+            &:first-child {
+              padding-left: map-get(map-get($inverse-sizes, $type), padding-left);
+            }
+          }
+
+          & td {
+            &:first-child {
+              padding-left: map-get(map-get($inverse-sizes, $type), padding-left);
+            }
+          }
+
+          &.-active {
+            td {
+              &:first-child {
+                padding-left: map-get(map-get($inverse-sizes, $type), active-padding-left);
               }
             }
           }

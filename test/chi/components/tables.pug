@@ -257,6 +257,38 @@ mixin table(row, column, selectable)
             td name-3
             td Nov 5, 2020 10:15 AM
 
+    div(class=`test-inverse`)
+      span.-text--h2
+        | table
+        = ' / Inverse'
+      table.chi-table.-inverse.-hover
+        thead
+          tr
+            th
+            th.-sorted.-descending
+              div Name
+            th ID
+            th Last login
+        tbody
+          tr
+            td
+              i.chi-icon.icon-check-alt.-xs
+            td Name 1
+            td name-1
+            td Dec 18, 2020 3:26 PM
+          tr
+            td
+              i.chi-icon.icon-check-alt.-xs
+            td Name 2
+            td name-2
+            td Dec 18, 2020 2:38 AM
+          tr.-active
+            td
+              i.chi-icon.icon-check-alt.-xs
+            td Name 3
+            td name-3
+            td Nov 5, 2020 10:15 AM
+
   .chi-col.-w--6
     h2 With section container
     each tablestyle in ['default', 'striped']
