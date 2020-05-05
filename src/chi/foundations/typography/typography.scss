@@ -305,6 +305,15 @@ small,
   color: $text-color !important;
 }
 
+.-hover--text--body {
+  &:hover,
+  &:focus,
+  &:active,
+  &.-active {
+    color: $text-color !important;
+  }
+}
+
 .-text--inverse {
   color: $text-inverse !important;
 }
@@ -314,17 +323,41 @@ small,
   color: $text-white !important;
 }
 
+.-hover--text--white,
+.-hover--text--light {
+  &:hover,
+  &:focus,
+  &:active,
+  &.-active {
+    color: $text-white !important;
+  }
+}
+
 .-text--brand,
 .-text--primary {
   color: $primary !important;
+}
+
+.-hover--text--primary {
+  &:hover,
+  &:focus,
+  &:active,
+  &.-active {
+    color: $primary !important;
+  }
 }
 
 .-text--secondary {
   color: $secondary !important;
 }
 
-.-text--secondary-alt {
-  color: $secondary-alt !important;
+.-hover--text--secondary {
+  &:hover,
+  &:focus,
+  &:active,
+  &.-active {
+    color: $secondary !important;
+  }
 }
 
 .-text--success {
