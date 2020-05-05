@@ -51,13 +51,13 @@ $width-a: 5;
 
     :not(.chi-col) {
       @while $width-b <= 100 {
-        .-w-#{$size}--#{$width-b} {
+        &.-w-#{$size}--#{$width-b} {
           width: 1% * $width-b !important;
         }
         $width-b: $width-b + 5;
       }
 
-      .-w-#{$size}--auto {
+      &.-w-#{$size}--auto {
         width: auto !important;
       }
     }
