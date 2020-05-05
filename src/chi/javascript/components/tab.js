@@ -55,9 +55,11 @@ class Tab extends Component {
       return null;
     }
     for (let i = 0 ; i < tab.childNodes.length ; i++) {
-      const target = Util.getTarget(tab.childNodes[i]);
-      if (target && Util.hasClass(target, TABS_PANEL_CLASS)) {
-        return target;
+      if (tab.childNodes[i].nodeName === 'A') {
+        const target = Util.getTarget(tab.childNodes[i]);
+        if (target && Util.hasClass(target, TABS_PANEL_CLASS)) {
+          return target;
+        }
       }
     }
   }
