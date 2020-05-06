@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 2.1.0 (TBD)
+## 2.1.0 (May 8, 2020)
 ### Components
 #### Added
 * Added: Dropdown menu now supports the class `-inverse` for dark themed menus.
@@ -10,6 +10,7 @@
 * Added: Header blueprint for impersonation.
 * Added: Divider now supports applying `-inverse` to `-vertical` dividers.
 #### Changed
+* Changed: Base font from Open Sans to Inter.
 * Changed: Icons to support portal header: `icon-bell`, `icon-bell-off`, `icon-circle-question`, `icon-circle-question-outline`, `icon-logout`.
 * Changed: Dropdown trigger arrow margin has been decreased by 2px for consistency.
 #### Fixed
