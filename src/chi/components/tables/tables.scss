@@ -170,13 +170,22 @@ th {
   }
 
   &.-inverse {
+    tr {
+      background-color: set-color(grey, 90);
+      color: set-color(white);
+
+      & th {
+        border-bottom: 0.0625rem solid set-color(grey, 60);
+      }
+
+      & td {
+        border-bottom: 0.0625rem solid set-color(grey, 70);
+      }
+    }
+
     thead {
       tr {
         th {
-          background-color: set-color(grey, 90);
-          border-bottom: 0;
-          color: set-color(white);
-
           &.-sorted {
             div {
               &::after {
@@ -193,9 +202,27 @@ th {
       }
     }
 
-    tbody {
+    & tbody {
       tr {
-        background-color: set-color(grey, 90);
+        &.-row--success {
+          background-color: set-color(mint, 80) !important;
+        }
+
+        &.-row--warning {
+          background-color: set-color(yellow, 80) !important;
+        }
+
+        &.-row--danger {
+          background-color: set-color(red, 80) !important;
+        }
+
+        &.-row--info {
+          background-color: set-color(blue, 80) !important;
+        }
+
+        &[disabled] {
+          color: rgba(set-color(grey, 10), 0.4) !important;
+        }
 
         &.-active {
           td {
@@ -206,11 +233,6 @@ th {
               padding-left: 0.75rem;
             }
           }
-        }
-
-        td {
-          border-bottom: 0;
-          color: set-color(white);
         }
       }
     }
@@ -233,6 +255,36 @@ th {
               }
             }
           }
+        }
+      }
+    }
+
+    &.-striped {
+      tbody {
+        tr {
+          &:nth-child(odd) {
+            background-color: set-color(grey, 80);
+          }
+
+          &.-active {
+            background-color: set-color(grey, 90);
+          }
+        }
+      }
+    }
+
+    &.-bordered {
+      &::before {
+        border: 0.0625rem solid set-color(grey, 30);
+      }
+
+      tr {
+        & th {
+          border: 0.0625rem solid set-color(grey, 30);
+        }
+
+        & td {
+          border: 0.0625rem solid set-color(grey, 30);
         }
       }
     }
