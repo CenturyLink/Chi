@@ -428,7 +428,9 @@ $sizes: (
 
       &.-no-hover {
         &:hover,
-        &.-hover {
+        &.-hover,
+        &:active,
+        &.-active {
           border-color: transparent;
           box-shadow: none;
         }
