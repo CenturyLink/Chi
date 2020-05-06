@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-05-06T06:42:58",
+  "timestamp": "2020-05-06T20:53:00",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1311,6 +1311,23 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "optional",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "optional",
+          "reflectToAttr": true,
+          "docs": "To indicate which form field is optional.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,

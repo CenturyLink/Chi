@@ -26,6 +26,7 @@ $sizes: (
 
 label,
 .chi-label {
+  display: flex;
   font-size: $text;
   font-weight: 600;
   line-height: $line-height-small;
@@ -51,10 +52,18 @@ label,
     color: $success-color;
   }
 
+
+  .chi-label__required,
+  .chi-label__optional {
+    margin-left: 0.25rem;
+    text-decoration: none;
+  }
+
   .chi-label__required {
     color: set-color(red, 70);
-    margin-left: 0;
-    margin-right: 0.25rem;
-    text-decoration: none;
+  }
+
+  .chi-label__optional {
+    font-weight: 400;
   }
 }

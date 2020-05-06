@@ -22,6 +22,10 @@ export class Label {
    * To indicate which form field is required.
    */
   @Prop({ reflect: true }) required = false;
+  /**
+   * To indicate which form field is optional.
+   */
+  @Prop({ reflect: true }) optional = false;
 
   @Watch('size')
   validateSizeAttribute(newValue: string) {
@@ -31,7 +35,17 @@ export class Label {
   }
 
   render() {
-    const requiredAsterisk = <abbr class="chi-label__required" title="Required">*</abbr>;
+    const required = <abbr class="chi-label__required" title="Required field">*</abbr>;
+    const optional = <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>;
+    let message = '';
+
+    if (!(this.required && this.optional)) {
+      if (this.required) {
+        message = required;
+      } else if (this.optional) {
+        message = optional;
+      }
+    }
 
     return (
       <label
@@ -41,8 +55,8 @@ export class Label {
           `}
         htmlFor={`${this.for}-control`}
       >
-        {this.required ? requiredAsterisk : ''}
         <slot></slot>
+        {message}
       </label>
     );
   }

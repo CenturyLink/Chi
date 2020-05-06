@@ -17,11 +17,14 @@ h3 Base
     :code(lang="html")
       <label class="chi-label">Label</label>
 
-h3 Required
+h3 Required / Optional
+
 .example.-mb--3
   .-p--3
     chi-label(for="input-2", required) Label
     input#input-2-control.-sr--only
+    chi-label(for="input-3", optional) Label
+    input#input-3-control.-sr--only
   .example-tabs.-pl--2
     ul.chi-tabs#example-required
       li.-active
@@ -30,29 +33,42 @@ h3 Required
         a(href='#html-required') HTML Blueprint
   #webcomponent-required.chi-tabs-panel.-active
     .chi-tab__description
-      | Use attribute <code>required</code> to indicate required fields.
+      | Use attribute <code>required</code> or <code>optional</code> if you need to indicate required / optional fields.
     :code(lang="html")
+      <!-- Required -->
       <chi-label required>Label</chi-label>
+
+      <!-- Optional -->
+      <chi-label optional>Label</chi-label>
+
   #html-required.chi-tabs-panel
     :code(lang="html")
+      <!-- Required -->
       <label class="chi-label">
-        <abbr class="chi-label__required" title="Required">*</abbr>Label
+        Label
+        <abbr class="chi-label__required" title="Required field">*</abbr>
+      </label>
+
+      <!-- Optional -->
+      <label class="chi-label">
+        Label
+        <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
       </label>
 
 h2 Sizes
 p.-text Label supports the following sizes: <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>. The default size is <code>md</code>.
 .example.-mb--3
   .-p--3
-    chi-label(for="input-3", size='xs') Label
-    input#input-3-control.-sr--only
-    chi-label(for="input-4", size='sm') Label
+    chi-label(for="input-4", size='xs') Label
     input#input-4-control.-sr--only
-    chi-label(for="input-5", size='md') Label
+    chi-label(for="input-5", size='sm') Label
     input#input-5-control.-sr--only
-    chi-label(for="input-6", size='lg') Label
+    chi-label(for="input-6", size='md') Label
     input#input-6-control.-sr--only
-    chi-label(for="input-7", size='xl') Label
+    chi-label(for="input-7", size='lg') Label
     input#input-7-control.-sr--only
+    chi-label(for="input-8", size='xl') Label
+    input#input-8-control.-sr--only
   .example-tabs.-pl--2
     ul.chi-tabs#example-sizes
       li.-active
@@ -78,19 +94,19 @@ p.-text Label supports the following sizes: <code>sm</code>, <code>md</code>, <c
   #html-sizes.chi-tabs-panel
     :code(lang="html")
       <!-- xs -->
-      <label class="a-label -xs">Label</label>
+      <label class="chi-label -xs">Label</label>
 
       <!-- sm -->
-      <label class="a-label -sm">Label</label>
+      <label class="chi-label -sm">Label</label>
 
       <!-- md -->
-      <label class="a-label -md">Label</label>
+      <label class="chi-label -md">Label</label>
 
       <!-- lg -->
-      <label class="a-label -lg">Label</label>
+      <label class="chi-label -lg">Label</label>
 
       <!-- xl -->
-      <label class="a-label -xl">Label</label>
+      <label class="chi-label -xl">Label</label>
 
 h2 Associate label with form elements
 p.-text Label is important for accessibility of form elements.
