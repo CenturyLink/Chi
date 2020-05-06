@@ -191,7 +191,7 @@ $expanded-sizes: (
           flex: auto;
           min-width: 1rem;
           order: 2;
-          padding-right: .4375rem;
+          padding-right: 0.4375rem;
           text-align: center;
           z-index: 1;
 
@@ -202,7 +202,7 @@ $expanded-sizes: (
               color: $text-color;
               display: block;
               height: map-get(map-get($expanded-sizes, md), btn-height);
-              padding: .4375rem;
+              padding: 0.4375rem;
               position: relative;
 
               &:first-of-type,
@@ -255,6 +255,7 @@ $expanded-sizes: (
     @each $size, $values in $expanded-sizes {
       &.-#{$size} {
         width: map-get($values, width);
+
         & > input[type='number'].chi-input {
           & ~ button {
             font-size: map-get($values, btn-font-size);

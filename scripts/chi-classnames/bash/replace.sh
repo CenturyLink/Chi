@@ -100,6 +100,7 @@ ARRAY=(
 
     # Sidenav
     "m-sidenav:chi-sidenav"
+    "a-sidenav:chi-sidenav"
 
     # Spinner
     "a-spinner:chi-spinner"

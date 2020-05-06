@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 2.1.0 (TBD)
+### Components
+#### Added
+* Added: Dropdown menu now supports the class `-inverse` for dark themed menus.
+* Added: Dropdown menu now supports predefined width classes: `-w--sm`, `-w--md`, `-w--lg`, `-w--xl`.
+* Added: Icons to support portal header: `icon-bell-outline`, `icon-bell-off-outline`.
+* Added: Icons to support portal pagination: `icon-page-first`, `icon-page-last`.
+* Added: Header blueprint for impersonation.
+* Added: Divider now supports applying `-inverse` to `-vertical` dividers.
+#### Changed
+* Changed: Icons to support portal header: `icon-bell`, `icon-bell-off`, `icon-circle-question`, `icon-circle-question-outline`, `icon-logout`.
+* Changed: Dropdown trigger arrow margin has been decreased by 2px for consistency.
+#### Fixed
+* Fixed: Sizing utility values did not have enough specificity to override default component sizes.
+* Fixed: Sizing utility for width auto was not working.
+* Fixed: Header container `chi-header__start` was not rendering dropdown menus correctly due to an overflow:hidden.
+
+### Documentation
+#### Added
+* Added: Header has been updated with a new example for impersonation.
+#### Changed
+* Changed: Headers for portal now include functional inverse drop down menus.
+* Changed: Removed Design Kit button from docs sidenav.
+
 ## 2.0.0 (April 23, 2020)
 
 ### Components

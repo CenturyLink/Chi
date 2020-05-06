@@ -15,6 +15,10 @@
     border-top: 0;
     height: 100%;
     margin: 0 0.5rem;
+
+    &.-inverse {
+      border-color: rgba(set-color(white), 0.2);
+    }
   }
 
   &.-colorbar {

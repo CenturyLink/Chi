@@ -24,6 +24,14 @@ i {
   }
 }
 
+.icon-page-first::before {
+  content: '\e9be';
+}
+
+.icon-page-last::before {
+  content: '\e9bf';
+}
+
 .icon-flag::before {
   content: '\e9ba';
 }
@@ -260,8 +268,16 @@ i {
   content: '\e90c';
 }
 
+.icon-bell-off-outline::before {
+  content: '\e9fe';
+}
+
 .icon-bell-off::before {
   content: '\e90d';
+}
+
+.icon-bell-outline::before {
+  content: '\e9fd';
 }
 
 .icon-bell::before {
