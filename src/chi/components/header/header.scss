@@ -16,9 +16,8 @@
 
   &__content {
     align-items: center;
-    display: grid;
+    display: flex;
     flex-direction: row;
-    grid-template-columns: 1fr auto 1fr;
     height: 4rem;
     justify-content: space-between;
     padding: 0 0.5rem;
@@ -46,7 +45,6 @@
   &__brand {
     align-items: center;
     display: inline-flex;
-    grid-column-start: 2;
     justify-content: center;
     order: 2;
 
@@ -144,6 +142,7 @@
     display: flex;
     font-size: $text-small;
     justify-content: center;
+    left: 0;
     line-height: $line-height-large;
     position: absolute;
     top: 0;
@@ -342,17 +341,9 @@
         margin: 0;
         width: 100%;
       }
-
-      &.-colorbar {
-        height: 0.25rem;
-      }
     }
 
     .chi-header__content {
-      @include respond-to(md) {
-        grid-template-columns: auto auto 1fr;
-      }
-
       .chi-header__start {
         @include respond-to(md) {
           padding-right: 1rem;
