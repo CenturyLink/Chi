@@ -1306,8 +1306,59 @@
           "mutable": false,
           "attr": "for",
           "reflectToAttr": true,
-          "docs": "to set for attribute.",
+          "docs": "To indicate ID of target form control web component.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "optional",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "optional",
+          "reflectToAttr": true,
+          "docs": "To indicate which form field is optional.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": true,
+          "docs": "To indicate which form field is required.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "OPTIONAL. Size of the label. {xs,sm, md, lg, xl}.",
+          "docsTags": [],
+          "default": "'md'",
           "values": [
             {
               "type": "string"
