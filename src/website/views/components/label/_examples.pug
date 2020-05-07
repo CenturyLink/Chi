@@ -1,0 +1,163 @@
+h2 Examples
+h3 Base
+.example.-mb--3
+  .-p--3
+    chi-label(for="input-1") Label
+    input#input-1-control.-sr--only
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-active
+        a(href='#webcomponent-base') Web Component
+      li
+        a(href='#html-base') HTML Blueprint
+  #webcomponent-base.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label>Label</chi-label>
+  #html-base.chi-tabs-panel
+    :code(lang="html")
+      <label class="chi-label">Label</label>
+
+h3 Required / Optional
+
+.example.-mb--3
+  .-p--3
+    chi-label(for="input-2", required) Label
+    input#input-2-control.-sr--only
+    chi-label(for="input-3", optional) Label
+    input#input-3-control.-sr--only
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-required
+      li.-active
+        a(href='#webcomponent-required') Web Component
+      li
+        a(href='#html-required') HTML Blueprint
+  #webcomponent-required.chi-tabs-panel.-active
+    .chi-tab__description
+      | Use attribute <code>required</code> or <code>optional</code> if you need to indicate required / optional fields.
+    :code(lang="html")
+      <!-- Required -->
+      <chi-label required>Label</chi-label>
+
+      <!-- Optional -->
+      <chi-label optional>Label</chi-label>
+
+  #html-required.chi-tabs-panel
+    :code(lang="html")
+      <!-- Required -->
+      <label class="chi-label">
+        Label
+        <abbr class="chi-label__required" title="Required field">*</abbr>
+      </label>
+
+      <!-- Optional -->
+      <label class="chi-label">
+        Label
+        <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
+      </label>
+
+h2 Sizes
+p.-text Label supports the following sizes: <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>. The default size is <code>md</code>.
+.example.-mb--3
+  .-p--3
+    chi-label(for="input-4", size='xs') Label
+    input#input-4-control.-sr--only
+    chi-label(for="input-5", size='sm') Label
+    input#input-5-control.-sr--only
+    chi-label(for="input-6", size='md') Label
+    input#input-6-control.-sr--only
+    chi-label(for="input-7", size='lg') Label
+    input#input-7-control.-sr--only
+    chi-label(for="input-8", size='xl') Label
+    input#input-8-control.-sr--only
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-sizes
+      li.-active
+        a(href='#webcomponent-sizes') Web Component
+      li
+        a(href='#html-sizes') HTML Blueprint
+  #webcomponent-sizes.chi-tabs-panel.-active
+    :code(lang="html")
+      <!-- xs -->
+      <chi-label size="xs">Label</chi-label>
+
+      <!-- sm -->
+      <chi-label size="sm">Label</chi-label>
+
+      <!-- md -->
+      <chi-label size="md">Label</chi-label>
+
+      <!-- lg -->
+      <chi-label size="lg">Label</chi-label>
+
+      <!-- xl -->
+      <chi-label size="xl">Label</chi-label>
+  #html-sizes.chi-tabs-panel
+    :code(lang="html")
+      <!-- xs -->
+      <label class="chi-label -xs">Label</label>
+
+      <!-- sm -->
+      <label class="chi-label -sm">Label</label>
+
+      <!-- md -->
+      <label class="chi-label -md">Label</label>
+
+      <!-- lg -->
+      <label class="chi-label -lg">Label</label>
+
+      <!-- xl -->
+      <label class="chi-label -xl">Label</label>
+
+h2 Associate label with form elements
+p.-text Label is important for accessibility of form elements.
+
+.example.-mb--3
+  .-p--3(style="max-width: 17rem;")
+    chi-label(for='number-input') Label
+    chi-number-input#number-input
+    chi-label.-mt--1(for='chi-date-picker') Label
+    chi-date-picker#chi-date-picker
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-associating
+      li.-active
+        a(href='#webcomponent-associating') Web Component
+      li
+        a(href='#html-associating') HTML Blueprint
+  #webcomponent-associating.chi-tabs-panel.-active
+    .chi-tab__description
+      | Associate <code>chi-label</code> with supported form-control web components
+    :code(lang="html")
+      <chi-label for="number-input">Label</chi-label>
+      <chi-number-input id="number-input"></chi-number-input>
+
+      <chi-label for="chi-date-picker">Label</chi-label>
+      <chi-date-picker id="chi-date-picker"></chi-date-picker>
+  #html-associating.chi-tabs-panel
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label for="number-input" class="chi-label">Label</label>
+        <div class="chi-number-input">
+          <input id="number-input" type="number" class="chi-input" value="0" aria-label="Input Label">
+          <button aria-label="Decrease"></button>
+          <button aria-label="Increase"></button>
+        </div>
+      </div>
+
+      <div class="chi-form__item">
+        <label class="chi-label" for="datepicker-1">Date</label>
+        <div class="chi-input__wrapper -icon--right">
+          <input id="datepicker-1" type="text" class="chi-input" placeholder="MM/DD/YYYY">
+          <i class="chi-icon icon-date -text--muted"></i>
+        </div>
+      </div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.getElementById('example-base'));
+      chi.tab(document.getElementById('example-required'));
+      chi.tab(document.getElementById('example-sizes'));
+      chi.tab(document.getElementById('example-associating'));
+    }
+  );
