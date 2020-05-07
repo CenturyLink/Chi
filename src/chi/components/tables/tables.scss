@@ -19,6 +19,29 @@ $sizes: (
   )
 );
 
+$inverse-sizes: (
+  xs: (
+    padding-left: 0.75rem,
+    active-padding-left: 0.5rem
+  ),
+  sm: (
+    padding-left: 0.75rem,
+    active-padding-left: 0.5rem
+  ),
+  md: (
+    padding-left: 1rem,
+    active-padding-left: 0.75rem
+  ),
+  lg: (
+    padding-left: 1.25rem,
+    active-padding-left: 1rem
+  ),
+  xl: (
+    padding-left: 1.5rem,
+    active-padding-left: 1.25rem
+  )
+);
+
 th {
   text-align: left;
 }
@@ -142,6 +165,153 @@ th {
 
       &[disabled] {
         color: rgba(set-color(grey, 90), 0.4) !important;
+      }
+    }
+  }
+
+  &.-inverse {
+    tr {
+      background-color: set-color(grey, 90);
+      color: set-color(white);
+
+      & th {
+        border-bottom: 0.0625rem solid set-color(grey, 60);
+      }
+
+      & td {
+        border-bottom: 0.0625rem solid set-color(grey, 70);
+      }
+    }
+
+    thead {
+      tr {
+        th {
+          &.-sorted {
+            div {
+              &::after {
+                background-image: none;
+                content: '\e921';
+                font-family: 'chi';
+                font-size: 0.75rem;
+                font-weight: normal;
+                height: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    & tbody {
+      tr {
+        &.-row--success {
+          background-color: set-color(mint, 80) !important;
+        }
+
+        &.-row--warning {
+          background-color: set-color(yellow, 80) !important;
+        }
+
+        &.-row--danger {
+          background-color: set-color(red, 80) !important;
+        }
+
+        &.-row--info {
+          background-color: set-color(blue, 80) !important;
+        }
+
+        &[disabled] {
+          color: rgba(set-color(grey, 10), 0.4) !important;
+        }
+
+        &.-active {
+          td {
+            color: $secondary-color;
+
+            &:first-child {
+              border-left: 0.25rem solid $secondary-color;
+              padding-left: 0.75rem;
+            }
+          }
+        }
+      }
+    }
+
+    &.-hover {
+      tbody {
+        tr {
+          &:hover,
+          &.-hover {
+            td {
+              background-color: set-color(grey, 80);
+            }
+          }
+
+          &.-active {
+            &:hover,
+            &.-hover {
+              td {
+                background-color: set-color(grey, 90);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.-striped {
+      tbody {
+        tr {
+          &:nth-child(odd) {
+            background-color: set-color(grey, 80);
+          }
+
+          &.-active {
+            background-color: set-color(grey, 90);
+          }
+        }
+      }
+    }
+
+    &.-bordered {
+      &::before {
+        border: 0.0625rem solid set-color(grey, 30);
+      }
+
+      tr {
+        & th {
+          border: 0.0625rem solid set-color(grey, 30);
+        }
+
+        & td {
+          border: 0.0625rem solid set-color(grey, 30);
+        }
+      }
+    }
+
+    @each $type in map-keys($inverse-sizes) {
+      &.-#{$type} {
+        tr {
+          & th {
+            &:first-child {
+              padding-left: map-get(map-get($inverse-sizes, $type), padding-left);
+            }
+          }
+
+          & td {
+            &:first-child {
+              padding-left: map-get(map-get($inverse-sizes, $type), padding-left);
+            }
+          }
+
+          &.-active {
+            td {
+              &:first-child {
+                padding-left: map-get(map-get($inverse-sizes, $type), active-padding-left);
+              }
+            }
+          }
+        }
       }
     }
   }
