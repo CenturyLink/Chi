@@ -91,8 +91,8 @@ $animation-duration: 0.5s;
   }
 
   &__content {
-    font-size: $text-small;
-    line-height: $line-height-smaller;
+    font-size: $text;
+    line-height: $line-height-small;
     overflow-y: auto;
     padding: 1.5rem;
   }
@@ -108,6 +108,12 @@ $animation-duration: 0.5s;
 
     &.-no-border {
       box-shadow: none;
+    }
+
+    .chi-button {
+      & + .chi-button {
+        margin-left: 1rem;
+      }
     }
   }
 

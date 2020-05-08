@@ -9,12 +9,15 @@ $icon-sizes: (
 );
 
 .chi-pagination {
+  align-items: center;
+  display: flex;
+  font-size: $text;
+  line-height: $line-height-small;
+
   .chi-button-group {
     &:not(.-vertical) {
       .chi-button {
-        &,
-        &.-light,
-        &.-icon {
+        &:not(.-icon) {
           &,
           &.-md {
             &,
@@ -25,7 +28,7 @@ $icon-sizes: (
             &:focus,
             &.-focus {
               &,
-              &+.chi-button:not(.-flat) {
+              &+.chi-button:not(.-icon) {
                 padding-left: 0.5625rem;
                 padding-right: 0.5625rem;
               }
@@ -34,9 +37,11 @@ $icon-sizes: (
             &:hover,
             &.-hover {
               &+.chi-button:focus {
-                border-left: 0;
-                padding-left: 0.5625rem;
-                padding-right: 0.5625rem;
+                &:not(.-icon) {
+                  border-left: 0;
+                  padding-left: 0.5625rem;
+                  padding-right: 0.5625rem;
+                }
               }
             }
           }
@@ -50,7 +55,7 @@ $icon-sizes: (
             &:focus,
             &.-focus {
               &,
-              &+.chi-button:not(.-flat) {
+              &+.chi-button:not(.-icon) {
                 padding-left: 0.4375rem;
                 padding-right: 0.4375rem;
               }
@@ -59,9 +64,11 @@ $icon-sizes: (
             &:hover,
             &.-hover {
               &+.chi-button:focus {
-                border-left: 0;
-                padding-left: 0.4375rem;
-                padding-right: 0.4375rem;
+                &:not(.-icon) {
+                  border-left: 0;
+                  padding-left: 0.4375rem;
+                  padding-right: 0.4375rem;
+                }
               }
             }
           }
@@ -75,7 +82,7 @@ $icon-sizes: (
             &:focus,
             &.-focus {
               &,
-              &+.chi-button:not(.-flat) {
+              &+.chi-button:not(.-icon) {
                 padding-left: 0.75rem;
                 padding-right: 0.75rem;
               }
@@ -84,9 +91,11 @@ $icon-sizes: (
             &:hover,
             &.-hover {
               &+.chi-button:focus {
-                border-left: 0;
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
+                &:not(.-icon) {
+                  border-left: 0;
+                  padding-left: 0.75rem;
+                  padding-right: 0.75rem;
+                }
               }
             }
           }
@@ -100,7 +109,7 @@ $icon-sizes: (
             &:focus,
             &.-focus {
               &,
-              &+.chi-button:not(.-flat) {
+              &+.chi-button:not(.-icon) {
                 padding-left: 0.9375rem;
                 padding-right: 0.9375rem;
               }
@@ -109,9 +118,11 @@ $icon-sizes: (
             &:hover,
             &.-hover {
               &+.chi-button:focus {
-                border-left: 0;
-                padding-left: 0.9375rem;
-                padding-right: 0.9375rem;
+                &:not(.-icon) {
+                  border-left: 0;
+                  padding-left: 0.9375rem;
+                  padding-right: 0.9375rem;
+                }
               }
             }
           }
@@ -120,13 +131,6 @@ $icon-sizes: (
     }
 
     .chi-button {
-      & .chi-icon {
-        font-size: 0.75rem;
-        height: 0.75rem;
-        line-height: 0.75rem;
-        width: 0.75rem;
-      }
-
       &.-active {
         box-shadow: none;
       }
@@ -168,6 +172,25 @@ $icon-sizes: (
           }
         }
       }
+    }
+  }
+
+  &__pages {
+    display: flex;
+    font-weight: 600;
+    margin: 0 1rem;
+  }
+
+  &__results {
+    color: $grey-color;
+    margin-left: 1rem;
+  }
+
+  &.-inverse {
+    color: $text-white;
+
+    .chi-pagination__results {
+      color: set-color(grey, 40);
     }
   }
 }
