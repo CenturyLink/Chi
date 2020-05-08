@@ -103,8 +103,12 @@ class Sidenav extends Component {
       this._elem.querySelectorAll(`nav > ul.${LINKLIST_CLASS} > li`),
       (singleLevelMenuItem) => {
         const menuElementLink = singleLevelMenuItem.querySelector('a').getAttribute('href');
+        const menuElementDrawer =
+        menuElementLink[0] === '#' ?
+        this._elem.querySelector(`.chi-drawer${menuElementLink}`) :
+        null;
 
-        if (!this._elem.querySelector(`.chi-drawer${menuElementLink}`)) {
+        if (!menuElementDrawer) {
           let menuItemToActivate;
 
           this._addEventHandler(
