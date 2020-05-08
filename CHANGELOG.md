@@ -9,21 +9,28 @@
 * Added: Icons to support portal pagination: `icon-page-first`, `icon-page-last`.
 * Added: Header blueprint for impersonation.
 * Added: Divider now supports applying `-inverse` to `-vertical` dividers.
+* Added: Label web component.
 #### Changed
 * Changed: Base font from Open Sans to Inter.
 * Changed: Icons to support portal header: `icon-bell`, `icon-bell-off`, `icon-circle-question`, `icon-circle-question-outline`, `icon-logout`.
-* Changed: Dropdown trigger arrow margin has been decreased by 2px for consistency.
 #### Fixed
 * Fixed: Sizing utility values did not have enough specificity to override default component sizes.
 * Fixed: Sizing utility for width auto was not working.
 * Fixed: Header container `chi-header__start` was not rendering dropdown menus correctly due to an overflow:hidden.
+* Fixed: Modal footer buttons were not rendering with sufficient space between buttons.
+* Fixed: Modal content font-size and line-height did not align with Chi's base font and line-height.
 
 ### Documentation
 #### Added
 * Added: Header has been updated with a new example for impersonation.
+* Added: Label documentation with examples for size, required, optional, and more.
 #### Changed
 * Changed: Headers for portal now include functional inverse drop down menus.
 * Changed: Removed Design Kit button from docs sidenav.
+#### Fixed
+* Fixed: Modal code samples were missing trigger and javascript example code. 
+* Fixed: Pagination code samples which contained icon buttons were missing the `-icon` class on `chi-button`.
+* Fixed: Pagination code samples which contained icon buttons were missing the `chi-button__content` container in `chi-button`.
 
 ## 2.0.0 (April 23, 2020)
 

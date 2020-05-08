@@ -37,10 +37,12 @@ h3 Base
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
+      <!-- Trigger -->
       <button id="modal-trigger-1" class="chi-button chi-modal__trigger" data-target="#modal-1">
         Launch demo modal
       </button>
 
+      <!-- Modal -->
       <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
           <section id="modal-1" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
@@ -63,6 +65,7 @@ h3 Base
         </div>
       </div>
 
+      <!-- JavaScript -->
       <script>chi.modal(document.getElementById('modal-trigger-1'));</script>
 
 h3 Center
@@ -89,13 +92,24 @@ p.-text Modals can also be placed in the middle of the page by applying the clas
         a(href=`#html-center-align`) HTML Blueprint
   .chi-tabs-panel#webcomponent-center-align
   .chi-tabs-panel.-active#html-center-align
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-backdrop -center">
+      <!-- Trigger -->
+      <button id="modal-trigger-2" class="chi-button chi-modal__trigger" data-target="#modal-2">
+        Launch center modal
+      </button>
+
+      <!-- Modal -->
+      <div class="chi-backdrop -center -closed">
         <div class="chi-backdrop__wrapper">
-          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <section id="modal-2" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-button -icon -close" aria-label="Close">
+              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
@@ -105,12 +119,15 @@ p.-text Modals can also be placed in the middle of the page by applying the clas
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-button">Cancel</button>
+              <button class="chi-button" data-dismiss="modal">Cancel</button>
               <button class="chi-button -primary -ml--2">Save</button>
             </footer>
           </section>
         </div>
       </div>
+
+      <!-- JavaScript -->
+      <script>chi.modal(document.getElementById('modal-trigger-2'));</script>
 
 h3 Scrollable
 p.-text
@@ -155,13 +172,24 @@ p.-text
         a(href=`#html-scrollable`) HTML Blueprint
   .chi-tabs-panel#webcomponent-scrollable
   .chi-tabs-panel.-active#html-scrollable
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-backdrop">
+      <!-- Trigger -->
+      <button id="modal-trigger-3" class="chi-button chi-modal__trigger" data-target="#modal-3">
+        Launch scrollable modal
+      </button>
+
+      <!-- Modal -->
+      <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
-          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <section id="modal-3" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-button -icon -close" aria-label="Close">
+              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
@@ -188,17 +216,19 @@ p.-text
               </p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-button">Cancel</button>
+              <button class="chi-button" data-dismiss="modal">Cancel</button>
               <button class="chi-button -primary -ml--2">Save</button>
             </footer>
           </section>
         </div>
       </div>
 
+      <!-- JavaScript -->
+      <script>chi.modal(document.getElementById('modal-trigger-3'));</script>
+
 h3 Scrolling long content
 p.-text
   | Enable scrolling when modals become too long for the user’s viewport or device, they scroll independent of the page itself.
-
 .example.-mb--3
   .chi-backdrop.-p--6.-position--relative.-z--0.-mh--480
     .chi-backdrop__wrapper
@@ -234,13 +264,24 @@ p.-text
         a(href=`#html-scrollable-long`) HTML Blueprint
   .chi-tabs-panel#webcomponent-scrollable-long
   .chi-tabs-panel.-active#html-scrollable-long
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-backdrop -mh--480">
+      <!-- Trigger -->
+      <button id="modal-trigger-4" class="chi-button chi-modal__trigger" data-target="#modal-4">
+        Launch long scrollable modal
+      </button>
+
+      <!-- Modal -->
+      <div class="chi-backdrop -closed -mh--480">
         <div class="chi-backdrop__wrapper">
-          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <section id="modal-4" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-button -icon -close" aria-label="Close">
+              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
@@ -267,12 +308,15 @@ p.-text
               </p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-button">Cancel</button>
+              <button class="chi-button" data-dismiss="modal">Cancel</button>
               <button class="chi-button -primary -ml--2">Save</button>
             </footer>
           </section>
         </div>
       </div>
+
+      <!-- JavaScript -->
+      <script>chi.modal(document.getElementById('modal-trigger-4'));</script>
 
 h3 With Subtitle
 .example.-mb--3
@@ -298,14 +342,25 @@ h3 With Subtitle
         a(href=`#html-subtitle`) HTML Blueprint
   .chi-tabs-panel#webcomponent-subtitle
   .chi-tabs-panel.-active#html-subtitle
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-backdrop">
+      <!-- Trigger -->
+      <button id="modal-trigger-5" class="chi-button chi-modal__trigger" data-target="#modal-5">
+        Launch modal with subtitle
+      </button>
+
+      <!-- Modal -->
+      <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
-          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <section id="modal-5" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
               <h3 class="chi-modal__subtitle">Modal subtitle</h3>
-              <button class="chi-button -icon -close" aria-label="Close">
+              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
@@ -315,12 +370,15 @@ h3 With Subtitle
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-button">Cancel</button>
+              <button class="chi-button" data-dismiss="modal">Cancel</button>
               <button class="chi-button -primary -ml--2">Save</button>
             </footer>
           </section>
         </div>
       </div>
+
+      <!-- JavaScript -->
+      <script>chi.modal(document.getElementById('modal-trigger-5'));</script>
 
 h3 Inverse Backdrop
 p.-text
@@ -347,13 +405,24 @@ p.-text
         a(href=`#html-backdrop-inverse`) HTML Blueprint
   .chi-tabs-panel#webcomponent-backdrop-inverse
   .chi-tabs-panel.-active#html-backdrop-inverse
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-backdrop -inverse">
+      <!-- Trigger -->
+      <button id="modal-trigger-6" class="chi-button chi-modal__trigger" data-target="#modal-6">
+        Launch inverse modal
+      </button>
+
+      <!-- Modal -->
+      <div class="chi-backdrop -inverse -closed">
         <div class="chi-backdrop__wrapper">
-          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <section id="modal-6" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-button -icon -close" aria-label="Close">
+              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
@@ -363,12 +432,15 @@ p.-text
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-button">Cancel</button>
+              <button class="chi-button" data-dismiss="modal">Cancel</button>
               <button class="chi-button -primary -ml--2">Save</button>
             </footer>
           </section>
         </div>
       </div>
+
+      <!-- JavaScript -->
+      <script>chi.modal(document.getElementById('modal-trigger-6'));</script>
 
 h3 No Border
 p.-text
@@ -396,13 +468,24 @@ p.-text
         a(href=`#html-no-border`) HTML Blueprint
   .chi-tabs-panel#webcomponent-no-border
   .chi-tabs-panel.-active#html-no-border
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-backdrop">
+      <!-- Trigger -->
+      <button id="modal-trigger-7" class="chi-button chi-modal__trigger" data-target="#modal-7">
+        Launch no border modal
+      </button>
+
+      <!-- Modal -->
+      <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
-          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <section id="modal-7" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header -no-border">
               <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-button -icon -close" aria-label="Close">
+              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
@@ -412,12 +495,15 @@ p.-text
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer -no-border">
-              <button class="chi-button">Cancel</button>
+              <button class="chi-button" data-dismiss="modal">Cancel</button>
               <button class="chi-button -primary -ml--2">Save</button>
             </footer>
           </section>
         </div>
       </div>
+
+      <!-- JavaScript -->
+      <script>chi.modal(document.getElementById('modal-trigger-7'));</script>
 
 h3 Multi-step
 p.-text
@@ -446,14 +532,25 @@ p.-text
         a(href=`#html-multistep`) HTML Blueprint
   .chi-tabs-panel#webcomponent-multistep
   .chi-tabs-panel.-active#html-multistep
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-backdrop">
+      <!-- Trigger -->
+      <button id="modal-trigger-8" class="chi-button chi-modal__trigger" data-target="#modal-8">
+        Launch multi-step modal
+      </button>
+
+      <!-- Modal -->
+      <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
-          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <section id="modal-8" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title -centered">Modal Title</h2>
               <button class="chi-modal__back" aria-label="Back"></button>
-              <button class="chi-button -icon -close" aria-label="Close">
+              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
@@ -468,6 +565,9 @@ p.-text
           </section>
         </div>
       </div>
+
+      <!-- JavaScript -->
+      <script>chi.modal(document.getElementById('modal-trigger-8'));</script>
 
 h3 Simple
 p.-text Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code> for a simple and customizable modal.
@@ -493,11 +593,21 @@ p.-text Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code>
         a(href=`#html-simple`) HTML Blueprint
   .chi-tabs-panel#webcomponent-simple
   .chi-tabs-panel.-active#html-simple
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-backdrop">
+      <!-- Trigger -->
+      <button id="modal-trigger-9" class="chi-button chi-modal__trigger" data-target="#modal-9">
+        Launch simple modal
+      </button>
+
+      <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
-          <section class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-            <button class="chi-button -icon -close" aria-label="Close">
+          <section id="modal-9" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
               <div class="chi-button__content">
                 <i class="chi-icon icon-x"></i>
               </div>
@@ -510,6 +620,9 @@ p.-text Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code>
           </section>
         </div>
       </div>
+
+      <!-- JavaScript -->
+      <script>chi.modal(document.getElementById('modal-trigger-9'));</script>
 
 h3 Portal
 .example.-mb--3
@@ -533,13 +646,24 @@ h3 Portal
         a(href=`#html-portal`) HTML Blueprint
   .chi-tabs-panel#webcomponent-portal
   .chi-tabs-panel.-active#html-portal
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-backdrop -portal">
+      <!-- Trigger -->
+      <button id="modal-trigger-10" class="chi-button chi-modal__trigger" data-target="#modal-10">
+        Launch portal modal
+      </button>
+
+      <!-- Modal -->
+      <div class="chi-backdrop -closed -portal">
         <div class="chi-backdrop__wrapper">
-          <section class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <section id="modal-10" class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-button -icon -close" aria-label="Close">
+              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
@@ -549,11 +673,15 @@ h3 Portal
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer">
+              <button class="chi-button" data-dismiss="modal">Cancel</button>
               <button class="chi-button -primary">Save</button>
             </footer>
           </section>
         </div>
       </div>
+
+      <!-- JavaScript -->
+      <script>chi.modal(document.getElementById('modal-trigger-10'));</script>
 
 script.
     document.addEventListener(
