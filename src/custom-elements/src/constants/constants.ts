@@ -20,3 +20,30 @@ export const ANIMATION_DURATION = {
 };
 
 export const ESCAPE_KEYCODE = '27';
+export const TEXT_INPUT_TYPES = [
+  'date',
+  'datetime',
+  'datetime-local',
+  'email',
+  'month',
+  'password',
+  'search',
+  'tel',
+  'text',
+  'time',
+  'url',
+  'week'
+];
+export type TEXT_INPUT_TYPES_TYPE =
+  'date' |
+  'datetime' |
+  'datetime-local' |
+  'email' |
+  'month' |
+  'password' |
+  'search' |
+  'tel' |
+  'text' |
+  'time' |
+  'url' |
+  'week';

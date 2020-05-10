@@ -4,92 +4,96 @@ title: Text inputs
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-each size in ['default', 'sm', 'md', 'lg', 'xl']
+- var statuses = ['initial', 'hover', 'focus', 'disabled']
+- var states = ['default', 'success', 'warning', 'danger']
+- var sizes = ['default', 'sm', 'md', 'lg', 'xl']
+
+each size in sizes
   div(class=`test-${size}`)
-    span.chi-h2= `Text Input / ${size}`
-    table(cellpadding="0", cellspacing="0", width="1200px")
-      each status in ['initial', 'hover', 'focus', 'disabled']
+    span.-text--h2= `Text Input / ${size}`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
         tr
           td
             small= `${status}`
-          each state in ['default', 'success', 'warning', 'danger']
+          each state in states
             td
               .-m--1
                 chi-text-input(
-                  state=state=='default'?'':state,
-                  status=status,
-                  size=size=='default'?'':size,
+                  state= state != 'default' && state,
+                  status= status,
+                  size= size != 'default' && size,
                   value='Value',
-                  disabled=status=='disabled'?'disabled':false)
+                  disabled= status=='disabled'?'disabled':false)
 
-each size in ['default', 'sm', 'md', 'lg', 'xl']
+each size in sizes
   div(class=`test-${size}`)
-    span.chi-h2= `Text Input + Label / ${size}`
-    table(cellpadding="0", cellspacing="0", width="1200px")
-      each status in ['initial', 'hover', 'focus', 'disabled']
+    span.-text--h2= `Text Input + Label / ${size}`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
         tr
           td
             small= `${status}`
-          each state in ['default', 'success', 'warning', 'danger']
+          each state in states
             td
               .-m--1
                 .chi-form__item
                   label.chi-label(class=`-${size}`) Label
                   chi-text-input(
-                    state=state=='default'?'':state,
+                    state= state != 'default' && state,
                     status=status,
-                    size=size=='default'?'':size,
+                    size= size != 'default' && size,
                     value='Value',
                     disabled=status=='disabled'?'disabled':false)
 
   div(class=`test-${size}-icon-left`)
-    span.chi-h2= `Text Input / ${size} / icon left`
-    table(cellpadding="0", cellspacing="0", width="1200px")
-      each status in ['initial', 'hover', 'focus', 'disabled']
+    span.-text--h2= `Text Input / ${size} / icon left`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
         tr
           td
             small= `${status}`
-          each state in ['default', 'success', 'warning', 'danger']
+          each state in states
             td
               .-m--1
                 chi-text-input(
-                  state=state=='default'?'':state,
-                  status=status,
-                  size=size=='default'?'':size,
+                  state= state != 'default' && state,
+                  status= status,
+                  size= size != 'default' && size,
                   value='Value',
                   disabled=status=='disabled'?'disabled':false,
-                  left-icon='atom',
-                  left-icon-color='')
+                  icon-left='atom',
+                  icon-left-color='')
 
   div(class=`test-${size}-icon-left`)
-    span.chi-h2= `Text Input + Label / ${size} / icon left`
-    table(cellpadding="0", cellspacing="0", width="1200px")
-      each status in ['initial', 'hover', 'focus', 'disabled']
+    span.-text--h2= `Text Input + Label / ${size} / icon left`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
         tr
           td
             small= `${status}`
-          each state in ['default', 'success', 'warning', 'danger']
+          each state in states
             td
               .-m--1
                 .chi-form__item
                   label.chi-label(class=`-${size}`) Label
                   chi-text-input(
-                    state=state=='default'?'':state,
+                    state= state != 'default' && state,
                     status=status,
-                    size=size=='default'?'':size,
+                    size= size != 'default' && size,
                     value='Value',
                     disabled=status=='disabled'?'disabled':false,
-                    left-icon='atom',
-                    left-icon-color='')
+                    icon-left='atom',
+                    icon-left-color='')
 
   div(class=`test-${size}-icon-right`)
-    span.chi-h2= `Text Input / ${size} / icon right`
-    table(cellpadding="0", cellspacing="0", width="1200px")
-      each status in ['initial', 'hover', 'focus', 'disabled']
+    span.-text--h2= `Text Input / ${size} / icon right`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
         tr
           td
             small= `${status}`
-          each state in ['default', 'success', 'warning', 'danger']
+          each state in states
             td
               .-m--1
                 if state == 'success'
@@ -101,22 +105,22 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                 else
                   - var icon = 'circle-info-outline'
                 chi-text-input(
-                  state=state=='default'?'':state,
+                  state= state != 'default' && state,
                   status=status,
-                  size=size=='default'?'':size,
+                  size= size != 'default' && size,
                   value='Value',
                   disabled=status=='disabled'?'disabled':false,
-                  right-icon=icon,
-                  right-icon-color=state=='default'?'':state)
+                  icon-right=icon,
+                  icon-right-color=state=='default'?'':state)
 
   div(class=`test-${size}-icon-right`)
-    span.chi-h2= `Text Input + Label / ${size} / icon right`
-    table(cellpadding="0", cellspacing="0", width="1200px")
-      each status in ['initial', 'hover', 'focus', 'disabled']
+    span.-text--h2= `Text Input + Label / ${size} / icon right`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
         tr
           td
             small= `${status}`
-          each state in ['default', 'success', 'warning', 'danger']
+          each state in states
             td
               .-m--1
                 if state == 'success'
@@ -130,22 +134,22 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                 .chi-form__item
                   label.chi-label(class=`-${size}`) Label
                   chi-text-input(
-                    state=state=='default'?'':state,
+                    state= state != 'default' && state,
                     status=status,
-                    size=size=='default'?'':size,
+                    size= size != 'default' && size,
                     value='Value',
                     disabled=status=='disabled'?'disabled':false,
-                    right-icon=icon,
-                    right-icon-color=state=='default'?'':state)
+                    icon-right=icon,
+                    icon-right-color=state=='default'?'':state)
 
   div(class=`test-${size}-icon-left-right`)
-    span.chi-h2= `Text Input / ${size} / icon left / icon right`
-    table(cellpadding="0", cellspacing="0", width="1200px")
-      each status in ['initial', 'hover', 'focus', 'disabled']
+    span.-text--h2= `Text Input / ${size} / icon left / icon right`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
         tr
           td
             small= `${status}`
-          each state in ['default', 'success', 'warning', 'danger']
+          each state in states
             td
               .-m--1
                 if state == 'success'
@@ -157,23 +161,23 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                 else
                   -var icon = 'circle-info-outline'
                 chi-text-input(
-                  state=state=='default'?'':state,
+                  state= state != 'default' && state,
                   status=status,
-                  size=size=='default'?'':size,
+                  size= size != 'default' && size,
                   value='Value',
                   disabled=status=='disabled'?'disabled':false,
-                  left-icon='atom',
-                  right-icon=icon,
-                  right-icon-color=state=='default'?'':state)
+                  icon-left='atom',
+                  icon-right=icon,
+                  icon-right-color=state=='default'?'':state)
 
   div(class=`test-${size}-icon-left-right`)
-    span.chi-h2= `Text Input + label / ${size} / icon left / icon right`
-    table(cellpadding="0", cellspacing="0", width="1200px")
-      each status in ['initial', 'hover', 'focus', 'disabled']
+    span.-text--h2= `Text Input + label / ${size} / icon left / icon right`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
         tr
           td
             small= `${status}`
-          each state in ['default', 'success', 'warning', 'danger']
+          each state in states
             td
               .-m--1
                 .chi-form__item
@@ -187,42 +191,42 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     -var icon = 'circle-info-outline'
                   label.chi-label(class=`-${size}`) Label
                   chi-text-input(
-                    state=state=='default'?'':state,
+                    state= state != 'default' && state,
                     status=status,
-                    size=size=='default'?'':size,
+                    size= size != 'default' && size,
                     value='Value',
                     disabled=status=='disabled'?'disabled':false,
-                    left-icon='atom',
-                    right-icon=icon,
-                    right-icon-color=state=='default'?'':state)
+                    icon-left='atom',
+                    icon-right=icon,
+                    icon-right-color=state=='default'?'':state)
 
   div(class=`test-${size}-label-inline`)
-    span.chi-h2= `Text Input + label / ${size} / inline`
-    table(cellpadding="0", cellspacing="0", width="1200px")
-      each status in ['initial', 'hover', 'focus', 'disabled']
+    span.-text--h2= `Text Input + label / ${size} / inline`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
         tr
           td
             small= `${status}`
-          each state in ['default', 'success', 'warning', 'danger']
+          each state in states
             td
               .-m--1
                 .chi-form__item.-row
                   label.chi-label.-mr--1(class=`-${size}`) Label
                   chi-text-input(
-                    state=state=='default'?'':state,
+                    state= state != 'default' && state,
                     status=status,
-                    size=size=='default'?'':size,
+                    size= size != 'default' && size,
                     value='Value',
                     disabled=status=='disabled'?'disabled':false)
 
   div(class=`test-${size}-label-with-icon`)
-    span.chi-h2= `Text Input + label with icon ${size}`
-    table(cellpadding="0", cellspacing="0", width="1200px")
-      each status in ['initial', 'hover', 'focus', 'disabled']
+    span.-text--h2= `Text Input + label with icon ${size}`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
         tr
           td
             small= `${status}`
-          each state in ['default', 'success', 'warning', 'danger']
+          each state in states
             td
               .-m--1
                 .chi-form__item
@@ -230,22 +234,34 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     label.chi-label(class=`-${size}`) Label
                     i.chi-icon.icon-circle-info-outline.-text--muted
                   chi-text-input(
-                    state=state=='default'?'':state,
+                    state= state != 'default' && state,
                     status=status,
-                    size=size=='default'?'':size,
+                    size= size != 'default' && size,
                     value='Value',
                     disabled=status=='disabled'?'disabled':false)
 
 script.
-  function checlAllInputsHydrated() {
-    const buttons = document.querySelectorAll('chi-button');
+  const chiTextInputs = Array.from(document.querySelectorAll('chi-text-input'));
 
-    return Array.from(buttons).every(x => x.classList.contains('hydrated'));
+  function checkAllInputsHydrated() {
+    return chiTextInputs.every(x => x.classList.contains('hydrated'));
+  }
+
+  async function assignStatuses() {
+    Array.prototype.forEach.call(
+      chiTextInputs,
+      (chiTextInput)  => {
+      const chiTextInputStatus = chiTextInput.getAttribute('status');
+
+      chiTextInput.setStatus(chiTextInputStatus);
+    });
   }
 
   const renderCheckInterval = setInterval(function() {
-    if (checlAllInputsHydrated()) {
-      console.log("backstop_ready");
+    if (checkAllInputsHydrated()) {
       clearInterval(renderCheckInterval);
+      assignStatuses().then(() => {
+        console.log("backstop_ready");
+      })
     }
   }, 3000);
