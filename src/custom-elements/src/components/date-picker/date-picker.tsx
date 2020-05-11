@@ -217,11 +217,9 @@ export class DatePicker {
     return [
       // TODO: This input should be chi-input in the future and will pass through
       // some of its configuration attributes.
-      <div>
+      <div class={this.disabled ? '-disabled' : ''}>
         <div
-          class={`${
-            this.disabled ? '-disabled' : ''
-            } chi-input__wrapper -icon--right`}
+          class="chi-input__wrapper -icon--right"
         >
           <input
             id={`${this._uuid}-control`}
