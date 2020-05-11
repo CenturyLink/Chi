@@ -20,13 +20,11 @@ $monday-starting-week: (
   sun: 6
 );
 
-.chi-input__wrapper {
+.sc-chi-date-picker {
   &.-disabled {
     pointer-events: none;
   }
-}
 
-.sc-chi-date-picker {
   chi-popover {
     display: flex;
   }
