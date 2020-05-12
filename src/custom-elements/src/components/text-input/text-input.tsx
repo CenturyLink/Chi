@@ -11,7 +11,7 @@ import { TEXT_INPUT_TYPES, TextInputTypes } from '../../constants/constants';
 })
 
 export class TextInput {
-  @Element() el: HTMLInputElement;
+  @Element() el: HTMLElement;
   /**
    * To define type of Text input
    */
@@ -48,6 +48,10 @@ export class TextInput {
    * To define value of Text input
    */
   @Prop({ reflect: true }) value: string;
+  /**
+   * To define name of Text input
+   */
+  @Prop({ reflect: true }) name: string;
   /**
    * To disable Text input
    */
@@ -127,6 +131,7 @@ export class TextInput {
         `}
       placeholder={this.placeholder || ''}
       value={this.value || ''}
+      name={this.name || ''}
       disabled={this.disabled}
       id={this.el.id ? `${this.el.id}-control` : null}
     />;
