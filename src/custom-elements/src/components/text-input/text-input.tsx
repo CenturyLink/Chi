@@ -11,7 +11,7 @@ import { TEXT_INPUT_TYPES, TextInputTypes } from '../../constants/constants';
 })
 
 export class TextInput {
-  @Element() el: HTMLElement;
+  @Element() el: HTMLChiTextInputElement;
   /**
    * To define type of Text input
    */
@@ -47,7 +47,7 @@ export class TextInput {
   /**
    * To define value of Text input
    */
-  @Prop({ reflect: true }) value: string;
+  @Prop({ mutable: true, reflect: true }) value = '';
   /**
    * To define name of Text input
    */
@@ -56,6 +56,10 @@ export class TextInput {
    * To disable Text input
    */
   @Prop({ reflect: true }) disabled = false;
+  /**
+   * To disable Value attribute mutation
+   */
+  @Prop({ reflect: true }) preventValueMutation = false;
 
   @State() status: string;
 
@@ -112,6 +116,12 @@ export class TextInput {
     this.status = status;
   }
 
+  _handleValueChange(valueChange: Event) {
+    if (!this.preventValueMutation) {
+      this.value = (valueChange.target as HTMLInputElement).value;
+    }
+  }
+
   componentWillLoad() {
     this.stateValidation(this.state);
     this.iconLeftColorValidation(this.iconLeftColor);
@@ -130,10 +140,11 @@ export class TextInput {
         ${this.status ? `-${this.status}` : ''}
         `}
       placeholder={this.placeholder || ''}
-      value={this.value || ''}
+      value={this.value}
       name={this.name || ''}
       disabled={this.disabled}
       id={this.el.id ? `${this.el.id}-control` : null}
+      onKeyUp={(ev) => this._handleValueChange(ev)}
     />;
     const iconClasses = `
       ${this.iconLeft && '-icon--left '}

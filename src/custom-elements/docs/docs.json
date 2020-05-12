@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-05-12T14:32:36",
+  "timestamp": "2020-05-12T19:24:15",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2274,6 +2274,23 @@
           "required": false
         },
         {
+          "name": "preventValueMutation",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "prevent-value-mutation",
+          "reflectToAttr": true,
+          "docs": "To disable Value attribute mutation",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "size",
           "type": "\"lg\" | \"md\" | \"sm\" | \"xl\"",
           "mutable": false,
@@ -2393,11 +2410,12 @@
         {
           "name": "value",
           "type": "string",
-          "mutable": false,
+          "mutable": true,
           "attr": "value",
           "reflectToAttr": true,
           "docs": "To define value of Text input",
           "docsTags": [],
+          "default": "''",
           "values": [
             {
               "type": "string"
