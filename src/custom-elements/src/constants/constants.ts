@@ -33,17 +33,5 @@ export const TEXT_INPUT_TYPES = [
   'time',
   'url',
   'week'
-];
-export type TEXT_INPUT_TYPES_TYPE =
-  'date' |
-  'datetime' |
-  'datetime-local' |
-  'email' |
-  'month' |
-  'password' |
-  'search' |
-  'tel' |
-  'text' |
-  'time' |
-  'url' |
-  'week';
+] as const;
+export type TextInputTypes = typeof TEXT_INPUT_TYPES[number];

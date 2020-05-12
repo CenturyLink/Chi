@@ -2,15 +2,6 @@ export const TEXT_COLORS = ['', 'primary', 'success', 'warning', 'danger', 'mute
 
 export const SEMANTIC_COLORS = ['info', 'warning', 'danger', 'success'];
 
-export const ICON_COLORS = ['primary', 'success', 'warning', 'danger', 'light', 'muted', 'info', 'grey', 'secondary'];
+export const ICON_COLORS = ['primary', 'success', 'warning', 'danger', 'light', 'muted', 'info', 'grey', 'secondary'] as const;
 
-export type ICON_COLORS_TYPE =
-    'primary' |
-    'success' |
-    'warning' |
-    'danger' |
-    'light' |
-    'muted' |
-    'info' |
-    'grey' |
-    'secondary';
+export type IconColors = typeof ICON_COLORS[number];

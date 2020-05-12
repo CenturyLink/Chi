@@ -1,8 +1,8 @@
 import { Component, Element, Method, Prop, State, Watch, h } from '@stencil/core';
-import { CHI_STATES, CHI_STATES_TYPE } from '../../constants/states';
-import { ICON_COLORS, ICON_COLORS_TYPE } from '../../constants/color';
-import { TEXT_INPUT_SIZES, TEXT_INPUT_SIZES_TYPE } from '../../constants/size';
-import { TEXT_INPUT_TYPES, TEXT_INPUT_TYPES_TYPE } from '../../constants/constants';
+import { CHI_STATES, ChiStates } from '../../constants/states';
+import { ICON_COLORS, IconColors } from '../../constants/color';
+import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
+import { TEXT_INPUT_TYPES, TextInputTypes } from '../../constants/constants';
 
 @Component({
   tag: 'chi-text-input',
@@ -15,11 +15,11 @@ export class TextInput {
   /**
    * To define type of Text input
    */
-  @Prop() type: TEXT_INPUT_TYPES_TYPE = 'text';
+  @Prop() type: TextInputTypes = 'text';
   /**
    * To define state color of Text input
    */
-  @Prop({ reflect: true }) state: CHI_STATES_TYPE;
+  @Prop({ reflect: true }) state: ChiStates;
   /**
    * To add a left positioned icon
    */
@@ -31,15 +31,15 @@ export class TextInput {
   /**
    * To define color of left icon
    */
-  @Prop({ reflect: true }) iconLeftColor: ICON_COLORS_TYPE;
+  @Prop({ reflect: true }) iconLeftColor: IconColors;
   /**
    * To define color of right icon
    */
-  @Prop({ reflect: true }) iconRightColor: ICON_COLORS_TYPE;
+  @Prop({ reflect: true }) iconRightColor: IconColors;
   /**
    * To define size of Text input
    */
-  @Prop({ reflect: true }) size ?: TEXT_INPUT_SIZES_TYPE = 'md';
+  @Prop({ reflect: true }) size ?: TextInputSizes = 'md';
   /**
    * To define placeholder of Text input
    */
@@ -56,7 +56,7 @@ export class TextInput {
   @State() status: string;
 
   @Watch('state')
-  stateValidation(newValue: string) {
+  stateValidation(newValue: ChiStates) {
     const validValues = CHI_STATES.join(', ');
 
     if (newValue && !CHI_STATES.includes(newValue)) {
@@ -65,7 +65,7 @@ export class TextInput {
   }
 
   @Watch('size')
-  sizeValidation(newValue: string) {
+  sizeValidation(newValue: TextInputSizes) {
     const validValues = TEXT_INPUT_SIZES.join(', ');
 
     if (newValue && !TEXT_INPUT_SIZES.includes(newValue)) {
@@ -73,7 +73,7 @@ export class TextInput {
     }
   }
 
-  colorValidation(newValue: string) {
+  colorValidation(newValue: IconColors) {
     const validValues = ICON_COLORS.join(', ');
 
     if (newValue && !ICON_COLORS.includes(newValue)) {
@@ -82,17 +82,17 @@ export class TextInput {
   }
 
   @Watch('iconLeftColor')
-  iconLeftColorValidation(newValue: string) {
+  iconLeftColorValidation(newValue: IconColors) {
     this.colorValidation(newValue);
   }
 
   @Watch('iconRightColor')
-  iconRightColorValidation(newValue: string) {
+  iconRightColorValidation(newValue: IconColors) {
     this.colorValidation(newValue);
   }
 
   @Watch('type')
-  typeValidation(newValue: string) {
+  typeValidation(newValue: TextInputTypes) {
     const validValues = TEXT_INPUT_TYPES.join(', ');
 
     if (newValue && !TEXT_INPUT_TYPES.includes(newValue)) {
@@ -104,7 +104,7 @@ export class TextInput {
    * To define -hover, -focus statuses
    */
   @Method()
-  async setStatus(status: string) {
+  async _setStatus(status: string) {
     this.status = status;
   }
 

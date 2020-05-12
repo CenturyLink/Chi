@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-05-11T22:21:10",
+  "timestamp": "2020-05-12T12:45:54",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2391,19 +2391,7 @@
           "required": false
         }
       ],
-      "methods": [
-        {
-          "name": "setStatus",
-          "returns": {
-            "type": "Promise<void>",
-            "docs": ""
-          },
-          "signature": "setStatus(status: string) => Promise<void>",
-          "parameters": [],
-          "docs": "To define -hover, -focus statuses",
-          "docsTags": []
-        }
-      ],
+      "methods": [],
       "events": [],
       "styles": [],
       "slots": [],
