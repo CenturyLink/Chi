@@ -120,6 +120,12 @@ $transition-duration: 0.2s;
     min-height: 4rem;
     padding: 1rem;
     position: relative;
+
+    .chi-button {
+      & + .chi-button {
+        margin-left: 1rem;
+      }
+    }
   }
 
   .-done--only,
