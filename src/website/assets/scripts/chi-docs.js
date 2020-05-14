@@ -195,12 +195,15 @@ onLoad(() => {
     const activeTab = document.querySelector('#viewtabs li.-active');
 
     if (activeTab) {
-      activeTab.classList.remove('-active')
+      if (document.querySelector(`article ${urlHash}`)) {
+        activeTab.classList.remove('-active');
+      }
     }
 
     Array.prototype.forEach.call(document.querySelectorAll('article.docs-article > section.chi-grid__container > .chi-tabs-panel'), function (tabContent) {
-      tabContent.classList.remove('-active');
-
+      if (document.querySelector(`article ${urlHash}`)) {
+        tabContent.classList.remove('-active');
+      }
       if (tabContent && tabContent.contains(document.querySelector(`${urlHash}`))) {
         tabContent.classList.add('-active');
         tabContentId = tabContent.id;
@@ -208,5 +211,4 @@ onLoad(() => {
       }
     });
   }
-
 });
