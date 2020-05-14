@@ -21,7 +21,7 @@ each size in sizes
               .-m--1
                 chi-text-input(
                   state= state != 'default' && state,
-                  status= status,
+                  _status= status,
                   size= size != 'default' && size,
                   value='Value',
                   disabled= status=='disabled'?'disabled':false)
@@ -41,7 +41,7 @@ each size in sizes
                   label.chi-label(class=`-${size}`) Label
                   chi-text-input(
                     state= state != 'default' && state,
-                    status=status,
+                    _status=status,
                     size= size != 'default' && size,
                     value='Value',
                     disabled=status=='disabled'?'disabled':false)
@@ -58,7 +58,7 @@ each size in sizes
               .-m--1
                 chi-text-input(
                   state= state != 'default' && state,
-                  status= status,
+                  _status= status,
                   size= size != 'default' && size,
                   value='Value',
                   disabled=status=='disabled'?'disabled':false,
@@ -79,7 +79,7 @@ each size in sizes
                   label.chi-label(class=`-${size}`) Label
                   chi-text-input(
                     state= state != 'default' && state,
-                    status=status,
+                    _status=status,
                     size= size != 'default' && size,
                     value='Value',
                     disabled=status=='disabled'?'disabled':false,
@@ -106,7 +106,7 @@ each size in sizes
                   - var icon = 'circle-info-outline'
                 chi-text-input(
                   state= state != 'default' && state,
-                  status=status,
+                  _status=status,
                   size= size != 'default' && size,
                   value='Value',
                   disabled=status=='disabled'?'disabled':false,
@@ -135,7 +135,7 @@ each size in sizes
                   label.chi-label(class=`-${size}`) Label
                   chi-text-input(
                     state= state != 'default' && state,
-                    status=status,
+                    _status=status,
                     size= size != 'default' && size,
                     value='Value',
                     disabled=status=='disabled'?'disabled':false,
@@ -162,7 +162,7 @@ each size in sizes
                   -var icon = 'circle-info-outline'
                 chi-text-input(
                   state= state != 'default' && state,
-                  status=status,
+                  _status=status,
                   size= size != 'default' && size,
                   value='Value',
                   disabled=status=='disabled'?'disabled':false,
@@ -192,7 +192,7 @@ each size in sizes
                   label.chi-label(class=`-${size}`) Label
                   chi-text-input(
                     state= state != 'default' && state,
-                    status=status,
+                    _status=status,
                     size= size != 'default' && size,
                     value='Value',
                     disabled=status=='disabled'?'disabled':false,
@@ -214,7 +214,7 @@ each size in sizes
                   label.chi-label.-mr--1(class=`-${size}`) Label
                   chi-text-input(
                     state= state != 'default' && state,
-                    status=status,
+                    _status=status,
                     size= size != 'default' && size,
                     value='Value',
                     disabled=status=='disabled'?'disabled':false)
@@ -235,33 +235,22 @@ each size in sizes
                     i.chi-icon.icon-circle-info-outline.-text--muted
                   chi-text-input(
                     state= state != 'default' && state,
-                    status=status,
+                    _status=status,
                     size= size != 'default' && size,
                     value='Value',
                     disabled=status=='disabled'?'disabled':false)
 
 script.
-  const chiTextInputs = Array.from(document.querySelectorAll('chi-text-input'));
-
   function checkAllInputsHydrated() {
-    return chiTextInputs.every(x => x.classList.contains('hydrated'));
-  }
+    const buttons = document.querySelectorAll('chi-button');
 
-  async function assignStatuses() {
-    Array.prototype.forEach.call(
-      chiTextInputs,
-      (chiTextInput)  => {
-      const chiTextInputStatus = chiTextInput.getAttribute('status');
-
-      chiTextInput._setStatus(chiTextInputStatus);
-    });
+    return Array.from(buttons).every(x => x.classList.contains('hydrated'));
   }
 
   const renderCheckInterval = setInterval(function() {
     if (checkAllInputsHydrated()) {
+      console.log("backstop_ready");
       clearInterval(renderCheckInterval);
-      assignStatuses().then(() => {
-        console.log("backstop_ready");
-      })
     }
   }, 3000);
+

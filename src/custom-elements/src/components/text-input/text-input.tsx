@@ -1,4 +1,4 @@
-import { Component, Element, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Prop, Watch, h } from '@stencil/core';
 import { CHI_STATES, ChiStates } from '../../constants/states';
 import { ICON_COLORS, IconColors } from '../../constants/color';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
@@ -60,8 +60,10 @@ export class TextInput {
    * To disable Value attribute mutation
    */
   @Prop({ reflect: true }) preventValueMutation = false;
-
-  @State() status: string;
+  /**
+   * To define -hover, -focus statuses
+   */
+  @Prop() _status: string;
 
   @Watch('state')
   stateValidation(newValue: ChiStates) {
@@ -108,14 +110,6 @@ export class TextInput {
     }
   }
 
-  /**
-   * To define -hover, -focus statuses
-   */
-  @Method()
-  async _setStatus(status: string) {
-    this.status = status;
-  }
-
   _handleValueChange(valueChange: Event) {
     if (!this.preventValueMutation) {
       this.value = (valueChange.target as HTMLInputElement).value;
@@ -137,7 +131,7 @@ export class TextInput {
         `chi-input
         ${this.state ? `-${this.state}` : ''}
         ${this.size ? `-${this.size}` : ''}
-        ${this.status ? `-${this.status}` : ''}
+        ${this._status ? `-${this._status}` : ''}
         `}
       placeholder={this.placeholder || ''}
       value={this.value}
@@ -147,8 +141,8 @@ export class TextInput {
       onKeyUp={(ev) => this._handleValueChange(ev)}
     />;
     const iconClasses = `
-      ${this.iconLeft && '-icon--left '}
-      ${this.iconRight && '-icon--right'}
+      ${this.iconLeft ? '-icon--left' : ''}
+      ${this.iconRight ? '-icon--right' : ''}
     `;
     const iconLeft = this.iconLeft && <chi-icon color={this.iconLeftColor || ''} icon={this.iconLeft} />;
     const iconRight = this.iconRight && <chi-icon color={this.iconRightColor || ''} icon={this.iconRight} />;
