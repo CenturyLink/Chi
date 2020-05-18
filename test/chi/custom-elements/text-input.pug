@@ -1,0 +1,256 @@
+---
+title: Text inputs
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
+- var statuses = ['initial', 'hover', 'focus', 'disabled']
+- var states = ['default', 'success', 'warning', 'danger']
+- var sizes = ['default', 'sm', 'md', 'lg', 'xl']
+
+each size in sizes
+  div(class=`test-${size}`)
+    span.-text--h2= `Text Input / ${size}`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
+        tr
+          td
+            small= `${status}`
+          each state in states
+            td
+              .-m--1
+                chi-text-input(
+                  state= state != 'default' && state,
+                  _status= status,
+                  size= size != 'default' && size,
+                  value='Value',
+                  disabled= status=='disabled'?'disabled':false)
+
+each size in sizes
+  div(class=`test-${size}`)
+    span.-text--h2= `Text Input + Label / ${size}`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
+        tr
+          td
+            small= `${status}`
+          each state in states
+            td
+              .-m--1
+                .chi-form__item
+                  label.chi-label(class=`-${size}`) Label
+                  chi-text-input(
+                    state= state != 'default' && state,
+                    _status=status,
+                    size= size != 'default' && size,
+                    value='Value',
+                    disabled=status=='disabled'?'disabled':false)
+
+  div(class=`test-${size}-icon-left`)
+    span.-text--h2= `Text Input / ${size} / icon left`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
+        tr
+          td
+            small= `${status}`
+          each state in states
+            td
+              .-m--1
+                chi-text-input(
+                  state= state != 'default' && state,
+                  _status= status,
+                  size= size != 'default' && size,
+                  value='Value',
+                  disabled=status=='disabled'?'disabled':false,
+                  icon-left='atom',
+                  icon-left-color='')
+
+  div(class=`test-${size}-icon-left`)
+    span.-text--h2= `Text Input + Label / ${size} / icon left`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
+        tr
+          td
+            small= `${status}`
+          each state in states
+            td
+              .-m--1
+                .chi-form__item
+                  label.chi-label(class=`-${size}`) Label
+                  chi-text-input(
+                    state= state != 'default' && state,
+                    _status=status,
+                    size= size != 'default' && size,
+                    value='Value',
+                    disabled=status=='disabled'?'disabled':false,
+                    icon-left='atom',
+                    icon-left-color='')
+
+  div(class=`test-${size}-icon-right`)
+    span.-text--h2= `Text Input / ${size} / icon right`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
+        tr
+          td
+            small= `${status}`
+          each state in states
+            td
+              .-m--1
+                if state == 'success'
+                  - var icon = 'check'
+                else if state == 'warning'
+                  - var icon = 'warning'
+                else if state == 'danger'
+                  - var icon = 'circle-warning'
+                else
+                  - var icon = 'circle-info-outline'
+                chi-text-input(
+                  state= state != 'default' && state,
+                  _status=status,
+                  size= size != 'default' && size,
+                  value='Value',
+                  disabled=status=='disabled'?'disabled':false,
+                  icon-right=icon,
+                  icon-right-color=state=='default'?'':state)
+
+  div(class=`test-${size}-icon-right`)
+    span.-text--h2= `Text Input + Label / ${size} / icon right`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
+        tr
+          td
+            small= `${status}`
+          each state in states
+            td
+              .-m--1
+                if state == 'success'
+                  - var icon = 'check'
+                else if state == 'warning'
+                  - var icon = 'warning'
+                else if state == 'danger'
+                  - var icon = 'circle-warning'
+                else
+                  -var icon = 'circle-info-outline'
+                .chi-form__item
+                  label.chi-label(class=`-${size}`) Label
+                  chi-text-input(
+                    state= state != 'default' && state,
+                    _status=status,
+                    size= size != 'default' && size,
+                    value='Value',
+                    disabled=status=='disabled'?'disabled':false,
+                    icon-right=icon,
+                    icon-right-color=state=='default'?'':state)
+
+  div(class=`test-${size}-icon-left-right`)
+    span.-text--h2= `Text Input / ${size} / icon left / icon right`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
+        tr
+          td
+            small= `${status}`
+          each state in states
+            td
+              .-m--1
+                if state == 'success'
+                  - var icon = 'check'
+                else if state == 'warning'
+                  - var icon = 'warning'
+                else if state == 'danger'
+                  - var icon = 'circle-warning'
+                else
+                  -var icon = 'circle-info-outline'
+                chi-text-input(
+                  state= state != 'default' && state,
+                  _status=status,
+                  size= size != 'default' && size,
+                  value='Value',
+                  disabled=status=='disabled'?'disabled':false,
+                  icon-left='atom',
+                  icon-right=icon,
+                  icon-right-color=state=='default'?'':state)
+
+  div(class=`test-${size}-icon-left-right`)
+    span.-text--h2= `Text Input + label / ${size} / icon left / icon right`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
+        tr
+          td
+            small= `${status}`
+          each state in states
+            td
+              .-m--1
+                .chi-form__item
+                  if state == 'success'
+                    - var icon = 'check'
+                  else if state == 'warning'
+                    - var icon = 'warning'
+                  else if state == 'danger'
+                    - var icon = 'circle-warning'
+                  else
+                    -var icon = 'circle-info-outline'
+                  label.chi-label(class=`-${size}`) Label
+                  chi-text-input(
+                    state= state != 'default' && state,
+                    _status=status,
+                    size= size != 'default' && size,
+                    value='Value',
+                    disabled=status=='disabled'?'disabled':false,
+                    icon-left='atom',
+                    icon-right=icon,
+                    icon-right-color=state=='default'?'':state)
+
+  div(class=`test-${size}-label-inline`)
+    span.-text--h2= `Text Input + label / ${size} / inline`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
+        tr
+          td
+            small= `${status}`
+          each state in states
+            td
+              .-m--1
+                .chi-form__item.-row
+                  label.chi-label.-mr--1(class=`-${size}`) Label
+                  chi-text-input(
+                    state= state != 'default' && state,
+                    _status=status,
+                    size= size != 'default' && size,
+                    value='Value',
+                    disabled=status=='disabled'?'disabled':false)
+
+  div(class=`test-${size}-label-with-icon`)
+    span.-text--h2= `Text Input + label with icon ${size}`
+    table(cellpadding="0" cellspacing="0" width="1200px")
+      each status in statuses
+        tr
+          td
+            small= `${status}`
+          each state in states
+            td
+              .-m--1
+                .chi-form__item
+                  .chi-label__wrapper
+                    label.chi-label(class=`-${size}`) Label
+                    i.chi-icon.icon-circle-info-outline.-text--muted
+                  chi-text-input(
+                    state= state != 'default' && state,
+                    _status=status,
+                    size= size != 'default' && size,
+                    value='Value',
+                    disabled=status=='disabled'?'disabled':false)
+
+script.
+  function checkAllInputsHydrated() {
+    const buttons = document.querySelectorAll('chi-button');
+
+    return Array.from(buttons).every(x => x.classList.contains('hydrated'));
+  }
+
+  const renderCheckInterval = setInterval(function() {
+    if (checkAllInputsHydrated()) {
+      console.log("backstop_ready");
+      clearInterval(renderCheckInterval);
+    }
+  }, 3000);
+

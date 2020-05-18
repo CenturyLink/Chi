@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-05-08T07:04:35",
+  "timestamp": "2020-05-14T15:19:24",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1268,7 +1268,8 @@
         "chi-date",
         "chi-date-picker",
         "chi-drawer",
-        "chi-number-input"
+        "chi-number-input",
+        "chi-text-input"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -1288,6 +1289,9 @@
           "chi-icon"
         ],
         "chi-number-input": [
+          "chi-icon"
+        ],
+        "chi-text-input": [
           "chi-icon"
         ]
       }
@@ -2081,6 +2085,359 @@
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/text-input/text-input.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-text-input",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "To disable Text input",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "iconLeft",
+          "type": "string",
+          "mutable": false,
+          "attr": "icon-left",
+          "reflectToAttr": true,
+          "docs": "To add a left positioned icon",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "iconLeftColor",
+          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "mutable": false,
+          "attr": "icon-left-color",
+          "reflectToAttr": true,
+          "docs": "To define color of left icon",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "grey",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            },
+            {
+              "value": "muted",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "iconRight",
+          "type": "string",
+          "mutable": false,
+          "attr": "icon-right",
+          "reflectToAttr": true,
+          "docs": "To add a right positioned icon",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "iconRightColor",
+          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "mutable": false,
+          "attr": "icon-right-color",
+          "reflectToAttr": true,
+          "docs": "To define color of right icon",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "grey",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            },
+            {
+              "value": "muted",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": true,
+          "docs": "To define name of Text input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "mutable": false,
+          "attr": "placeholder",
+          "reflectToAttr": true,
+          "docs": "To define placeholder of Text input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "preventValueMutation",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "prevent-value-mutation",
+          "reflectToAttr": true,
+          "docs": "To disable Value attribute mutation",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "\"lg\" | \"md\" | \"sm\" | \"xl\"",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "To define size of Text input",
+          "docsTags": [],
+          "default": "'md'",
+          "values": [
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
+              "type": "string"
+            },
+            {
+              "value": "sm",
+              "type": "string"
+            },
+            {
+              "value": "xl",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "state",
+          "type": "\"danger\" | \"success\" | \"warning\"",
+          "mutable": false,
+          "attr": "state",
+          "reflectToAttr": true,
+          "docs": "To define state color of Text input",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "\"date\" | \"datetime\" | \"datetime-local\" | \"email\" | \"month\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": false,
+          "docs": "To define type of Text input",
+          "docsTags": [],
+          "default": "'text'",
+          "values": [
+            {
+              "value": "date",
+              "type": "string"
+            },
+            {
+              "value": "datetime",
+              "type": "string"
+            },
+            {
+              "value": "datetime-local",
+              "type": "string"
+            },
+            {
+              "value": "email",
+              "type": "string"
+            },
+            {
+              "value": "month",
+              "type": "string"
+            },
+            {
+              "value": "password",
+              "type": "string"
+            },
+            {
+              "value": "search",
+              "type": "string"
+            },
+            {
+              "value": "tel",
+              "type": "string"
+            },
+            {
+              "value": "text",
+              "type": "string"
+            },
+            {
+              "value": "time",
+              "type": "string"
+            },
+            {
+              "value": "url",
+              "type": "string"
+            },
+            {
+              "value": "week",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "To define value of Text input",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-text-input": [
+          "chi-icon"
+        ]
+      }
     }
   ]
 }

@@ -128,6 +128,22 @@ export const config: Config = {
           else if (a.name < b.name) return -1
           return 0
         });
+
+        docs['components'].map(component => {
+          const checkIfPrivate = ['props', 'methods', 'events'];
+
+          Array.prototype.forEach.call(
+            checkIfPrivate,
+            (propertyTypeToCheck) => {
+              const titleToCheck = propertyTypeToCheck === 'events' ? 'event' : 'name';
+
+              component[propertyTypeToCheck] = component[propertyTypeToCheck]
+                .filter(propertyToCheck => {
+                  return propertyToCheck[titleToCheck].split('')[0] !== '_';
+                }
+            }
+          );
+        });
       }
     },
     {
