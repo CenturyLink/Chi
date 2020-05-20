@@ -226,6 +226,7 @@ th {
 
         &.-active {
           td {
+            background-color: rgba(set-color(mint, 40), 0.08);
             color: $secondary-color;
 
             &:first-child {
@@ -242,6 +243,8 @@ th {
         tr {
           &:hover,
           &.-hover {
+            background-color: set-color(grey, 90);
+
             td {
               background-color: set-color(grey, 80);
             }
@@ -251,7 +254,7 @@ th {
             &:hover,
             &.-hover {
               td {
-                background-color: set-color(grey, 90);
+                background-color: rgba(set-color(mint, 40), 0.08);
               }
             }
           }
@@ -285,6 +288,26 @@ th {
 
         & td {
           border: 0.0625rem solid set-color(grey, 30);
+        }
+      }
+    }
+
+    &.-fixed--header {
+      &::before {
+        background-color: set-color(grey, 90);
+      }
+
+      &.-striped {
+        tbody {
+          tr:nth-child(odd) {
+            background-color: set-color(grey, 80);
+          }
+        }
+      }
+
+      &.-bordered {
+        th {
+          border: 0;
         }
       }
     }
