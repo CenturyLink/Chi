@@ -3,7 +3,7 @@
 
 $icon-sizes: (
   sm: 0.75rem,
-  md: 0.75rem,
+  md: 1rem,
   lg: 1rem,
   xl: 1rem,
 );
@@ -11,12 +11,16 @@ $icon-sizes: (
 .chi-pagination {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
   font-size: $text;
+  justify-content: center;
   line-height: $line-height-small;
 
   .chi-button-group {
     &:not(.-vertical) {
       .chi-button {
+        justify-content: center;
+
         &:not(.-icon) {
           &,
           &.-md {
@@ -29,6 +33,7 @@ $icon-sizes: (
             &.-focus {
               &,
               &+.chi-button:not(.-icon) {
+                min-width: 2rem;
                 padding-left: 0.5625rem;
                 padding-right: 0.5625rem;
               }
@@ -56,6 +61,7 @@ $icon-sizes: (
             &.-focus {
               &,
               &+.chi-button:not(.-icon) {
+                min-width: 1.5rem;
                 padding-left: 0.4375rem;
                 padding-right: 0.4375rem;
               }
@@ -83,6 +89,7 @@ $icon-sizes: (
             &.-focus {
               &,
               &+.chi-button:not(.-icon) {
+                min-width: 2.5rem;
                 padding-left: 0.75rem;
                 padding-right: 0.75rem;
               }
@@ -110,6 +117,7 @@ $icon-sizes: (
             &.-focus {
               &,
               &+.chi-button:not(.-icon) {
+                min-width: 3rem;
                 padding-left: 0.9375rem;
                 padding-right: 0.9375rem;
               }
@@ -159,6 +167,7 @@ $icon-sizes: (
     @each $type in map-keys($icon-sizes) {
       .chi-button {
         &.-#{$type} {
+
           &,
           &:hover,
           &:active,
@@ -175,6 +184,55 @@ $icon-sizes: (
     }
   }
 
+  &__content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .chi-pagination__start {
+      align-items: center;
+      display: flex;
+      flex-basis: 0%;
+      flex-grow: 1;
+      flex-shrink: 1;
+
+      > div:first-child {
+        @include respond-to(md) {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .chi-pagination__center {
+      display: flex;
+      flex-basis: 0%;
+      flex-grow: 1;
+      flex-shrink: 1;
+      justify-content: center;
+    }
+
+    .chi-pagination__end {
+      align-items: center;
+      display: flex;
+      flex-basis: 0%;
+      flex-grow: 1;
+      flex-shrink: 1;
+      justify-content: flex-end;
+
+      > div:last-child {
+        @include respond-to(md) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
   &__pages {
     display: flex;
     font-weight: 600;
@@ -182,15 +240,199 @@ $icon-sizes: (
   }
 
   &__results {
-    color: $grey-color;
-    margin-left: 1rem;
+    align-items: center;
+    color: $muted-color;
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+
+    @include respond-to(md) {
+      height: 100%;
+      justify-content: flex-start;
+      margin: 0 0.5rem;
+    }
+
+    & + .chi-pagination__page-size {
+      border-left: 0.0625rem solid rgba(0, 0, 0, 0.12);
+      padding-left: 0.5rem;
+    }
+
+    @include respond-to(md) {
+      & + .chi-pagination__button-group {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  &__button-group {
+    align-items: center;
+    margin: 0.5rem;
+
+    @include respond-to(md) {
+      margin: 0;
+    }
+
+    & + .chi-pagination__jumper {
+      @include respond-to(md) {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  &__jumper {
+    align-items: center;
+    display: flex;
+    margin: 0.5rem;
+
+    @include respond-to(md) {
+      margin: 0 0.5rem;
+    }
+
+    .chi-pagination__label {
+      color: $muted-color;
+      font-weight: normal;
+      margin-bottom: 0;
+      margin-right: 0.5rem;
+    }
+
+    .chi-input {
+      &,
+      &.-md {
+        &[type='text'] {
+          padding-left: 0.25rem;
+          padding-right: 0.25rem;
+          text-align: center;
+          width: 3rem;
+        }
+      }
+
+      &.-sm {
+        &[type='text'] {
+          width: 2.5rem;
+        }       
+      }
+
+      &.-lg {
+        &[type='text'] {
+          width: 3.5rem;
+        }       
+      }
+
+      &.-lg {
+        &[type='text'] {
+          width: 4rem;
+        }       
+      }
+    }
+  }
+
+  &__page-size {
+    align-items: center;
+    display: flex;
+    margin: 0.5rem;
+
+    @include respond-to(md) {
+      margin: 0 0.5rem;
+    }
+
+    .chi-pagination__label {
+      color: $muted-color;
+      margin-left: 0.25rem;
+    }
+  }
+
+  &__label {
+    align-items: center;
+    display: flex;
+  }
+
+  &.-compact {
+    .chi-pagination__jumper {
+      @include respond-to(md) {
+        margin: 0 0.5rem;
+      }
+
+      .chi-input {
+        &,
+        &.-sm,
+        &.-md {
+          &[type='text'] {
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
+            width: 2.0625rem;
+          }
+        }
+  
+        &.-lg {
+          &[type='text'] {
+            width: 2.5rem;
+          }       
+        }
+
+        &.-xl {
+          &[type='text'] {
+            width: 3rem;
+          }       
+        }
+
+        & + .chi-pagination__label {
+          margin-left: 0.5rem;
+          margin-right: 0;
+        }
+      }
+    }
+
+    .chi-pagination__label {
+      color: $text-color;
+      @include respond-to(md) {
+        margin: 0 0.5rem;
+      }
+
+      strong {
+        &:first-child {
+          margin-right: 0.5rem;
+        }
+
+        &:last-child {
+          margin-left: 0.5rem;
+        }
+      }
+    }
   }
 
   &.-inverse {
     color: $text-white;
 
-    .chi-pagination__results {
+    .chi-pagination__results,
+    .chi-pagination__label {
       color: set-color(grey, 40);
+    }
+
+    .chi-pagination__results {
+      & + .chi-pagination__page-size {
+        border-left-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    .chi-input {
+      &[type='text'] {
+        background-color: transparent;
+
+        &:not(:focus) {
+          border-color: set-color(grey, 70);
+          color: $text-white;
+        }
+
+        &:focus {
+          background-color: set-color(white);
+        }
+      }
+    }
+
+    &.-compact {
+      .chi-pagination__label {
+        color: $text-white;
+      }
     }
   }
 }
