@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-05-19T20:23:38",
+  "timestamp": "2020-05-21T13:27:24",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2668,10 +2668,63 @@
           ],
           "optional": false,
           "required": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "mutable": true,
+          "reflectToAttr": false,
+          "docs": "To read value of Textarea",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
         }
       ],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "event": "chiBlur",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the element has lost focus.",
+          "docsTags": []
+        },
+        {
+          "event": "chiChange",
+          "detail": "string",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when an alteration to the element's value is committed by the user",
+          "docsTags": []
+        },
+        {
+          "event": "chiFocus",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user sets focus on the element.",
+          "docsTags": []
+        },
+        {
+          "event": "chiInput",
+          "detail": "string",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user changed the element's value but did not commit the change yet",
+          "docsTags": []
+        }
+      ],
       "styles": [],
       "slots": [],
       "dependents": [],

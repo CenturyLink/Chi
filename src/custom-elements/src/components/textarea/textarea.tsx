@@ -1,4 +1,4 @@
-import { Component, Element, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
 import { CHI_STATES, ChiStates } from '../../constants/states';
 import { ICON_COLORS, IconColors } from '../../constants/color';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
@@ -36,6 +36,10 @@ export class Textarea {
    */
   @Prop({ reflect: true }) size ?: TextInputSizes = 'md';
   /**
+   * To read value of Textarea
+   */
+  @Prop({ attribute: null, mutable: true }) value = '';
+  /**
    * To define name of Textarea
    */
   @Prop({ reflect: true }) name: string;
@@ -46,7 +50,23 @@ export class Textarea {
   /**
    * To define -hover, -focus statuses
    */
-  @Prop() _status: string;
+  @Prop() _status: '-hover' | '-focus';
+  /**
+   * Triggered when an alteration to the element's value is committed by the user
+   */
+  @Event({ eventName: 'chiChange' }) eventChange: EventEmitter<string>;
+  /**
+   * Triggered when the user changed the element's value but did not commit the change yet
+   */
+  @Event({ eventName: 'chiInput' }) eventInput: EventEmitter<string>;
+  /**
+   * Triggered when the user sets focus on the element.
+   */
+  @Event({ eventName: 'chiFocus' }) eventFocus: EventEmitter;
+  /**
+   * Triggered when the element has lost focus.
+   */
+  @Event({ eventName: 'chiBlur' }) eventBlur: EventEmitter;
 
   @Watch('state')
   stateValidation(newValue: ChiStates) {
@@ -84,6 +104,15 @@ export class Textarea {
     this.colorValidation(newValue);
   }
 
+  _handleValueInput(valueChange: Event) {
+    this.value = (valueChange.target as HTMLInputElement).value;
+    this.eventInput.emit(this.value);
+  }
+
+  _handleValueChange() {
+    this.eventChange.emit(this.value);
+  }
+
   componentWillLoad() {
     this.stateValidation(this.state);
     this.iconLeftColorValidation(this.iconLeftColor);
@@ -102,6 +131,10 @@ export class Textarea {
       name={this.name || ''}
       disabled={this.disabled}
       id={this.el.id ? `${this.el.id}-control` : null}
+      onFocus={() => this.eventFocus.emit()}
+      onBlur={() => this.eventBlur.emit()}
+      onKeyUp={(ev) => this._handleValueInput(ev)}
+      onChange={() => this._handleValueChange()}
     ><slot></slot></textarea>;
     const iconClasses = `
       ${this.iconLeft ? '-icon--left' : ''}
