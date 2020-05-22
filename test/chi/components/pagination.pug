@@ -2,154 +2,706 @@
 title: Pagination
 ---
 - var steps = ['0', '1', '2', '3', '4', '5', '6'];
+- var stepLast = 12
 
 h4 Base
-.test-base
+.test-base.-w--100
   .example
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
-        .-p--3.-text--center
+        .-p--3
           nav.chi-pagination(role='navigation', aria-label='Pagination')
-            .chi-button-group
-              each step in steps
-                if step == '0'
-                  a(class=`chi-button -flat`, href='#', aria-label='Previous')
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                    span.-sr--only Previous
-                else if step == '6'
-                  a(class=`chi-button -flat`, href='#')
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-                    span.-sr--only Next
-                else
-                  a(class=`chi-button -flat`, href='#')= `${step}`
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat`, href='#')= `${step}`
+              .chi-pagination__end
       .chi-col.-w--12.-w-md--6
-        .-p--3.-bg--black.-text--center
-          nav.chi-pagination(role='navigation', aria-label='Pagination')
-            .chi-button-group
-              each step in steps
-                if step == '0'
-                  a(class=`chi-button -flat -light`, href='#', aria-label='Previous')
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                    span.-sr--only Previous
-                else if step == '6'
-                  a(class=`chi-button -flat -light`, href='#')
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-                    span.-sr--only Next
-                else
-                  a(class=`chi-button -flat -light`, href='#')= `${step}`
+        .-p--3.-bg--black
+          nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat -light`, href='#')= `${step}`
+              .chi-pagination__end
+
 h4 Active
-.test-active
+.test-active.-w--100
   .example
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
-        .-p--3.-text--center
+        .-p--3
           nav.chi-pagination(role='navigation', aria-label='Pagination')
-            .chi-button-group
-              each step in steps
-                if step == '0'
-                  a(class=`chi-button -flat`, href='#', aria-label='Previous')
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                    span.-sr--only Previous
-                else if step == '3'
-                  a(class=`chi-button -flat -active`, href='#')= `${step}`
-                else if step == '6'
-                  a(class=`chi-button -flat`, href='#')
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-                    span.-sr--only Next
-                else
-                  a(class=`chi-button -flat`, href='#')= `${step}`
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
       .chi-col.-w--12.-w-md--6
-        .-p--3.-bg--black.-text--center
-          nav.chi-pagination(role='navigation', aria-label='Pagination')
-            .chi-button-group
-              each step in steps
-                if step == '0'
-                  a(class=`chi-button -flat -light`, href='#', aria-label='Previous')
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                    span.-sr--only Previous
-                else if step == '3'
-                  a(class=`chi-button -flat -light -active`, href='#')= `${step}`
-                else if step == '6'
-                  a(class=`chi-button -flat -light`, href='#')
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-                    span.-sr--only Next
-                else
-                  a(class=`chi-button -flat -light`, href='#')= `${step}`
+        .-p--3.-bg--black
+          nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat -light ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
 
 h4 Disabled
-.test-disabled
+.test-disabled.-w--100
   .example
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
-        .-p--3.-text--center
+        .-p--3
           nav.chi-pagination(role='navigation', aria-label='Pagination')
-            .chi-button-group
-              each step in steps
-                if step == '0'
-                  a(class=`chi-button -flat -disabled`, href='#', aria-label='Previous', aria-disabled='true' disabled)
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                    span.-sr--only Previous
-                else if step == '6'
-                  a(class=`chi-button -flat`, href='#')
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-                    span.-sr--only Next
-                else
-                  a(class=`chi-button -flat`, href='#')= `${step}`
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat -disabled`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat -disabled`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat -disabled ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
       .chi-col.-w--12.-w-md--6
-        .-p--3.-bg--black.-text--center
+        .-p--3.-bg--black
+          nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat -light -disabled`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat -light -disabled`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat -light -disabled ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
+
+h4 Truncation
+.test-truncation.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
           nav.chi-pagination(role='navigation', aria-label='Pagination')
-            .chi-button-group
-              each step in steps
-                if step == '0'
-                  a(class=`chi-button -flat -light -disabled`, href='#', aria-label='Previous', aria-disabled='true' disabled)
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                    span.-sr--only Previous
-                else if step == '6'
-                  a(class=`chi-button -flat -light`, href='#')
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-                    span.-sr--only Next
-                else
-                  a(class=`chi-button -flat -light`, href='#')= `${step}`
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '5'
+                      a(class=`chi-button -flat`, href='#')= `${step}`
+                      div(class=`chi-button -flat -disabled`, href='#') ...
+                      a(class=`chi-button -flat`, href='#')= `${stepLast}`
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '5'
+                      a(class=`chi-button -flat -light`, href='#')= `${step}`
+                      div(class=`chi-button -flat -light -disabled`, href='#') ...
+                      a(class=`chi-button -flat -light`, href='#')= `${stepLast}`
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat -light ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
+
+h4 Double Truncation
+.test-double-truncation.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          nav.chi-pagination(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  a(class=`chi-button -flat`, href='#') 1
+                  div(class=`chi-button -flat -disabled`) ...
+                  a(class=`chi-button -flat`, href='#') 3
+                  a(class=`chi-button -flat`, href='#') 4
+                  a(class=`chi-button -flat -active`, href='#') 5
+                  a(class=`chi-button -flat`, href='#') 6
+                  a(class=`chi-button -flat`, href='#') 7
+                  div(class=`chi-button -flat -disabled`) ...
+                  a(class=`chi-button -flat`, href='#') 12
+                  a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-right", aria-hidden='true')
+              .chi-pagination__end
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -light -flat`, href='#', aria-label='Previous page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  a(class=`chi-button -flat -light`, href='#') 1
+                  div(class=`chi-button -flat -light -disabled`) ...
+                  a(class=`chi-button -flat -light`, href='#') 3
+                  a(class=`chi-button -flat -light`, href='#') 4
+                  a(class=`chi-button -flat -light -active`, href='#') 5
+                  a(class=`chi-button -flat -light`, href='#') 6
+                  a(class=`chi-button -flat -light`, href='#') 7
+                  div(class=`chi-button -flat -light -disabled`) ...
+                  a(class=`chi-button -flat -light`, href='#') 12
+                  a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-right", aria-hidden='true')
+              .chi-pagination__end
+
+h4 Results Label
+.test-results-label.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          nav.chi-pagination(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+                .chi-pagination__results
+                  span.chi-pagination__label 240 Results
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '5'
+                      a(class=`chi-button -flat`, href='#')= `${step}`
+                      div(class=`chi-button -flat -disabled`, href='#') ...
+                      a(class=`chi-button -flat`, href='#')= `${stepLast}`
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+                .chi-pagination__results
+                  span.chi-pagination__label 240 Results
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '5'
+                      a(class=`chi-button -flat -light`, href='#')= `${step}`
+                      div(class=`chi-button -flat -light -disabled`, href='#') ...
+                      a(class=`chi-button -flat -light`, href='#')= `${stepLast}`
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat -light ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
+
+h4 Page Size
+.test-page-size.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12
+        .-p--3.-mb--4
+          nav.chi-pagination(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+                .chi-pagination__results
+                  span.chi-pagination__label 240 Results
+                .chi-pagination__page-size
+                  .chi-dropdown
+                    button.chi-button.-flat.-px--1.chi-dropdown__trigger#pagesize-1 20
+                    .chi-dropdown__menu.-w--xs
+                      a.chi-dropdown__menu-item.-active(href='#') 20
+                      a.chi-dropdown__menu-item(href='#') 40
+                      a.chi-dropdown__menu-item(href='#') 60
+                      a.chi-dropdown__menu-item(href='#') 80
+                      a.chi-dropdown__menu-item(href='#') All
+                  span.chi-pagination__label per page
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '5'
+                      a(class=`chi-button -flat`, href='#')= `${step}`
+                      div(class=`chi-button -flat -disabled`, href='#') ...
+                      a(class=`chi-button -flat`, href='#')= `${stepLast}`
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
+      .chi-col.-w--12
+        .-p--3(style='margin-bottom:12rem;')
+          nav.chi-pagination(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+                .chi-pagination__results
+                  span.chi-pagination__label 240 Results
+                .chi-pagination__page-size
+                  .chi-dropdown
+                    button.chi-button.-active.-flat.-px--1.chi-dropdown__trigger#pagesize-1 20
+                    .chi-dropdown__menu.-active.-w--xs
+                      a.chi-dropdown__menu-item.-active(href='#') 20
+                      a.chi-dropdown__menu-item(href='#') 40
+                      a.chi-dropdown__menu-item(href='#') 60
+                      a.chi-dropdown__menu-item(href='#') 80
+                      a.chi-dropdown__menu-item(href='#') All
+                  span.chi-pagination__label per page
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '5'
+                      a(class=`chi-button -flat`, href='#')= `${step}`
+                      div(class=`chi-button -flat -disabled`, href='#') ...
+                      a(class=`chi-button -flat`, href='#')= `${stepLast}`
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
+      .chi-col.-w--12
+        .-p--3.-bg--black.-mb--4
+          nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+                .chi-pagination__results
+                  span.chi-pagination__label 240 Results
+                .chi-pagination__page-size
+                  .chi-dropdown
+                    button.chi-button.-flat.-light.-px--1.chi-dropdown__trigger#pagesize-2 20
+                    .chi-dropdown__menu.-inverse.-w--xs
+                      a.chi-dropdown__menu-item.-active(href='#') 20
+                      a.chi-dropdown__menu-item(href='#') 40
+                      a.chi-dropdown__menu-item(href='#') 60
+                      a.chi-dropdown__menu-item(href='#') 80
+                      a.chi-dropdown__menu-item(href='#') All
+                  span.chi-pagination__label per page
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '5'
+                      a(class=`chi-button -flat -light`, href='#')= `${step}`
+                      div(class=`chi-button -flat -light -disabled`, href='#') ...
+                      a(class=`chi-button -flat -light`, href='#')= `${stepLast}`
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat -light ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
+      .chi-col.-w--12
+        .-p--3.-bg--black(style='margin-bottom:12rem;')
+          nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+                .chi-pagination__results
+                  span.chi-pagination__label 240 Results
+                .chi-pagination__page-size
+                  .chi-dropdown
+                    button.chi-button.-active.-flat.-light.-px--1.chi-dropdown__trigger#pagesize-2 20
+                    .chi-dropdown__menu.-inverse.-w--xs.-active
+                      a.chi-dropdown__menu-item.-active(href='#') 20
+                      a.chi-dropdown__menu-item(href='#') 40
+                      a.chi-dropdown__menu-item(href='#') 60
+                      a.chi-dropdown__menu-item(href='#') 80
+                      a.chi-dropdown__menu-item(href='#') All
+                  span.chi-pagination__label per page
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '5'
+                      a(class=`chi-button -flat -light`, href='#')= `${step}`
+                      div(class=`chi-button -flat -light -disabled`, href='#') ...
+                      a(class=`chi-button -flat -light`, href='#')= `${stepLast}`
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat -light ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
+
+h4 Page Jumper
+.test-page-jumper.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12
+        .-p--3.-mb--4
+          nav.chi-pagination(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+                .chi-pagination__results
+                  span.chi-pagination__label 240 Results
+                .chi-pagination__page-size
+                  .chi-dropdown
+                    button.chi-button.-flat.-px--1.chi-dropdown__trigger#pagesize-1 20
+                    .chi-dropdown__menu.-w--xs
+                      a.chi-dropdown__menu-item.-active(href='#') 20
+                      a.chi-dropdown__menu-item(href='#') 40
+                      a.chi-dropdown__menu-item(href='#') 60
+                      a.chi-dropdown__menu-item(href='#') 80
+                      a.chi-dropdown__menu-item(href='#') All
+                  span.chi-pagination__label per page
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '5'
+                      a(class=`chi-button -flat`, href='#')= `${step}`
+                      div(class=`chi-button -flat -disabled`, href='#') ...
+                      a(class=`chi-button -flat`, href='#')= `${stepLast}`
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
+                .chi-pagination__jumper
+                  label.chi-pagination__label(for="jumper-input-1") Go to page:
+                  input(type='text', class='chi-input', id='jumper-input-1')
+      .chi-col.-w--12
+        .-p--3.-bg--black.-mb--4
+          nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+                .chi-pagination__results
+                  span.chi-pagination__label 240 Results
+                .chi-pagination__page-size
+                  .chi-dropdown
+                    button.chi-button.-flat.-light.-px--1.chi-dropdown__trigger#pagesize-2 20
+                    .chi-dropdown__menu.-inverse.-w--xs
+                      a.chi-dropdown__menu-item.-active(href='#') 20
+                      a.chi-dropdown__menu-item(href='#') 40
+                      a.chi-dropdown__menu-item(href='#') 60
+                      a.chi-dropdown__menu-item(href='#') 80
+                      a.chi-dropdown__menu-item(href='#') All
+                  span.chi-pagination__label per page
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '5'
+                      a(class=`chi-button -flat -light`, href='#')= `${step}`
+                      div(class=`chi-button -flat -light -disabled`, href='#') ...
+                      a(class=`chi-button -flat -light`, href='#')= `${stepLast}`
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat -light ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
+                .chi-pagination__jumper
+                  label.chi-pagination__label(for="jumper-input-2") Go to page:
+                  input(type='text', class='chi-input', id='jumper-input-2')
+
+h4 Compact / Base
+.test-compact-base.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                .chi-pagination__label
+                  strong 2
+                  span of
+                  strong 3
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-right", aria-hidden='true')
+              .chi-pagination__end
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          nav.chi-pagination.-compact.-inverse(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                .chi-pagination__label
+                  strong 2
+                  span of
+                  strong 3
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-right", aria-hidden='true')
+              .chi-pagination__end
+
+h4 Compact / Page Jumper
+.test-compact-jumper.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                .chi-pagination__jumper
+                  input(type='text', class='chi-input', id='compact-jumper-input-1', value='2')
+                  .chi-pagination__label
+                    span of
+                    strong 3
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-right", aria-hidden='true')
+              .chi-pagination__end
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          nav.chi-pagination.-compact.-inverse(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                .chi-pagination__jumper
+                  input(type='text', class='chi-input', id='compact-jumper-input-2', value='2')
+                  .chi-pagination__label
+                    span of
+                    strong 3
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-right", aria-hidden='true')
+              .chi-pagination__end
+
+h4 Compact / First and Last buttons
+.test-compact-first-last-buttons.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -flat`, href='#', aria-label='First page')
+                    .chi-button__content
+                      i(class="chi-icon icon-page-first", aria-hidden='true')
+                  a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                .chi-pagination__label
+                  strong 2
+                  span of
+                  strong 3
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  a(class=`chi-button -icon -flat`, href='#', aria-label='Last page')
+                    .chi-button__content
+                      i(class="chi-icon icon-page-last", aria-hidden='true')
+              .chi-pagination__end
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          nav.chi-pagination.-compact.-inverse(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -flat -light`, href='#', aria-label='First page')
+                    .chi-button__content
+                      i(class="chi-icon icon-page-first", aria-hidden='true')
+                  a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                .chi-pagination__label
+                  strong 2
+                  span of
+                  strong 3
+                .chi-pagination__button-group.chi-button-group
+                  a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                    .chi-button__content
+                      i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  a(class=`chi-button -icon -flat -light`, href='#', aria-label='Last page')
+                    .chi-button__content
+                      i(class="chi-icon icon-page-last", aria-hidden='true')
+              .chi-pagination__end
 
 h4 Sizes
-.test-sizes
+.test-sizes.-w--100
   .example
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
         .-p--3
           each size in ['sm', 'md', 'lg', 'xl']
             p.-text--bold=`-${size}`
-            nav.chi-pagination(role='navigation', aria-label='Pagination').-mb--2
-              .chi-button-group
-                each step in steps
-                  if step == '0'
-                    a(class=`chi-button -flat -${size}`, href='#', aria-label='Previous')
-                      i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                      span.-sr--only Previous
-                  else if step == '3'
-                    a(class=`chi-button -flat -active -${size}`, href='#')= `${step}`
-                  else if step == '6'
-                    a(class=`chi-button -flat -${size}`, href='#', aria-label='Next')
-                      i(class="chi-icon icon-chevron-right", aria-hidden='true')
-                      span.-sr--only Next
-                  else
-                    a(class=`chi-button -flat -${size}`, href='#')= `${step}`
+            nav.chi-pagination(role='navigation', aria-label='Pagination')
+              .chi-pagination__content
+                .chi-pagination__start
+                .chi-pagination__center
+                  .chi-pagination__button-group.chi-button-group
+                    each step in steps
+                      if step == '0'
+                        a(class=`chi-button -icon -flat -${size}`, href='#', aria-label='Previous page')
+                          .chi-button__content
+                            i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                      else if step == '6'
+                        a(class=`chi-button -icon -flat -${size}`, href='#', aria-label='Next page')
+                          .chi-button__content
+                            i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                      else
+                        a(class=`chi-button -flat -${size} ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+                .chi-pagination__end
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
           each size in ['sm', 'md', 'lg', 'xl']
             p.-text--bold.-text--white=`-${size}`
-            nav.chi-pagination(role='navigation', aria-label='Pagination').-mb--2
-              .chi-button-group
-                each step in steps
-                  if step == '0'
-                    a(class=`chi-button -flat -light -${size}`, href='#', aria-label='Previous')
-                      i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                      span.-sr--only Previous
-                  else if step == '3'
-                    a(class=`chi-button -flat -active -light -${size}`, href='#')= `${step}`
-                  else if step == '6'
-                    a(class=`chi-button -flat -light -${size}`, href='#', aria-label='Next')
-                      i(class="chi-icon icon-chevron-right", aria-hidden='true')
-                      span.-sr--only Next
-                  else
-                    a(class=`chi-button -flat -light -${size}`, href='#')= `${step}`
+            nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+              .chi-pagination__content
+                .chi-pagination__start
+                .chi-pagination__center
+                  .chi-pagination__button-group.chi-button-group
+                    each step in steps
+                      if step == '0'
+                        a(class=`chi-button -icon -flat -light -${size}`, href='#', aria-label='Previous page')
+                          .chi-button__content
+                            i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                      else if step == '6'
+                        a(class=`chi-button -icon -flat -light -${size}`, href='#', aria-label='Next page')
+                          .chi-button__content
+                            i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                      else
+                        a(class=`chi-button -flat -light -${size} ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+                .chi-pagination__end

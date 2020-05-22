@@ -6,7 +6,40 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 chi-alert(color='warning', icon='warning')
-  | Chi 2.0 is a major release. Please follow the upgrade guide before updating chi assets.
+  | Chi 2.0 is a major release. Please follow the <a href="#chi-v2-0-0">upgrade guide</a> before updating chi assets.
+
+.changelog__version.-py--1
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v2.2.0" target="_blank">Chi v2.2.0</a>
+  .-text--grey.-text--md TBD
+  .-pt--1
+    h3.-text--h3.-text--bold Components
+    h4.-text--h4.-text--bold Added
+    ul.-text.-pl--2
+      li Added: Text Input web component.
+      li Added: Pagination now supports blueprints for configuring the number of items per page, jumping to a specific page, displaying number of results, truncating, first and last page buttons, and a new compact view for data tables.
+    h4.-text--h4.-text--bold Changed
+    ul.-text.-pl--2
+      li Changed: Tables with Inverse theme now render an 8% mint 40 background-color when active.
+    h4.-text--h4.-text--bold Fixed
+    ul.-text.-pl--2
+      li Fixed: Date Picker disabled state pointer events.
+      li Fixed: Tables with Inverse theme rendered an incorrect <code>th</code> background-color when <code>th</code> was fixed positioned with <code>-fixed--header</code>. 
+    h3.-text--h3.-text--bold Documentation
+    h4.-text--h4.-text--bold Added
+    ul.-text.-pl--2
+      li Added: Text Input documentation has been updated with web component examples.
+      li Added: Pagination documentation has been updated with new html blueprint examples.
+      li Added: Number Input html blueprint code samples now include label tags.
+    h4.-text--h4.-text--bold Changed
+    ul.-text.-pl--2
+      li Changed: Drawer documentation example code has been improved.
+      li Changed: Modal and Expansion panel examples no longer require the margin utility class <code>-ml--2</code> on footer buttons.
+    h4.-text--h4.-text--bold Fixed
+    ul.-text.-pl--2
+      li Fixed: Drawer properties page was missing documentation for <code>preventAutoHide</code>. 
+      li Fixed: Hash target validation bug which caused the class <code>-active</code> to remove from tabs outside of <code>docs-article</code>.
+
+.chi-divider.-my--4
 
 .changelog__version.-py--1
   h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v2.1.0" target="_blank">Chi v2.1.0</a>
