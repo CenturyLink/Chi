@@ -114,6 +114,7 @@ export class Textarea {
   }
 
   componentWillLoad() {
+    this.value = this.el.textContent;
     this.stateValidation(this.state);
     this.iconLeftColorValidation(this.iconLeftColor);
     this.iconRightColorValidation(this.iconRightColor);
