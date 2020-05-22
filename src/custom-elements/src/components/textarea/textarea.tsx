@@ -133,7 +133,7 @@ export class Textarea {
       id={this.el.id ? `${this.el.id}-control` : null}
       onFocus={() => this.eventFocus.emit()}
       onBlur={() => this.eventBlur.emit()}
-      onKeyUp={(ev) => this._handleValueInput(ev)}
+      onInput={(ev) => this._handleValueInput(ev)}
       onChange={() => this._handleValueChange()}
     ><slot></slot></textarea>;
     const iconClasses = `
