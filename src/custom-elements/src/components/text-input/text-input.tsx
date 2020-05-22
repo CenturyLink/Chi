@@ -1,4 +1,4 @@
-import { Component, Element, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
 import { CHI_STATES, ChiStates } from '../../constants/states';
 import { ICON_COLORS, IconColors } from '../../constants/color';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
@@ -64,6 +64,22 @@ export class TextInput {
    * To define -hover, -focus statuses
    */
   @Prop() _status: string;
+  /**
+   * Triggered when an alteration to the element's value is committed by the user
+   */
+  @Event({ eventName: 'chiChange' }) eventChange: EventEmitter<string>;
+  /**
+   * Triggered when the user changed the element's value but did not commit the change yet
+   */
+  @Event({ eventName: 'chiInput' }) eventInput: EventEmitter<string>;
+  /**
+   * Triggered when the user sets focus on the element.
+   */
+  @Event({ eventName: 'chiFocus' }) eventFocus: EventEmitter;
+  /**
+   * Triggered when the element has lost focus.
+   */
+  @Event({ eventName: 'chiBlur' }) eventBlur: EventEmitter;
 
   @Watch('state')
   stateValidation(newValue: ChiStates) {
@@ -110,10 +126,19 @@ export class TextInput {
     }
   }
 
-  _handleValueChange(valueChange: Event) {
+  _handleValueInput(valueChange: Event) {
+    const newValue = (valueChange.target as HTMLInputElement).value;
+
     if (!this.preventValueMutation) {
-      this.value = (valueChange.target as HTMLInputElement).value;
+      this.value = newValue;
     }
+    this.eventInput.emit(newValue);
+  }
+
+  _handleValueChange(valueChange: Event) {
+    const newValue = (valueChange.target as HTMLInputElement).value;
+
+    this.eventChange.emit(newValue);
   }
 
   componentWillLoad() {
@@ -138,7 +163,10 @@ export class TextInput {
       name={this.name || ''}
       disabled={this.disabled}
       id={this.el.id ? `${this.el.id}-control` : null}
-      onKeyUp={(ev) => this._handleValueChange(ev)}
+      onFocus={() => this.eventFocus.emit()}
+      onBlur={() => this.eventBlur.emit()}
+      onInput={(ev) => this._handleValueInput(ev)}
+      onChange={(ev) => this._handleValueChange(ev)}
     />;
     const iconClasses = `
       ${this.iconLeft ? '-icon--left' : ''}
