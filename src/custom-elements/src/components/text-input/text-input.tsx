@@ -165,7 +165,7 @@ export class TextInput {
       id={this.el.id ? `${this.el.id}-control` : null}
       onFocus={() => this.eventFocus.emit()}
       onBlur={() => this.eventBlur.emit()}
-      onKeyUp={(ev) => this._handleValueInput(ev)}
+      onInput={(ev) => this._handleValueInput(ev)}
       onChange={(ev) => this._handleValueChange(ev)}
     />;
     const iconClasses = `
