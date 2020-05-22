@@ -1,4 +1,5 @@
 - var steps = ['0', '1', '2', '3', '4', '5', '6'];
+- var stepLast = 12
 
 h2 Examples
 p.-text Use the class <code>chi-pagination</code> to render a pagination component.
@@ -7,39 +8,43 @@ h3 Base
 .example.-mb--3
   .chi-grid.-no-gutter
     .chi-col.-w--12.-w-md--6
-      .-p--3.-text--center
-        nav.chi-pagination.-justify-content--center(role='navigation', aria-label='Pagination')
-          .chi-button-group
-            each step in steps
-              if step == '0'
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous')
-                  .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-              else if step == '3'
-                a(class=`chi-button -flat -active`, href='#')= `${step}`
-              else if step == '6'
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next')
-                  .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-              else
-                a(class=`chi-button -flat`, href='#')= `${step}`
+      .-p--3
+        nav.chi-pagination(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                each step in steps
+                  if step == '0'
+                    a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  else if step == '6'
+                    a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  else
+                    a(class=`chi-button -flat ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+            .chi-pagination__end
     .chi-col.-w--12.-w-md--6
-      .-p--3.-bg--black.-text--center
-        nav.chi-pagination.-justify-content--center(role='navigation', aria-label='Pagination')
-          .chi-button-group
-            each step in steps
-              if step == '0'
-                a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous')
-                  .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-              else if step == '3'
-                a(class=`chi-button -flat -light -active`, href='#')= `${step}`
-              else if step == '6'
-                a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next')
-                  .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-              else
-                a(class=`chi-button -flat -light`, href='#')= `${step}`
+      .-p--3.-bg--black
+        nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                each step in steps
+                  if step == '0'
+                    a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  else if step == '6'
+                    a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  else
+                    a(class=`chi-button -flat -light ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+            .chi-pagination__end
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
       li.-disabled
@@ -51,42 +56,55 @@ h3 Base
     :code(lang="html")
       <!-- For light backgrounds -->
       <nav class="chi-pagination" role="navigation" aria-label="Pagination">
-        <div class="chi-button-group">
-          <a href="#" class="chi-button -icon -flat" aria-label="Previous">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat">1</a>
+              <a href="#" class="chi-button -flat">2</a>
+              <a href="#" class="chi-button -flat -active">3</a>
+              <a href="#" class="chi-button -flat">4</a>
+              <a href="#" class="chi-button -flat">5</a>
+              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+                <div class="chi-buton__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
-          </a>
-          <a href="#" class="chi-button -flat">1</a>
-          <a href="#" class="chi-button -flat">2</a>
-          <a href="#" class="chi-button -flat -active">3</a>
-          <a href="#" class="chi-button -flat">4</a>
-          <a href="#" class="chi-button -flat">5</a>
-          <a href="#" class="chi-button -icon -flat" aria-label="Next">
-            <div class="chi-buton__content">
-              <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-            </div>
-          </a>
+          </div>
+          <div class="chi-pagination__end"></div>
         </div>
       </nav>
+
       <!-- For dark backgrounds -->
       <nav class="chi-pagination -inverse" role="navigation" aria-label="Pagination">
-        <div class="chi-button-group">
-          <a href="#" class="chi-button -icon -flat -light" aria-label="Previous">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+       <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -light">1</a>
+              <a href="#" class="chi-button -flat -light">2</a>
+              <a href="#" class="chi-button -flat -light -active">3</a>
+              <a href="#" class="chi-button -flat -light">4</a>
+              <a href="#" class="chi-button -flat -light">5</a>
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
-          </a>
-          <a href="#" class="chi-button -flat -light">1</a>
-          <a href="#" class="chi-button -flat -light">2</a>
-          <a href="#" class="chi-button -flat -light -active">3</a>
-          <a href="#" class="chi-button -flat -light">4</a>
-          <a href="#" class="chi-button -flat -light">5</a>
-          <a href="#" class="chi-button -icon -flat -light" aria-label="Next">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-            </div>
-          </a>
+          </div>
+          <div class="chi-pagination__end"></div>
         </div>
       </nav>
 
@@ -95,39 +113,43 @@ p.-text Apply the class <code>-disabled</code> to any link to render in a disabl
 .example.-mb--3
   .chi-grid.-no-gutter
     .chi-col.-w--12.-w-md--6
-      .-p--3.-text--center
-        nav.chi-pagination.-justify-content--center(role='navigation', aria-label='Pagination')
-          .chi-button-group
-            each step in steps
-              if step == '0'
-                a(class=`chi-button -icon -flat -disabled`, href='#', aria-label='Previous', aria-disabled='true')
-                  .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-              else if step == '1'
-                a(class=`chi-button -flat -active`, href='#')= `${step}`
-              else if step == '6'
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next')
-                  .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-              else
-                a(class=`chi-button -flat`, href='#')= `${step}`
+      .-p--3
+        nav.chi-pagination(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                each step in steps
+                  if step == '0'
+                    a(class=`chi-button -icon -flat -disabled`, href='#', aria-label='Previous page', aria-disabled='true')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  else if step == '6'
+                    a(class=`chi-button -icon -flat -disabled`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  else
+                    a(class=`chi-button -flat -disabled ${step === '1' ? `-active` : ''}`, href='#')= `${step}`
+            .chi-pagination__end
     .chi-col.-w--12.-w-md--6
-      .-p--3.-bg--black.-text--center
-        nav.chi-pagination.-justify-content--center(role='navigation', aria-label='Pagination')
-          .chi-button-group
-            each step in steps
-              if step == '0'
-                a(class=`chi-button -icon -flat -light -disabled`, href='#', aria-label='Previous', aria-disabled='true')
-                  .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-              else if step == '1'
-                a(class=`chi-button -flat -light -active`, href='#')= `${step}`
-              else if step == '6'
-                a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next')
-                  .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-              else
-                a(class=`chi-button -flat -light`, href='#')= `${step}`
+      .-p--3.-bg--black
+        nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                each step in steps
+                  if step == '0'
+                    a(class=`chi-button -icon -flat -light -disabled`, href='#', aria-label='Previous page', aria-disabled='true')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  else if step == '6'
+                    a(class=`chi-button -icon -flat -light -disabled`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  else
+                    a(class=`chi-button -flat -light -disabled ${step === '1' ? `-active` : ''}`, href='#')= `${step}`
+            .chi-pagination__end
   .example-tabs.-pl--2
     ul.chi-tabs#example-disabled
       li.-disabled
@@ -139,42 +161,1173 @@ p.-text Apply the class <code>-disabled</code> to any link to render in a disabl
     :code(lang="html")
       <!-- For light backgrounds -->
       <nav class="chi-pagination" role="navigation" aria-label="Pagination">
-        <div class="chi-button-group">
-          <a href="#" class="chi-button -icon -flat -disabled" aria-label="Previous" aria-disabled="true">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -disabled" aria-label="Previous page" aria-disabled="true">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -active -disabled">1</a>
+              <a href="#" class="chi-button -flat -disabled">2</a>
+              <a href="#" class="chi-button -flat -disabled">3</a>
+              <a href="#" class="chi-button -flat -disabled">4</a>
+              <a href="#" class="chi-button -flat -disabled">5</a>
+              <a href="#" class="chi-button -icon -flat -disabled" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
-          </a>
-          <a href="#" class="chi-button -flat -active">1</a>
-          <a href="#" class="chi-button -flat">2</a>
-          <a href="#" class="chi-button -flat">3</a>
-          <a href="#" class="chi-button -flat">4</a>
-          <a href="#" class="chi-button -flat">5</a>
-          <a href="#" class="chi-button -icon -flat" aria-label="Next">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-            </div>
-          </a>
+          </div>
+          <div class="chi-pagination__end"></div>
         </div>
       </nav>
+
       <!-- For dark backgrounds -->
       <nav class="chi-pagination -inverse" role="navigation" aria-label="Pagination">
-        <div class="chi-button-group">
-          <a href="#" class="chi-button -icon -flat -light -disabled" aria-label="Previous" aria-disabled="true">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light -disabled" aria-label="Previous page" aria-disabled="true">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -light -active -disabled">1</a>
+              <a href="#" class="chi-button -flat -light -disabled">2</a>
+              <a href="#" class="chi-button -flat -light -disabled">3</a>
+              <a href="#" class="chi-button -flat -light -disabled">4</a>
+              <a href="#" class="chi-button -flat -light -disabled">5</a>
+              <a href="#" class="chi-button -icon -flat -light -disabled" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
-          </a>
-          <a href="#" class="chi-button -flat -light -active">1</a>
-          <a href="#" class="chi-button -flat -light">2</a>
-          <a href="#" class="chi-button -flat -light">3</a>
-          <a href="#" class="chi-button -flat -light">4</a>
-          <a href="#" class="chi-button -flat -light">5</a>
-          <a href="#" class="chi-button -icon -flat -light" aria-label="Next">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+
+h3 Truncation
+p.-text When the number of pages exceeds the recommended 7 page limit, an ellipsis is used to truncate the remaining pages.
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12
+      .-p--3
+        nav.chi-pagination(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                each step in steps
+                  if step == '0'
+                    a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  else if step == '5'
+                    a(class=`chi-button -flat`, href='#')= `${step}`
+                    div(class=`chi-button -flat -disabled`) ...
+                    a(class=`chi-button -flat`, href='#')= `${stepLast}`
+                  else if step == '6'
+                    a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  else
+                    a(class=`chi-button -flat ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+            .chi-pagination__end
+    .chi-col.-w--12
+      .-p--3.-bg--black
+        nav.chi-pagination(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                each step in steps
+                  if step == '0'
+                    a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  else if step == '5'
+                    a(class=`chi-button -flat -light`, href='#')= `${step}`
+                    div(class=`chi-button -flat -light -disabled`) ...
+                    a(class=`chi-button -flat -light`, href='#')= `${stepLast}`
+                  else if step == '6'
+                    a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  else
+                    a(class=`chi-button -flat -light ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+            .chi-pagination__end
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-truncation
+      li.-disabled
+        a(href=`#webcomponent-truncation`) Web Component
+      li.-active
+        a(href=`#html-truncation`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-truncation
+  .chi-tabs-panel.-active#html-truncation
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat">1</a>
+              <a href="#" class="chi-button -flat">2</a>
+              <a href="#" class="chi-button -flat -active">3</a>
+              <a href="#" class="chi-button -flat">4</a>
+              <a href="#" class="chi-button -flat">5</a>
+              <div class="chi-button -flat -disabled">...</div>
+              <a href="#" class="chi-button -flat">12</a>
+              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+                <div class="chi-buton__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
-          </a>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+
+      <!-- For dark backgrounds -->
+      <nav class="chi-pagination -inverse" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -light">1</a>
+              <a href="#" class="chi-button -flat -light">2</a>
+              <a href="#" class="chi-button -flat -light -active">3</a>
+              <a href="#" class="chi-button -flat -light">4</a>
+              <a href="#" class="chi-button -flat -light">5</a>
+              <div class="chi-button -flat -light -disabled">...</div>
+              <a href="#" class="chi-button -flat -light">12</a>
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+
+h3 Double Truncation
+p.-text Use double truncation when the current page is separated by 5 or more pages from the first and last page.
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12
+      .-p--3
+        nav.chi-pagination(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                a(class=`chi-button -flat`, href='#') 1
+                div(class=`chi-button -flat -disabled`) ...
+                a(class=`chi-button -flat`, href='#') 3
+                a(class=`chi-button -flat`, href='#') 4
+                a(class=`chi-button -flat -active`, href='#') 5
+                a(class=`chi-button -flat`, href='#') 6
+                a(class=`chi-button -flat`, href='#') 7
+                div(class=`chi-button -flat -disabled`) ...
+                a(class=`chi-button -flat`, href='#') 12
+                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+            .chi-pagination__end
+    .chi-col.-w--12
+      .-p--3.-bg--black
+        nav.chi-pagination(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -light -flat`, href='#', aria-label='Previous page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                a(class=`chi-button -flat -light`, href='#') 1
+                div(class=`chi-button -flat -light -disabled`) ...
+                a(class=`chi-button -flat -light`, href='#') 3
+                a(class=`chi-button -flat -light`, href='#') 4
+                a(class=`chi-button -flat -light -active`, href='#') 5
+                a(class=`chi-button -flat -light`, href='#') 6
+                a(class=`chi-button -flat -light`, href='#') 7
+                div(class=`chi-button -flat -light -disabled`) ...
+                a(class=`chi-button -flat -light`, href='#') 12
+                a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+            .chi-pagination__end
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-double-truncation
+      li.-disabled
+        a(href=`#webcomponent-double-truncation`) Web Component
+      li.-active
+        a(href=`#html-double-truncation`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-double-truncation
+  .chi-tabs-panel.-active#html-double-truncation
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat">1</a>
+              <div class="chi-button -flat -disabled">...</div>
+              <a href="#" class="chi-button -flat">3</a>
+              <a href="#" class="chi-button -flat">4</a>
+              <a href="#" class="chi-button -flat -active">5</a>
+              <a href="#" class="chi-button -flat">6</a>
+              <a href="#" class="chi-button -flat">7</a>
+              <div class="chi-button -flat -disabled">...</div>
+              <a href="#" class="chi-button -flat">12</a>
+              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+                <div class="chi-buton__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+
+      <!-- For dark backgrounds -->
+      <nav class="chi-pagination -inverse" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -light">1</a>
+              <div class="chi-button -flat -light -disabled">...</div>
+              <a href="#" class="chi-button -flat -light">3</a>
+              <a href="#" class="chi-button -flat -light">4</a>
+              <a href="#" class="chi-button -flat -light -active">5</a>
+              <a href="#" class="chi-button -flat -light">6</a>
+              <a href="#" class="chi-button -flat -light">7</a>
+              <div class="chi-button -flat -light -disabled">...</div>
+              <a href="#" class="chi-button -flat -light">12</a>
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>         
+      </nav>
+
+h3 Results Label
+p.-text Add a label to indicate the total number of results.
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12
+      .-p--3
+        nav.chi-pagination(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+              .chi-pagination__results
+                span.chi-pagination__label 240 Results
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                each step in steps
+                  if step == '0'
+                    a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  else if step == '5'
+                    a(class=`chi-button -flat`, href='#')= `${step}`
+                    div(class=`chi-button -flat -disabled`) ...
+                    a(class=`chi-button -flat`, href='#')= `${stepLast}`
+                  else if step == '6'
+                    a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  else
+                    a(class=`chi-button -flat ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+            .chi-pagination__end
+    .chi-col.-w--12
+      .-p--3.-bg--black
+        nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+              .chi-pagination__results
+                span.chi-pagination__label 240 Results
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                each step in steps
+                  if step == '0'
+                    a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  else if step == '5'
+                    a(class=`chi-button -flat -light`, href='#')= `${step}`
+                    div(class=`chi-button -flat -light -disabled`) ...
+                    a(class=`chi-button -flat -light`, href='#')= `${stepLast}`
+                  else if step == '6'
+                    a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  else
+                    a(class=`chi-button -flat -light ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+            .chi-pagination__end
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-results-label
+      li.-disabled
+        a(href=`#webcomponent-results-label`) Web Component
+      li.-active
+        a(href=`#html-results-label`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-results-label
+  .chi-tabs-panel.-active#html-results-label
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start">
+            <div class="chi-pagination__results">
+              <span class="chi-pagination__label">240 Results</span>
+            </div>
+          </div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat">1</a>
+              <a href="#" class="chi-button -flat">2</a>
+              <a href="#" class="chi-button -flat -active">3</a>
+              <a href="#" class="chi-button -flat">4</a>
+              <a href="#" class="chi-button -flat">5</a>
+              <div class="chi-button -flat -disabled">...</div>
+              <a href="#" class="chi-button -flat">12</a>
+              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+                <div class="chi-buton__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+
+      <!-- For dark backgrounds -->
+      <nav class="chi-pagination -inverse" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start">
+            <div class="chi-pagination__results">
+              <span class="chi-pagination__label">240 Results</span>
+            </div>
+          </div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -light">1</a>
+              <a href="#" class="chi-button -flat -light">2</a>
+              <a href="#" class="chi-button -flat -light -active">3</a>
+              <a href="#" class="chi-button -flat -light">4</a>
+              <a href="#" class="chi-button -flat -light">5</a>
+              <div class="chi-button -flat -light -disabled">...</div>
+              <a href="#" class="chi-button -flat -light">12</a>
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+
+h3 Page Size
+p.-text Allow users to configure the number of result items per page.
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12
+      .-p--3
+        nav.chi-pagination(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+              .chi-pagination__results
+                span.chi-pagination__label 240 results
+              .chi-pagination__page-size
+                .chi-dropdown
+                  button.chi-button.-flat.-px--1.chi-dropdown__trigger#pagesize-1 20
+                  .chi-dropdown__menu.-w--xs
+                    a.chi-dropdown__menu-item.-active(href='#') 20
+                    a.chi-dropdown__menu-item(href='#') 40
+                    a.chi-dropdown__menu-item(href='#') 60
+                    a.chi-dropdown__menu-item(href='#') 80
+                    a.chi-dropdown__menu-item(href='#') All
+                span.chi-pagination__label per page
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                each step in steps
+                  if step == '0'
+                    a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  else if step == '5'
+                    a(class=`chi-button -flat`, href='#')= `${step}`
+                    div(class=`chi-button -flat -disabled`) ...
+                    a(class=`chi-button -flat`, href='#')= `${stepLast}`
+                  else if step == '6'
+                    a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  else
+                    a(class=`chi-button -flat ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+            .chi-pagination__end
+    .chi-col.-w--12
+      .-p--3.-bg--black
+        nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+              .chi-pagination__results
+                span.chi-pagination__label 240 results
+              .chi-pagination__page-size
+                .chi-dropdown
+                  button.chi-button.-flat.-light.-px--1.chi-dropdown__trigger#pagesize-2 20
+                  .chi-dropdown__menu.-inverse.-w--xs
+                    a.chi-dropdown__menu-item.-active(href='#') 20
+                    a.chi-dropdown__menu-item(href='#') 40
+                    a.chi-dropdown__menu-item(href='#') 60
+                    a.chi-dropdown__menu-item(href='#') 80
+                    a.chi-dropdown__menu-item(href='#') All
+                span.chi-pagination__label per page
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                each step in steps
+                  if step == '0'
+                    a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  else if step == '5'
+                    a(class=`chi-button -flat -light`, href='#')= `${step}`
+                    div(class=`chi-button -flat -light -disabled`) ...
+                    a(class=`chi-button -flat -light`, href='#')= `${stepLast}`
+                  else if step == '6'
+                    a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  else
+                    a(class=`chi-button -flat -light ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+            .chi-pagination__end
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-page-items
+      li.-disabled
+        a(href=`#webcomponent-page-items`) Web Component
+      li.-active
+        a(href=`#html-page-items`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-page-items
+  .chi-tabs-panel.-active#html-page-items
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <!-- HTML -->
+      <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start">
+            <div class="chi-pagination__results">
+              <span class="chi-pagination__results-label">240 Results</span>
+            </div>
+            <div class="chi-pagination__page-size">
+              <div class="chi-dropdown">
+                <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="example-pagesize-1">20</button>
+                <div class="chi-dropdown__menu -w--xs">
+                  <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                  <a class="chi-dropdown__menu-item" href="#">40</a>
+                  <a class="chi-dropdown__menu-item" href="#">60</a>
+                  <a class="chi-dropdown__menu-item" href="#">80</a>
+                  <a class="chi-dropdown__menu-item" href="#">All</a>
+                </div>
+              </div>
+              <span class="chi-pagination__label">per page</span>
+            </div>
+          </div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat">1</a>
+              <a href="#" class="chi-button -flat">2</a>
+              <a href="#" class="chi-button -flat -active">3</a>
+              <a href="#" class="chi-button -flat">4</a>
+              <a href="#" class="chi-button -flat">5</a>
+              <div class="chi-button -flat -disabled">...</div>
+              <a href="#" class="chi-button -flat">12</a>
+              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+                <div class="chi-buton__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+      <!-- JavaScript -->
+      <script>chi.dropdown(document.getElementById('example-pagesize-1'));</script>
+
+      <!-- For dark backgrounds -->
+      <!-- HTML -->
+      <nav class="chi-pagination -inverse" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start">
+            <div class="chi-pagination__results">
+              <span class="chi-pagination__results-label">240 Results</span>
+            </div>
+            <div class="chi-pagination__page-size">
+              <div class="chi-dropdown">
+                <button class="chi-button -flat -inverse -px--1 chi-dropdown__trigger" id="example-pagesize-2">20</button>
+                <div class="chi-dropdown__menu -inverse -w--xs">
+                  <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                  <a class="chi-dropdown__menu-item" href="#">40</a>
+                  <a class="chi-dropdown__menu-item" href="#">60</a>
+                  <a class="chi-dropdown__menu-item" href="#">80</a>
+                  <a class="chi-dropdown__menu-item" href="#">All</a>
+                </div>
+              </div>
+              <span class="chi-pagination__label">per page</span>
+            </div>
+          </div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -light">1</a>
+              <a href="#" class="chi-button -flat -light">2</a>
+              <a href="#" class="chi-button -flat -light -active">3</a>
+              <a href="#" class="chi-button -flat -light">4</a>
+              <a href="#" class="chi-button -flat -light">5</a>
+              <div class="chi-button -flat -light -disabled">...</div>
+              <a href="#" class="chi-button -flat -light">12</a>
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+      <!-- JavaScript -->
+      <script>chi.dropdown(document.getElementById('example-pagesize-2'));</script>
+
+h3 Page Jumper
+p.-text Add a page jumper to allow users to jump to a specific page of results.
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12
+      .-p--3
+        nav.chi-pagination(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+              .chi-pagination__results
+                span.chi-pagination__label 240 results
+              .chi-pagination__page-size
+                .chi-dropdown
+                  button.chi-button.-flat.-px--1.chi-dropdown__trigger#pagesize-3 20
+                  .chi-dropdown__menu.-w--xs
+                    a.chi-dropdown__menu-item.-active(href='#') 20
+                    a.chi-dropdown__menu-item(href='#') 40
+                    a.chi-dropdown__menu-item(href='#') 60
+                    a.chi-dropdown__menu-item(href='#') 80
+                    a.chi-dropdown__menu-item(href='#') All
+                span.chi-pagination__label per page
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                each step in steps
+                  if step == '0'
+                    a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  else if step == '5'
+                    a(class=`chi-button -flat`, href='#')= `${step}`
+                    div(class=`chi-button -flat -disabled`) ...
+                    a(class=`chi-button -flat`, href='#')= `${stepLast}`
+                  else if step == '6'
+                    a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  else
+                    a(class=`chi-button -flat ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+            .chi-pagination__end
+              .chi-pagination__jumper
+                label.chi-pagination__label(for="jumper-input-1") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-1')
+    .chi-col.-w--12
+      .-p--3.-bg--black
+        nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+              .chi-pagination__results
+                span.chi-pagination__label 240 results
+              .chi-pagination__page-size
+                .chi-dropdown
+                  button.chi-button.-flat.-light.-px--1.chi-dropdown__trigger#pagesize-4 20
+                  .chi-dropdown__menu.-inverse.-w--xs
+                    a.chi-dropdown__menu-item.-active(href='#') 20
+                    a.chi-dropdown__menu-item(href='#') 40
+                    a.chi-dropdown__menu-item(href='#') 60
+                    a.chi-dropdown__menu-item(href='#') 80
+                    a.chi-dropdown__menu-item(href='#') All
+                span.chi-pagination__label per page
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                each step in steps
+                  if step == '0'
+                    a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  else if step == '5'
+                    a(class=`chi-button -flat -light`, href='#')= `${step}`
+                    div(class=`chi-button -flat -light -disabled`) ...
+                    a(class=`chi-button -flat -light`, href='#')= `${stepLast}`
+                  else if step == '6'
+                    a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                  else
+                    a(class=`chi-button -flat -light ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+            .chi-pagination__end
+              .chi-pagination__jumper
+                label.chi-pagination__label(for="jumper-input-2") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-2')
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-page-jumper
+      li.-disabled
+        a(href=`#webcomponent-page-jumper`) Web Component
+      li.-active
+        a(href=`#html-page-jumper`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-page-jumper
+  .chi-tabs-panel.-active#html-page-jumper
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <!-- HTML -->
+      <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start">
+            <div class="chi-pagination__results">
+              <span class="chi-pagination__label">240 results</span>
+            </div>
+            <div class="chi-pagination__page-size">
+              <div class="chi-dropdown">
+                <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="example-pagesize-3">20</button>
+                <div class="chi-dropdown__menu -w--xs">
+                  <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                  <a class="chi-dropdown__menu-item" href="#">40</a>
+                  <a class="chi-dropdown__menu-item" href="#">60</a>
+                  <a class="chi-dropdown__menu-item" href="#">80</a>
+                  <a class="chi-dropdown__menu-item" href="#">All</a>
+                </div>
+              </div>
+             <span class="chi-pagination__label">per page</span>
+            </div>
+          </div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat">1</a>
+              <a href="#" class="chi-button -flat">2</a>
+              <a href="#" class="chi-button -flat -active">3</a>
+              <a href="#" class="chi-button -flat">4</a>
+              <a href="#" class="chi-button -flat">5</a>
+              <div class="chi-button -flat -disabled">...</div>
+              <a href="#" class="chi-button -flat">12</a>
+              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+                <div class="chi-buton__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end">
+            <div class="chi-pagination__jumper">
+              <label class="chi-pagination__label" for="jumper-input-1">Go to page:</label>
+              <input class="chi-input" type="text" id="jumper-input-1">
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- JavaScript -->
+      <script>chi.dropdown(document.getElementById('example-pagesize-3'));</script>
+
+      <!-- For dark backgrounds -->
+      <!-- HTML -->
+      <nav class="chi-pagination -inverse" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start">
+            <div class="chi-pagination__results">
+              <span class="chi-pagination__label">240 results</span>
+            </div>
+            <div class="chi-pagination__page-size">
+              <div class="chi-dropdown">
+                <button class="chi-button -flat -light -px--1 chi-dropdown__trigger" id="example-pagesize-4">20</button>
+                <div class="chi-dropdown__menu -inverse -w--xs">
+                  <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                  <a class="chi-dropdown__menu-item" href="#">40</a>
+                  <a class="chi-dropdown__menu-item" href="#">60</a>
+                  <a class="chi-dropdown__menu-item" href="#">80</a>
+                  <a class="chi-dropdown__menu-item" href="#">All</a>
+                </div>
+              </div>
+             <span class="chi-pagination__label">per page</span>
+            </div>
+          </div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -light">1</a>
+              <a href="#" class="chi-button -flat -light">2</a>
+              <a href="#" class="chi-button -flat -light -active">3</a>
+              <a href="#" class="chi-button -flat -light">4</a>
+              <a href="#" class="chi-button -flat -light">5</a>
+              <div class="chi-button -flat -light -disabled">...</div>
+              <a href="#" class="chi-button -flat -light">12</a>
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end">
+            <div class="chi-pagination__jumper">
+              <label class="chi-pagination__label" for="jumper-input-2">Go to page:</label>
+              <input class="chi-input" type="text" id="jumper-input-2">
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- JavaScript -->
+      <script>chi.dropdown(document.getElementById('example-pagesize-4'));</script>
+
+h3 Compact
+h4 Base
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12.-w-md--6
+      .-p--3
+        nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
+              .chi-pagination__label
+                strong 2
+                span of
+                strong 3
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+            .chi-pagination__end
+    .chi-col.-w--12.-w-md--6
+      .-p--3.-bg--black
+        nav.chi-pagination.-compact.-inverse(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
+              .chi-pagination__label
+                strong 2
+                span of
+                strong 3
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+            .chi-pagination__end
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href=`#webcomponent-base`) Web Component
+      li.-active
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+            <div class="chi-pagination__label">
+              <strong>2</strong>
+              <span>of</span>
+              <strong>3</strong>
+            </div>
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+                <div class="chi-buton__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+
+      <!-- For dark backgrounds -->
+      <nav class="chi-pagination -compact -inverse" role="navigation" aria-label="Pagination">
+       <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+            <div class="chi-pagination__label">
+              <strong>2</strong>
+              <span>of</span>
+              <strong>3</strong>
+            </div>
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+
+h4 Page Jumper
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12.-w-md--6
+      .-p--3
+        nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
+              .chi-pagination__jumper
+                input(type='text', class='chi-input', id='compact-jumper-input-1', value='2')
+                .chi-pagination__label
+                  span of
+                  strong 3
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+            .chi-pagination__end
+    .chi-col.-w--12.-w-md--6
+      .-p--3.-bg--black
+        nav.chi-pagination.-compact.-inverse(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
+              .chi-pagination__jumper
+                input(type='text', class='chi-input', id='compact-jumper-input-2', value='2')
+                .chi-pagination__label
+                  span of
+                  strong 3
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+            .chi-pagination__end
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href=`#webcomponent-base`) Web Component
+      li.-active
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+            <div class="chi-pagination__jumper">
+              <input type="text" class="chi-input" id="compact-jumper-input-1" value="2">
+              <div class="chi-pagination__label">
+                <span>of</span>
+                <strong>3</strong>
+              </div>
+            </div>
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+                <div class="chi-buton__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+
+      <!-- For dark backgrounds -->
+      <nav class="chi-pagination -compact -inverse" role="navigation" aria-label="Pagination">
+       <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+            <div class="chi-pagination__jumper">
+              <input type="text" class="chi-input" id="compact-jumper-input-2" value="2">
+              <div class="chi-pagination__label">
+                <span>of</span>
+                <strong>3</strong>
+              </div>
+            </div>
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+
+h4 First and Last page buttons
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12.-w-md--6
+      .-p--3
+        nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -flat`, href='#', aria-label='First page')
+                  .chi-button__content
+                    i(class="chi-icon icon-page-first", aria-hidden='true')
+                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
+              .chi-pagination__label
+                strong 2
+                span of
+                strong 3
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                a(class=`chi-button -icon -flat`, href='#', aria-label='Last page')
+                  .chi-button__content
+                    i(class="chi-icon icon-page-last", aria-hidden='true')
+            .chi-pagination__end
+    .chi-col.-w--12.-w-md--6
+      .-p--3.-bg--black
+        nav.chi-pagination.-compact.-inverse(role='navigation', aria-label='Pagination')
+          .chi-pagination__content
+            .chi-pagination__start
+            .chi-pagination__center
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -flat -light`, href='#', aria-label='First page')
+                  .chi-button__content
+                    i(class="chi-icon icon-page-first", aria-hidden='true')
+                a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
+              .chi-pagination__label
+                strong 2
+                span of
+                strong 3
+              .chi-pagination__button-group.chi-button-group
+                a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
+                  .chi-button__content
+                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                a(class=`chi-button -icon -flat -light`, href='#', aria-label='Last page')
+                  .chi-button__content
+                    i(class="chi-icon icon-page-last", aria-hidden='true')
+            .chi-pagination__end
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href=`#webcomponent-base`) Web Component
+      li.-active
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat" aria-label="First page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-page-first" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+            <div class="chi-pagination__label">
+              <strong>2</strong>
+              <span>of</span>
+              <strong>3</strong>
+            </div>
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+                <div class="chi-buton__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -icon -flat" aria-label="Last page">
+                <div class="chi-buton__content">
+                  <i class="chi-icon icon-page-last" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+
+      <!-- For dark backgrounds -->
+      <nav class="chi-pagination -compact -inverse" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light" aria-label="First page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-page-first" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+            <div class="chi-pagination__label">
+              <strong>2</strong>
+              <span>of</span>
+              <strong>3</strong>
+            </div>
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+                <div class="chi-buton__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Last page">
+                <div class="chi-buton__content">
+                  <i class="chi-icon icon-page-last" aria-hidden="true"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
         </div>
       </nav>
 
@@ -186,40 +1339,44 @@ p.-text Pagination supports the following sizes: <code>-sm</code>, <code>-md</co
       .-p--3
         each size in ['sm', 'md', 'lg', 'xl']
           p.-text--bold=`-${size}`
-          nav.chi-pagination(role='navigation', aria-label='Pagination').-mb--2
-            .chi-button-group
-              each step in steps
-                if step == '0'
-                  a(class=`chi-button -icon -flat -${size}`, href='#', aria-label='Previous')
-                    .chi-button__content
-                      i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                else if step == '3'
-                  a(class=`chi-button -flat -active -${size}`, href='#')= `${step}`
-                else if step == '6'
-                  a(class=`chi-button -icon -flat -${size}`, href='#', aria-label='Next')
-                    .chi-button__content
-                      i(class="chi-icon icon-chevron-right", aria-hidden='true')
-                else
-                  a(class=`chi-button -flat -${size}`, href='#')= `${step}`
+          nav.chi-pagination.-mb--2(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat -${size}`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat -${size}`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat -${size} ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
     .chi-col.-w--12.-w-md--6
       .-p--3.-bg--black
         each size in ['sm', 'md', 'lg', 'xl']
           p.-text--bold.-text--white=`-${size}`
-          nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination').-mb--2
-            .chi-button-group
-              each step in steps
-                if step == '0'
-                  a(class=`chi-button -icon -flat -light -${size}`, href='#', aria-label='Previous')
-                    .chi-button__content
-                      i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                else if step == '3'
-                  a(class=`chi-button -flat -active -light -${size}`, href='#')= `${step}`
-                else if step == '6'
-                  a(class=`chi-button -icon -flat -light -${size}`, href='#', aria-label='Next')
-                    .chi-button__content
-                      i(class="chi-icon icon-chevron-right", aria-hidden='true')
-                else
-                  a(class=`chi-button -flat -light -${size}`, href='#')= `${step}`
+          nav.chi-pagination.-inverse.-mb--2(role='navigation', aria-label='Pagination')
+            .chi-pagination__content
+              .chi-pagination__start
+              .chi-pagination__center
+                .chi-pagination__button-group.chi-button-group
+                  each step in steps
+                    if step == '0'
+                      a(class=`chi-button -icon -flat -light -${size}`, href='#', aria-label='Previous page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '6'
+                      a(class=`chi-button -icon -flat -light -${size}`, href='#', aria-label='Next page')
+                        .chi-button__content
+                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    else
+                      a(class=`chi-button -flat -light -${size} ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
+              .chi-pagination__end
   .example-tabs.-pl--2
     ul.chi-tabs#example-sizes
       li.-disabled
@@ -232,170 +1389,218 @@ p.-text Pagination supports the following sizes: <code>-sm</code>, <code>-md</co
       <!-- For light backgrounds -->
       <!-- sm -->
       <nav class="chi-pagination" role="navigation" aria-label="Pagination">
-        <div class="chi-button-group">
-          <a href="#" class="chi-button -icon -flat -sm" aria-label="Previous">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -sm" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -sm">1</a>
+              <a href="#" class="chi-button -flat -sm">2</a>
+              <a href="#" class="chi-button -flat -sm -active">3</a>
+              <a href="#" class="chi-button -flat -sm">4</a>
+              <a href="#" class="chi-button -flat -sm">5</a>
+              <a href="#" class="chi-button -icon -flat -sm" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
-          </a>
-          <a href="#" class="chi-button -flat -sm">1</a>
-          <a href="#" class="chi-button -flat -sm">2</a>
-          <a href="#" class="chi-button -flat -sm -active">3</a>
-          <a href="#" class="chi-button -flat -sm">4</a>
-          <a href="#" class="chi-button -flat -sm">5</a>
-          <a href="#" class="chi-button -icon -flat -sm" aria-label="Next">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-            </div>
-          </a>
+          </div>
+          <div class="chi-pagination__end"></div>
         </div>
       </nav>
 
       <!-- md -->
       <nav class="chi-pagination" role="navigation" aria-label="Pagination">
-        <div class="chi-button-group">
-          <a href="#" class="chi-button -icon -flat" aria-label="Previous">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat">1</a>
+              <a href="#" class="chi-button -flat">2</a>
+              <a href="#" class="chi-button -flat -active">3</a>
+              <a href="#" class="chi-button -flat">4</a>
+              <a href="#" class="chi-button -flat">5</a>
+              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
-          </a>
-          <a href="#" class="chi-button -flat">1</a>
-          <a href="#" class="chi-button -flat">2</a>
-          <a href="#" class="chi-button -flat -active">3</a>
-          <a href="#" class="chi-button -flat">4</a>
-          <a href="#" class="chi-button -flat">5</a>
-          <a href="#" class="chi-button -icon -flat" aria-label="Next">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-            </div>
-          </a>
+          </div>
+          <div class="chi-pagination__end"></div>
         </div>
       </nav>
 
       <!-- lg -->
       <nav class="chi-pagination" role="navigation" aria-label="Pagination">
-        <div class="chi-button-group">
-          <a href="#" class="chi-button -icon -flat -lg" aria-label="Previous">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -lg" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -lg">1</a>
+              <a href="#" class="chi-button -flat -lg">2</a>
+              <a href="#" class="chi-button -flat -lg -active">3</a>
+              <a href="#" class="chi-button -flat -lg">4</a>
+              <a href="#" class="chi-button -flat -lg">5</a>
+              <a href="#" class="chi-button -icon -flat -lg" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
-          </a>
-          <a href="#" class="chi-button -flat -lg">1</a>
-          <a href="#" class="chi-button -flat -lg">2</a>
-          <a href="#" class="chi-button -flat -lg -active">3</a>
-          <a href="#" class="chi-button -flat -lg">4</a>
-          <a href="#" class="chi-button -flat -lg">5</a>
-          <a href="#" class="chi-button -icon -flat -lg" aria-label="Next">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-            </div>
-          </a>
+          </div>
+          <div class="chi-pagination__end"></div>
         </div>
       </nav>
 
       <!-- xl -->
       <nav class="chi-pagination" role="navigation" aria-label="Pagination">
-        <div class="chi-button-group">
-          <a href="#" class="chi-button -icon -flat -xl" aria-label="Previous">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -xl" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -xl">1</a>
+              <a href="#" class="chi-button -flat -xl">2</a>
+              <a href="#" class="chi-button -flat -xl -active">3</a>
+              <a href="#" class="chi-button -flat -xl">4</a>
+              <a href="#" class="chi-button -flat -xl">5</a>
+              <a href="#" class="chi-button -icon -flat -xl" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
-          </a>
-          <a href="#" class="chi-button -flat -xl">1</a>
-          <a href="#" class="chi-button -flat -xl">2</a>
-          <a href="#" class="chi-button -flat -xl -active">3</a>
-          <a href="#" class="chi-button -flat -xl">4</a>
-          <a href="#" class="chi-button -flat -xl">5</a>
-          <a href="#" class="chi-button -icon -flat -xl" aria-label="Next">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-            </div>
-          </a>
+          </div>
+          <div class="chi-pagination__end"></div>
         </div>
       </nav>
 
       <!-- For dark backgrounds -->
       <!-- sm -->
       <nav class="chi-pagination -inverse" role="navigation" aria-label="Pagination">
-        <div class="chi-button-group">
-          <a href="#" class="chi-button -icon -flat -light -sm" aria-label="Previous">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light -sm" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -light -sm">1</a>
+              <a href="#" class="chi-button -flat -light -sm">2</a>
+              <a href="#" class="chi-button -flat -light -sm -active">3</a>
+              <a href="#" class="chi-button -flat -light -sm">4</a>
+              <a href="#" class="chi-button -flat -light -sm">5</a>
+              <a href="#" class="chi-button -icon -flat -light -sm" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
-          </a>
-          <a href="#" class="chi-button -flat -light -sm">1</a>
-          <a href="#" class="chi-button -flat -light -sm">2</a>
-          <a href="#" class="chi-button -flat -light -sm -active">3</a>
-          <a href="#" class="chi-button -flat -light -sm">4</a>
-          <a href="#" class="chi-button -flat -light -sm">5</a>
-          <a href="#" class="chi-button -icon -flat -light -sm" aria-label="Next">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-            </div>
-          </a>
+          </div>
+          <div class="chi-pagination__end"></div>
         </div>
       </nav>
 
       <!-- md -->
       <nav class="chi-pagination -inverse" role="navigation" aria-label="Pagination">
-        <div class="chi-button-group">
-          <a href="#" class="chi-button -icon -flat -light" aria-label="Previous">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -light">1</a>
+              <a href="#" class="chi-button -flat -light">2</a>
+              <a href="#" class="chi-button -flat -light -active">3</a>
+              <a href="#" class="chi-button -flat -light">4</a>
+              <a href="#" class="chi-button -flat -light">5</a>
+              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
-          </a>
-          <a href="#" class="chi-button -flat -light">1</a>
-          <a href="#" class="chi-button -flat -light">2</a>
-          <a href="#" class="chi-button -flat -light -active">3</a>
-          <a href="#" class="chi-button -flat -light">4</a>
-          <a href="#" class="chi-button -flat -light">5</a>
-          <a href="#" class="chi-button -icon -flat -light" aria-label="Next">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-            </div>
-          </a>
+          </div>
+          <div class="chi-pagination__end"></div>
         </div>
       </nav>
 
       <!-- lg -->
       <nav class="chi-pagination -inverse" role="navigation" aria-label="Pagination">
-        <div class="chi-button-group">
-          <a href="#" class="chi-button -icon -flat -light -lg" aria-label="Previous">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light -lg" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -light -lg">1</a>
+              <a href="#" class="chi-button -flat -light -lg">2</a>
+              <a href="#" class="chi-button -flat -light -lg -active">3</a>
+              <a href="#" class="chi-button -flat -light -lg">4</a>
+              <a href="#" class="chi-button -flat -light -lg">5</a>
+              <a href="#" class="chi-button -icon -flat -light -lg" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
-          </a>
-          <a href="#" class="chi-button -flat -light -lg">1</a>
-          <a href="#" class="chi-button -flat -light -lg">2</a>
-          <a href="#" class="chi-button -flat -light -lg -active">3</a>
-          <a href="#" class="chi-button -flat -light -lg">4</a>
-          <a href="#" class="chi-button -flat -light -lg">5</a>
-          <a href="#" class="chi-button -icon -flat -light -lg" aria-label="Next">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-            </div>
-          </a>
+          </div>
+          <div class="chi-pagination__end"></div>
         </div>
       </nav>
 
       <!-- xl -->
       <nav class="chi-pagination -inverse" role="navigation" aria-label="Pagination">
-        <div class="chi-button-group">
-          <a href="#" class="chi-button -icon -flat -light -xl" aria-label="Previous">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <a href="#" class="chi-button -icon -flat -light -xl" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </a>
+              <a href="#" class="chi-button -flat -light -xl">1</a>
+              <a href="#" class="chi-button -flat -light -xl">2</a>
+              <a href="#" class="chi-button -flat -light -xl -active">3</a>
+              <a href="#" class="chi-button -flat -light -xl">4</a>
+              <a href="#" class="chi-button -flat -light -xl">5</a>
+              <a href="#" class="chi-button -icon -flat -light -xl" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </a>
             </div>
-          </a>
-          <a href="#" class="chi-button -flat -light -xl">1</a>
-          <a href="#" class="chi-button -flat -light -xl">2</a>
-          <a href="#" class="chi-button -flat -light -xl -active">3</a>
-          <a href="#" class="chi-button -flat -light -xl">4</a>
-          <a href="#" class="chi-button -flat -light -xl">5</a>
-          <a href="#" class="chi-button -icon -flat -light -xl" aria-label="Next">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-            </div>
-          </a>
+          </div>
+          <div class="chi-pagination__end"></div>
         </div>
       </nav>
 
@@ -404,5 +1609,9 @@ script.
     'DOMContentLoaded',
     function() {
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+      chi.dropdown(document.getElementById('pagesize-1'));
+      chi.dropdown(document.getElementById('pagesize-2'));
+      chi.dropdown(document.getElementById('pagesize-3'));
+      chi.dropdown(document.getElementById('pagesize-4'));
     }
   );

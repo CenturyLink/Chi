@@ -1,0 +1,242 @@
+---
+title: Textarea
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
+each size in ['default', 'sm', 'md', 'lg', 'xl']
+  div(class=`test-${size}`)
+    span.-text--h2= `Textarea / ${size}`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td(style='vertical-align: bottom')
+              .-m--1
+                if state == 'disabled'
+                  chi-textarea(
+                    size= size == 'default' ? 'md' : size,
+                    disabled,
+                    state= style == 'default' ? '' : style,
+                    _status= state == 'initial' ? '' : state
+                    ) Value
+                else
+                  chi-textarea(
+                    size= size == 'default' ? 'md' : size,
+                    state= style == 'default' ? '' : style,
+                    _status= state == 'initial' ? '' : state
+                  ) Value
+            td(style='vertical-align: bottom')
+              .-m--1
+                if state == 'disabled'
+                  .chi-form__item
+                    chi-label(size=size == 'default' ? 'md' : size) Label
+                    chi-textarea(
+                      size= size == 'default' ? '' : size,
+                      disabled,
+                      state= style == 'default' ? '' : style,
+                      _status= state == 'initial' ? '' : state
+                    ) Value
+                else
+                  .chi-form__item
+                    chi-label(size=size == 'default' ? 'md' : size) Label
+                    chi-textarea(
+                      size= size == 'default' ? '' : size,
+                      state= style == 'default' ? '' : style,
+                      _status= state == 'initial' ? '' : state
+                    ) Value
+
+  div(class=`test-${size}-icon-left`)
+    span.-text--h2= `Textarea / ${size} / icon left`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td(style='vertical-align: bottom')
+              .-m--1
+                if state == 'disabled'
+                  chi-textarea(
+                    size= size == 'default' ? '' : size,
+                    disabled,
+                    state= style == 'default' ? '' : style,
+                    _status= state == 'initial' ? '' : state,
+                    icon-left="atom"
+                  ) Value
+                else
+                  chi-textarea(
+                    size= size == 'default' ? '' : size,
+                    state= style == 'default' ? '' : style,
+                    _status= state == 'initial' ? '' : state,
+                    icon-left="atom"
+                  ) Value
+            td(style='vertical-align: bottom')
+              .-m--1
+                .chi-form__item
+                  chi-label(size=size) Label
+                  if state == 'disabled'
+                    chi-textarea(
+                      size= size == 'default' ? '' : size,
+                      disabled,
+                      state= style == 'default' ? '' : style,
+                      _status= state == 'initial' ? '' : state,
+                      icon-left="atom"
+                    ) Value
+                  else
+                    chi-textarea(
+                      size= size == 'default' ? '' : size,
+                      state= style == 'default' ? '' : style,
+                      _status= state == 'initial' ? '' : state,
+                      icon-left="atom"
+                    ) Value
+
+  div(class=`test-${size}-icon-right`)
+    span.-text--h2= `Textarea / ${size} / icon right`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td(style='vertical-align: bottom')
+              .-m--1
+                if style == 'success'
+                  - var icon = 'check'
+                else if style == 'warning'
+                  - var icon = 'warning'
+                else if style == 'danger'
+                  - var icon = 'circle-warning'
+                else
+                  - var icon = 'circle-info-outline'
+                if state == 'disabled'
+                  chi-textarea(
+                    size= size == 'default' ? '' : size,
+                    disabled,
+                    state= style == 'default' ? '' : style,
+                    _status= state == 'initial' ? '' : state,
+                    icon-right=icon,
+                    icon-right-color= style == 'default' ? '' : style
+                  ) Value
+                else
+                  chi-textarea(
+                    size= size == 'default' ? '' : size,
+                    state= style == 'default' ? '' : style,
+                    _status= state == 'initial' ? '' : state,
+                    icon-right=icon,
+                    icon-right-color= style == 'default' ? '' : style
+                  ) Value
+
+            td(style='vertical-align: bottom')
+              .-m--1
+                .chi-form__item
+                  chi-label(size=size for='example') Label
+                  if style == 'success'
+                    - var icon = 'check'
+                  else if style == 'warning'
+                    - var icon = 'warning'
+                  else if style == 'danger'
+                    - var icon = 'circle-warning'
+                  else
+                    - var icon = 'circle-info-outline'
+                  if state == 'disabled'
+                    chi-textarea(
+                      size= size == 'default' ? '' : size,
+                      disabled,
+                      state= style == 'default' ? '' : style,
+                      _status= state == 'initial' ? '' : state,
+                      icon-right=icon,
+                      icon-right-color= style == 'default' ? '' : style
+                    ) Value
+                  else
+                    chi-textarea(
+                      size= size == 'default' ? '' : size,
+                      state= style == 'default' ? '' : style,
+                      _status= state == 'initial' ? '' : state,
+                      icon-right=icon,
+                      icon-right-color= style == 'default' ? '' : style
+                    ) Value
+
+  div(class=`test-${size}-icon-left-right`)
+    span.-text--h2= `Textarea / ${size} / icon left / icon right`
+    table(cellpadding="0", cellspacing="0", width="1200px")
+      each state in ['initial', 'hover', 'focus', 'disabled']
+        tr
+          td
+            small= `${state}`
+          each style in ['default', 'success', 'warning', 'danger']
+            td(style='vertical-align: bottom')
+              .-m--1
+                if style == 'success'
+                  - var icon = 'check'
+                else if style == 'warning'
+                  - var icon = 'warning'
+                else if style == 'danger'
+                  - var icon = 'circle-warning'
+                else
+                  - var icon = 'circle-info-outline'
+                if state == 'disabled'
+                  chi-textarea(
+                    size= size == 'default' ? '' : size,
+                    disabled,
+                    state= style == 'default' ? '' : style,
+                    _status= state == 'initial' ? '' : state,
+                    icon-left="atom",
+                    icon-right=icon,
+                    icon-right-color= style == 'default' ? '' : style
+                  ) Value
+                else
+                  chi-textarea(
+                    size= size == 'default' ? '' : size,
+                    state= style == 'default' ? '' : style,
+                    _status= state == 'initial' ? '' : state,
+                    icon-left="atom",
+                    icon-right=icon,
+                    icon-right-color= style == 'default' ? '' : style
+                  ) Value
+            td(style='vertical-align: bottom')
+              .-m--1
+                .chi-form__item
+                  chi-label(size=size for='example') Label
+                  if style == 'success'
+                    - var icon = 'check'
+                  else if style == 'warning'
+                    - var icon = 'warning'
+                  else if style == 'danger'
+                    - var icon = 'circle-warning'
+                  else
+                    - var icon = 'circle-info-outline'
+                  if state == 'disabled'
+                    chi-textarea(
+                      size= size == 'default' ? '' : size,
+                      disabled,
+                      state= style == 'default' ? '' : style,
+                      _status= state == 'initial' ? '' : state,
+                      icon-left="atom",
+                      icon-right=icon,
+                      icon-right-color= style == 'default' ? '' : style
+                    ) Value
+                  else
+                    chi-textarea(
+                      size= size == 'default' ? '' : size,
+                      state= style == 'default' ? '' : style,
+                      _status= state == 'initial' ? '' : state,
+                      icon-left="atom",
+                      icon-right=icon,
+                      icon-right-color= style == 'default' ? '' : style
+                    ) Value
+script.
+  function checkAllTextareasRendered() {
+  const textareas = document.querySelectorAll('chi-textarea');
+
+  return Array.from(textareas).every(x => x.classList.contains('hydrated'));
+  }
+
+  const renderCheckInterval = setInterval(function() {
+  if (checkAllTextareasRendered()) {
+  console.log("backstop_ready");
+  clearInterval(renderCheckInterval);
+  }
+  }, 3000);
