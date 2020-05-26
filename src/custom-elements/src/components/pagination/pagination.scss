@@ -1,0 +1,34 @@
+.sc-chi-pagination {
+  .chi-pagination__page-size {
+    select {
+      &.chi-input {
+        border: .0625rem solid transparent;
+        box-shadow: none;
+        font-size: 0.875rem;
+        font-weight: 600;
+        height: 32px;
+        padding: 8px;
+        width: 54px;
+
+        &:hover {
+          -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .04);
+          border: .0625rem solid #d0d4d9;
+          box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .04);
+        }
+      }
+    }
+  }
+
+  &.-inverse {
+    .chi-pagination__page-size {
+      select {
+        &.chi-input {
+          &:hover {
+            border: .0625rem solid set-color(white);
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .04);
+          }
+        }
+      }
+    }
+  }
+}
