@@ -31,11 +31,11 @@ export class Pagination {
   /**
    * To allow use select number of items to show per page
    */
-  @Prop() perPage = false;
+  @Prop() pageSize = false;
   /**
    * To add jump to page text input
    */
-  @Prop() goTo = false;
+  @Prop() pageJumper = false;
   /**
    * To define compact style of pagination
    */
@@ -57,18 +57,21 @@ export class Pagination {
    */
   @Event() chiPageSizeChange: EventEmitter<string>;
 
-  distanceFromCurrent;
-  pagesArray = [];
-  pagesToRender = [];
-  l = null;
+  _distanceFromCurrent:number;
+  _pagesArray = [];
+  _pagesToRender = [];
+  _lastRenderedPage = null;
 
   calculateDistanceFromCurrent() {
-    if (this.currentPage === 1) {
-      this.distanceFromCurrent = 4;
-    } else if (this.currentPage === 2) {
-      this.distanceFromCurrent = 3;
-    } else {
-      this.distanceFromCurrent = 2;
+    switch(this.currentPage) {
+      case 1:
+        this._distanceFromCurrent = 4;
+        break;
+      case 2:
+        this._distanceFromCurrent = 3;
+        break;
+      default:
+        this._distanceFromCurrent = 2;
     }
   }
 
@@ -94,14 +97,14 @@ export class Pagination {
   }
 
   componentWillLoad() {
-    this.calculateDistanceFromCurrent()
+    this.calculateDistanceFromCurrent();
   }
 
   componentWillUpdate() {
     this.calculateDistanceFromCurrent();
-    this.pagesArray = [];
-    this.pagesToRender = [];
-    this.l = 0;
+    this._pagesArray = [];
+    this._pagesToRender = [];
+    this._lastRenderedPage = 0;
   }
 
   render() {
@@ -110,15 +113,20 @@ export class Pagination {
 
       if (page) {
         pageToGo = page;
-      } else if (!page && icon) {
-        if (icon === 'first-page') {
-          pageToGo = 1;
-        } else if (icon === 'last-page') {
-          pageToGo = this.pages;
-        } else if (icon === 'chevron-left') {
-          pageToGo = this.currentPage - 1;
-        } else if (icon === 'chevron-right') {
-          pageToGo = this.currentPage + 1;
+      } else if (icon) {
+        switch(icon) {
+          case 'first-page':
+            pageToGo = 1;
+            break;
+          case 'last-page':
+            pageToGo = this.pages;
+            break;
+          case 'chevron-left':
+            pageToGo = this.currentPage - 1;
+            break;
+          case 'chevron-right':
+            pageToGo = this.currentPage + 1;
+            break;
         }
       }
 
@@ -127,7 +135,7 @@ export class Pagination {
         class={
         `chi-button -flat
         ${this.inverse ? '-light' : ''}
-        ${icon ? '-icon' : ''}
+        ${!!icon ? '-icon' : ''}
         ${parseInt(page) === this.currentPage ? '-active' : ''}
         ${state}
         ${this.size ? `-${this.size}` : ''}
@@ -139,7 +147,7 @@ export class Pagination {
         }
       >
         <div class="chi-button__content">
-          {icon ? <i class={`chi-icon icon-${icon}`} aria-hidden="true"></i> : page}
+          {!!icon ? <i class={`chi-icon icon-${icon}`} aria-hidden="true"></i> : page}
         </div>
       </a>
     };
@@ -150,7 +158,7 @@ export class Pagination {
         <span class="chi-pagination__label">{this.results} results</span>
       </div>
       : null;
-    const perPage = this.perPage ? <div class={`chi-pagination__page-size
+    const pageSize = this.pageSize ? <div class={`chi-pagination__page-size
       ${this.size ? `-text--${this.size}` : ''}
     `}>
       <select
@@ -165,7 +173,7 @@ export class Pagination {
       </select>
       <span class="chi-pagination__label">per page</span>
     </div> : null;
-    const goToPage = this.goTo && !this.compact ? <div class={`chi-pagination__jumper
+    const goToPage = this.pageJumper && !this.compact ? <div class={`chi-pagination__jumper
         ${this.size ? `-text--${this.size}` : ''}
     `}>
       <label class="chi-pagination__label">Go to page:</label>
@@ -181,11 +189,11 @@ export class Pagination {
 
     if (this.compact) {
       const paginationLabel = <div class="chi-pagination__label">
-        {!this.goTo ? <strong>{this.currentPage}</strong> : null}
+        {!this.pageJumper ? <strong>{this.currentPage}</strong> : null}
         <span>of</span>
         <strong>{this.pages}</strong>
       </div>;
-      const compactPages = this.goTo ?
+      const compactPages = this.pageJumper ?
         <div class="chi-pagination__jumper">
           <input
             type="text"
@@ -197,26 +205,25 @@ export class Pagination {
         </div> :
         paginationLabel;
 
-      this.pagesToRender.push(compactPages);
+      this._pagesToRender.push(compactPages);
     } else {
-      this.pagesArray.push(1);
-      for (let i = this.currentPage - this.distanceFromCurrent; i <= this.currentPage + this.distanceFromCurrent; i++) {
-        if (i < this.pages && i > 1) {
-          this.pagesArray.push(i);
+      this._pagesArray.push(1);
+      for (let pageIndex = this.currentPage - this._distanceFromCurrent; pageIndex <= this.currentPage + this._distanceFromCurrent; pageIndex++) {
+        if (pageIndex < this.pages && pageIndex > 1) {
+          this._pagesArray.push(pageIndex);
         }
       }
-      this.pagesArray.push(this.pages);
-
-      for (let i of this.pagesArray) {
-        if (this.l) {
-          if (i - this.l === 2) {
-            this.pagesToRender.push(addPage(this.l + 1));
-          } else if (i - this.l !== 1) {
-            this.pagesToRender.push(addPage('...'));
+      this._pagesArray.push(this.pages);
+      for (let pageIndex of this._pagesArray) {
+        if (this._lastRenderedPage) {
+          if (pageIndex - this._lastRenderedPage === 2) {
+            this._pagesToRender.push(addPage(this._lastRenderedPage + 1));
+          } else if (pageIndex - this._lastRenderedPage !== 1) {
+            this._pagesToRender.push(addPage('...'));
           }
         }
-        this.pagesToRender.push(addPage(i));
-        this.l = i;
+        this._pagesToRender.push(addPage(pageIndex));
+        this._lastRenderedPage = pageIndex;
       }
     }
 
@@ -231,13 +238,13 @@ export class Pagination {
       <div class="chi-pagination__content">
         <div class="chi-pagination__start">
           {results}
-          {perPage}
+          {pageSize}
         </div>
         <div class="chi-pagination__center">
           <div class="chi-button-group">
             {startPage}
             {addPage('', 'chevron-left', this.currentPage === 1 ? '-disabled' : '')}
-            {this.pagesToRender}
+            {this._pagesToRender}
             {addPage('', 'chevron-right', this.currentPage === this.pages ? '-disabled' : '')}
             {lastPage}
           </div>

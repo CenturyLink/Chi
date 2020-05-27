@@ -444,10 +444,10 @@ p.-text Allow users to configure the number of result items per page.
   .chi-grid.-no-gutter
     .chi-col.-w--12
       .-p--3
-        chi-pagination(pages="12" results="240" current-page="3" per-page)
+        chi-pagination(pages="12" results="240" current-page="3" page-size)
     .chi-col.-w--12
       .-p--3.-bg--black
-        chi-pagination(pages="12" results="240" current-page="3" per-page inverse)
+        chi-pagination(pages="12" results="240" current-page="3" page-size inverse)
   .example-tabs.-pl--2
     ul.chi-tabs#example-page-items
       li.-active
@@ -457,10 +457,10 @@ p.-text Allow users to configure the number of result items per page.
   .chi-tabs-panel.-active#webcomponent-page-items
     :code(lang="html")
       <!-- For light backgrounds -->
-      <chi-pagination pages="12" results="240" current-page="3" per-page></chi-pagination>
+      <chi-pagination pages="12" results="240" current-page="3" page-size></chi-pagination>
 
       <!-- For dark backgrounds -->
-      <chi-pagination pages="12" results="240" current-page="3" per-page inverse></chi-pagination>
+      <chi-pagination pages="12" results="240" current-page="3" page-size inverse></chi-pagination>
   .chi-tabs-panel#html-page-items
     .chi-tab__description
       span.-text--grey
@@ -572,10 +572,10 @@ p.-text Add a page jumper to allow users to jump to a specific page of results.
   .chi-grid.-no-gutter
     .chi-col.-w--12
       .-p--3
-        chi-pagination(pages="12" results="240" current-page="3" per-page go-to)
+        chi-pagination(pages="12" results="240" current-page="3" page-size page-jumper)
     .chi-col.-w--12
       .-p--3.-bg--black
-        chi-pagination(pages="12" results="240" current-page="3" per-page go-to inverse)
+        chi-pagination(pages="12" results="240" current-page="3" page-size page-jumper inverse)
   .example-tabs.-pl--2
     ul.chi-tabs#example-page-jumper
       li.-active
@@ -585,10 +585,10 @@ p.-text Add a page jumper to allow users to jump to a specific page of results.
   .chi-tabs-panel.-active#webcomponent-page-jumper
     :code(lang="hmtl")
       <!-- For light backgrounds -->
-      <chi-pagination pages="12" results="240" current-page="3" per-page go-to></chi-pagination>
+      <chi-pagination pages="12" results="240" current-page="3" page-size page-jumper></chi-pagination>
 
       <!-- For dark backgrounds -->
-      <chi-pagination pages="12" results="240" current-page="3" per-page go-to inverse></chi-pagination>
+      <chi-pagination pages="12" results="240" current-page="3" page-size page-jumper inverse></chi-pagination>
   .chi-tabs-panel#html-page-jumper
     .chi-tab__description
       span.-text--grey
@@ -792,10 +792,10 @@ h4 Page Jumper
   .chi-grid.-no-gutter
     .chi-col.-w--12.-w-md--6
       .-p--3
-        chi-pagination(pages="3" current-page="2" compact go-to)
+        chi-pagination(pages="3" current-page="2" compact page-jumper)
     .chi-col.-w--12.-w-md--6
       .-p--3.-bg--black
-        chi-pagination(pages="3" current-page="2" compact go-to inverse)
+        chi-pagination(pages="3" current-page="2" compact page-jumper inverse)
   .example-tabs.-pl--2
     ul.chi-tabs#example-page-jump
       li.-active
@@ -805,10 +805,10 @@ h4 Page Jumper
   .chi-tabs-panel.-active#webcomponent-page-jump
     :code(lang="html")
       <!-- For light backgrounds -->
-      <chi-pagination pages="3" current-page="2" compact go-to></chi-pagination>
+      <chi-pagination pages="3" current-page="2" compact page-jumper></chi-pagination>
 
       <!-- For dark backgrounds -->
-      <chi-pagination pages="3" current-page="2" compact go-to inverse></chi-pagination>
+      <chi-pagination pages="3" current-page="2" compact page-jumper inverse></chi-pagination>
   .chi-tabs-panel#html-page-jump
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -878,10 +878,10 @@ h4 First and Last page buttons
   .chi-grid.-no-gutter
     .chi-col.-w--12.-w-md--6
       .-p--3
-        chi-pagination(pages="3" current-page="2" compact go-to first-last)
+        chi-pagination(pages="3" current-page="2" compact page-jumper first-last)
     .chi-col.-w--12.-w-md--6
       .-p--3.-bg--black
-        chi-pagination(pages="3" current-page="2" compact go-to first-last inverse)
+        chi-pagination(pages="3" current-page="2" compact page-jumper first-last inverse)
   .example-tabs.-pl--2
     ul.chi-tabs#example-first-last
       li.-active
@@ -891,10 +891,10 @@ h4 First and Last page buttons
   .chi-tabs-panel.-active#webcomponent-first-last
     :code(lang="html")
       <!-- For light backgrounds -->
-      <chi-pagination pages="3" current-page="2" compact="compact" go-to first-last></chi-pagination>
+      <chi-pagination pages="3" current-page="2" compact="compact" page-jumper first-last></chi-pagination>
 
       <!-- For dark backgrounds -->
-      <chi-pagination pages="3" current-page="2" compact go-to first-last inverse></chi-pagination>
+      <chi-pagination pages="3" current-page="2" compact page-jumper first-last inverse></chi-pagination>
   .chi-tabs-panel#html-first-last
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -998,16 +998,16 @@ p.-text Pagination supports the following sizes: <code>-sm</code>, <code>-md</co
   .chi-tabs-panel.-active#webcomponent-sizes
     :code(lang="html")
       <!-- For light backgrounds -->
-        <chi-pagination pages="5" current-page="3" size="sm"></chi-pagination>
-        <chi-pagination pages="5" current-page="3" size="md"></chi-pagination>
-        <chi-pagination pages="5" current-page="3" size="lg"></chi-pagination>
-        <chi-pagination pages="5" current-page="3" size="xl"></chi-pagination>
+      <chi-pagination pages="5" current-page="3" size="sm"></chi-pagination>
+      <chi-pagination pages="5" current-page="3" size="md"></chi-pagination>
+      <chi-pagination pages="5" current-page="3" size="lg"></chi-pagination>
+      <chi-pagination pages="5" current-page="3" size="xl"></chi-pagination>
 
       <!-- For dark backgrounds -->
-        <chi-pagination pages="5" current-page="3" size="sm" inverse></chi-pagination>
-        <chi-pagination pages="5" current-page="3" size="md" inverse></chi-pagination>
-        <chi-pagination pages="5" current-page="3" size="lg" inverse></chi-pagination>
-        <chi-pagination pages="5" current-page="3" size="xl" inverse></chi-pagination>
+      <chi-pagination pages="5" current-page="3" size="sm" inverse></chi-pagination>
+      <chi-pagination pages="5" current-page="3" size="md" inverse></chi-pagination>
+      <chi-pagination pages="5" current-page="3" size="lg" inverse></chi-pagination>
+      <chi-pagination pages="5" current-page="3" size="xl" inverse></chi-pagination>
   .chi-tabs-panel#html-sizes
     :code(lang="html")
       <!-- For light backgrounds -->
