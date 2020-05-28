@@ -57,13 +57,13 @@ export class Pagination {
    */
   @Event() chiPageSizeChange: EventEmitter<string>;
 
-  _distanceFromCurrent:number;
+  _distanceFromCurrent: number;
   _pagesArray = [];
   _pagesToRender = [];
   _lastRenderedPage = null;
 
   calculateDistanceFromCurrent() {
-    switch(this.currentPage) {
+    switch (this.currentPage) {
       case 1:
         this._distanceFromCurrent = 4;
         break;
@@ -79,8 +79,8 @@ export class Pagination {
     let pageToGo;
 
     for (let cur = pageChange;
-         cur && !cur.classList.contains('chi-button-group');
-         cur = cur.parentNode as HTMLElement) {
+      cur && !cur.classList.contains('chi-button-group');
+      cur = cur.parentNode as HTMLElement) {
       if (cur.nodeName === 'A') {
         pageToGo = cur.getAttribute('data-page');
       }
@@ -114,7 +114,7 @@ export class Pagination {
       if (page) {
         pageToGo = page;
       } else if (icon) {
-        switch(icon) {
+        switch (icon) {
           case 'first-page':
             pageToGo = 1;
             break;
@@ -133,7 +133,7 @@ export class Pagination {
       return <a
         data-page={pageToGo}
         class={
-        `chi-button -flat
+          `chi-button -flat
         ${this.inverse ? '-light' : ''}
         ${!!icon ? '-icon' : ''}
         ${parseInt(page) === this.currentPage ? '-active' : ''}
@@ -141,9 +141,9 @@ export class Pagination {
         ${this.size ? `-${this.size}` : ''}
         `}
         onClick={(ev) => {
-            ev.stopPropagation();
-            this._goToPage(ev.target as HTMLElement);
-          }
+          ev.stopPropagation();
+          this._goToPage(ev.target as HTMLElement);
+        }
         }
       >
         <div class="chi-button__content">
@@ -184,8 +184,8 @@ export class Pagination {
         onChange={(ev) => this._jumpToPage((ev.target as HTMLInputElement).value)}
       />
     </div> : null;
-    const startPage = this.firstLast ? addPage('','page-first', this.currentPage === 1 ? '-disabled' : '') : null;
-    const lastPage = this.firstLast ? addPage('','page-last', this.currentPage === this.pages ? '-disabled' : '') : null;
+    const startPage = this.firstLast ? addPage('', 'page-first', this.currentPage === 1 ? '-disabled' : '') : null;
+    const lastPage = this.firstLast ? addPage('', 'page-last', this.currentPage === this.pages ? '-disabled' : '') : null;
 
     if (this.compact) {
       const paginationLabel = <div class="chi-pagination__label">

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-05-21T18:37:20",
+  "timestamp": "2020-05-28T16:16:20",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1658,10 +1658,27 @@
           "required": false
         },
         {
-          "name": "goTo",
+          "name": "inverse",
           "type": "boolean",
           "mutable": false,
-          "attr": "go-to",
+          "attr": "inverse",
+          "reflectToAttr": false,
+          "docs": "To render inverse styled pagination",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "pageJumper",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "page-jumper",
           "reflectToAttr": false,
           "docs": "To add jump to page text input",
           "docsTags": [],
@@ -1675,12 +1692,12 @@
           "required": false
         },
         {
-          "name": "inverse",
+          "name": "pageSize",
           "type": "boolean",
           "mutable": false,
-          "attr": "inverse",
+          "attr": "page-size",
           "reflectToAttr": false,
-          "docs": "To render inverse styled pagination",
+          "docs": "To allow use select number of items to show per page",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -1702,23 +1719,6 @@
           "values": [
             {
               "type": "number"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "perPage",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "per-page",
-          "reflectToAttr": false,
-          "docs": "To allow use select number of items to show per page",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
             }
           ],
           "optional": false,
