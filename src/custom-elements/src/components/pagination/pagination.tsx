@@ -136,14 +136,13 @@ export class Pagination {
         }
       }
 
-      return <a
+      return <button
         data-page={pageToGo}
         class={
           `chi-button -flat
         ${this.inverse ? '-light' : ''}
         ${!!icon ? '-icon' : ''}
         ${parseInt(page) === this.currentPage ? '-active' : ''}
-        ${state}
         ${this.size ? `-${this.size}` : ''}
         `}
         onClick={(ev) => {
@@ -152,11 +151,13 @@ export class Pagination {
         }
         }
         aria-label={ariaLabel}
+        aria-disabled={state === 'disabled'}
+        disabled={state === 'disabled'}
       >
         <div class="chi-button__content">
           {!!icon ? <i class={`chi-icon icon-${icon}`} aria-hidden="true"></i> : page}
         </div>
-      </a>
+      </button>
     };
     const results = this.results > 0 ?
       <div class={`chi-pagination__results
@@ -193,8 +194,8 @@ export class Pagination {
         onChange={(ev) => this._jumpToPage((ev.target as HTMLInputElement).value)}
       /></label>
     </div> : null;
-    const startPage = this.firstLast ? addPage('', 'page-first', this.currentPage === 1 ? '-disabled' : '') : null;
-    const lastPage = this.firstLast ? addPage('', 'page-last', this.currentPage === this.pages ? '-disabled' : '') : null;
+    const startPage = this.firstLast ? addPage('', 'page-first', this.currentPage === 1 ? 'disabled' : '') : null;
+    const lastPage = this.firstLast ? addPage('', 'page-last', this.currentPage === this.pages ? 'disabled' : '') : null;
 
     if (this.compact) {
       const paginationLabel = <div class="chi-pagination__label">
@@ -256,9 +257,9 @@ export class Pagination {
         <div class="chi-pagination__center">
           <div class="chi-button-group">
             {startPage}
-            {addPage('', 'chevron-left', this.currentPage === 1 ? '-disabled' : '')}
+            {addPage('', 'chevron-left', this.currentPage === 1 ? 'disabled' : '')}
             {this._pagesToRender}
-            {addPage('', 'chevron-right', this.currentPage === this.pages ? '-disabled' : '')}
+            {addPage('', 'chevron-right', this.currentPage === this.pages ? 'disabled' : '')}
             {lastPage}
           </div>
         </div>
