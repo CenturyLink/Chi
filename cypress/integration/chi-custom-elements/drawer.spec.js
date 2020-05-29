@@ -126,4 +126,14 @@ describe('Drawer', function() {
       .should('be.visible');
 
   });
+
+  it('Should close when the user clicked outside of Drawer. ', function() {
+    cy.get('.test-close-on-outside-click .-text--h2')
+      .click();
+
+    cy.get('[data-cy="test-click-outside"]')
+      .should('not.match', '[active]')
+      .find('.chi-drawer')
+      .should('not.be.visible')
+  });
 });
