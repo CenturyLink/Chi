@@ -114,10 +114,12 @@ h3 Disabled
       | automatically disables previous / next pages if current page is first or last
     :code(lang="html")
       <!-- For light backgrounds -->
-      <chi-pagination pages="5" current-page="3"></chi-pagination>
+      <chi-pagination pages="5" current-page="1"></chi-pagination>
+      <chi-pagination pages="5" current-page="5"></chi-pagination>
 
       <!-- For dark backgrounds -->
-      <chi-pagination pages="5" current-page="3" inverse></chi-pagination>
+      <chi-pagination pages="5" current-page="1" inverse></chi-pagination>
+      <chi-pagination pages="5" current-page="5" inverse></chi-pagination>
   .chi-tabs-panel#html-disabled
     .chi-tab__description
       .-text Apply the class <code>-disabled</code> to any link to render in a disabled state.
@@ -462,11 +464,6 @@ p.-text Allow users to configure the number of result items per page.
       <!-- For dark backgrounds -->
       <chi-pagination pages="12" results="240" current-page="3" page-size inverse></chi-pagination>
   .chi-tabs-panel#html-page-items
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <!-- For light backgrounds -->
       <!-- HTML -->
@@ -580,11 +577,6 @@ p.-text Add a page jumper to allow users to jump to a specific page of results.
       <!-- For dark backgrounds -->
       <chi-pagination pages="12" results="240" current-page="3" page-size page-jumper inverse></chi-pagination>
   .chi-tabs-panel#html-page-jumper
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <!-- For light backgrounds -->
       <!-- HTML -->
@@ -956,7 +948,7 @@ h4 First and Last page buttons
       </nav>
 
 h3 Additional Sizes
-p.-text Pagination supports the following sizes: <code>-sm</code>, <code>-md</code> (default), <code>-lg</code>, and <code>-xl</code>.
+p.-text Pagination supports the following sizes: <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
 .example.-mb--3
   .chi-grid.-no-gutter
     .chi-col.-w--12.-w-md--6
