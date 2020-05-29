@@ -38,6 +38,11 @@ export class Drawer {
   @Prop({ reflect: true }) noHeader: boolean;
 
   /**
+   * to prevent closing when the user clicked outside the Drawer
+   */
+  @Prop({ reflect: true }) preventAutoHide = false;
+
+  /**
    * Status classes for the show/hide animation
    */
   @State() _animationClasses: string;
@@ -206,6 +211,16 @@ export class Drawer {
     this.mutationObserver.disconnect();
   }
 
+  private _documentClickHandler = (target) => {
+    const drawerElement = this.el.querySelector('.chi-drawer');
+
+    if (!this.preventAutoHide) {
+      if (drawerElement.classList.contains('-active') && !drawerElement.contains(target)) {
+        this.hide();
+      }
+    }
+  };
+
   componentWillLoad(): void {
     if (this.el.getAttribute('title')) {
       this.drawerTitle = this.el.getAttribute('title');
@@ -214,6 +229,7 @@ export class Drawer {
     this.positionValidation(this.position);
     this._animationClasses = this.active ? CLASSES.ACTIVE : '';
     this._backdropAnimationClasses = this.active ? '' : CLASSES.CLOSED;
+    document.addEventListener('click', (ev) => this._documentClickHandler(ev.target))
   }
 
   render() {

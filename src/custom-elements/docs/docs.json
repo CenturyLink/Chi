@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-05-21T18:37:20",
+  "timestamp": "2020-05-29T15:09:16",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -993,6 +993,23 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "preventAutoHide",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "prevent-auto-hide",
+          "reflectToAttr": true,
+          "docs": "to prevent closing when the user clicked outside the Drawer",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,
