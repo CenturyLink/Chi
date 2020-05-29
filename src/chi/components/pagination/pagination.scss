@@ -372,9 +372,7 @@ $icon-sizes: (
 
   &.-compact {
     .chi-pagination__jumper {
-      @include respond-to(md) {
-        margin: 0 0.5rem;
-      }
+      margin: 0 0.5rem;
 
       .chi-input {
         &,
@@ -408,9 +406,7 @@ $icon-sizes: (
 
     .chi-pagination__label {
       color: $text-color;
-      @include respond-to(md) {
-        margin: 0 0.5rem;
-      }
+      margin: 0 0.5rem;
 
       strong {
         &:first-child {
