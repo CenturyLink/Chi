@@ -52,6 +52,16 @@ describe('Drawer', function() {
       .should('match', 'div.chi-drawer.-top.-active');
   });
 
+  it('Should close when the user clicked outside of Drawer. ', function() {
+    cy.get('[data-cy="test-click-outside"]')
+      .find('.chi-drawer')
+      .should('be.visible')
+      .click(100, 0, { force: true })
+      .should('not.match', '[active]')
+      .find('.chi-drawer')
+      .should('not.be.visible')
+  });
+
   it('Should close when clicking the close button. ', function() {
 
     cy.get('[data-cy="test-top-headed"]')
@@ -125,15 +135,5 @@ describe('Drawer', function() {
       .find('.chi-drawer')
       .should('be.visible');
 
-  });
-
-  it('Should close when the user clicked outside of Drawer. ', function() {
-    cy.get('.test-close-on-outside-click .-text--h2')
-      .click();
-
-    cy.get('[data-cy="test-click-outside"]')
-      .should('not.match', '[active]')
-      .find('.chi-drawer')
-      .should('not.be.visible')
   });
 });

@@ -2,6 +2,7 @@ import { Component, Event, EventEmitter, Method, Prop, State, Watch, h, Element 
 import { CARDINAL_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
+import { contains } from '../../utils/utils';
 
 @Component({
   tag: 'chi-drawer',
@@ -211,12 +212,12 @@ export class Drawer {
     this.mutationObserver.disconnect();
   }
 
-  private _documentClickHandler = (target) => {
+  private _documentClickHandler = (ev): void => {
     const drawerElement = this.el.querySelector('.chi-drawer');
 
     if (!this.preventAutoHide) {
-      if (drawerElement.classList.contains('-active') && !drawerElement.contains(target)) {
-        this.hide();
+      if (drawerElement.classList.contains('-active')) {
+        this.active = contains(drawerElement, ev.target as HTMLInputElement);
       }
     }
   };
@@ -229,7 +230,14 @@ export class Drawer {
     this.positionValidation(this.position);
     this._animationClasses = this.active ? CLASSES.ACTIVE : '';
     this._backdropAnimationClasses = this.active ? '' : CLASSES.CLOSED;
-    document.addEventListener('click', (ev) => this._documentClickHandler(ev.target))
+  }
+
+  componentDidLoad() {
+    document.addEventListener('click', this._documentClickHandler);
+  }
+
+  componentDidUnload() {
+    document.removeEventListener('click', this._documentClickHandler);
   }
 
   render() {
