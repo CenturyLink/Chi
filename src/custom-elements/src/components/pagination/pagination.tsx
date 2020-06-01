@@ -1,4 +1,5 @@
 import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
+import { uuid4 } from '../../utils/utils';
 
 @Component({
   tag: 'chi-pagination',
@@ -61,6 +62,7 @@ export class Pagination {
   _pagesArray = [];
   _pagesToRender = [];
   _lastRenderedPage = null;
+  _pageJumperUuid: string;
 
   calculateDistanceFromCurrent() {
     switch (this.currentPage) {
@@ -98,6 +100,7 @@ export class Pagination {
 
   componentWillLoad() {
     this.calculateDistanceFromCurrent();
+    this._pageJumperUuid = this.el.id ? `${this.el.id}__page-jumper` : `${uuid4()}__page-jumper`;
   }
 
   componentWillUpdate() {
@@ -117,11 +120,11 @@ export class Pagination {
         ariaLabel = `Page ${page}`;
       } else if (icon) {
         switch (icon) {
-          case 'first-page':
+          case 'page-first':
             pageToGo = 1;
             ariaLabel = 'First page';
             break;
-          case 'last-page':
+          case 'page-last':
             pageToGo = this.pages;
             ariaLabel = 'Last page';
             break;
@@ -185,14 +188,15 @@ export class Pagination {
     const goToPage = this.pageJumper && !this.compact ? <div class={`chi-pagination__jumper
         ${this.size ? `-text--${this.size}` : ''}
     `}>
-      <label class="chi-pagination__label">Go to page:
+      <label class="chi-pagination__label" htmlFor={this._pageJumperUuid}>Go to page:</label>
       <input class={`chi-input
         ${this.size ? `-${this.size}` : ''}
-      `}
-        type="text"
-        value=""
-        onChange={(ev) => this._jumpToPage((ev.target as HTMLInputElement).value)}
-      /></label>
+        `}
+         id={this._pageJumperUuid}
+         type="text"
+         value=""
+         onChange={(ev) => this._jumpToPage((ev.target as HTMLInputElement).value)}
+      />
     </div> : null;
     const startPage = this.firstLast ? addPage('', 'page-first', this.currentPage === 1 ? 'disabled' : '') : null;
     const lastPage = this.firstLast ? addPage('', 'page-last', this.currentPage === this.pages ? 'disabled' : '') : null;
@@ -231,7 +235,7 @@ export class Pagination {
             this._pagesToRender.push(addPage(this._lastRenderedPage + 1));
           } else if (pageIndex - this._lastRenderedPage !== 1) {
             const truncateDots = <div class={`chi-button -flat -md -disabled ${this.inverse ? '-light' : ''}`}><div
-              class="chi-button__content">...</div></div>;
+              class="chi-button__content" aria-hidden="true">...</div></div>;
 
             this._pagesToRender.push(truncateDots);
           }

@@ -35,21 +35,21 @@ h3 Base
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+              <button class="chi-button -icon -flat" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat">1</a>
-              <a href="#" class="chi-button -flat">2</a>
-              <a href="#" class="chi-button -flat -active">3</a>
-              <a href="#" class="chi-button -flat">4</a>
-              <a href="#" class="chi-button -flat">5</a>
-              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
-                <div class="chi-buton__content">
+              </button>
+              <button class="chi-button -flat" aria-label="Page 1">1</button>
+              <button class="chi-button -flat" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat" aria-label="Page 4">4</button>
+              <button class="chi-button -flat" aria-label="Page 5">5</button>
+              <button class="chi-button -icon -flat" aria-label="Next page">
+                <div class="chi-buton__content" >
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -62,21 +62,21 @@ h3 Base
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+              <button class="chi-button -icon -flat -light" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -light">1</a>
-              <a href="#" class="chi-button -flat -light">2</a>
-              <a href="#" class="chi-button -flat -light -active">3</a>
-              <a href="#" class="chi-button -flat -light">4</a>
-              <a href="#" class="chi-button -flat -light">5</a>
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -light" aria-label="Page 1">1</button>
+              <button class="chi-button -flat -light" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -light -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat -light" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -light" aria-label="Page 5">5</button>
+              <button class="chi-button -icon -flat -light" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -122,7 +122,7 @@ h3 Disabled
       <chi-pagination pages="5" current-page="5" inverse></chi-pagination>
   .chi-tabs-panel#html-disabled
     .chi-tab__description
-      .-text Apply the class <code>-disabled</code> to any link to render in a disabled state.
+      .-text Add the attribute <code>disabled</code> to any button to render in a disabled state.
     :code(lang="html")
       <!-- For light backgrounds -->
       <nav class="chi-pagination" role="navigation" aria-label="Pagination">
@@ -130,21 +130,21 @@ h3 Disabled
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -disabled" aria-label="Previous page" aria-disabled="true">
+              <button class="chi-button -icon -flat" aria-label="Previous page" aria-disabled="true" disabled>
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -active -disabled">1</a>
-              <a href="#" class="chi-button -flat -disabled">2</a>
-              <a href="#" class="chi-button -flat -disabled">3</a>
-              <a href="#" class="chi-button -flat -disabled">4</a>
-              <a href="#" class="chi-button -flat -disabled">5</a>
-              <a href="#" class="chi-button -icon -flat -disabled" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -active" aria-label="Page 1">1</button>
+              <button class="chi-button -flat" aria-label="Page 2">2</button>
+              <button class="chi-button -flat" aria-label="Page 3">3</button>
+              <button class="chi-button -flat" aria-label="Page 4">4</button>
+              <button class="chi-button -flat" aria-label="Page 5">5</button>
+              <button class="chi-button -icon -flat" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -157,21 +157,21 @@ h3 Disabled
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light -disabled" aria-label="Previous page" aria-disabled="true">
+              <button class="chi-button -icon -flat -light -disabled" aria-label="Previous page" aria-disabled="true">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -light -active -disabled">1</a>
-              <a href="#" class="chi-button -flat -light -disabled">2</a>
-              <a href="#" class="chi-button -flat -light -disabled">3</a>
-              <a href="#" class="chi-button -flat -light -disabled">4</a>
-              <a href="#" class="chi-button -flat -light -disabled">5</a>
-              <a href="#" class="chi-button -icon -flat -light -disabled" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -light -active" aria-label="Page 1">1</button>
+              <button class="chi-button -flat -light" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -light" aria-label="Page 3">3</button>
+              <button class="chi-button -flat -light" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -light" aria-label="Page 5">5</button>
+              <button class="chi-button -icon -flat -light" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -210,23 +210,23 @@ h3 Truncation
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+              <button class="chi-button -icon -flat" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat">1</a>
-              <a href="#" class="chi-button -flat">2</a>
-              <a href="#" class="chi-button -flat -active">3</a>
-              <a href="#" class="chi-button -flat">4</a>
-              <a href="#" class="chi-button -flat">5</a>
-              <div class="chi-button -flat -disabled">...</div>
-              <a href="#" class="chi-button -flat">12</a>
-              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat" aria-label="Page 1">1</button>
+              <button class="chi-button -flat" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat" aria-label="Page 4">4</button>
+              <button class="chi-button -flat" aria-label="Page 5">5</button>
+              <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+              <button class="chi-button -flat" aria-label="Page 12">12</button>
+              <button class="chi-button -icon -flat" aria-label="Next page">
                 <div class="chi-buton__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -239,23 +239,23 @@ h3 Truncation
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+              <button class="chi-button -icon -flat -light" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -light">1</a>
-              <a href="#" class="chi-button -flat -light">2</a>
-              <a href="#" class="chi-button -flat -light -active">3</a>
-              <a href="#" class="chi-button -flat -light">4</a>
-              <a href="#" class="chi-button -flat -light">5</a>
-              <div class="chi-button -flat -light -disabled">...</div>
-              <a href="#" class="chi-button -flat -light">12</a>
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -light" aria-label="Page 1">1</button>
+              <button class="chi-button -flat -light" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -light -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat -light" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -light" aria-label="Page 5">5</button>
+              <div class="chi-button -flat -light" aria-hidden="true" disabled>...</div>
+              <button class="chi-button -flat -light" aria-label="Page 12">12</button>
+              <button class="chi-button -icon -flat -light" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -293,25 +293,25 @@ p.-text Use double truncation when the current page is separated by 5 or more pa
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+              <button class="chi-button -icon -flat" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat">1</a>
-              <div class="chi-button -flat -disabled">...</div>
-              <a href="#" class="chi-button -flat">4</a>
-              <a href="#" class="chi-button -flat">5</a>
-              <a href="#" class="chi-button -flat -active">6</a>
-              <a href="#" class="chi-button -flat">7</a>
-              <a href="#" class="chi-button -flat">8</a>
-              <div class="chi-button -flat -disabled">...</div>
-              <a href="#" class="chi-button -flat">12</a>
-              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat" aria-label="Page 1">1</button>
+              <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+              <button class="chi-button -flat" aria-label="Page 4">4</button>
+              <button class="chi-button -flat" aria-label="Page 5">5</button>
+              <button class="chi-button -flat -active" aria-label="Page 6">6</button>
+              <button class="chi-button -flat" aria-label="Page 7">7</button>
+              <button class="chi-button -flat" aria-label="Page 8">8</button>
+              <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+              <button class="chi-button -flat" aria-label="Page 12">12</button>
+              <button class="chi-button -icon -flat" aria-label="Next page">
                 <div class="chi-buton__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -324,25 +324,25 @@ p.-text Use double truncation when the current page is separated by 5 or more pa
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+              <button class="chi-button -icon -flat -light" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -light">1</a>
-              <div class="chi-button -flat -light -disabled">...</div>
-              <a href="#" class="chi-button -flat -light">4</a>
-              <a href="#" class="chi-button -flat -light">5</a>
-              <a href="#" class="chi-button -flat -light -active">6</a>
-              <a href="#" class="chi-button -flat -light">7</a>
-              <a href="#" class="chi-button -flat -light">8</a>
-              <div class="chi-button -flat -light -disabled">...</div>
-              <a href="#" class="chi-button -flat -light">12</a>
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -light" aria-label="Page 1">1</button>
+              <div class="chi-button -flat -light" aria-hidden="true" disabled>...</div>
+              <button class="chi-button -flat -light" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -light" aria-label="Page 5">5</button>
+              <button class="chi-button -flat -light -active" aria-label="Page 6">6</button>
+              <button class="chi-button -flat -light" aria-label="Page 7">7</button>
+              <button class="chi-button -flat -light" aria-label="Page 8">8</button>
+              <div class="chi-button -flat -light" aria-hidden="true" disabled>...</div>
+              <button class="chi-button -flat -light" aria-label="Page 12">12</button>
+              <button class="chi-button -icon -flat -light" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -384,23 +384,23 @@ p.-text Add a label to indicate the total number of results.
           </div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+              <button class="chi-button -icon -flat" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat">1</a>
-              <a href="#" class="chi-button -flat">2</a>
-              <a href="#" class="chi-button -flat -active">3</a>
-              <a href="#" class="chi-button -flat">4</a>
-              <a href="#" class="chi-button -flat">5</a>
-              <div class="chi-button -flat -disabled">...</div>
-              <a href="#" class="chi-button -flat">12</a>
-              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat" aria-label="Page 1">1</button>
+              <button class="chi-button -flat" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat" aria-label="Page 4">4</button>
+              <button class="chi-button -flat" aria-label="Page 5">5</button>
+              <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+              <button class="chi-button -flat" aria-label="Page 12">12</button>
+              <button class="chi-button -icon -flat" aria-label="Next page">
                 <div class="chi-buton__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -417,23 +417,23 @@ p.-text Add a label to indicate the total number of results.
           </div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+              <button class="chi-button -icon -flat -light" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -light">1</a>
-              <a href="#" class="chi-button -flat -light">2</a>
-              <a href="#" class="chi-button -flat -light -active">3</a>
-              <a href="#" class="chi-button -flat -light">4</a>
-              <a href="#" class="chi-button -flat -light">5</a>
-              <div class="chi-button -flat -light -disabled">...</div>
-              <a href="#" class="chi-button -flat -light">12</a>
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -light" aria-label="Page 1">1</button>
+              <button class="chi-button -flat -light" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -light -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat -light" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -light" aria-label="Page 5">5</button>
+              <div class="chi-button -flat -light" aria-hidden="true" disabled>...</div>
+              <button class="chi-button -flat -light" aria-label="Page 12">12</button>
+              <button class="chi-button -icon -flat -light" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -474,7 +474,7 @@ p.-text Allow users to configure the number of result items per page.
               <span class="chi-pagination__results-label">240 Results</span>
             </div>
             <div class="chi-pagination__page-size">
-              <select class="chi-input">
+              <select class="chi-input" aria-label="Number of result items per page">
                 <option value="20">20</option>
                 <option value="40">40</option>
                 <option value="60">60</option>
@@ -486,23 +486,23 @@ p.-text Allow users to configure the number of result items per page.
           </div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+              <button class="chi-button -icon -flat" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat">1</a>
-              <a href="#" class="chi-button -flat">2</a>
-              <a href="#" class="chi-button -flat -active">3</a>
-              <a href="#" class="chi-button -flat">4</a>
-              <a href="#" class="chi-button -flat">5</a>
-              <div class="chi-button -flat -disabled">...</div>
-              <a href="#" class="chi-button -flat">12</a>
-              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat" aria-label="Page 1">1</button>
+              <button class="chi-button -flat" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat" aria-label="Page 4">4</button>
+              <button class="chi-button -flat" aria-label="Page 5">5</button>
+              <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+              <button class="chi-button -flat" aria-label="Page 12">12</button>
+              <button class="chi-button -icon -flat" aria-label="Next page">
                 <div class="chi-buton__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -518,7 +518,7 @@ p.-text Allow users to configure the number of result items per page.
               <span class="chi-pagination__results-label">240 Results</span>
             </div>
             <div class="chi-pagination__page-size">
-              <select class="chi-input">
+              <select class="chi-input" aria-label="Number of result items per page">
                 <option value="20">20</option>
                 <option value="40">40</option>
                 <option value="60">60</option>
@@ -530,23 +530,23 @@ p.-text Allow users to configure the number of result items per page.
           </div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+              <button class="chi-button -icon -flat -light" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -light">1</a>
-              <a href="#" class="chi-button -flat -light">2</a>
-              <a href="#" class="chi-button -flat -light -active">3</a>
-              <a href="#" class="chi-button -flat -light">4</a>
-              <a href="#" class="chi-button -flat -light">5</a>
-              <div class="chi-button -flat -light -disabled">...</div>
-              <a href="#" class="chi-button -flat -light">12</a>
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -light" aria-label="Page 1">1</button>
+              <button class="chi-button -flat -light" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -light -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat -light" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -light" aria-label="Page 5">5</button>
+              <div class="chi-button -flat -light" aria-hidden="true" disabled>...</div>
+              <button class="chi-button -flat -light" aria-label="Page 12">12</button>
+              <button class="chi-button -icon -flat -light" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -587,7 +587,7 @@ p.-text Add a page jumper to allow users to jump to a specific page of results.
               <span class="chi-pagination__label">240 results</span>
             </div>
             <div class="chi-pagination__page-size">
-              <select class="chi-input">
+              <select class="chi-input" aria-label="Number of result items per page">
                 <option value="20">20</option>
                 <option value="40">40</option>
                 <option value="60">60</option>
@@ -599,23 +599,23 @@ p.-text Add a page jumper to allow users to jump to a specific page of results.
           </div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+              <button class="chi-button -icon -flat" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat">1</a>
-              <a href="#" class="chi-button -flat">2</a>
-              <a href="#" class="chi-button -flat -active">3</a>
-              <a href="#" class="chi-button -flat">4</a>
-              <a href="#" class="chi-button -flat">5</a>
-              <div class="chi-button -flat -disabled">...</div>
-              <a href="#" class="chi-button -flat">12</a>
-              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat" aria-label="Page 1">1</button>
+              <button class="chi-button -flat" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat" aria-label="Page 4">4</button>
+              <button class="chi-button -flat" aria-label="Page 5">5</button>
+              <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+              <button class="chi-button -flat" aria-label="Page 12">12</button>
+              <button class="chi-button -icon -flat" aria-label="Next page">
                 <div class="chi-buton__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end">
@@ -636,7 +636,7 @@ p.-text Add a page jumper to allow users to jump to a specific page of results.
               <span class="chi-pagination__label">240 results</span>
             </div>
             <div class="chi-pagination__page-size">
-              <select class="chi-input">
+              <select class="chi-input" aria-label="Number of result items per page">
                 <option value="20">20</option>
                 <option value="40">40</option>
                 <option value="60">60</option>
@@ -648,23 +648,23 @@ p.-text Add a page jumper to allow users to jump to a specific page of results.
           </div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+              <button class="chi-button -icon -flat -light" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -light">1</a>
-              <a href="#" class="chi-button -flat -light">2</a>
-              <a href="#" class="chi-button -flat -light -active">3</a>
-              <a href="#" class="chi-button -flat -light">4</a>
-              <a href="#" class="chi-button -flat -light">5</a>
-              <div class="chi-button -flat -light -disabled">...</div>
-              <a href="#" class="chi-button -flat -light">12</a>
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -light" aria-label="Page 1">1</button>
+              <button class="chi-button -flat -light" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -light -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat -light" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -light" aria-label="Page 5">5</button>
+              <div class="chi-button -flat -light" aria-hidden="true" disabled>...</div>
+              <button class="chi-button -flat -light" aria-label="Page 12">12</button>
+              <button class="chi-button -icon -flat -light" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end">
@@ -707,11 +707,11 @@ h4 Base
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+              <button class="chi-button -icon -flat" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
             <div class="chi-pagination__label">
               <strong>2</strong>
@@ -719,11 +719,11 @@ h4 Base
               <strong>3</strong>
             </div>
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+              <button class="chi-button -icon -flat" aria-label="Next page">
                 <div class="chi-buton__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -736,11 +736,11 @@ h4 Base
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+              <button class="chi-button -icon -flat -light" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
             <div class="chi-pagination__label">
               <strong>2</strong>
@@ -748,11 +748,11 @@ h4 Base
               <strong>3</strong>
             </div>
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+              <button class="chi-button -icon -flat -light" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -789,25 +789,25 @@ h4 Page Jumper
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+              <button class="chi-button -icon -flat" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
             <div class="chi-pagination__jumper">
-              <input type="text" class="chi-input" id="compact-jumper-input-1" value="2">
+              <input type="text" class="chi-input" id="compact-jumper-input-1" aria-label="Page 2" value="2">
               <div class="chi-pagination__label">
                 <span>of</span>
                 <strong>3</strong>
               </div>
             </div>
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+              <button class="chi-button -icon -flat" aria-label="Next page">
                 <div class="chi-buton__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -820,25 +820,25 @@ h4 Page Jumper
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+              <button class="chi-button -icon -flat -light" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
             <div class="chi-pagination__jumper">
-              <input type="text" class="chi-input" id="compact-jumper-input-2" value="2">
+              <input type="text" class="chi-input" id="compact-jumper-input-2" aria-label="Page 2" value="2">
               <div class="chi-pagination__label">
                 <span>of</span>
                 <strong>3</strong>
               </div>
             </div>
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+              <button class="chi-button -icon -flat -light" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -875,16 +875,16 @@ h4 First and Last page buttons
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat" aria-label="First page">
+              <button class="chi-button -icon -flat" aria-label="First page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-page-first" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+              </button>
+              <button class="chi-button -icon -flat" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
             <div class="chi-pagination__label">
               <strong>2</strong>
@@ -892,16 +892,16 @@ h4 First and Last page buttons
               <strong>3</strong>
             </div>
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+              <button class="chi-button -icon -flat" aria-label="Next page">
                 <div class="chi-buton__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -icon -flat" aria-label="Last page">
+              </button>
+              <button class="chi-button -icon -flat" aria-label="Last page">
                 <div class="chi-buton__content">
                   <i class="chi-icon icon-page-last" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -914,16 +914,16 @@ h4 First and Last page buttons
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light" aria-label="First page">
+              <button class="chi-button -icon -flat -light" aria-label="First page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-page-first" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+              </button>
+              <button class="chi-button -icon -flat -light" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
             <div class="chi-pagination__label">
               <strong>2</strong>
@@ -931,16 +931,16 @@ h4 First and Last page buttons
               <strong>3</strong>
             </div>
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+              <button class="chi-button -icon -flat -light" aria-label="Next page">
                 <div class="chi-buton__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Last page">
+              </button>
+              <button class="chi-button -icon -flat -light" aria-label="Last page">
                 <div class="chi-buton__content">
                   <i class="chi-icon icon-page-last" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -989,21 +989,21 @@ p.-text Pagination supports the following sizes: <code>sm</code>, <code>md</code
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -sm" aria-label="Previous page">
+              <button class="chi-button -icon -flat -sm" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -sm">1</a>
-              <a href="#" class="chi-button -flat -sm">2</a>
-              <a href="#" class="chi-button -flat -sm -active">3</a>
-              <a href="#" class="chi-button -flat -sm">4</a>
-              <a href="#" class="chi-button -flat -sm">5</a>
-              <a href="#" class="chi-button -icon -flat -sm" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -sm" aria-label="Page 1">1</button>
+              <button class="chi-button -flat -sm" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -sm -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat -sm" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -sm" aria-label="Page 5">5</button>
+              <button class="chi-button -icon -flat -sm" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -1016,21 +1016,21 @@ p.-text Pagination supports the following sizes: <code>sm</code>, <code>md</code
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat" aria-label="Previous page">
+              <button class="chi-button -icon -flat" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat">1</a>
-              <a href="#" class="chi-button -flat">2</a>
-              <a href="#" class="chi-button -flat -active">3</a>
-              <a href="#" class="chi-button -flat">4</a>
-              <a href="#" class="chi-button -flat">5</a>
-              <a href="#" class="chi-button -icon -flat" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat" aria-label="Page 1">1</button>
+              <button class="chi-button -flat" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat" aria-label="Page 4">4</button>
+              <button class="chi-button -flat" aria-label="Page 5">5</button>
+              <button class="chi-button -icon -flat" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -1043,21 +1043,21 @@ p.-text Pagination supports the following sizes: <code>sm</code>, <code>md</code
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -lg" aria-label="Previous page">
+              <button class="chi-button -icon -flat -lg" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -lg">1</a>
-              <a href="#" class="chi-button -flat -lg">2</a>
-              <a href="#" class="chi-button -flat -lg -active">3</a>
-              <a href="#" class="chi-button -flat -lg">4</a>
-              <a href="#" class="chi-button -flat -lg">5</a>
-              <a href="#" class="chi-button -icon -flat -lg" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -lg" aria-label="Page 1">1</button>
+              <button class="chi-button -flat -lg" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -lg -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat -lg" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -lg" aria-label="Page 5">5</button>
+              <button class="chi-button -icon -flat -lg" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -1070,21 +1070,21 @@ p.-text Pagination supports the following sizes: <code>sm</code>, <code>md</code
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -xl" aria-label="Previous page">
+              <button class="chi-button -icon -flat -xl" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -xl">1</a>
-              <a href="#" class="chi-button -flat -xl">2</a>
-              <a href="#" class="chi-button -flat -xl -active">3</a>
-              <a href="#" class="chi-button -flat -xl">4</a>
-              <a href="#" class="chi-button -flat -xl">5</a>
-              <a href="#" class="chi-button -icon -flat -xl" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -xl" aria-label="Page 1">1</button>
+              <button class="chi-button -flat -xl" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -xl -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat -xl" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -xl" aria-label="Page 5">5</button>
+              <button class="chi-button -icon -flat -xl" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -1098,21 +1098,21 @@ p.-text Pagination supports the following sizes: <code>sm</code>, <code>md</code
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light -sm" aria-label="Previous page">
+              <button class="chi-button -icon -flat -light -sm" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -light -sm">1</a>
-              <a href="#" class="chi-button -flat -light -sm">2</a>
-              <a href="#" class="chi-button -flat -light -sm -active">3</a>
-              <a href="#" class="chi-button -flat -light -sm">4</a>
-              <a href="#" class="chi-button -flat -light -sm">5</a>
-              <a href="#" class="chi-button -icon -flat -light -sm" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -light -sm" aria-label="Page 1">1</button>
+              <button class="chi-button -flat -light -sm" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -light -sm -active" aria-label="Page 2">3</button>
+              <button class="chi-button -flat -light -sm" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -light -sm" aria-label="Page 5">5</button>
+              <button class="chi-button -icon -flat -light -sm" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -1125,21 +1125,21 @@ p.-text Pagination supports the following sizes: <code>sm</code>, <code>md</code
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Previous page">
+              <button class="chi-button -icon -flat -light" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -light">1</a>
-              <a href="#" class="chi-button -flat -light">2</a>
-              <a href="#" class="chi-button -flat -light -active">3</a>
-              <a href="#" class="chi-button -flat -light">4</a>
-              <a href="#" class="chi-button -flat -light">5</a>
-              <a href="#" class="chi-button -icon -flat -light" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -light" aria-label="Page 1">1</button>
+              <button class="chi-button -flat -light" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -light -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat -light" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -light" aria-label="Page 5">5</button>
+              <button class="chi-button -icon -flat -light" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -1152,21 +1152,21 @@ p.-text Pagination supports the following sizes: <code>sm</code>, <code>md</code
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light -lg" aria-label="Previous page">
+              <button class="chi-button -icon -flat -light -lg" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -light -lg">1</a>
-              <a href="#" class="chi-button -flat -light -lg">2</a>
-              <a href="#" class="chi-button -flat -light -lg -active">3</a>
-              <a href="#" class="chi-button -flat -light -lg">4</a>
-              <a href="#" class="chi-button -flat -light -lg">5</a>
-              <a href="#" class="chi-button -icon -flat -light -lg" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -light -lg" aria-label="Page 1">1</button>
+              <button class="chi-button -flat -light -lg" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -light -lg -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat -light -lg" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -light -lg" aria-label="Page 5">5</button>
+              <button class="chi-button -icon -flat -light -lg" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
@@ -1179,21 +1179,21 @@ p.-text Pagination supports the following sizes: <code>sm</code>, <code>md</code
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <a href="#" class="chi-button -icon -flat -light -xl" aria-label="Previous page">
+              <button class="chi-button -icon -flat -light -xl" aria-label="Previous page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
-              </a>
-              <a href="#" class="chi-button -flat -light -xl">1</a>
-              <a href="#" class="chi-button -flat -light -xl">2</a>
-              <a href="#" class="chi-button -flat -light -xl -active">3</a>
-              <a href="#" class="chi-button -flat -light -xl">4</a>
-              <a href="#" class="chi-button -flat -light -xl">5</a>
-              <a href="#" class="chi-button -icon -flat -light -xl" aria-label="Next page">
+              </button>
+              <button class="chi-button -flat -light -xl" aria-label="Page 1">1</button>
+              <button class="chi-button -flat -light -xl" aria-label="Page 2">2</button>
+              <button class="chi-button -flat -light -xl -active" aria-label="Page 3">3</button>
+              <button class="chi-button -flat -light -xl" aria-label="Page 4">4</button>
+              <button class="chi-button -flat -light -xl" aria-label="Page 5">5</button>
+              <button class="chi-button -icon -flat -light -xl" aria-label="Next page">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <div class="chi-pagination__end"></div>
