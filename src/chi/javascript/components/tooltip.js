@@ -36,7 +36,10 @@ class Tooltip extends Component {
         self.show();
       }
     };
-    this._mouseOutEventHandler = function() {
+    this._mouseOutEventHandler = function(event) {
+      if (event.relatedTarget === this || this.contains(event.relatedTarget)) {
+        return;
+      }
       self._hovered = false;
       if (self._shown && !self._focused) {
         self.hide();
@@ -92,12 +95,11 @@ class Tooltip extends Component {
   _createTooltip () {
     this._tooltipElem = document.createElement('div');
     this._tooltipElem.setAttribute('class', 'chi-tooltip');
-    this._tooltipElem.id = COMPONENT_TYPE +
-      Util.getData(this._elem, COMPONENT_TYPE);
+    this._tooltipElem.id = COMPONENT_TYPE + '-' + Util.uuid4();
     this._tooltipContent = document.createElement('span');
     this._tooltipContent.innerText = this._elem.dataset.tooltip;
     this._tooltipElem.appendChild(this._tooltipContent);
-    this._elem.parentNode.appendChild(this._tooltipElem);
+    document.querySelector('body').appendChild(this._tooltipElem);
     this._elem.setAttribute('aria-describedby', this._tooltipElem.id);
     this._tooltipElem.setAttribute('aria-hidden', 'true');
 
