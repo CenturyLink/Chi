@@ -17,9 +17,11 @@ h4 Base
                 .chi-pagination__button-group.chi-button-group
                   each step in steps
                     if step == '0'
-                      a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                      a(class=`chi-button -icon -flat -disabled`, href='#', aria-label='Previous page')
                         .chi-button__content
                           i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '1'
+                      a(class=`chi-button -flat -active`, href='#')= step
                     else if step == '6'
                       a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
                         .chi-button__content
@@ -36,9 +38,11 @@ h4 Base
                 .chi-pagination__button-group.chi-button-group
                   each step in steps
                     if step == '0'
-                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
+                      a(class=`chi-button -icon -flat -light -disabled`, href='#', aria-label='Previous page')
                         .chi-button__content
                           i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                    else if step == '1'
+                      a(class=`chi-button -flat -light -active`, href='#')= step
                     else if step == '6'
                       a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
                         .chi-button__content
@@ -330,41 +334,6 @@ h4 Page Size
                       a(class=`chi-button -flat ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
               .chi-pagination__end
       .chi-col.-w--12
-        .-p--3(style='margin-bottom:12rem;')
-          nav.chi-pagination(role='navigation', aria-label='Pagination')
-            .chi-pagination__content
-              .chi-pagination__start
-                .chi-pagination__results
-                  span.chi-pagination__label 240 Results
-                .chi-pagination__page-size
-                  .chi-dropdown
-                    button.chi-button.-active.-flat.-px--1.chi-dropdown__trigger#pagesize-1 20
-                    .chi-dropdown__menu.-active.-w--xs
-                      a.chi-dropdown__menu-item.-active(href='#') 20
-                      a.chi-dropdown__menu-item(href='#') 40
-                      a.chi-dropdown__menu-item(href='#') 60
-                      a.chi-dropdown__menu-item(href='#') 80
-                      a.chi-dropdown__menu-item(href='#') All
-                  span.chi-pagination__label per page
-              .chi-pagination__center
-                .chi-pagination__button-group.chi-button-group
-                  each step in steps
-                    if step == '0'
-                      a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
-                        .chi-button__content
-                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                    else if step == '5'
-                      a(class=`chi-button -flat`, href='#')= `${step}`
-                      div(class=`chi-button -flat -disabled`, href='#') ...
-                      a(class=`chi-button -flat`, href='#')= `${stepLast}`
-                    else if step == '6'
-                      a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
-                        .chi-button__content
-                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
-                    else
-                      a(class=`chi-button -flat ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
-              .chi-pagination__end
-      .chi-col.-w--12
         .-p--3.-bg--black.-mb--4
           nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
             .chi-pagination__content
@@ -372,49 +341,12 @@ h4 Page Size
                 .chi-pagination__results
                   span.chi-pagination__label 240 Results
                 .chi-pagination__page-size
-                  .chi-dropdown
-                    button.chi-button.-flat.-light.-px--1.chi-dropdown__trigger#pagesize-2 20
-                    .chi-dropdown__menu.-inverse.-w--xs
-                      a.chi-dropdown__menu-item.-active(href='#') 20
-                      a.chi-dropdown__menu-item(href='#') 40
-                      a.chi-dropdown__menu-item(href='#') 60
-                      a.chi-dropdown__menu-item(href='#') 80
-                      a.chi-dropdown__menu-item(href='#') All
-                  span.chi-pagination__label per page
-              .chi-pagination__center
-                .chi-pagination__button-group.chi-button-group
-                  each step in steps
-                    if step == '0'
-                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Previous page')
-                        .chi-button__content
-                          i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                    else if step == '5'
-                      a(class=`chi-button -flat -light`, href='#')= `${step}`
-                      div(class=`chi-button -flat -light -disabled`, href='#') ...
-                      a(class=`chi-button -flat -light`, href='#')= `${stepLast}`
-                    else if step == '6'
-                      a(class=`chi-button -icon -flat -light`, href='#', aria-label='Next page')
-                        .chi-button__content
-                          i(class="chi-icon icon-chevron-right", aria-hidden='true')
-                    else
-                      a(class=`chi-button -flat -light ${step === '3' ? `-active` : ''}`, href='#')= `${step}`
-              .chi-pagination__end
-      .chi-col.-w--12
-        .-p--3.-bg--black(style='margin-bottom:12rem;')
-          nav.chi-pagination.-inverse(role='navigation', aria-label='Pagination')
-            .chi-pagination__content
-              .chi-pagination__start
-                .chi-pagination__results
-                  span.chi-pagination__label 240 Results
-                .chi-pagination__page-size
-                  .chi-dropdown
-                    button.chi-button.-active.-flat.-light.-px--1.chi-dropdown__trigger#pagesize-2 20
-                    .chi-dropdown__menu.-inverse.-w--xs.-active
-                      a.chi-dropdown__menu-item.-active(href='#') 20
-                      a.chi-dropdown__menu-item(href='#') 40
-                      a.chi-dropdown__menu-item(href='#') 60
-                      a.chi-dropdown__menu-item(href='#') 80
-                      a.chi-dropdown__menu-item(href='#') All
+                  select.chi-input
+                    option(value='20') 20
+                    option(value='40') 40
+                    option(value='60') 60
+                    option(value='80') 80
+                    option(value='all') All
                   span.chi-pagination__label per page
               .chi-pagination__center
                 .chi-pagination__button-group.chi-button-group
@@ -447,14 +379,12 @@ h4 Page Jumper
                 .chi-pagination__results
                   span.chi-pagination__label 240 Results
                 .chi-pagination__page-size
-                  .chi-dropdown
-                    button.chi-button.-flat.-px--1.chi-dropdown__trigger#pagesize-1 20
-                    .chi-dropdown__menu.-w--xs
-                      a.chi-dropdown__menu-item.-active(href='#') 20
-                      a.chi-dropdown__menu-item(href='#') 40
-                      a.chi-dropdown__menu-item(href='#') 60
-                      a.chi-dropdown__menu-item(href='#') 80
-                      a.chi-dropdown__menu-item(href='#') All
+                  select.chi-input
+                    option(value='20') 20
+                    option(value='40') 40
+                    option(value='60') 60
+                    option(value='80') 80
+                    option(value='all') All
                   span.chi-pagination__label per page
               .chi-pagination__center
                 .chi-pagination__button-group.chi-button-group
@@ -485,14 +415,12 @@ h4 Page Jumper
                 .chi-pagination__results
                   span.chi-pagination__label 240 Results
                 .chi-pagination__page-size
-                  .chi-dropdown
-                    button.chi-button.-flat.-light.-px--1.chi-dropdown__trigger#pagesize-2 20
-                    .chi-dropdown__menu.-inverse.-w--xs
-                      a.chi-dropdown__menu-item.-active(href='#') 20
-                      a.chi-dropdown__menu-item(href='#') 40
-                      a.chi-dropdown__menu-item(href='#') 60
-                      a.chi-dropdown__menu-item(href='#') 80
-                      a.chi-dropdown__menu-item(href='#') All
+                  select.chi-input
+                    option(value='20') 20
+                    option(value='40') 40
+                    option(value='60') 60
+                    option(value='80') 80
+                    option(value='all') All
                   span.chi-pagination__label per page
               .chi-pagination__center
                 .chi-pagination__button-group.chi-button-group

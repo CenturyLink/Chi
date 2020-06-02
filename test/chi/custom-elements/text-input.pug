@@ -242,9 +242,9 @@ each size in sizes
 
 script.
   function checkAllInputsHydrated() {
-    const buttons = document.querySelectorAll('chi-button');
+    const inputs = document.querySelectorAll('chi-text-input');
 
-    return Array.from(buttons).every(x => x.classList.contains('hydrated'));
+    return Array.from(inputs).every(x => x.classList.contains('hydrated'));
   }
 
   const renderCheckInterval = setInterval(function() {
