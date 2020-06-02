@@ -1,0 +1,23 @@
+@import '_shine';
+
+chi-text-input:not(.hydrated) {
+  animation: shine $animation-duration infinite linear;
+  display: inline-block;
+  font-size: 0;
+  height: 2rem;
+  width: 15rem;
+
+  &[size='sm'] {
+    height: 1.5rem;
+  }
+
+  &[size='lg'] {
+    height: 2.5rem;
+  }
+
+  &[size='xl'] {
+    height: 3rem;
+  }
+
+  @include background-gradient;
+}

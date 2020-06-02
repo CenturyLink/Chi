@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-06-02T11:08:03",
+  "timestamp": "2020-06-01T12:01:07",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -999,6 +999,23 @@
           "required": false
         },
         {
+          "name": "preventAutoHide",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "prevent-auto-hide",
+          "reflectToAttr": true,
+          "docs": "to prevent closing when the user clicked outside the Drawer",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "title",
           "type": "string",
           "mutable": false,
@@ -1580,6 +1597,211 @@
           "chi-icon"
         ]
       }
+    },
+    {
+      "filePath": "src/components/pagination/pagination.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-pagination",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "ariaLabel",
+          "type": "string",
+          "mutable": false,
+          "attr": "aria-label",
+          "reflectToAttr": false,
+          "docs": "To define aria label of pagination",
+          "docsTags": [],
+          "default": "'Pagination'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "compact",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "compact",
+          "reflectToAttr": false,
+          "docs": "To define compact style of pagination",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "currentPage",
+          "type": "number",
+          "mutable": false,
+          "attr": "current-page",
+          "reflectToAttr": false,
+          "docs": "To define current page of pagination",
+          "docsTags": [],
+          "default": "1",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "firstLast",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "first-last",
+          "reflectToAttr": false,
+          "docs": "To add First page / Last page icon buttons",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "inverse",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "inverse",
+          "reflectToAttr": false,
+          "docs": "To render inverse styled pagination",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "pageJumper",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "page-jumper",
+          "reflectToAttr": false,
+          "docs": "To add jump to page text input",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "pageSize",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "page-size",
+          "reflectToAttr": false,
+          "docs": "To allow use select number of items to show per page",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "pages",
+          "type": "number",
+          "mutable": false,
+          "attr": "pages",
+          "reflectToAttr": false,
+          "docs": "To define number of pages to render",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "results",
+          "type": "number",
+          "mutable": false,
+          "attr": "results",
+          "reflectToAttr": false,
+          "docs": "To show number of result items",
+          "docsTags": [],
+          "default": "0",
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "To define size of pagination elements",
+          "docsTags": [],
+          "default": "'md'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiPageChange",
+          "detail": "string",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user navigates to another page by clicking pagination item buttons or changing value of Page Jumper input",
+          "docsTags": []
+        },
+        {
+          "event": "chiPageSizeChange",
+          "detail": "string",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user changes items per page value",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "src/components/popover/popover.tsx",
