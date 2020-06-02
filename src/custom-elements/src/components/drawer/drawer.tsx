@@ -2,6 +2,7 @@ import { Component, Event, EventEmitter, Method, Prop, State, Watch, h, Element 
 import { CARDINAL_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
+import { contains } from '../../utils/utils';
 
 @Component({
   tag: 'chi-drawer',
@@ -36,6 +37,11 @@ export class Drawer {
    * to remove the space for the header
    */
   @Prop({ reflect: true }) noHeader: boolean;
+
+  /**
+   * to prevent closing when the user clicked outside the Drawer
+   */
+  @Prop({ reflect: true }) preventAutoHide = false;
 
   /**
    * Status classes for the show/hide animation
@@ -206,6 +212,16 @@ export class Drawer {
     this.mutationObserver.disconnect();
   }
 
+  private _documentClickHandler = (ev): void => {
+    const drawerElement = this.el.querySelector('.chi-drawer');
+
+    if (!this.preventAutoHide) {
+      if (drawerElement.classList.contains('-active')) {
+        this.active = contains(drawerElement, ev.target as HTMLInputElement);
+      }
+    }
+  };
+
   componentWillLoad(): void {
     if (this.el.getAttribute('title')) {
       this.drawerTitle = this.el.getAttribute('title');
@@ -214,6 +230,14 @@ export class Drawer {
     this.positionValidation(this.position);
     this._animationClasses = this.active ? CLASSES.ACTIVE : '';
     this._backdropAnimationClasses = this.active ? '' : CLASSES.CLOSED;
+  }
+
+  componentDidLoad() {
+    document.addEventListener('click', this._documentClickHandler);
+  }
+
+  componentDidUnload() {
+    document.removeEventListener('click', this._documentClickHandler);
   }
 
   render() {
