@@ -1,0 +1,130 @@
+---
+title: Pagination
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
+h4 Base
+.test-base.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          chi-pagination(pages="5")
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          chi-pagination(pages="5" inverse)
+
+h4 Active
+.test-active.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          chi-pagination(pages="5" current-page="3")
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          chi-pagination(pages="5" current-page="3" inverse)
+
+h4 Truncation
+.test-truncation.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          chi-pagination(pages="12" current-page="3")
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          chi-pagination(pages="12" current-page="3" inverse)
+
+h4 Double Truncation
+.test-double-truncation.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          chi-pagination(pages="12" current-page="5")
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          chi-pagination(pages="12" current-page="3" inverse)
+
+h4 Results Label
+.test-results-label.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          chi-pagination(pages="12" current-page="5" results="240")
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          chi-pagination(pages="12" current-page="5" results="240" inverse)
+
+h4 Page Size
+.test-page-size.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12
+        .-p--3.-mb--4
+          chi-pagination(pages="12" current-page="5" results="240" page-size)
+      .chi-col.-w--12
+        .-p--3.-bg--black.-mb--4
+          chi-pagination(pages="12" current-page="5" results="240" page-size inverse)
+
+h4 Page Jumper
+.test-page-jumper.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12
+        .-p--3.-mb--4
+          chi-pagination(pages="12" current-page="5" results="240" page-size page-jumper)
+      .chi-col.-w--12
+        .-p--3.-bg--black.-mb--4
+          chi-pagination(pages="12" current-page="5" results="240" page-size page-jumper inverse)
+
+h4 Compact / Base
+.test-compact-base.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          chi-pagination(pages="3" current-page="2" compact)
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          chi-pagination(pages="3" current-page="2" compact inverse)
+
+h4 Compact / Page Jumper
+.test-compact-jumper.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          chi-pagination(pages="3" current-page="2" compact page-jumper)
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          chi-pagination(pages="3" current-page="2" compact page-jumper inverse)
+
+h4 Compact / First and Last buttons
+.test-compact-first-last-buttons.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          chi-pagination(pages="3" current-page="2" compact first-last)
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          chi-pagination(pages="3" current-page="2" compact first-last inverse)
+
+h4 Sizes
+.test-sizes.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          each size in ['sm', 'md', 'lg', 'xl']
+            p.-text--bold=`-${size}`
+            chi-pagination(pages="5" current-page="3" size=size)
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          each size in ['sm', 'md', 'lg', 'xl']
+            p.-text--bold.-text--white=`-${size}`
+            chi-pagination(pages="5" current-page="3" size=size inverse)

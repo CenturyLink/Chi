@@ -470,6 +470,34 @@
       "requireSameDimensions": true
     },
     {
+      "label": "pagination",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/pagination.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-base",
+        ".test-active",
+        ".test-truncation",
+        ".test-double-truncation",
+        ".test-results-label",
+        ".test-compact-base",
+        ".test-compact-jumper",
+        ".test-compact-first-last-buttons",
+        ".test-sizes"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "spinner",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/custom-elements/spinner.html",
