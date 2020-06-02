@@ -234,8 +234,8 @@ export class Pagination {
           if (pageIndex - this._lastRenderedPage === 2) {
             this._pagesToRender.push(addPage(this._lastRenderedPage + 1));
           } else if (pageIndex - this._lastRenderedPage !== 1) {
-            const truncateDots = <div class={`chi-button -flat -md -disabled ${this.inverse ? '-light' : ''}`}><div
-              class="chi-button__content" aria-hidden="true">...</div></div>;
+            const truncateDots = <div class={`chi-button -flat -md -disabled ${this.inverse ? '-light' : ''}`} aria-hidden="true"><div
+              class="chi-button__content">...</div></div>;
 
             this._pagesToRender.push(truncateDots);
           }
