@@ -1,0 +1,23 @@
+@import '_shine';
+
+chi-textarea:not(.hydrated) {
+  animation: shine $animation-duration infinite linear;
+  display: inline-block;
+  font-size: 0;
+  height: 4rem;
+  width: 20rem;
+
+  &[size='sm'] {
+    height: 3.5rem;
+  }
+
+  &[size='lg'] {
+    height: 5.5rem;
+  }
+
+  &[size='xl'] {
+    height: 7rem;
+  }
+
+  @include background-gradient;
+}
