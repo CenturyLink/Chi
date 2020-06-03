@@ -132,39 +132,40 @@ h4 With radio checked
                 span.chi-picker__label
                   =type
 
-h3 Sizes
-.test-sizes
-  .example.-mb--3(style='width: 700px')
-    .-p--4
-      h4 -sm
-      each type in ['Radio1 -sm','Radio2 -sm']
-        .chi-picker.-sm
-          input(type="radio", class="chi-picker__input", name='box', id=`ri-${type}`)
-          label(for=`ri-${type}`)
-            .chi-picker__content--start
-              = type
-            .chi-picker__content--end
-              span.-text--bold.-text--body.-text--sm.-text--right Data
-              span.-text--normal.-text--muted.-text--sm Value
-      h4 -md
-      each type in ['Radio1 -md','Radio2 -md']
-        .chi-picker.-md
-          input(type="radio", class="chi-picker__input", name='box', id=`ri-${type}`)
-          label(for=`ri-${type}`)
-            .chi-picker__content--start
-              = type
-            .chi-picker__content--end
-              span.-text--bold.-text--body.-text--right Data
-              span.-text--normal.-text--muted.-text--sm Value
-      h4 -lg
-      each type in ['Radio1 -lg','Radio2 -lg']
-        .chi-picker.-lg
-          input(type="radio", class="chi-picker__input", name='box', id=`ri-${type}`)
-          label(for=`ri-${type}`)
-            .chi-picker__content--start
-              span.-text--bold
-                = type
-              span.-text--normal.-text--body.-text--sm Data:
-                strong  Value
-            .chi-picker__content--end
-              span.-text--bold.-text--body.-text--lg Data
+h4 With description
+.test-with-description
+  fieldset
+    legend.chi-label Legend
+    .chi-picker
+      input#ide-Radio1.chi-picker__input(name='with-radio-description', type='radio')
+      label(for='ide-Radio1')
+        .chi-picker__content--start
+          .chi-form__item.-row
+            span.chi-picker__radio
+            span.chi-picker__label(for='ri-Radio1') Radio1
+          .chi-picker__description
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
+    .chi-picker
+      input#ide-Radio2.chi-picker__input(name='with-radio-description', type='radio')
+      label(for='ide-Radio2')
+        .chi-picker__content--start
+          .chi-form__item.-row
+            span.chi-picker__radio
+            span.chi-picker__label(for='ri-Radio2') Radio2
+          .chi-picker__description
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
+
+h4 With description checked
+.test-with-description-checked
+  each type in ['Radio1','Radio2']
+    .chi-picker
+      input(type='radio', class='chi-picker__input', name='with-radio-description-checked', id=`id-checked-${type}`, checked=(type === 'Radio1'))
+      label(for=`id-checked-${type}`)
+        .chi-picker__content--start
+          .chi-form__item.-row
+              span.chi-picker__radio
+              span.chi-picker__label
+                =type
+          div.chi-picker__description
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
+
