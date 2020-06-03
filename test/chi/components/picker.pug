@@ -159,7 +159,7 @@ h4 With description checked
 .test-with-description-checked
   each type in ['Radio1','Radio2']
     .chi-picker
-      input(type="radio", class="chi-picker__input", id=`id-checked-${type}`, checked=(type === 'Radio1'))
+      input(type='radio', class='chi-picker__input', name='with-radio-description-checked', id=`id-checked-${type}`, checked=(type === 'Radio1'))
       label(for=`id-checked-${type}`)
         .chi-picker__content--start
           .chi-form__item.-row
