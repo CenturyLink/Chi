@@ -227,10 +227,98 @@ mixin table(row, column, selectable)
               +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')
               +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
               +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
+    div(class=`test-header-tier-two`)
+      span.-text--h2
+        | table
+        = ' / Two tier table header'
+      table.chi-table
+        colgroup
+          col
+        colgroup(span='2')
+        colgroup(span='2')
+        colgroup
+          col
+        thead
+          tr
+            th
+              div Location
+            th(colspan='2', scope='colgroup') High Utilization
+            th(colspan='2', scope='colgroup') Elevated Utilization
+            th
+              div Highest %
+          tr
+            th(scope='col')
+            th(scope='col')
+              div Total
+            th(scope='col')
+              div %
+            th(scope='col')
+              div Total
+            th(scope='col')
+              div %
+            th(scope='col')
+        tbody
+          tr
+            td.-text--normal(scope='row') Location 1
+            td 3
+            td 98%
+            td —
+            td —
+            td 98%
+          tr
+            td.-text--normal(scope='row') Location 2
+            td 1
+            td 98%
+            td 3
+            td 67%
+            td 98%
+          tr
+            td.-text--normal(scope='row') Location 3
+            td —
+            td —
+            td 2
+            td 66%
+            td 66%
+          tr
+            td.-text--normal(scope='row') Location 4
+            td —
+            td —
+            td 1
+            td 66%
+            td 66%
     div(class=`test-portal`)
       span.-text--h2
         | table
-        = ' / Portal styled'
+        = ' / Portal theme'
+      table.chi-table.-portal
+        thead
+          tr
+            th
+              div name
+            th
+              div ID
+            th
+              div last login
+        tbody
+          tr
+            td
+              a(href="#") Name 1
+            td name-1
+            td Dec 18, 2020 3:26 PM
+          tr
+            td
+              a(href="#") Name 2
+            td name-2
+            td Dec 18, 2020 2:38 AM
+          tr.-active
+            td
+              a(href="#") Name 3
+            td name-3
+            td Nov 5, 2020 10:15 AM
+    div(class=`test-portal`)
+      span.-text--h2
+        | table
+        = ' / Portal theme'
       table.chi-table.-portal
         thead
           tr
@@ -260,7 +348,7 @@ mixin table(row, column, selectable)
     div(class=`test-inverse`)
       span.-text--h2
         | table
-        = ' / Inverse'
+        = ' / Inverse theme'
       table.chi-table.-inverse
         thead
           tr
