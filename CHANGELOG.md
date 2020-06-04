@@ -6,6 +6,7 @@
 * Added: Textarea web component.
 * Added: Pagination now supports configuring the number of items per page, jumping to a specific page, displaying number of results, truncating, first and last page buttons, and a new compact view for data tables.
 * Added: Pagination web component.
+* Added: Table now supports table headers with two tiers.
 #### Changed
 * Changed: Tables with Inverse theme now render active rows with an 8% mint 40 background-color.
 * Changed: Tables with Portal theme now render hover row behavior by default. Applying the class `-hover` is no longer necessary.
