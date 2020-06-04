@@ -32,11 +32,11 @@ mixin table-fix-header(row, column)
             th(class={
               [`-sorted -${column}`]: column != undefined
             })
-              div name
+              div Name
             th
               div ID
             th
-              div last login
+              div Last Login
         tbody
           if column == 'ascending'
             +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
@@ -66,35 +66,35 @@ mixin table(row, column, selectable)
             if column != undefined
               if column == 'ascending'
                 th(class=(`-sorted -${column}`))
-                  div name
+                  div Name
                 th ID
-                th last login
+                th Last Login
               else if column == 'descending'
                 th(class=(`-sorted -${column}`))
-                  div name
+                  div Name
                 th ID
-                th last login
+                th Last Login
             else
-              th name
+              th Name
               th ID
-              th last login
+              th Last Login
         else
           tr
             if column != undefined
               if column == 'ascending'
                 th(class=(`-sorted -${column}`))
-                  div name
+                  div Name
                 th ID
-                th last login
+                th Last Login
               else if column == 'descending'
                 th(class=(`-sorted -${column}`))
-                  div name
+                  div Name
                 th ID
-                th last login
+                th Last Login
             else
-              th name
+              th Name
               th ID
-              th last login
+              th Last Login
       else if selectable
         tr
           if column != undefined
@@ -104,26 +104,26 @@ mixin table(row, column, selectable)
                   input.chi-checkbox__input(type="checkbox", id=`chk-1`)
                   label.chi-checkbox__label(for=`chk-1`, style="margin-right: 0")
               th(class=(`-sorted -${column}`))
-                div name
+                div Name
               th ID
-              th last login
+              th Last Login
             else if column == 'descending'
               th
                 div.-lh--1
                   input.chi-checkbox__input(type="checkbox", id=`chk-1`)
                   label.chi-checkbox__label(for=`chk-1`, style="margin-right: 0")
               th(class=(`-sorted -${column}`))
-                div name
+                div Name
               th ID
-              th last login
+              th Last Login
           else
             th
               div.-lh--1
                 input.chi-checkbox__input(type="checkbox", id=`chk-1`)
                 label.chi-checkbox__label(for=`chk-1`, style="margin-right: 0")
-            th name
+            th Name
             th ID
-            th last login
+            th Last Login
     tbody
       if !selectable
         +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')(
@@ -199,11 +199,11 @@ mixin table(row, column, selectable)
                     input.chi-checkbox__input(type="checkbox", id=`chk-${index}`, style="margin-right: 0")
                     label.chi-checkbox__label(for=`chk-${index}`)
                 th.-sorted.-descending
-                  div name
+                  div Name
                 th
                   div ID
                 th
-                  div last login
+                  div Last Login
             tbody
               +str(`chk-${index}-01`, 'Name 1', 'name-1', 'Dec 18, 2020 3:26 PM', true)
               +str(`chk-${index}-02`, 'Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
@@ -218,11 +218,11 @@ mixin table(row, column, selectable)
             thead
               tr
                 th
-                  div name
+                  div Name
                 th
                   div ID
                 th
-                  div last login
+                  div Last Login
             tbody
               +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')
               +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
@@ -294,11 +294,11 @@ mixin table(row, column, selectable)
         thead
           tr
             th
-              div name
+              div Name
             th
               div ID
             th
-              div last login
+              div Last Login
         tbody
           tr
             td
@@ -323,11 +323,11 @@ mixin table(row, column, selectable)
         thead
           tr
             th
-              div name
+              div Name
             th
               div ID
             th
-              div last login
+              div Last Login
         tbody
           tr
             td
@@ -354,7 +354,7 @@ mixin table(row, column, selectable)
           tr
             th Name
             th ID
-            th Last login
+            th Last Login
         tbody
           tr
             td Name 1
@@ -422,11 +422,11 @@ mixin table(row, column, selectable)
                     input.chi-checkbox__input(type="checkbox", id=`chk-${index}-a`)
                     label.chi-checkbox__label(for=`chk-${index}-a`, style="margin-right: 0")
                 th.-sorted.-descending
-                  div name
+                  div Name
                 th
                   div ID
                 th
-                  div last login
+                  div Last Login
             tbody
               +str(`chk-${index}-01-1`, 'Name 1', 'name-1', 'Dec 18, 2020 3:26 PM', true)
               +str(`chk-${index}-02-2`, 'Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
@@ -442,11 +442,11 @@ mixin table(row, column, selectable)
             thead
               tr
                 th
-                  div name
+                  div Name
                 th
                   div ID
                 th
-                  div last login
+                  div Last Login
             tbody
               +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')
               +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
