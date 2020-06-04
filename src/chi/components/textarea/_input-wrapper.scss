@@ -114,7 +114,7 @@ $sizes: (
             padding-right: map-get(map-get($sizes, $type), padding-right);
 
             & ~ .chi-icon,
-            & ~ chi-icon{
+            & ~ chi-icon {
               &:last-of-type {
                 right: map-get(map-get($sizes, $type), right);
               }

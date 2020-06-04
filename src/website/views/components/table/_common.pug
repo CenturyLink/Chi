@@ -31,16 +31,16 @@ mixin table(row, column, selectable)
                 th(class=(`-sorted -${column}`))
                   div Name
                 th ID
-                th Last login
+                th Last Login
               else if column == 'descending'
                 th(class=(`-sorted -${column}`))
                   div Name
                 th ID
-                th Last login
+                th Last Login
             else
               th Name
               th ID
-              th Last login
+              th Last Login
         else
           tr
             if column != undefined
@@ -48,16 +48,16 @@ mixin table(row, column, selectable)
                 th(class=(`-sorted -${column}`))
                   div Name
                 th ID
-                th Last login
+                th Last Login
               else if column == 'descending'
                 th(class=(`-sorted -${column}`))
                   div Name
                 th ID
-                th Last login
+                th Last Login
             else
               th Name
               th ID
-              th Last login
+              th Last Login
       else if selectable
         tr
           if column != undefined
@@ -70,7 +70,7 @@ mixin table(row, column, selectable)
               th(class=(`-sorted -${column}`))
                 div Name
               th ID
-              th Last login
+              th Last Login
             else if column == 'descending'
               th
                 div.-lh--1
@@ -80,7 +80,7 @@ mixin table(row, column, selectable)
               th(class=(`-sorted -${column}`))
                 div Name
               th ID
-              th Last login
+              th Last Login
           else
             th
               div.-lh--1
@@ -89,7 +89,7 @@ mixin table(row, column, selectable)
                   .-sr--only Label
             th Name
             th ID
-            th Last login
+            th Last Login
     tbody
       if !selectable
         +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')(

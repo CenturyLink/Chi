@@ -3,24 +3,36 @@
 ### Components
 #### Added
 * Added: Text Input web component.
-* Added: Pagination now supports blueprints for configuring the number of items per page, jumping to a specific page, displaying number of results, truncating, first and last page buttons, and a new compact view for data tables.
+* Added: Textarea web component.
+* Added: Pagination now supports configuring the number of items per page, jumping to a specific page, displaying number of results, truncating, first and last page buttons, and a new compact view for data tables.
+* Added: Pagination web component.
+* Added: Table now supports table headers with two tiers.
 #### Changed
-* Changed: Tables with Inverse theme now render an 8% mint 40 background-color when active.
+* Changed: Tables with Inverse theme now render active rows with an 8% mint 40 background-color.
+* Changed: Tables with Portal theme now render hover row behavior by default. Applying the class `-hover` is no longer necessary.
+* Changed: Drawer web component now closes when backdrop is clicked.
 #### Fixed
+* Fixed: Tables with Inverse theme rendered an incorrect `th` background-color when `th` was fixed positioned with `-fixed--header`.
+* Fixed: Table header cells now render correctly when placed outside of thead.
+* Fixed: Tables with Inverse theme rendered incorrect border-color and border-width when class `-bordered` was applied.
+* Fixed: Tooltip show hide behavior.
 * Fixed: Date Picker disabled state pointer events.
-* Fixed: Tables with Inverse theme rendered an incorrect `th` background-color when `th` was fixed positioned with `-fixed--header`. 
 
 ### Documentation
 #### Added
 * Added: Text Input documentation has been updated with web component examples.
-* Added: Pagination documentation has been updated with new html blueprint examples.
+* Added: Textarea documentation has been updated with web component examples.
+* Added: Pagination documentation has been updated with new html blueprint and web component examples.
 * Added: Number Input html blueprint code samples now include label tags.
+* Added: Table documentation has been updated with an example for table headers with two tiers.
+* Added: Table documentation for Base state.
 #### Changed
 * Changed: Drawer documentation example code has been improved.
 * Changed: Modal and Expansion panel examples no longer require the margin utility class `-ml--2` on footer buttons.
 #### Fixed
 * Fixed: Drawer properties page was missing documentation for `preventAutoHide`.
 * Fixed: Hash target validation bug which caused the class `-active` to remove from tabs outside of `docs-article`.
+* Fixed: Version variable typo in header.
 
 ## 2.1.0 (May 8, 2020)
 ### Components

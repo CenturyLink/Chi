@@ -1,5 +1,8 @@
 h2 Examples
 
+h3 Base
+:example(lang="html"):html-beautify:pug include ./_default.pug
+
 h3 No Border
 p.-text Remove all borders by applying the modifier class <code>-no-border</code>.
 :example(lang="html"):html-beautify:pug include ./_borderless.pug
@@ -12,14 +15,16 @@ h3 Hover
 p.-text Enable a hover state by applying the modifier class <code>-hover</code>.
 :example(lang="html"):html-beautify:pug include ./_hover.pug
 
-h3 Portal styled table
-p.-text Enable portal styling by applying class <code>-portal</code>.
-p.-text To display a row in active / selected state, apply class <code>-active</code> to the <code>tr</code>.
+h3 Portal theme
+p.-text
+  | Enable portal styling by applying class <code>-portal</code>.
+  | To display a row in active / selected state, apply class <code>-active</code> to the <code>tr</code>.
 :example(lang="html"):html-beautify:pug include ./_portal.pug
 
-h3 Inverse styled table
-p.-text Enable inverse styling by applying class <code>-inverse</code>.
-p.-text To display a row in active / selected state, apply class <code>-active</code> to the <code>tr</code>.
+h3 Inverse theme
+p.-text
+  | Enable inverse styling by applying class <code>-inverse</code>.
+  | To display a row in active / selected state, apply class <code>-active</code> to the <code>tr</code>.
 :example(lang="html"):html-beautify:pug include ./_inverse.pug
 
 h2 Row States
@@ -27,7 +32,7 @@ p.-text
   | Chi offers a wide variety of modifiers to express different row states.
 
 h3 Disabled
-p.-text Disable a row by applying the attribute <code>disabled="disabled"</code>.
+p.-text Disable a row by applying the attribute <code>disabled</code>.
 :example(lang="html"):html-beautify:pug include ./_disabled.pug
 
 h3 Success
@@ -70,20 +75,20 @@ p.-text
       tr
         th.-text--left Name
         th.-text--center ID
-        th.-text--right Last login
+        th.-text--right Last Login
     tbody
       tr.-md
-        td.-text--left David Navarro
-        td.-text--center david
-        td.-text--right 2017 3:26 PM
+        td.-text--left Name 1
+        td.-text--center name-1
+        td.-text--right 2020 3:26 PM
       tr.-md
-        td.-text--left Diego Sanjuan
-        td.-text--center diego
-        td.-text--right 2017 3:26 PM
+        td.-text--left Name 2
+        td.-text--center name-2
+        td.-text--right 2020 3:26 PM
       tr.-md
-        td.-text--left Manuel Martin
-        td.-text--center manuel
-        td.-text--right 2017 3:26 PM
+        td.-text--left Name 3
+        td.-text--center name-3
+        td.-text--right 2020 3:26 PM
 
 h2 Additional Sizes
 p.-text
@@ -129,7 +134,7 @@ h2 Selectable
                 <div>Name</div>
             </th>
             <th>ID</th>
-            <th>Last login</th>
+            <th>Last Login</th>
         </tr>
     </thead>
     <tbody>
@@ -140,9 +145,9 @@ h2 Selectable
                 <div class="-sr--only">Label</div>
               </label>
             </td>
-            <td>David Navarro</td>
-            <td>david</td>
-            <td>Dec 18, 2017 3:26 PM</td>
+            <td>Name 1</td>
+            <td>name-1</td>
+            <td>Dec 18, 2020 3:26 PM</td>
         </tr>
         <tr>
             <td class="-lh--1">
@@ -151,9 +156,9 @@ h2 Selectable
                 <div class="-sr--only">Label</div>
               </label>
             </td>
-            <td>Diego Sanjuan</td>
-            <td>diego</td>
-            <td>Dec 18, 2017 2:38 AM</td>
+            <td>Name 2</td>
+            <td>name-2</td>
+            <td>Dec 18, 2020 2:38 AM</td>
         </tr>
         <tr>
             <td class="-lh--1">
@@ -162,9 +167,9 @@ h2 Selectable
                   <div class="-sr--only">Label</div>
               </label>
             </td>
-            <td>Manuel Martin</td>
-            <td>manuel</td>
-            <td>Nov 5, 2017 10:15 AM</td>
+            <td>Name 3</td>
+            <td>name-3</td>
+            <td>Nov 5, 2020 10:15 AM</td>
         </tr>
     </tbody>
   </table>
@@ -173,10 +178,8 @@ h2 Scrollable
 p.-text
   | If the <code>section</code> height is smaller than the <code>table</code>
   | height, the <code>table</code> header will be fixed positioned and
-  | content will scroll.
-h3 Requirements
-p.-text
-  | Tables must be wrapped in a <code>&lt;section class="chi-table -fixed--header"&gt;</code>
+  | content will scroll. Tables must be wrapped in a
+  | <code>&lt;section class="chi-table -fixed--header"&gt;</code>
 :example(lang="html"):html-beautify:pug
   include ./_common.pug
   section.chi-table.-fixed--header(style="height: 150px")
@@ -189,8 +192,67 @@ p.-text
             th
               div ID
             th
-              div Last login
+              div Last Login
         tbody
-          +tr('David Navarro', 'david', 'Dec 18, 2017 3:26 PM')
-          +tr('Diego Sanjuan', 'diego', 'Dec 18, 2017 2:38 AM')
-          +tr('Manuel Martin', 'manuel', 'Nov 5, 2017 10:15 AM')
+          +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')
+          +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
+          +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
+
+h2 Two tier table header
+:example(lang="html"):html-beautify:pug
+  include ./_common.pug
+  table.chi-table
+    colgroup
+      col
+    colgroup(span='2')
+    colgroup(span='2')
+    colgroup
+      col
+    thead
+      tr
+        th.-sorted.-descending
+          div Location
+        th(colspan='2', scope='colgroup') High Utilization
+        th(colspan='2', scope='colgroup') Elevated Utilization
+        th.-sorted.-descending
+          div Highest %
+      tr
+        th(scope='col')
+        th(scope='col').-sorted.-descending
+          div Total
+        th(scope='col').-sorted.-descending
+          div %
+        th(scope='col').-sorted.-descending
+          div Total
+        th(scope='col').-sorted.-descending
+          div %
+        th(scope='col')
+    tbody
+      tr
+        td.-text--normal(scope='row') Location 1
+        td 3
+        td 98%
+        td —
+        td —
+        td 98%
+      tr
+        td.-text--normal(scope='row') Location 2
+        td 1
+        td 98%
+        td 3
+        td 67%
+        td 98%
+      tr
+        td.-text--normal(scope='row') Location 3
+        td —
+        td —
+        td 2
+        td 66%
+        td 66%
+      tr
+        td.-text--normal(scope='row') Location 4
+        td —
+        td —
+        td 1
+        td 66%
+        td 66%
