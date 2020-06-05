@@ -106,6 +106,7 @@ th {
   }
 
   th {
+    border-bottom: 0.0625rem solid set-color(grey, 30);
     font-weight: 600;
 
     &.-sorted {
@@ -116,10 +117,12 @@ th {
         flex-direction: row;
 
         &::after {
-          background-image: url('icon-chevron-thin-up.svg');
-          content: '';
-          display: block;
-          height: 0.75rem;
+          background-image: none;
+          content: '\e921';
+          font-family: 'chi';
+          font-size: 0.75rem;
+          font-weight: normal;
+          height: 1rem;
           margin-left: 0.5rem;
           opacity: 0;
           width: 0.75rem;
@@ -175,30 +178,24 @@ th {
       color: set-color(white);
 
       & th {
-        border-bottom: 0.0625rem solid set-color(grey, 60);
-      }
-
-      & td {
         border-bottom: 0.0625rem solid set-color(grey, 70);
-      }
-    }
 
-    thead {
-      tr {
-        th {
-          &.-sorted {
-            div {
-              &::after {
-                background-image: none;
-                content: '\e921';
-                font-family: 'chi';
-                font-size: 0.75rem;
-                font-weight: normal;
-                height: 1rem;
-              }
+        &.-sorted {
+          div {
+            &::after {
+              background-image: none;
+              content: '\e921';
+              font-family: 'chi';
+              font-size: 0.75rem;
+              font-weight: normal;
+              height: 1rem;
             }
           }
         }
+      }
+
+      & td {
+        border-bottom: 0.0625rem solid set-color(grey, 80);
       }
     }
 
@@ -278,16 +275,23 @@ th {
 
     &.-bordered {
       &::before {
-        border: 0.0625rem solid set-color(grey, 30);
+        border-color: set-color(grey, 80);
       }
 
       tr {
-        & th {
-          border: 0.0625rem solid set-color(grey, 30);
-        }
-
+        & th,
         & td {
-          border: 0.0625rem solid set-color(grey, 30);
+          border-color: set-color(grey, 80);
+        }
+      }
+
+      thead {
+        tr {
+          &:last-child {
+            th {
+              border-bottom-color: set-color(grey, 80);
+            }
+          }
         }
       }
     }
@@ -340,24 +344,32 @@ th {
   }
 
   &.-portal {
+    tr {
+      th {
+        background-color: $portal-color-background-table-th;
+        border-bottom: 0.0625rem solid set-color(grey, 30);
+      }
+    }
+
     thead {
       tr {
-        th {
-          background-color: set-color(grey, 25);
-          border-bottom: 0;
+        &:last-child {
+          th {
+            border-bottom: 0;
+          }
         }
       }
     }
 
     tbody {
       tr {
-        &:nth-child(odd) {
-          background-color: set-color(grey, 20);
+        &:nth-child(even) {
+          background-color: $portal-color-background-table-tr-alt;
         }
 
         &.-active {
           td {
-            background-color: rgb(206, 218, 241);
+            background-color: $portal-color-background-table-tr-selected;
 
             &:first-child {
               border-left: 0.25rem solid $primary-color;
@@ -366,21 +378,13 @@ th {
           }
         }
 
+        &:hover,
+        &.-hover {
+          background-color: $portal-color-background-table-tr-selected;
+        }
+
         td {
           border-bottom: 0;
-        }
-      }
-    }
-
-    &.-hover {
-      tbody {
-        tr {
-          &:hover,
-          &.-hover {
-            td {
-              background-color: set-color(blue, 20);
-            }
-          }
         }
       }
     }
@@ -388,8 +392,12 @@ th {
     &.-striped {
       tbody {
         tr {
+          &:nth-child(even) {
+            background-color: $portal-color-background-table-tr-alt;
+          }
+
           &:nth-child(odd) {
-            background-color: set-color(grey, 20);
+            background-color: set-color(white);
           }
         }
       }
@@ -397,11 +405,13 @@ th {
   }
 
   &.-hover {
-    tbody {
-      tr {
-        &:hover,
-        &.-hover {
-          background-color: set-color(grey, 10);
+    &:not(.-portal) {
+      tbody {
+        tr {
+          &:hover,
+          &.-hover {
+            background-color: set-color(grey, 10);
+          }
         }
       }
     }
@@ -440,9 +450,20 @@ th {
         border-left-width: 0;
       }
 
+      thead {
+        tr {
+          &:last-child {
+            th {
+              border-bottom: 0.0625rem solid set-color(grey, 30);
+            }
+          }
+        }
+      }
+
       tr {
         & th {
           border: 0.0625rem solid set-color(grey, 30);
+          border-bottom-width: 0;
           border-right-width: 0;
 
           &:last-of-type {

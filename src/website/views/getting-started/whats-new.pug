@@ -10,26 +10,38 @@ chi-alert(color='warning', icon='warning')
 
 .changelog__version.-py--1
   h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v2.2.0" target="_blank">Chi v2.2.0</a>
-  .-text--grey.-text--md TBD
+  .-text--grey.-text--md June 9, 2020
   .-pt--1
     h3.-text--h3.-text--bold Components
     h4.-text--h4.-text--bold Added
     ul.-text.-pl--2
       li Added: Text Input web component.
-      li Added: Pagination now supports blueprints for configuring the number of items per page, jumping to a specific page, displaying number of results, truncating, first and last page buttons, and a new compact view for data tables.
+      li Added: Textarea web component.
+      li Added: Pagination now supports configuring the number of items per page, jumping to a specific page, displaying number of results, truncating, first and last page buttons, and a new compact view for data tables.
+      li Added: Pagination web component.
+      li Added: Table now supports table headers with two tiers.
     h4.-text--h4.-text--bold Changed
     ul.-text.-pl--2
-      li Changed: Tables with Inverse theme now render an 8% mint 40 background-color when active.
+      li Changed: Popover arrow, border, and shadow for better compatibility with maps.
+      li Changed: Tables with Inverse theme now render active rows with an 8% mint 40 background-color.
+      li Changed: Tables with Portal theme now render hover row behavior by default. Applying the class <code>-hover</code> is no longer necessary.
+      li Changed: Drawer web component now closes when backdrop is clicked.
     h4.-text--h4.-text--bold Fixed
     ul.-text.-pl--2
+      li Fixed: Tables with Inverse theme rendered an incorrect <code>th</code> background-color when <code>th</code> was fixed positioned with <code>-fixed--header</code>.
+      li Fixed: Table header cells now render correctly when placed outside of thead.
+      li Fixed: Tables with Inverse theme rendered incorrect border-color and border-width when class <code>-bordered</code> was applied.
+      li Fixed: Tooltip show hide behavior.
       li Fixed: Date Picker disabled state pointer events.
-      li Fixed: Tables with Inverse theme rendered an incorrect <code>th</code> background-color when <code>th</code> was fixed positioned with <code>-fixed--header</code>. 
     h3.-text--h3.-text--bold Documentation
     h4.-text--h4.-text--bold Added
     ul.-text.-pl--2
       li Added: Text Input documentation has been updated with web component examples.
-      li Added: Pagination documentation has been updated with new html blueprint examples.
+      li Added: Textarea documentation has been updated with web component examples.
+      li Added: Pagination documentation has been updated with new html blueprint and web component examples.
       li Added: Number Input html blueprint code samples now include label tags.
+      li Added: Table documentation has been updated with an example for table headers with two tiers.
+      li Added: Table documentation for Base state.
     h4.-text--h4.-text--bold Changed
     ul.-text.-pl--2
       li Changed: Drawer documentation example code has been improved.
@@ -38,6 +50,7 @@ chi-alert(color='warning', icon='warning')
     ul.-text.-pl--2
       li Fixed: Drawer properties page was missing documentation for <code>preventAutoHide</code>. 
       li Fixed: Hash target validation bug which caused the class <code>-active</code> to remove from tabs outside of <code>docs-article</code>.
+      li Fixed: Version variable typo in header.
 
 .chi-divider.-my--4
 
