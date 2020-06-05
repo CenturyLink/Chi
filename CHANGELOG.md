@@ -1,5 +1,5 @@
 # CHANGELOG
-## 2.2.0 (TBD)
+## 2.2.0 (June 9, 2020)
 ### Components
 #### Added
 * Added: Text Input web component.
@@ -8,6 +8,7 @@
 * Added: Pagination web component.
 * Added: Table now supports table headers with two tiers.
 #### Changed
+* Changed: Popover arrow, border, and shadow for better compatibility with maps.
 * Changed: Tables with Inverse theme now render active rows with an 8% mint 40 background-color.
 * Changed: Tables with Portal theme now render hover row behavior by default. Applying the class `-hover` is no longer necessary.
 * Changed: Drawer web component now closes when backdrop is clicked.

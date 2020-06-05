@@ -1,14 +1,13 @@
 @import '_variables';
 @import '_mixins';
 
-$popover-arrow-width: 1rem;
-$popover-arrow-height: 0.5rem;
-$popover-border-width: 0.0625rem;
+$popover-arrow-size: 0.75rem;
 
 .chi-popover {
   background-color: set-color(white);
-  border: $popover-border-width solid set-color(grey, 30);
-  box-shadow: map-get($shadow, 3);
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12),
+  0 5px 5px -3px rgba(0, 0, 0, 0.2);
   color: $text-color;
   display: none;
   font-family: $font-family;
@@ -112,147 +111,94 @@ $popover-border-width: 0.0625rem;
   & .chi-arrow,
   & .chi-popover__arrow {
     display: block;
-    height: $popover-arrow-height;
-    margin: 0 0.1875rem;
+    height: $popover-arrow-size;
+    margin: 0;
     position: absolute;
-    width: $popover-arrow-width;
+    width: $popover-arrow-size;
 
-    &::before,
     &::after {
-      border-color: transparent;
+      border-color: set-color(white);
       border-style: solid;
+      border-width: calc(#{$popover-arrow-size} / 2);
       content: '';
       display: block;
+      left: 0;
       position: absolute;
+      top: 0;
+      transform: rotate(45deg);
     }
   }
 
   &:not(.-no-arrow) {
     &.chi-popover--top,
     &[x-placement^='top'] {
-      margin-bottom: calc(#{$popover-arrow-height} + 0.25rem);
+      margin-bottom: calc(#{$popover-arrow-size} + 0.25rem);
 
       .chi-arrow,
       .chi-popover__arrow {
-        bottom: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
-        left: calc(50% - 4px);
-      }
-
-      .chi-arrow::before,
-      .chi-arrow::after,
-      .chi-popover__arrow::before,
-      .chi-popover__arrow::after {
-        border-width: $popover-arrow-height ($popover-arrow-width / 2) 0;
-      }
-
-      .chi-arrow::before,
-      .chi-popover__arrow::before {
-        border-top-color: set-color(grey, 30);
-        bottom: 0;
+        bottom: calc((#{$popover-arrow-size} / 2) * -1);
+        left: calc(50% - (#{$popover-arrow-size} / 2));
       }
 
       .chi-arrow::after,
       .chi-popover__arrow::after {
-        border-top-color: white;
-        bottom: $popover-border-width;
+        border-left-color: transparent;
+        border-top-color: transparent;
+        box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.12);
       }
     }
 
     &.chi-popover--right,
     &[x-placement^='right'] {
-      margin-left: calc(#{$popover-arrow-height} + 0.25rem);
+      margin-left: calc(#{$popover-arrow-size} + 0.25rem);
 
       .chi-arrow,
       .chi-popover__arrow {
-        height: $popover-arrow-width;
-        left: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
-        margin: 0.1875rem 0; // make sure the arrow does not touch the popover's rounded corners
-        top: calc(50% - 8px);
-        width: $popover-arrow-height;
-      }
-
-      .chi-arrow::before,
-      .chi-arrow::after,
-      .chi-popover__arrow::before,
-      .chi-popover__arrow::after {
-        border-width: ($popover-arrow-width / 2) $popover-arrow-height ($popover-arrow-width / 2) 0;
-      }
-
-      .chi-arrow::before,
-      .chi-popover__arrow::before {
-        border-right-color: set-color(grey, 30);
-        left: 0;
+        left: calc((#{$popover-arrow-size} / 2) * -1);
+        top: calc(50% - (#{$popover-arrow-size} / 2));
       }
 
       .chi-arrow::after,
       .chi-popover__arrow::after {
-        border-right-color: white;
-        left: $popover-border-width;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        box-shadow: -3px 3px 7px rgba(0, 0, 0, 0.1);
       }
     }
 
     &.chi-popover--bottom,
     &[x-placement^='bottom'] {
-      margin-top: calc(#{$popover-arrow-height} + 0.25rem);
-
+      margin-top: calc(#{$popover-arrow-size} + 0.25rem);
 
       .chi-arrow,
       .chi-popover__arrow {
-        left: calc(50% - 4px);
-        top: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
-      }
-
-      .chi-arrow::before,
-      .chi-arrow::after,
-      .chi-popover__arrow::before,
-      .chi-popover__arrow::after {
-        border-width: 0 ($popover-arrow-width / 2) $popover-arrow-height ($popover-arrow-width / 2);
-      }
-
-      .chi-arrow::before,
-      .chi-popover__arrow::before {
-        border-bottom-color: set-color(grey, 30);
-        top: 0;
+        left: calc(50% - (#{$popover-arrow-size} / 2));
+        top: calc((#{$popover-arrow-size} / 2) * -1);
       }
 
       .chi-arrow::after,
       .chi-popover__arrow::after {
-        border-bottom-color: white;
-        top: $popover-border-width;
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+        box-shadow: -3px -3px 7px rgba(0, 0, 0, 0.1);
       }
     }
 
     &.chi-popover--left,
     &[x-placement^='left'] {
-      margin-right: calc(#{$popover-arrow-height} + 0.25rem);
-
+      margin-right: calc(#{$popover-arrow-size} + 0.25rem);
 
       .chi-arrow,
       .chi-popover__arrow {
-        height: $popover-arrow-width;
-        margin: 0.1875rem 0; // make sure the arrow does not touch the popover's rounded corners
-        right: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
-        top: calc(50% - 8px);
-        width: $popover-arrow-height;
-      }
-
-      .chi-arrow::before,
-      .chi-arrow::after,
-      .chi-popover__arrow::before,
-      .chi-popover__arrow::after {
-        border-width: ($popover-arrow-width / 2) 0 ($popover-arrow-width / 2) $popover-arrow-height;
-      }
-
-      .chi-arrow::before,
-      .chi-popover__arrow::before {
-        border-left-color: set-color(grey, 30);
-        right: 0;
+        right: calc((#{$popover-arrow-size} / 2) * -1);
+        top: calc(50% - (#{$popover-arrow-size} / 2));
       }
 
       .chi-arrow::after,
       .chi-popover__arrow::after {
-        border-left-color: white;
-        right: $popover-border-width;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        box-shadow: 3px -3px 7px rgba(0, 0, 0, 0.1);
       }
     }
   }
