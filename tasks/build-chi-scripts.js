@@ -18,8 +18,8 @@ const webpackConfig = {
   mode: WEBPACK_MODE,
   output: {
     library: 'chi',
-    filename: 'chi.js'
-    //libraryTarget: 'umd'
+    filename: 'chi.js',
+    libraryTarget: 'window'
   },
   module: {
     rules: [
