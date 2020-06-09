@@ -447,6 +447,10 @@ $icon-sizes: (
             border: 0.0625rem solid set-color(white);
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
           }
+
+          option {
+            color: set-color(grey, 90);
+          }
         }
       }
     }

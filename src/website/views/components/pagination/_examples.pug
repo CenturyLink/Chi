@@ -179,6 +179,7 @@ h3 Disabled
       </nav>
 
 h3 Truncation
+.-text When the number of pages exceeds the recommended 7 page limit, an ellipsis is used to truncate the remaining pages.
 .example.-mb--3
   .chi-grid.-no-gutter
     .chi-col.-w--12
@@ -201,8 +202,6 @@ h3 Truncation
       <!-- For dark backgrounds -->
       <chi-pagination pages="12" current-page="3" inverse></chi-pagination>
   .chi-tabs-panel#html-truncation
-    .chi-tab__description
-      .-text When the number of pages exceeds the recommended 7 page limit, an ellipsis is used to truncate the remaining pages.
     :code(lang="html")
       <!-- For light backgrounds -->
       <nav class="chi-pagination" role="navigation" aria-label="Pagination">
