@@ -405,7 +405,7 @@ th {
   }
 
   &.-hover {
-    &:not(.-portal) {
+    &:not(.-portal):not(.-inverse) {
       tbody {
         tr {
           &:hover,

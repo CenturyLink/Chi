@@ -44,7 +44,7 @@ h3 Disabled
     :code(lang="html")
       <div class="chi-form__item">
         <chi-label for="example__disabled">Label</chi-label>
-        <chi-text-input id="example__disabled" placeholder="Placeholder"></chi-text-input>
+        <chi-text-input id="example__disabled" placeholder="Placeholder" disabled></chi-text-input>
       </div>
   .chi-tabs-panel#html-disabled
     :code(lang="html")
@@ -213,10 +213,10 @@ h3 Inline Inputs
 .example.-mb--3
   .-p--3.-d--flex
     .chi-form__item.-inline.-flex--grow1
-      chi-label.-mr--1(for='example__inline-input01') Label
+      chi-label(for='example__inline-input01') Label
       chi-text-input(id='example__inline-input01', placeholder="Placeholder")
     .chi-form__item.-inline.-flex--grow1
-      chi-label.-mr--1(for='example__inline-input02') Label
+      chi-label(for='example__inline-input02') Label
       chi-text-input(id='example__inline-input02', placeholder="Placeholder")
   .example-tabs.-pl--2
     ul.chi-tabs#example-inline-input
@@ -228,11 +228,11 @@ h3 Inline Inputs
     :code(lang="html")
       <div class="-d--flex">
         <div class="chi-form__item -inline -flex--grow1">
-          <chi-label class="-mr--1" for="example__inline-input01">Label</chi-label>
+          <chi-label for="example__inline-input01">Label</chi-label>
           <chi-text-input id="example__inline-input01" placeholder="Placeholder"></chi-text-input>
         </div>
         <div class="chi-form__item -inline -flex--grow1">
-          <chi-label class="-mr--1" for="example__inline-input02">Label</chi-label>
+          <chi-label for="example__inline-input02">Label</chi-label>
           <chi-text-input id="example__inline-input02" placeholder="Placeholder"></chi-text-input>
         </div>
       </div>
@@ -476,14 +476,14 @@ h3 Warning
     :code(lang="html")
       <div class="chi-form__item">
         <chi-label for="example__state-warning-with-icon">Label</chi-label>
-        <chi-text-input state="success" icon-right="warning" icon-right-color="warning" placeholder="Placeholder" value="Sample Text" id="example__state-warning-with-icon"></chi-text-input>
+        <chi-text-input state="warning" icon-right="warning" icon-right-color="warning" placeholder="Placeholder" value="Sample Text" id="example__state-warning-with-icon"></chi-text-input>
       </div>
   .chi-tabs-panel#html-input-state-warning-icon
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="example__state-warning-with-icon">Label</label>
         <div class="chi-input__wrapper -icon--right">
-          <input type="text" class="chi-input -success" placeholder="Placeholder" value="Sample Text" id="example__state-warning-with-icon">
+          <input type="text" class="chi-input -warning" placeholder="Placeholder" value="Sample Text" id="example__state-warning-with-icon">
           <i class="chi-icon icon-warning -text--warning"></i>
         </div>
       </div>
