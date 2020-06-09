@@ -21,6 +21,7 @@ $padding-vertical: 0.25rem;
   padding: $padding-vertical 0.5rem;
   pointer-events: none;
   transition: opacity 0.2s, transform 0.2s;
+  z-index: $zindex-tooltip;
 
   &.-active {
     opacity: 1;

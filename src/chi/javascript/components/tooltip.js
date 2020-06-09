@@ -30,35 +30,30 @@ class Tooltip extends Component {
     let self = this;
     this._createTooltip();
 
-    this._mouseOverEventHandler = function() {
+    this._addEventHandler(this._elem, 'mouseenter', function() {
       self._hovered = true;
       if (!self._shown) {
         self.show();
       }
-    };
-    this._mouseOutEventHandler = function() {
+    });
+    this._addEventHandler(this._elem, 'mouseleave', function() {
       self._hovered = false;
       if (self._shown && !self._focused) {
         self.hide();
       }
-    };
-    this._focusEventHandler = function() {
+    });
+    this._addEventHandler(this._elem, 'focus', function() {
       self._focused = true;
       if (!self._shown) {
         self.show();
       }
-    };
-    this._blurEventHandler = function() {
+    });
+    this._addEventHandler(this._elem, 'blur', function() {
       self._focused = false;
       if (self._shown && !self._hovered) {
         self.hide();
       }
-    };
-
-    this._elem.addEventListener('mouseover',this._mouseOverEventHandler,false);
-    this._elem.addEventListener('mouseout', this._mouseOutEventHandler, false);
-    this._elem.addEventListener('focus',this._focusEventHandler,false);
-    this._elem.addEventListener('blur', this._blurEventHandler, false);
+    });
   }
 
   show() {
@@ -92,12 +87,11 @@ class Tooltip extends Component {
   _createTooltip () {
     this._tooltipElem = document.createElement('div');
     this._tooltipElem.setAttribute('class', 'chi-tooltip');
-    this._tooltipElem.id = COMPONENT_TYPE +
-      Util.getData(this._elem, COMPONENT_TYPE);
+    this._tooltipElem.id = `chi-${COMPONENT_TYPE}-${this.componentCounterNo}`;
     this._tooltipContent = document.createElement('span');
     this._tooltipContent.innerText = this._elem.dataset.tooltip;
     this._tooltipElem.appendChild(this._tooltipContent);
-    this._elem.parentNode.appendChild(this._tooltipElem);
+    document.querySelector('body').appendChild(this._tooltipElem);
     this._elem.setAttribute('aria-describedby', this._tooltipElem.id);
     this._tooltipElem.setAttribute('aria-hidden', 'true');
 
@@ -160,8 +154,7 @@ class Tooltip extends Component {
     this._popperData = null;
     this._preAnimationTransformStyle = null;
     this._postAnimationTransformStyle = null;
-    this._elem.removeEventListener("mouseover",this._mouseOverEventHandler,false);
-    this._elem.removeEventListener("mouseout", this._mouseOutEventHandler, false);
+    this._removeEventHandlers();
     this._elem = null;
   }
 
