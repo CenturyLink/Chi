@@ -5,7 +5,7 @@ import {Util} from "../core/util.js";
 const CLASS_ACTIVE = "-active";
 const COMPONENT_SELECTOR = '[data-tooltip]';
 const COMPONENT_TYPE = "tooltip";
-const DEFAULT_CONFIG = {position: 'bottom', parent: null};
+const DEFAULT_CONFIG = {position: 'top', parent: null};
 
 class Tooltip extends Component {
 
