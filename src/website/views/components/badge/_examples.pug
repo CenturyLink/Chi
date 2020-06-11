@@ -1,14 +1,14 @@
 h2 Examples
 p.-text
-  | Chi includes three badge variants: Solid, Outline, and Flat. Use solid
-  | badges for high emphasis, base or outline badges for medium
-  | emphasis, and flat badges for low emphasis.
-h3 Base
+  | Chi includes three badge variants: Solid, Outline, and Flat. Use #[solid]
+  | badges for high emphasis, #[outline] badges for medium
+  | emphasis, and #[flat] badges for low emphasis.
+h3 Solid
 .example.-mb--3
   .chi-grid.-no-gutter
     .chi-col.-w--12
       .-p--2.-text--center
-        chi-badge(class='-m--1')= 'Base'
+        chi-badge(class='-m--1')= 'Solid'
         chi-badge(class='-m--1', color='primary')= 'Primary'
         chi-badge(class='-m--1', color='success')= 'Success'
         chi-badge(class='-m--1', color='warning')= 'Warning'
@@ -20,18 +20,18 @@ h3 Base
         chi-badge(class='-m--1', color='secondary')= 'Secondary'
         chi-badge(class='-m--1', color='light')= 'Light'
   .example-tabs.-pl--2
-    ul.chi-tabs#example-base
+    ul.chi-tabs#example-solid
       li.-active
-        a(href=`#webcomponent-base`) Web Component
+        a(href=`#webcomponent-solid`) Web Component
       li
-        a(href=`#html-base`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-base
+        a(href=`#html-solid`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-solid
     .chi-tab__description
       | To display a badge, use the tag <code>&lt;chi-badge&gt;</code>.
       | A contextual color (e.g. <code>dark</code>) can also be set to the <code>color</code> attribute to provide alternate styling.
     :code(lang="html")
       <!-- For light backgrounds -->
-      <chi-badge>Base</chi-badge>
+      <chi-badge>Solid</chi-badge>
       <chi-badge color="primary">Primary</chi-badge>
       <chi-badge color="success">Success</chi-badge>
       <chi-badge color="warning">Warning</chi-badge>
@@ -41,14 +41,14 @@ h3 Base
       <!-- For dark backgrounds -->
       <chi-badge color="secondary">Secondary</chi-badge>
       <chi-badge color="light">Light</chi-badge>
-  .chi-tabs-panel#html-base
+  .chi-tabs-panel#html-solid
     .chi-tab__description
       | To display a badge, use the class <code>chi-badge</code>.
       | A contextual class (e.g. <code>-dark</code>) can also be applied to provide alternate styling.
     :code(lang="html")
       <!-- For light backgrounds -->
       <div class="chi-badge">
-        <span>Base</span>
+        <span>Solid</span>
       </div>
       <div class="chi-badge -primary">
         <span>Primary</span>
