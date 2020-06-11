@@ -1,7 +1,7 @@
 @import '_variables';
 @import '_mixins';
 
-$multi-line-ellipsis-max: 3;
+$multi-line-ellipsis-max: 4;
 $padding-vertical: 0.25rem;
 
 .chi-tooltip {
@@ -11,10 +11,10 @@ $padding-vertical: 0.25rem;
   color: set-color(white);
   display: block;
   font-family: $font-family;
-  font-size: $text;
-  font-weight: normal;
-  line-height: $line-height-small;
-  max-height: $line-height-small * $multi-line-ellipsis-max + $padding-vertical * 2;
+  font-size: $text-smaller;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-smaller;
+  max-height: $line-height-smaller * $multi-line-ellipsis-max + $padding-vertical * 2;
   max-width: 20rem;
   opacity: 0;
   overflow: hidden;
