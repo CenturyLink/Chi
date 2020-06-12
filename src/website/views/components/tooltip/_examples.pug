@@ -53,19 +53,19 @@ p.-text
       <button class="chi-button" data-tooltip="Your top tooltip text">Top Tooltip</button>
       <button class="chi-button" data-tooltip="Your right tooltip text" data-position="right">Right Tooltip</button>
       <button class="chi-button" data-tooltip="Your bottom tooltip text" data-position="bottom">Bottom Tooltip</button>
-      <button class="chi-button" data-tooltip="Yourleft tooltip text" data-position="left">Left Tooltip</button>
+      <button class="chi-button" data-tooltip="Your left tooltip text" data-position="left">Left Tooltip</button>
 
       <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
 h3 Long Tooltips
 p.-text
-  | Long Tooltips will be truncated on the third line. To display text beyond three lines,
+  | Long Tooltips will be truncated on the fourth line. To display text beyond four lines,
   | use the <a href="../../components/popover">Popover</a> component.
 .example.-mb--3
   .-p--3
     button(data-tooltip='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et interdum purus. ' +
-    'Curabitur faucibus varius libero, vel hendrerit enim tincidunt sit amet. Ut eros purus, semper nec ipsum et, ' +
-    'maximus suscipit nibh.').chi-button.-mr--2.-mb--2.-mb-md--0 Top Tooltip
+    'Curabitur varius libero, vel hendrerit enim tincidunt sit amet. Ut eros purus, semper nec ipsum et, ' +
+    'maximus faucibus suscipit nibh.').chi-button.-mr--2.-mb--2.-mb-md--0 Long Tooltip
   .example-tabs.-pl--2
     ul.chi-tabs#example-long
       li.-disabled
@@ -80,7 +80,7 @@ p.-text
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang='html')
-      <button class="chi-button" data-tooltip="Lorem ipsum...">Top Tooltip</button>
+      <button class="chi-button" data-tooltip="Lorem ipsum...">Long Tooltip</button>
 
       <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
