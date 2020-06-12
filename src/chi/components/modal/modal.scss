@@ -148,10 +148,10 @@ $animation-duration: 0.5s;
 
   &.-portal {
     background-color: set-color(grey, 20);
-    box-shadow: 0 3px 6px rgba(set-color(black), 0.15);
+    box-shadow: 0 3px 6px rgba(set-color(black), 0.25);
 
     .chi-modal__header {
-      background-color: set-color(grey, 80);
+      background-color: set-color(grey, 100);
       box-shadow: none;
       color: set-color(white);
 
