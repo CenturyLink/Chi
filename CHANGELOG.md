@@ -1,4 +1,21 @@
 # CHANGELOG
+## 2.3.0 (TBD)
+### Components
+#### Added
+* Added: Border utility now supports the color transparent to hide an elements border without altering its size.
+#### Changed
+* Changed: Tooltip styles to look less like inverse dropdown menus.
+* Changed: Modal portal theme shadow and header background-color.
+* Changed: Backdrop portal theme has been removed. Portal has adopted Chi's default theme. The class `-portal` is no longer necessary on `chi-backdrop`.
+
+### Documentation
+#### Added
+* Added: Border utility documentation now includes usage guidelines for each example.
+#### Changed
+* Changed: Border utility examples have been improved.
+* Changed: Tooltip documentation has been improved.
+* Changed: Backdrop portal theme class has been removed from backdrop examples.
+
 ## 2.2.0 (June 9, 2020)
 ### Components
 #### Added

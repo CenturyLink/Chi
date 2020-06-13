@@ -14,12 +14,15 @@ $positions: (
 );
 
 $border-colors: (
-  primary: $primary-color,
-  success: $success-color,
-  danger: $danger-color,
-  warning: $warning-color,
-  dark: $dark-color,
-  light: $light-color
+  primary: $border-color-primary,
+  secondary: $border-color-secondary,
+  success: $border-color-success,
+  info: $border-color-info,
+  danger: $border-color-danger,
+  warning: $border-color-warning,
+  dark: $border-color-dark,
+  light: $border-color-light,
+  transparent: transparent
 );
 
 @mixin create-border($position, $position-suffix, $breakpoint-infix, $thickness-index) {
