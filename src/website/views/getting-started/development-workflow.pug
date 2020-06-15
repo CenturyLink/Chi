@@ -100,7 +100,7 @@ h4 NAME
 
 p.-text
   | Components are not actions, they are conceptually "things". It is better to use nouns instead of verbs, such as
-  | "animation" instead of "animating". "input", "tab", "nav", "menu" are some examples.
+  | "animation" instead of "animating". Here are some good examples of component names: "input", "tab", "nav", and "menu".
 
 h4 MODIFIERS
 
@@ -145,9 +145,9 @@ p.-text Method decorator should be multi-line
     ...
   }
 
-p.-text Use private variables and methods as much as possible: They are useful to detect dead code and enforce encapsulation. Note that this is a feature which TypeScript provides to help hardening your code, but using private, public or protected does not make a difference in the actual JavaScript output.
+p.-text Use private variables and methods as much as possible; they are useful to detect dead code and enforce encapsulation. Note that this is a feature which TypeScript provides to help hardening your code, but using private, public or protected does not make a difference in the actual JavaScript output.
 
-p.-text Code with Method/Prop/Event/Component decorators should have jsdocs: This allows documentation generation and for a better user experience in an editor that has TypeScript intellisense. <em>Stencil auto-generated documentation will be included in the Chi documentation pages. </em>
+p.-text Code with Method/Prop/Event/Component decorators should have <code>jsdocs</code>; this allows documentation generation and for a better user experience in an editor that has TypeScript intellisense. <em>Stencil auto-generated documentation will be included in the Chi documentation pages. </em>
 
 h3 Properties
 
@@ -167,6 +167,7 @@ p.-text
 p.-text Sometimes it is enough validation the use of a definition type:
 :code(lang="javascript")
   @Prop() bordered: boolean = false;
+
 p.-text Other times a function with a @Watch decorator is necessary:
 :code(lang="javascript")
   @Watch('name')
@@ -189,8 +190,8 @@ p.-text
   })
 
 p.-text
-  | For the moment there is no support for per-version scoped CSS. This means that rules from two different
-  | versions of chi components will collide, so should be avoided.
+  | As of now, there is no support for per-version scoped CSS. This means that rules from two different
+  | versions of chi components will collide, so it should be avoided.
 
 h3 Rules
 
