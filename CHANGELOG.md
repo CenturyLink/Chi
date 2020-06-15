@@ -11,6 +11,7 @@
 ### Documentation
 #### Added
 * Added: Border utility documentation now includes usage guidelines for each example.
+* Added: Card documentation now includes usage guidelines for Portal themed cards.
 #### Changed
 * Changed: Border utility examples have been improved.
 * Changed: Tooltip documentation has been improved.
