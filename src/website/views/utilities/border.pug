@@ -41,12 +41,18 @@ p.-text
 .example.-mb--3
   .-p--2
     .chi-grid.-text.-no-gutter.-text--center
-      .-py--5.-m--2.-bt--1(style="background:#F8F8F8;width:7.5rem;") -bt--1
-      .-py--5.-m--2.-br--1(style="background:#F8F8F8;width:7.5rem;") -br--1
-      .-py--5.-m--2.-bb--1(style="background:#F8F8F8;width:7.5rem;") -bb--1
-      .-py--5.-m--2.-bl--1(style="background:#F8F8F8;width:7.5rem;") -bl--1
-      .-py--5.-m--2.-bx--1(style="background:#F8F8F8;width:7.5rem;") -bx--1
-      .-py--5.-m--2.-by--1(style="background:#F8F8F8;width:7.5rem;") -by--1
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-bt--1.-bg--grey-10 -bt--1
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-br--1.-bg--grey-10 -br--1
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-bb--1.-bg--grey-10 -bb--1
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-bl--1.-bg--grey-10 -bl--1
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-bx--1.-bg--grey-10 -bx--1
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-by--1.-bg--grey-10 -by--1
   :code(lang="html")
     <div class="-bt--1"></div>
     <div class="-br--1"></div>
@@ -60,8 +66,12 @@ p.-text
 .example.-mb--3
   .-p--2
     .chi-grid.-text.-no-gutter.-text--center
-      .-py--5.-m--2.-bx--0.-by--4.-bx-lg--4.-by-lg--0(style="background:#F8F8F8;width:9rem;") -bx--0 -by--4<br>-bx-lg--4 -by-lg--0
-      .-py--5.-m--2.-b--0.-b-sm--1.-b-md--2.-b-lg--3.-b-xl--4(style="background:#F8F8F8;width:9rem;") -b--0 -b-sm--1<br>-b-md--2 -b-lg--3<br>-b-xl--4
+      .chi-col.-w--6.-d--flex
+        .-d--flex.-flex--grow1.-align-items--center.-justify-content--center.-m--1.-p--1.-py--5.-bx--0.-by--4.-bx-lg--4.-by-lg--0.-bg--grey-10
+          | -bx--0 -by--4<br>-bx-lg--4 -by-lg--0
+      .chi-col.-w--6
+        .-d--flex.-flex--grow1.-align-items--center.-justify-content--center.-m--1.-p--1.-py--5.-b--0.-b-sm--1.-b-md--2.-b-lg--3.-b-xl--4.-bg--grey-10
+          | -b--0 -b-sm--1<br>-b-md--2 -b-lg--3<br>-b-xl--4
   :code(lang="html")
     <div class="-bx--0 -by--4 -bx-lg--4 -by-lg--0"></div>
     <div class="-b--0 -b-sm--1 -b-md--2 -b-lg--3 -b-xl--4"></div>
@@ -71,11 +81,16 @@ p.-text
 .example.-mb--3
   .-p--2
     .chi-grid.-text.-no-gutter.-text--center
-      .-py--5.-m--2.-b--0(style="background:#F8F8F8;width:7.5rem;") -b--0
-      .-py--5.-m--2.-b--1(style="background:#F8F8F8;width:7.5rem;") -b--1
-      .-py--5.-m--2.-b--2(style="background:#F8F8F8;width:7.5rem;") -b--2
-      .-py--5.-m--2.-b--3(style="background:#F8F8F8;width:7.5rem;") -b--3
-      .-py--5.-m--2.-b--4(style="background:#F8F8F8;width:7.5rem;") -b--4
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--0.-bg--grey-10 -b--0
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-bg--grey-10 -b--1
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--2.-bg--grey-10 -b--2
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--3.-bg--grey-10 -b--3
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--4.-bg--grey-10 -b--4
   :code(lang="html")
     <div class="-b--0"></div>
     <div class="-b--1"></div>
@@ -85,29 +100,69 @@ p.-text
 h3 Border Colors
 p.-text
   | Use contextual color classes to change a borders color.
+h4 Brand
+p.-text
+  | Brand border colors reinforce CenturyLink's brand. Use primary and secondary as accents and base, dark, and light as neutrals.
 .example.-mb--3
-  .-p--2
-    .chi-grid.-no-gutter.-text.-text--center
-      .-m--2.-py--5.-b--1(style="background:#F8F8F8;width:7.5rem;") Base
-      .-m--2.-py--5.-b--1.-b--primary(style="background:#F8F8F8;width:7.5rem;") -b--primary
-      .-m--2.-py--5.-b--1.-b--success(style="background:#F8F8F8;width:7.5rem;") -b--success
-      .-m--2.-py--5.-b--1.-b--danger(style="background:#F8F8F8;width:7.5rem;") -b--danger
-      .-m--2.-py--5.-b--1.-b--warning(style="background:#F8F8F8;width:7.5rem;") -b--warning
-      .-m--2.-py--5.-b--1.-b--dark(style="background:#F8F8F8;width:7.5rem;") -b--dark
-      .-m--2.-py--5.-b--1.-b--light(style="background:#F8F8F8;width:7.5rem;") -b--light
+  .-p--3
+    .chi-grid.-no-gutter.-text.-text--center.-mb--2
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-bg--grey-10 Base
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--primary.-bg--grey-10 Primary
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--dark.-bg--grey-10 Dark
+    .chi-grid.-no-gutter.-text.-text--center.-bg--black.-text--white
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--secondary Secondary
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--light Light
   :code(lang="html")
+    <!-- For light backgrounds -->
     <div class="-b--1"></div>
     <div class="-b--1 -b--primary"></div>
+    <div class="-b--1 -b--dark"></div>
+    <!-- For dark backgrounds -->
+    <div class="-b--1 -b--secondary"></div>
+    <div class="-b--1 -b--light"></div>
+h4 Semantic
+p.-text
+  | Use semantic border colors to assign meaning to an element. Use green (success) for positive, blue (info) for informative,
+  | red (danger) for negative, and yellow (warning) for needs attention.
+.example.-mb--3
+  .-p--3
+    .chi-grid.-no-gutter.-text.-text--center
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--success.-bg--grey-10 Success
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--info.-bg--grey-10 Info
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--danger.-bg--grey-10 Danger
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--warning.-bg--grey-10 Warning
+  :code(lang="html")
     <div class="-b--1 -b--success"></div>
+    <div class="-b--1 -b--info"></div>
     <div class="-b--1 -b--danger"></div>
     <div class="-b--1 -b--warning"></div>
-    <div class="-b--1 -b--dark"></div>
-    <div class="-b--1 -b--light"></div>
+h4 Transparent
 p.-text
-  | Breakpoint classes also work here. The format is <code>-b[-{breakpoint}]--{color}</code>.
+  | Use the transparent border color as a method to hide an elements border without altering its size.
+.example.-mb--3
+  .-p--3
+    .chi-grid.-no-gutter.-text.-text--center
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--transparent.-bg--grey-10 Transparent
+  :code(lang="html")
+    <div class="-b--1 -b--transparent"></div>
+h4 Responsive
+p.-text
+  | Use breakpoint classes to change an elements border color on different viewports. Follow the format <code>-b[-{breakpoint}]--{color}</code>.
 .example.-mb--3
   .-p--2
     .chi-grid.-no-gutter.-text.-text--center
-      .-m--2.-p--5.-b--1.-b--primary.-b-sm--dark.-b-md--danger.-b-lg--success.-b-xl--warning(style="background:#F8F8F8") -b--primary -b-sm--dark -b-md--danger -b-lg--info -b-xl--warning
+      .chi-col.-w--8
+        .-m--1.-p--1.-py--4.-b--1.-b--primary.-b-sm--dark.-b-md--danger.-b-lg--success.-b-xl--warning.-bg--grey-10
+          | -b--primary -b-sm--dark -b-md--danger -b-lg--success -b-xl--warning
   :code(lang="html")
     <div class="-b--1 -b--primary -b-sm--dark -b-md--danger -b-lg--success -b-xl--warning"></div>

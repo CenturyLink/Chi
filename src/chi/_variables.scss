@@ -188,6 +188,14 @@ $grey-color: map-get(map-get($colorscheme, grey), 70);
 
 // borders
 $border-color: rgba(0, 0, 0, 0.12);
+$border-color-light: map-get($colorscheme, white);
+$border-color-dark: map-get($colorscheme, black);
+$border-color-danger: $danger-color;
+$border-color-success: $success-color;
+$border-color-info: $info-color;
+$border-color-warning: $warning-color;
+$border-color-primary: $primary-color;
+$border-color-secondary: $secondary-color;
 
 // font font-family
 $font-family: 'Inter', 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
