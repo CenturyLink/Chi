@@ -5,6 +5,7 @@ import {Util} from "../core/util.js";
 const CLASS_ACTIVE = "-active";
 const COMPONENT_SELECTOR = '[data-tooltip]';
 const COMPONENT_TYPE = "tooltip";
+const ANIMATION_DELAY = 500;
 const DEFAULT_CONFIG = {position: 'top', parent: null};
 
 class Tooltip extends Component {
@@ -21,6 +22,7 @@ class Tooltip extends Component {
     this._hovered = false;
     this._focused = false;
     this._shown = false;
+    this._animationTimeout;
 
     this._config.parent = this._config.parent || this._elem;
     this._config.position = config && config.position ||
@@ -30,13 +32,17 @@ class Tooltip extends Component {
     let self = this;
     this._createTooltip();
 
-    this._addEventHandler(this._elem, 'mouseenter', function() {
+    this._addEventHandler(this._elem, 'mouseenter', () => {
       self._hovered = true;
-      if (!self._shown) {
-        self.show();
-      }
+      this._animationTimeout = window.setTimeout(() => {
+        if (!self._shown) {
+          self.show();
+        }
+      }, ANIMATION_DELAY);
     });
-    this._addEventHandler(this._elem, 'mouseleave', function() {
+    this._addEventHandler(this._elem, 'mouseleave', () => {
+      window.clearTimeout(this._animationTimeout);
+      this._animationTimeout = null;
       self._hovered = false;
       if (self._shown && !self._focused) {
         self.hide();
