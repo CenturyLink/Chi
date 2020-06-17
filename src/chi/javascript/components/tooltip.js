@@ -5,6 +5,7 @@ import {Util} from "../core/util.js";
 const CLASS_ACTIVE = "-active";
 const COMPONENT_SELECTOR = '[data-tooltip]';
 const COMPONENT_TYPE = "tooltip";
+const ANIMATION_DELAY = 500;
 const DEFAULT_CONFIG = {position: 'top', parent: null};
 
 class Tooltip extends Component {
@@ -37,7 +38,7 @@ class Tooltip extends Component {
         if (!self._shown) {
           self.show();
         }
-      }, 500);
+      }, ANIMATION_DELAY);
     });
     this._addEventHandler(this._elem, 'mouseleave', () => {
       window.clearTimeout(this._animationTimeout);
