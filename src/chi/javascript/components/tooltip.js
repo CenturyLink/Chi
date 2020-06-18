@@ -7,6 +7,8 @@ const COMPONENT_SELECTOR = '[data-tooltip]';
 const COMPONENT_TYPE = "tooltip";
 const ANIMATION_DELAY = 500;
 const DEFAULT_CONFIG = {position: 'top', parent: null};
+const CLASS_LIGHT = '-light';
+const TOOLTIP_COLOR_ATTRIBUTE = 'data-tooltip-color';
 
 class Tooltip extends Component {
 
@@ -93,6 +95,9 @@ class Tooltip extends Component {
   _createTooltip () {
     this._tooltipElem = document.createElement('div');
     this._tooltipElem.setAttribute('class', 'chi-tooltip');
+    if (this._elem.getAttribute(TOOLTIP_COLOR_ATTRIBUTE) === 'light') {
+      this._tooltipElem.classList.add(CLASS_LIGHT);
+    }
     this._tooltipElem.id = `chi-${COMPONENT_TYPE}-${this.componentCounterNo}`;
     this._tooltipContent = document.createElement('span');
     this._tooltipContent.innerText = this._elem.dataset.tooltip;
