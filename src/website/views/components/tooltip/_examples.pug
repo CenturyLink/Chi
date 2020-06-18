@@ -5,7 +5,7 @@ p.-text
   | initialize it with the chi.tooltip factory method.
 .example.-mb--3
   .-p--3
-    button(data-tooltip='Your tooltip text on a button').chi-button.-mr--2 Tooltip
+    button(data-tooltip='Your tooltip text on a button').chi-button Tooltip
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
       li.-disabled
@@ -23,6 +23,30 @@ p.-text
       <button id="tooltip-1" class="chi-button" data-tooltip="Your tooltip text on a button">Tooltip</button>
 
       <script>chi.tooltip(document.getElementById('tooltip-1'));</script>
+
+h3 Light
+p.-text
+  | To render a light color tooltip, apply the <code>data-tooltip-color="light"</code> attribute to Tooltip trigger element.
+.example.-bg--black.-mb--3
+  .-p--3
+    button.-outline.-light(data-tooltip='Your tooltip text on a button' data-tooltip-color='light').chi-button Tooltip
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-light
+      li.-disabled
+        a(href=`#webcomponent-light`) Web Component
+      li.-active
+        a(href=`#html-light`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-light
+  .chi-tabs-panel.-active#html-light
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang='html')
+      <button id="tooltip-2" class="chi-button -outline -light" data-tooltip="Your tooltip text on a button" data-tooltip-color="light">Tooltip</button>
+
+      <script>chi.tooltip(document.getElementById('tooltip-2'));</script>
 
 h3 Positioning
 p.-text
