@@ -24,6 +24,10 @@ i {
   }
 }
 
+.icon-ticket-wrench::before {
+  content: '\e9c2';
+}
+
 .icon-user-outline::before {
   content: '\e9c1';
 }
