@@ -214,10 +214,17 @@ export class Drawer {
 
   private _documentClickHandler = (ev): void => {
     const drawerElement = this.el.querySelector('.chi-drawer');
+    const drawerCloseButton = this.nonClosable ? null : drawerElement.querySelector('button.-close');
+    const clickTarget = ev.target as HTMLElement;
 
     if (!this.preventAutoHide) {
       if (drawerElement.classList.contains('-active')) {
-        this.active = contains(drawerElement, ev.target as HTMLInputElement);
+        const clickOnCloseButton = drawerCloseButton &&
+          clickTarget === drawerCloseButton ||
+          contains(drawerCloseButton, clickTarget);
+
+        this.active = contains(drawerElement, clickTarget) &&
+          !clickOnCloseButton;
       }
     }
   };
