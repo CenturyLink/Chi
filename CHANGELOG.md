@@ -3,14 +3,14 @@
 ### Components
 #### Added
 * Added: Border utility now supports the color transparent to hide an elements border without altering its size.
-* Added: Icons `icon-attachment`, `icon-autopay`, `icon-print`, `icon-ticket-wrench`
+* Added: Icons `icon-attachment`, `icon-autopay`, `icon-print`, `icon-ticket-wrench`, `icon-user-outline`
 * Added: Tooltip now supports white tooltips for rendering on dark themes.
 #### Changed
 * Changed: Tooltip styles have been updated to appear less like dropdown menus.
 * Changed: Tooltip now renders with a 0.5s delay by default.
 * Changed: Modal portal theme shadow and header background-color have been updated to reflect latest designs.
 * Changed: Backdrop portal theme has been removed. Portal has adopted Chi's default theme. The class `-portal` is no longer necessary on `chi-backdrop`.
-* Changed: Icons `icon-address-book`, `icon-arrow-to-bottom`, `icon-user-outline`, `icon-user`, `icon-users`, `icon-visible-off`, `icon-visible`, `icon-x-alt` 
+* Changed: Icons `icon-address-book`, `icon-arrow-to-bottom`, `icon-user`, `icon-users`, `icon-visible-off`, `icon-visible`, `icon-x-alt` 
 #### Fixed
 * Fixed: Popover web component did not flip arrows correctly when space was insufficient.
 
