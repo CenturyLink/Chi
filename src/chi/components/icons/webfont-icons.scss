@@ -24,6 +24,26 @@ i {
   }
 }
 
+.icon-ticket-wrench::before {
+  content: '\e9c2';
+}
+
+.icon-user-outline::before {
+  content: '\e9c1';
+}
+
+.icon-print::before {
+  content: '\e9c0';
+}
+
+.icon-attachment::before {
+  content: '\e9bd';
+}
+
+.icon-autopay::before {
+  content: '\e9bc';
+}
+
 .icon-page-first::before {
   content: '\e9be';
 }
