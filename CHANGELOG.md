@@ -1,12 +1,18 @@
 # CHANGELOG
-## 2.3.0 (TBD)
+## 2.3.0 (June 19, 2020)
 ### Components
 #### Added
 * Added: Border utility now supports the color transparent to hide an elements border without altering its size.
+* Added: Icons `icon-attachment`, `icon-autopay`, `icon-print`, `icon-ticket-wrench`
+* Added: Tooltip now supports white tooltips for rendering on dark themes.
 #### Changed
-* Changed: Tooltip styles to look less like inverse dropdown menus.
-* Changed: Modal portal theme shadow and header background-color.
+* Changed: Tooltip styles have been updated to appear less like dropdown menus.
+* Changed: Tooltip now renders with a 0.5s delay by default.
+* Changed: Modal portal theme shadow and header background-color have been updated to reflect latest designs.
 * Changed: Backdrop portal theme has been removed. Portal has adopted Chi's default theme. The class `-portal` is no longer necessary on `chi-backdrop`.
+* Changed: Icons `icon-address-book`, `icon-arrow-to-bottom`, `icon-user-outline`, `icon-user`, `icon-users`, `icon-visible-off`, `icon-visible`, `icon-x-alt` 
+#### Fixed
+* Fixed: Popover web component did not flip arrows correctly when space was insufficient.
 
 ### Documentation
 #### Added
@@ -16,6 +22,9 @@
 * Changed: Border utility examples have been improved.
 * Changed: Tooltip documentation has been improved.
 * Changed: Backdrop portal theme class has been removed from backdrop examples.
+* Changed: Development workflow documentation has been improved.
+#### Fixed
+* Fixed: Badge documentation incorrectly referred to the default variant value as base instead of solid.
 
 ## 2.2.0 (June 9, 2020)
 ### Components
