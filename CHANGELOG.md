@@ -1,4 +1,9 @@
 # CHANGELOG
+## 2.4.0 (TBD)
+### Components
+#### Fixed
+* Fixed: Icon font face chi.eot error in Internet Explorer.
+
 ## 2.3.0 (June 19, 2020)
 ### Components
 #### Added

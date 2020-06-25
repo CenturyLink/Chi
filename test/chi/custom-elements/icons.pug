@@ -11,31 +11,31 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 h2 Single icon
 .test-single
   .chi-grid
-    .chi-col.-w--2.-middle
+    .chi-col.-w--2.-d--flex.-align-items--center
       chi-icon(icon="atom", data-cy='icon-single')
 
 h2 Sizes
 .test-sizes
   .chi-grid
     each size in sizes
-      .chi-col.-w--1.-o--1.-middle
+      .chi-col.-w--1.-o--1.-d--flex.-align-items--center
         h4= size
-      .chi-col.-w--2.-middle
+      .chi-col.-w--2.-d--flex.-align-items--center
         chi-icon(icon="atom", size=size, data-cy=size==='xl'?'icon-size':false)
 
 h2 Colors
 .test-colors
   .chi-grid
     each color in colors
-      .chi-col.-w--1.-o--1.-middle
+      .chi-col.-w--1.-o--1.-d--flex.-align-items--center
         h4= color
-      .chi-col.-w--2.-middle
+      .chi-col.-w--2.-d--flex.-align-items--center
         chi-icon(icon="atom", size='lg', color=color, data-cy=color==='primary'?'icon-color':false)
 
 h2 Icons
 .test-icons
   .chi-grid(data-cy='icon-list')
     each name in icons
-      .chi-col.-w--2.-o--1.-middle
+      .chi-col.-w--2.-o--1.-text--center
         chi-icon(icon=name, size="sm")
         h4= 'icon-' + name
