@@ -15,7 +15,8 @@ const EVENTS = {
 const DEFAULT_CONFIG = {
   target: null,
   animated: true,
-  preventAutoHide: false
+  preventAutoHide: false,
+  persistOnClick: false
 };
 
 class Drawer extends Component {
@@ -48,7 +49,13 @@ class Drawer extends Component {
 
     this._triggerClickEventListener = function(e) {
       e.preventDefault();
-      self.toggle();
+      if (self._config.persistOnClick) {
+        if (!self._shown) {
+          self.show();
+        }
+      } else {
+        self.toggle();
+      }
     };
 
     this._closeClickEventListener = function() {

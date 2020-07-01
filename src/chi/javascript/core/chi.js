@@ -5,10 +5,13 @@ let chi = {
   classes : {
     ACTIVE: '-active',
     ANIMATED: '-animated',
+    CLOSE: '-close',
     CLOSED: '-closed',
     DISABLED: '-disabled',
     INACTIVE: '-inactive',
-    TRANSITIONING : '-transitioning'
+    TRANSITIONING : '-transitioning',
+    EXPANDED: '-expanded',
+    UNSELECTED: '-unselected'
   },
   componentIndex: 0,
   registeredComponents: {},
