@@ -71,9 +71,9 @@ describe('enterprise-nav-menu', function() {
     });
   });
 
-  describe('check that click on 1st level of menu two-times, opens and closes the drawer', () => {
+  describe('check that click on 1st level of menu item opens the drawer', () => {
     [/^NoChanges$/, /^Changes$/, /^DeepLink$/].forEach((menuText) => {
-      it(`check "${menuText}" clicked twice opens and closes the drawer`, () => {
+      it(`check "${menuText}" clicked opens the drawer`, () => {
         cy.get(SIDENAV_COMPONENT_SELECTOR).within(() => {
           cy.get('.chi-sidenav__list li')
             .contains(menuText)
@@ -94,15 +94,6 @@ describe('enterprise-nav-menu', function() {
 
               cy.get(`${href}.-active`)
                 .should('be.visible')
-              ;
-
-              cy.get('@firstLevelElement')
-                .click()
-              ;
-
-              cy.get('' + href)
-                .should('not.have.class', '-active')
-                .should('not.be.visible')
               ;
             });
         });
