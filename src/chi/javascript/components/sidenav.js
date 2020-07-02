@@ -66,7 +66,7 @@ class Sidenav extends Component {
     this.singleLevelMenuItems();
     this.syncDrawers();
     this._configureAutoClose();
-    this._openDrawersOnHover();
+    this._initDrawersOnHover();
   }
 
   syncDrawers() {
@@ -104,7 +104,7 @@ class Sidenav extends Component {
     }
   }
 
-  _openDrawersOnHover() {
+  _initDrawersOnHover() {
     if (this._config.openOnHover) {
       const disableAnimation = (drawer) => {
         this._drawers.forEach((otherDrawer) => {
@@ -118,13 +118,16 @@ class Sidenav extends Component {
         this._addEventHandler(
           this._elem,
           'click',
-          (e) => this._preventCloseOnClick(e)
+          this._preventCloseOnClick
         );
         disableAnimation(drawer);
       };
 
       this._drawers.forEach((drawer) => {
-        drawer._elem.addEventListener('mouseenter', () => _openDrawerOnMouseEnter(drawer));
+        this._addEventHandler(
+          drawer._elem,
+          'mouseenter',
+          () => _openDrawerOnMouseEnter(drawer));
       });
     }
   }
@@ -487,7 +490,7 @@ class Sidenav extends Component {
       this._addEventHandler(
         menuItemLink,
         'click',
-        (e) => this._preventCloseOnClick(e)
+        this._preventCloseOnClick
       );
       this._drawers.forEach(function (otherDrawer) {
         if (otherDrawer !== drawer) {

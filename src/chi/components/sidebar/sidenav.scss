@@ -104,6 +104,30 @@ $sidenav-lg-width: 12.5rem;
 
     &__content {
       background: set-color(grey, 10);
+
+      .chi-sidenav__drawer-list {
+        li {
+          a {
+            .chi-sidenav__title {
+              .chi-sidenav__drawer-item-chevron {
+                position: absolute;
+                right: 1rem;
+                transition: 0.2s;
+              }
+            }
+          }
+
+          &.-expanded {
+            a {
+              .chi-sidenav__title {
+                .chi-sidenav__drawer-item-chevron {
+                  transform: rotate(180deg);
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
     &.-active {

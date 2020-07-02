@@ -510,7 +510,9 @@ h3 Open on hover
                   if val2 === 'A' || val2 === 'B'
                     li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
                       a(href=`#drawer-item-list-${val1}-${val2}`)
-                        .chi-sidenav__title=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                        .chi-sidenav__title.-position--relative
+                          span=`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
+                          i.chi-icon.icon-chevron-down.-xs.chi-sidenav__drawer-item-chevron
                       .chi-sidenav__drawer-item-list(id=`drawer-item-list-${val1}-${val2}`)
                         ul.chi-tabs.-vertical.-sm
                           li
