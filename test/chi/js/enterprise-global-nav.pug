@@ -114,6 +114,8 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.sidenav(document.getElementById('enterprise-sidenav'));
+      chi.sidenav(document.getElementById('enterprise-sidenav'), {
+        openOnHover: true
+      });
     }
   );
