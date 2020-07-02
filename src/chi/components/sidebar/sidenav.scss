@@ -109,7 +109,12 @@ $sidenav-lg-width: 12.5rem;
         &.chi-sidenav__drawer-list {
           li {
             a {
+              line-height: $line-height-small;
+              padding-right: 1.5rem;
+
               &.chi-drawer__subitem-list-trigger {
+                padding-right: 3rem;
+
                 .chi-sidenav__title {
                   &::after {
                     content: '\e91e';
