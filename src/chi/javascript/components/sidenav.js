@@ -115,8 +115,7 @@ class Sidenav extends Component {
       };
       const _openDrawerOnMouseEnter = (drawer) => {
         drawer.show();
-        this._addEventHandler(
-          this._elem,
+        this._elem.addEventListener(
           'click',
           this._preventCloseOnClick
         );
@@ -488,8 +487,7 @@ class Sidenav extends Component {
     if (menuItemLink) {
       const drawer = this._createDrawer(menuItemLink);
 
-      this._addEventHandler(
-        menuItemLink,
+      menuItemLink.addEventListener(
         'click',
         this._preventCloseOnClick
       );
