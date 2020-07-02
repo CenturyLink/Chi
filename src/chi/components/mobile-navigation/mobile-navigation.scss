@@ -1,8 +1,6 @@
 @import '_mixins';
 @import '_variables';
 
-$animation-duration: 0.5s;
-
 .chi-mobile-nav {
   &.-left {
     width: 23rem;
@@ -16,10 +14,11 @@ $animation-duration: 0.5s;
 
   &__header {
     align-items: center;
+    background-color: rgba(set-color(grey, 100), 0.5);
     display: flex;
     justify-content: center;
     min-height: 3.25rem;
-    padding: 0.5rem;
+    padding: 0.5rem 3rem;
 
     &-title {
       color: set-color(grey, 40);
@@ -29,16 +28,15 @@ $animation-duration: 0.5s;
       margin: 0;
     }
 
-    .-close {
+    .-close,
+    .-back {
       color: set-color(white);
-      top: .875rem;
+      top: 0.875rem;
     }
 
     .-back {
-      color: set-color(white);
       left: 1rem;
       position: fixed;
-      top: .875rem;
       z-index: 50;
     }
   }
@@ -148,7 +146,7 @@ $animation-duration: 0.5s;
             box-shadow: none;
 
             .chi-mobile-nav__list-title {
-              font-weight: 600;
+              font-weight: $font-weight-semibold;
             }
           }
         }
@@ -163,10 +161,10 @@ $animation-duration: 0.5s;
       &.-expanded {
         & > a {
           background-color: set-color(grey, 80);
-          color: white;
+          color: set-color(white);
 
           .chi-mobile-nav__list-title {
-            font-weight: 600;
+            font-weight: $font-weight-semibold;
           }
         }
 
@@ -180,7 +178,7 @@ $animation-duration: 0.5s;
       align-items: center;
       display: flex;
       font-size: 0.875rem;
-      font-weight: 400;
+      font-weight: $font-weight-normal;
     }
 
     &-item-list {
@@ -200,7 +198,7 @@ $animation-duration: 0.5s;
               &.chi-mobile-nav-item-tab {
                 color: set-color(white);
                 font-size: 0.8125rem;
-                font-weight: 400;
+                font-weight: $font-weight-normal;
                 line-height: 1.25rem;
                 padding-bottom: 0.625rem;
                 padding-left: 3rem;
@@ -208,7 +206,7 @@ $animation-duration: 0.5s;
 
                 &.-active {
                   color: $secondary-color;
-                  font-weight: 600;
+                  font-weight: $font-weight-semibold;
                 }
               }
             }
@@ -221,10 +219,6 @@ $animation-duration: 0.5s;
   &.-first-level {
     background-color: set-color(grey, 100);
 
-    .chi-mobile-nav__header {
-      background-color: rgba(set-color(grey, 100), 0.5);
-    }
-
     .chi-mobile-nav__content {
       background-color: set-color(grey, 100);
     }
@@ -233,100 +227,8 @@ $animation-duration: 0.5s;
   &.-second-level {
     background-color: set-color(grey, 90);
 
-    .chi-mobile-nav__header {
-      background-color: rgba(set-color(grey, 100), 0.5);
-    }
-
     .chi-mobile-nav__content {
       background-color: set-color(grey, 90);
-    }
-  }
-
-  &.-logged-in {
-    .chi-mobile-nav__header {
-      align-items: flex-end;
-      min-height: 4rem;
-
-      &-title {
-        padding-bottom: 0.25rem;
-      }
-
-      .-close,
-      .-back {
-        top: 1.5rem;
-      }
-    }
-
-    .chi-impersonation-bar {
-      box-shadow: inset 0 8px 0 0 set-color(grey, 70);
-      color: $text-white;
-      display: flex;
-      font-size: $text-small;
-      justify-content: center;
-      left: 0;
-      line-height: $line-height-large;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      z-index: 1;
-
-      &__content {
-        align-items: center;
-        background-color: set-color(grey, 70);
-        display: flex;
-        justify-content: center;
-        padding: 0 0.5rem;
-        position: relative;
-
-        &::before {
-          background-color: set-color(grey, 70);
-          content: '';
-          display: block;
-          height: 1.5rem;
-          left: -1rem;
-          position: absolute;
-          top: 0;
-          transform: skewX(45deg);
-          width: 1.5rem;
-          z-index: -1;
-        }
-
-        &::after {
-          background-color: set-color(grey, 70);
-          content: '';
-          display: block;
-          height: 1.5rem;
-          position: absolute;
-          right: -1rem;
-          top: 0;
-          transform: skewX(-45deg);
-          width: 1.5rem;
-          z-index: -1;
-        }
-      }
-
-      &__label {
-        color: set-color(grey, 30);
-        margin-right: 0.5rem;
-      }
-
-      &__username {
-        font-weight: 600;
-        margin-right: 0.25rem;
-        max-width: 12rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    }
-  }
-}
-
-/* IE11 CSS hack */
-@media all and (-ms-high-contrast: none) {
-  .chi-drawer {
-    .-close {
-      position: absolute;
     }
   }
 }
