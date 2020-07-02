@@ -14,6 +14,7 @@ const CHI_DRAWER_CONTENT = 'chi-drawer__content';
 const DRAWER_LINKLIST_CLASS = "chi-sidenav__drawer-list";
 const DRAWER_ITEM_LIST_CLASS = "chi-sidenav__drawer-item-list";
 const DRAWER_ITEM_TAB_CLASS = "chi-sidenav__drawer-item-tab";
+const DRAWER_SUBITEM_TRIGGER_CLASS = "chi-drawer__subitem-list-trigger";
 
 const DEFAULT_CONFIG = {
   animated: true,
@@ -67,6 +68,7 @@ class Sidenav extends Component {
     this.syncDrawers();
     this._configureAutoClose();
     this._initDrawersOnHover();
+    this._initSubtabTriggers();
   }
 
   syncDrawers() {
@@ -129,6 +131,19 @@ class Sidenav extends Component {
           () => _openDrawerOnMouseEnter(drawer));
       });
     }
+  }
+
+  _initSubtabTriggers() {
+    const secondLevelItems = this._elem.querySelectorAll(`.${DRAWER_CLASS} .${CHI_DRAWER_CONTENT} ul.${DRAWER_LINKLIST_CLASS} li`);
+
+    Array.prototype.forEach.call(
+      secondLevelItems,
+      (secondLevelItem) => {
+        if (secondLevelItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`)) {
+          Util.addClass(secondLevelItem.querySelector('a'), DRAWER_SUBITEM_TRIGGER_CLASS);
+        }
+      }
+    )
   }
 
   singleLevelMenuItems() {

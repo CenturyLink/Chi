@@ -105,23 +105,35 @@ $sidenav-lg-width: 12.5rem;
     &__content {
       background: set-color(grey, 10);
 
-      .chi-sidenav__drawer-list {
-        li {
-          a {
-            .chi-sidenav__title {
-              .chi-sidenav__drawer-item-chevron {
-                position: absolute;
-                right: 1rem;
-                transition: 0.2s;
+      ul {
+        &.chi-sidenav__drawer-list {
+          li {
+            a {
+              &.chi-drawer__subitem-list-trigger {
+                .chi-sidenav__title {
+                  &::after {
+                    content: '\e91e';
+                    display: block;
+                    font-family: 'chi';
+                    font-size: 0.75rem;
+                    font-weight: normal;
+                    height: 1rem;
+                    line-height: 1.2rem;
+                    position: absolute;
+                    right: 1.5rem;
+                    transition: 0.2s;
+                    width: 0.75rem;
+                  }
+                }
               }
             }
-          }
 
-          &.-expanded {
-            a {
-              .chi-sidenav__title {
-                .chi-sidenav__drawer-item-chevron {
-                  transform: rotate(180deg);
+            &.-expanded {
+              a {
+                .chi-sidenav__title {
+                  &::after {
+                    transform: rotate(180deg);
+                  }
                 }
               }
             }
