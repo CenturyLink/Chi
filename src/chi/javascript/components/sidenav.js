@@ -107,6 +107,8 @@ class Sidenav extends Component {
   }
 
   _initDrawersOnHover() {
+    const sidenavContent = this._elem.querySelector(`.${SIDENAV_CONTENT_CLASS}`);
+
     if (this._config.openOnHover) {
       const disableAnimation = (drawer) => {
         this._drawers.forEach((otherDrawer) => {
@@ -129,6 +131,12 @@ class Sidenav extends Component {
           drawer._elem,
           'mouseenter',
           () => _openDrawerOnMouseEnter(drawer));
+      });
+
+      sidenavContent.addEventListener('mouseover', () => {
+        if (!sidenavContent.querySelector(':hover')) {
+          this.hideAll();
+        }
       });
     }
   }
@@ -158,6 +166,15 @@ class Sidenav extends Component {
 
         if (!menuElementDrawer) {
           let menuItemToActivate;
+
+          if (this._config.openOnHover) {
+            this._addEventHandler(
+              singleLevelMenuItem,
+              'mouseenter',
+              () => {
+              this.hideAll();
+            });
+          }
 
           this._addEventHandler(
             singleLevelMenuItem,
