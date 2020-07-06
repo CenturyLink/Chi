@@ -14,6 +14,7 @@ const CHI_DRAWER_CONTENT = 'chi-drawer__content';
 const DRAWER_LINKLIST_CLASS = "chi-sidenav__drawer-list";
 const DRAWER_ITEM_LIST_CLASS = "chi-sidenav__drawer-item-list";
 const DRAWER_ITEM_TAB_CLASS = "chi-sidenav__drawer-item-tab";
+const DRAWER_SUBITEM_TRIGGER_CLASS = "chi-drawer__subitem-list-trigger";
 
 const DEFAULT_CONFIG = {
   animated: true,
@@ -66,7 +67,8 @@ class Sidenav extends Component {
     this.singleLevelMenuItems();
     this.syncDrawers();
     this._configureAutoClose();
-    this._openDrawersOnHover();
+    this._initDrawersOnHover();
+    this._initSubtabTriggers();
   }
 
   syncDrawers() {
@@ -104,7 +106,9 @@ class Sidenav extends Component {
     }
   }
 
-  _openDrawersOnHover() {
+  _initDrawersOnHover() {
+    const sidenavContent = this._elem.querySelector(`.${SIDENAV_CONTENT_CLASS}`);
+
     if (this._config.openOnHover) {
       const disableAnimation = (drawer) => {
         this._drawers.forEach((otherDrawer) => {
@@ -115,18 +119,39 @@ class Sidenav extends Component {
       };
       const _openDrawerOnMouseEnter = (drawer) => {
         drawer.show();
-        this._addEventHandler(
-          this._elem,
+        this._elem.addEventListener(
           'click',
-          (e) => this._preventCloseOnClick(e)
+          this._preventCloseOnClick
         );
         disableAnimation(drawer);
       };
 
       this._drawers.forEach((drawer) => {
-        drawer._elem.addEventListener('mouseenter', () => _openDrawerOnMouseEnter(drawer));
+        this._addEventHandler(
+          drawer._elem,
+          'mouseenter',
+          () => _openDrawerOnMouseEnter(drawer));
+      });
+
+      sidenavContent.addEventListener('mouseover', () => {
+        if (!sidenavContent.querySelector(':hover')) {
+          this.hideAll();
+        }
       });
     }
+  }
+
+  _initSubtabTriggers() {
+    const secondLevelItems = this._elem.querySelectorAll(`.${DRAWER_CLASS} .${CHI_DRAWER_CONTENT} ul.${DRAWER_LINKLIST_CLASS} li`);
+
+    Array.prototype.forEach.call(
+      secondLevelItems,
+      (secondLevelItem) => {
+        if (secondLevelItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`)) {
+          Util.addClass(secondLevelItem.querySelector('a'), DRAWER_SUBITEM_TRIGGER_CLASS);
+        }
+      }
+    )
   }
 
   singleLevelMenuItems() {
@@ -141,6 +166,15 @@ class Sidenav extends Component {
 
         if (!menuElementDrawer) {
           let menuItemToActivate;
+
+          if (this._config.openOnHover) {
+            this._addEventHandler(
+              singleLevelMenuItem,
+              'mouseenter',
+              () => {
+              this.hideAll();
+            });
+          }
 
           this._addEventHandler(
             singleLevelMenuItem,
@@ -170,6 +204,7 @@ class Sidenav extends Component {
                     Util.removeClass(activeDrawerElement, chi.classes.EXPANDED);
                   }
                 });
+              this.hideAll();
             }
             Util.addClass(menuItemToActivate, chi.classes.ACTIVE);
           });
@@ -484,10 +519,9 @@ class Sidenav extends Component {
     if (menuItemLink) {
       const drawer = this._createDrawer(menuItemLink);
 
-      this._addEventHandler(
-        menuItemLink,
+      menuItemLink.addEventListener(
         'click',
-        (e) => this._preventCloseOnClick(e)
+        this._preventCloseOnClick
       );
       this._drawers.forEach(function (otherDrawer) {
         if (otherDrawer !== drawer) {

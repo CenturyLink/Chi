@@ -104,6 +104,47 @@ $sidenav-lg-width: 12.5rem;
 
     &__content {
       background: set-color(grey, 10);
+
+      ul {
+        &.chi-sidenav__drawer-list {
+          li {
+            a {
+              line-height: $line-height-small;
+              padding-right: 1.5rem;
+
+              &.chi-drawer__subitem-list-trigger {
+                padding-right: 3rem;
+
+                .chi-sidenav__title {
+                  &::after {
+                    content: '\e91e';
+                    display: block;
+                    font-family: 'chi';
+                    font-size: 0.75rem;
+                    font-weight: normal;
+                    height: 1rem;
+                    line-height: 1.2rem;
+                    position: absolute;
+                    right: 1.5rem;
+                    transition: 0.2s;
+                    width: 0.75rem;
+                  }
+                }
+              }
+            }
+
+            &.-expanded {
+              a {
+                .chi-sidenav__title {
+                  &::after {
+                    transform: rotate(180deg);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
     &.-active {
