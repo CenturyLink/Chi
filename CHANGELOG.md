@@ -8,6 +8,7 @@
 * Changed: Icon semantic color values to brighter shades.
 * Changed: Icon colors are now defined using icon utility color classes (e.g. `-icon--primary`) instead of text utility color classes (e.g. `-text--primary`).
 * Changed: All component semantic states have been updated to render with new brighter semantic colors.
+* Changed: Alert banners no longer render with a bottom border.
 #### Fixed
 * Fixed: Icon font face chi.eot error in Internet Explorer.
 * Fixed: Icon bug which displayed the SVG for icon-check-alt in place of icon-check.
