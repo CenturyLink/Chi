@@ -40,7 +40,7 @@ describe('Icons', function() {
       .should('have.class', 'hydrated')
       .children()
       .first()
-      .should('match', 'div.chi-icon.-text--primary')
+      .should('match', 'div.chi-icon.-icon--primary')
       .and('not.have.class', '-primary')
       .children()
       .first()

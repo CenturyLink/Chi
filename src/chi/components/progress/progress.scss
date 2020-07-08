@@ -6,16 +6,16 @@ $states: (
     background-color: $light-color,
   ),
   danger: (
-    background-color: $danger-color,
+    background-color: $icon-color-danger,
   ),
   warning: (
-    background-color: $warning-color,
+    background-color: $icon-color-warning,
   ),
   info: (
-    background-color: $info-color,
+    background-color: $primary-color,
   ),
   success: (
-    background-color: $success-color,
+    background-color: $icon-color-success,
   )
 );
 

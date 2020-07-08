@@ -35,12 +35,13 @@ h3 Base
       <div class="chi-label" id="example-3">100%</div>
       <progress aria-labelledby="example-3" value="100" max="100"></progress>
 
-h3 States
+h3 Semantic States
+p.-text
+  | Use semantic colors to communicate meaning to users.
+  | Use green (<code>-success</code>) for positive, blue (base state)
+  | for informative, red (<code>-danger</code>) for negative, and yellow (<code>-warning</code>) for needs attention.
 .example.-mb--3
   .-p--3
-    .-py--2
-      .chi-label(id='example-5') Info
-      progress.chi-progress.-info(aria-labelledby='example-5', value='75', max='100')
     .-py--2
       .chi-label(id='example-7') Success
       progress.chi-progress.-success(aria-labelledby='example-7', value='75', max='100')
@@ -58,13 +59,7 @@ h3 States
         a(href=`#html-states`) HTML Blueprint
   .chi-tabs-panel#webcomponent-states
   .chi-tabs-panel.-active#html-states
-    .chi-tab__description
-      | To indicate a progress state, use the class <code>-info</code>, <code>-warning</code>, <code>-danger</code>, or <code>-success</code>.
     :code(lang="html")
-      <!-- Info -->
-      <div class="chi-label" id="example-4">Info</div>
-      <progress aria-labelledby="example-4" class="-info" value="75" max="100"></progress>
-
       <!-- Success -->
       <div class="chi-label" id="example-5">Success</div>
       <progress aria-labelledby="example-5" class="-success" value="75" max="100"></progress>

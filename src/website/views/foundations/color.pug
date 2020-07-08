@@ -53,20 +53,20 @@ div.chi-grid
           .a11y AAA
   .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
     .palette-container
-      .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#097A49;")
-        .chi-col.-w--12
-          .-text--bold Mint 70
-        .chi-col.-w--6.-text--sm
-          code.hexa #097A49
-        .chi-col.-w--6.-text--right.-text--sm
-          .a11y AA
-  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-    .palette-container
       .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#53565A;")
         .chi-col.-w--12
           .-text--bold Grey 70
         .chi-col.-w--6.-text--sm
           code.hexa #53565A
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AAA
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text(style="background-color:#ffffff;color:#242424;box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06)")
+        .chi-col.-w--12
+          .-text--bold White
+        .chi-col.-w--6.-text--sm
+          code.hexa #FFFFFF
         .chi-col.-w--6.-text--right.-text--sm
           .a11y AAA
 .chi-divider.-mt--3.-mb--5
@@ -199,17 +199,95 @@ div.chi-grid
     p.-text--sm.-mb--0 Used as body background color and primary text color on black.
 .chi-divider.-mt--3.-mb--5
 h2 Semantic
+p.-text
+  | Use semantic colors to communicate meaning to users.
+  | Examples include displaying alerts, form field validation, user status, application state and more.
+  | Use mint (success) for positive, blue (info) for informative, red (danger) for negative, and yellow (warning) for needs attention.
+  | Semantic colors should never be used for decorative purposes.
+h3 Text
+p.-text Use to color semantic text in all components.
 div.chi-grid
   .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-    h3 Success
     .palette-container
-      .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#097A49;")
+      .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#007D46;")
         .chi-col.-w--12
-          .-text--bold Mint 70
+          .-text--bold Mint 60
         .chi-col.-w--6.-text--sm
-          code.hexa #097A49
+          code.hexa #007D46
         .chi-col.-w--6.-text--right.-text--sm
           .a11y AA
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#005FFA;")
+        .chi-col.-w--12
+          .-text--bold Blue 60
+        .chi-col.-w--6.-text--sm
+          code.hexa #005FFA
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AA
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#D61A20;")
+        .chi-col.-w--12
+          .-text--bold Red 60
+        .chi-col.-w--6.-text--sm
+          code.hexa #D61A20
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AA
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#9E5D00;")
+        .chi-col.-w--12
+          .-text--bold Yellow 60
+        .chi-col.-w--6.-text--sm
+          code.hexa #9E5D00
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AA
+h3 Icons, Borders
+p.-text Use to color semantic icons and semantic accent borders in all components.
+div.chi-grid
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#008F50;")
+        .chi-col.-w--12
+          .-text--bold Mint 55
+        .chi-col.-w--6.-text--sm
+          code.hexa #008F50
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AA
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#1A71FF;")
+        .chi-col.-w--12
+          .-text--bold Blue 55
+        .chi-col.-w--6.-text--sm
+          code.hexa #1A71FF
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AA
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#E63238;")
+        .chi-col.-w--12
+          .-text--bold Red 55
+        .chi-col.-w--6.-text--sm
+          code.hexa #E63238
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AA
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#C27200;")
+        .chi-col.-w--12
+          .-text--bold Yellow 55
+        .chi-col.-w--6.-text--sm
+          code.hexa #C27200
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AA
+
+h3 Borders
+p.-text Use for low-contrast borders such as highlighting semantic messaging in an Alert or Card.
+div.chi-grid
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
       .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#abe0c9")
         .chi-col.-w--12
           .-text--bold Mint 30
@@ -217,6 +295,39 @@ div.chi-grid
           code.hexa #ABE0C9
         .chi-col.-w--6.-text--right.-text--sm
           .a11y AAA
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#C0D7FA;")
+        .chi-col.-w--12
+          .-text--bold Blue 30
+        .chi-col.-w--6.-text--sm
+          code.hexa #C0D7FA
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AAA
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#FCC7C9;")
+        .chi-col.-w--12
+          .-text--bold Red 30
+        .chi-col.-w--6.-text--sm
+          code.hexa #FCC7C9
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AAA
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#F5CC93;")
+        .chi-col.-w--12
+          .-text--bold Yellow 30
+        .chi-col.-w--6.-text--sm
+          code.hexa #F5CC93
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AAA
+
+h3 Backgrounds
+p.-text Use for low-contrast backgrounds such as highlighting semantic messaging in an Alert or Card.
+div.chi-grid
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
       .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#daf5e9")
         .chi-col.-w--12
           .-text--bold Mint 20
@@ -224,6 +335,39 @@ div.chi-grid
           code.hexa #DAF5E9
         .chi-col.-w--6.-text--right.-text--sm
           .a11y AAA
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#E6F0FF;")
+        .chi-col.-w--12
+          .-text--bold Blue 20
+        .chi-col.-w--6.-text--sm
+          code.hexa #E6F0FF
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AAA
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#FCE8E9;")
+        .chi-col.-w--12
+          .-text--bold Red 20
+        .chi-col.-w--6.-text--sm
+          code.hexa #FCE8E9
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AAA
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
+      .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#FAECD9;")
+        .chi-col.-w--12
+          .-text--bold Yellow 20
+        .chi-col.-w--6.-text--sm
+          code.hexa #FAECD9
+        .chi-col.-w--6.-text--right.-text--sm
+          .a11y AAA
+
+h3 Backgrounds
+p.-text Use for subtle, low-contrast backgrounds such as a highlighting rows in a Table or lines in a Diff.
+div.chi-grid
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+    .palette-container
       .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#edfaf3")
         .chi-col.-w--12
           .-text--bold Mint 10
@@ -232,29 +376,7 @@ div.chi-grid
         .chi-col.-w--6.-text--right.-text--sm
           .a11y AAA
   .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-    h3 Info
     .palette-container
-      .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#0047BB;")
-        .chi-col.-w--12
-          .-text--bold Blue 70
-        .chi-col.-w--6.-text--sm
-          code.hexa #0047BB
-        .chi-col.-w--6.-text--right.-text--sm
-          .a11y AAA
-      .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#C0D7FA;")
-        .chi-col.-w--12
-          .-text--bold Blue 30
-        .chi-col.-w--6.-text--sm
-          code.hexa #C0D7FA
-        .chi-col.-w--6.-text--right.-text--sm
-          .a11y AAA
-      .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#E6F0FF;")
-        .chi-col.-w--12
-          .-text--bold Blue 20
-        .chi-col.-w--6.-text--sm
-          code.hexa #E6F0FF
-        .chi-col.-w--6.-text--right.-text--sm
-          .a11y AAA
       .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#F5F8FC;")
         .chi-col.-w--12
           .-text--bold Blue 10
@@ -263,29 +385,7 @@ div.chi-grid
         .chi-col.-w--6.-text--right.-text--sm
           .a11y AAA
   .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-    h3 Danger
     .palette-container
-      .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#B50D12;")
-        .chi-col.-w--12
-          .-text--bold Red 70
-        .chi-col.-w--6.-text--sm
-          code.hexa #B50D12
-        .chi-col.-w--6.-text--right.-text--sm
-          .a11y AA
-      .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#FCC7C9;")
-        .chi-col.-w--12
-          .-text--bold Red 30
-        .chi-col.-w--6.-text--sm
-          code.hexa #FCC7C9
-        .chi-col.-w--6.-text--right.-text--sm
-          .a11y AAA
-      .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#FCE8E9;")
-        .chi-col.-w--12
-          .-text--bold Red 20
-        .chi-col.-w--6.-text--sm
-          code.hexa #FCE8E9
-        .chi-col.-w--6.-text--right.-text--sm
-          .a11y AAA
       .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#FFF5F5;")
         .chi-col.-w--12
           .-text--bold Red 10
@@ -294,29 +394,7 @@ div.chi-grid
         .chi-col.-w--6.-text--right.-text--sm
           .a11y AAA
   .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-    h3 Warning
     .palette-container
-      .palette.chi-grid.-no-gutter.-text.-text--white(style="background-color:#A66102;")
-        .chi-col.-w--12
-          .-text--bold Yellow 60
-        .chi-col.-w--6.-text--sm
-          code.hexa #A66102
-        .chi-col.-w--6.-text--right.-text--sm
-          .a11y AA
-      .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#F5CC93;")
-        .chi-col.-w--12
-          .-text--bold Yellow 30
-        .chi-col.-w--6.-text--sm
-          code.hexa #F5CC93
-        .chi-col.-w--6.-text--right.-text--sm
-          .a11y AAA
-      .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#FAECD9;")
-        .chi-col.-w--12
-          .-text--bold Yellow 20
-        .chi-col.-w--6.-text--sm
-          code.hexa #FAECD9
-        .chi-col.-w--6.-text--right.-text--sm
-          .a11y AAA
       .palette.chi-grid.-no-gutter.-text.-text--body(style="background-color:#FFF8ED;")
         .chi-col.-w--12
           .-text--bold Yellow 10

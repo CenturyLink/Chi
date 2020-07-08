@@ -8,7 +8,7 @@ h4 Base
   .example.-mb--3(style="height:30rem;width:100%")
     .chi-backdrop.-center.-p--6(style="position:relative;height:100%;")
       .chi-backdrop__wrapper
-        svg(class=`chi-spinner -text--inverse`,viewBox=`0 0 66 66`)
+        svg(class=`chi-spinner -icon--light`,viewBox=`0 0 66 66`)
           title Loading
           circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
 
@@ -17,7 +17,7 @@ h4 Inverse Backdrop
   .example.-mb--3(style="height:30rem;width:100%")
     .chi-backdrop.-center.-inverse.-p--6(style="position:relative;height:100%;")
       .chi-backdrop__wrapper
-        svg(class=`chi-spinner -text--primary`,viewBox=`0 0 66 66`)
+        svg(class=`chi-spinner -icon--primary`,viewBox=`0 0 66 66`)
           title Loading
           circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
 
@@ -30,19 +30,19 @@ h4 Spinner Buttons
       button(class='chi-button -mr--3')
         .chi-button__content
           span Button
-          svg(class='chi-spinner -text--muted', viewBox='0 0 66 66')
+          svg(class='chi-spinner -icon--muted', viewBox='0 0 66 66')
             title Loading
             circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
       button(class='chi-button -sm -mr--3')
         .chi-button__content
           span Small
-          svg(class='chi-spinner -text--muted -xs', viewBox='0 0 66 66')
+          svg(class='chi-spinner -icon--muted -xs', viewBox='0 0 66 66')
             title Loading
             circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
       button(class='chi-button -lg -mr--3')
         .chi-button__content
           span Large
-          svg(class='chi-spinner -text--muted -sm--2',viewBox='0 0 66 66')
+          svg(class='chi-spinner -icon--muted -sm--2',viewBox='0 0 66 66')
             title Loading
             circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
 
@@ -52,17 +52,17 @@ h4 Spinner Text Input
     .-p--3
       .chi-input__wrapper.-pb--2(style="max-width:20rem")
         input(type="text", class="chi-input", placeholder="Placeholder", value="Sample Text")
-        svg(class='chi-spinner -text--muted',viewBox='0 0 66 66')
+        svg(class='chi-spinner -icon--muted',viewBox='0 0 66 66')
           title Loading
           circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
       .chi-input__wrapper.-pb--2(style="max-width:20rem")
         input(type="text", class="chi-input -sm", placeholder="Placeholder", value="Sample Text")
-        svg(class='chi-spinner -text--muted -xs',viewBox='0 0 66 66')
+        svg(class='chi-spinner -icon--muted -xs',viewBox='0 0 66 66')
           title Loading
           circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
       .chi-input__wrapper.-pb--2(style="max-width:20rem")
         input(type="text", class="chi-input -lg", placeholder="Placeholder", value="Sample Text")
-        svg(class='chi-spinner -text--muted -sm--2',viewBox='0 0 66 66')
+        svg(class='chi-spinner -icon--muted -sm--2',viewBox='0 0 66 66')
           title Loading
           circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
 
@@ -73,7 +73,7 @@ h4 Sizes
       .chi-col.-w--1.-o--1.-middle
         h4= '-'+ size
       .chi-col.-w--2.-middle
-        svg(class=`chi-spinner -text--muted -${size}`,viewBox='0 0 66 66')
+        svg(class=`chi-spinner -icon--muted -${size}`,viewBox='0 0 66 66')
           title Loading
           circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
 

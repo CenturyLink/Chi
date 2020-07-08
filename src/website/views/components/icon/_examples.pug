@@ -89,22 +89,26 @@ h3 Colors
 p.-text
   | By default, icons are rendered in the same color as the text color defined on their parent container.
   | Easily change an icons color using the examples below.
+h4 Brand
+p.-text
+  | Brand icon colors reinforce CenturyLink's brand. Use primary and secondary as accents and base, grey, dark, and light as neutrals.
 .example.-mb--3
-  .-d--flex.-w--12.-justify-content--center.-flex--wrap.-p--1
-    each color in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--grey', 'text--muted']
-      div(class=`chi-icon -md -${color} -m--1`)
-        svg
-          use(xlink:href='#icon-atom')
-  .-d--flex.-w--12.-justify-content--center.-flex--wrap.-bg--black.-p--1
-    each color in ['text--secondary', 'text--light']
-      if (color === 'text--secondary')
-        div(class=`chi-icon -md -text--secondary -m--1`)
+  .chi-grid.-no-gutter
+    .chi-col.-w--12.-w-md--6.-p--1.-d--flex.-justify-content--center
+      each color in ['icon--body', 'icon--primary', 'icon--grey']
+        div(class=`chi-icon -md -${color} -m--1`)
           svg
             use(xlink:href='#icon-atom')
-      else if (color === 'text--light')
-        div(class=`chi-icon -md -text--light -m--1`)
-          svg
-            use(xlink:href='#icon-atom')
+    .chi-col.-w--12.-w-md--6.-bg--black.-p--1.-d--flex.-justify-content--center
+      each color in ['icon--secondary', 'icon--light']
+        if (color === 'icon--secondary')
+          div(class=`chi-icon -md -icon--secondary -m--1`)
+            svg
+              use(xlink:href='#icon-atom')
+        else if (color === 'icon--light')
+          div(class=`chi-icon -md -icon--light -m--1`)
+            svg
+              use(xlink:href='#icon-atom')
   .example-tabs.-pl--2
     ul.chi-tabs#example-colors
       li.-active
@@ -116,11 +120,7 @@ p.-text
       <!-- For light backgrounds -->
       <chi-icon icon="atom" size="md"></chi-icon>
       <chi-icon icon="atom" size="md" color="primary"></chi-icon>
-      <chi-icon icon="atom" size="md" color="success"></chi-icon>
-      <chi-icon icon="atom" size="md" color="warning"></chi-icon>
-      <chi-icon icon="atom" size="md" color="danger"></chi-icon>
       <chi-icon icon="atom" size="md" color="grey"></chi-icon>
-      <chi-icon icon="atom" size="md" color="muted"></chi-icon>
       <!-- For dark backgrounds -->
       <chi-icon icon="atom" size="md" color="secondary"></chi-icon>
       <chi-icon icon="atom" size="md" color="light"></chi-icon>
@@ -128,15 +128,44 @@ p.-text
     :code(lang="html")
       <!-- For light backgrounds -->
       <i class="chi-icon icon-atom -md"></i>
-      <i class="chi-icon icon-atom -md -text--primary"></i>
-      <i class="chi-icon icon-atom -md -text--success"></i>
-      <i class="chi-icon icon-atom -md -text--warning"></i>
-      <i class="chi-icon icon-atom -md -text--danger"></i>
-      <i class="chi-icon icon-atom -md -text--grey"></i>
-      <i class="chi-icon icon-atom -md -text--muted"></i>
+      <i class="chi-icon icon-atom -md -icon--primary"></i>
+      <i class="chi-icon icon-atom -md -icon--grey"></i>
       <!-- For dark backgrounds -->
-      <i class="chi-icon icon-atom -md -text--secondary"></i>
-      <i class="chi-icon icon-atom -md -text--light"></i>
+      <i class="chi-icon icon-atom -md -icon--secondary"></i>
+      <i class="chi-icon icon-atom -md -icon--light"></i>
+h4 Semantic
+p.-text
+  | Use semantic colors to communicate meaning to users. Examples include displaying alerts, form field
+  | validation, user status, application state and more. Use green (success) for positive, blue (info)
+  | for informative, red (danger) for negative, yellow (warning) for needs attention, and grey (muted)
+  | for neutral. Semantic colors should never be used for decorative purposes.
+.example.-mb--3
+  .chi-grid
+    .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
+      each color in ['icon--success', 'icon--info', 'icon--warning', 'icon--danger', 'icon--muted']
+        div(class=`chi-icon -md -${color} -m--1`)
+          svg
+            use(xlink:href='#icon-atom')
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-colors-semantic
+      li.-active
+        a(href='#webcomponent-colors-semantic') Web Component
+      li
+        a(href='#html-colors-semantic') HTML Blueprint
+  #webcomponent-colors-semantic.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-icon icon="atom" size="md" color="success"></chi-icon>
+      <chi-icon icon="atom" size="md" color="info"></chi-icon>
+      <chi-icon icon="atom" size="md" color="warning"></chi-icon>
+      <chi-icon icon="atom" size="md" color="danger"></chi-icon>
+      <chi-icon icon="atom" size="md" color="muted"></chi-icon>
+  #html-colors-semantic.chi-tabs-panel
+    :code(lang="html")
+      <i class="chi-icon icon-atom -md -icon--success"></i>
+      <i class="chi-icon icon-atom -md -icon--info"></i>
+      <i class="chi-icon icon-atom -md -icon--warning"></i>
+      <i class="chi-icon icon-atom -md -icon--danger"></i>
+      <i class="chi-icon icon-atom -md -icon--muted"></i>
 
 h3 Icons
 .chi-grid.icon-library.-pt--2.-pb--6
@@ -154,5 +183,6 @@ script.
       chi.tab(document.getElementById('example-default'));
       chi.tab(document.getElementById('example-sizes'));
       chi.tab(document.getElementById('example-colors'));
+      chi.tab(document.getElementById('example-colors-semantic'));
     }
   );

@@ -143,12 +143,20 @@ $badge: c-badge;
     &.-outline {
       background-color: transparent;
       color: $success-color;
+      
+      .chi-icon {
+        color: $icon-color-success;
+      }
     }
 
     &.-flat {
       background-color: transparent;
       border-color: transparent;
       color: $success-color;
+
+      .chi-icon {
+        color: $icon-color-success;
+      }
     }
   }
 
@@ -160,12 +168,20 @@ $badge: c-badge;
     &.-outline {
       background-color: transparent;
       color: $warning-color;
+
+      .chi-icon {
+        color: $icon-color-warning;
+      }
     }
 
     &.-flat {
       background-color: transparent;
       border-color: transparent;
       color: $warning-color;
+
+      .chi-icon {
+        color: $icon-color-warning;
+      }
     }
   }
 
@@ -177,12 +193,20 @@ $badge: c-badge;
     &.-outline {
       background-color: transparent;
       color: $danger-color;
+
+      .chi-icon {
+        color: $icon-color-danger;
+      }
     }
 
     &.-flat {
       background-color: transparent;
       border-color: transparent;
       color: $danger-color;
+
+      .chi-icon {
+        color: $icon-color-danger;
+      }
     }
   }
 
@@ -194,12 +218,20 @@ $badge: c-badge;
     &.-outline {
       background-color: transparent;
       color: $info-color;
+
+      .chi-icon {
+        color: $icon-color-info;
+      }
     }
 
     &.-flat {
       background-color: transparent;
       border-color: transparent;
       color: $info-color;
+
+      .chi-icon {
+        color: $icon-color-info;
+      }
     }
   }
 

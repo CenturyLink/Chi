@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-07-02T20:27:45",
+  "timestamp": "2020-07-08T05:11:45",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2166,7 +2166,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "to set color of a spinner { primary, success, warning, danger, muted }.",
+          "docs": "to set color of a spinner { primary, dark, success, warning, danger, muted }.",
           "docsTags": [],
           "values": [
             {

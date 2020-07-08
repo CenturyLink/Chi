@@ -1,8 +1,30 @@
 # CHANGELOG
-## 2.4.0 (TBD)
+## 2.4.0 (July 9, 2020)
 ### Components
+#### Added
+* Added: Sidenav now supports opening on hover.
+* Added: Sidenav now renders chevron icons on second-level menu items to illustrate when a third-level menu is available.
+#### Changed
+* Changed: Icon semantic color values to brighter shades.
+* Changed: Icon colors are now defined using icon utility color classes (e.g. `-icon--primary`) instead of text utility color classes (e.g. `-text--primary`).
+* Changed: All component semantic states have been updated to render with new brighter semantic colors.
 #### Fixed
 * Fixed: Icon font face chi.eot error in Internet Explorer.
+* Fixed: Icon bug which displayed the SVG for icon-check-alt in place of icon-check.
+* Fixed: Steps component active step was slightly misaligned in IE11.
+### Documentation
+#### Added
+* Added: Color utility now includes documentation for customizing the color of icons.
+#### Changed
+* Changed: Color foundation has been updated with new semantic colors and usage guidelines.
+* Changed: Icon documentation now includes usage guidelines for brand and semantic colors.
+* Changed: Spinner documentation now includes usage guidelines for brand and semantic colors.
+* Changed: Text utility documentation now includes usage guidelines for brand and semantic colors.
+* Changed: Color utility documentation now includes usage guidelines for brand, brand complimentary, neutral, and semantic colors.
+* Changed: All icons throughout docs have been changed from using text utility color classes to icon utility color classes.
+#### Fixed
+* Fixed: Some Header documentation examples did not match code samples.
+* Fixed: Template for authentication included an unnecessary size class that was causing alert content to misalign.
 
 ## 2.3.0 (June 19, 2020)
 ### Components

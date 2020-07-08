@@ -42,7 +42,7 @@ describe('Spinner', () => {
   });
 
   it('Colored spinner should have appropriate class', () => {
-    assertion('@spinner-secondary', 'svg.chi-spinner.-text--secondary');
+    assertion('@spinner-secondary', 'svg.chi-spinner.-icon--secondary');
   });
 
   it('Sized spinner should have appropriate class', () => {

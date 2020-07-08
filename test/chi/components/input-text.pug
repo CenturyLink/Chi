@@ -108,15 +108,15 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                 .chi-input__wrapper.-icon--right
                   +input(style, state, size, disabled)
                   if style == 'success'
-                    .chi-icon.-text--success
+                    .chi-icon.-icon--success
                       svg
                         use(xlink:href='#icon-check')
                   else if style == 'warning'
-                    .chi-icon.-text--warning
+                    .chi-icon.-icon--warning
                       svg
                         use(xlink:href='#icon-warning')
                   else if style == 'danger'
-                    .chi-icon.-text--danger
+                    .chi-icon.-icon--danger
                       svg
                         use(xlink:href='#icon-circle-warning')
                   else
@@ -139,15 +139,15 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                   .chi-input__wrapper.-icon--right
                     +input(style, state, size, disabled, id='example')
                     if style == 'success'
-                      .chi-icon.-text--success
+                      .chi-icon.-icon--success
                         svg
                           use(xlink:href='#icon-check')
                     else if style == 'warning'
-                      .chi-icon.-text--warning
+                      .chi-icon.-icon--warning
                         svg
                           use(xlink:href='#icon-warning')
                     else if style == 'danger'
-                      .chi-icon.-text--danger
+                      .chi-icon.-icon--danger
                         svg
                           use(xlink:href='#icon-circle-warning')
                     else
@@ -169,15 +169,15 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                   +input(style, state, size, disabled)
                   +icon('atom')
                   if style == 'success'
-                    .chi-icon.-text--success
+                    .chi-icon.-icon--success
                       svg
                         use(xlink:href='#icon-check')
                   else if style == 'warning'
-                    .chi-icon.-text--warning
+                    .chi-icon.-icon--warning
                       svg
                         use(xlink:href='#icon-warning')
                   else if style == 'danger'
-                    .chi-icon.-text--danger
+                    .chi-icon.-icon--danger
                       svg
                         use(xlink:href='#icon-circle-warning')
                   else
@@ -201,15 +201,15 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     +input(style, state, size, disabled, id='example')
                     +icon('atom')
                     if style == 'success'
-                      .chi-icon.-text--success
+                      .chi-icon.-icon--success
                         svg
                           use(xlink:href='#icon-check')
                     else if style == 'warning'
-                      .chi-icon.-text--warning
+                      .chi-icon.-icon--warning
                         svg
                           use(xlink:href='#icon-warning')
                     else if style == 'danger'
-                      .chi-icon.-text--danger
+                      .chi-icon.-icon--danger
                         svg
                           use(xlink:href='#icon-circle-warning')
                     else
@@ -245,6 +245,6 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                 .chi-form__item
                   .chi-label__wrapper
                     +label(size)
-                    i.chi-icon.icon-circle-info-outline.-text--muted
+                    i.chi-icon.icon-circle-info-outline.-icon--muted
                   .chi-input__wrapper
                     +input(style, state, size, disabled, id='example')

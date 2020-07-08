@@ -8,7 +8,7 @@ each size in ['default', 'sm', 'lg']
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .-m--2
         .chi-alert(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-          div(class=`chi-alert__icon chi-icon -text--${type}`)
+          div(class=`chi-alert__icon chi-icon -icon--${type}`)
             svg
               use(xlink:href=`#${val}`)
           .chi-alert__content
@@ -18,7 +18,7 @@ each size in ['default', 'sm', 'lg']
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .-m--2
         .chi-alert.-center(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-          div(class=`chi-alert__icon chi-icon -text--${type}`)
+          div(class=`chi-alert__icon chi-icon -icon--${type}`)
             svg
               use(xlink:href=`#${val}`)
           .chi-alert__content
@@ -28,7 +28,7 @@ each size in ['default', 'sm', 'lg']
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .-m--2
         .chi-alert.-close(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-          div(class=`chi-alert__icon chi-icon -text--${type}`)
+          div(class=`chi-alert__icon chi-icon -icon--${type}`)
             svg
               use(xlink:href=`#${val}`)
           .chi-alert__content
@@ -43,7 +43,7 @@ each size in ['default', 'sm', 'lg']
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .-m--2
         .chi-alert(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-          div(class=`chi-alert__icon chi-icon -text--${type}`)
+          div(class=`chi-alert__icon chi-icon -icon--${type}`)
             svg
               use(xlink:href=`#${val}`)
           .chi-alert__content
@@ -54,7 +54,7 @@ each size in ['default', 'sm', 'lg']
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .-m--2
         .chi-alert(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-          div(class=`chi-alert__icon chi-icon -text--${type}`)
+          div(class=`chi-alert__icon chi-icon -icon--${type}`)
             svg
               use(xlink:href=`#${val}`)
           .chi-alert__content
