@@ -2,211 +2,218 @@
 @import '_variables';
 
 .chi-mobile-nav {
-  &.-left {
-    width: 23rem;
-  }
-
-  .chi-divider {
-    &.-colorbar {
-      height: 0.25rem;
-    }
-  }
-
-  &__header {
-    align-items: center;
-    background-color: rgba(set-color(grey, 100), 0.5);
-    display: flex;
-    justify-content: center;
-    min-height: 3.25rem;
-    padding: 0.5rem 3rem;
-
-    &-title {
-      color: set-color(grey, 40);
-      font-size: 1rem;
-      font-weight: $font-weight-semibold;
-      line-height: 1.5rem;
-      margin: 0;
+  .chi-drawer {
+    &.-left {
+      width: 23rem;
     }
 
-    .-close,
-    .-back {
-      color: set-color(white);
-      top: 0.875rem;
+    .chi-divider {
+      &.-colorbar {
+        height: 0.25rem;
+      }
     }
 
-    .-back {
-      left: 1rem;
-      position: fixed;
-      z-index: 50;
-    }
-  }
+    .chi-mobile-nav__header {
+      align-items: center;
+      background-color: rgba(set-color(grey, 100), 0.5);
+      display: flex;
+      justify-content: center;
+      min-height: 3.25rem;
+      padding: 0.5rem 3rem;
 
-  &__content {
-    .chi-tabs {
-      &.-vertical {
-        &.-icons {
-          > li {
-            a {
-              padding: 0.75rem 0 0.75rem 3.5rem;
+      .chi-mobile-nav__header-title {
+        color: set-color(grey, 40);
+        font-size: 1rem;
+        font-weight: $font-weight-semibold;
+        line-height: 1.5rem;
+        margin: 0;
+      }
+
+      .-close,
+      .-back {
+        color: set-color(white);
+        top: 0.875rem;
+      }
+
+      .-back {
+        left: 1rem;
+        position: fixed;
+        z-index: 50;
+      }
+    }
+
+    .chi-mobile-nav__content {
+      .chi-tabs {
+        &.-vertical {
+          &.-icons {
+            > li {
+              a {
+                padding: 0.75rem 0 0.75rem 3.5rem;
+              }
             }
           }
         }
       }
     }
-  }
 
-  &__dropdown {
-    position: relative;
-    width: 100%;
-
-    &-content {
-      position: absolute;
+    .chi-mobile-nav__dropdown {
+      position: relative;
       width: 100%;
-      z-index: 50;
+
+      &-content {
+        position: absolute;
+        width: 100%;
+        z-index: 50;
+      }
     }
-  }
 
-  &__user {
-    align-items: center;
-    background-color: set-color(black);
-    display: flex;
-    justify-content: space-between;
-    padding: 0.25rem 1rem;
+    .chi-mobile-nav__user {
+      align-items: center;
+      background-color: set-color(black);
+      display: flex;
+      justify-content: space-between;
+      padding: 0.25rem 1rem;
 
-    &-name {
-      color: set-color(white);
+      &-name {
+        color: set-color(white);
+
+        & > span {
+          font-size: 0.875rem;
+        }
+
+        .chi-icon {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
+    .chi-mobile-nav__logout {
+      color: set-color(blue, 40);
+      padding: 0.25rem 1rem;
 
       & > span {
         font-size: 0.875rem;
+        font-weight: $font-weight-semibold;
       }
 
       .chi-icon {
         margin-left: 0.5rem;
       }
     }
-  }
 
-  &__logout {
-    color: set-color(blue, 40);
-    padding: 0.25rem 1rem;
+    .chi-mobile-nav__list {
+      list-style: none;
+      margin-bottom: 0;
+      margin-top: 0;
+      padding-left: 0;
 
-    & > span {
-      font-size: 0.875rem;
-      font-weight: $font-weight-semibold;
-    }
+      > li {
+        line-height: 1.25rem;
 
-    .chi-icon {
-      margin-left: 0.5rem;
-    }
-  }
+        > a {
+          color: set-color(white);
+          display: block;
+          padding-bottom: 0.625rem;
+          padding-left: 1.5rem;
+          padding-top: 0.625rem;
 
-  &__list {
-    list-style: none;
-    margin-bottom: 0;
-    margin-top: 0;
-    padding-left: 0;
-
-    > li {
-      line-height: 1.25rem;
-
-      > a {
-        color: set-color(white);
-        display: block;
-        padding-bottom: 0.625rem;
-        padding-left: 1.5rem;
-        padding-top: 0.625rem;
-
-        &:hover {
-          text-decoration: none;
+          &:hover {
+            text-decoration: none;
+          }
         }
-      }
 
-      &.-active {
-        & > a {
-          background-color: set-color(grey, 90);
-          box-shadow: inset 0.125rem 0 0 $secondary-color;
-          color: $secondary-color;
+        &.-active {
+          & > a {
+            background-color: set-color(grey, 90);
+            box-shadow: inset 0.125rem 0 0 $secondary-color;
+            color: $secondary-color;
+          }
+
+          &.-expanded {
+            & > a {
+              background-color: set-color(grey, 80);
+              color: $secondary-color;
+            }
+
+            &:hover {
+              & > a {
+                background-color: set-color(grey, 80);
+              }
+            }
+          }
+
+          &.-unselected {
+            & > a {
+              box-shadow: none;
+
+              .chi-mobile-nav__list-title {
+                font-weight: $font-weight-semibold;
+              }
+            }
+          }
+
+          &:hover {
+            & > a {
+              background-color: set-color(grey, 90);
+            }
+          }
         }
 
         &.-expanded {
           & > a {
             background-color: set-color(grey, 80);
-            color: $secondary-color;
-          }
-
-          &:hover {
-            & > a {
-              background-color: set-color(grey, 80);
-            }
-          }
-        }
-
-        &.-unselected {
-          & > a {
-            box-shadow: none;
+            color: set-color(white);
 
             .chi-mobile-nav__list-title {
               font-weight: $font-weight-semibold;
             }
           }
-        }
 
-        &:hover {
-          & > a {
-            background-color: set-color(grey, 90);
+          .chi-mobile-nav__list-item-list {
+            display: block;
           }
         }
       }
 
-      &.-expanded {
-        & > a {
-          background-color: set-color(grey, 80);
-          color: set-color(white);
+      &-title {
+        align-items: center;
+        display: flex;
+        font-size: 0.875rem;
+        font-weight: $font-weight-normal;
+      }
 
-          .chi-mobile-nav__list-title {
-            font-weight: $font-weight-semibold;
-          }
-        }
+      &-item-list {
+        background-color: set-color(grey, 80);
+        display: none;
+        overflow: hidden;
+        transition: height 0.075s ease-out;
 
-        .chi-mobile-nav__list-item-list {
+        &.-transitioning {
           display: block;
         }
-      }
-    }
 
-    &-title {
-      align-items: center;
-      display: flex;
-      font-size: 0.875rem;
-      font-weight: $font-weight-normal;
-    }
+        .chi-tabs {
+          &.-sm {
+            li {
+              a {
+                &.chi-mobile-nav-item-tab {
+                  color: set-color(white);
+                  font-size: 0.8125rem;
+                  font-weight: $font-weight-normal;
+                  line-height: 1.25rem;
+                  padding-bottom: 0.625rem;
+                  padding-left: 3rem;
+                  padding-top: 0.625rem;
 
-    &-item-list {
-      background-color: set-color(grey, 80);
-      display: none;
-      overflow: hidden;
-      transition: height 0.075s ease-out;
+                  &:hover {
+                    background-color: set-color(grey, 70);
+                    color: $text-white;
+                  }
 
-      &.-transitioning {
-        display: block;
-      }
-
-      .chi-tabs {
-        &.-sm {
-          li {
-            a {
-              &.chi-mobile-nav-item-tab {
-                color: set-color(white);
-                font-size: 0.8125rem;
-                font-weight: $font-weight-normal;
-                line-height: 1.25rem;
-                padding-bottom: 0.625rem;
-                padding-left: 3rem;
-                padding-top: 0.625rem;
-
-                &.-active {
-                  color: $secondary-color;
-                  font-weight: $font-weight-semibold;
+                  &.-active {
+                    color: $secondary-color;
+                    font-weight: $font-weight-semibold;
+                  }
                 }
               }
             }
@@ -214,21 +221,24 @@
         }
       }
     }
-  }
 
-  &.-first-level {
-    background-color: set-color(grey, 100);
-
-    .chi-mobile-nav__content {
+    &.chi-mobile-nav__first-level {
       background-color: set-color(grey, 100);
+
+      .chi-mobile-nav__content {
+        background-color: set-color(grey, 100);
+      }
     }
   }
 
-  &.-second-level {
-    background-color: set-color(grey, 90);
-
-    .chi-mobile-nav__content {
+  .chi-mobile-nav__drawers {
+    .chi-drawer {
       background-color: set-color(grey, 90);
+      z-index: 50;
+
+      .chi-mobile-nav__content {
+        background-color: set-color(grey, 90);
+      }
     }
   }
 }
