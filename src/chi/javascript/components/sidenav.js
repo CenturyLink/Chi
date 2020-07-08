@@ -130,7 +130,14 @@ class Sidenav extends Component {
         this._addEventHandler(
           drawer._elem,
           'mouseenter',
-          () => _openDrawerOnMouseEnter(drawer));
+          () => {
+            const selectedMenuItem = this.getSelectedMenuItem();
+
+            if (selectedMenuItem) {
+              Util.removeClass(selectedMenuItem, chi.classes.ACTIVE);
+            }
+            _openDrawerOnMouseEnter(drawer)
+          });
       });
 
       sidenavContent.addEventListener('mouseover', () => {
@@ -171,8 +178,17 @@ class Sidenav extends Component {
             this._addEventHandler(
               singleLevelMenuItem,
               'mouseenter',
-              () => {
-              this.hideAll();
+              (e) => {
+                const activeMenuItem = this.getActiveMenuItem();
+                const menuItemAnchorToSelect = singleLevelMenuItem.querySelector('a');
+
+                this.hideAll();
+                if (menuItemAnchorToSelect) {
+                  Util.addClass(menuItemAnchorToSelect, chi.classes.ACTIVE);
+                }
+                if (activeMenuItem !== e.target) {
+                  Util.addClass(activeMenuItem.querySelector('a'), chi.classes.UNSELECTED);
+                }
             });
           }
 
@@ -434,6 +450,9 @@ class Sidenav extends Component {
     this._resetDrawerAnimation();
     this.menuItemRemoveUnselected();
     this.resetActiveDrawerMenuItem();
+    if (this._config.openOnHover) {
+      Util.checkRemoveClass(selectedMenuItem, chi.classes.ACTIVE);
+    }
   }
 
   _isLinkAMenuItemActivator(anchorElem) {
@@ -542,7 +561,8 @@ class Sidenav extends Component {
   }
 
   _handlerDrawerHide() {
-    const allDrawersClosed = this._drawers.every(drawer => !Util.checkHasClass(drawer._elem, chi.classes.ACTIVE));
+    const selectedSingleLevel = this._elem.querySelector(`nav ul li a.${chi.classes.ACTIVE}`);
+    const allDrawersClosed = this._drawers.every(drawer => !Util.checkHasClass(drawer._elem, chi.classes.ACTIVE)) && !selectedSingleLevel;
 
     if (allDrawersClosed) {
       this.menuItemRemoveUnselected();
