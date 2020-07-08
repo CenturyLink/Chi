@@ -352,12 +352,12 @@ p.-text
         div.-p--2.-text--center
           chi-spinner(color=color, class='-m--3', size='md')
   .example-tabs.-pl--2
-    ul.chi-tabs#examples-colors
+    ul.chi-tabs#examples-colors-semantic
       li.-active
-        a(href=`#webcomponent-colors`) Web Component
+        a(href=`#webcomponent-colors-semantic`) Web Component
       li
-        a(href=`#html-colors`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-colors
+        a(href=`#html-colors-semantic`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-colors-semantic
     .chi-tab__description
       | Use the <code>color</code> attribute to change a spinners color.
     :code(lang="html")
@@ -365,7 +365,7 @@ p.-text
       <chi-spinner color="warning"></chi-spinner>
       <chi-spinner color="danger"></chi-spinner>
       <chi-spinner color="muted"></chi-spinner>
-  .chi-tabs-panel#html-colors
+  .chi-tabs-panel#html-colors-semantic
     .chi-tab__description
       | Use <a href="../../utilities/color">icon color utilities</a> such as <code>-icon--success</code>
       | and <code>-icon--danger</code> to change the color of any spinner.
