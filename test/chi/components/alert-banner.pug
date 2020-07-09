@@ -7,7 +7,7 @@ each size in ['default', 'sm', 'lg']
   div(class=`test-banner-${size} -w--100`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .chi-alert.-m--2.-banner(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        div(class=`chi-alert__icon chi-icon -text--${type}`)
+        div(class=`chi-alert__icon chi-icon -icon--${type}`)
           svg
             use(xlink:href=`#${val}`)
         .chi-alert__content
@@ -17,7 +17,7 @@ each size in ['default', 'sm', 'lg']
   div(class=`test-banner-center-${size} -w--100`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .chi-alert.-m--2.-banner.-center(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        div(class=`chi-alert__icon chi-icon -text--${type}`)
+        div(class=`chi-alert__icon chi-icon -icon--${type}`)
           svg
             use(xlink:href=`#${val}`)
         .chi-alert__content
@@ -27,7 +27,7 @@ each size in ['default', 'sm', 'lg']
   div(class=`test-banner-dismissible-${size} -w--100`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .chi-alert.-banner.-m--2.-close.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        div(class=`chi-alert__icon chi-icon -text--${type}`)
+        div(class=`chi-alert__icon chi-icon -icon--${type}`)
           svg
             use(xlink:href=`#${val}`)
         .chi-alert__content
@@ -38,21 +38,11 @@ each size in ['default', 'sm', 'lg']
               svg
                 use(xlink:href='#icon-x')
 
-  h4 No Border / #{size}
-  div(class=`test-banner-no-border-${size} -w--100`)
-    each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .chi-alert.-m--2.-banner(class=`-${type} -no-border ${size === 'default' ? '' : '-' + size}`)
-        div(class=`chi-alert__icon chi-icon -text--${type}`)
-          svg
-            use(xlink:href=`#${val}`)
-        .chi-alert__content
-          p.chi-alert__text=`This is a no border ${type} alert`
-
   h4 Titled / #{size}
   div(class=`test-banner-titled-${size} -w--100`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .chi-alert.-m--2.-banner(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        div(class=`chi-alert__icon chi-icon -text--${type}`)
+        div(class=`chi-alert__icon chi-icon -icon--${type}`)
           svg
             use(xlink:href=`#${val}`)
         .chi-alert__content

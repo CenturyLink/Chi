@@ -41,17 +41,17 @@ h4 Spinner Text Input
     .-p--3
       .chi-input__wrapper.-pb--2(style="max-width:20rem")
         input(type="text", class="chi-input", placeholder="Placeholder", value="Sample Text")
-        svg(class='chi-spinner -text--muted',viewBox='0 0 66 66')
+        svg(class='chi-spinner -icon--muted',viewBox='0 0 66 66')
           title Loading
           circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
       .chi-input__wrapper.-pb--2(style="max-width:20rem")
         input(type="text", class="chi-input -sm", placeholder="Placeholder", value="Sample Text")
-        svg(class='chi-spinner -text--muted -xs',viewBox='0 0 66 66')
+        svg(class='chi-spinner -icon--muted -xs',viewBox='0 0 66 66')
           title Loading
           circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
       .chi-input__wrapper.-pb--2(style="max-width:20rem")
         input(type="text", class="chi-input -lg", placeholder="Placeholder", value="Sample Text")
-        svg(class='chi-spinner -text--muted -sm--2',viewBox='0 0 66 66')
+        svg(class='chi-spinner -icon--muted -sm--2',viewBox='0 0 66 66')
           title Loading
           circle(class='path',cx='33',cy='33',r='30',fill='none',stroke-width='6')
 
@@ -70,8 +70,8 @@ h4 Colors
     each type in ['primary', 'success', 'warning', 'danger', 'muted', 'secondary', 'light']
       div.-p--2
         chi-spinner(color=type, size='lg', data-cy=`spinner-${type}`)
-        p.-text(class=`-text--${type}`)
-          = `-text--${type}`
+        p.-text(class=`-icon--${type}`)
+          = `-icon--${type}`
 
 style.
   svg {

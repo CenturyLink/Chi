@@ -301,7 +301,10 @@ small,
 }
 
 // text colors
-.-text--body {
+.-text--body,
+.-icon--body,
+.-text--dark,
+.-icon--dark {
   color: $text-color !important;
 }
 
@@ -314,12 +317,15 @@ small,
   }
 }
 
-.-text--inverse {
+.-text--inverse,
+.-icon--inverse {
   color: $text-inverse !important;
 }
 
 .-text--white,
-.-text--light {
+.-text--light,
+.-icon--white,
+.-icon--light {
   color: $text-white !important;
 }
 
@@ -334,7 +340,9 @@ small,
 }
 
 .-text--brand,
-.-text--primary {
+.-text--primary,
+.-icon--brand,
+.-icon--primary {
   color: $primary !important;
 }
 
@@ -347,7 +355,8 @@ small,
   }
 }
 
-.-text--secondary {
+.-text--secondary,
+.-icon--secondary {
   color: $secondary !important;
 }
 
@@ -364,24 +373,48 @@ small,
   color: $success-color !important;
 }
 
+.-icon--success {
+  color: $icon-color-success !important;
+}
+
 .-text--danger {
   color: $danger-color !important;
+}
+
+.-icon--danger {
+  color: $icon-color-danger !important;
 }
 
 .-text--info {
   color: $info-color !important;
 }
 
+.-icon--info {
+  color: $icon-color-info !important;
+}
+
 .-text--warning {
   color: $warning-color !important;
+}
+
+.-icon--warning {
+  color: $icon-color-warning !important;
 }
 
 .-text--muted {
   color: $muted-color !important;
 }
 
+.-icon--muted {
+  color: $icon-color-muted !important;
+}
+
 .-text--grey {
   color: $grey-color !important;
+}
+
+.-icon--grey {
+  color: $icon-color-grey !important;
 }
 
 // line heights

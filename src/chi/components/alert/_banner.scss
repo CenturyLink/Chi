@@ -2,24 +2,11 @@
   &.-banner {
     background-color: set-color(white);
     border: 0;
-    border-bottom: 0.0625rem solid set-color(grey, 30);
     border-top: 0.0625rem solid transparent;
     box-shadow: none;
 
-    &.-no-border {
-      border-color: transparent;
-    }
-
-    &.-warning {
-      .chi-alert__title {
-        color: set-color(yellow, 70);
-      }
-    }
-
-    &.-muted {
-      .chi-alert__title {
-        color: set-color(grey, 70);
-      }
+    .chi-alert__title {
+      color: $text-color;
     }
   }
 }

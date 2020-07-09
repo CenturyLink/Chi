@@ -29,7 +29,7 @@ h4 Base
     :code(lang="html")
       <div class="chi-backdrop -center">
         <div class="chi-backdrop__wrapper">
-          <svg class="chi-spinner -text--light" viewBox="0 0 66 66">
+          <svg class="chi-spinner -icon--light" viewBox="0 0 66 66">
             <title>Loading</title>
             <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
           </svg>
@@ -57,7 +57,7 @@ h4 Inverse
     :code(lang="html")
       <div class="chi-backdrop -center -inverse">
         <div class="chi-backdrop__wrapper">
-          <svg class="chi-spinner -text--primary" viewBox="0 0 66 66">
+          <svg class="chi-spinner -icon--primary" viewBox="0 0 66 66">
             <title>Loading</title>
             <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
           </svg>
@@ -103,7 +103,7 @@ h4 Spinners in Buttons
       <button class="chi-button">
         <div class="chi-button__content">
           <span>Button</span>
-          <svg class="chi-spinner -text--muted" viewBox="0 0 66 66">
+          <svg class="chi-spinner -icon--muted" viewBox="0 0 66 66">
             <title>Loading</title>
             <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
           </svg>
@@ -113,7 +113,7 @@ h4 Spinners in Buttons
       <button class="chi-button">
         <div class="chi-button__content">
           <span>Small</span>
-          <svg class="chi-spinner -text--muted -xs" viewBox="0 0 66 66">
+          <svg class="chi-spinner -icon--muted -xs" viewBox="0 0 66 66">
             <title>Loading</title>
             <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
           </svg>
@@ -123,7 +123,7 @@ h4 Spinners in Buttons
       <button class="chi-button">
         <div class="chi-button__content">
           <span>Large</span>
-          <svg class="chi-spinner -text--muted -sm--2" viewBox="0 0 66 66">
+          <svg class="chi-spinner -icon--muted -sm--2" viewBox="0 0 66 66">
             <title>Loading</title>
             <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
           </svg>
@@ -138,21 +138,21 @@ h4 Spinners in Text Inputs
       label.chi-label(for="spinner-input-01") Label
       .chi-input__wrapper
         input(type="text", class="chi-input", placeholder="Placeholder", value="Sample Text" id="spinner-input-01")
-        svg(class=`chi-spinner -text--muted`,viewBox=`0 0 66 66`)
+        svg(class=`chi-spinner -icon--muted`,viewBox=`0 0 66 66`)
           title Loading
           circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
     .chi-form__item.-mb--2(style="max-width:20rem")
       label.chi-label(for="spinner-input-02") Label
       .chi-input__wrapper
         input(type="text", class="chi-input -sm", placeholder="Placeholder", value="Sample Text", id="spinner-input-02")
-        svg(class=`chi-spinner -text--muted -xs`,viewBox=`0 0 66 66`)
+        svg(class=`chi-spinner -icon--muted -xs`,viewBox=`0 0 66 66`)
           title Loading
           circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
     .chi-form__item.-mb--2(style="max-width:20rem")
       label.chi-label(for="spinner-input-03") Label
       .chi-input__wrapper
         input(type="text", class="chi-input -lg", placeholder="Placeholder", value="Sample Text", id="spinner-input-03")
-        svg(class=`chi-spinner -text--muted -sm--2`,viewBox=`0 0 66 66`)
+        svg(class=`chi-spinner -icon--muted -sm--2`,viewBox=`0 0 66 66`)
           title Loading
           circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
   .example-tabs.-pl--2
@@ -169,7 +169,7 @@ h4 Spinners in Text Inputs
         <label class="chi-label" for="spinner-input-01">Label</label>
         <div class="chi-input__wrapper">
           <input type="text" class="chi-input" placeholder="Placeholder" value="Sample text" id="spinner-input-01">
-          <svg class="chi-spinner -text--muted" viewBox="0 0 66 66">
+          <svg class="chi-spinner -icon--muted" viewBox="0 0 66 66">
             <title>Loading</title>
             <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
           </svg>
@@ -180,7 +180,7 @@ h4 Spinners in Text Inputs
         <label class="chi-label" for="spinner-input-02">Label</label>
         <div class="chi-input__wrapper">
           <input type="text" class="chi-input -sm" placeholder="Placeholder" value="Sample text" id="spinner-input-02">
-          <svg class="chi-spinner -text--muted -xs" viewBox="0 0 66 66">
+          <svg class="chi-spinner -icon--muted -xs" viewBox="0 0 66 66">
             <title>Loading</title>
             <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
           </svg>
@@ -191,7 +191,7 @@ h4 Spinners in Text Inputs
         <label class="chi-label" for="spinner-input-03">Label</label>
         <div class="chi-input__wrapper">
           <input type="text" class="chi-input -lg" placeholder="Placeholder" value="Sample text" id="spinner-input-03">
-          <svg class="chi-spinner -text--muted -sm--2" viewBox="0 0 66 66">
+          <svg class="chi-spinner -icon--muted -sm--2" viewBox="0 0 66 66">
             <title>Loading</title>
             <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
           </svg>
@@ -199,7 +199,7 @@ h4 Spinners in Text Inputs
         </div>
       </div>
 
-h2 Spinner Sizes
+h3 Sizes
 .example.-mb--3
   .-p--3
     .chi-grid.-align-items--end
@@ -283,21 +283,23 @@ h2 Spinner Sizes
         <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
       </svg>
 
-h2 Spinner Colors
+h3 Colors
+p.-text
+  | By default, spinners are rendered in the same color as the text color defined on their parent container.
+  | Easily change a spinners color using the examples below.
+h4 Brand
+p.-text
+  | Brand spinner colors reinforce CenturyLink's brand. Use primary or dark for light themes and secondary or light for dark themes.
 .example.-mb--3
   .chi-grid.-no-gutter
-    .chi-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap
-      each color in ['primary', 'success', 'warning', 'danger', 'muted']
+    .chi-col.-w--12.-w-md--6.-p--1.-d--flex.-justify-content--center
+      each color in ['primary', 'dark']
         div.-p--2.-text--center
-          chi-spinner(color=color, class='-m--3', size='md')
-          p.-text(class=`-text--${color} -px--1`)
-            = color
-    .chi-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap.-bg--black
+          chi-spinner(color=color, class='-m--1', size='md')
+    .chi-col.-w--12.-w-md--6.-bg--black.-p--1.-d--flex.-justify-content--center
       each color in ['secondary', 'light']
         div.-p--2.-text--center
-          chi-spinner(color=color, class='-m--3', size='md')
-          p.-text(class=`-text--${color} -px--1`)
-            = color
+          chi-spinner(color=color, class='-m--1', size='md')
   .example-tabs.-pl--2
     ul.chi-tabs#examples-colors
       li.-active
@@ -306,49 +308,81 @@ h2 Spinner Colors
         a(href=`#html-colors`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-colors
     .chi-tab__description
-      | To change the color of a spinner set the value to <code>color</code> attribute.
+      | Use the <code>color</code> attribute to change a spinners color.
     :code(lang="html")
       <!-- For light backgrounds -->
       <chi-spinner color="primary"></chi-spinner>
-      <chi-spinner color="success"></chi-spinner>
-      <chi-spinner color="warning"></chi-spinner>
-      <chi-spinner color="danger"></chi-spinner>
-      <chi-spinner color="muted"></chi-spinner>
+      <chi-spinner color="dark"></chi-spinner>
       <!-- For dark backgrounds -->
       <chi-spinner color="secondary"></chi-spinner>
       <chi-spinner color="light"></chi-spinner>
   .chi-tabs-panel#html-colors
     .chi-tab__description
-      | Use <a href="../../utilities/text">text utilities</a> such as <code>-text--primary</code>
-      | and <code>-text--muted</code> to change the color of any spinner.
+      | Use <a href="../../utilities/color">icon color utilities</a> such as <code>-icon--primary</code>
+      | and <code>-icon--secondary</code> to change the color of any spinner.
     :code(lang="html")
       <!-- For light backgrounds -->
-      <svg class="chi-spinner -text--primary" viewBox="0 0 66 66">
+      <svg class="chi-spinner -icon--primary" viewBox="0 0 66 66">
         <title>Loading</title>
         <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
       </svg>
-      <svg class="chi-spinner -text--success" viewBox="0 0 66 66">
-        <title>Loading</title>
-        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-      </svg>
-      <svg class="chi-spinner -text--warning" viewBox="0 0 66 66">
-        <title>Loading</title>
-        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-      </svg>
-      <svg class="chi-spinner -text--danger" viewBox="0 0 66 66">
-        <title>Loading</title>
-        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-      </svg>
-      <svg class="chi-spinner -text--muted" viewBox="0 0 66 66">
+      <svg class="chi-spinner -icon--dark" viewBox="0 0 66 66">
         <title>Loading</title>
         <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
       </svg>
       <!-- For dark backgrounds -->
-      <svg class="chi-spinner -text--secondary" viewBox="0 0 66 66">
+      <svg class="chi-spinner -icon--secondary" viewBox="0 0 66 66">
         <title>Loading</title>
         <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
       </svg>
-      <svg class="chi-spinner -text--light" viewBox="0 0 66 66">
+      <svg class="chi-spinner -icon--light" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+
+h4 Semantic
+p.-text
+  | Use semantic colors to communicate meaning to users. Use green (success) for positive,
+  | red (danger) for negative, yellow (warning) for needs attention, and grey (muted)
+  | for neutral. Semantic colors should never be used for decorative purposes.
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap
+      each color in ['success', 'warning', 'danger', 'muted']
+        div.-p--2.-text--center
+          chi-spinner(color=color, class='-m--3', size='md')
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-colors-semantic
+      li.-active
+        a(href=`#webcomponent-colors-semantic`) Web Component
+      li
+        a(href=`#html-colors-semantic`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-colors-semantic
+    .chi-tab__description
+      | Use the <code>color</code> attribute to change a spinners color.
+    :code(lang="html")
+      <chi-spinner color="success"></chi-spinner>
+      <chi-spinner color="warning"></chi-spinner>
+      <chi-spinner color="danger"></chi-spinner>
+      <chi-spinner color="muted"></chi-spinner>
+  .chi-tabs-panel#html-colors-semantic
+    .chi-tab__description
+      | Use <a href="../../utilities/color">icon color utilities</a> such as <code>-icon--success</code>
+      | and <code>-icon--danger</code> to change the color of any spinner.
+    :code(lang="html")
+      <svg class="chi-spinner -icon--success" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <svg class="chi-spinner -icon--warning" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <svg class="chi-spinner -icon--danger" viewBox="0 0 66 66">
+        <title>Loading</title>
+        <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+      </svg>
+      <svg class="chi-spinner -icon--muted" viewBox="0 0 66 66">
         <title>Loading</title>
         <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
       </svg>

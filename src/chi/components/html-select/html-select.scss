@@ -96,7 +96,7 @@ select {
 
     &:not([disabled]) {
       &.-danger {
-        border-color: set-color(red, 60);
+        border-color: $icon-color-danger;
       }
     }
 
@@ -105,7 +105,7 @@ select {
 
       &:focus,
       &.-focus {
-        box-shadow: 0 0 0 1px rgba(set-color(red, 60), 1);
+        box-shadow: 0 0 0 1px $icon-color-danger;
       }
     }
   }

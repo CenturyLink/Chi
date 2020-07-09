@@ -77,7 +77,7 @@ input {
       @each $type in map-keys($state-colors) {
         &:not([disabled]) {
           &.-#{$type} {
-            border-color: set-color(map-get($state-colors, $type), 60);
+            border-color: set-color(map-get($state-colors, $type), 55);
           }
         }
 
@@ -86,7 +86,7 @@ input {
 
           &:focus,
           &.-focus {
-            box-shadow: 0 0 0 1px rgba(set-color(map-get($state-colors, $type), 60), 1);
+            box-shadow: 0 0 0 1px rgba(set-color(map-get($state-colors, $type), 55), 1);
           }
         }
       }

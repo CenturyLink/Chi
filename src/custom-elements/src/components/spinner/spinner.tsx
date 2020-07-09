@@ -1,7 +1,7 @@
 import { Component, Prop, Watch, h } from '@stencil/core';
 import { ICON_SIZES } from '../../constants/size';
 
-const SPINNER_COLORS = ['primary', 'success', 'warning', 'danger', 'muted', 'secondary', 'light'];
+const SPINNER_COLORS = ['primary', 'dark', 'success', 'warning', 'danger', 'muted', 'secondary', 'light'];
 
 @Component({
   tag: 'chi-spinner',
@@ -15,7 +15,7 @@ export class Spinner {
   @Prop({ reflect: true }) size = 'sm';
 
   /**
-   *  to set color of a spinner { primary, success, warning, danger, muted }.
+   *  to set color of a spinner { primary, dark, success, warning, danger, muted }.
    */
   @Prop({ reflect: true }) color: string;
 
@@ -34,7 +34,7 @@ export class Spinner {
   @Watch('color')
   colorValidation(newValue: string) {
     if (newValue && !SPINNER_COLORS.includes(newValue)) {
-      throw new Error(`${newValue} is not a valid color for spinner. If provided, valid values are: primary, success, warning, danger, muted, secondary or light. `);
+      throw new Error(`${newValue} is not a valid color for spinner. If provided, valid values are: primary, dark, success, warning, danger, muted, secondary or light. `);
     }
   }
 
@@ -54,7 +54,7 @@ export class Spinner {
   render() {
     const spinner = (
       <svg class={`chi-spinner
-        ${this.color ? `-text--${this.color}` : ''}
+        ${this.color ? `-icon--${this.color}` : ''}
         ${this.size ? `-${this.size}` : ''}`} viewBox="0 0 66 66"
       >
         <title>Loading</title>

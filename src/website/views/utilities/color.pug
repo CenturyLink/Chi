@@ -1,15 +1,57 @@
 ---
 title: Color
-description: Use shorthand color utility classes to quickly apply or remove a background color.
+description: Use shorthand color utility classes to quickly apply or remove colors.
 ---
-
-h2 Notation
+h2 Icon color
+p.-text Change icon colors with contextual classes.
+h3 Brand
 p.-text
-  | Color utility classes can be defined using the format <code>-bg-{breakpoint}--{value}</code>.
+  | Brand icon colors reinforce CenturyLink's brand. Use primary and secondary as accents, and dark, grey, and light as neutrals.
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12.-w-md--6.-p--1.-d--flex.-justify-content--center
+      each color in ['icon--dark', 'icon--primary', 'icon--grey']
+        i(class=`chi-icon icon-atom -md -${color} -m--1`)
+    .chi-col.-w--12.-w-md--6.-bg--black.-p--1.-d--flex.-justify-content--center
+      each color in ['icon--secondary', 'icon--light']
+        if (color === 'icon--secondary')
+          i(class=`chi-icon icon-atom -md -icon--secondary -m--1`)
+        else if (color === 'icon--light')
+          i(class=`chi-icon icon-atom -md -icon--light -m--1`)
+  :code(lang="html")
+    <!-- For light backgrounds -->
+    <i class="chi-icon icon-atom -md -icon--dark"></i>
+    <i class="chi-icon icon-atom -md -icon--primary"></i>
+    <i class="chi-icon icon-atom -md -icon--grey"></i>
+    <!-- For dark backgrounds -->
+    <i class="chi-icon icon-atom -md -icon--secondary"></i>
+    <i class="chi-icon icon-atom -md -icon--light"></i>
+h3 Semantic
+p.-text
+  | Use semantic text colors to communicate meaning to users. Examples include displaying alerts, form field
+  | validation, user status, application state and more. Use green (success) for positive, blue (info)
+  | for informative, red (danger) for negative, yellow (warning) for needs attention, and grey (muted)
+  | for neutral. Semantic colors should never be used for decorative purposes.
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
+      each color in ['icon--success', 'icon--info', 'icon--warning', 'icon--danger', 'icon--muted']
+        i(class=`chi-icon icon-atom -md -${color} -m--1`)
+  :code(lang="html")
+    <i class="chi-icon icon-atom -md -icon--success"></i>
+    <i class="chi-icon icon-atom -md -icon--info"></i>
+    <i class="chi-icon icon-atom -md -icon--warning"></i>
+    <i class="chi-icon icon-atom -md -icon--danger"></i>
+    <i class="chi-icon icon-atom -md -icon--muted"></i>
+
+h2 Background-color
+p.-text
+  | Define background-color classes using the format <code>-bg-{breakpoint}--{value}</code>.
   | Breakpoints supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
 
-h3 Target all breakpoints
-p.-text Color utility classes with no breakpoint defined apply to all screen sizes.
+h3 Brand
+p.-text
+  | Brand background-colors reinforce CenturyLink's brand.
 section.chi-table.-bordered.-mt--3.-mb--3
   div
     table.-text(cellpadding='0', cellspacing='0')
@@ -22,20 +64,110 @@ section.chi-table.-bordered.-mt--3.-mb--3
           th
             div Result
       tbody
-        each val, type in {'none':'none', 'primary': '#0047BB', 'secondary': '#48D597', 'white': '#FFFFFF', 'black': '#000000', 'muted': '#72767A', 'grey': '#53565A', 'grey-10': '#F8F9F9', 'grey-20': '#EDF0F2', 'grey-30': '#D0D4D9', 'blue-60': '#005BED', 'blue-70': '#0047BB', 'blue-80': '#00308A', 'blue-90': '#001E60', 'teal': '#03808C', 'success': '#097A49', 'warning': '#854E03','danger': '#B50D12'}
+        each val, type in {'primary': '#0047BB', 'secondary': '#48D597', 'black': '#000000', 'blue-90': '#001E60', 'grey': '#53565A', 'white': '#FFFFFF'}
           tr
             td(width='25%')
               code= '-bg--' + type
             td(width='35%')
-              if (type == 'none')
-                code= 'background: none;'
-              else
-                code= 'background-color:' + val
+              code= 'background-color:' + val
             td(width='40%')
-              if (type == 'none')
-                .-text.-b--1(style=`background:${val};height:15px;`)
-              else
-                .-text.-b--1(style=`background-color:${val};height:15px;`)
+              .-text.-b--1(style=`background-color:${val};height:15px;`)
+
+h3 Brand complimentary
+p.-text More background-colors that can be used to compliment the primary brand palette.
+section.chi-table.-bordered.-mt--3.-mb--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Color Class
+          th
+            div Value
+          th
+            div Result
+      tbody
+        each val, type in {'blue-80': '#00308A', 'teal': '#03808C'}
+          tr
+            td(width='25%')
+              code= '-bg--' + type
+            td(width='35%')
+              code= 'background-color:' + val
+            td(width='40%')
+              .-text.-b--1(style=`background-color:${val};height:15px;`)
+
+h3 Neutral
+p.-text
+  | Neutral background-colors provide low-contrast backgrounds for application containers, cards, and more.
+section.chi-table.-bordered.-mt--3.-mb--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Color Class
+          th
+            div Value
+          th
+            div Result
+      tbody
+        each val, type in {'grey-10': '#F8F9F9', 'grey-20': '#EDF0F2', 'grey-30': '#D0D4D9'}
+          tr
+            td(width='25%')
+              code= '-bg--' + type
+            td(width='35%')
+              code= 'background-color:' + val
+            td(width='40%')
+              .-text.-b--1(style=`background-color:${val};height:15px;`)
+
+h3 Semantic
+p.-text
+  | Use semantic background-colors to communicate meaning to users. Examples include displaying alerts, form field
+  | validation, user status, application state and more. Use green (success) for positive, blue (info)
+  | for informative, red (danger) for negative, yellow (warning) for needs attention, and grey (muted)
+  | for neutral. Semantic colors should never be used for decorative purposes.
+section.chi-table.-bordered.-mt--3.-mb--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Color Class
+          th
+            div Value
+          th
+            div Result
+      tbody
+        each val, type in {'success': '#007E46', 'info': '#0060FA', 'warning': '#A15C00', 'danger': '#D81820', 'muted': '#72767A'}
+          tr
+            td(width='25%')
+              code= '-bg--' + type
+            td(width='35%')
+              code= 'background-color:' + val
+            td(width='40%')
+              .-text.-b--1(style=`background-color:${val};height:15px;`)
+
+h3 None
+p.-text Use to render an element with no background-color.
+section.chi-table.-bordered.-mt--3.-mb--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Color Class
+          th
+            div Value
+          th
+            div Result
+      tbody
+        tr
+          td(width='25%')
+            code= '-bg--none'
+          td(width='35%')
+            code= 'background: none;'
+          td(width='40%')
+            .-text.-b--1(style=`background:none;height:15px;`)
 
 h3 Target specific breakpoints
 p.-text To target a specific breakpoint, add the breakpoint abbreviation to the class.
@@ -50,13 +182,13 @@ section.chi-table.-bordered.-mt--3.-mb--3
             div Value
       tbody
         each size in ['sm', 'md', 'lg', 'xl']
-          each type in ['none', 'primary', 'secondary', 'white', 'black', 'muted', 'grey', 'grey-10', 'grey-20', 'grey-30', 'blue-60', 'blue-70', 'blue-80', 'blue-90', 'teal', 'success', 'warning', 'danger']
+          each type in ['none', 'primary', 'secondary', 'white', 'black', 'muted', 'grey', 'grey-10', 'grey-20', 'grey-30', 'blue-60', 'blue-70', 'blue-80', 'blue-90', 'teal', 'success', 'info', 'warning', 'danger']
             tr
               td.-text(width='40%')
                 code= '-bg-' + size + '--' + type
               td.-text Visible only from <code>#{size}</code>
 
-h2 Examples
+h3 Responsive background-color examples
 .example.-mb--3
   .-p--3
     .-text.-b--1.-p--3.-m--1.-bg--primary(style="color:white;") -bg--primary

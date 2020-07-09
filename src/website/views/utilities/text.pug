@@ -100,15 +100,15 @@ p.-text
       p.-text.-pl--1(class=`-${type}`)
         = `-${type}`
   :code(lang="html")
-      <p class="-text -lh--1">-lh--1</p>
-      <p class="-text -lh--2">-lh--2</p>
-      <p class="-text -lh--3">-lh--3</p>
-      <p class="-text -lh--4">-lh--4</p>
-      <p class="-text -lh--5">-lh--5</p>
-      <p class="-text -lh--6">-lh--6</p>
-      <p class="-text -lh--7">-lh--7</p>
-      <p class="-text -lh--8">-lh--8</p>
-      <p class="-text -lh--9">-lh--9</p>
+    <p class="-text -lh--1">-lh--1</p>
+    <p class="-text -lh--2">-lh--2</p>
+    <p class="-text -lh--3">-lh--3</p>
+    <p class="-text -lh--4">-lh--4</p>
+    <p class="-text -lh--5">-lh--5</p>
+    <p class="-text -lh--6">-lh--6</p>
+    <p class="-text -lh--7">-lh--7</p>
+    <p class="-text -lh--8">-lh--8</p>
+    <p class="-text -lh--9">-lh--9</p>
 h2 Text alignment
 p.-text Change text alignment to justified, left, center, or right.
 .example.-mb--3
@@ -155,16 +155,20 @@ p.-text Prevent text wrapping with nowrap or control overflow with truncate.
   :code(lang="html")
       <p class="-text--nowrap">This text will render without wrapping</p>
       <p class="-text--truncate">This text will truncate with an ellipsis</p>
+
 h2 Text colors
 p.-text Change text colors with contextual classes.
+h3 Brand
+p.-text
+  | Brand text colors reinforce CenturyLink's brand. Use primary and secondary as accents, and body, grey, and light as neutrals.
 .example.-mb--3
   .chi-grid.-no-gutter
-    .chi-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap
-      each type in ['text--body', 'text--primary', 'text--success', 'text--warning', 'text--danger', 'text--grey', 'text--muted']
+    .chi-col.-w--12.-w-md--6.-p--1.-d--flex.-justify-content--center
+      each type in ['text--body', 'text--primary', 'text--grey']
         div.-p--1.-p-sm--2.-text--center
           p.-text(class=`-${type}`)
             = `-${type}`
-    .chi-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap.-bg--black
+    .chi-col.-w--12.-w-md--6.-bg--black.-p--1.-d--flex.-justify-content--center
       each type in ['text--secondary', 'text--light']
         if (type === 'text--secondary')
           div.-p--1.-p-sm--2.-text--center
@@ -176,14 +180,29 @@ p.-text Change text colors with contextual classes.
     <!-- For light backgrounds -->
     <p class="-text--body">-text--body</p>
     <p class="-text--primary">-text--primary</p>
-    <p class="-text--success">-text--success</p>
-    <p class="-text--warning">-text--warning</p>
-    <p class="-text--danger">-text--danger</p>
     <p class="-text--grey">-text--grey</p>
-    <p class="-text--muted">-text--muted</p>
     <!-- For dark backgrounds -->
     <p class="-text--secondary">-text--secondary</p>
     <p class="-text--light">-text--light</p>
+h3 Semantic
+p.-text
+  | Use semantic text colors to communicate meaning to users. Examples include displaying alerts, form field
+  | validation, user status, application state and more. Use green (success) for positive, blue (info)
+  | for informative, red (danger) for negative, yellow (warning) for needs attention, and grey (muted)
+  | for neutral. Semantic colors should never be used for decorative purposes.
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12.-p--1.-d--flex.-justify-content--center.-flex--wrap
+      each type in ['text--success', 'text--info', 'text--danger', 'text--warning', 'text--muted']
+        div.-p--1.-p-sm--2.-text--center
+          p.-text(class=`-${type}`)
+            = `-${type}`
+  :code(lang="html")
+    <p class="-text--success">-text--success</p>
+    <p class="-text--info">-text--info</p>
+    <p class="-text--warning">-text--warning</p>
+    <p class="-text--danger">-text--danger</p>
+    <p class="-text--muted">-text--muted</p>
 
 h2 Responsiveness
 h3 Sizes

@@ -8,7 +8,7 @@ each size in ['default', 'sm', 'lg']
   div(class=`test-toast-${size}`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .chi-alert.-toast.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        div(class=`chi-alert__icon chi-icon -text--${type}`)
+        div(class=`chi-alert__icon chi-icon -icon--${type}`)
           svg
             use(xlink:href=`#${val}`)
         .chi-alert__content
@@ -22,7 +22,7 @@ each size in ['default', 'sm', 'lg']
   div(class=`test-toast-titled-${size}`)
     each val, type in {success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .chi-alert.-toast.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        div(class=`chi-alert__icon chi-icon -text--${type}`)
+        div(class=`chi-alert__icon chi-icon -icon--${type}`)
           svg
             use(xlink:href=`#${val}`)
         .chi-alert__content

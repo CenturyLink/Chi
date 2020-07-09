@@ -3,34 +3,39 @@
 
 $states: (
   success: (
-    border-left-color: set-color(mint, 70),
-    color: set-color(mint, 70),
+    border-left-color: $icon-color-success,
+    color: $icon-color-success,
     banner-color: set-color(mint, 20),
-    banner-border-color: set-color(mint, 30)
+    banner-border-color: set-color(mint, 30),
+    title-color: $success-color
   ),
   danger: (
-    border-left-color: set-color(red, 70),
-    color: set-color(red, 70),
+    border-left-color: $icon-color-danger,
+    color: $icon-color-danger,
     banner-color: set-color(red, 20),
-    banner-border-color: set-color(red, 30)
+    banner-border-color: set-color(red, 30),
+    title-color: $danger-color
   ),
   warning: (
-    border-left-color: set-color(yellow, 60),
-    color: set-color(yellow, 60),
+    border-left-color: $icon-color-warning,
+    color: $icon-color-warning,
     banner-color: set-color(yellow, 20),
-    banner-border-color: set-color(yellow, 30)
+    banner-border-color: set-color(yellow, 30),
+    title-color: $warning-color
   ),
   info: (
-    border-left-color: set-color(blue, 70),
-    color: set-color(blue, 70),
+    border-left-color: $icon-color-info,
+    color: $icon-color-info,
     banner-color: set-color(blue, 20),
-    banner-border-color: set-color(blue, 30)
+    banner-border-color: set-color(blue, 30),
+    title-color: $info-color
   ),
   muted: (
-    color: set-color(grey, 60),
+    border-left-color: $icon-color-muted,
+    color: $icon-color-muted,
     banner-color: set-color(grey, 20),
-    border-left-color: set-color(grey, 60),
-    banner-border-color: set-color(grey, 30)
+    banner-border-color: set-color(grey, 30),
+    title-color: $muted-color
   )
 );
 
@@ -112,13 +117,15 @@ $states: (
 
       &.-banner {
         background-color: map-get(map-get($states, $state), banner-color);
-        border-bottom-color: map-get(map-get($states, $state), banner-border-color);
       }
 
       .chi-alert__icon,
-      > chi-icon .chi-icon,
-      .chi-alert__title {
+      > chi-icon .chi-icon {
         color: map-get(map-get($states, $state), color);
+      }
+
+      .chi-alert__title {
+        color: map-get(map-get($states, $state), title-color);
       }
     }
   }

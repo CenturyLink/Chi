@@ -24,7 +24,8 @@ $colorscheme: (
     90: #691518,
     80: #8f0e13,
     70: #b50d12,
-    60: #de1b21,
+    60: #d81820,
+    55: #f0363c,
     50: #fa5056,
     40: #fc9094,
     30: #fcc7c9,
@@ -72,7 +73,8 @@ $colorscheme: (
     90: #001e60,
     80: #00308a,
     70: #0047bb,
-    60: #005bed,
+    60: #0060fa,
+    55: #2580ff,
     50: #468af1,
     40: #8cb6f5,
     30: #c0d7fa,
@@ -107,9 +109,10 @@ $colorscheme: (
     100: #0a2e1e,
     90: #094028,
     80: #075433,
-    70: #097a49,
-    60: #0c8853,
-    50: #27b875,
+    70: #08683f,
+    60: #007e46,
+    55: #009e5c,
+    50: #22a066,
     40: #48d597,
     30: #abe0c9,
     20: #daf5e9,
@@ -128,12 +131,13 @@ $colorscheme: (
     10: #f2fae6,
   ),
   yellow: (
-    100: #36240c,
-    90: #4d310b,
-    80: #663e07,
-    70: #854e03,
-    60: #a66102,
-    50: #c97d12,
+    100: #422600,
+    90: #583300,
+    80: #6d3f00,
+    70: #8f5200,
+    60: #a15c00,
+    55: #ca7300,
+    50: #d18110,
     40: #e6a243,
     30: #f5cc93,
     20: #faecd9,
@@ -177,23 +181,31 @@ $primary-color: map-get(map-get($colorscheme, blue), 70);
 $secondary-color: map-get(map-get($colorscheme, mint), 40);
 $secondary-color-alt: map-get(map-get($colorscheme, mint), 50);
 $brand-color: map-get(map-get($colorscheme, blue), 70);
-$success-color: map-get(map-get($colorscheme, mint), 70);
-$danger-color: map-get(map-get($colorscheme, red), 70);
-$info-color: map-get(map-get($colorscheme, blue), 70);
+$success-color: map-get(map-get($colorscheme, mint), 60);
+$danger-color: map-get(map-get($colorscheme, red), 60);
+$info-color: map-get(map-get($colorscheme, blue), 60);
 $warning-color: map-get(map-get($colorscheme, yellow), 60);
 $dark-color: map-get(map-get($colorscheme, grey), 90);
 $light-color: map-get(map-get($colorscheme, grey), 30);
 $muted-color: map-get(map-get($colorscheme, grey), 60);
 $grey-color: map-get(map-get($colorscheme, grey), 70);
 
+// icons
+$icon-color-success: map-get(map-get($colorscheme, mint), 55);
+$icon-color-info: map-get(map-get($colorscheme, blue), 55);
+$icon-color-warning: map-get(map-get($colorscheme, yellow), 55);
+$icon-color-danger: map-get(map-get($colorscheme, red), 55);
+$icon-color-muted: map-get(map-get($colorscheme, grey), 60);
+$icon-color-grey: map-get(map-get($colorscheme, grey), 70);
+
 // borders
 $border-color: rgba(0, 0, 0, 0.12);
 $border-color-light: map-get($colorscheme, white);
 $border-color-dark: map-get($colorscheme, black);
-$border-color-danger: $danger-color;
-$border-color-success: $success-color;
-$border-color-info: $info-color;
-$border-color-warning: $warning-color;
+$border-color-danger: $icon-color-danger;
+$border-color-success: $icon-color-success;
+$border-color-info: $icon-color-info;
+$border-color-warning: $icon-color-warning;
 $border-color-primary: $primary-color;
 $border-color-secondary: $secondary-color;
 

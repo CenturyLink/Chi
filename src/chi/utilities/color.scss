@@ -10,7 +10,7 @@ $colors: (
   secondary: $secondary-color,
   white: set-color(white),
   black: set-color(black),
-  grey: set-color(grey, 70),
+  grey: $grey-color,
   grey-10: set-color(grey, 10),
   grey-20: set-color(grey, 20),
   grey-30: set-color(grey, 30),
@@ -19,10 +19,11 @@ $colors: (
   blue-80: set-color(blue, 80),
   blue-90: set-color(blue, 90),
   teal: set-color(teal, 60),
-  muted: set-color(grey, 60),
-  success: set-color(mint, 70),
-  warning: set-color(yellow, 70),
-  danger: set-color(red, 70),
+  muted: $muted-color,
+  success: $success-color,
+  info: $info-color,
+  warning: $warning-color,
+  danger: $danger-color,
   none: none
 );
 
