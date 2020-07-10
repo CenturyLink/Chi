@@ -130,7 +130,7 @@ $popover-arrow-size: 0.75rem;
   }
 
   &:not(.-no-arrow) {
-    &.chi-popover--top:not([x-placement="bottom"]),
+    &.chi-popover--top:not([x-placement='bottom']),
     &[x-placement^='top'] {
       margin-bottom: calc(#{$popover-arrow-size} + 0.25rem);
 
@@ -148,7 +148,7 @@ $popover-arrow-size: 0.75rem;
       }
     }
 
-    &.chi-popover--right:not([x-placement="left"]),
+    &.chi-popover--right:not([x-placement='left']),
     &[x-placement^='right'] {
       margin-left: calc(#{$popover-arrow-size} + 0.25rem);
 
@@ -166,7 +166,7 @@ $popover-arrow-size: 0.75rem;
       }
     }
 
-    &.chi-popover--bottom:not([x-placement="top"]),
+    &.chi-popover--bottom:not([x-placement='top']),
     &[x-placement^='bottom'] {
       margin-top: calc(#{$popover-arrow-size} + 0.25rem);
 
@@ -184,7 +184,7 @@ $popover-arrow-size: 0.75rem;
       }
     }
 
-    &.chi-popover--left:not([x-placement="right"]),
+    &.chi-popover--left:not([x-placement='right']),
     &[x-placement^='left'] {
       margin-right: calc(#{$popover-arrow-size} + 0.25rem);
 
