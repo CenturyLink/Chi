@@ -114,6 +114,7 @@ $sidenav-lg-width: 12.5rem;
 
               &.chi-drawer__subitem-list-trigger {
                 padding-right: 3rem;
+                position: relative;
 
                 .chi-sidenav__title {
                   &::after {
@@ -126,6 +127,7 @@ $sidenav-lg-width: 12.5rem;
                     line-height: 1.2rem;
                     position: absolute;
                     right: 1.5rem;
+                    top: 0.75rem;
                     transition: 0.2s;
                     width: 0.75rem;
                   }
