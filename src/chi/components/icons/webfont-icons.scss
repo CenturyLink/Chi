@@ -24,6 +24,18 @@ i {
   }
 }
 
+.icon-handshake::before {
+  content: '\e9c3';
+}
+
+.icon-thumbtack-angle::before {
+  content: '\e9c4';
+}
+
+.icon-voip::before {
+  content: '\e9c5';
+}
+
 .icon-ticket-wrench::before {
   content: '\e9c2';
 }

@@ -1,9 +1,10 @@
 # CHANGELOG
-## 2.4.0 (July 9, 2020)
+## 2.4.0 (July 10, 2020)
 ### Components
 #### Added
 * Added: Sidenav now supports opening on hover.
 * Added: Sidenav now renders chevron icons on second-level menu items to illustrate when a third-level menu is available.
+* Added: Icons `icon-handshake`, `icon-thumbtack-angle`, `icon-voip`.
 #### Changed
 * Changed: Icon semantic color values to brighter shades.
 * Changed: Icon colors are now defined using icon utility color classes (e.g. `-icon--primary`) instead of text utility color classes (e.g. `-text--primary`).
