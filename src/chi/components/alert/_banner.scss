@@ -2,11 +2,19 @@
   &.-banner {
     background-color: set-color(white);
     border: 0;
-    border-top: 0.0625rem solid transparent;
     box-shadow: none;
+    padding: 0.875rem 1.5rem;
 
     .chi-alert__title {
       color: $text-color;
+    }
+
+    &.-sm {
+      padding: 0.625rem 1.5rem;
+    }
+
+    &.-lg {
+      padding: 1.125rem 1.5rem;
     }
   }
 }
