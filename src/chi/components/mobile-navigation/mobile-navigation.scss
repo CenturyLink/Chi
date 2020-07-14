@@ -225,6 +225,36 @@
     &.chi-mobile-nav__first-level {
       background-color: set-color(grey, 100);
 
+      .chi-drawer__content {
+        ul {
+          &.chi-tabs {
+            li {
+              a {
+                &.chi-drawer__subitem-list-trigger {
+                  padding-right: 3rem;
+                  position: relative;
+
+                  &::after {
+                    content: '\e920';
+                    display: block;
+                    font-family: 'chi';
+                    font-size: 0.75rem;
+                    font-weight: normal;
+                    height: 1rem;
+                    line-height: 1.2rem;
+                    position: absolute;
+                    right: 1.5rem;
+                    top: 0.75rem;
+                    transition: 0.2s;
+                    width: 0.75rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
       .chi-mobile-nav__content {
         background-color: set-color(grey, 100);
       }
@@ -235,6 +265,46 @@
     .chi-drawer {
       background-color: set-color(grey, 90);
       z-index: 50;
+
+      .chi-drawer__content {
+        ul {
+          &.chi-mobile-nav__list {
+            li {
+              a {
+                &.chi-drawer__subitem-list-trigger {
+                  padding-right: 3rem;
+                  position: relative;
+
+                  &::after {
+                    content: '\e91e';
+                    display: block;
+                    font-family: 'chi';
+                    font-size: 0.75rem;
+                    font-weight: normal;
+                    height: 1rem;
+                    line-height: 1.2rem;
+                    position: absolute;
+                    right: 1.5rem;
+                    top: 0.75rem;
+                    transition: 0.2s;
+                    width: 0.75rem;
+                  }
+                }
+              }
+
+              &.-expanded {
+                a {
+                  &.chi-drawer__subitem-list-trigger {
+                    &::after {
+                      transform: rotate(180deg);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
 
       .chi-mobile-nav__content {
         background-color: set-color(grey, 90);

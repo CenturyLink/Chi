@@ -6,7 +6,7 @@ import { Drawer, factory as drawer } from './components/drawer';
 import { Dropdown, factory as dropdown } from './components/dropdown';
 import { ExpansionPanel, factory as expansionPanel, EXPANSION_PANEL_STATES } from "./components/expansion-panel";
 import { FloatingLabel, factory as floatingLabel } from "./components/floating-label";
-import { MobileNavigation, factory as mobileNavigation } from "./components/mobile-navigation";
+import { MobileNavigation, factory as mobilenav } from "./components/mobile-navigation";
 import { Modal, factory as modal } from './components/modal';
 import { Navigation, factory as navigation } from "./components/navigation";
 import { NumberInput, factory as numberInput } from './components/number-input';
@@ -25,7 +25,7 @@ export {
   dropdown,
   expansionPanel,
   floatingLabel,
-  mobileNavigation,
+  mobilenav,
   modal,
   navigation,
   numberInput,
