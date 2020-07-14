@@ -501,6 +501,10 @@ h3 Titled
       <script>chi.drawer(document.getElementById('drawer-trigger-13'));</script>
 
 h3 Close button
+p.-text
+  | Close buttons provide users with a consistent way to exit Drawers.
+  | For special cases, such as requiring users to perform a task that
+  | auto-closes the Drawer when complete, a close button may be removed.
 ul#chi-tabs--closable.chi-tabs
   li.-active
     a(href='#chi-tabs--closable-with') Closable
@@ -518,8 +522,6 @@ ul#chi-tabs--closable.chi-tabs
         li
           a(href=`#html-closable`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-closable
-      .chi-tab__description
-        | By default Drawer includes a close button
       :code(lang="html")
         <!-- Trigger -->
         <chi-button id="drawer-trigger-14" type="icon">
