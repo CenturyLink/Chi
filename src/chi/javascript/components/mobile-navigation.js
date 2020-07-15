@@ -72,6 +72,7 @@ class MobileNavigation extends Component {
             function(e) {
               e.stopPropagation();
               drawerToCreate.hide();
+              self.resetActiveDrawerMenuItem();
             });
           Util.addClass(menuItem, DRAWER_SUBITEM_LIST_TRIGGER_CLASS);
           this._drawers.push(drawerToCreate);
