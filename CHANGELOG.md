@@ -1,4 +1,15 @@
 # CHANGELOG
+## 2.4.1 (July 16, 2020)
+### Components
+#### Added
+* Added: Icons `icon-api`, `icon-file-export`, `icon-table-column-settings`, `icon-table`.
+#### Changed
+* Changed: Icons `icon-phone`, `icon-shield`.
+* Changed: Alert banner padding and border styles have been fine-tuned to achieve portal-styled alerts with minimal border utility classes.
+### Documentation
+#### Changed
+* Changed: Drawer close button documentation text has been improved.
+
 ## 2.4.0 (July 10, 2020)
 ### Components
 #### Added
