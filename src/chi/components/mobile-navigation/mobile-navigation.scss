@@ -3,7 +3,18 @@
 
 .chi-mobile-nav {
   .chi-drawer {
-    &.-left {
+    .chi-mobile-nav__first-level-content {
+      position: absolute;
+      transition-duration: 0.3s;
+      left: 0;
+
+      &.-second-level-shown {
+        left: -23rem;
+      }
+    }
+
+    &.-left,
+    &.-right {
       width: 23rem;
     }
 
@@ -264,7 +275,14 @@
   .chi-mobile-nav__drawers {
     .chi-drawer {
       background-color: set-color(grey, 90);
+      display: block;
+      left: 23rem;
+      transition-duration: 0.3s;
       z-index: 50;
+
+      &.-active {
+        left: 0;
+      }
 
       .chi-drawer__content {
         ul {
