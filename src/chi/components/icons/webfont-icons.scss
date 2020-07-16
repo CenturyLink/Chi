@@ -24,6 +24,22 @@ i {
   }
 }
 
+.icon-api::before {
+  content: '\e9c6';
+}
+
+.icon-file-export::before {
+  content: '\e9c7';
+}
+
+.icon-table-column-settings::before {
+  content: '\e9c8';
+}
+
+.icon-table::before {
+  content: '\e9c9';
+}
+
 .icon-handshake::before {
   content: '\e9c3';
 }

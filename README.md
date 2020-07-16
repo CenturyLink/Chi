@@ -1,6 +1,6 @@
 # Welcome to Chi
 
-Chi is a CenturyLink CSS pattern library for building fast, reusable, and consistent responsive interfaces.
+Chi is CenturyLink's design system for building consistent digital products and experiences.
 
 ## Getting Started
 
