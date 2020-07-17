@@ -128,119 +128,102 @@ h3 Interaction
         <div class="chi-backdrop -closed -position--absolute">
           <div class="chi-backdrop__wrapper">
             <div class="chi-drawer -left -animated chi-mobile-nav__first-level -position--absolute">
-              <div class="chi-divider -colorbar"></div>
-              <div class="chi-drawer__header chi-mobile-nav__header">
-                <button class="chi-button -flat -light chi-dropdown__trigger -animate -no-hover -b--transparent" id="button-site-menu2" data-target="dropdown-2-menu">
-                  Cloud Application Manager
-                </button>
-                <button class="chi-button -icon -close" aria-label="Close">
-                  <div class="chi-button__content">
-                    <i class="chi-icon icon-x"></i>
+              <div class="-position--relative">
+                <div class="chi-mobile-nav__first-level-content -w--100">
+                  <div class="chi-divider -colorbar"></div>
+                  <div class="chi-drawer__header chi-mobile-nav__header">
+                    <button class="chi-button -flat -light chi-dropdown__trigger -animate -no-hover -b--transparent" id="button-site-menu2" data-target="dropdown-2-menu">Cloud Application Manager</button>
+                    <button class="chi-button -icon -close" aria-label="Close">
+                      <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                    </button>
                   </div>
-                </button>
-              </div>
-              <div class="chi-mobile-nav__dropdown">
-                <div class="chi-dropdown__menu -inverse -list chi-mobile-nav__dropdown-content" id="dropdown-2-menu">
-                  <a class="chi-dropdown__menu-item -h--auto -active" href="#">
-                    <span class="chi-dropdown__menu-item_title">App name</span>
-                    <span class="chi-dropdown__menu-item_text">App description</span>
-                  </a>
-                  <a class="chi-dropdown__menu-item -h--auto" href="#">
-                    <span class="chi-dropdown__menu-item_title">App name 2</span>
-                    <span class="chi-dropdown__menu-item_text"> App description</span>
-                  </a>
-                  <a class="chi-dropdown__menu-item -h--auto" href="#">
-                    <span class="chi-dropdown__menu-item_title">App name 3</span>
-                    <span class="chi-dropdown__menu-item_text">App description</span>
-                  </a>
-                </div>
-              </div>
-              <div class="chi-drawer__content chi-mobile-nav__content">
-                <div class="chi-mobile-nav__user">
-                  <div class="chi-mobile-nav__user-name"><span>Alessandro Ray</span><i class="chi-icon -xs icon-user"></i></div>
-                  <button class="chi-button -flat -light chi-dropdown__trigger -px--1 -animate -no-hover -b--transparent" id="button-user-menu2" data-target="dropdown-3-menu">
-                    Menu
-                  </button>
-                </div>
-                <div class="chi-mobile-nav__dropdown">
-                  <div class="chi-dropdown__menu -inverse chi-mobile-nav__dropdown-content" id="dropdown-3-menu">
-                    <a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-user"></i><span>Item 1</span></a><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-logout"></i><span>Item 2</span></a>
+                  <div class="chi-mobile-nav__dropdown">
+                    <div class="chi-dropdown__menu -inverse -list chi-mobile-nav__dropdown-content" id="dropdown-2-menu">
+                      <a class="chi-dropdown__menu-item -h--auto -active" href="#"><span class="chi-dropdown__menu-item_title">App name</span><span class="chi-dropdown__menu-item_text">App description</span></a>
+                      <a class="chi-dropdown__menu-item -h--auto" href="#"><span class="chi-dropdown__menu-item_title">App name 2</span><span class="chi-dropdown__menu-item_text">App description</span></a>
+                      <a class="chi-dropdown__menu-item -h--auto" href="#"><span class="chi-dropdown__menu-item_title">App name 3</span><span class="chi-dropdown__menu-item_text">App description</span></a>
+                    </div>
+                  </div>
+                  <div class="chi-drawer__content chi-mobile-nav__content">
+                    <div class="chi-mobile-nav__user">
+                      <div class="chi-mobile-nav__user-name"><span>Alessandro Ray</span><i class="chi-icon -xs icon-user"></i></div>
+                      <button class="chi-button -flat -light chi-dropdown__trigger -px--1 -animate -no-hover -b--transparent" id="button-user-menu2" data-target="dropdown-3-menu">Menu</button>
+                    </div>
+                    <div class="chi-mobile-nav__dropdown">
+                      <div class="chi-dropdown__menu -inverse chi-mobile-nav__dropdown-content" id="dropdown-3-menu">
+                        <a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-user"></i><span>Item 1</span></a><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-logout"></i><span>Item 2</span></a>
+                      </div>
+                    </div>
+                    <ul class="chi-tabs -inverse -vertical -icons">
+                      <li class="-active">
+                        <a href="#second-level-1"><i class="chi-icon icon-atom"></i><span>Toggle me</span></a>
+                      </li>
+                      <li>
+                        <a href="#tab-link"><i class="chi-icon icon-atom"></i><span>Tab link</span></a>
+                      </li>
+                      <li>
+                        <a href="#tab-link"><i class="chi-icon icon-atom"></i><span>Tab link</span></a>
+                      </li>
+                    </ul>
+                    <div class="chi-divider -inverse"></div>
+                    <div class="chi-mobile-nav__logout"><span>Logout</span><i class="chi-icon -xs icon-logout"></i></div>
                   </div>
                 </div>
-                <ul class="chi-tabs -inverse -vertical -icons">
-                  <li class="-active">
-                    <a href="#second-level-1"><i class="chi-icon icon-atom"></i><span>Toggle me</span></a>
-                  </li>
-                  <li>
-                    <a href="#asd"><i class="chi-icon icon-atom"></i><span>Tab link</span></a>
-                  </li>
-                  <li>
-                    <a href="#asd"><i class="chi-icon icon-atom"></i><span>Tab link</span></a>
-                  </li>
-                </ul>
-                <div class="chi-divider -inverse"></div>
-                <div class="chi-mobile-nav__logout"><span>Logout</span><i class="chi-icon -xs icon-logout"></i></div>
               </div>
-            </div>
-            <div class="chi-mobile-nav__drawers">
-              <div class="chi-drawer -left -animated -position--absolute" id="second-level-1">
-                <div class="chi-divider -colorbar"></div>
-                <div class="chi-drawer__header chi-mobile-nav__header">
-                  <button class="chi-button -flat -light -icon -no-hover -back" aria-label="Back">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-chevron-left"></i>
-                    </div>
-                  </button>
-                  <div class="chi-mobile-nav__header-title">Inventory</div>
-                  <button class="chi-button -icon -close" aria-label="Close">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-x"></i>
-                    </div>
-                  </button>
-                </div>
-                <div class="chi-drawer__content chi-mobile-nav__content">
-                  <ul class="chi-mobile-nav__list">
-                    <li>
-                      <a href="#">
-                        <div class="chi-mobile-nav__list-title">Title A</div>
-                      </a>
-                      <div class="chi-mobile-nav__list-item-list">
-                        <ul class="chi-tabs -vertical -sm">
-                          <li><a class="chi-mobile-nav-item-tab">Sub tab A</a></li>
-                          <li><a class="chi-mobile-nav-item-tab">Sub tab B</a></li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="chi-mobile-nav__list-title">Title B</div>
-                      </a>
-                      <div class="chi-mobile-nav__list-item-list">
-                        <ul class="chi-tabs -vertical -sm">
-                          <li><a class="chi-mobile-nav-item-tab">Sub tab A</a></li>
-                          <li><a class="chi-mobile-nav-item-tab">Sub tab B</a></li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li class="-active -expanded">
-                      <a href="#">
-                        <div class="chi-mobile-nav__list-title">Title C</div>
-                      </a>
-                      <div class="chi-mobile-nav__list-item-list">
-                        <ul class="chi-tabs -vertical -sm">
-                          <li>
-                            <a class="chi-mobile-nav-item-tab -active">Sub tab A</a>
-                          </li>
-                          <li><a class="chi-mobile-nav-item-tab">Sub tab B</a></li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="chi-mobile-nav__list-title">Single level</div>
-                      </a>
-                    </li>
-                  </ul>
+              <div class="chi-mobile-nav__drawers">
+                <div class="chi-drawer -right -position--absolute" id="second-level-1">
+                  <div class="chi-divider -colorbar"></div>
+                  <div class="chi-drawer__header chi-mobile-nav__header">
+                    <button class="chi-button -flat -light -icon -no-hover -back" aria-label="Back">
+                      <div class="chi-button__content"><i class="chi-icon icon-chevron-left"></i></div>
+                    </button>
+                    <div class="chi-mobile-nav__header-title">Inventory</div>
+                    <button class="chi-button -icon -close" aria-label="Close">
+                      <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                    </button>
+                  </div>
+                  <div class="chi-drawer__content chi-mobile-nav__content">
+                    <ul class="chi-mobile-nav__list">
+                      <li>
+                        <a href="#">
+                          <div class="chi-mobile-nav__list-title">Title A</div>
+                        </a>
+                        <div class="chi-mobile-nav__list-item-list">
+                          <ul class="chi-tabs -vertical -sm">
+                            <li><a class="chi-mobile-nav-item-tab">Sub tab A</a></li>
+                            <li><a class="chi-mobile-nav-item-tab">Sub tab B</a></li>
+                          </ul>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <div class="chi-mobile-nav__list-title">Title B</div>
+                        </a>
+                        <div class="chi-mobile-nav__list-item-list">
+                          <ul class="chi-tabs -vertical -sm">
+                            <li><a class="chi-mobile-nav-item-tab">Sub tab A</a></li>
+                            <li><a class="chi-mobile-nav-item-tab">Sub tab B</a></li>
+                          </ul>
+                        </div>
+                      </li>
+                      <li class="-active -expanded">
+                        <a href="#">
+                          <div class="chi-mobile-nav__list-title">Title C</div>
+                        </a>
+                        <div class="chi-mobile-nav__list-item-list">
+                          <ul class="chi-tabs -vertical -sm">
+                            <li><a class="chi-mobile-nav-item-tab -active">Sub tab A</a></li>
+                            <li><a class="chi-mobile-nav-item-tab">Sub tab B</a></li>
+                          </ul>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="#tab-link">
+                          <div class="chi-mobile-nav__list-title">Single level</div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
