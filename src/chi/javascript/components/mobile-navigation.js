@@ -14,9 +14,11 @@ const DRAWER_ITEM_TAB_CLASS = 'chi-mobile-nav-item-tab';
 const DRAWER_ITEM_LIST_EXPANDED = '-expanded';
 const DRAWER_NAV_LIST = 'chi-mobile-nav__list';
 const DRAWER_SUBITEM_LIST_TRIGGER_CLASS = 'chi-drawer__subitem-list-trigger';
+const DROPDOWN_TRIGGER = 'chi-dropdown__trigger';
 const FIRST_LEVEL_DRAWER_CLASS = 'chi-mobile-nav__first-level';
 const FIRST_LEVEL_DRAWER_CONTENT_CLASS = 'chi-mobile-nav__first-level-content';
 const MOBILENAV_DRAWERS_CLASS = 'chi-mobile-nav__drawers';
+const MOBILENAV_LIST_TITLE = 'chi-mobile-nav__list-title';
 const SECOND_LEVEL_SHOWN_CLASS = '-second-level-shown';
 
 class MobileNavigation extends Component {
@@ -46,11 +48,11 @@ class MobileNavigation extends Component {
     this._mobileNavElement = this._locateMobileNav();
     const firstLevelDrawer = this._mobileNavElement.querySelector(`.${FIRST_LEVEL_DRAWER_CLASS}`);
     const firstLevelMenuItems = this._mobileNavElement.querySelectorAll(`.${DRAWER_CLASS}.${FIRST_LEVEL_DRAWER_CLASS} .${FIRST_LEVEL_DRAWER_CONTENT_CLASS} .${DRAWER_CONTENT_CLASS} .${CHI_TABS_CLASS} li a`);
-    const firstLevelDropdownTriggers = this._mobileNavElement.querySelectorAll(`.${DRAWER_CLASS}.${FIRST_LEVEL_DRAWER_CLASS} .chi-dropdown__trigger`);
+    const firstLevelDropdownTriggers = this._mobileNavElement.querySelectorAll(`.${DRAWER_CLASS}.${FIRST_LEVEL_DRAWER_CLASS} .${DROPDOWN_TRIGGER}`);
     const self = this;
 
     if (firstLevelDrawer) {
-      const firstLevelCloseButton = firstLevelDrawer.querySelector('.-close');
+      const firstLevelCloseButton = firstLevelDrawer.querySelector(`.${chi.classes.CLOSE}`);
 
       this._firstLevelDrawer = Drawer.factory(this._elem, {
         animated: true,
@@ -60,7 +62,7 @@ class MobileNavigation extends Component {
         firstLevelCloseButton,
         'click',
         () => {
-          self._hideMobileNav()
+          self._hideMobileNav();
         }
       );
     }
@@ -72,8 +74,8 @@ class MobileNavigation extends Component {
         const drawer = document.querySelector(`.chi-drawer${drawerId}`);
 
         if (drawer) {
-          const returnBackButton = drawer.querySelector(`.${DRAWER_HEADER_CLASS} button.-back`);
-          const firstLevelContent = self._mobileNavElement.querySelector('.chi-mobile-nav__first-level-content');
+          const returnBackButton = drawer.querySelector(`.${DRAWER_HEADER_CLASS} button.${chi.classes.BACK}`);
+          const firstLevelContent = self._mobileNavElement.querySelector(`.${FIRST_LEVEL_DRAWER_CONTENT_CLASS}`);
 
           this._addEventHandler(
             menuItem,
@@ -81,7 +83,7 @@ class MobileNavigation extends Component {
             function(e) {
               e.preventDefault();
               Util.addClass(drawer, chi.classes.ACTIVE);
-              Util.addClass(firstLevelContent, '-second-level-shown');
+              Util.addClass(firstLevelContent, SECOND_LEVEL_SHOWN_CLASS);
             });
 
           this._addEventHandler(
@@ -117,12 +119,17 @@ class MobileNavigation extends Component {
       this._firstLevelDrawer._drawerElem,
       'chi.drawer.hide',
       function() {
-        const firstLevelDrawerContent = self._mobileNavElement.querySelector('.chi-mobile-nav__first-level-content');
+        const firstLevelDrawerContent = self._mobileNavElement.querySelector(`.${FIRST_LEVEL_DRAWER_CONTENT_CLASS}`);
         const activeSecondLevelDrawer = self._mobileNavElement.querySelector(`.${MOBILENAV_DRAWERS_CLASS} .${DRAWER_CLASS}.${chi.classes.ACTIVE}`);
 
         if (activeSecondLevelDrawer) {
-          Util.removeClass(activeSecondLevelDrawer, chi.classes.ACTIVE);
-          Util.removeClass(firstLevelDrawerContent, '-second-level-shown');
+          setTimeout(
+            function() {
+              Util.removeClass(activeSecondLevelDrawer, chi.classes.ACTIVE);
+              Util.removeClass(firstLevelDrawerContent, SECOND_LEVEL_SHOWN_CLASS);
+            },
+            500
+          );
         }
         self.resetActiveDrawerMenuItem();
       });
@@ -132,7 +139,7 @@ class MobileNavigation extends Component {
     Array.prototype.forEach.call(
       this._drawers,
       (drawer) => {
-        const drawerMenuItems = drawer.querySelectorAll(`.${DRAWER_CONTENT_CLASS} .chi-mobile-nav__list > li > a`);
+        const drawerMenuItems = drawer.querySelectorAll(`.${DRAWER_CONTENT_CLASS} .${DRAWER_NAV_LIST} > li > a`);
 
         Array.prototype.forEach.call(
           drawerMenuItems,
@@ -262,9 +269,9 @@ class MobileNavigation extends Component {
   _handleClickOnSecondLevelDrawer(e) {
     let drawer, activator, drawerMenuItem;
 
-    if (Util.checkHasClass(e.target, '-close') ||
-      Util.checkHasClass(e.target.parentNode, '-close') ||
-      Util.checkHasClass(e.target.parentNode.parentNode, '-close')) {
+    if (Util.checkHasClass(e.target, chi.classes.CLOSE) ||
+      Util.checkHasClass(e.target.parentNode, chi.classes.CLOSE) ||
+      Util.checkHasClass(e.target.parentNode.parentNode, chi.classes.CLOSE)) {
       this._hideMobileNav();
     }
 
@@ -273,7 +280,7 @@ class MobileNavigation extends Component {
         drawer = cur;
       } else if (
         (cur.nodeName === 'A' || cur.nodeName === 'BUTTON') &&
-        !Util.checkHasClass(cur, '-close')
+        !Util.checkHasClass(cur, chi.classes.CLOSE)
       ) {
         activator = cur;
       } else if (cur.nodeName === 'LI') {
@@ -286,7 +293,7 @@ class MobileNavigation extends Component {
 
       if (activator) {
         if (drawerMenuItemList) {
-          if (Util.checkHasClass(activator, 'chi-mobile-nav__list-title') ||
+          if (Util.checkHasClass(activator, MOBILENAV_LIST_TITLE) ||
             activator.parentNode.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`)) {
             e.preventDefault();
           }
@@ -314,10 +321,15 @@ class MobileNavigation extends Component {
       firstLevelDrawer.hide();
     }
     if (secondLevelDrawer) {
-      const firstLevelDrawerContent = this._mobileNavElement.querySelector('.chi-mobile-nav__first-level-content');
+      const firstLevelDrawerContent = this._mobileNavElement.querySelector(`.${FIRST_LEVEL_DRAWER_CONTENT_CLASS}`);
 
-      Util.removeClass(secondLevelDrawer, chi.classes.ACTIVE);
-      Util.removeClass(firstLevelDrawerContent, '-second-level-shown');
+      setTimeout(
+        function() {
+          Util.removeClass(secondLevelDrawer, chi.classes.ACTIVE);
+          Util.removeClass(firstLevelDrawerContent, SECOND_LEVEL_SHOWN_CLASS);
+        },
+        500
+      );
     }
   }
 
@@ -330,7 +342,7 @@ class MobileNavigation extends Component {
   }
 
   _toggleDrawerItemList(drawerMenuItem) {
-    const activeDrawerMenuItem = this._mobileNavElement.querySelector(`.${MOBILENAV_DRAWERS_CLASS} .${DRAWER_CLASS} .${DRAWER_CONTENT_CLASS} .chi-mobile-nav__list li.${chi.classes.ACTIVE}`);
+    const activeDrawerMenuItem = this._mobileNavElement.querySelector(`.${MOBILENAV_DRAWERS_CLASS} .${DRAWER_CLASS} .${DRAWER_CONTENT_CLASS} .${DRAWER_NAV_LIST} li.${chi.classes.ACTIVE}`);
     const drawerMenuItemList = drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
     const expandedItem = drawerMenuItem.parentNode.querySelector(`.${DRAWER_ITEM_LIST_EXPANDED}`);
     let drawerMenuItemListHeight;

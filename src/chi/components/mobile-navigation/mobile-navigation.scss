@@ -4,9 +4,9 @@
 .chi-mobile-nav {
   .chi-drawer {
     .chi-mobile-nav__first-level-content {
+      left: 0;
       position: absolute;
       transition-duration: 0.3s;
-      left: 0;
 
       &.-second-level-shown {
         left: -23rem;
