@@ -8,28 +8,19 @@ each type in ['solid', 'outline', 'flat']
   div(class=`test-${type}`)
     span.-text--h2= `Badge / ${type}`
     table(cellpadding="0", cellspacing="0")
-      each style in ['base', 'primary', 'success', 'warning', 'danger', 'dark', 'muted', 'secondary', 'light']
-        if (style === 'secondary' || style === 'light')
-          td.-bg--black
-            .-mr--2
-              chi-badge.-m--1(
-              color=style
-              size= size !== 'default' ? size : ''
-              variant= type === 'solid' ? '' : type
-              disabled= state === 'disabled'
-              extra-class= `-${state}`
-              )
+      div
+        each style in ['base', 'primary', 'success', 'warning', 'danger', 'dark', 'muted', 'secondary', 'light']
+          if (style === 'secondary' || style === 'light')
+            td.-bg--black
+              chi-badge(class='-mr--2 -m--2', variant=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-${type}-${style}` )= `${style}`
+              chi-badge(class='-mr--2', variant=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-icon-${type}-${style}` )
+                chi-icon(icon='atom')
                 span= style
-        else
-          td
-            .-mr--2
-              chi-badge.-m--1(
-              color=style
-              size= size !== 'default' ? size : ''
-              variant= type === 'solid' ? '' : type
-              disabled= state === 'disabled'
-              extra-class= `-${state}`
-              )
+          else
+            td
+              chi-badge(class='-mr--2', variant=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-${type}-${style}` )= `${style}`
+              chi-badge(class='-mr--2', variant=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-icon-${type}-${style}` )
+                chi-icon(icon='atom')
                 span= style
 
 h2 Badge Icons
@@ -51,7 +42,6 @@ h2 Badge Icons
 h2 Text Transform
 .test-text-transform
   .example.-mb--1
-    each transform, text in { BADGE: 'Uppercase ', badge: 'Lowercase ', Badge: 'Capitalized' }
+    each transform, text in { BADGE: 'uppercase', badge: 'lowercase', Badge: 'capitalized' }
       .p.-text--bold= transform
-        chi-badge(text-transform= transform, id=`badge-${transform}`)= text
-
+        chi-badge(text-transform= transform, class='-m--1', id=`badge-${transform}`)= text
