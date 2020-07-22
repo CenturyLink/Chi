@@ -7,21 +7,50 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 each size in ['default', 'sm', 'lg']
   h4 Default / #{size}
   div(class=`test-banner-${size} -w--100`)
-    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val, type='banner', size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-${type}-${size}`)
-        =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+    each val, type in {base: 'circle-info', success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      if (type === 'base')
+        chi-alert.-m--2(class=type, icon=val, type='banner', size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-${type}-${size}`)
+          =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+      else
+        chi-alert.-m--2(color=type, icon=val, type='banner', size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-${type}-${size}`)
+          =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   h4 Centered / #{size}
   div(class=`test-banner-center-${size} -w--100`)
-    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val, type='banner', center, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-center-${type}-${size}`)
-        =`This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
+    each val, type in {base: 'circle-info', success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      if (type === 'base')
+        chi-alert.-m--2(class=type, icon=val, type='banner', center, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-center-${type}-${size}`)
+          =`This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
+      else
+        chi-alert.-m--2(color=type, icon=val, type='banner', center, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-center-${type}-${size}`)
+          =`This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
   h4 Closable / #{size}
   div(class=`test-banner-dismissible-${size} -w--100`)
-    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val, type="banner" closable, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-dismissible-${type}-${size}`)
-        =`This is a dismissible ${type} alert`
+    each val, type in {base: 'circle-info', success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      if (type === 'base')
+        chi-alert.-m--2(class=type, icon=val, type="banner" closable, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-dismissible-${type}-${size}`)
+          =`This is a dismissible ${type} alert`
+      else
+        chi-alert.-m--2(color=type, icon=val, type="banner" closable, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-dismissible-${type}-${size}`)
+          =`This is a dismissible ${type} alert`
   h4 Titled / #{size}
   div(class=`test-banner-titled-${size} -w--100`)
-    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val, type="banner", size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-titled-${type}-${size}`, title=type)
-        =`This is a titled ${type} alert`
+    each val, type in {base: 'circle-info', success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      if (type === 'base')
+        chi-alert.-m--2(class=type, icon=val, type="banner", size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-titled-${type}-${size}`, title=type)
+          =`This is a titled ${type} alert`
+      else
+        chi-alert.-m--2(color=type, icon=val, type="banner", size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-titled-${type}-${size}`, title=type)
+          =`This is a titled ${type} alert`
+  h4 Actionable / #{size}
+  div(class=`test-banner-actionable-${size} -w--100`)
+    each val, type in {base: 'circle-info', success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      if (type === 'base')
+        chi-alert.-m--2(class=type, icon=val, type="banner", size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-actionable-${type}-${size}`, title=type)
+          =`This is a ${size} ${type} actionable alert`
+          button(slot="chi-alert__actions", class=`-${size}`).chi-button Secondary action
+          button(slot="chi-alert__actions", class=`-${size}`).chi-button.-primary Primary action
+      else
+        chi-alert.-m--2(color=type, icon=val, type="banner", size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-actionable-${type}-${size}`, title=type)
+          =`This is a ${size} ${type} actionable alert`
+          button(slot="chi-alert__actions", class=`-${size}`).chi-button Secondary action
+          button(slot="chi-alert__actions", class=`-${size}`).chi-button.-primary Primary action
