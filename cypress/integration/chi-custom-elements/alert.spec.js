@@ -4,14 +4,17 @@ describe('Alert', () => {
     'alert-banner-center-success-default',
     'alert-banner-dismissible-success-default',
     'alert-banner-titled-success-default',
+    'alert-banner-actionable-success-default',
     'alert-banner-success-sm',
     'alert-banner-center-success-sm',
     'alert-banner-dismissible-success-sm',
     'alert-banner-titled-success-sm',
+    'alert-banner-actionable-success-sm',
     'alert-banner-success-lg',
     'alert-banner-center-success-lg',
     'alert-banner-dismissible-success-lg',
-    'alert-banner-titled-success-lg'
+    'alert-banner-titled-success-lg',
+    'alert-banner-actionable-success-lg'
   ];
 
   const alertBubbleSelectors = [
