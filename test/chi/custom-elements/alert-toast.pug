@@ -7,12 +7,20 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 each size in ['default', 'sm', 'lg']
   h4 Default / #{size}
   div(class=`test-toast-${size}`)
-    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, icon=val, color=type, data-cy=`alert-toast-${type}-${size}`)
-        =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+    each val, type in {base: 'circle-info', success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      if (type === 'base')
+        chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, icon=val, class=type, data-cy=`alert-toast-${type}-${size}`)
+          =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+      else
+        chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, icon=val, color=type, data-cy=`alert-toast-${type}-${size}`)
+          =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
 
   h4 Titled /  #{size}
   div(class=`test-toast-titled-${size}`)
-    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, color=type, icon=val, title=type)
-        =`This is ${type === 'info' ? 'an' : 'a'} ${type} toast alert`
+    each val, type in {base: 'circle-info', success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      if (type === 'base')
+        chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, class=type, icon=val, title=type)
+          =`This is ${type === 'info' ? 'an' : 'a'} ${type} toast alert`
+      else
+        chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, color=type, icon=val, title=type)
+          =`This is ${type === 'info' ? 'an' : 'a'} ${type} toast alert`
