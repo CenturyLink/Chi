@@ -2,11 +2,17 @@
 @import '_mixins';
 
 .chi-stat {
+  color: $text-color;
   display: flex;
   flex-direction: column;
   height: 100%;
   position: relative;
+  text-decoration: none;
   word-wrap: break-word;
+
+  &:hover {
+    text-decoration: none;
+  }
 
   &.-active {
     .chi-stat-metric {
