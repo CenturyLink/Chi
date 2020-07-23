@@ -1,7 +1,7 @@
 import { Component } from '../core/component';
 import { Util } from '../core/util.js';
 import { chi } from '../core/chi';
-import { Drawer } from './drawer';
+import { Drawer, DRAWER_ANIMATION_DURATION } from './drawer';
 import { Dropdown } from './dropdown';
 
 const CHI_TABS_CLASS = 'chi-tabs';
@@ -9,6 +9,7 @@ const COMPONENT_TYPE = 'mobilenav';
 const DRAWER_CLASS = 'chi-drawer';
 const DRAWER_CONTENT_CLASS = 'chi-drawer__content';
 const DRAWER_HEADER_CLASS = 'chi-drawer__header';
+const DRAWER_ITEM_LIST_ANIMATION_DURATION = 75;
 const DRAWER_ITEM_LIST_CLASS = 'chi-mobile-nav__list-item-list';
 const DRAWER_ITEM_TAB_CLASS = 'chi-mobile-nav-item-tab';
 const DRAWER_ITEM_LIST_EXPANDED = '-expanded';
@@ -21,13 +22,13 @@ const MOBILENAV_DRAWERS_CLASS = 'chi-mobile-nav__drawers';
 const MOBILENAV_LIST_TITLE = 'chi-mobile-nav__list-title';
 const SECOND_LEVEL_SHOWN_CLASS = '-second-level-shown';
 
-class MobileNavigation extends Component {
+class MobileNav extends Component {
   constructor(elem) {
     super(elem);
-    let self = this;
     this._drawersContainer = document.querySelector('.' + MOBILENAV_DRAWERS_CLASS);
     this._firstLevelDrawer = null;
     this._drawers = [];
+    this._dropdowns = [];
     this._menuItemAnimation = null;
 
     this._initFirstLevelDrawer();
@@ -110,8 +111,9 @@ class MobileNavigation extends Component {
       firstLevelDropdownTriggers,
       (dropdown) => {
         const dropdownElemId = dropdown.getAttribute('data-target');
+        const dropdownInstant = Dropdown.factory(dropdown, { dropdownElem: document.querySelector(`#${dropdownElemId}`) });
 
-        Dropdown.factory(dropdown, { dropdownElem: document.querySelector(`#${dropdownElemId}`) });
+        this._dropdowns.push(dropdownInstant);
       }
     );
     this._initSecondLevelDrawers();
@@ -128,7 +130,7 @@ class MobileNavigation extends Component {
               Util.removeClass(activeSecondLevelDrawer, chi.classes.ACTIVE);
               Util.removeClass(firstLevelDrawerContent, SECOND_LEVEL_SHOWN_CLASS);
             },
-            500
+            DRAWER_ANIMATION_DURATION
           );
         }
         self.resetActiveDrawerMenuItem();
@@ -267,7 +269,9 @@ class MobileNavigation extends Component {
   }
 
   _handleClickOnSecondLevelDrawer(e) {
-    let drawer, activator, drawerMenuItem;
+    let drawer;
+    let activator;
+    let drawerMenuItem;
 
     if (Util.checkHasClass(e.target, chi.classes.CLOSE) ||
       Util.checkHasClass(e.target.parentNode, chi.classes.CLOSE) ||
@@ -275,16 +279,16 @@ class MobileNavigation extends Component {
       this._hideMobileNav();
     }
 
-    for (let cur = e.target; cur && cur !== this._drawersContainer; cur = cur.parentNode) {
-      if (Util.checkHasClass(cur, DRAWER_CLASS)) {
-        drawer = cur;
+    for (let currentNode = e.target; currentNode && currentNode !== this._drawersContainer; currentNode = currentNode.parentNode) {
+      if (Util.checkHasClass(currentNode, DRAWER_CLASS)) {
+        drawer = currentNode;
       } else if (
-        (cur.nodeName === 'A' || cur.nodeName === 'BUTTON') &&
-        !Util.checkHasClass(cur, chi.classes.CLOSE)
+        (currentNode.nodeName === 'A' || currentNode.nodeName === 'BUTTON') &&
+        !Util.checkHasClass(currentNode, chi.classes.CLOSE)
       ) {
-        activator = cur;
-      } else if (cur.nodeName === 'LI') {
-        drawerMenuItem = cur;
+        activator = currentNode;
+      } else if (currentNode.nodeName === 'LI') {
+        drawerMenuItem = currentNode;
       }
     }
 
@@ -328,7 +332,7 @@ class MobileNavigation extends Component {
           Util.removeClass(secondLevelDrawer, chi.classes.ACTIVE);
           Util.removeClass(firstLevelDrawerContent, SECOND_LEVEL_SHOWN_CLASS);
         },
-        500
+        DRAWER_ANIMATION_DURATION
       );
     }
   }
@@ -378,13 +382,13 @@ class MobileNavigation extends Component {
         function() {
           calculateHeight();
           Util.checkAddClass(drawerMenuItemList, chi.classes.TRANSITIONING);
-          drawerMenuItemList.style.height = '0px';
+          drawerMenuItemList.style.height = '0';
         }, function() {
           drawerMenuItemList.style.height = drawerMenuItemListHeight;
           Util.checkAddClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED);
         }, function() {
           Util.checkRemoveClass(drawerMenuItemList, chi.classes.TRANSITIONING);
-        }, 75
+        }, DRAWER_ITEM_LIST_ANIMATION_DURATION
       );
     } else {
       this._menuItemAnimation = Util.threeStepsAnimation(
@@ -393,12 +397,12 @@ class MobileNavigation extends Component {
           Util.checkAddClass(drawerMenuItemList, chi.classes.TRANSITIONING);
           drawerMenuItemList.style.height = drawerMenuItemListHeight;
         }, function() {
-          drawerMenuItemList.style.height = '0px';
+          drawerMenuItemList.style.height = '0';
           Util.checkRemoveClass(drawerMenuItem, DRAWER_ITEM_LIST_EXPANDED);
         }, function() {
           Util.checkRemoveClass(drawerMenuItemList, chi.classes.TRANSITIONING);
           drawerMenuItemList.style.removeProperty('height');
-        }, 75
+        }, DRAWER_ITEM_LIST_ANIMATION_DURATION
       );
     }
   }
@@ -441,12 +445,16 @@ class MobileNavigation extends Component {
   }
 
   dispose() {
+    this._firstLevelDrawer.dispose();
     this._config = null;
     this._elem = null;
-    this._firstLevelDrawer = null;
     this._drawersContainer = null;
+    this._mobileNavElement = null;
+    this._firstLevelDrawer = null;
+    this._drawers.length = 0;
+    this._dropdowns.forEach(dropdown => dropdown.dispose());
+    this._dropdowns.length = 0;
     this._removeEventHandlers();
-    this._drawers = [];
   }
 
   _hideMobileNav() {
@@ -454,5 +462,5 @@ class MobileNavigation extends Component {
   }
 }
 
-const factory = Component.factory.bind(MobileNavigation);
-export { MobileNavigation, factory };
+const factory = Component.factory.bind(MobileNav);
+export { MobileNav, factory };

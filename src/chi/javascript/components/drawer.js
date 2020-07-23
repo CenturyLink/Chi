@@ -251,4 +251,4 @@ class Drawer extends Component {
 }
 
 const factory = Component.factory.bind(Drawer);
-export { Drawer, factory, EVENTS };
+export {Drawer, factory, EVENTS, ANIMATION_DURATION as DRAWER_ANIMATION_DURATION};

@@ -149,10 +149,10 @@ class Dropdown extends Component {
   }
 
   disablePopper () {
-    if (this._popper) {
+    if (this._popper && typeof this._popper === 'function') {
       this._popper.destroy();
-      this._popper = null;
     }
+    this._popper = null;
   }
 
   _clickOnTrigger() {
