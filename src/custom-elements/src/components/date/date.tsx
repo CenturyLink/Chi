@@ -150,7 +150,7 @@ export class Date {
   };
 
   private _initCalendarViewModel(): void {
-    dayjs.locale(this.locale);
+    // dayjs.locale(this.locale);
 
     const week: Dayjs[] = [];
     const startOfWeek = dayjs().startOf('week');
