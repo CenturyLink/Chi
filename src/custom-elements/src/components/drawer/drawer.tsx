@@ -44,6 +44,11 @@ export class Drawer {
   @Prop({ reflect: true }) preventAutoHide = false;
 
   /**
+   * to define portal style of the Drawer header
+   */
+  @Prop({ reflect: true }) portal = false;
+
+  /**
    * Status classes for the show/hide animation
    */
   @State() _animationClasses: string;
@@ -251,7 +256,7 @@ export class Drawer {
     // TODO: change this into <chi-button/> element.
     const closeButton = <button class="chi-button -icon -close" onClick={() => this.hide()} aria-label="Close">
       <div class="chi-button__content">
-        <chi-icon icon="x"></chi-icon>
+        <chi-icon icon="x" color={this.portal ? 'light' : ''}></chi-icon>
       </div>
     </button>;
 
@@ -260,6 +265,7 @@ export class Drawer {
         class={`chi-drawer -animated
         ${this.position ? `-${this.position}` : ''}
         ${this._animationClasses}
+        ${this.portal ? '-portal' : ''}
       `}>
         {this.noHeader
           ? !this.nonClosable

@@ -188,6 +188,28 @@ $animation-duration: 0.5s;
     top: 0.8125rem;
     z-index: 50;
   }
+
+  &.-portal {
+    .chi-drawer__header {
+      background-color: set-color(grey, 100);
+
+      .chi-drawer__title {
+        color: set-color(white);
+      }
+
+      button {
+        &.chi-button {
+          &.-close {
+            i {
+              &.chi-icon {
+                color: set-color(white);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .chi-backdrop__wrapper > .chi-drawer {

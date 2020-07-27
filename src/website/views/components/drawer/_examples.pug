@@ -782,6 +782,48 @@ ul#chi-tabs--header.chi-tabs
         <!-- JavaScript -->
         <script>chi.drawer(document.getElementById('drawer-trigger-21'));</script>
 
+h3 Portal
+p.-text
+  | Header markup is optional. Remove it to make the content fill the drawer.
+
+.example.-mb--3(style='overflow:hidden;')
+  .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
+    chi-drawer(position='left' title='Drawer title here' portal active backdrop prevent-auto-hide)
+      .-px--2.-text Drawer content here
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-portal
+      li.-active
+        a(href=`#webcomponent-portal`) Web Component
+      li
+        a(href=`#html-portal`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-portal
+    :code(lang="html")
+      <chi-drawer position="left" title="Drawer title here" portal active backdrop prevent-auto-hide>
+        <div class="-px--2 -text">Drawer content here</div>
+      </chi-drawer>
+
+  .chi-tabs-panel#html-portal
+    :code(lang="html")
+      <div class="chi-backdrop -closed">
+        <div class="chi-backdrop__wrapper">
+          <div id="drawer-20" class="chi-drawer -left -portal">
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">
+                Drawer title here
+              </span>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-drawer__content">
+              <div class="-px--2 -text">Drawer content here</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 script.
   document.addEventListener(
     'DOMContentLoaded',
