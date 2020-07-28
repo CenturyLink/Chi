@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
 
 @Component({
   tag: 'chi-switch',
@@ -26,6 +26,11 @@ export class ToggleSwitch {
    */
   @Prop({ reflect: true, mutable: true }) checked = false;
 
+  /**
+   * OPTIONAL. Size of the label. {xs,sm}.
+   */
+  @Prop({ reflect: true }) size: string;
+
    // used to pass additional classes like { -focus, -hover etc .}
   @Prop() extraClass: string;
 
@@ -41,10 +46,23 @@ export class ToggleSwitch {
     this.toggle.emit(this.checked);
   }
 
+  @Watch('size')
+  sizeValidation(newValue: string) {
+    if (newValue && !['', 'sm', 'xs'].includes(newValue)) {
+      throw new Error(`${newValue} is not a valid size for toggle switch. Valid values are xs, sm or ''. `);
+    }
+  }
+
+  componentWillLoad() {
+    this.sizeValidation(this.size);
+  }
+
   render() {
     return (
       <label htmlFor={`${this.el.id}-control`}
-            class={`chi-switch ${this.hideLabel ? '-label--hide' : ''}`}>
+            class={`chi-switch
+              ${this.size ? `-${this.size}` : ''}
+              ${this.hideLabel ? '-label--hide' : ''}`}>
         <input type="checkbox"
                class={`chi-switch__input ${this.extraClass ? this.extraClass : ''}`}
                id={`${this.el.id}-control`}
