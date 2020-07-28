@@ -254,9 +254,9 @@ export class Drawer {
 
   render() {
     // TODO: change this into <chi-button/> element.
-    const xIconProperties = {icon: 'x', color: null};
+    const xIconProperties = {icon: 'x'};
     if (this.portal) {
-      xIconProperties.color = 'light';
+      xIconProperties['color'] = 'light';
     }
     const closeButton = <button class="chi-button -icon -close" onClick={() => this.hide()} aria-label="Close">
       <div class="chi-button__content">
