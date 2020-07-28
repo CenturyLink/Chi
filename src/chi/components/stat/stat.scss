@@ -18,7 +18,7 @@
     .chi-stat-metric {
       &__title {
         color: $primary-color;
-        font-weight: 600;
+        font-weight: $font-weight-semibold;
       }
     }
   }
