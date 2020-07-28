@@ -797,16 +797,44 @@ p.-text
       li
         a(href=`#html-portal`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-portal
+    .chi-tab__description
+      | Use the attribute <code>portal</code> to enable portal styling.
     :code(lang="html")
-      <chi-drawer position="left" title="Drawer title here" portal active backdrop prevent-auto-hide>
+      <!-- Trigger -->
+      <chi-button id="drawer-trigger-21" type="icon">
+        <chi-icon icon="menu" size="sm--2"></chi-icon>
+      </chi-button>
+
+      <!-- Drawer -->
+      <chi-drawer id="interactive-drawer-21" position="left" title="Drawer title here" portal backdrop prevent-auto-hide>
         <div class="-px--2 -text">Drawer content here</div>
       </chi-drawer>
 
+      <!-- JavaScript -->
+      <script>
+        var drawer = document.getElementById('interactive-drawer-21');
+        var drawerTrigger = document.getElementById('drawer-trigger-21');
+        drawerTrigger.addEventListener('click', function(){
+          drawer.toggle();
+          // or drawer.active = !drawer.active;
+        });
+      </script>
+
   .chi-tabs-panel#html-portal
+    .chi-tab__description
+      | Use the class <code>-portal</code> to enable portal styling.
     :code(lang="html")
+      <!-- Trigger -->
+      <button id="drawer-trigger-22" class="chi-button -icon chi-drawer__trigger" data-target="#drawer-22" aria-label="Toggle navigation">
+        <div class="chi-button__content">
+          <i class="chi-icon -sm--2 icon-menu"></i>
+        </div>
+      </button>
+
+      <!-- Drawer -->
       <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
-          <div id="drawer-20" class="chi-drawer -left -portal">
+          <div id="drawer-22" class="chi-drawer -left -portal">
             <div class="chi-drawer__header">
               <span class="chi-drawer__title">
                 Drawer title here
@@ -823,6 +851,9 @@ p.-text
           </div>
         </div>
       </div>
+
+      <!-- JavaScript -->
+      <script>chi.drawer(document.getElementById('drawer-trigger-22'));</script>
 
 script.
   document.addEventListener(
