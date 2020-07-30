@@ -27,7 +27,7 @@ export class Date {
   /**
    * Locale to use in date picker
    */
-  @Prop({ reflect: true }) locale: LocalePresetType = 'en';
+  @Prop({ reflect: true }) locale = 'en';
 
   /**
    * Minimum eligible date

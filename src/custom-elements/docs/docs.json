@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-07-23T16:28:53",
+  "timestamp": "2020-07-30T17:56:25",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2267,6 +2267,22 @@
           "attr": "label",
           "reflectToAttr": true,
           "docs": "to set a label for the toggle switch.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "OPTIONAL. Size of the label. {xs,sm}.",
           "docsTags": [],
           "values": [
             {
