@@ -9,5 +9,10 @@ chi-switch:not(.hydrated) {
   margin: 0.25rem 0;
   width: 3rem;
 
+  &[size='xs'] {
+    height: 1rem;
+    width: 2rem;
+  }
+
   @include background-gradient;
 }
