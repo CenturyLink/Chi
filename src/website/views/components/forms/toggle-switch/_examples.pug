@@ -276,7 +276,7 @@ h3 Switch with Hidden Label
 .example.-mb--3
   .-p--3
     .chi-form__item
-      chi-switch(id='toggle7',label='Label', hide-label)
+      chi-switch(id='toggle8',label='Label', hide-label)
   .example-tabs.-pl--2
     ul.chi-tabs#example-hidden-label
       li.-active
@@ -289,7 +289,7 @@ h3 Switch with Hidden Label
       | in close proximity to other text that clearly describes its purpose.
     :code(lang="html")
       <div class="chi-form__item">
-        <chi-switch id="toggle7" label="Label" hide-label></chi-switch>
+        <chi-switch id="toggle8" label="Label" hide-label></chi-switch>
       </div>
   .chi-tabs-panel#html-hidden-label
     .chi-tab__description
@@ -299,6 +299,59 @@ h3 Switch with Hidden Label
       <div class="chi-form__item">
         <label class="chi-switch -label--hide" for="toggle8">
           <input type="checkbox" class="chi-switch__input" id="toggle8">
+          <span class="chi-switch__content">
+            <span class="chi-switch__thumb"></span>
+          </span>
+          <span class="chi-switch__label">Label</span>
+        </label>
+      </div>
+
+h3 Sizes
+p.-text
+  | Toggle switch supports different sizes: <code>-xs</code>, <code>-sm</code>.
+  | The default size is <code>-sm</code>.
+.example.-mb--3
+  .-p--3
+    .-p--2
+      .chi-form__item
+        chi-switch(id='toggle15',label='Label', size='xs')
+    .-p--2
+      .chi-form__item
+        chi-switch(id='toggle16',label='Label', size='sm')
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-input-sizes
+      li.-active
+        a(href=`#webcomponent-input-sizes`) Web Component
+      li
+        a(href=`#html-input-sizes`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-input-sizes
+    :code(lang="html")
+      <!-- xs -->
+      <div class="chi-form__item">
+        <chi-switch id="toggle15" label="Label" size="xs"></chi-switch>
+      </div>
+      
+      <!-- sm -->
+      <div class="chi-form__item">
+        <chi-switch id="toggle16" label="Label" size="sm"></chi-switch>
+      </div>
+  .chi-tabs-panel#html-input-sizes
+    :code(lang='html')
+      <!-- xs -->
+      <div class="chi-form__item">
+        <label class="chi-switch -xs" for="toggle15">
+          <input type="checkbox" class="chi-switch__input" id="toggle15">
+          <span class="chi-switch__content">
+            <span class="chi-switch__thumb"></span>
+          </span>
+          <span class="chi-switch__label">Label</span>
+        </label>
+      </div>
+      
+      <!-- sm -->
+      <div class="chi-form__item">
+        <label class="chi-switch -sm" for="toggle16">
+          <input type="checkbox" class="chi-switch__input" id="toggle16">
           <span class="chi-switch__content">
             <span class="chi-switch__thumb"></span>
           </span>

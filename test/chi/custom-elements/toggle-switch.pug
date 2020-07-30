@@ -46,6 +46,17 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
     .chi-form__item
       chi-switch(id='toggle8', disabled, data-cy='toggle8', label='Label', hide-label)
 
+.test-sizes
+  .-mb--1
+    h5 -xs
+    .chi-form__item
+      chi-switch(id='toggle9',data-cy='toggle9', label='Label', size='xs')
+
+  .-mb--1
+    h5 -sm
+    .chi-form__item
+      chi-switch(id='toggle10', data-cy='toggle10', label='Label', size='sm')
+            
 style.
   chi-switch {
     display: inline-block !important;
