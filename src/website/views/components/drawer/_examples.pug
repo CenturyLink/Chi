@@ -783,13 +783,11 @@ ul#chi-tabs--header.chi-tabs
         <script>chi.drawer(document.getElementById('drawer-trigger-21'));</script>
 
 h3 Portal
-p.-text
-  | Header markup is optional. Remove it to make the content fill the drawer.
 
 .example.-mb--3(style='overflow:hidden;')
-  .-position--relative.-z--0(style="height:15rem;overflow:hidden;")
-    chi-drawer(position='left' title='Drawer title here' portal active backdrop prevent-auto-hide)
-      .-px--2.-text Drawer content here
+  .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
+    chi-drawer(position='bottom' title='Drawer title here' portal active backdrop prevent-auto-hide)
+      .-p--2.-text Drawer content here
   .example-tabs.-pl--2
     ul.chi-tabs#examples-portal
       li.-active
@@ -801,13 +799,11 @@ p.-text
       | Use the attribute <code>portal</code> to enable portal styling.
     :code(lang="html")
       <!-- Trigger -->
-      <chi-button id="drawer-trigger-22" type="icon">
-        <chi-icon icon="menu" size="sm--2"></chi-icon>
-      </chi-button>
+      <chi-button id="drawer-trigger-22" color="primary">Launch demo drawer</chi-button>
 
       <!-- Drawer -->
-      <chi-drawer id="interactive-drawer-22" position="left" title="Drawer title here" portal backdrop prevent-auto-hide>
-        <div class="-px--2 -text">Drawer content here</div>
+      <chi-drawer id="interactive-drawer-22" position="bottom" title="Drawer title here" portal backdrop prevent-auto-hide>
+        <div class="-p--2 -text">Drawer content here</div>
       </chi-drawer>
 
       <!-- JavaScript -->
@@ -825,16 +821,12 @@ p.-text
       | Use the class <code>-portal</code> to enable portal styling.
     :code(lang="html")
       <!-- Trigger -->
-      <button id="drawer-trigger-23" class="chi-button -icon chi-drawer__trigger" data-target="#drawer-23" aria-label="Toggle navigation">
-        <div class="chi-button__content">
-          <i class="chi-icon -sm--2 icon-menu"></i>
-        </div>
-      </button>
+      <button id="drawer-trigger-23" class="chi-button -primary chi-drawer__trigger" data-target="#drawer-23">Launch demo drawer</button>
 
       <!-- Drawer -->
       <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
-          <div id="drawer-23" class="chi-drawer -left -portal">
+          <div id="drawer-23" class="chi-drawer -bottom -portal">
             <div class="chi-drawer__header">
               <span class="chi-drawer__title">
                 Drawer title here
@@ -846,7 +838,7 @@ p.-text
               </button>
             </div>
             <div class="chi-drawer__content">
-              <div class="-px--2 -text">Drawer content here</div>
+              <div class="-p--2 -text">Drawer content here</div>
             </div>
           </div>
         </div>
