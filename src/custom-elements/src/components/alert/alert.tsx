@@ -1,6 +1,5 @@
 import { Component, Element, Event, EventEmitter, Prop, Watch, h, State } from '@stencil/core';
-
-const ALERT_COLORS = ['success', 'danger', 'warning', 'info', 'muted'];
+import { ALERT_COLORS as VALID_COLORS, AlertColors } from '../../constants/color';
 
 @Component({
   tag: 'chi-alert',
@@ -21,9 +20,9 @@ export class Alert {
   @Prop({ reflect: true }) mutable = false;
 
   /**
-   *  to set alert state { success, danger, warning, info, muted }.
+   *  to set alert state.
    */
-  @Prop({ reflect: true }) color: string;
+  @Prop({ reflect: true }) color: AlertColors;
 
   /**
    *  to avoid necessity of adding <chi-icon> to alert markup.
@@ -67,9 +66,11 @@ export class Alert {
   }
 
   @Watch('color')
-  colorValidation(newValue: string) {
-    if (newValue && !ALERT_COLORS.includes(newValue)) {
-      throw new Error(`${newValue} is not a valid color for alert. Valid values are${ALERT_COLORS.map(s => ` ${s}`)}.`);
+  colorValidation(newValue: AlertColors) {
+    const validValues = VALID_COLORS.join(', ');
+
+    if (newValue && !VALID_COLORS.includes(newValue)) {
+      throw new Error(`${newValue} is not a valid color for alert. Valid values are ${validValues}.`);
     }
   }
 
@@ -127,7 +128,7 @@ export class Alert {
   }
 
   render() {
-    const chiIcon = <chi-icon icon={this.icon} color={this.color} extraClass="chi-alert__icon"></chi-icon>;
+    const chiIcon = <chi-icon icon={this.icon} color={this.color || null} extraClass="chi-alert__icon"></chi-icon>;
     const alertTitle = this.alertTitle && <p class="chi-alert__title">{this.alertTitle}</p>;
     const chiActions = this.alertActions && <div class="chi-alert__actions"><slot name="chi-alert__actions"></slot></div>;
 

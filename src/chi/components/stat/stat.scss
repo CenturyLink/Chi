@@ -1,0 +1,198 @@
+@import '_variables';
+@import '_mixins';
+
+.chi-stat {
+  color: $text-color;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+  word-wrap: break-word;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.-active {
+    .chi-stat-metric {
+      &__title {
+        color: $primary-color;
+        font-weight: $font-weight-semibold;
+      }
+    }
+  }
+
+  &.-center {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    .chi-stat-metric,
+    .chi-stat-submetric {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .chi-stat-submetric {
+      flex-direction: row;
+    }
+
+    .chi-stat-background-icon {
+      left: 0;
+      right: auto;
+  
+      > .chi-icon {
+        left: -1rem;
+        position: relative;
+      }
+    }
+  }
+
+  &.-disabled {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    font-size: $text;
+    height: 100%;
+    line-height: $line-height-small;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .chi-stat-metric {
+    z-index: 2;
+
+    &__title {
+      font-size: $text;
+      line-height: $line-height-small;
+    }
+
+    &__value {
+      font-size: 2.5rem;
+      line-height: 3rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+
+  .chi-stat-submetric {
+    display: flex;
+    flex-direction: row;
+    font-size: $text-small;
+    z-index: 2;
+
+    &__value {
+      + .chi-stat-submetric__title {
+        padding-left: 0.25rem;
+      }
+    }
+  }
+
+  .chi-stat-background-icon {
+    bottom: 0;
+    height: 3.5rem;
+    opacity: 0.1;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    width: 3.5rem;
+    z-index: 1;
+
+    > .chi-icon {
+      font-size: 4.5rem;
+      height: 4.5rem;
+      line-height: 4.5rem;
+      width: 4.5rem;
+    }
+  }
+
+  &.-card {
+    background-color: set-color(white);
+    border: 0.0625rem solid rgba(set-color(black), 0.12);
+
+    &.-active {
+      border: 0.0625rem solid $primary-color;
+      box-shadow: 0 0 0 0.0625rem $primary-color;
+    }
+  }
+
+  &.-portal {
+    background-color: set-color(blue, 90);
+    border: 0 none;
+    color: set-color(white);
+
+    .chi-stat-metric {
+      &__title {
+        align-items: center;
+        display: flex;
+        font-size: $text-large;
+        font-weight: $font-weight-semibold;
+        line-height: $line-height-small;
+        text-transform: uppercase;
+        width: 75%;
+      }
+
+      &__value {
+        color: set-color(blue, 40);
+        font-weight: $font-weight-semibold;
+      }
+    }
+
+    .chi-stat-submetric {
+      color: set-color(blue, 30);
+      font-weight: $font-weight-semibold;
+      white-space: nowrap;
+    }
+
+    &.-center {
+      .chi-stat-metric__title {
+        justify-content: center;
+      }
+    }
+
+    &.-active {
+      background-color: set-color(blue, 50);
+
+      .chi-stat-metric {
+        &__title,
+        &__value {
+          color: set-color(white);
+        }
+      }
+
+      .chi-stat-submetric {
+        color: set-color(blue, 90);
+      }
+
+      .chi-stat-background-icon {
+        color: set-color(blue, 90);
+        opacity: 0.2;
+      }
+
+      &::after {
+        border-color: set-color(blue, 50);
+        border-left-color: transparent;
+        border-style: solid;
+        border-top-color: transparent;
+        border-width: 0.5rem;
+        bottom: -0.45rem;
+        content: '';
+        display: block;
+        left: calc(50% - 0.375rem);
+        position: absolute;
+        transform: rotate(45deg);
+      }
+    }
+  }
+}

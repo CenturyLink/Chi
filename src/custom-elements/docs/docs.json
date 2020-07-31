@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-07-30T20:56:55",
+  "timestamp": "2020-07-31T18:38:41",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -50,14 +50,31 @@
         },
         {
           "name": "color",
-          "type": "string",
+          "type": "\"danger\" | \"info\" | \"muted\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "to set alert state { success, danger, warning, info, muted }.",
+          "docs": "to set alert state.",
           "docsTags": [],
           "values": [
             {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "muted",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
               "type": "string"
             }
           ],
@@ -569,7 +586,7 @@
         },
         {
           "name": "locale",
-          "type": "\"af\" | \"ar-dz\" | \"ar-kw\" | \"ar-ly\" | \"ar-ma\" | \"ar-sa\" | \"ar-tn\" | \"ar\" | \"az\" | \"be\" | \"bg\" | \"bi\" | \"bm\" | \"bn\" | \"bo\" | \"br\" | \"bs\" | \"ca\" | \"cs\" | \"cv\" | \"cy\" | \"da\" | \"de-at\" | \"de-ch\" | \"de\" | \"dv\" | \"el\" | \"en-SG\" | \"en-au\" | \"en-ca\" | \"en-gb\" | \"en-ie\" | \"en-il\" | \"en-in\" | \"en-nz\" | \"en-tt\" | \"en\" | \"eo\" | \"es-do\" | \"es-us\" | \"es\" | \"et\" | \"eu\" | \"fa\" | \"fi\" | \"fo\" | \"fr-ca\" | \"fr-ch\" | \"fr\" | \"fy\" | \"ga\" | \"gd\" | \"gl\" | \"gom-latn\" | \"gu\" | \"he\" | \"hi\" | \"hr\" | \"hu\" | \"hy-am\" | \"id\" | \"is\" | \"it-ch\" | \"it\" | \"ja\" | \"jv\" | \"ka\" | \"kk\" | \"km\" | \"kn\" | \"ko\" | \"ku\" | \"ky\" | \"lb\" | \"lo\" | \"lt\" | \"lv\" | \"me\" | \"mi\" | \"mk\" | \"ml\" | \"mn\" | \"mr\" | \"ms-my\" | \"ms\" | \"mt\" | \"my\" | \"nb\" | \"ne\" | \"nl-be\" | \"nl\" | \"nn\" | \"oc-lnc\" | \"pa-in\" | \"pl\" | \"pt-br\" | \"pt\" | \"ro\" | \"ru\" | \"rw\" | \"sd\" | \"se\" | \"si\" | \"sk\" | \"sl\" | \"sq\" | \"sr-cyrl\" | \"sr\" | \"ss\" | \"sv\" | \"sw\" | \"ta\" | \"te\" | \"tet\" | \"tg\" | \"th\" | \"tk\" | \"tl-ph\" | \"tlh\" | \"tr\" | \"tzl\" | \"tzm-latn\" | \"tzm\" | \"ug-cn\" | \"uk\" | \"ur\" | \"uz-latn\" | \"uz\" | \"vi\" | \"x-pseudo\" | \"yo\" | \"zh-cn\" | \"zh-hk\" | \"zh-tw\" | \"zh\"",
+          "type": "string",
           "mutable": false,
           "attr": "locale",
           "reflectToAttr": true,
@@ -578,543 +595,6 @@
           "default": "'en'",
           "values": [
             {
-              "value": "af",
-              "type": "string"
-            },
-            {
-              "value": "ar-dz",
-              "type": "string"
-            },
-            {
-              "value": "ar-kw",
-              "type": "string"
-            },
-            {
-              "value": "ar-ly",
-              "type": "string"
-            },
-            {
-              "value": "ar-ma",
-              "type": "string"
-            },
-            {
-              "value": "ar-sa",
-              "type": "string"
-            },
-            {
-              "value": "ar-tn",
-              "type": "string"
-            },
-            {
-              "value": "ar",
-              "type": "string"
-            },
-            {
-              "value": "az",
-              "type": "string"
-            },
-            {
-              "value": "be",
-              "type": "string"
-            },
-            {
-              "value": "bg",
-              "type": "string"
-            },
-            {
-              "value": "bi",
-              "type": "string"
-            },
-            {
-              "value": "bm",
-              "type": "string"
-            },
-            {
-              "value": "bn",
-              "type": "string"
-            },
-            {
-              "value": "bo",
-              "type": "string"
-            },
-            {
-              "value": "br",
-              "type": "string"
-            },
-            {
-              "value": "bs",
-              "type": "string"
-            },
-            {
-              "value": "ca",
-              "type": "string"
-            },
-            {
-              "value": "cs",
-              "type": "string"
-            },
-            {
-              "value": "cv",
-              "type": "string"
-            },
-            {
-              "value": "cy",
-              "type": "string"
-            },
-            {
-              "value": "da",
-              "type": "string"
-            },
-            {
-              "value": "de-at",
-              "type": "string"
-            },
-            {
-              "value": "de-ch",
-              "type": "string"
-            },
-            {
-              "value": "de",
-              "type": "string"
-            },
-            {
-              "value": "dv",
-              "type": "string"
-            },
-            {
-              "value": "el",
-              "type": "string"
-            },
-            {
-              "value": "en-SG",
-              "type": "string"
-            },
-            {
-              "value": "en-au",
-              "type": "string"
-            },
-            {
-              "value": "en-ca",
-              "type": "string"
-            },
-            {
-              "value": "en-gb",
-              "type": "string"
-            },
-            {
-              "value": "en-ie",
-              "type": "string"
-            },
-            {
-              "value": "en-il",
-              "type": "string"
-            },
-            {
-              "value": "en-in",
-              "type": "string"
-            },
-            {
-              "value": "en-nz",
-              "type": "string"
-            },
-            {
-              "value": "en-tt",
-              "type": "string"
-            },
-            {
-              "value": "en",
-              "type": "string"
-            },
-            {
-              "value": "eo",
-              "type": "string"
-            },
-            {
-              "value": "es-do",
-              "type": "string"
-            },
-            {
-              "value": "es-us",
-              "type": "string"
-            },
-            {
-              "value": "es",
-              "type": "string"
-            },
-            {
-              "value": "et",
-              "type": "string"
-            },
-            {
-              "value": "eu",
-              "type": "string"
-            },
-            {
-              "value": "fa",
-              "type": "string"
-            },
-            {
-              "value": "fi",
-              "type": "string"
-            },
-            {
-              "value": "fo",
-              "type": "string"
-            },
-            {
-              "value": "fr-ca",
-              "type": "string"
-            },
-            {
-              "value": "fr-ch",
-              "type": "string"
-            },
-            {
-              "value": "fr",
-              "type": "string"
-            },
-            {
-              "value": "fy",
-              "type": "string"
-            },
-            {
-              "value": "ga",
-              "type": "string"
-            },
-            {
-              "value": "gd",
-              "type": "string"
-            },
-            {
-              "value": "gl",
-              "type": "string"
-            },
-            {
-              "value": "gom-latn",
-              "type": "string"
-            },
-            {
-              "value": "gu",
-              "type": "string"
-            },
-            {
-              "value": "he",
-              "type": "string"
-            },
-            {
-              "value": "hi",
-              "type": "string"
-            },
-            {
-              "value": "hr",
-              "type": "string"
-            },
-            {
-              "value": "hu",
-              "type": "string"
-            },
-            {
-              "value": "hy-am",
-              "type": "string"
-            },
-            {
-              "value": "id",
-              "type": "string"
-            },
-            {
-              "value": "is",
-              "type": "string"
-            },
-            {
-              "value": "it-ch",
-              "type": "string"
-            },
-            {
-              "value": "it",
-              "type": "string"
-            },
-            {
-              "value": "ja",
-              "type": "string"
-            },
-            {
-              "value": "jv",
-              "type": "string"
-            },
-            {
-              "value": "ka",
-              "type": "string"
-            },
-            {
-              "value": "kk",
-              "type": "string"
-            },
-            {
-              "value": "km",
-              "type": "string"
-            },
-            {
-              "value": "kn",
-              "type": "string"
-            },
-            {
-              "value": "ko",
-              "type": "string"
-            },
-            {
-              "value": "ku",
-              "type": "string"
-            },
-            {
-              "value": "ky",
-              "type": "string"
-            },
-            {
-              "value": "lb",
-              "type": "string"
-            },
-            {
-              "value": "lo",
-              "type": "string"
-            },
-            {
-              "value": "lt",
-              "type": "string"
-            },
-            {
-              "value": "lv",
-              "type": "string"
-            },
-            {
-              "value": "me",
-              "type": "string"
-            },
-            {
-              "value": "mi",
-              "type": "string"
-            },
-            {
-              "value": "mk",
-              "type": "string"
-            },
-            {
-              "value": "ml",
-              "type": "string"
-            },
-            {
-              "value": "mn",
-              "type": "string"
-            },
-            {
-              "value": "mr",
-              "type": "string"
-            },
-            {
-              "value": "ms-my",
-              "type": "string"
-            },
-            {
-              "value": "ms",
-              "type": "string"
-            },
-            {
-              "value": "mt",
-              "type": "string"
-            },
-            {
-              "value": "my",
-              "type": "string"
-            },
-            {
-              "value": "nb",
-              "type": "string"
-            },
-            {
-              "value": "ne",
-              "type": "string"
-            },
-            {
-              "value": "nl-be",
-              "type": "string"
-            },
-            {
-              "value": "nl",
-              "type": "string"
-            },
-            {
-              "value": "nn",
-              "type": "string"
-            },
-            {
-              "value": "oc-lnc",
-              "type": "string"
-            },
-            {
-              "value": "pa-in",
-              "type": "string"
-            },
-            {
-              "value": "pl",
-              "type": "string"
-            },
-            {
-              "value": "pt-br",
-              "type": "string"
-            },
-            {
-              "value": "pt",
-              "type": "string"
-            },
-            {
-              "value": "ro",
-              "type": "string"
-            },
-            {
-              "value": "ru",
-              "type": "string"
-            },
-            {
-              "value": "rw",
-              "type": "string"
-            },
-            {
-              "value": "sd",
-              "type": "string"
-            },
-            {
-              "value": "se",
-              "type": "string"
-            },
-            {
-              "value": "si",
-              "type": "string"
-            },
-            {
-              "value": "sk",
-              "type": "string"
-            },
-            {
-              "value": "sl",
-              "type": "string"
-            },
-            {
-              "value": "sq",
-              "type": "string"
-            },
-            {
-              "value": "sr-cyrl",
-              "type": "string"
-            },
-            {
-              "value": "sr",
-              "type": "string"
-            },
-            {
-              "value": "ss",
-              "type": "string"
-            },
-            {
-              "value": "sv",
-              "type": "string"
-            },
-            {
-              "value": "sw",
-              "type": "string"
-            },
-            {
-              "value": "ta",
-              "type": "string"
-            },
-            {
-              "value": "te",
-              "type": "string"
-            },
-            {
-              "value": "tet",
-              "type": "string"
-            },
-            {
-              "value": "tg",
-              "type": "string"
-            },
-            {
-              "value": "th",
-              "type": "string"
-            },
-            {
-              "value": "tk",
-              "type": "string"
-            },
-            {
-              "value": "tl-ph",
-              "type": "string"
-            },
-            {
-              "value": "tlh",
-              "type": "string"
-            },
-            {
-              "value": "tr",
-              "type": "string"
-            },
-            {
-              "value": "tzl",
-              "type": "string"
-            },
-            {
-              "value": "tzm-latn",
-              "type": "string"
-            },
-            {
-              "value": "tzm",
-              "type": "string"
-            },
-            {
-              "value": "ug-cn",
-              "type": "string"
-            },
-            {
-              "value": "uk",
-              "type": "string"
-            },
-            {
-              "value": "ur",
-              "type": "string"
-            },
-            {
-              "value": "uz-latn",
-              "type": "string"
-            },
-            {
-              "value": "uz",
-              "type": "string"
-            },
-            {
-              "value": "vi",
-              "type": "string"
-            },
-            {
-              "value": "x-pseudo",
-              "type": "string"
-            },
-            {
-              "value": "yo",
-              "type": "string"
-            },
-            {
-              "value": "zh-cn",
-              "type": "string"
-            },
-            {
-              "value": "zh-hk",
-              "type": "string"
-            },
-            {
-              "value": "zh-tw",
-              "type": "string"
-            },
-            {
-              "value": "zh",
               "type": "string"
             }
           ],
@@ -1318,7 +798,7 @@
         },
         {
           "name": "locale",
-          "type": "\"af\" | \"ar-dz\" | \"ar-kw\" | \"ar-ly\" | \"ar-ma\" | \"ar-sa\" | \"ar-tn\" | \"ar\" | \"az\" | \"be\" | \"bg\" | \"bi\" | \"bm\" | \"bn\" | \"bo\" | \"br\" | \"bs\" | \"ca\" | \"cs\" | \"cv\" | \"cy\" | \"da\" | \"de-at\" | \"de-ch\" | \"de\" | \"dv\" | \"el\" | \"en-SG\" | \"en-au\" | \"en-ca\" | \"en-gb\" | \"en-ie\" | \"en-il\" | \"en-in\" | \"en-nz\" | \"en-tt\" | \"en\" | \"eo\" | \"es-do\" | \"es-us\" | \"es\" | \"et\" | \"eu\" | \"fa\" | \"fi\" | \"fo\" | \"fr-ca\" | \"fr-ch\" | \"fr\" | \"fy\" | \"ga\" | \"gd\" | \"gl\" | \"gom-latn\" | \"gu\" | \"he\" | \"hi\" | \"hr\" | \"hu\" | \"hy-am\" | \"id\" | \"is\" | \"it-ch\" | \"it\" | \"ja\" | \"jv\" | \"ka\" | \"kk\" | \"km\" | \"kn\" | \"ko\" | \"ku\" | \"ky\" | \"lb\" | \"lo\" | \"lt\" | \"lv\" | \"me\" | \"mi\" | \"mk\" | \"ml\" | \"mn\" | \"mr\" | \"ms-my\" | \"ms\" | \"mt\" | \"my\" | \"nb\" | \"ne\" | \"nl-be\" | \"nl\" | \"nn\" | \"oc-lnc\" | \"pa-in\" | \"pl\" | \"pt-br\" | \"pt\" | \"ro\" | \"ru\" | \"rw\" | \"sd\" | \"se\" | \"si\" | \"sk\" | \"sl\" | \"sq\" | \"sr-cyrl\" | \"sr\" | \"ss\" | \"sv\" | \"sw\" | \"ta\" | \"te\" | \"tet\" | \"tg\" | \"th\" | \"tk\" | \"tl-ph\" | \"tlh\" | \"tr\" | \"tzl\" | \"tzm-latn\" | \"tzm\" | \"ug-cn\" | \"uk\" | \"ur\" | \"uz-latn\" | \"uz\" | \"vi\" | \"x-pseudo\" | \"yo\" | \"zh-cn\" | \"zh-hk\" | \"zh-tw\" | \"zh\"",
+          "type": "string",
           "mutable": false,
           "attr": "locale",
           "reflectToAttr": true,
@@ -1327,543 +807,6 @@
           "default": "'en'",
           "values": [
             {
-              "value": "af",
-              "type": "string"
-            },
-            {
-              "value": "ar-dz",
-              "type": "string"
-            },
-            {
-              "value": "ar-kw",
-              "type": "string"
-            },
-            {
-              "value": "ar-ly",
-              "type": "string"
-            },
-            {
-              "value": "ar-ma",
-              "type": "string"
-            },
-            {
-              "value": "ar-sa",
-              "type": "string"
-            },
-            {
-              "value": "ar-tn",
-              "type": "string"
-            },
-            {
-              "value": "ar",
-              "type": "string"
-            },
-            {
-              "value": "az",
-              "type": "string"
-            },
-            {
-              "value": "be",
-              "type": "string"
-            },
-            {
-              "value": "bg",
-              "type": "string"
-            },
-            {
-              "value": "bi",
-              "type": "string"
-            },
-            {
-              "value": "bm",
-              "type": "string"
-            },
-            {
-              "value": "bn",
-              "type": "string"
-            },
-            {
-              "value": "bo",
-              "type": "string"
-            },
-            {
-              "value": "br",
-              "type": "string"
-            },
-            {
-              "value": "bs",
-              "type": "string"
-            },
-            {
-              "value": "ca",
-              "type": "string"
-            },
-            {
-              "value": "cs",
-              "type": "string"
-            },
-            {
-              "value": "cv",
-              "type": "string"
-            },
-            {
-              "value": "cy",
-              "type": "string"
-            },
-            {
-              "value": "da",
-              "type": "string"
-            },
-            {
-              "value": "de-at",
-              "type": "string"
-            },
-            {
-              "value": "de-ch",
-              "type": "string"
-            },
-            {
-              "value": "de",
-              "type": "string"
-            },
-            {
-              "value": "dv",
-              "type": "string"
-            },
-            {
-              "value": "el",
-              "type": "string"
-            },
-            {
-              "value": "en-SG",
-              "type": "string"
-            },
-            {
-              "value": "en-au",
-              "type": "string"
-            },
-            {
-              "value": "en-ca",
-              "type": "string"
-            },
-            {
-              "value": "en-gb",
-              "type": "string"
-            },
-            {
-              "value": "en-ie",
-              "type": "string"
-            },
-            {
-              "value": "en-il",
-              "type": "string"
-            },
-            {
-              "value": "en-in",
-              "type": "string"
-            },
-            {
-              "value": "en-nz",
-              "type": "string"
-            },
-            {
-              "value": "en-tt",
-              "type": "string"
-            },
-            {
-              "value": "en",
-              "type": "string"
-            },
-            {
-              "value": "eo",
-              "type": "string"
-            },
-            {
-              "value": "es-do",
-              "type": "string"
-            },
-            {
-              "value": "es-us",
-              "type": "string"
-            },
-            {
-              "value": "es",
-              "type": "string"
-            },
-            {
-              "value": "et",
-              "type": "string"
-            },
-            {
-              "value": "eu",
-              "type": "string"
-            },
-            {
-              "value": "fa",
-              "type": "string"
-            },
-            {
-              "value": "fi",
-              "type": "string"
-            },
-            {
-              "value": "fo",
-              "type": "string"
-            },
-            {
-              "value": "fr-ca",
-              "type": "string"
-            },
-            {
-              "value": "fr-ch",
-              "type": "string"
-            },
-            {
-              "value": "fr",
-              "type": "string"
-            },
-            {
-              "value": "fy",
-              "type": "string"
-            },
-            {
-              "value": "ga",
-              "type": "string"
-            },
-            {
-              "value": "gd",
-              "type": "string"
-            },
-            {
-              "value": "gl",
-              "type": "string"
-            },
-            {
-              "value": "gom-latn",
-              "type": "string"
-            },
-            {
-              "value": "gu",
-              "type": "string"
-            },
-            {
-              "value": "he",
-              "type": "string"
-            },
-            {
-              "value": "hi",
-              "type": "string"
-            },
-            {
-              "value": "hr",
-              "type": "string"
-            },
-            {
-              "value": "hu",
-              "type": "string"
-            },
-            {
-              "value": "hy-am",
-              "type": "string"
-            },
-            {
-              "value": "id",
-              "type": "string"
-            },
-            {
-              "value": "is",
-              "type": "string"
-            },
-            {
-              "value": "it-ch",
-              "type": "string"
-            },
-            {
-              "value": "it",
-              "type": "string"
-            },
-            {
-              "value": "ja",
-              "type": "string"
-            },
-            {
-              "value": "jv",
-              "type": "string"
-            },
-            {
-              "value": "ka",
-              "type": "string"
-            },
-            {
-              "value": "kk",
-              "type": "string"
-            },
-            {
-              "value": "km",
-              "type": "string"
-            },
-            {
-              "value": "kn",
-              "type": "string"
-            },
-            {
-              "value": "ko",
-              "type": "string"
-            },
-            {
-              "value": "ku",
-              "type": "string"
-            },
-            {
-              "value": "ky",
-              "type": "string"
-            },
-            {
-              "value": "lb",
-              "type": "string"
-            },
-            {
-              "value": "lo",
-              "type": "string"
-            },
-            {
-              "value": "lt",
-              "type": "string"
-            },
-            {
-              "value": "lv",
-              "type": "string"
-            },
-            {
-              "value": "me",
-              "type": "string"
-            },
-            {
-              "value": "mi",
-              "type": "string"
-            },
-            {
-              "value": "mk",
-              "type": "string"
-            },
-            {
-              "value": "ml",
-              "type": "string"
-            },
-            {
-              "value": "mn",
-              "type": "string"
-            },
-            {
-              "value": "mr",
-              "type": "string"
-            },
-            {
-              "value": "ms-my",
-              "type": "string"
-            },
-            {
-              "value": "ms",
-              "type": "string"
-            },
-            {
-              "value": "mt",
-              "type": "string"
-            },
-            {
-              "value": "my",
-              "type": "string"
-            },
-            {
-              "value": "nb",
-              "type": "string"
-            },
-            {
-              "value": "ne",
-              "type": "string"
-            },
-            {
-              "value": "nl-be",
-              "type": "string"
-            },
-            {
-              "value": "nl",
-              "type": "string"
-            },
-            {
-              "value": "nn",
-              "type": "string"
-            },
-            {
-              "value": "oc-lnc",
-              "type": "string"
-            },
-            {
-              "value": "pa-in",
-              "type": "string"
-            },
-            {
-              "value": "pl",
-              "type": "string"
-            },
-            {
-              "value": "pt-br",
-              "type": "string"
-            },
-            {
-              "value": "pt",
-              "type": "string"
-            },
-            {
-              "value": "ro",
-              "type": "string"
-            },
-            {
-              "value": "ru",
-              "type": "string"
-            },
-            {
-              "value": "rw",
-              "type": "string"
-            },
-            {
-              "value": "sd",
-              "type": "string"
-            },
-            {
-              "value": "se",
-              "type": "string"
-            },
-            {
-              "value": "si",
-              "type": "string"
-            },
-            {
-              "value": "sk",
-              "type": "string"
-            },
-            {
-              "value": "sl",
-              "type": "string"
-            },
-            {
-              "value": "sq",
-              "type": "string"
-            },
-            {
-              "value": "sr-cyrl",
-              "type": "string"
-            },
-            {
-              "value": "sr",
-              "type": "string"
-            },
-            {
-              "value": "ss",
-              "type": "string"
-            },
-            {
-              "value": "sv",
-              "type": "string"
-            },
-            {
-              "value": "sw",
-              "type": "string"
-            },
-            {
-              "value": "ta",
-              "type": "string"
-            },
-            {
-              "value": "te",
-              "type": "string"
-            },
-            {
-              "value": "tet",
-              "type": "string"
-            },
-            {
-              "value": "tg",
-              "type": "string"
-            },
-            {
-              "value": "th",
-              "type": "string"
-            },
-            {
-              "value": "tk",
-              "type": "string"
-            },
-            {
-              "value": "tl-ph",
-              "type": "string"
-            },
-            {
-              "value": "tlh",
-              "type": "string"
-            },
-            {
-              "value": "tr",
-              "type": "string"
-            },
-            {
-              "value": "tzl",
-              "type": "string"
-            },
-            {
-              "value": "tzm-latn",
-              "type": "string"
-            },
-            {
-              "value": "tzm",
-              "type": "string"
-            },
-            {
-              "value": "ug-cn",
-              "type": "string"
-            },
-            {
-              "value": "uk",
-              "type": "string"
-            },
-            {
-              "value": "ur",
-              "type": "string"
-            },
-            {
-              "value": "uz-latn",
-              "type": "string"
-            },
-            {
-              "value": "uz",
-              "type": "string"
-            },
-            {
-              "value": "vi",
-              "type": "string"
-            },
-            {
-              "value": "x-pseudo",
-              "type": "string"
-            },
-            {
-              "value": "yo",
-              "type": "string"
-            },
-            {
-              "value": "zh-cn",
-              "type": "string"
-            },
-            {
-              "value": "zh-hk",
-              "type": "string"
-            },
-            {
-              "value": "zh-tw",
-              "type": "string"
-            },
-            {
-              "value": "zh",
               "type": "string"
             }
           ],
@@ -2029,6 +972,23 @@
           "attr": "non-closable",
           "reflectToAttr": true,
           "docs": "To render Drawer without a close button",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "portal",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "portal",
+          "reflectToAttr": true,
+          "docs": "to define portal style of the Drawer header",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -2269,14 +1229,47 @@
       "props": [
         {
           "name": "color",
-          "type": "string",
+          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, light, muted, grey, secondary}",
+          "docs": "OPTIONAL. Color of the icon.",
           "docsTags": [],
           "values": [
             {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "grey",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            },
+            {
+              "value": "muted",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
               "type": "string"
             }
           ],
@@ -2305,7 +1298,7 @@
           "mutable": false,
           "attr": "icon",
           "reflectToAttr": true,
-          "docs": "Icon to be rendered. View accepted values on text documentation.",
+          "docs": "Icon to be rendered.",
           "docsTags": [],
           "values": [
             {
@@ -2321,7 +1314,7 @@
           "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
-          "docs": "OPTIONAL. Size of the Icon. {xs, sm, sm--2, sm--3, md, lg, xl, xxl}",
+          "docs": "OPTIONAL. Size of the Icon.",
           "docsTags": [],
           "values": [
             {
@@ -3347,7 +2340,7 @@
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
@@ -3363,7 +2356,7 @@
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         }
       ],
@@ -3423,7 +2416,7 @@
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {

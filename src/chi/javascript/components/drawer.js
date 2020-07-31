@@ -1,12 +1,12 @@
-import {Component} from "../core/component";
-import {Util} from "../core/util.js";
-import {chi} from "../core/chi";
+import { Component } from '../core/component';
+import { Util } from '../core/util.js';
+import { chi } from '../core/chi';
 
 const ANIMATION_DURATION = 500;
 const CLASS_DRAWER = 'chi-drawer';
 const CLOSE_TRIGGER_SELECTOR = `.${CLASS_DRAWER} > .-close, .${CLASS_DRAWER} > .chi-drawer__header > .-close`;
 const COMPONENT_SELECTOR = '.chi-drawer__trigger';
-const COMPONENT_TYPE = "drawer";
+const COMPONENT_TYPE = 'drawer';
 const DISABLE_SCROLL = '-disable-scroll';
 const EVENTS = {
   show: 'chi.drawer.show',
@@ -21,7 +21,7 @@ const DEFAULT_CONFIG = {
 
 class Drawer extends Component {
 
-  constructor (elem, config) {
+  constructor(elem, config) {
 
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._shown = Util.hasClass(elem, chi.classes.ACTIVE);
@@ -40,7 +40,7 @@ class Drawer extends Component {
     this._currentThreeStepsAnimation = null;
     let self = this;
 
-    if (this._config.animated){
+    if (this._config.animated) {
       Util.addClass(this._drawerElem, chi.classes.ANIMATED);
       if (this._backdrop) {
         Util.addClass(this._backdrop, chi.classes.ANIMATED);
@@ -62,7 +62,7 @@ class Drawer extends Component {
       self.hide();
     };
 
-    this._mouseClickOnDrawer = function () {
+    this._mouseClickOnDrawer = function() {
       self._closeOnClickOnDocument = false;
     };
 
@@ -72,7 +72,7 @@ class Drawer extends Component {
 
     if (!this._config.preventAutoHide) {
 
-      this._mouseClickOnDocument = function () {
+      this._mouseClickOnDocument = function() {
         if (self._closeOnClickOnDocument) {
           self.hide();
         } else {
@@ -89,10 +89,18 @@ class Drawer extends Component {
     this._closeButton.addEventListener('click', this._closeClickEventListener);
   }
 
-  _locateDrawer () {
+  static get componentType() {
+    return COMPONENT_TYPE;
+  }
+
+  static get componentSelector() {
+    return COMPONENT_SELECTOR;
+  }
+
+  _locateDrawer() {
     const drawerElem = Util.getTarget(this._elem);
     if (!drawerElem) {
-      throw new Error ("Could not find drawer content for drawer trigger. ");
+      throw new Error('Could not find drawer content for drawer trigger. ');
     }
     return drawerElem;
   }
@@ -125,15 +133,15 @@ class Drawer extends Component {
       }
       this._transitioning = true;
       const self = this;
-      if (this._config.animated){
+      if (this._config.animated) {
         this._currentThreeStepsAnimation = Util.threeStepsAnimation(
-          function () {
+          function() {
             Util.addClass(self._drawerElem, chi.classes.TRANSITIONING);
             if (self._backdrop) {
               Util.addClass(self._backdrop, chi.classes.TRANSITIONING);
             }
           },
-          function(){
+          function() {
             Util.addClass(self._drawerElem, chi.classes.ACTIVE);
             Util.addClass(self._elem, chi.classes.ACTIVE);
             if (self._backdrop) {
@@ -156,12 +164,15 @@ class Drawer extends Component {
       } else {
         Util.addClass(self._drawerElem, chi.classes.ACTIVE);
         Util.addClass(self._elem, chi.classes.ACTIVE);
-        if (self._backdrop) { Util.removeClass(self._backdrop, chi.classes.CLOSED); }
+        if (self._backdrop) {
+          Util.removeClass(self._backdrop, chi.classes.CLOSED);
+        }
         self._transitioning = false;
         self._shown = true;
         self._drawerElem.dispatchEvent(
           Util.createEvent(EVENTS.show)
         );
+        self._closeOnClickOnDocument = false;
       }
     }
   }
@@ -174,7 +185,7 @@ class Drawer extends Component {
       }
       this._transitioning = true;
       const self = this;
-      if (this._config.animated){
+      if (this._config.animated) {
         this._currentThreeStepsAnimation = Util.threeStepsAnimation(
           function() {
             Util.addClass(self._drawerElem, chi.classes.TRANSITIONING);
@@ -182,7 +193,7 @@ class Drawer extends Component {
               Util.addClass(self._backdrop, chi.classes.TRANSITIONING);
             }
           },
-          function(){
+          function() {
             Util.removeClass(self._drawerElem, chi.classes.ACTIVE);
             Util.removeClass(self._elem, chi.classes.ACTIVE);
             if (self._backdrop) {
@@ -205,7 +216,9 @@ class Drawer extends Component {
       } else {
         Util.removeClass(self._drawerElem, chi.classes.ACTIVE);
         Util.removeClass(self._elem, chi.classes.ACTIVE);
-        if (self._backdrop) { Util.addClass(self._backdrop, chi.classes.CLOSED); }
+        if (self._backdrop) {
+          Util.addClass(self._backdrop, chi.classes.CLOSED);
+        }
         self._transitioning = false;
         self._shown = false;
         self._drawerElem.dispatchEvent(
@@ -215,7 +228,7 @@ class Drawer extends Component {
     }
   }
 
-  toggle () {
+  toggle() {
     if (this._shown) {
       this.hide();
     } else {
@@ -232,17 +245,10 @@ class Drawer extends Component {
     this._closeButton.removeEventListener('click', this._closeClickEventListener);
     this._closeButton = null;
     this._currentThreeStepsAnimation = null;
+    this._removeEventHandlers();
     this._elem = null;
-  }
-
-  static get componentType () {
-    return COMPONENT_TYPE;
-  }
-
-  static get componentSelector () {
-    return COMPONENT_SELECTOR;
   }
 }
 
 const factory = Component.factory.bind(Drawer);
-export {Drawer, factory, EVENTS};
+export { Drawer, factory, EVENTS };

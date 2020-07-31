@@ -1,9 +1,9 @@
 import { Component, Prop, Watch, h } from '@stencil/core';
 import { calculateClasses } from '../../utils/utils';
+import { ICON_COLORS as VALID_COLORS, IconColors } from '../../constants/color';
+import { ICON_SIZES as VALID_SIZES, IconSizes } from '../../constants/size';
 
 let loadedIcons = 0;
-const VALID_COLORS = ['', 'primary', 'success', 'warning', 'danger', 'light', 'muted', 'info', 'grey', 'secondary'];
-const VALID_SIZES = ['', 'xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
 
 @Component({
   tag: 'chi-icon',
@@ -13,37 +13,41 @@ const VALID_SIZES = ['', 'xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
 export class Icon {
 
   /**
-   * OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, light, muted, grey, secondary}
+   * OPTIONAL. Color of the icon.
    */
-  @Prop({ reflect: true }) color: string;
+  @Prop({ reflect: true }) color?: IconColors;
 
   /**
-   * Icon to be rendered. View accepted values on text documentation.
+   * Icon to be rendered.
    */
   @Prop({ reflect: true }) icon: string;
 
   /**
-   * OPTIONAL. Size of the Icon. {xs, sm, sm--2, sm--3, md, lg, xl, xxl}
+   * OPTIONAL. Size of the Icon.
    */
-  @Prop({ reflect: true }) size: string;
+  @Prop({ reflect: true }) size: IconSizes;
 
   /**
    * OPTIONAL classes
    */
 
-  @Prop({ reflect: true }) extraClass: string;
+  @Prop({ reflect: true }) extraClass?: string;
 
   @Watch('color')
-  validateColorAttribute(newValue: string) {
+  validateColorAttribute(newValue: IconColors) {
+    const validValues = VALID_COLORS.join(', ');
+
     if (newValue && VALID_COLORS.indexOf(newValue) === -1) {
-      throw new Error('Not valid color (' + newValue + ') for icon ' + this.icon + '. Valid values are primary, success, warning, danger, light, muted, grey, secondary or empty. ');
+      throw new Error('Not valid color (' + newValue + ') for icon ' + this.icon + '. Valid values are ' + validValues + '. ');
     }
   }
 
   @Watch('size')
-  validateSizeAttribute(newValue: string) {
+  validateSizeAttribute(newValue: IconSizes) {
+    const validValues = VALID_SIZES.join(', ');
+
     if (newValue && VALID_SIZES.indexOf(newValue) === -1) {
-      throw new Error('Not valid size (' + newValue + ') for icon ' + this.icon + '. Valid values are xs, sm, sm--2, sm--3, md, lg, xl, xxl or empty. ');
+      throw new Error('Not valid size (' + newValue + ') for icon ' + this.icon + '. Valid values are ' + validValues + '. ');
     }
   }
 
