@@ -41,6 +41,16 @@
     .chi-stat-submetric {
       flex-direction: row;
     }
+
+    .chi-stat-background-icon {
+      left: 0;
+      right: auto;
+  
+      > .chi-icon {
+        left: -1rem;
+        position: relative;
+      }
+    }
   }
 
   &.-disabled {
