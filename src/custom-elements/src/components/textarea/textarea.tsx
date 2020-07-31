@@ -141,8 +141,8 @@ export class Textarea {
       ${this.iconLeft ? '-icon--left' : ''}
       ${this.iconRight ? '-icon--right' : ''}
     `;
-    const iconLeft = this.iconLeft && <chi-icon color={this.iconLeftColor || ''} icon={this.iconLeft} />;
-    const iconRight = this.iconRight && <chi-icon color={this.iconRightColor || ''} icon={this.iconRight} />;
+    const iconLeft = this.iconLeft && <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
+    const iconRight = this.iconRight && <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />;
 
     const textarea = this.iconLeft || this.iconRight ?
       <div class={`chi-input__wrapper ${iconClasses}`}>

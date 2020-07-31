@@ -50,14 +50,31 @@
         },
         {
           "name": "color",
-          "type": "string",
+          "type": "\"danger\" | \"info\" | \"muted\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "to set alert state { success, danger, warning, info, muted }.",
+          "docs": "to set alert state.",
           "docsTags": [],
           "values": [
             {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "muted",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
               "type": "string"
             }
           ],
@@ -966,6 +983,23 @@
           "required": false
         },
         {
+          "name": "portal",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "portal",
+          "reflectToAttr": true,
+          "docs": "to define portal style of the Drawer header",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "position",
           "type": "string",
           "mutable": false,
@@ -1195,14 +1229,47 @@
       "props": [
         {
           "name": "color",
-          "type": "string",
+          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "OPTIONAL. Color of the icon. Accepts any color the text-utility supports {primary, success, warning, danger, light, muted, grey, secondary}",
+          "docs": "OPTIONAL. Color of the icon.",
           "docsTags": [],
           "values": [
             {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "grey",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            },
+            {
+              "value": "muted",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
               "type": "string"
             }
           ],
@@ -1231,7 +1298,7 @@
           "mutable": false,
           "attr": "icon",
           "reflectToAttr": true,
-          "docs": "Icon to be rendered. View accepted values on text documentation.",
+          "docs": "Icon to be rendered.",
           "docsTags": [],
           "values": [
             {
@@ -1247,7 +1314,7 @@
           "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
-          "docs": "OPTIONAL. Size of the Icon. {xs, sm, sm--2, sm--3, md, lg, xl, xxl}",
+          "docs": "OPTIONAL. Size of the Icon.",
           "docsTags": [],
           "values": [
             {
@@ -2273,7 +2340,7 @@
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
@@ -2289,7 +2356,7 @@
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         }
       ],
@@ -2349,7 +2416,7 @@
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
