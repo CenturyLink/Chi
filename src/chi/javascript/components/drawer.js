@@ -245,6 +245,7 @@ class Drawer extends Component {
     this._closeButton.removeEventListener('click', this._closeClickEventListener);
     this._closeButton = null;
     this._currentThreeStepsAnimation = null;
+    this._removeEventHandlers();
     this._elem = null;
   }
 }
