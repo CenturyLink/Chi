@@ -18,6 +18,14 @@
       width: 23rem;
     }
 
+    &.-left {
+      &.-animated {
+        &:not(.-active) {
+          transform: translate(-23rem, 0);
+        }
+      }
+    }
+
     .chi-divider {
       &.-colorbar {
         height: 0.25rem;
