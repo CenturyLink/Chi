@@ -5,28 +5,53 @@ title: Badges
 each type in ['solid', 'outline', 'flat']
   div(class=`test-${type}`)
     span.-text--h2= `Badge / ${type}`
-    div
-      each style in ['base', 'primary', 'secondary', 'danger', 'dark', 'muted', 'light']
-        div(
-        class="chi-badge -mr--1"
-        class={
-          [`-${type}`]: type !== 'solid',
-          [`-${style}`]: style !== 'base'
-        }
-        )
-          span= style
-        div(
-        class="chi-badge -mr--1"
-        class={
-          [`-${type}`]: type !== 'solid',
-          [`-${style}`]: style !== 'base'
-        }
-        )
-          .chi-badge__content
-            .chi-icon
-              svg
-                use(xlink:href='#icon-atom')
-            span= style
+    table(cellpadding="0", cellspacing="0")
+      div
+        each style in ['base', 'primary', 'success', 'warning', 'danger', 'dark', 'muted', 'secondary', 'light']
+          if (style === 'secondary' || style === 'light')
+            td.-bg--black
+              div(
+              class="chi-badge -mr--2 -m--2"
+              class={
+                [`-${type}`]: type !== 'solid',
+                [`-${style}`]: style !== 'base'
+              }
+              )
+                span= style
+              div(
+              class="chi-badge -mr--2"
+              class={
+                [`-${type}`]: type !== 'solid',
+                [`-${style}`]: style !== 'base'
+              }
+              )
+                .chi-badge__content
+                  .chi-icon
+                    svg
+                      use(xlink:href='#icon-atom')
+                  span= style
+          else
+            td
+              div(
+              class="chi-badge -mr--2"
+              class={
+                [`-${type}`]: type !== 'solid',
+                [`-${style}`]: style !== 'base'
+              }
+              )
+                span= style
+              div(
+              class="chi-badge -mr--2"
+              class={
+                [`-${type}`]: type !== 'solid',
+                [`-${style}`]: style !== 'base'
+              }
+              )
+                .chi-badge__content
+                  .chi-icon
+                    svg
+                      use(xlink:href='#icon-atom')
+                  span= style
 
 h2 Badge Icons
 .test-badge-icons
@@ -54,3 +79,19 @@ h2 Badge Icons
             .chi-icon
               svg
                 use(xlink:href='#icon-atom')
+
+h2 Text Transform
+.test-text-transform
+  .example.-mb--1
+    .p.-text--bold
+      | uppercase
+      .chi-badge.-text--uppercase.-m--1
+        span Badge
+    .p.-text--bold
+      | lowercase
+      .chi-badge.-text--lowercase.-m--1
+        span Badge
+    .p.-text--bold
+      | capitalized
+      .chi-badge.-text--capitalized.-m--1
+        span Badge
