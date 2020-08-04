@@ -5,9 +5,11 @@ let chi = {
   classes : {
     ACTIVE: '-active',
     ANIMATED: '-animated',
+    BACK: '-back',
     CLOSE: '-close',
     CLOSED: '-closed',
     DISABLED: '-disabled',
+    EXPANDED: '-expanded',
     INACTIVE: '-inactive',
     TRANSITIONING : '-transitioning',
     EXPANDED: '-expanded',

@@ -62,7 +62,7 @@
 * Changed: Tooltip now renders with a 0.5s delay by default.
 * Changed: Modal portal theme shadow and header background-color have been updated to reflect latest designs.
 * Changed: Backdrop portal theme has been removed. Portal has adopted Chi's default theme. The class `-portal` is no longer necessary on `chi-backdrop`.
-* Changed: Icons `icon-address-book`, `icon-arrow-to-bottom`, `icon-user`, `icon-users`, `icon-visible-off`, `icon-visible`, `icon-x-alt` 
+* Changed: Icons `icon-address-book`, `icon-arrow-to-bottom`, `icon-user`, `icon-users`, `icon-visible-off`, `icon-visible`, `icon-x-alt`
 #### Fixed
 * Fixed: Popover web component did not flip arrows correctly when space was insufficient.
 
@@ -142,7 +142,7 @@
 * Changed: Headers for portal now include functional inverse drop down menus.
 * Changed: Removed Design Kit button from docs sidenav.
 #### Fixed
-* Fixed: Modal code samples were missing trigger and javascript example code. 
+* Fixed: Modal code samples were missing trigger and javascript example code.
 * Fixed: Pagination code samples which contained icon buttons were missing the `-icon` class on `chi-button`.
 * Fixed: Pagination code samples which contained icon buttons were missing the `chi-button__content` container in `chi-button`.
 

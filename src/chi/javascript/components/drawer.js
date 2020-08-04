@@ -125,9 +125,9 @@ class Drawer extends Component {
 
   show() {
     if (!this._shown) {
-      if (this._backdrop) {
-        Util.addClass(document.body, DISABLE_SCROLL);
-      }
+      // if (this._backdrop) {
+      //   Util.addClass(document.body, DISABLE_SCROLL);
+      // }
       if (this._transitioning) {
         Util.stopThreeStepsAnimation(this._currentThreeStepsAnimation, false);
       }
@@ -251,4 +251,4 @@ class Drawer extends Component {
 }
 
 const factory = Component.factory.bind(Drawer);
-export { Drawer, factory, EVENTS };
+export {Drawer, factory, EVENTS, ANIMATION_DURATION as DRAWER_ANIMATION_DURATION};
