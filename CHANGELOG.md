@@ -5,6 +5,7 @@
 * Added: Toggle Switch now supports the size `xs` for rendering extra small toggle switches.
 * Added: Added: Drawer now supports the theme `portal` for rendering portal themed Drawers.
 * Added: Added: Stat component for rendering performance indicators in dashboard UIs.
+* Added: Added: Mobile Navigation component for rendering responsive multi-level navigation in mobile views.
 #### Changed
 * Changed: Improved Sidenav and Drawer component dispose methods.
 * Changed: Updated Dayjs to version 1.8.31.
