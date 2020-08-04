@@ -1,4 +1,16 @@
 # CHANGELOG
+## 2.5.0 (August 4, 2020)
+### Components
+#### Added
+* Added: Toggle Switch now supports the size `xs` for rendering extra small toggle switches.
+* Added: Added: Drawer now supports the theme `portal` for rendering portal themed Drawers.
+* Added: Added: Stat component for rendering performance indicators in dashboard UIs.
+#### Changed
+* Changed: Improved Sidenav and Drawer component dispose methods.
+* Changed: Updated Dayjs to version 1.8.31.
+#### Fixed
+* Fixed: Drawer component show/hide behavior.
+
 ## 2.4.1 (July 16, 2020)
 ### Components
 #### Added
