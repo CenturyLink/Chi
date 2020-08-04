@@ -319,7 +319,7 @@ class MobileNav extends Component {
 
   hide() {
     const firstLevelDrawer = this._firstLevelDrawer;
-    const secondLevelDrawer = this._drawers.find(drawer => Util.hasClass(drawer, chi.classes.ACTIVE));
+    const secondLevelDrawer = this._drawers.filter(drawer => Util.hasClass(drawer, chi.classes.ACTIVE))[0];
 
     if (firstLevelDrawer) {
       firstLevelDrawer.hide();

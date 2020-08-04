@@ -401,3 +401,31 @@
     }
   }
 }
+
+/* IE11 CSS hack */
+@media all and (-ms-high-contrast: none) {
+  .chi-mobile-nav {
+    .chi-drawer {
+      .chi-mobile-nav__header {
+        button {
+          &.-back {
+            position: absolute;
+          }
+
+          &.-back,
+          &.-close {
+            top: 0.6125rem;
+          }
+        }
+      }
+    }
+
+    .chi-mobile-nav__drawers {
+      .chi-drawer {
+        .chi-mobile-nav__header {
+          padding: 0.75rem 3rem;
+        }
+      }
+    }
+  }
+}
