@@ -83,7 +83,7 @@ export class Pagination {
     for (let cur = pageChange;
       cur && !cur.classList.contains('chi-button-group');
       cur = cur.parentNode as HTMLElement) {
-      if (cur.nodeName === 'A') {
+      if (cur.nodeName === 'BUTTON') {
         pageToGo = cur.getAttribute('data-page');
       }
     }
