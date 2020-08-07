@@ -764,6 +764,113 @@ ul#chi-tabs--menu-vertical-icons.chi-tabs
           </li>
         </ul>
 
+h3 Vertical tabs with icons and description
+.example.-mb--3
+  .-p--3.-bg--grey-20
+    ul.chi-tabs.-vertical.-icons.-list.-sm
+      li
+        a.chi-tabs_item(href='#')
+          i.chi-icon.icon-atom
+          span.chi-tabs_item-title Tab Link
+          span.chi-tabs_item-text Tab description
+      li.-active
+        a.chi-tabs_item(href='#')
+          i.chi-icon.icon-atom
+          span.chi-tabs_item-title Active Tab
+          span.chi-tabs_item-text Tab description
+        ul.chi-tabs__subtabs
+          li
+            a.chi-tabs_item(href='#')
+              span.chi-tabs_item-title Subtab Link
+              span.chi-tabs_item-text Subtab description
+          li
+            a.chi-tabs_item(href='#')
+              span.chi-tabs_item-title Subtab Link
+              span.chi-tabs_item-text Subtab description
+            ul.chi-tabs__subtabs
+              li
+                a.chi-tabs_item(href='#')
+                  span.chi-tabs_item-title Subtab Link
+                  span.chi-tabs_item-text Subtab description
+              li
+                a.chi-tabs_item(href='#')
+                  span.chi-tabs_item-title Subtab Link
+                  span.chi-tabs_item-text Subtab description
+          li
+            a.chi-tabs_item(href='#')
+              span.chi-tabs_item-title Subtab Link
+              span.chi-tabs_item-text Subtab description
+      li
+        a.chi-tabs_item(href='#')
+          i.chi-icon.icon-atom
+          span.chi-tabs_item-title Tab Link
+          span.chi-tabs_item-text Tab description
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-size-large
+      li.-disabled
+        a(href=`#webcomponent-size-large`) Web Component
+      li.-active
+        a(href=`#html-size-large`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-size-large
+  .chi-tabs-panel.-active#html-size-large
+    :code(lang='html')
+      <ul class="chi-tabs -vertical -icons -list -sm">
+        <li>
+          <a class="chi-tabs_item" href="#">
+            <i class="chi-icon icon-atom"></i>
+            <span class="chi-tabs_item-title">Tab Link</span>
+            <span class="chi-tabs_item-text">Tab description</span>
+          </a>
+        </li>
+        <li class="-active">
+          <a class="chi-tabs_item" href="#">
+            <i class="chi-icon icon-atom"></i>
+            <span class="chi-tabs_item-title">Active Tab</span>
+            <span class="chi-tabs_item-text">Tab description</span>
+          </a>
+          <ul class="chi-tabs__subtabs">
+              <li>
+                <a class="chi-tabs_item" href="#">
+                  <span class="chi-tabs_item-title">Subtab Link</span>
+                  <span class="chi-tabs_item-text">Subtab description</span>
+                </a>
+              </li>
+              <li>
+                <a class="chi-tabs_item" href="#">
+                  <span class="chi-tabs_item-title">Subtab Link</span>
+                  <span class="chi-tabs_item-text">Subtab description</span>
+                </a>
+                <ul class="chi-tabs__subtabs">
+                    <li>
+                      <a class="chi-tabs_item" href="#">
+                        <span class="chi-tabs_item-title">Subtab Link</span>
+                        <span class="chi-tabs_item-text">Subtab description</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="chi-tabs_item" href="#">
+                        <span class="chi-tabs_item-title">Subtab Link</span>
+                        <span class="chi-tabs_item-text">Subtab description</span>
+                      </a>
+                    </li>
+                </ul>
+              </li>
+              <li>
+                <a class="chi-tabs_item" href="#">
+                  <span class="chi-tabs_item-title">Subtab Link</span>
+                  <span class="chi-tabs_item-text">Subtab description</span>
+                </a>
+              </li>
+          </ul>
+        </li>
+        <li>
+          <a class="chi-tabs_item" href="#">
+            <i class="chi-icon icon-atom"></i>
+            <span class="chi-tabs_item-title">Tab Link</span>
+            <span class="chi-tabs_item-text">Tab description</span>
+          </a>
+        </li>
+      </ul>
 h2 Vertical Subtabs
 ul#chi-tabs--menu-subtabs.chi-tabs
   li.-active

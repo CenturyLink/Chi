@@ -198,3 +198,44 @@ h2 vertical inverse
               svg
                 use(xlink:href='#icon-atom')
             span Tab link
+
+.test-vertical-icons-description
+  h4= `Tabs vertical icons w/ description`
+  ul.chi-tabs.-vertical.-icons.-list.-sm
+    li
+      a.chi-tabs_item(href='#')
+        i.chi-icon.icon-atom
+        span.chi-tabs_item-title Tab Link
+        span.chi-tabs_item-text Tab description
+    li.-active
+      a.chi-tabs_item(href='#')
+        i.chi-icon.icon-atom
+        span.chi-tabs_item-title Active Tab
+        span.chi-tabs_item-text Tab description
+      ul.chi-tabs__subtabs
+        li
+          a.chi-tabs_item(href='#')
+            span.chi-tabs_item-title Subtab Link
+            span.chi-tabs_item-text Subtab description
+        li
+          a.chi-tabs_item(href='#')
+            span.chi-tabs_item-title Subtab Link
+            span.chi-tabs_item-text Subtab description
+          ul.chi-tabs__subtabs
+            li
+              a.chi-tabs_item(href='#')
+                span.chi-tabs_item-title Subtab Link
+                span.chi-tabs_item-text Subtab description
+            li
+              a.chi-tabs_item(href='#')
+                span.chi-tabs_item-title Subtab Link
+                span.chi-tabs_item-text Subtab description
+        li
+          a.chi-tabs_item(href='#')
+            span.chi-tabs_item-title Subtab Link
+            span.chi-tabs_item-text Subtab description
+    li
+      a.chi-tabs_item(href='#')
+        i.chi-icon.icon-atom
+        span.chi-tabs_item-title Tab Link
+        span.chi-tabs_item-text Tab description    

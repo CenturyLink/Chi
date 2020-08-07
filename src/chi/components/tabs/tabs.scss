@@ -201,6 +201,60 @@
       }
     }
   }
+
+  &.-list {
+    > li {
+      .chi-tabs_item {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        padding-left: 2.25rem;
+
+        .chi-icon {
+          font-size: $text;
+          height: 0.875rem;
+          left: 1rem;
+          width: 0.875rem;
+        }
+
+        &-title {
+          font-weight: $font-weight-semibold;
+        }
+
+        &-text {
+          font-weight: $font-weight-normal;
+        }
+      }
+
+      .chi-tabs__subtabs {
+        > li {
+          > a {
+            padding-left: 3.25rem;
+          }
+
+          .chi-tabs__subtabs {
+            > li {
+              > a {
+                padding-left: 4.25rem;
+              }
+            }
+          }
+        }
+      }
+
+      &.-active {
+        .chi-tabs_item {
+          .chi-icon {
+            left: 1rem;
+          }
+        }
+      }
+    }
+
+    &:not(.-sliding) > li.-active:not(.-has-active) > a {
+      background-color: $portal-color-background-table-tr-selected;
+    }
+  }
 }
 
 @mixin tabs-not-vertical {
