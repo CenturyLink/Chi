@@ -12,6 +12,31 @@
   "onReadyScript": "chromy/onReady.js",
   "scenarios": [
     {
+      "label": "activity",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/activity.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-activity-base",
+        ".test-activity-base-avatar",
+        ".test-activity-feed",
+        ".test-activity-compact-feed",
+        ".test-activity-feed-stories",
+        ".test-activity-feed-operation-icons"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "alert-banner",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/alert-banner.html",
