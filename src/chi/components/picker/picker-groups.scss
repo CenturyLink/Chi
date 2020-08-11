@@ -1,13 +1,5 @@
 @import '_horizontal-picker-groups';
 
-.chi-label,
-label,
-legend {
-  & + .chi-picker-group {
-    margin-top: 0.25rem;
-  }
-}
-
 .chi-picker-group {
   input {
     &.chi-picker__input {
