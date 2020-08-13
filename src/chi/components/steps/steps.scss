@@ -22,6 +22,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
   &__line {
     border-top: 0.125rem solid set-color(grey, 60);
+    position: relative;
     width: 100%;
   }
 
@@ -77,10 +78,28 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
           content: '';
         }
       }
+
+      & > .chi-steps__line {
+        &::after {
+          border-right: .125rem solid $brand-color;
+          border-top: .125rem solid $brand-color;
+          content: "";
+          height: 0.5rem;
+          position: absolute;
+          right: 0;
+          top: -0.3125rem;
+          transform: rotate(45deg);
+          width: 0.5rem;
+        }
+      }
     }
 
     &.-active {
       & > .chi-steps__icon {
+        a {
+          font-weight: $font-weight-semibold;
+        }
+
         &::after {
           content: '\e942';
         }
@@ -108,18 +127,19 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
           border-color: set-color(grey, 60);
         }
 
-        & a {
-          color: set-color(grey, 60);
-        }
-
         &:last-child {
           flex-grow: 0;
         }
+      }
+
+      a {
+        color: $brand-color;
       }
     }
   }
 
   & a {
+    color: set-color(grey, 100);
     text-decoration: none;
   }
 
@@ -140,14 +160,27 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       }
 
       & a {
-        color: $secondary-color;
+        color: set-color(white);
       }
 
       & > .chi-steps__line {
         border-color: $secondary-color;
       }
 
+      &.-completed {
+        & > .chi-steps__line {
+          &::after {
+            border-right-color: $secondary-color;
+            border-top-color: $secondary-color;
+          }
+        }
+      }
+
       &.-active {
+        a {
+          color: $secondary-color;
+        }
+
         & > .chi-steps__line {
           border-color: set-color(grey, 40);
         }
@@ -155,15 +188,10 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         & ~ li {
           & > .chi-steps__icon {
             color: set-color(grey, 40);
-
           }
 
           & > .chi-steps__line {
             border-color: set-color(grey, 40);
-          }
-
-          & a {
-            color: set-color(grey, 40);
           }
         }
       }
