@@ -224,7 +224,7 @@
     > li {
       .chi-tabs_item {
         padding-left: 2.25rem;
-        padding-right:2.5rem;
+        padding-right: 2.5rem;
 
         > .chi-icon {
           font-size: $text;
@@ -240,7 +240,7 @@
             top: calc(50% - 1rem);
 
             .chi-icon {
-              opacity: 0.75;
+              opacity: 0;
             }
 
             &:hover,
@@ -250,6 +250,19 @@
 
             &:focus {
               border-color: transparent;
+            }
+          }
+        }
+
+        &:hover {
+          background-color: set-color(grey, 25);
+          color: $text-color;
+
+          .chi-button {
+            &.-icon {
+              .chi-icon {
+                opacity: 0.75;
+              }
             }
           }
         }
@@ -286,13 +299,39 @@
               }
             }
           }
+
+          &.-active {
+            .chi-tabs_item {
+              background-color: $portal-color-background-table-tr-selected;
+              box-shadow: inset 0.125rem 0 0 $primary-color;
+              color: $primary-color;
+
+              .chi-button {
+                &.-icon {
+                  .chi-icon {
+                    opacity: 0.75;
+                  }
+                }
+              }
+            }
+          }
         }
       }
 
       &.-active {
         .chi-tabs_item {
+          color: $primary-color;
+
           > .chi-icon {
             left: 1rem;
+          }
+
+          .chi-button {
+            &.-icon {
+              .chi-icon {
+                opacity: 0.75;
+              }
+            }
           }
         }
       }
