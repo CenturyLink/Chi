@@ -24,7 +24,7 @@
         display: block;
         font-size: $text-small;
         line-height: $line-height-smaller;
-        padding: 0.5rem 0 0.5rem 2.5rem;
+        padding: 0.5rem 0.5rem 0.5rem 2.5rem;
         text-decoration: none;
 
         &:hover {
@@ -86,7 +86,7 @@
     }
 
     & > a {
-      padding: 0.5rem 0 0.5rem 1.5rem;
+      padding: 0.5rem 0.5rem 0.5rem 1.5rem;
       width: 100%;
     }
   }
@@ -122,7 +122,7 @@
     .chi-tabs__subtabs {
       & > li {
         & > a {
-          padding: 0.25rem 0 0.25rem 2.5rem;
+          padding: 0.25rem 0.25rem 0.25rem 2.5rem;
         }
       }
     }
@@ -225,7 +225,7 @@
       .chi-tabs_item {
         padding-left: 2.25rem;
 
-        .chi-icon {
+        > .chi-icon {
           font-size: $text;
           height: 0.875rem;
           left: 1rem;
@@ -269,7 +269,7 @@
 
       &.-active {
         .chi-tabs_item {
-          .chi-icon {
+          > .chi-icon {
             left: 1rem;
           }
         }
@@ -279,17 +279,25 @@
     &:not(.-sliding) > li.-active:not(.-has-active) > a {
       background-color: $portal-color-background-table-tr-selected;
 
-      &::after {
-        content: '\e975';
-        display: block;
-        font-family: 'chi';
-        font-size: 0.75rem;
-        font-weight: normal;
-        height: 1rem;
-        position: absolute;
-        right: 1rem;
-        top: calc(50% - 0.5rem);
-        width: 0.75rem;
+      .chi-button {
+        &.-icon {
+          position: absolute;
+          right: 0.5rem;
+          top: calc(50% - 1rem);
+
+          .chi-icon {
+            opacity: 0.75;
+          }
+
+          &:hover,
+          &:active {
+            background-color: transparent;
+          }
+
+          &:focus {
+            border-color: transparent;
+          }
+        }
       }
     }
   }
