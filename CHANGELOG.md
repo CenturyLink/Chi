@@ -1,4 +1,12 @@
 # CHANGELOG
+## 2.5.1 (August 13, 2020)
+### Components
+#### Changed
+* Changed: Removed margin top from Picker and Picker group components.
+#### Fixed
+* Fixed: Removed disposing of Drawers associated with Sidenav.
+* Fixed: Pagination chiPageChange event.
+
 ## 2.5.0 (August 4, 2020)
 ### Components
 #### Added
