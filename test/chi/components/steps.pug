@@ -22,7 +22,12 @@ h4 Base
               div.chi-steps__line
       ul.chi-steps.-p--4.-mb--8
         each step in steps
-          if step == 'Step 2'
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
             li.-active
               div.chi-steps__icon
                 a(href='#')= `${step}`
@@ -34,7 +39,17 @@ h4 Base
               div.chi-steps__line
       ul.chi-steps.-p--4.-mb--8
         each step in steps
-          if step == 'Step 3'
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
             li.-active
               div.chi-steps__icon
                 a(href='#')= `${step}`
@@ -46,7 +61,22 @@ h4 Base
               div.chi-steps__line
       ul.chi-steps.-p--4.-mb--8
         each step in steps
-          if step == 'Step 4'
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
             li.-active
               div.chi-steps__icon
                 a(href='#')= `${step}`
@@ -58,12 +88,28 @@ h4 Base
               div.chi-steps__line
       ul.chi-steps.-p--4.-mb--8
         each step in steps
-          if step == 'Step 5'
-            li.-active
+          if step == 'Step 1'
+            li.-completed
               div.chi-steps__icon
                 a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
           else
-            li
+            li.-active
               div.chi-steps__icon
                 a(href='#')= `${step}`
               div.chi-steps__line
@@ -86,7 +132,12 @@ h4 Inverse
               div.chi-steps__line
       ul.chi-steps.-p--4.-mb--8.-inverse
         each step in steps
-          if step == 'Step 2'
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
             li.-active
               div.chi-steps__icon
                 a(href='#')= `${step}`
@@ -98,7 +149,17 @@ h4 Inverse
               div.chi-steps__line
       ul.chi-steps.-p--4.-mb--8.-inverse
         each step in steps
-          if step == 'Step 3'
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
             li.-active
               div.chi-steps__icon
                 a(href='#')= `${step}`
@@ -110,7 +171,22 @@ h4 Inverse
               div.chi-steps__line
       ul.chi-steps.-p--4.-mb--8.-inverse
         each step in steps
-          if step == 'Step 4'
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
             li.-active
               div.chi-steps__icon
                 a(href='#')= `${step}`
@@ -122,12 +198,28 @@ h4 Inverse
               div.chi-steps__line
       ul.chi-steps.-p--4.-mb--8.-inverse
         each step in steps
-          if step == 'Step 5'
-            li.-active
+          if step == 'Step 1'
+            li.-completed
               div.chi-steps__icon
                 a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+                a(href='#')= `${step}`
+              div.chi-steps__line
           else
-            li
+            li.-active
               div.chi-steps__icon
                 a(href='#')= `${step}`
               div.chi-steps__line
