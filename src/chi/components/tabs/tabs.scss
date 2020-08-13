@@ -224,12 +224,34 @@
     > li {
       .chi-tabs_item {
         padding-left: 2.25rem;
+        padding-right:2.5rem;
 
         > .chi-icon {
           font-size: $text;
           height: 0.875rem;
           left: 1rem;
           width: 0.875rem;
+        }
+
+        .chi-button {
+          &.-icon {
+            position: absolute;
+            right: 0.5rem;
+            top: calc(50% - 1rem);
+
+            .chi-icon {
+              opacity: 0.75;
+            }
+
+            &:hover,
+            &:active {
+              background-color: transparent;
+            }
+
+            &:focus {
+              border-color: transparent;
+            }
+          }
         }
       }
 
@@ -278,27 +300,6 @@
 
     &:not(.-sliding) > li.-active:not(.-has-active) > a {
       background-color: $portal-color-background-table-tr-selected;
-
-      .chi-button {
-        &.-icon {
-          position: absolute;
-          right: 0.5rem;
-          top: calc(50% - 1rem);
-
-          .chi-icon {
-            opacity: 0.75;
-          }
-
-          &:hover,
-          &:active {
-            background-color: transparent;
-          }
-
-          &:focus {
-            border-color: transparent;
-          }
-        }
-      }
     }
   }
 }
