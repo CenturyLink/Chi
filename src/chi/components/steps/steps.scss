@@ -41,7 +41,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         content: counter(step);
         counter-increment: step;
         font-family: $font-family;
-        font-size: $text-smaller;
+        font-size: $text;
         font-weight: $font-weight-semibold;
         position: absolute;
         z-index: $zindex-prominent;
@@ -63,7 +63,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
     & > a {
       font-weight: $font-weight-semibold;
-      margin-left: 0.5rem;
+      margin-left: 0.75rem;
       white-space: nowrap;
     }
 
@@ -202,6 +202,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     > li {
       > .chi-steps__line {
         margin-left: 0.5rem;
+        margin-right: 0.875rem;
       }
     }
   }
@@ -258,7 +259,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   .chi-steps li.-active div.chi-steps__icon::after,
   .chi-steps li div.chi-steps__icon::after {
     position: relative;
-    right: 3.37rem;
+    right: 3.47rem;
   }
 
   .chi-steps li.-completed div.chi-steps__icon::after {
@@ -268,7 +269,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
   .chi-steps div.chi-steps__icon::before,
   .chi-steps.-horizontal-label div.chi-steps__icon::before  {
-    left: 0.35rem;
+    left: 0.3rem;
     position: relative;
   }
 
