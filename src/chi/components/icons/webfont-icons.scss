@@ -24,6 +24,10 @@ i {
   }
 }
 
+.icon-user-settings::before {
+  content: '\e9ca';
+}
+
 .icon-api::before {
   content: '\e9c6';
 }
