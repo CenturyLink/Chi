@@ -1,4 +1,12 @@
 # CHANGELOG
+## 2.6.0 (August 14, 2020)
+### Components
+#### Added
+* Added: Icons `icon-user-settings`.
+* Added: Tabs now supports the theme `portal` for rendering portal themed Tabs.
+#### Changed
+* Changed: Steps styles have been updated for better consistency with Enterprise Portal use cases.
+
 ## 2.5.1 (August 13, 2020)
 ### Components
 #### Changed
