@@ -746,6 +746,36 @@
       "requireSameDimensions": true
     },
     {
+      "label": "icons-svg",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/icons.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-single-svg",
+        ".test-colors-svg",
+        ".test-icons",
+        ".test-sizes-svg-xs",
+        ".test-sizes-svg-sm",
+        ".test-sizes-svg-sm--2",
+        ".test-sizes-svg-sm--3",
+        ".test-sizes-svg-md",
+        ".test-sizes-svg-lg",
+        ".test-sizes-svg-xl",
+        ".test-sizes-svg-xxl"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "input-file",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/input-file.html",
