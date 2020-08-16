@@ -28,7 +28,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
   & > li {
     align-items: center;
-    color: $brand-color;
+    color: $primary-color;
     display: flex;
     flex: 1 0 auto;
     font-size: $text;
@@ -68,7 +68,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
 
     & > .chi-steps__line {
-      border-color: $brand-color;
+      border-color: $primary-color;
       margin: 0.5rem 0.75rem;
     }
 
@@ -81,9 +81,9 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
       & > .chi-steps__line {
         &::after {
-          border-right: .125rem solid $brand-color;
-          border-top: .125rem solid $brand-color;
-          content: "";
+          border-right: 0.125rem solid $primary-color;
+          border-top: 0.125rem solid $primary-color;
+          content: '';
           height: 0.5rem;
           position: absolute;
           right: 0;
@@ -133,7 +133,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       }
 
       a {
-        color: $brand-color;
+        color: $primary-color;
       }
     }
   }

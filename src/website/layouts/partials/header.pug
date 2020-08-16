@@ -63,9 +63,10 @@ header.chi-header.-inverse.docs-header.-z--20
           i.chi-icon.icon-search
     .chi-header__end
       .chi-dropdown
-        button.chi-button.-flat.-light.-px--1.chi-dropdown__trigger.-animate(data-position='bottom-end', id='version-dropdown', aria-label="Toggle Chi version") v2.6.0
+        button.chi-button.-flat.-light.-px--1.chi-dropdown__trigger.-animate(data-position='bottom-end', id='version-dropdown', aria-label="Toggle Chi version") v2.7.0
         .chi-dropdown__menu(style='width:10rem;')#versionDropdown
-          a.chi-dropdown__menu-item.-active(href='https://assets.ctl.io/chi/2.6.0') v2.6.0
+          a.chi-dropdown__menu-item.-active(href='https://assets.ctl.io/chi/2.7.0') v2.7.0
+          a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.6.0') v2.6.0
           a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.5.1') v2.5.1
           a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.5.0') v2.5.0
           a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.4.1') v2.4.1
@@ -74,8 +75,6 @@ header.chi-header.-inverse.docs-header.-z--20
           a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.2.0') v2.2.0
           a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.1.0') v2.1.0
           a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.0.0') v2.0.0
-          a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/1.4.2') v1.4.2
-          a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/1.4.0') v1.4.0
       script.
         if (localStorage.getItem("chiVersions") !== null) {
           if (versionCompare(window.chiCurrentVersion, JSON.parse(localStorage.getItem("chiVersions"))[0])) {

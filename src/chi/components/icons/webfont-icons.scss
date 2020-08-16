@@ -24,6 +24,14 @@ i {
   }
 }
 
+.icon-warning-outline::before {
+  content: '\e9cc';
+}
+
+.icon-login::before {
+  content: '\e9cb';
+}
+
 .icon-user-settings::before {
   content: '\e9ca';
 }
