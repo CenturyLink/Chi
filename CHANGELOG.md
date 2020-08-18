@@ -1,4 +1,11 @@
 # CHANGELOG
+## 2.7.0 (August 18, 2020)
+### Components
+#### Added
+* Added: Icons `icon-login`, `icon-warning-outline`.
+#### Changed
+* Changed: Icons `icon-logout`, `icon-circle-alert-outline`, `icon-circle-alert`.
+
 ## 2.6.0 (August 14, 2020)
 ### Components
 #### Added
