@@ -1,0 +1,48 @@
+@import '_variables';
+@import '_mixins';
+
+.chi-accordion {
+  background-color: set-color(white);
+  border-bottom: 1px solid set-color(grey,20);
+
+  &__header {
+    display: flex;
+    padding: 1rem;
+
+    .chi-accordion__title {
+      font-size: $text-larger;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  &__content {
+    display: none;
+    padding: 1rem;
+    padding-top: 0;
+  }
+
+  &.-expanded {
+    .chi-accordion__content {
+      display: block;
+    }
+  }
+
+  &.-bordered {
+    background-color: white;
+    border: 0.0625rem solid $border-color;
+    box-shadow: map-get($shadow, 1);
+    margin-bottom: 0.5rem;
+  }
+
+  &.-portal {
+    background-color: set-color(grey, 20);
+
+    .chi-accordion__header {
+      background-color: set-color(grey, 30);
+    }
+
+    .chi-icon {
+      color: set-color(blue, 70);
+    }
+  }
+}

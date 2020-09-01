@@ -1,0 +1,185 @@
+h2 Examples
+p.-text To render accordion, use the class <code>chi-accordion</code>.
+
+h3 Base
+.example.-mb--3#example1
+  .-p--3.-p-lg--6.-bg--grey-10
+    .-mw--720.-mx--auto
+      .chi-accordion.-bordered(data-chi-epanel-group='example1')
+        .chi-accordion__header
+          .chi-accordion__title(data-chi-epanel-action='toggle') 
+            i.chi-icon.icon-chevron-right.-mr--2
+            | Accordion 1
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+
+      .chi-accordion.-expanded.-bordered(data-chi-epanel-group='example1')
+        .chi-accordion__header
+          .chi-accordion__title(data-chi-epanel-action='toggle')
+            i.chi-icon.icon-chevron-down.-mr--2
+            | Accordion 2
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+
+      .chi-accordion.-bordered(data-chi-epanel-group='example1')
+        .chi-accordion__header
+          .chi-accordion__title(data-chi-epanel-action='toggle')
+            i.chi-icon.icon-chevron-right.-mr--2
+            | Accordion 3
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+
+      .chi-accordion.-bordered(data-chi-epanel-group='example1')
+        .chi-accordion__header
+          .chi-accordion__title(data-chi-epanel-action='toggle')
+            i.chi-icon.icon-chevron-right.-mr--2
+            | Accordion 4
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+  .example-tabs.-pl--2
+    ul#chi-tabs-e1.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-e1-web') Web Component
+      li.-active
+        a(href='#chi-tabs-e1-html') HTML Blueprint
+  #chi-tabs-e1-web.chi-tabs-panel
+  #chi-tabs-e1-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-accordion -bordered" data-chi-epanel-group="example1">
+          <div class="chi-accordion__header">
+              <div class="chi-accordion__title" data-chi-epanel-action="toggle"> <i class="chi-icon icon-chevron-right -mr--2"></i>Accordion 1</div>
+          </div>
+          <div class="chi-accordion__content">
+              <p class="chi-accordion__text">Content goes here</p>
+          </div>
+      </div>
+      <div class="chi-accordion -expanded -bordered" data-chi-epanel-group="example1">
+          <div class="chi-accordion__header">
+              <div class="chi-accordion__title" data-chi-epanel-action="toggle"><i class="chi-icon icon-chevron-down -mr--2"></i>Accordion 2</div>
+          </div>
+          <div class="chi-accordion__content">
+              <p class="chi-accordion__text">Content goes here</p>
+          </div>
+      </div>
+      <div class="chi-accordion -bordered" data-chi-epanel-group="example1">
+          <div class="chi-accordion__header">
+              <div class="chi-accordion__title" data-chi-epanel-action="toggle"><i class="chi-icon icon-chevron-right -mr--2"></i>Accordion 3</div>
+          </div>
+          <div class="chi-accordion__content">
+              <p class="chi-accordion__text">Content goes here</p>
+          </div>
+      </div>
+      <div class="chi-accordion -bordered" data-chi-epanel-group="example1">
+          <div class="chi-accordion__header">
+              <div class="chi-accordion__title" data-chi-epanel-action="toggle"><i class="chi-icon icon-chevron-right -mr--2"></i>Accordion 4</div>
+          </div>
+          <div class="chi-accordion__content">
+              <p class="chi-accordion__text">Content goes here</p>
+          </div>
+      </div>
+
+      <!-- JavaScript -->
+      <script>
+      chi.accordion(
+        document.querySelectorAll('[data-chi-epanel-group="example1"]'),
+        {mode: 'accordion'}
+      );
+      </script>
+
+h3 Portal
+.example.-mb--3#example1
+  .-p--3.-p-lg--6.-bg--grey-10
+    .-mw--720.-mx--auto
+      .chi-accordion.-portal.-bordered(data-chi-epanel-group='example2')
+        .chi-accordion__header
+          .chi-accordion__title(data-chi-epanel-action='toggle')
+            i.chi-icon.icon-plus.-mr--2
+            | Accordion 1
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+
+      .chi-accordion.-expanded.-portal.-bordered(data-chi-epanel-group='example2')
+        .chi-accordion__header
+          .chi-accordion__title(data-chi-epanel-action='toggle')
+            i.chi-icon.icon-minus.-mr--2
+            | Accordion 2
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+
+      .chi-accordion.-portal.-bordered(data-chi-epanel-group='example2')
+        .chi-accordion__header
+          .chi-accordion__title(data-chi-epanel-action='toggle')
+            i.chi-icon.icon-plus.-mr--2
+            | Accordion 3
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+
+      .chi-accordion.-portal.-bordered(data-chi-epanel-group='example2')
+        .chi-accordion__header
+          .chi-accordion__title(data-chi-epanel-action='toggle')
+            i.chi-icon.icon-plus.-mr--2
+            | Accordion 4
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+  .example-tabs.-pl--2
+    ul#chi-tabs-e2.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-e2-web') Web Component
+      li.-active
+        a(href='#chi-tabs-e2-html') HTML Blueprint
+  #chi-tabs-e2-web.chi-tabs-panel
+  #chi-tabs-e2-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-accordion -portal -bordered" data-chi-epanel-group="example2">
+          <div class="chi-accordion__header">
+              <div class="chi-accordion__title" data-chi-epanel-action="toggle"><i class="chi-icon icon-plus -mr--2"></i>Accordion 1</div>
+          </div>
+          <div class="chi-accordion__content">
+              <p class="chi-accordion__text">Content goes here</p>
+          </div>
+      </div>
+      <div class="chi-accordion -expanded -portal -bordered" data-chi-epanel-group="example2">
+          <div class="chi-accordion__header">
+              <div class="chi-accordion__title" data-chi-epanel-action="toggle"><i class="chi-icon icon-minus -mr--2"></i>Accordion 2</div>
+          </div>
+          <div class="chi-accordion__content">
+              <p class="chi-accordion__text">Content goes here</p>
+          </div>
+      </div>
+      <div class="chi-accordion -portal -bordered" data-chi-epanel-group="example2">
+          <div class="chi-accordion__header">
+              <div class="chi-accordion__title" data-chi-epanel-action="toggle"><i class="chi-icon icon-plus -mr--2"></i>Accordion 3</div>
+          </div>
+          <div class="chi-accordion__content">
+              <p class="chi-accordion__text">Content goes here</p>
+          </div>
+      </div>
+      <div class="chi-accordion -portal -bordered" data-chi-epanel-group="example2">
+          <div class="chi-accordion__header">
+              <div class="chi-accordion__title" data-chi-epanel-action="toggle"><i class="chi-icon icon-plus -mr--2"></i>Accordion 4</div>
+          </div>
+          <div class="chi-accordion__content">
+              <p class="chi-accordion__text">Content goes here</p>
+          </div>
+      </div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+
+      chi.accordion(document.querySelectorAll('[data-chi-epanel-group="example1"]'), {mode: 'accordion'});
+      chi.accordion(document.querySelectorAll('[data-chi-epanel-group="example2"]'), {mode: 'accordion'});
+    }
+  );
