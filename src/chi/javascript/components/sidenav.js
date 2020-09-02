@@ -186,7 +186,7 @@ class Sidenav extends Component {
                 if (menuItemAnchorToSelect) {
                   Util.addClass(menuItemAnchorToSelect, chi.classes.ACTIVE);
                 }
-                if (activeMenuItem !== e.target) {
+                if (activeMenuItem && activeMenuItem !== e.target) {
                   Util.addClass(activeMenuItem.querySelector('a'), chi.classes.UNSELECTED);
                 }
             });
