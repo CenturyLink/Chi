@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-07-31T18:38:41",
+  "timestamp": "2020-08-17T18:38:46",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1273,7 +1273,7 @@
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
@@ -1289,7 +1289,7 @@
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
@@ -2340,7 +2340,7 @@
               "type": "string"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false
         },
         {
@@ -2356,7 +2356,7 @@
               "type": "string"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false
         }
       ],
@@ -2416,7 +2416,7 @@
               "type": "string"
             }
           ],
-          "optional": true,
+          "optional": false,
           "required": false
         },
         {

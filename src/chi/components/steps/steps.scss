@@ -5,6 +5,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
 .chi-steps {
   align-items: center;
+  counter-reset: step;
   display: flex;
   justify-content: center;
   margin: 0.5rem;
@@ -21,12 +22,13 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
   &__line {
     border-top: 0.125rem solid set-color(grey, 60);
+    position: relative;
     width: 100%;
   }
 
   & > li {
     align-items: center;
-    color: $brand-color;
+    color: $primary-color;
     display: flex;
     flex: 1 0 auto;
     font-size: $text;
@@ -35,19 +37,20 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
     & > .chi-steps__icon {
       &::before {
-        content: '\e942';
-        font-family: 'chi';
-        font-size: 0.75rem;
+        color: set-color(white);
+        content: counter(step);
+        counter-increment: step;
+        font-family: $font-family;
+        font-size: $text;
+        font-weight: $font-weight-semibold;
         position: absolute;
+        z-index: $zindex-prominent;
       }
 
       &::after {
-        content: '';
-        display: block;
-        font-size: 1.3rem;
-        font-style: normal;
-        font-variant: normal;
-        font-weight: normal;
+        content: '\e929';
+        font-family: 'chi';
+        font-size: 1.5rem;
         position: absolute;
       }
 
@@ -59,33 +62,51 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
 
     & > a {
-      color: $brand-color;
-      font-weight: 600;
-      margin-left: 0.5rem;
+      font-weight: $font-weight-semibold;
+      margin-left: 0.75rem;
       white-space: nowrap;
     }
 
     & > .chi-steps__line {
-      border-color: $brand-color;
+      border-color: $primary-color;
+      margin: 0.5rem 0.75rem;
+    }
+
+    &.-completed {
+      & > .chi-steps__icon {
+        &::before {
+          content: '';
+        }
+      }
+
+      & > .chi-steps__line {
+        &::after {
+          border-right: 0.125rem solid $primary-color;
+          border-top: 0.125rem solid $primary-color;
+          content: '';
+          height: 0.5rem;
+          position: absolute;
+          right: 0;
+          top: -0.3125rem;
+          transform: rotate(45deg);
+          width: 0.5rem;
+        }
+      }
     }
 
     &.-active {
       & > .chi-steps__icon {
-        margin-left: 0.125rem;
+        a {
+          font-weight: $font-weight-semibold;
+        }
 
         &::after {
-          content: '\e934';
-          font-family: 'chi' !important;
+          content: '\e942';
         }
       }
 
       & > .chi-steps__line {
         border-color: set-color(grey, 60);
-        margin-left: 0.125rem;
-      }
-
-      & a {
-        color: $brand-color;
       }
 
       &:last-child {
@@ -96,30 +117,30 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         & > .chi-steps__icon {
           color: set-color(grey, 60);
 
+          &::after {
+            content: '\e942';
+          }
+
         }
 
         & > .chi-steps__line {
           border-color: set-color(grey, 60);
         }
 
-        & a {
-          color: set-color(grey, 60);
-        }
-
         &:last-child {
           flex-grow: 0;
         }
+      }
+
+      a {
+        color: $primary-color;
       }
     }
   }
 
   & a {
-    color: $brand-color;
+    color: set-color(grey, 100);
     text-decoration: none;
-
-    &:hover {
-      color: $brand-color;
-    }
   }
 
   &.-inverse {
@@ -128,19 +149,38 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     & > li {
       color: $secondary-color;
 
+      & > .chi-steps__icon {
+        &::before {
+          color: set-color(black);
+        }
+      }
+
       &::before {
         border: 0.125rem solid set-color(black);
       }
 
       & a {
-        color: $secondary-color;
+        color: set-color(white);
       }
 
       & > .chi-steps__line {
         border-color: $secondary-color;
       }
 
+      &.-completed {
+        & > .chi-steps__line {
+          &::after {
+            border-right-color: $secondary-color;
+            border-top-color: $secondary-color;
+          }
+        }
+      }
+
       &.-active {
+        a {
+          color: $secondary-color;
+        }
+
         & > .chi-steps__line {
           border-color: set-color(grey, 40);
         }
@@ -148,15 +188,10 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         & ~ li {
           & > .chi-steps__icon {
             color: set-color(grey, 40);
-
           }
 
           & > .chi-steps__line {
             border-color: set-color(grey, 40);
-          }
-
-          & a {
-            color: set-color(grey, 40);
           }
         }
       }
@@ -164,50 +199,10 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   }
 
   &.-horizontal-label {
-    counter-reset: step;
-
-    & > li {
-      & > .chi-steps__icon {
-        &::before {
-          content: counter(step);
-          counter-increment: step;
-          font-family: $font-family;
-          font-size: 0.6875rem;
-          font-weight: 600;
-        }
-
-        &::after {
-          content: '\e928';
-          font-family: 'chi' !important;
-        }
-      }
-
-      &.-completed {
-        & > .chi-steps__icon {
-          &::before {
-            content: '';
-          }
-        }
-      }
-
-      &.-active {
-        & > .chi-steps__icon {
-          &::after {
-            content: '\e934';
-          }
-        }
-
-        & ~ li {
-          & > .chi-steps__icon {
-            &::after {
-              content: '\e934';
-            }
-          }
-        }
-      }
-
-      & > .chi-steps__line {
-        margin: 0.5rem;
+    > li {
+      > .chi-steps__line {
+        margin-left: 0.5rem;
+        margin-right: 0.875rem;
       }
     }
   }
@@ -254,21 +249,32 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .chi-steps div.chi-steps__icon a {
     position: relative;
-    right: 1.5625rem;
+    right: 0.8625rem;
   }
 
   .chi-steps li:first-child.-active div.chi-steps__icon::after {
     right: 3.4375rem;
   }
 
-  .chi-steps li.-active div.chi-steps__icon::after {
+  .chi-steps li.-active div.chi-steps__icon::after,
+  .chi-steps li div.chi-steps__icon::after {
     position: relative;
-    right: 3.5875rem;
+    right: 3.47rem;
+  }
+
+  .chi-steps li.-completed div.chi-steps__icon::after {
+    position: relative;
+    right: 2.97rem;
   }
 
   .chi-steps div.chi-steps__icon::before,
   .chi-steps.-horizontal-label div.chi-steps__icon::before  {
-    left: 0.15rem;
+    left: 0.3rem;
+    position: relative;
+  }
+
+  .chi-steps.-horizontal-label div.chi-steps__icon::before  {
+    left: 0.25rem;
     position: relative;
   }
 

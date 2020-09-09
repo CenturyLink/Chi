@@ -11,12 +11,12 @@ h3 Base
     ul.chi-steps.-px--0.-pb--2.-p-sm--6
       each step in steps
         if step == 'Step 1'
-          li
+          li.-completed
             div.chi-steps__icon
               a(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 2'
-          li
+          li.-completed
             div.chi-steps__icon
               a(href='#')= `${step}`
             div.chi-steps__line
@@ -44,13 +44,13 @@ h3 Base
   .chi-tabs-panel.-active#html-base
     :code(lang="html")
       <ul class="chi-steps">
-        <li>
+        <li class="-completed">
           <div class="chi-steps__icon">
             <a href="#">Step 1</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="-completed">
           <div class="chi-steps__icon">
             <a href="#">Step 2</a>
           </div>
@@ -81,12 +81,12 @@ h3 Inverse
     ul.chi-steps.-inverse.-px--0.-pb--2.-p-sm--6
       each step in steps
         if step == 'Step 1'
-          li
+          li.-completed
             div.chi-steps__icon
               a(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 2'
-          li
+          li.-completed
             div.chi-steps__icon
               a(href='#')= `${step}`
             div.chi-steps__line
@@ -114,13 +114,13 @@ h3 Inverse
   .chi-tabs-panel.-active#html-inverse
     :code(lang="html")
       <ul class="chi-steps -inverse">
-        <li>
+        <li class="-completed">
           <div class="chi-steps__icon">
             <a href="#">Step 1</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="-completed">
           <div class="chi-steps__icon">
             <a href="#">Step 2</a>
           </div>
@@ -295,12 +295,12 @@ p.-text
     ul.chi-steps.-labels-md--hide.-p-sm--5
       each step in steps
         if step == 'Step 1'
-          li
+          li.-completed
             div.chi-steps__icon
               a(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 2'
-          li
+          li.-completed
             div.chi-steps__icon
               a(href='#')= `${step}`
             div.chi-steps__line
@@ -359,13 +359,13 @@ p.-text
     :code(lang="html")
       <!-- Visible labels from md breakpoint -->
       <ul class="chi-steps -labels-md--hide">
-        <li>
+        <li class="-completed">
           <div class="chi-steps__icon">
             <a href="#">Step 1</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="-completed">
           <div class="chi-steps__icon">
             <a href="#">Step 2</a>
           </div>

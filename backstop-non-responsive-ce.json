@@ -144,14 +144,15 @@
         ".test-solid",
         ".test-outline",
         ".test-flat",
-        ".test-badge-icons"
+        ".test-badge-icons",
+        ".test-text-transform"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
     },
     {
-      "label": "icons-ce",
+      "label": "icons-svg",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/custom-elements/icons.html",
       "referenceUrl": "",
@@ -164,10 +165,15 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-single",
-        ".test-sizes",
-        ".test-colors",
-        ".test-icons"
+        ".test-single-svg",
+        ".test-colors-svg",
+        ".test-icons-svg",
+        ".test-sizes-svg-xs",
+        ".test-sizes-svg-sm",
+        ".test-sizes-svg-sm--2",
+        ".test-sizes-svg-sm--3",
+        ".test-sizes-svg-md",
+        ".test-sizes-svg-lg"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,

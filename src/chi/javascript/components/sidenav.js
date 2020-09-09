@@ -186,7 +186,7 @@ class Sidenav extends Component {
                 if (menuItemAnchorToSelect) {
                   Util.addClass(menuItemAnchorToSelect, chi.classes.ACTIVE);
                 }
-                if (activeMenuItem !== e.target) {
+                if (activeMenuItem && activeMenuItem !== e.target) {
                   Util.addClass(activeMenuItem.querySelector('a'), chi.classes.UNSELECTED);
                 }
             });
@@ -584,8 +584,6 @@ class Sidenav extends Component {
     this._drawersContainer = null;
     this._clickOnComponent = null;
     this._autocloseTimeoutId = null;
-    this._drawers.forEach(drawer => drawer.dispose());
-    this._drawers.length = 0;
     this._removeEventHandlers();
   }
 

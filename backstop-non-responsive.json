@@ -12,6 +12,31 @@
   "onReadyScript": "chromy/onReady.js",
   "scenarios": [
     {
+      "label": "activity",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/activity.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-activity-base",
+        ".test-activity-base-avatar",
+        ".test-activity-feed",
+        ".test-activity-compact-feed",
+        ".test-activity-feed-stories",
+        ".test-activity-feed-operation-icons"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "alert-banner",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/alert-banner.html",
@@ -190,7 +215,8 @@
         ".test-solid",
         ".test-outline",
         ".test-flat",
-        ".test-badge-icons"
+        ".test-badge-icons",
+        ".test-text-transform"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -714,6 +740,36 @@
         ".test-sizes",
         ".test-colors",
         ".test-icons"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "icons-svg",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/icons.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-single-svg",
+        ".test-colors-svg",
+        ".test-icons-svg",
+        ".test-sizes-svg-xs",
+        ".test-sizes-svg-sm",
+        ".test-sizes-svg-sm--2",
+        ".test-sizes-svg-sm--3",
+        ".test-sizes-svg-md",
+        ".test-sizes-svg-lg",
+        ".test-sizes-svg-xl",
+        ".test-sizes-svg-xxl"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -1270,7 +1326,9 @@
         ".test-horizontal-inverse",
         ".test-horizontal-bordered-inverse",
         ".test-vertical-inverse",
-        ".test-vertical-icons-inverse"
+        ".test-vertical-icons-inverse",
+        ".test-vertical-icons-description",
+        ".test-vertical-icons-portal"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,

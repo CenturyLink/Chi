@@ -1,4 +1,40 @@
 # CHANGELOG
+## 2.7.0 (August 18, 2020)
+### Components
+#### Added
+* Added: Icons `icon-login`, `icon-warning-outline`.
+#### Changed
+* Changed: Icons `icon-logout`, `icon-circle-alert-outline`, `icon-circle-alert`.
+
+## 2.6.0 (August 14, 2020)
+### Components
+#### Added
+* Added: Icons `icon-user-settings`.
+* Added: Tabs now supports the theme `portal` for rendering portal themed Tabs.
+#### Changed
+* Changed: Steps styles have been updated for better consistency with Enterprise Portal use cases.
+
+## 2.5.1 (August 13, 2020)
+### Components
+#### Changed
+* Changed: Removed margin top from Picker and Picker group components.
+#### Fixed
+* Fixed: Removed disposing of Drawers associated with Sidenav.
+* Fixed: Pagination chiPageChange event.
+
+## 2.5.0 (August 4, 2020)
+### Components
+#### Added
+* Added: Toggle Switch now supports the size `xs` for rendering extra small toggle switches.
+* Added: Added: Drawer now supports the theme `portal` for rendering portal themed Drawers.
+* Added: Added: Stat component for rendering performance indicators in dashboard UIs.
+* Added: Added: Mobile Navigation component for rendering responsive multi-level navigation in mobile views.
+#### Changed
+* Changed: Improved Sidenav and Drawer component dispose methods.
+* Changed: Updated Dayjs to version 1.8.31.
+#### Fixed
+* Fixed: Drawer component show/hide behavior.
+
 ## 2.4.1 (July 16, 2020)
 ### Components
 #### Added
@@ -50,7 +86,7 @@
 * Changed: Tooltip now renders with a 0.5s delay by default.
 * Changed: Modal portal theme shadow and header background-color have been updated to reflect latest designs.
 * Changed: Backdrop portal theme has been removed. Portal has adopted Chi's default theme. The class `-portal` is no longer necessary on `chi-backdrop`.
-* Changed: Icons `icon-address-book`, `icon-arrow-to-bottom`, `icon-user`, `icon-users`, `icon-visible-off`, `icon-visible`, `icon-x-alt` 
+* Changed: Icons `icon-address-book`, `icon-arrow-to-bottom`, `icon-user`, `icon-users`, `icon-visible-off`, `icon-visible`, `icon-x-alt`
 #### Fixed
 * Fixed: Popover web component did not flip arrows correctly when space was insufficient.
 
@@ -130,7 +166,7 @@
 * Changed: Headers for portal now include functional inverse drop down menus.
 * Changed: Removed Design Kit button from docs sidenav.
 #### Fixed
-* Fixed: Modal code samples were missing trigger and javascript example code. 
+* Fixed: Modal code samples were missing trigger and javascript example code.
 * Fixed: Pagination code samples which contained icon buttons were missing the `-icon` class on `chi-button`.
 * Fixed: Pagination code samples which contained icon buttons were missing the `chi-button__content` container in `chi-button`.
 
