@@ -35,15 +35,15 @@ $sizes: (
 select {
   &.chi-input {
     appearance: none;
-    background-color: set-color(white);
+    background-color: $color-background-white;
     background-image: url('icon-chevron-thin-down.svg');
     background-position: map-get(map-get($sizes, md), background-position);
     background-repeat: no-repeat;
     background-size: 0.75rem 0.75rem;
-    border: 0.0625rem solid set-color(grey, 30);
+    border: 0.0625rem solid $color-border-base-dark;
     border-radius: 0;
-    box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
-    color: set-color(grey, 90);
+    box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
+    color: $color-grey-90;
     cursor: hand;
     cursor: pointer; // sass-lint:disable-line no-duplicate-properties
     font-size: map-get(map-get($sizes, md), font-size);
@@ -70,7 +70,7 @@ select {
     &.-hover,
     &:active,
     &.-active {
-      border-color: set-color(grey, 40);
+      border-color: $color-grey-40;
     }
 
     &:focus,
@@ -96,16 +96,16 @@ select {
 
     &:not([disabled]) {
       &.-danger {
-        border-color: $icon-color-danger;
+        border-color: $color-icon-danger;
       }
     }
 
     &.-danger {
-      color: set-color(grey, 90);
+      color: $color-grey-90;
 
       &:focus,
       &.-focus {
-        box-shadow: 0 0 0 1px $icon-color-danger;
+        box-shadow: 0 0 0 1px $color-icon-danger;
       }
     }
   }

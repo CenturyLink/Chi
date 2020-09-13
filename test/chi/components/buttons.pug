@@ -3,7 +3,7 @@ title: Buttons
 
 ---
 each size in ['default', 'sm', 'md', 'lg', 'xl']
-  each type in ['solid', 'outline', 'flat', 'fluid']
+  each type in ['solid', 'outline', 'flat', 'fluid', 'uppercase']
     div(class={
       [`test-${type}`]: size === 'default',
       [`test-${type}-${size}`]: size !== 'default'

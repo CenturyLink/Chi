@@ -11,9 +11,9 @@
       &.chi-radio__input {
         & + label {
           &.chi-radio__label {
-            font-size: $text;
-            font-weight: normal;
-            line-height: $line-height-small;
+            font-size: $font-size-base;
+            font-weight: $font-weight-normal;
+            line-height: $line-height;
             margin-bottom: 0;
             margin-right: 0;
             padding-left: 1.5rem;
@@ -53,14 +53,14 @@ input {
           align-items: center;
           cursor: pointer;
           display: inline-flex;
-          line-height: $line-height-smaller;
+          line-height: $line-height-sm;
           margin: 0 0.5rem 0 0;
           position: relative;
         }
 
         &::before {
-          background-color: set-color(white);
-          border: 0.0625rem solid set-color(grey, 40);
+          background-color: $color-background-white;
+          border: 0.0625rem solid $color-grey-40;
           border-radius: 0.5rem;
           content: '';
           cursor: pointer;
@@ -71,7 +71,7 @@ input {
         }
 
         &::after {
-          background-color: set-color(grey, 50);
+          background-color: $color-grey-50;
           border-radius: 0.5rem;
           content: '';
           display: block;
@@ -95,28 +95,20 @@ input {
       &:checked {
         & + label {
           &::before {
-            background-color: $brand-color;
-            border-color: $brand-color;
+            background-color: $color-background-primary;
+            border-color: $color-border-primary;
           }
 
           &::after {
-            background-color: set-color(white);
+            background-color: $color-background-white;
             transform: scale(1);
-          }
-        }
-
-        &:focus,
-        &.-focus {
-          & + label::before {
-            outline: 0.125rem solid $focus-color;
-            outline-offset: 0.0625rem;
           }
         }
       }
 
       &[disabled] {
         & ~ label {
-          color: set-color(grey, 70);
+          color: $color-grey-70;
         }
 
         & + label {

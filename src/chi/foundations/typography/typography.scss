@@ -3,28 +3,28 @@
 
 $sizes: (
   xs: (
-    font-size: $text-smaller,
-    line-height: $line-height-smaller,
+    font-size: $font-size-xs,
+    line-height: $line-height-sm,
   ),
   sm: (
-    font-size: $text-small,
-    line-height: $line-height-small,
-  ),
-  md: (
-    font-size: $text,
+    font-size: $font-size-sm,
     line-height: $line-height,
   ),
+  md: (
+    font-size: $font-size-base,
+    line-height: $line-height-lg,
+  ),
   lg: (
-    font-size: $text-large,
-    line-height: $line-height-large,
+    font-size: $font-size-lg,
+    line-height: $line-height-lg,
   ),
   xl: (
-    font-size: $text-larger,
-    line-height: $line-height-larger,
+    font-size: $font-size-xl,
+    line-height: $line-height-xl,
   ),
 );
 
-$alignments: ( justify, center, left, right);
+$alignments: (justify, center, left, right);
 
 button,
 input,
@@ -40,49 +40,49 @@ a {
 
 h1 {
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: $font-weight-bold;
   line-height: 4rem;
   margin: 2rem 0;
 }
 
 h2 {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: $font-weight-bold;
   line-height: 3rem;
   margin: 1rem 0;
 }
 
 h3 {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: $font-weight-semi-bold;
   line-height: 2rem;
   margin: 1rem 0;
 }
 
 h4 {
-  font-size: $text-larger;
-  font-weight: 600;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semi-bold;
   line-height: 2rem;
   margin: 0.5rem 0;
 }
 
 h5 {
-  font-size: $text-large;
-  font-weight: 600;
-  line-height: $line-height-large;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-lg;
   margin: 0.5rem 0;
 }
 
 h6 {
-  font-size: $text;
-  font-weight: 600;
-  line-height: $line-height;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-lg;
   margin: 0.5rem 0;
 }
 
 blockquote,
 .chi-blockquote {
-  border-left: 0.25rem solid set-color(grey, 30);
+  border-left: 0.25rem solid $color-border-base-dark;
   padding-left: 1rem;
 }
 
@@ -96,21 +96,21 @@ abbr,
 code,
 .chi-code,
 pre {
-  font-family: $font-family-monospace;
-  font-size: $text-small;
+  font-family: $font-family-mono;
+  font-size: $font-size-sm;
 }
 
 code {
-  color: set-color(mint, 70);
+  color: $color-text-code;
   word-break: break-word;
 }
 
 pre {
   -ms-overflow-style: -ms-autohiding-scrollbar; // sass-lint:disable-line no-vendor-prefixes
-  background-color: set-color(grey, 15);
-  color: $text-color;
+  background-color: $color-grey-15;
+  color: $color-text-base;
   display: block;
-  font-size: $text-small;
+  font-size: $font-size-sm;
   margin-bottom: 0.5rem;
   margin-top: 0;
   overflow: auto;
@@ -126,7 +126,7 @@ pre {
 
 b,
 strong {
-  font-weight: 600;
+  font-weight: $font-weight-semi-bold;
 }
 
 ul,
@@ -173,77 +173,77 @@ figure {
 
 // text headings
 .-text--h1 {
-  font-size: 3rem !important;
-  font-weight: 700 !important;
+  font-size: $font-size-h1 !important;
+  font-weight: $font-weight-bold !important;
   line-height: 4rem !important;
   margin: 2rem 0 !important;
 }
 
 .-text--h2 {
-  font-size: 2rem !important;
-  font-weight: 700 !important;
+  font-size: $font-size-h2 !important;
+  font-weight: $font-weight-bold !important;
   line-height: 3rem !important;
   margin: 1rem 0 !important;
 }
 
 .-text--h3 {
-  font-size: 1.5rem !important;
-  font-weight: 600 !important;
+  font-size: $font-size-h3 !important;
+  font-weight: $font-weight-semi-bold !important;
   line-height: 2rem !important;
   margin: 1rem 0 !important;
 }
 
 .-text--h4 {
-  font-size: $text-larger !important;
-  font-weight: 600 !important;
+  font-size: $font-size-h4 !important;
+  font-weight: $font-weight-semi-bold !important;
   line-height: 2rem !important;
   margin: 0.5rem 0 !important;
 }
 
 .-text--h5 {
-  font-size: $text-large !important;
-  font-weight: 600 !important;
-  line-height: $line-height-large !important;
+  font-size: $font-size-h5 !important;
+  font-weight: $font-weight-semi-bold !important;
+  line-height: $line-height-lg !important;
   margin: 0.5rem 0 !important;
 }
 
 .-text--h6 {
-  font-size: $text !important;
-  font-weight: 600 !important;
-  line-height: $line-height !important;
+  font-size: $font-size-h6 !important;
+  font-weight: $font-weight-semi-bold !important;
+  line-height: $line-height-lg !important;
   margin: 0.5rem 0 !important;
 }
 
 p,
 .-text {
-  font-size: $text;
+  font-size: $font-size-base;
   line-height: $line-height;
 }
 
 .-text--xs {
-  font-size: $text-smaller !important;
-  line-height: $line-height-smaller !important;
+  font-size: $font-size-xs !important;
+  line-height: $line-height-sm !important;
 }
 
 small,
 .-text--sm {
-  font-size: $text-small !important;
-  line-height: $line-height-small !important;
-}
-
-.-text--md {
-  font-size: $text !important;
+  font-size: $font-size-sm !important;
   line-height: $line-height !important;
 }
 
+.-text--md {
+  font-size: $font-size-md !important;
+  line-height: $line-height-lg !important;
+}
+
 .-text--lg {
-  font-size: $text-large !important;
-  line-height: $line-height-large !important;
+  font-size: $font-size-lg !important;
+  line-height: $line-height-lg !important;
 }
 
 .-text--xl {
-  font-size: $text-larger !important;
-  line-height: $line-height-larger !important;
+  font-size: $font-size-xl !important;
+  line-height: $line-height-xl !important;
 }
 
 .-text--justify {
@@ -275,19 +275,19 @@ small,
 }
 
 .-text--thin {
-  font-weight: 300 !important;
+  font-weight: $font-weight-light !important;
 }
 
 .-text--normal {
-  font-weight: normal !important;
+  font-weight: $font-weight-normal !important;
 }
 
 .-text--bold {
-  font-weight: 600 !important;
+  font-weight: $font-weight-semi-bold !important;
 }
 
 .-text--bolder {
-  font-weight: 800 !important;
+  font-weight: $font-weight-extra-bold !important;
 }
 
 .-text--nowrap {
@@ -302,10 +302,13 @@ small,
 
 // text colors
 .-text--body,
+.-text--dark {
+  color: $color-text-base !important;
+}
+
 .-icon--body,
-.-text--dark,
 .-icon--dark {
-  color: $text-color !important;
+  color: $color-icon-base !important;
 }
 
 .-hover--text--body {
@@ -313,20 +316,20 @@ small,
   &:focus,
   &:active,
   &.-active {
-    color: $text-color !important;
+    color: $color-text-base !important;
   }
 }
 
 .-text--inverse,
 .-icon--inverse {
-  color: $text-inverse !important;
+  color: $color-text-white !important;
 }
 
 .-text--white,
 .-text--light,
 .-icon--white,
 .-icon--light {
-  color: $text-white !important;
+  color: $color-text-white !important;
 }
 
 .-hover--text--white,
@@ -335,7 +338,7 @@ small,
   &:focus,
   &:active,
   &.-active {
-    color: $text-white !important;
+    color: $color-text-white !important;
   }
 }
 
@@ -343,7 +346,7 @@ small,
 .-text--primary,
 .-icon--brand,
 .-icon--primary {
-  color: $primary !important;
+  color: $color-text-primary !important;
 }
 
 .-hover--text--primary {
@@ -351,13 +354,13 @@ small,
   &:focus,
   &:active,
   &.-active {
-    color: $primary !important;
+    color: $color-text-primary !important;
   }
 }
 
 .-text--secondary,
 .-icon--secondary {
-  color: $secondary !important;
+  color: $color-text-secondary !important;
 }
 
 .-hover--text--secondary {
@@ -365,56 +368,56 @@ small,
   &:focus,
   &:active,
   &.-active {
-    color: $secondary !important;
+    color: $color-text-secondary !important;
   }
 }
 
 .-text--success {
-  color: $success-color !important;
+  color: $color-text-success !important;
 }
 
 .-icon--success {
-  color: $icon-color-success !important;
+  color: $color-icon-success !important;
 }
 
 .-text--danger {
-  color: $danger-color !important;
+  color: $color-text-danger !important;
 }
 
 .-icon--danger {
-  color: $icon-color-danger !important;
+  color: $color-icon-danger !important;
 }
 
 .-text--info {
-  color: $info-color !important;
+  color: $color-text-info !important;
 }
 
 .-icon--info {
-  color: $icon-color-info !important;
+  color: $color-icon-info !important;
 }
 
 .-text--warning {
-  color: $warning-color !important;
+  color: $color-text-warning !important;
 }
 
 .-icon--warning {
-  color: $icon-color-warning !important;
+  color: $color-icon-warning !important;
 }
 
 .-text--muted {
-  color: $muted-color !important;
+  color: $color-text-muted !important;
 }
 
 .-icon--muted {
-  color: $icon-color-muted !important;
+  color: $color-icon-muted !important;
 }
 
 .-text--grey {
-  color: $grey-color !important;
+  color: $color-text-muted !important;
 }
 
 .-icon--grey {
-  color: $icon-color-grey !important;
+  color: $color-icon-muted !important;
 }
 
 // line heights

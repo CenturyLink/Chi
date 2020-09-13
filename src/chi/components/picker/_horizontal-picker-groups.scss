@@ -4,6 +4,7 @@ $sizes: (
   sm: (
     font-size: 0.75rem,
     line-height: 1rem,
+    min-height: 1.5rem,
     padding: (0.25rem - $border) 0.5rem (0.25rem - $border) (0.5rem - $border),
         padding_hover: (0.5rem - $border),
         padding_checked: 0.5rem
@@ -11,6 +12,7 @@ $sizes: (
   md: (
     font-size: 0.875rem,
     line-height: 1rem,
+    min-height: 2rem,
     padding: (0.5rem - $border) 1rem (0.5rem - $border) (1rem - $border),
         padding_hover: (1rem - $border),
         padding_checked: 1rem
@@ -18,6 +20,7 @@ $sizes: (
   lg: (
     font-size: 0.875rem,
     line-height: 1.25rem,
+    min-height: 2.5rem,
     padding: (0.625rem - $border) 1.5rem (0.625rem - $border) (1.5rem - $border),
         padding_hover: (1.5rem - $border),
         padding_checked: 1.5rem
@@ -25,6 +28,7 @@ $sizes: (
   xl: (
     font-size: 0.875rem,
     line-height: 1.25rem,
+    min-height: 3rem,
     padding: (0.875rem - $border) 1.5rem (0.875rem - $border) (1.5rem - $border),
         padding_hover: (1.5rem - $border),
         padding_checked: 1.5rem
@@ -44,16 +48,17 @@ $sizes: (
 
         & + label {
           align-items: center;
-          background-color: $text-white;
-          border: solid 0.0625rem set-color(grey, 30);
+          background-color: $color-text-white;
+          border: solid 0.0625rem $color-border-base-dark;
           border-right-width: 0;
           box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
           display: flex;
-          font-size: $text;
-          font-weight: 600;
+          font-size: $font-size-base;
+          font-weight: $font-weight-semi-bold;
           justify-content: space-between;
           line-height: 1rem;
           margin-bottom: 0;
+          min-height: 2rem;
           padding: (0.5rem - $border) 1rem (0.5rem - $border) (1rem - $border);
           transition: border-color 0.2s, box-shadow 0.2s;
 
@@ -61,17 +66,25 @@ $sizes: (
             &.-#{$type} {
               font-size: map-get(map-get($sizes, $type), font-size);
               line-height: map-get(map-get($sizes, $type), line-height);
+              min-height: map-get(map-get($sizes, $type), min-height);
               padding: map-get(map-get($sizes, $type), padding);
             }
           }
 
           &:hover {
-            background-color: set-color(grey, 10);
+            background-color: $color-grey-10;
             cursor: pointer;
           }
 
+          &:first-of-type {
+            border-bottom-left-radius: $border-radius;
+            border-top-left-radius: $border-radius;
+          }
+
           &:last-of-type {
+            border-bottom-right-radius: $border-radius;
             border-right-width: 0.0625rem;
+            border-top-right-radius: $border-radius;
           }
 
           & > :not(:last-child) {
@@ -102,10 +115,10 @@ $sizes: (
       &:checked {
         &.chi-picker__input {
           & + label {
-            border: solid 0.0625rem $primary-color;
-            box-shadow: inset 0 0 0 0.0625rem $primary-color;
-            color: $primary-color;
-            font-weight: 600;
+            border: solid 0.0625rem $color-border-primary;
+            box-shadow: inset 0 0 0 0.0625rem $color-border-primary;
+            color: $color-text-primary;
+            font-weight: $font-weight-semi-bold;
             padding-right: 0.9375rem;
 
             @each $type in map-keys($sizes) {

@@ -12,22 +12,15 @@
         &.chi-tabs {
           li {
             .chi-collection__title {
-              font-size: 0.875rem;
-              font-weight: 600;
-              line-height: $line-height;
+              font-size: $font-size-base;
+              font-weight: $font-weight-semi-bold;
+              line-height: $line-height-lg;
               padding: 0.75rem 0 0.75rem 1.5rem;
-            }
-
-            a {
-              &:focus {
-                outline: 0.125rem solid $focus-color;
-                outline-offset: -0.125rem;
-              }
             }
 
             &.-active {
               .chi-collection__title {
-                color: $primary;
+                color: $color-text-primary;
               }
             }
           }
@@ -43,25 +36,25 @@
       @include respond-to(lg) {
         flex-direction: row;
         padding-left: 16rem;
-        padding-top: 4.5rem;
+        padding-top: 4rem;
       }
 
       .docs-sidenav {
-        background-color: set-color(white);
-        border-bottom: 0.0625rem solid set-color(grey, 25);
+        background-color: $color-background-white;
+        border-bottom: 0.0625rem solid $color-grey-25;
         border-right: 0;
         display: none;
-        height: calc(100% - 4.5rem);
+        height: calc(100% - 4rem);
         left: 0;
         overflow: auto;
         padding-bottom: 1rem;
         padding-top: 0.5rem;
         position: static;
-        top: 4.5rem;
+        top: 4rem;
         width: 100%;
         @include respond-to(lg) {
           border-bottom: 0;
-          border-right: 0.0625rem solid set-color(grey, 25);
+          border-right: 0.0625rem solid $color-grey-25;
           display: block;
           position: fixed;
           width: 16rem;
@@ -69,7 +62,7 @@
 
         a {
           &[disabled] {
-            color: set-color(grey, 50) !important;
+            color: $color-grey-50 !important;
             pointer-events: none;
           }
         }
@@ -80,22 +73,42 @@
 
             li {
               .chi-collection__title {
-                font-size: 0.875rem;
-                font-weight: 600;
-                line-height: $line-height;
+                font-size: $font-size-base;
+                font-weight: $font-weight-semi-bold;
+                line-height: $line-height-lg;
                 padding: 0.75rem 0 0.75rem 1.5rem;
-              }
-
-              a {
-                &:focus {
-                  outline: 0.125rem solid $focus-color;
-                  outline-offset: -0.125rem;
-                }
               }
 
               &.-active {
                 .chi-collection__title {
-                  color: $primary;
+                  color: $color-text-primary;
+                }
+              }
+
+              .chi-tabs__subtabs {
+                li {
+                  a {
+                    transition: background-color 0.12s ease-in, color 0.12s ease-in;
+
+                    &:hover {
+                      background-color: $color-background-base-darker;
+                      color: $color-text-base;
+                    }
+
+                    &:active {
+                      background-color: $color-background-base-darkest;
+                    }
+                  }
+
+                  &.-active {
+                    a {
+                      &,
+                      &:hover {
+                        background-color: $color-background-primary-light;
+                        color: $color-text-primary;
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -104,12 +117,12 @@
       }
 
       .docs-article {
-        background-color: set-color(white);
+        background-color: $color-background-white;
         flex-grow: 1;
         width: 100%;
 
         .docs-titlebar {
-          background-color: set-color(black);
+          background-color: $color-grey-15;
           display: flex;
           flex-direction: column;
           overflow: hidden;
@@ -135,9 +148,8 @@
             }
 
             .docs-titlebar__title {
-              color: set-color(white);
-              font-size: 2rem;
-              font-weight: normal;
+              font-size: $font-size-h2;
+              font-weight: $font-weight-bold;
               margin-bottom: 0.5rem;
               @include respond-to(lg) {
                 font-size: 3rem;
@@ -146,12 +158,12 @@
             }
 
             .docs-titlebar__description {
-              color: set-color(grey, 50);
-              font-size: $text;
-              line-height: $line-height-small;
+              color: $color-grey-70;
+              font-size: $font-size-base;
+              line-height: $line-height;
               @include respond-to(lg) {
-                font-size: $text-large;
-                line-height: $line-height-large;
+                font-size: $font-size-lg;
+                line-height: $line-height-lg;
                 margin: 0 0 1rem;
               }
             }
@@ -165,10 +177,9 @@
               }
 
               .docs-titlebar__title {
-                color: set-color(white);
                 display: flex;
-                font-size: 2rem;
-                font-weight: 600;
+                font-size: $font-size-h2;
+                font-weight: $font-weight-bold;
                 justify-content: center;
                 line-height: 2.5rem;
                 margin-bottom: 0.5rem;
@@ -185,10 +196,10 @@
               }
 
               .docs-titlebar__description {
-                color: set-color(white);
+                color: $color-grey-80;
                 display: flex;
-                font-size: 0.875rem;
-                font-weight: normal;
+                font-size: $font-size-base;
+                font-weight: $font-weight-normal;
                 justify-content: center;
                 line-height: 1.25rem;
                 padding-left: 2rem;
@@ -241,7 +252,7 @@
                 }
 
                 .shape--1 {
-                  border: 0.25rem solid #02bcb2;
+                  border: 0.25rem solid #38c6f4;
                   height: 9rem;
                   left: 18rem;
                   position: absolute;
@@ -250,7 +261,7 @@
                 }
 
                 .shape--2 {
-                  border: 0.25rem solid $secondary-color;
+                  border: 0.25rem solid #0c9ed9;
                   height: 7rem;
                   left: 5rem;
                   position: absolute;
@@ -266,7 +277,7 @@
                   width: 8rem;
 
                   &::before {
-                    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='128' width='128'><polygon stroke='%2303808C' stroke-width='4' points='50 15, 100 100, 0 100'/></svg>");
+                    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='128' width='128'><polygon fill='%23F4F5F6' stroke='%230075C9' stroke-width='4' points='50 15, 100 100, 0 100'/></svg>");
                     background-repeat: no-repeat;
                     content: '';
                     display: block;
@@ -276,7 +287,7 @@
                 }
 
                 .shape--4 {
-                  border: 0.25rem solid #3a8ddd;
+                  border: 0.25rem solid #38c6f4;
                   border-radius: 4.5rem;
                   height: 7rem;
                   left: 16rem;
@@ -293,7 +304,7 @@
                   width: 14rem;
 
                   &::before {
-                    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='224' width='224'><polygon stroke='%230080BB' stroke-width='2' points='50 15, 100 100, 0 100'/></svg>");
+                    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='224' width='224'><polygon fill='%23F4F5F6' stroke='%230075C9' stroke-width='2' points='50 15, 100 100, 0 100'/></svg>");
                     background-repeat: no-repeat;
                     content: '';
                     display: block;
@@ -303,7 +314,7 @@
                 }
 
                 .shape--6 {
-                  border: 0.25rem solid #02bcb2;
+                  border: 0.25rem solid #0c9ed9;
                   border-radius: 4.5rem;
                   height: 9rem;
                   left: 30rem;
@@ -339,72 +350,61 @@
             h5,
             h6 {
               display: flex;
-              font-weight: 600;
+              font-weight: $font-weight-semi-bold;
             }
 
             h1 {
-              font-size: 2rem;
-              font-weight: 800;
+              font-size: $font-size-h2;
+              font-weight: $font-weight-extra-bold;
               line-height: 3rem;
               margin: 1rem 0;
             }
 
             h2 {
-              font-size: 1.5rem;
+              font-size: $font-size-h3;
               line-height: 2rem;
               margin: 1rem 0;
             }
 
             h3 {
-              font-size: $text-larger;
+              font-size: $font-size-h4;
               line-height: 2rem;
               margin: 0.5rem 0;
             }
 
             h4 {
-              font-size: $text-large;
+              font-size: $font-size-h5;
               line-height: 1.5rem;
               margin: 0.5rem 0;
             }
 
             h5 {
-              font-size: $text;
+              font-size: $font-size-h6;
               line-height: 1.5rem;
               margin: 0.5rem 0;
             }
 
             h6 {
-              font-size: $text-small;
+              font-size: $font-size-sm;
               line-height: 1.25rem;
               margin: 0.5rem 0;
-            }
-          }
-
-          .-anchor,
-          .-text,
-          p {
-            a {
-              &:focus {
-                outline: 0.125rem solid $focus-color;
-                outline-offset: 0.0625rem;
-              }
             }
           }
         }
 
         .example {
-          border: 0.0625rem solid set-color(grey, 25);
+          border: 0.0625rem solid $color-grey-25;
           position: relative;
           z-index: 10;
 
           .example-tabs {
-            background-color: set-color(grey, 15);
-            border-bottom: 0.0625rem solid set-color(grey, 25);
-            border-top: 0.0625rem solid set-color(grey, 25);
+            background-color: $color-grey-15;
+            border-bottom: 0.0625rem solid $color-grey-25;
+            border-top: 0.0625rem solid $color-grey-25;
           }
 
           pre[class*="language-"] {
-            border-top: 0.0625rem solid set-color(grey, 25);
+            border-top: 0.0625rem solid $color-grey-25;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
             margin: 0;
@@ -412,9 +412,9 @@
 
           .chi-tabs-panel {
             .chi-tab__description {
-              background-color: set-color(grey, 15);
-              font-size: $text;
-              line-height: $line-height-small;
+              background-color: $color-grey-15;
+              font-size: $font-size-base;
+              line-height: $line-height;
               padding: 1rem 1rem 0 1rem;
             }
 
@@ -430,6 +430,17 @@
           .code-block>pre {
             border-top: 0;
           }
+        }
+
+        .example-opacity {
+          background: linear-gradient(45deg, rgba(36, 37, 38, 0.1) 25%, transparent 0),
+          linear-gradient(-45deg, rgba(36, 37, 38, 0.1) 25%, transparent 0),
+          linear-gradient(45deg, transparent 75%, rgba(36, 37, 38, 0.1) 0),
+          linear-gradient(-45deg, transparent 75%, rgba(36, 37, 38, 0.1) 0);
+          background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+          background-size: 12px 12px;
+          overflow: hidden;
+          width: 100%;
         }
       }
     }

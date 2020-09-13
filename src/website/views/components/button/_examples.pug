@@ -145,6 +145,38 @@ h3 Flat
       <input class="chi-button -primary -flat" type="button" value="Input button">
       <input class="chi-button -primary -flat" type="submit" value="Submit button">
 
+h2 Uppercase
+p.-text
+  | Uppercase buttons style button text with <code>text-transform: uppercase;</code>
+  | to further emphasize button text labels and distinguish them from surrounding content.
+p.-text
+  strong Note: 
+  | Uppercase styled text can cause rendering issues in certain locales.
+.example.-mb--3
+  .-p--3.-d--flex
+    .-pr--2
+      button(class=`chi-button -uppercase`) Button
+    .-pr--2
+      button(class=`chi-button -primary -uppercase`) Button
+    .-pr--2
+      button(class=`chi-button -outline -primary -uppercase`) Button
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-uppercase
+      li.-active
+        a(href=`#webcomponent-uppercase`) Web Component
+      li
+        a(href=`#html-uppercase`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-uppercase
+    :code(lang="html")
+      <chi-button uppercase>Button</chi-button>
+      <chi-button color="primary" uppercase>Button</chi-button>
+      <chi-button color="primary" variant="outline" uppercase>Button</chi-button>
+  .chi-tabs-panel#html-uppercase
+    :code(lang="html")
+      <button class="chi-button -uppercase">Button</button>
+      <button class="chi-button -primary -uppercase">Button</button>
+      <button class="chi-button -primary -outline -uppercase">Button</button>
+
 h2 Fluid
 p.-text
   | Use Fluid buttons to stretch the full width of the parent container.

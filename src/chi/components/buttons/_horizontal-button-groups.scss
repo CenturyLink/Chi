@@ -45,13 +45,12 @@ $sizes: (
       &,
       &.-primary,
       &.-secondary,
-      &.-brand,
       &.-danger,
-      &.-info,
       &.-dark {
 
         &,
         &.-outline {
+          border-radius: $border-radius-sharp;
           border-right-width: 0;
           padding-right: 1rem;
 
@@ -69,8 +68,15 @@ $sizes: (
             }
           }
 
+          &:first-child {
+            border-bottom-left-radius: $border-radius;
+            border-top-left-radius: $border-radius;
+          }
+
           &:last-child {
+            border-bottom-right-radius: $border-radius;
             border-right-width: 0.0625rem;
+            border-top-right-radius: $border-radius;
             padding-right: 0.9375rem;
 
             &.-icon {
@@ -157,6 +163,7 @@ $sizes: (
 
         &.-flat {
           border: 0.0625rem solid transparent;
+          border-radius: $border-radius;
           padding-left: 0.9375rem;
           padding-right: 0.9375rem;
 
@@ -183,7 +190,7 @@ $sizes: (
           &.-hover,
           &:focus,
           &.-focus {
-            border: 0.0625rem solid set-color(grey, 30);
+            border: 0.0625rem solid $color-border-base-dark;
             padding-left: 0.9375rem;
             padding-right: 0.9375rem;
 

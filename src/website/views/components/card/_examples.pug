@@ -48,30 +48,6 @@ p.-text
         </div>
       </div>
 
-h3 Active Alt
-p.-text
-  | Render an alternative active state card with the class <code>-active--alt</code>.
-.example.-mb--3
-  .-p--3
-    .chi-card.-active--alt(style="max-width:20rem;")
-      .chi-card__content
-        .chi-card__caption
-          | This is an active alt card
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-active-alt
-      li.-disabled
-        a(href=`#webcomponent-active-alt`) Web Component
-      li.-active
-        a(href=`#html-active-alt`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-active-alt
-  .chi-tabs-panel.-active#html-active-alt
-    :code(lang="html")
-      <div class="chi-card -active--alt">
-        <div class="chi-card__content">
-          <div class="chi-card__caption">This is an active alt card</div>
-        </div>
-      </div>
-
 h3 No Border
 p.-text
   | Render a card without a border using the class <code>-no-border</code>.
@@ -658,6 +634,7 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
 
 h3 Portal
 p.-text Use portal themed cards for displaying content in Enterprise Portals. In general, all Enterprise Portal content should be contained within a card.
+h4 Base
 .example.-mb--3
   .-p--3
     .chi-card.-portal(style="max-width:20rem;")
@@ -685,13 +662,41 @@ p.-text Use portal themed cards for displaying content in Enterprise Portals. In
         </div>
       </div>
 
+h4 Highlight
+.example.-mb--3
+  .-p--3
+    .chi-card.-portal.-highlight(style="max-width:20rem;")
+      .chi-card__header.-sm
+        .chi-card__title Title
+      .chi-card__content
+        .chi-card__caption
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal-base
+      li.-disabled
+        a(href=`#webcomponent-portal-base`) Web Component
+      li.-active
+        a(href=`#html-portal-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-base
+  .chi-tabs-panel.-active#html-portal-base
+    :code(lang="html")
+      <div class="chi-card -portal -highlight">
+        <div class="chi-card__header -sm">
+          <div class="chi-card__title">Title</div>
+        </div>
+        <div class="chi-card__content">
+          <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
+        </div>
+      </div>
+
 h3 Portal with tabs
 p.-text Use portal themed cards with tabs for organizing Enterprise Portal card content into separate but related views.
 .example.-mb--3
   .-p--3
     .chi-card.-portal(style="max-width:20rem;")
       .chi-card__tabs
-        ul.chi-tabs.-xs
+        ul.chi-tabs.-sm
           li.-active
             a(href='#') Active Tab
           li
@@ -713,7 +718,7 @@ p.-text Use portal themed cards with tabs for organizing Enterprise Portal card 
     :code(lang="html")
       <div class="chi-card -portal">
         <div class="chi-card__tabs">
-          <ul class="chi-tabs -xs">
+          <ul class="chi-tabs -sm">
             <li class="-active">
               <a href="#">Active Tab</a>
             </li>

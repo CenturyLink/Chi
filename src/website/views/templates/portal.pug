@@ -1,0 +1,516 @@
+---
+title: Portal
+description: Enterprise portal patterns and templates.
+order: 1
+---
+
+h2 Buttons
+.example.-mb--3
+  .-p--3.-d--flex.-align-items--center
+    .-pr--2
+      button.chi-button.-primary.-lg.-uppercase.-px--4 Primary
+    .-pr--2
+      button.chi-button.-primary.-outline.-lg.-uppercase.-px--4.-bg--white Secondary
+    .-pr--2
+      button.chi-button.-primary.-outline.-sm.-px--2.-bg--white Tertiary
+  :code(lang="html")
+    <button class="chi-button -primary -lg -uppercase -px--4">Primary</button>
+    <button class="chi-button -primary -outline -lg -bg--white -uppercase -px--4">Secondary</button>
+    <button class="chi-button -primary -outline -sm -bg--white -px--2">Tertiary</button>
+
+h2 Alerts
+.example.-mb--3
+  .-p--3
+    .chi-alert.-success.-lg.-b--success-light.-bg--success-lighter(role="alert")
+      i.chi-alert__icon.chi-icon.icon-circle-check
+      .chi-alert__content
+        p.chi-alert__title.-text--lg Success
+    .chi-alert.-warning.-lg.-b--warning-light.-bg--warning-lighter.-mt--3(role="alert")
+      i.chi-alert__icon.chi-icon.icon-warning
+      .chi-alert__content
+        p.chi-alert__title.-text--lg Needs attention
+        p.chi-alert__text
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          | sed do eiusmod tempor incididunt ut labore et dolore magna
+          | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          | ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    .chi-alert.-danger.-lg.-b--danger-light.-bg--danger-lighter.-mt--3(role="alert")
+      i.chi-alert__icon.chi-icon.icon-circle-x
+      .chi-alert__content
+        p.chi-alert__title.-text--lg Error
+        p.chi-alert__text
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          | sed do eiusmod tempor incididunt ut labore et dolore magna
+          | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          | ullamco laboris nisi ut aliquip <a href="#">Open a ticket</a>.
+    .chi-alert.-info.-lg.-b--info-light.-bg--info-lighter.-mt--3(role="alert")
+      i.chi-alert__icon.chi-icon.icon-circle-info
+      .chi-alert__content
+        p.chi-alert__title.-text--lg Info
+        p.chi-alert__text
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          | sed do eiusmod tempor incididunt ut labore et dolore magna
+      button.chi-alert__close-button.chi-button.-icon.-close(aria-label='Close')
+        .chi-button__content
+          i.chi-icon.icon-x
+    .chi-alert.-info.-lg.-b--info-light.-bg--info-lighter.-mt--3(role="alert")
+      .chi-alert__icon
+        svg.chi-spinner.-info.-sm--2(viewBox='0 0 66 66')
+          title Loading
+          circle.path(cx='33', cy='33', r='30', fill='none', stroke-width='6')
+      .chi-alert__content
+        p.chi-alert__title.-text--lg Testing in progress
+        p.chi-alert__text
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          | sed do eiusmod tempor incididunt ut labore et dolore magna
+  :code(lang="html")
+    <!-- Success -->
+    <div class="chi-alert -success -lg -b--success-light -bg--success-lighter" role="alert">
+      <i class="chi-alert__icon chi-icon icon-circle-check"></i>
+      <div class="chi-alert__content">
+        <p class="chi-alert__title -text--lg">Success</p>
+      </div>
+    </div>
+
+    <!-- Warning -->
+    <div class="chi-alert -warning -lg -b--warning-light -bg--warning-lighter" role="alert">
+      <i class="chi-alert__icon chi-icon icon-warning"></i>
+      <div class="chi-alert__content">
+        <p class="chi-alert__title -text--lg">Needs attention</p>
+        <p class="chi-alert__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+    </div>
+
+    <!-- Danger -->
+    <div class="chi-alert -danger -lg -b--danger-light -bg--danger-lighter" role="alert">
+      <i class="chi-alert__icon chi-icon icon-circle-x"></i>
+      <div class="chi-alert__content">
+        <p class="chi-alert__title -text--lg">Error</p>
+        <p class="chi-alert__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip <a href="#">Open a ticket</a>.</p>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="chi-alert -info -lg -b--info-light -bg--info-lighter" role="alert">
+      <i class="chi-alert__icon chi-icon icon-circle-info"></i>
+      <div class="chi-alert__content">
+        <p class="chi-alert__title -text--lg">Info</p>
+        <p class="chi-alert__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+      </div>
+      <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
+        <div class="chi-button__content">
+          <i class="chi-icon icon-x"></i>
+        </div>
+      </button>
+    </div>
+
+    <div class="chi-alert -info -lg -b--info-light -bg--info-lighter" role="alert">
+      <div class="chi-alert__icon">
+        <svg class="chi-spinner -info -sm--2" viewBox="0 0 66 66">
+          <title>Loading</title>
+          <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
+        </svg>
+      </div>
+      <div class="chi-alert__content">
+        <p class="chi-alert__title -text--lg">Testing in progress</p>
+        <p class="chi-alert__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+      </div>
+    </div>
+
+h2 Pagination
+h3 Table pagination
+.example.-mb--3
+  .-p--3
+    h4.-text--h5 Default
+    nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+      .chi-pagination__content
+        .chi-pagination__start
+        .chi-pagination__center
+          .chi-pagination__button-group.chi-button-group
+            button.chi-button.-icon.-flat.-sm(aria-label='Previous page')
+              .chi-button__content
+                i.chi-icon.icon-chevron-left(aria-hidden='true')
+          .chi-pagination__label
+            strong 2
+            span of
+            strong 3
+          .chi-pagination__button-group.chi-button-group
+            button.chi-button.-icon.-flat.-sm(aria-label='Next page')
+              .chi-button__content
+                i.chi-icon.icon-chevron-right(aria-hidden='true')
+        .chi-pagination__end
+
+    h4.-text--h5 First and last page buttons
+    nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+      .chi-pagination__content
+        .chi-pagination__start
+        .chi-pagination__center
+          .chi-pagination__button-group.chi-button-group
+            button.chi-button.-icon.-flat.-sm(aria-label='First page')
+              .chi-button__content
+                i.chi-icon.icon-page-first(aria-hidden='true')
+            button.chi-button.-icon.-flat.-sm(aria-label='Previous page')
+              .chi-button__content
+                i.chi-icon.icon-chevron-left(aria-hidden='true')
+          .chi-pagination__label
+            strong 2
+            span of
+            strong 3
+          .chi-pagination__button-group.chi-button-group
+            button.chi-button.-icon.-flat.-sm(aria-label='Next page')
+              .chi-button__content
+                i.chi-icon.icon-chevron-right(aria-hidden='true')
+            button.chi-button.-icon.-flat.-sm(aria-label='Last page')
+              .chi-button__content
+                i.chi-icon.icon-page-last(aria-hidden='true')
+        .chi-pagination__end
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal-pagination
+      li.-disabled
+        a(href=`#webcomponent-portal-pagination`) Web Component
+      li.-active
+        a(href=`#html-portal-pagination`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-pagination
+  .chi-tabs-panel.-active#html-portal-pagination
+    :code(lang="html")
+      <!-- Base -->
+      <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <button class="chi-button -icon -flat -sm" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-pagination__label">
+              <strong>2</strong>
+              <span>of</span>
+              <strong>3</strong>
+            </div>
+            <div class="chi-pagination__button-group chi-button-group">
+              <button class="chi-button -icon -flat -sm" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+
+      <!-- With first and last page buttons -->
+      <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start"></div>
+          <div class="chi-pagination__center">
+            <div class="chi-pagination__button-group chi-button-group">
+              <button class="chi-button -icon -flat -sm" aria-label="First page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-page-first" aria-hidden="true"></i>
+                </div>
+              </button>
+              <button class="chi-button -icon -flat -sm" aria-label="Previous page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-pagination__label">
+              <strong>2</strong>
+              <span>of</span>
+              <strong>3</strong>
+            </div>
+            <div class="chi-pagination__button-group chi-button-group">
+              <button class="chi-button -icon -flat -sm" aria-label="Next page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                </div>
+              </button>
+              <button class="chi-button -icon -flat -sm" aria-label="Last page">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-page-last" aria-hidden="true"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="chi-pagination__end"></div>
+        </div>
+      </nav>
+
+h2 Cards
+h3 Base
+.example.-mb--3
+  .-p--3
+    .chi-card.-portal(style="max-width:20rem;")
+      .chi-card__header.-sm
+        .chi-card__title Title
+      .chi-card__content
+        .chi-card__caption
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal-base
+      li.-disabled
+        a(href=`#webcomponent-portal-base`) Web Component
+      li.-active
+        a(href=`#html-portal-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-base
+  .chi-tabs-panel.-active#html-portal-base
+    :code(lang="html")
+      <div class="chi-card -portal">
+        <div class="chi-card__header -sm">
+          <div class="chi-card__title">Title</div>
+        </div>
+        <div class="chi-card__content">
+          <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
+        </div>
+      </div>
+
+h3 Highlight
+.example.-mb--3
+  .-p--3
+    .chi-card.-portal.-highlight(style="max-width:20rem;")
+      .chi-card__header.-sm
+        .chi-card__title Title
+      .chi-card__content
+        .chi-card__caption
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal-base
+      li.-disabled
+        a(href=`#webcomponent-portal-base`) Web Component
+      li.-active
+        a(href=`#html-portal-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-base
+  .chi-tabs-panel.-active#html-portal-base
+    :code(lang="html")
+      <div class="chi-card -portal -highlight">
+        <div class="chi-card__header -sm">
+          <div class="chi-card__title">Title</div>
+        </div>
+        <div class="chi-card__content">
+          <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
+        </div>
+      </div>
+
+h3 Card with tabs
+p.-text Use cards with tabs for organizing enterprise portal card content into separate but related views.
+.example.-mb--3
+  .-p--3
+    .chi-card.-portal(style="max-width:20rem;")
+      .chi-card__tabs
+        ul.chi-tabs.-sm
+          li.-active
+            a(href='#') Active Tab
+          li
+            a(href='#') Tab Link
+          li
+            a(href='#') Tab Link
+      .chi-card__content
+        .chi-card__caption
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal-tabs
+      li.-disabled
+        a(href=`#webcomponent-portal-tabs`) Web Component
+      li.-active
+        a(href=`#html-portal-tabs`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-tabs
+  .chi-tabs-panel.-active#html-portal-tabs
+    :code(lang="html")
+      <div class="chi-card -portal">
+        <div class="chi-card__tabs">
+          <ul class="chi-tabs -sm">
+            <li class="-active">
+              <a href="#">Active Tab</a>
+            </li>
+            <li>
+              <a href="#">Tab Link</a>
+            </li>
+            <li>
+              <a href="#">Tab Link</a>
+            </li>
+          </ul>
+        </div>
+        <div class="chi-card__content">
+          <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
+        </div>
+      </div>
+
+h3 Table
+.example.-mb--3
+  .-p--3
+    .chi-card.-portal
+      .chi-card__header.-sm
+        .chi-card__title
+          | Title
+      .chi-card__content.-p--0
+        table.chi-table.-portal.-sm
+          thead
+            tr
+              th Name
+              th ID
+              th Last Login
+          tbody
+            tr
+              td
+                a(href='#') Name 1
+              td name-1
+              td Dec 18, 2020 3:26 PM
+            tr
+              td
+                a(href='#') Name 2
+              td name-2
+              td Dec 18, 2020 2:38 AM
+            tr
+              td
+                a(href='#') Name 3
+              td name-3
+              td Nov 5, 2020 10:15 AM
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal-tabs
+      li.-disabled
+        a(href=`#webcomponent-portal-tabs`) Web Component
+      li.-active
+        a(href=`#html-portal-tabs`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-tabs
+  .chi-tabs-panel.-active#html-portal-tabs
+    :code(lang="html")
+      <div class="chi-card -portal">
+        <div class="chi-card__header -sm">
+          <div class="chi-card__title">Title</div>
+        </div>
+        <div class="chi-card__content -p--0">
+          <table class="chi-table -portal -sm">
+            <thead>
+              <tr>
+                <th>Name</th>
+                  <th>ID</th>
+                  <th>Last Login</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#">Name 1</a></td>
+                <td>name-1</td>
+                <td>Dec 18, 2020 3:26 PM</td>
+              </tr>
+              <tr>
+                <td><a href="#">Name 2</a></td>
+                <td>name-2</td>
+                <td>Dec 18, 2020 2:38 AM</td>
+              </tr>
+              <tr>
+                <td><a href="#">Name 3</a></td>
+                <td>name-3</td>
+                <td>Nov 5, 2020 10:15 AM</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+h3 Table + tabs
+.example.-mb--3
+  .-p--3
+    .chi-card.-portal
+      .chi-card__tabs
+        .chi-card__title
+          | Title
+        ul.chi-tabs.-sm
+          li.-active
+            a(href='#') Active Tab
+          li
+            a(href='#') Tab Link
+          li
+            a(href='#') Tab Link
+      .chi-card__content.-p--0
+        table.chi-table.-portal.-sm
+          thead
+            tr
+              th Name
+              th ID
+              th Last Login
+          tbody
+            tr
+              td
+                a(href='#') Name 1
+              td name-1
+              td Dec 18, 2020 3:26 PM
+            tr
+              td
+                a(href='#') Name 2
+              td name-2
+              td Dec 18, 2020 2:38 AM
+            tr
+              td
+                a(href='#') Name 3
+              td name-3
+              td Nov 5, 2020 10:15 AM
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal-tabs
+      li.-disabled
+        a(href=`#webcomponent-portal-tabs`) Web Component
+      li.-active
+        a(href=`#html-portal-tabs`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-tabs
+  .chi-tabs-panel.-active#html-portal-tabs
+    :code(lang="html")
+      <div class="chi-card -portal">
+        <div class="chi-card__tabs">
+          <div class="chi-card__title">Title</div>
+          <ul class="chi-tabs -sm">
+            <li class="-active">
+              <a href="#">Active Tab</a>
+            </li>
+            <li>
+              <a href="#">Tab Link</a>
+            </li>
+            <li>
+              <a href="#">Tab Link</a>
+            </li>
+          </ul>
+        </div>
+        <div class="chi-card__content -p--0">
+          <table class="chi-table -portal -sm">
+            <thead>
+              <tr>
+                <th>Name</th>
+                  <th>ID</th>
+                  <th>Last Login</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#">Name 1</a></td>
+                <td>name-1</td>
+                <td>Dec 18, 2020 3:26 PM</td>
+              </tr>
+              <tr>
+                <td><a href="#">Name 2</a></td>
+                <td>name-2</td>
+                <td>Dec 18, 2020 2:38 AM</td>
+              </tr>
+              <tr>
+                <td><a href="#">Name 3</a></td>
+                <td>name-3</td>
+                <td>Nov 5, 2020 10:15 AM</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+    }
+  );

@@ -26,15 +26,11 @@ title: Typography
     .chi-col
       .-text Default text color
     .chi-col
-      .-text.-bg--inverse Default text color
-    .chi-col
       .-text .-text
-  each modifier in ['inverse', 'brand', 'success', 'danger', 'info', 'warning']
+  each modifier in ['light', 'brand', 'success', 'danger', 'info', 'warning']
     .chi-grid
       .chi-col
-        .-text(class=`-$text--{modifier}`)= `${modifier} text color`
-      .chi-col
-        .-text.-bg--inverse(class=`-text--${modifier}`)= `${modifier} text color`
+        .-text(class=`-text--${modifier}`)= `${modifier} text color`
       .chi-col
         .-text= `.-text--${modifier}`
 

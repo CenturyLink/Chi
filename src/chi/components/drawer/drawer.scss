@@ -6,8 +6,8 @@ $animation-duration: 0.5s;
 .chi-drawer {
 
   & {
-    background-color: set-color(white);
-    box-shadow: 0 0 25px 10px rgba(set-color(black), 0.15);
+    background-color: $color-background-white;
+    box-shadow: 0 0 25px 10px rgba($color-black, 0.15);
     display: none;
     flex-direction: column;
     overflow-x: hidden;
@@ -172,7 +172,7 @@ $animation-duration: 0.5s;
 
   &__title {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: $font-weight-semi-bold;
     line-height: 1.5rem;
     margin: 0;
   }
@@ -191,10 +191,11 @@ $animation-duration: 0.5s;
 
   &.-portal {
     .chi-drawer__header {
-      background-color: set-color(grey, 100);
+      background-color: $color-background-secondary;
 
+      &,
       .chi-drawer__title {
-        color: set-color(white);
+        color: $color-text-base;
       }
 
       button {
@@ -202,7 +203,7 @@ $animation-duration: 0.5s;
           &.-close {
             i {
               &.chi-icon {
-                color: set-color(white);
+                color: $color-text-base;
               }
             }
           }

@@ -1,0 +1,648 @@
+---
+title: Design tokens
+description: Design tokens are used in place of hard-coded values to maintain consistent and scalable design system development.
+---
+-
+  var systemColor = {
+    'grey-100':      {hex: '#242526'},
+    'grey-90':       {hex: '#313336'},
+    'grey-80':       {hex: '#3F4145'},
+    'grey-70':       {hex: '#53565A'},
+    'grey-60':       {hex: '#65686C'},
+    'grey-50':       {hex: '#8E9399'},
+    'grey-40':       {hex: '#ACB0B5'},
+    'grey-30':       {hex: '#D0D4D9'},
+    'grey-25':       {hex: '#DADEE2'},
+    'grey-20':       {hex: '#EDF0F2'},
+    'grey-15':       {hex: '#F4F5F6'},
+    'grey-10':       {hex: '#F8F9F9'},
+
+    'red-100':       {hex: '#600D08'},
+    'red-90':        {hex: '#80130C'},
+    'red-80':        {hex: '#A21810'},
+    'red-70':        {hex: '#D62015'},
+    'red-60':        {hex: '#EE3026'},
+    'red-50':        {hex: '#FF645C'},
+    'red-40':        {hex: '#FF9086'},
+    'red-30':        {hex: '#FFC2BD'},
+    'red-20':        {hex: '#FFE8E5'},
+    'red-10':        {hex: '#FFF5F5'},
+
+    'pink-100':      {hex: '#451726'},
+    'pink-90':       {hex: '#661430'},
+    'pink-80':       {hex: '#8C0E38'},
+    'pink-70':       {hex: '#B30C44'},
+    'pink-60':       {hex: '#DB1A5B'},
+    'pink-50':       {hex: '#F74F87'},
+    'pink-40':       {hex: '#FA8EB2'},
+    'pink-30':       {hex: '#FCC7D9'},
+    'pink-20':       {hex: '#FCE8EF'},
+    'pink-10':       {hex: '#FCF5F7'},
+
+    'purple-100':    {hex: '#371C52'},
+    'purple-90':     {hex: '#4D2378'},
+    'purple-80':     {hex: '#642B9E'},
+    'purple-70':     {hex: '#7E40BD'},
+    'purple-60':     {hex: '#9557D4'},
+    'purple-50':     {hex: '#B277ED'},
+    'purple-40':     {hex: '#CDA3F7'},
+    'purple-30':     {hex: '#E2CDF7'},
+    'purple-20':     {hex: '#F2EBFA'},
+    'purple-10':     {hex: '#FAF7FC'},
+
+    'indigo-100':    {hex: '#1E1E57'},
+    'indigo-90':     {hex: '#29298C'},
+    'indigo-80':     {hex: '#3434AC'},
+    'indigo-70':     {hex: '#4646DA'},
+    'indigo-60':     {hex: '#5959E0'},
+    'indigo-50':     {hex: '#8484FA'},
+    'indigo-40':     {hex: '#A8A8FF'},
+    'indigo-30':     {hex: '#CFCFFF'},
+    'indigo-20':     {hex: '#EDEDFF'},
+    'indigo-10':     {hex: '#F7F7FF'},
+
+    'navy-100':      {hex: '#083176'},
+    'navy-90':       {hex: '#08379B'},
+    'navy-80':       {hex: '#0047BB'},
+    'navy-70':       {hex: '#0A60F0'},
+    'navy-60':       {hex: '#2072F8'},
+    'navy-50':       {hex: '#6099F1'},
+    'navy-40':       {hex: '#88B6F9'},
+    'navy-30':       {hex: '#C0D7FA'},
+    'navy-20':       {hex: '#E6F0FF'},
+    'navy-10':       {hex: '#F5F8FC'},
+
+    'blue-100':      {hex: '#002D54'},
+    'blue-90':       {hex: '#004078'},
+    'blue-80':       {hex: '#00529A'},
+    'blue-75':       {hex: '#0262B9'},
+    'blue-70':       {hex: '#0075C9'},
+    'blue-60':       {hex: '#0080dC'},
+    'blue-50':       {hex: '#38ABFF'},
+    'blue-40':       {hex: '#70C3FF'},
+    'blue-30':       {hex: '#AEDEFF'},
+    'blue-20':       {hex: '#E0F3FF'},
+    'blue-10':       {hex: '#F5F9FC'},
+
+    'cyan-100':      {hex: '#002E4D'},
+    'cyan-90':       {hex: '#004368'},
+    'cyan-80':       {hex: '#00557E'},
+    'cyan-70':       {hex: '#0073A5'},
+    'cyan-60':       {hex: '#0986B6'},
+    'cyan-50':       {hex: '#0C9ED9'},
+    'cyan-40':       {hex: '#38C6F4'},
+    'cyan-30':       {hex: '#A3E5FA'},
+    'cyan-20':       {hex: '#DDF5FD'},
+    'cyan-15':       {hex: '#EAF7FB'},
+    'cyan-10':       {hex: '#F1FBFE'},
+
+    'teal-100':      {hex: '#093134'},
+    'teal-90':       {hex: '#07454B'},
+    'teal-80':       {hex: '#08575E'},
+    'teal-70':       {hex: '#027786'},
+    'teal-60':       {hex: '#038B98'},
+    'teal-50':       {hex: '#0DC7D8'},
+    'teal-40':       {hex: '#4ED8E4'},
+    'teal-30':       {hex: '#9DE9F0'},
+    'teal-20':       {hex: '#DCF7FA'},
+    'teal-10':       {hex: '#F2FCFD'},
+
+    'green-100':     {hex: '#03381E'},
+    'green-90':      {hex: '#044D28'},
+    'green-80':      {hex: '#056234'},
+    'green-70':      {hex: '#007E44'},
+    'green-60':      {hex: '#009054'},
+    'green-50':      {hex: '#26D98F'},
+    'green-40':      {hex: '#76EAB8'},
+    'green-30':      {hex: '#95E9C9'},
+    'green-20':      {hex: '#DBFAEE'},
+    'green-10':      {hex: '#F1FEF8'},
+  
+    'yellow-100':    {hex: '#4E2E00'},
+    'yellow-90':     {hex: '#663B00'},
+    'yellow-80':     {hex: '#864D00'},
+    'yellow-70':     {hex: '#A15C00'},
+    'yellow-60':     {hex: '#B96B00'},
+    'yellow-50':     {hex: '#E58500'},
+    'yellow-40':     {hex: '#FF9E18'},
+    'yellow-30':     {hex: '#FFCC89'},
+    'yellow-20':     {hex: '#FAECD9'},
+    'yellow-10':     {hex: '#FFF8ED'},
+
+    'orange-100':    {hex: '#5B2600'},
+    'orange-90':     {hex: '#723204'},
+    'orange-80':     {hex: '#974308'},
+    'orange-70':     {hex: '#B35009'},
+    'orange-60':     {hex: '#C96010'},
+    'orange-50':     {hex: '#E77528'},
+    'orange-40':     {hex: '#F79950'},
+    'orange-30':     {hex: '#FACAA8'},
+    'orange-20':     {hex: '#FDE7D8'},
+    'orange-10':     {hex: '#FEF6F0'},
+
+    'black':         {hex: '#000000'},
+    'white':         {hex: '#FFFFFF'}
+  }
+
+  var textColor = {
+    'base':           {hex: '#242526', contrast: '15.4:1'},
+    'primary':        {hex: '#0262B9', contrast: '6.1:1'},
+    'primary-alt':    {hex: '#0075C9', contrast: '4.8:1'},
+    'secondary':      {hex: '#38C6F4', contrast: '10.6:1'},
+    'secondary-dark': {hex: '#0C9ED9', contrast: '3:1'},
+    'success':        {hex: '#007E44', contrast: '5.2:1'},
+    'warning':        {hex: '#A15C00', contrast: '5.2:1'},
+    'danger':         {hex: '#D62015', contrast: '5.2:1'},
+    'info':           {hex: '#0262B9', contrast: '6.1:1'},
+    'muted-light':    {hex: '#65686C', contrast: '5.6:1'}, 
+    'muted':          {hex: '#53565A', contrast: '7.4:1'},
+    'white':          {hex: '#FFFFFF', contrast: '21:1'}
+  }
+
+  var backgroundColor = {
+    'base':            {hex: '#FFFFFF', contrast: '15.4:1'},
+    'base-dark':       {hex: '#F4F5F6', contrast: '14.1:1'},
+    'base-darker':     {hex: '#EDF0F2', contrast: '13.4:1'},
+    'base-darkest':    {hex: '#DADEE2', contrast: '11.4:1'},
+    'primary-light':   {hex: '#E0F3FF', contrast: '13.5:1'},
+    'primary':         {hex: '#0075C9', contrast: '4.8:1'},
+    'secondary-light': {hex: '#EAF7FB', contrast: '14:1'},
+    'secondary':       {hex: '#38C6F4', contrast: '7.7:1'},
+    'secondary-dark':  {hex: '#0C9ED9', contrast: '5.1:1'},
+    'success-lighter': {hex: '#F1FEF8', contrast: '14.8:1'},
+    'success-light':   {hex: '#DBFAEE', contrast: '13.8:1'},
+    'success':         {hex: '#007E44', contrast: '5.2:1'},
+    'warning-lighter': {hex: '#FFF8ED', contrast: '14.6:1'},
+    'warning-light':   {hex: '#FAECD9', contrast: '13.2:1'},
+    'warning':         {hex: '#A15C00', contrast: '5.2:1'},
+    'danger-lighter':  {hex: '#FFF5F5', contrast: '14.4:1'},
+    'danger-light':    {hex: '#FFE8E5', contrast: '13.1:1'},
+    'danger':          {hex: '#D62015', contrast: '5.2:1'},
+    'info-lighter':    {hex: '#F5F9FC', contrast: '14.4:1'},
+    'info-light':      {hex: '#E0F3FF', contrast: '13.5:1'},
+    'info':            {hex: '#0075C9', contrast: '4.8:1'},
+    'muted-lighter':   {hex: '#F8F9F9', contrast: '14.6:1'},
+    'muted-light':     {hex: '#EDF0F2', contrast: '13.4:1'},
+    'muted':           {hex: '#53565A', contrast: '7.4:1'},
+    'black':           {hex: '#000000', contrast: '21:1'},
+    'white':           {hex: '#FFFFFF', contrast: '15.4:1'}
+  }
+
+  var iconColor = {
+    'base':           {hex: '#3F4145', contrast: '10.2:1'},
+    'primary':        {hex: '#0075C9', contrast: '4.8:1'},
+    'secondary':      {hex: '#38C6F4', contrast: '10.6:1'},
+    'secondary-dark': {hex: '#0C9ED9', contrast: '3:1'},
+    'success':        {hex: '#009054', contrast: '4.1:1'},
+    'warning':        {hex: '#B96B00', contrast: '4.1:1'},
+    'danger':         {hex: '#EE3026', contrast: '4.1:1'},
+    'info':           {hex: '#0080DC', contrast: '4.1:1'},
+    'muted-light':    {hex: '#8E9399', contrast: '3.1:1'},
+    'muted':          {hex: '#65686C', contrast: '5.6:1'},
+    'muted-dark':     {hex: '#53565A', contrast: '7.4:1'},
+    'white':          {hex: '#FFFFFF', contrast: '21:1'}
+  }
+
+  var borderColor = {
+    'base-light':     {hex: '#EDF0F2'},
+    'base':           {hex: '#DADEE2'},
+    'base-dark':      {hex: '#D0D4D9'},
+    'primary':        {hex: '#0075C9'},
+    'secondary':      {hex: '#38C6F4'},
+    'secondary-dark': {hex: '#0C9ED9'},
+    'success-light':  {hex: '#95E9C9'},
+    'success':        {hex: '#009054'},
+    'warning-light':  {hex: '#FFCC89'},
+    'warning':        {hex: '#B96B00'},
+    'danger-light':   {hex: '#FFC2BD'},
+    'danger':         {hex: '#EE3026'},
+    'info-light':     {hex: '#AEDEFF'},
+    'info':           {hex: '#0080DC'},
+    'muted-light':    {hex: '#D0D4D9'},
+    'muted':          {hex: '#65686C'},
+    'black':          {hex: '#000000'},
+    'white':          {hex: '#FFFFFF'}
+  }
+
+  var fontSize = {
+    'base': {size: '14px', rem: '0.875rem'},
+    '2xs':  {size: '11px', rem: '0.6875rem'},
+    'xs':   {size: '12px', rem: '0.75rem'},
+    'sm':   {size: '13px', rem: '0.8125rem'},
+    'md':   {size: '14px', rem: '0.875rem'},
+    'lg':   {size: '16px', rem: '1rem'},
+    'xl':   {size: '18px', rem: '1.125rem'}
+  }
+
+  var fontHeadingSize = {
+    'h6': {size: '14px', rem: '0.875rem'},
+    'h5': {size: '16px', rem: '1rem'},
+    'h4': {size: '18px', rem: '1.125rem'},
+    'h3': {size: '24px', rem: '1.5rem'},
+    'h2': {size: '32px', rem: '2rem'},
+    'h1': {size: '48px', rem: '3rem'}
+  }
+
+  var fontSystemSize = {
+    '1':  {size: '11px', rem: '0.6875rem'},
+    '2':  {size: '12px', rem: '0.75rem'},
+    '3':  {size: '13px', rem: '0.8125rem'},
+    '4':  {size: '14px', rem: '0.875rem'},
+    '5':  {size: '16px', rem: '1rem'},
+    '6':  {size: '18px', rem: '1.125rem'},
+    '7':  {size: '20px', rem: '1.25rem'},
+    '8':  {size: '22px', rem: '1.375rem'},
+    '9':  {size: '24px', rem: '1.5rem'},
+    '10': {size: '28px', rem: '1.75rem'},
+    '11': {size: '32px', rem: '2rem'},
+    '12': {size: '36px', rem: '2.25rem'},
+    '13': {size: '40px', rem: '2.5rem'},
+    '14': {size: '48px', rem: '3rem'},
+    '15': {size: '56px', rem: '3.5rem'},
+    '16': {size: '64px', rem: '4rem'},
+    '17': {size: '72px', rem: '4.5rem'},
+    '18': {size: '80px', rem: '5rem'},
+    '19': {size: '96px', rem: '6rem'},
+    '20': {size: '120px', rem: '7.5rem'}
+  }
+
+  var fontWeight = {
+    'light':      {weight: '300'},
+    'normal':     {weight: '400'},
+    'semi-bold':  {weight: '600'},
+    'bold':       {weight: '700'},
+    'extra-bold': {weight: '800'}
+  }
+
+  var borderRadius = {
+    'base':   {radius: '4px', rem: '0.25rem'},
+    'sharp':  {radius: '0'},
+    'circle': {radius: '50%'}
+  }
+
+  var elementOpacity = {
+    '0':   {opacity: '0'},
+    '30':  {opacity: '0.3'},
+    '50':  {opacity: '0.5'},
+    '70':  {opacity: '0.7'},
+    '100': {opacity: '1'}
+  }
+
+  var elementZindex = {
+    '0':  {zindex: '0'},
+    '10': {zindex: '10'},
+    '20': {zindex: '20'},
+    '30': {zindex: '30'},
+    '40': {zindex: '40'},
+    '50': {zindex: '50'},
+    '60': {zindex: '60'},
+    '70': {zindex: '70'},
+    '80': {zindex: '80'},
+    '90': {zindex: '90'}
+  }
+
+h2 Color
+h3 Text
+section.chi-table.-xs.-mt--2.-mb--4
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+          th
+            div Contrast
+      tbody
+        each value, index in textColor
+          tr
+            td(width='35%')
+              code=`$color-text-${index}`
+            td(width='25%')
+              div.-text=value.hex
+            td(width='20%')
+              if index === 'white' || index === 'secondary'
+                div.-text--lg.-lh--2.-rounded.-d--inline-block(style=`background-color:#000;padding:2px;color:${value.hex};`) Aa
+              else
+                div.-text--lg.-lh--2(style=`color:${value.hex};`) Aa
+            td(width='20%')
+              div.-text
+                if index === 'secondary-dark' || index === 'primary-alt'
+                  i.chi-icon.icon-warning.-xs.-icon--warning.-mr--1
+                else
+                  i.chi-icon.icon-check.-xs.-icon--success.-mr--1
+                span=value.contrast
+                  div.-text--sm.-text--muted.-lh--2
+                    if index === 'secondary-dark'
+                      | 20px+ text only
+                    if index === 'primary-alt'
+                      | White backgrounds only
+
+h3 Icon
+section.chi-table.-xs.-mt--2.-mb--4
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+          th
+            div Contrast
+      tbody
+        each value, index in iconColor
+          tr
+            td(width='35%')
+              code=`$color-icon-${index}`
+            td(width='25%')
+              div.-text=value.hex
+            td(width='20%')
+              if index === 'white' || index === 'secondary'
+                div.-text--lg.-lh--1.-rounded.-d--inline-block(style=`background-color:#000;padding:2px;color:${value.hex};`)
+                  i.chi-icon.icon-circle
+              else
+                div.-text--lg.-lh--1(style=`color:${value.hex};`)
+                  i.chi-icon.icon-circle
+            td(width='20%')
+              div.-text
+                i.chi-icon.icon-check.-xs.-icon--success.-mr--1
+                span=value.contrast
+
+h3 Background
+section.chi-table.-xs.-mt--2.-mb--4
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+          th
+            div Contrast
+      tbody
+        each value, index in backgroundColor
+          tr
+            td(width='35%')
+              code=`$color-background-${index}`
+            td(width='25%')
+              div.-text=value.hex
+            td(width='20%')
+              if index === 'base' || index === 'white'
+                div.-text.-rounded.-w--80.-s--1(style=`height:1rem;background-color:${value.hex};`)
+              else
+                div.-text.-rounded.-w--80(style=`height:1rem;background-color:${value.hex};`)
+            td(width='20%')
+              div.-text
+                i.chi-icon.icon-check.-xs.-icon--success.-mr--1
+                span=value.contrast
+
+h3 Border
+section.chi-table.-xs.-mt--2.-mb--4
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+          th
+            div Contrast
+      tbody
+        each value, index in borderColor
+          tr
+            td(width='35%')
+              code=`$color-border-${index}`
+            td(width='25%')
+              div.-text=value.hex
+            td(width='20%')
+              if index === 'white'
+                div.-text.-rounded.-w--80(style=`background-color:#000;height:1.25rem;padding:2px;`)
+                  div.-text.-rounded(style=`height:1rem;border:1px solid ${value.hex};`)
+              else
+                div.-text.-rounded.-w--80(style=`height:1rem;border:1px solid ${value.hex};`)
+            td(width='20%')
+              div.-text —
+
+h3 Color System
+section.chi-table.-xs.-mt--2.-mb--4
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+      tbody
+        each value, index in systemColor
+          tr
+            td(width='35%')
+              code=`$color-${index}`
+            td(width='25%')
+              div.-text=value.hex
+            td(width='40%')
+              if index === 'white'
+                div.-text.-rounded.-w--100.-w-lg--60.-s--1(style=`height:1rem;background-color:${value.hex};`)
+              else
+                div.-text.-rounded.-w--100.-w-lg--60(style=`height:1rem;background-color:${value.hex};`)
+
+h2 Font
+h3 Font family
+section.chi-table.-xs.-mt--2.-mb--4
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+      tbody
+        tr
+          td(width='35%')
+            code=`$font-family-base`
+          td(width='45%')
+            div.-text
+              | 'Inter', Arial, Helvetica, Verdana, sans-serif
+          td(width='20%')
+            div.-text--lg.-lh--2 Aa
+        tr
+          td(width='35%')
+            code=`$font-family-mono`
+          td(width='45%')
+            div.-text
+              | Menlo, Consolas, 'Liberation Mono', Courier, monospace
+          td(width='20%')
+            div.-text--lg.-lh--2(style=`font-family: Menlo, Consolas, 'Liberation Mono', Courier, monospace;`) Aa
+
+h3 Font weight
+section.chi-table.-xs.-mt--2.-mb--4
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+      tbody
+        each value, index in fontWeight
+          tr
+            td(width='35%')
+              code=`$font-weight-${index}`
+            td(width='25%')
+              div.-text=value.weight
+            td(width='40%')
+              div.-text(style=`font-weight:${value.weight};`) Aa
+
+h3 Font size - text
+section.chi-table.-xs.-mt--2.-mb--4
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+      tbody
+        each value, index in fontSize
+          tr
+            td(width='35%')
+              code=`$font-size-${index}`
+            td(width='25%')
+              div.-text=value.rem
+              div.-text=value.size
+            td(width='40%')
+              div.-text(style=`font-size:${value.rem};`) Aa
+
+h3 Font size - headings
+section.chi-table.-xs.-mt--2.-mb--4
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+      tbody
+        each value, index in fontHeadingSize
+          tr
+            td(width='35%')
+              code=`$font-size-${index}`
+            td(width='25%')
+              div.-text=value.rem
+              div.-text=value.size
+            td(width='40%')
+              div.-text(style=`font-size:${value.rem};line-height:1;`) Aa
+
+h3 Font size - system
+section.chi-table.-xs.-mt--2.-mb--4
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+      tbody
+        each value, index in fontSystemSize
+          tr
+            td(width='35%')
+              code=`$font-size-${index}`
+            td(width='25%')
+              div.-text=value.rem
+              div.-text=value.size
+            td(width='40%')
+              div.-text(style=`font-size:${value.rem};line-height:${value.rem};`) Aa
+
+h2 Border radius
+section.chi-table.-xs.-mt--2.-mb--4
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+      tbody
+        each value, index in borderRadius
+          tr
+            td(width='35%')
+              code=`$border-radius-${index}`
+            td(width='25%')
+              div.-text=value.radius
+              if value.rem
+                div.-text=value.rem
+            td(width='40%')
+              div.-text.-bg--black(style=`height:1rem;width:1rem;border-radius:${value.radius};`)
+
+h2 Opacity
+section.chi-table.-xs.-mt--2.-mb--4
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+      tbody
+        each value, index in elementOpacity
+          tr
+            td(width='35%')
+              code=`$opacity-${index}`
+            td(width='25%')
+              div.-text=value.opacity
+            td(width='40%')
+              div.example-opacity.-rounded(style=`height:3rem;`)
+                div.-text.-bg--black.-rounded(style=`height:3rem;opacity:${value.opacity};`)
+
+h2 Z-index
+section.chi-table.-xs.-mt--2.-mb--4
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+      tbody
+        each value, index in elementZindex
+          tr
+            td(width='35%')
+              code=`$z-index-${index}`
+            td(width='65%')
+              div.-text=value.zindex

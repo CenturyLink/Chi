@@ -11,9 +11,9 @@
       &.chi-checkbox__input {
         & + label {
           &.chi-checkbox__label {
-            font-size: $text;
-            font-weight: normal;
-            line-height: $line-height-small;
+            font-size: $font-size-base;
+            font-weight: $font-weight-normal;
+            line-height: $line-height;
             margin-bottom: 0;
             margin-right: 0;
             padding-left: 1.5rem;
@@ -54,14 +54,14 @@ input {
           align-items: center;
           cursor: pointer;
           display: inline-flex;
-          line-height: $line-height-smaller;
+          line-height: $line-height-sm;
           margin-right: 0.5rem;
           position: relative;
         }
 
         &::before {
-          background-color: set-color(white);
-          border: 0.0625rem solid set-color(grey, 40);
+          background-color: $color-background-white;
+          border: 0.0625rem solid $color-grey-40;
           content: '';
           display: block;
           height: 1rem;
@@ -94,8 +94,8 @@ input {
         &:not(.-toggle) {
           & + label {
             &::before {
-              background-color: $primary-color;
-              border-color: $primary-color;
+              background-color: $color-background-primary;
+              border-color: $color-border-primary;
             }
 
             &::after {
@@ -107,9 +107,7 @@ input {
           &:focus,
           &.-focus {
             & + label::before {
-              border-color: $primary-color;
-              outline: 0.125rem solid $focus-color;
-              outline-offset: 0.0625rem;
+              border-color: $color-border-primary;
             }
           }
         }
@@ -117,7 +115,7 @@ input {
 
       &[disabled] {
         & ~ label {
-          color: set-color(grey, 70);
+          color: $color-grey-70;
         }
 
         & + label {

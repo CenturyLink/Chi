@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-08-17T18:38:46",
+  "timestamp": "2020-09-13T20:06:44",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -475,6 +475,23 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "uppercase",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "uppercase",
+          "reflectToAttr": true,
+          "docs": "to render a button with uppercase text.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,

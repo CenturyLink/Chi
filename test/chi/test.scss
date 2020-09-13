@@ -48,11 +48,11 @@ body {
 
     [class*='chi-col'] {
       &::before {
-        background-color: set-color(grey, 10);
-        box-shadow: inset 0 0 0 1px rgba(set-color(black), 0.4);
+        background-color: $color-grey-10;
+        box-shadow: inset 0 0 0 1px rgba($color-black, 0.4);
         content: attr(class);
         display: block;
-        line-height: $line-height;
+        line-height: $line-height-lg;
         min-height: $base-unit * 4;
         overflow: hidden;
         padding: $base-unit;

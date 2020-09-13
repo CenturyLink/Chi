@@ -27,9 +27,9 @@ $icon-sizes: (
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  font-size: $text;
+  font-size: $font-size-base;
   justify-content: center;
-  line-height: $line-height-small;
+  line-height: $line-height;
 
   .chi-button-group {
     &:not(.-vertical) {
@@ -159,21 +159,26 @@ $icon-sizes: (
       }
 
       &.-flat {
+        &.-hover,
+        &:hover {
+          border-color: transparent;
+        }
+
         &.-active {
           background-color: transparent;
-          border-color: $primary-color;
+          border-color: $color-text-primary;
           box-shadow: none;
-          color: $primary-color;
+          color: $color-text-primary;
         }
 
         &.-light {
           &:hover {
-            border-color: $light-color;
+            border-color: $color-border-base-dark;
           }
 
           &.-active {
-            border-color: $secondary-color;
-            color: $secondary-color;
+            border-color: $color-border-secondary;
+            color: $color-text-secondary;
           }
         }
       }
@@ -253,7 +258,7 @@ $icon-sizes: (
 
   &__results {
     align-items: center;
-    color: $muted-color;
+    color: $color-text-muted-light;
     display: flex;
     justify-content: center;
     margin: 0.5rem;
@@ -301,8 +306,8 @@ $icon-sizes: (
     }
 
     .chi-pagination__label {
-      color: $muted-color;
-      font-weight: normal;
+      color: $color-text-muted-light;
+      font-weight: $font-weight-normal;
       margin-bottom: 0;
       margin-right: 0.5rem;
     }
@@ -345,6 +350,7 @@ $icon-sizes: (
       &.chi-input {
         background-color: transparent;
         border: 0.0625rem solid transparent;
+        border-radius: $border-radius;
         box-shadow: none;
         font-size: 0.875rem;
         font-weight: 600;
@@ -353,14 +359,13 @@ $icon-sizes: (
         width: 54px;
 
         &:hover {
-          border: 0.0625rem solid set-color(grey, 30);
-          box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
+          background-color: rgba(83, 86, 90, 0.1);
         }
       }
     }
 
     .chi-pagination__label {
-      color: $muted-color;
+      color: $color-text-muted-light;
       margin-left: 0.25rem;
     }
   }
@@ -405,7 +410,7 @@ $icon-sizes: (
     }
 
     .chi-pagination__label {
-      color: $text-color;
+      color: $color-text-base;
       margin: 0 0.5rem;
 
       strong {
@@ -421,11 +426,11 @@ $icon-sizes: (
   }
 
   &.-inverse {
-    color: $text-white;
+    color: $color-text-white;
 
     .chi-pagination__results,
     .chi-pagination__label {
-      color: set-color(grey, 40);
+      color: $color-grey-40;
     }
 
     .chi-pagination__results {
@@ -441,15 +446,15 @@ $icon-sizes: (
           background-position: map-get(map-get($sizes, md), background-position);
           background-repeat: no-repeat;
           background-size: 0.75rem 0.75rem;
-          color: set-color(white);
+          color: $color-text-white;
 
           &:hover {
-            border: 0.0625rem solid set-color(white);
+            border: 0.0625rem solid $color-border-white;
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
           }
 
           option {
-            color: $text-color;
+            color: $color-text-base;
           }
         }
       }
@@ -460,19 +465,19 @@ $icon-sizes: (
         background-color: transparent;
 
         &:not(:focus) {
-          border-color: set-color(grey, 70);
-          color: $text-white;
+          border-color: $color-grey-70;
+          color: $color-text-white;
         }
 
         &:focus {
-          background-color: set-color(white);
+          background-color: $color-background-white;
         }
       }
     }
 
     &.-compact {
       .chi-pagination__label {
-        color: $text-white;
+        color: $color-text-white;
       }
     }
   }

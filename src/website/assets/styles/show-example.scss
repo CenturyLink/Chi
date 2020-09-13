@@ -3,8 +3,8 @@
 
 .-show--example {
   [class*="chi-col"]:before {
-    background-color: set-color(mint, 10);
-    box-shadow: inset 0 0 0 1px set-color(mint, 30);
+    background-color: $color-blue-20;
+    box-shadow: inset 0 0 0 1px $color-blue-30;
     content: attr(class);
     display: block;
     font-size: 0.875rem;
@@ -17,7 +17,7 @@
 
   & > div:not(.chi-col),
   & > p {
-    background-color: set-color(mint, 10);
-    box-shadow: inset 0 0 0 1px set-color(mint, 30);
+    background-color: $color-blue-20;
+    box-shadow: inset 0 0 0 1px $color-blue-30;
   }
 }

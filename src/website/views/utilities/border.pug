@@ -102,29 +102,35 @@ p.-text
   | Use contextual color classes to change a borders color.
 h4 Brand
 p.-text
-  | Brand border colors reinforce CenturyLink's brand. Use primary and secondary as accents and base, dark, and light as neutrals.
+  | Brand border colors reinforce Lumen's brand. Use primary and secondary as accents and base, black, and white as neutrals.
 .example.-mb--3
   .-p--3
     .chi-grid.-no-gutter.-text.-text--center.-mb--2
       .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--base-light.-bg--grey-10 Base Light
+      .chi-col.-w--6.-w-md--3.-w-xl--2
         .-m--1.-p--1.-py--5.-b--1.-bg--grey-10 Base
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--base-dark.-bg--grey-10 Base Dark
       .chi-col.-w--6.-w-md--3.-w-xl--2
         .-m--1.-p--1.-py--5.-b--1.-b--primary.-bg--grey-10 Primary
       .chi-col.-w--6.-w-md--3.-w-xl--2
-        .-m--1.-p--1.-py--5.-b--1.-b--dark.-bg--grey-10 Dark
+        .-m--1.-p--1.-py--5.-b--1.-b--black.-bg--grey-10 Black
     .chi-grid.-no-gutter.-text.-text--center.-bg--black.-text--white
       .chi-col.-w--6.-w-md--3.-w-xl--2
         .-m--1.-p--1.-py--5.-b--1.-b--secondary Secondary
       .chi-col.-w--6.-w-md--3.-w-xl--2
-        .-m--1.-p--1.-py--5.-b--1.-b--light Light
+        .-m--1.-p--1.-py--5.-b--1.-b--white White
   :code(lang="html")
     <!-- For light backgrounds -->
-    <div class="-b--1"></div>
+    <div class="-b--1 -b--base-light"></div>
+    <div class="-b--1 -b--base"></div>
+    <div class="-b--1 -b--base-dark"></div>
     <div class="-b--1 -b--primary"></div>
-    <div class="-b--1 -b--dark"></div>
+    <div class="-b--1 -b--black"></div>
     <!-- For dark backgrounds -->
     <div class="-b--1 -b--secondary"></div>
-    <div class="-b--1 -b--light"></div>
+    <div class="-b--1 -b--white"></div>
 h4 Semantic
 p.-text
   | Use semantic border colors to communicate meaning to users. Use green (success) for positive, blue (info) for informative,
@@ -133,18 +139,30 @@ p.-text
   .-p--3
     .chi-grid.-no-gutter.-text.-text--center
       .chi-col.-w--6.-w-md--3.-w-xl--2
-        .-m--1.-p--1.-py--5.-b--1.-b--success.-bg--grey-10 Success
+        .-m--1.-p--1.-py--5.-b--1.-b--success Success
       .chi-col.-w--6.-w-md--3.-w-xl--2
-        .-m--1.-p--1.-py--5.-b--1.-b--info.-bg--grey-10 Info
+        .-m--1.-p--1.-py--5.-b--1.-b--success-light.-bg--success-lighter Success Light
       .chi-col.-w--6.-w-md--3.-w-xl--2
-        .-m--1.-p--1.-py--5.-b--1.-b--danger.-bg--grey-10 Danger
+        .-m--1.-p--1.-py--5.-b--1.-b--info Info
       .chi-col.-w--6.-w-md--3.-w-xl--2
-        .-m--1.-p--1.-py--5.-b--1.-b--warning.-bg--grey-10 Warning
+        .-m--1.-p--1.-py--5.-b--1.-b--info-light.-bg--info-lighter Info Light
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--danger Danger
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--danger-light.-bg--danger-lighter Danger Light
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--warning Warning
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--warning-light.-bg--warning-lighter Warning Light
   :code(lang="html")
     <div class="-b--1 -b--success"></div>
+    <div class="-b--1 -b--success-light"></div>
     <div class="-b--1 -b--info"></div>
+    <div class="-b--1 -b--info-light"></div>
     <div class="-b--1 -b--danger"></div>
+    <div class="-b--1 -b--danger-light"></div>
     <div class="-b--1 -b--warning"></div>
+    <div class="-b--1 -b--warning-light"></div>
 h4 Transparent
 p.-text
   | Use the transparent border color as a method to hide an elements border without altering its size.

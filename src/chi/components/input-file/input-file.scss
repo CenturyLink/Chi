@@ -38,9 +38,9 @@ input {
         & {
           align-items: center;
           display: flex;
-          font-size: $text;
-          font-weight: 400;
-          line-height: $line-height-smaller;
+          font-size: $font-size-base;
+          font-weight: $font-weight-normal;
+          line-height: $line-height-sm;
           margin-bottom: 0;
           pointer-events: none;
           position: relative;
@@ -48,13 +48,14 @@ input {
 
         &::before {
           align-items: center;
-          background-color: set-color(white);
-          border: 0.0625rem solid set-color(grey, 30);
-          box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
+          background-color: $color-background-white;
+          border: 0.0625rem solid $color-border-base-dark;
+          border-radius: $border-radius;
+          box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
           content: 'Choose File';
           cursor: pointer;
           display: flex;
-          font-weight: 600;
+          font-weight: $font-weight-semi-bold;
           height: 2rem;
           justify-content: center;
           line-height: 1.125rem;
@@ -66,16 +67,16 @@ input {
         &:hover,
         &.-hover {
           &::before {
-            background-color: set-color(grey, 20);
-            border-color: set-color(grey, 30);
+            background-color: $color-grey-20;
+            border-color: $color-border-base-dark;
           }
         }
 
         &:active,
         &.-active {
           &::before {
-            background-color: set-color(grey, 25);
-            border-color: rgba(set-color(grey, 70), 0.2);
+            background-color: $color-grey-25;
+            border-color: rgba($color-grey-70, 0.2);
           }
         }
       }
@@ -96,9 +97,7 @@ input {
       &:focus,
       &.-focus {
         & + label::before {
-          border-color: set-color(grey, 30);
-          outline: 0.125rem solid $focus-color;
-          outline-offset: 0.0625rem;
+          border-color: $color-border-base-dark;
           z-index: $zindex-prominent;
         }
       }

@@ -1,241 +1,306 @@
 $cap-height: 0.75;
-
 $base-unit: 8px;
 
-// colors
+$state-colors: (success: green, warning: yellow, danger: red);
+
+// System color
 // sass-lint:disable no-color-hex
-$colorscheme: (
-  grey: (
-    100: #242526,
-    90: #313336,
-    80: #3f4145,
-    70: #53565a,
-    60: #72767a,
-    50: #8e9399,
-    40: #acb0b5,
-    30: #d0d4d9,
-    25: #dadee2,
-    20: #edf0f2,
-    15: #f4f5f6,
-    10: #f8f9f9,
-  ),
-  red: (
-    100: #471819,
-    90: #691518,
-    80: #8f0e13,
-    70: #b50d12,
-    60: #d81820,
-    55: #f0363c,
-    50: #fa5056,
-    40: #fc9094,
-    30: #fcc7c9,
-    20: #fce8e9,
-    10: #fff5f5,
-  ),
-  pink: (
-    100: #451726,
-    90: #661430,
-    80: #8c0e38,
-    70: #b30c44,
-    60: #db1a5b,
-    50: #f74f87,
-    40: #fa8eb2,
-    30: #fcc7d9,
-    20: #fce8ef,
-    10: #fcf5f7,
-  ),
-  purple: (
-    100: #371c52,
-    90: #4d2378,
-    80: #642b9e,
-    70: #7e40bd,
-    60: #9557d4,
-    50: #b277ed,
-    40: #cda3f7,
-    30: #e2cdf7,
-    20: #f2ebfa,
-    10: #faf7fc,
-  ),
-  indigo: (
-    100: #222261,
-    90: #2b2b94,
-    80: #3939bd,
-    70: #4f4fdb,
-    60: #6666e3,
-    50: #8787fa,
-    40: #adadff,
-    30: #d1d1ff,
-    20: #ededff,
-    10: #f7f7ff,
-  ),
-  blue: (
-    100: #001238,
-    90: #001e60,
-    80: #00308a,
-    70: #0047bb,
-    60: #0060fa,
-    55: #2580ff,
-    50: #468af1,
-    40: #8cb6f5,
-    30: #c0d7fa,
-    20: #e6f0ff,
-    10: #f5f8fc,
-  ),
-  light-blue: (
-    100: #0c2b3b,
-    90: #093d57,
-    80: #064e73,
-    70: #066594,
-    60: #0d7db5,
-    50: #239cd9,
-    40: #53bff5,
-    30: #b0def5,
-    20: #e1f2fa,
-    10: #f2f9fc,
-  ),
-  teal: (
-    100: #082b2e,
-    90: #063b40,
-    80: #074c52,
-    70: #026169,
-    60: #03808c,
-    50: #0a96a3,
-    40: #1eb9c7,
-    30: #abdce0,
-    20: #d7f2f5,
-    10: #edf9fa,
-  ),
-  mint: (
-    100: #0a2e1e,
-    90: #094028,
-    80: #075433,
-    70: #08683f,
-    60: #007e46,
-    55: #009e5c,
-    50: #22a066,
-    40: #48d597,
-    30: #abe0c9,
-    20: #daf5e9,
-    10: #edfaf3,
-  ),
-  green: (
-    100: #1e2b0a,
-    90: #283d09,
-    80: #344f0b,
-    70: #3f6605,
-    60: #4e8003,
-    50: #689e18,
-    40: #8cc63f,
-    30: #c6dba7,
-    20: #e4f2ce,
-    10: #f2fae6,
-  ),
-  yellow: (
-    100: #422600,
-    90: #583300,
-    80: #6d3f00,
-    70: #8f5200,
-    60: #a15c00,
-    55: #ca7300,
-    50: #d18110,
-    40: #e6a243,
-    30: #f5cc93,
-    20: #faecd9,
-    10: #fff8ed,
-  ),
-  orange: (
-    100: #3d1e14,
-    90: #5e2413,
-    80: #80280d,
-    70: #a6310d,
-    60: #c94218,
-    50: #e8663f,
-    40: #f2997e,
-    30: #f5ccbf,
-    20: #fce9e3,
-    10: #faf6f5,
-  ),
-  black: #000000,
-  white: #ffffff
-);
-// sass-lint:enable no-color-keywords
+$color-grey-100:    #242526;
+$color-grey-90:     #313336;
+$color-grey-80:     #3f4145;
+$color-grey-70:     #53565a;
+$color-grey-60:     #65686c;
+$color-grey-50:     #8e9399;
+$color-grey-40:     #acb0b5;
+$color-grey-30:     #d0d4d9;
+$color-grey-25:     #dadee2;
+$color-grey-20:     #edf0f2;
+$color-grey-15:     #f4f5f6;
+$color-grey-10:     #f8f9f9;
+
+$color-red-100:     #600d08;
+$color-red-90:      #80130c;
+$color-red-80:      #a21810;
+$color-red-70:      #d62015;
+$color-red-60:      #ee3026;
+$color-red-50:      #ff645c;
+$color-red-40:      #ff9086;
+$color-red-30:      #ffc2bd;
+$color-red-20:      #ffe8e5;
+$color-red-10:      #fff5f5;
+
+$color-pink-100:    #451726;
+$color-pink-90:     #661430;
+$color-pink-80:     #8c0e38;
+$color-pink-70:     #b30c44;
+$color-pink-60:     #db1a5b;
+$color-pink-50:     #f74f87;
+$color-pink-40:     #fa8eb2;
+$color-pink-30:     #fcc7d9;
+$color-pink-20:     #fce8ef;
+$color-pink-10:     #fcf5f7;
+
+$color-purple-100:  #371c52;
+$color-purple-90:   #4d2378;
+$color-purple-80:   #642b9e;
+$color-purple-70:   #7e40bd;
+$color-purple-60:   #9557d4;
+$color-purple-50:   #b277ed;
+$color-purple-40:   #cda3f7;
+$color-purple-30:   #e2cdf7;
+$color-purple-20:   #f2ebfa;
+$color-purple-10:   #faf7fc;
+
+$color-indigo-100:  #1e1e57;
+$color-indigo-90:   #29298c;
+$color-indigo-80:   #3434ac;
+$color-indigo-70:   #4646da;
+$color-indigo-60:   #5959e0;
+$color-indigo-50:   #8484fa;
+$color-indigo-40:   #a8a8ff;
+$color-indigo-30:   #cfcfff;
+$color-indigo-20:   #ededff;
+$color-indigo-10:   #f7f7ff;
+
+$color-navy-100:    #083176;
+$color-navy-90:     #08379b;
+$color-navy-80:     #0047bb;
+$color-navy-70:     #0a60f0;
+$color-navy-60:     #2072f8;
+$color-navy-50:     #6099f1;
+$color-navy-40:     #88b6f9;
+$color-navy-30:     #c0d7fa;
+$color-navy-20:     #e6f0ff;
+$color-navy-10:     #f5f8fc;
+
+$color-blue-100:    #002d54;
+$color-blue-90:     #004078;
+$color-blue-80:     #00529a;
+$color-blue-75:     #0262b9;
+$color-blue-70:     #0075c9;
+$color-blue-60:     #0080dc;
+$color-blue-50:     #38abff;
+$color-blue-40:     #70c3ff;
+$color-blue-30:     #aedeff;
+$color-blue-20:     #e0f3ff;
+$color-blue-10:     #f5f9fc;
+
+$color-cyan-100:    #002e4d;
+$color-cyan-90:     #004368;
+$color-cyan-80:     #00557e;
+$color-cyan-70:     #0073a5;
+$color-cyan-60:     #0986b6;
+$color-cyan-50:     #0c9ed9;
+$color-cyan-40:     #38c6f4;
+$color-cyan-30:     #a3e5fa;
+$color-cyan-20:     #ddf5fd;
+$color-cyan-15:     #eaf7fb;
+$color-cyan-10:     #f1fbfe;
+
+$color-teal-100:    #093134;
+$color-teal-90:     #07454b;
+$color-teal-80:     #08575e;
+$color-teal-70:     #027786;
+$color-teal-60:     #038b98;
+$color-teal-50:     #0dc7d8;
+$color-teal-40:     #4ed8e4;
+$color-teal-30:     #9de9f0;
+$color-teal-20:     #dcf7fa;
+$color-teal-10:     #f2fcfd;
+
+$color-green-100:   #03381e;
+$color-green-90:    #044d28;
+$color-green-80:    #056234;
+$color-green-70:    #007e44;
+$color-green-60:    #009054;
+$color-green-50:    #26d98f;
+$color-green-40:    #76eab8;
+$color-green-30:    #95e9c9;
+$color-green-20:    #dbfaee;
+$color-green-10:    #f1fef8;
+
+$color-yellow-100:  #4e2e00;
+$color-yellow-90:   #663b00;
+$color-yellow-80:   #864d00;
+$color-yellow-70:   #a15c00;
+$color-yellow-60:   #b96b00;
+$color-yellow-50:   #e58500;
+$color-yellow-40:   #ff9e18;
+$color-yellow-30:   #ffcc89;
+$color-yellow-20:   #faecd9;
+$color-yellow-10:   #fff8ed;
+
+$color-orange-100:  #5b2600;
+$color-orange-90:   #723204;
+$color-orange-80:   #974308;
+$color-orange-70:   #b35009;
+$color-orange-60:   #c96010;
+$color-orange-50:   #e77528;
+$color-orange-40:   #f79950;
+$color-orange-30:   #facaa8;
+$color-orange-20:   #fde7d8;
+$color-orange-10:   #fef6f0;
+
+$color-black:       #000000;
+$color-white:       #ffffff;
 // sass-lint:enable no-color-hex
 
-$state-colors: (success: mint, warning: yellow, danger: red);
 
-$bg-inverse: map-get(map-get($colorscheme, grey), 90);
+// Text color
+$color-text-base:                     $color-grey-100;
+$color-text-primary:                  $color-blue-75;
+$color-text-primary-alt:              $color-blue-70;
+$color-text-secondary:                $color-cyan-40;
+$color-text-secondary-dark:           $color-cyan-50;
+$color-text-success:                  $color-green-70;
+$color-text-warning:                  $color-yellow-70;
+$color-text-danger:                   $color-red-70;
+$color-text-info:                     $color-blue-70;
+$color-text-muted-light:              $color-grey-60;
+$color-text-muted:                    $color-grey-70;
+$color-text-white:                    $color-white;
+$color-text-black:                    $color-black;
+$color-text-code:                     $color-cyan-70;
 
-$text-color: map-get(map-get($colorscheme, grey), 100);
-$text-black: map-get($colorscheme, black);
-$text-white: map-get($colorscheme, white);
-$text-inverse: map-get(map-get($colorscheme, grey), 10);
+// Icon color
+$color-icon-base:                     $color-grey-80;
+$color-icon-primary:                  $color-blue-70;
+$color-icon-secondary:                $color-cyan-40;
+$color-icon-secondary-dark:           $color-cyan-50;
+$color-icon-success:                  $color-green-60;
+$color-icon-warning:                  $color-yellow-60;
+$color-icon-danger:                   $color-red-60;
+$color-icon-info:                     $color-blue-60;
+$color-icon-muted-light:              $color-grey-50;
+$color-icon-muted:                    $color-grey-60;
+$color-icon-muted-dark:               $color-grey-70;
+$color-icon-white:                    $color-white;
+$color-icon-black:                    $color-black;
 
-$link-color: map-get(map-get($colorscheme, blue), 70);
-$focus-color: map-get(map-get($colorscheme, blue), 50);
+// Border color
+$color-border-base-light:             $color-grey-20;
+$color-border-base:                   $color-grey-25;
+$color-border-base-dark:              $color-grey-30;
+$color-border-primary:                $color-blue-70;
+$color-border-primary-light:          $color-blue-30;
+$color-border-secondary:              $color-cyan-40;
+$color-border-secondary-dark:         $color-cyan-50;
+$color-border-success-light:          $color-green-30;
+$color-border-success:                $color-green-60;
+$color-border-warning-light:          $color-yellow-30;
+$color-border-warning:                $color-yellow-60;
+$color-border-danger-light:           $color-red-30;
+$color-border-danger:                 $color-red-60;
+$color-border-info-light:             $color-blue-30;
+$color-border-info:                   $color-blue-60;
+$color-border-muted-light:            $color-grey-30;
+$color-border-muted:                  $color-grey-60;
+$color-border-white:                  $color-white;
+$color-border-black:                  $color-black;
+$color-border-dark:                   $color-grey-100;
 
-$primary: map-get(map-get($colorscheme, blue), 70);
-$secondary: map-get(map-get($colorscheme, mint), 40);
-$secondary-alt: map-get(map-get($colorscheme, mint), 50);
+// Background color
+$color-background-base:               $color-white;
+$color-background-base-dark:          $color-grey-15;
+$color-background-base-darker:        $color-grey-20;
+$color-background-base-darkest:       $color-grey-25;
+$color-background-primary-lighter:    $color-blue-10;
+$color-background-primary-light:      $color-blue-20;
+$color-background-primary:            $color-blue-70;
+$color-background-secondary-light:    $color-cyan-15;
+$color-background-secondary:          $color-cyan-40;
+$color-background-secondary-dark:     $color-cyan-50;
+$color-background-success-lighter:    $color-green-10;
+$color-background-success-light:      $color-green-20;
+$color-background-success:            $color-green-70;
+$color-background-warning-lighter:    $color-yellow-10;
+$color-background-warning-light:      $color-yellow-20;
+$color-background-warning:            $color-yellow-70;
+$color-background-danger-lighter:     $color-red-10;
+$color-background-danger-light:       $color-red-20;
+$color-background-danger:             $color-red-70;
+$color-background-info-lighter:       $color-blue-10;
+$color-background-info-light:         $color-blue-20;
+$color-background-info:               $color-blue-70;
+$color-background-muted-lighter:      $color-grey-10;
+$color-background-muted-light:        $color-grey-20;
+$color-background-muted:              $color-grey-30;
+$color-background-dark:               $color-grey-100;
+$color-background-white:              $color-white;
+$color-background-black:              $color-black;
 
-$primary-color: map-get(map-get($colorscheme, blue), 70);
-$secondary-color: map-get(map-get($colorscheme, mint), 40);
-$secondary-color-alt: map-get(map-get($colorscheme, mint), 50);
-$brand-color: map-get(map-get($colorscheme, blue), 70);
-$success-color: map-get(map-get($colorscheme, mint), 60);
-$danger-color: map-get(map-get($colorscheme, red), 60);
-$info-color: map-get(map-get($colorscheme, blue), 60);
-$warning-color: map-get(map-get($colorscheme, yellow), 60);
-$dark-color: map-get(map-get($colorscheme, grey), 90);
-$light-color: map-get(map-get($colorscheme, grey), 30);
-$muted-color: map-get(map-get($colorscheme, grey), 60);
-$grey-color: map-get(map-get($colorscheme, grey), 70);
+// Font family
+$font-family-base: 'Inter', Arial, Helvetica, Verdana, sans-serif;
+$font-family-mono: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
 
-// icons
-$icon-color-success: map-get(map-get($colorscheme, mint), 55);
-$icon-color-info: map-get(map-get($colorscheme, blue), 55);
-$icon-color-warning: map-get(map-get($colorscheme, yellow), 55);
-$icon-color-danger: map-get(map-get($colorscheme, red), 55);
-$icon-color-muted: map-get(map-get($colorscheme, grey), 60);
-$icon-color-grey: map-get(map-get($colorscheme, grey), 70);
+// Font size - text
+$font-size-xl: 1.125rem; // 18px
+$font-size-lg: 1rem; // 16px
+$font-size-md: 0.875rem; // 14px
+$font-size-sm: 0.8125rem; // 13px
+$font-size-xs: 0.75rem; // 12px
+$font-size-2xs: 0.6875rem; // 11px
+$font-size-base: $font-size-md;
 
-// borders
-$border-color: rgba(0, 0, 0, 0.12);
-$border-color-light: map-get($colorscheme, white);
-$border-color-dark: map-get($colorscheme, black);
-$border-color-danger: $icon-color-danger;
-$border-color-success: $icon-color-success;
-$border-color-info: $icon-color-info;
-$border-color-warning: $icon-color-warning;
-$border-color-primary: $primary-color;
-$border-color-secondary: $secondary-color;
+// Font size - headings
+$font-size-h6: 0.875rem; // 14px
+$font-size-h5: 1rem; // 16px
+$font-size-h4: 1.125rem; // 18px
+$font-size-h3: 1.5rem; // 24px
+$font-size-h2: 2rem; // 32px
+$font-size-h1: 3rem; // 48px
 
-// font font-family
-$font-family: 'Inter', 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
-$font-family-monospace: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
+// Font size - system
+$font-size-1: 0.6875rem; // 11px
+$font-size-2: 0.75rem; // 12px
+$font-size-3: 0.8125rem; // 13px
+$font-size-4: 0.875rem; // 14px
+$font-size-5: 1rem; // 16px
+$font-size-6: 1.125rem; // 18px
+$font-size-7: 1.25rem; // 20px
+$font-size-8: 1.375rem; // 22px
+$font-size-9: 1.5rem; // 24px
+$font-size-10: 1.75rem; // 28px
+$font-size-11: 2rem; // 32px
+$font-size-12: 2.25rem; // 36px
+$font-size-13: 2.5rem; // 40px
+$font-size-14: 3rem; // 48px
+$font-size-15: 3.5rem; // 56px
+$font-size-16: 4rem; // 64px
+$font-size-17: 4.5rem; // 72px
+$font-size-18: 5rem; // 80px
+$font-size-19: 6rem; // 96px
+$font-size-20: 7.5rem; // 120px
 
-// text sizes
-$text: 0.875rem; // 14px
-$text-large: 1rem; // 16px
-$text-larger: 1.125rem; // 18px
-$text-small: 0.8125rem; // 13px
-$text-smaller: 0.75rem; // 12px
-$text-smallest: 0.6875rem; // 11px
-
-// font weights
+// Font weight
 $font-weight-light: 300;
-$font-weight-normal: normal;
-$font-weight-semibold: 600;
+$font-weight-normal: 400;
+$font-weight-semi-bold: 600;
 $font-weight-bold: 700;
-$font-weight-extrabold: 800;
+$font-weight-extra-bold: 800;
+$font-weight-base: $font-weight-normal;
 
-// line height sizes
-$line-height: 1.5rem; // 24px
-$line-height-large: 1.5rem; // 24px
-$line-height-larger: 1.75rem; // 28px
-$line-height-small: 1.25rem; // 20px
-$line-height-smaller: 1rem; // 16px
+// Line height
+$line-height: 1.25rem; // 20px
+$line-height-xl: 1.75rem; // 28px
+$line-height-lg: 1.5rem; // 24px
+$line-height-md: 1.25rem; // 20px
+$line-height-sm: 1rem; // 16px
 
-// shadows
+// Border radius
+$border-radius-base: 0.25rem; // 4px
+$border-radius-sharp: 0;
+$border-radius-circle: 50%;
+$border-radius: $border-radius-base;
+
+// Opacity
+$opacity-0: 0;
+$opacity-30: 0.3;
+$opacity-50: 0.5;
+$opacity-70: 0.7;
+$opacity-100: 1;
+
+// Shadows
 $shadow: (
   0: none,
   1: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
@@ -245,7 +310,7 @@ $shadow: (
   5: 0 12px 24px 0 rgba(0, 0, 0, 0.1)
 );
 
-// screen breakpoints
+// Media Queries
 $sm-breakpoint: 576px;
 $md-breakpoint: 768px;
 $lg-breakpoint: 992px;
@@ -253,7 +318,7 @@ $xl-breakpoint: 1200px;
 
 $screen-sizes: xs sm md lg xl;
 
-//z-index default values
+// Z-index
 $zindex-prominent:            1;
 $zindex-dropdown:            10;
 $zindex-fixed:               20;
@@ -263,11 +328,25 @@ $zindex-modal:               50;
 $zindex-popover:             60;
 $zindex-tooltip:             70;
 
-//drawer + sidebar
+// Drawer + sidebar
 $drawer-width: 18.75rem;
 $drawer-height: 18.75rem;
 
-// portal
-$portal-color-background-table-th: #dfe2e6;
-$portal-color-background-table-tr-alt: #ebf0f6;
-$portal-color-background-table-tr-selected: #cedaf1;
+// Link color
+$link-color: $color-text-primary;
+
+// Focus color
+$focus-color: $color-border-secondary-dark;
+
+// Semantic colors
+$color-semantic: (
+  success: (
+    border-color: $color-border-success,
+  ),
+  warning: (
+    border-color: $color-border-warning,
+  ),
+  danger: (
+    border-color: $color-border-danger,
+  ),
+);

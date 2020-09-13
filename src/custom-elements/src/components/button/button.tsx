@@ -38,6 +38,11 @@ export class Button {
    */
   @Prop({ reflect: true }) fluid = false;
 
+   /**
+   *  to render a button with uppercase text.
+   */
+  @Prop({ reflect: true }) uppercase = false;
+
   /**
    *  to center align the text .
    */
@@ -115,6 +120,7 @@ export class Button {
           ${this.color ? `-${this.color}` : ''}
           ${this.type ? `-${this.type}` : ''}
           ${this.size ? `-${this.size}` : ''}
+          ${this.uppercase ? '-uppercase' : ''}
           ${this.fluid ? '-fluid' : ''}
           ${this.fluid && this.center ? '-justify-content--center' : ''}
           ${this.disabled ? '-disabled' : ''}

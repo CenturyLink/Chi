@@ -51,9 +51,9 @@ $sizes: (
       }
 
       & ~ label {
-        color: set-color(grey, 70);
+        color: $color-grey-70;
         font-size: $label-font-size-relaxed;
-        font-weight: normal;
+        font-weight: $font-weight-normal;
         left: $label-left;
         line-height: 1.5rem;
         margin-bottom: unset;

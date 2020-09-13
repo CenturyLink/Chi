@@ -2,7 +2,7 @@
 @import '_mixins';
 
 .chi-stat {
-  color: $text-color;
+  color: $color-text-base;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -17,8 +17,8 @@
   &.-active {
     .chi-stat-metric {
       &__title {
-        color: $primary-color;
-        font-weight: $font-weight-semibold;
+        color: $color-text-primary;
+        font-weight: $font-weight-semi-bold;
       }
     }
   }
@@ -61,9 +61,9 @@
   &__content {
     display: flex;
     flex-direction: column;
-    font-size: $text;
+    font-size: $font-size-base;
     height: 100%;
-    line-height: $line-height-small;
+    line-height: $line-height;
     padding: 1rem;
     width: 100%;
   }
@@ -72,8 +72,8 @@
     z-index: 2;
 
     &__title {
-      font-size: $text;
-      line-height: $line-height-small;
+      font-size: $font-size-base;
+      line-height: $line-height;
     }
 
     &__value {
@@ -89,7 +89,7 @@
   .chi-stat-submetric {
     display: flex;
     flex-direction: row;
-    font-size: $text-small;
+    font-size: $font-size-sm;
     z-index: 2;
 
     &__value {
@@ -118,40 +118,40 @@
   }
 
   &.-card {
-    background-color: set-color(white);
-    border: 0.0625rem solid rgba(set-color(black), 0.12);
+    background-color: $color-background-white;
+    border: 0.0625rem solid rgba($color-black, 0.12);
 
     &.-active {
-      border: 0.0625rem solid $primary-color;
-      box-shadow: 0 0 0 0.0625rem $primary-color;
+      border: 0.0625rem solid $color-border-primary;
+      box-shadow: 0 0 0 0.0625rem $color-border-primary;
     }
   }
 
   &.-portal {
-    background-color: set-color(blue, 90);
+    background-color: $color-navy-100;
     border: 0 none;
-    color: set-color(white);
+    color: $color-text-white;
 
     .chi-stat-metric {
       &__title {
         align-items: center;
         display: flex;
-        font-size: $text-large;
-        font-weight: $font-weight-semibold;
-        line-height: $line-height-small;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semi-bold;
+        line-height: $line-height;
         text-transform: uppercase;
         width: 75%;
       }
 
       &__value {
-        color: set-color(blue, 40);
-        font-weight: $font-weight-semibold;
+        color: $color-navy-40;
+        font-weight: $font-weight-semi-bold;
       }
     }
 
     .chi-stat-submetric {
-      color: set-color(blue, 30);
-      font-weight: $font-weight-semibold;
+      color: $color-navy-30;
+      font-weight: $font-weight-semi-bold;
       white-space: nowrap;
     }
 
@@ -162,26 +162,26 @@
     }
 
     &.-active {
-      background-color: set-color(blue, 50);
+      background-color: $color-cyan-50;
 
       .chi-stat-metric {
         &__title,
         &__value {
-          color: set-color(white);
+          color: $color-text-white;
         }
       }
 
       .chi-stat-submetric {
-        color: set-color(blue, 90);
+        color: $color-blue-100;
       }
 
       .chi-stat-background-icon {
-        color: set-color(blue, 90);
+        color: $color-blue-100;
         opacity: 0.2;
       }
 
       &::after {
-        border-color: set-color(blue, 50);
+        border-color: $color-cyan-50;
         border-left-color: transparent;
         border-style: solid;
         border-top-color: transparent;

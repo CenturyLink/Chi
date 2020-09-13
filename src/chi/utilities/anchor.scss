@@ -6,9 +6,9 @@
   &:hover {
     & span {
       & a {
-        color: $brand-color;
+        color: $color-text-primary;
         cursor: pointer;
-        font-weight: 600;
+        font-weight: $font-weight-semi-bold;
         opacity: 1;
         text-decoration: none;
         transition: opacity 0.15s ease-in-out;
@@ -18,9 +18,9 @@
 
   & span {
     & a {
-      color: $brand-color;
+      color: $color-text-primary;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: $font-weight-semi-bold;
       opacity: 0;
       transition: opacity 0.15s ease-in-out;
 

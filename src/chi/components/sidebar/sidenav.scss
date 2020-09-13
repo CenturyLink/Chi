@@ -10,14 +10,13 @@ $sidenav-lg-width: 12.5rem;
   width: $sidenav-sm-width;
 
   &__content {
-    background-color: set-color(white);
-    border-right: 0.0625rem solid $border-color;
+    background-color: $color-grey-20;
     height: 100%;
     position: relative;
     z-index: $zindex-fixed + 2;
 
     > * + nav {
-      border-top: 0.0625rem solid map-get(map-get($colorscheme, grey), 20);
+      border-top: 0.0625rem solid $color-border-base-light;
     }
   }
 
@@ -43,8 +42,8 @@ $sidenav-lg-width: 12.5rem;
       align-items: center;
       display: flex;
       flex-direction: column;
-      font-size: 0.8125rem;
-      font-weight: 400;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semi-bold;
       justify-content: center;
       min-height: 3rem;
       padding: 0.5rem;
@@ -58,22 +57,17 @@ $sidenav-lg-width: 12.5rem;
 
     &.-active {
       > a {
-        background-color: rgba(set-color(blue, 70), 0.08);
-        box-shadow: inset 0.125rem 0 0 $primary-color;
-        color: $primary-color;
-        font-weight: 600;
-
-        &.-unselected {
-          background-color: transparent;
-          box-shadow: none;
-        }
+        background-color: rgba($color-blue-50, 0.12);
+        box-shadow: inset 0.125rem 0 0 $color-border-primary;
+        color: $color-text-primary;
+        font-weight: $font-weight-semi-bold;
       }
     }
 
     &:not(.-active) {
       a.-active {
-        background-color: set-color(grey, 10);
-        box-shadow: inset 0.125rem 0 0 set-color(grey, 100);
+        background-color: rgba($color-grey-25, 0.5);
+        box-shadow: inset 0.125rem 0 0 $color-cyan-50;
       }
     }
   }
@@ -89,7 +83,8 @@ $sidenav-lg-width: 12.5rem;
   .chi-drawer {
     &__header {
       align-items: center;
-      color: set-color(grey, 70);
+      background-color: $color-grey-10;
+      color: $color-text-base;
       display: flex;
       height: 4rem;
       padding-left: 1.5rem;
@@ -103,13 +98,13 @@ $sidenav-lg-width: 12.5rem;
     }
 
     &__content {
-      background: set-color(grey, 10);
+      background: $color-background-white;
 
       ul {
         &.chi-sidenav__drawer-list {
           li {
             a {
-              line-height: $line-height-small;
+              line-height: $line-height;
               padding-right: 1.5rem;
 
               &.chi-drawer__subitem-list-trigger {
@@ -121,8 +116,8 @@ $sidenav-lg-width: 12.5rem;
                     content: '\e91e';
                     display: block;
                     font-family: 'chi';
-                    font-size: 0.75rem;
-                    font-weight: normal;
+                    font-size: $font-size-xs;
+                    font-weight: $font-weight-normal;
                     height: 1rem;
                     line-height: 1.2rem;
                     position: absolute;
@@ -164,19 +159,19 @@ $sidenav-lg-width: 12.5rem;
             &.-active {
               & > a {
                 background: none;
-                box-shadow: inset 0.125rem 0 0 $primary-color;
-                color: $primary-color;
+                box-shadow: inset 0.125rem 0 0 $color-border-primary;
+                color: $color-text-primary;
               }
 
               &.-expanded {
                 & > a {
-                  background-color: set-color(grey, 20);
-                  color: $primary-color;
+                  background-color: $color-background-white;
+                  color: $color-text-primary;
                 }
 
                 &:hover {
                   & > a {
-                    background-color: set-color(grey, 20);
+                    background-color: $color-background-white;
                   }
                 }
               }
@@ -189,17 +184,17 @@ $sidenav-lg-width: 12.5rem;
 
               &:hover {
                 & > a {
-                  background-color: set-color(grey, 10);
+                  background-color: $color-grey-20;
                 }
               }
             }
 
             &.-expanded {
               & > a {
-                background-color: set-color(grey, 20);
+                background-color: $color-background-white;
 
                 .chi-sidenav__title {
-                  font-weight: 600;
+                  font-weight: $font-weight-semi-bold;
                 }
               }
 
@@ -209,39 +204,33 @@ $sidenav-lg-width: 12.5rem;
             }
 
             .chi-sidenav__drawer-item-list {
-              background-color: set-color(grey, 20);
+              background-color: $color-background-white;
 
               .chi-tabs {
                 &.-sm {
                   li {
                     a {
                       &.chi-sidenav__drawer-item-tab {
-                        font-size: 0.8125rem;
-                        font-weight: 400;
+                        font-size: $font-size-sm;
+                        font-weight: $font-weight-normal;
                         line-height: 1.25rem;
                         padding-bottom: 0.375rem;
                         padding-left: 3rem;
                         padding-top: 0.375rem;
 
                         &:hover {
-                          background-color: set-color(grey, 30);
-                          color: set-color(grey, 100);
+                          background-color: $color-grey-20;
+                          color: $color-text-base;
                         }
 
                         &.-active {
-                          color: $primary-color;
-                          font-weight: 600;
+                          color: $color-text-primary;
+                          font-weight: $font-weight-semi-bold;
                         }
                       }
                     }
                   }
                 }
-              }
-            }
-
-            &:hover {
-              & > a {
-                background-color: set-color(grey, 20);
               }
             }
           }
@@ -251,8 +240,6 @@ $sidenav-lg-width: 12.5rem;
   }
 
   &__drawer-list {
-    border-top: 0.0625rem solid map-get(map-get($colorscheme, grey), 20);
-
     & > li {
       & > a {
         display: block;
@@ -270,15 +257,15 @@ $sidenav-lg-width: 12.5rem;
       }
 
       &.-active > a {
-        background-color: set-color(grey, 20);
+        background-color: $color-background-white;
 
         .chi-sidenav__title {
-          font-weight: 600;
+          font-weight: $font-weight-semi-bold;
         }
       }
 
       &:not(.-active) > a:hover {
-        background-color: set-color(grey, 30);
+        background-color: $color-grey-20;
       }
 
       .chi-sidenav__drawer-item-list {
@@ -296,228 +283,18 @@ $sidenav-lg-width: 12.5rem;
   &__title {
     align-items: center;
     display: flex;
-    font-size: 0.875rem;
-    font-weight: 400;
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
   }
 
   &__description {
-    font-size: 0.875rem;
+    font-size: $font-size-base;
     line-height: 1.25rem;
     margin: 0;
   }
 
-  &.-inverse {
-    .chi-sidenav {
-      &__content {
-        background-color: set-color(grey, 100);
-        border-right: 0;
-      }
-
-      &__list,
-      &__drawer-list {
-        > li {
-          > a {
-            color: $text-white;
-          }
-
-          &.-active {
-            > a {
-              box-shadow: inset 0.125rem 0 0 $secondary-color;
-              color: $secondary-color;
-            }
-          }
-        }
-      }
-
-      &__list {
-        > li {
-          border-bottom: 0;
-
-          &.-active {
-            a {
-              background-color: rgba(set-color(mint, 40), 0.08);
-              box-shadow: inset 0.125rem 0 0 $secondary-color;
-              color: $secondary-color;
-
-              &.-unselected {
-                background-color: transparent;
-                box-shadow: none;
-              }
-            }
-          }
-
-          &:not(.-active) {
-            a.-active {
-              background-color: set-color(grey, 90);
-              box-shadow: inset 0.125rem 0 0 set-color(white);
-            }
-          }
-        }
-      }
-
-      &__drawer-list {
-        border-top: 0;
-
-        > li {
-          border-bottom: 0;
-          line-height: 1.25rem;
-
-          &.-active {
-            > a {
-              .chi-sidenav__description {
-                color: $secondary-color;
-              }
-            }
-          }
-
-          &:not(.-active) > a:not(.-active):hover {
-            background-color: set-color(grey, 90);
-          }
-        }
-      }
-
-      &__description {
-        color: set-color(grey, 40);
-      }
-
-      &__drawers {
-        .chi-drawer {
-          background-color: set-color(grey, 90);
-
-          &__header {
-            background-color: rgba(set-color(grey, 100), 0.5);
-            color: set-color(grey, 40);
-
-            .chi-button {
-              color: $text-white;
-            }
-          }
-
-          &__content {
-            background-color: set-color(grey, 90);
-          }
-
-          &.-active {
-            .chi-drawer__content {
-              .chi-sidenav__drawer-list {
-                li {
-                  a {
-                    color: set-color(white);
-
-                    .chi-sidenav__title {
-                      .chi-icon {
-                        margin-left: 0.5rem;
-                      }
-                    }
-                  }
-
-                  &.-active {
-                    & > a {
-                      background-color: set-color(grey, 90);
-                      box-shadow: inset 0.125rem 0 0 $secondary-color;
-                      color: $secondary-color;
-                    }
-
-                    &.-expanded {
-                      & > a {
-                        background-color: set-color(grey, 80);
-                        color: $secondary-color;
-                      }
-
-                      &:hover {
-                        & > a {
-                          background-color: set-color(grey, 80);
-                        }
-                      }
-                    }
-
-                    &.-unselected {
-                      & > a {
-                        box-shadow: none;
-                      }
-                    }
-
-                    &:hover {
-                      & > a {
-                        background-color: set-color(grey, 90);
-                      }
-                    }
-                  }
-
-                  &.-expanded {
-                    & > a {
-                      background-color: set-color(grey, 80);
-                      color: white;
-
-                      .chi-sidenav__title {
-                        font-weight: 600;
-                      }
-                    }
-
-                    .chi-sidenav__drawer-item-list {
-                      display: block;
-                    }
-                  }
-
-                  .chi-sidenav__drawer-item-list {
-                    background-color: set-color(grey, 80);
-
-                    .chi-tabs {
-                      &.-sm {
-                        li {
-                          a {
-                            &.chi-sidenav__drawer-item-tab {
-                              font-size: 0.8125rem;
-                              font-weight: 400;
-                              line-height: 1.25rem;
-                              padding-bottom: 0.375rem;
-                              padding-left: 3rem;
-                              padding-top: 0.375rem;
-
-                              &:hover {
-                                background-color: set-color(grey, 70);
-                                color: $text-white;
-                              }
-
-                              &.-active {
-                                color: $secondary-color;
-                                font-weight: 600;
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-
-                  &:hover {
-                    & > a {
-                      background-color: set-color(grey, 80);
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    // .chi-sliding-border {
-    //   background-color: $secondary-color;
-    // }
-
-    // &.-sliding {
-    //   .chi-sidenav__list > li {
-    //     &.-active > a {
-    //       box-shadow: none;
-    //     }
-    //   }
-    // }
-  }
-
   .chi-drawer {
-    box-shadow: 0.5rem 0 0.5rem -0.5rem rgba(set-color(black), 0.2);
+    box-shadow: 0.5rem 0 0.5rem -0.5rem rgba($color-black, 0.2);
     position: absolute;
     z-index: $zindex-fixed;
 
@@ -535,7 +312,7 @@ $sidenav-lg-width: 12.5rem;
   }
 
   // .chi-sliding-border {
-  //   background-color: $brand-color;
+  //   background-color: $color-text-primary;
   //   display: none;
   //   left: 0;
   //   position: absolute;

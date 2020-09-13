@@ -3,33 +3,33 @@
 
 $sizes: (
   xs: (
-    font-size: $text-smaller,
-    line-height: $line-height-smaller,
+    font-size: $font-size-xs,
+    line-height: $line-height-sm,
   ),
   sm: (
-    font-size: $text-small,
-    line-height: $line-height-small,
+    font-size: $font-size-sm,
+    line-height: $line-height,
   ),
   md: (
-    font-size: $text,
-    line-height: $line-height-small,
+    font-size: $font-size-base,
+    line-height: $line-height,
   ),
   lg: (
-    font-size: $text-large,
-    line-height: $line-height-large,
+    font-size: $font-size-lg,
+    line-height: $line-height-lg,
   ),
   xl: (
-    font-size: $text-larger,
-    line-height: $line-height-larger,
+    font-size: $font-size-xl,
+    line-height: $line-height-xl,
   ),
 );
 
 label,
 .chi-label {
   display: flex;
-  font-size: $text;
-  font-weight: 600;
-  line-height: $line-height-small;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height;
   margin-bottom: 0.25rem;
 
   @each $type in map-keys($sizes) {
@@ -40,16 +40,16 @@ label,
   }
 
   &.-status {
-    font-weight: normal;
+    font-weight: $font-weight-normal;
     margin-top: 0.25rem;
   }
 
   &.-danger {
-    color: $danger-color;
+    color: $color-text-danger;
   }
 
   &.-success {
-    color: $success-color;
+    color: $color-text-success;
   }
 
 
@@ -60,10 +60,10 @@ label,
   }
 
   .chi-label__required {
-    color: set-color(red, 60);
+    color: $color-icon-danger;
   }
 
   .chi-label__optional {
-    font-weight: 400;
+    font-weight: $font-weight-normal;
   }
 }

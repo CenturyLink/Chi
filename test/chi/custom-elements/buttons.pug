@@ -5,7 +5,7 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 each size in ['default', 'sm', 'md', 'lg', 'xl']
-  each type in ['solid', 'outline', 'flat', 'fluid']
+  each type in ['solid', 'outline', 'flat', 'fluid', 'uppercase']
     div(class={
       [`test-${type}`]: size === 'default',
       [`test-${type}-${size}`]: size !== 'default'
@@ -22,8 +22,9 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                   .-mr--2
                     chi-button.-m--1.-mx--2(
                       color=style
-                      variant= type === 'solid' || type === 'fluid' ? '' : type
+                      variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
                       fluid= type === 'fluid'
+                      uppercase= type === 'uppercase'
                       size= size !== 'default' ? size : ''
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
@@ -32,8 +33,9 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       type='icon'
                       color=style
                       size= size !== 'default' ? size : ''
-                      variant= type === 'solid' || type === 'fluid' ? '' : type
+                      variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
                       fluid= type === 'fluid'
+                      uppercase= type === 'uppercase'
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
                       alternative-text="Button action"
@@ -42,8 +44,9 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     chi-button.-m--1(
                       color=style
                       size= size !== 'default' ? size : ''
-                      variant= type === 'solid' || type === 'fluid' ? '' : type
+                      variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
                       fluid= type === 'fluid'
+                      uppercase= type === 'uppercase'
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
                     )
@@ -55,8 +58,9 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     chi-button.-m--1.-mx--2(
                       data-cy=`button-${style}-${size}`
                       color=style
-                      variant= type === 'solid' || type === 'fluid' ? '' : type
+                      variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
                       fluid= type === 'fluid'
+                      uppercase= type === 'uppercase'
                       size= size !== 'default' ? size : ''
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
@@ -65,8 +69,9 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                       type='icon'
                       color=style
                       size= size !== 'default' ? size : ''
-                      variant= type === 'solid' || type === 'fluid' ? '' : type
+                      variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
                       fluid= type === 'fluid'
+                      uppercase= type === 'uppercase'
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
                       alternative-text="Button action"
@@ -75,8 +80,9 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     chi-button.-m--1(
                       color=style
                       size= size !== 'default' ? size : ''
-                      variant= type === 'solid' || type === 'fluid' ? '' : type
+                      variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
                       fluid= type === 'fluid'
+                      uppercase= type === 'uppercase'
                       disabled= state === 'disabled'
                       extra-class= `-${state}`
                     )

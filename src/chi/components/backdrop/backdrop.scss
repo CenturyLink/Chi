@@ -2,7 +2,7 @@
 @import '_variables';
 
 .chi-backdrop {
-  background-color: rgba(set-color(black), 0.65);
+  background-color: rgba($color-black, 0.65);
   bottom: 0;
   left: 0;
   overflow-x: hidden;
@@ -17,7 +17,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     margin: 1rem auto;
     max-width: 45rem;
     min-height: calc(100% - 2rem);
@@ -33,12 +33,12 @@
     transition: background-color 0.5s cubic-bezier(0.38, 0.52, 0.37, 1);
 
     &.-closed {
-      background-color: rgba(set-color(black), 0);
+      background-color: rgba($color-black, 0);
     }
   }
 
   &.-inverse {
-    background-color: rgba(set-color(white), 0.8);
+    background-color: rgba($color-white, 0.8);
   }
 
   &.-closed {

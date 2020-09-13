@@ -14,8 +14,8 @@ if introduction
                 if introductionSubtitle
                     h2.docs-titlebar__description=introductionSubtitle
                 .docs-titlebar__buttons
-                    a.chi-button.-secondary.-xl.-px--4.-mb--2.-mb-sm--0(href='../getting-started/installation') Install Chi
-                    a.chi-button.-light.-outline.-xl.-px--4.-ml-sm--2.-mb--2.-mb-sm--0(href='../getting-started/whats-new') See What's New In v2.7.0
+                    a.chi-button.-primary.-xl.-uppercase.-px--4.-mb--2.-mb-sm--0(href='../getting-started/installation') Install Chi
+                    a.chi-button.-dark.-outline.-xl.-uppercase.-px--4.-ml-sm--2.-mb--2.-mb-sm--0(href='../getting-started/whats-new') See What's New In v3.0.0
 else
     .chi-grid__container
         h1.docs-titlebar__title=title
@@ -24,7 +24,7 @@ else
 if tabs
     .chi-grid__container
         nav
-            ul.chi-tabs.-inverse#viewtabs
+            ul.chi-tabs#viewtabs
                 - var tabNumber = 0
                 each title, tab in tabs
                     if tabNumber == 0

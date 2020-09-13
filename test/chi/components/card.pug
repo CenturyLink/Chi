@@ -167,11 +167,6 @@ title: Card
     .chi-card__content
       .chi-card__title Title
       .chi-card__caption This is an active card
-.test-card-active-alt
-  h3 Active Alt
-  .chi-card.-active--alt(style="width:20rem;")
-    .chi-card__content.-text
-      | This is an active alt card
 .test-card-no-border
   h3 No Border
   .chi-card.-no-border(style="width:20rem;")
@@ -180,6 +175,15 @@ title: Card
 .test-card-portal-base
   h3 Portal Base
   .chi-card.-portal(style="width:20rem;")
+    .chi-card__header.-sm
+      .chi-card__title Title
+    .chi-card__content
+      .chi-card__caption
+        | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+        | Ut felis magna, facilisis ut malesuada nec.
+.test-card-portal-highlight
+  h3 Portal Base
+  .chi-card.-portal.-highlight(style="width:20rem;")
     .chi-card__header.-sm
       .chi-card__title Title
     .chi-card__content

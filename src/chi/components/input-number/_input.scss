@@ -6,12 +6,12 @@ input {
     &.chi-input {
       // sass-lint:disable no-vendor-prefixes
       -moz-appearance: textfield;
-      border: 0.0625rem solid set-color(grey, 30);
-      color: set-color(grey, 90);
+      border: 0.0625rem solid $color-border-base-dark;
+      color: $color-grey-90;
       display: block;
-      font-size: $text;
+      font-size: $font-size-base;
       height: 2rem;
-      line-height: $line-height-smaller;
+      line-height: $line-height-sm;
       outline: none;
       padding: 0.4375rem;
       width: 5.5rem;
@@ -29,7 +29,7 @@ input {
 
       &:hover,
       &.-hover {
-        border-color: set-color(grey, 40);
+        border-color: $color-grey-40;
       }
 
       &:focus,
@@ -40,24 +40,24 @@ input {
 
       &[disabled],
       &.-disabled {
-        background-color: set-color(grey, 10);
-        border-color: set-color(grey, 30);
-        color: set-color(grey, 90);
+        background-color: $color-grey-10;
+        border-color: $color-border-base-dark;
+        color: $color-grey-90;
         pointer-events: none;
       }
 
       &:not([disabled]) {
         &.-danger {
-          border-color: set-color(red, 50);
+          border-color: $color-red-50;
         }
       }
 
       &.-danger {
-        color: set-color(grey, 90);
+        color: $color-grey-90;
 
         &:focus,
         &.-focus {
-          box-shadow: 0 0 0 1px rgba(set-color(red, 50), 1);
+          box-shadow: 0 0 0 1px rgba($color-red-50, 1);
         }
       }
     }

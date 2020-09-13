@@ -33,7 +33,7 @@ $sizes: (
 
 .chi-price {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: $font-weight-semi-bold;
 
   & sup {
     font-size: 0.875rem;

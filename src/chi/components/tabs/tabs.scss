@@ -4,7 +4,7 @@
 @mixin tabs-vertical {
   display: flex;
   flex-direction: column;
-  line-height: $line-height-smaller;
+  line-height: $line-height-sm;
 
   .chi-tabs__subtabs {
     list-style: none;
@@ -13,22 +13,22 @@
     & > li {
       &.-active {
         & > a {
-          color: $brand-color;
-          font-weight: 600;
+          color: $color-text-primary;
+          font-weight: $font-weight-semi-bold;
         }
       }
 
       & > a {
-        color: $text-color;
+        color: $color-text-base;
         cursor: pointer;
         display: block;
-        font-size: $text-small;
-        line-height: $line-height-smaller;
+        font-size: $font-size-sm;
+        line-height: $line-height-sm;
         padding: 0.5rem 0.5rem 0.5rem 2.5rem;
         text-decoration: none;
 
         &:hover {
-          color: $brand-color;
+          color: $color-text-primary;
         }
       }
     }
@@ -41,7 +41,7 @@
           position: relative;
 
           & > .chi-icon {
-            color: $brand-color;
+            color: $color-text-primary;
             left: 1.5rem;
           }
         }
@@ -76,11 +76,11 @@
 
     &.-active-alt {
       & > a {
-        background-color: set-color(grey, 20);
-        color: $text-color;
+        background-color: $color-grey-20;
+        color: $color-text-base;
 
         & > .chi-icon {
-          color: $text-color;
+          color: $color-text-base;
         }
       }
     }
@@ -94,18 +94,18 @@
   &:not(.-sliding) {
     & > li {
       &.-active:not(.-has-active) > a {
-        box-shadow: inset 0.125rem 0 0 $primary-color;
+        box-shadow: inset 0.125rem 0 0 $color-border-primary;
       }
     }
 
     &.-animated > li {
       &.-active:not(.-has-active) > a {
-        box-shadow: inset 0.125rem 0 0 $primary-color;
+        box-shadow: inset 0.125rem 0 0 $color-border-primary;
       }
 
       & .chi-tabs__subtabs > li {
         &.-active:not(.-has-active) > a {
-          box-shadow: inset 0.125rem 0 0 $primary-color;
+          box-shadow: inset 0.125rem 0 0 $color-border-primary;
         }
       }
     }
@@ -131,7 +131,7 @@
   &.-lg {
     & > li {
       & > a {
-        line-height: $line-height-large;
+        line-height: $line-height-lg;
         padding-bottom: 0.75rem;
         padding-top: 0.75rem;
 
@@ -144,7 +144,7 @@
 
   &.-border {
     & > li {
-      border-bottom: 0.0625rem solid set-color(grey, 30);
+      border-bottom: 0.0625rem solid $color-border-base-dark;
 
       &.-active {
         & > a {
@@ -160,7 +160,7 @@
       }
 
       &:first-child {
-        border-top: 0.0625rem solid set-color(grey, 30);
+        border-top: 0.0625rem solid $color-border-base-dark;
 
         & > a {
           padding-bottom: 0.4375rem;
@@ -210,7 +210,7 @@
         flex-direction: column;
 
         &-title {
-          font-weight: $font-weight-semibold;
+          font-weight: $font-weight-semi-bold;
         }
 
         &-text {
@@ -227,7 +227,7 @@
         padding-right: 2.5rem;
 
         > .chi-icon {
-          font-size: $text;
+          font-size: $font-size-base;
           height: 0.875rem;
           left: 1rem;
           width: 0.875rem;
@@ -255,8 +255,8 @@
         }
 
         &:hover {
-          background-color: set-color(grey, 25);
-          color: $text-color;
+          background-color: $color-grey-25;
+          color: $color-text-base;
 
           .chi-button {
             &.-icon {
@@ -275,8 +275,8 @@
             position: relative;
 
             &::before {
-              border-bottom: 0.0625rem dotted set-color(grey, 100);
-              border-left: 0.0625rem dotted set-color(grey, 100);
+              border-bottom: 0.0625rem dotted $color-grey-100;
+              border-left: 0.0625rem dotted $color-grey-100;
               content: '';
               height: 0.6875rem;
               left: 2.375rem;
@@ -302,9 +302,9 @@
 
           &.-active {
             .chi-tabs_item {
-              background-color: $portal-color-background-table-tr-selected;
-              box-shadow: inset 0.125rem 0 0 $primary-color;
-              color: $primary-color;
+              background-color: $color-background-primary-light;
+              box-shadow: inset 0.125rem 0 0 $color-border-primary;
+              color: $color-text-primary;
 
               .chi-button {
                 &.-icon {
@@ -320,7 +320,7 @@
 
       &.-active {
         .chi-tabs_item {
-          color: $primary-color;
+          color: $color-text-primary;
 
           > .chi-icon {
             left: 1rem;
@@ -338,7 +338,7 @@
     }
 
     &:not(.-sliding) > li.-active:not(.-has-active) > a {
-      background-color: $portal-color-background-table-tr-selected;
+      background-color: $color-background-primary-light;
     }
   }
 }
@@ -350,7 +350,7 @@
     & > li {
       &.-active {
         .chi-icon {
-          color: $brand-color;
+          color: $color-text-primary;
         }
       }
 
@@ -367,7 +367,7 @@
   }
 
   &.-border {
-    border-bottom: 0.0625rem solid set-color(grey, 30);
+    border-bottom: 0.0625rem solid $color-border-base-dark;
 
     & > li {
       &.chi-sliding-border {
@@ -382,7 +382,7 @@
     }
 
     & > a {
-      line-height: $line-height-smaller;
+      line-height: $line-height-sm;
       padding: 1.25rem 0;
     }
 
@@ -395,7 +395,7 @@
 
   &:not(.-sliding) > li {
     &.-active > a {
-      border-bottom: 0.125rem solid $brand-color;
+      border-bottom: 0.125rem solid $color-border-primary;
       padding-bottom: 1.125rem;
     }
   }
@@ -409,7 +409,7 @@
       }
 
       & > a {
-        font-size: $text-smaller;
+        font-size: $font-size-xs;
         padding: 0.8125rem 0 0.6875rem 0;
       }
     }
@@ -424,7 +424,7 @@
       }
 
       & > a {
-        line-height: $line-height-smaller;
+        line-height: $line-height-sm;
         padding: 1rem 0;
       }
     }
@@ -443,7 +443,7 @@
       }
 
       & > a {
-        line-height: $line-height-large;
+        line-height: $line-height-lg;
       }
     }
   }
@@ -459,34 +459,34 @@
     display: inline-block;
 
     &.-active > a {
-      color: $brand-color;
+      color: $color-text-primary;
     }
 
     &.-disabled {
       &,
       & > a {
-        color: $grey-color;
-        font-weight: 600;
+        color: $color-text-muted;
+        font-weight: $font-weight-semi-bold;
         opacity: 0.75;
         pointer-events: none;
       }
     }
 
     & > a {
-      color: $text-color;
+      color: $color-text-base;
       cursor: pointer;
       display: block;
-      font-size: $text;
-      font-weight: 600;
+      font-size: $font-size-base;
+      font-weight: $font-weight-semi-bold;
       text-decoration: none;
 
       &:hover {
-        color: $brand-color;
+        color: $color-text-primary;
       }
     }
 
     &.chi-sliding-border {
-      background-color: $brand-color;
+      background-color: $color-border-primary;
       display: none;
       position: absolute;
     }
@@ -502,7 +502,7 @@
   &.-lg {
     & > li {
       & > a {
-        font-size: $text;
+        font-size: $font-size-base;
       }
     }
   }
@@ -510,45 +510,45 @@
   &.-inverse {
     & > li {
       &.-active > a {
-        color: $secondary-color;
+        color: $color-text-white;
       }
 
       & > a {
-        color: $text-white;
+        color: $color-text-white;
 
         &:hover {
-          color: $secondary-color;
+          color: $color-text-white;
         }
       }
 
       &.-disabled {
         &,
         & > a {
-          color: $text-white;
-          font-weight: 600;
+          color: $color-text-white;
+          font-weight: $font-weight-semi-bold;
           opacity: 0.75;
           pointer-events: none;
         }
       }
 
       &.chi-sliding-border {
-        background-color: $secondary-color;
+        background-color: $color-background-white;
       }
     }
 
     &:not(.-vertical):not(.-responsive):not(.-sliding) > li {
       &.-active > a {
-        border-bottom: 0.125rem solid $secondary-color;
+        border-bottom: 0.125rem solid $color-border-white;
 
         .chi-icon {
-          color: $secondary-color;
+          color: $color-text-white;
         }
       }
     }
 
     &:not(.-vertical):not(.-responsive) {
       &.-border {
-        border-bottom: 0.0625rem solid set-color(grey, 80);
+        border-bottom: 0.0625rem solid $color-grey-80;
       }
     }
 
@@ -557,13 +557,13 @@
       &:not(.-sliding) > li.-active:not(.-has-active) > a,
       &:not(.-sliding).-animated > li.-active:not(.-has-active) > a,
       &:not(.-sliding).-animated .chi-tabs__subtabs > li.-active:not(.-has-active) > a {
-        box-shadow: inset 0.125rem 0 0 $secondary-color;
+        box-shadow: inset 0.125rem 0 0 $color-white;
       }
       // sass-lint:disable-block force-element-nesting
 
       & > li {
         &.-active > a {
-          color: $secondary-color;
+          color: $color-text-white;
         }
       }
 
@@ -571,7 +571,7 @@
         & > li {
           &.-active > a {
             .chi-icon {
-              color: $secondary-color;
+              color: $color-text-white;
             }
           }
         }
@@ -579,10 +579,10 @@
 
       &.-border {
         > li {
-          border-bottom: 0.0625rem solid set-color(grey, 80);
+          border-bottom: 0.0625rem solid $color-grey-80;
 
           &:first-child {
-            border-top: 0.0625rem solid set-color(grey, 80);
+            border-top: 0.0625rem solid $color-grey-80;
           }
         }
       }
@@ -591,15 +591,15 @@
         & > li {
           &.-active {
             & > a {
-              color: $secondary-color;
+              color: $color-text-white;
             }
           }
 
           & > a {
-            color: $text-white;
+            color: $color-text-white;
 
             &:hover {
-              color: $secondary-color;
+              color: $color-text-white;
             }
           }
         }

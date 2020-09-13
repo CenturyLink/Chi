@@ -18,39 +18,10 @@ each menuItemState in menuItemStates
               each i in [1, 2, 3]
                 a(class=`chi-dropdown__menu-item ${menuItemState.class}`, href='#')=textCombination.d_text + " " + i
 
-each menuItemState in menuItemStates
-  div(class=`test-basicDropdown${menuItemState.class}-inverse`)
-    span.-text--h2=menuItemState.title
-    .-d--flex
-      each textCombination in textCombinations
-        each dropdownState in dropdownStates
-          .chi-dropdown(style="margin-bottom: 8em")
-            button(class=`chi-button chi-dropdown__trigger ${dropdownState}`)=textCombination.t_text
-            div(class=`chi-dropdown__menu -inverse ${dropdownState}`)
-              each i in [1, 2, 3]
-                a(class=`chi-dropdown__menu-item ${menuItemState.class}`, href='#')=textCombination.d_text + " " + i
-
 div(class=`test-dropdown-list`)
   span.-text--h2 List
   .-d--flex
     div(class=`chi-dropdown__menu -list -active`)
-      a.chi-dropdown__menu-item(href='#')
-        p.chi-dropdown__menu-item_title Normal element
-        p.chi-dropdown__menu-item_text Normal element
-      a.chi-dropdown__menu-item.-active(href='#')
-        p.chi-dropdown__menu-item_title Normal element
-        p.chi-dropdown__menu-item_text Active element
-      a.chi-dropdown__menu-item.-disabled(href='#')
-        p.chi-dropdown__menu-item_title Normal element
-        p.chi-dropdown__menu-item_text Disabled element
-      a.chi-dropdown__menu-item.-hover(href='#')
-        p.chi-dropdown__menu-item_title Normal element
-        p.chi-dropdown__menu-item_text Hovered item
-
-div(class=`test-dropdown-list-inverse`)
-  span.-text--h2 List
-  .-d--flex
-    div(class=`chi-dropdown__menu -list -inverse -active`)
       a.chi-dropdown__menu-item(href='#')
         p.chi-dropdown__menu-item_title Normal element
         p.chi-dropdown__menu-item_text Normal element
@@ -71,16 +42,6 @@ div(class=`test-dropdown-divider`)
       each i in [1, 2]
         a(class=`chi-dropdown__menu-item`, href='#')="Text " + i
       .chi-divider
-      each i in [3, 4]
-        a(class=`chi-dropdown__menu-item`, href='#')="Text " + i
-
-div(class=`test-dropdown-divider-inverse`)
-  span.-text--h2 Divider Inverse
-  .-d--flex
-    div(class=`chi-dropdown__menu -inverse -active`)
-      each i in [1, 2]
-        a(class=`chi-dropdown__menu-item`, href='#')="Text " + i
-      .chi-divider.-inverse
       each i in [3, 4]
         a(class=`chi-dropdown__menu-item`, href='#')="Text " + i
 
@@ -115,43 +76,6 @@ div(class=`test-dropdown-icons`)
             use(xlink:href='#icon-users')
         = "Share"
       .chi-divider
-      a.chi-dropdown__menu-item(href='#')
-        .chi-icon
-          svg
-            use(xlink:href='#icon-logout')
-        = "Logout"
-
-div(class=`test-dropdown-icons-inverse`)
-  span.-text--h2 Icons Inverse
-  .-d--flex
-    .chi-dropdown__menu.-active.-inverse
-      a.chi-dropdown__menu-item(href='#')
-        .chi-icon
-          svg
-            use(xlink:href='#icon-file-outline')
-        = "New"
-      a.chi-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
-        .chi-icon
-          svg
-            use(xlink:href='#icon-arrow-to-bottom')
-        = "Save"
-      .chi-divider.-inverse
-      a.chi-dropdown__menu-item(href='#')
-        .chi-icon
-          svg
-            use(xlink:href='#icon-mail')
-        = "Send"
-      a.chi-dropdown__menu-item.-active(href='#')
-        .chi-icon
-          svg
-            use(xlink:href='#icon-cart')
-        = "Buy"
-      a.chi-dropdown__menu-item.-hover(href='#')
-        .chi-icon
-          svg
-            use(xlink:href='#icon-users')
-        = "Share"
-      .chi-divider.-inverse
       a.chi-dropdown__menu-item(href='#')
         .chi-icon
           svg

@@ -6,7 +6,7 @@ h2 Icon color
 p.-text Change icon colors with contextual classes.
 h3 Brand
 p.-text
-  | Brand icon colors reinforce CenturyLink's brand. Use primary and secondary as accents, and dark, grey, and light as neutrals.
+  | Brand icon colors reinforce Lumen's brand. Use primary and secondary as accents, and dark, grey, and light as neutrals.
 .example.-mb--3
   .chi-grid.-no-gutter
     .chi-col.-w--12.-w-md--6.-p--1.-d--flex.-justify-content--center
@@ -51,7 +51,7 @@ p.-text
 
 h3 Brand
 p.-text
-  | Brand background-colors reinforce CenturyLink's brand.
+  | Brand background-colors reinforce Lumen's brand.
 section.chi-table.-bordered.-mt--3.-mb--3
   div
     table.-text(cellpadding='0', cellspacing='0')
@@ -64,7 +64,7 @@ section.chi-table.-bordered.-mt--3.-mb--3
           th
             div Result
       tbody
-        each val, type in {'primary': '#0047BB', 'secondary': '#48D597', 'black': '#000000', 'blue-90': '#001E60', 'grey': '#53565A', 'white': '#FFFFFF'}
+        each val, type in {'primary': '#0075C9', 'secondary': '#38C6F4', 'black': '#000000', 'white': '#FFFFFF'}
           tr
             td(width='25%')
               code= '-bg--' + type
@@ -87,7 +87,7 @@ section.chi-table.-bordered.-mt--3.-mb--3
           th
             div Result
       tbody
-        each val, type in {'blue-80': '#00308A', 'teal': '#03808C'}
+        each val, type in {'navy': '#083176', 'grey': '#3F4145'}
           tr
             td(width='25%')
               code= '-bg--' + type
@@ -111,7 +111,7 @@ section.chi-table.-bordered.-mt--3.-mb--3
           th
             div Result
       tbody
-        each val, type in {'grey-10': '#F8F9F9', 'grey-20': '#EDF0F2', 'grey-30': '#D0D4D9'}
+        each val, type in {'grey-20': '#F8F9F9', 'grey-15': '#F4F5F6', 'grey-20': '#EDF0F2', 'grey-25': '#DADEE2', 'grey-30': '#D0D4D9'}
           tr
             td(width='25%')
               code= '-bg--' + type
@@ -138,7 +138,7 @@ section.chi-table.-bordered.-mt--3.-mb--3
           th
             div Result
       tbody
-        each val, type in {'success': '#007E46', 'info': '#0060FA', 'warning': '#A15C00', 'danger': '#D81820', 'muted': '#72767A'}
+        each val, type in {'success': '#007E44', 'success-light': '#DBFAEE', 'success-lighter': '#F1FEF8', 'info': '#0075C9', 'info-light': '#F5F9FC', 'info-lighter': '#E0F3FF', 'warning': '#A15C00', 'warning-light': '#FAECD9', 'warning-lighter': '#FFF8ED', 'danger': '#D62015', 'danger-light': '#FFE8E5', 'danger-lighter': '#FFF5F5', 'muted': '#53565A', 'muted-light': '#EDF0F2', 'muted-lighter': '#F8F9F9'}
           tr
             td(width='25%')
               code= '-bg--' + type
@@ -182,7 +182,7 @@ section.chi-table.-bordered.-mt--3.-mb--3
             div Value
       tbody
         each size in ['sm', 'md', 'lg', 'xl']
-          each type in ['none', 'primary', 'secondary', 'white', 'black', 'muted', 'grey', 'grey-10', 'grey-20', 'grey-30', 'blue-60', 'blue-70', 'blue-80', 'blue-90', 'teal', 'success', 'info', 'warning', 'danger']
+          each type in ['none', 'primary', 'secondary', 'white', 'black', 'muted', 'grey', 'grey-20', 'grey-20', 'grey-30', 'success', 'info', 'warning', 'danger']
             tr
               td.-text(width='40%')
                 code= '-bg-' + size + '--' + type

@@ -1,7 +1,7 @@
-- var defaultMetaDescription = "Chi is CenturyLink's design system for building consistent digital products and experiences."
+- var defaultMetaDescription = "Chi is Lumen's design system for building consistent digital products and experiences."
 
 doctype html
-html(lang="en")
+html.chi(lang="en")
     head
         meta(charset="utf-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
@@ -18,7 +18,8 @@ html(lang="en")
             meta(name="description", content=description)
         link(rel="stylesheet", href=`${rootPath}chi.css`)
         link(rel="stylesheet", href=`${rootPath}assets/styles/chi-docs.css`)
-        link(rel="icon", href=`${rootPath}assets/images/favicon.ico`, type="image/ico", sizes="16x16")
+        link(rel="icon", type="image/svg+xml", href=`${rootPath}assets/images/favicon.svg`)
+        link(rel="alternate icon", href=`${rootPath}assets/images/favicon.ico`)
         script(src=`${rootPath}assets/scripts/globalConfigs.js`)
         script(src=`${rootPath}assets/scripts/chiVersionCheck.js`)
         script(src=`${rootPath}js/chi.js`)
@@ -27,7 +28,7 @@ html(lang="en")
                 link(rel="stylesheet", media="all", href=`${rootPath}${style}.css`)
         link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css")
 
-    body.chi.show-grid
+    body.show-grid
       #docs-container.docs-container
         include partials/header
         if nondoc

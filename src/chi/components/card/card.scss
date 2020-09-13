@@ -2,8 +2,8 @@
 @import '_variables';
 
 .chi-card {
-  background-color: set-color(white);
-  border: 0.0625rem solid rgba(set-color(black), 0.12);
+  background-color: $color-background-white;
+  border: 0.0625rem solid rgba($color-black, 0.12);
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -17,14 +17,14 @@
   &__content {
     display: flex;
     flex-direction: column;
-    font-size: $text;
-    line-height: $line-height-small;
+    font-size: $font-size-base;
+    line-height: $line-height;
     padding: 1rem;
 
     .chi-card__title {
-      font-size: $text-large;
-      font-weight: 600;
-      line-height: $line-height-large;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semi-bold;
+      line-height: $line-height-lg;
       margin: 0 0 0.5rem 0;
     }
 
@@ -38,8 +38,8 @@
     .chi-card__caption {
       display: flex;
       flex-direction: column;
-      font-size: $text;
-      line-height: $line-height-small;
+      font-size: $font-size-base;
+      line-height: $line-height;
       margin: 0;
       padding: 0;
     }
@@ -67,7 +67,7 @@
   }
 
   &__header {
-    box-shadow: inset 0 -1px 0 0 rgba(set-color(black), 0.12);
+    box-shadow: inset 0 -1px 0 0 rgba($color-black, 0.12);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -95,17 +95,17 @@
     &.-sm {
       padding: 0.5rem 1rem;
     }
+  }
 
-    .chi-card__title {
-      font-size: $text-large;
-      font-weight: 600;
-      line-height: $line-height-large;
-      margin: 0;
-    }
+  .chi-card__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semi-bold;
+    line-height: $line-height-lg;
+    margin: 0;
   }
 
   &__footer {
-    box-shadow: inset 0 1px 0 0 rgba(set-color(black), 0.12);
+    box-shadow: inset 0 1px 0 0 rgba($color-black, 0.12);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -146,28 +146,23 @@
   }
 
   &.-active {
-    border: 0.0625rem solid $primary-color;
-    box-shadow: 0 0 0 0.0625rem $primary-color;
+    border: 0.0625rem solid $color-border-primary;
+    box-shadow: 0 0 0 0.0625rem $color-border-primary;
 
     .chi-card__title {
-      color: $primary-color !important;
+      color: $color-text-primary !important;
     }
 
     .chi-icon {
       &.chi-card__icon {
-        color: $primary-color;
+        color: $color-text-primary;
       }
-    }
-
-    &--alt {
-      border: 0.0625rem solid $secondary-color;
-      box-shadow: 0 0 0 0.0625rem $secondary-color;
     }
   }
 
   &.-empty {
     background-color: transparent;
-    border: 0.125rem dashed rgba(set-color(black), 0.12);
+    border: 0.125rem dashed rgba($color-black, 0.12);
 
     & .chi-card__content {
       align-items: center;
@@ -176,7 +171,7 @@
       justify-content: center;
 
       & .chi-icon {
-        color: $muted-color;
+        color: $color-text-muted-light;
         margin: 0.5rem 0;
       }
     }
@@ -222,27 +217,67 @@
     }
 
     &.-active {
-      box-shadow: map-get($shadow, 2), 0 0 0 0.0625rem $primary-color !important;
-    }
-
-    &.-active--alt {
-      box-shadow: map-get($shadow, 2), 0 0 0 0.0625rem $secondary-color !important;
+      box-shadow: map-get($shadow, 2), 0 0 0 0.0625rem $color-border-primary !important;
     }
   }
 
   &.-portal {
-    background-color: set-color(grey, 20);
+    background-color: $color-grey-15;
     border: 0;
     border-radius: 0;
 
     .chi-card__header {
       align-items: center;
-      background-color: set-color(grey, 30);
+      background-color: $color-grey-25;
       box-shadow: none;
     }
 
+    .chi-card__title {
+      font-size: $font-size-base;
+    }
+
     .chi-card__tabs {
-      background-color: set-color(grey, 30);
+      align-items: center;
+      background-color: $color-grey-25;
+      display: flex;
+
+      .chi-card__title {
+        + .chi-tabs {
+          margin-left: 3rem;
+        }
+      }
+
+      .chi-tabs {
+        li {
+          a {
+            font-weight: $font-weight-normal;
+          }
+        }
+
+        &.-sm {
+          height: 2.5rem;
+
+          >li {
+            >a {
+              padding: 0.75rem 0;
+            }
+
+            &.-active {
+              >a {
+                padding-bottom: 0.625rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.-highlight {
+      background-color: $color-background-secondary-light;
+
+      .chi-card__header {
+        background-color: $color-cyan-40;
+      }
     }
   }
 }

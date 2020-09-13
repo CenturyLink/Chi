@@ -4,35 +4,27 @@
 $brand-sizes: (
   xs: (
     height: 0.75rem,
-    width: 3.731rem,
+    width: 5.25rem,
   ),
   sm: (
     height: 1rem,
-    width: 4.975rem,
-  ),
-  sm--2: (
-    height: 1.25rem,
-    width: 6.219rem,
-  ),
-  sm--3: (
-    height: 1.5rem,
-    width: 7.463rem,
+    width: 7rem,
   ),
   md: (
-    height: 2rem,
-    width: 9.951rem,
+    height: 1.25rem,
+    width: 8.75rem,
   ),
   lg: (
-    height: 4rem,
-    width: 19.902rem,
+    height: 1.5rem,
+    width: 10.5rem,
   ),
   xl: (
-    height: 6rem,
-    width: 29.853rem,
+    height: 2rem,
+    width: 14rem,
   ),
   xxl: (
-    height: 8rem,
-    width: 39.805rem,
+    height: 2.5rem,
+    width: 17.5rem,
   ),
 );
 
@@ -40,8 +32,8 @@ $brand-sizes: (
   & > img,
   & > svg {
     display: block;
-    height: 2rem;
-    width: 9.951rem;
+    height: 1.25rem;
+    width: 8.75rem;
   }
 
   @each $type in map-keys($brand-sizes) {
