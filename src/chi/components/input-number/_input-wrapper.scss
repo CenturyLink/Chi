@@ -107,11 +107,11 @@ $expanded-sizes: (
         padding-right: 1.375rem;
 
         & ~ button {
-          background-color: set-color(white);
+          background-color: $color-background-white;
           background-position: center;
           background-repeat: no-repeat;
           background-size: 0.5rem;
-          border: 0.0625rem solid set-color(grey, 30);
+          border: 0.0625rem solid $color-border-base-dark;
           cursor: pointer;
           height: 0.6875rem;
           outline: none;
@@ -131,9 +131,9 @@ $expanded-sizes: (
           }
 
           &:active {
-            background-color: set-color(grey, 20);
-            border: 0.0625rem solid set-color(grey, 40);
-            box-shadow: inset 0 0 1px 0 rgba(set-color(black), 0.2);
+            background-color: $color-grey-20;
+            border: 0.0625rem solid $color-grey-40;
+            box-shadow: inset 0 0 1px 0 rgba($color-black, 0.2);
           }
         }
 
@@ -199,7 +199,7 @@ $expanded-sizes: (
             &.chi-button {
               background-image: none;
               background-size: auto;
-              color: $text-color;
+              color: $color-text-base;
               display: block;
               height: map-get(map-get($expanded-sizes, md), btn-height);
               padding: 0.4375rem;
@@ -238,7 +238,7 @@ $expanded-sizes: (
         &[disabled] {
           &.chi-input {
             & ~ button {
-              color: rgba($text-color, 0.3);
+              color: rgba($color-text-base, 0.3);
               opacity: 1;
               pointer-events: none;
             }
@@ -248,7 +248,7 @@ $expanded-sizes: (
     }
 
     & > button[disabled] {
-      color: rgba($text-color, 0.3);
+      color: rgba($color-text-base, 0.3);
       pointer-events: none;
     }
 

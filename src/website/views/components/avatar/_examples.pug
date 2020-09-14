@@ -1,6 +1,6 @@
 - var sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
 - var columnWidths = {'xs':[ '4', '3', '1'], 'sm':[ '4', '3', '1'], 'sm--2':[ '4', '3', '1'], 'sm--3':[ '4', '3', '1'], 'md':[ '4', '2', '1'], 'lg':[ '4', '3', '2'], 'xl':[ '6', '3', '2'], 'xxl':[ '6', '4', '3']};
-- var colors = ["grey", "red", "pink", "purple", "indigo", "blue", "light-blue", "teal", "mint", "green", "yellow", "orange", "secondary", "primary"];
+- var colors = ["grey", "red", "pink", "purple", "indigo", "navy", "blue", "cyan", "teal", "green", "yellow", "orange", "secondary", "primary"];
 - var iconExamples = ['user', 'users', 'atom'];
 
 h2 Examples
@@ -78,8 +78,8 @@ h3 Color
 p.-text
   | Both icon and initial avatars support <a href="../../foundations/color/">Chi colors</a>.
   | To color an icon, apply any of the following color classes: <code>-grey</code>, <code>-red</code>,
-  | <code>-pink</code>, <code>-purple</code>, <code>-indigo</code>, <code>-blue</code>,
-  | <code>-teal</code>, <code>-mint</code>, <code>-green</code>, <code>-yellow</code>, <code>-orange</code>,
+  | <code>-pink</code>, <code>-purple</code>, <code>-indigo</code>, <code>-navy</code>, <code>-blue</code>,
+  | <code>-teal</code>, <code>-green</code>, <code>-yellow</code>, <code>-orange</code>,
   | <code>-secondary</code>, <code>-primary</code>
 
 ul#chi-tabs--colors.chi-tabs
@@ -110,10 +110,10 @@ ul#chi-tabs--colors.chi-tabs
         <div class="chi-avatar -pink">AA</div>
         <div class="chi-avatar -purple">AA</div>
         <div class="chi-avatar -indigo">AA</div>
+        <div class="chi-avatar -navy">AA</div>
         <div class="chi-avatar -blue">AA</div>
-        <div class="chi-avatar -light-blue">AA</div>
+        <div class="chi-avatar -cyan">AA</div>
         <div class="chi-avatar -teal">AA</div>
-        <div class="chi-avatar -mint">AA</div>
         <div class="chi-avatar -green">AA</div>
         <div class="chi-avatar -yellow">AA</div>
         <div class="chi-avatar -orange">AA</div>
@@ -129,13 +129,13 @@ ul#chi-tabs--colors.chi-tabs
                 i.chi-icon.icon-user
               p.-text= color
     .example-tabs.-pl--2
-      ul.chi-tabs#example-color-icon
+      ul.chi-tabs#example-icon-color
         li.-disabled
-          a(href=`#webcomponent-color-icon`) Web Component
+          a(href=`#webcomponent-icon-color`) Web Component
         li.-active
-          a(href=`#html-color-icon`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-color-icon
-    .chi-tabs-panel.-active#html-color-icon
+          a(href=`#html-icon-color`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-icon-color
+    .chi-tabs-panel.-active#html-icon-color
       :code(lang="html")
         <div class="chi-avatar -grey">
           <i class="chi-icon icon-user"></i>
@@ -152,16 +152,16 @@ ul#chi-tabs--colors.chi-tabs
         <div class="chi-avatar -indigo">
           <i class="chi-icon icon-user"></i>
         </div>
+        <div class="chi-avatar -navy">
+          <i class="chi-icon icon-user"></i>
+        </div>
         <div class="chi-avatar -blue">
           <i class="chi-icon icon-user"></i>
         </div>
-        <div class="chi-avatar -light-blue">
+        <div class="chi-avatar -cyan">
           <i class="chi-icon icon-user"></i>
         </div>
         <div class="chi-avatar -teal">
-          <i class="chi-icon icon-user"></i>
-        </div>
-        <div class="chi-avatar -mint">
           <i class="chi-icon icon-user"></i>
         </div>
         <div class="chi-avatar -green">

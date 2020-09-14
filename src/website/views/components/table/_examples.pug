@@ -21,12 +21,6 @@ p.-text
   | To display a row in active / selected state, apply class <code>-active</code> to the <code>tr</code>.
 :example(lang="html"):html-beautify:pug include ./_portal.pug
 
-h3 Inverse theme
-p.-text
-  | Enable inverse styling by applying class <code>-inverse</code>.
-  | To display a row in active / selected state, apply class <code>-active</code> to the <code>tr</code>.
-:example(lang="html"):html-beautify:pug include ./_inverse.pug
-
 h2 Row States
 p.-text
   | Chi offers a wide variety of modifiers to express different row states.
@@ -138,7 +132,7 @@ h2 Selectable
         </tr>
     </thead>
     <tbody>
-        <tr class="-row--info">
+        <tr class="-active">
             <td class="-lh--1">
               <input class="chi-checkbox__input" type="checkbox" id="chk-1-01" checked="checked" />
               <label class="chi-checkbox__label" for="chk-1-01">

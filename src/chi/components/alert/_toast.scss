@@ -5,28 +5,8 @@
     min-width: 16rem;
     padding-right: 1rem;
 
-    .chi-alert__content {
-      .chi-alert__title {
-        margin-bottom: 0.25rem;
-      }
-    }
-
-    &.-sm {
-      .chi-alert__content {
-        .chi-alert__title {
-          margin-bottom: 0;
-        }
-      }
-    }
-
     &.-lg {
       padding-right: 1.5rem;
-
-      .chi-alert__content {
-        .chi-alert__title {
-          margin-bottom: 0.375rem;
-        }
-      }
     }
   }
 }

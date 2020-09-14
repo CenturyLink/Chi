@@ -2,20 +2,17 @@
 @import '_mixins';
 
 $states: (
-  light: (
-    background-color: $light-color,
-  ),
   danger: (
-    background-color: $icon-color-danger,
+    background-color: $color-icon-danger,
   ),
   warning: (
-    background-color: $icon-color-warning,
+    background-color: $color-icon-warning,
   ),
   info: (
-    background-color: $primary-color,
+    background-color: $color-background-primary,
   ),
   success: (
-    background-color: $icon-color-success,
+    background-color: $color-icon-success,
   )
 );
 
@@ -28,7 +25,7 @@ progress {
   /* Get rid of default border in Firefox. */
   border: 0;
   /* For IE10 / IE 11 / Edge */
-  color:  $primary-color;
+  color:  $color-text-primary-alt;
   display: block;
   height: 0.5rem;
   overflow: hidden;
@@ -36,16 +33,16 @@ progress {
 
   //Chrome, Safari
   &::-webkit-progress-bar {
-    background-color: set-color(grey, 20);
+    background-color: $color-grey-20;
   }
 
   &::-webkit-progress-value {
-    background-color: $primary-color;
+    background-color: $color-background-primary;
   }
 
   //Firefox
   &::-moz-progress-bar {
-    background-color: $primary-color;
+    background-color: $color-background-primary;
   }
 
   //Fix for 1 px border-right on progress bar in IE10 / IE 11 / Edge

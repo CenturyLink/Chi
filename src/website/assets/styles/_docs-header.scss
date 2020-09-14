@@ -35,41 +35,40 @@
 
         .chi-brand {
           margin: 0;
-
-          &:focus {
-            outline: 0.125rem solid $focus-color;
-            outline-offset: 0.0625rem;
-          }
+          width: 7.1875rem;
 
           @include respond-to(md) {
             margin: 0 1rem 0 0;
+            width: 8.75rem;
           }
 
           @include respond-to(lg) {
-            margin: 0 1.5rem 0 0;
+            margin: 0 3rem 0 0;
           }
 
           & > img,
           & > svg {
-            height: 1.5rem;
+            height: 1rem;
+            width: 7.1875rem;
 
             @include respond-to(md) {
-              height: 2rem;
+              height: 1.25rem;
+              width: 8.75rem;
             }
           }
         }
 
         .chi-header__title {
-          font-size: $text;
+          font-size: $font-size-base;
           line-height: $line-height;
 
           @include respond-to(sm) {
-            font-size: $text-large;
-            line-height: $line-height-small;
+            font-size: $font-size-lg;
+            line-height: $line-height;
           }
 
           @include respond-to(md) {
-            font-size: $text-larger;
+            font-size: $font-size-xl;
           }
         }
 
@@ -108,20 +107,11 @@
           }
 
           .chi-input {
-            background-color: set-color(grey, 90);
-            border: 0;
-            box-shadow: none;
-            color: set-color(grey, 40);
             width: 100%;
-
-            &:focus {
-              background-color: set-color(white);
-              color: $text-color;
-            }
           }
 
           .chi-icon {
-            color: set-color(grey, 50);
+            color: $color-grey-50;
             position: absolute;
             right: 0.75rem;
             top: 0.5rem;
@@ -139,13 +129,13 @@
             .ds-cursor {
               .algolia-docsearch-suggestion:not(.suggestion-layout-simple) {
                 .algolia-docsearch-suggestion--content {
-                  background-color: set-color(blue, 20);
+                  background-color: $color-background-info-light;
                 }
               }
             }
 
             .algolia-docsearch-suggestion--highlight {
-              color: $primary-color;
+              color: $color-text-primary;
             }
 
             .algolia-docsearch-suggestion--content {
@@ -156,7 +146,7 @@
               }
 
               &::before {
-                background: set-color(grey, 20);
+                background: $color-grey-20;
                 display: none;
 
                 @include respond-to(lg) {
@@ -166,17 +156,17 @@
             }
 
             .algolia-docsearch-suggestion--category-header {
-              border-bottom-color: set-color(grey, 30);
-              color: $text-color;
-              font-size: $text-large;
+              border-bottom-color: $color-border-base-dark;
+              color: $color-text-base;
+              font-size: $font-size-lg;
 
               .algolia-docsearch-suggestion--highlight {
-                box-shadow: inset 0 -2px 0 0 $primary-color;
+                box-shadow: inset 0 -2px 0 0 $color-border-primary;
               }
             }
 
             .algolia-docsearch-suggestion--subcategory-column {
-              color: $muted-color;
+              color: $color-text-muted-light;
               display: none;
 
               @include respond-to(lg) {
@@ -184,34 +174,34 @@
               }
 
               &::before {
-                background: set-color(grey, 30);
+                background: $color-grey-30;
               }
 
               .algolia-docsearch-suggestion--highlight {
-                background-color: set-color(blue, 20);
+                background-color: $color-background-primary-light;
               }
             }
 
             .algolia-docsearch-suggestion--title {
-              color: $text-color;
+              color: $color-text-base;
               font-weight: bold;
 
               .algolia-docsearch-suggestion--highlight {
-                background-color: set-color(blue, 20);
+                background-color: $color-background-primary-light;
               }
             }
 
             .algolia-docsearch-suggestion--text {
-              color: $grey-color;
+              color: $color-text-muted;
               font-size: 0.8125rem;
 
               .algolia-docsearch-suggestion--highlight {
-                box-shadow: inset 0 -2px 0 0 $primary-color;
+                box-shadow: inset 0 -2px 0 0 $color-border-primary;
               }
             }
 
             .algolia-docsearch-suggestion--no-results {
-              color: $grey-color;
+              color: $color-text-muted;
               width: 100%;
 
               &::before {

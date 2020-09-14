@@ -1,12 +1,12 @@
 .chi-alert {
   &.-banner {
-    background-color: set-color(white);
+    background-color: $color-background-white;
     border: 0;
     box-shadow: none;
     padding: 0.875rem 1.5rem;
 
     .chi-alert__title {
-      color: $text-color;
+      color: $color-text-base;
     }
 
     &.-sm {

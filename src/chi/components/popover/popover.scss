@@ -4,17 +4,18 @@
 $popover-arrow-size: 0.75rem;
 
 .chi-popover {
-  background-color: set-color(white);
+  background-color: $color-background-white;
+  border-radius: $border-radius;
   box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
   0 3px 14px 2px rgba(0, 0, 0, 0.12),
   0 5px 5px -3px rgba(0, 0, 0, 0.2);
-  color: $text-color;
+  color: $color-text-base;
   display: none;
-  font-family: $font-family;
-  font-size: $text;
-  font-weight: normal;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
   left: 0;
-  line-height: $line-height-small;
+  line-height: $line-height;
   max-width: 18rem;
   opacity: 0;
   position: absolute;
@@ -38,9 +39,9 @@ $popover-arrow-size: 0.75rem;
     padding: 1rem 1rem 0;
 
     & .chi-popover__title {
-      font-size: $text-large;
-      font-weight: 600;
-      line-height: $line-height-large;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semi-bold;
+      line-height: $line-height-lg;
       margin: 0;
     }
 
@@ -72,16 +73,16 @@ $popover-arrow-size: 0.75rem;
     padding: 0.5rem 1rem;
 
     & .chi-popover__title {
-      font-size: $text-large;
-      font-weight: 600;
-      line-height: $line-height-large;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semi-bold;
+      line-height: $line-height-lg;
       margin: 0.5rem 0;
     }
 
     & p,
     & .chi-popover__text {
-      font-size: $text;
-      line-height: $line-height-small;
+      font-size: $font-size-base;
+      line-height: $line-height;
       margin: 0.5rem 0;
     }
 
@@ -117,7 +118,7 @@ $popover-arrow-size: 0.75rem;
     width: $popover-arrow-size;
 
     &::after {
-      border-color: set-color(white);
+      border-color: $color-border-white;
       border-style: solid;
       border-width: calc(#{$popover-arrow-size} / 2);
       content: '';

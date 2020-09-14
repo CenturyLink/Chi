@@ -1,14 +1,5 @@
 @import '_variables';
 
-@function set-color($scheme, $tone: null) {
-  $resolved-color-scheme: map-get($colorscheme, $scheme);
-  @if type-of($tone) != 'null' {
-    @return map-get($resolved-color-scheme, $tone);
-  } @else {
-    @return $resolved-color-scheme;
-  }
-}
-
 @function capitalize($string) {
   @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
 }
@@ -54,7 +45,7 @@
 }
 
 @mixin remove-anchor-style {
-  color: $text-color;
+  color: $color-text-base;
 
   &:hover {
     text-decoration: none;

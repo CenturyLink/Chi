@@ -21,28 +21,28 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   }
 
   &__line {
-    border-top: 0.125rem solid set-color(grey, 60);
+    border-top: 0.125rem solid $color-grey-60;
     position: relative;
     width: 100%;
   }
 
   & > li {
     align-items: center;
-    color: $primary-color;
+    color: $color-text-primary-alt;
     display: flex;
     flex: 1 0 auto;
-    font-size: $text;
+    font-size: $font-size-base;
     justify-content: center;
     line-height: 1rem;
 
     & > .chi-steps__icon {
       &::before {
-        color: set-color(white);
+        color: $color-text-muted;
         content: counter(step);
         counter-increment: step;
-        font-family: $font-family;
-        font-size: $text;
-        font-weight: $font-weight-semibold;
+        font-family: $font-family-base;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semi-bold;
         position: absolute;
         z-index: $zindex-prominent;
       }
@@ -62,13 +62,13 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
 
     & > a {
-      font-weight: $font-weight-semibold;
+      font-weight: $font-weight-normal;
       margin-left: 0.75rem;
       white-space: nowrap;
     }
 
     & > .chi-steps__line {
-      border-color: $primary-color;
+      border-color: $color-border-primary;
       margin: 0.5rem 0.75rem;
     }
 
@@ -81,8 +81,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
       & > .chi-steps__line {
         &::after {
-          border-right: 0.125rem solid $primary-color;
-          border-top: 0.125rem solid $primary-color;
+          border-right: 0.125rem solid $color-border-primary;
+          border-top: 0.125rem solid $color-border-primary;
           content: '';
           height: 0.5rem;
           position: absolute;
@@ -95,18 +95,26 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
 
     &.-active {
+      & > a {
+        font-weight: $font-weight-semi-bold;
+      }
+
       & > .chi-steps__icon {
         a {
-          font-weight: $font-weight-semibold;
+          font-weight: $font-weight-semi-bold;
         }
 
         &::after {
           content: '\e942';
         }
+
+        &::before {
+          color: $color-text-white;
+        }
       }
 
       & > .chi-steps__line {
-        border-color: set-color(grey, 60);
+        border-color: $color-grey-60;
       }
 
       &:last-child {
@@ -115,83 +123,81 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
       & ~ li {
         & > .chi-steps__icon {
-          color: set-color(grey, 60);
+          color: $color-grey-60;
 
           &::after {
-            content: '\e942';
+            content: '\e934';
           }
 
         }
 
         & > .chi-steps__line {
-          border-color: set-color(grey, 60);
+          border-color: $color-grey-60;
         }
 
         &:last-child {
           flex-grow: 0;
         }
       }
-
-      a {
-        color: $primary-color;
-      }
     }
   }
 
   & a {
-    color: set-color(grey, 100);
+    color: $color-text-base;
     text-decoration: none;
   }
 
   &.-inverse {
-    background-color: set-color(black);
+    background-color: $color-background-black;
 
     & > li {
-      color: $secondary-color;
+      color: $color-text-secondary;
 
       & > .chi-steps__icon {
         &::before {
-          color: set-color(black);
+          color: $color-text-white;
         }
       }
 
       &::before {
-        border: 0.125rem solid set-color(black);
+        border: 0.125rem solid $color-border-black;
       }
 
       & a {
-        color: set-color(white);
+        color: $color-text-white;
       }
 
       & > .chi-steps__line {
-        border-color: $secondary-color;
+        border-color: $color-border-secondary;
       }
 
       &.-completed {
         & > .chi-steps__line {
           &::after {
-            border-right-color: $secondary-color;
-            border-top-color: $secondary-color;
+            border-right-color: $color-border-secondary;
+            border-top-color: $color-border-secondary;
           }
         }
       }
 
       &.-active {
-        a {
-          color: $secondary-color;
+        & > .chi-steps__line {
+          border-color: $color-grey-40;
         }
 
-        & > .chi-steps__line {
-          border-color: set-color(grey, 40);
+        & > .chi-steps__icon {
+          &::before {
+            color: $color-text-black;
+          }
         }
 
         & ~ li {
           & > .chi-steps__icon {
-            color: set-color(grey, 40);
+            color: $color-grey-40;
           }
 
           & > .chi-steps__line {
-            border-color: set-color(grey, 40);
+            border-color: $color-grey-40;
           }
         }
       }
@@ -208,7 +214,6 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   }
 
   &.-labels--hide {
-
     & li > .chi-steps__icon {
       a {
         display: none;

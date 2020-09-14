@@ -1,4 +1,58 @@
 # CHANGELOG
+## 3.0.0 (September 13, 2020)
+### Components
+#### Added
+* Added: Button component now supports rendering button labels with uppercase text.
+* Added: Color utility now supports background-color classes for new brand colors.
+#### Changed
+* Changed: All colors have been updated to comply with new brand guidelines.
+* Changed: Sass color variable naming convention has been updated to support rebrand.
+* Changed: All text instances of CenturyLink to Lumen to support rebrand.
+* Changed: Buttons now render with a border-radius.
+* Changed: Button hover and active state text, border, and background colors.
+* Changed: Buttons now render child icons one shade lighter than text.
+* Changed: Button groups now render with a border-radius.
+* Changed: Badges now render with a border-radius.
+* Changed: Badges now render child icons one shade lighter than text.
+* Changed: Card header and content background-color for portal themed cards.
+* Changed: Drawer portal theme colors to support rebrand.
+* Changed: Dropdown menu active item background-color from none to light blue.
+* Changed: Header portal theme has been updated to comply with new brand guidelines.
+* Changed: Header navbar has been updated to comply with new brand guidelines.
+* Changed: Input focus color to support rebrand.
+* Changed: Modal portal theme colors to support rebrand.
+* Changed: Pickers now render with a border-radius.
+* Changed: Picker groups now render with a border-radius.
+* Changed: Popovers now render with a border-radius.
+* Changed: Sidenav base theme colors have been updated to comply with new brand guidelines.
+* Changed: Stat portal theme has been updated to comply with new brand guidelines.
+* Changed: Step border and text colors to support rebrand.
+* Changed: Table background-colors for portal theme, base active state, and semantic states.
+* Changed: Tab inverse active color to support rebrand.
+* Changed: Tooltips now render with a border-radius.
+* Changed: Social media icons `icon-logo-facebook`, `icon-logo-linkedin`, `icon-logo-twitter`, `icon-logo-youtube`.
+#### Breaking changes
+* Removed: Avatar component no longer supports the color `mint`.
+* Changed: Brand logo and sizes have changed to support rebrand.
+* Removed: Card component no longer supports the alternate active color class `-active--alt`.
+* Removed: Divider component no longer supports `-colorbar` due to rebrand.
+* Removed: Dropdown menu no longer supports `-inverse` theme due to rebrand.
+* Changed: Footer style, content, and classes have updated to support new brand guidelines.
+* Removed: Sidenav component no longer supports `-inverse` theme due to rebrand.
+* Removed: Table component no longer supports `-inverse` theme due to rebrand.
+* Removed: Color utility no longer supports background-colors `-bg--inverse`, `-bg--blue-60`, `-bg--blue-70`, `-bg--blue-80`, `-bg--blue-90`, `-bg--teal` due to rebrand.
+* Changed: Color utility background values now include !important for specificity.
+#### Fixed
+* Fixed: Breadcrumb separator icons are now vertically aligned more accurately.
+* Fixed: Header no longer renders margin-right on Brand when it's the last child.
+### Documentation
+#### Added
+* Added: Design tokens documentation.
+#### Changed
+* Changed: All text instances of CenturyLink to Lumen to support rebrand.
+* Changed: Colors have been updated to support rebrand.
+* Changed: Favicon has been update to comply with new brand guidelines.
+
 ## 2.7.0 (August 18, 2020)
 ### Components
 #### Added
@@ -25,10 +79,10 @@
 ## 2.5.0 (August 4, 2020)
 ### Components
 #### Added
-* Added: Toggle Switch now supports the size `xs` for rendering extra small toggle switches.
+* Added: Toggle switch now supports the size `xs` for rendering extra small toggle switches.
 * Added: Added: Drawer now supports the theme `portal` for rendering portal themed Drawers.
 * Added: Added: Stat component for rendering performance indicators in dashboard UIs.
-* Added: Added: Mobile Navigation component for rendering responsive multi-level navigation in mobile views.
+* Added: Added: Mobile navigation component for rendering responsive multi-level navigation in mobile views.
 #### Changed
 * Changed: Improved Sidenav and Drawer component dispose methods.
 * Changed: Updated Dayjs to version 1.8.31.
@@ -127,7 +181,7 @@
 * Added: Text Input documentation has been updated with web component examples.
 * Added: Textarea documentation has been updated with web component examples.
 * Added: Pagination documentation has been updated with new html blueprint and web component examples.
-* Added: Number Input html blueprint code samples now include label tags.
+* Added: Number input html blueprint code samples now include label tags.
 * Added: Table documentation has been updated with an example for table headers with two tiers.
 * Added: Table documentation for Base state.
 #### Changed
@@ -178,9 +232,9 @@
 * Renamed: All legacy camel case classes to kebab case (e.g. `-floatingLabel` is now `-floating-label`).
 * Renamed: Text utility size classes for consistency (e.g. `-text--smaller` is now `-text--xs`).
 * Renamed: Alert close CSS classes from `dismiss` to `close` (e.g. `m-alert__dismiss-button` is now `chi-alert__close-button`).
-* Renamed: Number Input component container from `m-input__wrapper` to `chi-number-input`.
-* Renamed: Number Input Expanded component container from `m-inputNumber` to `chi-number-input -expanded`.
-* Changed: Number Input sizes (e.g. `-sm`) are now declared on the component container `chi-number-input` instead of the input.
+* Renamed: Number input component container from `m-input__wrapper` to `chi-number-input`.
+* Renamed: Number input Expanded component container from `m-inputNumber` to `chi-number-input -expanded`.
+* Changed: Number input sizes (e.g. `-sm`) are now declared on the component container `chi-number-input` instead of the input.
 * Changed: Card content `chi-card__content` now displays as flex column by default for consistency with primary use cases. Flex column utility classes no longer need to be applied.
 #### Added
 * Added: Icons to support Enterprise ticketing portal use cases (`icon-filter`, `icon-flag`, `icon-paste`).
@@ -210,18 +264,18 @@
 * Renamed: Alert web component (beta) close property from `dismissible` to `closable` for consistency.
 * Renamed: Alert web component (beta) no border property from `borderless` to `no-border` for consistency.
 * Renamed: Drawer web component (beta) no header property from `headless` to `no-header` for consistency.
-* Renamed: Expansion Panel web component (beta) title property from `heading` to `title` for consistency.
+* Renamed: Expansion panel web component (beta) title property from `heading` to `title` for consistency.
 #### Fixed
 * Fixed: Dropdown bug which failed to toggle some dropdowns using the data-target method.
 * Fixed: Date picker web component bug which caused 24px of whitespace to render below the input.
 * Fixed: Sidenav behavior when menu items have no association to a Drawer.
 * Fixed: Sidenav IE11 compatibility issues.
 * Fixed: Accessibility warning in Drawer web component due to skipped heading level.
-* Fixed: Accessibility error in Number Input web component due to missing label.
-* Fixed: Expansion Panel step numbers did not hide all step number related margins on xs viewports.
-* Fixed: Expansion Panel step numbers could not be turned off on all viewports without the use of margin utilities.
-* Fixed: Expansion Panel -bordered panels rendered large gap of whitespace between header and content.
-* Fixed: Picker Groups with icons were rendered with a 4px smaller height than those without icons.
+* Fixed: Accessibility error in Number input web component due to missing label.
+* Fixed: Expansion panel step numbers did not hide all step number related margins on xs viewports.
+* Fixed: Expansion panel step numbers could not be turned off on all viewports without the use of margin utilities.
+* Fixed: Expansion panel -bordered panels rendered large gap of whitespace between header and content.
+* Fixed: Picker groups with icons were rendered with a 4px smaller height than those without icons.
 * Fixed: Picker height was inconsistent with height of size class -md (base size).
 * Fixed: Alert icons rendering squished on small viewports.
 * Fixed: File Input button padding was not consistent with button component.
@@ -249,7 +303,7 @@
 #### Fixed
 * Fixed: Styles and logic for anchoring headings within documentation pages.
 * Fixed: Bug related to -active class management when navigating to an anchor element within documentation tabs.
-* Fixed: Some Expansion Panel documentation code samples did not match examples.
+* Fixed: Some Expansion panel documentation code samples did not match examples.
 * Fixed: Corrected several classes on the Text Utilities page which included a period.
 
 ## 1.4.2 (February 27, 2020)
@@ -298,7 +352,7 @@
 * Fixed disable scroll behavior in Modal and Drawer component.
 * Changed form focus color for consistency with Brand guidelines.
 * Updated all color values in Chi's Teal color ramp for consistency with Brand guidelines.
-* Updated Toggle Switch component markup to fix empty form label accessibility error.
+* Updated Toggle switch component markup to fix empty form label accessibility error.
 * Fixed accessibility warnings and errors in Picker and Picker Group component.
 * Fixed bug in IE11 which caused the Drawer component close button to render incorrectly.
 
@@ -324,7 +378,7 @@
 * Fixed SASS linting.
 * Fixed accessibility errors in Button component which rendered Icon buttons without a label.
 * Fixed accessibility warnings in Documentation which rendered pages with skipped heading levels.
-* Fixed accessibility color contrast errors in Avatar, Badge, Divider, Expansion Panel, and Text Input components.
+* Fixed accessibility color contrast errors in Avatar, Badge, Divider, Expansion panel, and Text Input components.
 * Updated Checkbox component markup to fix multiple form label accessibility errors.
 * Updated Radio Button component markup to fix multiple form label accessibility errors.
 * Fixed accessibility errors in Date picker component related to duplicate IDs.
@@ -352,7 +406,7 @@
 
 * Added responsive behavior to Picker Group component.
 * Fixed bug in Text Input component which failed to style all available HTML5 input types.
-* Fixed bug in Expansion Panel component that prevented long text strings from wrapping.
+* Fixed bug in Expansion panel component that prevented long text strings from wrapping.
 * Updated Divider component Color Bar proportions.
 * Added Color utility for muted backgrounds.
 * Added support for centering bubble alerts with new utility class.
@@ -380,8 +434,8 @@
 * Fixed incorrect documentation example code for Tooltips and Date pickers.
 * Fixed Step component bug which colored non-active inverse step lines mint instead of grey.
 * Added Picker Group component.
-* Removed margin-right from Toggle Switch component.
-* Updated Number Input component widths to support more digits by default.
+* Removed margin-right from Toggle switch component.
+* Updated Number input component widths to support more digits by default.
 * Added !important to utility values to allow overriding component styles.
 
 ## 1.2.2 (June 7, 2019)
@@ -389,7 +443,7 @@
 * Added text and background utility for CenturyLink's primary grey.
 * Added support for -muted to Alert component.
 * Removed support for -light and -dark from Alert component.
-* Fixed Expansion Panel component bug which failed to apply active styles to active panel step numbers.
+* Fixed Expansion panel component bug which failed to apply active styles to active panel step numbers.
 * Updated Footer component with correct legal links.
 * Updated base Header and Footer components to use the black Brand logo for consistency with dot com.
 * Fixed Icon Button bug which rendered incorrect padding on :active when a size class was defined.
@@ -475,7 +529,7 @@
 * Added empty and active states to Card component.
 * Added Range slider javascript component.
 * Fixed bug in Button component which colored icons in inverse buttons incorrectly.
-* Added Expansion Panel javascript component.
+* Added Expansion panel javascript component.
 * Added Price component.
 * Fixed bug in Drawer component which prevented some drawers from animating.
 
@@ -492,7 +546,7 @@
 * Added Changelog page to documentation.
 * Added Floating Label javascript component.
 * Added Steps component.
-* Added new Number Input component.
+* Added new Number input component.
 * Migrated javascript Tabs component into the new Chi core javascript library.
 * Added javascript Drawer component.
 * Added Z-index utility.

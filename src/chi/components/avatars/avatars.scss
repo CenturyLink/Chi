@@ -9,30 +9,82 @@ $avatar-sizes: (
   md: 2rem,
   lg: 4rem,
   xl: 6rem,
-  xxl: 8rem);
-$avatar-colors: (grey,
-  red,
-  pink,
-  purple,
-  indigo,
-  light-blue,
-  blue,
-  teal,
-  mint,
-  green,
-  yellow,
-  orange,
-  light,
-  inverse,
-  secondary,
-  primary);
+  xxl: 8rem
+);
+
+$avatar-colors: (
+  grey: (
+    border-color: $color-grey-60,
+    text-color:   $color-grey-70,
+  ),
+  red: (
+    border-color: $color-red-60,
+    text-color:   $color-red-70,
+  ),
+  pink: (
+    border-color: $color-pink-60,
+    text-color:   $color-pink-70,
+  ),
+  purple: (
+    border-color: $color-purple-60,
+    text-color:   $color-purple-70,
+  ),
+  indigo: (
+    border-color: $color-indigo-60,
+    text-color:   $color-indigo-70,
+  ),
+  cyan: (
+    border-color: $color-cyan-60,
+    text-color:   $color-cyan-70,
+  ),
+  navy: (
+    border-color: $color-navy-60,
+    text-color:   $color-navy-70,
+  ),
+  blue: (
+    border-color: $color-blue-60,
+    text-color:   $color-blue-70,
+  ),
+  teal: (
+    border-color: $color-teal-60,
+    text-color:   $color-teal-70,
+  ),
+  green: (
+    border-color: $color-green-60,
+    text-color:   $color-green-70,
+  ),
+  yellow: (
+    border-color: $color-yellow-60,
+    text-color:   $color-yellow-70,
+  ),
+  orange: (
+    border-color: $color-orange-60,
+    text-color:   $color-orange-70,
+  ),
+  light: (
+    border-color: $color-border-white,
+    text-color:   $color-text-white,
+  ),
+  inverse: (
+    border-color: $color-border-white,
+    text-color:   $color-text-white,
+  ),
+  primary: (
+    border-color: $color-border-primary,
+    text-color:   $color-text-primary,
+  ),
+  secondary: (
+    border-color: $color-border-secondary,
+    text-color:   $color-text-secondary,
+  ),
+);
+
 $avatar-default-size: 'md';
 
 .chi-avatar {
-
-  background-color: set-color(grey, 20);
+  background-color: $color-grey-20;
   border-radius: 50%;
-  color: $text-color;
+  color: $color-text-base;
   display: inline-block;
   font-size: map-get($avatar-sizes, $avatar-default-size) / 2;
   height: map-get($avatar-sizes, $avatar-default-size);
@@ -78,48 +130,27 @@ $avatar-default-size: 'md';
     }
   }
 
-  @each $color in $avatar-colors {
+  @each $color in map-keys($avatar-colors) {
     &.-#{$color} {
 
-      @if( $color == 'light') {
+      @if($color == 'light' or 'inverse') {
         background-color: transparent;
-        border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get($colorscheme, white);
-        color: map-get($colorscheme, white);
-      } @else if($color == 'inverse') {
-        background-color: transparent;
-        border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid map-get($colorscheme, white);
-        color: map-get($colorscheme, white);
-      } @else if ( $color == 'secondary') {
-        background-color: white;
-        border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid $secondary-color;
-        color: $secondary-color;
-
-        &.-transparent {
-          background-color: transparent;
-        }
-      } @else if ( $color == 'primary') {
-        background-color: white;
-        border: max(0.0625rem, map-get($avatar-sizes, $avatar-default-size) / 48) solid $primary-color;
-        color: $primary-color;
-
-        &.-transparent {
-          background-color: transparent;
-        }
       } @else {
         background-color: white;
-        border: max(0.0625rem, map-get($avatar-sizes,
-            $avatar-default-size) / 48) solid map-get(map-get($colorscheme, $color), 60);
-        color: map-get(map-get($colorscheme, $color), 70);
-
-        &.-transparent {
-          background-color: transparent;
-        }
       }
 
-      @each $type in map-keys($avatar-sizes) {
-        &.-#{$type} {
-          border-width: max(0.0625rem, map-get($avatar-sizes, $type) / 48);
-        }
+      border: max(0.0625rem, map-get($avatar-sizes,
+          $avatar-default-size) / 48) solid map-get($avatar-colors, border-color);
+      color: map-get(map-get($avatar-colors, $color), text-color);
+
+      &.-transparent {
+        background-color: transparent;
+      }
+    }
+
+    @each $type in map-keys($avatar-sizes) {
+      &.-#{$type} {
+        border-width: max(0.0625rem, map-get($avatar-sizes, $type) / 48);
       }
     }
   }

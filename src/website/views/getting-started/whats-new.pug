@@ -5,8 +5,70 @@ order: 5
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-chi-alert(color='warning', icon='warning')
-  | Chi 2.0 is a major release. Please follow the <a href="#chi-v2-0-0">upgrade guide</a> before updating chi assets.
+.changelog__version.-py--1
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v3.0.0" target="_blank">Chi v3.0.0</a>
+  .-text--grey.-text--md September 13, 2020
+  .-pt--1
+    h3.-text--h3.-text--bold Components
+    h4.-text--h4.-text--bold Added
+    ul.-text.-pl--2
+      li Added: Button component now supports rendering button labels with uppercase text.
+      li Added: Color utility now supports background-color classes for new brand colors.
+    h4.-text--h4.-text--bold Changed
+    ul.-text.-pl--2
+      li Changed: All colors have been updated to comply with new brand guidelines.
+      li Changed: Sass color variable naming convention has been updated to support rebrand.
+      li Changed: All text instances of CenturyLink to Lumen to support rebrand.
+      li Changed: Buttons now render with a border-radius.
+      li Changed: Button hover and active state text, border, and background colors.
+      li Changed: Buttons now render child icons one shade lighter than text.
+      li Changed: Button groups now render with a border-radius.
+      li Changed: Badges now render with a border-radius.
+      li Changed: Badges now render child icons one shade lighter than text.
+      li Changed: Card header and content background-color for portal themed cards.
+      li Changed: Drawer portal theme colors to support rebrand.
+      li Changed: Dropdown menu active item background-color from none to light blue.
+      li Changed: Header portal theme has been updated to comply with new brand guidelines.
+      li Changed: Header navbar has been updated to comply with new brand guidelines.
+      li Changed: Input focus color to support rebrand.
+      li Changed: Modal portal theme colors to support rebrand.
+      li Changed: Pickers now render with a border-radius.
+      li Changed: Picker groups now render with a border-radius.
+      li Changed: Popovers now render with a border-radius.
+      li Changed: Sidenav base theme colors have been updated to comply with new brand guidelines.
+      li Changed: Stat portal theme has been updated to comply with new brand guidelines.
+      li Changed: Step border and text colors to support rebrand.
+      li Changed: Table background-colors for portal theme, base active state, and semantic states.
+      li Changed: Tab inverse active color to support rebrand.
+      li Changed: Tooltips now render with a border-radius.
+      li Changed: Social media icons <code>icon-logo-facebook</code>, <code>icon-logo-linkedin</code>, <code>icon-logo-twitter</code>, <code>icon-logo-youtube</code>.
+    h4.-text--h4.-text--bold Breaking Changes
+    ul.-text.-pl--2
+      li Removed: Avatar component no longer supports the color <code>mint</code>.
+      li Changed: Brand logo and sizes have changed to support rebrand.
+      li Removed: Card component no longer supports the alternate active color class <code>-active--alt</code>.
+      li Removed: Divider component no longer supports <code>-colorbar</code> due to rebrand.
+      li Removed: Dropdown menu no longer supports <code>-inverse</code> theme due to rebrand.
+      li Changed: Footer style, content, and classes have updated to support new brand guidelines.
+      li Removed: Sidenav component no longer supports <code>-inverse</code> theme due to rebrand.
+      li Removed: Table component no longer supports <code>-inverse</code> theme due to rebrand.
+      li Removed: Color utility no longer supports background-colors <code>-bg--inverse</code>, <code>-bg--blue-60</code>, <code>-bg--blue-70</code>, <code>-bg--blue-80</code>, <code>-bg--blue-90</code>, <code>-bg--teal</code> due to rebrand.
+      li Changed: Color utility background values now include !important for specificity.
+    h4.-text--h4.-text--bold Fixed
+    ul.-text.-pl--2
+      li Fixed: Breadcrumb separator icons are now vertically aligned more accurately.
+      li Fixed: Header no longer renders margin-right on Brand when it's the last child.
+    h3.-text--h3.-text--bold Documentation
+    h4.-text--h4.-text--bold Added
+    ul.-text.-pl--2
+      li Added: Design tokens documentation.
+    h4.-text--h4.-text--bold Changed
+    ul.-text.-pl--2
+      li Changed: All text instances of CenturyLink to Lumen to support rebrand.
+      li Changed: Colors have been updated to support rebrand.
+      li Changed: Favicon has been update to comply with new brand guidelines.
+
+.chi-divider.-my--4
 
 .changelog__version.-py--1
   h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v2.7.0" target="_blank">Chi v2.7.0</a>
@@ -59,10 +121,10 @@ chi-alert(color='warning', icon='warning')
     h3.-text--h3.-text--bold Components
     h4.-text--h4.-text--bold Added
     ul.-text.-pl--2
-      li Added: Toggle Switch now supports the size <code>xs</code> for rendering extra small toggle switches.
+      li Added: Toggle switch now supports the size <code>xs</code> for rendering extra small toggle switches.
       li Added: Drawer now supports the theme <code>portal</code> for rendering portal themed Drawers.
       li Added: Stat component for rendering performance indicators in dashboard UIs.
-      li Added: Mobile Navigation component for rendering responsive multi-level navigation in mobile views.
+      li Added: Mobile navigation component for rendering responsive multi-level navigation in mobile views.
     h4.-text--h4.-text--bold Changed
     ul.-text.-pl--2
       li Changed: Improved Sidenav and Drawer component dispose methods.
@@ -176,7 +238,7 @@ chi-alert(color='warning', icon='warning')
     h3.-text--h3.-text--bold Components
     h4.-text--h4.-text--bold Added
     ul.-text.-pl--2
-      li Added: Text Input web component.
+      li Added: Text input web component.
       li Added: Textarea web component.
       li Added: Pagination now supports configuring the number of items per page, jumping to a specific page, displaying number of results, truncating, first and last page buttons, and a new compact view for data tables.
       li Added: Pagination web component.
@@ -197,10 +259,10 @@ chi-alert(color='warning', icon='warning')
     h3.-text--h3.-text--bold Documentation
     h4.-text--h4.-text--bold Added
     ul.-text.-pl--2
-      li Added: Text Input documentation has been updated with web component examples.
+      li Added: Text input documentation has been updated with web component examples.
       li Added: Textarea documentation has been updated with web component examples.
       li Added: Pagination documentation has been updated with new html blueprint and web component examples.
-      li Added: Number Input html blueprint code samples now include label tags.
+      li Added: Number input html blueprint code samples now include label tags.
       li Added: Table documentation has been updated with an example for table headers with two tiers.
       li Added: Table documentation for Base state.
     h4.-text--h4.-text--bold Changed
@@ -275,9 +337,9 @@ chi-alert(color='warning', icon='warning')
         li Renamed: All legacy camel case classes to kebab case (e.g. <code>-floatingLabel</code> is now <code>-floating-label</code>).
         li Renamed: Text utility size classes for consistency (e.g. <code>-text--smaller</code> is now <code>-text--xs</code>).
         li Renamed: Alert close CSS classes from dismiss to close (e.g. <code>m-alert__dismiss-button</code> is now <code>chi-alert__close-button</code>).
-        li Renamed: Number Input component container from <code>m-input__wrapper</code> to <code>chi-number-input</code>.
-        li Renamed: Number Input Expanded component container from <code>m-inputNumber</code> to <code>chi-number-input -expanded</code>.
-        li Changed: Number Input sizes (e.g. <code>-sm</code>) are now declared on the component container <code>chi-number-input</code> instead of the input.
+        li Renamed: Number input component container from <code>m-input__wrapper</code> to <code>chi-number-input</code>.
+        li Renamed: Number input Expanded component container from <code>m-inputNumber</code> to <code>chi-number-input -expanded</code>.
+        li Changed: Number input sizes (e.g. <code>-sm</code>) are now declared on the component container <code>chi-number-input</code> instead of the input.
         li Changed: Card content <code>chi-card__content</code> now displays as flex column by default for consistency with primary use cases. Flex column utility classes no longer need to be applied.
       h4.-text--h4.-text--bold Added
       ul.-text.-pl--2
@@ -309,7 +371,7 @@ chi-alert(color='warning', icon='warning')
         li Renamed: Alert web component (beta) close property from <code>dismissible</code> to <code>closable</code> for consistency.
         li Renamed: Alert web component (beta) no border property from <code>borderless</code> to <code>no-border</code> for consistency.
         li Renamed: Drawer web component (beta) no header property from <code>headless</code> to <code>no-header</code> for consistency.
-        li Renamed: Expansion Panel web component (beta) title property from <code>heading</code> to <code>title</code> for consistency.
+        li Renamed: Expansion panel web component (beta) title property from <code>heading</code> to <code>title</code> for consistency.
       h4.-text--h4.-text--bold Fixed
       ul.-text.-pl--2
         li Fixed: Dropdown bug which failed to toggle some dropdowns using the data-target method.
@@ -317,11 +379,11 @@ chi-alert(color='warning', icon='warning')
         li Fixed: Sidenav behavior when menu items have no association to a Drawer.
         li Fixed: Sidenav IE11 compatibility issues.
         li Fixed: Accessibility warning in Drawer web component due to skipped heading level.
-        li Fixed: Accessibility error in Number Input web component due to missing label.
-        li Fixed: Expansion Panel step numbers did not hide all step number related margins on xs viewports.
-        li Fixed: Expansion Panel step numbers could not be turned off on all viewports without the use of margin utilities.
-        li Fixed: Expansion Panel -bordered panels rendered large gap of whitespace between header and content.
-        li Fixed: Picker Groups with icons were rendered with a 4px smaller height than those without icons.
+        li Fixed: Accessibility error in Number input web component due to missing label.
+        li Fixed: Expansion panel step numbers did not hide all step number related margins on xs viewports.
+        li Fixed: Expansion panel step numbers could not be turned off on all viewports without the use of margin utilities.
+        li Fixed: Expansion panel -bordered panels rendered large gap of whitespace between header and content.
+        li Fixed: Picker groups with icons were rendered with a 4px smaller height than those without icons.
         li Fixed: Picker height was inconsistent with height of size class -md (base size).
         li Fixed: Alert icons rendering squished on small viewports.
         li Fixed: File Input button padding was not consistent with button component.
@@ -348,12 +410,12 @@ chi-alert(color='warning', icon='warning')
         li Changed: Moved Development Workflow information to dedicated page within Getting Started.
         li Changed: Documentation content containers from divs to more semantic tags (<code>main</code>, <code>nav</code>, <code>header</code>, <code>article</code>).
         li Changed: Improved component descriptions for Date picker, Expansion panel, Icon, Popover, and Grid.
-        li Changed: Improved invalid form examples for Text Input, Textarea, and Select.
+        li Changed: Improved invalid form examples for Text input, Textarea, and Select.
       h4.-text--h4.-text--bold Fixed
       ul.-text.-pl--2
         li Fixed: Styles and logic for anchoring headings within documentation pages.
         li Fixed: Bug related to -active class management when navigating to an anchor element within documentation tabs.
-        li Fixed: Some Expansion Panel documentation code samples did not match examples.
+        li Fixed: Some Expansion panel documentation code samples did not match examples.
         li Fixed: Corrected several classes on the Text Utilities page which included a period.
 
   #chi-v200-tabs--upgrade-guide.chi-tabs-panel
@@ -474,10 +536,10 @@ script.
   .-text--grey.-text--md.-mb--1 February 27, 2020
   ul.-text.-pl--2
     li Fixed bug in Grid component which caused grid columns to render incorrectly in IE11.
-    li Fixed bug in Picker and Picker Group component which prevented users from navigating the components with tab and arrow keys.
+    li Fixed bug in Picker and Picker group component which prevented users from navigating the components with tab and arrow keys.
     li Fixed rendering bug in Badge custom element.
     li Fixed bug in Footer component which caused the brand element to misalign in IE11.
-    li Fixed bug in Picker Group component which caused some icons to render without sufficient margin in IE11.
+    li Fixed bug in Picker group component which caused some icons to render without sufficient margin in IE11.
     li Fixed bug in Spinner component which caused spinners to render slightly vertically misaligned in IE11.
     li Fixed bug in Floating Label component which caused placeholder text to render slightly vertically misaligned in IE11.
 
@@ -512,7 +574,7 @@ script.
     li Fixed bug in Date picker component which failed to launch the picker when clicking the calendar icon.
     li Fixed missing form label accessibility error in Date picker documentation example.
     li Fixed module export parsing error in build process.
-    li Fixed non-functional tabs in Button Group size documentation example.
+    li Fixed non-functional tabs in Button group size documentation example.
     li Changed drop down item hover color in Dropdown component for consistency with Brand guidelines.
     li Fixed SASS lint errors.
     li Fixed title attribute removal bug in build process.
@@ -521,8 +583,8 @@ script.
     li Fixed disable scroll behavior in Modal and Drawer component.
     li Changed form focus color for consistency with Brand guidelines.
     li Updated all color values in Chi's Teal color ramp for consistency with Brand guidelines.
-    li Updated Toggle Switch component markup to fix empty form label accessibility error.
-    li Fixed accessibility warnings and errors in Picker and Picker Group component.
+    li Updated Toggle switch component markup to fix empty form label accessibility error.
+    li Fixed accessibility warnings and errors in Picker and Picker group component.
     li Fixed bug in IE11 which caused the Drawer component close button to render incorrectly.
 
 .changelog__version.-py--1
@@ -549,7 +611,7 @@ script.
     li Fixed SASS linting.
     li Fixed accessibility errors in Button component which rendered Icon buttons without a label.
     li Fixed accessibility warnings in Documentation which rendered pages with skipped heading levels.
-    li Fixed accessibility color contrast errors in Avatar, Badge, Divider, Expansion Panel, and Text Input components.
+    li Fixed accessibility color contrast errors in Avatar, Badge, Divider, Expansion panel, and Text input components.
     li Updated Checkbox component markup to fix multiple form label accessibility errors.
     li Updated Radio Button component markup to fix multiple form label accessibility errors.
     li Fixed accessibility errors in Date picker component related to duplicate IDs.
@@ -566,7 +628,7 @@ script.
     li Added small, medium, and large size support to Sidenav component.
     li Updated Card component documentation with common Dashboard KPI example.
     li Removed unnecessary font-family property from Button component which conflicted with the font-family defined on root.
-    li Added icon support to Picker Group component.
+    li Added icon support to Picker group component.
     li Updated Drawer component javascript documentation with methods.
     li Updated documentation with a version check to alert users when a new version is available.
     li Fixed Steps component link color inconsistency in base light version.
@@ -579,9 +641,9 @@ script.
   h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v1.2.4" target="_blank">Chi v1.2.4</a>
   .-text--grey.-text--md.-mb--1 September 12, 2019
   ul.-text.-pl--2
-    li Added responsive behavior to Picker Group component.
-    li Fixed bug in Text Input component which failed to style all available HTML5 input types.
-    li Fixed bug in Expansion Panel component that prevented long text strings from wrapping.
+    li Added responsive behavior to Picker group component.
+    li Fixed bug in Text input component which failed to style all available HTML5 input types.
+    li Fixed bug in Expansion panel component that prevented long text strings from wrapping.
     li Updated Divider component Color Bar proportions.
     li Added Color utility for muted backgrounds.
     li Added support for centering bubble alerts with new utility class.
@@ -610,9 +672,9 @@ script.
     li Fixed bug which sized Spinner components incorrectly when placed inside Modals.
     li Fixed incorrect documentation example code for Tooltips and Date pickers.
     li Fixed Step component bug which colored non-active inverse step lines mint instead of grey.
-    li Added Picker Group component.
-    li Removed margin-right from Toggle Switch component.
-    li Updated Number Input component widths to support more digits by default.
+    li Added Picker group component.
+    li Removed margin-right from Toggle switch component.
+    li Updated Number input component widths to support more digits by default.
     li Added !important to utility values to allow overriding component styles.
 
 .changelog__version.-py--1
@@ -622,7 +684,7 @@ script.
     li Added text and background utility for CenturyLink's primary grey.
     li Added support for -muted to Alert component.
     li Removed support for -light and -dark from Alert component.
-    li Fixed Expansion Panel component bug which failed to apply active styles to active panel step numbers.
+    li Fixed Expansion panel component bug which failed to apply active styles to active panel step numbers.
     li Updated Footer component with correct legal links.
     li Updated base Header and Footer components to use the black Brand logo for consistency with dot com.
     li Fixed Icon Button bug which rendered incorrect padding on :active when a size class was defined.
@@ -707,7 +769,7 @@ script.
   .-text--grey.-text--md.-mb--1 January 23, 2019
   ul.-text.-pl--2
     li Added progress component.
-    li Fixed bug in Range Slider component which prevented tooltips from rendering in IE.
+    li Fixed bug in Range slider component which prevented tooltips from rendering in IE.
     li Added Footer component.
     li Added dropdown and responsive support to Tab component.
     li Updated Position utility with fixed-bottom and fixed-top support.
@@ -720,7 +782,7 @@ script.
     li Added empty and active states to Card component.
     li Added Range slider javascript component.
     li Fixed bug in Button component which colored icons in inverse buttons incorrectly.
-    li Added Expansion Panel javascript component.
+    li Added Expansion panel javascript component.
     li Added Price component.
     li Fixed bug in Drawer component which prevented some drawers from animating.
 
@@ -739,7 +801,7 @@ script.
     li Added Changelog page to documentation.
     li Added Floating Label javascript component.
     li Added Steps component.
-    li Added new Number Input component.
+    li Added new Number input component.
     li Migrated javascript Tabs component into the new Chi core javascript library.
     li Added javascript Drawer component.
     li Added Z-index utility.

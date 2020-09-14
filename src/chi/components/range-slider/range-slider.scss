@@ -5,8 +5,8 @@ $input-range-height: 1.5rem;
 $input-range-track-height: 0.25rem;
 
 @mixin thumb-style {
-  background-color: set-color(white);
-  border: 0.125rem solid $brand-color;
+  background-color: $color-background-white;
+  border: 0.125rem solid $color-border-primary;
   border-radius: 0.75rem;
   box-sizing: border-box;
   cursor: pointer;
@@ -16,11 +16,11 @@ $input-range-track-height: 0.25rem;
 }
 
 @mixin grey-thumb-shadow {
-  box-shadow: 0 0 1px 4px rgba(set-color(grey, 50), 0.3);
+  box-shadow: 0 0 1px 4px rgba($color-grey-50, 0.3);
 }
 
 @mixin track-style {
-  background-color: set-color(grey, 30);
+  background-color: $color-grey-30;
   border-radius: 0.25rem;
   box-sizing: border-box;
   height: 0.25rem;
@@ -43,11 +43,11 @@ input {
 
         // Chi cross browser
         & ~ .chi-input__thumb {
-          border-color: mix(white, $brand-color, 35%);
+          border-color: mix(white, $color-border-primary, 35%);
         }
 
         & ~ .chi-input__progress {
-          background-color: mix(white, $brand-color, 35%);
+          background-color: mix(white, $color-background-primary, 35%);
         }
       }
 
@@ -58,35 +58,35 @@ input {
       &.-zero {
         // Safari, Chrome and Opera
         &::-webkit-slider-thumb {
-          background-color: set-color(grey, 50);
-          border-color: set-color(grey, 50);
+          background-color: $color-grey-50;
+          border-color: $color-grey-50;
         }
 
         // Firefox
         &::-moz-range-thumb {
-          border-color: set-color(grey, 50);
+          border-color: $color-grey-50;
         }
 
         &::-moz-range-progress {
-          background-color: set-color(grey, 30);
+          background-color: $color-grey-30;
         }
 
         // Internet Explorer
         &::-ms-thumb {
-          border-color: set-color(grey, 50);
+          border-color: $color-grey-50;
         }
 
         &::-ms-fill-lower {
-          background-color: set-color(grey, 30);
+          background-color: $color-grey-30;
         }
 
         // Chi cross browser
         & ~ .chi-input__thumb {
-          border-color: set-color(grey, 50);
+          border-color: $color-grey-50;
         }
 
         & ~ .chi-input__progress {
-          background-color: set-color(grey, 30);
+          background-color: $color-grey-30;
         }
       }
 
@@ -95,7 +95,6 @@ input {
         outline: 0.125rem solid $focus-color;
         outline-offset: 0.0625rem;
       }
-
 
       &.chi-range-slider__thumb-overwritten {
         // Safari, Chrome and Opera
@@ -138,7 +137,7 @@ input {
 
       &::-moz-range-progress {
         @include track-style;
-        background-color: $brand-color;
+        background-color: $color-background-primary;
       }
 
       // Internet Explorer
@@ -162,7 +161,7 @@ input {
 
       &::-ms-fill-lower {
         @include track-style;
-        background-color: $brand-color;
+        background-color: $color-background-primary;
       }
 
       &::-ms-fill-upper {
@@ -183,7 +182,7 @@ input {
 
       & ~ .chi-input__progress {
         @include track-style;
-        background-color: $brand-color;
+        background-color: $color-background-primary;
         content: '';
         pointer-events: none;
         position: absolute;
@@ -209,7 +208,7 @@ input {
 }
 
 .chi-input__tick {
-  border-left: 0.0625rem solid set-color(grey, 30);
+  border-left: 0.0625rem solid $color-border-base-dark;
   height: 0.25rem;
   margin: -($input-range-height - $input-range-track-height) / 2 auto 0;
 
@@ -221,7 +220,7 @@ input {
     padding-right: 0.625rem;
 
     & > div {
-      font-size: $text;
+      font-size: $font-size-base;
       position: relative;
 
       &:first-child {
@@ -242,9 +241,9 @@ input {
   }
 
   &-label {
-    font-size: $text-small;
+    font-size: $font-size-sm;
     left: -3.25rem;
-    line-height: $line-height-small;
+    line-height: $line-height;
     position: absolute;
     text-align: center;
     top: 0;

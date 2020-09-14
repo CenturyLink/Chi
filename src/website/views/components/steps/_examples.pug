@@ -75,79 +75,8 @@ h3 Base
         </li>
       </ul>
 
-h3 Inverse
-.example.-mb--3
-  .-p--3.-bg--black
-    ul.chi-steps.-inverse.-px--0.-pb--2.-p-sm--6
-      each step in steps
-        if step == 'Step 1'
-          li.-completed
-            div.chi-steps__icon
-              a(href='#')= `${step}`
-            div.chi-steps__line
-        else if step == 'Step 2'
-          li.-completed
-            div.chi-steps__icon
-              a(href='#')= `${step}`
-            div.chi-steps__line
-        else if step == 'Step 3'
-          li.-active
-            div.chi-steps__icon
-              a(href='#')= `${step}`
-            div.chi-steps__line
-        else if step == 'Step 5'
-          li
-            div.chi-steps__icon
-              a(href='#')= `${step}`
-        else
-          li
-            div.chi-steps__icon
-              a(href='#')= `${step}`
-            div.chi-steps__line
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-inverse
-      li.-disabled
-        a(href=`#webcomponent-inverse`) Web Component
-      li.-active
-        a(href=`#html-inverse`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-inverse
-  .chi-tabs-panel.-active#html-inverse
-    :code(lang="html")
-      <ul class="chi-steps -inverse">
-        <li class="-completed">
-          <div class="chi-steps__icon">
-            <a href="#">Step 1</a>
-          </div>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li class="-completed">
-          <div class="chi-steps__icon">
-            <a href="#">Step 2</a>
-          </div>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li class="-active">
-          <div class="chi-steps__icon">
-            <a href="#">Step 3</a>
-          </div>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li>
-          <div class="chi-steps__icon">
-            <a href="#">Step 4</a>
-          </div>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li>
-          <div class="chi-steps__icon">
-            <a href="#">Step 5</a>
-          </div>
-        </li>
-      </ul>
 
-
-
-h3 Horizontal Labels Base
+h3 Horizontal Labels
 p.-text
   | To display steps with horizontal labels, apply the class <code>-horizontal-label</code> to the steps container and
   |  indicate the active link with the class <code>-active</code> and the class <code>-completed</code> in the corresponding div tag.
@@ -190,74 +119,6 @@ p.-text
   .chi-tabs-panel.-active#html-horizontal-labels
     :code(lang="html")
       <ul class="chi-steps -horizontal-label">
-        <li class="-completed">
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 1</a>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li class="-completed">
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 2</a>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li class="-active">
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 3</a>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li>
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 4</a>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li>
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 5</a>
-        </li>
-      </ul>
-
-h3 Horizontal Labels Inverse
-p.-text
-  | To display an inverse version of horizontal labels, apply the class <code>-inverse</code>.
-
-.example.-mb--3
-  .-p--3.-bg--black
-    ul.chi-steps.-horizontal-label.-inverse.-labels-sm--hide.-px--0.-p-sm--5
-      each step in steps
-        if step == 'Step 1'
-          li.-completed
-            div.chi-steps__icon
-            a(href='#')= `${step}`
-            div.chi-steps__line
-        else if step == 'Step 2'
-          li.-completed
-            div.chi-steps__icon
-            a(href='#')= `${step}`
-            div.chi-steps__line
-        else if step == 'Step 3'
-          li.-active
-            div.chi-steps__icon
-            a(href='#')= `${step}`
-            div.chi-steps__line
-        else if step == 'Step 5'
-          li
-            div.chi-steps__icon
-            a(href='#')= `${step}`
-        else
-          li
-            div.chi-steps__icon
-            a(href='#')= `${step}`
-            div.chi-steps__line
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-horizontal-labels-inverse
-      li.-disabled
-        a(href=`#webcomponent-horizontal-labels-inverse`) Web Component
-      li.-active
-        a(href=`#html-horizontal-labels-inverse`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-horizontal-labels-inverse
-  .chi-tabs-panel.-active#html-horizontal-labels-inverse
-    :code(lang="html")
-      <ul class="chi-steps -horizontal-label -inverse">
         <li class="-completed">
           <div class="chi-steps__icon"></div>
           <a href="#">Step 1</a>

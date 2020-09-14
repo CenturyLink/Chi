@@ -4,13 +4,13 @@
 $border: 0.0625rem;
 
 .chi-activity {
-  font-size: $text;
-  line-height: $line-height-small;
+  font-size: $font-size-base;
+  line-height: $line-height;
 
   &__day {
     .chi-activity__header {
-      border-bottom: 0.0625rem solid rgba(set-color(black), 0.12);
-      font-weight: 600;
+      border-bottom: 0.0625rem solid rgba($color-black, 0.12);
+      font-weight: $font-weight-semi-bold;
       padding: 0.5rem 0;
     }
 
@@ -18,7 +18,7 @@ $border: 0.0625rem;
       .chi-activity {
         &__item {
           align-items: flex-start;
-          border-bottom: $border solid set-color(grey, 20);
+          border-bottom: $border solid $color-border-base-light;
           display: flex;
           flex-direction: row;
           justify-content: flex-start;
@@ -45,7 +45,7 @@ $border: 0.0625rem;
               display: flex;
 
               & .chi-icon {
-                color: set-color(grey, 60);
+                color: $color-grey-60;
                 display: none;
                 margin-right: 1.5rem;
 
@@ -63,8 +63,8 @@ $border: 0.0625rem;
             &-header {
               & strong,
               & a {
-                color: $text-color;
-                font-weight: 600;
+                color: $color-text-base;
+                font-weight: $font-weight-semi-bold;
               }
             }
 
@@ -72,7 +72,7 @@ $border: 0.0625rem;
               margin: 0.5rem 0;
 
               & ul {
-                border: $border solid set-color(grey, 30);
+                border: $border solid $color-border-base-dark;
                 flex-direction: column;
                 list-style-type: none;
                 margin: 0;
@@ -80,10 +80,10 @@ $border: 0.0625rem;
                 padding: 0;
 
                 & li {
-                  border-bottom: $border solid set-color(grey, 20);
+                  border-bottom: $border solid $color-border-base-light;
                   display: flex;
                   justify-content: flex-start;
-                  line-height: $line-height-small;
+                  line-height: $line-height;
                   padding: 0.875rem 1rem;
 
                   & div:first-of-type {
@@ -104,8 +104,8 @@ $border: 0.0625rem;
 
                   & .-time {
                     align-self: start;
-                    color: set-color(grey, 60);
-                    font-size: $text-small;
+                    color: $color-grey-60;
+                    font-size: $font-size-sm;
                     text-align: right;
 
                     @include respond-to(md) {
@@ -121,7 +121,7 @@ $border: 0.0625rem;
             }
 
             &-footer {
-              color: set-color(grey, 60);
+              color: $color-grey-60;
             }
           }
 
@@ -154,7 +154,7 @@ $border: 0.0625rem;
 
     &.-stories {
       & .chi-activity__day {
-        border-bottom: 0.0625rem solid rgba(set-color(black), 0.12);
+        border-bottom: 0.0625rem solid rgba($color-black, 0.12);
 
         &:first-of-type {
           & .chi-activity__item {

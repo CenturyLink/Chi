@@ -3,13 +3,89 @@
 
 $badge: c-badge;
 
+$colors: (
+  primary: (
+    background-color: $color-background-primary,
+    border-color: $color-border-primary,
+    text-color: $color-text-white,
+    icon-color: $color-text-white,
+    text-color-flat: $color-text-primary,
+    icon-color-flat: $color-text-primary,
+  ),
+  secondary: (
+    background-color: $color-background-secondary,
+    border-color: $color-border-secondary,
+    text-color: $color-text-base,
+    icon-color: $color-text-base,
+    text-color-flat: $color-text-secondary,
+    icon-color-flat: $color-text-secondary,
+  ),
+  light: (
+    background-color: $color-background-white,
+    border-color: $color-border-white,
+    text-color: $color-text-base,
+    icon-color: $color-icon-base,
+    text-color-flat: $color-text-white,
+    icon-color-flat: $color-text-white,
+  ),
+  dark: (
+    background-color: $color-background-dark,
+    border-color: $color-border-dark,
+    text-color: $color-text-white,
+    icon-color: $color-icon-white,
+    text-color-flat: $color-text-base,
+    icon-color-flat: $color-icon-base,
+  ),
+  success: (
+    background-color: $color-background-success,
+    border-color: $color-border-success,
+    text-color: $color-text-white,
+    icon-color: $color-icon-white,
+    text-color-flat: $color-text-success,
+    icon-color-flat: $color-icon-success,
+  ),
+  danger: (
+    background-color: $color-background-danger,
+    border-color: $color-border-danger,
+    text-color: $color-text-white,
+    icon-color: $color-icon-white,
+    text-color-flat: $color-text-danger,
+    icon-color-flat: $color-icon-danger,
+  ),
+  warning: (
+    background-color: $color-background-warning,
+    border-color: $color-border-warning,
+    text-color: $color-text-white,
+    icon-color: $color-icon-white,
+    text-color-flat: $color-text-warning,
+    icon-color-flat: $color-icon-warning,
+  ),
+  info: (
+    background-color: $color-background-info,
+    border-color: $color-border-info,
+    text-color: $color-text-white,
+    icon-color: $color-icon-white,
+    text-color-flat: $color-text-info,
+    icon-color-flat: $color-icon-info,
+  ),
+  muted: (
+    background-color: $color-border-muted,
+    border-color: $color-border-muted,
+    text-color: $color-text-white,
+    icon-color: $color-icon-white,
+    text-color-flat: $color-text-muted,
+    icon-color-flat: $color-icon-muted,
+  )
+);
+
 .chi-badge {
-  background-color: set-color(white);
-  border: 0.0625rem solid set-color(grey, 30);
-  box-shadow: 0 1px 1px 0 rgba(set-color(black), 0.04);
+  background-color: $color-background-white;
+  border: 0.0625rem solid $color-border-base-dark;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
   display: inline-block;
-  font-size: $text;
-  font-weight: 600;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semi-bold;
   height: 1.5rem;
   line-height: $line-height;
   padding: 0 0.5rem;
@@ -17,6 +93,7 @@ $badge: c-badge;
   vertical-align: middle;
 
   .chi-icon {
+    color: $color-icon-base;
     height: 1rem;
     top: -0.07rem;
     width: 1rem;
@@ -33,15 +110,15 @@ $badge: c-badge;
   }
 
   span {
-    line-height: $line-height;
+    line-height: $line-height-lg;
     position: relative;
     top: -0.07rem;
   }
 
   &.-sm {
-    font-size: $text-smaller;
+    font-size: $font-size-xs;
     height: 1.25rem;
-    line-height: $line-height-small;
+    line-height: $line-height;
 
     .chi-icon {
       height: 0.75rem;
@@ -59,14 +136,14 @@ $badge: c-badge;
     }
 
     span {
-      line-height: $line-height-small;
+      line-height: $line-height;
     }
   }
 
   &.-xs {
-    font-size: $text-smallest;
+    font-size: $font-size-2xs;
     height: 1rem;
-    line-height: $line-height-smaller;
+    line-height: $line-height-sm;
     padding: 0 0.25rem;
 
     .chi-icon {
@@ -85,220 +162,44 @@ $badge: c-badge;
     }
 
     span {
-      line-height: $line-height-smaller;
+      line-height: $line-height-sm;
     }
   }
 
-  &.-outline {
+  &.-outline,
+  &.-flat {
     background-color: transparent;
-    border-color: set-color(grey, 50);
     box-shadow: initial;
   }
 
   &.-flat {
-    background-color: transparent;
     border-color: transparent;
-    box-shadow: initial;
   }
 
-  &.-primary {
-    background-color: $primary-color;
-    border: 0.0625rem solid $primary-color;
-    color: set-color(white);
-
-    &.-outline {
-      background-color: transparent;
-      color: $primary-color;
-    }
-
-    &.-flat {
-      background-color: transparent;
-      border-color: transparent;
-      color: $primary-color;
-    }
-  }
-
-  &.-secondary {
-    background-color: $secondary-color;
-    border: 0.0625rem solid $secondary-color;
-    color: $text-black;
-
-    &.-outline {
-      background-color: transparent;
-      color: $secondary-color;
-    }
-
-    &.-flat {
-      background-color: transparent;
-      border-color: transparent;
-      color: $secondary-color;
-    }
-  }
-
-  &.-success {
-    background-color: $success-color;
-    border: 0.0625rem solid $success-color;
-    color: set-color(white);
-
-    &.-outline {
-      background-color: transparent;
-      color: $success-color;
-      
-      .chi-icon {
-        color: $icon-color-success;
-      }
-    }
-
-    &.-flat {
-      background-color: transparent;
-      border-color: transparent;
-      color: $success-color;
+  @each $color in map-keys($colors) {
+    &.-#{$color} {
+      background-color: map-get(map-get($colors, $color), background-color);
+      border: 0.0625rem solid map-get(map-get($colors, $color), background-color);
+      color: map-get(map-get($colors, $color), text-color);
 
       .chi-icon {
-        color: $icon-color-success;
+        color: map-get(map-get($colors, $color), icon-color);
       }
-    }
-  }
 
-  &.-warning {
-    background-color: $warning-color;
-    border: 0.0625rem solid $warning-color;
-    color: set-color(white);
+      &.-outline,
+      &.-flat {
+        background-color: transparent;
+        border-color: map-get(map-get($colors, $color), border-color);
+        color: map-get(map-get($colors, $color), text-color-flat);
 
-    &.-outline {
-      background-color: transparent;
-      color: $warning-color;
-
-      .chi-icon {
-        color: $icon-color-warning;
+        .chi-icon {
+          color: map-get(map-get($colors, $color), icon-color-flat);
+        }
       }
-    }
 
-    &.-flat {
-      background-color: transparent;
-      border-color: transparent;
-      color: $warning-color;
-
-      .chi-icon {
-        color: $icon-color-warning;
+      &.-flat {
+        border-color: transparent;
       }
-    }
-  }
-
-  &.-danger {
-    background-color: $danger-color;
-    border: 0.0625rem solid $danger-color;
-    color: set-color(white);
-
-    &.-outline {
-      background-color: transparent;
-      color: $danger-color;
-
-      .chi-icon {
-        color: $icon-color-danger;
-      }
-    }
-
-    &.-flat {
-      background-color: transparent;
-      border-color: transparent;
-      color: $danger-color;
-
-      .chi-icon {
-        color: $icon-color-danger;
-      }
-    }
-  }
-
-  &.-info {
-    background-color: $info-color;
-    border: 0.0625rem solid $info-color;
-    color: set-color(white);
-
-    &.-outline {
-      background-color: transparent;
-      color: $info-color;
-
-      .chi-icon {
-        color: $icon-color-info;
-      }
-    }
-
-    &.-flat {
-      background-color: transparent;
-      border-color: transparent;
-      color: $info-color;
-
-      .chi-icon {
-        color: $icon-color-info;
-      }
-    }
-  }
-
-  &.-dark {
-    background-color: set-color(black);
-    border: 0.0625rem solid set-color(black);
-    color: set-color(white);
-
-    &.-outline {
-      background-color: transparent;
-      color: $text-black;
-    }
-
-    &.-flat {
-      background-color: transparent;
-      border-color: transparent;
-      color: $text-black;
-    }
-  }
-
-  &.-muted {
-    background-color: $light-color;
-    border: 0.0625rem solid $light-color;
-
-    &.-outline {
-      background-color: transparent;
-      border-color: set-color(grey, 50);
-      color: set-color(grey, 60);
-    }
-
-    &.-flat {
-      background-color: transparent;
-      border-color: transparent;
-      color: set-color(grey, 60);
-    }
-  }
-
-  &.-inverse {
-    background-color: set-color(white);
-    border: 0.0625rem solid set-color(white);
-
-    &.-outline {
-      background-color: transparent;
-      color: set-color(white);
-    }
-
-    &.-flat {
-      background-color: transparent;
-      border-color: transparent;
-      color: set-color(white);
-    }
-  }
-
-  &.-light {
-    background-color: set-color(white);
-    border: 0.0625rem solid set-color(white);
-    color: $text-black;
-
-    &.-outline {
-      background-color: transparent;
-      color: set-color(white);
-    }
-
-    &.-flat {
-      background-color: transparent;
-      border-color: transparent;
-      color: set-color(white);
     }
   }
 }

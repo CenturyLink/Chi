@@ -1,29 +1,34 @@
 @import '_mixins';
 @import '_variables';
 
-.-bg--inverse {
-  background-color: $bg-inverse;
-}
-
 $colors: (
-  primary: $primary-color,
-  secondary: $secondary-color,
-  white: set-color(white),
-  black: set-color(black),
-  grey: $grey-color,
-  grey-10: set-color(grey, 10),
-  grey-20: set-color(grey, 20),
-  grey-30: set-color(grey, 30),
-  blue-60: set-color(blue, 60),
-  blue-70: set-color(blue, 70),
-  blue-80: set-color(blue, 80),
-  blue-90: set-color(blue, 90),
-  teal: set-color(teal, 60),
-  muted: $muted-color,
-  success: $success-color,
-  info: $info-color,
-  warning: $warning-color,
-  danger: $danger-color,
+  primary: $color-background-primary,
+  secondary: $color-background-secondary,
+  white: $color-white,
+  black: $color-black,
+  navy: $color-navy-100,
+  grey: $color-grey-80,
+  grey-10: $color-grey-10,
+  grey-15: $color-grey-15,
+  grey-20: $color-grey-20,
+  grey-25: $color-grey-25,
+  grey-30: $color-grey-30,
+  grey-80: $color-grey-80,
+  muted: $color-background-muted,
+  muted-light: $color-background-muted-light,
+  muted-lighter: $color-background-muted-lighter,
+  success: $color-background-success,
+  success-light: $color-background-success-light,
+  success-lighter: $color-background-success-lighter,
+  info: $color-background-info,
+  info-light: $color-background-info-light,
+  info-lighter: $color-background-info-lighter,
+  warning: $color-background-warning,
+  warning-light: $color-background-warning-light,
+  warning-lighter: $color-background-warning-lighter,
+  danger: $color-background-danger,
+  danger-light: $color-background-danger-light,
+  danger-lighter: $color-background-danger-lighter,
   none: none
 );
 
@@ -31,11 +36,11 @@ $colors: (
 
   @if $color-key == 'none' {
     .-bg--#{$color-key} {
-      background: $color-value;
+      background: $color-value !important;
     }
   } @else {
     .-bg--#{$color-key} {
-      background-color: $color-value;
+      background-color: $color-value !important;
     }
   }
 }
@@ -46,11 +51,11 @@ $colors: (
 
       @if $color-key == 'none' {
         .-bg-#{$size}--#{$color-key} {
-          background: $color-value;
+          background: $color-value !important;
         }
       } @else {
         .-bg-#{$size}--#{$color-key} {
-          background-color: $color-value;
+          background-color: $color-value !important;
         }
       }
     }

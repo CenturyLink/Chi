@@ -1,5 +1,5 @@
-$base-color: set-color(grey, 15);
-$shine-color: set-color(grey, 10);
+$base-color: $color-grey-15;
+$shine-color: $color-grey-10;
 $animation-duration: 2s;
 
 @keyframes shine {

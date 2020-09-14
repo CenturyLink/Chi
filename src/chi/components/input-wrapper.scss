@@ -12,13 +12,13 @@ $border: 0.0625rem;
   flex-direction: column;
 
   & label:not(.chi-label) {
-    font-weight: normal;
+    font-weight: $font-weight-normal;
   }
 
   &.-row {
     align-items: center;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
 
     & label {
       margin-bottom: 0;
@@ -35,7 +35,7 @@ $border: 0.0625rem;
   }
 
   &.-list {
-    border: $border solid set-color(grey, 30);
+    border: $border solid $color-border-base-dark;
     flex-direction: column;
     list-style-type: none;
     margin: 0;
@@ -43,7 +43,7 @@ $border: 0.0625rem;
     padding: 0;
 
     & li {
-      border-bottom: $border solid set-color(grey, 20);
+      border-bottom: $border solid $color-border-base-light;
       flex: 1 0 auto;
       line-height: 1rem;
       padding: (0.5rem - $border) (1rem - $border);
@@ -57,7 +57,7 @@ $border: 0.0625rem;
   & .chi-label__wrapper {
     align-items: center;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     margin-bottom: 0.25rem;
 
     label,

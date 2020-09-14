@@ -31,20 +31,20 @@ $monday-starting-week: (
 }
 
 .chi-datepicker {
-  font-size: $text;
+  font-size: $font-size-base;
   width: 14rem;
 
   &__day {
-    font-weight: normal;
+    font-weight: $font-weight-normal;
     line-height: 2rem;
     text-align: center;
     transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
     width: calc(100% / 7);
 
     &.-active {
-      background-color: $brand-color;
+      background-color: $color-background-primary;
       color: white;
-      font-weight: 600;
+      font-weight: $font-weight-semi-bold;
 
       &.-today::after {
         background-color: white;
@@ -52,11 +52,11 @@ $monday-starting-week: (
     }
 
     &.-inactive {
-      color: rgba(set-color(grey, 90), 0.4);
+      color: rgba($color-grey-90, 0.4);
       pointer-events: none;
 
       &.-today::after {
-        background-color: rgba(set-color(grey, 90), 0.4);
+        background-color: rgba($color-grey-90, 0.4);
       }
     }
 
@@ -64,7 +64,7 @@ $monday-starting-week: (
       position: relative;
 
       &::after {
-        background-color: $brand-color;
+        background-color: $color-background-primary;
         bottom: 3px;
         content: '';
         height: 4px;
@@ -77,11 +77,11 @@ $monday-starting-week: (
 
     &:not(.-inactive):not(.-active) {
       &:hover {
-        background-color: (set-color(grey, 20));
+        background-color: ($color-grey-20);
       }
 
       &.-hover {
-        background-color: (set-color(grey, 20));
+        background-color: ($color-grey-20);
       }
     }
 
@@ -91,14 +91,14 @@ $monday-starting-week: (
   }
 
   &__week-day {
-    font-weight: 600;
+    font-weight: $font-weight-semi-bold;
     line-height: 2rem;
     text-align: center;
     width: calc(100% / 7);
   }
 
   &__month {
-    font-weight: 600;
+    font-weight: $font-weight-semi-bold;
     margin-left: calc(100% / 7);
     text-align: center;
     width: calc(100% * 5 / 7);
@@ -110,12 +110,12 @@ $monday-starting-week: (
         width: calc(100% / 7);
 
         &.-disabled {
-          color: rgba(set-color(grey, 90), 0.2);
+          color: rgba($color-grey-90, 0.2);
           pointer-events: none;
         }
 
         &:not(.-disabled) {
-          color: $brand-color;
+          color: $color-text-primary;
           cursor: pointer;
         }
       }

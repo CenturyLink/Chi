@@ -45,13 +45,12 @@ $sizes: (
       &,
       &.-primary,
       &.-secondary,
-      &.-brand,
       &.-danger,
-      &.-info,
       &.-dark {
         &,
         &.-outline {
           border-bottom-width: 0;
+          border-radius: $border-radius-sharp;
           padding-bottom: 0.5rem;
 
           &.-icon {
@@ -68,7 +67,14 @@ $sizes: (
             }
           }
 
+          &:first-child {
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+          }
+
           &:last-child {
+            border-bottom-left-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
             border-bottom-width: 0.0625rem;
             padding-bottom: 0.4375rem;
 
@@ -156,6 +162,8 @@ $sizes: (
         }
 
         &.-flat {
+          border-radius: $border-radius;
+
           &:active,
           &.-active,
           &:hover,

@@ -30,11 +30,11 @@ $sizes: (
 
 textarea {
   &.chi-input {
-    border: 0.0625rem solid set-color(grey, 30);
-    color: $text-color;
+    border: 0.0625rem solid $color-border-base-dark;
+    color: $color-text-base;
     display: block;
-    font-size: $text;
-    line-height: $line-height-smaller;
+    font-size: $font-size-base;
+    line-height: $line-height-sm;
     min-height: 4rem;
     outline: none;
     padding: 0.4375rem 0.6875rem;
@@ -43,12 +43,12 @@ textarea {
     width: 100%;
 
     &::placeholder {
-      color: set-color(grey, 50);
+      color: $color-grey-50;
     }
 
     &:hover,
     &.-hover {
-      border-color: set-color(grey, 40);
+      border-color: $color-grey-40;
     }
 
     &:focus,
@@ -59,9 +59,9 @@ textarea {
 
     &[disabled],
     &.-disabled {
-      background-color: set-color(grey, 10);
-      border-color: set-color(grey, 30);
-      color: set-color(grey, 90);
+      background-color: $color-grey-10;
+      border-color: $color-border-base-dark;
+      color: $color-text-base;
     }
 
     @each $type in map-keys($sizes) {
@@ -73,19 +73,19 @@ textarea {
       }
     }
 
-    @each $type in map-keys($state-colors) {
+    @each $type in map-keys($color-semantic) {
       &:not([disabled]) {
         &.-#{$type} {
-          border-color: set-color(map-get($state-colors, $type), 55);
+          border-color: map-get(map-get($color-semantic, $type), border-color);
         }
       }
 
       &.-#{$type} {
-        color: set-color(grey, 90);
+        color: $color-text-base;
 
         &:focus,
         &.-focus {
-          box-shadow: 0 0 0 1px rgba(set-color(map-get($state-colors, $type), 55), 1);
+          box-shadow: 0 0 0 1px rgba(map-get(map-get($color-semantic, $type), border-color), 1);
         }
       }
     }

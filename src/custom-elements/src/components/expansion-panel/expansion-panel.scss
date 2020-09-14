@@ -5,7 +5,7 @@
 
     &:not(:last-child) {
         .chi-epanel:not(.-bordered) {
-            border-bottom: 0.0625rem solid $border-color;
+            border-bottom: 0.0625rem solid $color-border-base;
         }
     }
 }

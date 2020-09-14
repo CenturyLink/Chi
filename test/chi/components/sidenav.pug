@@ -1,27 +1,72 @@
 ---
 title: Sidenav
 ---
-- var sidenavTypes = ['', 'inverse']
+
 - var menuItems=[1, 2, 3, 4];
 - var drawerMenuItems=['A', 'B', 'C', 'D']
 - var active = { menuItem: 1, drawerMenuItem: 'B' };
 - var sizes = ['-sm', '-md', '-lg']
 
-each sidenavType in sidenavTypes
+h2.-text--capitalized
+  | Base
+div(class=`test-base`, style='width: 40rem;')
+  aside.chi-sidenav.-flex--shrink0(style='height: 35rem;')
+    .chi-sidenav__content
+      nav
+        ul.chi-sidenav__list
+          each val in menuItems
+            li(class=`${val === active.menuItem ? '-active' : ''}`)
+              a
+                .chi-icon
+                  svg
+                    use(xlink:href='#icon-atom')
+                span=val === active.menuItem ? 'Active Item' : 'Menu Item'
+    .chi-sidenav__drawers
+      .chi-drawer.-active.-animated.-left
+        .chi-drawer__header
+          .chi-drawer__title= 'Menu item 1'
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
+              i.chi-icon.icon-x
+        .chi-drawer__content
+          ul.chi-sidenav__drawer-list
+            each val2, index in drawerMenuItems
+              if val2 === 'A' || val2 === 'B'
+                li(class=`${val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                  a(href=`#drawer-item-list-${val1}-${val2}`)
+                    .chi-sidenav__title=`Title 1`
+                  .chi-sidenav__drawer-item-list
+                    ul.chi-tabs.-vertical.-sm
+                      li
+                        a(class=`chi-sidenav__drawer-item-tab ${val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
+                      li
+                        a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
+                      li
+                        a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab C
+              else
+                li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                  a(href=`#exampleHashTarget`)
+                    span.chi-sidenav__title
+                      =`Title 1`
+                      .chi-icon.-xs
+                        svg
+                          use(xlink:href='#icon-external-link')
+
+each size in sizes
   h2.-text--capitalized
-    = `${sidenavType === '' ? 'base' : sidenavType} `
-  div(class=`test-${sidenavType === '' ? 'base' : sidenavType}`, style='width: 40rem;')
-    aside.chi-sidenav.-flex--shrink0(class=`${sidenavType !== '' ? '-' + sidenavType : ''}`, style='height: 35rem;')
+    = size
+  div(style='width: 40rem;')
+    aside.chi-sidenav.-flex--shrink0(class=`${size}`, style='height: 35rem;')
       .chi-sidenav__content
         nav
           ul.chi-sidenav__list
             each val in menuItems
-              li(class=`${val === active.menuItem ? '-active' : ''}`)
+              li(class=`${val===active.menuItem ? '-active':''}`)
                 a
                   .chi-icon
                     svg
                       use(xlink:href='#icon-atom')
-                  span=val === active.menuItem ? 'Active Item' : 'Menu Item'
+                  span=val===active.menuItem ? 'Active Item' : 'Menu Item'
       .chi-sidenav__drawers
         .chi-drawer.-active.-animated.-left
           .chi-drawer__header
@@ -52,51 +97,3 @@ each sidenavType in sidenavTypes
                         .chi-icon.-xs
                           svg
                             use(xlink:href='#icon-external-link')
-
-each size in sizes
-  each sidenavType in sidenavTypes
-    h2.-text--capitalized
-      = `${sidenavType === '' ? 'base' : sidenavType } `
-      span.-text--lowercase= size
-    div(class=`test-${sidenavType === '' ? 'base' : sidenavType }${size}`, style='width: 40rem;')
-      aside.chi-sidenav.-flex--shrink0(class=`${size} ${sidenavType !== '' ? '-' + sidenavType : '' }`, style='height: 35rem;')
-        .chi-sidenav__content
-          nav
-            ul.chi-sidenav__list
-              each val in menuItems
-                li(class=`${val===active.menuItem ? '-active':''}`)
-                  a
-                    .chi-icon
-                      svg
-                        use(xlink:href='#icon-atom')
-                    span=val===active.menuItem ? 'Active Item' : 'Menu Item'
-        .chi-sidenav__drawers
-          .chi-drawer.-active.-animated.-left
-            .chi-drawer__header
-              .chi-drawer__title= 'Menu item 1'
-              button(class='chi-button -icon -close', aria-label='Close')
-                .chi-button__content
-                  i.chi-icon.icon-x
-            .chi-drawer__content
-              ul.chi-sidenav__drawer-list
-                each val2, index in drawerMenuItems
-                  if val2 === 'A' || val2 === 'B'
-                    li(class=`${val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
-                      a(href=`#drawer-item-list-${val1}-${val2}`)
-                        .chi-sidenav__title=`Title 1`
-                      .chi-sidenav__drawer-item-list
-                        ul.chi-tabs.-vertical.-sm
-                          li
-                            a(class=`chi-sidenav__drawer-item-tab ${val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
-                          li
-                            a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
-                          li
-                            a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab C
-                  else
-                    li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
-                      a(href=`#exampleHashTarget`)
-                        span.chi-sidenav__title
-                          =`Title 1`
-                          .chi-icon.-xs
-                            svg
-                              use(xlink:href='#icon-external-link')

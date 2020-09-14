@@ -1,33 +1,59 @@
 @import '_variables';
 @import '_mixins';
 
+$sizes: (
+  xs: (
+    font-size: $font-size-xs,
+    line-height: $line-height-sm,
+  ),
+  sm: (
+    font-size: $font-size-sm,
+    line-height: $line-height,
+  ),
+  md: (
+    font-size: $font-size-base,
+    line-height: $line-height,
+  ),
+  lg: (
+    font-size: $font-size-lg,
+    line-height: $line-height-lg,
+  ),
+  xl: (
+    font-size: $font-size-xl,
+    line-height: $line-height-xl,
+  )
+);
+
 .chi-breadcrumb {
   > ol {
     display: flex;
-    font-size: $text;
-    font-weight: 600;
-    line-height: $line-height-small;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semi-bold;
+    line-height: $line-height;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
   &__item {
+    align-items: center;
+    display: flex;
+
     &:not(:first-child) {
       padding-left: 0.25rem;
 
       &::before {
-        color: set-color(gray, 50);
+        color: $color-grey-50;
         content: quote('/');
-        font-weight: normal;
+        font-weight: $font-weight-normal;
         padding-right: 0.25rem;
       }
     }
 
     &.-active {
       a {
-        color: $text-color;
-        font-weight: normal;
+        color: $color-text-base;
+        font-weight: $font-weight-normal;
         text-decoration: none;
       }
     }
@@ -37,69 +63,25 @@
     .chi-breadcrumb__item {
       &:not(:first-child) {
         &::before {
-          content: url('icon-chevron-right.svg');
-          display: inline-block;
-          height: 1rem;
-          position: relative;
-          top: 0.1rem;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.89 7.823l-6.732 6.963L4.331 16l7.292-7.542.677-.654L4.215 0 3 1.172l6.89 6.65z' fill='%238E9399' fill-rule='evenodd'/%3E%3C/svg%3E");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 75%;
+          content: '';
+          display: flex;
+          height: 100%;
           width: 1rem;
         }
       }
     }
+  }
 
-    &.-lg {
-      .chi-breadcrumb__item {
-        &:not(:first-child) {
-          &::before {
-            top: 0.05rem;
-          }
-        }
+  @each $size in map-keys($sizes) {
+    &.-#{$size} {
+      > ol {
+        font-size: map-get(map-get($sizes, $size), font-size);
+        line-height: map-get(map-get($sizes, $size), line-height);
       }
-    }
-
-    &.-xl {
-      .chi-breadcrumb__item {
-        &:not(:first-child) {
-          &::before {
-            top: 0;
-          }
-        }
-      }
-    }
-  }
-
-  &.-xs {
-    > ol {
-      font-size: $text-smaller;
-      line-height: $line-height-smaller;
-    }
-  }
-
-  &.-sm {
-    > ol {
-      font-size: $text-small;
-      line-height: $line-height-small;
-    }
-  }
-
-  &.-md {
-    > ol {
-      font-size: $text;
-      line-height: $line-height-small;
-    }
-  }
-
-  &.-lg {
-    > ol {
-      font-size: $text-large;
-      line-height: $line-height-large;
-    }
-  }
-
-  &.-xl {
-    > ol {
-      font-size: $text-larger;
-      line-height: $line-height-larger;
     }
   }
 }

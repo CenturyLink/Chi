@@ -8,7 +8,7 @@
           &:not(:checked) {
             & ~ label {
               &:first-of-type {
-                background-color: set-color(grey, 10);
+                background-color: $color-grey-10;
               }
             }
           }
@@ -20,7 +20,7 @@
           &:not(:checked) {
             & ~ label {
               &:last-of-type {
-                background-color: set-color(grey, 10);
+                background-color: $color-grey-10;
               }
             }
           }
@@ -52,13 +52,30 @@
               border-bottom-width: 0.0625rem;
               border-right-width: 0;
               flex: 1 0 0;
+              white-space: nowrap;
+            }
+
+            &:first-of-type {
+              border-bottom-left-radius: 0;
+              border-top-left-radius: $border-radius;
+              border-top-right-radius: $border-radius;
+
+              @include respond-to(md) {
+                border-bottom-left-radius: $border-radius;
+                border-top-right-radius: 0;
+              }
             }
 
             &:last-of-type {
+              border-bottom-left-radius: $border-radius;
+              border-bottom-right-radius: $border-radius;
               border-bottom-width: 0.0625rem;
+              border-top-right-radius: 0;
 
               @include respond-to(md) {
+                border-bottom-left-radius: 0;
                 border-right-width: 0.0625rem;
+                border-top-right-radius: $border-radius;
               }
             }
 
@@ -87,8 +104,8 @@
         &:checked {
           &.chi-picker__input {
             & + label {
-              border: solid 0.0625rem $primary-color;
-              color: $primary-color;
+              border: solid 0.0625rem $color-border-primary;
+              color: $color-text-primary;
               padding-right: 1rem;
 
 

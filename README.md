@@ -1,10 +1,10 @@
 # Welcome to Chi
 
-Chi is CenturyLink's design system for building consistent digital products and experiences.
+Chi is Lumen's design system for building consistent digital products and experiences.
 
 ## Getting Started
 
-Integrating Chi with your project is as simple as loading the Chi stylesheet from the [CenturyLink Assets Server](https://assets.ctl.io). Not only is this a great way to get started with Chi, it is also a highly available and performant option for loading the required assets into your project.
+Integrating Chi with your project is as simple as loading the Chi stylesheet from the [Lumen Assets Server](https://assets.ctl.io). Not only is this a great way to get started with Chi, it is also a highly available and performant option for loading the required assets into your project.
 
 Begin by adding the Chi stylesheet to your project's layout template, replacing `VERSION` with the most recent release of Chi:
 

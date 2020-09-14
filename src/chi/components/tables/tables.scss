@@ -19,28 +19,7 @@ $sizes: (
   )
 );
 
-$inverse-sizes: (
-  xs: (
-    padding-left: 0.75rem,
-    active-padding-left: 0.5rem
-  ),
-  sm: (
-    padding-left: 0.75rem,
-    active-padding-left: 0.5rem
-  ),
-  md: (
-    padding-left: 1rem,
-    active-padding-left: 0.75rem
-  ),
-  lg: (
-    padding-left: 1.25rem,
-    active-padding-left: 1rem
-  ),
-  xl: (
-    padding-left: 1.5rem,
-    active-padding-left: 1.25rem
-  )
-);
+$vertical-alignments: (top, bottom, middle);
 
 th {
   text-align: left;
@@ -48,14 +27,15 @@ th {
 
 .chi-table {
   border-spacing: 0;
-  font-size: $text;
-  line-height: $line-height-smaller;
+  font-size: $font-size-base;
+  line-height: $line-height-sm;
   margin: 0;
   padding: 0;
   width: 100%;
 
   @each $type in map-keys($sizes) {
     &.-#{$type} {
+
       & th {
         padding: map-get(map-get($sizes, $type), padding);
       }
@@ -68,8 +48,8 @@ th {
 
   table {
     border-spacing: 0;
-    font-size: $text;
-    line-height: $line-height-smaller;
+    font-size: $font-size-base;
+    line-height: $line-height-sm;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -80,20 +60,21 @@ th {
   }
 
   tr {
-    background-color: set-color(white);
+    background-color: $color-background-white;
 
     & th {
-      border-bottom: 0.0625rem solid set-color(grey, 30);
+      border-bottom: 0.0625rem solid $color-border-base-dark;
       padding: 1rem;
     }
 
     & td {
-      border-bottom: 0.0625rem solid set-color(grey, 20);
+      border-bottom: 0.0625rem solid $color-border-base-light;
       padding: 1rem;
     }
 
     @each $type in map-keys($sizes) {
       &.-#{$type} {
+
         & th {
           padding: map-get(map-get($sizes, $type), padding) !important;
         }
@@ -106,8 +87,8 @@ th {
   }
 
   th {
-    border-bottom: 0.0625rem solid set-color(grey, 30);
-    font-weight: 600;
+    border-bottom: 0.0625rem solid $color-border-base-dark;
+    font-weight: $font-weight-semi-bold;
 
     &.-sorted {
       div {
@@ -120,8 +101,8 @@ th {
           background-image: none;
           content: '\e921';
           font-family: 'chi';
-          font-size: 0.75rem;
-          font-weight: normal;
+          font-size: $font-size-xs;
+          font-weight: $font-weight-normal;
           height: 1rem;
           margin-left: 0.5rem;
           opacity: 0;
@@ -151,192 +132,32 @@ th {
   & tbody {
     tr {
       &.-row--success {
-        background-color: set-color(mint, 10) !important;
+        background-color: $color-background-success-light !important;
       }
 
       &.-row--warning {
-        background-color: set-color(yellow, 10) !important;
+        background-color: $color-background-warning-light !important;
       }
 
       &.-row--danger {
-        background-color: set-color(red, 10) !important;
+        background-color: $color-background-danger-light !important;
       }
 
       &.-row--info {
-        background-color: set-color(blue, 10) !important;
+        background-color: $color-background-info-light !important;
       }
 
       &[disabled] {
-        color: rgba(set-color(grey, 90), 0.4) !important;
-      }
-    }
-  }
-
-  &.-inverse {
-    tr {
-      background-color: set-color(grey, 90);
-      color: set-color(white);
-
-      & th {
-        border-bottom: 0.0625rem solid set-color(grey, 70);
-
-        &.-sorted {
-          div {
-            &::after {
-              background-image: none;
-              content: '\e921';
-              font-family: 'chi';
-              font-size: 0.75rem;
-              font-weight: normal;
-              height: 1rem;
-            }
-          }
-        }
+        color: rgba($color-grey-90, 0.4) !important;
       }
 
-      & td {
-        border-bottom: 0.0625rem solid set-color(grey, 80);
-      }
-    }
+      &.-active {
+        td {
+          background-color: $color-background-info-light;
 
-    & tbody {
-      tr {
-        &.-row--success {
-          background-color: set-color(mint, 80) !important;
-        }
-
-        &.-row--warning {
-          background-color: set-color(yellow, 80) !important;
-        }
-
-        &.-row--danger {
-          background-color: set-color(red, 80) !important;
-        }
-
-        &.-row--info {
-          background-color: set-color(blue, 80) !important;
-        }
-
-        &[disabled] {
-          color: rgba(set-color(grey, 10), 0.4) !important;
-        }
-
-        &.-active {
-          td {
-            background-color: rgba(set-color(mint, 40), 0.08);
-            color: $secondary-color;
-
-            &:first-child {
-              border-left: 0.25rem solid $secondary-color;
-              padding-left: 0.75rem;
-            }
-          }
-        }
-      }
-    }
-
-    &.-hover {
-      tbody {
-        tr {
-          &:hover,
-          &.-hover {
-            background-color: set-color(grey, 90);
-
-            td {
-              background-color: set-color(grey, 80);
-            }
-          }
-
-          &.-active {
-            &:hover,
-            &.-hover {
-              td {
-                background-color: rgba(set-color(mint, 40), 0.08);
-              }
-            }
-          }
-        }
-      }
-    }
-
-    &.-striped {
-      tbody {
-        tr {
-          &:nth-child(odd) {
-            background-color: set-color(grey, 80);
-          }
-
-          &.-active {
-            background-color: set-color(grey, 90);
-          }
-        }
-      }
-    }
-
-    &.-bordered {
-      &::before {
-        border-color: set-color(grey, 80);
-      }
-
-      tr {
-        & th,
-        & td {
-          border-color: set-color(grey, 80);
-        }
-      }
-
-      thead {
-        tr {
-          &:last-child {
-            th {
-              border-bottom-color: set-color(grey, 80);
-            }
-          }
-        }
-      }
-    }
-
-    &.-fixed--header {
-      &::before {
-        background-color: set-color(grey, 90);
-      }
-
-      &.-striped {
-        tbody {
-          tr:nth-child(odd) {
-            background-color: set-color(grey, 80);
-          }
-        }
-      }
-
-      &.-bordered {
-        th {
-          border: 0;
-        }
-      }
-    }
-
-    @each $type in map-keys($inverse-sizes) {
-      &.-#{$type} {
-        tr {
-          & th {
-            &:first-child {
-              padding-left: map-get(map-get($inverse-sizes, $type), padding-left);
-            }
-          }
-
-          & td {
-            &:first-child {
-              padding-left: map-get(map-get($inverse-sizes, $type), padding-left);
-            }
-          }
-
-          &.-active {
-            td {
-              &:first-child {
-                padding-left: map-get(map-get($inverse-sizes, $type), active-padding-left);
-              }
-            }
+          &:first-child {
+            border-left: 0.25rem solid $color-border-primary;
+            padding-left: 0.75rem;
           }
         }
       }
@@ -346,8 +167,36 @@ th {
   &.-portal {
     tr {
       th {
-        background-color: $portal-color-background-table-th;
-        border-bottom: 0.0625rem solid set-color(grey, 30);
+        background-color: $color-background-base-darker;
+        border-bottom: 0.0625rem solid $color-border-base-dark;
+      }
+
+      &.-xs {
+        th,
+        td {
+          padding: 0.5rem 1rem;
+        }
+      }
+
+      &.-sm {
+        th,
+        td {
+          padding: 0.75rem 1rem;
+        }
+      }
+    }
+
+    &.-xs {
+      th,
+      td {
+        padding: 0.5rem 1rem;
+      }
+    }
+
+    &.-sm {
+      th,
+      td {
+        padding: 0.75rem 1rem;
       }
     }
 
@@ -364,23 +213,18 @@ th {
     tbody {
       tr {
         &:nth-child(even) {
-          background-color: $portal-color-background-table-tr-alt;
+          background-color: $color-background-primary-lighter;
         }
 
         &.-active {
           td {
-            background-color: $portal-color-background-table-tr-selected;
-
-            &:first-child {
-              border-left: 0.25rem solid $primary-color;
-              padding-left: 0.75rem;
-            }
+            background-color: $color-background-primary-light;
           }
         }
 
         &:hover,
         &.-hover {
-          background-color: $portal-color-background-table-tr-selected;
+          background-color: $color-background-primary-light;
         }
 
         td {
@@ -393,11 +237,11 @@ th {
       tbody {
         tr {
           &:nth-child(even) {
-            background-color: $portal-color-background-table-tr-alt;
+            background-color: $color-background-primary-lighter;
           }
 
           &:nth-child(odd) {
-            background-color: set-color(white);
+            background-color: $color-background-white;
           }
         }
       }
@@ -410,7 +254,7 @@ th {
         tr {
           &:hover,
           &.-hover {
-            background-color: set-color(grey, 10);
+            background-color: $color-grey-10;
           }
         }
       }
@@ -420,7 +264,7 @@ th {
   &.-striped {
     tbody {
       tr:nth-child(odd) {
-        background-color: set-color(grey, 10);
+        background-color: $color-grey-10;
       }
     }
   }
@@ -445,7 +289,7 @@ th {
     &,
     &.-portal {
       &::before {
-        border: 0.0625rem solid set-color(grey, 30);
+        border: 0.0625rem solid $color-border-base-dark;
         border-bottom-width: 0;
         border-left-width: 0;
       }
@@ -454,7 +298,7 @@ th {
         tr {
           &:last-child {
             th {
-              border-bottom: 0.0625rem solid set-color(grey, 30);
+              border-bottom: 0.0625rem solid $color-border-base-dark;
             }
           }
         }
@@ -462,7 +306,7 @@ th {
 
       tr {
         & th {
-          border: 0.0625rem solid set-color(grey, 30);
+          border: 0.0625rem solid $color-border-base-dark;
           border-bottom-width: 0;
           border-right-width: 0;
 
@@ -472,7 +316,7 @@ th {
         }
 
         & td {
-          border: 0.0625rem solid set-color(grey, 30);
+          border: 0.0625rem solid $color-border-base-dark;
           border-right-width: 0;
           border-top-width: 0;
 
@@ -489,7 +333,7 @@ th {
     position: relative;
 
     &::before {
-      background-color: set-color(white);
+      background-color: $color-background-white;
       content: '';
       display: block;
       height: 3rem;
@@ -553,7 +397,7 @@ th {
     }
 
     td {
-      border-bottom: 0.0625rem solid set-color(grey, 20);
+      border-bottom: 0.0625rem solid $color-border-base-light;
       padding: 1rem;
       padding-bottom: 0.9375rem;
       text-align: start;
@@ -565,7 +409,7 @@ th {
         tr {
           &:hover,
           &.-hover {
-            background-color: set-color(grey, 10);
+            background-color: $color-grey-10;
           }
         }
       }
@@ -574,7 +418,7 @@ th {
     &.-striped {
       tbody {
         tr:nth-child(odd) {
-          background-color: set-color(grey, 10);
+          background-color: $color-grey-10;
         }
       }
     }
@@ -592,7 +436,7 @@ th {
 
     &.-bordered {
       &::before {
-        border: 0.0625rem solid set-color(grey, 20);
+        border: 0.0625rem solid $color-border-base-light;
         border-left-width: 0;
       }
 
@@ -601,12 +445,12 @@ th {
       }
 
       th > div {
-        border-left: 0.0625rem solid set-color(grey, 20);
+        border-left: 0.0625rem solid $color-border-base-light;
         padding-left: 0.9375rem;
       }
 
       td {
-        border: 0.0625rem solid set-color(grey, 20);
+        border: 0.0625rem solid $color-border-base-light;
         border-right-width: 0;
         border-top-width: 0;
         padding: 1rem 1rem 0.9375rem 0.9375rem;
@@ -614,6 +458,29 @@ th {
         &:last-of-type {
           border-right-width: 0.0625rem;
           padding-right: 0.9375rem;
+        }
+      }
+    }
+  }
+
+  .-valign--top {
+    vertical-align: top;
+  }
+
+  .-valign--middle {
+    vertical-align: middle;
+  }
+
+  .-valign--bottom {
+    vertical-align: bottom;
+  }
+
+  @each $screen-size in $screen-sizes {
+    @include respond-to($screen-size) {
+      @each $type in $vertical-alignments {
+        .-valign-#{$screen-size}--#{$type} {
+
+          vertical-align: #{$type};
         }
       }
     }

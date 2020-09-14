@@ -3,55 +3,55 @@
 
 $states: (
   success: (
-    border-left-color: $icon-color-success,
-    color: $icon-color-success,
-    banner-color: set-color(mint, 20),
-    title-color: $success-color
+    border-left-color: $color-icon-success,
+    color: $color-icon-success,
+    background-color: $color-background-success-light,
+    title-color: $color-text-success
   ),
   danger: (
-    border-left-color: $icon-color-danger,
-    color: $icon-color-danger,
-    banner-color: set-color(red, 20),
-    title-color: $danger-color
+    border-left-color: $color-icon-danger,
+    color: $color-icon-danger,
+    background-color: $color-background-danger-light,
+    title-color: $color-text-danger
   ),
   warning: (
-    border-left-color: $icon-color-warning,
-    color: $icon-color-warning,
-    banner-color: set-color(yellow, 20),
-    title-color: $warning-color
+    border-left-color: $color-icon-warning,
+    color: $color-icon-warning,
+    background-color: $color-background-warning-light,
+    title-color: $color-text-warning
   ),
   info: (
-    border-left-color: $icon-color-info,
-    color: $icon-color-info,
-    banner-color: set-color(blue, 20),
-    title-color: $info-color
+    border-left-color: $color-icon-info,
+    color: $color-icon-info,
+    background-color: $color-background-info-light,
+    title-color: $color-text-primary
   ),
   muted: (
-    border-left-color: $icon-color-muted,
-    color: $icon-color-muted,
-    banner-color: set-color(grey, 20),
-    title-color: $muted-color
+    border-left-color: $color-icon-muted,
+    color: $color-icon-muted,
+    background-color: $color-background-muted-light,
+    title-color: $color-text-muted
   )
 );
 
 .chi-alert {
-  background-color: set-color(white);
-  border-color: set-color(grey, 30);
+  background-color: $color-background-white;
+  border-color: $color-border-base-dark;
   border-style: solid;
   border-width: 0.0625rem;
   box-shadow: map-get($shadow, 1);
-  color: $text-color;
+  color: $color-text-base;
   display: flex;
-  font-family: $font-family;
-  font-size: $text;
-  line-height: $line-height-small;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height;
   padding: 0.8125rem 1.5rem;
   position: relative;
   text-align: left;
 
   &:not(.-banner) {
     &::before {
-      background-color: $text-color;
+      background-color: $color-text-base;
       content: '';
       height: 100%;
       left: -0.0625rem;
@@ -94,15 +94,15 @@ $states: (
   .chi-alert__text,
   p,
   .-text {
-    font-size: $text;
-    line-height: $line-height-small;
+    font-size: $font-size-base;
+    line-height: $line-height;
     margin: 0;
     word-break: break-word;
   }
 
   @each $state in map-keys($states) {
     &.-#{$state} {
-      color: set-color(grey, 100);
+      color: $color-text-base;
 
       &:not(.-banner) {
         &::before {
@@ -111,7 +111,7 @@ $states: (
       }
 
       &.-banner {
-        background-color: map-get(map-get($states, $state), banner-color);
+        background-color: map-get(map-get($states, $state), background-color);
       }
 
       .chi-alert__icon,
@@ -135,15 +135,19 @@ $states: (
     flex-grow: 1;
 
     .chi-alert__title {
-      font-size: $text;
-      font-weight: 600;
-      line-height: $line-height-small;
-      margin-bottom: 0.25rem;
+      font-size: $font-size-base;
+      font-weight: $font-weight-semi-bold;
+      line-height: $line-height;
+      margin-bottom: 0;
       margin-top: 0;
       word-break: break-word;
 
       &::first-letter {
         text-transform: capitalize;
+      }
+
+      + .chi-alert__text {
+        margin-top: 0.25rem;
       }
     }
 
@@ -209,10 +213,14 @@ $states: (
 
     .chi-alert__content {
       .chi-alert__title {
-        font-size: $text-large;
-        font-weight: 600;
-        line-height: $line-height-large;
-        margin-bottom: 0.375rem;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semi-bold;
+        line-height: $line-height-lg;
+        margin-bottom: 0;
+
+        + .chi-alert__text {
+          margin-top: 0.375rem;
+        }
       }
 
       .chi-alert__text {
@@ -240,11 +248,16 @@ $states: (
     .chi-alert__content {
       .chi-alert__title {
         margin-bottom: 0;
+
+        + .chi-alert__text {
+          margin-top: 0;
+          padding-top: 0;
+        }
       }
 
       .chi-alert__text {
-        font-size: $text-small;
-        line-height: $line-height-smaller;
+        font-size: $font-size-sm;
+        line-height: $line-height-sm;
         padding-top: 0.125rem;
       }
 

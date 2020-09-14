@@ -13,8 +13,8 @@ $sizes: (
   ),
   md: (
     height: 2rem,
-    font-size: $text,
-    line-height: $line-height-smaller,
+    font-size: $font-size-base,
+    line-height: $line-height-sm,
     padding: 0.4375rem 0.75rem,
     icons: (
       height: 1rem,

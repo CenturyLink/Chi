@@ -23,16 +23,16 @@
 
 .chi-switch {
   display: flex;
-  line-height: $line-height-small;
+  line-height: $line-height;
   margin: 0.25rem 0;
   position: relative;
 
   .chi-switch__label {
     align-items: flex-start;
     display: flex;
-    font-size: $text;
-    font-weight: normal;
-    line-height: $line-height-small;
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+    line-height: $line-height;
     margin-bottom: 0;
     margin-right: 0.5rem;
     padding: 0.125rem 0;
@@ -47,17 +47,17 @@
     &.chi-switch__content {
       display: flex;
       flex-direction: column;
-      font-size: $text-smallest;
-      line-height: $line-height-small;
+      font-size: $font-size-2xs;
+      line-height: $line-height;
 
       & > .chi-switch__thumb {
-        background-color: set-color(grey, 50);
+        background-color: $color-grey-50;
         border: 0;
         border-radius: 0.75rem;
         cursor: pointer;
         display: inline-block;
         height: 1.5rem;
-        line-height: $line-height;
+        line-height: $line-height-lg;
         margin-bottom: 0;
         margin-right: 0;
         position: relative;
@@ -65,7 +65,7 @@
         width: 3rem;
 
         &::after {
-          background-color: set-color(white);
+          background-color: $color-background-white;
           border: 0;
           border-radius: 0.75rem;
           content: '';
@@ -112,10 +112,10 @@
           & + span {
             &.chi-switch__content {
               & > .chi-switch__thumb {
-                background-color: $brand-color;
+                background-color: $color-background-primary;
 
                 &::after {
-                  background-color: set-color(white);
+                  background-color: $color-background-white;
                   border: 0;
                   border-radius: 0.75rem;
                   content: '';
@@ -137,18 +137,6 @@
 
               & > .chi-switch__off {
                 display: none;
-              }
-            }
-          }
-
-          &:focus,
-          &.-focus {
-            & + span {
-              &.chi-switch__content {
-                & > .chi-switch__thumb {
-                  outline: 0.125rem solid $focus-color;
-                  outline-offset: 0.0625rem;
-                }
               }
             }
           }
@@ -186,7 +174,7 @@
         & > .chi-switch__thumb {
           border-radius: 0.5rem;
           height: 1rem;
-          line-height: $line-height-smaller;
+          line-height: $line-height-sm;
           width: 2rem;
 
           &::after {
@@ -220,7 +208,7 @@
     }
 
     .chi-switch__label {
-      line-height: $line-height-smaller;
+      line-height: $line-height-sm;
       padding: 0;
     }
   }
@@ -231,7 +219,7 @@
         & > .chi-switch__thumb {
           border-radius: 0.75rem;
           height: 1.5rem;
-          line-height: $line-height;
+          line-height: $line-height-lg;
           width: 3rem;
 
           &::after {
@@ -280,13 +268,13 @@ input {
       width: 1px;
 
       & + label {
-        background-color: set-color(grey, 50);
+        background-color: $color-grey-50;
         border: 0;
         border-radius: 0.75rem;
         cursor: pointer;
         display: inline-block;
         height: 1.5rem;
-        line-height: $line-height;
+        line-height: $line-height-lg;
         margin-bottom: 0;
         margin-right: 0;
         position: relative;
@@ -294,7 +282,7 @@ input {
         width: 3.5rem;
 
         &::before {
-          background-color: set-color(white);
+          background-color: $color-background-white;
           background-image: none;
           border: 0;
           border-radius: 0.75rem;
@@ -313,10 +301,10 @@ input {
         &::after {
           background-image: none;
           border: 0;
-          color: set-color(white);
+          color: $color-text-white;
           content: 'OFF';
           display: block;
-          font-size: $text-smallest;
+          font-size: $font-size-2xs;
           font-weight: bold;
           height: 1.5rem;
           left: 1.5625rem;
@@ -337,7 +325,7 @@ input {
 
       &:checked {
         & + label {
-          background-color: $brand-color;
+          background-color: $color-background-primary;
 
           &::before {
             left: 2.125rem;
@@ -352,7 +340,7 @@ input {
         &:focus,
         &.-focus {
           & + label {
-            box-shadow: 0 0 0 0.25rem rgba($brand-color, 0.25);
+            box-shadow: 0 0 0 0.25rem $focus-color;
           }
         }
       }
@@ -363,7 +351,7 @@ input {
       }
 
       &[disabled] ~ .chi-switch__label {
-        color: set-color(grey, 70);
+        color: $color-grey-70;
         opacity: 0.6;
         pointer-events: none;
       }
@@ -371,7 +359,7 @@ input {
       &:focus,
       &.-focus {
         & + label {
-          box-shadow: 0 0 0 0.25rem rgba(set-color(grey, 50), 0.25);
+          box-shadow: 0 0 0 0.25rem rgba($color-grey-50, 0.25);
 
           &::before {
             box-shadow: none;
