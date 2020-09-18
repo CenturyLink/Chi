@@ -2,8 +2,8 @@
 @import '_mixins';
 
 .chi-accordion {
-  background-color: $color-background-base;
-  border-bottom: 1px solid $color-border-base-dark;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-grey-30;
 
   &__header {
     display: flex;
@@ -37,24 +37,24 @@
   }
 
   &.-portal {
-    background-color: $color-background-base-darker;
+    background-color: $color-grey-20;
     border-bottom: 0;
     margin-bottom: 0.5rem;
 
     &.-expanded {
       &.-bordered {
-        background-color: $color-background-base;
-        border: 0.0625rem solid $color-border-base-dark;
+        background-color: $color-white;
+        border: 0.0625rem solid $color-grey-30;
         margin-bottom: 0.5rem;
       }
     }
 
     .chi-accordion__header {
-      background-color: $color-background-muted;
+      background-color: $color-grey-30;
     }
 
     .chi-icon {
-      color: $color-icon-primary;
+      color: $color-blue-70;
     }
   }
 }
