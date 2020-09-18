@@ -38,8 +38,8 @@
 
   &.-portal {
     background-color: $color-background-base-darker;
+    border-bottom: 0;
     margin-bottom: 0.5rem;
-    border-bottom: none;
 
     &.-expanded {
       &.-bordered {
