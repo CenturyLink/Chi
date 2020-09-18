@@ -2,16 +2,18 @@
 @import '_mixins';
 
 .chi-accordion {
-  background-color: set-color(white);
-  border-bottom: 1px solid set-color(grey,20);
+  background-color: $color-background-base;
+  border-bottom: 1px solid $color-border-base-dark;
 
   &__header {
     display: flex;
     padding: 1rem;
 
     .chi-accordion__title {
-      font-size: $text-larger;
-      font-weight: $font-weight-semibold;
+      cursor: pointer;
+      font-size: $font-size-xl;
+      font-weight: $font-weight-semi-bold;
+      line-height: 2rem;
     }
   }
 
@@ -34,22 +36,25 @@
     }
   }
 
-  &.-bordered {
-    background-color: white;
-    border: 0.0625rem solid $border-color;
-    box-shadow: map-get($shadow, 1);
-    margin-bottom: 0.5rem;
-  }
-
   &.-portal {
-    background-color: set-color(grey, 20);
+    background-color: $color-background-base-darker;
+    margin-bottom: 0.5rem;
+    border-bottom: none;
+
+    &.-expanded {
+      &.-bordered {
+        background-color: $color-background-base;
+        border: 0.0625rem solid $color-border-base-dark;
+        margin-bottom: 0.5rem;
+      }
+    }
 
     .chi-accordion__header {
-      background-color: set-color(grey, 30);
+      background-color: $color-background-muted;
     }
 
     .chi-icon {
-      color: set-color(blue, 70);
+      color: $color-icon-primary;
     }
   }
 }
