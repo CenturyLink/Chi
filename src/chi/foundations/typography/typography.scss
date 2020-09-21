@@ -420,6 +420,11 @@ small,
   color: $color-icon-muted !important;
 }
 
+.-text--navy,
+.-icon--navy {
+  color: $color-navy-100 !important;
+}
+
 // line heights
 @for $index from 1 through 9 {
   .-lh--#{$index} {
