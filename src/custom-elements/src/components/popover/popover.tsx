@@ -217,6 +217,7 @@ export class Popover {
         },
         () => {
           this._animationClasses = CLASSES.ACTIVE;
+          this.eventShown.emit();
         },
         ANIMATION_DURATION.SHORT
       );
@@ -239,6 +240,7 @@ export class Popover {
       },
       () => {
         this._animationClasses = '';
+        this.eventHidden.emit();
       },
       ANIMATION_DURATION.SHORT
     );
