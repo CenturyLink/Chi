@@ -1,0 +1,84 @@
+---
+title: Images
+---
+
+h2 Non-text content
+div.-d--flex.-justify-content--start.-align-items--center
+  p.-text.-text--bold.-my--0
+    | WCAG 2.0 Guideline
+  .chi-badge.-dark.-outline.-xs.-ml--1
+    span Perceivable
+p.-text.-mt--1
+  | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#text-equiv" rel="noopener">1.1 Text alternatives</a>
+p.-text
+  | <strong>Benefits:</strong> Blind disabilities.
+p.-text
+  | All non-text content that is presented to the user has a text alternative that serves the equivalent purpose, except for the situations listed below:
+ul.-text.-no-style
+  li <strong>Controls, Input:</strong> If non-text content is a control or accepts user input, then it has a name that describes its purpose.
+  li <strong>Time-Based Media:</strong> If non-text content is time-based media, then text alternatives at least provide descriptive identification of the non-text content.
+  li <strong>Test:</strong> If non-text content is a test or exercise that would be invalid if presented in text, then text alternatives at least provide descriptive identification of the non-text content.
+  li <strong>Sensory:</strong> If non-text content is primarily intended to create a specific sensory experience, then text alternatives at least provide descriptive identification of the non-text content.
+  li <strong>CAPTCHA:</strong> If the purpose of non-text content is to confirm that content is being accessed by a person rather than a computer, then text alternatives that identify and describe the 
+     | purpose of the non-text content are provided, and alternative forms of CAPTCHA using output modes for different types of sensory perception are provided to accommodate different disabilities.
+  li <strong>Decoration, Formatting, Invisible:</strong> If non-text content is pure decoration, is used only for visual formatting, or is not presented to users, then it is implemented in a way that it can be ignored by Assistive Technologies.
+p.-text
+  | Images can be one of the following:
+ul.-text.-no-style
+  li <strong>Informative:</strong> Conveys a simple concept or information that can be expressed in a short phrase or sentence.
+  li <strong>Functional:</strong> Initiatse interactive actions.
+  li <strong>Decorative:</strong> Does not add information to the content of a page, and thus the image can have null/empty alt tex. Assistive Technologies can ignore the image. The image may have adjacent text that sufficiently describes the image.
+.chi-divider.-my--2
+ul.-text
+  li Do all (non-decorative) images have alt text?
+  li Does the alt text provide meaningful information about the image?
+  li If the image is a link, does the alt text describe the link purpose?
+  li Are background images informational? Alt text is needed.
+  li Are background images decorative?  Alt text is not needed.
+  li Can background images be hidden, but still have access to information and functionality?
+ul#chi-js-tabs.chi-tabs.-border
+  li.-active
+    a(href='#chi-js-tabs--non-text-examples') Examples
+  li
+    a(href='#chi-js-tabs--non-text-references') References
+#chi-js-tabs--non-text-examples.chi-tabs-panel.-active
+  p.-text
+    | No text
+#chi-js-tabs--non-text-references.chi-tabs-panel
+  p.-text
+    | No text
+h2 Images of text
+div.-d--flex.-justify-content--start.-align-items--center
+  p.-text.-text--bold.-my--0
+    | WCAG 2.0 Guideline
+  .chi-badge.-dark.-outline.-xs.-ml--1
+    span Perceivable
+p.-text.-mt--1
+  | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast" rel="noopener">1.4 Distinguishable</a>
+p.-text
+  | <strong>Benefits:</strong> Low vision, visual tracking problems, congitive disabilities.
+p.-text
+  | Text is used to convey information rather than images of text. Achieve desired default visual presentation, to enable people who require a particular visual presentation 
+  | of text to be able to adjust the text presentation as needed.
+ul.-text
+  li Is an image of text used to convey information instead of text?
+  ul.-text
+    li If text cannot be formatted to get the same effect as images of text.
+    li If the effect won't be reliably presented on the commonly available user agents.
+    li If using an Assistive Technologies to meet this criterion would interfere with meeting other criteria such as 1.4.4 Resize Text.
+    li Example - where a particular presentation of text is essential to the information being conveyed, such as type samples, logotypes, branding, etc.
+ul#chi-js-tabs--images.chi-tabs.-border
+  li.-active
+    a(href='#chi-js-tabs--images-examples') Examples
+  li
+    a(href='#chi-js-tabs--images-references') References
+#chi-js-tabs--images-examples.chi-tabs-panel.-active
+  p.-text
+    | No text
+#chi-js-tabs--images-references.chi-tabs-panel
+  p.-text
+    | No text
+
+script.
+  chi.tab(document.getElementById('chi-js-tabs'));
+  chi.tab(document.getElementById('chi-js-tabs--images'));
