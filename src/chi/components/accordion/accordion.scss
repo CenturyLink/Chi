@@ -29,8 +29,8 @@
     }
 
     .chi-accordion__title {
-      .icon-chevron-right {
-        transform: rotate(90deg);
+      .icon-chevron-down {
+        transform: rotate(180deg);
         transition: transform 0.2s ease-in-out;
       }
     }
