@@ -1,4 +1,19 @@
 # CHANGELOG
+## 3.1.0 (September 22, 2020)
+### Components
+#### Added
+* Added: Text utility now supports responsive text heading size utility classes.
+* Added: Text utility now supports the text color utility class `-text--navy`.
+#### Changed
+* Changed: Button disabled state styles.
+#### Fixed
+* Fixed: Popover web component chiPopoverShown and chiPopoverHidden event emission.
+* Fixed: Picker group bug which prevented text from wrapping properly.
+### Documentation
+#### Added
+* Added: Documentation for disabled button state to button component.
+
+
 ## 3.0.0 (September 13, 2020)
 ### Components
 #### Added
