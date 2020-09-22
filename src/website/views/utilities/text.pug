@@ -180,7 +180,6 @@ p.-text
     <!-- For light backgrounds -->
     <p class="-text--body">-text--body</p>
     <p class="-text--primary">-text--primary</p>
-    <p class="-text--grey">-text--grey</p>
     <!-- For dark backgrounds -->
     <p class="-text--secondary">-text--secondary</p>
     <p class="-text--light">-text--light</p>
@@ -203,6 +202,17 @@ p.-text
     <p class="-text--warning">-text--warning</p>
     <p class="-text--danger">-text--danger</p>
     <p class="-text--muted">-text--muted</p>
+h3 Brand complimentary
+p.-text More text colors that can be used to compliment the primary brand palette.
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12.-p--1.-d--flex.-justify-content--center.-flex--wrap
+      each type in ['text--navy']
+        div.-p--1.-p-sm--2.-text--center
+          p.-text(class=`-${type}`)
+            = `-${type}`
+  :code(lang="html")
+    <p class="-text--navy">-text--navy</p>
 
 h2 Responsiveness
 h3 Sizes
