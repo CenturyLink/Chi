@@ -138,12 +138,7 @@ $sizes: (
 
     &[disabled],
     &.-disabled {
-      opacity: 0.65;
-      pointer-events: none;
-
-      & .chi-icon {
-        opacity: 0.65;
-      }
+      @include button-disabled;
     }
 
     .chi-icon,
@@ -236,6 +231,11 @@ $sizes: (
         height: 1rem;
         width: 1rem;
       }
+
+      &[disabled],
+      &.-disabled {
+        @include button-disabled;
+      }
     }
 
     &.-fluid:not(.-float) {
@@ -273,6 +273,29 @@ $sizes: (
       &:active,
       &.-active {
         border-color: $color-grey-50;
+      }
+
+
+      &[disabled],
+      &.-disabled {
+        background-color: $color-background-base-dark;
+        border-color: $color-border-base-dark;
+        box-shadow: none;
+        color: $color-text-muted-light;
+        opacity: $opacity-100;
+        pointer-events: none;
+      
+        & .chi-icon {
+          color: $color-icon-muted;
+          opacity: $opacity-100;
+        }
+      }
+
+      &.-bg--white {
+        &[disabled],
+        &.-disabled {
+          background-color: $color-background-base-dark !important;
+        }
       }
     }
 
@@ -371,6 +394,17 @@ $sizes: (
         }
       }
 
+      &[disabled],
+      &.-disabled {
+        background-color: transparent;
+        border-color: transparent;
+        opacity: $opacity-70;
+
+        & .chi-icon {
+          opacity: $opacity-70;
+        }
+      }
+
       &.-no-hover {
         &:hover,
         &.-hover,
@@ -415,6 +449,11 @@ $sizes: (
         box-shadow: none;
       }
 
+      &[disabled],
+      &.-disabled {
+        @include button-disabled;
+      }
+
       &.-outline {
         background-color: transparent;
         border: $border solid map-get(map-get($button-colors, $color), border-color);
@@ -437,6 +476,11 @@ $sizes: (
         &.-active {
           border: $border solid map-get(map-get($button-colors, $color), border-color-active);
           color: map-get(map-get($button-colors, $color), text-color-outline-active);
+        }
+
+        &[disabled],
+        &.-disabled {
+          @include button-disabled;
         }
       }
 
@@ -466,6 +510,18 @@ $sizes: (
             border-color: transparent;
           }
         }
+
+        &[disabled],
+        &.-disabled {
+          background-color: transparent;
+          border-color: transparent;
+          opacity: $opacity-70;
+
+          & .chi-icon {
+            color: inherit;
+            opacity: $opacity-70;
+          }
+        }
       }
 
       &.-float {
@@ -478,6 +534,11 @@ $sizes: (
           box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2),
           0 8px 10px 1px rgba(0, 0, 0, 0.14),
           0 2px 14px 1px rgba(0, 0, 0, 0.12);
+        }
+
+        &[disabled],
+        &.-disabled {
+          @include button-disabled;
         }
       }
     }
