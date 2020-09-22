@@ -4,24 +4,63 @@
 $sizes: (
   xs: (
     font-size: $font-size-xs,
-    line-height: $line-height-sm,
+    line-height: $line-height-sm
   ),
   sm: (
     font-size: $font-size-sm,
-    line-height: $line-height,
+    line-height: $line-height
   ),
   md: (
     font-size: $font-size-base,
-    line-height: $line-height-lg,
+    line-height: $line-height-lg
   ),
   lg: (
     font-size: $font-size-lg,
-    line-height: $line-height-lg,
+    line-height: $line-height-lg
   ),
   xl: (
     font-size: $font-size-xl,
-    line-height: $line-height-xl,
+    line-height: $line-height-xl
+  )
+);
+
+$heading-sizes: (
+  h1: (
+    font-size: $font-size-h1,
+    font-weight: $font-weight-bold,
+    line-height: 4rem,
+    margin: 2rem 0
   ),
+  h2: (
+    font-size: $font-size-h2,
+    font-weight: $font-weight-bold,
+    line-height: 3rem,
+    margin: 1rem 0
+  ),
+  h3: (
+    font-size: $font-size-h3,
+    font-weight: $font-weight-semi-bold,
+    line-height: 2rem,
+    margin: 1rem 0
+  ),
+  h4: (
+    font-size: $font-size-h4,
+    font-weight: $font-weight-semi-bold,
+    line-height: 2rem,
+    margin: 0.5rem 0
+  ),
+  h5: (
+    font-size: $font-size-h5,
+    font-weight: $font-weight-semi-bold,
+    line-height: $line-height-lg,
+    margin: 0.5rem 0
+  ),
+  h6: (
+    font-size: $font-size-h6,
+    font-weight: $font-weight-semi-bold,
+    line-height: $line-height-lg,
+    margin: 0.5rem 0
+  )
 );
 
 $alignments: (justify, center, left, right);
@@ -36,48 +75,6 @@ textarea {
 
 a {
   @include anchor-style;
-}
-
-h1 {
-  font-size: 3rem;
-  font-weight: $font-weight-bold;
-  line-height: 4rem;
-  margin: 2rem 0;
-}
-
-h2 {
-  font-size: 2rem;
-  font-weight: $font-weight-bold;
-  line-height: 3rem;
-  margin: 1rem 0;
-}
-
-h3 {
-  font-size: 1.5rem;
-  font-weight: $font-weight-semi-bold;
-  line-height: 2rem;
-  margin: 1rem 0;
-}
-
-h4 {
-  font-size: $font-size-xl;
-  font-weight: $font-weight-semi-bold;
-  line-height: 2rem;
-  margin: 0.5rem 0;
-}
-
-h5 {
-  font-size: $font-size-lg;
-  font-weight: $font-weight-semi-bold;
-  line-height: $line-height-lg;
-  margin: 0.5rem 0;
-}
-
-h6 {
-  font-size: $font-size-base;
-  font-weight: $font-weight-semi-bold;
-  line-height: $line-height-lg;
-  margin: 0.5rem 0;
 }
 
 blockquote,
@@ -169,49 +166,6 @@ dl {
 dd,
 figure {
   margin: 0;
-}
-
-// text headings
-.-text--h1 {
-  font-size: $font-size-h1 !important;
-  font-weight: $font-weight-bold !important;
-  line-height: 4rem !important;
-  margin: 2rem 0 !important;
-}
-
-.-text--h2 {
-  font-size: $font-size-h2 !important;
-  font-weight: $font-weight-bold !important;
-  line-height: 3rem !important;
-  margin: 1rem 0 !important;
-}
-
-.-text--h3 {
-  font-size: $font-size-h3 !important;
-  font-weight: $font-weight-semi-bold !important;
-  line-height: 2rem !important;
-  margin: 1rem 0 !important;
-}
-
-.-text--h4 {
-  font-size: $font-size-h4 !important;
-  font-weight: $font-weight-semi-bold !important;
-  line-height: 2rem !important;
-  margin: 0.5rem 0 !important;
-}
-
-.-text--h5 {
-  font-size: $font-size-h5 !important;
-  font-weight: $font-weight-semi-bold !important;
-  line-height: $line-height-lg !important;
-  margin: 0.5rem 0 !important;
-}
-
-.-text--h6 {
-  font-size: $font-size-h6 !important;
-  font-weight: $font-weight-semi-bold !important;
-  line-height: $line-height-lg !important;
-  margin: 0.5rem 0 !important;
 }
 
 p,
@@ -456,6 +410,40 @@ small,
       .-text-#{$screen-size}--#{$type} {
         font-size: map-get(map-get($sizes, $type), font-size) !important;
         line-height: map-get(map-get($sizes, $type), line-height) !important;
+      }
+    }
+  }
+}
+
+// heading tag sizes
+@each $type in map-keys($heading-sizes) {
+  #{$type} {
+    font-size: map-get(map-get($heading-sizes, $type), font-size);
+    font-weight: map-get(map-get($heading-sizes, $type), font-weight);
+    line-height: map-get(map-get($heading-sizes, $type), line-height);
+    margin: map-get(map-get($heading-sizes, $type), margin);
+  }
+}
+
+// text heading utility sizes
+@each $type in map-keys($heading-sizes) {
+  .-text--#{$type} {
+    font-size: map-get(map-get($heading-sizes, $type), font-size) !important;
+    font-weight: map-get(map-get($heading-sizes, $type), font-weight) !important;
+    line-height: map-get(map-get($heading-sizes, $type), line-height) !important;
+    margin: map-get(map-get($heading-sizes, $type), margin) !important;
+  }
+}
+
+// responsive text heading utility sizes
+@each $screen-size in $screen-sizes {
+  @include respond-to($screen-size) {
+    @each $type in map-keys($heading-sizes) {
+      .-text-#{$screen-size}--#{$type} {
+        font-size: map-get(map-get($heading-sizes, $type), font-size) !important;
+        font-weight: map-get(map-get($heading-sizes, $type), font-weight) !important;
+        line-height: map-get(map-get($heading-sizes, $type), line-height) !important;
+        margin: map-get(map-get($heading-sizes, $type), margin) !important;
       }
     }
   }
