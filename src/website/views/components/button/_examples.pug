@@ -145,6 +145,31 @@ h3 Flat
       <input class="chi-button -primary -flat" type="button" value="Input button">
       <input class="chi-button -primary -flat" type="submit" value="Submit button">
 
+h2 Disabled
+p.-text
+  | Make buttons appear inactive by adding the <code>disabled</code> boolean attribute
+  | or <code>-disabled</code> class.
+.example.-mb--3
+  .-p--3.-d--flex
+    .-pr--2
+      chi-button(color='primary' disabled) Button
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-disabled
+      li.-active
+        a(href=`#webcomponent-disabled`) Web Component
+      li
+        a(href=`#html-disabled`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-disabled
+    :code(lang="html")
+      <chi-button color="primary" disabled>Button</chi-button>
+  .chi-tabs-panel#html-disabled
+    :code(lang="html")
+      <!-- Disabled boolean attribute -->
+      <button class="chi-button -primary" disabled>Button</button>
+
+      <!-- Disabled class -->
+      <button class="chi-button -primary -disabled">Button</button>
+
 h2 Uppercase
 p.-text
   | Uppercase buttons style button text with <code>text-transform: uppercase;</code>

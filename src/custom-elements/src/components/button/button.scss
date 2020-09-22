@@ -17,6 +17,10 @@
       }
     }
   }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
 }
 
 ::slotted(*)>:not(:last-child) {
