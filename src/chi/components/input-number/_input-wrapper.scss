@@ -130,10 +130,12 @@ $expanded-sizes: (
             top: 0.25rem;
           }
 
+          &:hover {
+            background-color: $color-background-base-dark;
+          }
+
           &:active {
-            background-color: $color-grey-20;
-            border: 0.0625rem solid $color-grey-40;
-            box-shadow: inset 0 0 1px 0 rgba($color-black, 0.2);
+            background-color: $color-background-base-darker;
           }
         }
 

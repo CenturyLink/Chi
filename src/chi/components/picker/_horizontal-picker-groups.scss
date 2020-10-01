@@ -52,6 +52,7 @@ $sizes: (
           border: solid 0.0625rem $color-border-base-dark;
           border-right-width: 0;
           box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
+          cursor: pointer;
           display: flex;
           font-size: $font-size-base;
           font-weight: $font-weight-semi-bold;
@@ -69,11 +70,6 @@ $sizes: (
               min-height: map-get(map-get($sizes, $type), min-height);
               padding: map-get(map-get($sizes, $type), padding);
             }
-          }
-
-          &:hover {
-            background-color: $color-grey-10;
-            cursor: pointer;
           }
 
           &:first-of-type {
@@ -109,6 +105,20 @@ $sizes: (
             }
           }
 
+        }
+      }
+
+      &:not(:checked) {
+        &.chi-picker__input {
+          & + label {
+            &:hover {
+              background-color: $color-background-base-dark;
+            }
+
+            &:active {
+              background-color: $color-background-base-darker;
+            }
+          }
         }
       }
 
