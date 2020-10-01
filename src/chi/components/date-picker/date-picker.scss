@@ -52,11 +52,11 @@ $monday-starting-week: (
     }
 
     &.-inactive {
-      color: rgba($color-grey-90, 0.4);
+      color: rgba($color-text-base, 0.4);
       pointer-events: none;
 
       &.-today::after {
-        background-color: rgba($color-grey-90, 0.4);
+        background-color: rgba($color-text-base, 0.4);
       }
     }
 
@@ -110,7 +110,7 @@ $monday-starting-week: (
         width: calc(100% / 7);
 
         &.-disabled {
-          color: rgba($color-grey-90, 0.2);
+          color: rgba($color-text-base, 0.2);
           pointer-events: none;
         }
 

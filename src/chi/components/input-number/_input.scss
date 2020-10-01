@@ -7,7 +7,7 @@ input {
       // sass-lint:disable no-vendor-prefixes
       -moz-appearance: textfield;
       border: 0.0625rem solid $color-border-base-dark;
-      color: $color-grey-90;
+      color: $color-text-base;
       display: block;
       font-size: $font-size-base;
       height: 2rem;
@@ -42,7 +42,7 @@ input {
       &.-disabled {
         background-color: $color-grey-10;
         border-color: $color-border-base-dark;
-        color: $color-grey-90;
+        color: $color-text-base;
         pointer-events: none;
       }
 
@@ -53,7 +53,7 @@ input {
       }
 
       &.-danger {
-        color: $color-grey-90;
+        color: $color-text-base;
 
         &:focus,
         &.-focus {

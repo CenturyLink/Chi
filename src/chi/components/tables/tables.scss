@@ -148,7 +148,7 @@ th {
       }
 
       &[disabled] {
-        color: rgba($color-grey-90, 0.4) !important;
+        color: rgba($color-text-base, 0.4) !important;
       }
 
       &.-active {
@@ -249,12 +249,12 @@ th {
   }
 
   &.-hover {
-    &:not(.-portal):not(.-inverse) {
+    &:not(.-portal) {
       tbody {
         tr {
           &:hover,
           &.-hover {
-            background-color: $color-grey-10;
+            background-color: $color-background-base-dark;
           }
         }
       }
@@ -263,8 +263,8 @@ th {
 
   &.-striped {
     tbody {
-      tr:nth-child(odd) {
-        background-color: $color-grey-10;
+      tr:nth-child(even) {
+        background-color: $color-background-muted-lighter;
       }
     }
   }
@@ -409,7 +409,7 @@ th {
         tr {
           &:hover,
           &.-hover {
-            background-color: $color-grey-10;
+            background-color: $color-background-base-dark;
           }
         }
       }
@@ -417,8 +417,8 @@ th {
 
     &.-striped {
       tbody {
-        tr:nth-child(odd) {
-          background-color: $color-grey-10;
+        tr:nth-child(even) {
+          background-color: $color-background-muted-lighter;
         }
       }
     }
