@@ -1,8 +1,16 @@
 /* Common */
 export const activeClass = '-active';
+export const closedClass = '-closed';
 export const lightClass = '-light';
 export const disabledClass = '-disabled';
 export const inverseClass = '-inverse';
+export const animatedClass = '-animated';
+export const portalClass = '-portal';
+export const transitioningClass = '-transitioning';
+
+/* Backdrop */
+export const backdropClass = 'chi-backdrop';
+export const backgropWrapperClass = 'chi-backdrop__wrapper';
 
 /* Button */
 export const buttonClass = 'chi-button';
@@ -12,6 +20,12 @@ export const buttonFlatClass = '-flat';
 
 /* Button Group */
 export const buttonGroupClass = 'chi-button-group';
+
+/* Drawer */
+export const drawerClass = 'chi-drawer';
+export const drawerHeaderClass = 'chi-drawer__header';
+export const drawerTitleClass = 'chi-drawer__title';
+export const drawerContentClass = 'chi-drawer__content';
 
 /* Icon */
 export const iconClass = 'chi-icon';

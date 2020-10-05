@@ -1,8 +1,8 @@
 <template>
   <div id="paginationview">
-    <h1 class="-ml--2">Pagination</h1>
-    <h2 class="-ml--2">Base</h2>
-    <div class="chi-grid -mx--2">
+    <h1>Pagination</h1>
+    <h2>Base</h2>
+    <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -w-md--6 -py--2">
         <Pagination
           :pages="5"
@@ -15,8 +15,8 @@
       </div>
     </div>
 
-    <h2 class="-ml--2">Disabled</h2>
-    <div class="chi-grid -mx--2">
+    <h2>Disabled</h2>
+    <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -w-md--6 -py--2">
         <Pagination :pages="5" :currentPage="1" />
       </div>
@@ -25,8 +25,8 @@
       </div>
     </div>
 
-    <h2 class="-ml--2">Truncation</h2>
-    <div class="chi-grid -mx--2">
+    <h2>Truncation</h2>
+    <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -w-md--6 -py--2">
         <Pagination :pages="12" :currentPage="3" />
       </div>
@@ -35,8 +35,8 @@
       </div>
     </div>
 
-    <h2 class="-ml--2">Double Truncation</h2>
-    <div class="chi-grid -mx--2">
+    <h2>Double Truncation</h2>
+    <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -w-md--6 -py--2">
         <Pagination :pages="12" :currentPage="6" />
       </div>
@@ -45,8 +45,8 @@
       </div>
     </div>
 
-    <h2 class="-ml--2">Results Label</h2>
-    <div class="chi-grid -mx--2">
+    <h2>Results Label</h2>
+    <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -w-md--6 -py--2">
         <Pagination :pages="12" :currentPage="3" :results="240" />
       </div>
@@ -60,8 +60,8 @@
       </div>
     </div>
 
-    <h2 class="-ml--2">Page Size</h2>
-    <div class="chi-grid -mx--2">
+    <h2>Page Size</h2>
+    <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -py--2">
         <Pagination
           :pages="12"
@@ -82,8 +82,8 @@
       </div>
     </div>
 
-    <h2 class="-ml--2">Page Jumper</h2>
-    <div class="chi-grid -mx--2">
+    <h2>Page Jumper</h2>
+    <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -py--2">
         <Pagination
           :pages="12"
@@ -105,8 +105,8 @@
       </div>
     </div>
 
-    <h2 class="-ml--2">Compact</h2>
-    <div class="chi-grid -mx--2">
+    <h2>Compact</h2>
+    <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -w-md--6 -py--2">
         <Pagination :pages="3" :currentPage="2" :compact="true" />
       </div>
@@ -120,8 +120,8 @@
       </div>
     </div>
 
-    <h2 class="-ml--2">Page Jumper</h2>
-    <div class="chi-grid -mx--2">
+    <h2>Page Jumper</h2>
+    <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -w-md--6 -py--2">
         <Pagination
           :pages="3"
@@ -141,8 +141,8 @@
       </div>
     </div>
 
-    <h2 class="-ml--2">First and Last page buttons</h2>
-    <div class="chi-grid -mx--2">
+    <h2>First and Last page buttons</h2>
+    <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -w-md--6 -py--2">
         <Pagination
           :pages="3"
@@ -164,8 +164,8 @@
       </div>
     </div>
 
-    <h2 class="-ml--2">Additional Sizes</h2>
-    <div class="chi-grid -mx--2">
+    <h2>Additional Sizes</h2>
+    <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -w-md--6 -py--2">
         <div class="-text--bold">-sm</div>
         <Pagination :pages="5" :currentPage="3" size="sm" />
