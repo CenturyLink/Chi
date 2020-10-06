@@ -302,7 +302,7 @@ describe('enterprise-nav-menu', function() {
       let menuText = /^NoChanges$/;
 
       cy.get(SIDENAV_COMPONENT_SELECTOR)
-        .click(500, 0);
+        .click(500, 0, {force: true});
 
       cy.get('.chi-sidenav__list li')
         .contains(menuText)
