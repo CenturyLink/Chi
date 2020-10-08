@@ -9,17 +9,17 @@ $sizes: (
   ),
   md: (
     font-size: $font-size-md,
-    line-height: 1rem,
+    line-height: 1.25rem,
     padding: 0.75rem 1rem,
   ),
   lg: (
     font-size: $font-size-lg,
-    line-height: 1rem,
+    line-height: 1.5rem,
     padding: 1rem 1rem,
   ),
   xl: (
     font-size: $font-size-xl,
-    line-height: 1rem,
+    line-height: 1.75rem,
     padding: 1.25rem 1rem,
   )
 );
@@ -32,8 +32,8 @@ $icon-sizes: (
 );
 
 .chi-accordion {
-  background-color: $color-white;
-  border-bottom: 1px solid $color-grey-30;
+  background-color: $color-background-base;
+  border-bottom: 0.0625rem solid $color-border-base-dark;
 
   @each $type in map-keys($sizes) {
     &.-#{$type} {
@@ -70,12 +70,13 @@ $icon-sizes: (
     padding: 0.75rem 1rem;
 
     .chi-accordion__title {
-      color: $color-grey-100;
+      align-items: center;
+      color: $color-text-base;
       cursor: pointer;
       display: flex;
+      line-height: 1rem;
       font-size: $font-size-md;
       font-weight: $font-weight-semi-bold;
-      line-height: 1rem;
     }
   }
 
@@ -95,19 +96,6 @@ $icon-sizes: (
         transform: rotate(180deg);
         transition: transform 0.2s ease-in-out;
       }
-
-      .icon-plus {
-        &:before{
-          content: "";
-        }
-        &:after{
-          content:  "\2212";
-          display: inline-block;
-          font-size: 2rem;
-          line-height: 0.25rem;
-          transition: transform 0.2s ease-in-out;
-        }
-      }
     }
   }
 
@@ -117,42 +105,20 @@ $icon-sizes: (
         transform: rotate(180deg);
         transition: transform 0.2s ease-in-out;
       }
-
-      .icon-minus {
-        &:before{
-          content: "";
-        }
-        &:after{
-          content:  "\2b";
-          display: inline-block;
-          font-size: 2rem;
-          line-height: 0.25rem;
-          transition: transform 0.2s ease-in-out;
-        }
-      }
     }
   }
 
   &.-portal {
-    background-color: $color-grey-20;
     border-bottom: 0;
     margin-bottom: 0.5rem;
 
     &.-expanded {
-      &.-bordered {
-        background-color: $color-white;
-        border: 0.0625rem solid $color-grey-30;
-        margin-bottom: 0.5rem;
-      }
+      background-color: $color-background-base-dark;
+      margin-bottom: 0.5rem;
     }
 
     .chi-accordion__header {
-      background-color: $color-grey-30;
-    }
-
-    .chi-icon {
-      color: $color-blue-70;
-      display: inline-block;
+      background-color: $color-background-base-darkest;
     }
   }
 }
