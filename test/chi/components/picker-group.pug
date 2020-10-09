@@ -14,47 +14,52 @@ title: Picker group
 .test-base-checked
   h3 Base checked
   .chi-picker-group
-    each type in ['Radio1','Radio2','Radio3']
-      input.chi-picker__input(type="radio", name='box', id=`ia-${type}`, checked=(type==='Radio2'))
-      label(for=`ia-${type}`)
-        = type
+    .chi-picker-group__content
+      each type in ['Radio1','Radio2','Radio3']
+        input.chi-picker__input(type="radio", name='box', id=`ia-${type}`, checked=(type==='Radio2'))
+        label(for=`ia-${type}`)
+          = type
 .test-with-texts-and-icons
   h3 Texts and icons
   .chi-picker-group
-    input.chi-picker__input(type="radio", name='radios', id=`ib-radio1`)
-    label(for=`ib-radio1`)
-      i.chi-icon.icon-atom.-sm
-      span Radio1
-    input.chi-picker__input(type="radio", name='radios', id=`ib-radio2`)
-    label(for=`ib-radio2`)
-      span Radio2
-      i.chi-icon.icon-atom.-sm
-    input.chi-picker__input(type="radio", name='radios', id=`ib-radio3`)
-    label(for=`ib-radio3`)
-      i.chi-icon.icon-atom.-sm
-      span Radio3
-      i.chi-icon.icon-atom.-sm
+    .chi-picker-group__content
+      input.chi-picker__input(type="radio", name='radios', id=`ib-radio1`)
+      label(for=`ib-radio1`)
+        i.chi-icon.icon-atom.-sm
+        span Radio1
+      input.chi-picker__input(type="radio", name='radios', id=`ib-radio2`)
+      label(for=`ib-radio2`)
+        span Radio2
+        i.chi-icon.icon-atom.-sm
+      input.chi-picker__input(type="radio", name='radios', id=`ib-radio3`)
+      label(for=`ib-radio3`)
+        i.chi-icon.icon-atom.-sm
+        span Radio3
+        i.chi-icon.icon-atom.-sm
 
 .test-with-icons
   h3 Icons
   .example
     .chi-picker-group
-      each type in ['Radio1','Radio2','Radio3']
-        input.chi-picker__input(type="radio", name='radios', id=`ic-${type}`)
-        label(for=`ic-${type}`)
-          span.-sr--only Button action
-          i.chi-icon.icon-atom.-sm
+      .chi-picker-group__content
+        each type in ['Radio1','Radio2','Radio3']
+          input.chi-picker__input(type="radio", name='radios', id=`ic-${type}`)
+          label(for=`ic-${type}`)
+            span.-sr--only Button action
+            i.chi-icon.icon-atom.-sm
 
 .test-fluid(style='width: 700px;')
   h3 Fluid
   .chi-picker-group.-fluid
-    each type in ['Radio1','Radio2','Radio3']
-      input.chi-picker__input(type="radio", name='box', id=`id-${type}`)
-      label(for=`id-${type}`)
-        = type
+    .chi-picker-group__content
+      each type in ['Radio1','Radio2','Radio3']
+        input.chi-picker__input(type="radio", name='box', id=`id-${type}`)
+        label(for=`id-${type}`)
+          = type
 .test-alignment(style='width: 700px;')
   h3 Alignment
   .chi-picker-group.-fluid
+    .chi-picker-group__content
       input.chi-picker__input(type="radio", name='box', id='ie-Radio1')
       label.-align--left(for='ie-Radio1') Radio1
       input.chi-picker__input(type="radio", name='box', id='ie-Radio2')
@@ -64,6 +69,7 @@ title: Picker group
 .test-disable-fluidity(style='width: 700px;')
   h3 Disable Fluidity
   .chi-picker-group.-fluid
+    .chi-picker-group__content
       input.chi-picker__input(type="radio", name='box', id='if-Radio1')
       label(for='if-Radio1') Radio1
       input.chi-picker__input(type="radio", name='box', id='if-Radio2')
@@ -78,16 +84,18 @@ title: Picker group
       div.-text--h4= 'Picker group size -' + size
       .-d--flex.-flex--wrap
         .chi-picker-group.-mr--2
-          each type in ['Radio1','Radio2','Radio3']
-            input.chi-picker__input(type="radio", name='radios', id=`ig-${type}-${size}`)
-            label(for=`ig-${type}-${size}`, class=`-${size}`)
-                = type
+          .chi-picker-group__content
+            each type in ['Radio1','Radio2','Radio3']
+              input.chi-picker__input(type="radio", name='radios', id=`ig-${type}-${size}`)
+              label(for=`ig-${type}-${size}`, class=`-${size}`)
+                  = type
         .chi-picker-group
-          each type in ['Radio1','Radio2','Radio3']
-            input.chi-picker__input(type="radio", name='radios', id=`ig-i-${type}-${size}`)
-            label(for=`ig-i-${type}-${size}`, class=`-${size}`)
-              span.-sr--only Button action
-              if size === 'sm'
-                i.chi-icon.icon-atom.-xs
-              else
-                i.chi-icon.icon-atom.-sm
+          .chi-picker-group__content
+            each type in ['Radio1','Radio2','Radio3']
+              input.chi-picker__input(type="radio", name='radios', id=`ig-i-${type}-${size}`)
+              label(for=`ig-i-${type}-${size}`, class=`-${size}`)
+                span.-sr--only Button action
+                if size === 'sm'
+                  i.chi-icon.icon-atom.-xs
+                else
+                  i.chi-icon.icon-atom.-sm

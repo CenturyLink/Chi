@@ -40,6 +40,11 @@ $sizes: (
   display: inline-flex;
   justify-content: center;
 
+  &__content {
+    display: flex;
+    width: 100%;
+  }
+
   input {
     &[type='radio'] {
       &.chi-picker__input {
