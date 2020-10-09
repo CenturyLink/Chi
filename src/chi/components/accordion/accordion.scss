@@ -5,22 +5,22 @@ $sizes: (
   sm: (
     font-size: $font-size-sm,
     line-height: 1rem,
-    padding: 0.5rem 1rem,
+    padding: 0.53125rem 1rem,
   ),
   md: (
     font-size: $font-size-md,
     line-height: 1.25rem,
-    padding: 0.75rem 1rem,
+    padding: 0.625rem 1rem,
   ),
   lg: (
     font-size: $font-size-lg,
     line-height: 1.5rem,
-    padding: 1rem 1rem,
+    padding: 0.75rem 1rem,
   ),
   xl: (
     font-size: $font-size-xl,
     line-height: 1.75rem,
-    padding: 1.25rem 1rem,
+    padding: 0.875rem 1rem,
   )
 );
 
@@ -67,14 +67,14 @@ $icon-sizes: (
 
   &__header {
     display: flex;
-    padding: 0.75rem 1rem;
+    padding: 0.625rem 1rem;
 
     .chi-accordion__title {
       align-items: center;
       color: $color-text-base;
       cursor: pointer;
       display: flex;
-      line-height: 1rem;
+      line-height: 1.25rem;
       font-size: $font-size-md;
       font-weight: $font-weight-semi-bold;
     }
