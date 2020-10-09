@@ -9,6 +9,7 @@
 * Changed: Flex utility overrides now include an !important for greater specificity.
 * Changed: Number input width has been updated for better compatibility with Grid.
 #### Fixed
+* Fixed: Picker group bug which prevented child items from stretching to fill their parent containers vertical space.
 * Fixed: Sidenav cypress test click inconsistency when running tests in cypress GUI.
 * Fixed: Picker group active item rendered an incorrect background-color on hover.
 * Fixed: Number input web component min/max adjustment when user changed value manually twice.
