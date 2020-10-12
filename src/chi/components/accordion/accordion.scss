@@ -74,9 +74,9 @@ $icon-sizes: (
       color: $color-text-base;
       cursor: pointer;
       display: flex;
-      line-height: 1.25rem;
       font-size: $font-size-md;
       font-weight: $font-weight-semi-bold;
+      line-height: 1.25rem;
     }
   }
 
@@ -93,15 +93,6 @@ $icon-sizes: (
 
     .chi-accordion__title {
       .icon-chevron-down {
-        transform: rotate(180deg);
-        transition: transform 0.2s ease-in-out;
-      }
-    }
-  }
-
-  &:not(.-expanded) {
-    .chi-accordion__title {
-      .icon-chevron-up {
         transform: rotate(180deg);
         transition: transform 0.2s ease-in-out;
       }
