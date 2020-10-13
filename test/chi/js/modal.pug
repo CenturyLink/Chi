@@ -1,0 +1,84 @@
+---
+title: Modal
+---
+script(src='/js/chi.js')
+
+h3 Base
+button#modal-trigger-1.chi-button.chi-modal__trigger(data-target='#modal-1')
+  | Launch demo modal
+.chi-backdrop.-closed
+  .chi-backdrop__wrapper
+    section#modal-1.chi-modal(role='dialog', aria-label='Modal description', aria-modal='true')
+      header.chi-modal__header
+        h2.chi-modal__title Modal Title
+        button.chi-button.-icon.-close(data-dismiss='modal', aria-label='Close', data-cy='close')
+          .chi-button__content
+            i.chi-icon.icon-x
+      .chi-modal__content
+        p.-text.-m--0 Modal content
+      footer.chi-modal__footer
+        button.chi-button(data-dismiss='modal', data-cy='cancel') Cancel
+        button.chi-button.-primary Save
+
+h3 Scrollable
+button#modal-trigger-3.chi-button.chi-modal__trigger(data-target='#modal-3')
+  | Launch scrollable modal
+.chi-backdrop.-closed
+  .chi-backdrop__wrapper
+    section#modal-3.chi-modal(role='dialog', aria-label='Modal description', aria-modal='true')
+      header.chi-modal__header
+        h2.chi-modal__title Modal Title
+        button.chi-button.-icon.-close(data-dismiss='modal', aria-label='Close')
+          .chi-button__content
+            i.chi-icon.icon-x
+      .chi-modal__content.-mh--400
+        p.-text.-mt--0
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+        p.-text
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+        p.-text
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+        p.-text
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+        p.-text
+          | Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+          | Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+          | Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+          | cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+      footer.chi-modal__footer
+        button.chi-button(data-dismiss='modal') Cancel
+        button.chi-button.-primary Save
+
+h3 Scrolling long content
+button#modal-trigger-4.chi-button.chi-modal__trigger(data-target='#modal-4')
+  | Launch long scrollable modal
+.chi-backdrop.-closed.-mh--480
+  .chi-backdrop__wrapper
+    section#modal-4.chi-modal(role='dialog', aria-label='Modal description', aria-modal='true')
+      header.chi-modal__header
+        h2.chi-modal__title Modal Title
+        button.chi-button.-icon.-close(data-dismiss='modal', aria-label='Close')
+          .chi-button__content
+            i.chi-icon.icon-x
+      .chi-modal__content
+        p.-text.-mt--0
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+        p.-text
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+        p.-text
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+        p.-text
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+        p.-text
+          | Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+          | Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+          | Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+          | cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+      footer.chi-modal__footer
+        button.chi-button(data-dismiss='modal') Cancel
+        button.chi-button.-primary Save
+
+script.
+  chi.modal(document.getElementById('modal-trigger-1'));
+  chi.modal(document.getElementById('modal-trigger-3'));
+  chi.modal(document.getElementById('modal-trigger-4'));
