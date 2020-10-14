@@ -18,14 +18,28 @@ const buildStencilBoilerplate = () => {
     .pipe(gulp.dest('./'));
 };
 
-buildStencilBoilerplate.description = 'Zips Vue boilerplate';
+buildStencilBoilerplate.description = 'Zips Stencil boilerplate';
 
 const buildReactBoilerplate = () => {
   return gulp.src(['src/boilerplates/react/**/*', '!src/boilerplates/react/react-boilerplate/node_modules/**/*'])
-    .pipe(zip('dist/boilerplates/stencil-boilerplate.zip'))
+    .pipe(zip('dist/boilerplates/react-boilerplate.zip'))
     .pipe(gulp.dest('./'));
 };
 
-buildReactBoilerplate.description = 'Zips Stencil boilerplate';
+buildReactBoilerplate.description = 'Zips React boilerplate';
 
-gulp.task('build:boilerplates', gulp.parallel(buildVueBoilerplate, buildStencilBoilerplate, buildReactBoilerplate));
+const buildAngularBoilerplate = () => {
+  return gulp.src(['src/boilerplates/angular/**/*', '!src/boilerplates/angular/angular-boilerplate/node_modules/**/*'])
+    .pipe(zip('dist/boilerplates/angular-boilerplate.zip'))
+    .pipe(gulp.dest('./'));
+};
+
+buildAngularBoilerplate.description = 'Zips Angular boilerplate';
+
+gulp.task('build:boilerplates',
+  gulp.parallel(
+    buildVueBoilerplate,
+    buildStencilBoilerplate,
+    buildReactBoilerplate,
+    buildAngularBoilerplate
+));
