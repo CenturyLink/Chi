@@ -6,32 +6,32 @@ h3 Base
   .-p--3.-p-lg--6
     .chi-accordion
       .chi-accordion__header
+        i.chi-icon.icon-chevron-down
         .chi-accordion__title 
-          i.chi-icon.icon-chevron-down.-mr--2
           | Accordion 1
       .chi-accordion__content
         p.chi-accordion__text Content goes here
 
     .chi-accordion.-expanded
       .chi-accordion__header
+        i.chi-icon.icon-chevron-down
         .chi-accordion__title
-          i.chi-icon.icon-chevron-down.-mr--2
           | Accordion 2
       .chi-accordion__content
         p.chi-accordion__text Content goes here
 
     .chi-accordion
       .chi-accordion__header
+        i.chi-icon.icon-chevron-down
         .chi-accordion__title
-          i.chi-icon.icon-chevron-down.-mr--2
           | Accordion 3
       .chi-accordion__content
         p.chi-accordion__text Content goes here
 
     .chi-accordion
       .chi-accordion__header
+        i.chi-icon.icon-chevron-down
         .chi-accordion__title
-          i.chi-icon.icon-chevron-down.-mr--2
           | Accordion 4
       .chi-accordion__content
         p.chi-accordion__text Content goes here
@@ -51,7 +51,8 @@ h3 Base
     :code(lang="html")
       <div class="chi-accordion">
         <div class="chi-accordion__header">
-          <div class="chi-accordion__title"> <i class="chi-icon icon-chevron-down -mr--2"></i>Accordion 1</div>
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion 1</div>
         </div>
         <div class="chi-accordion__content">
           <p class="chi-accordion__text">Content goes here</p>
@@ -59,7 +60,8 @@ h3 Base
       </div>
       <div class="chi-accordion -expanded">
         <div class="chi-accordion__header">
-          <div class="chi-accordion__title"><i class="chi-icon icon-chevron-down -mr--2"></i>Accordion 2</div>
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion 2</div>
         </div>
         <div class="chi-accordion__content">
           <p class="chi-accordion__text">Content goes here</p>
@@ -67,7 +69,8 @@ h3 Base
       </div>
       <div class="chi-accordion">
         <div class="chi-accordion__header">
-          <div class="chi-accordion__title"><i class="chi-icon icon-chevron-down -mr--2"></i>Accordion 3</div>
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion 3</div>
         </div>
         <div class="chi-accordion__content">
           <p class="chi-accordion__text">Content goes here</p>
@@ -75,7 +78,8 @@ h3 Base
       </div>
       <div class="chi-accordion">
         <div class="chi-accordion__header">
-          <div class="chi-accordion__title"><i class="chi-icon icon-chevron-down -mr--2"></i>Accordion 4</div>
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion 4</div>
         </div>
         <div class="chi-accordion__content">
           <p class="chi-accordion__text">Content goes here</p>
@@ -88,32 +92,32 @@ h3 Portal
     .chi-accordion.-portal
       .chi-accordion__header
         .chi-accordion__title
-          i.chi-icon.icon-chevron-down.-mr--2
           | Accordion 1
+        i.chi-icon.icon-chevron-down
       .chi-accordion__content
         p.chi-accordion__text Content goes here
 
-    .chi-accordion.-expanded.-portal
+    .chi-accordion.-portal.-expanded
       .chi-accordion__header
         .chi-accordion__title
-          i.chi-icon.icon-chevron-down.-mr--2
           | Accordion 2
+        i.chi-icon.icon-chevron-down
       .chi-accordion__content
         p.chi-accordion__text Content goes here
 
     .chi-accordion.-portal
       .chi-accordion__header
         .chi-accordion__title
-          i.chi-icon.icon-chevron-down.-mr--2
           | Accordion 3
+        i.chi-icon.icon-chevron-down
       .chi-accordion__content
         p.chi-accordion__text Content goes here
 
     .chi-accordion.-portal
       .chi-accordion__header
         .chi-accordion__title
-          i.chi-icon.icon-chevron-down.-mr--2
           | Accordion 4
+        i.chi-icon.icon-chevron-down
       .chi-accordion__content
         p.chi-accordion__text Content goes here
   .example-tabs.-pl--2
@@ -132,23 +136,17 @@ h3 Portal
     :code(lang="html")
       <div class="chi-accordion -portal">
         <div class="chi-accordion__header">
-          <div class="chi-accordion__title"> <i class="chi-icon icon-chevron-down -mr--2"></i>Accordion 1</div>
+          <div class="chi-accordion__title">Accordion 1</div>
+          <i class="chi-icon icon-chevron-down"></i>
         </div>
         <div class="chi-accordion__content">
           <p class="chi-accordion__text">Content goes here</p>
         </div>
       </div>
-      <div class="chi-accordion -expanded -portal">
+      <div class="chi-accordion -portal -expanded">
         <div class="chi-accordion__header">
-          <div class="chi-accordion__title"> <i class="chi-icon icon-chevron-down -mr--2"></i>Accordion 2</div>
-        </div>
-        <div class="chi-accordion__content">
-          <p class="chi-accordion__text">Content goes here</p>
-        </div>
-      </div>
-      <div class="chi-accordion -portal">
-        <div class="chi-accordion__header">
-          <div class="chi-accordion__title"> <i class="chi-icon icon-chevron-down -mr--2"></i>Accordion 3</div>
+          <div class="chi-accordion__title">Accordion 2</div>
+          <i class="chi-icon icon-chevron-down"></i>
         </div>
         <div class="chi-accordion__content">
           <p class="chi-accordion__text">Content goes here</p>
@@ -156,7 +154,17 @@ h3 Portal
       </div>
       <div class="chi-accordion -portal">
         <div class="chi-accordion__header">
-          <div class="chi-accordion__title"> <i class="chi-icon icon-chevron-down -mr--2"></i>Accordion 4</div>
+          <div class="chi-accordion__title">Accordion 3</div>
+          <i class="chi-icon icon-chevron-down"></i>
+        </div>
+        <div class="chi-accordion__content">
+          <p class="chi-accordion__text">Content goes here</p>
+        </div>
+      </div>
+      <div class="chi-accordion -portal">
+        <div class="chi-accordion__header">
+          <div class="chi-accordion__title">Accordion 4</div>
+          <i class="chi-icon icon-chevron-down"></i>
         </div>
         <div class="chi-accordion__content">
           <p class="chi-accordion__text">Content goes here</p>
@@ -165,15 +173,15 @@ h3 Portal
 
 h3 Sizes
 p.-text
-  | Accordion supports the following sizes: Small (sm), Medium (md), Large (lg), and Extra Large (xl).
+  | Accordion supports the following sizes: <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
 .example.-mb--3#example3
   .-p--3.-p-lg--6
     each size in ['sm', 'md', 'lg', 'xl']
       p.-text--bold.-pl--2= size
         div(class=`chi-accordion -${size}`)
           .chi-accordion__header
+            i.chi-icon.icon-chevron-down
             .chi-accordion__title
-              i.chi-icon.icon-chevron-down.-mr--2
               | Accordion
           .chi-accordion__content
             p.chi-accordion__text Content goes here
@@ -194,7 +202,8 @@ p.-text
       <!-- sm -->
       <div class="chi-accordion -sm">
         <div class="chi-accordion__header">
-          <div class="chi-accordion__title"><i class="chi-icon icon-chevron-down -mr--2"></i>Accordion</div>
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion</div>
         </div>
         <div class="chi-accordion__content">
           <p class="chi-accordion__text">Content goes here</p>
@@ -204,7 +213,8 @@ p.-text
       <!-- md -->
       <div class="chi-accordion -md">
         <div class="chi-accordion__header">
-          <div class="chi-accordion__title"><i class="chi-icon icon-chevron-down -mr--2"></i>Accordion</div>
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion</div>
         </div>
         <div class="chi-accordion__content">
           <p class="chi-accordion__text">Content goes here</p>
@@ -214,7 +224,8 @@ p.-text
       <!-- lg -->
       <div class="chi-accordion -lg">
         <div class="chi-accordion__header">
-          <div class="chi-accordion__title"><i class="chi-icon icon-chevron-down -mr--2"></i>Accordion</div>
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion</div>
         </div>
         <div class="chi-accordion__content">
           <p class="chi-accordion__text">Content goes here</p>
@@ -224,7 +235,8 @@ p.-text
       <!-- xl -->
       <div class="chi-accordion -xl">
         <div class="chi-accordion__header">
-          <div class="chi-accordion__title"><i class="chi-icon icon-chevron-down -mr--2"></i>Accordion</div>
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion</div>
         </div>
         <div class="chi-accordion__content">
           <p class="chi-accordion__text">Content goes here</p>

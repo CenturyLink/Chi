@@ -66,17 +66,29 @@ $icon-sizes: (
   }
 
   &__header {
+    align-items: center;
+    cursor: pointer;
     display: flex;
     padding: 0.625rem 1rem;
+
+    .chi-icon {
+      + .chi-accordion__title {
+        margin-left: 1rem;
+      }
+    }
 
     .chi-accordion__title {
       align-items: center;
       color: $color-text-base;
-      cursor: pointer;
       display: flex;
+      flex-grow: 1;
       font-size: $font-size-md;
       font-weight: $font-weight-semi-bold;
       line-height: 1.25rem;
+
+      + .chi-icon {
+        margin-left: 1rem;
+      }
     }
   }
 
@@ -91,7 +103,7 @@ $icon-sizes: (
       display: block;
     }
 
-    .chi-accordion__title {
+    .chi-accordion__header {
       .icon-chevron-down {
         transform: rotate(180deg);
         transition: transform 0.2s ease-in-out;
