@@ -1,0 +1,16 @@
+@import '_mixins';
+@import '_variables';
+
+$positions: (baseline, top, middle, bottom, text-top, text-bottom);
+
+@each $position in $positions {
+  .-vertical-align--#{$position} { vertical-align: #{$position} !important; }
+}
+
+@each $size in sm md lg xl {
+  @include respond-to($size) {
+    @each $position in $positions {
+      .-vertical-align-#{$size}--#{$position} { vertical-align: #{$position} !important; }
+    }
+  }
+}
