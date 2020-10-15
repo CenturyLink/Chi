@@ -28,6 +28,7 @@ $border: 0.0625rem;
   &.-inline {
     display: inline-flex;
     margin-right: 1rem;
+    vertical-align: middle;
 
     &:last-child {
       margin-right: 0;
