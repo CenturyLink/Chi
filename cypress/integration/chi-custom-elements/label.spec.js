@@ -1,46 +1,39 @@
 /// <reference types="Cypress" />
 
-describe('Label', function() {
+describe('Label', function () {
+  const labelSizes = ['-xs', '-sm', '-md', '-lg', '-xl'];
+
   beforeEach(() => {
     cy.visit('tests/custom-elements/label.html');
   });
 
-  it('Required Label contains asterisk. ', function() {
-    cy.get('[data-cy="test-label-required"]')
-      .find('abbr')
-      .contains('*');
-  });
+  it(`Label element should have corresponding size class`, function () {
+    labelSizes.forEach(s => {
+      const selector = `test-label-base${s}`;
 
-  it('Optional Label contains string text. ', function() {
-    cy.get('[data-cy="test-label-optional"]')
-      .find('abbr')
-      .contains('(optional)');
-  });
-
-  const labelSizes = [
-    'test-label-base-xs',
-    'test-label-base-sm',
-    'test-label-base-md',
-    'test-label-base-lg',
-    'test-label-base-xl',
-    'test-label-required-xs',
-    'test-label-required-sm',
-    'test-label-required-md',
-    'test-label-required-lg',
-    'test-label-required-xl',
-    'test-label-optional-xs',
-    'test-label-optional-sm',
-    'test-label-optional-md',
-    'test-label-optional-lg',
-    'test-label-optional-xl'
-  ];
-
-    beforeEach(() => {
-      labelSizes.forEach(s => {
-        cy.get(`[data-cy=${s}]`, { timeout: 5000 })
+        cy.get(`[data-cy="${selector}"]`)
           .find('label.chi-label')
-          .should('have.class', 'chi-label')
-          .as(s);
+          .should('have.class', s);
       });
-    });
+  });
+  
+  it(`Abbr element should contain asterisk when attribute required is present`, function () {
+    labelSizes.forEach(s => {
+      const selector = `test-label-required${s}`;
+
+        cy.get(`[data-cy="${selector}"]`)
+          .find('abbr')
+          .contains('*');
+      });
+  });
+  
+  it(`Abbr element should contain asterisk when attribute optional is present`, function () {
+    labelSizes.forEach(s => {
+      const selector = `test-label-optional${s}`;
+
+        cy.get(`[data-cy="${selector}"]`)
+          .find('abbr')
+          .contains('(optional)');
+      });
+  });
 });
