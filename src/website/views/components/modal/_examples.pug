@@ -625,6 +625,7 @@ p.-text Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code>
       <script>chi.modal(document.getElementById('modal-trigger-9'));</script>
 
 h3 Portal
+h4 Base
 .example.-mb--3
   .chi-backdrop.-p--6.-position--relative.-z--0
     .chi-backdrop__wrapper
@@ -681,6 +682,76 @@ h3 Portal
 
       <!-- JavaScript -->
       <script>chi.modal(document.getElementById('modal-trigger-10'));</script>
+
+h4 Error
+.example.-mb--3
+  .chi-backdrop.-p--6.-position--relative.-z--0
+    .chi-backdrop__wrapper
+      section.chi-modal.-portal(role="dialog", aria-label="Modal description", aria-modal="true")
+        header.chi-modal__header
+          h2.chi-modal__title System Error
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
+              i.chi-icon.icon-x
+        .chi-modal__content
+          .-d--flex
+            i.chi-icon.icon-circle-x.-sm--3.-icon--danger.-mr--2
+            div
+              p.-text--bold.-m--0 We are unable to complete the request due to a system error.
+              p.-mt--1.-mb--0
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur elit nec
+                | massa tincidunt, sit amet ultricies massa cursus. Etiam quis pulvinar mauris lobortis gravida mauris.
+        footer.chi-modal__footer
+          button.chi-button.-primary.-lg.-text--uppercase.-px--4 OK
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal
+      li.-disabled
+        a(href=`#webcomponent-portal`) Web Component
+      li.-active
+        a(href=`#html-portal`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal
+  .chi-tabs-panel.-active#html-portal
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <!-- Trigger -->
+      <button id="modal-trigger-11" class="chi-button chi-modal__trigger" data-target="#modal-11">
+        Launch portal error modal
+      </button>
+
+      <!-- Modal -->
+      <div class="chi-backdrop -closed">
+        <div class="chi-backdrop__wrapper">
+          <section id="modal-11" class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <header class="chi-modal__header">
+              <h2 class="chi-modal__title">System Error</h2>
+              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </header>
+            <div class="chi-modal__content">
+              <div class="-d--flex">
+                <i class="chi-icon icon-circle-x -sm--3 -icon--danger -mr--2"></i>
+                <div>
+                  <p class="-text--bold -m--0">We are unable to complete the request due to a system error.</p>
+                  <p class="-mt--1 -mb--0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur elit nec massa tincidunt, sit amet ultricies massa cursus. Etiam quis pulvinar mauris lobortis gravida mauris.</p>
+                </div>
+              </div>
+            </div>
+            <footer class="chi-modal__footer">
+              <button class="chi-button -primary -lg -text--uppercase -px--4">OK</button>
+            </footer>
+          </section>
+        </div>
+      </div>
+
+      <!-- JavaScript -->
+      <script>chi.modal(document.getElementById('modal-trigger-11'));</script>
 
 script.
     document.addEventListener(
