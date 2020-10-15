@@ -1,6 +1,6 @@
 describe('chi-drawer', function() {
   before(() => {
-    cy.visit('http://localhost:8004/tests/js/chi-drawer.html');
+    cy.visit('/tests/js/chi-drawer.html');
   });
 
   describe('check that click on "X" in left menu drawer, closes drawer', () => {
