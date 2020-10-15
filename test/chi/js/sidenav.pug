@@ -1,0 +1,114 @@
+---
+title: Sidenav
+---
+script(src='/js/chi.js')
+
+.enterprise-nav-menu.chi(style='height: 35rem;')
+  aside#sidenav-0.chi-sidenav.-h--75
+    .chi-sidenav__content
+      nav
+        ul.chi-sidenav__list
+          li.-active
+            a(href='#drawer-0-1')
+              i.chi-icon.icon-atom
+              span Active Item
+          li
+            a(href='#drawer-0-2')
+              i.chi-icon.icon-atom
+              span Menu Item
+    .chi-sidenav__drawers
+      #drawer-0-1.chi-drawer.-animated.-left
+        .chi-drawer__header
+          .chi-drawer__title Menu item 1
+          button.chi-button.-icon.-close(aria-label='Close')
+            .chi-button__content
+              i.chi-icon.icon-x
+        .chi-drawer__content
+          ul.chi-sidenav__drawer-list
+            li
+              a(href='#drawer-item-list-1-A')
+                .chi-sidenav__title Title A
+              #drawer-item-list-1-A.chi-sidenav__drawer-item-list
+                ul.chi-tabs.-vertical.-sm
+                  li
+                    a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                      | Sub tab A
+                  li
+                    a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                      | Sub tab B
+                  li
+                    a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                      | Sub tab C
+            li.-active.-expanded
+              a(href='#drawer-item-list-1-B')
+                .chi-sidenav__title Title B
+              #drawer-item-list-1-B.chi-sidenav__drawer-item-list
+                ul.chi-tabs.-vertical.-sm
+                  li
+                    a.chi-sidenav__drawer-item-tab.-active(href='#exampleHashTarget')
+                      | Sub tab A
+                  li
+                    a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                      | Sub tab B
+                  li
+                    a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                      | Sub tab C
+            li
+              a(href='#exampleHashTarget')
+                span.chi-sidenav__title
+                  | Title C
+                  i.chi-icon.icon-external-link.-xs
+            li
+              a(href='#exampleHashTarget')
+                span.chi-sidenav__title
+                  | Title D
+                  i.chi-icon.icon-external-link.-xs
+      #drawer-0-2.chi-drawer.-animated.-left
+        .chi-drawer__header
+          .chi-drawer__title Menu item 2
+          button.chi-button.-icon.-close(aria-label='Close')
+            .chi-button__content
+              i.chi-icon.icon-x
+        .chi-drawer__content
+          ul.chi-sidenav__drawer-list
+            li
+              a(href='#drawer-item-list-2-A')
+                .chi-sidenav__title Title E
+              #drawer-item-list-2-A.chi-sidenav__drawer-item-list
+                ul.chi-tabs.-vertical.-sm
+                  li
+                    a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                      | Sub tab A
+                  li
+                    a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                      | Sub tab B
+                  li
+                    a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                      | Sub tab C
+            li
+              a(href='#drawer-item-list-2-B')
+                .chi-sidenav__title Title F
+              #drawer-item-list-2-B.chi-sidenav__drawer-item-list
+                ul.chi-tabs.-vertical.-sm
+                  li
+                    a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                      | Sub tab A
+                  li
+                    a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                      | Sub tab B
+                  li
+                    a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                      | Sub tab C
+            li
+              a(href='#exampleHashTarget')
+                span.chi-sidenav__title
+                  | Title G
+                  i.chi-icon.icon-external-link.-xs
+            li
+              a(href='#exampleHashTarget')
+                span.chi-sidenav__title
+                  | Title H
+                  i.chi-icon.icon-external-link.-xs
+
+  script.
+    chi.sidenav(document.getElementById('sidenav-0'));
