@@ -5,6 +5,7 @@ order: 1
 ---
 
 h2 Buttons
+h3 Text
 .example.-mb--3
   .-p--3.-d--flex.-align-items--center
     .-pr--2
@@ -17,6 +18,20 @@ h2 Buttons
     <button class="chi-button -primary -lg -uppercase -px--4">Primary</button>
     <button class="chi-button -primary -outline -lg -bg--white -uppercase -px--4">Secondary</button>
     <button class="chi-button -primary -outline -sm -bg--white -px--2">Tertiary</button>
+
+h3 Icons
+.example.-mb--3
+  .-p--3.-d--flex.-align-items--center
+    .-pr--2
+      button.chi-button.-icon.-flat.-bg--none.-opacity-hover--80(aria-label="Button action")
+        .chi-button__content
+          i.chi-icon.icon-refresh
+  :code(lang="html")
+    <button class="chi-button -icon -flat -bg--none -opacity-hover--80" aria-label="Button action">
+      <div class="chi-button__content">
+        <i class="chi-icon icon-refresh"></i>
+      </div>
+    </button>
 
 h2 Alerts
 .example.-mb--3
