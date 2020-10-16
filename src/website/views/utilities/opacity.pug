@@ -1,0 +1,139 @@
+---
+title: Opacity
+description: Use to change the opacity of an element.
+---
+
+h2 Examples
+h3 Base
+p.-text
+  | Use <code>-opacity--{value}</code> to change the opacity of an element.
+.example.-mb--3
+  .-p--2
+    .chi-grid.-no-gutter
+      .chi-col.-w--6.-w-md--4.-w-lg--2.-p--1
+        .example-opacity.-rounded(style=`height:3rem;`)
+          .-text.-bg--black.-rounded.-opacity--0(style=`height:3rem;`)
+      .chi-col.-w--6.-w-md--4.-w-lg--2.-p--1
+        .example-opacity.-rounded(style=`height:3rem;`)
+          .-text.-bg--black.-rounded.-opacity--20(style=`height:3rem;`)
+      .chi-col.-w--6.-w-md--4.-w-lg--2.-p--1
+        .example-opacity.-rounded(style=`height:3rem;`)
+          .-text.-bg--black.-rounded.-opacity--40(style=`height:3rem;`)
+      .chi-col.-w--6.-w-md--4.-w-lg--2.-p--1
+        .example-opacity.-rounded(style=`height:3rem;`)
+          .-text.-bg--black.-rounded.-opacity--60(style=`height:3rem;`)
+      .chi-col.-w--6.-w-md--4.-w-lg--2.-p--1
+        .example-opacity.-rounded(style=`height:3rem;`)
+          .-text.-bg--black.-rounded.-opacity--80(style=`height:3rem;`)
+      .chi-col.-w--6.-w-md--4.-w-lg--2.-p--1
+        .example-opacity.-rounded(style=`height:3rem;`)
+          .-text.-bg--black.-rounded.-opacity--100(style=`height:3rem;`)
+  :code(lang="html")
+    <div class="-opacity--0">...</div>
+    <div class="-opacity--20">...</div>
+    <div class="-opacity--40">...</div>
+    <div class="-opacity--60">...</div>
+    <div class="-opacity--80">...</div>
+    <div class="-opacity--100">...</div>
+
+h3 Hover
+p.-text
+  | Use <code>-opacity-hover--{value}</code> to change the opacity of an element on hover.
+.example.-mb--3
+  .-p--2
+    .chi-grid.-no-gutter
+      .chi-col.-w--6.-w-md--4.-w-lg--2
+        .-text.-text--center.-b--1.-rounded.-m--1.-p--2.-opacity-hover--0 0% on hover
+      .chi-col.-w--6.-w-md--4.-w-lg--2
+        .-text.-text--center.-b--1.-rounded.-m--1.-p--2.-opacity-hover--20 20% on hover
+      .chi-col.-w--6.-w-md--4.-w-lg--2
+        .-text.-text--center.-b--1.-rounded.-m--1.-p--2.-opacity-hover--40 40% on hover
+      .chi-col.-w--6.-w-md--4.-w-lg--2
+        .-text.-text--center.-b--1.-rounded.-m--1.-p--2.-opacity-hover--60 60% on hover
+      .chi-col.-w--6.-w-md--4.-w-lg--2
+        .-text.-text--center.-b--1.-rounded.-m--1.-p--2.-opacity-hover--80 80% on hover
+      .chi-col.-w--6.-w-md--4.-w-lg--2
+        .-text.-text--center.-b--1.-rounded.-m--1.-p--2.-opacity--60.-opacity-hover--100 100% on hover
+  :code(lang="html")
+    <div class="-opacity-hover--0">...</div>
+    <div class="-opacity-hover--20">...</div>
+    <div class="-opacity-hover--40">...</div>
+    <div class="-opacity-hover--60">...</div>
+    <div class="-opacity-hover--80">...</div>
+    <div class="-opacity--60 -opacity-hover--100">...</div>
+
+h2 Responsive
+p.-text
+  | Responsive opacity classes can be defined using the format <code>-opacity[-{breakpoint}]--{value}</code> and
+  | <code>-opacity-hover[-{breakpoint}]--{value}</code>.
+  | Breakpoints supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
+
+h3 Target all breakpoints
+p.-text
+  | Opacity utility classes with no breakpoint defined apply to all screen sizes.
+h4 Base
+table.chi-table.-bordered.-mb--3
+  thead
+    tr
+      th
+        div Class
+      th
+        div Value
+  tbody
+    each type, val in {0:'0', 20:'0.2', 40:'0.4', 60:'0.6', 80:'0.8', 100:'1'}
+      tr
+        td.-text(width='40%')
+          code= '-opacity--' + val
+        td
+          code= 'opacity: ' + type + ';'
+
+h4 Hover
+table.chi-table.-bordered.-mb--3
+  thead
+    tr
+      th
+        div Class
+      th
+        div Value
+  tbody
+    each type, val in {0:'0', 20:'0.2', 40:'0.4', 60:'0.6', 80:'0.8', 100:'1'}
+      tr
+        td.-text(width='40%')
+          code= '-opacity-hover--' + val
+        td
+          code= 'opacity: ' + type + ';'
+
+h3 Target specific breakpoints
+p.-text
+  | To target a specific breakpoint, add the breakpoint abbreviation to the class. As Chi is a mobile first library, the value
+  | will apply to that specific breakpoint and up.
+
+h4 Base
+table.chi-table.-bordered.-mt--3.-mb--3
+  thead
+    tr
+      th
+        div Class
+      th
+        div Value
+  tbody
+    each size in ['sm', 'md', 'lg', 'xl']
+      tr
+        td.-text(width='40%')
+          code= '-opacity-' + size + '--60'
+        td.-text 60% opacity on <code>#{size}</code> and up.
+
+h4 Hover
+table.chi-table.-bordered.-mt--3.-mb--3
+  thead
+    tr
+      th
+        div Class
+      th
+        div Value
+  tbody
+    each size in ['sm', 'md', 'lg', 'xl']
+      tr
+        td.-text(width='40%')
+          code= '-opacity-hover-' + size + '--60'
+        td.-text 60% opacity on hover on <code>#{size}</code> and up.

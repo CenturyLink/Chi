@@ -398,10 +398,10 @@ $sizes: (
       &.-disabled {
         background-color: transparent;
         border-color: transparent;
-        opacity: $opacity-70;
+        opacity: $opacity-60;
 
         & .chi-icon {
-          opacity: $opacity-70;
+          opacity: $opacity-60;
         }
       }
 
@@ -515,11 +515,11 @@ $sizes: (
         &.-disabled {
           background-color: transparent;
           border-color: transparent;
-          opacity: $opacity-70;
+          opacity: $opacity-60;
 
           & .chi-icon {
             color: inherit;
-            opacity: $opacity-70;
+            opacity: $opacity-60;
           }
         }
       }
