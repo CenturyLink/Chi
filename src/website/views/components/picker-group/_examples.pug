@@ -1,15 +1,16 @@
 h2 Examples
 h3 Base
-p.-text To render a picker group, wrap a series of pickers in a div and apply the class <code>chi-picker-group</code>.
+p.-text Use <code>chi-picker-group</code> to group a series of pickers.
 .example.-mb--3
   .-p--3
     fieldset
       legend.chi-label Legend
       .chi-picker-group
-        each type in ['Radio1','Radio2','Radio3']
-          input.chi-picker__input(type="radio", name='radio-base', id=`ia-${type}`, checked=(type === 'Radio1'))
-          label(for=`ia-${type}`)
-            = type
+        .chi-picker-group__content
+          each type in ['Radio1','Radio2','Radio3']
+            input.chi-picker__input(type="radio", name='radio-base', id=`ia-${type}`, checked=(type === 'Radio1'))
+            label(for=`ia-${type}`)
+              = type
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
       li.-disabled
@@ -22,18 +23,20 @@ p.-text To render a picker group, wrap a series of pickers in a div and apply th
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group">
-          <input class="chi-picker__input" type="radio" name="radio-base" id="radio1" checked>
-          <label for="radio1">
-            Radio1
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-base" id="radio2">
-          <label for="radio2">
-            Radio2
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-base" id="radio3">
-          <label for="radio3">
-            Radio3
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-base" id="radio1" checked>
+            <label for="radio1">
+              Radio1
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-base" id="radio2">
+            <label for="radio2">
+              Radio2
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-base" id="radio3">
+            <label for="radio3">
+              Radio3
+            </label>
+          </div>
         </div>
       </fieldset>
 
@@ -43,19 +46,20 @@ h3 Texts and icons
     fieldset
       legend.chi-label Legend
       .chi-picker-group.-fluid(style="max-width:21rem;")
-        input.chi-picker__input(type="radio", name='radio-with-icon', id=`ib-radio1`, checked)
-        label(for=`ib-radio1`)
-          i.chi-icon.icon-atom.-sm
-          span Radio1
-        input.chi-picker__input(type="radio", name='radio-with-icon', id=`ib-radio2`)
-        label(for=`ib-radio2`)
-          span Radio2
-          i.chi-icon.icon-atom.-sm
-        input.chi-picker__input(type="radio", name='radio-with-icon', id=`ib-radio3`)
-        label(for=`ib-radio3`)
-          i.chi-icon.icon-atom.-sm
-          span Radio3
-          i.chi-icon.icon-atom.-sm
+        .chi-picker-group__content
+          input.chi-picker__input(type="radio", name='radio-with-icon', id=`ib-radio1`, checked)
+          label(for=`ib-radio1`)
+            i.chi-icon.icon-atom.-sm
+            span Radio1
+          input.chi-picker__input(type="radio", name='radio-with-icon', id=`ib-radio2`)
+          label(for=`ib-radio2`)
+            span Radio2
+            i.chi-icon.icon-atom.-sm
+          input.chi-picker__input(type="radio", name='radio-with-icon', id=`ib-radio3`)
+          label(for=`ib-radio3`)
+            i.chi-icon.icon-atom.-sm
+            span Radio3
+            i.chi-icon.icon-atom.-sm
   .example-tabs.-pl--2
     ul.chi-tabs#example-text-and-icons
       li.-disabled
@@ -68,22 +72,24 @@ h3 Texts and icons
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group">
-          <input class="chi-picker__input" type="radio" name="radio-with-icon" id="radio1" checked>
-          <label for="radio1">
-            <i class="chi-icon icon-atom -sm"></i>
-            <span>Radio1</span>
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-with-icon" id="radio2">
-          <label for="radio2">
-            <span>Radio2</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-with-icon" id="radio3">
-          <label for="radio3">
-            <i class="chi-icon icon-atom -sm"></i>
-            <span>Radio3</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-with-icon" id="radio1" checked>
+            <label for="radio1">
+              <i class="chi-icon icon-atom -sm"></i>
+              <span>Radio1</span>
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-with-icon" id="radio2">
+            <label for="radio2">
+              <span>Radio2</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-with-icon" id="radio3">
+            <label for="radio3">
+              <i class="chi-icon icon-atom -sm"></i>
+              <span>Radio3</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+          </div>
         </div>
       </fieldset>
 
@@ -93,11 +99,12 @@ h3 Icons
     fieldset
       legend.chi-label Legend
       .chi-picker-group
-        each type in ['Radio1','Radio2','Radio3']
-          input.chi-picker__input(type="radio", name='radio-icon', id=`ic-${type}`, checked=(type === 'Radio1'))
-          label(for=`ic-${type}`)
-            span.-sr--only Button action
-            i.chi-icon.icon-atom.-sm
+        .chi-picker-group__content
+          each type in ['Radio1','Radio2','Radio3']
+            input.chi-picker__input(type="radio", name='radio-icon', id=`ic-${type}`, checked=(type === 'Radio1'))
+            label(for=`ic-${type}`)
+              span.-sr--only Button action
+              i.chi-icon.icon-atom.-sm
   .example-tabs.-pl--2
     ul.chi-tabs#example-icons
       li.-disabled
@@ -110,21 +117,23 @@ h3 Icons
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group">
-          <input class="chi-picker__input" type="radio" name="radio-icon" id="radio1" checked>
-          <label for="radio1">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-icon" id="radio2">
-          <label for="radio2">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-icon" id="radio3">
-          <label for="radio3">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-icon" id="radio1" checked>
+            <label for="radio1">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-icon" id="radio2">
+            <label for="radio2">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-icon" id="radio3">
+            <label for="radio3">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+          </div>
         </div>
       </fieldset>
 
@@ -138,10 +147,11 @@ h3 Horizontal
     fieldset
       legend.chi-label Legend
       .chi-picker-group.-fluid
-        each type in ['Radio1','Radio2','Radio3']
-          input.chi-picker__input(type="radio", name='radio-fluid', id=`id-${type}`, checked=(type === 'Radio1'))
-          label(for=`id-${type}`)
-            = type
+        .chi-picker-group__content
+          each type in ['Radio1','Radio2','Radio3']
+            input.chi-picker__input(type="radio", name='radio-fluid', id=`id-${type}`, checked=(type === 'Radio1'))
+            label(for=`id-${type}`)
+              = type
   .example-tabs.-pl--2
     ul.chi-tabs#example-fluid
       li.-disabled
@@ -154,18 +164,20 @@ h3 Horizontal
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group -fluid">
-          <input class="chi-picker__input" type="radio" name="radio-fluid" id="radio1" checked>
-          <label for="radio1">
-            Radio1
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-fluid" id="radio2">
-          <label for="radio2">
-            Radio2
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-fluid" id="radio3">
-          <label for="radio3">
-            Radio3
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-fluid" id="radio1" checked>
+            <label for="radio1">
+              Radio1
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-fluid" id="radio2">
+            <label for="radio2">
+              Radio2
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-fluid" id="radio3">
+            <label for="radio3">
+              Radio3
+            </label>
+          </div>
         </div>
       </fieldset>
 
@@ -178,6 +190,7 @@ p.-text
     fieldset
       legend.chi-label Legend
       .chi-picker-group.-fluid
+        .chi-picker-group__content
           input.chi-picker__input(type="radio", name='radio-alignment', id='ie-Radio1', checked)
           label.-align--left(for='ie-Radio1') Radio1
           input.chi-picker__input(type="radio", name='radio-alignment', id='ie-Radio2')
@@ -196,18 +209,20 @@ p.-text
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group -fluid">
-          <input class="chi-picker__input" type="radio" name="radio-alignment" id="radio1" checked>
-          <label class="-align--left" for="radio1">
-            Radio1
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-alignment" id="radio2">
-          <label for="radio2">
-            Radio2
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-alignment" id="radio3">
-          <label class="-align--right" for="radio3">
-            Radio3
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-alignment" id="radio1" checked>
+            <label class="-align--left" for="radio1">
+              Radio1
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-alignment" id="radio2">
+            <label for="radio2">
+              Radio2
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-alignment" id="radio3">
+            <label class="-align--right" for="radio3">
+              Radio3
+            </label>
+          </div>
         </div>
       </fieldset>
 
@@ -219,6 +234,7 @@ p.-text
     fieldset
       legend.chi-label Legend
       .chi-picker-group.-fluid
+        .chi-picker-group__content
           input.chi-picker__input(type="radio", name='radio-nofluid', id='if-Radio1', checked)
           label(for='if-Radio1') Radio1
           input.chi-picker__input(type="radio", name='radio-nofluid', id='if-Radio2')
@@ -237,18 +253,20 @@ p.-text
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group -fluid">
-          <input class="chi-picker__input" type="radio" name="radio-nofluid" id="radio1" checked>
-          <label for="radio1">
-            Radio1
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-nofluid" id="radio2">
-          <label class="-no-fluid" for="radio2">
-            Radio2
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-nofluid" id="radio3">
-          <label for="radio3">
-            Radio3
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-nofluid" id="radio1" checked>
+            <label for="radio1">
+              Radio1
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-nofluid" id="radio2">
+            <label class="-no-fluid" for="radio2">
+              Radio2
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-nofluid" id="radio3">
+            <label for="radio3">
+              Radio3
+            </label>
+          </div>
         </div>
       </fieldset>
 
@@ -268,22 +286,24 @@ p.-text
           fieldset
             legend.chi-label Legend
             .chi-picker-group
-              each type in ['Radio1','Radio2','Radio3']
-                input.chi-picker__input(type="radio", name=`radio-${size}-text`, id=`ig-${type}-${size}`, checked=(type === 'Radio1'))
-                label(for=`ig-${type}-${size}`, class=`-${size}`)
-                    = type
+              .chi-picker-group__content
+                each type in ['Radio1','Radio2','Radio3']
+                  input.chi-picker__input(type="radio", name=`radio-${size}-text`, id=`ig-${type}-${size}`, checked=(type === 'Radio1'))
+                  label(for=`ig-${type}-${size}`, class=`-${size}`)
+                      = type
         .chi-col.-w--12.-w-md--6.-w-xl--5.-my--2
           fieldset
             legend.chi-label Legend
             .chi-picker-group
-              each type in ['Radio1','Radio2','Radio3']
-                input.chi-picker__input(type="radio", name=`radio-${size}-icon`, id=`ig-i-${type}-${size}`, checked=(type === 'Radio1'))
-                label(for=`ig-i-${type}-${size}`, class=`-${size}`)
-                  span.-sr--only Button action
-                  if size === 'sm'
-                    i.chi-icon.icon-atom.-xs
-                  else
-                    i.chi-icon.icon-atom.-sm
+              .chi-picker-group__content
+                each type in ['Radio1','Radio2','Radio3']
+                  input.chi-picker__input(type="radio", name=`radio-${size}-icon`, id=`ig-i-${type}-${size}`, checked=(type === 'Radio1'))
+                  label(for=`ig-i-${type}-${size}`, class=`-${size}`)
+                    span.-sr--only Button action
+                    if size === 'sm'
+                      i.chi-icon.icon-atom.-xs
+                    else
+                      i.chi-icon.icon-atom.-sm
   .example-tabs.-pl--2
     ul.chi-tabs#example-sizes
       li.-disabled
@@ -297,39 +317,43 @@ p.-text
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group">
-          <input class="chi-picker__input" type="radio" name="radio-sm-text" id="radio1" checked>
-          <label class="-sm" for="radio1">
-            Radio1
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-sm-text" id="radio2">
-          <label class="-sm" for="radio2">
-            Radio2
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-sm-text" id="radio3">
-          <label class="-sm" for="radio3">
-            Radio3
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-sm-text" id="radio1" checked>
+            <label class="-sm" for="radio1">
+              Radio1
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-sm-text" id="radio2">
+            <label class="-sm" for="radio2">
+              Radio2
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-sm-text" id="radio3">
+            <label class="-sm" for="radio3">
+              Radio3
+            </label>
+          </div>
         </div>
       </fieldset>
 
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group">
-          <input class="chi-picker__input" type="radio" name="radio-sm-icon" id="radio-i-1" checked>
-          <label class="-sm" for="radio-i-1">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -xs"></i>
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-sm-icon" id="radio-i-2">
-          <label class="-sm" for="radio-i-2">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -xs"></i>
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-sm-icon" id="radio-i-3">
-          <label class="-sm" for="radio-i-3">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -xs"></i>
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-sm-icon" id="radio-i-1" checked>
+            <label class="-sm" for="radio-i-1">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -xs"></i>
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-sm-icon" id="radio-i-2">
+            <label class="-sm" for="radio-i-2">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -xs"></i>
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-sm-icon" id="radio-i-3">
+            <label class="-sm" for="radio-i-3">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -xs"></i>
+            </label>
+          </div>
         </div>
       </fieldset>
 
@@ -337,39 +361,43 @@ p.-text
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group">
-          <input class="chi-picker__input" type="radio" name="radio-md-text" id="radio1" checked>
-          <label class="-md" for="radio1">
-            Radio1
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-md-text" id="radio2">
-          <label class="-md" for="radio2">
-            Radio2
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-md-text" id="radio3">
-          <label class="-md" for="radio3">
-            Radio3
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-md-text" id="radio1" checked>
+            <label class="-md" for="radio1">
+              Radio1
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-md-text" id="radio2">
+            <label class="-md" for="radio2">
+              Radio2
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-md-text" id="radio3">
+            <label class="-md" for="radio3">
+              Radio3
+            </label>
+          </div>
         </div>
       </fieldset>
 
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group">
-          <input class="chi-picker__input" type="radio" name="radio-md-icon" id="radio-i-1" checked>
-          <label class="-md" for="radio-i-1">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-md-icon" id="radio-i-2">
-          <label class="-md" for="radio-i-2">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-md-icon" id="radio-i-3">
-          <label class="-md" for="radio-i-3">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-md-icon" id="radio-i-1" checked>
+            <label class="-md" for="radio-i-1">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-md-icon" id="radio-i-2">
+            <label class="-md" for="radio-i-2">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-md-icon" id="radio-i-3">
+            <label class="-md" for="radio-i-3">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+          </div>
         </div>
       </fieldset>
 
@@ -377,39 +405,43 @@ p.-text
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group">
-          <input class="chi-picker__input" type="radio" name="radio-lg-text" id="radio1" checked>
-          <label class="-lg" for="radio1">
-            Radio1
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-lg-text" id="radio2">
-          <label class="-lg" for="radio2">
-            Radio2
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-lg-text" id="radio3">
-          <label class="-lg" for="radio3">
-            Radio3
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-lg-text" id="radio1" checked>
+            <label class="-lg" for="radio1">
+              Radio1
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-lg-text" id="radio2">
+            <label class="-lg" for="radio2">
+              Radio2
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-lg-text" id="radio3">
+            <label class="-lg" for="radio3">
+              Radio3
+            </label>
+          </div>
         </div>
       </fieldset>
 
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group">
-          <input class="chi-picker__input" type="radio" name="radio-lg-icon" id="radio-i-1" checked>
-          <label class="-lg" for="radio-i-1">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-lg-icon" id="radio-i-2">
-          <label class="-lg" for="radio-i-2">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-lg-icon" id="radio-i-3">
-          <label class="-lg" for="radio-i-3">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-lg-icon" id="radio-i-1" checked>
+            <label class="-lg" for="radio-i-1">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-lg-icon" id="radio-i-2">
+            <label class="-lg" for="radio-i-2">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-lg-icon" id="radio-i-3">
+            <label class="-lg" for="radio-i-3">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+          </div>
         </div>
       </fieldset>
 
@@ -417,39 +449,43 @@ p.-text
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group">
-          <input class="chi-picker__input" type="radio" name="radio-xl-text" id="radio1" checked>
-          <label class="-xl" for="radio1">
-            Radio1
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-xl-text" id="radio2">
-          <label class="-xl" for="radio2">
-            Radio2
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-xl-text" id="radio3">
-          <label class="-xl" for="radio3">
-            Radio3
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-xl-text" id="radio1" checked>
+            <label class="-xl" for="radio1">
+              Radio1
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-xl-text" id="radio2">
+            <label class="-xl" for="radio2">
+              Radio2
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-xl-text" id="radio3">
+            <label class="-xl" for="radio3">
+              Radio3
+            </label>
+          </div>
         </div>
       </fieldset>
 
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker-group">
-          <input class="chi-picker__input" type="radio" name="radio-xl-icon" id="radio-i-1" checked>
-          <label class="-xl" for="radio-i-1">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-xl-icon" id="radio-i-2">
-          <label class="-xl" for="radio-i-2">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
-          <input class="chi-picker__input" type="radio" name="radio-xl-icon" id="radio-i-3">
-          <label class="-xl" for="radio-i-3">
-            <span class="-sr--only">Button action</span>
-            <i class="chi-icon icon-atom -sm"></i>
-          </label>
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="radio-xl-icon" id="radio-i-1" checked>
+            <label class="-xl" for="radio-i-1">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-xl-icon" id="radio-i-2">
+            <label class="-xl" for="radio-i-2">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+            <input class="chi-picker__input" type="radio" name="radio-xl-icon" id="radio-i-3">
+            <label class="-xl" for="radio-i-3">
+              <span class="-sr--only">Button action</span>
+              <i class="chi-icon icon-atom -sm"></i>
+            </label>
+          </div>
         </div>
       </fieldset>
 

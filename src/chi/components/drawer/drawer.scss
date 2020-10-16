@@ -192,23 +192,6 @@ $animation-duration: 0.5s;
   &.-portal {
     .chi-drawer__header {
       background-color: $color-background-secondary;
-
-      &,
-      .chi-drawer__title {
-        color: $color-text-base;
-      }
-
-      button {
-        &.chi-button {
-          &.-close {
-            i {
-              &.chi-icon {
-                color: $color-text-base;
-              }
-            }
-          }
-        }
-      }
     }
   }
 }
