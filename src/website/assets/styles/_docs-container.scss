@@ -442,6 +442,18 @@
           overflow: hidden;
           width: 100%;
         }
+
+        .example-vertical-align {
+          background-image: linear-gradient(180deg, $color-background-secondary 0, $color-background-base 1px);
+          background-repeat: repeat-y;
+          background-size: 100% 1.5rem;
+          padding-bottom: 0.25rem;
+
+          &__block {
+            height: 3rem;
+            width: 0.5rem;
+          }
+        }
       }
     }
 

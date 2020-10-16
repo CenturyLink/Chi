@@ -1,0 +1,31 @@
+@import '_mixins';
+@import '_variables';
+
+$opacities: (
+  0: '0',
+  20: '0.2',
+  40: '0.4',
+  60: '0.6',
+  80: '0.8',
+  100: '1'
+);
+
+@each $opacity-key, $opacity-value in $opacities {
+  .-opacity--#{$opacity-key} { opacity: #{$opacity-value} !important; }
+
+  .-opacity-hover--#{$opacity-key} {
+    &:hover {
+      &:not([disabled]):not(.-disabled) {
+        opacity: #{$opacity-value} !important;
+      }
+    }
+  }
+}
+
+@each $size in sm md lg xl {
+  @include respond-to($size) {
+    @each $opacity-key, $opacity-value in $opacities {
+      .-opacity-#{$size}--#{$opacity-key} { opacity: #{$opacity-value} !important; }
+    }
+  }
+}

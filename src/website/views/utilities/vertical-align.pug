@@ -1,0 +1,160 @@
+---
+title: Vertical-align
+description: Use to change the vertical alignment of inline, inline-block, inline-table, and table cell elements.
+---
+
+h2 Notation
+p.-text
+  | Vertical-align classes can be defined using the format <code>-vertical-align[-{breakpoint}]--{value}</code>.
+  | Breakpoints supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
+
+h3 Target all breakpoints
+p.-text
+  | Vertical-align utility classes with no breakpoint defined apply to all screen sizes.
+table.chi-table.-bordered.-mt--3.-mb--3
+  thead
+    tr
+      th
+        div Class
+      th
+        div Value
+  tbody
+    each position in ['baseline', 'top', 'middle', 'bottom', 'text-top', 'text-bottom']
+      tr
+        td.-text(width='40%')
+          code= '-vertical-align--' + position
+        td
+          code= 'vertical-align: ' + position + ';'
+
+h3 Target specific breakpoints
+p.-text
+  | To target a specific breakpoint, add the breakpoint abbreviation to the class. As Chi is a mobile first library, the value
+  | will apply to that specific breakpoint and up.
+table.chi-table.-bordered.-mt--3.-mb--3
+  thead
+    tr
+      th
+        div Class
+      th
+        div Value
+  tbody
+    each size in ['sm', 'md', 'lg', 'xl']
+      tr
+        td.-text(width='40%')
+          code= '-vertical-align-' + size + '--middle'
+        td.-text Vertical middle aligned on <code>#{size}</code> and up.
+
+h2 Examples
+p.-text
+  | Vertical-align is only compatible with inline, inline-block, inline-table, and table cell elements.
+  | It cannot be used to vertically align block-level elements.
+
+h3 Baseline
+p.-text
+  | Use <code>-vertical-align--baseline</code> to align the baseline of an element with the baseline of its parent.
+.example.-mb--3
+  .-d--flex.-flex--wrap.-p--3.-text
+    div.-position--relative.-w--100.example-vertical-align
+      span.-d--inline-block.-bg--secondary.-vertical-align--baseline.-mr--1.example-vertical-align__block
+      span baseline
+  :code(lang="html")
+    <span class="-vertical-align--baseline">...</span>
+
+h3 Top
+p.-text
+  | Use <code>-vertical-align--top</code> to align the top of the element and its descendants with the top of the entire line.
+.example.-mb--3
+  .-d--flex.-flex--wrap.-p--3.-text
+    div.-position--relative.-w--100.example-vertical-align
+      span.-d--inline-block.-bg--secondary.-vertical-align--top.-mr--1.example-vertical-align__block
+      span top
+  :code(lang="html")
+    <span class="-vertical-align--top">...</span>
+
+h3 Middle
+p.-text
+  | Use <code>-vertical-align--middle</code> to align the middle of an element with the baseline plus half the x-height of the parent.
+.example.-mb--3
+  .-d--flex.-flex--wrap.-p--3.-text
+    div.-position--relative.-w--100.example-vertical-align
+      span.-d--inline-block.-bg--secondary.-vertical-align--middle.-mr--1.example-vertical-align__block
+      span middle
+  :code(lang="html")
+    <span class="-vertical-align--middle">...</span>
+
+h3 Bottom
+p.-text
+  | Use <code>-vertical-align--bottom</code> to align the bottom of an element and its descendants with the bottom of the entire line.
+.example.-mb--3
+  .-d--flex.-flex--wrap.-p--3.-text
+    div.-position--relative.-w--100.example-vertical-align
+      span.-d--inline-block.-bg--secondary.-vertical-align--bottom.-mr--1.example-vertical-align__block
+      span bottom
+  :code(lang="html")
+    <span class="-vertical-align--bottom">...</span>
+
+h3 Text top
+p.-text
+  | Use <code>-vertical-align--text-top</code> to align the top of an element with the top of the parent element's font.
+.example.-mb--3
+  .-d--flex.-flex--wrap.-p--3.-text
+    div.-position--relative.-w--100.example-vertical-align
+      span.-d--inline-block.-bg--secondary.-vertical-align--text-top.-mr--1.example-vertical-align__block
+      span text-top
+  :code(lang="html")
+    <span class="-vertical-align--text-top">...</span>
+
+h3 Text bottom
+p.-text
+  | Use <code>-vertical-align--text-bottom</code> to align the bottom of an element with the bottom of the parent element's font.
+.example.-mb--3
+  .-d--flex.-flex--wrap.-p--3.-text
+    div.-position--relative.-w--100.example-vertical-align
+      span.-d--inline-block.-bg--secondary.-vertical-align--text-bottom.-mr--1.example-vertical-align__block
+      span text-bottom
+  :code(lang="html")
+    <span class="-vertical-align--text-bottom">...</span>
+
+h3 Table cell elements
+p.-text
+  | Use the vertical-align utility to change the vertical alignment of table cell elements.
+.example.-mb--3
+  .-p--3
+    table.chi-table.-bordered
+      thead
+        tr
+          th Column
+          th Column
+          th Column
+          th Column
+          th Column
+      tbody
+        tr
+          td.-vertical-align--baseline baseline
+          td.-vertical-align--top top
+          td.-vertical-align--middle middle
+          td.-vertical-align--bottom bottom
+          td.-w--30
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae faucibus est.
+            | Vestibulum lacinia diam ut dignissim fermentum. Phasellus mollis ut lacus vitae molestie.
+            | Nam id libero tristique, porta leo non, ultrices neque.
+  :code(lang="html")
+    <table class="chi-table">
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Column</th>
+          <th>Column</th>
+          <th>Column</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="-vertical-align--baseline">baseline</td>
+          <td class="-vertical-align--top">top</td>
+          <td class="-vertical-align--middle">middle</td>
+          <td class="-vertical-align--bottom">bottom</td>
+          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae faucibus est. Vestibulum lacinia diam ut dignissim fermentum. Phasellus mollis ut lacus vitae molestie. Nam id libero tristique, porta leo non, ultrices neque.</td>
+        </tr>
+      </tbody>
+    </table>
