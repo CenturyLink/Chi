@@ -10,7 +10,7 @@ class Header extends React.Component {
 		chi.dropdown(document.getElementById('button-eid-portal-with-navbar'));
 	}
 
-	render () {
+	render() {
 		return (
 			<div>
 				<header className="chi-header -portal -navbar -position--fixed-top">

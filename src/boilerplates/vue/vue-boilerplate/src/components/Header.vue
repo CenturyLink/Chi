@@ -1,5 +1,5 @@
 <template>
-  <div class="hello -h--100">
+  <div>
     <header class="chi-header -portal -navbar -position--fixed-top">
       <nav class="chi-header__content">
         <div class="chi-header__brand">
@@ -146,7 +146,6 @@
       </nav>
     </header>
 
-    <!-- Drawer -->
     <div class="chi-backdrop -closed">
       <div class="chi-backdrop__wrapper">
         <div class="chi-drawer -left -menu -position--absolute" id="drawer-1">
@@ -163,51 +162,6 @@
         </div>
       </div>
     </div>
-    <div
-      class="-d--flex -w--100 -h--100 -align-items--center -justify-content--center"
-    >
-      <!-- Trigger -->
-      <button
-        id="modal-trigger-1"
-        class="chi-button chi-modal__trigger"
-        data-target="#modal-1"
-      >
-        Launch demo modal
-      </button>
-
-      <!-- Modal -->
-      <div class="chi-backdrop -closed">
-        <div class="chi-backdrop__wrapper">
-          <section
-            id="modal-1"
-            class="chi-modal"
-            role="dialog"
-            aria-label="Modal description"
-            aria-modal="true"
-          >
-            <header class="chi-modal__header">
-              <h2 class="chi-modal__title">Modal Title</h2>
-              <button
-                class="chi-button -icon -close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-x"></i>
-                </div>
-              </button>
-            </header>
-            <div class="chi-modal__content">
-              <p class="-text -m--0">Modal content</p>
-            </div>
-            <footer class="chi-modal__footer">
-              <button class="chi-button" data-dismiss="modal">Cancel</button>
-              <button class="chi-button -primary">Save</button>
-            </footer>
-          </section>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -216,7 +170,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 declare let chi: any;
 @Component
-export default class HelloWorld extends Vue {
+export default class Header extends Vue {
   mounted() {
     chi.drawer(document.getElementById('drawer-portal-with-navbar'));
     chi.dropdown(
@@ -228,7 +182,6 @@ export default class HelloWorld extends Vue {
     chi.dropdown(
       document.getElementById('button-eid-portal-with-navbar')
     );
-    chi.modal(document.getElementById('modal-trigger-1'));
   }
 }
 </script>
