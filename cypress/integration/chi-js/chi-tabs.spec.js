@@ -20,9 +20,7 @@ describe('Chi Tabs', function() {
         .should('be.visible')
         .should('have.class', '-active');
     });
-  });
-
-  describe('Clicking horizontal tab shows corresponding content', () => {
+  
     it('Clicking horizontal tab 3 shows corresponding content 3  and active class is present', () => {
       cy.get('#example-horizontal-base li:nth-child(3)')
         .click();
@@ -32,9 +30,7 @@ describe('Chi Tabs', function() {
         .should('be.visible')
         .should('have.class', '-active');
     });
-  });
-
-  describe('Clicking horizontal tab shows corresponding content', () => {
+    
     it('Clicking horizontal tab 1 shows corresponding content 1 and active class is present', () => {
       cy.get('#example-horizontal-base li:nth-child(1)')
         .click();
@@ -63,9 +59,7 @@ describe('Chi Tabs', function() {
         .should('be.visible')
         .should('have.class', '-active');
     });
-  });
-
-  describe('Clicking vertical tab shows corresponding content', () => {
+    
     it('Clicking vertical tab 3 shows corresponding content 3 and active class is present', () => {
       cy.get('#example-vertical-base li:nth-child(3)')
         .click();
@@ -75,9 +69,7 @@ describe('Chi Tabs', function() {
         .should('be.visible')
         .should('have.class', '-active');
     });
-  });
-
-  describe('Clicking vertical tab shows corresponding content', () => {
+  
     it('Clicking vertical tab 1 shows corresponding content 1 and active class is present', () => {
       cy.get('#example-vertical-base li:nth-child(1)')
         .click();
