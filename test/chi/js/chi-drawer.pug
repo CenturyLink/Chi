@@ -3,6 +3,7 @@ title: Enterprise Chi-Drawer test case Pug
 ---
 script(src='/js/chi.js')
 
+h2 chi drawer left
 button#drawer-trigger-1.chi-button.-icon.chi-drawer__trigger(data-target='#drawer-1', aria-label='Toggle navigation')
   .chi-button__content
     i.chi-icon.-sm--2.icon-menu
@@ -17,10 +18,6 @@ button#drawer-trigger-1.chi-button.-icon.chi-drawer__trigger(data-target='#drawe
       .chi-drawer__content
         .-px--2.-text Drawer content here
 
-script.
-  chi.drawer(document.getElementById('drawer-trigger-1'));
-
-
 h2 chi drawer right
 button#drawer-trigger-5.chi-button.-icon.chi-drawer__trigger(data-target='#drawer-5', aria-label='Toggle navigation')
   .chi-button__content
@@ -34,12 +31,7 @@ button#drawer-trigger-5.chi-button.-icon.chi-drawer__trigger(data-target='#drawe
   .chi-drawer__content
     .-px--2.-text Drawer content here
 
-script.
-  chi.drawer(document.getElementById('drawer-trigger-5'));
-
-
 h2 chi drawer top
-
 button#drawer-trigger-7.chi-button.-icon.chi-drawer__trigger(data-target='#drawer-7', aria-label='Toggle navigation')
   .chi-button__content
     i.chi-icon.-sm--2.icon-menu
@@ -51,10 +43,6 @@ button#drawer-trigger-7.chi-button.-icon.chi-drawer__trigger(data-target='#drawe
         i.chi-icon.icon-x
   .chi-drawer__content
     .-px--2.-text Drawer content here
-
-script.
-  chi.drawer(document.getElementById('drawer-trigger-7'));
-
 
 h2 chi drawer bottom
 button#drawer-trigger-9.chi-button.-icon.chi-drawer__trigger(data-target='#drawer-9', aria-label='Toggle navigation')
@@ -68,10 +56,6 @@ button#drawer-trigger-9.chi-button.-icon.chi-drawer__trigger(data-target='#drawe
         i.chi-icon.icon-x
   .chi-drawer__content
     .-px--2.-text Drawer content here
-
-script.
-  chi.drawer(document.getElementById('drawer-trigger-9'));
-
 
 h2 chi drawer backdrop
 button#drawer-trigger-11.chi-button.-icon.chi-drawer__trigger(data-target='#drawer-11', aria-label='Toggle navigation')
@@ -88,12 +72,7 @@ button#drawer-trigger-11.chi-button.-icon.chi-drawer__trigger(data-target='#draw
       .chi-drawer__content
         .-px--2.-text Drawer content here
 
-script.
-  chi.drawer(document.getElementById('drawer-trigger-11'));
-
-
 h2 chi drawer titled
-
 button#drawer-trigger-13.chi-button.-icon.chi-drawer__trigger(data-target='#drawer-13', aria-label='Toggle navigation')
   .chi-button__content
     i.chi-icon.-sm--2.icon-menu
@@ -110,12 +89,7 @@ button#drawer-trigger-13.chi-button.-icon.chi-drawer__trigger(data-target='#draw
       .chi-drawer__content
         .-px--2.-text Drawer content here
 
-script.
-  chi.drawer(document.getElementById('drawer-trigger-13'));
-
-
 h2 chi drawer portal
-
 button#drawer-trigger-23.chi-button.-primary.chi-drawer__trigger(data-target='#drawer-23') Launch demo drawer
 
 .chi-backdrop.-closed
@@ -130,5 +104,11 @@ button#drawer-trigger-23.chi-button.-primary.chi-drawer__trigger(data-target='#d
       .chi-drawer__content
         .-p--2.-text Drawer content here
 script.
+  chi.drawer(document.getElementById('drawer-trigger-1'));
+  chi.drawer(document.getElementById('drawer-trigger-5'));
+  chi.drawer(document.getElementById('drawer-trigger-7'));
+  chi.drawer(document.getElementById('drawer-trigger-9'));
+  chi.drawer(document.getElementById('drawer-trigger-11'));
+  chi.drawer(document.getElementById('drawer-trigger-13'));
   chi.drawer(document.getElementById('drawer-trigger-23'));
 
