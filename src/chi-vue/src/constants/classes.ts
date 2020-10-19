@@ -1,46 +1,54 @@
 /* Common */
-export const activeClass = '-active';
-export const closedClass = '-closed';
-export const lightClass = '-light';
-export const disabledClass = '-disabled';
-export const inverseClass = '-inverse';
-export const animatedClass = '-animated';
-export const portalClass = '-portal';
-export const transitioningClass = '-transitioning';
+export const ACTIVE_CLASS = '-active';
+export const CLOSED_CLASS = '-closed';
+export const LIGHT_CLASS = '-light';
+export const DISABLED_CLASS = '-disabled';
+export const INVERSE_CLASS = '-inverse';
+export const ANIMATED_CLASS = '-animated';
+export const PORTAL_CLASS = '-portal';
+export const TRANSITIONING_CLASS = '-transitioning';
 
 /* Backdrop */
-export const backdropClass = 'chi-backdrop';
-export const backgropWrapperClass = 'chi-backdrop__wrapper';
+export const BACKDROP_CLASSES = {
+  BACKDROP: 'chi-backdrop',
+  WRAPPER: 'chi-backdrop__wrapper'
+};
 
 /* Button */
-export const buttonClass = 'chi-button';
-export const iconButtonClass = '-icon';
-export const buttonContentClass = 'chi-button__content';
-export const buttonFlatClass = '-flat';
+export const BUTTON_CLASSES = {
+  BUTTON: 'chi-button',
+  ICON_BUTTON: '-icon',
+  CONTENT: 'chi-button__content',
+  FLAT: '-flat'
+};
 
 /* Button Group */
 export const buttonGroupClass = 'chi-button-group';
 
 /* Drawer */
-export const drawerClass = 'chi-drawer';
-export const drawerHeaderClass = 'chi-drawer__header';
-export const drawerTitleClass = 'chi-drawer__title';
-export const drawerContentClass = 'chi-drawer__content';
+export const DRAWER_CLASSES = {
+  DRAWER: 'chi-drawer',
+  HEADER: 'chi-drawer__header',
+  TITLE: 'chi-drawer__title',
+  CONTENT: 'chi-drawer__content'
+};
 
 /* Icon */
 export const iconClass = 'chi-icon';
 
 /* Pagination */
-export const paginationClass = 'chi-pagination';
-export const paginationResultsClass = 'chi-pagination__results';
-export const paginationCompactClass = '-compact';
-export const paginationContentClass = 'chi-pagination__content';
-export const paginationLabelClass = 'chi-pagination__label';
-export const paginationPageSizeCLass = 'chi-pagination__page-size';
-export const paginationJumperClass = 'chi-pagination__jumper';
-export const paginationStartClass = 'chi-pagination__start';
-export const paginationCenterClass = 'chi-pagination__center';
-export const paginationEndClass = 'chi-pagination__end';
+export const PAGINATION_CLASSES = {
+  PAGINATION: 'chi-pagination',
+  RESULTS: 'chi-pagination__results',
+  COMPACT: '-compact',
+  CONTENT: 'chi-pagination__content',
+  LABEL: 'chi-pagination__label',
+  PAGE_SIZE: 'chi-pagination__page-size',
+  START: 'chi-pagination__start',
+  CENTER: 'chi-pagination__center',
+  END: 'chi-pagination__end',
+  JUMPER: 'chi-pagination__jumper'
+};
 
 /* Input */
 export const inputClass = 'chi-input';

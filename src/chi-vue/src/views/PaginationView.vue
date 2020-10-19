@@ -91,6 +91,7 @@
           :results="240"
           :page-size="true"
           :page-jumper="true"
+          @chiPageChange="e => pageChange(e)"
         />
       </div>
       <div class="chi-col -w--12 -py--2 -bg--black">
