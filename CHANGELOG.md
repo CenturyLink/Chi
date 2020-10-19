@@ -1,5 +1,5 @@
 # CHANGELOG
-## 3.2.0 (October 16, 2020)
+## 3.2.0 (October 20, 2020)
 ### Components
 #### Added
 * Added: Vertical-align utility for customizing the vertical alignment of inline and table cell elements.
@@ -8,6 +8,7 @@
 #### Changed
 * Changed: Base button icon color has been changed from $color-text-base (Grey 100) to $color-icon-base (Grey 80).
 * Changed: Toggle switch component no longer displays a margin-top when chi-label is present.
+* Changed: Sidenav component Cypress tests have been improved.
 #### Fixed
 * Fixed: Vertical alignment of Toggle switch and Number input web component has been improved.
 ### Documentation
