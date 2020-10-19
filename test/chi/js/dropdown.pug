@@ -1,0 +1,258 @@
+---
+title: Dropdown
+---
+script(src='/js/chi.js')
+
+h3 Base
+p  Trigger and dropdown enclosed in the same div.
+.chi-dropdown
+  button#dropdown-1.chi-button.chi-dropdown__trigger Dropdown component
+  .chi-dropdown__menu
+    a.chi-dropdown__menu-item(href='#') Item 1
+    a.chi-dropdown__menu-item(href='#') Item 2
+    a.chi-dropdown__menu-item(href='#') Item 3
+script.
+  chi.dropdown(document.getElementById('dropdown-1'));
+
+h3 Data-target
+p  Dropdown referenced by a data-target attribute in the activator.
+button#dropdown-2.chi-button.chi-dropdown__trigger(data-target='#dropdown-2-menu') Dropdown
+p.-text There is no need for proximity between elements.
+#dropdown-2-menu.chi-dropdown__menu
+  a.chi-dropdown__menu-item(href='#') Item 1
+  a.chi-dropdown__menu-item(href='#') Item 2
+  a.chi-dropdown__menu-item(href='#') Item 3
+  a.chi-dropdown__menu-item(href='#') Item 4
+script.
+  chi.dropdown(document.getElementById('dropdown-2'));
+
+h3 Hover
+p  Dropdown on hover is only supported when trigger and dropdown elements are enclosed in the same div. Use the chi-dropdown__hover class to achieve this.
+.chi-dropdown.chi-dropdown__hover
+  button.chi-button.chi-dropdown__trigger Dropdown component
+  .chi-dropdown__menu
+    a.chi-dropdown__menu-item(href='#') Item 1
+    a.chi-dropdown__menu-item(href='#') Item 2
+    a.chi-dropdown__menu-item(href='#') Item 3
+
+h3 Animate
+p  Triggers can be animated by applying the -animate class.
+.chi-dropdown
+  button#dropdown-animate.chi-button.chi-dropdown__trigger.-animate Animated dropdown trigger
+  .chi-dropdown__menu
+    a.chi-dropdown__menu-item(href='#') Item 1
+    a.chi-dropdown__menu-item(href='#') Item 2
+    a.chi-dropdown__menu-item(href='#') Item 3
+script.
+  chi.dropdown(document.getElementById('dropdown-animate'));
+
+h3 Position
+.example.-mb--3
+  .-p--3.-px-xl--10
+    .chi-grid.-no-gutter.-px-xl--3
+      .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
+        .-p--1
+          .chi-dropdown
+            button#dropdown-top-start.chi-button.chi-dropdown__trigger.-has-active(data-position='top-start') Top start
+            .chi-dropdown__menu(style='width: 15rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(0px, -112px, 0px);', x-placement='top-start')
+              a.chi-dropdown__menu-item(href='#') Item 1
+              a.chi-dropdown__menu-item(href='#') Item 2
+              a.chi-dropdown__menu-item(href='#') Item 3
+        .-p--1
+          .chi-dropdown
+            button#dropdown-top.chi-button.chi-dropdown__trigger.-has-active(data-position='top') Top
+            .chi-dropdown__menu(style='width: 15rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(-83px, -112px, 0px);', x-placement='top')
+              a.chi-dropdown__menu-item(href='#') Item 1
+              a.chi-dropdown__menu-item(href='#') Item 2
+              a.chi-dropdown__menu-item(href='#') Item 3
+        .-p--1
+          .chi-dropdown
+            button#dropdown-top-end.chi-button.chi-dropdown__trigger.-has-active(data-position='top-end') Top end
+            .chi-dropdown__menu(style='width: 15rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(103px, 0px, 0px);', x-placement='top-end')
+              a.chi-dropdown__menu-item(href='#') Item 1
+              a.chi-dropdown__menu-item(href='#') Item 2
+              a.chi-dropdown__menu-item(href='#') Item 3
+      .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-flex--wrap
+        .-p--1.-py-sm--3
+          .chi-dropdown
+            button#dropdown-left-start.chi-button.chi-dropdown__trigger(data-position='left-start') Left start
+            .chi-dropdown__menu(style='width: 15rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(0px, 0px, 0px);', x-placement='left-start')
+              a.chi-dropdown__menu-item(href='#') Item 1
+              a.chi-dropdown__menu-item(href='#') Item 2
+              a.chi-dropdown__menu-item(href='#') Item 3
+        .-p--1.-py-sm--3
+          .chi-dropdown
+            button#dropdown-left.chi-button.chi-dropdown__trigger(data-position='left') Left
+            .chi-dropdown__menu(style='width: 15rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(0px, 15px, 0px);', x-placement='left')
+              a.chi-dropdown__menu-item(href='#') Item 1
+              a.chi-dropdown__menu-item(href='#') Item 2
+              a.chi-dropdown__menu-item(href='#') Item 3
+        .-p--1.-py-sm--3
+          .chi-dropdown
+            button#dropdown-left-end.chi-button.chi-dropdown__trigger(data-position='left-end') Left end
+            .chi-dropdown__menu(style='width: 15rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(0px, 30px, 0px);', x-placement='left-end')
+              a.chi-dropdown__menu-item(href='#') Item 1
+              a.chi-dropdown__menu-item(href='#') Item 2
+              a.chi-dropdown__menu-item(href='#') Item 3
+      .chi-col.-d--none.-w--12.-w-sm--4.-d-sm--flex.-flex-sm--column.-justify-content-sm--center.-align-items-sm--center
+        .-w--75.-text.-text--muted.-text--center.-lh--2 Click buttons to see Dropdown positions
+      .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-align-items-sm--end.-flex--wrap
+        .-p--1.-py-sm--3
+          .chi-dropdown
+            button#dropdown-right-start.chi-button.chi-dropdown__trigger(data-position='right-start') Right start
+            .chi-dropdown__menu(style='width: 15rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(120px, 0px, 0px);', x-placement='right-start')
+              a.chi-dropdown__menu-item(href='#') Item 1
+              a.chi-dropdown__menu-item(href='#') Item 2
+              a.chi-dropdown__menu-item(href='#') Item 3
+        .-p--1.-py-sm--3
+          .chi-dropdown
+            button#dropdown-right.chi-button.chi-dropdown__trigger(data-position='right') Right
+            .chi-dropdown__menu(style='width: 15rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(84px, 15px, 0px);', x-placement='right')
+              a.chi-dropdown__menu-item(href='#') Item 1
+              a.chi-dropdown__menu-item(href='#') Item 2
+              a.chi-dropdown__menu-item(href='#') Item 3
+        .-p--1.-py-sm--3
+          .chi-dropdown
+            button#dropdown-right-end.chi-button.chi-dropdown__trigger(data-position='right-end') Right end
+            .chi-dropdown__menu(style='width: 15rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(113px, 30px, 0px);', x-placement='right-end')
+              a.chi-dropdown__menu-item(href='#') Item 1
+              a.chi-dropdown__menu-item(href='#') Item 2
+              a.chi-dropdown__menu-item(href='#') Item 3
+      .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
+        .-p--1
+          .chi-dropdown
+            button#dropdown-bottom-start.chi-button.chi-dropdown__trigger(data-position='bottom-start') Bottom start
+            .chi-dropdown__menu(style='width: 15rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(0px, 0px, 0px);', x-placement='top-start')
+              a.chi-dropdown__menu-item(href='#') Item 1
+              a.chi-dropdown__menu-item(href='#') Item 2
+              a.chi-dropdown__menu-item(href='#') Item 3
+        .-p--1
+          .chi-dropdown
+            button#dropdown-bottom.chi-button.chi-dropdown__trigger(data-position='bottom') Bottom
+            .chi-dropdown__menu(style='width: 15rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(49px, 0px, 0px);', x-placement='top')
+              a.chi-dropdown__menu-item(href='#') Item 1
+              a.chi-dropdown__menu-item(href='#') Item 2
+              a.chi-dropdown__menu-item(href='#') Item 3
+        .-p--1
+          .chi-dropdown
+            button#dropdown-bottom-end.chi-button.chi-dropdown__trigger(data-position='bottom-end') Bottom end
+            .chi-dropdown__menu(style='width: 15rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(129px, 0px, 0px);', x-placement='top-end')
+              a.chi-dropdown__menu-item(href='#') Item 1
+              a.chi-dropdown__menu-item(href='#') Item 2
+              a.chi-dropdown__menu-item(href='#') Item 3
+script.
+  chi.dropdown(document.querySelectorAll('.chi-dropdown .chi-dropdown__trigger'));
+
+
+h3 Check box
+.chi-dropdown__menu(style='display:block')
+  .chi-dropdown__menu-item
+    .chi-checkbox
+      input#checkbox1.chi-checkbox__input(type='checkbox')
+      label.chi-checkbox__label(for='checkbox1')
+        i.chi-icon.icon-logo-centurylink
+        |         Item 1
+  .chi-dropdown__menu-item
+    .chi-checkbox
+      input#checkbox2.chi-checkbox__input(type='checkbox', disabled='')
+      label.chi-checkbox__label(for='checkbox2')
+        i.chi-icon.icon-logo-centurylink
+        |         Item 2
+  .chi-dropdown__menu-item
+    .chi-checkbox
+      input#checkbox3.chi-checkbox__input(type='checkbox', checked='')
+      label.chi-checkbox__label(for='checkbox3')
+        i.chi-icon.icon-logo-centurylink
+        |         Item 3
+  .chi-dropdown__menu-item
+    .chi-checkbox
+      input#checkbox4.chi-checkbox__input(type='checkbox')
+      label.chi-checkbox__label(for='checkbox4')
+        i.chi-icon.icon-logo-centurylink
+        |         Item 4
+
+h3 Radio Buttons
+.chi-dropdown__menu(style='display:block')
+  fieldset
+    legend.chi-dropdown__menu-item Select an option
+    .chi-dropdown__menu-item
+      .chi-radio
+        input#radio1.chi-radio__input(type='radio', name='radios')
+        label.chi-radio__label(for='radio1') Radio Button 1
+    .chi-dropdown__menu-item
+      .chi-radio
+        input#radio2.chi-radio__input(type='radio', name='radios', disabled='')
+        label.chi-radio__label(for='radio2') Disabled Radio Button 2
+    .chi-dropdown__menu-item
+      .chi-radio
+        input#radio3.chi-radio__input(type='radio', name='radios')
+        label.chi-radio__label(for='radio3') Radio Button 3
+    .chi-dropdown__menu-item
+      .chi-radio
+        input#radio4.chi-radio__input(type='radio', name='radios')
+        label.chi-radio__label(for='radio4') Radio Button 4
+
+h3 Range input
+.chi-dropdown__menu(style='display:block')
+  .chi-dropdown__menu-item
+    span.-text.-mr--2 200GB
+    input.chi-input(type='range', aria-label='Range description')
+    span.-text.-ml--2 5TB
+  
+
+
+h3 Toggle switch
+.chi-dropdown__menu(style='display:block')
+  fieldset
+    legend.chi-dropdown__menu-item Configure options
+    .chi-dropdown__menu-item
+      .chi-form__item
+        label.chi-switch(for='toggle-mail')
+          input#toggle-mail.chi-switch__input(type='checkbox')
+          span.chi-switch__content
+            span.chi-switch__thumb
+          span.chi-switch__label Email notifications
+    .chi-dropdown__menu-item
+      .chi-form__item
+        label.chi-switch(for='toggle-tlf')
+          input#toggle-tlf.chi-switch__input(type='checkbox')
+          span.chi-switch__content
+            span.chi-switch__thumb
+          span.chi-switch__label Phone notifications
+    .chi-dropdown__menu-item
+      .chi-form__item
+        label.chi-switch(for='toggle-app')
+          input#toggle-app.chi-switch__input(type='checkbox')
+          span.chi-switch__content
+            span.chi-switch__thumb
+          span.chi-switch__label App notifications
+
+h3 Plain Text
+p  Use a span tag to include text without rendering as a link
+.chi-dropdown__menu(style='display:block !important')
+  span.chi-dropdown__menu-item Text 1
+  span.chi-dropdown__menu-item Text 2
+  span.chi-dropdown__menu-item Text 3
+  span.chi-dropdown__menu-item Text 4
+
+h3 Truncate long menu-items
+p  Wrap the menu-item content in a div with the class -flex--ellipsis to truncate long strings
+.chi-dropdown__menu(style='width:10rem;display:block')
+  a.chi-dropdown__menu-item(href='#') Item 1
+  a.chi-dropdown__menu-item(href='#') Item 2
+  a.chi-dropdown__menu-item(href='#')
+    .-flex--ellipsis Item 3 with truncated longer text
+  a.chi-dropdown__menu-item(href='#') Item 4
+
+h3 Flexible height
+p  Add the class -h--auto to set menu item height to auto
+.chi-dropdown__menu(style='width:10rem;display:block !important')
+  a.chi-dropdown__menu-item(href='#') Item 1
+  .chi-dropdown__menu-item.-h--auto.-py--1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+  a.chi-dropdown__menu-item(href='#') Item 2
+
+
+
+
+
+
