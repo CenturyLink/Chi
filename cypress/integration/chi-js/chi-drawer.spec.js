@@ -8,7 +8,7 @@ describe('chi-drawer', function() {
       cy.get('#drawer-trigger-1').click();
       cy.get('#drawer-1')
         .should('have.class', '-active')
-        .should('have.class', '-left')
+        .should('have.css', 'left','0px')
         .should('be.visible');
     });
     it('Click on X button closes the Drawer and check for other functionalities', () => {
@@ -27,7 +27,7 @@ describe('chi-drawer', function() {
       cy.get('#drawer-trigger-5').click();
       cy.get('#drawer-5')
         .should('have.class', '-animated')
-        .should('have.class', '-right')
+        .should('have.css', 'right','0px')
         .should('be.visible');
     });
     it('Click on X button closes the Drawer and check for other functionalities', () => {
@@ -43,7 +43,7 @@ describe('chi-drawer', function() {
     it('Click on Drawer trigger opens the Drawer', () => {
       cy.get('#drawer-trigger-7').click();
       cy.get('#drawer-7')
-        .should('have.class', '-top')
+        .should('have.css', 'top','0px')
         .should('be.visible');
     });
     it('Click on X button closes the Drawer and check for other functionalities', () => {
@@ -59,7 +59,7 @@ describe('chi-drawer', function() {
     it('Click on Drawer trigger opens the Drawer', () => {
       cy.get('#drawer-trigger-9').click();
       cy.get('#drawer-9')
-        .should('have.class', '-bottom')
+        .should('have.css', 'bottom','0px')
         .should('be.visible');
     });
     it('Click on X button closes the Drawer and check for other functionalities', () => {
@@ -78,7 +78,7 @@ describe('chi-drawer', function() {
         .parents('div')
         .should('have.class', 'chi-backdrop')
         .get('#drawer-11')
-        .should('have.class', '-bottom')
+        .should('have.css', 'bottom','0px')
         .should('be.visible');
     });
     it('Click on X button closes the Drawer and check for other functionalities', () => {
