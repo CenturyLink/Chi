@@ -396,14 +396,8 @@ $sizes: (
           }
         }
 
-        .chi-data-table__cell {
-          @include respond-to(md) {
-            border-bottom: 0;
-          }
-        }
-
         &-empty {
-          background-color: $color-background-base-darker;
+          border: 0.0625rem solid $color-background-base-darkest;
         }
 
         &.-active {
@@ -424,6 +418,16 @@ $sizes: (
           @include respond-to(md) {
             background-color: $color-background-primary-light;
             display: flex;
+          }
+        }
+      }
+
+      .chi-data-table__row,
+      .chi-data-table__row-child,
+      .chi-data-table__row-grand-child {
+        .chi-data-table__cell {
+          @include respond-to(md) {
+            border-bottom: 0;
           }
         }
       }
@@ -567,6 +571,14 @@ $sizes: (
           &::before {
             display: none;
           }
+
+          &.-bold {
+            font-weight: $font-weight-semi-bold;
+
+            @include respond-to(md) {
+              font-weight: $font-weight-normal;
+            }
+          }
         }
 
         &:not(.-name) {
@@ -585,10 +597,10 @@ $sizes: (
       position: relative;
 
       &::after {
+        color: $color-icon-base;
         content: '\e920';
         font-family: 'chi';
-        font-size: $font-size-xs;
-        font-weight: $font-weight-normal;
+        font-size: $font-size-lg;
         height: 1rem;
         position: absolute;
         right: 1rem;
@@ -656,10 +668,10 @@ $sizes: (
       &-grand-child {
         background-color: $color-background-base-darker;
         font-size: $font-size-xs;
-        padding: 0.75rem 1rem 0.75rem 1.75rem;
+        padding: 0.5rem 1rem 0.5rem 1.75rem;
 
         @include respond-to(md) {
-          background-color: $color-background-primary-lighter;
+          background-color: $color-background-primary-light;
           border-bottom: 0;
           font-size: $font-size-md;
           padding: 0;
@@ -670,11 +682,11 @@ $sizes: (
           padding-left: 2.75rem;
 
           &::before {
-            font-size: 0.625rem;
-            height: 0.875rem;
+            font-size: $font-size-xs;
+            height: 1rem;
             left: 1.75rem;
-            top: 0.75rem;
-            width: 0.625rem;
+            top: 0.4375rem;
+            width: 0.75rem;
           }
 
           @include respond-to(md) {
