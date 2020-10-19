@@ -1,4 +1,39 @@
 # CHANGELOG
+## 3.2.0 (October 20, 2020)
+### Components
+#### Added
+* Added: Vertical-align utility for customizing the vertical alignment of inline and table cell elements.
+* Added: Opacity utility for customizing an elements opacity level.
+* Added: Backstop and Cypress tests for Label component.
+#### Changed
+* Changed: Base button icon color has been changed from $color-text-base (Grey 100) to $color-icon-base (Grey 80).
+* Changed: Toggle switch component no longer displays a margin-top when chi-label is present.
+* Changed: Sidenav component Cypress tests have been improved.
+#### Fixed
+* Fixed: Vertical alignment of Toggle switch and Number input web component has been improved.
+### Documentation
+#### Added
+* Added: Portal templates now include an example for portal themed icon buttons.
+
+## 3.1.1 (October 9, 2020)
+### Components
+#### Changed
+* Changed: Stat component portal theme now includes a min-height.
+* Changed: Badge component now renders in a pill shape to visually differentiate them from buttons.
+* Changed: Badge component now includes a min-width for rendering single characters consistently.
+* Changed: Table striped rows from odd to even for consistency with enterprise portals.
+* Changed: Flex utility overrides now include an !important for greater specificity.
+* Changed: Number input width has been updated for better compatibility with Grid.
+#### Fixed
+* Fixed: Picker group bug which prevented child items from stretching to fill their parent containers vertical space.
+* Fixed: Sidenav cypress test click inconsistency when running tests in cypress GUI.
+* Fixed: Picker group active item rendered an incorrect background-color on hover.
+* Fixed: Number input web component min/max adjustment when user changed value manually twice.
+### Documentation
+#### Added
+* Added: Dropdown JS component now includes documentation for methods.
+* Added: Modal JS component now includes documentation for methods.
+
 ## 3.1.0 (September 22, 2020)
 ### Components
 #### Added
@@ -12,7 +47,6 @@
 ### Documentation
 #### Added
 * Added: Documentation for disabled button state to button component.
-
 
 ## 3.0.0 (September 13, 2020)
 ### Components

@@ -37,6 +37,14 @@
       flex-direction: row;
     }
 
+    .chi-picker-group__content {
+      flex-direction: column;
+
+      @include respond-to(md) {
+        flex-direction: row;
+      }
+    }
+
     input {
       &[type='radio'] {
         &.chi-picker__input {

@@ -254,6 +254,12 @@
   }
 }
 
+.chi-label {
+  + .chi-switch {
+    margin: 0;
+  }
+}
+
 input {
   &[type='checkbox'] {
     &.-toggle,
