@@ -1,4 +1,20 @@
 # CHANGELOG
+## 3.2.0 (October 20, 2020)
+### Components
+#### Added
+* Added: Vertical-align utility for customizing the vertical alignment of inline and table cell elements.
+* Added: Opacity utility for customizing an elements opacity level.
+* Added: Backstop and Cypress tests for Label component.
+#### Changed
+* Changed: Base button icon color has been changed from $color-text-base (Grey 100) to $color-icon-base (Grey 80).
+* Changed: Toggle switch component no longer displays a margin-top when chi-label is present.
+* Changed: Sidenav component Cypress tests have been improved.
+#### Fixed
+* Fixed: Vertical alignment of Toggle switch and Number input web component has been improved.
+### Documentation
+#### Added
+* Added: Portal templates now include an example for portal themed icon buttons.
+
 ## 3.1.1 (October 9, 2020)
 ### Components
 #### Changed
