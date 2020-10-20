@@ -6,7 +6,7 @@ describe('Dropdown', function() {
     describe('Open and closing functionality test for dropdown base', function() {
         it('Dropdown menu should open when dropdown trigger is clicked', () => {  
             cy.get('.chi-dropdown')
-            .find('button#dropdown-1.chi-button.chi-dropdown__trigger')
+            .find('button#dropdown-1')
             .click()
             .wait(550)
             .find('+.chi-dropdown__menu')
