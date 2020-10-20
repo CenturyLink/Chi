@@ -1,0 +1,34 @@
+---
+title: Chi-Tabs component example
+---
+script(src='/js/chi.js')
+
+<h3>Horizontal</h3>
+ul#example-horizontal-base.chi-tabs
+  li.-active
+    a(href='#horizontal-base-1') Active Tab
+  li
+    a(href='#horizontal-base-2') Tab Link
+  li
+    a(href='#horizontal-base-3') Tab Link
+#horizontal-base-1.chi-tabs-panel.-active Tab 1 content
+#horizontal-base-2.chi-tabs-panel Tab 2 content
+#horizontal-base-3.chi-tabs-panel Tab 3 content
+script.
+  chi.tab(document.getElementById('example-horizontal-base'));
+
+<h3>Vertical</h3> 
+ul#example-vertical-base.chi-tabs.-vertical
+  li.-active
+    a(href='#vertical-base-1') Active Tab
+  li
+    a(href='#vertical-base-2') Tab Link
+  li
+    a(href='#vertical-base-3') Tab Link
+#vertical-base-1.chi-tabs-panel.-active Tab 1 content
+#vertical-base-2.chi-tabs-panel Tab 2 content
+#vertical-base-3.chi-tabs-panel Tab 3 content
+
+script.
+  chi.tab(document.getElementById('example-vertical-base'));
+  
