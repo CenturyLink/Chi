@@ -1,6 +1,6 @@
 describe('Dropdown', function() {
     before(() => {
-      cy.visit('http://localhost:8000/tests/js/dropdown.html#');
+      cy.visit('http://localhost:8000/tests/js/dropdown.html');
     });
 
     describe('Open and closing functionality test for dropdown base', function() {
@@ -29,6 +29,7 @@ describe('Dropdown', function() {
             cy.get('#dropdown-2')
             .click()
             .wait(550)
+            .find('+.chi-dropdown__menu')
             .should('be.visible')
             .should('have.class', '-active')
             
@@ -128,86 +129,3 @@ describe('Dropdown', function() {
             .should('have.class', '-active')
         });
     })
-
-    describe('Functionality test for check box', function () {
-        it('Check for selecting check box', () => {
-          cy.get('.chi-dropdown__menu')
-          .find('legend.chi-dropdown__menu-item')
-          .get('.chi-dropdown__menu-item')
-          .find('.chi-checkbox')
-          .find('label.chi-checkbox__label')
-          .click({ multiple: true, force:true })
-          .wait(550)
-        })      
-    });
-
-    describe('Functionality test for radio button', function () {
-        it('Check for radio button on', () => {
-          cy.get('.chi-dropdown__menu')
-          .find('legend.chi-dropdown__menu-item')
-          .get('.chi-dropdown__menu-item')
-          .find('.chi-radio')
-          .find('label.chi-radio__label')
-          .click({ multiple: true, force:true })
-          .wait(550)
-        })      
-    });
-
-    describe('Functionality test for range slider', function () {
-        it('Check for slider', () => {
-          cy.get('.chi-dropdown__menu')
-          .find('.chi-dropdown__menu-item')
-          .get('input.chi-input')    
-          .get('input[type=range]')
-          .invoke('val', 100)
-          .wait(550)
-          .invoke('val', 1)   
-          .wait(550)      
-        })      
-    });
-
-    describe('Functionality test for toggle switch', function () {
-        it('Check for toggle feature switched on', () => {
-          cy.get('.chi-dropdown__menu')
-          .find('legend.chi-dropdown__menu-item')
-          .get('.chi-dropdown__menu-item')
-          .find('.chi-form__item')
-          .find('label.chi-switch')
-          .click({ multiple: true })
-          .wait(550)
-        })
-        it('Check for toggle feature switched off', () => {
-            cy.get('.chi-dropdown__menu')
-            .find('legend.chi-dropdown__menu-item')
-            .get('.chi-dropdown__menu-item')
-            .find('.chi-form__item')
-            .find('label.chi-switch')
-            .click({ multiple: true })
-            .wait(550)
-        })
-    })
-
-    describe('Functionality test for testing plain text', function () {
-        it('Include text without rendering link', () => {
-          cy.get('.chi-dropdown__menu')
-          .find('span.chi-dropdown__menu-item')
-        })
-    })
-
-    describe('Functionality test for truncating long sentences', function () {
-        it('Long sentences in dropdown menu should be truncated', () => {
-          cy.get('.chi-dropdown__menu')
-          .find('a.chi-dropdown__menu-item')
-          .find('.-flex--ellipsis')
-        })
-    })
-
-
-    describe('Functionality test for flexible height', function () {
-        it('Dropdown menu should appear and will automatically fit to the size of its contents ', () => {
-          cy.get('.chi-dropdown__menu')
-          .find('a.chi-dropdown__menu-item')
-          .find('+.-h--auto')
-        })
-    })  
-});
