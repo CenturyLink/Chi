@@ -29,7 +29,7 @@ describe('Dropdown', function() {
             cy.get('#dropdown-2')
             .click()
             .wait(550)
-            .find('+.chi-dropdown__menu')
+            .find('++.chi-dropdown__menu')
             .should('be.visible')
             .should('have.class', '-active')
             
@@ -50,7 +50,6 @@ describe('Dropdown', function() {
             .invoke('show')
             .wait(550)
             .should('be.visible')
-            // .should('have.class', '-active')
           })
 
           it('Dropdown menu should close when dropdown trigger is clicked', () => {  
@@ -85,7 +84,7 @@ describe('Dropdown', function() {
     })
 
     describe('Open and closing functionality test for positioned dropdown', function() {
-        it('Dropdown menu should open', () => {  
+        it('Dropdown menu should open and close at the end of testing', () => {  
             cy.get('.chi-dropdown')
             .find('.chi-dropdown__trigger.-has-active')
             .get('[data-position=top-start]')
@@ -127,5 +126,9 @@ describe('Dropdown', function() {
             .find('+.chi-dropdown__menu')
             .should('be.visible')
             .should('have.class', '-active')
+            .click()
+            .wait(550)
+            .should('be.not.visible')
         });
     })
+  });
