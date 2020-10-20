@@ -1,6 +1,6 @@
 describe('Dropdown', function() {
     before(() => {
-      cy.visit('http://localhost:8000/tests/js/dropdown.html#');
+      cy.visit('http://localhost:8000/tests/js/dropdown.html');
     });
 
     describe('Open and closing functionality test for dropdown base', function() {
