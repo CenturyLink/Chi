@@ -29,6 +29,7 @@ describe('Dropdown', function() {
             cy.get('button#dropdown-2.chi-button.chi-dropdown__trigger')
             .click()
             .wait(550)
+            .find('+.chi-dropdown__menu')
             .should('be.visible')
             .should('have.class', '-active')
             
