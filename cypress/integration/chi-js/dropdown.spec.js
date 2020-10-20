@@ -6,7 +6,7 @@ describe('Dropdown', function() {
     describe('Open and closing functionality test for dropdown base', function() {
         it('Dropdown menu should open when dropdown trigger is clicked', () => {  
             cy.get('.chi-dropdown')
-            .find('button#dropdown-1.chi-button.chi-dropdown__trigger')
+            .find('#dropdown-1')
             .click()
             .wait(550)
             .find('+.chi-dropdown__menu')
@@ -16,7 +16,7 @@ describe('Dropdown', function() {
     
         it('Dropdown menu should close when dropdown trigger is clicked twice', () => {  
             cy.get('.chi-dropdown')
-            .find('button#dropdown-1.chi-button.chi-dropdown__trigger')
+            .find('#dropdown-1')
             .click()
             .wait(550)
             .find('+.chi-dropdown__menu')
@@ -26,7 +26,7 @@ describe('Dropdown', function() {
 
     describe('Open and closing functionality test for dropdown target', function() {
         it('Dropdown menu should open when dropdown trigger is clicked', () => {  
-            cy.get('button#dropdown-2.chi-button.chi-dropdown__trigger')
+            cy.get('#dropdown-2')
             .click()
             .wait(550)
             .should('be.visible')
@@ -35,7 +35,7 @@ describe('Dropdown', function() {
         });
 
         it('Dropdown menu should close when dropdown trigger is clicked', () => {  
-            cy.get('button#dropdown-2.chi-button.chi-dropdown__trigger')
+            cy.get('#dropdown-2')
             .click()
             .wait(550)
         });
@@ -65,7 +65,7 @@ describe('Dropdown', function() {
     describe('Open and closing functionality test for animated dropdown', function() {
         it('Dropdown menu should open when dropdown trigger is clicked', () => {  
             cy.get('.chi-dropdown')
-            .find('button#dropdown-animate.chi-button.chi-dropdown__trigger')
+            .find('#dropdown-animate')
             .click()
             .wait(550)
             .find('+.chi-dropdown__menu')
@@ -75,7 +75,7 @@ describe('Dropdown', function() {
     
         it('Dropdown menu should close when dropdown trigger is clicked twice', () => {  
             cy.get('.chi-dropdown')
-            .find('button#dropdown-animate.chi-button.chi-dropdown__trigger')
+            .find('#dropdown-animate')
             .click()
             .wait(550)
             .find('+.chi-dropdown__menu')
