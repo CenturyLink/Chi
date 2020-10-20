@@ -51,8 +51,14 @@
     </div>
     <h3>Show Drawer</h3>
     <div class="-position--relative -w--100" style="height: 300px;">
-      <button class="chi-button" @click="$refs.openOnClick.show()">Click me to open the Drawer</button>
-      <Drawer class="-position--absolute" :active="false" position="left" ref="openOnClick" :preventAutoHide="true">
+      <button class="chi-button" @click="() => toggleDrawer()">Click me to open the Drawer</button>
+      <Drawer
+        @chiDrawerHide="() => this.drawerActive = false"
+        class="-position--absolute"
+        :active="this.drawerActive"
+        position="left"
+        :preventAutoHide="true"
+        style="top: 50px">
         <div class="-p--2">Drawer content here</div>
       </Drawer>
     </div>
@@ -74,7 +80,13 @@ import Drawer from '../components/drawer/drawer';
     Drawer
   }
 })
+
 export default class DrawerView extends Vue {
+  drawerActive = false;
+
+  toggleDrawer() {
+    this.drawerActive = !this.drawerActive;
+  }
 }
 </script>
 

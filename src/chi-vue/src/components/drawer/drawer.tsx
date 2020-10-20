@@ -1,4 +1,4 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import {
   ACTIVE_CLASS,
   ANIMATED_CLASS,
@@ -30,14 +30,14 @@ export default class Drawer extends Vue {
 
   animation!: ThreeStepsAnimation;
 
-  _animationClasses!: string[];
+  animationClasses!: string[];
 
-  _backdropAnimationClasses!: string[];
+  backdropAnimationClasses!: string[];
 
   constructor() {
     super();
-    this._animationClasses  = [];
-    this._backdropAnimationClasses  = [];
+    this.animationClasses  = [];
+    this.backdropAnimationClasses  = [];
   }
 
   show() {
@@ -45,25 +45,25 @@ export default class Drawer extends Vue {
       this.animation.stop();
     }
 
-    if (this.$data._backdropAnimationClasses.length !== 0 ||
-      !this.$data._animationClasses.includes(ACTIVE_CLASS)) {
+    if (this.backdropAnimationClasses.length !== 0 ||
+      !this.animationClasses.includes(ACTIVE_CLASS)) {
       this.animation = ThreeStepsAnimation.animationFactory(
         () => {
-          this.$data._animationClasses.length = 0;
-          this.$data._animationClasses.push(TRANSITIONING_CLASS);
-          this.$data._backdropAnimationClasses.length = 0;
-          this.$data._backdropAnimationClasses.push(TRANSITIONING_CLASS, CLOSED_CLASS);
+          this.animationClasses.length = 0;
+          this.animationClasses.push(TRANSITIONING_CLASS);
+          this.backdropAnimationClasses.length = 0;
+          this.backdropAnimationClasses.push(TRANSITIONING_CLASS, CLOSED_CLASS);
         },
         () => {
-          this.$data._animationClasses.length = 0;
-          this.$data._animationClasses.push(TRANSITIONING_CLASS, ACTIVE_CLASS);
-          this.$data._backdropAnimationClasses.length = 0;
-          this.$data._backdropAnimationClasses.push(TRANSITIONING_CLASS);
+          this.animationClasses.length = 0;
+          this.animationClasses.push(TRANSITIONING_CLASS, ACTIVE_CLASS);
+          this.backdropAnimationClasses.length = 0;
+          this.backdropAnimationClasses.push(TRANSITIONING_CLASS);
         },
         () => {
-          this.$data._animationClasses.length = 0;
-          this.$data._animationClasses.push(ACTIVE_CLASS);
-          this.$data._backdropAnimationClasses.length = 0;
+          this.animationClasses.length = 0;
+          this.animationClasses.push(ACTIVE_CLASS);
+          this.backdropAnimationClasses.length = 0;
           this.$emit(DRAWER_EVENTS.SHOWN);
         },
         ANIMATION_DURATION.MEDIUM
@@ -78,26 +78,26 @@ export default class Drawer extends Vue {
       this.animation.stop();
     }
 
-    if (!this.$data._backdropAnimationClasses.includes(CLOSED_CLASS) ||
-      this.$data._animationClasses.length !== 0) {
+    if (!this.backdropAnimationClasses.includes(CLOSED_CLASS) ||
+      this.animationClasses.length !== 0) {
       this.animation = ThreeStepsAnimation.animationFactory(
         () => {
-          this.$data._animationClasses.length = 0;
-          this.$data._animationClasses.push(TRANSITIONING_CLASS, ACTIVE_CLASS);
-          this.$data._backdropAnimationClasses.length = 0;
-          this.$data._backdropAnimationClasses.push(TRANSITIONING_CLASS);
+          this.animationClasses.length = 0;
+          this.animationClasses.push(TRANSITIONING_CLASS, ACTIVE_CLASS);
+          this.backdropAnimationClasses.length = 0;
+          this.backdropAnimationClasses.push(TRANSITIONING_CLASS);
         },
         () => {
-          this.$data._animationClasses.length = 0;
-          this.$data._animationClasses.push(TRANSITIONING_CLASS);
-          this.$data._backdropAnimationClasses.length = 0;
-          this.$data._backdropAnimationClasses.push(TRANSITIONING_CLASS, CLOSED_CLASS);
+          this.animationClasses.length = 0;
+          this.animationClasses.push(TRANSITIONING_CLASS);
+          this.backdropAnimationClasses.length = 0;
+          this.backdropAnimationClasses.push(TRANSITIONING_CLASS, CLOSED_CLASS);
         },
         () => {
-          this.$data._animationClasses.length = 0;
-          this.$data._animationClasses.push('');
-          this.$data._backdropAnimationClasses.length = 0;
-          this.$data._backdropAnimationClasses.push(CLOSED_CLASS);
+          this.animationClasses.length = 0;
+          this.animationClasses.push('');
+          this.backdropAnimationClasses.length = 0;
+          this.backdropAnimationClasses.push(CLOSED_CLASS);
           this.$emit(DRAWER_EVENTS.HIDDEN);
         },
         ANIMATION_DURATION.MEDIUM
@@ -107,7 +107,14 @@ export default class Drawer extends Vue {
     this.$emit(DRAWER_EVENTS.HIDE);
   }
 
-  _documentClickHandler = (ev: Event): void => {
+  @Watch('active')
+  activeChange(newValue: boolean, oldValue: boolean) {
+    if (!!newValue !== !!oldValue) {
+      this[newValue ? 'show' : 'hide']()
+    }
+  }
+
+  documentClickHandler = (ev: Event): void => {
     const drawerElement = this.$refs.drawerElement as HTMLElement;
     const clickTarget = ev.target as HTMLElement;
 
@@ -127,18 +134,18 @@ export default class Drawer extends Vue {
   }
 
   beforeMount() {
-    this.$data._animationClasses.length = 0;
-    this.$data._animationClasses.push(this.active ? ACTIVE_CLASS : '');
-    this.$data._backdropAnimationClasses.length = 0;
-    this.$data._backdropAnimationClasses.push(this.active ? '' : CLOSED_CLASS);
+    this.animationClasses.length = 0;
+    this.animationClasses.push(this.active ? ACTIVE_CLASS : '');
+    this.backdropAnimationClasses.length = 0;
+    this.backdropAnimationClasses.push(this.active ? '' : CLOSED_CLASS);
   }
 
   beforeDestroy() {
-    document.removeEventListener('click', this.$data._documentClickHandler);
+    document.removeEventListener('click', this.documentClickHandler);
   }
 
   mounted() {
-    document.addEventListener('click', this.$data._documentClickHandler);
+    document.addEventListener('click', this.documentClickHandler);
   }
 
   render() {
@@ -146,7 +153,7 @@ export default class Drawer extends Vue {
       ${BUTTON_CLASSES.BUTTON}
       -icon
       -close`}
-      onClick={() => this.hide()}
+      onClick={() => this.$emit(DRAWER_EVENTS.HIDE)}
       aria-label="Close">
       <div class={`${BUTTON_CLASSES.CONTENT}`}>
         <i class={`${iconClass} icon-x`}></i>
@@ -160,7 +167,7 @@ export default class Drawer extends Vue {
           ANIMATED_CLASS,
           this.position ? `-${this.position}` : '',
           this.portal ? PORTAL_CLASS : '',
-          this.$data._animationClasses.join(" ")
+          this.animationClasses.join(" ")
         ].filter(cl => cl).join(" ")}
         ref='drawerElement'
         >
@@ -201,7 +208,7 @@ export default class Drawer extends Vue {
         ${BACKDROP_CLASSES.BACKDROP}
         ${ANIMATED_CLASS}
           ${this.backdrop === 'inverse' ? `-${INVERSE_CLASS}` : ''}
-          ${this.$data._backdropAnimationClasses}
+          ${this.backdropAnimationClasses}
         `}>
           <div class={`
             ${BACKDROP_CLASSES.WRAPPER}
