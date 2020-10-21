@@ -11,13 +11,13 @@ button#modal-trigger-1.chi-button.chi-modal__trigger(data-target='#modal-1')
     section#modal-1.chi-modal(role='dialog', aria-label='Modal description', aria-modal='true')
       header.chi-modal__header
         h2.chi-modal__title Modal Title
-        button.chi-button.-icon.-close(data-dismiss='modal', aria-label='Close', data-cy='close')
+        button.chi-button.-icon.-close(data-dismiss='modal', aria-label='Close')
           .chi-button__content
             i.chi-icon.icon-x
       .chi-modal__content
         p.-text.-m--0 Modal content
       footer.chi-modal__footer
-        button.chi-button(data-dismiss='modal', data-cy='cancel') Cancel
+        button.chi-button#modal-1-cancel(data-dismiss='modal') Cancel
         button.chi-button.-primary Save
 
 h3 Scrollable
