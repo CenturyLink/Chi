@@ -585,7 +585,7 @@ $sizes: (
           }
 
           + .-name {
-            margin-top: 0.25rem;
+            margin-top: 0.5rem;
 
             @include respond-to(md) {
               margin-top: 0;
@@ -680,12 +680,14 @@ $sizes: (
       &-grand-child {
         background-color: $color-background-base-darker;
         font-size: $font-size-xs;
+        line-height: 0.875rem;
         padding: 0.75rem 1rem 0.75rem 3rem;
 
         @include respond-to(md) {
           background-color: $color-background-primary-light;
           border-bottom: 0;
           font-size: $font-size-md;
+          line-height: $line-height-sm;
           padding: 0;
         }
 
