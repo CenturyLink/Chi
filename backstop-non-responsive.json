@@ -12,6 +12,28 @@
   "onReadyScript": "chromy/onReady.js",
   "scenarios": [
     {
+      "label": "accordion",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/accordion.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        "test-accordion-base",
+        "test-accordion-portal",
+        "test-accordion-sizes"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "activity",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/activity.html",

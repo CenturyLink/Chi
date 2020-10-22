@@ -1,0 +1,252 @@
+h2 Examples
+p.-text To render accordion, use the class <code>chi-accordion</code>.
+
+h3 Base
+.example.-mb--3#example1
+  .-p--3.-p-lg--6
+    .chi-accordion
+      .chi-accordion__header
+        i.chi-icon.icon-chevron-down
+        .chi-accordion__title 
+          | Accordion 1
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+
+    .chi-accordion.-expanded
+      .chi-accordion__header
+        i.chi-icon.icon-chevron-down
+        .chi-accordion__title
+          | Accordion 2
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+
+    .chi-accordion
+      .chi-accordion__header
+        i.chi-icon.icon-chevron-down
+        .chi-accordion__title
+          | Accordion 3
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+
+    .chi-accordion
+      .chi-accordion__header
+        i.chi-icon.icon-chevron-down
+        .chi-accordion__title
+          | Accordion 4
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+  .example-tabs.-pl--2
+    ul#chi-tabs-e1.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-e1-web') Web Component
+      li.-active
+        a(href='#chi-tabs-e1-html') HTML Blueprint
+  #chi-tabs-e1-web.chi-tabs-panel
+  #chi-tabs-e1-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-accordion">
+        <div class="chi-accordion__header">
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion 1</div>
+        </div>
+        <div class="chi-accordion__content">
+          <p class="chi-accordion__text">Content goes here</p>
+        </div>
+      </div>
+      <div class="chi-accordion -expanded">
+        <div class="chi-accordion__header">
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion 2</div>
+        </div>
+        <div class="chi-accordion__content">
+          <p class="chi-accordion__text">Content goes here</p>
+        </div>
+      </div>
+      <div class="chi-accordion">
+        <div class="chi-accordion__header">
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion 3</div>
+        </div>
+        <div class="chi-accordion__content">
+          <p class="chi-accordion__text">Content goes here</p>
+        </div>
+      </div>
+      <div class="chi-accordion">
+        <div class="chi-accordion__header">
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion 4</div>
+        </div>
+        <div class="chi-accordion__content">
+          <p class="chi-accordion__text">Content goes here</p>
+        </div>
+      </div>
+
+h3 Portal
+.example.-mb--3#example2
+  .-p--3.-p-lg--6
+    .chi-accordion.-portal
+      .chi-accordion__header
+        .chi-accordion__title
+          | Accordion 1
+        i.chi-icon.icon-chevron-down
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+
+    .chi-accordion.-portal.-expanded
+      .chi-accordion__header
+        .chi-accordion__title
+          | Accordion 2
+        i.chi-icon.icon-chevron-down
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+
+    .chi-accordion.-portal
+      .chi-accordion__header
+        .chi-accordion__title
+          | Accordion 3
+        i.chi-icon.icon-chevron-down
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+
+    .chi-accordion.-portal
+      .chi-accordion__header
+        .chi-accordion__title
+          | Accordion 4
+        i.chi-icon.icon-chevron-down
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+  .example-tabs.-pl--2
+    ul#chi-tabs-e2.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-e2-web') Web Component
+      li.-active
+        a(href='#chi-tabs-e2-html') HTML Blueprint
+  #chi-tabs-e2-web.chi-tabs-panel
+  #chi-tabs-e2-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-accordion -portal">
+        <div class="chi-accordion__header">
+          <div class="chi-accordion__title">Accordion 1</div>
+          <i class="chi-icon icon-chevron-down"></i>
+        </div>
+        <div class="chi-accordion__content">
+          <p class="chi-accordion__text">Content goes here</p>
+        </div>
+      </div>
+      <div class="chi-accordion -portal -expanded">
+        <div class="chi-accordion__header">
+          <div class="chi-accordion__title">Accordion 2</div>
+          <i class="chi-icon icon-chevron-down"></i>
+        </div>
+        <div class="chi-accordion__content">
+          <p class="chi-accordion__text">Content goes here</p>
+        </div>
+      </div>
+      <div class="chi-accordion -portal">
+        <div class="chi-accordion__header">
+          <div class="chi-accordion__title">Accordion 3</div>
+          <i class="chi-icon icon-chevron-down"></i>
+        </div>
+        <div class="chi-accordion__content">
+          <p class="chi-accordion__text">Content goes here</p>
+        </div>
+      </div>
+      <div class="chi-accordion -portal">
+        <div class="chi-accordion__header">
+          <div class="chi-accordion__title">Accordion 4</div>
+          <i class="chi-icon icon-chevron-down"></i>
+        </div>
+        <div class="chi-accordion__content">
+          <p class="chi-accordion__text">Content goes here</p>
+        </div>
+      </div>
+
+h3 Sizes
+p.-text
+  | Accordion supports the following sizes: <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
+.example.-mb--3#example3
+  .-p--3.-p-lg--6
+    each size in ['sm', 'md', 'lg', 'xl']
+      p.-text--bold.-pl--2= size
+        div(class=`chi-accordion -${size}`)
+          .chi-accordion__header
+            i.chi-icon.icon-chevron-down
+            .chi-accordion__title
+              | Accordion
+          .chi-accordion__content
+            p.chi-accordion__text Content goes here
+  .example-tabs.-pl--2
+    ul#chi-tabs-e3.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-e3-web') Web Component
+      li.-active
+        a(href='#chi-tabs-e3-html') HTML Blueprint
+  #chi-tabs-e3-web.chi-tabs-panel
+  #chi-tabs-e3-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <!-- sm -->
+      <div class="chi-accordion -sm">
+        <div class="chi-accordion__header">
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion</div>
+        </div>
+        <div class="chi-accordion__content">
+          <p class="chi-accordion__text">Content goes here</p>
+        </div>
+      </div>
+
+      <!-- md -->
+      <div class="chi-accordion -md">
+        <div class="chi-accordion__header">
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion</div>
+        </div>
+        <div class="chi-accordion__content">
+          <p class="chi-accordion__text">Content goes here</p>
+        </div>
+      </div>
+
+      <!-- lg -->
+      <div class="chi-accordion -lg">
+        <div class="chi-accordion__header">
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion</div>
+        </div>
+        <div class="chi-accordion__content">
+          <p class="chi-accordion__text">Content goes here</p>
+        </div>
+      </div>
+
+      <!-- xl -->
+      <div class="chi-accordion -xl">
+        <div class="chi-accordion__header">
+          <i class="chi-icon icon-chevron-down"></i>
+          <div class="chi-accordion__title">Accordion</div>
+        </div>
+        <div class="chi-accordion__content">
+          <p class="chi-accordion__text">Content goes here</p>
+        </div>
+      </div>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+    }
+  );

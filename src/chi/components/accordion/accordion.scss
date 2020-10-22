@@ -1,0 +1,127 @@
+@import '_variables';
+@import '_mixins';
+
+$sizes: (
+  sm: (
+    font-size: $font-size-sm,
+    line-height: 1rem,
+    padding: 0.53125rem 1rem,
+  ),
+  md: (
+    font-size: $font-size-md,
+    line-height: 1.25rem,
+    padding: 0.625rem 1rem,
+  ),
+  lg: (
+    font-size: $font-size-lg,
+    line-height: 1.5rem,
+    padding: 0.75rem 1rem,
+  ),
+  xl: (
+    font-size: $font-size-xl,
+    line-height: 1.75rem,
+    padding: 0.875rem 1rem,
+  )
+);
+
+$icon-sizes: (
+  sm: 0.75rem,
+  md: 1rem,
+  lg: 1rem,
+  xl: 1rem,
+);
+
+.chi-accordion {
+  background-color: $color-background-base;
+  border-bottom: 0.0625rem solid $color-border-base-dark;
+
+  @each $type in map-keys($sizes) {
+    &.-#{$type} {
+      font-size: map-get(map-get($sizes, $type), font-size);
+      line-height: map-get(map-get($sizes, $type), line-height);
+    
+      .chi-accordion__header {
+        font-size: map-get(map-get($sizes, $type), font-size);
+        line-height: map-get(map-get($sizes, $type), line-height);
+        padding: map-get(map-get($sizes, $type), padding);
+
+        .chi-accordion__title {
+          font-size: map-get(map-get($sizes, $type), font-size);
+          line-height: map-get(map-get($sizes, $type), line-height);
+        }
+      }
+    }
+  }
+
+  @each $type in map-keys($icon-sizes) {
+    &.-#{$type} {
+
+      & .chi-icon {
+        font-size: map-get($icon-sizes, $type);
+        height: map-get($icon-sizes, $type);
+        line-height: map-get($icon-sizes, $type);
+        width: map-get($icon-sizes, $type);
+      }
+    }
+  }
+
+  &__header {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    padding: 0.625rem 1rem;
+
+    .chi-icon {
+      + .chi-accordion__title {
+        margin-left: 1rem;
+      }
+    }
+
+    .chi-accordion__title {
+      align-items: center;
+      color: $color-text-base;
+      display: flex;
+      flex-grow: 1;
+      font-size: $font-size-md;
+      font-weight: $font-weight-semi-bold;
+      line-height: 1.25rem;
+
+      + .chi-icon {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  &__content {
+    display: none;
+    padding: 1rem;
+    padding-top: 0;
+  }
+
+  &.-expanded {
+    .chi-accordion__content {
+      display: block;
+    }
+
+    .chi-accordion__header {
+      .icon-chevron-down {
+        transform: rotate(180deg);
+        transition: transform 0.2s ease-in-out;
+      }
+    }
+  }
+
+  &.-portal {
+    border-bottom: 0;
+    margin-bottom: 0.5rem;
+
+    &.-expanded {
+      background-color: $color-background-base-dark;
+      margin-bottom: 0.5rem;
+    }
+
+    .chi-accordion__header {
+      background-color: $color-background-base-darkest;
+    }
+  }
+}
