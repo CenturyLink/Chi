@@ -98,6 +98,10 @@ $sizes: (
         word-break: break-word;
       }
 
+      .-text--truncate {
+        cursor: pointer;
+      }
+
       &::before {
         content: attr(data-label);
         display: block;
@@ -436,7 +440,7 @@ $sizes: (
     .chi-data-table__footer {
       @include respond-to(md) {
         background-color: $color-background-base-darker;
-        padding: 0.25rem 0;
+        padding: 0.5rem 0.25rem;
 
         .chi-pagination__content {
           .chi-pagination__center {
@@ -579,6 +583,14 @@ $sizes: (
               font-weight: $font-weight-normal;
             }
           }
+
+          + .-name {
+            margin-top: 0.25rem;
+
+            @include respond-to(md) {
+              margin-top: 0;
+            }
+          }
         }
 
         &:not(.-name) {
@@ -639,7 +651,7 @@ $sizes: (
       background-color: $color-background-base-darker;
       border-bottom: 0;
       margin-top: 0.5rem;
-      padding: 1rem 1.75rem 1rem 1rem;
+      padding: 1rem 3rem 1rem 1rem;
 
       @include respond-to(md) {
         background-color: transparent;
@@ -649,12 +661,12 @@ $sizes: (
 
       &.-collapsed,
       &.-expanded {
-        padding-left: 1.75rem;
+        padding-left: 3rem;
 
         &::before {
           font-size: $font-size-xs;
           height: 1rem;
-          left: 0.5rem;
+          left: 1rem;
           top: 1rem;
           width: 0.75rem;
         }
@@ -668,7 +680,7 @@ $sizes: (
       &-grand-child {
         background-color: $color-background-base-darker;
         font-size: $font-size-xs;
-        padding: 0.5rem 1rem 0.5rem 1.75rem;
+        padding: 0.75rem 1rem 0.75rem 3rem;
 
         @include respond-to(md) {
           background-color: $color-background-primary-light;
@@ -679,13 +691,13 @@ $sizes: (
 
         &.-collapsed,
         &.-expanded {
-          padding-left: 2.75rem;
+          padding-left: 5rem;
 
           &::before {
             font-size: $font-size-xs;
             height: 1rem;
-            left: 1.75rem;
-            top: 0.4375rem;
+            left: 3rem;
+            top: 0.7rem;
             width: 0.75rem;
           }
 
@@ -696,7 +708,7 @@ $sizes: (
       }
 
       &-grand-child {
-        padding-left: 2.75rem;
+        padding-left: 5rem;
 
         @include respond-to(md) {
           padding-left: 0;
