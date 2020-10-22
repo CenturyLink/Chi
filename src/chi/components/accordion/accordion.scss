@@ -39,8 +39,8 @@ $icon-sizes: (
     &.-#{$type} {
       font-size: map-get(map-get($sizes, $type), font-size);
       line-height: map-get(map-get($sizes, $type), line-height);
-    
-      .chi-accordion__header {
+
+      .chi-accordion__trigger {
         font-size: map-get(map-get($sizes, $type), font-size);
         line-height: map-get(map-get($sizes, $type), line-height);
         padding: map-get(map-get($sizes, $type), padding);
@@ -65,11 +65,14 @@ $icon-sizes: (
     }
   }
 
-  &__header {
+  &__trigger {
     align-items: center;
+    background-color: transparent;
+    border: 0;
     cursor: pointer;
     display: flex;
     padding: 0.625rem 1rem;
+    width: 100%;
 
     .chi-icon {
       + .chi-accordion__title {
@@ -90,20 +93,30 @@ $icon-sizes: (
         margin-left: 1rem;
       }
     }
+
+    .icon-chevron-down {
+      transition-duration: 0.2s;
+    }
   }
 
   &__content {
     display: none;
-    padding: 1rem;
+    overflow: hidden;
+    padding: 0 1rem;
     padding-top: 0;
+    transition: height 0.075s ease-out;
+
+    &.-transitioning {
+      display: block;
+    }
   }
 
   &.-expanded {
-    .chi-accordion__content {
+    & > .chi-accordion__content {
       display: block;
     }
 
-    .chi-accordion__header {
+    & > .chi-accordion__trigger {
       .icon-chevron-down {
         transform: rotate(180deg);
         transition: transform 0.2s ease-in-out;
@@ -113,15 +126,17 @@ $icon-sizes: (
 
   &.-portal {
     border-bottom: 0;
-    margin-bottom: 0.5rem;
 
     &.-expanded {
       background-color: $color-background-base-dark;
-      margin-bottom: 0.5rem;
     }
 
-    .chi-accordion__header {
+    .chi-accordion__trigger {
       background-color: $color-background-base-darkest;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
     }
   }
 }
