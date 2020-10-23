@@ -26,7 +26,7 @@
     "@babel/register": "7.0.0",
     "acorn": "7.1.1",
     "autoprefixer": "9.4.9",
-    "babel-loader": "8.0.5",
+    "babel-loader": "8.1.0",
     "backstopjs": "3.8.8",
     "browser-sync": "2.26.3",
     "cssnano": "4.1.10",
@@ -55,6 +55,7 @@
     "metalsmith-collections": "0.9.0",
     "metalsmith-filenames": "1.0.0",
     "metalsmith-headings": "0.2.0",
+    "metalsmith-ignore": "1.0.0",
     "metalsmith-in-place": "4.2.0",
     "metalsmith-inline-source": "1.0.6",
     "metalsmith-layouts": "2.3.0",
@@ -63,7 +64,6 @@
     "metalsmith-redirect": "2.1.0",
     "metalsmith-rename": "1.0.0",
     "metalsmith-rootpath": "1.0.4",
-    "metalsmith-ignore": "1.0.0",
     "node-sass": "4.14.1",
     "normalize.css": "8.0.1",
     "postcss-svg": "3.0.0",
@@ -81,6 +81,7 @@
     "cypress": "3.3.1",
     "dayjs": "1.8.31",
     "gulp-run-command": "0.0.10",
+    "gulp-zip": "5.0.2",
     "popper.js": "1.14.7"
   }
 }

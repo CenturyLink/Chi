@@ -1,5 +1,6 @@
 files:
   include: '**/*.scss'
+  exclide: 'src/boilerplates/**/*'
 options:
   formatter: stylish
 rules:
