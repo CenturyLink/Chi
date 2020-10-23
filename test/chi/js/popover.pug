@@ -1,0 +1,51 @@
+---
+title: Popover
+---
+script(src='/js/chi.js')
+
+- var moreSides = ["top", "top-start", "top-end", "right", "right-start", "right-end", "bottom", "bottom-start", "bottom-end", "left", "left-start", "left-end"];
+
+button#popover-1b.chi-button.popover-btn(data-target='#popover-in-html',data-cy='show-popover') Popover
+
+section#popover-in-html.chi-popover(aria-modal='true', role='dialog', aria-label='Popover title')
+  header.chi-popover__header
+    h2.chi-popover__title Popover title
+  .chi-popover__content
+    p.chi-popover__text Popover content
+
+each side in moreSides
+  div(class=`test-more-${side} -position--relative`,data-cy=`test-more-${side}`)
+    button.chi-button.popover-btn(data-position=`${side}`, data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover Content.</p></div>')=`${side} popover`
+
+.parent(data-cy='auto-hide')
+  button#popover-6.chi-button(data-cy='popover-6',data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Click outside. I will disappear!</p></div>') Auto hide
+  button#popover-7.chi-button(data-cy='popover-7',data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Click outside. I will stay!</p></div>') No auto hide
+
+.toggle-div
+  button#show-popover-3.chi-button(data-cy='show-popover-3') Show
+  button#hide-popover-3.chi-button(data-cy='hide-popover-3') Hide
+  button#toggle-popover-3.chi-button(data-cy='toggle-popover-3') Toggle
+  button#popover-3.chi-button(data-popover-content='<div class="chi-popover__content">Foo</div>') Popover
+
+button#popover-dynamic.chi-button.popover-btn(data-popover-content='<h4>This is data-popover-content content</h4>', data-cy='dynamic-content') Popover
+script.
+  chi.popover(document.getElementsByClassName('popover-btn'));
+  chi.popover(document.getElementById('popover-6'),{
+      preventAutoHide: false
+  });
+  chi.popover(document.getElementById('popover-7'),{
+      preventAutoHide: true
+  });
+  var popover = chi.popover(document.getElementById('popover-3'), {
+      trigger: 'manual',
+      preventAutoHide: true
+  });
+  document.getElementById('show-popover-3').addEventListener('click', function(e) {
+    popover.show()
+  });
+  document.getElementById('hide-popover-3').addEventListener('click', function(e) {
+    popover.hide()
+  });
+  document.getElementById('toggle-popover-3').addEventListener('click', function(e) {
+    popover.toggle()
+  });

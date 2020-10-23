@@ -107,7 +107,7 @@ p.-text
 p.-text.-mb--3
   | After placing the files in your header, you are now ready to use the Web Components described in this documentation.
 
-.chi-expansion-panel.-web-components.-pb--5
+.chi-expansion-panel.-web-components
   .chi-epanel.-no-step(data-chi-epanel-group="web-component-details")
     .chi-epanel__header
       .chi-epanel__title.-w--100(data-chi-epanel-action="toggle")
@@ -177,6 +177,81 @@ p.-text.-mb--3
                     document.getElementById("drawer").hide();   // This sets the active property to false
                     document.getElementById("drawer").toggle(); // This toggles the state of the active property
                   </script>
+
+h2.-text--h2.-mt--3 Framework specific boilerplates
+p.-text
+  | The boilerplates include:
+table.chi-table.-bordered.-text--center.-mb--5
+  thead
+    tr
+      th.-text--center
+        .-sr--only Framework
+      th.-text--center chi.css
+      th.-text--center chi.js
+      th.-text--center Web components
+      th.-text--center Favicon
+      th.-text--center Download
+  tbody
+    tr
+      td.-text--bold Vue
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        a.chi-button(href='/boilerplates/chi-vue-boilerplate.zip')
+          .chi-button__content
+            i.chi-icon.icon-circle-arrow-down-outline
+            span Download
+    tr
+      td.-text--bold Stencil
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        a.chi-button(href='/boilerplates/chi-stencil-boilerplate.zip')
+          .chi-button__content
+            i.chi-icon.icon-circle-arrow-down-outline
+            span Download
+    tr
+      td.-text--bold Angular
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        a.chi-button(href='/boilerplates/chi-angular-boilerplate.zip')
+          .chi-button__content
+            i.chi-icon.icon-circle-arrow-down-outline
+            span Download
+    tr
+      td.-text--bold React
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        i.chi-icon.icon-check.-icon--success
+      td
+        a.chi-button(href='/boilerplates/chi-react-boilerplate.zip')
+          .chi-button__content
+            i.chi-icon.icon-circle-arrow-down-outline
+            span Download
 
 script.
   chi.tab(document.getElementById('chi-js-tabs'));
