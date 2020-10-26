@@ -2,6 +2,7 @@
 @import '_mixins';
 
 .chi-checkbox {
+  display: flex;
   line-height: $line-height;
   position: relative;
 
@@ -86,6 +87,31 @@ input {
         &.-hover {
           &::after {
             transform: scale(1);
+          }
+        }
+
+        &.-danger {
+          color: $color-text-base;
+
+          &::before {
+            border-color: $color-border-danger;
+          }
+        }
+      }
+
+      &.-indeterminate {
+        & + label {
+          &::before {
+            background-color: $color-background-primary;
+            border-color: $color-border-primary;
+          }
+
+          &::after {
+            background: $color-background-white;
+            height: 0.125rem;
+            top: 0.5625rem !important;
+            transform: scale(1);
+            width: 0.625rem;
           }
         }
       }

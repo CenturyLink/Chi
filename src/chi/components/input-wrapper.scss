@@ -23,6 +23,13 @@ $border: 0.0625rem;
     & label {
       margin-bottom: 0;
     }
+
+    chi-label,
+    .chi-label {
+      &:not(:last-child) {
+        padding-right: 1rem;
+      }
+    }
   }
 
   &.-inline {
@@ -66,8 +73,39 @@ $border: 0.0625rem;
       margin-bottom: 0;
     }
 
-    .chi-icon {
+    > .chi-icon {
       margin-left: 0.5rem;
+    }
+  }
+
+  .chi-label__help {
+    align-items: center;
+    display: flex;
+    margin-left: 0.375rem;
+
+    .chi-button {
+      padding: 0 !important;
+
+      &.-flat {
+        &.-icon {
+          background: none !important;
+          border: 0;
+
+          &.-sm {
+            height: 0.75rem;
+          }
+
+          .chi-icon {
+            color: $color-icon-muted-dark;
+          }
+
+          &:hover {
+            .chi-icon {
+              color: $color-icon-primary;
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -1,14 +1,12 @@
 h2 Examples
-p.-text
-  | To render a text input, apply the class <code>chi-input</code> to an <code>input type="text"</code>,
-  | <code>input type="password"</code>, <code>input type="email"</code>, etc.
-
 h3 Base
 .example.-mb--3
   .-p--3
-    .chi-form__item(style="max-width:20rem")
-      chi-label(for="example__base") Label
-      chi-text-input(id="example__base" placeholder="Placeholder")
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-label(for="example__base") Label
+          chi-text-input(id="example__base")
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
       li.-active
@@ -19,21 +17,27 @@ h3 Base
     :code(lang="html")
       <div class="chi-form__item">
         <chi-label for="example__base">Label</chi-label>
-        <chi-text-input id="example__base" placeholder="Placeholder"></chi-text-input>
+        <chi-text-input id="example__base"></chi-text-input>
       </div>
   .chi-tabs-panel#html-base
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="example__base">Label</label>
-        <input type="text" class="chi-input" placeholder="Placeholder" id="example__base">
+        <input type="text" class="chi-input" id="example__base">
       </div>
 
 h3 Disabled
+p.-text
+  | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
+  | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
+  | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
 .example.-mb--3
   .-p--3
-    .chi-form__item(style="max-width:20rem")
-      chi-label(for="example__disabled") Label
-      chi-text-input(id="example__disabled" placeholder="Placeholder" disabled)
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-label(for="example__disabled") Label
+          chi-text-input(id="example__disabled" value="Sample Text" disabled)
   .example-tabs.-pl--2
     ul.chi-tabs#example-disabled
       li.-active
@@ -44,61 +48,173 @@ h3 Disabled
     :code(lang="html")
       <div class="chi-form__item">
         <chi-label for="example__disabled">Label</chi-label>
-        <chi-text-input id="example__disabled" placeholder="Placeholder" disabled></chi-text-input>
+        <chi-text-input id="example__disabled" value="Sample Text" disabled></chi-text-input>
       </div>
   .chi-tabs-panel#html-disabled
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="example__disabled">Label</label>
-        <input type="text" class="chi-input" value="Sample Text" id="example__disabled" disabled>
+        <input type="text" class="chi-input" id="example__disabled" value="Sample Text" disabled>
       </div>
 
-h3 Invalid
-p.-text Text inputs support Chi's semantic class modifier <code>-danger</code> for indicating an invalid input.
+h3 Readonly
+p.-text
+  | Use the <code>readonly</code> boolean attribute to prevent users from changing an input value.
+  | Unlike disabled inputs, readonly inputs are submitted with the form and can still receive browsing
+  | events such as mouse clicks and focus.
+  | <strong>Note:</strong> The required attribute can not be used on inputs with a readonly attribute specified.
 .example.-mb--3
   .-p--3
-    .chi-form__item(style="max-width:20rem")
-      chi-label(for="example__danger") Label
-      chi-text-input(
-        id="example__danger"
-        state="danger"
-        icon-right='circle-warning'
-        icon-right-color='danger'
-        value="Sample Text"
-        )
-      .chi-label.-status.-danger This is an invalid label
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-label(for="example__readonly") Label
+          chi-text-input(id="example__readonly" value="Sample Text" readonly)
   .example-tabs.-pl--2
-    ul.chi-tabs#example-invalid
+    ul.chi-tabs#example-readonly
       li.-active
-        a(href=`#webcomponent-invalid`) Web Component
+        a(href=`#webcomponent-readonly`) Web Component
       li
-        a(href=`#html-invalid`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-invalid
+        a(href=`#html-readonly`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-readonly
     :code(lang="html")
       <div class="chi-form__item">
-        <chi-label for="example__danger">Label</chi-label>
-        <chi-text-input id="example__danger" state="danger" icon-right="circle-warning" icon-right-color="danger" value="Sample Text"></chi-text-input>
-        <div class="chi-label -status -danger">This is an invalid label</div>
+        <chi-label for="example__readonly">Label</chi-label>
+        <chi-text-input id="example__readonly" value="Sample Text" readonly></chi-text-input>
       </div>
-  .chi-tabs-panel#html-invalid
+  .chi-tabs-panel#html-readonly
     :code(lang="html")
       <div class="chi-form__item">
-        <label class="chi-label" for="example__danger">Label</label>
-        <div class="chi-input__wrapper -icon--right">
-          <input type="text" class="chi-input -danger" value="Sample Text" id="example__danger">
-          <i class="chi-icon icon-circle-warning -icon--danger"></i>
-        </div>
-        <div class="chi-label -status -danger">This is an invalid label</div>
+        <label class="chi-label" for="example__readonly">Label</label>
+        <input type="text" class="chi-input" id="example__readonly" value="Sample Text" readonly>
       </div>
 
-h3 Label with icon
+h3 Placeholder
+p.-text
+  | Use the <code>placeholder</code> attribute to provide users with an example of the type of data
+  | that can be entered into an input. <strong>Note:</strong> Placeholder text is not persistent and visually
+  | disappears when a value is entered.
 .example.-mb--3
   .-p--3
-    .chi-form__item(style="max-width:20rem")
-      .chi-label__wrapper
-        chi-label(for='example__label-with-icon') Label
-        chi-icon(icon='circle-info-outline' color='muted')
-      chi-text-input(id='example__label-with-icon', placeholder="Placeholder")
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-label(for="example__placeholder") Label
+          chi-text-input(id="example__placeholder" placeholder="Placeholder")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-placeholder
+      li.-active
+        a(href=`#webcomponent-placeholder`) Web Component
+      li
+        a(href=`#html-placeholder`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-placeholder
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-label for="example__placeholder">Label</chi-label>
+        <chi-text-input id="example__placeholder" placeholder="Placeholder"></chi-text-input>
+      </div>
+  .chi-tabs-panel#html-placeholder
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__placeholder">Label</label>
+        <input type="text" class="chi-input" id="example__placeholder" placeholder="Placeholder">
+      </div>
+
+h3 Required
+p.-text
+  | Use the <code>required</code> boolean attribute to indicate which inputs must be completed before submitting a form.
+  | This is useful for capturing important information and reducing the risk of form errors.
+  | To render a required input, apply the <code>required</code> attribute to the input. It is also
+  | encouraged but not mandatory to apply a <code>required</code> attribute to the corresponding label of the input which
+  | will automatically render a red asterisk. <strong>Note:</strong> For HTML Blueprint implementations,
+  | the <code>required</code> attribute is not supported on the label. Please use the alternate method
+  | specified below for rendering a red asterisk within the label. 
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-label(for="example__required" required) Label
+          chi-text-input(id="example__required" required)
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-required
+      li.-active
+        a(href=`#webcomponent-required`) Web Component
+      li
+        a(href=`#html-required`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-required
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-label for="example__required" required>Label</chi-label>
+        <chi-text-input id="example__required" required></chi-text-input>
+      </div>
+  .chi-tabs-panel#html-required
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__required">
+          Label
+          <abbr class="chi-label__required" title="Required field">*</abbr>
+        </label>
+        <input type="text" class="chi-input" id="example__required" required>
+      </div>
+
+h3 Optional
+p.-text
+  | When the vast majority of inputs in a form are required, <code>optional</code> can be used to help
+  | emphasize the few that are not. This is useful for inputs that are not relevant to all users, such as an
+  | Address Line 2 text input in a Billing or Shipping address form. If the user does not have an apartment,
+  | suite, or unit number, applying <code>optional</code> to <code>chi-label</code> will help convey the labels
+  | corresponding input is not required and can be skipped. <strong>Note:</strong> For HTML Blueprint implementations,
+  | the <code>optional</code> boolean attribute is not supported on the label. Please use the alternate method
+  | specified below for rendering optional text within the label. 
+
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-label(for="example__optional" optional) Label
+          chi-text-input(id="example__optional")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-optional
+      li.-active
+        a(href=`#webcomponent-optional`) Web Component
+      li
+        a(href=`#html-optional`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-optional
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-label for="example__optional" optional>Label</chi-label>
+        <chi-text-input id="example__optional"></chi-text-input>
+      </div>
+  .chi-tabs-panel#html-optional
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__optional">
+          Label
+          <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
+        </label>
+        <input type="text" class="chi-input" id="example__optional">
+      </div>
+
+h3 Help
+p.-text
+  | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
+  | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
+
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          .chi-label__wrapper
+            chi-label(for='example__label-with-icon') Label
+            .chi-label__help
+              chi-button(id='example__help-button' type='icon' size='sm' variant='flat' alternative-text="Help")
+                chi-icon(icon='circle-info-outline')
+              chi-popover(id='example__help-popover' position='top' variant='text' arrow reference='#example__help-button')
+                | Helpful information goes here.
+          chi-text-input(id='example__label-with-icon')
   .example-tabs.-pl--2
     ul.chi-tabs#example-label-icon
       li.-active
@@ -110,26 +226,134 @@ h3 Label with icon
       <div class="chi-form__item">
         <div class="chi-label__wrapper">
           <chi-label for="example__label-with-icon">Label</chi-label>
-          <chi-icon icon="circle-info-outline" color="muted"></chi-icon>
+          <div class="chi-label__help">
+            <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help">
+              <chi-icon icon="circle-info-outline"></chi-icon>
+            </chi-button>
+            <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button">
+              Helpful information goes here.
+            </chi-popover>
+          </div>
         </div>
-        <chi-text-input id="example__label-with-icon" placeholder="Placeholder"></chi-text-input>
+        <chi-text-input id="example__label-with-icon"></chi-text-input>
       </div>
+
+      <script>
+        document.querySelector("#example__help-button")
+          .addEventListener("click", function() {
+            var popoverElem = document.querySelector("#example__help-popover");
+            popoverElem.toggle();
+          });
+      </script>
   .chi-tabs-panel#html-label-icon
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <div class="chi-label__wrapper">
           <label class="chi-label" for="example__label-with-icon">Label</label>
-          <i class="chi-icon icon-circle-info-outline -icon--muted"></i>
+          <div class="chi-label__help">
+            <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-circle-info-outline"></i>
+              </div>
+            </div>
+            <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+              <div class="chi-popover__content">
+                <p class="chi-popover__text">Helpful information goes here.</p>
+              </div>
+            </section>
+          </div>
         </div>
-        <input class="chi-input" id="example__label-with-icon" type="text" placeholder="Placeholder">
+        <input class="chi-input" id="example__label-with-icon" type="text">
       </div>
 
-h3 Inline Label
+      <script>chi.popover(document.getElementById('example__help-button'));</script>
+
+h3 Message
+p.-text
+  | Add a message below an input to store descriptions, validation feedback, and other helpful information.
+
 .example.-mb--3
   .-p--3
-    .chi-form__item.-row(style="max-width:20rem")
-      chi-label.-mr--2(for='example__inline-label') Label
-      chi-text-input(id='example__inline-label', placeholder="Placeholder")
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-label(for='example__message') Label
+          chi-text-input(id='example__message')
+          .chi-label.-status Optional input message
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-message
+      li.-active
+        a(href=`#webcomponent-message`) Web Component
+      li
+        a(href=`#html-message`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-message
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-label for="example__message">Label</chi-label>
+        <chi-text-input id="example__message"></chi-text-input>
+        <div class="chi-label -status">Optional input message</div>
+      </div>
+  .chi-tabs-panel#html-message
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__message">Label</label>
+        <input class="chi-input" id="example__message" type="text">
+        <div class="chi-label -status">Optional input message</div>
+      </div>
+
+h3 Error
+p.-text
+  | Use the <code>danger</code> state to provide feedback to users when input data fails to validate.
+  | To meet accessibility requirements, danger inputs must include an error message explaining the
+  | failure and/or how to correct it.
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-label(for="example__danger") Name
+          chi-text-input(
+            id="example__danger"
+            state="danger"
+            )
+          .chi-label.-status.-danger Please enter a name.
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-error
+      li.-active
+        a(href=`#webcomponent-error`) Web Component
+      li
+        a(href=`#html-error`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-error
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-label for="example__danger">Name</chi-label>
+        <chi-text-input id="example__danger" state="danger"></chi-text-input>
+        <div class="chi-label -status -danger">Please enter a name.</div>
+      </div>
+  .chi-tabs-panel#html-error
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__danger">Name</label>
+        <input type="text" class="chi-input -danger" id="example__danger">
+        <div class="chi-label -status -danger">Please enter a name.</div>
+      </div>
+
+h2 Layout Variations
+h3 Inline Label
+p.-text
+  | Apply the class <code>-row</code> to <code>chi-form__item</code> to render labels and inputs inline.
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item.-row
+          chi-label(for='example__inline-label') Label
+          chi-text-input(id='example__inline-label')
   .example-tabs.-pl--2
     ul.chi-tabs#example-inline-label
       li.-active
@@ -139,14 +363,14 @@ h3 Inline Label
   .chi-tabs-panel.-active#webcomponent-inline-label
     :code(lang="html")
       <div class="chi-form__item -row">
-        <chi-label class="-mr--2" for="example__inline-label">Label</chi-label>
-        <chi-text-input id="example__inline-label" placeholder="Placeholder"></chi-text-input>
+        <chi-label for="example__inline-label">Label</chi-label>
+        <chi-text-input id="example__inline-label"></chi-text-input>
       </div>
   .chi-tabs-panel#html-inline-label
     :code(lang="html")
       <div class="chi-form__item -row">
-        <label class="chi-label -mr--2" for="example__inline-label">Label</label>
-        <input class="chi-input" type="text" id="example__inline-label" placeholder="Placeholder">
+        <label class="chi-label" for="example__inline-label">Label</label>
+        <input class="chi-input" type="text" id="example__inline-label">
       </div>
 
 h3 Inline Label - width controlled using percent
@@ -155,7 +379,7 @@ h3 Inline Label - width controlled using percent
     .chi-form__item.-row
       chi-label.-w--50(for='example__inline-label-percent') Label width 50%
       .-w--50
-        chi-text-input(id='example__inline-label-percent', placeholder="Placeholder")
+        chi-text-input(id='example__inline-label-percent')
   .example-tabs.-pl--2
     ul.chi-tabs#example-inline-label-percent
       li.-active
@@ -167,7 +391,7 @@ h3 Inline Label - width controlled using percent
       <div class="chi-form__item -row">
         <chi-label class="-w--50" for="example__inline-label-percent">Label width 50%</chi-label>
         <div class="-w--50">
-            <chi-text-input id="example__inline-label-percent" placeholder="Placeholder"></chi-text-input>
+          <chi-text-input id="example__inline-label-percent"></chi-text-input>
         </div>
       </div>
   .chi-tabs-panel#html-inline-label-percent
@@ -175,7 +399,7 @@ h3 Inline Label - width controlled using percent
       <div class="chi-form__item -row">
         <label class="chi-label -w--50" for="example__inline-label-percent">Label</label>
         <div class="-w--50">
-          <input class="chi-input" type="text" id="example__inline-label-percent" placeholder="Placeholder">
+          <input class="chi-input" type="text" id="example__inline-label-percent">
         </div>
       </div>
 
@@ -185,7 +409,7 @@ h3 Inline Label - width controlled using grid
     .chi-form__item.-row.chi-grid.-no-gutter
       chi-label.chi-col.-w--3(for='example__inline-label-grid') Label width 3 columns
       .chi-col.-w--9
-        chi-text-input(id='example__inline-label-grid', placeholder="Placeholder")
+        chi-text-input(id='example__inline-label-grid')
   .example-tabs.-pl--2
     ul.chi-tabs#example-inline-label-grid
       li.-active
@@ -196,17 +420,13 @@ h3 Inline Label - width controlled using grid
     :code(lang="html")
       <div class="chi-form__item -row chi-grid -no-gutter">
         <chi-label class="chi-col -w--3" for="example__inline-label-grid">Label width 3 columns</chi-label>
-        <div class="chi-col -w--9">
-          <chi-text-input id="example__inline-label-grid" placeholder="Placeholder"></chi-text-input>
-        </div>
+        <chi-text-input class="chi-col -w--9" id="example__inline-label-grid"></chi-text-input>
       </div>
   .chi-tabs-panel#html-inline-label-grid
     :code(lang="html")
       <div class="chi-form__item -row chi-grid -no-gutter">
         <label class="chi-label chi-col -w--3" for="example__inline-label-grid">Label</label>
-        <div class="chi-col -w--9">
-          <input class="chi-input" type="text" id="example__inline-label-grid" placeholder="Placeholder">
-        </div>
+        <input class="chi-input chi-col -w--9" type="text" id="example__inline-label-grid">
       </div>
 
 h3 Inline Inputs
@@ -214,10 +434,10 @@ h3 Inline Inputs
   .-p--3.-d--flex
     .chi-form__item.-inline.-flex--grow1
       chi-label(for='example__inline-input01') Label
-      chi-text-input(id='example__inline-input01', placeholder="Placeholder")
+      chi-text-input(id='example__inline-input01')
     .chi-form__item.-inline.-flex--grow1
       chi-label(for='example__inline-input02') Label
-      chi-text-input(id='example__inline-input02', placeholder="Placeholder")
+      chi-text-input(id='example__inline-input02')
   .example-tabs.-pl--2
     ul.chi-tabs#example-inline-input
       li.-active
@@ -229,11 +449,11 @@ h3 Inline Inputs
       <div class="-d--flex">
         <div class="chi-form__item -inline -flex--grow1">
           <chi-label for="example__inline-input01">Label</chi-label>
-          <chi-text-input id="example__inline-input01" placeholder="Placeholder"></chi-text-input>
+          <chi-text-input id="example__inline-input01"></chi-text-input>
         </div>
         <div class="chi-form__item -inline -flex--grow1">
           <chi-label for="example__inline-input02">Label</chi-label>
-          <chi-text-input id="example__inline-input02" placeholder="Placeholder"></chi-text-input>
+          <chi-text-input id="example__inline-input02"></chi-text-input>
         </div>
       </div>
   .chi-tabs-panel#html-inline-input
@@ -241,390 +461,29 @@ h3 Inline Inputs
       <div class="-d--flex">
         <div class="chi-form__item -inline -flex--grow1">
           <label class="chi-label" for="example__inline-input01">Label</label>
-          <input class="chi-input" type="text" id="example__inline-input01" placeholder="Placeholder">
+          <input class="chi-input" type="text" id="example__inline-input01">
         </div>
         <div class="chi-form__item -inline -flex--grow1">
           <label class="chi-label" for="example__inline-input02">Label</label>
-          <input class="chi-input" type="text" id="example__inline-input02" placeholder="Placeholder">
+          <input class="chi-input" type="text" id="example__inline-input02">
         </div>
       </div>
 
-h2 Icons
+h3 Floating Label
 p.-text
-  | To add icons to a text input, wrap the input in a <code>div</code> using the class
-  | <code>chi-input__wrapper</code>. Next, add the icon as a sibling of the <code>input</code> and utilize
-  | an icon alignment utility class (e.g. <code>-icon--left</code>) to specify where it should be placed.
-
-h3 Left Aligned
-.example.-mb--3
-  .-p--3
-    .chi-form__item(style="max-width:20rem")
-      chi-label(for="example__icon-left-aligned") Label
-      chi-text-input(
-        icon-left='search',
-        icon-left-color='muted',
-        placeholder="Placeholder",
-        value="Sample Text"
-        id="example__icon-left-aligned"
-      )
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-input-icon-left
-      li.-active
-        a(href=`#webcomponent-input-icon-left`) Web Component
-      li
-        a(href=`#html-input-icon-left`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-input-icon-left
-    :code(lang="html")
-      <div class="chi-form__item">
-        <chi-label for="example__icon-left-aligned">Label</chi-label>
-        <chi-text-input icon-left="search" icon-left-color="muted" placeholder="Placeholder" value="Sample Text" id="example__icon-left-aligned"></chi-text-input>
-      </div>
-  .chi-tabs-panel#html-input-icon-left
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__icon-left-aligned">Label</label>
-        <div class="chi-input__wrapper -icon--left">
-          <input type="text" class="chi-input" placeholder="Placeholder" value="Sample text" id="example__icon-left-aligned">
-          <i class="chi-icon icon-search -icon--muted"></i>
-          </div>
-        </div>
-      </div>
-
-h3 Right Aligned
-.example.-mb--3
-  .-p--3
-    .chi-form__item(style="max-width:20rem")
-      chi-label(for="example__icon-right-aligned") Label
-      chi-text-input(
-        icon-right='search',
-        icon-right-color='muted',
-        placeholder="Placeholder",
-        value="Sample Text"
-        id="example__icon-right-aligned"
-      )
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-input-icon-right
-      li.-active
-        a(href=`#webcomponent-input-icon-right`) Web Component
-      li
-        a(href=`#html-input-icon-right`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-input-icon-right
-    :code(lang="html")
-      <div class="chi-form__item">
-        <chi-label for="example__icon-right-aligned">Label</chi-label>
-        <chi-text-input icon-right="search" icon-right-color="muted" placeholder="Placeholder" value="Sample Text" id="example__icon-right-aligned"></chi-text-input>
-      </div>
-  .chi-tabs-panel#html-input-icon-right
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__icon-right-aligned">Label</label>
-        <div class="chi-input__wrapper -icon--right">
-          <input type="text" class="chi-input" placeholder="Placeholder" value="Sample text" id="example__icon-right-aligned">
-          <i class="chi-icon icon-search -icon--muted"></i>
-        </div>
-      </div>
-
-h3 Left + Right Aligned
-.example.-mb--3
-  .-p--3
-    .chi-form__item(style="max-width:20rem")
-      chi-label(for="example__icon-left-right-aligned") Label
-      chi-text-input(
-        icon-left='search',
-        icon-left-color='muted',
-        icon-right='check',
-        icon-right-color='muted',
-        placeholder="Placeholder",
-        value="Sample Text"
-        id="example__icon-left-right-aligned"
-      )
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-input-icon-left-right
-      li.-active
-        a(href=`#webcomponent-input-icon-left-right`) Web Component
-      li
-        a(href=`#html-input-icon-left-right`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-input-icon-left-right
-    :code(lang="html")
-      <div class="chi-form__item">
-        <chi-label for="example__icon-left-right-aligned">Label</chi-label>
-        <chi-text-input icon-left="search" icon-left-color="muted" icon-right="check" icon-right-color="muted" placeholder="Placeholder" value="Sample Text" id="example__icon-left-right-aligned"></chi-text-input>
-      </div>
-  .chi-tabs-panel#html-input-icon-left-right
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__icon-left-right-aligned">Label</label>
-        <div class="chi-input__wrapper -icon--left -icon--right">
-          <input type="text" class="chi-input" placeholder="Placeholder" value="Sample text" id="example__icon-left-right-aligned">
-          <i class="chi-icon icon-search -icon--muted"></i>
-          <i class="chi-icon icon-check -icon--success"></i>
-        </div>
-      </div>
-
-h2 States
-p.-text
-  | Text inputs offer three validation states: <code>-success</code>, <code>-warning</code>, and <code>-danger</code>.
-
-h3 Success
-.example.-mb--3
-  .-p--3
-    .chi-form__item(style="max-width:20rem")
-      chi-label(for="example__state-success") Label
-      chi-text-input(
-        state="success",
-        placeholder="Placeholder",
-        value="Sample Text",
-        id="example__state-success"
-      )
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-input-state-success
-      li.-active
-        a(href=`#webcomponent-input-state-success`) Web Component
-      li
-        a(href=`#html-input-state-success`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-input-state-success
-    :code(lang="hmtl")
-      <div class="chi-form__item">
-        <chi-label for="example__state-success">Label</chi-label>
-        <chi-text-input state="success" placeholder="Placeholder" value="Sample Text" id="example__state-success"></chi-text-input>
-      </div>
-  .chi-tabs-panel#html-input-state-success
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__state-success">Label</label>
-        <input type="text" class="chi-input -success" placeholder="Placeholder" value="Sample Text" id="example__state-success">
-      </div>
+  | Use floating labels to keep the placeholder visible when no label is attached to the input.
+  | <strong>Note:</strong> Chi only supports floating labels on <code>-lg</code> and <code>-xl</code> inputs.
 
 .example.-mb--3
   .-p--3
-    .chi-form__item(style="max-width:20rem")
-      chi-label(for="example__state-success-with-icon") Label
-      chi-text-input(
-        state="success",
-        icon-right='check',
-        icon-right-color='success',
-        placeholder="Placeholder",
-        value="Sample Text",
-        id="example__state-success-with-icon"
-      )
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-input-state-success-icon
-      li.-active
-        a(href=`#webcomponent-input-state-success-icon`) Web Component
-      li
-        a(href=`#html-input-state-success-icon`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-input-state-success-icon
-    :code(lang="html")
-      <div class="chi-form__item">
-        <chi-label for="example__state-success-with-icon">Label</chi-label>
-        <chi-text-input state="success" icon-right="check" icon-right-color="success" placeholder="Placeholder" value="Sample Text" id="example__state-success-with-icon"></chi-text-input>
-      </div>
-  .chi-tabs-panel#html-input-state-success-icon
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__state-success-with-icon">Label</label>
-        <div class="chi-input__wrapper -icon--right">
-          <input type="text" class="chi-input -success" placeholder="Placeholder" value="Sample Text" id="example__state-success-with-icon">
-          <i class="chi-icon icon-check -icon--success"></i>
-        </div>
-      </div>
-
-h3 Warning
-.example.-mb--3
-  .-p--3
-    .chi-form__item(style="max-width:20rem")
-      chi-label(for="example__state-warning") Label
-      chi-text-input(state="warning", placeholder="Placeholder", value="Sample Text", id="example__state-warning")
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-input-state-warning
-      li.-active
-        a(href=`#webcomponent-input-state-warning`) Web Component
-      li
-        a(href=`#html-input-state-warning`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-input-state-warning
-    :code(lang="html")
-      <div class="chi-form__item">
-        <chi-label for="example__state-warning">Label</chi-label>
-        <chi-text-input state="warning" placeholder="Placeholder" value="Sample Text" id="example__state-warning"></chi-text-input>
-      </div>
-  .chi-tabs-panel#html-input-state-warning
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__state-warning">Label</label>
-        <input type="text" class="chi-input -warning" placeholder="Placeholder" value="Sample Text" id="example__state-warning">
-      </div>
-
-.example.-mb--3
-  .-p--3
-    .chi-form__item(style="max-width:20rem")
-      chi-label(for="example__state-warning-with-icon") Label
-      chi-text-input(
-        state="warning",
-        icon-right='warning',
-        icon-right-color='warning',
-        placeholder="Placeholder",
-        value="Sample Text",
-        id="example__state-warning-with-icon"
-      )
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-input-state-warning-icon
-      li.-active
-        a(href=`#webcomponent-input-state-warning-icon`) Web Component
-      li
-        a(href=`#html-input-state-warning-icon`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-input-state-warning-icon
-    :code(lang="html")
-      <div class="chi-form__item">
-        <chi-label for="example__state-warning-with-icon">Label</chi-label>
-        <chi-text-input state="warning" icon-right="warning" icon-right-color="warning" placeholder="Placeholder" value="Sample Text" id="example__state-warning-with-icon"></chi-text-input>
-      </div>
-  .chi-tabs-panel#html-input-state-warning-icon
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__state-warning-with-icon">Label</label>
-        <div class="chi-input__wrapper -icon--right">
-          <input type="text" class="chi-input -warning" placeholder="Placeholder" value="Sample Text" id="example__state-warning-with-icon">
-          <i class="chi-icon icon-warning -icon--warning"></i>
-        </div>
-      </div>
-
-h3 Danger
-.example.-mb--3
-  .-p--3
-    .chi-form__item(style="max-width:20rem")
-      chi-label(for="example__state-danger") Label
-      chi-text-input(state="danger", placeholder="Placeholder", value="Sample Text", id="example__state-danger")
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-input-state-danger
-      li.-active
-        a(href=`#webcomponent-input-state-danger`) Web Component
-      li
-        a(href=`#html-input-state-danger`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-input-state-danger
-    :code(lang="html")
-      <div class="chi-form__item">
-        <chi-label for="example__state-danger">Label</chi-label>
-        <chi-text-input state="danger" placeholder="Placeholder" value="Sample Text" id="example__state-danger"></chi-text-input>
-      </div>
-  .chi-tabs-panel#html-input-state-danger
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__state-danger">Label</label>
-        <input type="text" class="chi-input -danger" placeholder="Placeholder" value="Sample Text" id="example__state-danger">
-      </div>
-
-.example.-mb--3
-  .-p--3
-    .chi-form__item(style="max-width:20rem")
-      chi-label(for="example__state-danger-with-icon") Label
-      chi-text-input(
-        state="danger",
-        icon-right='circle-warning',
-        icon-right-color='danger',
-        placeholder="Placeholder",
-        value="Sample Text",
-        id="example__state-danger-with-icon"
-      )
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-input-state-danger-icon
-      li.-active
-        a(href=`#webcomponent-input-state-danger-icon`) Web Component
-      li
-        a(href=`#html-input-state-danger-icon`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-input-state-danger-icon
-    :code(lang="html")
-      <div class="chi-form__item">
-        <chi-label for="example__state-danger-with-icon">Label</chi-label>
-        <chi-text-input state="danger" icon-right="circle-warning" icon-right-color="danger" placeholder="Placeholder" value="Sample Text" id="example__state-danger-with-icon"></chi-text-input>
-      </div>
-  .chi-tabs-panel#html-input-state-danger-icon
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__state-danger-with-icon">Label</label>
-        <div class="chi-input__wrapper -icon--right">
-          <input type="text" class="chi-input -danger" placeholder="Placeholder" value="Sample Text" id="example__state-danger-with-icon">
-          <i class="chi-icon icon-circle-warning -icon--danger"></i>
-        </div>
-      </div>
-
-h3 Sizes
-p.-text
-  | Text inputs supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
-  |  <code>-lg</code>, <code>-xl</code>.
-  | The default size is <code>-md</code>.
-.example.-mb--3
-  .-p--3
-    .-p--2
-      .chi-form__item(style="max-width:20rem")
-        chi-label(for="example__size-sm") Label
-        chi-text-input(size="sm", placeholder="Sample Text", id="example__size-sm")
-    .-p--2
-      .chi-form__item(style="max-width:20rem")
-        chi-label(for="example__size-md") Label
-        chi-text-input(size="md", placeholder="Sample Text", id="example__size-md")
-    .-p--2
-      .chi-form__item(style="max-width:20rem")
-        chi-label(for="example__size-lg") Label
-        chi-text-input(size="lg", placeholder="Sample Text", id="example__size-lg")
-    .-p--2
-      .chi-form__item(style="max-width:20rem")
-        chi-label(for="example__size-xl") Label
-        chi-text-input(size="xl", placeholder="Sample Text", id="example__size-xl")
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-input-sizes
-      li.-active
-        a(href=`#webcomponent-input-sizes`) Web Component
-      li
-        a(href=`#html-input-sizes`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-input-sizes
-    :code(lang="html")
-      <div class="chi-form__item">
-        <chi-label for="example__size-sm">Label</chi-label>
-        <chi-text-input size="sm" placeholder="Sample Text" id="example__size-sm"></chi-text-input>
-      </div>
-      <div class="chi-form__item">
-        <chi-label for="example__size-md">Label</chi-label>
-        <chi-text-input size="md" placeholder="Sample Text" id="example__size-md"></chi-text-input>
-      </div>
-      <div class="chi-form__item">
-        <chi-label for="example__size-lg">Label</chi-label>
-        <chi-text-input size="lg" placeholder="Sample Text" id="example__size-lg"></chi-text-input>
-      </div>
-      <div class="chi-form__item">
-        <chi-label for="example__size-xl">Label</chi-label>
-        <chi-text-input size="xl" placeholder="Sample Text" id="example__size-xl"></chi-text-input>
-      </div>
-  .chi-tabs-panel#html-input-sizes
-    :code(lang='html')
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__size-sm">Label</label>
-        <input type="text" class="chi-input -sm" placeholder="Sample Text" id="example__size-sm">
-      </div>
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__size-md">Label</label>
-        <input type="text" class="chi-input -md" placeholder="Sample Text" id="example__size-md">
-      </div>
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__size-lg">Label</label>
-        <input type="text" class="chi-input -lg" placeholder="Sample Text" id="example__size-lg">
-      </div>
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__size-xl">Label</label>
-        <input type="text" class="chi-input -xl" placeholder="Sample Text" id="example__size-xl">
-      </div>
-
-h3 Floating labels
-p.-text
-  | Floating labels are a solution to keep the placeholder visible when no label is attached to the input.
-  | Chi only supports floating labels on <code>-lg</code> and <code>-xl</code> inputs.
-
-.example.-mb--3
-  .-p--3
-    each size in ['lg', 'xl']
-      div(class=`chi-col -w--12 -p--2`)
-        .chi-input__wrapper.-floating-label(style="max-width:20rem")
-          input(type="text", class=`chi-input -${size} -mr--3`, id=`floating-label-${size}`)
-          label(for=`floating-label-${size}`) Placeholder text
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-grid
+          each size in ['lg', 'xl']
+            div(class=`chi-col -w--12 -mb--2`)
+              .chi-input__wrapper.-floating-label
+                input(type="text", class=`chi-input -${size}`, id=`floating-label-${size}`)
+                label(for=`floating-label-${size}`) Placeholder text
   .example-tabs.-pl--2
     ul.chi-tabs#example-input-floating-label
       li.-disabled
@@ -653,6 +512,185 @@ p.-text
         chi.floatingLabel(document.querySelectorAll('.-floating-label'));
       </script>
 
+h2 Icons
+h3 Left Aligned
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-label(for="example__icon-left-aligned") Label
+          chi-text-input(
+            icon-left='search',
+            icon-left-color='muted',
+            value="Sample Text"
+            id="example__icon-left-aligned"
+          )
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-input-icon-left
+      li.-active
+        a(href=`#webcomponent-input-icon-left`) Web Component
+      li
+        a(href=`#html-input-icon-left`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-input-icon-left
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-label for="example__icon-left-aligned">Label</chi-label>
+        <chi-text-input icon-left="search" icon-left-color="muted" value="Sample Text" id="example__icon-left-aligned"></chi-text-input>
+      </div>
+  .chi-tabs-panel#html-input-icon-left
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__icon-left-aligned">Label</label>
+        <div class="chi-input__wrapper -icon--left">
+          <input type="text" class="chi-input" value="Sample text" id="example__icon-left-aligned">
+          <i class="chi-icon icon-search -icon--muted"></i>
+          </div>
+        </div>
+      </div>
+
+h3 Right Aligned
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-label(for="example__icon-right-aligned") Label
+          chi-text-input(
+            icon-right='search',
+            icon-right-color='muted',
+            value="Sample Text"
+            id="example__icon-right-aligned"
+          )
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-input-icon-right
+      li.-active
+        a(href=`#webcomponent-input-icon-right`) Web Component
+      li
+        a(href=`#html-input-icon-right`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-input-icon-right
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-label for="example__icon-right-aligned">Label</chi-label>
+        <chi-text-input icon-right="search" icon-right-color="muted" value="Sample Text" id="example__icon-right-aligned"></chi-text-input>
+      </div>
+  .chi-tabs-panel#html-input-icon-right
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__icon-right-aligned">Label</label>
+        <div class="chi-input__wrapper -icon--right">
+          <input type="text" class="chi-input" value="Sample text" id="example__icon-right-aligned">
+          <i class="chi-icon icon-search -icon--muted"></i>
+        </div>
+      </div>
+
+h3 Left + Right Aligned
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-label(for="example__icon-left-right-aligned") Label
+          chi-text-input(
+            icon-left='search',
+            icon-left-color='muted',
+            icon-right='check',
+            icon-right-color='muted',
+            value="Sample Text"
+            id="example__icon-left-right-aligned"
+          )
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-input-icon-left-right
+      li.-active
+        a(href=`#webcomponent-input-icon-left-right`) Web Component
+      li
+        a(href=`#html-input-icon-left-right`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-input-icon-left-right
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-label for="example__icon-left-right-aligned">Label</chi-label>
+        <chi-text-input icon-left="search" icon-left-color="muted" icon-right="check" icon-right-color="muted" value="Sample Text" id="example__icon-left-right-aligned"></chi-text-input>
+      </div>
+  .chi-tabs-panel#html-input-icon-left-right
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__icon-left-right-aligned">Label</label>
+        <div class="chi-input__wrapper -icon--left -icon--right">
+          <input type="text" class="chi-input" value="Sample text" id="example__icon-left-right-aligned">
+          <i class="chi-icon icon-search -icon--muted"></i>
+          <i class="chi-icon icon-check -icon--success"></i>
+        </div>
+      </div>
+
+h2 Sizes
+p.-text
+  | Text inputs supports the following sizes: <code>-sm</code>, <code>-md</code>,
+  |  <code>-lg</code>, <code>-xl</code>.
+  | The default size is <code>-md</code>.
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-grid
+          .chi-col.-w--12.-mb--2
+            .chi-form__item
+              chi-label(for="example__size-sm") Label
+              chi-text-input(size="sm", value="Sample Text", id="example__size-sm")
+          .chi-col.-w--12.-mb--2
+            .chi-form__item
+              chi-label(for="example__size-md") Label
+              chi-text-input(size="md", value="Sample Text", id="example__size-md")
+          .chi-col.-w--12.-mb--2
+            .chi-form__item
+              chi-label(for="example__size-lg") Label
+              chi-text-input(size="lg", value="Sample Text", id="example__size-lg")
+          .chi-col.-w--12
+            .chi-form__item
+              chi-label(for="example__size-xl") Label
+              chi-text-input(size="xl", value="Sample Text", id="example__size-xl")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-input-sizes
+      li.-active
+        a(href=`#webcomponent-input-sizes`) Web Component
+      li
+        a(href=`#html-input-sizes`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-input-sizes
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-label for="example__size-sm">Label</chi-label>
+        <chi-text-input size="sm" id="example__size-sm"></chi-text-input>
+      </div>
+      <div class="chi-form__item">
+        <chi-label for="example__size-md">Label</chi-label>
+        <chi-text-input size="md" id="example__size-md"></chi-text-input>
+      </div>
+      <div class="chi-form__item">
+        <chi-label for="example__size-lg">Label</chi-label>
+        <chi-text-input size="lg" id="example__size-lg"></chi-text-input>
+      </div>
+      <div class="chi-form__item">
+        <chi-label for="example__size-xl">Label</chi-label>
+        <chi-text-input size="xl" id="example__size-xl"></chi-text-input>
+      </div>
+  .chi-tabs-panel#html-input-sizes
+    :code(lang='html')
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__size-sm">Label</label>
+        <input type="text" class="chi-input -sm" id="example__size-sm">
+      </div>
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__size-md">Label</label>
+        <input type="text" class="chi-input -md" id="example__size-md">
+      </div>
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__size-lg">Label</label>
+        <input type="text" class="chi-input -lg" id="example__size-lg">
+      </div>
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__size-xl">Label</label>
+        <input type="text" class="chi-input -xl" id="example__size-xl">
+      </div>
+
 script.
   document.addEventListener(
     'DOMContentLoaded',
@@ -661,3 +699,8 @@ script.
       chi.floatingLabel(document.querySelectorAll('.-floating-label'));
     }
   );
+  document.querySelector("#example__help-button")
+  .addEventListener("click", function() {
+    var popoverElem = document.querySelector("#example__help-popover");
+    popoverElem.toggle();
+  });
