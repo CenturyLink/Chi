@@ -755,7 +755,7 @@ h3 Stat with Background Icons
         </div>
       </div>
 
-h2 Modal
+h2 Portal
 h3 Base
 .example.-mb--3
   .chi-backdrop.-p--6.-position--relative.-z--0
@@ -769,7 +769,7 @@ h3 Base
         .chi-modal__content
           p.-text.-m--0 Modal content
         footer.chi-modal__footer
-          button.chi-button.-primary.-lg.-text--uppercase Save
+          button.chi-button.-primary.-lg.-text--uppercase Button
   .example-tabs.-pl--2
     ul.chi-tabs#example-portal
       li.-disabled
@@ -805,7 +805,7 @@ h3 Base
               <p class="-text -m--0">Modal content</p>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-button -primary -lg -text--uppercase">Save</button>
+              <button class="chi-button -primary -lg -text--uppercase">Button</button>
             </footer>
           </section>
         </div>
@@ -814,13 +814,13 @@ h3 Base
       <!-- JavaScript -->
       <script>chi.modal(document.getElementById('modal-trigger-10'));</script>
 
-h3 Error
+h3 Alert
 .example.-mb--3
   .chi-backdrop.-p--6.-position--relative.-z--0
     .chi-backdrop__wrapper
       section.chi-modal.-portal(role="dialog", aria-label="Modal description", aria-modal="true")
         header.chi-modal__header
-          h2.chi-modal__title System Error
+          h2.chi-modal__title Alert Modal Title
           button(class='chi-button -icon -close', aria-label='Close')
             .chi-button__content
               i.chi-icon.icon-x
@@ -828,12 +828,12 @@ h3 Error
           .-d--flex
             i.chi-icon.icon-circle-x.-sm--3.-icon--danger.-mr--2
             div
-              p.-text--bold.-m--0 We are unable to complete the request due to a system error.
+              p.-text--bold.-m--0 Replace this subhead text with specific text from project documentation
               p.-mt--1.-mb--0
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur elit nec
-                | massa tincidunt, sit amet ultricies massa cursus. Etiam quis pulvinar mauris lobortis gravida mauris.
+                | Supporting text to explain the subhead text. Check user story to customize based on requirements.
+                | This is placeholder text to show spacing and line height. Replace this text with text provided in requirements.
         footer.chi-modal__footer
-          button.chi-button.-primary.-lg.-text--uppercase.-px--4 OK
+          button.chi-button.-primary.-lg.-text--uppercase.-px--4 Button
   .example-tabs.-pl--2
     ul.chi-tabs#example-portal
       li.-disabled
@@ -850,7 +850,7 @@ h3 Error
     :code(lang="html")
       <!-- Trigger -->
       <button id="modal-trigger-11" class="chi-button chi-modal__trigger" data-target="#modal-11">
-        Launch portal error modal
+        Launch portal alert modal
       </button>
 
       <!-- Modal -->
@@ -858,7 +858,7 @@ h3 Error
         <div class="chi-backdrop__wrapper">
           <section id="modal-11" class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
-              <h2 class="chi-modal__title">System Error</h2>
+              <h2 class="chi-modal__title">Alert Modal Title</h2>
               <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
@@ -869,13 +869,13 @@ h3 Error
               <div class="-d--flex">
                 <i class="chi-icon icon-circle-x -sm--3 -icon--danger -mr--2"></i>
                 <div>
-                  <p class="-text--bold -m--0">We are unable to complete the request due to a system error.</p>
-                  <p class="-mt--1 -mb--0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur elit nec massa tincidunt, sit amet ultricies massa cursus. Etiam quis pulvinar mauris lobortis gravida mauris.</p>
+                  <p class="-text--bold -m--0">Replace this subhead text with specific text from project documentation</p>
+                  <p class="-mt--1 -mb--0">Supporting text to explain the subhead text. Check user story to customize based on requirements. This is placeholder text to show spacing and line height. Replace this text with text provided in requirements.</p>
                 </div>
               </div>
             </div>
             <footer class="chi-modal__footer">
-              <button class="chi-button -primary -lg -text--uppercase -px--4">OK</button>
+              <button class="chi-button -primary -lg -text--uppercase -px--4">Button</button>
             </footer>
           </section>
         </div>
