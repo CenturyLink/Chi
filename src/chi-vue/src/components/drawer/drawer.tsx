@@ -25,7 +25,6 @@ export default class Drawer extends Vue {
   @Prop() nonClosable!: boolean;
   @Prop() portal!: boolean;
   @Prop() position!: DrawerPositions;
-  @Prop() preventAutoHide!: boolean;
   @Prop() title!: string;
 
   animation!: ThreeStepsAnimation;
@@ -118,10 +117,9 @@ export default class Drawer extends Vue {
     const drawerElement = this.$refs.drawerElement as HTMLElement;
     const clickTarget = ev.target as HTMLElement;
 
-    if (!this.preventAutoHide &&
-      drawerElement.classList.contains(ACTIVE_CLASS) &&
+    if (drawerElement.classList.contains(ACTIVE_CLASS) &&
       !contains(drawerElement, clickTarget)) {
-        this.hide();
+        this.$emit(DRAWER_EVENTS.CLICK_OUTSIDE);
     }
   };
 

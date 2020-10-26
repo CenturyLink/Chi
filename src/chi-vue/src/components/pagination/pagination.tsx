@@ -76,7 +76,7 @@ export default class Pagination extends Vue {
     this.$emit(PAGINATION_EVENTS.PAGE_SIZE, size);
   }
 
-  addPage(page: string, icon: string = '', state: string = '') {
+  addPage(page: string, icon = '', state = '') {
     let pageToGo;
     let ariaLabel;
 

@@ -3,7 +3,8 @@ export const DRAWER_EVENTS = {
   SHOW: 'chiDrawerShow',
   HIDE: 'chiDrawerHide',
   SHOWN: 'chiDrawerShown',
-  HIDDEN: 'chiDrawerHidden'
+  HIDDEN: 'chiDrawerHidden',
+  CLICK_OUTSIDE: 'chiDrawerClickOutside'
 };
 
 /* Pagination */
