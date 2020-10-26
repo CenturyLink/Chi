@@ -61,7 +61,21 @@ textarea {
     &.-disabled {
       background-color: $color-grey-10;
       border-color: $color-border-base-dark;
-      color: $color-text-base;
+      color: $color-text-muted;
+      cursor: not-allowed;
+    }
+
+    &[readonly],
+    &.-readonly {
+      background: none;
+      border-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+
+      &:focus,
+      &.-focus {
+        border-color: $focus-color;
+      }
     }
 
     @each $type in map-keys($sizes) {
@@ -70,6 +84,12 @@ textarea {
         line-height: map-get(map-get($sizes, $type), line-height);
         min-height: map-get(map-get($sizes, $type), min-height);
         padding: map-get(map-get($sizes, $type), padding);
+
+        &[readonly],
+        &.-readonly {
+          padding-left: 0;
+          padding-right: 0;
+        }
       }
     }
 

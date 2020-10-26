@@ -36,6 +36,10 @@ export class Textarea {
    */
   @Prop({ reflect: true }) size ?: TextInputSizes = 'md';
   /**
+   * To define placeholder of Textarea
+   */
+  @Prop({ reflect: true }) placeholder: string;
+  /**
    * To read value of Textarea
    */
   @Prop({ attribute: null, mutable: true }) value = '';
@@ -47,6 +51,10 @@ export class Textarea {
    * To disable Textarea
    */
   @Prop({ reflect: true }) disabled = false;
+  /**
+   * To prevent Textarea value from being changed
+   */
+  @Prop({ reflect: true }) readonly = false;
   /**
    * To define -hover, -focus statuses
    */
@@ -129,8 +137,10 @@ export class Textarea {
         ${this.size ? `-${this.size}` : ''}
         ${this._status ? `-${this._status}` : ''}
         `}
+      placeholder={this.placeholder || ''}
       name={this.name || ''}
       disabled={this.disabled}
+      readonly={this.readonly}
       id={this.el.id ? `${this.el.id}-control` : null}
       onFocus={() => this.eventFocus.emit()}
       onBlur={() => this.eventBlur.emit()}

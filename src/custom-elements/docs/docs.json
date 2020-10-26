@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-10-21T16:33:34",
+  "timestamp": "2020-10-26T04:44:10",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2600,6 +2600,23 @@
           "required": false
         },
         {
+          "name": "readonly",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": true,
+          "docs": "To prevent the Text input value from being changed",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "size",
           "type": "\"lg\" | \"md\" | \"sm\" | \"xl\"",
           "mutable": false,
@@ -2951,6 +2968,39 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "mutable": false,
+          "attr": "placeholder",
+          "reflectToAttr": true,
+          "docs": "To define placeholder of Textarea",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": true,
+          "docs": "To prevent Textarea value from being changed",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,

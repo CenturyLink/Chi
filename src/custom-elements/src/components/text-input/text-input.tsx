@@ -57,6 +57,10 @@ export class TextInput {
    */
   @Prop({ reflect: true }) disabled = false;
   /**
+   * To prevent the Text input value from being changed
+   */
+  @Prop({ reflect: true }) readonly = false;
+  /**
    * To disable Value attribute mutation
    */
   @Prop({ reflect: true }) preventValueMutation = false;
@@ -162,6 +166,7 @@ export class TextInput {
       value={this.value}
       name={this.name || ''}
       disabled={this.disabled}
+      readonly={this.readonly}
       id={this.el.id ? `${this.el.id}-control` : null}
       onFocus={() => this.eventFocus.emit()}
       onBlur={() => this.eventBlur.emit()}

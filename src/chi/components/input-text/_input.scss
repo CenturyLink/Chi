@@ -46,7 +46,21 @@ input {
       &.-disabled {
         background-color: $color-grey-10;
         border-color: $color-border-base-dark;
-        color: $color-text-base;
+        color: $color-text-muted;
+        cursor: not-allowed;
+      }
+
+      &[readonly],
+      &.-readonly {
+        background: none;
+        border-color: transparent;
+        padding-left: 0;
+        padding-right: 0;
+
+        &:focus,
+        &.-focus {
+          border-color: $focus-color;
+        }
       }
 
       //Remove ie11,edge clear field
@@ -60,6 +74,12 @@ input {
           height: map-get(map-get($sizes, $type), height);
           line-height: map-get(map-get($sizes, $type), line-height);
           padding: map-get(map-get($sizes, $type), padding);
+
+          &[readonly],
+          &.-readonly {
+            padding-left: 0;
+            padding-right: 0;
+          }
 
           .chi-icon {
             height: map-get(map-get(map-get($sizes, $type), icons), height);
