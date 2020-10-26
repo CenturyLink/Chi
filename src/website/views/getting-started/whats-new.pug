@@ -6,6 +6,41 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 .changelog__version.-py--1
+  h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v3.3.0" target="_blank">Chi v3.3.0</a>
+  .-text--grey.-text--md TBD
+  .-pt--1
+    h3.-text--h3.-text--bold Components
+    h4.-text--h4.-text--bold Added
+    ul.-text.-pl--2
+      li Added: Form inputs now support Help icon buttons to display helpful information about an input in a popover.
+      li Added: Checkbox now supports a danger state for providing error feedback to users when validation fails.
+      li Added: Text input and Textarea now support the readonly attribute to prevent users from changing their value.
+      li Added: Textarea now supports the placeholder attribute to provide users with an example of the type of data that can be entered into an input.
+    h4.-text--h4.-text--bold Changed
+    ul.-text.-pl--2
+      li Changed: Checkbox display from block to flex to support required and help states.
+      li Changed: Form items with -row layout now apply a padding-right to child input labels to eliminate need for a spacing utility class.
+      li Changed: Form items with label wrapper now style icons using a child combinator instead of a descendant combinator to support help icon buttons.
+    h4.-text--h4.-text--bold Fixed
+    ul.-text.-pl--2
+      li Fixed: Label required asterisk color no longer fails color contrast test.
+      li Fixed: Textarea web component specific styles were not loading due to an incorrect :host() psuedo-class.
+    h3.-text--h3.-text--bold Documentation
+    h4.-text--h4.-text--bold Added
+    ul.-text.-pl--2
+      li Added: Checkbox documentation examples for: Checked, Required, Help, Message, Error, and Grid.
+      li Added: Text input documentation examples for: Readonly, Placeholder, Required, Optional, Help, Message, and Error.
+      li Added: Textarea documentation examples for: Readonly, Placeholder, Required, Optional, Help, Message, and Error.
+      li Added: Textarea documentation examples for Layout Variations.
+    h4.-text--h4.-text--bold Changed
+    ul.-text.-pl--2
+      li Changed: Checkbox documentation code samples have been improved.
+      li Changed: Text Input documentation code samples have been improved.
+      li Changed: Textarea documentation code samples have been improved.
+
+.chi-divider.-my--4
+
+.changelog__version.-py--1
   h2.-text--h2.-text--bold.-mb--1 <a href="https://github.com/CenturyLinkCloud/ux-chi/releases/tag/v3.2.0" target="_blank">Chi v3.2.0</a>
   .-text--grey.-text--md October 20, 2020
   .-pt--1
