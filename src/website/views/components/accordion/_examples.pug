@@ -4,31 +4,28 @@ p.-text To render accordion, use the class <code>chi-accordion</code>.
 h3 Base
 .example.-mb--3#example1
   .-p--3.-p-lg--6
-    .chi-accordion
+    .chi-accordion#base-1
       button.chi-accordion__trigger
         i.chi-icon.icon-chevron-down
         .chi-accordion__title 
           | Accordion 1
       .chi-accordion__content
         p.chi-accordion__text Content goes here
-
-    .chi-accordion.-expanded
+    .chi-accordion.-expanded#base-2
       button.chi-accordion__trigger
         i.chi-icon.icon-chevron-down
         .chi-accordion__title
           | Accordion 2
       .chi-accordion__content
         p.chi-accordion__text Content goes here
-
-    .chi-accordion
+    .chi-accordion#base-3
       button.chi-accordion__trigger
         i.chi-icon.icon-chevron-down
         .chi-accordion__title
           | Accordion 3
       .chi-accordion__content
         p.chi-accordion__text Content goes here
-
-    .chi-accordion
+    .chi-accordion#base-4
       button.chi-accordion__trigger
         i.chi-icon.icon-chevron-down
         .chi-accordion__title
@@ -49,7 +46,7 @@ h3 Base
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-accordion">
+      <div class="chi-accordion" id="base-1">
         <div class="chi-accordion__trigger">
           <i class="chi-icon icon-chevron-down"></i>
           <div class="chi-accordion__title">Accordion 1</div>
@@ -58,7 +55,7 @@ h3 Base
           <p class="chi-accordion__text">Content goes here</p>
         </div>
       </div>
-      <div class="chi-accordion -expanded">
+      <div class="chi-accordion -expanded" id="base-2">
         <div class="chi-accordion__trigger">
           <i class="chi-icon icon-chevron-down"></i>
           <div class="chi-accordion__title">Accordion 2</div>
@@ -67,7 +64,7 @@ h3 Base
           <p class="chi-accordion__text">Content goes here</p>
         </div>
       </div>
-      <div class="chi-accordion">
+      <div class="chi-accordion" id="base-3">
         <div class="chi-accordion__trigger">
           <i class="chi-icon icon-chevron-down"></i>
           <div class="chi-accordion__title">Accordion 3</div>
@@ -76,7 +73,7 @@ h3 Base
           <p class="chi-accordion__text">Content goes here</p>
         </div>
       </div>
-      <div class="chi-accordion">
+      <div class="chi-accordion" id="base-4">
         <div class="chi-accordion__trigger">
           <i class="chi-icon icon-chevron-down"></i>
           <div class="chi-accordion__title">Accordion 4</div>
@@ -86,10 +83,17 @@ h3 Base
         </div>
       </div>
 
+      <script>
+        chi.accordion(document.getElementById('base-1'));
+        chi.accordion(document.getElementById('base-2'));
+        chi.accordion(document.getElementById('base-3'));
+        chi.accordion(document.getElementById('base-4'));
+      </script>
+
 h3 Portal
 .example.-mb--3#example2
   .-p--3.-p-lg--6
-    .chi-accordion.-portal
+    .chi-accordion.-portal#portal-1
       button.chi-accordion__trigger
         .chi-accordion__title
           | Accordion 1
@@ -97,7 +101,7 @@ h3 Portal
       .chi-accordion__content
         p.chi-accordion__text Content goes here
 
-    .chi-accordion.-portal.-expanded
+    .chi-accordion.-portal.-expanded#portal-1
       button.chi-accordion__trigger
         .chi-accordion__title
           | Accordion 2
@@ -105,7 +109,7 @@ h3 Portal
       .chi-accordion__content
         p.chi-accordion__text Content goes here
 
-    .chi-accordion.-portal
+    .chi-accordion.-portal#portal-1
       button.chi-accordion__trigger
         .chi-accordion__title
           | Accordion 3
@@ -113,7 +117,7 @@ h3 Portal
       .chi-accordion__content
         p.chi-accordion__text Content goes here
 
-    .chi-accordion.-portal
+    .chi-accordion.-portal#portal-1
       button.chi-accordion__trigger
         .chi-accordion__title
           | Accordion 4
@@ -171,6 +175,13 @@ h3 Portal
         </div>
       </div>
 
+      <script>
+        chi.accordion(document.getElementById('portal-1'));
+        chi.accordion(document.getElementById('portal-2'));
+        chi.accordion(document.getElementById('portal-3'));
+        chi.accordion(document.getElementById('portal-4'));
+      </script>
+
 h3 Nested Accordions
 .example.-mb--3#example2
   .-p--3.-p-lg--6
@@ -190,28 +201,35 @@ h3 Nested Accordions
             .chi-accordion.-portal.-mt--1
               button.chi-accordion__trigger
                 .chi-accordion__title
-                  | Accordion 1
+                  | Accordion 1.1
                 i.chi-icon.icon-chevron-down
               .chi-accordion__content
                 p.chi-accordion__text Content goes here
                 .chi-accordion.-portal.-mt--1
                   button.chi-accordion__trigger
                     .chi-accordion__title
-                      | Accordion 1
+                      | Accordion 1.1.1
                     i.chi-icon.icon-chevron-down
                   .chi-accordion__content
                     p.chi-accordion__text Content goes here
+            .chi-accordion.-portal.-mt--1
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion 1.2
+                i.chi-icon.icon-chevron-down
+              .chi-accordion__content
+                p.chi-accordion__text Content goes here
         .chi-accordion.-portal
           button.chi-accordion__trigger
             .chi-accordion__title
-              | Accordion 1
+              | Accordion 2
             i.chi-icon.icon-chevron-down
           .chi-accordion__content
             p.chi-accordion__text Content goes here
             .chi-accordion.-portal
               button.chi-accordion__trigger
                 .chi-accordion__title
-                  | Accordion 1
+                  | Accordion 2.1
                 i.chi-icon.icon-chevron-down
               .chi-accordion__content
                 p.chi-accordion__text Content goes here
@@ -316,7 +334,7 @@ p.-text
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <!-- sm -->
-      <div class="chi-accordion -sm">
+      <div class="chi-accordion -sm" id="size-sm">
         <div class="chi-accordion__trigger">
           <i class="chi-icon icon-chevron-down"></i>
           <div class="chi-accordion__title">Accordion</div>
@@ -327,7 +345,7 @@ p.-text
       </div>
 
       <!-- md -->
-      <div class="chi-accordion -md">
+      <div class="chi-accordion -md" id="size-md">
         <div class="chi-accordion__trigger">
           <i class="chi-icon icon-chevron-down"></i>
           <div class="chi-accordion__title">Accordion</div>
@@ -338,7 +356,7 @@ p.-text
       </div>
 
       <!-- lg -->
-      <div class="chi-accordion -lg">
+      <div class="chi-accordion -lg" id="size-lg">
         <div class="chi-accordion__trigger">
           <i class="chi-icon icon-chevron-down"></i>
           <div class="chi-accordion__title">Accordion</div>
@@ -349,7 +367,7 @@ p.-text
       </div>
 
       <!-- xl -->
-      <div class="chi-accordion -xl">
+      <div class="chi-accordion -xl" id="size-xl">
         <div class="chi-accordion__trigger">
           <i class="chi-icon icon-chevron-down"></i>
           <div class="chi-accordion__title">Accordion</div>
@@ -358,6 +376,13 @@ p.-text
           <p class="chi-accordion__text">Content goes here</p>
         </div>
       </div>
+
+      <script>
+        chi.accordion(document.getElementById('size-sm'));
+        chi.accordion(document.getElementById('size-md'));
+        chi.accordion(document.getElementById('size-lg'));
+        chi.accordion(document.getElementById('size-xl'));
+      </script>
 
 script.
   document.addEventListener(

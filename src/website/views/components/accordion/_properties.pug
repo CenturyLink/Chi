@@ -1,6 +1,67 @@
-h2 Web Component
-h3 Properties
-.chi-card.-align--center.-empty
-  .chi-card__content
-    .chi-card__caption
-      | Web component coming soon
+h2 JavaScript
+
+h3.mt--2 Methods
+section.chi-table.chi-table__methods.-bordered.-my--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Method
+          th
+            div Description
+          th
+            div Returns
+      tbody
+        tr
+          td
+            div
+              code= 'hide() => void'
+          td
+            div
+              | Hides the accordion
+          td
+            div
+              | Type: void
+        tr
+          td
+            div
+              code= 'show() => void'
+          td
+            div
+              | Shows the accordion
+          td
+            div
+              | Type: void
+        tr
+          td
+            div
+              code= 'toggle() => void'
+          td
+            div
+              | Toggles active state (show/hide)
+          td
+            div
+              | Type: void
+
+h3 Preventing memory leaks
+p.-text
+  | Accordion component has a dispose function to free the all resources attached to the element, such as event listeners
+  | and object data. You should call this method when you want to remove the component.
+:code(lang="javascript")
+  var elem = document.getElementById('accordion-1');
+  var accordion = chi.accordion(elem);
+  // do stuff
+  accordion.dispose();
+
+p.-text
+  | It is safe to call the <code>accordion</code> method more than once, as it will return any previously created accordion component
+  | associated to the element.
+:code(lang="javascript")
+  var elem = document.getElementById('accordion-2');
+  var accordion = chi.accordion(elem);
+  var elem2 = document.getElementById('accordion-2');
+  var accordion2 = chi.accordion(elem2);
+  accordion === accordion2; // returns true
+
+  accordion.dispose(); // Only have to do it once.

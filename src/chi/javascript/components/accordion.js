@@ -6,6 +6,7 @@ const COMPONENT_TYPE = 'accordion';
 const COMPONENT_CLASS = 'chi-accordion';
 const TRIGGER_CLASS = 'chi-accordion__trigger';
 const CONTENT_CLASS = 'chi-accordion__content';
+const CHILD_ACCORDION_CLASS = 'chi-accordion__child';
 const DEFAULT_CONFIG = {};
 const EVENTS = {
   SHOW: 'chi.accordion.show',
@@ -52,6 +53,10 @@ class Accordion extends Component {
 
           content.style.height = `${newHeight}px`;
       }
+      if (cur.classList.contains(COMPONENT_CLASS) &&
+        !cur.classList.contains(CHILD_ACCORDION_CLASS)) {
+          break;
+      }
     }
   }
 
@@ -70,6 +75,7 @@ class Accordion extends Component {
             const newAccordion = Accordion.factory(elem, DEFAULT_CONFIG);
   
             this._childAccordions.push(newAccordion);
+            Util.addClass(elem, CHILD_ACCORDION_CLASS);
           }
         }
       );
@@ -94,9 +100,11 @@ class Accordion extends Component {
         () => {
           Util.addClass(contentElem, chi.classes.TRANSITIONING);
           contentElem.style.height = '0px';
+          contentElem.style.opacity = '0.5';
         }, () => {
           Util.addClass(this._elem, chi.classes.EXPANDED);
           contentElem.style.height = contentHeight;
+          contentElem.style.opacity = '1';
         }, () => {
           Util.removeClass(contentElem, chi.classes.TRANSITIONING);
         }, 75
@@ -117,10 +125,14 @@ class Accordion extends Component {
       Util.threeStepsAnimation(
         () => {
           Util.checkAddClass(contentElem, chi.classes.TRANSITIONING);
+          contentElem.style.opacity = '1';
         }, () => {
-          contentElem.style.removeProperty('height');
+          contentElem.style.height = '0px';
+          contentElem.style.opacity = '0.5';
           Util.checkRemoveClass(this._elem, chi.classes.EXPANDED);
         }, () => {
+          contentElem.style.removeProperty('height');
+          contentElem.style.removeProperty('opacity');
           Util.checkRemoveClass(contentElem, chi.classes.TRANSITIONING);
         }, 75
       );
