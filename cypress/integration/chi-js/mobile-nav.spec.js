@@ -183,8 +183,8 @@ describe('mobile-nav-menu', function() {
     });
   }); 
 
-  describe('check that click on "X" in right drawer closes drawer', () => {
-    it('check  right drawer closes on "X"', () => {
+  describe('check that click on "X" in second level drawer closes drawer', () => {
+    it('check  second level drawer closes on "X"', () => {
       cy.get('.chi-mobile-nav__first-level-content')
         .find('.chi-drawer__subitem-list-trigger')
         .click();
