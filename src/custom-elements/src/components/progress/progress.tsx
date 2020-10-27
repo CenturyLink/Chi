@@ -10,7 +10,7 @@ export class Progress {
   /**
    *  to set the value of a progress bar.
    */
-  @Prop({ reflect: true }) value: string;
+  @Prop({ reflect: true }) value: number;
 
   /**
    *  to set the max value of a progress bar.
@@ -38,13 +38,13 @@ export class Progress {
   render() {
     return (
       <progress
-        value={this.value || undefined}
-        class={this.state ? `-${this.state}` : ''}
-        max={this.max || undefined}
-        role="progressbar"
         aria-valuenow={this.value || undefined}
         aria-valuemax={this.max || undefined}
         aria-valuemin={0}
+        class={this.state ? `-${this.state}` : ''}
+        max={this.max || undefined}
+        role="progressbar"
+        value={this.value}
       ></progress>
     );
   }
