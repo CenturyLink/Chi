@@ -168,7 +168,7 @@ describe('mobile-nav-menu', function() {
     });
   });
 
-  describe('check that click on back button  in right drawer ', () => {
+  describe('Back button functionality ', () => {
     it('check that click on back button  in right drawer ', () => {
       cy.get('#mobile-navigation-interaction-trigger')
         .click();
