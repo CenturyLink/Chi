@@ -41,6 +41,7 @@ describe('Dropdown', function() {
         });
     })
 
+   
     describe('Open and closing functionality test for animated dropdown', function() {
         it('Dropdown menu should open when dropdown trigger is clicked', () => {  
             cy.get('[data-cy="dropdown-animate"]')
