@@ -53,21 +53,19 @@ h3 Base
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
                 label.chi-pagination__label(for="jumper-input-1") Go to page:
@@ -83,6 +81,105 @@ h3 Base
   .chi-tabs-panel.-active#html-menu-base
     :code(lang="html")
       <div class="chi-data-table">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-1">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-1" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Base -- Compact
@@ -150,6 +247,87 @@ h3 Base -- Compact
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -compact">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 Results</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+                <div class="chi-pagination__label">
+                  <strong>2</strong>
+                  <span>of</span>
+                  <strong>3</strong>
+                </div>
+                <div class="chi-pagination__button-group chi-button-group">
+                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="chi-pagination__end"></div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Base -- Compact -- Empty
@@ -182,6 +360,30 @@ h3 Base -- Compact -- Empty
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -compact">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Email</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Phone Number</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Address</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row-empty">
+            <div>No matches found. Please revise search criteria and try again.</div>
+          </div>
+        </div>
       </div>
 
 h3 No Border
@@ -236,25 +438,23 @@ h3 No Border
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-3") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-3')
+                label.chi-pagination__label(for="jumper-input-2") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-2')
               
   .example-tabs.-pl--2
     ul.chi-tabs#example-menu-base
@@ -266,6 +466,105 @@ h3 No Border
   .chi-tabs-panel.-active#html-menu-base
     :code(lang="html")
       <div class="chi-data-table -no-border">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-2">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-2" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
     
 h3 Striped
@@ -320,25 +619,23 @@ h3 Striped
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-5") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-5')
+                label.chi-pagination__label(for="jumper-input-3") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-3')
               
   .example-tabs.-pl--2
     ul.chi-tabs#example-menu-base
@@ -350,6 +647,105 @@ h3 Striped
   .chi-tabs-panel.-active#html-menu-base
     :code(lang="html")
       <div class="chi-data-table -striped">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-3">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-3" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Hover
@@ -404,25 +800,23 @@ h3 Hover
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-7") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-7')
+                label.chi-pagination__label(for="jumper-input-4") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-4')
               
   .example-tabs.-pl--2
     ul.chi-tabs#example-menu-base
@@ -434,6 +828,105 @@ h3 Hover
   .chi-tabs-panel.-active#html-menu-base
     :code(lang="html")
       <div class="chi-data-table -hover">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-4">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-4" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Bordered
@@ -488,25 +981,23 @@ h3 Bordered
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-9") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-9')
+                label.chi-pagination__label(for="jumper-input-5") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-5')
               
   .example-tabs.-pl--2
     ul.chi-tabs#example-menu-base
@@ -518,6 +1009,105 @@ h3 Bordered
   .chi-tabs-panel.-active#html-menu-base
     :code(lang="html")
       <div class="chi-data-table -bordered">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-5">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-5" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
     
 h3 Active
@@ -572,25 +1162,23 @@ h3 Active
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-11") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-11')
+                label.chi-pagination__label(for="jumper-input-6") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-6')
               
   .example-tabs.-pl--2
     ul.chi-tabs#example-menu-base
@@ -602,6 +1190,104 @@ h3 Active
   .chi-tabs-panel.-active#html-menu-base
     :code(lang="html")
       <div class="chi-data-table">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row -active">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div><span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-6">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-6" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Selectable
@@ -671,25 +1357,23 @@ h3 Selectable
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-1") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-1')
+                label.chi-pagination__label(for="jumper-input-7") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-7')
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -701,6 +1385,127 @@ h3 Selectable
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -selectable -lh--1">
+              <input class="chi-checkbox__input" type="checkbox" id="chk-1" />
+              <label class="chi-checkbox__label" for="chk-1">
+                <div class="-sr--only">Label</div>
+              </label>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -lh--1 -selectable">
+              <input class="chi-checkbox__input" type="checkbox" id="chk-2" />
+              <label class="chi-checkbox__label" for="chk-2">
+                <div class="-sr--only">Label</div>
+              </label>
+            </div>
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row -selected">
+            <div class="chi-data-table__cell -lh--1 -selectable">
+              <input class="chi-checkbox__input" type="checkbox" id="chk-3" checked="checked" />
+              <label class="chi-checkbox__label" for="chk-3">
+                <div class="-sr--only">Label</div>
+              </label>
+            </div>
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -lh--1 -selectable">
+              <input class="chi-checkbox__input" type="checkbox" id="chk-4" />
+              <label class="chi-checkbox__label" for="chk-4"></label>
+            </div>
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-7">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-7" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Accordion
@@ -762,25 +1567,23 @@ h3 Accordion
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-14") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-14')
+                label.chi-pagination__label(for="jumper-input-8") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-8')
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -792,6 +1595,115 @@ h3 Accordion
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -expandable"></div>
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-chevron-right -xs"></i>
+            </div>
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-chevron-right -xs"></i>
+            </div>
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-chevron-right -xs"></i>
+            </div>
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-8">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-8" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Accordion Expanded
@@ -855,25 +1767,23 @@ h3 Accordion Expanded
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-15") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-15')
+                label.chi-pagination__label(for="jumper-input-9") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-9')
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -885,6 +1795,118 @@ h3 Accordion Expanded
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -expandable"></div>
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-chevron-right -xs"></i>
+            </div>
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM </div>
+            </div>
+          </div>
+          <div class="chi-data-table__row -expanded">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-chevron-right -xs"></i>
+            </div>
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM </div>
+            </div>
+          </div>
+          <div class="chi-data-table__row-child">
+            <div>Some random content</div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-chevron-right -xs"></i>
+            </div>
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-9">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-9" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Sorting -- Base
@@ -942,25 +1964,23 @@ h3 Sorting -- Base
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-16") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-16')
+                label.chi-pagination__label(for="jumper-input-10") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-10')
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -972,6 +1992,108 @@ h3 Sorting -- Base
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -sorting">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+              <i class="chi-icon icon-arrow-sync -xs"></i>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+              <i class="chi-icon icon-arrow-sync -xs"></i>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+              <i class="chi-icon icon-arrow-sync -xs"></i>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-10">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-10" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Sorting -- Active -- Ascend
@@ -1029,25 +2151,23 @@ h3 Sorting -- Active -- Ascend
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-17") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-17')
+                label.chi-pagination__label(for="jumper-input-11") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-11')
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -1059,6 +2179,108 @@ h3 Sorting -- Active -- Ascend
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -sorting">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -active -ascending">
+              <span>Name</span>
+              <i class="chi-icon icon-arrow-up -xs"></i>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+              <i class="chi-icon icon-arrow-sync -xs"></i>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+              <i class="chi-icon icon-arrow-sync -xs"></i>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-11">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-11" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Sorting -- Active -- Descend
@@ -1116,25 +2338,23 @@ h3 Sorting -- Active -- Descend
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-18") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-18')
+                label.chi-pagination__label(for="jumper-input-12") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-12')
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -1146,6 +2366,108 @@ h3 Sorting -- Active -- Descend
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -sorting">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -active -descending">
+              <span>Name</span>
+              <i class="chi-icon icon-arrow-up -xs"></i>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+              <i class="chi-icon icon-arrow-sync -xs"></i>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+              <i class="chi-icon icon-arrow-sync -xs"></i>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-12">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-12" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
       
 h3 Size -xs
@@ -1200,25 +2522,23 @@ h3 Size -xs
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-19") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-19')
+                label.chi-pagination__label(for="jumper-input-13") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-13')
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -1230,6 +2550,105 @@ h3 Size -xs
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -xs">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                    <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                    <a class="chi-dropdown__menu-item" href="#">40</a>
+                    <a class="chi-dropdown__menu-item" href="#">60</a>
+                    <a class="chi-dropdown__menu-item" href="#">80</a>
+                    <a class="chi-dropdown__menu-item" href="#">All</a>
+                  </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-13">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-13" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
       
 h3 Size -sm
@@ -1284,25 +2703,23 @@ h3 Size -sm
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-20") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-20')
+                label.chi-pagination__label(for="jumper-input-14") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-14')
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -1314,6 +2731,105 @@ h3 Size -sm
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -sm">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-14">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-14" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Size -md
@@ -1368,25 +2884,23 @@ h3 Size -md
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-21") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-21')
+                label.chi-pagination__label(for="jumper-input-15") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-15')
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -1398,6 +2912,105 @@ h3 Size -md
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -md">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-15">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-15"/>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Size -lg
@@ -1452,25 +3065,23 @@ h3 Size -lg
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-22") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-22')
+                label.chi-pagination__label(for="jumper-input-16") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-16')
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -1482,6 +3093,105 @@ h3 Size -lg
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -lg">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-16">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-16" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Size -xl
@@ -1536,25 +3246,23 @@ h3 Size -xl
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-23") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-23')
+                label.chi-pagination__label(for="jumper-input-17") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-17')
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -1566,6 +3274,105 @@ h3 Size -xl
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -xl">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-17">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-17" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Resize
@@ -1620,25 +3427,23 @@ h3 Resize
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-24") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-24')
+                label.chi-pagination__label(for="jumper-input-18") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-18')
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -1649,7 +3454,106 @@ h3 Resize
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
-      <div class="chi-data-table">
+      <div class="chi-data-table" id="resize">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Name">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="ID">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Last Login">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span>
+                </div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-18">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-18"/>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Two tier table header
@@ -1733,25 +3637,23 @@ h3 Two tier table header
                 span.chi-pagination__label per page
             .chi-pagination__center
               .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Previous page')
+                button.chi-button.-icon.-flat(aria-label='Previous page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-                a(class=`chi-button -flat`, href='#') 1
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 3
-                a(class=`chi-button -flat`, href='#') 4
-                a(class=`chi-button -flat -active`, href='#') 5
-                a(class=`chi-button -flat`, href='#') 6
-                a(class=`chi-button -flat`, href='#') 7
-                div(class=`chi-button -flat -disabled`) ...
-                a(class=`chi-button -flat`, href='#') 12
-                a(class=`chi-button -icon -flat`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                button.chi-button.-flat(aria-label='Page 1') 1
+                button.chi-button.-flat(aria-label='Page 2') 2
+                button.chi-button.-flat.-active(aria-label='Page 3') 3
+                button.chi-button.-flat(aria-label='Page 4') 4
+                button.chi-button.-flat(aria-label='Page 5') 5
+                .chi-button.-flat(aria-hidden='true' disabled='') ...
+                button.chi-button.-flat(aria-label='Page 12') 12
+                button.chi-button.-icon.-flat(aria-label='Next page')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
             .chi-pagination__end
               .chi-pagination__jumper
-                label.chi-pagination__label(for="jumper-input-25") Go to page:
-                input(type='text', class='chi-input', id='jumper-input-25')
+                label.chi-pagination__label(for="jumper-input-19") Go to page:
+                input(type='text', class='chi-input', id='jumper-input-19')
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -1763,6 +3665,144 @@ h3 Two tier table header
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Location</span>
+              <i class="chi-icon icon-chevron-down -xs"></i>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>High Utilization</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Elevated Utilization</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Highest %</span>
+              <i class="chi-icon icon-chevron-down -xs"></i>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell"></div>
+            <div class="chi-data-table__cell">
+              <span class="-asociated">Total
+                <i class="chi-icon icon-chevron-down -xs"></i>
+              </span>
+              <span class="-asociated">%
+                <i class="chi-icon icon-chevron-down -xs"></i>
+              </span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span class="-asociated">Total
+                <i class="chi-icon icon-chevron-down -xs"></i>
+              </span>
+              <span class="-asociated">%
+                <i class="chi-icon icon-chevron-down -xs"></i>
+              </span>
+            </div>
+            <div class="chi-data-table__cell"></div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Location">
+              <div>Location 1</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="High Utilization">
+              <div class="-asociated" data-label="Total">3</div>
+              <div class="-asociated" data-label="%">98%</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Elevated Utilization">
+              <div class="-asociated" data-label="Total">-</div>
+              <div class="-asociated" data-label="%">-</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Highest %">
+              <div>98%</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Location">
+              <div>Location 2</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="High Utilization">
+              <div class="-asociated" data-label="Total">1</div>
+              <div class="-asociated" data-label="%">98%</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Elevated Utilization">
+              <div class="-asociated" data-label="Total">3</div>
+              <div class="-asociated" data-label="%">67%</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Highest %">
+              <div>98%</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell" data-label="Location">
+              <div>Location 3</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="High Utilization">
+              <div class="-asociated" data-label="Total">-</div>
+              <div class="-asociated" data-label="%">-</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Elevated Utilization">
+              <div class="-asociated" data-label="Total">2</div>
+              <div class="-asociated" data-label="%">66</div>
+            </div>
+            <div class="chi-data-table__cell" data-label="Highest %">
+              <div>66%</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 results</span></div>
+                <div class="chi-pagination__page-size">
+                  <div class="chi-dropdown">
+                    <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-3">20</button>
+                    <div class="chi-dropdown__menu -w--xs">
+                      <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                      <a class="chi-dropdown__menu-item" href="#">40</a>
+                      <a class="chi-dropdown__menu-item" href="#">60</a>
+                      <a class="chi-dropdown__menu-item" href="#">80</a>
+                      <a class="chi-dropdown__menu-item" href="#">All</a>
+                    </div>
+                  </div>
+                  <span class="chi-pagination__label">per page</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <button class="chi-button -icon -flat" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                  <button class="chi-button -flat" aria-label="Page 1">1</button>
+                  <button class="chi-button -flat" aria-label="Page 2">2</button>
+                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
+                  <button class="chi-button -flat" aria-label="Page 4">4</button>
+                  <button class="chi-button -flat" aria-label="Page 5">5</button>
+                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
+                  <button class="chi-button -flat" aria-label="Page 12">12</button>
+                  <button class="chi-button -icon -flat" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="chi-pagination__end">
+                <div class="chi-pagination__jumper">
+                  <label class="chi-pagination__label" for="jumper-input-19">Go to page:</label>
+                  <input class="chi-input" type="text" id="jumper-input-19" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Portal
@@ -1772,49 +3812,33 @@ h3 Portal
       .chi-data-table__head
         .chi-data-table__row
           .chi-data-table__cell
-             span Name
+            span Name
           .chi-data-table__cell
-            span Email
-          .chi-data-table__cell
-           span Phone Number
-          .chi-data-table__cell
-            span Address
+            span ID
           .chi-data-table__cell
             span Last Login
       .chi-data-table__body
         .chi-data-table__row
           .chi-data-table__cell.-name.-bold
-            div Abe Salazar
+            div Name 1
+          .chi-data-table__cell.-name
+            div name-1
           .chi-data-table__cell
-            div abe.salazar@domain.com
-          .chi-data-table__cell
-            div 555-995-5348
-          .chi-data-table__cell
-            div 8 Glenlake Lane, San Francisco, California, 94107, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 3:26 PM
         .chi-data-table__row
           .chi-data-table__cell.-name.-bold
-            div Ashley Macias
+            div Name 2
+          .chi-data-table__cell.-name
+            div name-2
           .chi-data-table__cell
-            div ashley.macias@domain.com
-          .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 2:38 AM
         .chi-data-table__row
           .chi-data-table__cell.-name.-bold
-            div Cameron Hodge
+            div Name 3
+          .chi-data-table__cell.-name
+            div name-3
           .chi-data-table__cell
-            div cameron.hodge@domain.com
-          .chi-data-table__cell
-            div 509-635-9551
-          .chi-data-table__cell
-            div 7842 Center Rd, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 5, 2020
+            div Nov 5, 2020 10:15 AM
       .chi-data-table__footer
         nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
           .chi-pagination__content
@@ -1846,6 +3870,87 @@ h3 Portal
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -portal -compact">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 Results</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+                <div class="chi-pagination__label">
+                  <strong>2</strong>
+                  <span>of</span>
+                  <strong>3</strong>
+                </div>
+                <div class="chi-pagination__button-group chi-button-group">
+                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="chi-pagination__end"></div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Portal -- Accordion
@@ -1856,55 +3961,39 @@ h3 Portal -- Accordion
         .chi-data-table__row
           .chi-data-table__cell.-expandable
           .chi-data-table__cell
-             span Name
+            span Name
           .chi-data-table__cell
-            span Email
-          .chi-data-table__cell
-           span Phone Number
-          .chi-data-table__cell
-            span Address
+            span ID
           .chi-data-table__cell
             span Last Login
       .chi-data-table__body
         .chi-data-table__row.-collapsed
           .chi-data-table__cell.-expandable
-            i.chi-icon.icon-plus.-xs
+            i.chi-icon.icon-plus.-xs  
           .chi-data-table__cell.-name.-bold
-            div Abe Salazar
+            div Name 1
           .chi-data-table__cell.-name
-            div abe.salazar@domain.com
+            div name-1
           .chi-data-table__cell
-            div 555-995-5348
-          .chi-data-table__cell
-            div 8 Glenlake Lane, San Francisco, California, 94107, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 3:26 PM
         .chi-data-table__row.-collapsed
           .chi-data-table__cell.-expandable
-            i.chi-icon.icon-plus.-xs
+            i.chi-icon.icon-plus.-xs            
           .chi-data-table__cell.-name.-bold
-            div Ashley Macias
+            div Name 2
           .chi-data-table__cell.-name
-            div ashley.macias@domain.com
+            div name-2
           .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 2:38 AM
         .chi-data-table__row.-collapsed
           .chi-data-table__cell.-expandable
-            i.chi-icon.icon-plus.-xs
+            i.chi-icon.icon-plus.-xs            
           .chi-data-table__cell.-name.-bold
-            div Cameron Hodge
+            div Name 3
           .chi-data-table__cell.-name
-            div cameron.hodge@domain.com
+            div name-3
           .chi-data-table__cell
-            div 509-635-9551
-          .chi-data-table__cell
-            div 7842 Center Rd, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 5, 2020
+            div Nov 5, 2020 10:15 AM
       .chi-data-table__footer
         nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
           .chi-pagination__content
@@ -1936,6 +4025,97 @@ h3 Portal -- Accordion
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -portal -compact">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -expandable"></div>
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row -collapsed">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-plus -xs"></i>
+            </div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row -collapsed">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-plus -xs"></i>
+            </div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row -collapsed">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-plus -xs"></i>
+            </div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 Results</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+                <div class="chi-pagination__label">
+                  <strong>2</strong>
+                  <span>of</span>
+                  <strong>3</strong>
+                </div>
+                <div class="chi-pagination__button-group chi-button-group">
+                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="chi-pagination__end"></div>
+            </div>
+          </nav>
+        </div>
       </div>
       
 h3 Portal -- Accordion Expanded
@@ -1946,13 +4126,9 @@ h3 Portal -- Accordion Expanded
         .chi-data-table__row
           .chi-data-table__cell.-expandable
           .chi-data-table__cell
-             span Name
+            span Name
           .chi-data-table__cell
-            span Email
-          .chi-data-table__cell
-           span Phone Number
-          .chi-data-table__cell
-            span Address
+            span ID
           .chi-data-table__cell
             span Last Login
       .chi-data-table__body
@@ -1960,64 +4136,37 @@ h3 Portal -- Accordion Expanded
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-plus.-xs
           .chi-data-table__cell.-name.-bold
-            div Abe Salazar
+            div Name 1
+          .chi-data-table__cell.-name
+            div name-1
           .chi-data-table__cell
-            div abe.salazar@domain.com
-          .chi-data-table__cell
-            div 555-995-5348
-          .chi-data-table__cell
-            div 8 Glenlake Lane, San Francisco, California, 94107, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 3:26 PM
         .chi-data-table__row.-expanded
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-minus.-xs
           .chi-data-table__cell.-name.-bold
-            div Ashley Macias
+            div Name 2
+          .chi-data-table__cell.-name
+            div name-2
           .chi-data-table__cell
-            div ashley.macias@domain.com
-          .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 2:38 AM
         .chi-data-table__row-child
           .chi-data-table__cell.-expandable
           .chi-data-table__cell.-name.-bold
-            div Ashley Macias
+            div Child Name 1
           .chi-data-table__cell.-name
-            div ashley.macias@domain.com
+            div Child name-1
           .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
-        .chi-data-table__row-child
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
-            div Ashley Macias
-          .chi-data-table__cell.-name
-            div ashley.macias@domain.com
-          .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 2:38 AM
         .chi-data-table__row.-collapsed
           .chi-data-table__cell.-expandable
+            i.chi-icon.icon-plus.-xs
           .chi-data-table__cell.-name.-bold
-            div Cameron Hodge
+            div Name 3
           .chi-data-table__cell.-name
-            div cameron.hodge@domain.com
+            div name-3
           .chi-data-table__cell
-            div 509-635-9551
-          .chi-data-table__cell
-            div 7842 Center Rd, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 5, 2020
+            div Nov 5, 2020 10:15 AM
       .chi-data-table__footer
         nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
           .chi-pagination__content
@@ -2049,6 +4198,109 @@ h3 Portal -- Accordion Expanded
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -portal -compact">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -expandable"></div>
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row -collapsed">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-plus -xs"></i>
+            </div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row -expanded">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-minus -xs"></i>
+            </div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row-child">
+            <div class="chi-data-table__cell -expandable"></div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Child Name 1</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>Child name-1</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row -collapsed">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-plus -xs"></i>
+            </div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 Results</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+                <div class="chi-pagination__label">
+                  <strong>2</strong>
+                  <span>of</span>
+                  <strong>3</strong>
+                </div>
+                <div class="chi-pagination__button-group chi-button-group">
+                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="chi-pagination__end"></div>
+            </div>
+          </nav>
+        </div>
       </div>
       
 h3 Portal -- Accordion Expanded -- Child
@@ -2059,13 +4311,9 @@ h3 Portal -- Accordion Expanded -- Child
         .chi-data-table__row
           .chi-data-table__cell.-expandable
           .chi-data-table__cell
-             span Name
+            span Name
           .chi-data-table__cell
-            span Email
-          .chi-data-table__cell
-           span Phone Number
-          .chi-data-table__cell
-            span Address
+            span ID
           .chi-data-table__cell
             span Last Login
       .chi-data-table__body
@@ -2073,65 +4321,45 @@ h3 Portal -- Accordion Expanded -- Child
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-plus.-xs
           .chi-data-table__cell.-name.-bold
-            div Abe Salazar
+            div Name 1
+          .chi-data-table__cell.-name
+            div name-1
           .chi-data-table__cell
-            div abe.salazar@domain.com
-          .chi-data-table__cell
-            div 555-995-5348
-          .chi-data-table__cell
-            div 8 Glenlake Lane, San Francisco, California, 94107, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 3:26 PM
         .chi-data-table__row.-expanded
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-minus.-xs
           .chi-data-table__cell.-name.-bold
-            div Ashley Macias
+            div Name 2
+          .chi-data-table__cell.-name
+            div name-2
           .chi-data-table__cell
-            div ashley.macias@domain.com
-          .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 2:38 AM
         .chi-data-table__row-child.-collapsed
           .chi-data-table__cell.-expandable
           .chi-data-table__cell.-name.-bold
-            div Ashley Macias
+            div Child Name 1
           .chi-data-table__cell.-name
-            div ashley.macias@domain.com
+            div Child name-1
           .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 2:38 AM
         .chi-data-table__row-child.-collapsed
           .chi-data-table__cell.-expandable
           .chi-data-table__cell.-name.-bold
-            div Ashley Macias
+            div Child Name 2
           .chi-data-table__cell.-name
-            div ashley.macias@domain.com
+            div Child name-2
           .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 2:38 AM
         .chi-data-table__row.-collapsed
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-plus.-xs
           .chi-data-table__cell.-name.-bold
-            div Cameron Hodge
+            div Name 3
+          .chi-data-table__cell.-name
+            div name-3
           .chi-data-table__cell
-            div cameron.hodge@domain.com
-          .chi-data-table__cell
-            div 509-635-9551
-          .chi-data-table__cell
-            div 7842 Center Rd, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 5, 2020
+            div Nov 5, 2020 10:15 AM
       .chi-data-table__footer
         nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
           .chi-pagination__content
@@ -2163,6 +4391,121 @@ h3 Portal -- Accordion Expanded -- Child
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -portal -compact">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -expandable"></div>
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row -collapsed">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-plus -xs"></i>
+            </div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row -expanded">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-minus -xs"></i>
+            </div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row-child -collapsed">
+            <div class="chi-data-table__cell -expandable"></div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Child Name 1</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>Child name-1</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row-child -collapsed">
+            <div class="chi-data-table__cell -expandable"></div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Child Name 2</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>Child name-2</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row -collapsed">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-plus -xs"></i>
+            </div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 Results</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+                <div class="chi-pagination__label">
+                  <strong>2</strong>
+                  <span>of</span>
+                  <strong>3</strong>
+                </div>
+                <div class="chi-pagination__button-group chi-button-group">
+                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="chi-pagination__end"></div>
+            </div>
+          </nav>
+        </div>
       </div>
 
 h3 Portal -- Accordion Expanded -- Child Expanded
@@ -2175,11 +4518,7 @@ h3 Portal -- Accordion Expanded -- Child Expanded
           .chi-data-table__cell
              span Name
           .chi-data-table__cell
-            span Email
-          .chi-data-table__cell
-           span Phone Number
-          .chi-data-table__cell
-            span Address
+            span ID
           .chi-data-table__cell
             span Last Login
       .chi-data-table__body
@@ -2187,113 +4526,53 @@ h3 Portal -- Accordion Expanded -- Child Expanded
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-plus.-xs
           .chi-data-table__cell.-name.-bold
-            div Abe Salazar
+            div Name 1
+          .chi-data-table__cell.-name
+            div name-1
           .chi-data-table__cell
-            div abe.salazar@domain.com
-          .chi-data-table__cell
-            div 555-995-5348
-          .chi-data-table__cell
-            div 8 Glenlake Lane, San Francisco, California, 94107, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 3:26 PM
         .chi-data-table__row.-expanded
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-minus.-xs
           .chi-data-table__cell.-name.-bold
-            div Ashley Macias
+            div Name 2
+          .chi-data-table__cell.-name
+            div name-2
           .chi-data-table__cell
-            div ashley.macias@domain.com
-          .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 2:38 AM
         .chi-data-table__row-child.-expanded
           .chi-data-table__cell.-expandable
           .chi-data-table__cell.-name.-bold
-            div Ashley Macias
+            div Child Name 1
+          .chi-data-table__cell.-name
+            div Child name-1
           .chi-data-table__cell
-            div ashley.macias@domain.com
-          .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 2:38 AM
         .chi-data-table__row-grand-child
           .chi-data-table__cell.-expandable
           .chi-data-table__cell.-name.-bold
-            div Ashley Macias
+            div Grand-child Name 1
+          .chi-data-table__cell.-name
+            div Grand-child name-1
           .chi-data-table__cell
-            div ashley.macias@domain.com
-          .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
-        .chi-data-table__row-grand-child
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
-            div Ashley Macias
-          .chi-data-table__cell
-            div ashley.macias@domain.com
-          .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
-        .chi-data-table__row-grand-child
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
-            div Ashley Macias
-          .chi-data-table__cell
-            div ashley.macias@domain.com
-          .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
-        .chi-data-table__row-grand-child
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
-            div Ashley Macias
-          .chi-data-table__cell
-            div ashley.macias@domain.com
-          .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 2:38 AM
         .chi-data-table__row-child.-collapsed
           .chi-data-table__cell.-expandable
           .chi-data-table__cell.-name.-bold
-            div Ashley Macias
+            div Child Name 2
+          .chi-data-table__cell.-name
+            div Child name-2
           .chi-data-table__cell
-            div ashley.macias@domain.com
-          .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
+            div Dec 18, 2020 2:38 AM
         .chi-data-table__row.-collapsed
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-plus.-xs
           .chi-data-table__cell.-name.-bold
-            div Cameron Hodge
+            div Name 3
+          .chi-data-table__cell.-name
+            div name-3
           .chi-data-table__cell
-            div cameron.hodge@domain.com
-          .chi-data-table__cell
-            div 509-635-9551
-          .chi-data-table__cell
-            div 7842 Center Rd, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 5, 2020
+            div Nov 5, 2020 10:15 AM
       .chi-data-table__footer
         nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
           .chi-pagination__content
@@ -2326,6 +4605,135 @@ h3 Portal -- Accordion Expanded -- Child Expanded
     :code(lang='html')
       <div class="chi-data-table -portal -compact">
       </div>
+      
+      <div class="chi-data-table -portal -compact">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell -expandable"></div>
+            <div class="chi-data-table__cell">
+              <span>Name</span></div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row -collapsed">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-plus -xs"></i>
+            </div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 1</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-1</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 3:26 PM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row -expanded">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-minus -xs"></i>
+            </div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 2</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-2</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row-child -expanded">
+            <div class="chi-data-table__cell -expandable"></div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Child Name 1</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>Child name-1</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row-grand-child">
+            <div class="chi-data-table__cell -expandable"></div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Grand-child Name 1</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>Grand-child name-1</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row-child -collapsed">
+            <div class="chi-data-table__cell -expandable"></div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Child Name 2</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>Child name-2</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Dec 18, 2020 2:38 AM</div>
+            </div>
+          </div>
+          <div class="chi-data-table__row -collapsed">
+            <div class="chi-data-table__cell -expandable">
+              <i class="chi-icon icon-plus -xs"></i>
+            </div>
+            <div class="chi-data-table__cell -name -bold">
+              <div>Name 3</div>
+            </div>
+            <div class="chi-data-table__cell -name">
+              <div>name-3</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Nov 5, 2020 10:15 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__footer">
+          <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+            <div class="chi-pagination__content">
+              <div class="chi-pagination__start">
+                <div class="chi-pagination__results">
+                  <span class="chi-pagination__label">240 Results</span>
+                </div>
+              </div>
+              <div class="chi-pagination__center">
+                <div class="chi-pagination__button-group chi-button-group">
+                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+                <div class="chi-pagination__label">
+                  <strong>2</strong>
+                  <span>of</span>
+                  <strong>3</strong>
+                </div>
+                <div class="chi-pagination__button-group chi-button-group">
+                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="chi-pagination__end"></div>
+            </div>
+          </nav>
+        </div>
+      </div>
 
 h3 Portal -- Compact -- Empty
 .example.-mb--3
@@ -2334,13 +4742,9 @@ h3 Portal -- Compact -- Empty
       .chi-data-table__head
         .chi-data-table__row
           .chi-data-table__cell
-             span Name
+            span Name
           .chi-data-table__cell
-            span Email
-          .chi-data-table__cell
-           span Phone Number
-          .chi-data-table__cell
-            span Address
+            span ID
           .chi-data-table__cell
             span Last Login
       .chi-data-table__body
@@ -2357,7 +4761,25 @@ h3 Portal -- Compact -- Empty
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
       <div class="chi-data-table -portal -compact">
-      </div>    
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <span>Name</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>ID</span>
+            </div>
+            <div class="chi-data-table__cell">
+              <span>Last Login</span>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row-empty">
+            <div>No matches found. Please revise search criteria and try again.</div>
+          </div>
+        </div>
+      </div>  
 
 h3 Portal -- Complex example
 .example.-mb--3
@@ -2449,6 +4871,43 @@ h3 Portal -- Complex example
             div JFE890-984J
           .chi-data-table__cell.-name
             div Pending Activate
+          .chi-data-table__cell.-name
+            div 543-723-8733
+          .chi-data-table__cell.-name
+            div 4 W Chapel St, San Jose, California, 95129, USA
+          .chi-data-table__cell
+            div April 8, 2020
+        .chi-data-table__row-child.-collapsed
+          .chi-data-table__cell.-expandable
+          .chi-data-table__cell.-name.-bold
+            div GHF89-DD | Pine Boulevard Station
+          .chi-data-table__cell.-name
+            div Active
+          .chi-data-table__cell.-name
+            div 543-723-8733
+          .chi-data-table__cell.-name
+            div 4 W Chapel St, San Jose, California, 95129, USA
+          .chi-data-table__cell
+            div April 8, 2020
+        .chi-data-table__row-child.-collapsed
+          .chi-data-table__cell.-expandable
+          .chi-data-table__cell.-name.-bold
+            div KOL89-EF | Gilbert Street Station super long name
+          .chi-data-table__cell.-name
+            div Pending Activate
+          .chi-data-table__cell.-name
+            div 543-723-8733
+          .chi-data-table__cell
+            div 4 W Chapel St, San Jose, California, 95129, USA
+          .chi-data-table__cell
+            div April 8, 2020
+        .chi-data-table__row.-expanded
+          .chi-data-table__cell.-expandable
+            i.chi-icon.icon-minus.-xs
+          .chi-data-table__cell.-name.-bold
+            div FJD983-DS849 | Western Regional Main Internet
+          .chi-data-table__cell.-name
+            div Pending Activate
           .chi-data-table__cell
             div 543-723-8733
           .chi-data-table__cell
@@ -2461,7 +4920,19 @@ h3 Portal -- Complex example
             div GHF89-DD | Pine Boulevard Station
           .chi-data-table__cell.-name
             div Active
+          .chi-data-table__cell.-name
+            div 543-723-8733
           .chi-data-table__cell
+            div 4 W Chapel St, San Jose, California, 95129, USA
+          .chi-data-table__cell
+            div April 8, 2020
+        .chi-data-table__row-grand-child
+          .chi-data-table__cell.-expandable
+          .chi-data-table__cell.-name.-bold
+            div FJD983-JFE890-HFKE84-567ASuper WrappingBoldtitle | Western Main
+          .chi-data-table__cell.-name
+            div ashley.macias@domain.com
+          .chi-data-table__cell.-name
             div 543-723-8733
           .chi-data-table__cell
             div 4 W Chapel St, San Jose, California, 95129, USA
@@ -2471,7 +4942,7 @@ h3 Portal -- Complex example
           .chi-data-table__cell.-expandable
           .chi-data-table__cell.-name.-bold
             div Ashley Macias
-          .chi-data-table__cell
+          .chi-data-table__cell.-name
             div ashley.macias@domain.com
           .chi-data-table__cell
             div 543-723-8733
@@ -2482,31 +4953,19 @@ h3 Portal -- Complex example
         .chi-data-table__row-grand-child
           .chi-data-table__cell.-expandable
           .chi-data-table__cell.-name.-bold
-            div Ashley Macias
-          .chi-data-table__cell
+            div 8-FJFIFE4328 | Western Regional Main Super Long Customer Created Name
+          .chi-data-table__cell.-name
             div ashley.macias@domain.com
-          .chi-data-table__cell
+          .chi-data-table__cell.-name
             div 543-723-8733
-          .chi-data-table__cell
+          .chi-data-table__cell.-name
             div 4 W Chapel St, San Jose, California, 95129, USA
           .chi-data-table__cell
             div April 8, 2020
         .chi-data-table__row-grand-child
           .chi-data-table__cell.-expandable
           .chi-data-table__cell.-name.-bold
-            div Ashley Macias
-          .chi-data-table__cell
-            div ashley.macias@domain.com
-          .chi-data-table__cell
-            div 543-723-8733
-          .chi-data-table__cell
-            div 4 W Chapel St, San Jose, California, 95129, USA
-          .chi-data-table__cell
-            div April 8, 2020
-        .chi-data-table__row-grand-child
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
-            div Ashley Macias
+            div LKD983-DS849 | Headquarters Active super long name
           .chi-data-table__cell
             div ashley.macias@domain.com
           .chi-data-table__cell
@@ -2521,7 +4980,7 @@ h3 Portal -- Complex example
             div KOL89-EF | Gilbert Street Station
           .chi-data-table__cell.-name
             div Pending Activate
-          .chi-data-table__cell
+          .chi-data-table__cell.-name
             div 543-723-8733
           .chi-data-table__cell
             div 4 W Chapel St, San Jose, California, 95129, USA

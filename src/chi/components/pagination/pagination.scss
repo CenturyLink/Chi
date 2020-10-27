@@ -423,6 +423,14 @@ $icon-sizes: (
         }
       }
     }
+
+    .chi-pagination__start {
+      .chi-pagination__results {
+        .chi-pagination__label {
+          margin-left: 0;
+        }
+      }
+    }
   }
 
   &.-inverse {

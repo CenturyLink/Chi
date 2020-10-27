@@ -88,6 +88,14 @@ $sizes: (
       flex-direction: column;
     }
 
+    .chi-data-table__row {
+      &.-expanded {
+        .chi-data-table__cell {
+          border-bottom-color: transparent;
+        }
+      }
+    }
+
     .chi-data-table__cell {
       display: flex;
       padding: 0.25rem 0.75rem;
@@ -116,11 +124,8 @@ $sizes: (
   }
 
   &__footer {
-    display: none;
-
     @include respond-to(md) {
       background-color: $color-background-white;
-      display: block;
       padding: 1.5rem 1rem;
     }
   }
@@ -374,10 +379,10 @@ $sizes: (
   &.-portal {
     .chi-data-table__head {
       @include respond-to(md) {
-        background-color: $color-background-base-darkest;
+        background-color: $color-background-base-darker;
 
         .chi-data-table__row {
-          background-color: $color-background-base-darkest;
+          background-color: $color-background-base-darker;
 
           .chi-data-table__cell {
             border-bottom: 0.0625rem solid $color-border-base-dark;
@@ -401,7 +406,7 @@ $sizes: (
         }
 
         &-empty {
-          border: 0.0625rem solid $color-background-base-darkest;
+          border: 0.0625rem solid $color-background-base-darker;
         }
 
         &.-active {
@@ -438,9 +443,12 @@ $sizes: (
     }
 
     .chi-data-table__footer {
+      display: none;
+
       @include respond-to(md) {
-        background-color: $color-background-base-darker;
-        padding: 0.5rem 0.25rem;
+        background-color: $color-background-base-dark;
+        display: block;
+        padding: 0.5rem 0.75rem;
 
         .chi-pagination__content {
           .chi-pagination__center {
@@ -609,16 +617,21 @@ $sizes: (
       position: relative;
 
       &::after {
+        align-items: center;
+        background-color: $color-background-base;
+        border-radius: 1rem;
         color: $color-icon-base;
         content: '\e920';
+        display: flex;
         font-family: 'chi';
         font-size: $font-size-lg;
-        height: 1rem;
+        height: 2rem;
+        justify-content: center;
         position: absolute;
         right: 1rem;
-        top: 50%;
+        top: calc(50% - 0.5rem);
         transform: translateY(-0.5rem);
-        width: 0.75rem;
+        width: 2rem;
 
         @include respond-to(md) {
           display: none;
@@ -681,7 +694,7 @@ $sizes: (
         background-color: $color-background-base-darker;
         font-size: $font-size-xs;
         line-height: 0.875rem;
-        padding: 0.75rem 1rem 0.75rem 3rem;
+        padding: 0.75rem 3rem;
 
         @include respond-to(md) {
           background-color: $color-background-primary-light;
