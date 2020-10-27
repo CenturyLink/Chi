@@ -169,7 +169,7 @@ describe('mobile-nav-menu', function() {
   });
 
   describe('Back button functionality ', () => {
-    it('check that click on back button  in right drawer ', () => {
+    it('check that click on back button closes second level drawer ', () => {
       cy.get('#mobile-navigation-interaction-trigger')
         .click();
       cy.get('.chi-mobile-nav__first-level-content')
