@@ -55,14 +55,15 @@ export default class Pagination extends Vue {
   }
 
   _goToPage(pageChange: HTMLElement) {
-    let pageToGo;
+    let pageToGo: number | null = null;
+
     for (
       let cur = pageChange;
       cur && !cur.classList.contains(buttonGroupClass);
       cur = cur.parentNode as HTMLElement
     ) {
       if (cur.nodeName === 'BUTTON') {
-        pageToGo = cur.dataset.page;
+        pageToGo = cur.dataset.page ? parseInt(cur.dataset.page) : null;
       }
     }
     this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageToGo);
@@ -76,9 +77,9 @@ export default class Pagination extends Vue {
     this.$emit(PAGINATION_EVENTS.PAGE_SIZE, size);
   }
 
-  addPage(page: string, icon = '', state = '') {
-    let pageToGo;
-    let ariaLabel;
+  addPage(page: number | null, icon = '', state = '') {
+    let pageToGo : number | null = null;
+    let ariaLabel = '';
 
     if (page) {
       pageToGo = page;
@@ -112,7 +113,7 @@ export default class Pagination extends Vue {
         ${BUTTON_CLASSES.FLAT}
         ${this.inverse ? LIGHT_CLASS : ''}
         ${icon ? BUTTON_CLASSES.ICON_BUTTON : ''}
-        ${page === this.currentPage.toString() ? ACTIVE_CLASS : ''}
+        ${page === this.currentPage ? ACTIVE_CLASS : ''}
         ${this.size ? `-${this.size}` : ''}
         `}
         onClick={(ev: Event) => {
@@ -203,11 +204,11 @@ export default class Pagination extends Vue {
         </div>
       ) : null;
     this._startPage = this.firstLast
-      ? this.addPage('', 'page-first', this.currentPage === 1 ? 'disabled' : '')
+      ? this.addPage(null, 'page-first', this.currentPage === 1 ? 'disabled' : '')
       : null;
     this._lastPage = this.firstLast
       ? this.addPage(
-          '',
+        null,
           'page-last',
           this.currentPage === this.pages ? 'disabled' : ''
         )
@@ -255,7 +256,7 @@ export default class Pagination extends Vue {
         if (this._lastRenderedPage) {
           if (pageIndex - this._lastRenderedPage === 2) {
             this._pagesToRender.push(
-              this.addPage((this._lastRenderedPage + 1).toString())
+              this.addPage(this._lastRenderedPage + 1)
             );
           } else if (pageIndex - this._lastRenderedPage !== 1) {
             const truncateDots = (
@@ -275,7 +276,7 @@ export default class Pagination extends Vue {
             this._pagesToRender.push(truncateDots);
           }
         }
-        this._pagesToRender.push(this.addPage(pageIndex.toString()));
+        this._pagesToRender.push(this.addPage(pageIndex));
         this._lastRenderedPage = pageIndex;
       }
     }
@@ -307,13 +308,13 @@ export default class Pagination extends Vue {
             <div class={buttonGroupClass}>
               {this._startPage}
               {this.addPage(
-                '',
+                null,
                 'chevron-left',
                 this.currentPage === 1 ? 'disabled' : ''
               )}
               {this._pagesToRender}
               {this.addPage(
-                '',
+                null,
                 'chevron-right',
                 this.currentPage === this.pages ? 'disabled' : ''
               )}
