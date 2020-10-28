@@ -3,22 +3,35 @@ h3 Base
 .example.-mb--3
   .-p--3
     .-py--2
-      .chi-label(id='example-1') 0%
-      progress.chi-progress(aria-labelledby='example-1', value='0', max='100')
+      .chi-label 0%
+      chi-progress(value='0', max='100')
     .-py--2
-      .chi-label(id='example-2') 50%
-      progress.chi-progress(aria-labelledby='example-2', value='50', max='100')
+      .chi-label 50%
+      chi-progress(value='50', max='100')
     .-py--2
-      .chi-label(id='example-3') 100%
-      progress.chi-progress(aria-labelledby='example-3', value='100', max='100')
+      .chi-label 100%
+      chi-progress(value='100', max='100')
   .example-tabs.-pl--2
     ul.chi-tabs#examples-base
-      li.-disabled
-        a(href=`#webcomponent-base`) Web Component
       li.-active
+        a(href=`#webcomponent-base`) Web Component
+      li
         a(href=`#html-base`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-base
-  .chi-tabs-panel.-active#html-base
+  .chi-tabs-panel#webcomponent-base.-active
+    :code(lang="html")
+      <!-- 0% -->
+      <div class="chi-label">0%</div>
+      <chi-progress value="0" max="100"></chi-progress>
+
+      <!-- 50% -->
+      <div class="chi-label">50%</div>
+      <chi-progress value="50" max="100"></chi-progress>
+
+      <!-- 100% -->
+      <div class="chi-label">100%</div>
+      <chi-progress value="100" max="100"></chi-progress>
+
+  .chi-tabs-panel#html-base
     .chi-tab__description
       | To render a progress element, use the <code>progress</code> HTML5 tag.
       | Set the value attribute to the amount of work complete.
@@ -43,22 +56,34 @@ p.-text
 .example.-mb--3
   .-p--3
     .-py--2
-      .chi-label(id='example-7') Success
-      progress.chi-progress.-success(aria-labelledby='example-7', value='75', max='100')
+      .chi-label Success
+      chi-progress(value='75' max='100' state='success')
     .-py--2
-      .chi-label(id='example-6') Warning
-      progress.chi-progress.-warning(aria-labelledby='example-6', value='75', max='100')
+      .chi-label Warning
+      chi-progress(value='50' max='100' state='warning')
     .-py--2
-      .chi-label(id='example-4') Danger
-      progress.chi-progress.-danger(aria-labelledby='example-4', value='75', max='100')
+      .chi-label Danger
+      chi-progress(value='25' max='100' state='danger')
   .example-tabs.-pl--2
     ul.chi-tabs#examples-states
-      li.-disabled
-        a(href=`#webcomponent-states`) Web Component
       li.-active
+        a(href=`#webcomponent-states`) Web Component
+      li
         a(href=`#html-states`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-states
-  .chi-tabs-panel.-active#html-states
+  .chi-tabs-panel.-active#webcomponent-states
+    :code(lang="html")
+      <!-- Success -->
+      <div class="chi-label">Success</div>
+      <chi-progress value="75" max="100" state="success"></chi-progress>
+
+      <!-- Warning -->
+      <div class="chi-label">Warning</div>
+      <chi-progress value="50" max="100" state="warning"></chi-progress>
+
+      <!-- Danger -->
+      <div class="chi-label">Danger</div>
+      <chi-progress value="25" max="100" state="danger"></chi-progress>
+  .chi-tabs-panel#html-states
     :code(lang="html")
       <!-- Success -->
       <div class="chi-label" id="example-5">Success</div>
@@ -66,11 +91,11 @@ p.-text
 
       <!-- Warning -->
       <div class="chi-label" id="example-6">Warning</div>
-      <progress aria-labelledby="example-6" class="-warning" value="75" max="100"></progress>
+      <progress aria-labelledby="example-6" class="-warning" value="50" max="100"></progress>
 
       <!-- Danger -->
       <div class="chi-label" id="example-7">Danger</div>
-      <progress aria-labelledby="example-7" class="-danger" value="75" max="100"></progress>
+      <progress aria-labelledby="example-7" class="-danger" value="25" max="100"></progress>
 
 script.
     document.addEventListener(

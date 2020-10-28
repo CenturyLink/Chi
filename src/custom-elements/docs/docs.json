@@ -2180,7 +2180,7 @@
         },
         {
           "name": "value",
-          "type": "string",
+          "type": "number",
           "mutable": false,
           "attr": "value",
           "reflectToAttr": true,
@@ -2188,7 +2188,7 @@
           "docsTags": [],
           "values": [
             {
-              "type": "string"
+              "type": "number"
             }
           ],
           "optional": false,
