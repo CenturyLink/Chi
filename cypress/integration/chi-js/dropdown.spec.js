@@ -41,16 +41,22 @@ describe('Dropdown', function() {
         });
     })
 
-   
     describe('Open and closing functionality test for animated dropdown', function() {
         it('Dropdown menu should open when dropdown trigger is clicked', () => {  
             cy.get('[data-cy="dropdown-animate"]')
             .click()
-            .should('have.class', '-active')
-            .find('+.chi-dropdown__menu')
-            .should('have.class', '-active')
-            .should('be.visible')
-            
+            .wait(500)
+            .then($els => {
+              const win = $els[0].ownerDocument.defaultView;
+              const before = win.getComputedStyle($els[0], 'after');
+              const tr = before.transform;
+              const values = tr.split('(')[1].split(')')[0].split(',');
+              const a = values[0];
+              const b = values[1];
+              const angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
+
+              expect(angle).to.equal(180);
+            });
         });
     
         it('Dropdown menu should close when dropdown trigger is clicked twice', () => {  
