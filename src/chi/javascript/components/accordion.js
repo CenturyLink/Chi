@@ -12,6 +12,7 @@ const EVENTS = {
   SHOW: 'chi.accordion.show',
   HIDE: 'chi.accordion.hide'
 };
+const EXPAND_ANIMATION_DURATION = 200;
 
 class Accordion extends Component {
   constructor(elem, config) {
@@ -21,7 +22,6 @@ class Accordion extends Component {
     this._content = elem.querySelector(`.${CONTENT_CLASS}`);
     this._expanded = Util.hasClass(elem, chi.classes.EXPANDED);
     this._childAccordions = [];
-    
 
     this._initAccordion();
     this._initInnerAccordions();
@@ -33,15 +33,15 @@ class Accordion extends Component {
     });
   }
 
-  _resizeParentAccordions(e, action) {
-    const resizedAccordionContent = e.querySelector(`.${CONTENT_CLASS}`);
+  _resizeParentAccordions(elem, action) {
+    const resizedAccordionContent = elem.querySelector(`.${CONTENT_CLASS}`);
     const resizedAccordionContentHeight = parseInt(Util.calculateHiddenElementHeight(resizedAccordionContent));
 
-    for (let cur = e.parentNode;
-      cur && cur.nodeName !== 'BODY';
-      cur = cur.parentNode) {
-        if (cur.classList.contains(COMPONENT_CLASS)) {
-          const content = cur.querySelector(`.${CONTENT_CLASS}`);
+    for (let current = elem.parentNode;
+      current && current.nodeName !== 'BODY';
+      current = current.parentNode) {
+        if (current.classList.contains(COMPONENT_CLASS)) {
+          const content = current.querySelector(`.${CONTENT_CLASS}`);
           const contentHeight = parseInt(content.style.height);
           let newHeight;
 
@@ -53,16 +53,15 @@ class Accordion extends Component {
 
           content.style.height = `${newHeight}px`;
       }
-      if (cur.classList.contains(COMPONENT_CLASS) &&
-        !cur.classList.contains(CHILD_ACCORDION_CLASS)) {
+      if (current.classList.contains(COMPONENT_CLASS) &&
+        !current.classList.contains(CHILD_ACCORDION_CLASS)) {
           break;
       }
     }
   }
 
   _initInnerAccordions() {
-    const self = this;
-    const childAccordions = self._content.getElementsByClassName(COMPONENT_CLASS);
+    const childAccordions = this._content.getElementsByClassName(COMPONENT_CLASS);
 
     if (childAccordions) {
       Array.prototype.forEach.call(
@@ -95,7 +94,7 @@ class Accordion extends Component {
       this._elem.dispatchEvent(
         Util.createEvent(EVENTS.SHOW)
       );
-      
+
       Util.threeStepsAnimation(
         () => {
           Util.addClass(contentElem, chi.classes.TRANSITIONING);
@@ -107,7 +106,8 @@ class Accordion extends Component {
           contentElem.style.opacity = '1';
         }, () => {
           Util.removeClass(contentElem, chi.classes.TRANSITIONING);
-        }, 75
+          contentElem.style.removeProperty('height');
+        }, EXPAND_ANIMATION_DURATION
       );
 
       this._expanded = true;
@@ -116,6 +116,7 @@ class Accordion extends Component {
 
   hide() {
     const contentElem = this._content;
+    let contentHeight = Util.calculateHiddenElementHeight(contentElem);
 
     if (this._expanded) {
       this._resizeParentAccordions(this._elem, 'hide');
@@ -126,6 +127,7 @@ class Accordion extends Component {
         () => {
           Util.checkAddClass(contentElem, chi.classes.TRANSITIONING);
           contentElem.style.opacity = '1';
+          contentElem.style.height = contentHeight;
         }, () => {
           contentElem.style.height = '0px';
           contentElem.style.opacity = '0.5';
@@ -134,7 +136,7 @@ class Accordion extends Component {
           contentElem.style.removeProperty('height');
           contentElem.style.removeProperty('opacity');
           Util.checkRemoveClass(contentElem, chi.classes.TRANSITIONING);
-        }, 75
+        }, EXPAND_ANIMATION_DURATION
       );
 
       this._expanded = false;

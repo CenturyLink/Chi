@@ -1,6 +1,8 @@
 @import '_variables';
 @import '_mixins';
 
+$animation-duration: 0.2s;
+
 $sizes: (
   sm: (
     font-size: $font-size-sm,
@@ -55,7 +57,6 @@ $icon-sizes: (
 
   @each $type in map-keys($icon-sizes) {
     &.-#{$type} {
-
       & .chi-icon {
         font-size: map-get($icon-sizes, $type);
         height: map-get($icon-sizes, $type);
@@ -95,7 +96,7 @@ $icon-sizes: (
     }
 
     .icon-chevron-down {
-      transition-duration: 0.2s;
+      transition-duration: $animation-duration;
     }
   }
 
@@ -104,7 +105,7 @@ $icon-sizes: (
     overflow: hidden;
     padding: 0 1rem;
     padding-top: 0;
-    transition: height 0.075s ease-out;
+    transition: height $animation-duration ease-out;
 
     &.-transitioning {
       display: block;
@@ -119,7 +120,7 @@ $icon-sizes: (
     & > .chi-accordion__trigger {
       .icon-chevron-down {
         transform: rotate(180deg);
-        transition: transform 0.2s ease-in-out;
+        transition: transform $animation-duration ease-in-out;
       }
     }
   }

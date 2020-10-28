@@ -428,11 +428,12 @@ export class Util {
   }
 
   static calculateHiddenElementHeight(elem) {
+    const elemInitialDisplay = window.getComputedStyle(elem).display;
     let elemHeight;
 
     elem.style.position = 'absolute';
     elem.style.visibility = 'hidden';
-    elem.style.display = 'block';
+    elem.style.display = elemInitialDisplay !== 'none' ? elemInitialDisplay : 'block';
     elemHeight = window.getComputedStyle(elem).height;
     elem.style.removeProperty('display');
     elem.style.removeProperty('visibility');
