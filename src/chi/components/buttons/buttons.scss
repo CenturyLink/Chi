@@ -491,24 +491,17 @@ $sizes: (
         box-shadow: none;
         color: map-get(map-get($button-colors, $color), text-color-outline);
 
-        &:hover,
-        &.-hover {
-          border: $border solid map-get(map-get($button-colors, $color), border-color);
-        }
-
-        &:active,
-        &.-active {
-          background-color: transparent;
-          border: $border solid map-get(map-get($button-colors, $color), border-color);
-          box-shadow: none;
-        }
-
-        &.-no-hover {
-          &:active,
-          &.-active,
+        &:not(.-no-hover) {
           &:hover,
           &.-hover {
-            border-color: transparent;
+            border: $border solid map-get(map-get($button-colors, $color), border-color);
+          }
+
+          &:active,
+          &.-active {
+            background-color: transparent;
+            border: $border solid map-get(map-get($button-colors, $color), border-color);
+            box-shadow: none;
           }
         }
 

@@ -1,5 +1,5 @@
 # CHANGELOG
-## 3.3.0 (TBD)
+## 3.3.0 (October 29, 2020)
 ### Components
 #### Added
 * Added: Form inputs now support Help icon buttons to display helpful information about an input in a popover.
@@ -10,6 +10,11 @@
 * Changed: Checkbox display from block to flex to support required and help states.
 * Changed: Form items with -row layout now apply a padding-right to child input labels to eliminate need for a spacing utility class.
 * Changed: Form items with label wrapper now style icons using a child combinator instead of a descendant combinator to support help icon buttons.
+* Changed: Select component class has been renamed from `chi-input` to `chi-select`.
+* Changed: File input component class has been renamed from `chi-input` to `chi-file-input`.
+* Changed: Range slider component class has been renamed from `chi-input` to `chi-range-slider`.
+* Changed: Text input component styles have been optimized to reduce chi.css file size.
+* Changed: Button group component styles have been optimized to reduce chi.css file size.
 #### Fixed
 * Fixed: Label required asterisk color no longer fails color contrast test.
 * Fixed: Textarea web component specific styles were not loading due to an incorrect :host() psuedo-class.

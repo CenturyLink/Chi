@@ -1,13 +1,13 @@
 h2 Examples
 p.-text
-  | To render a select, apply the class <code>chi-input</code> to a <code>select</code>.
+  | To render a select, apply the class <code>chi-select</code> to a <code>select</code>.
 
 h3 Base
 .example.-mb--3
   .-p--3
     .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example-base") Label
-      select(class="chi-input", id="example-base")
+      select(class="chi-select", id="example-base")
         option(selected disabled hidden) Base Select
         option Option 1
         option Option 2
@@ -23,7 +23,7 @@ h3 Base
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="example-base">Label</label>
-        <select class="chi-input" id="example-base">
+        <select class="chi-select" id="example-base">
           <option>Base Select</option>
         </select>
       </div>
@@ -33,7 +33,7 @@ h3 Disabled
   .-p--3
     .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example-disabled") Label
-      select(class="chi-input", id="example-disabled", disabled)
+      select(class="chi-select", id="example-disabled", disabled)
         option Disabled Select
   .example-tabs.-pl--2
     ul.chi-tabs#example-select-disabled
@@ -46,7 +46,7 @@ h3 Disabled
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="example-disabled">Label</label>
-        <select class="chi-input" id="example-disabled" disabled>
+        <select class="chi-select" id="example-disabled" disabled>
           <option>Disabled Select</option>
         </select>
       </div>
@@ -59,7 +59,7 @@ p.-text
   .-p--3
     .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example-invalid") Label
-      select(class="chi-input -danger", id="example-invalid")
+      select(class="chi-select -danger", id="example-invalid")
         option Danger Select
       .chi-label.-status.-danger This is an invalid label
   .example-tabs.-pl--2
@@ -73,7 +73,7 @@ p.-text
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="example-invalid">Label</label>
-        <select class="chi-input -danger" id="example-invalid">
+        <select class="chi-select -danger" id="example-invalid">
           <option>Invalid Select</option>
         </select>
         <div class="chi-label -status -danger">This is an invalid label</div>
@@ -89,7 +89,7 @@ p.-text
       div(class=`-p--2`)
         .chi-form__item(style="max-width:20rem")
           label.chi-label(for=`example-size${size}`) Label
-          select(class=`chi-input ${size}`, id=`example-size${size}`)
+          select(class=`chi-select ${size}`, id=`example-size${size}`)
             option(selected disabled hidden)=`${size} Select`
             option Option 1
             option Option 2
@@ -106,7 +106,7 @@ p.-text
       <!-- sm -->
       <div class="chi-form__item">
         <label class="chi-label" for="example-size-sm">Label</label>
-        <select class="chi-input -sm" id="example-size-sm">
+        <select class="chi-select -sm" id="example-size-sm">
           <option>-sm Select</option>
         </select>
       </div>
@@ -114,7 +114,7 @@ p.-text
       <!-- md -->
       <div class="chi-form__item">
         <label class="chi-label" for="example-size-md">Label</label>
-        <select class="chi-input -md" id="example-size-md">
+        <select class="chi-select -md" id="example-size-md">
           <option>-md Select</option>
         </select>
       </div>
@@ -122,7 +122,7 @@ p.-text
       <!-- lg -->
       <div class="chi-form__item">
         <label class="chi-label" for="example-size-lg">Label</label>
-        <select class="chi-input -lg" id="example-size-lg">
+        <select class="chi-select -lg" id="example-size-lg">
           <option>-lg Select</option>
         </select>
       </div>
@@ -130,7 +130,7 @@ p.-text
       <!-- xl -->
       <div class="chi-form__item">
         <label class="chi-label" for="example-size-xl">Label</label>
-        <select class="chi-input -xl" id="example-size-xl">
+        <select class="chi-select -xl" id="example-size-xl">
           <option>-xl Select</option>
         </select>
       </div>
@@ -145,7 +145,7 @@ p.-text
     each size in ['-lg', '-xl']
       div(class=`chi-col -w--12 -p--2`)
         .chi-input__wrapper.-floating-label(style="max-width:20rem")
-          select.chi-input(class=`${size}`, id=`#floating-label-select${size}`)
+          select.chi-select(class=`${size}`, id=`#floating-label-select${size}`)
             option
             option Option 1
             option Option 2
@@ -166,7 +166,7 @@ p.-text
         | <a href="../../../getting-started/installation">Chi.js</a>.
     :code(lang='html')
       <div id="floating-label-lg" class="chi-input__wrapper -floating-label">
-        <select class="chi-input -lg" id="floating-label-select-lg">
+        <select class="chi-select -lg" id="floating-label-select-lg">
           <option></option>
           <option>Option 1</option>
           <option>Option 2</option>
@@ -176,7 +176,7 @@ p.-text
       </div>
 
       <div id="floating-label-xl" class="chi-input__wrapper -floating-label">
-        <select class="chi-input -xl" id="floating-label-select-xl">
+        <select class="chi-select -xl" id="floating-label-select-xl">
           <option></option>
           <option>Option 1</option>
           <option>Option 2</option>
