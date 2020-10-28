@@ -1,12 +1,12 @@
 h2 Examples
 p.-text
-  | To render a file input, apply the class <code>chi-input</code> to an <code>input type="file"</code> and
+  | To render a file input, apply the class <code>chi-file-input</code> to an <code>input type="file"</code> and
   | add a label next to it.
 
 h3 Base
 .example.-mb--3
   .-p--3
-    input.chi-input(type="file", id="file01", aria-label="Choose file")
+    input.chi-file-input(type="file", id="file01", aria-label="Choose file")
     label(for="file01") No file chosen
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -22,11 +22,11 @@ h3 Base
         | content once a file or files have been selected.
         | You may use your own JavaScript solution, or use Chi's example below.
     :code(lang="html")
-      <input type="file" class="chi-input" id="file01" aria-label="Choose file">
+      <input type="file" class="chi-file-input" id="file01" aria-label="Choose file">
       <label for="file01">No file chosen</label>
 
       <script>
-      var inputFiles = document.querySelectorAll('input[type="file"].chi-input');
+      var inputFiles = document.querySelectorAll('input[type="file"].chi-file-input');
 
       Array.prototype.forEach.call(inputFiles, function(input) {
         var label = input.nextElementSibling;
@@ -55,16 +55,16 @@ p.-text
 .example.-mb--3
   .-p--3
     .-p--2
-      input.chi-input(type="file", class="-sm", id="file02", aria-label="Choose file")
+      input.chi-file-input(type="file", class="-sm", id="file02", aria-label="Choose file")
       label(for="file02") No file chosen
     .-p--2
-      input.chi-input(type="file", class="-md", id="file03", aria-label="Choose file")
+      input.chi-file-input(type="file", class="-md", id="file03", aria-label="Choose file")
       label(for="file03") No file chosen
     .-p--2
-      input.chi-input(type="file", class="-lg", id="file04", aria-label="Choose file")
+      input.chi-file-input(type="file", class="-lg", id="file04", aria-label="Choose file")
       label(for="file04") No file chosen
     .-p--2
-      input.chi-input(type="file", class="-xl", id="file05", aria-label="Choose file")
+      input.chi-file-input(type="file", class="-xl", id="file05", aria-label="Choose file")
       label(for="file05") No file chosen
   .example-tabs.-pl--2
     ul.chi-tabs#example-sizes
@@ -76,16 +76,16 @@ p.-text
   .chi-tabs-panel.-active#html-sizes
     :code(lang='html')
       <!-- -sm -->
-      <input type="file" class="chi-input -sm" id="file02" aria-label="Choose file">
+      <input type="file" class="chi-file-input -sm" id="file02" aria-label="Choose file">
       <label for="file02">No file chosen</label>
       <!-- -md -->
-      <input type="file" class="chi-input -md" id="file03" aria-label="Choose file">
+      <input type="file" class="chi-file-input -md" id="file03" aria-label="Choose file">
       <label for="file03">No file chosen</label>
       <!-- -lg -->
-      <input type="file" class="chi-input -lg" id="file04" aria-label="Choose file">
+      <input type="file" class="chi-file-input -lg" id="file04" aria-label="Choose file">
       <label for="file04">No file chosen</label>
       <!-- -xl -->
-      <input type="file" class="chi-input -xl" id="file05" aria-label="Choose file">
+      <input type="file" class="chi-file-input -xl" id="file05" aria-label="Choose file">
       <label for="file05">No file chosen</label>
 
 script

@@ -32,81 +32,79 @@ $sizes: (
   )
 );
 
-select {
-  &.chi-input {
-    appearance: none;
-    background-color: $color-background-white;
-    background-image: url('icon-chevron-thin-down.svg');
-    background-position: map-get(map-get($sizes, md), background-position);
-    background-repeat: no-repeat;
-    background-size: 0.75rem 0.75rem;
-    border: 0.0625rem solid $color-border-base-dark;
-    border-radius: 0;
-    box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
+.chi-select,
+select.chi-input {
+  appearance: none;
+  background-color: $color-background-white;
+  background-image: url('icon-chevron-thin-down.svg');
+  background-position: map-get(map-get($sizes, md), background-position);
+  background-repeat: no-repeat;
+  background-size: 0.75rem 0.75rem;
+  border: 0.0625rem solid $color-border-base-dark;
+  border-radius: 0;
+  box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
+  color: $color-text-base;
+  cursor: pointer;
+  font-size: map-get(map-get($sizes, md), font-size);
+  height: map-get(map-get($sizes, md), height);
+  line-height: map-get(map-get($sizes, md), line-height);
+  outline: none;
+  padding-left: map-get(map-get($sizes, md), padding-left);
+  padding-right: 1.6875rem;
+  transition: background-color 0.12s ease-in, border-color 0.1s ease-in;
+  width: 100%;
+
+  // sass-lint:disable no-vendor-prefixes
+  &::-ms-expand {
+    display: none;
+  }
+
+  &::-moz-focus-outer,
+  &::-moz-focus-inner {
+    border: 0;
+  }
+  // sass-lint:enable no-vendor-prefixes
+
+  &:hover,
+  &.-hover,
+  &:active,
+  &.-active {
+    border-color: $color-grey-40;
+  }
+
+  &:focus,
+  &.-focus {
+    border-color: $focus-color;
+    box-shadow: 0 0 0 1px rgba($focus-color, 1);
+  }
+
+  &[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  @each $type in map-keys($sizes) {
+    &.-#{$type} {
+      background-position: map-get(map-get($sizes, $type), background-position);
+      font-size: map-get(map-get($sizes, $type), font-size);
+      height: map-get(map-get($sizes, $type), height);
+      line-height: map-get(map-get($sizes, $type), line-height);
+      padding-left: map-get(map-get($sizes, $type), padding-left);
+    }
+  }
+
+  &:not([disabled]) {
+    &.-danger {
+      border-color: $color-icon-danger;
+    }
+  }
+
+  &.-danger {
     color: $color-text-base;
-    cursor: hand;
-    cursor: pointer; // sass-lint:disable-line no-duplicate-properties
-    font-size: map-get(map-get($sizes, md), font-size);
-    height: map-get(map-get($sizes, md), height);
-    line-height: map-get(map-get($sizes, md), line-height);
-    outline: none;
-    padding-left: map-get(map-get($sizes, md), padding-left);
-    padding-right: 1.6875rem;
-    transition: background-color 0.12s ease-in, border-color 0.1s ease-in;
-    width: 100%;
-
-    // sass-lint:disable no-vendor-prefixes
-    &::-ms-expand {
-      display: none;
-    }
-
-    &::-moz-focus-outer,
-    &::-moz-focus-inner {
-      border: 0;
-    }
-    // sass-lint:enable no-vendor-prefixes
-
-    &:hover,
-    &.-hover,
-    &:active,
-    &.-active {
-      border-color: $color-grey-40;
-    }
 
     &:focus,
     &.-focus {
-      border-color: $focus-color;
-      box-shadow: 0 0 0 1px rgba($focus-color, 1);
-    }
-
-    &[disabled] {
-      opacity: 0.6;
-      pointer-events: none;
-    }
-
-    @each $type in map-keys($sizes) {
-      &.-#{$type} {
-        background-position: map-get(map-get($sizes, $type), background-position);
-        font-size: map-get(map-get($sizes, $type), font-size);
-        height: map-get(map-get($sizes, $type), height);
-        line-height: map-get(map-get($sizes, $type), line-height);
-        padding-left: map-get(map-get($sizes, $type), padding-left);
-      }
-    }
-
-    &:not([disabled]) {
-      &.-danger {
-        border-color: $color-icon-danger;
-      }
-    }
-
-    &.-danger {
-      color: $color-text-base;
-
-      &:focus,
-      &.-focus {
-        box-shadow: 0 0 0 1px $color-icon-danger;
-      }
+      box-shadow: 0 0 0 1px $color-icon-danger;
     }
   }
 }

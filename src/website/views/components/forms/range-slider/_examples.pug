@@ -1,6 +1,6 @@
 h2 Examples
 p.-text
-  | To render a range slider, apply the class <code>chi-input</code> to an <code>input type="range"</code>.
+  | To render a range slider, apply the class <code>chi-range-slider</code> to an <code>input type="range"</code>.
   | Range widths are fluid by default.
 
 h3 Base
@@ -8,7 +8,7 @@ h3 Base
   .-p--3
     .chi-form__item
       label(class="chi-label", for="range01") Range label
-      input(class="chi-input", type="range", id="range01")
+      input(class="chi-range-slider", type="range", id="range01")
   .example-tabs.-pl--2
     ul#chi-tabs-base.chi-tabs
       li.-disabled
@@ -25,7 +25,7 @@ h3 Base
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="range01">Range label</label>
-        <input class="chi-input" type="range" id="range01">
+        <input class="chi-range-slider" type="range" id="range01">
       </div>
 
       <script>chi.rangeSlider(document.getElementById('range01'));</script>
@@ -35,7 +35,7 @@ h3 Disabled
   .-p--3
     .chi-form__item
       label(class="chi-label", for="range02") Range label
-      input(class="chi-input", type="range", id="range02" disabled)
+      input(class="chi-range-slider", type="range", id="range02" disabled)
   .example-tabs.-pl--2
     ul#chi-tabs-disabled.chi-tabs
       li.-disabled
@@ -52,7 +52,7 @@ h3 Disabled
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="range02">Range label</label>
-        <input class="chi-input" type="range" id="range02" disabled>
+        <input class="chi-range-slider" type="range" id="range02" disabled>
       </div>
 
       <script>chi.rangeSlider(document.getElementById('range02'));</script>
@@ -64,7 +64,7 @@ h3 Multiple Labels
       label(class="chi-label", for="range03") Range label
       .chi-input__wrapper.-d--flex
         span.-text.-mr--2 200GB
-        input(type="range", class="chi-input", id="range03")
+        input(type="range", class="chi-range-slider", id="range03")
         span.-text.-ml--2 5TB
   .example-tabs.-pl--2
     ul#chi-tabs-multiple-labels.chi-tabs
@@ -84,7 +84,7 @@ h3 Multiple Labels
         <label class="chi-label" for="range03">Range label</label>
         <div class="chi-input__wrapper -d--flex">
           <span class="-text">200GB</span>
-          <input class="chi-input -mx--2" type="range" id="range03">
+          <input class="chi-range-slider -mx--2" type="range" id="range03">
           <span class="-text">5TB</span>
         </div>
       </div>
@@ -104,7 +104,7 @@ h3 Base
     .chi-form__item
       label(class="chi-label", for="range04") Range label
       .chi-input__wrapper
-        input(class="chi-input", type="range", id="range04")
+        input(class="chi-range-slider", type="range", id="range04")
         .chi-input__progress
         .chi-input__thumb
   .example-tabs.-pl--2
@@ -124,7 +124,7 @@ h3 Base
       <div class="chi-form__item">
         <label class="chi-label" for="range04">Range label</label>
         <div class="chi-input__wrapper">
-          <input class="chi-input" type="range" id="range04">
+          <input class="chi-range-slider" type="range" id="range04">
           <div class="chi-input__progress"></div>
           <div class="chi-input__thumb"></div>
         </div>
@@ -138,7 +138,7 @@ h3 Disabled
     .chi-form__item
       label(class="chi-label", for="range05") Range label
       .chi-input__wrapper
-        input(class="chi-input", type="range", id="range05", disabled)
+        input(class="chi-range-slider", type="range", id="range05", disabled)
         .chi-input__progress
         .chi-input__thumb
   .example-tabs.-pl--2
@@ -158,7 +158,7 @@ h3 Disabled
       <div class="chi-form__item">
         <label class="chi-label" for="range05">Range label</label>
         <div class="chi-input__wrapper">
-          <input class="chi-input" type="range" id="range05" disabled>
+          <input class="chi-range-slider" type="range" id="range05" disabled>
           <div class="chi-input__progress"></div>
           <div class="chi-input__thumb"></div>
         </div>
@@ -174,7 +174,7 @@ h3 Multiple Labels
       .chi-input__wrapper.-d--flex
         span.-text.-mr--2 200GB
         .chi-input__wrapper.-w--100
-          input(type="range", class="chi-input", id="range06")
+          input(type="range", class="chi-range-slider", id="range06")
           .chi-input__progress
           .chi-input__thumb
         span.-text.-ml--2 5TB
@@ -197,7 +197,7 @@ h3 Multiple Labels
         <div class="chi-input__wrapper -d--flex">
           <span class="-text -mr--2">200GB</span>
           <div class="chi-input__wrapper -w--100">
-            <input class="chi-input" type="range" id="range06">
+            <input class="chi-range-slider" type="range" id="range06">
             <div class="chi-input__progress"></div>
             <div class="chi-input__thumb"></div>
           </div>
@@ -216,7 +216,7 @@ p.-text
     .chi-form__item
       label(class="chi-label", for="range07") Range label
       .chi-input__wrapper
-        input(class="chi-input", type="range", min="0", max="4", step="1", id="range07")
+        input(class="chi-range-slider", type="range", min="0", max="4", step="1", id="range07")
         .chi-input__tick-bar
           div
             .chi-input__tick
@@ -250,7 +250,7 @@ p.-text
       <div class="chi-form__item">
         <label class="chi-label" for="range07">Range label</label>
         <div class="chi-input__wrapper">
-          <input class="chi-input" type="range" min="0" max="4" step="1" id="range07">
+          <input class="chi-range-slider" type="range" min="0" max="4" step="1" id="range07">
           <div class="chi-input__tick-bar">
             <div>
               <div class="chi-input__tick"></div>
@@ -284,7 +284,7 @@ h3 Disabled
     .chi-form__item
       label(class="chi-label", for="range08") Range label
       .chi-input__wrapper
-        input(class="chi-input", type="range", min="0", max="4", step="1", id="range08", disabled)
+        input(class="chi-range-slider", type="range", min="0", max="4", step="1", id="range08", disabled)
         .chi-input__tick-bar
           div
             .chi-input__tick
@@ -318,7 +318,7 @@ h3 Disabled
       <div class="chi-form__item">
         <label class="chi-label" for="range08">Range label</label>
         <div class="chi-input__wrapper">
-          <input class="chi-input" type="range" min="0" max="4" step="1" id="range08" disabled>
+          <input class="chi-range-slider" type="range" min="0" max="4" step="1" id="range08" disabled>
           <div class="chi-input__tick-bar">
             <div>
               <div class="chi-input__tick"></div>
@@ -352,7 +352,7 @@ h3 Consistent rendering in WebKit browsers
     .chi-form__item
       label(class="chi-label", for="range09") Range label
       .chi-input__wrapper
-        input(class="chi-input", type="range", min="0", max="4", step="1", id="range09")
+        input(class="chi-range-slider", type="range", min="0", max="4", step="1", id="range09")
         .chi-input__tick-bar
           div
             .chi-input__tick
@@ -388,7 +388,7 @@ h3 Consistent rendering in WebKit browsers
       <div class="chi-form__item">
         <label class="chi-label" for="range09">Range label</label>
         <div class="chi-input__wrapper">
-          <input class="chi-input" type="range" min="0" max="4" step="1" id="range09">
+          <input class="chi-range-slider" type="range" min="0" max="4" step="1" id="range09">
           <div class="chi-input__tick-bar">
             <div>
               <div class="chi-input__tick"></div>

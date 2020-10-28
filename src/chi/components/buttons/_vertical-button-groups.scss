@@ -1,38 +1,28 @@
-@import '_button-groups-variables';
-
 $border: 0.0625rem;
 
 $sizes: (
   sm: (
     padding: 0.25rem,
-    padding_hover: (0.25rem - $border),
     icons: (
-      padding: 0.375rem,
-      padding_hover: (0.375rem - $border),
+      padding: 0.375rem
     )
   ),
   md: (
     padding: 0.5rem,
-    padding_hover: (0.5rem - $border),
     icons: (
-      padding: 0.5rem,
-      padding_hover: (0.5rem - $border),
+      padding: 0.5rem
     )
   ),
   lg: (
     padding: 0.625rem,
-    padding_hover: (0.625rem - $border),
     icons: (
-      padding: 0.75rem,
-      padding_hover: (0.75rem - $border),
+      padding: 0.75rem
     )
   ),
   xl: (
     padding: 0.875rem,
-    padding_hover: (0.875rem - $border),
     icons: (
-      padding: 1rem,
-      padding_hover: (1rem - $border),
+      padding: 1rem
     )
   )
 );
@@ -42,157 +32,44 @@ $sizes: (
     flex-direction: column;
 
     .chi-button {
-      &,
-      &.-primary,
-      &.-secondary,
-      &.-danger,
-      &.-dark {
-        &,
-        &.-outline {
-          border-bottom-width: 0;
-          border-radius: $border-radius-sharp;
+      &:not(.-flat) {
+        border-bottom-width: 0;
+        border-radius: $border-radius-sharp;
+
+        &:not(:last-child) {
           padding-bottom: 0.5rem;
+        }
 
-          &.-icon {
-            padding-bottom: 0.5rem;
-          }
-
-          @each $type in map-keys($sizes) {
-            &.-#{$type} {
-              padding-bottom: map-get(map-get($sizes, $type), padding);
-
-              &.-icon {
-                padding-bottom: map-get(map-get(map-get($sizes, $type), icons), padding);
-              }
-            }
-          }
-
-          &:first-child {
-            border-top-left-radius: $border-radius;
-            border-top-right-radius: $border-radius;
-          }
-
-          &:last-child {
-            border-bottom-left-radius: $border-radius;
-            border-bottom-right-radius: $border-radius;
-            border-bottom-width: 0.0625rem;
-            padding-bottom: 0.4375rem;
+        @each $type in map-keys($sizes) {
+          &.-#{$type} {
+            padding-bottom: map-get(map-get($sizes, $type), padding);
 
             &.-icon {
-              padding-bottom: 0.4375rem;
-            }
-
-            @each $type in map-keys($sizes) {
-              &.-#{$type} {
-                padding-bottom: map-get(map-get($sizes, $type), padding_hover);
-
-                &.-icon {
-                  padding-bottom: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
-                }
-              }
-            }
-          }
-
-          &:hover,
-          &.-hover,
-          &:focus,
-          &.-focus {
-            border-bottom-width: 0.0625rem;
-            padding-bottom: 0.4375rem;
-
-            &.-icon {
-              padding-bottom: 0.4375rem;
-            }
-
-            @each $type in map-keys($sizes) {
-              &.-#{$type} {
-                border-bottom-width: 0.0625rem;
-                padding-bottom: map-get(map-get($sizes, $type), padding_hover);
-
-                &.-icon {
-                  padding-bottom: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
-                }
-              }
-            }
-
-            & + .chi-button {
-              border-top-width: 0;
-              padding-top: 0.5rem;
-
-              &.-icon {
-                padding-top: 0.5rem;
-              }
-
-              @each $type in map-keys($sizes) {
-                &.-#{$type} {
-                  border-top-width: 0;
-                  padding-top: map-get(map-get($sizes, $type), padding);
-
-                  &.-icon {
-                    padding-top: map-get(map-get(map-get($sizes, $type), icons), padding);
-                  }
-                }
-              }
-            }
-          }
-
-          &:hover,
-          &.-hover {
-            & + .chi-button:focus,
-            & + .-focus {
-              border-top-width: 0.0625rem;
-              padding-top: 0.4375rem;
-
-              &.-icon {
-                padding-top: 0.4375rem;
-              }
-
-              @each $type in map-keys($sizes) {
-                &.-#{$type} {
-                  border-top-width: 0.0625rem;
-                  padding-top: map-get(map-get($sizes, $type), padding_hover);
-
-                  &.-icon {
-                    padding-top: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
-                  }
-                }
-              }
+              padding-bottom: map-get(map-get(map-get($sizes, $type), icons), padding);
             }
           }
         }
 
-        &.-flat {
-          border-radius: $border-radius;
+        &:hover,
+        &.-hover,
+        &:focus,
+        &.-focus {
+          border-bottom-width: 0.0625rem;
 
-          &:active,
-          &.-active,
-          &:hover,
-          &.-hover,
-          &:focus,
-          &.-focus {
-            & + .chi-button {
-              &:hover,
-              &.-hover {
-                border-top-width: 0.0625rem;
-                padding-top: 0.4375rem;
-
-                &.-icon {
-                  padding-top: 0.4375rem;
-                }
-
-                @each $type in map-keys($sizes) {
-                  &.-#{$type} {
-                    border-top-width: 0.0625rem;
-                    padding-top: map-get(map-get($sizes, $type), padding_hover);
-
-                    &.-icon {
-                      padding-top: map-get(map-get(map-get($sizes, $type), icons), padding_hover);
-                    }
-                  }
-                }
-              }
-            }
+          & + .chi-button {
+            border-top-width: 0;
           }
+        }
+
+        &:first-child {
+          border-top-left-radius: $border-radius;
+          border-top-right-radius: $border-radius;
+        }
+
+        &:last-child {
+          border-bottom-left-radius: $border-radius;
+          border-bottom-right-radius: $border-radius;
+          border-bottom-width: 0.0625rem;
         }
       }
     }
