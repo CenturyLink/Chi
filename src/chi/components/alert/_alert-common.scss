@@ -133,6 +133,7 @@ $states: (
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    width: 100%;
 
     .chi-alert__title {
       font-size: $font-size-base;

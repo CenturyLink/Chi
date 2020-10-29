@@ -3,17 +3,17 @@
 $sizes: (
   'xs': 0.75rem,
   'sm': 1rem,
-  'md': 2rem,
-  'lg': 4rem,
-  'xl': 6rem,
-  'xxl': 8rem);
+  'md': 1.25rem,
+  'lg': 1.5rem,
+  'xl': 2rem,
+  'xxl': 2.5rem);
 
 chi-brand:not(.hydrated) {
   animation: shine $animation-duration infinite linear;
   display: block;
   font-size: 0;
-  height: 2rem;
-  width: 10rem;
+  height: 1.25rem;
+  width: 8.75rem;
 
   @each $name, $height in $sizes {
     &[size=#{$name}] {
