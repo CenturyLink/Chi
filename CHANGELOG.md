@@ -1,5 +1,5 @@
 # CHANGELOG
-## 3.3.0 (October 29, 2020)
+## 3.3.0 (October 30, 2020)
 ### Components
 #### Added
 * Added: Form inputs now support Help icon buttons to display helpful information about an input in a popover.
@@ -10,6 +10,9 @@
 * Added: Progress component now includes web component support.
 * Added: Dropdown component now includes cypress tests.
 * Added: Mobile navigation now includes cypress tests.
+* Added: Modal now includes cypress tests.
+* Added: Popover now includes cypress tests.
+* Added: Tabs now includes cypress tests.
 #### Changed
 * Changed: Checkbox display from block to flex to support required and help states.
 * Changed: Form items with -row layout now apply a padding-right to child input labels to eliminate need for a spacing utility class.
@@ -22,7 +25,7 @@
 * Changed: Button group component styles have been optimized to reduce chi.css file size.
 #### Fixed
 * Fixed: Label required asterisk color no longer fails color contrast test.
-* Fixed: Textarea web component specific styles were not loading due to an incorrect :host() psuedo-class.
+* Fixed: Textarea web component specific styles were not loading due to an incorrect :host() pseudo-class.
 ### Documentation
 #### Added
 * Added: Installation page now includes framework specific boilerplates for Vue, Stencil, Angular, and React.
