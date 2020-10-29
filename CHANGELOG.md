@@ -6,10 +6,15 @@
 * Added: Checkbox now supports a danger state for providing error feedback to users when validation fails.
 * Added: Text input and Textarea now support the readonly attribute to prevent users from changing their value.
 * Added: Textarea now supports the placeholder attribute to provide users with an example of the type of data that can be entered into an input.
+* Added: Icons `icon-compose`, `icon-reload`.
+* Added: Progress component now includes web component support.
+* Added: Dropdown component now includes cypress tests.
+* Added: Mobile navigation now includes cypress tests.
 #### Changed
 * Changed: Checkbox display from block to flex to support required and help states.
 * Changed: Form items with -row layout now apply a padding-right to child input labels to eliminate need for a spacing utility class.
 * Changed: Form items with label wrapper now style icons using a child combinator instead of a descendant combinator to support help icon buttons.
+* Changed: Icons `icon-circle-reload` and `icon-circle-reload-outline` have been updated for consistency with `icon-reload`.
 * Changed: Select component class has been renamed from `chi-input` to `chi-select`.
 * Changed: File input component class has been renamed from `chi-input` to `chi-file-input`.
 * Changed: Range slider component class has been renamed from `chi-input` to `chi-range-slider`.
@@ -20,10 +25,12 @@
 * Fixed: Textarea web component specific styles were not loading due to an incorrect :host() psuedo-class.
 ### Documentation
 #### Added
+* Added: Installation page now includes framework specific boilerplates for Vue, Stencil, Angular, and React.
 * Added: Checkbox documentation examples for: Checked, Required, Help, Message, Error, and Grid.
 * Added: Text input documentation examples for: Readonly, Placeholder, Required, Optional, Help, Message, and Error.
 * Added: Textarea documentation examples for: Readonly, Placeholder, Required, Optional, Help, Message, and Error.
 * Added: Textarea documentation examples for Layout Variations.
+* Added: Portal templates page now includes an example for alert Modals.
 #### Changed
 * Changed: Checkbox documentation code samples have been improved.
 * Changed: Text Input documentation code samples have been improved.
