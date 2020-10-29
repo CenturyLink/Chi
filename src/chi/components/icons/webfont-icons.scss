@@ -24,6 +24,14 @@ i {
   }
 }
 
+.icon-compose::before {
+  content: '\e9cd';
+}
+
+.icon-reload::before {
+  content: '\e9ce';
+}
+
 .icon-warning-outline::before {
   content: '\e9cc';
 }
