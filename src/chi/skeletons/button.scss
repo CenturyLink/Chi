@@ -7,7 +7,7 @@
 
 chi-button:not(.hydrated) {
   animation: shine $animation-duration infinite linear;
-  display: flex;
+  display: inline-flex;
   font-size: 0;
   height: 2rem;
   width: 6rem;
@@ -22,6 +22,22 @@ chi-button:not(.hydrated) {
 
   &[size='xl'] {
     height: 3rem;
+  }
+
+  &[type='icon'] {
+    width: 2rem;
+
+    &[size='sm'] {
+      width: 1.5rem;
+    }
+  
+    &[size='lg'] {
+      width: 2.5rem;
+    }
+  
+    &[size='xl'] {
+      width: 3rem;
+    }
   }
 
   @include background-gradient;
