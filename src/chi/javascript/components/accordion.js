@@ -4,6 +4,7 @@ import { Util } from '../core/util.js';
 
 const COMPONENT_TYPE = 'accordion';
 const COMPONENT_CLASS = 'chi-accordion';
+const COMPONENT_ITEM_CLASS = 'chi-accordion__item';
 const TRIGGER_CLASS = 'chi-accordion__trigger';
 const CONTENT_CLASS = 'chi-accordion__content';
 const CHILD_ACCORDION_CLASS = 'chi-accordion__child';
@@ -12,25 +13,39 @@ const EVENTS = {
   SHOW: 'chi.accordion.show',
   HIDE: 'chi.accordion.hide'
 };
-const EXPAND_ANIMATION_DURATION = 200;
+const EXPAND_ANIMATION_DURATION = 75;
 
 class Accordion extends Component {
   constructor(elem, config) {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
 
+    this._item = elem.querySelector(`.${COMPONENT_ITEM_CLASS}`);
     this._trigger = elem.querySelector(`.${TRIGGER_CLASS}`);
-    this._content = elem.querySelector(`.${CONTENT_CLASS}`);
+    this._triggers = elem.querySelectorAll(`.${TRIGGER_CLASS}`);
     this._expanded = Util.hasClass(elem, chi.classes.EXPANDED);
     this._childAccordions = [];
+    this._accordionAnimation = null;
 
     this._initAccordion();
-    this._initInnerAccordions();
   }
 
   _initAccordion() {
-    this._addEventHandler(this._trigger, 'click', () => {
-      this.toggle();
-    });
+    const self = this;
+
+    Array.prototype.forEach.call(
+      this._triggers,
+      function(trigger) {
+        self._addEventHandler(trigger, 'click', () => {
+          let accortionItem;
+          for (let current = trigger; current && !current.classList.contains(COMPONENT_ITEM_CLASS); current = current.parentNode) {
+            if (current.parentNode.classList.contains(COMPONENT_ITEM_CLASS)) {
+              accortionItem = current.parentNode;
+            }
+          }
+          self.toggle(accortionItem);
+        });
+      }
+    );
   }
 
   _resizeParentAccordions(elem, action) {
@@ -53,31 +68,9 @@ class Accordion extends Component {
 
           content.style.height = `${newHeight}px`;
       }
-      if (current.classList.contains(COMPONENT_CLASS) &&
-        !current.classList.contains(CHILD_ACCORDION_CLASS)) {
+      if (current.classList.contains(COMPONENT_CLASS)) {
           break;
       }
-    }
-  }
-
-  _initInnerAccordions() {
-    const childAccordions = this._content.getElementsByClassName(COMPONENT_CLASS);
-
-    if (childAccordions) {
-      Array.prototype.forEach.call(
-        childAccordions,
-        elem => {
-          const trigger = elem.querySelector(`.${TRIGGER_CLASS}`);
-          const content = elem.querySelector(`.${CONTENT_CLASS}`);
-  
-          if (trigger && content) {
-            const newAccordion = Accordion.factory(elem, DEFAULT_CONFIG);
-  
-            this._childAccordions.push(newAccordion);
-            Util.addClass(elem, CHILD_ACCORDION_CLASS);
-          }
-        }
-      );
     }
   }
 
@@ -85,13 +78,13 @@ class Accordion extends Component {
     return COMPONENT_TYPE;
   }
 
-  show() {
-    const contentElem = this._content;
+  show(accordionItem) {
+    const contentElem = accordionItem.querySelector(`.${CONTENT_CLASS}`);
     let contentHeight = Util.calculateHiddenElementHeight(contentElem);
 
-    if (!this._expanded) {
-      this._resizeParentAccordions(this._elem, 'show');
-      this._elem.dispatchEvent(
+    if (!accordionItem.classList.contains(chi.classes.EXPANDED)) {
+      this._resizeParentAccordions(accordionItem, 'show');
+      accordionItem.dispatchEvent(
         Util.createEvent(EVENTS.SHOW)
       );
 
@@ -101,26 +94,25 @@ class Accordion extends Component {
           contentElem.style.height = '0px';
           contentElem.style.opacity = '0.5';
         }, () => {
-          Util.addClass(this._elem, chi.classes.EXPANDED);
+          Util.addClass(accordionItem, chi.classes.EXPANDED);
           contentElem.style.height = contentHeight;
           contentElem.style.opacity = '1';
         }, () => {
           Util.removeClass(contentElem, chi.classes.TRANSITIONING);
           contentElem.style.removeProperty('height');
+          contentElem.style.removeProperty('opacity');
         }, EXPAND_ANIMATION_DURATION
       );
-
-      this._expanded = true;
     }
   }
 
-  hide() {
-    const contentElem = this._content;
+  hide(accordionItem) {
+    const contentElem = accordionItem.querySelector(`.${CONTENT_CLASS}`);
     let contentHeight = Util.calculateHiddenElementHeight(contentElem);
 
-    if (this._expanded) {
-      this._resizeParentAccordions(this._elem, 'hide');
-      this._elem.dispatchEvent(
+    if (accordionItem.classList.contains(chi.classes.EXPANDED)) {
+      this._resizeParentAccordions(accordionItem, 'hide');
+      accordionItem.dispatchEvent(
         Util.createEvent(EVENTS.HIDE)
       );
       Util.threeStepsAnimation(
@@ -131,24 +123,68 @@ class Accordion extends Component {
         }, () => {
           contentElem.style.height = '0px';
           contentElem.style.opacity = '0.5';
-          Util.checkRemoveClass(this._elem, chi.classes.EXPANDED);
+          Util.checkRemoveClass(accordionItem, chi.classes.EXPANDED);
         }, () => {
           contentElem.style.removeProperty('height');
           contentElem.style.removeProperty('opacity');
           Util.checkRemoveClass(contentElem, chi.classes.TRANSITIONING);
         }, EXPAND_ANIMATION_DURATION
       );
-
-      this._expanded = false;
     }
   }
 
-  toggle () {
-    if (this._expanded) {
-      this.hide();
+  toggle (accordionItem) {
+    let accordionToToggle;
+
+    if (accordionItem) {
+      accordionToToggle = accordionItem;
     } else {
-      this.show();
+      accordionToToggle = this._item;
     }
+
+    if (accordionToToggle.classList.contains(chi.classes.EXPANDED)) {
+      this.hide(accordionToToggle);
+    } else {
+      this.show(accordionToToggle);
+    }
+  }
+
+  expandAll() {
+    const self = this;
+
+    Array.prototype.forEach.call(
+      this._triggers,
+      function(trigger) {
+        let accortionItem;
+
+        for (let current = trigger; current && !current.classList.contains(COMPONENT_ITEM_CLASS); current = current.parentNode) {
+          if (current.parentNode.classList.contains(COMPONENT_ITEM_CLASS)) {
+            accortionItem = current.parentNode;
+          }
+        }
+
+        self.show(accortionItem);
+      }
+    );
+  }
+
+  collapseAll() {
+    const self = this;
+
+    Array.prototype.forEach.call(
+      this._triggers,
+      function(trigger) {
+        let accortionItem;
+
+        for (let current = trigger; current && !current.classList.contains(COMPONENT_ITEM_CLASS); current = current.parentNode) {
+          if (current.parentNode.classList.contains(COMPONENT_ITEM_CLASS)) {
+            accortionItem = current.parentNode;
+          }
+        }
+
+        self.hide(accortionItem);
+      }
+    );
   }
 
   dispose() {

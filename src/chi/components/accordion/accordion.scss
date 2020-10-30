@@ -34,22 +34,91 @@ $icon-sizes: (
 );
 
 .chi-accordion {
-  background-color: $color-background-base;
-  border-bottom: 0.0625rem solid $color-border-base-dark;
+  &__item {
+    background-color: $color-background-base;
+    border-bottom: 0.0625rem solid $color-border-base-dark;
+
+    &:last-child {
+      &:not(:first-child) {
+        border-bottom: 0.0625rem solid transparent;
+      }
+    }
+
+    .chi-accordion__trigger {
+      align-items: center;
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+      display: flex;
+      padding: 0.625rem 1rem;
+      width: 100%;
+
+      .chi-icon {
+        + .chi-accordion__title {
+          margin-left: 1rem;
+        }
+      }
+
+      .chi-accordion__title {
+        align-items: center;
+        color: $color-text-base;
+        display: flex;
+        flex-grow: 1;
+        font-size: $font-size-md;
+        font-weight: $font-weight-semi-bold;
+        line-height: 1.25rem;
+
+        + .chi-icon {
+          margin-left: 1rem;
+        }
+      }
+
+      .icon-chevron-down {
+        transition-duration: $animation-duration;
+      }
+    }
+
+    .chi-accordion__content {
+      display: none;
+      overflow: hidden;
+      padding: 0 1rem;
+      padding-top: 0;
+      transition: height 0.075s ease-out;
+
+      &.-transitioning {
+        display: block;
+      }
+    }
+
+    &.-expanded {
+      & > .chi-accordion__content {
+        display: block;
+      }
+
+      & > .chi-accordion__trigger {
+        .icon-chevron-down {
+          transform: rotate(180deg);
+          transition: transform $animation-duration ease-in-out;
+        }
+      }
+    }
+  }
 
   @each $type in map-keys($sizes) {
     &.-#{$type} {
-      font-size: map-get(map-get($sizes, $type), font-size);
-      line-height: map-get(map-get($sizes, $type), line-height);
-
-      .chi-accordion__trigger {
+      .chi-accordion__item {
         font-size: map-get(map-get($sizes, $type), font-size);
         line-height: map-get(map-get($sizes, $type), line-height);
-        padding: map-get(map-get($sizes, $type), padding);
 
-        .chi-accordion__title {
+        .chi-accordion__trigger {
           font-size: map-get(map-get($sizes, $type), font-size);
           line-height: map-get(map-get($sizes, $type), line-height);
+          padding: map-get(map-get($sizes, $type), padding);
+
+          .chi-accordion__title {
+            font-size: map-get(map-get($sizes, $type), font-size);
+            line-height: map-get(map-get($sizes, $type), line-height);
+          }
         }
       }
     }
@@ -66,78 +135,22 @@ $icon-sizes: (
     }
   }
 
-  &__trigger {
-    align-items: center;
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-    display: flex;
-    padding: 0.625rem 1rem;
-    width: 100%;
-
-    .chi-icon {
-      + .chi-accordion__title {
-        margin-left: 1rem;
-      }
-    }
-
-    .chi-accordion__title {
-      align-items: center;
-      color: $color-text-base;
-      display: flex;
-      flex-grow: 1;
-      font-size: $font-size-md;
-      font-weight: $font-weight-semi-bold;
-      line-height: 1.25rem;
-
-      + .chi-icon {
-        margin-left: 1rem;
-      }
-    }
-
-    .icon-chevron-down {
-      transition-duration: $animation-duration;
-    }
-  }
-
-  &__content {
-    display: none;
-    overflow: hidden;
-    padding: 0 1rem;
-    padding-top: 0;
-    transition: height $animation-duration ease-out;
-
-    &.-transitioning {
-      display: block;
-    }
-  }
-
-  &.-expanded {
-    & > .chi-accordion__content {
-      display: block;
-    }
-
-    & > .chi-accordion__trigger {
-      .icon-chevron-down {
-        transform: rotate(180deg);
-        transition: transform $animation-duration ease-in-out;
-      }
-    }
-  }
 
   &.-portal {
-    border-bottom: 0;
+    .chi-accordion__item {
+      border-bottom: 0;
 
-    &.-expanded {
-      background-color: $color-background-base-dark;
-    }
+      &.-expanded {
+        background-color: $color-background-base-dark;
+      }
 
-    .chi-accordion__trigger {
-      background-color: $color-background-base-darkest;
-    }
+      .chi-accordion__trigger {
+        background-color: $color-background-base-darkest;
+      }
 
-    &:not(:last-child) {
-      margin-bottom: 0.5rem;
+      &:not(:last-child) {
+        margin-bottom: 0.5rem;
+      }
     }
   }
 }
