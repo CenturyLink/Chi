@@ -1,8 +1,6 @@
 @import '_variables';
 @import '_mixins';
 
-$badge: c-badge;
-
 $colors: (
   primary: (
     background-color: $color-background-primary,
@@ -79,41 +77,39 @@ $colors: (
 );
 
 .chi-badge {
+  align-items: center;
   background-color: $color-background-white;
   border: 0.0625rem solid $color-border-base-dark;
-  border-radius: 0.75rem;
+  border-radius: 2em;
   box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
-  display: inline-block;
+  display: inline-flex;
   font-size: $font-size-base;
   font-weight: $font-weight-semi-bold;
-  height: 1.5rem;
   line-height: $line-height;
   min-width: 1.5rem;
-  padding: 0 0.5rem;
+  padding: 0.0625rem 0.5em;
   text-align: center;
   vertical-align: middle;
+  white-space: nowrap;
 
   .chi-icon {
     color: $color-icon-base;
     height: 1rem;
-    top: -0.07rem;
     width: 1rem;
   }
 
   &__content {
     align-items: center;
-    display: inline-flex;
+    display: flex;
     justify-content: center;
 
     & > :not(:last-child) {
-      margin-right: 0.5rem;
+      margin-right: 0.375em;
     }
   }
 
   span {
-    line-height: $line-height-lg;
     position: relative;
-    top: -0.07rem;
   }
 
   &.-sm {
