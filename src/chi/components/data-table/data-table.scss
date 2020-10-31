@@ -66,7 +66,7 @@ $sizes: (
         border-bottom: 0.125rem solid $color-border-base-dark;
         display: flex;
         font-weight: $font-weight-semi-bold;
-        padding: 0.75rem;
+        padding: 0.75rem 1rem;
         position: relative;
 
         .chi-icon {
@@ -102,7 +102,7 @@ $sizes: (
 
       @include respond-to(md) {
         border-bottom: 0.0625rem solid $color-border-base-light;
-        padding: 0.75rem;
+        padding: 0.75rem 1rem;
         word-break: break-word;
       }
 
@@ -169,7 +169,7 @@ $sizes: (
     &-empty {
       background-color: $color-background-base;
       font-style: italic;
-      padding: 0.75rem;
+      padding: 0.75rem 1rem;
     }
 
     &-child,
@@ -214,12 +214,39 @@ $sizes: (
       }
     }
 
+    .chi-button {
+      &.-flat {
+        &.-active,
+        &.-hover,
+        &:active,
+        &:hover {
+          background-color: transparent;
+          border-color: transparent;
+          box-shadow: none;
+        }
+      }
+    }
+
     &.-expandable {
-      flex-basis: 2.25rem;
+      display: none;
+
+      @include respond-to(md) {
+        display: flex;
+        flex-basis: 3.5rem;
+      }
     }
 
     &.-selectable {
-      flex-basis: 3rem;
+      display: none;
+
+      @include respond-to(md) {
+        display: flex;
+        flex-basis: 3rem;
+
+        .chi-checkbox__label {
+          margin-right: 0;
+        }
+      }
     }
 
     & .-asociated {
@@ -254,12 +281,16 @@ $sizes: (
   &.-sorting {
     .chi-data-table__head {
       .chi-data-table__cell {
+        .chi-icon {
+          opacity: 0;
+        }
+
         &:hover {
-          background-color: $color-background-base-darker;
           cursor: pointer;
 
           .chi-icon {
             color: $color-icon-base;
+            opacity: 1;
           }
         }
 
@@ -268,7 +299,8 @@ $sizes: (
           color: $color-text-primary-alt;
 
           .chi-icon {
-            color: $color-icon-primary;
+            color: $color-icon-primary;            
+            opacity: 1;
           }
 
           &.-descending {
@@ -324,8 +356,6 @@ $sizes: (
   &.-bordered {
     .chi-data-table__body {
       .chi-data-table__row {
-        border-bottom: 0.0625rem solid $color-border-base-light;
-
         .chi-data-table__cell {
           border: 0.0625rem solid $color-border-base-light;
           border-bottom-width: 0;
@@ -366,8 +396,6 @@ $sizes: (
 
       .chi-data-table__body {
         .chi-data-table__row {
-          border-bottom: 0;
-
           .chi-data-table__cell {
             border-top-width: 0;
           }
@@ -400,6 +428,8 @@ $sizes: (
     .chi-data-table__body {
       .chi-data-table__row {
         @include respond-to(md) {
+          background-color: $color-background-base;
+
           &:nth-child(even) {
             background-color: $color-background-primary-lighter;
           }
@@ -576,7 +606,7 @@ $sizes: (
 
         @include respond-to(md) {
           border-bottom: 0.0625rem solid $color-border-base-light;
-          padding: 0.75rem;
+          padding: 0.75rem 1rem;
         }
 
         &.-name {
@@ -617,21 +647,16 @@ $sizes: (
       position: relative;
 
       &::after {
-        align-items: center;
-        background-color: $color-background-base;
-        border-radius: 1rem;
         color: $color-icon-base;
         content: '\e920';
-        display: flex;
         font-family: 'chi';
         font-size: $font-size-lg;
-        height: 2rem;
-        justify-content: center;
+        height: 1rem;
         position: absolute;
         right: 1rem;
-        top: calc(50% - 0.5rem);
+        top: 50%;
         transform: translateY(-0.5rem);
-        width: 2rem;
+        width: 0.75rem;
 
         @include respond-to(md) {
           display: none;

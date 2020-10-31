@@ -198,21 +198,21 @@ h3 Base -- Compact
         .chi-data-table__row
           .chi-data-table__cell.-name.-bold
             div Name 1
-          .chi-data-table__cell.-name
+          .chi-data-table__cell
             div name-1
           .chi-data-table__cell
             div Dec 18, 2020 3:26 PM
         .chi-data-table__row
           .chi-data-table__cell.-name.-bold
             div Name 2
-          .chi-data-table__cell.-name
+          .chi-data-table__cell
             div name-2
           .chi-data-table__cell
             div Dec 18, 2020 2:38 AM
         .chi-data-table__row
           .chi-data-table__cell.-name.-bold
             div Name 3
-          .chi-data-table__cell.-name
+          .chi-data-table__cell
             div name-3
           .chi-data-table__cell
             div Nov 5, 2020 10:15 AM
@@ -265,7 +265,7 @@ h3 Base -- Compact
             <div class="chi-data-table__cell -name -bold">
               <div>Name 1</div>
             </div>
-            <div class="chi-data-table__cell -name">
+            <div class="chi-data-table__cell">
               <div>name-1</div>
             </div>
             <div class="chi-data-table__cell">
@@ -276,7 +276,7 @@ h3 Base -- Compact
             <div class="chi-data-table__cell -name -bold">
               <div>Name 2</div>
             </div>
-            <div class="chi-data-table__cell -name">
+            <div class="chi-data-table__cell">
               <div>name-2</div>
             </div>
             <div class="chi-data-table__cell">
@@ -287,7 +287,7 @@ h3 Base -- Compact
             <div class="chi-data-table__cell -name -bold">
               <div>Name 3</div>
             </div>
-            <div class="chi-data-table__cell -name">
+            <div class="chi-data-table__cell">
               <div>name-3</div>
             </div>
             <div class="chi-data-table__cell">
@@ -337,13 +337,9 @@ h3 Base -- Compact -- Empty
       .chi-data-table__head
         .chi-data-table__row
           .chi-data-table__cell
-             span Name
+            span Name
           .chi-data-table__cell
-            span Email
-          .chi-data-table__cell
-           span Phone Number
-          .chi-data-table__cell
-            span Address
+            span ID
           .chi-data-table__cell
             span Last Login
       .chi-data-table__body
@@ -366,13 +362,7 @@ h3 Base -- Compact -- Empty
               <span>Name</span>
             </div>
             <div class="chi-data-table__cell">
-              <span>Email</span>
-            </div>
-            <div class="chi-data-table__cell">
-              <span>Phone Number</span>
-            </div>
-            <div class="chi-data-table__cell">
-              <span>Address</span>
+              <span>ID</span>
             </div>
             <div class="chi-data-table__cell">
               <span>Last Login</span>
@@ -1524,7 +1514,9 @@ h3 Accordion
       .chi-data-table__body
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-            i.chi-icon.icon-chevron-right.-xs
+            button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
+              .chi-button__content
+                i.chi-icon.icon-chevron-right.-xs
           .chi-data-table__cell(data-label="Name")
             div Name 1
           .chi-data-table__cell(data-label="ID")
@@ -1533,7 +1525,9 @@ h3 Accordion
             div Dec 18, 2020 3:26 PM
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-            i.chi-icon.icon-chevron-right.-xs
+            button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
+              .chi-button__content
+                i.chi-icon.icon-chevron-right.-xs
           .chi-data-table__cell(data-label="Name")
             div Name 2
           .chi-data-table__cell(data-label="ID")
@@ -1542,7 +1536,9 @@ h3 Accordion
             div Dec 18, 2020 2:38 AM
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-            i.chi-icon.icon-chevron-right.-xs
+            button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
+              .chi-button__content
+                i.chi-icon.icon-chevron-right.-xs
           .chi-data-table__cell(data-label="Name")
             div Name 3
           .chi-data-table__cell(data-label="ID")
@@ -1612,7 +1608,11 @@ h3 Accordion
         <div class="chi-data-table__body">
           <div class="chi-data-table__row">
             <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-chevron-right -xs"></i>
+              <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right -xs"></i>
+                </div>
+              </button>
             </div>
             <div class="chi-data-table__cell" data-label="Name">
               <div>Name 1</div>
@@ -1626,7 +1626,11 @@ h3 Accordion
           </div>
           <div class="chi-data-table__row">
             <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-chevron-right -xs"></i>
+              <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right -xs"></i>
+                </div>
+              </button>
             </div>
             <div class="chi-data-table__cell" data-label="Name">
               <div>Name 2</div>
@@ -1640,7 +1644,11 @@ h3 Accordion
           </div>
           <div class="chi-data-table__row">
             <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-chevron-right -xs"></i>
+              <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right -xs"></i>
+                </div>
+              </button>
             </div>
             <div class="chi-data-table__cell" data-label="Name">
               <div>Name 3</div>
@@ -1722,7 +1730,9 @@ h3 Accordion Expanded
       .chi-data-table__body
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-            i.chi-icon.icon-chevron-right.-xs
+            button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
+              .chi-button__content
+                i.chi-icon.icon-chevron-right.-xs
           .chi-data-table__cell(data-label="Name")
             div Name 1
           .chi-data-table__cell(data-label="ID")
@@ -1731,7 +1741,9 @@ h3 Accordion Expanded
             div Dec 18, 2020 3:26 PM    
         .chi-data-table__row.-expanded
           .chi-data-table__cell.-expandable
-            i.chi-icon.icon-chevron-right.-xs
+            button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
+              .chi-button__content
+                i.chi-icon.icon-chevron-right.-xs
           .chi-data-table__cell(data-label="Name")
             div Name 2
           .chi-data-table__cell(data-label="ID")
@@ -1742,7 +1754,9 @@ h3 Accordion Expanded
             div Some random content
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-            i.chi-icon.icon-chevron-right.-xs
+            button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
+              .chi-button__content
+                i.chi-icon.icon-chevron-right.-xs
           .chi-data-table__cell(data-label="Name")
             div Name 3
           .chi-data-table__cell(data-label="ID")
@@ -1812,7 +1826,11 @@ h3 Accordion Expanded
         <div class="chi-data-table__body">
           <div class="chi-data-table__row">
             <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-chevron-right -xs"></i>
+              <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right -xs"></i>
+                </div>
+              </button>
             </div>
             <div class="chi-data-table__cell" data-label="Name">
               <div>Name 1</div>
@@ -1826,7 +1844,11 @@ h3 Accordion Expanded
           </div>
           <div class="chi-data-table__row -expanded">
             <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-chevron-right -xs"></i>
+              <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right -xs"></i>
+                </div>
+              </button>
             </div>
             <div class="chi-data-table__cell" data-label="Name">
               <div>Name 2</div>
@@ -1843,7 +1865,11 @@ h3 Accordion Expanded
           </div>
           <div class="chi-data-table__row">
             <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-chevron-right -xs"></i>
+              <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-chevron-right -xs"></i>
+                </div>
+              </button>
             </div>
             <div class="chi-data-table__cell" data-label="Name">
               <div>Name 3</div>
@@ -3808,57 +3834,61 @@ h3 Two tier table header
 h3 Portal
 .example.-mb--3
   .-p--3
-    .chi-data-table.-portal.-compact
-      .chi-data-table__head
-        .chi-data-table__row
-          .chi-data-table__cell
-            span Name
-          .chi-data-table__cell
-            span ID
-          .chi-data-table__cell
-            span Last Login
-      .chi-data-table__body
-        .chi-data-table__row
-          .chi-data-table__cell.-name.-bold
-            div Name 1
-          .chi-data-table__cell.-name
-            div name-1
-          .chi-data-table__cell
-            div Dec 18, 2020 3:26 PM
-        .chi-data-table__row
-          .chi-data-table__cell.-name.-bold
-            div Name 2
-          .chi-data-table__cell.-name
-            div name-2
-          .chi-data-table__cell
-            div Dec 18, 2020 2:38 AM
-        .chi-data-table__row
-          .chi-data-table__cell.-name.-bold
-            div Name 3
-          .chi-data-table__cell.-name
-            div name-3
-          .chi-data-table__cell
-            div Nov 5, 2020 10:15 AM
-      .chi-data-table__footer
-        nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
-          .chi-pagination__content
-            .chi-pagination__start
-              .chi-pagination__results
-                span.chi-pagination__label 240 Results
-            .chi-pagination__center
-              .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Previous page')
-                  .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-              .chi-pagination__label
-                strong 2
-                span of
-                strong 3
-              .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Next page')
-                  .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-            .chi-pagination__end
+    .chi-card.-portal
+      .chi-card__header.-sm
+        .chi-card__title Label
+      .chi-card__content.-p--0
+        .chi-data-table.-portal.-compact
+          .chi-data-table__head
+            .chi-data-table__row
+              .chi-data-table__cell
+                span Name
+              .chi-data-table__cell
+                span ID
+              .chi-data-table__cell
+                span Last Login
+          .chi-data-table__body
+            .chi-data-table__row
+              .chi-data-table__cell.-name.-bold
+                div Name 1
+              .chi-data-table__cell.-name
+                div name-1
+              .chi-data-table__cell
+                div Dec 18, 2020 3:26 PM
+            .chi-data-table__row
+              .chi-data-table__cell.-name.-bold
+                div Name 2
+              .chi-data-table__cell.-name
+                div name-2
+              .chi-data-table__cell
+                div Dec 18, 2020 2:38 AM
+            .chi-data-table__row
+              .chi-data-table__cell.-name.-bold
+                div Name 3
+              .chi-data-table__cell.-name
+                div name-3
+              .chi-data-table__cell
+                div Nov 5, 2020 10:15 AM
+          .chi-data-table__footer
+            nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+              .chi-pagination__content
+                .chi-pagination__start
+                  .chi-pagination__results
+                    span.chi-pagination__label 240 Results
+                .chi-pagination__center
+                  .chi-pagination__button-group.chi-button-group
+                    a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  .chi-pagination__label
+                    strong 2
+                    span of
+                    strong 3
+                  .chi-pagination__button-group.chi-button-group
+                    a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                .chi-pagination__end
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -3869,151 +3899,168 @@ h3 Portal
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
-      <div class="chi-data-table -portal -compact">
-        <div class="chi-data-table__head">
-          <div class="chi-data-table__row">
-            <div class="chi-data-table__cell">
-              <span>Name</span>
-            </div>
-            <div class="chi-data-table__cell">
-              <span>ID</span>
-            </div>
-            <div class="chi-data-table__cell">
-              <span>Last Login</span>
-            </div>
-          </div>
+      <div class="chi-card -portal">
+        <div class="chi-card__header -sm">
+          <div class="chi-card__title">Label</div>
         </div>
-        <div class="chi-data-table__body">
-          <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 1</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-1</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 3:26 PM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 2</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-2</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 2:38 AM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 3</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-3</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Nov 5, 2020 10:15 AM</div>
-            </div>
-          </div>
-        </div>
-        <div class="chi-data-table__footer">
-          <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
-            <div class="chi-pagination__content">
-              <div class="chi-pagination__start">
-                <div class="chi-pagination__results">
-                  <span class="chi-pagination__label">240 Results</span>
+        <div class="chi-card__content -p--0">
+          <div class="chi-data-table -portal -compact">
+            <div class="chi-data-table__head">
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell">
+                  <span>Name</span>
+                </div>
+                <div class="chi-data-table__cell">
+                  <span>ID</span>
+                </div>
+                <div class="chi-data-table__cell">
+                  <span>Last Login</span>
                 </div>
               </div>
-              <div class="chi-pagination__center">
-                <div class="chi-pagination__button-group chi-button-group">
-                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
-                    </div>
-                  </a>
+            </div>
+            <div class="chi-data-table__body">
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 1</div>
                 </div>
-                <div class="chi-pagination__label">
-                  <strong>2</strong>
-                  <span>of</span>
-                  <strong>3</strong>
+                <div class="chi-data-table__cell -name">
+                  <div>name-1</div>
                 </div>
-                <div class="chi-pagination__button-group chi-button-group">
-                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-                    </div>
-                  </a>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 3:26 PM</div>
                 </div>
               </div>
-              <div class="chi-pagination__end"></div>
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 2</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>name-2</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 2:38 AM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 3</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>name-3</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Nov 5, 2020 10:15 AM</div>
+                </div>
+              </div>
             </div>
-          </nav>
+            <div class="chi-data-table__footer">
+              <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+                <div class="chi-pagination__content">
+                  <div class="chi-pagination__start">
+                    <div class="chi-pagination__results">
+                      <span class="chi-pagination__label">240 Results</span>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__center">
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="chi-pagination__label">
+                      <strong>2</strong>
+                      <span>of</span>
+                      <strong>3</strong>
+                    </div>
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__end"></div>
+                </div>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
 
 h3 Portal -- Accordion
 .example.-mb--3
   .-p--3
-    .chi-data-table.-portal.-compact
-      .chi-data-table__head
-        .chi-data-table__row
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell
-            span Name
-          .chi-data-table__cell
-            span ID
-          .chi-data-table__cell
-            span Last Login
-      .chi-data-table__body
-        .chi-data-table__row.-collapsed
-          .chi-data-table__cell.-expandable
-            i.chi-icon.icon-plus.-xs  
-          .chi-data-table__cell.-name.-bold
-            div Name 1
-          .chi-data-table__cell.-name
-            div name-1
-          .chi-data-table__cell
-            div Dec 18, 2020 3:26 PM
-        .chi-data-table__row.-collapsed
-          .chi-data-table__cell.-expandable
-            i.chi-icon.icon-plus.-xs            
-          .chi-data-table__cell.-name.-bold
-            div Name 2
-          .chi-data-table__cell.-name
-            div name-2
-          .chi-data-table__cell
-            div Dec 18, 2020 2:38 AM
-        .chi-data-table__row.-collapsed
-          .chi-data-table__cell.-expandable
-            i.chi-icon.icon-plus.-xs            
-          .chi-data-table__cell.-name.-bold
-            div Name 3
-          .chi-data-table__cell.-name
-            div name-3
-          .chi-data-table__cell
-            div Nov 5, 2020 10:15 AM
-      .chi-data-table__footer
-        nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
-          .chi-pagination__content
-            .chi-pagination__start
-              .chi-pagination__results
-                span.chi-pagination__label 240 Results
-            .chi-pagination__center
-              .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Previous page')
+    .chi-card.-portal
+      .chi-card__header.-sm.-pl--9
+        .chi-card__title Label
+      .chi-card__content.-p--0
+        .chi-data-table.-portal.-compact
+          .chi-data-table__head
+            .chi-data-table__row
+              .chi-data-table__cell.-expandable
+              .chi-data-table__cell
+                span Name
+              .chi-data-table__cell
+                span ID
+              .chi-data-table__cell
+                span Last Login
+          .chi-data-table__body
+            .chi-data-table__row.-collapsed
+              .chi-data-table__cell.-expandable
+                button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-              .chi-pagination__label
-                strong 2
-                span of
-                strong 3
-              .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-plus.-xs
+              .chi-data-table__cell.-name.-bold
+                div Name 1
+              .chi-data-table__cell.-name
+                div name-1
+              .chi-data-table__cell
+                div Dec 18, 2020 3:26 PM
+            .chi-data-table__row.-collapsed
+              .chi-data-table__cell.-expandable
+                button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-            .chi-pagination__end
+                    i.chi-icon.icon-plus.-xs         
+              .chi-data-table__cell.-name.-bold
+                div Name 2
+              .chi-data-table__cell.-name
+                div name-2
+              .chi-data-table__cell
+                div Dec 18, 2020 2:38 AM
+            .chi-data-table__row.-collapsed
+              .chi-data-table__cell.-expandable
+                button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
+                  .chi-button__content
+                    i.chi-icon.icon-plus.-xs         
+              .chi-data-table__cell.-name.-bold
+                div Name 3
+              .chi-data-table__cell.-name
+                div name-3
+              .chi-data-table__cell
+                div Nov 5, 2020 10:15 AM
+          .chi-data-table__footer
+            nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+              .chi-pagination__content
+                .chi-pagination__start
+                  .chi-pagination__results
+                    span.chi-pagination__label 240 Results
+                .chi-pagination__center
+                  .chi-pagination__button-group.chi-button-group
+                    a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  .chi-pagination__label
+                    strong 2
+                    span of
+                    strong 3
+                  .chi-pagination__button-group.chi-button-group
+                    a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                .chi-pagination__end
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -4024,169 +4071,198 @@ h3 Portal -- Accordion
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
-      <div class="chi-data-table -portal -compact">
-        <div class="chi-data-table__head">
-          <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -expandable"></div>
-            <div class="chi-data-table__cell">
-              <span>Name</span>
-            </div>
-            <div class="chi-data-table__cell">
-              <span>ID</span>
-            </div>
-            <div class="chi-data-table__cell">
-              <span>Last Login</span>
-            </div>
-          </div>
+      <div class="chi-card -portal">
+        <div class="chi-card__header -sm -pl--9">
+          <div class="chi-card__title">Label</div>
         </div>
-        <div class="chi-data-table__body">
-          <div class="chi-data-table__row -collapsed">
-            <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-plus -xs"></i>
-            </div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 1</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-1</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 3:26 PM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row -collapsed">
-            <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-plus -xs"></i>
-            </div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 2</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-2</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 2:38 AM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row -collapsed">
-            <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-plus -xs"></i>
-            </div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 3</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-3</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Nov 5, 2020 10:15 AM</div>
-            </div>
-          </div>
-        </div>
-        <div class="chi-data-table__footer">
-          <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
-            <div class="chi-pagination__content">
-              <div class="chi-pagination__start">
-                <div class="chi-pagination__results">
-                  <span class="chi-pagination__label">240 Results</span>
+        <div class="chi-card__content -p--0">
+          <div class="chi-data-table -portal -compact">
+            <div class="chi-data-table__head">
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell -expandable"></div>
+                <div class="chi-data-table__cell">
+                  <span>Name</span>
+                </div>
+                <div class="chi-data-table__cell">
+                  <span>ID</span>
+                </div>
+                <div class="chi-data-table__cell">
+                  <span>Last Login</span>
                 </div>
               </div>
-              <div class="chi-pagination__center">
-                <div class="chi-pagination__button-group chi-button-group">
-                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+            </div>
+            <div class="chi-data-table__body">
+              <div class="chi-data-table__row -collapsed">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
                     <div class="chi-button__content">
-                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                      <i class="chi-icon icon-plus -xs"></i>
                     </div>
-                  </a>
+                  </button>
                 </div>
-                <div class="chi-pagination__label">
-                  <strong>2</strong>
-                  <span>of</span>
-                  <strong>3</strong>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 1</div>
                 </div>
-                <div class="chi-pagination__button-group chi-button-group">
-                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-                    </div>
-                  </a>
+                <div class="chi-data-table__cell -name">
+                  <div>name-1</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 3:26 PM</div>
                 </div>
               </div>
-              <div class="chi-pagination__end"></div>
+              <div class="chi-data-table__row -collapsed">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-plus -xs"></i>
+                    </div>
+                  </button>
+                </div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 2</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>name-2</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 2:38 AM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row -collapsed">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-plus -xs"></i>
+                    </div>
+                  </button>
+                </div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 3</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>name-3</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Nov 5, 2020 10:15 AM</div>
+                </div>
+              </div>
             </div>
-          </nav>
+            <div class="chi-data-table__footer">
+              <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+                <div class="chi-pagination__content">
+                  <div class="chi-pagination__start">
+                    <div class="chi-pagination__results">
+                      <span class="chi-pagination__label">240 Results</span>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__center">
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="chi-pagination__label">
+                      <strong>2</strong>
+                      <span>of</span>
+                      <strong>3</strong>
+                    </div>
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__end"></div>
+                </div>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
       
 h3 Portal -- Accordion Expanded
 .example.-mb--3
   .-p--3
-    .chi-data-table.-portal.-compact
-      .chi-data-table__head
-        .chi-data-table__row
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell
-            span Name
-          .chi-data-table__cell
-            span ID
-          .chi-data-table__cell
-            span Last Login
-      .chi-data-table__body
-        .chi-data-table__row.-collapsed
-          .chi-data-table__cell.-expandable
-            i.chi-icon.icon-plus.-xs
-          .chi-data-table__cell.-name.-bold
-            div Name 1
-          .chi-data-table__cell.-name
-            div name-1
-          .chi-data-table__cell
-            div Dec 18, 2020 3:26 PM
-        .chi-data-table__row.-expanded
-          .chi-data-table__cell.-expandable
-            i.chi-icon.icon-minus.-xs
-          .chi-data-table__cell.-name.-bold
-            div Name 2
-          .chi-data-table__cell.-name
-            div name-2
-          .chi-data-table__cell
-            div Dec 18, 2020 2:38 AM
-        .chi-data-table__row-child
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
-            div Child Name 1
-          .chi-data-table__cell.-name
-            div Child name-1
-          .chi-data-table__cell
-            div Dec 18, 2020 2:38 AM
-        .chi-data-table__row.-collapsed
-          .chi-data-table__cell.-expandable
-            i.chi-icon.icon-plus.-xs
-          .chi-data-table__cell.-name.-bold
-            div Name 3
-          .chi-data-table__cell.-name
-            div name-3
-          .chi-data-table__cell
-            div Nov 5, 2020 10:15 AM
-      .chi-data-table__footer
-        nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
-          .chi-pagination__content
-            .chi-pagination__start
-              .chi-pagination__results
-                span.chi-pagination__label 240 Results
-            .chi-pagination__center
-              .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Previous page')
+    .chi-card.-portal
+      .chi-card__header.-sm.-pl--9
+        .chi-card__title Label
+      .chi-card__content.-p--0
+        .chi-data-table.-portal.-compact
+          .chi-data-table__head
+            .chi-data-table__row
+              .chi-data-table__cell.-expandable
+              .chi-data-table__cell
+                span Name
+              .chi-data-table__cell
+                span ID
+              .chi-data-table__cell
+                span Last Login
+          .chi-data-table__body
+            .chi-data-table__row.-collapsed
+              .chi-data-table__cell.-expandable
+                button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-              .chi-pagination__label
-                strong 2
-                span of
-                strong 3
-              .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-plus.-xs
+              .chi-data-table__cell.-name.-bold
+                div Name 1
+              .chi-data-table__cell.-name
+                div name-1
+              .chi-data-table__cell
+                div Dec 18, 2020 3:26 PM
+            .chi-data-table__row.-expanded
+              .chi-data-table__cell.-expandable
+                button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-            .chi-pagination__end
+                    i.chi-icon.icon-minus.-xs
+              .chi-data-table__cell.-name.-bold
+                div Name 2
+              .chi-data-table__cell.-name
+                div name-2
+              .chi-data-table__cell
+                div Dec 18, 2020 2:38 AM
+            .chi-data-table__row-child
+              .chi-data-table__cell.-expandable
+              .chi-data-table__cell.-name.-bold
+                div Child Name 1
+              .chi-data-table__cell.-name
+                div Child name-1
+              .chi-data-table__cell
+                div Dec 18, 2020 2:38 AM
+            .chi-data-table__row.-collapsed
+              .chi-data-table__cell.-expandable
+                button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
+                  .chi-button__content
+                    i.chi-icon.icon-plus.-xs
+              .chi-data-table__cell.-name.-bold
+                div Name 3
+              .chi-data-table__cell.-name
+                div name-3
+              .chi-data-table__cell
+                div Nov 5, 2020 10:15 AM
+          .chi-data-table__footer
+            nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+              .chi-pagination__content
+                .chi-pagination__start
+                  .chi-pagination__results
+                    span.chi-pagination__label 240 Results
+                .chi-pagination__center
+                  .chi-pagination__button-group.chi-button-group
+                    a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  .chi-pagination__label
+                    strong 2
+                    span of
+                    strong 3
+                  .chi-pagination__button-group.chi-button-group
+                    a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                .chi-pagination__end
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -4197,189 +4273,218 @@ h3 Portal -- Accordion Expanded
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
-      <div class="chi-data-table -portal -compact">
-        <div class="chi-data-table__head">
-          <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -expandable"></div>
-            <div class="chi-data-table__cell">
-              <span>Name</span>
-            </div>
-            <div class="chi-data-table__cell">
-              <span>ID</span>
-            </div>
-            <div class="chi-data-table__cell">
-              <span>Last Login</span>
-            </div>
-          </div>
+      <div class="chi-card -portal">
+        <div class="chi-card__header -sm -pl--9">
+          <div class="chi-card__title">Label</div>
         </div>
-        <div class="chi-data-table__body">
-          <div class="chi-data-table__row -collapsed">
-            <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-plus -xs"></i>
-            </div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 1</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-1</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 3:26 PM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row -expanded">
-            <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-minus -xs"></i>
-            </div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 2</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-2</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 2:38 AM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row-child">
-            <div class="chi-data-table__cell -expandable"></div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Child Name 1</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>Child name-1</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 2:38 AM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row -collapsed">
-            <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-plus -xs"></i>
-            </div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 3</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-3</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Nov 5, 2020 10:15 AM</div>
-            </div>
-          </div>
-        </div>
-        <div class="chi-data-table__footer">
-          <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
-            <div class="chi-pagination__content">
-              <div class="chi-pagination__start">
-                <div class="chi-pagination__results">
-                  <span class="chi-pagination__label">240 Results</span>
+        <div class="chi-card__content -p--0">
+          <div class="chi-data-table -portal -compact">
+            <div class="chi-data-table__head">
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell -expandable"></div>
+                <div class="chi-data-table__cell">
+                  <span>Name</span>
+                </div>
+                <div class="chi-data-table__cell">
+                  <span>ID</span>
+                </div>
+                <div class="chi-data-table__cell">
+                  <span>Last Login</span>
                 </div>
               </div>
-              <div class="chi-pagination__center">
-                <div class="chi-pagination__button-group chi-button-group">
-                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+            </div>
+            <div class="chi-data-table__body">
+              <div class="chi-data-table__row -collapsed">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
                     <div class="chi-button__content">
-                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                      <i class="chi-icon icon-plus -xs"></i>
                     </div>
-                  </a>
+                  </button>
                 </div>
-                <div class="chi-pagination__label">
-                  <strong>2</strong>
-                  <span>of</span>
-                  <strong>3</strong>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 1</div>
                 </div>
-                <div class="chi-pagination__button-group chi-button-group">
-                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-                    </div>
-                  </a>
+                <div class="chi-data-table__cell -name">
+                  <div>name-1</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 3:26 PM</div>
                 </div>
               </div>
-              <div class="chi-pagination__end"></div>
+              <div class="chi-data-table__row -expanded">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-minus -xs"></i>
+                    </div>
+                  </button>
+                </div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 2</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>name-2</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 2:38 AM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row-child">
+                <div class="chi-data-table__cell -expandable"></div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Child Name 1</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>Child name-1</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 2:38 AM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row -collapsed">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-plus -xs"></i>
+                    </div>
+                  </button>
+                </div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 3</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>name-3</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Nov 5, 2020 10:15 AM</div>
+                </div>
+              </div>
             </div>
-          </nav>
+            <div class="chi-data-table__footer">
+              <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+                <div class="chi-pagination__content">
+                  <div class="chi-pagination__start">
+                    <div class="chi-pagination__results">
+                      <span class="chi-pagination__label">240 Results</span>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__center">
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="chi-pagination__label">
+                      <strong>2</strong>
+                      <span>of</span>
+                      <strong>3</strong>
+                    </div>
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__end"></div>
+                </div>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
       
 h3 Portal -- Accordion Expanded -- Child
 .example.-mb--3
   .-p--3
-    .chi-data-table.-portal.-compact
-      .chi-data-table__head
-        .chi-data-table__row
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell
-            span Name
-          .chi-data-table__cell
-            span ID
-          .chi-data-table__cell
-            span Last Login
-      .chi-data-table__body
-        .chi-data-table__row.-collapsed
-          .chi-data-table__cell.-expandable
-            i.chi-icon.icon-plus.-xs
-          .chi-data-table__cell.-name.-bold
-            div Name 1
-          .chi-data-table__cell.-name
-            div name-1
-          .chi-data-table__cell
-            div Dec 18, 2020 3:26 PM
-        .chi-data-table__row.-expanded
-          .chi-data-table__cell.-expandable
-            i.chi-icon.icon-minus.-xs
-          .chi-data-table__cell.-name.-bold
-            div Name 2
-          .chi-data-table__cell.-name
-            div name-2
-          .chi-data-table__cell
-            div Dec 18, 2020 2:38 AM
-        .chi-data-table__row-child.-collapsed
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
-            div Child Name 1
-          .chi-data-table__cell.-name
-            div Child name-1
-          .chi-data-table__cell
-            div Dec 18, 2020 2:38 AM
-        .chi-data-table__row-child.-collapsed
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
-            div Child Name 2
-          .chi-data-table__cell.-name
-            div Child name-2
-          .chi-data-table__cell
-            div Dec 18, 2020 2:38 AM
-        .chi-data-table__row.-collapsed
-          .chi-data-table__cell.-expandable
-            i.chi-icon.icon-plus.-xs
-          .chi-data-table__cell.-name.-bold
-            div Name 3
-          .chi-data-table__cell.-name
-            div name-3
-          .chi-data-table__cell
-            div Nov 5, 2020 10:15 AM
-      .chi-data-table__footer
-        nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
-          .chi-pagination__content
-            .chi-pagination__start
-              .chi-pagination__results
-                span.chi-pagination__label 240 Results
-            .chi-pagination__center
-              .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Previous page')
+    .chi-card.-portal
+      .chi-card__header.-sm.-pl--9
+        .chi-card__title Label
+      .chi-card__content.-p--0
+        .chi-data-table.-portal.-compact
+          .chi-data-table__head
+            .chi-data-table__row
+              .chi-data-table__cell.-expandable
+              .chi-data-table__cell
+                span Name
+              .chi-data-table__cell
+                span ID
+              .chi-data-table__cell
+                span Last Login
+          .chi-data-table__body
+            .chi-data-table__row.-collapsed
+              .chi-data-table__cell.-expandable
+                button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-              .chi-pagination__label
-                strong 2
-                span of
-                strong 3
-              .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-plus.-xs
+              .chi-data-table__cell.-name.-bold
+                div Name 1
+              .chi-data-table__cell.-name
+                div name-1
+              .chi-data-table__cell
+                div Dec 18, 2020 3:26 PM
+            .chi-data-table__row.-expanded
+              .chi-data-table__cell.-expandable
+                button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-            .chi-pagination__end
+                    i.chi-icon.icon-minus.-xs
+              .chi-data-table__cell.-name.-bold
+                div Name 2
+              .chi-data-table__cell.-name
+                div name-2
+              .chi-data-table__cell
+                div Dec 18, 2020 2:38 AM
+            .chi-data-table__row-child.-collapsed
+              .chi-data-table__cell.-expandable
+              .chi-data-table__cell.-name.-bold
+                div Child Name 1
+              .chi-data-table__cell.-name
+                div Child name-1
+              .chi-data-table__cell
+                div Dec 18, 2020 2:38 AM
+            .chi-data-table__row-child.-collapsed
+              .chi-data-table__cell.-expandable
+              .chi-data-table__cell.-name.-bold
+                div Child Name 2
+              .chi-data-table__cell.-name
+                div Child name-2
+              .chi-data-table__cell
+                div Dec 18, 2020 2:38 AM
+            .chi-data-table__row.-collapsed
+              .chi-data-table__cell.-expandable
+                button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
+                  .chi-button__content
+                    i.chi-icon.icon-plus.-xs
+              .chi-data-table__cell.-name.-bold
+                div Name 3
+              .chi-data-table__cell.-name
+                div name-3
+              .chi-data-table__cell
+                div Nov 5, 2020 10:15 AM
+          .chi-data-table__footer
+            nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+              .chi-pagination__content
+                .chi-pagination__start
+                  .chi-pagination__results
+                    span.chi-pagination__label 240 Results
+                .chi-pagination__center
+                  .chi-pagination__button-group.chi-button-group
+                    a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  .chi-pagination__label
+                    strong 2
+                    span of
+                    strong 3
+                  .chi-pagination__button-group.chi-button-group
+                    a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                .chi-pagination__end
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -4390,209 +4495,238 @@ h3 Portal -- Accordion Expanded -- Child
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
-      <div class="chi-data-table -portal -compact">
-        <div class="chi-data-table__head">
-          <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -expandable"></div>
-            <div class="chi-data-table__cell">
-              <span>Name</span>
-            </div>
-            <div class="chi-data-table__cell">
-              <span>ID</span>
-            </div>
-            <div class="chi-data-table__cell">
-              <span>Last Login</span>
-            </div>
-          </div>
+      <div class="chi-card -portal">
+        <div class="chi-card__header -sm -pl--9">
+          <div class="chi-card__title">Label</div>
         </div>
-        <div class="chi-data-table__body">
-          <div class="chi-data-table__row -collapsed">
-            <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-plus -xs"></i>
-            </div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 1</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-1</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 3:26 PM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row -expanded">
-            <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-minus -xs"></i>
-            </div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 2</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-2</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 2:38 AM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row-child -collapsed">
-            <div class="chi-data-table__cell -expandable"></div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Child Name 1</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>Child name-1</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 2:38 AM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row-child -collapsed">
-            <div class="chi-data-table__cell -expandable"></div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Child Name 2</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>Child name-2</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 2:38 AM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row -collapsed">
-            <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-plus -xs"></i>
-            </div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 3</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-3</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Nov 5, 2020 10:15 AM</div>
-            </div>
-          </div>
-        </div>
-        <div class="chi-data-table__footer">
-          <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
-            <div class="chi-pagination__content">
-              <div class="chi-pagination__start">
-                <div class="chi-pagination__results">
-                  <span class="chi-pagination__label">240 Results</span>
+        <div class="chi-card__content -p--0">
+          <div class="chi-data-table -portal -compact">
+            <div class="chi-data-table__head">
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell -expandable"></div>
+                <div class="chi-data-table__cell">
+                  <span>Name</span>
+                </div>
+                <div class="chi-data-table__cell">
+                  <span>ID</span>
+                </div>
+                <div class="chi-data-table__cell">
+                  <span>Last Login</span>
                 </div>
               </div>
-              <div class="chi-pagination__center">
-                <div class="chi-pagination__button-group chi-button-group">
-                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+            </div>
+            <div class="chi-data-table__body">
+              <div class="chi-data-table__row -collapsed">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
                     <div class="chi-button__content">
-                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                      <i class="chi-icon icon-plus -xs"></i>
                     </div>
-                  </a>
+                  </button>
                 </div>
-                <div class="chi-pagination__label">
-                  <strong>2</strong>
-                  <span>of</span>
-                  <strong>3</strong>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 1</div>
                 </div>
-                <div class="chi-pagination__button-group chi-button-group">
-                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-                    </div>
-                  </a>
+                <div class="chi-data-table__cell -name">
+                  <div>name-1</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 3:26 PM</div>
                 </div>
               </div>
-              <div class="chi-pagination__end"></div>
+              <div class="chi-data-table__row -expanded">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-minus -xs"></i>
+                    </div>
+                  </button>
+                </div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 2</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>name-2</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 2:38 AM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row-child -collapsed">
+                <div class="chi-data-table__cell -expandable"></div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Child Name 1</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>Child name-1</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 2:38 AM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row-child -collapsed">
+                <div class="chi-data-table__cell -expandable"></div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Child Name 2</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>Child name-2</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 2:38 AM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row -collapsed">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-plus -xs"></i>
+                    </div>
+                  </button>
+                </div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 3</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>name-3</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Nov 5, 2020 10:15 AM</div>
+                </div>
+              </div>
             </div>
-          </nav>
+            <div class="chi-data-table__footer">
+              <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+                <div class="chi-pagination__content">
+                  <div class="chi-pagination__start">
+                    <div class="chi-pagination__results">
+                      <span class="chi-pagination__label">240 Results</span>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__center">
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="chi-pagination__label">
+                      <strong>2</strong>
+                      <span>of</span>
+                      <strong>3</strong>
+                    </div>
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__end"></div>
+                </div>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
 
 h3 Portal -- Accordion Expanded -- Child Expanded
 .example.-mb--3
   .-p--3
-    .chi-data-table.-portal.-compact
-      .chi-data-table__head
-        .chi-data-table__row
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell
-             span Name
-          .chi-data-table__cell
-            span ID
-          .chi-data-table__cell
-            span Last Login
-      .chi-data-table__body
-        .chi-data-table__row.-collapsed
-          .chi-data-table__cell.-expandable
-            i.chi-icon.icon-plus.-xs
-          .chi-data-table__cell.-name.-bold
-            div Name 1
-          .chi-data-table__cell.-name
-            div name-1
-          .chi-data-table__cell
-            div Dec 18, 2020 3:26 PM
-        .chi-data-table__row.-expanded
-          .chi-data-table__cell.-expandable
-            i.chi-icon.icon-minus.-xs
-          .chi-data-table__cell.-name.-bold
-            div Name 2
-          .chi-data-table__cell.-name
-            div name-2
-          .chi-data-table__cell
-            div Dec 18, 2020 2:38 AM
-        .chi-data-table__row-child.-expanded
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
-            div Child Name 1
-          .chi-data-table__cell.-name
-            div Child name-1
-          .chi-data-table__cell
-            div Dec 18, 2020 2:38 AM
-        .chi-data-table__row-grand-child
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
-            div Grand-child Name 1
-          .chi-data-table__cell.-name
-            div Grand-child name-1
-          .chi-data-table__cell
-            div Dec 18, 2020 2:38 AM
-        .chi-data-table__row-child.-collapsed
-          .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
-            div Child Name 2
-          .chi-data-table__cell.-name
-            div Child name-2
-          .chi-data-table__cell
-            div Dec 18, 2020 2:38 AM
-        .chi-data-table__row.-collapsed
-          .chi-data-table__cell.-expandable
-            i.chi-icon.icon-plus.-xs
-          .chi-data-table__cell.-name.-bold
-            div Name 3
-          .chi-data-table__cell.-name
-            div name-3
-          .chi-data-table__cell
-            div Nov 5, 2020 10:15 AM
-      .chi-data-table__footer
-        nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
-          .chi-pagination__content
-            .chi-pagination__start
-              .chi-pagination__results
-                span.chi-pagination__label 240 Results
-            .chi-pagination__center
-              .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Previous page')
+    .chi-card.-portal
+      .chi-card__header.-sm.-pl--9
+        .chi-card__title Label
+      .chi-card__content.-p--0
+        .chi-data-table.-portal.-compact
+          .chi-data-table__head
+            .chi-data-table__row
+              .chi-data-table__cell.-expandable
+              .chi-data-table__cell
+                 span Name
+              .chi-data-table__cell
+                span ID
+              .chi-data-table__cell
+                span Last Login
+          .chi-data-table__body
+            .chi-data-table__row.-collapsed
+              .chi-data-table__cell.-expandable
+                button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-              .chi-pagination__label
-                strong 2
-                span of
-                strong 3
-              .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Next page')
+                    i.chi-icon.icon-plus.-xs
+              .chi-data-table__cell.-name.-bold
+                div Name 1
+              .chi-data-table__cell.-name
+                div name-1
+              .chi-data-table__cell
+                div Dec 18, 2020 3:26 PM
+            .chi-data-table__row.-expanded
+              .chi-data-table__cell.-expandable
+                button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-            .chi-pagination__end
+                    i.chi-icon.icon-minus.-xs
+              .chi-data-table__cell.-name.-bold
+                div Name 2
+              .chi-data-table__cell.-name
+                div name-2
+              .chi-data-table__cell
+                div Dec 18, 2020 2:38 AM
+            .chi-data-table__row-child.-expanded
+              .chi-data-table__cell.-expandable
+              .chi-data-table__cell.-name.-bold
+                div Child Name 1
+              .chi-data-table__cell.-name
+                div Child name-1
+              .chi-data-table__cell
+                div Dec 18, 2020 2:38 AM
+            .chi-data-table__row-grand-child
+              .chi-data-table__cell.-expandable
+              .chi-data-table__cell.-name.-bold
+                div Grand-child Name 1
+              .chi-data-table__cell.-name
+                div Grand-child name-1
+              .chi-data-table__cell
+                div Dec 18, 2020 2:38 AM
+            .chi-data-table__row-child.-collapsed
+              .chi-data-table__cell.-expandable
+              .chi-data-table__cell.-name.-bold
+                div Child Name 2
+              .chi-data-table__cell.-name
+                div Child name-2
+              .chi-data-table__cell
+                div Dec 18, 2020 2:38 AM
+            .chi-data-table__row.-collapsed
+              .chi-data-table__cell.-expandable
+                button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
+                  .chi-button__content
+                    i.chi-icon.icon-plus.-xs
+              .chi-data-table__cell.-name.-bold
+                div Name 3
+              .chi-data-table__cell.-name
+                div name-3
+              .chi-data-table__cell
+                div Nov 5, 2020 10:15 AM
+          .chi-data-table__footer
+            nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+              .chi-pagination__content
+                .chi-pagination__start
+                  .chi-pagination__results
+                    span.chi-pagination__label 240 Results
+                .chi-pagination__center
+                  .chi-pagination__button-group.chi-button-group
+                    a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Previous page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                  .chi-pagination__label
+                    strong 2
+                    span of
+                    strong 3
+                  .chi-pagination__button-group.chi-button-group
+                    a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Next page')
+                      .chi-button__content
+                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                .chi-pagination__end
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -4603,153 +4737,170 @@ h3 Portal -- Accordion Expanded -- Child Expanded
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
-      <div class="chi-data-table -portal -compact">
-      </div>
-      
-      <div class="chi-data-table -portal -compact">
-        <div class="chi-data-table__head">
-          <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -expandable"></div>
-            <div class="chi-data-table__cell">
-              <span>Name</span></div>
-            <div class="chi-data-table__cell">
-              <span>ID</span>
-            </div>
-            <div class="chi-data-table__cell">
-              <span>Last Login</span>
-            </div>
-          </div>
+      <div class="chi-card -portal">
+        <div class="chi-card__header -sm -pl--9">
+          <div class="chi-card__title">Label</div>
         </div>
-        <div class="chi-data-table__body">
-          <div class="chi-data-table__row -collapsed">
-            <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-plus -xs"></i>
-            </div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 1</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-1</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 3:26 PM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row -expanded">
-            <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-minus -xs"></i>
-            </div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 2</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-2</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 2:38 AM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row-child -expanded">
-            <div class="chi-data-table__cell -expandable"></div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Child Name 1</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>Child name-1</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 2:38 AM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row-grand-child">
-            <div class="chi-data-table__cell -expandable"></div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Grand-child Name 1</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>Grand-child name-1</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 2:38 AM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row-child -collapsed">
-            <div class="chi-data-table__cell -expandable"></div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Child Name 2</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>Child name-2</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 2:38 AM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row -collapsed">
-            <div class="chi-data-table__cell -expandable">
-              <i class="chi-icon icon-plus -xs"></i>
-            </div>
-            <div class="chi-data-table__cell -name -bold">
-              <div>Name 3</div>
-            </div>
-            <div class="chi-data-table__cell -name">
-              <div>name-3</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Nov 5, 2020 10:15 AM</div>
-            </div>
-          </div>
-        </div>
-        <div class="chi-data-table__footer">
-          <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
-            <div class="chi-pagination__content">
-              <div class="chi-pagination__start">
-                <div class="chi-pagination__results">
-                  <span class="chi-pagination__label">240 Results</span>
+        <div class="chi-card__content -p--0">
+          <div class="chi-data-table -portal -compact">
+            <div class="chi-data-table__head">
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell -expandable"></div>
+                <div class="chi-data-table__cell">
+                  <span>Name</span></div>
+                <div class="chi-data-table__cell">
+                  <span>ID</span>
+                </div>
+                <div class="chi-data-table__cell">
+                  <span>Last Login</span>
                 </div>
               </div>
-              <div class="chi-pagination__center">
-                <div class="chi-pagination__button-group chi-button-group">
-                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+            </div>
+            <div class="chi-data-table__body">
+              <div class="chi-data-table__row -collapsed">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
                     <div class="chi-button__content">
-                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                      <i class="chi-icon icon-plus -xs"></i>
                     </div>
-                  </a>
                 </div>
-                <div class="chi-pagination__label">
-                  <strong>2</strong>
-                  <span>of</span>
-                  <strong>3</strong>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 1</div>
                 </div>
-                <div class="chi-pagination__button-group chi-button-group">
-                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-                    </div>
-                  </a>
+                <div class="chi-data-table__cell -name">
+                  <div>name-1</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 3:26 PM</div>
                 </div>
               </div>
-              <div class="chi-pagination__end"></div>
+              <div class="chi-data-table__row -expanded">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-minus -xs"></i>
+                    </div>
+                </div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 2</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>name-2</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 2:38 AM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row-child -expanded">
+                <div class="chi-data-table__cell -expandable"></div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Child Name 1</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>Child name-1</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 2:38 AM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row-grand-child">
+                <div class="chi-data-table__cell -expandable"></div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Grand-child Name 1</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>Grand-child name-1</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 2:38 AM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row-child -collapsed">
+                <div class="chi-data-table__cell -expandable"></div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Child Name 2</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>Child name-2</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 2:38 AM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row -collapsed">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-plus -xs"></i>
+                    </div>
+                </div>
+                <div class="chi-data-table__cell -name -bold">
+                  <div>Name 3</div>
+                </div>
+                <div class="chi-data-table__cell -name">
+                  <div>name-3</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Nov 5, 2020 10:15 AM</div>
+                </div>
+              </div>
             </div>
-          </nav>
+            <div class="chi-data-table__footer">
+              <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+                <div class="chi-pagination__content">
+                  <div class="chi-pagination__start">
+                    <div class="chi-pagination__results">
+                      <span class="chi-pagination__label">240 Results</span>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__center">
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="chi-pagination__label">
+                      <strong>2</strong>
+                      <span>of</span>
+                      <strong>3</strong>
+                    </div>
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__end"></div>
+                </div>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
 
 h3 Portal -- Compact -- Empty
 .example.-mb--3
   .-p--3
-    .chi-data-table.-portal.-compact
-      .chi-data-table__head
-        .chi-data-table__row
-          .chi-data-table__cell
-            span Name
-          .chi-data-table__cell
-            span ID
-          .chi-data-table__cell
-            span Last Login
-      .chi-data-table__body
-        .chi-data-table__row-empty
-          div No matches found. Please revise search criteria and try again.
+    .chi-card.-portal
+      .chi-card__header.-sm
+        .chi-card__title Label
+      .chi-card__content.-p--0
+        .chi-data-table.-portal.-compact
+          .chi-data-table__head
+            .chi-data-table__row
+              .chi-data-table__cell
+                span Name
+              .chi-data-table__cell
+                span ID
+              .chi-data-table__cell
+                span Last Login
+          .chi-data-table__body
+            .chi-data-table__row-empty
+              div No matches found. Please revise search criteria and try again.
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -4760,23 +4911,30 @@ h3 Portal -- Compact -- Empty
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
-      <div class="chi-data-table -portal -compact">
-        <div class="chi-data-table__head">
-          <div class="chi-data-table__row">
-            <div class="chi-data-table__cell">
-              <span>Name</span>
-            </div>
-            <div class="chi-data-table__cell">
-              <span>ID</span>
-            </div>
-            <div class="chi-data-table__cell">
-              <span>Last Login</span>
-            </div>
-          </div>
+      <div class="chi-card -portal">
+        <div class="chi-card__header -sm">
+          <div class="chi-card__title">Label</div>
         </div>
-        <div class="chi-data-table__body">
-          <div class="chi-data-table__row-empty">
-            <div>No matches found. Please revise search criteria and try again.</div>
+        <div class="chi-card__content -p--0">
+          <div class="chi-data-table -portal -compact">
+            <div class="chi-data-table__head">
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell">
+                  <span>Name</span>
+                </div>
+                <div class="chi-data-table__cell">
+                  <span>ID</span>
+                </div>
+                <div class="chi-data-table__cell">
+                  <span>Last Login</span>
+                </div>
+              </div>
+            </div>
+            <div class="chi-data-table__body">
+              <div class="chi-data-table__row-empty">
+                <div>No matches found. Please revise search criteria and try again.</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>  
