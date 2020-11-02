@@ -26,6 +26,11 @@
 #### Fixed
 * Fixed: Label required asterisk color no longer fails color contrast test.
 * Fixed: Textarea web component specific styles were not loading due to an incorrect :host() pseudo-class.
+* Fixed: Alert content text was not wrapping correctly in IE11.
+* Fixed: Brand web component skeleton was rendering with the width and height values of CenturyLink logo instead of Lumen logo.
+* Fixed: Button web component skeleton rendered with an inconsistent display property that caused skeletons to stack instead of rendering inline.
+* Fixed: Button web component skeleton was not respecting icon button sizes.
+* Fixed: Progress web component skeleton rendered with a margin that caused the component to jump after preloading. 
 ### Documentation
 #### Added
 * Added: Installation page now includes framework specific boilerplates for Vue, Stencil, Angular, and React.
