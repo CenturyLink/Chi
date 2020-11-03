@@ -329,7 +329,7 @@ h3 Nested Accordions
       </div>
 
       <script>
-        const accordionNested = document.getElementById('example-nested');
+        const accordionNested = document.getElementById('nested-accordions');
 
         chi.accordion(accordionNested);
       </script>
@@ -338,34 +338,30 @@ h3 Show / Hide / Toggle of individual items of Accordion
 
 .example.-mb--3
   .-p--3.-p-lg--6
-    .chi-grid
-      .chi-col
-        .chi-accordion.-portal#individual-accordion-items
-          .chi-accordion__item.-expanded
-            button.chi-accordion__trigger
-              .chi-accordion__title
-                | Accordion
-              i.chi-icon.icon-chevron-down
-            .chi-accordion__content.-py--2
-              .chi-accordion.-portal
-                .chi-accordion__item#invividual-accordion-item-1
-                  button.chi-accordion__trigger
-                    .chi-accordion__title
-                      | Accordion item 1
-                    i.chi-icon.icon-chevron-down
-                  .chi-accordion__content
-                    p.chi-accordion__text Content of Accordion item 1
-                .chi-accordion__item#invividual-accordion-item-2
-                  button.chi-accordion__trigger
-                    .chi-accordion__title
-                      | Accordion item 2
-                    i.chi-icon.icon-chevron-down
-                  .chi-accordion__content
-                    p.chi-accordion__text Content of Accordion item 2
-      .chi-col
-        .-pl--2
-          button.chi-button.-d--block#toggle-accordion-1 Toggle item 1
-          button.chi-button.-d--block.-mt--1#toggle-accordion-2 Toggle item 2
+    button.chi-button#toggle-accordion-1 Toggle item 1
+    button.chi-button.-ml--1#toggle-accordion-2 Toggle item 2
+    .chi-accordion.-portal.-mt--2#individual-accordion-items
+      .chi-accordion__item.-expanded
+        button.chi-accordion__trigger
+          .chi-accordion__title
+            | Accordion
+          i.chi-icon.icon-chevron-down
+        .chi-accordion__content.-py--2
+          .chi-accordion.-portal
+            .chi-accordion__item#invividual-accordion-item-1
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion item 1
+                i.chi-icon.icon-chevron-down
+              .chi-accordion__content
+                p.chi-accordion__text Content of Accordion item 1
+            .chi-accordion__item#invividual-accordion-item-2
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion item 2
+                i.chi-icon.icon-chevron-down
+              .chi-accordion__content
+                p.chi-accordion__text Content of Accordion item 2
   .example-tabs.-pl--2
     ul#chi-tabs-e2.chi-tabs
       li.-disabled
@@ -380,6 +376,9 @@ h3 Show / Hide / Toggle of individual items of Accordion
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
+      <button class="chi-button" id="toggle-accordion-1">Toggle item 1</button>
+      <button class="chi-button" id="toggle-accordion-2">Toggle item 2</button>
+
       <div class="chi-accordion -portal" id="individual-accordion-items">
         <div class="chi-accordion__item -expanded">
           <button class="chi-accordion__trigger">
@@ -410,7 +409,7 @@ h3 Show / Hide / Toggle of individual items of Accordion
           </div>
         </div>
       </div>
-      <button class="chi-button -d--block" id="toggle-accordion-1">Toggle item 1</button><button class="chi-button -d--block -mt--1" id="toggle-accordion-2">Toggle item 2</button>
+
       <script>
         const individualAccordions = chi.accordion(document.getElementById("individual-accordion-items"));
         const toggleAccordionOne = document.getElementById("toggle-accordion-1");
@@ -429,64 +428,60 @@ h3 Expand / Collapse all Accordion items
 
 .example.-mb--3
   .-p--3.-p-lg--6
-    .chi-grid
-      .chi-col
-        .chi-accordion.-portal#expand-collapse
-          .chi-accordion__item.-expanded
-            button.chi-accordion__trigger
-              .chi-accordion__title
-                | Accordion
-              i.chi-icon.icon-chevron-down
-            .chi-accordion__content
-              .chi-accordion.-portal
-                .chi-accordion__item
-                  button.chi-accordion__trigger
-                    .chi-accordion__title
-                      | Accordion item 1
-                    i.chi-icon.icon-chevron-down
-                  .chi-accordion__content
-                    p.chi-accordion__text Content of Accordion item 1
-                    .chi-accordion.-portal
-                      .chi-accordion__item
-                        button.chi-accordion__trigger
-                          .chi-accordion__title
-                            | Accordion item 1.1
-                          i.chi-icon.icon-chevron-down
-                        .chi-accordion__content
-                          p.chi-accordion__text Content of Accordion item 1.1
-                      .chi-accordion__item
-                        button.chi-accordion__trigger
-                          .chi-accordion__title
-                            | Accordion item 1.2
-                          i.chi-icon.icon-chevron-down
-                        .chi-accordion__content
-                          p.chi-accordion__text Content of Accordion item 1.2
-                .chi-accordion__item
-                  button.chi-accordion__trigger
-                    .chi-accordion__title
-                      | Accordion item 2
-                    i.chi-icon.icon-chevron-down
-                  .chi-accordion__content
-                    p.chi-accordion__text Content of Accordion item 2
-                    .chi-accordion.-portal
-                      .chi-accordion__item
-                        button.chi-accordion__trigger
-                          .chi-accordion__title
-                            | Accordion item 2.1
-                          i.chi-icon.icon-chevron-down
-                        .chi-accordion__content
-                          p.chi-accordion__text Content of Accordion item 2.1
-                      .chi-accordion__item
-                        button.chi-accordion__trigger
-                          .chi-accordion__title
-                            | Accordion item 2.2
-                          i.chi-icon.icon-chevron-down
-                        .chi-accordion__content
-                          p.chi-accordion__text Content of Accordion item 2.2
-      .chi-col
-        .-pl--2
-          button.chi-button.-d--block#expand-all Expand all
-          button.chi-button.-d--block.-mt--1#collapse-all Collapse all
+    button.chi-button#expand-all Expand all
+    button.chi-button.-ml--1#collapse-all Collapse all
+    .chi-accordion.-portal.-mt--2#expand-collapse
+      .chi-accordion__item.-expanded
+        button.chi-accordion__trigger
+          .chi-accordion__title
+            | Accordion
+          i.chi-icon.icon-chevron-down
+        .chi-accordion__content
+          .chi-accordion.-portal
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion item 1
+                i.chi-icon.icon-chevron-down
+              .chi-accordion__content
+                p.chi-accordion__text Content of Accordion item 1
+                .chi-accordion.-portal
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion item 1.1
+                      i.chi-icon.icon-chevron-down
+                    .chi-accordion__content
+                      p.chi-accordion__text Content of Accordion item 1.1
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion item 1.2
+                      i.chi-icon.icon-chevron-down
+                    .chi-accordion__content
+                      p.chi-accordion__text Content of Accordion item 1.2
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion item 2
+                i.chi-icon.icon-chevron-down
+              .chi-accordion__content
+                p.chi-accordion__text Content of Accordion item 2
+                .chi-accordion.-portal
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion item 2.1
+                      i.chi-icon.icon-chevron-down
+                    .chi-accordion__content
+                      p.chi-accordion__text Content of Accordion item 2.1
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion item 2.2
+                      i.chi-icon.icon-chevron-down
+                    .chi-accordion__content
+                      p.chi-accordion__text Content of Accordion item 2.2
   .example-tabs.-pl--2
     ul#chi-tabs-e2.chi-tabs
       li.-disabled
@@ -501,6 +496,9 @@ h3 Expand / Collapse all Accordion items
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
+      <button class="chi-button" id="expand-all">Expand all</button>
+      <button class="chi-button" id="collapse-all">Collapse all</button>
+
       <div class="chi-accordion -portal" id="expand-collapse">
         <div class="chi-accordion__item -expanded">
           <button class="chi-accordion__trigger">
@@ -571,8 +569,6 @@ h3 Expand / Collapse all Accordion items
           </div>
         </div>
       </div>
-      <button class="chi-button -d--block" id="expand-all">Expand all</button>
-      <button class="chi-button -d--block -mt--1" id="collapse-all">Collapse all</button>
 
       <script>
         const expandCollapseAccordion = chi.accordion(document.getElementById("expand-collapse"));
