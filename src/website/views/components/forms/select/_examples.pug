@@ -6,25 +6,28 @@ h3 Base
 .example.-mb--3
   .-p--3
     .chi-form__item(style="max-width:20rem")
-      label.chi-label(for="example-base") Label
-      select(class="chi-select", id="example-base")
-        option(selected disabled hidden) Base Select
+      label.chi-label(for="example-ba1") Label
+      select(class="chi-select", id="example-ba1")
+        option(value="") Select
         option Option 1
         option Option 2
         option Option 3
   .example-tabs.-pl--2
-    ul.chi-tabs#example-select-base
+    ul.chi-tabs#example-base
       li.-disabled
-        a(href=`#webcomponent-select-base`) Web Component
+        a(href=`#webcomponent-base`) Web Component
       li.-active
-        a(href=`#html-select-base`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-select-base
-  .chi-tabs-panel.-active#html-select-base
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
     :code(lang="html")
       <div class="chi-form__item">
-        <label class="chi-label" for="example-base">Label</label>
-        <select class="chi-select" id="example-base">
-          <option>Base Select</option>
+        <label class="chi-label" for="example-ba1">Label</label>
+        <select class="chi-select" id="example-ba1">
+          <option value="">Select</option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
         </select>
       </div>
 
@@ -32,51 +35,233 @@ h3 Disabled
 .example.-mb--3
   .-p--3
     .chi-form__item(style="max-width:20rem")
-      label.chi-label(for="example-disabled") Label
-      select(class="chi-select", id="example-disabled", disabled)
-        option Disabled Select
+      label.chi-label(for="example-di1") Label
+      select(class="chi-select", id="example-di1" disabled)
+        option(value="") Select
+        option Option 1
+        option Option 2
+        option Option 3
   .example-tabs.-pl--2
-    ul.chi-tabs#example-select-disabled
+    ul.chi-tabs#example-disabled
       li.-disabled
-        a(href=`#webcomponent-select-disabled`) Web Component
+        a(href=`#webcomponent-disabled`) Web Component
       li.-active
-        a(href=`#html-select-disabled`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-select-disabled
-  .chi-tabs-panel.-active#html-select-disabled
+        a(href=`#html-disabled`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-disabled
+  .chi-tabs-panel.-active#html-disabled
     :code(lang="html")
       <div class="chi-form__item">
-        <label class="chi-label" for="example-disabled">Label</label>
-        <select class="chi-select" id="example-disabled" disabled>
-          <option>Disabled Select</option>
+        <label class="chi-label" for="example-di1">Label</label>
+        <select class="chi-select" id="example-di1" disabled>
+          <option value="">Select</option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
         </select>
       </div>
 
-h3 Invalid
+h3 Required
 p.-text
-  | Selects support the semantic class modifier <code>-danger</code> for indicating
-  | an invalid selection.
+  | Use the <code>required</code> boolean attribute to indicate which select must be completed before submitting a form.
 .example.-mb--3
   .-p--3
     .chi-form__item(style="max-width:20rem")
-      label.chi-label(for="example-invalid") Label
-      select(class="chi-select -danger", id="example-invalid")
-        option Danger Select
-      .chi-label.-status.-danger This is an invalid label
+      label.chi-label(for="example-re1")
+        | Label
+        abbr.chi-label__required(title="Required field") *
+      select(class="chi-select", id="example-re1" required)
+        option(value="") Select
+        option Option 1
+        option Option 2
+        option Option 3
   .example-tabs.-pl--2
-    ul.chi-tabs#example-select-invalid
+    ul.chi-tabs#example-required
       li.-disabled
-        a(href=`#webcomponent-select-invalid`) Web Component
+        a(href=`#webcomponent-required`) Web Component
       li.-active
-        a(href=`#html-select-invalid`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-select-invalid
-  .chi-tabs-panel.-active#html-select-invalid
+        a(href=`#html-required`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-required
+  .chi-tabs-panel.-active#html-required
     :code(lang="html")
       <div class="chi-form__item">
-        <label class="chi-label" for="example-invalid">Label</label>
-        <select class="chi-select -danger" id="example-invalid">
-          <option>Invalid Select</option>
+        <label class="chi-label" for="example-re1">
+          Label
+          <abbr class="chi-label__required" title="Required field">*</abbr>
+        </label>
+        <select class="chi-select" id="example-re1" required>
+          <option value="">Select</option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
         </select>
-        <div class="chi-label -status -danger">This is an invalid label</div>
+      </div>
+
+h3 Optional
+p.-text
+  | Use <code>optional</code> to help emphasize a select is not required and can be skipped.
+.example.-mb--3
+  .-p--3
+    .chi-form__item(style="max-width:20rem")
+      label.chi-label(for="example-op1")
+        | Label
+        abbr.chi-label__optional(title="Optional field") (optional)
+      select(class="chi-select", id="example-op1" required)
+        option(value="") Select
+        option Option 1
+        option Option 2
+        option Option 3
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-optional
+      li.-disabled
+        a(href=`#webcomponent-optional`) Web Component
+      li.-active
+        a(href=`#html-optional`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-optional
+  .chi-tabs-panel.-active#html-optional
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example-op1">
+          Label
+          <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
+        </label>
+        <select class="chi-select" id="example-op1" required>
+          <option value="">Select</option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+      </div>
+
+h3 Help
+p.-text
+  | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
+  | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
+.example.-mb--3
+  .-p--3
+    .chi-form__item(style="max-width:20rem")
+      .chi-label__wrapper
+        label.chi-label(for="example-he1") Label
+        .chi-label__help
+          button.chi-button.-icon.-sm.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
+            i.chi-icon.icon-circle-info-outline
+          section.chi-popover.chi-popover--top(id="example__help-popover" aria-modal="true" role="dialog")
+            .chi-popover__content
+              p.chi-popover__text
+                | Helpful information goes here.
+      select(class="chi-select", id="example-he1")
+        option(value="") Select
+        option Option 1
+        option Option 2
+        option Option 3
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-help
+      li.-disabled
+        a(href=`#webcomponent-help`) Web Component
+      li.-active
+        a(href=`#html-help`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-help
+  .chi-tabs-panel.-active#html-help
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-form__item">
+        <div class="chi-label__wrapper">
+          <label class="chi-label" for="example-he1">Label</label>
+          <div class="chi-label__help">
+            <button class="chi-button -icon -sm -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
+              <i class="chi-icon icon-circle-info-outline"></i>
+            </button>
+            <section class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top">
+              <div class="chi-popover__content">
+                <p class="chi-popover__text">Helpful information goes here.</p>
+              </div>
+            </section>
+          </div>
+        </div>
+        <select class="chi-select" id="example-he1">
+          <option value="">Select</option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+      </div>
+
+      <script>chi.popover(document.getElementById('example__help-button'));</script>
+
+h3 Message
+p.-text
+  | Add a message below a select to store descriptions, validation feedback, and other helpful information.
+.example.-mb--3
+  .-p--3
+    .chi-form__item(style="max-width:20rem")
+      label.chi-label(for="example-me1") Label
+      select(class="chi-select", id="example-me1")
+        option(value="") Select
+        option Option 1
+        option Option 2
+        option Option 3
+      .chi-label.-status Optional input message
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-message
+      li.-disabled
+        a(href=`#webcomponent-message`) Web Component
+      li.-active
+        a(href=`#html-message`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-message
+  .chi-tabs-panel.-active#html-message
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example-me1">Label</label>
+        <select class="chi-select" id="example-me1">
+          <option value="">Select</option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+        <div class="chi-label -status">Optional input message</div>
+      </div>
+
+h3 Error
+p.-text
+  | Use the <code>-danger</code> state to provide feedback to users when a selection has not been made.
+  | Once a selection has been made, the state must be removed. To meet accessibility requirements,
+  | danger inputs must include an error message explaining the failure and/or how to correct it.
+.example.-mb--3
+  .-p--3
+    .chi-form__item(style="max-width:20rem")
+      label.chi-label(for="example-er1")
+        | Label
+        abbr.chi-label__required(title="Required field") *
+      select(class="chi-select -danger", id="example-er1" required)
+        option(value="") Select
+        option Option 1
+        option Option 2
+        option Option 3
+      .chi-label.-status.-danger Please select an option.
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-error
+      li.-disabled
+        a(href=`#webcomponent-error`) Web Component
+      li.-active
+        a(href=`#html-error`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-error
+  .chi-tabs-panel.-active#html-error
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example-er1">
+          Label
+          <abbr class="chi-label__required" title="Required field">*</abbr>
+        </label>
+        <select class="chi-select -danger" id="example-er1" required>
+          <option value="">Select</option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+        <div class="chi-label -status -danger">Please select an option.</div>
       </div>
 
 h3 Sizes
@@ -191,11 +376,8 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('example-select-base'));
-      chi.tab(document.getElementById('example-select-disabled'));
-      chi.tab(document.getElementById('example-select-invalid'));
-      chi.tab(document.getElementById('example-sizes'));
-      chi.tab(document.getElementById('example-label-floating'));
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
       chi.floatingLabel(document.querySelectorAll('.-floating-label'));
+      chi.popover(document.getElementById('example__help-button'));
     }
   );

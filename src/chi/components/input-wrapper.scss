@@ -61,51 +61,52 @@ $border: 0.0625rem;
       }
     }
   }
+}
 
-  & .chi-label__wrapper {
-    align-items: center;
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 0.25rem;
+.chi-label__wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.25rem;
 
-    label,
-    .chi-label {
-      margin-bottom: 0;
-    }
-
-    > .chi-icon {
-      margin-left: 0.5rem;
-    }
+  label,
+  .chi-label {
+    margin-bottom: 0;
   }
 
-  .chi-label__help {
-    align-items: center;
-    display: flex;
-    margin-left: 0.375rem;
+  > .chi-icon {
+    margin-left: 0.5rem;
+  }
+}
 
-    .chi-button {
-      padding: 0 !important;
+.chi-label__help {
+  align-items: center;
+  display: flex;
+  margin-left: 0.375rem;
 
-      &.-flat {
-        &.-icon {
-          background: none !important;
-          border: 0;
+  .chi-button {
+    padding: 0 !important;
 
-          &.-sm {
-            height: 0.75rem;
-          }
+    &.-flat {
+      &.-icon {
+        background: none !important;
+        border: 0;
 
+        &.-sm {
+          height: 0.75rem;
+        }
+
+        .chi-icon {
+          color: $color-icon-muted-dark;
+        }
+
+        &:hover {
           .chi-icon {
-            color: $color-icon-muted-dark;
-          }
-
-          &:hover {
-            .chi-icon {
-              color: $color-icon-primary;
-            }
+            color: $color-icon-primary;
           }
         }
       }
     }
   }
 }
+
