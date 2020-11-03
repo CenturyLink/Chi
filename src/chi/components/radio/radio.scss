@@ -5,123 +5,99 @@
   line-height: $line-height;
   position: relative;
 
-  input {
-    &[type='radio'] {
-      &.chi-input,
-      &.chi-radio__input {
-        & + label {
-          &.chi-radio__label {
-            font-size: $font-size-base;
-            font-weight: $font-weight-normal;
-            line-height: $line-height;
-            margin-bottom: 0;
-            margin-right: 0;
-            padding-left: 1.5rem;
+  .chi-radio__input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    pointer-events: auto;
+    position: absolute;
+    width: 1px;
 
-            &::before {
-              left: 0;
-              position: absolute;
-              top: 0.125rem;
-            }
-
-            &::after {
-              position: absolute;
-              top: 0.4375rem;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-input {
-  &[type='radio'] {
-    &.chi-input,
-    &.chi-radio__input {
-      border: 0;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      overflow: hidden;
-      padding: 0;
-      pointer-events: auto;
-      position: absolute;
-      width: 1px;
-
-      & + label {
-        & {
-          align-items: center;
-          cursor: pointer;
-          display: inline-flex;
-          line-height: $line-height-sm;
-          margin: 0 0.5rem 0 0;
-          position: relative;
-        }
-
+    &:checked {
+      & + .chi-radio__label {
         &::before {
-          background-color: $color-background-white;
-          border: 0.0625rem solid $color-grey-40;
-          border-radius: 0.5rem;
-          content: '';
-          cursor: pointer;
-          display: block;
-          height: 1rem;
-          transition: background-color 0.2s ease-in-out;
-          width: 1rem;
+          background-color: $color-background-primary;
+          border-color: $color-border-primary;
         }
 
         &::after {
-          background-color: $color-grey-50;
-          border-radius: 0.5rem;
-          content: '';
-          display: block;
-          height: 0.375rem;
-          left: 0.3125rem;
-          position: absolute;
-          top: calc(50% - 0.4375rem);
-          transform: scale(0);
-          transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
-          width: 0.375rem;
-        }
-
-        &:hover,
-        &.-hover {
-          &::after {
-            transform: scale(1);
-          }
+          background-color: $color-background-white;
+          transform: scale(1);
         }
       }
+    }
 
-      &:checked {
-        & + label {
-          &::before {
-            background-color: $color-background-primary;
-            border-color: $color-border-primary;
-          }
+    &.-disabled,
+    &[disabled] {
+      & + .chi-radio__label {
+        color: $color-grey-70;
+        opacity: 0.6;
+        pointer-events: none;
+      }
+    }
 
-          &::after {
-            background-color: $color-background-white;
-            transform: scale(1);
-          }
+    &:focus,
+    &.-focus {
+      & + .chi-radio__label::before {
+        outline: 0.125rem solid $focus-color;
+        outline-offset: 0.0625rem;
+      }
+    }
+
+    &.-danger {
+      &:not(:checked) {
+        & + .chi-radio__label::before {
+          border-color: $color-border-danger;
         }
       }
+    }
 
-      &[disabled] {
-        & ~ label {
-          color: $color-grey-70;
-        }
+    & + .chi-radio__label {
+      align-items: center;
+      cursor: pointer;
+      display: inline-flex;
+      font-size: $font-size-base;
+      font-weight: $font-weight-normal;
+      line-height: $line-height;
+      margin: 0;
+      padding-left: 1.5rem;
+      position: relative;
 
-        & + label {
-          opacity: 0.6;
-          pointer-events: none;
-        }
+      &::before {
+        background-color: $color-background-white;
+        border: 0.0625rem solid $color-grey-40;
+        border-radius: 0.5rem;
+        content: '';
+        cursor: pointer;
+        display: block;
+        height: 1rem;
+        left: 0;
+        position: absolute;
+        top: 0.125rem;
+        transition: background-color 0.2s ease-in-out;
+        width: 1rem;
       }
 
-      &:focus,
-      &.-focus {
-        & + label::before {
-          outline: 0.125rem solid $focus-color;
-          outline-offset: 0.0625rem;
+      &::after {
+        background-color: $color-grey-50;
+        border-radius: 0.5rem;
+        content: '';
+        display: block;
+        height: 0.375rem;
+        left: 0.3125rem;
+        position: absolute;
+        top: 0.4375rem;
+        transform: scale(0);
+        transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        width: 0.375rem;
+      }
+
+      &:hover,
+      &.-hover {
+        &::after {
+          transform: scale(1);
         }
       }
     }

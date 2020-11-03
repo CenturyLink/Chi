@@ -1,60 +1,359 @@
 h2 Examples
 
-h3 Stacked
-p.-text
-  | Group radio buttons in <code>chi-form__item</code> for easy stacking.
+h3 Base
 .example.-mb--3
   .-p--3
     fieldset
       legend.chi-label Select an option
       .chi-form__item
         .chi-radio
-          input(class="chi-radio__input", type="radio", name="radios", id="radio1")
-          label.chi-radio__label(for="radio1") Radio Button
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-ba1")
+          label.chi-radio__label(for="radio-ba1") Option 1
       .chi-form__item
         .chi-radio
-          input(class="chi-radio__input", type="radio", name="radios", id="radio2", disabled)
-          label.chi-radio__label(for="radio2") Disabled Radio Button
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-ba2")
+          label.chi-radio__label(for="radio-ba2") Option 2
   .example-tabs.-pl--2
-    ul.chi-tabs#example-stacked
+    ul.chi-tabs#example-base
       li.-disabled
-        a(href=`#webcomponent-stacked`) Web Component
+        a(href=`#webcomponent-base`) Web Component
       li.-active
-        a(href=`#html-stacked`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-stacked
-  .chi-tabs-panel.-active#html-stacked
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Select an option</legend>
         <div class="chi-form__item">
           <div class="chi-radio">
-            <input class="chi-radio__input" type="radio" name="radios" id="radio1">
-            <label class="chi-radio__label" for="radio1">Radio Button</label>
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-ba1">
+            <label class="chi-radio__label" for="radio-ba1">Option 1</label>
           </div>
         </div>
         <div class="chi-form__item">
           <div class="chi-radio">
-            <input class="chi-radio__input" type="radio" name="radios" id="radio2" disabled>
-            <label class="chi-radio__label" for="radio2">Disabled Radio Button</label>
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-ba2">
+            <label class="chi-radio__label" for="radio-ba2">Option 2</label>
           </div>
         </div>
       </fieldset>
 
+h3 Checked
+p.-text
+  | Use the <code>checked</code> boolean attribute to set the default value of
+  | a radio button input to true.
+.example.-mb--3
+  .-p--3
+    fieldset
+      legend.chi-label Select an option
+      .chi-form__item
+        .chi-radio
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-ch1" checked)
+          label.chi-radio__label(for="radio-ch1") Option 1
+      .chi-form__item
+        .chi-radio
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-ch2")
+          label.chi-radio__label(for="radio-ch2") Option 2
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-checked
+      li.-disabled
+        a(href=`#webcomponent-checked`) Web Component
+      li.-active
+        a(href=`#html-checked`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-checked
+  .chi-tabs-panel.-active#html-checked
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-ch1" checked>
+            <label class="chi-radio__label" for="radio-ch1">Option 1</label>
+          </div>
+        </div>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-ch2">
+            <label class="chi-radio__label" for="radio-ch2">Option 2</label>
+          </div>
+        </div>
+      </fieldset>
+
+h3 Disabled
+p.-text
+  | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
+  | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
+.example.-mb--3
+  .-p--3
+    fieldset
+      legend.chi-label Select an option
+      .chi-form__item
+        .chi-radio
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-di1" disabled)
+          label.chi-radio__label(for="radio-di1") Option 1
+      .chi-form__item
+        .chi-radio
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-di2")
+          label.chi-radio__label(for="radio-di2") Option 2
+      .chi-form__item
+        .chi-radio
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-di3")
+          label.chi-radio__label(for="radio-di3") Option 3
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-disabled
+      li.-disabled
+        a(href=`#webcomponent-disabled`) Web Component
+      li.-active
+        a(href=`#html-disabled`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-disabled
+  .chi-tabs-panel.-active#html-disabled
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-di1" disabled>
+            <label class="chi-radio__label" for="radio-di1">Option 1</label>
+          </div>
+        </div>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-di2">
+            <label class="chi-radio__label" for="radio-di2">Option 2</label>
+          </div>
+        </div>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-di3">
+            <label class="chi-radio__label" for="radio-di3">Option 3</label>
+          </div>
+        </div>
+      </fieldset>
+
+h3 Required
+p.-text
+  | Use the <code>required</code> boolean attribute to indicate which radio buttons must be completed before submitting a form.
+.example.-mb--3
+  .-p--3
+    fieldset
+      legend.chi-label
+        | Select an option
+        abbr.chi-label__required(title="Required field") *
+      .chi-form__item
+        .chi-radio
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-re1", required)
+          label.chi-radio__label(for="radio-re1") Option 1
+      .chi-form__item
+        .chi-radio
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-re2")
+          label.chi-radio__label(for="radio-re2") Option 2
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-required
+      li.-disabled
+        a(href=`#webcomponent-required`) Web Component
+      li.-active
+        a(href=`#html-required`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-required
+  .chi-tabs-panel.-active#html-required
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">
+          Select an option
+          <abbr class="chi-label__required" title="Required field">*</abbr>
+        </legend>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-re1" required>
+            <label class="chi-radio__label" for="radio-re1">Option 1</label>
+          </div>
+        </div>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-re2">
+            <label class="chi-radio__label" for="radio-re2">Option 2</label>
+          </div>
+        </div>
+      </fieldset>
+
+h3 Optional
+p.-text
+  | Use <code>optional</code> to help emphasize a group of radio button options are not required and can be skipped.
+.example.-mb--3
+  .-p--3
+    fieldset
+      legend.chi-label
+        | Select an option
+        abbr.chi-label__optional(title="Optional field") (optional)
+      .chi-form__item
+        .chi-radio
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-op1")
+          label.chi-radio__label(for="radio-op1") Option 1
+      .chi-form__item
+        .chi-radio
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-op2")
+          label.chi-radio__label(for="radio-op2") Option 2
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-optional
+      li.-disabled
+        a(href=`#webcomponent-optional`) Web Component
+      li.-active
+        a(href=`#html-optional`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-optional
+  .chi-tabs-panel.-active#html-optional
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">
+          Select an option
+          <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
+        </legend>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-op1">
+            <label class="chi-radio__label" for="radio-op1">Option 1</label>
+          </div>
+        </div>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-op2">
+            <label class="chi-radio__label" for="radio-op2">Option 2</label>
+          </div>
+        </div>
+      </fieldset>
+
+h3 Help
+p.-text
+  | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
+  | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
+.example.-mb--3
+  .-p--3
+    fieldset
+      .chi-label__wrapper
+        legend.chi-label Select an option
+        .chi-label__help
+          button.chi-button.-icon.-sm.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
+            i.chi-icon.icon-circle-info-outline
+          section.chi-popover.chi-popover--top(id="example__help-popover" aria-modal="true" role="dialog")
+            .chi-popover__content
+              p.chi-popover__text
+                | Helpful information goes here.
+      .chi-form__item
+        .chi-radio
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-he1")
+          label.chi-radio__label(for="radio-he1") Option 1
+      .chi-form__item
+        .chi-radio
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-he2")
+          label.chi-radio__label(for="radio-he2") Option 2
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-help
+      li.-disabled
+        a(href=`#webcomponent-help`) Web Component
+      li.-active
+        a(href=`#html-help`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-help
+  .chi-tabs-panel.-active#html-help
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <fieldset>
+        <div class="chi-label__wrapper">
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-label__help">
+            <button class="chi-button -icon -sm -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
+              <i class="chi-icon icon-circle-info-outline"></i>
+            </button>
+            <section class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top">
+              <div class="chi-popover__content">
+                <p class="chi-popover__text">Helpful information goes here.</p>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-he1">
+            <label class="chi-radio__label" for="radio-he1">Option 1</label>
+          </div>
+        </div>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-he2">
+            <label class="chi-radio__label" for="radio-he2">Option 2</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <script>chi.popover(document.getElementById('example__help-button'));</script>
+
+h3 Error
+p.-text
+  | Use the <code>-danger</code> state to provide feedback to users when a selection has not been made.
+  | Once a selection has been made, the state must be removed. To meet accessibility requirements,
+  | danger inputs must include an error message explaining the failure and/or how to correct it.
+.example.-mb--3
+  .-p--3
+    fieldset
+      legend.chi-label
+        | Select an option
+        abbr.chi-label__required(title="Required field") *
+      .chi-form__item
+        .chi-radio
+          input(class="chi-radio__input -danger", type="radio", name="radios", id="radio-er1", required)
+          label.chi-radio__label(for="radio-er1") Option 1
+      .chi-form__item
+        .chi-radio
+          input(class="chi-radio__input -danger", type="radio", name="radios", id="radio-er2")
+          label.chi-radio__label(for="radio-er2") Option 2
+      .chi-label.-status.-danger
+        | Please select an option.
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-error
+      li.-disabled
+        a(href=`#webcomponent-error`) Web Component
+      li.-active
+        a(href=`#html-error`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-error
+  .chi-tabs-panel.-active#html-error
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">
+          Select an option
+          <abbr class="chi-label__required" title="Required field">*</abbr>
+        </legend>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input -danger" type="radio" name="radios" id="radio-er1" required>
+            <label class="chi-radio__label" for="radio-er1">Option 1</label>
+          </div>
+        </div>
+        <div class="chi-form__item">
+          <div class="chi-radio">
+            <input class="chi-radio__input -danger" type="radio" name="radios" id="radio-er2">
+            <label class="chi-radio__label" for="radio-er2">Option 2</label>
+          </div>
+        </div>
+        <div class="chi-label -status -danger">Please select an option.</div>
+      </fieldset>
+
+h2 Layout Variations
 h3 Inline
 p.-text
-  | Apply <code>-inline</code> to display two or more radio buttons inline.
+  | Apply <code>-inline</code> to display two or more radio buttons in one row.
 .example.-mb--3
   .-p--3
     fieldset
       legend.chi-label Select an option
       .chi-form__item.-inline
         .chi-radio
-          input(class="chi-radio__input", type="radio", name="inlineRadios", id="inlineRadio1")
-          label.chi-radio__label(for="inlineRadio1") Option 1
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-in1")
+          label.chi-radio__label(for="radio-in1") Option 1
       .chi-form__item.-inline
         .chi-radio
-          input(class="chi-radio__input", type="radio", name="inlineRadios", id="inlineRadio2")
-          label.chi-radio__label(for="inlineRadio2") Option 2
+          input(class="chi-radio__input", type="radio", name="radios", id="radio-in2")
+          label.chi-radio__label(for="radio-in2") Option 2
   .example-tabs.-pl--2
     ul.chi-tabs#example-inline
       li.-disabled
@@ -68,14 +367,14 @@ p.-text
         <legend class="chi-label">Select an option</legend>
         <div class="chi-form__item -inline">
           <div class="chi-radio">
-            <input class="chi-radio__input" type="radio" name="inlineRadios" id="inlineRadio1">
-            <label class="chi-radio__label" for="inlineRadio1">Option 1</label>
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-in1">
+            <label class="chi-radio__label" for="radio-in1">Option 1</label>
           </div>
         </div>
         <div class="chi-form__item -inline">
           <div class="chi-radio">
-            <input class="chi-radio__input" type="radio" name="inlineRadios" id="inlineRadio2" disabled>
-            <label class="chi-radio__label" for="inlineRadio2">Option 2</label>
+            <input class="chi-radio__input" type="radio" name="radios" id="radio-in2" disabled>
+            <label class="chi-radio__label" for="radio-in2">Option 2</label>
           </div>
         </div>
       </fieldset>
@@ -158,8 +457,7 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('example-stacked'));
-      chi.tab(document.getElementById('example-inline'));
-      chi.tab(document.getElementById('example-list'));
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+      chi.popover(document.getElementById('example__help-button'));
     }
   );
