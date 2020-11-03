@@ -39,9 +39,7 @@ $icon-sizes: (
     border-bottom: 0.0625rem solid $color-border-base-dark;
 
     &:last-child {
-      &:not(:first-child) {
-        border-bottom: 0.0625rem solid transparent;
-      }
+      border-bottom: 0.0625rem solid transparent;
     }
 
     .chi-accordion__trigger {
@@ -81,9 +79,19 @@ $icon-sizes: (
     .chi-accordion__content {
       display: none;
       overflow: hidden;
-      padding: 0 1rem;
-      padding-top: 0;
+      padding: 1rem;
       transition: height 0.075s ease-out;
+
+      .chi-accordion__text,
+      p {
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
 
       &.-transitioning {
         display: block;
@@ -104,6 +112,11 @@ $icon-sizes: (
     }
   }
 
+  .chi-accordion__item {
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  }
   @each $type in map-keys($sizes) {
     &.-#{$type} {
       .chi-accordion__item {
@@ -148,9 +161,6 @@ $icon-sizes: (
         background-color: $color-background-base-darkest;
       }
 
-      &:not(:last-child) {
-        margin-bottom: 0.5rem;
-      }
     }
   }
 }
