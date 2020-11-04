@@ -11,13 +11,12 @@ describe('chi-drawer', function() {
         .should('have.css', 'left','0px')
         .should('be.visible');
     });
-    it('Click on X button closes the Drawer and check for other functionalities', () => {
+    it('Click on X button closes the Drawer', () => {
       cy.get('#drawer-1')
         .find('.-close')
         .click()
         .parent('.chi-drawer')
         .should('not.be.visible')
-        .get('#drawer-1')
         .should('not.have.class', '-active');
     });
   });
@@ -46,7 +45,7 @@ describe('chi-drawer', function() {
         .should('have.css', 'top','0px')
         .should('be.visible');
     });
-    it('Click on X button closes the Drawer and check for other functionalities', () => {
+    it('Click on X button closes the Drawer', () => {
       cy.get('#drawer-7')
         .find('.-close')
         .click()
@@ -62,7 +61,7 @@ describe('chi-drawer', function() {
         .should('have.css', 'bottom','0px')
         .should('be.visible');
     });
-    it('Click on X button closes the Drawer and check for other functionalities', () => {
+    it('Click on X button closes the Drawer', () => {
       cy.get('#drawer-9')
         .find('.-close')
         .click()
@@ -73,7 +72,8 @@ describe('chi-drawer', function() {
 
   describe('Test open & close behavior of Drawer with Backdrop', () => {
     it('Click on Drawer trigger opens the Drawer', () => {
-      cy.get('#drawer-trigger-11').click();
+      cy.get('#drawer-trigger-11')
+        .click();
       cy.get('#drawer-11')
         .parents('div')
         .should('have.class', 'chi-backdrop')
@@ -81,7 +81,7 @@ describe('chi-drawer', function() {
         .should('have.css', 'bottom','0px')
         .should('be.visible');
     });
-    it('Click on X button closes the Drawer and check for other functionalities', () => {
+    it('Click on X button closes the Drawer', () => {
       cy.get('#drawer-11')
         .find('.-close')
         .click()
@@ -92,12 +92,13 @@ describe('chi-drawer', function() {
 
   describe('Test open & close behavior of Drawer with Title', () => {
     it('Click on Drawer trigger opens the Drawer', () => {
-      cy.get('#drawer-trigger-13').click();
+      cy.get('#drawer-trigger-13')
+        .click();
       cy.get('#drawer-13')
         .find('.chi-drawer__header')
         .should('be.visible');
     });
-    it('Click on X button closes the Drawer and check for other functionalities', () => {
+    it('Click on X button closes the Drawer', () => {
       cy.get('#drawer-13')
         .find('.-close')
         .click()
@@ -116,7 +117,7 @@ describe('chi-drawer', function() {
         .should('have.class', '-portal')
         .should('be.visible');
     });
-    it('Click on X button closes the Drawer and check for other functionalities', () => {
+    it('Click on X button closes the Drawer', () => {
       cy.get('#drawer-23')
         .find('.-close')
         .click()
