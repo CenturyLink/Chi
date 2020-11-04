@@ -51,6 +51,13 @@ $icon-sizes: (
       padding: 0.625rem 1rem;
       width: 100%;
 
+      &[disabled],
+      &.-disabled {
+        color: $color-text-muted-light;
+        opacity: $opacity-60;
+        pointer-events: none;
+      }
+
       .chi-icon {
         + .chi-accordion__title {
           margin-left: 1rem;
@@ -151,11 +158,8 @@ $icon-sizes: (
 
   &.-portal {
     .chi-accordion__item {
+      background-color: $color-background-base-dark;
       border-bottom: 0;
-
-      &.-expanded {
-        background-color: $color-background-base-dark;
-      }
 
       .chi-accordion__trigger {
         background-color: $color-background-base-darkest;
