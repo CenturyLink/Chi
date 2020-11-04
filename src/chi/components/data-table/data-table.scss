@@ -299,7 +299,7 @@ $sizes: (
           color: $color-text-primary-alt;
 
           .chi-icon {
-            color: $color-icon-primary;            
+            color: $color-icon-primary;
             opacity: 1;
           }
 
@@ -357,15 +357,11 @@ $sizes: (
     .chi-data-table__body {
       .chi-data-table__row {
         .chi-data-table__cell {
-          border: 0.0625rem solid $color-border-base-light;
+          border: 0.0625rem solid $color-border-base-dark;
           border-bottom-width: 0;
-        }
 
-        & + .chi-data-table__row {
-          .chi-data-table__cell {
-            &:first-child {
-              border-top-width: 0;
-            }
+          &:last-child {
+            border-bottom-width: 0.0625rem;
           }
         }
       }
@@ -376,7 +372,7 @@ $sizes: (
       .chi-data-table__body {
         .chi-data-table__row {
           .chi-data-table__cell {
-            border: 0.0625rem solid $color-border-base-light;
+            border: 0.0625rem solid $color-border-base-dark;
             border-right-width: 0;
 
             &:last-of-type {
@@ -478,7 +474,7 @@ $sizes: (
       @include respond-to(md) {
         background-color: $color-background-base-dark;
         display: block;
-        padding: 0.5rem 0.75rem;
+        padding: 0.5rem 1rem;
 
         .chi-pagination__content {
           .chi-pagination__center {
