@@ -427,6 +427,21 @@ export class Util {
     }
   }
 
+  static calculateHiddenElementHeight(elem) {
+    const elemInitialDisplay = window.getComputedStyle(elem).display;
+    let elemHeight;
+
+    elem.style.position = 'absolute';
+    elem.style.visibility = 'hidden';
+    elem.style.display = elemInitialDisplay !== 'none' ? elemInitialDisplay : 'block';
+    elemHeight = window.getComputedStyle(elem).height;
+    elem.style.removeProperty('display');
+    elem.style.removeProperty('visibility');
+    elem.style.removeProperty('position');
+
+    return elemHeight;
+  }
+
   static calculateDistance (elem1, elem2, xy, fromOrigin) {
     const bcr1 = elem1.getBoundingClientRect();
     const bcr2 = elem2.getBoundingClientRect();

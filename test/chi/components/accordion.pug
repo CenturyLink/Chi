@@ -5,64 +5,75 @@ title: Accordion
 h3 Base
 .test-accordion-base.-w--100
   .chi-accordion
-    .chi-accordion__header
-      i.chi-icon.icon-chevron-down
-      .chi-accordion__title Accordion 1
-    .chi-accordion__content
-      p.chi-accordion__text Content goes here
-  .chi-accordion.-expanded
-    .chi-accordion__header
-      i.chi-icon.icon-chevron-down
-      .chi-accordion__title Accordion 2
-    .chi-accordion__content
-      p.chi-accordion__text Content goes here
-  .chi-accordion
-    .chi-accordion__header
-      i.chi-icon.icon-chevron-down
-      .chi-accordion__title Accordion 3
-    .chi-accordion__content
-      p.chi-accordion__text Content goes here
-  .chi-accordion
-    .chi-accordion__header
-      i.chi-icon.icon-chevron-down
-      .chi-accordion__title Accordion 4
-    .chi-accordion__content
-      p.chi-accordion__text Content goes here
+    .chi-accordion__item
+      button.chi-accordion__trigger
+        i.chi-icon.icon-chevron-down
+        .chi-accordion__title
+          | Accordion 1
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+    .chi-accordion__item.-expanded
+      button.chi-accordion__trigger
+        i.chi-icon.icon-chevron-down
+        .chi-accordion__title
+          | Accordion 2
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+    .chi-accordion__item
+      button.chi-accordion__trigger
+        i.chi-icon.icon-chevron-down
+        .chi-accordion__title
+          | Accordion 3
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+    .chi-accordion__item
+      button.chi-accordion__trigger
+        i.chi-icon.icon-chevron-down
+        .chi-accordion__title
+          | Accordion 4
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
 
 h3 Portal
 .test-accordion-portal.-w--100
   .chi-accordion.-portal
-    .chi-accordion__header
-      .chi-accordion__title Accordion 1
-      i.chi-icon.icon-chevron-down
-    .chi-accordion__content
-      p.chi-accordion__text Content goes here
-  .chi-accordion.-portal.-expanded
-    .chi-accordion__header
-      .chi-accordion__title Accordion 2
-      i.chi-icon.icon-chevron-down
-    .chi-accordion__content
-      p.chi-accordion__text Content goes here
-  .chi-accordion.-portal
-    .chi-accordion__header
-      .chi-accordion__title Accordion 3
-      i.chi-icon.icon-chevron-down
-    .chi-accordion__content
-      p.chi-accordion__text Content goes here
-  .chi-accordion.-portal
-    .chi-accordion__header
-      .chi-accordion__title Accordion 4
-      i.chi-icon.icon-chevron-down
-    .chi-accordion__content
-      p.chi-accordion__text Content goes here
+    .chi-accordion__item
+      button.chi-accordion__trigger
+        .chi-accordion__title
+          | Accordion 1
+        i.chi-icon.icon-chevron-down
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+    .chi-accordion__item.-expanded
+      button.chi-accordion__trigger
+        .chi-accordion__title
+          | Accordion 2
+        i.chi-icon.icon-chevron-down
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+    .chi-accordion__item
+      button.chi-accordion__trigger
+        .chi-accordion__title
+          | Accordion 3
+        i.chi-icon.icon-chevron-down
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
+    .chi-accordion__item
+      button.chi-accordion__trigger
+        .chi-accordion__title
+          | Accordion 4
+        i.chi-icon.icon-chevron-down
+      .chi-accordion__content
+        p.chi-accordion__text Content goes here
 
 h3 Sizes
 .test-accordion-sizes.-w--100
   each size in ['sm', 'md', 'lg', 'xl']
     p.-text--bold.-pl--2= `${size}`
       div(class=`chi-accordion -${size}`)
-        .chi-accordion__header
-          i.chi-icon.icon-chevron-down
-          .chi-accordion__title Accordion
-        .chi-accordion__content
-          p.chi-accordion__text Content goes here
+        .chi-accordion__item
+          .chi-accordion__trigger
+            i.chi-icon.icon-chevron-down
+            .chi-accordion__title Accordion
+          .chi-accordion__content
+            p.chi-accordion__text Content goes here
