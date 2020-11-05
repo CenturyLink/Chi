@@ -3,158 +3,123 @@
 
 .chi-checkbox {
   display: flex;
-  line-height: $line-height;
   position: relative;
 
-  input {
-    &[type='checkbox'] {
-      &.chi-input,
-      &.chi-checkbox__input {
-        & + label {
-          &.chi-checkbox__label {
-            font-size: $font-size-base;
-            font-weight: $font-weight-normal;
-            line-height: $line-height;
-            margin-bottom: 0;
-            margin-right: 0;
-            padding-left: 1.5rem;
+  .chi-checkbox__input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    pointer-events: auto;
+    position: absolute;
+    width: 1px;
 
-            &::before {
-              left: 0;
-              position: absolute;
-              top: 0.125rem;
-            }
+    & + .chi-checkbox__label {
+      align-items: center;
+      cursor: pointer;
+      display: inline-flex;
+      font-size: $font-size-base;
+      font-weight: $font-weight-normal;
+      line-height: $line-height;
+      margin: 0;
+      min-height: 1.25rem;
+      padding-left: 1.5rem;
+      position: relative;
 
-            &::after {
-              left: 0.1875rem;
-              position: absolute;
-              top: 0.3125rem;
-            }
-          }
+      &::before {
+        background-color: $color-background-white;
+        border: 0.0625rem solid $color-grey-40;
+        content: '';
+        display: block;
+        height: 1rem;
+        left: 0;
+        position: absolute;
+        top: 0.125rem;
+        transition: background-color 0.2s ease-in-out;
+        width: 1rem;
+      }
+
+      &::after {
+        background-image: url('icon-check--hover.svg');
+        content: '';
+        display: block;
+        height: 0.625rem;
+        left: 0.1875rem;
+        position: absolute;
+        top: calc(50% - 0.3125rem);
+        transform: scale(0);
+        transition: background-image 0.2s ease-in-out, transform 0.2s ease-in-out;
+        width: 0.625rem;
+      }
+
+      &:hover,
+      &.-hover {
+        &::after {
+          transform: scale(1);
+        }
+      }
+
+      &.-danger {
+        color: $color-text-base;
+
+        &::before {
+          border-color: $color-border-danger;
         }
       }
     }
-  }
-}
 
-input {
-  &[type='checkbox'] {
-    &.chi-input,
-    &.chi-checkbox__input {
-      border: 0;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      overflow: hidden;
-      padding: 0;
-      pointer-events: auto;
-      position: absolute;
-      width: 1px;
-
-      & + label {
-        & {
-          align-items: center;
-          cursor: pointer;
-          display: inline-flex;
-          line-height: $line-height-sm;
-          margin-right: 0.5rem;
-          position: relative;
-        }
-
+    &:checked {
+      & + .chi-checkbox__label {
         &::before {
-          background-color: $color-background-white;
-          border: 0.0625rem solid $color-grey-40;
-          content: '';
-          display: block;
-          height: 1rem;
-          transition: background-color 0.2s ease-in-out;
-          width: 1rem;
+          background-color: $color-background-primary;
+          border-color: $color-border-primary;
         }
 
         &::after {
-          background-image: url('icon-check--hover.svg');
-          content: '';
-          display: block;
-          height: 0.625rem;
-          left: 0.1875rem;
-          position: absolute;
-          top: calc(50% - 0.3125rem);
-          transform: scale(0);
-          transition: background-image 0.2s ease-in-out, transform 0.2s ease-in-out;
-          width: 0.625rem;
-        }
-
-        &:hover,
-        &.-hover {
-          &::after {
-            transform: scale(1);
-          }
-        }
-
-        &.-danger {
-          color: $color-text-base;
-
-          &::before {
-            border-color: $color-border-danger;
-          }
-        }
-      }
-
-      &.-indeterminate {
-        & + label {
-          &::before {
-            background-color: $color-background-primary;
-            border-color: $color-border-primary;
-          }
-
-          &::after {
-            background: $color-background-white;
-            height: 0.125rem;
-            top: 0.5625rem !important;
-            transform: scale(1);
-            width: 0.625rem;
-          }
-        }
-      }
-
-      &:checked {
-        &:not(.-toggle) {
-          & + label {
-            &::before {
-              background-color: $color-background-primary;
-              border-color: $color-border-primary;
-            }
-
-            &::after {
-              background-image: url('icon-check.svg');
-              transform: scale(1);
-            }
-          }
-
-          &:focus,
-          &.-focus {
-            & + label::before {
-              border-color: $color-border-primary;
-            }
-          }
-        }
-      }
-
-      &[disabled] {
-        & ~ label {
-          color: $color-grey-70;
-        }
-
-        & + label {
-          opacity: 0.6;
-          pointer-events: none;
+          background-image: url('icon-check.svg');
+          transform: scale(1);
         }
       }
 
       &:focus,
       &.-focus {
-        & + label::before {
-          outline: 0.125rem solid $focus-color;
-          outline-offset: 0.0625rem;
+        & + .chi-checkbox__label::before {
+          border-color: $color-border-primary;
+        }
+      }
+    }
+
+    &.-disabled,
+    &[disabled] {
+      & + .chi-checkbox__label {
+        color: $color-text-muted;
+        opacity: $opacity-60;
+        pointer-events: none;
+      }
+    }
+
+    &:focus,
+    &.-focus {
+      & + .chi-checkbox__label::before {
+        outline: 0.125rem solid $focus-color;
+        outline-offset: 0.0625rem;
+      }
+    }
+
+    &.-indeterminate {
+      & + .chi-checkbox__label {
+        &::before {
+          background-color: $color-background-primary;
+          border-color: $color-border-primary;
+        }
+
+        &::after {
+          background: $color-background-white;
+          height: 0.125rem;
+          top: 0.5625rem !important;
+          transform: scale(1);
+          width: 0.625rem;
         }
       }
     }

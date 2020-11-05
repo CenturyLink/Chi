@@ -4,21 +4,50 @@ h3 Base
 .example.-mb--3
   .-p--3
     .chi-form__item
-      chi-switch(id='toggle1',label='Label')
+      chi-switch(id='toggle-ba1',label='Label')
   .example-tabs.-pl--2
-    ul.chi-tabs#example-default
+    ul.chi-tabs#example-base
       li.-active
         a(href=`#webcomponent-base`) Web Component
       li
         a(href=`#html-base`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-base
     :code(lang="html")
-      <chi-switch id="toggle1" label="Label"></chi-switch>
+      <chi-switch id="toggle-ba1" label="Label"></chi-switch>
   .chi-tabs-panel#html-base
     :code(lang="html")
       <div class="chi-form__item">
-        <label class="chi-switch" for="toggle1">
-          <input type="checkbox" class="chi-switch__input" id="toggle1">
+        <label class="chi-switch" for="toggle-ba1">
+          <input type="checkbox" class="chi-switch__input" id="toggle-ba1">
+          <span class="chi-switch__content">
+            <span class="chi-switch__thumb"></span>
+          </span>
+          <span class="chi-switch__label">Label</span>
+        </label>
+      </div>
+
+h3 Checked
+p.-text
+  | Use the <code>checked</code> boolean attribute to set the default value of
+  | a toggle switch to true.
+.example.-mb--3
+  .-p--3
+    .chi-form__item
+      chi-switch(id='toggle-ch1' label='Label' checked)
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-checked
+      li.-active
+        a(href=`#webcomponent-checked`) Web Component
+      li
+        a(href=`#html-checked`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-checked
+    :code(lang="html")
+      <chi-switch id="toggle-ch1" label="Label" checked></chi-switch>
+  .chi-tabs-panel#html-checked
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-switch" for="toggle-ch1">
+          <input type="checkbox" class="chi-switch__input" id="toggle-ch1" checked>
           <span class="chi-switch__content">
             <span class="chi-switch__thumb"></span>
           </span>
@@ -27,10 +56,14 @@ h3 Base
       </div>
 
 h3 Disabled
+p.-text
+  | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
+  | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
+  | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
 .example.-mb--3
   .-p--3
     .chi-form__item
-      chi-switch(id='toggle2', label='Label', disabled)
+      chi-switch(id='toggle-di1', label='Label', disabled)
   .example-tabs.-pl--2
     ul.chi-tabs#example-disabled
       li.-active
@@ -39,19 +72,20 @@ h3 Disabled
         a(href=`#html-disabled`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-disabled
     :code(lang="html")
-      <chi-switch id="toggle2" label="Label" disabled></chi-switch>
+      <chi-switch id="toggle-di1" label="Label" disabled></chi-switch>
   .chi-tabs-panel#html-disabled
     :code(lang="html")
       <div class="chi-form__item">
-        <label class="chi-switch" for="toggle2">
-          <input type="checkbox" class="chi-switch__input" name="toggle2" value="toggle2" disabled>
-          <span id="toggle2" class="chi-switch__content">
+        <label class="chi-switch" for="toggle-di1">
+          <input type="checkbox" class="chi-switch__input" name="toggle-di1" value="toggle-di1" disabled>
+          <span id="toggle-di1" class="chi-switch__content">
             <span class="chi-switch__thumb"></span>
           </span>
           <span class="chi-switch__label">Label</span>
         </label>
       </div>
 
+h2 Layout Variations
 h3 Stacked
 .example.-mb--3
   .-p--3
@@ -306,7 +340,7 @@ h3 Switch with Hidden Label
         </label>
       </div>
 
-h3 Sizes
+h2 Sizes
 p.-text
   | Toggle switch supports different sizes: <code>-xs</code>, <code>-sm</code>.
   | The default size is <code>-sm</code>.
