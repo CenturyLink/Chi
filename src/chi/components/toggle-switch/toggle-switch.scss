@@ -1,26 +1,6 @@
 @import '_variables';
 @import '_mixins';
 
-.chi-form__item {
-  &.-row {
-    label {
-      &.chi-switch {
-        margin-bottom: 0.25rem;
-      }
-    }
-  }
-
-  &.-list {
-    label {
-      &.chi-switch {
-        .chi-switch__label {
-          flex-grow: 1;
-        }
-      }
-    }
-  }
-}
-
 .chi-switch {
   display: flex;
   line-height: $line-height;
@@ -38,55 +18,45 @@
     padding: 0.125rem 0;
   }
 
-  .chi-switch__content + .chi-switch__label {
-    margin-left: 0.5rem;
-    margin-right: 0;
-  }
+  .chi-switch__content {
+    display: flex;
+    flex-direction: column;
+    font-size: $font-size-2xs;
+    line-height: $line-height;
 
-  & > span {
-    &.chi-switch__content {
-      display: flex;
-      flex-direction: column;
-      font-size: $font-size-2xs;
-      line-height: $line-height;
+    & + .chi-switch__label {
+      margin-left: 0.5rem;
+      margin-right: 0;
+    }
 
-      & > .chi-switch__thumb {
-        background-color: $color-grey-50;
+    .chi-switch__thumb {
+      background-color: $color-grey-50;
+      border: 0;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      display: inline-block;
+      height: 1.5rem;
+      line-height: $line-height-lg;
+      margin-bottom: 0;
+      margin-right: 0;
+      position: relative;
+      transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      width: 3rem;
+
+      &::after {
+        background-color: $color-background-white;
         border: 0;
         border-radius: 0.75rem;
-        cursor: pointer;
-        display: inline-block;
-        height: 1.5rem;
-        line-height: $line-height-lg;
-        margin-bottom: 0;
-        margin-right: 0;
-        position: relative;
-        transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        width: 3rem;
-
-        &::after {
-          background-color: $color-background-white;
-          border: 0;
-          border-radius: 0.75rem;
-          content: '';
-          display: block;
-          height: 1.25rem;
-          left: 0.125rem;
-          margin: 0;
-          opacity: 1;
-          position: absolute;
-          top: 0.125rem;
-          transition: left 0.2s cubic-bezier(1, 0.38, 0, 1.19) 0.1s;
-          width: 1.25rem;
-        }
-      }
-
-      & > .chi-switch__on {
-        display: none;
-      }
-
-      & > .chi-switch__off {
+        content: '';
         display: block;
+        height: 1.25rem;
+        left: 0.125rem;
+        margin: 0;
+        opacity: $opacity-100;
+        position: absolute;
+        top: 0.125rem;
+        transition: left 0.2s cubic-bezier(1, 0.38, 0, 1.19) 0.1s;
+        width: 1.25rem;
       }
     }
   }
@@ -105,102 +75,91 @@
   }
   // sass-lint:enable no-duplicate-properties
 
-  input {
-    &[type='checkbox'] {
-      &.chi-switch__input {
-        &:checked {
-          & + span {
-            &.chi-switch__content {
-              & > .chi-switch__thumb {
-                background-color: $color-background-primary;
+  .chi-switch__input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    pointer-events: auto;
+    position: absolute;
+    width: 1px;
 
-                &::after {
-                  background-color: $color-background-white;
-                  border: 0;
-                  border-radius: 0.75rem;
-                  content: '';
-                  display: block;
-                  height: 1.25rem;
-                  left: 1.625rem;
-                  margin: 0;
-                  opacity: 1;
-                  position: absolute;
-                  top: 0.125rem;
-                  transition: left 0.2s cubic-bezier(1, 0.38, 0, 1.19) 0.1s;
-                  width: 1.25rem;
-                }
-              }
+    &:checked {
+      & + .chi-switch__content {
+        .chi-switch__thumb {
+          background-color: $color-background-primary;
 
-              & > .chi-switch__on {
-                display: block;
-              }
-
-              & > .chi-switch__off {
-                display: none;
-              }
-            }
+          &::after {
+            background-color: $color-background-white;
+            border: 0;
+            border-radius: 0.75rem;
+            content: '';
+            display: block;
+            height: 1.25rem;
+            left: 1.625rem;
+            margin: 0;
+            opacity: $opacity-100;
+            position: absolute;
+            top: 0.125rem;
+            transition: left 0.2s cubic-bezier(1, 0.38, 0, 1.19) 0.1s;
+            width: 1.25rem;
           }
         }
+      }
+    }
 
-        &:focus,
-        &.-focus {
-          & + span {
-            &.chi-switch__content {
-              & > .chi-switch__thumb {
-                outline: 0.125rem solid $focus-color;
-                outline-offset: 0.0625rem;
-              }
-            }
-          }
+    &:focus,
+    &.-focus {
+      & + .chi-switch__content {
+        .chi-switch__thumb {
+          outline: 0.125rem solid $focus-color;
+          outline-offset: 0.0625rem;
         }
+      }
+    }
 
-        &[disabled] {
-          & + span {
-            &.chi-switch__content {
-              & > .chi-switch__thumb {
-                opacity: 0.6;
-                pointer-events: none;
-              }
-            }
-          }
+    &.-disabled,
+    &[disabled] {
+      & + .chi-switch__content {
+        .chi-switch__thumb {
+          opacity: $opacity-60;
+          pointer-events: none;
         }
+      }
+
+      & ~ .chi-switch__label {
+        opacity: $opacity-60;
+        pointer-events: none;       
       }
     }
   }
 
   &.-xs {
-    & > span {
-      &.chi-switch__content {
-        & > .chi-switch__thumb {
-          border-radius: 0.5rem;
-          height: 1rem;
-          line-height: $line-height-sm;
-          width: 2rem;
+    .chi-switch__content {
+      .chi-switch__thumb {
+        border-radius: 0.5rem;
+        height: 1rem;
+        line-height: $line-height-sm;
+        width: 2rem;
 
-          &::after {
-            border-radius: 0.5rem;
-            height: 0.75rem;
-            width: 0.75rem;
-          }
+        &::after {
+          border-radius: 0.5rem;
+          height: 0.75rem;
+          width: 0.75rem;
         }
       }
     }
 
-    input {
-      &[type='checkbox'] {
-        &.chi-switch__input {
-          &:checked {
-            & + span {
-              &.chi-switch__content {
-                & > .chi-switch__thumb {
-                  &::after {
-                    border-radius: 0.5rem;
-                    height: 0.75rem;
-                    left: 1.125rem;
-                    width: 0.75rem;
-                  }
-                }
-              }
+    .chi-switch__input {
+      &:checked {
+        & + .chi-switch__content {
+          .chi-switch__thumb {
+            &::after {
+              border-radius: 0.5rem;
+              height: 0.75rem;
+              left: 1.125rem;
+              width: 0.75rem;
             }
           }
         }
@@ -214,38 +173,30 @@
   }
 
   &.-sm {
-    & > span {
-      &.chi-switch__content {
-        & > .chi-switch__thumb {
-          border-radius: 0.75rem;
-          height: 1.5rem;
-          line-height: $line-height-lg;
-          width: 3rem;
+    .chi-switch__content {
+      .chi-switch__thumb {
+        border-radius: 0.75rem;
+        height: 1.5rem;
+        line-height: $line-height-lg;
+        width: 3rem;
 
-          &::after {
-            border-radius: 0.75rem;
-            height: 1.25rem;
-            width: 1.25rem;
-          }
+        &::after {
+          border-radius: 0.75rem;
+          height: 1.25rem;
+          width: 1.25rem;
         }
       }
     }
 
-    input {
-      &[type='checkbox'] {
-        &.chi-switch__input {
-          &:checked {
-            & + span {
-              &.chi-switch__content {
-                & > .chi-switch__thumb {
-                  &::after {
-                    border-radius: 0.75rem;
-                    height: 1.25rem;
-                    left: 1.625rem;
-                    width: 1.25rem;
-                  }
-                }
-              }
+    .chi-switch__input {
+      &:checked {
+        & + .chi-switch__content {
+          .chi-switch__thumb {
+            &::after {
+              border-radius: 0.75rem;
+              height: 1.25rem;
+              left: 1.625rem;
+              width: 1.25rem;
             }
           }
         }
@@ -254,124 +205,24 @@
   }
 }
 
-.chi-label {
-  + .chi-switch {
-    margin: 0;
+.chi-form__item {
+  &.-row {
+    .chi-switch {
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  &.-list {
+    .chi-switch {
+      .chi-switch__label {
+        flex-grow: 1;
+      }
+    }
   }
 }
 
-input {
-  &[type='checkbox'] {
-    &.-toggle,
-    &.chi-switch__input {
-      border: 0;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      overflow: hidden;
-      padding: 0;
-      pointer-events: auto;
-      position: absolute;
-      width: 1px;
-
-      & + label {
-        background-color: $color-grey-50;
-        border: 0;
-        border-radius: 0.75rem;
-        cursor: pointer;
-        display: inline-block;
-        height: 1.5rem;
-        line-height: $line-height-lg;
-        margin-bottom: 0;
-        margin-right: 0;
-        position: relative;
-        transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        width: 3.5rem;
-
-        &::before {
-          background-color: $color-background-white;
-          background-image: none;
-          border: 0;
-          border-radius: 0.75rem;
-          content: '';
-          display: block;
-          height: 1.25rem;
-          left: 0.125rem;
-          margin: 0;
-          opacity: 1;
-          position: absolute;
-          top: 0.125rem;
-          transition: left 0.2s cubic-bezier(1, 0.38, 0, 1.19) 0.1s;
-          width: 1.25rem;
-        }
-
-        &::after {
-          background-image: none;
-          border: 0;
-          color: $color-text-white;
-          content: 'OFF';
-          display: block;
-          font-size: $font-size-2xs;
-          font-weight: bold;
-          height: 1.5rem;
-          left: 1.5625rem;
-          opacity: 1;
-          position: absolute;
-          top: 0;
-          transform: scale(1);
-          transition: left 0.2s ease-in 0.1s;
-          word-wrap: normal;
-        }
-
-        & + label {
-          margin-left: 0.5rem;
-        }
-      }
-
-
-
-      &:checked {
-        & + label {
-          background-color: $color-background-primary;
-
-          &::before {
-            left: 2.125rem;
-          }
-
-          &::after {
-            content: 'ON';
-            left: 0.625rem;
-          }
-        }
-
-        &:focus,
-        &.-focus {
-          & + label {
-            box-shadow: 0 0 0 0.25rem $focus-color;
-          }
-        }
-      }
-
-      &[disabled] + .chi-switch__label {
-        opacity: 0.6;
-        pointer-events: none;
-      }
-
-      &[disabled] ~ .chi-switch__label {
-        color: $color-grey-70;
-        opacity: 0.6;
-        pointer-events: none;
-      }
-
-      &:focus,
-      &.-focus {
-        & + label {
-          box-shadow: 0 0 0 0.25rem rgba($color-grey-50, 0.25);
-
-          &::before {
-            box-shadow: none;
-          }
-        }
-      }
-    }
+.chi-label {
+  + .chi-switch {
+    margin: 0;
   }
 }
