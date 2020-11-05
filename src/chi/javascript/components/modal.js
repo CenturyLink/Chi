@@ -9,8 +9,12 @@ const COMPONENT_TYPE = "modal";
 const DISABLE_SCROLL = '-disable-scroll';
 const ESCAPE_KEYCODE = 27;
 const EVENTS = {
-  show: 'chi.modal.show',
-  hide: 'chi.modal.hide'
+  showDeprecated: 'chi.modal.show',
+  hideDeprecated: 'chi.modal.hide',
+  show: 'chiModalShow',
+  hide: 'chiModalHide',
+  shown: 'chiModalShown',
+  hidden: 'chiModalHidden',
 };
 const DEFAULT_CONFIG = {
   target: null,
@@ -137,6 +141,9 @@ class Modal extends Component {
             self._modalElem.dispatchEvent(
               Util.createEvent(EVENTS.show)
             );
+            self._modalElem.dispatchEvent(
+              Util.createEvent(EVENTS.showDeprecated)
+            );
           },
           function() {
             Util.removeClass(self._modalElem, chi.classes.TRANSITIONING);
@@ -144,6 +151,9 @@ class Modal extends Component {
               Util.removeClass(self._backdrop, chi.classes.TRANSITIONING);
             }
             self._transitioning = false;
+            self._modalElem.dispatchEvent(
+              Util.createEvent(EVENTS.shown)
+            );
           },
           ANIMATION_DURATION
         );
@@ -155,6 +165,9 @@ class Modal extends Component {
         self._shown = true;
         self._modalElem.dispatchEvent(
           Util.createEvent(EVENTS.show)
+        );
+        self._modalElem.dispatchEvent(
+          Util.createEvent(EVENTS.showDeprecated)
         );
       }
     }
@@ -186,6 +199,9 @@ class Modal extends Component {
             self._modalElem.dispatchEvent(
               Util.createEvent(EVENTS.hide)
             );
+            self._modalElem.dispatchEvent(
+              Util.createEvent(EVENTS.hideDeprecated)
+            );
           },
           function() {
             Util.removeClass(self._modalElem, chi.classes.TRANSITIONING);
@@ -193,6 +209,9 @@ class Modal extends Component {
               Util.removeClass(self._backdrop, chi.classes.TRANSITIONING);
             }
             self._transitioning = false;
+            self._modalElem.dispatchEvent(
+              Util.createEvent(EVENTS.hidden)
+            );
           },
           ANIMATION_DURATION
         );
@@ -204,6 +223,9 @@ class Modal extends Component {
         self._shown = false;
         self._modalElem.dispatchEvent(
           Util.createEvent(EVENTS.hide)
+        );
+        self._modalElem.dispatchEvent(
+          Util.createEvent(EVENTS.hideDeprecated)
         );
       }
     }
