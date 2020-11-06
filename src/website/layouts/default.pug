@@ -43,14 +43,14 @@ html.chi(lang="en")
                         != contents
                         
         else if datatable
-            main.docs-body
+            main.docs-body.chi-grid__container-data-table
                 nav.docs-sidenav
                     include partials/sidenav
 
                 article.docs-article
                     header.docs-titlebar
                         include partials/titlebar
-                    section.chi-grid__container.-pt--3.chi-grid__container-data-table
+                    section.chi-grid__container.-pt--3
                         != contents
         else
             main.docs-body

@@ -336,10 +336,6 @@
             margin: 0 auto;
             max-width: 960px;
             padding: 0 20px;
-
-            &.chi-grid__container-data-table {
-              max-width: 1168px;
-            }
           }
 
           >,
@@ -456,6 +452,16 @@
           &__block {
             height: 3rem;
             width: 0.5rem;
+          }
+        }
+      }
+
+      &.chi-grid__container-data-table {
+        .docs-article {
+          .chi-grid__container {
+            @include respond-to(xl) {
+              max-width: 1200px;
+            }
           }
         }
       }

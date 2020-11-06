@@ -196,21 +196,21 @@ h3 Base -- Compact
             span Last Login
       .chi-data-table__body
         .chi-data-table__row
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div Name 1
           .chi-data-table__cell
             div name-1
           .chi-data-table__cell
             div Dec 18, 2020 3:26 PM
         .chi-data-table__row
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div Name 2
           .chi-data-table__cell
             div name-2
           .chi-data-table__cell
             div Dec 18, 2020 2:38 AM
         .chi-data-table__row
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div Name 3
           .chi-data-table__cell
             div name-3
@@ -262,7 +262,7 @@ h3 Base -- Compact
         </div>
         <div class="chi-data-table__body">
           <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -name -bold">
+            <div class="chi-data-table__cell -key -bold">
               <div>Name 1</div>
             </div>
             <div class="chi-data-table__cell">
@@ -273,7 +273,7 @@ h3 Base -- Compact
             </div>
           </div>
           <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -name -bold">
+            <div class="chi-data-table__cell -key -bold">
               <div>Name 2</div>
             </div>
             <div class="chi-data-table__cell">
@@ -284,7 +284,7 @@ h3 Base -- Compact
             </div>
           </div>
           <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -name -bold">
+            <div class="chi-data-table__cell -key -bold">
               <div>Name 3</div>
             </div>
             <div class="chi-data-table__cell">
@@ -1286,10 +1286,11 @@ h3 Selectable
     .chi-data-table
       .chi-data-table__head
         .chi-data-table__row
-          .chi-data-table__cell.-selectable.-lh--1
-            input.chi-checkbox__input(type="checkbox", id=`chk-1`)
-            label.chi-checkbox__label(for=`chk-1`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba1")
+              label(for="checkbox-ba1" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             span Name
           .chi-data-table__cell
@@ -1298,10 +1299,11 @@ h3 Selectable
             span Last Login
       .chi-data-table__body
         .chi-data-table__row
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-2`)
-            label.chi-checkbox__label(for=`chk-2`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba2")
+              label(for="checkbox-ba2" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell(data-label="Name")
             div Name 1
           .chi-data-table__cell(data-label="ID")
@@ -1309,10 +1311,11 @@ h3 Selectable
           .chi-data-table__cell(data-label="Last Login")
             div Dec 18, 2020 3:26 PM
         .chi-data-table__row.-selected
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-3`, checked="checked")
-            label.chi-checkbox__label(for=`chk-3`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba3")
+              label(for="checkbox-ba3" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell(data-label="Name")
             div Name 2
           .chi-data-table__cell(data-label="ID")
@@ -1320,9 +1323,11 @@ h3 Selectable
           .chi-data-table__cell(data-label="Last Login")
             div Dec 18, 2020 2:38 AM
         .chi-data-table__row
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-4`)
-            label.chi-checkbox__label(for=`chk-4`)
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba4")
+              label(for="checkbox-ba4" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell(data-label="Name")
             div Name 3
           .chi-data-table__cell(data-label="ID")
@@ -1377,10 +1382,13 @@ h3 Selectable
       <div class="chi-data-table">
         <div class="chi-data-table__head">
           <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -selectable -lh--1">
-              <input class="chi-checkbox__input" type="checkbox" id="chk-1" />
-              <label class="chi-checkbox__label" for="chk-1">
-                <div class="-sr--only">Label</div>
+            <div class="chi-data-table__cell -selectable">
+              <div class="chi-checkbox">
+                <input type="checkbox" class="chi-checkbox__input" id="checkbox-ba1">
+                <label class="chi-checkbox__label" for="checkbox-ba1">
+                  <div class="-sr--only">Checkbox</div>
+                </label>
+              </div>
               </label>
             </div>
             <div class="chi-data-table__cell">
@@ -1396,10 +1404,13 @@ h3 Selectable
         </div>
         <div class="chi-data-table__body">
           <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -lh--1 -selectable">
-              <input class="chi-checkbox__input" type="checkbox" id="chk-2" />
-              <label class="chi-checkbox__label" for="chk-2">
-                <div class="-sr--only">Label</div>
+            <div class="chi-data-table__cell -selectable">
+              <div class="chi-checkbox">
+                <input type="checkbox" class="chi-checkbox__input" id="checkbox-ba2">
+                <label class="chi-checkbox__label" for="checkbox-ba2">
+                  <div class="-sr--only">Checkbox</div>
+                </label>
+              </div>
               </label>
             </div>
             <div class="chi-data-table__cell" data-label="Name">
@@ -1414,10 +1425,12 @@ h3 Selectable
           </div>
           <div class="chi-data-table__row -selected">
             <div class="chi-data-table__cell -lh--1 -selectable">
-              <input class="chi-checkbox__input" type="checkbox" id="chk-3" checked="checked" />
-              <label class="chi-checkbox__label" for="chk-3">
-                <div class="-sr--only">Label</div>
-              </label>
+              <div class="chi-checkbox">
+                <input type="checkbox" class="chi-checkbox__input" id="checkbox-ba3">
+                <label class="chi-checkbox__label" for="checkbox-ba3">
+                  <div class="-sr--only">Checkbox</div>
+                </label>
+              </div>
             </div>
             <div class="chi-data-table__cell" data-label="Name">
               <div>Name 2</div>
@@ -1431,8 +1444,12 @@ h3 Selectable
           </div>
           <div class="chi-data-table__row">
             <div class="chi-data-table__cell -lh--1 -selectable">
-              <input class="chi-checkbox__input" type="checkbox" id="chk-4" />
-              <label class="chi-checkbox__label" for="chk-4"></label>
+              <div class="chi-checkbox">
+                <input type="checkbox" class="chi-checkbox__input" id="checkbox-ba4">
+                <label class="chi-checkbox__label" for="checkbox-ba4">
+                  <div class="-sr--only">Checkbox</div>
+                </label>
+              </div>
             </div>
             <div class="chi-data-table__cell" data-label="Name">
               <div>Name 3</div>
@@ -3849,23 +3866,23 @@ h3 Portal
                 span Last Login
           .chi-data-table__body
             .chi-data-table__row
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 1
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-1
               .chi-data-table__cell
                 div Dec 18, 2020 3:26 PM
             .chi-data-table__row
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 2
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-2
               .chi-data-table__cell
                 div Dec 18, 2020 2:38 AM
             .chi-data-table__row
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 3
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-3
               .chi-data-table__cell
                 div Nov 5, 2020 10:15 AM
@@ -3920,10 +3937,10 @@ h3 Portal
             </div>
             <div class="chi-data-table__body">
               <div class="chi-data-table__row">
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 1</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-1</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -3931,10 +3948,10 @@ h3 Portal
                 </div>
               </div>
               <div class="chi-data-table__row">
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 2</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-2</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -3942,10 +3959,10 @@ h3 Portal
                 </div>
               </div>
               <div class="chi-data-table__row">
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 3</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-3</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4013,9 +4030,9 @@ h3 Portal -- Accordion
                 button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
                     i.chi-icon.icon-plus
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 1
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-1
               .chi-data-table__cell
                 div Dec 18, 2020 3:26 PM
@@ -4024,9 +4041,9 @@ h3 Portal -- Accordion
                 button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
                     i.chi-icon.icon-plus       
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 2
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-2
               .chi-data-table__cell
                 div Dec 18, 2020 2:38 AM
@@ -4035,9 +4052,9 @@ h3 Portal -- Accordion
                 button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
                     i.chi-icon.icon-plus       
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 3
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-3
               .chi-data-table__cell
                 div Nov 5, 2020 10:15 AM
@@ -4100,10 +4117,10 @@ h3 Portal -- Accordion
                     </div>
                   </button>
                 </div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 1</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-1</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4118,10 +4135,10 @@ h3 Portal -- Accordion
                     </div>
                   </button>
                 </div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 2</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-2</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4136,10 +4153,10 @@ h3 Portal -- Accordion
                     </div>
                   </button>
                 </div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 3</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-3</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4207,9 +4224,9 @@ h3 Portal -- Accordion Expanded
                 button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
                     i.chi-icon.icon-plus
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 1
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-1
               .chi-data-table__cell
                 div Dec 18, 2020 3:26 PM
@@ -4218,17 +4235,17 @@ h3 Portal -- Accordion Expanded
                 button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
                     i.chi-icon.icon-minus
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 2
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-2
               .chi-data-table__cell
                 div Dec 18, 2020 2:38 AM
             .chi-data-table__row-child
               .chi-data-table__cell.-expandable
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Child Name 1
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div Child name-1
               .chi-data-table__cell
                 div Dec 18, 2020 2:38 AM
@@ -4237,9 +4254,9 @@ h3 Portal -- Accordion Expanded
                 button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
                     i.chi-icon.icon-plus
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 3
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-3
               .chi-data-table__cell
                 div Nov 5, 2020 10:15 AM
@@ -4302,10 +4319,10 @@ h3 Portal -- Accordion Expanded
                     </div>
                   </button>
                 </div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 1</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-1</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4320,10 +4337,10 @@ h3 Portal -- Accordion Expanded
                     </div>
                   </button>
                 </div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 2</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-2</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4332,10 +4349,10 @@ h3 Portal -- Accordion Expanded
               </div>
               <div class="chi-data-table__row-child">
                 <div class="chi-data-table__cell -expandable"></div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Child Name 1</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>Child name-1</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4350,10 +4367,10 @@ h3 Portal -- Accordion Expanded
                     </div>
                   </button>
                 </div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 3</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-3</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4421,9 +4438,9 @@ h3 Portal -- Accordion Expanded -- Child
                 button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
                     i.chi-icon.icon-plus
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 1
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-1
               .chi-data-table__cell
                 div Dec 18, 2020 3:26 PM
@@ -4432,25 +4449,25 @@ h3 Portal -- Accordion Expanded -- Child
                 button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
                     i.chi-icon.icon-minus
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 2
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-2
               .chi-data-table__cell
                 div Dec 18, 2020 2:38 AM
             .chi-data-table__row-child.-collapsed
               .chi-data-table__cell.-expandable
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Child Name 1
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div Child name-1
               .chi-data-table__cell
                 div Dec 18, 2020 2:38 AM
             .chi-data-table__row-child.-collapsed
               .chi-data-table__cell.-expandable
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Child Name 2
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div Child name-2
               .chi-data-table__cell
                 div Dec 18, 2020 2:38 AM
@@ -4459,9 +4476,9 @@ h3 Portal -- Accordion Expanded -- Child
                 button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
                     i.chi-icon.icon-plus
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 3
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-3
               .chi-data-table__cell
                 div Nov 5, 2020 10:15 AM
@@ -4524,10 +4541,10 @@ h3 Portal -- Accordion Expanded -- Child
                     </div>
                   </button>
                 </div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 1</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-1</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4542,10 +4559,10 @@ h3 Portal -- Accordion Expanded -- Child
                     </div>
                   </button>
                 </div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 2</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-2</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4554,10 +4571,10 @@ h3 Portal -- Accordion Expanded -- Child
               </div>
               <div class="chi-data-table__row-child -collapsed">
                 <div class="chi-data-table__cell -expandable"></div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Child Name 1</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>Child name-1</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4566,10 +4583,10 @@ h3 Portal -- Accordion Expanded -- Child
               </div>
               <div class="chi-data-table__row-child -collapsed">
                 <div class="chi-data-table__cell -expandable"></div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Child Name 2</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>Child name-2</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4584,10 +4601,10 @@ h3 Portal -- Accordion Expanded -- Child
                     </div>
                   </button>
                 </div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 3</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-3</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4655,9 +4672,9 @@ h3 Portal -- Accordion Expanded -- Child Expanded
                 button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
                     i.chi-icon.icon-plus
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 1
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-1
               .chi-data-table__cell
                 div Dec 18, 2020 3:26 PM
@@ -4666,33 +4683,33 @@ h3 Portal -- Accordion Expanded -- Child Expanded
                 button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
                     i.chi-icon.icon-minus
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 2
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-2
               .chi-data-table__cell
                 div Dec 18, 2020 2:38 AM
             .chi-data-table__row-child.-expanded
               .chi-data-table__cell.-expandable
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Child Name 1
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div Child name-1
               .chi-data-table__cell
                 div Dec 18, 2020 2:38 AM
             .chi-data-table__row-grand-child
               .chi-data-table__cell.-expandable
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Grand-child Name 1
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div Grand-child name-1
               .chi-data-table__cell
                 div Dec 18, 2020 2:38 AM
             .chi-data-table__row-child.-collapsed
               .chi-data-table__cell.-expandable
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Child Name 2
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div Child name-2
               .chi-data-table__cell
                 div Dec 18, 2020 2:38 AM
@@ -4701,9 +4718,9 @@ h3 Portal -- Accordion Expanded -- Child Expanded
                 button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
                   .chi-button__content
                     i.chi-icon.icon-plus
-              .chi-data-table__cell.-name.-bold
+              .chi-data-table__cell.-key.-bold
                 div Name 3
-              .chi-data-table__cell.-name
+              .chi-data-table__cell.-key
                 div name-3
               .chi-data-table__cell
                 div Nov 5, 2020 10:15 AM
@@ -4764,10 +4781,10 @@ h3 Portal -- Accordion Expanded -- Child Expanded
                       <i class="chi-icon icon-plus"></i>
                     </div>
                 </div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 1</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-1</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4781,10 +4798,10 @@ h3 Portal -- Accordion Expanded -- Child Expanded
                       <i class="chi-icon icon-minus"></i>
                     </div>
                 </div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 2</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-2</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4793,10 +4810,10 @@ h3 Portal -- Accordion Expanded -- Child Expanded
               </div>
               <div class="chi-data-table__row-child -expanded">
                 <div class="chi-data-table__cell -expandable"></div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Child Name 1</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>Child name-1</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4805,10 +4822,10 @@ h3 Portal -- Accordion Expanded -- Child Expanded
               </div>
               <div class="chi-data-table__row-grand-child">
                 <div class="chi-data-table__cell -expandable"></div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Grand-child Name 1</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>Grand-child name-1</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4817,10 +4834,10 @@ h3 Portal -- Accordion Expanded -- Child Expanded
               </div>
               <div class="chi-data-table__row-child -collapsed">
                 <div class="chi-data-table__cell -expandable"></div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Child Name 2</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>Child name-2</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4834,10 +4851,10 @@ h3 Portal -- Accordion Expanded -- Child Expanded
                       <i class="chi-icon icon-plus"></i>
                     </div>
                 </div>
-                <div class="chi-data-table__cell -name -bold">
+                <div class="chi-data-table__cell -key -bold">
                   <div>Name 3</div>
                 </div>
-                <div class="chi-data-table__cell -name">
+                <div class="chi-data-table__cell -key">
                   <div>name-3</div>
                 </div>
                 <div class="chi-data-table__cell">
@@ -4960,11 +4977,11 @@ h3 Portal -- Complex example
         .chi-data-table__row.-collapsed
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-plus
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div FJD983-JFE890-HFKE84-567ASuper WrappingBoldtitle | Western Main
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Internet Backbone
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Active
           .chi-data-table__cell
             div 8 Glenlake Lane, San Francisco, California, 94107, USA
@@ -4973,7 +4990,7 @@ h3 Portal -- Complex example
         .chi-data-table__row.-collapsed
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-plus
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div JFE890-HFKE84
           .chi-data-table__cell
             div ashley.macias@domain.com
@@ -4986,9 +5003,9 @@ h3 Portal -- Complex example
         .chi-data-table__row
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-plus
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div 8-FJFIFE4328 | Western Regional Main Super Long Customer Created Name
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Main Pending Activate
           .chi-data-table__cell
             div 555-995-5348
@@ -4999,11 +5016,11 @@ h3 Portal -- Complex example
         .chi-data-table__row
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-plus
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div LKD983-DS849 | Headquarters
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Active
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div 102224 ELDORADO BLVD, BROOMFIELD, CO, 80202
           .chi-data-table__cell
             div 8 Glenlake Lane, San Francisco, California, 94107, USA
@@ -5012,48 +5029,48 @@ h3 Portal -- Complex example
         .chi-data-table__row.-collapsed
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-plus
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div LKD983-DS849 (Headquarters)
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Active
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div 1024 ELDORADO BLVD, BROOMFIELD, CO, 80202
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Pending Active
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Awaiting Customer Action
         .chi-data-table__row.-expanded
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-minus.-xs
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div JFE890-984J
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Pending Activate
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div 543-723-8733
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div 4 W Chapel St, San Jose, California, 95129, USA
           .chi-data-table__cell
             div April 8, 2020
         .chi-data-table__row-child.-collapsed
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div GHF89-DD | Pine Boulevard Station
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Active
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div 543-723-8733
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div 4 W Chapel St, San Jose, California, 95129, USA
           .chi-data-table__cell
             div April 8, 2020
         .chi-data-table__row-child.-collapsed
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div KOL89-EF | Gilbert Street Station super long name
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Pending Activate
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div 543-723-8733
           .chi-data-table__cell
             div 4 W Chapel St, San Jose, California, 95129, USA
@@ -5062,9 +5079,9 @@ h3 Portal -- Complex example
         .chi-data-table__row.-expanded
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-minus.-xs
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div FJD983-DS849 | Western Regional Main Internet
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Pending Activate
           .chi-data-table__cell
             div 543-723-8733
@@ -5074,11 +5091,11 @@ h3 Portal -- Complex example
             div April 8, 2020
         .chi-data-table__row-child.-expanded
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div GHF89-DD | Pine Boulevard Station
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Active
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div 543-723-8733
           .chi-data-table__cell
             div 4 W Chapel St, San Jose, California, 95129, USA
@@ -5086,11 +5103,11 @@ h3 Portal -- Complex example
             div April 8, 2020
         .chi-data-table__row-grand-child
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div FJD983-JFE890-HFKE84-567ASuper WrappingBoldtitle | Western Main
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div ashley.macias@domain.com
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div 543-723-8733
           .chi-data-table__cell
             div 4 W Chapel St, San Jose, California, 95129, USA
@@ -5098,9 +5115,9 @@ h3 Portal -- Complex example
             div April 8, 2020
         .chi-data-table__row-grand-child
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div Ashley Macias
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div ashley.macias@domain.com
           .chi-data-table__cell
             div 543-723-8733
@@ -5110,19 +5127,19 @@ h3 Portal -- Complex example
             div April 8, 2020
         .chi-data-table__row-grand-child
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div 8-FJFIFE4328 | Western Regional Main Super Long Customer Created Name
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div ashley.macias@domain.com
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div 543-723-8733
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div 4 W Chapel St, San Jose, California, 95129, USA
           .chi-data-table__cell
             div April 8, 2020
         .chi-data-table__row-grand-child
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div LKD983-DS849 | Headquarters Active super long name
           .chi-data-table__cell
             div ashley.macias@domain.com
@@ -5134,11 +5151,11 @@ h3 Portal -- Complex example
             div April 8, 2020
         .chi-data-table__row-child.-collapsed
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div KOL89-EF | Gilbert Street Station
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Pending Activate
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div 543-723-8733
           .chi-data-table__cell
             div 4 W Chapel St, San Jose, California, 95129, USA
@@ -5147,11 +5164,11 @@ h3 Portal -- Complex example
         .chi-data-table__row.-collapsed
           .chi-data-table__cell.-expandable
             i.chi-icon.icon-plus
-          .chi-data-table__cell.-name.-bold
+          .chi-data-table__cell.-key.-bold
             div JFE890-HFKE84
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div 1025 S MISSISSIPPI BLVD, ST PAUL, MN, 54707, USA
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key
             div Activate Pending Customer Another Example of Wrapped Line Height Chunk
           .chi-data-table__cell
             div 7842 Center Rd, San Jose, California, 95129, USA
@@ -5208,7 +5225,7 @@ h3 Portal with truncation -- Desktop example
             span Last Login
       .chi-data-table__body
         .chi-data-table__row
-          .chi-data-table__cell.-name.-bold(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div Abe Salazar
           .chi-data-table__cell(style="flex-basis: 10%;")
             div.-text--truncate(style="width: 75px;", data-tooltip="abe.salazar@domain.com") abe.salazar@domain.com
@@ -5219,7 +5236,7 @@ h3 Portal with truncation -- Desktop example
           .chi-data-table__cell(style="flex-basis: 10%;")
             div April 8, 2020
         .chi-data-table__row
-          .chi-data-table__cell.-name.-bold(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div Ashley Macias
           .chi-data-table__cell(style="flex-basis: 10%;")
             div.-text--truncate(style="width: 75px;", data-tooltip="ashley.macias@domain.com") ashley.macias@domain.com
@@ -5230,7 +5247,7 @@ h3 Portal with truncation -- Desktop example
           .chi-data-table__cell(style="flex-basis: 10%;")
             div April 8, 2020
         .chi-data-table__row
-          .chi-data-table__cell.-name.-bold(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div Cameron Hodge
           .chi-data-table__cell(style="flex-basis: 10%;")
             div.-text--truncate(style="width: 75px;", data-tooltip="cameron.hodge@domain.com") cameron.hodge@domain.com
@@ -5280,10 +5297,11 @@ h3 Complex Portal example 1 -- No Flex-basis -- Desktop example
       .chi-data-table__head
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-selectable.-lh--1
-            input.chi-checkbox__input(type="checkbox", id=`chk-5`)
-            label.chi-checkbox__label(for=`chk-5`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba5")
+              label(for="checkbox-ba5" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             div Alerts
           .chi-data-table__cell
@@ -5296,18 +5314,19 @@ h3 Complex Portal example 1 -- No Flex-basis -- Desktop example
             div Created
           .chi-data-table__cell
             div Product / Service ID
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             div Actions
       .chi-data-table__body
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-6`)
-            label.chi-checkbox__label(for=`chk-6`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba6")
+              label(for="checkbox-ba6" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             i.chi-icon.icon-circle-check
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key.-bold
             div NTM000021063
           .chi-data-table__cell
             div Colocation
@@ -5317,19 +5336,20 @@ h3 Complex Portal example 1 -- No Flex-basis -- Desktop example
             div 04/05/2020 8:00 AM
           .chi-data-table__cell
             div SVUJW034781A
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-7`)
-            label.chi-checkbox__label(for=`chk-7`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba7")
+              label(for="checkbox-ba7" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             i.chi-icon.icon-circle-check
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key.-bold
             div NTM000021063
           .chi-data-table__cell
             div Colocation
@@ -5339,7 +5359,7 @@ h3 Complex Portal example 1 -- No Flex-basis -- Desktop example
             div 04/05/2020 8:00 AM
           .chi-data-table__cell
             div SVUJW034781A
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
@@ -5348,13 +5368,14 @@ h3 Complex Portal example 1 -- No Flex-basis -- Desktop example
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-minus
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-8`)
-            label.chi-checkbox__label(for=`chk-8`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba8")
+              label(for="checkbox-ba8" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             i.chi-icon.icon-circle-check
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key.-bold
             div NTM000021063
           .chi-data-table__cell
             div Colocation
@@ -5364,16 +5385,16 @@ h3 Complex Portal example 1 -- No Flex-basis -- Desktop example
             div 04/05/2020 8:00 AM
           .chi-data-table__cell
             div SVUJW034781A
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
         .chi-data-table__row-child
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
+          .chi-data-table__cell.-selectable
           .chi-data-table__cell
             div -
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key.-bold
             div NTM000021063
           .chi-data-table__cell
             div Colocation
@@ -5383,16 +5404,16 @@ h3 Complex Portal example 1 -- No Flex-basis -- Desktop example
             div 04/05/2020 8:00 AM
           .chi-data-table__cell
             div SVUJW034781A
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
         .chi-data-table__row-child
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
+          .chi-data-table__cell.-selectable
           .chi-data-table__cell
             div -
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key.-bold
             div NTM000021063
           .chi-data-table__cell
             div Configuration
@@ -5402,19 +5423,20 @@ h3 Complex Portal example 1 -- No Flex-basis -- Desktop example
             div 04/05/2020 8:00 AM
           .chi-data-table__cell
             div 10422125557AB
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-9`)
-            label.chi-checkbox__label(for=`chk-9`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba9")
+              label(for="checkbox-ba9" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             i.chi-icon.icon-circle-check
-          .chi-data-table__cell.-name
+          .chi-data-table__cell.-key.-bold
             div NTM000021063
           .chi-data-table__cell
             div Configuration
@@ -5424,7 +5446,7 @@ h3 Complex Portal example 1 -- No Flex-basis -- Desktop example
             div 04/05/2020 8:00 AM
           .chi-data-table__cell
             div 10422125557AB
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
@@ -5468,10 +5490,11 @@ h3 Complex Portal example 2 -- Flex-basis -- Desktop example
       .chi-data-table__head
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-selectable.-lh--1
-            input.chi-checkbox__input(type="checkbox", id=`chk-10`)
-            label.chi-checkbox__label(for=`chk-10`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba10")
+              label(for="checkbox-ba10" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             div Alerts
           .chi-data-table__cell(style="flex-basis: 10%;")
@@ -5484,18 +5507,19 @@ h3 Complex Portal example 2 -- Flex-basis -- Desktop example
             div Created
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Product / Service ID
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             div Actions
       .chi-data-table__body
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-11`)
-            label.chi-checkbox__label(for=`chk-11`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba11")
+              label(for="checkbox-ba11" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             i.chi-icon.icon-circle-check
-          .chi-data-table__cell.-name(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div NTM000021063
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Colocation
@@ -5505,19 +5529,20 @@ h3 Complex Portal example 2 -- Flex-basis -- Desktop example
             div 04/05/2020 8:00 AM
           .chi-data-table__cell(style="flex-basis: 10%;")
             div SVUJW034781A
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-12`)
-            label.chi-checkbox__label(for=`chk-12`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba12")
+              label(for="checkbox-ba12" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             i.chi-icon.icon-circle-check
-          .chi-data-table__cell.-name(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div NTM000021063
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Colocation
@@ -5527,7 +5552,7 @@ h3 Complex Portal example 2 -- Flex-basis -- Desktop example
             div 04/05/2020 8:00 AM
           .chi-data-table__cell(style="flex-basis: 10%;")
             div SVUJW034781A
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
@@ -5536,13 +5561,14 @@ h3 Complex Portal example 2 -- Flex-basis -- Desktop example
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-minus
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-13`)
-            label.chi-checkbox__label(for=`chk-13`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba13")
+              label(for="checkbox-ba13" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             i.chi-icon.icon-circle-check
-          .chi-data-table__cell.-name(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div NTM000021063
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Colocation
@@ -5552,16 +5578,16 @@ h3 Complex Portal example 2 -- Flex-basis -- Desktop example
             div 04/05/2020 8:00 AM
           .chi-data-table__cell(style="flex-basis: 10%;")
             div SVUJW034781A
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
         .chi-data-table__row-child
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
+          .chi-data-table__cell.-selectable
           .chi-data-table__cell
             div -
-          .chi-data-table__cell.-name(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div NTM000021063
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Colocation
@@ -5571,16 +5597,16 @@ h3 Complex Portal example 2 -- Flex-basis -- Desktop example
             div 04/05/2020 8:00 AM
           .chi-data-table__cell(style="flex-basis: 10%;")
             div SVUJW034781A
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
         .chi-data-table__row-child
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
+          .chi-data-table__cell.-selectable
           .chi-data-table__cell
             div -
-          .chi-data-table__cell.-name(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div NTM000021063
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Configuration
@@ -5590,19 +5616,20 @@ h3 Complex Portal example 2 -- Flex-basis -- Desktop example
             div 04/05/2020 8:00 AM
           .chi-data-table__cell(style="flex-basis: 10%;")
             div 10422125557AB
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
         .chi-data-table__row
           .chi-data-table__cell.-expandable
           .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-14`)
-            label.chi-checkbox__label(for=`chk-14`)
-              .-sr--only Label
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba14")
+              label(for="checkbox-ba14" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             i.chi-icon.icon-circle-check
-          .chi-data-table__cell.-name(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div NTM000021063
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Configuration
@@ -5612,7 +5639,7 @@ h3 Complex Portal example 2 -- Flex-basis -- Desktop example
             div 04/05/2020 8:00 AM
           .chi-data-table__cell(style="flex-basis: 10%;")
             div 10422125557AB
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
@@ -5656,10 +5683,11 @@ h3 Complex Portal example 3 -- Flex-basis + truncation -- Desktop example
       .chi-data-table__head
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-selectable.-lh--1
-            input.chi-checkbox__input(type="checkbox", id=`chk-15`)
-            label.chi-checkbox__label(for=`chk-15`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba15")
+              label(for="checkbox-ba15" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             div Alerts
           .chi-data-table__cell(style="flex-basis: 10%;")
@@ -5672,18 +5700,19 @@ h3 Complex Portal example 3 -- Flex-basis + truncation -- Desktop example
             div Created
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Product / Service ID
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             div Actions
       .chi-data-table__body
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-16`)
-            label.chi-checkbox__label(for=`chk-16`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba16")
+              label(for="checkbox-ba16" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             i.chi-icon.icon-circle-check
-          .chi-data-table__cell.-name(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div NTM000021063
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Colocation
@@ -5693,19 +5722,20 @@ h3 Complex Portal example 3 -- Flex-basis + truncation -- Desktop example
             div.-text--truncate(style="width: 80px;", data-tooltip="04/05/2020 8:00 AM") 04/05/2020 8:00 AM
           .chi-data-table__cell(style="flex-basis: 10%;")
             div SVUJW034781A
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-17`)
-            label.chi-checkbox__label(for=`chk-17`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba17")
+              label(for="checkbox-ba17" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             i.chi-icon.icon-circle-check
-          .chi-data-table__cell.-name(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div NTM000021063
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Colocation
@@ -5715,7 +5745,7 @@ h3 Complex Portal example 3 -- Flex-basis + truncation -- Desktop example
             div.-text--truncate(style="width: 80px;", data-tooltip="04/05/2020 8:00 AM") 04/05/2020 8:00 AM
           .chi-data-table__cell(style="flex-basis: 10%;")
             div SVUJW034781A
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
@@ -5724,13 +5754,14 @@ h3 Complex Portal example 3 -- Flex-basis + truncation -- Desktop example
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-minus
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-18`)
-            label.chi-checkbox__label(for=`chk-18`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba18")
+              label(for="checkbox-ba18" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             i.chi-icon.icon-circle-check
-          .chi-data-table__cell.-name(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div NTM000021063
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Colocation
@@ -5740,16 +5771,16 @@ h3 Complex Portal example 3 -- Flex-basis + truncation -- Desktop example
             div.-text--truncate(style="width: 80px;", data-tooltip="04/05/2020 8:00 AM") 04/05/2020 8:00 AM
           .chi-data-table__cell(style="flex-basis: 10%;")
             div SVUJW034781A
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
         .chi-data-table__row-child
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
+          .chi-data-table__cell.-selectable
           .chi-data-table__cell
             div -
-          .chi-data-table__cell.-name(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div NTM000021063
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Colocation
@@ -5759,16 +5790,16 @@ h3 Complex Portal example 3 -- Flex-basis + truncation -- Desktop example
             div.-text--truncate(style="width: 80px;", data-tooltip="04/05/2020 8:00 AM") 04/05/2020 8:00 AM
           .chi-data-table__cell(style="flex-basis: 10%;")
             div SVUJW034781A
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
         .chi-data-table__row-child
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
+          .chi-data-table__cell.-selectable
           .chi-data-table__cell
             div -
-          .chi-data-table__cell.-name(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div NTM000021063
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Configuration
@@ -5778,19 +5809,20 @@ h3 Complex Portal example 3 -- Flex-basis + truncation -- Desktop example
             div.-text--truncate(style="width: 80px;", data-tooltip="04/05/2020 8:00 AM") 04/05/2020 8:00 AM
           .chi-data-table__cell(style="flex-basis: 10%;")
             div 10422125557AB
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
         .chi-data-table__row
           .chi-data-table__cell.-expandable
-          .chi-data-table__cell.-lh--1.-selectable
-            input.chi-checkbox__input(type="checkbox", id=`chk-19`)
-            label.chi-checkbox__label(for=`chk-19`)
-              .-sr--only Label
+          .chi-data-table__cell.-selectable
+            .chi-checkbox
+              input(type="checkbox" class="chi-checkbox__input" id="checkbox-ba19")
+              label(for="checkbox-ba19" class="chi-checkbox__label") 
+                .-sr--only Checkbox
           .chi-data-table__cell
             i.chi-icon.icon-circle-check
-          .chi-data-table__cell.-name(style="flex-basis: 10%;")
+          .chi-data-table__cell.-key.-bold(style="flex-basis: 10%;")
             div NTM000021063
           .chi-data-table__cell(style="flex-basis: 10%;")
             div Configuration
@@ -5800,7 +5832,7 @@ h3 Complex Portal example 3 -- Flex-basis + truncation -- Desktop example
             div.-text--truncate(style="width: 80px;", data-tooltip="04/05/2020 8:00 AM") 04/05/2020 8:00 AM
           .chi-data-table__cell(style="flex-basis: 10%;")
             div 10422125557AB
-          .chi-data-table__cell
+          .chi-data-table__cell.-justify-content--end
             button.chi-button.-icon.-flat.-sm(aria-label='Expand row')
               .chi-button__content
                 i.chi-icon.icon-more-vert
