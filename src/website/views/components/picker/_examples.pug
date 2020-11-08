@@ -8,12 +8,12 @@ h4 Base
 .example.-mb--3
   .-p--4
     fieldset
-      legend.chi-label Legend
-      each type in ['Checkbox1','Checkbox2']
+      legend.chi-label Select options
+      each i in [1, 2]
         .chi-picker
-          input(type="checkbox", class="chi-picker__input", name=`checkbox-base`, id=`i-${type}`, checked=(type === 'Checkbox1'))
-          label(for=`i-${type}`)
-            = type
+          input(type="checkbox", class="chi-picker__input", name=`unique-name-mba`, id=`unique-id-mba${i}`)
+          label(for=`unique-id-mba${i}`)
+            = 'Option ' + `${i}`
   .example-tabs.-pl--2
     ul.chi-tabs#example-multi-select-base
       li.-disabled
@@ -24,30 +24,313 @@ h4 Base
   .chi-tabs-panel.-active#html-multi-select-base
     :code(lang="html")
       <fieldset>
-        <legend class="chi-label">Legend</legend>
+        <legend class="chi-label">Select options</legend>
         <div class="chi-picker">
-          <input class="chi-picker__input" name="checkbox-base" type="checkbox" id="checkbox1">
-          <label for="checkbox1">Checkbox1</label>
+          <input class="chi-picker__input" name="unique-name-mba" type="checkbox" id="unique-id-mba1">
+          <label for="unique-id-mba1">Option 1</label>
         </div>
         <div class="chi-picker">
-          <input class="chi-picker__input" name="checkbox-base" type="checkbox" id="checkbox2">
-          <label for="checkbox2">Checkbox2</label>
+          <input class="chi-picker__input" name="unique-name-mba" type="checkbox" id="unique-id-mba2">
+          <label for="unique-id-mba2">Option 2</label>
         </div>
       </fieldset>
 
-h4 Checkbox
+h4 Checked
+p.-text
+  | Use the <code>checked</code> boolean attribute to set the default value of
+  | a picker input to true.
+.example.-mb--3
+  .-p--4
+    fieldset
+      legend.chi-label Select options
+      each i in [1, 2]
+        .chi-picker
+          input(type="checkbox", class="chi-picker__input", name=`unique-name-mch`, id=`unique-id-mch${i}`, checked=(i === 1))
+          label(for=`unique-id-mch${i}`)
+            = 'Option ' + `${i}`
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-multi-select-checked
+      li.-disabled
+        a(href=`#webcomponent-multi-select-checked`) Web Component
+      li.-active
+        a(href=`#html-multi-select-checked`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-multi-select-checked
+  .chi-tabs-panel.-active#html-multi-select-checked
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">Select options</legend>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-mch" type="checkbox" id="unique-id-mch1" checked>
+          <label for="unique-id-mch1">Option 1</label>
+        </div>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-mch" type="checkbox" id="unique-id-mch2">
+          <label for="unique-id-mch2">Option 2</label>
+        </div>
+      </fieldset>
+
+h4 Disabled
+p.-text
+  | Use the <code>disabled</code> boolean attribute to prevent users from interacting with a picker input.
+  | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
+.example.-mb--3
+  .-p--4
+    fieldset
+      legend.chi-label Select options
+      each i in [1, 2, 3]
+        .chi-picker
+          input(type="checkbox", class="chi-picker__input", name=`unique-name-mdi`, id=`unique-id-mdi${i}`, disabled=(i === 3))
+          label(for=`unique-id-mdi${i}`)
+            = 'Option ' + `${i}`
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-multi-select-disabled
+      li.-disabled
+        a(href=`#webcomponent-multi-select-disabled`) Web Component
+      li.-active
+        a(href=`#html-multi-select-disabled`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-multi-select-disabled
+  .chi-tabs-panel.-active#html-multi-select-disabled
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">Select options</legend>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-mdi" type="checkbox" id="unique-id-mdi1">
+          <label for="unique-id-mdi1">Option 1</label>
+        </div>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-mdi" type="checkbox" id="unique-id-mdi2">
+          <label for="unique-id-mdi2">Option 2</label>
+        </div>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-mdi" type="checkbox" id="unique-id-mdi3" disabled>
+          <label for="unique-id-mdi3">Option 3</label>
+        </div>
+      </fieldset>
+
+h4 Required
+p.-text
+  | Use the <code>required</code> boolean attribute to indicate which pickers must be completed before submitting a form.
+.example.-mb--3
+  .-p--4
+    fieldset
+      legend.chi-label
+        | Select options
+        abbr.chi-label__required(title="Required field") *
+      each i in [1, 2]
+        .chi-picker
+          input(type="checkbox", class="chi-picker__input", name=`unique-name-mre`, id=`unique-id-mre${i}`, required=(i === 1))
+          label(for=`unique-id-mre${i}`)
+            = 'Option ' + `${i}`
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-multi-select-required
+      li.-disabled
+        a(href=`#webcomponent-multi-select-required`) Web Component
+      li.-active
+        a(href=`#html-multi-select-required`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-multi-select-required
+  .chi-tabs-panel.-active#html-multi-select-required
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">
+          Select options
+          <abbr class="chi-label__required" title="Required field">*</abbr>
+        </legend>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-mre" type="checkbox" id="unique-id-mre1" required>
+          <label for="unique-id-mre1">Option 1</label>
+        </div>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-mre" type="checkbox" id="unique-id-mre2">
+          <label for="unique-id-mre2">Option 2</label>
+        </div>
+      </fieldset>
+
+h4 Optional
+p.-text
+  | Use <code>optional</code> to help emphasize pickers that are not required and can be skipped.
+.example.-mb--3
+  .-p--4
+    fieldset
+      legend.chi-label
+        | Select options
+        abbr.chi-label__optional(title="Optional field") (optional)
+      each i in [1, 2]
+        .chi-picker
+          input(type="checkbox", class="chi-picker__input", name=`unique-name-mop`, id=`unique-id-mop${i}`)
+          label(for=`unique-id-mop${i}`)
+            = 'Option ' + `${i}`
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-multi-select-optional
+      li.-disabled
+        a(href=`#webcomponent-multi-select-optional`) Web Component
+      li.-active
+        a(href=`#html-multi-select-optional`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-multi-select-optional
+  .chi-tabs-panel.-active#html-multi-select-optional
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">
+          Select options
+          <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
+        </legend>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-mop" type="checkbox" id="unique-id-mop1">
+          <label for="unique-id-mop1">Option 1</label>
+        </div>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-mop" type="checkbox" id="unique-id-mop2">
+          <label for="unique-id-mop2">Option 2</label>
+        </div>
+      </fieldset>
+
+h4 Help
+p.-text
+  | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
+  | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
+.example.-mb--3
+  .-p--4
+    fieldset
+      .chi-label__wrapper
+        legend.chi-label Select options
+        .chi-label__help
+          button.chi-button.-icon.-sm.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
+            i.chi-icon.icon-circle-info-outline
+          section.chi-popover.chi-popover--top(id="example__help-popover" aria-modal="true" role="dialog")
+            .chi-popover__content
+              p.chi-popover__text
+                | Helpful information goes here.
+      each i in [1, 2]
+        .chi-picker
+          input(type="checkbox", class="chi-picker__input", name=`unique-name-mhe`, id=`unique-id-mhe${i}`)
+          label(for=`unique-id-mhe${i}`)
+            = 'Option ' + `${i}`
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-multi-select-help
+      li.-disabled
+        a(href=`#webcomponent-multi-select-help`) Web Component
+      li.-active
+        a(href=`#html-multi-select-help`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-multi-select-help
+  .chi-tabs-panel.-active#html-multi-select-help
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <fieldset>
+        <div class="chi-label__wrapper">
+          <legend class="chi-label">Select options</legend>
+          <div class="chi-label__help">
+            <button class="chi-button -icon -sm -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
+              <i class="chi-icon icon-circle-info-outline"></i>
+            </button>
+            <section class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top">
+              <div class="chi-popover__content">
+                <p class="chi-popover__text">Helpful information goes here.</p>
+              </div>
+            </section>
+        </div>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-mhe" type="checkbox" id="unique-id-mhe1">
+          <label for="unique-id-mhe1">Option 1</label>
+        </div>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-mhe" type="checkbox" id="unique-id-mhe2">
+          <label for="unique-id-mhe2">Option 2</label>
+        </div>
+      </fieldset>
+
+h4 Error
+p.-text
+  | Use the <code>-danger</code> state to provide feedback to users when an input fails to validate.
+  | To meet accessibility requirements, danger inputs must include an error message explaining the
+  | failure and/or how to correct it.
+.example.-mb--3
+  .-p--4
+    fieldset
+      legend.chi-label
+        | Select options
+        abbr.chi-label__required(title="Required field") *
+      each i in [1, 2]
+        .chi-picker
+          input(type="checkbox", class="chi-picker__input", name=`unique-name-mer`, id=`unique-id-mer${i}`, required=(i === 1))
+          label(for=`unique-id-mer${i}`)
+            = 'Option ' + `${i}`
+      .chi-label.-status.-danger
+        | Please select an option.
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-multi-select-error
+      li.-disabled
+        a(href=`#webcomponent-multi-select-error`) Web Component
+      li.-active
+        a(href=`#html-multi-select-error`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-multi-select-error
+  .chi-tabs-panel.-active#html-multi-select-error
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">
+          Select options
+          <abbr class="chi-label__required" title="Required field">*</abbr>
+        </legend>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-mer" type="checkbox" id="unique-id-mer1" required>
+          <label for="unique-id-mer1">Option 1</label>
+        </div>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-mer" type="checkbox" id="unique-id-mer2">
+          <label for="unique-id-mer2">Option 2</label>
+        </div>
+        <div class="chi-label -status -danger">Please select an option.</div>
+      </fieldset>
+
+h3 Single-select pickers
+p.-text
+  | Use single-select pickers when only one option can be chosen.
 .example.-mb--3
   .-p--4
     fieldset
       legend.chi-label Legend
-      each type in ['Checkbox1','Checkbox2']
+      each i in [1, 2]
         .chi-picker
-          input(type="checkbox", class="chi-picker__input", name=`checkbox-with-checkbox`, id=`ic-${type}`, checked=(type === 'Checkbox1'))
-          label(for=`ic-${type}`)
+          input(type="radio", class="chi-picker__input", name='unique-name-sba', id=`unique-id-sba${i}`, checked=(i === 1))
+          label(for=`unique-id-sba${i}`)
+            = 'Option ' + `${i}`
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-single-select-base
+      li.-disabled
+        a(href=`#webcomponent-single-select-base`) Web Component
+      li.-active
+        a(href=`#html-single-select-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-single-select-base
+  .chi-tabs-panel.-active#html-single-select-base
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">Legend</legend>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-sba" type="radio" id="unique-id-sba1" />
+          <label for="unique-id-sba1">Option 1</label>
+        </div>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-sba" type="radio" id="unique-id-sba2" />
+          <label for="unique-id-sba2">Option 2</label>
+        </div>
+      </fieldset>
+
+h2 Content Variations
+h3 Checkbox
+.example.-mb--3
+  .-p--4
+    fieldset
+      legend.chi-label Legend
+      each i in [1, 2]
+        .chi-picker
+          input(type="checkbox", class="chi-picker__input", name=`unique-name-sch`, id=`unique-id-sch${i}`, checked=(i === 1))
+          label(for=`unique-id-sch${i}`)
             div.chi-form__item.-row
               span.chi-picker__checkbox
               span.chi-picker__label
-                =type
+                = 'Option ' + `${i}`
   .example-tabs.-pl--2
     ul.chi-tabs#example-multi-select-checkbox
       li.-disabled
@@ -60,39 +343,39 @@ h4 Checkbox
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker">
-          <input class="chi-picker__input" name="checkbox-with-checkbox" type="checkbox" id="ic-Checkbox1" />
-          <label for="ic-Checkbox1">
+          <input class="chi-picker__input" name="unique-name-sch" type="checkbox" id="unique-id-sch1" />
+          <label for="unique-id-sch1">
             <div class="chi-form__item -row">
               <span class="chi-picker__checkbox"></span>
-              <span class="chi-picker__label">Checkbox1</span>
+              <span class="chi-picker__label">Option 1</span>
             </div>
           </label>
         </div>
         <div class="chi-picker">
-          <input class="chi-picker__input" name="checkbox-with-checkbox" type="checkbox" id="ic-Checkbox2" />
-          <label for="ic-Checkbox2">
+          <input class="chi-picker__input" name="unique-name-sch" type="checkbox" id="unique-id-sch2" />
+          <label for="unique-id-sch2">
             <div class="chi-form__item -row">
               <span class="chi-picker__checkbox"></span>
-              <span class="chi-picker__label">Checkbox2</span>
+              <span class="chi-picker__label">Option 2</span>
             </div>
           </label>
         </div>
       </fieldset>
 
-h4 Checkbox and description
+h3 Checkbox and description
 .example.-mb--3
   .-p--4
     fieldset
       legend.chi-label Legend
-      each type in ['Checkbox1','Checkbox2']
+      each i in [1, 2]
         .chi-picker
-          input(type="checkbox", class="chi-picker__input", name=`checkbox-with-checkbox-description`, id=`id-${type}`, checked=(type === 'Checkbox1'))
-          label(for=`id-${type}`)
+          input(type="checkbox", class="chi-picker__input", name=`unique-name-scd`, id=`unique-id-scd${i}`, checked=(i === 1))
+          label(for=`unique-id-scd${i}`)
             .chi-picker__content--start
               div.chi-form__item.-row
                 span.chi-picker__checkbox
                 span.chi-picker__label
-                  =type
+                  = 'Option ' + `${i}`
               div.chi-picker__description
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
   .example-tabs.-pl--2
@@ -107,24 +390,24 @@ h4 Checkbox and description
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker">
-          <input class="chi-picker__input" name="checkbox-with-checkbox-description" type="checkbox" id="id-Checkbox1" />
-          <label for="id-Checkbox1">
+          <input class="chi-picker__input" name="unique-name-scd" type="checkbox" id="unique-id-scd1" />
+          <label for="unique-id-scd1">
             <div class="chi-picker__content--start">
               <div class="chi-form__item -row">
                 <span class="chi-picker__checkbox"></span>
-                <span class="chi-picker__label">Checkbox1</span>
+                <span class="chi-picker__label">Option 1</span>
               </div>
               <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
             </div>
           </label>
         </div>
         <div class="chi-picker">
-          <input class="chi-picker__input" name="checkbox-with-checkbox-description" type="checkbox" id="id-Checkbox2" />
-          <label for="id-Checkbox2">
+          <input class="chi-picker__input" name="unique-name-scd" type="checkbox" id="unique-id-scd2" />
+          <label for="unique-id-scd2">
             <div class="chi-picker__content--start">
               <div class="chi-form__item -row">
                 <span class="chi-picker__checkbox"></span>
-                <span class="chi-picker__label">Checkbox2</span>
+                <span class="chi-picker__label">Option 2</span>
               </div>
               <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
             </div>
@@ -132,53 +415,19 @@ h4 Checkbox and description
         </div>
       </fieldset>
 
-h3 Single-select pickers
-p.-text
-  | Use single-select pickers when only one option can be chosen.
-h4 Base
+h3 Radio button
 .example.-mb--3
   .-p--4
     fieldset
       legend.chi-label Legend
-      each type in ['Radio1','Radio2']
+      each i in [1, 2]
         .chi-picker
-          input(type="radio", class="chi-picker__input", name='radio-base', id=`ei-${type}`, checked=(type === 'Radio1'))
-          label(for=`ei-${type}`)
-            = type
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-single-select-base
-      li.-disabled
-        a(href=`#webcomponent-single-select-base`) Web Component
-      li.-active
-        a(href=`#html-single-select-base`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-single-select-base
-  .chi-tabs-panel.-active#html-single-select-base
-    :code(lang="html")
-      <fieldset>
-        <legend class="chi-label">Legend</legend>
-        <div class="chi-picker">
-          <input class="chi-picker__input" name="radio-base" type="radio" id="ei-Radio1" />
-          <label for="ei-Radio1">Radio1</label>
-        </div>
-        <div class="chi-picker">
-          <input class="chi-picker__input" name="radio-base" type="radio" id="ei-Radio2" />
-          <label for="ei-Radio2">Radio2</label>
-        </div>
-      </fieldset>
-
-h4 Radio button
-.example.-mb--3
-  .-p--4
-    fieldset
-      legend.chi-label Legend
-      each type in ['Radio1','Radio2']
-        .chi-picker
-          input(type="radio", class="chi-picker__input", name='with-radio', id=`ri-${type}`, checked=(type === 'Radio1'))
-          label(for=`ri-${type}`)
+          input(type="radio", class="chi-picker__input", name='unique-name-sra', id=`unique-id-sra${i}`, checked=(i === 1))
+          label(for=`unique-id-sra${i}`)
             div.chi-form__item.-row
               span.chi-picker__radio
-              span.chi-picker__label(for=`ri-${type}`)
-                = type
+              span.chi-picker__label
+                = 'Option ' + `${i}`
   .example-tabs.-pl--2
     ul.chi-tabs#example-single-select-radio
       li.-disabled
@@ -191,39 +440,39 @@ h4 Radio button
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker">
-          <input class="chi-picker__input" name="with-radio" type="radio" id="ri-Radio1" />
-          <label for="ri-Radio1">
+          <input class="chi-picker__input" name="unique-name-sra" type="radio" id="unique-id-sra1" />
+          <label for="unique-id-sra1">
             <div class="chi-form__item -row">
               <span class="chi-picker__radio"></span>
-              <span class="chi-picker__label" for="ri-Radio1">Radio1</span>
+              <span class="chi-picker__label">Option 1</span>
             </div>
           </label>
         </div>
         <div class="chi-picker">
-          <input class="chi-picker__input" name="with-radio" type="radio" id="ri-Radio2" />
-          <label for="ri-Radio2">
+          <input class="chi-picker__input" name="unique-name-sra" type="radio" id="unique-id-sra2" />
+          <label for="unique-id-sra2">
             <div class="chi-form__item -row">
               <span class="chi-picker__radio"></span>
-              <span class="chi-picker__label" for="ri-Radio2">Radio2</span>
+              <span class="chi-picker__label">Option 2</span>
             </div>
           </label>
         </div>
       </fieldset>
 
-h4 Radio button and description
+h3 Radio button and description
 .example.-mb--3
   .-p--4
     fieldset
       legend.chi-label Legend
-      each type in ['Radio1','Radio2']
+      each i in [1, 2]
         .chi-picker
-          input(type="radio", class="chi-picker__input", name='with-radio-description', id=`ide-${type}`, checked=(type === 'Radio1'))
-          label(for=`ide-${type}`)
+          input(type="radio", class="chi-picker__input", name='unique-name-srd', id=`unique-id-srd${i}`, checked=(i === 1))
+          label(for=`unique-id-srd${i}`)
             .chi-picker__content--start
               div.chi-form__item.-row
                 span.chi-picker__radio
-                span.chi-picker__label(for=`ri-${type}`)
-                  = type
+                span.chi-picker__label
+                  = 'Option ' + `${i}`
               div.chi-picker__description
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
   .example-tabs.-pl--2
@@ -238,24 +487,24 @@ h4 Radio button and description
       <fieldset>
         <legend class="chi-label">Legend</legend>
         <div class="chi-picker">
-          <input class="chi-picker__input" name="with-radio-description" type="radio" id="ide-Radio1" />
-          <label for="ide-Radio1">
+          <input class="chi-picker__input" name="unique-name-srd" type="radio" id="unique-id-srd1" />
+          <label for="unique-id-srd1">
               <div class="chi-picker__content--start">
                 <div class="chi-form__item -row">
                   <span class="chi-picker__radio"></span>
-                  <span class="chi-picker__label" for="ri-Radio1">Radio1</span>
+                  <span class="chi-picker__label">Option 1</span>
                 </div>
                 <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
               </div>
           </label>
         </div>
         <div class="chi-picker">
-          <input class="chi-picker__input" name="with-radio-description" type="radio" id="ide-Radio2" />
-          <label for="ide-Radio2">
+          <input class="chi-picker__input" name="unique-name-srd" type="radio" id="unique-id-srd2" />
+          <label for="unique-id-srd2">
             <div class="chi-picker__content--start">
               <div class="chi-form__item -row">
                 <span class="chi-picker__radio"></span>
-                <span class="chi-picker__label" for="ri-Radio2">Radio2</span>
+                <span class="chi-picker__label">Option 2</span>
               </div>
               <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
             </div>
@@ -268,5 +517,6 @@ script.
     'DOMContentLoaded',
     function() {
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+      chi.popover(document.getElementById('example__help-button'));
     }
   );

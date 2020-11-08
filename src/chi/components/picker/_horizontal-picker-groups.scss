@@ -155,6 +155,18 @@ $sizes: (
           }
         }
       }
+
+      &[disabled],
+      &.-disabled {
+        &.chi-picker__input {
+          & + label {
+            background-color: $color-background-base-dark;
+            box-shadow: none;
+            color: $color-text-muted-light;
+            pointer-events: none;
+          }
+        }
+      }
     }
   }
 
