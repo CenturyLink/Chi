@@ -69,13 +69,11 @@ $sizes: (
         padding: 0.75rem 1rem;
         position: relative;
 
-        .chi-icon {
-          margin-left: 0.5rem;
+        .chi-button {
+          margin-left: 0.25rem;
 
-          &.icon-arrow-sync {
-            color: $color-icon-muted-light;
+          .icon-arrow-sync {
             transform: rotate(90deg);
-            transition: transform 0.2s ease-in-out;
           }
         }
       }
@@ -285,31 +283,36 @@ $sizes: (
   &.-sorting {
     .chi-data-table__head {
       .chi-data-table__cell {
-        .chi-icon {
+        .chi-button {
           opacity: 0;
+          padding-bottom: 0;
+          padding-top: 0;
         }
 
         &:hover {
           cursor: pointer;
 
-          .chi-icon {
-            color: $color-icon-base;
+          .chi-button {
             opacity: 1;
           }
         }
 
         &.-active {
-          border-bottom-color: $color-border-primary;
           color: $color-text-primary-alt;
 
-          .chi-icon {
-            color: $color-icon-primary;
+          .chi-button {
             opacity: 1;
+
+            .chi-icon {
+              color: $color-icon-primary;
+            }
           }
 
           &.-descending {
-            .chi-icon {
-              transform: rotate(180deg);
+            .chi-button {
+              .chi-icon {
+                transform: rotate(180deg);
+              }
             }
           }
         }
@@ -592,6 +595,22 @@ $sizes: (
 
             .chi-data-table__cell {
               border-top-width: 0;
+            }
+          }
+        }
+      }
+    }
+
+    &.-sorting {
+      .chi-data-table__head {
+        .chi-data-table__cell {
+          &.-active {
+            color: $color-text-base;
+
+            .chi-button {
+              .chi-icon {
+                color: $color-icon-base;
+              }
             }
           }
         }
