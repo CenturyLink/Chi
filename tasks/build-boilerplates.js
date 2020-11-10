@@ -35,13 +35,13 @@ const buildAngularBoilerplate = () => {
 
 buildAngularBoilerplate.description = 'Zips Angular boilerplate';
 
-const builEs6Boilerplate = () => {
+const buildEs6Boilerplate = () => {
   return gulp.src(['src/boilerplates/es6/**/*', '!src/boilerplates/es6/chi-vue-es6-boilerplate/node_modules/**/*'], {dot: true})
     .pipe(zip('dist/boilerplates/chi-vue-es6-boilerplate.zip'))
     .pipe(gulp.dest('./'));
 };
 
-builEs6Boilerplate.description = 'Zips ES6 boilerplate';
+buildEs6Boilerplate.description = 'Zips ES6 boilerplate';
 
 gulp.task('build:boilerplates',
   gulp.parallel(
@@ -49,5 +49,5 @@ gulp.task('build:boilerplates',
     buildStencilBoilerplate,
     buildReactBoilerplate,
     buildAngularBoilerplate,
-    builEs6Boilerplate
+    buildEs6Boilerplate
 ));
