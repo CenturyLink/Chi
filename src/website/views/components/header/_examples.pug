@@ -504,11 +504,11 @@ h3 Portal Header with Impersonation Bar
                 span.chi-dropdown__menu-item_text App description
         .chi-header__end
           div.-d--none.-d-lg--flex
-            button.chi-button.-flat.-icon(id="button-ImpBar-notification" aria-label="Notifcations" data-tooltip="Notifications")
+            button.chi-button.-flat.-icon(id="button-impersonation-notification" aria-label="Notifcations" data-tooltip="Notifications")
               .chi-button__content
                 i.chi-icon.icon-bell-outline(aria-hidden="true")
                 div.chi-badge.-primary.-xs 2
-            button.chi-button.-flat.-icon(id="button-ImpBar-support" aria-label="Support" data-tooltip="Support")
+            button.chi-button.-flat.-icon(id="button-impersonation-support" aria-label="Support" data-tooltip="Support")
               .chi-button__content
                 i.chi-icon.icon-circle-question-outline(aria-hidden="true")
             .chi-divider.-vertical
@@ -591,13 +591,13 @@ h3 Portal Header with Impersonation Bar
           </div>
           <div class="chi-header__end">
             <div class="-d--none -d-lg--flex">
-              <button class="chi-button -flat -icon" id="button-ImpBar-notification" aria-label="Notifcations" data-tooltip="Notifications">
+              <button class="chi-button -flat -icon" id="button-impersonation-notification" aria-label="Notifcations" data-tooltip="Notifications">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-bell-outline" aria-hidden="true"></i>
                   <div class="chi-badge -primary -xs">2</div>
                 </div>
               </button>
-              <button class="chi-button -flat -icon" id="button-ImpBar-support" aria-label="Support" data-tooltip="Notifications">
+              <button class="chi-button -flat -icon" id="button-impersonation-support" aria-label="Support" data-tooltip="Notifications">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                 </div>
@@ -659,8 +659,8 @@ h3 Portal Header with Impersonation Bar
         chi.dropdown(document.getElementById('button-user-menu'));
         chi.dropdown(document.getElementById('button-eid-menu'));
         chi.tooltip(document.getElementById('button-logout'));
-        chi.tooltip(document.getElementById('button-ImpBar-notification'));
-        chi.tooltip(document.getElementById('button-ImpBar-support'));
+        chi.tooltip(document.getElementById('button-impersonation-notification'));
+        chi.tooltip(document.getElementById('button-impersonation-support'));
       </script>
 
 h3 Header With Title and Buttons
@@ -1268,8 +1268,8 @@ script.
       chi.tooltip(document.getElementById('button-support'));
       chi.tooltip(document.getElementById('button-nav-notification'));
       chi.tooltip(document.getElementById('button-nav-support'));
-      chi.tooltip(document.getElementById('button-ImpBar-notification'));
-      chi.tooltip(document.getElementById('button-ImpBar-support'));
+      chi.tooltip(document.getElementById('button-impersonation-notification'));
+      chi.tooltip(document.getElementById('button-impersonation-support'));
     },
     false
   );
