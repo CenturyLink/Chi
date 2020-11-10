@@ -2,6 +2,7 @@
 title: Accordion
 ---
 script(src='/js/chi.js')
+
 #example-portal.-w--75.chi-accordion.-portal
   .chi-accordion__item(data-cy='item-1')
     button.chi-accordion__trigger
@@ -15,6 +16,7 @@ script(src='/js/chi.js')
       i.chi-icon.icon-chevron-down
     .chi-accordion__content
       p.chi-accordion__text Content goes here
+
 #nested-accordions.chi-accordion.-portal.-w--75
   .chi-accordion__item(data-cy='nested-item-1')
     button.chi-accordion__trigger(data-cy='nested-btn-1')
@@ -62,10 +64,12 @@ script(src='/js/chi.js')
                   i.chi-icon.icon-chevron-down
                 .chi-accordion__content
                   p.chi-accordion__text Content goes here
+
 button#toggle-accordion-1.chi-button Toggle item 1
 button#toggle-accordion-2.chi-button Toggle item 2
 button#show-accordion.chi-button Show item 3
 button#hide-accordion.chi-button Hide item 3
+
 #individual-accordion-items.chi-accordion.-portal.-w--75
   .chi-accordion__item.-expanded
     button.chi-accordion__trigger
@@ -91,8 +95,10 @@ button#hide-accordion.chi-button Hide item 3
             i.chi-icon.icon-chevron-down
           .chi-accordion__content
             p.chi-accordion__text Content of Accordion item 3
+
 button#expand-all.chi-button Expand all
 button#collapse-all.chi-button Collapse all
+
 #expand-collapse.chi-accordion.-portal.-w--75
   .chi-accordion__item.-expanded
     button.chi-accordion__trigger
@@ -138,6 +144,7 @@ button#collapse-all.chi-button Collapse all
                   i.chi-icon.icon-chevron-down
                 .chi-accordion__content
                   p.chi-accordion__text Content of Accordion item 2.2
+
 #disabled-accordion.chi-accordion.-portal.-w--75
   .chi-accordion__item
     button.chi-accordion__trigger.-disabled
@@ -145,6 +152,7 @@ button#collapse-all.chi-button Collapse all
       .chi-accordion__title Accordion 1
     .chi-accordion__content
       p.chi-accordion__text Content goes here
+
 script.
   const expandCollapseAccordion = chi.accordion(document.getElementById("expand-collapse"));
   const expandAll               = document.getElementById("expand-all");
@@ -176,4 +184,3 @@ script.
   chi.accordion(accordionNested);
   const accordionPortal       = document.getElementById('example-portal');
   chi.accordion(accordionPortal);
-

@@ -32,8 +32,8 @@ describe('Accordion', function() {
     });
   });
 
-  describe('Nested accorion should expand and collapse accordingly with nested items', () => {
-    it('Panel should expand  when main item clicked', () => {
+  describe('Nested accordion should expand and collapse accordingly with nested items', () => {
+    it('Panel should expand  when trigger is clicked', () => {
       cy.get('#nested-accordions').within(() => {
         cy.get('[data-cy="nested-item-1"]')
           .as('firstItem')
@@ -132,7 +132,8 @@ describe('Accordion', function() {
     it('Accordion should appear inactive in disabled state', () => {
       cy.get('#disabled-accordion')
         .find('.chi-accordion__trigger')
-        .should('have.class', '-disabled');
+        .should('have.class', '-disabled')
+        .should('have.css', 'pointer-events', 'none');
     });
   });
 });
