@@ -1,0 +1,186 @@
+---
+title: Accordion
+---
+script(src='/js/chi.js')
+
+#example-portal.-w--75.chi-accordion.-portal
+  .chi-accordion__item(data-cy='item-1')
+    button.chi-accordion__trigger
+      .chi-accordion__title Accordion 1
+      i.chi-icon.icon-chevron-down
+    .chi-accordion__content
+      p.chi-accordion__text Content goes here
+  .chi-accordion__item.-expanded(data-cy='item-2')
+    button.chi-accordion__trigger
+      .chi-accordion__title Accordion 2
+      i.chi-icon.icon-chevron-down
+    .chi-accordion__content
+      p.chi-accordion__text Content goes here
+
+#nested-accordions.chi-accordion.-portal.-w--75
+  .chi-accordion__item(data-cy='nested-item-1')
+    button.chi-accordion__trigger(data-cy='nested-btn-1')
+      .chi-accordion__title Click me to expand Accordion
+      i.chi-icon.icon-chevron-down
+    .chi-accordion__content
+      .chi-accordion.-portal
+        .chi-accordion__item(data-cy='item-1')
+          button.chi-accordion__trigger
+            .chi-accordion__title Accordion 1
+            i.chi-icon.icon-chevron-down
+          .chi-accordion__content
+            p.chi-accordion__text Content goes here
+            .chi-accordion.-portal
+              .chi-accordion__item
+                button.chi-accordion__trigger
+                  .chi-accordion__title Accordion 1.1
+                  i.chi-icon.icon-chevron-down
+                .chi-accordion__content
+                  p.chi-accordion__text Content goes here
+                  .chi-accordion.-portal
+                    .chi-accordion__item
+                      button.chi-accordion__trigger
+                        .chi-accordion__title Accordion 1.1.1
+                        i.chi-icon.icon-chevron-down
+                      .chi-accordion__content
+                        p.chi-accordion__text Content goes here
+            .chi-accordion.-portal
+              .chi-accordion__item
+                button.chi-accordion__trigger
+                  .chi-accordion__title Accordion 1.2
+                  i.chi-icon.icon-chevron-down
+                .chi-accordion__content
+                  p.chi-accordion__text Content goes here
+        .chi-accordion__item(data-cy='item-2')
+          button.chi-accordion__trigger
+            .chi-accordion__title Accordion 2
+            i.chi-icon.icon-chevron-down
+          .chi-accordion__content
+            p.chi-accordion__text Content goes here
+            .chi-accordion.-portal
+              .chi-accordion__item
+                button.chi-accordion__trigger
+                  .chi-accordion__title Accordion 2.1
+                  i.chi-icon.icon-chevron-down
+                .chi-accordion__content
+                  p.chi-accordion__text Content goes here
+
+button#toggle-accordion-1.chi-button Toggle item 1
+button#toggle-accordion-2.chi-button Toggle item 2
+button#show-accordion.chi-button Show item 3
+button#hide-accordion.chi-button Hide item 3
+
+#individual-accordion-items.chi-accordion.-portal.-w--75
+  .chi-accordion__item.-expanded
+    button.chi-accordion__trigger
+      .chi-accordion__title Accordion
+      i.chi-icon.icon-chevron-down
+    .chi-accordion__content
+      .chi-accordion.-portal
+        #invividual-accordion-item-1.chi-accordion__item
+          button.chi-accordion__trigger
+            .chi-accordion__title Accordion item 1
+            i.chi-icon.icon-chevron-down
+          .chi-accordion__content
+            p.chi-accordion__text Content of Accordion item 1
+        #invividual-accordion-item-2.chi-accordion__item
+          button.chi-accordion__trigger
+            .chi-accordion__title Accordion item 2
+            i.chi-icon.icon-chevron-down
+          .chi-accordion__content
+            p.chi-accordion__text Content of Accordion item 2
+        #invividual-accordion-item-3.chi-accordion__item
+          button.chi-accordion__trigger
+            .chi-accordion__title Accordion item 3
+            i.chi-icon.icon-chevron-down
+          .chi-accordion__content
+            p.chi-accordion__text Content of Accordion item 3
+
+button#expand-all.chi-button Expand all
+button#collapse-all.chi-button Collapse all
+
+#expand-collapse.chi-accordion.-portal.-w--75
+  .chi-accordion__item.-expanded
+    button.chi-accordion__trigger
+      .chi-accordion__title Accordion
+      i.chi-icon.icon-chevron-down
+    .chi-accordion__content
+      .chi-accordion.-portal
+        .chi-accordion__item
+          button.chi-accordion__trigger
+            .chi-accordion__title Accordion item 1
+            i.chi-icon.icon-chevron-down
+          .chi-accordion__content
+            p.chi-accordion__text Content of Accordion item 1
+            .chi-accordion.-portal
+              .chi-accordion__item
+                button.chi-accordion__trigger
+                  .chi-accordion__title Accordion item 1.1
+                  i.chi-icon.icon-chevron-down
+                .chi-accordion__content
+                  p.chi-accordion__text Content of Accordion item 1.1
+              .chi-accordion__item
+                button.chi-accordion__trigger
+                  .chi-accordion__title Accordion item 1.2
+                  i.chi-icon.icon-chevron-down
+                .chi-accordion__content
+                  p.chi-accordion__text Content of Accordion item 1.2
+        .chi-accordion__item
+          button.chi-accordion__trigger
+            .chi-accordion__title Accordion item 2
+            i.chi-icon.icon-chevron-down
+          .chi-accordion__content
+            p.chi-accordion__text Content of Accordion item 2
+            .chi-accordion.-portal
+              .chi-accordion__item
+                button.chi-accordion__trigger
+                  .chi-accordion__title Accordion item 2.1
+                  i.chi-icon.icon-chevron-down
+                .chi-accordion__content
+                  p.chi-accordion__text Content of Accordion item 2.1
+              .chi-accordion__item
+                button.chi-accordion__trigger
+                  .chi-accordion__title Accordion item 2.2
+                  i.chi-icon.icon-chevron-down
+                .chi-accordion__content
+                  p.chi-accordion__text Content of Accordion item 2.2
+
+#disabled-accordion.chi-accordion.-portal.-w--75
+  .chi-accordion__item
+    button.chi-accordion__trigger.-disabled
+      i.chi-icon.icon-chevron-down
+      .chi-accordion__title Accordion 1
+    .chi-accordion__content
+      p.chi-accordion__text Content goes here
+
+script.
+  const expandCollapseAccordion = chi.accordion(document.getElementById("expand-collapse"));
+  const expandAll               = document.getElementById("expand-all");
+  const collapseAll             = document.getElementById("collapse-all");
+  expandAll.addEventListener("click", () => {
+    expandCollapseAccordion.expandAll();
+  });
+  collapseAll.addEventListener("click", () => {
+    expandCollapseAccordion.collapseAll();
+  });
+  const individualAccordions = chi.accordion(document.getElementById("individual-accordion-items"));
+  const toggleAccordionOne   = document.getElementById("toggle-accordion-1");
+  const toggleAccordionTwo   = document.getElementById("toggle-accordion-2");
+  const showAccordion        = document.getElementById("show-accordion");
+  const hideAccordion        = document.getElementById("hide-accordion");
+  toggleAccordionOne.addEventListener("click", () => {
+    individualAccordions.toggle(document.getElementById("invividual-accordion-item-1"));
+  });
+  toggleAccordionTwo.addEventListener("click", () => {
+    individualAccordions.toggle(document.getElementById("invividual-accordion-item-2"));
+  });
+  showAccordion.addEventListener("click",() =>{
+    individualAccordions.show(document.getElementById("invividual-accordion-item-3"));
+  })
+  hideAccordion.addEventListener("click",() =>{
+    individualAccordions.hide(document.getElementById("invividual-accordion-item-3"));
+  })
+  const accordionNested       = document.getElementById('nested-accordions');
+  chi.accordion(accordionNested);
+  const accordionPortal       = document.getElementById('example-portal');
+  chi.accordion(accordionPortal);
