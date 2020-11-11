@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-11-08T21:16:10",
+  "timestamp": "2020-11-10T00:41:01",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1572,6 +1572,22 @@
             }
           ],
           "optional": false,
+          "required": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": true,
+          "docs": "used to determine if component is required or not",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
           "required": false
         },
         {

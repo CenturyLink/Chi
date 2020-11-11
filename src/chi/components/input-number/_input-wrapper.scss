@@ -240,9 +240,17 @@ $expanded-sizes: (
         &[disabled] {
           &.chi-input {
             & ~ button {
-              color: rgba($color-text-base, 0.3);
-              opacity: 1;
+              background-color: $color-grey-10;
+              border-color: $color-border-base-dark;
+              box-shadow: none;
+              color: $color-text-muted-light;
+              opacity: $opacity-100;
               pointer-events: none;
+            
+              & .chi-icon {
+                color: $color-icon-muted;
+                opacity: $opacity-100;
+              }
             }
           }
         }
@@ -250,8 +258,7 @@ $expanded-sizes: (
     }
 
     & > button[disabled] {
-      color: rgba($color-text-base, 0.3);
-      pointer-events: none;
+      @include button-disabled;
     }
 
     @each $size, $values in $expanded-sizes {
