@@ -4,8 +4,10 @@ i {
   &[class^='icon-'],
   &[class*=' icon-'] {
     /* use !important to prevent issues with browser extensions that change fonts */
+    // sass-lint:disable no-vendor-prefixes
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    // sass-lint:disable no-vendor-prefixes
     font-family: 'chi' !important;
     font-size: 1rem;
     font-style: normal;

@@ -78,7 +78,9 @@
       select {
         &.chi-input {
           background-color: transparent;
+          // sass-lint:disable-all
           background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' version='1.1' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.097 10.66l6.005-6.216.58-.6 1.162 1.201-.58.601-6.568 6.798-.58.601-.648-.67-.069-.067L.601 5.741 0 5.161 1.202 4l.6.58 6.295 6.08z' fill='%2338C6F4' fill-rule='evenodd'/%3E%3C/svg%3E%0A");
+          // sass-lint:disable-all
           background-position: map-get(map-get($sizes, md), background-position);
           background-repeat: no-repeat;
           background-size: 0.75rem 0.75rem;

@@ -290,6 +290,7 @@
 }
 
 /* IE11 CSS hack */
+// sass-lint:disable no-vendor-prefixes
 @media all and (-ms-high-contrast: none) {
   .chi-mobile-nav {
     .chi-drawer {
@@ -316,3 +317,4 @@
     }
   }
 }
+// sass-lint:disable no-vendor-prefixes

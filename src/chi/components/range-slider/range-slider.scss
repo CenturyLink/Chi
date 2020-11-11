@@ -29,179 +29,183 @@ $input-range-track-height: 0.25rem;
 
 // sass-lint:disable no-vendor-prefixes
 .chi-range-slider,
-.chi-input[type='range'] {
-  -webkit-appearance: none;
-  background-color: transparent;
-  border: 0;
-  height: $input-range-height;
-  padding: 0;
-  transition: none;
-  width: 100%;
-
-  &[disabled] {
-    opacity: 0.65;
-    pointer-events: none;
-
-    // Chi cross browser
-    & ~ .chi-input__thumb {
-      border-color: mix(white, $color-border-primary, 35%);
-    }
-
-    & ~ .chi-input__progress {
-      background-color: mix(white, $color-background-primary, 35%);
-    }
-  }
-
-  &::-moz-focus-outer {
+.chi-input {
+  &[type='range'] {
+    -webkit-appearance: none;
+    background-color: transparent;
     border: 0;
-  }
+    height: $input-range-height;
+    padding: 0;
+    transition: none;
+    width: 100%;
 
-  &.-zero {
+    &[disabled] {
+      opacity: 0.65;
+      pointer-events: none;
+
+      // Chi cross browser
+      & ~ .chi-input__thumb {
+        border-color: mix(white, $color-border-primary, 35%);
+      }
+
+      & ~ .chi-input__progress {
+        background-color: mix(white, $color-background-primary, 35%);
+      }
+    }
+
+    &::-moz-focus-outer {
+      border: 0;
+    }
+
+    &.-zero {
+      // Safari, Chrome and Opera
+      &::-webkit-slider-thumb {
+        background-color: $color-grey-50;
+        border-color: $color-grey-50;
+      }
+
+      // Firefox
+      &::-moz-range-thumb {
+        border-color: $color-grey-50;
+      }
+
+      &::-moz-range-progress {
+        background-color: $color-grey-30;
+      }
+
+      // Internet Explorer
+      &::-ms-thumb {
+        border-color: $color-grey-50;
+      }
+
+      &::-ms-fill-lower {
+        background-color: $color-grey-30;
+      }
+
+      // Chi cross browser
+      & ~ .chi-input__thumb {
+        border-color: $color-grey-50;
+      }
+
+      & ~ .chi-input__progress {
+        background-color: $color-grey-30;
+      }
+    }
+
+    &:focus,
+    &.-focus {
+      border: 0;
+      box-shadow: none;
+      outline: 0.125rem solid $focus-color;
+      outline-offset: 0.0625rem;
+    }
+
+    &.chi-range-slider__thumb-overwritten {
+      // Safari, Chrome and Opera
+      &::-webkit-slider-thumb {
+        opacity: 0;
+      }
+
+      // Firefox
+      &::-moz-range-thumb {
+        opacity: 0;
+      }
+
+      // Internet Explorer
+      &::-ms-thumb {
+        opacity: 0;
+      }
+    }
+
     // Safari, Chrome and Opera
     &::-webkit-slider-thumb {
-      background-color: $color-grey-50;
-      border-color: $color-grey-50;
+      @include thumb-style;
+      -webkit-appearance: none;
+      margin-top: -0.5rem;
+    }
+
+    &::-webkit-slider-runnable-track {
+      @include track-style;
     }
 
     // Firefox
     &::-moz-range-thumb {
-      border-color: $color-grey-50;
+      @include thumb-style;
+      margin-left: 0.25rem;
+      margin-right: 0.25rem;
+    }
+
+    &::-moz-range-track {
+      @include track-style;
     }
 
     &::-moz-range-progress {
-      background-color: $color-grey-30;
+      @include track-style;
+      background-color: $color-background-primary;
     }
 
     // Internet Explorer
     &::-ms-thumb {
-      border-color: $color-grey-50;
+      @include thumb-style;
+      border-width: 0.125rem;
+      height: 1.25rem;
+      margin: 0 0.25rem;
+      width: 1.25rem;
+    }
+
+    &::-ms-tooltip {
+      display: none;
+    }
+
+    &::-ms-track {
+      @include track-style;
+      border-color: transparent;
+      color: transparent;
     }
 
     &::-ms-fill-lower {
-      background-color: $color-grey-30;
+      @include track-style;
+      background-color: $color-background-primary;
+    }
+
+    &::-ms-fill-upper {
+      @include track-style;
     }
 
     // Chi cross browser
     & ~ .chi-input__thumb {
-      border-color: $color-grey-50;
+      @include thumb-style;
+      content: '';
+      left: 50%;
+      margin-left: -0.625rem;
+      pointer-events: none;
+      position: absolute;
+      top: 0.125rem;
+      z-index: 1;
     }
 
     & ~ .chi-input__progress {
-      background-color: $color-grey-30;
+      @include track-style;
+      background-color: $color-background-primary;
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      top: 0.625rem;
+      width: 50%;
+      z-index: 1;
     }
-  }
-
-  &:focus,
-  &.-focus {
-    border: 0;
-    box-shadow: none;
-    outline: 0.125rem solid $focus-color;
-    outline-offset: 0.0625rem;
-  }
-
-  &.chi-range-slider__thumb-overwritten {
-    // Safari, Chrome and Opera
-    &::-webkit-slider-thumb {
-      opacity: 0;
-    }
-
-    // Firefox
-    &::-moz-range-thumb {
-      opacity: 0;
-    }
-
-    // Internet Explorer
-    &::-ms-thumb {
-      opacity: 0;
-    }
-  }
-
-  // Safari, Chrome and Opera
-  &::-webkit-slider-thumb {
-    @include thumb-style;
-    -webkit-appearance: none;
-    margin-top: -0.5rem;
-  }
-
-  &::-webkit-slider-runnable-track {
-    @include track-style;
-  }
-
-  // Firefox
-  &::-moz-range-thumb {
-    @include thumb-style;
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
-  }
-
-  &::-moz-range-track {
-    @include track-style;
-  }
-
-  &::-moz-range-progress {
-    @include track-style;
-    background-color: $color-background-primary;
-  }
-
-  // Internet Explorer
-  &::-ms-thumb {
-    @include thumb-style;
-    border-width: 0.125rem;
-    height: 1.25rem;
-    margin: 0 0.25rem;
-    width: 1.25rem;
-  }
-
-  &::-ms-tooltip {
-    display: none;
-  }
-
-  &::-ms-track {
-    @include track-style;
-    border-color: transparent;
-    color: transparent;
-  }
-
-  &::-ms-fill-lower {
-    @include track-style;
-    background-color: $color-background-primary;
-  }
-
-  &::-ms-fill-upper {
-    @include track-style;
-  }
-
-  // Chi cross browser
-  & ~ .chi-input__thumb {
-    @include thumb-style;
-    content: '';
-    left: 50%;
-    margin-left: -0.625rem;
-    pointer-events: none;
-    position: absolute;
-    top: 0.125rem;
-    z-index: 1;
-  }
-
-  & ~ .chi-input__progress {
-    @include track-style;
-    background-color: $color-background-primary;
-    content: '';
-    pointer-events: none;
-    position: absolute;
-    top: 0.625rem;
-    width: 50%;
-    z-index: 1;
   }
 }
 
 // sass-lint:enable no-vendor-prefixes
 .chi-input__wrapper {
   > .chi-range-slider,
-  > .chi-input[type='range'] {
-    display: block;
-    position: relative;
-    z-index: 1;
+  > .chi-input {
+    &[type='range'] {
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
   }
 }
 

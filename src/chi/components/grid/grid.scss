@@ -163,6 +163,7 @@
 }
 
 /* IE11 CSS hack */
+// sass-lint:disable no-vendor-prefixes
 @media all and (-ms-high-contrast: none) {
   .chi-col {
     // Sizing
@@ -219,3 +220,4 @@
     }
   }
 }
+// sass-lint:disable no-vendor-prefixes

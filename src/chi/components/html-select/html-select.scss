@@ -31,6 +31,7 @@ $sizes: (
     padding-left: 0.75rem,
   )
 );
+// sass-lint:disable force-element-nesting
 
 .chi-select,
 select.chi-input {
@@ -54,6 +55,7 @@ select.chi-input {
   transition: background-color 0.12s ease-in, border-color 0.1s ease-in;
   width: 100%;
 
+  // sass-lint:disable force-element-nesting
   // sass-lint:disable no-vendor-prefixes
   &::-ms-expand {
     display: none;

@@ -78,6 +78,7 @@ $states: (
     }
   }
 
+  // sass-lint:disable force-element-nesting
   > .chi-icon,
   > chi-icon .chi-icon,
   .chi-alert__icon {
@@ -91,6 +92,7 @@ $states: (
       width: 1rem;
     }
   }
+  // sass-lint:disable force-element-nesting
 
   .chi-alert__text,
   p,
@@ -115,10 +117,12 @@ $states: (
         background-color: map-get(map-get($states, $state), background-color);
       }
 
+      // sass-lint:disable force-element-nesting
       .chi-alert__icon,
       > chi-icon .chi-icon {
         color: map-get(map-get($states, $state), color);
       }
+      // sass-lint:disable force-element-nesting
 
       .chi-alert__title {
         color: map-get(map-get($states, $state), title-color);
@@ -166,6 +170,7 @@ $states: (
     }
   }
 
+  // sass-lint:disable force-element-nesting
   > .chi-button,
   > chi-button .chi-button {
     &.-close,
@@ -183,6 +188,7 @@ $states: (
       }
     }
   }
+  // sass-lint:disable force-element-nesting
 
   &.-lg {
     padding: 1.0625rem 1.5rem;

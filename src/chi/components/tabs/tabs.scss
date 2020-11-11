@@ -337,8 +337,14 @@
       }
     }
 
-    &:not(.-sliding) > li.-active:not(.-has-active) > a {
-      background-color: $color-background-primary-light;
+    &:not(.-sliding) {
+      & > li {
+        &.-active:not(.-has-active) {
+          & > a {
+            background-color: $color-background-primary-light;
+          }
+        }
+      }
     }
   }
 }

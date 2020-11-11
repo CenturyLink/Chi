@@ -71,6 +71,7 @@ $sizes: (
 }
 
 /* IE11 CSS hack */
+// sass-lint:disable no-vendor-prefixes
 @media all and (-ms-high-contrast: none) {
   .chi-input__wrapper {
     &.-floating-label {
@@ -99,3 +100,4 @@ $sizes: (
     }
   }
 }
+// sass-lint:disable no-vendor-prefixes
