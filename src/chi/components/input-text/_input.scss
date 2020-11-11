@@ -36,7 +36,8 @@
     color: $color-text-muted-light;
     cursor: not-allowed;
 
-    & ~ .chi-icon {
+    & ~ .chi-icon,
+    & ~ chi-icon {
       color: $color-icon-muted;
     }
   }
