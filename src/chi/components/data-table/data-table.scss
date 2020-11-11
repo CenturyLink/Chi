@@ -70,7 +70,7 @@ $sizes: (
         position: relative;
 
         .chi-button {
-          margin-left: 0.25rem;
+          margin-left: 0.5rem;
 
           .icon-arrow-sync {
             transform: rotate(90deg);
@@ -168,6 +168,7 @@ $sizes: (
       background-color: $color-background-base;
       font-style: italic;
       padding: 0.75rem 1rem;
+      text-align: center;
     }
 
     &-child,
@@ -218,6 +219,8 @@ $sizes: (
 
     .chi-button {
       &.-flat {
+        padding: 0.0625rem;
+
         &.-active,
         &.-hover,
         &:active,
@@ -234,7 +237,7 @@ $sizes: (
 
       @include respond-to(md) {
         display: flex;
-        flex-basis: 3.5rem;
+        flex-basis: 3rem;
       }
     }
 
@@ -251,7 +254,7 @@ $sizes: (
       }
     }
 
-    & .-asociated {
+    & .-associated {
       &:first-child {
         margin-right: 1rem;
       }
@@ -285,8 +288,6 @@ $sizes: (
       .chi-data-table__cell {
         .chi-button {
           opacity: 0;
-          padding-bottom: 0;
-          padding-top: 0;
         }
 
         &:hover {
@@ -298,14 +299,8 @@ $sizes: (
         }
 
         &.-active {
-          color: $color-text-primary-alt;
-
           .chi-button {
             opacity: 1;
-
-            .chi-icon {
-              color: $color-icon-primary;
-            }
           }
 
           &.-descending {
@@ -440,6 +435,7 @@ $sizes: (
 
         &-empty {
           border: 0.0625rem solid $color-background-base-darker;
+          text-align: left;
         }
 
         &.-active {
@@ -595,22 +591,6 @@ $sizes: (
 
             .chi-data-table__cell {
               border-top-width: 0;
-            }
-          }
-        }
-      }
-    }
-
-    &.-sorting {
-      .chi-data-table__head {
-        .chi-data-table__cell {
-          &.-active {
-            color: $color-text-base;
-
-            .chi-button {
-              .chi-icon {
-                color: $color-icon-base;
-              }
             }
           }
         }

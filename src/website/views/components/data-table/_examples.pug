@@ -182,158 +182,10 @@ h3 Base
         </div>
       </div>
 
-h3 Base -- Compact
+h3 Base -- Empty
 .example.-mb--3
   .-p--3.-p-md--5
-    .chi-data-table.-compact
-      .chi-data-table__head
-        .chi-data-table__row
-          .chi-data-table__cell
-            div Name
-          .chi-data-table__cell
-            div ID
-          .chi-data-table__cell
-            div Last Login
-      .chi-data-table__body
-        .chi-data-table__row
-          .chi-data-table__cell.-key.-bold
-            div Name 1
-          .chi-data-table__cell
-            div name-1
-          .chi-data-table__cell
-            div Dec 18, 2020 3:26 PM
-        .chi-data-table__row
-          .chi-data-table__cell.-key.-bold
-            div Name 2
-          .chi-data-table__cell
-            div name-2
-          .chi-data-table__cell
-            div Dec 18, 2020 2:38 AM
-        .chi-data-table__row
-          .chi-data-table__cell.-key.-bold
-            div Name 3
-          .chi-data-table__cell
-            div name-3
-          .chi-data-table__cell
-            div Nov 5, 2020 10:15 AM
-      .chi-data-table__footer
-        nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
-          .chi-pagination__content
-            .chi-pagination__start
-              .chi-pagination__results
-                span.chi-pagination__label 240 Results
-            .chi-pagination__center
-              .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Previous page')
-                  .chi-button__content
-                    i(class="chi-icon icon-chevron-left", aria-hidden='true')
-              .chi-pagination__label
-                strong 2
-                span of
-                strong 3
-              .chi-pagination__button-group.chi-button-group
-                a(class=`chi-button -icon -flat -sm`, href='#', aria-label='Next page')
-                  .chi-button__content
-                    i(class="chi-icon icon-chevron-right", aria-hidden='true')
-            .chi-pagination__end
-
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-base
-      li.-disabled
-        a(href=`#webcomponent-base`) Web Component
-      li.-active
-        a(href=`#html-base`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-base
-  .chi-tabs-panel.-active#html-base
-    :code(lang='html')
-      <div class="chi-data-table -compact">
-        <div class="chi-data-table__head">
-          <div class="chi-data-table__row">
-            <div class="chi-data-table__cell">
-              <div>Name</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>ID</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Last Login</div>
-            </div>
-          </div>
-        </div>
-        <div class="chi-data-table__body">
-          <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -key -bold">
-              <div>Name 1</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>name-1</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 3:26 PM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -key -bold">
-              <div>Name 2</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>name-2</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Dec 18, 2020 2:38 AM</div>
-            </div>
-          </div>
-          <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -key -bold">
-              <div>Name 3</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>name-3</div>
-            </div>
-            <div class="chi-data-table__cell">
-              <div>Nov 5, 2020 10:15 AM</div>
-            </div>
-          </div>
-        </div>
-        <div class="chi-data-table__footer">
-          <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
-            <div class="chi-pagination__content">
-              <div class="chi-pagination__start">
-                <div class="chi-pagination__results">
-                  <span class="chi-pagination__label">240 Results</span>
-                </div>
-              </div>
-              <div class="chi-pagination__center">
-                <div class="chi-pagination__button-group chi-button-group">
-                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Previous page">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
-                    </div>
-                  </a>
-                </div>
-                <div class="chi-pagination__label">
-                  <strong>2</strong>
-                  <span>of</span>
-                  <strong>3</strong>
-                </div>
-                <div class="chi-pagination__button-group chi-button-group">
-                  <a class="chi-button -icon -flat -sm" href="#" aria-label="Next page">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="chi-pagination__end"></div>
-            </div>
-          </nav>
-        </div>
-      </div>
-
-h3 Base -- Compact -- Empty
-.example.-mb--3
-  .-p--3.-p-md--5
-    .chi-data-table.-compact
+    .chi-data-table
       .chi-data-table__head
         .chi-data-table__row
           .chi-data-table__cell
@@ -355,7 +207,7 @@ h3 Base -- Compact -- Empty
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#html-base
     :code(lang='html')
-      <div class="chi-data-table -compact">
+      <div class="chi-data-table">
         <div class="chi-data-table__head">
           <div class="chi-data-table__row">
             <div class="chi-data-table__cell">
@@ -3846,44 +3698,44 @@ h3 Portal -- Two tier header
             .chi-data-table__row
               .chi-data-table__cell
               .chi-data-table__cell
-                div.-asociated Total
-                div.-asociated %
+                div.-associated Total
+                div.-associated %
               .chi-data-table__cell
-               div.-asociated Total
-               div.-asociated %
+               div.-associated Total
+               div.-associated %
               .chi-data-table__cell
           .chi-data-table__body
             .chi-data-table__row
               .chi-data-table__cell.-key.-bold
                 div Location 1
               .chi-data-table__cell
-                div.-asociated 3
-                div.-asociated 98%
+                div.-associated 3
+                div.-associated 98%
               .chi-data-table__cell
-                div.-asociated -
-                div.-asociated -
+                div.-associated -
+                div.-associated -
               .chi-data-table__cell
                 div 98%
             .chi-data-table__row
               .chi-data-table__cell.-key.-bold
                 div Location 2
               .chi-data-table__cell
-                div.-asociated 1
-                div.-asociated 98%
+                div.-associated 1
+                div.-associated 98%
               .chi-data-table__cell
-                div.-asociated 3
-                div.-asociated 67%
+                div.-associated 3
+                div.-associated 67%
               .chi-data-table__cell
                 div 98%
             .chi-data-table__row
               .chi-data-table__cell.-key.-bold
                 div Location 3
               .chi-data-table__cell
-                div.-asociated -
-                div.-asociated -
+                div.-associated -
+                div.-associated -
               .chi-data-table__cell
-                div.-asociated 2
-                div.-asociated 66
+                div.-associated 2
+                div.-associated 66
               .chi-data-table__cell
                 div 66%    
           .chi-data-table__footer
@@ -3960,12 +3812,12 @@ h3 Portal -- Two tier header
               <div class="chi-data-table__row">
                 <div class="chi-data-table__cell"></div>
                 <div class="chi-data-table__cell">
-                  <div class="-asociated">Total</div>
-                  <div class="-asociated">%</div>
+                  <div class="-associated">Total</div>
+                  <div class="-associated">%</div>
                 </div>
                 <div class="chi-data-table__cell">
-                  <div class="-asociated">Total</div>
-                  <div class="-asociated">%</div>
+                  <div class="-associated">Total</div>
+                  <div class="-associated">%</div>
                 </div>
                 <div class="chi-data-table__cell"></div>
               </div>
@@ -3976,12 +3828,12 @@ h3 Portal -- Two tier header
                   <div>Location 1</div>
                 </div>
                 <div class="chi-data-table__cell">
-                  <div class="-asociated">3</div>
-                  <div class="-asociated">98%</div>
+                  <div class="-associated">3</div>
+                  <div class="-associated">98%</div>
                 </div>
                 <div class="chi-data-table__cell">
-                  <div class="-asociated">-</div>
-                  <div class="-asociated">-</div>
+                  <div class="-associated">-</div>
+                  <div class="-associated">-</div>
                 </div>
                 <div class="chi-data-table__cell">
                   <div>98%</div>
@@ -3992,12 +3844,12 @@ h3 Portal -- Two tier header
                   <div>Location 2</div>
                 </div>
                 <div class="chi-data-table__cell">
-                  <div class="-asociated">1</div>
-                  <div class="-asociated">98%</div>
+                  <div class="-associated">1</div>
+                  <div class="-associated">98%</div>
                 </div>
                 <div class="chi-data-table__cell">
-                  <div class="-asociated">3</div>
-                  <div class="-asociated">67%</div>
+                  <div class="-associated">3</div>
+                  <div class="-associated">67%</div>
                 </div>
                 <div class="chi-data-table__cell">
                   <div>98%</div>
@@ -4008,12 +3860,12 @@ h3 Portal -- Two tier header
                   <div>Location 3</div>
                 </div>
                 <div class="chi-data-table__cell">
-                  <div class="-asociated">-</div>
-                  <div class="-asociated">-</div>
+                  <div class="-associated">-</div>
+                  <div class="-associated">-</div>
                 </div>
                 <div class="chi-data-table__cell">
-                  <div class="-asociated">2</div>
-                  <div class="-asociated">66</div>
+                  <div class="-associated">2</div>
+                  <div class="-associated">66</div>
                 </div>
                 <div class="chi-data-table__cell">
                   <div>66%</div>
