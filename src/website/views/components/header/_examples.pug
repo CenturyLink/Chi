@@ -106,11 +106,11 @@ h3 Portal Header
                 span.chi-dropdown__menu-item_text App description
         .chi-header__end
           div.-d--none.-d-lg--flex
-            button.chi-button.-flat.-icon(aria-label="Notifcations")
+            button.chi-button.-flat.-icon(id="button-notification" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom")
               .chi-button__content
                 i.chi-icon.icon-bell-outline(aria-hidden="true")
                 div.chi-badge.-primary.-xs 2
-            button.chi-button.-flat.-icon(aria-label="Support")
+            button.chi-button.-flat.-icon(id="button-support" aria-label="Support" data-tooltip="Support" data-position="bottom")
               .chi-button__content
                 i.chi-icon.icon-circle-question-outline(aria-hidden="true")
             .chi-divider.-vertical
@@ -181,13 +181,13 @@ h3 Portal Header
           </div>
           <div class="chi-header__end">
             <div class="-d--none -d-lg--flex">
-              <button class="chi-button -flat -icon" aria-label="Notifcations">
+              <button class="chi-button -flat -icon" id="button-notification" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-bell-outline" aria-hidden="true"></i>
                   <div class="chi-badge -primary -xs">2</div>
                 </div>
               </button>
-              <button class="chi-button -flat -icon" aria-label="Support">
+              <button class="chi-button -flat -icon" id="button-support" aria-label="Support" data-tooltip="Support" data-position="bottom">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                 </div>
@@ -247,6 +247,8 @@ h3 Portal Header
         chi.dropdown(document.getElementById('button-site-menu2'));
         chi.dropdown(document.getElementById('button-user-menu2'));
         chi.dropdown(document.getElementById('button-eid-menu2'));
+        chi.tooltip(document.getElementById('button-notification'));
+        chi.tooltip(document.getElementById('button-support'));
       </script>
 
 h3 Portal Header with Navbar
@@ -278,11 +280,11 @@ h3 Portal Header with Navbar
                 span.chi-dropdown__menu-item_text App description
         .chi-header__end
           div.-d--none.-d-lg--flex
-            button.chi-button.-flat.-icon(aria-label="Notifcations")
+            button.chi-button.-flat.-icon(id="button-nav-notification" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom")
               .chi-button__content
                 i.chi-icon.icon-bell-outline(aria-hidden="true")
                 div.chi-badge.-primary.-xs 2
-            button.chi-button.-flat.-icon(aria-label="Support")
+            button.chi-button.-flat.-icon(id="button-nav-support" aria-label="Support" data-tooltip="Support" data-position="bottom")
               .chi-button__content
                 i.chi-icon.icon-circle-question-outline(aria-hidden="true")
             .chi-divider.-vertical
@@ -371,13 +373,13 @@ h3 Portal Header with Navbar
           </div>
           <div class="chi-header__end">
             <div class="-d--none -d-lg--flex">
-              <button class="chi-button -flat -icon" aria-label="Notifcations">
+              <button class="chi-button -flat -icon" id="button-nav-notification" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-bell-outline" aria-hidden="true"></i>
                   <div class="chi-badge -primary -xs">2</div>
                 </div>
               </button>
-              <button class="chi-button -flat -icon" aria-label="Support">
+              <button class="chi-button -flat -icon" id="button-nav-support" aria-label="Support" data-tooltip="Support" data-position="bottom">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                 </div>
@@ -461,6 +463,8 @@ h3 Portal Header with Navbar
         chi.dropdown(document.getElementById('button-site-portal-with-navbar'));
         chi.dropdown(document.getElementById('button-user-portal-with-navbar'));
         chi.dropdown(document.getElementById('button-eid-portal-with-navbar'));
+        chi.tooltip(document.getElementById('button-nav-notification'));
+        chi.tooltip(document.getElementById('button-nav-support'));
       </script>
 
 h3 Portal Header with Impersonation Bar
@@ -500,11 +504,11 @@ h3 Portal Header with Impersonation Bar
                 span.chi-dropdown__menu-item_text App description
         .chi-header__end
           div.-d--none.-d-lg--flex
-            button.chi-button.-flat.-icon(aria-label="Notifcations")
+            button.chi-button.-flat.-icon(id="button-impersonation-notification" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom")
               .chi-button__content
                 i.chi-icon.icon-bell-outline(aria-hidden="true")
                 div.chi-badge.-primary.-xs 2
-            button.chi-button.-flat.-icon(aria-label="Support")
+            button.chi-button.-flat.-icon(id="button-impersonation-support" aria-label="Support" data-tooltip="Support" data-position="bottom")
               .chi-button__content
                 i.chi-icon.icon-circle-question-outline(aria-hidden="true")
             .chi-divider.-vertical
@@ -587,13 +591,13 @@ h3 Portal Header with Impersonation Bar
           </div>
           <div class="chi-header__end">
             <div class="-d--none -d-lg--flex">
-              <button class="chi-button -flat -icon" aria-label="Notifcations">
+              <button class="chi-button -flat -icon" id="button-impersonation-notification" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-bell-outline" aria-hidden="true"></i>
                   <div class="chi-badge -primary -xs">2</div>
                 </div>
               </button>
-              <button class="chi-button -flat -icon" aria-label="Support">
+              <button class="chi-button -flat -icon" id="button-impersonation-support" aria-label="Support" data-tooltip="Support" data-position="bottom">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                 </div>
@@ -655,6 +659,8 @@ h3 Portal Header with Impersonation Bar
         chi.dropdown(document.getElementById('button-user-menu'));
         chi.dropdown(document.getElementById('button-eid-menu'));
         chi.tooltip(document.getElementById('button-logout'));
+        chi.tooltip(document.getElementById('button-impersonation-notification'));
+        chi.tooltip(document.getElementById('button-impersonation-support'));
       </script>
 
 h3 Header With Title and Buttons
@@ -1258,6 +1264,12 @@ script.
       chi.dropdown(document.getElementById('button-eid-menu2'));
       chi.dropdown(document.getElementById('button-eid-menu3'));
       chi.tooltip(document.getElementById('button-logout'));
+      chi.tooltip(document.getElementById('button-notification'));
+      chi.tooltip(document.getElementById('button-support'));
+      chi.tooltip(document.getElementById('button-nav-notification'));
+      chi.tooltip(document.getElementById('button-nav-support'));
+      chi.tooltip(document.getElementById('button-impersonation-notification'));
+      chi.tooltip(document.getElementById('button-impersonation-support'));
     },
     false
   );
