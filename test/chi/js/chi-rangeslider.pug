@@ -1,0 +1,120 @@
+---
+title: Enterprise Chi-RangeSlider test case Pug
+---
+script(src='/js/chi.js')
+
+.chi-form__item
+  label.chi-label(for='range01') Range label
+  input#range01.chi-input(type='range')
+
+.chi-form__item
+  label.chi-label(for='range02') Range label
+  input#range02.chi-input(type='range', disabled='')
+
+.chi-form__item
+  label.chi-label(for='range03') Range label
+  .chi-input__wrapper.-d--flex
+    span.-text 200GB
+    input#range03.chi-input.-mx--2(type='range')
+    span.-text 5TB
+
+.chi-form__item#range04
+  label.chi-label(for='range04') Range label
+  .chi-input__wrapper
+    input.chi-input(type='range')
+    .chi-input__progress
+    .chi-input__thumb
+
+.chi-form__item
+  label.chi-label(for='range05') Range label
+  .chi-input__wrapper
+    input#range05.chi-input(type='range', disabled='')
+    .chi-input__progress
+    .chi-input__thumb
+
+.chi-form__item
+  label.chi-label(for='range06') Range label
+  .chi-input__wrapper.-d--flex
+    span.-text.-mr--2 200GB
+    .chi-input__wrapper.-w--100
+      input#range06.chi-input(type='range')
+      .chi-input__progress
+      .chi-input__thumb
+    span.-text.-ml--2 5TB
+
+.chi-form__item.chi-col
+  label.chi-label(for='range07') Range label
+  .chi-input__wrapper
+    input#range07.chi-input(type='range', min='0', max='4', step='1')
+    .chi-input__tick-bar
+      div
+        .chi-input__tick
+        .chi-input__tick-label Monthly
+      div
+        .chi-input__tick
+        .chi-input__tick-label 1 year
+      div
+        .chi-input__tick
+        .chi-input__tick-label 2 years
+      div
+        .chi-input__tick
+        .chi-input__tick-label 3 years
+      div
+        .chi-input__tick
+        .chi-input__tick-label &gt; 3 years
+
+.chi-form__item
+  label.chi-label(for='range08') Range label
+  .chi-input__wrapper
+    input#range08.chi-input(type='range', min='0', max='4', step='1', disabled='')
+    .chi-input__tick-bar
+      div
+        .chi-input__tick
+        .chi-input__tick-label Monthly
+      div
+        .chi-input__tick
+        .chi-input__tick-label 1 year
+      div
+        .chi-input__tick
+        .chi-input__tick-label 2 years
+      div
+        .chi-input__tick
+        .chi-input__tick-label 3 years
+      div
+        .chi-input__tick
+        .chi-input__tick-label &gt; 3 years
+
+.chi-form__item
+  label.chi-label(for='range09') Range label
+  .chi-input__wrapper
+    input#range09.chi-input(type='range', min='0', max='4', step='1')
+    .chi-input__tick-bar
+      div
+        .chi-input__tick
+        .chi-input__tick-label Monthly
+      div
+        .chi-input__tick
+        .chi-input__tick-label 1 year
+      div
+        .chi-input__tick
+        .chi-input__tick-label 2 years
+      div
+        .chi-input__tick
+        .chi-input__tick-label 3 years
+      div
+        .chi-input__tick
+        .chi-input__tick-label &gt; 3 years
+    .chi-input__progress
+    .chi-input__thumb
+script.
+  chi.rangeSlider(document.getElementById('range01'));
+  chi.rangeSlider(document.getElementById('range02'));
+  chi.rangeSlider(document.getElementById('range03'));
+  chi.rangeSlider(document.getElementById('range04'));
+  chi.rangeSlider(document.getElementById('range05'));
+  chi.rangeSlider(document.getElementById('range06'));
+  chi.rangeSlider(document.getElementById('range07'));
+  chi.rangeSlider(document.getElementById('range08'));
+  chi.rangeSlider(document.getElementById('range09'));
+
+
