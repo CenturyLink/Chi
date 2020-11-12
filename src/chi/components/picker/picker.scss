@@ -215,7 +215,7 @@ $sizes: (
 }
 
 /* IE11 CSS hack */
-// sass-lint:disable no-vendor-prefixes
+// sass-lint:disable-block no-vendor-prefixes
 @media all and (-ms-high-contrast: none) {
   .chi-picker:not(.-sm):not(.-md):not(.-lg) {
     .chi-picker__input + label {
@@ -223,4 +223,3 @@ $sizes: (
     }
   }
 }
-// sass-lint:disable no-vendor-prefixes

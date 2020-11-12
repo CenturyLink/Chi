@@ -5,10 +5,9 @@ $multi-line-ellipsis-max: 4;
 $padding-vertical: 0.125rem;
 
 .chi-tooltip {
-  // sass-lint:disable no-vendor-prefixes
+  // sass-lint:disable-block no-vendor-prefixes
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  // sass-lint:disable no-vendor-prefixes
   background: rgba($color-grey-100, 0.95);
   border-radius: $border-radius;
   color: $color-text-white;

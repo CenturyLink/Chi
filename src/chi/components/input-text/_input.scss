@@ -50,12 +50,10 @@
     }
   }
 
-  //Remove ie11,edge clear field
-  // sass-lint:disable no-vendor-prefixes
-  &::-ms-clear {
+  // Remove ie11,edge clear field
+  &::-ms-clear { // sass-lint:disable-line no-vendor-prefixes
     display: none;
   }
-  // sass-lint:disable no-vendor-prefixes
 
   @each $type in map-keys($sizes) {
     &.-#{$type} {

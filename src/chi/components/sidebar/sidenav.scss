@@ -15,11 +15,10 @@ $sidenav-lg-width: 12.5rem;
     position: relative;
     z-index: $zindex-fixed + 2;
 
-    // sass-lint:disable no-universal-selectors
+    // sass-lint:disable-block no-universal-selectors
     > * + nav {
       border-top: 0.0625rem solid $color-border-base-light;
     }
-    // sass-lint:disable no-universal-selectors
   }
 
   &__list,
@@ -50,13 +49,12 @@ $sidenav-lg-width: 12.5rem;
       min-height: 3rem;
       padding: 0.5rem;
 
-      // sass-lint:disable no-universal-selectors
+      // sass-lint:disable-block no-universal-selectors
       > *:not(.chi-icon) {
         display: none;
         line-height: 1rem;
         text-align: center;
       }
-      // sass-lint:disable no-universal-selectors
     }
 
     &.-active {
@@ -267,6 +265,7 @@ $sidenav-lg-width: 12.5rem;
         padding-left: 1.5rem;
         padding-top: 0.625rem;
 
+        // sass-lint:disable no-universal-selectors
         & > *:first-child {
           margin-top: 0;
         }
@@ -274,6 +273,7 @@ $sidenav-lg-width: 12.5rem;
         & > *:last-child {
           margin-bottom: 0;
         }
+        // sass-lint:enable no-universal-selectors
       }
 
       &.-active > a {
@@ -346,6 +346,7 @@ $sidenav-lg-width: 12.5rem;
       > a {
         min-height: 4rem;
 
+        // sass-lint:disable-block no-universal-selectors
         > *:not(.chi-icon) {
           display: block;
         }
@@ -369,6 +370,7 @@ $sidenav-lg-width: 12.5rem;
           min-height: 3rem;
           padding-left: 0.5rem;
 
+          // sass-lint:disable-block no-universal-selectors
           > *:not(.chi-icon) {
             display: none;
           }
@@ -407,6 +409,7 @@ $sidenav-lg-width: 12.5rem;
           padding-left: 0.5rem;
         }
 
+        // sass-lint:disable-block no-universal-selectors
         > *:not(.chi-icon) {
           display: block;
         }
@@ -440,6 +443,7 @@ $sidenav-lg-width: 12.5rem;
         min-height: 3rem;
         padding-left: 1.5rem;
 
+        // sass-lint:disable-block no-universal-selectors
         > *:not(.chi-icon) {
           display: block;
         }
@@ -464,7 +468,7 @@ $sidenav-lg-width: 12.5rem;
 }
 
 /* IE11 CSS hack */
-// sass-lint:disable no-vendor-prefixes
+// sass-lint:disable-block no-vendor-prefixes
 @media only screen and (-ms-high-contrast: none) {
   .chi-sidenav {
     .chi-sidenav__list {
@@ -496,4 +500,3 @@ $sidenav-lg-width: 12.5rem;
     }
   }
 }
-// sass-lint:disable no-vendor-prefixes

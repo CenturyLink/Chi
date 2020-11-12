@@ -510,11 +510,10 @@
 }
 
 /* IE11 CSS hack */
-// sass-lint:disable no-vendor-prefixes
+// sass-lint:disable-block no-vendor-prefixes
 @media all and (-ms-high-contrast: none) {
   .chi-header__content,
   .chi-header__toolbar ~ .chi-header__content {
     height: 3.5rem;
   }
 }
-// sass-lint:disable no-vendor-prefixes

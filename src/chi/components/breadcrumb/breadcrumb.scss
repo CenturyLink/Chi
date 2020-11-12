@@ -65,7 +65,7 @@ $sizes: (
         &::before {
           // sass-lint:disable-all
           background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.89 7.823l-6.732 6.963L4.331 16l7.292-7.542.677-.654L4.215 0 3 1.172l6.89 6.65z' fill='%238E9399' fill-rule='evenodd'/%3E%3C/svg%3E");
-          // sass-lint:disable-all
+          // sass-lint:enable-all
           background-position: center;
           background-repeat: no-repeat;
           background-size: 75%;
