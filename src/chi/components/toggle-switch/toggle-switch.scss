@@ -61,11 +61,10 @@
     }
   }
 
-  // sass-lint:disable no-duplicate-properties
   &.-label--hide {
     .chi-switch__label {
       clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-      clip: rect(1px, 1px, 1px, 1px);
+      clip: rect(1px, 1px, 1px, 1px); // sass-lint:disable-line no-duplicate-properties
       height: 1px;
       overflow: hidden;
       position: absolute;
@@ -73,7 +72,6 @@
       width: 1px;
     }
   }
-  // sass-lint:enable no-duplicate-properties
 
   .chi-switch__input {
     border: 0;
@@ -130,7 +128,7 @@
 
       & ~ .chi-switch__label {
         opacity: $opacity-60;
-        pointer-events: none;       
+        pointer-events: none;
       }
     }
   }

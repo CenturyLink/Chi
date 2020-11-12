@@ -55,8 +55,8 @@
     }
   }
 
-  //Remove ie11,edge clear field
-  &::-ms-clear {
+  // Remove ie11,edge clear field
+  &::-ms-clear { // sass-lint:disable-line no-vendor-prefixes
     display: none;
   }
 

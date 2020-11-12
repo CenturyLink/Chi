@@ -277,17 +277,21 @@ $expanded-sizes: (
       &.-#{$size} {
         width: map-get($values, width);
 
-        & > input[type='number'].chi-input {
-          & ~ button {
-            font-size: map-get($values, btn-font-size);
-            height: map-get($values, btn-height);
-            padding: map-get($values, btn-padding);
+        & > input {
+          &[type='number'] {
+            &.chi-input {
+              & ~ button {
+                font-size: map-get($values, btn-font-size);
+                height: map-get($values, btn-height);
+                padding: map-get($values, btn-padding);
 
-            .chi-icon {
-              font-size: map-get($values, icon-font-size);
-              height: map-get($values, icon-height);
-              line-height: map-get($values, icon-line-height);
-              width: map-get($values, icon-width);
+                .chi-icon {
+                  font-size: map-get($values, icon-font-size);
+                  height: map-get($values, icon-height);
+                  line-height: map-get($values, icon-line-height);
+                  width: map-get($values, icon-width);
+                }
+              }
             }
           }
         }

@@ -51,6 +51,7 @@
 }
 
 /* IE11 CSS hack */
+// sass-lint:disable-block no-vendor-prefixes
 @media all and (-ms-high-contrast: none) {
   .chi-backdrop {
     &__wrapper {

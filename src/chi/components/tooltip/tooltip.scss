@@ -5,6 +5,7 @@ $multi-line-ellipsis-max: 4;
 $padding-vertical: 0.125rem;
 
 .chi-tooltip {
+  // sass-lint:disable-block no-vendor-prefixes
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   background: rgba($color-grey-100, 0.95);

@@ -32,8 +32,9 @@ $sizes: (
   )
 );
 
+
 .chi-select,
-select.chi-input {
+select.chi-input { // sass-lint:disable-line force-element-nesting
   appearance: none;
   background-color: $color-background-white;
   background-image: url('icon-chevron-thin-down.svg');
