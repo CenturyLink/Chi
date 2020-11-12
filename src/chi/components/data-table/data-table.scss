@@ -9,7 +9,7 @@ $sizes: (
     padding: 0.5rem,
   ),
   md: (
-    padding: 0.75rem,
+    padding: 0.75rem 1rem,
   ),
   lg: (
     padding: 1rem,
@@ -39,27 +39,17 @@ $sizes: (
 
   @each $type in map-keys($sizes) {
     &.-#{$type} {
-      .chi-data-table__head {
-        .chi-data-table__cell {
-          padding: map-get(map-get($sizes, $type), padding);
+      @include respond-to(md) {
+        .chi-data-table__head {
+          .chi-data-table__cell {
+            padding: map-get(map-get($sizes, $type), padding);
+          }
         }
-      }
 
-      .chi-data-table__body {
-        .chi-data-table__cell {
-          padding: map-get(map-get($sizes, $type), padding);
-        }
-      }
-    }
-  }
-
-  &.-md {
-    .chi-data-table__body {
-      .chi-data-table__cell {
-        padding: 0.25rem 0.75rem;
-
-        @include respond-to(md) {
-          padding: 0.75rem 1rem;
+        .chi-data-table__body {
+          .chi-data-table__cell {
+            padding: map-get(map-get($sizes, $type), padding);
+          }
         }
       }
     }
