@@ -337,8 +337,14 @@
       }
     }
 
-    &:not(.-sliding) > li.-active:not(.-has-active) > a {
-      background-color: $color-background-primary-light;
+    &:not(.-sliding) {
+      & > li {
+        &.-active:not(.-has-active) {
+          & > a {
+            background-color: $color-background-primary-light;
+          }
+        }
+      }
     }
   }
 }
@@ -559,7 +565,6 @@
       &:not(.-sliding).-animated .chi-tabs__subtabs > li.-active:not(.-has-active) > a {
         box-shadow: inset 0.125rem 0 0 $color-white;
       }
-      // sass-lint:disable-block force-element-nesting
 
       & > li {
         &.-active > a {

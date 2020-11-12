@@ -15,6 +15,7 @@ $sidenav-lg-width: 12.5rem;
     position: relative;
     z-index: $zindex-fixed + 2;
 
+    // sass-lint:disable-block no-universal-selectors
     > * + nav {
       border-top: 0.0625rem solid $color-border-base-light;
     }
@@ -48,6 +49,7 @@ $sidenav-lg-width: 12.5rem;
       min-height: 3rem;
       padding: 0.5rem;
 
+      // sass-lint:disable-block no-universal-selectors
       > *:not(.chi-icon) {
         display: none;
         line-height: 1rem;
@@ -65,9 +67,11 @@ $sidenav-lg-width: 12.5rem;
     }
 
     &:not(.-active) {
-      a.-active {
-        background-color: rgba($color-grey-25, 0.5);
-        box-shadow: inset 0.125rem 0 0 $color-cyan-50;
+      a {
+        &.-active {
+          background-color: rgba($color-grey-25, 0.5);
+          box-shadow: inset 0.125rem 0 0 $color-cyan-50;
+        }
       }
     }
   }
@@ -81,6 +85,10 @@ $sidenav-lg-width: 12.5rem;
   // }
 
   .chi-drawer {
+    box-shadow: 0.5rem 0 0.5rem -0.5rem rgba($color-black, 0.2);
+    position: absolute;
+    z-index: $zindex-fixed;
+
     &__header {
       align-items: center;
       background-color: $color-grey-10;
@@ -94,6 +102,14 @@ $sidenav-lg-width: 12.5rem;
           right: 1rem;
           top: 1rem;
         }
+      }
+    }
+
+    &.-left {
+      left: $sidenav-sm-width;
+
+      &.-animated:not(.-active) {
+        left: -$drawer-width + $sidenav-sm-width;
       }
     }
 
@@ -145,6 +161,8 @@ $sidenav-lg-width: 12.5rem;
     }
 
     &.-active {
+      z-index: $zindex-fixed + 1;
+
       .chi-drawer__content {
         .chi-sidenav__drawer-list {
           li {
@@ -247,6 +265,7 @@ $sidenav-lg-width: 12.5rem;
         padding-left: 1.5rem;
         padding-top: 0.625rem;
 
+        // sass-lint:disable no-universal-selectors
         & > *:first-child {
           margin-top: 0;
         }
@@ -254,6 +273,7 @@ $sidenav-lg-width: 12.5rem;
         & > *:last-child {
           margin-bottom: 0;
         }
+        // sass-lint:enable no-universal-selectors
       }
 
       &.-active > a {
@@ -293,24 +313,6 @@ $sidenav-lg-width: 12.5rem;
     margin: 0;
   }
 
-  .chi-drawer {
-    box-shadow: 0.5rem 0 0.5rem -0.5rem rgba($color-black, 0.2);
-    position: absolute;
-    z-index: $zindex-fixed;
-
-    &.-active {
-      z-index: $zindex-fixed + 1;
-    }
-
-    &.-left {
-      left: $sidenav-sm-width;
-
-      &.-animated:not(.-active) {
-        left: -$drawer-width + $sidenav-sm-width;
-      }
-    }
-  }
-
   // .chi-sliding-border {
   //   background-color: $color-text-primary;
   //   display: none;
@@ -344,6 +346,7 @@ $sidenav-lg-width: 12.5rem;
       > a {
         min-height: 4rem;
 
+        // sass-lint:disable-block no-universal-selectors
         > *:not(.chi-icon) {
           display: block;
         }
@@ -367,6 +370,7 @@ $sidenav-lg-width: 12.5rem;
           min-height: 3rem;
           padding-left: 0.5rem;
 
+          // sass-lint:disable-block no-universal-selectors
           > *:not(.chi-icon) {
             display: none;
           }
@@ -405,6 +409,7 @@ $sidenav-lg-width: 12.5rem;
           padding-left: 0.5rem;
         }
 
+        // sass-lint:disable-block no-universal-selectors
         > *:not(.chi-icon) {
           display: block;
         }
@@ -438,6 +443,7 @@ $sidenav-lg-width: 12.5rem;
         min-height: 3rem;
         padding-left: 1.5rem;
 
+        // sass-lint:disable-block no-universal-selectors
         > *:not(.chi-icon) {
           display: block;
         }
@@ -462,6 +468,7 @@ $sidenav-lg-width: 12.5rem;
 }
 
 /* IE11 CSS hack */
+// sass-lint:disable-block no-vendor-prefixes
 @media only screen and (-ms-high-contrast: none) {
   .chi-sidenav {
     .chi-sidenav__list {

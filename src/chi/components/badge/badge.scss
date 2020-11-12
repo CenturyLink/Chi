@@ -77,6 +77,7 @@ $colors: (
 );
 
 .chi-badge {
+  // sass-lint:disable-block property-units
   align-items: center;
   background-color: $color-background-white;
   border: 0.0625rem solid $color-border-base-dark;
@@ -104,7 +105,7 @@ $colors: (
     justify-content: center;
 
     & > :not(:last-child) {
-      margin-right: 0.375em;
+      margin-right: 0.375em; // sass-lint:disable-line property-units
     }
   }
 

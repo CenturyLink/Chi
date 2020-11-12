@@ -29,87 +29,89 @@ $sizes: (
 );
 
 .chi-file-input,
-.chi-input[type='file'] {
-  left: -9999px;
-  position: absolute;
+.chi-input {
+  &[type='file'] {
+    left: -9999px;
+    position: absolute;
 
-  & + label {
-    & {
-      align-items: center;
-      display: flex;
-      font-size: $font-size-base;
-      font-weight: $font-weight-normal;
-      line-height: $line-height-sm;
-      margin-bottom: 0;
-      pointer-events: none;
-      position: relative;
-    }
-
-    &::before {
-      align-items: center;
-      background-color: $color-background-white;
-      border: 0.0625rem solid $color-border-base-dark;
-      border-radius: $border-radius;
-      box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
-      content: 'Choose File';
-      cursor: pointer;
-      display: flex;
-      font-weight: $font-weight-semi-bold;
-      height: 2rem;
-      justify-content: center;
-      line-height: 1.125rem;
-      margin-right: 1rem;
-      pointer-events: initial;
-      width: 6.5rem;
-    }
-
-    &:hover,
-    &.-hover {
-      &::before {
-        background-color: $color-grey-20;
-        border-color: $color-border-base-dark;
+    & + label {
+      & {
+        align-items: center;
+        display: flex;
+        font-size: $font-size-base;
+        font-weight: $font-weight-normal;
+        line-height: $line-height-sm;
+        margin-bottom: 0;
+        pointer-events: none;
+        position: relative;
       }
-    }
 
-    &:active,
-    &.-active {
       &::before {
-        background-color: $color-grey-25;
-        border-color: rgba($color-grey-70, 0.2);
+        align-items: center;
+        background-color: $color-background-white;
+        border: 0.0625rem solid $color-border-base-dark;
+        border-radius: $border-radius;
+        box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
+        content: 'Choose File';
+        cursor: pointer;
+        display: flex;
+        font-weight: $font-weight-semi-bold;
+        height: 2rem;
+        justify-content: center;
+        line-height: 1.125rem;
+        margin-right: 1rem;
+        pointer-events: initial;
+        width: 6.5rem;
       }
-    }
-  }
 
-  &[multiple] + label::before {
-    content: 'Choose Files';
-  }
-
-  &[disabled] + label {
-    opacity: 0.65;
-
-    &::before {
-      cursor: initial;
-      pointer-events: none;
-    }
-  }
-
-  &:focus,
-  &.-focus {
-    & + label::before {
-      border-color: $color-border-base-dark;
-      z-index: $zindex-prominent;
-    }
-  }
-
-  @each $type in map-keys($sizes) {
-    &.-#{$type} {
-      & + label {
-        font-size: map-get(map-get($sizes, $type), font-size);
-
+      &:hover,
+      &.-hover {
         &::before {
-          height: map-get(map-get($sizes, $type), height);
-          line-height: map-get(map-get($sizes, $type), line-height);
-          width: map-get(map-get($sizes, $type), width);
+          background-color: $color-grey-20;
+          border-color: $color-border-base-dark;
+        }
+      }
+
+      &:active,
+      &.-active {
+        &::before {
+          background-color: $color-grey-25;
+          border-color: rgba($color-grey-70, 0.2);
+        }
+      }
+    }
+
+    &[multiple] + label::before {
+      content: 'Choose Files';
+    }
+
+    &[disabled] + label {
+      opacity: 0.65;
+
+      &::before {
+        cursor: initial;
+        pointer-events: none;
+      }
+    }
+
+    &:focus,
+    &.-focus {
+      & + label::before {
+        border-color: $color-border-base-dark;
+        z-index: $zindex-prominent;
+      }
+    }
+
+    @each $type in map-keys($sizes) {
+      &.-#{$type} {
+        & + label {
+          font-size: map-get(map-get($sizes, $type), font-size);
+
+          &::before {
+            height: map-get(map-get($sizes, $type), height);
+            line-height: map-get(map-get($sizes, $type), line-height);
+            width: map-get(map-get($sizes, $type), width);
+          }
         }
       }
     }

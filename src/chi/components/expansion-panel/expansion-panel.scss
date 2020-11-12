@@ -14,7 +14,7 @@ $transition-duration: 0.2s;
     margin-right: -0.25rem;
     min-height: 0;
 
-    & > * {
+    & > * { // sass-lint:disable-line no-universal-selectors
       display: block;
       padding-left: 0.25rem;
       padding-right: 0.25rem;
