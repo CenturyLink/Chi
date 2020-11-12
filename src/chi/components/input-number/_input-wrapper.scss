@@ -1,4 +1,5 @@
 @import '../../_variables';
+@import '../../_mixins';
 
 $sizes: (
   sm: (
@@ -137,11 +138,17 @@ $expanded-sizes: (
           &:active {
             background-color: $color-background-base-darker;
           }
+
+          &[disabled] {
+            background-color: $color-background-base-dark;
+            opacity: $opacity-60;
+            pointer-events: none;
+          }
         }
 
         &[disabled] {
           & ~ button {
-            opacity: 0.65;
+            opacity: $opacity-60;
             pointer-events: none;
           }
         }
@@ -234,25 +241,35 @@ $expanded-sizes: (
                 width: 1rem;
               }
             }
+
+            &[disabled] {
+              @include button-disabled;
+
+              .chi-icon {
+                color: $color-icon-muted-light;
+                opacity: $opacity-100;
+              }
+            }
           }
         }
 
         &[disabled] {
           &.chi-input {
             & ~ button {
-              color: rgba($color-text-base, 0.3);
-              opacity: 1;
+              background-color: $color-grey-10;
+              border-color: $color-border-base-dark;
+              box-shadow: none;
+              color: $color-text-muted-light;
+              opacity: $opacity-100;
               pointer-events: none;
+
+              & .chi-icon {
+                color: $color-icon-muted-light;
+                opacity: $opacity-100;
+              }
             }
           }
         }
-      }
-    }
-
-    & > button {
-      &[disabled] {
-        color: rgba($color-text-base, 0.3);
-        pointer-events: none;
       }
     }
 

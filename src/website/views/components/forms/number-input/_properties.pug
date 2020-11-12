@@ -31,45 +31,6 @@ section.chi-table.chi-table__options.-bordered.-my--3
               | attributes, and any value that doesn't fit the granularity defined by <code>step</code> and the
               | <code>initial</code> value
 
-h3 Example <code>autofix=true</code>
-p.-text
-  | This example only accepts values between <code>0</code> and <code>6</code>, and as the <code>step</code> is
-  | <code>2</code> and initial <code>value</code> is <code>1</code>, only even values are valid. If you manually write
-  | any pair value, or a value greater than 5 or lesser than 1, the component will automatically correct the value.
-.example.-mb--3
-  .-p--3
-    .chi-form__item.-row
-      .chi-number-input.-expanded
-        input#input-number-3.chi-input(type="number", value="1", min="0", max="6", step="2", aria-label="Input label")
-        button.chi-button.-icon(aria-label='Decrease')
-          .chi-button__content
-            i.chi-icon.icon-minus
-        button.chi-button.-icon(aria-label='Increase')
-          .chi-button__content
-            i.chi-icon.icon-plus
-  :code(lang="html")
-    <div class="chi-form__item -row">
-      <div class="chi-number-input -expanded">
-        <input id="input-number-3" class="chi-input" type="number" value="1" min="0" max="6" step="2" aria-label="Input label">
-        <button class="chi-button -icon" aria-label="Decrease">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-minus"></i>
-          </div>
-        </button>
-        <button class="chi-button -icon" aria-label="Increase">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-plus"></i>
-          </div>
-        </button>
-      </div>
-    </div>
-    <script>
-      chi.numberInput(
-        document.getElementById('input-number-2'),
-        {autofix: true}
-      );
-    </script>
-
 h3 Preventing memory leaks
 p.-text
   | Input number components have a dispose function to free all resources attached to the element, such as event
@@ -93,14 +54,3 @@ p.-text
   inputNumberComponent === inputNumberComponent2; // returns true
 
   inputNumberComponent.dispose(); // Only have to do it once.
-
-script.
-  document.addEventListener(
-    'DOMContentLoaded',
-    function() {
-      chi.numberInput(
-        document.getElementById('input-number-3'),
-        {autofix:true}
-      );
-    }
-  );

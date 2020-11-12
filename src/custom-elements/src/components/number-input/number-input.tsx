@@ -43,6 +43,11 @@ export class NumberInput {
   @Prop({ reflect: true }) disabled?: boolean;
 
   /**
+   * used to determine if component is required or not
+   */
+  @Prop({ reflect: true }) required?: boolean;
+
+  /**
    * used to determine component's size
    */
   @Prop({ reflect: true }) size?: string;
@@ -165,6 +170,7 @@ export class NumberInput {
         class={`chi-input ${this.inputstyle ? `-${this.inputstyle}` : ''} ${
           this.state ? `-${this.state}` : ''}`}
         disabled={this.disabled}
+        required={this.required}
         step={this.step}
         max={this.max}
         min={this.min}

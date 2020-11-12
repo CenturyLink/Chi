@@ -38,6 +38,10 @@ p.-text An initial value is optional. If an initial value is not provided, <code
       <script>chi.numberInput(document.getElementById('input-example-base'));</script>
 
 h3 Disabled
+p.-text
+  | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
+  | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
+  | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
 .example.-mb--3
   .-p--3
     .chi-form__item
@@ -70,6 +74,256 @@ h3 Disabled
       </div>
 
       <script>chi.numberInput(document.getElementById('input-example-disabled'));</script>
+
+h3 Min/Max/Step
+p.-text
+  | Use the <code>min</code> and <code>max</code> attributes to define minimum and maximum values on number inputs.
+  | Use the <code>step</code> attribute to indicate the expected granularity.
+p.-text
+  | This example only accepts values between <code>0</code> and <code>6</code>, and as the <code>step</code> is
+  | <code>2</code> and initial <code>value</code> is <code>1</code>, only odd values are valid. If you manually write
+  | any pair value, or a value greater than 5 or lesser than 1, the component will automatically correct the value.
+.example.-mb--3
+  .-p--3
+    .chi-form__item
+      chi-label(for="unique-id-mms1") Label
+      chi-number-input#unique-id-mms1(value="1", min="0", max="6", step="2")
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-mms
+      li.-active
+        a(href=`#webcomponent-mms`) Web Component
+      li
+        a(href=`#html-mms`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-mms
+    :code(lang="html")
+      <chi-label for="unique-id-mms1">Label</chi-label>
+      <chi-number-input id="unique-id-mms1" value="1" min="0" max="6" step="2"></chi-number-input>
+  .chi-tabs-panel#html-mms
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="unique-id-mms1">Label</label>
+        <div class="chi-number-input">
+          <input id="unique-id-mms1" type="number" class="chi-input" value="1" min="0" max="6" step="2" aria-label="Input Label">
+          <button aria-label="Decrease"></button>
+          <button aria-label="Increase"></button>
+        </div>
+      </div>
+
+      <script>
+        chi.numberInput(
+          document.getElementById('unique-id-mms1'),
+          {autofix: true}
+        );
+      </script>
+
+h3 Required
+p.-text
+  | Use the <code>required</code> boolean attribute to indicate which inputs must be completed before submitting a form.
+  | To render a required input, apply the <code>required</code> attribute to the input. It is also
+  | encouraged but not mandatory to apply a <code>required</code> attribute to the corresponding label of the input which
+  | will automatically render a red asterisk. <strong>Note:</strong> For HTML Blueprint implementations,
+  | the <code>required</code> attribute is not supported on the label. Please use the alternate method
+  | specified below for rendering a red asterisk within the label. 
+.example.-mb--3
+  .-p--3
+    .chi-form__item
+      chi-label(for="unique-id-re1" required) Label
+      chi-number-input#unique-id-re1(required)
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-required
+      li.-active
+        a(href=`#webcomponent-required`) Web Component
+      li
+        a(href=`#html-required`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-required
+    :code(lang="html")
+      <chi-label for="unique-id-re1" required>Label</chi-label>
+      <chi-number-input id="unique-id-re1" required></chi-number-input>
+  .chi-tabs-panel#html-required
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="unique-id-re1">
+          Label
+          <abbr class="chi-label__required" title="Required field">*</abbr>
+        </label>
+        <div class="chi-number-input">
+          <input id="unique-id-re1" type="number" class="chi-input" value="0" aria-label="Input Label" required>
+          <button aria-label="Decrease"></button>
+          <button aria-label="Increase"></button>
+        </div>
+      </div>
+
+      <script>chi.numberInput(document.getElementById('unique-id-re1'));</script>
+
+h3 Help
+p.-text
+  | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
+  | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
+.example.-mb--3
+  .-p--3
+    .chi-form__item
+      .chi-label__wrapper
+        chi-label(for='example__label-with-icon') Label
+        .chi-label__help
+          chi-button(id='example__help-button' type='icon' size='sm' variant='flat' alternative-text="Help")
+            chi-icon(icon='circle-info-outline')
+          chi-popover(id='example__help-popover' position='top' variant='text' arrow reference='#example__help-button')
+            | Helpful information goes here.
+      chi-number-input#unique-id-he1
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-help
+      li.-active
+        a(href=`#webcomponent-help`) Web Component
+      li
+        a(href=`#html-help`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-help
+    :code(lang="html")
+      <div class="chi-label__wrapper">
+        <chi-label for="unique-id-he1">Label</chi-label>
+        <div class="chi-label__help">
+          <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help">
+            <chi-icon icon="circle-info-outline"></chi-icon>
+          </chi-button>
+          <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button">
+            Helpful information goes here.
+          </chi-popover>
+        </div>
+      </div>
+      <chi-number-input id="unique-id-he1"></chi-number-input>
+
+      <script>
+        document
+          .querySelector("#example__help-button")
+          .addEventListener("click", function () {
+            var popoverElem = document.querySelector("#example__help-popover");
+
+            popoverElem.toggle();
+          });
+      </script>
+  .chi-tabs-panel#html-help
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-form__item">
+        <div class="chi-label__wrapper">
+          <label class="chi-label" for="unique-id-he1">Label</label>
+          <div class="chi-label__help">
+            <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-circle-info-outline"></i>
+              </div>
+            </div>
+            <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+              <div class="chi-popover__content">
+                <p class="chi-popover__text">Helpful information goes here.</p>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="chi-number-input">
+          <input id="unique-id-he1" type="number" class="chi-input" value="0" aria-label="Input Label" required>
+          <button aria-label="Decrease"></button>
+          <button aria-label="Increase"></button>
+        </div>
+      </div>
+
+      <script>
+        chi.numberInput(document.getElementById('unique-id-he1'));
+        chi.popover(document.getElementById('example__help-button'));
+      </script>
+
+h3 Message
+p.-text
+  | Add a message below an input to store descriptions, validation feedback, and other helpful information.
+.example.-mb--3
+  .-p--3
+    .chi-form__item
+      chi-label(for="unique-id-me1") Label
+      chi-number-input#unique-id-me1
+      .chi-label.-status Optional input message
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-message
+      li.-active
+        a(href=`#webcomponent-message`) Web Component
+      li
+        a(href=`#html-message`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-message
+    :code(lang="html")
+      <chi-label for="unique-id-me1">Label</chi-label>
+      <chi-number-input id="unique-id-me1"></chi-number-input>
+      <div class="chi-label -status">Optional input message</div>
+  .chi-tabs-panel#html-message
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="unique-id-me1">Label</label>
+        <div class="chi-number-input">
+          <input id="unique-id-me1" type="number" class="chi-input" value="0" aria-label="Input Label">
+          <button aria-label="Decrease"></button>
+          <button aria-label="Increase"></button>
+        </div>
+        <div class="chi-label -status">Optional input message</div>
+      </div>
+
+      <script>chi.numberInput(document.getElementById('unique-id-me1'));</script>
+
+h3 Error
+p.-text
+  | Use <code>danger</code> to provide feedback to users when input data fails to validate.
+  | To meet accessibility requirements, danger inputs must include an error message explaining the
+  | failure and/or how to correct it.
+.example.-mb--3
+  .-p--3
+    .chi-form__item
+      chi-label(for="unique-id-er1") Quantity
+      chi-number-input#unique-id-er1(inputstyle="danger")
+      .chi-label.-status.-danger Please enter a quantity.
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-error
+      li.-active
+        a(href=`#webcomponent-error`) Web Component
+      li
+        a(href=`#html-error`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-error
+    :code(lang="html")
+      <chi-label for="unique-id-er1">Quantity</chi-label>
+      <chi-number-input id="unique-id-er1" inputstyle="danger"></chi-number-input>
+      <div class="chi-label -status -danger">Please enter a quantity.</div>
+  .chi-tabs-panel#html-error
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="unique-id-er1">Quantity</label>
+        <div class="chi-number-input">
+          <input id="unique-id-er1" type="number" class="chi-input -danger" value="0" aria-label="Quantity">
+          <button aria-label="Decrease"></button>
+          <button aria-label="Increase"></button>
+        </div>
+        <div class="chi-label -status -danger">Please enter a quantity.</div>
+      </div>
+
+      <script>chi.numberInput(document.getElementById('unique-id-er1'));</script>
 
 h3 Sizes
 p.-text
@@ -201,6 +455,10 @@ h3 Base
       <script>chi.numberInput(document.getElementById('input-example-expanded'));</script>
 
 h3 Disabled
+p.-text
+  | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
+  | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
+  | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
 .example.-mb--3
   .-p--3
     .chi-form__item
@@ -241,6 +499,109 @@ h3 Disabled
       </div>
 
       <script>chi.numberInput(document.getElementById('input-example-expanded-disabled'));</script>
+
+h3 Min/Max/Step
+p.-text
+  | Use the <code>min</code> and <code>max</code> attributes to define minimum and maximum values on number inputs.
+  | Use the <code>step</code> attribute to indicate the expected granularity.
+p.-text
+  | This example only accepts values between <code>0</code> and <code>6</code>, and as the <code>step</code> is
+  | <code>2</code> and initial <code>value</code> is <code>1</code>, only odd values are valid. If you manually write
+  | any pair value, or a value greater than 5 or lesser than 1, the component will automatically correct the value.
+.example.-mb--3
+  .-p--3
+    .chi-form__item
+      chi-label(for="unique-id-emm1") Label
+      chi-number-input(expanded=true, value="1", min="0", max="6", step="2")#unique-id-emm1
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-expanded-minmax
+      li.-active
+        a(href=`#webcomponent-expanded-minmax`) Web Component
+      li
+        a(href=`#html-expanded-minmax`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-expanded-minmax
+    :code(lang="html")
+      <chi-label for="unique-id-emm1">Label</chi-label>
+      <chi-number-input expanded id="unique-id-emm1" value="1" min="0" max="6" "step="2"></chi-number-input>
+  .chi-tabs-panel#html-expanded-minmax
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="unique-id-emm1">Label</label>
+        <div class="chi-number-input -expanded">
+          <input id="unique-id-emm1" class="chi-input" type="number" value="1" min="0" max="6" "step="2" aria-label="Input Label">
+          <button class="chi-button -icon" aria-label="Decrease">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-minus"></i>
+            </div>
+          </button>
+          <button class="chi-button -icon" aria-label="Increase">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-plus"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <script>
+        chi.numberInput(
+          document.getElementById('unique-id-emm1'),
+          {autofix: true}
+        );
+      </script>
+
+h3 Error
+p.-text
+  | Use <code>danger</code> to provide feedback to users when input data fails to validate.
+  | To meet accessibility requirements, danger inputs must include an error message explaining the
+  | failure and/or how to correct it.
+.example.-mb--3
+  .-p--3
+    .chi-form__item
+      chi-label(for="unique-id-eer1") Quantity
+      chi-number-input#unique-id-eer1(inputstyle="danger", expanded)
+      .chi-label.-status.-danger Please enter a quantity.
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-expanded-error
+      li.-active
+        a(href=`#webcomponent-expanded-error`) Web Component
+      li
+        a(href=`#html-expanded-error`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-expanded-error
+    :code(lang="html")
+      <chi-label for="unique-id-eer1">Quantity</chi-label>
+      <chi-number-input expanded id="unique-id-eer1" inputstyle="danger"></chi-number-input>
+      <div class="chi-label -status -danger">Please enter a quantity.</div>
+  .chi-tabs-panel#html-expanded-error
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="unique-id-eer1">Label</label>
+        <div class="chi-number-input -expanded">
+          <input id="unique-id-eer1" class="chi-input -danger" type="number" value="0" aria-label="Input Label">
+          <button class="chi-button -icon" aria-label="Decrease">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-minus"></i>
+            </div>
+          </button>
+          <button class="chi-button -icon" aria-label="Increase">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-plus"></i>
+            </div>
+          </button>
+        </div>
+        <div class="chi-label -status -danger">Please enter a quantity.</div>
+      </div>
+
+      <script>chi.numberInput(document.getElementById('unique-id-eer1'));</script>
 
 h3 Sizes
 p.-text
@@ -349,11 +710,11 @@ script.
     document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.getElementById('examples-default'));
-      chi.tab(document.getElementById('examples-disabled'));
-      chi.tab(document.getElementById('examples-sizes'));
-      chi.tab(document.getElementById('examples-expanded'));
-      chi.tab(document.getElementById('examples-expanded-disabled'));
-      chi.tab(document.getElementById('examples-expanded-sizes'));
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
     }
   );
+  document.querySelector("#example__help-button")
+  .addEventListener("click", function() {
+    var popoverElem = document.querySelector("#example__help-popover");
+    popoverElem.toggle();
+  });

@@ -33,8 +33,13 @@
   &.-disabled {
     background-color: $color-grey-10;
     border-color: $color-border-base-dark;
-    color: $color-text-muted;
+    color: $color-text-muted-light;
     cursor: not-allowed;
+
+    & ~ .chi-icon,
+    & ~ chi-icon {
+      color: $color-icon-muted;
+    }
   }
 
   &[readonly],
@@ -85,15 +90,11 @@
     &:not([disabled]) {
       &.-#{$type} {
         border-color: map-get(map-get($color-semantic, $type), border-color);
-      }
-    }
 
-    &.-#{$type} {
-      color: $color-text-base;
-
-      &:focus,
-      &.-focus {
-        box-shadow: 0 0 0 1px rgba(map-get(map-get($color-semantic, $type), border-color), 1);
+        &:focus,
+        &.-focus {
+          box-shadow: 0 0 0 1px rgba(map-get(map-get($color-semantic, $type), border-color), 1);
+        }
       }
     }
   }

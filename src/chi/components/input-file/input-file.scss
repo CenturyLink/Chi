@@ -86,11 +86,8 @@ $sizes: (
     }
 
     &[disabled] + label {
-      opacity: 0.65;
-
       &::before {
-        cursor: initial;
-        pointer-events: none;
+        @include button-disabled;
       }
     }
 
