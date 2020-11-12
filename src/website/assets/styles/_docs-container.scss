@@ -455,6 +455,16 @@
           }
         }
       }
+
+      &.chi-grid__container-data-table {
+        .docs-article {
+          .chi-grid__container {
+            @include respond-to(xl) {
+              max-width: 1200px;
+            }
+          }
+        }
+      }
     }
 
     &.outdated-version {
