@@ -47,6 +47,50 @@ h3 Base
       });
       </script>
 
+h3 Disabled
+.example.-mb--3
+  .-p--3
+    input.chi-file-input(type="file", id="unique-id-di1", aria-label="Choose file", disabled)
+    label(for="unique-id-di1") No file chosen
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-disabled
+      li.-disabled
+        a(href=`#webcomponent-disabled`) Web Component
+      li.-active
+        a(href=`#html-disabled`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-disabled
+  .chi-tabs-panel.-active#html-disabled
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript to update the label
+        | content once a file or files have been selected.
+        | You may use your own JavaScript solution, or use Chi's example below.
+    :code(lang="html")
+      <input type="file" class="chi-file-input" id="unique-id-di1" aria-label="Choose file" disabled>
+      <label for="unique-id-di1">No file chosen</label>
+
+      <script>
+      var inputFiles = document.querySelectorAll('input[type="file"].chi-file-input');
+
+      Array.prototype.forEach.call(inputFiles, function(input) {
+        var label = input.nextElementSibling;
+
+        input.addEventListener('change', function(e) {
+          var fileName = '';
+
+          if (this.files && this.files.length > 1) {
+            fileName = this.files.length + ' files selected';
+          } else {
+            fileName = e.target.value.split('\\').pop();
+          }
+
+          if (fileName) {
+            label.innerHTML = fileName;
+          }
+        });
+      });
+      </script>
+
 h2 Sizes
 p.-text
   | File inputs supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
