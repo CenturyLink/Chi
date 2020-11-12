@@ -201,7 +201,15 @@ p.-text
       </div>
       <chi-number-input id="unique-id-he1"></chi-number-input>
 
-      <script>chi.popover(document.getElementById('example__help-button'));</script>
+      <script>
+        document
+          .querySelector("#example__help-button")
+          .addEventListener("click", function () {
+            var popoverElem = document.querySelector("#example__help-popover");
+
+            popoverElem.toggle();
+          });
+      </script>
   .chi-tabs-panel#html-help
     .chi-tab__description
       span.-text--grey
