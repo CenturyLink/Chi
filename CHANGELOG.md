@@ -18,7 +18,7 @@
 * Changed: Text input, Textarea, Number input, and Date picker disabled text color has been updated.
 * Changed: Tabs with class -vertical and -portal now render first level tab items with a min-height.
 #### Fixed
-* Fixed: Number input did not support disabled buttons in min/max scenarios.
+* Fixed: Base Number input did not support disabled button styles in min/max scenarios.
 * Fixed: Sass lint warnings have been resolved.
 ### Documentation
 #### Added
