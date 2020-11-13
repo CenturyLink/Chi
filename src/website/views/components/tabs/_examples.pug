@@ -853,19 +853,18 @@ h3 Portal
 .example.-mb--3
   .-p--3
     .-bg--grey-20.-p--3
-      ul.chi-tabs.-vertical.-icons.-list.-portal.-sm
+      ul.chi-tabs.-vertical.-icons.-list.-portal.-lg
         li.-active
           a.chi-tabs_item(href='#')
             i.chi-icon.icon-atom
-            span.chi-tabs_item-title Tab Link
-            span.chi-tabs_item-text Tab description
+            span.chi-tabs_item-title Active Tab
             button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
               .chi-button__content
                 i.chi-icon.icon-more-vert
         li
           a.chi-tabs_item(href='#')
             i.chi-icon.icon-atom
-            span.chi-tabs_item-title Active Tab
+            span.chi-tabs_item-title Tab Link
             span.chi-tabs_item-text Tab description
             button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
               .chi-button__content
@@ -916,20 +915,19 @@ h3 Portal
               .chi-button__content
                 i.chi-icon.icon-more-vert
   .example-tabs.-pl--2
-    ul.chi-tabs#example-size-large
+    ul.chi-tabs#example-portal-size-large
       li.-disabled
-        a(href=`#webcomponent-size-large`) Web Component
+        a(href=`#webcomponent-portal-size-large`) Web Component
       li.-active
-        a(href=`#html-size-large`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-size-large
-  .chi-tabs-panel.-active#html-size-large
+        a(href=`#html--portal-size-large`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-size-large
+  .chi-tabs-panel.-active#html-portal-size-large
     :code(lang='html')
-      <ul class="chi-tabs -vertical -icons -list -portal -sm">
+      <ul class="chi-tabs -vertical -icons -list -portal -lg">
         <li class="-active">
           <a class="chi-tabs_item" href="#">
             <i class="chi-icon icon-atom"></i>
-            <span class="chi-tabs_item-title">Tab Link</span>
-            <span class="chi-tabs_item-text">Tab description</span>
+            <span class="chi-tabs_item-title">Active Tab</span>
             <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
               <div class="chi-button__content">
                 <i class="chi-icon icon-more-vert"></i>
@@ -940,7 +938,7 @@ h3 Portal
         <li>
           <a class="chi-tabs_item" href="#">
             <i class="chi-icon icon-atom"></i>
-            <span class="chi-tabs_item-title">Active Tab</span>
+            <span class="chi-tabs_item-title">Tab Link</span>
             <span class="chi-tabs_item-text">Tab description</span>
             <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
               <div class="chi-button__content">
@@ -1179,9 +1177,11 @@ ul#chi-tabs--menu-bordered.chi-tabs
 
 h2 Additional Sizes
 
-h3 Extra small
+h3 Horizontal
 .example.-mb--3
   .-p--3.-pb--4
+    p.-text--bold X-small
+    .chi-divider.-mb--2
     ul.chi-tabs.-xs
       li.-active
         a(href='#') Active Tab
@@ -1189,15 +1189,43 @@ h3 Extra small
         a(href='#') Tab Link
       li
         a(href='#') Tab Link
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-size-xsmall
-      li.-disabled
-        a(href=`#webcomponent-size-xsmall`) Web Component
+    p.-text--bold.-mt--6 Small
+    .chi-divider.-mb--2
+    ul.chi-tabs.-sm
       li.-active
-        a(href=`#html-size-xsmall`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-size-xsmall
-  .chi-tabs-panel.-active#html-size-xsmall
+        a(href='#') Active Tab
+      li
+        a(href='#') Tab Link
+      li
+        a(href='#') Tab Link
+    p.-text--bold.-mt--6 Medium (Base)
+    .chi-divider.-mb--2
+    ul.chi-tabs
+      li.-active
+        a(href='#') Active Tab
+      li
+        a(href='#') Tab Link
+      li
+        a(href='#') Tab Link
+    p.-text--bold.-mt--6 Large
+    .chi-divider.-mb--2
+    ul.chi-tabs.-lg
+      li.-active
+        a(href='#') Active Tab
+      li
+        a(href='#') Tab Link
+      li
+        a(href='#') Tab Link
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-sizes-h
+      li.-disabled
+        a(href=`#webcomponent-sizes-h`) Web Component
+      li.-active
+        a(href=`#html-sizes-h`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-sizes-h
+  .chi-tabs-panel.-active#html-sizes-h
     :code(lang='html')
+      <!-- X-small -->
       <ul class="chi-tabs -xs">
         <li class="-active">
           <a href="#">Active Tab</a>
@@ -1210,25 +1238,7 @@ h3 Extra small
         </li>
       </ul>
 
-h3 Small
-.example.-mb--3
-  .-p--3.-pb--4
-    ul.chi-tabs.-sm
-      li.-active
-        a(href='#') Active Tab
-      li
-        a(href='#') Tab Link
-      li
-        a(href='#') Tab Link
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-size-small
-      li.-disabled
-        a(href=`#webcomponent-size-small`) Web Component
-      li.-active
-        a(href=`#html-size-small`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-size-small
-  .chi-tabs-panel.-active#html-size-small
-    :code(lang='html')
+      <!-- Small -->
       <ul class="chi-tabs -sm">
         <li class="-active">
           <a href="#">Active Tab</a>
@@ -1241,9 +1251,69 @@ h3 Small
         </li>
       </ul>
 
-h3 Large
+      <!-- Medium (Base) -->
+      <ul class="chi-tabs">
+        <li class="-active">
+          <a href="#">Active Tab</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+      </ul>
+
+      <!-- Large -->
+      <ul class="chi-tabs -lg">
+        <li class="-active">
+          <a href="#">Active Tab</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+      </ul>
+
+h3 Vertical
 .example.-mb--3
   .-p--3.-pb--4
+    p.-text--bold.-mt--6 Small
+    .chi-divider.-mb--3
+    ul.chi-tabs.-vertical.-sm
+      li.-active
+        a(href='#') Active Tab
+        ul.chi-tabs__subtabs
+          li.-active
+            a(href='#') Subtab Link
+          li
+            a(href='#') Subtab Link
+          li
+            a(href='#') Subtab Link
+      li
+        a(href='#') Tab Link
+      li
+        a(href='#') Tab Link
+    p.-text--bold.-mt--6 Medium (Base)
+    .chi-divider.-mb--3
+    ul.chi-tabs.-vertical
+      li.-active
+        a(href='#') Active Tab
+        ul.chi-tabs__subtabs
+          li.-active
+            a(href='#') Subtab Link
+          li
+            a(href='#') Subtab Link
+          li
+            a(href='#') Subtab Link
+      li
+        a(href='#') Tab Link
+      li
+        a(href='#') Tab Link
+    p.-text--bold.-mt--6 Large
+    .chi-divider.-mb--3
     ul.chi-tabs.-vertical.-lg
       li.-active
         a(href='#') Active Tab
@@ -1258,16 +1328,105 @@ h3 Large
         a(href='#') Tab Link
       li
         a(href='#') Tab Link
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-size-large
-      li.-disabled
-        a(href=`#webcomponent-size-large`) Web Component
+    p.-text--bold.-mt--6 X-Large
+    .chi-divider.-mb--3
+    ul.chi-tabs.-vertical.-xl
       li.-active
-        a(href=`#html-size-large`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-size-large
-  .chi-tabs-panel.-active#html-size-large
+        a(href='#') Active Tab
+        ul.chi-tabs__subtabs
+          li.-active
+            a(href='#') Subtab Link
+          li
+            a(href='#') Subtab Link
+          li
+            a(href='#') Subtab Link
+      li
+        a(href='#') Tab Link
+      li
+        a(href='#') Tab Link
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-sizes-v
+      li.-disabled
+        a(href=`#webcomponent-sizes-v`) Web Component
+      li.-active
+        a(href=`#html-sizes-v`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-sizes-v
+  .chi-tabs-panel.-active#html-sizes-v
     :code(lang='html')
+      <!-- Small -->
+      <ul class="chi-tabs -vertical -sm">
+        <li class="-active">
+          <a href="#">Active Tab</a>
+          <ul class="chi-tabs__subtabs">
+            <li class="-active">
+              <a href="#">Subtab Link</a>
+            </li>
+            <li>
+              <a href="#">Subtab Link</a>
+            </li>
+            <li>
+              <a href="#">Subtab Link</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+      </ul>
+
+      <!-- Medium (Base) -->
+      <ul class="chi-tabs -vertical">
+        <li class="-active">
+          <a href="#">Active Tab</a>
+          <ul class="chi-tabs__subtabs">
+            <li class="-active">
+              <a href="#">Subtab Link</a>
+            </li>
+            <li>
+              <a href="#">Subtab Link</a>
+            </li>
+            <li>
+              <a href="#">Subtab Link</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+      </ul>
+
+      <!-- Large -->
       <ul class="chi-tabs -vertical -lg">
+        <li class="-active">
+          <a href="#">Active Tab</a>
+          <ul class="chi-tabs__subtabs">
+            <li class="-active">
+              <a href="#">Subtab Link</a>
+            </li>
+            <li>
+              <a href="#">Subtab Link</a>
+            </li>
+            <li>
+              <a href="#">Subtab Link</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+      </ul>
+
+      <!-- X-Large -->
+      <ul class="chi-tabs -vertical -xl">
         <li class="-active">
           <a href="#">Active Tab</a>
           <ul class="chi-tabs__subtabs">
@@ -1314,9 +1473,10 @@ script.
       chi.tab(document.getElementById('example-nav4-enabled'));
       chi.tab(document.getElementById('example-nav4-disabled'));
       chi.tab(document.getElementById('example-4-switch'));
-      chi.tab(document.getElementById('example-size-xsmall'));
-      chi.tab(document.getElementById('example-size-small'));
+      chi.tab(document.getElementById('example-sizes-h'));
+      chi.tab(document.getElementById('example-sizes-v'));
       chi.tab(document.getElementById('example-size-large'));
+      chi.tab(document.getElementById('example-portal-size-large'));
       chi.tab(document.getElementById('example-icon-base'));
       chi.tab(document.getElementById('example-icon-inverse'));
       chi.tab(document.getElementById('example-icon-vertical-base'));
