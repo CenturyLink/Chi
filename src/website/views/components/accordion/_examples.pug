@@ -747,16 +747,16 @@ script.
       chi.accordion(accordionBase);
       chi.accordion(accordionPortal);
       chi.accordion(accordionNested);
-      toggleAccordionOne.addEventListener('click', () => {
+      toggleAccordionOne.addEventListener('click', function() {
         individualAccordions.toggle(document.getElementById('invividual-accordion-item-1'));
       });
-      toggleAccordionTwo.addEventListener('click', () => {
+      toggleAccordionTwo.addEventListener('click', function() {
         individualAccordions.toggle(document.getElementById('invividual-accordion-item-2'));
       });
-      expandAll.addEventListener('click', () => {
+      expandAll.addEventListener('click', function() {
         expandCollapseAccordion.expandAll();
       });
-      collapseAll.addEventListener('click', () => {
+      collapseAll.addEventListener('click', function() {
         expandCollapseAccordion.collapseAll();
       });
       chi.accordion(document.getElementById('example-size-sm'));
