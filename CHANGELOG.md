@@ -1,4 +1,39 @@
 # CHANGELOG
+## 3.4.0 (November 13, 2020)
+### Components
+#### Added
+* Added: Accordion component to toggle between showing and hiding content.
+* Added: Data table component to present data sets in a simple and organized way. Unlike standard HTML tables, data table is responsive and compatible with all screen sizes.
+* Added: Modal JavaScript now supports chiModalShown and chiModalHidden event emission.
+* Added: Picker and Picker group now support styles for disabled states.
+* Added: Number input now supports styles for required states.
+#### Changed
+* Changed: Tooltip animation is now more subtle based on UX feedback.
+* Changed: Badge component now supports text size utility classes.
+* Changed: Radio button, Checkbox, and Toggle switch styles have been simplified to reduce size of chi.css.
+* Changed: Label wrappers `chi-label__wrapper` can now be rendered outside of `chi-form__item` to support forms with `legend` tags.
+* Changed: File input disabled state is now consistent with button disabled state.
+* Changed: Number input expanded disabled state is now consistent with button disabled state.
+* Changed: Number input no longer renders semantic border and focus colors when disabled.
+* Changed: Text input, Textarea, Number input, and Date picker disabled text color has been updated.
+* Changed: Tabs with class -vertical and -portal now render first level tab items with a min-height.
+#### Fixed
+* Fixed: Number input did not support disabled buttons in min/max scenarios.
+* Fixed: Sass lint warnings have been resolved.
+### Documentation
+#### Added
+* Added: Radio button documentation now includes examples for Base, Checked, Disabled, Required, Optional, Help, and Error.
+* Added: Select documentation now includes examples for Required, Optional, Help, Message, and Error.
+* Added: Picker group documentation now includes examples for Checked, Disabled, Required, Optional, Help, and Error.
+* Added: Picker documentation now includes examples for Checked, Disabled, Required, Optional, Help, and Error.
+* Added: Number input documentation now includes examples for Min, Max, Step, Required, Help, Message, and Error.
+* Added: Tab documentation now includes examples for all horizontal and vertical sizes.
+#### Changed
+* Changed: Header portal documentation examples now include tooltips on icon buttons.
+* Changed: Chi version check banner alert color has been changed to appear more prominent.
+#### Fixed
+* Fixed: Tab documentation used same ID for three different tab examples.
+
 ## 3.3.0 (October 30, 2020)
 ### Components
 #### Added
