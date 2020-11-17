@@ -3,3 +3,5 @@ export const ANIMATION_DURATION = {
   MEDIUM: 500,
   LONG: 1000
 };
+
+export const TOOLTIP_ANIMATION_DELAY = 500;
