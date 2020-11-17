@@ -87,7 +87,7 @@ p.-text
   .-p--3
     .chi-form__item
       chi-label(for="unique-id-mms1") Label
-      chi-number-input#unique-id-mms1(value="1", min="0", max="6", step="2")
+      chi-number-input#unique-id-mms1(min="0", max="6", step="2", value="1")
   .example-tabs.-pl--2
     ul.chi-tabs#examples-mms
       li.-active
@@ -97,7 +97,7 @@ p.-text
   .chi-tabs-panel.-active#webcomponent-mms
     :code(lang="html")
       <chi-label for="unique-id-mms1">Label</chi-label>
-      <chi-number-input id="unique-id-mms1" value="1" min="0" max="6" step="2"></chi-number-input>
+      <chi-number-input id="unique-id-mms1" min="0" max="6" step="2" value="1"></chi-number-input>
   .chi-tabs-panel#html-mms
     .chi-tab__description
       span.-text--grey
@@ -108,7 +108,7 @@ p.-text
       <div class="chi-form__item">
         <label class="chi-label" for="unique-id-mms1">Label</label>
         <div class="chi-number-input">
-          <input id="unique-id-mms1" type="number" class="chi-input" value="1" min="0" max="6" step="2" aria-label="Input Label">
+          <input id="unique-id-mms1" type="number" class="chi-input" min="0" max="6" step="2" value="1" aria-label="Input Label">
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>
         </div>
@@ -512,7 +512,7 @@ p.-text
   .-p--3
     .chi-form__item
       chi-label(for="unique-id-emm1") Label
-      chi-number-input(expanded=true, value="1", min="0", max="6", step="2")#unique-id-emm1
+      chi-number-input(expanded=true, min="0", max="6", step="2", value="1")#unique-id-emm1
   .example-tabs.-pl--2
     ul.chi-tabs#examples-expanded-minmax
       li.-active
@@ -522,7 +522,7 @@ p.-text
   .chi-tabs-panel.-active#webcomponent-expanded-minmax
     :code(lang="html")
       <chi-label for="unique-id-emm1">Label</chi-label>
-      <chi-number-input expanded id="unique-id-emm1" value="1" min="0" max="6" "step="2"></chi-number-input>
+      <chi-number-input expanded id="unique-id-emm1" min="0" max="6" "step="2" value="1"></chi-number-input>
   .chi-tabs-panel#html-expanded-minmax
     .chi-tab__description
       span.-text--grey
@@ -533,7 +533,7 @@ p.-text
       <div class="chi-form__item">
         <label class="chi-label" for="unique-id-emm1">Label</label>
         <div class="chi-number-input -expanded">
-          <input id="unique-id-emm1" class="chi-input" type="number" value="1" min="0" max="6" "step="2" aria-label="Input Label">
+          <input id="unique-id-emm1" class="chi-input" type="number" min="0" max="6" "step="2" value="1" aria-label="Input Label">
           <button class="chi-button -icon" aria-label="Decrease">
             <div class="chi-button__content">
               <i class="chi-icon icon-minus"></i>
