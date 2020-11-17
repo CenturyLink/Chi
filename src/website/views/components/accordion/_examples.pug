@@ -34,13 +34,13 @@ h3 Base
         .chi-accordion__content
           p.chi-accordion__text Content goes here
   .example-tabs.-pl--2
-    ul#chi-tabs-e1.chi-tabs
+    ul.chi-tabs#example-accordion-base
       li.-disabled
-        a(href='#chi-tabs-e1-web') Web Component
+        a(href=`#webcomponent-accordion-base`) Web Component
       li.-active
-        a(href='#chi-tabs-e1-html') HTML Blueprint
-  #chi-tabs-e1-web.chi-tabs-panel
-  #chi-tabs-e1-html.chi-tabs-panel.-active
+        a(href=`#html-accordion-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-accordion-base
+  .chi-tabs-panel.-active#html-accordion-base
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
@@ -125,13 +125,13 @@ h3 Portal
         .chi-accordion__content
           p.chi-accordion__text Content goes here
   .example-tabs.-pl--2
-    ul#chi-tabs-e2.chi-tabs
+    ul.chi-tabs#example-accordion-portal
       li.-disabled
-        a(href='#chi-tabs-e2-web') Web Component
+        a(href=`#webcomponent-accordion-portal`) Web Component
       li.-active
-        a(href='#chi-tabs-e2-html') HTML Blueprint
-  #chi-tabs-e2-web.chi-tabs-panel
-  #chi-tabs-e2-html.chi-tabs-panel.-active
+        a(href=`#html-accordion-portal`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-accordion-portal
+  .chi-tabs-panel.-active#html-accordion-portal
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
@@ -240,13 +240,13 @@ h3 Nested Accordions
                     .chi-accordion__content
                       p.chi-accordion__text Content goes here
   .example-tabs.-pl--2
-    ul#chi-tabs-e2.chi-tabs
+    ul.chi-tabs#example-accordion-nested
       li.-disabled
-        a(href='#chi-tabs-e2-web') Web Component
+        a(href=`#webcomponent-accordion-nested`) Web Component
       li.-active
-        a(href='#chi-tabs-e2-html') HTML Blueprint
-  #chi-tabs-e2-web.chi-tabs-panel
-  #chi-tabs-e2-html.chi-tabs-panel.-active
+        a(href=`#html-accordion-nested`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-accordion-nested
+  .chi-tabs-panel.-active#html-accordion-nested
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
@@ -363,13 +363,13 @@ h3 Show / Hide / Toggle of individual items of Accordion
               .chi-accordion__content
                 p.chi-accordion__text Content of Accordion item 2
   .example-tabs.-pl--2
-    ul#chi-tabs-e2.chi-tabs
+    ul.chi-tabs#example-accordion-toggle
       li.-disabled
-        a(href='#chi-tabs-e2-web') Web Component
+        a(href=`#webcomponent-accordion-toggle`) Web Component
       li.-active
-        a(href='#chi-tabs-e2-html') HTML Blueprint
-  #chi-tabs-e2-web.chi-tabs-panel
-  #chi-tabs-e2-html.chi-tabs-panel.-active
+        a(href=`#html-accordion-toggle`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-accordion-toggle
+  .chi-tabs-panel.-active#html-accordion-toggle
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
@@ -483,13 +483,13 @@ h3 Expand / Collapse all Accordion items
                     .chi-accordion__content
                       p.chi-accordion__text Content of Accordion item 2.2
   .example-tabs.-pl--2
-    ul#chi-tabs-e2.chi-tabs
+    ul.chi-tabs#example-accordion-expand
       li.-disabled
-        a(href='#chi-tabs-e2-web') Web Component
+        a(href=`#webcomponent-accordion-expand`) Web Component
       li.-active
-        a(href='#chi-tabs-e2-html') HTML Blueprint
-  #chi-tabs-e2-web.chi-tabs-panel
-  #chi-tabs-e2-html.chi-tabs-panel.-active
+        a(href=`#html-accordion-expand`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-accordion-expand
+  .chi-tabs-panel.-active#html-accordion-expand
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
@@ -607,13 +607,13 @@ p.-text Make Accordions appear inactive by adding the class <code>-disabled</cod
         .chi-accordion__content
           p.chi-accordion__text Content goes here
   .example-tabs.-pl--2
-    ul#chi-tabs-e1.chi-tabs
+    ul.chi-tabs#example-accordion-disabled
       li.-disabled
-        a(href='#chi-tabs-e1-web') Web Component
+        a(href=`#webcomponent-accordion-disabled`) Web Component
       li.-active
-        a(href='#chi-tabs-e1-html') HTML Blueprint
-  #chi-tabs-e1-web.chi-tabs-panel
-  #chi-tabs-e1-html.chi-tabs-panel.-active
+        a(href=`#html-accordion-disabled`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-accordion-disabled
+  .chi-tabs-panel.-active#html-accordion-disabled
     :code(lang="html")
       <!-- Base -->
       <div class="chi-accordion">
@@ -657,13 +657,13 @@ p.-text
             .chi-accordion__content
               p.chi-accordion__text Content goes here
   .example-tabs.-pl--2
-    ul#chi-tabs-e3.chi-tabs
+    ul.chi-tabs#example-accordion-sizes
       li.-disabled
-        a(href='#chi-tabs-e3-web') Web Component
+        a(href=`#webcomponent-accordion-sizes`) Web Component
       li.-active
-        a(href='#chi-tabs-e3-html') HTML Blueprint
-  #chi-tabs-e3-web.chi-tabs-panel
-  #chi-tabs-e3-html.chi-tabs-panel.-active
+        a(href=`#html-accordion-sizes`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-accordion-sizes
+  .chi-tabs-panel.-active#html-accordion-sizes
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
@@ -744,6 +744,7 @@ script.
       const expandAll = document.getElementById('expand-all');
       const collapseAll = document.getElementById('collapse-all');
 
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
       chi.accordion(accordionBase);
       chi.accordion(accordionPortal);
       chi.accordion(accordionNested);
