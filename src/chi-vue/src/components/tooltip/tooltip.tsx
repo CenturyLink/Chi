@@ -45,8 +45,7 @@ export default class Tooltip extends Vue {
       this._animation.stop();
     }
 
-    if (this._tooltipElementNode) {
-      if (!this._shown) {
+    if (this._tooltipElementNode && !this._shown) {
         this._shown = true;
         this._animation = ThreeStepsAnimation.animationFactory(
           () => {
@@ -64,7 +63,6 @@ export default class Tooltip extends Vue {
           ANIMATION_DURATION.SHORT
         );
       }
-    }
   }
 
   hide() {
@@ -76,8 +74,7 @@ export default class Tooltip extends Vue {
       this._animation.stop();
     }
 
-    if (this._tooltipElementNode) {
-      if (this._shown) {
+    if (this._tooltipElementNode && this._shown) {
         this._shown = false;
         this._animation = ThreeStepsAnimation.animationFactory(
           () => {
@@ -94,7 +91,6 @@ export default class Tooltip extends Vue {
           },
           ANIMATION_DURATION.SHORT
         );
-      }
     }
   }
 
