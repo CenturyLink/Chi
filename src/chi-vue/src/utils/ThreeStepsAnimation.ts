@@ -1,7 +1,14 @@
-enum AnimationState { Initialized, Preparing, Prepared, Starting, Started, Stopping, Stopped }
+enum AnimationState {
+  Initialized,
+  Preparing,
+  Prepared,
+  Starting,
+  Started,
+  Stopping,
+  Stopped,
+}
 
 export class ThreeStepsAnimation {
-
   private status: AnimationState;
   private readonly prepareFunction: () => void;
   private readonly startFunction: () => void;
@@ -12,7 +19,12 @@ export class ThreeStepsAnimation {
   private prepareAnimationFrame!: number;
   private forceStopped = false;
 
-  constructor(prepareFunction: () => void, startFunction: () => void, endFunction: () => void, animationDuration: number) {
+  constructor(
+    prepareFunction: () => void,
+    startFunction: () => void,
+    endFunction: () => void,
+    animationDuration: number
+  ) {
     this.prepareFunction = prepareFunction;
     this.startFunction = startFunction;
     this.endFunction = endFunction;
@@ -44,7 +56,6 @@ export class ThreeStepsAnimation {
     this.endTimeout = window.setTimeout(() => {
       this.end();
     }, this.animationDuration);
-
   }
 
   stop() {
@@ -78,7 +89,12 @@ export class ThreeStepsAnimation {
     return this.forceStopped;
   }
 
-  static animationFactory(prepareFunction: () => void, startFunction: () => void, endFunction: () => void, animationDuration: number) {
+  static animationFactory(
+    prepareFunction: () => void,
+    startFunction: () => void,
+    endFunction: () => void,
+    animationDuration: number
+  ) {
     const animation = new ThreeStepsAnimation(prepareFunction, startFunction, endFunction, animationDuration);
     animation.prepare();
     return animation;

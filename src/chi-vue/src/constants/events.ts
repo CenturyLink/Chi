@@ -4,13 +4,13 @@ export const DRAWER_EVENTS = {
   HIDE: 'chiDrawerHide',
   SHOWN: 'chiDrawerShown',
   HIDDEN: 'chiDrawerHidden',
-  CLICK_OUTSIDE: 'chiDrawerClickOutside'
+  CLICK_OUTSIDE: 'chiDrawerClickOutside',
 };
 
 /* Pagination */
 export const PAGINATION_EVENTS = {
   PAGE_CHANGE: 'chiPageChange',
-  PAGE_SIZE: 'chiPageSizeChange'
+  PAGE_SIZE: 'chiPageSizeChange',
 };
 
 /* Tooltip */

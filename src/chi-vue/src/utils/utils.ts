@@ -22,3 +22,13 @@ export function uuid4() {
   }
   return uuid;
 }
+
+export function contains(ancestorElement: HTMLElement, descendantElement: HTMLElement): boolean {
+  if (descendantElement.parentElement === ancestorElement) {
+    return true;
+  } else if (!descendantElement.parentElement) {
+    return false;
+  } else {
+    return contains(ancestorElement, descendantElement.parentElement);
+  }
+}

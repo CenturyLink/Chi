@@ -9,13 +9,13 @@ import {
   INVERSE_CLASS,
   BUTTON_CLASSES,
   iconClass,
-  TRANSITIONING_CLASS
-} from '../../constants/classes';
-import { DRAWER_EVENTS } from '../../constants/events';
-import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
-import { ANIMATION_DURATION } from '../../constants/constants';
-import { contains } from '../../../../custom-elements/src/utils/utils';
-import { Backdrop, DrawerPositions } from '../../constants/types';
+  TRANSITIONING_CLASS,
+} from '@/constants/classes';
+import { DRAWER_EVENTS } from '@/constants/events';
+import { ThreeStepsAnimation } from '@/utils/ThreeStepsAnimation';
+import { ANIMATION_DURATION } from '@/constants/constants';
+import { contains } from '@/utils/utils';
+import { Backdrop, DrawerPositions } from '@/constants/types';
 
 @Component
 export default class Drawer extends Vue {
@@ -35,8 +35,8 @@ export default class Drawer extends Vue {
 
   constructor() {
     super();
-    this.animationClasses  = [];
-    this.backdropAnimationClasses  = [];
+    this.animationClasses = [];
+    this.backdropAnimationClasses = [];
   }
 
   show() {
@@ -44,8 +44,7 @@ export default class Drawer extends Vue {
       this.animation.stop();
     }
 
-    if (this.backdropAnimationClasses.length !== 0 ||
-      !this.animationClasses.includes(ACTIVE_CLASS)) {
+    if (this.backdropAnimationClasses.length !== 0 || !this.animationClasses.includes(ACTIVE_CLASS)) {
       this.animation = ThreeStepsAnimation.animationFactory(
         () => {
           this.animationClasses.length = 0;
@@ -77,8 +76,7 @@ export default class Drawer extends Vue {
       this.animation.stop();
     }
 
-    if (!this.backdropAnimationClasses.includes(CLOSED_CLASS) ||
-      this.animationClasses.length !== 0) {
+    if (!this.backdropAnimationClasses.includes(CLOSED_CLASS) || this.animationClasses.length !== 0) {
       this.animation = ThreeStepsAnimation.animationFactory(
         () => {
           this.animationClasses.length = 0;
@@ -109,7 +107,7 @@ export default class Drawer extends Vue {
   @Watch('active')
   activeChange(newValue: boolean, oldValue: boolean) {
     if (!!newValue !== !!oldValue) {
-      this[newValue ? 'show' : 'hide']()
+      this[newValue ? 'show' : 'hide']();
     }
   }
 
@@ -117,9 +115,8 @@ export default class Drawer extends Vue {
     const drawerElement = this.$refs.drawerElement as HTMLElement;
     const clickTarget = ev.target as HTMLElement;
 
-    if (drawerElement.classList.contains(ACTIVE_CLASS) &&
-      !contains(drawerElement, clickTarget)) {
-        this.$emit(DRAWER_EVENTS.CLICK_OUTSIDE);
+    if (drawerElement.classList.contains(ACTIVE_CLASS) && !contains(drawerElement, clickTarget)) {
+      this.$emit(DRAWER_EVENTS.CLICK_OUTSIDE);
     }
   };
 
@@ -147,16 +144,19 @@ export default class Drawer extends Vue {
   }
 
   render() {
-    const closeButton = <button class={`
+    const closeButton = (
+      <button
+        class={`
       ${BUTTON_CLASSES.BUTTON}
       -icon
       -close`}
-      onClick={() => this.$emit(DRAWER_EVENTS.HIDE)}
-      aria-label="Close">
-      <div class={`${BUTTON_CLASSES.CONTENT}`}>
-        <i class={`${iconClass} icon-x`}></i>
-      </div>
-    </button>;
+        onClick={() => this.$emit(DRAWER_EVENTS.HIDE)}
+        aria-label="Close">
+        <div class={`${BUTTON_CLASSES.CONTENT}`}>
+          <i class={`${iconClass} icon-x`}></i>
+        </div>
+      </button>
+    );
 
     const drawer = (
       <div
@@ -165,50 +165,46 @@ export default class Drawer extends Vue {
           ANIMATED_CLASS,
           this.position ? `-${this.position}` : '',
           this.portal ? PORTAL_CLASS : '',
-          this.animationClasses.join(" ")
-        ].filter(cl => cl).join(" ")}
-        ref='drawerElement'
-        >
+          this.animationClasses.join(' '),
+        ]
+          .filter(cl => cl)
+          .join(' ')}
+        ref="drawerElement">
         {this.noHeader
           ? !this.nonClosable
-            ? [
-              closeButton,
-              this.$slots.default
-            ]
+            ? [closeButton, this.$slots.default]
             : this.$slots.default
           : !this.nonClosable
-            ? [
-              <div class={`
+          ? [
+              <div
+                class={`
                 ${DRAWER_CLASSES.HEADER}
               `}>
                 <span class={`${DRAWER_CLASSES.TITLE}`}>{this.title}</span>
                 {closeButton}
               </div>,
-              <div class={`${DRAWER_CLASSES.CONTENT}`}>
-                {this.$slots.default}
-              </div>
+              <div class={`${DRAWER_CLASSES.CONTENT}`}>{this.$slots.default}</div>,
             ]
-            : [
+          : [
               <div class={`${DRAWER_CLASSES.HEADER}`}>
                 <span class={`${DRAWER_CLASSES.TITLE}`}>{this.title}</span>
               </div>,
-              <div class={`${DRAWER_CLASSES.CONTENT}`}>
-                {this.$slots.default}
-              </div>
-            ]
-        }
+              <div class={`${DRAWER_CLASSES.CONTENT}`}>{this.$slots.default}</div>,
+            ]}
       </div>
     );
 
     if (this.backdrop || this.backdrop === '') {
       return (
-        <div class={`
+        <div
+          class={`
         ${BACKDROP_CLASSES.BACKDROP}
         ${ANIMATED_CLASS}
           ${this.backdrop === 'inverse' ? `-${INVERSE_CLASS}` : ''}
           ${this.backdropAnimationClasses}
         `}>
-          <div class={`
+          <div
+            class={`
             ${BACKDROP_CLASSES.WRAPPER}
           `}>
             {drawer}

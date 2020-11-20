@@ -4,11 +4,7 @@
     <h2>Base</h2>
     <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -w-md--6 -py--2">
-        <Pagination
-          :pages="5"
-          :currentPage="3"
-          @chiPageChange="e => pageChange(e)"
-        />
+        <Pagination :pages="5" :currentPage="3" @chiPageChange="e => pageChange(e)" />
       </div>
       <div class="chi-col -w--12 -w-md--6 -py--2 -bg--black">
         <Pagination :pages="5" :currentPage="3" :inverse="true" />
@@ -51,12 +47,7 @@
         <Pagination :pages="12" :currentPage="3" :results="240" />
       </div>
       <div class="chi-col -w--12 -w-md--6 -py--2 -bg--black">
-        <Pagination
-          :pages="12"
-          :currentPage="6"
-          :inverse="true"
-          :results="240"
-        />
+        <Pagination :pages="12" :currentPage="6" :inverse="true" :results="240" />
       </div>
     </div>
 
@@ -72,13 +63,7 @@
         />
       </div>
       <div class="chi-col -w--12 -py--2 -bg--black">
-        <Pagination
-          :pages="12"
-          :currentPage="3"
-          :inverse="true"
-          :results="240"
-          :page-size="true"
-        />
+        <Pagination :pages="12" :currentPage="3" :inverse="true" :results="240" :page-size="true" />
       </div>
     </div>
 
@@ -95,14 +80,7 @@
         />
       </div>
       <div class="chi-col -w--12 -py--2 -bg--black">
-        <Pagination
-          :pages="12"
-          :currentPage="3"
-          :inverse="true"
-          :results="240"
-          :page-size="true"
-          :page-jumper="true"
-        />
+        <Pagination :pages="12" :currentPage="3" :inverse="true" :results="240" :page-size="true" :page-jumper="true" />
       </div>
     </div>
 
@@ -112,46 +90,24 @@
         <Pagination :pages="3" :currentPage="2" :compact="true" />
       </div>
       <div class="chi-col -w--12 -w-md--6 -py--2 -bg--black">
-        <Pagination
-          :pages="3"
-          :currentPage="2"
-          :compact="true"
-          :inverse="true"
-        />
+        <Pagination :pages="3" :currentPage="2" :compact="true" :inverse="true" />
       </div>
     </div>
 
     <h2>Page Jumper</h2>
     <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -w-md--6 -py--2">
-        <Pagination
-          :pages="3"
-          :currentPage="2"
-          :compact="true"
-          :page-jumper="true"
-        />
+        <Pagination :pages="3" :currentPage="2" :compact="true" :page-jumper="true" />
       </div>
       <div class="chi-col -w--12 -w-md--6 -py--2 -bg--black">
-        <Pagination
-          :pages="3"
-          :currentPage="2"
-          :compact="true"
-          :page-jumper="true"
-          :inverse="true"
-        />
+        <Pagination :pages="3" :currentPage="2" :compact="true" :page-jumper="true" :inverse="true" />
       </div>
     </div>
 
     <h2>First and Last page buttons</h2>
     <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -w-md--6 -py--2">
-        <Pagination
-          :pages="3"
-          :currentPage="2"
-          :compact="true"
-          :page-jumper="true"
-          :first-last="true"
-        />
+        <Pagination :pages="3" :currentPage="2" :compact="true" :page-jumper="true" :first-last="true" />
       </div>
       <div class="chi-col -w--12 -w-md--6 -py--2 -bg--black">
         <Pagination
@@ -197,8 +153,8 @@ import Pagination from '../components/pagination/pagination';
 
 @Component({
   components: {
-    Pagination
-  }
+    Pagination,
+  },
 })
 export default class PaginationView extends Vue {
   pageChange(e: Event) {

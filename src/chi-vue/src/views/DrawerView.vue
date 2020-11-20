@@ -53,13 +53,13 @@
     <div class="-position--relative -w--100" style="height: 300px;">
       <button class="chi-button" @click="() => toggleDrawer()">Click me to open the Drawer</button>
       <Drawer
-        @chiDrawerHide="() => this.drawerActive = false"
-        @chiDrawerClickOutside="() => this.drawerActive = false"
+        @chiDrawerHide="() => (this.drawerActive = false)"
+        @chiDrawerClickOutside="() => (this.drawerActive = false)"
         class="-position--absolute"
         :active="this.drawerActive"
         position="left"
-
-        style="top: 50px">
+        style="top: 50px"
+      >
         <div class="-p--2">Drawer content here</div>
       </Drawer>
     </div>
@@ -72,10 +72,9 @@ import Drawer from '../components/drawer/drawer';
 
 @Component({
   components: {
-    Drawer
-  }
+    Drawer,
+  },
 })
-
 export default class DrawerView extends Vue {
   drawerActive = false;
 
