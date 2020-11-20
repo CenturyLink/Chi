@@ -243,12 +243,16 @@ h3 Open on hover
         const buttonOpenOnHover = document.getElementById("button-open-on-hover");
         const popoverOpenOnHover = document.getElementById("popover-open-on-hover");
 
-        buttonOpenOnHover.addEventListener("chiMouseEnter", () => {
+        buttonOpenOnHover.addEventListener("chiMouseEnter", function() {
           popoverOpenOnHover.show();
         });
 
-        buttonOpenOnHover.addEventListener("chiMouseLeave", () => {
+        buttonOpenOnHover.addEventListener("chiMouseLeave", function() {
           popoverOpenOnHover.hide();
+        });
+
+        buttonOpenOnHover.addEventListener('click', function() {
+          popoverOpenOnHover.toggle();
         });
       </script>
   .chi-tabs-panel#html-hover
@@ -269,12 +273,16 @@ h3 Open on hover
         const buttonOpenOnHover = document.getElementById('button-open-on-hover');
         const popover = chi.popover(buttonOpenOnHover);
 
-        buttonOpenOnHover.addEventListener("mouseenter", () => {
+        buttonOpenOnHover.addEventListener("mouseenter", function() {
             popover.show();
           });
 
-        buttonOpenOnHover.addEventListener("mouseleave", () => {
+        buttonOpenOnHover.addEventListener("mouseleave", function() {
           popover.hide();
+        });
+
+        buttonOpenOnHover.addEventListener("click", function() {
+          popover.toggle();
         });
       </script>
 
@@ -682,12 +690,16 @@ script.
       chi.tab(document.getElementById('examples-autohide-true'));
       chi.tab(document.getElementById('examples-hover'));
 
-      buttonOpenOnHover.addEventListener('chiMouseEnter', () => {
+      buttonOpenOnHover.addEventListener('chiMouseEnter', function() {
         popoverOpenOnHover.show();
       });
 
-      buttonOpenOnHover.addEventListener('chiMouseLeave', () => {
+      buttonOpenOnHover.addEventListener('chiMouseLeave', function() {
         popoverOpenOnHover.hide();
+      });
+
+      buttonOpenOnHover.addEventListener('click', function() {
+        popoverOpenOnHover.toggle();
       });
 
       var popovers = [
