@@ -99,12 +99,12 @@ p.-text
                 button.chi-button.-lg(data-chi-epanel-action='previous') Previous
                 button.chi-button.-lg(data-chi-epanel-action='done').-primary Finish
   .example-tabs.-pl--2
-    ul.chi-tabs#example-group-panel
+    ul.chi-tabs#example-base
       li.-active
-        a(href='#web-group-panel') Web Component
+        a(href='#web-example-base') Web Component
       li
-        a(href='#html-group-panel') HTML Blueprint
-  #web-group-panel.chi-tabs-panel.-active
+        a(href='#html-example-base') HTML Blueprint
+  #web-example-base.chi-tabs-panel.-active
     :code(lang="html")
       <chi-expansion-panel step="1" title="Panel title" state="active">
         <div slot="active">
@@ -124,7 +124,7 @@ p.-text
       <chi-expansion-panel step="2" title="Panel title"></chi-expansion-panel>
       <chi-expansion-panel step="3" title="Panel title"></chi-expansion-panel>
       <chi-expansion-panel step="4" title="Panel title"></chi-expansion-panel>
-  #html-group-panel.chi-tabs-panel
+  #html-example-base.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
@@ -570,7 +570,7 @@ p.-text
 
 h3 No step number
 p.-text Step numbering is optional and can be easily omitted.
-.example.-mb--3#example3
+.example.-mb--3#example8
   .-p--3.-p-lg--6.-bg--grey-10
     .-mw--720.-mx--auto
       .chi-epanel.-no-step.-active(data-chi-epanel-group='example8')
