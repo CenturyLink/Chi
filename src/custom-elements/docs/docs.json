@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-11-13T04:21:20",
+  "timestamp": "2020-11-20T14:45:14",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -523,6 +523,24 @@
           "cancelable": true,
           "composed": true,
           "docs": "to emit a custom event when button is clicked.",
+          "docsTags": []
+        },
+        {
+          "event": "chiMouseEnter",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "to emit a custom event when the mouse pointer is moved onto the button.",
+          "docsTags": []
+        },
+        {
+          "event": "chiMouseLeave",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "to emit a custom event when the mouse pointer is moved out of the button.",
           "docsTags": []
         }
       ],
