@@ -59,6 +59,14 @@ export class Button {
    *  to emit a custom event when button is clicked.
    */
   @Event() chiClick: EventEmitter<any>;
+  /**
+   *  to emit a custom event when the mouse pointer is moved onto the button.
+   */
+  @Event() chiMouseEnter: EventEmitter<any>;
+  /**
+   *  to emit a custom event when the mouse pointer is moved out of the button.
+   */
+  @Event() chiMouseLeave: EventEmitter<any>;
 
   @Watch('size')
   sizeValidation(newValue: string) {
@@ -103,6 +111,14 @@ export class Button {
     this.chiClick.emit();
   }
 
+  _buttonMouseEnter() {
+    this.chiMouseEnter.emit();
+  }
+
+  _buttonMouseLeave() {
+    this.chiMouseLeave.emit();
+  }
+
   render() {
     if (this.type === 'close') {
       return (
@@ -126,6 +142,8 @@ export class Button {
           ${this.disabled ? '-disabled' : ''}
           ${this.extraClass ? this.extraClass : ''}`}
           onClick={() => this._buttonClicked()}
+          onMouseEnter={() => this._buttonMouseEnter()}
+          onMouseLeave={() => this._buttonMouseLeave()}
           disabled={this.disabled}
           {...(this.alternativeText && {'aria-label': this.alternativeText})}
         >

@@ -220,6 +220,72 @@ p.-text
       <button id='popover-1' class="chi-button" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover content</p></div>'>Popover</button>
       <script>chi.popover(document.getElementById('popover-1'));</script>
 
+h3 Open on hover
+.example.-mb--3
+  .-p--3
+    .-position--relative
+      chi-button#button-open-on-hover Hover me!
+      chi-popover#popover-open-on-hover(variant="text", arrow,  reference="#button-open-on-hover")
+        | Popover content
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-hover
+      li.-active
+        a(href=`#webcomponent-hover`) Web Component
+      li
+        a(href=`#html-hover`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-hover
+    .chi-tab__description
+      | Use the available methods to show / hide popover when <code>chiMouseEnter</code>, <code>chiMouseLeave</code> or any other event is triggered
+    :code(lang="html")
+      <chi-button id="button-open-on-hover">Hover me!</chi-button>
+      <chi-popover id="popover-open-on-hover" variant="text" arrow="arrow" reference="#button-open-on-hover">Popover content</chi-popover>
+      <script>
+        const buttonOpenOnHover = document.getElementById("button-open-on-hover");
+        const popoverOpenOnHover = document.getElementById("popover-open-on-hover");
+
+        buttonOpenOnHover.addEventListener("chiMouseEnter", function() {
+          popoverOpenOnHover.show();
+        });
+
+        buttonOpenOnHover.addEventListener("chiMouseLeave", function() {
+          popoverOpenOnHover.hide();
+        });
+
+        buttonOpenOnHover.addEventListener('click', function() {
+          popoverOpenOnHover.toggle();
+        });
+      </script>
+  .chi-tabs-panel#html-hover
+    .chi-tab__description
+      | Use the available methods to show / hide popover when <code>mouseEnter</code>, <code>mouseLeave</code> or any other event is triggered
+    :code(lang="html")
+      <button class="chi-button" id="button-open-on-hover" data-target="#popover-open-on-hover">Hover me!</button>
+      <section class="chi-popover" id="popover-open-on-hover" aria-modal="true" role="dialog" aria-label="Popover title">
+        <header class="chi-popover__header">
+          <h2 class="chi-popover__title">Popover title</h2>
+        </header>
+        <div class="chi-popover__content">
+          <p class="chi-popover__text">Popover content</p>
+        </div>
+      </section>
+
+      <script>
+        const buttonOpenOnHover = document.getElementById('button-open-on-hover');
+        const popover = chi.popover(buttonOpenOnHover);
+
+        buttonOpenOnHover.addEventListener("mouseenter", function() {
+            popover.show();
+          });
+
+        buttonOpenOnHover.addEventListener("mouseleave", function() {
+          popover.hide();
+        });
+
+        buttonOpenOnHover.addEventListener("click", function() {
+          popover.toggle();
+        });
+      </script>
+
 h3 Positioning
 p.-text
   | Further positions can be used in this mode: <code>top</code>,
@@ -611,6 +677,9 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function () {
+      const buttonOpenOnHover = document.getElementById('button-open-on-hover');
+      const popoverOpenOnHover = document.getElementById('popover-open-on-hover');
+
       chi.tab(document.getElementById('examples-default'));
       chi.tab(document.getElementById('examples-titled'));
       chi.tab(document.getElementById('examples-position'));
@@ -619,6 +688,19 @@ script.
       chi.tab(document.getElementById('examples-positioning'));
       chi.tab(document.getElementById('examples-interaction'));
       chi.tab(document.getElementById('examples-autohide-true'));
+      chi.tab(document.getElementById('examples-hover'));
+
+      buttonOpenOnHover.addEventListener('chiMouseEnter', function() {
+        popoverOpenOnHover.show();
+      });
+
+      buttonOpenOnHover.addEventListener('chiMouseLeave', function() {
+        popoverOpenOnHover.hide();
+      });
+
+      buttonOpenOnHover.addEventListener('click', function() {
+        popoverOpenOnHover.toggle();
+      });
 
       var popovers = [
         {button: '#example-3-button',               popover: '#example-3-popover',              action: "toggle"},
