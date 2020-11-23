@@ -4,4 +4,4 @@ export const ANIMATION_DURATION = {
   LONG: 1000
 };
 
-export const TOOLTIP_ANIMATION_DELAY = 500;
+export const TOOLTIP_ANIMATION_DELAY = 300;
