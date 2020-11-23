@@ -1,5 +1,5 @@
 declare class ComponentLibrary {
-  components: Record<string, any>;
+  components: Record<string, Function>;
 }
 
 const exportComponent: ComponentLibrary = {
