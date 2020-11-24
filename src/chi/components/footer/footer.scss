@@ -50,8 +50,8 @@
       li {
         a {
           display: block;
-          font-weight: $font-weight-normal;
           font-size: $font-size-xs;
+          font-weight: $font-weight-normal;
           padding: 0.25rem 0.5rem;
 
           @include respond-to(md) {
