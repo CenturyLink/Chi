@@ -50,7 +50,8 @@
       li {
         a {
           display: block;
-          font-weight: $font-weight-semi-bold;
+          font-weight: $font-weight-normal;
+          font-size: $font-size-xs;
           padding: 0.25rem 0.5rem;
 
           @include respond-to(md) {
@@ -59,10 +60,6 @@
           }
         }
       }
-    }
-
-    a {
-      color: $color-text-white;
     }
 
     .chi-footer__language {
@@ -123,6 +120,10 @@
       flex-grow: 1;
       justify-content: center;
       width: 100%;
+
+      a {
+        color: $color-text-white;
+      }
 
       ul {
         display: flex;
