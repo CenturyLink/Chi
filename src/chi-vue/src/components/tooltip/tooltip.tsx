@@ -6,37 +6,46 @@ import { TooltipColors, TooltipPositions } from '../../constants/types';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { TOOLTIP_ANIMATION_DELAY as ANIMATION_DELAY, ANIMATION_DURATION } from '../../constants/constants';
 import { createPopper } from '@popperjs/core';
+import { Instance as PopoverInstance } from '@popperjs/core/lib/types';
 
 @Component
 export default class Tooltip extends Vue {
   @Prop() message!: string;
-  @Prop() color?: TooltipColors;
+  @Prop({ default: '' }) color?: TooltipColors;
   @Prop({ default: 'top' }) position?: TooltipPositions;
 
   _tooltipElement?: JSX.Element;
   _tooltipElementNode!: HTMLElement;
   _shown: boolean;
-  tooltipElementClasses: string[];
   _uuid!: string;
   _animationTimeout?: number;
   _animation?: ThreeStepsAnimation;
+  _popper!: PopoverInstance;
 
   constructor() {
     super();
     this._shown = false;
-    this.tooltipElementClasses = [
-      TOOLTIP_CLASSES.TOOLTIP_ELEMENT,
-      this.color === 'light' ? LIGHT_CLASS : ''
-    ];
+  }
+
+  generateTooltipElement() {
+    this._tooltipElement = (
+      <div id={this._uuid} class={[
+        TOOLTIP_CLASSES.TOOLTIP_ELEMENT,
+        this.color === 'light' ? LIGHT_CLASS : ''
+      ].join(' ')}>
+        <span>{this.message}</span>
+      </div>
+    );
   }
 
   beforeMount() {
     this._uuid = uuid4();
-    this._tooltipElement = (
-      <div id={this._uuid} class={this.tooltipElementClasses.join(' ')}>
-        <span>{this.message}</span>
-      </div>
-    );
+    this.generateTooltipElement();
+  }
+
+  beforeUpdate() {
+    this.generateTooltipElement();
+    this._popper.setOptions({ placement: this.position });
   }
 
   show() {
@@ -112,7 +121,7 @@ export default class Tooltip extends Vue {
           this.hide();
         }
 
-        createPopper(slotElement as Element, this._tooltipElementNode, {
+        this._popper = createPopper(slotElement as Element, this._tooltipElementNode, {
           placement: this.position,
           modifiers: [
             {
