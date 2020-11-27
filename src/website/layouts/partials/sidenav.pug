@@ -11,6 +11,31 @@ ul.chi-tabs.-vertical.-lg.-animated
                 if section.disabled
                   //- li
                   //-   a(href=`${rootPath}${section.path}`, disabled="disabled") #{section.title}
+                else if section.accessibilityAccordion
+                  li
+                    .chi-accordion.accessibility-accordion
+                      .chi-accordion__item.-expanded
+                        button.chi-accordion__trigger
+                          .chi-accordion__title #{section.title}
+                          i.chi-icon.icon-chevron-down
+                        .chi-accordion__content.-p--0
+                          ul.chi-tabs__subtabs
+                            li(class=`${'foundations/color-sensory' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/color-sensory`) Color and sensory
+                            li(class=`${'foundations/images' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/images`) Images
+                            li(class=`${'foundations/links-and-forms' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/links-and-forms`) Links and forms
+                            li(class=`${'foundations/other' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/other`) Other
+                            li(class=`${'foundations/page-structure' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/page-structure`) Page structure
+                            li(class=`${'foundations/tables' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/tables`) Tables
+                            li(class=`${'foundations/text' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/text`) Text
+                            li(class=`${'foundations/using-keyboard' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/using-keyboard`) Using the keyboard
                 else
                   li(class=section.path === path ? "-active" : "")
                     a(href=`${rootPath}${section.path}`) #{section.title}
@@ -26,6 +51,31 @@ ul.chi-tabs.-vertical.-lg.-animated
                 if section.disabled
                   //- li
                   //-   a(href=`${rootPath}${section.path}`, disabled="disabled") #{section.title}
+                else if section.accessibilityAccordion
+                  li
+                    .chi-accordion.accessibility-accordion
+                      .chi-accordion__item
+                        button.chi-accordion__trigger
+                          .chi-accordion__title #{section.title}
+                          i.chi-icon.icon-chevron-down
+                        .chi-accordion__content.-p--0
+                          ul.chi-tabs__subtabs
+                            li(class=`${'foundations/color-sensory' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/color-sensory`) Color and sensory
+                            li(class=`${'foundations/images' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/images`) Images
+                            li(class=`${'foundations/links-and-forms' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/links-and-forms`) Links and forms
+                            li(class=`${'foundations/other' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/other`) Other
+                            li(class=`${'foundations/page-structure' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/page-structure`) Page structure
+                            li(class=`${'foundations/tables' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/tables`) Tables
+                            li(class=`${'foundations/text' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/text`) Text
+                            li(class=`${'foundations/using-keyboard' === path ? "-active" : ""}`)
+                              a(href=`${rootPath}foundations/using-keyboard`) Using the keyboard
                 else
                   li(class=section.path === path ? "-active" : "")
                     a(href=`${rootPath}${section.path}`) #{section.title}
