@@ -414,3 +414,82 @@ ul.-mb--3
       code= '.-flex-' + size + '--shrink0'
     li
       code= '.-flex-' + size + '--shrink1'
+h2 Basis
+p.-text Use the <code>.-flex--basis*</code> class to specifies the initial size of the flex item, before any available space is distributed according to the flex factors.
+p.-text
+  | Flex-basis utility classes can be defined using the format <code>-flex-basis-{breakpoint}--{value}</code>.
+  | Breakpoints supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
+
+h3 Target all breakpoints
+p.-text Flex-basis utility classes with no breakpoint defined apply to all screen sizes.
+section.chi-table.-bordered.-mt--3.-mb--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Flex-basis Class
+          th
+            div Value
+      tbody
+        each type in ['auto', '*']
+          tr
+            td(width='40%')
+              code= '-flex-basis--' + type
+            td
+              if (type == 'auto')
+                code= 'flex-basis: ' + type + ';'
+              else
+                = 'can be incremented by 5%'
+
+h3 Target specific breakpoints
+p.-text To target a specific breakpoint, add the breakpoint abbreviation to the class.
+section.chi-table.-bordered.-mt--3.-mb--3
+  div
+    table(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Flex-basis Class
+          th
+            div Value
+      tbody
+        each size in ['sm', 'md', 'lg', 'xl']
+          each type in ['auto', '*']
+            tr
+              td.-text(width='40%')
+                code= '-flex-basis-' + size + '--' + type
+              td
+                if (type == 'auto')
+                  | Visible only from <code>#{size}</code>
+                else
+                  | Visible only from <code>#{size}</code>, can be incremented by 5%
+
+h3 Examples
+.example.-mb--3
+  .-p--3.-pb--1
+    .-mb--2.-d--flex.-show--example.-bg--grey-10
+      .-text.-p--2.-flex-basis--25 -flex-basis--25
+    .-mb--2.-d--flex.-show--example.-bg--grey-10
+      .-text.-p--2.-flex-basis--50 -flex-basis--50
+    .-mb--2.-d--flex.-show--example.-bg--grey-10
+      .-text.-p--2.-flex-basis-md--75 -flex-basis-md--75
+    .-d--flex.-show--example.-bg--grey-10
+      .-text.-p--2.-flex-basis-xl--50 -flex-basis-xl--50
+  :code(lang="html")
+    <!-- flex-basis 25% on all breakpoints -->
+    <div class="-d--flex">
+      <div class="-flex-basis--25"></div>
+    </div>
+    <!-- flex-basis 50% on all breakpoints -->
+    <div class="-d--flex">
+      <div class="-flex-basis--50"></div>
+    </div>
+    <!-- flex-basis 75% from md -->
+    <div class="-d--flex">
+      <div class="-flex-basis-md--75"></div>
+    </div>
+    <!-- flex-basis 50% from xl -->
+    <div class="-d--flex">
+      <div class="-flex-basis-xl--50"></div>
+    </div>
