@@ -52,3 +52,8 @@ export const PAGINATION_CLASSES = {
 
 /* Input */
 export const inputClass = 'chi-input';
+
+/* Tooltip */
+export const TOOLTIP_CLASSES = {
+  TOOLTIP_ELEMENT: 'chi-tooltip'
+};

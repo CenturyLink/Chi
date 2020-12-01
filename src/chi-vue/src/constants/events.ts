@@ -12,3 +12,11 @@ export const PAGINATION_EVENTS = {
   PAGE_CHANGE: 'chiPageChange',
   PAGE_SIZE: 'chiPageSizeChange'
 };
+
+/* Tooltip */
+export const TOOLTIP_EVENTS = {
+  SHOW: 'chiTooltipShow',
+  HIDE: 'chiTooltipHide',
+  SHOWN: 'chiTooltipShown',
+  HIDDEN: 'chiTooltipHidden'
+};
