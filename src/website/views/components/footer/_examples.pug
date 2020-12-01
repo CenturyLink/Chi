@@ -2,7 +2,14 @@ h2 Examples
 p.-text
   | To use footers, apply the class <code>chi-footer</code> to <code>&lt;footer&gt;</code>
   | and wrap all content in <code>chi-footer__content</code>.
-
+.chi-alert.-info.-mb--2
+  i.chi-alert__icon.chi-icon.icon-circle-info
+  .chi-alert__content
+    p.chi-alert__title
+      | Localization
+    p.chi-alert__text
+      | The Footer's language drop down is not functional by default as language support varies by project.
+      | Please ensure the drop down is populated with the correct languages and URL paths relevant to your project prior to release.
 h3 External
 p.-text
   | Show the external footer for all public facing webpages.
@@ -95,9 +102,26 @@ p.-text
                     a(href="https://www.lumen.com/help/en-us/home.html" target="_blank") Support
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
-            .chi-footer__language
-              select.chi-input(aria-label="Select Language")
-                option(selected) EN
+            .chi-dropdown.chi-footer__language
+              a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language")
+                .chi-button__content
+                  i.chi-icon.icon-globe-network
+                  span English
+              .chi-dropdown__menu.-w--sm.-text--body
+                a.chi-dropdown__menu-item.-active(href="#")
+                  | English
+                a.chi-dropdown__menu-item(href="#")
+                  | Español
+                a.chi-dropdown__menu-item(href="#")
+                  | Português
+                a.chi-dropdown__menu-item(href="#")
+                  | Français
+                a.chi-dropdown__menu-item(href="#")
+                  | Deutsch
+                a.chi-dropdown__menu-item(href="#")
+                  | 简体中文
+                a.chi-dropdown__menu-item(href="#")
+                  | 日本語 
             .chi-footer__links
               ul
                 li
@@ -145,6 +169,11 @@ p.-text
         a(href=`#html-external`) HTML Blueprint
   .chi-tabs-panel#webcomponent-external
   .chi-tabs-panel.-active#html-external
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <footer class="chi-footer">
         <div class="chi-footer__content">
@@ -278,10 +307,22 @@ p.-text
           </div>
           <div class="chi-footer__internal">
             <div class="chi-footer__internal-content -mw--1200">
-              <div class="chi-footer__language">
-                <select class="chi-input">
-                  <option selected>EN</option>
-                </select>
+              <div class="chi-dropdown chi-footer__language">
+                <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-globe-network"></i>
+                    <span>English</span>
+                  </div>
+                </a>
+                <div class="chi-dropdown__menu -w--sm -text--body">
+                  <a class="chi-dropdown__menu-item -active" href="#">English</a>
+                  <a class="chi-dropdown__menu-item" href="#">Español</a>
+                  <a class="chi-dropdown__menu-item" href="#">Português</a>
+                  <a class="chi-dropdown__menu-item" href="#">Français</a>
+                  <a class="chi-dropdown__menu-item" href="#">Deutsch</a>
+                  <a class="chi-dropdown__menu-item" href="#">简体中文</a>
+                  <a class="chi-dropdown__menu-item" href="#">日本語</a>
+                </div>
               </div>
               <div class="chi-footer__links">
                 <ul>
@@ -343,6 +384,8 @@ p.-text
         </div>
       </footer>
 
+      <script>chi.dropdown(document.getElementById('language-dropdown-button'));</script>
+
 h3 Internal
 p.-text
   | Show the internal footer for authenticated users.
@@ -352,9 +395,26 @@ p.-text
       .chi-footer__content
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
-            .chi-footer__language
-              select.chi-input(aria-label="Select Language")
-                option(selected) EN
+            .chi-dropdown.chi-footer__language
+              a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language-dropdown-button2" data-position="top-start" aria-label="Select your preferred language")
+                .chi-button__content
+                  i.chi-icon.icon-globe-network
+                  span English
+              .chi-dropdown__menu.-w--sm.-text--body
+                a.chi-dropdown__menu-item.-active(href="#")
+                  | English
+                a.chi-dropdown__menu-item(href="#")
+                  | Español
+                a.chi-dropdown__menu-item(href="#")
+                  | Português
+                a.chi-dropdown__menu-item(href="#")
+                  | Français
+                a.chi-dropdown__menu-item(href="#")
+                  | Deutsch
+                a.chi-dropdown__menu-item(href="#")
+                  | 简体中文
+                a.chi-dropdown__menu-item(href="#")
+                  | 日本語
             .chi-footer__links
               ul
                 li
@@ -402,15 +462,32 @@ p.-text
         a(href=`#html-internal`) HTML Blueprint
   .chi-tabs-panel#webcomponent-internal
   .chi-tabs-panel.-active#html-internal
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <footer class="chi-footer">
         <div class="chi-footer__content">
           <div class="chi-footer__internal">
             <div class="chi-footer__internal-content -mw--1200">
-              <div class="chi-footer__language">
-                <select class="chi-input">
-                  <option selected>EN</option>
-                </select>
+              <div class="chi-dropdown chi-footer__language">
+                <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-globe-network"></i>
+                    <span>English</span>
+                  </div>
+                </a>
+                <div class="chi-dropdown__menu -w--sm -text--body">
+                  <a class="chi-dropdown__menu-item -active" href="#">English</a>
+                  <a class="chi-dropdown__menu-item" href="#">Español</a>
+                  <a class="chi-dropdown__menu-item" href="#">Português</a>
+                  <a class="chi-dropdown__menu-item" href="#">Français</a>
+                  <a class="chi-dropdown__menu-item" href="#">Deutsch</a>
+                  <a class="chi-dropdown__menu-item" href="#">简体中文</a>
+                  <a class="chi-dropdown__menu-item" href="#">日本語</a>
+                </div>
               </div>
               <div class="chi-footer__links">
                 <ul>
@@ -472,10 +549,14 @@ p.-text
         </div>
       </footer>
 
+      <script>chi.dropdown(document.getElementById('language-dropdown-button'));</script>
+
 script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+      chi.dropdown(document.getElementById('language-dropdown-button'));
+      chi.dropdown(document.getElementById('language-dropdown-button2'));
     }
   );
