@@ -57,3 +57,13 @@ export const inputClass = 'chi-input';
 export const TOOLTIP_CLASSES = {
   TOOLTIP_ELEMENT: 'chi-tooltip',
 };
+
+/* Data Table */
+export const DATA_TABLE_CLASSES = {
+  DATA_TABLE: 'chi-data-table',
+  HEAD: 'chi-data-table__head',
+  BODY: 'chi-data-table__body',
+  CELL: 'chi-data-table__cell',
+  EXPANDABLE: '-expandable',
+  SELECTABLE: '-selectable',
+};

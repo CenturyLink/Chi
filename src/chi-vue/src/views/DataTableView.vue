@@ -16,6 +16,9 @@
       <template #actions="payload">
         <Actions :id="payload.id" />
       </template>
+      <template #accordionContent="payload">
+        Accordion content goes here {{payload.id}}
+      </template>
     </ChiTable>
   </div>
 </template>
@@ -23,8 +26,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import DataTable from '../components/data-table/DataTable';
-import Actions from './datatable-actions.vue';
-import TicketPopover from './datatable-popover.vue';
+import Actions from './DataTableTemplates/datatable-actions.vue';
+import TicketPopover from './DataTableTemplates/datatable-popover.vue';
 
 @Component({
   components: {
@@ -62,8 +65,13 @@ import TicketPopover from './datatable-popover.vue';
         },
         body: [
           {
+            id: 'asdasd',
             accordion: {
-              content: 'Content'
+              value: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."`
             },
             active: false,
             data: [
@@ -78,7 +86,11 @@ import TicketPopover from './datatable-popover.vue';
             ],
           },
           {
+            id: 'qweqwe',
             active: false,
+            accordion: {
+              value: "asdasdasd"
+            },
             data: [
               '',
               { label: 'Ticket ID', template: 'ticketid', payload: {id: 'NTM000021064'} },
@@ -104,7 +116,14 @@ import TicketPopover from './datatable-popover.vue';
             ],
           },
           {
+            id: "erty",
             active: false,
+            accordion: {
+              template: 'accordionContent',
+              payload: {
+                id: 'etry'
+              }
+            },
             data: [
               '',
               { label: 'Ticket ID', template: 'ticketid', payload: {id: 'NTM000021066'} },
@@ -115,9 +134,6 @@ import TicketPopover from './datatable-popover.vue';
               { label: 'Product/Service ID', value: 'SVUJW034781A' },
               { label: 'Actions', template: 'actions', payload: {id: 'NTM000021066'}, align: 'right'},
             ],
-            accordion: {
-              content: 'Content'
-            }
           },
           {
             active: false,
