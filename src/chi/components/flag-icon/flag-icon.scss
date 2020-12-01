@@ -1,0 +1,92 @@
+@import '_variables';
+@import '_mixins';
+
+$regions: (
+  ar: (
+    background-position-xs: 0 0,
+    background-position: 0 0,
+    background-position-md: 0 0
+  ),
+  au: (
+    background-position-xs: -1.125rem 0,
+    background-position: -1.5rem 0,
+    background-position-md: -2.25rem 0
+  ),
+  br: (
+    background-position-xs: -2.25rem 0,
+    background-position: -3rem 0,
+    background-position-md: -4.5rem 0
+  ),
+  co: (
+    background-position-xs: 0 -0.75rem,
+    background-position: 0 -1rem,
+    background-position-md: 0 -1.5rem
+  ),
+  de: (
+    background-position-xs: -1.125rem -0.75rem,
+    background-position: -1.5rem -1rem,
+    background-position-md: -2.25rem -1.5rem
+  ),
+  hk: (
+    background-position-xs: -2.25rem -0.75rem,
+    background-position: -3rem -1rem,
+    background-position-md: -4.5rem -1.5rem
+  ),
+  in: (
+    background-position-xs: 0 -1.5rem,
+    background-position: 0 -2rem,
+    background-position-md: 0 -3rem
+  ),
+  jp: (
+    background-position-xs: -1.125rem -1.5rem,
+    background-position: -1.5rem -2rem,
+    background-position-md: -2.25rem -3rem
+  ),
+  mx: (
+    background-position-xs: -2.25rem -1.5rem,
+    background-position: -3rem -2rem,
+    background-position-md: -4.5rem -3rem
+  ),
+  sg: (
+    background-position-xs: 0 -2.25rem,
+    background-position: 0 -3rem,
+    background-position-md: 0 -4.5rem
+  ),
+  gb: (
+    background-position-xs: -1.125rem -2.25rem,
+    background-position: -1.5rem -3rem,
+    background-position-md: -2.25rem -4.5rem
+  ),
+  us: (
+    background-position-xs: -2.25rem -2.25rem,
+    background-position: -3rem -3rem,
+    background-position-md: -4.5rem -4.5rem
+  )
+);
+
+.chi-flag-icon {
+  background-image: url('//assets.ctl.io/images/icon-flags.svg');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 4.5rem 4rem;
+  box-shadow: inset 0 0 1px 1px rgba($color-black, 0.2);
+  display: inline-block;
+  height: 1rem;
+  width: 1.5rem;
+
+  &.-xs {
+    background-size: 3.375rem;
+    height: 0.75rem;
+    width: 1.125rem;
+  }
+
+  @each $region in map-keys($regions) {
+    &.icon-#{$region} {
+      background-position: map-get(map-get($regions, $region), background-position);
+
+      &.-xs {
+        background-position: map-get(map-get($regions, $region), background-position-xs);
+      }
+    }
+  }
+}

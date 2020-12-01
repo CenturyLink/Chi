@@ -1,0 +1,78 @@
+h2 Examples
+h3 Country/Region
+.example.-b--0
+  section.chi-table.-bordered
+    div
+      table
+        thead
+          tr
+            th
+              div Icon
+            th
+              div Name
+            th
+              div Class
+        tbody
+          each val, type in {ar:'Argentina', au:'Australia', br:'Brazil', co:'Colombia', de:'Germany', hk:'Hong Kong', in:'India', jp:'Japan', mx:'Mexico', sg:'Singapore', gb:'United Kingdom', us:'United States'}
+            tr
+              td.-w--20
+                i(class=`chi-flag-icon icon-${type}`)
+              td
+                p.-m--0=val
+              td
+                code=`icon--${type}`
+.example.-bt--0.-mb--3
+  .example-tabs.-bt--0.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href='#webcomponent-base') Web Component
+      li.-active
+        a(href='#webfont-base') HTML Blueprint
+  #webcomponent-base.chi-tabs-panel
+  #webfont-base.chi-tabs-panel.-active
+    :code(lang="html")
+      <i class="chi-flag-icon icon-ar"></i>
+      <i class="chi-flag-icon icon-au"></i>
+      <i class="chi-flag-icon icon-br"></i>
+      <i class="chi-flag-icon icon-co"></i>
+      <i class="chi-flag-icon icon-de"></i>
+      <i class="chi-flag-icon icon-hk"></i>
+      <i class="chi-flag-icon icon-in"></i>
+      <i class="chi-flag-icon icon-jp"></i>
+      <i class="chi-flag-icon icon-mx"></i>
+      <i class="chi-flag-icon icon-sg"></i>
+      <i class="chi-flag-icon icon-gb"></i>
+      <i class="chi-flag-icon icon-us"></i>
+
+h3 Sizes
+p.-text
+  | Flag icons support the following sizes: <code>-xs</code>, <code>-sm</code>.
+  | By default, flag icons render at 24x16px (<code>-sm</code>).
+.example.-mb--3
+  .-p--3
+    .-d--flex.-align-items--end
+      each size in ['xs', 'sm']
+        div.-p--2.-m--1
+          i(class=`chi-flag-icon icon-us -${size}`)
+          p.-text.-text--center.-mb--0= size
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-sizes
+      li.-disabled
+        a(href='#webcomponent-sizes') Web Component
+      li.-active
+        a(href='#webfont-sizes') HTML Blueprint
+  #webcomponent-sizes.chi-tabs-panel
+  #webfont-sizes.chi-tabs-panel.-active
+    :code(lang="html")
+      <!-- -xs : 18x12px -->
+      <i class="chi-flag-icon icon-us -xs"></i>
+      <!-- -sm : 24x16px -->
+      <i class="chi-flag-icon icon-us -sm"></i>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+    }
+  );
