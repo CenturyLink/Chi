@@ -96,13 +96,15 @@ $border: 0.0625rem;
           height: 0.75rem;
         }
 
-        .chi-icon {
-          color: $color-icon-muted-dark;
-        }
-
-        &:hover {
+        &:not(.-light) {
           .chi-icon {
-            color: $color-icon-primary;
+            color: $color-icon-muted-dark;
+          }
+
+          &:hover {
+            .chi-icon {
+              color: $color-icon-primary;
+            }
           }
         }
       }
