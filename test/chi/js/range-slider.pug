@@ -3,17 +3,17 @@ title: Enterprise Chi-RangeSlider test case Pug
 ---
 script(src='/js/chi.js')
 
-
-.chi-form__item
-  label.chi-label(for='baseRangeSlider') Base Range Slider
+h3 Base
+.chi-form__item(style="width: 500px")
+  label.chi-label(for='baseRangeSlider') Label
   .chi-input__wrapper
     input#baseRangeSlider.chi-input(type='range')
     .chi-input__progress
     .chi-input__thumb
 
-
-.chi-form__item
-  label.chi-label(for='steppedRangeSlider') Stepped Range Slider
+h3 Stepped
+.chi-form__item(style="width: 500px")
+  label.chi-label(for='steppedRangeSlider') Label
   .chi-input__wrapper
     input#steppedRangeSlider.chi-input(type='range', min='0', max='4', step='1')
     .chi-input__tick-bar
@@ -34,8 +34,7 @@ script(src='/js/chi.js')
         .chi-input__tick-label &gt; 3 years
     .chi-input__progress
     .chi-input__thumb
+
 script.
   chi.rangeSlider(document.getElementById('baseRangeSlider'));
   chi.rangeSlider(document.getElementById('steppedRangeSlider'));
-
-
