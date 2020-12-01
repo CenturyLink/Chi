@@ -1,6 +1,6 @@
 describe('chi-drawer', function() {
   before(() => {
-    cy.visit('/tests/js/chi-drawer.html');
+    cy.visit('/tests/js/drawer.html');
   });
 
   describe('Test open & close behavior of Left positioned Drawer', () => {
