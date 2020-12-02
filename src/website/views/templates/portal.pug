@@ -945,14 +945,14 @@ h3 Base
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <!-- Trigger -->
-      <button id="modal-trigger-10" class="chi-button chi-modal__trigger" data-target="#modal-10">
+      <button id="modal-trigger-base" class="chi-button chi-modal__trigger" data-target="#modal-base">
         Launch portal modal
       </button>
 
       <!-- Modal -->
       <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
-          <section id="modal-10" class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <section id="modal-base" class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Modal Title</h2>
               <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
@@ -972,7 +972,7 @@ h3 Base
       </div>
 
       <!-- JavaScript -->
-      <script>chi.modal(document.getElementById('modal-trigger-10'));</script>
+      <script>chi.modal(document.getElementById('modal-trigger-base'));</script>
 
 h3 Alert
 .example.-mb--3
@@ -1009,14 +1009,14 @@ h3 Alert
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <!-- Trigger -->
-      <button id="modal-trigger-11" class="chi-button chi-modal__trigger" data-target="#modal-11">
+      <button id="modal-trigger-alert" class="chi-button chi-modal__trigger" data-target="#modal-alert">
         Launch portal alert modal
       </button>
 
       <!-- Modal -->
       <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
-          <section id="modal-11" class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
+          <section id="modal-alert" class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
             <header class="chi-modal__header">
               <h2 class="chi-modal__title">Alert Modal Title</h2>
               <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
@@ -1042,7 +1042,7 @@ h3 Alert
       </div>
 
       <!-- JavaScript -->
-      <script>chi.modal(document.getElementById('modal-trigger-11'));</script>
+      <script>chi.modal(document.getElementById('modal-trigger-alert'));</script>
 
 h2 Drawer
 .example.-mb--3(style='overflow:hidden;')
@@ -1066,14 +1066,19 @@ h2 Drawer
         a(href=`#html-portal-drawer`) HTML Blueprint
   .chi-tabs-panel#webcomponent-portal-drawer
   .chi-tabs-panel.-active#html-portal-drawer
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <!-- Trigger -->
-      <button id="drawer-trigger-23" class="chi-button -primary chi-drawer__trigger" data-target="#drawer-23">Launch demo drawer</button>
+      <button id="drawer-trigger" class="chi-button -primary chi-drawer__trigger" data-target="#drawer">Launch demo drawer</button>
 
       <!-- Drawer -->
       <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
-          <div id="drawer-23" class="chi-drawer -bottom -portal">
+          <div id="drawer" class="chi-drawer -bottom -portal">
             <div class="chi-drawer__header">
               <span class="chi-drawer__title">
                 Drawer title here
@@ -1092,7 +1097,7 @@ h2 Drawer
       </div>
 
       <!-- JavaScript -->
-      <script>chi.drawer(document.getElementById('drawer-trigger-23'));</script>
+      <script>chi.drawer(document.getElementById('drawer-trigger'));</script>
 
 h2 Accordion
 .example.-mb--3
@@ -1132,8 +1137,8 @@ h2 Accordion
         a(href=`#webcomponent-portal-accordion`) Web Component
       li.-active
         a(href=`#html-portal-accordion`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-accordion-portal
-  .chi-tabs-panel.-active#html-accordion-portal
+  .chi-tabs-panel#webcomponent-portal-accordion
+  .chi-tabs-panel.-active#html-portal-accordion
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
