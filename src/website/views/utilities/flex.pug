@@ -23,19 +23,19 @@ h3 Inline Flexbox container
 p.-text Target specific breakpoints with Display responsive classes.
 ul.-mb--3
   li
-    code .-d--flex
+    code -d--flex
   li
-    code .-d--inline-flex
+    code -d--inline-flex
   each type in ['sm', 'md', 'lg', 'xl']
     li
-      code= '.-d-' + type + '--flex'
+      code= '-d-' + type + '--flex'
     li
-      code= '.-d-' + type + '--inline-flex'
+      code= '-d-' + type + '--inline-flex'
 
 h2 Direction
 p.-text Use direction utilities to define how items will be placed in flex containers.
 h3 Row (default)
-p.-text Use <code>.-flex--row</code> to display items horizontally. In most cases this class
+p.-text Use <code>-flex--row</code> to display items horizontally. In most cases this class
   |  can be omitted as it is the browsers default behavior.
 .example.-mb--3
   .-p--3.-d--flex.-flex--row.-show--example
@@ -49,7 +49,7 @@ p.-text Use <code>.-flex--row</code> to display items horizontally. In most case
       <div>Item 3</div>
     </div>
 h3 Row reverse
-p.-text Use <code>.-flex--row-reverse</code> to display the items horizontally in reverse.
+p.-text Use <code>-flex--row-reverse</code> to display the items horizontally in reverse.
 .example.-mb--3
   .-p--3.-d--flex.-flex--row-reverse.-show--example
     .-text.-p--2 Item 1
@@ -62,7 +62,7 @@ p.-text Use <code>.-flex--row-reverse</code> to display the items horizontally i
       <div>Item 3</div>
     </div>
 h3 Column
-p.-text Use <code>.-flex--column</code> to display items vertically.
+p.-text Use <code>-flex--column</code> to display items vertically.
 .example.-mb--3
   .-p--3.-d--flex.-flex--column.-show--example
     .-text.-p--2 Item 1
@@ -75,7 +75,7 @@ p.-text Use <code>.-flex--column</code> to display items vertically.
       <div>Item 3</div>
     </div>
 h3 Column reverse
-p.-text Use <code>.-flex--column-reverse</code> to display the items vertically in reverse.
+p.-text Use <code>-flex--column-reverse</code> to display the items vertically in reverse.
 .example.-mb--3
   .-p--3.-d--flex.-flex--column-reverse.-show--example
     .-text.-p--2 Item 1
@@ -90,17 +90,17 @@ p.-text Use <code>.-flex--column-reverse</code> to display the items vertically 
 p.-text Target specific breakpoints with Direction responsive classes.
 ul.-mb--3
   li
-    code .-flex--row
+    code -flex--row
   li
-    code .-flex--row-reverse
+    code -flex--row-reverse
   li
-    code .-flex--column
+    code -flex--column
   li
-    code .-flex--column-reverse
+    code -flex--column-reverse
   each size in ['sm', 'md', 'lg', 'xl']
     each type in ['row', 'row-reverse', 'column', 'column-reverse']
       li
-        code= '.-flex-' + size + '--' + type
+        code= '-flex-' + size + '--' + type
 
 h2 Justify content
 p.-text Use justify-content utilities to alter the alignment of flex items on the main axis.
@@ -121,11 +121,11 @@ p.-text Target specific breakpoints with Justify content responsive classes.
 ul.-mb--3
   each type in ['start', 'end', 'center', 'between', 'around']
     li
-      code= '.-justify-content--' + type
+      code= '-justify-content--' + type
   each size in ['sm', 'md', 'lg', 'xl']
     each type in ['start', 'end', 'center', 'between', 'around']
       li
-        code= '.-justify-content-' + size + '--' + type
+        code= '-justify-content-' + size + '--' + type
 
 h2 Align items
 p.-text Use align-items utilities to alter the alignment of flex items on the cross axis.
@@ -146,11 +146,11 @@ p.-text Target specific breakpoints with Align items responsive classes.
 ul.-mb--3
   each type in ['start', 'end', 'center', 'baseline', 'stretch']
     li
-      code= '.-align-items--' + type
+      code= '-align-items--' + type
   each size in ['sm', 'md', 'lg', 'xl']
     each type in ['start', 'end', 'center', 'baseline', 'stretch']
       li
-        code= '.-align-items-' + size + '--' + type
+        code= '-align-items-' + size + '--' + type
 
 h2 Align self
 p.-text Use align-self utilities to alter the alignment of individual flex items on the cross axis.
@@ -224,11 +224,11 @@ p.-text Target specific breakpoints with Align self responsive classes.
 ul.-mb--3
   each type in ['start', 'end', 'center', 'baseline', 'stretch']
     li
-      code= '.-align-self--' + type
+      code= '-align-self--' + type
   each size in ['sm', 'md', 'lg', 'xl']
     each type in ['start', 'end', 'center', 'baseline', 'stretch']
       li
-        code= '.-align-self-' + size + '--' + type
+        code= '-align-self-' + size + '--' + type
 
 h2 Wrap
 p.-text Use wrap utilities to define how flex items wrap in a flex container.
@@ -266,11 +266,11 @@ p.-text Target specific breakpoints with Wrap responsive classes.
 ul.-mb--3
   each type in ['nowrap', 'wrap', 'wrap-reverse']
     li
-      code= '.-flex--' + type
+      code= '-flex--' + type
   each size in ['sm', 'md', 'lg', 'xl']
     each type in ['nowrap', 'wrap', 'wrap-reverse']
       li
-        code= '.-flex-' + size + '--' + type
+        code= '-flex-' + size + '--' + type
 
 h2 Align content
 p.-text Use align-content utilities on flexbox containers to alter the alignment of flex items <strong>together</strong> on the cross axis.
@@ -339,14 +339,14 @@ p.-text Target specific breakpoints with Align content responsive classes.
 ul.-mb--3
   each type in ['start', 'end', 'center', 'around', 'between', 'stretch']
     li
-      code= '.-align-content--' + type
+      code= '-align-content--' + type
   each size in ['sm', 'md', 'lg', 'xl']
     each type in ['start', 'end', 'center', 'around', 'between', 'stretch']
       li
-        code= '.-align-content-' + size + '--' + type
+        code= '-align-content-' + size + '--' + type
 
 h2 Fill
-p.-text Use the <code>.-flex--fill</code> class on flexbox items to display as equal widths while taking up all available horizontal space.
+p.-text Use the <code>-flex--fill</code> class on flexbox items to display as equal widths while taking up all available horizontal space.
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-show--example.-bg--grey-10
@@ -361,13 +361,13 @@ p.-text Use the <code>.-flex--fill</code> class on flexbox items to display as e
 p.-text Target specific breakpoints with Fill responsive classes.
 ul.-mb--3
   li
-    code .-flex--fill
+    code -flex--fill
   each size in ['sm', 'md', 'lg', 'xl']
     li
-      code= '.-flex-' + size + '--fill'
+      code= '-flex-' + size + '--fill'
 
 h2 Grow
-p.-text Use the <code>.-flex--grow*</code> class to toggle a flex item's ability to grow and take up all available space.
+p.-text Use the <code>-flex--grow*</code> class to toggle a flex item's ability to grow and take up all available space.
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-show--example.-bg--grey-10
@@ -383,16 +383,16 @@ p.-text Use the <code>.-flex--grow*</code> class to toggle a flex item's ability
 p.-text Target specific breakpoints with Fill responsive classes.
 ul.-mb--3
   li
-    code .-flex--grow0
+    code -flex--grow0
   li
-    code .-flex--grow1
+    code -flex--grow1
   each size in ['sm', 'md', 'lg', 'xl']
     li
-      code= '.-flex-' + size + '--grow0'
+      code= '-flex-' + size + '--grow0'
     li
-      code= '.-flex-' + size + '--grow1'
+      code= '-flex-' + size + '--grow1'
 h2 Shrink
-p.-text Use the <code>.-flex--shrink*</code> class to toggle a flex item's ability to shrink when its size is larger than its container.
+p.-text Use the <code>-flex--shrink*</code> class to toggle a flex item's ability to shrink when its size is larger than its container.
 .example.-mb--3
   .-p--3.-pb--1
     .-mb--2.-d--flex.-show--example.-bg--grey-10
@@ -406,16 +406,16 @@ p.-text Use the <code>.-flex--shrink*</code> class to toggle a flex item's abili
 p.-text Target specific breakpoints with Shrink responsive classes.
 ul.-mb--3
   li
-    code .-flex--shrink0
+    code -flex--shrink0
   li
-    code .-flex--shrink1
+    code -flex--shrink1
   each size in ['sm', 'md', 'lg', 'xl']
     li
-      code= '.-flex-' + size + '--shrink0'
+      code= '-flex-' + size + '--shrink0'
     li
-      code= '.-flex-' + size + '--shrink1'
+      code= '-flex-' + size + '--shrink1'
 h2 Basis
-p.-text Use the <code>.-flex--basis*</code> class to specify the initial size of the flex item, before any available space is distributed according to the flex factors.
+p.-text Use the <code>-flex--basis*</code> class to specify the initial size of the flex item, before any available space is distributed according to the flex factors.
 p.-text
   | Flex-basis utility classes can be defined using the format <code>-flex-basis-{breakpoint}--{value}</code>.
   | Breakpoints supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
