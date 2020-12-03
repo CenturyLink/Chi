@@ -128,3 +128,35 @@ $flex-wrap: (nowrap, wrap, wrap-reverse);
     }
   }
 }
+
+// Flex basis
+
+$flex-basis-a: 5;
+
+@while $flex-basis-a <= 100 {
+  .-flex-basis--#{$flex-basis-a} {
+    flex-basis: 1% * $flex-basis-a !important;
+  }
+  $flex-basis-a: $flex-basis-a + 5;
+}
+
+.-flex-basis--auto {
+  flex-basis: auto !important;
+}
+
+@each $size in sm md lg xl {
+  @include respond-to($size) {
+    $flex-basis-b: 5;
+
+    @while $flex-basis-b <= 100 {
+      .-flex-basis-#{$size}--#{$flex-basis-b} {
+        flex-basis: 1% * $flex-basis-b !important;
+      }
+      $flex-basis-b: $flex-basis-b + 5;
+    }
+
+    .-flex-basis-#{$size}--auto {
+      flex-basis: auto !important;
+    }
+  }
+}
