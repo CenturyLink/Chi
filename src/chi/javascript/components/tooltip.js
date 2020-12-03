@@ -5,7 +5,7 @@ import {Util} from "../core/util.js";
 const CLASS_ACTIVE = "-active";
 const COMPONENT_SELECTOR = '[data-tooltip]';
 const COMPONENT_TYPE = "tooltip";
-const ANIMATION_DELAY = 500;
+const ANIMATION_DELAY = 300;
 const DEFAULT_CONFIG = {position: 'top', parent: null};
 const CLASS_LIGHT = '-light';
 const TOOLTIP_COLOR_ATTRIBUTE = 'data-tooltip-color';
@@ -39,8 +39,10 @@ class Tooltip extends Component {
       this._animationTimeout = window.setTimeout(() => {
         if (!self._shown) {
           self.show();
+          window.tooltipOpen = true;
+          clearTimeout(window.tooltipOpenTimeout);
         }
-      }, ANIMATION_DELAY);
+      }, window.tooltipOpen ? 0 : ANIMATION_DELAY);
     });
     this._addEventHandler(this._elem, 'mouseleave', () => {
       window.clearTimeout(this._animationTimeout);
@@ -48,12 +50,17 @@ class Tooltip extends Component {
       self._hovered = false;
       if (self._shown && !self._focused) {
         self.hide();
+        window.tooltipOpenTimeout = setTimeout(() => {
+          if (window.tooltipOpen) {
+            window.tooltipOpen = false;
+          }
+        }, 50);
       }
     });
     this._addEventHandler(this._elem, 'focus', function() {
       self._focused = true;
-      if (!self._shown) {
-        self.show();
+      if (self._shown) {
+        self.hide();
       }
     });
     this._addEventHandler(this._elem, 'blur', function() {

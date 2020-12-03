@@ -48,6 +48,33 @@ p.-text
 
       <script>chi.tooltip(document.getElementById('tooltip-2'));</script>
 
+h3 Animation delay
+.example.-mb--3
+  .-p--3
+    button.chi-button.-icon.-flat.-bg--none.-opacity-hover--80(aria-label='Button action' data-tooltip='First tooltip')
+      .chi-button__content
+        i.chi-icon.icon-refresh
+    button.chi-button.-icon.-flat.-bg--none.-opacity-hover--80(aria-label='Button action' data-tooltip='Second tooltip')
+      .chi-button__content
+        i.chi-icon.icon-arrow-down
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-light
+      li.-disabled
+        a(href=`#webcomponent-light`) Web Component
+      li.-active
+        a(href=`#html-light`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-light
+  .chi-tabs-panel.-active#html-light
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang='html')
+      <button id="tooltip-2" class="chi-button -outline -light" data-tooltip="Your tooltip text on a button" data-tooltip-color="light">Tooltip</button>
+
+      <script>chi.tooltip(document.getElementById('tooltip-2'));</script>
+
 h3 Positioning
 p.-text
   | By default, tooltip's position on top of an element. To alter position, use
@@ -110,9 +137,9 @@ p.-text
 
 script.
   document.addEventListener(
-          'DOMContentLoaded',
-          function() {
-            chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-            chi.tooltip(document.querySelectorAll('[data-tooltip]'));
-          }
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+    }
   );
