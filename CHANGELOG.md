@@ -1,4 +1,24 @@
 # CHANGELOG
+## 3.5.0 (December 4, 2020)
+### Components
+#### Added
+* Added: Flex utility now includes support for flex-basis to specify the initial size of flex items.
+* Added: Stat components with theme `-portal` now include `-compact` support for displaying KPIs when vertical space is limited.
+* Added: Flag icon component to render Lumen country/region flag icons.
+* Added: Popover component now supports opening on hover.
+* Added: Range slider E2E tests.
+#### Changed
+* Changed: Stat components with theme `-portal` now render active items with black text instead of white for color contrast compliance.
+* Changed: Footer internal has been updated with improved footer link styles and a new language drop down design.
+### Documentation
+#### Added
+* Added: Portal Templates section now includes examples for Accordion, Data Table, and Drawer.
+#### Changed
+* Changed: Duplicate IDs detected on the following pages have been changed: Accordion, Data Table, Card, Checkbox, Dropdown, Expansion Panel, Footer, Header, Sidenav, and Stat.
+* Changed: Unnecessary IDs in Toggle switch example code have been removed.
+#### Fixed
+* Fixed: Table documentation examples with theme `-portal` were missing size class `-sm`.
+
 ## 3.4.0 (November 13, 2020)
 ### Components
 #### Added
