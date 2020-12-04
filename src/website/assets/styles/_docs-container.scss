@@ -109,11 +109,39 @@
                       }
                     }
                   }
+
+                  .chi-accordion {
+                    &.accessibility-accordion {
+                      .chi-accordion__trigger {
+                        padding-bottom: 0.5rem;
+                        padding-left: 2.5rem;
+                        padding-top: 0.5rem;
+
+                        .chi-accordion__title {
+                          font-size: $font-size-sm;
+                          font-weight: $font-weight-base;
+                          line-height: $line-height-sm;
+                        }
+                      }
+
+                      .chi-accordion__content {
+                        .chi-tabs__subtabs {
+                          li {
+                            a {
+                              padding-left: 3.5rem;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
           }
         }
+
+
       }
 
       .docs-article {
