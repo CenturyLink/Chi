@@ -65,6 +65,7 @@ $regions: (
 );
 
 .chi-flag-icon {
+  // sass-lint:disable-block no-url-domains, no-url-protocols
   background-image: url('//assets.ctl.io/images/icon-flags.svg');
   background-position: 0 0;
   background-repeat: no-repeat;

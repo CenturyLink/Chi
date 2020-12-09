@@ -18,6 +18,10 @@
     color: $color-grey-50;
   }
 
+  &::-webkit-calendar-picker-indicator { // sass-lint:disable-line no-vendor-prefixes
+    background: none;
+  }
+
   &:hover,
   &.-hover {
     border-color: $color-grey-40;

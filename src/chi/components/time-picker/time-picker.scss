@@ -1,0 +1,67 @@
+@import '_variables';
+@import '_mixins';
+
+.sc-chi-time-picker {
+  &.-disabled {
+    pointer-events: none;
+  }
+
+  chi-popover {
+    display: flex;
+  }
+}
+
+.chi-time-picker {
+  font-size: $font-size-base;
+  width: 14rem;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+
+    .chi-time-picker__hours,
+    .chi-time-picker__minutes,
+    .chi-time-picker__seconds,
+    .chi-time-picker__periods {
+      max-height: 14.5rem;
+      overflow: auto;
+      width: 100%;
+
+      &:not(:last-child) {
+        box-shadow: inset -1px 0 0 0 $color-border-base;
+      }
+
+      .chi-time-picker__hour,
+      .chi-time-picker__minute,
+      .chi-time-picker__second,
+      .chi-time-picker__period {
+        border-radius: $border-radius-base;
+        cursor: pointer;
+        margin: 0.25rem;
+        padding: 0.125rem;
+        text-align: center;
+
+        &:hover {
+          background-color: $color-background-base-darker;
+        }
+
+        &:focus {
+          outline: 0.125rem solid $focus-color;
+          outline-offset: 0.0625rem;
+        }
+
+        &.-active {
+          background-color: $color-background-primary;
+          color: $color-text-white;
+          font-weight: $font-weight-semi-bold;
+        }
+
+        &.-disabled {
+          color: $color-grey-70;
+          opacity: 0.4;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}
