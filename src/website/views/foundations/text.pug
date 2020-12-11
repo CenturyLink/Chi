@@ -4,62 +4,53 @@ disabled: true
 ---
 
 h2 Resize text
-div.-d--flex.-justify-content--start.-align-items--center
-  p.-text.-text--bold.-my--0
-    | WCAG 2.0 Guideline
-  .chi-badge.-dark.-outline.-xs.-ml--1
-    span Perceivable
-p.-text.-mt--1
-  | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast" rel="noopener">1.4 Distinguishable</a>
-p.-text
-  | <strong>Benefits:</strong> Low vision disabilities.
-p.-text
-  | Except for captions and images of text, text can be resized without Assistive Technology up to 200 percent without loss of content or functionality.
-ul.-text
-  li Can visually rendered text be scaled successfully so that it can be read directly by people with mild visual disabilities, without requiring the use of Assistive Technologies such as a screen magnifier?
-  ul.-text
-    li Including text-based controls (text characters that have been displayed so that they can be seen vs. text characters that are still in data form such as ASCII).
-  li Can content can be scaled up to 200% - up to twice the width and height?
-ul#chi-js-tabs.chi-tabs.-border
-  li.-active
-    a(href='#chi-js-tabs--resize-examples') Examples
-  li
-    a(href='#chi-js-tabs--resize-references') References
-#chi-js-tabs--resize-examples.chi-tabs-panel.-active
-  p.-text
-    | No text
-#chi-js-tabs--resize-references.chi-tabs-panel
-  p.-text
-    | No text
-h2 Images of text
-div.-d--flex.-justify-content--start.-align-items--center
-  p.-text.-text--bold.-my--0
-    | WCAG 2.0 Guideline
-  .chi-badge.-dark.-outline.-xs.-ml--1
-    span Perceivable
-p.-text.-mt--1
-  | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast" rel="noopener">1.4 Distinguishable</a>
-p.-text
-  | <strong>Benefits:</strong> Blind disabilities.
-p.-text
-  | Text is used to convey information rather than images of text. Achieve desired default visual presentation, to enable people who require a particular visual presentation 
-  | of text to be able to adjust the text presentation as needed.
-ul.-text
-  li Are images used to present text?
-  li Is text embedded in images?
-  li Is actual text used instead images of text?
-ul#chi-js-tabs--images.chi-tabs.-border
-  li.-active
-    a(href='#chi-js-tabs--images-examples') Examples
-  li
-    a(href='#chi-js-tabs--images-references') References
-#chi-js-tabs--images-examples.chi-tabs-panel.-active
-  p.-text
-    | No text
-#chi-js-tabs--images-references.chi-tabs-panel
-  p.-text
-    | No text
+div.chi-grid
+  .chi-col.-w-sm--12.-w-md--8
+    div.-d--flex.-justify-content--start.-align-items--center
+      .chi-badge.-primary.-xs.-mr--1
+        span AA
+      p.-text.-my--0
+        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast-scale" rel="noopener">1.4.4 Resize text</a>
+    p.-text
+      | Except for captions and images of text, text can be resized without Assistive Technology up to 200 percent without loss of content or functionality.
+    ul.-text
+      li Can visually rendered text be scaled successfully so that it can be read directly by people with mild visual disabilities, without requiring the use of Assistive Technologies such as a screen magnifier?
+      ul.-text
+        li Including text-based controls (text characters that have been displayed so that they can be seen vs. text characters that are still in data form such as ASCII).
+      li Can content can be scaled up to 200% - up to twice the width and height?
+  .chi-col.-w-sm--12.-w-md--4
+    div.-d--flex.-justify-content--start.-align-items--center
+      p.-text.-text--bold.-my--0
+        | WCAG 2.0 Guideline
+      .chi-badge.-dark.-outline.-xs.-ml--1
+        span Perceivable
+    p.-text.-mt--1
+      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast" rel="noopener">1.4 Distinguishable</a>
+    p.-text
+      | <strong>Benefits:</strong> Low vision disabilities.
 
-script.
-  chi.tab(document.getElementById('chi-js-tabs'));
-  chi.tab(document.getElementById('chi-js-tabs--images'));
+h2 Images of text
+div.chi-grid
+  .chi-col.-w-sm--12.-w-md--8
+    div.-d--flex.-justify-content--start.-align-items--center
+      .chi-badge.-primary.-xs.-mr--1
+        span AA
+      p.-text.-my--0
+        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-presentation" rel="noopener">1.4.5 Images of Text</a>
+    p.-text
+      | Text is used to convey information rather than images of text. Achieve desired default visual presentation, to enable people who require a particular visual presentation 
+      | of text to be able to adjust the text presentation as needed.
+    ul.-text
+      li Are images used to present text?
+      li Is text embedded in images?
+      li Is actual text used instead images of text?
+  .chi-col.-w-sm--12.-w-md--4
+    div.-d--flex.-justify-content--start.-align-items--center
+      p.-text.-text--bold.-my--0
+        | WCAG 2.0 Guideline
+      .chi-badge.-dark.-outline.-xs.-ml--1
+        span Perceivable
+    p.-text.-mt--1
+      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast" rel="noopener">1.4 Distinguishable</a>
+    p.-text
+      | <strong>Benefits:</strong> Blind disabilities.

@@ -18,178 +18,137 @@ ul.-text
 p.-text
   | Visit <a target="_blank" href="https://webaim.org/techniques/keyboard/" rel="noopener">WebAIM</a> for keyboard techniques.
 h2 Info and Relationships
-div.-d--flex.-justify-content--start.-align-items--center
-  p.-text.-text--bold.-my--0
-    | WCAG 2.0 Guideline
-  .chi-badge.-dark.-outline.-xs.-ml--1
-    span Perceivable
-p.-text.-mt--1
-  | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#content-structure-separation" rel="noopener">1.3 Adaptable</a>
-p.-text
-  | <strong>Benefits:</strong> Blind keyboard user
-p.-text
-  | Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.
-p.-text
-  | Use a screen reader (with your eyes closed):
-ul.-text
-  li Is all content and functionality available to a screen reader?
-  li Does the user have access to all information and features on the page?
-  li Can the user complete all tasks independently?
-ul#chi-js-tabs.chi-tabs.-border
-  li.-active
-    a(href='#chi-js-tabs--info-examples') Examples
-  li
-    a(href='#chi-js-tabs--info-references') References
-#chi-js-tabs--info-examples.chi-tabs-panel.-active
-  p.-text
-    | No text
-#chi-js-tabs--info-references.chi-tabs-panel
-  p.-text
-    | No text
+div.chi-grid
+  .chi-col.-w-sm--12.-w-md--8
+    div.-d--flex.-justify-content--start.-align-items--center
+      .chi-badge.-primary.-xs.-mr--1
+        span A
+      p.-text.-my--0
+        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#content-structure-separation-programmatic" rel="noopener">1.3.1 Info and Relationships</a>
+    p.-text
+      | Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.
+    p.-text
+      | Use a screen reader (with your eyes closed):
+    ul.-text
+      li Is all content and functionality available to a screen reader?
+      li Does the user have access to all information and features on the page?
+      li Can the user complete all tasks independently?
+  .chi-col.-w-sm--12.-w-md--4
+    div.-d--flex.-justify-content--start.-align-items--center
+      p.-text.-text--bold.-my--0
+        | WCAG 2.0 Guideline
+      .chi-badge.-dark.-outline.-xs.-ml--1
+        span Perceivable
+    p.-text.-mt--1
+      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#content-structure-separation" rel="noopener">1.3 Adaptable</a>
+    p.-text
+      | <strong>Benefits:</strong> Blind keyboard user
 h2 Keyboard
-div.-d--flex.-justify-content--start.-align-items--center
-  p.-text.-text--bold.-my--0
-    | WCAG 2.0 Guideline
-  .chi-badge.-dark.-outline.-xs.-ml--1
-    span Operable
-p.-text.-mt--1
-  | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#keyboard-operation" rel="noopener">2.1 Keyboard accesible</a>
-p.-text
-  | <strong>Benefits:</strong> Keyboard users (typically people with visual and / or motor / physical disabilities).
-p.-text
-  | All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes,
-  | except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.
-p.-text
-  | Fully interact with every interactive aspect of a web page using your keyboard alone - do not use a mouse.
-ul.-text
-  li Can the user access the full functionality of the page or application using a keyboard alone?
-  li Is all information or functionality accessible and operable with a keyboard alone, that would typically be triggered with a mouse?
-ul#chi-js-tabs--keyboard.chi-tabs.-border
-  li.-active
-    a(href='#chi-js-tabs--keyboard-examples') Examples
-  li
-    a(href='#chi-js-tabs--keyboard-references') References
-#chi-js-tabs--keyboard-examples.chi-tabs-panel.-active
-  p.-text
-    | No text
-#chi-js-tabs--keyboard-references.chi-tabs-panel
-  div.chi-grid
-    .chi-col.-w-sm--12.-w-md--9
-      p.-text
-        | Ensure that, whenever posible, content can be operated through a keyboard or keyboard interface (so an alternate keyboard can be used).
-      p.-text
-        | When content can be operateed by through a keyboard or alternate keyboard, it is operable by people with no vision (who cannot use 
-        | devices such as a mouse that require eye-hand coordination) as well as by people who must use alternate keyboards or input devices
-        | that act as keyboards emulators. Keyboard emulators include speech input software, sip-and-puff software, on-screen keyboards, 
-        | scanning software and a variety of assistive technologies and alternate keyboards. Individuals with low vision also may have trouble
-        | tracking a pointer and find the use of software much easier (or only possible) if they can control it from the keyboard.
-    .chi-col.-w-sm--12.-w-md--3
-      p.-text
-        | How to meet keyboard
-      p.-text
-        | See sufficient techniques, advisory techniques and failures.
+div.chi-grid
+  .chi-col.-w-sm--12.-w-md--8
+    div.-d--flex.-justify-content--start.-align-items--center
+      .chi-badge.-primary.-xs.-mr--1
+        span A
+      p.-text.-my--0
+        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#keyboard-operation-keyboard-operable" rel="noopener">2.1.1 Keyboard</a>
+    p.-text
+      | All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes,
+      | except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.
+    p.-text
+      | Fully interact with every interactive aspect of a web page using your keyboard alone - do not use a mouse.
+    ul.-text
+      li Can the user access the full functionality of the page or application using a keyboard alone?
+      li Is all information or functionality accessible and operable with a keyboard alone, that would typically be triggered with a mouse?
+  .chi-col.-w-sm--12.-w-md--4
+    div.-d--flex.-justify-content--start.-align-items--center
+      p.-text.-text--bold.-my--0
+        | WCAG 2.0 Guideline
+      .chi-badge.-dark.-outline.-xs.-ml--1
+        span Operable
+    p.-text.-mt--1
+      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#keyboard-operation" rel="noopener">2.1 Keyboard accesible</a>
+    p.-text
+      | <strong>Benefits:</strong> Keyboard users (typically people with visual and / or motor / physical disabilities).
+
 h2 No keyboard trap
-div.-d--flex.-justify-content--start.-align-items--center
-  p.-text.-text--bold.-my--0
-    | WCAG 2.0 Guideline
-  .chi-badge.-dark.-outline.-xs.-ml--1
-    span Operable
-p.-text.-mt--1
-  | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#keyboard-operation" rel="noopener">2.1 Keyboard accesible</a>
-p.-text
-  | <strong>Benefits:</strong> Keyboard users (typically people with visual and / or motor / physical disabilities).
-p.-text
-  | If keyboard focus can be moved to a component of the page (such as a plugin) using a keyboard interface, then focus can be moved away
-  | from that component using only a keyboard interface, and, if it requires more than unmodified arrow or tab keys or other standard 
-  | exit methods, the user is advised of the method for moving focus away.
-ul.-text
-  li Can the keyboard user be trapped in a subset of the content that can only be exited using a mouse or pointing device?
-  li Is there a keyboard mechanism to return focus to the parent window?
-  li Can the keyboard function for advancing focus within content (commonly the tab key) exit the subset of the content after reaching 
-     | the final navigation location?
-  li Is help information available for the Web page documents on how to move focus from the content that is not accessibility-supported
-     | to the accessibility-supported content via the keyboard?
-  li Can the help information be accessed via the keyboard?
-ul#chi-js-tabs--keyboard-trap.chi-tabs.-border
-  li.-active
-    a(href='#chi-js-tabs--keyboard-trap-examples') Examples
-  li
-    a(href='#chi-js-tabs--keyboard-trap-references') References
-#chi-js-tabs--keyboard-trap-examples.chi-tabs-panel.-active
-  p.-text
-    | No text
-#chi-js-tabs--keyboard-trap-references.chi-tabs-panel
-  div.chi-grid
-    .chi-col.-w-sm--12.-w-md--9
-      p.-text
-        | Ensure that content does not trap keyboard focus within subsections of content on a web page.
-        | This is a common problem when multiple formats are combined within a page and rendered using 
-        | plugins or embedded applications.
-    .chi-col.-w-sm--12.-w-md--3
-      p.-text
-        | How to meet no keyboard trap
-      p.-text
-        | See sufficient techniques, advisory techniques and failures.
+div.chi-grid
+  .chi-col.-w-sm--12.-w-md--8
+    div.-d--flex.-justify-content--start.-align-items--center
+      .chi-badge.-primary.-xs.-mr--1
+        span A
+      p.-text.-my--0
+        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#keyboard-operation-trapping" rel="noopener">2.1.2 No Keyboard Trap</a>
+    p.-text
+      | If keyboard focus can be moved to a component of the page (such as a plugin) using a keyboard interface, then focus can be moved away
+      | from that component using only a keyboard interface, and, if it requires more than unmodified arrow or tab keys or other standard 
+      | exit methods, the user is advised of the method for moving focus away.
+    ul.-text
+      li Can the keyboard user be trapped in a subset of the content that can only be exited using a mouse or pointing device?
+      li Is there a keyboard mechanism to return focus to the parent window?
+      li Can the keyboard function for advancing focus within content (commonly the tab key) exit the subset of the content after reaching 
+         | the final navigation location?
+      li Is help information available for the Web page documents on how to move focus from the content that is not accessibility-supported
+         | to the accessibility-supported content via the keyboard?
+      li Can the help information be accessed via the keyboard?
+  .chi-col.-w-sm--12.-w-md--4
+    div.-d--flex.-justify-content--start.-align-items--center
+      p.-text.-text--bold.-my--0
+        | WCAG 2.0 Guideline
+      .chi-badge.-dark.-outline.-xs.-ml--1
+        span Operable
+    p.-text.-mt--1
+      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#keyboard-operation" rel="noopener">2.1 Keyboard accesible</a>
+    p.-text
+      | <strong>Benefits:</strong> Keyboard users (typically people with visual and / or motor / physical disabilities).
+
 h2 Focus order
-div.-d--flex.-justify-content--start.-align-items--center
-  p.-text.-text--bold.-my--0
-    | WCAG 2.0 Guideline
-  .chi-badge.-dark.-outline.-xs.-ml--1
-    span Operable
-p.-text.-mt--1
-  | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener">2.4 Navigable</a>
-p.-text
-  | <strong>Benefits:</strong> Keyboard users (typically people with visual and / or motor / physical disabilities).
-p.-text
-  | If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive
-  | focus in an order that preserves meaning and operability.
-p.-text
-  | Tab through the page using only the keyboard.
-ul.-text
-  li Is the navigation order logical and intuitive?
-  li Does the tab order makes sense?
-ul#chi-js-tabs--focus-order.chi-tabs.-border
-  li.-active
-    a(href='#chi-js-tabs--focus-order-examples') Examples
-  li
-    a(href='#chi-js-tabs--focus-order-references') References
-#chi-js-tabs--focus-order-examples.chi-tabs-panel.-active
-  p.-text
-    | No text
-#chi-js-tabs--focus-order-references.chi-tabs-panel
-  p.-text
-    | No text
+div.chi-grid
+  .chi-col.-w-sm--12.-w-md--8
+    div.-d--flex.-justify-content--start.-align-items--center
+      .chi-badge.-primary.-xs.-mr--1
+        span A
+      p.-text.-my--0
+        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-order" rel="noopener">2.4.3 Focus Order</a>
+    p.-text
+      | If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive
+      | focus in an order that preserves meaning and operability.
+    p.-text
+      | Tab through the page using only the keyboard.
+    ul.-text
+      li Is the navigation order logical and intuitive?
+      li Does the tab order makes sense?
+  .chi-col.-w-sm--12.-w-md--4
+    div.-d--flex.-justify-content--start.-align-items--center
+      p.-text.-text--bold.-my--0
+        | WCAG 2.0 Guideline
+      .chi-badge.-dark.-outline.-xs.-ml--1
+        span Operable
+    p.-text.-mt--1
+      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener">2.4 Navigable</a>
+    p.-text
+      | <strong>Benefits:</strong> Keyboard users (typically people with visual and / or motor / physical disabilities).
+
 h2 Focus visible
-div.-d--flex.-justify-content--start.-align-items--center
-  p.-text.-text--bold.-my--0
-    | WCAG 2.0 Guideline
-  .chi-badge.-dark.-outline.-xs.-ml--1
-    span Operable
-p.-text.-mt--1
-  | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener">2.4 Navigable</a>
-p.-text
-  | <strong>Benefits:</strong> Keyboard users (typically people with visual and / or motor / physical disabilities).
-p.-text
-  | Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible.
-p.-text
-  | Tab through the page using only the keyboard.
-ul.-text
-  li Can the user always see which element on the page has focus?
-ul#chi-js-tabs--focus-visible.chi-tabs.-border
-  li.-active
-    a(href='#chi-js-tabs--focus-visible-examples') Examples
-  li
-    a(href='#chi-js-tabs--focus-visible-references') References
-#chi-js-tabs--focus-visible-examples.chi-tabs-panel.-active
-  p.-text
-    | No text
-#chi-js-tabs--focus-visible-references.chi-tabs-panel
-  p.-text
-    | No text
-    
-script.
-  chi.tab(document.getElementById('chi-js-tabs'));
-  chi.tab(document.getElementById('chi-js-tabs--keyboard'));
-  chi.tab(document.getElementById('chi-js-tabs--keyboard-trap'));
-  chi.tab(document.getElementById('chi-js-tabs--focus-order'));
-  chi.tab(document.getElementById('chi-js-tabs--focus-visible'));
+div.chi-grid
+  .chi-col.-w-sm--12.-w-md--8
+    div.-d--flex.-justify-content--start.-align-items--center
+      .chi-badge.-primary.-xs.-mr--1
+        span AA
+      p.-text.-my--0
+        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-visible" rel="noopener">2.4.7 Focus Visible</a>
+    p.-text
+      | Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible.
+    p.-text
+      | Tab through the page using only the keyboard.
+    ul.-text
+      li Can the user always see which element on the page has focus?
+  .chi-col.-w-sm--12.-w-md--4
+    div.-d--flex.-justify-content--start.-align-items--center
+      p.-text.-text--bold.-my--0
+        | WCAG 2.0 Guideline
+      .chi-badge.-dark.-outline.-xs.-ml--1
+        span Operable
+    p.-text.-mt--1
+      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener">2.4 Navigable</a>
+    p.-text
+      | <strong>Benefits:</strong> Keyboard users (typically people with visual and / or motor / physical disabilities).

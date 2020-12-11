@@ -4,35 +4,29 @@ disabled: true
 ---
 
 h2 Info and relationships
-div.-d--flex.-justify-content--start.-align-items--center
-  p.-text.-text--bold.-my--0
-    | WCAG 2.0 Guideline
-  .chi-badge.-dark.-outline.-xs.-ml--1
-    span Perceivable
-p.-text.-mt--1
-  | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#content-structure-separation" rel="noopener">1.3 Adaptable</a>
-p.-text
-  | <strong>Benefits:</strong> Blind disabilities.
-p.-text
-  | Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.
-p.-text
-  | Information is considered tabular when logical relationships among text, numbers, images, or other data exist in two dimensions (vertical and horizontal). 
-  | These relationships are represented in columns and rows, and the columns and rows must be recognizable in order for the logical relationships to be perceived.
-ul.-text
-  li Are corresponding column and row identified, so that Assistive Technologies can programmatically determine the data column and data row relationship for a data cell?
-  li Are columns and rows recognizable in order for the logical relationships to be perceived?
-  li Is the information relationship preserved, even when users cannot see the table or the presentation format is changed?
-ul#chi-js-tabs.chi-tabs.-border
-  li.-active
-    a(href='#chi-js-tabs--info-examples') Examples
-  li
-    a(href='#chi-js-tabs--info-references') References
-#chi-js-tabs--info-examples.chi-tabs-panel.-active
-  p.-text
-    | No text
-#chi-js-tabs--info-references.chi-tabs-panel
-  p.-text
-    | No text
-
-script.
-  chi.tab(document.getElementById('chi-js-tabs'));
+div.chi-grid
+  .chi-col.-w-sm--12.-w-md--8
+    div.-d--flex.-justify-content--start.-align-items--center
+      .chi-badge.-primary.-xs.-mr--1
+        span A
+      p.-text.-my--0
+        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#content-structure-separation-programmatic" rel="noopener">1.3.1 Info and Relationships</a>
+    p.-text
+      | Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.
+    p.-text
+      | Information is considered tabular when logical relationships among text, numbers, images, or other data exist in two dimensions (vertical and horizontal). 
+      | These relationships are represented in columns and rows, and the columns and rows must be recognizable in order for the logical relationships to be perceived.
+    ul.-text
+      li Are corresponding column and row identified, so that Assistive Technologies can programmatically determine the data column and data row relationship for a data cell?
+      li Are columns and rows recognizable in order for the logical relationships to be perceived?
+      li Is the information relationship preserved, even when users cannot see the table or the presentation format is changed?
+  .chi-col.-w-sm--12.-w-md--4
+    div.-d--flex.-justify-content--start.-align-items--center
+      p.-text.-text--bold.-my--0
+        | WCAG 2.0 Guideline
+      .chi-badge.-dark.-outline.-xs.-ml--1
+        span Perceivable
+    p.-text.-mt--1
+      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#content-structure-separation" rel="noopener">1.3 Adaptable</a>
+    p.-text
+      | <strong>Benefits:</strong> Blind disabilities.
