@@ -14,14 +14,16 @@ export const cellAlignment = (align: string) => {
   return;
 };
 
-export const dataTableClasses = (style: any) => {
+export const dataTableClasses = (style: any, sortable: boolean) => {
   return [
     DATA_TABLE_CLASSES.DATA_TABLE,
+    '-compact',
     style.portal ? '-portal' : null,
     style.bordered ? '-bordered' : null,
     style.noBorder ? '-no-border' : null,
     style.hover ? '-hover' : null,
     style.striped ? '-striped' : null,
     style.size ? `-${style.size}` : null,
+    sortable ? `-sorting` : null,
   ].join(' ');
 };

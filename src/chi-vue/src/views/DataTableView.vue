@@ -17,7 +17,12 @@
         <Actions :id="payload.id" />
       </template>
       <template #accordionContent="payload">
-        Accordion content goes here {{payload.id}}
+        <div class="chi-alert -success" role="alert">
+          <i class="chi-alert__icon chi-icon icon-circle-check"></i>
+          <div class="chi-alert__content">
+            <p class="chi-alert__text">Custom content rendered by the provided template. ID: <b>{{payload.id}}</b></p>
+          </div>
+        </div>
       </template>
     </ChiTable>
   </div>
@@ -54,7 +59,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
           selectable: true,
         },
         head: {
-          alerts: { label: 'Alerts', sortable: true, align: 'center' },
+          alerts: { label: 'Alerts', align: 'center' },
           ticketId: { label: 'Ticket ID', sortable: true },
           status: { label: 'Status', sortable: true, align: 'center' },
           supportType: { label: 'Support Type', sortable: true },
@@ -116,12 +121,12 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
-            id: "erty",
+            id: "NTM000021066",
             active: false,
             accordion: {
               template: 'accordionContent',
               payload: {
-                id: 'etry'
+                id: 'NTM000021066'
               }
             },
             data: [
@@ -136,7 +141,110 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: "subtable",
             active: false,
+            accordion: {
+              table: {
+                data: [
+                  {
+                    id: 'a',
+                    active: false,
+                    data: [
+                      { label: 'Alerts', template: 'icon', payload: {icon: 'circle-check', color: 'success'}, align: 'center' },
+                      { label: 'Ticket ID', template: 'ticketid', payload: {id: 'NTM0000210661'} },
+                      { label: 'Status', template: 'status', payload: {status: 'active'},  align: 'center' },
+                      { label: 'Support Type', value: 'Colocation' },
+                      { label: 'Service Type', value: 'Internet Advantage' },
+                      { label: 'Created', value: '04/05/2018 8:00 AM' },
+                      { label: 'Product/Service ID', value: 'SVUJW034781A' },
+                      { label: 'Actions', template: 'actions', payload: {id: 'NTM0000210661'}, align: 'right'},
+                    ],
+                  },
+                  {
+                    id: 'b',
+                    active: false,
+                    accordion: {
+                      table: {
+                        data: [
+                          {
+                            id: 'a',
+                            active: false,
+                            data: [
+                              { label: 'Alerts', template: 'icon', payload: {icon: 'circle-check', color: 'success'}, align: 'center' },
+                              { label: 'Ticket ID', template: 'ticketid', payload: {id: 'NTM0000210661'} },
+                              { label: 'Status', template: 'status', payload: {status: 'active'},  align: 'center' },
+                              { label: 'Support Type', value: 'Colocation' },
+                              { label: 'Service Type', value: 'Internet Advantage' },
+                              { label: 'Created', value: '04/05/2018 8:00 AM' },
+                              { label: 'Product/Service ID', value: 'SVUJW034781A' },
+                              { label: 'Actions', template: 'actions', payload: {id: 'NTM0000210661'}, align: 'right'},
+                            ],
+                          },
+                          {
+                            id: 'bbb',
+                            active: false,
+                            accordion: {
+                              table: {
+                                data: [
+                                  {
+                                    id: 'ba',
+                                    active: false,
+                                    data: [
+                                      { label: 'Alerts', template: 'icon', payload: {icon: 'circle-check', color: 'success'}, align: 'center' },
+                                      { label: 'Ticket ID', template: 'ticketid', payload: {id: 'NTM00002106611'} },
+                                      { label: 'Status', template: 'status', payload: {status: 'active'},  align: 'center' },
+                                      { label: 'Support Type', value: 'Colocation' },
+                                      { label: 'Service Type', value: 'Internet Advantage' },
+                                      { label: 'Created', value: '04/05/2018 8:00 AM' },
+                                      { label: 'Product/Service ID', value: 'SVUJW034781A' },
+                                      { label: 'Actions', template: 'actions', payload: {id: 'NTM00002106611'}, align: 'right'},
+                                    ],
+                                  },
+                                  {
+                                    id: 'bb',
+                                    active: false,
+                                    data: [
+                                      { label: 'Alerts', template: 'icon', payload: {icon: 'circle-check', color: 'success'}, align: 'center' },
+                                      { label: 'Ticket ID', template: 'ticketid', payload: {id: 'NTM00002106621'} },
+                                      { label: 'Status', template: 'status', payload: {status: 'active'},  align: 'center' },
+                                      { label: 'Support Type', value: 'Colocation' },
+                                      { label: 'Service Type', value: 'Internet Advantage' },
+                                      { label: 'Created', value: '04/05/2018 8:00 AM' },
+                                      { label: 'Product/Service ID', value: 'SVUJW034781A' },
+                                      { label: 'Actions', template: 'actions', payload: {id: 'NTM00002106621'}, align: 'right'},
+                                    ],
+                                  },
+                                ]
+                              }
+                            },
+                            data: [
+                              { label: 'Alerts', template: 'icon', payload: {icon: 'circle-check', color: 'success'}, align: 'center' },
+                              { label: 'Ticket ID', template: 'ticketid', payload: {id: 'NTM0000210662'} },
+                              { label: 'Status', template: 'status', payload: {status: 'active'},  align: 'center' },
+                              { label: 'Support Type', value: 'Colocation' },
+                              { label: 'Service Type', value: 'Internet Advantage' },
+                              { label: 'Created', value: '04/05/2018 8:00 AM' },
+                              { label: 'Product/Service ID', value: 'SVUJW034781A' },
+                              { label: 'Actions', template: 'actions', payload: {id: 'NTM0000210662'}, align: 'right'},
+                            ],
+                          },
+                        ]
+                      }
+                    },
+                    data: [
+                      { label: 'Alerts', template: 'icon', payload: {icon: 'circle-check', color: 'success'}, align: 'center' },
+                      { label: 'Ticket ID', template: 'ticketid', payload: {id: 'NTM0000210662'} },
+                      { label: 'Status', template: 'status', payload: {status: 'active'},  align: 'center' },
+                      { label: 'Support Type', value: 'Colocation' },
+                      { label: 'Service Type', value: 'Internet Advantage' },
+                      { label: 'Created', value: '04/05/2018 8:00 AM' },
+                      { label: 'Product/Service ID', value: 'SVUJW034781A' },
+                      { label: 'Actions', template: 'actions', payload: {id: 'NTM0000210662'}, align: 'right'},
+                    ],
+                  },
+                ]
+              }
+            },
             data: [
               '',
               { label: 'Ticket ID', template: 'ticketid', payload: {id: 'NTM000021067'} },
