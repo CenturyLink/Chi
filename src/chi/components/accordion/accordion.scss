@@ -164,7 +164,12 @@ $icon-sizes: (
       .chi-accordion__trigger {
         background-color: $color-background-base-darkest;
       }
+    }
 
+    .-portal {
+      .chi-accordion__content {
+        border: 0.0625rem solid $color-border-base;
+      }
     }
   }
 }
