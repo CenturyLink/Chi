@@ -243,17 +243,18 @@
 
       .chi-card__title {
         + .chi-tabs {
-          margin-left: 3rem;
+          margin-left: 2rem;
+
+          &::before {
+            border-left: 0.0625rem solid $color-grey-50;
+            content: '';
+            left: -1rem;
+            position: relative;
+          }
         }
       }
 
       .chi-tabs {
-        li {
-          a {
-            font-weight: $font-weight-normal;
-          }
-        }
-
         &.-sm {
           height: 2.5rem;
 
