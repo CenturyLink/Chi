@@ -187,4 +187,21 @@ $sizes: (
       }
     }
   }
+
+  &.-portal {
+    input {
+      &[type='radio'] {
+        &.chi-picker__input {
+          &:not(:checked) {
+            & + label {
+              &:hover {
+                background-color: $color-background-base;
+                color: $color-text-primary;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
