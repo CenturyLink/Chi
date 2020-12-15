@@ -233,6 +233,25 @@ h4 Base
         .chi-time-picker__periods
           .chi-time-picker__period AM
           .chi-time-picker__period PM
+    .chi-grid
+      .chi-col.-w--6
+        .-text--h3 12 hours format
+        chi-time
+      .chi-col.-w--6
+        .-text--h3 24 hours format
+        chi-time(extended)
+      .chi-col.-w--6
+        .-text--h3 Active time
+        chi-time(value='11:00')
+      .chi-col.-w--6
+        .-text--h3 Min & MAX
+        chi-time(min='14:00:00', max='20:00:00')
+      .chi-col.-w--6
+        .-text--h3 Seconds
+        chi-time(display-seconds)
+      .chi-col.-w--6
+        .-text--h3 Stepped
+        chi-time(stepped, display-seconds)
   .example-tabs.-pl--2
     ul.chi-tabs#example-time
       li.-active
