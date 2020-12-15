@@ -5,11 +5,8 @@ p.-text
 .example.-mb--3
   .-p--3
     div.chi-form__item(style="max-width: 14rem;")
-      label.chi-label(for='unique-id-ba1')
-        | Time
-      div.chi-input__wrapper.-icon--right
-        input.chi-input(type="time" id="unique-id-ba1")
-        i.chi-icon.icon-circle-clock-outline.-icon--muted
+      chi-label(for="time-picker-base") Label
+      chi-time-picker(id="time-picker-base")
   .example-tabs.-pl--2
     ul.chi-tabs#example-with-label
       li.-active
@@ -18,14 +15,9 @@ p.-text
         a(href=`#html-with-label`) HTML Blueprint
   #webcomponent-with-label.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
-      <chi-label for="unique-id-ba1">Time</chi-label>
-      <chi-time-picker id="unique-id-ba1"></chi-time-picker>
+      <chi-label for="time-picker-base">Label</chi-label>
+      <chi-time-picker id="time-picker-base"></chi-time-picker>
   #html-with-label.chi-tabs-panel
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="unique-id-ba1">Time</label>
@@ -35,8 +27,6 @@ p.-text
         </div>
       </div>
 
-      <script>chi.timePicker(document.getElementById('unique-id-ba1'));</script>
-
 h3 Disabled
 p.-text
   | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
@@ -45,11 +35,8 @@ p.-text
 .example.-mb--3(style="z-index: 1;")
   .-p--3
     div.chi-form__item(style="max-width: 14rem;")
-      label.chi-label(for='unique-id-di1')
-        | Time
-      div.chi-input__wrapper.-icon--right
-        input.chi-input(type="time" id="unique-id-di1" disabled)
-        i.chi-icon.icon-circle-clock-outline.-icon--muted
+      chi-label(for="time-picker-disabled") Label
+      chi-time-picker(id="time-picker-disabled" disabled)
   .example-tabs.-pl--2
     ul.chi-tabs#example-disabled
       li.-active
@@ -58,8 +45,8 @@ p.-text
         a(href=`#html-disabled`) HTML Blueprint
   #webcomponent-disabled.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-label for="unique-id-di1">Time</chi-label>
-      <chi-time-picker id="unique-id-di1" disabled></chi-time-picker>
+      <chi-label for="time-picker-base">Label</chi-label>
+      <chi-time-picker id="time-picker-base" disabled></chi-time-picker>
   #html-disabled.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
@@ -75,17 +62,12 @@ p.-text
         </div>
       </div>
 
-      <script>chi.timePicker(document.getElementById('unique-id-di1'));</script>
-
 h3 Value, min and max options
 .example.-mb--3
   .-p--3
     div.chi-form__item(style="max-width: 14rem;")
-      label.chi-label(for='unique-id-va1')
-        | Time
-      div.chi-input__wrapper.-icon--right
-        input.chi-input(type="time" id="unique-id-va1")
-        i.chi-icon.icon-circle-clock-outline.-icon--muted
+      chi-label(for='unique-id-va1') Time
+      chi-time-picker#unique-id-va1(value='09:00:00', min='09:00:00', max='18:00:00')
   .example-tabs.-pl--2
     ul.chi-tabs#example-min-max-value
       li.-active
@@ -111,30 +93,14 @@ h3 Value, min and max options
         </div>
       </div>
 
-      <script>chi.timePicker(document.getElementById('unique-id-va1'));</script>
-
-      <!-- Or configure programmatically -->
-      <script>
-        chi.timePicker(
-          document.getElementById('unique-id-va1'),
-          {
-            time: '09:00',
-            min: '09:00'
-          }
-      );
-      </script>
-
-h3 Excluded times
+h3 Excluded hours
 p.-text
-  | Specify which times to disable by using the <code>excluded-times</code> attribute.
+  | Specify which hours to disable by using the <code>excluded-hours</code> attribute.
 .example.-mb--3
   .-p--3
     div.chi-form__item(style="max-width: 14rem;")
-      label.chi-label(for='unique-id-et1')
-        | Time
-      div.chi-input__wrapper.-icon--right
-        input.chi-input(type="time" id="unique-id-et1")
-        i.chi-icon.icon-circle-clock-outline.-icon--muted
+      chi-label(for="time-picker-excluded-hours") Label
+      chi-time-picker(id="time-picker-excluded-hours", excluded-hours="14, 15")
   .example-tabs.-pl--2
     ul.chi-tabs#example-excluded-times
       li.-active
@@ -144,9 +110,8 @@ p.-text
   #webcomponent-excluded-times.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
       <chi-label for="unique-id-et1">Time</chi-label>
-      <chi-time-picker id="unique-id-et1" excluded-times=""></chi-time-picker>
+      <chi-time-picker id="unique-id-et1" excluded-hours="14, 15"></chi-time-picker>
   #html-excluded-times.chi-tabs-panel
-
 
 h3 Time
 p.-text
@@ -154,104 +119,7 @@ p.-text
 h4 Base
 .example.-mb--3
   .-p--3
-    .chi-time-picker
-      .chi-time-picker__content
-        .chi-time-picker__hours
-          .chi-time-picker__hour 12
-          .chi-time-picker__hour 01
-          .chi-time-picker__hour 02
-          .chi-time-picker__hour 03
-          .chi-time-picker__hour 04
-          .chi-time-picker__hour 05
-          .chi-time-picker__hour 06
-          .chi-time-picker__hour 07
-          .chi-time-picker__hour 08
-          .chi-time-picker__hour 09
-          .chi-time-picker__hour 10
-          .chi-time-picker__hour 11
-        .chi-time-picker__minutes
-          .chi-time-picker__minute 00
-          .chi-time-picker__minute 01
-          .chi-time-picker__minute 02
-          .chi-time-picker__minute 03
-          .chi-time-picker__minute 04
-          .chi-time-picker__minute 05
-          .chi-time-picker__minute 06
-          .chi-time-picker__minute 07
-          .chi-time-picker__minute 08
-          .chi-time-picker__minute 09
-          .chi-time-picker__minute 10
-          .chi-time-picker__minute 11
-          .chi-time-picker__minute 12
-          .chi-time-picker__minute 13
-          .chi-time-picker__minute 14
-          .chi-time-picker__minute 15
-          .chi-time-picker__minute 16
-          .chi-time-picker__minute 17
-          .chi-time-picker__minute 18
-          .chi-time-picker__minute 19
-          .chi-time-picker__minute 20
-          .chi-time-picker__minute 21
-          .chi-time-picker__minute 22
-          .chi-time-picker__minute 23
-          .chi-time-picker__minute 24
-          .chi-time-picker__minute 25
-          .chi-time-picker__minute 26
-          .chi-time-picker__minute 27
-          .chi-time-picker__minute 28
-          .chi-time-picker__minute 29
-          .chi-time-picker__minute 30
-          .chi-time-picker__minute 31
-          .chi-time-picker__minute 32
-          .chi-time-picker__minute 33
-          .chi-time-picker__minute 34
-          .chi-time-picker__minute 35
-          .chi-time-picker__minute 36
-          .chi-time-picker__minute 37
-          .chi-time-picker__minute 38
-          .chi-time-picker__minute 39
-          .chi-time-picker__minute 40
-          .chi-time-picker__minute 41
-          .chi-time-picker__minute 42
-          .chi-time-picker__minute 43
-          .chi-time-picker__minute 44
-          .chi-time-picker__minute 45
-          .chi-time-picker__minute 46
-          .chi-time-picker__minute 47
-          .chi-time-picker__minute 48
-          .chi-time-picker__minute 49
-          .chi-time-picker__minute 50
-          .chi-time-picker__minute 51
-          .chi-time-picker__minute 52
-          .chi-time-picker__minute 53
-          .chi-time-picker__minute 54
-          .chi-time-picker__minute 55
-          .chi-time-picker__minute 56
-          .chi-time-picker__minute 57
-          .chi-time-picker__minute 58
-          .chi-time-picker__minute 59
-        .chi-time-picker__periods
-          .chi-time-picker__period AM
-          .chi-time-picker__period PM
-    .chi-grid
-      .chi-col.-w--6
-        .-text--h3 12 hours format
-        chi-time
-      .chi-col.-w--6
-        .-text--h3 24 hours format
-        chi-time(extended)
-      .chi-col.-w--6
-        .-text--h3 Active time
-        chi-time(value='11:00')
-      .chi-col.-w--6
-        .-text--h3 Min & MAX
-        chi-time(min='14:00:00', max='20:00:00')
-      .chi-col.-w--6
-        .-text--h3 Seconds
-        chi-time(display-seconds)
-      .chi-col.-w--6
-        .-text--h3 Stepped
-        chi-time(stepped, display-seconds)
+    chi-time
   .example-tabs.-pl--2
     ul.chi-tabs#example-time
       li.-active
@@ -272,85 +140,7 @@ h4 Base
 h4 Active
 .example.-mb--3
   .-p--3
-    .chi-time-picker
-      .chi-time-picker__content
-        .chi-time-picker__hours
-          .chi-time-picker__hour.-active 12
-          .chi-time-picker__hour 01
-          .chi-time-picker__hour 02
-          .chi-time-picker__hour 03
-          .chi-time-picker__hour 04
-          .chi-time-picker__hour 05
-          .chi-time-picker__hour 06
-          .chi-time-picker__hour 07
-          .chi-time-picker__hour 08
-          .chi-time-picker__hour 09
-          .chi-time-picker__hour 10
-          .chi-time-picker__hour 11
-        .chi-time-picker__minutes
-          .chi-time-picker__minute.-active 00
-          .chi-time-picker__minute 01
-          .chi-time-picker__minute 02
-          .chi-time-picker__minute 03
-          .chi-time-picker__minute 04
-          .chi-time-picker__minute 05
-          .chi-time-picker__minute 06
-          .chi-time-picker__minute 07
-          .chi-time-picker__minute 08
-          .chi-time-picker__minute 09
-          .chi-time-picker__minute 10
-          .chi-time-picker__minute 11
-          .chi-time-picker__minute 12
-          .chi-time-picker__minute 13
-          .chi-time-picker__minute 14
-          .chi-time-picker__minute 15
-          .chi-time-picker__minute 16
-          .chi-time-picker__minute 17
-          .chi-time-picker__minute 18
-          .chi-time-picker__minute 19
-          .chi-time-picker__minute 20
-          .chi-time-picker__minute 21
-          .chi-time-picker__minute 22
-          .chi-time-picker__minute 23
-          .chi-time-picker__minute 24
-          .chi-time-picker__minute 25
-          .chi-time-picker__minute 26
-          .chi-time-picker__minute 27
-          .chi-time-picker__minute 28
-          .chi-time-picker__minute 29
-          .chi-time-picker__minute 30
-          .chi-time-picker__minute 31
-          .chi-time-picker__minute 32
-          .chi-time-picker__minute 33
-          .chi-time-picker__minute 34
-          .chi-time-picker__minute 35
-          .chi-time-picker__minute 36
-          .chi-time-picker__minute 37
-          .chi-time-picker__minute 38
-          .chi-time-picker__minute 39
-          .chi-time-picker__minute 40
-          .chi-time-picker__minute 41
-          .chi-time-picker__minute 42
-          .chi-time-picker__minute 43
-          .chi-time-picker__minute 44
-          .chi-time-picker__minute 45
-          .chi-time-picker__minute 46
-          .chi-time-picker__minute 47
-          .chi-time-picker__minute 48
-          .chi-time-picker__minute 49
-          .chi-time-picker__minute 50
-          .chi-time-picker__minute 51
-          .chi-time-picker__minute 52
-          .chi-time-picker__minute 53
-          .chi-time-picker__minute 54
-          .chi-time-picker__minute 55
-          .chi-time-picker__minute 56
-          .chi-time-picker__minute 57
-          .chi-time-picker__minute 58
-          .chi-time-picker__minute 59
-        .chi-time-picker__periods
-          .chi-time-picker__period.-active AM
-          .chi-time-picker__period PM
+    chi-time(value="14:00:00")
   .example-tabs.-pl--2
     ul.chi-tabs#example-active
       li.-active
@@ -359,7 +149,7 @@ h4 Active
         a(href=`#html-active`) HTML Blueprint
   #webcomponent-active.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-time></chi-time>
+      <chi-time value="14:00:00"></chi-time>
   #html-active.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
@@ -371,85 +161,7 @@ h4 Active
 h4 Min and Max
 .example.-mb--3
   .-p--3
-    .chi-time-picker
-      .chi-time-picker__content
-        .chi-time-picker__hours
-          .chi-time-picker__hour.-active 12
-          .chi-time-picker__hour 01
-          .chi-time-picker__hour 02
-          .chi-time-picker__hour.-disabled 03
-          .chi-time-picker__hour.-disabled 04
-          .chi-time-picker__hour.-disabled 05
-          .chi-time-picker__hour.-disabled 06
-          .chi-time-picker__hour.-disabled 07
-          .chi-time-picker__hour.-disabled 08
-          .chi-time-picker__hour.-disabled 09
-          .chi-time-picker__hour.-disabled 10
-          .chi-time-picker__hour.-disabled 11
-        .chi-time-picker__minutes
-          .chi-time-picker__minute.-active 00
-          .chi-time-picker__minute 01
-          .chi-time-picker__minute 02
-          .chi-time-picker__minute 03
-          .chi-time-picker__minute 04
-          .chi-time-picker__minute 05
-          .chi-time-picker__minute 06
-          .chi-time-picker__minute 07
-          .chi-time-picker__minute 08
-          .chi-time-picker__minute 09
-          .chi-time-picker__minute 10
-          .chi-time-picker__minute 11
-          .chi-time-picker__minute 12
-          .chi-time-picker__minute 13
-          .chi-time-picker__minute 14
-          .chi-time-picker__minute 15
-          .chi-time-picker__minute 16
-          .chi-time-picker__minute 17
-          .chi-time-picker__minute 18
-          .chi-time-picker__minute 19
-          .chi-time-picker__minute 20
-          .chi-time-picker__minute 21
-          .chi-time-picker__minute 22
-          .chi-time-picker__minute 23
-          .chi-time-picker__minute 24
-          .chi-time-picker__minute 25
-          .chi-time-picker__minute 26
-          .chi-time-picker__minute 27
-          .chi-time-picker__minute 28
-          .chi-time-picker__minute 29
-          .chi-time-picker__minute 30
-          .chi-time-picker__minute 31
-          .chi-time-picker__minute 32
-          .chi-time-picker__minute 33
-          .chi-time-picker__minute 34
-          .chi-time-picker__minute 35
-          .chi-time-picker__minute 36
-          .chi-time-picker__minute 37
-          .chi-time-picker__minute 38
-          .chi-time-picker__minute 39
-          .chi-time-picker__minute 40
-          .chi-time-picker__minute 41
-          .chi-time-picker__minute 42
-          .chi-time-picker__minute 43
-          .chi-time-picker__minute 44
-          .chi-time-picker__minute 45
-          .chi-time-picker__minute 46
-          .chi-time-picker__minute 47
-          .chi-time-picker__minute 48
-          .chi-time-picker__minute 49
-          .chi-time-picker__minute 50
-          .chi-time-picker__minute 51
-          .chi-time-picker__minute 52
-          .chi-time-picker__minute 53
-          .chi-time-picker__minute 54
-          .chi-time-picker__minute 55
-          .chi-time-picker__minute 56
-          .chi-time-picker__minute 57
-          .chi-time-picker__minute 58
-          .chi-time-picker__minute 59
-        .chi-time-picker__periods
-          .chi-time-picker__period.-active AM
-          .chi-time-picker__period.-disabled PM
+    chi-time(min="14:00:00", value="17:00:00", max="20:00:00")
   .example-tabs.-pl--2
     ul.chi-tabs#example-min-max
       li.-active
@@ -458,7 +170,7 @@ h4 Min and Max
         a(href=`#html-min-max`) HTML Blueprint
   #webcomponent-min-max.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-time></chi-time>
+      <chi-time min="14:00:00" value="17:00:00" max="20:00:00"></chi-time>
   #html-min-max.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
@@ -470,146 +182,7 @@ h4 Min and Max
 h4 Seconds
 .example.-mb--3
   .-p--3
-    .chi-time-picker
-      .chi-time-picker__content
-        .chi-time-picker__hours
-          .chi-time-picker__hour 12
-          .chi-time-picker__hour 01
-          .chi-time-picker__hour 02
-          .chi-time-picker__hour 03
-          .chi-time-picker__hour 04
-          .chi-time-picker__hour 05
-          .chi-time-picker__hour 06
-          .chi-time-picker__hour 07
-          .chi-time-picker__hour 08
-          .chi-time-picker__hour 09
-          .chi-time-picker__hour 10
-          .chi-time-picker__hour 11
-        .chi-time-picker__minutes
-          .chi-time-picker__minute 00
-          .chi-time-picker__minute 01
-          .chi-time-picker__minute 02
-          .chi-time-picker__minute 03
-          .chi-time-picker__minute 04
-          .chi-time-picker__minute 05
-          .chi-time-picker__minute 06
-          .chi-time-picker__minute 07
-          .chi-time-picker__minute 08
-          .chi-time-picker__minute 09
-          .chi-time-picker__minute 10
-          .chi-time-picker__minute 11
-          .chi-time-picker__minute 12
-          .chi-time-picker__minute 13
-          .chi-time-picker__minute 14
-          .chi-time-picker__minute 15
-          .chi-time-picker__minute 16
-          .chi-time-picker__minute 17
-          .chi-time-picker__minute 18
-          .chi-time-picker__minute 19
-          .chi-time-picker__minute 20
-          .chi-time-picker__minute 21
-          .chi-time-picker__minute 22
-          .chi-time-picker__minute 23
-          .chi-time-picker__minute 24
-          .chi-time-picker__minute 25
-          .chi-time-picker__minute 26
-          .chi-time-picker__minute 27
-          .chi-time-picker__minute 28
-          .chi-time-picker__minute 29
-          .chi-time-picker__minute 30
-          .chi-time-picker__minute 31
-          .chi-time-picker__minute 32
-          .chi-time-picker__minute 33
-          .chi-time-picker__minute 34
-          .chi-time-picker__minute 35
-          .chi-time-picker__minute 36
-          .chi-time-picker__minute 37
-          .chi-time-picker__minute 38
-          .chi-time-picker__minute 39
-          .chi-time-picker__minute 40
-          .chi-time-picker__minute 41
-          .chi-time-picker__minute 42
-          .chi-time-picker__minute 43
-          .chi-time-picker__minute 44
-          .chi-time-picker__minute 45
-          .chi-time-picker__minute 46
-          .chi-time-picker__minute 47
-          .chi-time-picker__minute 48
-          .chi-time-picker__minute 49
-          .chi-time-picker__minute 50
-          .chi-time-picker__minute 51
-          .chi-time-picker__minute 52
-          .chi-time-picker__minute 53
-          .chi-time-picker__minute 54
-          .chi-time-picker__minute 55
-          .chi-time-picker__minute 56
-          .chi-time-picker__minute 57
-          .chi-time-picker__minute 58
-          .chi-time-picker__minute 59
-        .chi-time-picker__seconds
-          .chi-time-picker__second 00
-          .chi-time-picker__second 01
-          .chi-time-picker__second 02
-          .chi-time-picker__second 03
-          .chi-time-picker__second 04
-          .chi-time-picker__second 05
-          .chi-time-picker__second 06
-          .chi-time-picker__second 07
-          .chi-time-picker__second 08
-          .chi-time-picker__second 09
-          .chi-time-picker__second 10
-          .chi-time-picker__second 11
-          .chi-time-picker__second 12
-          .chi-time-picker__second 13
-          .chi-time-picker__second 14
-          .chi-time-picker__second 15
-          .chi-time-picker__second 16
-          .chi-time-picker__second 17
-          .chi-time-picker__second 18
-          .chi-time-picker__second 19
-          .chi-time-picker__second 20
-          .chi-time-picker__second 21
-          .chi-time-picker__second 22
-          .chi-time-picker__second 23
-          .chi-time-picker__second 24
-          .chi-time-picker__second 25
-          .chi-time-picker__second 26
-          .chi-time-picker__second 27
-          .chi-time-picker__second 28
-          .chi-time-picker__second 29
-          .chi-time-picker__second 30
-          .chi-time-picker__second 31
-          .chi-time-picker__second 32
-          .chi-time-picker__second 33
-          .chi-time-picker__second 34
-          .chi-time-picker__second 35
-          .chi-time-picker__second 36
-          .chi-time-picker__second 37
-          .chi-time-picker__second 38
-          .chi-time-picker__second 39
-          .chi-time-picker__second 40
-          .chi-time-picker__second 41
-          .chi-time-picker__second 42
-          .chi-time-picker__second 43
-          .chi-time-picker__second 44
-          .chi-time-picker__second 45
-          .chi-time-picker__second 46
-          .chi-time-picker__second 47
-          .chi-time-picker__second 48
-          .chi-time-picker__second 49
-          .chi-time-picker__second 50
-          .chi-time-picker__second 51
-          .chi-time-picker__second 52
-          .chi-time-picker__second 53
-          .chi-time-picker__second 54
-          .chi-time-picker__second 55
-          .chi-time-picker__second 56
-          .chi-time-picker__second 57
-          .chi-time-picker__second 58
-          .chi-time-picker__second 59
-        .chi-time-picker__periods
-          .chi-time-picker__period AM
-          .chi-time-picker__period PM
+    chi-time(display-seconds)
   .example-tabs.-pl--2
     ul.chi-tabs#example-seconds
       li.-active
@@ -630,94 +203,7 @@ h4 Seconds
 h4 24-hour format
 .example.-mb--3
   .-p--3
-    .chi-time-picker
-      .chi-time-picker__content
-        .chi-time-picker__hours
-          .chi-time-picker__hour 00
-          .chi-time-picker__hour 01
-          .chi-time-picker__hour 02
-          .chi-time-picker__hour 03
-          .chi-time-picker__hour 04
-          .chi-time-picker__hour 05
-          .chi-time-picker__hour 06
-          .chi-time-picker__hour 07
-          .chi-time-picker__hour 08
-          .chi-time-picker__hour 09
-          .chi-time-picker__hour 10
-          .chi-time-picker__hour 11
-          .chi-time-picker__hour 12
-          .chi-time-picker__hour 13
-          .chi-time-picker__hour 14
-          .chi-time-picker__hour 15
-          .chi-time-picker__hour 16
-          .chi-time-picker__hour 17
-          .chi-time-picker__hour 18
-          .chi-time-picker__hour 19
-          .chi-time-picker__hour 20
-          .chi-time-picker__hour 21
-          .chi-time-picker__hour 22
-          .chi-time-picker__hour 23
-        .chi-time-picker__minutes
-          .chi-time-picker__minute 00
-          .chi-time-picker__minute 01
-          .chi-time-picker__minute 02
-          .chi-time-picker__minute 03
-          .chi-time-picker__minute 04
-          .chi-time-picker__minute 05
-          .chi-time-picker__minute 06
-          .chi-time-picker__minute 07
-          .chi-time-picker__minute 08
-          .chi-time-picker__minute 09
-          .chi-time-picker__minute 10
-          .chi-time-picker__minute 11
-          .chi-time-picker__minute 12
-          .chi-time-picker__minute 13
-          .chi-time-picker__minute 14
-          .chi-time-picker__minute 15
-          .chi-time-picker__minute 16
-          .chi-time-picker__minute 17
-          .chi-time-picker__minute 18
-          .chi-time-picker__minute 19
-          .chi-time-picker__minute 20
-          .chi-time-picker__minute 21
-          .chi-time-picker__minute 22
-          .chi-time-picker__minute 23
-          .chi-time-picker__minute 24
-          .chi-time-picker__minute 25
-          .chi-time-picker__minute 26
-          .chi-time-picker__minute 27
-          .chi-time-picker__minute 28
-          .chi-time-picker__minute 29
-          .chi-time-picker__minute 30
-          .chi-time-picker__minute 31
-          .chi-time-picker__minute 32
-          .chi-time-picker__minute 33
-          .chi-time-picker__minute 34
-          .chi-time-picker__minute 35
-          .chi-time-picker__minute 36
-          .chi-time-picker__minute 37
-          .chi-time-picker__minute 38
-          .chi-time-picker__minute 39
-          .chi-time-picker__minute 40
-          .chi-time-picker__minute 41
-          .chi-time-picker__minute 42
-          .chi-time-picker__minute 43
-          .chi-time-picker__minute 44
-          .chi-time-picker__minute 45
-          .chi-time-picker__minute 46
-          .chi-time-picker__minute 47
-          .chi-time-picker__minute 48
-          .chi-time-picker__minute 49
-          .chi-time-picker__minute 50
-          .chi-time-picker__minute 51
-          .chi-time-picker__minute 52
-          .chi-time-picker__minute 53
-          .chi-time-picker__minute 54
-          .chi-time-picker__minute 55
-          .chi-time-picker__minute 56
-          .chi-time-picker__minute 57
-          .chi-time-picker__minute 58
-          .chi-time-picker__minute 59
+    chi-time(extended)
   .example-tabs.-pl--2
     ul.chi-tabs#example-24hour
       li.-active
@@ -726,7 +212,7 @@ h4 24-hour format
         a(href=`#html-24hour`) HTML Blueprint
   #webcomponent-24hour.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-time></chi-time>
+      <chi-time>extended</chi-time>
   #html-24hour.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
@@ -738,45 +224,7 @@ h4 24-hour format
 h4 Step
 .example.-mb--3
   .-p--3
-    .chi-time-picker
-      .chi-time-picker__content
-        .chi-time-picker__hours
-          .chi-time-picker__hour 00
-          .chi-time-picker__hour 01
-          .chi-time-picker__hour 02
-          .chi-time-picker__hour 03
-          .chi-time-picker__hour 04
-          .chi-time-picker__hour 05
-          .chi-time-picker__hour 06
-          .chi-time-picker__hour 07
-          .chi-time-picker__hour 08
-          .chi-time-picker__hour 09
-          .chi-time-picker__hour 10
-          .chi-time-picker__hour 11
-          .chi-time-picker__hour 12
-          .chi-time-picker__hour 13
-          .chi-time-picker__hour 14
-          .chi-time-picker__hour 15
-          .chi-time-picker__hour 16
-          .chi-time-picker__hour 17
-          .chi-time-picker__hour 18
-          .chi-time-picker__hour 19
-          .chi-time-picker__hour 20
-          .chi-time-picker__hour 21
-          .chi-time-picker__hour 22
-          .chi-time-picker__hour 23
-        .chi-time-picker__minutes
-          .chi-time-picker__minute 00
-          .chi-time-picker__minute 15
-          .chi-time-picker__minute 30
-          .chi-time-picker__minute 45
-        .chi-time-picker__seconds
-          .chi-time-picker__second 00
-          .chi-time-picker__second 10
-          .chi-time-picker__second 20
-          .chi-time-picker__second 30
-          .chi-time-picker__second 40
-          .chi-time-picker__second 50
+    chi-time(stepped, display-seconds)
   .example-tabs.-pl--2
     ul.chi-tabs#example-step
       li.-active
@@ -785,7 +233,7 @@ h4 Step
         a(href=`#html-step`) HTML Blueprint
   #webcomponent-step.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-time></chi-time>
+      <chi-time stepped display-seconds></chi-time>
   #html-step.chi-tabs-panel
     .chi-tab__description
       span.-text--grey

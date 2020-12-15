@@ -2,7 +2,6 @@ import {
   Component,
   Event,
   EventEmitter,
-  Method,
   Prop,
   Watch,
   h
@@ -43,14 +42,9 @@ export class Time {
   @Prop({ reflect: true }) max: string;
 
   /**
-   * Seconds
+   * Displaying seconds column
    */
   @Prop({ reflect: true }) displaySeconds = false;
-
-  /**
-   * To specify which days of week to disable
-   */
-  @Prop({ reflect: true }) excludedWeekdays: string;
 
   /**
    * To render Time Picker in 24 hours format
@@ -58,19 +52,29 @@ export class Time {
   @Prop({ reflect: true }) extended = false;
 
   /**
-   * Steps
+   * To render Minutes and Seconds columns in stepped format
    */
   @Prop({ reflect: true }) stepped: boolean;
+
+  /**
+   *  To disable specific hours
+   */
+  @Prop({ reflect: true }) excludedHours: string;
 
   _hour: string;
   _minute: string;
   _second: string;
   _period: string;
 
-  excludedTimesArray = [];
+  excludedHoursArray = [];
 
-  @Watch('excludedDates')
+  @Watch('excluded-hours')
   updateExcludedHours() {
+    if (this.excludedHours) {
+      this.excludedHours.split(',').map(time => {
+        this.excludedHoursArray.push(time.trim());
+      });
+    }
   }
 
   @Watch('value')
@@ -79,30 +83,6 @@ export class Time {
       this.calculateTimePeriods();
       this.value = newValue;
     }
-  }
-
-  // @Watch('min')
-  // minChanged(newValue: string) {
-  // }
-
-  // @Watch('max')
-  // maxChanged(newValue: string) {
-  // }
-
-  /**
-   * Sets date
-   */
-  @Method()
-  async setTime(time: string) {
-    this.value = time;
-  }
-
-  /**
-   * Gets date
-   */
-  @Method()
-  getTime() {
-    return Promise.resolve(this.value);
   }
 
   /**
@@ -130,6 +110,11 @@ export class Time {
 
   connectedCallback() {
     this.calculateTimePeriods();
+    if (this.excludedHours) {
+      this.excludedHours.split(',').map(time => {
+        this.excludedHoursArray.push(time.trim());
+      });
+    }
   }
 
   hours() {
@@ -146,15 +131,11 @@ export class Time {
         if (hour === '12') {
           if (this._period === 'am') {
             hourToSet = '00';
-          } else if (this._period === 'pm') {
-            hourToSet = hour;
           } else {
             hourToSet = hour;
           }
         } else {
-          if (this._period === 'am') {
-            hourToSet = hour;
-          } else if (this._period === 'pm') {
+          if (this._period === 'pm') {
             hourToSet = (parseInt(hour) + 12).toString();
           } else {
             hourToSet = hour;
@@ -166,19 +147,15 @@ export class Time {
       this.value = `${hourToSet}:${this._minute}:${this._second}`;
     };
     const hourStatus = (hour: string) => {
+      const valueHour = parseInt(this.value.split(':')[0]);
       let hourStatus = '';
 
       if (parseInt(this._hour) === parseInt(hour) ||
         (!this.extended &&
           this._period === 'pm' &&
-          parseInt(hour) + 12 === parseInt(this.value.split(':')[0])
+          parseInt(hour) + 12 === valueHour
         ) ||
-        (!this.extended &&
-          parseInt(hour) + 12 === 24 && parseInt(this.value.split(':')[0]) === 0
-        ) ||
-        (this.extended &&
-          parseInt(hour) === 24 && parseInt(this.value.split(':')[0]) === 0
-        )
+        (parseInt(hour) === 12 && valueHour === 0)
       ) {
         hourStatus = '-active';
       } else {
@@ -198,6 +175,12 @@ export class Time {
           if (hourToCompare > maxHour) {
             hourStatus += ' -disabled';
           }
+        }
+
+        const formattedHour = parseInt(hour) < 10 ? (parseInt(hour) + 12).toString() : hour;
+
+        if (this.excludedHoursArray.includes(formattedHour)) {
+          hourStatus += ' -disabled';
         }
       }
 
@@ -375,7 +358,6 @@ export class Time {
     const seconds = this.seconds();
     const periods = this.periods();
 
-    console.log(this._period);
     console.log(this.value);
 
     return (
