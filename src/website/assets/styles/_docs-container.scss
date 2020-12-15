@@ -426,6 +426,10 @@
               font-size: $font-size-h4;
               line-height: 2rem;
               margin: 0.5rem 0;
+
+              > a {
+                cursor: pointer;
+              }
             }
 
             h4 {
