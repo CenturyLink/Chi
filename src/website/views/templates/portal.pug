@@ -1509,10 +1509,47 @@ h2 Accordion
         chi.accordion(accordionPortal);
       </script>
 
+h2 Picker Group
+.example.-mb--3
+  .-p--3
+    fieldset
+      legend.chi-label Select an option
+      .chi-picker-group.-portal
+        .chi-picker-group__content
+          each i in [1, 2, 3, 4]
+            input.chi-picker__input(type='radio', name='unique-name-ch', id=`unique-id-ch${i}`, checked=(i === 1), disabled=(i === 4))
+            label(for=`unique-id-ch${i}`)
+              = 'Option ' + `${i}`
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-picker-group
+      li.-disabled
+        a(href=`#webcomponent-picker-group`) Web Component
+      li.-active
+        a(href=`#html-picker-group`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-picker-group
+  .chi-tabs-panel.-active#html-picker-group
+    :code(lang='html')
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-picker-group -portal">
+          <div class="chi-picker-group__content">
+            <input class="chi-picker__input" type="radio" name="unique-name-ch" id="unique-id-ch1" checked>
+            <label for="unique-id-ch1">Option 1</label>
+            <input class="chi-picker__input" type="radio" name="unique-name-ch" id="unique-id-ch2">
+            <label for="unique-id-ch2">Option 2</label>
+            <input class="chi-picker__input" type="radio" name="unique-name-ch" id="unique-id-ch3">
+            <label for="unique-id-ch3">Option 3</label>
+            <input class="chi-picker__input" type="radio" name="unique-name-ch" id="unique-id-ch4" disabled>
+            <label for="unique-id-ch4">Option 4</label>
+          </div>
+        </div>
+      </fieldset>
+
 script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
+      chi.accordion(document.getElementById('example-portal'));
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
       chi.popover(document.getElementById('example__help-button'));
       chi.popover(document.getElementById('example__help-button2'));
