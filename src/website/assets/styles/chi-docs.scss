@@ -90,6 +90,14 @@ body {
           }
         }
       }
+
+      &.-accessibility {
+        .chi-epanel {
+          .chi-epanel__header {
+            flex-direction: column;
+          }
+        }
+      }
     }
   }
 
