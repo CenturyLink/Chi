@@ -5,330 +5,404 @@ disabled: true
 
 h2 Meaningful sequence
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span A
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#content-structure-separation-sequence" rel="noopener">1.3.2 Meaningful Sequence</a>
-    p.-text
-      | When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Does the order of the content have a meaningful sequence, such that changing the sequence does not change the content's meaning?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can Assistive Technologies programmatically determine at least one sequence of the content that makes sense?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#content-structure-separation" rel="noopener" target="_blank") 1.3 Adaptable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#content-structure-separation-sequence" rel="noopener" target="_blank") 1.3.2 Meaningful Sequence
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Content must be presentable to users in ways they can perceive." data-position="bottom")
         span Perceivable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#content-structure-separation" rel="noopener">1.3 Adaptable</a>
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
     p.-text
       | <strong>Benefits:</strong> Blind disabilities
+    p.-text
+      | When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Does the order of the content have a meaningful sequence, such that changing the sequence does not change the content's meaning?
+          li
+            | Can Assistive Technologies programmatically determine at least one sequence of the content that makes sense?
 
 h2 Bypass blocks
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span A
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-skip" rel="noopener">2.4.1 Bypass Blocks</a>
-    p.-text
-      | A mechanism is available to bypass blocks of content that are repeated on multiple Web pages.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can content be navigated sequentially, allowing more direct access to the primary content of the Web page?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | If a web page has blocks of text that are repeated within the page (example: navigation, headings), can the blocks of text be "skipped over"?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can the main content of a web page be reached quickly and easily, with fewer keystrokes?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener" target="_blank") 2.4 Navigable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-skip" rel="noopener" target="_blank") 2.4.1 Bypass Blocks
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to operate the interface." data-position="bottom")
         span Operable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener">2.4 Navigable</a>
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
     p.-text
       | <strong>Benefits:</strong> Keyboard users (typically people with blind, low vision and/or motor/physical disabilities).
+    p.-text
+      | A mechanism is available to bypass blocks of content that are repeated on multiple Web pages.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Can content be navigated sequentially, allowing more direct access to the primary content of the Web page?
+          li
+            | If a web page has blocks of text that are repeated within the page (example: navigation, headings), can the blocks of text be "skipped over"?
+          li
+            | Can the main content of a web page be reached quickly and easily, with fewer keystrokes?
 
 h2 Page titled
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span A
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-title" rel="noopener">2.4.2 Page Titled</a>
-    p.-text
-      | Web pages have titles that describe topic or purpose.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Does the web page have a descriptive title which helps the user to find content and orient themselves?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Do links to another page agree/similar with the new page title, such that the link is not ambiguous?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener" target="_blank") 2.4 Navigable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-title" rel="noopener" target="_blank") 2.4.2 Page Titled
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to operate the interface." data-position="bottom")
         span Operable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener">2.4 Navigable</a>
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
     p.-text
       | <strong>Benefits:</strong> Visual, cognitive, mobility disabled users to be able to identify / differentiate content.
+    p.-text
+      | Web pages have titles that describe topic or purpose.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Does the web page have a descriptive title which helps the user to find content and orient themselves?
+          li
+            | Do links to another page agree/similar with the new page title, such that the link is not ambiguous?
 
 h2 Link Purpose
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span A
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-refs" rel="noopener">2.4.4 Link Purpose (In Context)</a>
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener" target="_blank") 2.4 Navigable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-refs" rel="noopener" target="_blank") 2.4.4 Link Purpose (In Context)
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to operate the interface." data-position="bottom")
+        span Operable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> Visual, cognitive limitations, motion impairment disabilities.
     p.-text
       | The purpose of each link can be determined from the link text alone or from the link text together with its
       |  programmatically determined link context, except where the purpose of the link would be ambiguous to users in general.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can the user understand the purpose of the link (without needing additional context) in order to decide whether to follow the link?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Is meaningful link text provided?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can the user arrive on a link and find out more about the link without losing their place on the page?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Does the context/description of the link preceed the link?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
-        span Operable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener">2.4 Navigable</a>
-    p.-text
-      | <strong>Benefits:</strong> Visual, cognitive limitations, motion impairment disabilities.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Can the user understand the purpose of the link (without needing additional context) in order to decide whether to follow the link?
+          li
+            | Is meaningful link text provided?
+          li
+            | Can the user arrive on a link and find out more about the link without losing their place on the page?
+          li
+            | Does the context/description of the link preceed the link?
 
 h2 Multiple ways
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span AA
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-mult-loc" rel="noopener">2.4.5 Multiple Ways</a>
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener" target="_blank") 2.4 Navigable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-mult-loc" rel="noopener" target="_blank") 2.4.5 Multiple Ways
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to operate the interface." data-position="bottom")
+        span Operable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria." data-position="bottom")
+        span Level AA
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> Visual, cognitive limitations disabilities.
     p.-text
       | More than one way is available to locate a Web page within a set of Web pages except where the Web Page is the
       | result of, or a step in, a process.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can the user locate content in a manner/technique that best meets their needs (in order to find information faster)?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
-        span Operable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener">2.4 Navigable</a>
-    p.-text
-      | <strong>Benefits:</strong> Visual, cognitive limitations disabilities.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Can the user locate content in a manner/technique that best meets their needs (in order to find information faster)?
+
 h2 Headings and labels
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span AA
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-descriptive" rel="noopener">2.4.6 Headings and Labels</a>
-    p.-text
-      | Headings and labels describe topic or purpose.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can the user understand what information is contained in Web pages and how that information is organized?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can the user find the information they seek more easily, and can the user understand the relationships between different parts of the content more easily?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Does the label description help the user identify specific components within the content?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener" target="_blank") 2.4 Navigable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-descriptive" rel="noopener" target="_blank") 2.4.6 Headings and Labels
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to operate the interface." data-position="bottom")
         span Operable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener">2.4 Navigable</a>
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria." data-position="bottom")
+        span Level AA
+  .chi-col.-w--12
     p.-text
       | <strong>Benefits:</strong> Visual, cognitive limitations, motion impairment disabilities.
+    p.-text
+      | Headings and labels describe topic or purpose.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Can the user understand what information is contained in Web pages and how that information is organized?
+          li 
+            | Can the user find the information they seek more easily, and can the user understand the relationships between different parts of the content more easily?
+          li 
+            | Does the label description help the user identify specific components within the content?
+
 h2 Language of the page
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span A
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#meaning-doc-lang-id" rel="noopener">3.1.1 Language of Page</a>
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#meaning" rel="noopener" target="_blank") 3.1 Readable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#meaning-doc-lang-id" rel="noopener" target="_blank") 3.1.1 Language of Page
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to understand the information as well as the operation of the user interface." data-position="bottom")
+        span Understandable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> All users.
     p.-text
       | The default human language of each Web page can be programmatically determined.
     p.-text
       | Both Assistive Technologies and conventional user agents can render text more accurately when the language of the 
       | Web page is identified.  As a result, users with disabilities will be better able to understand the content.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Is information provided in the Web page that user agents need to present text and other linguistic content correctly?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can a screen reader load the correct pronunciation rules?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can visual browsers display characters and scripts correctly?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can media players show captions correctly?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
-        span Understandable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#meaning" rel="noopener">3.1 Readable</a>
-    p.-text
-      | <strong>Benefits:</strong> All users.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Is information provided in the Web page that user agents need to present text and other linguistic content correctly?
+          li 
+            | Can a screen reader load the correct pronunciation rules?
+          li 
+            | Can visual browsers display characters and scripts correctly?
+          li 
+            | Can media players show captions correctly?
+
 h2 Language of parts
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span AA
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#meaning-other-lang-id" rel="noopener">3.1.2 Language of Parts</a>
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#meaning" rel="noopener" target="_blank") 3.1 Readable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#meaning-other-lang-id" rel="noopener" target="_blank") 3.1.2 Language of Parts
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to understand the information as well as the operation of the user interface." data-position="bottom")
+        span Understandable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria." data-position="bottom")
+        span Level AA
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> All users.
     p.-text
       | The human language of each passage or phrase in the content can be programmatically determined except for 
       | proper names, technical terms, words of indeterminate language, and words or phrases that have become part 
       | of the vernacular of the immediately surrounding text.
     p.-text
       | Ensure that content is presented according to the presentation and pronunciate rules of a language (if specified).
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Are single words considered part of the language of the surrounding text unless it is clear that a change in language was intended?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
-        span Understandable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#meaning" rel="noopener">3.1 Readable</a>
-    p.-text
-      | <strong>Benefits:</strong> All users.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Are single words considered part of the language of the surrounding text unless it is clear that a change in language was intended?
+
 h2 Parsing
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span A
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#ensure-compat-parses" rel="noopener">4.1.1 Parsing</a>
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#ensure-compat" rel="noopener" target="_blank") 4.1 Compatible
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#ensure-compat-parses" rel="noopener" target="_blank") 4.1.1 Parsing
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to access the content as technologies advance." data-position="bottom")
+        span Robust
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> All users of Assistive Technologies.
     p.-text
       | In content implemented using markup languages, elements have complete start and end tags, elements are nested
       | according to their specifications, elements do not contain duplicate attributes, and any IDs are unique, except
       | where the specifications allow these features.
     p.-text
       | Ensure that Assistive Technologies can parse the content accurately and without crashing.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Do Web pages have complete start and end tags that are nested according to specification?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
-        span Robust
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#ensure-compat" rel="noopener">4.1 Compatible</a>
-    p.-text
-      | <strong>Benefits:</strong> All users of Assistive Technologies.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Do Web pages have complete start and end tags that are nested according to specification?
 
 h2 Consistent navigation
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span AA
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#consistent-behavior-consistent-locations" rel="noopener">3.2.3 Consistent Navigation</a>
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#consistent-behavior" rel="noopener" target="_blank") 3.2 Predictable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#consistent-behavior-consistent-locations" rel="noopener" target="_blank") 3.2.3 Consistent Navigation
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to understand the information as well as the operation of the user interface." data-position="bottom")
+        span Understandable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria." data-position="bottom")
+        span Level AA
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> Blind, low-vision, cognitive / intellectual disabilities.
     p.-text
       | Navigational mechanisms that are repeated on multiple Web pages within a set of Web pages occur in the same 
       | relative order each time they are repeated, unless a change is initiated by the user.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Is repeated content and layout presented consistently within a set of Web pages?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can specific information or functionality be located more than once?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can the user predict the location of the content they are looking for, and find it more quickly when encountered again?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
-        span Understandable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#consistent-behavior" rel="noopener">3.2 Predictable</a>
-    p.-text
-      | <strong>Benefits:</strong> Blind, low-vision, cognitive / intellectual disabilities.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Is repeated content and layout presented consistently within a set of Web pages?
+          li 
+            | Can specific information or functionality be located more than once?
+          li 
+            | Can the user predict the location of the content they are looking for, and find it more quickly when encountered again?
 
 h2 Consistent identification
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span AA
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#consistent-behavior-consistent-functionality" rel="noopener">3.2.4 Consistent Identification</a>
-    p.-text
-      | Components that have the same functionality within a set of Web pages are identified consistently.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Are functional components that appear repeatedly within a set of Web pages consistently identified, so that familiar functions are predictable on different Web pages?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Are labels, icons/non-text items and their text alternatives, link text, and components consistent - within a page, and also if repeated on more than one page?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#consistent-behavior" rel="noopener" target="_blank") 3.2 Predictable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#consistent-behavior-consistent-functionality" rel="noopener" target="_blank") 3.2.4 Consistent Identification
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to understand the information as well as the operation of the user interface." data-position="bottom")
         span Understandable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#consistent-behavior" rel="noopener">3.2 Predictable</a>
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria." data-position="bottom")
+        span Level AA
+  .chi-col.-w--12
     p.-text
       | <strong>Benefits:</strong> Blind, cognitive/intellectual disabilities.
+    p.-text
+      | Components that have the same functionality within a set of Web pages are identified consistently.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Are functional components that appear repeatedly within a set of Web pages consistently identified, so that familiar functions are predictable on different Web pages?
+          li 
+            | Are labels, icons/non-text items and their text alternatives, link text, and components consistent - within a page, and also if repeated on more than one page?
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+    }
+  );
