@@ -148,6 +148,10 @@
         color: $color-navy-40;
         font-weight: $font-weight-semi-bold;
       }
+
+      .chi-label__help {
+        align-self: flex-start;
+      }
     }
 
     .chi-stat-submetric {
