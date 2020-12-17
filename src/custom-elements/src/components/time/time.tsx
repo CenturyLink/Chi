@@ -6,19 +6,7 @@ import {
   Watch,
   h
 } from '@stencil/core';
-
-const TIME_CLASSES = {
-  TIME: 'chi-time-picker',
-  CONTENT: 'chi-time-picker__content',
-  HOURS: 'chi-time-picker__hours',
-  HOUR: 'chi-time-picker__hour',
-  MINUTES: 'chi-time-picker__minutes',
-  MINUTE: 'chi-time-picker__minute',
-  SECONDS: 'chi-time-picker__seconds',
-  SECOND: 'chi-time-picker__second',
-  PERIODS: 'chi-time-picker__periods',
-  PERIOD: 'chi-time-picker__period',
-};
+import { TIME_CLASSES } from '../../constants/classes';
 
 @Component({
   tag: 'chi-time',
@@ -30,16 +18,6 @@ export class Time {
    * Selected time in the time picker
    */
   @Prop({ reflect: true, mutable: true }) value: string;
-
-  /**
-   * Minimum eligible time
-   */
-  @Prop({ reflect: true }) min: string;
-
-  /**
-   * Maximum eligible time
-   */
-  @Prop({ reflect: true }) max: string;
 
   /**
    * Displaying seconds column
@@ -61,12 +39,25 @@ export class Time {
    */
   @Prop({ reflect: true }) excludedHours: string;
 
+  /**
+   *  To disable specific minutes
+   */
+  @Prop({ reflect: true }) excludedMinutes: string;
+
+  /**
+   *  To disable specific seconds
+   */
+  @Prop({ reflect: true }) excludedSeconds: string;
+
   _hour: string;
   _minute: string;
   _second: string;
   _period: string;
+  _uuid: string;
 
   excludedHoursArray = [];
+  excludedMinutesArray = [];
+  excludedSecondsArray = [];
 
   @Watch('excluded-hours')
   updateExcludedHours() {
@@ -77,10 +68,27 @@ export class Time {
     }
   }
 
+  @Watch('excluded-minutes')
+  updateExcludedMinutes() {
+    if (this.excludedMinutes) {
+      this.excludedMinutes.split(',').map(time => {
+        this.excludedMinutesArray.push(time.trim());
+      });
+    }
+  }
+
+  @Watch('excluded-seconds')
+  updateExcludedSeconds() {
+    if (this.excludedSeconds) {
+      this.excludedSeconds.split(',').map(time => {
+        this.excludedSecondsArray.push(time.trim());
+      });
+    }
+  }
+
   @Watch('value')
   timeChanged(newValue: string, oldValue: string) {
     if (newValue !== oldValue) {
-      this.calculateTimePeriods();
       this.value = newValue;
     }
   }
@@ -91,13 +99,16 @@ export class Time {
   @Event({ eventName: 'chiTimeChange' }) eventChange: EventEmitter;
 
   calculateTimePeriods() {
+    const currentTime = new Date();
+    let hours = currentTime.getHours();
+    const minutes = currentTime.getMinutes();
+    const seconds = currentTime.getSeconds();
+    const formatTimePeriod = (period: number) => {
+      return period.toString().length > 1 ? period.toString() : `0${period}`;
+    };
+
     if (!this.value) {
-      if (this.min) {
-        this.value = this.min;
-        this._period = parseInt(this.min.split(':')[0]) < 12 ? 'am' : 'pm';
-      } else {
-        this.value = '00:00:00';
-      }
+      this.value = `${formatTimePeriod(hours)}:${formatTimePeriod(minutes)}:${formatTimePeriod(seconds)}`;
     }
 
     const time = this.value.split(':');
@@ -105,7 +116,7 @@ export class Time {
     this._hour = time[0];
     this._minute = time[1];
     this._second = time[2] ? time[2] : '00';
-    this._period = !this.extended && parseInt(time[0]) < 12 ? 'am' : 'pm';
+    this._period = !this.extended && hours < 12 ? 'am' : 'pm';
   }
 
   connectedCallback() {
@@ -145,6 +156,7 @@ export class Time {
 
       this._hour = hour;
       this.value = `${hourToSet}:${this._minute}:${this._second}`;
+      this.emitTimeValueEvent();
     };
     const hourStatus = (hour: string) => {
       const valueHour = parseInt(this.value.split(':')[0]);
@@ -159,24 +171,6 @@ export class Time {
       ) {
         hourStatus = '-active';
       } else {
-        const hourToCompare = this._period === 'pm' ? parseInt(hour) + 12 : parseInt(hour);
-
-        if (this.min) {
-          const minHour = this.min ? parseInt(this.min.split(':')[0]) : null;
-
-          if (hourToCompare < minHour) {
-            hourStatus += ' -disabled';
-          }
-        }
-
-        if (this.max) {
-          const maxHour = this.max ? parseInt(this.max.split(':')[0]) : null;
-
-          if (hourToCompare > maxHour) {
-            hourStatus += ' -disabled';
-          }
-        }
-
         const formattedHour = parseInt(hour) < 10 ? (parseInt(hour) + 12).toString() : hour;
 
         if (this.excludedHoursArray.includes(formattedHour)) {
@@ -188,7 +182,7 @@ export class Time {
     };
 
     const hoursToDisplay = [
-      <div class={`
+      <div data-hour={startHour} class={`
         ${TIME_CLASSES.HOUR}
         ${hourStatus(startHour.toString())}
         `}
@@ -200,7 +194,7 @@ export class Time {
 
       if (i > 0) {
         hoursToDisplay.push(
-          <div class={`
+          <div data-hour={hour} class={`
             ${TIME_CLASSES.HOUR}
             ${hourStatus(hour)}
           `}
@@ -229,6 +223,7 @@ export class Time {
     const setMinute = (minute: string) => {
       this._minute = minute;
       this.value = `${this._hour}:${this._minute}:${this._second}`;
+      this.emitTimeValueEvent();
     };
 
     Array.from(Array(60), (_, i) => {
@@ -270,6 +265,7 @@ export class Time {
     const setSecond = (second: string) => {
       this._second = second;
       this.value = `${this._hour}:${this._minute}:${this._second}`;
+      this.emitTimeValueEvent();
     };
 
     Array.from(Array(60), (_, i) => {
@@ -335,8 +331,9 @@ export class Time {
           }
         }
 
-        this._hour = currentHour.toString();
+        console.log(this._period, this._hour);
         this.value = `${currentHour}:${this._minute}:${this._second}`;
+        this.emitTimeValueEvent();
       };
 
       return (
@@ -352,13 +349,24 @@ export class Time {
     } return;
   }
 
+  emitTimeValueEvent() {
+    this.eventChange.emit({
+      hour: this._hour,
+      minute: this._minute,
+      second: this._second,
+      period: this._period,
+      value: this.value
+    });
+  }
+
   render() {
     const hours = this.hours();
     const minutes = this.minutes();
     const seconds = this.seconds();
     const periods = this.periods();
 
-    console.log(this.value);
+    // console.log(this._second);
+    // console.log(this.value);
 
     return (
       <div

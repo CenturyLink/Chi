@@ -1,6 +1,7 @@
 import { Component, Element, Listen, Method, Prop, h } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
 import { ESCAPE_KEYCODE } from '../../constants/constants';
+import { TIME_CLASSES } from '../../constants/classes';
 
 @Component({
   tag: 'chi-time-picker',
@@ -13,19 +14,14 @@ export class TimePicker {
   @Prop({ reflect: true, mutable: true }) value: string;
 
   /**
-   * Minimum eligible time
-   */
-  @Prop({ reflect: true }) min: string;
-
-  /**
-   * Maximum eligible time
-   */
-  @Prop({ reflect: true }) max: string;
-
-  /**
    *  To disable chi-time-picker.
    */
   @Prop({ reflect: true }) disabled = false;
+
+  /**
+   * Displaying seconds column
+   */
+  @Prop({ reflect: true }) displaySeconds = false;
 
   /**
    *  To specify excluded hours.
@@ -33,7 +29,12 @@ export class TimePicker {
   @Prop({ reflect: true }) excludedHours: string;
 
   /**
-   * Indicates whether the time picker dropdown is open or closed
+   *  To render Time Picker in 24 hour format.
+   */
+  @Prop({ reflect: true }) extended: boolean;
+
+  /**
+   * Indicates whether the time picker popover is open or closed
    */
   @Prop({ reflect: true, mutable: true }) active = false;
 
@@ -83,15 +84,6 @@ export class TimePicker {
     return Promise.resolve(this.value);
   }
 
-  @Listen('chiTimeChange')
-  handleTimeChange(ev) {
-    ev.stopPropagation();
-    this._input.value = ev.detail;
-    this.value = ev.detail;
-    this.active = false;
-    this._input.blur();
-  }
-
   componentWillLoad(): void {
     this._onFocusIn = this._onFocusIn.bind(this);
     this._onClick = this._onClick.bind(this);
@@ -111,6 +103,50 @@ export class TimePicker {
     document.body.removeEventListener('keyup', this._onKeyUp);
   }
 
+  @Listen('chiPopoverShow')
+  handlePopoverOpen(ev) {
+    ev.stopPropagation();
+    const hoursColumn = this.el.querySelector(`.${TIME_CLASSES.HOURS}`) as HTMLElement;
+    const minutesColumn = this.el.querySelector(`.${TIME_CLASSES.MINUTES}`) as HTMLElement;
+    const secondsColumn = this.el.querySelector(`.${TIME_CLASSES.SECONDS}`) as HTMLElement;
+
+    setTimeout(() => {
+      if (hoursColumn) {
+        const activeHour = hoursColumn.querySelector(`.${TIME_CLASSES.HOUR}.-active`) as HTMLElement;
+
+        if (activeHour) {
+          hoursColumn.scrollTop = activeHour.offsetTop - 4;
+        }
+      }
+      if (minutesColumn) {
+        const activeMinute = minutesColumn.querySelector(`.${TIME_CLASSES.MINUTE}.-active`) as HTMLElement;
+
+        if (activeMinute) {
+          minutesColumn.scrollTop = activeMinute.offsetTop - 4;
+        }
+      }
+      if (secondsColumn) {
+        const activeSecond = secondsColumn.querySelector(`.${TIME_CLASSES.SECOND}.-active`) as HTMLElement;
+
+        if (activeSecond) {
+          secondsColumn.scrollTop = activeSecond.offsetTop - 4;
+        }
+      }
+    }, 100);
+  }
+
+  @Listen('chiTimeChange')
+  handleTimeChange(ev) {
+    // console.log(ev);
+    const timePickerInput = document.getElementById(this._uuid) as HTMLInputElement;
+    const formatTimePeriod = (period: number) => {
+      return period.toString().length > 1 ? period.toString() : `0${period}`;
+    };
+    const hour = !this.extended && ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
+
+    timePickerInput.value = `${formatTimePeriod(hour)}:${formatTimePeriod(ev.detail.minute)}:${formatTimePeriod(ev.detail.second)} ${formatTimePeriod(ev.detail.period)}`;
+  }
+
   render() {
     const chiPopover = (
       <chi-popover
@@ -121,9 +157,9 @@ export class TimePicker {
         active={this.active}
       >
         <chi-time
+          display-seconds={this.displaySeconds}
           excluded-hours={this.excludedHours}
-          min={this.min}
-          max={this.max}
+          extended={this.extended}
           value={this.value}
         />
       </chi-popover>
@@ -139,7 +175,7 @@ export class TimePicker {
             class={`chi-input
               ${this.active ? '-focus' : ''}`}
             type={`text`}
-            placeholder={`00:00:00`}
+            placeholder={`--:-- --`}
             ref={el => (this._input = el as HTMLInputElement)}
             value={this.value}
             disabled={this.disabled}

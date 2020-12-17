@@ -6,7 +6,7 @@ p.-text
   .-p--3
     div.chi-form__item(style="max-width: 14rem;")
       chi-label(for="time-picker-base") Label
-      chi-time-picker(id="time-picker-base")
+      chi-time-picker(id="time-picker-base" display-seconds)
   .example-tabs.-pl--2
     ul.chi-tabs#example-with-label
       li.-active
@@ -62,12 +62,12 @@ p.-text
         </div>
       </div>
 
-h3 Value, min and max options
+h3 Value option
 .example.-mb--3
   .-p--3
     div.chi-form__item(style="max-width: 14rem;")
       chi-label(for='unique-id-va1') Time
-      chi-time-picker#unique-id-va1(value='09:00:00', min='09:00:00', max='18:00:00')
+      chi-time-picker#unique-id-va1(value='09:00:00')
   .example-tabs.-pl--2
     ul.chi-tabs#example-min-max-value
       li.-active
@@ -77,7 +77,7 @@ h3 Value, min and max options
   #webcomponent-min-max-value.chi-tabs-panel.-active
     :code(lang="html")
       <chi-label for="unique-id-va1">Time</chi-label>
-      <chi-time-picker id="unique-id-va1" value="09:00" min="09:00" max="18:00"></chi-time-picker>
+      <chi-time-picker id="unique-id-va1" value="09:00:00"></chi-time-picker>
   #html-min-max-value.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
@@ -93,14 +93,14 @@ h3 Value, min and max options
         </div>
       </div>
 
-h3 Excluded hours
+h3 Excluded hours, minutes and seconds
 p.-text
   | Specify which hours to disable by using the <code>excluded-hours</code> attribute.
 .example.-mb--3
   .-p--3
     div.chi-form__item(style="max-width: 14rem;")
-      chi-label(for="time-picker-excluded-hours") Label
-      chi-time-picker(id="time-picker-excluded-hours", excluded-hours="14, 15")
+      chi-label(for="time-picker-excluded") Label
+      chi-time-picker(id="time-picker-excluded", excluded-hours="14, 15", excluded-minutes="00, 01, 02, 03, 04, 05", excluded-seconds="00, 01, 02, 03, 04, 05", display-seconds)
   .example-tabs.-pl--2
     ul.chi-tabs#example-excluded-times
       li.-active
@@ -212,7 +212,7 @@ h4 24-hour format
         a(href=`#html-24hour`) HTML Blueprint
   #webcomponent-24hour.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-time>extended</chi-time>
+      <chi-time extended></chi-time>
   #html-24hour.chi-tabs-panel
     .chi-tab__description
       span.-text--grey

@@ -54,6 +54,7 @@
           background-color: $color-background-primary;
           color: $color-text-white;
           font-weight: $font-weight-semi-bold;
+          pointer-events: none;
         }
 
         &.-disabled {
