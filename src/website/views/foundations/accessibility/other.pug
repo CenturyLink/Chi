@@ -5,272 +5,341 @@ disabled: true
 
 h2 Prerecorded audio-only and video-only
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span A
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#media-equiv-av-only-alt" rel="noopener">1.2.1 Audio-only and Video-only (Prerecorded)</a>
-    p.-text
-      | For prerecorded audio-only and prerecorded video-only media, the following are true, except when the audio or video is a media alternative for text and is clearly labeled as such:
-    ul.-text.-no-style
-      li <strong>Prerecorded Audio-only:</strong> An alternative for time-based media is provided that presents equivalent information for prerecorded audio-only content.
-      li <strong>Prerecorded Video-only:</strong> Either an alternative for time-based media or an audio track is provided that presents equivalent information for prerecorded video-only content.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Is information conveyed by prerecorded audio-only and prerecorded video-only content available to all users?  (Examples: Audio recording, text transcript, animation as a tutorial)
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can Assistive Technologies read text alternatives aloud, present then visually, or convert to braille for people who have difficulty perceiving visual content, or have difficulty understanding the meaning of prerecorded video content?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can text be read for people who are deaf, are hard of hearing, or who are having trouble understanding audio information for any reason?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#media-equiv" rel="noopener" target="_blank") 1.2 Time-based media
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#media-equiv-av-only-alt" rel="noopener" target="_blank") 1.2.1 Audio-only and Video-only (Prerecorded)
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Content must be presentable to users in ways they can perceive." data-position="bottom")
         span Perceivable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#media-equiv" rel="noopener">1.2 Time-based media</a>
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
     p.-text
       | <strong>Benefits:</strong> Blind, deaf, cognitive/intellectual disabilities.
+    p.-text
+      | For prerecorded audio-only and prerecorded video-only media, the following are true, except when the audio or video is a media alternative for text and is clearly labeled as such:
+    ul.-text
+      li <strong>Prerecorded Audio-only:</strong> An alternative for time-based media is provided that presents equivalent information for prerecorded audio-only content.
+      li <strong>Prerecorded Video-only:</strong> Either an alternative for time-based media or an audio track is provided that presents equivalent information for prerecorded video-only content.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Is information conveyed by prerecorded audio-only and prerecorded video-only content available to all users?  (Examples: Audio recording, text transcript, animation as a tutorial)
+          li 
+            | Can Assistive Technologies read text alternatives aloud, present then visually, or convert to braille for people who have difficulty perceiving visual content, or have difficulty understanding the meaning of prerecorded video content?
+          li 
+            | Can text be read for people who are deaf, are hard of hearing, or who are having trouble understanding audio information for any reason?
+
 h2 Captions prerecorded
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span A
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#media-equiv-captions" rel="noopener">1.2.2 Captions (Prerecorded)</a>
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#media-equiv" rel="noopener" target="_blank") 1.2 Time-based media
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#media-equiv-captions" rel="noopener" target="_blank") 1.2.2 Captions (Prerecorded)
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Content must be presentable to users in ways they can perceive." data-position="bottom")
+        span Perceivable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> Deaf, hearing loss disabilities.
     p.-text
       | Captions are provided for all prerecorded audio content in synchronized media, except when the media is a media alternative for text and is clearly labeled as such.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can people who are deaf or hard of hearing to watch synchronized media presentations/cnotent through captions?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
-        span Perceivable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#media-equiv" rel="noopener">1.2 Time-based media</a>
-    p.-text
-      | <strong>Benefits:</strong> Deaf, hearing loss disabilities.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Can people who are deaf or hard of hearing to watch synchronized media presentations/cnotent through captions?
+
 h2 Audio description or media alternative prerecorded
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span A
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#media-equiv-audio-desc" rel="noopener">1.2.3 Audio Description or Media Alternative (Prerecorded)</a>
-    p.-text
-      | An alternative for time-based media or audio description of the prerecorded video content is provided for synchronized media, except when the media is a media alternative for text and is clearly labeled as such.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Do people who are blind or visually impaired have access to the visual information in a synchronized media presentation?
-      ul.-text
-        li Audio description of the video content, including dialogue, actions, characters, scene changes, and on-screen text.
-        li Text form includes all of the information in the synchronized media (both visual and auditory), including visual context, actions and expressions of actors, and any other visual material, non-speech sounds (laughter, off-screen voices, etc.), and transcripts of all dialogue.
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#media-equiv" rel="noopener" target="_blank") 1.2 Time-based media
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#media-equiv-audio-desc" rel="noopener" target="_blank") 1.2.3 Audio Description or Media Alternative (Prerecorded)
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Content must be presentable to users in ways they can perceive." data-position="bottom")
         span Perceivable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#media-equiv" rel="noopener">1.2 Time-based media</a>
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
     p.-text
       | <strong>Benefits:</strong> Blind and visual disabilities, cognitive disabilities (people who have difficulty perceiving or understanding moving images).
+    p.-text
+      | An alternative for time-based media or audio description of the prerecorded video content is provided for synchronized media, except when the media is a media alternative for text and is clearly labeled as such.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Do people who are blind or visually impaired have access to the visual information in a synchronized media presentation?
+            ul.-text
+              li Audio description of the video content, including dialogue, actions, characters, scene changes, and on-screen text.
+              li Text form includes all of the information in the synchronized media (both visual and auditory), including visual context, actions and expressions of actors, and any other visual material, non-speech sounds (laughter, off-screen voices, etc.), and transcripts of all dialogue.
+
 h2 Captions live
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span AA
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG21/#captions-live" rel="noopener">1.2.4 Captions (Live)</a>
-    p.-text
-      | Captions are provided for all live audio content in synchronized media.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can people who are deaf or hard of hearing to watch real-time presentations, including dialogue, and identifies who is speaking, and notates sound effects and other significant audio?
-      ul.-text
-        li Applies to the broadcast of synchronized media.
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#media-equiv" rel="noopener" target="_blank") 1.2 Time-based media
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG21/#captions-live" rel="noopener" target="_blank") 1.2.4 Captions (Live)
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Content must be presentable to users in ways they can perceive." data-position="bottom")
         span Perceivable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#media-equiv" rel="noopener">1.2 Time-based media</a>
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria." data-position="bottom")
+        span Level AA
+  .chi-col.-w--12
     p.-text
       | <strong>Benefits:</strong> Deaf, hearing loss disabilities.
+    p.-text
+      | Captions are provided for all live audio content in synchronized media.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Can people who are deaf or hard of hearing to watch real-time presentations, including dialogue, and identifies who is speaking, and notates sound effects and other significant audio?
+            ul.-text
+              li Applies to the broadcast of synchronized media.
+
+
 h2 Audio description prerecorded
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span AA
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#media-equiv-audio-desc-only" rel="noopener">1.2.5 Audio Description (Prerecorded)</a>
-    p.-text
-      | Audio description is provided for all prerecorded video content in synchronized media.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can people who are blind or visually impaired access to the visual information in a synchronized media presentation?
-      ul.-text
-        li The audio description provides information about dialogue, as well as actions, characters, scene changes, and on-screen text that are important and are not described or spoken in the main sound track.
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#media-equiv" rel="noopener" target="_blank") 1.2 Time-based media
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#media-equiv-audio-desc-only" rel="noopener" target="_blank") 1.2.5 Audio Description (Prerecorded)
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Content must be presentable to users in ways they can perceive." data-position="bottom")
         span Perceivable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#media-equiv" rel="noopener">1.2 Time-based media</a>
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria." data-position="bottom")
+        span Level AA
+  .chi-col.-w--12
     p.-text
       | <strong>Benefits:</strong> Blind and visual disabilities, cognitive disabilities (people who have difficulty interpreting visually what is happening).
+    p.-text
+      | Audio description is provided for all prerecorded video content in synchronized media.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Can people who are blind or visually impaired access to the visual information in a synchronized media presentation?
+            ul.-text
+              li The audio description provides information about dialogue, as well as actions, characters, scene changes, and on-screen text that are important and are not described or spoken in the main sound track.
+
 h2 Audio control
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span A
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast-dis-audio" rel="noopener">1.4.2 Audio Control</a>
-    p.-text
-      | If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can a sound that begins playing automatically on page load be stopped by the user via a control or link to turn the sound off?
-      ul.-text
-        li Is the control keyboard operable, located near the beginning of the page, and easily/quickly discovered by the user?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can the screen reader user still hear the screen reader without other sounds playing/interferring?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | If a sound exists, does the sound play for 3 seconds or less, and stop automatically?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can a sound be played only on user request?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast" rel="noopener" target="_blank") 1.4 Distinguishable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast-dis-audio" rel="noopener" target="_blank") 1.4.2 Audio Control
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Content must be presentable to users in ways they can perceive." data-position="bottom")
         span Perceivable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast" rel="noopener">1.4 Distinguishable</a>
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
     p.-text
       | <strong>Benefits:</strong> Blind and hard of hearing disabilities.
+    p.-text
+      | If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Can a sound that begins playing automatically on page load be stopped by the user via a control or link to turn the sound off?
+            ul.-text
+              li Is the control keyboard operable, located near the beginning of the page, and easily/quickly discovered by the user?
+          li 
+            | Can the screen reader user still hear the screen reader without other sounds playing/interferring?
+          li
+            | If a sound exists, does the sound play for 3 seconds or less, and stop automatically?
+          li
+            | Can a sound be played only on user request?
+
 h2 Timing adjustable
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span A
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#time-limits-required-behaviors" rel="noopener">2.2.1 Timing Adjustable</a>
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#time-limits" rel="noopener" target="_blank") 2.2 Enough time
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#time-limits-required-behaviors" rel="noopener" target="_blank") 2.2.1 Timing Adjustable
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to operate the interface." data-position="bottom")
+        span Operable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> Blind, low vision, deaf, dexterity impairments, and cognitive limitations.
     p.-text
       | For each time limit that is set by the content, at least one of the following is true:
-    ul.-text.-no-style
+    ul.-text
       li <strong>Turn off:</strong> The user is allowed to turn off the time limit before encountering it; or
       li <strong>Adjust:</strong> The user is allowed to adjust the time limit before encountering it over a wide range that is at least ten times the length of the default setting; or
       li <strong>Extend:</strong> The user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action (for example, "press the space bar"), and the user is allowed to extend the time limit at least ten times; or
       li <strong>Real-time Exception:</strong> The time limit is a required part of a real-time event (for example, an auction), and no alternative to the time limit is possible; or
       li <strong>Essential Exception:</strong> The time limit is essential and extending it would invalidate the activity; or
       li <strong>20 Hour Exception:</strong> The time limit is longer than 20 hours.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Are users with disabilities given adequate time to interact with Web content?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Are options provided  to disable time limits, customize the length of time limits, or request more time before a time limit occurs, in order to helps those users who require more time than expected to successfully complete tasks?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
-        span Operable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#time-limits" rel="noopener">2.2 Enough time</a>
-    p.-text
-      | <strong>Benefits:</strong> Blind, low vision, deaf, dexterity impairments, and cognitive limitations.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Are users with disabilities given adequate time to interact with Web content?
+          li 
+            | Are options provided  to disable time limits, customize the length of time limits, or request more time before a time limit occurs, in order to helps those users who require more time than expected to successfully complete tasks?
+
 h2 Pause, stop, hide
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span A
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#time-limits-pause" rel="noopener">2.2.2 Pause, Stop, Hide</a>
-    p.-text
-      | For moving, blinking, scrolling, or auto-updating information, all of the following are true:
-    ul.-text.-no-style
-      li <strong>Moving, blinking, scrolling:</strong> For any moving, blinking or scrolling information that (1) starts automatically, (2) lasts more than five seconds, and (3) is presented in parallel with other content, there is a mechanism for the user to pause, stop, or hide it unless the movement, blinking, or scrolling is part of an activity where it is essential; and
-      li <strong>Auto-updating:</strong> For any auto-updating information that (1) starts automatically and (2) is presented in parallel with other content, there is a mechanism for the user to pause, stop, or hide it or to control the frequency of the update unless the auto-updating is part of an activity where it is essential.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Is there an option of provided to the user with a means to control the frequency of updates when content Is auto-updating?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can content be paused and restarted from where it was paused?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can content stop blinking within 5 seconds?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#time-limits" rel="noopener" target="_blank") 2.2 Enough time
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#time-limits-pause" rel="noopener" target="_blank") 2.2.2 Pause, Stop, Hide
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to operate the interface." data-position="bottom")
         span Operable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#time-limits" rel="noopener">2.2 Enough time</a>
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
     p.-text
       | <strong>Benefits:</strong> Cognitive, attention deficient disorders, low literacy/reading/intellectual disabilities.
+    p.-text
+      | For moving, blinking, scrolling, or auto-updating information, all of the following are true:
+    ul.-text
+      li <strong>Moving, blinking, scrolling:</strong> For any moving, blinking or scrolling information that (1) starts automatically, (2) lasts more than five seconds, and (3) is presented in parallel with other content, there is a mechanism for the user to pause, stop, or hide it unless the movement, blinking, or scrolling is part of an activity where it is essential; and
+      li <strong>Auto-updating:</strong> For any auto-updating information that (1) starts automatically and (2) is presented in parallel with other content, there is a mechanism for the user to pause, stop, or hide it or to control the frequency of the update unless the auto-updating is part of an activity where it is essential.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Is there an option of provided to the user with a means to control the frequency of updates when content Is auto-updating?
+          li 
+            | Can content be paused and restarted from where it was paused?
+          li
+            | Can content stop blinking within 5 seconds?
+
 h2 Three flashes or below treshold
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span A
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#seizure-does-not-violate" rel="noopener">2.3.1 Three Flashes or Below Threshold</a>
-    p.-text
-      | Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Do users have access to the full content of a site without inducing seizures due to photosensitivity?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can the user suppress any flashing content before it begins?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | If there is a flashing area, is it a small area (less then 25% of 10 degrees of the visual field - representing the central area of vision in the eye - approximately 341 x 256 pixels)?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Is the flashing limited on only 3 times in any one second period?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#seizure" rel="noopener" target="_blank") 2.3 Seizures
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#seizure-does-not-violate" rel="noopener" target="_blank") 2.3.1 Three Flashes or Below Threshold
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to operate the interface." data-position="bottom")
         span Operable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#seizure" rel="noopener">2.3 Seizures</a>
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
     p.-text
       | <strong>Benefits:</strong> Photosensitive epilepsy, photosentive seizure disorders.
+    p.-text
+      | Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Do users have access to the full content of a site without inducing seizures due to photosensitivity?
+          li 
+            | Can the user suppress any flashing content before it begins?
+          li
+            | If there is a flashing area, is it a small area (less then 25% of 10 degrees of the visual field - representing the central area of vision in the eye - approximately 341 x 256 pixels)?
+          li
+            | Is the flashing limited on only 3 times in any one second period?
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+    }
+  );

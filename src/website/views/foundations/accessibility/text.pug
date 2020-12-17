@@ -5,62 +5,81 @@ disabled: true
 
 h2 Resize text
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span AA
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast-scale" rel="noopener">1.4.4 Resize text</a>
-    p.-text
-      | Except for captions and images of text, text can be resized without Assistive Technology up to 200 percent without loss of content or functionality.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can visually rendered text be scaled successfully so that it can be read directly by people with mild visual disabilities, without requiring the use of Assistive Technologies such as a screen magnifier?
-      ul.-text
-        li Including text-based controls (text characters that have been displayed so that they can be seen vs. text characters that are still in data form such as ASCII).
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Can content can be scaled up to 200% - up to twice the width and height?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast" rel="noopener" target="_blank") 1.4 Distinguishable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast-scale" rel="noopener" target="_blank") 1.4.4 Resize text
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Content must be presentable to users in ways they can perceive." data-position="bottom")
         span Perceivable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast" rel="noopener">1.4 Distinguishable</a>
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria." data-position="bottom")
+        span Level AA
+  .chi-col.-w--12
     p.-text
       | <strong>Benefits:</strong> Low vision disabilities.
+    p.-text
+      | Except for captions and images of text, text can be resized without Assistive Technology up to 200 percent without loss of content or functionality.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Can visually rendered text be scaled successfully so that it can be read directly by people with mild visual disabilities, without requiring the use of Assistive Technologies such as a screen magnifier?
+          li 
+            | Including text-based controls (text characters that have been displayed so that they can be seen vs. text characters that are still in data form such as ASCII).
+          li 
+            | Can content can be scaled up to 200% - up to twice the width and height?
 
 h2 Images of text
 div.chi-grid
-  .chi-col.-w-sm--12.-w-md--8
-    div.-d--flex.-justify-content--start.-align-items--center
-      .chi-badge.-primary.-xs.-mr--1
-        span AA
-      p.-text.-my--0
-        | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-presentation" rel="noopener">1.4.5 Images of Text</a>
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast" rel="noopener" target="_blank") 1.4 Distinguishable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-presentation" rel="noopener" target="_blank") 1.4.5 Images of Text
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Content must be presentable to users in ways they can perceive." data-position="bottom")
+        span Perceivable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria." data-position="bottom")
+        span Level AA
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> Blind disabilities.
     p.-text
       | Text is used to convey information rather than images of text. Achieve desired default visual presentation, to enable people who require a particular visual presentation 
       | of text to be able to adjust the text presentation as needed.
-    ul.-text
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Are images used to present text?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Is text embedded in images?
-      li 
-        i.chi-icon.-xs.-icon--primary.icon-checkbox-checked.-mr--1
-        | Is actual text used instead images of text?
-  .chi-col.-w-sm--12.-w-md--4
-    div.-d--flex.-justify-content--start.-align-items--center
-      p.-text.-text--bold.-my--0
-        | WCAG 2.0 Guideline
-      .chi-badge.-dark.-outline.-xs.-ml--1
-        span Perceivable
-    p.-text.-mt--1
-      | <a target="_blank" href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast" rel="noopener">1.4 Distinguishable</a>
-    p.-text
-      | <strong>Benefits:</strong> Blind disabilities.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Are images used to present text?
+          li 
+            | Is text embedded in images?
+          li 
+            | Is actual text used instead images of text?
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+    }
+  );
