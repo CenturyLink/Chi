@@ -182,6 +182,41 @@ p.-text
       <chi-date-picker id="date-excluded-days-dates" excluded-weekdays="0, 6" excluded-dates="01/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020"></chi-date-picker>
   #html-excluded-days-dates.chi-tabs-panel
 
+h3 Date Time
+p.-text
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 14rem;")
+      chi-label(for='date-time')
+        | Date Time
+      chi-date-picker(id="date-time" time)
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-datetime
+      li.-active
+        a(href=`#webcomponent-datetime`) Web Component
+      li
+        a(href=`#html-datetime`) HTML Blueprint
+  #webcomponent-with-label.chi-tabs-panel.-active
+    :code(lang="html",style="height:20rem")
+      <chi-label for="date">Date</chi-label>
+      <chi-date-picker id="date"></chi-date-picker>
+  #html-with-label.chi-tabs-panel
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="datepicker-1">Date</label>
+        <div class="chi-input__wrapper -icon--right">
+          <input id="datepicker-1" type="text" class="chi-input" placeholder="MM/DD/YYYY">
+          <i class="chi-icon icon-date -icon--muted"></i>
+        </div>
+      </div>
+
+      <script>chi.datePicker(document.getElementById('datepicker-1'));</script>
+
 h3 Calendar
 p.-text
   | An example of a date picker calendar not attached to any element.

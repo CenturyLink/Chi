@@ -4,7 +4,7 @@ import {
   EventEmitter,
   Prop,
   Watch,
-  h
+  h, Element
 } from '@stencil/core';
 import { TIME_CLASSES } from '../../constants/classes';
 
@@ -49,11 +49,12 @@ export class Time {
    */
   @Prop({ reflect: true }) excludedSeconds: string;
 
+  @Element() el: HTMLElement;
+
   _hour: string;
   _minute: string;
   _second: string;
   _period: string;
-  _uuid: string;
 
   excludedHoursArray = [];
   excludedMinutesArray = [];
@@ -93,22 +94,24 @@ export class Time {
     }
   }
 
+  // ToDo Validate Value
+  // validateTime(time: string) {
+  //   return /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(time);
+  // }
+
   /**
    * Time change value event
    */
   @Event({ eventName: 'chiTimeChange' }) eventChange: EventEmitter;
 
   calculateTimePeriods() {
-    const currentTime = new Date();
-    let hours = currentTime.getHours();
-    const minutes = currentTime.getMinutes();
-    const seconds = currentTime.getSeconds();
-    const formatTimePeriod = (period: number) => {
-      return period.toString().length > 1 ? period.toString() : `0${period}`;
-    };
+    const currentTime = new Date(),
+      hours = currentTime.getHours(),
+      minutes = currentTime.getMinutes(),
+      seconds = currentTime.getSeconds();
 
     if (!this.value) {
-      this.value = `${formatTimePeriod(hours)}:${formatTimePeriod(minutes)}:${formatTimePeriod(seconds)}`;
+      this.value = `${this.formatTimePeriod(hours)}:${this.formatTimePeriod(minutes)}:${this.formatTimePeriod(seconds)}`;
     }
 
     const time = this.value.split(':');
@@ -116,17 +119,19 @@ export class Time {
     this._hour = time[0];
     this._minute = time[1];
     this._second = time[2] ? time[2] : '00';
-    this._period = !this.extended && hours < 12 ? 'am' : 'pm';
+    this._period = !this.extended && parseInt(this._hour) < 12 ? 'am' : 'pm';
   }
 
   connectedCallback() {
     this.calculateTimePeriods();
-    if (this.excludedHours) {
-      this.excludedHours.split(',').map(time => {
-        this.excludedHoursArray.push(time.trim());
-      });
-    }
+    this.updateExcludedHours();
+    this.updateExcludedMinutes();
+    this.updateExcludedSeconds();
   }
+
+  formatTimePeriod(period: number) {
+    return period.toString().length > 1 ? period.toString() : `0${period}`;
+  };
 
   hours() {
     const startHour = this.extended ? 24 : 12;
@@ -162,7 +167,7 @@ export class Time {
       const valueHour = parseInt(this.value.split(':')[0]);
       let hourStatus = '';
 
-      if (parseInt(this._hour) === parseInt(hour) ||
+      if (this._hour === hour ||
         (!this.extended &&
           this._period === 'pm' &&
           parseInt(hour) + 12 === valueHour
@@ -171,9 +176,7 @@ export class Time {
       ) {
         hourStatus = '-active';
       } else {
-        const formattedHour = parseInt(hour) < 10 ? (parseInt(hour) + 12).toString() : hour;
-
-        if (this.excludedHoursArray.includes(formattedHour)) {
+        if (this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour)))) {
           hourStatus += ' -disabled';
         }
       }
@@ -186,11 +189,11 @@ export class Time {
         ${TIME_CLASSES.HOUR}
         ${hourStatus(startHour.toString())}
         `}
-        onClick={() => setHour(startHour.toString())}>{startHour}</div>
+           onClick={() => setHour(startHour.toString())}>{startHour}</div>
     ];
 
     Array.from(Array(startHour), (_, i) => {
-      const hour = (i).toString().length > 1 ? (i).toString() : `0${i}`;
+      const hour = this.formatTimePeriod(i);
 
       if (i > 0) {
         hoursToDisplay.push(
@@ -213,36 +216,49 @@ export class Time {
   }
 
   minutes() {
-    const minutesToDisplay = [
-      <div class={`
-      ${TIME_CLASSES.MINUTE}
-      ${this._minute === '00' ? '-active' : ''}
-      `}
-        onClick={() => setMinute('00')}>00</div>
-    ];
     const setMinute = (minute: string) => {
       this._minute = minute;
       this.value = `${this._hour}:${this._minute}:${this._second}`;
       this.emitTimeValueEvent();
     };
+    const minuteState = (minute: string) => {
+      let minuteState = '';
+
+      if (parseInt(this._minute) === parseInt(minute)) {
+        minuteState = '-active';
+      } else {
+        if (this.excludedMinutesArray.includes(minute)) {
+          minuteState += ' -disabled';
+        }
+      }
+
+      return minuteState;
+    };
+    const minutesToDisplay = [
+      <div class={`
+      ${TIME_CLASSES.MINUTE}
+      ${minuteState('00')}
+      `}
+       onClick={() => setMinute('00')}>00</div>
+    ];
 
     Array.from(Array(60), (_, i) => {
-      const minute = (i).toString().length > 1 ? (i).toString() : `0${i}`;
-      const displayminute = () => {
+      const minute = this.formatTimePeriod(i);
+      const displayMinute = () => {
         minutesToDisplay.push(<div class={`
         ${TIME_CLASSES.MINUTE}
-        ${this._minute === minute ? '-active' : ''}
+        ${minuteState(minute)}
         `}
-          onClick={() => setMinute(minute)}>{minute}</div>);
+         onClick={() => setMinute(minute)}>{minute}</div>);
       };
 
       if (i > 0) {
         if (this.stepped) {
           if (i % 15 === 0) {
-            displayminute();
+            displayMinute();
           }
         } else {
-          displayminute();
+          displayMinute();
         }
       }
     });
@@ -255,27 +271,40 @@ export class Time {
   }
 
   seconds() {
-    const secondsToDisplay = [
-      <div class={`
-      ${TIME_CLASSES.SECOND}
-      ${this._second === '00' ? '-active' : ''}
-      `}
-        onClick={() => setSecond('00')}>00</div>
-    ];
     const setSecond = (second: string) => {
       this._second = second;
       this.value = `${this._hour}:${this._minute}:${this._second}`;
       this.emitTimeValueEvent();
     };
+    const secondsState = (second: string) => {
+      let secondState = '';
+
+      if (parseInt(this._second) === parseInt(second)) {
+        secondState = '-active';
+      } else {
+        if (this.excludedMinutesArray.includes(second)) {
+          secondState += ' -disabled';
+        }
+      }
+
+      return secondState;
+    };
+    const secondsToDisplay = [
+      <div class={`
+        ${TIME_CLASSES.SECOND}
+        ${secondsState('00')}
+        `}
+       onClick={() => setSecond('00')}>00</div>
+    ];
 
     Array.from(Array(60), (_, i) => {
-      const second = (i).toString().length > 1 ? (i).toString() : `0${i}`;
+      const second = this.formatTimePeriod(i);
       const displaySecond = () => {
         secondsToDisplay.push(<div class={`
-        ${TIME_CLASSES.SECOND}
-        ${this._second === second ? '-active' : ''}
-        `}
-          onClick={() => setSecond(second)}>{second}</div>);
+          ${TIME_CLASSES.SECOND}
+          ${secondsState(second)}
+          `}
+        onClick={() => setSecond(second)}>{second}</div>);
       };
 
       if (i > 0) {
@@ -295,13 +324,14 @@ export class Time {
           secondsToDisplay
         }</div>
       );
-    } return;
+    }
+    return;
   }
 
   periods() {
     const hour = parseInt(this.value.split(':')[0]);
     if (!this.extended) {
-      const periodlasses = (period: 'am' | 'pm') => {
+      const periodClasses = (period: 'am' | 'pm') => {
         let periodStatus = TIME_CLASSES.PERIOD;
 
         if (period === this._period) {
@@ -331,7 +361,6 @@ export class Time {
           }
         }
 
-        console.log(this._period, this._hour);
         this.value = `${currentHour}:${this._minute}:${this._second}`;
         this.emitTimeValueEvent();
       };
@@ -339,14 +368,17 @@ export class Time {
       return (
         <div class={TIME_CLASSES.PERIODS}>
           <div
-            class={periodlasses('am')}
-            onClick={() => setPeriod('am')}>AM</div>
+            class={periodClasses('am')}
+            onClick={() => setPeriod('am')}>AM
+          </div>
           <div
-            class={periodlasses('pm')}
-            onClick={() => setPeriod('pm')}>PM</div>
+            class={periodClasses('pm')}
+            onClick={() => setPeriod('pm')}>PM
+          </div>
         </div>
       );
-    } return;
+    }
+    return;
   }
 
   emitTimeValueEvent() {
@@ -359,14 +391,39 @@ export class Time {
     });
   }
 
-  render() {
-    const hours = this.hours();
-    const minutes = this.minutes();
-    const seconds = this.seconds();
-    const periods = this.periods();
+  componentDidLoad() {
+    const hoursColumn = this.el.querySelector(`.${TIME_CLASSES.HOURS}`) as HTMLElement,
+      minutesColumn = this.el.querySelector(`.${TIME_CLASSES.MINUTES}`) as HTMLElement,
+      secondsColumn = this.el.querySelector(`.${TIME_CLASSES.SECONDS}`) as HTMLElement;
 
-    // console.log(this._second);
-    // console.log(this.value);
+    if (hoursColumn) {
+      const activeHour = hoursColumn.querySelector(`.${TIME_CLASSES.HOUR}.-active`) as HTMLElement;
+
+      if (activeHour) {
+        hoursColumn.scrollTop = activeHour.offsetTop - 28;
+      }
+    }
+    if (minutesColumn) {
+      const activeMinute = minutesColumn.querySelector(`.${TIME_CLASSES.MINUTE}.-active`) as HTMLElement;
+
+      if (activeMinute) {
+        minutesColumn.scrollTop = activeMinute.offsetTop - 28;
+      }
+    }
+    if (secondsColumn) {
+      const activeSecond = secondsColumn.querySelector(`.${TIME_CLASSES.SECOND}.-active`) as HTMLElement;
+
+      if (activeSecond) {
+        secondsColumn.scrollTop = activeSecond.offsetTop - 28;
+      }
+    }
+  }
+
+  render() {
+    const hours = this.hours(),
+      minutes = this.minutes(),
+      seconds = this.seconds(),
+      periods = this.periods();
 
     return (
       <div

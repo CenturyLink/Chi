@@ -2,6 +2,7 @@ import { Component, Element, Listen, Method, Prop, Watch, h } from '@stencil/cor
 import { contains, uuid4 } from '../../utils/utils';
 import { ESCAPE_KEYCODE } from '../../constants/constants';
 import dayjs, { Dayjs } from 'dayjs';
+import { TIME_CLASSES } from '../../constants/classes';
 
 @Component({
   tag: 'chi-date-picker',
@@ -53,6 +54,11 @@ export class DatePicker {
    */
   @Prop({ reflect: true }) excludedDates: string;
 
+  /**
+   * To render Date Picker with Time Picker
+   */
+  @Prop({ reflect: true }) time: boolean;
+
   @Element() el: HTMLElement;
 
   private _input: HTMLInputElement;
@@ -64,15 +70,15 @@ export class DatePicker {
   @Watch('excludedDates')
   updateExcludedDates() {
     this.excludedDatesArray = this.excludedDates
-    ? this.excludedDates.split(',').map(date => date.trim())
-    : [];
+      ? this.excludedDates.split(',').map(date => date.trim())
+      : [];
   }
 
   @Watch('excludedWeekdays')
   updateExcludedWeekdays() {
     this.excludedWeekdaysArray = this.excludedWeekdays
-    ? this.excludedWeekdays.split(',').map(weekDay => parseInt(weekDay))
-    : [];
+      ? this.excludedWeekdays.split(',').map(weekDay => parseInt(weekDay))
+      : [];
   }
 
   _onFocusIn(e) {
@@ -85,7 +91,7 @@ export class DatePicker {
     if (
       e.target !== document.body &&
       e.target !== null &&
-      !(new RegExp('(\\s|^)' + 'chi-datepicker__day' + '(\\s|$)').test(e.target.getAttribute('class')))
+      !(!this.time && new RegExp('(\\s|^)' + 'chi-datepicker__day' + '(\\s|$)').test(e.target.getAttribute('class')))
       // This hack is necessary because currently IE11 doesn't support .classList on SVG elements
     ) {
       this.active = contains(this.el, e.target);
@@ -119,9 +125,9 @@ export class DatePicker {
   }
 
   _checkDate() {
-    const inputDate = dayjs(this._input.value);
-    const minDate = dayjs(this.min);
-    const maxDate = dayjs(this.max);
+    const inputDate = dayjs(this._input.value),
+      minDate = dayjs(this.min),
+      maxDate = dayjs(this.max);
 
     if (dayjs(this._input.value).isValid() && !this.checkIfExcluded(inputDate)) {
       if (
@@ -175,10 +181,71 @@ export class DatePicker {
   handleDateChange(ev) {
     ev.stopPropagation();
     this._input.value = ev.detail;
-    this.value = ev.detail;
+    if (this.time) {
+      const chiTime = this.el.querySelector('.chi-popover__content chi-time') as HTMLElement;
+      const valueTime = chiTime.getAttribute('value');
+
+      if (valueTime) {
+        const time = valueTime.split(':');
+        const period = parseInt(time[0]) >= 12 ? 'pm' : 'am';
+        const hours = parseInt(time[0]) >= 12 ? parseInt(time[0]) - 12 : parseInt(time[0]);
+        const hoursCalculated = this.formatTimePeriod(hours);
+        const minutes = this.formatTimePeriod(parseInt(time[1]));
+
+        this.value = `${ev.detail}, ${hoursCalculated}:${minutes} ${period}`;
+      }
+    } else {
+      this.value = ev.detail;
+    }
     this.active = false;
     this._input.blur();
   }
+
+  @Listen('chiPopoverShow')
+  handlePopoverOpen(ev) {
+    ev.stopPropagation();
+    const hoursColumn = this.el.querySelector(`.${TIME_CLASSES.HOURS}`) as HTMLElement;
+    const minutesColumn = this.el.querySelector(`.${TIME_CLASSES.MINUTES}`) as HTMLElement;
+
+    setTimeout(() => {
+      if (hoursColumn) {
+        const activeHour = hoursColumn.querySelector(`.${TIME_CLASSES.HOUR}.-active`) as HTMLElement;
+
+        if (activeHour) {
+          hoursColumn.scrollTop = activeHour.offsetTop - 12;
+        }
+      }
+      if (minutesColumn) {
+        const activeMinute = minutesColumn.querySelector(`.${TIME_CLASSES.MINUTE}.-active`) as HTMLElement;
+
+        if (activeMinute) {
+          minutesColumn.scrollTop = activeMinute.offsetTop - 12;
+        }
+      }
+    }, 50);
+  }
+
+  @Listen('chiTimeChange')
+  handleTimeChange(ev) {
+    const currentTime = new Date();
+    const chiDate = this.el.querySelector('.chi-popover__content chi-date') as HTMLElement;
+    const valueDate = chiDate.getAttribute('value');
+    const hour = ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
+    let activeDate: string;
+
+    if (valueDate) {
+      activeDate = valueDate;
+    } else {
+      activeDate = `${currentTime.getMonth()+1}/${currentTime.getDate()}/${currentTime.getFullYear()}`;
+    }
+
+    chiDate.setAttribute('value', activeDate);
+    this.value = `${activeDate}, ${this.formatTimePeriod(hour)}:${this.formatTimePeriod(ev.detail.minute)} ${this.formatTimePeriod(ev.detail.period)}`;
+  }
+
+  formatTimePeriod(period: number) {
+    return period.toString().length > 1 ? period.toString() : `0${period}`;
+  };
 
   componentWillLoad(): void {
     this.updateExcludedDates();
@@ -202,39 +269,53 @@ export class DatePicker {
   }
 
   render() {
+    const chiDateValue = this.time ?
+      this.value ? this.value.split(',')[0] : null
+      : this.value;
+
+    const date = <chi-date
+      min={this.min}
+      max={this.max}
+      locale={this.locale}
+      value={chiDateValue}
+      format={this.format}
+      excluded-weekdays={this.excludedWeekdays}
+      excluded-dates={this.excludedDates}
+    />;
+    const time = this.time ? <chi-time /> : null;
+    const popoverContent = this.time ?
+      <div class="-d--flex">
+        {date}
+        {time}
+      </div> : date;
     const chiPopover = (
       <chi-popover
         id="example-4-be-popover"
-        position="bottom"
+        position={this.time ? 'bottom-start' : 'bottom'}
         reference={`#${this._uuid}-control`}
         prevent-auto-hide
         active={this.active}
       >
-        <chi-date
-          min={this.min}
-          max={this.max}
-          locale={this.locale}
-          value={this.value}
-          format={this.format}
-          excluded-weekdays={this.excludedWeekdays}
-          excluded-dates={this.excludedDates}
-        />
+        {popoverContent}
       </chi-popover>
     );
 
     return [
       // TODO: This input should be chi-input in the future and will pass through
       // some of its configuration attributes.
-      <div class={this.disabled ? '-disabled' : ''}>
+      <div class={`
+        ${this.disabled ? '-disabled' : ''}
+        ${this.time ? '-time' : ''}`}>
         <div
-          class="chi-input__wrapper -icon--right"
+          class={`chi-input__wrapper -icon--right
+          `}
         >
           <input
             id={`${this._uuid}-control`}
             class={`chi-input
               ${this.active ? '-focus' : ''}`}
             type={`text`}
-            placeholder={`MM/DD/YYYY`}
+            placeholder={this.time ? `MM/DD/YYYY, --:-- --` : `MM/DD/YYYY`}
             ref={el => (this._input = el as HTMLInputElement)}
             value={this.value}
             onChange={() => {

@@ -883,6 +883,22 @@
           "required": false
         },
         {
+          "name": "time",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "time",
+          "reflectToAttr": true,
+          "docs": "To render Date Picker with Time Picker",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "value",
           "type": "string",
           "mutable": true,
@@ -939,14 +955,16 @@
       "slots": [],
       "dependents": [],
       "dependencies": [
-        "chi-popover",
         "chi-date",
+        "chi-time",
+        "chi-popover",
         "chi-icon"
       ],
       "dependencyGraph": {
         "chi-date-picker": [
-          "chi-popover",
           "chi-date",
+          "chi-time",
+          "chi-popover",
           "chi-icon"
         ],
         "chi-date": [
@@ -1383,7 +1401,8 @@
         "chi-drawer",
         "chi-number-input",
         "chi-text-input",
-        "chi-textarea"
+        "chi-textarea",
+        "chi-time-picker"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -1409,6 +1428,9 @@
           "chi-icon"
         ],
         "chi-textarea": [
+          "chi-icon"
+        ],
+        "chi-time-picker": [
           "chi-icon"
         ]
       }
@@ -2172,11 +2194,15 @@
       "styles": [],
       "slots": [],
       "dependents": [
-        "chi-date-picker"
+        "chi-date-picker",
+        "chi-time-picker"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "chi-date-picker": [
+          "chi-popover"
+        ],
+        "chi-time-picker": [
           "chi-popover"
         ]
       }
@@ -3170,6 +3196,338 @@
       ],
       "dependencyGraph": {
         "chi-textarea": [
+          "chi-icon"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/time/time.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-time",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "displaySeconds",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "display-seconds",
+          "reflectToAttr": true,
+          "docs": "Displaying seconds column",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "excludedHours",
+          "type": "string",
+          "mutable": false,
+          "attr": "excluded-hours",
+          "reflectToAttr": true,
+          "docs": "To disable specific hours",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "excludedMinutes",
+          "type": "string",
+          "mutable": false,
+          "attr": "excluded-minutes",
+          "reflectToAttr": true,
+          "docs": "To disable specific minutes",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "excludedSeconds",
+          "type": "string",
+          "mutable": false,
+          "attr": "excluded-seconds",
+          "reflectToAttr": true,
+          "docs": "To disable specific seconds",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "extended",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "extended",
+          "reflectToAttr": true,
+          "docs": "To render Time Picker in 24 hours format",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "stepped",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "stepped",
+          "reflectToAttr": true,
+          "docs": "To render Minutes and Seconds columns in stepped format",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "Selected time in the time picker",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiTimeChange",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Time change value event",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "dependents": [
+        "chi-date-picker",
+        "chi-time-picker"
+      ],
+      "dependencies": [],
+      "dependencyGraph": {
+        "chi-date-picker": [
+          "chi-time"
+        ],
+        "chi-time-picker": [
+          "chi-time"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/time-picker/time-picker.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-time-picker",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": true,
+          "attr": "active",
+          "reflectToAttr": true,
+          "docs": "Indicates whether the time picker popover is open or closed",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "To disable chi-time-picker.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "displaySeconds",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "display-seconds",
+          "reflectToAttr": true,
+          "docs": "Displaying seconds column",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "excludedHours",
+          "type": "string",
+          "mutable": false,
+          "attr": "excluded-hours",
+          "reflectToAttr": true,
+          "docs": "To specify excluded hours.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "excludedMinutes",
+          "type": "string",
+          "mutable": false,
+          "attr": "excluded-minutes",
+          "reflectToAttr": true,
+          "docs": "To specify excluded minutes.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "excludedSeconds",
+          "type": "string",
+          "mutable": false,
+          "attr": "excluded-seconds",
+          "reflectToAttr": true,
+          "docs": "To specify excluded seconds.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "extended",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "extended",
+          "reflectToAttr": true,
+          "docs": "To render Time Picker in 24 hour format.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "Selected time of Time Picker",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getTime",
+          "returns": {
+            "type": "Promise<string>",
+            "docs": ""
+          },
+          "signature": "getTime() => Promise<string>",
+          "parameters": [],
+          "docs": "Gets time",
+          "docsTags": []
+        },
+        {
+          "name": "setTime",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "setTime(time: string) => Promise<void>",
+          "parameters": [],
+          "docs": "Sets time",
+          "docsTags": []
+        }
+      ],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-popover",
+        "chi-time",
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-time-picker": [
+          "chi-popover",
+          "chi-time",
           "chi-icon"
         ]
       }

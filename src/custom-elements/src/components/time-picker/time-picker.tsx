@@ -29,6 +29,16 @@ export class TimePicker {
   @Prop({ reflect: true }) excludedHours: string;
 
   /**
+   *  To specify excluded minutes.
+   */
+  @Prop({ reflect: true }) excludedMinutes: string;
+
+  /**
+   *  To specify excluded seconds.
+   */
+  @Prop({ reflect: true }) excludedSeconds: string;
+
+  /**
    *  To render Time Picker in 24 hour format.
    */
   @Prop({ reflect: true }) extended: boolean;
@@ -132,12 +142,11 @@ export class TimePicker {
           secondsColumn.scrollTop = activeSecond.offsetTop - 4;
         }
       }
-    }, 100);
+    }, 50);
   }
 
   @Listen('chiTimeChange')
   handleTimeChange(ev) {
-    // console.log(ev);
     const timePickerInput = document.getElementById(this._uuid) as HTMLInputElement;
     const formatTimePeriod = (period: number) => {
       return period.toString().length > 1 ? period.toString() : `0${period}`;
@@ -159,6 +168,8 @@ export class TimePicker {
         <chi-time
           display-seconds={this.displaySeconds}
           excluded-hours={this.excludedHours}
+          excluded-minutes={this.excludedMinutes}
+          excluded-seconds={this.excludedSeconds}
           extended={this.extended}
           value={this.value}
         />
