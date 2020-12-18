@@ -1,0 +1,148 @@
+---
+title: Accessibility
+accessibilityAccordion: true
+---
+p.-text
+  | The Lumen Chi Accessibility Foundations checklist defines how to make web content more accessible to people with disabilities.
+
+p.-text
+  | Accessibility involves a wide range of disabilities, including visual, auditory, physical, speech, cognitive, language, learning, and 
+  | neurological disabilities. According to the <a target="_blank" href="https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html" rel="noopener">CDC</a>,
+  | 1 in 4 adults in the United States have some type of functional disability.
+
+h2 Key concepts
+h3 Using the keyboard
+p.-text
+  | The website or application must be completely usable through a keyboard. There can be nothing which requires a mouse.  Blind users who
+  | rely on screen readers navigate by using the keyboard. In addition, some users who see the screen perfectly well have impaired motor
+  | skills which make it difficult or impossible to control a mouse.
+
+h3 Page structure
+p.-text
+  | Well-structured content allows more efficient navigation and processing. Use HTML and WAI-ARIA to improve navigation and orientation
+  | on web pages and in applications. Mark up should include page regions, labeling regions, headings and content structure.
+
+h3 Color and sensory
+p.-text
+  | Enables people with visual impairments or color vision deficiencies to interact with digital experiences in the same way as non-visually-impaired people.
+
+h3 Images
+p.-text
+  | Images must have text alternatives that describe the information or function represented by them.
+
+h3 Text
+p.-text
+  | Genuine text is much more flexible than images: It can be resized without losing clarity, and background and text colors can be modified
+  | to suit the reading preferences of users. Images are more likely to distort and pixelate when resized.
+
+h3 Links and forms
+p.-text
+  | Users usually prefer simple and short forms. Only ask users to enter what is required to complete the transaction or process; if irrelevant
+  | or excessive data is requested, users are more likely to abandon the form.
+
+h3 Tables
+p.-text
+  | Accessible tables need HTML structural markup that indicates header cells and data cells and defines their relationship. Assistive Technologies
+  | use this information to provide context to users.
+
+h3 Others
+ul.-text
+  li <strong>Time-based Media:</strong> Provide alternatives for time-based media.
+  li <strong>Distinguishable:</strong> Make it easier for users to see and hear content including separating foreground from background.
+  li <strong>Enough Time:</strong> Provide users enough time to read and use content.
+  li <strong>Seizures:</strong> Do not design content in a way that is known to cause seizures.
+  
+.chi-divider.-my--5
+
+p.-text
+  | CenturyLink is required to meet the Web Content Accessibility Guidelines (<a target="_blank" href="https://www.w3.org/TR/WCAG20/">WCAG 2.0</a>), Conformance
+  | leves A and AA success criteria. These guidelines and their success criteria will also satisfy the Revised <a target="_blank" href="https://www.section508.gov/">Section 508</a>
+  | of the U.S. Rehabilitation Act (as of January 18, 2018).
+
+p.-text
+  | Although these guidelines cover a wide range of issues, they are not able to address the needs of people with all types, degrees and combinations
+  | of disability. These guidelines also make web content more usable by older individuals with changing abilities due to aging and often improve 
+  | usability for users in general.
+
+h3 About assistive technologies
+p.-text
+  | Technologies that allow people with disabilities to use a resource are known as assistive technologies. Perhaps the most commonly thought of type of
+  | assistive technology for the web are screen readers, which proccess the visible (and sometimes invisible) elements on the screen and read the
+  | information aloud to the user. The three most popular screen readers are JAWS, NVDA and VoiceOver (iOS). Other examples of assistive technologies
+  | used on the web include Braille translation devices, screen magnifiers, closed captioning and specialized keyboards.  
+
+h2 Foundations
+p.-text
+  | Anyone who wants to use the web must have content that is:
+  
+.chi-expansion-panel.-web-components.-pb--5
+  .chi-epanel.-no-step(data-chi-epanel-group="web-component-details")
+    .chi-epanel__header
+      .chi-epanel__title.-w--100(data-chi-epanel-action="toggle")
+        i.chi-icon.icon-chevron-right.-mr--2
+        | Perceivable
+    .chi-epanel__collapse
+      .-active--only
+        .chi-epanel__body
+          .chi-epanel__content
+            .chi-epanel__text
+              p.-text
+                | Information and user interface components must be presentable to users in ways the can perceive. 
+              ul.-text
+                li <strong>Text-alternatives:</strong> Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as 
+                   | large print, braille, speech, symbols or simpler language.
+                li <strong>Time-based media:</strong> Provide alternatives for time-based media.
+                li <strong>Adaptable:</strong> Create content that can be presented in different ways (for example simpler layout) without losing information or structure. 
+                li <strong>Distinguishable:</strong> Make it easier for users to see and hear content including separating foreground from background.
+  .chi-epanel.-no-step(data-chi-epanel-group="web-component-details")
+    .chi-epanel__header
+      .chi-epanel__title.-w--100(data-chi-epanel-action="toggle")
+        i.chi-icon.icon-chevron-right.-mr--2
+        | Operable
+    .chi-epanel__collapse
+      .-active--only
+        .chi-epanel__body
+          .chi-epanel__content
+            .chi-epanel__text
+              p.-text
+                | User interface components and navigation must be operable.
+              ul.-text
+                li <strong>Keyboard accessible:</strong> Make all functionality available from a keyboard.
+                li <strong>Enough time:</strong> Provide users enough time to read and use content.
+                li <strong>Seizures:</strong> Do not design content in a way that is known to cause seizures.
+                li <strong>Navigable:</strong> Provide ways to help users navigate, find content, and determine where they are.
+  .chi-epanel.-no-step(data-chi-epanel-group="web-component-details")
+    .chi-epanel__header
+      .chi-epanel__title.-w--100(data-chi-epanel-action="toggle")
+        i.chi-icon.icon-chevron-right.-mr--2
+        | Understandable
+    .chi-epanel__collapse
+      .-active--only
+        .chi-epanel__body
+          .chi-epanel__content
+            .chi-epanel__text
+              p.-text
+                | Information and the operation of user interface must be understandable.
+              ul.-text
+                li <strong>Readable:</strong> Make text content readable and understandable.
+                li <strong>Predictable:</strong> Make web pages appear and operate in predictable ways.
+                li <strong>Input Assistance:</strong> Help users avoid and correct mistakes. 
+  .chi-epanel.-no-step(data-chi-epanel-group="web-component-details")
+    .chi-epanel__header
+      .chi-epanel__title.-w--100(data-chi-epanel-action="toggle")
+        i.chi-icon.icon-chevron-right.-mr--2
+        | Robust
+    .chi-epanel__collapse
+      .-active--only
+        .chi-epanel__body
+          .chi-epanel__content
+            .chi-epanel__text
+              p.-text
+                | Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.
+              ul.-text
+                li <strong>Compatible:</strong> Maximize compatibility with current and future user agents, including assistive technologies.
+script.
+  chi.expansionPanel(
+    document.querySelectorAll('[data-chi-epanel-group="web-component-details"]'),
+    {mode: 'accordion'}
+  );

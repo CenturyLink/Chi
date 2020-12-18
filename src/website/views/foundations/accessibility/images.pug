@@ -1,0 +1,107 @@
+---
+title: Images
+disabled: true
+---
+
+h2 Non-text content
+div.chi-grid
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#text-equiv" rel="noopener" target="_blank") 1.1 Text alternatives
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG21/#non-text-content" rel="noopener" target="_blank") 1.1.1 Non-text Content
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Content must be presentable to users in ways they can perceive." data-position="bottom")
+        span Perceivable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> Blind disabilities.
+    p.-text
+      | All non-text content that is presented to the user has a text alternative that serves the equivalent purpose, except for the situations listed below:
+    ul.-text
+      li <strong>Controls, Input:</strong> If non-text content is a control or accepts user input, then it has a name that describes its purpose.
+      li <strong>Time-Based Media:</strong> If non-text content is time-based media, then text alternatives at least provide descriptive identification of the non-text content.
+      li <strong>Test:</strong> If non-text content is a test or exercise that would be invalid if presented in text, then text alternatives at least provide descriptive identification of the non-text content.
+      li <strong>Sensory:</strong> If non-text content is primarily intended to create a specific sensory experience, then text alternatives at least provide descriptive identification of the non-text content.
+      li <strong>CAPTCHA:</strong> If the purpose of non-text content is to confirm that content is being accessed by a person rather than a computer, then text alternatives that identify and describe the 
+         | purpose of the non-text content are provided, and alternative forms of CAPTCHA using output modes for different types of sensory perception are provided to accommodate different disabilities.
+      li <strong>Decoration, Formatting, Invisible:</strong> If non-text content is pure decoration, is used only for visual formatting, or is not presented to users, then it is implemented in a way that it can be ignored by assistive technologies.
+    p.-text
+      | Images can be one of the following:
+    ul.-text
+      li <strong>Informative:</strong> Conveys a simple concept or information that can be expressed in a short phrase or sentence.
+      li <strong>Functional:</strong> Initiatse interactive actions.
+      li <strong>Decorative:</strong> Does not add information to the content of a page, and thus the image can have null/empty alt text. Assistive technologies can ignore the image. The image may have adjacent text that sufficiently describes the image.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Do all (non-decorative) images have alt text?
+          li 
+            | Does the alt text provide meaningful information about the image?
+          li 
+            | If the image is a link, does the alt text describe the link purpose?
+          li 
+            | Are background images informational? Alt text is needed.
+          li 
+            | Are background images decorative?  Alt text is not needed.
+          li 
+            | Can background images be hidden, but still have access to information and functionality?
+
+h2 Images of text
+div.chi-grid
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast" rel="noopener" target="_blank") 1.4 Distinguishable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-presentation" rel="noopener" target="_blank") 1.4.5 Images of Text
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Content must be presentable to users in ways they can perceive." data-position="bottom")
+        span Perceivable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria." data-position="bottom")
+        span Level AA
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> Low vision, visual tracking problems, cognitive disabilities.
+    p.-text
+      | Text is used to convey information rather than images of text. Achieve desired default visual presentation, to enable people who require a particular visual presentation 
+      | of text to be able to adjust the text presentation as needed.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Is an image of text used to convey information instead of text?
+            div
+              ul.-text
+                li If text cannot be formatted to get the same effect as images of text.
+                li If the effect won't be reliably presented on the commonly available user agents.
+                li If using an Assistive Technologies to meet this criterion would interfere with meeting other criteria such as 1.4.4 Resize Text.
+                li Example - where a particular presentation of text is essential to the information being conveyed, such as type samples, logotypes, branding, etc.
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+    }
+  );
