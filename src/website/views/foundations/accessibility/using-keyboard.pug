@@ -1,0 +1,216 @@
+---
+title: Using the keyboard
+disabled: true
+---
+
+p.-text
+  | Blind users and users with motor disabilities must use the keyboard for navigation. These users may use traditional
+  | keyboards, but some users may use modified keyboards or other hardware to mimic keyboard functionality.
+p.-text
+  | All content needs to be accessed using the keyboard alone. When using the keyboard only to ensure that all interactions
+  | are predictable. Below are some of the keystrokes used to navigate a web site.  
+ul.-text
+  li <strong>Tab</strong> and <strong>Shift+Tab</strong> key(s) to navigate towards and backwards through links and form controls.
+  li <strong>Enter</strong> (and sometimes <strong>Spacebar</strong>) to select an element. 
+  li <strong>Arrow</strong> keys are sometimes used for other navigation.
+  li <strong>ESC</strong> to close dialog boxes.
+  li <strong>Home/End</strong> goes to beginning or end.
+p.-text
+  | Visit <a target="_blank" href="https://webaim.org/techniques/keyboard/" rel="noopener">WebAIM</a> for keyboard techniques.
+h2.-mt--3 Info and Relationships
+.chi-grid
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#content-structure-separation" rel="noopener" target="_blank") 1.3 Adaptable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#content-structure-separation-programmatic" rel="noopener" target="_blank") 1.3.1 Info and Relationships
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Content must be presentable to users in ways they can perceive." data-position="bottom")
+        span Perceivable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> Blind keyboard user
+    p.-text
+      | Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        p.-text
+          | Use a screen reader (with your eyes closed):
+        ul.accessibility-checklist
+          li 
+            | Is all content and functionality available to a screen reader?
+          li
+            | Does the user have access to all information and features on the page?
+          li
+            | Can the user complete all tasks independently?
+
+h2 Keyboard
+.chi-grid
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#keyboard-operation" rel="noopener" target="_blank") 2.1 Keyboard accesible
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#keyboard-operation-keyboard-operable" rel="noopener" target="_blank") 2.1.1 Keyboard
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to operate the interface." data-position="bottom")
+        span Operable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> Keyboard users (typically people with visual and/or motor/physical disabilities).
+    p.-text
+      | All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes,
+      | except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        p.-text
+          | Fully interact with every interactive aspect of a web page using your keyboard alone - do not use a mouse.
+        ul.accessibility-checklist
+          li 
+            | Can the user access the full functionality of the page or application using a keyboard alone?
+          li
+            | Is all information or functionality accessible and operable with a keyboard alone, that would typically be triggered with a mouse?
+
+h2 No keyboard trap
+div.chi-grid
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#keyboard-operation" rel="noopener" target="_blank") 2.1 Keyboard accesible
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#keyboard-operation-trapping" rel="noopener" target="_blank") 2.1.2 No Keyboard Trap
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to operate the interface." data-position="bottom")
+        span Operable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> Keyboard users (typically people with visual and/or motor/physical disabilities).
+    p.-text
+      | If keyboard focus can be moved to a component of the page (such as a plugin) using a keyboard interface, then focus can be moved away
+      | from that component using only a keyboard interface, and, if it requires more than unmodified arrow or tab keys or other standard 
+      | exit methods, the user is advised of the method for moving focus away.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        ul.accessibility-checklist
+          li 
+            | Can the keyboard user be trapped in a subset of the content that can only be exited using a mouse or pointing device?
+          li 
+            | Is there a keyboard mechanism to return focus to the parent window?
+          li 
+            | Can the keyboard function for advancing focus within content (commonly the tab key) exit the subset of the content after reaching 
+            | the final navigation location?
+          li 
+            | Is help information available for the Web page documents on how to move focus from the content that is not accessibility-supported
+            | to the accessibility-supported content via the keyboard?
+          li 
+            | Can the help information be accessed via the keyboard?
+
+h2 Focus order
+div.chi-grid
+  .chi-col.-w-12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener" target="_blank") 2.4 Navigable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-order" rel="noopener" target="_blank") 2.4.3 Focus Order
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to operate the interface." data-position="bottom")
+        span Operable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria." data-position="bottom")
+        span Level A
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> Keyboard users (typically people with visual and/or motor/physical disabilities).
+    p.-text
+      | If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive
+      | focus in an order that preserves meaning and operability.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        p.-text
+          | Tab through the page using only the keyboard.
+        ul.accessibility-checklist
+          li 
+            | Is the navigation order logical and intuitive?
+          li 
+            | Does the tab order makes sense?
+
+h2 Focus visible
+div.chi-grid
+  .chi-col.-w--12
+    .chi-breadcrumb
+      ol.-text--normal
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20" rel="noopener" target="_blank") WCAG 2.0 Guideline
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms" rel="noopener" target="_blank") 2.4 Navigable
+        li.chi-breadcrumb__item
+          a(href="https://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-visible" rel="noopener" target="_blank") 2.4.7 Focus Visible
+  .chi-col.-w--12
+    .-lh--3
+      .chi-badge.-dark.-outline.-xs(data-tooltip="Users must be able to operate the interface." data-position="bottom")
+        span Operable
+      .chi-badge.-dark.-outline.-xs.-ml--1(data-tooltip="Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria." data-position="bottom")
+        span Level AA
+  .chi-col.-w--12
+    p.-text
+      | <strong>Benefits:</strong> Keyboard users (typically people with visual and/or motor/physical disabilities).
+    p.-text
+      | Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible.
+  .chi-col.-w--12
+    .chi-card.-s--1.-rounded.-mb--3.-mt--1
+      .chi-card__header
+        .chi-card__title
+          | How to pass
+      .chi-card__content.-px--3
+        p.-text    
+          | Tab through the page using only the keyboard.
+        ul.accessibility-checklist
+          li 
+            | Can the user always see which element on the page has focus?
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+    }
+  );

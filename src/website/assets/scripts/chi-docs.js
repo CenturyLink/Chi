@@ -211,4 +211,15 @@ onLoad(() => {
       }
     });
   }
+
+  var docsSidenavAccessibilityAccordion = document.querySelector('nav.docs-sidenav .accessibility-accordion');
+  var drawerAccessibilityAccordion = document.querySelector('div#drawer-sidenav .accessibility-accordion');
+
+  if (docsSidenavAccessibilityAccordion) {
+    chi.accordion(docsSidenavAccessibilityAccordion);
+  }
+
+  if (drawerAccessibilityAccordion) {
+    chi.accordion(drawerAccessibilityAccordion);
+  }
 });
