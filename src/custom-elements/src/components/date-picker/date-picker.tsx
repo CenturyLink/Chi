@@ -156,6 +156,14 @@ export class DatePicker {
   }
 
   /**
+   * Resets date
+   */
+  @Method()
+  async resetDate() {
+    this.value = null;
+  }
+
+  /**
    * Gets date
    */
   @Method()

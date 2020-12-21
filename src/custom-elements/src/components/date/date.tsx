@@ -76,11 +76,17 @@ export class Date {
   @Watch('value')
   dateChanged(newValue: string, oldValue: string) {
     if (newValue !== oldValue) {
-      this._vm.date = newValue ? dayjs(newValue) : null;
-      if (this._vm.date && !this._vm.date.isValid()) {
-        throw new Error(`Date ${newValue} has an invalid format. `);
+      if (newValue) {
+        this._vm.date = newValue ? dayjs(newValue) : null;
+        if (this._vm.date && !this._vm.date.isValid()) {
+          throw new Error(`Date ${newValue} has an invalid format. `);
+        }
+        this.viewMonth = this._vm.date;
+      } else {
+        this._initCalendarViewModel();
+        this.viewMonth = this.value ? this.fromString(this.value) : dayjs();
+        this._updateViewMonth();
       }
-      this.viewMonth = this._vm.date;
     }
   }
 
