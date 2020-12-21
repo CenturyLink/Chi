@@ -1,4 +1,20 @@
 # CHANGELOG
+## 3.6.0 (December 22, 2020)
+### Components
+#### Added
+* Added: Time picker and Datetime picker components to allow users to enter a time through text input or choose a time from a picker.
+#### Changed
+* Changed: Modal components with theme `-portal` now align buttons in `chi-modal__footer` to the right (Chi's default) instead of center.
+* Changed: Picker group components with theme `-portal` now include a text color change on hover.
+* Changed: Accordion components with theme `-portal` now render nested accordions with a border.
+* Changed: Tab components with size class `-xs` no longer alter a tab items font-size, only padding. To alter font-size, please use the text size utility class `-text--xs` instead.
+* Changed: Stat components with theme `-portal`, `-compact`, and info/help icons now include an alignment improvement to better support long metric titles.
+### Documentation
+#### Added
+* Added: Accessibility documentation has been added to define how to make web content more accessible to people with disabilities.
+#### Changed
+* Changed: Tab components with theme `-portal` now render tab examples using the `-xs` size class instead of `-sm`.
+
 ## 3.5.0 (December 4, 2020)
 ### Components
 #### Added
