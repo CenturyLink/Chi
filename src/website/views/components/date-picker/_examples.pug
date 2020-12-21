@@ -194,28 +194,13 @@ p.-text
     ul.chi-tabs#example-datetime
       li.-active
         a(href=`#webcomponent-datetime`) Web Component
-      li
+      li.-disabled
         a(href=`#html-datetime`) HTML Blueprint
-  #webcomponent-with-label.chi-tabs-panel.-active
+  #webcomponent-datetime.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
       <chi-label for="date">Date</chi-label>
       <chi-date-picker id="date"></chi-date-picker>
-  #html-with-label.chi-tabs-panel
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="datepicker-1">Date</label>
-        <div class="chi-input__wrapper -icon--right">
-          <input id="datepicker-1" type="text" class="chi-input" placeholder="MM/DD/YYYY">
-          <i class="chi-icon icon-date -icon--muted"></i>
-        </div>
-      </div>
-
-      <script>chi.datePicker(document.getElementById('datepicker-1'));</script>
+  #html-datetime.chi-tabs-panel
 
 h3 Calendar
 p.-text
@@ -604,185 +589,16 @@ h4 Date and Time
             .chi-time-picker__period AM
             .chi-time-picker__period PM
   .example-tabs.-pl--2
-    ul.chi-tabs#example-datetime
+    ul.chi-tabs#example-calendar-datetime
       li.-active
-        a(href=`#webcomponent-datetime`) Web Component
-      li
-        a(href=`#html-datetime`) HTML Blueprint
-  #webcomponent-datetime.chi-tabs-panel.-active
+        a(href=`#webcomponent-calendar-datetime`) Web Component
+      li.-disabled
+        a(href=`#html-calendar-datetime`) HTML Blueprint
+  #webcomponent-calendar-datetime.chi-tabs-panel.-active
     :code(lang="html")
       <chi-date></chi-date>
       <chi-time></chi-time>
-  #html-datetime.chi-tabs-panel
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-      br
-      br
-      | Use the classes <code>-month-starts-on-sun</code>,
-      | <code>-month-starts-on-mon</code>, <code>-month-starts-on-tue</code>, <code>-month-starts-on-wed</code>,
-      | <code>-month-starts-on-thu</code>, <code>-month-starts-on-fri</code> and <code>-month-starts-on-sat</code> to
-      | locate the first day in the correct cell.
-      br
-      | Use the classes <code>-week-starts-on-sun</code> or <code>-week-starts-on-mon</code> to fit the week definition
-      | of the desired locale.
-      br
-      | Use the class <code>-today</code> for the current date
-    :code(lang="html")
-      <div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
-        <div class="chi-datepicker__month-row">
-          <div class="prev">
-            <i class="chi-icon icon-chevron-left -sm"></i>
-          </div>
-          <div class="chi-datepicker__month">
-            November 2018
-          </div>
-          <div class="next">
-            <i class="chi-icon icon-chevron-right -sm"></i>
-          </div>
-        </div>
-        <div class="chi-datepicker__day-names">
-          <div class="chi-datepicker__week-day">
-            S
-          </div>
-          <div class="chi-datepicker__week-day">
-            M
-          </div>
-          <div class="chi-datepicker__week-day">
-            T
-          </div>
-          <div class="chi-datepicker__week-day">
-            W
-          </div>
-          <div class="chi-datepicker__week-day">
-            T
-          </div>
-          <div class="chi-datepicker__week-day">
-            F
-          </div>
-          <div class="chi-datepicker__week-day">
-            S
-          </div>
-        </div>
-        <div class="chi-datepicker__days">
-          <div class="chi-datepicker__day">1</div>
-          <div class="chi-datepicker__day">2</div>
-          <div class="chi-datepicker__day">3</div>
-          <div class="chi-datepicker__day">4</div>
-          <div class="chi-datepicker__day">5</div>
-          <div class="chi-datepicker__day">6</div>
-          <div class="chi-datepicker__day">7</div>
-          <div class="chi-datepicker__day">8</div>
-          <div class="chi-datepicker__day">9</div>
-          <div class="chi-datepicker__day">10</div>
-          <div class="chi-datepicker__day">11</div>
-          <div class="chi-datepicker__day">12</div>
-          <div class="chi-datepicker__day">13</div>
-          <div class="chi-datepicker__day">14</div>
-          <div class="chi-datepicker__day">15</div>
-          <div class="chi-datepicker__day">16</div>
-          <div class="chi-datepicker__day">17</div>
-          <div class="chi-datepicker__day">18</div>
-          <div class="chi-datepicker__day">19</div>
-          <div class="chi-datepicker__day">20</div>
-          <div class="chi-datepicker__day">21</div>
-          <div class="chi-datepicker__day">22</div>
-          <div class="chi-datepicker__day">23</div>
-          <div class="chi-datepicker__day">24</div>
-          <div class="chi-datepicker__day">25</div>
-          <div class="chi-datepicker__day">26</div>
-          <div class="chi-datepicker__day">27</div>
-          <div class="chi-datepicker__day">28</div>
-          <div class="chi-datepicker__day">29</div>
-          <div class="chi-datepicker__day">30</div>
-        </div>
-      </div>
-      <div class="chi-time-picker">
-        <div class="chi-time-picker__content">
-          <div class="chi-time-picker__hours">
-            <div class="chi-time-picker__hour">12</div>
-            <div class="chi-time-picker__hour">01</div>
-            <div class="chi-time-picker__hour">02</div>
-            <div class="chi-time-picker__hour">03</div>
-            <div class="chi-time-picker__hour">04</div>
-            <div class="chi-time-picker__hour">05</div>
-            <div class="chi-time-picker__hour">06</div>
-            <div class="chi-time-picker__hour">07</div>
-            <div class="chi-time-picker__hour">08</div>
-            <div class="chi-time-picker__hour">09</div>
-            <div class="chi-time-picker__hour">10</div>
-            <div class="chi-time-picker__hour">11</div>
-          </div>
-          <div class="chi-time-picker__minutes">
-            <div class="chi-time-picker__minute">00</div>
-            <div class="chi-time-picker__minute">01</div>
-            <div class="chi-time-picker__minute">02</div>
-            <div class="chi-time-picker__minute">03</div>
-            <div class="chi-time-picker__minute">04</div>
-            <div class="chi-time-picker__minute">05</div>
-            <div class="chi-time-picker__minute">06</div>
-            <div class="chi-time-picker__minute">07</div>
-            <div class="chi-time-picker__minute">08</div>
-            <div class="chi-time-picker__minute">09</div>
-            <div class="chi-time-picker__minute">10</div>
-            <div class="chi-time-picker__minute">11</div>
-            <div class="chi-time-picker__minute">12</div>
-            <div class="chi-time-picker__minute">13</div>
-            <div class="chi-time-picker__minute">14</div>
-            <div class="chi-time-picker__minute">15</div>
-            <div class="chi-time-picker__minute">16</div>
-            <div class="chi-time-picker__minute">17</div>
-            <div class="chi-time-picker__minute">18</div>
-            <div class="chi-time-picker__minute">19</div>
-            <div class="chi-time-picker__minute">20</div>
-            <div class="chi-time-picker__minute">21</div>
-            <div class="chi-time-picker__minute">22</div>
-            <div class="chi-time-picker__minute">23</div>
-            <div class="chi-time-picker__minute">24</div>
-            <div class="chi-time-picker__minute">25</div>
-            <div class="chi-time-picker__minute">26</div>
-            <div class="chi-time-picker__minute">27</div>
-            <div class="chi-time-picker__minute">28</div>
-            <div class="chi-time-picker__minute">29</div>
-            <div class="chi-time-picker__minute">30</div>
-            <div class="chi-time-picker__minute">31</div>
-            <div class="chi-time-picker__minute">32</div>
-            <div class="chi-time-picker__minute">33</div>
-            <div class="chi-time-picker__minute">34</div>
-            <div class="chi-time-picker__minute">35</div>
-            <div class="chi-time-picker__minute">36</div>
-            <div class="chi-time-picker__minute">37</div>
-            <div class="chi-time-picker__minute">38</div>
-            <div class="chi-time-picker__minute">39</div>
-            <div class="chi-time-picker__minute">40</div>
-            <div class="chi-time-picker__minute">41</div>
-            <div class="chi-time-picker__minute">42</div>
-            <div class="chi-time-picker__minute">43</div>
-            <div class="chi-time-picker__minute">44</div>
-            <div class="chi-time-picker__minute">45</div>
-            <div class="chi-time-picker__minute">46</div>
-            <div class="chi-time-picker__minute">47</div>
-            <div class="chi-time-picker__minute">48</div>
-            <div class="chi-time-picker__minute">49</div>
-            <div class="chi-time-picker__minute">50</div>
-            <div class="chi-time-picker__minute">51</div>
-            <div class="chi-time-picker__minute">52</div>
-            <div class="chi-time-picker__minute">53</div>
-            <div class="chi-time-picker__minute">54</div>
-            <div class="chi-time-picker__minute">55</div>
-            <div class="chi-time-picker__minute">56</div>
-            <div class="chi-time-picker__minute">57</div>
-            <div class="chi-time-picker__minute">58</div>
-            <div class="chi-time-picker__minute">59</div>
-          </div>
-          <div class="chi-time-picker__periods">
-            <div class="chi-time-picker__period">AM</div>
-            <div class="chi-time-picker__period">PM</div>
-          </div>
-        </div>
-      </div>
+  #html-calendar-datetime.chi-tabs-panel
 script.
   document.addEventListener(
     'DOMContentLoaded',

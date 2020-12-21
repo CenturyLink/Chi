@@ -11,21 +11,13 @@ p.-text
     ul.chi-tabs#example-with-label
       li.-active
         a(href=`#webcomponent-with-label`) Web Component
-      li
+      li.-disabled
         a(href=`#html-with-label`) HTML Blueprint
   #webcomponent-with-label.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
       <chi-label for="time-picker-base">Label</chi-label>
       <chi-time-picker id="time-picker-base"></chi-time-picker>
   #html-with-label.chi-tabs-panel
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="unique-id-ba1">Time</label>
-        <div class="chi-input__wrapper -icon--right">
-          <input id="unique-id-ba1" type="time" class="chi-input">
-          <i class="chi-icon icon-circle-clock-outline -icon--muted"></i>
-        </div>
-      </div>
 
 h3 Disabled
 p.-text
@@ -41,26 +33,13 @@ p.-text
     ul.chi-tabs#example-disabled
       li.-active
         a(href=`#webcomponent-disabled`) Web Component
-      li
+      li.-disabled
         a(href=`#html-disabled`) HTML Blueprint
   #webcomponent-disabled.chi-tabs-panel.-active
     :code(lang="html")
       <chi-label for="time-picker-base">Label</chi-label>
       <chi-time-picker id="time-picker-base" disabled></chi-time-picker>
   #html-disabled.chi-tabs-panel
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="unique-id-di1">Time</label>
-        <div class="chi-input__wrapper -disabled -icon--right">
-          <input id="unique-id-di1" type="time" class="chi-input" disabled>
-          <i class="chi-icon icon-circle-clock-outline -icon--muted"></i>
-        </div>
-      </div>
 
 h3 Value option
 .example.-mb--3
@@ -72,26 +51,13 @@ h3 Value option
     ul.chi-tabs#example-min-max-value
       li.-active
         a(href=`#webcomponent-min-max-value`) Web Component
-      li
+      li.-disabled
         a(href=`#html-min-max-value`) HTML Blueprint
   #webcomponent-min-max-value.chi-tabs-panel.-active
     :code(lang="html")
       <chi-label for="unique-id-va1">Time</chi-label>
       <chi-time-picker id="unique-id-va1" value="09:00:00"></chi-time-picker>
   #html-min-max-value.chi-tabs-panel
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="unique-id-va1">Time</label>
-        <div class="chi-input__wrapper -icon--right">
-          <input id="unique-id-va1" type="time" class="chi-input" value="09:00" min="09:00" max="18:00">
-          <i class="chi-icon icon-circle-clock-outline -icon--muted"></i>
-        </div>
-      </div>
 
 h3 Excluded hours, minutes and seconds
 p.-text
@@ -124,18 +90,12 @@ h4 Base
     ul.chi-tabs#example-time
       li.-active
         a(href=`#webcomponent-time`) Web Component
-      li
+      li.-disabled
         a(href=`#html-time`) HTML Blueprint
   #webcomponent-time.chi-tabs-panel.-active
     :code(lang="html")
       <chi-time></chi-time>
   #html-time.chi-tabs-panel
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
 
 h4 Active
 .example.-mb--3
@@ -145,18 +105,12 @@ h4 Active
     ul.chi-tabs#example-active
       li.-active
         a(href=`#webcomponent-active`) Web Component
-      li
+      li.-disabled
         a(href=`#html-active`) HTML Blueprint
   #webcomponent-active.chi-tabs-panel.-active
     :code(lang="html")
       <chi-time value="14:00:00"></chi-time>
   #html-active.chi-tabs-panel
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
 
 h4 Seconds
 .example.-mb--3
@@ -166,18 +120,12 @@ h4 Seconds
     ul.chi-tabs#example-seconds
       li.-active
         a(href=`#webcomponent-seconds`) Web Component
-      li
+      li.-disabled
         a(href=`#html-seconds`) HTML Blueprint
-  #webcomponent.chi-tabs-panel.-active
+  #webcomponent-seconds.chi-tabs-panel.-active
     :code(lang="html")
       <chi-time></chi-time>
-  #html.chi-tabs-panel
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
+  #html-seconds.chi-tabs-panel
 
 h4 24-hour format
 .example.-mb--3
@@ -187,18 +135,12 @@ h4 24-hour format
     ul.chi-tabs#example-24hour
       li.-active
         a(href=`#webcomponent-24hour`) Web Component
-      li
+      li.-disabled
         a(href=`#html-24hour`) HTML Blueprint
   #webcomponent-24hour.chi-tabs-panel.-active
     :code(lang="html")
       <chi-time extended></chi-time>
   #html-24hour.chi-tabs-panel
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
 
 h4 Step
 .example.-mb--3
@@ -208,18 +150,12 @@ h4 Step
     ul.chi-tabs#example-step
       li.-active
         a(href=`#webcomponent-step`) Web Component
-      li
+      li.-disabled
         a(href=`#html-step`) HTML Blueprint
   #webcomponent-step.chi-tabs-panel.-active
     :code(lang="html")
       <chi-time stepped display-seconds></chi-time>
   #html-step.chi-tabs-panel
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
 
 script.
   document.addEventListener(
