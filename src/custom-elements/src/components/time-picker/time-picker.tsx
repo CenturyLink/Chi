@@ -1,6 +1,8 @@
 import { Component, Element, Listen, Method, Prop, h } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
-import { ESCAPE_KEYCODE } from '../../constants/constants';
+import { CHI_TIME_AUTO_SCROLL_DELAY,
+  ESCAPE_KEYCODE,
+  DatePickerFormats} from '../../constants/constants';
 import { TIME_CLASSES } from '../../constants/classes';
 
 @Component({
@@ -39,9 +41,9 @@ export class TimePicker {
   @Prop({ reflect: true }) excludedSeconds: string;
 
   /**
-   *  To render Time Picker in 24 hour format.
+   *  To define format of Time Picker.
    */
-  @Prop({ reflect: true }) extended: boolean;
+  @Prop({ reflect: true }) format: DatePickerFormats = '12hr';
 
   /**
    * Indicates whether the time picker popover is open or closed
@@ -142,7 +144,7 @@ export class TimePicker {
           secondsColumn.scrollTop = activeSecond.offsetTop - 4;
         }
       }
-    }, 50);
+    }, CHI_TIME_AUTO_SCROLL_DELAY);
   }
 
   @Listen('chiTimeChange')
@@ -151,7 +153,7 @@ export class TimePicker {
     const formatTimePeriod = (period: number) => {
       return period.toString().length > 1 ? period.toString() : `0${period}`;
     };
-    const hour = !this.extended && ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
+    const hour = !(this.format === '24hr') && ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
 
     timePickerInput.value = `${formatTimePeriod(hour)}:${formatTimePeriod(ev.detail.minute)}:${formatTimePeriod(ev.detail.second)} ${formatTimePeriod(ev.detail.period)}`;
   }
@@ -170,7 +172,7 @@ export class TimePicker {
           excluded-hours={this.excludedHours}
           excluded-minutes={this.excludedMinutes}
           excluded-seconds={this.excludedSeconds}
-          extended={this.extended}
+          format={this.format}
           value={this.value}
         />
       </chi-popover>

@@ -6,7 +6,7 @@ p.-text
   .-p--3
     div.chi-form__item(style="max-width: 14rem;")
       chi-label(for="time-picker-base") Label
-      chi-time-picker(id="time-picker-base" display-seconds)
+      chi-time-picker(id="time-picker-base")
   .example-tabs.-pl--2
     ul.chi-tabs#example-with-label
       li.-active
@@ -37,8 +37,8 @@ p.-text
         a(href=`#html-disabled`) HTML Blueprint
   #webcomponent-disabled.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-label for="time-picker-base">Label</chi-label>
-      <chi-time-picker id="time-picker-base" disabled></chi-time-picker>
+      <chi-label for="time-picker-disabled">Label</chi-label>
+      <chi-time-picker id="time-picker-disabled" disabled></chi-time-picker>
   #html-disabled.chi-tabs-panel
 
 h3 Value option
@@ -46,7 +46,7 @@ h3 Value option
   .-p--3
     div.chi-form__item(style="max-width: 14rem;")
       chi-label(for='unique-id-va1') Time
-      chi-time-picker#unique-id-va1(value='09:00:00')
+      chi-time-picker#unique-id-va1(value='09:00')
   .example-tabs.-pl--2
     ul.chi-tabs#example-min-max-value
       li.-active
@@ -56,28 +56,28 @@ h3 Value option
   #webcomponent-min-max-value.chi-tabs-panel.-active
     :code(lang="html")
       <chi-label for="unique-id-va1">Time</chi-label>
-      <chi-time-picker id="unique-id-va1" value="09:00:00"></chi-time-picker>
+      <chi-time-picker id="unique-id-va1" value="09:00"></chi-time-picker>
   #html-min-max-value.chi-tabs-panel
 
-h3 Excluded hours, minutes and seconds
-p.-text
-  | Specify which hours to disable by using the <code>excluded-hours</code> attribute.
-.example.-mb--3
-  .-p--3
-    div.chi-form__item(style="max-width: 14rem;")
-      chi-label(for="time-picker-excluded") Label
-      chi-time-picker(id="time-picker-excluded", excluded-hours="14, 15", excluded-minutes="00, 01, 02, 03, 04, 05", excluded-seconds="00, 01, 02, 03, 04, 05", display-seconds)
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-excluded-times
-      li.-active
-        a(href=`#webcomponent-excluded-times`) Web Component
-      li.-disabled
-        a(href=`#html-excluded-times`) HTML Blueprint
-  #webcomponent-excluded-times.chi-tabs-panel.-active
-    :code(lang="html",style="height:20rem")
-      <chi-label for="unique-id-et1">Time</chi-label>
-      <chi-time-picker id="unique-id-et1" excluded-hours="14, 15"></chi-time-picker>
-  #html-excluded-times.chi-tabs-panel
+//h3 Excluded hours, minutes and seconds
+//p.-text
+//  | Specify which times to exclude by using the <code>excluded-hours</code> attribute to exclude hours, <code>excluded-minutes</code> to exclude minutes, and <code>excluded-seconds</code> to exclude seconds.
+//.example.-mb--3
+//  .-p--3
+//    div.chi-form__item(style="max-width: 14rem;")
+//      chi-label(for="time-picker-excluded") Label
+//      chi-time-picker(id="time-picker-excluded", excluded-hours="14, 15", excluded-minutes="00, 01, 02, 03, 04, 05", excluded-seconds="00, 01, 02, 03, 04, 05", display-seconds)
+//  .example-tabs.-pl--2
+//    ul.chi-tabs#example-excluded-times
+//      li.-active
+//        a(href=`#webcomponent-excluded-times`) Web Component
+//      li.-disabled
+//        a(href=`#html-excluded-times`) HTML Blueprint
+//  #webcomponent-excluded-times.chi-tabs-panel.-active
+//    :code(lang="html",style="height:20rem")
+//      <chi-label for="unique-id-et1">Time</chi-label>
+//      <chi-time-picker id="unique-id-et1" excluded-hours="14, 15"></chi-time-picker>
+//  #html-excluded-times.chi-tabs-panel
 
 h3 Time
 p.-text
@@ -100,7 +100,7 @@ h4 Base
 h4 Active
 .example.-mb--3
   .-p--3
-    chi-time(value="14:00:00")
+    chi-time(value="14:00")
   .example-tabs.-pl--2
     ul.chi-tabs#example-active
       li.-active
@@ -109,7 +109,7 @@ h4 Active
         a(href=`#html-active`) HTML Blueprint
   #webcomponent-active.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-time value="14:00:00"></chi-time>
+      <chi-time value="14:00"></chi-time>
   #html-active.chi-tabs-panel
 
 h4 Seconds
@@ -124,13 +124,13 @@ h4 Seconds
         a(href=`#html-seconds`) HTML Blueprint
   #webcomponent-seconds.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-time></chi-time>
+      <chi-time display-seconds></chi-time>
   #html-seconds.chi-tabs-panel
 
 h4 24-hour format
 .example.-mb--3
   .-p--3
-    chi-time(extended)
+    chi-time(format='24hr')
   .example-tabs.-pl--2
     ul.chi-tabs#example-24hour
       li.-active
@@ -139,7 +139,7 @@ h4 24-hour format
         a(href=`#html-24hour`) HTML Blueprint
   #webcomponent-24hour.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-time extended></chi-time>
+      <chi-time format='24hr'></chi-time>
   #html-24hour.chi-tabs-panel
 
 h4 Step

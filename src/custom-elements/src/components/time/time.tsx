@@ -7,6 +7,7 @@ import {
   h, Element
 } from '@stencil/core';
 import { TIME_CLASSES } from '../../constants/classes';
+import { CHI_TIME_SCROLL_ADJUSTMENT, DatePickerFormats } from '../../constants/constants';
 
 @Component({
   tag: 'chi-time',
@@ -27,7 +28,7 @@ export class Time {
   /**
    * To render Time Picker in 24 hours format
    */
-  @Prop({ reflect: true }) extended = false;
+  @Prop({ reflect: true }) format: DatePickerFormats = '12hr';
 
   /**
    * To render Minutes and Seconds columns in stepped format
@@ -119,7 +120,7 @@ export class Time {
     this._hour = time[0];
     this._minute = time[1];
     this._second = time[2] ? time[2] : '00';
-    this._period = !this.extended && parseInt(this._hour) < 12 ? 'am' : 'pm';
+    this._period = !(this.format === '24hr') && parseInt(this._hour) < 12 ? 'am' : 'pm';
   }
 
   connectedCallback() {
@@ -134,10 +135,10 @@ export class Time {
   };
 
   hours() {
-    const startHour = this.extended ? 24 : 12;
+    const startHour = (this.format === '24hr') ? 24 : 12;
     let hourToSet: string;
     const setHour = (hour: string) => {
-      if (this.extended) {
+      if (this.format === '24hr') {
         if (hour === '24') {
           hourToSet = '00';
         } else {
@@ -168,7 +169,7 @@ export class Time {
       let hourStatus = '';
 
       if (this._hour === hour ||
-        (!this.extended &&
+        (!(this.format === '24hr') &&
           this._period === 'pm' &&
           parseInt(hour) + 12 === valueHour
         ) ||
@@ -330,7 +331,7 @@ export class Time {
 
   periods() {
     const hour = parseInt(this.value.split(':')[0]);
-    if (!this.extended) {
+    if (!(this.format === '24hr')) {
       const periodClasses = (period: 'am' | 'pm') => {
         let periodStatus = TIME_CLASSES.PERIOD;
 
@@ -362,6 +363,7 @@ export class Time {
         }
 
         this.value = `${currentHour}:${this._minute}:${this._second}`;
+        this._hour = this.formatTimePeriod(currentHour);
         this.emitTimeValueEvent();
       };
 
@@ -400,21 +402,21 @@ export class Time {
       const activeHour = hoursColumn.querySelector(`.${TIME_CLASSES.HOUR}.-active`) as HTMLElement;
 
       if (activeHour) {
-        hoursColumn.scrollTop = activeHour.offsetTop - 28;
+        hoursColumn.scrollTop = activeHour.offsetTop - CHI_TIME_SCROLL_ADJUSTMENT;
       }
     }
     if (minutesColumn) {
       const activeMinute = minutesColumn.querySelector(`.${TIME_CLASSES.MINUTE}.-active`) as HTMLElement;
 
       if (activeMinute) {
-        minutesColumn.scrollTop = activeMinute.offsetTop - 28;
+        minutesColumn.scrollTop = activeMinute.offsetTop - CHI_TIME_SCROLL_ADJUSTMENT;
       }
     }
     if (secondsColumn) {
       const activeSecond = secondsColumn.querySelector(`.${TIME_CLASSES.SECOND}.-active`) as HTMLElement;
 
       if (activeSecond) {
-        secondsColumn.scrollTop = activeSecond.offsetTop - 28;
+        secondsColumn.scrollTop = activeSecond.offsetTop - CHI_TIME_SCROLL_ADJUSTMENT;
       }
     }
   }

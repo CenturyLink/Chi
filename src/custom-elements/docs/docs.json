@@ -883,16 +883,17 @@
           "required": false
         },
         {
-          "name": "time",
-          "type": "boolean",
+          "name": "mode",
+          "type": "string",
           "mutable": false,
-          "attr": "time",
+          "attr": "mode",
           "reflectToAttr": true,
           "docs": "To render Date Picker with Time Picker",
           "docsTags": [],
+          "default": "'date'",
           "values": [
             {
-              "type": "boolean"
+              "type": "string"
             }
           ],
           "optional": false,
@@ -3274,17 +3275,17 @@
           "required": false
         },
         {
-          "name": "extended",
-          "type": "boolean",
+          "name": "format",
+          "type": "string",
           "mutable": false,
-          "attr": "extended",
+          "attr": "format",
           "reflectToAttr": true,
           "docs": "To render Time Picker in 24 hours format",
           "docsTags": [],
-          "default": "false",
+          "default": "'12hr'",
           "values": [
             {
-              "type": "boolean"
+              "type": "string"
             }
           ],
           "optional": false,
@@ -3459,16 +3460,17 @@
           "required": false
         },
         {
-          "name": "extended",
-          "type": "boolean",
+          "name": "format",
+          "type": "string",
           "mutable": false,
-          "attr": "extended",
+          "attr": "format",
           "reflectToAttr": true,
-          "docs": "To render Time Picker in 24 hour format.",
+          "docs": "To define format of Time Picker.",
           "docsTags": [],
+          "default": "'12hr'",
           "values": [
             {
-              "type": "boolean"
+              "type": "string"
             }
           ],
           "optional": false,
