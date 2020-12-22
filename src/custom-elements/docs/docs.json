@@ -1,5 +1,5 @@
 {
-  "timestamp": "2020-12-17T19:13:01",
+  "timestamp": "2020-12-22T12:02:20",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -909,6 +909,17 @@
           "signature": "getDate() => Promise<string>",
           "parameters": [],
           "docs": "Gets date",
+          "docsTags": []
+        },
+        {
+          "name": "resetDate",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "resetDate() => Promise<void>",
+          "parameters": [],
+          "docs": "Resets date",
           "docsTags": []
         },
         {
