@@ -75,7 +75,7 @@ export class Date {
 
   @Watch('value')
   dateChanged(newValue: string, oldValue: string) {
-    if (newValue !== oldValue) {
+    if (newValue !== oldValue && (newValue || oldValue)) {
       if (newValue) {
         this._vm.date = newValue ? dayjs(newValue) : null;
         if (this._vm.date && !this._vm.date.isValid()) {
