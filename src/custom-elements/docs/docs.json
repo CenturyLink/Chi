@@ -3227,54 +3227,6 @@
           "required": false
         },
         {
-          "name": "excludedHours",
-          "type": "string",
-          "mutable": false,
-          "attr": "excluded-hours",
-          "reflectToAttr": true,
-          "docs": "To disable specific hours",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "excludedMinutes",
-          "type": "string",
-          "mutable": false,
-          "attr": "excluded-minutes",
-          "reflectToAttr": true,
-          "docs": "To disable specific minutes",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "excludedSeconds",
-          "type": "string",
-          "mutable": false,
-          "attr": "excluded-seconds",
-          "reflectToAttr": true,
-          "docs": "To disable specific seconds",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "format",
           "type": "string",
           "mutable": false,
@@ -3406,54 +3358,6 @@
           "values": [
             {
               "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "excludedHours",
-          "type": "string",
-          "mutable": false,
-          "attr": "excluded-hours",
-          "reflectToAttr": true,
-          "docs": "To specify excluded hours.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "excludedMinutes",
-          "type": "string",
-          "mutable": false,
-          "attr": "excluded-minutes",
-          "reflectToAttr": true,
-          "docs": "To specify excluded minutes.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "excludedSeconds",
-          "type": "string",
-          "mutable": false,
-          "attr": "excluded-seconds",
-          "reflectToAttr": true,
-          "docs": "To specify excluded seconds.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
             }
           ],
           "optional": false,

@@ -38,17 +38,17 @@ export class Time {
   /**
    *  To disable specific hours
    */
-  @Prop({ reflect: true }) excludedHours: string;
+  @Prop({ reflect: true }) _excludedHours: string;
 
   /**
    *  To disable specific minutes
    */
-  @Prop({ reflect: true }) excludedMinutes: string;
+  @Prop({ reflect: true }) _excludedMinutes: string;
 
   /**
    *  To disable specific seconds
    */
-  @Prop({ reflect: true }) excludedSeconds: string;
+  @Prop({ reflect: true }) _excludedSeconds: string;
 
   @Element() el: HTMLElement;
 
@@ -63,8 +63,8 @@ export class Time {
 
   @Watch('excluded-hours')
   updateExcludedHours() {
-    if (this.excludedHours) {
-      this.excludedHours.split(',').map(time => {
+    if (this._excludedHours) {
+      this._excludedHours.split(',').map(time => {
         this.excludedHoursArray.push(time.trim());
       });
     }
@@ -72,8 +72,8 @@ export class Time {
 
   @Watch('excluded-minutes')
   updateExcludedMinutes() {
-    if (this.excludedMinutes) {
-      this.excludedMinutes.split(',').map(time => {
+    if (this._excludedMinutes) {
+      this._excludedMinutes.split(',').map(time => {
         this.excludedMinutesArray.push(time.trim());
       });
     }
@@ -81,8 +81,8 @@ export class Time {
 
   @Watch('excluded-seconds')
   updateExcludedSeconds() {
-    if (this.excludedSeconds) {
-      this.excludedSeconds.split(',').map(time => {
+    if (this._excludedSeconds) {
+      this._excludedSeconds.split(',').map(time => {
         this.excludedSecondsArray.push(time.trim());
       });
     }

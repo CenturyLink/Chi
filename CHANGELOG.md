@@ -3,6 +3,7 @@
 ### Components
 #### Added
 * Added: Time picker and Datetime picker components to allow users to enter a time through text input or choose a time from a picker.
+* Added: Date Picker web component now supports <code>resetDate</code> method.
 #### Changed
 * Changed: Modal components with theme `-portal` now align buttons in `chi-modal__footer` to the right (Chi's default) instead of center.
 * Changed: Picker group components with theme `-portal` now include a text color change on hover.

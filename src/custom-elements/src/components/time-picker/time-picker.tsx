@@ -28,17 +28,17 @@ export class TimePicker {
   /**
    *  To specify excluded hours.
    */
-  @Prop({ reflect: true }) excludedHours: string;
+  @Prop({ reflect: true }) _excludedHours: string;
 
   /**
    *  To specify excluded minutes.
    */
-  @Prop({ reflect: true }) excludedMinutes: string;
+  @Prop({ reflect: true }) _excludedMinutes: string;
 
   /**
    *  To specify excluded seconds.
    */
-  @Prop({ reflect: true }) excludedSeconds: string;
+  @Prop({ reflect: true }) _excludedSeconds: string;
 
   /**
    *  To define format of Time Picker.
@@ -169,9 +169,9 @@ export class TimePicker {
       >
         <chi-time
           display-seconds={this.displaySeconds}
-          excluded-hours={this.excludedHours}
-          excluded-minutes={this.excludedMinutes}
-          excluded-seconds={this.excludedSeconds}
+          excluded-hours={this._excludedHours}
+          excluded-minutes={this._excludedMinutes}
+          excluded-seconds={this._excludedSeconds}
           format={this.format}
           value={this.value}
         />
