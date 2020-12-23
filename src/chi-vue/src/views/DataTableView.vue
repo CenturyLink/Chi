@@ -60,8 +60,8 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
         },
         head: {
           alerts: { label: 'Alerts', align: 'center' },
-          ticketId: { label: 'Ticket ID', sortable: true },
-          status: { label: 'Status', sortable: true, align: 'center' },
+          ticketId: { label: 'Ticket ID', sortable: true, sortBy: 'id' },
+          status: { label: 'Status', sortable: true, sortBy: 'status', align: 'center' },
           supportType: { label: 'Support Type', sortable: true },
           servicetype: { label: 'Service Type', sortable: true },
           created: { label: 'Created', sortable: true },
@@ -254,6 +254,19 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
               { label: 'Created', value: '04/05/2018 8:00 AM' },
               { label: 'Product/Service ID', value: 'SVUJW034781A' },
               { label: 'Actions', template: 'actions', payload: {id: 'NTM000021067'}, align: 'right'},
+            ],
+          },
+          {
+            active: false,
+            data: [
+              { label: 'Alerts', template: 'icon', payload: { icon: 'warning', color: 'warning' }, align: 'center' },
+              { label: 'Ticket ID', template: 'ticketid', payload: { id: 'NTM000021065' } },
+              { label: 'Status', template: 'status', payload: { status: 'active' }, align: 'center' },
+              { label: 'Support Type', value: 'Colocation' },
+              { label: 'Service Type', value: 'Internet Advantage' },
+              { label: 'Created', value: '04/05/2018 8:00 AM' },
+              { label: 'Product/Service ID', value: 'SVUJW034781A' },
+              { label: 'Actions', template: 'actions', payload: { id: 'NTM000021065' }, align: 'right' },
             ],
           },
         ]

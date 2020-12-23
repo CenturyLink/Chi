@@ -1,16 +1,12 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import Pagination from '../pagination/pagination';
 import { uuid4 } from '../../../../custom-elements/src/utils/utils';
-import {
-  ACTIVE_CLASS,
-  DATA_TABLE_CLASSES
-} from '@/constants/classes';
+import { ACTIVE_CLASS, DATA_TABLE_CLASSES } from '@/constants/classes';
 import { generateColumnResize } from './utils/_generateResize';
 import { cellAlignment, dataTableClasses } from './utils/_cellAlignment';
 import './data-table.scss';
 
-@Component({
-})
+@Component({})
 export default class DataTable extends Vue {
   @Prop() data!: Record<string, any>;
 
@@ -19,12 +15,11 @@ export default class DataTable extends Vue {
   _expandable?: boolean;
   accordionShown: any = [];
   sortable = false;
-  sortedColumn = {};
+  sortedData: any;
 
   created() {
     this._uuid = uuid4();
     this._expandable = this.data.body.find((row: { accordion: any; }) => row.accordion);
-    this.sortedColumn = {};
   }
 
   mounted() {
@@ -35,15 +30,42 @@ export default class DataTable extends Vue {
     }
   }
 
-  sort(e: Event) {
-    let element: HTMLElement | null = e.target as HTMLElement;
-    let columnHeadCell;
-    let columnHeadSortButton;
+  sortData(column: string, direction: string, sortBy: string | undefined) {
+    const copiedData = [...this.data.body];
+    const sortDirection = direction === 'ascending' ? 1 : -1;
+
+    this.sortedData = copiedData.sort((a, b) => {
+      const aDataColumn = a.data.find((columnData: { label: string }) => columnData.label === column),
+        bDataColumn = b.data.find((columnData: { label: string }) => columnData.label === column);
+      let aValue;
+      let bValue;
+
+      if (sortBy) {
+        if (aDataColumn[sortBy]) {
+          aValue = aDataColumn[sortBy];
+        } else if (aDataColumn.payload[sortBy]) {
+          aValue = aDataColumn.payload[sortBy];
+        }
+        if (bDataColumn[sortBy]) {
+          bValue = bDataColumn[sortBy];
+        } else if (bDataColumn.payload[sortBy]) {
+          bValue = bDataColumn.payload[sortBy];
+        }
+      }
+
+      return (aValue > bValue) ? 1 * sortDirection : -1 * sortDirection;
+    });
+
+    this.$forceUpdate();
+  }
+
+  sortColumn(e: Event) {
+    let element: HTMLElement | null = e.target as HTMLElement,
+      columnHeadCell,
+      columnHeadSortButton;
 
     if (element) {
       while (element && !element.classList.contains(DATA_TABLE_CLASSES.HEAD)) {
-        element = element.parentElement;
-
         if (element) {
           if (element.nodeName === 'BUTTON') {
             columnHeadSortButton = element;
@@ -53,55 +75,69 @@ export default class DataTable extends Vue {
             columnHeadCell = element;
           }
         }
+
+        element = element.parentElement;
       }
     }
 
     if (columnHeadSortButton) {
-      const columnName = columnHeadSortButton.dataset.column;
-      const columnSort = columnHeadSortButton.getAttribute('data-sort');
-      const sortIcon = columnHeadSortButton.querySelector('i.chi-icon');
+      const columnName = columnHeadSortButton.dataset.column,
+        columnSort = columnHeadSortButton.dataset.sort,
+        columnSortBy = columnHeadSortButton.dataset.sortBy,
+        sortIcon = columnHeadSortButton.querySelector('i.chi-icon');
 
-      columnHeadCell?.classList.add(ACTIVE_CLASS);
-
-      if (sortIcon) {
-        if (columnHeadSortButton.getAttribute('data-sort') === 'ascending') {
-          sortIcon.className = 'chi-icon icon-arrow-down';
-          columnHeadSortButton.setAttribute('sort', 'descending');
-        } else if (columnHeadSortButton.getAttribute('data-sort') === 'descending') {
-          sortIcon.className = 'chi-icon icon-arrow-up';
-          columnHeadSortButton.setAttribute('sort', 'ascending');
-        } else {
+      if (columnName && sortIcon) {
+        if (columnSort === 'ascending') {
           sortIcon.className = 'chi-icon icon-arrow-down';
           columnHeadSortButton.setAttribute('data-sort', 'descending');
-          console.log(columnHeadSortButton);
+          this.sortData(columnName, 'descending', columnSortBy);
+          columnHeadCell?.classList.add(ACTIVE_CLASS);
+        } else if (columnSort === 'descending') {
+          sortIcon.className = 'chi-icon icon-arrow-sync';
+          columnHeadSortButton.removeAttribute('data-sort');
+          columnHeadSortButton.blur();
+          this.sortedData.length = 0;
+          columnHeadCell?.classList.remove(ACTIVE_CLASS);
+          this.$forceUpdate();
+        } else {
+          sortIcon.className = 'chi-icon icon-arrow-up';
+          columnHeadSortButton.setAttribute('data-sort', 'ascending');
+          this.sortData(columnName, 'ascending', columnSortBy);
+          columnHeadCell?.classList.add(ACTIVE_CLASS);
         }
       }
     }
   }
 
-  sortingIcon(column: string) {
+  sortingIcon(column: string, sortBy: string) {
     const icon = this.data.sortIcon ?
       this.data.sortIcon === 'ascending' ? `ascending` : `descending`
       : 'arrow-sync';
 
-    return <button data-column={column} data-sort="" class="chi-button -icon -flat -sm" aria-label="Sorting column" onClick={(e: Event) => this.sort(e)}>
+    return <button data-column={column}
+                   data-sort-by={sortBy}
+                   data-sort=""
+                   class="chi-button -icon -flat -sm"
+                   aria-label="Sorting column"
+                   onClick={(e: Event) => this.sortColumn(e)}>
       <div class="chi-button__content">
-        <i class={`chi-icon icon-${icon}`}></i>
+        <i class={`chi-icon icon-${icon}`}/>
       </div>
-    </button>
+    </button>;
   }
 
   head() {
     const tableHeadCells = [
-      this._expandable ? <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`}></div> : null,
+      this._expandable ? <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`}/> : null,
       this.data.config.selectable ? this.selectRowCheckbox(undefined, true) : null
     ];
 
     Object.keys(this.data.head).forEach((column: string) => {
-      const label = this.data.head[column].label ? this.data.head[column].label : this.data.head[column];
-      const alignment = cellAlignment(this.data.head[column].align);
-      const sortIcon = this.data.head[column].sortable ?
-        this.sortingIcon(column) : '';
+      const label = this.data.head[column].label ? this.data.head[column].label : this.data.head[column],
+        sortBy = this.data.head[column].sortBy,
+        alignment = cellAlignment(this.data.head[column].align),
+        sortIcon = this.data.head[column].sortable ?
+          this.sortingIcon(label, sortBy) : '';
 
       tableHeadCells.push(<div class={`${DATA_TABLE_CLASSES.CELL} ${alignment}`} data-label={label}>
         {label}
@@ -134,13 +170,14 @@ export default class DataTable extends Vue {
     const iconStyle: string = this.data.config.style.portal ? 'portal' : 'base';
 
     return <div class="chi-data-table__cell -expandable">
-      <button class="chi-button -icon -flat -sm" aria-label="Expand row" data-target={`#row-${rowId}-content`} onClick={(e: Event) => this.toggleRow(rowId.toString())}>
+      <button class="chi-button -icon -flat -sm" aria-label="Expand row" data-target={`#row-${rowId}-content`}
+              onClick={() => this.toggleRow(rowId.toString())}>
         <div class="chi-button__content">
           <i class={`
             chi-icon
             icon-${this.accordionShown.includes(rowId) ? expansionIcons[iconStyle].expanded
-              : expansionIcons[iconStyle].collapsed}
-            `}></i>
+            : expansionIcons[iconStyle].collapsed}
+            `}/>
         </div>
       </button>
     </div>;
@@ -149,7 +186,7 @@ export default class DataTable extends Vue {
   selectRowCheckbox(rowId?: string, selectAll?: boolean) {
     return <div class="chi-data-table__cell -selectable">
       <div class="chi-checkbox">
-        <input type="checkbox" class="chi-checkbox__input" id={`row-${rowId}`} />
+        <input type="checkbox" class="chi-checkbox__input" id={`row-${rowId}`}/>
         <label class="chi-checkbox__label" for={`row-${rowId}`}>
           <div class="-sr--only">Select row {rowId}</div>
         </label>
@@ -174,11 +211,9 @@ export default class DataTable extends Vue {
       </div>;
     } else if (accordionData.table) {
       if (accordionData.table.data) {
-        const childBodyRows = accordionData.table.data.map((bodyRow: any) => {
+        return accordionData.table.data.map((bodyRow: any) => {
           return this.row(bodyRow, true);
         });
-
-        return childBodyRows;
       }
     } else {
       return <div class="chi-data-table__row-child -p--2">
@@ -196,18 +231,18 @@ export default class DataTable extends Vue {
       payload: any
     }, id: string
   }, rowChild = false) {
-    const row: any = [];
-    const rowCells: any = [];
-    const rowAccordionContent: any = [];
-    const rowId = bodyRow.id ? bodyRow.id : uuid4();
-    const rowClass = rowChild ? DATA_TABLE_CLASSES.ROW_CHILD : DATA_TABLE_CLASSES.ROW;
+    const row: any = [],
+      rowCells: any = [],
+      rowAccordionContent: any = [],
+      rowId = bodyRow.id ? bodyRow.id : uuid4(),
+      rowClass = rowChild ? DATA_TABLE_CLASSES.ROW_CHILD : DATA_TABLE_CLASSES.ROW;
 
     if (this._expandable) {
       if (bodyRow.accordion) {
         rowCells.push(this.expansionButton(rowId));
         rowAccordionContent.push(this.rowAccordionContent(bodyRow.accordion));
       } else {
-        rowCells.push(<div class="chi-data-table__cell -expandable"></div>);
+        rowCells.push(<div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`}/>);
       }
     }
 
@@ -252,7 +287,12 @@ export default class DataTable extends Vue {
     let tableBodyRows: JSX.Element;
 
     if (this.data.body.length > 0) {
-      tableBodyRows = this.data.body.map((bodyRow: any) => {
+      const dataToRender = this.sortedData && this.sortedData.length > 0 ?
+        this.sortedData : this.data.body;
+
+      console.log(this.sortedData);
+
+      tableBodyRows = dataToRender.map((bodyRow: any) => {
         return this.row(bodyRow);
       });
     } else {
@@ -275,7 +315,7 @@ export default class DataTable extends Vue {
       currentPage={1}
       results={this.data.body.length}
       pageSize={!this.data.config.style.portal}
-      pageJumper={!this.data.config.style.portal} />;
+      pageJumper={!this.data.config.style.portal}/>;
   }
 
   render() {
