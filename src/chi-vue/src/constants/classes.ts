@@ -23,7 +23,14 @@ export const BUTTON_CLASSES = {
 };
 
 /* Button Group */
-export const buttonGroupClass = 'chi-button-group';
+export const BUTTON_GROUP_CLASSES = 'chi-button-group';
+
+/* Checkbox */
+export const CHECKBOX_CLASSES = {
+  checkbox: 'chi-checkbox',
+  INPUT: 'chi-checkbox__input',
+  LABEL: 'chi-checkbox__label'
+};
 
 /* Drawer */
 export const DRAWER_CLASSES = {
@@ -34,7 +41,7 @@ export const DRAWER_CLASSES = {
 };
 
 /* Icon */
-export const iconClass = 'chi-icon';
+export const ICON_CLASS = 'chi-icon';
 
 /* Pagination */
 export const PAGINATION_CLASSES = {
@@ -65,7 +72,25 @@ export const DATA_TABLE_CLASSES = {
   BODY: 'chi-data-table__body',
   ROW: 'chi-data-table__row',
   ROW_CHILD: 'chi-data-table__row-child',
+  EMPTY: 'chi-data-table__row-empty',
   CELL: 'chi-data-table__cell',
+  FOOTER: 'chi-data-table__footer',
   EXPANDABLE: '-expandable',
   SELECTABLE: '-selectable',
+  PORTAL: '-portal',
+  BORDERED: '-bordered',
+  NO_BORDER: '-no-border',
+  HOVER: '-hover',
+  STRIPED: '-striped',
+  SORTING: '-sorting',
+  COMPACT: '-compact'
+};
+
+/* Utility Classes */
+export const UTILITY_CLASSES = {
+  JUSTIFY: {
+    START: '-justify-content-md--start',
+    CENTER: '-justify-content-md--center',
+    END: '-justify-content-md--end'
+  }
 };

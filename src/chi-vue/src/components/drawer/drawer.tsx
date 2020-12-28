@@ -8,7 +8,7 @@ import {
   PORTAL_CLASS,
   INVERSE_CLASS,
   BUTTON_CLASSES,
-  iconClass,
+  ICON_CLASS,
   TRANSITIONING_CLASS,
 } from '@/constants/classes';
 import { DRAWER_EVENTS } from '@/constants/events';
@@ -153,7 +153,7 @@ export default class Drawer extends Vue {
         onClick={() => this.$emit(DRAWER_EVENTS.HIDE)}
         aria-label="Close">
         <div class={`${BUTTON_CLASSES.CONTENT}`}>
-          <i class={`${iconClass} icon-x`}></i>
+          <i class={`${ICON_CLASS} icon-x`}></i>
         </div>
       </button>
     );

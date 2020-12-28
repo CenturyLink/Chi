@@ -5,8 +5,8 @@
       <DrawerView />
       <TooltipView /> -->
       <div class="-mx--2">
-        <!-- <PaginationView />
-        <DrawerView /> -->
+<!--        <PaginationView />-->
+<!--        <DrawerView />-->
         <DataTableView/>
       </div>
     </div>
@@ -31,5 +31,3 @@
   export default class App extends Vue {
   }
 </script>
-
-<style lang="scss"></style>
