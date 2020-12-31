@@ -154,8 +154,9 @@ export class TimePicker {
       return period.toString().length > 1 ? period.toString() : `0${period}`;
     };
     const hour = !(this.format === '24hr') && ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
+    const seconds = this.displaySeconds ? `:${formatTimePeriod(ev.detail.second)}` : '';
 
-    timePickerInput.value = `${formatTimePeriod(hour)}:${formatTimePeriod(ev.detail.minute)}:${formatTimePeriod(ev.detail.second)} ${formatTimePeriod(ev.detail.period)}`;
+    timePickerInput.value = `${formatTimePeriod(hour)}:${formatTimePeriod(ev.detail.minute)}${seconds} ${formatTimePeriod(ev.detail.period)}`;
   }
 
   render() {

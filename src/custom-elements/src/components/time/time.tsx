@@ -118,8 +118,41 @@ export class Time {
     const time = this.value.split(':');
 
     this._hour = time[0];
-    this._minute = time[1];
-    this._second = time[2] ? time[2] : '00';
+    if (this.stepped) {
+      const currentMinute = parseInt(time[1]);
+      const currentSecond = parseInt(time[2]);
+
+      if (currentMinute % 15 === 0 || currentMinute === 0) {
+        this._minute = time[1];
+      } else if (currentMinute > 52.5) {
+        this._minute = '00';
+      } else {
+        const remainder = currentMinute % 15;
+
+        if (remainder < 7.5) {
+          this._minute = this.formatTimePeriod(currentMinute - remainder);
+        } else {
+          this._minute = this.formatTimePeriod(currentMinute + (15 - remainder));
+        }
+      }
+
+      if (currentSecond % 10 === 0 || currentSecond === 0) {
+        this._second = time[2];
+      } else if (currentSecond > 52.5) {
+        this._second = '00';
+      } else {
+        const remainder = currentSecond % 10;
+
+        if (remainder < 5) {
+          this._second = this.formatTimePeriod(currentSecond - remainder);
+        } else {
+          this._second = this.formatTimePeriod(currentSecond + (10 - remainder));
+        }
+      }
+    } else {
+      this._minute = time[1];
+      this._second = time[2] ? time[2] : '00';
+    }
     this._period = !(this.format === '24hr') && parseInt(this._hour) < 12 ? 'am' : 'pm';
   }
 
@@ -135,7 +168,8 @@ export class Time {
   };
 
   hours() {
-    const startHour = (this.format === '24hr') ? 24 : 12;
+    const hourFormat = (this.format === '24hr') ? 24 : 12;
+    const startHour = (this.format === '24hr') ? '00' : '12';
     let hourToSet: string;
     const setHour = (hour: string) => {
       if (this.format === '24hr') {
@@ -188,12 +222,12 @@ export class Time {
     const hoursToDisplay = [
       <div data-hour={startHour} class={`
         ${TIME_CLASSES.HOUR}
-        ${hourStatus(startHour.toString())}
+        ${hourStatus(startHour)}
         `}
-           onClick={() => setHour(startHour.toString())}>{startHour}</div>
+           onClick={() => setHour(hourFormat.toString())}>{startHour}</div>
     ];
 
-    Array.from(Array(startHour), (_, i) => {
+    Array.from(Array(hourFormat), (_, i) => {
       const hour = this.formatTimePeriod(i);
 
       if (i > 0) {
