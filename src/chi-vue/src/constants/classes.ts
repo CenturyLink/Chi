@@ -7,6 +7,7 @@ export const INVERSE_CLASS = '-inverse';
 export const ANIMATED_CLASS = '-animated';
 export const PORTAL_CLASS = '-portal';
 export const TRANSITIONING_CLASS = '-transitioning';
+export const SR_ONLY = '-sr--only';
 
 /* Backdrop */
 export const BACKDROP_CLASSES = {

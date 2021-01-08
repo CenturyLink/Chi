@@ -31,8 +31,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import DataTable from '../components/data-table/DataTable';
-import Actions from './DataTableTemplates/datatable-actions.vue';
-import TicketPopover from './DataTableTemplates/datatable-popover.vue';
+import Actions from './DataTableTemplates/example-actions.vue';
+import TicketPopover from './DataTableTemplates/example-popover.vue';
 
 @Component({
   components: {
@@ -70,7 +70,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
         },
         body: [
           {
-            id: 'asdasd',
+            id: 'NTM000021063',
             accordion: {
               value: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
@@ -91,6 +91,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021071',
             active: false,
             data: [
               {},
@@ -104,7 +105,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
-            id: 'qweqwe',
+            id: 'NTM000021064',
             active: false,
             accordion: {
               value: "asdasdasd"
@@ -121,6 +122,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021065',
             active: false,
             data: [
               { label: 'Alerts', template: 'icon', payload: {icon: 'warning', color: 'warning'}, align: 'center' },
@@ -154,13 +156,13 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
-            id: "subtable",
+            id: "NTM0000210662",
             active: false,
             accordion: {
               table: {
                 data: [
                   {
-                    id: 'a',
+                    id: 'NTM0000210661',
                     active: false,
                     data: [
                       { label: 'Alerts', template: 'icon', payload: {icon: 'circle-check', color: 'success'}, align: 'center' },
@@ -174,7 +176,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
                     ],
                   },
                   {
-                    id: 'b',
+                    id: 'NTM00002106611',
                     active: false,
                     accordion: {
                       table: {
@@ -270,6 +272,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021072',
             active: false,
             data: [
               {},
@@ -283,19 +286,21 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM0000210651',
             active: false,
             data: [
               { label: 'Alerts', template: 'icon', payload: { icon: 'warning', color: 'warning' }, align: 'center' },
-              { label: 'Ticket ID', template: 'ticketid', payload: { id: 'NTM000021065' } },
+              { label: 'Ticket ID', template: 'ticketid', payload: { id: 'NTM0000210651' } },
               { label: 'Status', template: 'status', payload: { status: 'active' }, align: 'center' },
               { label: 'Support Type', value: 'Colocation' },
               { label: 'Service Type', value: 'Internet Advantage' },
               { label: 'Created', value: '04/05/2018 8:00 AM' },
               { label: 'Product/Service ID', value: 'SVUJW034781A' },
-              { label: 'Actions', template: 'actions', payload: { id: 'NTM000021065' }, align: 'right' },
+              { label: 'Actions', template: 'actions', payload: { id: 'NTM0000210651' }, align: 'right' },
             ],
           },
           {
+            id: 'NTM000021068',
             active: false,
             data: [
               {},
@@ -309,6 +314,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021069',
             active: false,
             data: [
               {},
@@ -322,6 +328,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021070',
             active: false,
             data: [
               {},
@@ -335,6 +342,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021073',
             active: false,
             data: [
               {},
@@ -348,6 +356,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021074',
             active: false,
             data: [
               {},
@@ -361,6 +370,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021075',
             active: false,
             data: [
               {},
@@ -374,6 +384,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021076',
             active: false,
             data: [
               {},
@@ -387,6 +398,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021077',
             active: false,
             data: [
               {},
@@ -400,6 +412,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021078',
             active: false,
             data: [
               {},
@@ -413,6 +426,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021079',
             active: false,
             data: [
               {},
@@ -426,6 +440,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021080',
             active: false,
             data: [
               {},
@@ -439,6 +454,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021081',
             active: false,
             data: [
               {},
@@ -452,6 +468,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021082',
             active: false,
             data: [
               {},
@@ -465,6 +482,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021083',
             active: false,
             data: [
               {},
@@ -478,6 +496,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021084',
             active: false,
             data: [
               {},
@@ -491,6 +510,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021085',
             active: false,
             data: [
               {},
@@ -504,6 +524,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021086',
             active: false,
             data: [
               {},
@@ -517,6 +538,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021087',
             active: false,
             data: [
               {},
@@ -530,6 +552,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021088',
             active: false,
             data: [
               {},
@@ -543,6 +566,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021089',
             active: false,
             data: [
               {},
@@ -556,6 +580,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021090',
             active: false,
             data: [
               {},
@@ -569,6 +594,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021091',
             active: false,
             data: [
               {},
@@ -582,6 +608,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021092',
             active: false,
             data: [
               {},
@@ -595,6 +622,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021093',
             active: false,
             data: [
               {},
@@ -608,6 +636,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021094',
             active: false,
             data: [
               {},
@@ -621,6 +650,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021095',
             active: false,
             data: [
               {},
@@ -634,6 +664,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021096',
             active: false,
             data: [
               {},
@@ -647,6 +678,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021097',
             active: false,
             data: [
               {},
@@ -660,6 +692,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021098',
             active: false,
             data: [
               {},
@@ -673,6 +706,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021099',
             active: false,
             data: [
               {},
@@ -686,6 +720,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021100',
             active: false,
             data: [
               {},
@@ -699,6 +734,7 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021101',
             active: false,
             data: [
               {},
@@ -712,10 +748,11 @@ import TicketPopover from './DataTableTemplates/datatable-popover.vue';
             ],
           },
           {
+            id: 'NTM000021101',
             active: false,
             data: [
               {},
-              { label: 'Ticket ID', template: 'ticketid', payload: { id: 'NTM000021102' } },
+              { label: 'Ticket ID', template: 'ticketid', payload: { id: 'NTM000021101' } },
               { label: 'Status', template: 'status', payload: { status: 'active' }, align: 'center' },
               { label: 'Support Type', value: 'Colocation' },
               { label: 'Service Type', value: 'Internet Advantage' },

@@ -11,3 +11,23 @@
   opacity: 0;
   transform: translateY(-8px);
 }
+
+.chi-data-table__head {
+  .chi-data-table__cell {
+    button {
+      i {
+        &.chi-icon {
+          &.icon-arrow-up {
+            transition: transform 0.2s;
+          }
+        }
+      }
+    }
+  }
+}
+
+.chi-data-table__cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
