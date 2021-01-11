@@ -26,6 +26,8 @@ export default class DataTable extends Vue {
   resultsPerPage = 20;
   currentPage = 1;
   selectedRows: Record<string, any> = [];
+  currentScreenBreakpoint!: any;
+  _resizeTimer: any;
 
   sortColumn(e: Event) {
     const sortData = (
@@ -185,6 +187,8 @@ export default class DataTable extends Vue {
         : null
     ];
 
+    let cellIndex = 0;
+
     Object.keys(this.data.head).forEach((column: string) => {
       const label = this.data.head[column].label
           ? this.data.head[column].label
@@ -193,12 +197,20 @@ export default class DataTable extends Vue {
         alignment = this.cellAlignment(this.data.head[column].align),
         sortIcon = this.data.head[column].sortable
           ? this.sortingIcon(label, sortBy)
-          : '';
+          : '',
+        cellWidth = this.data.config.screenBreakpoints
+          ? this.data.config.screenBreakpoints[this.currentScreenBreakpoint][
+              cellIndex
+            ]
+          : null;
 
       tableHeadCells.push(
         <div
-          class={`${DATA_TABLE_CLASSES.CELL} ${alignment}`}
+          class={`${DATA_TABLE_CLASSES.CELL}
+            ${alignment}
+            ${cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={label}
+          style={cellWidth === 0 ? 'display: none;' : null}
         >
           {label}
           {sortIcon}
@@ -208,6 +220,8 @@ export default class DataTable extends Vue {
       if (this.data.head[column].sortable && !this.sortable) {
         this.sortable = true;
       }
+
+      cellIndex++;
     });
 
     return (
@@ -391,8 +405,9 @@ export default class DataTable extends Vue {
             onChange={(ev: Event) => {
               if (selectAll) {
                 this.selectAllRows(
-                  (ev.target as HTMLInputElement).checked ?
-                    'select' : 'deselect'
+                  (ev.target as HTMLInputElement).checked
+                    ? 'select'
+                    : 'deselect'
                 );
               } else {
                 if (rowId) {
@@ -480,9 +495,16 @@ export default class DataTable extends Vue {
       rowCells.push(this.selectRowCheckbox(rowId, false));
     }
 
+    let cellIndex = 0;
+
     bodyRow.data.map((rowCell: any) => {
-      const alignment = this.cellAlignment(rowCell.align);
-      const cellLabel = rowCell.label || 'asd';
+      const alignment = this.cellAlignment(rowCell.align),
+        cellLabel = rowCell.label || 'asd',
+        cellWidth = this.data.config.screenBreakpoints
+          ? this.data.config.screenBreakpoints[this.currentScreenBreakpoint][
+              cellIndex
+            ]
+          : null;
       let cellData;
 
       if (rowCell.template && this.$scopedSlots[rowCell.template]) {
@@ -496,19 +518,29 @@ export default class DataTable extends Vue {
       }
       rowCells.push(
         <div
-          class={`${DATA_TABLE_CLASSES.CELL} ${alignment}`}
+          class={`
+            ${DATA_TABLE_CLASSES.CELL}
+            ${alignment}
+            -text--truncate
+            ${cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={cellLabel}
+          style={cellWidth === 0 ? 'display: none' : null}
         >
           {cellData}
         </div>
       );
+
+      cellIndex++;
     });
 
     row.push(
-      <div id={rowId} class={`
+      <div
+        id={rowId}
+        class={`
         ${rowClass}
         ${this.selectedRows.includes(rowId) ? ACTIVE_CLASS : ''}
-        `}>
+        `}
+      >
         {rowCells}
       </div>
     );
@@ -576,11 +608,13 @@ export default class DataTable extends Vue {
   }
 
   checkSelectAllCheckbox() {
-    const selectAllCheckbox = document
-      .querySelector(`.${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL} input`) as HTMLInputElement;
+    const selectAllCheckbox = document.querySelector(
+      `.${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL} input`
+    ) as HTMLInputElement;
 
     if (selectAllCheckbox) {
-      const isSelected = (row: any) => this.selectedRows.includes(`row-${row.id}`);
+      const isSelected = (row: any) =>
+        this.selectedRows.includes(`row-${row.id}`);
 
       selectAllCheckbox.checked = !!this.slicedData.every(isSelected);
     }
@@ -588,11 +622,39 @@ export default class DataTable extends Vue {
 
   sliceData(data: Record<string, any>) {
     if (data.length > this.resultsPerPage) {
-      const arrayStartIndex = (this.currentPage - 1) * this.resultsPerPage;
-      const arrayEndIndex =
-        (this.currentPage - 1) * this.resultsPerPage + this.resultsPerPage;
+      const arrayStartIndex = (this.currentPage - 1) * this.resultsPerPage,
+        arrayEndIndex =
+          (this.currentPage - 1) * this.resultsPerPage + this.resultsPerPage;
 
       return data.slice(arrayStartIndex, arrayEndIndex);
+    }
+  }
+
+  detectScreenBreakpoint() {
+    const currentScreenSize = window.innerWidth;
+    let screenBreakpoint;
+
+    switch (true) {
+      case currentScreenSize > 1200:
+        screenBreakpoint = 'xl';
+        break;
+      case currentScreenSize > 992 && currentScreenSize <= 1200:
+        screenBreakpoint = 'lg';
+        break;
+      case currentScreenSize > 768 && currentScreenSize <= 991:
+        screenBreakpoint = 'md';
+        break;
+      case currentScreenSize > 575 && currentScreenSize <= 767:
+        screenBreakpoint = 'sm';
+        break;
+      case currentScreenSize < 575:
+        screenBreakpoint = 'xs';
+        break;
+    }
+
+    if (this.currentScreenBreakpoint !== screenBreakpoint) {
+      this.currentScreenBreakpoint = screenBreakpoint;
+      this.$forceUpdate();
     }
   }
 
@@ -616,6 +678,10 @@ export default class DataTable extends Vue {
     }
 
     return dataToRender;
+  }
+
+  beforeMount() {
+    this.detectScreenBreakpoint();
   }
 
   mounted() {
@@ -650,12 +716,21 @@ export default class DataTable extends Vue {
             ? this.sortedData
             : this.data.body;
 
-
         this.currentPage = ev;
         this.slicedData = this.sliceData(data);
         this.checkSelectAllCheckbox();
       }
     );
+    window.addEventListener('resize', this.resizeHandler);
+  }
+
+  resizeHandler() {
+    clearTimeout(this._resizeTimer);
+    this._resizeTimer = setTimeout(this.detectScreenBreakpoint.bind(this), 250);
+  }
+
+  beforeDestroy() {
+    window.removeEventListener('resize', this.resizeHandler, true);
   }
 
   render() {

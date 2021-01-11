@@ -1,7 +1,7 @@
 <template>
   <div id="tadataTableVIew">
     <h2>Data Table example</h2>
-    <ChiTable :data="table">
+    <ChiTable :data="table" v-if="active">
       <template #icon="payload">
         <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`"></i>
       </template>
@@ -42,6 +42,7 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
   },
   data: () => {
     return {
+      active: true,
       table: {
         config: {
           columnResize: true,
@@ -57,6 +58,13 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
           pagination: {
           },
           selectable: true,
+          screenBreakpoints: {
+            xs: [5, 5, 5, 5, 5, 5, 5, 5],
+            sm: [10, 10, 10, 10, 10, 10, 10, 10],
+            md: [5, 15, 15, 15, 15, 15, 15, 5],
+            lg: [5, 15, 15, 15, 15, 15, 15, 5],
+            xl: [5, 15, 10, 15, 15, 15, 15, 5]
+          }
         },
         head: {
           alerts: { label: 'Alerts', align: 'center' },
@@ -66,7 +74,7 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
           servicetype: { label: 'Service Type', sortable: true },
           created: { label: 'Created', sortable: true },
           productId: { label: 'Product / Service ID', sortable: true },
-          actions: { label: 'Actions', sortable: true, align: 'right' },
+          actions: { label: ' ', sortable: true, align: 'right' },
         },
         body: [
           {
