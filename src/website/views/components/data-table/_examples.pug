@@ -1806,24 +1806,18 @@ h3 Accordion Expanded
 h3 Sorting -- Base
 .example.-mb--3
   .-p--3
-    .chi-data-table.-sorting
+    .chi-data-table
       .chi-data-table__head
         .chi-data-table__row
-          .chi-data-table__cell
+          button.chi-data-table__cell.-sorting
             div Name
-            button.chi-button.-icon.-flat.-sm(aria-label='Sorting column')
-              .chi-button__content
-                i.chi-icon.icon-arrow-sync
-          .chi-data-table__cell
+            i.chi-icon.-xs.icon-arrow-up
+          button.chi-data-table__cell.-sorting
             div ID
-            button.chi-button.-icon.-flat.-sm(aria-label='Sorting column')
-              .chi-button__content
-                i.chi-icon.icon-arrow-sync
-          .chi-data-table__cell
+            i.chi-icon.-xs.icon-arrow-up
+          button.chi-data-table__cell.-sorting
             div Last Login
-            button.chi-button.-icon.-flat.-sm(aria-label='Sorting column')
-              .chi-button__content
-                i.chi-icon.icon-arrow-sync
+            i.chi-icon.-xs.icon-arrow-up
       .chi-data-table__body
         .chi-data-table__row
           .chi-data-table__cell(data-label="Name")
@@ -1891,33 +1885,21 @@ h3 Sorting -- Base
   .chi-tabs-panel#webcomponent-sorting-base
   .chi-tabs-panel.-active#html-sorting-base
     :code(lang='html')
-      <div class="chi-data-table -sorting">
+      <div class="chi-data-table">
         <div class="chi-data-table__head">
           <div class="chi-data-table__row">
-            <div class="chi-data-table__cell">
+            <button class="chi-data-table__cell -sorting">
               <div>Name</div>
-              <button class="chi-button -icon -flat -sm" aria-label="Sorting column">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-arrow-sync"></i>
-                </div>
-              </button>
-            </div>
-            <div class="chi-data-table__cell">
+              <i class="chi-icon -xs icon-arrow-up"></i>
+            </button>
+            <button class="chi-data-table__cell -sorting">
               <div>ID</div>
-              <button class="chi-button -icon -flat -sm" aria-label="Sorting column">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-arrow-sync"></i>
-                </div>
-              </button>
-            </div>
-            <div class="chi-data-table__cell">
+              <i class="chi-icon -xs icon-arrow-up"></i>
+            </button>
+            <button class="chi-data-table__cell -sorting">
               <div>Last Login</div>
-              <button class="chi-button -icon -flat -sm" aria-label="Sorting column">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-arrow-sync"></i>
-                </div>
-              </button>
-            </div>
+              <i class="chi-icon -xs icon-arrow-up"></i>
+            </button>
           </div>
         </div>
         <div class="chi-data-table__body">
@@ -2011,24 +1993,18 @@ h3 Sorting -- Base
 h3 Sorting -- Active -- Ascend
 .example.-mb--3
   .-p--3
-    .chi-data-table.-sorting
+    .chi-data-table
       .chi-data-table__head
         .chi-data-table__row
-          .chi-data-table__cell.-active.-ascending
+          button.chi-data-table__cell.-sorting.-active
             div Name
-            button.chi-button.-icon.-flat.-sm(aria-label='Sorting column')
-              .chi-button__content
-                i.chi-icon.icon-arrow-up
-          .chi-data-table__cell
+            i.chi-icon.-xs.icon-arrow-up
+          button.chi-data-table__cell.-sorting
             div ID
-            button.chi-button.-icon.-flat.-sm(aria-label='Sorting column')
-              .chi-button__content
-                i.chi-icon.icon-arrow-sync
-          .chi-data-table__cell
+            i.chi-icon.-xs.icon-arrow-up
+          button.chi-data-table__cell.-sorting
             div Last Login
-            button.chi-button.-icon.-flat.-sm(aria-label='Sorting column')
-              .chi-button__content
-                i.chi-icon.icon-arrow-sync
+            i.chi-icon.-xs.icon-arrow-up
       .chi-data-table__body
         .chi-data-table__row
           .chi-data-table__cell(data-label="Name")
@@ -2096,33 +2072,21 @@ h3 Sorting -- Active -- Ascend
   .chi-tabs-panel#webcomponent-sorting-ascend
   .chi-tabs-panel.-active#html-sorting-ascend
     :code(lang='html')
-      <div class="chi-data-table -sorting">
+      <div class="chi-data-table">
         <div class="chi-data-table__head">
           <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -active -ascending">
+            <button class="chi-data-table__cell -sorting -active">
               <div>Name</div>
-              <button class="chi-button -icon -flat -sm" aria-label="Sorting column">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-arrow-up"></i>
-                </div>
-              </button>
-            </div>
-            <div class="chi-data-table__cell">
+              <i class="chi-icon -xs icon-arrow-up"></i>
+            </button>
+            <button class="chi-data-table__cell -sorting">
               <div>ID</div>
-              <button class="chi-button -icon -flat -sm" aria-label="Sorting column">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-arrow-sync"></i>
-                </div>
-              </button>
-            </div>
-            <div class="chi-data-table__cell">
+              <i class="chi-icon -xs icon-arrow-up"></i>
+            </button>
+            <button class="chi-data-table__cell -sorting">
               <div>Last Login</div>
-              <button class="chi-button -icon -flat -sm" aria-label="Sorting column">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-arrow-sync"></i>
-                </div>
-              </button>
-            </div>
+              <i class="chi-icon -xs icon-arrow-up"></i>
+            </button>
           </div>
         </div>
         <div class="chi-data-table__body">
@@ -2216,24 +2180,18 @@ h3 Sorting -- Active -- Ascend
 h3 Sorting -- Active -- Descend
 .example.-mb--3
   .-p--3
-    .chi-data-table.-sorting
+    .chi-data-table
       .chi-data-table__head
         .chi-data-table__row
-          .chi-data-table__cell.-active.-descending
+          button.chi-data-table__cell.-sorting.-active.-descending
             div Name
-            button.chi-button.-icon.-flat.-sm(aria-label='Sorting column')
-              .chi-button__content
-                i.chi-icon.icon-arrow-up
-          .chi-data-table__cell
+            i.chi-icon.-xs.icon-arrow-up
+          button.chi-data-table__cell.-sorting
             div ID
-            button.chi-button.-icon.-flat.-sm(aria-label='Sorting column')
-              .chi-button__content
-                i.chi-icon.icon-arrow-sync
-          .chi-data-table__cell
+            i.chi-icon.-xs.icon-arrow-up
+          button.chi-data-table__cell.-sorting
             div Last Login
-            button.chi-button.-icon.-flat.-sm(aria-label='Sorting column')
-              .chi-button__content
-                i.chi-icon.icon-arrow-sync
+            i.chi-icon.-xs.icon-arrow-up
       .chi-data-table__body
         .chi-data-table__row
           .chi-data-table__cell(data-label="Name")
@@ -2301,33 +2259,21 @@ h3 Sorting -- Active -- Descend
   .chi-tabs-panel#webcomponent-sorting-descend
   .chi-tabs-panel.-active#html-sorting-descend
     :code(lang='html')
-      <div class="chi-data-table -sorting">
+      <div class="chi-data-table">
         <div class="chi-data-table__head">
           <div class="chi-data-table__row">
-            <div class="chi-data-table__cell -active -descending">
+            <button class="chi-data-table__cell -sorting -active -descending">
               <div>Name</div>
-              <button class="chi-button -icon -flat -sm" aria-label="Sorting column">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-arrow-up"></i>
-                </div>
-              </button>
-            </div>
-            <div class="chi-data-table__cell">
+              <i class="chi-icon -xs icon-arrow-up"></i>
+            </button>
+            <button class="chi-data-table__cell -sorting">
               <div>ID</div>
-              <button class="chi-button -icon -flat -sm" aria-label="Sorting column">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-arrow-sync"></i>
-                </div>
-              </button>
-            </div>
-            <div class="chi-data-table__cell">
+              <i class="chi-icon -xs icon-arrow-up"></i>
+            </button>
+            <button class="chi-data-table__cell -sorting">
               <div>Last Login</div>
-              <button class="chi-button -icon -flat -sm" aria-label="Sorting column">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-arrow-sync"></i>
-                </div>
-              </button>
-            </div>
+              <i class="chi-icon -xs icon-arrow-up"></i>
+            </button>
           </div>
         </div>
         <div class="chi-data-table__body">
@@ -3670,29 +3616,21 @@ h3 Portal -- Two tier header
       .chi-card__header.-sm
         .chi-card__title Title
       .chi-card__content.-p--0
-        .chi-data-table.-portal.-compact.-sorting
+        .chi-data-table.-portal.-compact
           .chi-data-table__head
             .chi-data-table__row
-              .chi-data-table__cell.-active.-ascending
+              button.chi-data-table__cell.-sorting.-active
                  div Location
-                 button.chi-button.-icon.-flat.-sm(aria-label='Sorting column')
-                   .chi-button__content
-                     i.chi-icon.icon-arrow-up
-              .chi-data-table__cell
+                 i.chi-icon.-xs.icon-arrow-up
+              button.chi-data-table__cell.-sorting
                 div High Utilization
-                button.chi-button.-icon.-flat.-sm(aria-label='Sorting column')
-                    .chi-button__content
-                      i.chi-icon.icon-arrow-sync
-              .chi-data-table__cell
+                i.chi-icon.-xs.icon-arrow-up
+              button.chi-data-table__cell.-sorting
                div Elevated Utilization
-               button.chi-button.-icon.-flat.-sm(aria-label='Sorting column')
-                   .chi-button__content
-                     i.chi-icon.icon-arrow-sync
-              .chi-data-table__cell
+               i.chi-icon.-xs.icon-arrow-up
+              button.chi-data-table__cell.-sorting
                 div Highest %
-                button.chi-button.-icon.-flat.-sm(aria-label='Sorting column')
-                  .chi-button__content
-                    i.chi-icon.icon-arrow-sync
+                i.chi-icon.-xs.icon-arrow-up
             .chi-data-table__row
               .chi-data-table__cell
               .chi-data-table__cell
@@ -3771,41 +3709,25 @@ h3 Portal -- Two tier header
           <div class="chi-card__title">Title</div>
         </div>
         <div class="chi-card__content -p--0">
-          <div class="chi-data-table -portal -compact -sorting">
+          <div class="chi-data-table -portal -compact">
             <div class="chi-data-table__head">
               <div class="chi-data-table__row">
-                <div class="chi-data-table__cell -active -ascending">
+                <button class="chi-data-table__cell -sorting -active">
                   <div>Location</div>
-                  <button class="chi-button -icon -flat -sm" aria-label="Sorting column">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-arrow-up"></i>
-                    </div>
-                  </button>
-                </div>
-                <div class="chi-data-table__cell">
+                  <i class="chi-icon icon-arrow-up"></i>
+                </button>
+                <button class="chi-data-table__cell -sorting">
                   <div>High Utilization</div>
-                  <button class="chi-button -icon -flat -sm" aria-label="Sorting column">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-arrow-sync"></i>
-                    </div>
-                  </button>
-                </div>
-                <div class="chi-data-table__cell">
+                  <i class="chi-icon icon-arrow-up"></i>
+                </button>
+                <button class="chi-data-table__cell -sorting">
                   <div>Elevated Utilization</div>
-                  <button class="chi-button -icon -flat -sm" aria-label="Sorting column">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-arrow-sync"></i>
-                    </div>
-                  </button>
-                </div>
-                <div class="chi-data-table__cell">
+                  <i class="chi-icon icon-arrow-up"></i>
+                </button>
+                <button class="chi-data-table__cell -sorting">
                   <div>Highest %</div>
-                  <button class="chi-button -icon -flat -sm" aria-label="Sorting column">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-arrow-sync"></i>
-                    </div>
-                  </button>
-                </div>
+                  <i class="chi-icon icon-arrow-up"></i>
+                </button>
               </div>
               <div class="chi-data-table__row">
                 <div class="chi-data-table__cell"></div>
