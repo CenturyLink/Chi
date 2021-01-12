@@ -1,5 +1,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import Pagination from '../pagination/pagination';
+import Tooltip from '../tooltip/tooltip';
 import { uuid4 } from '../../../../custom-elements/src/utils/utils';
 import {
   ACTIVE_CLASS,
@@ -12,22 +13,30 @@ import {
 } from '@/constants/classes';
 import './data-table.scss';
 import { PAGINATION_EVENTS } from '../../constants/events';
+import {
+  DataTableData,
+  DataTableExpansionIcons,
+  DataTableExpansionIconStyles,
+  DataTableRow,
+  DataTableScreenBreakpoints,
+  DataTableStyleConfig
+} from '@/constants/types';
+import { DATA_TABLE_SORT_ICONS } from '@/constants/constants';
 
 @Component({})
 export default class DataTable extends Vue {
-  @Prop() data!: Record<string, any>;
+  @Prop() data!: DataTableData;
 
-  _uuid!: string;
-  _expandable?: boolean;
-  accordionShown: Record<string, any> = [];
-  sortable = false;
-  sortedData: Record<string, any> = [];
-  slicedData: Record<string, any> = [];
-  resultsPerPage = 20;
+  accordionsShown: string[] = [];
   currentPage = 1;
-  selectedRows: Record<string, any> = [];
-  currentScreenBreakpoint!: any;
-  _resizeTimer: any;
+  currentScreenBreakpoint?: DataTableScreenBreakpoints;
+  resultsPerPage = 20;
+  selectedRows: string[] = [];
+  slicedData: DataTableRow[] = [];
+  sortable = false;
+  sortedData?: DataTableRow[];
+  _expandable!: boolean;
+  _resizeTimer?: number;
 
   sortColumn(e: Event) {
     const sortData = (
@@ -35,36 +44,47 @@ export default class DataTable extends Vue {
       direction: string,
       sortBy: string | undefined
     ) => {
-      const copiedData = [...this.data.body],
-        sortDirection = direction === 'ascending' ? 1 : -1;
-      this.sortedData = copiedData.sort((a, b) => {
-        const aDataColumn = a.data.find(
-            (columnData: { label: string }) => columnData.label === column
-          ),
-          bDataColumn = b.data.find(
-            (columnData: { label: string }) => columnData.label === column
-          );
-        let aValue;
-        let bValue;
+      const columnTitle = Object.keys(this.data.head).find(
+          columnTitle => columnTitle === column
+        ),
+        sortDirection = direction === 'ascending' ? 1 : -1,
+        copiedData = [...this.data.body];
 
-        if (sortBy) {
-          if (aDataColumn[sortBy]) {
-            aValue = aDataColumn[sortBy];
-          } else if (aDataColumn.payload[sortBy]) {
-            aValue = aDataColumn.payload[sortBy];
-          }
-          if (bDataColumn[sortBy]) {
-            bValue = bDataColumn[sortBy];
-          } else if (bDataColumn.payload[sortBy]) {
-            bValue = bDataColumn.payload[sortBy];
-          }
-        }
+      if (columnTitle) {
+        const columnIndex = Object.keys(this.data.head).indexOf(columnTitle);
 
-        return aValue > bValue ? 1 * sortDirection : -1 * sortDirection;
-      });
-      this.currentPage = 1;
-      this.slicedData = this.sliceData(this.sortedData);
-      this.$forceUpdate();
+        this.sortedData = copiedData.sort((a, b) => {
+          const aDataColumn = a.data[columnIndex],
+            bDataColumn = b.data[columnIndex];
+          let aValue,
+            bValue;
+
+          if (sortBy) {
+            if (aDataColumn[sortBy]) {
+              aValue = aDataColumn[sortBy];
+            } else if (aDataColumn.payload[sortBy]) {
+              aValue = aDataColumn.payload[sortBy];
+            }
+            if (bDataColumn[sortBy]) {
+              bValue = bDataColumn[sortBy];
+            } else if (bDataColumn.payload[sortBy]) {
+              bValue = bDataColumn.payload[sortBy];
+            }
+          } else {
+            if (typeof aDataColumn === 'string' || typeof bDataColumn === 'string') {
+              aValue = aDataColumn.toLowerCase();
+              bValue = bDataColumn.toLowerCase();
+            } else {
+              aValue = aDataColumn;
+              bValue = bDataColumn;
+            }
+          }
+
+          return aValue > bValue ? 1 * sortDirection : -1 * sortDirection;
+        });
+        this.currentPage = 1;
+        this.slicedData = this.sliceData(this.sortedData);
+      }
     };
     let element: HTMLElement | null = e.target as HTMLElement,
       columnHeadCell,
@@ -95,10 +115,12 @@ export default class DataTable extends Vue {
         );
 
       Array.prototype.forEach.call(headSortColumnIcons, sortIcon => {
-        if (sortIcon.className !== `${ICON_CLASS} icon-arrow-sync`) {
+        if (
+          sortIcon.className !== `${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.SORT}`
+        ) {
           let element = sortIcon;
 
-          sortIcon.className = `${ICON_CLASS} icon-arrow-sync`;
+          sortIcon.className = `${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.SORT}`;
           while (
             element &&
             !element.classList.contains(DATA_TABLE_CLASSES.HEAD)
@@ -119,21 +141,22 @@ export default class DataTable extends Vue {
       });
 
       if (columnName && sortIcon) {
-        sortIcon.className = `${ICON_CLASS} icon-arrow-up`;
+        sortIcon.className = `${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.ARROW}`;
         if (currentSort === 'ascending') {
           (sortIcon as HTMLElement).style.transform = 'rotate(180deg)';
           columnHeadSortButton.setAttribute('data-sort', 'descending');
           sortData(columnName, 'descending', columnSortBy);
           columnHeadCell?.classList.add(ACTIVE_CLASS);
         } else if (currentSort === 'descending') {
-          sortIcon.className = `${ICON_CLASS} icon-arrow-sync`;
+          sortIcon.className = `${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.SORT}`;
           columnHeadSortButton.removeAttribute('data-sort');
           (sortIcon as HTMLElement).removeAttribute('style');
           columnHeadSortButton.blur();
-          this.sortedData.length = 0;
+          if (this.sortedData) {
+            this.sortedData.length = 0;
+          }
           this.slicedData = this.sliceData(this.data.body);
           columnHeadCell?.classList.remove(ACTIVE_CLASS);
-          this.$forceUpdate();
         } else {
           columnHeadSortButton.setAttribute('data-sort', 'ascending');
           sortData(columnName, 'ascending', columnSortBy);
@@ -145,13 +168,7 @@ export default class DataTable extends Vue {
     }
   }
 
-  sortingIcon(column: string, sortBy: string) {
-    const icon = this.data.sortIcon
-      ? this.data.sortIcon === 'ascending'
-        ? `ascending`
-        : `descending`
-      : 'arrow-sync';
-
+  sortingButton(column: string, sortBy: string) {
     return (
       <button
         data-column={column}
@@ -163,11 +180,11 @@ export default class DataTable extends Vue {
         ${BUTTON_CLASSES.FLAT}
         -sm
       `}
-        aria-label="Sorting column"
+        aria-label={`Sorting column ${column}`}
         onClick={(e: Event) => this.sortColumn(e)}
       >
         <div class={BUTTON_CLASSES.CONTENT}>
-          <i class={`${ICON_CLASS} icon-${icon}`} />
+          <i class={`${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.SORT}`} />
         </div>
       </button>
     );
@@ -195,25 +212,26 @@ export default class DataTable extends Vue {
           : this.data.head[column],
         sortBy = this.data.head[column].sortBy,
         alignment = this.cellAlignment(this.data.head[column].align),
-        sortIcon = this.data.head[column].sortable
-          ? this.sortingIcon(label, sortBy)
+        sortButton = this.data.head[column].sortable
+          ? this.sortingButton(column, sortBy)
           : '',
-        cellWidth = this.data.config.screenBreakpoints
-          ? this.data.config.screenBreakpoints[this.currentScreenBreakpoint][
-              cellIndex
-            ]
-          : null;
+        cellWidth =
+          this.data.config.columnSizes && this.currentScreenBreakpoint
+            ? this.data.config.columnSizes[this.currentScreenBreakpoint][
+                cellIndex
+              ]
+            : null;
 
       tableHeadCells.push(
         <div
           class={`${DATA_TABLE_CLASSES.CELL}
             ${alignment}
-            ${cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
+            ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={label}
           style={cellWidth === 0 ? 'display: none;' : null}
         >
-          {label}
-          {sortIcon}
+          <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{label}</div>
+          {sortButton}
         </div>
       );
 
@@ -235,10 +253,10 @@ export default class DataTable extends Vue {
     const columnHeaders = elem.querySelectorAll(
       `.${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
     );
-    let thElm: any;
-    let startOffset: any;
+    let thElm: HTMLElement | null;
+    let startOffset: number;
 
-    Array.prototype.forEach.call(columnHeaders, function(th) {
+    Array.prototype.forEach.call(columnHeaders, th => {
       th.style.position = 'relative';
       const grip = document.createElement('div');
       grip.innerHTML = '&nbsp;';
@@ -249,13 +267,13 @@ export default class DataTable extends Vue {
       grip.style.position = 'absolute';
       grip.style.cursor = 'col-resize';
       grip.classList.add('resize-handle');
-      grip.addEventListener('mousedown', function(e) {
+      grip.addEventListener('mousedown', e => {
         thElm = th;
         startOffset = th.offsetWidth - e.pageX;
       });
       th.appendChild(grip);
     });
-    document.addEventListener('mousemove', function(e) {
+    document.addEventListener('mousemove', e => {
       let columnCellsToResize;
       if (thElm) {
         thElm.setAttribute(
@@ -273,16 +291,18 @@ export default class DataTable extends Vue {
             );
           }
         }
-        Array.prototype.forEach.call(columnCellsToResize, function(column) {
-          column.setAttribute(
-            'style',
-            `width: ${thElm.style.width} !important; flex: none !important`
-          );
+        Array.prototype.forEach.call(columnCellsToResize, column => {
+          if (thElm) {
+            column.setAttribute(
+              'style',
+              `width: ${thElm.style.width} !important; flex: none !important`
+            );
+          }
         });
       }
     });
     document.addEventListener('mouseup', function() {
-      thElm = undefined;
+      thElm = null;
     });
   }
 
@@ -300,7 +320,7 @@ export default class DataTable extends Vue {
     return;
   }
 
-  dataTableClasses(style: any, sortable: boolean) {
+  dataTableClasses(style: DataTableStyleConfig, sortable: boolean) {
     return [
       DATA_TABLE_CLASSES.DATA_TABLE,
       style.portal ? DATA_TABLE_CLASSES.COMPACT : '',
@@ -314,7 +334,7 @@ export default class DataTable extends Vue {
   }
 
   expansionButton(rowId: string) {
-    const expansionIcons: any = {
+    const expansionIcons: DataTableExpansionIcons = {
       portal: {
         expanded: 'minus',
         collapsed: 'plus'
@@ -324,7 +344,10 @@ export default class DataTable extends Vue {
         collapsed: 'chevron-right'
       }
     };
-    const iconStyle: string = this.data.config.style.portal ? 'portal' : 'base';
+    const iconStyle: DataTableExpansionIconStyles = this.data.config.style
+      .portal
+      ? 'portal'
+      : 'base';
 
     return (
       <div
@@ -346,7 +369,7 @@ export default class DataTable extends Vue {
               class={`
             ${ICON_CLASS}
             icon-${
-              this.accordionShown.includes(rowId)
+              this.accordionsShown.includes(rowId)
                 ? expansionIcons[iconStyle].expanded
                 : expansionIcons[iconStyle].collapsed
             }
@@ -373,13 +396,13 @@ export default class DataTable extends Vue {
 
   selectAllRows(action: 'select' | 'deselect') {
     if (action === 'select') {
-      this.slicedData.map((row: any) => {
+      this.slicedData.map((row: DataTableRow) => {
         if (row.id && !this.selectedRows.includes(`row-${row.id}`)) {
           this.selectedRows.push(`row-${row.id}`);
         }
       });
     } else {
-      this.slicedData.map((row: any) => {
+      this.slicedData.map((row: DataTableRow) => {
         if (row.id) {
           const rowIndex = this.selectedRows.indexOf(`row-${row.id}`);
 
@@ -390,6 +413,8 @@ export default class DataTable extends Vue {
   }
 
   selectRowCheckbox(rowId: string | undefined, selectAll: boolean) {
+    const checkedState = rowId && this.selectedRows.includes(rowId);
+
     return (
       <div
         class={`
@@ -415,7 +440,7 @@ export default class DataTable extends Vue {
                 }
               }
             }}
-            checked={this.selectedRows.includes(rowId)}
+            checked={checkedState}
           />
           <label class={CHECKBOX_CLASSES.LABEL} for={`row-${rowId}`}>
             <div class={SR_ONLY}>Select row {rowId}</div>
@@ -426,10 +451,10 @@ export default class DataTable extends Vue {
   }
 
   toggleRow(id: string) {
-    if (this.accordionShown.includes(id)) {
-      this.accordionShown.splice(this.accordionShown.indexOf(id), 1);
+    if (this.accordionsShown.includes(id)) {
+      this.accordionsShown.splice(this.accordionsShown.indexOf(id), 1);
     } else {
-      this.accordionShown.push(id);
+      this.accordionsShown.push(id);
     }
   }
 
@@ -444,7 +469,7 @@ export default class DataTable extends Vue {
       );
     } else if (accordionData.table) {
       if (accordionData.table.data) {
-        return accordionData.table.data.map((bodyRow: any) => {
+        return accordionData.table.data.map((bodyRow: DataTableRow) => {
           return this.row(bodyRow, true);
         });
       }
@@ -457,22 +482,10 @@ export default class DataTable extends Vue {
     }
   }
 
-  row(
-    bodyRow: {
-      active: boolean;
-      data: Record<string, any>;
-      accordion: {
-        template: any;
-        value: any;
-        payload: any;
-      };
-      id: string;
-    },
-    rowChild = false
-  ) {
-    const row: any = [],
-      rowCells: any = [],
-      rowAccordionContent: any = [],
+  row(bodyRow: DataTableRow, rowChild = false) {
+    const row = [],
+      rowCells = [],
+      rowAccordionContent = [],
       rowId = bodyRow.id ? `row-${bodyRow.id}` : `row-${uuid4()}`,
       rowClass = rowChild
         ? DATA_TABLE_CLASSES.ROW_CHILD
@@ -498,13 +511,19 @@ export default class DataTable extends Vue {
     let cellIndex = 0;
 
     bodyRow.data.map((rowCell: any) => {
-      const alignment = this.cellAlignment(rowCell.align),
-        cellLabel = rowCell.label || 'asd',
-        cellWidth = this.data.config.screenBreakpoints
-          ? this.data.config.screenBreakpoints[this.currentScreenBreakpoint][
-              cellIndex
-            ]
-          : null;
+      const columnSettings = this.data.head[
+          Object.keys(this.data.head)[cellIndex]
+        ],
+        alignment = this.cellAlignment(
+          rowCell.align ? rowCell.align : columnSettings.align || null
+        ),
+        cellLabel = rowCell.label || columnSettings.label,
+        cellWidth =
+          this.data.config.columnSizes && this.currentScreenBreakpoint
+            ? this.data.config.columnSizes[this.currentScreenBreakpoint][
+                cellIndex
+              ]
+            : null;
       let cellData;
 
       if (rowCell.template && this.$scopedSlots[rowCell.template]) {
@@ -512,17 +531,28 @@ export default class DataTable extends Vue {
           cellData = this.$scopedSlots[rowCell.template]!(rowCell.payload);
         }
       } else if (typeof rowCell === 'string') {
-        cellData = rowCell;
+        cellData = (
+          <Tooltip message={rowCell} class="-w--100">
+            <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>
+              {rowCell}
+            </div>
+          </Tooltip>
+        );
       } else {
-        cellData = rowCell.value;
+        cellData = (
+          <Tooltip message={rowCell.value} class="-w--100">
+            <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>
+              {rowCell.value}
+            </div>
+          </Tooltip>
+        );
       }
       rowCells.push(
         <div
           class={`
             ${DATA_TABLE_CLASSES.CELL}
             ${alignment}
-            -text--truncate
-            ${cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
+            ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={cellLabel}
           style={cellWidth === 0 ? 'display: none' : null}
         >
@@ -549,7 +579,7 @@ export default class DataTable extends Vue {
       row.push(
         <transition name="slide-fade">
           <div
-            v-show={this.accordionShown.includes(rowId)}
+            v-show={this.accordionsShown.includes(rowId)}
             id={`row-${rowId}-content`}
           >
             {rowAccordionContent}
@@ -567,7 +597,7 @@ export default class DataTable extends Vue {
     if (this.data.body.length > 0) {
       const dataToRender = this.dataToRender();
 
-      tableBodyRows = dataToRender.map((bodyRow: any) => {
+      tableBodyRows = dataToRender.map((bodyRow: DataTableRow) => {
         return this.row(bodyRow);
       });
     } else {
@@ -613,7 +643,7 @@ export default class DataTable extends Vue {
     ) as HTMLInputElement;
 
     if (selectAllCheckbox) {
-      const isSelected = (row: any) =>
+      const isSelected = (row: DataTableRow) =>
         this.selectedRows.includes(`row-${row.id}`);
 
       selectAllCheckbox.checked = !!this.slicedData.every(isSelected);
@@ -632,7 +662,7 @@ export default class DataTable extends Vue {
 
   detectScreenBreakpoint() {
     const currentScreenSize = window.innerWidth;
-    let screenBreakpoint;
+    let screenBreakpoint: DataTableScreenBreakpoints = 'xl';
 
     switch (true) {
       case currentScreenSize > 1200:
@@ -659,8 +689,7 @@ export default class DataTable extends Vue {
   }
 
   created() {
-    this._uuid = `dt-${uuid4()}`;
-    this._expandable = this.data.body.find(
+    this._expandable = !!this.data.body.find(
       (row: { accordion: any }) => row.accordion
     );
     this.slicedData = this.sliceData(this.data.body);
@@ -685,7 +714,7 @@ export default class DataTable extends Vue {
   }
 
   mounted() {
-    const dataTableComponent = document.getElementById(this._uuid);
+    const dataTableComponent = this.$refs.dataTable as HTMLElement;
 
     if (dataTableComponent && this.data.config.columnResize) {
       this.generateColumnResize(dataTableComponent);
@@ -726,7 +755,7 @@ export default class DataTable extends Vue {
 
   resizeHandler() {
     clearTimeout(this._resizeTimer);
-    this._resizeTimer = setTimeout(this.detectScreenBreakpoint.bind(this), 250);
+    this._resizeTimer = setTimeout(this.detectScreenBreakpoint.bind(this), 0);
   }
 
   beforeDestroy() {
@@ -743,7 +772,7 @@ export default class DataTable extends Vue {
       pagination = this.pagination();
 
     return (
-      <div class={classes} id={this._uuid} ref="dataTable">
+      <div class={classes} ref="dataTable">
         {head}
         {body}
         <div class={DATA_TABLE_CLASSES.FOOTER}>{pagination}</div>

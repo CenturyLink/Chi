@@ -93,5 +93,8 @@ export const UTILITY_CLASSES = {
     START: '-justify-content-md--start',
     CENTER: '-justify-content-md--center',
     END: '-justify-content-md--end'
+  },
+  TYPOGRAPHY: {
+    TEXT_TRUNCATE: '-text--truncate'
   }
 };

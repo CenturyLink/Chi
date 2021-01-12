@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="-text--truncate">
     <a :id="`ticket-popover-button-${id}`" href="#" :data-target="`#ticket-popover-${id}`" position="top-start">{{ id }}</a>
     <section class="chi-popover" :id="`ticket-popover-${id}`" aria-modal="true" role="dialog" aria-label="Popover title">
       <header class="chi-popover__header">

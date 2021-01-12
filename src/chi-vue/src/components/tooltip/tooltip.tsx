@@ -38,7 +38,7 @@ export default class Tooltip extends Vue {
   }
 
   beforeMount() {
-    this._uuid = uuid4();
+    this._uuid = `tooltip-${uuid4()}`;
     this.generateTooltipElement();
   }
 
