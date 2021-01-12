@@ -14,8 +14,6 @@
 
 .chi-data-table__head {
   .chi-data-table__cell {
-    overflow: hidden;
-
     button {
       i {
         &.chi-icon {
@@ -29,9 +27,7 @@
 }
 
 .chi-data-table__cell {
-  .-text--truncate {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

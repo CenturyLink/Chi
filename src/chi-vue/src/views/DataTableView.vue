@@ -73,7 +73,7 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
           servicetype: { label: 'Service Type', sortable: true },
           created: { label: 'Created', sortable: true },
           productId: { label: 'Product / Service ID', sortable: true },
-          actions: { label: ' ', sortable: true, align: 'right' },
+          actions: { label: ' ', sortable: true, align: 'right', allowOverflow: true },
         },
         body: [
           {

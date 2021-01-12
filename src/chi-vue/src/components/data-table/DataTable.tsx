@@ -228,7 +228,10 @@ export default class DataTable extends Vue {
             ${alignment}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={label}
-          style={cellWidth === 0 ? 'display: none;' : null}
+          style={`
+            ${cellWidth === 0 ? 'display: none;' : ''}
+            ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
+            `}
         >
           <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{label}</div>
           {sortButton}
@@ -554,7 +557,10 @@ export default class DataTable extends Vue {
             ${alignment}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={cellLabel}
-          style={cellWidth === 0 ? 'display: none' : null}
+          style={`
+            ${cellWidth === 0 ? 'display: none' : ''}
+            ${columnSettings.allowOverflow ? 'overflow: visible;' : ''}
+            `}
         >
           {cellData}
         </div>
