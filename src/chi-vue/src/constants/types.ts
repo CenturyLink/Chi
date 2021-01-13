@@ -22,58 +22,64 @@ export const DATA_TABLE_EXPANSION_ICON_STYLES = ['portal', 'base'] as const;
 
 export interface DataTableExpansionIcons {
   portal: {
-    expanded: string,
-    collapsed: string
-  },
+    expanded: string;
+    collapsed: string;
+  };
   base: {
-    expanded: string,
-    collapsed: string
-  }
+    expanded: string;
+    collapsed: string;
+  };
 }
 
 export type DataTableExpansionIconStyles = typeof DATA_TABLE_EXPANSION_ICON_STYLES[number];
 
-export const DATA_TABLE_SCREEN_BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+export const DATA_TABLE_SCREEN_BREAKPOINTS = [
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl'
+] as const;
 
 export type DataTableScreenBreakpoints = typeof DATA_TABLE_SCREEN_BREAKPOINTS[number];
 
 export interface DataTableStyleConfig {
-  portal: boolean,
-  bordered: boolean,
-  noBorder: boolean,
-  hover: boolean,
-  striped: boolean,
-  size: DataTableSizes
+  portal: boolean;
+  bordered: boolean;
+  noBorder: boolean;
+  hover: boolean;
+  striped: boolean;
+  size: DataTableSizes;
 }
 
 export interface DataTableRow {
-  active: boolean,
-  data: Record<string, any>
+  active: boolean;
+  data: Record<string, any>;
   accordion: {
-    template: string,
-    value: string,
-    payload: any,
-  },
-  id: string
+    template: string;
+    value: string;
+    payload: any;
+  };
+  id: string;
 }
 
 export interface DataTableData {
   config: {
-    columnResize: boolean,
-    noResultsMessage: string,
-    style: DataTableStyleConfig,
-    selectable: boolean,
+    columnResize: boolean;
+    noResultsMessage: string;
+    style: DataTableStyleConfig;
+    selectable: boolean;
     columnSizes: {
-      xs: number[],
-      sm: number[],
-      md: number[],
-      lg: number[],
-      xl: number[],
-    },
+      xs: number[];
+      sm: number[];
+      md: number[];
+      lg: number[];
+      xl: number[];
+    };
     pagination: {
-      compact: boolean
-    }
-  },
-  head: any,
-  body: DataTableRow[],
+      compact: boolean;
+    };
+  };
+  head: any;
+  body: DataTableRow[];
 }

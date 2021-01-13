@@ -96,5 +96,9 @@ export const UTILITY_CLASSES = {
   },
   TYPOGRAPHY: {
     TEXT_TRUNCATE: '-text--truncate'
+  },
+  POSITION: {
+    RELATIVE: '-position--relative',
+    ABSOLUTE: '-position--absolute'
   }
 };

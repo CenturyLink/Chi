@@ -12,7 +12,7 @@ import {
   UTILITY_CLASSES
 } from '@/constants/classes';
 import './data-table.scss';
-import { PAGINATION_EVENTS } from '../../constants/events';
+import { DATA_TABLE_EVENTS, PAGINATION_EVENTS } from '@/constants/events';
 import {
   DataTableData,
   DataTableExpansionIcons,
@@ -38,158 +38,6 @@ export default class DataTable extends Vue {
   _expandable!: boolean;
   _resizeTimer?: number;
 
-  sortColumn(e: Event) {
-    const sortData = (
-      column: string,
-      direction: string,
-      sortBy: string | undefined
-    ) => {
-      const columnTitle = Object.keys(this.data.head).find(
-          columnTitle => columnTitle === column
-        ),
-        sortDirection = direction === 'ascending' ? 1 : -1,
-        copiedData = [...this.data.body];
-
-      if (columnTitle) {
-        const columnIndex = Object.keys(this.data.head).indexOf(columnTitle);
-
-        this.sortedData = copiedData.sort((a, b) => {
-          const aDataColumn = a.data[columnIndex],
-            bDataColumn = b.data[columnIndex];
-          let aValue,
-            bValue;
-
-          if (sortBy) {
-            if (aDataColumn[sortBy]) {
-              aValue = aDataColumn[sortBy];
-            } else if (aDataColumn.payload[sortBy]) {
-              aValue = aDataColumn.payload[sortBy];
-            }
-            if (bDataColumn[sortBy]) {
-              bValue = bDataColumn[sortBy];
-            } else if (bDataColumn.payload[sortBy]) {
-              bValue = bDataColumn.payload[sortBy];
-            }
-          } else {
-            if (typeof aDataColumn === 'string' || typeof bDataColumn === 'string') {
-              aValue = aDataColumn.toLowerCase();
-              bValue = bDataColumn.toLowerCase();
-            } else {
-              aValue = aDataColumn;
-              bValue = bDataColumn;
-            }
-          }
-
-          return aValue > bValue ? 1 * sortDirection : -1 * sortDirection;
-        });
-        this.currentPage = 1;
-        this.slicedData = this.sliceData(this.sortedData);
-      }
-    };
-    let element: HTMLElement | null = e.target as HTMLElement,
-      columnHeadCell,
-      columnHeadSortButton;
-
-    if (element) {
-      while (element && !element.classList.contains(DATA_TABLE_CLASSES.HEAD)) {
-        if (element.nodeName === 'BUTTON') {
-          columnHeadSortButton = element;
-        }
-
-        if (element.classList.contains(DATA_TABLE_CLASSES.CELL)) {
-          columnHeadCell = element;
-        }
-
-        element = element.parentElement;
-      }
-    }
-
-    if (columnHeadSortButton) {
-      const columnName = columnHeadSortButton.dataset.column,
-        currentSort = columnHeadSortButton.dataset.sort,
-        columnSortBy = columnHeadSortButton.dataset.sortBy,
-        sortIcon = columnHeadSortButton.querySelector(`i.${ICON_CLASS}`),
-        headSortColumnIcons = (this.$refs
-          .dataTable as HTMLElement).querySelectorAll(
-          `.${DATA_TABLE_CLASSES.HEAD} i.${ICON_CLASS}`
-        );
-
-      Array.prototype.forEach.call(headSortColumnIcons, sortIcon => {
-        if (
-          sortIcon.className !== `${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.SORT}`
-        ) {
-          let element = sortIcon;
-
-          sortIcon.className = `${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.SORT}`;
-          while (
-            element &&
-            !element.classList.contains(DATA_TABLE_CLASSES.HEAD)
-          ) {
-            if (
-              element.classList.contains(DATA_TABLE_CLASSES.CELL) &&
-              element.classList.contains(ACTIVE_CLASS)
-            ) {
-              element.classList.remove(ACTIVE_CLASS);
-            }
-            if (element.nodeName === 'BUTTON') {
-              element.removeAttribute('data-sort');
-            }
-
-            element = element.parentElement;
-          }
-        }
-      });
-
-      if (columnName && sortIcon) {
-        sortIcon.className = `${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.ARROW}`;
-        if (currentSort === 'ascending') {
-          (sortIcon as HTMLElement).style.transform = 'rotate(180deg)';
-          columnHeadSortButton.setAttribute('data-sort', 'descending');
-          sortData(columnName, 'descending', columnSortBy);
-          columnHeadCell?.classList.add(ACTIVE_CLASS);
-        } else if (currentSort === 'descending') {
-          sortIcon.className = `${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.SORT}`;
-          columnHeadSortButton.removeAttribute('data-sort');
-          (sortIcon as HTMLElement).removeAttribute('style');
-          columnHeadSortButton.blur();
-          if (this.sortedData) {
-            this.sortedData.length = 0;
-          }
-          this.slicedData = this.sliceData(this.data.body);
-          columnHeadCell?.classList.remove(ACTIVE_CLASS);
-        } else {
-          columnHeadSortButton.setAttribute('data-sort', 'ascending');
-          sortData(columnName, 'ascending', columnSortBy);
-          columnHeadCell?.classList.add(ACTIVE_CLASS);
-        }
-      }
-
-      this.checkSelectAllCheckbox();
-    }
-  }
-
-  sortingButton(column: string, sortBy: string) {
-    return (
-      <button
-        data-column={column}
-        data-sort-by={sortBy}
-        data-sort=""
-        class={`
-        ${BUTTON_CLASSES.BUTTON}
-        ${BUTTON_CLASSES.ICON_BUTTON}
-        ${BUTTON_CLASSES.FLAT}
-        -sm
-      `}
-        aria-label={`Sorting column ${column}`}
-        onClick={(e: Event) => this.sortColumn(e)}
-      >
-        <div class={BUTTON_CLASSES.CONTENT}>
-          <i class={`${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.SORT}`} />
-        </div>
-      </button>
-    );
-  }
-
   head() {
     const tableHeadCells = [
       this._expandable ? (
@@ -207,9 +55,7 @@ export default class DataTable extends Vue {
     let cellIndex = 0;
 
     Object.keys(this.data.head).forEach((column: string) => {
-      const label = this.data.head[column].label
-          ? this.data.head[column].label
-          : this.data.head[column],
+      const label = this.data.head[column].label || this.data.head[column],
         sortBy = this.data.head[column].sortBy,
         alignment = this.cellAlignment(this.data.head[column].align),
         sortButton = this.data.head[column].sortable
@@ -224,6 +70,7 @@ export default class DataTable extends Vue {
 
       tableHeadCells.push(
         <div
+          aria-label={label}
           class={`${DATA_TABLE_CLASSES.CELL}
             ${alignment}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
@@ -246,7 +93,7 @@ export default class DataTable extends Vue {
     });
 
     return (
-      <div class={DATA_TABLE_CLASSES.HEAD}>
+      <div class={DATA_TABLE_CLASSES.HEAD} role="row">
         <div class={DATA_TABLE_CLASSES.ROW}>{tableHeadCells}</div>
       </div>
     );
@@ -260,14 +107,15 @@ export default class DataTable extends Vue {
     let startOffset: number;
 
     Array.prototype.forEach.call(columnHeaders, th => {
-      th.style.position = 'relative';
       const grip = document.createElement('div');
+
+      th.classList.add(UTILITY_CLASSES.POSITION.RELATIVE);
       grip.innerHTML = '&nbsp;';
       grip.style.top = '0';
       grip.style.right = '0';
       grip.style.bottom = '0';
-      grip.style.width = '5px';
-      grip.style.position = 'absolute';
+      grip.style.width = '1rem';
+      grip.classList.add(UTILITY_CLASSES.POSITION.ABSOLUTE);
       grip.style.cursor = 'col-resize';
       grip.classList.add('resize-handle');
       grip.addEventListener('mousedown', e => {
@@ -304,7 +152,7 @@ export default class DataTable extends Vue {
         });
       }
     });
-    document.addEventListener('mouseup', function() {
+    document.addEventListener('mouseup', () => {
       thElm = null;
     });
   }
@@ -355,6 +203,7 @@ export default class DataTable extends Vue {
     return (
       <div
         class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`}
+        role="cell"
       >
         <button
           class={`
@@ -379,6 +228,7 @@ export default class DataTable extends Vue {
             `}
             />
           </div>
+          <span class={SR_ONLY}>Expand Row</span>
         </button>
       </div>
     );
@@ -394,6 +244,7 @@ export default class DataTable extends Vue {
       } else {
         this.selectedRows.splice(indexOfRowId, 1);
       }
+      this.$emit(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, this.selectedRows);
     }
   }
 
@@ -413,6 +264,7 @@ export default class DataTable extends Vue {
         }
       });
     }
+    this.$emit(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, this.selectedRows);
   }
 
   selectRowCheckbox(rowId: string | undefined, selectAll: boolean) {
@@ -468,7 +320,9 @@ export default class DataTable extends Vue {
       );
 
       return (
-        <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} -p--2`}>{template}</div>
+        <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} -p--2`} role="row">
+          {template}
+        </div>
       );
     } else if (accordionData.table) {
       if (accordionData.table.data) {
@@ -478,7 +332,7 @@ export default class DataTable extends Vue {
       }
     } else {
       return (
-        <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} -p--2`}>
+        <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} -p--2`} role="row">
           {accordionData.value}
         </div>
       );
@@ -502,6 +356,7 @@ export default class DataTable extends Vue {
         rowCells.push(
           <div
             class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`}
+            role="cell"
           />
         );
       }
@@ -552,11 +407,13 @@ export default class DataTable extends Vue {
       }
       rowCells.push(
         <div
+          aria-label={cellLabel}
           class={`
             ${DATA_TABLE_CLASSES.CELL}
             ${alignment}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={cellLabel}
+          role="cell"
           style={`
             ${cellWidth === 0 ? 'display: none' : ''}
             ${columnSettings.allowOverflow ? 'overflow: visible;' : ''}
@@ -576,6 +433,7 @@ export default class DataTable extends Vue {
         ${rowClass}
         ${this.selectedRows.includes(rowId) ? ACTIVE_CLASS : ''}
         `}
+        role="row"
       >
         {rowCells}
       </div>
@@ -740,6 +598,7 @@ export default class DataTable extends Vue {
           this.resultsPerPage = parseInt(ev);
         }
         this.slicedData = this.sliceData(data);
+        this.$emit(PAGINATION_EVENTS.PAGE_SIZE, this.slicedData);
       }
     );
 
@@ -753,6 +612,7 @@ export default class DataTable extends Vue {
 
         this.currentPage = ev;
         this.slicedData = this.sliceData(data);
+        this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, this.slicedData);
         this.checkSelectAllCheckbox();
       }
     );
@@ -768,6 +628,161 @@ export default class DataTable extends Vue {
     window.removeEventListener('resize', this.resizeHandler, true);
   }
 
+  sortColumn(e: Event) {
+    const sortData = (
+      column: string,
+      direction: string,
+      sortBy: string | undefined
+    ) => {
+      const columnTitle = Object.keys(this.data.head).find(
+          columnTitle => columnTitle === column
+        ),
+        sortDirection = direction === 'ascending' ? 1 : -1,
+        copiedData = [...this.data.body];
+
+      if (columnTitle) {
+        const columnIndex = Object.keys(this.data.head).indexOf(columnTitle);
+
+        this.sortedData = copiedData.sort((a, b) => {
+          const aDataColumn = a.data[columnIndex],
+            bDataColumn = b.data[columnIndex];
+          let aValue, bValue;
+
+          if (sortBy) {
+            if (aDataColumn[sortBy]) {
+              aValue = aDataColumn[sortBy];
+            } else if (aDataColumn.payload[sortBy]) {
+              aValue = aDataColumn.payload[sortBy];
+            }
+            if (bDataColumn[sortBy]) {
+              bValue = bDataColumn[sortBy];
+            } else if (bDataColumn.payload[sortBy]) {
+              bValue = bDataColumn.payload[sortBy];
+            }
+          } else {
+            if (
+              typeof aDataColumn === 'string' ||
+              typeof bDataColumn === 'string'
+            ) {
+              aValue = aDataColumn.toLowerCase();
+              bValue = bDataColumn.toLowerCase();
+            } else {
+              aValue = aDataColumn;
+              bValue = bDataColumn;
+            }
+          }
+
+          return aValue > bValue ? 1 * sortDirection : -1 * sortDirection;
+        });
+        this.$emit(DATA_TABLE_EVENTS.DATA_SORTING, this.sortedData);
+        this.currentPage = 1;
+        this.slicedData = this.sliceData(this.sortedData);
+      }
+    };
+    let element: HTMLElement | null = e.target as HTMLElement,
+      columnHeadCell,
+      columnHeadSortButton;
+
+    if (element) {
+      while (element && !element.classList.contains(DATA_TABLE_CLASSES.HEAD)) {
+        if (element.nodeName === 'BUTTON') {
+          columnHeadSortButton = element;
+        }
+
+        if (element.classList.contains(DATA_TABLE_CLASSES.CELL)) {
+          columnHeadCell = element;
+        }
+
+        element = element.parentElement;
+      }
+    }
+
+    if (columnHeadSortButton) {
+      const columnName = columnHeadSortButton.dataset.column,
+        currentSort = columnHeadSortButton.dataset.sort,
+        columnSortBy = columnHeadSortButton.dataset.sortBy,
+        sortIcon = columnHeadSortButton.querySelector(`i.${ICON_CLASS}`),
+        headSortColumnIcons = (this.$refs
+          .dataTable as HTMLElement).querySelectorAll(
+          `.${DATA_TABLE_CLASSES.HEAD} i.${ICON_CLASS}`
+        );
+
+      Array.prototype.forEach.call(headSortColumnIcons, sortIcon => {
+        if (
+          sortIcon.className !== `${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.SORT}`
+        ) {
+          let element = sortIcon;
+
+          sortIcon.className = `${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.SORT}`;
+          while (
+            element &&
+            !element.classList.contains(DATA_TABLE_CLASSES.HEAD)
+          ) {
+            if (
+              element.classList.contains(DATA_TABLE_CLASSES.CELL) &&
+              element.classList.contains(ACTIVE_CLASS)
+            ) {
+              element.classList.remove(ACTIVE_CLASS);
+            }
+            if (element.nodeName === 'BUTTON') {
+              element.removeAttribute('data-sort');
+            }
+
+            element = element.parentElement;
+          }
+        }
+      });
+
+      if (columnName && sortIcon) {
+        sortIcon.className = `${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.ARROW}`;
+        if (currentSort === 'ascending') {
+          (sortIcon as HTMLElement).style.transform = 'rotate(180deg)';
+          columnHeadSortButton.setAttribute('data-sort', 'descending');
+          sortData(columnName, 'descending', columnSortBy);
+          columnHeadCell?.classList.add(ACTIVE_CLASS);
+        } else if (currentSort === 'descending') {
+          sortIcon.className = `${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.SORT}`;
+          columnHeadSortButton.removeAttribute('data-sort');
+          (sortIcon as HTMLElement).removeAttribute('style');
+          columnHeadSortButton.blur();
+          if (this.sortedData) {
+            this.sortedData.length = 0;
+          }
+          this.slicedData = this.sliceData(this.data.body);
+          columnHeadCell?.classList.remove(ACTIVE_CLASS);
+        } else {
+          columnHeadSortButton.setAttribute('data-sort', 'ascending');
+          sortData(columnName, 'ascending', columnSortBy);
+          columnHeadCell?.classList.add(ACTIVE_CLASS);
+        }
+      }
+
+      this.checkSelectAllCheckbox();
+    }
+  }
+
+  sortingButton(column: string, sortBy: string) {
+    return (
+      <button
+        data-column={column}
+        data-sort-by={sortBy}
+        data-sort=""
+        class={`
+        ${BUTTON_CLASSES.BUTTON}
+        ${BUTTON_CLASSES.ICON_BUTTON}
+        ${BUTTON_CLASSES.FLAT}
+        -sm
+      `}
+        aria-label={`Sorting column ${column}`}
+        onClick={(e: Event) => this.sortColumn(e)}
+      >
+        <div class={BUTTON_CLASSES.CONTENT}>
+          <i class={`${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.SORT}`} />
+        </div>
+      </button>
+    );
+  }
+
   render() {
     const classes = this.dataTableClasses(
         this.data.config.style,
@@ -778,7 +793,7 @@ export default class DataTable extends Vue {
       pagination = this.pagination();
 
     return (
-      <div class={classes} ref="dataTable">
+      <div class={classes} role="table" ref="dataTable">
         {head}
         {body}
         <div class={DATA_TABLE_CLASSES.FOOTER}>{pagination}</div>
