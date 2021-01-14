@@ -9,6 +9,7 @@ const ANIMATION_DELAY = 300;
 const DEFAULT_CONFIG = {position: 'top', parent: null};
 const CLASS_LIGHT = '-light';
 const TOOLTIP_COLOR_ATTRIBUTE = 'data-tooltip-color';
+const TOOLTIP_SWITCH_TIMEOUT = 50;
 
 class Tooltip extends Component {
 
@@ -54,11 +55,20 @@ class Tooltip extends Component {
           if (window.tooltipOpen) {
             window.tooltipOpen = false;
           }
-        }, 50);
+        }, TOOLTIP_SWITCH_TIMEOUT);
       }
     });
     this._addEventHandler(this._elem, 'focus', function() {
       self._focused = true;
+      self._addEventHandler(self._elem, 'keyup', function(e) {
+        let code = (e.keyCode ? e.keyCode : e.which);
+
+        if (code === 9) {
+          if (!self._shown) {
+            self.show();
+          }
+        }
+      });
       if (self._shown) {
         self.hide();
       }
