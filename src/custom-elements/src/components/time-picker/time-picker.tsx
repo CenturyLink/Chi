@@ -82,7 +82,7 @@ export class TimePicker {
 
   @Watch('value')
   timeChanged(newValue: string, oldValue: string) {
-    if (newValue !== oldValue) {
+    if (!!newValue !== !!oldValue) {
       this.value = newValue;
     }
   }
@@ -158,7 +158,7 @@ export class TimePicker {
   handleTimeChange(ev) {
     const timePickerInput = document.getElementById(this._uuid) as HTMLInputElement;
     const formatTimePeriod = (period: number) => {
-      return period.toString().length > 1 ? period.toString() : `0${period}`;
+      return String(period).length > 1 ? String(period) : `0${period}`;
     };
     const hour = !(this.format === '24hr') && ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
     const seconds = this.displaySeconds ? `:${formatTimePeriod(ev.detail.second)}` : '';

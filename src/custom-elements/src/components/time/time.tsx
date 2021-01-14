@@ -164,7 +164,7 @@ export class Time {
   }
 
   formatTimePeriod(period: number) {
-    return period.toString().length > 1 ? period.toString() : `0${period}`;
+    return String(period).length > 1 ? String(period) : `0${period}`;
   };
 
   hours() {
@@ -187,7 +187,7 @@ export class Time {
           }
         } else {
           if (this._period === 'pm') {
-            hourToSet = (parseInt(hour) + 12).toString();
+            hourToSet = String(parseInt(hour) + 12);
           } else {
             hourToSet = hour;
           }
@@ -211,8 +211,9 @@ export class Time {
       ) {
         hourStatus = ACTIVE_CLASS;
       } else {
-        if (this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour)))) {
-          hourStatus += ` ${DISABLED_CLASS}`;
+        if (this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour))) ||
+          this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour) + 12))) {
+          hourStatus = DISABLED_CLASS;
         }
       }
 
@@ -224,7 +225,7 @@ export class Time {
         ${TIME_CLASSES.HOUR}
         ${hourStatus(startHour)}
         `}
-           onClick={() => setHour(hourFormat.toString())}>{startHour}</div>
+           onClick={() => setHour(String(hourFormat))}>{startHour}</div>
     ];
 
     Array.from(Array(hourFormat), (_, i) => {
@@ -263,7 +264,7 @@ export class Time {
         minuteState = ACTIVE_CLASS;
       } else {
         if (this.excludedMinutesArray.includes(minute)) {
-          minuteState += ` ${DISABLED_CLASS}`;
+          minuteState = DISABLED_CLASS;
         }
       }
 
@@ -318,7 +319,7 @@ export class Time {
         secondState = ACTIVE_CLASS;
       } else {
         if (this.excludedMinutesArray.includes(second)) {
-          secondState += DISABLED_CLASS;
+          secondState = DISABLED_CLASS;
         }
       }
 
