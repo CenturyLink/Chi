@@ -1,4 +1,4 @@
-import { Component, Element, Listen, Method, Prop, h } from '@stencil/core';
+import { Component, Element, Listen, Method, Prop, h, Watch } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
 import { CHI_TIME_AUTO_SCROLL_DELAY,
   ESCAPE_KEYCODE,
@@ -77,6 +77,13 @@ export class TimePicker {
     ) {
       this.active = false;
       this._input.blur();
+    }
+  }
+
+  @Watch('value')
+  timeChanged(newValue: string, oldValue: string) {
+    if (newValue !== oldValue) {
+      this.value = newValue;
     }
   }
 

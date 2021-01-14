@@ -6,7 +6,7 @@ import {
   Watch,
   h, Element
 } from '@stencil/core';
-import { TIME_CLASSES } from '../../constants/classes';
+import { TIME_CLASSES, ACTIVE_CLASS, DISABLED_CLASS } from '../../constants/classes';
 import { CHI_TIME_SCROLL_ADJUSTMENT, DatePickerFormats } from '../../constants/constants';
 
 @Component({
@@ -205,14 +205,14 @@ export class Time {
       if (this._hour === hour ||
         (!(this.format === '24hr') &&
           this._period === 'pm' &&
-          parseInt(hour) + 12 === valueHour
+          parseInt(hour) + 12 === parseInt(this._hour)
         ) ||
         (parseInt(hour) === 12 && valueHour === 0)
       ) {
-        hourStatus = '-active';
+        hourStatus = ACTIVE_CLASS;
       } else {
         if (this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour)))) {
-          hourStatus += ' -disabled';
+          hourStatus += ` ${DISABLED_CLASS}`;
         }
       }
 
@@ -260,10 +260,10 @@ export class Time {
       let minuteState = '';
 
       if (parseInt(this._minute) === parseInt(minute)) {
-        minuteState = '-active';
+        minuteState = ACTIVE_CLASS;
       } else {
         if (this.excludedMinutesArray.includes(minute)) {
-          minuteState += ' -disabled';
+          minuteState += ` ${DISABLED_CLASS}`;
         }
       }
 
@@ -315,10 +315,10 @@ export class Time {
       let secondState = '';
 
       if (parseInt(this._second) === parseInt(second)) {
-        secondState = '-active';
+        secondState = ACTIVE_CLASS;
       } else {
         if (this.excludedMinutesArray.includes(second)) {
-          secondState += ' -disabled';
+          secondState += DISABLED_CLASS;
         }
       }
 
@@ -370,7 +370,7 @@ export class Time {
         let periodStatus = TIME_CLASSES.PERIOD;
 
         if (period === this._period) {
-          periodStatus += ' -active';
+          periodStatus += ` ${ACTIVE_CLASS}`;
         }
 
         return periodStatus;
@@ -433,21 +433,21 @@ export class Time {
       secondsColumn = this.el.querySelector(`.${TIME_CLASSES.SECONDS}`) as HTMLElement;
 
     if (hoursColumn) {
-      const activeHour = hoursColumn.querySelector(`.${TIME_CLASSES.HOUR}.-active`) as HTMLElement;
+      const activeHour = hoursColumn.querySelector(`.${TIME_CLASSES.HOUR}.${ACTIVE_CLASS}`) as HTMLElement;
 
       if (activeHour) {
         hoursColumn.scrollTop = activeHour.offsetTop - CHI_TIME_SCROLL_ADJUSTMENT;
       }
     }
     if (minutesColumn) {
-      const activeMinute = minutesColumn.querySelector(`.${TIME_CLASSES.MINUTE}.-active`) as HTMLElement;
+      const activeMinute = minutesColumn.querySelector(`.${TIME_CLASSES.MINUTE}.${ACTIVE_CLASS}`) as HTMLElement;
 
       if (activeMinute) {
         minutesColumn.scrollTop = activeMinute.offsetTop - CHI_TIME_SCROLL_ADJUSTMENT;
       }
     }
     if (secondsColumn) {
-      const activeSecond = secondsColumn.querySelector(`.${TIME_CLASSES.SECOND}.-active`) as HTMLElement;
+      const activeSecond = secondsColumn.querySelector(`.${TIME_CLASSES.SECOND}.${ACTIVE_CLASS}`) as HTMLElement;
 
       if (activeSecond) {
         secondsColumn.scrollTop = activeSecond.offsetTop - CHI_TIME_SCROLL_ADJUSTMENT;
