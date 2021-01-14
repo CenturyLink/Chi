@@ -24,8 +24,24 @@ i {
   }
 }
 
+.icon-arrow-sort::before {
+  content: '\e9d1';
+}
+
+.icon-compose-cancel::before {
+  content: '\e9d0';
+}
+
 .icon-compose::before {
   content: '\e9cd';
+}
+
+.icon-edit-cancel::before {
+  content: '\e9b0';
+}
+
+.icon-edit::before {
+  content: '\e947';
 }
 
 .icon-reload::before {
@@ -138,10 +154,6 @@ i {
 
 .icon-square-plus-outline::before {
   content: '\e9af';
-}
-
-.icon-edit-cancel::before {
-  content: '\e9b0';
 }
 
 .icon-logo-facebook::before {
@@ -554,10 +566,6 @@ i {
 
 .icon-delete::before {
   content: '\e946';
-}
-
-.icon-edit::before {
-  content: '\e947';
 }
 
 .icon-file-error-outline::before {
