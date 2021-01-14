@@ -296,6 +296,14 @@ $sizes: (
           opacity: 0;
         }
 
+        .chi-icon {
+          &.icon-arrow-up,
+          &.icon-arrow-down,
+          &.icon-arrow-sync {
+            font-weight: 600;
+          }
+        }
+
         &:hover {
           cursor: pointer;
 
