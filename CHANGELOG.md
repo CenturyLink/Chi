@@ -2,7 +2,7 @@
 ## 3.7.0 (January 14, 2021)
 ### Components
 #### Added
-* Added: Icons `icon-arrow-sync`, `icon-compose-cancel`.
+* Added: Icons `icon-arrow-sort`, `icon-compose-cancel`.
 #### Changed
 * Changed: Icons `icon-compose`, `icon-edit`, `icon-edit-cancel`.
 * Changed: Data table sort arrow icons now render slightly bolder.
