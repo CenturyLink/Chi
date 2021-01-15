@@ -2,189 +2,400 @@ h2 Examples
 #exampleHashTarget.-position--fixed-top.-sr--only
 
 h3 Horizontal
-ul#chi-tabs--menu.chi-tabs
+ul#chi-tabs--menu.chi-tabs(
+  role="tablist"
+  aria-label="chi-tabs-horizontal-examples")
   li.-active
-    a(href='#chi-tabs-panel--horizontal-base') Base
+    a(
+      href='#chi-tabs-panel--horizontal-base'
+      role="tab"
+      aria-selected="true"
+      aria-controls="chi-tabs-panel--horizontal-base") Base
   li
-    a(href='#chi-tabs-panel--horizontal-inverse') Inverse
+    a(
+      href='#chi-tabs-panel--horizontal-inverse'
+      role="tab"
+      aria-selected="false"
+      tabindex="-1"
+      aria-controls="chi-tabs-panel--horizontal-inverse") Inverse
 .example.-mb--3
   #chi-tabs-panel--horizontal-base.chi-tabs-panel.-active
     .-p--3.-bg--grey-20
       .-bg--white.-px--3
-        ul.chi-tabs#example-horizontal-base
+        ul.chi-tabs#example-horizontal-base(
+          role="tablist"
+          aria-label="chi-tabs-horizontal")
           li.-active
-            a(href='#horizontal-base-1') Active Tab
+            a(
+              href='#horizontal-base-1'
+              role="tab"
+              aria-selected="true"
+              aria-controls="horizontal-base-1"
+              ) Active Tab
           li
-            a(href='#horizontal-base-2') Tab Link
+            a(
+              href='#horizontal-base-2'
+              role="tab"
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="horizontal-base-2") Tab Link
           li
-            a(href='#horizontal-base-3') Tab Link
+            a(
+              href='#horizontal-base-3'
+              role="tab"
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="horizontal-base-3"
+              ) Tab Link
         .-py--3
-          .chi-tabs-panel.-active#horizontal-base-1
+          .chi-tabs-panel.-active#horizontal-base-1(role="tabpanel")
             .-text Tab 1 content
-          .chi-tabs-panel#horizontal-base-2
+          .chi-tabs-panel#horizontal-base-2(role="tabpanel")
             .-text Tab 2 content
-          .chi-tabs-panel#horizontal-base-3
+          .chi-tabs-panel#horizontal-base-3(role="tabpanel")
             .-text Tab 3 content
     .example-tabs.-pl--2
-      ul.chi-tabs#example-base
+      ul.chi-tabs#example-base(role="tabpanel")
         li.-disabled
-          a(href=`#webcomponent-base`) Web Component
+          a(
+            href=`#webcomponent-base`
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="webcomponent-base"
+            ) Web Component
         li.-active
-          a(href=`#html-base`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-base
-    .chi-tabs-panel.-active#html-base
+          a(
+            href=`#html-base`
+            role="tab"
+            aria-selected="true"
+            aria-controls="html-base"
+            ) HTML Blueprint
+    .chi-tabs-panel#webcomponent-base(role="tabpanel")
+    .chi-tabs-panel.-active#html-base(role="tabpanel")
       .chi-tab__description
         span.-text--grey
           | This HTML Blueprint requires JavaScript.
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang='html')
-        <ul class="chi-tabs" id="example-horizontal-base">
-          <li class="-active"><a href="#horizontal-base-1">Active Tab</a></li>
-          <li><a href="#horizontal-base-2">Tab Link</a></li>
-          <li><a href="#horizontal-base-3">Tab Link</a></li>
+        <ul class="chi-tabs" id="example-horizontal-base" role="tablist" aria-label="chi-tabs-horizontal">
+          <li class="-active">
+            <a
+              href="#horizontal-base-1"
+              role="tab"
+              aria-selected="true"
+              aria-controls="horizontal-base-1">Active Tab</a>
+          </li>
+          <li role="tab">
+            <a
+              href="#horizontal-base-2"
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="horizontal-base-2">Tab Link</a>
+          </li>
+          <li role="tab">
+            <a
+              href="#horizontal-base-3
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="horizontal-base-3"">Tab Link</a>
+          </li>
         </ul>
 
-        <div class="chi-tabs-panel -active" id="horizontal-base-1">Tab 1 content</div>
-        <div class="chi-tabs-panel" id="horizontal-base-2">Tab 2 content</div>
-        <div class="chi-tabs-panel" id="horizontal-base-3">Tab 3 content</div>
+        <div class="chi-tabs-panel -active" id="horizontal-base-1" role="tabpanel">Tab 1 content</div>
+        <div class="chi-tabs-panel" id="horizontal-base-2" role="tabpanel">Tab 2 content</div>
+        <div class="chi-tabs-panel" id="horizontal-base-3" role="tabpanel">Tab 3 content</div>
 
         <script>chi.tab(document.getElementById('example-horizontal-base'));</script>
 
-  #chi-tabs-panel--horizontal-inverse.chi-tabs-panel
+  #chi-tabs-panel--horizontal-inverse.chi-tabs-panel(role="tabpanel")
     .-p--3.-bg--grey-20
       .-bg--black.-px--3
-        ul.chi-tabs.-inverse#example-horizontal-inverse
+        ul.chi-tabs.-inverse#example-horizontal-inverse(role="tablist" aria-label="chi-tabs-horizontal-inverse")
           li.-active
-            a(href='#horizontal-inverse-1') Active Tab
+            a(
+              href='#horizontal-inverse-1'
+              role="tab"
+              aria-selected="true"
+              aria-controls="horizontal-inverse-1") Active Tab
           li
-            a(href='#horizontal-inverse-2') Tab Link
+            a(
+              href='#horizontal-inverse-2'
+              role="tab"
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="horizontal-inverse-2") Tab Link
           li
-            a(href='#horizontal-inverse-3') Tab Link
+            a(
+              href='#horizontal-inverse-3'
+              role="tab"
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="horizontal-inverse-3") Tab Link
       .-bg--white.-p--3
-        .chi-tabs-panel.-active#horizontal-inverse-1
+        .chi-tabs-panel.-active#horizontal-inverse-1(role="tabpanel")
           .-text Tab 1 content
-        .chi-tabs-panel#horizontal-inverse-2
+        .chi-tabs-panel#horizontal-inverse-2(role="tabpanel")
           .-text Tab 2 content
-        .chi-tabs-panel#horizontal-inverse-3
+        .chi-tabs-panel#horizontal-inverse-3(role="tabpanel")
           .-text Tab 3 content
     .example-tabs.-pl--2
-      ul.chi-tabs#example-base-inverse
+      ul.chi-tabs#example-base-inverse(role="tablist")
         li.-disabled
-          a(href=`#webcomponent-base-inverse`) Web Component
+          a(
+            href=`#webcomponent-base-inverse`
+            role="tab"
+            aria-selected="false"
+            aria-controls="webcomponent-base-inverse") Web Component
         li.-active
-          a(href=`#html-base-inverse`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-base-inverse
-    .chi-tabs-panel.-active#html-base-inverse
+          a(
+            href=`#html-base-inverse`
+            role="tab"
+            aria-selected="true"
+            aria-controls="html-base-inverse") HTML Blueprint
+    .chi-tabs-panel#webcomponent-base-inverse(role="tabpanel")
+    .chi-tabs-panel.-active#html-base-inverse(role="tabpanel")
       .chi-tab__description
         span.-text--grey
           | This HTML Blueprint requires JavaScript.
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang='html')
-        <ul class="chi-tabs -inverse" id="example-horizontal-inverse">
-          <li class="-active"><a href="#horizontal-inverse-1">Active Tab</a></li>
-          <li><a href="#horizontal-inverse-2">Tab Link</a></li>
-          <li><a href="#horizontal-inverse-3">Tab Link</a></li>
+        <ul class="chi-tabs -inverse" id="example-horizontal-inverse" role="tablist" aria-label="chi-tabs-horizontal-inverse">
+          <li class="-active">
+            <a
+              href="#horizontal-inverse-1"
+              role="tab"
+              aria-selected="true"
+              aria-controls="horizontal-inverse-1">Active Tab</a></li>
+          <li>
+            <a
+              href="#horizontal-inverse-2"
+              role="tab"
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="horizontal-inverse-2">Tab Link</a></li>
+          <li>
+            <a
+              href="#horizontal-inverse-3"
+              role="tab"
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="horizontal-inverse-3">Tab Link</a></li>
         </ul>
 
-        <div class="chi-tabs-panel -active" id="horizontal-inverse-1">Tab 1 content</div>
-        <div class="chi-tabs-panel" id="horizontal-inverse-2">Tab 2 content</div>
-        <div class="chi-tabs-panel" id="horizontal-inverse-3">Tab 3 content</div>
+        <div class="chi-tabs-panel -active" id="horizontal-inverse-1" role="tabpanel">
+          Tab 1 content
+        </div>
+        <div class="chi-tabs-panel" id="horizontal-inverse-2" role="tabpanel">
+          Tab 2 content
+        </div>
+        <div class="chi-tabs-panel" id="horizontal-inverse-3" role="tabpanel">
+          Tab 3 content
+        </div>
 
         <script>chi.tab(document.getElementById('example-horizontal-inverse'));</script>
 
 h3 Vertical
-ul#chi-tabs--menu-vertical.chi-tabs
+ul#chi-tabs--menu-vertical.chi-tabs(role="tablist" aria-label="chi-tabs-vertical-examples")
   li.-active
-    a(href='#chi-tabs-panel--vertical-base') Base
+    a(
+      href='#chi-tabs-panel--vertical-base'
+      role="tab"
+      aria-selected="true"
+      aria-controls="chi-tabs-panel--vertical-base") Base
   li
-    a(href='#chi-tabs-panel--vertical-inverse') Inverse
+    a(
+      href='#chi-tabs-panel--vertical-inverse'
+      role="tab"
+      aria-selected="false"
+      tabindex="-1"
+      aria-controls="chi-tabs-panel--vertical-inverse") Inverse
 .example.-mb--3
-  #chi-tabs-panel--vertical-base.chi-tabs-panel.-active
+  #chi-tabs-panel--vertical-base.chi-tabs-panel.-active(role="tabpanel")
     .-p--3.-bg--grey-20
       .chi-grid.-no-gutter.-bg--white
         .chi-col.-w--6.-w-sm--4.-p--3
-          ul.chi-tabs.-vertical#example-vertical-base
+          ul.chi-tabs.-vertical#example-vertical-base(role="tablist" aria-label="chi-tabs-vertical-base")
             li.-active
-              a(href='#vertical-base-1') Active Tab
+              a(
+                href='#vertical-base-1'
+                role="tab"
+                aria-selected="true"
+                aria-controls="vertical-base-1") Active Tab
             li
-              a(href='#vertical-base-2') Tab Link
+              a(
+                href='#vertical-base-2'
+                role="tab"
+                aria-selected="false"
+                tabindex="-1"
+                aria-controls="vertical-base-2") Tab Link
             li
-              a(href='#vertical-base-3') Tab Link
+              a(
+                href='#vertical-base-3'
+                role="tab"
+                aria-selected="false"
+                tabindex="-1"
+                aria-controls="vertical-base-3") Tab Link
         .chi-col.-p--3
-          .chi-tabs-panel.-active#vertical-base-1
+          .chi-tabs-panel.-active#vertical-base-1(role="tabpanel")
             .-text Tab 1 content
-          .chi-tabs-panel#vertical-base-2
+          .chi-tabs-panel#vertical-base-2(role="tabpanel")
             .-text Tab 2 content
-          .chi-tabs-panel#vertical-base-3
+          .chi-tabs-panel#vertical-base-3(role="tabpanel")
             .-text Tab 3 content
     .example-tabs.-pl--2
-      ul.chi-tabs#example-vertical
+      ul.chi-tabs#example-vertical(role="tablist" aria-label="vertical-base-code-snippet")
         li.-disabled
-          a(href=`#webcomponent-vertical`) Web Component
+          a(
+            href=`#webcomponent-vertical`
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="webcomponent-vertical") Web Component
         li.-active
-          a(href=`#html-vertical`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-vertical
-    .chi-tabs-panel.-active#html-vertical
+          a(
+            href=`#html-vertical`
+            role="tab"
+            aria-selected="true"
+            aria-controls="html-vertical") HTML Blueprint
+    .chi-tabs-panel#webcomponent-vertical(role="tabpanel")
+    .chi-tabs-panel.-active#html-vertical(role="tabpanel")
       .chi-tab__description
         span.-text--grey
           | This HTML Blueprint requires JavaScript.
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang='html')
-        <ul class="chi-tabs -vertical" id="example-vertical-base">
-          <li class="-active"><a href="#vertical-base-1">Active Tab</a></li>
-          <li><a href="#vertical-base-2">Tab Link</a></li>
-          <li><a href="#vertical-base-3">Tab Link</a></li>
+        <ul class="chi-tabs -vertical" id="example-vertical-base" role="tablist" aria-label="chi-tabs-vertical-base">
+          <li class="-active">
+            <a
+              href="#vertical-base-1"
+              role="tab"
+              aria-selected="true"
+              aria-controls="vertical-base-1">Active Tab</a>
+          </li>
+          <li>
+            <a
+              href="#vertical-base-2"
+              role="tab"
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="vertical-base-2">Tab Link</a>
+          </li>
+          <li>
+            <a
+              href="#vertical-base-3"
+              role="tab"
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="vertical-base-3">Tab Link</a>
+          </li>
         </ul>
 
-        <div class="chi-tabs-panel -active" id="vertical-base-1">Tab 1 content</div>
-        <div class="chi-tabs-panel" id="vertical-base-2">Tab 2 content</div>
-        <div class="chi-tabs-panel" id="vertical-base-3">Tab 3 content</div>
+        <div class="chi-tabs-panel -active" id="vertical-base-1" role="tabpanel">
+          Tab 1 content
+        </div>
+        <div class="chi-tabs-panel" id="vertical-base-2" role="tabpanel">
+          Tab 2 content
+        </div>
+        <div class="chi-tabs-panel" id="vertical-base-3" role="tabpanel">
+          Tab 3 content
+        </div>
 
         <script>chi.tab(document.getElementById('example-vertical-base'));</script>
-  #chi-tabs-panel--vertical-inverse.chi-tabs-panel
+
+  #chi-tabs-panel--vertical-inverse.chi-tabs-panel(role="tabpanel")
     .-p--3.-bg--grey-20
       .chi-grid.-no-gutter.-bg--black
         .chi-col.-w--6.-w-sm--4.-p--3
-          ul.chi-tabs.-inverse.-vertical#example-vertical-inverse
+          ul.chi-tabs.-inverse.-vertical#example-vertical-inverse(role="tablist" aria-label="vertical-inverse")
             li.-active
-              a(href='#vertical-inverse-1') Active Tab
+              a(
+                href='#vertical-inverse-1'
+                role="tab"
+                aria-selected="true"
+                aria-controls="vertical-inverse-1") Active Tab
             li
-              a(href='#vertical-inverse-2') Tab Link
+              a(
+                href='#vertical-inverse-2'
+                role="tab"
+                tabindex="-1"
+                aria-selected="false"
+                aria-controls="vertical-inverse-2") Tab Link
             li
-              a(href='#vertical-inverse-3') Tab Link
+              a(
+                href='#vertical-inverse-3'
+                role="tab"
+                tabindex="-1"
+                aria-selected="false"
+                aria-controls="vertical-inverse-3") Tab Link
         .chi-col.-bg--white.-p--3
-          .chi-tabs-panel.-active#vertical-inverse-1
+          .chi-tabs-panel.-active#vertical-inverse-1(role="tabpanel")
             .-text Tab 1 content
-          .chi-tabs-panel#vertical-inverse-2
+          .chi-tabs-panel#vertical-inverse-2(role="tabpanel")
             .-text Tab 2 content
-          .chi-tabs-panel#vertical-inverse-3
+          .chi-tabs-panel#vertical-inverse-3(role="tabpanel")
             .-text Tab 3 content
     .example-tabs.-pl--2
-      ul.chi-tabs#example-vertical-inverse-tabs
+      ul.chi-tabs#example-vertical-inverse-tabs(role="tablist" aria-label="vertical-inverse-code-snippet")
         li.-disabled
-          a(href=`#webcomponent-vertical-inverse`) Web Component
+          a(
+            href=`#webcomponent-vertical-inverse`
+            role="tab"
+            tabindex="-1"
+            aria-selected="false"
+            aria-controls="webcomponent-vertical-inverse") Web Component
         li.-active
-          a(href=`#html-vertical-inverse`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-vertical-inverse
-    .chi-tabs-panel.-active#html-vertical-inverse
+          a(
+            href=`#html-vertical-inverse`
+            role="tab"
+            aria-selected="true"
+            aria-controls="html-vertical-inverse") HTML Blueprint
+    .chi-tabs-panel#webcomponent-vertical-inverse(role="tabpanel")
+    .chi-tabs-panel.-active#html-vertical-inverse(role="tabpanel")
       .chi-tab__description
         span.-text--grey
           | This HTML Blueprint requires JavaScript.
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang='html')
-        <ul class="chi-tabs -inverse -vertical" id="example-vertical-inverse">
-          <li class="-active"><a href="#vertical-inverse-1">Active Tab</a></li>
-          <li><a href="#vertical-inverse-2">Tab Link</a></li>
-          <li><a href="#vertical-inverse-3">Tab Link</a></li>
+        <ul class="chi-tabs -inverse -vertical" id="example-vertical-inverse" role="tablist" aria-label="vertical-inverse">
+          <li class="-active">
+            <a
+              href="#vertical-inverse-1"
+              role="tab"
+              aria-selected="true"
+              aria-controls="vertical-inverse-1">Active Tab</a>
+          </li>
+          <li>
+            <a
+              href="#vertical-inverse-2"
+              role="tab"
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="vertical-inverse-2">Tab Link</a>
+          </li>
+          <li>
+            <a
+              href="#vertical-inverse-3"
+              role="tab"
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="vertical-inverse-3">Tab Link</a>
+          </li>
         </ul>
 
-        <div class="chi-tabs-panel -active" id="vertical-inverse-1">Tab 1 content</div>
-        <div class="chi-tabs-panel" id="vertical-inverse-2">Tab 2 content</div>
-        <div class="chi-tabs-panel" id="vertical-inverse-3">Tab 3 content</div>
+        <div class="chi-tabs-panel -active" id="vertical-inverse-1" role="tabpanel">
+          Tab 1 content
+        </div>
+        <div class="chi-tabs-panel" id="vertical-inverse-2" role="tabpanel">
+          Tab 2 content
+        </div>
+        <div class="chi-tabs-panel" id="vertical-inverse-3" role="tabpanel">
+          Tab 3 content
+        </div>
 
         <script>chi.tab(document.getElementById('example-vertical-inverse'));</script>
 
@@ -194,50 +405,92 @@ p.-text
   | To preserve it, specify a target property on the link.
 .example.-mb--3
   .-p--3.-pb--4
-    ul#example-default-link-behavior.chi-tabs
+    ul#example-default-link-behavior.chi-tabs(role="tablist" aria-label="example-default-link-behavior")
       li.-active
-        a(href='#a2') Tab a
+        a(
+          href='#a2'
+          role="tab"
+          aria-selected="true"
+          aria-controls="a2") Tab a
       li
-        a(href='#b2') Tab b
+        a(
+          href='#b2'
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="ab2") Tab b
       li
-        a(href='#c2') Tab c
+        a(
+          href='#c2'
+          role="tab"
+          aria-selected="true"
+          tabindex="-1"
+          aria-controls="c2") Tab c
       li
         a(href='https://assets.ctl.io/chi/', target='_self') External Link
-
-    #a2.chi-tabs-panel.-active
+    #a2.chi-tabs-panel.-active(role="tabpanel")
       p.-text Content for tab a
-    #b2.chi-tabs-panel
+    #b2.chi-tabs-panel(role="tabpanel")
       p.-text Content for tab b
-    #c2.chi-tabs-panel
+    #c2.chi-tabs-panel(role="tabpanel")
       p.-text Content for tab c
   .example-tabs.-pl--2
-    ul.chi-tabs#example-target-link
+    ul.chi-tabs#example-target-link(role="tablist" aria-label="example-target-link")
       li.-disabled
-        a(href=`#webcomponent-target-link`) Web Component
+        a(
+          href=`#webcomponent-target-link`
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="webcomponent-target-link") Web Component
       li.-active
-        a(href=`#html-target-link`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-target-link
-  .chi-tabs-panel.-active#html-target-link
+        a(
+          href=`#html-target-link`
+          role="tab"
+          aria-selected="true"
+          aria-controls="html-target-link") HTML Blueprint
+  .chi-tabs-panel#webcomponent-target-link(role="tabpanel")
+  .chi-tabs-panel.-active#html-target-link(role="tabpanel")
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang='html')
-      <ul class="chi-tabs" id="example-tabs-2">
-        <li class="-active"><a href="#a">Tab a</a></li>
-        <li><a href="#b">Tab b</a></li>
-        <li><a href="#c">Tab c</a></li>
+      <ul class="chi-tabs" id="example-tabs-2" role="tablist" aria-label="example-default-link-behavior">
+        <li class="-active">
+          <a
+            href="#a2"
+            role="tab"
+            aria-selected="true"
+            aria-controls="a2">Tab a</a>
+        </li>
+        <li>
+          <a
+            href="#b2"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="ab2">Tab b</a>
+        </li>
+        <li>
+          <a
+            href="#c2"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="c2">Tab c</a>
+        </li>
         <li><a href="https://assets.ctl.io/chi/" target="_self">External Link</a></li>
       </ul>
 
-      <div class="chi-tabs-panel -active" id="a">
+      <div class="chi-tabs-panel -active" id="a2" role="tabpanel">
         <p class="-text">Content for tab a</p>
       </div>
-      <div class="chi-tabs-panel" id="b">
+      <div class="chi-tabs-panel" id="b2" role="tabpanel">
         <p class="-text">Content for tab b</p>
       </div>
-      <div class="chi-tabs-panel" id="c">
+      <div class="chi-tabs-panel" id="c2" role="tabpanel">
         <p class="-text">Content for tab c</p>
       </div>
 
@@ -296,8 +549,8 @@ p.-text
         a(href=`#webcomponent-tabbed-navigation`) Web Component
       li.-active
         a(href=`#html-tabbed-navigation`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-tabbed-navigation
-  .chi-tabs-panel.-active#html-tabbed-navigation
+  .chi-tabs-panel#webcomponent-tabbed-navigation(role="tabpanel")
+  .chi-tabs-panel.-active#html-tabbed-navigation(role="tabpanel")
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
@@ -389,8 +642,8 @@ p.-text
         a(href=`#webcomponent-nav-contained`) Web Component
       li.-active
         a(href=`#html-nav-contained`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-nav-contained
-  .chi-tabs-panel.-active#html-nav-contained
+  .chi-tabs-panel#webcomponent-nav-contained(role="tabpanel")
+  .chi-tabs-panel.-active#html-nav-contained(role="tabpanel")
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
@@ -438,7 +691,7 @@ ul.chi-tabs#example-4-switch
     a(href='#example-4__enabled') Enabled
   li
     a(href='#example-4__disabled') Disabled
-.chi-tabs-panel.-active#example-4__enabled
+.chi-tabs-panel.-active#example-4__enabled(role="tabpanel")
   .example.-mb--3
     .-p--3.-pb--4
       ul.chi-tabs.chi-navigationExample.chi-customExample
@@ -460,8 +713,8 @@ ul.chi-tabs#example-4-switch
           a(href=`#webcomponent-nav4-enabled`) Web Component
         li.-active
           a(href=`#html-nav4-enabled`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-nav4-enabled
-    .chi-tabs-panel.-active#html-nav4-enabled
+    .chi-tabs-panel#webcomponent-nav4-enabled(role="tabpanel")
+    .chi-tabs-panel.-active#html-nav4-enabled(role="tabpanel")
       .chi-tab__description
         span.-text--grey
           | This HTML Blueprint requires JavaScript.
@@ -495,7 +748,7 @@ ul.chi-tabs#example-4-switch
             {waitForAnimations: true}
           );
         </script>
-.chi-tabs-panel#example-4__disabled
+.chi-tabs-panel#example-4__disabled(role="tabpanel")
   .example.-mb--3
     .-p--3.-pb--4
       ul.chi-tabs.chi-navigationExample.chi-customExample
@@ -517,8 +770,8 @@ ul.chi-tabs#example-4-switch
           a(href=`#webcomponent-nav4-disabled`) Web Component
         li.-active
           a(href=`#html-nav4-disabled`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-nav4-disabled
-    .chi-tabs-panel.-active#html-nav4-disabled
+    .chi-tabs-panel#webcomponent-nav4-disabled(role="tabpanel")
+    .chi-tabs-panel.-active#html-nav4-disabled(role="tabpanel")
       .chi-tab__description
         span.-text--grey
           | This HTML Blueprint requires JavaScript.
@@ -561,7 +814,7 @@ ul#chi-tabs--menu-horizontal-icons.chi-tabs
   li
     a(href='#chi-tabs-panel--horizontal-icons-inverse') Inverse
 .example.-mb--3
-  .chi-tabs-panel.-active#chi-tabs-panel--horizontal-icons-base
+  .chi-tabs-panel.-active#chi-tabs-panel--horizontal-icons-base(role="tabpanel")
     .-p--3.-bg--grey-20
       .-bg--white.-px--3
         ul.chi-tabs.-icons
@@ -583,8 +836,8 @@ ul#chi-tabs--menu-horizontal-icons.chi-tabs
           a(href=`#webcomponent-example-icon-base`) Web Component
         li.-active
           a(href=`#html-example-icon-base`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-example-icon-base
-    .chi-tabs-panel.-active#html-example-icon-base
+    .chi-tabs-panel#webcomponent-example-icon-base(role="tabpanel")
+    .chi-tabs-panel.-active#html-example-icon-base(role="tabpanel")
       :code(lang='html')
         <ul class="chi-tabs -icons">
           <li class="-active">
@@ -606,7 +859,7 @@ ul#chi-tabs--menu-horizontal-icons.chi-tabs
             </a>
           </li>
         </ul>
-  .chi-tabs-panel#chi-tabs-panel--horizontal-icons-inverse
+  .chi-tabs-panel#chi-tabs-panel--horizontal-icons-inverse(role="tabpanel")
     .-p--3.-bg--grey-20
       .-bg--black.-px--3
         ul.chi-tabs.-inverse.-icons
@@ -628,8 +881,8 @@ ul#chi-tabs--menu-horizontal-icons.chi-tabs
           a(href=`#webcomponent-example-icon-inverse`) Web Component
         li.-active
           a(href=`#html-example-icon-inverse`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-example-icon-inverse
-    .chi-tabs-panel.-active#html-example-icon-inverse
+    .chi-tabs-panel#webcomponent-example-icon-inverse(role="tabpanel")
+    .chi-tabs-panel.-active#html-example-icon-inverse(role="tabpanel")
       :code(lang='html')
         <ul class="chi-tabs -inverse -icons">
           <li class="-active">
@@ -659,7 +912,7 @@ ul#chi-tabs--menu-vertical-icons.chi-tabs
   li
     a(href='#chi-tabs-panel--vertical-icons-inverse') Inverse
 .example.-mb--3
-  .chi-tabs-panel.-active#chi-tabs-panel--vertical-icons-base
+  .chi-tabs-panel.-active#chi-tabs-panel--vertical-icons-base(role="tabpanel")
     .-p--3.-bg--grey-20
       .-bg--white.-p--3
         ul.chi-tabs.-vertical.-icons
@@ -688,8 +941,8 @@ ul#chi-tabs--menu-vertical-icons.chi-tabs
           a(href=`#webcomponent-example-icon-vertical-base`) Web Component
         li.-active
           a(href=`#html-example-icon-vertical-base`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-example-icon-vertical-base
-    .chi-tabs-panel.-active#html-example-icon-vertical-base
+    .chi-tabs-panel#webcomponent-example-icon-vertical-base(role="tabpanel")
+    .chi-tabs-panel.-active#html-example-icon-vertical-base(role="tabpanel")
       :code(lang='html')
         <ul class="chi-tabs -vertical -icons">
           <li class="-active">
@@ -711,7 +964,7 @@ ul#chi-tabs--menu-vertical-icons.chi-tabs
             </a>
           </li>
         </ul>
-  .chi-tabs-panel#chi-tabs-panel--vertical-icons-inverse
+  .chi-tabs-panel#chi-tabs-panel--vertical-icons-inverse(role="tabpanel")
     .-p--3.-bg--grey-20
       .-bg--black.-p--3
         ul.chi-tabs.-inverse.-vertical.-icons
@@ -740,8 +993,8 @@ ul#chi-tabs--menu-vertical-icons.chi-tabs
           a(href=`#webcomponent-example-icon-vertical-inverse`) Web Component
         li.-active
           a(href=`#html-example-icon-vertical-inverse`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-example-icon-vertical-inverse
-    .chi-tabs-panel.-active#html-example-icon-vertical-inverse
+    .chi-tabs-panel#webcomponent-example-icon-vertical-inverse(role="tabpanel")
+    .chi-tabs-panel.-active#html-example-icon-vertical-inverse(role="tabpanel")
       :code(lang='html')
         <ul class="chi-tabs -inverse -vertical -icons">
           <li class="-active">
@@ -803,8 +1056,8 @@ h3 Vertical tabs with icons and description
         a(href=`#webcomponent-size-large`) Web Component
       li.-active
         a(href=`#html-size-large`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-size-large
-  .chi-tabs-panel.-active#html-size-large
+  .chi-tabs-panel#webcomponent-size-large(role="tabpanel")
+  .chi-tabs-panel.-active#html-size-large(role="tabpanel")
     :code(lang='html')
       <ul class="chi-tabs -vertical -icons -list">
         <li class="-active">
@@ -920,8 +1173,8 @@ h3 Portal
         a(href=`#webcomponent-portal-size-large`) Web Component
       li.-active
         a(href=`#html--portal-size-large`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-portal-size-large
-  .chi-tabs-panel.-active#html-portal-size-large
+  .chi-tabs-panel#webcomponent-portal-size-large(role="tabpanel")
+  .chi-tabs-panel.-active#html-portal-size-large(role="tabpanel")
     :code(lang='html')
       <ul class="chi-tabs -vertical -icons -list -portal -lg">
         <li class="-active">
@@ -1026,7 +1279,7 @@ ul#chi-tabs--menu-subtabs.chi-tabs
   li
     a(href='#chi-tabs-panel--subtabs-inverse') Inverse
 .example.-mb--3
-  .chi-tabs-panel.-active#chi-tabs-panel--subtabs-base
+  .chi-tabs-panel.-active#chi-tabs-panel--subtabs-base(role="tabpanel")
     .-p--3.-bg--grey-20
       .-bg--white.-p--3
         ul.chi-tabs.-vertical
@@ -1049,8 +1302,8 @@ ul#chi-tabs--menu-subtabs.chi-tabs
           a(href=`#webcomponent-example-vertical-subtabs-base`) Web Component
         li.-active
           a(href=`#html-example-vertical-subtabs-base`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-example-vertical-subtabs-base
-    .chi-tabs-panel.-active#html-example-vertical-subtabs-base
+    .chi-tabs-panel#webcomponent-example-vertical-subtabs-base(role="tabpanel")
+    .chi-tabs-panel.-active#html-example-vertical-subtabs-base(role="tabpanel")
       :code(lang='html')
         <ul class="chi-tabs -vertical">
           <li class="-active">
@@ -1074,7 +1327,7 @@ ul#chi-tabs--menu-subtabs.chi-tabs
             <a href="#">Tab link</a>
           </li>
         </ul>
-  .chi-tabs-panel#chi-tabs-panel--subtabs-inverse
+  .chi-tabs-panel#chi-tabs-panel--subtabs-inverse(role="tabpanel")
     .-p--3.-bg--grey-20
       .-bg--black.-p--3
         ul.chi-tabs.-inverse.-vertical
@@ -1097,8 +1350,8 @@ ul#chi-tabs--menu-subtabs.chi-tabs
           a(href=`#webcomponent-example-vertical-subtabs-inverse`) Web Component
         li.-active
           a(href=`#html-example-vertical-subtabs-inverse`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-example-vertical-subtabs-inverse
-    .chi-tabs-panel.-active#html-example-vertical-subtabs-inverse
+    .chi-tabs-panel#webcomponent-example-vertical-subtabs-inverse(role="tabpanel")
+    .chi-tabs-panel.-active#html-example-vertical-subtabs-inverse(role="tabpanel")
       :code(lang='html')
         <ul class="chi-tabs -inverse -vertical">
           <li class="-active">
@@ -1130,7 +1383,7 @@ ul#chi-tabs--menu-bordered.chi-tabs
   li
     a(href='#chi-tabs-panel--bordered-inverse') Inverse
 .example.-mb--3
-  .chi-tabs-panel.-active#chi-tabs-panel--bordered-base
+  .chi-tabs-panel.-active#chi-tabs-panel--bordered-base(role="tabpanel")
     .-p--3.-bg--grey-20
       .-bg--white.-p--3
         ul.chi-tabs.-border
@@ -1152,7 +1405,7 @@ ul#chi-tabs--menu-bordered.chi-tabs
           <a href="#">Tab link</a>
         </li>
       </ul>
-  .chi-tabs-panel#chi-tabs-panel--bordered-inverse
+  .chi-tabs-panel#chi-tabs-panel--bordered-inverse(role="tabpanel")
     .-p--3.-bg--grey-20
       .-bg--black.-p--3
         ul.chi-tabs.-inverse.-border
@@ -1222,8 +1475,8 @@ h3 Horizontal
         a(href=`#webcomponent-sizes-h`) Web Component
       li.-active
         a(href=`#html-sizes-h`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-sizes-h
-  .chi-tabs-panel.-active#html-sizes-h
+  .chi-tabs-panel#webcomponent-sizes-h(role="tabpanel")
+  .chi-tabs-panel.-active#html-sizes-h(role="tabpanel")
     :code(lang='html')
       <!-- X-small -->
       <ul class="chi-tabs -xs">
@@ -1350,8 +1603,8 @@ h3 Vertical
         a(href=`#webcomponent-sizes-v`) Web Component
       li.-active
         a(href=`#html-sizes-v`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-sizes-v
-  .chi-tabs-panel.-active#html-sizes-v
+  .chi-tabs-panel#webcomponent-sizes-v(role="tabpanel")
+  .chi-tabs-panel.-active#html-sizes-v(role="tabpanel")
     :code(lang='html')
       <!-- Small -->
       <ul class="chi-tabs -vertical -sm">

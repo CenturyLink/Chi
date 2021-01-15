@@ -18,8 +18,18 @@ const DEFAULT_CONFIG = {
   waitForAnimations: true
 };
 
-class Tab extends Component {
+const keys = {
+  tab: 9,
+  end: 35,
+  home: 36,
+  left: 37,
+  up: 38,
+  right: 39,
+  down: 40,
+  delete: 46
+};
 
+class Tab extends Component {
   constructor (elem, config) {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     let self = this;
@@ -30,6 +40,8 @@ class Tab extends Component {
     };
 
     this._elem.addEventListener('click', this._clickEventHandler);
+    this._tabs = this._elem.querySelectorAll(`li`);
+    this._tabAnchor = this._elem.querySelectorAll(`li a`);
 
     if (this._config.animated) {
       Util.addClass(this._elem, CLASS_ANIMATED);
@@ -39,7 +51,66 @@ class Tab extends Component {
         this.isVertical(),
         'li');
     }
+    Array.prototype.forEach.call(
+      this._tabs,
+      (tab, index) => {
+        tab.addEventListener('keyup', (e) => this.keyupEventListener(e, index));
+      }
+    );
   }
+
+  keyupEventListener(event, index) {
+    const key = event.keyCode,
+      vertical = this._elem.classList.contains(CLASS_VERTICAL),
+      activeTabIndex = Array.from(this._tabs).indexOf(this.getActiveTab());
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const focusAnchor = (element) => {
+      element.querySelector('a').focus();
+    };
+
+    const previousTab = () => {
+      let tabToActivate;
+
+      if (index === 0) {
+        tabToActivate = this._tabs[this._tabs.length - 1];
+      } else {
+        tabToActivate = this._tabs[activeTabIndex - 1];
+      }
+
+      if (!tabToActivate.classList.contains(chi.classes.DISABLED)) {
+        this.showTab(tabToActivate);
+        focusAnchor(tabToActivate);
+      }
+    };
+
+    const nextTab = () => {
+      let tabToActivate;
+
+      if (activeTabIndex === this._tabs.length - 1) {
+        tabToActivate = this._tabs[0];
+      } else {
+        tabToActivate = this._tabs[activeTabIndex + 1];
+      }
+
+      if (!tabToActivate.classList.contains(chi.classes.DISABLED)) {
+        this.showTab(tabToActivate);
+        focusAnchor(tabToActivate);
+      }
+    };
+
+    if ((vertical && key === keys.up) ||
+      (!vertical && key === keys.left)) {
+      previousTab();
+    } else if ((vertical && key === keys.down) ||
+      (!vertical && key === keys.right)) {
+      nextTab();
+    }
+
+    return;
+  };
 
   getActiveTab () {
     return this._elem.querySelector(
@@ -98,9 +169,7 @@ class Tab extends Component {
   }
 
   showTab (tab, parentTab) {
-
     const self = this;
-
     const currentlyActiveTab = this.getActiveTab();
     if (tab === currentlyActiveTab) {
       return;
@@ -138,6 +207,20 @@ class Tab extends Component {
         );
       }
     }
+
+  Array.prototype.forEach.call(
+    this._tabAnchor,
+    (anchor) => {
+      if (tab.contains(anchor)) {
+        anchor.setAttribute('aria-selected', true);
+        if (anchor.getAttribute('tabindex')) {
+          anchor.removeAttribute('tabindex');
+        }
+      } else {
+        anchor.setAttribute('aria-selected', false);
+        anchor.setAttribute('tabindex', '-1');
+      }
+    });
   }
 
   _handleActiveClassOnTabs (newTab, newParentTab, oldTab, oldParentTab) {
@@ -159,8 +242,6 @@ class Tab extends Component {
     }
     Util.addClass(newTab, CLASS_ACTIVE);
   }
-
-
 
   hideTabs () {
     const self = this;
