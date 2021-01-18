@@ -1,6 +1,7 @@
 import Popper from 'popper.js';
 import {Component} from "../core/component";
 import {Util} from "../core/util.js";
+import {KEYS} from  '../constants/constants';
 
 const CLASS_ACTIVE = "-active";
 const COMPONENT_SELECTOR = '[data-tooltip]';
@@ -63,7 +64,7 @@ class Tooltip extends Component {
       self._addEventHandler(self._elem, 'keyup', function(e) {
         let code = (e.keyCode ? e.keyCode : e.which);
 
-        if (code === 9) {
+        if (code === KEYS.TAB) {
           if (!self._shown) {
             self.show();
           }
