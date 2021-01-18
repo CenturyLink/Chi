@@ -9,8 +9,12 @@ const COMPONENT_SELECTOR = '.chi-drawer__trigger';
 const COMPONENT_TYPE = 'drawer';
 const DISABLE_SCROLL = '-disable-scroll';
 const EVENTS = {
-  show: 'chi.drawer.show',
-  hide: 'chi.drawer.hide'
+  SHOW_DEPRECATED: 'chi.drawer.show',
+  HIDE_DEPRECATED: 'chi.drawer.hide',
+  SHOW: 'chiDrawerShow',
+  HIDE: 'chiDrawerHide',
+  SHOWN: 'chiDrawerShown',
+  HIDDEN: 'chiDrawerHidden'
 };
 const DEFAULT_CONFIG = {
   target: null,
@@ -149,7 +153,10 @@ class Drawer extends Component {
             }
             self._shown = true;
             self._drawerElem.dispatchEvent(
-              Util.createEvent(EVENTS.show)
+              Util.createEvent(EVENTS.SHOW)
+            );
+            self._drawerElem.dispatchEvent(
+              Util.createEvent(EVENTS.SHOW_DEPRECATED)
             );
           },
           function() {
@@ -158,6 +165,9 @@ class Drawer extends Component {
               Util.removeClass(self._backdrop, chi.classes.TRANSITIONING);
             }
             self._transitioning = false;
+            self._drawerElem.dispatchEvent(
+              Util.createEvent(EVENTS.SHOWN)
+            );
           },
           ANIMATION_DURATION
         );
@@ -201,7 +211,10 @@ class Drawer extends Component {
             }
             self._shown = false;
             self._drawerElem.dispatchEvent(
-              Util.createEvent(EVENTS.hide)
+              Util.createEvent(EVENTS.HIDE)
+            );
+            self._drawerElem.dispatchEvent(
+              Util.createEvent(EVENTS.HIDE_DEPRECATED)
             );
           },
           function() {
@@ -210,6 +223,9 @@ class Drawer extends Component {
               Util.removeClass(self._backdrop, chi.classes.TRANSITIONING);
             }
             self._transitioning = false;
+            self._drawerElem.dispatchEvent(
+              Util.createEvent(EVENTS.HIDDEN)
+            );
           },
           ANIMATION_DURATION
         );

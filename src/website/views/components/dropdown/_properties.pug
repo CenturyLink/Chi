@@ -45,6 +45,29 @@ section.chi-table.chi-table__methods.-bordered.-my--3
             div
               | Type: void
 
+h3 Events
+section.chi-table.-bordered.-my--3
+  table(cellpadding='0', cellspacing='0')
+    thead
+      tr
+        th
+          div Event
+        th
+          div Description
+    tbody
+      tr
+        td
+          div
+            code chiDropdownShow
+        td
+          div Dropdown show  has been triggered.
+      tr
+        td
+          div
+            code chiDropdownHide
+        td
+          div Dropdown hide  has been triggered.
+
 h4 Preventing memory leaks
 p.-text
   | Dropdown components have a dispose function to free all resources attached to the element, such as event listeners
