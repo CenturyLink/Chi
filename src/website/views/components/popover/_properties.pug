@@ -132,30 +132,40 @@ p.-text
     </script>
 
 h3 Events
-section.chi-table.chi-table__options.-bordered.-my--3
-  div
-    table.-text(cellpadding='0', cellspacing='0')
-      thead
-        tr
-          th
-            div Event
-          th
-            div Description
-      tbody
-        tr
-          td
-            div
-              code= 'chi.popover.show'
-          td
-            div
-              | The element the popover is attached to (usually a button), dispatches this event when the popover is to be shown.
-        tr
-          td
-            div
-              code= 'chi.popover.hide'
-          td
-            div
-              | The element the popover is attached to (usually a button), dispatches this event when the popover is to be hidden.
+section.chi-table.-bordered.-my--3
+  table(cellpadding='0', cellspacing='0')
+    thead
+      tr
+        th
+          div Event
+        th
+          div Description
+    tbody
+      tr
+        td
+          div
+            code chiPopoverShow
+        td
+          div Popover show  has been executed, but the showing animation has not started yet.
+      tr
+        td
+          div
+            code chiPopoverHide
+        td
+          div Popover hide  has been executed, but the closing animation has not started yet.
+      tr
+        td
+          div
+            code chiPopoverShown
+        td
+          | Popover has been shown to the user and is fully visible. The animation has completed.
+      tr
+        td
+          div
+            code chiPopoverHidden
+        td
+          div
+            | Popover has been hidden to the user. The animation has completed.
 
 h3 Preventing memory leaks
 p.-text
