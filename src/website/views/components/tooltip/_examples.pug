@@ -48,32 +48,25 @@ p.-text
 
       <script>chi.tooltip(document.getElementById('tooltip-2'));</script>
 
-h3 Animation delay
+h3 Tooltip on disabled buttons
+p.-text
+  | When a button element is in disabled state, <code>mouseenter</code> and <code>mouseleave</code> events
+  | are not being triggered. Wrap the disabled button in a <code>span</code> element, providing the attribute <code>data-tooltip=""</code>
+  | to achieve the same behavior
 .example.-mb--3
   .-p--3
-    button.chi-button.-icon.-flat.-bg--none.-opacity-hover--80(aria-label='Button action' data-tooltip='First tooltip')
-      .chi-button__content
-        i.chi-icon.icon-refresh
-    button.chi-button.-icon.-flat.-bg--none.-opacity-hover--80(aria-label='Button action' data-tooltip='Second tooltip')
-      .chi-button__content
-        i.chi-icon.icon-arrow-down
+    span#tooltip-disabled-button(data-tooltip='Tooltip message for a disabled button')
+      button(disabled).chi-button Disabled
   .example-tabs.-pl--2
-    ul.chi-tabs#example-light
-      li.-disabled
-        a(href=`#webcomponent-light`) Web Component
-      li.-active
-        a(href=`#html-light`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-light
-  .chi-tabs-panel.-active#html-light
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
+    ul.chi-tabs#example-disabled
+  .chi-tabs-panel#webcomponent-disabled
+  .chi-tabs-panel.-active#html-disabled
     :code(lang='html')
-      <button id="tooltip-2" class="chi-button -outline -light" data-tooltip="Your tooltip text on a button" data-tooltip-color="light">Tooltip</button>
+      <span data-tooltip="Tooltip message for a disabled button" id="tooltip-disabled-button">
+        <button class="chi-button" disabled>Disabled Tooltip</button>
+      </span>
 
-      <script>chi.tooltip(document.getElementById('tooltip-2'));</script>
+      <script>chi.tooltip(document.getElementById('tooltip-disabled-button'));</script>
 
 h3 Positioning
 p.-text
