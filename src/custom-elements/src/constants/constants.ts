@@ -44,3 +44,6 @@ export const CHI_TIME_SCROLL_ADJUSTMENT = 28;
 
 export const TIME_PICKER_FORMATS = ['12hours', '24hours'];
 export type DatePickerFormats = typeof TIME_PICKER_FORMATS[number];
+
+export const DATE_LOCALES = ['en', 'es', 'pt', 'fr', 'de', 'ja', 'zh'] as const;
+export type DataLocales = typeof DATE_LOCALES[number];
