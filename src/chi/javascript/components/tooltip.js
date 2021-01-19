@@ -1,14 +1,16 @@
 import Popper from 'popper.js';
 import {Component} from "../core/component";
 import {Util} from "../core/util.js";
+import {KEYS} from  '../constants/constants';
 
 const CLASS_ACTIVE = "-active";
 const COMPONENT_SELECTOR = '[data-tooltip]';
 const COMPONENT_TYPE = "tooltip";
-const ANIMATION_DELAY = 500;
+const ANIMATION_DELAY = 300;
 const DEFAULT_CONFIG = {position: 'top', parent: null};
 const CLASS_LIGHT = '-light';
 const TOOLTIP_COLOR_ATTRIBUTE = 'data-tooltip-color';
+const TOOLTIP_SWITCH_TIMEOUT = 50;
 
 class Tooltip extends Component {
 
@@ -39,8 +41,10 @@ class Tooltip extends Component {
       this._animationTimeout = window.setTimeout(() => {
         if (!self._shown) {
           self.show();
+          window.tooltipOpen = true;
+          clearTimeout(window.tooltipOpenTimeout);
         }
-      }, ANIMATION_DELAY);
+      }, window.tooltipOpen ? 0 : ANIMATION_DELAY);
     });
     this._addEventHandler(this._elem, 'mouseleave', () => {
       window.clearTimeout(this._animationTimeout);
@@ -48,12 +52,26 @@ class Tooltip extends Component {
       self._hovered = false;
       if (self._shown && !self._focused) {
         self.hide();
+        window.tooltipOpenTimeout = setTimeout(() => {
+          if (window.tooltipOpen) {
+            window.tooltipOpen = false;
+          }
+        }, TOOLTIP_SWITCH_TIMEOUT);
       }
     });
     this._addEventHandler(this._elem, 'focus', function() {
       self._focused = true;
-      if (!self._shown) {
-        self.show();
+      self._addEventHandler(self._elem, 'keyup', function(e) {
+        let code = (e.keyCode ? e.keyCode : e.which);
+
+        if (code === KEYS.TAB) {
+          if (!self._shown) {
+            self.show();
+          }
+        }
+      });
+      if (self._shown) {
+        self.hide();
       }
     });
     this._addEventHandler(this._elem, 'blur', function() {
