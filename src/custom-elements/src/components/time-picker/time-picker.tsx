@@ -1,4 +1,4 @@
-import { Component, Element, Listen, Method, Prop, h } from '@stencil/core';
+import { Component, Element, Listen, Method, Prop, h, Watch } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
 import { CHI_TIME_AUTO_SCROLL_DELAY,
   ESCAPE_KEYCODE,
@@ -80,6 +80,13 @@ export class TimePicker {
     }
   }
 
+  @Watch('value')
+  timeChanged(newValue: string, oldValue: string) {
+    if (!!newValue !== !!oldValue) {
+      this.value = newValue;
+    }
+  }
+
   /**
    * Sets time
    */
@@ -151,11 +158,12 @@ export class TimePicker {
   handleTimeChange(ev) {
     const timePickerInput = document.getElementById(this._uuid) as HTMLInputElement;
     const formatTimePeriod = (period: number) => {
-      return period.toString().length > 1 ? period.toString() : `0${period}`;
+      return String(period).length > 1 ? String(period) : `0${period}`;
     };
     const hour = !(this.format === '24hr') && ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
+    const seconds = this.displaySeconds ? `:${formatTimePeriod(ev.detail.second)}` : '';
 
-    timePickerInput.value = `${formatTimePeriod(hour)}:${formatTimePeriod(ev.detail.minute)}:${formatTimePeriod(ev.detail.second)} ${formatTimePeriod(ev.detail.period)}`;
+    timePickerInput.value = `${formatTimePeriod(hour)}:${formatTimePeriod(ev.detail.minute)}${seconds} ${formatTimePeriod(ev.detail.period)}`;
   }
 
   render() {

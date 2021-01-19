@@ -40,7 +40,7 @@ export const DATE_PICKER_MODES = ['date', 'datetime'];
 export type DatePickerModes = typeof DATE_PICKER_MODES[number];
 
 export const CHI_TIME_AUTO_SCROLL_DELAY = 50;
-export const CHI_TIME_SCROLL_ADJUSTMENT = 28;
+export const CHI_TIME_SCROLL_ADJUSTMENT = 24;
 
 export const TIME_PICKER_FORMATS = ['12hours', '24hours'];
 export type DatePickerFormats = typeof TIME_PICKER_FORMATS[number];

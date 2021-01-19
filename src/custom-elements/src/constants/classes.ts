@@ -1,3 +1,8 @@
+/* Common */
+export const ACTIVE_CLASS = '-active';
+export const DISABLED_CLASS = '-disabled';
+
+/* Time */
 export const TIME_CLASSES = {
   TIME: 'chi-time-picker',
   CONTENT: 'chi-time-picker__content',
