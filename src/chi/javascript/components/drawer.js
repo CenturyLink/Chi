@@ -11,8 +11,8 @@ const DISABLE_SCROLL = '-disable-scroll';
 const EVENTS = {
   SHOW_DEPRECATED: 'chi.drawer.show',
   HIDE_DEPRECATED: 'chi.drawer.hide',
-  SHOW: 'chiDrawerShow',
-  HIDE: 'chiDrawerHide',
+  show: 'chiDrawerShow',
+  hide: 'chiDrawerHide',
   SHOWN: 'chiDrawerShown',
   HIDDEN: 'chiDrawerHidden'
 };
@@ -153,7 +153,7 @@ class Drawer extends Component {
             }
             self._shown = true;
             self._drawerElem.dispatchEvent(
-              Util.createEvent(EVENTS.SHOW)
+              Util.createEvent(EVENTS.show)
             );
             self._drawerElem.dispatchEvent(
               Util.createEvent(EVENTS.SHOW_DEPRECATED)
@@ -211,7 +211,7 @@ class Drawer extends Component {
             }
             self._shown = false;
             self._drawerElem.dispatchEvent(
-              Util.createEvent(EVENTS.HIDE)
+              Util.createEvent(EVENTS.hide)
             );
             self._drawerElem.dispatchEvent(
               Util.createEvent(EVENTS.HIDE_DEPRECATED)
@@ -266,4 +266,4 @@ class Drawer extends Component {
 }
 
 const factory = Component.factory.bind(Drawer);
-export {Drawer, factory, EVENTS, ANIMATION_DURATION as DRAWER_ANIMATION_DURATION};
+export { Drawer, factory, EVENTS, ANIMATION_DURATION as DRAWER_ANIMATION_DURATION };
