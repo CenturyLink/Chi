@@ -143,6 +143,10 @@ $sizes: (
       padding: 0;
     }
 
+    &.-striped {
+      background-color: $color-background-muted-lighter;
+    }
+
     &.-active {
       background-color: $color-background-primary-light;
       box-shadow: inset 0.125rem 0 0 $color-border-primary;
@@ -178,13 +182,21 @@ $sizes: (
     &-grand-child {
       background-color: $color-background-primary-light;
       box-shadow: inset 0.25rem 0 0 $color-border-primary;
-      padding: 0.75rem;
 
       @include respond-to(md) {
-        background-color: $color-background-primary-lighter;
         display: flex;
         flex-direction: row;
-        padding: 1.5rem 2rem;
+      }
+    }
+
+    &-child {
+      &.-container {
+        padding: 0.75rem;
+
+        @include respond-to(md) {
+          background-color: $color-background-primary-lighter;
+          padding: 1.5rem 2rem;
+        }
       }
     }
   }
@@ -340,16 +352,6 @@ $sizes: (
     }
   }
 
-  &.-striped {
-    .chi-data-table__body {
-      .chi-data-table__row {
-        &:nth-child(even) {
-          background-color: $color-background-muted-lighter;
-        }
-      }
-    }
-  }
-
   &.-hover {
     .chi-data-table__body {
       .chi-data-table__row {
@@ -441,15 +443,15 @@ $sizes: (
       .chi-data-table__row {
         @include respond-to(md) {
           background-color: $color-background-base;
-
-          &:nth-child(even) {
-            background-color: $color-background-primary-lighter;
-          }
         }
 
         &-empty {
           border: 0.0625rem solid $color-background-base-darker;
           text-align: left;
+        }
+
+        &.-striped {
+          background-color: $color-background-primary-lighter;
         }
 
         &.-active {
@@ -518,20 +520,6 @@ $sizes: (
         .chi-data-table__cell {
           @include respond-to(md) {
             border: 0;
-          }
-        }
-      }
-    }
-
-    &.-striped {
-      .chi-data-table__body {
-        .chi-data-table__row {
-          &:nth-child(even) {
-            background-color: $color-background-primary-lighter;
-          }
-
-          &:nth-child(odd) {
-            background-color: $color-background-base;
           }
         }
       }
