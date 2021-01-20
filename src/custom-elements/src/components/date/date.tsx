@@ -9,7 +9,13 @@ import {
   h
 } from '@stencil/core';
 import dayjs, { Dayjs } from 'dayjs';
-import { CLASSES } from '../../constants/constants';
+import { CLASSES, DataLocales } from '../../constants/constants';
+import 'dayjs/locale/es';
+import 'dayjs/locale/pt';
+import 'dayjs/locale/fr';
+import 'dayjs/locale/de';
+import 'dayjs/locale/ja';
+import 'dayjs/locale/zh';
 
 const WEEK_CLASS_PART = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
@@ -27,7 +33,7 @@ export class Date {
   /**
    * Locale to use in date picker
    */
-  @Prop({ reflect: true }) locale = 'en';
+  @Prop({ reflect: true }) locale: DataLocales = 'en';
 
   /**
    * Minimum eligible date
