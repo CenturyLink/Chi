@@ -203,4 +203,47 @@ $popover-arrow-size: 0.75rem;
       }
     }
   }
+
+  &.-closable {
+    position: relative;
+
+    .chi-popover__content {
+      padding-top: 2.5rem;
+    }
+
+    header {
+      &.chi-popover__header {
+        padding-right: 2.5rem !important;
+
+        & ~ {
+          .chi-popover__content {
+            padding-top: 1rem !important;
+          }
+        }
+      }
+    }
+
+    chi-button {
+      &[type='close'] {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+
+        .chi-button {
+          &.-close {
+            right: 0;
+            top: 0;
+          }
+        }
+      }
+    }
+
+    .chi-button {
+      &.-close {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+      }
+    }
+  }
 }

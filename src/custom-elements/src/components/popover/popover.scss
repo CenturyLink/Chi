@@ -2,4 +2,22 @@
   @import '../../global/styles/common';
   @import 'components/popover/popover';
   display: inline-block;
+
+  &[type='closable'] {
+    .chi-popover__content {
+      padding-top: 2.5rem;
+    }
+
+    header {
+      &.chi-popover__header {
+        padding-right: 2.5rem;
+
+        & ~ {
+          .chi-popover__content {
+            padding-top: 1rem;
+          }
+        }
+      }
+    }
+  }
 }

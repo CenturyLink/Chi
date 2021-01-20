@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-01-19T13:27:17",
+  "timestamp": "2021-01-20T23:48:21",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -547,7 +547,8 @@
       "styles": [],
       "slots": [],
       "dependents": [
-        "chi-alert"
+        "chi-alert",
+        "chi-popover"
       ],
       "dependencies": [
         "chi-icon"
@@ -557,6 +558,9 @@
           "chi-icon"
         ],
         "chi-alert": [
+          "chi-button"
+        ],
+        "chi-popover": [
           "chi-button"
         ]
       }
@@ -1019,6 +1023,12 @@
           "chi-icon"
         ],
         "chi-date": [
+          "chi-icon"
+        ],
+        "chi-popover": [
+          "chi-button"
+        ],
+        "chi-button": [
           "chi-icon"
         ]
       }
@@ -2030,6 +2040,22 @@
           "required": false
         },
         {
+          "name": "closable",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "closable",
+          "reflectToAttr": true,
+          "docs": "to add a close button to the popover",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "position",
           "type": "\"auto\" | \"auto-end\" | \"auto-start\" | \"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
           "mutable": false,
@@ -2248,8 +2274,16 @@
         "chi-date-picker",
         "chi-time-picker"
       ],
-      "dependencies": [],
+      "dependencies": [
+        "chi-button"
+      ],
       "dependencyGraph": {
+        "chi-popover": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
         "chi-date-picker": [
           "chi-popover"
         ],
@@ -3484,6 +3518,12 @@
         "chi-time-picker": [
           "chi-popover",
           "chi-time",
+          "chi-icon"
+        ],
+        "chi-popover": [
+          "chi-button"
+        ],
+        "chi-button": [
           "chi-icon"
         ]
       }

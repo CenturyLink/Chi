@@ -35,6 +35,11 @@ export class Popover {
   @Prop({ reflect: true }) arrow: boolean;
 
   /**
+   * to add a close button to the popover
+   */
+  @Prop({ reflect: true }) closable: boolean;
+
+  /**
    * to open or close the popover
    */
   @Prop({ reflect: true, mutable: true }) active: boolean;
@@ -404,6 +409,7 @@ export class Popover {
   }
 
   render() {
+    const closeButton = this.closable ? <chi-button class="-position--absolute" size="sm" onClick={() => this.hide()} type="close" /> : null;
     const popoverHeader = this.popoverTitle && <header class="chi-popover__header"><h2 class="chi-popover__title">{this.popoverTitle}</h2></header>;
     const slot = this.variant && this.variant === 'text' ? <p class="chi-popover__text"><slot /></p> : <slot />;
     const chiFooter = this.popoverFooter && <div class="chi-popover__footer"><slot name="chi-popover__footer"></slot></div>;
@@ -416,6 +422,7 @@ export class Popover {
           ${this.arrow ? '' : '-no-arrow'}
           ${this._animationClasses}
           ${this._reference && this._reference.classList.contains('chi-input') ? 'chi-popover__input' : ''}
+          ${this.closable ? '-closable' : ''}
         `}
         ref={el => (this._popoverElement = el as HTMLElement)}
         onClick={() => this.preventAutoClose()}
@@ -424,6 +431,7 @@ export class Popover {
         aria-label={this.popoverTitle}
         aria-hidden={!this.active}
       >
+        {closeButton}
         {popoverHeader}
         <div class="chi-popover__content">
           {slot}
