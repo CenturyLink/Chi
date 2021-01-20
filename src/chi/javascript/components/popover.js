@@ -8,8 +8,12 @@ const COMPONENT_TYPE = 'popover';
 const CLASS_POPOVER = 'chi-popover';
 const TRANSITION_DURATION = 200;
 const EVENTS = {
-  SHOW: 'chi.popover.show',
-  HIDE: 'chi.popover.hide'
+  SHOW_DEPRECATED: 'chi.popover.show',
+  HIDE_DEPRECATED: 'chi.popover.hide',
+  SHOW: 'chiPopoverShow',
+  HIDE: 'chiPopoverHide',
+  SHOWN: 'chiPopoverShown',
+  HIDDEN: 'chiPopoverHidden'
 };
 const DEFAULT_CONFIG = {
   animate: true,
@@ -95,6 +99,7 @@ class Popover extends Component {
     }
 
     this._shown = true;
+    this._elem.dispatchEvent(Util.createEvent(EVENTS.SHOW_DEPRECATED)); // To be removed in Chi 4.0
     this._elem.dispatchEvent(Util.createEvent(EVENTS.SHOW));
 
     if (!this._config.animate) {
@@ -123,6 +128,9 @@ class Popover extends Component {
       function() {
         Util.removeClass(self._popoverElem, chi.classes.TRANSITIONING);
         self._popoverElem.setAttribute('aria-hidden', 'false');
+        self._popoverElem.dispatchEvent(
+          Util.createEvent(EVENTS.shown)
+        );
       },
       TRANSITION_DURATION
     );
@@ -134,6 +142,7 @@ class Popover extends Component {
     }
 
     this._shown = false;
+    this._elem.dispatchEvent(Util.createEvent(EVENTS.HIDE_DEPRECATED)); // To be removed in Chi 4.0
     this._elem.dispatchEvent(Util.createEvent(EVENTS.HIDE));
 
     if (!this._config.animate) {
@@ -154,6 +163,9 @@ class Popover extends Component {
       function() {
         Util.removeClass(self._popoverElem, chi.classes.TRANSITIONING);
         self._popoverElem.setAttribute('aria-hidden', 'true');
+        self._popoverElem.dispatchEvent(
+          Util.createEvent(EVENTS.HIDDEN)
+        );
       },
       TRANSITION_DURATION
     );

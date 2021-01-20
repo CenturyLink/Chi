@@ -15,6 +15,10 @@ const DEFAULT_CONFIG = {
   dropdownElem: null
 };
 const DEFAULT_POSITION = "bottom-start";
+const EVENTS = {
+  SHOW: 'chiDropdownShow',
+  HIDE: 'chiDropdownHide'
+};
 
 class Dropdown extends Component {
 
@@ -242,6 +246,9 @@ class Dropdown extends Component {
         this._parentDropdown.show();
       }
       this._shown = true;
+      this._elem.dispatchEvent(
+        Util.createEvent(EVENTS.SHOW)
+      );
     }
   }
 
@@ -257,6 +264,9 @@ class Dropdown extends Component {
       this._childrenDropdowns.forEach(function(dd) {
         dd.hide();
       });
+      this._elem.dispatchEvent(
+        Util.createEvent(EVENTS.HIDE)
+      );
     }
   }
 
