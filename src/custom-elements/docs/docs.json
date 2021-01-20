@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-01-20T02:16:03",
+  "timestamp": "2021-01-19T13:27:17",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -621,7 +621,7 @@
         },
         {
           "name": "locale",
-          "type": "string",
+          "type": "\"de\" | \"en\" | \"es\" | \"fr\" | \"ja\" | \"pt\" | \"zh\"",
           "mutable": false,
           "attr": "locale",
           "reflectToAttr": true,
@@ -630,6 +630,31 @@
           "default": "'en'",
           "values": [
             {
+              "value": "de",
+              "type": "string"
+            },
+            {
+              "value": "en",
+              "type": "string"
+            },
+            {
+              "value": "es",
+              "type": "string"
+            },
+            {
+              "value": "fr",
+              "type": "string"
+            },
+            {
+              "value": "ja",
+              "type": "string"
+            },
+            {
+              "value": "pt",
+              "type": "string"
+            },
+            {
+              "value": "zh",
               "type": "string"
             }
           ],
@@ -833,7 +858,7 @@
         },
         {
           "name": "locale",
-          "type": "string",
+          "type": "\"de\" | \"en\" | \"es\" | \"fr\" | \"ja\" | \"pt\" | \"zh\"",
           "mutable": false,
           "attr": "locale",
           "reflectToAttr": true,
@@ -842,6 +867,31 @@
           "default": "'en'",
           "values": [
             {
+              "value": "de",
+              "type": "string"
+            },
+            {
+              "value": "en",
+              "type": "string"
+            },
+            {
+              "value": "es",
+              "type": "string"
+            },
+            {
+              "value": "fr",
+              "type": "string"
+            },
+            {
+              "value": "ja",
+              "type": "string"
+            },
+            {
+              "value": "pt",
+              "type": "string"
+            },
+            {
+              "value": "zh",
               "type": "string"
             }
           ],

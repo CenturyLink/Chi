@@ -11,11 +11,14 @@ const DEFAULT_CONFIG = {position: 'top', parent: null};
 const CLASS_LIGHT = '-light';
 const TOOLTIP_COLOR_ATTRIBUTE = 'data-tooltip-color';
 const TOOLTIP_SWITCH_TIMEOUT = 50;
+const EVENTS = {
+  show: 'chiTooltipShow',
+  hide: 'chiTooltipHide'
+};
 
 class Tooltip extends Component {
 
   constructor (elem, config) {
-
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._tooltipElem = null;
     this._tooltipContent = null;
@@ -97,6 +100,9 @@ class Tooltip extends Component {
       self._tooltipElem.setAttribute('aria-hidden', 'false');
       self._preventOverflow();
     });
+    this._elem.dispatchEvent(
+      Util.createEvent(EVENTS.show)
+    );
   }
 
   hide() {
@@ -108,6 +114,9 @@ class Tooltip extends Component {
       self._tooltipElem.style.opacity = '0';
       self._tooltipElem.setAttribute('aria-hidden', 'true');
     },0);
+    this._elem.dispatchEvent(
+      Util.createEvent(EVENTS.hide)
+    );
   }
 
   _createTooltip () {
