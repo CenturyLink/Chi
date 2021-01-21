@@ -37,7 +37,7 @@ export class Popover {
   /**
    * to add a close button to the popover
    */
-  @Prop({ reflect: true }) closable: boolean;
+  @Prop({ reflect: true }) closable = false;
 
   /**
    * to open or close the popover
