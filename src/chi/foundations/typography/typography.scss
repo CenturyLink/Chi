@@ -244,6 +244,10 @@ small,
   font-weight: $font-weight-extra-bold !important;
 }
 
+.-text--boldest {
+  font-weight: $font-weight-black !important;
+}
+
 .-text--nowrap {
   white-space: nowrap !important;
 }
