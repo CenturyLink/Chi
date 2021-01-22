@@ -207,19 +207,15 @@ $popover-arrow-size: 0.75rem;
   &.-closable {
     position: relative;
 
-    .chi-popover__content {
-      padding-top: 2.5rem;
+    :not(.chi-popover__header) {
+      & + .chi-popover__content {
+        padding-top: 2rem;
+      }
     }
 
     header {
       &.chi-popover__header {
-        padding-right: 2.5rem !important;
-
-        & ~ {
-          .chi-popover__content {
-            padding-top: 1rem !important;
-          }
-        }
+        padding-right: 2.5rem;
       }
     }
 

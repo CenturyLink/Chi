@@ -409,7 +409,7 @@ export class Popover {
   }
 
   render() {
-    const closeButton = this.closable ? <chi-button class="-position--absolute" size="sm" onClick={() => this.hide()} type="close" /> : null;
+    const closeButton = this.closable ? <chi-button size="sm" onClick={() => this.hide()} type="close" /> : null;
     const popoverHeader = this.popoverTitle && <header class="chi-popover__header"><h2 class="chi-popover__title">{this.popoverTitle}</h2></header>;
     const slot = this.variant && this.variant === 'text' ? <p class="chi-popover__text"><slot /></p> : <slot />;
     const chiFooter = this.popoverFooter && <div class="chi-popover__footer"><slot name="chi-popover__footer"></slot></div>;
