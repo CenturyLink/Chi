@@ -6,7 +6,7 @@ import {
   Watch,
   h, Element
 } from '@stencil/core';
-import { TIME_CLASSES } from '../../constants/classes';
+import { TIME_CLASSES, ACTIVE_CLASS, DISABLED_CLASS } from '../../constants/classes';
 import { CHI_TIME_SCROLL_ADJUSTMENT, DatePickerFormats } from '../../constants/constants';
 
 @Component({
@@ -118,8 +118,41 @@ export class Time {
     const time = this.value.split(':');
 
     this._hour = time[0];
-    this._minute = time[1];
-    this._second = time[2] ? time[2] : '00';
+    if (this.stepped) {
+      const currentMinute = parseInt(time[1]);
+      const currentSecond = parseInt(time[2]);
+
+      if (currentMinute % 15 === 0 || currentMinute === 0) {
+        this._minute = time[1];
+      } else if (currentMinute > 52.5) {
+        this._minute = '00';
+      } else {
+        const remainder = currentMinute % 15;
+
+        if (remainder < 7.5) {
+          this._minute = this.formatTimePeriod(currentMinute - remainder);
+        } else {
+          this._minute = this.formatTimePeriod(currentMinute + (15 - remainder));
+        }
+      }
+
+      if (currentSecond % 10 === 0 || currentSecond === 0) {
+        this._second = time[2];
+      } else if (currentSecond > 52.5) {
+        this._second = '00';
+      } else {
+        const remainder = currentSecond % 10;
+
+        if (remainder < 5) {
+          this._second = this.formatTimePeriod(currentSecond - remainder);
+        } else {
+          this._second = this.formatTimePeriod(currentSecond + (10 - remainder));
+        }
+      }
+    } else {
+      this._minute = time[1];
+      this._second = time[2] ? time[2] : '00';
+    }
     this._period = !(this.format === '24hr') && parseInt(this._hour) < 12 ? 'am' : 'pm';
   }
 
@@ -131,11 +164,12 @@ export class Time {
   }
 
   formatTimePeriod(period: number) {
-    return period.toString().length > 1 ? period.toString() : `0${period}`;
+    return String(period).length > 1 ? String(period) : `0${period}`;
   };
 
   hours() {
-    const startHour = (this.format === '24hr') ? 24 : 12;
+    const hourFormat = (this.format === '24hr') ? 24 : 12;
+    const startHour = (this.format === '24hr') ? '00' : '12';
     let hourToSet: string;
     const setHour = (hour: string) => {
       if (this.format === '24hr') {
@@ -153,7 +187,7 @@ export class Time {
           }
         } else {
           if (this._period === 'pm') {
-            hourToSet = (parseInt(hour) + 12).toString();
+            hourToSet = String(parseInt(hour) + 12);
           } else {
             hourToSet = hour;
           }
@@ -171,14 +205,15 @@ export class Time {
       if (this._hour === hour ||
         (!(this.format === '24hr') &&
           this._period === 'pm' &&
-          parseInt(hour) + 12 === valueHour
+          parseInt(hour) + 12 === parseInt(this._hour)
         ) ||
         (parseInt(hour) === 12 && valueHour === 0)
       ) {
-        hourStatus = '-active';
+        hourStatus = ACTIVE_CLASS;
       } else {
-        if (this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour)))) {
-          hourStatus += ' -disabled';
+        if (this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour))) ||
+          this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour) + 12))) {
+          hourStatus = DISABLED_CLASS;
         }
       }
 
@@ -188,12 +223,12 @@ export class Time {
     const hoursToDisplay = [
       <div data-hour={startHour} class={`
         ${TIME_CLASSES.HOUR}
-        ${hourStatus(startHour.toString())}
+        ${hourStatus(startHour)}
         `}
-           onClick={() => setHour(startHour.toString())}>{startHour}</div>
+           onClick={() => setHour(String(hourFormat))}>{startHour}</div>
     ];
 
-    Array.from(Array(startHour), (_, i) => {
+    Array.from(Array(hourFormat), (_, i) => {
       const hour = this.formatTimePeriod(i);
 
       if (i > 0) {
@@ -226,10 +261,10 @@ export class Time {
       let minuteState = '';
 
       if (parseInt(this._minute) === parseInt(minute)) {
-        minuteState = '-active';
+        minuteState = ACTIVE_CLASS;
       } else {
         if (this.excludedMinutesArray.includes(minute)) {
-          minuteState += ' -disabled';
+          minuteState = DISABLED_CLASS;
         }
       }
 
@@ -281,10 +316,10 @@ export class Time {
       let secondState = '';
 
       if (parseInt(this._second) === parseInt(second)) {
-        secondState = '-active';
+        secondState = ACTIVE_CLASS;
       } else {
         if (this.excludedMinutesArray.includes(second)) {
-          secondState += ' -disabled';
+          secondState = DISABLED_CLASS;
         }
       }
 
@@ -336,7 +371,7 @@ export class Time {
         let periodStatus = TIME_CLASSES.PERIOD;
 
         if (period === this._period) {
-          periodStatus += ' -active';
+          periodStatus += ` ${ACTIVE_CLASS}`;
         }
 
         return periodStatus;
@@ -399,21 +434,21 @@ export class Time {
       secondsColumn = this.el.querySelector(`.${TIME_CLASSES.SECONDS}`) as HTMLElement;
 
     if (hoursColumn) {
-      const activeHour = hoursColumn.querySelector(`.${TIME_CLASSES.HOUR}.-active`) as HTMLElement;
+      const activeHour = hoursColumn.querySelector(`.${TIME_CLASSES.HOUR}.${ACTIVE_CLASS}`) as HTMLElement;
 
       if (activeHour) {
         hoursColumn.scrollTop = activeHour.offsetTop - CHI_TIME_SCROLL_ADJUSTMENT;
       }
     }
     if (minutesColumn) {
-      const activeMinute = minutesColumn.querySelector(`.${TIME_CLASSES.MINUTE}.-active`) as HTMLElement;
+      const activeMinute = minutesColumn.querySelector(`.${TIME_CLASSES.MINUTE}.${ACTIVE_CLASS}`) as HTMLElement;
 
       if (activeMinute) {
         minutesColumn.scrollTop = activeMinute.offsetTop - CHI_TIME_SCROLL_ADJUSTMENT;
       }
     }
     if (secondsColumn) {
-      const activeSecond = secondsColumn.querySelector(`.${TIME_CLASSES.SECOND}.-active`) as HTMLElement;
+      const activeSecond = secondsColumn.querySelector(`.${TIME_CLASSES.SECOND}.${ACTIVE_CLASS}`) as HTMLElement;
 
       if (activeSecond) {
         secondsColumn.scrollTop = activeSecond.offsetTop - CHI_TIME_SCROLL_ADJUSTMENT;

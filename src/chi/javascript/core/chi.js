@@ -12,7 +12,6 @@ let chi = {
     EXPANDED: '-expanded',
     INACTIVE: '-inactive',
     TRANSITIONING : '-transitioning',
-    EXPANDED: '-expanded',
     UNSELECTED: '-unselected'
   },
   componentIndex: 0,

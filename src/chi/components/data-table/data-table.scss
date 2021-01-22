@@ -90,6 +90,10 @@ $sizes: (
 
     .chi-data-table__row {
       &.-expanded {
+        @include respond-to(md) {
+          font-weight: $font-weight-semi-bold;
+        }
+
         .chi-data-table__cell {
           border-bottom-color: transparent;
         }
@@ -197,6 +201,15 @@ $sizes: (
           background-color: $color-background-primary-lighter;
           padding: 1.5rem 2rem;
         }
+      }
+    }
+
+    &-grand-child {
+      font-size: $font-size-xs;
+      line-height: 0.875rem;
+
+      @include respond-to(md) {
+        line-height: $line-height-sm;
       }
     }
   }
@@ -474,6 +487,17 @@ $sizes: (
             display: flex;
           }
         }
+
+        &-child {
+          &.-expanded {
+            .chi-icon {
+              &.icon-plus,
+              &.icon-minus {
+                color: $color-icon-primary;
+              }
+            }
+          }
+        }
       }
 
       .chi-data-table__row,
@@ -639,6 +663,20 @@ $sizes: (
             display: flex;
           }
         }
+
+        .chi-button {
+          &.-expand {
+            display: none;
+
+            @include respond-to(md) {
+              display: block;
+
+              + div {
+                margin-left: 0.5rem;
+              }
+            }
+          }
+        }
       }
     }
 
@@ -701,6 +739,16 @@ $sizes: (
       &.-active,
       &.-expanded {
         background-color: $color-background-primary-light;
+
+        .chi-data-table__cell {
+          &.-key {
+            &.-bold {
+              @include respond-to(md) {
+                font-weight: $font-weight-semi-bold;
+              }
+            }
+          }
+        }
       }
 
       &.-collapsed,
@@ -723,14 +771,10 @@ $sizes: (
       &-child,
       &-grand-child {
         background-color: $color-background-base-darker;
-        font-size: $font-size-xs;
-        line-height: 0.875rem;
         padding: 0.75rem 3rem;
 
         @include respond-to(md) {
           background-color: $color-background-primary-light;
-          font-size: $font-size-md;
-          line-height: $line-height-sm;
           padding: 0;
         }
 
@@ -757,6 +801,16 @@ $sizes: (
 
         @include respond-to(md) {
           padding-left: 0;
+
+          .chi-data-table__cell {
+            &.-key {
+              &.-bold {
+                > div {
+                  margin-left: 1.5rem;
+                }
+              }
+            }
+          }
         }
       }
     }

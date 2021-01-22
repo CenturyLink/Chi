@@ -48,6 +48,30 @@ p.-text
 
       <script>chi.tooltip(document.getElementById('tooltip-2'));</script>
 
+h3 Tooltip on disabled buttons
+p.-text
+  | When a button element is in disabled state, <code>mouseenter</code> and <code>mouseleave</code> events
+  | are not being triggered. Wrap the disabled button in a <code>span</code> element, providing the attribute <code>data-tooltip=""</code>
+  | to achieve the same behavior
+.example.-mb--3
+  .-p--3
+    span#tooltip-disabled-button(data-tooltip='Tooltip message for a disabled button')
+      button(disabled).chi-button Disabled
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-disabled
+      li.-disabled
+        a(href=`#webcomponent-light`) Web Component
+      li.-active
+        a(href=`#html-light`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-disabled
+  .chi-tabs-panel.-active#html-disabled
+    :code(lang='html')
+      <span data-tooltip="Tooltip message for a disabled button" id="tooltip-disabled-button">
+        <button class="chi-button" disabled>Disabled Tooltip</button>
+      </span>
+
+      <script>chi.tooltip(document.getElementById('tooltip-disabled-button'));</script>
+
 h3 Positioning
 p.-text
   | By default, tooltip's position on top of an element. To alter position, use
@@ -110,9 +134,9 @@ p.-text
 
 script.
   document.addEventListener(
-          'DOMContentLoaded',
-          function() {
-            chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-            chi.tooltip(document.querySelectorAll('[data-tooltip]'));
-          }
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+    }
   );

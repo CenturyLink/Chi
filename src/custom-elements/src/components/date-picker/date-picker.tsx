@@ -1,6 +1,6 @@
 import { Component, Element, Listen, Method, Prop, Watch, h } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
-import { ESCAPE_KEYCODE } from '../../constants/constants';
+import { ESCAPE_KEYCODE, DataLocales } from '../../constants/constants';
 import dayjs, { Dayjs } from 'dayjs';
 import { TIME_CLASSES } from '../../constants/classes';
 import { CHI_TIME_AUTO_SCROLL_DELAY, DatePickerModes } from '../../constants/constants';
@@ -18,7 +18,7 @@ export class DatePicker {
   /**
    * Locale to use in date picker
    */
-  @Prop({ reflect: true }) locale = 'en';
+  @Prop({ reflect: true }) locale: DataLocales = 'en';
 
   /**
    * Minimum eligible date

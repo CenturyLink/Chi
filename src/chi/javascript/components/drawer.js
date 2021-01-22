@@ -9,8 +9,12 @@ const COMPONENT_SELECTOR = '.chi-drawer__trigger';
 const COMPONENT_TYPE = 'drawer';
 const DISABLE_SCROLL = '-disable-scroll';
 const EVENTS = {
-  show: 'chi.drawer.show',
-  hide: 'chi.drawer.hide'
+  SHOW_DEPRECATED: 'chi.drawer.show',
+  HIDE_DEPRECATED: 'chi.drawer.hide',
+  show: 'chiDrawerShow',
+  hide: 'chiDrawerHide',
+  SHOWN: 'chiDrawerShown',
+  HIDDEN: 'chiDrawerHidden'
 };
 const DEFAULT_CONFIG = {
   target: null,
@@ -151,6 +155,9 @@ class Drawer extends Component {
             self._drawerElem.dispatchEvent(
               Util.createEvent(EVENTS.show)
             );
+            self._drawerElem.dispatchEvent(
+              Util.createEvent(EVENTS.SHOW_DEPRECATED)
+            );
           },
           function() {
             Util.removeClass(self._drawerElem, chi.classes.TRANSITIONING);
@@ -158,6 +165,9 @@ class Drawer extends Component {
               Util.removeClass(self._backdrop, chi.classes.TRANSITIONING);
             }
             self._transitioning = false;
+            self._drawerElem.dispatchEvent(
+              Util.createEvent(EVENTS.SHOWN)
+            );
           },
           ANIMATION_DURATION
         );
@@ -203,6 +213,9 @@ class Drawer extends Component {
             self._drawerElem.dispatchEvent(
               Util.createEvent(EVENTS.hide)
             );
+            self._drawerElem.dispatchEvent(
+              Util.createEvent(EVENTS.HIDE_DEPRECATED)
+            );
           },
           function() {
             Util.removeClass(self._drawerElem, chi.classes.TRANSITIONING);
@@ -210,6 +223,9 @@ class Drawer extends Component {
               Util.removeClass(self._backdrop, chi.classes.TRANSITIONING);
             }
             self._transitioning = false;
+            self._drawerElem.dispatchEvent(
+              Util.createEvent(EVENTS.HIDDEN)
+            );
           },
           ANIMATION_DURATION
         );
@@ -250,4 +266,4 @@ class Drawer extends Component {
 }
 
 const factory = Component.factory.bind(Drawer);
-export {Drawer, factory, EVENTS, ANIMATION_DURATION as DRAWER_ANIMATION_DURATION};
+export { Drawer, factory, EVENTS, ANIMATION_DURATION as DRAWER_ANIMATION_DURATION };
