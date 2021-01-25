@@ -80,7 +80,11 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             size: 'md',
             striped: true
           },
-          pagination: {},
+          pagination: {
+            compact: true,
+            firstLast: true,
+            pageJumper: true
+          },
           selectable: true,
           columnSizes: {
             xs: [5, 5, 5, 5, 5, 5, 5, 5],
@@ -1058,11 +1062,11 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             ]
           },
           {
-            id: 'NTM000021101',
+            id: 'NTM000021102',
             active: false,
             data: [
               {},
-              { template: 'ticketId', payload: { id: 'NTM000021101' } },
+              { template: 'ticketId', payload: { id: 'NTM000021102' } },
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',

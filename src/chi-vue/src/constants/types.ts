@@ -78,6 +78,8 @@ export interface DataTableData {
     };
     pagination: {
       compact: boolean;
+      firstLast: boolean;
+      pageJumper: boolean;
     };
   };
   head: any;

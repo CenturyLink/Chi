@@ -21,7 +21,7 @@ import {
   DataTableScreenBreakpoints,
   DataTableStyleConfig
 } from '@/constants/types';
-import { DATA_TABLE_SORT_ICONS } from '@/constants/constants';
+import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
 
 @Component({})
 export default class DataTable extends Vue {
@@ -29,14 +29,15 @@ export default class DataTable extends Vue {
 
   accordionsShown: string[] = [];
   currentPage = 1;
-  currentScreenBreakpoint?: DataTableScreenBreakpoints;
   resultsPerPage = 20;
   selectedRows: string[] = [];
   slicedData: DataTableRow[] = [];
   sortable = false;
   sortedData?: DataTableRow[];
   _expandable!: boolean;
+  _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _resizeTimer?: number;
+  _uuid!: string;
 
   head() {
     const tableHeadCells = [
@@ -48,7 +49,7 @@ export default class DataTable extends Vue {
         />
       ) : null,
       this.data.config.selectable
-        ? this.selectRowCheckbox(undefined, true)
+        ? this.selectRowCheckbox(true)
         : null
     ];
 
@@ -62,8 +63,8 @@ export default class DataTable extends Vue {
           ? this.sortingButton(column, sortBy)
           : '',
         cellWidth =
-          this.data.config.columnSizes && this.currentScreenBreakpoint
-            ? this.data.config.columnSizes[this.currentScreenBreakpoint][
+          this.data.config.columnSizes && this._currentScreenBreakpoint
+            ? this.data.config.columnSizes[this._currentScreenBreakpoint][
                 cellIndex
               ]
             : null;
@@ -106,7 +107,7 @@ export default class DataTable extends Vue {
     let thElm: HTMLElement | null;
     let startOffset: number;
 
-    Array.prototype.forEach.call(columnHeaders, th => {
+    columnHeaders.forEach(th => {
       const grip = document.createElement('div');
 
       th.classList.add(UTILITY_CLASSES.POSITION.RELATIVE);
@@ -119,13 +120,14 @@ export default class DataTable extends Vue {
       grip.style.cursor = 'col-resize';
       grip.classList.add('resize-handle');
       grip.addEventListener('mousedown', e => {
-        thElm = th;
-        startOffset = th.offsetWidth - e.pageX;
+        thElm = th as HTMLElement;
+        startOffset = (th as HTMLElement).offsetWidth - e.pageX;
       });
       th.appendChild(grip);
     });
     document.addEventListener('mousemove', e => {
-      let columnCellsToResize;
+      let columnCellsToResize: HTMLElement[] = [];
+
       if (thElm) {
         thElm.setAttribute(
           'style',
@@ -135,14 +137,15 @@ export default class DataTable extends Vue {
         );
         for (let i = 0; i < columnHeaders.length; ++i) {
           if (columnHeaders[i] === thElm) {
-            columnCellsToResize = elem.querySelectorAll(
+            columnCellsToResize = Array.from(elem.querySelectorAll(
               `.${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW} .${
                 DATA_TABLE_CLASSES.CELL
               }:nth-child(${i + 1})`
-            );
+            ));
           }
         }
-        Array.prototype.forEach.call(columnCellsToResize, column => {
+
+        columnCellsToResize.forEach(column => {
           if (thElm) {
             column.setAttribute(
               'style',
@@ -157,7 +160,7 @@ export default class DataTable extends Vue {
     });
   }
 
-  cellAlignment(align: string) {
+  cellAlignment(align: string): string {
     const alignmentUtilityClasses: any = {
       left: UTILITY_CLASSES.JUSTIFY.START,
       center: UTILITY_CLASSES.JUSTIFY.CENTER,
@@ -168,7 +171,7 @@ export default class DataTable extends Vue {
       return alignmentUtilityClasses[align];
     }
 
-    return;
+    return '';
   }
 
   dataTableClasses(style: DataTableStyleConfig, sortable: boolean) {
@@ -250,15 +253,15 @@ export default class DataTable extends Vue {
 
   selectAllRows(action: 'select' | 'deselect') {
     if (action === 'select') {
-      this.slicedData.map((row: DataTableRow) => {
+      this.slicedData.forEach((row: DataTableRow) => {
         if (row.id && !this.selectedRows.includes(`row-${row.id}`)) {
-          this.selectedRows.push(`row-${row.id}`);
+          this.selectedRows.push(`row-${this._uuid}-${row.id}`);
         }
       });
     } else {
-      this.slicedData.map((row: DataTableRow) => {
+      this.slicedData.forEach((row: DataTableRow) => {
         if (row.id) {
-          const rowIndex = this.selectedRows.indexOf(`row-${row.id}`);
+          const rowIndex = this.selectedRows.indexOf(`row-${this._uuid}-${row.id}`);
 
           this.selectedRows.splice(rowIndex, 1);
         }
@@ -267,8 +270,8 @@ export default class DataTable extends Vue {
     this.$emit(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, this.selectedRows);
   }
 
-  selectRowCheckbox(rowId: string | undefined, selectAll: boolean) {
-    const checkedState = rowId && this.selectedRows.includes(rowId);
+  selectRowCheckbox(selectAll: boolean, rowId = '') {
+    const checkedState = !!rowId && this.selectedRows.includes(rowId);
 
     return (
       <div
@@ -281,7 +284,7 @@ export default class DataTable extends Vue {
           <input
             type="checkbox"
             class={CHECKBOX_CLASSES.INPUT}
-            id={`row-${rowId}`}
+            id={`row-${this._uuid}-${rowId}`}
             onChange={(ev: Event) => {
               if (selectAll) {
                 this.selectAllRows(
@@ -297,7 +300,7 @@ export default class DataTable extends Vue {
             }}
             checked={checkedState}
           />
-          <label class={CHECKBOX_CLASSES.LABEL} for={`row-${rowId}`}>
+          <label class={CHECKBOX_CLASSES.LABEL} for={`row-${this._uuid}-${rowId}`}>
             <div class={SR_ONLY}>Select row {rowId}</div>
           </label>
         </div>
@@ -343,7 +346,7 @@ export default class DataTable extends Vue {
     const row = [],
       rowCells = [],
       rowAccordionContent = [],
-      rowId = bodyRow.id ? `row-${bodyRow.id}` : `row-${uuid4()}`,
+      rowId = bodyRow.id ? `row-${this._uuid}-${bodyRow.id}` : `row-${this._uuid}-${uuid4()}`,
       rowClass = rowChild
         ? DATA_TABLE_CLASSES.ROW_CHILD
         : DATA_TABLE_CLASSES.ROW;
@@ -363,12 +366,12 @@ export default class DataTable extends Vue {
     }
 
     if (this.data.config.selectable) {
-      rowCells.push(this.selectRowCheckbox(rowId, false));
+      rowCells.push(this.selectRowCheckbox(false, rowId));
     }
 
     let cellIndex = 0;
 
-    bodyRow.data.map((rowCell: any) => {
+    bodyRow.data.forEach((rowCell: any) => {
       const columnSettings = this.data.head[
           Object.keys(this.data.head)[cellIndex]
         ],
@@ -377,34 +380,34 @@ export default class DataTable extends Vue {
         ),
         cellLabel = rowCell.label || columnSettings.label,
         cellWidth =
-          this.data.config.columnSizes && this.currentScreenBreakpoint
-            ? this.data.config.columnSizes[this.currentScreenBreakpoint][
+          this.data.config.columnSizes && this._currentScreenBreakpoint
+            ? this.data.config.columnSizes[this._currentScreenBreakpoint][
                 cellIndex
               ]
             : null;
       let cellData;
 
-      if (rowCell.template && this.$scopedSlots[rowCell.template]) {
+      if (!!rowCell.template && !!this.$scopedSlots[rowCell.template]) {
         if (rowCell.payload) {
           cellData = this.$scopedSlots[rowCell.template]!(rowCell.payload);
         }
-      } else if (typeof rowCell === 'string') {
+      } else if (
+        !!rowCell.value ||
+        typeof rowCell === 'string' ||
+        typeof rowCell === 'number') {
+        const data = rowCell.value || rowCell;
+
         cellData = (
           <Tooltip message={rowCell} class="-w--100">
             <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>
-              {rowCell}
+              {data}
             </div>
           </Tooltip>
         );
       } else {
-        cellData = (
-          <Tooltip message={rowCell.value} class="-w--100">
-            <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>
-              {rowCell.value}
-            </div>
-          </Tooltip>
-        );
+        cellData = null;
       }
+
       rowCells.push(
         <div
           aria-label={cellLabel}
@@ -492,11 +495,12 @@ export default class DataTable extends Vue {
         compact={
           this.data.config.style.portal || this.data.config.pagination.compact
         }
+        firstLast={this.data.config.pagination.compact}
         currentPage={this.currentPage}
         pages={pages}
         results={results}
         pageSize={!this.data.config.style.portal}
-        pageJumper={!this.data.config.style.portal}
+        pageJumper={this.data.config.pagination.pageJumper}
       />
     );
   }
@@ -508,7 +512,7 @@ export default class DataTable extends Vue {
 
     if (selectAllCheckbox) {
       const isSelected = (row: DataTableRow) =>
-        this.selectedRows.includes(`row-${row.id}`);
+        this.selectedRows.includes(`row-${this._uuid}-${row.id}`);
 
       selectAllCheckbox.checked = !!this.slicedData.every(isSelected);
     }
@@ -529,25 +533,25 @@ export default class DataTable extends Vue {
     let screenBreakpoint: DataTableScreenBreakpoints = 'xl';
 
     switch (true) {
-      case currentScreenSize > 1200:
+      case currentScreenSize > SCREEN_BREAKPOINTS.LG:
         screenBreakpoint = 'xl';
         break;
-      case currentScreenSize > 992 && currentScreenSize <= 1200:
+      case currentScreenSize > SCREEN_BREAKPOINTS.MD + 1 && currentScreenSize <= SCREEN_BREAKPOINTS.LG:
         screenBreakpoint = 'lg';
         break;
-      case currentScreenSize > 768 && currentScreenSize <= 991:
+      case currentScreenSize > SCREEN_BREAKPOINTS.SM + 1 && currentScreenSize <= SCREEN_BREAKPOINTS.MD:
         screenBreakpoint = 'md';
         break;
-      case currentScreenSize > 575 && currentScreenSize <= 767:
+      case currentScreenSize > SCREEN_BREAKPOINTS.XS + 1 && currentScreenSize <= SCREEN_BREAKPOINTS.SM:
         screenBreakpoint = 'sm';
         break;
-      case currentScreenSize < 575:
+      case currentScreenSize < SCREEN_BREAKPOINTS.XS:
         screenBreakpoint = 'xs';
         break;
     }
 
-    if (this.currentScreenBreakpoint !== screenBreakpoint) {
-      this.currentScreenBreakpoint = screenBreakpoint;
+    if (this._currentScreenBreakpoint !== screenBreakpoint) {
+      this._currentScreenBreakpoint = screenBreakpoint;
       this.$forceUpdate();
     }
   }
@@ -557,6 +561,7 @@ export default class DataTable extends Vue {
       (row: { accordion: any }) => row.accordion
     );
     this.slicedData = this.sliceData(this.data.body);
+    this._uuid = `dt-${uuid4()}`;
   }
 
   dataToRender() {
@@ -672,7 +677,7 @@ export default class DataTable extends Vue {
             }
           }
 
-          return aValue > bValue ? 1 * sortDirection : -1 * sortDirection;
+          return aValue > bValue ? sortDirection : -sortDirection;
         });
         this.$emit(DATA_TABLE_EVENTS.DATA_SORTING, this.sortedData);
         this.currentPage = 1;
@@ -707,7 +712,7 @@ export default class DataTable extends Vue {
           `.${DATA_TABLE_CLASSES.HEAD} i.${ICON_CLASS}`
         );
 
-      Array.prototype.forEach.call(headSortColumnIcons, sortIcon => {
+      headSortColumnIcons.forEach(sortIcon => {
         if (
           sortIcon.className !== `${ICON_CLASS} ${DATA_TABLE_SORT_ICONS.SORT}`
         ) {
@@ -728,7 +733,9 @@ export default class DataTable extends Vue {
               element.removeAttribute('data-sort');
             }
 
-            element = element.parentElement;
+            if (element.parentElement) {
+              element = element.parentElement;
+            }
           }
         }
       });

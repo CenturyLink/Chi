@@ -186,21 +186,23 @@ export default class Pagination extends Vue {
           ${PAGINATION_CLASSES.JUMPER}
         ${this.size ? `-text--${this.size}` : ''}
     `}
-        >
-          <label class={PAGINATION_CLASSES.LABEL}
-                 htmlFor={this._pageJumperUuid}>
-            Go to page:
-          </label>
-          <input
-            class={`
-            ${inputClass}
-            ${this.size ? `-${this.size}` : ''}
-            `}
-            id={this._pageJumperUuid}
-            type="text"
-            value=""
-            onChange={(ev: Event) => this._jumpToPage((ev.target as HTMLInputElement).value)}
-          />
+      >
+        <label class={PAGINATION_CLASSES.LABEL}
+          htmlFor={this._pageJumperUuid}>
+          Go to page:
+        </label>
+        <input
+          class={`
+          ${inputClass}
+          ${this.size ? `-${this.size}` : ''}
+          `}
+          id={this._pageJumperUuid}
+          type="text"
+          value=""
+          onChange={(ev: Event) =>
+            this._jumpToPage((ev.target as HTMLInputElement).value)
+          }
+        />
         </div>
       ) : null;
     this._startPage = this.firstLast
