@@ -289,61 +289,15 @@ h3 Open on hover
 h3 Close button
 .example.-mb--3
   .-p--3
-    .-text--h3 Web components
-    .-d--flex
-      chi-button#button-example-popover-closable-1 With title
-      chi-popover#popover-example-popover-closable-1(
-        title="Title"
-        variant="text"
-        arrow
-        reference="#button-example-popover-closable-1"
-        closable)
-        | Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        | sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      chi-button#button-example-popover-closable-2.-ml--1 Text only
-      chi-popover#popover-example-popover-closable-2(
-        variant="text"
-        arrow
-        reference="#button-example-popover-closable-2"
-        closable)
-        | Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        | sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    .-text--h3 Plain JavaScript
-    button#button-example-popover-closable-html.chi-button(data-target='#popover-example-popover-closable-html') With title
-    section#popover-example-popover-closable-html.chi-popover.-closable(aria-modal='true', role='dialog', aria-label='Popover title')
-      button#close-popover-button.chi-button.-sm.-icon.-close(aria-label='Close')
-        .chi-button__content
-          i.chi-icon.icon-x
-      header.chi-popover__header
-        h2.chi-popover__title Popover title
-      .chi-popover__content
-        p.chi-popover__text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-    button#button-example-popover-closable-html-2.-ml--1.chi-button(data-target='#popover-example-popover-closable-html-2') Text only
-    section#popover-example-popover-closable-html-2.chi-popover.-closable(aria-modal='true', role='dialog', aria-label='Popover title')
-      button#close-popover-button-2.chi-button.-sm.-icon.-close(aria-label='Close')
-        .chi-button__content
-          i.chi-icon.icon-x
-      .chi-popover__content
-        p.chi-popover__text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-      script.
-        const popoverTrigger = document.getElementById('button-example-popover-closable-html');
-        const popoverInstance = chi.popover(popoverTrigger);
-        const closeButton = document.getElementById('close-popover-button');
-
-        closeButton.addEventListener('click', function() {
-          popoverInstance.hide();
-        });
-
-        const popoverTrigger2 = document.getElementById('button-example-popover-closable-html-2');
-        const popoverInstance2 = chi.popover(popoverTrigger2);
-        const closeButton2 = document.getElementById('close-popover-button-2');
-
-        closeButton2.addEventListener('click', function() {
-          popoverInstance2.hide();
-        });
-
+    chi-button#button-example-popover-closable-1 Click Me!
+    chi-popover#popover-example-popover-closable-1(
+      title="Title"
+      variant="text"
+      arrow
+      reference="#button-example-popover-closable-1"
+      closable)
+      | Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+      | sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   .example-tabs.-pl--2
     ul.chi-tabs#examples-close-button
       li.-active
@@ -352,7 +306,7 @@ h3 Close button
         a(href=`#html-close-button`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-close-button
     .chi-tab__description
-      | Use the available methods to show / hide popover when <code>chiMouseEnter</code>, <code>chiMouseLeave</code> or any other event is triggered
+      | Use the attribute <code>closable</code> to render the Popover with a close button.
     :code(lang="html")
       <chi-button id="button-example-popover-closable-1">With title</chi-button>
       <chi-popover
@@ -374,8 +328,6 @@ h3 Close button
         });
       </script>
   .chi-tabs-panel#html-close-button
-    .chi-tab__description
-      | Use the available methods to show / hide popover when <code>mouseEnter</code>, <code>mouseLeave</code> or any other event is triggered
     :code(lang="html")
       <button
         class="chi-button"
@@ -849,8 +801,7 @@ script.
         {button: '#example-5-button-toggle',        popover: '#example-5-popover',              action: "toggle"},
         {button: '#example-6-auto-hide-button',     popover: '#example-6-auto-hide-popover',    action: "toggle"},
         {button: '#example-6-no-auto-hide-button',  popover: '#example-6-no-auto-hide-popover', action: "toggle"},
-        {button: '#button-example-popover-closable-1',  popover: '#popover-example-popover-closable-1', action: "toggle"},
-        {button: '#button-example-popover-closable-2',  popover: '#popover-example-popover-closable-2', action: "toggle"}
+        {button: '#button-example-popover-closable-1',  popover: '#popover-example-popover-closable-1', action: "toggle"}
       ];
 
       Array.prototype.forEach.call(popovers, function(popover){
