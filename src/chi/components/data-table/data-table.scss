@@ -464,7 +464,9 @@ $sizes: (
         }
 
         &.-striped {
-          background-color: $color-background-primary-lighter;
+          @include respond-to(md) {
+            background-color: $color-background-primary-lighter;
+          }
         }
 
         &.-active {
