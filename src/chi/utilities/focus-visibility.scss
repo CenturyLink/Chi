@@ -1,0 +1,76 @@
+.-mouse-control {
+  a,
+  button,
+  input {
+    &.chi-button,
+    &.chi-accordion__trigger {
+      outline: none !important;
+    }
+
+    &.chi-range-slider {
+      outline: none !important;
+    }
+  }
+
+  .chi-checkbox {
+    .chi-checkbox__input {
+      &:focus {
+        & + .chi-checkbox__label {
+          &::before {
+            outline: none !important;
+            outline-offset: 0;
+          }
+        }
+      }
+
+      &.-focus {
+        & + .chi-checkbox__label::before {
+          outline: none !important;
+          outline-offset: 0;
+        }
+      }
+    }
+  }
+
+  .chi-radio {
+    .chi-radio__input {
+      &:focus {
+        & + .chi-radio__label {
+          &::before {
+            outline: none !important;
+            outline-offset: 0;
+          }
+        }
+      }
+
+      &.-focus {
+        & + .chi-radio__label::before {
+          outline: none !important;
+          outline-offset: 0;
+        }
+      }
+    }
+  }
+
+  .chi-switch {
+    .chi-switch__input {
+      &:focus {
+        & + .chi-switch__content {
+          .chi-switch__thumb {
+            outline: none !important;
+            outline-offset: 0;
+          }
+        }
+      }
+
+      &.-focus {
+        & + .chi-switch__content {
+          .chi-switch__thumb {
+            outline: none !important;
+            outline-offset: 0;
+          }
+        }
+      }
+    }
+  }
+}
