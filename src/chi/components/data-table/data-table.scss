@@ -82,7 +82,7 @@ $sizes: (
           border-top: 0;
 
           .chi-icon {
-            opacity: $opacity-0;
+            opacity: $opacity-60;
           }
 
           &:hover,
@@ -90,7 +90,7 @@ $sizes: (
             cursor: pointer;
 
             .chi-icon {
-              opacity: $opacity-60;
+              opacity: $opacity-100;
             }
           }
 
