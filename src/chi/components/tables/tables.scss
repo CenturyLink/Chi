@@ -21,16 +21,13 @@ $sizes: (
 
 $vertical-alignments: (top, bottom, middle);
 
-th {
-  text-align: left;
-}
-
 .chi-table {
   border-spacing: 0;
   font-size: $font-size-base;
   line-height: $line-height-sm;
   margin: 0;
   padding: 0;
+  text-align: left;
   width: 100%;
 
   @each $type in map-keys($sizes) {
@@ -62,14 +59,17 @@ th {
   tr {
     background-color: $color-background-white;
 
-    & th {
-      border-bottom: 0.0625rem solid $color-border-base-dark;
+    th,
+    td {
+      border-bottom: 0.0625rem solid $color-border-base-light;
       padding: 1rem;
     }
 
-    & td {
-      border-bottom: 0.0625rem solid $color-border-base-light;
-      padding: 1rem;
+    th,
+    .-th {
+      &:not([scope="row"]) {
+        border-bottom: 0.0625rem solid $color-border-base-dark;
+      }
     }
 
     @each $type in map-keys($sizes) {
@@ -87,8 +87,11 @@ th {
   }
 
   th {
-    border-bottom: 0.0625rem solid $color-border-base-dark;
     font-weight: $font-weight-semi-bold;
+
+    &:not([scope="row"]) {
+      border-bottom: 0.0625rem solid $color-border-base-dark;
+    }
 
     &.-sorted {
       div {
@@ -166,9 +169,13 @@ th {
 
   &.-portal {
     tr {
-      th {
+      th,
+      .-th {
         background-color: $color-background-base-darker;
-        border-bottom: 0.0625rem solid $color-border-base-dark;
+
+        &:not([scope="row"]) {
+          border-bottom: 0.0625rem solid $color-border-base-dark;
+        }
       }
 
       &.-xs {
@@ -305,7 +312,8 @@ th {
       }
 
       tr {
-        & th {
+        & th,
+        & .-th {
           border: 0.0625rem solid $color-border-base-dark;
           border-bottom-width: 0;
           border-right-width: 0;
@@ -322,6 +330,27 @@ th {
 
           &:last-of-type {
             border-right-width: 0.0625rem;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          & th,
+          & .-th {
+            border-width: 0.0625rem 0 0.0625rem 0.0625rem;
+
+            &:not([scope="col"]) {
+              &:last-of-type {
+                border-right-width: 0;
+              }
+            }
+
+            &[scope="row"] {
+              &:last-of-type {
+                border-top-width: 0;
+              }
+            }  
           }
         }
       }
