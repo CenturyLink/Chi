@@ -71,11 +71,39 @@ $sizes: (
         padding: 0.75rem 1rem;
         position: relative;
 
-        .chi-button {
+        .chi-icon {
           margin-left: 0.5rem;
+        }
 
-          .icon-arrow-sync {
-            transform: rotate(90deg);
+        &.-sorting {
+          background-color: transparent;
+          border-left: 0;
+          border-right: 0;
+          border-top: 0;
+
+          .chi-icon {
+            opacity: $opacity-60;
+          }
+
+          &:hover,
+          &:focus {
+            cursor: pointer;
+
+            .chi-icon {
+              opacity: $opacity-100;
+            }
+          }
+
+          &.-active {
+            .chi-icon {
+              opacity: $opacity-100;
+            }
+
+            &.-descending {
+              .chi-icon {
+                transform: rotate(180deg);
+              }
+            }
           }
         }
       }
@@ -309,46 +337,6 @@ $sizes: (
 
         &::before {
           display: none;
-        }
-      }
-    }
-  }
-
-  &.-sorting {
-    .chi-data-table__head {
-      .chi-data-table__cell {
-        .chi-button {
-          opacity: 0;
-        }
-
-        .chi-icon {
-          &.icon-arrow-up,
-          &.icon-arrow-down,
-          &.icon-arrow-sync {
-            font-weight: 600;
-          }
-        }
-
-        &:hover {
-          cursor: pointer;
-
-          .chi-button {
-            opacity: 1;
-          }
-        }
-
-        &.-active {
-          .chi-button {
-            opacity: 1;
-          }
-
-          &.-descending {
-            .chi-button {
-              .chi-icon {
-                transform: rotate(180deg);
-              }
-            }
-          }
         }
       }
     }
