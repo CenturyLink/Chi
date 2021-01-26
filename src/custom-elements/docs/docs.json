@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-01-20T23:48:21",
+  "timestamp": "2021-01-26T22:04:55",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2047,6 +2047,7 @@
           "reflectToAttr": true,
           "docs": "to add a close button to the popover",
           "docsTags": [],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
