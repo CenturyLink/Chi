@@ -121,8 +121,10 @@ $transition-duration: 0.2s;
     padding: 1rem;
     position: relative;
 
-    .chi-button {
-      & + .chi-button {
+    .chi-button,
+    chi-button {
+      & + .chi-button,
+      & + chi-button {
         margin-left: 1rem;
       }
     }

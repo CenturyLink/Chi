@@ -52,8 +52,10 @@
         justify-content: center;
       }
 
-      .chi-button {
-        + .chi-button {
+      .chi-button,
+      chi-button {
+        & + .chi-button,
+        & + chi-button {
           margin-left: 0.5rem;
         }
       }
