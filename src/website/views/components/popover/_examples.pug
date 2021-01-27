@@ -286,6 +286,68 @@ h3 Open on hover
         });
       </script>
 
+h3 Close button
+.example.-mb--3
+  .-p--3
+    chi-button#button-example-popover-closable-1 Click Me!
+    chi-popover#popover-example-popover-closable-1(
+      title="Title"
+      variant="text"
+      arrow
+      reference="#button-example-popover-closable-1"
+      closable)
+      | Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+      | sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-close-button
+      li.-active
+        a(href=`#webcomponent-close-button`) Web Component
+      li
+        a(href=`#html-close-button`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-close-button
+    .chi-tab__description
+      | Use the attribute <code>closable</code> to render the Popover with a close button.
+    :code(lang="html")
+      <chi-button id="button-example-popover-closable-1">With title</chi-button>
+      <chi-popover id="popover-example-popover-closable-1" title="Title" variant="text" arrow reference="#button-example-popover-closable-1" closable>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </chi-popover>
+
+      <script>
+        const button = document.getElementById("button-example-popover-closable-1");
+        const popover = document.getElementById("popover-example-popover-closable-1");
+
+        button.addEventListener("click", function() {
+            popover.toggle();
+        });
+      </script>
+  .chi-tabs-panel#html-close-button
+    :code(lang="html")
+      <button class="chi-button" id="button-example-popover-closable-html" data-target="#popover-example-popover-closable-html">Popover</button>
+      <section class="chi-popover -closable" id="popover-example-popover-closable-html" aria-modal="true" role="dialog" aria-label="Popover title">
+        <button class="chi-button -sm -icon -close" id="close-popover-button" aria-label="Close">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-x"></i>
+          </div>
+        </button>
+        <header class="chi-popover__header">
+          <h2 class="chi-popover__title">Popover title</h2>
+        </header>
+        <div class="chi-popover__content">
+          <p class="chi-popover__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </section>
+
+      <script>
+        const popoverTrigger = document.getElementById("button-example-popover-closable-html");
+        const popoverInstance = chi.popover(popoverTrigger);
+        const closeButton = document.getElementById("close-popover-button");
+
+        closeButton.addEventListener("click", function () {
+          popoverInstance.hide();
+        });
+      </script>
+
 h3 Positioning
 p.-text
   | Further positions can be used in this mode: <code>top</code>,
@@ -689,6 +751,7 @@ script.
       chi.tab(document.getElementById('examples-interaction'));
       chi.tab(document.getElementById('examples-autohide-true'));
       chi.tab(document.getElementById('examples-hover'));
+      chi.tab(document.getElementById('examples-close-button'));
 
       buttonOpenOnHover.addEventListener('chiMouseEnter', function() {
         popoverOpenOnHover.show();
@@ -720,7 +783,8 @@ script.
         {button: '#example-5-button-hide',          popover: '#example-5-popover',              action: "hide"},
         {button: '#example-5-button-toggle',        popover: '#example-5-popover',              action: "toggle"},
         {button: '#example-6-auto-hide-button',     popover: '#example-6-auto-hide-popover',    action: "toggle"},
-        {button: '#example-6-no-auto-hide-button',  popover: '#example-6-no-auto-hide-popover', action: "toggle"}
+        {button: '#example-6-no-auto-hide-button',  popover: '#example-6-no-auto-hide-popover', action: "toggle"},
+        {button: '#button-example-popover-closable-1',  popover: '#popover-example-popover-closable-1', action: "toggle"}
       ];
 
       Array.prototype.forEach.call(popovers, function(popover){

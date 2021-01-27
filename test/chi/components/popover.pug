@@ -47,6 +47,22 @@ div(class=`test-with-custom-content`, style='width: 450px; height: 320px;')
         button.chi-button.-danger Delete
         button.chi-button Cancel
       .chi-popover__arrow
+
+div(class=`test-closable`, style='width: 450px; height: 320px;')
+  span.-text--h2=`Popover closable`
+  .-position--relative
+    section.chi-popover.-closable.-active(aria-modal='true', role='dialog', aria-label='Popover title')
+      button.chi-button.-sm.-icon.-close(aria-label='Close')
+        .chi-button__content
+          div(class=`chi-alert__icon chi-icon`)
+            svg
+              use(xlink:href='#icon-x')
+      header.chi-popover__header
+        h2.chi-popover__title Popover title
+      .chi-popover__content
+        p.chi-popover__text
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
 script.
   document.addEventListener(
     'DOMContentLoaded',
