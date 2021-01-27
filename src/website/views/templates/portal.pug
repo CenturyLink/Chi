@@ -449,7 +449,7 @@ h3 Table with header cells in the top row and first column
               label(for="unique-id-ba2") Option 2
               input.chi-picker__input(type="radio" name="unique-name-ba" id="unique-id-ba3")
               label(for="unique-id-ba3") Option 3
-        div(style="overflow: auto;")
+        .-overflow--auto
           table.chi-table.-bordered.-striped.-xs.-text--center
             tr
               td.-th
@@ -633,7 +633,7 @@ h3 Table with header cells in the top row and first column
               </div>
             </div>
           </div>
-          <div style="overflow: auto;">
+          <div class="-overflow--auto">
             <table class="chi-table -bordered -striped -xs -text--center">
               <tr>
                 <td class="-th"></td>
@@ -1742,8 +1742,8 @@ h3 Alert
       <script>chi.modal(document.getElementById('modal-trigger-alert'));</script>
 
 h2 Drawer
-.example.-mb--3(style='overflow:hidden;')
-  .-position--relative.-z--0(style="height:30rem;overflow:hidden;")
+.example.-mb--3.-overflow--hidden
+  .-position--relative.-z--0.-overflow--hidden(style="height:30rem;")
     .chi-backdrop.-position--absolute
       .chi-backdrop__wrapper
         #drawer-23.chi-drawer.-bottom.-portal.-active.-position--absolute

@@ -1,0 +1,34 @@
+---
+title: Overflow
+description: Use to change how content overflows an element.
+---
+
+h2 Examples
+h3 Auto
+p.-text
+  | Use <code>-overflow--auto</code> to show scrollbars if content overflows its box.
+  | If content fits within its box, no scrollbars are shown.
+.example.-mb--3
+  .-p--2
+    .chi-grid.-no-gutter
+      .chi-col.-w--6.-w-md--4.-p--1
+        .-overflow--auto.-b--1.-p--1(style=`height:4rem;`)
+          p.-text.-m--0
+            | This is an example of an element with a defined height
+            | using <code>-overflow--auto</code> to scroll the content overflowing its box.
+  :code(lang="html")
+    <div class="-overflow--auto">...</div>
+
+h3 Hidden
+p.-text
+  | Use <code>-overflow--hidden</code> to hide content that overflows its box. No scrollbars are shown.
+.example.-mb--3
+  .-p--2
+    .chi-grid.-no-gutter
+      .chi-col.-w--6.-w-md--4.-p--1
+        .-overflow--hidden.-b--1.-p--1(style=`height:4rem;`)
+          p.-text.-m--0
+            | This is an example of an element with a defined height
+            | using <code>-overflow--hidden</code> to hide its overflow.
+  :code(lang="html")
+    <div class="-overflow--hidden">...</div>
