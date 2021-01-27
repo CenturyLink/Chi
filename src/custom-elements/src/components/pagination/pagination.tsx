@@ -156,6 +156,7 @@ export class Pagination {
         aria-label={ariaLabel}
         aria-disabled={state === 'disabled'}
         disabled={state === 'disabled'}
+        type="button"
       >
         <div class="chi-button__content">
           {!!icon ? <i class={`chi-icon icon-${icon}`} aria-hidden="true"></i> : page}
