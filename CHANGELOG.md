@@ -1,4 +1,33 @@
 # CHANGELOG
+## 3.8.0 (January 28, 2021)
+### Components
+#### Added
+* Added: Focus utility to Chi.js to hide `:focus` outlines on links, buttons, and inputs if user is using a pointing device.
+* Added: Popover now supports the attribute `closable` to render Popover components with a close button.
+* Added: Icons `icon-edge-solutions`, `icon-edit-create`.
+* Added: Overflow utility to control how content overflows an element.
+* Added: Text utility now supports the class `-text--boldest` to render text with the boldest font-weight value available.
+* Added: Date web component now supports the ability to change language.
+* Added: Tooltip component now supports events `chiTooltipShow` and `chiTooltipHide`.
+* Added: Popover Chi.js component now supports events `chiPopoverShow`, `chiPopoverHide`, `chiPopoverShown`, and `chiPopoverHidden`.
+* Added: Drawer Chi.js component now supports events `chiDrawerShow`, `chiDrawerHide`, `chiDrawerShown`, and `chiDrawerHidden`.
+* Added: Dropdown component now supports events `chiDropdownShow` and `chiDropdownHide`.
+* Added: Data table now supports three level rows.
+#### Changed
+* Changed: Tab component has been updated with accessibility improvements including full keyboard navigation.
+* Changed: Data table striped row behavior on child rows has been improved.
+* Changed: Data table headers have been improved to better support table sorting.
+* Changed: Time picker component has been updated with improved formatting and UX enhancements.
+#### Fixed
+* Fixed: Pagination buttons placed in a form triggered an unexpected submit due to a missing `type="button"` attribute.
+* Fixed: Buttons in Card, Modal, and Expansion Panel footers did not automatically render margin between sibling web component buttons.
+### Documentation
+#### Added
+* Added: Tooltip now includes an example for tooltips on disabled buttons.
+* Added: Portal templates have been updated to include a new common table style with header cells in the top row and first column.
+#### Fixed
+* Fixed: Spinner button documentation examples contained an unnecessary closing div tag.
+
 ## 3.7.0 (January 14, 2021)
 ### Components
 #### Added
@@ -14,7 +43,7 @@
 ### Components
 #### Added
 * Added: Time picker and Datetime picker components to allow users to enter a time through text input or choose a time from a picker.
-* Added: Date Picker web component now supports <code>resetDate</code> method.
+* Added: Date Picker web component now supports `resetDate` method.
 #### Changed
 * Changed: Modal components with theme `-portal` now align buttons in `chi-modal__footer` to the right (Chi's default) instead of center.
 * Changed: Picker group components with theme `-portal` now include a text color change on hover.
