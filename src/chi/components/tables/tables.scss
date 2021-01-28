@@ -91,6 +91,10 @@ $vertical-alignments: (top, bottom, middle);
 
     &:not([scope='row']) {
       border-bottom: 0.0625rem solid $color-border-base-dark;
+
+      &:not([scope='col']) {
+        text-align: left;
+      }
     }
 
     &.-sorted {

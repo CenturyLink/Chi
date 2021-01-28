@@ -62,7 +62,7 @@ class Tab extends Component {
   keyupEventListener(event, index) {
     const key = event.keyCode;
     const vertical = this._elem.classList.contains(CLASS_VERTICAL);
-    const activeTabIndex = Array.from(this._tabs).indexOf(this.getActiveTab());
+    const activeTabIndex = [].slice.call(this._tabs).indexOf(this.getActiveTab());
 
     event.preventDefault();
     event.stopPropagation();
