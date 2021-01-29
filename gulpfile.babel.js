@@ -21,6 +21,8 @@ const requires = {
   'build-website-views': require('./tasks/build-website-views.js'),
   'build-website': require('./tasks/build-website.js'),
   'copy-chi-ce-scripts': require('./tasks/copy-chi-ce-scripts'),
+  'srichicss' : require('./tasks/srichicss'),
+  'srichijs' : require('./tasks/srichijs'),
   'build': require('./tasks/build.js'),
   'backstop': require('./tasks/backstop.js'),
   'ci': require('./tasks/ci.js'),
@@ -34,7 +36,8 @@ const requires = {
   'vue-watch': require('./tasks/watch-vue.js'),
   'lint-typescript': require('./tasks/lint-typescript'),
   'test-custom-elements': require('./tasks/test-custom-elements'),
-  'test-e2e': require('./tasks/test-e2e')
+  'test-e2e': require('./tasks/test-e2e'),
+   
 };
 
 gulp.task('default', function(){});

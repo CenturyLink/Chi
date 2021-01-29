@@ -21,7 +21,8 @@
     "lint:css": "gulp lint:css",
     "test:backstop:responsive": "gulp backstop-test-responsive",
     "test:backstop:non-responsive": "gulp backstop-test-non-responsive",
-    "test:backstop:non-responsive:ce": "gulp backstop-custom-elements-test"
+    "test:backstop:non-responsive:ce": "gulp backstop-custom-elements-test",
+    "sri": "gulp sri"
   },
   "devDependencies": {
     "@babel/core": "7.3.4",
