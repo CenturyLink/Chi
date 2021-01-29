@@ -14,6 +14,6 @@ export const SCREEN_BREAKPOINTS = {
 export const TOOLTIP_ANIMATION_DELAY = 300;
 
 export const DATA_TABLE_SORT_ICONS = {
-  SORT: 'icon-arrow-sync',
+  SORT: 'icon-arrow-sort',
   ARROW: 'icon-arrow-up'
 };

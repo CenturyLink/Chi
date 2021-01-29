@@ -12,6 +12,17 @@
     }
   }
 
+  .chi-data-table {
+    .chi-data-table__head {
+      button {
+        &.chi-data-table__cell {
+          outline: none !important;
+          outline-offset: 0;
+        }
+      }
+    }
+  }
+
   .chi-checkbox {
     .chi-checkbox__input {
       &:focus {

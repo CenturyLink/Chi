@@ -3,6 +3,7 @@
     <h2>Data Table example</h2>
     <ChiTable
       :data="table"
+      :config="config"
       @chiSelectedRowsChange="(e) => this.rowSelect(e)"
       @chiPageChange="(e) => this.pageChange(e)"
       @chiPageSizeChange="(e) => this.pageSizeChange(e)"
@@ -67,52 +68,54 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
   },
   data: () => {
     return {
-      table: {
-        config: {
-          columnResize: true,
-          noResultsMessage:
-            'No matches found. Please revise search criteria and try again.',
-          style: {
-            portal: true,
-            noBorder: false,
-            bordered: false,
-            hover: false,
-            size: 'md',
-            striped: true
-          },
-          pagination: {
-            compact: true,
-            firstLast: true,
-            pageJumper: true
-          },
-          selectable: true,
-          columnSizes: {
-            xs: [5, 5, 5, 5, 5, 5, 5, 5],
-            sm: [10, 10, 10, 10, 10, 10, 10, 10],
-            md: [5, 15, 15, 15, 15, 15, 15, 5],
-            lg: [5, 15, 15, 15, 15, 15, 15, 5],
-            xl: [5, 15, 10, 15, 15, 15, 15, 5]
-          }
+      config: {
+        columnResize: true,
+        noResultsMessage:
+          'No matches found. Please revise search criteria and try again.',
+        activePage: 1,
+        style: {
+          portal: true,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: true
         },
+        pagination: {
+          compact: true,
+          firstLast: true,
+          pageJumper: true
+        },
+        selectable: true,
+        columnSizes: {
+          xs: [5, 5, 5, 5, 5, 5, 5, 5],
+          sm: [10, 10, 10, 10, 10, 10, 10, 10],
+          md: [5, 15, 15, 15, 15, 15, 15, 5],
+          lg: [5, 15, 15, 15, 15, 15, 15, 5],
+          xl: [5, 15, 10, 15, 15, 15, 15, 5]
+        }
+      },
+      table: {
         head: {
           alerts: { label: 'Alerts', align: 'center' },
-          ticketId: { label: 'Ticket ID', sortable: true, sortBy: 'id' },
+          ticketId: { label: 'Ticket ID', sortable: true, sortBy: 'id', sortDataType: 'string' },
           status: {
             label: 'Status',
             sortable: true,
             sortBy: 'status',
+            sortDataType: 'string',
             align: 'center'
           },
-          supportType: { label: 'Support Type', sortable: true },
-          servicetype: { label: 'Service Type', sortable: true },
-          created: { label: 'Created', sortable: true },
-          productId: { label: 'Product / Service ID', sortable: true },
+          supportType: { label: 'Support Type', sortable: true, sortDataType: 'string' },
+          servicetype: { label: 'Service Type', sortable: true, sortDataType: 'string' },
+          created: { label: 'Created', sortable: true, sortDataType: 'string' },
+          productId: { label: 'Product / Service ID', sortable: true, sortDataType: 'string' },
           actions: { label: ' ', align: 'right', allowOverflow: true }
         },
         body: [
           {
             id: 'NTM000021063',
-            accordion: {
+            nestedContent: {
               value: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
@@ -159,7 +162,7 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
           {
             id: 'NTM000021064',
             active: false,
-            accordion: {
+            nestedContent: {
               value: 'asdasdasd'
             },
             data: [
@@ -202,7 +205,7 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
           {
             id: 'NTM000021066',
             active: false,
-            accordion: {
+            nestedContent: {
               template: 'accordionContent',
               payload: {
                 id: 'NTM000021066'
@@ -226,7 +229,7 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
           {
             id: 'NTM0000210662',
             active: false,
-            accordion: {
+            nestedContent: {
               table: {
                 data: [
                   {
@@ -261,7 +264,7 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                   {
                     id: 'NTM00002106611',
                     active: false,
-                    accordion: {
+                    nestedContent: {
                       table: {
                         data: [
                           {
@@ -299,7 +302,7 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                           {
                             id: 'bbb',
                             active: false,
-                            accordion: {
+                            nestedContent: {
                               table: {
                                 data: [
                                   {

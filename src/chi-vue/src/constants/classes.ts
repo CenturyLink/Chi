@@ -8,6 +8,7 @@ export const ANIMATED_CLASS = '-animated';
 export const PORTAL_CLASS = '-portal';
 export const TRANSITIONING_CLASS = '-transitioning';
 export const SR_ONLY = '-sr--only';
+export const EXPANDED_CLASS = '-expanded';
 
 /* Backdrop */
 export const BACKDROP_CLASSES = {

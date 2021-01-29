@@ -13,8 +13,8 @@
 }
 
 .chi-data-table__head {
-  .chi-data-table__cell {
-    button {
+  button {
+    &.chi-data-table__cell {
       i {
         &.chi-icon {
           &.icon-arrow-up {

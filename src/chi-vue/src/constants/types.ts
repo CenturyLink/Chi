@@ -55,7 +55,7 @@ export interface DataTableStyleConfig {
 export interface DataTableRow {
   active: boolean;
   data: Record<string, any>;
-  accordion: {
+  nestedContent: {
     template: string;
     value: string;
     payload: any;
@@ -64,24 +64,26 @@ export interface DataTableRow {
 }
 
 export interface DataTableData {
-  config: {
-    columnResize: boolean;
-    noResultsMessage: string;
-    style: DataTableStyleConfig;
-    selectable: boolean;
-    columnSizes: {
-      xs: number[];
-      sm: number[];
-      md: number[];
-      lg: number[];
-      xl: number[];
-    };
-    pagination: {
-      compact: boolean;
-      firstLast: boolean;
-      pageJumper: boolean;
-    };
-  };
   head: any;
   body: DataTableRow[];
+}
+
+export interface DataTableConfig {
+  columnResize: boolean;
+  noResultsMessage: string;
+  activePage: number;
+  style: DataTableStyleConfig;
+  selectable: boolean;
+  columnSizes: {
+    xs: number[];
+    sm: number[];
+    md: number[];
+    lg: number[];
+    xl: number[];
+  };
+  pagination: {
+    compact: boolean;
+    firstLast: boolean;
+    pageJumper: boolean;
+  };
 }
