@@ -18,5 +18,5 @@ export const TOOLTIP_EVENTS = {
   SHOW: 'chiTooltipShow',
   HIDE: 'chiTooltipHide',
   SHOWN: 'chiTooltipShown',
-  HIDDEN: 'chiTooltipHidden'
+  HIDDEN: 'chiTooltipHidden',
 };

@@ -29,10 +29,9 @@ export default class Tooltip extends Vue {
 
   generateTooltipElement() {
     this._tooltipElement = (
-      <div id={this._uuid} class={[
-        TOOLTIP_CLASSES.TOOLTIP_ELEMENT,
-        this.color === 'light' ? LIGHT_CLASS : ''
-      ].join(' ')}>
+      <div
+        id={this._uuid}
+        class={[TOOLTIP_CLASSES.TOOLTIP_ELEMENT, this.color === 'light' ? LIGHT_CLASS : ''].join(' ')}>
         <span>{this.message}</span>
       </div>
     );
@@ -55,21 +54,21 @@ export default class Tooltip extends Vue {
     }
 
     if (this._tooltipElementNode && !this._shown) {
-        this._shown = true;
-        this._animation = ThreeStepsAnimation.animationFactory(
-          () => {
-            this._tooltipElementNode.classList.add(TRANSITIONING_CLASS);
-          },
-          () => {
-            this._tooltipElementNode.classList.add(ACTIVE_CLASS);
-          },
-          () => {
-            this._tooltipElementNode.classList.remove(TRANSITIONING_CLASS);
-            this.$emit(TOOLTIP_EVENTS.SHOWN);
-          },
-          ANIMATION_DURATION.SHORT
-        );
-      }
+      this._shown = true;
+      this._animation = ThreeStepsAnimation.animationFactory(
+        () => {
+          this._tooltipElementNode.classList.add(TRANSITIONING_CLASS);
+        },
+        () => {
+          this._tooltipElementNode.classList.add(ACTIVE_CLASS);
+        },
+        () => {
+          this._tooltipElementNode.classList.remove(TRANSITIONING_CLASS);
+          this.$emit(TOOLTIP_EVENTS.SHOWN);
+        },
+        ANIMATION_DURATION.SHORT
+      );
+    }
   }
 
   hide() {
@@ -82,20 +81,20 @@ export default class Tooltip extends Vue {
     }
 
     if (this._tooltipElementNode && this._shown) {
-        this._shown = false;
-        this._animation = ThreeStepsAnimation.animationFactory(
-          () => {
-            this._tooltipElementNode.classList.add(TRANSITIONING_CLASS);
-          },
-          () => {
-            this._tooltipElementNode.classList.remove(ACTIVE_CLASS);
-          },
-          () => {
-            this._tooltipElementNode.classList.remove(TRANSITIONING_CLASS);
-            this.$emit(TOOLTIP_EVENTS.HIDDEN);
-          },
-          ANIMATION_DURATION.SHORT
-        );
+      this._shown = false;
+      this._animation = ThreeStepsAnimation.animationFactory(
+        () => {
+          this._tooltipElementNode.classList.add(TRANSITIONING_CLASS);
+        },
+        () => {
+          this._tooltipElementNode.classList.remove(ACTIVE_CLASS);
+        },
+        () => {
+          this._tooltipElementNode.classList.remove(TRANSITIONING_CLASS);
+          this.$emit(TOOLTIP_EVENTS.HIDDEN);
+        },
+        ANIMATION_DURATION.SHORT
+      );
     }
   }
 
@@ -119,7 +118,7 @@ export default class Tooltip extends Vue {
         };
         const triggerHide = () => {
           this.hide();
-        }
+        };
 
         this._popper = createPopper(slotElement as Element, this._tooltipElementNode, {
           placement: this.position,
@@ -127,10 +126,10 @@ export default class Tooltip extends Vue {
             {
               name: 'offset',
               options: {
-                offset: [0, 8]
-              }
+                offset: [0, 8],
+              },
             },
-          ]
+          ],
         });
 
         if (slotElement) {
@@ -140,7 +139,7 @@ export default class Tooltip extends Vue {
           slotElement.addEventListener('blur', triggerHide.bind(this));
         }
       });
-    };
+    }
   }
 
   render() {

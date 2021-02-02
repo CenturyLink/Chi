@@ -18,8 +18,8 @@ import TooltipView from './views/TooltipView.vue';
   components: {
     PaginationView,
     DrawerView,
-    TooltipView
-  }
+    TooltipView,
+  },
 })
 export default class App extends Vue {}
 </script>
