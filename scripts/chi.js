@@ -73,6 +73,39 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
     .pipe(gulp.dest(dest));
 }
 
+export function buildCtl({dest = 'dist' }) {
+  return gulp.src(
+    path.join(__dirname, '..', 'src', 'chi', 'index-ctl.scss')
+  )
+    .pipe(plumber())
+    .pipe(sass({
+      includePaths: [
+        'node_modules',
+        path.join(__dirname, '..', 'src', 'chi')
+      ],
+      outputstyle: 'expanded'
+    }))
+    .pipe(postcss([
+      require('autoprefixer')({
+        browsers: ['last 2 versions', 'ie >= 10']
+      }),
+      require('postcss-svg')({
+        dirs: [iconsFolder]
+      }),
+      require('cssnano')({
+        preset: ['default', {
+          discardComments: {
+            removeAll: true
+          }
+        }],
+        zindex: false
+      })
+    ]))
+    .pipe(header(`${copyright} \n`))
+    .pipe(concat('chi-ctl.css'))
+    .pipe(gulp.dest(dest));
+}
+
 export function buildSprite({ dest = 'dist' }) {
   var config = {
     shape: {

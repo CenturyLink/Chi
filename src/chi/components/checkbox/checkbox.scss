@@ -72,8 +72,13 @@
     &:checked {
       & + .chi-checkbox__label {
         &::before {
-          background-color: $color-background-primary;
-          border-color: $color-border-primary;
+          @if $theme == ctl {
+            background-color: $ctl-color-background-primary;
+            border-color: $ctl-color-border-primary;
+          } @else {
+            background-color: $color-background-primary;
+            border-color: $color-border-primary;
+          }
         }
 
         &::after {

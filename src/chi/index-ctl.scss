@@ -1,4 +1,5 @@
 @import '_variables';
+@import '_ctl_variables';
 @import '_mixins';
 
 // sass-lint:disable clean-import-paths
@@ -7,7 +8,7 @@
 @import 'foundations/reset/reset';
 @import 'foundations/typography/root-typography';
 
-$theme: 'base';
+$theme: ctl;
 
 .chi {
   @extend %root-typography;
@@ -41,8 +42,6 @@ $theme: 'base';
   @import 'components/input-file/input-file';
   @import 'components/input-number/input-number';
   @import 'components/input-text/input-text';
-  @import 'components/link/link';
-  @import 'components/marketing-icon/marketing-icon';
   @import 'components/mobile-navigation/mobile-navigation';
   @import 'components/modal/modal';
   @import 'components/navigation/navigation';
@@ -71,7 +70,6 @@ $theme: 'base';
   @import 'utilities/flex';
   @import 'utilities/opacity';
   @import 'utilities/overflow';
-  @import 'utilities/image';
   @import 'utilities/position';
   @import 'utilities/shadow';
   @import 'utilities/sizing';
@@ -85,7 +83,6 @@ $theme: 'base';
   @import 'skeletons/button';
   @import 'skeletons/date-picker';
   @import 'skeletons/icon';
-  @import 'skeletons/marketing-icon';
   @import 'skeletons/popover';
   @import 'skeletons/progress';
   @import 'skeletons/textarea';
