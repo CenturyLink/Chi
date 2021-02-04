@@ -1,6 +1,26 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
+const ASSET_PATH = '/';
 
+function PublicPathWebpackPlugin() {}
+
+PublicPathWebpackPlugin.prototype.apply = function(compiler) {
+  compiler.hooks.entryOption.tap('PublicPathWebpackPlugin', (context, entry) => {
+    if (entry['module.common']) {
+      entry['module.common'] = path.resolve(__dirname, './src/main.js');
+    }
+    if (entry['module.umd']) {
+      entry['module.umd'] = path.resolve(__dirname, './src/main.js');
+    }
+    if (entry['module.umd.min']) {
+      entry['module.umd.min'] = path.resolve(__dirname, './src/main.js');
+    }
+  });
+  compiler.hooks.beforeRun.tap('PublicPathWebpackPlugin', compiler => {
+    compiler.options.output.publicPath = ASSET_PATH;
+  });
+};
 module.exports = {
   configureWebpack: config => {
     if (!config.externals) {
@@ -19,6 +39,7 @@ module.exports = {
         terserOptions.compress.drop_debugger = true;
         terserOptions.keep_classnames = true;
         terserOptions.keep_fnames = true;
+        config.plugins.unshift(new PublicPathWebpackPlugin());
         break;
 
       case 'dev':
@@ -27,7 +48,6 @@ module.exports = {
         config.plugins.push(new BundleAnalyzerPlugin());
         config.output.filename = '[name].js';
         config.output.chunkFilename = '[name].js';
-        config.externals.shell = 'shell';
         config.externals.vue = 'Vue';
         break;
 
