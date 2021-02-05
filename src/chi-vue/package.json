@@ -2,10 +2,16 @@
   "name": "chi-vue",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/@centurylink/chi-vue.common.js",
+  "types": "index.d.ts",
+  "files": [
+    "dist/**/*",
+    "index.d.ts"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:component": "vue-cli-service build --mode prod.component --target lib src/build/component-library.ts --formats commonjs --name @centurylink/ux-chi",
+    "build:component": "vue-cli-service build --mode prod.component --target lib src/build/component-library.ts --formats commonjs --name @centurylink/chi-vue",
     "lint": "vue-cli-service lint",
     "prettier": "prettier './{src/**/*(*.ts|*.vue|*.tsx),*.js,tests/**/*(*.js)}' --write",
     "prettier:checker": "prettier './{src/**/*(*.ts|*.vue|*.tsx),*.js,tests/**/*(*.js)}' --check"
