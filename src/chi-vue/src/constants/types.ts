@@ -52,15 +52,21 @@ export interface DataTableStyleConfig {
   size: DataTableSizes;
 }
 
+export interface DataTableRowNestedContent {
+  table: {
+    data: DataTableRow[];
+  };
+  template: string;
+  value: string;
+  payload: any;
+}
+
 export interface DataTableRow {
   active: boolean;
   data: Record<string, any>;
-  nestedContent: {
-    template: string;
-    value: string;
-    payload: any;
-  };
-  id: string;
+  nestedContent: DataTableRowNestedContent;
+  id: string | number;
+  rowNumber: string;
 }
 
 export interface DataTableData {
@@ -72,6 +78,7 @@ export interface DataTableConfig {
   columnResize: boolean;
   noResultsMessage: string;
   activePage: number;
+  resultsPerPage: number;
   style: DataTableStyleConfig;
   selectable: boolean;
   columnSizes: {

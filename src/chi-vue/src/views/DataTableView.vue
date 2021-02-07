@@ -89,11 +89,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
         selectable: true,
         columnSizes: {
           xs: [5, 5, 5, 5, 5, 5, 5, 5],
-          sm: [10, 10, 10, 10, 10, 10, 10, 10],
-          md: [5, 15, 15, 15, 15, 15, 15, 5],
-          lg: [5, 15, 15, 15, 15, 15, 15, 5],
+          sm: [10, 10, 10, 0, 10, 10, 10, 10],
+          md: [5, 15, 15, 0, 15, 15, 15, 5],
+          lg: [5, 15, 15, 0, 15, 15, 15, 5],
           xl: [5, 15, 10, 15, 15, 15, 15, 5]
-        }
+        },
+        resultsPerPage: 10
       },
       table: {
         head: {
