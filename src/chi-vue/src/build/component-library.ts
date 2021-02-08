@@ -4,9 +4,9 @@ declare class ComponentLibrary {
 
 const exportComponent: ComponentLibrary = {
   components: {
-    Drawer: () => import(/* webpackChunkName: "drawer" */ '../components/drawer/drawer'),
-    Pagination: () => import(/* webpackChunkName: "pagination" */ '../components/pagination/pagination'),
-    Tooltip: () => import(/* webpackChunkName: "tooltip" */ '../components/tooltip/tooltip'),
+    ChiDrawer: () => import(/* webpackChunkName: "drawer" */ '../components/drawer/drawer'),
+    ChiPagination: () => import(/* webpackChunkName: "pagination" */ '../components/pagination/pagination'),
+    ChiTooltip: () => import(/* webpackChunkName: "tooltip" */ '../components/tooltip/tooltip'),
   },
 };
 
