@@ -72,7 +72,9 @@ class MobileNav extends Component {
       firstLevelMenuItems,
       (menuItem) => {
         const drawerId = menuItem.getAttribute('href');
-        const drawer = document.querySelector(`.chi-drawer${drawerId}`);
+        const drawer = drawerId[0] === '#' ?
+            document.querySelector(`.chi-drawer${drawerId}`) :
+            null;
 
         if (drawer) {
           const returnBackButton = drawer.querySelector(`.${DRAWER_HEADER_CLASS} button.${chi.classes.BACK}`);
@@ -176,7 +178,10 @@ class MobileNav extends Component {
   _activateFirstLevelMenuItem(menuItem) {
     const currentlyActiveMenuItem = this._getActiveFirstLevelItem();
     const menuItemToActivate = menuItem.parentNode;
-    const menuItemDrawer = this._drawersContainer.querySelector(`.${DRAWER_CLASS}${menuItem.getAttribute('href')}`);
+    const drawerId = menuItem.getAttribute('href');
+    const menuItemDrawer = drawerId[0] === '#' ?
+      this._drawersContainer.querySelector(`.${DRAWER_CLASS}${menuItem.getAttribute('href')}`) :
+      null;
 
     if (menuItem === currentlyActiveMenuItem) {
       return;
