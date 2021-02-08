@@ -29,7 +29,9 @@ const requires = {
   'test': require('./tasks/test.js'),
   'watch': require('./tasks/watch.js'),
   'stencil-start': require('./tasks/start-stencil.js'),
+  'vue-start': require('./tasks/start-vue.js'),
   'custom-elements-watch': require('./tasks/watch-custom-elements.js'),
+  'vue-watch': require('./tasks/watch-vue.js'),
   'lint-typescript': require('./tasks/lint-typescript'),
   'test-custom-elements': require('./tasks/test-custom-elements'),
   'test-e2e': require('./tasks/test-e2e')

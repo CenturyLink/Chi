@@ -11,7 +11,7 @@ export const TRANSITIONING_CLASS = '-transitioning';
 /* Backdrop */
 export const BACKDROP_CLASSES = {
   BACKDROP: 'chi-backdrop',
-  WRAPPER: 'chi-backdrop__wrapper'
+  WRAPPER: 'chi-backdrop__wrapper',
 };
 
 /* Button */
@@ -19,7 +19,7 @@ export const BUTTON_CLASSES = {
   BUTTON: 'chi-button',
   ICON_BUTTON: '-icon',
   CONTENT: 'chi-button__content',
-  FLAT: '-flat'
+  FLAT: '-flat',
 };
 
 /* Button Group */
@@ -30,7 +30,7 @@ export const DRAWER_CLASSES = {
   DRAWER: 'chi-drawer',
   HEADER: 'chi-drawer__header',
   TITLE: 'chi-drawer__title',
-  CONTENT: 'chi-drawer__content'
+  CONTENT: 'chi-drawer__content',
 };
 
 /* Icon */
@@ -47,7 +47,7 @@ export const PAGINATION_CLASSES = {
   START: 'chi-pagination__start',
   CENTER: 'chi-pagination__center',
   END: 'chi-pagination__end',
-  JUMPER: 'chi-pagination__jumper'
+  JUMPER: 'chi-pagination__jumper',
 };
 
 /* Input */
@@ -55,5 +55,5 @@ export const inputClass = 'chi-input';
 
 /* Tooltip */
 export const TOOLTIP_CLASSES = {
-  TOOLTIP_ELEMENT: 'chi-tooltip'
+  TOOLTIP_ELEMENT: 'chi-tooltip',
 };

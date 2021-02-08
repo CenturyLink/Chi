@@ -70,7 +70,7 @@
 
     <div class="tooltip-update -py--5">
       <button class="chi-button" @click="() => toggleColor()">Toggle Color</button>
-      <select class="chi-button -ml--1" @change="(e) => changePosition(e.target.value)">
+      <select class="chi-button -ml--1" @change="e => changePosition(e.target.value)">
         <option value="top">Top</option>
         <option value="right">Right</option>
         <option value="bottom">Bottom</option>
@@ -89,14 +89,14 @@ import Tooltip from '../components/tooltip/tooltip';
 
 @Component({
   components: {
-    Tooltip
+    Tooltip,
   },
   data: () => {
     return {
       color: 'light',
-      position: 'top'
-    }
-  }
+      position: 'top',
+    };
+  },
 })
 export default class TooltipView extends Vue {
   toggleColor() {

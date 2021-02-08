@@ -1,5 +1,5 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { uuid4 } from '../../utils/utils';
+import { uuid4 } from '@/utils/utils';
 import {
   ACTIVE_CLASS,
   INVERSE_CLASS,
@@ -9,10 +9,10 @@ import {
   DISABLED_CLASS,
   iconClass,
   PAGINATION_CLASSES,
-  inputClass
-} from '../../constants/classes';
-import { PaginationSizes } from '../../constants/types';
-import { PAGINATION_EVENTS } from '../../constants/events';
+  inputClass,
+} from '@/constants/classes';
+import { PaginationSizes } from '@/constants/types';
+import { PAGINATION_EVENTS } from '@/constants/events';
 
 @Component
 export default class Pagination extends Vue {
@@ -57,11 +57,7 @@ export default class Pagination extends Vue {
   _goToPage(pageChange: HTMLElement) {
     let pageToGo: number | null = null;
 
-    for (
-      let cur = pageChange;
-      cur && !cur.classList.contains(buttonGroupClass);
-      cur = cur.parentNode as HTMLElement
-    ) {
+    for (let cur = pageChange; cur && !cur.classList.contains(buttonGroupClass); cur = cur.parentNode as HTMLElement) {
       if (cur.nodeName === 'BUTTON') {
         pageToGo = cur.dataset.page ? parseInt(cur.dataset.page) : null;
       }
@@ -78,7 +74,7 @@ export default class Pagination extends Vue {
   }
 
   addPage(page: number | null, icon = '', state = '') {
-    let pageToGo : number | null = null;
+    let pageToGo: number | null = null;
     let ariaLabel = '';
 
     if (page) {
@@ -122,16 +118,14 @@ export default class Pagination extends Vue {
         }}
         aria-label={ariaLabel}
         aria-disabled={state === 'disabled'}
-        disabled={state === 'disabled'}
-      >
+        disabled={state === 'disabled'}>
         <div class={BUTTON_CLASSES.CONTENT}>
           {icon ? (
             <i
               class={`
               ${iconClass}
               icon-${icon}`}
-              aria-hidden="true"
-            ></i>
+              aria-hidden="true"></i>
           ) : (
             page
           )}
@@ -149,8 +143,7 @@ export default class Pagination extends Vue {
           class={`
           ${PAGINATION_CLASSES.RESULTS}
           ${this.size ? `-text--${this.size}` : ''}
-      `}
-        >
+      `}>
           <span class={PAGINATION_CLASSES.LABEL}>{this.results} results</span>
         </div>
       ) : null;
@@ -159,15 +152,11 @@ export default class Pagination extends Vue {
         class={`
         ${PAGINATION_CLASSES.PAGE_SIZE}
       ${this.size ? `-text--${this.size}` : ''}
-    `}
-      >
+    `}>
         <select
           class={inputClass}
-          onChange={(ev: Event) =>
-            this._pageSizeChange((ev.target as HTMLSelectElement).value)
-          }
-          aria-label="Number of result items per page"
-        >
+          onChange={(ev: Event) => this._pageSizeChange((ev.target as HTMLSelectElement).value)}
+          aria-label="Number of result items per page">
           <option value="20">20</option>
           <option value="40">40</option>
           <option value="60">60</option>
@@ -183,10 +172,8 @@ export default class Pagination extends Vue {
           class={`
           ${PAGINATION_CLASSES.JUMPER}
         ${this.size ? `-text--${this.size}` : ''}
-    `}
-        >
-          <label class={PAGINATION_CLASSES.LABEL}
-            htmlFor={this._pageJumperUuid}>
+    `}>
+          <label class={PAGINATION_CLASSES.LABEL} htmlFor={this._pageJumperUuid}>
             Go to page:
           </label>
           <input
@@ -197,9 +184,7 @@ export default class Pagination extends Vue {
             id={this._pageJumperUuid}
             type="text"
             value=""
-            onChange={(ev: Event) =>
-              this._jumpToPage((ev.target as HTMLInputElement).value)
-            }
+            onChange={(ev: Event) => this._jumpToPage((ev.target as HTMLInputElement).value)}
           />
         </div>
       ) : null;
@@ -207,11 +192,7 @@ export default class Pagination extends Vue {
       ? this.addPage(null, 'page-first', this.currentPage === 1 ? 'disabled' : '')
       : null;
     this._lastPage = this.firstLast
-      ? this.addPage(
-        null,
-          'page-last',
-          this.currentPage === this.pages ? 'disabled' : ''
-        )
+      ? this.addPage(null, 'page-last', this.currentPage === this.pages ? 'disabled' : '')
       : null;
 
     if (this.compact) {
@@ -228,9 +209,7 @@ export default class Pagination extends Vue {
             type="text"
             class={inputClass}
             value={this.currentPage}
-            onChange={(ev: Event) =>
-              this._jumpToPage((ev.target as HTMLInputElement).value)
-            }
+            onChange={(ev: Event) => this._jumpToPage((ev.target as HTMLInputElement).value)}
             aria-label={`Page ${this.currentPage}`}
           />
           {paginationLabel}
@@ -255,9 +234,7 @@ export default class Pagination extends Vue {
       for (const pageIndex of _pagesArray) {
         if (this._lastRenderedPage) {
           if (pageIndex - this._lastRenderedPage === 2) {
-            this._pagesToRender.push(
-              this.addPage(this._lastRenderedPage + 1)
-            );
+            this._pagesToRender.push(this.addPage(this._lastRenderedPage + 1));
           } else if (pageIndex - this._lastRenderedPage !== 1) {
             const truncateDots = (
               <div
@@ -267,8 +244,7 @@ export default class Pagination extends Vue {
                   -md
                   ${DISABLED_CLASS}
                   ${this.inverse ? LIGHT_CLASS : ''}`}
-                aria-hidden="true"
-              >
+                aria-hidden="true">
                 <div class={BUTTON_CLASSES.CONTENT}>...</div>
               </div>
             );
@@ -283,9 +259,7 @@ export default class Pagination extends Vue {
   }
 
   mounted() {
-    this._pageJumperUuid = this.$el.id
-      ? `${this.$el.id}__page-jumper`
-      : `${uuid4()}__page-jumper`;
+    this._pageJumperUuid = this.$el.id ? `${this.$el.id}__page-jumper` : `${uuid4()}__page-jumper`;
   }
 
   render() {
@@ -297,8 +271,7 @@ export default class Pagination extends Vue {
       ${this.compact ? PAGINATION_CLASSES.COMPACT : ''}
     `}
         role="navigation"
-        aria-label={this.ariaLabel}
-      >
+        aria-label={this.ariaLabel}>
         <div class={PAGINATION_CLASSES.CONTENT}>
           <div class={PAGINATION_CLASSES.START}>
             {this._results}
@@ -307,17 +280,9 @@ export default class Pagination extends Vue {
           <div class={PAGINATION_CLASSES.CENTER}>
             <div class={buttonGroupClass}>
               {this._startPage}
-              {this.addPage(
-                null,
-                'chevron-left',
-                this.currentPage === 1 ? 'disabled' : ''
-              )}
+              {this.addPage(null, 'chevron-left', this.currentPage === 1 ? 'disabled' : '')}
               {this._pagesToRender}
-              {this.addPage(
-                null,
-                'chevron-right',
-                this.currentPage === this.pages ? 'disabled' : ''
-              )}
+              {this.addPage(null, 'chevron-right', this.currentPage === this.pages ? 'disabled' : '')}
               {this._lastPage}
             </div>
           </div>
