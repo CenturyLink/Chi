@@ -1,7 +1,7 @@
 {
-  "name": "chi-vue",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@centurylinkcloud/chi-vue",
+  "version": "0.1.0-beta.0",
+  "private": false,
   "main": "dist/@centurylink/chi-vue.common.js",
   "types": "index.d.ts",
   "files": [
@@ -15,6 +15,14 @@
     "lint": "vue-cli-service lint",
     "prettier": "prettier './{src/**/*(*.ts|*.vue|*.tsx),*.js,tests/**/*(*.js)}' --write",
     "prettier:checker": "prettier './{src/**/*(*.ts|*.vue|*.tsx),*.js,tests/**/*(*.js)}' --check"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CenturyLinkCloud/ux-chi.git",
+    "directory": "src/chi-vue"
   },
   "dependencies": {
     "@popperjs/core": "^2.5.4",
