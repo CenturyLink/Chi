@@ -210,12 +210,13 @@ p.-text More text colors that can be used to compliment the primary brand palett
 .example.-mb--3
   .chi-grid.-no-gutter
     .chi-col.-w--12.-p--1.-d--flex.-justify-content--center.-flex--wrap
-      each type in ['text--navy']
+      each type in ['text--navy', 'text--orange']
         div.-p--1.-p-sm--2.-text--center
           p.-text(class=`-${type}`)
             = `-${type}`
   :code(lang="html")
     <p class="-text--navy">-text--navy</p>
+    <p class="-text--orange">-text--orange</p>
 
 h2 Responsiveness
 h3 Sizes
