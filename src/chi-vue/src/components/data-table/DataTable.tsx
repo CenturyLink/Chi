@@ -1,7 +1,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import Pagination from '../pagination/pagination';
 import Tooltip from '../tooltip/tooltip';
-import { uuid4 } from '../../../../custom-elements/src/utils/utils';
 import {
   ACTIVE_CLASS,
   BUTTON_CLASSES,
@@ -10,7 +9,7 @@ import {
   EXPANDED_CLASS,
   ICON_CLASS,
   SR_ONLY,
-  UTILITY_CLASSES
+  UTILITY_CLASSES,
 } from '@/constants/classes';
 import './data-table.scss';
 import { DATA_TABLE_EVENTS, PAGINATION_EVENTS } from '@/constants/events';
@@ -22,7 +21,7 @@ import {
   DataTableRow,
   DataTableRowNestedContent,
   DataTableScreenBreakpoints,
-  DataTableStyleConfig
+  DataTableStyleConfig,
 } from '@/constants/types';
 import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
 
@@ -55,9 +54,7 @@ export default class DataTable extends Vue {
         ${DATA_TABLE_CLASSES.EXPANDABLE}`}
         />
       ) : null,
-      this.config.selectable
-        ? this.selectRowCheckbox(true)
-        : null
+      this.config.selectable ? this.selectRowCheckbox(true) : null,
     ];
 
     let cellIndex = 0;
@@ -67,50 +64,49 @@ export default class DataTable extends Vue {
         sortBy = this.data.head[column].sortBy,
         sortable = this.data.head[column].sortable,
         alignment = this.cellAlignment(this.data.head[column].align),
-        sortButton = sortable
-          ? <i class={`${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.SORT}`}/>
-          : '',
+        sortButton = sortable ? <i class={`${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.SORT}`} /> : '',
         cellWidth =
           this.config.columnSizes && this._currentScreenBreakpoint
-            ? this.config.columnSizes[this._currentScreenBreakpoint][
-                cellIndex
-              ]
+            ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
             : null;
-      const sortableColumnHead = <button
-        aria-label={`Sort Column ${label}`}
-        class={`${DATA_TABLE_CLASSES.CELL}
+      const sortableColumnHead = (
+        <button
+          aria-label={`Sort Column ${label}`}
+          class={`${DATA_TABLE_CLASSES.CELL}
             ${alignment}
             ${sortable ? DATA_TABLE_CLASSES.SORTING : ''}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
-        data-column={column}
-        data-sort-by={sortBy}
-        data-sort=""
-        data-label={label}
-        onclick={(e: Event) => {
-          if (!this._preventSortOnResize) {
-            this.sortColumn(e)
-          }
-        }}
-        style={`
+          data-column={column}
+          data-sort-by={sortBy}
+          data-sort=""
+          data-label={label}
+          onclick={(e: Event) => {
+            if (!this._preventSortOnResize) {
+              this.sortColumn(e);
+            }
+          }}
+          style={`
             ${cellWidth === 0 ? 'display: none;' : ''}
             ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
             `}>
-        <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{label}</div>
-        {sortButton}
-      </button>;
-      const nonSortableColumnHead = <div
-        aria-label={label}
-        class={`${DATA_TABLE_CLASSES.CELL}
+          <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{label}</div>
+          {sortButton}
+        </button>
+      );
+      const nonSortableColumnHead = (
+        <div
+          aria-label={label}
+          class={`${DATA_TABLE_CLASSES.CELL}
             ${alignment}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
-        data-label={label}
-        style={`
+          data-label={label}
+          style={`
             ${cellWidth === 0 ? 'display: none;' : ''}
             ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
-            `}
-      >
-        <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{label}</div>
-      </div>;
+            `}>
+          <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{label}</div>
+        </div>
+      );
 
       tableHeadCells.push(sortable ? sortableColumnHead : nonSortableColumnHead);
 
@@ -129,9 +125,7 @@ export default class DataTable extends Vue {
   }
 
   generateColumnResize(elem: HTMLElement) {
-    const columnHeaders = elem.querySelectorAll(
-      `.${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
-    );
+    const columnHeaders = elem.querySelectorAll(`.${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`);
     let thElm: HTMLElement | null;
     let startOffset: number;
 
@@ -158,34 +152,25 @@ export default class DataTable extends Vue {
       let columnCellsToResize: HTMLElement[] = [];
 
       if (thElm) {
-        thElm.setAttribute(
-          'style',
-          `width: ${startOffset +
-            e.pageX +
-            'px'} !important; flex: none !important;`
-        );
+        thElm.setAttribute('style', `width: ${startOffset + e.pageX + 'px'} !important; flex: none !important;`);
         for (let i = 0; i < columnHeaders.length; ++i) {
           if (columnHeaders[i] === thElm) {
-            columnCellsToResize = Array.from(elem.querySelectorAll(
-              `.${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW} .${
-                DATA_TABLE_CLASSES.CELL
-              }:nth-child(${i + 1})`
-            ));
+            columnCellsToResize = Array.from(
+              elem.querySelectorAll(
+                `.${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW} .${DATA_TABLE_CLASSES.CELL}:nth-child(${i + 1})`
+              )
+            );
           }
         }
 
         columnCellsToResize.forEach(column => {
           if (thElm) {
-            column.setAttribute(
-              'style',
-              `width: ${thElm.style.width} !important; flex: none !important`
-            );
+            column.setAttribute('style', `width: ${thElm.style.width} !important; flex: none !important`);
           }
         });
       }
     });
     (this.$refs.dataTable as HTMLElement).addEventListener('mouseup', () => {
-
       setTimeout(() => {
         this._preventSortOnResize = false;
       }, 0);
@@ -194,10 +179,11 @@ export default class DataTable extends Vue {
   }
 
   cellAlignment(align: string): string {
+    // eslint-disable-next-line
     const alignmentUtilityClasses: any = {
       left: UTILITY_CLASSES.JUSTIFY.START,
       center: UTILITY_CLASSES.JUSTIFY.CENTER,
-      right: UTILITY_CLASSES.JUSTIFY.END
+      right: UTILITY_CLASSES.JUSTIFY.END,
     };
 
     if (align) {
@@ -216,7 +202,7 @@ export default class DataTable extends Vue {
       style.hover ? DATA_TABLE_CLASSES.HOVER : '',
       style.striped ? DATA_TABLE_CLASSES.STRIPED : '',
       style.size ? `-${style.size}` : '',
-      sortable ? DATA_TABLE_CLASSES.SORTING : ''
+      sortable ? DATA_TABLE_CLASSES.SORTING : '',
     ].join(' ');
   }
 
@@ -224,23 +210,17 @@ export default class DataTable extends Vue {
     const expansionIcons: DataTableExpansionIcons = {
       portal: {
         expanded: 'minus',
-        collapsed: 'plus'
+        collapsed: 'plus',
       },
       base: {
         expanded: 'chevron-up',
-        collapsed: 'chevron-right'
-      }
+        collapsed: 'chevron-right',
+      },
     };
-    const iconStyle: DataTableExpansionIconStyles = this.config.style
-      .portal
-      ? 'portal'
-      : 'base';
+    const iconStyle: DataTableExpansionIconStyles = this.config.style.portal ? 'portal' : 'base';
 
     return (
-      <div
-        class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`}
-        role="cell"
-      >
+      <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`} role="cell">
         <button
           class={`
         ${BUTTON_CLASSES.BUTTON}
@@ -250,8 +230,7 @@ export default class DataTable extends Vue {
         `}
           aria-label="Expand row"
           data-target={`#${rowId}-content`}
-          onClick={() => this.toggleRow(rowId.toString())}
-        >
+          onClick={() => this.toggleRow(rowId.toString())}>
           <div class={BUTTON_CLASSES.CONTENT}>
             <i
               class={`
@@ -275,7 +254,7 @@ export default class DataTable extends Vue {
   }
 
   selectRow(rowData: DataTableRow) {
-    const row = this.selectedRows.find((selectedRow) => selectedRow.rowNumber === rowData.rowNumber);
+    const row = this.selectedRows.find(selectedRow => selectedRow.rowNumber === rowData.rowNumber);
 
     if (!row) {
       this.selectedRows.push(rowData);
@@ -306,23 +285,23 @@ export default class DataTable extends Vue {
     this.emitSelectedRows();
   }
 
-  selectRowCheckbox(selectAll: boolean, rowData: DataTableRow | null = null ) {
+  selectRowCheckbox(selectAll: boolean, rowData: DataTableRow | null = null) {
     const checkedState = rowData && rowData.rowNumber && this.selectedRows.includes(rowData);
 
     if (selectAll || !!rowData) {
-      const checkboxId = rowData &&
-        typeof rowData === 'object' &&
-        rowData.rowNumber ?
-        `checkbox-select-${this.rowId(rowData.rowNumber)}` :
-        selectAll ? `checkbox-select-all-rows` : '';
+      const checkboxId =
+        rowData && typeof rowData === 'object' && rowData.rowNumber
+          ? `checkbox-select-${this.rowId(rowData.rowNumber)}`
+          : selectAll
+          ? `checkbox-select-all-rows`
+          : '';
 
       return (
         <div
           class={`
         ${DATA_TABLE_CLASSES.CELL}
         ${DATA_TABLE_CLASSES.SELECTABLE}
-      `}
-        >
+      `}>
           <div class={CHECKBOX_CLASSES.checkbox}>
             <input
               type="checkbox"
@@ -330,11 +309,7 @@ export default class DataTable extends Vue {
               id={checkboxId}
               onChange={(ev: Event) => {
                 if (selectAll) {
-                  this.selectAllRows(
-                    (ev.target as HTMLInputElement).checked
-                      ? 'select'
-                      : 'deselect'
-                  );
+                  this.selectAllRows((ev.target as HTMLInputElement).checked ? 'select' : 'deselect');
                 } else {
                   if (rowData) {
                     this.selectRow(rowData);
@@ -362,9 +337,8 @@ export default class DataTable extends Vue {
 
   rowAccordionContent(accordionData: DataTableRowNestedContent) {
     if (accordionData.template) {
-      const template = this.$scopedSlots[accordionData.template]!(
-        accordionData.payload
-      );
+      // eslint-disable-next-line
+      const template = this.$scopedSlots[accordionData.template]!(accordionData.payload);
 
       return (
         <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} -p--2`} role="row">
@@ -395,21 +369,14 @@ export default class DataTable extends Vue {
       rowCells = [],
       rowAccordionContent = [],
       rowId = this.rowId(bodyRow.rowNumber),
-      rowClass = rowChild
-        ? DATA_TABLE_CLASSES.ROW_CHILD
-        : DATA_TABLE_CLASSES.ROW;
+      rowClass = rowChild ? DATA_TABLE_CLASSES.ROW_CHILD : DATA_TABLE_CLASSES.ROW;
 
     if (this._expandable) {
       if (bodyRow.nestedContent) {
         rowCells.push(this.expansionButton(rowId));
         rowAccordionContent.push(this.rowAccordionContent(bodyRow.nestedContent));
       } else {
-        rowCells.push(
-          <div
-            class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`}
-            role="cell"
-          />
-        );
+        rowCells.push(<div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`} role="cell" />);
       }
     }
 
@@ -419,42 +386,32 @@ export default class DataTable extends Vue {
 
     let cellIndex = 0;
 
+    // eslint-disable-next-line
     bodyRow.data.forEach((rowCell: any) => {
-      const columnSettings = this.data.head[
-          Object.keys(this.data.head)[cellIndex]
-        ],
-        alignment = this.cellAlignment(
-          rowCell.align ? rowCell.align : columnSettings.align || null
-        ),
+      const columnSettings = this.data.head[Object.keys(this.data.head)[cellIndex]],
+        alignment = this.cellAlignment(rowCell.align ? rowCell.align : columnSettings.align || null),
         cellLabel = rowCell.label || columnSettings.label,
         cellWidth =
           this.config.columnSizes && this._currentScreenBreakpoint
-            ? this.config.columnSizes[this._currentScreenBreakpoint][
-                cellIndex
-              ]
+            ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
             : null;
       let cellData;
 
       if (!!rowCell.template && !!this.$scopedSlots[rowCell.template]) {
         if (typeof rowCell === 'object' && rowCell.payload) {
+          // eslint-disable-next-line
           cellData = this.$scopedSlots[rowCell.template]!(rowCell.payload);
         }
       } else if (typeof rowCell === 'object' && !!rowCell.value) {
         cellData = (
           <Tooltip message={rowCell} class="-w--100">
-            <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>
-              {rowCell.value}
-            </div>
+            <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{rowCell.value}</div>
           </Tooltip>
         );
-      } else if (
-        typeof rowCell === 'string' ||
-        typeof rowCell === 'number') {
+      } else if (typeof rowCell === 'string' || typeof rowCell === 'number') {
         cellData = (
           <Tooltip message={rowCell} class="-w--100">
-            <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>
-              {rowCell}
-            </div>
+            <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{rowCell}</div>
           </Tooltip>
         );
       } else {
@@ -473,8 +430,7 @@ export default class DataTable extends Vue {
           style={`
             ${cellWidth === 0 ? 'display: none' : ''}
             ${columnSettings.allowOverflow ? 'overflow: visible;' : ''}
-            `}
-        >
+            `}>
           {cellData}
         </div>
       );
@@ -492,8 +448,7 @@ export default class DataTable extends Vue {
         ${this.selectedRows.includes(bodyRow) ? ACTIVE_CLASS : ''}
         ${this.accordionsShown.includes(rowId) ? EXPANDED_CLASS : ''}
         `}
-        role="row"
-      >
+        role="row">
         {rowCells}
       </div>
     );
@@ -501,10 +456,7 @@ export default class DataTable extends Vue {
     if (bodyRow.nestedContent) {
       row.push(
         <transition name="slide-fade">
-          <div
-            v-show={this.accordionsShown.includes(rowId)}
-            id={`${rowId}-content`}
-          >
+          <div v-show={this.accordionsShown.includes(rowId)} id={`${rowId}-content`}>
             {rowAccordionContent}
           </div>
         </transition>
@@ -529,9 +481,7 @@ export default class DataTable extends Vue {
         return this.row(bodyRow, false, striped);
       });
     } else {
-      const noResultsMessage = this.config.noResultsMessage
-        ? this.config.noResultsMessage
-        : 'No results found';
+      const noResultsMessage = this.config.noResultsMessage ? this.config.noResultsMessage : 'No results found';
 
       tableBodyRows = (
         <div class={DATA_TABLE_CLASSES.EMPTY}>
@@ -545,17 +495,12 @@ export default class DataTable extends Vue {
 
   pagination() {
     const results = this.data.body.length,
-      pages =
-        this.resultsPerPage === this.data.body.length
-          ? 1
-          : Math.floor(results / this.resultsPerPage) + 1;
+      pages = this.resultsPerPage === this.data.body.length ? 1 : Math.floor(results / this.resultsPerPage) + 1;
 
     return (
       <Pagination
         ref="pagination"
-        compact={
-          this.config.style.portal || this.config.pagination.compact
-        }
+        compact={this.config.style.portal || this.config.pagination.compact}
         firstLast={this.config.pagination.compact}
         currentPage={this.currentPage}
         pages={pages}
@@ -572,8 +517,7 @@ export default class DataTable extends Vue {
     ) as HTMLInputElement;
 
     if (selectAllCheckbox) {
-      const isSelected = (row: DataTableRow) =>
-        this.selectedRows.includes(row);
+      const isSelected = (row: DataTableRow) => this.selectedRows.includes(row);
 
       if (this.slicedData) {
         selectAllCheckbox.checked = this.slicedData.every(isSelected);
@@ -581,11 +525,11 @@ export default class DataTable extends Vue {
     }
   }
 
+  // eslint-disable-next-line
   sliceData(data: Record<string, any>) {
     if (data.length > this.resultsPerPage) {
       const arrayStartIndex = (this.currentPage - 1) * this.resultsPerPage,
-        arrayEndIndex =
-          (this.currentPage - 1) * this.resultsPerPage + this.resultsPerPage;
+        arrayEndIndex = (this.currentPage - 1) * this.resultsPerPage + this.resultsPerPage;
 
       return data.slice(arrayStartIndex, arrayEndIndex);
     }
@@ -628,10 +572,12 @@ export default class DataTable extends Vue {
       };
       let subrowNumber = 0;
 
-      if (typeof row.nestedContent === 'object' &&
+      if (
+        typeof row.nestedContent === 'object' &&
         typeof row.nestedContent.table === 'object' &&
-        row.nestedContent.table.data) {
-
+        row.nestedContent.table.data
+      ) {
+        // eslint-disable-next-line
         row.nestedContent.table.data = row.nestedContent.table.data.map((row: any) => {
           const serialized = serializeRow(row, subrowNumber, rowN);
 
@@ -644,9 +590,8 @@ export default class DataTable extends Vue {
     let rowNumber = 0;
 
     this._serializedDataBody = [];
-    this._expandable = !!this.data.body.find(
-      (row: { nestedContent: any }) => row.nestedContent
-    );
+    // eslint-disable-next-line
+    this._expandable = !!this.data.body.find((row: { nestedContent: any }) => row.nestedContent);
     this.data.body.forEach(row => {
       this._serializedDataBody.push(serializeRow(row, rowNumber, null));
       rowNumber++;
@@ -657,6 +602,7 @@ export default class DataTable extends Vue {
   }
 
   dataToRender() {
+    // eslint-disable-next-line
     let dataToRender: Record<string, any>;
 
     if (this.slicedData && this.slicedData.length > 0) {
@@ -681,38 +627,26 @@ export default class DataTable extends Vue {
       this.generateColumnResize(dataTableComponent);
     }
 
-    (this.$refs.pagination as Vue).$on(
-      PAGINATION_EVENTS.PAGE_SIZE,
-      (ev: string) => {
-        const data =
-          this.sortedData && this.sortedData.length > 0
-            ? this.sortedData
-            : this._serializedDataBody;
+    (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_SIZE, (ev: string) => {
+      const data = this.sortedData && this.sortedData.length > 0 ? this.sortedData : this._serializedDataBody;
 
-        if (ev === 'all') {
-          this.resultsPerPage = this._serializedDataBody.length;
-        } else {
-          this.resultsPerPage = parseInt(ev);
-        }
-        this.slicedData = this.sliceData(data);
-        this.$emit(PAGINATION_EVENTS.PAGE_SIZE, this.slicedData);
+      if (ev === 'all') {
+        this.resultsPerPage = this._serializedDataBody.length;
+      } else {
+        this.resultsPerPage = parseInt(ev);
       }
-    );
+      this.slicedData = this.sliceData(data);
+      this.$emit(PAGINATION_EVENTS.PAGE_SIZE, this.slicedData);
+    });
 
-    (this.$refs.pagination as Vue).$on(
-      PAGINATION_EVENTS.PAGE_CHANGE,
-      (ev: number) => {
-        const data =
-          this.sortedData && this.sortedData.length > 0
-            ? this.sortedData
-            : this._serializedDataBody;
+    (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (ev: number) => {
+      const data = this.sortedData && this.sortedData.length > 0 ? this.sortedData : this._serializedDataBody;
 
-        this.currentPage = ev;
-        this.slicedData = this.sliceData(data);
-        this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, this.slicedData);
-        this.checkSelectAllCheckbox();
-      }
-    );
+      this.currentPage = ev;
+      this.slicedData = this.sliceData(data);
+      this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, this.slicedData);
+      this.checkSelectAllCheckbox();
+    });
     window.addEventListener('resize', this.resizeHandler);
   }
 
@@ -726,14 +660,8 @@ export default class DataTable extends Vue {
   }
 
   sortColumn(e: Event) {
-    const sortData = (
-      column: string,
-      direction: string,
-      sortBy: string | undefined
-    ) => {
-      const columnTitle = Object.keys(this.data.head).find(
-          columnTitle => columnTitle === column
-        ),
+    const sortData = (column: string, direction: string, sortBy: string | undefined) => {
+      const columnTitle = Object.keys(this.data.head).find(columnTitle => columnTitle === column),
         sortDirection = direction === 'ascending' ? 1 : -1;
 
       if (columnTitle) {
@@ -762,7 +690,7 @@ export default class DataTable extends Vue {
           }
 
           if (typeof this.data.head === 'object') {
-            switch(this.data.head[column].sortDataType) {
+            switch (this.data.head[column].sortDataType) {
               case 'string':
                 aValue = String(aValue);
                 bValue = String(bValue);
@@ -820,26 +748,17 @@ export default class DataTable extends Vue {
         currentSort = columnHeadSortButton.dataset.sort,
         columnSortBy = columnHeadSortButton.dataset.sortBy,
         sortIcon = columnHeadSortButton.querySelector(`i.${ICON_CLASS}`),
-        headSortColumnIcons = (this.$refs
-          .dataTable as HTMLElement).querySelectorAll(
+        headSortColumnIcons = (this.$refs.dataTable as HTMLElement).querySelectorAll(
           `.${DATA_TABLE_CLASSES.HEAD} i.${ICON_CLASS}`
         );
 
       headSortColumnIcons.forEach(sortIcon => {
-        if (
-          sortIcon.className !== `${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.SORT}`
-        ) {
+        if (sortIcon.className !== `${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.SORT}`) {
           let element = sortIcon;
 
           sortIcon.className = `${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.SORT}`;
-          while (
-            element &&
-            !element.classList.contains(DATA_TABLE_CLASSES.HEAD)
-          ) {
-            if (
-              element.classList.contains(DATA_TABLE_CLASSES.CELL) &&
-              element.classList.contains(ACTIVE_CLASS)
-            ) {
+          while (element && !element.classList.contains(DATA_TABLE_CLASSES.HEAD)) {
+            if (element.classList.contains(DATA_TABLE_CLASSES.CELL) && element.classList.contains(ACTIVE_CLASS)) {
               element.classList.remove(ACTIVE_CLASS);
             }
             if (element.nodeName === 'BUTTON') {
@@ -882,10 +801,7 @@ export default class DataTable extends Vue {
   }
 
   render() {
-    const classes = this.dataTableClasses(
-        this.config.style,
-        this.sortable
-      ),
+    const classes = this.dataTableClasses(this.config.style, this.sortable),
       head = this.head(),
       body = this.body(),
       pagination = this.pagination();

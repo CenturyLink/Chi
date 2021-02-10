@@ -1,7 +1,7 @@
 /* Data Table */
 export const DATA_TABLE_EVENTS = {
   SELECTED_ROWS_CHANGE: 'chiSelectedRowsChange',
-  DATA_SORTING: 'chiDataSorting'
+  DATA_SORTING: 'chiDataSorting',
 };
 
 /* Drawer */

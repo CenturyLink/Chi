@@ -33,13 +33,7 @@ export interface DataTableExpansionIcons {
 
 export type DataTableExpansionIconStyles = typeof DATA_TABLE_EXPANSION_ICON_STYLES[number];
 
-export const DATA_TABLE_SCREEN_BREAKPOINTS = [
-  'xs',
-  'sm',
-  'md',
-  'lg',
-  'xl'
-] as const;
+export const DATA_TABLE_SCREEN_BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 
 export type DataTableScreenBreakpoints = typeof DATA_TABLE_SCREEN_BREAKPOINTS[number];
 

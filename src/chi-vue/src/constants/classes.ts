@@ -31,7 +31,7 @@ export const BUTTON_GROUP_CLASSES = 'chi-button-group';
 export const CHECKBOX_CLASSES = {
   checkbox: 'chi-checkbox',
   INPUT: 'chi-checkbox__input',
-  LABEL: 'chi-checkbox__label'
+  LABEL: 'chi-checkbox__label',
 };
 
 /* Drawer */
@@ -85,7 +85,7 @@ export const DATA_TABLE_CLASSES = {
   HOVER: '-hover',
   STRIPED: '-striped',
   SORTING: '-sorting',
-  COMPACT: '-compact'
+  COMPACT: '-compact',
 };
 
 /* Utility Classes */
@@ -93,13 +93,13 @@ export const UTILITY_CLASSES = {
   JUSTIFY: {
     START: '-justify-content-md--start',
     CENTER: '-justify-content-md--center',
-    END: '-justify-content-md--end'
+    END: '-justify-content-md--end',
   },
   TYPOGRAPHY: {
-    TEXT_TRUNCATE: '-text--truncate'
+    TEXT_TRUNCATE: '-text--truncate',
   },
   POSITION: {
     RELATIVE: '-position--relative',
-    ABSOLUTE: '-position--absolute'
-  }
+    ABSOLUTE: '-position--absolute',
+  },
 };

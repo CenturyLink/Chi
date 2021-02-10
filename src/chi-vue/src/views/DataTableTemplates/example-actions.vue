@@ -1,9 +1,6 @@
 <template>
   <div class="chi-dropdown">
-    <button
-      :id="`action-button-${id}`"
-      class="chi-button -icon -flat -bg--none -opacity-hover--80"
-    >
+    <button :id="`action-button-${id}`" class="chi-button -icon -flat -bg--none -opacity-hover--80">
       <div class="chi-button__content">
         <i class="chi-icon icon-more-vert"></i>
       </div>
@@ -18,13 +15,14 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
+// eslint-disable-next-line
 declare const chi: any;
 
 @Component({
   components: {},
   props: {
-    id: String
-  }
+    id: String,
+  },
 })
 export default class Actions extends Vue {
   mounted() {

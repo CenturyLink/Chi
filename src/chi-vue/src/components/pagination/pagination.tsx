@@ -1,4 +1,4 @@
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import { uuid4 } from '@/utils/utils';
 import {
   ACTIVE_CLASS,
@@ -129,7 +129,8 @@ export default class Pagination extends Vue {
               class={`
               ${ICON_CLASS}
               icon-${icon}`}
-              aria-hidden="true" />
+              aria-hidden="true"
+            />
           ) : (
             page
           )}
@@ -139,9 +140,7 @@ export default class Pagination extends Vue {
   }
 
   mounted() {
-    this._pageJumperUuid = this.$el.id
-      ? `${this.$el.id}__page-jumper`
-      : `${uuid4()}__page-jumper`;
+    this._pageJumperUuid = this.$el.id ? `${this.$el.id}__page-jumper` : `${uuid4()}__page-jumper`;
   }
 
   render() {
@@ -168,8 +167,7 @@ export default class Pagination extends Vue {
           onChange={(ev: Event) => {
             this._pageSizeChange((ev.target as HTMLSelectElement).value);
           }}
-          aria-label="Number of result items per page"
-        >
+          aria-label="Number of result items per page">
           <option value="20">20</option>
           <option value="40">40</option>
           <option value="60">60</option>
@@ -185,35 +183,27 @@ export default class Pagination extends Vue {
           class={`
           ${PAGINATION_CLASSES.JUMPER}
         ${this.size ? `-text--${this.size}` : ''}
-    `}
-      >
-        <label class={PAGINATION_CLASSES.LABEL}
-          htmlFor={this._pageJumperUuid}>
-          Go to page:
-        </label>
-        <input
-          class={`
+    `}>
+          <label class={PAGINATION_CLASSES.LABEL} htmlFor={this._pageJumperUuid}>
+            Go to page:
+          </label>
+          <input
+            class={`
           ${inputClass}
           ${this.size ? `-${this.size}` : ''}
           `}
-          id={this._pageJumperUuid}
-          type="text"
-          value=""
-          onChange={(ev: Event) =>
-            this._jumpToPage((ev.target as HTMLInputElement).value)
-          }
-        />
+            id={this._pageJumperUuid}
+            type="text"
+            value=""
+            onChange={(ev: Event) => this._jumpToPage((ev.target as HTMLInputElement).value)}
+          />
         </div>
       ) : null;
     this._startPage = this.firstLast
       ? this.addPage(null, 'page-first', this.currentPage === 1 ? 'disabled' : '')
       : null;
     this._lastPage = this.firstLast
-      ? this.addPage(
-        null,
-        'page-last',
-        this.currentPage === this.pages ? 'disabled' : ''
-      )
+      ? this.addPage(null, 'page-last', this.currentPage === this.pages ? 'disabled' : '')
       : null;
 
     if (this.compact) {
@@ -255,9 +245,7 @@ export default class Pagination extends Vue {
       for (const pageIndex of _pagesArray) {
         if (this._lastRenderedPage) {
           if (pageIndex - this._lastRenderedPage === 2) {
-            this._pagesToRender.push(
-              this.addPage(this._lastRenderedPage + 1)
-            );
+            this._pagesToRender.push(this.addPage(this._lastRenderedPage + 1));
           } else if (pageIndex !== 1 && pageIndex - this._lastRenderedPage !== 1) {
             const truncateDots = (
               <div

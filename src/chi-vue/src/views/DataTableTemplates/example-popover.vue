@@ -1,12 +1,8 @@
 <template>
   <div class="-text--truncate">
-    <a
-      :id="`ticket-popover-button-${id}`"
-      href="#"
-      :data-target="`#ticket-popover-${id}`"
-      position="top-start"
-      >{{ id }}</a
-    >
+    <a :id="`ticket-popover-button-${id}`" href="#" :data-target="`#ticket-popover-${id}`" position="top-start">{{
+      id
+    }}</a>
     <section
       class="chi-popover"
       :id="`ticket-popover-${id}`"
@@ -27,28 +23,29 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
+// eslint-disable-next-line
 declare const chi: any;
 
 @Component({
   components: {},
   props: {
-    id: String
-  }
+    id: String,
+  },
 })
 export default class Actions extends Vue {
   mounted() {
-    const buttonOpenOnHover = document.getElementById(
-      `ticket-popover-button-${this.$props.id}`
-    );
+    const buttonOpenOnHover = document.getElementById(`ticket-popover-button-${this.$props.id}`);
     const popover = chi.popover(buttonOpenOnHover);
 
-    buttonOpenOnHover!.addEventListener('mouseenter', function() {
-      popover.show();
-    });
+    if (buttonOpenOnHover) {
+      buttonOpenOnHover.addEventListener('mouseenter', function() {
+        popover.show();
+      });
 
-    buttonOpenOnHover!.addEventListener('mouseleave', function() {
-      popover.hide();
-    });
+      buttonOpenOnHover.addEventListener('mouseleave', function() {
+        popover.hide();
+      });
+    }
   }
 }
 </script>
