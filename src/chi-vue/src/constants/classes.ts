@@ -7,6 +7,8 @@ export const INVERSE_CLASS = '-inverse';
 export const ANIMATED_CLASS = '-animated';
 export const PORTAL_CLASS = '-portal';
 export const TRANSITIONING_CLASS = '-transitioning';
+export const SR_ONLY = '-sr--only';
+export const EXPANDED_CLASS = '-expanded';
 
 /* Backdrop */
 export const BACKDROP_CLASSES = {
@@ -23,7 +25,14 @@ export const BUTTON_CLASSES = {
 };
 
 /* Button Group */
-export const buttonGroupClass = 'chi-button-group';
+export const BUTTON_GROUP_CLASSES = 'chi-button-group';
+
+/* Checkbox */
+export const CHECKBOX_CLASSES = {
+  checkbox: 'chi-checkbox',
+  INPUT: 'chi-checkbox__input',
+  LABEL: 'chi-checkbox__label',
+};
 
 /* Drawer */
 export const DRAWER_CLASSES = {
@@ -34,7 +43,7 @@ export const DRAWER_CLASSES = {
 };
 
 /* Icon */
-export const iconClass = 'chi-icon';
+export const ICON_CLASS = 'chi-icon';
 
 /* Pagination */
 export const PAGINATION_CLASSES = {
@@ -56,4 +65,41 @@ export const inputClass = 'chi-input';
 /* Tooltip */
 export const TOOLTIP_CLASSES = {
   TOOLTIP_ELEMENT: 'chi-tooltip',
+};
+
+/* Data Table */
+export const DATA_TABLE_CLASSES = {
+  DATA_TABLE: 'chi-data-table',
+  HEAD: 'chi-data-table__head',
+  BODY: 'chi-data-table__body',
+  ROW: 'chi-data-table__row',
+  ROW_CHILD: 'chi-data-table__row-child',
+  EMPTY: 'chi-data-table__row-empty',
+  CELL: 'chi-data-table__cell',
+  FOOTER: 'chi-data-table__footer',
+  EXPANDABLE: '-expandable',
+  SELECTABLE: '-selectable',
+  PORTAL: '-portal',
+  BORDERED: '-bordered',
+  NO_BORDER: '-no-border',
+  HOVER: '-hover',
+  STRIPED: '-striped',
+  SORTING: '-sorting',
+  COMPACT: '-compact',
+};
+
+/* Utility Classes */
+export const UTILITY_CLASSES = {
+  JUSTIFY: {
+    START: '-justify-content-md--start',
+    CENTER: '-justify-content-md--center',
+    END: '-justify-content-md--end',
+  },
+  TYPOGRAPHY: {
+    TEXT_TRUNCATE: '-text--truncate',
+  },
+  POSITION: {
+    RELATIVE: '-position--relative',
+    ABSOLUTE: '-position--absolute',
+  },
 };

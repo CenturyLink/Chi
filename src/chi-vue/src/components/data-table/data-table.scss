@@ -1,0 +1,33 @@
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.5, 1);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.chi-data-table__head {
+  button {
+    &.chi-data-table__cell {
+      i {
+        &.chi-icon {
+          &.icon-arrow-up {
+            transition: transform 0.2s;
+          }
+        }
+      }
+    }
+  }
+}
+
+.chi-data-table__cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
