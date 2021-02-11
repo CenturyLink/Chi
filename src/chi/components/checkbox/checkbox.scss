@@ -1,4 +1,4 @@
-@import '_variables';
+@import '_global-variables';
 @import '_mixins';
 
 .chi-checkbox {
@@ -72,13 +72,8 @@
     &:checked {
       & + .chi-checkbox__label {
         &::before {
-          @if $theme == ctl {
-            background-color: $ctl-color-background-primary;
-            border-color: $ctl-color-border-primary;
-          } @else {
-            background-color: $color-background-primary;
-            border-color: $color-border-primary;
-          }
+          background-color: $color-background-primary;
+          border-color: $color-border-primary;
         }
 
         &::after {

@@ -15,7 +15,7 @@ export const config: Config = {
           '../chi/'
         ],
         injectGlobalPaths: [
-          '../chi/_variables.scss',
+          '../chi/_global-variables.scss',
           '../chi/_mixins.scss',
           '../chi/foundations/typography/root-typography.scss'
         ]

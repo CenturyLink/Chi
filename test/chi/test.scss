@@ -1,5 +1,6 @@
 @import '_mixins';
-@import '_variables';
+@import '_global-variables';
+@import '_base-variables';
 
 // sass-lint:disable no-color-hex
 $color-from: #00ffff;
