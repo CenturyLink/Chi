@@ -1,6 +1,6 @@
 @import '../../../chi/_global-variables';
-@import '../../../chi/_base-variables';
-@import '../../../chi/_mixins';
+@import '../../../chi/themes/lumen-portal/_variables';
+@import '../../../chi/_global-mixins';
 
 .-show--example {
   [class*="chi-col"]:before {

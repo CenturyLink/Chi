@@ -42,7 +42,7 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
     .map(name => `${path.join(componentsFolder, name)}`);
 
   return gulp.src(
-    path.join(__dirname, '..', 'src', 'chi', 'index.scss')
+    path.join(__dirname, '..', 'src', 'chi', 'themes', 'lumen-portal', 'index.scss')
   )
     .pipe(plumber())
     .pipe(sass({
@@ -75,7 +75,7 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
 
 export function buildCtl({dest = 'dist' }) {
   return gulp.src(
-    path.join(__dirname, '..', 'src', 'chi', 'index-ctl.scss')
+    path.join(__dirname, '..', 'src', 'chi', 'themes', 'centurylink', 'index.scss')
   )
     .pipe(plumber())
     .pipe(sass({
