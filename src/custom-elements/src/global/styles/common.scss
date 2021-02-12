@@ -1,4 +1,3 @@
-@import 'foundations/fonts/fonts';
 *, // sass-lint:disable-line no-universal-selectors
 ::after,
 ::before {
@@ -6,4 +5,3 @@
   -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
   box-sizing: border-box;
 }
-@import 'foundations/typography/typography';

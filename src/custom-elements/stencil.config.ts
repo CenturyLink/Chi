@@ -101,6 +101,7 @@ export const config: Config = {
           required: false
         };
 
+        // @ts-ignore
         docs['components'].find(x => x.tag === 'chi-alert')['props'].push(alertTitleProp);
         docs['components'].find(x => x.tag === 'chi-alert')['props'].sort((a, b) => {
           if (a.name > b.name) return 1
@@ -108,6 +109,7 @@ export const config: Config = {
           return 0
         });
 
+        // @ts-ignore
         docs['components'].find(x => x.tag === 'chi-popover')['props'].push(popoverTitleProp);
         docs['components'].find(x => x.tag === 'chi-popover')['props'].sort((a, b) => {
           if (a.name > b.name) return 1
@@ -115,6 +117,7 @@ export const config: Config = {
           return 0
         });
 
+        // @ts-ignore
         docs['components'].find(x => x.tag === 'chi-drawer')['props'].push(drawerTitleProp);
         docs['components'].find(x => x.tag === 'chi-drawer')['props'].sort((a, b) => {
           if (a.name > b.name) return 1
@@ -122,6 +125,7 @@ export const config: Config = {
           return 0
         });
 
+        // @ts-ignore
         docs['components'].find(x => x.tag === 'chi-expansion-panel')['props'].push(epanelTitleProp);
         docs['components'].find(x => x.tag === 'chi-expansion-panel')['props'].sort((a, b) => {
           if (a.name > b.name) return 1
@@ -140,7 +144,7 @@ export const config: Config = {
               component[propertyTypeToCheck] = component[propertyTypeToCheck]
                 .filter(propertyToCheck => {
                   return propertyToCheck[titleToCheck].split('')[0] !== '_';
-                }
+                })
             }
           );
         });

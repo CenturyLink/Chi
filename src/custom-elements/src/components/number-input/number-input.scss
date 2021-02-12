@@ -1,11 +1,5 @@
-@import 'components/icons/webfont-font-face';
 :host(chi-number-input) {
   @import '../../global/styles/common';
-  @import 'components/input-number/input-number';
-  @import 'components/buttons/_horizontal-button-groups';
-  @import 'components/buttons/_vertical-button-groups';
-  @import 'components/buttons/button-groups';
-  @import 'components/buttons/buttons';
   
   display: inline-flex !important;
   position: relative;
