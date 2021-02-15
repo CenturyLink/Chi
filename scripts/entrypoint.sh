@@ -66,6 +66,24 @@ build() {
 
 }
 
+publish_chi_vue() {
+    echo 'publish-chi-vue'
+    cd /chi/src/chi-vue
+    unbuffer npm run build:component 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
+    unbuffer npm pack
+    unbuffer npm login --scope=@centurylinkcloud
+    unbuffer npm publish
+}
+
+publish_chi_vue_beta() {
+    echo 'publish-chi-vue-beta'
+    cd /chi/src/chi-vue
+    unbuffer npm run build:component 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
+    unbuffer npm pack
+    unbuffer npm login --scope=@centurylinkcloud
+    unbuffer npm publish --tag beta
+}
+
 test() {
     rm -rf /chi/reports /chi/test/bitmaps_test
     mkdir -p /chi/reports/html_report/non_responsive{,_ce}
@@ -109,6 +127,12 @@ case ${OPTION} in
         mount -o bind /chi/config/backstop_data/bitmaps_reference/non_responsive /chi/reports/html_report/non_responsive/bitmaps_reference
         mount -o bind /chi/config/backstop_data/bitmaps_reference/responsive /chi/reports/html_report/responsive/bitmaps_reference
         npm run approve
+        ;;
+    publish-chi-vue)
+        publish_chi_vue
+        ;;
+    publish-chi-vue-beta)
+        publish_chi_vue_beta
         ;;
     *)
         exec "$@"
