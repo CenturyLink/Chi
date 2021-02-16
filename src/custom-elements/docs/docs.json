@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-02-04T14:21:41",
+  "timestamp": "2021-02-09T02:34:25",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1354,7 +1354,7 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
@@ -1379,6 +1379,14 @@
             },
             {
               "value": "muted",
+              "type": "string"
+            },
+            {
+              "value": "navy",
+              "type": "string"
+            },
+            {
+              "value": "orange",
               "type": "string"
             },
             {
@@ -2595,7 +2603,7 @@
         },
         {
           "name": "iconLeftColor",
-          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "icon-left-color",
           "reflectToAttr": true,
@@ -2620,6 +2628,14 @@
             },
             {
               "value": "muted",
+              "type": "string"
+            },
+            {
+              "value": "navy",
+              "type": "string"
+            },
+            {
+              "value": "orange",
               "type": "string"
             },
             {
@@ -2660,7 +2676,7 @@
         },
         {
           "name": "iconRightColor",
-          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "icon-right-color",
           "reflectToAttr": true,
@@ -2685,6 +2701,14 @@
             },
             {
               "value": "muted",
+              "type": "string"
+            },
+            {
+              "value": "navy",
+              "type": "string"
+            },
+            {
+              "value": "orange",
               "type": "string"
             },
             {
@@ -3002,7 +3026,7 @@
         },
         {
           "name": "iconLeftColor",
-          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "icon-left-color",
           "reflectToAttr": true,
@@ -3027,6 +3051,14 @@
             },
             {
               "value": "muted",
+              "type": "string"
+            },
+            {
+              "value": "navy",
+              "type": "string"
+            },
+            {
+              "value": "orange",
               "type": "string"
             },
             {
@@ -3067,7 +3099,7 @@
         },
         {
           "name": "iconRightColor",
-          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "icon-right-color",
           "reflectToAttr": true,
@@ -3092,6 +3124,14 @@
             },
             {
               "value": "muted",
+              "type": "string"
+            },
+            {
+              "value": "navy",
+              "type": "string"
+            },
+            {
+              "value": "orange",
               "type": "string"
             },
             {

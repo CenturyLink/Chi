@@ -43,6 +43,17 @@ p.-text
     <i class="chi-icon icon-atom -md -icon--warning"></i>
     <i class="chi-icon icon-atom -md -icon--danger"></i>
     <i class="chi-icon icon-atom -md -icon--muted"></i>
+h3 Brand complimentary
+p.-text
+  | More icon colors that can be used to compliment the primary brand palette.
+.example.-mb--3
+  .chi-grid.-no-gutter
+    .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
+      each color in ['icon--navy', 'icon--orange']
+        i(class=`chi-icon icon-atom -md -${color} -m--1`)
+  :code(lang="html")
+    <i class="chi-icon icon-atom -md -icon--navy"></i>
+    <i class="chi-icon icon-atom -md -icon--orange"></i>
 
 h2 Background-color
 p.-text
