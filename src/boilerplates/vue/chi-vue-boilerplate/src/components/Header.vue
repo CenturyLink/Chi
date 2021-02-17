@@ -133,10 +133,10 @@
         </div>
         <div class="chi-header__end">
           <ul class="chi-header__navbar-menu">
-            <li><a href="#">Explore Lumen</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="#" target="_blank">Explore Lumen</a></li>
+            <li><a href="#" target="_blank">Help</a></li>
             <li>
-              <a href="#">
+              <a href="#" target="_blank">
                 Contact Us
                 <i class="chi-icon icon-chevron-right -xs"></i>
               </a>

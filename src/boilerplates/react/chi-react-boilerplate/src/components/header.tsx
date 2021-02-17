@@ -146,10 +146,10 @@ class Header extends React.Component {
 						</div>
 						<div className="chi-header__end">
 							<ul className="chi-header__navbar-menu">
-								<li><a href="#">Explore Lumen</a></li>
-								<li><a href="#">Help</a></li>
+								<li><a href="#" target="_blank">Explore Lumen</a></li>
+								<li><a href="#" target="_blank">Help</a></li>
 								<li>
-									<a href="#">
+									<a href="#" target="_blank">
 										Contact Us
 											<i className="chi-icon icon-chevron-right -xs"></i>
 									</a>
