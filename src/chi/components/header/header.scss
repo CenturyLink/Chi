@@ -135,6 +135,7 @@
         display: flex;
         justify-content: flex-end;
         position: absolute;
+        right: 0;
       }
 
       .chi-search__input {
@@ -570,5 +571,15 @@
   .chi-header__content,
   .chi-header__toolbar ~ .chi-header__content {
     height: 3.5rem;
+  }
+
+  .chi-header {
+    .chi-search {
+      &.-collapsed {
+        .chi-input__wrapper {
+          position: relative;
+        }
+      }
+    }
   }
 }
