@@ -122,6 +122,62 @@
     }
   }
 
+  .chi-search {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 14rem;
+    min-width: 2rem;
+    position: relative;
+
+    &.-collapsed {
+      .chi-input__wrapper {
+        background: $color-background-white;
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        right: 0;
+      }
+
+      .chi-search__input {
+        background-color: transparent;
+        border-color: transparent;
+        border-radius: $border-radius;
+        cursor: pointer;
+        padding-left: 0;
+        transition: border-color 0.4s ease-in-out, padding-left 0.4s ease-in-out, width 0.4s ease-in-out;
+        width: 1rem;
+        z-index: 2;
+
+        &:hover,
+        &:focus {
+          padding-left: 0.75rem;
+          width: 14rem;
+        }
+
+        &:hover {
+          border-color: $color-grey-40;
+        }
+
+        &:focus {
+          border-color: $focus-color;
+          cursor: auto;
+
+          & ~ .icon-search {
+            z-index: 2;
+          }
+        }
+
+        & ~ .icon-search {
+          z-index: 1;
+        }
+      }
+    }
+
+    &__input {
+      border-radius: $border-radius;
+    }
+  }
+
   &.-impersonation {
     padding-top: 0.5rem;
   }
@@ -515,5 +571,15 @@
   .chi-header__content,
   .chi-header__toolbar ~ .chi-header__content {
     height: 3.5rem;
+  }
+
+  .chi-header {
+    .chi-search {
+      &.-collapsed {
+        .chi-input__wrapper {
+          position: relative;
+        }
+      }
+    }
   }
 }

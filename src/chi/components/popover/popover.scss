@@ -245,11 +245,12 @@ $popover-arrow-size: 0.75rem;
 }
 
 /* IE10+ CSS hack */
+// sass-lint:disable-block no-vendor-prefixes
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .chi-popover {
     &.-closable {
       chi-button {
-        &[type=close] {
+        &[type='close'] {
           .chi-button {
             &.-close {
               position: relative;
