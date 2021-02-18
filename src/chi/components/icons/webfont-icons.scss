@@ -24,6 +24,22 @@ i {
   }
 }
 
+.icon-circle-wrench::before {
+  content: '\e9d3';
+}
+
+.icon-date-alt::before {
+  content: '\e9d4';
+}
+
+.icon-spinner::before {
+  content: '\e9d5';
+}
+
+.icon-triangle-wrench::before {
+  content: '\e9d6';
+}
+
 .icon-edge-solutions::before {
   content: '\e9cf';
 }
