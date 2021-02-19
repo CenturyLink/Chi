@@ -138,7 +138,7 @@
         right: 0;
       }
 
-      .chi-search__input {
+      .chi-input {
         background-color: transparent;
         border-color: transparent;
         border-radius: $border-radius;
@@ -173,7 +173,7 @@
       }
     }
 
-    &__input {
+    .chi-input {
       border-radius: $border-radius;
     }
   }
