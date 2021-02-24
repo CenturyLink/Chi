@@ -1,0 +1,25 @@
+---
+title: Link
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
+- const sizes = ['default', 'xs', 'sm', 'md', 'lg', 'xl'];
+
+h3 Base
+.test-link-base.-w--100.-text(data-cy="test-link-base")
+  each size in sizes
+    p.-text--bold=size
+    chi-link(size=`${size === 'default' ? '' : size}`, data-cy=`link-base-${size}`) Link
+
+h3 Disabled
+.test-link-disabled.-w--100.-text(data-cy="test-link-disabled")
+  each size in sizes
+    p.-text--bold=size
+    chi-link(size=`${size === 'default' ? '' : size}`, disabled, data-cy=`link-disabled-${size}`) Link
+
+h3 CTA
+.test-link-cta.-w--100.-text(data-cy="test-link-cta")
+  each size in sizes
+    p.-text--bold=size
+    chi-link(size=`${size === 'default' ? '' : size}`, cta, data-cy=`link-cta-${size}`) Link

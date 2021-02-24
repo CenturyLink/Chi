@@ -1,0 +1,289 @@
+h2 Examples
+h3 Base
+.example.-mb--3
+  .-p--3.-text
+    chi-link(href='#') Link
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-active
+        a(href=`#webcomponent-base`) Web Component
+      li
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-base
+    :code(lang="html")
+      <chi-link href="#">Link</chi-link>
+  .chi-tabs-panel#html-base
+    :code(lang="html")
+      <a class="chi-link" href="#">Link</a>
+
+h3 Disabled
+p.-text
+  | Make links appear inactive by adding the <code>disabled</code> boolean attribute
+  | or <code>-disabled</code> class.
+.example.-mb--3
+  .-p--3.-text
+    chi-link(href='#' disabled) Link
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-disabled
+      li.-active
+        a(href=`#webcomponent-disabled`) Web Component
+      li
+        a(href=`#html-disabled`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-disabled
+    :code(lang="html")
+      <chi-link href="#" disabled>Link</chi-link>
+  .chi-tabs-panel#html-disabled
+    :code(lang="html")
+      <a class="chi-link -disabled" href="#">Link</a>
+
+h3 CTA
+p.-text
+  | Call to action (CTA) links are prominent links used primarily on marketing web pages
+  | to encourage users to perform a specific action (e.g. Get started, Learn more).
+  | Use <a href="#additional-sizes">link sizes</a> to render CTA links larger or smaller.
+.example.-mb--3
+  .-p--3.-text
+    chi-link(href='#' cta) Learn more
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-cta
+      li.-active
+        a(href=`#webcomponent-cta`) Web Component
+      li
+        a(href=`#html-cta`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-cta
+    :code(lang="html")
+      <chi-link href="#" cta>Learn more</chi-link>
+  .chi-tabs-panel#html-cta
+    :code(lang="html")
+      <a class="chi-link -cta" href="#">Learn more</a>
+
+h3 Labeled Icon Link
+p.-text
+  | Use labeled icon links to render both text and icons inside link tags.
+.example.-mb--3
+  .-p--3.-text
+    chi-link(href='#')
+      chi-icon(icon='circle-question-outline')
+      span Help
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-icon-link
+      li.-active
+        a(href=`#webcomponent-labeled-icon-link`) Web Component
+      li
+        a(href=`#html-labeled-icon-link`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-labeled-icon-link
+    :code(lang="html")
+      <chi-link href="#">
+        <chi-icon icon="circle-question-outline"></chi-icon>
+        <span>Help</span>
+      </chi-link>
+  .chi-tabs-panel#html-labeled-icon-link
+    :code(lang="html")
+      <a class="chi-link" href="#">
+        <div class="chi-link__content">
+          <i class="chi-icon icon-circle-question-outline"></i>
+          <span>Help</span>
+        </div>
+      </a>
+
+h3 Icon Link
+p.-text
+  | Use icon links to render icons inside link tags.
+  | <strong> Note:</strong> All icon links without text lables
+  | must define a label in the <code>alternative-text</code> attribute for accessibility.
+.example.-mb--3
+  .-p--3.-text
+    chi-link(href='#' alternative-text='View helpful information about this topic')
+      chi-icon(icon='circle-question-outline')
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-icon-link
+      li.-active
+        a(href=`#webcomponent-icon-link`) Web Component
+      li
+        a(href=`#html-icon-link`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-icon-link
+    :code(lang="html")
+      <chi-link href="#" alternative-text="View helpful information about this topic">
+        <chi-icon icon="circle-question-outline"></chi-icon>
+      </chi-link>
+  .chi-tabs-panel#html-icon-link
+    :code(lang="html")
+      <a class="chi-link" href="#" aria-label="View helpful information about this topic">
+        <div class="chi-link__content">
+          <i class="chi-icon icon-circle-question-outline"></i>
+        </div>
+      </a>
+
+h3 Target
+p.-text
+  | Use target to specify where to open a link. Supported values are:
+  | <code>_self</code>, <code>_blank</code>, <code>_parent</code>, <code>_top</code>,
+  | or a custom named frame <em><code>framename</code></em>. The default value is <code>_self</code>.
+.example.-mb--3
+  .-p--3.-text
+    chi-link(href='#' target='_blank') Link
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-target
+      li.-active
+        a(href=`#webcomponent-target`) Web Component
+      li
+        a(href=`#html-target`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-target
+    :code(lang="html")
+      <!-- Open a link in the same frame as it was clicked (default) -->
+      <chi-link href="#" target="_self">Link</chi-link>
+
+      <!-- Open a link in a new window or tab -->
+      <chi-link href="#" target="_blank">Link</chi-link>
+
+      <!-- Open a link in the parent frame -->
+      <chi-link href="#" target="_parent">Link</chi-link>
+
+      <!-- Open a link in the full body of the window -->
+      <chi-link href="#" target="_top">Link</chi-link>
+
+      <!-- Open a link in a custom named frame -->
+      <chi-link href="#" target="framename">Link</chi-link>
+  .chi-tabs-panel#html-target
+    :code(lang="html")
+      <!-- Open a link in the same frame as it was clicked (default) -->
+      <a class="chi-link" href="#" target="_self">Link</a>
+
+      <!-- Open a link in a new window or tab -->
+      <a class="chi-link" href="#" target="_blank">Link</a>
+
+      <!-- Open a link in the parent frame -->
+      <a class="chi-link" href="#" target="_parent">Link</a>
+
+      <!-- Open a link in the full body of the window -->
+      <a class="chi-link" href="#" target="_top">Link</a>
+
+      <!-- Open a link in a custom named frame -->
+      <a class="chi-link" href="#" target="framename">Link</a>
+
+h3 Rel
+p.-text
+  | Use rel to set the relationship between the current page and the linked page.
+  | Rel supports all HTML <code>a</code> attribute values. Examples include:
+  | <code>alternate</code>, <code>external</code>, <code>next</code>,
+  | <code>nofollow</code>, <code>noreferrer</code>, <code>noopener</code>,
+  | <code>prev</code>, and more.
+.example.-mb--3
+  .-p--3.-text
+    chi-link(href='#' rel='noopener') Link
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-rel
+      li.-active
+        a(href=`#webcomponent-rel`) Web Component
+      li
+        a(href=`#html-rel`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-rel
+    :code(lang="html")
+      <chi-link href="#" rel="noopener">Link</chi-link>
+  .chi-tabs-panel#html-rel
+    :code(lang="html")
+      <a class="chi-link" href="#" rel="noopener">Link</a>
+
+h3 Download
+p.-text
+  | Use download to prompt users to save a page or document instead of navigating to it.
+  | The download attribute accepts an optional value used to name the file. If no value
+  | is provided, the original filename is used.
+.example.-mb--3
+  .-p--3.-text
+    chi-link(href='#' download) Link
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-download
+      li.-active
+        a(href=`#webcomponent-download`) Web Component
+      li
+        a(href=`#html-download`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-download
+    :code(lang="html")
+      <!-- Use default filename -->
+      <chi-link href="#" download>Link</chi-link>
+
+      <!-- Sepcify custom filename -->
+      <chi-link href="#" download="custom-filename">Link</chi-link>
+  .chi-tabs-panel#html-download
+    :code(lang="html")
+      <!-- Use default filename -->
+      <a class="chi-link" href="#" download>Link</a>
+
+      <!-- Sepcify custom filename -->
+      <a class="chi-link" href="#" download="custom-filename">Link</a>
+
+h3 Hreflang
+p.-text
+  | Use to set the language of the link.
+.example.-mb--3
+  .-p--3.-text
+    chi-link(href='#' hreflang='en') Link
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-hreflang
+      li.-active
+        a(href=`#webcomponent-hreflang`) Web Component
+      li
+        a(href=`#html-hreflang`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-hreflang
+    :code(lang="html")
+      <chi-link href="#" hreflang="en">Link</chi-link>
+  .chi-tabs-panel#html-hreflang
+    :code(lang="html")
+      <a class="chi-link" href="#" hreflang="en">Link</a>
+
+h2 Additional Sizes
+p.-text
+  | Links support the following sizes:
+  | <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>,
+  | and <code>xl</code>. The default size is <code>md</code>.
+.example.-mb--3
+  .-p--3.-text
+    each size in ['xs', 'sm', 'md', 'lg', 'xl']
+      p.-text--bold=`${size}`
+      chi-link(href='#',size=`${size}`) Link
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-sizes
+      li.-active
+        a(href=`#webcomponent-sizes`) Web Component
+      li
+        a(href=`#html-sizes`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-sizes
+    :code(lang="html")
+      <!-- xs -->
+      <chi-link href="#" size="xs">Link</chi-link>
+
+      <!-- sm -->
+      <chi-link href="#" size="sm">Link</chi-link>
+
+      <!-- md -->
+      <chi-link href="#" size="md">Link</chi-link>
+
+      <!-- lg -->
+      <chi-link href="#" size="lg">Link</chi-link>
+
+      <!-- xl -->
+      <chi-link href="#" size="xl">Link</chi-link>
+  .chi-tabs-panel#html-sizes
+    :code(lang="html")
+      <!-- xs -->
+      <a class="chi-link -xs" href="#">Link</a>
+
+      <!-- sm -->
+      <a class="chi-link -sm" href="#">Link</a>
+
+      <!-- md -->
+      <a class="chi-link -md" href="#">Link</a>
+
+      <!-- lg -->
+      <a class="chi-link -lg" href="#">Link</a>
+
+      <!-- xl -->
+      <a class="chi-link -xl" href="#">Link</a>
+
+script.
+    document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+    });

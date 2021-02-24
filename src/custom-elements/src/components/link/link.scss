@@ -1,0 +1,5 @@
+:host(chi-link) {
+  @import '../../global/styles/common';
+  @import 'components/link/link';
+  display: inline-flex;
+}

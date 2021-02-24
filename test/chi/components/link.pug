@@ -1,0 +1,23 @@
+---
+title: Link
+---
+
+- const sizes = ['default', 'xs', 'sm', 'md', 'lg', 'xl'];
+
+h3 Base
+.test-link-base.-w--100.-text
+  each size in sizes
+    p.-text--bold=size
+    a(class=`chi-link -${size}` href='#') Link
+
+h3 Disabled
+.test-link-disabled.-w--100.-text
+  each size in sizes
+    p.-text--bold=size
+    a(class=`chi-link -disabled -${size}` href='#') Link
+
+h3 CTA
+.test-link-cta.-w--100.-text
+  each size in sizes
+    p.-text--bold=size
+    a(class=`chi-link -cta -${size}` href='#') Link

@@ -1,0 +1,99 @@
+@import '_variables';
+@import '_mixins';
+
+$sizes: (
+  xs: (
+    font-size: $font-size-xs,
+    line-height: $line-height-sm,
+  ),
+  sm: (
+    font-size: $font-size-sm,
+    line-height: $line-height,
+  ),
+  md: (
+    font-size: $font-size-base,
+    line-height: $line-height,
+  ),
+  lg: (
+    font-size: $font-size-lg,
+    line-height: $line-height-lg,
+  ),
+  xl: (
+    font-size: $font-size-xl,
+    line-height: $line-height-xl,
+  )
+);
+
+a,
+.chi-link {
+  background-color: transparent;
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.-disabled {
+    opacity: $opacity-40;
+    pointer-events: none;
+  }
+
+  &.-cta {
+    align-self: flex-start;
+    font-weight: $font-weight-semi-bold;
+    padding-right: 2rem;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in;
+
+    &::after {
+      // sass-lint:disable-all
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23e77528' d='M14.41 7.86H.5a.48.48 0 00-.49.47c0 .27.22.48.49.48h13.93l-2.03 2.06a.47.47 0 00.33.8c.12 0 .24-.05.33-.14l2.81-2.86a.47.47 0 000-.67l-.1-.11-2.71-2.75a.46.46 0 00-.66 0 .47.47 0 000 .67l2.02 2.05z' fill-rule='nonzero'/%3E%3C/svg%3E");
+      // sass-lint:enable-all
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      content: '';
+      height: 100%;
+      position: absolute;
+      right: 0.375rem;
+      top: 0;
+      transition: right 0.2s ease-in;
+      width: 1.5rem;
+    }
+
+    &:hover {
+      color: $color-navy-100;
+
+      &::after {
+        right: 0;
+      }
+    }
+  }
+
+  .chi-link__content {
+    align-items: center;
+    display: flex;
+
+    & > i {
+      &.chi-icon {
+        &::before {
+          display: inline-block;
+        }
+      }
+    }
+
+    & > :not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  @each $size in map-keys($sizes) {
+    &.-#{$size} {
+      font-size: map-get(map-get($sizes, $size), font-size);
+      line-height: map-get(map-get($sizes, $size), line-height);
+    }
+  }
+}
