@@ -57,8 +57,8 @@ export class Link {
 
   @Watch('size')
   sizeValidation(newValue: string) {
-    if (newValue && !['', 'xs', 'sm', 'md', 'lg', 'xl'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid size for link. Valid values are xs, sm, md, lg, xl, ''. `);
+    if (!!newValue && !['xs', 'sm', 'md', 'lg', 'xl'].includes(newValue)) {
+      throw new Error(`${newValue} is not a valid size for link. If provided, valid values are xs, sm, md, lg, or xl. `);
     }
   }
 
