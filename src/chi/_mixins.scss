@@ -34,16 +34,6 @@
   @include respond-to($media, true) { @content };
 }
 
-@mixin anchor-style {
-  background-color: transparent;
-  color: $link-color;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
 @mixin remove-anchor-style {
   color: $color-text-base;
 

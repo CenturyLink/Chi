@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-02-18T01:34:18",
+  "timestamp": "2021-02-24T03:32:32",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1571,6 +1571,170 @@
           "docs": "OPTIONAL. Size of the label. {xs,sm, md, lg, xl}.",
           "docsTags": [],
           "default": "'md'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/link/link.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-link",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "alternativeText",
+          "type": "string",
+          "mutable": false,
+          "attr": "alternative-text",
+          "reflectToAttr": true,
+          "docs": "to provide alternative text in case of icon links.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "cta",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "cta",
+          "reflectToAttr": true,
+          "docs": "to render a link as a prominent call to action.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "to disable a link.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "download",
+          "type": "string",
+          "mutable": false,
+          "attr": "download",
+          "reflectToAttr": true,
+          "docs": "to prompt users to save a page or document instead of navigating to it.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "href",
+          "type": "string",
+          "mutable": false,
+          "attr": "href",
+          "reflectToAttr": true,
+          "docs": "to set a links destination url.",
+          "docsTags": [],
+          "default": "'#'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "hreflang",
+          "type": "string",
+          "mutable": false,
+          "attr": "hreflang",
+          "reflectToAttr": true,
+          "docs": "to set the language of a links destination url.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "rel",
+          "type": "string",
+          "mutable": false,
+          "attr": "rel",
+          "reflectToAttr": true,
+          "docs": "to set the relationship between the current page and the linked page.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "to set size of a link { xs, sm, md, lg, xl }.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "mutable": false,
+          "attr": "target",
+          "reflectToAttr": true,
+          "docs": "to set target of a link.",
+          "docsTags": [],
           "values": [
             {
               "type": "string"
