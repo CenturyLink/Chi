@@ -51,7 +51,7 @@ export class Link {
   @Prop({ reflect: true }) size: string;
 
   /**
-   *  to set target of a link { self, blank, parent, top }.
+   *  to set target of a link.
    */
   @Prop({ reflect: true }) target: string;
 
