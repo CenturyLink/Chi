@@ -62,15 +62,7 @@ export class Link {
     }
   }
 
-  @Watch('target')
-  targetValidation(newValue: string) {
-    if (newValue && !['', '_self', '_blank', '_parent', '_top'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid target for a link. Valid values are _self, _blank, _parent, _top, or ''. `);
-    }
-  }
-
   componentWillLoad() {
-    this.targetValidation(this.target);
     this.sizeValidation(this.size);
     if (!this.el.querySelector('chi-icon')) {
       this.slotLinkContent = false;
