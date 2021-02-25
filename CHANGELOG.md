@@ -1,4 +1,11 @@
 # CHANGELOG
+## 3.10.0 (February 25, 2021)
+### Components
+#### Added
+* Added: Link component to navigate between pages, locations within the same page, and more.
+#### Fixed
+* Fixed: Header collapsible search did not display correct styles if the text input was rendered as a web component.
+
 ## 3.9.0 (February 18, 2021)
 ### Components
 #### Added
