@@ -1,8 +1,3 @@
 :host(chi-expansion-panel) {
-    @import '../../global/styles/common';
-    &:not(:last-child) {
-        .chi-epanel:not(.-bordered) {
-            border-bottom: 0.0625rem solid #DADEE2;
-        }
-    }
+  @import '../../global/styles/common';
 }

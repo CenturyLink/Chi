@@ -252,3 +252,11 @@ $transition-duration: 0.2s;
     }
   }
 }
+
+chi-expansion-panel {
+  &:not(:last-of-type) {
+    .chi-epanel:not(.-bordered) {
+      border-bottom: 0.0625rem solid $color-border-base;
+    }
+  }
+}
