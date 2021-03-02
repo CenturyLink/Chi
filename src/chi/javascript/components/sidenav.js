@@ -15,7 +15,7 @@ const DRAWER_LINKLIST_CLASS = "chi-sidenav__drawer-list";
 const DRAWER_ITEM_LIST_CLASS = "chi-sidenav__drawer-item-list";
 const DRAWER_ITEM_TAB_CLASS = "chi-sidenav__drawer-item-tab";
 const DRAWER_SUBITEM_TRIGGER_CLASS = "chi-drawer__subitem-list-trigger";
-
+const OPEN_ON_HOVER_DELAY = 500;
 const DEFAULT_CONFIG = {
   animated: true,
   autoClose: false,
@@ -23,7 +23,6 @@ const DEFAULT_CONFIG = {
 };
 
 class Sidenav extends Component {
-
   constructor(elem, config) {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     let self = this;
@@ -32,6 +31,7 @@ class Sidenav extends Component {
     this._clickOnComponent = false;
     this._autocloseTimeoutId = null;
     this._menuItemAnimation = null;
+    this._navItemAnimationTimeout = null;
     this._preventCloseOnClick = function(e) {
       e.stopPropagation();
     };
@@ -131,12 +131,15 @@ class Sidenav extends Component {
           drawer._elem,
           'mouseenter',
           () => {
-            const selectedMenuItem = this.getSelectedMenuItem();
+            this._navItemAnimationTimeout = setTimeout(() => {
+              const selectedMenuItem = this.getSelectedMenuItem();
 
-            if (selectedMenuItem) {
-              Util.removeClass(selectedMenuItem, chi.classes.ACTIVE);
-            }
-            _openDrawerOnMouseEnter(drawer)
+              window.sidenavNavItemOpen = true;
+              if (selectedMenuItem) {
+                Util.removeClass(selectedMenuItem, chi.classes.ACTIVE);
+              }
+              _openDrawerOnMouseEnter(drawer);
+            }, window.sidenavNavItemOpen ? 0 : OPEN_ON_HOVER_DELAY);
           });
       });
 
@@ -273,6 +276,7 @@ class Sidenav extends Component {
   close(menuItemLink) {
     let drawer = this.getAssociatedDrawer(menuItemLink);
     if (drawer) {
+      window.sidenavNavItemOpen = false;
       drawer.hide();
     }
   }
@@ -444,6 +448,7 @@ class Sidenav extends Component {
         this._preventCloseOnClick
       );
     }
+    window.sidenavNavItemOpen = false;
     this._drawers.forEach((drawer) => {
       drawer.hide();
     });
@@ -452,6 +457,10 @@ class Sidenav extends Component {
     this.resetActiveDrawerMenuItem();
     if (this._config.openOnHover) {
       Util.checkRemoveClass(selectedMenuItem, chi.classes.ACTIVE);
+
+      if (this._navItemAnimationTimeout) {
+        window.clearTimeout(this._navItemAnimationTimeout);
+      }
     }
   }
 
