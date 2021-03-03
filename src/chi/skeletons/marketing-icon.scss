@@ -1,0 +1,26 @@
+@import '_shine';
+
+$sizes: (
+  'xs': 4.5rem,
+  'sm': 5rem,
+  'md': 6rem,
+  'lg': 8rem);
+
+chi-marketing-icon:not(.hydrated) {
+  animation: shine $animation-duration infinite linear;
+  border-radius: 3rem;
+  display: block;
+  font-size: 0;
+  height: 6rem;
+  width: 6rem;
+
+  @each $size, $width in $sizes {
+    &[size=#{$size}] {
+      border-radius: $width / 2;
+      height: $width;
+      width: $width;
+    }
+  }
+
+  @include background-gradient;
+}
