@@ -74,8 +74,7 @@ export class MarketingIcon {
   }
 
   render() {
-    const extraClass = this.extraClass && this.extraClass;
-    return <div class={`chi-marketing-icon ${this.getClass()} ${extraClass}`}>
+    return <div class={`chi-marketing-icon ${this.getClass()} ${this.extraClass ? this.extraClass : ''}`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
