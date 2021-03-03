@@ -1,0 +1,27 @@
+---
+title: Marketing Icon
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
+- var sizes = ['xs', 'sm', 'md', 'lg'];
+- var icons = ['business-big-data', 'business-briefcase', 'business-calendar', 'business-checklist', 'business-consulting', 'business-cost-control', 'business-deal', 'business-finance', 'business-growth', 'business-lower-costs', 'business-opportunities', 'business-reports', 'business-solutions', 'business-time', 'device-desktop', 'device-ip-phone', 'device-laptop', 'device-mobile-phone', 'device-router', 'device-server', 'device-switch', 'device-video-streaming', 'people-admin', 'people-customer', 'people-executive', 'people-support', 'people-us-network', 'platform-adaptive-networking', 'platform-connected-security', 'platform-edge-compute', 'platform-it-agility-hybrid-cloud', 'platform-voice-unified-communications', 'products-apps', 'products-designs', 'products-network-solutions'];
+
+h2 Sizes
+each size in sizes
+  div(class=`test-marketing-icon-size-${size}`)
+    chi-marketing-icon(icon="business-big-data", size=size, data-cy=size==='lg'?'marketing-icon-size':false)
+
+h2 Single icon
+.test-marketing-icon-single
+  .chi-grid
+    .chi-col
+      chi-marketing-icon(icon="business-big-data", data-cy='marketing-icon-single')
+
+h2 Icons
+.test-marketing-icon-list
+  .chi-grid(data-cy='marketing-icon-list')
+    each name in icons
+      .chi-col.-w--2.-o--1.-text--center
+        chi-marketing-icon(icon=name)
+        h4=name

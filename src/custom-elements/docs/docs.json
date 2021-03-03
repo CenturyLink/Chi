@@ -1753,6 +1753,72 @@
       "dependencyGraph": {}
     },
     {
+      "filePath": "src/components/marketing-icon/marketing-icon.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-marketing-icon",
+      "readme": "# chi-marketing-icon\n\n\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "extraClass",
+          "type": "string",
+          "mutable": false,
+          "attr": "extra-class",
+          "reflectToAttr": true,
+          "docs": "OPTIONAL classes",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "mutable": false,
+          "attr": "icon",
+          "reflectToAttr": true,
+          "docs": "Icon to be rendered.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "OPTIONAL. Size of the Icon { xs, sm, md, lg }.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
       "filePath": "src/components/number-input/number-input.tsx",
       "encapsulation": "scoped",
       "tag": "chi-number-input",
