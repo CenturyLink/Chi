@@ -12,9 +12,11 @@ h3 Base
   .example-tabs.-pl--2
     ul.chi-tabs#example-default
       li.-active
-        a(href='#webcomponent-default') Web Component
+        a(href='#webcomponent-default', role='tab', aria-selected='true', aria-controls='webcomponent-default')
+          | Web Component
       li.-disabled
-        a(href='#html-default') HTML Blueprint
+        a(href='#html-default', role='tab', aria-selected='false', tabindex='-1', aria-controls='html-default')
+          | HTML Blueprint
   #webcomponent-default.chi-tabs-panel.-active
     :code(lang="html")
       <chi-marketing-icon icon="business-big-data"></chi-marketing-icon>
@@ -35,9 +37,10 @@ p.-text
   .example-tabs.-pl--2
     ul.chi-tabs#example-sizes
       li.-active
-        a(href='#webcomponent-sizes') Web Component
+        a(href='#webcomponent-sizes', role='tab', aria-selected='true', aria-controls='webcomponent-sizes') Web Component
       li.-disabled
-        a(href='#html-sizes') HTML Blueprint
+        a(href='#html-sizes', role='tab', aria-selected='false', tabindex='-1', aria-controls='html-sizes')
+          | HTML Blueprint
   #webcomponent-sizes.chi-tabs-panel.-active
     :code(lang="html")
       <!-- xs : 72x72px -->
