@@ -298,10 +298,13 @@ export class Popover {
         arrow: {
           element: '.chi-popover__arrow',
           enabled: this.arrow
-        }
+        },
+        preventOverflow: {
+          boundariesElement: "window"
+        },
       },
       removeOnDestroy: false,
-      placement: this.position
+      placement: this.position,
     });
 
     this._popper.update();

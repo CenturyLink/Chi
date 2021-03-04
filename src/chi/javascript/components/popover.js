@@ -307,7 +307,10 @@ class Popover extends Component {
         arrow: {
           element: '.chi-popover__arrow',
           enabled: this._config.arrow
-        }
+        },
+        preventOverflow: {
+          boundariesElement: "window"
+        },
       },
       removeOnDestroy: true,
       placement: this._config.position
