@@ -132,34 +132,38 @@ h4 Spinners in Text Inputs
 .example.-mb--3
   .-p--3
     .chi-form__item.-mb--2(style="max-width:20rem")
-      label.chi-label(for="spinner-input-01") Label
-      .chi-input__wrapper
-        input(type="text", class="chi-input", placeholder="Placeholder", value="Sample Text" id="spinner-input-01")
-        svg(class=`chi-spinner -icon--muted`,viewBox=`0 0 66 66`)
-          title Loading
-          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+      chi-label(for="spinner-input-01") Label
+      chi-text-input(spinner)
     .chi-form__item.-mb--2(style="max-width:20rem")
-      label.chi-label(for="spinner-input-02") Label
-      .chi-input__wrapper
-        input(type="text", class="chi-input -sm", placeholder="Placeholder", value="Sample Text", id="spinner-input-02")
-        svg(class=`chi-spinner -icon--muted -xs`,viewBox=`0 0 66 66`)
-          title Loading
-          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+      chi-label(for="spinner-input-02") Label
+      chi-text-input(spinner size="sm")
     .chi-form__item.-mb--2(style="max-width:20rem")
-      label.chi-label(for="spinner-input-03") Label
-      .chi-input__wrapper
-        input(type="text", class="chi-input -lg", placeholder="Placeholder", value="Sample Text", id="spinner-input-03")
-        svg(class=`chi-spinner -icon--muted -sm--2`,viewBox=`0 0 66 66`)
-          title Loading
-          circle(class=`path`,cx=`33`,cy=`33`,r=`30`,fill=`none`,stroke-width=`6`)
+      chi-label(for="spinner-input-03") Label
+      chi-text-input(spinner size="lg")
   .example-tabs.-pl--2
     ul.chi-tabs#example-spinner-text
-      li.-disabled
-        a(href=`#webcomponent-spinner-text`) Web Component
       li.-active
+        a(href=`#webcomponent-spinner-text`) Web Component
+      li
         a(href=`#html-spinner-text`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-spinner-text
-  .chi-tabs-panel.-active#html-spinner-text
+  .chi-tabs-panel.-active#webcomponent-spinner-text
+    :code(lang="html")
+      <!-- Medium (Base) -->
+      <div class="chi-form__item">
+        <chi-label for="spinner-input-01">Label</chi-label>
+        <chi-text-input spinner="spinner"></chi-text-input>
+      </div>
+      <!-- Small -->
+      <div class="chi-form__item">
+        <chi-label for="spinner-input-02">Label</chi-label>
+        <chi-text-input spinner="spinner" size="sm"></chi-text-input>
+      </div>
+      <!-- Large -->
+      <div class="chi-form__item">
+        <chi-label for="spinner-input-03">Label</chi-label>
+        <chi-text-input spinner="spinner" size="lg"></chi-text-input>
+      </div>
+  .chi-tabs-panel#html-spinner-text
     :code(lang="html")
       <!-- Medium (Base) -->
       <div class="chi-form__item">

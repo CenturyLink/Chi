@@ -65,6 +65,10 @@ export class TextInput {
    */
   @Prop({ reflect: true }) preventValueMutation = false;
   /**
+   * To render Text Input with Spinner
+   */
+  @Prop({ reflect: true }) spinner = false;
+  /**
    * To define -hover, -focus statuses
    */
   @Prop() _status: string;
@@ -177,14 +181,22 @@ export class TextInput {
       ${this.iconLeft ? '-icon--left' : ''}
       ${this.iconRight ? '-icon--right' : ''}
     `;
+    const spinnerSizeMapping = {
+      sm: 'xs',
+      md: 'sm',
+      lg: 'sm--2',
+      xl: 'sm--3'
+    };
     const iconLeft = this.iconLeft && <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
-    const iconRight = this.iconRight && <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />;
+    const iconRight = (this.iconRight && !this.spinner) && <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />;
+    const spinner = this.spinner && <chi-spinner size={spinnerSizeMapping[this.size] || 'sm'} color="muted" />;
 
-    const input = this.iconLeft || this.iconRight ?
+    const input = this.iconLeft || this.iconRight || this.spinner ?
       <div class={`chi-input__wrapper ${iconClasses}`}>
         {inputElement}
         {iconLeft}
         {iconRight}
+        {spinner}
       </div> : inputElement;
 
     return input;

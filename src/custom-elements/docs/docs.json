@@ -2660,9 +2660,15 @@
       "events": [],
       "styles": [],
       "slots": [],
-      "dependents": [],
+      "dependents": [
+        "chi-text-input"
+      ],
       "dependencies": [],
-      "dependencyGraph": {}
+      "dependencyGraph": {
+        "chi-text-input": [
+          "chi-spinner"
+        ]
+      }
     },
     {
       "filePath": "src/components/toggle-switch/toggle-switch.tsx",
@@ -3058,6 +3064,23 @@
           "required": false
         },
         {
+          "name": "spinner",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "spinner",
+          "reflectToAttr": true,
+          "docs": "To render Text Input with Spinner",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "state",
           "type": "\"danger\" | \"success\" | \"warning\"",
           "mutable": false,
@@ -3205,11 +3228,13 @@
       "slots": [],
       "dependents": [],
       "dependencies": [
-        "chi-icon"
+        "chi-icon",
+        "chi-spinner"
       ],
       "dependencyGraph": {
         "chi-text-input": [
-          "chi-icon"
+          "chi-icon",
+          "chi-spinner"
         ]
       }
     },
