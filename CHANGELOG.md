@@ -1,4 +1,16 @@
 # CHANGELOG
+## 3.11.0 (March 4, 2021)
+### Components
+#### Added
+* Added: Marketing icon component to render Lumen full-color marketing icons.
+#### Changed
+* Changed: Popover component positioning has been improved to render more accurately in scenarios where the reference element is located within an overflow or narrow container.
+### Documentation
+#### Changed
+* Changed: Copyright date in Footer component documentation has been changed from 2020 to 2021.
+* Changed: Elements used to trigger tooltips in Tooltip documentation have been updated with more intuitive text.
+
+
 ## 3.10.0 (February 25, 2021)
 ### Components
 #### Added
