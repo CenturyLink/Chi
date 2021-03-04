@@ -8,7 +8,8 @@ import { Folders, Paths } from './constants';
 import metalsmithPug from "metalsmith-pug";
 import path from 'path';
 import pug from 'pug';
-const stencilDoc = require('../src/custom-elements/docs/docs.json')
+const stencilDoc = require('../src/custom-elements/docs/docs.json');
+const sriDoc = require('../sri.json');
 
 const metalsmithPlugins = {
   collections: require('metalsmith-collections'),
@@ -104,7 +105,13 @@ function buildWebsiteViews () {
               path.join(Paths.src.LAYOUTS, 'partials', 'stencilDoc.pug'),
               {name: options.name, data:stencilDoc}
             );
-         }
+         },
+          sriDoc: (text, options) => {
+            return pug.renderFile(
+              path.join(Paths.src.LAYOUTS, 'partials', 'sriDoc.pug'),
+              { name: options.name, data: sriDoc }
+            );
+          }
         }
       }))
       .use(metalsmithPlugins.headings('h2'))

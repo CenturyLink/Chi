@@ -9,8 +9,7 @@ p.-text
   | Chi's stylesheet is hosted on Lumen's Assets Server which is a highly available and 
   | performant option for loading assets into your Lumen project.
 .-mb--2
-  :code(lang='html')
-    <link rel="stylesheet" href="https://assets.ctl.io/chi/3.12.0/chi.css">
+  :sriDoc(name='dist/chi.css')
 
 p.-text
   | Next, add the <code>chi</code> CSS class to the <code>&lt;html&gt;</code> tag of your document to properly scope the styles.
@@ -64,8 +63,7 @@ ul#chi-js-tabs.chi-tabs.-border
     | To use the old method of including Chi in your project, include the ES5, browser prepared, JavaScript
     | file from the Lumen Assets Server. In this solution Popper.js and Day.js are bundled into the file.
   .-mb--2
-    :code(lang='html')
-      <script src="https://assets.ctl.io/chi/3.12.0/js/chi.js"></script>
+    :sriDoc(name='dist/js/chi.js')
 #chi-js-tabs--amd.chi-tabs-panel
   p.-text
     | If you use RequireJS or any other AMD compatible module loader in your project, you will find the AMD compatible
