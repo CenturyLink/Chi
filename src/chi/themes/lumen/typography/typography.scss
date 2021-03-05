@@ -75,10 +75,6 @@ textarea {
   font-family: inherit;
 }
 
-a {
-  @include anchor-style;
-}
-
 blockquote,
 .chi-blockquote {
   border-left: 0.25rem solid $color-border-base-dark;
