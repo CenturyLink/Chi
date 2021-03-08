@@ -17,8 +17,7 @@
     "test-ce": "gulp test:custom-elements",
     "test:e2e": "gulp test:e2e",
     "test:e2e:interactive": "gulp test:e2e:interactive",
-    "echo": "gulp --version",
-    "lint:fix": "sass-lint-auto-fix"
+    "echo": "gulp --version"
   },
   "devDependencies": {
     "@babel/core": "7.3.4",
@@ -27,7 +26,7 @@
     "acorn": "7.1.1",
     "autoprefixer": "9.4.9",
     "babel-loader": "8.1.0",
-    "backstopjs": "3.8.8",
+    "backstopjs": "4.5.1",
     "browser-sync": "2.26.3",
     "cssnano": "4.1.10",
     "cypress": "3.3.1",
@@ -71,7 +70,6 @@
     "prettier": "1.18.2",
     "prismjs": "1.21.0",
     "pug": "2.0.3",
-    "sass-lint-auto-fix": "0.20.0",
     "uglifyjs-webpack-plugin": "2.1.2",
     "vinyl-named": "1.1.0",
     "webpack": "4.29.6",

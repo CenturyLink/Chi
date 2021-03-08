@@ -1,5 +1,5 @@
-@import '_mixins';
-@import '_variables';
+@import '_global-mixins';
+@import '_global-variables';
 
 // Flex direction
 $flex-direction: (row, column, row-reverse, column-reverse);

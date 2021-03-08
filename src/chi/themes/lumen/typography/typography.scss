@@ -1,0 +1,457 @@
+@import '_global-variables';
+@import '_variables';
+@import '_global-mixins';
+@import '_mixins';
+
+$sizes: (
+  xs: (
+    font-size: $font-size-xs,
+    line-height: $line-height-sm
+  ),
+  sm: (
+    font-size: $font-size-sm,
+    line-height: $line-height
+  ),
+  md: (
+    font-size: $font-size-base,
+    line-height: $line-height-lg
+  ),
+  lg: (
+    font-size: $font-size-lg,
+    line-height: $line-height-lg
+  ),
+  xl: (
+    font-size: $font-size-xl,
+    line-height: $line-height-xl
+  )
+);
+
+$heading-sizes: (
+  h1: (
+    font-size: $font-size-h1,
+    font-weight: $font-weight-bold,
+    line-height: 4rem,
+    margin: 2rem 0
+  ),
+  h2: (
+    font-size: $font-size-h2,
+    font-weight: $font-weight-bold,
+    line-height: 3rem,
+    margin: 1rem 0
+  ),
+  h3: (
+    font-size: $font-size-h3,
+    font-weight: $font-weight-semi-bold,
+    line-height: 2rem,
+    margin: 1rem 0
+  ),
+  h4: (
+    font-size: $font-size-h4,
+    font-weight: $font-weight-semi-bold,
+    line-height: 2rem,
+    margin: 0.5rem 0
+  ),
+  h5: (
+    font-size: $font-size-h5,
+    font-weight: $font-weight-semi-bold,
+    line-height: $line-height-lg,
+    margin: 0.5rem 0
+  ),
+  h6: (
+    font-size: $font-size-h6,
+    font-weight: $font-weight-semi-bold,
+    line-height: $line-height-lg,
+    margin: 0.5rem 0
+  )
+);
+
+$alignments: (justify, center, left, right);
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}
+
+blockquote,
+.chi-blockquote {
+  border-left: 0.25rem solid $color-border-base-dark;
+  padding-left: 1rem;
+}
+
+abbr,
+.chi-abbr {
+  border-bottom: 0;
+  cursor: help;
+  text-decoration: underline dotted;
+}
+
+code,
+.chi-code,
+pre {
+  font-family: $font-family-mono;
+  font-size: $font-size-sm;
+}
+
+code {
+  color: $color-text-code;
+  word-break: break-word;
+}
+
+pre {
+  -ms-overflow-style: -ms-autohiding-scrollbar; // sass-lint:disable-line no-vendor-prefixes
+  background-color: $color-grey-15;
+  color: $color-text-base;
+  display: block;
+  font-size: $font-size-sm;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  overflow: auto;
+  padding: 1.5rem;
+  width: 100%;
+
+  code {
+    color: inherit;
+    font-size: inherit;
+    word-break: normal;
+  }
+}
+
+b,
+strong {
+  font-weight: $font-weight-semi-bold;
+}
+
+ul,
+ol {
+  &.-inline {
+    display: inline-flex;
+    list-style: none;
+    padding-left: 0;
+
+    >li {
+      display: inline-flex;
+      padding: 0 0.5rem;
+
+      ul,
+      ol {
+        &.-inline {
+          margin-left: 0.5rem;
+          margin-right: -0.5rem;
+        }
+      }
+    }
+  }
+
+  &.-no-style {
+    list-style: none;
+    padding-left: 0;
+
+    >li {
+      list-style: none;
+      padding-left: 0;
+    }
+  }
+}
+
+dl {
+  margin: 0;
+  padding: 0;
+}
+
+dd,
+figure {
+  margin: 0;
+}
+
+p,
+.-text {
+  font-size: $font-size-base;
+  line-height: $line-height;
+}
+
+.-text--xs {
+  font-size: $font-size-xs !important;
+  line-height: $line-height-sm !important;
+}
+
+small,
+.-text--sm {
+  font-size: $font-size-sm !important;
+  line-height: $line-height !important;
+}
+
+.-text--md {
+  font-size: $font-size-md !important;
+  line-height: $line-height-lg !important;
+}
+
+.-text--lg {
+  font-size: $font-size-lg !important;
+  line-height: $line-height-lg !important;
+}
+
+.-text--xl {
+  font-size: $font-size-xl !important;
+  line-height: $line-height-xl !important;
+}
+
+.-text--justify {
+  text-align: justify !important;
+}
+
+.-text--left {
+  text-align: left !important;
+}
+
+.-text--center {
+  text-align: center !important;
+}
+
+.-text--right {
+  text-align: right !important;
+}
+
+.-text--lowercase {
+  text-transform: lowercase !important;
+}
+
+.-text--uppercase {
+  text-transform: uppercase !important;
+}
+
+.-text--capitalized {
+  text-transform: capitalize !important;
+}
+
+.-text--thin {
+  font-weight: $font-weight-light !important;
+}
+
+.-text--normal {
+  font-weight: $font-weight-normal !important;
+}
+
+.-text--bold {
+  font-weight: $font-weight-semi-bold !important;
+}
+
+.-text--bolder {
+  font-weight: $font-weight-extra-bold !important;
+}
+
+.-text--boldest {
+  font-weight: $font-weight-black !important;
+}
+
+.-text--nowrap {
+  white-space: nowrap !important;
+}
+
+.-text--truncate {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+// text colors
+.-text--body,
+.-text--dark {
+  color: $color-text-base !important;
+}
+
+.-icon--body,
+.-icon--dark {
+  color: $color-icon-base !important;
+}
+
+.-hover--text--body {
+  &:hover,
+  &:focus,
+  &:active,
+  &.-active {
+    color: $color-text-base !important;
+  }
+}
+
+.-text--inverse,
+.-icon--inverse {
+  color: $color-text-white !important;
+}
+
+.-text--white,
+.-text--light,
+.-icon--white,
+.-icon--light {
+  color: $color-text-white !important;
+}
+
+.-hover--text--white,
+.-hover--text--light {
+  &:hover,
+  &:focus,
+  &:active,
+  &.-active {
+    color: $color-text-white !important;
+  }
+}
+
+.-text--brand,
+.-text--primary,
+.-icon--brand,
+.-icon--primary {
+  color: $color-text-primary !important;
+}
+
+.-hover--text--primary {
+  &:hover,
+  &:focus,
+  &:active,
+  &.-active {
+    color: $color-text-primary !important;
+  }
+}
+
+.-text--secondary,
+.-icon--secondary {
+  color: $color-text-secondary !important;
+}
+
+.-hover--text--secondary {
+  &:hover,
+  &:focus,
+  &:active,
+  &.-active {
+    color: $color-text-secondary !important;
+  }
+}
+
+.-text--success {
+  color: $color-text-success !important;
+}
+
+.-icon--success {
+  color: $color-icon-success !important;
+}
+
+.-text--danger {
+  color: $color-text-danger !important;
+}
+
+.-icon--danger {
+  color: $color-icon-danger !important;
+}
+
+.-text--info {
+  color: $color-text-info !important;
+}
+
+.-icon--info {
+  color: $color-icon-info !important;
+}
+
+.-text--warning {
+  color: $color-text-warning !important;
+}
+
+.-icon--warning {
+  color: $color-icon-warning !important;
+}
+
+.-text--muted {
+  color: $color-text-muted !important;
+}
+
+.-icon--muted {
+  color: $color-icon-muted !important;
+}
+
+.-text--grey {
+  color: $color-text-muted !important;
+}
+
+.-icon--grey {
+  color: $color-icon-muted !important;
+}
+
+.-text--navy,
+.-icon--navy {
+  color: $color-navy-100 !important;
+}
+
+// line heights
+@for $index from 1 through 9 {
+  .-lh--#{$index} {
+    line-height: ($index / 2) + rem !important;
+  }
+}
+
+// responsive line heights
+@each $screen-size in $screen-sizes {
+  @include respond-to($screen-size) {
+    @for $index from 1 through 9 {
+      .-lh-#{$screen-size}--#{$index} {
+        line-height: ($index / 2) + rem !important;
+      }
+    }
+  }
+}
+
+// responsive text alignments
+@each $screen-size in $screen-sizes {
+  @include respond-to($screen-size) {
+    @each $type in $alignments {
+      .-text-#{$screen-size}--#{$type} {
+        text-align: #{$type} !important;
+      }
+    }
+  }
+}
+
+// responsive text sizes
+@each $screen-size in $screen-sizes {
+  @include respond-to($screen-size) {
+    @each $type in map-keys($sizes) {
+      .-text-#{$screen-size}--#{$type} {
+        font-size: map-get(map-get($sizes, $type), font-size) !important;
+        line-height: map-get(map-get($sizes, $type), line-height) !important;
+      }
+    }
+  }
+}
+
+// heading tag sizes
+@each $type in map-keys($heading-sizes) {
+  #{$type} {
+    font-size: map-get(map-get($heading-sizes, $type), font-size);
+    font-weight: map-get(map-get($heading-sizes, $type), font-weight);
+    line-height: map-get(map-get($heading-sizes, $type), line-height);
+    margin: map-get(map-get($heading-sizes, $type), margin);
+  }
+}
+
+// text heading utility sizes
+@each $type in map-keys($heading-sizes) {
+  .-text--#{$type} {
+    font-size: map-get(map-get($heading-sizes, $type), font-size) !important;
+    font-weight: map-get(map-get($heading-sizes, $type), font-weight) !important;
+    line-height: map-get(map-get($heading-sizes, $type), line-height) !important;
+    margin: map-get(map-get($heading-sizes, $type), margin) !important;
+  }
+}
+
+// responsive text heading utility sizes
+@each $screen-size in $screen-sizes {
+  @include respond-to($screen-size) {
+    @each $type in map-keys($heading-sizes) {
+      .-text-#{$screen-size}--#{$type} {
+        font-size: map-get(map-get($heading-sizes, $type), font-size) !important;
+        font-weight: map-get(map-get($heading-sizes, $type), font-weight) !important;
+        line-height: map-get(map-get($heading-sizes, $type), line-height) !important;
+        margin: map-get(map-get($heading-sizes, $type), margin) !important;
+      }
+    }
+  }
+}

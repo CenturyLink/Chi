@@ -1,6 +1,8 @@
 @import './prismjs/chi-a11y-light';
-@import '../../../chi/_variables';
-@import '../../../chi/_mixins';
+@import '../../../chi/_global-variables';
+@import '../../../chi/themes/lumen/_variables';
+@import '../../../chi/_global-mixins';
+@import '../../../chi/themes/lumen/_mixins';
 
 @import './docs-header';
 @import './docs-container';

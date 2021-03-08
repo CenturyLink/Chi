@@ -1,5 +1,7 @@
-@import '_mixins';
-@import '_variables';
+@import '_global-variables';
+@import 'themes/lumen/_variables';
+@import 'themes/lumen/_mixins';
+@import '_global-mixins';
 
 // sass-lint:disable no-color-hex
 $color-from: #00ffff;

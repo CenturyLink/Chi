@@ -42,7 +42,7 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
     .map(name => `${path.join(componentsFolder, name)}`);
 
   return gulp.src(
-    path.join(__dirname, '..', 'src', 'chi', 'index.scss')
+    path.join(__dirname, '..', 'src', 'chi', 'themes', 'lumen', 'index.scss')
   )
     .pipe(plumber())
     .pipe(sass({
@@ -70,6 +70,39 @@ export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
     ]))
     .pipe(header(`${copyright} \n`))
     .pipe(concat('chi.css'))
+    .pipe(gulp.dest(dest));
+}
+
+export function buildCtl({dest = 'dist' }) {
+  return gulp.src(
+    path.join(__dirname, '..', 'src', 'chi', 'themes', 'centurylink', 'index.scss')
+  )
+    .pipe(plumber())
+    .pipe(sass({
+      includePaths: [
+        'node_modules',
+        path.join(__dirname, '..', 'src', 'chi')
+      ],
+      outputstyle: 'expanded'
+    }))
+    .pipe(postcss([
+      require('autoprefixer')({
+        browsers: ['last 2 versions', 'ie >= 10']
+      }),
+      require('postcss-svg')({
+        dirs: [iconsFolder]
+      }),
+      require('cssnano')({
+        preset: ['default', {
+          discardComments: {
+            removeAll: true
+          }
+        }],
+        zindex: false
+      })
+    ]))
+    .pipe(header(`${copyright} \n`))
+    .pipe(concat('chi-ctl.css'))
     .pipe(gulp.dest(dest));
 }
 
