@@ -15,7 +15,7 @@ const DRAWER_LINKLIST_CLASS = "chi-sidenav__drawer-list";
 const DRAWER_ITEM_LIST_CLASS = "chi-sidenav__drawer-item-list";
 const DRAWER_ITEM_TAB_CLASS = "chi-sidenav__drawer-item-tab";
 const DRAWER_SUBITEM_TRIGGER_CLASS = "chi-drawer__subitem-list-trigger";
-const OPEN_ON_HOVER_DELAY = 500;
+const OPEN_ON_HOVER_DELAY = 300;
 const DEFAULT_CONFIG = {
   animated: true,
   autoClose: false,
