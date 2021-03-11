@@ -1,4 +1,12 @@
 # CHANGELOG
+## 3.12.0 (March 11, 2021)
+### Components
+#### Added
+* Added: Text input web component now supports the attribute `spinner` to let users know when information is saving or loading.
+* Added: Icon `icon-bell-settings-outline`.
+#### Changed
+* Changed: Sidenav component now includes a slight delay before opening menus on hover to reduce unintentional activations.
+
 ## 3.11.0 (March 4, 2021)
 ### Components
 #### Added
@@ -9,7 +17,6 @@
 #### Changed
 * Changed: Copyright date in Footer component documentation has been changed from 2020 to 2021.
 * Changed: Elements used to trigger tooltips in Tooltip documentation have been updated with more intuitive text.
-
 
 ## 3.10.0 (February 25, 2021)
 ### Components

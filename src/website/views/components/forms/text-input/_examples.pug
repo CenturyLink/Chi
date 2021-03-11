@@ -121,17 +121,13 @@ p.-text
       </div>
 
 h3 Spinner
+p.-text
+  | Use the <code>spinner</code> attribute to let users know when information is saving or loading.
 .example.-mb--3
   .-p--3
     .chi-form__item.-mb--2(style="max-width:20rem")
-      chi-label(for="spinner-input-01") Label
-      chi-text-input(spinner)
-    .chi-form__item.-mb--2(style="max-width:20rem")
-      chi-label(for="spinner-input-02") Label
-      chi-text-input(spinner size="sm")
-    .chi-form__item.-mb--2(style="max-width:20rem")
-      chi-label(for="spinner-input-03") Label
-      chi-text-input(spinner size="lg")
+      chi-label(for="example__spinner") Label
+      chi-text-input(spinner id="example__spinner")
   .example-tabs.-pl--2
     ul.chi-tabs#example-spinner-text
       li.-active
@@ -139,58 +135,21 @@ h3 Spinner
       li
         a(href=`#html-spinner-text`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-spinner-text
-    .chi-tab__description
-      | Use the <code>spinner</code> attribute to render a spinner inside a text input. This lets users know when information is saving or loading.
     :code(lang="html")
-      <!-- Medium (Base) -->
       <div class="chi-form__item">
-        <chi-label for="spinner-input-01">Label</chi-label>
-        <chi-text-input spinner></chi-text-input>
-      </div>
-      <!-- Small -->
-      <div class="chi-form__item">
-        <chi-label for="spinner-input-02">Label</chi-label>
-        <chi-text-input spinner size="sm"></chi-text-input>
-      </div>
-      <!-- Large -->
-      <div class="chi-form__item">
-        <chi-label for="spinner-input-03">Label</chi-label>
-        <chi-text-input spinner size="lg"></chi-text-input>
+        <chi-label for="example__spinner">Label</chi-label>
+        <chi-text-input id="example__spinner" spinner></chi-text-input>
       </div>
   .chi-tabs-panel#html-spinner-text
     :code(lang="html")
-      <!-- Medium (Base) -->
       <div class="chi-form__item">
-        <label class="chi-label" for="spinner-input-01">Label</label>
+        <label class="chi-label" for="example__spinner">Label</label>
         <div class="chi-input__wrapper">
-          <input type="text" class="chi-input" placeholder="Placeholder" value="Sample text" id="spinner-input-01">
+          <input type="text" class="chi-input" id="example__spinner">
           <svg class="chi-spinner -icon--muted" viewBox="0 0 66 66">
             <title>Loading</title>
             <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
           </svg>
-        </div>
-      </div>
-      <!-- Small -->
-      <div class="chi-form__item">
-        <label class="chi-label" for="spinner-input-02">Label</label>
-        <div class="chi-input__wrapper">
-          <input type="text" class="chi-input -sm" placeholder="Placeholder" value="Sample text" id="spinner-input-02">
-          <svg class="chi-spinner -icon--muted -xs" viewBox="0 0 66 66">
-            <title>Loading</title>
-            <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-          </svg>
-        </div>
-      </div>
-      <!-- Large -->
-      <div class="chi-form__item">
-        <label class="chi-label" for="spinner-input-03">Label</label>
-        <div class="chi-input__wrapper">
-          <input type="text" class="chi-input -lg" placeholder="Placeholder" value="Sample text" id="spinner-input-03">
-          <svg class="chi-spinner -icon--muted -sm--2" viewBox="0 0 66 66">
-            <title>Loading</title>
-            <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-          </svg>
-          </div>
         </div>
       </div>
 
