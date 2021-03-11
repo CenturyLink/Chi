@@ -6,6 +6,7 @@ gulp.task('build', gulp.series(
   'sri:chi:assets',
   'build:test',
   'build:website',
+  'update:boilerplate:assets',
   'build:boilerplates',
   'copy:chi:ce-scripts'
 ));

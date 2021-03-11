@@ -3,6 +3,7 @@ import gulp from 'gulp';
 const requires = {
   'clean': require('./tasks/clean.js'),
   'serve': require('./tasks/serve.js'),
+  'update-boilerplate-assets': require('./tasks/update-boilerplate-assets.js'),
   'build-boilerplates': require('./tasks/build-boilerplates.js'),
   'build-chi-styles': require('./tasks/build-chi-styles.js'),
   'build-ctl-styles': require('./tasks/build-ctl-styles.js'),
