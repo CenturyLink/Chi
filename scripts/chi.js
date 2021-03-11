@@ -102,7 +102,7 @@ export function buildCtl({dest = 'dist' }) {
       })
     ]))
     .pipe(header(`${copyright} \n`))
-    .pipe(concat('chi-ctl.css'))
+    .pipe(concat('chi-centurylink.css'))
     .pipe(gulp.dest(dest));
 }
 
