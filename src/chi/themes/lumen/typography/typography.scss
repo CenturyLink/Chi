@@ -381,6 +381,11 @@ small,
   color: $color-navy-100 !important;
 }
 
+.-text--orange,
+.-icon--orange {
+  color: $color-orange-50 !important;
+}
+
 // line heights
 @for $index from 1 through 9 {
   .-lh--#{$index} {
