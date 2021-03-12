@@ -641,9 +641,9 @@ PRDesc
                   git commit -m "CHI_\$VERSION"
                   git push origin CHI_\$VERSION
                 """, label: "Pushing branch to AssetsServer"
-                // dir ('ux-chi-AssetsServer') {
-                //   jslHubWrapper('pull-request -F prepared-message.md')
-                // }
+                dir ('ux-chi-AssetsServer') {
+                  jslHubWrapper('pull-request -F prepared-message.md')
+                }
                 echo "This will publish Prod build to S3 & CDN"
               }
             }
