@@ -151,10 +151,10 @@ pipeline {
             steps {
               script{
                 // jslYarnWrapper('install')
-                jslNpmWrapper('run lint:css')
-                dir ('src/chi-vue') {
-                  jslNpmWrapper('run prettier:checker')
-                }
+                // jslNpmWrapper('run lint:css')
+                // dir ('src/chi-vue') {
+                //   jslNpmWrapper('run prettier:checker')
+                // }
                 echo "No full linting implemented in repo"
               }
             }
