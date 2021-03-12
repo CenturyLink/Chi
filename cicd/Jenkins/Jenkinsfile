@@ -150,11 +150,12 @@ pipeline {
             }
             steps {
               script{
-                // jslYarnWrapper('install')
-                // jslNpmWrapper('run lint:css')
-                // dir ('src/chi-vue') {
-                //   jslNpmWrapper('run prettier:checker')
-                // }
+                jslYarnWrapper('install')
+                jslNpmWrapper('run lint:css')
+                dir ('src/chi-vue') {
+                  jslYarnWrapper('install')
+                  jslNpmWrapper('run prettier:checker')
+                }
                 echo "No full linting implemented in repo"
               }
             }
@@ -264,9 +265,28 @@ pipeline {
           }
         }
       }
+      stage ('Cleaning reports & test folders before testing') {
+        agent {
+          dockerfile {
+            filename 'Dockerfile'
+            dir 'cicd/docker/sonar-scanner'
+            label 'Docker-enabled'
+            args '-m 2G --shm-size=2gb'
+            // registryUrl DOCKER_REGISTRY
+            // registryCredentialsId DOCKER_CREDENTIALS
+          }
+        }
+        steps {
+          script {
+            sh script: """
+              rm -rf reports test/bitmaps_test
+            """, label: "Cleaning reports & test folders"
+          }
+        }
+      }
       stage ('Tests') {
         parallel {
-          stage ('Unit Testing') {
+          stage ('BackstopJS Responsive Test') {
             agent {
               dockerfile {
                 filename 'Dockerfile'
@@ -285,36 +305,118 @@ pipeline {
                 """
                 unstash name: "DIST-CHI"
                 unstash name: "NODEMODULES-CHI"
-                dir ('src/custom-elements') {
-                  sh """
-                    rm -rf dist
-                    rm -rf node_modules
-                  """
-                  unstash name: "DIST-CHI-CE"
-                  unstash name: "NODEMODULES-CHI-CE"
-                }
-                dir ('src/chi-vue') {
-                  sh """
-                    rm -rf dist
-                    rm -rf node_modules
-                  """
-                  unstash name: "DIST-CHI-VUE"
-                  unstash name: "NODEMODULES-CHI-VUE"
-                }
                 sh script: """
-                  rm -rf reports test/bitmaps_test
-                  mkdir -p reports/html_report/non_responsive
-                  mkdir -p reports/html_report/non_responsive_ce
                   mkdir -p reports/html_report/responsive
-                  cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive_ce/bitmaps_reference
-                  cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive/bitmaps_reference
                   cp -a config/backstop_data/bitmaps_reference/responsive reports/html_report/responsive/bitmaps_reference
-                """, label: "Copying config files"
-                jslNpmWrapper('run test')
-                archiveArtifacts artifacts: 'reports/**/*.*', fingerprint: true
+                """, label: "Copying for executing BackstopJS Responsive tests"
+                jslNpmWrapper('run test:backstop:responsive')
               }
             }
           }
+          stage ('BackstopJS Non-Responsive Test') {
+            agent {
+              dockerfile {
+                filename 'Dockerfile'
+                dir 'cicd/docker/sonar-scanner'
+                label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
+                // registryUrl DOCKER_REGISTRY
+                // registryCredentialsId DOCKER_CREDENTIALS
+              }
+            }
+            steps {
+              script {
+                sh """
+                  rm -rf dist
+                  rm -rf node_modules
+                """
+                unstash name: "DIST-CHI"
+                unstash name: "NODEMODULES-CHI"
+                sh script: """
+                  mkdir -p reports/html_report/non_responsive
+                  cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive/bitmaps_reference
+                """, label: "Copying for executing BackstopJS Non-Responsive tests"
+                jslNpmWrapper('run test:backstop:non-responsive')
+                archiveArtifacts artifacts: 'reports/**/*.*', fingerprint: true 
+              }
+            }
+          }
+          stage ('BackstopJS Custom Elements Test') {
+            agent {
+              dockerfile {
+                filename 'Dockerfile'
+                dir 'cicd/docker/sonar-scanner'
+                label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
+                // registryUrl DOCKER_REGISTRY
+                // registryCredentialsId DOCKER_CREDENTIALS
+              }
+            }
+            steps {
+              script {
+                sh """
+                  rm -rf dist
+                  rm -rf node_modules
+                """
+                unstash name: "DIST-CHI"
+                unstash name: "NODEMODULES-CHI"
+                sh script: """
+                  mkdir -p reports/html_report/non_responsive_ce
+                  cp -a config/backstop_data/bitmaps_reference/non_responsive_ce reports/html_report/non_responsive_ce/bitmaps_reference
+                """, label: "Copying for executing BackstopJS Custom Elements tests"
+                jslNpmWrapper('run test:backstop:non-responsive:ce')
+              }
+            }
+          }
+          // stage ('Unit Testing') {
+          //   agent {
+          //     dockerfile {
+          //       filename 'Dockerfile'
+          //       dir 'cicd/docker/sonar-scanner'
+          //       label 'Docker-enabled'
+          //       args '-m 2G --shm-size=2gb'
+          //       // registryUrl DOCKER_REGISTRY
+          //       // registryCredentialsId DOCKER_CREDENTIALS
+          //     }
+          //   }
+          //   steps {
+          //     script {
+          //       sh """
+          //         rm -rf dist
+          //         rm -rf node_modules
+          //       """
+          //       unstash name: "DIST-CHI"
+          //       unstash name: "NODEMODULES-CHI"
+          //       dir ('src/custom-elements') {
+          //         sh """
+          //           rm -rf dist
+          //           rm -rf node_modules
+          //         """
+          //         unstash name: "DIST-CHI-CE"
+          //         unstash name: "NODEMODULES-CHI-CE"
+          //       }
+          //       dir ('src/chi-vue') {
+          //         sh """
+          //           rm -rf dist
+          //           rm -rf node_modules
+          //         """
+          //         unstash name: "DIST-CHI-VUE"
+          //         unstash name: "NODEMODULES-CHI-VUE"
+          //       }
+          //       sh script: """
+          //         rm -rf reports test/bitmaps_test
+          //         mkdir -p reports/html_report/non_responsive
+          //         mkdir -p reports/html_report/non_responsive_ce
+          //         mkdir -p reports/html_report/responsive
+          //         cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive_ce/bitmaps_reference
+          //         cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive/bitmaps_reference
+          //         cp -a config/backstop_data/bitmaps_reference/responsive reports/html_report/responsive/bitmaps_reference
+          //       """, label: "Copying config files"
+          //       jslNpmWrapper('run test')
+          //       archiveArtifacts artifacts: 'reports/**/*.*', fingerprint: true
+          //     }
+          //   }
+          // }
           stage ('Cypress local Testing') {
             agent {
               dockerfile {
@@ -640,9 +742,9 @@ PRDesc
                   git commit -m "CHI_\$VERSION"
                   git push origin CHI_\$VERSION
                 """, label: "Pushing branch to AssetsServer"
-                // dir ('ux-chi-AssetsServer') {
-                //   jslHubWrapper('pull-request -F prepared-message.md')
-                // }
+                dir ('ux-chi-AssetsServer') {
+                  jslHubWrapper('pull-request -F prepared-message.md')
+                }
                 echo "This will publish Prod build to S3 & CDN"
               }
             }
