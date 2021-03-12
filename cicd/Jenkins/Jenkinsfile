@@ -150,9 +150,10 @@ pipeline {
             }
             steps {
               script{
-                // jslYarnWrapper('install')
+                jslYarnWrapper('install')
                 jslNpmWrapper('run lint:css')
                 dir ('src/chi-vue') {
+                  jslYarnWrapper('install')
                   jslNpmWrapper('run prettier:checker')
                 }
                 echo "No full linting implemented in repo"
@@ -640,9 +641,9 @@ PRDesc
                   git commit -m "CHI_\$VERSION"
                   git push origin CHI_\$VERSION
                 """, label: "Pushing branch to AssetsServer"
-                // dir ('ux-chi-AssetsServer') {
-                //   jslHubWrapper('pull-request -F prepared-message.md')
-                // }
+                dir ('ux-chi-AssetsServer') {
+                  jslHubWrapper('pull-request -F prepared-message.md')
+                }
                 echo "This will publish Prod build to S3 & CDN"
               }
             }
