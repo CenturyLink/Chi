@@ -1,4 +1,4 @@
-# Welcome to Chi
+# Welcome to Chi new
 
 Chi is Lumen's design system for building consistent digital products and experiences.
 
