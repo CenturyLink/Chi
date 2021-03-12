@@ -310,6 +310,7 @@ pipeline {
                   cp -a config/backstop_data/bitmaps_reference/responsive reports/html_report/responsive/bitmaps_reference
                 """, label: "Copying for executing BackstopJS Responsive tests"
                 jslNpmWrapper('run test:backstop:responsive')
+                archiveArtifacts artifacts: 'reports/html_report/responsive/*.*', fingerprint: true
               }
             }
           }
@@ -337,7 +338,7 @@ pipeline {
                   cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive/bitmaps_reference
                 """, label: "Copying for executing BackstopJS Non-Responsive tests"
                 jslNpmWrapper('run test:backstop:non-responsive')
-                archiveArtifacts artifacts: 'reports/**/*.*', fingerprint: true 
+                archiveArtifacts artifacts: 'reports/html_report/non_responsive/*.*', fingerprint: true
               }
             }
           }
@@ -362,9 +363,10 @@ pipeline {
                 unstash name: "NODEMODULES-CHI"
                 sh script: """
                   mkdir -p reports/html_report/non_responsive_ce
-                  cp -a config/backstop_data/bitmaps_reference/non_responsive_ce reports/html_report/non_responsive_ce/bitmaps_reference
+                  cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive_ce/bitmaps_reference
                 """, label: "Copying for executing BackstopJS Custom Elements tests"
                 jslNpmWrapper('run test:backstop:non-responsive:ce')
+                archiveArtifacts artifacts: 'reports/html_report/non_responsive_ce/*.*', fingerprint: true
               }
             }
           }
