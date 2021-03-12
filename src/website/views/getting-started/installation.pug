@@ -9,7 +9,7 @@ p.-text
   | Chi's stylesheet is hosted on Lumen's Assets Server which is a highly available and 
   | performant option for loading assets into your Lumen project.
 .-mb--2
-  :sriDoc(name='dist/chi.css')
+  :sriDoc(name='css')
 
 p.-text
   | Next, add the <code>chi</code> CSS class to the <code>&lt;html&gt;</code> tag of your document to properly scope the styles.
@@ -33,9 +33,7 @@ p.-text
   | address bar, bookmarks, and tabs. To add a Lumen favicon to your project, insert the following
   | code before the closing <code>&lt;head&gt;</code> tag.
   .-mb--2
-  :code(lang='html')
-    <link rel="icon" type="image/svg+xml" href="https://assets.ctl.io/chi/3.12.0/assets/images/favicon.svg">
-    <link rel="alternate icon" href="https://assets.ctl.io/chi/3.12.0/assets/images/favicon.ico">
+  :sriDoc(name='favicon')
 
 h2.-text--h2.-text--bold JavaScript
 .chi-badge.-dark.-outline.-xs.-mb--1
@@ -63,7 +61,7 @@ ul#chi-js-tabs.chi-tabs.-border
     | To use the old method of including Chi in your project, include the ES5, browser prepared, JavaScript
     | file from the Lumen Assets Server. In this solution Popper.js and Day.js are bundled into the file.
   .-mb--2
-    :sriDoc(name='dist/js/chi.js')
+    :sriDoc(name='js')
 #chi-js-tabs--amd.chi-tabs-panel
   p.-text
     | If you use RequireJS or any other AMD compatible module loader in your project, you will find the AMD compatible
@@ -98,9 +96,7 @@ p.-text
   | doesn't support Web Components.
 
 .-mb--2
-  :code(lang='html')
-    <script type="module" src="https://assets.ctl.io/chi/3.12.0/js/ce/ux-chi-ce/ux-chi-ce.esm.js"></script>
-    <script nomodule="" src="https://assets.ctl.io/chi/3.12.0/js/ce/ux-chi-ce/ux-chi-ce.js"></script>
+  :sriDoc(name='web-components')
 
 p.-text.-mb--3
   | After placing the files in your header, you are now ready to use the Web Components described in this documentation.
