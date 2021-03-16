@@ -313,7 +313,7 @@ pipeline {
                 stash name: "BACKSTOP-RES-HTML", includes: "reports/html_report/responsive/**"
                 stash name: "BACKSTOP-RES-CI", includes: "reports/ci_report/responsive/**"  
                 archiveArtifacts artifacts: "reports/html_report/responsive/**", fingerprint: true
-                jslPublishTestResults('reports/ci_report/responsive/*.xml')
+                jslPublishTestResults('reports/ci_report/responsive/xunit.xml')
                 sh "test ${currentBuild.currentResult} != UNSTABLE"
               }
             }
@@ -345,7 +345,7 @@ pipeline {
                 stash name: "BACKSTOP-NON-RES-HTML", includes: "reports/html_report/non_responsive/**"
                 stash name: "BACKSTOP-NON-RES-CI", includes: "reports/ci_report/non_responsive/**"
                 archiveArtifacts artifacts: "reports/html_report/non_responsive/**", fingerprint: true
-                jslPublishTestResults('reports/ci_report/non_responsive/*.xml')
+                jslPublishTestResults('reports/ci_report/non_responsive/xunit.xml')
                 sh "test ${currentBuild.currentResult} != UNSTABLE"
               }
             }
@@ -377,7 +377,7 @@ pipeline {
                 stash name: "BACKSTOP-CE-HTML", includes: "reports/html_report/non_responsive_ce/**"
                 stash name: "BACKSTOP-CE-CI", includes: "reports/ci_report/non_responsive_ce/**"
                 archiveArtifacts artifacts: "reports/html_report/non_responsive_ce/**", fingerprint: true
-                jslPublishTestResults('reports/ci_report/non_responsive_ce/*.xml')
+                jslPublishTestResults('reports/ci_report/non_responsive_ce/xunit.xml')
                 sh "test ${currentBuild.currentResult} != UNSTABLE"            
               }
             }
