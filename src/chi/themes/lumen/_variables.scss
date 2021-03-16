@@ -3,6 +3,10 @@ $base-unit: 8px;
 
 $state-colors: (success: green, warning: yellow, danger: red);
 
+// Font family
+$font-family-base: 'Inter', Arial, Helvetica, Verdana, sans-serif;
+$font-family-mono: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
+
 // System color
 // sass-lint:disable no-color-hex
 $color-grey-100:    #242526;
@@ -148,6 +152,7 @@ $color-white:       #ffffff;
 
 // Text color
 $color-text-base:                     $color-grey-100;
+$color-text-primary-dark:             $color-navy-100;
 $color-text-primary:                  $color-blue-75;
 $color-text-primary-alt:              $color-blue-70;
 $color-text-secondary:                $color-cyan-40;
@@ -234,6 +239,12 @@ $link-color: $color-text-primary;
 
 // Focus color
 $focus-color: $color-border-secondary-dark;
+
+// Border radius
+$border-radius-base: 0.25rem; // 4px
+$border-radius-sharp: 0;
+$border-radius-circle: 50%;
+$border-radius: $border-radius-base;
 
 // Semantic colors
 $color-semantic: (

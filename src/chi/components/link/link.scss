@@ -34,6 +34,7 @@ a,
     text-decoration: underline;
   }
 
+  &[disabled],
   &.-disabled {
     opacity: $opacity-40;
     pointer-events: none;

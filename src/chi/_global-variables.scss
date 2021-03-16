@@ -3,10 +3,6 @@ $base-unit: 8px;
 
 $state-colors: (success: green, warning: yellow, danger: red);
 
-// Font family
-$font-family-base: 'Inter', Arial, Helvetica, Verdana, sans-serif;
-$font-family-mono: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
-
 // Font size - text
 $font-size-xl: 1.125rem; // 18px
 $font-size-lg: 1rem; // 16px
@@ -61,12 +57,6 @@ $line-height-xl: 1.75rem; // 28px
 $line-height-lg: 1.5rem; // 24px
 $line-height-md: 1.25rem; // 20px
 $line-height-sm: 1rem; // 16px
-
-// Border radius
-$border-radius-base: 0.25rem; // 4px
-$border-radius-sharp: 0;
-$border-radius-circle: 50%;
-$border-radius: $border-radius-base;
 
 // Opacity
 $opacity-0: 0;
