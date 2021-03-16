@@ -2,15 +2,16 @@ const gulp = require('gulp');
 const replace = require('gulp-replace');
 const fs = require('fs');
 const currentVersion = JSON.parse(fs.readFileSync('./package.json')).version;
-const sriJson = JSON.parse(fs.readFileSync('./sri.json'));
-const cssSRI = sriJson['dist/chi.css'];
-const jsSRI = sriJson['dist/js/chi.js'];
-const favSVGSRI = sriJson['src/website/assets/images/favicon.svg'];
-const favICOSRI = sriJson['src/website/assets/images/favicon.ico'];
-const ceModuleSRI = sriJson['src/custom-elements/www/build/ux-chi-ce.esm.js'];
-const ceNoModuleSRI = sriJson['src/custom-elements/www/build/ux-chi-ce.js'];
 
 gulp.task('update:boilerplate:assets', function(done) {
+  const sriJson = JSON.parse(fs.readFileSync('./sri.json'));
+  const cssSRI = sriJson['dist/chi.css'];
+  const jsSRI = sriJson['dist/js/chi.js'];
+  const favSVGSRI = sriJson['src/website/assets/images/favicon.svg'];
+  const favICOSRI = sriJson['src/website/assets/images/favicon.ico'];
+  const ceModuleSRI = sriJson['dist/js/ce/ux-chi-ce/ux-chi-ce.esm.js'];
+  const ceNoModuleSRI = sriJson['dist/js/ce/ux-chi-ce.js'];
+
   const newCSS = `<link rel="stylesheet" href="https://assets.ctl.io/chi/${currentVersion}/chi.css" integrity="${cssSRI}" crossorigin="anonymous">`;
   const newJS = `<script src="https://assets.ctl.io/chi/${currentVersion}/js/chi.js" integrity="${jsSRI}" crossorigin="anonymous"></script>`;
   const newFavSVG = `<link rel="icon" type="image/svg+xml" href="https://assets.ctl.io/chi/${currentVersion}/assets/images/favicon.svg" integrity="${favSVGSRI}" crossorigin="anonymous">`;
