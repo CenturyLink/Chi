@@ -64,3 +64,15 @@ body {
     }
   }
 }
+
+.example {
+  chi-drawer {
+    .chi-drawer {
+      position: absolute;
+    }
+
+    .chi-backdrop {
+      position: absolute;
+    }
+  }
+}
