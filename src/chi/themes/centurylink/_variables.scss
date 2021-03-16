@@ -184,10 +184,10 @@ $color-text-muted-light:              $color-grey-60;
 $color-text-muted:                    $color-grey-70;
 $color-text-white:                    $color-white;
 $color-text-black:                    $color-black;
-$color-text-code:                     $color-cyan-70;
+$color-text-code:                     $color-mint-60;
 
 // Icon color
-$color-icon-base:                     $color-grey-80;
+$color-icon-base:                     $color-grey-100;
 $color-icon-primary:                  $color-blue-70;
 $color-icon-secondary:                $color-mint-40;
 $color-icon-secondary-dark:           $color-mint-50;
@@ -236,13 +236,13 @@ $color-background-secondary:          $color-mint-40;
 $color-background-secondary-dark:     $color-mint-50;
 $color-background-success-lighter:    $color-green-10;
 $color-background-success-light:      $color-green-20;
-$color-background-success:            $color-green-70;
+$color-background-success:            $color-green-60;
 $color-background-warning-lighter:    $color-yellow-10;
 $color-background-warning-light:      $color-yellow-20;
-$color-background-warning:            $color-yellow-70;
+$color-background-warning:            $color-yellow-60;
 $color-background-danger-lighter:     $color-red-10;
 $color-background-danger-light:       $color-red-20;
-$color-background-danger:             $color-red-70;
+$color-background-danger:             $color-red-60;
 $color-background-info-lighter:       $color-blue-10;
 $color-background-info-light:         $color-blue-20;
 $color-background-info:               $color-blue-70;
@@ -257,7 +257,7 @@ $color-background-black:              $color-black;
 $link-color: $color-text-primary;
 
 // Focus color
-$focus-color: $color-border-primary;
+$focus-color: $color-border-info;
 
 // Border radius
 $border-radius-base: 0; // 0px

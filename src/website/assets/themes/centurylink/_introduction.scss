@@ -91,7 +91,7 @@
             }
 
             .shape--1 {
-              border: 0.25rem solid $color-cyan-40;
+              border: 0.25rem solid $color-teal-blue-40;
               height: 9rem;
               left: 18rem;
               position: absolute;
@@ -100,7 +100,7 @@
             }
 
             .shape--2 {
-              border: 0.25rem solid $color-cyan-50;
+              border: 0.25rem solid $color-mint-40;
               height: 7rem;
               left: 5rem;
               position: absolute;
@@ -116,7 +116,7 @@
               width: 8rem;
 
               &::before {
-                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='128' width='128'><polygon fill='#{$color-grey-15}' stroke='#{$color-blue-70}' stroke-width='4' points='50 15, 100 100, 0 100'/></svg>");
+                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='128' width='128'><polygon fill='#{$color-grey-15}' stroke='#{$color-teal-55}' stroke-width='4' points='50 15, 100 100, 0 100'/></svg>");
                 background-repeat: no-repeat;
                 content: '';
                 display: block;
@@ -126,7 +126,7 @@
             }
 
             .shape--4 {
-              border: 0.25rem solid $color-cyan-40;
+              border: 0.25rem solid $color-bright-blue-50;
               border-radius: 4.5rem;
               height: 7rem;
               left: 16rem;
@@ -143,7 +143,7 @@
               width: 14rem;
 
               &::before {
-                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='224' width='224'><polygon fill='#{$color-grey-15}' stroke='#{$color-blue-70}' stroke-width='2' points='50 15, 100 100, 0 100'/></svg>");
+                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='224' width='224'><polygon fill='#{$color-grey-15}' stroke='#{$color-cyan-60}' stroke-width='2' points='50 15, 100 100, 0 100'/></svg>");
                 background-repeat: no-repeat;
                 content: '';
                 display: block;
@@ -153,7 +153,7 @@
             }
 
             .shape--6 {
-              border: 0.25rem solid $color-cyan-50;
+              border: 0.25rem solid $color-teal-blue-40;
               border-radius: 4.5rem;
               height: 9rem;
               left: 30rem;
